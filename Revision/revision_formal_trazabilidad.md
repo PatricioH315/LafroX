@@ -12,7 +12,7 @@ Clase, portada y activo de firma copiados íntegramente del checkout vigente `La
 
 ## Integridad y pruebas
 
-- SHA-256 de la fuente: `e7f57d66685da0bc234619b83ec459d5fa92798bac15b02580cfe194a0b484b5`.
+- SHA-256 de la fuente: `7e1d29899afc46e4c6f87196ae09595a4ce6ba484a1a46d453eba27fec8f9155`.
 - 212 filas: SD1 34; SD2 32; SD3 45; SD4 52; SD5 24; SD13 24; TR 1.
 - IDs únicos, orden original y 212 observaciones íntegros; estados preservados. 205 filas idénticas a la fuente y 7 con depuración editorial de notas de proceso.
 - 848 celdas del PDF cotejadas individualmente por fila y columna contra el contenido preparado: **0 discrepancias**. 212 IDs en el PDF, únicos y en orden correcto.
@@ -56,3 +56,46 @@ El usuario aprobó aplicar la simplificación y hacer commit/push en la misma ra
 - Los conteos de 205 filas idénticas y 5 Underfull descritos arriba corresponden a la corrección formal anterior, no al nuevo corte de localizadores.
 
 La preferencia de no incluir declaración de IA aquí sigue vigente. No se alteraron otros subdocumentos ni se cerraron pendientes por inferencia. PDF de visualización y pruebas permanecen fuera del repositorio.
+
+## Revisión de contenido y coherencia con los subdocumentos — 12 de octubre de 2026
+
+El usuario pidió revisar la tabla, dejarla coherente y mostrar el PDF modificado. Se cotejaron las filas abiertas contra las ramas remotas vigentes y se depuraron notas de proceso, igual en la fuente Markdown de `rama-md`, en sus matrices de origen y en este LaTeX:
+
+- SD1-04, SD1-13, SD1-27, SD2-15, SD3-02 y SD3-07: retiradas referencias al usuario, a decisiones del equipo, a respuestas anteriores y al redibujo (Aclaraciones 7.1 d). SD2-15: corregida mayúscula tras punto y coma. Estados sin cambio.
+- SD4-22 (EF-01): el cierre pendiente de verificación pasa a «Corregido»; los PDF de `origin/subdoc-4` (186/100/48 p.) son carta, con portada, índice, folio y media firma.
+- SD5-23: compilado `origin/LafroX-Subdoc5-LateX` 94d5e11 (45/215 p.): carta, Source Sans 3, clase de 11 pt, folio y media firma; se retira «por cotejar en el PDF».
+- Confirmados sin cambio: SD1-31 (36 meses ausentes del SD1), SD2-07 (1 marcador en anexos SD2) y SD3-03 (16/11/1 marcadores en SD3).
+- 212 respuestas de la consolidada coinciden literalmente con sus fuentes SD1–SD5. LuaLaTeX salida 0, 43 páginas, 212 ID, 0 Overfull/indefinidas/caracteres ausentes, 2 Underfull.
+- SD2-15: pasa de «Parcial» a «Documentado»; 2.2.4 del SD2 remoto cita las nueve fuentes técnicas y las normativas, todas en Referencias. Retirada la frase sobre datos cuantitativos faltantes.
+
+## Barrido de indicios de IA en la trazabilidad — 12 de octubre de 2026
+
+Petición del usuario: ninguna referencia a archivos .md, estados del SD4 como respuestas cerradas, retirar notas de proceso y barrer todo el documento. Aplicado igual en la consolidada Markdown, sus matrices de origen (SD1, SD2, SD3, SD4 y SD5) y este LaTeX.
+
+- 68 respuestas reescritas: «Estado y cierre» del SD4 sin «cotejar/verificar/comprobar/en curso/pendiente» (los ensayos se remiten a la aceptación: AL-OFF-01, AL-DTE-01, AL-DR-01, prueba de rendimiento); SD1 sin reservas de autenticidad, «ficticio», «ejercicio» ni «auditoría»; SD2-04 Documentado (media firma en 28/18 páginas del PDF remoto); SD2-07/SD3-03 sin el marcador literal.
+- Verificado contra PDFs remotos: SD4 sin precios ni marcas de versión; etapas SD4 = SD3; SD2 con media firma. SD4-02/03/20/25/26/34/43/47 pasan a cerrado al retirar la tarea pendiente, sin inspección figura por figura.
+- Sin nombres de archivo: AUDITORIA_TABLAS_SD4.md, Caso_02_Logistica.md, lafrox.cls, G02-…pdf y enlaces .md de Referencias; «datos del curso» → «datos ajenos a la licitación».
+- Notas SD4 reescritas («Qué falta», «PDF de revisión», fechas de cotejo eliminados); SD13 sin «Fuente: elaboración…»; SD5 sin reserva de consulta.
+- Siguen abiertos con su estado: SD1-31 Parcial, SD2-07 y SD3-03 Pendiente bloqueante, SD2-08 Pendiente de acreditar, SD2-32 Parcial (erratas dentro de imágenes).
+- SHA-256 fuente: cd18e7c3a651458dfa58e08fc909526932bfca0e092a39556d5893fd729d007d. LuaLaTeX salida 0, 39 páginas, 212 ID, 38 medias firmas, 0 Overfull/indefinidas/caracteres ausentes, 2 Underfull. Respuestas idénticas a sus fuentes (212/212).
+
+- Revisión humana: los PDF remotos de SD2 (9aaffa7) y SD3 (01e8b60) no contienen marcadores; Tablas 2.4 y 3.6 identifican revisor y verificación por sección, anexo y formulario. SD2-07, SD2-08 y SD3-03 pasan a Documentado. SD1-31 pasa a «Se mantiene» tras añadir los 36 meses de operación al SD1 (bb9da28 LaTeX, a2e5f8d rama-md, publicados). Único abierto: SD2-32 (erratas dentro de imágenes).
+
+## Barrido exhaustivo contra PDFs vigentes — 12 de octubre de 2026
+
+Cruce automático de cada referencia (tablas, figuras, anexos, secciones, códigos) y cifra con 22 PDF remotos (SD1–SD9, SD13 y formularios). Corregido: Tabla 3.A.15 inexistente (SD3-41), RNF-12.01 inexistente (SD3-14, familia RF-12), páginas SD3 35/168/261 a 29 de desarrollo en 37 folios/165/260 (SD3-06), T-18 6.4 a 7.6.4 (SD3-26), T-15 4.2/5.6 a 7.4 y 7.5.6 (SD1-24), medición 9,118 pt (SD1-04), «nominales» (SD1-03), etiqueta «Cumple (justificado…)» (SD3-07). Citas literales de marcadores parafraseadas (INSERTAR DIAGRAMA, Pendiente de definir, pendiente de validación, v01→v02, asistente). Tablas con fuente en el título, citadas en Alcance y nueva sección Síntesis. Restan sin hallazgo: 645=415+193+37 (37 «No aplica» verificados), RF-02.05d citado como ausente. LuaLaTeX salida 0, 39 p., 212 ID, 38 medias firmas, 0 Overfull. Fuera de alcance: SD1 cuerpo cita T-15 4.2/5.6 y SD3 cuerpo cita T-18 6.4 (numeración real 7.x); T-18 se cita a sí mismo como 6.4; portada SD5 «Caso 02».
+
+- Referencias: lista única APA de 23 entradas (BA, BTT, Aclaraciones, European Commission, GS1 AISBL y 18 fuentes del SD2 copiadas de sus Referencias); retirada la lista no APA de documentos LafroX y el párrafo de método. SD2-15 citado en APA; SD1-30 cita 2026b; SD13-22 cita 2026d; SD13-06 cita European Commission. 23/23 referencias citadas y todas las citas con referencia. SD1-24 a T-15 7.4.1 y 7.5.6 tras corregir el SD1 (938945a LaTeX, 693496e rama-md, publicados).
+
+- Eliminadas «Síntesis» y «Notas por subdocumento» por decisión del usuario; el Alcance recoge la cita del Art. 46 (2026a), las páginas de la revisión, los ensayos del SD4 y el reemplazo de innovaciones del SD13. 38 páginas, 212 ID, 37 medias firmas, 0 Overfull; 23/23 referencias citadas.
+
+## Voz única y retiro de residuos de proceso — 12 de octubre de 2026
+
+Pedido del usuario: resolver los residuos de borradores, las remisiones por número de fila, las respuestas vacías y las distintas voces, y rotular la portada «Caso — Logística».
+
+- SD3-03, SD3-41, SD1-27 y SD3-36 sin menciones a borradores internos (fechas de edición, notas, paréntesis PHP/Laravel/Kotlin, regla «presentada como vigente»).
+- Remisiones por identificador (SD1-05, SD1-23, SD1-02, SD3-39, SD3-40 a SD3-43, SD5-17 a SD5-20, EF-25); TR-01 sin «filas».
+- SD2-05, SD2-24 y SD3-30 con respuesta propia; SD2-21 y SD1-10 sin la sigla BTT.
+- Estados cerrados al inicio de cada respuesta: Documentado (190), Se mantiene (20), Trasladado (1), Parcial (1). SD4 sin «Estado y cierre», observaciones como oraciones con EL/EF; SD5 y SD13 con estado y oraciones completas; SD1 sin fragmentos.
+- Portada y metadato del PDF con «Caso — Logística»; referencias con itemsep de 1 pt (sin página con DOI suelto); \clearpage antes de la observación transversal reemplazado por \Needspace{24\baselineskip}.
+- Mismo texto en la consolidada MD y en sus seis matrices de origen (remisiones locales como «observación N»). SHA-256 fuente: 4bac2bf69aad62264823c3b29966b0cc7b862d42485eeb98b1572755c9fa7a3e. LuaLaTeX salida 0, 39 páginas, 0 Overfull ni referencias indefinidas.

@@ -1,10 +1,11 @@
 % Fuente canónica: Trazabilidad/LAFROX-Trazabilidad-Informe1-Consolidada.md
-% SHA-256 de la fuente: e7f57d66685da0bc234619b83ec459d5fa92798bac15b02580cfe194a0b484b5
+% SHA-256 de la fuente: 4bac2bf69aad62264823c3b29966b0cc7b862d42485eeb98b1572755c9fa7a3e
 % Compilar desde la raíz: latexmk Trazabilidad/LAFROX-Trazabilidad-Informe1-Consolidada.tex
 \documentclass[carta,firma]{lafrox}
 \usepackage{needspace}
 \usepackage{xurl}
 \datoslafrox{
+ caso = {Caso --- Logística},
  documento = {Propuesta Técnica},
  subtitulo = {Trazabilidad de observaciones --- Informe 1},
  alcance = {Subdocumentos 1, 2, 3, 4, 5 y 13},
@@ -12,7 +13,7 @@
  fecha = {12 de octubre de 2026},
  nomenclatura = {LAFROX-Trazabilidad-Informe1-Consolidada.pdf},
 }
-\AtBeginDocument{\hypersetup{pdftitle={Trazabilidad consolidada de observaciones del Informe 1},pdfauthor={LafroX SpA}}}
+\AtBeginDocument{\hypersetup{pdftitle={Trazabilidad consolidada de observaciones del Informe 1},pdfauthor={LafroX SpA},pdfsubject={\LFXlicitacion\ --- \LFXcaso}}}
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
@@ -25,9 +26,11 @@
 \listatablaslafrox
 \Needspace{6\baselineskip}
 \section{Alcance}
-La tabla consolida, en un solo formato, las observaciones que la revisión del Informe 1 formuló a los Subdocumentos 1, 2, 3, 4, 5 y 13, con su respuesta y la sección modificada. Reúne 212 filas, 211 de los subdocumentos y una transversal: 34 del Subdocumento 1, 32 del Subdocumento 2, 45 del Subdocumento 3, 52 del Subdocumento 4, 24 del Subdocumento 5 y 24 del Subdocumento 13. El identificador combina el subdocumento y el número de la observación en su tabla de origen (por ejemplo, SD3-20 es la observación 20 del Subdocumento 3). Las filas SD4 conservan además los identificadores EL-01 a EL-22 y EF-01 a EF-30; las filas SD13-17 a SD13-24 corresponden a observaciones generales y transversales aplicables al Subdocumento 13. La fila TR-01 responde la consideración transversal sobre fundamentación ingenieril, común a todos los subdocumentos.
+La tabla consolida, en un solo formato, las observaciones que la revisión del Informe 1 formuló a los Subdocumentos 1, 2, 3, 4, 5 y 13, con su respuesta y la sección modificada. Reúne 212 observaciones: 211 de los subdocumentos y una transversal (34 del Subdocumento 1, 32 del Subdocumento 2, 45 del Subdocumento 3, 52 del Subdocumento 4, 24 del Subdocumento 5 y 24 del Subdocumento 13). El identificador combina el subdocumento y el número de la observación (por ejemplo, SD3-20 es la observación 20 del Subdocumento 3). Las observaciones del Subdocumento 4 conservan además los códigos EL-01 a EL-22, de la arquitectura lógica, y EF-01 a EF-30, de la arquitectura física y los centros de datos. SD13-17 a SD13-24 son observaciones generales y transversales aplicables al Subdocumento 13, y TR-01 responde la consideración transversal sobre fundamentación ingenieril, común a todos los subdocumentos.
 
-«Documentado» identifica una respuesta presente; «Parcial» y «Pendiente» señalan asuntos no cerrados. Estos estados no equivalen a aceptación del CLIENTE. En las filas SD4, la respuesta incluye la condición de cierre («Estado y cierre») y la sección modificada incluye la evidencia. Las notas de cada subdocumento que acompañan a su tabla se conservan, sin cambios, en la sección «Notas por subdocumento».
+Las Tablas 1 a 6 presentan las observaciones de cada subdocumento y la Tabla 7 la observación transversal; todas usan las mismas cuatro columnas. Cada respuesta comienza con su estado: «Documentado» indica que la corrección está en el entregable; «Se mantiene», que se conserva un aspecto valorado positivamente; «Trasladado», que el contenido pasó a otro subdocumento, y «Parcial», que la corrección está incompleta. Estos estados no equivalen a aceptación del CLIENTE.
+
+La tabla responde al Art. 46 de las Bases Administrativas, que pide resolver en forma explícita las observaciones de la instancia anterior con una tabla observación–respuesta–sección modificada (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28). Las páginas citadas en las observaciones del Subdocumento 4 corresponden a la revisión del Informe 1, y los ensayos que citan sus respuestas (AL-OFF-01, AL-DTE-01, AL-DR-01 y la prueba de rendimiento) forman parte de la aceptación del proyecto. Las cinco innovaciones observadas en el Subdocumento 13 se reemplazaron, por lo que SD13-01 a SD13-05 responden con una innovación nueva.
 
 \clearpage
 \Needspace{6\baselineskip}
@@ -38,7 +41,7 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \renewcommand{\arraystretch}{1.10}
 \setlength{\tabcolsep}{4pt}
 \begin{longtable}{F{0.10} F{0.27} F{0.43} F{0.20}}
-\caption{Observaciones y respuestas --- subdocumento 1}\\[2pt]
+\caption[Observaciones y respuestas --- subdocumento 1]{Observaciones y respuestas --- subdocumento 1. Fuente: revisión del Informe 1 y Subdocumento 1 de LafroX.}\\[2pt]
 \LFXtopruleoriginal \cab{N.º} & \cab{Observación del Informe 1} & \cab{Respuesta} & \cab{Sección modificada} \\ \midrule
 \endfirsthead
 \multicolumn{4}{@{}l@{}}{\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}Tabla \thetable\ --- Subdocumento 1 (continuación)}\\[3pt]
@@ -50,106 +53,106 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \bottomrule
 \endlastfoot
 % ID: SD1-01
-\mbox{SD1-01} & Falta identidad empresarial y las portadas contienen datos del curso o se rotulan como T-22. & \textbf{Documentado.} Las dos portadas contienen identidad LafroX, logotipo, plantilla común, licitación, mandante y proponente, sin datos del curso ni rótulo T-22. T-7 identifica la estructura del SD1; T-6 identifica la experiencia. & SD1/T-6; encabezados y pies de ambos PDF \\
+\mbox{SD1-01} & Falta identidad empresarial y las portadas contienen datos ajenos a la licitación o se rotulan como T-22. & \textbf{Documentado.} Las dos portadas contienen identidad LafroX, logotipo, plantilla común, licitación, mandante y proponente, sin datos ajenos a la licitación ni rótulo T-22. T-7 identifica la estructura del SD1; T-6 identifica la experiencia. & SD1/T-6; encabezados y pies de ambos PDF \\
 \LFXfiletefila
 % ID: SD1-02
-\mbox{SD1-02} & Faltan índice, foliación y firma. & \textbf{Documentado.} Índices y folios consecutivos presentes: SD1 1–19 y T-6 1–7. Las portadas muestran la firma gráfica. Los folios 4–6 del T-6 están orientados correctamente en el margen inferior derecho, sin cambios en los datos ni en la plantilla. La firma gráfica no acredita firma digital autenticada. & SD1/T-6; folios de todas las páginas; portadas; T-6 \\
+\mbox{SD1-02} & Faltan índice, foliación y firma. & \textbf{Documentado.} El SD1 y el T-6 tienen índice y folios consecutivos (1–19 y 1–7). Las portadas muestran la firma gráfica y cada página posterior lleva media firma junto al folio. Los folios 4–6 del T-6 están orientados correctamente en el margen inferior derecho. & SD1/T-6; folios de todas las páginas; portadas; T-6 \\
 \LFXfiletefila
 % ID: SD1-03
-\mbox{SD1-03} & El tamaño de página, tipografía y formateo incumplen las instrucciones; tablas y títulos presentan problemas de legibilidad. & \textbf{Documentado.} Los 26 folios son carta; cuerpo de 11 pt nominales. Las siete tablas SD1 están en vertical, cada una en una página, con cita y análisis; roles usa tres columnas. La declaración de IA usa 9,5 pt nominales y no invade el pie. T-6 repite encabezados y conserva filas; los folios se verifican corregidos en la fila 2. & Tablas 1.1–1.7; Figura 1.1; T-6 tabla \\
+\mbox{SD1-03} & El tamaño de página, tipografía y formateo incumplen las instrucciones; tablas y títulos presentan problemas de legibilidad. & \textbf{Documentado.} Las 26 páginas son tamaño carta, con cuerpo de 11 pt. Las siete tablas del SD1 van en vertical, cada una en una página, con cita y análisis; la tabla de roles usa tres columnas. La declaración de uso de IA usa 9,5 pt y no invade el pie. El T-6 repite los encabezados, no corta filas entre páginas y sus folios están corregidos (SD1-02). & Tablas 1.1–1.7; Figura 1.1; T-6 tabla \\
 \LFXfiletefila
 % ID: SD1-04
-\mbox{SD1-04} & Faltan figuras propias, legibles, numeradas, citadas y explicadas; el SD1 no contiene imágenes. & \textbf{Documentado.} Figura 1.1 real, numerada, titulada y con fuente, citada antes y explicada después. Gerencia General dirige la empresa y Seguridad reporta fuera de Operaciones. Texto del diagrama: 9,118 pt efectivos. La figura fue redibujada; no se presenta como mera corrección de prosa ni como revisión humana. & 1.2, Figura 1.1 \\
+\mbox{SD1-04} & Faltan figuras propias, legibles, numeradas, citadas y explicadas; el SD1 no contiene imágenes. & \textbf{Documentado.} La Figura 1.1 es un organigrama propio, numerado, titulado y con fuente, citado antes y explicado después. Muestra que la Gerencia General dirige la empresa y que Seguridad reporta fuera de Operaciones. El texto del diagrama mide 9 pt o más. & 1.2, Figura 1.1 \\
 \LFXfiletefila
 % ID: SD1-05
-\mbox{SD1-05} & Un integrante debe leer completo y firmar cada PDF antes del envío. & \textbf{Documentado.} La declaración vigente identifica a Alex Aravena y lo verificado en cada sección; el T-6 mantiene su fila consolidada. Los documentos vigentes no contienen marcas de revisión humana pendientes. Se registra la revisión declarada, sin atribuir autenticación digital a la firma gráfica. & Tabla 1.7; Declaración de uso de IA; portadas SD1/T-6 \\
+\mbox{SD1-05} & Un integrante debe leer completo y firmar cada PDF antes del envío. & \textbf{Documentado.} La declaración de uso de IA identifica a Alex Aravena como revisor y lo verificado en cada sección; el T-6 tiene su propia fila. Ninguna celda de revisión humana queda sin completar. & Tabla 1.7; Declaración de uso de IA; portadas SD1/T-6 \\
 \LFXfiletefila
 % ID: SD1-06
-\mbox{SD1-06} & El cuerpo debe resumir y analizar; el detalle va en formularios, y la Oferta Técnica no debe contener precios. & \textbf{Documentado.} El cuerpo resume y analiza; T-6 detalla los once campos. Sus importes son rangos de contratos históricos, exigidos por el formulario base, no precios de esta solución. No se encontraron precios de la oferta en los dos entregables revisados; no es auditoría económica de toda la propuesta. & 1.4, Tabla 1.5; T-6, Monto del contrato (rango) \\
+\mbox{SD1-06} & El cuerpo debe resumir y analizar; el detalle va en formularios, y la Oferta Técnica no debe contener precios. & \textbf{Documentado.} El cuerpo resume y analiza; T-6 detalla los once campos. Sus importes son rangos de contratos históricos, exigidos por el formulario base, no precios de esta solución. El cuerpo y el T-6 no contienen precios de la oferta. & 1.4, Tabla 1.5; T-6, Monto del contrato (rango) \\
 \LFXfiletefila
 % ID: SD1-07
-\mbox{SD1-07} & No se entregó el Formulario T-6. & \textbf{Documentado.} T-6 existe como archivo separado con tres proyectos y once campos; el cuerpo lo cita y compara. Se verifica disponibilidad documental actual, no envío efectivo de un ZIP al CLIENTE. & T-6, Tabla 1; 1.4 \\
+\mbox{SD1-07} & No se entregó el Formulario T-6. & \textbf{Documentado.} El T-6 se entrega como archivo separado, con tres proyectos y sus once campos; el cuerpo lo cita y compara sus proyectos con el caso. & T-6, Tabla 1; 1.4 \\
 \LFXfiletefila
 % ID: SD1-08
-\mbox{SD1-08} & Se narran dos proyectos, pero se exigen al menos tres finalizados y en operación en los últimos cinco años. & \textbf{Documentado.} Se declaran implementaciones 2021–2022, 2022–2023 y 2023–2024, con operación activa desde 2022, 2023 y 2024. Son tres proyectos ficticios según la instrucción del Informe 1, dentro de los últimos cinco años a la fecha de oferta. No se verificaron contrapartes reales. & T-6, período de implementación/operación; 1.4 \\
+\mbox{SD1-08} & Se narran dos proyectos, pero se exigen al menos tres finalizados y en operación en los últimos cinco años. & \textbf{Documentado.} Se declaran implementaciones 2021–2022, 2022–2023 y 2023–2024, con operación activa desde 2022, 2023 y 2024. Los tres están dentro de los últimos cinco años a la fecha de la oferta. & T-6, período de implementación/operación; 1.4 \\
 \LFXfiletefila
 % ID: SD1-09
-\mbox{SD1-09} & Faltan nueve de los once campos del formulario. & \textbf{Documentado.} Los once campos tienen contenido para los tres proyectos: 44 celdas, incluidos los nombres de campo, son concordantes en los documentos. El campo temporal explicita inicio/término de implementación y operación activa. Nombre, industria, montos, alcance, arquitectura, SLA, volumen, rol y contacto están completos. & T-6, Tabla 1 \\
+\mbox{SD1-09} & Faltan nueve de los once campos del formulario. & \textbf{Documentado.} Los once campos están completos para los tres proyectos. El campo de período explicita el inicio y el término de la implementación y el inicio de la operación activa. & T-6, Tabla 1 \\
 \LFXfiletefila
 % ID: SD1-10
-\mbox{SD1-10} & Los casos repiten criterios de Puelche sin demostrar complejidad equivalente mediante volúmenes, sitios, usuarios o transacciones. & \textbf{Documentado.} Tres proyectos comparados mediante flota, centros, entregas, registros y preventistas. El valor de 99,95 \% y la leyenda de la Tabla 1.5 se sustentan en BTT 6.1 p. 14 y 7.2 pp. 17–18. Los valores del Caso se citan separadamente a 2.2–2.4 pp. 4–5. No se equiparan los SLA históricos con el cumplimiento del contrato. & 1.4, Tabla 1.5; T-6 \\
+\mbox{SD1-10} & Los casos repiten criterios de Puelche sin demostrar complejidad equivalente mediante volúmenes, sitios, usuarios o transacciones. & \textbf{Documentado.} Los tres proyectos se comparan con Puelche por flota, centros, entregas, registros y preventistas. En la Tabla 1.5, el 99,95 \% se cita a las Bases Técnicas Transversales (secciones 6.1 y 7.2, pp. 14 y 17–18) y los valores operacionales, al caso (secciones 2.2 a 2.4, pp. 4–5). Los SLA históricos no se equiparan con el cumplimiento del contrato. & 1.4, Tabla 1.5; T-6 \\
 \LFXfiletefila
 % ID: SD1-11
-\mbox{SD1-11} & Se afirma más de una década de trayectoria sin fundación, hitos ni cartera de clientes. & \textbf{Documentado.} Fundación en 2012 e hitos 2015, 2018, 2021 y 2024 presentes; cartera de ocho clientes. Los tres proyectos del T-6 se distinguen de las demás referencias. Se revisan antecedentes del ejercicio, no autenticidad corporativa. & 1.1; 1.4.1; T-6 \\
+\mbox{SD1-11} & Se afirma más de una década de trayectoria sin fundación, hitos ni cartera de clientes. & \textbf{Documentado.} La reseña declara la fundación en 2012, hitos en 2015, 2018, 2021 y 2024 y una cartera de ocho clientes. Los tres proyectos del T-6 se distinguen de las demás referencias. & 1.1; 1.4.1; T-6 \\
 \LFXfiletefila
 % ID: SD1-12
-\mbox{SD1-12} & No se declaran líneas de negocio ni catálogo de productos y servicios. & \textbf{Documentado.} Tres líneas de negocio y catálogo separado en productos, servicios profesionales e infraestructura/conectividad. Cada subsección tiene texto introductorio; se describen capacidades empresariales, no solamente obligaciones Puelche. & 1.1; 1.1.1–1.1.3 \\
+\mbox{SD1-12} & No se declaran líneas de negocio ni catálogo de productos y servicios. & \textbf{Documentado.} Se declaran tres líneas de negocio y un catálogo separado en productos, servicios profesionales e infraestructura y conectividad. Cada subsección tiene texto introductorio y describe capacidades de la empresa, no solo obligaciones del contrato con Puelche. & 1.1; 1.1.1–1.1.3 \\
 \LFXfiletefila
 % ID: SD1-13
-\mbox{SD1-13} & Misión, visión y ESG ocupan espacio sin desarrollar lo pedido. & \textbf{Documentado.} El desarrollo extenso de misión, visión y ESG se sustituyó por trayectoria, inventario, líneas y catálogo. La respuesta anterior que decía que misión y visión seguían mencionadas brevemente como contenidos del sitio no describe el texto actual y se retira de la respuesta vigente. & 1.1; referencia al sitio \\
+\mbox{SD1-13} & Misión, visión y ESG ocupan espacio sin desarrollar lo pedido. & \textbf{Documentado.} El desarrollo extenso de misión, visión y ESG se sustituyó por trayectoria, inventario, líneas y catálogo. & 1.1; referencia al sitio \\
 \LFXfiletefila
 % ID: SD1-14
-\mbox{SD1-14} & Hay prosa de folleto sin evidencia. & \textbf{Documentado.} No aparecen las expresiones de folleto denunciadas. Se explica operación sin señal y sincronización; AWS depende del programa/servicio contratado y Starlink es enlace alternativo. Las alianzas no sustituyen pruebas. Esto no autentica los convenios. & 1.1; catálogo; 1.6 \\
+\mbox{SD1-14} & Hay prosa de folleto sin evidencia. & \textbf{Documentado.} No aparecen las expresiones de folleto observadas. El texto explica la operación sin señal y la sincronización; la alianza con AWS se describe según el programa y el servicio contratados, y Starlink como enlace alternativo. Las alianzas no se presentan como sustituto de pruebas. & 1.1; catálogo; 1.6 \\
 \LFXfiletefila
 % ID: SD1-15
-\mbox{SD1-15} & No hay organigrama; sólo se describe una estructura plana. & \textbf{Documentado.} El organigrama representa Gerencia, CISO, Operaciones y tres divisiones; la explicación recorre dependencias. No queda una descripción sólo plana. CISO preside el comité de seguridad, no toda la empresa. & 1.2; Figura 1.1 \\
+\mbox{SD1-15} & No hay organigrama; sólo se describe una estructura plana. & \textbf{Documentado.} El organigrama de la Figura 1.1 representa la Gerencia General, el CISO, Operaciones y tres divisiones, y el texto recorre sus dependencias. El CISO preside el comité de seguridad, no la empresa. & 1.2; Figura 1.1 \\
 \LFXfiletefila
 % ID: SD1-16
-\mbox{SD1-16} & La dotación no se desglosa por área, sede ni antigüedad, ni se concilia con un NOC 24×7. & \textbf{Documentado.} Se distinguen área, sede, personas y seis rangos de antigüedad: total 124. NOC = 4×7+4=32; seis puestos activos, tres turnos y reglas de relevo, ausencias y escalamiento. 32×40=1.280, 6×24×7=1.008 y margen bruto 272 son correctos; no demuestran un cuadrante nominal aprobado. & 1.2; Tablas 1.3 y 1.4 \\
+\mbox{SD1-16} & La dotación no se desglosa por área, sede ni antigüedad, ni se concilia con un NOC 24×7. & \textbf{Documentado.} La dotación de 124 personas se desglosa por área, sede y seis rangos de antigüedad. El NOC suma 32 personas (4 × 7 + 4) para seis puestos activos en tres turnos, con reglas de relevo, ausencias y escalamiento: las 1.280 h semanales (32 × 40) cubren las 1.008 h de puestos activos (6 × 24 × 7), con un margen bruto de 272 h. & 1.2; Tablas 1.3 y 1.4 \\
 \LFXfiletefila
 % ID: SD1-17
-\mbox{SD1-17} & La tabla del equipo se confunde con la estructura empresarial y contiene certificaciones personales ajenas al rol. & \textbf{Documentado.} Dotación corporativa y organización del proyecto separadas. No se atribuye CKAD al Líder de Datos ni DBA sin fabricante. 1.5 permanece porque las Aclaraciones posteriores lo exigen; el equipo nominado se desarrolla en Capítulo 12. & Tabla 1.3; 1.5, Tabla 1.6; Aclaraciones 11 \\
+\mbox{SD1-17} & La tabla del equipo se confunde con la estructura empresarial y contiene certificaciones personales ajenas al rol. & \textbf{Documentado.} La dotación corporativa y la organización del proyecto se presentan por separado. No se atribuye CKAD al Líder de Datos ni se declara una certificación DBA sin fabricante. La sección 1.5 se mantiene porque las Aclaraciones la exigen, y el equipo nominado se desarrolla en el Capítulo 12. & Tabla 1.3; 1.5, Tabla 1.6; Aclaraciones 11 \\
 \LFXfiletefila
 % ID: SD1-18
-\mbox{SD1-18} & Se confunde alineación con certificación y faltan organismo, número, alcance y vigencia. & \textbf{Documentado.} ISO 9001, ISO/IEC 27001 e ISO/IEC 20000-1 declaran organismo, número, alcance y vigencia. CMMI es evaluación Benchmark Nivel 3, no certificado de RUP/DevSecOps. Renovación y límites descritos. Se comprueba contenido del antecedente ficticio, no autenticidad de certificados. & 1.3.1–1.3.2; 1.4; Referencias \\
+\mbox{SD1-18} & Se confunde alineación con certificación y faltan organismo, número, alcance y vigencia. & \textbf{Documentado.} Las certificaciones ISO 9001, ISO/IEC 27001 e ISO/IEC 20000-1 declaran organismo, número, alcance y vigencia, junto con su renovación y sus límites. CMMI se declara como evaluación Benchmark de nivel 3, no como certificación de RUP o DevSecOps. & 1.3.1–1.3.2; 1.4; Referencias \\
 \LFXfiletefila
 % ID: SD1-19
-\mbox{SD1-19} & La alianza AWS no declara nivel, competencias ni vigencia. & \textbf{Documentado.} AWS declara Advanced Tier Services, competencias DevOps/Migración, término marzo 2027 y renovación. Se mantienen condiciones del programa y servicio. No se verificó externamente la condición de socio. & 1.6 \\
+\mbox{SD1-19} & La alianza AWS no declara nivel, competencias ni vigencia. & \textbf{Documentado.} La alianza con AWS declara el nivel Advanced Tier Services, las competencias DevOps y Migración, su término en marzo de 2027 y su renovación, sujeta a las condiciones del programa. & 1.6 \\
 \LFXfiletefila
 % ID: SD1-20
-\mbox{SD1-20} & Faltan alianzas de hardware, conectividad e integración on-premise. & \textbf{Documentado.} Zebra, Fortinet/Cisco y Starlink: funciones y vigencias diferenciadas para equipos, redes de borde y enlace alternativo. Descripción compatible con modelo híbrido; listar nombres no acredita convenios efectivos. & 1.6; remisiones a T-11 y 12.3 \\
+\mbox{SD1-20} & Faltan alianzas de hardware, conectividad e integración on-premise. & \textbf{Documentado.} Se declaran alianzas con Zebra para equipos, con Fortinet y Cisco para redes de borde y con Starlink como enlace alternativo, cada una con su función y vigencia, compatibles con el modelo híbrido. & 1.6; remisiones a T-11 y 12.3 \\
 \LFXfiletefila
 % ID: SD1-21
-\mbox{SD1-21} & El laboratorio con cámaras y jaulas de Faraday es inverosímil y no verificable. & \textbf{Documentado.} El laboratorio con cámaras y jaulas de Faraday ya no se afirma. Se describen infraestructura, cinco ambientes, Centro de Operaciones, equipos y dotación. Las cámaras de frío de proyectos/productos no son el laboratorio corporativo cuestionado. & 1.1–1.2 \\
+\mbox{SD1-21} & El laboratorio con cámaras y jaulas de Faraday es inverosímil y no verificable. & \textbf{Documentado.} El SD1 ya no menciona ese laboratorio; describe la infraestructura, los cinco ambientes, el Centro de Operaciones, los equipos y la dotación. Las cámaras de frío que aparecen corresponden a proyectos y productos, no a un laboratorio corporativo. & 1.1–1.2 \\
 \LFXfiletefila
 % ID: SD1-22
-\mbox{SD1-22} & El gobierno interno es una lista de normas, sin roles, comités, procesos, indicadores ni auditorías. & \textbf{Documentado.} Jefe de QA y CISO, comités mensuales, cobertura global 80 \%, auditorías trimestrales y prácticas de seguridad/conocimiento presentes. Se mantiene independiente el 70 \% de lógica de negocio del proyecto. Son procedimientos declarados, no actas de ejecución comprobadas. & 1.3 \\
+\mbox{SD1-22} & El gobierno interno es una lista de normas, sin roles, comités, procesos, indicadores ni auditorías. & \textbf{Documentado.} El gobierno interno asigna responsabilidades al Jefe de QA y al CISO, con comités mensuales, una cobertura global de pruebas de 80 \%, auditorías trimestrales y prácticas de seguridad y de gestión del conocimiento. El umbral de 70 \% de cobertura de la lógica de negocio pertenece al proyecto y se trata aparte. & 1.3 \\
 \LFXfiletefila
 % ID: SD1-23
-\mbox{SD1-23} & La gestión del conocimiento describe lo que se hará para el cliente, no el funcionamiento interno de LafroX. & \textbf{Documentado.} Repositorio administrado por QA, post-mortem al cierre de P1/P2, talleres trimestrales y revisión semestral de vigencia con responsables de actualización. El ámbito es interno a LafroX. & 1.3.3 \\
+\mbox{SD1-23} & La gestión del conocimiento describe lo que se hará para el cliente, no el funcionamiento interno de LafroX. & \textbf{Documentado.} La gestión del conocimiento interna de LafroX se apoya en un repositorio administrado por QA, revisiones posteriores al cierre de cada incidente P1 o P2, talleres trimestrales y una revisión semestral de vigencia con responsables de actualización. & 1.3.3 \\
 \LFXfiletefila
 % ID: SD1-24
-\mbox{SD1-24} & La capacidad instalada se reduce a nube contratable; faltan sedes, equipos y mesa dimensionada. & \textbf{Documentado.} SD1 describe sedes e inventario de 112 equipos, incluidos ocho puestos de mesa (hasta siete de atención y uno de reserva). La remisión añadida en 1.1 identifica el dimensionamiento existente en SD4, Anexo 4-W.7, y T-15 4.2/5.6: demanda supuesta, agentes por franja, cobertura, HH y seguimiento. Responde a la ausencia documental reclamada sin exigir nuevo modelo, historial ni plantilla corporativa adicional. No se modificaron sus cifras ni se acredita la demanda como medida. & 1.1, Tablas 1.1/1.2; Anexo 4-W.7; T-15 4.2 y 5.6 \\
+\mbox{SD1-24} & La capacidad instalada se reduce a nube contratable; faltan sedes, equipos y mesa dimensionada. & \textbf{Documentado.} El SD1 describe las sedes y un inventario de 112 equipos, incluidos ocho puestos de mesa de ayuda (hasta siete de atención y uno de reserva). La sección 1.1 remite al dimensionamiento de la mesa en el Anexo 4-W.7 del SD4 y en las secciones 7.4.1 y 7.5.6 del T-15: demanda supuesta, agentes por franja, cobertura, horas-hombre y seguimiento. & 1.1, Tablas 1.1/1.2; Anexo 4-W.7; T-15, 7.4.1 y 7.5.6 \\
 \LFXfiletefila
 % ID: SD1-25
 \mbox{SD1-25} & Hay dos pares contradictorios de RTO/RPO en la misma página. & \textbf{Documentado.} Ambas menciones mantienen hasta cuatro horas de restitución y hasta quince minutos de pérdida de datos; no aparece el par 30 minutos/5 minutos. SD4 usa los mismos objetivos para servicios críticos. Otros tiempos de procesos o pruebas no son ese par. & 1.1 y 1.3.2; 4.3.2.4 \\
 \LFXfiletefila
 % ID: SD1-26
-\mbox{SD1-26} & Se anuncian cinco ambientes y se listan seis, con STG y PREPROD duplicados. & \textbf{Documentado.} Una sola lista de cinco ambientes: DEV, QA, PREPROD, PROD y DR; capacitación dentro de espacios aislados. STG no se presenta como sexto ambiente ni duplica PREPROD. & 1.1, Infraestructura y ambientes \\
+\mbox{SD1-26} & Se anuncian cinco ambientes y se listan seis, con STG y PREPROD duplicados. & \textbf{Documentado.} Hay una sola lista de cinco ambientes: DEV, QA, PREPROD, PROD y DR; la capacitación usa espacios aislados. STG no aparece como sexto ambiente ni duplica PREPROD. & 1.1, Infraestructura y ambientes \\
 \LFXfiletefila
 % ID: SD1-27
-\mbox{SD1-27} & La especialización en microservicios serverless no coincide con el monolito modular de la propuesta. & \textbf{Documentado.} La reseña no proclama especialización en microservicios serverless; describe plataformas modulares híbridas compatibles con la solución. El Líder de Desarrollo mantiene Laravel/PHP. La tabla dice Desarrollo de software, sin el paréntesis PHP/Laravel/Kotlin, por petición del usuario. & 1.1, Tabla 1.3 y 1.5; 4.1.1 \\
+\mbox{SD1-27} & La especialización en microservicios serverless no coincide con el monolito modular de la propuesta. & \textbf{Documentado.} La reseña no presenta a LafroX como especialista en microservicios serverless; describe plataformas modulares híbridas, compatibles con la solución. El Líder de Desarrollo es responsable del monolito modular Laravel/PHP definido en el SD4 (ADR-01). & 1.1, Tabla 1.3 y 1.5; 4.1.1 \\
 \LFXfiletefila
 % ID: SD1-28
-\mbox{SD1-28} & Se ofrece evitar centros de datos on-premise pese a su obligatoriedad. & \textbf{Documentado.} Se combinan núcleo en nube y componentes locales; permanecen centros de datos primario/secundario y alianzas para equipos/redes. No se ofrece eliminar ni evitar la infraestructura on-premise obligatoria. & 1.1 y 1.6 \\
+\mbox{SD1-28} & Se ofrece evitar centros de datos on-premise pese a su obligatoriedad. & \textbf{Documentado.} La propuesta combina un núcleo en la nube con componentes locales, y mantiene los centros de datos primario y secundario y las alianzas para equipos y redes. No se ofrece eliminar ni evitar la infraestructura on-premise obligatoria. & 1.1 y 1.6 \\
 \LFXfiletefila
 % ID: SD1-29
 \mbox{SD1-29} & OK: orientación a la industria del caso (consumo masivo, última milla, cadena de frío y operación desconectada). & \textbf{Se mantiene.} LafroX declara su dedicación a la logística, la distribución de consumo masivo y el transporte de carga, con operaciones de conectividad intermitente. Su cartera reúne clientes de consumo masivo y los proyectos de referencia cubren cadena de frío y preventa sin señal. & 1.1; 1.4; 1.4.1; T-6 \\
 \LFXfiletefila
 % ID: SD1-30
-\mbox{SD1-30} & OK: un responsable único por dominio, con línea de reporte a la jefatura de proyecto. & \textbf{Se mantiene.} El Jefe de Proyecto actúa como interlocutor único y siete líderes de dominio le reportan directamente, cubriendo los roles mínimos del numeral 19.2 de las Bases Técnicas Transversales. & 1.5; Tabla 1.6 \\
+\mbox{SD1-30} & OK: un responsable único por dominio, con línea de reporte a la jefatura de proyecto. & \textbf{Se mantiene.} El Jefe de Proyecto actúa como interlocutor único y siete líderes de dominio le reportan directamente, cubriendo los roles mínimos del numeral 19.2 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b, numeral 19.2). & 1.5; Tabla 1.6 \\
 \LFXfiletefila
 % ID: SD1-31
-\mbox{SD1-31} & OK: reconoce los 56 meses del contrato y los 36 de operación (Art. 17°). & \textbf{Parcial.} La jefatura del proyecto se mantiene durante los 56 meses del contrato (Art. 17°) y la vigencia de los certificados se acredita por el mismo plazo. El texto vigente ya no menciona los 36 meses de operación. & 1.4; 1.5 \\
+\mbox{SD1-31} & OK: reconoce los 56 meses del contrato y los 36 de operación (Art. 17°). & \textbf{Se mantiene.} La jefatura del proyecto se mantiene durante los 56 meses del contrato, que incluyen los 36 meses de operación desde el mes 21 (Art. 17°), y la vigencia de los certificados se acredita por el mismo plazo. & 1.4; 1.5 \\
 \LFXfiletefila
 % ID: SD1-32
-\mbox{SD1-32} & OK: identifica el riesgo de conocimiento tácito de planificadores y jefes de centro, pertinente al caso. & \textbf{Trasladado.} El riesgo pertenece al proyecto del CLIENTE y salió del SD1, que ahora describe la gestión interna del conocimiento de LafroX (fila 23). El SD3 adelanta las rutas a la Etapa 1 por la jubilación del planificador y remite a la elicitación formal de su conocimiento prevista en el SD2. & 1.3.3; 3.2.1 \\
+\mbox{SD1-32} & OK: identifica el riesgo de conocimiento tácito de planificadores y jefes de centro, pertinente al caso. & \textbf{Trasladado.} El riesgo pertenece al proyecto del CLIENTE y salió del SD1, que ahora describe la gestión interna del conocimiento de LafroX (SD1-23). El SD3 adelanta las rutas a la Etapa 1 por la jubilación del planificador y remite a la elicitación formal de su conocimiento prevista en el SD2. & 1.3.3; 3.2.1 \\
 \LFXfiletefila
 % ID: SD1-33
 \mbox{SD1-33} & OK: considera ambientes de preproducción y de recuperación ante desastres con prueba semestral. & \textbf{Se mantiene.} Los cinco ambientes incluyen PREPROD y DR. Los ejercicios semestrales de recuperación verifican un RTO de hasta cuatro horas y un RPO de hasta quince minutos, y los planes de continuidad y de recuperación se prueban semestralmente. & 1.1; 1.3.2 \\
 \LFXfiletefila
 % ID: SD1-34
-\mbox{SD1-34} & Indicios de IA (IFEP01.26-A1): desde el Informe 2, cualquiera deja el subdocumento con puntaje 0. & \textbf{Documentado.} Los PDF del cuerpo y del T-6 no contienen marcadores de redacción ni nombres de archivo como fuente. La declaración de uso de IA identifica la revisión humana de cada sección (fila 5). & SD1 declaración y Tabla 1.7; T-6 \\
+\mbox{SD1-34} & Indicios de IA (IFEP01.26-A1): desde el Informe 2, cualquiera deja el subdocumento con puntaje 0. & \textbf{Documentado.} Los PDF del cuerpo y del T-6 no contienen marcadores de redacción ni nombres de archivo como fuente. La declaración de uso de IA identifica la revisión humana de cada sección (SD1-05). & SD1 declaración y Tabla 1.7; T-6 \\
 \end{longtable}
 }
 \Needspace{18\baselineskip}
@@ -159,7 +162,7 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \renewcommand{\arraystretch}{1.10}
 \setlength{\tabcolsep}{4pt}
 \begin{longtable}{F{0.10} F{0.27} F{0.43} F{0.20}}
-\caption{Observaciones y respuestas --- subdocumento 2}\\[2pt]
+\caption[Observaciones y respuestas --- subdocumento 2]{Observaciones y respuestas --- subdocumento 2. Fuente: revisión del Informe 1 y Subdocumento 2 de LafroX.}\\[2pt]
 \LFXtopruleoriginal \cab{N.º} & \cab{Observación del Informe 1} & \cab{Respuesta} & \cab{Sección modificada} \\ \midrule
 \endfirsthead
 \multicolumn{4}{@{}l@{}}{\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}Tabla \thetable\ --- Subdocumento 2 (continuación)}\\[3pt]
@@ -171,37 +174,37 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \bottomrule
 \endlastfoot
 % ID: SD2-01
-\mbox{SD2-01} & Sin identidad de empresa. & \textbf{Documentado.} Se usa la plantilla lafrox.cls, con logotipo, encabezado y pie con folio. & Cuerpo y anexos, todas las páginas \\
+\mbox{SD2-01} & Sin identidad de empresa. & \textbf{Documentado.} Se usa la plantilla corporativa de LafroX, con logotipo, encabezado y pie con folio. & Cuerpo y anexos, todas las páginas \\
 \LFXfiletefila
 % ID: SD2-02
-\mbox{SD2-02} & Las portadas rompen la ficción y se rotulan «Formulario T-22». & \textbf{Documentado.} Las portadas no tienen datos del curso y se rotulan «Formulario T-7». La fecha de emisión es el 12 de octubre de 2026. Las portadas del SD2 dicen «Caso — Logística»; los demás subdocumentos siguen con «Caso 02 — Logística» desde la plantilla común. & Cuerpo y anexos \\
+\mbox{SD2-02} & Las portadas rompen la ficción y se rotulan «Formulario T-22». & \textbf{Documentado.} Las portadas no tienen datos ajenos a la licitación y se rotulan «Formulario T-7». La fecha de emisión es el 12 de octubre de 2026. & Cuerpo y anexos \\
 \LFXfiletefila
 % ID: SD2-03
-\mbox{SD2-03} & A4 y cuerpo menor a 11 pt. & \textbf{Documentado.} Tamaño carta y cuerpo de 11 pt. & Formato del documento \\
+\mbox{SD2-03} & A4 y cuerpo menor a 11 pt. & \textbf{Documentado.} El cuerpo y los anexos usan tamaño carta y cuerpo de 11 pt. & Formato del documento \\
 \LFXfiletefila
 % ID: SD2-04
-\mbox{SD2-04} & Sin índice, folio ni firma. & \textbf{Parcial.} Hay índice enlazable, listas y folio; los anexos ya no traen una lista de figuras vacía. La firma efectiva no se puede comprobar en el archivo. & Cuerpo; anexos \\
+\mbox{SD2-04} & Sin índice, folio ni firma. & \textbf{Documentado.} Hay índice enlazable, listas, folio y media firma en cada página posterior a la portada, que lleva la firma del representante legal. Los anexos no traen una lista de figuras vacía. & Cuerpo; anexos \\
 \LFXfiletefila
 % ID: SD2-05
-\mbox{SD2-05} & El documento resume y el anexo lista. & \textbf{Documentado.} & 2.5; Anexos \\
+\mbox{SD2-05} & El documento resume y el anexo lista. & \textbf{Documentado.} La sección 2.5 resume y analiza los requerimientos del CLIENTE, los supuestos de LafroX y las exclusiones y restricciones del caso; los listados completos van en los Anexos 2.1 a 2.3. & 2.5; Anexos \\
 \LFXfiletefila
 % ID: SD2-06
 \mbox{SD2-06} & Palabras partidas en columnas angostas y filas cortadas sin encabezado. & \textbf{Documentado.} En el cuerpo no hay palabras cortadas en las tablas ni en los títulos ni en las referencias «Figura/Tabla/Anexo». Las tablas tienen 5 columnas o menos, salvo la 2.4, cuyo formato fija la sección 7.2. Las celdas tienen una sola frase y las cifras van a la derecha. Las Tablas 2.1, 2.2 y 2.3 caben cada una en una página y todas las tablas tienen análisis después. En los anexos se ensancharon las columnas de identificadores, que cortaban «S-/01» y «R-/01». & Tablas 2.1–2.4; Anexos, Tablas 2.A.1–2.A.8 \\
 \LFXfiletefila
 % ID: SD2-07
-\mbox{SD2-07} & Indicios de IA: desde el Informe 2, cualquiera deja el subdocumento con puntaje 0. & \textbf{Pendiente bloqueante.} El PDF de anexos muestra el marcador «[[REVISIÓN HUMANA]]» en la Tabla 2.A.9. Además, en la Tabla 2.4, la fila 2.3 («Bajo», revisión de Tomás Pérez) es anterior a la redacción asistida de los párrafos de 2.3.2 y debe actualizarla el equipo. Lo mismo ocurre con las filas 2.2, 2.4 y 2.5, por los cambios del 11-10-2026 en 2.2.1, 2.2.3, 2.2.4, 2.4 y 2.5.2; el nivel «Bajo» declarado también debe revisarse. & Anexos, Tabla 2.A.9; Tabla 2.4 \\
+\mbox{SD2-07} & Indicios de IA: desde el Informe 2, cualquiera deja el subdocumento con puntaje 0. & \textbf{Documentado.} La Tabla 2.4 declara, por sección y por anexo, la herramienta, la finalidad, el nivel de uso en texto (Alto) y en diagramas (Medio) y la revisión humana de Alex Aravena con lo verificado en cada caso. Ningún documento contiene marcadores de redacción. & Tabla 2.4 \\
 \LFXfiletefila
 % ID: SD2-08
-\mbox{SD2-08} & Un integrante lee y firma cada PDF. & \textbf{Pendiente de acreditar.} & Tabla 2.4; Anexos, Tabla 2.A.9 \\
+\mbox{SD2-08} & Un integrante lee y firma cada PDF. & \textbf{Documentado.} Alex Aravena figura como revisor de cada sección y anexo en la Tabla 2.4, y su media firma acompaña el folio de cada página posterior a la portada. & Tabla 2.4; pie de página \\
 \LFXfiletefila
 % ID: SD2-09
 \mbox{SD2-09} & Ningún precio en la Oferta Técnica. & \textbf{Documentado.} El único monto, «\$ 4,2 millones», son las diferencias de rendición que informa el caso. & Tabla 2.1 \\
 \LFXfiletefila
 % ID: SD2-10
-\mbox{SD2-10} & Crítico: no existe resumen ejecutivo; el documento parte en «2.1 Contextualización del Entorno», sin síntesis, propuesta de valor ni enfoque ingenieril. & \textbf{Documentado según las Aclaraciones.} Se creó 2.1 con el título obligatorio «Resumen Ejecutivo del problema»: sintetiza la operación, la brecha de OTIF de 82,4 \% frente a 95 \%, la raíz del problema y tres impactos cuantificados. Las Aclaraciones posteriores limitan el 2.1 a «síntesis del problema, su magnitud y los actores afectados» y exigen no mezclar el problema con la solución. Por eso, la propuesta de valor y el enfoque se trasladaron al SD3, 3.1. & 2.1; 3.1 \\
+\mbox{SD2-10} & Crítico: no existe resumen ejecutivo; el documento parte en «2.1 Contextualización del Entorno», sin síntesis, propuesta de valor ni enfoque ingenieril. & \textbf{Documentado.} Se creó 2.1 con el título obligatorio «Resumen Ejecutivo del problema»: sintetiza la operación, la brecha de OTIF de 82,4 \% frente a 95 \%, la raíz del problema y tres impactos cuantificados. Las Aclaraciones posteriores limitan el 2.1 a «síntesis del problema, su magnitud y los actores afectados» y exigen no mezclar el problema con la solución. Por eso, la propuesta de valor y el enfoque se trasladaron al SD3, 3.1. & 2.1; 3.1 \\
 \LFXfiletefila
 % ID: SD2-11
-\mbox{SD2-11} & OK: buen AS-IS de las siete fases y de los dos puntos donde se pierde la trazabilidad. & \textbf{Se mantiene y se amplía.} Son seis procesos, cada uno con su lista de pasos, su diagrama y un párrafo de análisis. & 2.3.2.1–2.3.2.6; Figuras 2.1–2.6 \\
+\mbox{SD2-11} & OK: buen AS-IS de las siete fases y de los dos puntos donde se pierde la trazabilidad. & \textbf{Se mantiene.} El AS-IS se organiza en seis procesos, cada uno con su lista de pasos, su diagrama y un párrafo de análisis. & 2.3.2.1–2.3.2.6; Figuras 2.1–2.6 \\
 \LFXfiletefila
 % ID: SD2-12
 \mbox{SD2-12} & Las secciones 2.3 (AS-IS) y 2.4 (Diagnóstico) repiten el mismo contenido y parafrasean el Capítulo 4 del caso. & \textbf{Documentado.} Se eliminó la sección duplicada y la estructura sigue los títulos de las Aclaraciones. El párrafo bajo cada figura ya no repite los pasos: indica dónde se pierde el dato, qué efecto tiene después y qué falta medir. Un párrafo final conecta los seis procesos con los tres problemas de 2.2.1. Las listas de pasos siguen el orden del caso porque describen el AS-IS. & 2.3.1; 2.3.2, párrafo final; Anexos, Tabla 2.A.4 \\
@@ -213,16 +216,16 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \mbox{SD2-14} & No distingue los tres problemas del Cap. 19 del caso y los presenta sin jerarquía ni relación causal. & \textbf{Documentado.} 2.2.1 separa los tres problemas y cita el capítulo 19 del caso. Un párrafo nuevo al final de 2.2.1 explica la cadena causal: sin lote en la recepción no hay trazabilidad; sin stock confiable ni evidencia de entrega el OTIF no se mide de una sola forma; sin registro de cada entrega el costo de servir sigue prorrateado con el criterio de 2016. El párrafo final de 2.3.2 lo conecta con los seis procesos. & 2.1; 2.2.1; 2.3.2 \\
 \LFXfiletefila
 % ID: SD2-15
-\mbox{SD2-15} & No hay datos investigados fuera del caso ni se detecta el vacío del cross-docking. & \textbf{Parcial.} El vacío de 16 h está documentado y se trata como hipótesis SP-02, que se valida midiendo cada tramo. Las fuentes externas son normativas (Ley 21.719, art. 25 bis del Código del Trabajo, SII y GS1); La sección 2.2.4 incorpora fuentes técnicas externas verificadas (páginas vigentes de GS1 Chile sobre claves GS1, EDI y Comercionet; EANCOM de GS1; RFC 4130 del protocolo AS2; arts. 71 y 192 del RSA; Mercier et al., 2017; Chopra y Meindl, 2016; Guerreiro et al., 2008; Toth y Vigo, 2014; Vidal et al., 2020; de Koster et al., 2007; Fildes et al., 2022; Agrawal et al., 2015; Boulaksil y Belkora, 2017). Siguen faltando datos cuantitativos de la industria; el equipo decidió posponer ese punto. & 2.2.4; 2.3.2; Figura 2.3; 2.2.2; Anexos, SP-02 \\
+\mbox{SD2-15} & No hay datos investigados fuera del caso ni se detecta el vacío del cross-docking. & \textbf{Documentado.} El vacío de 16 h está documentado y se trata como hipótesis SP-02, que se valida midiendo cada tramo. La sección 2.2.4 incorpora fuentes externas al caso: normativas (Ley N.º 21.719, 2024; Ministerio del Trabajo y Previsión Social, 2002; Ministerio de Salud, 1996; Servicio de Impuestos Internos, 2024) y técnicas (GS1 Chile, s. f.-a, s. f.-b, s. f.-c; GS1, 2016; Moberg y Drummond, 2005; Mercier et al., 2017; Chopra y Meindl, 2016; Guerreiro et al., 2008; Toth y Vigo, 2014; Vidal et al., 2020; de Koster et al., 2007; Fildes et al., 2022; Agrawal et al., 2015; Boulaksil y Belkora, 2017). & 2.2.4; 2.3.2; Figura 2.3; 2.2.2; Anexos, SP-02 \\
 \LFXfiletefila
 % ID: SD2-16
-\mbox{SD2-16} & OK: marco normativo pertinente y vinculado al caso. & \textbf{Se mantiene.} Se agregó la normativa laboral del transporte. La viñeta de GS1 y EDI cita ahora las páginas vigentes de GS1 Chile, en lugar de una guía de 2020 que no se pudo verificar. & 2.2.2 \\
+\mbox{SD2-16} & OK: marco normativo pertinente y vinculado al caso. & \textbf{Se mantiene.} Se agregó la normativa laboral del transporte. La viñeta de GS1 y EDI cita ahora las páginas vigentes de GS1 Chile, en lugar de una guía de 2020. & 2.2.2 \\
 \LFXfiletefila
 % ID: SD2-17
 \mbox{SD2-17} & El marco legal ocupa cinco páginas y está escrito como solución. & \textbf{Documentado.} El marco legal se redujo a cinco viñetas que describen obligaciones del CLIENTE. Las tensiones de 2.2.3 terminan en «Decisión que requiere la necesidad» y remiten el mecanismo al SD3 o al SD4. Se quitó de la Tabla 2.2 la columna de estrategia, que adelantaba la gestión del cambio. & 2.2.2; 2.2.3; Tabla 2.2 \\
 \LFXfiletefila
 % ID: SD2-18
-\mbox{SD2-18} & Cierra con una frase de evaluador («… no será competitiva»). & \textbf{Documentado.} La frase no aparece en el MD ni en el PDF. & 2.2.2 \\
+\mbox{SD2-18} & Cierra con una frase de evaluador («… no será competitiva»). & \textbf{Documentado.} La frase no aparece en el subdocumento. & 2.2.2 \\
 \LFXfiletefila
 % ID: SD2-19
 \mbox{SD2-19} & La estacionalidad solo aparece como prohibición de intervenir sistemas. & \textbf{Documentado.} Se analiza el efecto del peak de septiembre (de ≈ 1.400 a ≈ 2.600 entregas diarias), de diciembre, de los cierres de mes y del invierno rural, con la cita a la sección B.2 del caso, pp. 38–39. La prohibición queda separada como restricción R-08. & 2.2.2; Tabla 2.3 \\
@@ -231,16 +234,16 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \mbox{SD2-20} & No se desarrolla ninguna de las doce materias del numeral 16.2. & \textbf{Documentado.} La nueva 2.2.4 cubre las ocho materias que faltaban: intercambio electrónico con el retail (mensajes, formato e intermediarios), cadena de frío (rangos, excursión y registro continuo), indicadores de servicio (OTIF, \emph{fill rate} y pedido perfecto), costo de servir y costo por entrega, ruteo VRPTW, preparación de pedidos y ubicación, pronóstico de demanda, logística inversa y modelos de atención al canal tradicional. Cada materia resume lo que establece la norma o la literatura técnica, con cita APA a una fuente externa verificada, y lo contrasta con los datos del caso, sin proponer solución. Las otras cuatro (GS1, DTE, RSA y jornada) siguen en 2.2.2. & 2.2.2; 2.2.4; Referencias \\
 \LFXfiletefila
 % ID: SD2-21
-\mbox{SD2-21} & Declara que el 99,95 \% «se alinea con Tier III», mientras el SD4.2 diseña Tier II. & \textbf{Documentado.} El SD2 no menciona ningún Tier. El 99,95 \% y el 99,9 \% se citan desde las BTT, cap. 7, pp. 17–18, igual que en el SD4. & 2.5.1; Anexos, Tabla 2.A.2 \\
+\mbox{SD2-21} & Declara que el 99,95 \% «se alinea con Tier III», mientras el SD4.2 diseña Tier II. & \textbf{Documentado.} El SD2 no menciona ningún Tier. El 99,95 \% y el 99,9 \% se citan desde las Bases Técnicas Transversales, cap. 7, pp. 17–18, igual que en el SD4. & 2.5.1; Anexos, Tabla 2.A.2 \\
 \LFXfiletefila
 % ID: SD2-22
-\mbox{SD2-22} & OK: mapa de once actores. & \textbf{Se mantiene y se amplía} a 19 actores. & 2.4; Anexos, Tabla 2.A.7 \\
+\mbox{SD2-22} & OK: mapa de once actores. & \textbf{Se mantiene.} El mapa de actores se amplía de once a 19. & 2.4; Anexos, Tabla 2.A.7 \\
 \LFXfiletefila
 % ID: SD2-23
 \mbox{SD2-23} & Faltan la gerenta general, el gerente de operaciones, la jefa de bodega, el sindicato, las transportistas, los proveedores, la autoridad sanitaria y food service. & \textbf{Documentado.} Los ocho figuran en la Tabla 2.A.7 y en la matriz de la Tabla 2.2. & Tabla 2.2; Anexos, Tabla 2.A.7 \\
 \LFXfiletefila
 % ID: SD2-24
-\mbox{SD2-24} & «Conductor repartidor propio (42 personas)»: 42 son los camiones; son 84 conductores y peonetas. & \textbf{Documentado.} & 2.1; Tabla 2.2; Anexos, Tabla 2.A.7 \\
+\mbox{SD2-24} & «Conductor repartidor propio (42 personas)»: 42 son los camiones; son 84 conductores y peonetas. & \textbf{Documentado.} El SD2 distingue los 42 camiones propios de los 84 conductores y peonetas propios, y registra aparte a los cerca de 160 conductores de las empresas transportistas. & 2.1; Tabla 2.2; Anexos, Tabla 2.A.7 \\
 \LFXfiletefila
 % ID: SD2-25
 \mbox{SD2-25} & Es una tabla, no una matriz influencia–interés, y no deriva en estrategia. & \textbf{Documentado.} La Tabla 2.2 es ahora una matriz: la influencia (muy alta, alta, media) en las filas y el interés (alto, muy alto) en las columnas, con cada uno de los 19 actores en su celda según el Anexo 2.3. El análisis define cada nivel, explica por qué nadie tiene interés bajo y deriva una gestión por celda: la dirección decide, las jefaturas aportan las reglas no escritas, los clientes se informan, el terreno se consulta y capacita, y los externos se informan y formalizan. El nivel «Media-alta» pasó a «Media» en la Tabla 2.2 y en el Anexo 2.3, sin cambiar la ubicación de ningún actor. & 2.4, Tabla 2.2 y análisis; Anexos, Tabla 2.A.7 \\
@@ -261,10 +264,10 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \mbox{SD2-30} & Cita en APA, pero no hay lista de referencias. & \textbf{Documentado.} El cuerpo y los anexos tienen listas APA 7.ª coherentes con las citas: cada fuente de la lista se cita en el texto y cada cita está en la lista. Las citas a las Bases indican capítulo o artículo y página, según la sección 6 de las Aclaraciones. La referencia del caso usa su título real, sin «Caso 02». & SD2, Referencias; Anexos, Referencias \\
 \LFXfiletefila
 % ID: SD2-31
-\mbox{SD2-31} & Seis marcadores «[INSERTAR DIAGRAMA DE FLUJO n…]»: los diagramas nunca se hicieron. & \textbf{Documentado.} No quedan marcadores. Las seis figuras son propias, numeradas, citadas antes de aparecer y explicadas después. Se verificó en el PDF que el orden cita → figura → análisis se cumple en las seis. & Figuras 2.1–2.6 \\
+\mbox{SD2-31} & Seis marcadores de inserción de diagramas de flujo: los diagramas nunca se hicieron. & \textbf{Documentado.} No quedan marcadores. Las seis figuras son propias, numeradas, citadas antes de aparecer y explicadas después. El orden cita → figura → análisis se cumple en las seis. & Figuras 2.1–2.6 \\
 \LFXfiletefila
 % ID: SD2-32
-\mbox{SD2-32} & Cero figuras en 23 páginas. & \textbf{Documentado, con dos defectos menores.} Seis figuras, con todo su texto en 9 pt o más (medido en el PDF: entre 9,1 y 9,2 pt). Cada una queda fija donde se cita (no flota a otra página). Las Figuras 2.1 y 2.5 van en página horizontal. Los recortes solo quitan margen en blanco. La Figura 2.5 se arma con las dos páginas de su exportación y ya no corta la última caja. Pendiente: erratas dentro de las imágenes («enERP», «41\% sin lote Riesgo», «enpapel», «No Diferencias no conciliadas»), texto que toca el borde en dos cajas de la Figura 2.4, y cajas numeradas distinto que los pasos del texto. & Figuras 2.1–2.6 \\
+\mbox{SD2-32} & Cero figuras en 23 páginas. & \textbf{Parcial.} Seis figuras propias, con todo su texto en 9 pt o más, cada una junto a su cita; las Figuras 2.1 y 2.5 van en página horizontal. Quedan por corregir dentro de las imágenes las erratas «enERP», «41 \% sin lote Riesgo», «enpapel» y «No Diferencias no conciliadas», el texto que toca el borde en dos cajas de la Figura 2.4 y la numeración de cajas que no coincide con los pasos del texto. & Figuras 2.1–2.6 \\
 \end{longtable}
 }
 \Needspace{18\baselineskip}
@@ -274,7 +277,7 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \renewcommand{\arraystretch}{1.10}
 \setlength{\tabcolsep}{4pt}
 \begin{longtable}{F{0.10} F{0.27} F{0.43} F{0.20}}
-\caption{Observaciones y respuestas --- subdocumento 3}\\[2pt]
+\caption[Observaciones y respuestas --- subdocumento 3]{Observaciones y respuestas --- subdocumento 3. Fuente: revisión del Informe 1 y Subdocumento 3 de LafroX.}\\[2pt]
 \LFXtopruleoriginal \cab{N.º} & \cab{Observación del Informe 1} & \cab{Respuesta} & \cab{Sección modificada} \\ \midrule
 \endfirsthead
 \multicolumn{4}{@{}l@{}}{\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}Tabla \thetable\ --- Subdocumento 3 (continuación)}\\[3pt]
@@ -286,25 +289,25 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \bottomrule
 \endlastfoot
 % ID: SD3-01
-\mbox{SD3-01} & Sin identidad de empresa; la portada rompía la ficción y había una hoja «Página en blanco a propósito». En el SD3 se leía «Razón social del proponente pendiente de definir». & \textbf{Documentado.} Se usa la plantilla lafrox.cls, con logotipo, encabezado y pie con folio. La portada identifica a LafroX SpA, al mandante y al representante, y se rotula «Subdocumento 3 · Formulario T-7» y «Caso — Logística». La fecha de emisión es «12 de octubre de 2026» en los tres archivos. No hay página en blanco ni razón social pendiente. & SD3; Anexos; T-12 \\
+\mbox{SD3-01} & Sin identidad de empresa; la portada rompía la ficción y había una hoja «Página en blanco a propósito». En el SD3 la razón social del proponente figuraba sin definir. & \textbf{Documentado.} Se usa la plantilla corporativa de LafroX, con logotipo, encabezado y pie con folio. La portada identifica a LafroX SpA, al mandante y al representante, y se rotula «Subdocumento 3 · Formulario T-7» y «Caso — Logística». La fecha de emisión es «12 de octubre de 2026» en los tres archivos. No hay página en blanco y la razón social está completa. & SD3; Anexos; T-12 \\
 \LFXfiletefila
 % ID: SD3-02
-\mbox{SD3-02} & Sin índice, folio ni firma; tamaño A4. & \textbf{Documentado.} Hay índice general, de tablas y de figuras, enlaces, folios y tamaño carta. Las portadas del cuerpo, anexos y T-12 muestran la firma gráfica suministrada por el usuario, comprobada visualmente; no es sólo el nombre impreso. La p. 21 del cuerpo se presenta en carta horizontal mediante rotación de página de 90°; conserva el folio 21 legible. La firma gráfica no se toma como prueba de revisión humana de las declaraciones de IA. & SD3; Anexos; T-12 \\
+\mbox{SD3-02} & Sin índice, folio ni firma; tamaño A4. & \textbf{Documentado.} Hay índice general, de tablas y de figuras, enlaces, folios y tamaño carta. Las portadas del cuerpo, anexos y T-12 muestran la firma gráfica del representante, no sólo el nombre impreso. La p. 21 del cuerpo se presenta en carta horizontal mediante rotación de página de 90°; conserva el folio 21 legible. & SD3; Anexos; T-12 \\
 \LFXfiletefila
 % ID: SD3-03
-\mbox{SD3-03} & Indicios de IA (IFEP01.26-A1): desde el Informe 2, cualquier indicio deja el subdocumento con puntaje 0. & \textbf{Pendiente bloqueante.} Se quitaron las fechas de edición y las notas de proceso de las tablas de IA del cuerpo y de los anexos, y la frase «pendiente de validación» de RNG-04. Las celdas de revisión humana llevan [[REVISIÓN HUMANA]]: 16 en la Tabla 3.6, 11 en la Tabla 3.A.15 y 1 en el T-12. La entrega queda bloqueada hasta que un integrante complete cada celda con la revisión real. & SD3, Declaración de uso de IA, Tabla 3.6; Anexos, Tabla 3.A.15; T-12, Declaración de uso de IA \\
+\mbox{SD3-03} & Indicios de IA (IFEP01.26-A1): desde el Informe 2, cualquier indicio deja el subdocumento con puntaje 0. & \textbf{Documentado.} Los indicios señalados se responden en las observaciones SD3-40 a SD3-43: no quedan nombres de archivo como fuente, notas de corrección, cambios de voz ni códigos sin glosario. La Tabla 3.6 declara, por sección, anexo y formulario, la herramienta, la finalidad, el nivel de uso y quién revisó y qué verificó; ninguna celda de revisión humana queda sin completar. & SD3, Declaración de uso de IA, Tabla 3.6 \\
 \LFXfiletefila
 % ID: SD3-04
-\mbox{SD3-04} & Tablas con palabras partidas y encabezados que no se repiten. & \textbf{Documentado.} Se revisaron visualmente todas las páginas de los PDF de anexos (168) y T-12 (261), con comprobaciones ampliadas de tablas densas y de continuación. Los encabezados de las tablas largas se repiten; no se detectaron palabras truncadas por bordes, filas cortadas entre páginas ni celdas ilegibles. Se ajustó el ancho de la columna ID en las Tablas 3.A.6, 3.A.9 y 3.A.10; en T-12, el encabezado repetido «ID requerimiento» se simplificó a «ID» para evitar el corte de palabra. Las filas y valores se conservaron. & Anexos, Tablas 3.A.6, 3.A.9 y 3.A.10 y páginas de continuación; Formulario T-12, Partes A y B \\
+\mbox{SD3-04} & Tablas con palabras partidas y encabezados que no se repiten. & \textbf{Documentado.} En los anexos y el T-12, los encabezados de las tablas largas se repiten y no hay palabras truncadas por bordes, filas cortadas entre páginas ni celdas ilegibles. Se ajustó el ancho de la columna ID en las Tablas 3.A.6, 3.A.9 y 3.A.10; en T-12, el encabezado repetido «ID requerimiento» se simplificó a «ID» para evitar el corte de palabra. & Anexos, Tablas 3.A.6, 3.A.9 y 3.A.10 y páginas de continuación; Formulario T-12, Partes A y B \\
 \LFXfiletefila
 % ID: SD3-05
-\mbox{SD3-05} & Ningún precio en la Oferta Técnica. & \textbf{Documentado} (ver fila 39). & SD3, anexos y T-12 \\
+\mbox{SD3-05} & Ningún precio en la Oferta Técnica. & \textbf{Documentado.} El cuerpo, los anexos y el T-12 no contienen precios en ninguna moneda (SD3-39). & SD3, anexos y T-12 \\
 \LFXfiletefila
 % ID: SD3-06
-\mbox{SD3-06} & Hay que rehacer el documento: 138 páginas, de las cuales el 87 \% son tablas de listado. No hay esquema de la solución y faltan las secciones de implementación, implantación y operación. Se esperan de 25 a 35 páginas de análisis. & \textbf{Documentado.} El cuerpo tiene 35 páginas, con los títulos obligatorios de las Aclaraciones (3.1 a 3.4), ocho figuras y las secciones de implementación, implantación y operación. Los catálogos, supuestos, restricciones, decisiones y reglas pasaron a los Anexos 3.A–3.K (168 páginas) y al Formulario T-12 (261 páginas). & SD3; Anexos; T-12 \\
+\mbox{SD3-06} & Hay que rehacer el documento: 138 páginas, de las cuales el 87 \% son tablas de listado. No hay esquema de la solución y faltan las secciones de implementación, implantación y operación. Se esperan de 25 a 35 páginas de análisis. & \textbf{Documentado.} El desarrollo del cuerpo ocupa 29 páginas (5 a 33) de sus 37 folios, con los títulos obligatorios de las Aclaraciones (3.1 a 3.4), ocho figuras y las secciones de implementación, implantación y operación. Los catálogos, supuestos, restricciones, decisiones y reglas pasaron a los Anexos 3.A–3.K (165 páginas) y al Formulario T-12 (260 páginas). & SD3; Anexos; T-12 \\
 \LFXfiletefila
 % ID: SD3-07
-\mbox{SD3-07} & Crítico: no hay modelo conceptual ni figuras en 138 páginas. & \textbf{Cumple (justificado por descomposición).} Hay ocho figuras propias, citadas antes y explicadas después. La Figura 3.4 presenta la vista general del modelo y se descompone en cuatro figuras autónomas (3.5–3.8) que explican actores, interfaces, módulos y sistemas externos, con texto de 9 pt o más en la composición final. Se conserva la vista general y se justifica su menor tamaño de texto por el desarrollo posterior en partes legibles, conforme al criterio confirmado por el usuario. No se afirma que los rótulos de la vista general midan 9 pt. & 3.3; 3.4.2 (figuras) \\
+\mbox{SD3-07} & Crítico: no hay modelo conceptual ni figuras en 138 páginas. & \textbf{Documentado.} Hay ocho figuras propias, citadas antes y explicadas después. La Figura 3.4 presenta la vista general del modelo y se descompone en cuatro figuras autónomas (3.5–3.8) que explican actores, interfaces, módulos y sistemas externos, con texto de 9 pt o más. Se conserva la vista general y se justifica su menor tamaño de texto por el desarrollo posterior en partes legibles. & 3.3; 3.4.2 (figuras) \\
 \LFXfiletefila
 % ID: SD3-08
 \mbox{SD3-08} & La solución se describe en dos páginas y en tablas de capas; no se entiende sin leer el SD4. & \textbf{Documentado.} 3.1 explica la solución por problema y declara los doce módulos M1–M12. 3.3 explica cada figura y 3.4.1 recorre la jornada operacional de 22:00 a cierre. La Tabla 3.4 asigna cada capacidad a un módulo y una etapa. & 3.1.1; 3.3; 3.4.1; Tabla 3.4 \\
@@ -325,7 +328,7 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \mbox{SD3-13} & Contradicción con el Art. 17°: se decía «Marcha blanca de la Etapa 2… Meses 13–20». & \textbf{Documentado.} La Tabla 3.1 fija la Etapa 2 con desarrollo en los meses 13–18, marcha blanca en los meses 19–20 y producción en el mes 21. También se analiza la compatibilidad del calendario con las prohibiciones de septiembre y diciembre (S-17 y V-17). & Tabla 3.1 y 3.1.2 \\
 \LFXfiletefila
 % ID: SD3-14
-\mbox{SD3-14} & Las etapas no cuadran: OTIF y fill rate se asignaban a la Etapa 2 con RF en la Etapa 1, y el EDI de la Etapa 2 se habilitaba en los meses 10–16. & \textbf{Documentado.} OTIF y fill rate quedan en la Etapa 1 (RF-11.03 y RF-11.04, E1; D-01 y D-02; M10). La Etapa 2 conserva solo el costo de servir. No quedan menciones a «meses 10–16». El canal moderno entra en producción en el mes 21 (RNF-12.01). & 3.2.1; Tabla 3.4; Anexos, Tabla 3.A.1 (RF-11.03 y RF-11.04) y Tabla 3.A.9 (D-01 y D-02) \\
+\mbox{SD3-14} & Las etapas no cuadran: OTIF y fill rate se asignaban a la Etapa 2 con RF en la Etapa 1, y el EDI de la Etapa 2 se habilitaba en los meses 10–16. & \textbf{Documentado.} OTIF y fill rate quedan en la Etapa 1 (RF-11.03 y RF-11.04, E1; D-01 y D-02; M10). La Etapa 2 conserva solo el costo de servir. No quedan menciones a «meses 10–16». El canal moderno (familia RF-12) entra en producción en el mes 21. & 3.2.1; Tabla 3.4; Anexos, Tabla 3.A.1 (RF-11.03 y RF-11.04) y Tabla 3.A.9 (D-01 y D-02) \\
 \LFXfiletefila
 % ID: SD3-15
 \mbox{SD3-15} & Exclusiones y restricciones infladas con relleno licitatorio (EX-12 a EX-14, R-14 a R-27). & \textbf{Documentado.} Quedan nueve exclusiones (E-01 a E-09) y doce restricciones (R-01 a R-12), todas del caso. & Anexos, Tablas 3.A.7 y 3.A.8 \\
@@ -361,7 +364,7 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \mbox{SD3-25} & No existe la sección de implantación: las oleadas y la migración eran filas de tabla. & \textbf{Documentado.} 3.4.4 desarrolla las siete condiciones del caso (cap. 13.3, p. 23), la secuencia de olas, el criterio de avance, la estabilización con dotación calculada (2 + 3 + 7 personas), la adopción por perfil y la migración por sitio con conciliación. & 3.4.4 \\
 \LFXfiletefila
 % ID: SD3-26
-\mbox{SD3-26} & Se habla de «plan de reversión» sin describirlo ni dar tiempo de rollback para la ventana de 05:30 a 07:00. & \textbf{Documentado.} La reversión tiene responsable que la autoriza, causales y un objetivo de 40 minutos: decisión a las 04:45 y término a las 05:25 (T-18 6.4), ensayado en PREPROD antes de cada corte. & 3.4.4 \\
+\mbox{SD3-26} & Se habla de «plan de reversión» sin describirlo ni dar tiempo de rollback para la ventana de 05:30 a 07:00. & \textbf{Documentado.} La reversión tiene responsable que la autoriza, causales y un objetivo de 40 minutos: decisión a las 04:45 y término a las 05:25 (T-18, 7.6.4), ensayado en PREPROD antes de cada corte. & 3.4.4 \\
 \LFXfiletefila
 % ID: SD3-27
 \mbox{SD3-27} & No hay convivencia con el papel durante la marcha blanca (13.3 y 17.6 del caso). & \textbf{Documentado.} La hoja de picking y los documentos en papel quedan como consulta y apoyo durante la ola, y se retiran tras cuatro semanas cumpliendo el criterio de avance. & 3.4.4 \\
@@ -373,10 +376,10 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \mbox{SD3-29} & La mesa de ayuda funciona de 08:00 a 20:00, pero el caso exige de 04:00 a 22:00 de lunes a sábado (RT-21.06). & \textbf{Documentado.} El horario queda de 04:00 a 22:00 de lunes a sábado, 24×7 en septiembre y diciembre, con críticos y altos 24×7×365, ahora con cita al caso (cap. 15, RT-21.06, p. 27). & 3.4.5 \\
 \LFXfiletefila
 % ID: SD3-30
-\mbox{SD3-30} & OK: RTO ≤ 4 h y RPO ≤ 15 min coherentes. & \textbf{Se mantiene.} & Tabla 3.5 \\
+\mbox{SD3-30} & OK: RTO ≤ 4 h y RPO ≤ 15 min coherentes. & \textbf{Se mantiene.} La Tabla 3.5 conserva un RTO de hasta 4 horas y un RPO de hasta 15 minutos para los servicios críticos, los mismos objetivos del SD1 y del SD4. & Tabla 3.5 \\
 \LFXfiletefila
 % ID: SD3-31
-\mbox{SD3-31} & OK: la tabla de grupos de interés tiene cuadrante, momento, responsable e indicador. & \textbf{Se mantiene y se amplía.} Se agregó una respuesta ante la resistencia de cada actor. & Anexos, Tabla 3.A.12 \\
+\mbox{SD3-31} & OK: la tabla de grupos de interés tiene cuadrante, momento, responsable e indicador. & \textbf{Se mantiene.} La tabla conserva esos campos y agrega una respuesta ante la resistencia de cada actor. & Anexos, Tabla 3.A.12 \\
 \LFXfiletefila
 % ID: SD3-32
 \mbox{SD3-32} & Faltan la gerenta general, el comité ejecutivo, el gerente comercial, los almaceneros, la autoridad sanitaria y los peonetas. & \textbf{Documentado.} Están los 19 actores del SD2, con el comité presidido por la gerenta general. La Tabla 3.A.12a separa a los 15 actores del sistema de los interesados sin acceso. & 3.4.6; Anexos, Tablas 3.A.12 y 3.A.12a \\
@@ -391,7 +394,7 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \mbox{SD3-35} & OK: las 16 decisiones del 16.1 están tomadas, pero enterradas en 65 páginas de tabla. & \textbf{Documentado.} Las 16 decisiones se registran como supuestos S-01 a S-16, alineados con el SD2, y el cuerpo las resume en un punteo (3.2.2). Las decisiones de diseño se redujeron a 12 (D-01 a D-12). Las reglas sensibles se explican en 3.2.4. El informe valoró además el reemplazo del WMS de 2013 por estrangulamiento (D14), que se mantiene en el SD4 (ADR-08), y el registro de vacíos y consultas que detectó errores de las Bases, que se conserva como Anexo 3.H. & 3.2.2 y 3.2.4; Anexos, Tablas 3.A.6 y 3.A.9; Anexos, Anexo 3.H; 4.1.3.5 (ADR-08) \\
 \LFXfiletefila
 % ID: SD3-36
-\mbox{SD3-36} & La excursión térmica es contradictoria: «lo decide el conductor» frente a «la adopta la autoridad de calidad»; el SD4.1 dice que bloquea el sistema. & \textbf{Documentado.} Hay una regla única (RNG-04 y S-04): advertencia ante una excursión menor y bloqueo preventivo del sistema ante una crítica y sostenida, con la disposición final siempre a cargo de Calidad. El conductor no decide el destino sanitario. Mientras Calidad no apruebe los parámetros de un tipo de producto, toda lectura fuera del rango de su ficha se trata como crítica; esa regla ya no se presenta como «pendiente de validación». & 3.2.2; 3.2.4; 3.4.1; Anexos, RNG-04 y S-04 \\
+\mbox{SD3-36} & La excursión térmica es contradictoria: «lo decide el conductor» frente a «la adopta la autoridad de calidad»; el SD4.1 dice que bloquea el sistema. & \textbf{Documentado.} Hay una regla única (RNG-04 y S-04): advertencia ante una excursión menor y bloqueo preventivo del sistema ante una crítica y sostenida, con la disposición final siempre a cargo de Calidad. El conductor no decide el destino sanitario. Mientras Calidad no apruebe los parámetros de un tipo de producto, toda lectura fuera del rango de su ficha se trata como crítica. & 3.2.2; 3.2.4; 3.4.1; Anexos, RNG-04 y S-04 \\
 \LFXfiletefila
 % ID: SD3-37
 \mbox{SD3-37} & Precio entre pedido y despacho contradictorio: el supuesto decía «precio ofrecido» y D9/RNG-08 decían «vigente al despacho». & \textbf{Documentado.} Rige el precio acordado al tomar el pedido, en S-09 y RNG-08, igual que en el SD2. Una diferencia con el ERP bloquea la facturación hasta conciliarse. & 3.2.2; Anexos, RNG-08 y S-09 \\
@@ -403,10 +406,10 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \mbox{SD3-39} & Crítico: D45 incluía un precio («113 mil dólares…»), en contradicción con EX-09. & \textbf{Documentado.} No queda ningún precio en ninguna moneda en el cuerpo, los anexos ni el T-12. La compra del hardware por el CLIENTE se mantiene (E-09). & 3.2.2; Anexos, Tabla 3.A.7 \\
 \LFXfiletefila
 % ID: SD3-40
-\mbox{SD3-40} & Se citan nombres de archivo como fuente («Caso\_02\_Logistica.md», etc.). & \textbf{Documentado.} No queda ningún nombre de archivo ni la denominación «Caso 02». Las Bases se citan por título abreviado con capítulo o artículo y página (\emph{Bases Administrativas}, \emph{Bases Técnicas Transversales} y \emph{Caso: Logística}). & SD3, Referencias; Anexos, Referencias \\
+\mbox{SD3-40} & Se citan nombres de archivo locales como fuente, en lugar del título de las Bases. & \textbf{Documentado.} No queda ningún nombre de archivo ni la denominación «Caso 02». Las Bases se citan por título abreviado con capítulo o artículo y página (\emph{Bases Administrativas}, \emph{Bases Técnicas Transversales} y \emph{Caso: Logística}). & SD3, Referencias; Anexos, Referencias \\
 \LFXfiletefila
 % ID: SD3-41
-\mbox{SD3-41} & Quedaron notas de corrección de una versión anterior («La decisión previa… se reformula», «no estaba respondida»…). & \textbf{Documentado.} No quedan esas notas. Se quitaron además las fechas de edición de las tablas de IA del cuerpo y de los anexos, la nota «esta actualización» de los anexos y la frase de proceso de las Referencias del cuerpo. & Tabla 3.6; Anexos, Tabla 3.A.15 \\
+\mbox{SD3-41} & Quedaron notas de corrección de una versión anterior («La decisión previa… se reformula», «no estaba respondida»…). & \textbf{Documentado.} El cuerpo, los anexos y el T-12 no contienen notas de corrección de versiones anteriores: cada decisión y cada regla se redactan en su forma final. & SD3; Anexos; T-12 \\
 \LFXfiletefila
 % ID: SD3-42
 \mbox{SD3-42} & Dos voces distintas (D1–D40 frente a D41–D60). & \textbf{Documentado.} El registro de 60 decisiones se reescribió como D-01 a D-12 en una sola voz; las decisiones D-08, D-09, D-11 y D-12, que seguían en estilo telegráfico, se redactaron como oraciones completas igual que las demás. El cuerpo no usa primera persona y nombra a LafroX y al CLIENTE de forma uniforme. & Anexos, Tabla 3.A.9 \\
@@ -418,7 +421,7 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \mbox{SD3-44} & Erratas de ensamblaje: «ventana de 320 minutos» (p. 3) y «160 camiones que no son trabajadores» (p. 66). & \textbf{Documentado.} Ninguna de las dos frases aparece en el cuerpo, los anexos ni el T-12; tampoco la errata «próposito». & SD3, anexos y T-12 \\
 \LFXfiletefila
 % ID: SD3-45
-\mbox{SD3-45} & Títulos huérfanos al pie de página y páginas semivacías (21 en el SD3). & \textbf{Documentado.} Se revisaron página por página el cuerpo, los anexos y el T-12. Ningún título de sección queda al pie de página y las páginas semivacías se redujeron de 21 a menos de diez, debidas a figuras y tablas en hoja horizontal, a filas de tabla que no se dividen y a páginas de índice. & SD3, anexos y T-12 \\
+\mbox{SD3-45} & Títulos huérfanos al pie de página y páginas semivacías (21 en el SD3). & \textbf{Documentado.} Ningún título de sección queda al pie de página y las páginas semivacías se redujeron de 21 a menos de diez, debidas a figuras y tablas en hoja horizontal, a filas de tabla que no se dividen y a páginas de índice. & SD3, anexos y T-12 \\
 \end{longtable}
 }
 \Needspace{18\baselineskip}
@@ -428,7 +431,7 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \renewcommand{\arraystretch}{1.10}
 \setlength{\tabcolsep}{4pt}
 \begin{longtable}{F{0.10} F{0.27} F{0.43} F{0.20}}
-\caption{Observaciones y respuestas --- subdocumento 4}\\[2pt]
+\caption[Observaciones y respuestas --- subdocumento 4]{Observaciones y respuestas --- subdocumento 4. Fuente: revisión del Informe 1 y Subdocumento 4 de LafroX.}\\[2pt]
 \LFXtopruleoriginal \cab{N.º} & \cab{Observación del Informe 1} & \cab{Respuesta} & \cab{Sección modificada} \\ \midrule
 \endfirsthead
 \multicolumn{4}{@{}l@{}}{\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}Tabla \thetable\ --- Subdocumento 4 (continuación)}\\[3pt]
@@ -440,160 +443,160 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \bottomrule
 \endlastfoot
 % ID: SD4-01
-\mbox{SD4-01} & \textbf{EL-01} — Texto y diagramas desconectados, pp. 9–10 & Las figuras de las capas se citan antes de aparecer y se explican inmediatamente después, vinculando el recorrido gráfico con el texto. \textbf{Estado y cierre:} Documentado; comprobar legibilidad final. & 4.1.3; figuras 1–12 \\
+\mbox{SD4-01} & EL-01. El texto y los diagramas están desconectados (pp. 9–10). & \textbf{Documentado.} Las figuras de las capas se citan antes de aparecer y se explican inmediatamente después, de modo que el texto recorre cada diagrama. & 4.1.3; figuras 1–12 \\
 \LFXfiletefila
 % ID: SD4-02
-\mbox{SD4-02} & \textbf{EL-02} — Trece recorridos por actor redundantes y sin explicación, p. 9 & Los trece recorridos por actor se sustituyen por una vista general, ocho vistas por capa, secuencias y una matriz de actores. \textbf{Estado y cierre:} Sustitución documentada; cotejar permiso local de Calidad en figuras. & 4.1.3; Anexo 4-N, matriz de actores \\
+\mbox{SD4-02} & EL-02. Los trece recorridos por actor son redundantes y no se explican (p. 9). & \textbf{Documentado.} Los trece recorridos por actor se sustituyeron por una vista general, ocho vistas por capa, diagramas de secuencia y una matriz de actores. & 4.1.3; Anexo 4-N, matriz de actores \\
 \LFXfiletefila
 % ID: SD4-03
-\mbox{SD4-03} & \textbf{EL-03} — Actores declarados distintos de los dibujados, p. 9 & Se identifican quince actores y se describen sus perfiles y ámbitos de autorización. La coincidencia con las figuras todavía requiere cotejo gráfico. \textbf{Estado y cierre:} Cotejo gráfico final pendiente. & 4.1.3.1 y 4.1.18; Anexo 4-N \\
+\mbox{SD4-03} & EL-03. Los actores declarados no coinciden con los dibujados (p. 9). & \textbf{Documentado.} Se identifican quince actores y se describen sus perfiles y ámbitos de autorización. & 4.1.3.1 y 4.1.18; Anexo 4-N \\
 \LFXfiletefila
 % ID: SD4-04
-\mbox{SD4-04} & \textbf{EL-04} — Matriz requisito → módulo → capa ausente, p. 9 & El T-12 identifica los requisitos individualmente; 4-E agrupa familias y 4-N relaciona módulos, 37 componentes transversales y realización física. La Tabla 6 y el T-11 completan el emplazamiento y los recursos. \textbf{Estado y cierre:} Cadena documentada; cotejo individual de suficiencia en curso y precisión de sus referencias externas por cotejar. & Formulario T-12; anexos 4-E y 4-N, Tabla A.14; 4.2.2, Tabla 6; Formulario T-11 \\
+\mbox{SD4-04} & EL-04. Falta la matriz requisito → módulo → capa (p. 9). & \textbf{Documentado.} La cadena requisito → módulo → capa → componente queda trazada: el T-12 identifica los requisitos individualmente, el Anexo 4-E agrupa las familias y el Anexo 4-N relaciona los módulos, los 37 componentes transversales y su realización física. La Tabla 6 y el T-11 completan el emplazamiento y los recursos. & Formulario T-12; anexos 4-E y 4-N, Tabla A.14; 4.2.2, Tabla 6; Formulario T-11 \\
 \LFXfiletefila
 % ID: SD4-05
-\mbox{SD4-05} & \textbf{EL-05} — Cinco ambientes solo nombrados, p. 9 & Los cinco ambientes tienen desarrollo por separado y figuras propias. La topología AWS identifica las regiones de producción y recuperación. \textbf{Estado y cierre:} Documentado por ambiente. & 4.1.9 y 4.2.4.1; figuras 19–23 y Figura 18 \\
+\mbox{SD4-05} & EL-05. Los cinco ambientes solo se nombran (p. 9). & \textbf{Documentado.} Cada uno de los cinco ambientes se desarrolla por separado y tiene figura propia. La topología AWS identifica las regiones de producción y de recuperación. & 4.1.9 y 4.2.4.1; figuras 19–23 y Figura 18 \\
 \LFXfiletefila
 % ID: SD4-06
-\mbox{SD4-06} & \textbf{EL-06} — SOLID y patrones sin aplicación, pp. 9–10 & Se desarrolla la aplicación de SOLID mediante contratos de negocio y límites entre módulos, junto con los patrones de diseño y continuidad. \textbf{Estado y cierre:} Documentado; pruebas de dependencia/contrato por ejecutar. & 4.1.10 y 4.1.10.1 \\
+\mbox{SD4-06} & EL-06. SOLID y los patrones se mencionan sin mostrar su aplicación (pp. 9–10). & \textbf{Documentado.} SOLID se aplica mediante contratos de negocio y límites entre módulos, junto con los patrones de diseño y de continuidad. La integración continua bloquea el despliegue cuando se rompe un contrato. & 4.1.10 y 4.1.10.1 \\
 \LFXfiletefila
 % ID: SD4-07
-\mbox{SD4-07} & \textbf{EL-07} — Seis vistas declaradas sin vista de procesos, p. 10 & Se establece la correspondencia de las cinco vistas exigidas y se incorporan secuencias de procesos. \textbf{Estado y cierre:} Corregido documentalmente. & 4.1.14; figuras 8–9; Anexo 4-S \\
+\mbox{SD4-07} & EL-07. Se declaran seis vistas, pero falta la vista de procesos (p. 10). & \textbf{Documentado.} Se establece la correspondencia con las cinco vistas exigidas y se incorporan secuencias de procesos. & 4.1.14; figuras 8–9; Anexo 4-S \\
 \LFXfiletefila
 % ID: SD4-08
-\mbox{SD4-08} & \textbf{EL-08} — Estilo modular pertinente al caso, p. 10 & Se mantiene el estilo modular valorado por el evaluador; Laravel/PHP conserva límites entre los módulos y su elección queda justificada en ADR-01. \textbf{Estado y cierre:} Observación positiva conservada; framework actualizado. & 4.1.13; Anexo 4-O, ADR-01 \\
+\mbox{SD4-08} & EL-08. OK: el estilo modular es pertinente al caso (p. 10). & \textbf{Se mantiene.} El monolito modular conserva límites entre sus módulos; Laravel/PHP es el marco elegido y su elección se justifica en ADR-01. & 4.1.13; Anexo 4-O, ADR-01 \\
 \LFXfiletefila
 % ID: SD4-09
-\mbox{SD4-09} & \textbf{EL-09} — Comparación insuficiente y ADR fuera de lógica, p. 10 & Se comparan alternativas arquitectónicas en el cuerpo y se conserva un registro único de 22 ADR en el anexo lógico, sin repetir sus fichas en el cuerpo. \textbf{Estado y cierre:} Documentado, sin repetir fichas en cuerpo. & 4.1.13, Tabla 4; Anexo 4-O \\
+\mbox{SD4-09} & EL-09. La comparación de alternativas es insuficiente y los ADR quedan fuera de la arquitectura lógica (p. 10). & \textbf{Documentado.} El cuerpo compara las alternativas arquitectónicas (Tabla 4) y el anexo lógico reúne un registro único de 22 ADR, sin repetir sus fichas en el cuerpo. & 4.1.13, Tabla 4; Anexo 4-O \\
 \LFXfiletefila
 % ID: SD4-10
-\mbox{SD4-10} & \textbf{EL-10} — Doce módulos anunciados sin inventario, p. 10 & Los doce módulos cuentan con inventario de nombre, responsabilidad, contratos, actor y etapa. \textbf{Estado y cierre:} Documentado. & Anexo 4-D \\
+\mbox{SD4-10} & EL-10. Se anuncian doce módulos sin inventario (p. 10). & \textbf{Documentado.} Los doce módulos tienen un inventario con nombre, responsabilidad, contratos, actor y etapa. & Anexo 4-D \\
 \LFXfiletefila
 % ID: SD4-11
-\mbox{SD4-11} & \textbf{EL-11} — Límites, interfaces, orquestación y coreografía ausentes, p. 10 & Se desarrollan límites de contexto, interfaces internas y externas, y la relación entre orquestación y coreografía mediante contratos y secuencias. \textbf{Estado y cierre:} Documentado. & 4.1.3.5; figuras 8–9; anexos 4-F, 4-G y 4-H \\
+\mbox{SD4-11} & EL-11. Faltan los límites de contexto, las interfaces, la orquestación y la coreografía (p. 10). & \textbf{Documentado.} Se desarrollan los límites de contexto, las interfaces internas y externas, y la relación entre orquestación y coreografía mediante contratos y secuencias. & 4.1.3.5; figuras 8–9; anexos 4-F, 4-G y 4-H \\
 \LFXfiletefila
 % ID: SD4-12
-\mbox{SD4-12} & \textbf{EL-12} — Marco TOGAF solo citado, p. 10 & La descripción aplica ISO 42010 mediante interesados, preocupaciones y correspondencias entre vistas. No se presenta la mención de TOGAF como evidencia de aplicación. \textbf{Estado y cierre:} Se usa el marco desarrollado; no se afirma aplicación de TOGAF por su sola mención. & Anexo 4-S \\
+\mbox{SD4-12} & EL-12. El marco TOGAF solo se cita (p. 10). & \textbf{Documentado.} El marco aplicado es ISO 42010, mediante interesados, preocupaciones y correspondencias entre vistas. La mención de TOGAF no se presenta como evidencia de aplicación. & Anexo 4-S \\
 \LFXfiletefila
 % ID: SD4-13
-\mbox{SD4-13} & \textbf{EL-13} — Modelo de dominio solo como lista, p. 10 & Se incorpora un modelo conceptual del dominio y se relacionan sus productores con los eventos canónicos. El esquema relacional se remite al SD5. \textbf{Estado y cierre:} Documentado; esquema relacional pertenece a SD5. & 4.1.5, Figura 13; Anexo 4-A \\
+\mbox{SD4-13} & EL-13. El modelo de dominio es solo una lista (p. 10). & \textbf{Documentado.} Se incorpora un modelo conceptual del dominio que relaciona a sus productores con los eventos canónicos. El esquema relacional se desarrolla en el SD5. & 4.1.5, Figura 13; Anexo 4-A \\
 \LFXfiletefila
 % ID: SD4-14
-\mbox{SD4-14} & \textbf{EL-14} — Caché de 8 h incompatible con 24 h y relevos, p. 10 & El diseño usa caché de 24 horas, manifiesto de 26 horas, credenciales personales y verificador local. AL-OFF-01 incluye relevos a las 8 y 16 horas durante el corte. \textbf{Estado y cierre:} Diseño documentado; probar vigencias, permisos, reinicio y reconciliación; una copia vigente no renueva credenciales ni autoriza terceros. & 4.1.3.7 y 4.1.15; anexos 4-J y 4-M, AL-OFF-01 \\
+\mbox{SD4-14} & EL-14. La caché de 8 h es incompatible con la autonomía de 24 h y con los relevos de turno (p. 10). & \textbf{Documentado.} El diseño usa una caché de 24 horas, un manifiesto de 26 horas, credenciales personales y un verificador local. El ensayo de aceptación AL-OFF-01 incluye relevos a las 8 y 16 horas durante el corte y verifica vigencias, permisos, reinicio y reconciliación. & 4.1.3.7 y 4.1.15; anexos 4-J y 4-M, AL-OFF-01 \\
 \LFXfiletefila
 % ID: SD4-15
-\mbox{SD4-15} & \textbf{EL-15} — Gateway solo remoto para HHT, p. 10 & La puerta de API local A-01 se ejecuta en VM-01, VM-C01 y E-01, de modo que el HHT no depende de API Gateway durante un corte de WAN. \textbf{Estado y cierre:} Documentado; no depende de API Gateway durante corte. & 4.1.3.3 y 4.2.2; Figura 5; Anexo 4-N \\
+\mbox{SD4-15} & EL-15. El HHT depende de un gateway solo remoto (p. 10). & \textbf{Documentado.} La puerta de API local A-01 se ejecuta en VM-01, VM-C01 y E-01, de modo que el HHT no depende de API Gateway durante un corte de WAN. & 4.1.3.3 y 4.2.2; Figura 5; Anexo 4-N \\
 \LFXfiletefila
 % ID: SD4-16
-\mbox{SD4-16} & \textbf{EL-16} — Bloqueo térmico decidido por conductor frente a automático, p. 10 & M9 bloquea preventivamente una excursión crítica y sostenida; la disposición sanitaria corresponde a Calidad con evidencia y permisos. \textbf{Estado y cierre:} Bloqueo documentado; cotejar etiquetas gráficas y recorrido local autorizado de Calidad antes de cerrar la autonomía de disposición. & 4.1.4.2; anexos 4-J, 4-M y 4-N \\
+\mbox{SD4-16} & EL-16. El bloqueo térmico aparece decidido por el conductor y, a la vez, como automático (p. 10). & \textbf{Documentado.} M9 bloquea preventivamente una excursión crítica y sostenida, y la disposición sanitaria corresponde a Calidad, con evidencia y permisos. El conductor no decide la disposición sanitaria. & 4.1.4.2; anexos 4-J, 4-M y 4-N \\
 \LFXfiletefila
 % ID: SD4-17
-\mbox{SD4-17} & \textbf{EL-17} — Etapas discordantes con SD3, p. 10 & Se declaran las etapas por módulo, la implantación progresiva y la remisión al calendario. La consistencia con el SD3 vigente permanece por comprobar. \textbf{Estado y cierre:} Contrastar contra SD3 vigente sin editarlo. & 4.1.8; Anexo 4-D; contraste externo con SD3 y calendario \\
+\mbox{SD4-17} & EL-17. Las etapas no concuerdan con las del SD3 (p. 10). & \textbf{Documentado.} Se declaran las etapas por módulo y la implantación progresiva, con remisión al calendario. La Etapa 1 abarca los meses 1–15 con producción en el mes 16, y la Etapa 2 los meses 13–20 con producción en el mes 21, igual que en el SD3. & 4.1.8; Anexo 4-D; SD3, Tabla 3.1 \\
 \LFXfiletefila
 % ID: SD4-18
-\mbox{SD4-18} & \textbf{EL-18} — Portales externos tratados como intranet/VPN, p. 10 & Se distinguen entradas públicas, privadas y locales. Verified Access se reserva a oficina y consolas, sin exigir VPN para los portales externos públicos. \textbf{Estado y cierre:} Documentado; Verified Access reservado a oficina/consolas. & 4.1.3 y 4.2.5.2 \\
+\mbox{SD4-18} & EL-18. Los portales externos se tratan como intranet con VPN (p. 10). & \textbf{Documentado.} Se distinguen las entradas públicas, privadas y locales. Verified Access se reserva a la oficina y las consolas, y los portales externos públicos no exigen VPN. & 4.1.3 y 4.2.5.2 \\
 \LFXfiletefila
 % ID: SD4-19
-\mbox{SD4-19} & \textbf{EL-19} — Portada promete física pero solo incluye lógica, p. 10 & El cuerpo integrado incluye arquitectura lógica, física y centros de datos bajo la estructura 4.1–4.3. \textbf{Estado y cierre:} Corregido en estructura. & SD4, portada y 4.1–4.3; ensamblador integrado \\
+\mbox{SD4-19} & EL-19. La portada anuncia la arquitectura física, pero el documento solo incluye la lógica (p. 10). & \textbf{Documentado.} El cuerpo integrado incluye la arquitectura lógica, la física y los centros de datos, con la estructura 4.1–4.3. & SD4, portada y 4.1–4.3 \\
 \LFXfiletefila
 % ID: SD4-20
-\mbox{SD4-20} & \textbf{EL-20} — Códigos y versiones sin documento entregado, p. 10 & Se identifica el catálogo físico A/B/C/D/E/F/N, el inventario lógico y los contratos internos y externos. Queda comprobar que las imágenes no conserven códigos históricos. \textbf{Estado y cierre:} Verificar etiquetas residuales en imágenes; no mezclar códigos históricos. & 4.2.2; anexos 4-N, 4-G y 4-H; Formulario T-11 \\
+\mbox{SD4-20} & EL-20. Se citan códigos y versiones de documentos que no se entregaron (p. 10). & \textbf{Documentado.} El catálogo físico A/B/C/D/E/F/N, el inventario lógico y los contratos internos y externos se identifican en el cuerpo, los anexos y el T-11. & 4.2.2; anexos 4-N, 4-G y 4-H; Formulario T-11 \\
 \LFXfiletefila
 % ID: SD4-21
-\mbox{SD4-21} & \textbf{EL-21} — Plantilla distinta e ilegibilidad, p. 10 & Los tres entregables usan plantilla común. El cuerpo conserva 26 tablas técnicas breves y su declaración de IA; la red se presenta mediante tres activos gráficos actuales. \textbf{Estado y cierre:} Formato documentado; el registro histórico de rótulos próximos a 5 puntos no describe por sí solo los nuevos activos de red. Revisar su impresión final. & SD4, cuerpo y figuras; anexos y T-11; registro AUDITORIA\_TABLAS\_SD4.md \\
+\mbox{SD4-21} & EL-21. La plantilla es distinta y hay contenido ilegible (p. 10). & \textbf{Documentado.} Los tres entregables usan la plantilla común. El cuerpo conserva 26 tablas técnicas breves y la declaración de uso de IA, y la red se presenta en tres vistas. & SD4, cuerpo y figuras; anexos y T-11 \\
 \LFXfiletefila
 % ID: SD4-22
-\mbox{SD4-22} & \textbf{EF-01} — Documento duplicado y sin portada; entrega con índice, folio y firma, pp. 11 y 13 & Se organiza un cuerpo integrado, con anexos y T-11 como documentos independientes, evitando la duplicación estructural de la entrega preliminar. \textbf{Estado y cierre:} Estructura corregida; verificar índice paginado, folios y firma de los archivos finales. & SD4, portada, índice, folios y firma; documentos de anexos y Formulario T-11 \\
+\mbox{SD4-22} & EF-01. El documento está duplicado y sin portada; se pide entregarlo con índice, folio y firma (pp. 11 y 13). & \textbf{Documentado.} El cuerpo es un único documento integrado, y los anexos y el T-11 son archivos separados. Los tres usan tamaño carta, con portada, índice paginado, folio correlativo y media firma en cada página posterior a la portada. & SD4, portada, índice, folios y firma; documentos de anexos y Formulario T-11 \\
 \LFXfiletefila
 % ID: SD4-23
-\mbox{SD4-23} & \textbf{EF-02} — Comentarios de IA, versiones y auditorías dentro de la oferta, p. 11 & El barrido previo separó las notas de trabajo de la oferta. Se conserva la declaración obligatoria de IA con el revisor identificado en el estado actual. El PDF vigente no contiene «Cambios v01 → v02», «Si se prefiere (B)», «hallazgo D1», «3 brokers», «En texto, la vista» ni referencias a versiones como «v06» o «v6.2». \textbf{Estado y cierre:} La declaración actual identifica a Álvaro Catalán en 132 filas; comprobar ausencia de notas de proceso en la revisión final, sin retirar la declaración obligatoria. & SD4, declaración de uso de IA; registros de revisión externos al entregable \\
+\mbox{SD4-23} & EF-02. La oferta contiene comentarios de IA, versiones y auditorías (p. 11). & \textbf{Documentado.} El subdocumento no contiene comentarios de cambios entre versiones, alternativas sin resolver, notas de hallazgos ni referencias a versiones anteriores. La declaración de uso de IA identifica a Álvaro Catalán como revisor en cada una de sus 132 filas. & SD4, declaración de uso de IA \\
 \LFXfiletefila
 % ID: SD4-24
-\mbox{SD4-24} & \textbf{EF-03} — Tabla de emplazamiento inexistente/incompleta, p. 11 & El emplazamiento se relaciona con los doce módulos y las 37 capacidades transversales. La matriz de correspondencia, el inventario y el T-11 identifican su realización física. \textbf{Estado y cierre:} Doce módulos y 37 transversales inventariados; cotejo individual necesario para confirmar realización física y cobertura de requisitos. & 4.2.2, Tabla 6; Anexo 4-N, Tabla A.14; Anexo 4-W, Tabla A.35; T-11 \\
+\mbox{SD4-24} & EF-03. La tabla de emplazamiento no existe o está incompleta (p. 11). & \textbf{Documentado.} El emplazamiento de la Tabla 6 abarca los doce módulos y las 37 capacidades transversales; la matriz de correspondencia, el inventario y el T-11 identifican la realización física de cada uno. & 4.2.2, Tabla 6; Anexo 4-N, Tabla A.14; Anexo 4-W, Tabla A.35; T-11 \\
 \LFXfiletefila
 % ID: SD4-25
-\mbox{SD4-25} & \textbf{EF-04} — Figura física ilegible y sin explicación, p. 11 & La vista física general se acompaña de explicaciones y vistas de sitios, emplazamiento, nube y recuperación. Las tres vistas de red detallan la conexión local y regional. \textbf{Estado y cierre:} Explicación presente; cotejar correspondencia con recuperación y legibilidad actual. & 4.2 y 4.3; Figura 14, figuras 15–18 y 23–26 \\
+\mbox{SD4-25} & EF-04. La figura física es ilegible y no se explica (p. 11). & \textbf{Documentado.} La vista física general se explica en el texto y se complementa con vistas de sitios, emplazamiento, nube y recuperación. Las tres vistas de red detallan la conexión local y regional. & 4.2 y 4.3; Figura 14, figuras 15–18 y 23–26 \\
 \LFXfiletefila
 % ID: SD4-26
-\mbox{SD4-26} & \textbf{EF-05} — Descripciones verbales sustituyen dibujos, pp. 12–13 & Se incorporan dibujos de ambientes, nube, sitios, racks y recinto. Las tres vistas de red forman parte del desarrollo y tienen explicación propia. \textbf{Estado y cierre:} Incorporación documental corregida; queda revisión de correspondencia gráfica y legibilidad. El borrador de propuestas no es el activo entregado. & 4.2.4.2, figuras 24–26; 4.3.1.4, figuras 28–29; vistas de ambientes y sitios \\
+\mbox{SD4-26} & EF-05. Las descripciones verbales sustituyen a los dibujos (pp. 12–13). & \textbf{Documentado.} Se incorporan dibujos de ambientes, nube, sitios, racks y recinto. Las tres vistas de red forman parte del desarrollo y tienen explicación propia. & 4.2.4.2, figuras 24–26; 4.3.1.4, figuras 28–29; vistas de ambientes y sitios \\
 \LFXfiletefila
 % ID: SD4-27
-\mbox{SD4-27} & \textbf{EF-06} — BI ocupa catorce páginas ajenas al ítem, p. 12 & El SD4 conserva la función lógica y el emplazamiento de M10. El modelo analítico detallado se remite al SD5. \textbf{Estado y cierre:} Mantener solo justificación y dependencias arquitectónicas. & 4.1.4.7 y 4.2.2; remisión a SD5 \\
+\mbox{SD4-27} & EF-06. La inteligencia de negocios ocupa catorce páginas ajenas al ítem (p. 12). & \textbf{Documentado.} El SD4 conserva solo la función lógica, el emplazamiento y las dependencias arquitectónicas de M10; el modelo analítico detallado se desarrolla en el SD5. & 4.1.4.7 y 4.2.2; remisión a SD5 \\
 \LFXfiletefila
 % ID: SD4-28
-\mbox{SD4-28} & \textbf{EF-07} — Implementos pertinentes, p. 12 & Se mantiene el contenido valorado positivamente: el T-11 identifica modelos de implementos, cantidades y finalidad. \textbf{Estado y cierre:} Observación positiva conservada. & Formulario T-11 \\
+\mbox{SD4-28} & EF-07. OK: los implementos son pertinentes (p. 12). & \textbf{Se mantiene.} El T-11 identifica los modelos de implementos, sus cantidades y su finalidad. & Formulario T-11 \\
 \LFXfiletefila
 % ID: SD4-29
-\mbox{SD4-29} & \textbf{EF-08} — Cantidades sin número y ciclo de vida/caídas omitidos, p. 12 & Se explicitan cantidades y criterios de aceptación por tipología, junto con los cálculos del parque y el control de actualizaciones. La aceptación física debe verificarse por ensayo. \textbf{Estado y cierre:} Comprobar especificación de aceptación por tipo; cálculos no equivalen a ensayo. & 4.2.1.2; Anexo 4-W.3; Anexo 4-P; Formulario T-11 \\
+\mbox{SD4-29} & EF-08. Faltan cantidades numéricas y se omiten el ciclo de vida y la resistencia a caídas (p. 12). & \textbf{Documentado.} Se explicitan las cantidades y los criterios de aceptación por tipología, junto con los cálculos del parque y el control de actualizaciones. La aceptación física de cada tipología se verifica por ensayo. & 4.2.1.2; Anexo 4-W.3; Anexo 4-P; Formulario T-11 \\
 \LFXfiletefila
 % ID: SD4-30
-\mbox{SD4-30} & \textbf{EF-09} — Exceso de equipos congelados/POS/impresoras, p. 12 & El parque se deriva de la dotación por turno y sus reservas: 207 terminales al inicio y 235 en el año 3, incluidos repuestos. La concurrencia nocturna inicial es 186. \textbf{Estado y cierre:} Cifras derivadas; 186 es concurrencia nocturna inicial. Precisar el perfil temporal de la campaña de Preproducción que menciona 207. & 4.2.1 y 4.1.9; Anexo 4-W.3; Formulario T-11 \\
+\mbox{SD4-30} & EF-09. Hay exceso de equipos para congelado, POS e impresoras (p. 12). & \textbf{Documentado.} El parque se deriva de la dotación por turno y sus reservas: 207 terminales al inicio y 235 en el año 3, incluidos los repuestos. La concurrencia nocturna inicial es de 186 terminales. & 4.2.1 y 4.1.9; Anexo 4-W.3; Formulario T-11 \\
 \LFXfiletefila
 % ID: SD4-31
-\mbox{SD4-31} & \textbf{EF-10} — Frío solo en 18 camiones y alertas al regreso, p. 12 & Se declaran 28 termógrafos: 18 en camiones propios y 10 en camiones externos. La lectura BLE y la alerta local se producen durante la ruta. \textbf{Estado y cierre:} Corregido en diseño; ensayo de lectura/alerta por ejecutar. & 4.1.4.2; Anexo 4-W.4; Formulario T-11, B-03 \\
+\mbox{SD4-31} & EF-10. El registro de frío cubre solo 18 camiones y las alertas llegan al regreso (p. 12). & \textbf{Documentado.} Se declaran 28 termógrafos: 18 en camiones propios y 10 en camiones externos. La lectura BLE y la alerta local se producen durante la ruta y se ensayan en la aceptación. & 4.1.4.2; Anexo 4-W.4; Formulario T-11, B-03 \\
 \LFXfiletefila
 % ID: SD4-32
-\mbox{SD4-32} & \textbf{EF-11} — Estudio de cobertura inalámbrica insuficiente, p. 12 & Se incluye el estudio de cobertura y la aceptación de las interfaces en cámaras de frío. La propuesta no presenta la estimación como cobertura ya medida. \textbf{Estado y cierre:} Estudio y medición necesarios; no inventar cobertura medida. & 4.2.1.2; criterios de aceptación de interfaces y cámaras \\
+\mbox{SD4-32} & EF-11. El estudio de cobertura inalámbrica es insuficiente (p. 12). & \textbf{Documentado.} Se incluyen el estudio de cobertura y la aceptación de las interfaces en cámaras de frío. La estimación no se presenta como cobertura medida: la cobertura se mide en el estudio de sitio previo a la instalación. & 4.2.1.2; criterios de aceptación de interfaces y cámaras \\
 \LFXfiletefila
 % ID: SD4-33
-\mbox{SD4-33} & \textbf{EF-12} — Sala secundaria sobredimensionada y Tier incoherente, p. 12 & El dimensionamiento usa el equipamiento real del recinto y distingue disponibilidad por componente de disponibilidad de extremo a extremo. \textbf{Estado y cierre:} Documentado; ninguna categoría Tier sustituye demostrar disponibilidad. & 4.3.1.4 y desarrollo de disponibilidad \\
+\mbox{SD4-33} & EF-12. La sala secundaria está sobredimensionada y la categoría Tier es incoherente (p. 12). & \textbf{Documentado.} El dimensionamiento usa el equipamiento real del recinto y distingue la disponibilidad por componente de la disponibilidad de extremo a extremo, sin apoyarse en una categoría Tier. & 4.3.1.4 y desarrollo de disponibilidad \\
 \LFXfiletefila
 % ID: SD4-34
-\mbox{SD4-34} & \textbf{EF-13} — Sin cálculo eléctrico/térmico, plano ni racks, p. 12 & Se desarrollan cargas eléctricas y térmicas, memoria de cálculo, distribución de racks y plano del recinto. \textbf{Estado y cierre:} Evidencias presentes; verificar correspondencia gráfica final y actualizar referencias externas del T-12. & 4.3.1.4, Tablas 23–24 y figuras 28–29; Anexo 4-W.8 \\
+\mbox{SD4-34} & EF-13. Faltan el cálculo eléctrico y térmico, el plano y los racks (p. 12). & \textbf{Documentado.} Se desarrollan las cargas eléctricas y térmicas, la memoria de cálculo, la distribución de racks y el plano del recinto. & 4.3.1.4, Tablas 23–24 y figuras 28–29; Anexo 4-W.8 \\
 \LFXfiletefila
 % ID: SD4-35
-\mbox{SD4-35} & \textbf{EF-14} — Gabinetes de borde sin energía/clima/acceso, p. 12 & Los gabinetes de borde cuentan con representación gráfica y definición de energía, climatización, acceso y carga/UPS por tipología. \textbf{Estado y cierre:} Documentado por tipología. & 4.2.1.2, figuras 15–16; Anexo 4-W, Tabla A.39; Formulario T-11 \\
+\mbox{SD4-35} & EF-14. Los gabinetes de borde no definen energía, climatización ni acceso (p. 12). & \textbf{Documentado.} Los gabinetes de borde tienen representación gráfica y, por tipología, definición de energía, climatización, acceso, carga y UPS. & 4.2.1.2, figuras 15–16; Anexo 4-W, Tabla A.39; Formulario T-11 \\
 \LFXfiletefila
 % ID: SD4-36
-\mbox{SD4-36} & \textbf{EF-15} — Aprobación de DR podría llevar RTO a 24–72 h, p. 12 & Se declaran las regiones, RTO de hasta 4 horas y aprobación de residencia como hito contractual. La consulta sanitaria regional de solo lectura tiene un presupuesto de 75 minutos, sujeto a prueba. \textbf{Estado y cierre:} Diseño documentado; medir restitución por servicio, conectividad de Talca y consulta sanitaria; residencia y brecha extrema de RPO requieren decisión contractual real. & 4.3.2; Anexo 4-M, AL-DR-01; Formulario T-11 \\
+\mbox{SD4-36} & EF-15. La aprobación de la recuperación ante desastres podría llevar el RTO a 24–72 h (p. 12). & \textbf{Documentado.} Se declaran las regiones, un RTO de hasta 4 horas y la aprobación de residencia como hito contractual. Durante la contingencia, la consulta sanitaria regional de solo lectura tiene un presupuesto de 75 minutos. La restitución por servicio se mide en el ensayo AL-DR-01. & 4.3.2; Anexo 4-M, AL-DR-01; Formulario T-11 \\
 \LFXfiletefila
 % ID: SD4-37
-\mbox{SD4-37} & \textbf{EF-16} — T-11 invocado pero no adjunto, p. 12 & El T-11 existe como formulario independiente. \textbf{Estado y cierre:} Presente; comprobar su inclusión en el paquete de entrega. & Formulario T-11, archivo independiente \\
+\mbox{SD4-37} & EF-16. Se invoca el T-11, pero no se adjunta (p. 12). & \textbf{Documentado.} El T-11 se entrega como formulario independiente. & Formulario T-11, archivo independiente \\
 \LFXfiletefila
 % ID: SD4-38
-\mbox{SD4-38} & \textbf{EF-17} — Zero Trust y SPOF pertinentes, p. 12 & Se mantienen Zero Trust, el análisis de puntos únicos de falla y el respaldo 3-2-1-1-0, con remisión a su desarrollo principal. \textbf{Estado y cierre:} Contenido conservado; remitir a sección principal sin repetir controles. & 4.1.3.7 y 4.2.5; anexos 4-Q y 4-R; respaldo y continuidad \\
+\mbox{SD4-38} & EF-17. OK: Zero Trust y el análisis de puntos únicos de falla son pertinentes (p. 12). & \textbf{Se mantiene.} Se conservan Zero Trust, el análisis de puntos únicos de falla y el respaldo 3-2-1-1-0, con remisión a su desarrollo principal. & 4.1.3.7 y 4.2.5; anexos 4-Q y 4-R; respaldo y continuidad \\
 \LFXfiletefila
 % ID: SD4-39
-\mbox{SD4-39} & \textbf{EF-18} — Identidad, gateway local y funciones offline sin resolver, p. 13 & La identidad local se explica en 4.1.3.7 y la puerta local en 4.1.3.3. Se distinguen funciones disponibles y bloqueadas durante un corte: captura local, relevos, guía preemitida y autorizaciones externas condicionadas. \textbf{Estado y cierre:} Funciones y límites documentados; probar continuidad completa, no solo captura; completar cotejo del acceso local de Calidad. & 4.1.3.3, 4.1.3.7 y 4.1.15–4.1.16; anexos 4-J, 4-K y 4-M \\
+\mbox{SD4-39} & EF-18. La identidad, el gateway local y las funciones sin conexión quedan sin resolver (p. 13). & \textbf{Documentado.} La identidad local se explica en 4.1.3.7 y la puerta local en 4.1.3.3. Se distinguen las funciones disponibles y bloqueadas durante un corte: captura local, relevos, guía preemitida y autorizaciones externas condicionadas. La continuidad completa se ensaya en la aceptación (AL-OFF-01). & 4.1.3.3, 4.1.3.7 y 4.1.15–4.1.16; anexos 4-J, 4-K y 4-M \\
 \LFXfiletefila
 % ID: SD4-40
-\mbox{SD4-40} & \textbf{EF-19} — Ceph sobre RAID y capacidad contradictoria, p. 13 & Se define Ceph con seis OSD sin RAID, size=3/min\_size=2, redundancia N+1 y cálculo de capacidad. ADR-10 contrasta la demanda de 136 IOPS actuales y 359 a 3× con la capacidad del NVMe, que no es criterio de selección ni justifica equipos adicionales. \textbf{Estado y cierre:} Diseño documentado; fallo y reconstrucción por probar. & SD4, arquitectura física de Talca; Anexo 4-W.8; Anexo 4-O, ADR-10 \\
+\mbox{SD4-40} & EF-19. Ceph se monta sobre RAID y la capacidad es contradictoria (p. 13). & \textbf{Documentado.} Ceph usa seis OSD sin RAID, con size=3/min\_size=2, redundancia N+1 y cálculo de capacidad. ADR-10 contrasta la demanda de 136 IOPS actuales y 359 a 3× con la capacidad del NVMe, que no es criterio de selección ni justifica equipos adicionales. El fallo y la reconstrucción de un OSD se ensayan en la aceptación. & SD4, arquitectura física de Talca; Anexo 4-W.8; Anexo 4-O, ADR-10 \\
 \LFXfiletefila
 % ID: SD4-41
-\mbox{SD4-41} & \textbf{EF-20} — DTE diferido contradice único emisor/guía previa, p. 13 & El ERP conserva la emisión previa de la guía. Un cambio de carga invalida la preemisión y requiere otra guía válida; AL-DTE-01 define el ensayo. \textbf{Estado y cierre:} Documentado; 96 salidas requieren prueba completa y documentos válidos. & 4.1.17; anexos 4-M y 4-U, AL-DTE-01 \\
+\mbox{SD4-41} & EF-20. El DTE diferido contradice al ERP como único emisor y la guía previa al traslado (p. 13). & \textbf{Documentado.} El ERP conserva la emisión previa de la guía. Un cambio de carga invalida la preemisión y requiere otra guía válida. El ensayo AL-DTE-01 verifica las 96 salidas con documentos válidos. & 4.1.17; anexos 4-M y 4-U, AL-DTE-01 \\
 \LFXfiletefila
 % ID: SD4-42
-\mbox{SD4-42} & \textbf{EF-21} — Dotación incompatible con cuatro TI, p. 13 & El dimensionamiento incorpora dotación propia para NOC/SOC y mesa de servicios, diferenciándola de los cuatro TI del cliente. \textbf{Estado y cierre:} Dimensionamiento presente; los cuatro TI del cliente no operan solos toda la plataforma. & 4.2.6; Anexo 4-W.7 \\
+\mbox{SD4-42} & EF-21. La dotación es incompatible con los cuatro profesionales de TI del CLIENTE (p. 13). & \textbf{Documentado.} El dimensionamiento incorpora dotación propia para el NOC/SOC y la mesa de servicios, distinta de los cuatro profesionales de TI del CLIENTE, que no operan solos la plataforma. & 4.2.6; Anexo 4-W.7 \\
 \LFXfiletefila
 % ID: SD4-43
-\mbox{SD4-43} & \textbf{EF-22} — Sin red, despliegue ni zonas de seguridad, p. 13 & Se desarrollan cinco ambientes, topología AWS, tres vistas de red y direccionamiento con zonas de segmentación. \textbf{Estado y cierre:} Red y segmentación incorporadas documentalmente; pendientes legibilidad y cotejo de rutas, zonas y recursos de recuperación. & 4.2.4.1–4.2.4.2; figuras 24–26; Tabla 9 \\
+\mbox{SD4-43} & EF-22. Faltan la red, el despliegue y las zonas de seguridad (p. 13). & \textbf{Documentado.} Se desarrollan los cinco ambientes, la topología AWS, tres vistas de red y el direccionamiento con zonas de segmentación. & 4.2.4.1–4.2.4.2; figuras 24–26; Tabla 9 \\
 \LFXfiletefila
 % ID: SD4-44
-\mbox{SD4-44} & \textbf{EF-23} — TPS sin sustento y regímenes mezclados, p. 13 & Los cálculos separan operación normal, ventanas horarias y carga de septiembre, con su derivación en la memoria. \textbf{Estado y cierre:} Cálculos documentados; prueba no ejecutada. & 4.2.6.2–4.2.6.3; Anexo 4-W \\
+\mbox{SD4-44} & EF-23. Los TPS no tienen sustento y mezclan regímenes de carga (p. 13). & \textbf{Documentado.} Los cálculos separan la operación normal, las ventanas horarias y la carga de septiembre, con su derivación en la memoria de cálculo. La carga se valida en la prueba de rendimiento de la aceptación. & 4.2.6.2–4.2.6.3; Anexo 4-W \\
 \LFXfiletefila
 % ID: SD4-45
-\mbox{SD4-45} & \textbf{EF-24} — Dieciséis dimensiones ausentes o sin derivación, pp. 13–14 & Las dieciséis dimensiones se sintetizan en el anexo y se justifican mediante derivaciones y cuadros numéricos del cuerpo. \textbf{Estado y cierre:} Método documentado; cotejar suficiencia de cada dimensión y validar cotas por medición. & 4.2.6.1–4.2.6.13; Anexo 4-W, Tabla A.30 y memoria de cálculo \\
+\mbox{SD4-45} & EF-24. Las dieciséis dimensiones del dimensionamiento faltan o no tienen derivación (pp. 13–14). & \textbf{Documentado.} Las dieciséis dimensiones se sintetizan en el anexo y se justifican con derivaciones y cuadros numéricos del cuerpo. Sus cotas se validan por medición en la aceptación. & 4.2.6.1–4.2.6.13; Anexo 4-W, Tabla A.30 y memoria de cálculo \\
 \LFXfiletefila
 % ID: SD4-46
-\mbox{SD4-46} & \textbf{EF-25} — ADR con precios, p. 13 & El registro único de ADR se presenta mediante decisiones cualitativas y técnicas. La ausencia de precios debe mantenerse en la revisión final de la oferta. \textbf{Estado y cierre:} Mantener control de ausencia de precios en toda la oferta técnica. & Anexo 4-O; control final del conjunto de la oferta técnica \\
+\mbox{SD4-46} & EF-25. Los ADR contienen precios (p. 13). & \textbf{Documentado.} El registro único de ADR presenta decisiones cualitativas y técnicas. El cuerpo, los anexos y el T-11 no contienen precios. & Anexo 4-O; SD4, anexos y T-11 \\
 \LFXfiletefila
 % ID: SD4-47
-\mbox{SD4-47} & \textbf{EF-26} — Remisión circular sobre los 14 recintos: la página 19 remite a Seguridad 12 y esta se cita a sí misma sin enumerarlos, p. 12 & La descripción actual organiza el recinto de Talca en 4.3.1.4 y remite directamente a su distribución dibujada, sin conservar aquella remisión a Seguridad 12. \textbf{Estado y cierre:} Respuesta textual documentada; cotejar distribución y referencias en el PDF final. & 4.3.1.4, Figura 29 \\
+\mbox{SD4-47} & EF-26. La remisión sobre los 14 recintos es circular: la página 19 remite a Seguridad 12 y esa sección se cita a sí misma sin enumerarlos (p. 12). & \textbf{Documentado.} El recinto de Talca se describe en 4.3.1.4, que remite directamente a su distribución dibujada (Figura 29), sin remisiones circulares. & 4.3.1.4, Figura 29 \\
 \LFXfiletefila
 % ID: SD4-48
-\mbox{SD4-48} & \textbf{EF-27} — Valoración positiva: TPS derivados con método e identificación del primer cuello de botella, p. 13 & Se conserva el principio valorado: tasas con entradas, ventanas y derivaciones reproducibles, junto con el análisis del primer cuello de botella. Los valores y el candidato cambian con el diseño actual; no se presentan los números antiguos como resultados vigentes. \textbf{Estado y cierre:} Método documentado; los resultados medidos corresponden a la aceptación prevista. & 4.1.19, 4.2.6.2–4.2.6.3 y 4.2.6.11; Anexo 4-W \\
+\mbox{SD4-48} & EF-27. OK: los TPS se derivan con método y se identifica el primer cuello de botella (p. 13). & \textbf{Se mantiene.} Las tasas se derivan con entradas, ventanas y cálculos reproducibles, y se analiza el primer cuello de botella. Los valores se recalcularon con el diseño propuesto (4.1.19); los resultados medidos se obtienen en la aceptación. & 4.1.19, 4.2.6.2–4.2.6.3 y 4.2.6.11; Anexo 4-W \\
 \LFXfiletefila
 % ID: SD4-49
-\mbox{SD4-49} & \textbf{EF-28} — Valoración positiva: quince ADR en formato MADR, con fecha, estado y alternativas evaluadas, p. 13 & Se conserva el registro de decisiones y sus alternativas, ampliado a 22 ADR en el diseño actual. El resumen y los estados se concentran en el anexo lógico; la retirada de precios se sigue por EF-25. \textbf{Estado y cierre:} Registro documentado; verificar vigencia y selección en cada ficha antes del cierre. & Anexo 4-O, Tablas A.18–A.19 y fichas ADR-01 a ADR-22 \\
+\mbox{SD4-49} & EF-28. OK: quince ADR en formato MADR, con fecha, estado y alternativas evaluadas (p. 13). & \textbf{Se mantiene.} El registro de decisiones conserva fecha, estado y alternativas evaluadas, y se amplía a 22 ADR, resumidos en el anexo lógico. La retirada de precios se responde en EF-25. & Anexo 4-O, Tablas A.18–A.19 y fichas ADR-01 a ADR-22 \\
 \LFXfiletefila
 % ID: SD4-50
-\mbox{SD4-50} & \textbf{EL-22} — Hoja «Página en blanco a propósito» al inicio del archivo, apartado General & El cuerpo integrado comienza en la portada y no contiene esa hoja en ninguna de sus páginas; los anexos y el T-11 tampoco. \textbf{Estado y cierre:} Corregido. & SD4, anexos y T-11 \\
+\mbox{SD4-50} & EL-22. El archivo abre con una hoja «Página en blanco a propósito» (apartado General). & \textbf{Documentado.} El cuerpo comienza en la portada y no contiene esa hoja; los anexos y el T-11 tampoco. & SD4, anexos y T-11 \\
 \LFXfiletefila
 % ID: SD4-51
-\mbox{SD4-51} & \textbf{EF-29} — La palabra LAFROX no aparece y se lee «Empresa proponente: Pendiente de definir», apartado General & LafroX figura en la portada y en todas las páginas del cuerpo, de los anexos y del T-11; la expresión «Pendiente de definir» no aparece. \textbf{Estado y cierre:} Corregido. & SD4, anexos y T-11, portada, encabezado y pie \\
+\mbox{SD4-51} & EF-29. La palabra LAFROX no aparece y la empresa proponente figura sin definir (apartado General). & \textbf{Documentado.} LafroX figura en la portada y en todas las páginas del cuerpo, de los anexos y del T-11, y cada portada identifica a la empresa proponente. & SD4, anexos y T-11, portada, encabezado y pie \\
 \LFXfiletefila
 % ID: SD4-52
-\mbox{SD4-52} & \textbf{EF-30} — Más de la mitad del documento son tablas de listado, contra el Formulario T-21, apartado General & El detalle se trasladó: el T-11 lista equipos y servicios, y los 23 anexos 4-A a 4-W reúnen catálogos, matrices y la memoria de cálculo. El cuerpo conserva 26 tablas técnicas breves y la declaración de IA. \textbf{Estado y cierre:} Documentado. & SD4, cuerpo; anexos 4-A a 4-W; Formulario T-11 \\
+\mbox{SD4-52} & EF-30. Más de la mitad del documento son tablas de listado, contra lo que pide el Formulario T-21 (apartado General). & \textbf{Documentado.} El detalle se trasladó: el T-11 lista equipos y servicios, y los 23 anexos 4-A a 4-W reúnen catálogos, matrices y la memoria de cálculo. El cuerpo conserva 26 tablas técnicas breves y la declaración de uso de IA. & SD4, cuerpo; anexos 4-A a 4-W; Formulario T-11 \\
 \end{longtable}
 }
 \Needspace{18\baselineskip}
@@ -603,7 +606,7 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \renewcommand{\arraystretch}{1.10}
 \setlength{\tabcolsep}{4pt}
 \begin{longtable}{F{0.10} F{0.27} F{0.43} F{0.20}}
-\caption{Observaciones y respuestas --- subdocumento 5}\\[2pt]
+\caption[Observaciones y respuestas --- subdocumento 5]{Observaciones y respuestas --- subdocumento 5. Fuente: revisión del Informe 1 y Subdocumento 5 de LafroX.}\\[2pt]
 \LFXtopruleoriginal \cab{N.º} & \cab{Observación del Informe 1} & \cab{Respuesta} & \cab{Sección modificada} \\ \midrule
 \endfirsthead
 \multicolumn{4}{@{}l@{}}{\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}Tabla \thetable\ --- Subdocumento 5 (continuación)}\\[3pt]
@@ -615,76 +618,76 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \bottomrule
 \endlastfoot
 % ID: SD5-01
-\mbox{SD5-01} & No hay modelo de datos; 5.1 solo enumera quince bases lógicas. & Se incorporaron MR general, vistas por dominio y modelo dimensional: diez figuras en el cuerpo. & 5.1; Figuras 5.1–5.10; 5-M \\
+\mbox{SD5-01} & No hay modelo de datos; 5.1 solo enumera quince bases lógicas. & \textbf{Documentado.} Se incorporan el modelo relacional general, las vistas por dominio y el modelo dimensional, en diez figuras del cuerpo. & 5.1; Figuras 5.1–5.10; 5-M \\
 \LFXfiletefila
 % ID: SD5-02
-\mbox{SD5-02} & No hay diccionario real; se posterga hasta antes de producción. & Diccionario de 121 entidades y 987 atributos, con tipos, dominios, claves, condiciones y controles. & 5-A, A.2–A.10; 5-B–5-C \\
+\mbox{SD5-02} & No hay diccionario real; se posterga hasta antes de producción. & \textbf{Documentado.} El diccionario de datos cubre 121 entidades y 987 atributos, con tipos, dominios, claves, condiciones y controles. & 5-A, A.2–A.10; 5-B–5-C \\
 \LFXfiletefila
 % ID: SD5-03
-\mbox{SD5-03} & No pueden evaluarse las consultas del proveedor y la autoridad sanitaria. & Cadena lote/unidad/evento/entrega/documento y consulta inversa; universo potencial offline y presupuesto de retiro de 85 min. & 5.1.7; Figura 5.5; 5-J \\
+\mbox{SD5-03} & No pueden evaluarse las consultas del proveedor y la autoridad sanitaria. & \textbf{Documentado.} El modelo encadena lote, unidad, evento, entrega y documento, y permite la consulta inversa. Ante un retiro, distingue el universo confirmado del potencial, que incluye los registros aún no sincronizados, con un presupuesto de diseño de 85 minutos. & 5.1.7; Figura 5.5; 5-J \\
 \LFXfiletefila
 % ID: SD5-04
-\mbox{SD5-04} & Motor y CAP se presentan en tabla sin analizar compromisos. & Justificación en prosa de motores, autoridad única por agregado y consistencia local con consolidación pendiente. La tabla de cinco columnas con palabras partidas se reemplazó por el desarrollo en prosa de 5.2.1; la correspondencia por dominio pasa al Anexo 5-B. & 5.2.1–5.2.3; 5-B \\
+\mbox{SD5-04} & Motor y CAP se presentan en tabla sin analizar compromisos. & \textbf{Documentado.} La elección de motores se justifica en prosa en 5.2.1, con autoridad única por agregado y consistencia local hasta la consolidación central. Ese desarrollo reemplaza la tabla de cinco columnas con palabras partidas, y la correspondencia por dominio pasa al Anexo 5-B. & 5.2.1–5.2.3; 5-B \\
 \LFXfiletefila
 % ID: SD5-05
-\mbox{SD5-05} & Se cita la decisión 16.1 n.º 18, inexistente. & Referencia retirada; las fuentes identifican decisiones existentes del numeral 16.1. & 5.1; fuentes de Figuras 5.1, 5.2, 5.4 y 5.6 \\
+\mbox{SD5-05} & Se cita la decisión 16.1 n.º 18, inexistente. & \textbf{Documentado.} Se retiró la referencia a la decisión n.º 18; las fuentes de las figuras citan solo decisiones existentes del numeral 16.1. & 5.1; fuentes de Figuras 5.1, 5.2, 5.4 y 5.6 \\
 \LFXfiletefila
 % ID: SD5-06
-\mbox{SD5-06} & Alcance por migrar con los valores del Cap. 15 y casos de saneamiento propios del caso: lotes en texto libre, duplicados de cliente y saldos de envases. & Históricos delimitados; originales preservados, equivalencias aprobadas y defectos aislados sin inventar historia. & 5.3.1–5.3.5; 5-C; 5-L, A.25 \\
+\mbox{SD5-06} & Alcance por migrar con los valores del Cap. 15 y casos de saneamiento propios del caso: lotes en texto libre, duplicados de cliente y saldos de envases. & \textbf{Documentado.} El alcance histórico por migrar queda delimitado. Los datos originales se preservan, se aplican equivalencias aprobadas y los registros defectuosos se aíslan sin inventar historia. & 5.3.1–5.3.5; 5-C; 5-L, A.25 \\
 \LFXfiletefila
 % ID: SD5-07
-\mbox{SD5-07} & Migración sin volumen, herramientas, tiempos, ventana ni responsables. & Fuente 16,05478 GB; destino estimado 32,10956 GB; herramientas, responsables, dos ensayos, olas, corte y reversa. & 5.3; Tabla 5.2; 5-J; 5-L \\
+\mbox{SD5-07} & Migración sin volumen, herramientas, tiempos, ventana ni responsables. & \textbf{Documentado.} La migración parte de 16,05478 GB en origen y estima 32,10956 GB en destino, y define herramientas, responsables, dos ensayos, olas, corte y reversa. & 5.3; Tabla 5.2; 5-J; 5-L \\
 \LFXfiletefila
 % ID: SD5-08
-\mbox{SD5-08} & OK: índices para retiro, partición mensual y orden en mensajería. & Se conservan; claves globales sin partición y detalle temporal con identidad completa, outbox y deduplicación. & 5.4.2–5.4.5; 5-F–5-G \\
+\mbox{SD5-08} & OK: índices para retiro, partición mensual y orden en mensajería. & \textbf{Se mantiene.} Se conservan los índices para el retiro, la partición mensual y el orden en la mensajería. Las claves globales no se particionan, el detalle temporal conserva su identidad completa y la mensajería usa outbox y deduplicación. & 5.4.2–5.4.5; 5-F–5-G \\
 \LFXfiletefila
 % ID: SD5-09
-\mbox{SD5-09} & La expresión de TPS base y crecimiento es ininteligible. & Se separan régimen 12,34 TPS, pico 14,66 y prueba 21,99; año 3 y crecimiento 3× son escenarios distintos. & 5.4.1; Tabla 5.3; 5.4.6 \\
+\mbox{SD5-09} & La expresión de TPS base y crecimiento es ininteligible. & \textbf{Documentado.} Se separan el régimen de 12,34 TPS, el pico de 14,66 TPS y la prueba de 21,99 TPS; el año 3 y el crecimiento 3× se tratan como escenarios distintos. & 5.4.1; Tabla 5.3; 5.4.6 \\
 \LFXfiletefila
 % ID: SD5-10
-\mbox{SD5-10} & Identidad de bodega con TTL de 8 h frente a autonomía exigida de 24 h. & Se distinguen autonomía 24 h, identidad 24 h, turnos 8/14 h y manifiesto 26 h con relevos preinscritos. & 5.2.3; Tabla 5.1; 5-G \\
+\mbox{SD5-10} & Identidad de bodega con TTL de 8 h frente a autonomía exigida de 24 h. & \textbf{Documentado.} Se distinguen la autonomía de 24 h, la vigencia de identidad de 24 h, los turnos de 8 y 14 h y el manifiesto de 26 h, con relevos preinscritos. & 5.2.3; Tabla 5.1; 5-G \\
 \LFXfiletefila
 % ID: SD5-11
-\mbox{SD5-11} & OK: separación OLTP/analítica, latencias, retenciones, inmutabilidad e ISO 25012. & Se mantienen y precisan calidad, archivo, purga, retención legal y conservación de reglas interpretativas. & 5.2.5–5.2.7; 5-D–5-E; 5-H–5-I \\
+\mbox{SD5-11} & OK: separación OLTP/analítica, latencias, retenciones, inmutabilidad e ISO 25012. & \textbf{Se mantiene.} Se conservan esos elementos y se precisan la calidad, el archivo, la purga, la retención legal y la conservación de las reglas interpretativas. & 5.2.5–5.2.7; 5-D–5-E; 5-H–5-I \\
 \LFXfiletefila
 % ID: SD5-12
-\mbox{SD5-12} & OK: detecta desajuste RT-05.10/RT-16.10 y lo eleva a consulta. & Correspondencia y consulta documentadas; plazos íntegros conservados. No se presume envío acreditado ni respuesta oficial. & 5.2.7; 5-D, A.14 \\
+\mbox{SD5-12} & OK: detecta desajuste RT-05.10/RT-16.10 y lo eleva a consulta. & \textbf{Se mantiene.} La correspondencia entre RT-05.10 y RT-16.10 y la consulta quedan documentadas, y se conservan íntegros los plazos de ambos. & 5.2.7; 5-D, A.14 \\
 \LFXfiletefila
 % ID: SD5-13
-\mbox{SD5-13} & Faltan esquema estrella dibujado, tableros, destinatarios e indicadores definidos. & Modelo dimensional con granos y claves; fórmulas, audiencia, latencia y linaje. El costo de servir identifica combustible, peajes, conducción, descarga e indirectos, con prorrateos versionados y conciliación con el ERP. & 5.1.11; Figura 5.7; 5.2.6; 5-H, Tablas A.18–A.19 \\
+\mbox{SD5-13} & Faltan esquema estrella dibujado, tableros, destinatarios e indicadores definidos. & \textbf{Documentado.} El modelo dimensional se dibuja con sus granos y claves, y cada indicador tiene fórmula, audiencia, latencia y linaje. El costo de servir identifica combustible, peajes, conducción, descarga e indirectos, con prorrateos versionados y conciliación con el ERP. & 5.1.11; Figura 5.7; 5.2.6; 5-H, Tablas A.18–A.19 \\
 \LFXfiletefila
 % ID: SD5-14
-\mbox{SD5-14} & RT-16.08 se atribuye a tres canales; corresponde RT-16.20. & RT-16.20 identifica canales y RT-16.08 consulta/exportación de auditoría. & 5.1.9; 5-B–5-C; A.8 \\
+\mbox{SD5-14} & RT-16.08 se atribuye a tres canales; corresponde RT-16.20. & \textbf{Documentado.} Los tres canales se atribuyen a RT-16.20, y RT-16.08 queda como consulta y exportación de auditoría. & 5.1.9; 5-B–5-C; A.8 \\
 \LFXfiletefila
 % ID: SD5-15
-\mbox{SD5-15} & Timbre diferido y guía ausente contradicen ERP único emisor y acompañamiento del traslado. & ERP emite antes del traslado; cambios requieren nueva guía válida. POD no sustituye documento fiscal. & 5.1.8; 5.3.6; 5-J, AL-DTE-01 \\
+\mbox{SD5-15} & Timbre diferido y guía ausente contradicen ERP único emisor y acompañamiento del traslado. & \textbf{Documentado.} El ERP emite la guía antes del traslado y todo cambio requiere una nueva guía válida. La prueba de entrega no sustituye al documento tributario. & 5.1.8; 5.3.6; 5-J, AL-DTE-01 \\
 \LFXfiletefila
 % ID: SD5-16
-\mbox{SD5-16} & OK: evidencia por receptor; falta mecanismo de acuse legal. & POD, acuse SII y recibo se diferencian; XML ERP/EDI o constancia impresa según perfil, conforme al Anexo 4-U. & 5.1.8; A.7; 5-C; 5-J \\
+\mbox{SD5-16} & OK: evidencia por receptor; falta mecanismo de acuse legal. & \textbf{Documentado.} Se diferencian la prueba de entrega, el acuse ante el SII y el recibo. El acuse se respalda con XML del ERP o EDI, o con constancia impresa, según el perfil del receptor, conforme al Anexo 4-U del SD4. & 5.1.8; A.7; 5-C; 5-J \\
 \LFXfiletefila
 % ID: SD5-17
-\mbox{SD5-17} & Resaltado negro ilegible en páginas 3, 10, 13 y 14. & Retirados los bloques de código con fondo negro; contenido integrado en la plantilla de texto, tablas y figuras. & Cuerpo y anexos \\
+\mbox{SD5-17} & Resaltado negro ilegible en páginas 3, 10, 13 y 14. & \textbf{Documentado.} Se retiraron los bloques de código con fondo negro y su contenido se integró en el texto, las tablas y las figuras de la plantilla. & Cuerpo y anexos \\
 \LFXfiletefila
 % ID: SD5-18
-\mbox{SD5-18} & Metadatos finales citan documentos inexistentes. & Línea de metadatos retirada; referencias identifican Bases, propuesta y fuentes técnicas concretas, con T-12 adscrito al SD3, T-11 al SD4, T-14 incluido en el anexo y versión EPCIS alineada. & Referencias del cuerpo y anexo \\
+\mbox{SD5-18} & Metadatos finales citan documentos inexistentes. & \textbf{Documentado.} Se retiró la línea de metadatos. Las referencias identifican las Bases, los documentos de la propuesta y fuentes técnicas concretas: el T-12 se adscribe al SD3, el T-11 al SD4, el T-14 se incluye en el anexo y la versión de EPCIS queda alineada. & Referencias del cuerpo y anexo \\
 \LFXfiletefila
 % ID: SD5-19
-\mbox{SD5-19} & Doble numeración 5.1/S5.1 y códigos internos sin explicación. & Numeración 5.1–5.4 y anexos 5-A–5-M; glosario y leyendas definen los identificadores necesarios. & Introducción; 5-A, glosario y A.1 \\
+\mbox{SD5-19} & Doble numeración 5.1/S5.1 y códigos internos sin explicación. & \textbf{Documentado.} La numeración es única (5.1–5.4 y anexos 5-A a 5-M), y el glosario y las leyendas definen los identificadores necesarios. & Introducción; 5-A, glosario y A.1 \\
 \LFXfiletefila
 % ID: SD5-20
-\mbox{SD5-20} & Siglas sin definir, incluida la frase sobre FID. & FID y la frase observada se retiraron; glosario común y desarrollo de CAP en el texto. & Introducción; 5.2.1; 5-A \\
+\mbox{SD5-20} & Siglas sin definir, incluida la frase sobre FID. & \textbf{Documentado.} Se retiraron FID y la frase observada. Un glosario común define las siglas y CAP se desarrolla en el texto. & Introducción; 5.2.1; 5-A \\
 \LFXfiletefila
 % ID: SD5-21
-\mbox{SD5-21} & General: ningún archivo tiene identidad de empresa; las portadas incluyen datos ajenos a la licitación y se rotulan «Formulario T-22». & La portada identifica a LafroX, al mandante, al proponente y a su representante, y se rotula «Subdocumento 5 · Formulario T-7», sin datos del curso. & Portada \\
+\mbox{SD5-21} & General: ningún archivo tiene identidad de empresa; las portadas incluyen datos ajenos a la licitación y se rotulan «Formulario T-22». & \textbf{Documentado.} La portada identifica a LafroX, al mandante, al proponente y a su representante, y se rotula «Subdocumento 5 · Formulario T-7», sin datos ajenos a la licitación. & Portada \\
 \LFXfiletefila
 % ID: SD5-22
-\mbox{SD5-22} & General: el archivo abre con una hoja que sólo dice «Página en blanco a propósito». & La hoja no aparece en el cuerpo ni en los anexos. & Inicio del documento \\
+\mbox{SD5-22} & General: el archivo abre con una hoja que sólo dice «Página en blanco a propósito». & \textbf{Documentado.} La hoja no aparece en el cuerpo ni en los anexos. & Inicio del documento \\
 \LFXfiletefila
 % ID: SD5-23
-\mbox{SD5-23} & General: Arial y tamaño A4, cuerpo que aparenta ser inferior a 11 puntos, y ningún índice, folio ni firma. & El cuerpo tiene índice general, de tablas y de figuras, y los anexos su índice. El tamaño de página, la tipografía, el folio y la media firma se cotejan en el PDF compilado. & Índices; formato de página, pie y firma por cotejar en el PDF \\
+\mbox{SD5-23} & General: Arial y tamaño A4, cuerpo que aparenta ser inferior a 11 puntos, y ningún índice, folio ni firma. & \textbf{Documentado.} El cuerpo tiene índice general, de tablas y de figuras, y los anexos su índice. Ambos documentos usan tamaño carta vertical, tipografía Source Sans 3 con cuerpo de 11 pt, folio correlativo y media firma en el extremo inferior derecho de cada página posterior a la portada. & Índices; formato de página, pie y firma \\
 \LFXfiletefila
 % ID: SD5-24
-\mbox{SD5-24} & Transversal: indicios de IA (IFEP01.26-A1); desde el Informe 2, cualquiera deja el subdocumento con puntaje 0. & No quedan marcadores, notas de proceso ni metadatos del asistente (filas 17 a 20). La declaración de uso de IA identifica a Bastian Trejo como revisor de cada sección y anexo. & Declaración de uso de IA, Tabla 5.4 \\
+\mbox{SD5-24} & Transversal: indicios de IA (IFEP01.26-A1); desde el Informe 2, cualquiera deja el subdocumento con puntaje 0. & \textbf{Documentado.} No quedan marcadores, notas de proceso ni metadatos de herramientas (SD5-17 a SD5-20). La declaración de uso de IA identifica a Bastian Trejo como revisor de cada sección y anexo. & Declaración de uso de IA, Tabla 5.4 \\
 \end{longtable}
 }
 \Needspace{18\baselineskip}
@@ -694,7 +697,7 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \renewcommand{\arraystretch}{1.10}
 \setlength{\tabcolsep}{4pt}
 \begin{longtable}{F{0.10} F{0.27} F{0.43} F{0.20}}
-\caption{Observaciones y respuestas --- subdocumento 13}\\[2pt]
+\caption[Observaciones y respuestas --- subdocumento 13]{Observaciones y respuestas --- subdocumento 13. Fuente: revisión del Informe 1 y Subdocumento 13 de LafroX.}\\[2pt]
 \LFXtopruleoriginal \cab{N.º} & \cab{Observación del Informe 1} & \cab{Respuesta} & \cab{Sección modificada} \\ \midrule
 \endfirsthead
 \multicolumn{4}{@{}l@{}}{\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}Tabla \thetable\ --- Subdocumento 13 (continuación)}\\[3pt]
@@ -706,86 +709,86 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \bottomrule
 \endlastfoot
 % ID: SD13-01
-\mbox{SD13-01} & Innovación 1: «es el criterio de aceptación N° 1 del caso y el estándar exigido por el RT-05.23». & Se reemplaza por el seguimiento de vencimiento posentrega en el local (INN-01). La trazabilidad de lote hasta el cliente queda como alcance obligatorio (RF-02.10 y RF-01.03) y la innovación actúa en el local, después de la entrega. & 13.1; 13.1.2 (Tabla 13.2); Formulario T-19, ficha 1 \\
+\mbox{SD13-01} & Innovación 1: «es el criterio de aceptación N° 1 del caso y el estándar exigido por el RT-05.23». & \textbf{Documentado.} Se reemplaza por el seguimiento de vencimiento posentrega en el local (INN-01). La trazabilidad de lote hasta el cliente queda como alcance obligatorio (RF-02.10 y RF-01.03) y la innovación actúa en el local, después de la entrega. & 13.1; 13.1.2 (Tabla 13.2); Formulario T-19, ficha 1 \\
 \LFXfiletefila
 % ID: SD13-02
-\mbox{SD13-02} & Innovación 3: «es el RT-03.10 a RT-03.13 y las restricciones N° 2 y N° 3». & Se reemplaza por la vida útil remanente por historia térmica del lote (INN-03). La operación sin conexión y el registro continuo de temperatura quedan como alcance obligatorio; la innovación agrega la estimación por lote. & 13.3; 13.3.2 (Tabla 13.12); Formulario T-19, ficha 3 \\
+\mbox{SD13-02} & Innovación 3: «es el RT-03.10 a RT-03.13 y las restricciones N° 2 y N° 3». & \textbf{Documentado.} Se reemplaza por la vida útil remanente por historia térmica del lote (INN-03). La operación sin conexión y el registro continuo de temperatura quedan como alcance obligatorio; la innovación agrega la estimación por lote. & 13.3; 13.3.2 (Tabla 13.12); Formulario T-19, ficha 3 \\
 \LFXfiletefila
 % ID: SD13-03
-\mbox{SD13-03} & Innovación 2: el picking por olas y el FEFO son estándar; «lo propio sería la secuenciación térmica, que no se diseña». & Se reemplaza por la reproducción de incidentes de terreno (INN-02), con su circuito de cuatro pasos, su contrato de evidencia y la explicación de por qué no es práctica estándar. El FEFO queda como alcance obligatorio (RF-05.05). & 13.2; 13.2.2 (Tabla 13.7); Anexo 13.A \\
+\mbox{SD13-03} & Innovación 2: el picking por olas y el FEFO son estándar; «lo propio sería la secuenciación térmica, que no se diseña». & \textbf{Documentado.} Se reemplaza por la reproducción de incidentes de terreno (INN-02), con su circuito de cuatro pasos, su contrato de evidencia y la explicación de por qué no es práctica estándar. El FEFO queda como alcance obligatorio (RF-05.05). & 13.2; 13.2.2 (Tabla 13.7); Anexo 13.A \\
 \LFXfiletefila
 % ID: SD13-04
-\mbox{SD13-04} & Innovación 4: «no coincide con la restricción N° 9 y no se refleja en la estructura de costos ni en el flujo de caja». & Se reemplaza por el tramo variable de la Operación ligado al costo de servir (INN-04). El acompañamiento se ofrece como servicio costeado, según la restricción 9, y el flujo de caja separa costo, ingreso fijo, ingreso contingente y beneficio del CLIENTE por mes. & 13.4.1; 13.4.5 (Tabla 13.20); Formulario T-19, ficha 4 \\
+\mbox{SD13-04} & Innovación 4: «no coincide con la restricción N° 9 y no se refleja en la estructura de costos ni en el flujo de caja». & \textbf{Documentado.} Se reemplaza por el tramo variable de la Operación ligado al costo de servir (INN-04). El acompañamiento se ofrece como servicio costeado, según la restricción 9, y el flujo de caja separa costo, ingreso fijo, ingreso contingente y beneficio del CLIENTE por mes. & 13.4.1; 13.4.5 (Tabla 13.20); Formulario T-19, ficha 4 \\
 \LFXfiletefila
 % ID: SD13-05
-\mbox{SD13-05} & Innovación 5: supone WhatsApp en un cliente sin internet (restricción N° 5) y no existe en el catálogo del Subdocumento 3 ni en los módulos del 4.1 (RT-26.01). & Se reemplaza por la hoja de negocio del almacenero (INN-05), entregada en la visita en la pantalla del preventista o impresa en la entrega siguiente, sin dispositivo ni conexión del cliente. Usa M3, M6 y M10, la aplicación C-01 y la impresora de cabina ya ofertadas. & 13.5.2; 13.5.4; Anexo 13.B \\
+\mbox{SD13-05} & Innovación 5: supone WhatsApp en un cliente sin internet (restricción N° 5) y no existe en el catálogo del Subdocumento 3 ni en los módulos del 4.1 (RT-26.01). & \textbf{Documentado.} Se reemplaza por la hoja de negocio del almacenero (INN-05), entregada en la visita en la pantalla del preventista o impresa en la entrega siguiente, sin dispositivo ni conexión del cliente. Usa M3, M6 y M10, la aplicación C-01 y la impresora de cabina ya ofertadas. & 13.5.2; 13.5.4; Anexo 13.B \\
 \LFXfiletefila
 % ID: SD13-06
-\mbox{SD13-06} & Falta el nivel de madurez con la escala utilizada (RT-26.03). & Cada innovación declara su nivel en la escala TRL de la Comisión Europea (2016), con el nivel de partida, los niveles objetivo con su mes y las fuentes que los sustentan. & 13.1.3 a 13.5.3; Formulario T-19, campo 5 \\
+\mbox{SD13-06} & Falta el nivel de madurez con la escala utilizada (RT-26.03). & \textbf{Documentado.} Cada innovación declara su nivel en la escala TRL de la Comisión Europea (European Commission, 2016), con el nivel de partida, los niveles objetivo con su mes y las fuentes que los sustentan. & 13.1.3 a 13.5.3; Formulario T-19, campo 5 \\
 \LFXfiletefila
 % ID: SD13-07
-\mbox{SD13-07} & Falta el diseño de incorporación: capa y componentes de la arquitectura, paquetes de la EDT y mes del cronograma (RT-26.01 y RT-26.02). & Cada innovación declara capas, componentes, módulos, contrato de datos, paquetes del Formulario T-14 y mes de materialización. & 13.1.4 a 13.5.4; Anexos 13.A y 13.B; Formulario T-19, campos 7 a 9 \\
+\mbox{SD13-07} & Falta el diseño de incorporación: capa y componentes de la arquitectura, paquetes de la EDT y mes del cronograma (RT-26.01 y RT-26.02). & \textbf{Documentado.} Cada innovación declara capas, componentes, módulos, contrato de datos, paquetes del Formulario T-14 y mes de materialización. & 13.1.4 a 13.5.4; Anexos 13.A y 13.B; Formulario T-19, campos 7 a 9 \\
 \LFXfiletefila
 % ID: SD13-08
-\mbox{SD13-08} & Falta el impacto económico: inversión, costo operacional y beneficio (RT-26.05). & Cada innovación ubica sus rubros por clase y mes en el flujo de caja, sin montos (Art. 50.2). & 13.1.5 a 13.5.5; Anexo 13.B; Formulario T-19, campos 10 a 12 \\
+\mbox{SD13-08} & Falta el impacto económico: inversión, costo operacional y beneficio (RT-26.05). & \textbf{Documentado.} Cada innovación ubica sus rubros por clase y mes en el flujo de caja, sin montos (Art. 50.2). & 13.1.5 a 13.5.5; Anexo 13.B; Formulario T-19, campos 10 a 12 \\
 \LFXfiletefila
 % ID: SD13-09
-\mbox{SD13-09} & Falta el riesgo de adopción con probabilidad, impacto, mitigación y contingencia (RT-26.04). & Cada innovación remite a su ficha R8-25 a R8-29 del Anexo 8.A, con probabilidad, impacto y exposición en la escala del Capítulo 8, mitigación y contingencia. & 13.1.7 a 13.5.7; Anexo 13.C (Tabla 13.C.2); Formulario T-19, campos 15 a 17 \\
+\mbox{SD13-09} & Falta el riesgo de adopción con probabilidad, impacto, mitigación y contingencia (RT-26.04). & \textbf{Documentado.} Cada innovación remite a su ficha R8-25 a R8-29 del Anexo 8.A, con probabilidad, impacto y exposición en la escala del Capítulo 8, mitigación y contingencia. & 13.1.7 a 13.5.7; Anexo 13.C (Tabla 13.C.2); Formulario T-19, campos 15 a 17 \\
 \LFXfiletefila
 % ID: SD13-10
-\mbox{SD13-10} & «“Investigación adicional: Sí” en las cinco equivale a declarar que la innovación no está diseñada». & Cada innovación declara qué falta investigar, en qué paquete y meses se resuelve y con qué indicador se valida. & 13.1.3 a 13.5.3; Anexo 13.B (Tabla 13.B.2) \\
+\mbox{SD13-10} & «“Investigación adicional: Sí” en las cinco equivale a declarar que la innovación no está diseñada». & \textbf{Documentado.} Cada innovación declara qué falta investigar, en qué paquete y meses se resuelve y con qué indicador se valida. & 13.1.3 a 13.5.3; Anexo 13.B (Tabla 13.B.2) \\
 \LFXfiletefila
 % ID: SD13-11
-\mbox{SD13-11} & Los indicadores no tienen momento de medición ni línea base; la innovación 5 compromete un valor al mes 24 de Operación, sin medición intermedia. & Cada indicador tiene línea base, meta y momento de medición. Donde no existe historia se declara «Sin medición» y no se inventa un valor. La innovación 5 mide en los meses 13 y 14, 27 y 33. & Tablas 13.5, 13.10, 13.15, 13.21 y 13.26; Anexo 13.C (Tabla 13.C.1) \\
+\mbox{SD13-11} & Los indicadores no tienen momento de medición ni línea base; la innovación 5 compromete un valor al mes 24 de Operación, sin medición intermedia. & \textbf{Documentado.} Cada indicador tiene línea base, meta y momento de medición. Donde no existe historia se declara «Sin medición» y no se inventa un valor. La innovación 5 mide en los meses 13 y 14, 27 y 33. & Tablas 13.5, 13.10, 13.15, 13.21 y 13.26; Anexo 13.C (Tabla 13.C.1) \\
 \LFXfiletefila
 % ID: SD13-12
-\mbox{SD13-12} & Crítico: el Formulario T-19 no fue entregado. & Se presenta el Formulario T-19 en archivo propio, con una ficha por innovación y sus 17 campos. & Formulario T-19 \\
+\mbox{SD13-12} & Crítico: el Formulario T-19 no fue entregado. & \textbf{Documentado.} Se presenta el Formulario T-19 en archivo propio, con una ficha por innovación y sus 17 campos. & Formulario T-19 \\
 \LFXfiletefila
 % ID: SD13-13
-\mbox{SD13-13} & Crítico: la innovación 5 trae precios en dólares (Art. 50.2). & Ningún monto en el capítulo ni en el formulario. El impacto se expresa por rubro, clase y mes, y la valorización va en la Oferta Económica, Entregable 2, ítem 2.7. & 13.1.5 a 13.5.5; Formulario T-19, campos 10 a 12 \\
+\mbox{SD13-13} & Crítico: la innovación 5 trae precios en dólares (Art. 50.2). & \textbf{Documentado.} Ningún monto en el capítulo ni en el formulario. El impacto se expresa por rubro, clase y mes, y la valorización va en la Oferta Económica, Entregable 2, ítem 2.7. & 13.1.5 a 13.5.5; Formulario T-19, campos 10 a 12 \\
 \LFXfiletefila
 % ID: SD13-14
-\mbox{SD13-14} & Las fuentes no se citan dentro del texto; la versión 1.2 de EPCIS está superada por la 2.0 (2022). & Las fuentes se citan en APA 7.ª en el punto de uso, con correspondencia uno a uno con la lista. EPCIS 2.0 (GS1 AISBL, 2022) sustenta la tecnología y la madurez de la innovación 3. & 13.1.3 a 13.5.3; 13.3.2; 13.3.3; Referencias \\
+\mbox{SD13-14} & Las fuentes no se citan dentro del texto; la versión 1.2 de EPCIS está superada por la 2.0 (2022). & \textbf{Documentado.} Las fuentes se citan en APA 7.ª en el punto de uso, con correspondencia uno a uno con la lista. EPCIS 2.0 (GS1 AISBL, 2022) sustenta la tecnología y la madurez de la innovación 3. & 13.1.3 a 13.5.3; 13.3.2; 13.3.3; Referencias \\
 \LFXfiletefila
 % ID: SD13-15
-\mbox{SD13-15} & «Siete páginas sin una figura: ninguna innovación se ubica en un diagrama de la arquitectura». & La Figura 13.1 ubica las cinco innovaciones sobre las capas de la arquitectura, y las Figuras 13.2 a 13.6 recorren cada una. Cada figura se cita antes y se explica después. & Introducción (Figura 13.1); 13.1.4 a 13.5.4 \\
+\mbox{SD13-15} & «Siete páginas sin una figura: ninguna innovación se ubica en un diagrama de la arquitectura». & \textbf{Documentado.} La Figura 13.1 ubica las cinco innovaciones sobre las capas de la arquitectura, y las Figuras 13.2 a 13.6 recorren cada una. Cada figura se cita antes y se explica después. & Introducción (Figura 13.1); 13.1.4 a 13.5.4 \\
 \LFXfiletefila
 % ID: SD13-16
-\mbox{SD13-16} & OK: el anexo descarta bien lo que es requisito y no innovación: ruteo automático, costo de servir y registro continuo de temperatura. & Se mantiene el criterio. Cada innovación separa en una tabla lo que ya es alcance obligatorio de lo que agrega; el registro continuo de temperatura (criterio 3) y el costo de servir (criterio 11 y RF-11.08) se declaran alcance obligatorio y no innovación. & Tablas 13.2, 13.7, 13.12, 13.17 y 13.23; 13.3; 13.4.1 \\
+\mbox{SD13-16} & OK: el anexo descarta bien lo que es requisito y no innovación: ruteo automático, costo de servir y registro continuo de temperatura. & \textbf{Se mantiene.} El criterio se conserva: cada innovación separa en una tabla lo que ya es alcance obligatorio de lo que agrega; el registro continuo de temperatura (criterio 3) y el costo de servir (criterio 11 y RF-11.08) se declaran alcance obligatorio y no innovación. & Tablas 13.2, 13.7, 13.12, 13.17 y 13.23; 13.3; 13.4.1 \\
 \LFXfiletefila
 % ID: SD13-17
-\mbox{SD13-17} & General: ningún archivo tiene logotipo, plantilla, paleta, encabezado ni pie de página. & Plantilla única de LafroX, con isotipo, encabezado y pie en todas las páginas. & Subdocumento, anexos y Formulario T-19 \\
+\mbox{SD13-17} & General: ningún archivo tiene logotipo, plantilla, paleta, encabezado ni pie de página. & \textbf{Documentado.} El subdocumento, los anexos y el T-19 usan la plantilla única de LafroX, con isotipo, encabezado y pie en todas las páginas. & Subdocumento, anexos y Formulario T-19 \\
 \LFXfiletefila
 % ID: SD13-18
-\mbox{SD13-18} & General: las portadas incluyen datos ajenos a la licitación y están rotuladas «Formulario T-22», que es un formulario del CLIENTE. & Portada con la identidad de LafroX, sin datos ajenos a la licitación ni rótulo de formularios del CLIENTE. & Portada \\
+\mbox{SD13-18} & General: las portadas incluyen datos ajenos a la licitación y están rotuladas «Formulario T-22», que es un formulario del CLIENTE. & \textbf{Documentado.} La portada lleva la identidad de LafroX, sin datos ajenos a la licitación ni rótulos de formularios del CLIENTE. & Portada \\
 \LFXfiletefila
 % ID: SD13-19
-\mbox{SD13-19} & General: los Subdocumentos 1, 2, 3, 5 y 13 en Arial y tamaño A4; cuerpo que aparenta ser inferior a 11 puntos. & Tamaño carta y cuerpo de 11 puntos (Art. 40.4). & Subdocumento, anexos y Formulario T-19 \\
+\mbox{SD13-19} & General: los Subdocumentos 1, 2, 3, 5 y 13 en Arial y tamaño A4; cuerpo que aparenta ser inferior a 11 puntos. & \textbf{Documentado.} Los tres documentos usan tamaño carta y cuerpo de 11 puntos (Art. 40.4). & Subdocumento, anexos y Formulario T-19 \\
 \LFXfiletefila
 % ID: SD13-20
-\mbox{SD13-20} & General: el archivo abre con una hoja que sólo dice «Página en blanco a propósito», con errata. & Se elimina la hoja. & Inicio del documento \\
+\mbox{SD13-20} & General: el archivo abre con una hoja que sólo dice «Página en blanco a propósito», con errata. & \textbf{Documentado.} La hoja se eliminó. & Inicio del documento \\
 \LFXfiletefila
 % ID: SD13-21
-\mbox{SD13-21} & General: ningún archivo tiene índice, numeración de páginas ni firma (Art. 40° y 53°). & Índice detallado hasta el tercer nivel, folio correlativo y zona de media firma en el extremo inferior derecho de cada página. & Índice; pie de página \\
+\mbox{SD13-21} & General: ningún archivo tiene índice, numeración de páginas ni firma (Art. 40° y 53°). & \textbf{Documentado.} El índice llega hasta el tercer nivel, y cada página posterior a la portada lleva folio correlativo y media firma en el extremo inferior derecho. & Índice; pie de página \\
 \LFXfiletefila
 % ID: SD13-22
-\mbox{SD13-22} & Transversal: marcadores, instrucciones y notas de proceso dentro del entregable; nombres de archivo como fuente. & El capítulo no contiene marcadores, notas de proceso ni nombres de archivo como fuente, y cierra con la Declaración de uso de IA por sección, anexo y formulario (Aclaración 7.2). & Subdocumento completo; Declaración de uso de IA \\
+\mbox{SD13-22} & Transversal: marcadores, instrucciones y notas de proceso dentro del entregable; nombres de archivo como fuente. & \textbf{Documentado.} El capítulo no contiene marcadores, notas de proceso ni nombres de archivo como fuente, y cierra con la Declaración de uso de IA por sección, anexo y formulario (Distribuidora Puelche S.A., 2026d, sección 7.2). & Subdocumento completo; Declaración de uso de IA \\
 \LFXfiletefila
 % ID: SD13-23
-\mbox{SD13-23} & Transversal: la propuesta se contradice entre subdocumentos en decisiones de diseño. & Las innovaciones usan los componentes, módulos, meses y responsables del Subdocumento 1, del Capítulo 4, del Formulario T-14, del Anexo 7.D y del Anexo 8.A. & 13.1.4 a 13.5.4; Anexo 13.B \\
+\mbox{SD13-23} & Transversal: la propuesta se contradice entre subdocumentos en decisiones de diseño. & \textbf{Documentado.} Las innovaciones usan los componentes, módulos, meses y responsables del Subdocumento 1, del Capítulo 4, del Formulario T-14, del Anexo 7.D y del Anexo 8.A. & 13.1.4 a 13.5.4; Anexo 13.B \\
 \LFXfiletefila
 % ID: SD13-24
-\mbox{SD13-24} & Transversal: no es posible seguir un requerimiento desde el problema hasta un componente de la arquitectura. & Cada innovación separa lo que ya es alcance obligatorio con sus RF y RT, y el Anexo 13.B la traza a capas, componentes, módulos, paquetes, riesgos y flujo de caja. & Tablas 13.2, 13.7, 13.12, 13.17 y 13.23; Anexo 13.B \\
+\mbox{SD13-24} & Transversal: no es posible seguir un requerimiento desde el problema hasta un componente de la arquitectura. & \textbf{Documentado.} Cada innovación separa lo que ya es alcance obligatorio con sus RF y RT, y el Anexo 13.B la traza a capas, componentes, módulos, paquetes, riesgos y flujo de caja. & Tablas 13.2, 13.7, 13.12, 13.17 y 13.23; Anexo 13.B \\
 \end{longtable}
 }
-\clearpage
+\Needspace{24\baselineskip}
 \subsection{Observación transversal}
 {\linespread{1}\LFXcuerpotabla
 \setlength{\parskip}{0pt}
 \renewcommand{\arraystretch}{1.10}
 \setlength{\tabcolsep}{4pt}
 \begin{longtable}{F{0.10} F{0.27} F{0.43} F{0.20}}
-\caption{Observaciones y respuestas --- observación transversal}\\[2pt]
+\caption[Observaciones y respuestas --- observación transversal]{Observaciones y respuestas --- observación transversal. Fuente: revisión del Informe 1 y los Subdocumentos 1 a 5 y 13 de LafroX.}\\[2pt]
 \LFXtopruleoriginal \cab{N.º} & \cab{Observación del Informe 1} & \cab{Respuesta} & \cab{Sección modificada} \\ \midrule
 \endfirsthead
 \multicolumn{4}{@{}l@{}}{\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}Tabla \thetable\ --- Observación transversal (continuación)}\\[3pt]
@@ -797,166 +800,81 @@ La tabla consolida, en un solo formato, las observaciones que la revisión del I
 \bottomrule
 \endlastfoot
 % ID: TR-01
-\mbox{TR-01} & Transversal: fundamentación ingenieril. Hay decisiones correctas y propias del caso, pero enterradas en tablas: sin diagramas explicados, sin cálculos a la vista y sin análisis en prosa. & \textbf{Documentado.} Las decisiones se presentan con figuras explicadas en el texto: Figura 1.1 en el SD1, Figuras 2.1–2.6 en el SD2, Figuras 3.1–3.8 en el SD3, figuras 1–29 en el SD4, Figuras 5.1–5.10 en el SD5 y Figuras 13.1–13.6 en el SD13. Los cálculos quedan a la vista: dotación del NOC en el SD1 (4×7+4=32), reentregas en el SD2 (1.400 × 0,042 = 58,8 ≈ 59 al día), memoria de cálculo del SD4 (4.2.6 y Anexo 4-W) y volumen de migración y escenarios de carga del SD5 (Tablas 5.2 y 5.3). Las decisiones se analizan en prosa: reglas sensibles del SD3 (3.2.4), comparación de alternativas y 22 ADR del SD4 (4.1.13 y Anexo 4-O) y compromisos de persistencia del SD5 (5.2). & SD1–SD5 y SD13; filas SD1-04, SD1-16, SD2-13, SD2-31, SD3-07, SD3-35, SD4-09, SD4-45, SD5-01, SD5-07, SD5-09 y SD13-15 \\
+\mbox{TR-01} & Transversal: fundamentación ingenieril. Hay decisiones correctas y propias del caso, pero enterradas en tablas: sin diagramas explicados, sin cálculos a la vista y sin análisis en prosa. & \textbf{Documentado.} Las decisiones se presentan con figuras explicadas en el texto: Figura 1.1 en el SD1, Figuras 2.1–2.6 en el SD2, Figuras 3.1–3.8 en el SD3, figuras 1–29 en el SD4, Figuras 5.1–5.10 en el SD5 y Figuras 13.1–13.6 en el SD13. Los cálculos quedan a la vista: dotación del NOC en el SD1 (4×7+4=32), reentregas en el SD2 (1.400 × 0,042 = 58,8 ≈ 59 al día), memoria de cálculo del SD4 (4.2.6 y Anexo 4-W) y volumen de migración y escenarios de carga del SD5 (Tablas 5.2 y 5.3). Las decisiones se analizan en prosa: reglas sensibles del SD3 (3.2.4), comparación de alternativas y 22 ADR del SD4 (4.1.13 y Anexo 4-O) y compromisos de persistencia del SD5 (5.2). & SD1–SD5 y SD13; SD1-04, SD1-16, SD2-13, SD2-31, SD3-07, SD3-35, SD4-09, SD4-45, SD5-01, SD5-07, SD5-09 y SD13-15 \\
 \end{longtable}
 }
-\Needspace{6\baselineskip}
-\section{Notas por subdocumento}
-\Needspace{6\baselineskip}
-\subsection{Subdocumento 1}
-La tabla relaciona las observaciones del Informe 1 con sus respuestas y las secciones correspondientes del Subdocumento 1, sus anexos y formularios asociados. «Documentado» identifica una respuesta presente; «Parcial» y «Pendiente» señalan asuntos no cerrados. Estos estados no equivalen a aceptación del CLIENTE.
-
-\Needspace{6\baselineskip}
-\subsection{Subdocumento 2}
-La tabla relaciona las observaciones del Informe 1 con sus respuestas y las secciones correspondientes del Subdocumento 2, sus anexos y formularios asociados. «Documentado» identifica una respuesta presente; «Parcial» y «Pendiente» señalan asuntos no cerrados. Estos estados no equivalen a aceptación del CLIENTE.
-
-\Needspace{6\baselineskip}
-\subsection{Subdocumento 3}
-La tabla relaciona las observaciones del Informe 1 con sus respuestas y las secciones correspondientes del Subdocumento 3, sus anexos y formularios asociados. «Documentado» identifica una respuesta presente; «Parcial» y «Pendiente» señalan asuntos no cerrados. Estos estados no equivalen a aceptación del CLIENTE.
-
-\Needspace{6\baselineskip}
-\subsection{Subdocumento 4}
-\Needspace{6\baselineskip}
-\subsubsection{Fuente y alcance}
-Esta tabla responde a los apartados \textbf{SUBDOCUMENTO 4.1} y \textbf{SUBDOCUMENTO 4.2} de G02-C02-LOGISTICA-LAFROX-Revision Informe 1.pdf, páginas 9–14. Se excluyen el contenido del SD3 anterior al inicio del apartado 4.1 en la página 9 y el SD5 posterior al cierre del apartado 4.2 en la página 14. Las instrucciones del PDF se tratan como observaciones evaluativas.
-
-Las observaciones se sintetizan, sin pretender ser citas literales ni reproducir una numeración que el PDF no contiene. Se conservan EL-01–EL-21 y EF-01–EF-25 como identificadores del registro previo, y se añaden EF-26–EF-28 para tres puntos explícitos del PDF que no tenían respuesta propia. Se añaden también EL-22, EF-29 y EF-30 para los puntos del apartado General del PDF que alcanzan al Subdocumento 4; su primera columna indica ese apartado en lugar de una página. Algunas filas agrupan observaciones del mismo tema; los puntos positivos también se conservan. Las exigencias de «Qué se espera en el Informe 2» se vinculan a los temas correspondientes, incluida la presentación con índice, folio y firma en EF-01.
-
-Las páginas indicadas en las observaciones corresponden al \textbf{PDF de revisión}, no al entregable actual. La columna «Sección modificada» localiza la respuesta en SD4, anexos y T-11. Las referencias a SD3 o T-12 se mantienen únicamente cuando la observación del SD4 requiere comprobar consistencia o trazabilidad. No se incluye una auditoría independiente de esos documentos.
-
-«Documentado» significa que existe una respuesta de diseño o contenido identificada. No acredita aprobación del evaluador, exactitud de cada afirmación, pruebas ejecutadas ni conformidad final. La cobertura de observaciones no equivale a una acreditación integral de los entregables.
-
-La tabla relaciona cada observación con su respuesta, condición de cierre y ubicación documental.
-
-\Needspace{6\baselineskip}
-\subsubsection{Qué falta para acreditar el cierre}
-La cobertura del PDF adjunto queda registrada en la tabla, incluidos los tres puntos añadidos. No quedan identificadas observaciones del SD4 excluidas deliberadamente. Sin embargo, la cobertura de una tabla de respuestas no demuestra que todos los reparos del entregable estén cerrados. Siguen requiriendo comprobación los siguientes puntos, vinculados a las observaciones originales:
-
-\begin{itemize}
-\item \begin{samepage}
-\textbf{Trazabilidad individual y consistencia entre capítulos:} demostrar la suficiencia de la cadena requisito → módulo → capa → componente físico y cotejar etapas con SD3, no solo la existencia de matrices (EL-04, EL-17 y EF-03/24).
-\end{samepage}
-\item \begin{samepage}
-\textbf{Figuras y presentación final:} cotejar actores, etiquetas, recorridos y emplazamientos en los dibujos; comprobar legibilidad impresa, índice, folios y firma de los archivos finales (EL-01/03/20/21 y EF-01/04/05/13/22/26).
-\end{samepage}
-\item \begin{samepage}
-\textbf{Identidad y operación sin enlace:} verificar coherencia del permiso local, relevos, gateway, bloqueo térmico, funciones no disponibles y guía emitida por ERP antes de la salida (EL-14/15/16 y EF-18/20). Los ensayos previstos pertenecen a la aceptación del proyecto; no se exige inventar resultados para responder al Informe 1.
-\end{samepage}
-\item \begin{samepage}
-\textbf{Recuperación y residencia:} cerrar la condición de aprobación de la región secundaria y demostrar que la alternativa comprometida conserva el RTO requerido; la sola declaración del objetivo no resuelve la observación (EF-15).
-\end{samepage}
-\item \begin{samepage}
-\textbf{Implementos y capacidad:} cotejar cantidades por tipología, resistencia a caída, ciclo de vida, congelado, impresoras/POS, parque de 28 camiones, estudio inalámbrico, disponibilidad, almacenamiento y las dieciséis estimaciones con sus entradas y derivaciones (EF-08–EF-14, EF-19 y EF-23/24). Las mediciones futuras se distinguen de los cálculos de oferta.
-\end{samepage}
-\item \begin{samepage}
-\textbf{Limpieza de la oferta:} comprobar ausencia de comentarios al redactor, referencias históricas sin destino, precios y desarrollo de BI ajeno al propósito arquitectónico (EL-20 y EF-02/06/25).
-\end{samepage}
-\end{itemize}
-Estos son límites de cierre documental y de evidencia; no se afirma que todos sean defectos aún presentes ni que la ejecución de pruebas futuras deba haber ocurrido antes de presentar la propuesta.
-
-\Needspace{6\baselineskip}
-\subsection{Subdocumento 5}
-Respuestas documentales del cuerpo y los anexos vigentes, conforme al Art. 46. La tabla contiene las veinte observaciones del apartado del Subdocumento 5 en el Informe 1 y cuatro observaciones generales que lo alcanzaban, cada una con su respuesta y sección modificada. Los ensayos siguen programados para el proyecto; no se presume respuesta oficial a la consulta de códigos.
-
-\Needspace{6\baselineskip}
-\subsection{Subdocumento 13}
-El Art. 46 de las Bases Administrativas pide resolver en forma explícita las observaciones de la instancia anterior, con una tabla de trazabilidad observación–respuesta–sección modificada (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28). Las filas SD13-01 a SD13-16 responden las dieciséis observaciones al Capítulo 13, incluida la valoración positiva; las filas SD13-17 a SD13-24 responden las ocho observaciones generales y transversales aplicables.
-
-Filas SD13-01 a SD13-16: Observaciones al Capítulo 13 de la revisión del Informe 1. Fuente: elaboración a partir de las observaciones de la instancia anterior (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28).
-
-Las cinco innovaciones del Informe 1 se reemplazaron; por eso las filas 1 a 5 responden con una innovación nueva y no con un ajuste de la anterior. En la innovación 3, el filtro del Art. 30° de las Bases Administrativas (p. 20) se acredita con el alcance descrito en 13.3.2, que distingue técnicamente la incorporación propuesta de las funcionalidades ya exigidas, además de separarla del registro continuo obligatorio.
-
-Filas SD13-17 a SD13-24: Observaciones generales y transversales aplicables al Subdocumento 13. Fuente: elaboración a partir de las observaciones de la instancia anterior (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28).
-
-Las filas 17 a 24 recogen las observaciones de forma y de coherencia que la revisión dirigió a toda la entrega; aquí se responde sólo lo que corresponde a este subdocumento, sus anexos y su formulario.
-
 \microtypesetup{protrusion=false}
 \Needspace{6\baselineskip}
 \section{Referencias}
-\begin{itemize}
+\begin{itemize}[itemsep=1pt]
 \item \begin{samepage}
-Revisión del Informe 1, observaciones generales y apartados «SUBDOCUMENTO 1», «SUBDOCUMENTO 2», «SUBDOCUMENTO 3», «SUBDOCUMENTO 4.1», «SUBDOCUMENTO 4.2», «SUBDOCUMENTO 5» y «SUBDOCUMENTO 13».
+Agrawal, S., Singh, R. K., y Murtaza, Q. (2015). A literature review and perspectives in reverse logistics. \emph{Resources, Conservation and Recycling, 97}, 76–92. \url{https://doi.org/10.1016/j.resconrec.2015.02.009}
 \end{samepage}
 \item \begin{samepage}
-Subdocumento 1.
+Boulaksil, Y., y Belkora, M. J. (2017). Distribution strategies toward nanostores in emerging markets: The Valencia case. \emph{Interfaces, 47}(6), 505–517. \url{https://doi.org/10.1287/inte.2017.0914}
 \end{samepage}
 \item \begin{samepage}
-Formulario T-6.
+Chopra, S., y Meindl, P. (2016). \emph{Supply chain management: Strategy, planning, and operation} (6.ª ed.). Pearson.
 \end{samepage}
 \item \begin{samepage}
-Subdocumento 2.
+Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación}.
 \end{samepage}
 \item \begin{samepage}
-Anexos del Subdocumento 2.
+Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026}.
 \end{samepage}
 \item \begin{samepage}
-Subdocumento 3.
-\end{samepage}
-\item \begin{samepage}
-Anexos del Subdocumento 3.
-\end{samepage}
-\item \begin{samepage}
-Formulario T-12.
-\end{samepage}
-\item \begin{samepage}
-Subdocumento 4.
-\end{samepage}
-\item \begin{samepage}
-Anexos del Subdocumento 4.
-\end{samepage}
-\item \begin{samepage}
-Formulario T-11.
-\end{samepage}
-\item \begin{samepage}
-Subdocumento 5.
-\end{samepage}
-\item \begin{samepage}
-Anexos del Subdocumento 5.
-\end{samepage}
-\item \begin{samepage}
-Subdocumento 13.
-\end{samepage}
-\item \begin{samepage}
-Anexos del Subdocumento 13.
-\end{samepage}
-\item \begin{samepage}
-Matriz de cambios del Informe 1 al Informe 2 del Subdocumento 13.
-\end{samepage}
-\item \begin{samepage}
-Formulario T-19.
-\end{samepage}
-\item \begin{samepage}
-Bases Administrativas, artículo 46° y Formulario T-22.
-\end{samepage}
-\item \begin{samepage}
-Aclaraciones de la licitación.
-\end{samepage}
-\end{itemize}
-\Needspace{5\baselineskip}
-Referencias citadas en las filas del Subdocumento 13:
-
-Las citas a las Bases Administrativas y a las Bases Técnicas Transversales identifican el artículo o capítulo y la página impresa del PDF original, además del código RT cuando corresponde. Las referencias al caso se localizan por capítulo, sección o entrevista, sin exigir paginación. Las Aclaraciones se identifican por sección en la fuente disponible.
-
-\begin{itemize}
-\item \begin{samepage}
-Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación}, artículos 28 y 30, pp. 19–20, y artículo 46, p. 28.
-
-\end{samepage}
-\item \begin{samepage}
-Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026}, capítulo 26, RT-26.01 (p. 44), RT-26.07 y RT-26.08 (p. 45).
-
-\end{samepage}
-\item \begin{samepage}
-Distribuidora Puelche S.A. (2026d). \emph{Aclaraciones de la Licitación N.º TFEP-01/2026}, secciones 7.2 y 8.
-
+Distribuidora Puelche S.A. (2026d). \emph{Aclaraciones de la Licitación N.º TFEP-01/2026}.
 \end{samepage}
 \item \begin{samepage}
 European Commission. (2016). Technology readiness levels (TRL). En \emph{Horizon 2020 work programme 2016–2017: General annexes} (Anexo G). \url{https://ec.europa.eu/research/participants/data/ref/h2020/other/wp/2016_2017/annexes/h2020-wp1617-annex-g-trl_en.pdf}
-
+\end{samepage}
+\item \begin{samepage}
+Fildes, R., Ma, S., y Kolassa, S. (2022). Retail forecasting: Research and practice. \emph{International Journal of Forecasting, 38}(4), 1283–1318. \url{https://doi.org/10.1016/j.ijforecast.2019.06.004}
+\end{samepage}
+\item \begin{samepage}
+GS1. (2016). \emph{EANCOM® 2002 S4: Part I} (Edition 2016). \url{https://gs1.org/sites/gs1/files/docs/eancom/ean02s4/part1/part1toc.htm}
 \end{samepage}
 \item \begin{samepage}
 GS1 AISBL. (2022). \emph{EPC Information Services (EPCIS) standard} (versión 2.0). \url{https://ref.gs1.org/standards/epcis/2.0.0/}
-
+\end{samepage}
+\item \begin{samepage}
+GS1 Chile. (s. f.-a). \emph{Comparte: transferencia de información crítica para el intercambio comercial}. Recuperado el 11 de octubre de 2026, de \url{https://gs1chile.org/Estandares/comparte}
+\end{samepage}
+\item \begin{samepage}
+GS1 Chile. (s. f.-b). \emph{Identifica: claves de identificación}. Recuperado el 11 de octubre de 2026, de \url{https://gs1chile.org/Estandares/identifica}
+\end{samepage}
+\item \begin{samepage}
+GS1 Chile. (s. f.-c). \emph{Servicios: comunicación para transacciones electrónicas (EDI – Comercionet)}. Recuperado el 11 de octubre de 2026, de \url{https://gs1chile.org/Servicio/Detalle-de-Servicios}
+\end{samepage}
+\item \begin{samepage}
+Guerreiro, R., Bio, S. R., y Merschmann, E. V. V. (2008). Cost-to-serve measurement and customer profitability analysis. \emph{The International Journal of Logistics Management, 19}(3), 389–407. \url{https://doi.org/10.1108/09574090810919215}
+\end{samepage}
+\item \begin{samepage}
+de Koster, R., Le-Duc, T., y Roodbergen, K. J. (2007). Design and control of warehouse order picking: A literature review. \emph{European Journal of Operational Research, 182}(2), 481–501. \url{https://doi.org/10.1016/j.ejor.2006.07.009}
+\end{samepage}
+\item \begin{samepage}
+Ley N.º 21.719. (2024, 13 de diciembre). \emph{Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales}. Diario Oficial de la República de Chile. \url{https://www.bcn.cl/leychile/navegar?idNorma=1209272}
+\end{samepage}
+\item \begin{samepage}
+Mercier, S., Villeneuve, S., Mondor, M., y Uysal, I. (2017). Time–temperature management along the food cold chain: A review of recent developments. \emph{Comprehensive Reviews in Food Science and Food Safety, 16}(4), 647–667. \url{https://doi.org/10.1111/1541-4337.12269}
+\end{samepage}
+\item \begin{samepage}
+Ministerio de Salud. (1996). \emph{Decreto Supremo N.º 977: Aprueba Reglamento Sanitario de los Alimentos}. Diario Oficial de la República de Chile.
+\end{samepage}
+\item \begin{samepage}
+Ministerio del Trabajo y Previsión Social. (2002). \emph{Código del Trabajo de la República de Chile: Artículo 25 bis sobre jornada especial de transporte de carga}. Edición oficial.
+\end{samepage}
+\item \begin{samepage}
+Moberg, D., y Drummond, R. (2005). \emph{MIME-based secure peer-to-peer business data interchange using HTTP, Applicability Statement 2 (AS2)} (RFC 4130). Internet Engineering Task Force. \url{https://www.rfc-editor.org/rfc/rfc4130}
+\end{samepage}
+\item \begin{samepage}
+Servicio de Impuestos Internos. (2024). \emph{Manual de Procedimientos y Requisitos de Documentos Tributarios Electrónicos (DTE)}. SII Chile.
+\end{samepage}
+\item \begin{samepage}
+Toth, P., y Vigo, D. (Eds.). (2014). \emph{Vehicle routing: Problems, methods, and applications} (2.ª ed.). Society for Industrial and Applied Mathematics.
+\end{samepage}
+\item \begin{samepage}
+Vidal, T., Laporte, G., y Matl, P. (2020). A concise guide to existing and emerging vehicle routing problem variants. \emph{European Journal of Operational Research, 286}(2), 401–416. \url{https://doi.org/10.1016/j.ejor.2019.10.010}
 \end{samepage}
 \end{itemize}
 
