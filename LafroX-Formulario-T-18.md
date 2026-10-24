@@ -137,7 +137,7 @@ actual de trabajar durante su marcha blanca, con conciliación diaria y posibili
 atrás (Caso, sección 13.3, condición 1, p. 23; RT-20.03).
 • Fechas prohibidas. Ningún despliegue, paso a producción, inicio de ola ni corte de datos
 ocurre durante todo septiembre, durante diciembre ni en los tres primeros días hábiles
-de cada mes (Capítulo 4, Tabla 14, apartado 4.2.4.1.4). Del 1 al 25 de septiembre no se
+de cada mes (Capítulo 4, Tabla 8, apartado 4.2.4.1.4). Del 1 al 25 de septiembre no se
 interviene ningún sistema (Caso, cap. 15, RT-10.05, p. 27).
 • Olas, no un evento único. El despliegue avanza por proceso, por sitio y por zona comercial,
 LafroX SpA
