@@ -172,7 +172,7 @@ Resiliencia & Carga sostenida en curso; escenarios de falla aprobados por el Arq
 Recuperación ante desastres & Procedimiento de conmutación aprobado; conmutación fuera de congelamiento, de la ventana de 05:30 a 07:00 y de los tres primeros días hábiles del mes & RTO ≤ 4 h y RPO ≤ 15 min medidos en conmutación real, regional y del WMS de Talca (RT-07.04, RT-07.07; AL-DR-01) (BTT, p. 17) \\
 Seguridad ofensiva & Versión congelada en PRE-S; alcance acordado con el tercero & 0 hallazgos críticos o altos abiertos (RT-11.20) (BTT, p. 24) \\
 Perfil operacional & Dispositivos de producción, uno de cada tipo; personas del CLIENTE convocadas & Ver sección 7.3 \\
-Migración & Perfilado y saneamiento cerrados (3.7.1); mapeo del SD5, Anexo 5-L & Conciliación sin diferencias no explicadas en cada ensayo; tiempos medidos compatibles con la ventana y con la reversión (SD5, 5.3.5) \\
+Migración & Perfilado y saneamiento cerrados (3.7.1); mapeo del SD5, Anexo 5-K & Conciliación sin diferencias no explicadas en cada ensayo; tiempos medidos compatibles con la ventana y con la reversión (SD5, 5.3.5) \\
 Despliegue sin interrupción & Estrategia canario configurada & Despliegue y reversión sin interrupción del servicio y sin intervención manual (RT-04.06, RT-04.07) (BTT, p. 11) \\
 \end{tablasimple}
 \fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts. 17.3 y 24, pp. 13, 17); Distribuidora Puelche S.A. (2026b, sección 20.1, pp. 34--35); Distribuidora Puelche S.A. (2026c, cap. 15); LafroX (2026q, Anexos 9, anexos 9.A y 9.B); LafroX (2026f, T-17, sección 4).}
@@ -203,7 +203,7 @@ Escalón de quiebre & 14,66 TPS & 4 & 58,64 TPS \\
 \end{tablasimple}
 \fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 24, p. 17); Distribuidora Puelche S.A. (2026b, RT-09.03 y RT-09.06, p. 21); LafroX (2026m, SD4, secciones 4.2.6.3, 4.2.6.4 y 4.2.6.7); LafroX (2026l, Anexos 4, secciones 4-W.2, 4-W.3 y 4-W.6).}
 
-\textbf{Umbrales de salida (p95, SD4, Tabla 31):} confirmación de línea de preparación ≤ 1 s; registro de entrega ≤ 2 s; línea de preventa ≤ 1,5 s; consulta de stock y crédito ≤ 2 s; transacción crítica de terreno ≤ 3 s; carga inicial del portal ≤ 2 s; navegación ≤ 1 s; API de consulta ≤ 500 ms; API de escritura ≤ 800 ms; búsqueda compuesta ≤ 3 s y búsqueda global ≤ 2 s; informe estándar ≤ 30 s.
+\textbf{Umbrales de salida (p95, SD4, Tabla 21):} confirmación de línea de preparación ≤ 1 s; registro de entrega ≤ 2 s; línea de preventa ≤ 1,5 s; consulta de stock y crédito ≤ 2 s; transacción crítica de terreno ≤ 3 s; carga inicial del portal ≤ 2 s; navegación ≤ 1 s; API de consulta ≤ 500 ms; API de escritura ≤ 800 ms; búsqueda compuesta ≤ 3 s y búsqueda global ≤ 2 s; informe estándar ≤ 30 s.
 
 \textbf{Ventana de despacho.} La prueba de 10,41 TPS concentra la emisión de guías en los 90 minutos. Su criterio de salida incluye 0 minutos de indisponibilidad (Caso, RT-10.05).
 
@@ -280,7 +280,7 @@ AL-PERF-01 & Carga de 3× con mamparos por perfil & Carga y estrés (3.8.4; 3.9.
 AL-STOCK-01 & Última unidad pedida desde preventa, portal y EDI, con cortes y acuses perdidos & Integración (3.8.1; 3.9.1) \\
 AL-ACT-01 & Cada actor con una operación permitida y una denegada & Integración (3.8.1; 3.9.1) \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de LafroX (2026l, Anexos 4, anexo 4-V, protocolos AL-DTE-01 a AL-SYNC-01); LafroX (2026d, T-14, paquetes indicados en cada fila).}
+\fuentesd{Fuente: elaboración a partir de LafroX (2026l, Anexos 4, anexo 4-V, protocolos AL-DTE-01 a AL-ACT-01); LafroX (2026d, T-14, paquetes indicados en cada fila).}
 
 Cada protocolo deja su acta con la carga, la falla inyectada, el resultado observado y los responsables, y esa acta forma parte del expediente del H5 o del H10 (T-17, sección 3.1).
 
@@ -404,7 +404,7 @@ Las resiliencias de septiembre (meses 32 y 44) se ejecutan en Preproducción, po
 La severidad se asigna según el servicio afectado y determina el bloqueo de la promoción. El registro conserva requisito, versión, prueba y evidencia de cierre.
 
 \begin{tablasimple}{>{\hsize=0.338\hsize\linewidth=\hsize}Y >{\hsize=1.846\hsize\linewidth=\hsize}Y >{\hsize=0.816\hsize\linewidth=\hsize}Y}
-  {\cab{Severidad} & \cab{Definición (alineada con el SD4, Tabla 16)} & \cab{Efecto en las pruebas}}
+  {\cab{Severidad} & \cab{Definición (alineada con el SD4, sección 4.2.4.3)} & \cab{Efecto en las pruebas}}
 Crítica & Afecta un servicio de nivel crítico: preparación y despacho con emisión de guía en la ventana de 05:30 a 07:00, bloqueo por excursión térmica o identidad de bodega & Detiene la promoción; puede suspender la campaña \\
 Alta & Afecta un servicio de nivel alto: preventa y consulta de stock y crédito, entrega y su evidencia, rutas, documentos tributarios, ERP, cobranza, registro de temperatura & Detiene la promoción \\
 Media & Afecta un servicio de nivel medio con alternativa operativa & Se registra y se planifica \\
