@@ -1,0 +1,1082 @@
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LC_ALL = "C.UTF-8",
+	LC_CTYPE = "C.UTF-8",
+	LC_NUMERIC = (unset),
+	LC_COLLATE = (unset),
+	LC_TIME = (unset),
+	LC_MONETARY = (unset),
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the system default locale ("Spanish_Mexico.1252").
+Initial Win CP for (console input, console output, system): (CP850, CP65001, CP1252)
+I changed them all to CP1252
+Rc files read (in order):
+  ./latexmkrc
+Latexmk: This is Latexmk, John Collins, 9 March 2026. Version 4.88.
+Force everything to be remade.
+Latexmk: applying rule 'lualatex'...
+Rule 'lualatex':  Reasons for rerun
+Category 'other':
+  Rerun of 'lualatex' forced or previously required:
+    Reason or flag: 'go_mode'
+
+------------
+Run number 1 of rule 'lualatex'
+------------
+------------
+Running 'lualatex --interaction=nonstopmode --halt-on-error --no-shell-escape --synctex=1  -recorder  "LAFROX-Subdocumento13.tex"'
+------------
+This is LuaHBTeX, Version 1.24.0 (MiKTeX 25.12)
+(./LAFROX-Subdocumento13.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+ (./lafrox.cls
+Document Class: lafrox 2026/09/17 v2.2 Clase corporativa LafroX, tema minimalis
+ta
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/report.cls
+Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/size11.clo))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg))
+ (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/color.cfg)
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics-def/luatex.def
+)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/mathcolor.ltx)
+) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/colortbl/colortbl.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/dvipsnam.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/xparse/xpars
+e.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/l3kernel/expl3.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-lua
+tex.def)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec-luate
+x.sty (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/fontenc.sty)
+ (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.cfg)
+)) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/plex/plex-mono.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifxetex.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifluatex.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkeyval.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkvutils.tex)
+)) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/textcomp.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th-luatex.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/l3keys2e/l3k
+eys2e.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/fix-cm.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1enc.def))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amstext.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsgen.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsbsy.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsopn.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/lualatex/lualatex-math/lualat
+ex-math.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/etoolbox/etoolbox.sty))
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th-table.tex)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/was/icomma.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype.sty
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype-lua
+tex.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype.cfg
+)) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def)
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/arabi/bblopts.cfg)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/babel/locale/es/babel
+-spanish.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/babel-spanish/spanish.l
+df
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/hyph-utf8/loadhyph/lo
+adhyph-es.tex UTF-8 Spanish hyphenation patterns
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/hyph-utf8/patterns/te
+x/hyph-es.tex))))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.cfg))
+ (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphicx.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphics.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/graphics.c
+fg)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/frontendlayer/tikz.
+sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgf.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfrcs.st
+y
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-common.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-latex.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfrcs.
+code.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/pgf.revision.tex)
+))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgfcore.
+sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/systemlayer/pgfsys.
+sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s.code.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+.code.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+libraryfiltered.code.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgf.c
+fg)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s-luatex.def
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s-common-pdf.def)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+ssoftpath.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+sprotocol.code.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+e.code.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathutil.
+code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathparse
+r.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.basic.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.trigonometric.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.random.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.comparison.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.base.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.round.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.misc.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.integerarithmetics.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathcalc.
+code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfloat
+.code.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfint.code.
+tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epoints.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathconstruct.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathusage.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+escopes.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+egraphicstate.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+etransformations.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+equick.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eobjects.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathprocessing.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+earrows.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eshade.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eimage.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eexternal.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+elayers.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+etransparency.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epatterns.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+erdf.code.tex)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+shapes.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+plot.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+mp-version-0-65.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+mp-version-1-18.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgffor.st
+y
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfkeys.s
+ty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+.code.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/math/pgfmath.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgffor.
+code.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/tikz.code.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryplothandlers.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+matrix.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarytopaths.code.tex)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarycalc.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarypositioning.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/booktabs/booktabs.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/tools/tabularx.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/tools/longtable.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/xltabular/xltabular.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/ltablex/ltablex.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/multirow/multirow.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/makecell/makecell.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/enumitem/enumitem.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titlesec.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titletoc.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/fancyhdr/fancyhdr.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption3.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/caption/ltcaption.sty))
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pdflscape/pdflscape.sty
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pdflscape/pdflscape-nom
+etadata.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/lscape.sty)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/eso-pic/eso-pic.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/ragged2e/ragged2e.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage2e.sty
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpagemodern
+.sty) 
+)) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/import/import.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hyperref.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/kvsetkeys/kvsetkeys.sty
+)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/kvdefinekeys/kvdefine
+keys.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pdfescape/pdfescape.s
+ty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/ltxcmds/ltxcmds.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pdftexcmds/pdftexcmds
+.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/infwarerr/infwarerr.s
+ty)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hycolor/hycolor.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/nameref.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/refcount/refcount.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/gettitlestring/gettit
+lestring.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/kvoptions/kvoptions.sty
+)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/stringenc/stringenc.s
+ty) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/pd1enc.def
+) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/intcalc/intcalc.sty
+) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/puenc.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/bitset/bitset.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/bigintcalc/bigintcalc
+.sty)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hluatex.def
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfil
+echeck.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/uniquecounter/uniquec
+ounter.sty)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bookmark.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bkm-luatex.def
+)) (./lafrox-portada.tex)) (./sd13-comun.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/flafter.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/placeins/placeins.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/float/float.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/xurl/xurl.sty))
+(./LAFROX-Subdocumento13.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: luatex
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
+ase.sty
+
+Package epstopdf Warning: Shell escape feature is not enabled.
+
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/00miktex/epstopdf-sys.c
+fg)) [1{C:/Users/alexa/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}<./logo
+/lafrox_isotipo_naranja.pdf><./logo/firma_representante.png>]
+(./LAFROX-Subdocumento13.toc [2<./logo/lafrox_isotipo_negro.pdf>]) [3]
+(./LAFROX-Subdocumento13.lot) [4] (./LAFROX-Subdocumento13.lof) [5]
+(./13_innovaciones/contenido.tex
+Capítulo 13.
+[6] [7] [8<./13_innovaciones/diagramas/Fig_13-1_Mapa_Innovaciones.pdf>]
+[9] [10] [11] [12<./13_innovaciones/diagramas/Fig_13-2_Recorrido_INN01.pdf>]
+[13] [14] [15] [16] [17] [18] [19] [20<./13_innovaciones/diagramas/Fig_13-3_Rec
+orrido_INN02.pdf>] [21] [22] [23] [24] [25] [26] [27] [28] [29<./13_innovacione
+s/diagramas/Fig_13-4_Recorrido_INN03.pdf>] [30] [31] [32] [33] [34] [35]
+[36] [37<./13_innovaciones/diagramas/Fig_13-5_Recorrido_INN04.pdf>] [38]
+[39] [40] [41] [42] [43] [44<./13_innovaciones/diagramas/Fig_13-6_Recorrido_INN
+05.pdf>] [45] [46] [47] [48] [49] [50]
+ignored error Infinite glue shrinkage found in box being split [51]) [52]
+
+enddocument/afterlastpage (AED): lastpage setting LastPage.
+(./LAFROX-Subdocumento13.aux))
+ 821 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 4 kern, 1 penalty, 3 glyph, 3
+4 attribute, 79 glue_spec, 19 attribute_list, 2 write, 8 pdf_action nodes
+   avail lists: 1:3,2:4103,3:832,4:509,5:2251,6:233,7:13409,8:116,9:2112,10:25,
+11:1571
+<C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/
+SourceSerif4-RegularIt.otf><C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/
+opentype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/Users/alexa/AppData/Local
+/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSerif4-Semibold.otf><C:
+/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/Sou
+rceSerif4-Regular.otf><c:/users/alexa/appdata/local/programs/miktex/fonts/opent
+ype/ibm/plex/ibmplexmono-regular.otf><C:/Users/alexa/AppData/Local/Programs/MiK
+TeX/fonts/opentype/adobe/sourcesans/SourceSans3-Regular.otf><C:/Users/alexa/App
+Data/Local/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Medium.o
+tf><C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourcesan
+s/SourceSans3-Semibold.otf>
+Output written on LAFROX-Subdocumento13.pdf (52 pages, 538602 bytes).
+SyncTeX written on LAFROX-Subdocumento13.synctex.gz.
+Transcript written on LAFROX-Subdocumento13.log.
+lualatex: major issue: So far, you have not checked for MiKTeX updates.
+Latexmk: Getting log file 'LAFROX-Subdocumento13.log'
+Latexmk: Examining 'LAFROX-Subdocumento13.fls'
+Latexmk: Examining 'LAFROX-Subdocumento13.log'
+Latexmk: Log file says output to 'LAFROX-Subdocumento13.pdf'
+Latexmk: All targets (LAFROX-Subdocumento13.pdf) are up-to-date
+
+Force everything to be remade.
+Latexmk: applying rule 'lualatex'...
+Rule 'lualatex':  Reasons for rerun
+Category 'other':
+  Rerun of 'lualatex' forced or previously required:
+    Reason or flag: 'go_mode'
+
+------------
+Run number 1 of rule 'lualatex'
+------------
+------------
+Running 'lualatex --interaction=nonstopmode --halt-on-error --no-shell-escape --synctex=1  -recorder  "LAFROX-Subdocumento13-Anexos.tex"'
+------------
+This is LuaHBTeX, Version 1.24.0 (MiKTeX 25.12)
+(./LAFROX-Subdocumento13-Anexos.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+ (./lafrox.cls
+Document Class: lafrox 2026/09/17 v2.2 Clase corporativa LafroX, tema minimalis
+ta
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/report.cls
+Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/size11.clo))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg))
+ (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/color.cfg)
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics-def/luatex.def
+)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/mathcolor.ltx)
+) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/colortbl/colortbl.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/dvipsnam.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/xparse/xpars
+e.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/l3kernel/expl3.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-lua
+tex.def)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec-luate
+x.sty (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/fontenc.sty)
+ (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.cfg)
+)) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/plex/plex-mono.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifxetex.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifluatex.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkeyval.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkvutils.tex)
+)) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/textcomp.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th-luatex.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/l3keys2e/l3k
+eys2e.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/fix-cm.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1enc.def))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amstext.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsgen.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsbsy.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsopn.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/lualatex/lualatex-math/lualat
+ex-math.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/etoolbox/etoolbox.sty))
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th-table.tex)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/was/icomma.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype.sty
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype-lua
+tex.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype.cfg
+)) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def)
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/arabi/bblopts.cfg)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/babel/locale/es/babel
+-spanish.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/babel-spanish/spanish.l
+df
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/hyph-utf8/loadhyph/lo
+adhyph-es.tex UTF-8 Spanish hyphenation patterns
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/hyph-utf8/patterns/te
+x/hyph-es.tex))))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.cfg))
+ (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphicx.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphics.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/graphics.c
+fg)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/frontendlayer/tikz.
+sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgf.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfrcs.st
+y
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-common.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-latex.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfrcs.
+code.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/pgf.revision.tex)
+))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgfcore.
+sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/systemlayer/pgfsys.
+sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s.code.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+.code.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+libraryfiltered.code.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgf.c
+fg)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s-luatex.def
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s-common-pdf.def)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+ssoftpath.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+sprotocol.code.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+e.code.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathutil.
+code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathparse
+r.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.basic.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.trigonometric.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.random.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.comparison.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.base.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.round.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.misc.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.integerarithmetics.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathcalc.
+code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfloat
+.code.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfint.code.
+tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epoints.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathconstruct.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathusage.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+escopes.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+egraphicstate.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+etransformations.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+equick.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eobjects.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathprocessing.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+earrows.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eshade.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eimage.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eexternal.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+elayers.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+etransparency.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epatterns.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+erdf.code.tex)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+shapes.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+plot.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+mp-version-0-65.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+mp-version-1-18.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgffor.st
+y
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfkeys.s
+ty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+.code.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/math/pgfmath.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgffor.
+code.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/tikz.code.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryplothandlers.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+matrix.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarytopaths.code.tex)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarycalc.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarypositioning.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/booktabs/booktabs.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/tools/tabularx.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/tools/longtable.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/xltabular/xltabular.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/ltablex/ltablex.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/multirow/multirow.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/makecell/makecell.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/enumitem/enumitem.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titlesec.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titletoc.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/fancyhdr/fancyhdr.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption3.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/caption/ltcaption.sty))
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pdflscape/pdflscape.sty
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pdflscape/pdflscape-nom
+etadata.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/lscape.sty)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/eso-pic/eso-pic.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/ragged2e/ragged2e.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage2e.sty
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpagemodern
+.sty) 
+)) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/import/import.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hyperref.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/kvsetkeys/kvsetkeys.sty
+)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/kvdefinekeys/kvdefine
+keys.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pdfescape/pdfescape.s
+ty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/ltxcmds/ltxcmds.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pdftexcmds/pdftexcmds
+.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/infwarerr/infwarerr.s
+ty)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hycolor/hycolor.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/nameref.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/refcount/refcount.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/gettitlestring/gettit
+lestring.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/kvoptions/kvoptions.sty
+)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/stringenc/stringenc.s
+ty) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/pd1enc.def
+) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/intcalc/intcalc.sty
+) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/puenc.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/bitset/bitset.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/bigintcalc/bigintcalc
+.sty)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hluatex.def
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfil
+echeck.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/uniquecounter/uniquec
+ounter.sty)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bookmark.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bkm-luatex.def
+)) (./lafrox-portada.tex)) (./sd13-comun.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/flafter.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/placeins/placeins.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/float/float.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/xurl/xurl.sty))
+(./LAFROX-Subdocumento13-Anexos.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: luatex
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
+ase.sty
+
+Package epstopdf Warning: Shell escape feature is not enabled.
+
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/00miktex/epstopdf-sys.c
+fg)) [1{C:/Users/alexa/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}<./logo
+/lafrox_isotipo_naranja.pdf><./logo/firma_representante.png>]
+(./LAFROX-Subdocumento13-Anexos.toc) [2<./logo/lafrox_isotipo_negro.pdf>]
+(./13_anexos/contenido.tex
+ignored error Infinite glue shrinkage found in box being split [3]
+ignored error Infinite glue shrinkage found in box being split [4] [5] [6]
+ignored error Infinite glue shrinkage found in box being split [7]
+ignored error Infinite glue shrinkage found in box being split [8] [9] [10])
+[11] 
+enddocument/afterlastpage (AED): lastpage setting LastPage.
+(./LAFROX-Subdocumento13-Anexos.aux))
+ 749 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 4 kern, 1 penalty, 3 glyph, 2
+2 attribute, 79 glue_spec, 13 attribute_list, 2 write, 2 pdf_action nodes
+   avail lists: 1:3,2:4914,3:775,4:342,5:2155,6:307,7:11667,8:116,9:2530,10:30,
+11:1379
+<C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/
+SourceSerif4-RegularIt.otf><C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/
+opentype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/Users/alexa/AppData/Local
+/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSerif4-Regular.otf><c:/
+users/alexa/appdata/local/programs/miktex/fonts/opentype/ibm/plex/ibmplexmono-r
+egular.otf><C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/s
+ourcesans/SourceSans3-Regular.otf><C:/Users/alexa/AppData/Local/Programs/MiKTeX
+/fonts/opentype/adobe/sourcesans/SourceSans3-Medium.otf><C:/Users/alexa/AppData
+/Local/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Semibold.otf
+>
+Output written on LAFROX-Subdocumento13-Anexos.pdf (11 pages, 98043 bytes).
+SyncTeX written on LAFROX-Subdocumento13-Anexos.synctex.gz.
+Transcript written on LAFROX-Subdocumento13-Anexos.log.
+lualatex: major issue: So far, you have not checked for MiKTeX updates.
+Latexmk: Getting log file 'LAFROX-Subdocumento13-Anexos.log'
+Latexmk: Examining 'LAFROX-Subdocumento13-Anexos.fls'
+Latexmk: Examining 'LAFROX-Subdocumento13-Anexos.log'
+Latexmk: Log file says output to 'LAFROX-Subdocumento13-Anexos.pdf'
+Latexmk: All targets (LAFROX-Subdocumento13-Anexos.pdf) are up-to-date
+
+Force everything to be remade.
+Latexmk: applying rule 'lualatex'...
+Rule 'lualatex':  Reasons for rerun
+Category 'other':
+  Rerun of 'lualatex' forced or previously required:
+    Reason or flag: 'go_mode'
+
+------------
+Run number 1 of rule 'lualatex'
+------------
+------------
+Running 'lualatex --interaction=nonstopmode --halt-on-error --no-shell-escape --synctex=1  -recorder  "LAFROX-Formulario-T-19.tex"'
+------------
+This is LuaHBTeX, Version 1.24.0 (MiKTeX 25.12)
+(./LAFROX-Formulario-T-19.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+ (./lafrox.cls
+Document Class: lafrox 2026/09/17 v2.2 Clase corporativa LafroX, tema minimalis
+ta
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/report.cls
+Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/size11.clo))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg))
+ (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/color.cfg)
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics-def/luatex.def
+)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/mathcolor.ltx)
+) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/colortbl/colortbl.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/dvipsnam.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/xparse/xpars
+e.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/l3kernel/expl3.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-lua
+tex.def)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec-luate
+x.sty (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/fontenc.sty)
+ (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.cfg)
+)) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/plex/plex-mono.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifxetex.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifluatex.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkeyval.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkvutils.tex)
+)) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/textcomp.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th-luatex.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/l3keys2e/l3k
+eys2e.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/fix-cm.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1enc.def))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amstext.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsgen.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsbsy.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsopn.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/lualatex/lualatex-math/lualat
+ex-math.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/etoolbox/etoolbox.sty))
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th-table.tex)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/was/icomma.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype.sty
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype-lua
+tex.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype.cfg
+)) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def)
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/arabi/bblopts.cfg)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/babel/locale/es/babel
+-spanish.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/babel-spanish/spanish.l
+df
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/hyph-utf8/loadhyph/lo
+adhyph-es.tex UTF-8 Spanish hyphenation patterns
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/hyph-utf8/patterns/te
+x/hyph-es.tex))))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.cfg))
+ (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphicx.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphics.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/graphics.c
+fg)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/frontendlayer/tikz.
+sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgf.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfrcs.st
+y
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-common.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-latex.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfrcs.
+code.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/pgf.revision.tex)
+))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgfcore.
+sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/systemlayer/pgfsys.
+sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s.code.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+.code.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+libraryfiltered.code.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgf.c
+fg)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s-luatex.def
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s-common-pdf.def)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+ssoftpath.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+sprotocol.code.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+e.code.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathutil.
+code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathparse
+r.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.basic.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.trigonometric.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.random.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.comparison.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.base.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.round.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.misc.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.integerarithmetics.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathcalc.
+code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfloat
+.code.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfint.code.
+tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epoints.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathconstruct.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathusage.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+escopes.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+egraphicstate.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+etransformations.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+equick.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eobjects.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathprocessing.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+earrows.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eshade.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eimage.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eexternal.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+elayers.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+etransparency.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epatterns.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+erdf.code.tex)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+shapes.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+plot.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+mp-version-0-65.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+mp-version-1-18.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgffor.st
+y
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfkeys.s
+ty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+.code.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pgf/math/pgfmath.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgffor.
+code.tex))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/tikz.code.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryplothandlers.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+matrix.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarytopaths.code.tex)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarycalc.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarypositioning.code.tex)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/booktabs/booktabs.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/tools/tabularx.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/tools/longtable.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/xltabular/xltabular.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/ltablex/ltablex.sty))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/multirow/multirow.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/makecell/makecell.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/enumitem/enumitem.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titlesec.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titletoc.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/fancyhdr/fancyhdr.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption3.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/caption/ltcaption.sty))
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pdflscape/pdflscape.sty
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/pdflscape/pdflscape-nom
+etadata.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/graphics/lscape.sty)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/eso-pic/eso-pic.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/ragged2e/ragged2e.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage2e.sty
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpagemodern
+.sty) 
+)) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/import/import.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hyperref.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/kvsetkeys/kvsetkeys.sty
+)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/kvdefinekeys/kvdefine
+keys.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pdfescape/pdfescape.s
+ty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/ltxcmds/ltxcmds.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/pdftexcmds/pdftexcmds
+.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/infwarerr/infwarerr.s
+ty)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hycolor/hycolor.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/nameref.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/refcount/refcount.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/gettitlestring/gettit
+lestring.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/kvoptions/kvoptions.sty
+)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/stringenc/stringenc.s
+ty) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/pd1enc.def
+) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/intcalc/intcalc.sty
+) (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/puenc.def)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/bitset/bitset.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/bigintcalc/bigintcalc
+.sty)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hluatex.def
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfil
+echeck.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/generic/uniquecounter/uniquec
+ounter.sty)))
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bookmark.sty
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bkm-luatex.def
+)) (./lafrox-portada.tex)) (./sd13-comun.tex
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/base/flafter.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/placeins/placeins.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/float/float.sty)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/xurl/xurl.sty))
+(./LAFROX-Formulario-T-19.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: luatex
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
+ase.sty
+
+Package epstopdf Warning: Shell escape feature is not enabled.
+
+
+(C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/00miktex/epstopdf-sys.c
+fg)) [1{C:/Users/alexa/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}<./logo
+/lafrox_isotipo_naranja.pdf><./logo/firma_representante.png>]
+(./LAFROX-Formulario-T-19.toc) [2<./logo/lafrox_isotipo_negro.pdf>]
+(./T19/contenido.tex
+ignored error Infinite glue shrinkage found in box being split [3]
+ignored error Infinite glue shrinkage found in box being split [4]
+ignored error Infinite glue shrinkage found in box being split [5]
+ignored error Infinite glue shrinkage found in box being split [6]
+ignored error Infinite glue shrinkage found in box being split [7]
+ignored error Infinite glue shrinkage found in box being split [8]
+ignored error Infinite glue shrinkage found in box being split [9]
+ignored error Infinite glue shrinkage found in box being split [10]
+ignored error Infinite glue shrinkage found in box being split [11]
+ignored error Infinite glue shrinkage found in box being split [12] [13]
+[14]) [15] 
+enddocument/afterlastpage (AED): lastpage setting LastPage.
+(./LAFROX-Formulario-T-19.aux))
+ 821 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 4 kern, 1 penalty, 3 glyph, 3
+4 attribute, 79 glue_spec, 19 attribute_list, 2 write, 8 pdf_action nodes
+   avail lists: 1:5,2:2586,3:785,4:278,5:3275,6:118,7:18310,8:116,9:1386,10:39,
+11:2331
+<C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/
+SourceSerif4-RegularIt.otf><C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/
+opentype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/Users/alexa/AppData/Local
+/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSerif4-Regular.otf><c:/
+users/alexa/appdata/local/programs/miktex/fonts/opentype/ibm/plex/ibmplexmono-r
+egular.otf><C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/s
+ourcesans/SourceSans3-Regular.otf><C:/Users/alexa/AppData/Local/Programs/MiKTeX
+/fonts/opentype/adobe/sourcesans/SourceSans3-Medium.otf><C:/Users/alexa/AppData
+/Local/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Semibold.otf
+>
+Output written on LAFROX-Formulario-T-19.pdf (15 pages, 120198 bytes).
+SyncTeX written on LAFROX-Formulario-T-19.synctex.gz.
+Transcript written on LAFROX-Formulario-T-19.log.
+lualatex: major issue: So far, you have not checked for MiKTeX updates.
+Latexmk: Getting log file 'LAFROX-Formulario-T-19.log'
+Latexmk: Examining 'LAFROX-Formulario-T-19.fls'
+Latexmk: Examining 'LAFROX-Formulario-T-19.log'
+Latexmk: Log file says output to 'LAFROX-Formulario-T-19.pdf'
+Latexmk: All targets (LAFROX-Formulario-T-19.pdf) are up-to-date
+
+Reverting Windows console CPs to (in,out) = (850,65001)
+latexmk: major issue: So far, you have not checked for MiKTeX updates.
