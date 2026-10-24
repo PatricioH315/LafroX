@@ -776,6 +776,7 @@ El registro reúne las decisiones de arquitectura lógica y física conforme a R
 | ADR-20 | Angular con TypeScript y Portal de Clientes instalable. | Perfil del cliente en la aplicación Kotlin. | Separación entre clientes y trabajadores. |
 | ADR-21 | Terraform, Ansible, GitLab CI y CodeBuild. | CloudFormation/CDK y otra cadena CI. | Propiedad única y promoción trazable. |
 | ADR-22 | Greengrass en gateways industriales. | Nube directa o PLC. | Bloqueo térmico local en cinco segundos. |
+| ADR-23 | Laravel/PHP para el núcleo modular. | Django/Python con Celery y otros entornos. | Capacidades integradas y perfiles HTTP/CLI verificables. |
 
 Fuente: elaboración a partir de PUCV (2026b, secciones 14.1–14.2 y 16.1, pp. 24–25 y 28–29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp. 44–55).
 
@@ -809,13 +810,14 @@ La Tabla [A.19](LAFROX-Subdocumento4-Anexos.md#tab:adr-estado) fecha cada decisi
 | ADR-20 | Frontend web | 5 de octubre de 2026 | Propuesta en la oferta |
 | ADR-21 | Infraestructura como código y cadena de entrega | 5 de octubre de 2026 | Propuesta en la oferta |
 | ADR-22 | Cadena de frío en el borde | 5 de octubre de 2026 | Propuesta en la oferta |
+| ADR-23 | Selección del backend modular | 24 de octubre de 2026 | Propuesta en la oferta |
 
 Fuente: elaboración a partir de RT-02.04 (Bases Técnicas Transversales, cap. 2, p. 7) y del Formulario E-25 de las Bases Administrativas. Diseño propuesto: LafroX (2026e, diseño de este apartado, pp. 44–55).
 
 **ADR-01. Estilo arquitectónico**
 
 <a id="sub:adr-01"></a>
-**Decisión adoptada.** Laravel 13/PHP 8.5 organiza M1–M12 en un monolito modular con perfiles de ejecución separados.
+**Decisión adoptada.** M1–M12 se organiza en un monolito modular con perfiles de ejecución separados. La selección de Laravel 13/PHP 8.5 como implementación se fundamenta en ADR-23.
 
 **Alternativas evaluadas.** Microservicios por módulo multiplican despliegues y operación. Un monolito sin límites permite dependencias cruzadas.
 
@@ -1146,6 +1148,21 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 
 **Requisitos que la sustentan.** RT-03.10, Caso, cadena de frío.
 
+**ADR-23. Selección del backend del monolito modular**
+
+<a id="sub:adr-23"></a>
+**Decisión adoptada.** Laravel 13/PHP 8.5 implementa M1–M12 con contextos de dominio y perfiles HTTP/CLI; ADR-01 conserva la decisión sobre el estilo. La sección 4.1.7.1 contiene el contraste detallado.
+
+**Alternativas evaluadas.** Django/Python con apps y Celery es el contraste principal por su uso en el diseño precedente. Spring Boot con Java o Kotlin, Ktor/Kotlin sobre JVM, Node.js con NestJS/TypeScript y ASP.NET Core/C# también permiten implementar el núcleo. Son alternativas a Laravel, no nuevos componentes ofertados.
+
+**Criterio de selección.** Integración de APIs, políticas, migraciones, trabajos y planificación en el núcleo que comparten nube y WMS local. Las consolas Angular y el SQL PostGIS previsto reducen el peso decisivo del admin y GeoDjango, sin negar sus ventajas. Los trabajos Laravel evitan incorporar Celery para esa función; esto no demuestra menor costo total ni que Django requiera dos lenguajes.
+
+**Consecuencias.** Una imagen común mantiene perfiles con permisos y recursos separados. PSR-4 requiere deptrac y pruebas para imponer fronteras; el esquema compartido exige migraciones compatibles. Outbox, idempotencia, OIDC, AMQP y la reconciliación conservan sus controles propios. Kotlin continúa en Android y la JVM en OpenAS2; no se pretende un único runtime del sistema. No se presupone código previo migrado ni experiencia acreditada del equipo en el backend elegido.
+
+**Evidencia exigida.** Pruebas de dependencias y contratos, atomicidad del outbox, duplicados, reinicio de consumidores, continuidad WAN de 24 horas, reversión y carga de los Anexos 4-M/4-T/4-W. Registrar competencias del equipo y soporte de dependencias antes de implantar; revisar la decisión si otra alternativa acredita una ventaja material. Las pruebas se exigen para aceptación, no se presentan como ejecutadas.
+
+**Requisitos que la sustentan.** RT-02.02, RT-02.04, RT-02.05 y RT-03.10; políticas de actualización del Anexo 4-P.
+
 <a id="fuente-18-anexo-4-1-o-decisiones-logicas-fin"></a>
 
 ## Anexo 4-P — Tecnologías, soporte y actualización
@@ -1268,7 +1285,7 @@ Las alternativas se evalúan por operación offline, integración industrial, tr
 
 **Implementación del backend**
 
-La tabla relaciona cada capacidad del backend con su implementación en Laravel/PHP y con la comprobación que verifica sus contratos.
+La selección del backend se fundamenta en ADR-23 y en 4.1.7.1 del Subdocumento 4. Django/Python es el contraste con el diseño precedente; Spring, Kotlin de servidor, Node.js/NestJS y ASP.NET Core son alternativas evaluadas. No forman parte del inventario contratado por esa comparación. La tabla relaciona cada capacidad seleccionada con su implementación en Laravel/PHP y con la comprobación que verifica sus contratos.
 
 <a id="tab:mapeo-laravel"></a>
 
@@ -2044,6 +2061,22 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 - Zebra Technologies. (s. f.-f). *ZT411/ZT421 User Guide: Power Specifications*. <https://www.zebra.com/content/dam/zebra_new_ia/en-us/manuals/printers/industrial/zt400/zt411-zt421-ug-en.pdf>
 
 - Starlink. (s. f.). *Standard 4 X Kit Specifications*. <https://www.starlink.com/public-files/specification_sheet_standard.pdf>
+
+- Celery. (s. f.). *First steps with Django*. <https://docs.celeryq.dev/en/stable/django/first-steps-with-django.html>
+- Django Software Foundation. (s. f.-a). *Database transactions (Django 5.2)*. <https://docs.djangoproject.com/en/5.2/topics/db/transactions/>
+- Django Software Foundation. (s. f.-b). *GeoDjango (Django 5.2)*. <https://docs.djangoproject.com/en/5.2/ref/contrib/gis/>
+- Django Software Foundation. (s. f.-c). *The Django admin site (Django 5.2)*. <https://docs.djangoproject.com/en/5.2/ref/contrib/admin/>
+- Django Software Foundation. (s. f.-d). *Django's Tasks framework (Django 6.0)*. <https://docs.djangoproject.com/en/6.0/topics/tasks/>
+- JetBrains. (s. f.-a). *Backend development with Kotlin*. <https://kotlinlang.org/docs/server-overview.html>
+- JetBrains. (s. f.-b). *Ktor: Application structure*. <https://ktor.io/docs/server-application-structure.html>
+- Laravel. (s. f.-a). *Service container (Laravel 13.x)*. <https://laravel.com/framework/docs/13.x/container>
+- Laravel. (s. f.-b). *Queues (Laravel 13.x)*. <https://laravel.com/framework/docs/13.x/queues>
+- Laravel. (s. f.-c). *Task scheduling (Laravel 13.x)*. <https://laravel.com/framework/docs/13.x/scheduling>
+- Microsoft. (s. f.). *Background tasks with hosted services in ASP.NET Core*. <https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services>
+- NestJS. (s. f.-a). *Queues*. <https://docs.nestjs.com/techniques/queues>
+- Spring. (s. f.). *Spring Modulith*. <https://spring.io/projects/spring-modulith/>
+- Laravel. (s. f.-d). *Database: Getting started (Laravel 13.x)*. <https://laravel.com/framework/docs/13.x/database>
+- NestJS. (s. f.-b). *Modules*. <https://docs.nestjs.com/modules>
 
 ## Declaración de uso de IA
 

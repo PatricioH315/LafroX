@@ -31,6 +31,7 @@
 - [4.1.6.1 Integraciones internas](#4161-integraciones-internas)
 - [4.1.6.2 Integraciones externas](#4162-integraciones-externas)
 - [4.1.7 Detalle de tecnologías seleccionadas](#417-detalle-de-tecnologías-seleccionadas)
+- [4.1.7.1 Justificación de Laravel y PHP para el monolito modular](#4171-justificación-de-laravel-y-php-para-el-monolito-modular)
 - [4.1.8 Implantación progresiva por olas](#418-implantación-progresiva-por-olas)
 - [4.1.9 Ambientes del ciclo de vida y promoción de componentes](#419-ambientes-del-ciclo-de-vida-y-promoción-de-componentes)
 - [4.1.10 Patrones de diseño y continuidad](#4110-patrones-de-diseño-y-continuidad)
@@ -128,7 +129,7 @@ El capítulo 4 explica cómo la solución sostiene la operación distribuida de 
 
 <a id="sec:arquitectura-logica"></a>
 
-Los anexos 4-A a 4-N detallan eventos, módulos, interfaces, reglas y correspondencias. El Anexo 4-O reúne el registro único ADR-01 a ADR-22; el 4-P presenta las tecnologías y su actualización; los 4-Q y 4-R, amenazas y controles; el 4-S, los puntos de vista y sus reglas de correspondencia; el 4-T, el desempeño; el 4-U, la evidencia documental; y el 4-V, los protocolos de aceptación. Los anexos comienzan con un catálogo navegable: cada entrada identifica la sección que la utiliza y el requisito que respalda.
+Los anexos 4-A a 4-N detallan eventos, módulos, interfaces, reglas y correspondencias. El Anexo 4-O reúne el registro único ADR-01 a ADR-23; el 4-P presenta las tecnologías y su actualización; los 4-Q y 4-R, amenazas y controles; el 4-S, los puntos de vista y sus reglas de correspondencia; el 4-T, el desempeño; el 4-U, la evidencia documental; y el 4-V, los protocolos de aceptación. Los anexos comienzan con un catálogo navegable: cada entrada identifica la sección que la utiliza y el requisito que respalda.
 
 Este apartado desarrolla las responsabilidades y los contratos de la solución y su correspondencia con el esquema y la explicación de 3.3 y 3.4. La correspondencia se establece por capacidad: recepción e inventario (M1–M2), preventa y planificación (M3–M4), preparación y reparto (M5–M6), rendición y devoluciones (M7–M8), calidad y analítica (M9–M10), canal moderno y flota (M11–M12). El emplazamiento, las conexiones y su capacidad corresponden a 4.2. Los centros de datos corresponden a 4.3. Los catálogos extensos se entregan en los anexos 4-A a 4-V. El Anexo 4-N verifica las capacidades y contratos. La [Tabla A.14 del Anexo 4-N](LAFROX-Subdocumento4-Anexos.pdf#tab:mapeo-logica) identifica su realización física.
 
@@ -1117,11 +1118,7 @@ Las tecnologías se agrupan por responsabilidad. El Anexo 4-P conserva el detall
 
 El Anexo 4-P reúne el inventario completo de servicios AWS y las equivalencias entre nombres funcionales y técnicos. La descripción por capa explica la responsabilidad de cada tecnología. El inventario permite comprobar su correspondencia con el despliegue.
 
-Laravel conserva una superficie de APIs, políticas y colas coherente para los doce módulos. Las demás selecciones se fundamentan así:
-
-- Django también permitiría el monolito. Se descarta porque un único entorno Laravel/PHP cubre las APIs, las políticas, las colas y los trabajos de los doce módulos, sin operar dos cadenas de dependencias ni dos familias de trabajadores.
-
-- La implementación se verifica mediante contratos y pruebas.
+La selección del backend se fundamenta en 4.1.7.1 y ADR-23. Las demás tecnologías se seleccionan así:
 
 - PostgreSQL/PostGIS se prefiere a MariaDB por la combinación de transacciones y consultas geográficas del dominio de rutas y sitios. La prueba cubre consultas espaciales y migración.
 
@@ -1140,6 +1137,51 @@ El núcleo utiliza tecnologías con alternativas de despliegue como Laravel, Ang
 El Anexo 4-P reúne versiones de referencia, soporte y criterios de actualización. Las versiones menores se fijan en archivos de bloqueo y SBOM y se promueven mediante pruebas de contrato. No se congela una versión sin soporte por los 56 meses. Laravel, PHP, PostgreSQL, Angular y RabbitMQ se revisan conforme a sus políticas oficiales (Laravel, 2026; PHP, 2026; PostgreSQL, 2026; Angular, 2026a, 2026b; RabbitMQ, 2026).
 
 LafroX documenta la creación inicial de la cuenta raíz y guarda el procedimiento y su evidencia en el repositorio del CLIENTE. Fuera de esa creación inicial, todos los recursos se crean y modifican con Terraform o Ansible, con revisión y control de versiones. No hay altas manuales por consola (RT-03.03, Bases Técnicas Transversales, cap. 3, p. 8).
+
+#### 4.1.7.1 Justificación de Laravel y PHP para el monolito modular
+
+<a id="sec:justificacion-backend"></a>
+
+La selección distingue dos decisiones. El monolito modular de ADR-01 reúne M1–M12 bajo contratos de dominio y evita administrar un servicio por módulo. Laravel/PHP implementa ese estilo según ADR-23. La carga mensual y la dotación de operación orientan la decisión, pero la capacidad se verifica con la mezcla de operaciones, las ráfagas y la reconciliación de los Anexos 4-T y 4-W. El mismo estilo puede implementarse con los otros entornos de la Tabla [3](LAFROX-Subdocumento4.md#tab:comparacion-backends).
+
+##### Adecuación al núcleo transaccional y al despliegue híbrido.
+
+Laravel integra rutas, validación, políticas, acceso transaccional, migraciones, trabajos y planificación en un marco común. La propuesta utiliza esas capacidades para los servicios de pedido, inventario y trazabilidad; el contenedor de dependencias vincula interfaces y adaptadores de cada contexto. PHP-FPM atiende HTTP y PHP CLI ejecuta procesos de fondo desde la misma imagen. Los perfiles de 4.2.4.1.1 permiten separar permisos, recursos y reversión de API, WMS local, reconciliación y trabajos (Laravel, s. f.-a, s. f.-b, s. f.-c, s. f.-d).
+
+El criterio de selección es esa composición común de capacidades para el núcleo y sus perfiles, manteniendo las especialidades tras contratos: M4 conserva su motor de rutas y M11 su transporte AS2 externos al artefacto Laravel. La geografía se resuelve en PostgreSQL/PostGIS mediante consultas parametrizadas, sin exigir que el framework modele todas las operaciones espaciales. Los trabajos internos utilizan el trabajador Laravel; el shipper AMQP y el consumidor de sobres JSON conservan adaptadores propios. Se evita confundir estas tres superficies de mensajería.
+
+##### Contraste con Django/Python.
+
+Django/Python, utilizado en el diseño precedente con aplicaciones por dominio y trabajadores Celery, sigue siendo viable para el monolito. Ofrece transacciones, administración integrada y GeoDjango, con una integración espacial más directa que el SQL PostGIS explícito de esta propuesta. Laravel se prefiere aquí por la integración de trabajos y planificación con el núcleo HTTP/CLI, y porque las interfaces operacionales ya se resuelven mediante consolas Angular. El administrador de Django y GeoDjango aportan ventajas reales, aunque no determinan la selección cuando las consolas y consultas espaciales tienen esa implementación específica (Django Software Foundation, s. f.-a, s. f.-b, s. f.-c; Celery, s. f.).
+
+La comparación comprende la solución Django con Celery descrita para ese diseño, no una supuesta ausencia de tareas en Django: desde Django 6.0 existe una interfaz de tareas cuya ejecución requiere un backend de producción. Una solución íntegramente Python también puede mantener un entorno común; por ello, el número de lenguajes no distingue ambas opciones. El cambio de selección no acredita una migración de software implantado ni resultados de rendimiento superiores (Django Software Foundation, s. f.-d).
+
+<a id="tab:comparacion-backends"></a>
+
+**Tabla 3 — Contraste de entornos para el backend modular**
+
+| **Entorno** | **Aporte pertinente** | **Criterio aplicado a LafroX** |
+| --- | --- | --- |
+| Laravel/PHP | APIs, políticas, migraciones, trabajos y planificación integrados. | Seleccionado para el núcleo HTTP/CLI; límites comprobados con deptrac y contratos. |
+| Django/Python | Apps por dominio, transacciones, admin y GeoDjango. | Contraste principal: la solución previa agregaba Celery; aquí se usan trabajos Laravel, consolas Angular y SQL PostGIS. |
+| Spring Boot/Java o Kotlin | Ecosistema transaccional; Spring Modulith verifica módulos y permite probarlos por separado. | Alternativa sólida para modularidad; requeriría concretar perfiles, mensajería y operación JVM equivalentes. |
+| Ktor/Kotlin sobre JVM | Organización flexible por módulos y posible código común con Android. | Definir persistencia, migraciones y trabajos; el código ligado al dispositivo no se comparte automáticamente. |
+| Node.js + NestJS/TypeScript | Módulos, proveedores y lenguaje común con Angular. | Concretar persistencia y colas; compartir lenguaje no garantiza compartir reglas ni reducir esfuerzo. |
+| ASP.NET Core/C# | Inyección de dependencias y servicios de fondo del ecosistema .NET. | Alternativa viable; verificar fronteras, datos, mensajería y despliegue con los mismos contratos. |
+
+Fuente: elaboración a partir de Laravel (s. f.-a, s. f.-b, s. f.-c, s. f.-d), Django Software Foundation (s. f.-a, s. f.-b, s. f.-c, s. f.-d), Celery (s. f.), Spring (s. f.), JetBrains (s. f.-a, s. f.-b), NestJS (s. f.-a, s. f.-b) y Microsoft (s. f.). Criterios de aplicación: ADR-23 y perfiles de 4.2.4.1.1.
+
+##### Kotlin y las demás alternativas.
+
+Kotlin con Spring Boot o Ktor es una alternativa de servidor, además de su uso móvil en la solución. Compartir modelos y validaciones independientes de Android puede ser beneficioso, pero Room, DataWedge y los permisos del terminal no se trasladan al servidor. Las reservas y la autorización definitiva permanecen en el backend. La selección de PHP no elimina la JVM del sistema: OpenAS2 conserva su entorno propio. La comparación evalúa la composición del núcleo y no pretende un único runtime para toda la solución (JetBrains, s. f.-a, s. f.-b).
+
+Spring Modulith aporta verificación de fronteras más explícita que una organización por carpetas. NestJS permite módulos y proveedores, mientras su integración documentada de colas incluye BullMQ; adoptar esa variante exige revisar su dependencia Redis frente a las colas de la propuesta. ASP.NET Core admite servicios de fondo, cuya persistencia y recuperación también deben diseñarse. Estos entornos se comparan como alternativas al núcleo Laravel; no se incorporan al backend ofertado (Spring, s. f.; NestJS, s. f.-a, s. f.-b; Microsoft, s. f.).
+
+##### Condiciones y límites de la selección.
+
+PSR-4 organiza clases, pero no impide acoplamiento entre contextos: deptrac y las pruebas de contratos bloquean dependencias indebidas. La transacción de negocio y su outbox deben confirmarse de forma atómica, y los consumidores deben ser idempotentes; ningún framework garantiza por sí solo entrega única o conciliación entre sitios. La autonomía local depende de datos, identidad y reglas disponibles durante el corte. Artefacto y esquema comunes exigen migraciones compatibles y coordinación de entregas.
+
+La preferencia por Laravel se sustenta en el ajuste funcional y operacional descrito. No se atribuyen ahorros, menor memoria, mayor velocidad ni experiencia del equipo sin evidencia. La aceptación exige pruebas de fronteras, duplicados, caída y reinicio de trabajadores, corte WAN de 24 horas, reversión y carga conforme a los Anexos 4-M, 4-T y 4-W. Una ventaja comprobada de otra alternativa en competencias, reutilización o capacidad obliga a revisar ADR-23 antes de comprometer su implantación.
 
 ### 4.1.8 Implantación progresiva por olas
 
@@ -1254,7 +1296,7 @@ Un adaptador nuevo sustituye a uno previo solo si conserva las respuestas, error
 
 <a id="sec:adr"></a>
 
-Las 22 decisiones de arquitectura se resumen en la [Tabla A.18](LAFROX-Subdocumento4-Anexos.pdf#tab:resumen-adr) del Anexo 4-O. Ese anexo contiene para cada ADR la decisión, alternativas, criterio, consecuencias, evidencia y requisitos que la sustentan.
+Las 23 decisiones de arquitectura se resumen en la [Tabla A.18](LAFROX-Subdocumento4-Anexos.pdf#tab:resumen-adr) del Anexo 4-O. ADR-01 registra el estilo modular y ADR-23 fundamenta la selección de Laravel/PHP frente a otros entornos. Ese anexo contiene para cada ADR la decisión, alternativas, criterio, consecuencias, evidencia y requisitos que la sustentan.
 
 La evidencia asociada a cada ficha permite verificar límites de módulo, continuidad por sitio, protección de datos, desempeño bajo el peak y recuperación del WMS de Talca en la nube. En ADR-12, la API utiliza de 2 a 4 tareas en el caso base, 7 en la sensibilidad de 91,70 solicitudes/s y las 8 del techo en la cota completa de 111,70 solicitudes/s, incluida la cuota de 20 solicitudes/s del canal tradicional. Esta última cota no deja margen para aumentar la cuota sin revisar capacidad y latencia.
 
@@ -1263,11 +1305,11 @@ La evidencia asociada a cada ficha permite verificar límites de módulo, contin
 <a id="fuente-13-puntos-unicos-de-falla-y-riesgos-residuales"></a>
 <a id="sec:spof"></a>
 
-RT-02.11 exige identificar las dependencias singulares que subsisten y justificar el riesgo residual. La Tabla [3](LAFROX-Subdocumento4.md#tab:spof) distingue su efecto, la continuidad prevista y la condición de aceptación. Una réplica o una cola reduce el impacto, pero no elimina por declaración la dependencia.
+RT-02.11 exige identificar las dependencias singulares que subsisten y justificar el riesgo residual. La Tabla [4](LAFROX-Subdocumento4.md#tab:spof) distingue su efecto, la continuidad prevista y la condición de aceptación. Una réplica o una cola reduce el impacto, pero no elimina por declaración la dependencia.
 
 <a id="tab:spof"></a>
 
-**Tabla 3 — Dependencias singulares y riesgo residual**
+**Tabla 4 — Dependencias singulares y riesgo residual**
 
 | **Dependencia** | **Efecto si falla** | **Continuidad prevista** | **Aceptación** |
 | --- | --- | --- | --- |
@@ -1290,21 +1332,21 @@ El ERP permanece como único emisor ante el SII mediante fibra, LTE y satélite 
 <a id="fuente-14-comparacion-de-alternativas-arquitectonicas"></a>
 <a id="sec:alternativas-arquitectonicas"></a>
 
-La comparación considera la carga real, la continuidad desconectada, la reversión y la dotación que deberá operar la solución. La Tabla [4](LAFROX-Subdocumento4.md#tab:alternativas) resume las elecciones lógicas, los ADR explicitan su criterio y consecuencia operativa. La evaluación económica pertenece a los apartados de costos.
+La comparación considera la carga real, la continuidad desconectada, la reversión y la dotación que deberá operar la solución. La Tabla [5](LAFROX-Subdocumento4.md#tab:alternativas) resume las elecciones lógicas, los ADR explicitan su criterio y consecuencia operativa. La evaluación económica pertenece a los apartados de costos.
 
 <a id="tab:alternativas"></a>
 
-**Tabla 4 — Alternativas lógicas y criterio de selección**
+**Tabla 5 — Alternativas lógicas y criterio de selección**
 
 | **Decisión** | **Seleccionada** | **Alternativa viable** | **Criterio decisivo** |
 | --- | --- | --- | --- |
-| Estilo del núcleo | Monolito modular M1–M12 con perfiles separados. | Servicios por dominio. | Menor carga operativa con 31.000 pedidos/mes. |
-| Framework backend | Laravel 13/PHP 8.5 con límites PSR-4. | Django/Python con los mismos contratos. | Un solo runtime PHP para APIs, colas y trabajos. |
+| Estilo del núcleo | Monolito modular M1–M12 con perfiles separados. | Servicios por dominio. | Operación sostenible y carga por ráfagas verificada. |
+| Framework backend | Laravel 13/PHP 8.5 y fronteras verificadas. | Django/Python; otros entornos en 4.1.7.1. | Capacidades integradas y perfiles HTTP/CLI (ADR-23). |
 | Aplicación terreno | Kotlin nativo. | Desarrollo multiplataforma. | Integración Zebra y persistencia local. |
 | Mensajería | Broker local y cola de nube. | Broker solo en nube. | Conservación del trabajo con enlace caído. |
 | WMS 2013 | Reemplazo por olas M1/M2/M5. | Sustitución simultánea. | Reversión por sitio y capacidad. |
 
-Fuente: elaboración a partir del Anexo 4-O y de las Bases Técnicas del caso (cap. 14, p. 24). Diseño propuesto: LafroX (2026d, diseño de este apartado, pp. 73–74).
+Fuente: elaboración a partir del Anexo 4-O y de las Bases Técnicas del caso (cap. 14, p. 24). Diseño propuesto: LafroX (2026d, diseño de este apartado, pp. [sección 4.1.13](LAFROX-Subdocumento4.md#fuente-14-comparacion-de-alternativas-arquitectonicas)–[sección 4.1.13](LAFROX-Subdocumento4.md#fuente-14-comparacion-de-alternativas-arquitectonicas-fin)).
 
 El WMS y el broker de cada sitio sostienen recepción, preparación y despacho durante el corte bajo las condiciones de 4.1.15 y del Anexo 4-J: permisos vigentes, disposición sanitaria registrada y guía válida para la carga. La integración local no sustituye al ERP ni a su comunicación tributaria para emitir una guía nueva. El monolito modular acota el número de procesos a operar.
 
@@ -1491,11 +1533,11 @@ Al finalizar el turno expiran la asignación y sus permisos.
 <a id="fuente-20-primer-cuello-de-botella-bajo-la-carga-de-septiembre"></a>
 <a id="sec:cuello-botella-septiembre"></a>
 
-Septiembre eleva las entregas diarias de aproximadamente 1.400 a 2.600 durante tres semanas. Las 2.600 entregas ocurren a lo largo de la jornada. La ventana 05:30–07:00 concentra la salida de 96 camiones, no todas las firmas de entrega. En esa ventana, el primer cuello de botella probable es la confirmación de guías del ERP mediante la ACL: es una dependencia singular y aumentar réplicas Laravel no acelera al emisor legado. La base transaccional de Talca, la WAN al reconectar y la transferencia de evidencias son candidatos adicionales, no recursos cuya saturación ya se haya medido. La Tabla [5](LAFROX-Subdocumento4.md#tab:cuello-botella) muestra cómo contrastar la hipótesis. RT-09.05 exige sustentar el primer límite con una prueba reproducible.
+Septiembre eleva las entregas diarias de aproximadamente 1.400 a 2.600 durante tres semanas. Las 2.600 entregas ocurren a lo largo de la jornada. La ventana 05:30–07:00 concentra la salida de 96 camiones, no todas las firmas de entrega. En esa ventana, el primer cuello de botella probable es la confirmación de guías del ERP mediante la ACL: es una dependencia singular y aumentar réplicas Laravel no acelera al emisor legado. La base transaccional de Talca, la WAN al reconectar y la transferencia de evidencias son candidatos adicionales, no recursos cuya saturación ya se haya medido. La Tabla [6](LAFROX-Subdocumento4.md#tab:cuello-botella) muestra cómo contrastar la hipótesis. RT-09.05 exige sustentar el primer límite con una prueba reproducible.
 
 <a id="tab:cuello-botella"></a>
 
-**Tabla 5 — Detección del primer cuello de botella**
+**Tabla 6 — Detección del primer cuello de botella**
 
 | **Recurso** | **Señal de saturación** | **Respuesta lógica** | **Prueba** |
 | --- | --- | --- | --- |
@@ -1724,7 +1766,7 @@ Fuente: elaboración a partir de PUCV (2026b, secciones 14.1–14.2 y 16.1, pp. 
 
 La figura sitúa el WMS, PostgreSQL, RabbitMQ y la caché de identidad en cuatro VM de un servidor Proxmox local. Un segundo servidor idéntico mantiene sus copias en espera, con la base replicada en forma sincrónica, y toma su lugar si falla (RT-03.14, Bases Técnicas Transversales, cap. 3, p. 9; sección [4.2.4.3](LAFROX-Subdocumento4.md#sub:3-alta-disponibilidad)). El par de firewalls y los dos switches de núcleo sostienen la red del sitio. Fibra D-03, LTE D-04 y Starlink D-06 proporcionan tres caminos hacia la nube. La UPS de 5 kVA del gabinete protege los dos servidores, los equipos de red y el terminal satelital durante 30 min y permite el apagado ordenado. Su carga de diseño, 3,42 kVA, usa el 68 % de esa capacidad (Anexo 4-W). Cada servidor tiene fuentes redundantes. Solo si fallan ambos se repone el equipo y se reconstruye la base a partir del estado central alimentado por los eventos del propio sitio. El detalle de cada equipo está en el Formulario T-11.
 
-La séptima instalación que proyecta el caso a tres años se incorpora parametrizando la infraestructura como código, sobre uno de los bloques de direccionamiento ya reservados en la Tabla [9](LAFROX-Subdocumento4.md#tab:t64), sin obras en la sala de Talca.
+La séptima instalación que proyecta el caso a tres años se incorpora parametrizando la infraestructura como código, sobre uno de los bloques de direccionamiento ya reservados en la Tabla [10](LAFROX-Subdocumento4.md#tab:t64), sin obras en la sala de Talca.
 
 En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al menos dos zonas de disponibilidad. La región us-east-1 solo aloja la recuperación ante desastres. La Figura [17](LAFROX-Subdocumento4.md#fig:emplazamiento-dominios) ubica cada componente en su sitio.
 
@@ -1748,11 +1790,11 @@ El recorrido de trazabilidad parte de la capacidad de 3.3–3.4, identifica su m
 
 ### 4.2.2.3 Síntesis del emplazamiento por dominio y criterio
 
-La Tabla [6](LAFROX-Subdocumento4.md#tab:t21) resume cómo se distribuyen los 36 componentes entre los tres dominios y los seis criterios del Artículo 16.2 (Bases Administrativas, art. 16.2, p. 11) que deciden cada emplazamiento. A continuación se justifica, dominio por dominio, por qué cada componente vive donde vive. El producto, la cantidad y la ubicación exacta de cada elemento no son materia del emplazamiento y se especifican en el Formulario T-11.
+La Tabla [7](LAFROX-Subdocumento4.md#tab:t21) resume cómo se distribuyen los 36 componentes entre los tres dominios y los seis criterios del Artículo 16.2 (Bases Administrativas, art. 16.2, p. 11) que deciden cada emplazamiento. A continuación se justifica, dominio por dominio, por qué cada componente vive donde vive. El producto, la cantidad y la ubicación exacta de cada elemento no son materia del emplazamiento y se especifican en el Formulario T-11.
 
 <a id="tab:t21"></a>
 
-**Tabla 6 — Distribución de los componentes por dominio y criterio de emplazamiento**
+**Tabla 7 — Distribución de los componentes por dominio y criterio de emplazamiento**
 
 | **Criterio** | **Nube pura** | **On-premise** | **Híbridos** | **Total** |
 | --- | --- | --- | --- | --- |
@@ -2035,11 +2077,11 @@ Esos mecanismos son tres y no se sustituyen entre sí. La alta disponibilidad re
 
 <a id="sub:1-ambientes-de-despliegue-rt-04-01"></a>
 
-Un cambio recorre tres ambientes antes de llegar a Producción: Desarrollo, QA y Preproducción. Se construye y se prueba de forma unitaria en Desarrollo, se valida en QA con pruebas funcionales, de integración y de regresión automatizadas, y se ensaya en Preproducción, donde ocurren las pruebas de aceptación, de carga y de resiliencia y el ensayo del paso a producción. Solo entonces se promueve a Producción, sin recompilar, de modo que el artefacto que llega a producción es el mismo que se probó. La marcha blanca de cada etapa ocurre ya en Producción, porque es operación supervisada con datos y usuarios reales en paralelo con la operación vigente. Un quinto ambiente, de Recuperación ante Desastres, sostiene la continuidad: reside en la región us-east-1 para el dominio de nube, mientras que el WMS de Talca se recupera en la plataforma de nube, como se describe en la recuperación ante desastres de esta sección. La Tabla [7](LAFROX-Subdocumento4.md#tab:t62) muestra cada ambiente con su bloque de direccionamiento, su región y su función.
+Un cambio recorre tres ambientes antes de llegar a Producción: Desarrollo, QA y Preproducción. Se construye y se prueba de forma unitaria en Desarrollo, se valida en QA con pruebas funcionales, de integración y de regresión automatizadas, y se ensaya en Preproducción, donde ocurren las pruebas de aceptación, de carga y de resiliencia y el ensayo del paso a producción. Solo entonces se promueve a Producción, sin recompilar, de modo que el artefacto que llega a producción es el mismo que se probó. La marcha blanca de cada etapa ocurre ya en Producción, porque es operación supervisada con datos y usuarios reales en paralelo con la operación vigente. Un quinto ambiente, de Recuperación ante Desastres, sostiene la continuidad: reside en la región us-east-1 para el dominio de nube, mientras que el WMS de Talca se recupera en la plataforma de nube, como se describe en la recuperación ante desastres de esta sección. La Tabla [8](LAFROX-Subdocumento4.md#tab:t62) muestra cada ambiente con su bloque de direccionamiento, su región y su función.
 
 <a id="tab:t62"></a>
 
-**Tabla 7 — Ambientes de despliegue**
+**Tabla 8 — Ambientes de despliegue**
 
 | **Ambiente** | **VPC** | **Región** | **Función** |
 | --- | --- | --- | --- |
@@ -2077,7 +2119,7 @@ Preproducción es equivalente a Producción en versiones, configuración, dimens
 
 Durante las campañas de certificación coinciden pruebas que alteran el estado del ambiente o que exigen una versión congelada: la migración, la carga con la resiliencia y el despliegue, la prueba de intrusión y la aceptación de usuario. Cada una usa su propia instancia de Preproducción, reconstruida desde el mismo código con la misma topología, configuración y dimensionamiento, y se apaga al terminar su campaña. Siguen siendo un solo ambiente lógico, no un sexto ambiente. El Subdocumento 9, Tabla 9.11, asigna cada campaña a su instancia.
 
-La emulación reproduce la topología del sitio y no su hardware. Por eso, la primera instalación de cada entrega en los centros de distribución y los cross-docking avanza sitio por sitio, como se describe en la liberación. Durante las pruebas de carga y estrés de la Tabla [22](LAFROX-Subdocumento4.md#tab:t86) opera con el dimensionamiento completo de Producción.
+La emulación reproduce la topología del sitio y no su hardware. Por eso, la primera instalación de cada entrega en los centros de distribución y los cross-docking avanza sitio por sitio, como se describe en la liberación. Durante las pruebas de carga y estrés de la Tabla [23](LAFROX-Subdocumento4.md#tab:t86) opera con el dimensionamiento completo de Producción.
 
 Las figuras siguientes muestran cada uno de los cinco ambientes. Desarrollo, QA y Preproducción residen solo en la nube. Producción abarca la nube y los sitios on-premise. Recuperación ante Desastres cubre la pérdida de la región primaria mediante us-east-1 y la pérdida de la sala de Talca mediante el WMS levantado en la plataforma de nube (numeral 4.1 de las Bases Técnicas Transversales; Bases Técnicas Transversales, cap. 4, p. 10). Concepción opera su propia bodega en Producción.
 
@@ -2177,7 +2219,7 @@ Fuente: elaboración a partir de PUCV (2026b, secciones 14.1–14.2 y 16.1, pp. 
 
 Los pasos de la figura son los siguientes:
 
-- GitLab CI inicia el paso a producción cuando la entrega superó los controles del pipeline y el ensayo en Preproducción, dentro de las ventanas de la Tabla [8](LAFROX-Subdocumento4.md#tab:jd02).
+- GitLab CI inicia el paso a producción cuando la entrega superó los controles del pipeline y el ensayo en Preproducción, dentro de las ventanas de la Tabla [9](LAFROX-Subdocumento4.md#tab:jd02).
 
 - CodeBuild no vuelve a construir: la imagen es la misma que se ensayó.
 
@@ -2237,7 +2279,7 @@ El paso de un ambiente a otro lo controla el pipeline de integración continua: 
 
 - Medición de la cobertura de la lógica de negocio y de la cobertura unitaria global.
 
-El pipeline bloquea el despliegue ante un hallazgo crítico o alto, ante un contrato público roto sin nueva edición o ante una cobertura de la lógica de negocio inferior al 70 % (RT-04.11, Bases Técnicas Transversales, cap. 4, p. 11). Además aplica la política corporativa de LafroX del Subdocumento 1 (sección 1.3.1): bloquea toda versión con cobertura de pruebas unitarias inferior al 80 %. Son dos métricas distintas, medidas en la misma ejecución del pipeline, y una versión debe superar ambas. Primero, la imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila. El paso a Producción es automático una vez que la imagen supera los controles del pipeline y el ensayo en Preproducción, dentro de las ventanas de la Tabla [8](LAFROX-Subdocumento4.md#tab:jd02) (RT-04.06, Bases Técnicas Transversales, cap. 4, p. 11). Segundo, la configuración no sensible se externaliza por ambiente en SSM Parameter Store y los secretos se gestionan en AWS Secrets Manager con rotación automática (ADR-15, Anexo 4-O). La imagen no contiene secretos ni el archivo de entorno (RT-04.08 y RT-04.09, Bases Técnicas Transversales, cap. 4, p. 11). Tercero, las migraciones de base de datos son migraciones Laravel basales y aditivas, que siguen la estrategia de expandir y contraer: se ejecutan como un paso único del despliegue antes de cambiar el tráfico, cada entrega solo agrega estructuras, de modo que la entrega previa y la nueva de la aplicación funcionan sobre el mismo esquema durante el despliegue, y las estructuras obsoletas se eliminan en una entrega posterior. Cada migración declara además su reversión, de modo que el esquema puede volver a la entrega previa (RT-04.10, Bases Técnicas Transversales, cap. 4, p. 11). Luego, el código reside en un repositorio con ramas protegidas, revisión obligatoria por pares y sin escritura directa sobre la rama principal (RT-04.03, Bases Técnicas Transversales, cap. 4, p. 10).
+El pipeline bloquea el despliegue ante un hallazgo crítico o alto, ante un contrato público roto sin nueva edición o ante una cobertura de la lógica de negocio inferior al 70 % (RT-04.11, Bases Técnicas Transversales, cap. 4, p. 11). Además aplica la política corporativa de LafroX del Subdocumento 1 (sección 1.3.1): bloquea toda versión con cobertura de pruebas unitarias inferior al 80 %. Son dos métricas distintas, medidas en la misma ejecución del pipeline, y una versión debe superar ambas. Primero, la imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila. El paso a Producción es automático una vez que la imagen supera los controles del pipeline y el ensayo en Preproducción, dentro de las ventanas de la Tabla [9](LAFROX-Subdocumento4.md#tab:jd02) (RT-04.06, Bases Técnicas Transversales, cap. 4, p. 11). Segundo, la configuración no sensible se externaliza por ambiente en SSM Parameter Store y los secretos se gestionan en AWS Secrets Manager con rotación automática (ADR-15, Anexo 4-O). La imagen no contiene secretos ni el archivo de entorno (RT-04.08 y RT-04.09, Bases Técnicas Transversales, cap. 4, p. 11). Tercero, las migraciones de base de datos son migraciones Laravel basales y aditivas, que siguen la estrategia de expandir y contraer: se ejecutan como un paso único del despliegue antes de cambiar el tráfico, cada entrega solo agrega estructuras, de modo que la entrega previa y la nueva de la aplicación funcionan sobre el mismo esquema durante el despliegue, y las estructuras obsoletas se eliminan en una entrega posterior. Cada migración declara además su reversión, de modo que el esquema puede volver a la entrega previa (RT-04.10, Bases Técnicas Transversales, cap. 4, p. 11). Luego, el código reside en un repositorio con ramas protegidas, revisión obligatoria por pares y sin escritura directa sobre la rama principal (RT-04.03, Bases Técnicas Transversales, cap. 4, p. 10).
 
 A Producción no se llega de otra forma: su acceso es restringido y auditado, y los desarrolladores no tienen acceso interactivo directo a ese ambiente (numeral 4.1 de las Bases Técnicas Transversales; Bases Técnicas Transversales, cap. 4, p. 10). El acceso privilegiado excepcional reúne estos controles:
 
@@ -2297,7 +2339,7 @@ Así, ningún reinicio, escalado o despliegue deja un trabajo a medias.
 
 Cada entrega se libera con estrategia azul-verde: la entrega nueva se despliega junto a la vigente y recibe tráfico de forma gradual, en etapas de canario, después de haberse demostrado el mismo procedimiento en Preproducción (RT-04.07, Bases Técnicas Transversales, cap. 4, p. 11). La puesta en producción avanza por proceso, por sitio o por zona comercial, nunca como un evento único que afecte a la vez a la bodega, la preventa, el reparto y la facturación. En la sustitución del WMS de 2013 por olas, cada capacidad se activa además por sitio mediante indicadores de funcionalidad (*feature flags*), sin volver a desplegar. Revertir una ola devuelve el tráfico a la entrega previa del nuevo servicio. El WMS de 2013 ya no escribe stock y se retira al cerrar la marcha blanca de Talca.
 
-Mientras dura el canario, la entrega previa permanece desplegada, por lo que revertir es devolverle el tráfico, sin recompilar ni volver a desplegar. La reversión es automática y se dispara cuando el percentil 95 de una transacción supera su umbral comprometido (Tabla [21](LAFROX-Subdocumento4.md#tab:t84)) o cuando la entrega nueva registra más errores que la estable en la misma ventana de observación. No se pierde ninguna transacción confirmada: las operaciones en curso quedan en los buffers locales, 24 horas por sitio en el broker y la caché de turno en los dispositivos, y se reprocesan de forma idempotente contra la entrega restituida. El esquema no necesita revertirse durante el canario, porque la migración de la entrega solo agregó estructuras. Si hiciera falta, la reversión declarada de la migración lo devuelve a la entrega previa. La reversión cambia la imagen en servicio sin perder operaciones. El tiempo efectivo de reversión tiene un objetivo ≤ 10 minutos, medido en cada ensayo en Preproducción. El tiempo medio de restauración de incidentes críticos ≤ 4 horas es una métrica mensual de operación distinta de la reversión técnica (Bases Administrativas, art. 78.3, p. 40).
+Mientras dura el canario, la entrega previa permanece desplegada, por lo que revertir es devolverle el tráfico, sin recompilar ni volver a desplegar. La reversión es automática y se dispara cuando el percentil 95 de una transacción supera su umbral comprometido (Tabla [22](LAFROX-Subdocumento4.md#tab:t84)) o cuando la entrega nueva registra más errores que la estable en la misma ventana de observación. No se pierde ninguna transacción confirmada: las operaciones en curso quedan en los buffers locales, 24 horas por sitio en el broker y la caché de turno en los dispositivos, y se reprocesan de forma idempotente contra la entrega restituida. El esquema no necesita revertirse durante el canario, porque la migración de la entrega solo agregó estructuras. Si hiciera falta, la reversión declarada de la migración lo devuelve a la entrega previa. La reversión cambia la imagen en servicio sin perder operaciones. El tiempo efectivo de reversión tiene un objetivo ≤ 10 minutos, medido en cada ensayo en Preproducción. El tiempo medio de restauración de incidentes críticos ≤ 4 horas es una métrica mensual de operación distinta de la reversión técnica (Bases Administrativas, art. 78.3, p. 40).
 
 Si la falla de un despliegue se manifestara durante la ventana de despacho, la bodega y el reparto continuarían con su operación local (listado [de autonomía por ámbito](LAFROX-Subdocumento4.md#tab:t29)) mientras se revierte, sin detener la salida de los camiones.
 
@@ -2321,11 +2363,11 @@ La arquitectura lógica fija la implantación progresiva por olas (apartado 4.1.
 
 #### 4.2.4.1.4 Calendario y cadencia
 
-El calendario de Puelche limita cuándo se puede intervenir la plataforma. El caso prohíbe intervenir los sistemas entre el 1 y el 25 de septiembre, en diciembre y durante el cierre contable de cada mes, prohíbe el paso a producción en todo septiembre y en diciembre, y exige indisponibilidad cero en la ventana de despacho (Bases Técnicas del caso, cap. 10, restricción 8, p. 19, y Cap. 13, p. 23; RT-10.05 y RT-10.06, Bases Técnicas Transversales, cap. 10, p. 22; Bases Técnicas del caso, cap. 15, p. 27). La Tabla [8](LAFROX-Subdocumento4.md#tab:jd02) cruza cada período con lo que admite.
+El calendario de Puelche limita cuándo se puede intervenir la plataforma. El caso prohíbe intervenir los sistemas entre el 1 y el 25 de septiembre, en diciembre y durante el cierre contable de cada mes, prohíbe el paso a producción en todo septiembre y en diciembre, y exige indisponibilidad cero en la ventana de despacho (Bases Técnicas del caso, cap. 10, restricción 8, p. 19, y Cap. 13, p. 23; RT-10.05 y RT-10.06, Bases Técnicas Transversales, cap. 10, p. 22; Bases Técnicas del caso, cap. 15, p. 27). La Tabla [9](LAFROX-Subdocumento4.md#tab:jd02) cruza cada período con lo que admite.
 
 <a id="tab:jd02"></a>
 
-**Tabla 8 — Ventanas de despliegue**
+**Tabla 9 — Ventanas de despliegue**
 
 | **Período** | **Despliegue** | **Indisponibilidad programada** |
 | --- | --- | --- |
@@ -2339,7 +2381,7 @@ El calendario de Puelche limita cuándo se puede intervenir la plataforma. El ca
 
 Fuente: elaboración a partir de las Bases Técnicas del caso de Pontificia Universidad Católica de Valparaíso (2026b) (cap. 10, p. 19). Diseño propuesto: LafroX (2026d, diseño de este apartado, pp. 108–138).
 
-El despliegue sin interrupción es la regla. Las ventanas horarias de la Tabla [8](LAFROX-Subdocumento4.md#tab:jd02) solo se aplican en fechas no congeladas: el horario no levanta la prohibición mensual. Se mantiene una cadencia quincenal, con una meta de hasta cinco días hábiles habilitados desde que se confirma un cambio de código hasta que llega a producción. También se mide el tiempo calendario completo, separando la espera por congelamiento, que no se descuenta de los plazos contractuales. La tasa de cambios fallidos no supera el 5 % mensual y la restauración de un servicio crítico no supera 4 horas (Bases Administrativas, art. 78.3, p. 40; RT-04.12, Bases Técnicas Transversales, cap. 4, p. 11).
+El despliegue sin interrupción es la regla. Las ventanas horarias de la Tabla [9](LAFROX-Subdocumento4.md#tab:jd02) solo se aplican en fechas no congeladas: el horario no levanta la prohibición mensual. Se mantiene una cadencia quincenal, con una meta de hasta cinco días hábiles habilitados desde que se confirma un cambio de código hasta que llega a producción. También se mide el tiempo calendario completo, separando la espera por congelamiento, que no se descuenta de los plazos contractuales. La tasa de cambios fallidos no supera el 5 % mensual y la restauración de un servicio crítico no supera 4 horas (Bases Administrativas, art. 78.3, p. 40; RT-04.12, Bases Técnicas Transversales, cap. 4, p. 11).
 
 Un incidente crítico activa de inmediato el procedimiento de recuperación: conmutación, restauración o vuelta a una versión ya instalada y aceptada, siempre que sean compatibles con la prohibición de intervenir. Restaurar el servicio en 4 horas no significa terminar un desarrollo nuevo en ese plazo. Una corrección de código usa el mismo pipeline, con prioridad y fuera de la cadencia quincenal, pero eso no la autoriza a intervenir en fechas prohibidas. Las vulnerabilidades mantienen los plazos máximos de 7, 15 y 30 días corridos para severidad crítica, alta y media, contados desde su publicación o detección (Bases Administrativas, art. 21.1, p. 15; RT-11.04, Bases Técnicas Transversales, cap. 11, p. 23). La contención se registra por separado y no cuenta como remediación.
 
@@ -2349,11 +2391,11 @@ Si la recuperación o la remediación de una vulnerabilidad exige una intervenci
 
 <a id="sub:2-redes-topologia-segmentacion-y-conectivi"></a>
 
-La sección de conexiones describe los caminos entre los sitios, el terreno y la nube, y su conmutación (Tabla [10](LAFROX-Subdocumento4.md#tab:conexiones)). El despliegue agrega tres definiciones sobre esa red: dónde llegan los túneles, cómo se reparte el direccionamiento y cómo se dirige el tráfico entre regiones.
+La sección de conexiones describe los caminos entre los sitios, el terreno y la nube, y su conmutación (Tabla [11](LAFROX-Subdocumento4.md#tab:conexiones)). El despliegue agrega tres definiciones sobre esa red: dónde llegan los túneles, cómo se reparte el direccionamiento y cómo se dirige el tráfico entre regiones.
 
-Los túneles de AWS Site-to-Site VPN de los cinco sitios llegan a la VPC Hub de sa-east-1, donde el Transit Gateway los une solo a la VPC de Producción. La región us-east-1 dispone de su propio Transit Gateway y de su VPN para reconectar los sitios durante una conmutación. La de Producción es la única VPC con enlace hacia los sitios, coherente con que el on-premise es producción: Desarrollo, QA y Preproducción no tienen conectividad con las bodegas, de modo que un error en un ambiente de prueba no puede alcanzarlas. El direccionamiento se asigna sin solapamiento, según la Tabla [9](LAFROX-Subdocumento4.md#tab:t64), y el bloque de recuperación 10.201.0.0/16 corresponde al ambiente de Recuperación ante Desastres de la Tabla [7](LAFROX-Subdocumento4.md#tab:t62).
+Los túneles de AWS Site-to-Site VPN de los cinco sitios llegan a la VPC Hub de sa-east-1, donde el Transit Gateway los une solo a la VPC de Producción. La región us-east-1 dispone de su propio Transit Gateway y de su VPN para reconectar los sitios durante una conmutación. La de Producción es la única VPC con enlace hacia los sitios, coherente con que el on-premise es producción: Desarrollo, QA y Preproducción no tienen conectividad con las bodegas, de modo que un error en un ambiente de prueba no puede alcanzarlas. El direccionamiento se asigna sin solapamiento, según la Tabla [10](LAFROX-Subdocumento4.md#tab:t64), y el bloque de recuperación 10.201.0.0/16 corresponde al ambiente de Recuperación ante Desastres de la Tabla [8](LAFROX-Subdocumento4.md#tab:t62).
 
-La Figura [24](LAFROX-Subdocumento4.md#fig:red-sitios-regiones) sitúa las cinco instalaciones con cómputo en el centro, la región primaria a la izquierda y la secundaria a la derecha. Cada trazo WAN representa los dos túneles IPsec con BGP de un sitio hacia una región: las líneas azules muestran la conectividad de producción y las violetas discontinuas, las conexiones preparadas para la recuperación. Las líneas de replicación distinguen Aurora Global Database y S3. Este último permanece fuera de las VPC como servicio regional. El direccionamiento local se detalla en la Tabla [9](LAFROX-Subdocumento4.md#tab:t64), y los caminos de enlace y su prioridad, en la sección [4.2.5](LAFROX-Subdocumento4.md#sec:conexiones).
+La Figura [24](LAFROX-Subdocumento4.md#fig:red-sitios-regiones) sitúa las cinco instalaciones con cómputo en el centro, la región primaria a la izquierda y la secundaria a la derecha. Cada trazo WAN representa los dos túneles IPsec con BGP de un sitio hacia una región: las líneas azules muestran la conectividad de producción y las violetas discontinuas, las conexiones preparadas para la recuperación. Las líneas de replicación distinguen Aurora Global Database y S3. Este último permanece fuera de las VPC como servicio regional. El direccionamiento local se detalla en la Tabla [10](LAFROX-Subdocumento4.md#tab:t64), y los caminos de enlace y su prioridad, en la sección [4.2.5](LAFROX-Subdocumento4.md#sec:conexiones).
 
 **Figura 24 — Red de los cinco sitios operacionales y las regiones de producción y recuperación**
 
@@ -2387,7 +2429,7 @@ La vista regional muestra la terminación de las VPN y el tránsito hacia Produc
 
 <a id="tab:t64"></a>
 
-**Tabla 9 — Direccionamiento y segmentación**
+**Tabla 10 — Direccionamiento y segmentación**
 
 | **Dominio** | **Bloque** | **Segmentación** |
 | --- | --- | --- |
@@ -2405,7 +2447,7 @@ Cada sitio con cómputo dispone de un bloque propio. La séptima instalación qu
 
 El tráfico externo sigue las entradas de la sección [4.2.5.2](LAFROX-Subdocumento4.md#sub:superficie). Tras la autorización del CLIENTE se promueve Aurora, se restituyen aplicación, identidad y accesos, y se reconectan la VPN, los brokers y los shippers. La validación funcional recorre las escrituras y sus acuses locales antes de que Route 53 cambie el tráfico. La reconexión no se posterga hasta después de publicar el servicio (procedimiento [de conmutación de región](LAFROX-Subdocumento4.md#tab:4-3-6)).
 
-La red también debe devolver a la normalidad a un sitio que operó desconectado. El compromiso es resincronizar la flota en hasta 10 minutos y un centro de distribución en hasta 2 horas después de un corte de 24 horas (listado [de autonomía por ámbito](LAFROX-Subdocumento4.md#tab:t29)). Un corte de 24 horas acumula los cambios de la base con su registro de escritura anticipada, el vaciado del broker, la telemetría, la observabilidad y el incremental de respaldo: unos 1,68 GB en Talca, 1,29 GB en Concepción y 0,32 GB en cada cross-docking, que se drenan en 2 horas con 1,87, 1,44 y 0,35 Mbps, respectivamente (Tabla [17](LAFROX-Subdocumento4.md#tab:t81), Anexo 4-W). La evidencia de entrega no se suma al drenaje, porque durante el corte del centro de distribución el terminal la envía por la red celular. Las reservas de capacidad y la prioridad de cada camino se detallan en la Tabla de ancho de banda de 4.2.6. La operación de bodega conserva su autonomía mientras se drenan los mensajes. Al reconectar, la calidad de servicio prioriza el broker y el registro de escritura anticipada sobre la telemetría.
+La red también debe devolver a la normalidad a un sitio que operó desconectado. El compromiso es resincronizar la flota en hasta 10 minutos y un centro de distribución en hasta 2 horas después de un corte de 24 horas (listado [de autonomía por ámbito](LAFROX-Subdocumento4.md#tab:t29)). Un corte de 24 horas acumula los cambios de la base con su registro de escritura anticipada, el vaciado del broker, la telemetría, la observabilidad y el incremental de respaldo: unos 1,68 GB en Talca, 1,29 GB en Concepción y 0,32 GB en cada cross-docking, que se drenan en 2 horas con 1,87, 1,44 y 0,35 Mbps, respectivamente (Tabla [18](LAFROX-Subdocumento4.md#tab:t81), Anexo 4-W). La evidencia de entrega no se suma al drenaje, porque durante el corte del centro de distribución el terminal la envía por la red celular. Las reservas de capacidad y la prioridad de cada camino se detallan en la Tabla de ancho de banda de 4.2.6. La operación de bodega conserva su autonomía mientras se drenan los mensajes. Al reconectar, la calidad de servicio prioriza el broker y el registro de escritura anticipada sobre la telemetría.
 
 La calidad de servicio de los enlaces da prioridad a recepción, preparación, despacho y sincronización, junto con identidad, guías y alertas térmicas, por sobre la navegación administrativa, los informes y las transferencias no urgentes. La política se aplica al enlace principal y a los de respaldo, y mantiene la prioridad de recuperación descrita para DMS y WAL (RT-03.24, Bases Técnicas Transversales, cap. 3, p. 10).
 
@@ -2435,7 +2477,7 @@ Las clases de servicio se distinguen por su alternativa operativa:
 
 - Crítico: detiene un proceso sin alternativa. La ventana de despacho de 05:30 a 07:00 no admite ejecución manual, la nueva guía por un cambio de carga se emite antes de salir y el bloqueo por excursión térmica y la identidad de bodega condicionan la salida.
 
-- Alto: tiene una alternativa costosa. La toma de pedido, la entrega y la consulta de stock y crédito siguen siendo transacciones críticas en desempeño (Tabla [21](LAFROX-Subdocumento4.md#tab:t84)), pero el dispositivo las captura sin conexión durante un turno completo y las sincroniza al reconectar. La ruta puede planificarse a mano en 3,5 horas y las transacciones hacia el ERP distintas de la guía de la ventana de despacho se retienen en cola hasta 24 horas.
+- Alto: tiene una alternativa costosa. La toma de pedido, la entrega y la consulta de stock y crédito siguen siendo transacciones críticas en desempeño (Tabla [22](LAFROX-Subdocumento4.md#tab:t84)), pero el dispositivo las captura sin conexión durante un turno completo y las sincroniza al reconectar. La ruta puede planificarse a mano en 3,5 horas y las transacciones hacia el ERP distintas de la guía de la ventana de despacho se retienen en cola hasta 24 horas.
 
 - Medio: dispone de una alternativa operativa.
 
@@ -2483,7 +2525,7 @@ La réplica por DMS y la reconciliación por eventos cumplen funciones distintas
 
 #### 4.2.4.4.1 Conmutación y retorno
 
-La conmutación de región y el retorno siguen el procedimiento de la sección [4.3.2.5](LAFROX-Subdocumento4.md#sub:conmutacion-regional) (procedimiento [de conmutación de región](LAFROX-Subdocumento4.md#tab:4-3-6)): la promoción de la base exige la autorización del CLIENTE y el enrutamiento hacia us-east-1 cambia después de la validación funcional. El retorno se ejecuta de forma coordinada tras la reconciliación. Si la contingencia afecta solo a la sala de Talca, su WMS se levanta en Fargate sobre su copia en Aurora de la región activa, tras excluir VM-02 y transferir la autoridad de M2. El RTO incluye verificar o restituir LAN, firewalls, un camino WAN y acceso de los terminales, según 4.3.2.5. Los dominios de recuperación y sus amenazas comunes se analizan en la Tabla [25](LAFROX-Subdocumento4.md#tab:4-3-3).
+La conmutación de región y el retorno siguen el procedimiento de la sección [4.3.2.5](LAFROX-Subdocumento4.md#sub:conmutacion-regional) (procedimiento [de conmutación de región](LAFROX-Subdocumento4.md#tab:4-3-6)): la promoción de la base exige la autorización del CLIENTE y el enrutamiento hacia us-east-1 cambia después de la validación funcional. El retorno se ejecuta de forma coordinada tras la reconciliación. Si la contingencia afecta solo a la sala de Talca, su WMS se levanta en Fargate sobre su copia en Aurora de la región activa, tras excluir VM-02 y transferir la autoridad de M2. El RTO incluye verificar o restituir LAN, firewalls, un camino WAN y acceso de los terminales, según 4.3.2.5. Los dominios de recuperación y sus amenazas comunes se analizan en la Tabla [26](LAFROX-Subdocumento4.md#tab:4-3-3).
 
 #### 4.2.4.4.2 Operación durante una contingencia regional
 
@@ -2590,11 +2632,11 @@ Los flujos principales son las entradas HTTPS de usuarios externos por CloudFron
 
 Los 184 usuarios de administración, comercial y soporte de Talca y Concepción acceden a las consolas y a la administración de Keycloak solo por Verified Access. La consola Angular corre en dos tareas Fargate distribuidas entre dos zonas tras un ALB privado y reenvía las llamadas a la API REST privada por el endpoint de interfaz execute-api. CloudFront publica únicamente los endpoints OIDC necesarios para autenticación y renovación de sesión por la API REST pública sin autorizador hacia Keycloak tras el ALB privado. El verificador local de relevos permanece en cada sitio. Las cadenas usan el canal AS2 descrito en ADR-11 (Anexo 4-O), cuyo transporte mantiene dos tareas Fargate distribuidas entre dos zonas.
 
-La Tabla [10](LAFROX-Subdocumento4.md#tab:conexiones) resume cada conexión con su medio, su camino alternativo y el tiempo de conmutación entre ambos.
+La Tabla [11](LAFROX-Subdocumento4.md#tab:conexiones) resume cada conexión con su medio, su camino alternativo y el tiempo de conmutación entre ambos.
 
 <a id="tab:conexiones"></a>
 
-**Tabla 10 — Conexiones de la solución y su camino alternativo**
+**Tabla 11 — Conexiones de la solución y su camino alternativo**
 
 | **Conexión** | **Medio y protocolo** | **Camino alternativo** | **Conmutación** |
 | --- | --- | --- | --- |
@@ -2616,11 +2658,11 @@ Los cinco sitios tienen caminos alternativos hacia la nube. Los sitios mantienen
 
 <a id="sub:superficie"></a>
 
-La Tabla [11](LAFROX-Subdocumento4.md#tab:superficie) delimita las únicas entradas desde redes externas. Cada entrada usa un subdominio propio del dominio del CLIENTE gestionado en Route 53. En la tabla, dominio representa ese dominio institucional, que el CLIENTE confirma al inicio del proyecto.
+La Tabla [12](LAFROX-Subdocumento4.md#tab:superficie) delimita las únicas entradas desde redes externas. Cada entrada usa un subdominio propio del dominio del CLIENTE gestionado en Route 53. En la tabla, dominio representa ese dominio institucional, que el CLIENTE confirma al inicio del proyecto.
 
 <a id="tab:superficie"></a>
 
-**Tabla 11 — Superficie de exposición**
+**Tabla 12 — Superficie de exposición**
 
 | **Entrada** | **Nombre de dominio (FQDN)** | **Servicio y puerto** | **Quién accede** | **Control** |
 | --- | --- | --- | --- | --- |
@@ -2751,11 +2793,11 @@ Las Bases Técnicas del caso (anexo B, p. 38) distribuyen la operación en estas
 
 La hora más exigente es 12:00, con 12,34 TPS normales y 14,66 TPS en septiembre. Esa hora es una convención del cálculo: el factor SV-04 concentra la preventa y el portal en la hora central de su ventana, y el máximo sería el mismo en cualquier otra hora de esa ventana. En esa hora el portal aporta 9,63 TPS y la nube 2,71 TPS normales o 5,03 TPS en peak. Talca, Concepción y cada cross-docking están fuera de sus ventanas de mayor carga. El promedio diario engaña porque oculta la coincidencia de preventa, reparto y sesiones del portal.
 
-La Tabla [12](LAFROX-Subdocumento4.md#tab:dimensionamiento-calendario) resume los factores de calendario que se usan en la memoria.
+La Tabla [13](LAFROX-Subdocumento4.md#tab:dimensionamiento-calendario) resume los factores de calendario que se usan en la memoria.
 
 <a id="tab:dimensionamiento-calendario"></a>
 
-**Tabla 12 — Calendario y factores de diseño**
+**Tabla 13 — Calendario y factores de diseño**
 
 | **Dato** | **Valor** | **Uso** | **Fuente** |
 | --- | --- | --- | --- |
@@ -2774,11 +2816,11 @@ Los 22,14 días son una equivalencia de cálculo, no una cantidad de días hábi
 
 La dimensión 1, «Transacciones por segundo en régimen normal», toma el máximo horario normal. La dimensión 2, «Transacciones por segundo en el peak de la ventana de despacho de 05:30 a 07:00», incluye la cota de emisión de guías y el re-despacho del cross-docking. La dimensión 3, «Transacciones por segundo en el peak de septiembre», toma el máximo horario del perfil de septiembre.
 
-La Tabla [13](LAFROX-Subdocumento4.md#tab:t76) presenta los lugares de proceso y separa el portal de la nube. El despacho se muestra como una cota independiente porque el caso lo identifica como peak actual de emisión de documentos.
+La Tabla [14](LAFROX-Subdocumento4.md#tab:t76) presenta los lugares de proceso y separa el portal de la nube. El despacho se muestra como una cota independiente porque el caso lo identifica como peak actual de emisión de documentos.
 
 <a id="tab:t76"></a>
 
-**Tabla 13 — Transacciones por segundo por lugar de proceso**
+**Tabla 14 — Transacciones por segundo por lugar de proceso**
 
 | **Lugar o flujo** | **Régimen normal** | **Ventana de despacho** | **Peak septiembre** |
 | --- | --- | --- | --- |
@@ -2813,11 +2855,11 @@ El despacho de 05:30 a 07:00 se reparte entre ambos centros conforme a SV-03, en
 
 <a id="sec:dimensionamiento-usuarios"></a>
 
-La dimensión 4, «Personas usuarias registradas, internas y externas», es 15.180 registros: 640 + 160 + 14.200 + 180. La dimensión 5, «Personas usuarias concurrentes en peak», toma el máximo de cada ventana sin sumar turnos que no coinciden. La Tabla [14](LAFROX-Subdocumento4.md#tab:dimensionamiento-concurrencia) muestra la operación sin portal y la cota de sesiones.
+La dimensión 4, «Personas usuarias registradas, internas y externas», es 15.180 registros: 640 + 160 + 14.200 + 180. La dimensión 5, «Personas usuarias concurrentes en peak», toma el máximo de cada ventana sin sumar turnos que no coinciden. La Tabla [15](LAFROX-Subdocumento4.md#tab:dimensionamiento-concurrencia) muestra la operación sin portal y la cota de sesiones.
 
 <a id="tab:dimensionamiento-concurrencia"></a>
 
-**Tabla 14 — Concurrencia por ventana**
+**Tabla 15 — Concurrencia por ventana**
 
 | **Ventana** | **Operación sin portal** | **Portal** | **Máximo** |
 | --- | --- | --- | --- |
@@ -2845,11 +2887,11 @@ Cada cantidad incluye la reserva del 10 % del parque, redondeada hacia arriba, c
 
 <a id="sec:dimensionamiento-almacenamiento"></a>
 
-La dimensión 7, «Volumen anual de almacenamiento transaccional», la dimensión 8, «Volumen anual de almacenamiento de evidencia de entrega, firmas y fotografías», la dimensión 9, «Volumen anual de almacenamiento de series de temperatura y de posicionamiento», y la dimensión 10, «Volumen total de datos históricos a migrar», se resumen en la Tabla [15](LAFROX-Subdocumento4.md#tab:dimensionamiento-almacenamiento).
+La dimensión 7, «Volumen anual de almacenamiento transaccional», la dimensión 8, «Volumen anual de almacenamiento de evidencia de entrega, firmas y fotografías», la dimensión 9, «Volumen anual de almacenamiento de series de temperatura y de posicionamiento», y la dimensión 10, «Volumen total de datos históricos a migrar», se resumen en la Tabla [16](LAFROX-Subdocumento4.md#tab:dimensionamiento-almacenamiento).
 
 <a id="tab:dimensionamiento-almacenamiento"></a>
 
-**Tabla 15 — Volumen, retención y destino de los datos**
+**Tabla 16 — Volumen, retención y destino de los datos**
 
 | **Dominio** | **Volumen anual** | **Retención** | **Acumulado** | **Destino** |
 | --- | --- | --- | --- | --- |
@@ -2867,11 +2909,11 @@ La migración no supone eventos históricos digitales de trazabilidad: el caso d
 
 <a id="sec:dimensionamiento-enlaces"></a>
 
-La dimensión 11, «Número de integraciones y volumen de mensajes por integración», cuenta únicamente INT-01 a INT-15 del catálogo del apartado 4.1. Portal y llamadas internas a la API quedan fuera. La Tabla [16](LAFROX-Subdocumento4.md#tab:dimensionamiento-integraciones) resume sus 224.652 mensajes diarios normales y 342.933 en peak, incluida la coordinación de reserva de INT-03/04. INT-14 considera 13 nodos activos, seis VMs en Talca, cuatro en Concepción y un mini-PC activo por cada cross-docking, con 1.000 eventos por nodo al día. Suma además 7 nodos en espera, cuatro VMs en Concepción y un mini-PC por cross-docking, con 200 eventos al día, porque no atienden transacciones.
+La dimensión 11, «Número de integraciones y volumen de mensajes por integración», cuenta únicamente INT-01 a INT-15 del catálogo del apartado 4.1. Portal y llamadas internas a la API quedan fuera. La Tabla [17](LAFROX-Subdocumento4.md#tab:dimensionamiento-integraciones) resume sus 224.652 mensajes diarios normales y 342.933 en peak, incluida la coordinación de reserva de INT-03/04. INT-14 considera 13 nodos activos, seis VMs en Talca, cuatro en Concepción y un mini-PC activo por cada cross-docking, con 1.000 eventos por nodo al día. Suma además 7 nodos en espera, cuatro VMs en Concepción y un mini-PC por cross-docking, con 200 eventos al día, porque no atienden transacciones.
 
 <a id="tab:dimensionamiento-integraciones"></a>
 
-**Tabla 16 — Mensajes de integración por grupo**
+**Tabla 17 — Mensajes de integración por grupo**
 
 | **Integraciones** | **Normal** | **Peak** | **Origen** |
 | --- | --- | --- | --- |
@@ -2883,11 +2925,11 @@ La dimensión 11, «Número de integraciones y volumen de mensajes por integraci
 
 Fuente: elaboración a partir de PUCV (2026b, secciones 14.1–14.2 y 16.1, pp. 24–25 y 28–29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp. 145–159).
 
-El EDI actual es cero. Desde enero de 2029 opera todos los días, y se dimensiona con la misma hipótesis en régimen y en peak: 11 % de los pedidos, que corresponde a la cadena principal y su 11 % de la venta (SV-05), con cuatro mensajes por pedido. Son 1.400 × 11 % × 4 = 616 mensajes en régimen y 2.600 × 11 % × 4 = 1.144 en peak. La pasarela de pago se acota con un pago electrónico por entrega como máximo y dos mensajes por pago, solicitud y respuesta: 2.800 en régimen y 5.200 en peak. Los 11.800 cobros mensuales del caso son en efectivo y no miden pagos con tarjeta. La Tabla [17](LAFROX-Subdocumento4.md#tab:t81) compara el peor caso del camino principal y el drenaje de los caminos de respaldo.
+El EDI actual es cero. Desde enero de 2029 opera todos los días, y se dimensiona con la misma hipótesis en régimen y en peak: 11 % de los pedidos, que corresponde a la cadena principal y su 11 % de la venta (SV-05), con cuatro mensajes por pedido. Son 1.400 × 11 % × 4 = 616 mensajes en régimen y 2.600 × 11 % × 4 = 1.144 en peak. La pasarela de pago se acota con un pago electrónico por entrega como máximo y dos mensajes por pago, solicitud y respuesta: 2.800 en régimen y 5.200 en peak. Los 11.800 cobros mensuales del caso son en efectivo y no miden pagos con tarjeta. La Tabla [18](LAFROX-Subdocumento4.md#tab:t81) compara el peor caso del camino principal y el drenaje de los caminos de respaldo.
 
 <a id="tab:t81"></a>
 
-**Tabla 17 — Ancho de banda por sitio y camino**
+**Tabla 18 — Ancho de banda por sitio y camino**
 
 | **Sitio** | **Camino** | **Subida de diseño** | **Utilización** |
 | --- | --- | --- | --- |
@@ -2918,7 +2960,7 @@ Fuente: elaboración a partir de PUCV (2026b, secciones 14.1–14.2 y 16.1, pp. 
 
 Fuente: elaboración a partir de PUCV (2026b, secciones 14.1–14.2 y 16.1, pp. 24–25 y 28–29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp. 145–159).
 
-D-03, D-04 y D-06 corresponden a fibra, LTE y satélite. La Tabla [17](LAFROX-Subdocumento4.md#tab:t81) distingue el retorno promedio del escenario simultáneo: este último suma 5,64 Mbps útiles de dispositivos y 1,87 Mbps de drenaje en Talca. En Concepción suma 2,75 y 1,44 Mbps. Con un margen de transporte del 15 %, exige 8,64 y 4,82 Mbps, respectivamente. Se fijan mínimos de aceptación de 10 Mbps de subida sostenida en cada respaldo de Talca y 6 Mbps en cada respaldo de Concepción. Son requisitos de dimensionamiento, no velocidades observadas ni garantías inherentes a LTE o Starlink. La aceptación mide cada camino por separado, cola, latencia y plazo por dispositivo. Si un proveedor no sostiene el mínimo, el camino se refuerza o sustituye antes de aceptar el servicio. La priorización por sí sola no compensa falta de caudal.
+D-03, D-04 y D-06 corresponden a fibra, LTE y satélite. La Tabla [18](LAFROX-Subdocumento4.md#tab:t81) distingue el retorno promedio del escenario simultáneo: este último suma 5,64 Mbps útiles de dispositivos y 1,87 Mbps de drenaje en Talca. En Concepción suma 2,75 y 1,44 Mbps. Con un margen de transporte del 15 %, exige 8,64 y 4,82 Mbps, respectivamente. Se fijan mínimos de aceptación de 10 Mbps de subida sostenida en cada respaldo de Talca y 6 Mbps en cada respaldo de Concepción. Son requisitos de dimensionamiento, no velocidades observadas ni garantías inherentes a LTE o Starlink. La aceptación mide cada camino por separado, cola, latencia y plazo por dispositivo. Si un proveedor no sostiene el mínimo, el camino se refuerza o sustituye antes de aceptar el servicio. La priorización por sí sola no compensa falta de caudal.
 
 Durante el respaldo se suspende el tráfico administrativo y no urgente. Tienen prioridad sincronización, WAL, broker, guías, identidad y alertas. Los cross-docking conservan la cota de drenaje de 0,35 Mbps por sitio y su comprobación con LTE dual. La ventana dominical y las tandas de actualización se detallan en el Anexo 4-W. Las condiciones de retorno de los dispositivos, en 4.2.6.7.
 
@@ -2936,11 +2978,11 @@ El consumo de batería por turno se declara como un máximo comprometido, porque
 
 <a id="sec:dimensionamiento-onpremise"></a>
 
-La capacidad propuesta conserva maestros, stock, lotes presentes y movimientos de cuatro meses en cada sitio. El histórico vive en la nube. El horizonte cubre el ciclo de conteo de 11.400 ÷ 3.400 = 3,35 meses y la rotación media de 11,4 veces/año. Cada VM se calcula como base de sistema más carga, según la tabla de VMs del Anexo 4-W. El requisito total incorpora el hipervisor (+15 % de vCPU y 2 GB de RAM por nodo) y, en Talca, Ceph: dos OSD de 1 vCPU y 4 GB cada uno, más monitor/manager de 1 vCPU y 2 GB por nodo. La Tabla [18](LAFROX-Subdocumento4.md#tab:t79) resume la capacidad requerida por sitio.
+La capacidad propuesta conserva maestros, stock, lotes presentes y movimientos de cuatro meses en cada sitio. El histórico vive en la nube. El horizonte cubre el ciclo de conteo de 11.400 ÷ 3.400 = 3,35 meses y la rotación media de 11,4 veces/año. Cada VM se calcula como base de sistema más carga, según la tabla de VMs del Anexo 4-W. El requisito total incorpora el hipervisor (+15 % de vCPU y 2 GB de RAM por nodo) y, en Talca, Ceph: dos OSD de 1 vCPU y 4 GB cada uno, más monitor/manager de 1 vCPU y 2 GB por nodo. La Tabla [19](LAFROX-Subdocumento4.md#tab:t79) resume la capacidad requerida por sitio.
 
 <a id="tab:t79"></a>
 
-**Tabla 18 — Capacidad requerida por sitio**
+**Tabla 19 — Capacidad requerida por sitio**
 
 | **Sitio** | **Base local** | **Requerido actual** | **Requerido a 3×** |
 | --- | --- | --- | --- |
@@ -2957,11 +2999,11 @@ Ceph entrega 1,92 TB útiles con seis NVMe de 960 GB, tres réplicas y sin RAID.
 
 <a id="sec:dimensionamiento-nube"></a>
 
-La plataforma utiliza Fargate, Aurora, ElastiCache, SQS, IoT Core, DynamoDB y S3 como servicios administrados. Una tarea entrega 14 solicitudes por segundo al 70 % de uso con 50 ms de CPU. El escalado reacciona con métricas de un minuto y pone una tarea nueva en servicio en menos de tres minutos, valor de diseño que mide la prueba de carga. El balanceador drena la tarea que sale sin perder transacciones en curso (RT-09.04, Bases Técnicas Transversales, cap. 9, p. 21). La Tabla [19](LAFROX-Subdocumento4.md#tab:dimensionamiento-nube) separa el portal y compara cada perfil con el techo de ocho tareas.
+La plataforma utiliza Fargate, Aurora, ElastiCache, SQS, IoT Core, DynamoDB y S3 como servicios administrados. Una tarea entrega 14 solicitudes por segundo al 70 % de uso con 50 ms de CPU. El escalado reacciona con métricas de un minuto y pone una tarea nueva en servicio en menos de tres minutos, valor de diseño que mide la prueba de carga. El balanceador drena la tarea que sale sin perder transacciones en curso (RT-09.04, Bases Técnicas Transversales, cap. 9, p. 21). La Tabla [20](LAFROX-Subdocumento4.md#tab:dimensionamiento-nube) separa el portal y compara cada perfil con el techo de ocho tareas.
 
 <a id="tab:dimensionamiento-nube"></a>
 
-**Tabla 19 — Procesos Fargate por perfil**
+**Tabla 20 — Procesos Fargate por perfil**
 
 | **Perfil** | **Carga** | **Tareas** | **Conclusión** |
 | --- | --- | --- | --- |
@@ -2982,11 +3024,11 @@ El portal en régimen usa 9,63 solicitudes/s y 96,30 sesiones concurrentes. Su c
 
 <a id="sec:dimensionamiento-plan"></a>
 
-La Tabla [20](LAFROX-Subdocumento4.md#tab:dimensionamiento-plan) mantiene separadas la proyección del año 3 y la exigencia técnica de 3×. Cada fila tiene una acción concreta de operación o ampliación.
+La Tabla [21](LAFROX-Subdocumento4.md#tab:dimensionamiento-plan) mantiene separadas la proyección del año 3 y la exigencia técnica de 3×. Cada fila tiene una acción concreta de operación o ampliación.
 
 <a id="tab:dimensionamiento-plan"></a>
 
-**Tabla 20 — Proyección y crecimiento de capacidad**
+**Tabla 21 — Proyección y crecimiento de capacidad**
 
 | **Componente** | **Año 1** | **Año 3** | **3×** |
 | --- | --- | --- | --- |
@@ -3010,7 +3052,7 @@ Fuente: elaboración a partir de PUCV (2026b, secciones 14.1–14.2 y 16.1, pp. 
 
 - **Evidencia anual.** Escalar S3 y revisar retención.
 
-- **Enlace de Talca, escenario horario distribuido.** Contrastar además el retorno simultáneo de la Tabla [17](LAFROX-Subdocumento4.md#tab:t81) antes de ampliar.
+- **Enlace de Talca, escenario horario distribuido.** Contrastar además el retorno simultáneo de la Tabla [18](LAFROX-Subdocumento4.md#tab:t81) antes de ampliar.
 
 - **Terminales de bodega de Talca.** Ajustar parque a la dotación.
 
@@ -3020,7 +3062,7 @@ Fuente: elaboración a partir de PUCV (2026b, secciones 14.1–14.2 y 16.1, pp. 
 
 La nube escala automáticamente dentro del techo declarado. Nodos, almacenamiento local, Wi-Fi y enlaces requieren revisión planificada. La gestión trimestral compara la proyección observada con la cota de 3× y con la incorporación de nuevas unidades.
 
-Respecto de la carga proyectada del año 3, las diferencias entre las cotas de dimensionamiento 3× y esa proyección en la Tabla [20](LAFROX-Subdocumento4.md#tab:dimensionamiento-plan) son: WMS Talca, (8,05 ÷ 3,15 − 1) × 100 = 155,6 %. Cota de cross-docking, (6,50 ÷ 2,58 − 1) × 100 = 151,9 %. Aplicación en nube, (43,98 ÷ 17,03 − 1) × 100 = 158,3 %. En cross-docking se asigna conservadoramente a cada equipo la carga agregada de las tres plataformas. No se afirma que cada sitio genere ese volumen. Estos porcentajes comparan escenarios de carga, no capacidad medida del hardware ni margen de la sensibilidad completa de portales de la Tabla [19](LAFROX-Subdocumento4.md#tab:dimensionamiento-nube). La revisión trimestral y las pruebas de carga verifican el límite efectivo antes de ampliar. No se aplican a enlaces, parque de terminales ni mesa de ayuda (RT-08.05, Bases Técnicas Transversales, cap. 8, p. 18).
+Respecto de la carga proyectada del año 3, las diferencias entre las cotas de dimensionamiento 3× y esa proyección en la Tabla [21](LAFROX-Subdocumento4.md#tab:dimensionamiento-plan) son: WMS Talca, (8,05 ÷ 3,15 − 1) × 100 = 155,6 %. Cota de cross-docking, (6,50 ÷ 2,58 − 1) × 100 = 151,9 %. Aplicación en nube, (43,98 ÷ 17,03 − 1) × 100 = 158,3 %. En cross-docking se asigna conservadoramente a cada equipo la carga agregada de las tres plataformas. No se afirma que cada sitio genere ese volumen. Estos porcentajes comparan escenarios de carga, no capacidad medida del hardware ni margen de la sensibilidad completa de portales de la Tabla [20](LAFROX-Subdocumento4.md#tab:dimensionamiento-nube). La revisión trimestral y las pruebas de carga verifican el límite efectivo antes de ampliar. No se aplican a enlaces, parque de terminales ni mesa de ayuda (RT-08.05, Bases Técnicas Transversales, cap. 8, p. 18).
 
 ### 4.2.6.11 Cuello de botella, umbrales y degradación controlada
 
@@ -3036,11 +3078,11 @@ El primer candidato es la emisión de guías del ERP. En el peak se emiten unos 
 
 La solución emite la guía cuando confirma la carga, durante la noche. Se detectan guías aún no emitidas frente a la hora de salida de cada camión y se prioriza la cola, sin crear un segundo emisor: el ERP conserva la responsabilidad tributaria y la guía acompaña el traslado. Como el caso no documenta las interfaces del ERP y encarga levantarlas en los primeros meses (Bases Técnicas del caso, cap. 5, p. 10), el tiempo real por guía se mide en ese levantamiento. Si superara los 4,42 segundos, las cargas se cierran por camión en el orden de salida, para que la emisión empiece antes.
 
-La Tabla [21](LAFROX-Subdocumento4.md#tab:t84) fija los umbrales de respuesta que se observan en percentil 95.
+La Tabla [22](LAFROX-Subdocumento4.md#tab:t84) fija los umbrales de respuesta que se observan en percentil 95.
 
 <a id="tab:t84"></a>
 
-**Tabla 21 — Umbrales de respuesta en percentil 95**
+**Tabla 22 — Umbrales de respuesta en percentil 95**
 
 | **Operación** | **Umbral** |
 | --- | --- |
@@ -3074,11 +3116,11 @@ Los otros candidatos son la base WMS, los IOPS, la Wi-Fi y el drenaje. Se detect
 
 <a id="sec:dimensionamiento-pruebas"></a>
 
-La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) carga una sola vez 1,5 × la dimensión 3, es decir, 21,99 TPS totales. La Tabla [22](LAFROX-Subdocumento4.md#tab:t86) vincula cada ensayo con la decisión que debe cerrar.
+La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) carga una sola vez 1,5 × la dimensión 3, es decir, 21,99 TPS totales. La Tabla [23](LAFROX-Subdocumento4.md#tab:t86) vincula cada ensayo con la decisión que debe cerrar.
 
 <a id="tab:t86"></a>
 
-**Tabla 22 — Pruebas que confirman el dimensionamiento**
+**Tabla 23 — Pruebas que confirman el dimensionamiento**
 
 | **Prueba** | **Carga** | **Qué confirma** | **Criterio** |
 | --- | --- | --- | --- |
@@ -3108,7 +3150,7 @@ La prueba de carga conserva tasas por lugar, percentil 95, utilización, colas, 
 
 La [Tabla A.30 del Anexo 4-W](LAFROX-Subdocumento4-Anexos.pdf#tab:t72) reúne cada dimensión con el nombre literal del Caso 14.2, su valor normal o de ventana, su valor peak o declarado y la derivación correspondiente.
 
-El diseño queda gobernado por tres condiciones operativas. La primera es la emisión de guías del ERP antes de la salida de cada camión, que es la única de las tres cuya capacidad no controla la solución y que por eso se mide primero. La segunda es el enlace de Talca durante el retorno de la flota, cuando la sincronización de los dispositivos se suma al tráfico de oficina. La tercera es el almacenamiento de la evidencia de entrega, que es el volumen que más crece y el que fija la política de niveles de S3. Las cotas de crecimiento 3× y las sensibilidades de portales y sincronización son escenarios distintos. La cota completa de 111,70 solicitudes/s ocupa las ocho tareas de API y no deja margen para aumentar la cuota. Los límites efectivos de cómputo y enlaces se verifican con los perfiles de la Tabla [19](LAFROX-Subdocumento4.md#tab:dimensionamiento-nube), los ensayos de la Tabla [22](LAFROX-Subdocumento4.md#tab:t86) y la memoria del Anexo 4-W.
+El diseño queda gobernado por tres condiciones operativas. La primera es la emisión de guías del ERP antes de la salida de cada camión, que es la única de las tres cuya capacidad no controla la solución y que por eso se mide primero. La segunda es el enlace de Talca durante el retorno de la flota, cuando la sincronización de los dispositivos se suma al tráfico de oficina. La tercera es el almacenamiento de la evidencia de entrega, que es el volumen que más crece y el que fija la política de niveles de S3. Las cotas de crecimiento 3× y las sensibilidades de portales y sincronización son escenarios distintos. La cota completa de 111,70 solicitudes/s ocupa las ocho tareas de API y no deja margen para aumentar la cuota. Los límites efectivos de cómputo y enlaces se verifican con los perfiles de la Tabla [20](LAFROX-Subdocumento4.md#tab:dimensionamiento-nube), los ensayos de la Tabla [23](LAFROX-Subdocumento4.md#tab:t86) y la memoria del Anexo 4-W.
 
 <a id="fuente-12-k-dimensionamiento-fin"></a>
 
@@ -3179,11 +3221,11 @@ La cadena eléctrica sigue esta secuencia: empalme → tablero general → trans
 
 Esta cadena consta de UPS de doble conversión on-line en configuración N+1 con autonomía mínima de 30 minutos a plena carga y generación autónoma para un rango mínimo de 24 horas continuas, con estanque de combustible dimensionado y contrato de reabastecimiento declarado. La instalación eléctrica es independiente de la del resto del edificio y conforme a la normativa eléctrica chilena vigente, incluida la NCh Elec. 2777. Se revisa y mide semestralmente, con informe entregable al CLIENTE, conforme a RT-06.10 (Bases Técnicas Transversales, cap. 6, p. 15).
 
-Para el cálculo de carga eléctrica se usa una cota conservadora por equipo, según la Tabla [23](LAFROX-Subdocumento4.md#tab:4-3-1): en los nodos, la suma de sus dos fuentes, y en los demás equipos, su potencia máxima de ficha. Para el servidor del ERP, cuya ficha no se conoce, se usa la misma cota de un nodo, que se confirma al medirlo en el levantamiento. El Formulario T-11 declara los mismos valores por equipo.
+Para el cálculo de carga eléctrica se usa una cota conservadora por equipo, según la Tabla [24](LAFROX-Subdocumento4.md#tab:4-3-1): en los nodos, la suma de sus dos fuentes, y en los demás equipos, su potencia máxima de ficha. Para el servidor del ERP, cuya ficha no se conoce, se usa la misma cota de un nodo, que se confirma al medirlo en el levantamiento. El Formulario T-11 declara los mismos valores por equipo.
 
 <a id="tab:4-3-1"></a>
 
-**Tabla 23 — Carga eléctrica de TI proyectada del recinto**
+**Tabla 24 — Carga eléctrica de TI proyectada del recinto**
 
 | **Equipo** | **Cantidad** | **Potencia de placa por unidad** | **Subtotal** |
 | --- | --- | --- | --- |
@@ -3212,11 +3254,11 @@ La climatización de precisión para la operación continua es redundante en con
 
 Con dos racks, la contención se resuelve con paneles ciegos en todas las unidades libres, sellado de los pasos de cable y una orientación con frente frío y parte trasera caliente, coherente con la climatización de precisión, para evitar que el aire caliente recircule. Un retorno más caliente y con menos mezcla mejora la eficiencia de la climatización y el PUE estimado del recinto (RT-06.15, Bases Técnicas Transversales, cap. 6, p. 15).
 
-Para calcular la carga térmica, se considera que cada kW eléctrico consumido por el equipamiento se disipa físicamente como aproximadamente 1 kW de calor sensible (≈ 3.412 BTU/h). Como el UPS está en su propia sala, la carga térmica de la sala de servidores corresponde a la carga TI de diseño, como resume la Tabla [24](LAFROX-Subdocumento4.md#tab:4-3-2):
+Para calcular la carga térmica, se considera que cada kW eléctrico consumido por el equipamiento se disipa físicamente como aproximadamente 1 kW de calor sensible (≈ 3.412 BTU/h). Como el UPS está en su propia sala, la carga térmica de la sala de servidores corresponde a la carga TI de diseño, como resume la Tabla [25](LAFROX-Subdocumento4.md#tab:4-3-2):
 
 <a id="tab:4-3-2"></a>
 
-**Tabla 24 — Carga térmica sensible proyectada del recinto**
+**Tabla 25 — Carga térmica sensible proyectada del recinto**
 
 | **Origen del calor** | **Potencia equivalente** |
 | --- | --- |
@@ -3227,7 +3269,7 @@ Fuente: elaboración a partir de PUCV (2026b, secciones 14.1–14.2 y 16.1, pp. 
 
 Sobre esa carga se instalan dos unidades de climatización de precisión de 10 kW cada una, en configuración N+1. Una sola cubre los 8,9 kW de diseño. La temperatura y la humedad relativa se controlan dentro de los rangos del fabricante del equipamiento. La sala de UPS y baterías dispone de climatización de confort propia de 3,5 kW (≈ 12.000 BTU/h), que mantiene 20–25 °C, y de ventilación. Disipa las pérdidas del UPS (≈ 0,78 kW) y el calor de carga de las baterías.
 
-La consola KVM, con 50 W de potencia de placa, el conmutador de transferencia del ERP y los equipos terminales de acceso del operador (ONT de fibra, router LTE y terminal Starlink) quedan cubiertos por el margen de diseño del 20 % de la Tabla [23](LAFROX-Subdocumento4.md#tab:4-3-1), sin alterar el UPS de 15 kVA ni el generador de 25 kVA.
+La consola KVM, con 50 W de potencia de placa, el conmutador de transferencia del ERP y los equipos terminales de acceso del operador (ONT de fibra, router LTE y terminal Starlink) quedan cubiertos por el margen de diseño del 20 % de la Tabla [24](LAFROX-Subdocumento4.md#tab:4-3-1), sin alterar el UPS de 15 kVA ni el generador de 25 kVA.
 
 La protección contra incendios reúne estos elementos:
 
@@ -3249,7 +3291,7 @@ Fuente: elaboración a partir de PUCV (2026b, secciones 14.1–14.2 y 16.1, pp. 
 
 <a id="fig:racks-talca"></a>
 
-El rack R01 aloja los tres nodos del clúster, de 2U cada uno, la consola KVM, la NAS WORM, el servidor del ERP de 2U y su conmutador de transferencia. El rack R02 aloja el ODF, los paneles, los dos switches de núcleo, el switch de gestión, el par de firewalls y la bandeja del operador con la ONT de fibra y el router LTE. R01 ocupa 15U de 42 (36 %) y R02, 12U (29 %). La carga de R01 es de 6,8 kW base y 8,2 kW de diseño, y la de R02, de 0,65 kW base y 0,8 kW de diseño. Las cargas base suman los 7.450 W de la Tabla [23](LAFROX-Subdocumento4.md#tab:4-3-1), y las de diseño, los 8,9 kW que resultan al agregar el margen de 20 %. La figura dibuja comprimidos los bloques libres e indica la posición de cada equipo en U. Los racks de servidores son independientes de los racks de equipos de comunicación. La ocupación proyectada reserva margen de crecimiento a tres años, coherente con el 20 % de reserva de la carga eléctrica (Tabla [23](LAFROX-Subdocumento4.md#tab:4-3-1)), de modo que la ocupación declarada y su margen quedan fijados en la figura y en el Formulario T-11.
+El rack R01 aloja los tres nodos del clúster, de 2U cada uno, la consola KVM, la NAS WORM, el servidor del ERP de 2U y su conmutador de transferencia. El rack R02 aloja el ODF, los paneles, los dos switches de núcleo, el switch de gestión, el par de firewalls y la bandeja del operador con la ONT de fibra y el router LTE. R01 ocupa 15U de 42 (36 %) y R02, 12U (29 %). La carga de R01 es de 6,8 kW base y 8,2 kW de diseño, y la de R02, de 0,65 kW base y 0,8 kW de diseño. Las cargas base suman los 7.450 W de la Tabla [24](LAFROX-Subdocumento4.md#tab:4-3-1), y las de diseño, los 8,9 kW que resultan al agregar el margen de 20 %. La figura dibuja comprimidos los bloques libres e indica la posición de cada equipo en U. Los racks de servidores son independientes de los racks de equipos de comunicación. La ocupación proyectada reserva margen de crecimiento a tres años, coherente con el 20 % de reserva de la carga eléctrica (Tabla [24](LAFROX-Subdocumento4.md#tab:4-3-1)), de modo que la ocupación declarada y su margen quedan fijados en la figura y en el Formulario T-11.
 
 El control de acceso y la seguridad física del recinto comprenden:
 
@@ -3300,11 +3342,11 @@ Frente a un esquema activo-activo, la réplica caliente reducida evita pagar de 
 
 ### 4.3.2.2 Región o sitio de recuperación
 
-La Tabla [25](LAFROX-Subdocumento4.md#tab:4-3-3) compara los dos destinos de recuperación con sus distancias y amenazas comunes.
+La Tabla [26](LAFROX-Subdocumento4.md#tab:4-3-3) compara los dos destinos de recuperación con sus distancias y amenazas comunes.
 
 <a id="tab:4-3-3"></a>
 
-**Tabla 25 — Destinos de recuperación: distancia y amenazas comunes**
+**Tabla 26 — Destinos de recuperación: distancia y amenazas comunes**
 
 | **Destino** | **Dominio** | **Distancia** | **Amenazas comunes** |
 | --- | --- | --- | --- |
@@ -3347,11 +3389,11 @@ El listado separa la copia DMS del WMS de Talca, destinada a su recuperación, d
 
 ### 4.3.2.4 RPO y RTO
 
-La Tabla [26](LAFROX-Subdocumento4.md#tab:4-3-5) fija los objetivos medidos en las pruebas de recuperación.
+La Tabla [27](LAFROX-Subdocumento4.md#tab:4-3-5) fija los objetivos medidos en las pruebas de recuperación.
 
 <a id="tab:4-3-5"></a>
 
-**Tabla 26 — Objetivos de continuidad**
+**Tabla 27 — Objetivos de continuidad**
 
 | **Activo** | **Objetivo** | **Valor declarado** |
 | --- | --- | --- |
@@ -3528,6 +3570,22 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 
 - LafroX. (2026j). *Subdocumento 1: Presentación de la empresa*.
 
+- Celery. (s. f.). *First steps with Django*. <https://docs.celeryq.dev/en/stable/django/first-steps-with-django.html>
+- Django Software Foundation. (s. f.-a). *Database transactions (Django 5.2)*. <https://docs.djangoproject.com/en/5.2/topics/db/transactions/>
+- Django Software Foundation. (s. f.-b). *GeoDjango (Django 5.2)*. <https://docs.djangoproject.com/en/5.2/ref/contrib/gis/>
+- Django Software Foundation. (s. f.-c). *The Django admin site (Django 5.2)*. <https://docs.djangoproject.com/en/5.2/ref/contrib/admin/>
+- Django Software Foundation. (s. f.-d). *Django's Tasks framework (Django 6.0)*. <https://docs.djangoproject.com/en/6.0/topics/tasks/>
+- JetBrains. (s. f.-a). *Backend development with Kotlin*. <https://kotlinlang.org/docs/server-overview.html>
+- JetBrains. (s. f.-b). *Ktor: Application structure*. <https://ktor.io/docs/server-application-structure.html>
+- Laravel. (s. f.-a). *Service container (Laravel 13.x)*. <https://laravel.com/framework/docs/13.x/container>
+- Laravel. (s. f.-b). *Queues (Laravel 13.x)*. <https://laravel.com/framework/docs/13.x/queues>
+- Laravel. (s. f.-c). *Task scheduling (Laravel 13.x)*. <https://laravel.com/framework/docs/13.x/scheduling>
+- Microsoft. (s. f.). *Background tasks with hosted services in ASP.NET Core*. <https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services>
+- NestJS. (s. f.-a). *Queues*. <https://docs.nestjs.com/techniques/queues>
+- Spring. (s. f.). *Spring Modulith*. <https://spring.io/projects/spring-modulith/>
+- Laravel. (s. f.-d). *Database: Getting started (Laravel 13.x)*. <https://laravel.com/framework/docs/13.x/database>
+- NestJS. (s. f.-b). *Modules*. <https://docs.nestjs.com/modules>
+
 # Declaración de uso de IA
 
 En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara herramienta, finalidad y nivel de uso de inteligencia artificial por sección, anexo y formulario del Subdocumento 4. La columna de revisión humana identifica a quien revisó efectivamente cada parte y lo que verificó. No atribuye revisiones no realizadas. La declaración se consolida en el Formulario A-6. La revisión del contenido no acredita por sí sola la ejecución de los ensayos de aceptación descritos en el capítulo.
@@ -3536,7 +3594,7 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 
 Las finalidades siguientes detallan el alcance de las filas correspondientes de la declaración, sin modificar sus niveles de uso ni atribuir revisiones humanas no realizadas.
 
-- **4.1.** Redacción y coherencia de la arquitectura lógica, sus módulos, interfaces, flujos, tecnologías, decisiones, continuidad y diagramas.
+- **4.1.** Redacción y coherencia de la arquitectura lógica, sus módulos, interfaces, flujos, tecnologías, decisiones, continuidad y diagramas; comparación de backends y justificación de Laravel/PHP.
 
 - **4.2.** Redacción y coherencia de la arquitectura física, infraestructura, despliegue, conectividad, continuidad, dimensionamiento y diagramas.
 
@@ -3546,11 +3604,11 @@ Las finalidades siguientes detallan el alcance de las filas correspondientes de 
 
 <a id="tab:uso-ia-logica"></a>
 
-**Tabla 27 — Uso de IA en el Subdocumento 4**
+**Tabla 28 — Uso de IA en el Subdocumento 4**
 
 | **Sección** | **Herramienta** | **Finalidad del uso** | **Nivel en texto** | **Nivel en diagramas** | **Revisión humana (quién y qué verificó)** |
 | --- | --- | --- | --- | --- | --- |
-| 4.1 | OpenAI Codex | Redacción, coherencia lógica y revisión de diagramas. | Alto | Alto | Álvaro Catalán: revisión integral del contenido de la sección. |
+| 4.1 | OpenAI Codex | Redacción, coherencia lógica y revisión de diagramas. | Alto | Alto | Álvaro Catalán: revisión previa. [[REVISIÓN HUMANA]]: ampliación de tecnologías y ADR-23. |
 | 4.2 | OpenAI Codex | Redacción, coherencia física y revisión del diagrama de red. | Alto | Alto | Álvaro Catalán: revisión integral del contenido de la sección. |
 | 4.3 | OpenAI Codex | Redacción y coherencia de centros de datos y recuperación. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
 | 4-A | OpenAI Codex | Eventos canónicos. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido del anexo. |
@@ -3567,8 +3625,8 @@ Las finalidades siguientes detallan el alcance de las filas correspondientes de 
 | 4-L | OpenAI Codex | Decisiones del caso. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido del anexo. |
 | 4-M | OpenAI Codex | Protocolos de aceptación. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido del anexo. |
 | 4-N | OpenAI Codex | Correspondencia lógica e integración de SD13. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido del anexo. |
-| 4-O | OpenAI Codex | Decisiones, alternativas y elección de clientes de terreno. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido del anexo. |
-| 4-P | OpenAI Codex | Versiones, soporte, navegadores, firma e integridad. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido del anexo. |
+| 4-O | OpenAI Codex | Decisiones, alternativas y elección de clientes de terreno. | Alto | Ninguno | Álvaro Catalán: revisión previa. [[REVISIÓN HUMANA]]: ampliación de tecnologías y ADR-23. |
+| 4-P | OpenAI Codex | Versiones, soporte, navegadores, firma e integridad. | Alto | Ninguno | Álvaro Catalán: revisión previa. [[REVISIÓN HUMANA]]: ampliación de tecnologías y ADR-23. |
 | 4-Q | OpenAI Codex | Especificación y trazabilidad. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido del anexo. |
 | 4-R | OpenAI Codex | Controles, madurez y gestión de vulnerabilidades. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido del anexo. |
 | 4-S | OpenAI Codex | Especificación y trazabilidad. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido del anexo. |
