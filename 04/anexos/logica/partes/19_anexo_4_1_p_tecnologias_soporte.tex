@@ -109,7 +109,7 @@ El fin de soporte no publicado se registra como \emph{no publicado}, con respons
 Las alternativas se evalúan por operación offline, integración industrial, transacciones, geografía, carga del equipo y reversibilidad. PostgreSQL/PostGIS se selecciona frente a MariaDB por el dominio espacial. Angular se selecciona por su organización en componentes y sus contratos TypeScript. Kotlin se selecciona frente a una capa móvil adicional por validación del parque. Keycloak mantiene identidad propia frente a delegar el dominio de autorizaciones a un IdP propietario. Las herramientas de construcción no cambian esos contratos. Los criterios concretos se verifican en ADR-04/06/07/20/21 y el Anexo 4-T.
 \subsection*{Implementación del backend}
 
-La tabla relaciona cada capacidad del backend con su implementación en Laravel/PHP y con la comprobación que verifica sus contratos.
+La selección del backend se fundamenta en ADR-23 y en 4.1.7.1 del Subdocumento 4. Django/Python es el contraste con el diseño precedente; Spring, Kotlin de servidor, Node.js/NestJS y ASP.NET Core son alternativas evaluadas. No forman parte del inventario contratado por esa comparación. La tabla relaciona cada capacidad seleccionada con su implementación en Laravel/PHP y con la comprobación que verifica sus contratos.
 \begin{tablalafrox}{Implementación lógica del backend Laravel}{tab:mapeo-laravel}{F{0.27} F{0.35} Y}{\cab{Capacidad} & \cab{Implementación Laravel/PHP} & \cab{Comprobación}}
 APIs y módulos & Rutas y controladores Laravel, servicios por contexto PSR-4. & Contratos OpenAPI y límites de módulo. \\
 Persistencia y geografía & PDO/Query Builder y SQL PostGIS parametrizado, migraciones Laravel basales. & Datos, índices y consultas espaciales verificados. \\

@@ -18,13 +18,9 @@ Las tecnologías se agrupan por responsabilidad. El Anexo 4-P conserva el detall
 \end{itemize}
 El Anexo 4-P reúne el inventario completo de servicios AWS y las equivalencias entre nombres funcionales y técnicos. La descripción por capa explica la responsabilidad de cada tecnología. El inventario permite comprobar su correspondencia con el despliegue.
 
-Laravel conserva una superficie de APIs, políticas y colas coherente para los doce módulos. Las demás selecciones se fundamentan así:
+La selección del backend se fundamenta en 4.1.7.1 y ADR-23. Las demás tecnologías se seleccionan así:
 
 \begin{itemize}
-\item Django también permitiría el monolito. Se descarta porque un único entorno Laravel/PHP cubre las APIs, las políticas, las colas y los trabajos de los doce módulos, sin operar dos cadenas de dependencias ni dos familias de trabajadores.
-
-\item La implementación se verifica mediante contratos y pruebas.
-
 \item PostgreSQL/PostGIS se prefiere a MariaDB por la combinación de transacciones y consultas geográficas del dominio de rutas y sitios. La prueba cubre consultas espaciales y migración.
 
 \item Keycloak se prefiere a un proveedor de identidad exclusivamente en nube porque permite administrar personal propio y externo sin trasladar la autorización de negocio fuera de M1–M12. El relevo local requiere la prueba de 24 horas.
@@ -43,3 +39,39 @@ El núcleo utiliza tecnologías con alternativas de despliegue como Laravel, Ang
 El Anexo 4-P reúne versiones de referencia, soporte y criterios de actualización. Las versiones menores se fijan en archivos de bloqueo y SBOM y se promueven mediante pruebas de contrato. No se congela una versión sin soporte por los 56 meses. Laravel, PHP, PostgreSQL, Angular y RabbitMQ se revisan conforme a sus políticas oficiales (Laravel, 2026; PHP, 2026; PostgreSQL, 2026; Angular, 2026a, 2026b; RabbitMQ, 2026).
 
 LafroX documenta la creación inicial de la cuenta raíz y guarda el procedimiento y su evidencia en el repositorio del CLIENTE. Fuera de esa creación inicial, todos los recursos se crean y modifican con Terraform o Ansible, con revisión y control de versiones. No hay altas manuales por consola (RT-03.03, Bases Técnicas Transversales, cap. 3, p. 8).
+
+\subsubsection{Justificación de Laravel y PHP para el monolito modular}
+\label{sec:justificacion-backend}
+
+La selección distingue dos decisiones. El monolito modular de ADR-01 reúne M1--M12 bajo contratos de dominio y evita administrar un servicio por módulo. Laravel/PHP implementa ese estilo según ADR-23. La carga mensual y la dotación de operación orientan la decisión, pero la capacidad se verifica con la mezcla de operaciones, las ráfagas y la reconciliación de los Anexos 4-T y 4-W. El mismo estilo puede implementarse con los otros entornos de la Tabla~\ref{tab:comparacion-backends}.
+
+\paragraph{Adecuación al núcleo transaccional y al despliegue híbrido.}
+Laravel integra rutas, validación, políticas, acceso transaccional, migraciones, trabajos y planificación en un marco común. La propuesta utiliza esas capacidades para los servicios de pedido, inventario y trazabilidad; el contenedor de dependencias vincula interfaces y adaptadores de cada contexto. PHP-FPM atiende HTTP y PHP CLI ejecuta procesos de fondo desde la misma imagen. Los perfiles de 4.2.4.1.1 permiten separar permisos, recursos y reversión de API, WMS local, reconciliación y trabajos (Laravel, s.~f.-a, s.~f.-b, s.~f.-c, s.~f.-d).
+
+El criterio de selección es esa composición común de capacidades para el núcleo y sus perfiles, manteniendo las especialidades tras contratos: M4 conserva su motor de rutas y M11 su transporte AS2 externos al artefacto Laravel. La geografía se resuelve en PostgreSQL/PostGIS mediante consultas parametrizadas, sin exigir que el framework modele todas las operaciones espaciales. Los trabajos internos utilizan el trabajador Laravel; el shipper AMQP y el consumidor de sobres JSON conservan adaptadores propios. Se evita confundir estas tres superficies de mensajería.
+
+\paragraph{Contraste con Django/Python.}
+Django/Python, utilizado en el diseño precedente con aplicaciones por dominio y trabajadores Celery, sigue siendo viable para el monolito. Ofrece transacciones, administración integrada y GeoDjango, con una integración espacial más directa que el SQL PostGIS explícito de esta propuesta. Laravel se prefiere aquí por la integración de trabajos y planificación con el núcleo HTTP/CLI, y porque las interfaces operacionales ya se resuelven mediante consolas Angular. El administrador de Django y GeoDjango aportan ventajas reales, aunque no determinan la selección cuando las consolas y consultas espaciales tienen esa implementación específica (Django Software Foundation, s.~f.-a, s.~f.-b, s.~f.-c; Celery, s.~f.).
+
+La comparación comprende la solución Django con Celery descrita para ese diseño, no una supuesta ausencia de tareas en Django: desde Django 6.0 existe una interfaz de tareas cuya ejecución requiere un backend de producción. Una solución íntegramente Python también puede mantener un entorno común; por ello, el número de lenguajes no distingue ambas opciones. El cambio de selección no acredita una migración de software implantado ni resultados de rendimiento superiores (Django Software Foundation, s.~f.-d).
+
+\begin{tablalafrox}{Contraste de entornos para el backend modular}{tab:comparacion-backends}{F{0.22} F{0.34} Y}{\cab{Entorno} & \cab{Aporte pertinente} & \cab{Criterio aplicado a LafroX}}
+Laravel/PHP & APIs, políticas, migraciones, trabajos y planificación integrados. & Seleccionado para el núcleo HTTP/CLI; límites comprobados con deptrac y contratos. \\
+Django/Python & Apps por dominio, transacciones, admin y GeoDjango. & Contraste principal: la solución previa agregaba Celery; aquí se usan trabajos Laravel, consolas Angular y SQL PostGIS. \\
+Spring Boot/Java o Kotlin & Ecosistema transaccional; Spring Modulith verifica módulos y permite probarlos por separado. & Alternativa sólida para modularidad; requeriría concretar perfiles, mensajería y operación JVM equivalentes. \\
+Ktor/Kotlin sobre JVM & Organización flexible por módulos y posible código común con Android. & Definir persistencia, migraciones y trabajos; el código ligado al dispositivo no se comparte automáticamente. \\
+Node.js + NestJS/TypeScript & Módulos, proveedores y lenguaje común con Angular. & Concretar persistencia y colas; compartir lenguaje no garantiza compartir reglas ni reducir esfuerzo. \\
+ASP.NET Core/C\# & Inyección de dependencias y servicios de fondo del ecosistema .NET. & Alternativa viable; verificar fronteras, datos, mensajería y despliegue con los mismos contratos. \\
+\end{tablalafrox}
+
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Laravel (s.~f.-a, s.~f.-b, s.~f.-c, s.~f.-d), Django Software Foundation (s.~f.-a, s.~f.-b, s.~f.-c, s.~f.-d), Celery (s.~f.), Spring (s.~f.), JetBrains (s.~f.-a, s.~f.-b), NestJS (s.~f.-a, s.~f.-b) y Microsoft (s.~f.). Criterios de aplicación: ADR-23 y perfiles de 4.2.4.1.1.\par}
+
+\paragraph{Kotlin y las demás alternativas.}
+Kotlin con Spring Boot o Ktor es una alternativa de servidor, además de su uso móvil en la solución. Compartir modelos y validaciones independientes de Android puede ser beneficioso, pero Room, DataWedge y los permisos del terminal no se trasladan al servidor. Las reservas y la autorización definitiva permanecen en el backend. La selección de PHP no elimina la JVM del sistema: OpenAS2 conserva su entorno propio. La comparación evalúa la composición del núcleo y no pretende un único runtime para toda la solución (JetBrains, s.~f.-a, s.~f.-b).
+
+Spring Modulith aporta verificación de fronteras más explícita que una organización por carpetas. NestJS permite módulos y proveedores, mientras su integración documentada de colas incluye BullMQ; adoptar esa variante exige revisar su dependencia Redis frente a las colas de la propuesta. ASP.NET Core admite servicios de fondo, cuya persistencia y recuperación también deben diseñarse. Estos entornos se comparan como alternativas al núcleo Laravel; no se incorporan al backend ofertado (Spring, s.~f.; NestJS, s.~f.-a, s.~f.-b; Microsoft, s.~f.).
+
+\paragraph{Condiciones y límites de la selección.}
+PSR-4 organiza clases, pero no impide acoplamiento entre contextos: deptrac y las pruebas de contratos bloquean dependencias indebidas. La transacción de negocio y su outbox deben confirmarse de forma atómica, y los consumidores deben ser idempotentes; ningún framework garantiza por sí solo entrega única o conciliación entre sitios. La autonomía local depende de datos, identidad y reglas disponibles durante el corte. Artefacto y esquema comunes exigen migraciones compatibles y coordinación de entregas.
+
+La preferencia por Laravel se sustenta en el ajuste funcional y operacional descrito. No se atribuyen ahorros, menor memoria, mayor velocidad ni experiencia del equipo sin evidencia. La aceptación exige pruebas de fronteras, duplicados, caída y reinicio de trabajadores, corte WAN de 24 horas, reversión y carga conforme a los Anexos 4-M, 4-T y 4-W. Una ventaja comprobada de otra alternativa en competencias, reutilización o capacidad obliga a revisar ADR-23 antes de comprometer su implantación.

@@ -30,6 +30,7 @@ El registro reúne las decisiones de arquitectura lógica y física conforme a R
 \mbox{ADR-20} & Angular con TypeScript y Portal de Clientes instalable. & Perfil del cliente en la aplicación Kotlin. & Separación entre clientes y trabajadores. \\
 \mbox{ADR-21} & Terraform, Ansible, GitLab CI y CodeBuild. & CloudFormation/CDK y otra cadena CI. & Propiedad única y promoción trazable. \\
 \mbox{ADR-22} & Greengrass en gateways industriales. & Nube directa o PLC. & Bloqueo térmico local en cinco segundos. \\
+\mbox{ADR-23} & Laravel/PHP para el núcleo modular. & Django/Python con Celery y otros entornos. & Capacidades integradas y perfiles HTTP/CLI verificables. \\
 \end{tablalafrox}
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-18-anexo-4-1-o-decisiones-logicas}--\pageref*{fuente-18-anexo-4-1-o-decisiones-logicas-fin}).\par}
@@ -59,13 +60,14 @@ ADR-19 & Residencia de datos y regiones & 5 de octubre de 2026 & Propuesta en la
 ADR-20 & Frontend web & 5 de octubre de 2026 & Propuesta en la oferta \\
 ADR-21 & Infraestructura como código y cadena de entrega & 5 de octubre de 2026 & Propuesta en la oferta \\
 ADR-22 & Cadena de frío en el borde & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-23 & Selección del backend modular & 24 de octubre de 2026 & Propuesta en la oferta \\
 \end{tablalafrox}
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de RT-02.04 (Bases Técnicas Transversales, cap.~2, p.~7) y del Formulario E-25 de las Bases Administrativas. Diseño propuesto: LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-18-anexo-4-1-o-decisiones-logicas}--\pageref*{fuente-18-anexo-4-1-o-decisiones-logicas-fin}).\par}
 
 \subsection*{ADR-01. Estilo arquitectónico}
 \label{sub:adr-01}
-\textbf{Decisión adoptada.} Laravel 13/PHP 8.5 organiza M1--M12 en un monolito modular con perfiles de ejecución separados.
+\textbf{Decisión adoptada.} M1--M12 se organiza en un monolito modular con perfiles de ejecución separados. La selección de Laravel 13/PHP 8.5 como implementación se fundamenta en ADR-23.
 
 \textbf{Alternativas evaluadas.} Microservicios por módulo multiplican despliegues y operación. Un monolito sin límites permite dependencias cruzadas.
 
@@ -374,5 +376,20 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 \textbf{Evidencia exigida.} Inyección de excursión térmica, corte WAN, reinicio y reconciliación de lecturas.
 
 \textbf{Requisitos que la sustentan.} RT-03.10, Caso, cadena de frío.
+
+
+\subsection*{ADR-23. Selección del backend del monolito modular}
+\label{sub:adr-23}
+\textbf{Decisión adoptada.} Laravel 13/PHP 8.5 implementa M1--M12 con contextos de dominio y perfiles HTTP/CLI; ADR-01 conserva la decisión sobre el estilo. La sección 4.1.7.1 contiene el contraste detallado.
+
+\textbf{Alternativas evaluadas.} Django/Python con apps y Celery es el contraste principal por su uso en el diseño precedente. Spring Boot con Java o Kotlin, Ktor/Kotlin sobre JVM, Node.js con NestJS/TypeScript y ASP.NET Core/C\# también permiten implementar el núcleo. Son alternativas a Laravel, no nuevos componentes ofertados.
+
+\textbf{Criterio de selección.} Integración de APIs, políticas, migraciones, trabajos y planificación en el núcleo que comparten nube y WMS local. Las consolas Angular y el SQL PostGIS previsto reducen el peso decisivo del admin y GeoDjango, sin negar sus ventajas. Los trabajos Laravel evitan incorporar Celery para esa función; esto no demuestra menor costo total ni que Django requiera dos lenguajes.
+
+\textbf{Consecuencias.} Una imagen común mantiene perfiles con permisos y recursos separados. PSR-4 requiere deptrac y pruebas para imponer fronteras; el esquema compartido exige migraciones compatibles. Outbox, idempotencia, OIDC, AMQP y la reconciliación conservan sus controles propios. Kotlin continúa en Android y la JVM en OpenAS2; no se pretende un único runtime del sistema. No se presupone código previo migrado ni experiencia acreditada del equipo en el backend elegido.
+
+\textbf{Evidencia exigida.} Pruebas de dependencias y contratos, atomicidad del outbox, duplicados, reinicio de consumidores, continuidad WAN de 24 horas, reversión y carga de los Anexos 4-M/4-T/4-W. Registrar competencias del equipo y soporte de dependencias antes de implantar; revisar la decisión si otra alternativa acredita una ventaja material. Las pruebas se exigen para aceptación, no se presentan como ejecutadas.
+
+\textbf{Requisitos que la sustentan.} RT-02.02, RT-02.04, RT-02.05 y RT-03.10; políticas de actualización del Anexo 4-P.
 
 \label{fuente-18-anexo-4-1-o-decisiones-logicas-fin}
