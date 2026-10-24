@@ -1,0 +1,44 @@
+[
+  {
+    "name": "SD3 cuerpo",
+    "tables": 6,
+    "rows_including_headers": 45,
+    "table_mismatches": [],
+    "reverse_prose_missing": []
+  },
+  {
+    "name": "SD3 anexos",
+    "tables": 20,
+    "rows_including_headers": 529,
+    "table_mismatches": [],
+    "reverse_prose_missing": []
+  },
+  {
+    "name": "T12",
+    "tables": 2,
+    "rows_including_headers": 647,
+    "table_mismatches": [],
+    "reverse_prose_missing": []
+  },
+  {
+    "name": "SD13 cuerpo",
+    "tables": 28,
+    "rows_including_headers": 161,
+    "table_mismatches": [],
+    "reverse_prose_missing": []
+  },
+  {
+    "name": "SD13 anexos",
+    "tables": 5,
+    "rows_including_headers": 46,
+    "table_mismatches": [],
+    "reverse_prose_missing": []
+  },
+  {
+    "name": "T19",
+    "tables": 5,
+    "rows_including_headers": 90,
+    "table_mismatches": [],
+    "reverse_prose_missing": []
+  }
+]

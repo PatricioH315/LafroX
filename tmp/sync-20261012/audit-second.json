@@ -1,0 +1,245 @@
+[
+  {
+    "name": "SD3 cuerpo",
+    "units": 392,
+    "matched": 392,
+    "missing": []
+  },
+  {
+    "name": "SD3 anexos",
+    "units": 2639,
+    "matched": 2639,
+    "missing": []
+  },
+  {
+    "name": "T12",
+    "units": 3412,
+    "matched": 3412,
+    "missing": []
+  },
+  {
+    "name": "SD13 cuerpo",
+    "units": 664,
+    "matched": 628,
+    "missing": [
+      [
+        73,
+        1,
+        "Cartera de innovaciones de LafroX. Fuente: elaboración a partir de las Bases Administrativas, Art. 28°, p. 19, del Caso Logística y del Anexo 7.D.**"
+      ],
+      [
+        91,
+        1,
+        "Ubicación de las cinco innovaciones en la arquitectura. Fuente: elaboración a partir del Capítulo 4, secciones 4.1.3, 4.1.4 y 4.2.2, y del Formulario T-11.**"
+      ],
+      [
+        111,
+        1,
+        "Alcance obligatorio en el ámbito de la innovación 1. Fuente: elaboración a partir del Formulario T-12, del Anexo 3.G y del Capítulo 2, Tabla 2.1.**"
+      ],
+      [
+        157,
+        1,
+        "Seguimiento posentrega: del dato del lote al cierre de la visita. Fuente: elaboración a partir de la sección 13.1.4 y del contrato de datos del Anexo 13.A.**"
+      ],
+      [
+        165,
+        1,
+        "Paquetes de la EDT de la innovación 1. Fuente: Formulario T-14 y Anexo 7.D.**"
+      ],
+      [
+        184,
+        1,
+        "Ubicación de la innovación 1 en el flujo de caja. Fuente: propuesta de LafroX para la innovación 1. La valorización se presenta en la Oferta Económica, Entregable 2, ítem 2.7.**"
+      ],
+      [
+        206,
+        1,
+        "Indicadores de la innovación 1. Fuente: elaboración a partir del Caso Logística, cap. 4.8, y del paquete 3.10.1.4 del Formulario T-14.**"
+      ],
+      [
+        224,
+        1,
+        "Riesgo de adopción de la innovación 1. Fuente: Anexo 8.A, ficha R8-25, y Formulario T-16.**"
+      ],
+      [
+        251,
+        1,
+        "Alcance obligatorio en el ámbito de la innovación 2. Fuente: elaboración a partir de las Bases Técnicas Transversales, del Formulario T-12 y del Capítulo 4, sección 4.1.9.**"
+      ],
+      [
+        312,
+        1,
+        "Incidente de terreno: evidencia, reproducción y cierre comprobado. Fuente: elaboración a partir de la sección 13.2.4 y del contrato de datos del Anexo 13.A.**"
+      ],
+      [
+        320,
+        1,
+        "Paquetes de la EDT de la innovación 2. Fuente: Formulario T-14 y Anexo 7.D.**"
+      ],
+      [
+        339,
+        1,
+        "Ubicación de la innovación 2 en el flujo de caja. Fuente: propuesta de LafroX para la innovación 2. La valorización se presenta en la Oferta Económica, Entregable 2, ítem 2.7.**"
+      ],
+      [
+        362,
+        1,
+        "Indicadores de la innovación 2. Fuente: elaboración a partir del Caso Logística, cap. 18, criterio 6, y de los paquetes 3.10.2.1 a 3.10.2.4 y 8.3.1 del Formulario T-14.**"
+      ],
+      [
+        381,
+        1,
+        "Riesgos de adopción de la innovación 2. Fuente: Anexo 8.A, fichas R8-24 y R8-26, y Formulario T-16.**"
+      ],
+      [
+        413,
+        1,
+        "Alcance obligatorio en el ámbito de la innovación 3. Fuente: elaboración a partir del Caso Logística, cap. 18, del Formulario T-12, del Anexo 3.G y del Capítulo 4.**"
+      ],
+      [
+        471,
+        1,
+        "Historia térmica: del sensor a la decisión de Calidad. Fuente: elaboración a partir de la sección 13.3.4 y del contrato de datos del Anexo 13.A.**"
+      ],
+      [
+        479,
+        1,
+        "Paquetes de la EDT de la innovación 3. Fuente: Formulario T-14 y Anexo 7.D.**"
+      ],
+      [
+        499,
+        1,
+        "Ubicación de la innovación 3 en el flujo de caja. Fuente: propuesta de LafroX para la innovación 3. La valorización se presenta en la Oferta Económica, Entregable 2, ítem 2.7.**"
+      ],
+      [
+        523,
+        1,
+        "Indicadores de la innovación 3. Fuente: elaboración a partir del Caso Logística, cap. 4.9, y de los paquetes 3.10.3.1 a 3.10.3.4 y 8.3.2 del Formulario T-14.**"
+      ],
+      [
+        546,
+        1,
+        "Riesgos de adopción de la innovación 3. Fuente: Anexo 8.A, fichas R8-23 y R8-27, y Formulario T-16.**"
+      ],
+      [
+        574,
+        1,
+        "Alcance obligatorio en el ámbito de la innovación 4. Fuente: elaboración a partir de las Bases Administrativas, del Caso Logística, del Capítulo 3 y del Anexo 3.C.**"
+      ],
+      [
+        610,
+        1,
+        "Niveles de madurez de la innovación 4. Fuente: elaboración a partir de European Commission (2016).**"
+      ],
+      [
+        635,
+        1,
+        "Costo de servir: de los hechos a la liquidación auditable. Fuente: elaboración a partir de la sección 13.4.4 y del contrato de datos del Anexo 13.A.**"
+      ],
+      [
+        641,
+        1,
+        "Paquetes de la EDT de la innovación 4. Fuente: Formulario T-14 y Anexo 7.D.**"
+      ],
+      [
+        659,
+        1,
+        "Ubicación de la innovación 4 en el flujo de caja. Fuente: propuesta de LafroX para la innovación 4. La valorización se presenta en la Oferta Económica, Entregable 2, ítem 2.7.**"
+      ],
+      [
+        683,
+        1,
+        "Indicadores de la innovación 4. Fuente: elaboración a partir del Capítulo 3, sección 3.2.5 (criterio R18-04), y de los paquetes 5.4.3, 8.3.3 y 8.3.4 del Formulario T-14.**"
+      ],
+      [
+        701,
+        1,
+        "Riesgo de adopción de la innovación 4. Fuente: Anexo 8.A, ficha R8-28, y Formulario T-16.**"
+      ],
+      [
+        728,
+        1,
+        "Alcance obligatorio en el ámbito de la innovación 5. Fuente: elaboración a partir de las Bases Administrativas, de las Bases Técnicas Transversales, del Caso Logística y del Formulario T-12.**"
+      ],
+      [
+        776,
+        1,
+        "Hoja de negocio: preparación, visita sin señal y copia solicitada. Fuente: elaboración a partir de la sección 13.5.4 y del contrato de datos del Anexo 13.A.**"
+      ],
+      [
+        782,
+        1,
+        "Paquetes de la EDT de la innovación 5. Fuente: Formulario T-14 y Anexo 7.D.**"
+      ],
+      [
+        802,
+        1,
+        "Ubicación de la innovación 5 en el flujo de caja. Fuente: propuesta de LafroX para la innovación 5. La valorización se presenta en la Oferta Económica, Entregable 2, ítem 2.7.**"
+      ],
+      [
+        825,
+        1,
+        "Indicadores de la innovación 5. Fuente: elaboración a partir del Caso Logística, cap. 2.2, y de los paquetes 3.10.4.1 a 3.10.4.4, 8.3.5 y 8.3.6 del Formulario T-14.**"
+      ],
+      [
+        846,
+        1,
+        "Riesgos de adopción de la innovación 5. Fuente: Anexo 8.A, ficha R8-29, y Formulario T-16.**"
+      ],
+      [
+        885,
+        1,
+        "LafroX. (2026). *Subdocumento 3: Esquema de solución y alcance*, Anexo 3.C."
+      ],
+      [
+        897,
+        1,
+        "En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este subdocumento, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6. La revisión humana se centró en la redacción, claridad y comprensión del contenido. Dentro de ese alcance, no se registraron observaciones que requirieran cambios. Esta revisión no constituye una certificación técnica ni una garantía de ausencia de errores. La Tabla 13.28 presenta el registro."
+      ],
+      [
+        899,
+        1,
+        "Declaración de uso de IA. Fuente: registro del equipo.**"
+      ]
+    ]
+  },
+  {
+    "name": "SD13 anexos",
+    "units": 157,
+    "matched": 152,
+    "missing": [
+      [
+        21,
+        1,
+        "Contratos de datos de las innovaciones. Fuente: elaboración a partir del Capítulo 4, secciones 4.1 y 4.2, y del Capítulo 5.**"
+      ],
+      [
+        42,
+        1,
+        "Trazabilidad de las innovaciones. Fuente: elaboración a partir de los Capítulos 3 y 4, del Formulario T-14, del Anexo 7.D y del Anexo 8.A.**"
+      ],
+      [
+        60,
+        1,
+        "Alcance refinado e investigación adicional de cada innovación. Fuente: elaboración a partir de las secciones 13.1 a 13.5, del Formulario T-14 y del Anexo 7.D.**"
+      ],
+      [
+        80,
+        1,
+        "Indicadores de verificación de la cartera. Fuente: Capítulo 13, secciones 13.1.6 a 13.5.6.**"
+      ],
+      [
+        113,
+        1,
+        "Riesgos de adopción de la cartera. Fuente: Anexo 8.A y Formulario T-16.**"
+      ]
+    ]
+  },
+  {
+    "name": "T19",
+    "units": 206,
+    "matched": 206,
+    "missing": []
+  }
+]
