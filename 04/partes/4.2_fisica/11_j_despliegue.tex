@@ -35,7 +35,7 @@ Un cambio recorre tres ambientes antes de llegar a Producción: Desarrollo, QA y
   Recuperación ante Desastres & 10.201.0.0/16 & us-east-1 & Réplica en caliente del dominio de nube y recuperación del WMS de Talca en la nube \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 
 Cada ambiente reside en una cuenta AWS propia, bajo una organización de AWS Control Tower cuyas políticas de control de servicio impiden que un error o un acceso indebido en un ambiente alcance a otro. La organización incorpora además sus cuentas de gestión, de archivo de registros y de auditoría. Los bloques de direccionamiento no se solapan entre sí ni con los de los sitios on-premise, y solo el ambiente de recuperación reside fuera de la región primaria. Los cinco ambientes quedan habilitados y operativos en el hito H3 del Formulario E-25, en el mes 6 del contrato, antes de la primera marcha blanca (RT-04.01, Bases Técnicas Transversales, cap. 4, p. 10).
 
@@ -73,7 +73,7 @@ La Figura~\ref{fig:amb-desarrollo} muestra cómo llega una entrega a Desarrollo.
 \begin{figure}[htbp]\centering
   \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_desarrollo.png}
   \caption{Ambiente de Desarrollo}\label{fig:amb-desarrollo}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 \FloatBarrier
 
@@ -96,7 +96,7 @@ QA repite la secuencia de Desarrollo en su propia cuenta y su propia VPC (Figura
 \begin{figure}[htbp]\centering
   \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_qa.png}
   \caption{Ambiente de QA}\label{fig:amb-qa}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 \FloatBarrier
 
@@ -117,7 +117,7 @@ En Preproducción la secuencia se ensaya sobre la topología de Producción y so
 \begin{figure}[htbp]\centering
   \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_preproduccion.png}
   \caption{Ambiente de Preproducción}\label{fig:amb-preproduccion}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 \FloatBarrier
 
@@ -145,7 +145,7 @@ En Producción la secuencia se ejecuta de forma automática y llega además a lo
 \begin{figure}[!htbp]\centering
   \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_produccion.png}
   \caption{Ambiente de Producción}\label{fig:amb-produccion}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 
 \FloatBarrier
@@ -175,7 +175,7 @@ La Figura~\ref{fig:amb-recuperacion} muestra las dos rutas de recuperación: ant
 \begin{figure}[!ht]\centering
   \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_recuperacion.png}
   \caption{Ambiente de Recuperación ante Desastres}\label{fig:amb-recuperacion}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 
 Los pasos de la figura son los siguientes:
@@ -235,7 +235,7 @@ La aplicación se construye una sola vez por entrega como una imagen PHP 8.5 con
 \item \textbf{Planificador.} \textbf{Proceso y función:} PHP CLI para las tareas periódicas del ambiente, \textbf{Dónde corre:} N-04, una sola tarea por ambiente, \textbf{Escala por:} No escala.
 \end{itemize}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 
 {\raggedright LafroX compromete escalamiento horizontal automático mediante ECS Service Auto Scaling, entre dos y cuatro tareas por perfil y con métricas de un minuto: consumidor de reconciliación por \texttt{ApproximateAgeOfOldestMessage} de SQS >60 s; trabajos por \texttt{ApproximateNumberOfMessagesVisible} >100 mensajes en cualquier cola, conforme a N-04 del T-11 (RT-02.10, Bases Técnicas Transversales, cap. 2; Amazon Web Services, s.~f.-h, s.~f.-i). El costo del escalamiento de aplicación e integración se declara en la Oferta Económica (Bases Administrativas, art. 50.2).\par}
 
@@ -293,7 +293,7 @@ El calendario de Puelche limita cuándo se puede intervenir la plataforma. El ca
   Resto del calendario & Sí, sin interrupción & Excepcional, con aviso de 10 días hábiles \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de las Bases Técnicas del caso de Pontificia Universidad Católica de Valparaíso (2026b) (cap. 10, p. 19). Diseño propuesto: LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de las Bases Técnicas del caso de Distribuidora Puelche S.A. (2026c) (cap. 10, p. 19). Diseño propuesto: LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 
 El despliegue sin interrupción es la regla. Las ventanas horarias de la Tabla~\ref{tab:jd02} solo se aplican en fechas no congeladas: el horario no levanta la prohibición mensual. Se mantiene una cadencia quincenal, con una meta de hasta cinco días hábiles habilitados desde que se confirma un cambio de código hasta que llega a producción. También se mide el tiempo calendario completo, separando la espera por congelamiento, que no se descuenta de los plazos contractuales. La tasa de cambios fallidos no supera el 5~\% mensual y la restauración de un servicio crítico no supera 4 horas (Bases Administrativas, art. 78.3, p. 40; RT-04.12, Bases Técnicas Transversales, cap. 4, p. 11).
 
@@ -316,7 +316,7 @@ La Figura~\ref{fig:red-sitios-regiones} sitúa las cinco instalaciones con cómp
   \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/fisica/Red_01_general_legible.pdf}
   \caption{Red de los cinco sitios operacionales y las regiones de producción y recuperación}
   \label{fig:red-sitios-regiones}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 \end{landscape}
 
@@ -328,7 +328,7 @@ La vista general distingue los cinco dominios locales y sus caminos regionales. 
   \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/fisica/Red_02_sitios_legible.pdf}
   \caption{Red local y continuidad de Talca, Concepción y las plataformas de cross-docking}
   \label{fig:red-detalle-sitios}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 \end{landscape}
 
@@ -340,7 +340,7 @@ La red local conecta el cómputo redundante con dos switches y el par de firewal
   \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/fisica/Red_03_regiones_legible.pdf}
   \caption{Conectividad regional, servicios privados y replicación de Aurora y S3}
   \label{fig:red-detalle-regiones}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 \end{landscape}
 
@@ -359,7 +359,7 @@ La vista regional muestra la terminación de las VPN y el tránsito hacia Produc
   VPC Producción, zona privada & Resto de 10.101.0.0/16 & ALB de aplicación y consolas, aplicación y datos, enlazada a los sitios por el Transit Gateway de la VPC Hub \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 
 Cada sitio con cómputo dispone de un bloque propio. La séptima instalación que el caso proyecta a tres años y el centro de distribución que Puelche evalúa abrir hacia 2030 en la Región de Los Lagos tienen reservados 10.6.0.0/16 y 10.7.0.0/16, de modo que su incorporación es una parametrización de la infraestructura como código (RT-02.12, Bases Técnicas Transversales, cap. 2, p. 7; Bases Técnicas del caso, cap. 15, p. 26). En la nube, los ALB de aplicación y consolas son privados, y la subred pública solo aloja NAT y el Network Load Balancer del canal AS2. Los portales residen en S3 privado, servido únicamente por CloudFront. La VPC de Producción usa endpoints de interfaz execute-api, IoT Core, SQS, SSM y Elastic Container Registry, y endpoints de puerta de enlace para DynamoDB y S3. Como los de puerta de enlace no son alcanzables desde los sitios por la VPN, los sitios descargan la imagen por el endpoint de interfaz de Elastic Container Registry y por un endpoint de interfaz de S3, donde se almacenan las capas de las imágenes, sin salir a Internet.
 
@@ -473,7 +473,7 @@ El listado \hyperref[tab:jd12]{de respaldo y restauración por dominio} muestra,
 \item \textbf{Registros de seguridad y auditoría.} \textbf{Frecuencia:} Continua, \textbf{Retención:} 7 años, \textbf{Restauración:} $\leq$ 24 h.
 \end{itemize}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 
 La recuperación funcional restituye primero los datos, índices y objetos necesarios para preparar y despachar con identidad, bloqueo térmico y guía válida. Para temperatura, prueba de entrega y documentos tributarios, esa parte cumple RTO $\leq$ 4 h y RPO $\leq$ 15 min, e incluye las reglas vigentes, las lecturas que deciden un bloqueo y los originales de las cargas pendientes. El histórico completo puede seguir restaurándose hasta 8 horas sin impedir las operaciones ni las consultas críticas. Los ensayos miden ambos tiempos por separado y comprueban las dependencias, no solo el arranque del servicio.
 

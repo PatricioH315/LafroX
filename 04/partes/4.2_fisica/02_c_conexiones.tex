@@ -51,7 +51,7 @@ La Tabla~\ref{tab:conexiones} resume cada conexión con su medio, su camino alte
   Región primaria con la secundaria & Replicación nativa de Aurora, DynamoDB y S3 & Respaldo inmutable & Promoción autorizada \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-c-conexiones}--\pageref*{fuente-02-c-conexiones-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-c-conexiones}--\pageref*{fuente-02-c-conexiones-fin}).\par}
 
 Los cinco sitios tienen caminos alternativos hacia la nube. Los sitios mantienen las funciones locales de 4.1.15. Una nueva guía sigue dependiendo del ERP de Talca y de su comunicación tributaria. El terreno conserva la captura autorizada sin señal y los termógrafos mantienen su registro interno. Los portales requieren conexión, salvo el Portal de Clientes instalado, que conserva el catálogo descargado y el pedido armado hasta recuperar señal.
 
@@ -71,7 +71,7 @@ La Tabla~\ref{tab:superficie} delimita las únicas entradas desde redes externas
   Túneles de sitio & Sin nombre de dominio: dos direcciones IP públicas de AWS por túnel, registradas en los firewalls & VPN del Transit Gateway, IPsec UDP 500 y 4500 & Firewalls D-01 de los cinco sitios & Autenticación IKE y cifrado IPsec \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-c-conexiones}--\pageref*{fuente-02-c-conexiones-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-c-conexiones}--\pageref*{fuente-02-c-conexiones-fin}).\par}
 
 La tabla excluye toda otra entrada desde fuera de la red del CLIENTE. En recuperación ante desastres se mantienen los nombres de dominio y se redirigen las entradas cuyo servicio y dependencias hayan sido restituidos y validados en us-east-1. La promoción de Aurora no recupera por sí sola todos los canales: la cobertura por servicio se distingue en 4.3.2.5 y en el Formulario T-11. MDM, EDR, SII, Transbank, GIS, notificaciones y telemetría de flota son dependencias de salida, detalladas en el Formulario T-11.
 
@@ -101,7 +101,7 @@ Cada conexión se apoya en equipos del sitio que también pueden fallar. El list
 \item \textbf{Climatización de la sala de Talca.} \textbf{Resolución:} Segunda unidad de precisión en N+1, \textbf{Contingencia:} Alerta del monitoreo de los sensores ambientales.
 \end{itemize}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-c-conexiones}--\pageref*{fuente-02-c-conexiones-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-c-conexiones}--\pageref*{fuente-02-c-conexiones-fin}).\par}
 
 En Concepción, el RAID 10 tolera la falla de un disco y las fuentes redundantes sostienen cada servidor ante la pérdida de un circuito. Si falla el servidor activo, el de espera toma su lugar con la base al día, y solo la pérdida de ambos obliga a reconstruirla desde el estado central alimentado por sus eventos. En Talca, el tablero respaldado por generador mantiene el registro de frío, y en Concepción la UPS del gabinete permite el apagado ordenado. La tabla muestra además que los firewalls van en par en los cinco sitios conforme a RT-08.03 (Bases Técnicas Transversales, cap. 8, p. 18). Concepción y cada cross-docking tienen su cómputo en un par de equipos activo y en espera (RT-03.14, Bases Técnicas Transversales, cap. 3, p. 9). Cada cross-docking tiene además dos switches industriales, y cada equipo, alimentación redundante y discos en RAID 1. El bloqueo sanitario permanece local y el despacho con guía preemitida puede continuar cuando la carga conserva su autorización sanitaria. Una nueva liberación corresponde solo a Calidad, conforme a 4.1.3.5 y 4.1.3.7. La consola central requiere conexión y el perfil Kotlin autorizado usa la puerta local de A-01 con evaluación y auditoría persistentes. Si el expediente local está incompleto o el permiso no está vigente, el lote permanece bloqueado. En la ventana de Talca, VM-02 se reinicia en otro nodo y otra impresora emite la etiqueta si falla la del andén. Los mecanismos de alta disponibilidad se detallan en la sección \hyperref[sub:3-alta-disponibilidad]{4.2.4.3}.
 
@@ -125,7 +125,7 @@ El listado \hyperref[tab:fallas-nube]{de fallas en nube, terreno e integraciones
 \item \textbf{Carga del peak de septiembre.} \textbf{Resolución:} Fargate escala automáticamente por perfil y Aurora ya está dimensionada para 3$\times$ sin cambio de instancia, \textbf{Contingencia:} Limitación de tasa en API Gateway.
 \end{itemize}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-c-conexiones}--\pageref*{fuente-02-c-conexiones-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-c-conexiones}--\pageref*{fuente-02-c-conexiones-fin}).\par}
 
 Las fallas de nube o enlace no detienen la preparación ni la entrega, que se confirman localmente. La pérdida de la región primaria deja sin servicio a los portales y a la analítica hasta promover la réplica. El despacho conserva la guía preemitida al cerrar la carga nocturna. Si la carga cambia entre las 05:30 y las 07:00, la guía queda inválida y el ERP de Talca emite otra por cualquiera de sus tres caminos, a los que Concepción y los cross-docking llegan por los suyos. Si no hay camino hasta el ERP, el camión sale solo con la carga amparada por su guía vigente y el ajuste pasa a la ruta siguiente. Si la guía ya se anuló, la salida queda bloqueada hasta disponer de un documento válido. Ningún camión sale sin guía válida.
 

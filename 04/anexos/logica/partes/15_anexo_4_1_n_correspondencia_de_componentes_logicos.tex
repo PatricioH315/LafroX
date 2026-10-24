@@ -19,8 +19,8 @@ La matriz completa vincula cada capacidad de 3.3–3.4 con su módulo o capa de 
  3.3.1, rendición y cierre en 3.4.1  &  M7 Cobranza y rendición  &  C-02, N-04, A-04 hacia el ERP  &  Terreno, nube y VM-04  \\
  3.3.1, devoluciones y cierre en 3.4.1  &  M8 Devoluciones y envases  &  C-02, N-04, A-01 para la recepción física de retornos mediante la puerta de API local  &  Terreno, nube y sitio  \\
  3.3.2, excursión y retiro sanitario en 3.4.1  &  M9 Calidad y trazabilidad  &  A-01/A-02 y C-03 para disposición local autorizada. B-01/B-02 para captura y bloqueo, B-03 en camiones, N-04/N-06/N-08 para consulta e ingesta centrales  &  Sitio, camiones y nube  \\
-  3.3.1 y 3.3.3, indicadores y costo de servir en 3.4.1 & M10 BI Gerencia & N-10 & Nube \\
- 3.3.1 y 3.4.2, pedidos EDI  &  M11 EDI Canal Moderno  &  N-04 con el perfil EDI y el transporte AS2, A-04  &  Nube y VM-04  \\
+  3.3.1 y 3.3.3, indicadores y costo de servir en 3.4.1 & M10 Analítica & N-10 & Nube \\
+ 3.3.1 y 3.4.2, pedidos EDI  &  M11 Canal moderno  &  N-04 con el perfil EDI y el transporte AS2, A-04  &  Nube y VM-04  \\
  3.4.2, módulos y sistemas externos  &  M12 Telemetría  &  N-04 y N-06, con la API del proveedor de telemetría  &  Nube  \\
  3.4.2, quince actores e interfaces  &  Capa 1, portales y consolas  &  N-01 a N-03 y frontend de consolas en N-04  &  Nube  \\
  3.3.3 y 3.4.2, continuidad y accesos  &  Capas 2 y 3, entrada y puerta de enlace  &  CloudFront, WAF y API Gateway (N-01 a N-03 y N-12), puerta de API local en A-01  &  Nube y sitio  \\
@@ -34,7 +34,7 @@ La matriz completa vincula cada capacidad de 3.3–3.4 con su módulo o capa de 
  3.4.6, participación y adopción por perfil & Capa 1, matriz de actores y permisos, olas de 4.1.8 & C-01/C-02/C-03, portales y consolas, QA de práctica & Terreno, sitios y nube, participación no implica permiso de acceso \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
 
 \begin{tablalafrox}{Correspondencia de módulos y realización física}{tab:correspondencia-modulos}{F{0.10} F{0.27} F{0.19} Y}{\cab{Módulo} & \cab{Capacidad en 3.3/3.4} & \cab{Contrato} & \cab{Realización en 4.2.2}}
 M1 & Recepción & INT-03/06 & Perfil WMS local, base por sitio y ACL ERP. \\
@@ -46,11 +46,11 @@ M6 & Entrega y POD & INT-02 & App de reparto, API y almacenamiento de evidencia.
 M7 & Rendición y cartera & INT-02/06/09 & API, trabajadores Laravel y ACL de cobranza. \\
 M8 & Devoluciones & INT-02/03/06 & Registro móvil/local y servicios de conciliación. \\
  M9  &  Trazabilidad y frío  &  INT-03/05 y API local autorizada  &  A-01/A-02/C-03: evaluación y disposición local. B-01/B-02/B-03: captura y bloqueo, N-04/N-06/N-08: ingesta y consulta centrales.  \\
-M10 & BI Gerencia & Eventos canónicos & Ingesta a lago y servicios de consulta analítica. \\
-M11 & EDI Canal Moderno & INT-08 & Reglas Laravel, OpenAS2 y conector por cadena. \\
+M10 & Analítica & Eventos canónicos & Ingesta a lago y servicios de consulta analítica. \\
+M11 & Canal moderno & INT-08 & Reglas Laravel, OpenAS2 y conector por cadena. \\
 M12 & Telemetría & INT-15 & Adaptador de solo lectura y consulta de ruta real. \\
 \end{tablalafrox}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
 
 La tabla verifica la correspondencia de los doce módulos con sus capacidades, contratos y realizaciones. La Tabla~\ref{tab:mapeo-logica} citada en 4.2.2 completa el enlace físico. Las capacidades transversales también se corresponden: presentación y borde con aplicaciones, CloudFront y acceso privado. Puerta de enlace con API central y puerta local, eventos con RabbitMQ, shipper y SQS. Datos con bases, réplica de lectura y objetos, identidad con Keycloak y verificador local, secretos y auditoría con sus servicios de custodia. Observabilidad con OpenTelemetry/ADOT, alarma local y CloudWatch. Notificaciones se traza a INT-11. El motor de optimización de M4 se integra mediante un contrato separado y se ejecuta en su propio contenedor.
 
@@ -108,7 +108,7 @@ Los siguientes 37 identificadores complementan los doce módulos: el inventario 
  DEV-MDM  &  Gestión de terminales  &  seguridad  &  Enrolamiento  &  N-13 en nube y agentes en C-01/C-02/C-03. Política y borrado  \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
 \subsection*{Correspondencia de actores y permisos del sistema}
 La Tabla~\ref{tab:actores-permisos} realiza el catálogo de quince actores del apartado 3.4.2 del Subdocumento 3. Cada acción se autoriza por separado sobre el ámbito indicado. Ni el cargo ni el acceso a una consola conceden todos los permisos de un módulo.
 

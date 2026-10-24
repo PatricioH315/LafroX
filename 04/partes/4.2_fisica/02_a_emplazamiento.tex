@@ -34,7 +34,7 @@ Los dos centros de distribución tienen su recinto especificado en el apartado~\
   \includegraphics[width=\linewidth]{figuras/fisica/Arquitectura_Fisica_Crossdocking.png}
   \caption{Gabinete de borde de las plataformas de cross-docking}
   \label{fig:crossdocking}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-a-emplazamiento}--\pageref*{fuente-02-a-emplazamiento-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-a-emplazamiento}--\pageref*{fuente-02-a-emplazamiento-fin}).\par}
 \end{figure}
 \FloatBarrier
 
@@ -47,7 +47,7 @@ La Figura~\ref{fig:cd-concepcion} presenta el gabinete de borde del CD Concepci�
   \includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figuras/centros_de_datos/Arquitectura_Fisica_CD_Concepcion.png}
   \caption{Gabinete de borde del CD Concepción}
   \label{fig:cd-concepcion}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-a-emplazamiento}--\pageref*{fuente-02-a-emplazamiento-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-a-emplazamiento}--\pageref*{fuente-02-a-emplazamiento-fin}).\par}
 \end{figure}
 \FloatBarrier
 
@@ -136,7 +136,7 @@ En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al 
   \end{tikzpicture}
   \caption{Ubicación de los componentes por dominio y por sitio}
   \label{fig:emplazamiento-dominios}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-a-emplazamiento}--\pageref*{fuente-02-a-emplazamiento-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-a-emplazamiento}--\pageref*{fuente-02-a-emplazamiento-fin}).\par}
 \end{figure}
 
 La figura muestra que cada instalación mantiene su operación local contra sus propios datos, dentro de las funciones y condiciones de 4.1.15 y del Anexo 4-J, aunque Concepción siga recibiendo parte de su surtido desde Talca. Esa autonomía no incluye emitir nuevas guías sin el ERP de Talca ni confirmar autorizaciones externas sin respuesta válida. Talca y Concepción tienen cada uno su WMS, su base, su broker y su caché de identidad. Los cross-docking reúnen esas mismas funciones en un par de mini-PC, uno activo y otro en espera. Y el terreno lleva su propio almacén local en el dispositivo. La nube concentra lo que es común a todos los sitios: los portales, el transaccional compartido, la analítica y los servicios de seguridad. Los doce componentes híbridos aparecen en los dos dominios porque cada uno tiene una parte que debe seguir operando en el sitio y otra que consolida en la nube.
@@ -168,7 +168,7 @@ La Tabla~\ref{tab:t21} resume cómo se distribuyen los 36 componentes entre los 
   \textbf{Total de componentes} & \textbf{13} & \textbf{11} & \textbf{12} & \textbf{36} \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-a-emplazamiento}--\pageref*{fuente-02-a-emplazamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-a-emplazamiento}--\pageref*{fuente-02-a-emplazamiento-fin}).\par}
 
 El emplazamiento responde a cuatro criterios decisivos del caso:
 
@@ -260,7 +260,7 @@ El emplazamiento descrito se verifica en lo que cada ámbito puede hacer cuando 
 \item \textbf{Sincronización al reconectar.} \textbf{Autonomía sin enlace:} CD en 2 h, flota en 10 min.
 \end{itemize}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-a-emplazamiento}--\pageref*{fuente-02-a-emplazamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-a-emplazamiento}--\pageref*{fuente-02-a-emplazamiento-fin}).\par}
 
 Durante la autonomía, cada ámbito mantiene las funciones habilitadas contra sus datos locales, con permisos vigentes, bloqueos sanitarios y las condiciones del Anexo 4-J:
 

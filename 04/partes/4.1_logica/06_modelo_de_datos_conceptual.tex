@@ -31,7 +31,7 @@ La Figura~\ref{fig:arql-18} relaciona las entidades principales con los módulos
   \label{fig:arql-18}
 \end{center}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026a, sección~2.1, pp.~6--7), para los requisitos de capas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-06-modelo-de-datos-conceptual}--\pageref*{fuente-06-modelo-de-datos-conceptual-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b, sección~2.1, pp.~6--7), para los requisitos de capas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-06-modelo-de-datos-conceptual}--\pageref*{fuente-06-modelo-de-datos-conceptual-fin}).\par}
 \end{anexohorizontal}
 
 M3 administra el pedido y sus líneas utilizando la referencia autorizada del cliente del ERP, M2 administra reserva, retención y movimientos por sitio. M5 enlaza misión y asignación a lote con la carga. M9 gobierna el estado sanitario, y M6 registra la entrega y su evidencia. El ERP conserva la emisión tributaria y los maestros autorizados. Los contratos del Anexo 4-A asignan un productor único a cada evento: M3 publica \texttt{PedidoConfirmado} y M6, \texttt{EntregaRegistrada}. Compartir el proceso Laravel no permite que otro módulo escriba sus datos privados.

@@ -37,7 +37,7 @@ El mapa asigna a cada relación un dueño de contrato y una superficie de interc
 
 El módulo de trazabilidad resuelve el problema central que motivó la licitación: la incapacidad de responder en tiempo real ante un retiro sanitario. En marzo de 2026, un retiro preventivo de queso fresco tomó 9 días en resolverse de forma inexacta, con la apertura de un sumario sanitario y la suspensión como distribuidor autorizado por un proveedor clave por seis meses.
 
-La unidad de trazabilidad sanitaria es el lote del proveedor, identificado por el producto (GTIN) y el número de lote. El vencimiento y los registros de temperatura se conservan como atributos asociados. FEFO es la regla de rotación por vencimiento, no parte del identificador. Cada movimiento vincula el lote con la unidad logística identificada mediante SSCC. Esta organización permite seguir el producto aunque cambie de caja o pallet. Como el 41\% de las recepciones carece de lote registrado, la captura en recepción es obligatoria para sostener la trazabilidad (RF-01).
+La unidad de trazabilidad sanitaria es el lote del proveedor, identificado por el producto (GTIN) y el número de lote. El vencimiento y los registros de temperatura se conservan como atributos asociados. FEFO es la regla de rotación por vencimiento, no parte del identificador. Cada movimiento vincula el lote con la unidad logística identificada mediante SSCC. Esta organización permite seguir el producto aunque cambie de caja o pallet. Como el 41\,\% de las recepciones del producto retirado no registraba lote, la captura en recepción es obligatoria para sostener la trazabilidad (RF-01).
 
 La trazabilidad hacia el origen y el destino se implementa evento a evento conforme al estándar GS1 EPCIS, permitiendo al sistema responder en menos de 2 horas ante un retiro sanitario (Bases Técnicas del caso, cap. 18, p. 34), con identificación precisa de los lotes y puntos de entrega afectados.
 
@@ -142,7 +142,7 @@ El módulo de rendición y cobro permite investigar las causas de las diferencia
   \item \textbf{Costo de servir (RF-11).} El módulo alimenta el tablero de BI con el costo real por entrega, incluyendo kilometraje real (telemetría M12), tiempo de servicio y deducciones por devoluciones.
 \end{itemize}
 
-\subsubsection{Módulo M10 BI Gerencia}
+\subsubsection{Módulo M10 Analítica}
 
 El módulo de inteligencia de negocio consolida la información operativa en tableros gerenciales de autoservicio (RT-05.27, Bases Técnicas Transversales, cap. 5, p. 13) con modelo semántico en el mismo lenguaje del negocio: OTIF, fill rate, costo por entrega, ocupación de flota y segmentación por canal/cliente.
 
@@ -150,7 +150,7 @@ Los tableros se alimentan del almacén analítico (Redshift Serverless) con late
 
 Los informes históricos y gerenciales de M10 son de solo lectura sobre el almacén analítico, sin consultas BI directas al transaccional en vivo. Los indicadores operativos actuales que 4.2 y T-11 obtienen por la API de negocio conservan la autorización y los contratos de sus módulos. No constituyen acceso directo de M10 a la base ni sustituyen el modelo analítico. Los informes se programan (diarios, semanales, mensuales) y se exportan de forma asíncrona con firma y suma de comprobación (RT-05.28, Bases Técnicas Transversales, cap. 5, p. 13).
 
-El módulo prioriza la calidad de la captura y la disponibilidad de indicadores verificables, dado que el caso informa un 41 \% de recepciones sin lote registrado.
+El módulo prioriza la calidad de la captura y la disponibilidad de indicadores verificables, dado que el caso informa que el 41\,\% de las recepciones del producto retirado no registraba lote.
 
 Comercial y Finanzas consultan indicadores sobre el mismo modelo semántico, pero solo Tesorería, del área de Finanzas, aprueba las diferencias de rendición. M10 no recibe permiso para modificar cobros.
 
@@ -184,7 +184,7 @@ Al registrar la entrega, el conductor captura en M8 la cantidad, el tipo y el es
 
 El conductor registra la devolución con SKU, cantidad y motivo —daño, vencimiento, producto no pedido o error— aun sin señal (RF-08.01). En el andén se elige su destino final —reingreso a stock, venta con descuento, devolución al proveedor o destrucción—, con usuario y fecha, y la transacción se envía al ERP por la ACL. El registro de cada ítem, con su escaneo y destino, toma no más de 30 segundos (RF-08.02 y RNF-08.01). M8 alerta al preventista dentro de las 24 horas siguientes a que el saldo de envases de un cliente supere el umbral que fija el administrador (RF-08.04), y M10 informa a diario la pérdida de envases por cliente, tipo y zona (RF-08.06, LafroX, 2026c, Anexos 3.A y 3.B).
 
-\textbf{M11 EDI Canal Moderno} recibe pedidos mediante contratos EDI configurados por cadena, traduce códigos a un vocabulario común y envía el pedido normalizado a M3. Las diferencias de formato y equivalencias van a una bandeja de excepciones. M11 no se convierte en un segundo dueño del pedido ni del inventario. M11 responde a la cadena con la confirmación o el rechazo del pedido, con la causa cuando no pueda aceptarse completo, y conserva el historial de estados de cada pedido electrónico: recepción, validación, confirmación, preparación, despacho, ASN y prueba de entrega (RF-12.07 y RF-12.08, LafroX, 2026c, Anexo 3.A).
+\textbf{M11 Canal moderno} recibe pedidos mediante contratos EDI configurados por cadena, traduce códigos a un vocabulario común y envía el pedido normalizado a M3. Las diferencias de formato y equivalencias van a una bandeja de excepciones. M11 no se convierte en un segundo dueño del pedido ni del inventario. M11 responde a la cadena con la confirmación o el rechazo del pedido, con la causa cuando no pueda aceptarse completo, y conserva el historial de estados de cada pedido electrónico: recepción, validación, confirmación, preparación, despacho, ASN y prueba de entrega (RF-12.07 y RF-12.08, LafroX, 2026c, Anexo 3.A).
 
 La cadena intercambia pedidos por el hub EDI. Desde la Etapa 2, el representante del transportista consulta sus rutas y confirma conductor y vehículo en su portal. Ninguno de esos canales reemplaza el registro personal del conductor que ejecuta M6.
 
