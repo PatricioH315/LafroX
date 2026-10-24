@@ -998,7 +998,7 @@ Media firma: Alex Aravena
 LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
 El RPO ≤15 min se cumple con fibra, LTE y Starlink. La falla simultánea de los tres caminos
 seguida de la destrucción del sitio antes de reponer alguno es el riesgo residual declarado
-en SD4 4.3.2.4 (RT-02.11), gestionado en SD8 (LafroX, 2026r) con R8-05. AL-DR-01 verifica las
+en SD4 4.3.2.4 (RT-02.11), gestionado en SD8 (LafroX, 2026r) con R-015. AL-DR-01 verifica las
 alarmas de retraso a 5 y 15 min, la reposición del enlace, la preemisión de guías y el NAS
 WORM, y mide el RPO y el RTO en conmutación real antes del H5 y del H10.
 ## Referencias

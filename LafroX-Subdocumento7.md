@@ -3073,7 +3073,7 @@ STOCK-01 antes del H4 (R8-02), y la carga y el drenaje se verifican en 3.8.4 y 3
 la coordinación al drenaje tras un corte. El RPO ≤ 15 min se cumple con fibra, LTE y Starlink.
 La falla simultánea de los tres caminos seguida de la destrucción del sitio antes de reponer
 alguno es el riesgo residual declarado en SD4 4.3.2.4, gestionado en SD8 (LafroX, 2026r) con
-R8-05 y verificado con AL-DR-01. Sus medidas son alarmas de retraso a 5 y 15 min, reposición
+R-015 y verificado con AL-DR-01. Sus medidas son alarmas de retraso a 5 y 15 min, reposición
 del enlace, preemisión de guías y NAS WORM. La continuidad crítica y la capacidad nominal
 se verifican conforme al Anexo 8.E, con responsable y hito límite.
 LafroX SpA

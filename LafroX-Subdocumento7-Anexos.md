@@ -1184,7 +1184,7 @@ de los tres cami-
 nos seguida de
 destrucción del
 sitio (SD4 4.3.2.4;
-R8-05) se verifica
+R-015) se verifica
 con AL-DR-01 y
 sus alarmas de 5 y
 15 min, reposición
