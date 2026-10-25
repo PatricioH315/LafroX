@@ -32,3 +32,9 @@ El informe interdocumental completo y su lista de figuras/pendientes están en l
 - `LAFROX-Formulario-T-12`: tres pasadas correctas.
 - `LAFROX-Subdocumento3-Anexos`: tres pasadas correctas.
 - `LAFROX-Subdocumento3`: tres pasadas correctas.
+
+## Cotejo correctivo T-12/T-11 — 25-10-2026
+
+Se detectó y corrigió la atribución de compra de sensores al CLIENTE que permanecía en la introducción del T-11. En el T-12 se sustituyeron las descripciones genéricas del kit por componentes y paquetes específicos para registro de cámaras, picking, rechazo, parametrización, evidencia y disposición; se distinguió M5 Preparación de M9 y se corrigió la referencia del tiempo de andén a 3.4.3. Se actualizaron ciclo de vida, autonomía, gestión de dispositivos y referencias B-04–B-15. Se retiraron del T-11 las dos referencias bibliográficas del registrador ELA sustituido.
+
+Este cotejo corrige la alineación documental de la ampliación. No equivale a certificar cumplimiento integral de cada fila de toda la matriz ni a acreditar cotizaciones, certificaciones o ensayos físicos.
