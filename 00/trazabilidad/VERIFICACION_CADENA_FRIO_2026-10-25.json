@@ -45,7 +45,7 @@
       {
         "archivo": "LAFROX-Formulario-T-12",
         "compilado": true,
-        "sha256_pdf": "d8d70fbd6f3ec66f4a1e0f4153df87ffdd335720b1399b563f5433b03804a072"
+        "sha256_pdf": "01ac8f30c89770cd14d2bfa5c29fb17863b2ff71b61bb311ef097c81b5a23712"
       },
       {
         "archivo": "LAFROX-Subdocumento3-Anexos",
@@ -55,7 +55,7 @@
       {
         "archivo": "LAFROX-Subdocumento3",
         "compilado": true,
-        "sha256_pdf": "477b8ed2d619cce7a2f1dc3574f45ec6a50261f7f3cb4bc2780d7d5f8fa829ec"
+        "sha256_pdf": "48b18f2c6f9120f5ac48e0dc39a179d859285fec7f7e9b78b1bf4d1a9a6a246c"
       }
     ]
   },
@@ -63,6 +63,7 @@
     "rama": "subdoc-4",
     "fuentes_modificadas_en_sesion": [
       ".gitignore",
+      "00/trazabilidad/PENDIENTES.md",
       "04/README.md",
       "04/anexos/fisica/16_anexo_4b_memoria_calculo.tex",
       "04/anexos/logica/partes/02_anexo_4_1_a_catalogo_de_eventos_canonicos.tex",
@@ -104,7 +105,7 @@
       {
         "archivo": "LAFROX-Formulario-T-11",
         "compilado": true,
-        "sha256_pdf": "f66bb81915dadd3228b3de65a39b173aa9e5a3b3516414ab01432b344085e186"
+        "sha256_pdf": "a358c389a4810b5e4f504c80f5651feac5242a45effe8f3ecc32a0beec873d1c"
       },
       {
         "archivo": "LAFROX-Subdocumento4-Anexos",
@@ -114,7 +115,7 @@
       {
         "archivo": "LAFROX-Subdocumento4",
         "compilado": true,
-        "sha256_pdf": "58e5b8c7b68c54b74241866a6f2ceccf171e2e624d26962a770f222d61f5eb54"
+        "sha256_pdf": "3d6e9a9f6bd39ae844dd6ea77439c785c009bd2ecc2521a4dd8a33355e2d7862"
       }
     ]
   },
