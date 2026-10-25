@@ -38,3 +38,7 @@ El informe interdocumental completo y su lista de figuras/pendientes están en l
 Se detectó y corrigió la atribución de compra de sensores al CLIENTE que permanecía en la introducción del T-11. En el T-12 se sustituyeron las descripciones genéricas del kit por componentes y paquetes específicos para registro de cámaras, picking, rechazo, parametrización, evidencia y disposición; se distinguió M5 Preparación de M9 y se corrigió la referencia del tiempo de andén a 3.4.3. Se actualizaron ciclo de vida, autonomía, gestión de dispositivos y referencias B-04–B-15. Se retiraron del T-11 las dos referencias bibliográficas del registrador ELA sustituido.
 
 Este cotejo corrige la alineación documental de la ampliación. No equivale a certificar cumplimiento integral de cada fila de toda la matriz ni a acreditar cotizaciones, certificaciones o ensayos físicos.
+
+## Revisión semántica posterior — 25-10-2026
+
+Se completó la revisión semántica de las 653 filas del T-12 y la correspondencia de 98 recursos del T-11. El registro posterior corrige 62 filas y 27 estados: 595 Cumple, 36 Cumple parcialmente y 22 No cumple. La descripción de ninguna exigencia se alteró. El informe canónico, observación individual y CSV/JSON están en `revision/REVISION_SEMANTICA_T12_2026-10-25.md` y `revision/semantica_t12_2026-10-25/` de la rama SD3. El resumen SD4 es `00/trazabilidad/REVISION_SEMANTICA_FORMULARIOS_2026-10-25.md`. Esta revisión reconoce brechas; la compilación no acredita cumplimiento total. El diccionario contado tiene 121 entidades y 995 atributos.

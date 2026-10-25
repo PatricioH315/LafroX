@@ -12,6 +12,7 @@
     "tablas_anexo/criterios_aceptacion.tex",
     "tablas_anexo/exclusiones.tex",
     "tablas_anexo/reglas_negocio.tex",
+    "tablas_anexo/rf_caso.tex",
     "tablas_anexo/rf_propios.tex",
     "tablas_anexo/rnf_propios.tex",
     "tablas_anexo/supuestos.tex"
@@ -22,17 +23,17 @@
     {
       "archivo": "LAFROX-Formulario-T-12",
       "compilado": true,
-      "sha256_pdf": "01ac8f30c89770cd14d2bfa5c29fb17863b2ff71b61bb311ef097c81b5a23712"
+      "sha256_pdf": "8437af137a47ebd14afd6548815a75afaf0c0aed0c1ecffb4f5670f70d6a7d50"
     },
     {
       "archivo": "LAFROX-Subdocumento3-Anexos",
       "compilado": true,
-      "sha256_pdf": "283bc26960a045132d85a6caefec721dbc1c70ef8786a631d36bd36ce5880e6e"
+      "sha256_pdf": "eb9871aed31396ef4e92e98882f205984ad21bb7f72ce98a56e3687c42a54500"
     },
     {
       "archivo": "LAFROX-Subdocumento3",
       "compilado": true,
-      "sha256_pdf": "48b18f2c6f9120f5ac48e0dc39a179d859285fec7f7e9b78b1bf4d1a9a6a246c"
+      "sha256_pdf": "377fbdf7364afee5e73060710a1f50881177d30cbc429478408d6b435f539716"
     }
   ]
 }

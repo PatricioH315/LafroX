@@ -1,0 +1,89 @@
+{
+  "fecha": "2026-10-25",
+  "alcance": "Revisión semántica documental de las 653 filas del T-12 y correspondencia con las 98 filas de recursos del T-11.",
+  "metodo": "Lectura de exigencia y respuesta fila por fila; comprobación de responsabilidad, alcance, umbrales, excepciones, EDT y referencias de la propuesta. Los scripts verifican integridad y serializan los dictámenes; la coincidencia de códigos o palabras no decide cumplimiento.",
+  "limites": "Cumple se interpreta conforme a la introducción del T-12 como solución desarrollada/comprometida en la propuesta. No certifica implantación, ensayos físicos, conformidad legal independiente, certificados de terceros ni aceptación del CLIENTE. Los compromisos futuros se distinguen de recursos que deben existir al presentar la oferta.",
+  "ramas_consultadas": {
+    "2": {
+      "rama": "LafroX-Subdoc2-LateX",
+      "commit_al_iniciar_revision": "4c86e7f1d020e119256ecddc4d9569481a1de087"
+    },
+    "3": {
+      "rama": "LafroX-Subdoc3-LateX",
+      "commit_al_iniciar_revision": "885792a997f5361a81af36174c01f05235d036fb"
+    },
+    "4": {
+      "rama": "subdoc-4",
+      "commit_al_iniciar_revision": "8292f439a6f50cfb862887e9d34cd1da8bb43603"
+    },
+    "5": {
+      "rama": "LafroX-Subdoc5-LateX",
+      "commit_al_iniciar_revision": "3d33a91ab2cc13706a4ef0ece9be55bb6d6d1f25"
+    },
+    "6": {
+      "rama": "LafroX-Subdoc6-LateX",
+      "commit_al_iniciar_revision": "7966b2e9a20216f6f2bc37c073f7453d6c733a3f"
+    },
+    "7": {
+      "rama": "LafroX-Subdoc7-LateX",
+      "commit_al_iniciar_revision": "3fd3b74706b9d3fd969b8a435eb1ef6b47bcea11"
+    }
+  },
+  "fuentes_adicionales_solo_lectura": {
+    "1": {
+      "ref": "origin/LafroX-Subdoc1-LateX",
+      "commit": "8c5d87d1ec7d76b990daff20361ede039add2551"
+    },
+    "8": {
+      "ref": "origin/Lafrox_Subdocumento_8_Latex_Nuevo",
+      "commit": "c1ca4bdc90fbde6c0a38c15f53a489028f59bb4f"
+    },
+    "9": {
+      "ref": "origin/LafroX-Subdoc9-LateX",
+      "commit": "a4e1c6377376b624ae6bc5eafb33ada9f96c16e8"
+    },
+    "10": {
+      "ref": "origin/LafroX-Subdoc10-LateX",
+      "commit": "3faaec7ac6ab05a2bb7c0b7187584ad59b0b81e4"
+    },
+    "11": {
+      "ref": "origin/LafroX-Subdoc11-LateX",
+      "commit": "3faaec7ac6ab05a2bb7c0b7187584ad59b0b81e4"
+    },
+    "12": {
+      "ref": "origin/LafroX-Subdoc12-LateX",
+      "commit": "3faaec7ac6ab05a2bb7c0b7187584ad59b0b81e4"
+    },
+    "13": {
+      "ref": "origin/LafroX-Subdoc13-LateX",
+      "commit": "ad1fbb5838dc1dbd6a8be838e6adc1205e79f74f"
+    }
+  },
+  "fuentes_externas": [
+    {
+      "url": "https://lafrox.github.io/",
+      "archivo": "evidencia_web/index.html",
+      "sha256": "2882ef6dc80071de55c67e770260ac2524d3f951008d9198acbf0784351a083f",
+      "http": 200
+    },
+    {
+      "url": "https://lafrox.github.io/js/main.js",
+      "archivo": "evidencia_web/main.js",
+      "sha256": "6bd1573aaeb6c1f561f7dd44e259187d7342c5acd061547fb99144f126746422",
+      "http": 200
+    },
+    {
+      "url": "https://ref.gs1.org/ai/",
+      "dato_verificado": "AI 00 SSCC; AI 11 fecha de producción, no fecha de recepción."
+    }
+  ],
+  "cobertura": {
+    "Cumple": 595,
+    "Cumple parcialmente": 36,
+    "No cumple": 22
+  },
+  "cantidad_filas": 653,
+  "cantidad_filas_con_cambios": 62,
+  "cambios_de_estado": 27,
+  "sin_fuente_de_exigencia": []
+}
