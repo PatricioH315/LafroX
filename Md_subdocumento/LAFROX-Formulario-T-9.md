@@ -85,9 +85,9 @@ La siguiente tabla reproduce las responsabilidades, necesidades, plazos y eviden
 | Servicios de AWS | Plataforma de nube y ambientes | LafroX (5.2.1); SRE. Antes del mes 4. Paquetes 3.1, 3.2. Cuentas y servicios activos. |
 | Gestión de dispositivos y detección en endpoints | Enrolamiento y seguridad de terminales | LafroX (5.2.2); SRE. Antes del enrolamiento. Paquetes 6.5, 7.1. Suscripciones activas. |
 | Licencias de software de terceros | Productos de la arquitectura | A nombre del CLIENTE (5.2.3); Arquitecto. Antes de usar cada producto. Paquetes 3.1 a 3.6. Registro de licencias. |
-| Fibra óptica de Talca y Concepción | Enlace principal | LafroX (5.3.1); SRE. Antes de H3. Paquete 6.6. Contrato y fecha de instalación. |
-| Planes LTE de dos proveedores | Respaldo de enlace | LafroX (5.3.2); SRE. Antes de H3. Paquete 6.6. Contratos. |
-| Starlink de las tres plataformas | Enlace de los cross-docking | LafroX (5.3.3); SRE. Antes de H3. Paquete 6.6. Contratos y equipos. |
+| Fibra óptica de Telsur (Grupo Gtd) en Talca y Concepción | Enlace principal | LafroX (5.3.1); SRE. Antes de H3. Paquete 6.6. Contrato y fecha de instalación. |
+| Ocho planes LTE: Entel en Talca y Concepción; Entel y Claro en cada cross-docking | Respaldo de enlace | LafroX (5.3.2); SRE. Antes de H3. Paquete 6.6. Contratos. |
+| Starlink de los cinco sitios | Enlace principal de los cross-docking y tercer camino de los CD | LafroX (5.3.3); SRE. Antes de H3. Paquete 6.6. Contratos y equipos. |
 | Acuerdos con los diez transportistas | Uso de terminales y suplentes enrolados | LafroX con el CLIENTE (5.4.1); Implantación. Antes de H6. Paquetes 4.2.1, ola de reparto. Diez acuerdos firmados. |
 | Acta con el sindicato | Terminales, GPS y cámaras | CLIENTE y sindicato (5.4.2); Implantación. Antes de H6. Paquete 4.2.1. Acta firmada. |
 | Custodia de fuentes | Continuidad ante insolvencia o incumplimiento | LafroX (5.4.4); jefe de proyecto. Antes de H4. Paquete 9.2. Contrato y primer depósito. |
