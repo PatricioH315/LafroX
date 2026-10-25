@@ -1,0 +1,52 @@
+{
+  "paquetes": 227,
+  "hh_paquetes": 207487.0,
+  "incremento_hh": 2480.0,
+  "total_hh": 220023,
+  "peak_personas": 70,
+  "meses_peak": [
+    15
+  ],
+  "cambios": [
+    "2.4.3",
+    "2.4.4",
+    "3.4.4",
+    "3.4.5",
+    "4.1.4",
+    "5.1.4",
+    "5.3.4",
+    "6.5.4",
+    "7.1.3",
+    "7.2.4"
+  ],
+  "regla_refuerzo": "Se mantiene la envolvente publicada anterior y se reserva un equipo adicional por rol con techo(delta HH/128), sin imputar al incremento holguras no acreditadas del equipo anterior.",
+  "delta_rol_mes": {
+    "1:ARQ": 120.0,
+    "2:ARQ": 120.0,
+    "2:SRE": 80.0,
+    "3:SRE": 320.0,
+    "4:ARQ": 240.0,
+    "5:DES": 280.0,
+    "6:DES": 280.0,
+    "7:DES": 280.0,
+    "8:DES": 120.0,
+    "8:SRE": 64.0,
+    "8:IMP": 18.46153846153846,
+    "9:SRE": 64.0,
+    "9:IMP": 18.46153846153846,
+    "10:SRE": 10.666666666666666,
+    "10:IMP": 178.46153846153845,
+    "11:SRE": 10.666666666666666,
+    "11:IMP": 186.46153846153845,
+    "12:SRE": 10.666666666666666,
+    "12:IMP": 26.46153846153846,
+    "13:IMP": 6.461538461538462,
+    "14:IMP": 6.461538461538462,
+    "15:IMP": 6.461538461538462,
+    "16:IMP": 6.461538461538462,
+    "17:IMP": 6.461538461538462,
+    "18:IMP": 6.461538461538462,
+    "19:IMP": 6.461538461538462,
+    "20:IMP": 6.461538461538462
+  }
+}

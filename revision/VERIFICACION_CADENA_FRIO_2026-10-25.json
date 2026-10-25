@@ -1,0 +1,76 @@
+{
+  "rama": "LafroX-Subdoc7-LateX",
+  "fuentes_modificadas_en_sesion": [
+    ".gitignore",
+    "LafroX-Formulario-T-14.pdf",
+    "LafroX-Formulario-T-15.pdf",
+    "LafroX-Formulario-T-18.pdf",
+    "LafroX-Subdocumento7-Anexos.pdf",
+    "LafroX-Subdocumento7.pdf",
+    "formulario-t14/contenido.tex",
+    "formulario-t14/tablas/tab_T14_1.tex",
+    "formulario-t14/tablas/tab_T14_15.tex",
+    "formulario-t14/tablas/tab_T14_21.tex",
+    "formulario-t14/tablas/tab_T14_29.tex",
+    "formulario-t14/tablas/tab_T14_32.tex",
+    "formulario-t14/tablas/tab_T14_34.tex",
+    "formulario-t14/tablas/tab_T14_40.tex",
+    "formulario-t14/tablas/tab_T14_42.tex",
+    "formulario-t14/tablas/tab_T14_43.tex",
+    "formulario-t14/tablas/tab_T14_53.tex",
+    "formulario-t15/contenido.tex",
+    "formulario-t15/tablas/tab_T15_1.tex",
+    "formulario-t15/tablas/tab_T15_10.tex",
+    "formulario-t15/tablas/tab_T15_11.tex",
+    "formulario-t15/tablas/tab_T15_2.tex",
+    "formulario-t15/tablas/tab_T15_3.tex",
+    "formulario-t15/tablas/tab_T15_4.tex",
+    "formulario-t15/tablas/tab_T15_4_personas.tex",
+    "formulario-t15/tablas/tab_T15_8.tex",
+    "formulario-t15/tablas/tab_T15_9_bloque_2.tex",
+    "formulario-t15/tablas/tab_T15_paquetes.tex",
+    "formulario-t18/tablas/tab_T18_IA.tex",
+    "formulario-t18/tablas/tab_T18_olas_alcance.tex",
+    "subdocumento-07-anexos/contenido.tex",
+    "subdocumento-07-anexos/tablas/tab_7B1.tex",
+    "subdocumento-07-anexos/tablas/tab_7C1.tex",
+    "subdocumento-07-anexos/tablas/tab_7E1.tex",
+    "subdocumento-07-anexos/tablas/tab_7E2.tex",
+    "subdocumento-07-anexos/tablas/tab_7F1.tex",
+    "subdocumento-07-anexos/tablas/tab_IA.tex",
+    "subdocumento-07/contenido.tex",
+    "subdocumento-07/tablas/tab_SD7_1.tex",
+    "subdocumento-07/tablas/tab_SD7_12.tex",
+    "subdocumento-07/tablas/tab_SD7_13.tex",
+    "subdocumento-07/tablas/tab_SD7_3.tex"
+  ],
+  "figuras_modificadas": [],
+  "bloques_figura_modificados": [],
+  "compilaciones": [
+    {
+      "archivo": "LafroX-Formulario-T-14",
+      "compilado": true,
+      "sha256_pdf": "02d316d66866fb59bf5d617dd0251f32d31b3f419387aa414bdf09870d4b3237"
+    },
+    {
+      "archivo": "LafroX-Formulario-T-15",
+      "compilado": true,
+      "sha256_pdf": "8aa294f60ec6edcee9e7dc1d61da03e7e5e0c5def27b599c70ab663f60feb630"
+    },
+    {
+      "archivo": "LafroX-Formulario-T-18",
+      "compilado": true,
+      "sha256_pdf": "a4853750c8a717b7d9c9a517f6fe873f9f65496174228c90a568fc0b28bb7c9f"
+    },
+    {
+      "archivo": "LafroX-Subdocumento7-Anexos",
+      "compilado": true,
+      "sha256_pdf": "afb291f75851d9c75b25b0190da24b5cc23b8d604fe75292b6aa675085d57a6e"
+    },
+    {
+      "archivo": "LafroX-Subdocumento7",
+      "compilado": true,
+      "sha256_pdf": "02c4661a7ef304426a1a12fbd9384b6ad85ca53291883ff247bfe67d983bdaf0"
+    }
+  ]
+}

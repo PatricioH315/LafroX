@@ -17,11 +17,11 @@ En este formulario, BA, BTT y Caso designan las Bases Administrativas (Distribui
 
 \section{Estructura de descomposición del trabajo}
 
-La EDT descompone el 100 \% del alcance de la Etapa 1, la Etapa 2 y la Operación (BA, art. 15, p. 11) en nueve fases, 49 cuentas de control y 222 paquetes de trabajo. Las fases 1 a 4 son las del proceso de desarrollo declarado en el Capítulo 6 (Inicio, Elaboración, Construcción y Transición) y se recorren una vez por etapa. Las fases 5 a 9 agrupan el trabajo que no es desarrollo de software. Cada paquete es la hoja de su rama, tiene un único responsable y produce un entregable verificable. En la cuenta 3.10, cada innovación agrupa sus paquetes en un cuarto nivel. La Tabla \ref{tab:T14-1} resume el tamaño de cada fase.
+La EDT descompone el 100 \% del alcance de la Etapa 1, la Etapa 2 y la Operación (BA, art. 15, p. 11) en nueve fases, 49 cuentas de control y 227 paquetes de trabajo. Las fases 1 a 4 son las del proceso de desarrollo declarado en el Capítulo 6 (Inicio, Elaboración, Construcción y Transición) y se recorren una vez por etapa. Las fases 5 a 9 agrupan el trabajo que no es desarrollo de software. Cada paquete es la hoja de su rama, tiene un único responsable y produce un entregable verificable. En la cuenta 3.10, cada innovación agrupa sus paquetes en un cuarto nivel. La Tabla \ref{tab:T14-1} resume el tamaño de cada fase.
 
 \parte{tablas/tab_T14_1}
 
-La construcción concentra 79 de los 222 paquetes, y las fases que no son software (5 a 7) suman 50. Ninguna cuenta de control tiene un solo paquete. La estructura completa es la siguiente, con la raíz «Plataforma logística de Distribuidora Puelche» y sus nueve fases en el primer nivel.
+La construcción concentra 79 de los 227 paquetes, y las fases que no son software (5 a 7) suman 52. Ninguna cuenta de control tiene un solo paquete. La estructura completa es la siguiente, con la raíz «Plataforma logística de Distribuidora Puelche» y sus nueve fases en el primer nivel.
 
 \begin{itemize}
 \item \textbf{1. Inicio}
@@ -150,6 +150,10 @@ La construcción concentra 79 de los 222 paquetes, y las fases que no son softwa
 
 \item 2.4.2 Acta de aprobación del diseño detallado de la Etapa 2 (H8)
 
+\item 2.4.3 Validación del diseño del kit en banco de pruebas
+
+\item 2.4.4 Mapeo térmico por tipo de carrocería
+
 \item 2.5 Continuidad del negocio
 
 \item 2.5.1 Plan de continuidad del negocio según ISO 22301, con análisis de impacto y procedimientos manuales
@@ -214,9 +218,9 @@ La construcción concentra 79 de los 222 paquetes, y las fases que no son softwa
 
 \item 3.4.3 Preparación de pedidos en el turno de noche y en la cámara de congelado (M5 Preparación)
 
-\item 3.4.4 Cadena de frío, retención de lotes y retiro sanitario (M9 Calidad y trazabilidad)
+\item 3.4.4 Cadena de frío, retención por SSCC y retiro sanitario (M9 Calidad y trazabilidad)
 
-\item 3.4.5 Ingesta de temperatura y posición de la flota (M12 Telemetría)
+\item 3.4.5 Ingesta de temperatura (M9) y posición de flota (M12)
 
 \item 3.4.6 Aplicación móvil de preventa sin conexión, con stock y crédito (M3 Preventa)
 
@@ -364,6 +368,8 @@ La construcción concentra 79 de los 222 paquetes, y las fases que no son softwa
 
 \item 4.1.3 Plan de implantación y reversión de la Etapa 2 fuera de la ventana de 05:30 a 07:00
 
+\item 4.1.4 Piloto de cadena de frío en cuatro camiones
+
 \item 4.2 Marcha blanca y producción de la Etapa 1
 
 \item 4.2.1 Marcha blanca de la Etapa 1 con conciliación diaria (H6)
@@ -386,11 +392,13 @@ La construcción concentra 79 de los 222 paquetes, y las fases que no son softwa
 
 \item 5.1 Hardware e infraestructura
 
-\item 5.1.1 Especificación de compra del equipamiento de terreno para el CLIENTE
+\item 5.1.1 Especificación de compra de equipos de uso para el CLIENTE
 
 \item 5.1.2 Especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de borde
 
 \item 5.1.3 Actas de recepción técnica del equipamiento de terreno comprado por el CLIENTE y de la infraestructura provista por LafroX
+
+\item 5.1.4 Especificación y compra del sistema de cadena de frío
 
 \item 5.2 Servicios de nube y licencias
 
@@ -407,6 +415,8 @@ La construcción concentra 79 de los 222 paquetes, y las fases que no son softwa
 \item 5.3.2 Contrato de planes LTE con dos proveedores (ocho planes)
 
 \item 5.3.3 Contrato de Starlink para los cinco sitios: Talca, Concepción y las tres plataformas de cross-docking
+
+\item 5.3.4 Contrato de SIM M2M y servicio satelital de los camiones con frío
 
 \item 5.4 Acuerdos con terceros
 
@@ -466,7 +476,7 @@ La construcción concentra 79 de los 222 paquetes, y las fases que no son softwa
 
 \item 6.5.3 Sensores de cámara y gateways IoT instalados en Talca y Concepción
 
-\item 6.5.4 Termógrafos instalados en los 28 camiones con frío (propios y de transportistas)
+\item 6.5.4 Kit de cadena de frío instalado y recibido en los 28 camiones con frío
 
 \item 6.5.5 Impresoras de cabina instaladas
 
@@ -488,7 +498,7 @@ La construcción concentra 79 de los 222 paquetes, y las fases que no son softwa
 
 \item 7.1.2 Programa de capacitación continua del turno de noche por la rotación del 38 \%
 
-\item 7.1.3 Procedimiento de incorporación de los conductores de los transportistas en el andén
+\item 7.1.3 Incorporación de conductores de transportistas, escaneos y lectura del rojo
 
 \item 7.1.4 Traspaso al equipo de TI de cuatro personas del CLIENTE
 
@@ -504,7 +514,7 @@ La construcción concentra 79 de los 222 paquetes, y las fases que no son softwa
 
 \item 7.2.3 Diagnóstico del impacto organizacional por área y perfil, con agentes de cambio
 
-\item 7.2.4 Procedimientos operativos afectados, rediseñados y documentados
+\item 7.2.4 Procedimientos operativos rediseñados, contingencia de frío y ruptura confirmada
 
 \item 7.2.5 Medición de la adopción y plan de acción correctiva
 
@@ -604,7 +614,7 @@ La figura siguiente presenta la EDT completa en una sola vista panorámica. Por 
 \end{center}
 \end{anexohorizontal}
 
-La vista reúne las nueve fases, sus 49 cuentas de control y los 222 paquetes de trabajo en una sola estructura. Las secciones siguientes desarrollan el diccionario y la programación asociados a esa descomposición.
+La vista reúne las nueve fases, sus 49 cuentas de control y los 227 paquetes de trabajo en una sola estructura. Las secciones siguientes desarrollan el diccionario y la programación asociados a esa descomposición.
 
 \section{Diccionario de la EDT}
 
@@ -1090,7 +1100,7 @@ Según la carta de la sección 3.1, la sala técnica y el borde de los sitios se
 
 \subsection{Carta Gantt actualizada por cuenta de control}
 
-Las siguientes vistas actualizadas detallan las cuentas de control de los meses 1 a 21: la primera, las fases 1 a 3; la segunda, las fases 4 a 7. Reemplazan como fuente vigente a las figuras anteriores, que conservan la programación previa a la reconciliación de ventanas. La carta de 56 meses de la Figura \ref{fig:T14-56} presenta el panorama contractual completo. Cada barra va desde el primer mes hasta el último de las ventanas mensuales de los paquetes de la cuenta, según el Formulario T-15, sección 4.2; esas ventanas son envolventes de asignación y pueden incluir meses de margen sin ejecución. Las fechas diarias de los paquetes con entregable están en su sección 6.1. Los hitos se ubican al cierre de su mes, salvo H6 y H11, que marcan el inicio de una marcha blanca. El detalle por paquete, con sus 222 ventanas, está en la sección 4.2, y la red con revisiones del CLIENTE y el cálculo histórico de ruta crítica, en la sección 5. Las cuentas recurrentes (1.4, 1.8, 1.9, 7.1 y 8) se muestran como barras continuas, aunque su trabajo se ejecute con la frecuencia que fija este diccionario.
+Las siguientes vistas actualizadas detallan las cuentas de control de los meses 1 a 21: la primera, las fases 1 a 3; la segunda, las fases 4 a 7. Reemplazan como fuente vigente a las figuras anteriores, que conservan la programación previa a la reconciliación de ventanas. La carta de 56 meses de la Figura \ref{fig:T14-56} presenta el panorama contractual completo. Cada barra va desde el primer mes hasta el último de las ventanas mensuales de los paquetes de la cuenta, según el Formulario T-15, sección 4.2; esas ventanas son envolventes de asignación y pueden incluir meses de margen sin ejecución. Las fechas diarias de los paquetes con entregable están en su sección 6.1. Los hitos se ubican al cierre de su mes, salvo H6 y H11, que marcan el inicio de una marcha blanca. El detalle por paquete, con sus 227 ventanas, está en la sección 4.2, y la red con revisiones del CLIENTE y el cálculo histórico de ruta crítica, en la sección 5. Las cuentas recurrentes (1.4, 1.8, 1.9, 7.1 y 8) se muestran como barras continuas, aunque su trabajo se ejecute con la frecuencia que fija este diccionario.
 
 \figuraDiagramaHorizontal[361pt]{imagenes/Diagramas que faltaban/Fig_T14-2_Cuentas_m1-21_Fases1-3.pdf}
   {Carta Gantt actualizada por cuenta de control, meses 1 a 21, fases 1 a 3. Fuente: elaboración a partir de la EDT de este formulario y LafroX (2026e, T-15, cronograma).}
