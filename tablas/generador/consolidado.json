@@ -2087,6 +2087,50 @@
       "etapa": "",
       "origen": "",
       "origen_candidato": "Bases Técnicas Transversales, RT-11.19"
+    },
+    {
+      "id": "RF-09.11",
+      "titulo": "El sistema debe registrar la salida de cámara y la carga de cada SSCC de frío, calcular su tiempo fuera de frío en el andén y bloquearlo si supera el máximo de su familia.",
+      "desc": "El sistema debe registrar la salida de cámara y la carga de cada SSCC de frío, calcular su tiempo fuera de frío en el andén y bloquearlo si supera el máximo de su familia.",
+      "actor": "Tripulación / Jefa de Calidad",
+      "pre": "SSCC, familia y máximo aprobados por Calidad.",
+      "res": "Exposición de andén trazable y bloqueo antes de salir si excede el máximo.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Propio LafroX."
+    },
+    {
+      "id": "RF-09.12",
+      "titulo": "El sistema debe registrar la bajada de cada SSCC de frío y habilitar su entrega solo con estado vigente: latido válido de menos de 30 s, manifiesto vigente, sin retención ni contradicción.",
+      "desc": "El sistema debe registrar la bajada de cada SSCC de frío y habilitar su entrega solo con estado vigente: latido válido de menos de 30 s, manifiesto vigente, sin retención ni contradicción.",
+      "actor": "Tripulación",
+      "pre": "SSCC cargado y asignado a compartimento.",
+      "res": "Fin de la ventana a bordo; POD posterior permitido dentro del local aun fuera del Wi-Fi de cabina.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Propio LafroX."
+    },
+    {
+      "id": "RF-09.13",
+      "titulo": "El terminal debe retener el SSCC afectado ante crítica, contradicción o pérdida del enlace local con el camión, sin depender de red móvil ni satélite.",
+      "desc": "El terminal debe retener el SSCC afectado ante crítica, contradicción o pérdida del enlace local con el camión, sin depender de red móvil ni satélite.",
+      "actor": "Tripulación / Jefa de Calidad",
+      "pre": "Manifiesto y regla de familia disponibles localmente.",
+      "res": "Bloqueo de una nueva bajada con estado no confiable; lo retenido vuelve al CD si no existe decisión en plazo.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Propio LafroX."
+    },
+    {
+      "id": "RF-09.14",
+      "titulo": "El sistema debe registrar la disposición del producto retenido: liberar, vender con descuento si es apto, devolver al proveedor, uso no alimentario autorizado o destrucción autorizada.",
+      "desc": "El sistema debe registrar la disposición del producto retenido: liberar, vender con descuento si es apto, devolver al proveedor, uso no alimentario autorizado o destrucción autorizada.",
+      "actor": "Jefa de Calidad",
+      "pre": "Producto segregado y evaluación de Calidad registrada.",
+      "res": "Decisión trazable; área de no aptos separada y marcada con X roja u otro signo inequívoco (RSA, art. 105).",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Propio LafroX."
     }
   ],
   "rnf": [
@@ -2899,6 +2943,42 @@
       "metodo": "",
       "origen": "",
       "etapa": ""
+    },
+    {
+      "id": "RNF-09.06",
+      "titulo": "Alarma en ruta sin red",
+      "umbral": "La detección, alarma al conductor y bloqueo de la entrega operan sin red móvil ni satélite; ante pérdida de latido, el TC58e retiene en no más de 30 s.",
+      "metodo": "V6–V9: fallas, contradicción y bajada sin red.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Propio LafroX."
+    },
+    {
+      "id": "RNF-09.07",
+      "titulo": "Doble camino siempre activo",
+      "umbral": "Red móvil de dos operadores e Iridium SBD transmiten en paralelo. Aviso a Calidad $\\leq$ 2 min por red móvil y $\\leq$ 5 min por satélite en al menos 95 \\% de los ensayos por camino.",
+      "metodo": "V2 y V18: banco y rutas reales.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Propio LafroX."
+    },
+    {
+      "id": "RNF-09.08",
+      "titulo": "Decisión térmica y registro certificado",
+      "umbral": "La decisión usa simuladores de producto en el punto más caliente fijado por mapeo térmico; el termógrafo certificado EN 12830 registra el aire cada 1 min.",
+      "metodo": "V3 y V4: series y mapeo.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Propio LafroX."
+    },
+    {
+      "id": "RNF-09.09",
+      "titulo": "Coherencia de datos",
+      "umbral": "Sin pérdidas ni efectos duplicados; identidad por productor, arranque y secuencia, huecos detectados y crítica tardía siempre procesada. Una recuperación tardía no libera retenciones.",
+      "metodo": "V11: duplicados, retrasos y reordenamiento.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Propio LafroX."
     }
   ],
   "supuestos": [
