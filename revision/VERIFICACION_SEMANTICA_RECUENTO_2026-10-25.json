@@ -1,0 +1,179 @@
+{
+  "fecha": "2026-10-25",
+  "filas_T12": 653,
+  "filas_T11": 98,
+  "descripcion_exigencias_conservada": true,
+  "referencias_EDT_existentes": true,
+  "referencias_codificadas_T11_existentes": true,
+  "referencias_de_apartados_SD3_SD4_SD5_existentes": true,
+  "cantidad_filas_corregidas": 62,
+  "cambios_de_estado": 27,
+  "cobertura": {
+    "Cumple": 595,
+    "Cumple parcialmente": 36,
+    "No cumple": 22
+  },
+  "scripts": "Verificación de integridad y recuentos; los scripts no deciden el juicio semántico.",
+  "compilaciones": [
+    {
+      "documento": "LAFROX-Formulario-T-12",
+      "advertencias": [],
+      "pdf_sha256": "8437af137a47ebd14afd6548815a75afaf0c0aed0c1ecffb4f5670f70d6a7d50"
+    },
+    {
+      "documento": "LAFROX-Subdocumento3",
+      "advertencias": [
+        "Overfull \\hbox (0.94237pt too wide) in paragraph at lines 597--597",
+        "Overfull \\hbox (0.59538pt too wide) in paragraph at lines 597--597"
+      ],
+      "pdf_sha256": "377fbdf7364afee5e73060710a1f50881177d30cbc429478408d6b435f539716"
+    },
+    {
+      "documento": "LAFROX-Subdocumento3-Anexos",
+      "advertencias": [],
+      "pdf_sha256": "eb9871aed31396ef4e92e98882f205984ad21bb7f72ce98a56e3687c42a54500"
+    },
+    {
+      "documento": "LAFROX-Formulario-T-11",
+      "advertencias": [],
+      "pdf_sha256": "ffdade42f387bc66c1b91fb9e6dae0c7225f8419d83f1993b3cb57e02c8c9514"
+    },
+    {
+      "documento": "LAFROX-Subdocumento4",
+      "advertencias": [],
+      "pdf_sha256": "0875cfa960b76425d6d0c0a8101c2cde4bd4ba2412df1d73d6f71a42b0010b43"
+    },
+    {
+      "documento": "LAFROX-Subdocumento5",
+      "advertencias": [],
+      "pdf_sha256": "ff4b38173da13df6c610ae07c06cd5885d1dfb55f2d93f85179591df901ea6ab"
+    },
+    {
+      "documento": "LAFROX-Subdocumento5-Anexos",
+      "advertencias": [],
+      "pdf_sha256": "d19114716549d881444a189df15c5ff7c12c6a8f398f008eb894a83971fa5526"
+    }
+  ],
+  "paginas_de_QA_visual": [
+    {
+      "sd": 3,
+      "job": "LAFROX-Formulario-T-12",
+      "pagina": 8
+    },
+    {
+      "sd": 3,
+      "job": "LAFROX-Formulario-T-12",
+      "pagina": 23
+    },
+    {
+      "sd": 3,
+      "job": "LAFROX-Formulario-T-12",
+      "pagina": 32
+    },
+    {
+      "sd": 3,
+      "job": "LAFROX-Formulario-T-12",
+      "pagina": 44
+    },
+    {
+      "sd": 3,
+      "job": "LAFROX-Formulario-T-12",
+      "pagina": 85
+    },
+    {
+      "sd": 3,
+      "job": "LAFROX-Formulario-T-12",
+      "pagina": 107
+    },
+    {
+      "sd": 3,
+      "job": "LAFROX-Formulario-T-12",
+      "pagina": 88
+    },
+    {
+      "sd": 3,
+      "job": "LAFROX-Formulario-T-12",
+      "pagina": 153
+    },
+    {
+      "sd": 3,
+      "job": "LAFROX-Formulario-T-12",
+      "pagina": 250
+    },
+    {
+      "sd": 3,
+      "job": "LAFROX-Formulario-T-12",
+      "pagina": 256
+    },
+    {
+      "sd": 3,
+      "job": "LAFROX-Formulario-T-12",
+      "pagina": 234
+    },
+    {
+      "sd": 3,
+      "job": "LAFROX-Subdocumento3",
+      "pagina": 11
+    },
+    {
+      "sd": 3,
+      "job": "LAFROX-Subdocumento3-Anexos",
+      "pagina": 8
+    },
+    {
+      "sd": 3,
+      "job": "LAFROX-Subdocumento3-Anexos",
+      "pagina": 36
+    },
+    {
+      "sd": 3,
+      "job": "LAFROX-Subdocumento3-Anexos",
+      "pagina": 46
+    },
+    {
+      "sd": 4,
+      "job": "LAFROX-Formulario-T-11",
+      "pagina": 42
+    },
+    {
+      "sd": 4,
+      "job": "LAFROX-Formulario-T-11",
+      "pagina": 38
+    },
+    {
+      "sd": 4,
+      "job": "LAFROX-Subdocumento4",
+      "pagina": 196
+    },
+    {
+      "sd": 5,
+      "job": "LAFROX-Subdocumento5-Anexos",
+      "pagina": 5
+    },
+    {
+      "sd": 5,
+      "job": "LAFROX-Subdocumento5-Anexos",
+      "pagina": 207
+    },
+    {
+      "sd": 5,
+      "job": "LAFROX-Subdocumento5",
+      "pagina": 44
+    },
+    {
+      "sd": 3,
+      "job": "LAFROX-Formulario-T-12",
+      "pagina": 261
+    },
+    {
+      "sd": 3,
+      "job": "LAFROX-Formulario-T-12",
+      "pagina": 163
+    }
+  ],
+  "T11_nota_y_fuente": "Revisadas en PDF final página42; bloque unido, sin superposición ni línea huérfana.",
+  "figuras_modificadas": [],
+  "bloques_figura_modificados": [],
+  "limitaciones": "No se ejecutaron ensayos físicos ni se acreditó aceptación del CLIENTE. La revisión reconoce 58 brechas documentales (36 parciales y22 sin cumplimiento acreditado).",
+  "advertencias_heredadas": "Dos overfull inferiores a1pt en declaración IA de SD3; advertencias de pegamento infinito en tablas inalteradas del anexo SD5; sin caracteres faltantes ni referencias LaTeX indefinidas."
+}

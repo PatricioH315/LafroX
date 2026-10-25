@@ -5,6 +5,7 @@
     "05_modelo_datos/anexos/contenido.tex",
     "05_modelo_datos/anexos/tablas/A_12.tex",
     "05_modelo_datos/anexos/tablas/A_16.tex",
+    "05_modelo_datos/anexos/tablas/A_20.tex",
     "05_modelo_datos/anexos/tablas/A_4.tex",
     "05_modelo_datos/anexos/tablas/A_9.tex",
     "05_modelo_datos/partes/5_1_modelo.tex",
@@ -18,12 +19,12 @@
     {
       "archivo": "LAFROX-Subdocumento5-Anexos",
       "compilado": true,
-      "sha256_pdf": "1f9d28b2ef53fcc74f2a6483fc43f07e8cabb40e0568108c85ee84dc58b39556"
+      "sha256_pdf": "d19114716549d881444a189df15c5ff7c12c6a8f398f008eb894a83971fa5526"
     },
     {
       "archivo": "LAFROX-Subdocumento5",
       "compilado": true,
-      "sha256_pdf": "0d3cdab6a1909321aa73a17a3dc96e24e126414a004ea0f0e4c0a022416f669c"
+      "sha256_pdf": "ff4b38173da13df6c610ae07c06cd5885d1dfb55f2d93f85179591df901ea6ab"
     }
   ]
 }

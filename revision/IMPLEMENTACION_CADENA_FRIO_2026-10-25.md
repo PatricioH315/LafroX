@@ -27,3 +27,7 @@ El informe interdocumental completo y su lista de figuras/pendientes están en l
 
 - `LAFROX-Subdocumento5-Anexos`: tres pasadas correctas.
 - `LAFROX-Subdocumento5`: tres pasadas correctas.
+
+## Revisión semántica posterior — 25-10-2026
+
+Se completó la revisión semántica de las 653 filas del T-12 y la correspondencia de 98 recursos del T-11. El registro posterior corrige 62 filas y 27 estados: 595 Cumple, 36 Cumple parcialmente y 22 No cumple. La descripción de ninguna exigencia se alteró. El informe canónico, observación individual y CSV/JSON están en `revision/REVISION_SEMANTICA_T12_2026-10-25.md` y `revision/semantica_t12_2026-10-25/` de la rama SD3. El resumen SD4 es `00/trazabilidad/REVISION_SEMANTICA_FORMULARIOS_2026-10-25.md`. Esta revisión reconoce brechas; la compilación no acredita cumplimiento total. El diccionario contado tiene 121 entidades y 995 atributos.
