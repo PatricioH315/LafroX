@@ -1,0 +1,22 @@
+{
+  "rama": "LafroX-Subdoc2-LateX",
+  "fuentes_modificadas_en_sesion": [
+    ".gitignore",
+    "LAFROX-Subdocumento2.pdf",
+    "contenido.tex"
+  ],
+  "figuras_modificadas": [],
+  "bloques_figura_modificados": [],
+  "compilaciones": [
+    {
+      "archivo": "LAFROX-Subdocumento2-Anexos",
+      "compilado": true,
+      "sha256_pdf": "b1281f65521a05c63f9e8d549971b7362bb45e1f416c59164306fca062ed9342"
+    },
+    {
+      "archivo": "LAFROX-Subdocumento2",
+      "compilado": true,
+      "sha256_pdf": "9edc9d5666df3fe6172a522e18be1da25f80757815a704a8c039777d5fc5fb59"
+    }
+  ]
+}
