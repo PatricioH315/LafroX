@@ -55,12 +55,12 @@ La dimensión 6 es 62 preventistas + 96 equipos de reparto = **158 dispositivos 
 
 El almacenamiento transaccional parte de 1.300.000 eventos (260.000 líneas × 5), 520.000 operaciones (260.000 líneas × 2), 155.000 operaciones (31.000 pedidos × 5) y 279.050 movimientos (260.000 líneas + 14.500 pallets + 3.400 conteos + 1.150 recepciones). La fórmula es ((1.300.000 + 520.000 + 155.000) × 1 KB + 279.050 × 0,5 KB) × 2 × 12 = **50,75 GB/año**; seis años acumulan **304,49 GB** como cota de retención.
 La evidencia es 30 KB + 200 KB × (1 + 900 ÷ 31.000) = **235,81 KB por entrega**; genera **87,72 GB/año** y **13,58 GB en el mes peak**.
-Temperatura: 6.048 lecturas/día de las cámaras + 4.872 de los termógrafos de camión = 10.920 mensajes/día; con 145 bytes por lectura son 0,58 GB/año crudos y 0,14 GB/año almacenados, 2,89 GB crudos en 5 años. Posición: 22.075.200 eventos/año, 3,20 GB crudos y 0,80 GB almacenados en 12 meses; cada evento usa 145 bytes. La copia almacenada usa factor 0,25.
+Temperatura: 6.048 lecturas/día de cámaras + 73.080 de sondas + 24.360 de termógrafos + 24.360 de sensores independientes = 127.848 lecturas/día. INT-05: 30.548 mensajes/día (6.048 cámaras + 24.360 gateway + 112 eventos + 28 descargas). Con 145 bytes por lectura: 6,77 GB/año crudos, 1,69 GB/año almacenados, 33,83 GB crudos en 5 años; DynamoDB 30 días: 0,556 GB. Satélite: 290 mensajes por camión y día, 8.120 de flota; se concilian con móvil. Posición: 22.075.200 eventos/año, 3,20 GB crudos y 0,80 GB almacenados en 12 meses. La temperatura no guarda GPS. Factor de almacenamiento: 0,25.
 La migración suma maestros 34.180 KB, ventas y pedidos 10.476.000 KB, inventario y movimientos 3.348.600 KB, recepciones con lote 1.380.000 KB y cuentas por cobrar 816.000 KB. Con factor 2: **32,11 GB**, sensibilidad **30,73–33,49 GB**.
 
 ## Dimensiones 11–12: integraciones y enlaces
 
-El apartado 4.1 contiene 15 integraciones. La dimensión 11 suma **230.252 mensajes/día normal** y **353.333 peak**; portal y llamadas internas a la API quedan fuera. El EDI actual es cero; desde enero de 2029 opera todos los días y usa la cota de 11 % de pedidos en régimen y en peak. La pasarela de pago se acota con un pago electrónico por entrega y dos mensajes por pago.
+El apartado 4.1 contiene 15 integraciones. El total bruto suma **249.880 mensajes/día normal** y **372.961 peak**; INT-04 es subconjunto de INT-03, por lo que la dimensión 11 sin doble conteo es **244.280 / 362.561**; portal y llamadas internas a la API quedan fuera. El EDI actual es cero; desde enero de 2029 opera todos los días y usa la cota de 11 % de pedidos en régimen y en peak. La pasarela de pago se acota con un pago electrónico por entrega y dos mensajes por pago.
 | Integración | Mensajes/día normal | Mensajes/día peak | Origen del volumen |
 |---|---:|---:|---|
 | INT-01 Pedido preventa y consulta | 1.400 | 2.600 | 1.400 × 1; 2.600 × 1; SV-01 |
@@ -68,7 +68,7 @@ El apartado 4.1 contiene 15 integraciones. La dimensión 11 suma **230.252 mensa
 | INT-03 Eventos de bodega a nube | 58.710 | 109.032 | 260.000 ÷ 22,14 × 5; peak × 1,857 |
 | INT-04 Detalle cross-docking a la nube | 5.600 | 10.400 | 1.400 × 4; cota de una plataforma |
 | INT-03/04 Coordinación de reserva | 46.968 | 87.228 | 260.000 ÷ 22,14 × 4; peak: 21.807 líneas × 4 |
-| INT-05 Eventos de temperatura | 10.920 | 10.920 | 6.048 cámaras + 4.872 termógrafos |
+| INT-05 Eventos de temperatura | 30.548 | 30.548 | 6.048 cámaras + 24.360 gateway + 112 eventos + 28 descargas |
 | INT-06 ERP 2017 | 2.025 | 3.762 | 1.400 + 1.150 ÷ 22,14 + 900 ÷ 22,14 + 11.800 ÷ 22,14; peak × 1,857 |
 | INT-07 DTE/SII | 3.071 | 5.703 | 34.000 ÷ 22,14 × 2; peak × 1,857 |
 | INT-08 Cadenas modernas EDI | 616 | 1.144 | Escenario 2029 (hoy 0): 1.400 × 11 % × 4; 2.600 × 11 % × 4 |
@@ -79,7 +79,7 @@ El apartado 4.1 contiene 15 integraciones. La dimensión 11 suma **230.252 mensa
 | INT-13 Identidad a sitio | 764 | 764 | 382 dispositivos × 2 |
 | INT-14 Métricas y trazas | 14.400 | 14.400 | 13 nodos activos × 1.000 + 7 en espera × 200 |
 | INT-15 Telemetría existente | 60.480 | 60.480 | 42 × 12 × 120; SV-07 |
-| **Total** | **230.252** | **353.333** | **15 integraciones; portal y API interna fuera** |
+| **Total** | **249.880** | **372.961** | **15 integraciones; portal y API interna fuera** |
 
 El drenaje contiene cambios con WAL, vaciado del broker, telemetría, observabilidad e incremental de respaldo acumulados durante 24 horas; no incluye tráfico de oficina. La prioridad continua suma WAL, broker, telemetría crítica, guías, SII e identidad; cada mensaje de guía, respuesta SII e identidad usa la cota de 1 KB. El peor caso suma la hora cargada con oficina y la sincronización de la flota cuando corresponde. D-06 se calcula con 2 Mbps de subida mínima supuesta, un parámetro conservador de diseño que se confirma en la instalación.
 - Talca: régimen cargado 3,29 Mbps; prioridad continua 0,014 Mbps; drenaje 1,87 Mbps; peor caso 5,16 Mbps; D-03 25,80 % y D-04 para drenaje 37,43 % y D-06 para drenaje 93,59 %. Datos acumulables: 1,68 GB/día.

@@ -10,3 +10,6 @@
 *.xdv
 compilacion-*.txt
 entrega/_build/
+
+# Auxiliares de verificación de cadena de frío
+/revision/cadena_frio_build/

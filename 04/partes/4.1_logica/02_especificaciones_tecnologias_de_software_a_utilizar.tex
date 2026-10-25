@@ -21,4 +21,5 @@ La descripción sigue la organización de vistas de ISO/IEC/IEEE 42010:2022 (Int
 
 Las decisiones tecnológicas se registran con alternativas y criterios en el Anexo 4-O. El soporte y la actualización durante el contrato se especifican en el Anexo 4-P.
 
-
+\paragraph{Software de cadena de frío en ruta.}
+AWS IoT Greengrass V2 se ejecuta también en los gateways de los 28 camiones. Reutiliza la regla térmica de cámaras y agrega lectura Modbus TCP, latido firmado y componente Iridium SBD. Stream Manager conserva y reintenta la cola; el broker MQTT local autentica al TC58e. Iridium CloudConnect entrega subida, bajada, confirmación y error por SQS; si el proveedor no ofrece CloudConnect, un receptor SBD en ECS deposita en la misma cola. Los despliegues Greengrass se realizan por etapas con reversión (ADR-24).

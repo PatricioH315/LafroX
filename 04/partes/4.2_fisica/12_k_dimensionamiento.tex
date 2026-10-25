@@ -106,7 +106,7 @@ La cantidad a proveer se informa aparte, por ámbito:
 \begin{itemize}
   \item Bodega: 132 terminales en Talca, 22 de ellos para congelado, y 66 en Concepción.
   \item Terreno: 69 terminales de preventa, 106 terminales de reparto, 106 impresoras de cabina y 106 terminales de pago.
-  \item Cross-docking y frío: 9 terminales de cross-docking y 31 termógrafos.
+  \item Cross-docking y frío: 9 terminales de cross-docking y componentes para 31 kits de camión: 31 por componente unitario, 93 sondas, 93 botellas y 62 SIM M2M.
 \end{itemize}
 
 Cada cantidad incluye la reserva del 10 \% del parque, redondeada hacia arriba, conforme a la tabla de repuestos de las Bases Técnicas Transversales (cap. 8, p. 19). Solo los 22 terminales de la cuadrilla de congelado de Talca son aptos para {$-$}22\,\textdegree{}C: el congelado representa cerca del 4 \% de las líneas y se prepara al final del turno, de modo que la cuadrilla que entra a la cámara es de unas 20 personas (S-34). Concepción no tiene congelado.
@@ -120,7 +120,7 @@ La dimensión 7, «Volumen anual de almacenamiento transaccional», la dimensió
 \begin{tablalafrox}{Volumen, retención y destino de los datos}{tab:dimensionamiento-almacenamiento}{F{0.25} G{0.18} F{0.20} G{0.18} Y}{\cab{Dominio} & \cab{Volumen anual} & \cab{Retención} & \cab{Acumulado} & \cab{Destino}}
   Datos transaccionales & 50,75 GB/año & 6 años como cota & 304,49 GB & Base local de 4 meses y nube \\
   Evidencia de entrega & 87,72 GB/año & 6 años & 526,32 GB & S3 por niveles \\
-  Temperatura & 0,58 GB/año crudos & 5 años & 2,89 GB crudos & IoT y almacenamiento histórico \\
+  Temperatura & 6,77 GB/año crudos & 5 años & 33,83 GB crudos & IoT y almacenamiento histórico \\
   Posición & 3,20 GB/año crudos & 12 meses & 3,20 GB crudos & Telemetría y almacenamiento histórico \\
   Migración histórica & 32,11 GB & Maestros, 36/24/60/24 meses & 30,73--33,49 GB de sensibilidad & Nube después del perfilado \\
 \end{tablalafrox}
@@ -132,15 +132,15 @@ La migración no supone eventos históricos digitales de trazabilidad: el caso d
 \subsection{Integraciones y ancho de banda por sitio: dimensiones 11--12}
 \label{sec:dimensionamiento-enlaces}
 
-La dimensión 11, «Número de integraciones y volumen de mensajes por integración», cuenta únicamente INT-01 a INT-15 del catálogo del apartado 4.1. Portal y llamadas internas a la API quedan fuera. La Tabla~\ref{tab:dimensionamiento-integraciones} resume sus 224.652 mensajes diarios normales y 342.933 en peak, incluida la coordinación de reserva de INT-03/04. INT-14 considera 13 nodos activos, seis VMs en Talca, cuatro en Concepción y un mini-PC activo por cada cross-docking, con 1.000 eventos por nodo al día. Suma además 7 nodos en espera, cuatro VMs en Concepción y un mini-PC por cross-docking, con 200 eventos al día, porque no atienden transacciones.
+La dimensión 11, «Número de integraciones y volumen de mensajes por integración», cuenta únicamente INT-01 a INT-15 del catálogo del apartado 4.1. Portal y llamadas internas a la API quedan fuera. La Tabla~\ref{tab:dimensionamiento-integraciones} resume sus 244.280 mensajes diarios normales y 362.561 en peak, incluida la coordinación de reserva de INT-03/04. INT-14 considera 13 nodos activos, seis VMs en Talca, cuatro en Concepción y un mini-PC activo por cada cross-docking, con 1.000 eventos por nodo al día. Suma además 7 nodos en espera, cuatro VMs en Concepción y un mini-PC por cross-docking, con 200 eventos al día, porque no atienden transacciones.
 
 \Needspace{0.48\textheight}
 \begin{tablalafrox}{Mensajes de integración por grupo}{tab:dimensionamiento-integraciones}{F{0.26} G{0.18} G{0.18} Y}{\cab{Integraciones} & \cab{Normal} & \cab{Peak} & \cab{Origen}}
   INT-01 a INT-04 & 114.078/día & 211.860/día & Pedidos, entregas, eventos y coordinación de reserva, INT-04 incluido en INT-03 \\
-  INT-05 & 10.920/día & 10.920/día & 6.048 cámaras + 4.872 termógrafos \\
+  INT-05 & 30.548/día & 30.548/día & 6.048 cámaras + 24.360 gateway + 112 eventos + 28 descargas \\
   INT-06 a INT-10 & 8.608/día & 15.905/día & ERP, DTE, EDI, pagos y mapas \\
   INT-11 a INT-15 & 91.046/día & 104.248/día & Avisos, réplica, identidad, ADOT y telemetría \\
-  \textbf{Total} & \textbf{224.652/día} & \textbf{342.933/día} & \textbf{15 integraciones} \\
+  \textbf{Total} & \textbf{244.280/día} & \textbf{362.561/día} & \textbf{15 integraciones} \\
 \end{tablalafrox}
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}

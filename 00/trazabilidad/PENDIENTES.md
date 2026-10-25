@@ -24,3 +24,7 @@ Actualización de cierre: [las correcciones de Aclaraciones](../../04/revision/C
 ## Formato de firma — 12 de octubre de 2026
 
 Aplicado y verificado el formato solicitado del SD1 en los tres PDF del SD4, incluidas páginas horizontales. Detalle en [FIRMA_SD1_APLICADA_SD4_2026-10-12.md](FIRMA_SD1_APLICADA_SD4_2026-10-12.md). La revisión humana y los ensayos técnicos conservan su estado pendiente.
+
+## Cadena de frío — 25 de octubre de 2026
+
+Implementación documental aplicada en SD2–SD7. El registro `IMPLEMENTACION_CADENA_FRIO_2026-10-25.md` reúne las figuras congeladas que requieren actualización, las referencias fuera de alcance de SD9/SD13, los identificadores nuevos, las filas de declaración modificadas y el impacto futuro en Informe 3. Se conservaron todas las figuras y no se crearon entidades en SD5. Las pruebas físicas y las cotizaciones/certificados se especifican, sin acreditarse su ejecución. El T-14 conserva el aviso de ancho de su figura panorámica original, sin modificación de esa figura.

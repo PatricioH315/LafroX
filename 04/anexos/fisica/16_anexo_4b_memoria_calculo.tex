@@ -26,7 +26,7 @@ La síntesis siguiente reúne las dieciséis dimensiones del caso, sus valores p
   8 & Volumen anual de almacenamiento de evidencia de entrega, firmas y fotografías & 87,72 GB/año & 13,58 GB mes peak & Anexo 4-W, sección 4-W.4 \\
   9 & Volumen anual de almacenamiento de series de temperatura y de posicionamiento & 0,58 + 3,20 GB/año crudos & 2,89 + 3,20 GB crudos retenidos & Anexo 4-W, sección 4-W.4 \\
   10 & Volumen total de datos históricos a migrar & 32,11 GB & 30,73--33,49 GB de sensibilidad & Anexo 4-W, sección 4-W.4 \\
-  11 & Número de integraciones y volumen de mensajes por integración & 15, 224.652 mensajes/día & 342.933 mensajes/día & Anexo 4-W, sección 4-W.5 \\
+  11 & Número de integraciones y volumen de mensajes por integración & 15, 244.280 mensajes/día & 362.561 mensajes/día & Anexo 4-W, sección 4-W.5 \\
   12 & Ancho de banda requerido por sitio, en régimen y en peak & 3,29 / 0,71 / 0,06 Mbps cargados & 5,16 / 2,14 / 0,41 Mbps peor caso & Anexo 4-W, sección 4-W.5 \\
   13 & Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal & 5,36 MB promedio & 9,83 MB, ruta de 34 clientes & Anexo 4-W, sección 4-W.6 \\
  14  &  Tiempo de sincronización de la flota al regresar al centro de distribución  &  Objetivo $\leq$ 10 min por dispositivo desde reconexión hasta acuse durable, incluida espera  &  Sensibilidad: 64 simultáneos, 8,39 Mbps útiles agregados, verificar $\leq$ 10 min por dispositivo  &  Anexo 4-W, sección 4-W.6, 4.2.6.7  \\
@@ -149,7 +149,7 @@ El parque separado de la dimensión 6 se distribuye así:
 \begin{itemize}
   \item Bodega: 132 terminales en Talca, 22 de ellos para congelado, y 66 en Concepción.
   \item Terreno: 69 terminales de preventa, 106 de reparto, 106 impresoras y 106 terminales de pago.
-  \item Cross-docking y frío: 9 terminales de cross-docking y 31 termógrafos.
+  \item Cross-docking y frío: 9 terminales de cross-docking y componentes para 31 kits de camión: 31 por componente unitario, 93 sondas, 93 botellas y 62 SIM M2M.
 \end{itemize}
 
 Cada cantidad aplica los supuestos S-28 y S-30 a S-41, registrados en el Subdocumento 3, y la reserva del 10\,\% del parque de cada tipo, redondeada hacia arriba, conforme a la tabla de repuestos de las Bases Técnicas Transversales (cap. 8, p. 19):
@@ -158,7 +158,7 @@ Cada cantidad aplica los supuestos S-28 y S-30 a S-41, registrados en el Subdocu
   \item Equipos de reparto (S-30): 96 camiones + 10 de reserva = 106 de cada dispositivo. A tres años (S-31), los viajes crecen 2.400 ÷ 2.100 = 1,143, es decir, 14,3\,\%. La flota llega a 96 × 1,143 = 109,7, unos 110 camiones, y el parque a 110 + 11 = 121, es decir, 15 unidades más de cada dispositivo.
   \item Terminales de preventa (S-32): 62 + 7 = 69. A tres años, 70 preventistas, un 12,9\,\% más, y 70 + 7 = 77, es decir, 8 más.
   \item Terminales de bodega: se comparten entre turnos (RT-12.11, Bases Técnicas del caso, cap. 15, p. 27), sin personal de carga adicional (S-33), de modo que los fija el turno nocturno: 120 preparadores en Talca y 60 en Concepción (S-39). En Talca, 20 son de la cuadrilla de congelado (S-34): los productos de frío son 1.100 ÷ 8.400 = 13,1\,\% del surtido y el congelado ocupa 400 ÷ 1.300 = 30,8\,\% del área fría, de modo que el congelado es cerca de 13,1\,\% × 30,8\,\% = 4,0\,\% de las líneas. 120 personas × 8 h = 960 horas-persona, cuyo 4,0\,\% son 38,4 horas, concentradas en las últimas 2 horas del turno: 38,4 ÷ 2 = 19,2, unas 20 personas. Talca suma 20 + 2 de congelado y 100 + 10 estándar, Concepción 60 + 6, y los cross-docking 6 + 3, una unidad de reserva por plataforma (S-35): 207 en total. A tres años (S-32), la dotación de los centros de distribución crece 350 ÷ 310 = 12,9\,\%: Talca llega a 23 + 3 de congelado y 113 + 12 estándar, y Concepción a 68 + 7. Con los 9 de los cross-docking, el parque llega a 235 terminales de bodega, 28 más que al inicio. Las licencias de gestión de dispositivos y las identidades de terminal se dimensionan con 207 equipos al inicio y 235 en el año 3.
-  \item Termógrafos: 28 + 3 = 31, para los 18 camiones con frío propios y los 10 de transportistas (S-28), sin compra por crecimiento (S-38).
+  \item Kit de camión: base 28, reserva redondeada por familia: 31 por componente unitario, incluidos termógrafo, sensor independiente, gateway, ioLogik, Iridium, antena, puerta, alarma, UPS y protección; 93 sondas, 93 botellas y 62 SIM M2M. No aumenta por crecimiento de flota con frío (S-38). Un compartimento adicional agrega tres sondas, tres botellas y ambos registradores.
 \end{itemize}
 
 \subsection*{Inventario por familia y sitio}
@@ -194,7 +194,7 @@ El inventario siguiente conserva las unidades en operación por familia y sitio.
 
 El almacenamiento transaccional se calcula con 1.300.000 eventos = 260.000 líneas × 5, 520.000 operaciones = 260.000 líneas × 2, 155.000 operaciones = 31.000 pedidos × 5 y 279.050 movimientos = 260.000 líneas + 14.500 pallets + 3.400 conteos + 1.150 recepciones. Por tanto, ((1.300.000 + 520.000 + 155.000) × 1 KB + 279.050 × 0,5 KB) × 2 × 12 = \textbf{50,75 GB/año} y seis años acumulan \textbf{304,49 GB} como cota de retención. La evidencia es 30 KB + 200 KB × (1 + 900 ÷ 31.000) = \textbf{235,81 KB por entrega} y genera \textbf{87,72 GB/año}. En el mes peak alcanza 13,58 GB.
 
-La temperatura separa cámaras y camiones: 21 puntos instalados × 288 lecturas/día = 6.048 lecturas de cámara, con la cámara de Concepción estimada por S-37, y 28 termógrafos × 174 lecturas/día entre 05:30 y 20:00 = 4.872 lecturas de camión. El total es 10.920 mensajes/día. Con 145 bytes por lectura, son 0,58 GB/año crudos, 0,14 GB/año almacenados con factor 0,25 y 2,89 GB crudos en cinco años. La posición produce 42 camiones × 12 h × 120 eventos/h × 365 = 22.075.200 eventos/año. Se cuentan los 365 días como cota, aunque el domingo no hay reparto. Con 145 bytes son 3,20 GB crudos y 0,80 GB almacenados en 12 meses. Son filas separadas porque sus retenciones son distintas.
+La temperatura genera 127.848 lecturas/día: 6.048 de cámaras (21 × 288), 73.080 de sondas (28 × 870 × 3), 24.360 de termógrafos y 24.360 de sensores independientes. INT-05 cuenta mensajes, no lecturas: 6.048 + 24.360 + 112 + 28 = 30.548/día. A 145 bytes por lectura y 365 días como cota, son 6,77 GB/año en crudo, 33,83 GB en cinco años y 1,69 GB/año almacenados con factor 0,25. DynamoDB de treinta días: 0,556 GB. La posición sigue separada: 22.075.200 eventos/año, 3,20 GB crudos y 0,80 GB almacenados en doce meses. La temperatura no guarda GPS. El satélite añade 290 mensajes por camión y día, 8.120 de flota, conciliados con móvil sin duplicar hechos.
 
 La dimensión 10 se estima por dominio:
 
@@ -211,7 +211,7 @@ La suma de 16.054.780 KB × 2 ÷ 1.000.000 = \textbf{32,11 GB}. Con 10 o 30 lín
 \section{Dimensiones 11--12: integraciones, mensajes y enlaces}
 \label{sec:anexo-4b-dimensiones-11-12}
 
-La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. INT-04 detalla un subconjunto de INT-03 y no se suma otra vez: el total normal es 230.252 $-$ 5.600 = 224.652 y el peak es 353.333 $-$ 10.400 = 342.933 mensajes/día. Los quince contratos no equivalen a quince sumandos independientes. La Tabla~\ref{tab:anexo-4b-integraciones} deja el volumen por integración. Las solicitudes del portal y las llamadas internas no aparecen.
+La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. INT-04 detalla un subconjunto de INT-03 y no se suma otra vez: el total normal es 249.880 $-$ 5.600 = 244.280 y el peak es 372.961 $-$ 10.400 = 362.561 mensajes/día. Los quince contratos no equivalen a quince sumandos independientes. La Tabla~\ref{tab:anexo-4b-integraciones} deja el volumen por integración. Las solicitudes del portal y las llamadas internas no aparecen.
 
 \begin{anexohorizontal}
 \begin{tablalarga}{Mensajes por integración}{tab:anexo-4b-integraciones}{F{0.22} G{0.15} G{0.15} Y}{\cab{Integración} & \cab{Normal/día} & \cab{Peak/día} & \cab{Origen del volumen}}
@@ -220,7 +220,7 @@ La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. I
   INT-03 Eventos de bodega a nube & 58.710 & 109.032 & 260.000 ÷ 22,14 × 5; peak × 1,857 \\
   INT-04 Detalle cross-docking a la nube & 5.600, incluidos en INT-03 & 10.400, incluidos en INT-03 & 1.400 × 4, cota agregada de cross-docking dentro de los eventos de bodega \\
   INT-03/04 Coordinación de reserva & 46.968 & 87.228 & 260.000 ÷ 22,14 × 4, peak: 21.807 líneas × 4 \\
-  INT-05 Eventos de temperatura & 10.920 & 10.920 & 6.048 + 4.872 lecturas/día \\
+  INT-05 Eventos de temperatura & 30.548 & 30.548 & 6.048 cámaras + 24.360 gateway + 112 eventos + 28 descargas \\
   INT-06 ERP 2017 & 2.025 & 3.762 & 1.400 + 1.150 ÷ 22,14 + 900 ÷ 22,14 + 11.800 ÷ 22,14; peak × 1,857 \\
   INT-07 DTE/SII & 3.071 & 5.703 & 34.000 ÷ 22,14 × 2; peak × 1,857 \\
   INT-08 Cadenas modernas EDI & 616 & 1.144 & Escenario 2029 (hoy 0): 1.400 × 11\,\% × 4; 2.600 × 11\,\% × 4 \\
@@ -231,7 +231,7 @@ La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. I
   INT-13 Identidad a sitio & 764 & 764 & 382 dispositivos × 2 \\
   INT-14 Métricas y trazas & 14.400 & 14.400 & 13 nodos activos × 1.000 + 7 en espera × 200 \\
   INT-15 Telemetría existente & 60.480 & 60.480 & 42 × 12 × 120 \\
-  \textbf{Total} & \textbf{224.652} & \textbf{342.933} & \textbf{15 integraciones} \\
+  \textbf{Total} & \textbf{244.280} & \textbf{362.561} & \textbf{15 integraciones} \\
 \end{tablalarga}
 \end{anexohorizontal}
 
@@ -240,7 +240,7 @@ La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. I
 Para la dimensión 12, el drenaje se obtiene sumando los aportes acumulados en 24 horas y dividiendo por 2 horas:
 
 \begin{itemize}
-  \item Aportes en Talca: los cambios de 0,041 GB/día viajan como WAL, que no se suma aparte: WAL = 3 × 0,041 = 0,123 GB/día. Broker = 0,5 × 0,041 = 0,020 GB/día; telemetría = 10.920 × 145 ÷ 1.000.000.000 ÷ 2 = 0,001 GB/día; observabilidad = 6 × 0,25 = 1,50 GB/día; incremental de respaldo = 0,041 GB/día.
+  \item Aportes en Talca: WAL = 3 × 0,041 = 0,123 GB/día; broker = 0,5 × 0,041 = 0,020 GB/día; telemetría local = 15 × 288 × 145 ÷ 1.000.000.000 = 0,0006264 GB/día; observabilidad = 6 × 0,25 = 1,50 GB/día; incremental = 0,041 GB/día. La flota transmite directamente a nube y no se suma a enlaces de sitio.
   \item Resultado por sitio: Talca acumula 1,68 GB/día y drena 1,87 Mbps. Su hora cargada de oficina y retorno de flota suma 3,29 Mbps, de modo que el escenario horario distribuido requiere 3,29 + 1,87 = \textbf{5,16 Mbps}. Concepción acumula 1,29 GB/día y drena 1,44 Mbps. Cada cross-docking acumula 0,32 GB/día y drena 0,35 Mbps. Su observabilidad incluye el equipo en espera, que no atiende transacciones: no genera trazas y sus métricas y registros se estiman en 20\,\% de un nodo activo, 0,05 GB/día. Concepción suma 4 × 0,25 + 4 × 0,05 = 1,20 GB/día y cada cross-docking 0,25 + 0,05 = 0,30 GB/día. La prueba de corte mide ese valor.
   \item Tráfico prioritario continuo: Talca 0,014 Mbps; Concepción 0,007 Mbps; cada cross-docking 0,002 Mbps, con WAL, broker/outbox, guías y SII, identidad y telemetría crítica.
 \end{itemize}
@@ -383,7 +383,7 @@ Para cada recurso, la demanda total es la carga base más el incremento medido e
 \begin{itemize}
 \item INN-01: medir pares lote–local examinados por campaña, avisos producidos, respuestas de visita y tamaño de cada registro. Obtener el costo de la consulta y generación nocturna en N-10, el almacenamiento de resultados y el tráfico de precarga y retorno por C-01, sin contar el saldo estimado como una escritura de inventario oficial.
 \item INN-02: medir incidentes admitidos, tamaño de captura y duración/concurrencia de reproducciones. Separar ingesta de trazas, almacenamiento hasta cierre y CPU/memoria temporales de QA y Preproducción. Verificar límites, eliminación y liberación de recursos incluso si falla la reproducción. No cargar esa ejecución al presupuesto productivo.
-\item INN-03: medir lotes, tramos térmicos y frecuencia de cálculo por familia, junto con CPU por cálculo y tamaño de resultados y versiones. Las 10.920 muestras térmicas diarias ya están en la carga base: no duplicar su captura. Agregar el procesamiento derivado, su retención y los mensajes nuevos efectivamente producidos. Ensayar alerta local, descarga al retorno y cálculo sin inventar tramos ausentes.
+\item INN-03: medir lotes, tramos térmicos y frecuencia de cálculo por familia, junto con CPU por cálculo y tamaño de resultados y versiones. Las 127.848 lecturas térmicas diarias ya están en la carga base: no duplicar su captura. Agregar el procesamiento derivado, su retención y los mensajes nuevos efectivamente producidos. Ensayar alerta local, descarga al retorno y cálculo sin inventar tramos ausentes.
 \item INN-04: medir hechos de M6/M7/M8 por período, cardinalidad de la agregación, duración del cierre mensual y volumen del informe y sus versiones. Verificar el acceso de Finanzas y el intercambio con el ERP sin transformar el informe analítico en otro registro contable maestro.
 \item INN-05: medir locales destinatarios, hojas por período, tamaño por hoja y solicitudes de reimpresión. Cuantificar generación en N-10, precarga cifrada a C-01/C-02, estados de entrega y almacenamiento. Comprobar impresión sin enlace y aislamiento entre receptores.
 \end{itemize}
@@ -393,3 +393,32 @@ El informe de prueba compara base e incremento por innovación y por recurso, id
 \endgroup
 
 \label{fuente-16-anexo-4b-memoria-calculo-fin}
+
+\subsection*{Verificación del sistema de cadena de frío en ruta}
+Las pruebas siguientes usan carga de ensayo y forman la aceptación propuesta, no resultados ejecutados. El banco 2.4.3 cubre V1–V3, V5–V8, V11, V13, V14, V16, V17 y V19; el mapeo 2.4.4 cubre V4. El piloto de seis semanas en cuatro camiones verifica V18, V20 y V21. La versión integrada repite los casos afectados y completa V9, V10, V12 y V15 antes de habilitar el reparto. Calidad valida reglas, máximos de andén, tolerancias y lista rotativa de llamada.
+
+\begin{tablalafrox}{Pruebas V1–V21. Fuente: diseño LafroX, cadena de frío en ruta, versión 9.4.}{tab:frio-v1-v21}{L{1.1cm} Y Y}{\cab{ID} & \cab{Prueba} & \cab{Criterio de aceptación}}
+V1 & Gateway con Greengrass: Modbus cada 5 s, regla, Stream Manager, IoT Core con A2, latido por MQTT local, actualización y reversión & Evento completo; sin pérdida tras corte de energía \\
+V2 & Iridium Edge manejado por el gateway, sin SIM: alarma, lote de 3 min y orden de bajada & Alarma en $\leq$ 3 min; lote y orden íntegros según el formato \\
+V3 & Sensor independiente y termógrafo: lectura en vivo y descarga de memoria desde el TC58e, intervalo de 1 min & Series completas; certificado EN 12830 del modelo \\
+V4 & \textbf{Mapeo y simuladores:} camión cargado con producto de ensayo, 15 aperturas de puerta; comparar núcleo de producto, simuladores y aire & Los simuladores siguen al producto dentro de la tolerancia; define punto crítico, volumen y tolerancias \\
+V5 & Alimentación en 12 y 24 V: arranque, caída de tensión, desconexión de batería, batería envejecida, temperatura extrema & Autonomía $\geq$ 24 h, sin reinicios \\
+V6 & Gateway sin energía durante una excursión & El TC58e retiene en $\leq$ 30 s y alarma; la nube alerta «kit sin reportar» \\
+V7 & Gateway encendido con la lectura congelada & El latido falla y el TC58e retiene en $\leq$ 30 s \\
+V8 & Error inyectado en la evaluación o en las sondas del gateway & El TC58e retiene por contradicción \\
+V9 & Escaneo de bajada y POD dentro del local, fuera del alcance del Wi‑Fi & Se entrega lo habilitado; no se habilita nada con un latido vencido \\
+V10 & Turno de 14 h sin celular y reconexión, con POD, fotos, curvas y eventos simultáneos & Lotes satelitales completos; sincronización $\leq$ 10 min (RT‑03.13) \\
+V11 & Duplicados, retrasos y reordenamiento por red móvil y satélite, incluidos un túnel simulado y una crítica que llega tarde & Estado final correcto en el gateway, el TC58e y M9; la crítica tardía retiene o abre la evaluación de retiro \\
+V12 & Crítica sin acuse; acuse sin acción; nadie decide & Escalan los dos relojes; se aplica la acción por defecto \\
+V13 & Órdenes repetidas, antiguas, caducadas, de otro incidente, con firma inválida, sobre una revisión anterior o con el producto fuera de rango, por celular y por satélite & Todas rechazadas o sin autorización de entrega \\
+V14 & TC58e reiniciado, reemplazado o con la base local borrada, sin internet & Ninguna entrega antes de recuperar el estado del gateway \\
+V15 & Tiempo fuera de frío en el andén & El SSCC que supera el máximo queda bloqueado antes de salir \\
+V16 & Fallas de sonda: abierta, en corto, desviada & Se aplica la matriz de sección 7.4 \\
+V17 & Pérdida de la región justo después de A2 & El evento y su aviso se recuperan desde el archivo de 72 h \\
+V18 & Satélite en rutas reales: Empedrado/Chanco/Cauquenes y Pinto/Alto Biobío, con bosque, quebradas y túneles, en verano y en invierno & Porcentaje de mensajes entregados, latencia y duración máxima de cada corte de cielo, medidos por tramo \\
+V19 & Orden de Calidad por satélite en una zona sin red móvil & Llega al TC58e y se aplica o se rechaza según regla de orden firmada y revisión vigente \\
+V20 & Falla del equipo de frío en ruta, con carga de ensayo & Advertencia temprana con la puerta cerrada; minutos restantes por familia; retención solo de lo que supera su regla \\
+V21 & Ruptura confirmada de punta a punta: retención, entrega parcial, ajuste tributario, reposición, área de no aptos, disposición y expediente & Cada fase de protocolo de ruptura confirmada queda registrada y el pedido del cliente se repone \\
+\end{tablalafrox}
+
+La meta móvil de aviso a Calidad es de no más de 2 min en al menos 99 \%; por satélite, no más de 5 min en al menos 95 \%, sujeto a V2/V18. Las condiciones de ruta y camino se miden por población; sin red móvil ni cielo, la alarma y retención local continúan y se registra la duración del corte de aviso. El tablero presenta antigüedad de la última curva; no se afirma latencia remota durante ausencia de ambos caminos.

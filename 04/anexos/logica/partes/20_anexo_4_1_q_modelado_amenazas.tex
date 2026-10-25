@@ -43,4 +43,13 @@ DEV-PIPE/\allowbreak IAC/\allowbreak MDM/\allowbreak UI-WEB/\allowbreak BOR-B2B 
 
 Las integraciones internas heredan los controles de productor y consumidor: INT-01/\allowbreak 02, identidad y UUID; INT-03/\allowbreak 04, sitio y secuencia; INT-05, sensor y frescura; INT-12, cuenta CDC de lectura; INT-13, manifiesto firmado; INT-14, integridad y capacidad del buffer. Toda excepción conserva escenario, consecuencia, responsable, tratamiento y criterio de cierre.
 
+\subsection*{Amenazas y pruebas negativas del kit de camión}
+\begin{tablalafrox}{Protección del kit de cadena de frío. Fuente: diseño LafroX, ADR-24.}{tab:amenazas-kit}{Y Y Y}{\cab{Amenaza} & \cab{Control y prueba} & \cab{Dueño}}
+Suplantación de camión & Certificado único, aprovisionamiento y rol mínimo; rechazar identidad ajena (V1). & Seguridad / SRE \\
+Latido falso o evaluador detenido & Firma, secuencia, contador y lectura menor de 30 s; congelar lectura y verificar retención (V6–V8). & Desarrollo \\
+Orden repetida o de estado anterior & Firma, incidente, SSCC, versión, revisión y caducidad; rechazar orden repetida y obsoleta por ambos caminos (V13, V19). & Calidad / Seguridad \\
+Mensaje satelital falso & Validar emisor, contrato y autenticidad antes de M9; inyectar mensajes y duplicados (V11, V13). & Integración \\
+Manipulación de registradores & Conservar original, verificar integridad y firmar hash; conciliación de tres series, CRC solo no autentica (V3, V11). & Calidad / Datos \\
+\end{tablalafrox}
+
 \label{fuente-20-anexo-4-1-q-modelado-amenazas-fin}

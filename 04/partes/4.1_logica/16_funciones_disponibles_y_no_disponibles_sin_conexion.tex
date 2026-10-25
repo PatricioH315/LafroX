@@ -19,3 +19,6 @@ La operación local conserva la captura. Las autorizaciones externas esperan con
   \item El Portal de Clientes instalado conserva el catálogo, los precios con su fecha y el pedido armado sin señal. No reserva stock ni confirma precio o fecha de entrega hasta que M3 recibe el pedido, como verifica AL-CLI-01 del Anexo 4-M.
 \item El relevo usa permisos preinscritos y credenciales personales vigentes. AL-OFF-01 verifica dos relevos durante el corte de 24 horas, incluidos vencimiento, reinicio y reconciliación.
 \end{itemize}
+
+\paragraph{Cadena de frío en ruta.}
+Sin móvil ni satélite, las sondas cableadas, la luz y el zumbador, el Wi-Fi local y Bluetooth mantienen detección, alarma y bloqueo por SSCC. Sin móvil pero con cielo, Iridium transmite alarmas, curva cada 3 min y órdenes de Calidad; los indicadores térmicos se actualizan en no más de 5 min. Sin ambos caminos, el aviso remoto espera y el tablero muestra la última curva con su antigüedad; el camión conserva y reenvía. No se habilita otra bajada con latido vencido ni se libera automáticamente lo retenido. La credencial de 14 h se renueva a las 12 h por cualquier camino IP; SBD no renueva la sesión y su vencimiento impide nuevas operaciones protegidas.

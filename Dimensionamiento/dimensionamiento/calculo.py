@@ -153,7 +153,14 @@ OBS_STANDBY_NODES = {"Talca": 0, "Concepción": 4, "Cada cross-docking": 1}
 OBS_STANDBY_FACTOR = 0.20
 CAMERA_POINTS = 21                 # diseño B-01: 15 en Talca y 6 en Concepción (S-37)
 CAMERA_POINTS_SITE = {"Talca": 15, "Concepción": 6}
-TEMP_MINUTES = 5
+TEMP_MINUTES = 5  # cámaras
+TRUCK_PROBES = 3
+TRUCK_SAMPLE_MINUTES = 1
+TRUCK_MESSAGE_MINUTES = 1
+SATELLITE_BATCH_MINUTES = 3
+TRUCK_EVENTS_DAY = 4
+TRUCK_DOWNLOADS_DAY = 1
+# Solución cadena de frío v9.4, §16: lecturas y mensajes son magnitudes distintas.
 TEMP_RECORD_BYTES = 145          # bytes por lectura de temperatura
 POSITION_RECORD_BYTES = 145      # bytes por evento de posición
 TEMP_COMPRESSION = 0.25
@@ -384,6 +391,18 @@ def main() -> None:
                       "terminales de pago": truck_devices,
                       "terminales de cross-docking": cross_park,
                       "termógrafos": TERMOGRAFOS,
+                      "gateway de camión": TERMOGRAFOS,
+                      "módulo de sondas de camión": TERMOGRAFOS,
+                      "sensor independiente": TERMOGRAFOS,
+                      "Iridium Edge": TERMOGRAFOS,
+                      "sondas PT100": TERMOGRAFOS * TRUCK_PROBES,
+                      "botellas simuladoras": TERMOGRAFOS * 3,
+                      "SIM M2M de camión": TERMOGRAFOS * 2,
+                      "UPS del kit": TERMOGRAFOS,
+                      "sensor de puerta": TERMOGRAFOS,
+                      "luz y zumbador": TERMOGRAFOS,
+                      "antena LTE/GNSS": TERMOGRAFOS,
+                      "protección de alimentación": TERMOGRAFOS,
                       "puntos de cámara": CAMERA_POINTS}
     equipment_total = sum(equipment_park.values())
     operational_concurrency = {"noche": PREPARADORES_NOCHE_TALCA + S39_CONCEPCION_NIGHT_USERS + cross_scanners,
@@ -405,9 +424,17 @@ def main() -> None:
     evidence_gb_peak_month = PEDIDOS_MES * factor_peak * evidence_kb / 1_000_000
 
     camera_messages_day = CAMERA_POINTS * (24 * 60 / TEMP_MINUTES)
-    thermograph_messages_day = TERMOGRAFOS * (THERMOGRAPH_ROUTE_HOURS * 60 / TEMP_MINUTES) * S28_THIRD_PARTY_COLD_ACCESS
-    temp_messages_day = camera_messages_day + thermograph_messages_day
-    temp_records_year = temp_messages_day * 365
+    route_minutes = THERMOGRAPH_ROUTE_HOURS * 60
+    thermograph_messages_day = TERMOGRAFOS * route_minutes / TRUCK_SAMPLE_MINUTES
+    independent_records_day = thermograph_messages_day
+    probe_records_day = thermograph_messages_day * TRUCK_PROBES
+    gateway_messages_day = TERMOGRAFOS * route_minutes / TRUCK_MESSAGE_MINUTES
+    truck_events_day = TERMOGRAFOS * TRUCK_EVENTS_DAY
+    truck_downloads_day = TERMOGRAFOS * TRUCK_DOWNLOADS_DAY
+    temp_messages_day = camera_messages_day + gateway_messages_day + truck_events_day + truck_downloads_day
+    temp_records_day = camera_messages_day + probe_records_day + thermograph_messages_day + independent_records_day
+    satellite_messages_day = TERMOGRAFOS * route_minutes / SATELLITE_BATCH_MINUTES
+    temp_records_year = temp_records_day * 365
     temp_raw_gb_year = temp_records_year * TEMP_RECORD_BYTES / 1_000_000_000
     temp_stored_gb_year = temp_raw_gb_year * TEMP_COMPRESSION
     position_records_year = CAMIONES_PROPIOS * S55_OWN_TELEMETRY_ACCESS * (3600 / POSITION_SECONDS) * ROUTE_HOURS * 365
@@ -435,7 +462,7 @@ def main() -> None:
         ("INT-03", "Eventos de bodega a nube", lines_day * TRACE_EVENTS_PER_LINE, lines_day * factor_peak * TRACE_EVENTS_PER_LINE, "260.000 ÷ 22,14 × 5; peak × 1,857"),
         ("INT-04", "Detalle cross-docking a la nube", ENTREGAS_NORMAL_DIA * CROSSDOCK_TX_PER_DELIVERY, ENTREGAS_PEAK_DIA * CROSSDOCK_TX_PER_DELIVERY, "1.400 × 4; cota de una plataforma"),
         ("INT-03/04", "Coordinación de reserva", round(lines_day) * RESERVATION_MESSAGES_PER_LINE, round(round(lines_day) * factor_peak) * RESERVATION_MESSAGES_PER_LINE, "260.000 ÷ 22,14 × 4; peak: 21.807 líneas × 4"),
-        ("INT-05", "Eventos de temperatura", temp_messages_day, temp_messages_day, "6.048 cámaras + 4.872 termógrafos"),
+        ("INT-05", "Eventos de temperatura", temp_messages_day, temp_messages_day, "6.048 cámaras + 24.360 gateway + 112 eventos + 28 descargas"),
         ("INT-06", "ERP 2017", orders_day + RECEPCIONES_MES / dispatch_days + DEVOLUCIONES_MES / dispatch_days + COBROS_EFECTIVO_MES / dispatch_days, (orders_day + RECEPCIONES_MES / dispatch_days + DEVOLUCIONES_MES / dispatch_days + COBROS_EFECTIVO_MES / dispatch_days) * factor_peak, "1.400 + 1.150 ÷ 22,14 + 900 ÷ 22,14 + 11.800 ÷ 22,14; peak × 1,857"),
         ("INT-07", "DTE/SII", dte_day * 2, dte_peak_day * 2, "34.000 ÷ 22,14 × 2; peak × 1,857"),
         ("INT-08", "Cadenas modernas EDI", orders_day * S52_SHARE_CHAIN_ORDERS * EDI_MESSAGES_PER_ORDER, orders_day * factor_peak * S52_SHARE_CHAIN_ORDERS * EDI_MESSAGES_PER_ORDER, "Escenario 2029 (hoy 0): 1.400 × 11 % × 4; 2.600 × 11 % × 4"),
@@ -532,7 +559,7 @@ def main() -> None:
     talca_util_3x = {key: talca_cluster_required_3x[key] / t11_talca_n1[key] for key in ("vcpu", "ram_gb", "disk_gb")}
     min_node_3x = {"vcpu": ceil_int(talca_cluster_required_3x["vcpu"] / 2), "ram_gb": ceil_int(talca_cluster_required_3x["ram_gb"] / 2), "disk_gb": ceil_int(talca_cluster_required_3x["disk_gb"])}
 
-    temp_gb_day = temp_messages_day * TEMP_RECORD_BYTES / 1_000_000_000
+    temp_gb_day = temp_records_day * TEMP_RECORD_BYTES / 1_000_000_000
     obs_gb_day = {site: (OBS_NODES[site] + OBS_STANDBY_NODES[site] * OBS_STANDBY_FACTOR) * OBS_MB_PER_NODE_DAY / 1000 for site in OBS_NODES}
     links = {"Talca": (20.0, 5.0, T11_SATELLITE_MBPS, "D-03", "D-04", "D-06"), "Concepción": (10.0, 3.0, T11_SATELLITE_MBPS, "D-03", "D-04", "D-06"), "Cada cross-docking": (T11_SATELLITE_MBPS, 2.0, None, "D-06", "D-04", None)}
     # Los equipos de reparto se actualizan donde estaciona su camión, según SV-03; los de preventa, por MDM sobre la red móvil.
@@ -703,10 +730,10 @@ def main() -> None:
         "## Dimensiones 7–10: almacenamiento y migración", "",
         f"El almacenamiento transaccional parte de {fmt_int(line_event_records_month)} eventos ({fmt_int(LINEAS_MES)} líneas × 5), {fmt_int(picking_records_month)} operaciones ({fmt_int(LINEAS_MES)} líneas × 2), {fmt_int(delivery_records_month)} operaciones ({fmt_int(PEDIDOS_MES)} pedidos × 5) y {fmt_int(movement_records_month)} movimientos ({fmt_int(LINEAS_MES)} líneas + {fmt_int(PALLETS_MES)} pallets + {fmt_int(POSICIONES_CONTADAS_MES)} conteos + {fmt_int(RECEPCIONES_MES)} recepciones). La fórmula es (({fmt_int(line_event_records_month)} + {fmt_int(picking_records_month)} + {fmt_int(delivery_records_month)}) × 1 KB + {fmt_int(movement_records_month)} × 0,5 KB) × 2 × 12 = **{fmt(transactional_gb_year)} GB/año**; seis años acumulan **{fmt(transactional_gb_year * 6)} GB** como cota de retención.",
         f"La evidencia es 30 KB + 200 KB × (1 + 900 ÷ 31.000) = **{fmt(evidence_kb)} KB por entrega**; genera **{fmt(evidence_gb_year)} GB/año** y **{fmt(evidence_gb_peak_month)} GB en el mes peak**.",
-        f"Temperatura: {fmt_int(camera_messages_day)} lecturas/día de las cámaras + {fmt_int(thermograph_messages_day)} de los termógrafos de camión = {fmt_int(temp_messages_day)} mensajes/día; con {TEMP_RECORD_BYTES} bytes por lectura son {fmt(temp_raw_gb_year)} GB/año crudos y {fmt(temp_stored_gb_year)} GB/año almacenados, {fmt(temp_raw_gb_year * REQ_RET_TEMP_ANIOS)} GB crudos en 5 años. Posición: {fmt_int(position_records_year)} eventos/año, {fmt(position_raw_gb_year)} GB crudos y {fmt(position_stored_gb_year)} GB almacenados en 12 meses; cada evento usa {POSITION_RECORD_BYTES} bytes. La copia almacenada usa factor 0,25.",
+        f"Temperatura: {fmt_int(camera_messages_day)} lecturas/día de cámaras + {fmt_int(probe_records_day)} de sondas + {fmt_int(thermograph_messages_day)} de termógrafos + {fmt_int(independent_records_day)} de sensores independientes = {fmt_int(temp_records_day)} lecturas/día. INT-05: {fmt_int(temp_messages_day)} mensajes/día ({fmt_int(camera_messages_day)} cámaras + {fmt_int(gateway_messages_day)} gateway + {fmt_int(truck_events_day)} eventos + {fmt_int(truck_downloads_day)} descargas). Con {TEMP_RECORD_BYTES} bytes por lectura: {fmt(temp_raw_gb_year)} GB/año crudos, {fmt(temp_stored_gb_year)} GB/año almacenados, {fmt(temp_raw_gb_year * REQ_RET_TEMP_ANIOS)} GB crudos en 5 años; DynamoDB 30 días: {fmt(temp_records_day * 30 * TEMP_RECORD_BYTES / 1_000_000_000, 3)} GB. Satélite: {fmt_int(satellite_messages_day / TERMOGRAFOS)} mensajes por camión y día, {fmt_int(satellite_messages_day)} de flota; se concilian con móvil. Posición: {fmt_int(position_records_year)} eventos/año, {fmt(position_raw_gb_year)} GB crudos y {fmt(position_stored_gb_year)} GB almacenados en 12 meses. La temperatura no guarda GPS. Factor de almacenamiento: 0,25.",
         f"La migración suma maestros {fmt(historical_domains['maestros completos'], 0)} KB, ventas y pedidos {fmt(historical_domains['ventas y pedidos, 3 años'], 0)} KB, inventario y movimientos {fmt(historical_domains['inventario y movimientos, 2 años'], 0)} KB, recepciones con lote {fmt(historical_domains['recepciones con lote, 5 años'], 0)} KB y cuentas por cobrar {fmt(historical_domains['cuentas por cobrar, 2 años'], 0)} KB. Con factor 2: **{fmt(historical_gb)} GB**, sensibilidad **{fmt(historical_low_gb)}–{fmt(historical_high_gb)} GB**.", "",
         "## Dimensiones 11–12: integraciones y enlaces", "",
-        f"El apartado 4.1 contiene 15 integraciones. La dimensión 11 suma **{fmt(message_total, 0)} mensajes/día normal** y **{fmt(message_peak, 0)} peak**; portal y llamadas internas a la API quedan fuera. El EDI actual es cero; desde enero de 2029 opera todos los días y usa la cota de 11 % de pedidos en régimen y en peak. La pasarela de pago se acota con un pago electrónico por entrega y dos mensajes por pago.", *integration_markdown(), "",
+        f"El apartado 4.1 contiene 15 integraciones. El total bruto suma **{fmt(message_total, 0)} mensajes/día normal** y **{fmt(message_peak, 0)} peak**; INT-04 es subconjunto de INT-03, por lo que la dimensión 11 sin doble conteo es **{fmt(message_total - ENTREGAS_NORMAL_DIA * CROSSDOCK_TX_PER_DELIVERY, 0)} / {fmt(message_peak - ENTREGAS_PEAK_DIA * CROSSDOCK_TX_PER_DELIVERY, 0)}**; portal y llamadas internas a la API quedan fuera. El EDI actual es cero; desde enero de 2029 opera todos los días y usa la cota de 11 % de pedidos en régimen y en peak. La pasarela de pago se acota con un pago electrónico por entrega y dos mensajes por pago.", *integration_markdown(), "",
         "El drenaje contiene cambios con WAL, vaciado del broker, telemetría, observabilidad e incremental de respaldo acumulados durante 24 horas; no incluye tráfico de oficina. La prioridad continua suma WAL, broker, telemetría crítica, guías, SII e identidad; cada mensaje de guía, respuesta SII e identidad usa la cota de 1 KB. El peor caso suma la hora cargada con oficina y la sincronización de la flota cuando corresponde. D-06 se calcula con 2 Mbps de subida mínima supuesta, un parámetro conservador de diseño que se confirma en la instalación."]
     for site in site_tps_peak:
         row = site_data_day[site]

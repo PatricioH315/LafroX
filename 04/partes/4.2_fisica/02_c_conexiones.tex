@@ -24,10 +24,10 @@ El terminal satelital de los centros permanece encendido porque adquirir satéli
 
 Los terminales EC55 y TC58e acceden por red celular a CloudFront, cuyas rutas \texttt{/v1} y \texttt{/sync/v1} llegan a la API REST pública.
 
-Los flujos principales son las entradas HTTPS de usuarios externos por CloudFront, los túneles IPsec de los sitios hacia el Transit Gateway y la descarga local por Bluetooth de los termógrafos al terminal del conductor. La tabla siguiente detalla los medios, caminos alternativos y conmutación:
+Los flujos principales comprenden HTTPS de usuarios, IPsec de sitios, gateway de camión a IoT Core por móvil y a CloudConnect/SQS por Iridium SBD, Wi-Fi local entre gateway y TC58e y Bluetooth de los dos registradores al TC58e. La tabla detalla medios y continuidad:
 
 \begin{itemize}
-  \item Termógrafo--terminal: los termógrafos descargan por Bluetooth al terminal del conductor.
+  \item Kit de camión: PT100 cableadas al ioLogik por Modbus TCP hacia gateway; salida digital a luz y zumbador, RS-232 a Iridium Edge, Wi-Fi local MQTT con certificado al TC58e y Bluetooth desde registradores. Los dos caminos remotos permanecen activos.
   \item Nube--VM: AWS DMS accede únicamente a VM-02 de Talca por el túnel IPsec autenticado.
   \item Sitios--SQS: los eventos de cada sitio, incluidos los cross-docking, llegan a SQS FIFO sin depender de otro sitio.
 \end{itemize}
@@ -44,7 +44,7 @@ La Tabla~\ref{tab:conexiones} resume cada conexión con su medio, su camino alte
   CD Concepción con la nube & Fibra D-03, túneles IPsec con BGP & LTE D-04 y, tras él, Starlink D-06 & Menos de 30 s \\
   Cross-docking con la nube & Starlink D-06, túneles IPsec con BGP & LTE D-04 de dos proveedores & Menos de 30 s \\
   Terreno con la nube & Red celular, CloudFront, API REST pública & Almacén local del dispositivo & No aplica \\
-  Termógrafos con el terminal del conductor & BLE con el terminal del conductor, en ruta y al regresar & Registro interno del termógrafo & No aplica \\
+  Kit de camión y TC58e & Móvil de dos operadores e Iridium SBD en paralelo, ambos bidireccionales; Wi-Fi local y Bluetooth & Cola hasta A2, archivo 72 h y memoria de registradores; protección local sin red & Sin conmutación entre móvil y satélite: ambos activos \\
   Usuarios externos con los portales & Internet, HTTPS por CloudFront & Portal de Clientes instalado, que conserva el pedido hasta reconectar & No aplica \\
   Oficinas y trabajo remoto con las consolas & Internet, HTTPS por Verified Access & Otra conexión a Internet & No aplica \\
   Cadenas con el canal AS2 & Internet, TLS 1.3 al Network Load Balancer & Reenvío AS2 hasta el acuse MDN & No aplica \\

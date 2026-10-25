@@ -115,3 +115,6 @@ Para devolver el WMS a Talca se reconstruye su clúster, se carga VM-02 desde Au
 Dos veces al año se ensaya la pérdida regional con escrituras de pedidos y sincronización en us-east-1. Con la misma frecuencia se simula la pérdida de la sala de Talca y se levanta su WMS en Fargate sobre la copia en Aurora. Se miden RTO y RPO en cada ensayo y se exige el cumplimiento del 100 \% de ambos objetivos. La restauración mensual de respaldos y la inyección de fallas se describen en la sección~\ref{sub:6-verificacion-de-la-continuidad}.
 
 \label{fuente-06-e-sitio-secundario-fin}
+
+\subsection{Recuperación de la cadena de frío en ruta}
+CloudConnect o el receptor SBD mantiene un segundo destino en us-east-1, sujeto a confirmación de proveedor y prueba V17. El gateway conserva durante 72 h lo confirmado por A2, o hasta que la plataforma confirme la réplica, y lo reenvía tras pérdida regional sin repetir efectos. En la región recuperada se restituyen IoT Core, reglas, certificados, colas de subida/bajada y M9 con su bandeja de salida. V17 provoca la pérdida justo después de A2 y comprueba recuperación de evento y obligación de aviso. La protección y retención permanecen locales durante toda la recuperación; disponer de réplica no acredita el aviso remoto hasta validar el canal.

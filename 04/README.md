@@ -29,7 +29,7 @@ entrega/                  # los tres PDF entregables
   figuras/fuentes/
 ```
 
-El cuerpo (`main.tex`) contiene 4.1, 4.2 y 4.3, las referencias y la declaración de uso de IA. Los anexos 4-A a 4-W y el Formulario T-11 se compilan como archivos propios (aclaraciones, sección 1).
+El cuerpo (`main.tex`) contiene 4.1, 4.2 y 4.3, las referencias y la única declaración de uso de IA, que cubre las secciones 4.1–4.3, los anexos 4-A a 4-W y el Formulario T-11. Los anexos 4-A a 4-W y el Formulario T-11 se compilan como archivos propios (aclaraciones, sección 1).
 
 ## Compilación
 
