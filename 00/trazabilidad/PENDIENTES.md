@@ -28,3 +28,7 @@ Aplicado y verificado el formato solicitado del SD1 en los tres PDF del SD4, inc
 ## Cadena de frío — 25 de octubre de 2026
 
 Implementación documental aplicada en SD2–SD7. El registro `IMPLEMENTACION_CADENA_FRIO_2026-10-25.md` reúne las figuras congeladas que requieren actualización, las referencias fuera de alcance de SD9/SD13, los identificadores nuevos, las filas de declaración modificadas y el impacto futuro en Informe 3. Se conservaron todas las figuras y no se crearon entidades en SD5. Las pruebas físicas y las cotizaciones/certificados se especifican, sin acreditarse su ejecución. El T-14 conserva el aviso de ancho de su figura panorámica original, sin modificación de esa figura.
+
+## Resultado de revisión semántica de formularios — 25-10-2026
+
+El [registro semántico](REVISION_SEMANTICA_FORMULARIOS_2026-10-25.md) identifica las brechas de las 653 filas y las condiciones de los 98 recursos del T-11. Se conserva la exclusión de SD13: su vista de INN-03 requiere conciliarse con el kit y doble camino vigentes. La base por camión de un compartimento/una puerta se confirma mediante mapeo; los ocho PC nuevos y el inventario de la entrada SBD requieren detalle de ingeniería. Las brechas de oferta no se cerraron por compilar los PDF.
