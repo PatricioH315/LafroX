@@ -17,7 +17,7 @@ La selección siguiente organiza las tecnologías por responsabilidad arquitect�
 
 \item \textbf{Apps de campo (preventa y reparto).} Kotlin Android nativo. Nativo del parque Zebra/Android, escáner GS1 vía Zebra DataWedge, SQLite/Room offline, acceso nativo a GPS, POS y térmica.
 
-\item \textbf{Borde y continuidad del acceso (Capa 2).} CloudFront, AWS WAF, AWS Shield Advanced y ALB en nube, con control de acceso local. En los CD, Starlink fijo permanece encendido con IPsec establecido y BGP de menor preferencia tras fibra y LTE. En los cross-docking es el camino principal, con LTE de dos proveedores como respaldo y conmutación automática en menos de 30 segundos (ADR-02), sin sustituir la autonomía del servicio local.
+\item \textbf{Borde y continuidad del acceso (Capa 2).} CloudFront, AWS WAF, AWS Shield Advanced y ALB en nube, con control de acceso local. En los CD, Starlink fijo permanece encendido con IPsec establecido y BGP de menor preferencia tras fibra y LTE. En los cross-docking es el camino principal, con LTE de Entel y Claro como respaldo y conmutación automática en menos de 30 segundos (ADR-02), sin sustituir la autonomía del servicio local.
 
 \item \textbf{Puerta de enlace de servicios (Capa 3).} Amazon API Gateway para publicar las APIs y aplicar controles de entrada. La configuración debe cubrir la validación de identidad de Keycloak, las cuotas y los límites de solicitudes, conforme a la modalidad de API seleccionada y al flujo descrito en la capa de puerta de enlace de este apartado.
 

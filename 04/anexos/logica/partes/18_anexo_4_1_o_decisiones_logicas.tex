@@ -83,7 +83,7 @@ ADR-23 & Selección del backend modular & 24 de octubre de 2026 & Propuesta en l
 
 \subsection*{ADR-02. Conectividad WAN (tres caminos)}
 \label{sub:adr-02}
-\textbf{Decisión adoptada.} Talca y Concepción usan fibra y LTE con Starlink fijo como tercer camino en espera caliente: el terminal permanece encendido, el túnel IPsec establecido y BGP con menor preferencia, y solo toma tráfico si fallan ambos caminos terrestres. En los cross-docking Starlink es el camino principal, con LTE de dos proveedores como respaldo.
+\textbf{Decisión adoptada.} Talca y Concepción usan fibra de Telsur (Grupo Gtd) y LTE de Entel, con Starlink fijo como tercer camino en espera caliente: el terminal permanece encendido, el túnel IPsec establecido y BGP con menor preferencia, y solo toma tráfico si fallan ambos caminos terrestres. En los cross-docking Starlink es el camino principal, con LTE de Entel y Claro como respaldo.
 
 \textbf{Alternativas evaluadas.} Fibra y LTE solos comparten amenazas terrestres, apagar el terminal satelital obliga a adquirir satélites durante varios minutos y a negociar el túnel en plena falla.
 
@@ -395,7 +395,7 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 \textbf{Requisitos que la sustentan.} RT-02.02, RT-02.04, RT-02.05 y RT-03.10; políticas de actualización del Anexo 4-P.
 
 \subsection*{ADR-24. Protección térmica autónoma en ruta}
-\textbf{Decisión:} Greengrass en un UC-8200 por camión, tres PT100 mediante ioLogik, dos simuladores en glicol, sensor independiente y termógrafo EYE SENSOR EN12830; TC58e como segunda evaluación. Móvil de dos operadores e Iridium Edge SBD permanecen activos en ambos sentidos. La retención es por SSCC e incidente, con disposición exclusiva de Calidad.
+\textbf{Decisión:} Greengrass en un UC-8200 por camión, tres PT100 mediante ioLogik, dos simuladores en glicol, sensor independiente y termógrafo EYE SENSOR EN12830; TC58e como segunda evaluación. Móvil de Entel y Claro e Iridium Edge SBD permanecen activos en ambos sentidos. La retención es por SSCC e incidente, con disposición exclusiva de Calidad.
 
 \textbf{Alternativas y criterio:} solo aire produce falsas advertencias de puerta; termógrafo más terminal como única cadena pierde vigilancia cuando el conductor se aleja; RUT956 requiere implementar persistencia y gestión adicionales; Starlink Mini y Certus aportan internet que no usa la solución; una segunda cadena de hardware duplica al TC58e y sensor independiente. El UC-8200 reutiliza la plataforma B-02, pero requiere probar Greengrass, punto de acceso y comportamiento vehicular.
 

@@ -16,8 +16,8 @@ Esta sección describe cómo se conectan los sitios, el terreno y la nube, ident
 Los dos dominios fijos, la nube y el on-premise, se conectan por túneles VPN IPsec que terminan en el par de firewalls de cada sitio (D-01) y en el Transit Gateway de AWS en sa-east-1, con enrutamiento dinámico BGP. Cada sitio publica sus eventos directamente a la nube y opera sin conexión con los sistemas de otra instalación. Los caminos de acceso se distribuyen así:
 
 \begin{itemize}
-  \item Cada centro de distribución tiene tres caminos independientes: fibra D-03, LTE D-04 y Starlink D-06. Starlink permanece en espera caliente, con el terminal encendido, el túnel IPsec establecido y BGP de menor preferencia. Solo toma el tráfico cuando fallan fibra y LTE y entonces prioriza DMS/WAL de Talca, broker y outbox, guías hacia ERP y SII, identidad y telemetría crítica.
-  \item Cada cross-docking usa Starlink como camino principal y LTE de dos proveedores como respaldo.
+  \item Cada centro de distribución tiene tres caminos independientes: fibra D-03, LTE D-04 y Starlink D-06. Cada camino usa un medio físico distinto, terrestre, celular y satelital, y un proveedor distinto: Telsur (Grupo Gtd) en la fibra, Entel en LTE y Starlink en satélite (RT-03.17, Bases Técnicas Transversales, cap. 3, p. 9). Starlink permanece en espera caliente, con el terminal encendido, el túnel IPsec establecido y BGP de menor preferencia. Solo toma el tráfico cuando fallan fibra y LTE y entonces prioriza DMS/WAL de Talca, broker y outbox, guías hacia ERP y SII, identidad y telemetría crítica.
+  \item Cada cross-docking usa Starlink como camino principal y LTE de Entel y Claro como respaldo, por lo que también cuenta con tres proveedores.
 \end{itemize}
 
 El terminal satelital de los centros permanece encendido porque adquirir satélites y negociar el túnel durante una falla tardaría minutos, el plan de tarifa plana no agrega costo por mantenerlo encendido.
@@ -40,11 +40,11 @@ La Tabla~\ref{tab:conexiones} resume cada conexión con su medio, su camino alte
 \begin{tablalafrox}{Conexiones de la solución y su camino alternativo}{tab:conexiones}%
   {F{0.24} Y F{0.24} F{0.16}}%
   {\cab{Conexión} & \cab{Medio y protocolo} & \cab{Camino alternativo} & \cab{Conmutación}}
-  CD Talca con la nube & Fibra D-03, túneles IPsec con BGP & LTE D-04 y, tras él, Starlink D-06 & Menos de 30 s \\
-  CD Concepción con la nube & Fibra D-03, túneles IPsec con BGP & LTE D-04 y, tras él, Starlink D-06 & Menos de 30 s \\
-  Cross-docking con la nube & Starlink D-06, túneles IPsec con BGP & LTE D-04 de dos proveedores & Menos de 30 s \\
+  CD Talca con la nube & Fibra D-03 de Telsur, túneles IPsec con BGP & LTE D-04 de Entel y, tras él, Starlink D-06 & Menos de 30 s \\
+  CD Concepción con la nube & Fibra D-03 de Telsur, túneles IPsec con BGP & LTE D-04 de Entel y, tras él, Starlink D-06 & Menos de 30 s \\
+  Cross-docking con la nube & Starlink D-06, túneles IPsec con BGP & LTE D-04 de Entel y Claro & Menos de 30 s \\
   Terreno con la nube & Red celular, CloudFront, API REST pública & Almacén local del dispositivo & No aplica \\
-  Kit de camión y TC58e & Móvil de dos operadores e Iridium SBD en paralelo, ambos bidireccionales; Wi-Fi local y Bluetooth & Cola hasta A2, archivo 72 h y memoria de registradores; protección local sin red & Sin conmutación entre móvil y satélite: ambos activos \\
+  Kit de camión y TC58e & Móvil de Entel y Claro e Iridium SBD en paralelo, ambos bidireccionales; Wi-Fi local y Bluetooth & Cola hasta A2, archivo 72 h y memoria de registradores; protección local sin red & Sin conmutación entre móvil y satélite: ambos activos \\
   Usuarios externos con los portales & Internet, HTTPS por CloudFront & Portal de Clientes instalado, que conserva el pedido hasta reconectar & No aplica \\
   Oficinas y trabajo remoto con las consolas & Internet, HTTPS por Verified Access & Otra conexión a Internet & No aplica \\
   Cadenas con el canal AS2 & Internet, TLS 1.3 al Network Load Balancer & Reenvío AS2 hasta el acuse MDN & No aplica \\
@@ -84,7 +84,7 @@ Cada conexión se apoya en equipos del sitio que también pueden fallar. El list
 \begin{itemize}
 \item \textbf{Fibra y LTE de un centro de distribución.} \textbf{Resolución:} BGP conmuta al túnel IPsec ya establecido por Starlink D-06, con prioridad para DMS/WAL, broker, guías, identidad y telemetría crítica. \textbf{Contingencia:} La operación local conserva 24 h de autonomía.
 \item \textbf{Caída del enlace de Talca para la oficina.} \textbf{Resolución:} Verified Access admite otra conexión a Internet con los mismos controles, \textbf{Contingencia:} Plan de rutas y manifiesto aprobados en el WMS antes de las 22:00, tableros y costo de servir esperan el retorno.
-\item \textbf{Starlink de un cross-docking.} \textbf{Resolución:} El LTE de dos proveedores toma el tráfico en menos de 30 s. \textbf{Contingencia:} La ventana de 3 h opera 100\,\% local y sincroniza al reconectar.
+\item \textbf{Starlink de un cross-docking.} \textbf{Resolución:} El LTE de Entel y Claro toma el tráfico en menos de 30 s. \textbf{Contingencia:} La ventana de 3 h opera 100\,\% local y sincroniza al reconectar.
 \item \textbf{Enlace de Los Ángeles en la madrugada.} \textbf{Resolución:} Starlink queda como camino único, porque la red móvil falla a esa hora. \textbf{Contingencia:} La ventana de madrugada opera íntegramente local.
 \item \textbf{Firewall de Talca.} \textbf{Resolución:} La unidad pasiva asume las direcciones y los túneles en menos de 30 s, \textbf{Contingencia:} Operación local 24 h sin enlace.
 \item \textbf{Firewall de Concepción.} \textbf{Resolución:} La unidad pasiva asume el túnel y la conmutación de enlace en menos de 30 s. \textbf{Contingencia:} La unidad dañada se reemplaza con la de reserva de Talca.
