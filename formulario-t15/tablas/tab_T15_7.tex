@@ -1,15 +1,18 @@
-\begin{anexohorizontal}
-\setlength{\textwidth}{\linewidth}
-\begin{tablalafrox}{Escenario nominal histórico: entrega, reserva y probabilidad por hito; pendiente de recálculo. Fuente: elaboración a partir de la sección 6.1 de este formulario y LafroX (2026r, SD8, Anexo 8.C).}{tab_T15_7}
-  {C{0.8cm} L{1.9cm} L{1.9cm} C{1.3cm} L{2.3cm} C{1.5cm} Y Y L{1.9cm}}
-  {\cab{Hito} & \cab{Entrega programada} & \cab{Fecha límite de entrega (acta − 10 días hábiles)} & \cab{Reserva (días hábiles)} & \cab{Camino de menor probabilidad (PERT)} & \cab{\ensuremath{\sigma} del camino (días hábiles)} & \cab{P(entrega a tiempo), PERT} & \cab{P(entrega a tiempo), simulación con riesgos} & \cab{Fecha P80 simulada}}
-  H1 & 09-03-2027 & 17-03-2027 & 6 & 1.2.1 & 0,58 & > 99,9 \% & > 99,9 \% & 11-03-2027 \\
-  H2 & 29-04-2027 & 17-05-2027 & 12 & 2.1.1 \ensuremath{\rightarrow} 2.4.1 & 1,90 & > 99,9 \% & 97,4 \% & 10-05-2027 \\
-  H3 & 21-06-2027 & 16-07-2027 & 19 & 3.1.1 & 1,25 & > 99,9 \% & 88,3 \% & 13-07-2027 \\
-  H4 & 20-10-2027 & 16-11-2027 & 19 & 3.8.1 & 1,17 & > 99,9 \% & 86,5 \% & 15-11-2027 \\
-  H5 & 29-11-2027 & 17-01-2028 & 35 & 3.8.2 & 1,67 & > 99,9 \% & 88,8 \% & 13-01-2028 \\
-  H8 & 13-03-2028 & 17-03-2028 & 4 & 2.4.2 & 0,75 & > 99,9 \% & 91,1 \% & 16-03-2028 \\
-  H9 & 18-05-2028 & 16-06-2028 & 21 & 3.9.1 & 1,17 & > 99,9 \% & > 99,9 \% & 29-05-2028 \\
-  H10 & 12-06-2028 & 17-07-2028 & 25 & 3.9.1 \ensuremath{\rightarrow} 3.9.2 \ensuremath{\rightarrow} 3.9.6 & 1,54 & > 99,9 \% & > 99,9 \% & 29-06-2028 \\
+\begin{anexohorizontal}\setlength{\textwidth}{\linewidth}
+\begin{tablalafrox}{CPM y PERT de los hitos con la línea base de 220.023 HH. Fuente: elaboración a partir de las secciones 4.2, 5.1 y 6.1, y del Anexo 7.B.}{tab_T15_7}
+  {C{0.65cm} L{1.8cm} L{1.8cm} L{1.8cm} C{1.0cm} Y C{1.2cm} C{1.0cm} C{1.5cm}}
+  {\cab{Hito} & \cab{Entrega calculada} & \cab{Acta o inicio calculado} & \cab{Límite contractual} & \cab{Holgura (días)} & \cab{Camino controlante} & \cab{Duración del camino (días)} & \cab{Sigma (días)} & \cab{PERT condicional}}
+  H1 & 09-03-2027 & 23-03-2027 & 31-03-2027 & 5 & 1.2.4 & 7.0 & 0,58 & >99,9\% \\
+  H2 & 29-04-2027 & 13-05-2027 & 31-05-2027 & 11 & 2.4.1 & 9.0 & 0,75 & >99,9\% \\
+  H3 & 18-06-2027 & 06-07-2027 & 30-07-2027 & 17 & 3.1.5 & 14.0 & 1,17 & >99,9\% \\
+  H4 & 22-10-2027 & 08-11-2027 & 30-11-2027 & 16 & 3.4.10 $\rightarrow$ 3.8.1 & 88.0 & 6,02 & 99,60\% \\
+  H5 & 01-12-2027 & 03-01-2028 & 31-01-2028 & 20 & 3.4.10 $\rightarrow$ 3.8.1 $\rightarrow$ 3.8.2 $\rightarrow$ 3.8.7 & 115.0 & 6,26 & >99,9\% \\
+  H6 & 01-02-2028 & 01-02-2028 & 01-02-2028 & 0 & Inicio contractual fijo & 0 & --- & --- \\
+  H8 & 13-03-2028 & 27-03-2028 & 31-03-2028 & 4 & 2.4.2 & 9.0 & 0,75 & >99,9\% \\
+  H7 & 15-05-2028 & 29-05-2028 & 31-05-2028 & 2 & 4.2.3 & 7.0 & 0,58 & >99,9\% \\
+  H9 & 18-05-2028 & 01-06-2028 & 30-06-2028 & 19 & 3.9.1 & 13.0 & 1,08 & >99,9\% \\
+  H10 & 28-06-2028 & 12-07-2028 & 31-07-2028 & 13 & 3.9.6 & 7.0 & 0,58 & >99,9\% \\
+  H11 & 01-08-2028 & 01-08-2028 & 01-08-2028 & 0 & Inicio contractual fijo & 0 & --- & --- \\
+  H12 & 20-10-2028 & 07-11-2028 & 31-10-2028 & -4 & 4.3.4 $\rightarrow$ 4.3.3 & 14.0 & 0,82 & <0,1\% \\
 \end{tablalafrox}
 \end{anexohorizontal}
