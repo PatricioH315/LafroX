@@ -1,0 +1,35 @@
+{
+  "rama": "LafroX-Subdoc6-LateX",
+  "fuentes_modificadas_en_sesion": [
+    ".gitignore",
+    "LAFROX-Subdocumento6-Anexos.pdf",
+    "LAFROX-Subdocumento6.pdf",
+    "anexos.tex",
+    "subdocumento_6/contenido.tex",
+    "subdocumento_6/tablas/adquisiciones.tex"
+  ],
+  "figuras_modificadas": [],
+  "bloques_figura_modificados": [],
+  "compilaciones": [
+    {
+      "archivo": "LAFROX-Formulario-T-10",
+      "compilado": true,
+      "sha256_pdf": "00214317a06f102c2230a3c93fe1b33f84773e8510a6de5d564c4fbe1f8a5810"
+    },
+    {
+      "archivo": "LAFROX-Formulario-T-9",
+      "compilado": true,
+      "sha256_pdf": "f7d0655afa9477398fa3b91b97f502c29148e93e8aa534641304faf63629f3b7"
+    },
+    {
+      "archivo": "LAFROX-Subdocumento6-Anexos",
+      "compilado": true,
+      "sha256_pdf": "314ab2eaf945f8291fd37bbb47314bf675be452548e1d4619481a96aa3aa72f7"
+    },
+    {
+      "archivo": "LAFROX-Subdocumento6",
+      "compilado": true,
+      "sha256_pdf": "43654b2bc720c8d8571f949bf2cdf157d84620044fc6df0d14984d6999b80705"
+    }
+  ]
+}
