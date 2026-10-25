@@ -135,6 +135,8 @@ El vehículo declara capacidades nominales en kg y m³; el punto del cliente con
 \subsection{Trazabilidad sanitaria y cadena de custodia}
 \label{sec:sd5-5-1-7}
 
+La historia térmica por SSCC recorre cámara, andén y compartimento. \texttt{cal\_\allowbreak{}asociacion\_\allowbreak{}ventana} asocia cada unidad logística con el compartimento y el intervalo entre carga y bajada; los eventos SALIDA\_CAMARA y BAJADA\_CAMION delimitan la exposición fuera de frío y el fin de la curva a bordo. \texttt{cal\_\allowbreak{}bloqueo} retiene por SSCC e incidente según la familia, y \texttt{cal\_\allowbreak{}resolucion\_\allowbreak{}calidad} conserva la disposición de Calidad. Una recuperación de temperatura no libera una retención; sin decisión en plazo, el producto vuelve retenido al CD. Estos datos amplían atributos y catálogos de entidades existentes (Anexos 5-A y 5-C).
+
 Antes de la aprobación de Calidad, \texttt{cal\_\allowbreak{}regla\_\allowbreak{}termica} materializa el rango de ficha como \texttt{PREVENTIVA\_\allowbreak{}FICHA}, con severidad CRITICA y duración cero. No lleva aprobador ni permite liberar: la primera lectura válida fuera de rango retiene el lote. Calidad crea después una versión APROBADA la excursión conserva la regla y ficha efectivamente usadas, sin reinterpretación histórica (5-A, 5-B y 5-C; SD4 4.1.4.8).
 
 La Figura 5.5 relaciona evento, objetos, documentos, sensor, excursión y bloqueo de Calidad. EPCIS 2.0 y CBV 2.0 tienen versiones separadas, perfil\_evento identifica el contrato versionado de la solución descrito en 5-C (GS1, 2022a, 2022b). parent\_event\_id representa causalidad interna y admite NULL en raíz. epcis\_parent\_id identifica el contenedor de una agregación y no un evento causal.
@@ -220,7 +222,7 @@ La auditoría registra actor, dispositivo, instante, operación, resultado y val
 
 La Figura 5.10 distingue ingesta térmica cruda en DynamoDB, archivo detallado S3 Parquet/Glue, serie/analítica Redshift, posición personal y objetos. Raw dura treinta días; el perfil detallado y las versiones que lo interpretan permanecen cinco años. El agregado no permite reconstruir una lectura perdida, por lo que no sustituye el detalle.
 
-S4, Anexo 4-W.4, fija 21 puntos térmicos \ensuremath{\times}288 y 28 termógrafos \ensuremath{\times}174 =10.920 muestras/día. Operan tres gateways: dos en Talca y uno en Concepción; las reservas de T-11 no agregan ingesta ordinaria. El sensor referencia su gateway, sin crear otra autoridad de maestros.
+S4, Anexo 4-W.4, fija 127.848 lecturas/día: 6.048 de cámaras, 73.080 de las tres sondas de cada camión, 24.360 de termógrafos y 24.360 de sensores independientes. INT-05 ingiere 30.548 mensajes/día: 6.048 de cámaras, 24.360 del gateway, 112 eventos y 28 descargas. Los 3 gateways de cámara y los 28 gateways de camión usan Greengrass; las reservas no agregan ingesta ordinaria. La temperatura ocupa 6,77 GB/año en crudo, 33,83 GB en cinco años y 1,69 GB/año almacenado; DynamoDB de treinta días ocupa 0,556 GB. Los 8.120 mensajes satelitales diarios de flota (290 por camión) se concilian con el camino móvil sin duplicar hechos.
 
 GPS permanece en sa-east-1, raw treinta días y plazo personal total doce meses, sin réplica internacional. La posición no se confunde con geocerca de configuración. S3\_DOCS conserva originales por clase; Redis contiene lectura reconstruible y Room/SQLite conserva además hechos/evidencias durables. Las claves, vigencias y purgas están en 5-G.
 

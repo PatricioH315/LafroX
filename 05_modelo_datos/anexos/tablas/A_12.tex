@@ -71,5 +71,10 @@ cob\_cobro.origen, cob\_rendicion.origen & REPARTO, PREVENTA & Mismo origen/resp
 cob\_gestion.tipo, resultado & CONTACTO/COMPROMISO/SEGUIMIENTO/CIERRE, CONTACTADO/SIN\_CONTACTO/COMPROMISO/INCUMPLIDO/PAGADO & Compromiso exige monto/fecha y seguimiento exige recontacto & GESTION\_INCOMPLETA \\
 cob\_saldo\_documento.tramo\_antiguedad, hech\_cartera\_antiguedad.tramo\_antiguedad & CORRIENTE, HASTA\_30, HASTA\_60, HASTA\_90, MAS\_90 & Tramos exhaustivos y excluyentes según 5-H & CARTERA\_INCONSISTENTE \\
 rep\_devolucion\_linea.disposicion, inv\_merma.origen, causa & REINGRESO/VENTA\_DESCUENTO/DEVOLUCION\_PROVEEDOR/MERMA/DESTRUCCION, CONTEO/PREPARACION/GONDOLA/DEVOLUCION, VENCIMIENTO/DANO/RUPTURA\_FRIO/OTRO & Disposición de Calidad auditada y origen trazable & MERMA\_SIN\_ORIGEN \\
+cal\_sensor.tipo & SONDA\_AIRE, SIMULADOR, SENSOR\_INDEPENDIENTE, TERMOGRAFO\_EN12830, más tipos existentes & Compartimento del vehículo vigente; rango y calibración compatibles & DOMINIO\_NO\_ADMITIDO \\
+tel\_lectura\_cruda.origen / camino & CAMARA, TERMOGRAFO\_VEHICULO, SONDA\_AIRE, SIMULADOR, SENSOR\_INDEPENDIENTE / RED\_MOVIL, SATELITE & La identidad por productor, arranque y secuencia no incluye camino; sensor distingue lecturas del mensaje & DOMINIO\_NO\_ADMITIDO \\
+cal\_bloqueo.motivo & CRITICA, CONTRADICCION, NO\_CONFIABLE, EXPOSICION\_ANDEN; motivo preventivo existente & Retención por SSCC e incidente; no se libera por recuperación & RETENCION\_SIN\_EVIDENCIA \\
+cal\_resolucion\_calidad.decision & LIBERAR, VENTA\_DESCUENTO, DEVOLVER\_PROVEEDOR, USO\_NO\_ALIMENTARIO, DESTRUIR; RETENER preventivo & Venta solo si apto; uso no alimentario y destrucción con autorización sanitaria & DISPOSICION\_NO\_AUTORIZADA \\
+cal\_evento\_custodia.tipo & SALIDA\_CAMARA, BAJADA\_CAMION, más hechos existentes & Salida/carga delimitan exposición de andén; bajada cierra ventana del SSCC & EVENTO\_FUERA\_DE\_SUBCONJUNTO \\
 \end{tablalafrox}
 \fuentetabla{elaboración a partir del Anexo 5-A, de los perfiles de evento declarados en 5.1.7 y de RT-05.04 de las Bases Técnicas Transversales.}

@@ -17,6 +17,8 @@ La elección relacional evita saldos y cobros divergentes; el modelo columnar re
 \subsection{Transaccionalidad, aislamiento e idempotencia}
 \label{sec:sd5-5-2-2}
 
+La telemetría usa productor, arranque y secuencia para procesar una sola vez cada mensaje de red móvil o satélite; las lecturas del mismo mensaje conservan su sensor. M9 detecta huecos y solicita el tramo faltante, ubica por secuencia las llegadas desordenadas y siempre procesa una crítica tardía: retiene los SSCC afectados o abre la evaluación de retiro si ya fueron entregados. Una recuperación tardía nunca cierra una crítica ni una retención. La serie fina reemplaza el resumen satelital para formar la evidencia.
+
 Negocio, auditoría y outbox se escriben en la misma transacción del módulo dueño. Bajo lectura confirmada, las operaciones de saldo/reserva/cobro bloquean su agregado y validan invariantes; una clave única protege idempotencia, sin depender de consultar antes de insertar. El shipper/trabajador de S4 publica la outbox, el motor no envía directamente a la cola.
 
 Inbox y efecto se confirman en una transacción: caída previa revierte ambos; posterior al commit devuelve el resultado, sin repetir efectos. Las proyecciones no retroceden versión, pero hechos aditivos/sanitarios/financieros tardíos se conservan. Un gap reordena y solicita faltantes; tras agotar reintentos escala y concilia. Actor, dispositivo, correlación, esquema/versión e instantes de ocurrencia/registro permiten reconstrucción RT-05.03/.19.
@@ -71,6 +73,8 @@ Cada porcentaje declara su base y el caso cero; no se presentan cantidades de un
 
 \subsection{Retención, archivado, eliminación y protección}
 \label{sec:sd5-5-2-7}
+
+La temperatura y los archivos originales del termógrafo y del sensor independiente se conservan cinco años en S3 con bloqueo de objetos en modo cumplimiento. \texttt{tel\_\allowbreak{}archivo\_\allowbreak{}termino} incluye ambos registradores; se verifica integridad, el TC58e firma el hash y la memoria solo se libera tras confirmación de nube. El registro térmico no almacena GPS; la historia del SSCC se determina por compartimento, intervalos y escaneos.
 
 El capítulo 15 del caso identifica como RT-05.10 la retención histórica y de auditoría, en las Bases Técnicas Transversales, RT-05.10 corresponde al catálogo con linaje automatizado y RT-16.10 a retención de auditoría. Se solicita aclarar al CLIENTE la correspondencia de códigos, sin presumir una respuesta oficial. Mientras se aclara, se aplican íntegramente los plazos del caso por clase de dato y las obligaciones transversales de retención; el catálogo automatizado deseable mantiene su alcance no ofertado. La discrepancia de identificador no suspende ni reduce la conservación (Caso, cap. 15, p. 26,Bases Técnicas Transversales, caps. 5 y 16, pp. 12 y 29).
 

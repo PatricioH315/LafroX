@@ -17,6 +17,8 @@ Los escenarios conservan identidades/restricciones, UUID internos y equivalencia
 \subsection{Consultas críticas e índices}
 \label{sec:sd5-5-4-2}
 
+La consulta térmica parte del SSCC, resuelve su unidad logística y filtra \texttt{cal\_\allowbreak{}asociacion\_\allowbreak{}ventana} por unidad, compartimento e intervalo [desde,hasta); el índice compuesto comienza por unidad logística y compartimento, seguido de desde y hasta. La serie se consulta por sensor e instante. El Anexo 5-F conserva el plan de consulta y su verificación con EXPLAIN.
+
 Los índices del Anexo 5-F responden a predicados reales del modelo: disponibilidad por sitio/ubicación/lote/unidad, composición por unidad y recorrido inverso por lote en inv\_unidad\_contenido, custodia por lote o unidad en cal\_evento\_objeto y unión a cabecera; excursiones por cal\_excursion(lote\_id, inicio), excepciones por gob\_excepcion\_sync(correlacion\_id, clave) y (estado, fecha). Actor y dispositivo de una excepción se reconstruyen desde su payload histórico y auditoría, sin inventar una columna dispositivo\_id.
 
 La identidad fiscal usa tipo/emisor/folio/versión, no el hash. Los mensajes, eventos y cobros necesitan identidad global, la unicidad no depende del mes de llegada. Los índices y restricciones se verifican en PREPROD mediante creación del esquema y planes EXPLAIN con volumen representativo, conservando versión del motor, consultas y resultados. Una consulta sanitaria sin fecha conocida recorre todas las particiones pertinentes por lote y no presupone poda temporal.

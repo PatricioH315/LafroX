@@ -73,5 +73,6 @@
 \texttt{hech\_\allowbreak{}viaje} & \texttt{viaje\_\allowbreak{}id} & Único & Sin partición & Snapshot definitivo por viaje \\
 \texttt{hech\_\allowbreak{}actividad\_\allowbreak{}costo} & \texttt{origen\_\allowbreak{}tipo}, \texttt{origen\_\allowbreak{}id}, \texttt{cliente\_\allowbreak{}sk}, \texttt{entrega\_\allowbreak{}sk} & Único NULLS NOT DISTINCT & Sin partición & Una asignación por origen/cliente/entrega, suma fracciones=1 \\
 \texttt{inv\_\allowbreak{}reubicacion\_\allowbreak{}propuesta} & \texttt{clave\_\allowbreak{}idempotencia} & Único & Sin partición & Reintentos de propuesta/instrucción sin duplicación \\
+\texttt{cal\_\allowbreak{}asociacion\_\allowbreak{}ventana} & \texttt{unidad\_\allowbreak{}logistica\_\allowbreak{}id}, \texttt{compartimento}, \texttt{desde}, \texttt{hasta} & No único, B-tree & Sin partición; intervalo semiabierto & Consulta térmica por SSCC resuelto, compartimento e intervalo; igualdad y solapamiento, verificar EXPLAIN \\
 \end{tablalafrox}
 \fuentetabla{elaboración a partir de los atributos reales del Anexo 5-A, de los accesos declarados en 5.1 y de PostgreSQL 16 como motor de referencia.}

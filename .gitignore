@@ -18,3 +18,10 @@
 *.snm
 *.vrb
 /LAFROX-*.pdf
+
+# Auxiliares de verificación de cadena de frío
+/revision/cadena_frio_build/
+
+# Entregables compilados de esta rama
+!LAFROX-Subdocumento5.pdf
+!LAFROX-Subdocumento5-Anexos.pdf

@@ -1,0 +1,29 @@
+{
+  "rama": "LafroX-Subdoc5-LateX",
+  "fuentes_modificadas_en_sesion": [
+    ".gitignore",
+    "05_modelo_datos/anexos/contenido.tex",
+    "05_modelo_datos/anexos/tablas/A_12.tex",
+    "05_modelo_datos/anexos/tablas/A_16.tex",
+    "05_modelo_datos/anexos/tablas/A_4.tex",
+    "05_modelo_datos/anexos/tablas/A_9.tex",
+    "05_modelo_datos/partes/5_1_modelo.tex",
+    "05_modelo_datos/partes/5_2_gestion.tex",
+    "05_modelo_datos/partes/5_4_desempeno.tex",
+    "05_modelo_datos/tablas/uso_ia.tex"
+  ],
+  "figuras_modificadas": [],
+  "bloques_figura_modificados": [],
+  "compilaciones": [
+    {
+      "archivo": "LAFROX-Subdocumento5-Anexos",
+      "compilado": true,
+      "sha256_pdf": "1f9d28b2ef53fcc74f2a6483fc43f07e8cabb40e0568108c85ee84dc58b39556"
+    },
+    {
+      "archivo": "LAFROX-Subdocumento5",
+      "compilado": true,
+      "sha256_pdf": "0d3cdab6a1909321aa73a17a3dc96e24e126414a004ea0f0e4c0a022416f669c"
+    }
+  ]
+}
