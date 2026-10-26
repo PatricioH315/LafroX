@@ -1,8 +1,8 @@
-\section*{Anexo 4-A --- Catálogo de eventos canónicos}
+\section*{Anexo 4-A — Catálogo de eventos canónicos}
 \phantomsection\label{fuente-02-anexo-4-1-a-catalogo-de-eventos-canonicos}
 \phantomsection
 \label{anx:A}
-\addcontentsline{toc}{section}{Anexo 4-A --- Catálogo de eventos canónicos}
+\addcontentsline{toc}{section}{Anexo 4-A — Catálogo de eventos canónicos}
 La tabla identifica, para cada evento canónico, su productor, sus consumidores, la clave de partición y el hecho del caso o la decisión del numeral 16.1 que lo origina.
 
 \begin{tablalafrox}{Eventos canónicos del dominio}{tab:eventos-canonicos}{F{0.16} F{0.08} F{0.18} F{0.15} Y}{\cab{Evento} & \cab{Productor} & \cab{Consumidores} & \cab{Clave de partición} & \cab{Origen en el caso / Decisión}}
@@ -20,11 +20,11 @@ RendicionCerrada & M7 & M10, ACL$\rightarrow$ERP & conductor\_id & Control efect
  DesviacionDeRutaDetectada  &  M12  &  M10, M9  &  ruta\_id  &  Costo de servir y alerta al centro de control sobre 3 km de desvío, no control de jornada.  \\
   AdvertenciaTermica & M9 borde & TC58e, M10, avisos & vehículo / compartimento & Aviso temprano; regla por familia. \\
   CriticaTermica & M9 borde & TC58e, M9, M6 & SSCC / incidente & Retención sin red; nunca se cierra por recuperación. \\
-  SSCCRetenido & M9 / TC58e & M2, M5, M6 & SSCC / incidente & Crítica, contradicción, exposición o estado no confiable. \\
-  ContradiccionTermica & TC58e & M9, Calidad & vehículo / compartimento & Comparación de simulador, sensor independiente y aire. \\
-  EstadoNoConfiable & TC58e & M9, M6 & vehículo / compartimento & Latido vencido o dos simuladores fallidos. \\
+  SSCCRetenido & M9 (gateway o TC58e) & M2, M5, M6 & SSCC / incidente & Crítica, contradicción, exposición o estado no confiable. \\
+  ContradiccionTermica & M9 (TC58e) & M9, Calidad & vehículo / compartimento & Comparación de simulador, sensor independiente y aire. \\
+  EstadoNoConfiable & M9 (TC58e) & M9, M6 & vehículo / compartimento & Latido vencido o dos simuladores fallidos. \\
   KitSinReportar & M9 nube & Calidad, despacho & vehículo & Silencio de ambos caminos durante 6 min. \\
-  OrdenCalidadAplicada / OrdenCalidadRechazada & TC58e & M9, M2, M6 & SSCC / incidente / versión & Firma, revisión y estado vigente; ejecución idempotente. \\
+  OrdenCalidadAplicada / OrdenCalidadRechazada & M9 (TC58e) & M9, M2, M6 & SSCC / incidente / versión & Firma, revisión y estado vigente; ejecución idempotente. \\
 \end{tablalafrox}
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de las Bases Técnicas del caso de Distribuidora Puelche S.A. (2026c) (cap.~16, pp.~28--29) y de los flujos del apartado 4.1. Diseño propuesto: LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-02-anexo-4-1-a-catalogo-de-eventos-canonicos}--\pageref*{fuente-02-anexo-4-1-a-catalogo-de-eventos-canonicos-fin}).\par}

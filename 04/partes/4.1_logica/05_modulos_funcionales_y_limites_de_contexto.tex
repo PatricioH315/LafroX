@@ -10,7 +10,7 @@ La correspondencia con los identificadores físicos se detalla en la tabla de co
 
 El reparto evita que M6 emita DTE o que M10 escriba pedidos. M1 y M5 entregan datos al ERP únicamente por la capa anticorrupción. M11 entra en la Etapa 2 sin cambiar el dueño de la reserva de stock, que sigue siendo M2. Los límites y dependencias se precisan en el mapa siguiente.
 
-Las cinco innovaciones del SD13 amplían reglas, contratos y recorridos sobre los módulos existentes: seguimiento posentrega en M2/M3/M9/M10, reproducción de incidentes de M3/M5/M6 en QA y Preproducción, historia térmica en M2/M5/M9/M10, liquidación ligada al costo de servir en M6/M7/M8/M10. Y hoja de negocio en M3/M6/M10. Reutilizar estos componentes no elimina el desarrollo adicional ni acredita capacidad suficiente. El Anexo 4-N identifica su realización y sus límites. El SD13 conserva la definición, los indicadores y la aceptación de cada innovación.
+Las cinco innovaciones del Subdocumento 13 (LafroX, 2026h) amplían reglas, contratos y recorridos sobre los módulos existentes: seguimiento posentrega en M2/M3/M9/M10, reproducción de incidentes de M3/M5/M6 en QA y Preproducción, historia térmica en M2/M5/M9/M10, liquidación ligada al costo de servir en M6/M7/M8/M10. Y hoja de negocio en M3/M6/M10. Reutilizar estos componentes no elimina el desarrollo adicional ni acredita capacidad suficiente. El Anexo 4-N identifica su realización y sus límites. El SD13 conserva la definición, los indicadores y la aceptación de cada innovación.
 
 El Anexo 4-E hace visible el paso del requerimiento al componente y a la capa que lo realiza. Es una síntesis de los dominios, no una sustitución del catálogo requisito por requisito del Formulario T-12. Allí se debe conservar también origen, etapa, prueba y criterio de aceptación de cada RF y RNF.
 
@@ -54,12 +54,12 @@ La trazabilidad hacia el origen y el destino se implementa evento a evento confo
 
 En cámaras el registro inicial es cada 5 min; en camiones, las sondas se leen cada 5 s y se conserva la serie por minuto. El termógrafo EN 12830 registra el aire cada 1 min. La decisión utiliza simuladores de producto en el punto más caliente del mapeo térmico, según familia y exposición; el aire diagnostica falla del equipo. La regla por defecto considera crítica toda lectura fuera de la ficha hasta aprobación de Calidad. Se registra cada hueco y se concilian las tres series (RNF-09.05 a RNF-09.09).
 
-\paragraph{Avisos y orden de Calidad.}
+\paragraph{Avisos y orden de Calidad}
 Una advertencia avisa a la aplicación de Calidad, SMS y WhatsApp; crítica, contradicción, NO CONFIABLE o kit sin reportar agregan llamada de voz. M9 persiste evento y obligación de avisar juntos en A2. Dos relojes escalan por separado la falta de acuse del incidente y la falta de acción; se usa la lista rotativa del personal existente, sin crear una guardia nueva. El tiempo de aviso se mide desde la detección.
 
 Calidad decide con segundo factor Keycloak sobre la revisión visible; KMS firma la orden ECDSA P-256, de hasta 125 bytes, compatible con 270 bytes de bajada SBD. Llega por móvil propio del TC58e, por móvil del gateway o por Iridium a través del gateway. Se aplica solo con incidente abierto, versión mayor, sin caducar, revisión coincidente y compartimento nuevamente en rango. Declarar aptitud no equivale a autorizar la entrega actual; ante una condición incumplida, el SSCC continúa retenido.
 
-\paragraph{Historia térmica y entrega por SSCC.}
+\paragraph{Historia térmica y entrega por SSCC}
 Los escaneos de salida de cámara, carga y bajada delimitan cámara, exposición en andén y curva del compartimento a bordo. Cada SSCC hereda solo ese intervalo y aplica la regla de su familia. Superar el máximo de andén bloquea antes de salir (RNG-17). La puerta abierta y los 10 min posteriores al cierre suspenden advertencias del aire, nunca la crítica de los simuladores. Una recuperación no libera retenciones. Sin decisión dentro del plazo de la familia, lo retenido vuelve al CD.
 
 El TC58e arranca NO CONFIABLE y exige manifiesto y latido vigentes de menos de 30 s, sin retención ni contradicción, antes de cada bajada. Después permite registrar el POD dentro del local fuera del alcance del Wi-Fi. Perder el latido durante esa entrega no anula lo ya habilitado; al regresar se exige otro válido. Sin bajada en curso, perder el latido alarma y bloquea. El sensor independiente detecta crítica que el gateway no reconoce y diferencias superiores a las tolerancias del mapeo; la segunda evaluación no requiere internet. Verde habilita, amarillo advierte y rojo ordena no entregar.

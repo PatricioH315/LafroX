@@ -1,9 +1,9 @@
 \clearpage
-\section*{Anexo 4-P --- Tecnologías, soporte y actualización}
+\section*{Anexo 4-P — Tecnologías, soporte y actualización}
 \phantomsection\label{fuente-19-anexo-4-1-p-tecnologias-soporte}
 \phantomsection
 \label{anx:P}
-\addcontentsline{toc}{section}{Anexo 4-P --- Tecnologías, soporte y actualización}
+\addcontentsline{toc}{section}{Anexo 4-P — Tecnologías, soporte y actualización}
 
 Este anexo relaciona los nombres funcionales con los servicios técnicos y declara, para cada tecnología, su versión, su soporte y su política de actualización.
 \subsection*{Detalle de selección por capa}
@@ -104,12 +104,12 @@ La aplicación Android de terreno soporta la versión mayor vigente de Android y
 
 La Tabla~\ref{tab:inventario-software} incorpora la matriz de navegadores y versiones soportadas de RT-13.10 (Bases Técnicas Transversales, cap. 13, p. 26), aplicable a los portales y a la consola web de 4.1.3.1. La matriz utiliza versiones relativas para mantener el soporte durante el contrato. Antes de cada liberación se registra el número exacto, sistema operativo, resultado y fecha de las pruebas. Angular 22 usa el conjunto Baseline del 7 de mayo de 2026. Las versiones ofertadas deben pertenecer a ese conjunto y, al migrar Angular, al de la versión adoptada (Angular, 2026b). Cada nueva versión estable de navegador activa pruebas de autenticación, navegación, formularios, teclado y adaptación de pantallas en QA antes de sustituir la versión más antigua de la matriz. Un fallo genera corrección y repetición de pruebas antes de declarar su compatibilidad. Los parches de seguridad se comprueban y se incorporan a la matriz con prioridad. La revisión trimestral de soporte del framework se complementa con esta comprobación por cada versión estable del navegador.
 
-El fin de soporte no publicado se registra como \emph{no publicado}, con responsable y frecuencia de revisión. No significa soporte indefinido. Antes de aprobar una dependencia se verifica licencia, mantenimiento, vulnerabilidades y alternativa de sustitución (RT-11.26). La ficha de liberación identifica versión exacta, EOL conocido o política aplicable, prueba, rollback y responsable. La aceptación rechaza una imagen fuera de soporte.
+El fin de soporte no publicado se registra como \emph{no publicado}, con responsable y frecuencia de revisión. No significa soporte indefinido. Antes de aprobar una dependencia se verifica licencia, mantenimiento, vulnerabilidades y alternativa de sustitución (RT-11.26, Bases Técnicas Transversales, cap. 11, p. 24). La ficha de liberación identifica versión exacta, EOL conocido o política aplicable, prueba, rollback y responsable. La aceptación rechaza una imagen fuera de soporte.
 
 Las alternativas se evalúan por operación offline, integración industrial, transacciones, geografía, carga del equipo y reversibilidad. PostgreSQL/PostGIS se selecciona frente a MariaDB por el dominio espacial. Angular se selecciona por su organización en componentes y sus contratos TypeScript. Kotlin se selecciona frente a una capa móvil adicional por validación del parque. Keycloak mantiene identidad propia frente a delegar el dominio de autorizaciones a un IdP propietario. Las herramientas de construcción no cambian esos contratos. Los criterios concretos se verifican en ADR-04/06/07/20/21 y el Anexo 4-T.
 \subsection*{Implementación del backend}
 
-La selección del backend se fundamenta en ADR-23 y en 4.1.7.1 del Subdocumento 4. Django/Python es el contraste con el diseño precedente; Spring, Kotlin de servidor, Node.js/NestJS y ASP.NET Core son alternativas evaluadas. No forman parte del inventario contratado por esa comparación. La tabla relaciona cada capacidad seleccionada con su implementación en Laravel/PHP y con la comprobación que verifica sus contratos.
+La selección del backend se fundamenta en ADR-23 y en 4.1.7.1 del Subdocumento 4 (LafroX, 2026d). Django/Python es el contraste principal; Spring, Kotlin de servidor, Node.js/NestJS y ASP.NET Core son alternativas evaluadas. No forman parte del inventario contratado por esa comparación (Laravel, s.~f.-a, s.~f.-b, s.~f.-c, s.~f.-d; Django Software Foundation, s.~f.-a, s.~f.-b, s.~f.-c, s.~f.-d; Celery, s.~f.; Spring, s.~f.; JetBrains, s.~f.-a, s.~f.-b; NestJS, s.~f.-a, s.~f.-b; Microsoft, s.~f.). La tabla relaciona cada capacidad seleccionada con su implementación en Laravel/PHP y con la comprobación que verifica sus contratos.
 \begin{tablalafrox}{Implementación lógica del backend Laravel}{tab:mapeo-laravel}{F{0.27} F{0.35} Y}{\cab{Capacidad} & \cab{Implementación Laravel/PHP} & \cab{Comprobación}}
 APIs y módulos & Rutas y controladores Laravel, servicios por contexto PSR-4. & Contratos OpenAPI y límites de módulo. \\
 Persistencia y geografía & PDO/Query Builder y SQL PostGIS parametrizado, migraciones Laravel basales. & Datos, índices y consultas espaciales verificados. \\

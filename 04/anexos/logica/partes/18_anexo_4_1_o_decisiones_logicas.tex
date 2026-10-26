@@ -1,9 +1,9 @@
 \clearpage
-\section*{Anexo 4-O --- Registro de decisiones de arquitectura}
+\section*{Anexo 4-O — Registro de decisiones de arquitectura}
 \phantomsection\label{fuente-18-anexo-4-1-o-decisiones-logicas}
 \phantomsection
 \label{anx:O}
-\addcontentsline{toc}{section}{Anexo 4-O --- Registro de decisiones de arquitectura}
+\addcontentsline{toc}{section}{Anexo 4-O — Registro de decisiones de arquitectura}
 
 El registro reúne las decisiones de arquitectura lógica y física conforme a RT-02.04 (Bases Técnicas Transversales, cap. 2, p. 7). Cada ficha identifica la alternativa descartada, el criterio de selección y la evidencia necesaria para verificar su realización. Los RT de las fichas remiten a las Bases Técnicas Transversales (caps. 2--16, pp. 6--29), salvo RT-10.05 y RT-16.14, precisados por el caso (Bases Técnicas del caso, cap.~15, p.~27).
 
@@ -30,8 +30,8 @@ El registro reúne las decisiones de arquitectura lógica y física conforme a R
 \mbox{ADR-20} & Angular con TypeScript y Portal de Clientes instalable. & Perfil del cliente en la aplicación Kotlin. & Separación entre clientes y trabajadores. \\
 \mbox{ADR-21} & Terraform, Ansible, GitLab CI y CodeBuild. & CloudFormation/CDK y otra cadena CI. & Propiedad única y promoción trazable. \\
 \mbox{ADR-22} & Greengrass en gateways industriales. & Nube directa o PLC. & Bloqueo térmico local en cinco segundos. \\
-\mbox{ADR-24} & Greengrass en camión, simuladores y doble evaluación TC58e; móvil e Iridium SBD en paralelo. & Terminal como cadena única; router con software propio; internet satelital. & Protección local por SSCC, continuidad de curva y órdenes en ruta sin red móvil. \\
 \mbox{ADR-23} & Laravel/PHP para el núcleo modular. & Django/Python con Celery y otros entornos. & Capacidades integradas y perfiles HTTP/CLI verificables. \\
+\mbox{ADR-24} & Greengrass en camión, simuladores y doble evaluación TC58e; móvil e Iridium SBD en paralelo. & Terminal como cadena única; router con software propio; internet satelital. & Protección local por SSCC, continuidad de curva y órdenes en ruta sin red móvil. \\
 \end{tablalafrox}
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-18-anexo-4-1-o-decisiones-logicas}--\pageref*{fuente-18-anexo-4-1-o-decisiones-logicas-fin}).\par}
@@ -61,8 +61,8 @@ ADR-19 & Residencia de datos y regiones & 5 de octubre de 2026 & Propuesta en la
 ADR-20 & Frontend web & 5 de octubre de 2026 & Propuesta en la oferta \\
 ADR-21 & Infraestructura como código y cadena de entrega & 5 de octubre de 2026 & Propuesta en la oferta \\
 ADR-22 & Cadena de frío en el borde & 5 de octubre de 2026 & Propuesta en la oferta \\
-ADR-24 & Cadena de frío en ruta & 24 de octubre de 2026 & Propuesta en la oferta \\
-ADR-23 & Selección del backend modular & 24 de octubre de 2026 & Propuesta en la oferta \\
+ADR-23 & Selección del backend del monolito modular & 12 de octubre de 2026 & Propuesta en la oferta \\
+ADR-24 & Protección térmica autónoma en ruta & 12 de octubre de 2026 & Propuesta en la oferta \\
 \end{tablalafrox}
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de RT-02.04 (Bases Técnicas Transversales, cap.~2, p.~7) y del Formulario E-25 de las Bases Administrativas. Diseño propuesto: LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-18-anexo-4-1-o-decisiones-logicas}--\pageref*{fuente-18-anexo-4-1-o-decisiones-logicas-fin}).\par}
@@ -384,7 +384,7 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 \label{sub:adr-23}
 \textbf{Decisión adoptada.} Laravel 13/PHP 8.5 implementa M1--M12 con contextos de dominio y perfiles HTTP/CLI; ADR-01 conserva la decisión sobre el estilo. La sección 4.1.7.1 contiene el contraste detallado.
 
-\textbf{Alternativas evaluadas.} Django/Python con apps y Celery es el contraste principal por su uso en el diseño precedente. Spring Boot con Java o Kotlin, Ktor/Kotlin sobre JVM, Node.js con NestJS/TypeScript y ASP.NET Core/C\# también permiten implementar el núcleo. Son alternativas a Laravel, no nuevos componentes ofertados.
+\textbf{Alternativas evaluadas.} Django/Python con apps y Celery es el contraste principal. Spring Boot con Java o Kotlin, Ktor/Kotlin sobre JVM, Node.js con NestJS/TypeScript y ASP.NET Core/C\# también permiten implementar el núcleo. Son alternativas a Laravel, no nuevos componentes ofertados.
 
 \textbf{Criterio de selección.} Integración de APIs, políticas, migraciones, trabajos y planificación en el núcleo que comparten nube y WMS local. Las consolas Angular y el SQL PostGIS previsto reducen el peso decisivo del admin y GeoDjango, sin negar sus ventajas. Los trabajos Laravel evitan incorporar Celery para esa función; esto no demuestra menor costo total ni que Django requiera dos lenguajes.
 
@@ -399,8 +399,8 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 
 \textbf{Alternativas y criterio:} solo aire produce falsas advertencias de puerta; termógrafo más terminal como única cadena pierde vigilancia cuando el conductor se aleja; RUT956 requiere implementar persistencia y gestión adicionales; Starlink Mini y Certus aportan internet que no usa la solución; una segunda cadena de hardware duplica al TC58e y sensor independiente. El UC-8200 reutiliza la plataforma B-02, pero requiere probar Greengrass, punto de acceso y comportamiento vehicular.
 
-\textbf{Consecuencias y evidencia:} LafroX provee, instala y mantiene cámaras y kits; cotización local y certificación Subtel aplicable antes de compra. El UC-8200 no tiene E-mark: base antivibración, acondicionador de energía y V5; si falla se evalúa RUT956 y se repiten las pruebas. El EYE cubre hasta −20 °C; bajo ese límite se exige rango y EN 12830 acreditados antes de seleccionar. CloudConnect y el segundo destino deben confirmarse con Globalsat Chile; el receptor SBD directo es alternativa. V1–V21 y el piloto de seis semanas acreditan viabilidad, sin presentarse como ejecutados.
+\textbf{Consecuencias y evidencia:} LafroX provee, instala y mantiene cámaras y kits; cotización local y certificación Subtel aplicable antes de compra. El UC-8200 no tiene E-mark: base antivibración, acondicionador de energía y V5; si falla se evalúa RUT956 y se repiten las pruebas. El EYE cubre hasta −20 °C; bajo ese límite se exige rango y EN 12830 acreditados antes de seleccionar. CloudConnect y su segundo destino se contratan con Globalsat Chile en el paquete 5.3.4 del T-14; el receptor SBD directo en ECS es la alternativa de diseño, con el mismo contrato de ingesta. V1–V21 y el piloto de seis semanas acreditan viabilidad, sin presentarse como ejecutados.
 
-\textbf{Requisitos:} RF-09.03–RF-09.14, RNF-09.05–RNF-09.09, RT-03.10, RT-03.13 y RT-05.29 del caso; RNG-04 y RNG-17. Fuente: diseño LafroX de cadena de frío en ruta, versión 9.4, 24 de octubre de 2026.
+\textbf{Requisitos:} RF-09.03–RF-09.14, RNF-09.05–RNF-09.09, RT-03.10, RT-03.13 y RT-05.29 del caso; RNG-04 y RNG-17.
 
 \label{fuente-18-anexo-4-1-o-decisiones-logicas-fin}

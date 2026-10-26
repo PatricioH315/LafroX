@@ -1,9 +1,9 @@
 \clearpage
-\section*{Anexo 4-R --- Controles de seguridad y evidencia}
+\section*{Anexo 4-R — Controles de seguridad y evidencia}
 \phantomsection\label{fuente-21-anexo-4-1-r-controles-seguridad}
 \phantomsection
 \label{anx:R}
-\addcontentsline{toc}{section}{Anexo 4-R --- Controles de seguridad y evidencia}
+\addcontentsline{toc}{section}{Anexo 4-R — Controles de seguridad y evidencia}
 Esta matriz vincula controles de ISO/\allowbreak IEC 27001:2022, Anexo A, y su guía ISO/\allowbreak IEC 27002:2022 con la implementación lógica y la evidencia prevista por RT-11.05 (Bases Técnicas Transversales, cap. 11, p. 23). La numeración es un identificador de control, no una declaración de certificación. El sistema de gestión conserva además evaluación de riesgos y declaración de aplicabilidad. La política Zero Trust se fundamenta en NIST SP 800-207 (NIST, 2020).
 
 \begin{tablalafrox}{Controles aplicados a la vista lógica}{tab:controles-seguridad}{F{0.13} F{0.18} F{0.37} Y}{\cab{Control} & \cab{Requisito} & \cab{Implementación concreta} & \cab{Evidencia}}
@@ -28,7 +28,7 @@ Esta matriz vincula controles de ISO/\allowbreak IEC 27001:2022, Anexo A, y su g
 8.25/\allowbreak 8.28 & RT-11.22/\allowbreak 24 & SAST/\allowbreak SCA/\allowbreak DAST, firma y procedencia SLSA 3. & Pipeline bloqueado por hallazgo. \\
 8.29/\allowbreak 8.31/\allowbreak 8.32 & RT-04.02--04.05, RT-11.27 & Pruebas, ambientes segregados y promoción aprobada. & Commit, ensayo y despliegue correlacionados. \\
 \end{tablalafrox}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de ISO (2022b, 2022c), RT de los capítulos 4, 5, 7, 10, 11, 12 y 16 (Bases Técnicas Transversales, caps.~4--16, pp.~10--29), y contratos lógicos. Seguridad verifica aplicabilidad con el responsable del sistema de gestión. Diseño propuesto: LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-21-anexo-4-1-r-controles-seguridad}--\pageref*{fuente-21-anexo-4-1-r-controles-seguridad-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de ISO (2022b, 2022c, 2025a, 2026), RT de los capítulos 4, 5, 7, 10, 11, 12 y 16 (Bases Técnicas Transversales, caps.~4--16, pp.~10--29), y contratos lógicos. Seguridad verifica aplicabilidad con el responsable del sistema de gestión. Diseño propuesto: LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-21-anexo-4-1-r-controles-seguridad}--\pageref*{fuente-21-anexo-4-1-r-controles-seguridad-fin}).\par}
 
 El registro de vulnerabilidades guarda la fecha que inicia el plazo, que es la primera entre la publicación y la detección para el componente afectado, y la evidencia de cierre. Los plazos máximos de 7 días corridos para críticas, 15 para altas y 30 para medias respetan los congelamientos y el escalamiento al CLIENTE descritos en 4.2.4.1.4 del Subdocumento 4. Contener una vulnerabilidad no equivale a remediarla (RT-11.04, Bases Técnicas Transversales, cap. 11, p. 23).
 

@@ -347,7 +347,7 @@
   version       = {1.0},
   logo          = {},
   objeto        = {Proyecto de Plataforma Digital de Misión Crítica},
-  sobre         = {Sobre N.\textdegree{} 2 --- Oferta Técnica},
+  sobre         = {Sobre N.\textdegree{} 2 — Oferta Técnica},
   %  El domicilio se constituye en Valparaíso por exigencia del Art. 39.
   %  PROVISIONAL: confirmar con la identidad definitiva del PROPONENTE.
   domicilio     = {Av. Brasil 2241, Valparaíso},

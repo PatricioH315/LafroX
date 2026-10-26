@@ -1,9 +1,9 @@
 \clearpage
-\section*{Anexo 4-Q --- Modelado de amenazas lógicas}
+\section*{Anexo 4-Q — Modelado de amenazas lógicas}
 \phantomsection\label{fuente-20-anexo-4-1-q-modelado-amenazas}
 \phantomsection
 \label{anx:Q}
-\addcontentsline{toc}{section}{Anexo 4-Q --- Modelado de amenazas lógicas}
+\addcontentsline{toc}{section}{Anexo 4-Q — Modelado de amenazas lógicas}
 STRIDE se aplica por módulo, componente transversal e integración externa (RT-11.02). S representa suplantación; T, alteración; R, repudio; I, divulgación; D, denegación; E, elevación de privilegios. Cada escenario tiene una prueba negativa y un dueño. El registro se reevalúa al cambiar un contrato o límite de confianza. Esta matriz registra amenazas de diseño, no resultados de pentesting.
 
 \begin{tablalafrox}{Amenazas de los doce módulos}{tab:amenazas-modulos}{F{0.10} F{0.25} F{0.34} Y}{\cab{Elemento} & \cab{Amenaza} & \cab{Control y prueba} & \cab{Dueño}}
@@ -44,12 +44,15 @@ DEV-PIPE/\allowbreak IAC/\allowbreak MDM/\allowbreak UI-WEB/\allowbreak BOR-B2B 
 Las integraciones internas heredan los controles de productor y consumidor: INT-01/\allowbreak 02, identidad y UUID; INT-03/\allowbreak 04, sitio y secuencia; INT-05, sensor y frescura; INT-12, cuenta CDC de lectura; INT-13, manifiesto firmado; INT-14, integridad y capacidad del buffer. Toda excepción conserva escenario, consecuencia, responsable, tratamiento y criterio de cierre.
 
 \subsection*{Amenazas y pruebas negativas del kit de camión}
-\begin{tablalafrox}{Protección del kit de cadena de frío. Fuente: diseño LafroX, ADR-24.}{tab:amenazas-kit}{Y Y Y}{\cab{Amenaza} & \cab{Control y prueba} & \cab{Dueño}}
+La tabla siguiente aplica el mismo modelado al kit de cadena de frío de cada camión: amenaza, control, prueba V del Anexo 4-W que lo verifica y dueño.
+
+\begin{tablalafrox}{Protección del kit de cadena de frío}{tab:amenazas-kit}{Y Y Y}{\cab{Amenaza} & \cab{Control y prueba} & \cab{Dueño}}
 Suplantación de camión & Certificado único, aprovisionamiento y rol mínimo; rechazar identidad ajena (V1). & Seguridad / SRE \\
 Latido falso o evaluador detenido & Firma, secuencia, contador y lectura menor de 30 s; congelar lectura y verificar retención (V6–V8). & Desarrollo \\
 Orden repetida o de estado anterior & Firma, incidente, SSCC, versión, revisión y caducidad; rechazar orden repetida y obsoleta por ambos caminos (V13, V19). & Calidad / Seguridad \\
 Mensaje satelital falso & Validar emisor, contrato y autenticidad antes de M9; inyectar mensajes y duplicados (V11, V13). & Integración \\
 Manipulación de registradores & Conservar original, verificar integridad y firmar hash; conciliación de tres series, CRC solo no autentica (V3, V11). & Calidad / Datos \\
 \end{tablalafrox}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de RT-11.02 (Bases Técnicas Transversales, cap.~11, p.~23), ADR-24 (Anexo 4-O) y las pruebas V1--V21 (Anexo 4-W). Diseño propuesto: LafroX (2026e, Anexo 4-Q).\par}
 
 \label{fuente-20-anexo-4-1-q-modelado-amenazas-fin}

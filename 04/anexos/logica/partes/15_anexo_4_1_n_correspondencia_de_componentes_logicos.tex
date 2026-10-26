@@ -1,8 +1,8 @@
-\section*{Anexo 4-N --- Correspondencia de componentes lógicos}
+\section*{Anexo 4-N — Correspondencia de componentes lógicos}
 \phantomsection\label{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}
 \phantomsection
 \label{anx:N}
-\addcontentsline{toc}{section}{Anexo 4-N --- Correspondencia de componentes lógicos}
+\addcontentsline{toc}{section}{Anexo 4-N — Correspondencia de componentes lógicos}
 La matriz identifica los doce módulos y los servicios transversales para cotejarlos con el esquema y explicación de solución exigidos en 3.3--3.4 y con su realización física en 4.2. Las capacidades de 3.3 y 3.4 se corresponden con los módulos y contratos de 4.1. La matriz de correspondencia citada en 4.2.2 identifica su realización física.
 
 La matriz completa vincula cada capacidad de 3.3–3.4 con su módulo o capa de 4.1, su recurso de 4.2 y su emplazamiento.
@@ -57,6 +57,7 @@ La tabla verifica la correspondencia de los doce módulos con sus capacidades, c
 La correspondencia entre 3.3, 3.4, 4.1 y 4.2.2 se verifica en ambos sentidos mediante identificador, contrato, responsable y realización física.
 
 \subsection*{Incorporación de las innovaciones del SD13}
+Las cinco innovaciones del Subdocumento 13 (LafroX, 2026h) se realizan sobre los componentes existentes de la manera siguiente:
 \begin{itemize}
 \item Seguimiento de vencimiento posentrega en el local: C-01 y M3 reciben la precarga nocturna de M10/N-10 y registran la respuesta de la visita. M2 y M9 aportan los datos de inventario y trazabilidad. Las capas 1, 4, 5 y 6 soportan el recorrido. El saldo estimado en el local no modifica el inventario oficial ni autoriza disposición sanitaria.
 \item Reproducción de incidentes de terreno: C-01/C-02/C-03 capturan el recorrido causal de M3/M6/M5 con límites de tamaño y frecuencia. OpenTelemetry y CloudWatch aportan la observación. Las capas 7 y 8 controlan acceso y trazas. Los recursos temporales se crean dentro de QA y Preproducción, no en un sexto ambiente, y se destruyen al finalizar, también ante error. Se excluyen nombres, credenciales, firmas, fotografías y contenido comercial. Al cerrar se elimina la captura y solo se conserva el escenario sintético de regresión. Operación recoge el caso, Calidad lo admite y Desarrollo corrige.
@@ -71,10 +72,10 @@ Los siguientes 37 identificadores complementan los doce módulos: el inventario 
 \begin{tablalafrox}{Inventario transversal y realización física}{tab:inventario-transversal}{F{0.16} F{0.17} F{0.17} F{0.15} Y}{\cab{ID} & \cab{Componente} & \cab{Capacidad} & \cab{Contrato} & \cab{Realización física y límite}}
  UI-MOV  &  Apps Kotlin / Room  &  preventa y entrega  &  INT-01/02  &  C-01/C-02 en terreno, N-04 en nube. M3/M6/M7/M8  \\
  UI-HHT  &  Terminales de bodega  &  preparación y disposición sanitaria autorizada  &  INT-03 / API local  &  C-03 y A-01 en los cinco sitios, perfiles separados para M1/M2/M5 y Calidad en M9.  \\
- UI-WEB  &  Portales Angular  &  Administración, portales  &  API autorizada  &  N-01/N-02 y frontend N-04 en nube. Roles por empresa  \\
- BOR-PUB  &  CloudFront / AWS WAF / AWS Shield Advanced  &  seguridad  &  HTTPS  &  N-01/N-02/N-12 en nube. Entrada pública única  \\
+ UI-WEB  &  Portales Angular  &  Administración, portales  &  API autorizada  &  N-01 a N-03 y frontend N-04 en nube. Roles por empresa  \\
+ BOR-PUB  &  CloudFront / AWS WAF / AWS Shield Advanced  &  seguridad  &  HTTPS  &  N-01 a N-03 y N-12 en nube. Entrada pública única  \\
  BOR-B2B  &  Superficie AS2  &  canal moderno  &  INT-08  &  N-04, OpenAS2 y NLB en nube. Contrapartes registradas  \\
- GW-CENT  &  REST API / authorizer  &  plataforma  &  API / sincronización  &  N-03, API Gateway y authorizer en nube. ADR-13  \\
+ GW-CENT  &  REST API / authorizer  &  plataforma  &  API / sincronización  &  N-04 y N-12, API Gateway y authorizer en nube. ADR-13  \\
  GW-LOCAL  &  Puerta API de sitio  &  WMS  &  INT-03  &  A-01 en VM-01, VM-C01 y E-01. Validación sin WAN  \\
  AUTH-CENT  &  Keycloak  &  seguridad  &  INT-13 / OIDC  &  A-05 en Fargate y N-05 en nube. Autoridad de identidad  \\
  AUTH-LOCAL  &  Verificador de turnos  &  continuidad  &  Manifiesto firmado  &  A-05 en VM-05, VM-C03 y E-01. PIN, turno y sitio  \\
@@ -110,7 +111,7 @@ Los siguientes 37 identificadores complementan los doce módulos: el inventario 
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
 \subsection*{Correspondencia de actores y permisos del sistema}
-La Tabla~\ref{tab:actores-permisos} realiza el catálogo de quince actores del apartado 3.4.2 del Subdocumento 3. Cada acción se autoriza por separado sobre el ámbito indicado. Ni el cargo ni el acceso a una consola conceden todos los permisos de un módulo.
+La Tabla~\ref{tab:actores-permisos} realiza el catálogo de quince actores del apartado 3.4.2 del Subdocumento 3 (LafroX, 2026g). Cada acción se autoriza por separado sobre el ámbito indicado. Ni el cargo ni el acceso a una consola conceden todos los permisos de un módulo.
 
 \begin{tablalafrox}{Actores del sistema, interfaces y permisos}{tab:actores-permisos}{F{0.17} F{0.22} F{0.24} F{0.24} Y}{\cab{Actor} & \cab{Interfaz y módulos} & \cab{Acciones} & \cab{Ámbito y límite} & \cab{Etapa}}
 Preventista & App de preventa, M3, lectura M2/M7 & Consultar stock y crédito, capturar y sincronizar pedidos & Su cartera, no reserva offline & 1 \\

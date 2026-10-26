@@ -196,7 +196,7 @@ La columna Total suma 37 en las filas de criterios porque la plataforma analíti
 Los trece componentes de nube pura viven solo en la nube. La justificación de cada uno y el criterio del Artículo 16.2 (Bases Administrativas, art. 16.2, p. 11) que la determina son los siguientes:
 
 \begin{itemize}
-  \item \textbf{N-01 Portal de Clientes} (regulación): atiendel catálogo, el pedido de autoatención, el estado de entrega, los documentos y el saldo de los clientes desde Internet, también como aplicación instalable que arma el pedido sin señal. Por eso se publica solo en la DMZ de la nube y ningún tráfico externo llega a los sitios del CLIENTE.
+  \item \textbf{N-01 Portal de Clientes} (regulación): atiende el catálogo, el pedido de autoatención, el estado de entrega, los documentos y el saldo de los clientes desde Internet, también como aplicación instalable que arma el pedido sin señal. Por eso se publica solo en la DMZ de la nube y ningún tráfico externo llega a los sitios del CLIENTE.
   \item \textbf{N-02 Portal de Transportistas} (regulación): desde la Etapa 2, los representantes de cada empresa transportista consultan rutas y documentos y confirman conductor y vehículo desde Internet, y ese acceso se resuelve en la DMZ de la nube. Los conductores externos no usan el portal: trabajan en la app de reparto con su identidad personal.
   \item \textbf{N-03 Portal de Proveedores} (regulación): los 180 proveedores consultan órdenes de compra, recepciones y devoluciones desde Internet, aislados de la red de bodega.
   \item \textbf{N-04 Plataforma de aplicación} (costo): Laravel corre en ECS Fargate con perfiles de API, reconciliación, trabajos y planificación que escalan por separado. La plataforma aloja el frontend Angular de consolas y el transporte AS2 de M11 en dos tareas distribuidas entre dos zonas cada uno. El motor de rutas M4 ejecuta una tarea por corrida, que ECS relanza en otra zona ante una falla para repetirla dentro de la planificación de 15:00 a 18:30, con el plazo de 20 min por corrida medido en la prueba de aceptación. M11 usa contratos versionados (ADR-11, Anexo 4-O).
@@ -267,10 +267,9 @@ El emplazamiento descrito se verifica en lo que cada ámbito puede hacer cuando 
 \item \textbf{Centros de distribución de Talca y Concepción.} \textbf{Autonomía sin enlace:} 24 h o más, con reconciliación determinista.
 \item \textbf{Terreno.} \textbf{Autonomía sin enlace:} 14 h, un turno completo.
 \item \textbf{Cross-docking.} \textbf{Autonomía sin enlace:} 24 h o más. La ventana de 3 h opera 100\,\% local.
-\item \textbf{Sincronización al reconectar.} \textbf{Autonomía sin enlace:} CD en 2 h, flota en 10 min.
+\item \textbf{Sincronización al reconectar.} \textbf{Tiempo de sincronización:} CD en 2 h, flota en 10 min.
 \end{itemize}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-a-emplazamiento}--\pageref*{fuente-02-a-emplazamiento-fin}).\par}
 
 Durante la autonomía, cada ámbito mantiene las funciones habilitadas contra sus datos locales, con permisos vigentes, bloqueos sanitarios y las condiciones del Anexo 4-J:
 

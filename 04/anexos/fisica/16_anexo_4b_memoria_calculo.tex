@@ -3,12 +3,12 @@
 %  Anexo 4-W: memoria de cálculo del dimensionamiento.
 % ------------------------------------------------------------------
 
-\chapter*{Anexo 4-W --- Memoria de cálculo del dimensionamiento}
+\chapter*{Anexo 4-W — Memoria de cálculo del dimensionamiento}
 \phantomsection\label{fuente-16-anexo-4b-memoria-calculo}
 \phantomsection
 \label{anx:42A}
-\markboth{Anexo 4-W --- Memoria de cálculo}{Anexo 4-W --- Memoria de cálculo}
-\addcontentsline{toc}{chapter}{Anexo 4-W --- Memoria de cálculo del dimensionamiento}
+\markboth{Anexo 4-W — Memoria de cálculo}{Anexo 4-W — Memoria de cálculo}
+\addcontentsline{toc}{chapter}{Anexo 4-W — Memoria de cálculo del dimensionamiento}
 
 La memoria avanza desde los datos del caso hasta la capacidad de cada sitio y de la nube, en doce secciones.
 
@@ -24,7 +24,7 @@ La síntesis siguiente reúne las dieciséis dimensiones del caso, sus valores p
   6 & Dispositivos de terreno en operación simultánea & 158 & 158 & Anexo 4-W, sección 4-W.3 \\
   7 & Volumen anual de almacenamiento transaccional & 50,75 GB/año & 7,85 GB mes peak & Anexo 4-W, sección 4-W.4 \\
   8 & Volumen anual de almacenamiento de evidencia de entrega, firmas y fotografías & 87,72 GB/año & 13,58 GB mes peak & Anexo 4-W, sección 4-W.4 \\
-  9 & Volumen anual de almacenamiento de series de temperatura y de posicionamiento & 0,58 + 3,20 GB/año crudos & 2,89 + 3,20 GB crudos retenidos & Anexo 4-W, sección 4-W.4 \\
+  9 & Volumen anual de almacenamiento de series de temperatura y de posicionamiento & 6,77 + 3,20 GB/año crudos & 33,83 + 3,20 GB crudos retenidos & Anexo 4-W, sección 4-W.4 \\
   10 & Volumen total de datos históricos a migrar & 32,11 GB & 30,73--33,49 GB de sensibilidad & Anexo 4-W, sección 4-W.4 \\
   11 & Número de integraciones y volumen de mensajes por integración & 15, 244.280 mensajes/día & 362.561 mensajes/día & Anexo 4-W, sección 4-W.5 \\
   12 & Ancho de banda requerido por sitio, en régimen y en peak & 3,29 / 0,71 / 0,06 Mbps cargados & 5,16 / 2,14 / 0,41 Mbps peor caso & Anexo 4-W, sección 4-W.5 \\
@@ -91,9 +91,9 @@ La Tabla~\ref{tab:anexo-4b-supuestos} declara el fundamento, impacto y validaci�
   SV-07 & La API de telemetría de los camiones propios continúa disponible. & Posición automática se degrada a ruta planificada. & Prueba contractual y técnica. \\
 \end{tablalarga}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29) y de los supuestos y cálculos de LafroX (2026e, anexo~4-W, pp.~78--104).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29) y de los supuestos y cálculos de LafroX (2026e, anexo~4-W, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
 
-\section{Dimensiones 1--3: transacciones por segundo}
+\section{Dimensiones 1–3: transacciones por segundo}
 \label{sec:anexo-4b-dimensiones-1-3}
 
 Se calcula el máximo horario de cada lugar para no sumar ventanas que no coinciden. Los días equivalentes son 31.000 ÷ 1.400 = 22,14 días (los cálculos usan el cociente sin redondear, 22,142857) y el control cruzado es 2.100 ÷ 96 = 21,88 días. El factor de septiembre es 2.600 ÷ 1.400 = 1,857.
@@ -135,16 +135,16 @@ La Tabla~\ref{tab:anexo-4b-horario} conserva el perfil hora por hora que produce
 \end{tablalarga}
 \end{anexohorizontal}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29) y de los supuestos y cálculos de LafroX (2026e, anexo~4-W, pp.~78--104).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29) y de los supuestos y cálculos de LafroX (2026e, anexo~4-W, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
 
 La fila de las 12:00 gobierna los TPS totales porque coincide la hora cargada de preventa, reparto y portal. La hora de preparación conserva la mayor carga local de WMS, pero no la mayor suma de lugares.
 
-\section{Dimensiones 4--6: personas, concurrencia y dispositivos}
+\section{Dimensiones 4–6: personas, concurrencia y dispositivos}
 \label{sec:anexo-4b-dimensiones-4-6}
 
 La dimensión 4 es (640 + 160) + 14.200 + 180 = \textbf{15.180 personas o entidades}. La dimensión 5 toma el mayor resultado entre ventanas: noche 120 + 60 (S-39) + 6 (S-35) = 186. Despacho 96, día sin portal 62 + 96 + 184 = 342, portal en régimen 342 + 96,30 = \textbf{438,30}. Portal extremo 342 + 433,33 = \textbf{775,33}. La dimensión 6 es 62 + 96 = \textbf{158 dispositivos de terreno en operación simultánea}.
 
-El parque separado de la dimensión 6 se distribuye así:
+El parque inicial de la dimensión 6 se distribuye así:
 
 \begin{itemize}
   \item Bodega: 132 terminales en Talca, 22 de ellos para congelado, y 66 en Concepción.
@@ -189,7 +189,7 @@ El inventario siguiente conserva las unidades en operación por familia y sitio.
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
 
-\section{Dimensiones 7--10: almacenamiento, retención y migración}
+\section{Dimensiones 7–10: almacenamiento, retención y migración}
 \label{sec:anexo-4b-dimensiones-7-10}
 
 El almacenamiento transaccional se calcula con 1.300.000 eventos = 260.000 líneas × 5, 520.000 operaciones = 260.000 líneas × 2, 155.000 operaciones = 31.000 pedidos × 5 y 279.050 movimientos = 260.000 líneas + 14.500 pallets + 3.400 conteos + 1.150 recepciones. Por tanto, ((1.300.000 + 520.000 + 155.000) × 1 KB + 279.050 × 0,5 KB) × 2 × 12 = \textbf{50,75 GB/año} y seis años acumulan \textbf{304,49 GB} como cota de retención. La evidencia es 30 KB + 200 KB × (1 + 900 ÷ 31.000) = \textbf{235,81 KB por entrega} y genera \textbf{87,72 GB/año}. En el mes peak alcanza 13,58 GB.
@@ -208,7 +208,7 @@ La dimensión 10 se estima por dominio:
 
 La suma de 16.054.780 KB × 2 ÷ 1.000.000 = \textbf{32,11 GB}. Con 10 o 30 líneas por recepción, el intervalo es \textbf{30,73–33,49 GB}. No se multiplican eventos históricos de trazabilidad: el caso declara que no existe una forma consultable. El 41\,\% de recepciones sin lote, medido en el producto retirado, sólo orienta el saneamiento.
 
-\section{Dimensiones 11--12: integraciones, mensajes y enlaces}
+\section{Dimensiones 11–12: integraciones, mensajes y enlaces}
 \label{sec:anexo-4b-dimensiones-11-12}
 
 La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. INT-04 detalla un subconjunto de INT-03 y no se suma otra vez: el total normal es 249.880 $-$ 5.600 = 244.280 y el peak es 372.961 $-$ 10.400 = 362.561 mensajes/día. Los quince contratos no equivalen a quince sumandos independientes. La Tabla~\ref{tab:anexo-4b-integraciones} deja el volumen por integración. Las solicitudes del portal y las llamadas internas no aparecen.
@@ -235,7 +235,7 @@ La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. I
 \end{tablalarga}
 \end{anexohorizontal}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29) y de los supuestos y cálculos de LafroX (2026e, anexo~4-W, pp.~78--104).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29) y de los supuestos y cálculos de LafroX (2026e, anexo~4-W, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
 
 Para la dimensión 12, el drenaje se obtiene sumando los aportes acumulados en 24 horas y dividiendo por 2 horas:
 
@@ -262,14 +262,14 @@ La coordinación de reserva no se suma al drenaje: durante un aislamiento la nub
 
 La ventana dominical usa ocho horas sin operación de bodega ni reparto. Cada sitio actualiza sus terminales de bodega y los equipos de reparto de los camiones que estacionan en él, repartidos por SV-03: 71 de los 106 en Talca y 35 en Concepción. En Talca, el respaldo completo de 15,12 GB se transfiere a 20 Mbps en 1,68 horas y la aplicación de sus 203 equipos, 20,30 GB, en 2,26 horas. Juntas requieren 3,94 horas. Una tanda de 18 sistemas operativos de 2 GB agrega 4,00 horas y ocupa 7,94 horas. Una ronda completa ocupa 12 domingos. En Concepción, el respaldo completo de 7,76 GB y la aplicación de sus 101 equipos, 10,10 GB, requieren 3,97 horas. Una tanda de 9 sistemas operativos ocupa 7,97 horas y la ronda completa, 12 domingos. Los 69 terminales de preventa no usan esta ventana: trabajan en la calle y el MDM los actualiza por la red móvil. En cada cross-docking, el respaldo de 1,89 GB y la aplicación de sus 2 terminales, 0,20 GB, requieren 2,33 horas sobre la capacidad supuesta de 2 Mbps. Con los 2 sistemas operativos, la ventana ocupa 6,77 horas y la ronda requiere un domingo. La aplicación se actualiza en un domingo por sitio. El sistema operativo se distribuye en tandas dominicales con cadencia semestral, dentro de los aproximadamente 43 domingos disponibles al año tras los congelamientos de septiembre y diciembre.
 
-\section{Dimensiones 13--14: terreno y sincronización}
+\section{Dimensiones 13–14: terreno y sincronización}
 \label{sec:anexo-4b-dimensiones-13-14}
 
 La peor ruta produce 34 × 235,81 KB ÷ 1.024 + 2 MB = \textbf{9,83 MB}. La ruta promedio produce 5,36 MB normales y 8,24 MB en septiembre. Para diez minutos, el umbral es 9,83 MB × 8 ÷ 600 segundos = \textbf{0,13 Mbps efectivos}.
 
 La dimensión 14 es un tiempo. Los 96 camiones regresan entre 17:00 y 20:00. Con SV-04, 96 ÷ 3 × 2 = \textbf{64 camiones} llegan en la hora punta. Según SV-03, se reparten entre Talca y Concepción en una proporción de 2/3 y 1/3: requieren 0,93 y 0,47 Mbps, respectivamente, en la Wi-Fi y el enlace de cada centro (1,40 Mbps en total). La flota completa agrega 0,70 Mbps como promedio durante las tres horas. Esos promedios suponen llegadas distribuidas. No demuestran por sí solos la sincronización de cada dispositivo en diez minutos. La prueba mide desde la reconexión, incluida la espera por contención, y añade una sensibilidad de 64 retornos simultáneos: 64 $\times$ 9,83 MB $\times$ 8 $\div$ 600 s = 8,39 Mbps agregados de carga útil, aproximadamente 5,64 Mbps en Talca para 43 dispositivos y 2,75 Mbps en Concepción para 21, antes de los protocolos y del resto del tráfico. Esta sensibilidad es una condición de prueba, no una cifra observada del caso. Si el caudal medido no la sostiene, el acta identifica el límite y la adecuación necesaria antes de acreditar el plazo.
 
-\section{Dimensiones 15--16: mesa de ayuda y operación}
+\section{Dimensiones 15–16: mesa de ayuda y operación}
 \label{sec:anexo-4b-dimensiones-15-16}
 
 La mesa de ayuda se dimensiona en cuatro pasos:
@@ -304,7 +304,7 @@ La base local contiene maestros, stock, lotes presentes y movimientos del horizo
 \end{tablalarga}
 \end{anexohorizontal}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), Advantech (2025, p.~1) para el equipo de cross-docking, y criterios de dimensionamiento de LafroX (2026e, anexo~4-W, pp.~78--104).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), Advantech (2025, p.~1) para el equipo de cross-docking, y criterios de dimensionamiento de LafroX (2026e, anexo~4-W, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
 
 VM-04 incorpora dos procesos PHP CLI de \texttt{erp-sync} de 64 MB cada uno: la base de 2 GB sube a 3 GB tras redondear 2 + 2 × 64 ÷ 1.024. Las VMs de Talca suman 14 vCPU, 23 GB RAM, 210 GB y 136 IOPS actuales. A 3× suman 14 vCPU, 25 GB, 221 GB y 359 IOPS. El hipervisor agrega 15\,\% de vCPU y 2 GB RAM por nodo. Ceph agrega por nodo dos OSD de 1 vCPU y 4 GB cada uno y monitor/manager de 1 vCPU y 2 GB. El total de Talca es 26 vCPU, 59 GB RAM y 210 GB actuales. A 3×, 26 vCPU, 61 GB y 221 GB. Concepción requiere con hipervisor 12 vCPU, 17 GB RAM y 140 GB actuales. A 3×, 12 vCPU, 18 GB y 140 GB. El segundo servidor de Concepción aloja copias en espera de VM-C01 a VM-C04 con los mismos recursos, y cada cross-docking tiene un segundo mini-PC idéntico en espera: la utilización de cada equipo no cambia.
 
@@ -319,8 +319,6 @@ La energía de los gabinetes de borde y de piso se calcula con el método de la 
 \end{tablalafrox}
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de la especificación de LafroX, Advantech (2025, p.~1), Cisco (2026, p.~10), Fortinet (s.~f., p.~22), Moxa (s.~f.-a y s.~f.-b, Power Parameters, sin paginación), Zebra Technologies (s.~f.-f, Power Specifications) y Starlink (s.~f., p.~3), con las condiciones y las hipótesis de carga explicadas debajo de la tabla. Diseño propuesto: LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
-
-Los 59,44 W del ARK-1251 corresponden al Core Ultra 5-125U en la ficha revisada el 19 de diciembre de 2025 (Advantech, 2025, Specifications, p.~1). Los 24 W corresponden al máximo del FGR-60F-3G4G (Fortinet, s.~f., Dimensions and Power, p.~22). Los 18,96 W del EDS-P506E excluyen los dispositivos PoE; los dos puntos de acceso se cuentan por separado y no se suma además el presupuesto PoE completo (Moxa, s.~f.-a, Power Parameters, sin paginación). La fuente de 600 W y los 370 W de PoE del C9200-24P se documentan en Cisco (2026, tabla~4, p.~10), y los 10 W del gateway en Moxa (s.~f.-b, Power Parameters, sin paginación). Los 98 W de la ZT411 corresponden a potencia de impresión de referencia, no a una cota máxima garantizada (Zebra Technologies, s.~f.-f, Power Specifications). Para Starlink Standard 4, 75--100 W es consumo medio; los 100 W se conservan como hipótesis que debe validarse con picos y pérdidas de conversión del conjunto instalado (Starlink, s.~f., Standard, p.~3). La aceptación de la UPS exige medir esas cargas y comprobar autonomía antes de confirmar las cotas de la tabla.
 
 Los 59,44 W del ARK-1251 corresponden al Core Ultra 5-125U en la ficha revisada el 19 de diciembre de 2025 (Advantech, 2025, Specifications, p.~1). Los 24 W corresponden al máximo del FGR-60F-3G4G (Fortinet, s.~f., Dimensions and Power, p.~22). Los 18,96 W del EDS-P506E excluyen los dispositivos PoE; los dos puntos de acceso se cuentan por separado y no se suma además el presupuesto PoE completo (Moxa, s.~f.-a, Power Parameters, sin paginación). La fuente de 600 W y los 370 W de PoE del C9200-24P se documentan en Cisco (2026, tabla~4, p.~10), y los 10 W del gateway en Moxa (s.~f.-b, Power Parameters, sin paginación). Los 98 W de la ZT411 corresponden a potencia de impresión de referencia, no a una cota máxima garantizada (Zebra Technologies, s.~f.-f, Power Specifications). Para Starlink Standard 4, 75--100 W es consumo medio; los 100 W se conservan como hipótesis que debe validarse con picos y pérdidas de conversión del conjunto instalado (Starlink, s.~f., Standard, p.~3). La aceptación de la UPS exige medir esas cargas y comprobar autonomía antes de confirmar las cotas de la tabla.
 
@@ -395,9 +393,9 @@ El informe de prueba compara base e incremento por innovación y por recurso, id
 \label{fuente-16-anexo-4b-memoria-calculo-fin}
 
 \subsection*{Verificación del sistema de cadena de frío en ruta}
-Las pruebas siguientes usan carga de ensayo y forman la aceptación propuesta, no resultados ejecutados. El banco 2.4.3 cubre V1–V3, V5–V8, V11, V13, V14, V16, V17 y V19; el mapeo 2.4.4 cubre V4. El piloto de seis semanas en cuatro camiones verifica V18, V20 y V21. La versión integrada repite los casos afectados y completa V9, V10, V12 y V15 antes de habilitar el reparto. Calidad valida reglas, máximos de andén, tolerancias y lista rotativa de llamada.
+Las pruebas siguientes usan carga de ensayo y forman la aceptación propuesta, no resultados ejecutados. El ensayo de banco cubre V1–V3, V5–V8, V11, V13, V14, V16, V17 y V19; el mapeo térmico cubre V4. El piloto de seis semanas en cuatro camiones verifica V18, V20 y V21. La versión integrada repite los casos afectados y completa V9, V10, V12 y V15 antes de habilitar el reparto. Calidad valida reglas, máximos de andén, tolerancias y lista rotativa de llamada.
 
-\begin{tablalafrox}{Pruebas V1–V21. Fuente: diseño LafroX, cadena de frío en ruta, versión 9.4.}{tab:frio-v1-v21}{L{1.1cm} Y Y}{\cab{ID} & \cab{Prueba} & \cab{Criterio de aceptación}}
+\begin{tablalafrox}{Pruebas V1–V21 de la cadena de frío en ruta}{tab:frio-v1-v21}{L{1.1cm} Y Y}{\cab{ID} & \cab{Prueba} & \cab{Criterio de aceptación}}
 V1 & Gateway con Greengrass: Modbus cada 5 s, regla, Stream Manager, IoT Core con A2, latido por MQTT local, actualización y reversión & Evento completo; sin pérdida tras corte de energía \\
 V2 & Iridium Edge manejado por el gateway, sin SIM: alarma, lote de 3 min y orden de bajada & Alarma en $\leq$ 3 min; lote y orden íntegros según el formato \\
 V3 & Sensor independiente y termógrafo: lectura en vivo y descarga de memoria desde el TC58e, intervalo de 1 min & Series completas; certificado EN 12830 del modelo \\
@@ -413,12 +411,13 @@ V12 & Crítica sin acuse; acuse sin acción; nadie decide & Escalan los dos relo
 V13 & Órdenes repetidas, antiguas, caducadas, de otro incidente, con firma inválida, sobre una revisión anterior o con el producto fuera de rango, por celular y por satélite & Todas rechazadas o sin autorización de entrega \\
 V14 & TC58e reiniciado, reemplazado o con la base local borrada, sin internet & Ninguna entrega antes de recuperar el estado del gateway \\
 V15 & Tiempo fuera de frío en el andén & El SSCC que supera el máximo queda bloqueado antes de salir \\
-V16 & Fallas de sonda: abierta, en corto, desviada & Se aplica la matriz de sección 7.4 \\
+V16 & Fallas de sonda: abierta, en corto, desviada & Un simulador sano mantiene la evaluación; dos simuladores fallidos llevan a NO CONFIABLE \\
 V17 & Pérdida de la región justo después de A2 & El evento y su aviso se recuperan desde el archivo de 72 h \\
 V18 & Satélite en rutas reales: Empedrado/Chanco/Cauquenes y Pinto/Alto Biobío, con bosque, quebradas y túneles, en verano y en invierno & Porcentaje de mensajes entregados, latencia y duración máxima de cada corte de cielo, medidos por tramo \\
 V19 & Orden de Calidad por satélite en una zona sin red móvil & Llega al TC58e y se aplica o se rechaza según regla de orden firmada y revisión vigente \\
 V20 & Falla del equipo de frío en ruta, con carga de ensayo & Advertencia temprana con la puerta cerrada; minutos restantes por familia; retención solo de lo que supera su regla \\
 V21 & Ruptura confirmada de punta a punta: retención, entrega parcial, ajuste tributario, reposición, área de no aptos, disposición y expediente & Cada fase de protocolo de ruptura confirmada queda registrada y el pedido del cliente se repone \\
 \end{tablalafrox}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de RT-03.10 y RT-03.13 (Bases Técnicas Transversales, cap.~3, p.~9) y de ADR-24 (Anexo 4-O). Diseño propuesto: LafroX (2026e, Anexo 4-W).\par}
 
 La meta móvil de aviso a Calidad es de no más de 2 min en al menos 99 \%; por satélite, no más de 5 min en al menos 95 \%, sujeto a V2/V18. Las condiciones de ruta y camino se miden por población; sin red móvil ni cielo, la alarma y retención local continúan y se registra la duración del corte de aviso. El tablero presenta antigüedad de la última curva; no se afirma latencia remota durante ausencia de ambos caminos.

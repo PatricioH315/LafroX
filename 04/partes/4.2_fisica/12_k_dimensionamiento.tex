@@ -50,7 +50,7 @@ La Tabla~\ref{tab:dimensionamiento-calendario} resume los factores de calendario
 
 Los 22,14 días son una equivalencia de cálculo, no una cantidad de días hábiles. El peak se obtiene por el cociente entre entregas de septiembre y entregas normales. Diciembre no agrega un factor porque el caso identifica septiembre como la mayor exigencia.
 
-\subsection{Transacciones por segundo: dimensiones 1--3}
+\subsection{Transacciones por segundo: dimensiones 1–3}
 \label{sec:dimensionamiento-tps}
 
 La dimensión 1, «Transacciones por segundo en régimen normal», toma el máximo horario normal. La dimensión 2, «Transacciones por segundo en el peak de la ventana de despacho de 05:30 a 07:00», incluye la cota de emisión de guías y el re-despacho del cross-docking. La dimensión 3, «Transacciones por segundo en el peak de septiembre», toma el máximo horario del perfil de septiembre.
@@ -76,14 +76,13 @@ Total & 12,34 TPS & 3,76 / 6,94 TPS & 14,66 TPS \\
 \item \textbf{Conjunto de los tres cross-docking.} Tres operaciones de llegada y una de despacho sobre el volumen agregado.
 \item \textbf{Nube, sin portal.} preventa, reparto, recepción, trazabilidad, guías y sincronización.
 \item \textbf{Portal.} 2.600 ÷ 9 × 2 por SV-04 × 60 ÷ 3.600.
-\item \textbf{Total.} El máximo global de septiembre ocurre a las 12:00 con preventa y portal, y el máximo de despacho entre 05:30 y 07:00 llega a 6,94 TPS con guías y re-despacho..
+\item \textbf{Total.} El máximo global de septiembre ocurre a las 12:00 con preventa y portal, y el máximo de despacho entre 05:30 y 07:00 llega a 6,94 TPS con guías y re-despacho.
 \end{itemize}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
 El despacho de 05:30 a 07:00 se reparte entre ambos centros conforme a SV-03, en la misma proporción que la preparación. La dimensión 2 toma el máximo real del perfil en las horas 05:00 y 06:00. El tramo 05:30–06:00 se considera uniforme, por lo que resulta 3,76 TPS normal y 6,94 TPS peak. Los aproximadamente 2.852 documentos/día peak son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías. Considerarlos todos como guías que deben emitirse antes de la salida es una cota conservadora. Las 2.600 sesiones diarias del portal son un parámetro de diseño: una por cada cliente de food service y de cadenas, 2.100 + 500 (Bases Técnicas del caso, cap. 2, p. 4), y no son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, anexo B, p. 38). La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) es 1,5 × 14,66 = 21,99 TPS y no recibe un segundo multiplicador.
 
-\subsection{Personas usuarias, concurrencia y dispositivos: dimensiones 4--6}
+\subsection{Personas usuarias, concurrencia y dispositivos: dimensiones 4–6}
 \label{sec:dimensionamiento-usuarios}
 
 La dimensión 4, «Personas usuarias registradas, internas y externas», es 15.180 registros: 640 + 160 + 14.200 + 180. La dimensión 5, «Personas usuarias concurrentes en peak», toma el máximo de cada ventana sin sumar turnos que no coinciden. La Tabla~\ref{tab:dimensionamiento-concurrencia} muestra la operación sin portal y la cota de sesiones.
@@ -101,7 +100,7 @@ La dimensión 4, «Personas usuarias registradas, internas y externas», es 15.1
 
 La operación sin portal, que carga la Wi-Fi y los sitios, llega a 342 personas o equipos concurrentes durante el día. Los seis del cross-docking son personas con terminal inalámbrico, dos por plataforma (S-35). Los 96 equipos de reparto equivalen a 96 conductores en ruta. La dimensión 5 se expresa en personas o sesiones y no en camiones. La cota extrema del portal se conserva como prueba separada. La dimensión 6, «Dispositivos de terreno en operación simultánea», es 62 preventistas + 96 equipos de reparto = 158.
 
-La cantidad a proveer se informa aparte, por ámbito:
+La cantidad inicial a proveer se informa aparte, por ámbito. El Formulario T-11 agrega la compra por crecimiento del año 3 (S-31 y S-32):
 
 \begin{itemize}
   \item Bodega: 132 terminales en Talca, 22 de ellos para congelado, y 66 en Concepción.
@@ -111,7 +110,7 @@ La cantidad a proveer se informa aparte, por ámbito:
 
 Cada cantidad incluye la reserva del 10 \% del parque, redondeada hacia arriba, conforme a la tabla de repuestos de las Bases Técnicas Transversales (cap. 8, p. 19). Solo los 22 terminales de la cuadrilla de congelado de Talca son aptos para {$-$}22\,\textdegree{}C: el congelado representa cerca del 4 \% de las líneas y se prepara al final del turno, de modo que la cuadrilla que entra a la cámara es de unas 20 personas (S-34). Concepción no tiene congelado.
 
-\subsection{Almacenamiento, retención y migración: dimensiones 7--10}
+\subsection{Almacenamiento, retención y migración: dimensiones 7–10}
 \label{sec:dimensionamiento-almacenamiento}
 
 La dimensión 7, «Volumen anual de almacenamiento transaccional», la dimensión 8, «Volumen anual de almacenamiento de evidencia de entrega, firmas y fotografías», la dimensión 9, «Volumen anual de almacenamiento de series de temperatura y de posicionamiento», y la dimensión 10, «Volumen total de datos históricos a migrar», se resumen en la Tabla~\ref{tab:dimensionamiento-almacenamiento}.
@@ -129,7 +128,7 @@ La dimensión 7, «Volumen anual de almacenamiento transaccional», la dimensió
 
 La migración no supone eventos históricos digitales de trazabilidad: el caso dice que no existe forma consultable y que el lote se anota en texto libre cuando se anota. Por eso la estimación usa 1.150 recepciones mensuales × 60 meses × 20 líneas por recepción, con sensibilidad de 10 a 30 líneas. El 41\,\% sin lote del retiro de marzo se usa sólo para saneamiento de calidad, conforme a Bases Técnicas del caso, cap. 7, p. 12.
 
-\subsection{Integraciones y ancho de banda por sitio: dimensiones 11--12}
+\subsection{Integraciones y ancho de banda por sitio: dimensiones 11–12}
 \label{sec:dimensionamiento-enlaces}
 
 La dimensión 11, «Número de integraciones y volumen de mensajes por integración», cuenta únicamente INT-01 a INT-15 del catálogo del apartado 4.1. Portal y llamadas internas a la API quedan fuera. La Tabla~\ref{tab:dimensionamiento-integraciones} resume sus 244.280 mensajes diarios normales y 362.561 en peak, incluida la coordinación de reserva de INT-03/04. INT-14 considera 13 nodos activos, seis VMs en Talca, cuatro en Concepción y un mini-PC activo por cada cross-docking, con 1.000 eventos por nodo al día. Suma además 7 nodos en espera, cuatro VMs en Concepción y un mini-PC por cross-docking, con 200 eventos al día, porque no atienden transacciones.
@@ -171,13 +170,12 @@ Cada cross-docking & D-04 LTE & 2 Mbps & 17,70\,\% \\
 \item \textbf{Cada cross-docking / D-04 LTE.} 0,35 Mbps, drenaje.
 \end{itemize}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
 D-03, D-04 y D-06 corresponden a fibra, LTE y satélite. La Tabla~\ref{tab:t81} distingue el retorno promedio del escenario simultáneo: este último suma 5,64 Mbps útiles de dispositivos y 1,87 Mbps de drenaje en Talca. En Concepción suma 2,75 y 1,44 Mbps. Con un margen de transporte del 15 \%, exige 8,64 y 4,82 Mbps, respectivamente. Se fijan mínimos de aceptación de 10 Mbps de subida sostenida en cada respaldo de Talca y 6 Mbps en cada respaldo de Concepción. Son requisitos de dimensionamiento, no velocidades observadas ni garantías inherentes a LTE o Starlink. La aceptación mide cada camino por separado, cola, latencia y plazo por dispositivo. Si un proveedor no sostiene el mínimo, el camino se refuerza o sustituye antes de aceptar el servicio. La priorización por sí sola no compensa falta de caudal.
 
 Durante el respaldo se suspende el tráfico administrativo y no urgente. Tienen prioridad sincronización, WAL, broker, guías, identidad y alertas. Los cross-docking conservan la cota de drenaje de 0,35 Mbps por sitio y su comprobación con LTE dual. La ventana dominical y las tandas de actualización se detallan en el Anexo 4-W. Las condiciones de retorno de los dispositivos, en 4.2.6.7.
 
-\subsection{Terreno: turno sin señal y sincronización de la flota: dimensiones 13--14}
+\subsection{Terreno: turno sin señal y sincronización de la flota: dimensiones 13–14}
 \label{sec:dimensionamiento-terreno}
 
 La dimensión 13, «Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal», es 9,83 MB para la ruta de 34 clientes. Una ruta promedio genera 5,36 MB normales y 8,24 MB en septiembre. La cifra incluye evidencia, una fotografía adicional cuando corresponde y 2 MB de datos locales.
@@ -253,7 +251,6 @@ Mesa de ayuda, contactos & 2.000/mes & 2.000 × (350 ÷ 310) = 2.258/mes & 6.000
 \item \textbf{Mesa de ayuda, contactos.} Recalibrar Erlang C trimestralmente.
 \end{itemize}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
 La nube escala automáticamente dentro del techo declarado. Nodos, almacenamiento local, Wi-Fi y enlaces requieren revisión planificada. La gestión trimestral compara la proyección observada con la cota de 3× y con la incorporación de nuevas unidades.
 
@@ -298,7 +295,6 @@ Informe estándar & 30 s \\
 \item \textbf{Búsqueda compuesta.} Bases Técnicas Transversales, cap. 9, p. 21; LafroX (2026c), Anexo 3.A.
 \end{itemize}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
 Los otros candidatos son la base WMS, los IOPS, la Wi-Fi y el drenaje. Se detectan con percentil 95, longitud de colas, errores, retransmisiones y tiempo de sincronización. Si se supera una cota, se encola con clave idempotente, se limita la tasa y se muestra un mensaje explícito. No se pierden ni duplican pedidos.
 
