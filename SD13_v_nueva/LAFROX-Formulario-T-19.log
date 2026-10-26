@@ -1,4 +1,5 @@
-This is LuaHBTeX, Version 1.24.0 (MiKTeX 25.12) (format=lualatex 2026.10.6)  12 OCT 2026 04:52
+This is LuaHBTeX, Version 1.24.0 (MiKTeX 25.12) (format=lualatex 2026.10.6)  26 OCT 2026 20:35
+ system commands enabled.
 **LAFROX-Formulario-T-19.tex
 (./LAFROX-Formulario-T-19.tex
 LaTeX2e <2025-11-01>
@@ -1828,10 +1829,6 @@ ii
 (C:/Users/alexa/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
 ase.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-
-
-Package epstopdf Warning: Shell escape feature is not enabled.
-
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 
@@ -2144,15 +2141,15 @@ L3 programming layer <2025-12-24>
 
 Here is how much of LuaTeX's memory you used:
  36744 strings out of 476081
- 195333,2848258 words of node,token memory allocated
+ 244173,2848258 words of node,token memory allocated
  821 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 4 kern, 1 penalty, 3 glyph, 34
  attribute, 79 glue_spec, 19 attribute_list, 2 write, 8 pdf_action nodes
-   avail lists: 1:5,2:2586,3:785,4:278,5:3275,6:118,7:18310,8:116,9:1386,10:39,1
-1:2331
+   avail lists: 1:5,2:2586,3:785,4:278,5:3365,6:118,7:18742,8:116,9:1386,10:40,1
+1:2379
  57812 multiletter control sequences out of 65536+600000
- 115 fonts using 45677955 bytes
- 101i,24n,128p,1503b,4983s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 115 fonts using 45678107 bytes
+ 101i,24n,128p,1503b,5107s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-RegularIt.otf><C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/op
 entype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/Users/alexa/AppData/Local/Pr
@@ -2162,7 +2159,7 @@ r.otf><C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sources
 ans/SourceSans3-Regular.otf><C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/
 opentype/adobe/sourcesans/SourceSans3-Medium.otf><C:/Users/alexa/AppData/Local/P
 rograms/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Semibold.otf>
-Output written on LAFROX-Formulario-T-19.pdf (15 pages, 120198 bytes).
+Output written on LAFROX-Formulario-T-19.pdf (15 pages, 120321 bytes).
 
 PDF statistics: 206 PDF objects out of 1000 (max. 8388607)
  23 named destinations out of 1000 (max. 1048576)
