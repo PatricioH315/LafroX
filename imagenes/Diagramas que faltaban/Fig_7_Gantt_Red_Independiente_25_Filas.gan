@@ -1,0 +1,329 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project name="LafroX — Red independiente 2 — 25 filas" company="LafroX" webLink="" view-date="2028-02-01" view-index="0" gantt-divider-location="760" resource-divider-location="300" version="3.3.3316" locale="en">
+    <description>Vista editable. Solo se fusionan paquetes o hitos con igual inicio, duración, criticidad y exactamente las mismas relaciones entrantes y salientes, tipos y desfases. Las demás tareas permanecen separadas para conservar las dependencias visibles y las fechas originales. Criticidad conservada del archivo original.</description>
+    <view zooming-state="default:11" id="gantt-chart">
+        <option id="filter.completedTasks" value="false" />
+        <option id="filter.dueTodayTasks" value="false" />
+        <option id="filter.overdueTasks" value="false" />
+        <option id="filter.inProgressTodayTasks" value="false" />
+        <field id="tpd3" name="Name" width="580" order="0" />
+        <field id="tpd4" name="Begin date" width="90" order="1" />
+        <field id="tpd5" name="End date" width="90" order="2" />
+        <option id="taskLabelRight" value="name" />
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nombre" width="210" order="0" />
+        <field id="1" name="Función" width="86" order="1" />
+    </view>
+    <calendars>
+        <day-types>
+            <day-type id="0" />
+            <day-type id="1" />
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1" />
+            <only-show-weekends value="false" />
+            <overriden-day-types />
+            <days />
+        </day-types>
+        <date year="2027" month="1" date="1" type="HOLIDAY" />
+        <date year="2027" month="3" date="26" type="HOLIDAY" />
+        <date year="2027" month="3" date="27" type="HOLIDAY" />
+        <date year="2027" month="5" date="1" type="HOLIDAY" />
+        <date year="2027" month="5" date="21" type="HOLIDAY" />
+        <date year="2027" month="6" date="21" type="HOLIDAY" />
+        <date year="2027" month="6" date="28" type="HOLIDAY" />
+        <date year="2027" month="7" date="16" type="HOLIDAY" />
+        <date year="2027" month="8" date="15" type="HOLIDAY" />
+        <date year="2027" month="9" date="17" type="HOLIDAY" />
+        <date year="2027" month="9" date="18" type="HOLIDAY" />
+        <date year="2027" month="9" date="19" type="HOLIDAY" />
+        <date year="2027" month="10" date="11" type="HOLIDAY" />
+        <date year="2027" month="10" date="31" type="HOLIDAY" />
+        <date year="2027" month="11" date="1" type="HOLIDAY" />
+        <date year="2027" month="12" date="8" type="HOLIDAY" />
+        <date year="2027" month="12" date="25" type="HOLIDAY" />
+        <date year="2028" month="1" date="1" type="HOLIDAY" />
+        <date year="2028" month="4" date="14" type="HOLIDAY" />
+        <date year="2028" month="4" date="15" type="HOLIDAY" />
+        <date year="2028" month="5" date="1" type="HOLIDAY" />
+        <date year="2028" month="5" date="21" type="HOLIDAY" />
+        <date year="2028" month="6" date="20" type="HOLIDAY" />
+        <date year="2028" month="6" date="26" type="HOLIDAY" />
+        <date year="2028" month="7" date="16" type="HOLIDAY" />
+        <date year="2028" month="8" date="15" type="HOLIDAY" />
+        <date year="2028" month="9" date="18" type="HOLIDAY" />
+        <date year="2028" month="9" date="19" type="HOLIDAY" />
+        <date year="2028" month="10" date="9" type="HOLIDAY" />
+        <date year="2028" month="10" date="27" type="HOLIDAY" />
+        <date year="2028" month="11" date="1" type="HOLIDAY" />
+        <date year="2028" month="12" date="8" type="HOLIDAY" />
+        <date year="2028" month="12" date="25" type="HOLIDAY" />
+        <date year="2029" month="1" date="1" type="HOLIDAY" />
+        <date year="2029" month="3" date="30" type="HOLIDAY" />
+        <date year="2029" month="3" date="31" type="HOLIDAY" />
+        <date year="2029" month="5" date="1" type="HOLIDAY" />
+        <date year="2029" month="5" date="21" type="HOLIDAY" />
+        <date year="2029" month="6" date="20" type="HOLIDAY" />
+        <date year="2029" month="7" date="2" type="HOLIDAY" />
+        <date year="2029" month="7" date="16" type="HOLIDAY" />
+        <date year="2029" month="8" date="15" type="HOLIDAY" />
+        <date year="2029" month="9" date="17" type="HOLIDAY" />
+        <date year="2029" month="9" date="18" type="HOLIDAY" />
+        <date year="2029" month="9" date="19" type="HOLIDAY" />
+        <date year="2029" month="10" date="15" type="HOLIDAY" />
+        <date year="2029" month="11" date="1" type="HOLIDAY" />
+        <date year="2029" month="11" date="2" type="HOLIDAY" />
+        <date year="2029" month="12" date="8" type="HOLIDAY" />
+        <date year="2029" month="12" date="25" type="HOLIDAY" />
+        <date year="2030" month="1" date="1" type="HOLIDAY" />
+        <date year="2030" month="4" date="19" type="HOLIDAY" />
+        <date year="2030" month="4" date="20" type="HOLIDAY" />
+        <date year="2030" month="5" date="1" type="HOLIDAY" />
+        <date year="2030" month="5" date="21" type="HOLIDAY" />
+        <date year="2030" month="6" date="21" type="HOLIDAY" />
+        <date year="2030" month="6" date="29" type="HOLIDAY" />
+        <date year="2030" month="7" date="16" type="HOLIDAY" />
+        <date year="2030" month="8" date="15" type="HOLIDAY" />
+        <date year="2030" month="9" date="18" type="HOLIDAY" />
+        <date year="2030" month="9" date="19" type="HOLIDAY" />
+        <date year="2030" month="9" date="20" type="HOLIDAY" />
+        <date year="2030" month="10" date="12" type="HOLIDAY" />
+        <date year="2030" month="10" date="31" type="HOLIDAY" />
+        <date year="2030" month="11" date="1" type="HOLIDAY" />
+        <date year="2030" month="12" date="8" type="HOLIDAY" />
+        <date year="2030" month="12" date="25" type="HOLIDAY" />
+        <date year="2031" month="1" date="1" type="HOLIDAY" />
+        <date year="2031" month="4" date="11" type="HOLIDAY" />
+        <date year="2031" month="4" date="12" type="HOLIDAY" />
+        <date year="2031" month="5" date="1" type="HOLIDAY" />
+        <date year="2031" month="5" date="21" type="HOLIDAY" />
+        <date year="2031" month="6" date="21" type="HOLIDAY" />
+        <date year="2031" month="6" date="29" type="HOLIDAY" />
+        <date year="2031" month="7" date="16" type="HOLIDAY" />
+        <date year="2031" month="8" date="15" type="HOLIDAY" />
+        <date year="2031" month="9" date="18" type="HOLIDAY" />
+        <date year="2031" month="9" date="19" type="HOLIDAY" />
+        <date year="2031" month="10" date="12" type="HOLIDAY" />
+        <date year="2031" month="10" date="31" type="HOLIDAY" />
+        <date year="2031" month="11" date="1" type="HOLIDAY" />
+        <date year="2031" month="12" date="8" type="HOLIDAY" />
+        <date year="2031" month="12" date="25" type="HOLIDAY" />
+        <date year="2032" month="1" date="1" type="HOLIDAY" />
+        <date year="2032" month="3" date="26" type="HOLIDAY" />
+        <date year="2032" month="3" date="27" type="HOLIDAY" />
+        <date year="2032" month="5" date="1" type="HOLIDAY" />
+        <date year="2032" month="5" date="21" type="HOLIDAY" />
+        <date year="2032" month="6" date="20" type="HOLIDAY" />
+        <date year="2032" month="6" date="28" type="HOLIDAY" />
+        <date year="2032" month="7" date="16" type="HOLIDAY" />
+        <date year="2032" month="8" date="15" type="HOLIDAY" />
+        <date year="2032" month="9" date="17" type="HOLIDAY" />
+        <date year="2032" month="9" date="18" type="HOLIDAY" />
+        <date year="2032" month="9" date="19" type="HOLIDAY" />
+        <date year="2032" month="10" date="11" type="HOLIDAY" />
+        <date year="2032" month="10" date="31" type="HOLIDAY" />
+        <date year="2032" month="11" date="1" type="HOLIDAY" />
+        <date year="2032" month="12" date="8" type="HOLIDAY" />
+        <date year="2032" month="12" date="25" type="HOLIDAY" />
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon" />
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon" />
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon" />
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text" />
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date" />
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date" />
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int" />
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int" />
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text" />
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text" />
+            <taskproperty id="tpc0" name="Holgura (días hábiles)" type="custom" valuetype="int" />
+            <taskproperty id="tpc1" name="Crítica" type="custom" valuetype="text" defaultvalue="" />
+        </taskproperties>
+        <task id="113" name="PT/H | 1.2.5 Documento de línea base de alcance de la Etapa 2: canal moderno y costo de servir (H8)" color="#4472c4" meeting="false" start="2028-02-01" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="6" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>1.2.5 Documento de línea base de alcance de la Etapa 2: canal moderno y costo de servir (H8)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 11</notes>
+            <depend id="120" type="2" difference="0" hardness="Rubber" />
+            <depend id="125" type="2" difference="0" hardness="Rubber" />
+            <depend id="121" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="114" name="PT/H | 2.1.4 Documento de diseño detallado de M11 y del intercambio con las cadenas" color="#4472c4" meeting="false" start="2028-02-01" duration="12" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="1" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>2.1.4 Documento de diseño detallado de M11 y del intercambio con las cadenas
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 51</notes>
+            <depend id="120" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="115" name="PT/H | 3.6.5 Intercambio electrónico con la principal cadena, con sus pruebas aprobadas (INT-08)" color="#4472c4" meeting="false" start="2028-02-01" duration="107" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="19" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.6.5 Intercambio electrónico con la principal cadena, con sus pruebas aprobadas (INT-08)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 116</notes>
+            <depend id="150" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="120" name="PT/H | 2.4.2 Acta de aprobación del diseño detallado de la Etapa 2 (H8)" color="#4472c4" meeting="false" start="2028-02-17" duration="8" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="1" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>2.4.2 Acta de aprobación del diseño detallado de la Etapa 2 (H8)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 63</notes>
+            <depend id="125" type="2" difference="0" hardness="Rubber" />
+            <depend id="121" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="121" name="PT/H | H8 — entrega del expediente" color="#404040" meeting="true" start="2028-02-28" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H8 — entrega del expediente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 302</notes>
+            <depend id="124" type="2" difference="10" hardness="Rubber" />
+        </task>
+        <task id="124" name="PT/H | H8 — acta del CLIENTE (límite: mes 14)" color="#404040" meeting="true" start="2028-03-13" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="14" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H8 — acta del CLIENTE (límite: mes 14)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 303</notes>
+            <depend id="125" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="125" name="RC | 4 elementos: 3.5.1, 3.5.2, 3.5.3, 3.5.4" color="#c00000" meeting="false" start="2028-03-15" duration="32" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="0" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>3.5.1 Pedido electrónico y aviso de despacho para las cadenas, y portal de proveedores (M11 Canal moderno)
+3.5.2 Portal web de clientes: cuenta, saldo, entregas y documentos
+3.5.3 Portal web de transportistas: rutas asignadas del día siguiente
+3.5.4 Costo de servir por cliente y por entrega (M10 Analítica)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 107, 108, 109, 110</notes>
+            <depend id="130" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="129" name="PT/H | 7.1.4 Traspaso al equipo de TI de cuatro personas del CLIENTE" color="#4472c4" meeting="false" start="2028-04-03" duration="123" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>7.1.4 Traspaso al equipo de TI de cuatro personas del CLIENTE
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 239</notes>
+            <depend id="153" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="130" name="PT/H | 3.9.1 Pruebas de integración y regresión sin afectar la Etapa 1 en producción (H9)" color="#4472c4" meeting="false" start="2028-05-02" duration="13" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="3" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.9.1 Pruebas de integración y regresión sin afectar la Etapa 1 en producción (H9)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 134</notes>
+            <depend id="143" type="2" difference="0" hardness="Rubber" />
+            <depend id="136" type="2" difference="0" hardness="Rubber" />
+            <depend id="137" type="2" difference="0" hardness="Rubber" />
+            <depend id="144" type="2" difference="0" hardness="Rubber" />
+            <depend id="135" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="135" name="PT/H | H9 — entrega del expediente" color="#404040" meeting="true" start="2028-05-18" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H9 — entrega del expediente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 306</notes>
+            <depend id="142" type="2" difference="10" hardness="Rubber" />
+        </task>
+        <task id="136" name="PT/H | 3 elementos: 3.9.3, 3.9.4, 3.9.7" color="#4472c4" meeting="false" start="2028-05-19" duration="10" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="12" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.9.3 Pruebas de carga con ambas etapas activas y de resiliencia
+3.9.4 Prueba de recuperación ante desastres con ambas etapas
+3.9.7 Demostración en Preproducción del despliegue sin interrupción de la Etapa 2
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 136, 137, 140</notes>
+            <depend id="144" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="137" name="PT/H | 3.9.5 Prueba de seguridad ofensiva de la Etapa 2, por un tercero independiente" color="#4472c4" meeting="false" start="2028-05-19" duration="6" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="3" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.9.5 Prueba de seguridad ofensiva de la Etapa 2, por un tercero independiente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 138</notes>
+            <depend id="144" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="140" name="PT/H | 4.1.3 Plan de implantación y reversión de la Etapa 2 fuera de la ventana de 05:30 a 07:00" color="#4472c4" meeting="false" start="2028-06-01" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="13" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>4.1.3 Plan de implantación y reversión de la Etapa 2 fuera de la ventana de 05:30 a 07:00
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 172</notes>
+            <depend id="150" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="142" name="PT/H | H9 — acta del CLIENTE (límite: mes 17)" color="#404040" meeting="true" start="2028-06-01" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="19" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H9 — acta del CLIENTE (límite: mes 17)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 307</notes>
+        </task>
+        <task id="143" name="PT/H | 3.9.2 Pruebas de aceptación y de accesibilidad con cadenas, transportistas, Comercial y Finanzas" color="#4472c4" meeting="false" start="2028-06-02" duration="10" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="2" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.9.2 Pruebas de aceptación y de accesibilidad con cadenas, transportistas, Comercial y Finanzas
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 135</notes>
+            <depend id="144" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="144" name="PT/H | 3.9.6 Acta de certificación de la Etapa 2 y cierre del desarrollo (H10)" color="#4472c4" meeting="false" start="2028-06-16" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="2" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.9.6 Acta de certificación de la Etapa 2 y cierre del desarrollo (H10)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 139</notes>
+            <depend id="145" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="145" name="PT/H | H10 — entrega del expediente" color="#404040" meeting="true" start="2028-06-28" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H10 — entrega del expediente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 308</notes>
+            <depend id="148" type="2" difference="10" hardness="Rubber" />
+        </task>
+        <task id="147" name="PT/H | 7.3.2 Certificación de Comercial y Finanzas en costo de servir (Etapa 2)" color="#4472c4" meeting="false" start="2028-07-03" duration="17" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="4" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>7.3.2 Certificación de Comercial y Finanzas en costo de servir (Etapa 2)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 250</notes>
+            <depend id="153" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="148" name="PT/H | H10 — acta del CLIENTE (límite: mes 18)" color="#404040" meeting="true" start="2028-07-12" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="13" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H10 — acta del CLIENTE (límite: mes 18)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 309</notes>
+            <depend id="150" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="149" name="RC | H11 — inicio de marcha blanca (mes 19)" color="#c00000" meeting="true" start="2028-08-01" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="0" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>H11 — inicio de marcha blanca (mes 19)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 310</notes>
+        </task>
+        <task id="150" name="PT/H | 4.3.1 Marcha blanca de la Etapa 2 en convivencia con la Etapa 1 y fuente única de datos (H11)" color="#4472c4" meeting="false" start="2028-08-01" duration="41" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>4.3.1 Marcha blanca de la Etapa 2 en convivencia con la Etapa 1 y fuente única de datos (H11)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 179</notes>
+            <depend id="153" type="2" difference="0" hardness="Rubber" />
+            <depend id="149" type="1" difference="0" hardness="Rubber" />
+        </task>
+        <task id="151" name="PT/H | 4.3.4 Garantía de correcto funcionamiento constituida, condición de la aceptación final (H12)" color="#4472c4" meeting="false" start="2028-09-13" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="4" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>4.3.4 Garantía de correcto funcionamiento constituida, condición de la aceptación final (H12)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 182</notes>
+            <depend id="153" type="2" difference="0" hardness="Rubber" />
+            <depend id="154" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="153" name="PT/H | 4.3.3 Acta de paso a producción y aceptación final de la implementación (H12)" color="#4472c4" meeting="false" start="2028-10-02" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="3" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>4.3.3 Acta de paso a producción y aceptación final de la implementación (H12)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 181</notes>
+            <depend id="154" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="154" name="PT/H | H12 — entrega del expediente" color="#404040" meeting="true" start="2028-10-11" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H12 — entrega del expediente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 311</notes>
+            <depend id="155" type="2" difference="10" hardness="Rubber" />
+        </task>
+        <task id="155" name="RC | H12 — acta del CLIENTE (límite: mes 21)" color="#c00000" meeting="true" start="2028-10-25" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="3" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>H12 — acta del CLIENTE (límite: mes 21)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 312</notes>
+        </task>
+    </tasks>
+    <resources />
+    <allocations />
+    <vacations />
+    <previous />
+    <roles roleset-name="Default" />
+</project>
