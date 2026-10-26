@@ -22,3 +22,9 @@
 
 # Auxiliares de verificación de cadena de frío
 /revision/cadena_frio_build/
+
+# Temporales de compilación y revisión, cachés de fuentes y herramientas locales
+/tmp/
+/.cache/
+/.atl/
+node_modules/

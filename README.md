@@ -10,9 +10,11 @@ lafrox.cls                       Clase y formato corporativo
 lafrox-portada.tex               Diseño de portada
 latexmkrc                        Compilación con LuaLaTeX
 logo/                           Isotipos de portada y encabezado
-subdocumento-ejemplo/
-    contenido.tex               Capítulo autocontenido de muestra
-    tablas/ejemplo_tabla.tex     Ejemplo de tabla
+subdocumento-07/                 Capítulo 7 y sus tablas
+subdocumento-07-anexos/          Anexos 7.A a 7.F
+formulario-t14/ … t18/           Formularios T-14, T-15 y T-18
+imagenes/                        Figuras en PDF y sus fuentes .drawio
+revision/                        Revisión, scripts de cálculo (CPM, curvas) y de Markdown
 README.md
 .gitignore
 ```
