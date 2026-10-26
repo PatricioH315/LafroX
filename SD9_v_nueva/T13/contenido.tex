@@ -162,7 +162,7 @@ Las condiciones siguientes se verifican antes y después de cada ejecución. Las
 Unitaria y componente & Cambio con solicitud de fusión que cita su requisito o incidencia & Cobertura de lógica de negocio ≥ 70 \% y global ≥ 80 \%; 0 pruebas en falla; complejidad ciclomática ≤ 10 por método; 0 dependencias prohibidas entre módulos; acoplamiento eferente ≤ 20 clases por clase; duplicación ≤ 3 \% (T-10) \\
 Contrato & Contratos OpenAPI 3.1 y AsyncAPI 2.6 versionados & 0 contratos rotos \\
 Integración & Imagen promovida a QA sin vulnerabilidades críticas ni altas; simuladores de los 15 flujos disponibles & 15 de 15 flujos sin error (BTT 20.1, pp. 34-35) \\
-Sistema y regresión & Integración aprobada; juego de datos restituido & 100 \% de la batería aprobada; 0 regresiones; p95, errores y colas de la carga de regresión no peores que en la última versión aceptada (SD4, sección 4.2.4.1.4) \\
+Sistema y regresión & Integración aprobada; juego de datos restituido & 100 \% de la batería aprobada; 0 regresiones; p95, errores y colas de la carga de regresión no peores que en la última versión aceptada (SD4, sección 4.2.4.1.1) \\
 Análisis dinámico & Versión desplegada en QA & 0 alertas altas de DAST; 0 hallazgos críticos o altos de MobSF \\
 Aceptación de usuario & Regresión aprobada; 0 defectos críticos o altos abiertos; personas del CLIENTE convocadas y con inducción & Casos de aceptación firmados por la Contraparte Técnica (BTT 20.1, pp. 34-35) \\
 Accesibilidad & Vistas completas en QA & 0 incumplimientos WCAG 2.2 A y AA; informe de conformidad entregado (RT-13.01) (BTT, p. 26) \\
@@ -203,7 +203,7 @@ Escalón de quiebre & 14,66 TPS & 4 & 58,64 TPS \\
 \end{tablasimple}
 \fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 24, p. 17); Distribuidora Puelche S.A. (2026b, RT-09.03 y RT-09.06, p. 21); LafroX (2026m, SD4, secciones 4.2.6.3, 4.2.6.4 y 4.2.6.7); LafroX (2026l, Anexos 4, secciones 4-W.2, 4-W.3 y 4-W.6).}
 
-\textbf{Umbrales de salida (p95, SD4, Tabla 21):} confirmación de línea de preparación ≤ 1 s; registro de entrega ≤ 2 s; línea de preventa ≤ 1,5 s; consulta de stock y crédito ≤ 2 s; transacción crítica de terreno ≤ 3 s; carga inicial del portal ≤ 2 s; navegación ≤ 1 s; API de consulta ≤ 500 ms; API de escritura ≤ 800 ms; búsqueda compuesta ≤ 3 s y búsqueda global ≤ 2 s; informe estándar ≤ 30 s.
+\textbf{Umbrales de salida (p95, SD4, sección 4.2.6.11):} confirmación de línea de preparación ≤ 1 s; registro de entrega ≤ 2 s; línea de preventa ≤ 1,5 s; consulta de stock y crédito ≤ 2 s; transacción crítica de terreno ≤ 3 s; carga inicial del portal ≤ 2 s; navegación ≤ 1 s; API de consulta ≤ 500 ms; API de escritura ≤ 800 ms; búsqueda compuesta ≤ 3 s y búsqueda global ≤ 2 s; informe estándar ≤ 30 s.
 
 \textbf{Ventana de despacho.} La prueba de 10,41 TPS concentra la emisión de guías en los 90 minutos. Su criterio de salida incluye 0 minutos de indisponibilidad (Caso, RT-10.05).
 
