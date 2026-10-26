@@ -1,0 +1,1369 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project name="LafroX — Etapas 1 y 2 con dependencias visibles" company="LafroX" webLink="" view-date="2027-02-01" view-index="0" gantt-divider-location="760" resource-divider-location="300" version="3.3.3316" locale="en">
+    <description>Vista editable. Solo se fusionan paquetes o hitos con igual inicio, duración, criticidad y exactamente las mismas relaciones entrantes y salientes, tipos y desfases. Las demás tareas permanecen separadas para conservar las dependencias visibles y las fechas originales. Criticidad conservada del archivo original.</description>
+    <view zooming-state="default:11" id="gantt-chart">
+        <option id="filter.completedTasks" value="false" />
+        <option id="filter.dueTodayTasks" value="false" />
+        <option id="filter.overdueTasks" value="false" />
+        <option id="filter.inProgressTodayTasks" value="false" />
+        <field id="tpd3" name="Name" width="580" order="0" />
+        <field id="tpd4" name="Begin date" width="90" order="1" />
+        <field id="tpd5" name="End date" width="90" order="2" />
+        <option id="taskLabelRight" value="name" />
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nombre" width="210" order="0" />
+        <field id="1" name="Función" width="86" order="1" />
+    </view>
+    <calendars>
+        <day-types>
+            <day-type id="0" />
+            <day-type id="1" />
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1" />
+            <only-show-weekends value="false" />
+            <overriden-day-types />
+            <days />
+        </day-types>
+        <date year="2027" month="1" date="1" type="HOLIDAY" />
+        <date year="2027" month="3" date="26" type="HOLIDAY" />
+        <date year="2027" month="3" date="27" type="HOLIDAY" />
+        <date year="2027" month="5" date="1" type="HOLIDAY" />
+        <date year="2027" month="5" date="21" type="HOLIDAY" />
+        <date year="2027" month="6" date="21" type="HOLIDAY" />
+        <date year="2027" month="6" date="28" type="HOLIDAY" />
+        <date year="2027" month="7" date="16" type="HOLIDAY" />
+        <date year="2027" month="8" date="15" type="HOLIDAY" />
+        <date year="2027" month="9" date="17" type="HOLIDAY" />
+        <date year="2027" month="9" date="18" type="HOLIDAY" />
+        <date year="2027" month="9" date="19" type="HOLIDAY" />
+        <date year="2027" month="10" date="11" type="HOLIDAY" />
+        <date year="2027" month="10" date="31" type="HOLIDAY" />
+        <date year="2027" month="11" date="1" type="HOLIDAY" />
+        <date year="2027" month="12" date="8" type="HOLIDAY" />
+        <date year="2027" month="12" date="25" type="HOLIDAY" />
+        <date year="2028" month="1" date="1" type="HOLIDAY" />
+        <date year="2028" month="4" date="14" type="HOLIDAY" />
+        <date year="2028" month="4" date="15" type="HOLIDAY" />
+        <date year="2028" month="5" date="1" type="HOLIDAY" />
+        <date year="2028" month="5" date="21" type="HOLIDAY" />
+        <date year="2028" month="6" date="20" type="HOLIDAY" />
+        <date year="2028" month="6" date="26" type="HOLIDAY" />
+        <date year="2028" month="7" date="16" type="HOLIDAY" />
+        <date year="2028" month="8" date="15" type="HOLIDAY" />
+        <date year="2028" month="9" date="18" type="HOLIDAY" />
+        <date year="2028" month="9" date="19" type="HOLIDAY" />
+        <date year="2028" month="10" date="9" type="HOLIDAY" />
+        <date year="2028" month="10" date="27" type="HOLIDAY" />
+        <date year="2028" month="11" date="1" type="HOLIDAY" />
+        <date year="2028" month="12" date="8" type="HOLIDAY" />
+        <date year="2028" month="12" date="25" type="HOLIDAY" />
+        <date year="2029" month="1" date="1" type="HOLIDAY" />
+        <date year="2029" month="3" date="30" type="HOLIDAY" />
+        <date year="2029" month="3" date="31" type="HOLIDAY" />
+        <date year="2029" month="5" date="1" type="HOLIDAY" />
+        <date year="2029" month="5" date="21" type="HOLIDAY" />
+        <date year="2029" month="6" date="20" type="HOLIDAY" />
+        <date year="2029" month="7" date="2" type="HOLIDAY" />
+        <date year="2029" month="7" date="16" type="HOLIDAY" />
+        <date year="2029" month="8" date="15" type="HOLIDAY" />
+        <date year="2029" month="9" date="17" type="HOLIDAY" />
+        <date year="2029" month="9" date="18" type="HOLIDAY" />
+        <date year="2029" month="9" date="19" type="HOLIDAY" />
+        <date year="2029" month="10" date="15" type="HOLIDAY" />
+        <date year="2029" month="11" date="1" type="HOLIDAY" />
+        <date year="2029" month="11" date="2" type="HOLIDAY" />
+        <date year="2029" month="12" date="8" type="HOLIDAY" />
+        <date year="2029" month="12" date="25" type="HOLIDAY" />
+        <date year="2030" month="1" date="1" type="HOLIDAY" />
+        <date year="2030" month="4" date="19" type="HOLIDAY" />
+        <date year="2030" month="4" date="20" type="HOLIDAY" />
+        <date year="2030" month="5" date="1" type="HOLIDAY" />
+        <date year="2030" month="5" date="21" type="HOLIDAY" />
+        <date year="2030" month="6" date="21" type="HOLIDAY" />
+        <date year="2030" month="6" date="29" type="HOLIDAY" />
+        <date year="2030" month="7" date="16" type="HOLIDAY" />
+        <date year="2030" month="8" date="15" type="HOLIDAY" />
+        <date year="2030" month="9" date="18" type="HOLIDAY" />
+        <date year="2030" month="9" date="19" type="HOLIDAY" />
+        <date year="2030" month="9" date="20" type="HOLIDAY" />
+        <date year="2030" month="10" date="12" type="HOLIDAY" />
+        <date year="2030" month="10" date="31" type="HOLIDAY" />
+        <date year="2030" month="11" date="1" type="HOLIDAY" />
+        <date year="2030" month="12" date="8" type="HOLIDAY" />
+        <date year="2030" month="12" date="25" type="HOLIDAY" />
+        <date year="2031" month="1" date="1" type="HOLIDAY" />
+        <date year="2031" month="4" date="11" type="HOLIDAY" />
+        <date year="2031" month="4" date="12" type="HOLIDAY" />
+        <date year="2031" month="5" date="1" type="HOLIDAY" />
+        <date year="2031" month="5" date="21" type="HOLIDAY" />
+        <date year="2031" month="6" date="21" type="HOLIDAY" />
+        <date year="2031" month="6" date="29" type="HOLIDAY" />
+        <date year="2031" month="7" date="16" type="HOLIDAY" />
+        <date year="2031" month="8" date="15" type="HOLIDAY" />
+        <date year="2031" month="9" date="18" type="HOLIDAY" />
+        <date year="2031" month="9" date="19" type="HOLIDAY" />
+        <date year="2031" month="10" date="12" type="HOLIDAY" />
+        <date year="2031" month="10" date="31" type="HOLIDAY" />
+        <date year="2031" month="11" date="1" type="HOLIDAY" />
+        <date year="2031" month="12" date="8" type="HOLIDAY" />
+        <date year="2031" month="12" date="25" type="HOLIDAY" />
+        <date year="2032" month="1" date="1" type="HOLIDAY" />
+        <date year="2032" month="3" date="26" type="HOLIDAY" />
+        <date year="2032" month="3" date="27" type="HOLIDAY" />
+        <date year="2032" month="5" date="1" type="HOLIDAY" />
+        <date year="2032" month="5" date="21" type="HOLIDAY" />
+        <date year="2032" month="6" date="20" type="HOLIDAY" />
+        <date year="2032" month="6" date="28" type="HOLIDAY" />
+        <date year="2032" month="7" date="16" type="HOLIDAY" />
+        <date year="2032" month="8" date="15" type="HOLIDAY" />
+        <date year="2032" month="9" date="17" type="HOLIDAY" />
+        <date year="2032" month="9" date="18" type="HOLIDAY" />
+        <date year="2032" month="9" date="19" type="HOLIDAY" />
+        <date year="2032" month="10" date="11" type="HOLIDAY" />
+        <date year="2032" month="10" date="31" type="HOLIDAY" />
+        <date year="2032" month="11" date="1" type="HOLIDAY" />
+        <date year="2032" month="12" date="8" type="HOLIDAY" />
+        <date year="2032" month="12" date="25" type="HOLIDAY" />
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon" />
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon" />
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon" />
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text" />
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date" />
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date" />
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int" />
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int" />
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text" />
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text" />
+            <taskproperty id="tpc0" name="Holgura (días hábiles)" type="custom" valuetype="int" />
+            <taskproperty id="tpc1" name="Crítica" type="custom" valuetype="text" defaultvalue="" />
+        </taskproperties>
+        <task id="1" name="RC | 5.1.4 Especificación y compra del sistema de cadena de frío" color="#c00000" meeting="false" start="2027-02-01" duration="42" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="0" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>5.1.4 Especificación y compra del sistema de cadena de frío
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 188</notes>
+            <depend id="22" type="2" difference="0" hardness="Rubber" />
+            <depend id="17" type="1" difference="0" hardness="Rubber" />
+            <depend id="81" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="2" name="PT/H | 7 elementos: 1.1.1, 1.1.2, 1.1.3, 1.4.1, 1.4.2, 1.9.1, 1.9.2" color="#4472c4" meeting="false" start="2027-02-01" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="13" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>1.1.1 Acta de constitución del proyecto, firmada con la Contraparte Técnica
+1.1.2 Documento de validación con el CLIENTE de los problemas y metas del proyecto
+1.1.3 Acta de confirmación con el CLIENTE de la fecha de inicio, la evidencia para el proveedor de lácteos, las ventanas de paso a producción y el acuse tributario
+1.4.1 Registro de interesados con su influencia, interés y estrategia
+1.4.2 Plan de comunicaciones con calendario y canales por grupo de interés
+1.9.1 Matriz de cumplimiento normativo por obligación legal, con su control y su evidencia
+1.9.2 Acuerdo de tratamiento de datos personales con el CLIENTE
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 3, 4, 5, 19, 20, 41, 42</notes>
+        </task>
+        <task id="3" name="PT/H | 1.2.1 Documento de especificación de requerimientos y línea base de alcance de la Etapa 1 (H1)" color="#4472c4" meeting="false" start="2027-02-01" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="13" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>1.2.1 Documento de especificación de requerimientos y línea base de alcance de la Etapa 1 (H1)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 7</notes>
+            <depend id="11" type="3" difference="0" hardness="Rubber" />
+            <depend id="20" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="4" name="PT/H | 1.2.2 Documento de reglas de ruteo capturadas al planificador de rutas" color="#4472c4" meeting="false" start="2027-02-01" duration="64" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>1.2.2 Documento de reglas de ruteo capturadas al planificador de rutas
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 8</notes>
+            <depend id="67" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="5" name="PT/H | 1.2.3 Documento de especificación de las interfaces sin documentación del ERP, del WMS de 2013 y de la telemetría del tercero" color="#4472c4" meeting="false" start="2027-02-01" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="77" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>1.2.3 Documento de especificación de las interfaces sin documentación del ERP, del WMS de 2013 y de la telemetría del tercero
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 9</notes>
+            <depend id="48" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="6" name="PT/H | 5 elementos: 1.3.5, 1.6.2, 1.8.1, 1.8.3, 1.8.6" color="#4472c4" meeting="false" start="2027-02-01" duration="419" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>1.3.5 Reunión semanal de seguimiento con su informe semanal
+1.6.2 Registro de riesgos revisado en cada Comité de Proyecto
+1.8.1 Oficina de gestión del proyecto con metodología basada en el PMBOK
+1.8.3 Actas del Comité de Proyecto quincenal
+1.8.6 Informe mensual de avance con valor ganado
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 17, 27, 32, 34, 37</notes>
+        </task>
+        <task id="7" name="PT/H | 2 elementos: 2.3.1, 2.3.2" color="#4472c4" meeting="false" start="2027-02-01" duration="21" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="14" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>2.3.1 Plano de la sala técnica de Talca, con su cálculo eléctrico y térmico
+2.3.2 Plano de distribución de los racks R01 de servidores y R02 de comunicaciones
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 58, 59</notes>
+            <depend id="19" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="8" name="PT/H | 1.3.1 Plan para la dirección del proyecto, con el calendario de congelamientos de septiembre, diciembre y el cierre mensual" color="#4472c4" meeting="false" start="2027-02-10" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="6" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>1.3.1 Plan para la dirección del proyecto, con el calendario de congelamientos de septiembre, diciembre y el cierre mensual
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 13</notes>
+        </task>
+        <task id="9" name="PT/H | 1.2.4 Matriz de trazabilidad: requerimiento, módulo, paquete y prueba (H1)" color="#4472c4" meeting="false" start="2027-03-01" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="5" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>1.2.4 Matriz de trazabilidad: requerimiento, módulo, paquete y prueba (H1)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 10</notes>
+            <depend id="20" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="10" name="PT/H | 7 elementos: 1.3.2, 1.3.3, 1.3.4, 1.5.1, 1.6.1, 1.9.3, 5.1.1" color="#4472c4" meeting="false" start="2027-03-01" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="15" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>1.3.2 EDT y diccionario de la EDT (línea base del alcance)
+1.3.3 Carta Gantt de 56 meses con los hitos H1 a H12 y la ruta crítica
+1.3.4 Documento de nivelación de recursos y frentes del solapamiento de los meses 13 a 15 y 19 a 20
+1.5.1 Plan de calidad y plan de pruebas
+1.6.1 Plan de riesgos y registro inicial de riesgos según ISO 31000
+1.9.3 Registro de actividades de tratamiento y evaluación de impacto en protección de datos
+5.1.1 Especificación de compra de equipos de uso para el CLIENTE
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 14, 15, 16, 23, 26, 43, 185</notes>
+        </task>
+        <task id="11" name="PT/H | 2.1.1 Documento de arquitectura lógica: capas, módulos M1 a M12 e interfaces" color="#4472c4" meeting="false" start="2027-03-01" duration="20" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="2" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>2.1.1 Documento de arquitectura lógica: capas, módulos M1 a M12 e interfaces
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 48</notes>
+            <depend id="30" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="12" name="PT/H | 3 elementos: 2.1.2, 2.1.3, 2.2.4" color="#4472c4" meeting="false" start="2027-03-01" duration="20" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="2" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>2.1.2 Documento de arquitectura física híbrida: nube, centros de distribución y plataformas de cross-docking
+2.1.3 Modelo de datos y diccionario de datos, con la trazabilidad por lote
+2.2.4 Matriz de clasificación de la información y matriz de controles
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 49, 50, 56</notes>
+            <depend id="30" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="13" name="PT/H | 2.2.1 Plan de seguridad de la información" color="#4472c4" meeting="false" start="2027-03-01" duration="20" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="2" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>2.2.1 Plan de seguridad de la información
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 53</notes>
+            <depend id="30" type="2" difference="0" hardness="Rubber" />
+            <depend id="47" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="14" name="PT/H | 2 elementos: 2.3.3, 2.6.1" color="#4472c4" meeting="false" start="2027-03-01" duration="20" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="2" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>2.3.3 Plano de los gabinetes de borde de Concepción y de las plataformas de cross-docking
+2.6.1 Investigación con preparadores, preventistas, conductores y almaceneros
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 60, 70</notes>
+        </task>
+        <task id="15" name="PT/H | 3.10.2.1 Innovación 2: informe de medición inicial y contrato de evidencia (INN-02.P1)" color="#4472c4" meeting="false" start="2027-03-01" duration="36" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="8" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.10.2.1 Innovación 2: informe de medición inicial y contrato de evidencia (INN-02.P1)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 148</notes>
+        </task>
+        <task id="16" name="PT/H | 5.2.1 Contrato de los servicios de AWS" color="#4472c4" meeting="false" start="2027-03-01" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="15" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>5.2.1 Contrato de los servicios de AWS
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 190</notes>
+            <depend id="34" type="2" difference="0" hardness="Rubber" />
+            <depend id="35" type="2" difference="0" hardness="Rubber" />
+            <depend id="46" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="17" name="PT/H | 5.3.4 Contrato de SIM M2M y servicio satelital de los camiones con frío" color="#4472c4" meeting="false" start="2027-03-01" duration="10" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="12" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>5.3.4 Contrato de SIM M2M y servicio satelital de los camiones con frío
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 197</notes>
+            <depend id="22" type="2" difference="0" hardness="Rubber" />
+            <depend id="103" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="18" name="PT/H | 7.2.3 Diagnóstico del impacto organizacional por área y perfil, con agentes de cambio" color="#4472c4" meeting="false" start="2027-03-01" duration="60" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="45" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>7.2.3 Diagnóstico del impacto organizacional por área y perfil, con agentes de cambio
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 245</notes>
+        </task>
+        <task id="19" name="PT/H | 5.1.2 Especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de borde" color="#4472c4" meeting="false" start="2027-03-02" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="14" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>5.1.2 Especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de borde
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 186</notes>
+            <depend id="29" type="2" difference="0" hardness="Rubber" />
+            <depend id="36" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="20" name="PT/H | H1 — entrega del expediente" color="#404040" meeting="true" start="2027-03-09" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H1 — entrega del expediente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 291</notes>
+            <depend id="21" type="2" difference="10" hardness="Rubber" />
+        </task>
+        <task id="21" name="PT/H | H1 — acta del CLIENTE (límite: mes 2)" color="#404040" meeting="true" start="2027-03-23" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="5" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H1 — acta del CLIENTE (límite: mes 2)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 292</notes>
+            <depend id="11" type="3" difference="0" hardness="Rubber" />
+        </task>
+        <task id="22" name="RC | 2.4.3 Validación del diseño del kit en banco de pruebas" color="#c00000" meeting="false" start="2027-04-01" duration="22" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="0" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>2.4.3 Validación del diseño del kit en banco de pruebas
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 64</notes>
+            <depend id="37" type="2" difference="0" hardness="Rubber" />
+            <depend id="64" type="2" difference="0" hardness="Rubber" />
+            <depend id="65" type="2" difference="0" hardness="Rubber" />
+            <depend id="103" type="2" difference="0" hardness="Rubber" />
+            <depend id="81" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="23" name="PT/H | 1.7.1 Plan de Reversibilidad inicial (primeros 90 días)" color="#4472c4" meeting="false" start="2027-04-01" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="15" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>1.7.1 Plan de Reversibilidad inicial (primeros 90 días)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 29</notes>
+        </task>
+        <task id="24" name="PT/H | 2.2.2 Modelado de amenazas por componente y por integración externa, actualizado ante cada cambio" color="#4472c4" meeting="false" start="2027-04-01" duration="167" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>2.2.2 Modelado de amenazas por componente y por integración externa, actualizado ante cada cambio
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 54</notes>
+        </task>
+        <task id="25" name="PT/H | 2.2.3 Plan de respuesta a incidentes de seguridad, con aviso al CLIENTE en dos horas" color="#4472c4" meeting="false" start="2027-04-01" duration="12" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="1" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>2.2.3 Plan de respuesta a incidentes de seguridad, con aviso al CLIENTE en dos horas
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 55</notes>
+            <depend id="30" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="26" name="PT/H | 2 elementos: 2.5.1, 2.5.2" color="#4472c4" meeting="false" start="2027-04-01" duration="21" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="1" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>2.5.1 Plan de continuidad del negocio según ISO 22301, con análisis de impacto y procedimientos manuales
+2.5.2 Plan de continuidad TIC según ISO/IEC 27031 y plan de recuperación ante desastres
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 67, 68</notes>
+        </task>
+        <task id="27" name="PT/H | 2.6.2 Prototipos y pruebas de usabilidad con participantes del CLIENTE" color="#4472c4" meeting="false" start="2027-04-01" duration="21" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="1" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>2.6.2 Prototipos y pruebas de usabilidad con participantes del CLIENTE
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 71</notes>
+            <depend id="59" type="2" difference="0" hardness="Rubber" />
+            <depend id="60" type="2" difference="0" hardness="Rubber" />
+            <depend id="63" type="2" difference="0" hardness="Rubber" />
+            <depend id="64" type="2" difference="0" hardness="Rubber" />
+            <depend id="65" type="2" difference="0" hardness="Rubber" />
+            <depend id="66" type="2" difference="0" hardness="Rubber" />
+            <depend id="67" type="2" difference="0" hardness="Rubber" />
+            <depend id="68" type="2" difference="0" hardness="Rubber" />
+            <depend id="69" type="2" difference="0" hardness="Rubber" />
+            <depend id="61" type="2" difference="0" hardness="Rubber" />
+            <depend id="83" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="28" name="PT/H | 2 elementos: 3.10.2.2, 3.10.3.1" color="#4472c4" meeting="false" start="2027-04-01" duration="49" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="13" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.10.2.2 Innovación 2: circuito mínimo de reproducción en la preventa (INN-02.P2)
+3.10.3.1 Innovación 3: documento de familias priorizadas y parámetros aprobados (INN-03.P1)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 149, 153</notes>
+        </task>
+        <task id="29" name="PT/H | 4 elementos: 6.1.1, 6.1.2, 6.1.3, 6.1.4" color="#4472c4" meeting="false" start="2027-04-01" duration="14" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="8" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>6.1.1 Coordinación de la obra civil de separación, a cargo del CLIENTE (RT-06.06), y piso técnico de la sala
+6.1.2 Hardware de energía instalado: UPS modular N+1, generador con 24 horas de autonomía, transferencia automática y PDU A/B
+6.1.3 Hardware de climatización de precisión N+1 instalado
+6.1.4 Hardware de detección temprana de incendio y extinción por agente limpio instalado
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 205, 206, 207, 208</notes>
+            <depend id="36" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="30" name="PT/H | 2.4.1 Acta de aprobación de la arquitectura, el plan de seguridad y el modelo de datos (H2)" color="#4472c4" meeting="false" start="2027-04-19" duration="9" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="1" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>2.4.1 Acta de aprobación de la arquitectura, el plan de seguridad y el modelo de datos (H2)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 62</notes>
+            <depend id="59" type="2" difference="0" hardness="Rubber" />
+            <depend id="60" type="2" difference="0" hardness="Rubber" />
+            <depend id="63" type="2" difference="0" hardness="Rubber" />
+            <depend id="64" type="2" difference="0" hardness="Rubber" />
+            <depend id="65" type="2" difference="0" hardness="Rubber" />
+            <depend id="66" type="2" difference="0" hardness="Rubber" />
+            <depend id="67" type="2" difference="0" hardness="Rubber" />
+            <depend id="68" type="2" difference="0" hardness="Rubber" />
+            <depend id="69" type="2" difference="0" hardness="Rubber" />
+            <depend id="61" type="2" difference="0" hardness="Rubber" />
+            <depend id="83" type="2" difference="0" hardness="Rubber" />
+            <depend id="31" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="31" name="PT/H | H2 — entrega del expediente" color="#404040" meeting="true" start="2027-04-29" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H2 — entrega del expediente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 293</notes>
+            <depend id="42" type="2" difference="10" hardness="Rubber" />
+        </task>
+        <task id="32" name="RC | 2.6.3 Indicadores de usabilidad comprometidos por transacción crítica" color="#c00000" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="0" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>2.6.3 Indicadores de usabilidad comprometidos por transacción crítica
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 72</notes>
+        </task>
+        <task id="33" name="RC | 3.1.4 Cadena de integración y entrega continua, e infraestructura como código" color="#c00000" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="0" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>3.1.4 Cadena de integración y entrega continua, e infraestructura como código
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 78</notes>
+            <depend id="59" type="3" difference="0" hardness="Rubber" />
+            <depend id="60" type="3" difference="0" hardness="Rubber" />
+            <depend id="63" type="3" difference="0" hardness="Rubber" />
+            <depend id="64" type="3" difference="0" hardness="Rubber" />
+            <depend id="65" type="3" difference="0" hardness="Rubber" />
+            <depend id="66" type="3" difference="0" hardness="Rubber" />
+            <depend id="67" type="3" difference="0" hardness="Rubber" />
+            <depend id="68" type="3" difference="0" hardness="Rubber" />
+            <depend id="69" type="3" difference="0" hardness="Rubber" />
+            <depend id="61" type="3" difference="0" hardness="Rubber" />
+            <depend id="83" type="3" difference="0" hardness="Rubber" />
+        </task>
+        <task id="34" name="RC | 4 elementos: 3.2.1, 3.2.2, 3.2.4, 3.2.5" color="#c00000" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="0" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>3.2.1 Servicio de nube para la aplicación y los portales
+3.2.2 Servicio de nube de base de datos, caché y mensajería
+3.2.4 Servicio de nube de respaldo inmutable y réplica entre regiones
+3.2.5 Servicio de nube de seguridad y gobierno, y detección en endpoints
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 81, 82, 84, 85</notes>
+            <depend id="44" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="35" name="RC | 3.2.3 Servicio de nube de ingesta de IoT, telemetría cruda y plataforma analítica" color="#c00000" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="0" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>3.2.3 Servicio de nube de ingesta de IoT, telemetría cruda y plataforma analítica
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 83</notes>
+            <depend id="65" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="36" name="RC | 6.1.5 Acta de recepción técnica de la sala" color="#c00000" meeting="false" start="2027-05-03" duration="14" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="0" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>6.1.5 Acta de recepción técnica de la sala
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 209</notes>
+            <depend id="43" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="37" name="PT/H | 2.4.4 Mapeo térmico por tipo de carrocería" color="#4472c4" meeting="false" start="2027-05-03" duration="19" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="1" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>2.4.4 Mapeo térmico por tipo de carrocería
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 65</notes>
+            <depend id="64" type="2" difference="0" hardness="Rubber" />
+            <depend id="65" type="2" difference="0" hardness="Rubber" />
+            <depend id="103" type="2" difference="0" hardness="Rubber" />
+            <depend id="81" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="38" name="PT/H | 2 elementos: 3.11.3, 3.11.4" color="#4472c4" meeting="false" start="2027-05-03" duration="355" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.11.3 Estándares de codificación y documentación de interfaces en OpenAPI y AsyncAPI
+3.11.4 Inventario de componentes (SBOM) con sus licencias de código abierto
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 165, 166</notes>
+        </task>
+        <task id="39" name="PT/H | 5 elementos: 5.2.2, 5.2.3, 5.3.1, 5.3.2, 5.3.3" color="#4472c4" meeting="false" start="2027-05-03" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="13" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>5.2.2 Suscripción del servicio de gestión de dispositivos y de detección en endpoints
+5.2.3 Licencias de software de terceros constituidas a nombre del CLIENTE
+5.3.1 Contrato de fibra óptica de los CD de Talca y Concepción
+5.3.2 Contrato de planes LTE con dos proveedores (ocho planes)
+5.3.3 Contrato de Starlink para los cinco sitios: Talca, Concepción y las tres plataformas de cross-docking
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 191, 192, 194, 195, 196</notes>
+        </task>
+        <task id="40" name="PT/H | 6.2.1 Cableado de cobre Cat6A y fibra OM4 tendido, con dos ductos de ingreso independientes" color="#4472c4" meeting="false" start="2027-05-03" duration="14" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="6" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>6.2.1 Cableado de cobre Cat6A y fibra OM4 tendido, con dos ductos de ingreso independientes
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 211</notes>
+        </task>
+        <task id="41" name="PT/H | 6.3.3 Gabinete de borde de Concepción montado: servidores activo y en espera, firewalls, switches, UPS, climatización y monitoreo" color="#4472c4" meeting="false" start="2027-05-03" duration="14" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="6" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>6.3.3 Gabinete de borde de Concepción montado: servidores activo y en espera, firewalls, switches, UPS, climatización y monitoreo
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 217</notes>
+            <depend id="57" type="2" difference="0" hardness="Rubber" />
+            <depend id="62" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="42" name="PT/H | H2 — acta del CLIENTE (límite: mes 4)" color="#404040" meeting="true" start="2027-05-13" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="11" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H2 — acta del CLIENTE (límite: mes 4)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 294</notes>
+            <depend id="59" type="2" difference="0" hardness="Rubber" />
+            <depend id="60" type="2" difference="0" hardness="Rubber" />
+            <depend id="63" type="2" difference="0" hardness="Rubber" />
+            <depend id="64" type="2" difference="0" hardness="Rubber" />
+            <depend id="65" type="2" difference="0" hardness="Rubber" />
+            <depend id="66" type="2" difference="0" hardness="Rubber" />
+            <depend id="67" type="2" difference="0" hardness="Rubber" />
+            <depend id="68" type="2" difference="0" hardness="Rubber" />
+            <depend id="69" type="2" difference="0" hardness="Rubber" />
+            <depend id="61" type="2" difference="0" hardness="Rubber" />
+            <depend id="83" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="43" name="RC | 2 elementos: 6.3.1, 6.3.2" color="#c00000" meeting="false" start="2027-05-24" duration="13" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="0" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>6.3.1 Rack R01 de servidores montado: clúster de tres nodos, respaldo local, consola KVM y traslado del servidor del ERP del CLIENTE
+6.3.2 Rack R02 de comunicaciones montado: firewalls, switches de núcleo y de gestión, y distribución de fibra
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 215, 216</notes>
+            <depend id="57" type="2" difference="0" hardness="Rubber" />
+            <depend id="62" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="44" name="PT/H | 3 elementos: 3.1.1, 3.1.2, 3.1.3" color="#4472c4" meeting="false" start="2027-06-01" duration="14" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="6" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.1.1 Ambientes de Desarrollo y QA en la nube (H3)
+3.1.2 Ambientes de Preproducción y Producción en la nube (H3)
+3.1.3 Ambiente de recuperación ante desastres en la región secundaria (H3)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 75, 76, 77</notes>
+            <depend id="59" type="3" difference="0" hardness="Rubber" />
+            <depend id="60" type="3" difference="0" hardness="Rubber" />
+            <depend id="63" type="3" difference="0" hardness="Rubber" />
+            <depend id="64" type="3" difference="0" hardness="Rubber" />
+            <depend id="65" type="3" difference="0" hardness="Rubber" />
+            <depend id="66" type="3" difference="0" hardness="Rubber" />
+            <depend id="67" type="3" difference="0" hardness="Rubber" />
+            <depend id="68" type="3" difference="0" hardness="Rubber" />
+            <depend id="69" type="3" difference="0" hardness="Rubber" />
+            <depend id="61" type="3" difference="0" hardness="Rubber" />
+            <depend id="83" type="3" difference="0" hardness="Rubber" />
+            <depend id="70" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="45" name="PT/H | 3.1.5 Observabilidad de los doce módulos y de los sitios, con tableros para el CLIENTE (H3)" color="#4472c4" meeting="false" start="2027-06-01" duration="14" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="6" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.1.5 Observabilidad de los doce módulos y de los sitios, con tableros para el CLIENTE (H3)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 79</notes>
+            <depend id="59" type="3" difference="0" hardness="Rubber" />
+            <depend id="60" type="3" difference="0" hardness="Rubber" />
+            <depend id="63" type="3" difference="0" hardness="Rubber" />
+            <depend id="64" type="3" difference="0" hardness="Rubber" />
+            <depend id="65" type="3" difference="0" hardness="Rubber" />
+            <depend id="66" type="3" difference="0" hardness="Rubber" />
+            <depend id="67" type="3" difference="0" hardness="Rubber" />
+            <depend id="68" type="3" difference="0" hardness="Rubber" />
+            <depend id="69" type="3" difference="0" hardness="Rubber" />
+            <depend id="61" type="3" difference="0" hardness="Rubber" />
+            <depend id="83" type="3" difference="0" hardness="Rubber" />
+            <depend id="70" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="46" name="PT/H | 3.2.6 Servicio de gestión de dispositivos móviles" color="#4472c4" meeting="false" start="2027-06-01" duration="19" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="1" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.2.6 Servicio de gestión de dispositivos móviles
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 86</notes>
+            <depend id="90" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="47" name="PT/H | 3.3.1 Identidad y control de acceso, incluidos los conductores externos que rotan sin aviso" color="#4472c4" meeting="false" start="2027-06-01" duration="45" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="10" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.3.1 Identidad y control de acceso, incluidos los conductores externos que rotan sin aviso
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 88</notes>
+            <depend id="59" type="1" difference="0" hardness="Rubber" />
+            <depend id="60" type="1" difference="0" hardness="Rubber" />
+            <depend id="63" type="1" difference="0" hardness="Rubber" />
+            <depend id="64" type="1" difference="0" hardness="Rubber" />
+            <depend id="65" type="1" difference="0" hardness="Rubber" />
+            <depend id="66" type="1" difference="0" hardness="Rubber" />
+            <depend id="67" type="1" difference="0" hardness="Rubber" />
+            <depend id="68" type="1" difference="0" hardness="Rubber" />
+            <depend id="69" type="1" difference="0" hardness="Rubber" />
+            <depend id="61" type="1" difference="0" hardness="Rubber" />
+            <depend id="83" type="1" difference="0" hardness="Rubber" />
+        </task>
+        <task id="48" name="PT/H | 3.3.2 Integración con el ERP como único emisor de la guía de despacho (INT-06 e INT-07)" color="#4472c4" meeting="false" start="2027-06-01" duration="21" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="10" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.3.2 Integración con el ERP como único emisor de la guía de despacho (INT-06 e INT-07)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 89</notes>
+            <depend id="59" type="1" difference="0" hardness="Rubber" />
+            <depend id="60" type="1" difference="0" hardness="Rubber" />
+            <depend id="63" type="1" difference="0" hardness="Rubber" />
+            <depend id="64" type="1" difference="0" hardness="Rubber" />
+            <depend id="65" type="1" difference="0" hardness="Rubber" />
+            <depend id="66" type="1" difference="0" hardness="Rubber" />
+            <depend id="67" type="1" difference="0" hardness="Rubber" />
+            <depend id="68" type="1" difference="0" hardness="Rubber" />
+            <depend id="69" type="1" difference="0" hardness="Rubber" />
+            <depend id="61" type="1" difference="0" hardness="Rubber" />
+            <depend id="83" type="1" difference="0" hardness="Rubber" />
+        </task>
+        <task id="49" name="PT/H | 3.3.3 Convivencia con el WMS de 2013 durante el reemplazo" color="#4472c4" meeting="false" start="2027-06-01" duration="25" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="10" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.3.3 Convivencia con el WMS de 2013 durante el reemplazo
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 90</notes>
+            <depend id="59" type="1" difference="0" hardness="Rubber" />
+            <depend id="60" type="1" difference="0" hardness="Rubber" />
+            <depend id="63" type="1" difference="0" hardness="Rubber" />
+            <depend id="64" type="1" difference="0" hardness="Rubber" />
+            <depend id="65" type="1" difference="0" hardness="Rubber" />
+            <depend id="66" type="1" difference="0" hardness="Rubber" />
+            <depend id="67" type="1" difference="0" hardness="Rubber" />
+            <depend id="68" type="1" difference="0" hardness="Rubber" />
+            <depend id="69" type="1" difference="0" hardness="Rubber" />
+            <depend id="61" type="1" difference="0" hardness="Rubber" />
+            <depend id="83" type="1" difference="0" hardness="Rubber" />
+        </task>
+        <task id="50" name="PT/H | 3.3.5 Registro auditable de stock, lotes y cobros" color="#4472c4" meeting="false" start="2027-06-01" duration="43" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="10" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.3.5 Registro auditable de stock, lotes y cobros
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 92</notes>
+            <depend id="59" type="1" difference="0" hardness="Rubber" />
+            <depend id="60" type="1" difference="0" hardness="Rubber" />
+            <depend id="63" type="1" difference="0" hardness="Rubber" />
+            <depend id="64" type="1" difference="0" hardness="Rubber" />
+            <depend id="65" type="1" difference="0" hardness="Rubber" />
+            <depend id="66" type="1" difference="0" hardness="Rubber" />
+            <depend id="67" type="1" difference="0" hardness="Rubber" />
+            <depend id="68" type="1" difference="0" hardness="Rubber" />
+            <depend id="69" type="1" difference="0" hardness="Rubber" />
+            <depend id="61" type="1" difference="0" hardness="Rubber" />
+            <depend id="83" type="1" difference="0" hardness="Rubber" />
+        </task>
+        <task id="51" name="PT/H | 3.10.2.3 Innovación 2: captura de evidencia en las aplicaciones de preventa, preparación y reparto (INN-02.P3)" color="#4472c4" meeting="false" start="2027-06-01" duration="90" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="35" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.10.2.3 Innovación 2: captura de evidencia en las aplicaciones de preventa, preparación y reparto (INN-02.P3)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 150</notes>
+        </task>
+        <task id="52" name="PT/H | 5.1.3 Actas de recepción técnica del equipamiento de terreno comprado por el CLIENTE y de la infraestructura provista por LafroX" color="#4472c4" meeting="false" start="2027-06-01" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="13" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>5.1.3 Actas de recepción técnica del equipamiento de terreno comprado por el CLIENTE y de la infraestructura provista por LafroX
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 187</notes>
+        </task>
+        <task id="53" name="PT/H | 6.4.1 Hardware de control de acceso biométrico y esclusa instalado" color="#4472c4" meeting="false" start="2027-06-01" duration="14" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="6" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>6.4.1 Hardware de control de acceso biométrico y esclusa instalado
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 220</notes>
+        </task>
+        <task id="54" name="PT/H | 3.3.6 Operación sin conexión: 14 horas en terreno y 24 horas en el CD" color="#4472c4" meeting="false" start="2027-06-07" duration="39" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="6" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.3.6 Operación sin conexión: 14 horas en terreno y 24 horas en el CD
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 93</notes>
+            <depend id="59" type="1" difference="0" hardness="Rubber" />
+            <depend id="60" type="1" difference="0" hardness="Rubber" />
+            <depend id="63" type="1" difference="0" hardness="Rubber" />
+            <depend id="64" type="1" difference="0" hardness="Rubber" />
+            <depend id="65" type="1" difference="0" hardness="Rubber" />
+            <depend id="66" type="1" difference="0" hardness="Rubber" />
+            <depend id="67" type="1" difference="0" hardness="Rubber" />
+            <depend id="68" type="1" difference="0" hardness="Rubber" />
+            <depend id="69" type="1" difference="0" hardness="Rubber" />
+            <depend id="61" type="1" difference="0" hardness="Rubber" />
+            <depend id="83" type="1" difference="0" hardness="Rubber" />
+        </task>
+        <task id="55" name="PT/H | 3.10.3.2 Innovación 3: asociación lote–sensor en el borde y en el camión (INN-03.P2)" color="#4472c4" meeting="false" start="2027-06-07" duration="72" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="28" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.10.3.2 Innovación 3: asociación lote–sensor en el borde y en el camión (INN-03.P2)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 154</notes>
+        </task>
+        <task id="56" name="PT/H | 6.4.2 Hardware de videovigilancia instalado" color="#4472c4" meeting="false" start="2027-06-07" duration="13" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="3" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>6.4.2 Hardware de videovigilancia instalado
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 221</notes>
+        </task>
+        <task id="57" name="RC | 2 elementos: 6.6.1, 6.6.2" color="#c00000" meeting="false" start="2027-06-10" duration="13" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="0" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>6.6.1 Software de base instalado en los sitios: virtualización, contenedores, PostgreSQL, RabbitMQ y Keycloak
+6.6.2 Enlaces de fibra, LTE y Starlink habilitados, con conmutación al respaldo
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 231, 232</notes>
+        </task>
+        <task id="58" name="PT/H | 3.3.4 Integración con la telemetría de los 42 camiones propios (INT-15)" color="#4472c4" meeting="false" start="2027-06-10" duration="21" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="3" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.3.4 Integración con la telemetría de los 42 camiones propios (INT-15)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 91</notes>
+            <depend id="59" type="1" difference="0" hardness="Rubber" />
+            <depend id="60" type="1" difference="0" hardness="Rubber" />
+            <depend id="63" type="1" difference="0" hardness="Rubber" />
+            <depend id="64" type="1" difference="0" hardness="Rubber" />
+            <depend id="65" type="1" difference="0" hardness="Rubber" />
+            <depend id="66" type="1" difference="0" hardness="Rubber" />
+            <depend id="67" type="1" difference="0" hardness="Rubber" />
+            <depend id="68" type="1" difference="0" hardness="Rubber" />
+            <depend id="69" type="1" difference="0" hardness="Rubber" />
+            <depend id="61" type="1" difference="0" hardness="Rubber" />
+            <depend id="83" type="1" difference="0" hardness="Rubber" />
+        </task>
+        <task id="59" name="PT/H | 3.4.1 Recepción de mercadería con captura de lote y vencimiento (M1 Recepción)" color="#4472c4" meeting="false" start="2027-06-10" duration="41" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="3" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.4.1 Recepción de mercadería con captura de lote y vencimiento (M1 Recepción)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 95</notes>
+            <depend id="63" type="3" difference="2" hardness="Rubber" />
+            <depend id="64" type="3" difference="2" hardness="Rubber" />
+            <depend id="89" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="60" name="PT/H | 3.4.2 Inventario por ubicación y lote, con FEFO y conteo cíclico (M2 Inventario)" color="#4472c4" meeting="false" start="2027-06-10" duration="42" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="3" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.4.2 Inventario por ubicación y lote, con FEFO y conteo cíclico (M2 Inventario)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 96</notes>
+            <depend id="63" type="3" difference="2" hardness="Rubber" />
+            <depend id="64" type="3" difference="2" hardness="Rubber" />
+            <depend id="66" type="1" difference="0" hardness="Rubber" />
+            <depend id="89" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="61" name="PT/H | 3.4.10 Cobro en ruta, rendición y conciliación (M7 Cobranza y rendición)" color="#4472c4" meeting="false" start="2027-06-10" duration="79" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="5" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.4.10 Cobro en ruta, rendición y conciliación (M7 Cobranza y rendición)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 104</notes>
+            <depend id="89" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="62" name="PT/H | 6.6.3 Borde de los CD en servicio, con la prueba de autonomía de 24 horas aprobada" color="#4472c4" meeting="false" start="2027-06-10" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="6" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>6.6.3 Borde de los CD en servicio, con la prueba de autonomía de 24 horas aprobada
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 233</notes>
+            <depend id="70" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="63" name="PT/H | 3.4.3 Preparación de pedidos en el turno de noche y en la cámara de congelado (M5 Preparación)" color="#4472c4" meeting="false" start="2027-06-14" duration="45" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="7" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.4.3 Preparación de pedidos en el turno de noche y en la cámara de congelado (M5 Preparación)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 97</notes>
+            <depend id="67" type="3" difference="2" hardness="Rubber" />
+            <depend id="68" type="3" difference="2" hardness="Rubber" />
+            <depend id="89" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="64" name="PT/H | 3.4.4 Cadena de frío, retención por SSCC y retiro sanitario (M9 Calidad y trazabilidad)" color="#4472c4" meeting="false" start="2027-06-14" duration="74" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="1" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.4.4 Cadena de frío, retención por SSCC y retiro sanitario (M9 Calidad y trazabilidad)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 98</notes>
+            <depend id="89" type="2" difference="0" hardness="Rubber" />
+            <depend id="103" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="65" name="PT/H | 3.4.5 Ingesta de temperatura (M9) y posición de flota (M12)" color="#4472c4" meeting="false" start="2027-06-14" duration="53" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="1" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.4.5 Ingesta de temperatura (M9) y posición de flota (M12)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 99</notes>
+            <depend id="89" type="2" difference="0" hardness="Rubber" />
+            <depend id="103" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="66" name="PT/H | 3.4.6 Aplicación móvil de preventa sin conexión, con stock y crédito (M3 Preventa)" color="#4472c4" meeting="false" start="2027-06-16" duration="42" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="5" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.4.6 Aplicación móvil de preventa sin conexión, con stock y crédito (M3 Preventa)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 100</notes>
+            <depend id="67" type="3" difference="2" hardness="Rubber" />
+            <depend id="68" type="3" difference="2" hardness="Rubber" />
+            <depend id="89" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="67" name="PT/H | 3.4.7 Planificación de rutas corregible por el planificador (M4 Rutas)" color="#4472c4" meeting="false" start="2027-06-16" duration="58" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="15" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.4.7 Planificación de rutas corregible por el planificador (M4 Rutas)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 101</notes>
+            <depend id="89" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="68" name="PT/H | 3.4.8 Aplicación móvil de reparto con prueba de entrega digital (M6 Reparto)" color="#4472c4" meeting="false" start="2027-06-16" duration="59" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="5" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.4.8 Aplicación móvil de reparto con prueba de entrega digital (M6 Reparto)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 102</notes>
+            <depend id="61" type="3" difference="2" hardness="Rubber" />
+            <depend id="89" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="69" name="RC | 3.4.9 Devoluciones en terreno y control de envases (M8 Devoluciones y envases)" color="#c00000" meeting="false" start="2027-06-18" duration="71" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="0" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>3.4.9 Devoluciones en terreno y control de envases (M8 Devoluciones y envases)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 103</notes>
+            <depend id="89" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="70" name="PT/H | H3 — entrega del expediente" color="#404040" meeting="true" start="2027-06-18" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H3 — entrega del expediente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 295</notes>
+            <depend id="75" type="2" difference="10" hardness="Rubber" />
+        </task>
+        <task id="71" name="PT/H | 6.4.3 Recinto de custodia de respaldos habilitado" color="#4472c4" meeting="false" start="2027-06-22" duration="13" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="14" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>6.4.3 Recinto de custodia de respaldos habilitado
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 222</notes>
+        </task>
+        <task id="72" name="PT/H | 2 elementos: 1.5.2, 3.11.5" color="#4472c4" meeting="false" start="2027-07-01" duration="315" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>1.5.2 Puertas de calidad automáticas en la cadena de integración (cobertura unitaria global del 80 % y de lógica de negocio del 70 %)
+3.11.5 Depósito del código fuente en el repositorio del CLIENTE en cada liberación
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 24, 167</notes>
+        </task>
+        <task id="73" name="PT/H | 3 elementos: 3.6.2, 3.6.3, 3.6.4" color="#4472c4" meeting="false" start="2027-07-01" duration="22" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="21" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.6.2 Integración con la pasarela de pago para el cobro con tarjeta (INT-09)
+3.6.3 Integración con el servicio de mapas y geocodificación (INT-10)
+3.6.4 Integración con el servicio de avisos al cliente (INT-11)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 113, 114, 115</notes>
+            <depend id="89" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="74" name="PT/H | 6.2.2 Certificación de enlaces, etiquetado y planos as-built" color="#4472c4" meeting="false" start="2027-07-01" duration="13" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="8" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>6.2.2 Certificación de enlaces, etiquetado y planos as-built
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 212</notes>
+        </task>
+        <task id="75" name="PT/H | H3 — acta del CLIENTE (límite: mes 6)" color="#404040" meeting="true" start="2027-07-06" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="17" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H3 — acta del CLIENTE (límite: mes 6)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 296</notes>
+        </task>
+        <task id="76" name="PT/H | 3.6.1 Intercambio de lote y trazabilidad con los proveedores" color="#4472c4" meeting="false" start="2027-08-02" duration="23" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="20" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.6.1 Intercambio de lote y trazabilidad con los proveedores
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 112</notes>
+            <depend id="89" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="77" name="PT/H | 3.10.1.1 Innovación 1: documento de catálogo de acciones y protocolo del piloto (INN-01.P1)" color="#4472c4" meeting="false" start="2027-08-02" duration="49" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="14" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.10.1.1 Innovación 1: documento de catálogo de acciones y protocolo del piloto (INN-01.P1)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 143</notes>
+        </task>
+        <task id="78" name="PT/H | 5.4.4 Contrato de custodia de fuentes con un tercero independiente" color="#4472c4" meeting="false" start="2027-08-02" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="15" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>5.4.4 Contrato de custodia de fuentes con un tercero independiente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 202</notes>
+        </task>
+        <task id="79" name="PT/H | 6.2.3 Gabinetes de piso y switches de acceso instalados en las bodegas de Talca y Concepción" color="#4472c4" meeting="false" start="2027-08-02" duration="14" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="8" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>6.2.3 Gabinetes de piso y switches de acceso instalados en las bodegas de Talca y Concepción
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 213</notes>
+        </task>
+        <task id="80" name="PT/H | 3.7.1 Informe de perfilamiento y datos saneados" color="#4472c4" meeting="false" start="2027-08-04" duration="42" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="19" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.7.1 Informe de perfilamiento y datos saneados
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 119</notes>
+            <depend id="110" type="3" difference="3" hardness="Rubber" />
+        </task>
+        <task id="81" name="PT/H | 6.5.4 Kit de cadena de frío instalado y recibido en los 28 camiones con frío" color="#4472c4" meeting="false" start="2027-09-01" duration="94" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="11" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>6.5.4 Kit de cadena de frío instalado y recibido en los 28 camiones con frío
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 227</notes>
+            <depend id="84" type="1" difference="0" hardness="Rubber" />
+            <depend id="122" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="82" name="PT/H | 7.2.4 Procedimientos operativos rediseñados, contingencia de frío y ruptura confirmada" color="#4472c4" meeting="false" start="2027-09-01" duration="272" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>7.2.4 Procedimientos operativos rediseñados, contingencia de frío y ruptura confirmada
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 246</notes>
+        </task>
+        <task id="83" name="PT/H | 3.4.11 Indicadores operacionales y OTIF diario (M10 Analítica)" color="#4472c4" meeting="false" start="2027-09-02" duration="17" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="3" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.4.11 Indicadores operacionales y OTIF diario (M10 Analítica)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 105</notes>
+            <depend id="89" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="84" name="PT/H | Cuatro kits de frío recibidos para el piloto" color="#404040" meeting="true" start="2027-09-30" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>Cuatro kits de frío recibidos para el piloto
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 313</notes>
+            <depend id="103" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="85" name="PT/H | 3 elementos: 3.10.1.2, 3.10.1.3, 3.10.3.3" color="#4472c4" meeting="false" start="2027-10-01" duration="34" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="7" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.10.1.2 Innovación 1: estimador de saldo y ritmo de reposición (INN-01.P2)
+3.10.1.3 Innovación 1: función de lista sin conexión en la aplicación de preventa (INN-01.P3)
+3.10.3.3 Innovación 3: vista en M9 y orden de salida sugerido (INN-03.P3)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 144, 145, 155</notes>
+        </task>
+        <task id="86" name="PT/H | 2 elementos: 5.4.1, 5.4.2" color="#4472c4" meeting="false" start="2027-10-01" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="77" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>5.4.1 Acuerdos operacionales firmados con los diez transportistas
+5.4.2 Acta de acuerdo con el sindicato sobre terminales, GPS y cámaras
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 199, 200</notes>
+            <depend id="122" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="87" name="PT/H | 6.3.4 Gabinetes de borde montados en Curicó, Chillán y Los Ángeles, con dos mini-PC (activo y en espera) por plataforma" color="#4472c4" meeting="false" start="2027-10-01" duration="13" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="7" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>6.3.4 Gabinetes de borde montados en Curicó, Chillán y Los Ángeles, con dos mini-PC (activo y en espera) por plataforma
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 218</notes>
+        </task>
+        <task id="88" name="PT/H | 3.7.2 Datos maestros cargados: 8.400 SKU, clientes e instalaciones" color="#4472c4" meeting="false" start="2027-10-04" duration="21" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="19" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.7.2 Datos maestros cargados: 8.400 SKU, clientes e instalaciones
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 120</notes>
+            <depend id="110" type="3" difference="3" hardness="Rubber" />
+        </task>
+        <task id="89" name="PT/H | 3.8.1 Pruebas de integración, regresión e idempotencia en QA (H4)" color="#4472c4" meeting="false" start="2027-10-05" duration="13" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="5" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.8.1 Pruebas de integración, regresión e idempotencia en QA (H4)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 125</notes>
+            <depend id="94" type="2" difference="0" hardness="Rubber" />
+            <depend id="95" type="2" difference="0" hardness="Rubber" />
+            <depend id="103" type="2" difference="0" hardness="Rubber" />
+            <depend id="93" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="90" name="PT/H | 6.5.1 Terminales de preventa, reparto y bodega configurados y enrolados" color="#4472c4" meeting="false" start="2027-10-06" duration="70" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="11" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>6.5.1 Terminales de preventa, reparto y bodega configurados y enrolados
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 224</notes>
+        </task>
+        <task id="91" name="PT/H | 6.5.3 Sensores de cámara y gateways IoT instalados en Talca y Concepción" color="#4472c4" meeting="false" start="2027-10-06" duration="35" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="25" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>6.5.3 Sensores de cámara y gateways IoT instalados en Talca y Concepción
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 226</notes>
+        </task>
+        <task id="92" name="PT/H | 6.5.6 Impresoras de andén y balanzas de recepción instaladas" color="#4472c4" meeting="false" start="2027-10-06" duration="70" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="11" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>6.5.6 Impresoras de andén y balanzas de recepción instaladas
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 229</notes>
+        </task>
+        <task id="93" name="PT/H | H4 — entrega del expediente" color="#404040" meeting="true" start="2027-10-22" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H4 — entrega del expediente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 297</notes>
+            <depend id="102" type="2" difference="10" hardness="Rubber" />
+        </task>
+        <task id="94" name="PT/H | 2 elementos: 3.8.2, 3.8.3" color="#4472c4" meeting="false" start="2027-10-25" duration="19" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="7" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.8.2 Pruebas de aceptación y de accesibilidad con preventistas, conductores y bodega
+3.8.3 Cinco condiciones físicas: −22 °C con guantes, lluvia, calor superior a 34 °C, sol directo y uso con una mano; desconexión separada de 14 horas
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 126, 127</notes>
+            <depend id="104" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="95" name="PT/H | 4 elementos: 3.8.4, 3.8.5, 3.8.6, 3.8.8" color="#4472c4" meeting="false" start="2027-10-25" duration="13" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="13" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.8.4 Pruebas de carga con el peak de septiembre y de resiliencia
+3.8.5 Prueba de recuperación ante desastres con conmutación real
+3.8.6 Prueba de seguridad ofensiva de la Etapa 1, por un tercero independiente
+3.8.8 Demostración en Preproducción del despliegue sin interrupción de la Etapa 1
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 128, 129, 130, 132</notes>
+            <depend id="104" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="96" name="PT/H | 3.11.2 Base de conocimiento de incidentes y decisiones de diseño" color="#4472c4" meeting="false" start="2027-11-02" duration="231" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.11.2 Base de conocimiento de incidentes y decisiones de diseño
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 164</notes>
+        </task>
+        <task id="97" name="PT/H | 4.1.1 Plan de olas de la Etapa 1 por sitio y zona: Talca, Concepción y plataformas de cross-docking" color="#4472c4" meeting="false" start="2027-11-02" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="14" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>4.1.1 Plan de olas de la Etapa 1 por sitio y zona: Talca, Concepción y plataformas de cross-docking
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 170</notes>
+            <depend id="117" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="98" name="PT/H | 2 elementos: 7.1.1, 7.1.6" color="#4472c4" meeting="false" start="2027-11-02" duration="38" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="26" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>7.1.1 Plan de capacitación por perfil: usuarios finales, avanzados, administradores, equipo técnico y soporte
+7.1.6 Plataforma de autoformación en línea con registro de avance
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 236, 241</notes>
+        </task>
+        <task id="99" name="PT/H | 7.1.5 Materiales de capacitación: manuales por perfil, guías rápidas, preguntas frecuentes y videos tutoriales" color="#4472c4" meeting="false" start="2027-11-02" duration="190" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>7.1.5 Materiales de capacitación: manuales por perfil, guías rápidas, preguntas frecuentes y videos tutoriales
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 240</notes>
+        </task>
+        <task id="100" name="PT/H | 7.2.1 Acompañamiento del personal con 20 o 30 años en la compañía" color="#4472c4" meeting="false" start="2027-11-02" duration="149" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>7.2.1 Acompañamiento del personal con 20 o 30 años en la compañía
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 243</notes>
+        </task>
+        <task id="101" name="PT/H | 2 elementos: 6.5.2, 6.5.5" color="#4472c4" meeting="false" start="2027-11-04" duration="51" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="11" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>6.5.2 Terminales de pago configurados, uno por camión
+6.5.5 Impresoras de cabina instaladas
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 225, 228</notes>
+        </task>
+        <task id="102" name="PT/H | H4 — acta del CLIENTE (límite: mes 10)" color="#404040" meeting="true" start="2027-11-08" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="16" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H4 — acta del CLIENTE (límite: mes 10)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 298</notes>
+            <depend id="103" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="103" name="PT/H | 4.1.4 Piloto de cadena de frío en cuatro camiones" color="#4472c4" meeting="false" start="2027-11-09" duration="29" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="9" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>4.1.4 Piloto de cadena de frío en cuatro camiones
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 173</notes>
+            <depend id="122" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="104" name="PT/H | 3.8.7 Acta de certificación de la Etapa 1 (H5)" color="#4472c4" meeting="false" start="2027-11-22" duration="8" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="21" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.8.7 Acta de certificación de la Etapa 1 (H5)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 131</notes>
+            <depend id="109" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="105" name="RC | 2 elementos: 3.7.3, 3.7.4" color="#c00000" meeting="false" start="2027-12-01" duration="22" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="0" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>3.7.3 Saldos migrados desde el WMS de Talca
+3.7.4 Saldos cargados en Concepción desde el conteo físico
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 121, 122</notes>
+            <depend id="110" type="3" difference="3" hardness="Rubber" />
+        </task>
+        <task id="106" name="PT/H | 3 elementos: 3.10.1.4, 3.10.2.4, 3.10.3.4" color="#4472c4" meeting="false" start="2027-12-01" duration="78" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="28" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.10.1.4 Innovación 1: informe del piloto en marcha blanca y habilitación (INN-01.P4)
+3.10.2.4 Innovación 2: informe de validación comparada durante la implementación (INN-02.P4, primera parte)
+3.10.3.4 Innovación 3: informe de validación en marcha blanca con Calidad (INN-03.P4)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 146, 151, 156</notes>
+        </task>
+        <task id="107" name="PT/H | 4.1.2 Procedimiento de reversión de la Etapa 1 antes de las 05:30, con versión operativa local y DTE emitidos por el ERP" color="#4472c4" meeting="false" start="2027-12-01" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="15" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>4.1.2 Procedimiento de reversión de la Etapa 1 antes de las 05:30, con versión operativa local y DTE emitidos por el ERP
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 171</notes>
+            <depend id="117" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="108" name="PT/H | 7.1.3 Incorporación de conductores de transportistas, escaneos y lectura del rojo" color="#4472c4" meeting="false" start="2027-12-01" duration="210" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>7.1.3 Incorporación de conductores de transportistas, escaneos y lectura del rojo
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 238</notes>
+        </task>
+        <task id="109" name="PT/H | H5 — entrega del expediente" color="#404040" meeting="true" start="2027-12-01" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H5 — entrega del expediente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 299</notes>
+            <depend id="111" type="2" difference="10" hardness="Rubber" />
+        </task>
+        <task id="110" name="PT/H | 3.7.5 Acta de conciliación y corte fuera de las ventanas de congelamiento" color="#4472c4" meeting="false" start="2028-01-03" duration="19" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="2" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.7.5 Acta de conciliación y corte fuera de las ventanas de congelamiento
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 123</notes>
+            <depend id="117" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="111" name="PT/H | H5 — acta del CLIENTE (límite: mes 12)" color="#404040" meeting="true" start="2028-01-03" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="20" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H5 — acta del CLIENTE (límite: mes 12)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 300</notes>
+            <depend id="117" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="112" name="RC | H6 — inicio de marcha blanca (mes 13)" color="#c00000" meeting="true" start="2028-02-01" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="0" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>H6 — inicio de marcha blanca (mes 13)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 301</notes>
+        </task>
+        <task id="113" name="PT/H | 1.2.5 Documento de línea base de alcance de la Etapa 2: canal moderno y costo de servir (H8)" color="#4472c4" meeting="false" start="2028-02-01" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="6" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>1.2.5 Documento de línea base de alcance de la Etapa 2: canal moderno y costo de servir (H8)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 11</notes>
+            <depend id="120" type="2" difference="0" hardness="Rubber" />
+            <depend id="125" type="2" difference="0" hardness="Rubber" />
+            <depend id="121" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="114" name="PT/H | 2.1.4 Documento de diseño detallado de M11 y del intercambio con las cadenas" color="#4472c4" meeting="false" start="2028-02-01" duration="12" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="1" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>2.1.4 Documento de diseño detallado de M11 y del intercambio con las cadenas
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 51</notes>
+            <depend id="120" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="115" name="PT/H | 3.6.5 Intercambio electrónico con la principal cadena, con sus pruebas aprobadas (INT-08)" color="#4472c4" meeting="false" start="2028-02-01" duration="107" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="19" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.6.5 Intercambio electrónico con la principal cadena, con sus pruebas aprobadas (INT-08)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 116</notes>
+            <depend id="150" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="116" name="PT/H | 3.10.4.1 Innovación 5: prototipo e informe de la prueba de comprensión (INN-05.P1)" color="#4472c4" meeting="false" start="2028-02-01" duration="36" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="8" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.10.4.1 Innovación 5: prototipo e informe de la prueba de comprensión (INN-05.P1)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 158</notes>
+        </task>
+        <task id="117" name="PT/H | 4.2.1 Marcha blanca de la Etapa 1 con conciliación diaria (H6)" color="#4472c4" meeting="false" start="2028-02-01" duration="63" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>4.2.1 Marcha blanca de la Etapa 1 con conciliación diaria (H6)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 175</notes>
+            <depend id="133" type="2" difference="0" hardness="Rubber" />
+            <depend id="112" type="1" difference="0" hardness="Rubber" />
+        </task>
+        <task id="118" name="PT/H | 7.2.5 Medición de la adopción y plan de acción correctiva" color="#4472c4" meeting="false" start="2028-02-01" duration="187" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>7.2.5 Medición de la adopción y plan de acción correctiva
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 247</notes>
+        </task>
+        <task id="119" name="PT/H | 7.3.1 Certificación de preventistas, conductores y preparadores (Etapa 1)" color="#4472c4" meeting="false" start="2028-02-01" duration="39" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="24" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>7.3.1 Certificación de preventistas, conductores y preparadores (Etapa 1)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 249</notes>
+            <depend id="133" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="120" name="PT/H | 2.4.2 Acta de aprobación del diseño detallado de la Etapa 2 (H8)" color="#4472c4" meeting="false" start="2028-02-17" duration="8" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="1" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>2.4.2 Acta de aprobación del diseño detallado de la Etapa 2 (H8)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 63</notes>
+            <depend id="125" type="2" difference="0" hardness="Rubber" />
+            <depend id="121" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="121" name="PT/H | H8 — entrega del expediente" color="#404040" meeting="true" start="2028-02-28" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H8 — entrega del expediente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 302</notes>
+            <depend id="124" type="2" difference="10" hardness="Rubber" />
+        </task>
+        <task id="122" name="PT/H | Inicio de la ola 3 de reparto" color="#404040" meeting="true" start="2028-02-29" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>Inicio de la ola 3 de reparto
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 314</notes>
+        </task>
+        <task id="123" name="PT/H | 3.10.4.2 Innovación 5: evaluación de privacidad y diseño de la impresión en cabina (INN-05.P2)" color="#4472c4" meeting="false" start="2028-03-01" duration="35" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="7" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.10.4.2 Innovación 5: evaluación de privacidad y diseño de la impresión en cabina (INN-05.P2)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 159</notes>
+        </task>
+        <task id="124" name="PT/H | H8 — acta del CLIENTE (límite: mes 14)" color="#404040" meeting="true" start="2028-03-13" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="14" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H8 — acta del CLIENTE (límite: mes 14)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 303</notes>
+            <depend id="125" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="125" name="RC | 4 elementos: 3.5.1, 3.5.2, 3.5.3, 3.5.4" color="#c00000" meeting="false" start="2028-03-15" duration="32" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="0" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>3.5.1 Pedido electrónico y aviso de despacho para las cadenas, y portal de proveedores (M11 Canal moderno)
+3.5.2 Portal web de clientes: cuenta, saldo, entregas y documentos
+3.5.3 Portal web de transportistas: rutas asignadas del día siguiente
+3.5.4 Costo de servir por cliente y por entrega (M10 Analítica)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 107, 108, 109, 110</notes>
+            <depend id="130" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="126" name="PT/H | 1.7.2 Primera actualización anual del Plan de Reversibilidad durante la implementación" color="#4472c4" meeting="false" start="2028-04-03" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="12" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>1.7.2 Primera actualización anual del Plan de Reversibilidad durante la implementación
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 30</notes>
+        </task>
+        <task id="127" name="PT/H | 3.10.4.3 Innovación 5: cálculo y bloques 1 a 3 de la hoja de negocio (INN-05.P3)" color="#4472c4" meeting="false" start="2028-04-03" duration="48" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="13" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.10.4.3 Innovación 5: cálculo y bloques 1 a 3 de la hoja de negocio (INN-05.P3)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 160</notes>
+        </task>
+        <task id="128" name="PT/H | 3.11.1 Documentación técnica, funcional, de arquitectura, de operación y de seguridad" color="#4472c4" meeting="false" start="2028-04-03" duration="143" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.11.1 Documentación técnica, funcional, de arquitectura, de operación y de seguridad
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 163</notes>
+        </task>
+        <task id="129" name="PT/H | 7.1.4 Traspaso al equipo de TI de cuatro personas del CLIENTE" color="#4472c4" meeting="false" start="2028-04-03" duration="123" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>7.1.4 Traspaso al equipo de TI de cuatro personas del CLIENTE
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 239</notes>
+            <depend id="153" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="130" name="PT/H | 3.9.1 Pruebas de integración y regresión sin afectar la Etapa 1 en producción (H9)" color="#4472c4" meeting="false" start="2028-05-02" duration="13" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="3" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.9.1 Pruebas de integración y regresión sin afectar la Etapa 1 en producción (H9)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 134</notes>
+            <depend id="143" type="2" difference="0" hardness="Rubber" />
+            <depend id="136" type="2" difference="0" hardness="Rubber" />
+            <depend id="137" type="2" difference="0" hardness="Rubber" />
+            <depend id="144" type="2" difference="0" hardness="Rubber" />
+            <depend id="135" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="131" name="PT/H | 4.2.2 Estabilización de la Etapa 1, acompañamiento en ruta y restauraciones de soporte puente" color="#4472c4" meeting="false" start="2028-05-02" duration="104" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>4.2.2 Estabilización de la Etapa 1, acompañamiento en ruta y restauraciones de soporte puente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 176</notes>
+        </task>
+        <task id="132" name="PT/H | 7.2.2 Gestión del cambio con las cadenas y los transportistas" color="#4472c4" meeting="false" start="2028-05-02" duration="38" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="25" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>7.2.2 Gestión del cambio con las cadenas y los transportistas
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 244</notes>
+        </task>
+        <task id="133" name="PT/H | 4.2.3 Acta de paso a producción y cierre de la Etapa 1 (H7)" color="#4472c4" meeting="false" start="2028-05-05" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="2" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>4.2.3 Acta de paso a producción y cierre de la Etapa 1 (H7)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 177</notes>
+            <depend id="134" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="134" name="PT/H | H7 — entrega del expediente" color="#404040" meeting="true" start="2028-05-15" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H7 — entrega del expediente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 304</notes>
+            <depend id="138" type="2" difference="10" hardness="Rubber" />
+        </task>
+        <task id="135" name="PT/H | H9 — entrega del expediente" color="#404040" meeting="true" start="2028-05-18" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H9 — entrega del expediente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 306</notes>
+            <depend id="142" type="2" difference="10" hardness="Rubber" />
+        </task>
+        <task id="136" name="PT/H | 3 elementos: 3.9.3, 3.9.4, 3.9.7" color="#4472c4" meeting="false" start="2028-05-19" duration="10" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="12" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.9.3 Pruebas de carga con ambas etapas activas y de resiliencia
+3.9.4 Prueba de recuperación ante desastres con ambas etapas
+3.9.7 Demostración en Preproducción del despliegue sin interrupción de la Etapa 2
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 136, 137, 140</notes>
+            <depend id="144" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="137" name="PT/H | 3.9.5 Prueba de seguridad ofensiva de la Etapa 2, por un tercero independiente" color="#4472c4" meeting="false" start="2028-05-19" duration="6" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="3" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.9.5 Prueba de seguridad ofensiva de la Etapa 2, por un tercero independiente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 138</notes>
+            <depend id="144" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="138" name="RC | H7 — acta del CLIENTE (límite: mes 16)" color="#c00000" meeting="true" start="2028-05-29" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="2" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>H7 — acta del CLIENTE (límite: mes 16)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 305</notes>
+        </task>
+        <task id="139" name="PT/H | 3.6.6 Incorporación de las demás cadenas al intercambio electrónico (INT-08)" color="#4472c4" meeting="false" start="2028-06-01" duration="57" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="6" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.6.6 Incorporación de las demás cadenas al intercambio electrónico (INT-08)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 117</notes>
+        </task>
+        <task id="140" name="PT/H | 4.1.3 Plan de implantación y reversión de la Etapa 2 fuera de la ventana de 05:30 a 07:00" color="#4472c4" meeting="false" start="2028-06-01" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="13" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>4.1.3 Plan de implantación y reversión de la Etapa 2 fuera de la ventana de 05:30 a 07:00
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 172</notes>
+            <depend id="150" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="141" name="PT/H | 5.4.3 Fórmula aprobada del tramo variable: reglas de atribución, canasta e índices (INN-04.P1)" color="#4472c4" meeting="false" start="2028-06-01" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="75" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>5.4.3 Fórmula aprobada del tramo variable: reglas de atribución, canasta e índices (INN-04.P1)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 201</notes>
+        </task>
+        <task id="142" name="PT/H | H9 — acta del CLIENTE (límite: mes 17)" color="#404040" meeting="true" start="2028-06-01" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="19" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H9 — acta del CLIENTE (límite: mes 17)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 307</notes>
+        </task>
+        <task id="143" name="PT/H | 3.9.2 Pruebas de aceptación y de accesibilidad con cadenas, transportistas, Comercial y Finanzas" color="#4472c4" meeting="false" start="2028-06-02" duration="10" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="2" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.9.2 Pruebas de aceptación y de accesibilidad con cadenas, transportistas, Comercial y Finanzas
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 135</notes>
+            <depend id="144" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="144" name="PT/H | 3.9.6 Acta de certificación de la Etapa 2 y cierre del desarrollo (H10)" color="#4472c4" meeting="false" start="2028-06-16" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="2" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.9.6 Acta de certificación de la Etapa 2 y cierre del desarrollo (H10)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 139</notes>
+            <depend id="145" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="145" name="PT/H | H10 — entrega del expediente" color="#404040" meeting="true" start="2028-06-28" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H10 — entrega del expediente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 308</notes>
+            <depend id="148" type="2" difference="10" hardness="Rubber" />
+        </task>
+        <task id="146" name="PT/H | 3.10.4.4 Innovación 5: hoja certificada, en marcha blanca y en producción (INN-05.P4, primera parte)" color="#4472c4" meeting="false" start="2028-07-03" duration="62" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="20" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>3.10.4.4 Innovación 5: hoja certificada, en marcha blanca y en producción (INN-05.P4, primera parte)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 161</notes>
+        </task>
+        <task id="147" name="PT/H | 7.3.2 Certificación de Comercial y Finanzas en costo de servir (Etapa 2)" color="#4472c4" meeting="false" start="2028-07-03" duration="17" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="4" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>7.3.2 Certificación de Comercial y Finanzas en costo de servir (Etapa 2)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 250</notes>
+            <depend id="153" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="148" name="PT/H | H10 — acta del CLIENTE (límite: mes 18)" color="#404040" meeting="true" start="2028-07-12" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="13" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H10 — acta del CLIENTE (límite: mes 18)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 309</notes>
+            <depend id="150" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="149" name="RC | H11 — inicio de marcha blanca (mes 19)" color="#c00000" meeting="true" start="2028-08-01" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="0" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>H11 — inicio de marcha blanca (mes 19)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 310</notes>
+        </task>
+        <task id="150" name="PT/H | 4.3.1 Marcha blanca de la Etapa 2 en convivencia con la Etapa 1 y fuente única de datos (H11)" color="#4472c4" meeting="false" start="2028-08-01" duration="41" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>4.3.1 Marcha blanca de la Etapa 2 en convivencia con la Etapa 1 y fuente única de datos (H11)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 179</notes>
+            <depend id="153" type="2" difference="0" hardness="Rubber" />
+            <depend id="149" type="1" difference="0" hardness="Rubber" />
+        </task>
+        <task id="151" name="PT/H | 4.3.4 Garantía de correcto funcionamiento constituida, condición de la aceptación final (H12)" color="#4472c4" meeting="false" start="2028-09-13" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="4" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>4.3.4 Garantía de correcto funcionamiento constituida, condición de la aceptación final (H12)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 182</notes>
+            <depend id="153" type="2" difference="0" hardness="Rubber" />
+            <depend id="154" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="152" name="PT/H | 4.3.2 Estabilización de la Etapa 2 con Comercial, Finanzas, cadenas y transportistas" color="#4472c4" meeting="false" start="2028-10-02" duration="41" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>4.3.2 Estabilización de la Etapa 2 con Comercial, Finanzas, cadenas y transportistas
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 180</notes>
+        </task>
+        <task id="153" name="PT/H | 4.3.3 Acta de paso a producción y aceptación final de la implementación (H12)" color="#4472c4" meeting="false" start="2028-10-02" duration="7" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="3" />
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>4.3.3 Acta de paso a producción y aceptación final de la implementación (H12)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 181</notes>
+            <depend id="154" type="2" difference="-1" hardness="Rubber" />
+        </task>
+        <task id="154" name="PT/H | H12 — entrega del expediente" color="#404040" meeting="true" start="2028-10-11" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc1" value="No" />
+            <notes>H12 — entrega del expediente
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 311</notes>
+            <depend id="155" type="2" difference="10" hardness="Rubber" />
+        </task>
+        <task id="155" name="RC | H12 — acta del CLIENTE (límite: mes 21)" color="#c00000" meeting="true" start="2028-10-25" duration="0" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="3" />
+            <customproperty taskproperty-id="tpc1" value="Sí" />
+            <notes>H12 — acta del CLIENTE (límite: mes 21)
+Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 312</notes>
+        </task>
+    </tasks>
+    <resources />
+    <allocations />
+    <vacations />
+    <previous />
+    <roles roleset-name="Default" />
+</project>
