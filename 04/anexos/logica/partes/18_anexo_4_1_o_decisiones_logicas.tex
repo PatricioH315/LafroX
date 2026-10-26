@@ -213,13 +213,13 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 
 \subsection*{ADR-11. Integración B2B/EDI}
 \label{sub:adr-11}
-\textbf{Decisión adoptada.} M11 traduce EANCOM/GS1 XML y EPCIS por cadena. OpenAS2 gestiona firma, cifrado y MDN. La publicación AS2 recorre CloudFront con WAF y Shield Advanced, ALB de origen restringido y dos tareas OpenAS2 privadas, conforme a 4.2.5.2 del Subdocumento 4. ERP se alcanza por ACL.
+\textbf{Decisión adoptada.} M11 traduce EANCOM/GS1 XML y EPCIS por cadena. OpenAS2 gestiona firma, cifrado y MDN. ERP se alcanza por ACL.
 
-\textbf{Alternativas evaluadas.} Punto a punto por cadena duplica adaptadores, delegar EDI al ERP expone su frontera. NLB con paso TLS directo conserva el transporte, pero no incorpora CDN, WAF ni la protección de capa 7 exigidos por RT-11.07; se descarta como entrada pública AS2.
+\textbf{Alternativas evaluadas.} Punto a punto por cadena duplica adaptadores, delegar EDI al ERP expone su frontera.
 
 \textbf{Criterio de selección.} Contratos GS1 y aislamiento del emisor tributario.
 
-\textbf{Consecuencias.} Los perfiles de cadena se versionan. Se conservan bytes MIME, firma, cifrado y acuses, sin caché ni retos interactivos. El origen exige lista de prefijos y encabezado secreto, y no acepta acceso directo. T-11 incorpora los recursos del borde y la aceptación comprueba interoperabilidad, duplicados y denegación de bypass. Una limitación de protocolo de la contraparte no autoriza una excepción a las bases.
+\textbf{Consecuencias.} Los perfiles de cadena se versionan y las excepciones quedan trazables.
 
 \textbf{Evidencia exigida.} Interoperabilidad por cadena con TLS 1.3, certificados, MDN y rechazo comercial.
 
