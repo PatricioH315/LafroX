@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project name="LafroX — Carta Gantt de 56 meses por período contractual" company="LafroX" webLink="" view-date="2027-02-01" view-index="0" gantt-divider-location="760" resource-divider-location="300" version="3.3.3316" locale="en">
+    <description>Carta de los 56 meses del contrato con inicio supuesto en febrero de 2027: períodos del artículo 17 de las Bases Administrativas, ventanas de marcha blanca, pasos a producción, inicio de la Operación e hitos H1 a H12 del Formulario E-25. Las fechas de 4.2.1, 4.2.2, 4.3.1, 4.3.2 y de los hitos provienen de la carta resumida de 155 filas.</description>
+    <view zooming-state="default:11" id="gantt-chart">
+        <option id="filter.completedTasks" value="false" />
+        <option id="filter.dueTodayTasks" value="false" />
+        <option id="filter.overdueTasks" value="false" />
+        <option id="filter.inProgressTodayTasks" value="false" />
+        <field id="tpd3" name="Name" width="580" order="0" />
+        <field id="tpd4" name="Begin date" width="90" order="1" />
+        <field id="tpd5" name="End date" width="90" order="2" />
+        <option id="taskLabelRight" value="name" />
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nombre" width="210" order="0" />
+        <field id="1" name="Función" width="86" order="1" />
+    </view>
+    <calendars>
+        <day-types>
+            <day-type id="0" />
+            <day-type id="1" />
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1" />
+            <only-show-weekends value="false" />
+            <overriden-day-types />
+            <days />
+        </day-types>
+        <date year="2027" month="1" date="1" type="HOLIDAY" />
+        <date year="2027" month="3" date="26" type="HOLIDAY" />
+        <date year="2027" month="3" date="27" type="HOLIDAY" />
+        <date year="2027" month="5" date="1" type="HOLIDAY" />
+        <date year="2027" month="5" date="21" type="HOLIDAY" />
+        <date year="2027" month="6" date="21" type="HOLIDAY" />
+        <date year="2027" month="6" date="28" type="HOLIDAY" />
+        <date year="2027" month="7" date="16" type="HOLIDAY" />
+        <date year="2027" month="8" date="15" type="HOLIDAY" />
+        <date year="2027" month="9" date="17" type="HOLIDAY" />
+        <date year="2027" month="9" date="18" type="HOLIDAY" />
+        <date year="2027" month="9" date="19" type="HOLIDAY" />
+        <date year="2027" month="10" date="11" type="HOLIDAY" />
+        <date year="2027" month="10" date="31" type="HOLIDAY" />
+        <date year="2027" month="11" date="1" type="HOLIDAY" />
+        <date year="2027" month="12" date="8" type="HOLIDAY" />
+        <date year="2027" month="12" date="25" type="HOLIDAY" />
+        <date year="2028" month="1" date="1" type="HOLIDAY" />
+        <date year="2028" month="4" date="14" type="HOLIDAY" />
+        <date year="2028" month="4" date="15" type="HOLIDAY" />
+        <date year="2028" month="5" date="1" type="HOLIDAY" />
+        <date year="2028" month="5" date="21" type="HOLIDAY" />
+        <date year="2028" month="6" date="20" type="HOLIDAY" />
+        <date year="2028" month="6" date="26" type="HOLIDAY" />
+        <date year="2028" month="7" date="16" type="HOLIDAY" />
+        <date year="2028" month="8" date="15" type="HOLIDAY" />
+        <date year="2028" month="9" date="18" type="HOLIDAY" />
+        <date year="2028" month="9" date="19" type="HOLIDAY" />
+        <date year="2028" month="10" date="9" type="HOLIDAY" />
+        <date year="2028" month="10" date="27" type="HOLIDAY" />
+        <date year="2028" month="11" date="1" type="HOLIDAY" />
+        <date year="2028" month="12" date="8" type="HOLIDAY" />
+        <date year="2028" month="12" date="25" type="HOLIDAY" />
+        <date year="2029" month="1" date="1" type="HOLIDAY" />
+        <date year="2029" month="3" date="30" type="HOLIDAY" />
+        <date year="2029" month="3" date="31" type="HOLIDAY" />
+        <date year="2029" month="5" date="1" type="HOLIDAY" />
+        <date year="2029" month="5" date="21" type="HOLIDAY" />
+        <date year="2029" month="6" date="20" type="HOLIDAY" />
+        <date year="2029" month="7" date="2" type="HOLIDAY" />
+        <date year="2029" month="7" date="16" type="HOLIDAY" />
+        <date year="2029" month="8" date="15" type="HOLIDAY" />
+        <date year="2029" month="9" date="17" type="HOLIDAY" />
+        <date year="2029" month="9" date="18" type="HOLIDAY" />
+        <date year="2029" month="9" date="19" type="HOLIDAY" />
+        <date year="2029" month="10" date="15" type="HOLIDAY" />
+        <date year="2029" month="11" date="1" type="HOLIDAY" />
+        <date year="2029" month="11" date="2" type="HOLIDAY" />
+        <date year="2029" month="12" date="8" type="HOLIDAY" />
+        <date year="2029" month="12" date="25" type="HOLIDAY" />
+        <date year="2030" month="1" date="1" type="HOLIDAY" />
+        <date year="2030" month="4" date="19" type="HOLIDAY" />
+        <date year="2030" month="4" date="20" type="HOLIDAY" />
+        <date year="2030" month="5" date="1" type="HOLIDAY" />
+        <date year="2030" month="5" date="21" type="HOLIDAY" />
+        <date year="2030" month="6" date="21" type="HOLIDAY" />
+        <date year="2030" month="6" date="29" type="HOLIDAY" />
+        <date year="2030" month="7" date="16" type="HOLIDAY" />
+        <date year="2030" month="8" date="15" type="HOLIDAY" />
+        <date year="2030" month="9" date="18" type="HOLIDAY" />
+        <date year="2030" month="9" date="19" type="HOLIDAY" />
+        <date year="2030" month="9" date="20" type="HOLIDAY" />
+        <date year="2030" month="10" date="12" type="HOLIDAY" />
+        <date year="2030" month="10" date="31" type="HOLIDAY" />
+        <date year="2030" month="11" date="1" type="HOLIDAY" />
+        <date year="2030" month="12" date="8" type="HOLIDAY" />
+        <date year="2030" month="12" date="25" type="HOLIDAY" />
+        <date year="2031" month="1" date="1" type="HOLIDAY" />
+        <date year="2031" month="4" date="11" type="HOLIDAY" />
+        <date year="2031" month="4" date="12" type="HOLIDAY" />
+        <date year="2031" month="5" date="1" type="HOLIDAY" />
+        <date year="2031" month="5" date="21" type="HOLIDAY" />
+        <date year="2031" month="6" date="21" type="HOLIDAY" />
+        <date year="2031" month="6" date="29" type="HOLIDAY" />
+        <date year="2031" month="7" date="16" type="HOLIDAY" />
+        <date year="2031" month="8" date="15" type="HOLIDAY" />
+        <date year="2031" month="9" date="18" type="HOLIDAY" />
+        <date year="2031" month="9" date="19" type="HOLIDAY" />
+        <date year="2031" month="10" date="12" type="HOLIDAY" />
+        <date year="2031" month="10" date="31" type="HOLIDAY" />
+        <date year="2031" month="11" date="1" type="HOLIDAY" />
+        <date year="2031" month="12" date="8" type="HOLIDAY" />
+        <date year="2031" month="12" date="25" type="HOLIDAY" />
+        <date year="2032" month="1" date="1" type="HOLIDAY" />
+        <date year="2032" month="3" date="26" type="HOLIDAY" />
+        <date year="2032" month="3" date="27" type="HOLIDAY" />
+        <date year="2032" month="5" date="1" type="HOLIDAY" />
+        <date year="2032" month="5" date="21" type="HOLIDAY" />
+        <date year="2032" month="6" date="20" type="HOLIDAY" />
+        <date year="2032" month="6" date="28" type="HOLIDAY" />
+        <date year="2032" month="7" date="16" type="HOLIDAY" />
+        <date year="2032" month="8" date="15" type="HOLIDAY" />
+        <date year="2032" month="9" date="17" type="HOLIDAY" />
+        <date year="2032" month="9" date="18" type="HOLIDAY" />
+        <date year="2032" month="9" date="19" type="HOLIDAY" />
+        <date year="2032" month="10" date="11" type="HOLIDAY" />
+        <date year="2032" month="10" date="31" type="HOLIDAY" />
+        <date year="2032" month="11" date="1" type="HOLIDAY" />
+        <date year="2032" month="12" date="8" type="HOLIDAY" />
+        <date year="2032" month="12" date="25" type="HOLIDAY" />
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon" />
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon" />
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon" />
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text" />
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date" />
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date" />
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int" />
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int" />
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text" />
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text" />
+            <taskproperty id="tpc0" name="Holgura (días hábiles)" type="custom" valuetype="int" />
+            <taskproperty id="tpc1" name="Crítica" type="custom" valuetype="text" defaultvalue="" />
+        </taskproperties>
+        <task id="0" name="Etapa 1 · Desarrollo (meses 1 a 12)" color="#4472c4" meeting="false" start="2027-02-01" duration="252" complete="0" expand="true">
+            <notes>BA art. 17.1, meses 1 a 12.</notes>
+            <depend id="6" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="1" name="H1 — acta del CLIENTE (mes 2)" color="#000000" meeting="true" start="2027-03-23" duration="0" complete="0" expand="true">
+            <notes>Formulario E-25.</notes>
+        </task>
+        <task id="2" name="H2 — acta del CLIENTE (mes 4)" color="#000000" meeting="true" start="2027-05-13" duration="0" complete="0" expand="true">
+            <notes>Formulario E-25.</notes>
+        </task>
+        <task id="3" name="H3 — acta del CLIENTE (mes 6)" color="#000000" meeting="true" start="2027-07-06" duration="0" complete="0" expand="true">
+            <notes>Formulario E-25.</notes>
+        </task>
+        <task id="4" name="H4 — acta del CLIENTE (mes 10)" color="#000000" meeting="true" start="2027-11-08" duration="0" complete="0" expand="true">
+            <notes>Formulario E-25.</notes>
+        </task>
+        <task id="5" name="H5 — acta del CLIENTE (mes 12)" color="#000000" meeting="true" start="2028-01-03" duration="0" complete="0" expand="true">
+            <notes>Formulario E-25.</notes>
+        </task>
+        <task id="6" name="Etapa 1 · Marcha blanca (meses 13 a 15; 4.2.1)" color="#e69138" meeting="false" start="2028-02-01" duration="63" complete="0" expand="true">
+            <notes>BA art. 17.1 y 17.3; fechas de 4.2.1 en la carta resumida.</notes>
+            <depend id="8" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="7" name="H6 — inicio de la marcha blanca de la Etapa 1 (mes 13)" color="#000000" meeting="true" start="2028-02-01" duration="0" complete="0" expand="true">
+            <notes>Formulario E-25. Sin activar cambios en los tres primeros días hábiles (Formulario T-18).</notes>
+        </task>
+        <task id="8" name="Etapa 1 · Paso a producción (mes 16)" color="#000000" meeting="true" start="2028-05-05" duration="0" complete="0" expand="true">
+            <notes>BA art. 17.1. Cuarto día hábil de mayo de 2028 (Caso, sección 13.3, condición 2).</notes>
+            <depend id="9" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="9" name="Etapa 1 · Estabilización (4.2.2)" color="#6aa84f" meeting="false" start="2028-05-05" duration="101" complete="0" expand="true">
+            <notes>RT-20.06; fechas de 4.2.2 en la carta resumida.</notes>
+        </task>
+        <task id="10" name="H7 — acta del CLIENTE (mes 16)" color="#000000" meeting="true" start="2028-05-29" duration="0" complete="0" expand="true">
+            <notes>Formulario E-25.</notes>
+        </task>
+        <task id="11" name="Etapa 2 · Desarrollo (meses 13 a 18)" color="#4472c4" meeting="false" start="2028-02-01" duration="126" complete="0" expand="true">
+            <notes>BA art. 17.1, meses 13 a 18; cierre del desarrollo en el mes 18.</notes>
+            <depend id="15" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="12" name="H8 — acta del CLIENTE (mes 14)" color="#000000" meeting="true" start="2028-03-13" duration="0" complete="0" expand="true">
+            <notes>Formulario E-25.</notes>
+        </task>
+        <task id="13" name="H9 — acta del CLIENTE (mes 17)" color="#000000" meeting="true" start="2028-06-01" duration="0" complete="0" expand="true">
+            <notes>Formulario E-25.</notes>
+        </task>
+        <task id="14" name="H10 — acta del CLIENTE (mes 18)" color="#000000" meeting="true" start="2028-07-12" duration="0" complete="0" expand="true">
+            <notes>Formulario E-25.</notes>
+        </task>
+        <task id="15" name="Etapa 2 · Marcha blanca (meses 19 y 20; 4.3.1)" color="#e69138" meeting="false" start="2028-08-01" duration="41" complete="0" expand="true">
+            <notes>BA art. 17.1 y 17.3; fechas de 4.3.1 en la carta resumida.</notes>
+            <depend id="17" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="16" name="H11 — inicio de la marcha blanca de la Etapa 2 (mes 19)" color="#000000" meeting="true" start="2028-08-01" duration="0" complete="0" expand="true">
+            <notes>Formulario E-25.</notes>
+        </task>
+        <task id="17" name="Etapa 2 · Paso a producción e inicio de la Operación (mes 21)" color="#000000" meeting="true" start="2028-10-05" duration="0" complete="0" expand="true">
+            <notes>BA art. 17.1 y 17.2, punto 4. Cuarto día hábil de octubre de 2028 (Caso, sección 13.3, condición 2).</notes>
+            <depend id="18" type="2" difference="0" hardness="Rubber" />
+            <depend id="20" type="2" difference="0" hardness="Rubber" />
+        </task>
+        <task id="18" name="Etapa 2 · Estabilización (4.3.2)" color="#6aa84f" meeting="false" start="2028-10-05" duration="38" complete="0" expand="true">
+            <notes>RT-20.06; fechas de 4.3.2 en la carta resumida.</notes>
+        </task>
+        <task id="19" name="H12 — acta del CLIENTE (mes 21)" color="#000000" meeting="true" start="2028-10-25" duration="0" complete="0" expand="true">
+            <notes>Formulario E-25. Límite: 31 de octubre de 2028.</notes>
+        </task>
+        <task id="20" name="Operación y soporte con ambos alcances (meses 21 a 56)" color="#6aa84f" meeting="false" start="2028-10-05" duration="738" complete="0" expand="true">
+            <notes>BA art. 15.1 y 17.1; hito mensual en producción, 36 pagos (Formulario E-25).</notes>
+        </task>
+    </tasks>
+    <resources />
+    <allocations />
+    <vacations />
+    <previous />
+    <roles roleset-name="Default" />
+</project>

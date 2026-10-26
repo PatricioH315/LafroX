@@ -368,9 +368,15 @@ La Figura \ref{fig:7-ruta} distingue la entrega técnica del acta posterior a la
 
 La holgura se gestiona en la reunión semanal y el Comité de Proyecto quincenal (paquetes 1.3.5 y 1.8.3). Como las holguras de H7 y H12 son menores que el plazo de subsanación, sus expedientes se revisan con la Contraparte Técnica antes de la entrega formal, durante las semanas finales de cada marcha blanca; toda amenaza a esos hitos se escala al Comité Ejecutivo. Una holgura positiva tampoco autoriza consumir las cuatro semanas finales de marcha blanca. El informe mensual de valor ganado comunica toda desviación mayor al 10 \% y su plan dentro de cinco días hábiles (1.8.6).
 
+La Figura \ref{fig:7-gantt-critica} complementa la Figura \ref{fig:7-ruta}: muestra en la carta Gantt los paquetes de la ruta crítica y sus dependencias hasta los inicios de las marchas blancas, H6 y H11, cuyas fechas son fijas.
+
+\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/LafroX-Gantt-vista-critica.png}
+  {Vista crítica de la carta Gantt: paquetes de la ruta crítica y sus dependencias hasta H6 y H11. Fuente: elaboración en GanttProject a partir de LafroX (2026d, T-14).}
+  {fig:7-gantt-critica}
+
 \subsection{Carta Gantt y calendario}
 
-La carta Gantt del Formulario T-14 cubre los 56 meses y muestra las marchas blancas, los pasos a producción y el inicio de la Operación. La Tabla \ref{tab:7-hitos} ubica los doce hitos del Formulario E-25 con el paquete que entrega cada uno.
+La carta Gantt del Formulario T-14 muestra las marchas blancas, los pasos a producción y el inicio de la Operación, sobre la estructura contractual de los 56 meses. La Tabla \ref{tab:7-hitos} ubica los doce hitos del Formulario E-25 con el paquete que entrega cada uno.
 
 \parte{tablas/tab_SD7_4}
 
@@ -382,13 +388,43 @@ Los meses contractuales caen en meses calendario distintos según la fecha de in
 
 Ningún inicio admisible deja las dos marchas blancas completas fuera de septiembre y diciembre; el Anexo 7.A extiende el análisis a los ocho meses de inicio admisibles. Con un inicio en diciembre de 2026, el inicio de la marcha blanca de la Etapa 1 cae en diciembre; con uno en marzo de 2027, el inicio de la marcha blanca de la Etapa 2 cae en septiembre. Con febrero de 2027, en cambio, el congelamiento afecta solo el segundo mes de la marcha blanca de la Etapa 2 y no un inicio, por lo que LafroX lo adopta como supuesto de calendario del cronograma. Su costo es que las semanas de cierre de esa marcha blanca coinciden con el peak de septiembre, que la sección 7.3.5 trata. Dentro de un mes de congelamiento no se inicia ninguna ola ni se despliega ningún cambio, y la marcha blanca continúa en convivencia, con medición diaria.
 
-La Figura \ref{fig:7-gantt} presenta la carta Gantt resumida de los 56 meses con ese supuesto de inicio, por período contractual. La carta vigente por cuenta de control, generada desde las ventanas reconciliadas de los 227 paquetes, está en el Formulario T-14, sección 3.1.
+La Figura \ref{fig:7-gantt-56} presenta la carta de los 56 meses con ese supuesto de inicio, elaborada en GanttProject: los períodos contractuales, las ventanas de marcha blanca, los pasos a producción del 5 de mayo y del 5 de octubre de 2028 (cuarto día hábil de cada mes), el inicio de la Operación y los hitos H1 a H12.
 
-\figuraDiagramaHorizontal[527pt]{imagenes/Diagramas que faltaban/Fig_7-8_T14-1_Gantt_56_meses.pdf}
-  {Carta Gantt resumida de los 56 meses, con inicio en febrero de 2027. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 17, pp. 12--13 y Formulario E-25) y LafroX (2026d, T-14).}
+\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/LafroX-Gantt-56-meses.png}
+  {Carta Gantt de los 56 meses por período contractual, con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de Distribuidora Puelche S.A. (2026a, art. 17, pp. 12--13 y Formulario E-25) y LafroX (2026d, T-14).}
+  {fig:7-gantt-56}
+
+Las Figuras \ref{fig:7-gantt} a \ref{fig:7-gantt-7} detallan, en siete partes, la implementación de las Etapas 1 y 2: 155 filas ordenadas por fecha de inicio, desde febrero de 2027 hasta la estabilización de la Etapa 2, con las dependencias entre paquetes visibles. Cada fila es un paquete con entregable, un grupo de paquetes que comparten fechas o un hito, separado en la entrega del expediente y el acta del CLIENTE; el prefijo RC marca la ruta crítica. Ambas cartas están también en el Formulario T-14, sección 3.
+
+\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-1-de-7.png}
+  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 1 de 7 (filas 1 a 23 de 155), con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de LafroX (2026d, T-14).}
   {fig:7-gantt}
 
-La carta muestra los periodos fijos del artículo 17 de las Bases Administrativas (pp. 12--13) mes a mes: el mes 16 es mayo de 2028 y el mes 21, octubre de 2028. Las fases de desarrollo aparecen dos veces, una por etapa, y la capacitación continúa durante la operación por la rotación de la bodega. Las columnas rayadas del mes 20 y del mes 23 confirman lo que anticipa la Tabla \ref{tab:7-inicio}: la marcha blanca de la Etapa 2 ocupa septiembre y el primer diciembre de operación cae en el mes 23. La fecha objetivo del H12, del paso oficial a producción de la Etapa 2 y del inicio simultáneo de la Operación con ambos alcances es el primer día hábil del mes 21 fuera de sus tres primeros días hábiles (5 de octubre de 2028 sólo bajo el supuesto de inicio en febrero de 2027). La programación de detalle aún calcula el acta para el 25 de octubre; por eso sus fechas de archivo final 9.1.2 y de estabilización 4.3.2, del 26 de octubre al 22 de noviembre, son las del calendario pendiente de revisión. La operación supervisada de la Etapa 2 con datos y usuarios reales durante la marcha blanca no sustituye el paso oficial a producción ni el acta H12. La carta mensual no demuestra por sí sola que la fecha objetivo se pueda cumplir.
+\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-2-de-7.png}
+  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 2 de 7 (filas 24 a 45 de 155), con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de LafroX (2026d, T-14).}
+  {fig:7-gantt-2}
+
+\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-3-de-7.png}
+  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 3 de 7 (filas 46 a 67 de 155), con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de LafroX (2026d, T-14).}
+  {fig:7-gantt-3}
+
+\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-4-de-7.png}
+  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 4 de 7 (filas 68 a 89 de 155), con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de LafroX (2026d, T-14).}
+  {fig:7-gantt-4}
+
+\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-5-de-7.png}
+  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 5 de 7 (filas 90 a 111 de 155), con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de LafroX (2026d, T-14).}
+  {fig:7-gantt-5}
+
+\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-6-de-7.png}
+  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 6 de 7 (filas 112 a 133 de 155), con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de LafroX (2026d, T-14).}
+  {fig:7-gantt-6}
+
+\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-7-de-7.png}
+  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 7 de 7 (filas 134 a 155 de 155), con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de LafroX (2026d, T-14).}
+  {fig:7-gantt-7}
+
+La carta muestra los periodos fijos del artículo 17 de las Bases Administrativas (pp. 12--13) mes a mes: el mes 16 es mayo de 2028 y el mes 21, octubre de 2028. La marcha blanca de la Etapa 1 (4.2.1) comienza con el H6 el 1 de febrero de 2028, y la de la Etapa 2 (4.3.1), con el H11 el 1 de agosto de 2028; como anticipa la Tabla \ref{tab:7-inicio}, esta última ocupa septiembre. La fecha objetivo del H12, del paso oficial a producción de la Etapa 2 y del inicio simultáneo de la Operación con ambos alcances es el primer día hábil del mes 21 fuera de sus tres primeros días hábiles (5 de octubre de 2028 sólo bajo el supuesto de inicio en febrero de 2027). La programación de detalle calcula el acta para el 25 de octubre. La estabilización 4.3.2 comienza con el paso a producción, el 5 de octubre, y se extiende hasta el 30 de noviembre; sus cuatro semanas reforzadas, del 26 de octubre al 22 de noviembre, siguen a la firma del acta, igual que el archivo final 9.1.2. La operación supervisada de la Etapa 2 con datos y usuarios reales durante la marcha blanca no sustituye el paso oficial a producción ni el acta H12. La carta no demuestra por sí sola que la fecha objetivo se pueda cumplir.
 
 Antes de cada paso a producción, el cronograma reserva las pruebas que exige el numeral 20.1 de las Bases Técnicas Transversales (p. 35): carga y estrés a 1,5 veces el peak, resiliencia, recuperación ante desastres con conmutación real, seguridad ofensiva y accesibilidad. Además, programa dos ensayos de migración antes de la migración definitiva. En la Etapa 1 estas pruebas forman la cuenta 3.8, se ejecutan en los meses 9 y 10 y se entregan antes del H5 del mes 12; en la Etapa 2 forman la cuenta 3.9, se ejecutan en los meses 16 y 17 y se entregan antes del H10 del mes 18 (Formulario T-15, Tabla 5.2).
 

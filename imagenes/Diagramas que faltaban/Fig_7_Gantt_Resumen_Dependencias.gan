@@ -1198,10 +1198,11 @@ Mismas fechas, duración y dependencias que los elementos originales. Identifica
             <depend id="144" type="2" difference="0" hardness="Rubber" />
             <depend id="135" type="2" difference="-1" hardness="Rubber" />
         </task>
-        <task id="131" name="PT/H | 4.2.2 Estabilización de la Etapa 1, acompañamiento en ruta y restauraciones de soporte puente" color="#4472c4" meeting="false" start="2028-05-02" duration="104" complete="0" expand="true">
+        <task id="131" name="PT/H | 4.2.2 Estabilización de la Etapa 1, acompañamiento en ruta y restauraciones de soporte puente" color="#4472c4" meeting="false" start="2028-05-05" duration="101" complete="0" expand="true">
             <customproperty taskproperty-id="tpc1" value="No" />
             <notes>4.2.2 Estabilización de la Etapa 1, acompañamiento en ruta y restauraciones de soporte puente
-Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 176</notes>
+Mismas dependencias que los elementos originales. Identificadores de origen: 176
+Ajuste del 26-10-2026: el inicio pasa del 2 al 5 de mayo de 2028, cuarto día hábil del mes, porque la estabilización sigue al paso a producción (RT-20.06) y el paso a producción no puede ocurrir en los tres primeros días hábiles del mes (Caso, sección 13.3, condición 2). Se conserva la fecha de término.</notes>
         </task>
         <task id="132" name="PT/H | 7.2.2 Gestión del cambio con las cadenas y los transportistas" color="#4472c4" meeting="false" start="2028-05-02" duration="38" complete="0" expand="true">
             <customproperty taskproperty-id="tpc0" value="25" />
@@ -1336,10 +1337,11 @@ Mismas fechas, duración y dependencias que los elementos originales. Identifica
             <depend id="153" type="2" difference="0" hardness="Rubber" />
             <depend id="154" type="2" difference="-1" hardness="Rubber" />
         </task>
-        <task id="152" name="PT/H | 4.3.2 Estabilización de la Etapa 2 con Comercial, Finanzas, cadenas y transportistas" color="#4472c4" meeting="false" start="2028-10-02" duration="41" complete="0" expand="true">
+        <task id="152" name="PT/H | 4.3.2 Estabilización de la Etapa 2 con Comercial, Finanzas, cadenas y transportistas" color="#4472c4" meeting="false" start="2028-10-05" duration="38" complete="0" expand="true">
             <customproperty taskproperty-id="tpc1" value="No" />
             <notes>4.3.2 Estabilización de la Etapa 2 con Comercial, Finanzas, cadenas y transportistas
-Mismas fechas, duración y dependencias que los elementos originales. Identificadores de origen: 180</notes>
+Mismas dependencias que los elementos originales. Identificadores de origen: 180
+Ajuste del 26-10-2026: el inicio pasa del 2 al 5 de octubre de 2028, cuarto día hábil del mes y fecha objetivo del paso a producción de la Etapa 2, porque la estabilización sigue al paso a producción (RT-20.06) y este no puede ocurrir en los tres primeros días hábiles del mes (Caso, sección 13.3, condición 2). Se conserva la fecha de término.</notes>
         </task>
         <task id="153" name="PT/H | 4.3.3 Acta de paso a producción y aceptación final de la implementación (H12)" color="#4472c4" meeting="false" start="2028-10-02" duration="7" complete="0" expand="true">
             <customproperty taskproperty-id="tpc0" value="3" />
