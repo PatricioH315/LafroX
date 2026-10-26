@@ -1,0 +1,222 @@
+## SII tributario
+- LAFROX-Trazabilidad-Informe1-Consolidada.pdf: 4, 14, 29, 32, 39
+- Subdocumento 2\LAFROX-Subdocumento2-Anexos.pdf: 5, 10, 13, 14, 18
+- Subdocumento 2\LAFROX-Subdocumento2.pdf: 7, 9, 26, 28
+- Subdocumento 3\LAFROX-Formulario-T-12.pdf: 56, 62, 63, 65, 84, 87, 93, 97, 155, 156, 211, 218, 219, 220
+- Subdocumento 3\LAFROX-Subdocumento3-Anexos.pdf: 34, 53, 58, 59, 84, 90, 119, 120, 133, 134, 135, 150, 163
+- Subdocumento 3\LAFROX-Subdocumento3.pdf: 6, 10, 16, 25, 26, 28, 29
+- Subdocumento 4\LAFROX-Formulario-T-11.pdf: 22, 38
+- Subdocumento 4\LAFROX-Subdocumento4-Anexos.pdf: 9, 11, 15, 16, 21, 22, 24, 26, 28, 29, 31, 32, 33, 40, 41, 44, 45, 47, 51, 53, 65, 72, 74, 75, 76, 77, 81, 86, 92, 94, 95, 101, 102, 105
+- Subdocumento 4\LAFROX-Subdocumento4.pdf: 3, 9, 12, 16, 21, 26, 30, 31, 34, 37, 47, 51, 58, 60, 62, 63, 64, 65, 67, 69, 70, 72, 73, 75, 76, 77, 78, 80, 81, 100, 101, 122, 131, 136, 138, 140, 141, 144, 147, 150 ...
+- Subdocumento 5\LAFROX-Subdocumento5-Anexos.pdf: 4, 7, 101, 105, 163, 172, 180, 185, 187, 210, 211
+- Subdocumento 5\LAFROX-Subdocumento5.pdf: 5, 7, 17, 18, 19, 37, 38
+- Subdocumento 7\LafroX-Formulario-T-14.pdf: 8, 13, 19, 21, 38, 65
+- Subdocumento 7\LafroX-Formulario-T-18.pdf: 8, 21
+- Subdocumento 7\LafroX-Subdocumento7-Anexos.pdf: 17, 19
+- Subdocumento 7\LafroX-Subdocumento7.pdf: 10, 29, 46, 55
+- Subdocumento 8\Lafrox-Formulario-T-16.pdf: 19
+- Subdocumento 8\LafroX-Subdocumento-8-Anexos.pdf: 21
+- Subdocumento 9\LAFROX-Formulario-T-13.pdf: 16, 18, 19, 24
+- Subdocumento 9\LAFROX-Subdocumento9.pdf: 19
+
+## avisos
+- LAFROX-Trazabilidad-Informe1-Consolidada.pdf: 31
+- Subdocumento 13\LAFROX-Formulario-T-19.pdf: 3, 4, 5
+- Subdocumento 13\LAFROX-Subdocumento13-Anexos.pdf: 3, 4, 7, 8, 9
+- Subdocumento 13\LAFROX-Subdocumento13.pdf: 10, 11, 12, 14, 15, 16
+- Subdocumento 2\LAFROX-Subdocumento2-Anexos.pdf: 6, 8, 14, 16, 17
+- Subdocumento 2\LAFROX-Subdocumento2.pdf: 7, 8, 10
+- Subdocumento 3\LAFROX-Formulario-T-12.pdf: 29, 33, 49, 75, 80, 82, 85, 86, 97, 111, 154, 156, 165, 187, 195, 214, 220, 221, 222, 223, 224
+- Subdocumento 3\LAFROX-Subdocumento3-Anexos.pdf: 7, 27, 47, 70, 74, 77, 80, 81, 83, 87, 102, 114, 116, 127, 134, 137, 154, 155, 161, 163
+- Subdocumento 3\LAFROX-Subdocumento3.pdf: 9, 14, 15, 26, 29, 33
+- Subdocumento 4\LAFROX-Formulario-T-11.pdf: 12, 15, 35, 38
+- Subdocumento 4\LAFROX-Subdocumento4-Anexos.pdf: 15, 21, 23, 25, 26, 27, 37, 38, 40, 46, 48, 52, 57, 58, 61, 65, 67, 69, 93, 103, 107
+- Subdocumento 4\LAFROX-Subdocumento4.pdf: 8, 12, 28, 29, 30, 43, 45, 49, 51, 57, 59, 65, 70, 71, 73, 77, 85, 95, 97, 103, 104, 123, 141, 144, 150, 174, 183
+- Subdocumento 5\LAFROX-Subdocumento5-Anexos.pdf: 3, 4, 5, 6, 108, 109, 114, 115, 116, 117, 118, 119, 120, 121, 123, 161, 162, 164, 166, 167, 173, 179, 180, 183, 186, 190, 191, 192, 204, 211, 213
+- Subdocumento 5\LAFROX-Subdocumento5.pdf: 2, 5, 7, 8, 19, 20, 25, 26, 27, 31, 34
+- Subdocumento 6\LAFROX-Subdocumento6-Anexos.pdf: 4
+- Subdocumento 7\LafroX-Formulario-T-14.pdf: 10, 11, 12, 19, 31, 35, 42, 43, 50, 52, 59
+- Subdocumento 7\LafroX-Formulario-T-15.pdf: 41
+- Subdocumento 7\LafroX-Formulario-T-18.pdf: 14, 15
+- Subdocumento 7\LafroX-Subdocumento7-Anexos.pdf: 13, 17
+- Subdocumento 7\LafroX-Subdocumento7.pdf: 12, 14, 16, 51
+- Subdocumento 8\Lafrox-Formulario-T-16.pdf: 14, 20, 23
+- Subdocumento 8\LafroX-Subdocumento-8-Anexos.pdf: 12, 17, 19
+- Subdocumento 8\LafroX-Subdocumento8.pdf: 10, 11
+- Subdocumento 9\LAFROX-Formulario-T-17.pdf: 14
+
+## GIS
+- Subdocumento 3\LAFROX-Formulario-T-12.pdf: 27, 28, 29, 30, 155, 193
+- Subdocumento 3\LAFROX-Subdocumento3.pdf: 21, 24, 25
+- Subdocumento 4\LAFROX-Formulario-T-11.pdf: 30, 31, 34, 38
+- Subdocumento 4\LAFROX-Subdocumento4-Anexos.pdf: 16, 21, 22, 25, 26, 40, 51, 52, 56, 65, 66, 76, 86, 93, 101
+- Subdocumento 4\LAFROX-Subdocumento4.pdf: 12, 22, 23, 26, 29, 30, 43, 57, 66, 72, 141, 150, 154, 159, 175, 176
+- Subdocumento 5\LAFROX-Subdocumento5-Anexos.pdf: 163
+- Subdocumento 7\LafroX-Formulario-T-14.pdf: 12, 19, 52
+- Subdocumento 7\LafroX-Formulario-T-15.pdf: 41
+- Subdocumento 7\LafroX-Subdocumento7-Anexos.pdf: 17
+- Subdocumento 7\LafroX-Subdocumento7.pdf: 16
+- Subdocumento 8\Lafrox-Formulario-T-16.pdf: 6, 27
+- Subdocumento 8\LafroX-Subdocumento-8-Anexos.pdf: 11, 13
+- Subdocumento 9\LAFROX-Formulario-T-13.pdf: 11, 18
+
+## transportistas
+- LAFROX-Trazabilidad-Informe1-Consolidada.pdf: 14
+- Subdocumento 2\LAFROX-Subdocumento2-Anexos.pdf: 8, 9, 12, 14, 16, 19
+- Subdocumento 2\LAFROX-Subdocumento2.pdf: 5, 24
+- Subdocumento 3\LAFROX-Formulario-T-12.pdf: 36, 48, 66, 67, 73, 75, 77, 86, 193, 200, 202, 203, 224, 247
+- Subdocumento 3\LAFROX-Subdocumento3-Anexos.pdf: 47, 59, 60, 116, 118, 124, 125, 126, 127, 133, 134, 141, 146, 153, 155, 160
+- Subdocumento 3\LAFROX-Subdocumento3.pdf: 10, 12, 20, 21, 22, 23, 24, 28, 33
+- Subdocumento 4\LAFROX-Formulario-T-11.pdf: 15, 20, 30
+- Subdocumento 4\LAFROX-Subdocumento4-Anexos.pdf: 30, 43, 90
+- Subdocumento 4\LAFROX-Subdocumento4.pdf: 10, 12, 14, 15, 18, 22, 44, 45, 52, 53, 61, 78, 84, 85, 86, 97, 100, 112, 119, 141
+- Subdocumento 5\LAFROX-Subdocumento5-Anexos.pdf: 22, 24, 170
+- Subdocumento 5\LAFROX-Subdocumento5.pdf: 8, 24
+- Subdocumento 6\LAFROX-Subdocumento6-Anexos.pdf: 5, 7
+- Subdocumento 7\LafroX-Formulario-T-14.pdf: 12, 14, 15, 16, 19, 50, 67, 79, 81, 84
+- Subdocumento 7\LafroX-Formulario-T-15.pdf: 7
+- Subdocumento 7\LafroX-Formulario-T-18.pdf: 13, 14, 16, 18
+- Subdocumento 7\LafroX-Subdocumento7-Anexos.pdf: 11
+- Subdocumento 7\LafroX-Subdocumento7.pdf: 8, 16, 17, 19, 20, 22, 23, 33, 39, 50
+- Subdocumento 8\LafroX-Subdocumento8.pdf: 10, 11
+- Subdocumento 9\LAFROX-Formulario-T-17.pdf: 13
+- Subdocumento 9\LAFROX-Subdocumento9-Anexos.pdf: 19
+
+## termografo
+- LAFROX-Trazabilidad-Informe1-Consolidada.pdf: 14, 27
+- Subdocumento 1\LAFROX-Formulario-T-6.pdf: 4
+- Subdocumento 1\LAFROX-Subdocumento1.pdf: 5, 7, 13, 14
+- Subdocumento 13\LAFROX-Formulario-T-19.pdf: 7
+- Subdocumento 13\LAFROX-Subdocumento13.pdf: 8, 25, 26, 27, 29
+- Subdocumento 2\LAFROX-Subdocumento2-Anexos.pdf: 16, 17
+- Subdocumento 2\LAFROX-Subdocumento2.pdf: 6, 8, 10, 13
+- Subdocumento 3\LAFROX-Formulario-T-12.pdf: 48, 49, 50, 51, 52, 56, 95, 126, 179, 180, 211, 228, 251
+- Subdocumento 3\LAFROX-Subdocumento3-Anexos.pdf: 49, 52, 126, 129
+- Subdocumento 3\LAFROX-Subdocumento3.pdf: 2, 4, 17, 26
+- Subdocumento 4\LAFROX-Formulario-T-11.pdf: 20, 35
+- Subdocumento 4\LAFROX-Subdocumento4-Anexos.pdf: 19, 20, 24, 46, 48, 55, 57, 58, 89, 90, 91
+- Subdocumento 4\LAFROX-Subdocumento4.pdf: 21, 53, 54, 57, 60, 84, 86, 94, 95, 100, 101, 102, 139, 140, 148, 150, 164
+- Subdocumento 5\LAFROX-Subdocumento5-Anexos.pdf: 200
+- Subdocumento 5\LAFROX-Subdocumento5.pdf: 20
+- Subdocumento 6\LAFROX-Formulario-T-9.pdf: 4
+- Subdocumento 6\LAFROX-Subdocumento6-Anexos.pdf: 6
+- Subdocumento 7\LafroX-Formulario-T-14.pdf: 11, 15, 19, 47, 79
+- Subdocumento 7\LafroX-Formulario-T-18.pdf: 4
+- Subdocumento 7\LafroX-Subdocumento7.pdf: 6, 14, 15, 21, 22
+- Subdocumento 9\LAFROX-Formulario-T-13.pdf: 16
+- Subdocumento 9\LAFROX-Subdocumento9.pdf: 23
+
+## certificacion
+- LAFROX-Trazabilidad-Informe1-Consolidada.pdf: 38
+- Subdocumento 1\LAFROX-Subdocumento1.pdf: 2, 7, 8, 9, 10, 11, 12, 15, 17
+- Subdocumento 13\LAFROX-Formulario-T-19.pdf: 11, 12
+- Subdocumento 13\LAFROX-Subdocumento13-Anexos.pdf: 5
+- Subdocumento 13\LAFROX-Subdocumento13.pdf: 7, 19, 36, 41, 44, 45, 46
+- Subdocumento 2\LAFROX-Subdocumento2.pdf: 6, 8, 24, 27
+- Subdocumento 3\LAFROX-Formulario-T-12.pdf: 63, 74, 80, 83, 85, 92, 94, 105, 123, 149, 151, 155, 189, 215, 216, 224, 225, 227, 230, 241, 246, 249, 256
+- Subdocumento 3\LAFROX-Subdocumento3-Anexos.pdf: 21, 59, 69, 75, 77, 78, 91, 92, 99, 134, 139, 163, 164
+- Subdocumento 3\LAFROX-Subdocumento3.pdf: 4, 5, 16, 17, 18, 19, 23
+- Subdocumento 4\LAFROX-Subdocumento4-Anexos.pdf: 15, 72
+- Subdocumento 4\LAFROX-Subdocumento4.pdf: 5, 18, 31, 39, 40, 46, 52, 54, 58, 59, 70
+- Subdocumento 5\LAFROX-Subdocumento5-Anexos.pdf: 4, 5, 197, 203, 212, 213, 214
+- Subdocumento 5\LAFROX-Subdocumento5.pdf: 2, 6, 35, 36, 37, 43
+- Subdocumento 6\LAFROX-Formulario-T-9.pdf: 4
+- Subdocumento 6\LAFROX-Subdocumento6-Anexos.pdf: 4, 5, 6
+- Subdocumento 6\LAFROX-Subdocumento6.pdf: 6
+- Subdocumento 7\LafroX-Formulario-T-14.pdf: 10, 16, 19, 20, 35, 83
+- Subdocumento 7\LafroX-Formulario-T-15.pdf: 5
+- Subdocumento 7\LafroX-Formulario-T-18.pdf: 10, 11
+- Subdocumento 7\LafroX-Subdocumento7-Anexos.pdf: 14
+- Subdocumento 7\LafroX-Subdocumento7.pdf: 12, 22, 23, 30, 54
+- Subdocumento 8\LafroX-Subdocumento-8-Anexos.pdf: 28
+- Subdocumento 9\LAFROX-Formulario-T-17.pdf: 11
+
+## energia
+- LAFROX-Trazabilidad-Informe1-Consolidada.pdf: 25, 28, 31
+- Subdocumento 2\LAFROX-Subdocumento2-Anexos.pdf: 6
+- Subdocumento 3\LAFROX-Formulario-T-12.pdf: 91, 98, 137, 162, 163, 175, 178
+- Subdocumento 3\LAFROX-Subdocumento3-Anexos.pdf: 92, 112, 124, 145
+- Subdocumento 4\LAFROX-Formulario-T-11.pdf: 6, 7, 8, 13, 23, 24, 25, 26, 28, 29
+- Subdocumento 4\LAFROX-Subdocumento4-Anexos.pdf: 5, 15, 33, 44, 47, 54, 56, 70, 83, 90, 99, 100
+- Subdocumento 4\LAFROX-Subdocumento4.pdf: 3, 15, 40, 69, 81, 82, 87, 88, 94, 98, 101, 122, 131, 134, 142, 143, 144, 162, 164, 165, 166, 170
+- Subdocumento 5\LAFROX-Subdocumento5-Anexos.pdf: 212
+- Subdocumento 5\LAFROX-Subdocumento5.pdf: 31, 41
+- Subdocumento 6\LAFROX-Subdocumento6-Anexos.pdf: 6
+- Subdocumento 7\LafroX-Formulario-T-14.pdf: 15, 16, 19, 35, 73, 77, 80, 81
+- Subdocumento 7\LafroX-Subdocumento7.pdf: 21, 22
+- Subdocumento 8\Lafrox-Formulario-T-16.pdf: 12, 14
+- Subdocumento 8\LafroX-Subdocumento-8-Anexos.pdf: 14, 17
+- Subdocumento 8\LafroX-Subdocumento8.pdf: 11
+
+## residencia
+- Subdocumento 4\LAFROX-Subdocumento4-Anexos.pdf: 45, 46, 54
+- Subdocumento 4\LAFROX-Subdocumento4.pdf: 3, 104, 172
+- Subdocumento 5\LAFROX-Subdocumento5-Anexos.pdf: 134
+- Subdocumento 5\LAFROX-Subdocumento5.pdf: 28
+
+## credenciales
+- LAFROX-Trazabilidad-Informe1-Consolidada.pdf: 25, 34
+- Subdocumento 13\LAFROX-Formulario-T-19.pdf: 3, 4, 6, 12
+- Subdocumento 13\LAFROX-Subdocumento13-Anexos.pdf: 3, 4, 5, 6
+- Subdocumento 13\LAFROX-Subdocumento13.pdf: 8, 10, 11, 12, 13, 18, 19, 21, 22, 23, 42, 43, 44
+- Subdocumento 3\LAFROX-Formulario-T-12.pdf: 19, 20, 21, 22, 23, 24, 25, 26, 36, 41, 44, 58, 59, 68, 108, 109, 110, 130, 142, 145, 154, 156, 172, 194, 199, 200, 201, 202, 210, 257
+- Subdocumento 3\LAFROX-Subdocumento3-Anexos.pdf: 35, 63, 100, 101, 102, 156, 157, 158
+- Subdocumento 3\LAFROX-Subdocumento3.pdf: 6, 21, 24, 25, 26, 27
+- Subdocumento 4\LAFROX-Formulario-T-11.pdf: 10, 35
+- Subdocumento 4\LAFROX-Subdocumento4-Anexos.pdf: 9, 12, 13, 14, 16, 17, 18, 26, 27, 28, 29, 30, 34, 36, 38, 39, 42, 43, 53, 55, 57, 64, 67, 69, 76, 77
+- Subdocumento 4\LAFROX-Subdocumento4.pdf: 2, 7, 12, 15, 18, 22, 24, 25, 26, 29, 31, 33, 34, 35, 36, 41, 42, 44, 45, 46, 47, 51, 52, 55, 56, 61, 63, 64, 69, 70, 71, 75, 79, 102, 105, 119, 120, 135, 144, 168
+- Subdocumento 5\LAFROX-Subdocumento5-Anexos.pdf: 13, 18, 23, 74, 119, 122, 158, 159, 164, 168, 178, 185, 186, 195, 196, 199, 203, 204, 211
+- Subdocumento 5\LAFROX-Subdocumento5.pdf: 11, 24, 29, 31, 40, 41
+- Subdocumento 7\LafroX-Formulario-T-14.pdf: 11, 19, 47, 102, 103
+- Subdocumento 7\LafroX-Formulario-T-18.pdf: 5, 18
+- Subdocumento 7\LafroX-Subdocumento7-Anexos.pdf: 9, 16
+- Subdocumento 7\LafroX-Subdocumento7.pdf: 15, 45
+- Subdocumento 8\Lafrox-Formulario-T-16.pdf: 13
+- Subdocumento 8\LafroX-Subdocumento-8-Anexos.pdf: 9
+
+## EDI
+- LAFROX-Trazabilidad-Informe1-Consolidada.pdf: 13, 19, 32, 38
+- Subdocumento 2\LAFROX-Subdocumento2-Anexos.pdf: 6
+- Subdocumento 2\LAFROX-Subdocumento2.pdf: 8, 27
+- Subdocumento 3\LAFROX-Formulario-T-12.pdf: 57, 58, 59, 60, 61, 97, 102, 134, 150, 155, 156, 191, 194
+- Subdocumento 3\LAFROX-Subdocumento3-Anexos.pdf: 54, 55, 67, 87, 154, 156, 161, 163
+- Subdocumento 4\LAFROX-Formulario-T-11.pdf: 33, 35
+- Subdocumento 4\LAFROX-Subdocumento4-Anexos.pdf: 11, 13, 14, 17, 21, 22, 24, 26, 35, 37, 39, 40, 42, 44, 46, 51, 52, 57, 61, 65, 68, 73, 74, 76, 77, 85, 86, 92
+- Subdocumento 4\LAFROX-Subdocumento4.pdf: 8, 10, 12, 18, 22, 26, 27, 29, 30, 31, 37, 43, 47, 61, 66, 70, 71, 76, 77, 78, 103, 120, 131, 150, 175
+- Subdocumento 5\LAFROX-Subdocumento5-Anexos.pdf: 4, 5, 6, 19, 63, 108, 109, 110, 111, 112, 113, 163, 167, 168, 203, 204, 215
+- Subdocumento 5\LAFROX-Subdocumento5.pdf: 5, 6, 7, 11, 17, 22, 25, 26
+- Subdocumento 8\LafroX-Subdocumento8.pdf: 11
+- Subdocumento 9\LAFROX-Formulario-T-13.pdf: 19
+- Subdocumento 9\LAFROX-Formulario-T-17.pdf: 14
+- Subdocumento 9\LAFROX-Subdocumento9-Anexos.pdf: 19
+
+## telemetria
+- LAFROX-Trazabilidad-Informe1-Consolidada.pdf: 15, 25, 35
+- Subdocumento 1\LAFROX-Formulario-T-6.pdf: 4, 5
+- Subdocumento 1\LAFROX-Subdocumento1.pdf: 5, 7, 13
+- Subdocumento 13\LAFROX-Formulario-T-19.pdf: 3, 4, 6, 8, 9, 11, 13
+- Subdocumento 13\LAFROX-Subdocumento13-Anexos.pdf: 3, 7, 10
+- Subdocumento 13\LAFROX-Subdocumento13.pdf: 8, 10, 11, 12, 13, 15, 23, 25, 26, 27, 29, 33, 40, 48, 51, 52
+- Subdocumento 2\LAFROX-Subdocumento2-Anexos.pdf: 5, 10, 13, 14, 16, 17, 19
+- Subdocumento 2\LAFROX-Subdocumento2.pdf: 8, 24, 25, 26, 29
+- Subdocumento 3\LAFROX-Formulario-T-12.pdf: 8, 12, 14, 16, 31, 52, 53, 54, 59, 70, 72, 73, 74, 75, 103, 106, 107, 121, 126, 135, 144, 148, 155, 179, 180, 181, 193, 197, 213, 228, 257
+- Subdocumento 3\LAFROX-Subdocumento3-Anexos.pdf: 11, 13, 19, 32, 50, 63, 64, 66, 67, 68, 70, 82, 83, 85, 98, 99, 111, 112, 113, 114, 119, 122, 124, 133, 134, 136, 147, 149, 154, 155, 158, 163, 164
+- Subdocumento 3\LAFROX-Subdocumento3.pdf: 5, 6, 7, 11, 12, 21, 24, 25, 26, 30, 33, 37
+- Subdocumento 4\LAFROX-Formulario-T-11.pdf: 10, 12, 15, 17, 22, 34, 35, 36, 38, 39, 41
+- Subdocumento 4\LAFROX-Subdocumento4-Anexos.pdf: 9, 12, 13, 14, 17, 21, 23, 25, 27, 31, 33, 35, 37, 38, 39, 40, 41, 43, 47, 48, 51, 52, 54, 56, 65, 67, 79, 85, 91, 93, 94, 95, 96, 97
+- Subdocumento 4\LAFROX-Subdocumento4.pdf: 2, 4, 5, 8, 10, 12, 15, 19, 21, 22, 23, 26, 27, 29, 30, 32, 39, 40, 43, 46, 50, 51, 52, 54, 55, 58, 59, 61, 62, 64, 65, 73, 79, 84, 87, 88, 89, 90, 94, 95 ...
+- Subdocumento 5\LAFROX-Subdocumento5-Anexos.pdf: 3, 5, 6, 18, 52, 54, 76, 83, 124, 129, 130, 131, 133, 134, 156, 157, 161, 164, 165, 166, 167, 168, 175, 177, 180, 181, 182, 187, 188, 189, 193, 196, 197, 199, 200, 202, 203, 209, 210, 211 ...
+- Subdocumento 5\LAFROX-Subdocumento5.pdf: 2, 5, 6, 7, 8, 9, 11, 14, 15, 17, 20, 21, 22, 23, 24, 27, 28, 29, 33, 36, 40, 41
+- Subdocumento 6\LAFROX-Formulario-T-9.pdf: 5
+- Subdocumento 6\LAFROX-Subdocumento6-Anexos.pdf: 7
+- Subdocumento 6\LAFROX-Subdocumento6.pdf: 6
+- Subdocumento 7\LafroX-Formulario-T-14.pdf: 2, 7, 8, 11, 13, 14, 17, 19, 20, 23, 44, 47, 59, 72, 91
+- Subdocumento 7\LafroX-Formulario-T-15.pdf: 11, 12, 38, 49
+- Subdocumento 7\LafroX-Formulario-T-18.pdf: 13, 18, 19, 22
+- Subdocumento 7\LafroX-Subdocumento7-Anexos.pdf: 16, 17, 21
+- Subdocumento 7\LafroX-Subdocumento7.pdf: 2, 6, 7, 10, 14, 15, 18, 20, 24, 27, 45, 55, 56
+- Subdocumento 8\Lafrox-Formulario-T-16.pdf: 5, 6, 8, 10, 13, 19, 21, 22, 24
+- Subdocumento 8\LafroX-Subdocumento-8-Anexos.pdf: 7, 9, 10, 11, 14, 16, 17, 23, 24
+- Subdocumento 8\LafroX-Subdocumento8.pdf: 3, 6, 8, 9, 10, 11, 12, 13, 14, 16, 18
+- Subdocumento 9\LAFROX-Formulario-T-13.pdf: 3
+- Subdocumento 9\LAFROX-Subdocumento9.pdf: 16
