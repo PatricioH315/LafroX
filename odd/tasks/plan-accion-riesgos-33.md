@@ -9,9 +9,9 @@ S2 — “la tabla que creaste (tabla 8.6) muevelo al latex de los anexos, en ca
 ## Tasks
 - T1 | S1 | Route: inline — rehacer respuestas para R-001--R-033, reservas HH/calendario y condiciones de aceptación del punto 8.3, sin presentar propuestas como controles aprobados. | Commit: 439c8f7
 - T2 | S1 | Route: inline — cotejar cobertura de IDs, cifras, fuentes oficiales, límites de evidencia, resolver referencias de versión en la introducción, revisar salida visual y compilación; registrar el commit de cierre. | Commit: 439c8f7
-- T3 | S2 | Route: inline — mover la matriz de respuestas desde el cuerpo a Anexo 8.A como Tabla 8.A.1; retirar la copia en el cuerpo y renumerar la tabla de reservas a 8.6. | Commit: pending
-- T4 | S2 | Route: inline — reemplazar Anexo 8.B obsoleto por detalle HH de R-001--R-033 con O/M/P, PERT y VE; reconciliar el inventario y excluir valores monetarios. | Commit: pending
-- T5 | S2 | Route: inline — actualizar referencias/cabeceras entre el cuerpo y los anexos, verificar IDs/cifras y compilar ambos LaTeX. | Commit: pending
+- T3 | S2 | Route: inline — mover la matriz de respuestas desde el cuerpo a Anexo 8.A como Tabla 8.A.1; retirar la copia en el cuerpo y renumerar la tabla de reservas a 8.6. | Commit: 5a867fbb
+- T4 | S2 | Route: inline — reemplazar Anexo 8.B obsoleto por detalle HH de R-001--R-033 con O/M/P, PERT y VE; reconciliar el inventario y excluir valores monetarios. | Commit: 5a867fbb
+- T5 | S2 | Route: inline — actualizar referencias/cabeceras entre el cuerpo y los anexos, verificar IDs/cifras y compilar ambos LaTeX. | Commit: 5a867fbb
 
 ## Log
 L1 — ahora realiza todo el 8.3 con todos los insumos que tengas mas los resultados de los puntos anteriores
@@ -24,3 +24,4 @@ L7 — Reconciliación cuantitativa: el archivo auxiliar anuncia 34 riesgos en s
 L8 — La matriz propuesta se movió desde el cuerpo a Anexo 8.A como Tabla 8.A.1; se eliminó la copia del cuerpo y la tabla de reservas se renumeró a 8.6. La inspección visual confirma la continuación de la matriz y los 33 riesgos.
 L9 — Anexo 8.B reconstruido con R-001--R-033: O/M/P acumulados por episodios, PERT = (O+4M+P)/6 y VE = p0×PERT; la suma es 825,34 HH y el top 10 coincide con 8.2.3. Se eliminaron cifras, tablas y referencias heredadas de la antigua versión de 45 riesgos.
 L10 — Referencias del cuerpo y anexos sincronizadas; Tabla 8.B.1 compilada y ajustada a dos páginas en orientación horizontal. Las compilaciones de `LafroX-Subdocumento-8-Anexos.tex` y `main.tex`, el cotejo de 33 IDs/top 10/825,34 HH y `git diff --check` pasaron. La evaluación nativa ASSESS quedó `unassessable` porque detectó archivos sin seguimiento que requieren declaración explícita; el plan de ASSESS indica autoverificación del escritor y no añade verificador independiente al no haberse escalado un riesgo de Task Size alto.
+L11 — El trabajo de T3, T4 y T5 quedó en el commit `5a867fbb` (`docs(risk): rebuild 33-risk effort annex`).
