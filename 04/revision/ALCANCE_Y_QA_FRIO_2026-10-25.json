@@ -1,0 +1,53 @@
+{
+  "revisiones": {
+    "C:\\Users\\alexa\\Desktop\\Universidad\\FEP\\LafroX\\LafroX": {
+      "head": "5667161b2fec0fc7836f1ec42d7f98d568dea9d9",
+      "archivos_modificados": [
+        "04/anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.tex",
+        "04/partes/4.1_logica/04_capas_de_la_arquitectura.tex",
+        "04/partes/4.2_fisica/02_0_arquitectura_fisica.tex",
+        "04/partes/4.2_fisica/02_a_emplazamiento.tex",
+        "entrega/LAFROX-Subdocumento4-Anexos.pdf",
+        "entrega/LAFROX-Subdocumento4.pdf"
+      ]
+    },
+    "C:\\Users\\alexa\\.codex\\worktrees\\coherencia-frio-sd13\\LafroX": {
+      "head": "ad1fbb5838dc1dbd6a8be838e6adc1205e79f74f",
+      "archivos_modificados": [
+        "SD13_v_nueva/13_anexos/contenido.tex",
+        "SD13_v_nueva/13_innovaciones/contenido.tex",
+        "SD13_v_nueva/LAFROX-Formulario-T-19.aux",
+        "SD13_v_nueva/LAFROX-Formulario-T-19.log",
+        "SD13_v_nueva/LAFROX-Formulario-T-19.pdf",
+        "SD13_v_nueva/LAFROX-Formulario-T-19.synctex.gz",
+        "SD13_v_nueva/LAFROX-Subdocumento13-Anexos.log",
+        "SD13_v_nueva/LAFROX-Subdocumento13-Anexos.pdf",
+        "SD13_v_nueva/LAFROX-Subdocumento13-Anexos.synctex.gz",
+        "SD13_v_nueva/LAFROX-Subdocumento13.aux",
+        "SD13_v_nueva/LAFROX-Subdocumento13.lof",
+        "SD13_v_nueva/LAFROX-Subdocumento13.log",
+        "SD13_v_nueva/LAFROX-Subdocumento13.lot",
+        "SD13_v_nueva/LAFROX-Subdocumento13.pdf",
+        "SD13_v_nueva/LAFROX-Subdocumento13.synctex.gz",
+        "SD13_v_nueva/LAFROX-Subdocumento13.toc",
+        "SD13_v_nueva/T19/contenido.tex"
+      ]
+    },
+    "C:\\Users\\alexa\\.codex\\worktrees\\coherencia-frio-t12\\LafroX": {
+      "head": "95238e4e3387d610f311e0dd2517651d972fcf63",
+      "archivos_modificados": [
+        "LAFROX-Formulario-T-12.pdf",
+        "LAFROX-Formulario-T-12.tex"
+      ]
+    }
+  },
+  "inspeccion_visual": [
+    "SD4:13,21,88,101; SD13:31,32; Anexos13:4,6; T19:8; diagrama INN03 completo"
+  ],
+  "tipografia_figuras_pt": {
+    "SD4_general_logica": 9.16,
+    "SD4_borde": 9.2,
+    "SD4_general_fisica": 11.31
+  },
+  "SD7": "No modificado; cambios ajenos en origin/LafroX-Subdoc7-LateX, dd7bee76. Conciliación de planificación excluida."
+}

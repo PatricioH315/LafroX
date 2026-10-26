@@ -32,3 +32,9 @@ Implementación documental aplicada en SD2–SD7. El registro `IMPLEMENTACION_CA
 ## Resultado de revisión semántica de formularios — 25-10-2026
 
 El [registro semántico](REVISION_SEMANTICA_FORMULARIOS_2026-10-25.md) identifica las brechas de las 653 filas y las condiciones de los 98 recursos del T-11. Se conserva la exclusión de SD13: su vista de INN-03 requiere conciliarse con el kit y doble camino vigentes. La base por camión de un compartimento/una puerta se confirma mediante mapeo; los ocho PC nuevos y el inventario de la entrada SBD requieren detalle de ingeniería. Las brechas de oferta no se cerraron por compilar los PDF.
+
+## Continuación de coherencia y seguridad — 25-10-2026
+
+El [cotejo posterior de frío](../../04/revision/REVISION_INTERDOCUMENTAL_POST_FRIO_2026-10-25.md) sustituye el pendiente anterior de SD13 en su alcance: SD13/T-19 se conciliaron con SD4 y RT-26.01 de T-12 en sus ramas. Sus 54 comprobaciones y hashes son una fotografía histórica anterior a los cambios AS2, no hashes de los PDF actuales de SD4/T-12.
+
+El [seguimiento de seguridad](../../04/revision/BRECHAS_SEGURIDAD_2026-10-25.md) registra el nuevo borde AS2 en SD4/T-11/T-12 y sus límites de aceptación y costeo. MFA universal externo sigue en conversación; TLS del ERP/terceros y los plazos de remediación durante congelamientos conservan su brecha. No se atribuye autorización a excepciones redactadas por LafroX. SD7 y la conciliación de planificación/calidad/riesgos de SD8/SD9 permanecen fuera de alcance por instrucción expresa del usuario.
