@@ -97,3 +97,23 @@ Estado: **Corregido** (aplicado en esta revisión), **Decisión** (requiere al e
   - `LafroX-Subdoc7-LateX` `ef3d196`: T-18 y Anexo 7.F, «Tablas A.32 y A.33» → «sección 4-W.5».
   - `LafroX-Subdoc9-LateX` `beb7e9d`: SD9A y T-13, «Tabla 21» → «sección 4.2.6.11»; regresión de desempeño 4.2.4.1.4 → 4.2.4.1.1.
 - **SD8:** no se modificó (pendiente de su actualización por el equipo); conserva «Tablas A.32 y A.33», R-015 distinto del T-16 y las marcas de pendiente.
+
+## 7. Cruce en profundidad entre el SD4 y el Formulario T-11 (26-10-2026)
+
+**Método.** Se revisaron las 91 frases del cuerpo y de los anexos que remiten al T-11, y cada fila del T-11 (producto, ubicación, cantidad, potencia y justificación) contra el cuerpo (4.2.1, 4.2.2, 4.2.3, 4.3.1, Tablas 19 y 24, Figuras 17 y 28) y el Anexo 4-W (Tablas A.36, A.39 y A.40). También se cruzó cada servicio de nube nombrado en el SD4 con el catálogo 4.2.3.1, el inventario del Anexo 4-P y el T-11.
+
+**Coincide sin cambios:** especificaciones y potencias de nodos, NAS, firewalls, switches, KVM, ERP y conmutadores (Tabla 24 = T-11); servidores de Concepción (16 hilos, 32 GB, 3,84 TB en RAID 10, 2 × 500 W) y mini-PC E-01 (59,44 W, 6 + 1); UPS de 15 kVA, generador de 25 kVA, climatización de 2 × 10 kW y sala de UPS de 3,5 kW; UPS de gabinetes (1,5, 5 y 0,75 kVA, con 59, 68 y 61 %); ocupación de R01 y R02 (15U y 12U, posiciones U); enlaces (fibra de 20/10 Mbps, LTE con mínimos de 10/6 Mbps, ocho planes, cinco Starlink); puntos de acceso (39/20/6 + 7); kit de camión (28 + 3, 93 sondas, 93 botellas, 62 SIM); B-01 (21 puntos, 7 módulos); terminales, impresoras, terminales de pago y balanzas (reservas del 10 % redondeadas hacia arriba); cuentas, colas, instancias de Aurora, tareas Fargate, cachés, verificadores y colectores; siete dependencias de salida; 217 endpoints con EDR.
+
+**Corregido:**
+
+| Incoherencia | Corrección |
+|---|---|
+| 4.2.1.1 dice que los servidores tienen repuestos por componente «declarados en el T-11»; el T-11 no los declaraba | T-11: clúster de Talca (un NVMe de 960 GB, un M.2 de 480 GB y una fuente de 800 W), Concepción (un SSD de 1,92 TB y una fuente de 500 W) y NAS (un disco de 4 TB), con la regla del 10 % redondeado hacia arriba |
+| 4.2.4.1.1 fija las métricas de escalamiento «conforme a N-04 del T-11»; la fila N-04 no las tenía | T-11 N-04: consumidor por edad del mensaje más antiguo sobre 60 s y trabajos por más de 100 mensajes, con métricas de un minuto |
+| 4.2.1.2 dice que se entrega una unidad de prueba de cada tipo y variante «especificado en el T-11»; el T-11 no lo mencionaba | T-11, introducción: unidades de prueba incluidas en las cantidades declaradas (RT-08.15) |
+| Amazon SES y AWS End User Messaging Social (INT-11), AWS Certificate Manager (Anexo 4-R) y AWS Fault Injection Service (pruebas de resiliencia) se usan en el SD4, pero no estaban en el catálogo 4.2.3.1, en el inventario del Anexo 4-P ni como servicio en el T-11 | Agregados a 4.2.3.1 (fila Notificaciones; ACM en identidad; FIS en operación), al inventario del Anexo 4-P y al T-11 (fila «N-04 — Notificaciones»; ACM y FIS en N-12) |
+| Termógrafo: el cuerpo exige calibración según EN 13486; el T-11 decía «calibración ISO 17025» | T-11 B-03: certificado de calibración según EN 13486 emitido por laboratorio ISO/IEC 17025 |
+| Aplicación de terreno: el cuerpo define los perfiles de preventa, reparto y bodega (más Calidad); el T-11 decía «recepción, preparación» | T-11: «preventa, reparto, bodega y Calidad» |
+| Keycloak se restituye en us-east-1 (4.2.3.5 y 4.3.2.5); la fila A-05 del T-11 solo lo ubicaba en sa-east-1 | T-11 A-05: «Fargate, con restitución en us-east-1» |
+
+El T-11 pasa de 45 a 46 páginas; ningún documento lo cita por página.
