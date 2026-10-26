@@ -1089,7 +1089,8 @@
         <mxCell id="OEwDW-F6gLmMDvgjbRT0-256" parent="1" style="rounded=1;;html=1;shadow=0;fillColor=#FFFFFF;;;;;;;;;;;;spacing=10;;whiteSpace=wrap;;align=center;;verticalAlign=middle;;fontSize=25;" value="Keycloak · caché local 24 h&#xA;credencial bodega 8 h&#xA;verificador local" vertex="1">
           <mxGeometry height="95" width="492.5" x="1322" y="3774" as="geometry" />
         </mxCell>
-        <mxCell id="OEwDW-F6gLmMDvgjbRT0-257" parent="1" style="rounded=1;;html=1;shadow=0;fillColor=#FFFFFF;;;;;;;;;;fontSize=28;;spacing=10;;whiteSpace=wrap;;align=center;;verticalAlign=middle;" value="Secrets Manager&#xA;+ SSM (D13)" vertex="1">
+        <mxCell id="OEwDW-F6gLmMDvgjbRT0-257" parent="1" style="rounded=1;;html=1;shadow=0;fillColor=#FFFFFF;;;;;;;;;;fontSize=28;;spacing=10;;whiteSpace=wrap;;align=center;;verticalAlign=middle;" value="Secrets Manager
++ SSM" vertex="1">
           <mxGeometry height="95" width="492.5" x="1834.5" y="3774" as="geometry" />
         </mxCell>
         <mxCell id="OEwDW-F6gLmMDvgjbRT0-258" parent="1" style="rounded=1;;html=1;shadow=0;fillColor=#FFFFFF;;;;;;;;;;fontSize=28;;spacing=10;;whiteSpace=wrap;;align=center;;verticalAlign=middle;" value="KMS · cifrado&#xA;en reposo y campo" vertex="1">
@@ -1104,7 +1105,8 @@
         <mxCell id="OEwDW-F6gLmMDvgjbRT0-261" parent="1" style="rounded=1;;html=1;shadow=0;fillColor=#FFFFFF;;;;;;;;;;fontSize=28;;spacing=10;;whiteSpace=wrap;;align=center;;verticalAlign=middle;" value="EDR en todos&#xA;los nodos" vertex="1">
           <mxGeometry height="95" width="492.5" x="1834.5" y="3884" as="geometry" />
         </mxCell>
-        <mxCell id="OEwDW-F6gLmMDvgjbRT0-262" parent="1" style="rounded=1;;html=1;shadow=0;fillColor=#FFFFFF;;;;;;;;;;fontSize=28;;spacing=10;;whiteSpace=wrap;;align=center;;verticalAlign=middle;" value="MDM gestionado&#xA;N-13 (D15)" vertex="1">
+        <mxCell id="OEwDW-F6gLmMDvgjbRT0-262" parent="1" style="rounded=1;;html=1;shadow=0;fillColor=#FFFFFF;;;;;;;;;;fontSize=28;;spacing=10;;whiteSpace=wrap;;align=center;;verticalAlign=middle;" value="MDM gestionado
+N-13" vertex="1">
           <mxGeometry height="95" width="492.5" x="2347" y="3884" as="geometry" />
         </mxCell>
         <mxCell id="OEwDW-F6gLmMDvgjbRT0-263" parent="1" style="rounded=1;;html=1;shadow=0;fillColor=#FFFFFF;;;;;;;;;;fontSize=28;;spacing=10;;whiteSpace=wrap;;align=center;;verticalAlign=middle;" value="Auditoría inmutable&#xA;(7 años)" vertex="1">
@@ -2065,7 +2067,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="layer1-box1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;fillColor=none;strokeColor=none;fontSize=23;align=left;" value="Actores y canales del definitivo. Los recuadros discontinuos muestran el acceso de la capa 3." vertex="1">
+        <mxCell id="layer1-box1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;fillColor=none;strokeColor=none;fontSize=23;align=left;" value="" vertex="1">
           <mxGeometry height="60" width="2170" x="40" y="98" as="geometry" />
         </mxCell>
         <mxCell id="layer1-OEwDW-F6gLmMDvgjbRT0-288" parent="1" sourceCellId="OEwDW-F6gLmMDvgjbRT0-288" style="shape=rectangle;fillColor=#e51400;strokeColor=#B20000;fontStyle=1;;fontColor=#ffffff;;rounded=1;;;;;align=center;;verticalAlign=middle;;fontSize=20;;whiteSpace=wrap;;spacing=7;;rotation=0;" value="Preventista" vertex="1">
@@ -2729,7 +2731,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="layer2-box1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;fillColor=none;strokeColor=none;fontSize=23;align=left;" value="Vista funcional de los recorridos del general. TLS/HSTS es una condición de acceso, no un servicio adicional." vertex="1">
+        <mxCell id="layer2-box1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;fillColor=none;strokeColor=none;fontSize=23;align=left;" value="" vertex="1">
           <mxGeometry height="60" width="1720" x="40" y="98" as="geometry" />
         </mxCell>
         <mxCell id="layer2-box2" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;dashed=1;" value="Canales públicos&#xA;web y aplicaciones" vertex="1">
@@ -2838,7 +2840,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="layer3-box1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;fillColor=none;strokeColor=none;fontSize=23;align=left;" value="Acceso central, acceso local y administración. Destinos reproducidos del XML definitivo. Los módulos son contexto." vertex="1">
+        <mxCell id="layer3-box1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;fillColor=none;strokeColor=none;fontSize=23;align=left;" value="" vertex="1">
           <mxGeometry height="60" width="2020" x="40" y="98" as="geometry" />
         </mxCell>
         <mxCell id="layer3-OEwDW-F6gLmMDvgjbRT0-173" parent="1" sourceCellId="OEwDW-F6gLmMDvgjbRT0-173" style="rounded=0;;html=1;;;;;;;;verticalAlign=middle;;;;;whiteSpace=wrap;;spacing=7;;rotation=0;;spacingLeft=102;;fontSize=23;;spacingRight=65;" value="API Gateway&#xA;VPC Link → ALB privado" vertex="1">
@@ -3555,7 +3557,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="layer4-box1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;fillColor=none;strokeColor=none;fontSize=23;align=left;" value="Monolito modular Laravel/PHP. Los módulos mantienen sus nombres. Las relaciones externas conservan sus destinos." vertex="1">
+        <mxCell id="layer4-box1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;fillColor=none;strokeColor=none;fontSize=23;align=left;" value="" vertex="1">
           <mxGeometry height="60" width="2020" x="40" y="98" as="geometry" />
         </mxCell>
         <mxCell id="layer4-box2" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;fillColor=#eef5fb;strokeColor=#cad8e5;;verticalAlign=top;;spacingTop=12;" value="Monolito modular Laravel 13 / PHP 8.5 · M1–M12 central · perfil local WMS: M1/M2/M5 + M8 recepción + M9 bloqueo" vertex="1">
@@ -3714,7 +3716,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="layer5-box1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;fillColor=none;strokeColor=none;fontSize=23;align=left;" value="Mecanismos y dependencias del definitivo. Las conexiones discontinuas representan integración, no acceso directo a tablas." vertex="1">
+        <mxCell id="layer5-box1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;fillColor=none;strokeColor=none;fontSize=23;align=left;" value="" vertex="1">
           <mxGeometry height="60" width="2020" x="40" y="98" as="geometry" />
         </mxCell>
         <mxCell id="layer5-OEwDW-F6gLmMDvgjbRT0-79" parent="1" sourceCellId="OEwDW-F6gLmMDvgjbRT0-79" style="rounded=1;;html=1;shadow=0;;;fontStyle=1;;;;;;;fontSize=21;;whiteSpace=wrap;;spacing=7;;rotation=0;;dashed=1;;fillColor=#f7f9fb;" value="&lt;div&gt;M1 · Recepción&lt;/div&gt;&lt;div&gt;Mercancía&lt;/div&gt;" vertex="1">
@@ -3901,7 +3903,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="layer5-box15" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;dashed=1;fontSize=25;" value="Persistencia local y central: vista detallada en la página 6.&#xA;Las relaciones de módulos con cada mecanismo se conservan. No se asignan nuevas garantías de entrega." vertex="1">
+        <mxCell id="layer5-box15" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#17212b;fontSize=25;spacing=8;dashed=1;fontSize=25;" value="" vertex="1">
           <mxGeometry height="100" width="1980" x="60" y="980" as="geometry" />
         </mxCell>
         <mxCell id="event-tool-318-0" parent="1" sourceCellId="OEwDW-F6gLmMDvgjbRT0-45" style="aspect=fixed;;;;;;;;;;;;;imageAspect=1;;;;align=center;;;;shape=image;;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%22%20height%3D%22100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2215%22%20fill%3D%22%23ff6600%22%2F%3E%3Cpath%20d%3D%22M24%2024h12v23h12V24h12v23h16v30H24z%22%20fill%3D%22white%22%2F%3E%3Crect%20x%3D%2256%22%20y%3D%2256%22%20width%3D%2210%22%20height%3D%2210%22%20fill%3D%22%23ff6600%22%2F%3E%3C%2Fsvg%3E;;;fontSize=18;;labelWidth=130;;whiteSpace=wrap;;html=0;;spacing=3;;labelBackgroundColor=none;;verticalLabelPosition=bottom;;verticalAlign=top;;rotation=0;" value="RabbitMQ" vertex="1">
@@ -3939,7 +3941,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="layer6-box1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;fillColor=none;strokeColor=none;fontSize=23;align=left;" value="Dominios lógicos y ubicación del definitivo. Un dominio no representa un servidor ni otorga acceso directo a un actor." vertex="1">
+        <mxCell id="layer6-box1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;fillColor=none;strokeColor=none;fontSize=23;align=left;" value="" vertex="1">
           <mxGeometry height="60" width="1720" x="40" y="98" as="geometry" />
         </mxCell>
         <mxCell id="layer6-box2" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;fillColor=#fff8e1;strokeColor=#d9c992;" value="" vertex="1">
@@ -4159,7 +4161,8 @@
         <mxCell id="layer7-OEwDW-F6gLmMDvgjbRT0-256" parent="1" sourceCellId="OEwDW-F6gLmMDvgjbRT0-256" style="rounded=1;;html=1;shadow=0;fillColor=#FFFFFF;;;;;;;;;;;;;;align=center;;verticalAlign=middle;;;;whiteSpace=wrap;;spacing=7;;rotation=0;;spacingLeft=94;;;fontSize=22;" value="Keycloak · caché local 24 h&#xA;credencial bodega 8 h&#xA;verificador local" vertex="1">
           <mxGeometry height="140" width="400" x="65" y="225" as="geometry" />
         </mxCell>
-        <mxCell id="layer7-OEwDW-F6gLmMDvgjbRT0-257" parent="1" sourceCellId="OEwDW-F6gLmMDvgjbRT0-257" style="rounded=1;;html=1;shadow=0;fillColor=#FFFFFF;;;;;;;;;;;;;align=center;;verticalAlign=middle;;;whiteSpace=wrap;;spacing=7;;rotation=0;;spacingLeft=94;;;fontSize=22;" value="Secrets Manager&#xA;+ SSM (D13)" vertex="1">
+        <mxCell id="layer7-OEwDW-F6gLmMDvgjbRT0-257" parent="1" sourceCellId="OEwDW-F6gLmMDvgjbRT0-257" style="rounded=1;;html=1;shadow=0;fillColor=#FFFFFF;;;;;;;;;;;;;align=center;;verticalAlign=middle;;;whiteSpace=wrap;;spacing=7;;rotation=0;;spacingLeft=94;;;fontSize=22;" value="Secrets Manager
++ SSM" vertex="1">
           <mxGeometry height="140" width="400" x="490" y="225" as="geometry" />
         </mxCell>
         <mxCell id="layer7-OEwDW-F6gLmMDvgjbRT0-258" parent="1" sourceCellId="OEwDW-F6gLmMDvgjbRT0-258" style="rounded=1;;html=1;shadow=0;fillColor=#FFFFFF;;;;;;;;;;;;;align=center;;verticalAlign=middle;;;whiteSpace=wrap;;spacing=7;;rotation=0;;spacingLeft=94;;;fontSize=22;" value="KMS · cifrado&#xA;en reposo y campo" vertex="1">
@@ -4174,7 +4177,8 @@
         <mxCell id="layer7-OEwDW-F6gLmMDvgjbRT0-261" parent="1" sourceCellId="OEwDW-F6gLmMDvgjbRT0-261" style="rounded=1;;html=1;shadow=0;fillColor=#FFFFFF;;;;;;;;;;;;;align=center;;verticalAlign=middle;;;whiteSpace=wrap;;spacing=7;;rotation=0;;spacingLeft=94;;;fontSize=22;" value="EDR en todos&#xA;los nodos" vertex="1">
           <mxGeometry height="140" width="400" x="490" y="395" as="geometry" />
         </mxCell>
-        <mxCell id="layer7-OEwDW-F6gLmMDvgjbRT0-262" parent="1" sourceCellId="OEwDW-F6gLmMDvgjbRT0-262" style="rounded=1;;html=1;shadow=0;fillColor=#FFFFFF;;;;;;;;;;;;;align=center;;verticalAlign=middle;;;whiteSpace=wrap;;spacing=7;;rotation=0;;spacingLeft=94;;;fontSize=22;" value="MDM gestionado&#xA;N-13 (D15)" vertex="1">
+        <mxCell id="layer7-OEwDW-F6gLmMDvgjbRT0-262" parent="1" sourceCellId="OEwDW-F6gLmMDvgjbRT0-262" style="rounded=1;;html=1;shadow=0;fillColor=#FFFFFF;;;;;;;;;;;;;align=center;;verticalAlign=middle;;;whiteSpace=wrap;;spacing=7;;rotation=0;;spacingLeft=94;;;fontSize=22;" value="MDM gestionado
+N-13" vertex="1">
           <mxGeometry height="140" width="400" x="915" y="395" as="geometry" />
         </mxCell>
         <mxCell id="layer7-OEwDW-F6gLmMDvgjbRT0-263" parent="1" sourceCellId="OEwDW-F6gLmMDvgjbRT0-263" style="rounded=1;;html=1;shadow=0;fillColor=#FFFFFF;;;;;;;;;;;;;align=center;;verticalAlign=middle;;;whiteSpace=wrap;;spacing=7;;rotation=0;;spacingLeft=94;;;fontSize=22;" value="Auditoría inmutable&#xA;(7 años)" vertex="1">
@@ -4293,7 +4297,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="layer8-box1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;fillColor=none;strokeColor=none;fontSize=23;align=left;" value="Instrumentación, recolección y consulta. Se mantienen los tiempos de retención y el buffer indicados en el definitivo." vertex="1">
+        <mxCell id="layer8-box1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;fillColor=none;strokeColor=none;fontSize=23;align=left;" value="" vertex="1">
           <mxGeometry height="60" width="1720" x="40" y="98" as="geometry" />
         </mxCell>
         <mxCell id="layer8-box2" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f4f7fa;strokeColor=#607d8b;fontColor=#17212b;fontSize=25;spacing=8;dashed=1;" value="Aplicaciones, accesos, módulos, integración y datos&#xA;Capas 1–6" vertex="1">
