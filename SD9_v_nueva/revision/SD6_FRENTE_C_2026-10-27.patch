@@ -1,0 +1,264 @@
+diff --git a/LAFROX-Formulario-T-10.tex b/LAFROX-Formulario-T-10.tex
+index 36009188..66226352 100644
+--- a/LAFROX-Formulario-T-10.tex
++++ b/LAFROX-Formulario-T-10.tex
+@@ -19,6 +19,7 @@
+ 
+ \renewcommand{\thetable}{T-10.\arabic{table}}
+ \renewcommand{\thefigure}{T-10.\arabic{figure}}
++\renewcommand{\thesection}{\arabic{section}}
+ 
+ \chapter{Metodología de desarrollo de software}
+ 
+@@ -36,13 +37,13 @@ Las iteraciones producen resultados verificables, pero no implican una puesta en
+ 
+ La secuencia de iteraciones se coordina con las dos etapas contractuales: en la Etapa 1, preventa, recepción, bodega, preparación y cross-docking; trazabilidad de lotes y de la cadena de frío; planificación de rutas; confirmación de recepción por los conductores; y manejo de efectivo y retiros. En la Etapa 2, los portales y el intercambio electrónico con los clientes y, luego, el costo de servir. La transición sigue el cronograma: marcha blanca de la Etapa 1 entre los meses 13 y 15 y paso a producción en el mes 16; marcha blanca de la Etapa 2 en los meses 19 y 20 y paso a producción en el mes 21.
+ 
+-\subsection{Arquitectura evolutiva, refactorización y deuda técnica}
++\section{Arquitectura evolutiva, refactorización y deuda técnica}
+ 
+ La arquitectura se establece durante Elaboración y se aprueba en el H2; se valida progresivamente en las iteraciones de Construcción. Cuando los nuevos requisitos o los resultados de las pruebas justifican cambios, la arquitectura se ajusta mediante una nueva versión de la decisión en el registro de decisiones de arquitectura del SD4, con su fecha, estado y acta del Comité de Arquitectura.
+ 
+ Durante la construcción, el equipo refactoriza el software para mejorar su estructura interna y facilitar su mantenimiento, preservando su comportamiento funcional; las pruebas automatizadas comprueban que el comportamiento no cambió. Las limitaciones o compromisos técnicos que puedan dificultar cambios futuros se registran como deuda técnica, con su impacto y prioridad. Una deuda clasificada como bloqueante por el análisis estático impide el despliegue; las demás se planifican en las iteraciones y se revisan en el Comité de Arquitectura.
+ 
+-\subsection{DevSecOps, integración y entrega continuas, infraestructura como código y pruebas automatizadas}
++\section{DevSecOps, integración y entrega continuas, infraestructura como código y pruebas automatizadas}
+ 
+ Cada cambio pasa por el pipeline de integración continua que define el SD4, sección 4.2: GitLab CI orquesta y AWS CodeBuild construye cada imagen de forma hermética, con procedencia SLSA nivel 3. El pipeline ejecuta la auditoría de dependencias con \texttt{composer audit}, las pruebas PHPUnit, el análisis estático con PHPStan y Larastan, el formato con Laravel Pint, las pruebas de contrato contra OpenAPI 3.1 y AsyncAPI 2.6, el escaneo de secretos y de imágenes de contenedor y la medición de cobertura.
+ 
+@@ -58,9 +59,9 @@ Las compuertas son bloqueantes, no opcionales. El pipeline detiene la promoción
+ 
+ La imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila. La infraestructura de los cinco ambientes se describe como código: Terraform administra los recursos con estados separados por ambiente y Ansible configura los hosts; cada recurso tiene un único propietario de código. Las migraciones de base de datos siguen la estrategia de expandir y contraer y declaran su reversión.
+ 
+-La entrega continua mantiene versiones verificadas y listas para su despliegue en cada ambiente. El paso a Producción se ejecuta sólo dentro de las ventanas permitidas por el caso y, durante el desarrollo, sólo en los hitos aprobados: ningún cambio se despliega entre el 1 y el 25 de septiembre, en diciembre ni en los tres primeros días hábiles de un mes.
++La entrega continua mantiene versiones verificadas y listas para su despliegue en cada ambiente. El paso a Producción se ejecuta sólo dentro de las ventanas permitidas por el caso y, durante el desarrollo, sólo en los hitos aprobados: ningún cambio se despliega entre el 1 y el 25 de septiembre, en diciembre ni en los tres primeros días hábiles de un mes. La ventana de despacho de 05:30 a 07:00 se mantiene sin indisponibilidad (Caso, RT-10.05).
+ 
+-\subsection{Ceremonias, cadencias y decisiones del desarrollo}
++\section{Ceremonias, cadencias y decisiones del desarrollo}
+ 
+ El trabajo del equipo de desarrollo se organiza en iteraciones de Construcción de dos semanas. Al inicio de cada iteración se revisan los requisitos y prioridades, se seleccionan las tareas que caben en la capacidad registrada y se aclaran sus criterios de aceptación. Durante la iteración, el equipo sigue el avance en el tablero Kanban, con bloqueos, responsables y dependencias.
+ 
+diff --git a/LAFROX-Formulario-T-9.tex b/LAFROX-Formulario-T-9.tex
+index 91c83846..b07966d9 100644
+--- a/LAFROX-Formulario-T-9.tex
++++ b/LAFROX-Formulario-T-9.tex
+@@ -21,6 +21,8 @@
+ 
+ \renewcommand{\thetable}{T-9.\arabic{table}}
+ \renewcommand{\thefigure}{T-9.\arabic{figure}}
++\renewcommand{\thesection}{\arabic{section}}
++\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+ 
+ 
+ \chapter{Gestión de proyecto}
+@@ -45,7 +47,7 @@ La gestión de interesados identifica a las personas, grupos y organizaciones qu
+ 
+ El jefe de proyecto mantiene actualizado el registro de interesados (paquete 1.4.1) y planifica su involucramiento de acuerdo con el alcance de cada entrega. La participación puede incluir levantamiento de necesidades, revisión de procesos, validación de criterios, pruebas y retroalimentación. Las inquietudes, resistencias, acuerdos y compromisos relevantes se registran con su responsable y seguimiento; los conflictos que no puedan resolverse en la instancia de trabajo se elevan a la autoridad correspondiente.
+ 
+-La tabla de interesados se encuentra en los anexos del subdocumento 6. Siendo la tabla 6.A.1
++El registro de interesados se presenta en el Subdocumento 6, Anexo 6.A, Tabla 6.A.1.
+ 
+ La tabla resume los principales grupos y roles identificados, sus intereses y la contribución esperada. La participación concreta se acuerda según las responsabilidades de cada interesado y las actividades de cada entrega; la inclusión en la tabla no implica que todos participen en todas las decisiones ni que tengan atribuciones de aprobación.
+ 
+@@ -63,9 +65,14 @@ Antes de cada entrega incremental se informa a los interesados pertinentes sobre
+ 
+ La gestión de adquisiciones planifica, contrata y controla los bienes y servicios que requiere la solución: contratos, órdenes de compra, acuerdos con terceros y acuerdos de nivel de servicio. Cada adquisición tiene un responsable, una fecha de necesidad derivada del cronograma, una dependencia con los paquetes que la usan y una evidencia de recepción.
+ 
+-El CLIENTE compra el equipamiento de terreno conforme a la especificación de cantidades y características que prepara LafroX (Caso 02, capítulo 11; SD3 E-09; paquete 5.1.1). Para el equipamiento de la sala técnica, incluidos racks, servidores y equipos de borde (paquete 5.1.2), T-14 asigna a LafroX la orden de compra en el mes 2 y la instalación en el mes 3. La recepción técnica de los equipos se acredita con su evidencia de recepción; su fecha no se confunde con la recepción de la sala, que T-15 ubica en el mes 4. El commissioning o puesta en servicio no tiene aquí una fecha afirmada. La asignación de la compra no traslada al CLIENTE la habilitación e instalación: LafroX habilita el recinto técnico en el espacio que proporciona el CLIENTE e instala y configura los equipos (fase 6 de la EDT). LafroX contrata los servicios que le corresponden. Las licencias de terceros se constituyen a nombre del CLIENTE (5.2.3).
++El CLIENTE compra el equipamiento de terreno conforme a la especificación de cantidades y características que prepara LafroX (Caso 02, capítulo 11; SD3 E-09; paquete 5.1.1). Para el equipamiento de la sala técnica, incluidos racks, servidores y equipos de borde (paquete 5.1.2), T-14 asigna a LafroX la orden de compra en el mes 2 y la instalación en el mes 3. La recepción técnica de los equipos se acredita con su evidencia de recepción; su fecha no se confunde con la recepción de la sala, que T-15 ubica en el mes 4. El commissioning o puesta en servicio no tiene aquí una fecha afirmada. La asignación de la compra no traslada al CLIENTE la habilitación e instalación: La obra civil de separación del recinto es de cargo del CLIENTE; LafroX la especifica y coordina, provee el piso técnico e instala y configura los equipos (RT-06.06; Formulario T-14, paquete 6.1.1). La instalación se programa en el mes 3 y la recepción de la sala en el mes 4; la recepción técnica de equipos se acredita por separado. LafroX contrata los servicios que le corresponden. Las licencias de terceros se constituyen a nombre del CLIENTE (5.2.3).
+ 
+-La tabla de adquisiciones se encuentra en los anexos del subdocumento 6. Siendo la tabla 6.A.2
++El registro de adquisiciones se presenta en el Subdocumento 6, Anexo 6.B, Tabla 6.B.1.
++
++
++El refuerzo de certificación se obtiene mediante subcontratación de evaluadores bajo la dirección del Líder de Calidad: hasta 16 evaluadores externos por día, adicionales a la plantilla corporativa y sin presumir que sus diez especialistas estén íntegramente asignados a este contrato. Se prevé en las campañas de los meses 9 a 12 y 16 a 18; no se contrata ni imputa automáticamente cada día de esos meses. El Jefe de Proyecto confirma proveedor, competencias, confidencialidad, disponibilidad nominal y orden de contratación antes de cada sesión. Este refuerzo no sustituye al SOC propio.
++
++Para estimar capacidad se usa una jornada nominal de planificación de 8 horas por persona y día, con disponibilidad programable del 80\%: 6,4 HH netas por evaluador y día, hasta 102,4 HH netas con 16 evaluadores. Es una hipótesis de dimensionamiento, no una jornada laboral contractual ni evidencia de contratación. CAL registra los días efectivos de sesión, personas y horas asignadas; descuenta ausencias, coordinación, soporte y otras campañas sin volver a descontar el mismo concepto. El frente de cronograma verifica con ese registro la capacidad diaria y los paquetes del T-15, sin sumar el techo externo a la plantilla corporativa ni a la reserva como si fueran capacidad adicional ya acreditada. Una sesión no se autoriza mientras sus personas y horas netas no cubran el esfuerzo requerido.
+ 
+ Cada fila tiene en el registro de adquisiciones su estado, su proveedor y su fecha comprometida. Un atraso que amenace el H3 o una ola se escala al Comité Ejecutivo con su análisis de impacto.
+ 
+@@ -101,4 +108,7 @@ Los comités del Art. 71° de las Bases Administrativas se organizan así:
+ El Comité de Operación empieza con la primera marcha blanca, porque desde entonces la solución atiende operaciones reales. Revisa cada mes la disponibilidad de los servicios críticos, los incidentes críticos y altos y sus causas, la atención de la mesa (respuesta antes de 20 segundos, abandono y resolución al primer contacto), las pruebas de restauración y de continuidad y los cambios programados. Sus actas registran acuerdos, responsables y plazos (RT-19.09).
+ 
+ 
++
++El Comité de Calidad y Procesos es una instancia interna de LafroX, descrita en el Subdocumento 1, secciones 1.2 y 1.3.1, y no un comité adicional atribuido al Art. 71. Lo preside el Jefe de Aseguramiento de Calidad con los líderes de proyecto; revisa mensualmente procedimientos, defectos y acciones correctivas. El Líder de Calidad aplica los controles bloqueantes de promoción; los desacuerdos se revisan internamente y se escalan a la Gerencia General de LafroX. Ninguna instancia interna puede dispensar un umbral contractual ni sustituir el acta de aceptación del CLIENTE; los cambios de compromisos siguen el control de cambios.
++
+ \end{document}
+\ No newline at end of file
+diff --git a/anexos.tex b/anexos.tex
+index 8459f622..8984d50b 100644
+--- a/anexos.tex
++++ b/anexos.tex
+@@ -11,9 +11,9 @@ Estos anexos presentan los registros de interesados y adquisiciones asociados al
+ 
+ Identificar a los interesados del proyecto es un paso fundamental para la gestión de interesados, ya que permite comprender quiénes son las personas, grupos u organizaciones que pueden afectar o verse afectados por el proyecto.
+ 
+-Es por ello que en la siguiente tabla se presentan los interesados del proyecto, sus intereses o preocupaciones y la contribución que se espera de ellos.
++La Tabla~\ref{tab:tabla-interesados} presenta los interesados del proyecto, sus intereses o preocupaciones y la contribución que se espera de ellos.
+ 
+-\begin{tablalafrox}{Interesados del proyecto -- Fuente: elaboración propia}{tab:tabla-interesados}%
++\begin{tablalafrox}{Interesados del proyecto -- Fuente: Formulario T-9, apartado Gestión de interesados}{tab:tabla-interesados}%
+   {F{0.24} Y Y}%
+   {\cab{Interesado} & \cab{Interés o preocupación} & \cab{Contribución esperada}}%
+   [Interesados del proyecto]
+@@ -43,6 +43,9 @@ La tabla muestra que la participación requerida abarca áreas directivas, opera
+ 
+ Este anexo reúne los bienes y servicios necesarios para implementar y operar la solución, e identifica para cada adquisición la necesidad que atiende, quién es responsable de su compra o contratación, cuándo se requiere y qué evidencia permitirá verificar su cumplimiento. Esta información facilita la coordinación de las adquisiciones con el cronograma y con las actividades del proyecto.
+ 
++\setcounter{table}{0}\renewcommand{\thetable}{6.B.\arabic{table}}
++
++El detalle se presenta en la Tabla~\ref{tab:tabla-adquisiciones}.
+ \input{subdocumento_6/tablas/adquisiciones.tex}
+ 
+ La tabla refleja que las adquisiciones tienen responsables y momentos de necesidad distintos: algunas corresponden al CLIENTE y otras a LafroX, y varias deben coordinarse con hitos o paquetes específicos. Por ello, el seguimiento de fechas y evidencias de recepción o contratación es clave para anticipar atrasos que puedan afectar la implementación y la continuidad de la operación.
+diff --git a/subdocumento_6/contenido.tex b/subdocumento_6/contenido.tex
+index 569a369a..ccfb587b 100644
+--- a/subdocumento_6/contenido.tex
++++ b/subdocumento_6/contenido.tex
+@@ -13,7 +13,7 @@
+ %%     mover la carpeta rompe el capitulo.
+ %% ============================================================================
+ \setcounter{chapter}{5}
+-\chapter{Introducción a las metodologías}
++\chapter{Metodologías}
+ \label{cap:metodologias}
+ 
+ Este subdocumento presenta y analiza los métodos de gestión del proyecto y de desarrollo de software. La gestión adapta el PMBOK mediante líneas base formales y control del avance con valor ganado; Kanban ordena el flujo diario, pero no sustituye la gobernanza ni la aceptación formal. El desarrollo combina RUP iterativo e incremental con prácticas DevSecOps, apoyadas por decisiones de arquitectura y compuertas de calidad. Los Formularios T-9 y T-10 contienen, respectivamente, el detalle de las metodologías de gestión y desarrollo. La arquitectura de referencia y la cadena de entrega se vinculan con el SD4.
+@@ -34,7 +34,12 @@ La gestión de las comunicaciones mantiene informados a los responsables de Puel
+ 
+ \subsection{Gestión de adquisiciones}
+ 
+-La gestión de adquisiciones planifica y controla las compras y contrataciones según las necesidades, dependencias y cronograma. El CLIENTE compra los equipos de uso (terminales, impresoras, terminales de pago y balanzas) conforme a la especificación 5.1.1. LafroX provee, instala y mantiene el sistema de cadena de frío de las cámaras y de los 28 camiones con frío, porque es infraestructura que opera y de la que dependen sus niveles de servicio (5.1.4). El T-14 programa la especificación y cotización local de componentes para 31 kits, con homologación y certificación Subtel aplicable antes del banco de pruebas; la compra masiva queda condicionada a la aceptación del prototipo. El T-15 programa la compra del prototipo a fines de marzo de 2027 y su banco de pruebas en abril; exige cuatro kits recibidos antes del piloto de seis semanas y los 28 kits instalados y recibidos antes de la ola de reparto. Para los equipos de la sala técnica, incluidos racks, servidores y equipos de borde, T-14 asigna a LafroX la orden de compra en el mes 2 y la instalación en el mes 3. La recepción técnica de los equipos y la recepción de la sala son hitos distintos: T-15 sitúa la recepción de la sala en el mes 4, sin que ello establezca aquí una fecha de recepción técnica ni de puesta en servicio. El SOC 24×7 es propio de LafroX y opera desde su Centro de Operaciones de Valparaíso (Av. Brasil 2241), con analistas contratados como personal antes del mes 13 bajo la dirección del Encargado de Seguridad; su ubicación, dotación y procedimientos se declaran en el Subdocumento 4, Anexo 4-B (Bases Técnicas Transversales, cap. 11, RT-11.17, p. 24). LafroX habilita el espacio proporcionado por el CLIENTE y configura los equipos; las evidencias y el registro completo de adquisiciones se detallan en T-9. Para consultar el detalle de las adquisiciones, sus necesidades asociadas, responsables, fechas, paquetes y evidencias, véase el Anexo 6.B --- Adquisiciones asociadas al proyecto.
++La gestión de adquisiciones planifica y controla las compras y contrataciones según las necesidades, dependencias y cronograma. El CLIENTE compra los equipos de uso (terminales, impresoras, terminales de pago y balanzas) conforme a la especificación 5.1.1. LafroX provee, instala y mantiene el sistema de cadena de frío de las cámaras y de los 28 camiones con frío, porque es infraestructura que opera y de la que dependen sus niveles de servicio (5.1.4). El T-14 programa la especificación y cotización local de componentes para 31 kits, con homologación y certificación Subtel aplicable antes del banco de pruebas; la compra masiva queda condicionada a la aceptación del prototipo. El T-15 programa la compra del prototipo a fines de marzo de 2027 y su banco de pruebas en abril; exige cuatro kits recibidos antes del piloto de seis semanas y los 28 kits instalados y recibidos antes de la ola de reparto. Para los equipos de la sala técnica, incluidos racks, servidores y equipos de borde, T-14 asigna a LafroX la orden de compra en el mes 2 y la instalación en el mes 3. La recepción técnica de los equipos y la recepción de la sala son hitos distintos: T-15 sitúa la recepción de la sala en el mes 4, sin que ello establezca aquí una fecha de recepción técnica ni de puesta en servicio. El SOC 24×7 es propio de LafroX y opera desde su Centro de Operaciones de Valparaíso (Av. Brasil 2241), con analistas contratados como personal antes del mes 13 bajo la dirección del Encargado de Seguridad; su ubicación, dotación y procedimientos se declaran en el Subdocumento 4, Anexo 4-B (Bases Técnicas Transversales, cap. 11, RT-11.17, p. 24). La obra civil de separación es de cargo del CLIENTE; LafroX la especifica y coordina, provee el piso técnico e instala y configura el equipamiento (RT-06.06; Formulario T-14, paquete 6.1.1); las evidencias y el registro completo de adquisiciones se detallan en T-9. Para consultar el detalle de las adquisiciones, sus necesidades asociadas, responsables, fechas, paquetes y evidencias, véase el Anexo 6.B --- Adquisiciones asociadas al proyecto.
++
++
++El refuerzo de certificación se obtiene mediante subcontratación de evaluadores bajo la dirección del Líder de Calidad: hasta 16 evaluadores externos por día, adicionales a la plantilla corporativa y sin presumir que sus diez especialistas estén íntegramente asignados a este contrato. Se prevé en las campañas de los meses 9 a 12 y 16 a 18; no se contrata ni imputa automáticamente cada día de esos meses. El Jefe de Proyecto confirma proveedor, competencias, confidencialidad, disponibilidad nominal y orden de contratación antes de cada sesión. Este refuerzo no sustituye al SOC propio.
++
++Para estimar capacidad se usa una jornada nominal de planificación de 8 horas por persona y día, con disponibilidad programable del 80\%: 6,4 HH netas por evaluador y día, hasta 102,4 HH netas con 16 evaluadores. Es una hipótesis de dimensionamiento, no una jornada laboral contractual ni evidencia de contratación. CAL registra los días efectivos de sesión, personas y horas asignadas; descuenta ausencias, coordinación, soporte y otras campañas sin volver a descontar el mismo concepto. El frente de cronograma verifica con ese registro la capacidad diaria y los paquetes del T-15, sin sumar el techo externo a la plantilla corporativa ni a la reserva como si fueran capacidad adicional ya acreditada. Una sesión no se autoriza mientras sus personas y horas netas no cubran el esfuerzo requerido.
+ 
+ \subsection{Gestión de integración}
+ 
+@@ -53,9 +58,38 @@ La gobernanza combina seguimiento diferenciado y comités formales para revisar
+ 
+ 
+ 
++
++El Comité de Calidad y Procesos es una instancia interna de LafroX, descrita en el Subdocumento 1, secciones 1.2 y 1.3.1, y no un comité adicional atribuido al Art. 71. Lo preside el Jefe de Aseguramiento de Calidad con los líderes de proyecto; revisa mensualmente procedimientos, defectos y acciones correctivas. El Líder de Calidad aplica los controles bloqueantes de promoción; los desacuerdos se revisan internamente y se escalan a la Gerencia General de LafroX. Ninguna instancia interna puede dispensar un umbral contractual ni sustituir el acta de aceptación del CLIENTE; los cambios de compromisos siguen el control de cambios.
++
++
++La Figura~\ref{fig:sd6-control} muestra cómo el seguimiento se conecta con el control de cambios y la aceptación, sin equiparar una demostración con un acta contractual.
++
++\begin{figure}[htbp]
++\centering
++\begin{tikzpicture}[every node/.style={draw,rounded corners,align=center,font=\small,text width=2.7cm,minimum height=1.5cm}]
++\node (base) at (0,0) {Línea base\\y criterios};
++\node (trabajo) at (3.8,0) {Incremento\\y evidencia};
++\node (control) at (7.6,0) {Control\\del entregable};
++\node (acta) at (11.4,0) {Revisión del CLIENTE\\y acta};
++\draw[->,thick] (base) -- (trabajo);
++\draw[->,thick] (trabajo) -- (control);
++\draw[->,thick] (control) -- (acta);
++\node (cambio) at (3.8,-2.4) {Cambio que afecta\\compromisos};
++\node (decision) at (7.6,-2.4) {Evaluación\\y aprobación};
++\draw[->,thick] (trabajo) -- (cambio);
++\draw[->,thick] (cambio) -- (decision);
++\draw[->,thick] (decision.south) -- ++(0,-0.5) -| (base.south);
++\end{tikzpicture}
++\caption{Control de entregas y cambios. Fuente: Formulario T-9, apartados Gestión de integración y Control del alcance, del cronograma y del valor ganado.}
++\label{fig:sd6-control}
++\end{figure}
++
++El seguimiento por Kanban hace visible el trabajo, mientras la evidencia permite verificar cada entrega contra su línea base. Si la solución de una desviación modifica un compromiso, la aprobación precede a la actualización de la línea base; las acciones correctivas que lo preservan se registran sin sustituir la aceptación del CLIENTE.
++
++
+ \section{Metodología de Desarrollo Software}
+ 
+-La metodología de desarrollo se coordina con la gestión del proyecto y sus entregas incrementales. RUP estructura el trabajo en cuatro fases ---Inicio, Elaboración, Construcción y Transición--- y permite avanzar de forma iterativa e incremental. Las iteraciones de construcción producen incrementos verificables, mientras que las etapas de entrega se coordinan con las fases contractuales para favorecer la continuidad operacional. Una iteración o demostración no constituye aceptación formal, marcha blanca ni puesta en producción. Los requisitos y sus pruebas se mantienen trazables mediante el Formulario T-12; el Formulario T-10 contiene el detalle de las fases, los procesos y los artefactos.
++La metodología de desarrollo se coordina con la gestión del proyecto y sus entregas incrementales. RUP (Kruchten, 2004) estructura el trabajo en cuatro fases ---Inicio, Elaboración, Construcción y Transición--- y permite avanzar de forma iterativa e incremental. Las iteraciones de construcción producen incrementos verificables, mientras que las etapas de entrega se coordinan con las fases contractuales para favorecer la continuidad operacional. Una iteración o demostración no constituye aceptación formal, marcha blanca ni puesta en producción. Los requisitos y sus pruebas se mantienen trazables mediante el Formulario T-12; el Formulario T-10 contiene el detalle de las fases, los procesos y los artefactos.
+ 
+ \subsection{Arquitectura evolutiva, refactorización y deuda técnica}
+ 
+@@ -69,7 +103,11 @@ El pipeline automatizado integra construcción, pruebas y controles de seguridad
+ 
+ El trabajo se organiza en iteraciones regulares, con trabajo priorizado y aceptado, seguimiento del avance y de los bloqueos, demostración de incrementos y revisión de aprendizajes para impulsar mejoras. Las demostraciones y los incrementos no constituyen por sí mismos una entrega formal ni una puesta en producción. Las decisiones técnicas se documentan; las que afectan la arquitectura siguen la gobernanza arquitectónica, y los cambios a compromisos aprobados se gestionan conforme a la sección 6.1.4. El Formulario T-10 detalla las cadencias, los artefactos, los roles y los procedimientos.
+ 
+-\section{Referencias}
++\section*{Referencias}
++\addcontentsline{toc}{section}{Referencias}
++
++Las fuentes siguientes sustentan la gestión del proyecto y el proceso de desarrollo descritos. Los documentos propios se remiten en el texto y no se incluyen como referencias externas.
++
+ \begin{itemize}
+     \item Distribuidora Puelche S.A. (2026a). \textit{Bases Administrativas de Licitación N.\textsuperscript{o} TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación}.
+     \item Distribuidora Puelche S.A. (2026b). \textit{Bases Técnicas Transversales de Licitación N.\textsuperscript{o} TFEP-01/2026}.
+@@ -79,11 +117,12 @@ El trabajo se organiza en iteraciones regulares, con trabajo priorizado y acepta
+     \item Project Management Institute. (2017). \textit{La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK\textsuperscript{\textregistered})} (6.\textsuperscript{a} ed.). Project Management Institute.
+ \end{itemize}
+ 
+-\section{Declaración de uso de IA}
++\section*{Declaración de uso de IA}
++\addcontentsline{toc}{section}{Declaración de uso de IA}
+ 
+-La tabla declara el uso de herramientas de inteligencia artificial en este subdocumento y en sus formularios; se consolida en el Formulario A-6.
++La Tabla~\ref{tab:declaracion-uso-ia} declara el uso de herramientas de inteligencia artificial en este subdocumento y en sus formularios; se consolida en el Formulario A-6.
+ 
+-\begin{tablalafrox}{Declaración de uso de inteligencia artificial}{tab:declaracion-uso-ia}{YYYYYY}
++\begin{tablalafrox}{Declaración de uso de inteligencia artificial. Fuente: registro de asistencia de IA de este subdocumento.}{tab:declaracion-uso-ia}{YYYYYY}
+     {\cab{Sección} & \cab{Herramienta} & \cab{Finalidad del uso} & \cab{Nivel en texto} & \cab{Nivel en diagramas} & \cab{Revisión humana (quién y qué verificó)}}
+ Introducción & Chat GPT & Redacción de la introducción y conexión con SD4 y SD7 & Alto & Ninguno & Tomas Perez: coherencia del propósito, alcance y referencias a SD4 y SD7 con el contenido de esos subdocumentos \\
+   6.1 Metodología de Gestión de Proyectos & Chat GPT; Codex & Responsabilidades de adquisición y cadencias; PMBOK adaptado, valor ganado, matriz de adquisiciones y Comité de Operación; adquisición del sistema de cadena de frío, conectividad y despliegue de Greengrass. & Alto & Ninguno & Maximiliano Miño: aplicación de PMBOK, líneas base y valor ganado; Tomas Perez: coherencia de adquisiciones, comités y cadencias con los formularios relacionados. \\
+@@ -91,4 +130,7 @@ Introducción & Chat GPT & Redacción de la introducción y conexión con SD4 y
+   Subdocumento 6 Anexos & Chat GPT; Codex & Redacción y organización de los anexos de interesados y adquisiciones del proyecto y sus tablas; adquisición del sistema de cadena de frío, conectividad y despliegue de Greengrass. & Alto & Ninguno & Tomas Perez: pertinencia de los interesados, sus preocupaciones y contribuciones; Maximiliano Miño: necesidades, responsables, plazos y evidencias de las adquisiciones. \\
+ Formulario T-9 & Chat GPT & Portada y formato del contenido metodológico detallado y sus tablas & Alto & Ninguno & Tomas Perez: alineación de la planificación con las etapas e hitos contractuales; Maximiliano Miño: consistencia de controles, cálculos y tablas con la metodología descrita \\
+ Formulario T-10 & Chat GPT & Portada y formato del contenido metodológico detallado y sus tablas & Alto & Ninguno & Maximiliano Miño: consistencia del proceso de desarrollo, compuertas y artefactos; Tomas Perez: correspondencia de las iteraciones y referencias con SD4 y el Subdocumento 6 \\
++Actualización frente C (27-10-2026) & Codex & Corrección de forma, fuentes, sala técnica y figura del proceso de control & Alto & Alto & Revisión humana de estos cambios por realizar; no se extienden a ellos las revisiones anteriores \\
+ \end{tablalafrox}
++
++La fila de actualización identifica exclusivamente la asistencia y las verificaciones aún necesarias de esta revisión. Las revisiones humanas declaradas en las filas anteriores corresponden al contenido previo.
+diff --git a/subdocumento_6/tablas/adquisiciones.tex b/subdocumento_6/tablas/adquisiciones.tex
+index 322ffca5..accc0376 100644
+--- a/subdocumento_6/tablas/adquisiciones.tex
++++ b/subdocumento_6/tablas/adquisiciones.tex
+@@ -1,11 +1,11 @@
+-\begin{tablalafrox}{Adquisiciones -- Fuente: elaboración propia a partir del Formulario T-14, fase 5, y del Formulario T-11}{tab:tabla-adquisiciones}%
++\begin{tablalafrox}{Adquisiciones -- Fuente: Formulario T-14, fases 5 y 6; Formulario T-11; Subdocumento 6, sección 6.1.3}{tab:tabla-adquisiciones}%
+   {F{0.25} Y Y}%
+   {\cab{Bien o servicio} & \cab{Necesidad asociada} & \cab{Responsable de compra o contrato; responsable LafroX, fecha, paquetes y evidencia}}
+   Equipos de uso: terminales de preventa, reparto y bodega, impresoras, terminales de pago y balanzas & Operación de las aplicaciones & CLIENTE, según la especificación 5.1.1. Arquitecto (especificación); SRE (recepción). Antes de cada ola. Paquetes 6.5 y 4.2.1. Actas 5.1.3 \\
+   Sistema de cadena de frío: gateways y sensores de cámara (B-01 y B-02) y kit de los 28 camiones (gateway, UPS, módulo de sondas, sondas y simuladores, sensor independiente, termógrafo e Iridium Edge) & Registro, protección local y aviso de temperatura & LafroX, según 5.1.4, con reserva de componentes para 31 kits. Arquitecto (especificación); SRE (instalación y recepción). Compra antes del banco de pruebas, con cotización local y certificación Subtel aplicable. Paquetes 2.4, 4.1 y 6.5. Actas por camión \\
+   Sala técnica de Talca: UPS, generador, climatización de precisión, detección y extinción, racks y gabinetes de borde & Recinto técnico del H3 & LafroX, según la especificación 5.1.2. Arquitecto (especificación); SRE (instalación y recepción técnica). Orden de compra mes 2; instalación mes 3; recepción de sala mes 4 según T-15. Fecha de recepción técnica no especificada aquí. Paquetes 6.1, 6.3, 6.6. Actas 5.1.3 y 6.1.5 \\
+   Servidores, almacenamiento, firewalls, switches y mini-PC de borde & Cómputo y red de los sitios & LafroX, según la especificación 5.1.2. SRE (instalación y recepción técnica). Orden de compra mes 2; instalación mes 3; recepción de sala mes 4 según T-15. Fecha de recepción técnica no especificada aquí. Paquetes 6.3, 6.6. Actas 5.1.3 \\
+-  Obra civil, piso técnico e instalación de energía, climatización e incendio & Habilitación del recinto & LafroX, con instaladores especializados. SRE. Meses 5 y 6. Paquetes 6.1.1 a 6.1.4. Acta 6.1.5 \\
++  Obra civil de separación, piso técnico e instalaciones del recinto & Habilitación del recinto & CLIENTE: obra civil de separación (RT-06.06). LafroX: especificación y coordinación; piso técnico e instalaciones con especialistas. SRE. Mes 3; recepción de sala mes 4. Paquetes 6.1.1 a 6.1.4; acta 6.1.5 \\
+   Servicios de AWS & Plataforma de nube y ambientes & LafroX (5.2.1). SRE. Antes del mes 4. Paquetes 3.1, 3.2. Cuentas y servicios activos \\
+   Gestión de dispositivos y detección en endpoints & Enrolamiento y seguridad de los terminales & LafroX (5.2.2). SRE. Antes del enrolamiento. Paquetes 6.5, 7.1. Suscripciones activas \\
+   Licencias de software de terceros & Productos de la arquitectura & A nombre del CLIENTE (5.2.3). Arquitecto. Antes de usar cada producto. Paquetes 3.1 a 3.6. Registro de licencias \\
+@@ -16,5 +16,5 @@
+   Acuerdos con los diez transportistas & Uso de terminales y suplentes enrolados & LafroX con el CLIENTE (5.4.1). Implantación. Antes del H6. Paquetes 4.2.1, ola de reparto. Diez acuerdos firmados \\
+   Acta con el sindicato & Terminales, GPS y cámaras & CLIENTE y sindicato (5.4.2). Implantación. Antes del H6. Paquete 4.2.1. Acta firmada \\
+   Custodia de fuentes & Continuidad ante insolvencia o incumplimiento & LafroX (5.4.4). Jefe de proyecto. Antes del H4. Paquete 9.2. Contrato y primer depósito \\
+-  Analistas del SOC 24×7 propio & Monitoreo de seguridad desde el mes 13 & LafroX (8.1.5; RT-11.17). Encargado de Seguridad. Mes 13. SOC propio en el Centro de Operaciones de Valparaíso; dotación y procedimientos en el Subdocumento 4, Anexo 4-B \\
++  Analistas del SOC 24×7 propio & Monitoreo de seguridad desde el mes 13 & LafroX (8.1.5; RT-11.17). Encargado de Seguridad. Contratación antes del mes 13; operación desde el mes 13. SOC propio en el Centro de Operaciones de Valparaíso; dotación y procedimientos en el Subdocumento 4, Anexo 4-B \\
+ \end{tablalafrox}
+diff --git a/subdocumento_6/tablas/comunicaciones.tex b/subdocumento_6/tablas/comunicaciones.tex
+index 67cd2a15..7401e487 100644
+--- a/subdocumento_6/tablas/comunicaciones.tex
++++ b/subdocumento_6/tablas/comunicaciones.tex
+@@ -1,4 +1,4 @@
+-\begin{tablalafrox}{Comunicación del proyecto -- Fuente: elaboración propia}{tab:tabla-comunicaciones}%
++\begin{tablalafrox}{Comunicación del proyecto -- Fuente: Formulario T-9, apartados Gestión de comunicaciones y Mecanismos de decisión y cadencias de gobierno}{tab:tabla-comunicaciones}%
+   {L{2.1cm} Y C{2.4cm} L{2.5cm}}%
+   {\cab{Comunicación} & \cab{Responsable de comunicar} & \cab{Destinatarios} & \cab{Frecuencia o momento}}%
+   [Comunicación del proyecto]
+diff --git a/subdocumento_6/tablas/interesados.tex b/subdocumento_6/tablas/interesados.tex
+index 230135ec..48b02519 100644
+--- a/subdocumento_6/tablas/interesados.tex
++++ b/subdocumento_6/tablas/interesados.tex
+@@ -1,5 +1,5 @@
+ % Fragmento importado con \parte{tablas/interesados} desde contenido.tex.
+-\begin{tablalafrox}{Interesados del proyecto -- Fuente: elaboración propia}{tab:tabla-interesados}%
++\begin{tablalafrox}{Interesados del proyecto -- Fuente: Formulario T-9, apartado Gestión de interesados}{tab:tabla-interesados}%
+   {F{0.24} Y Y}%
+   {\cab{Interesado} & \cab{Interés o preocupación} & \cab{Contribución esperada}}
+   Gerencia general & Continuidad del negocio y relación con clientes & Aportar prioridades del negocio y resolver decisiones que requieran su intervención\\

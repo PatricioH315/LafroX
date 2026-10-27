@@ -1,0 +1,108 @@
+{
+  "status": "8 PDF compilados; no acredita pruebas reales ni revisión humana",
+  "documents": [
+    {
+      "document": "SD6",
+      "pdf": "C:\\Users\\henri\\.codex\\worktrees\\frente-c-sd6\\LafroX\\revision\\frente-c-build\\LAFROX-Formulario-T-10.pdf",
+      "sha256": "af5a2af2f80366c173b7f2b1945d9fa545df09041cda82883fb9f6e5f7aea70b",
+      "pages": 5,
+      "log": "C:\\Users\\henri\\.codex\\worktrees\\frente-c-sd6\\LafroX\\revision\\frente-c-build\\LAFROX-Formulario-T-10.log",
+      "undefined_or_duplicate_or_errors": 0,
+      "overfull": 0,
+      "underfull": 0
+    },
+    {
+      "document": "SD6",
+      "pdf": "C:\\Users\\henri\\.codex\\worktrees\\frente-c-sd6\\LafroX\\revision\\frente-c-build\\LAFROX-Formulario-T-9.pdf",
+      "sha256": "0c05c058cc694d6a9d9365e2942fb905070e60b3c71008d174439949b7729af9",
+      "pages": 9,
+      "log": "C:\\Users\\henri\\.codex\\worktrees\\frente-c-sd6\\LafroX\\revision\\frente-c-build\\LAFROX-Formulario-T-9.log",
+      "undefined_or_duplicate_or_errors": 0,
+      "overfull": 0,
+      "underfull": 0
+    },
+    {
+      "document": "SD6",
+      "pdf": "C:\\Users\\henri\\.codex\\worktrees\\frente-c-sd6\\LafroX\\revision\\frente-c-build\\LAFROX-Subdocumento6-Anexos.pdf",
+      "sha256": "4bcbbbc087d599ad07800b59c8ab7dc692e95225b80be3088e31d6cdf392e985",
+      "pages": 8,
+      "log": "C:\\Users\\henri\\.codex\\worktrees\\frente-c-sd6\\LafroX\\revision\\frente-c-build\\LAFROX-Subdocumento6-Anexos.log",
+      "undefined_or_duplicate_or_errors": 0,
+      "overfull": 0,
+      "underfull": 0
+    },
+    {
+      "document": "SD6",
+      "pdf": "C:\\Users\\henri\\.codex\\worktrees\\frente-c-sd6\\LafroX\\revision\\frente-c-build\\LAFROX-Subdocumento6.pdf",
+      "sha256": "240532e20086143ca4c7f23450eb40e1fb3a801768a1e1a43d300d10daae3923",
+      "pages": 13,
+      "log": "C:\\Users\\henri\\.codex\\worktrees\\frente-c-sd6\\LafroX\\revision\\frente-c-build\\LAFROX-Subdocumento6.log",
+      "undefined_or_duplicate_or_errors": 0,
+      "overfull": 0,
+      "underfull": 0
+    },
+    {
+      "document": "SD9",
+      "pdf": "C:\\Users\\henri\\OneDrive\\Documentos\\Universidad 2026S2\\FEP\\Repositorios\\Principal\\LafroX\\SD9_v_nueva\\revision\\frente-c-build\\LAFROX-Formulario-T-13.pdf",
+      "sha256": "5df5f92affb2ef764cf5e999662d17f534115398b650daaf9eaeb96de7e4bb21",
+      "pages": 76,
+      "log": "C:\\Users\\henri\\OneDrive\\Documentos\\Universidad 2026S2\\FEP\\Repositorios\\Principal\\LafroX\\SD9_v_nueva\\revision\\frente-c-build\\LAFROX-Formulario-T-13.log",
+      "undefined_or_duplicate_or_errors": 0,
+      "overfull": 0,
+      "underfull": 0
+    },
+    {
+      "document": "SD9",
+      "pdf": "C:\\Users\\henri\\OneDrive\\Documentos\\Universidad 2026S2\\FEP\\Repositorios\\Principal\\LafroX\\SD9_v_nueva\\revision\\frente-c-build\\LAFROX-Formulario-T-17.pdf",
+      "sha256": "30db427d5c83459e9918134a684077ad99671ddb90df199a9b27dc6f9cb14547",
+      "pages": 16,
+      "log": "C:\\Users\\henri\\OneDrive\\Documentos\\Universidad 2026S2\\FEP\\Repositorios\\Principal\\LafroX\\SD9_v_nueva\\revision\\frente-c-build\\LAFROX-Formulario-T-17.log",
+      "undefined_or_duplicate_or_errors": 0,
+      "overfull": 0,
+      "underfull": 0
+    },
+    {
+      "document": "SD9",
+      "pdf": "C:\\Users\\henri\\OneDrive\\Documentos\\Universidad 2026S2\\FEP\\Repositorios\\Principal\\LafroX\\SD9_v_nueva\\revision\\frente-c-build\\LAFROX-Subdocumento9-Anexos.pdf",
+      "sha256": "3cbccf120a380874faade6cb9acd318324fbdbfebbe2f36e03e04408a902b567",
+      "pages": 20,
+      "log": "C:\\Users\\henri\\OneDrive\\Documentos\\Universidad 2026S2\\FEP\\Repositorios\\Principal\\LafroX\\SD9_v_nueva\\revision\\frente-c-build\\LAFROX-Subdocumento9-Anexos.log",
+      "undefined_or_duplicate_or_errors": 0,
+      "overfull": 0,
+      "underfull": 0
+    },
+    {
+      "document": "SD9",
+      "pdf": "C:\\Users\\henri\\OneDrive\\Documentos\\Universidad 2026S2\\FEP\\Repositorios\\Principal\\LafroX\\SD9_v_nueva\\revision\\frente-c-build\\LAFROX-Subdocumento9.pdf",
+      "sha256": "c9ea2e8916af6a2de70bcc11611af915536d32ab89c1ac47296266a4d9a7ed39",
+      "pages": 34,
+      "log": "C:\\Users\\henri\\OneDrive\\Documentos\\Universidad 2026S2\\FEP\\Repositorios\\Principal\\LafroX\\SD9_v_nueva\\revision\\frente-c-build\\LAFROX-Subdocumento9.log",
+      "undefined_or_duplicate_or_errors": 0,
+      "overfull": 0,
+      "underfull": 0
+    }
+  ],
+  "visual_sample_pages": {
+    "LAFROX-Subdocumento6": 8,
+    "LAFROX-Subdocumento6-Anexos": 6,
+    "LAFROX-Formulario-T-9": 7,
+    "LAFROX-Formulario-T-10": 5,
+    "LAFROX-Subdocumento9": 29,
+    "LAFROX-Subdocumento9-Anexos": 15,
+    "LAFROX-Formulario-T-13": 20,
+    "LAFROX-Formulario-T-17": 6
+  },
+  "sources": {
+    "C:\\Users\\henri\\.codex\\worktrees\\frente-c-sd6\\LafroX\\LAFROX-Formulario-T-9.tex": "1b750be086fea3e645a78c6c92464612f00adf2eda7a2a667793dd37ce4f2bfb",
+    "C:\\Users\\henri\\.codex\\worktrees\\frente-c-sd6\\LafroX\\LAFROX-Formulario-T-10.tex": "c43dea2dbbdb0f110545f2315a6ffa1c1aa474e3a95497134f8d37566bc09e40",
+    "C:\\Users\\henri\\.codex\\worktrees\\frente-c-sd6\\LafroX\\anexos.tex": "2db9ca2eb0b9e754b4073cce87d3d7d887dd0d2cada833068f629adc1276294a",
+    "C:\\Users\\henri\\.codex\\worktrees\\frente-c-sd6\\LafroX\\subdocumento_6\\contenido.tex": "b2c8e319e236e8887aaee6d349359fb400069d11c93a6bc2c842ee690f0222e4",
+    "C:\\Users\\henri\\.codex\\worktrees\\frente-c-sd6\\LafroX\\subdocumento_6\\tablas\\adquisiciones.tex": "8b691dd463e062530be70a5aead5394653d5d150937da99848599b5a469dd9ea",
+    "C:\\Users\\henri\\.codex\\worktrees\\frente-c-sd6\\LafroX\\subdocumento_6\\tablas\\comunicaciones.tex": "7162e8077306d574b05b7fb073e3638c8f19cb76c48adf3cbbb91ea0910eddbe",
+    "C:\\Users\\henri\\.codex\\worktrees\\frente-c-sd6\\LafroX\\subdocumento_6\\tablas\\interesados.tex": "e393d0bb7b7b8ea9ebde256046c4aa0c2dfc83fe966fb8d0a8f47352d30ecd74",
+    "C:\\Users\\henri\\OneDrive\\Documentos\\Universidad 2026S2\\FEP\\Repositorios\\Principal\\LafroX\\SD9_v_nueva\\09_plan_calidad\\contenido.tex": "c7712e3d06df71a9ce09346f7a423cb01ef0faeaae4bdaf589ca2f8487e9138d",
+    "C:\\Users\\henri\\OneDrive\\Documentos\\Universidad 2026S2\\FEP\\Repositorios\\Principal\\LafroX\\SD9_v_nueva\\09_anexos\\contenido.tex": "0a72991e8618d266edc03c0c68640df261ea4ae15fbd3fe3eafbc2e058b26e87",
+    "C:\\Users\\henri\\OneDrive\\Documentos\\Universidad 2026S2\\FEP\\Repositorios\\Principal\\LafroX\\SD9_v_nueva\\T13\\contenido.tex": "accb2ccd79e09073182cb0bedcd3e916f399d76d54c7553300f37077e8aaf503",
+    "C:\\Users\\henri\\OneDrive\\Documentos\\Universidad 2026S2\\FEP\\Repositorios\\Principal\\LafroX\\SD9_v_nueva\\T17\\contenido.tex": "aa87d480790c670c822d5afd4435014020bf3aa6529fa6968cb400836715856f"
+  }
+}
