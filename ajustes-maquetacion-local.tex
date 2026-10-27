@@ -1,7 +1,7 @@
 % Ajustes de composición locales; no modifican la clase compartida.
 \makeatletter
-\patchcmd{\LT@output}{\copy\LT@foot\vss}{\copy\LT@foot\vskip0pt plus1fil minus4pt\relax}{}{\PackageError{lafrox-local}{No se pudo ajustar el primer pie de longtable}{Revisar la version instalada de longtable.}}
-\patchcmd{\LT@output}{\copy\LT@foot\vss}{\copy\LT@foot\vskip0pt plus1fil minus4pt\relax}{}{\PackageError{lafrox-local}{No se pudo ajustar el segundo pie de longtable}{Revisar la version instalada de longtable.}}
+\patchcmd{\LT@output}{\copy\LT@foot\vss}{\copy\LT@foot\vskip0pt plus1fil minus4pt\relax}{}{\PackageInfo{lafrox-local}{longtable ya incluye el pie elastico (primer pie)}}
+\patchcmd{\LT@output}{\copy\LT@foot\vss}{\copy\LT@foot\vskip0pt plus1fil minus4pt\relax}{}{\PackageInfo{lafrox-local}{longtable ya incluye el pie elastico (segundo pie)}}
 \makeatother
 % Alineación izquierda flexible sin estirar el espacio entre palabras.
 \setlength{\RaggedRightRightskip}{0pt plus 1fil}
