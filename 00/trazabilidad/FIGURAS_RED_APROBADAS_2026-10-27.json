@@ -1,0 +1,24 @@
+{
+  "fuente": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\output\\demo_red_20261027\\Demo_Red_SD4.pdf",
+  "sha256Fuente": "06737cdeeadbb34691fc438d2102d7b2af97c3af6e8d265de0cdbe8bb6b02cd5",
+  "figuras": [
+    {
+      "figura": 24,
+      "archivo": "04\\figuras\\fisica\\Red_01_sitios_regiones_aprobada.pdf",
+      "contenidoVectorialIdentico": true,
+      "sha256": "1798785931cb0fe165d51b1d93f3f69c798ad896409266eda16ae5b21d10eb44"
+    },
+    {
+      "figura": 25,
+      "archivo": "04\\figuras\\fisica\\Red_02_red_local_aprobada.pdf",
+      "contenidoVectorialIdentico": true,
+      "sha256": "ba65f0b5418ece5647979b1b6b959654fe5699a8f84e716f48d4be5ef233d3df"
+    },
+    {
+      "figura": 26,
+      "archivo": "04\\figuras\\fisica\\Red_03_red_aws_aprobada.pdf",
+      "contenidoVectorialIdentico": true,
+      "sha256": "6fe7e461d88eb944f67088cd8e3fa27a8630d063c00a055820d46580c11b0cf2"
+    }
+  ]
+}

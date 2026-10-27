@@ -305,14 +305,14 @@ Si la recuperación o la remediación de una vulnerabilidad exige una intervenci
 
 La sección de conexiones describe los caminos entre los sitios, el terreno y la nube, y su conmutación (Tabla~\ref{tab:conexiones}). El despliegue agrega tres definiciones sobre esa red: dónde llegan los túneles, cómo se reparte el direccionamiento y cómo se dirige el tráfico entre regiones.
 
-Los túneles de AWS Site-to-Site VPN de los cinco sitios llegan a la VPC Hub de sa-east-1, donde el Transit Gateway los une solo a la VPC de Producción. La región us-east-1 dispone de su propio Transit Gateway y de su VPN para reconectar los sitios durante una conmutación. La de Producción es la única VPC con enlace hacia los sitios, coherente con que el on-premise es producción: Desarrollo, QA y Preproducción no tienen conectividad con las bodegas, de modo que un error en un ambiente de prueba no puede alcanzarlas. El direccionamiento se asigna sin solapamiento, según la Tabla~\ref{tab:t64}, y el bloque de recuperación 10.201.0.0/16 corresponde al ambiente de Recuperación ante Desastres de la Tabla~\ref{tab:t62}.
+Las conexiones de AWS Site-to-Site VPN de los cinco sitios se asocian al Transit Gateway regional de sa-east-1, que enlaza la red de los sitios con la VPC de Producción mediante su conexión de VPC. El Transit Gateway es un recurso regional, fuera de las VPC; la VPC Hub conserva el bloque 10.100.0.0/16 de la red de conectividad. La región us-east-1 dispone de su propio Transit Gateway y de su VPN para reconectar los sitios durante una conmutación. La de Producción es la única VPC de aplicación con enlace hacia los sitios, coherente con que el on-premise es producción: Desarrollo, QA y Preproducción no tienen conectividad con las bodegas, de modo que un error en un ambiente de prueba no puede alcanzarlas. El direccionamiento se asigna sin solapamiento, según la Tabla~\ref{tab:t64}, y el bloque de recuperación 10.201.0.0/16 corresponde al ambiente de Recuperación ante Desastres de la Tabla~\ref{tab:t62}.
 
-La Figura~\ref{fig:red-sitios-regiones} sitúa las cinco instalaciones con cómputo en el centro, la región primaria a la izquierda y la secundaria a la derecha. Cada trazo WAN representa los dos túneles IPsec con BGP de un sitio hacia una región: las líneas azules muestran la conectividad de producción y las violetas discontinuas, las conexiones preparadas para la recuperación. Las líneas de replicación distinguen Aurora Global Database y S3. Este último permanece fuera de las VPC como servicio regional. El direccionamiento local se detalla en la Tabla~\ref{tab:t64}, y los caminos de enlace y su prioridad, en la sección~\ref{sec:conexiones}.
+La Figura~\ref{fig:red-sitios-regiones} sitúa las cinco instalaciones con cómputo en el centro, la región primaria a la izquierda y la secundaria a la derecha. Cada trazo WAN agrupa las conexiones del sitio hacia una región, sobre los caminos de enlace disponibles; cada conexión VPN dispone de dos túneles IPsec con BGP. Las líneas azules muestran la conectividad de producción y las violetas discontinuas, las conexiones preparadas para la recuperación. Cada región dispone de conectividad propia hacia su VPC de aplicación. La replicación de Aurora y S3 se desarrolla en la Figura~\ref{fig:red-detalle-regiones}. El direccionamiento local se detalla en la Tabla~\ref{tab:t64}, y los caminos de enlace y su prioridad, en la sección~\ref{sec:conexiones}.
 
 \begin{landscape}
 \begin{figure}[p]
   \centering
-  \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/fisica/Red_01_general_legible.pdf}
+  \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/fisica/Red_01_sitios_regiones_aprobada.pdf}
   \caption{Red de los cinco sitios operacionales y las regiones de producción y recuperación}
   \label{fig:red-sitios-regiones}
   {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
@@ -324,7 +324,7 @@ La vista general distingue los cinco dominios locales y sus caminos regionales. 
 \begin{landscape}
 \begin{figure}[p]
   \centering
-  \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/fisica/Red_02_sitios_legible.pdf}
+  \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/fisica/Red_02_red_local_aprobada.pdf}
   \caption{Red local y continuidad de Talca, Concepción y las plataformas de cross-docking}
   \label{fig:red-detalle-sitios}
   {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
@@ -336,7 +336,7 @@ La red local conecta el cómputo redundante con dos switches y el par de firewal
 \begin{landscape}
 \begin{figure}[p]
   \centering
-  \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/fisica/Red_03_regiones_legible.pdf}
+  \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/fisica/Red_03_red_aws_aprobada.pdf}
   \caption{Conectividad regional, servicios privados y replicación de Aurora y S3}
   \label{fig:red-detalle-regiones}
   {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
