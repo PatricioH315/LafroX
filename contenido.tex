@@ -8,7 +8,7 @@
 \chapter{Introducción}
 \label{cap:empresa}
 
-Este capítulo presenta la trayectoria, las capacidades instaladas, los servicios y la organización de LafroX. Describe su gobierno de calidad, seguridad y conocimiento, y analiza su experiencia en logística. La sección 1.5 explica la organización para el proyecto de Distribuidora Puelche S.A. El Formulario T-6 detalla tres proyectos de referencia. La arquitectura y el plan de trabajo se desarrollan en los Subdocumentos 4 y 7, y el equipo nominado en el Capítulo 12.
+Este capítulo presenta la trayectoria, las capacidades instaladas, los servicios y la organización de LafroX. Describe su gobierno de calidad, seguridad y conocimiento, y analiza su experiencia en logística. La sección 1.5 explica la organización para el proyecto de Distribuidora Puelche S.A. El Formulario T-6 detalla tres proyectos de referencia conforme al Artículo 34° (Bases Administrativas, Art. 34, p. 22). La arquitectura y el plan de trabajo se desarrollan en los Subdocumentos 4 y 7, y el equipo nominado en el Capítulo 12.
 
 \section{Presentación de la empresa}
 
@@ -33,42 +33,24 @@ Estas líneas se apoyan en dos capacidades operativas:
 
 La capacidad instalada combina equipos asignados a las especialidades y puestos compartidos del Centro de Operaciones. La Tabla~\ref{tab:equipamiento_corporativo} presenta el inventario corporativo de trabajo. El equipamiento que se suministra al cliente se detalla por separado en el Formulario T-11 del Subdocumento 4.
 
-\begin{table}[H]
-\centering
-\caption[Equipamiento corporativo de trabajo y atención.]{Equipamiento corporativo de trabajo y atención. Fuente: antecedentes corporativos declarados por LafroX.}
-\label{tab:equipamiento_corporativo}
-\small
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X >{\raggedleft\arraybackslash}p{1.8cm} >{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}X}
-\toprule
-\textbf{Equipamiento} & \textbf{Cantidad} & \textbf{Sede} & \textbf{Uso} \\
-\midrule
-Equipos de Ingeniería, Calidad, Seguridad y SRE & 92 & Santiago: 80; Valparaíso: 12 & Desarrollo, pruebas, seguridad y administración de plataforma \\
-Puestos compartidos del Centro de Operaciones & 16 & Valparaíso & Supervisión de infraestructura y atención de usuarios \\
-Equipos de reemplazo & 4 & Dos en cada sede & Sustitución temporal de equipos de trabajo \\
-\midrule
-\textbf{Total de equipos de cómputo} & \textbf{112} & & \\
-\bottomrule
-\end{tabularx}
-\end{table}
+\begin{tablalafrox}{Equipamiento corporativo de trabajo y atención. Fuente: antecedentes corporativos declarados por LafroX.}{tab:equipamiento_corporativo}{Y R{1.8cm} L{3cm} Y}
+  {\cab{Equipamiento} & \cab{Cantidad} & \cab{Sede} & \cab{Uso}}
+  Equipos de Ingeniería, Calidad, Seguridad y SRE & 92 & Santiago: 80; Valparaíso: 12 & Desarrollo, pruebas, seguridad y administración de plataforma \\
+  Puestos compartidos del Centro de Operaciones & 16 & Valparaíso & Supervisión de infraestructura y atención de usuarios \\
+  Equipos de reemplazo & 4 & Dos en cada sede & Sustitución temporal de equipos de trabajo \\
+  \midrule
+  \textbf{Total de equipos de cómputo} & \textbf{112} & & \\
+\end{tablalafrox}
 
 Los 92 equipos asignados corresponden a los especialistas de Ingeniería, Calidad, Seguridad y SRE: 48 + 15 + 10 + 7 + 12 = 92. De ellos, 80 trabajan en Santiago y 12 en Valparaíso. Los 32 profesionales del NOC comparten ocho puestos conforme a sus turnos. Cada puesto de atención incluye computador, monitor, auriculares y acceso a las herramientas del servicio. El inventario suma 92 equipos asignados, 16 puestos compartidos y cuatro equipos de reemplazo: 112 equipos de cómputo.
 
 La Tabla~\ref{tab:puestos_operaciones} distingue los puestos de servicio de los puestos destinados a relevos y contingencias.
 
-\begin{table}[H]
-\centering
-\caption[Distribución de puestos del Centro de Operaciones.]{Distribución de puestos del Centro de Operaciones. Fuente: antecedentes corporativos declarados por LafroX.}
-\label{tab:puestos_operaciones}
-\small
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X >{\raggedleft\arraybackslash}p{2.5cm} >{\raggedleft\arraybackslash}p{3.8cm} >{\raggedleft\arraybackslash}p{3.5cm}}
-\toprule
-\textbf{Servicio} & \textbf{Puestos habilitados} & \textbf{Puestos de servicio simultáneos} & \textbf{Puestos de relevo o reserva} \\
-\midrule
-NOC & 8 & 6 & 2 \\
-Mesa de Servicios & 8 & Hasta 7 & 1 \\
-\bottomrule
-\end{tabularx}
-\end{table}
+\begin{tablalafrox}{Distribución de puestos del Centro de Operaciones. Fuente: antecedentes corporativos declarados por LafroX.}{tab:puestos_operaciones}{Y R{2.5cm} R{3.8cm} R{3.5cm}}
+  {\cab{Servicio} & \cab{Puestos habilitados} & \cab{Puestos de servicio simultáneos} & \cab{Puestos de relevo o reserva}}
+  NOC & 8 & 6 & 2 \\
+  Mesa de Servicios & 8 & Hasta 7 & 1 \\
+\end{tablalafrox}
 
 El NOC mantiene seis puestos activos de supervisión continua y dos habilitados para relevos o contingencias. La mesa dispone de siete puestos de atención y uno de reserva. Los agentes son las personas que atienden a los usuarios y utilizan esos puestos. Su dotación y sus turnos se dimensionan para cada servicio contratado. Los agentes de mesa y los analistas contratados del SOC se contabilizan por separado de los 124 especialistas de la Tabla~\ref{tab:dotacion}. El dimensionamiento de la mesa para Puelche se detalla en el Subdocumento 4, Anexo 4-W.7, y el Formulario T-15, secciones 4.1 y 5.6.
 
@@ -127,28 +109,19 @@ El Oficial de Seguridad de la Información, denominado CISO por la sigla inglesa
 
 La Tabla~\ref{tab:dotacion} distribuye los 124 especialistas por área y sede e indica su antigüedad en LafroX. Este total corresponde a la dotación técnica de planta. La Gerencia General, la Dirección de Operaciones, las funciones comerciales y administrativas, los agentes de mesa y los analistas contratados del SOC se contabilizan por separado.
 
-\begin{table}[H]
-\centering
-\caption[Dotación técnica por área, sede y antigüedad.]{Dotación técnica por área, sede y antigüedad. Fuente: antecedentes corporativos declarados por LafroX.}
-\label{tab:dotacion}
-\small
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{2.8cm} >{\raggedleft\arraybackslash}p{1.7cm} >{\raggedright\arraybackslash}p{2.15cm}}
-\toprule
-\textbf{División} & \textbf{Área / rol principal} & \textbf{Sede} & \textbf{Personas} & \textbf{Antigüedad en LafroX} \\
-\midrule
-Ingeniería & Desarrollo de software & Central (Santiago) & 48 & 1--8 años \\
-Ingeniería & Arquitectura e integración & Central (Santiago) & 15 & 3--10 años \\
-Infraestructura & NOC 24$\times$7 & Operaciones (Valparaíso) & 32 & 1--7 años \\
-Infraestructura & SRE y nube & Operaciones (Valparaíso) & 12 & 2--8 años \\
-Calidad & Aseguramiento y automatización de pruebas & Central (Santiago) & 10 & 2--9 años \\
-Seguridad & CISO y especialistas en ciberseguridad & Central (Santiago) & 7 & 2--8 años \\
-\midrule
-\textbf{Total} & & & \textbf{124} & \\
-\bottomrule
-\end{tabularx}
-\end{table}
+\begin{tablalafrox}{Dotación técnica por área, sede y antigüedad. Fuente: antecedentes corporativos declarados por LafroX.}{tab:dotacion}{L{2.5cm} Y L{2.8cm} R{1.7cm} L{2.15cm}}
+  {\cab{División} & \cab{Área / rol principal} & \cab{Sede} & \cab{Personas} & \cab{Antigüedad en LafroX}}
+  Ingeniería & Desarrollo de software & Central (Santiago) & 48 & 1--8 años \\
+  Ingeniería & Arquitectura e integración & Central (Santiago) & 15 & 3--10 años \\
+  Infraestructura & NOC 24$\times$7 & Operaciones (Valparaíso) & 32 & 1--7 años \\
+  Infraestructura & SRE y nube & Operaciones (Valparaíso) & 12 & 2--8 años \\
+  Calidad & Aseguramiento y automatización de pruebas & Central (Santiago) & 10 & 2--9 años \\
+  Seguridad & CISO y especialistas en ciberseguridad & Central (Santiago) & 7 & 2--8 años \\
+  \midrule
+  \textbf{Total} & & & \textbf{124} & \\
+\end{tablalafrox}
 
-La dotación se concentra en dos frentes: Ingeniería reúne $48 + 15 = 63$ especialistas e Infraestructura, $32 + 12 = 44$. Calidad aporta 10 y Seguridad, 7; la suma es $63 + 44 + 10 + 7 = 124$. Esta distribución distingue la construcción del software de su operación y de sus controles.
+La dotación se concentra en dos frentes principales: Ingeniería reúne $48 + 15 = 63$ especialistas e Infraestructura, $32 + 12 = 44$. Calidad aporta 10 y Seguridad, 7; la suma total es $63 + 44 + 10 + 7 = 124$. En el área de Ingeniería, los 48 desarrolladores de software de la dotación permanente en Sede Central (Santiago) están especializados y operan directamente en el stack tecnológico ofrecido para la solución integral: PHP/Laravel en los componentes de backend y arquitectura modular, y Kotlin en las aplicaciones móviles nativas de terreno con persistencia local. Asimismo, los 15 especialistas de Arquitectura e integración cubren tanto el diseño de arquitectura de solución e interfaces de integración (rol ARQ) como el modelamiento, ingeniería y reconciliación de datos transaccionales (rol DAT). Esta distribución distingue la construcción del software de su operación y de sus controles de aseguramiento.
 
 \begin{samepage}
 La antigüedad indica el tiempo de permanencia en LafroX. Los rangos combinan personal estable con incorporaciones recientes y permiten reconocer la continuidad del equipo en cada especialidad.\par
@@ -156,22 +129,13 @@ La antigüedad indica el tiempo de permanencia en LafroX. Los rangos combinan pe
 
 Los 32 profesionales del NOC se organizan en cuatro equipos de siete y cuatro reemplazos comunes: 4$\times$7+4=32. Cada equipo reúne un responsable de turno, cinco operadores y una persona habilitada para relevar puestos durante pausas y traspasos. La Tabla~\ref{tab:turnos_noc} resume esta distribución. Los equipos rotan entre las franjas de atención y sus días de descanso.
 
-\begin{table}[H]
-\centering
-\caption[Distribución de los 32 profesionales del NOC.]{Distribución de los 32 profesionales del NOC. Fuente: esquema de operación declarado por LafroX.}
-\label{tab:turnos_noc}
-\small
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X >{\raggedleft\arraybackslash}p{3cm}}
-\toprule
-\textbf{Asignación} & \textbf{Personas} \\
-\midrule
-Cuatro equipos rotativos de siete integrantes & 28 \\
-Reemplazos comunes habilitados para cubrir puestos & 4 \\
-\midrule
-\textbf{Total NOC} & \textbf{32} \\
-\bottomrule
-\end{tabularx}
-\end{table}
+\begin{tablalafrox}{Distribución de los 32 profesionales del NOC. Fuente: esquema de operación declarado por LafroX.}{tab:turnos_noc}{Y R{3cm}}
+  {\cab{Asignación} & \cab{Personas}}
+  Cuatro equipos rotativos de siete integrantes & 28 \\
+  Reemplazos comunes habilitados para cubrir puestos & 4 \\
+  \midrule
+  \textbf{Total NOC} & \textbf{32} \\
+\end{tablalafrox}
 
 Los turnos cubren las franjas 00:00–08:00, 08:00–16:00 y 16:00–24:00, hora local de Chile. Se mantienen seis puestos activos, con relevos organizados entre el séptimo integrante del equipo y los cuatro reemplazos comunes. Para planificar la cobertura se consideran 40 horas semanales por persona: 32$\times$40=1.280 horas de dotación frente a 6$\times$24$\times$7=1.008 horas de supervisión. La diferencia de 272 horas es el margen bruto para pausas, traspasos, formación y ausencias. El cuadrante mensual distribuye los turnos y los descansos e incorpora los cambios de horario de Chile.
 
@@ -218,7 +182,7 @@ La gestión del conocimiento busca que la operación no dependa de una sola pers
 
 \section{Experiencia y Certificaciones}
 
-Los proyectos, volúmenes, números de certificado y alianzas de este capítulo son declarados por LafroX; su acreditación documental (certificados y cartas de referencia del Art. 34°) se entrega en el Sobre N° 1.
+Los proyectos, volúmenes, números de certificado y alianzas de este capítulo son declarados por LafroX; su acreditación documental (certificados y cartas de referencia del Art. 34°, Bases Administrativas, Art. 34, p. 22) se entrega en el Sobre N° 1.
 
 Los antecedentes institucionales declarados son los siguientes:
 \begin{itemize}
@@ -228,9 +192,49 @@ Los antecedentes institucionales declarados son los siguientes:
     \item \textbf{ISO/IEC 20000-1:2018 (Sistema de Gestión de Servicios de TI):} Certificado N° CL21/8190 emitido por SGS (SGS, 2024). Alcance: ``Provisión de servicios de TI, gestión de incidentes y mesa de ayuda 24$\times$7 para infraestructuras logísticas críticas''. Vigente hasta mayo de 2027.
 \end{itemize}
 
-Las certificaciones con vencimiento durante el contrato se renuevan mediante auditoría de recertificación ante el mismo organismo antes de su fecha de término: ISO/IEC 27001 antes de enero de 2027, ISO/IEC 20000-1 antes de mayo de 2027 e ISO 9001 antes de noviembre de 2028. La evaluación CMMI-DEV se renueva con una nueva evaluación Benchmark antes de noviembre de 2026, y su renovación se presenta ante la Contraparte Técnica junto con la línea base del H1. Mientras no se acredite, el proyecto no invoca ese nivel como garantía y se rige por los procesos auditados bajo ISO 9001. LafroX acredita la vigencia de cada certificado ante la Contraparte Técnica durante los 56 meses del contrato. Las Bases Técnicas Transversales admiten, para ISO/IEC 27001, un certificado vigente o un plan de certificación con hitos dentro de los primeros doce meses, y para ISO/IEC 20000-1 un certificado vigente o un plan declarado (Bases Técnicas Transversales, sección 15.2, pp. 27--28; Bases Administrativas, Art. 34, p. 22). LafroX supera ese mínimo: acredita ambos certificados vigentes a la fecha de la oferta, junto con ISO 9001.
+LafroX formaliza a continuación el plan estructurado de renovación de sus cuatro certificaciones corporativas institucionales, distinguiendo expresamente su alcance organizacional respecto a las certificaciones profesionales e individuales del personal clave nominado en la sección 1.5:
+\begin{itemize}
+    \item \textbf{CMMI-DEV Nivel 3 (Modelo de Madurez de Capacidades para Desarrollo):}
+    \begin{itemize}
+        \item \textit{Objeto y alcance:} Procesos organizacionales del ciclo de vida de desarrollo de software corporativo de LafroX SpA (Evaluación Benchmark N° 58190).
+        \item \textit{Responsable interno:} Líder de Calidad y Pruebas.
+        \item \textit{Fecha objetivo respecto al contrato:} Vigente hasta noviembre de 2026. Al iniciar el contrato formalmente en febrero de 2027 (canon C3), el nuevo ciclo de evaluación Benchmark se calendariza para su cierre previo al inicio del servicio y entrega de la línea base del Hito 1 (febrero de 2027).
+        \item \textit{Actividad:} Evaluación Benchmark formal ante evaluador líder acreditado ante el CMMI Institute.
+        \item \textit{Evidencia exigida:} Presentación del informe oficial \textit{Appraisal Disclosure Statement} (ADS) emitido por el CMMI Institute ante la Contraparte Técnica en la entrega del Hito 1.
+        \item \textit{Contingencia si no se obtiene a tiempo:} La gobernanza técnica y de aseguramiento opera ininterrumpidamente bajo los procesos certificados de ISO 9001:2015, sin invocar CMMI-DEV Nivel 3 como garantía vinculante hasta la emisión y entrega del informe formal acreditado.
+    \end{itemize}
+    \item \textbf{ISO/IEC 27001:2022 (Sistema de Gestión de Seguridad de la Información):}
+    \begin{itemize}
+        \item \textit{Objeto y alcance:} SGSI corporativo aplicable a la operación de servicios cloud, centros de datos on-premise y procesos de software de misión crítica (Certificado N° SI-0312/2023).
+        \item \textit{Responsable interno:} Encargado de Seguridad de la Información / CISO.
+        \item \textit{Fecha objetivo respecto al contrato:} Vigente hasta enero de 2027. La auditoría externa de renovación se programa y ejecuta con anterioridad al inicio de las actividades contractuales y entrega del Hito 1 (febrero de 2027).
+        \item \textit{Actividad:} Auditoría externa de renovación del SGSI ante el organismo certificador oficial (AENOR).
+        \item \textit{Evidencia exigida:} Remisión del certificado renovado o del informe favorable de auditoría externa de renovación ante la Contraparte Técnica en el Hito 1.
+        \item \textit{Contingencia si no se obtiene a tiempo:} Activación del régimen de plan de certificación por hitos dentro de los primeros doce meses, expresamente contemplado en las Bases Técnicas Transversales (sección 15.2, pp. 27--28) y las Bases Administrativas (Art. 34, p. 22), garantizando la vigencia operacional continua de todos los controles técnicos de seguridad desde el día 1.
+    \end{itemize}
+    \item \textbf{ISO/IEC 20000-1:2018 (Sistema de Gestión de Servicios de TI):}
+    \begin{itemize}
+        \item \textit{Objeto y alcance:} Sistema de gestión de servicios corporativo para provisión de TI, gestión de incidentes y mesa de ayuda 24$\times$7 (Certificado N° CL21/8190).
+        \item \textit{Responsable interno:} Líder de Operación / SRE.
+        \item \textit{Fecha objetivo respecto al contrato:} Vigente hasta mayo de 2027 (mes 4 de ejecución del contrato). La recertificación se calendariza para su conclusión antes del término del mes 4.
+        \item \textit{Actividad:} Auditoría externa de recertificación ante la entidad certificadora (SGS).
+        \item \textit{Evidencia exigida:} Acreditación y entrega del certificado renovado ante la Contraparte Técnica con anterioridad a su expiración.
+        \item \textit{Contingencia si no se obtiene a tiempo:} Aplicación del plan de certificación por hitos en los primeros 12 meses (Bases Técnicas Transversales, sección 15.2, pp. 27--28; Bases Administrativas, Art. 34, p. 22), manteniendo los protocolos ITIL/SRE y la mesa de ayuda plenamente operativos desde el inicio contractual.
+    \end{itemize}
+    \item \textbf{ISO 9001:2015 (Sistema de Gestión de la Calidad):}
+    \begin{itemize}
+        \item \textit{Objeto y alcance:} SGC corporativo para diseño, desarrollo, implementación, integración y soporte de software logístico y transaccional (Certificado N° BV-CH-94821).
+        \item \textit{Responsable interno:} Líder de Calidad y Pruebas.
+        \item \textit{Fecha objetivo respecto al contrato:} Vigente hasta noviembre de 2028 (mes 22 del contrato). La auditoría de renovación trienal y auditorías de seguimiento anuales se programan antes de cumplirse el mes 22.
+        \item \textit{Actividad:} Auditoría externa de renovación trienal ante Bureau Veritas.
+        \item \textit{Evidencia exigida:} Entrega del certificado de calidad renovado a la Contraparte Técnica previo a la fecha de vencimiento.
+        \item \textit{Contingencia si no se obtiene a tiempo:} Continuidad ininterrumpida de las auditorías internas trimestrales y supervisión mensual del Comité de Calidad y Procesos, asegurando el cumplimiento riguroso de los procedimientos corporativos.
+    \end{itemize}
+\end{itemize}
 
-En concordancia con el artículo 34 de las Bases Administrativas y con las reglas de entrega de formularios (Aclaraciones de la licitación, sección 1), LafroX presenta en el Formulario T-6 el detalle de tres proyectos finalizados en los últimos cinco años y en operación continua, los cuales demuestran experiencia en complejidad técnica y volumétrica equivalente a la del caso:
+El plan precedente formaliza la renovación de las cuatro certificaciones institucionales de LafroX SpA, distinguiendo con precisión el alcance corporativo de la empresa respecto a las certificaciones profesionales e individuales del personal clave nominado en la sección 1.5. El contrato con Distribuidora Puelche S.A. inicia formalmente en febrero de 2027 (mes 1, conforme al canon C3). En dicho marco, la reevaluación Benchmark de CMMI-DEV Nivel 3 y la auditoría de renovación de ISO/IEC 27001:2022 se encuentran calendarizadas para su sustanciación ante sus respectivos organismos emisores (CMMI Institute y AENOR) con anterioridad al inicio contractual, comprometiendo la entrega de la evidencia formal (informe oficial \textit{Appraisal Disclosure Statement} y certificado renovado o expediente de auditoría externa) ante la Contraparte Técnica en la entrega de la línea base del Hito 1 (febrero de 2027). Para ISO/IEC 20000-1:2018 (vigente hasta mayo de 2027, mes 4 del contrato) y para ISO 9001:2015 (vigente hasta noviembre de 2028, mes 22 del contrato), las auditorías de recertificación ante SGS y Bureau Veritas se ejecutarán con al menos 60 días de antelación a su vencimiento, acreditando el nuevo certificado ante la Contraparte Técnica con anterioridad a su fecha de expiración. En caso de demoras administrativas de los entes certificadores, operan las contingencias contractuales previstas: para CMMI-DEV, el gobierno técnico opera bajo los procesos certificados de ISO 9001 sin invocar CMMI nivel 3 como garantía hasta su formal ratificación; para ISO/IEC 27001 e ISO/IEC 20000-1, se activa el régimen supletorio de plan de certificación por hitos dentro de los primeros 12 meses admitido expresamente por las Bases Técnicas Transversales (sección 15.2, pp. 27--28) y las Bases Administrativas (Art. 34, p. 22), garantizando que todos los controles de seguridad y procesos de mesa operen de forma ininterrumpida desde el primer día de servicio.
+
+En concordancia con el artículo 34 de las Bases Administrativas (Bases Administrativas, Art. 34, p. 22) y con las reglas de entrega de formularios (Aclaraciones de la licitación, sección 1, p. 1), LafroX presenta en el Formulario T-6 el detalle de tres proyectos finalizados en los últimos cinco años y en operación continua, los cuales demuestran experiencia en complejidad técnica y volumétrica equivalente a la del caso:
 \begin{enumerate}
     \item \textbf{Sistema Híbrido de Reparto y Gestión Logística (LogiNacional S.A.):} Ejecutado entre 2021 y 2022, integró un núcleo logístico modular, ERP y facturación electrónica sobre nube pública y servidores de borde en 14 centros de distribución. Soporta 420 camiones y 22.000 entregas diarias bajo SLA contractual de 99,5\%.
     \item \textbf{Plataforma de Telemetría y Cadena de Frío IoT (FarmaRed S.A.):} Ejecutada entre 2022 y 2023, monitorea cámaras a $-22\,^{\circ}\mathrm{C}$ y una flota refrigerada; procesa más de 12 millones de mediciones mensuales bajo SLA de 99,9\%.
@@ -239,26 +243,17 @@ En concordancia con el artículo 34 de las Bases Administrativas y con las regla
 
 La Tabla~\ref{tab:equivalencia} compara la flota, los sitios, la preventa y la temperatura de trabajo de las referencias con Puelche. Los valores operacionales del caso proceden de sus secciones 2.2 a 2.4 (Bases Técnicas del caso, pp. 4–5). La disponibilidad se incluye para distinguir los SLA históricos de la exigencia de infraestructura de las Bases Técnicas Transversales (Bases Técnicas Transversales, sección 6.1, p. 14, y sección 7.2, pp. 17–18).
 
-\begin{table}[H]
-\centering
-\caption[Equivalencia entre el caso y los proyectos del Formulario T-6.]{Equivalencia entre el caso y los proyectos del Formulario T-6. Fuente: (Bases Técnicas Transversales, secciones 6.1 y 7.2, pp. 14, 17--18; Bases Técnicas del caso, secciones 2.2--2.4, pp. 4--5) y del Formulario T-6.}
-\label{tab:equivalencia}
-\small
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{3.6cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{2.4cm} >{\raggedright\arraybackslash}X}
-\toprule
-\textbf{Dimensión de Puelche} & \textbf{Valor del caso} & \textbf{Proyecto de referencia} & \textbf{Valor del proyecto} \\
-\midrule
-Flota & 96 camiones, 28 con frío & 1 y 2 & 420 camiones; 180 vehículos refrigerados \\
-Entregas diarias & $\approx$ 1.400; $\approx$ 2.600 en peak & 1 & 22.000 \\
-Instalaciones con borde & 5 o 6 & 1 & 14 centros de distribución \\
-Preventistas desconectados & 62 & 3 & 280 \\
-Congelado & $-22\,^{\circ}\mathrm{C}$ & 2 & $-22\,^{\circ}\mathrm{C}$ \\
-Disponibilidad & 99,95\,\% de infraestructura & 1 y 2 & 99,5\,\% y 99,9\,\% \\
-\bottomrule
-\end{tabularx}
-\end{table}
+\begin{tablalafrox}{Equivalencia entre el caso y los proyectos del Formulario T-6. Fuente: (Bases Técnicas Transversales, secciones 6.1 y 7.2, pp. 14, 17--18; Bases Técnicas del caso, secciones 2.2--2.4, pp. 4--5) y del Formulario T-6.}{tab:equivalencia}{L{3.6cm} Y L{2.4cm} Y}
+  {\cab{Dimensión de Puelche} & \cab{Valor del caso} & \cab{Proyecto de referencia} & \cab{Valor del proyecto}}
+  Flota & 96 camiones, 28 con frío & 1 y 2 & 420 camiones; 180 vehículos refrigerados \\
+  Entregas diarias & $\approx$ 1.400; $\approx$ 2.600 en peak & 1 & 22.000 \\
+  Instalaciones con borde & 5 o 6 & 1 & 14 centros de distribución \\
+  Preventistas desconectados & 62 & 3 & 280 \\
+  Congelado & $-22\,^{\circ}\mathrm{C}$ & 2 & $-22\,^{\circ}\mathrm{C}$ \\
+  Disponibilidad & 99,95\,\% de infraestructura & 1 y 2 & 99,5\,\% y 99,9\,\% \\
+\end{tablalafrox}
 
-Las referencias aportan experiencia en operaciones de mayor escala: el Proyecto 1 combina 14 centros de distribución y 420 camiones; el Proyecto 2 trabaja con cadena de frío; y el Proyecto 3 cubre la preventa sin señal. Este último no es híbrido según el Artículo 16°, por lo que su aporte es la operación móvil desconectada, no la infraestructura local.
+Las referencias aportan experiencia en operaciones de mayor escala: el Proyecto 1 combina 14 centros de distribución y 420 camiones; el Proyecto 2 trabaja con cadena de frío; y el Proyecto 3 cubre la preventa sin señal. Este último no es híbrido según el Artículo 16° (Bases Administrativas, Art. 16, p. 11), por lo que su aporte es la operación móvil desconectada, no la infraestructura local.
 
 Los SLA de 99,5\% y 99,9\% del T-6 corresponden a servicios de esos proyectos; el 99,95\% de Puelche corresponde a infraestructura. No son mediciones equivalentes ni una prueba de cumplimiento del nuevo contrato. La propuesta debe responder a esa exigencia mediante su diseño y sus pruebas de aceptación.
 
@@ -298,30 +293,23 @@ El proyecto será liderado de forma exclusiva y continua por el Jefe de Proyecto
 
 La Tabla~\ref{tab:roles_minimos} resume la asignación y el período de participación de los diez roles del numeral 19.2 (Bases Técnicas Transversales, cap. 19, pp. 33--34). Las funciones se explican en el texto anterior; aquí se comparan responsables y dedicaciones, sin repetir su descripción.
 
-\begin{table}[H]
-\centering
-\caption[Asignación y dedicación de los roles del proyecto.]{Asignación y dedicación de los roles del proyecto. Fuente: (Bases Técnicas Transversales, numeral 19.2, pp. 33--34).}
-\label{tab:roles_minimos}
-\small
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{4.1cm} >{\raggedright\arraybackslash}p{3.2cm} >{\raggedright\arraybackslash}X}
-\toprule
-\textbf{Rol} & \textbf{Responsable} & \textbf{Dedicación asignada} \\
-\midrule
-Jefe de Proyecto & Alex Aravena & 100\% meses 1--21; dirección en Operación \\
-Arquitecto de Solución & Bastián Trejo & 100\% meses 1--21; Comité hasta mes 56 \\
-Líder de Integración & Bastián Trejo & Incluido en el 100\% de meses 1--21 \\
-Encargado de Seguridad & Álvaro Catalán & Meses 1--56 \\
-Líder de Datos & Leandro Chamorro & Meses 1--21 \\
-Líder de Desarrollo & Tomás Pérez & 100\% meses 1--21 \\
-Líder Funcional & Patricio Henríquez & 100\% meses 1--21 \\
-Líder de Calidad y Pruebas & Maximiliano Miño & Meses 1--56 \\
-Líder de Operación / SRE & Guillermo Castillo & Meses 1--56; 100\% en Operación (21--56) \\
-Líder de Implantación & Patricio Henríquez & Incluido en el 100\% de meses 1--21 \\
-\bottomrule
-\end{tabularx}
-\end{table}
+\begin{tablalafrox}{Asignación y dedicación de los roles del proyecto. Fuente: (Bases Técnicas Transversales, numeral 19.2, pp. 33--34).}{tab:roles_minimos}{L{4.1cm} L{3.2cm} Y}
+  {\cab{Rol} & \cab{Responsable} & \cab{Dedicación asignada}}
+  Jefe de Proyecto & Alex Aravena & 100\% meses 1--21; dirección en Operación \\
+  Arquitecto de Solución & Bastián Trejo & 100\% meses 1--21; Comité hasta mes 56 \\
+  Líder de Integración & Bastián Trejo & Incluido en el 100\% de meses 1--21 \\
+  Encargado de Seguridad & Álvaro Catalán & Meses 1--56 \\
+  Líder de Datos & Leandro Chamorro & Meses 1--21 \\
+  Líder de Desarrollo & Tomás Pérez & 100\% meses 1--21 \\
+  Líder Funcional & Patricio Henríquez & 100\% meses 1--21 \\
+  Líder de Calidad y Pruebas & Maximiliano Miño & Meses 1--56 \\
+  Líder de Operación / SRE & Guillermo Castillo & Meses 1--56; 100\% en Operación (21--56) \\
+  Líder de Implantación & Patricio Henríquez & Incluido en el 100\% de meses 1--21 \\
+\end{tablalafrox}
 
 Los diez roles se distribuyen entre ocho personas: Trejo asume Arquitectura e Integración y Henríquez, el frente Funcional y la Implantación. Esa acumulación no suma dos dedicaciones de 100\% para una misma persona. Trejo dirige el equipo de interfaces con ERP y terceros; Henríquez coordina el levantamiento, las reglas de negocio, los prototipos y las pruebas de aceptación con analistas funcionales y el equipo de implantación. Los recursos de apoyo se programan en el T-15, sección 5.7 del Subdocumento 7.
+
+La dotación técnica corporativa de la Tabla~\ref{tab:dotacion} se conecta directamente con el dimensionamiento del personal asignado al proyecto en el Formulario T-15 (Subdocumento 7). La demanda de personal técnico alcanza un máximo de 31 equivalentes a jornada completa (FTE) mensuales en los meses 6 y 7, con un límite superior en períodos punta de hasta 40 desarrolladores simultáneos en fábrica. Dicha carga se absorbe íntegramente dentro de los 48 desarrolladores permanentes de LafroX en Sede Central (dejando 8 desarrolladores en reserva corporativa o asignados a otros servicios). Asimismo, el Centro de Operaciones de Seguridad (SOC) propio e in-house en Valparaíso (canon C6) se implementa, dota y entra en régimen operacional pleno antes del mes 13, de acuerdo con la programación temporal y perfiles de atención fijados en el Formulario T-15.
 
 La participación de Operación desde el mes 1 cubre el mínimo de incorporación desde el mes 6; Implantación participa desde el mes 1 y cubre el mínimo del mes 8. Si la carga de las marchas blancas lo requiere, se nomina un Líder de Implantación separado sin reducir la dedicación del Líder Funcional. La experiencia y las cartas de compromiso se acreditan conforme a las Bases. Durante los meses 1--4, Desarrollo trabaja en diseño y prototipos, antes de la construcción.
 
@@ -331,19 +319,21 @@ LafroX mantendrá vigentes las certificaciones del equipo asignado durante todo 
 
 \section{Alianzas}
 
-Las alianzas corporativas cubren nube, equipos de terreno y comunicaciones. Su relación con el modelo híbrido exigido por el Artículo 16° se explica a continuación. Las alianzas que vencen durante el contrato se renuevan antes de su término y su vigencia se presenta a la Contraparte Técnica:
+Las alianzas corporativas cubren nube, equipos de terreno y comunicaciones. Su relación con el modelo híbrido exigido por el Artículo 16° (Bases Administrativas, Art. 16, p. 11) se explica a continuación. Las cuatro alianzas tecnológicas vigentes presentan los siguientes vencimientos y programas de continuidad:
 \begin{itemize}
-    \item \textbf{Amazon Web Services (AWS Partner Network -- Advanced Tier Services):} LafroX es socio tecnológico nivel Advanced, con competencias certificadas en DevOps y Migración. El vínculo contempla soporte empresarial, pruebas de concepto y revisiones arquitectónicas bajo Well-Architected, según las condiciones del programa y del servicio contratado. Vigente hasta marzo de 2027.
-    \item \textbf{Zebra Technologies (Premier Solution Partner):} Alianza formal para el suministro, soporte de fábrica y mantenimiento de terminales móviles industriales, lectores de códigos de barra e impresoras térmicas portátiles con certificación de operación en ambientes hostiles y cámaras de congelación a $-25\,^{\circ}\mathrm{C}$. Vigente hasta junio de 2027.
-    \item \textbf{Fortinet / Cisco (Select Partner):} Alianza para el aprovisionamiento de equipamiento de conectividad de borde, switches industriales y firewalls de red SD-WAN requeridos para enlazar de manera segura los centros de distribución y salas técnicas on-premise. Vigente hasta septiembre de 2027.
-    \item \textbf{Starlink Business (Authorized Enterprise Reseller):} Convenio para la provisión e integración de terminales satelitales de baja órbita con prioridad de tráfico corporativo, como medio alternativo de comunicación ante caídas de enlace en centros de distribución, cross-dockings y almacenes remotos. Vigente hasta diciembre de 2027.
+    \item \textbf{Amazon Web Services (AWS Partner Network -- Advanced Tier Services):} LafroX es socio tecnológico nivel Advanced, con competencias certificadas en DevOps y Migración. El vínculo contempla soporte empresarial, pruebas de concepto y revisiones arquitectónicas bajo Well-Architected, según las condiciones del programa y del servicio contratado. Vigente hasta marzo de 2027 (mes 2 del contrato).
+    \item \textbf{Zebra Technologies (Premier Solution Partner):} Alianza formal para el suministro, soporte de fábrica y mantenimiento de terminales móviles industriales, lectores de códigos de barra e impresoras térmicas portátiles con certificación de operación en ambientes hostiles y cámaras de congelación a $-25\,^{\circ}\mathrm{C}$. Vigente hasta junio de 2027 (mes 5 del contrato).
+    \item \textbf{Fortinet / Cisco (Select Partner):} Alianza para el aprovisionamiento de equipamiento de conectividad de borde, switches industriales y firewalls de red SD-WAN requeridos para enlazar de manera segura los centros de distribución y salas técnicas on-premise. Vigente hasta septiembre de 2027 (mes 8 del contrato).
+    \item \textbf{Starlink Business (Authorized Enterprise Reseller):} Convenio para la provisión e integración de terminales satelitales de baja órbita con prioridad de tráfico corporativo, como medio alternativo de comunicación ante caídas de enlace en centros de distribución, cross-dockings y almacenes remotos. Vigente hasta diciembre de 2027 (mes 11 del contrato).
 \end{itemize}
+
+El proceso de renovación anual de cada alianza tecnológica es gestionado internamente por el Líder de Operación / SRE en coordinación con el Arquitecto de Solución, iniciándose formalmente con al menos 60 días de anticipación a la fecha de término respectiva. La evidencia documental exigida (certificado de membresía de canal actualizado o carta de ratificación formal emitida por el fabricante) se remitirá a la Contraparte Técnica con anterioridad a su vencimiento. En caso de demoras en la emisión administrativa de la renovación por parte de las marcas, la continuidad operacional queda plenamente asegurada: los contratos vigentes de soporte empresarial directo con cada fabricante y el personal técnico certificado de LafroX (Líder de Desarrollo, Líder de Operación / SRE y Arquitecto de Solución, acreditados en la sección 1.5) garantizan la vigencia de garantías de hardware y software, el aprovisionamiento de partes y piezas, el acceso a soporte de ingeniería nivel 3 y los acuerdos de nivel de servicio sin interrupción alguna.
 
 Estas alianzas cubren funciones distintas: AWS aporta servicios de nube; Zebra, equipos de captura; Fortinet/Cisco, redes de borde; y Starlink, un enlace alternativo. Ninguna sustituye la verificación de los equipos ni las pruebas de continuidad. Las especificaciones de los implementos se detallan en el Formulario T-11 del Subdocumento 4; la participación de socios en este proyecto corresponde a 12.3.
 \section*{Referencias}
 \addcontentsline{toc}{section}{Referencias}
 
-Las fuentes citadas en este documento se listan a continuación en formato APA 7.ª edición.
+Las fuentes citadas en este documento se listan a continuación en formato APA 7.ª edición. Los pliegos de la licitación se citan en el texto por sus títulos abreviados (\textit{Bases Administrativas}, \textit{Bases Técnicas Transversales}, \textit{Bases Técnicas del caso} y \textit{Aclaraciones de la licitación}), correspondientes a Distribuidora Puelche S.A. (2026a--d).
 
 {\setlength{\parindent}{0pt}
 \hangindent=1.27cm\hangafter=1 AENOR. (2023). \textit{Certificado de Sistema de Gestión de Seguridad de la Información ISO/IEC 27001:2022 N° SI-0312/2023}. AENOR Internacional.\par\medskip
@@ -351,7 +341,7 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 \hangindent=1.27cm\hangafter=1 CMMI Institute. (2023). \textit{CMMI for Development, Version 2.0: Maturity Level 3 Benchmark Appraisal Report N° 58190}. CMMI Institute.\par\medskip
 \hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026a). \textit{Bases Administrativas de Licitación N° TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación}.\par\medskip
 \hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026b). \textit{Bases Técnicas Transversales de Licitación N° TFEP-01/2026}.\par\medskip
-\hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026c). \textit{Caso: Logística -- Especificaciones del Problema y Operación de Distribuidora Puelche S.A.}\par\medskip
+\hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026c). \textit{Bases Técnicas -- Logística: trazabilidad, promesa de entrega y costo de servir en una distribuidora de consumo masivo}.\par\medskip
 \hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026d). \textit{Aclaraciones de la Licitación N° TFEP-01/2026}.\par\medskip
 \hangindent=1.27cm\hangafter=1 SGS. (2024). \textit{Certificado de Sistema de Gestión de Servicios de TI ISO/IEC 20000-1:2018 N° CL21/8190}. SGS United Kingdom Ltd.\par\medskip
 }
@@ -359,25 +349,17 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 \section*{Declaración de uso de IA}
 \addcontentsline{toc}{section}{Declaración de uso de IA}
 
-La Tabla~\ref{tab:declaracion_ia} identifica las herramientas y el alcance de la asistencia utilizada, conforme a la sección 7.2 de las Aclaraciones (Aclaraciones de la licitación). La declaración se consolida en el Formulario A-6.
+La Tabla~\ref{tab:declaracion_ia} identifica las herramientas y el alcance de la asistencia utilizada, conforme a la sección 7.2 de las Aclaraciones (Aclaraciones de la licitación, sección 7.2, pp. 4--5). La declaración se consolida en el Formulario A-6.
 
-\begin{table}[H]
-\centering
-\caption[Uso de IA por sección y formulario.]{Uso de IA por sección y formulario. Fuente: registro del equipo.}
-\label{tab:declaracion_ia}
-\fontsize{9.5pt}{12pt}\selectfont
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{1.4cm} >{\raggedright\arraybackslash}p{1.95cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{1.15cm} >{\raggedright\arraybackslash}p{1.65cm} >{\raggedright\arraybackslash}p{3.0cm}}
-\toprule
-\textbf{Sección} & \textbf{Herramienta} & \textbf{Finalidad del uso} & \textbf{Nivel en texto} & \textbf{\makecell[l]{Nivel en\\diagramas}} & \textbf{Revisión humana (quién y qué verificó)} \\
-\midrule
-1.1 & Claude / Gemini; OpenAI Codex & Trayectoria, inventario y puestos corporativos de atención & Alto & Ninguno & Alex Aravena: Se verificó el planteamiento y la visión de la empresa, junto con los productos y servicios ofrecidos. \\
-1.2 & Claude / Gemini; OpenAI Codex & Organigrama, antigüedad, turnos y respaldos del NOC & Alto & Alto & Alex Aravena: Se verificó el organigrama y sus áreas, además del equipo y la antigüedad. \\
-1.3 & Claude / Gemini; OpenAI Codex & Redacción de gobierno y responsabilidades & Alto & Ninguno & Alex Aravena: Se validaron los modelos de gobierno planteados. \\
-1.4 & Claude / Gemini; OpenAI Codex & Comparación de experiencia y SLA & Alto & Ninguno & Alex Aravena: Se validaron la experiencia y los proyectos realizados. \\
-1.5 & Claude / Gemini; Claude Code; OpenAI Codex & Síntesis de roles y dedicaciones & Alto & Ninguno & Alex Aravena: Se validaron la estructura del proyecto y su jerarquía. \\
-1.6 & Claude / Gemini; OpenAI Codex & Redacción de alcance de alianzas & Alto & Ninguno & Alex Aravena: Se validaron las alianzas establecidas. \\
+\begin{tablalafrox}{Uso de IA por sección y formulario. Fuente: registro del equipo.}{tab:declaracion_ia}{L{1.3cm} L{2.0cm} Y L{1.2cm} L{1.6cm} L{3.2cm}}
+  {\cab{Sección} & \cab{Herramienta} & \cab{Finalidad del uso} & \cab{Nivel en texto} & \cab{Nivel en diagramas} & \cab{Revisión humana (quién y qué verificó)}}
+  1.1 & Claude / Gemini; OpenAI Codex & Trayectoria, inventario y puestos corporativos de atención & Alto & Ninguno & Alex Aravena: Se verificó el planteamiento y la visión de la empresa, junto con los productos y servicios ofrecidos. \\
+  1.2 & Claude / Gemini; OpenAI Codex & Organigrama, antigüedad, turnos y respaldos del NOC & Alto & Alto & Alex Aravena: Se verificó el organigrama y sus áreas, además del equipo y la antigüedad. \\
+  1.3 & Claude / Gemini; OpenAI Codex & Redacción de gobierno y responsabilidades & Alto & Ninguno & Alex Aravena: Se validaron los modelos de gobierno planteados. \\
+  1.4 & Claude / Gemini; OpenAI Codex & Comparación de experiencia y SLA & Alto & Ninguno & Alex Aravena: Se validaron la experiencia y los proyectos realizados. \\
+  1.5 & Claude / Gemini; Claude Code; OpenAI Codex & Síntesis de roles y dedicaciones & Alto & Ninguno & Alex Aravena: Se validaron la estructura del proyecto y su jerarquía. \\
+  1.6 & Claude / Gemini; OpenAI Codex & Redacción de alcance de alianzas & Alto & Ninguno & Alex Aravena: Se validaron las alianzas establecidas. \\
+  T-6 & Claude / Gemini; OpenAI Codex & Formato, introducción y referencias & Alto & Ninguno & Alex Aravena: Se verificaron los once campos de los tres proyectos y su coherencia con la sección 1.4. \\
+\end{tablalafrox}
 
-T-6 & Claude / Gemini; OpenAI Codex & Formato, introducción y referencias & Alto & Ninguno & Alex Aravena: Se verificaron los once campos de los tres proyectos y su coherencia con la sección 1.4. \\
-\bottomrule
-\end{tabularx}
-\end{table}
+Tal como sintetiza la Tabla~\ref{tab:declaracion_ia}, el uso de herramientas de asistencia basada en inteligencia artificial se circunscribió a un nivel alto en la redacción y síntesis de texto a lo largo de las distintas secciones del subdocumento y del Formulario T-6, y a un nivel alto en diagramas exclusivamente en la sección 1.2 para el apoyo en la estructuración gráfica del organigrama corporativo (y «Ninguno» en las demás secciones y en el Formulario T-6). En todos los casos, los planteamientos conceptuales, las cifras de dotación y equipamiento, y las formulaciones estratégicas fueron objeto de revisión humana integral, comprobación documental y validación experta por parte del responsable del equipo.
