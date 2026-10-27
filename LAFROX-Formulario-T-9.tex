@@ -21,6 +21,8 @@
 
 \renewcommand{\thetable}{T-9.\arabic{table}}
 \renewcommand{\thefigure}{T-9.\arabic{figure}}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
 
 
 \chapter{Gestión de proyecto}
@@ -45,7 +47,7 @@ La gestión de interesados identifica a las personas, grupos y organizaciones qu
 
 El jefe de proyecto mantiene actualizado el registro de interesados (paquete 1.4.1) y planifica su involucramiento de acuerdo con el alcance de cada entrega. La participación puede incluir levantamiento de necesidades, revisión de procesos, validación de criterios, pruebas y retroalimentación. Las inquietudes, resistencias, acuerdos y compromisos relevantes se registran con su responsable y seguimiento; los conflictos que no puedan resolverse en la instancia de trabajo se elevan a la autoridad correspondiente.
 
-La tabla de interesados se encuentra en los anexos del subdocumento 6. Siendo la tabla 6.A.1
+El registro de interesados se presenta en el Subdocumento 6, Anexo 6.A, Tabla 6.A.1.
 
 La tabla resume los principales grupos y roles identificados, sus intereses y la contribución esperada. La participación concreta se acuerda según las responsabilidades de cada interesado y las actividades de cada entrega; la inclusión en la tabla no implica que todos participen en todas las decisiones ni que tengan atribuciones de aprobación.
 
@@ -63,9 +65,14 @@ Antes de cada entrega incremental se informa a los interesados pertinentes sobre
 
 La gestión de adquisiciones planifica, contrata y controla los bienes y servicios que requiere la solución: contratos, órdenes de compra, acuerdos con terceros y acuerdos de nivel de servicio. Cada adquisición tiene un responsable, una fecha de necesidad derivada del cronograma, una dependencia con los paquetes que la usan y una evidencia de recepción.
 
-El CLIENTE compra el equipamiento de terreno conforme a la especificación de cantidades y características que prepara LafroX (Caso 02, capítulo 11; SD3 E-09; paquete 5.1.1). Para el equipamiento de la sala técnica, incluidos racks, servidores y equipos de borde (paquete 5.1.2), T-14 asigna a LafroX la orden de compra en el mes 2 y la instalación en el mes 3. La recepción técnica de los equipos se acredita con su evidencia de recepción; su fecha no se confunde con la recepción de la sala, que T-15 ubica en el mes 4. El commissioning o puesta en servicio no tiene aquí una fecha afirmada. La asignación de la compra no traslada al CLIENTE la habilitación e instalación: LafroX habilita el recinto técnico en el espacio que proporciona el CLIENTE e instala y configura los equipos (fase 6 de la EDT). LafroX contrata los servicios que le corresponden. Las licencias de terceros se constituyen a nombre del CLIENTE (5.2.3).
+El CLIENTE compra el equipamiento de terreno conforme a la especificación de cantidades y características que prepara LafroX (Caso 02, capítulo 11; SD3 E-09; paquete 5.1.1). Para el equipamiento de la sala técnica, incluidos racks, servidores y equipos de borde (paquete 5.1.2), T-14 asigna a LafroX la orden de compra en el mes 2 y la instalación en el mes 3. La recepción técnica de los equipos se acredita con su evidencia de recepción; su fecha no se confunde con la recepción de la sala, que T-15 ubica en el mes 4. El commissioning o puesta en servicio no tiene aquí una fecha afirmada. La asignación de la compra no traslada al CLIENTE la habilitación e instalación: La obra civil de separación del recinto es de cargo del CLIENTE; LafroX la especifica y coordina, provee el piso técnico e instala y configura los equipos (RT-06.06; Formulario T-14, paquete 6.1.1). La instalación se programa en el mes 3 y la recepción de la sala en el mes 4; la recepción técnica de equipos se acredita por separado. LafroX contrata los servicios que le corresponden. Las licencias de terceros se constituyen a nombre del CLIENTE (5.2.3).
 
-La tabla de adquisiciones se encuentra en los anexos del subdocumento 6. Siendo la tabla 6.A.2
+El registro de adquisiciones se presenta en el Subdocumento 6, Anexo 6.B, Tabla 6.B.1.
+
+
+El refuerzo de certificación se obtiene mediante subcontratación de evaluadores bajo la dirección del Líder de Calidad: hasta 16 evaluadores externos por día, adicionales a la plantilla corporativa y sin presumir que sus diez especialistas estén íntegramente asignados a este contrato. Se prevé en las campañas de los meses 9 a 12 y 16 a 18; no se contrata ni imputa automáticamente cada día de esos meses. El Jefe de Proyecto confirma proveedor, competencias, confidencialidad, disponibilidad nominal y orden de contratación antes de cada sesión. Este refuerzo no sustituye al SOC propio.
+
+Para estimar capacidad se usa una jornada nominal de planificación de 8 horas por persona y día, con disponibilidad programable del 80\%: 6,4 HH netas por evaluador y día, hasta 102,4 HH netas con 16 evaluadores. Es una hipótesis de dimensionamiento, no una jornada laboral contractual ni evidencia de contratación. CAL registra los días efectivos de sesión, personas y horas asignadas; descuenta ausencias, coordinación, soporte y otras campañas sin volver a descontar el mismo concepto. El frente de cronograma verifica con ese registro la capacidad diaria y los paquetes del T-15, sin sumar el techo externo a la plantilla corporativa ni a la reserva como si fueran capacidad adicional ya acreditada. Una sesión no se autoriza mientras sus personas y horas netas no cubran el esfuerzo requerido.
 
 Cada fila tiene en el registro de adquisiciones su estado, su proveedor y su fecha comprometida. Un atraso que amenace el H3 o una ola se escala al Comité Ejecutivo con su análisis de impacto.
 
@@ -100,5 +107,8 @@ Los comités del Art. 71° de las Bases Administrativas se organizan así:
 
 El Comité de Operación empieza con la primera marcha blanca, porque desde entonces la solución atiende operaciones reales. Revisa cada mes la disponibilidad de los servicios críticos, los incidentes críticos y altos y sus causas, la atención de la mesa (respuesta antes de 20 segundos, abandono y resolución al primer contacto), las pruebas de restauración y de continuidad y los cambios programados. Sus actas registran acuerdos, responsables y plazos (RT-19.09).
 
+
+
+El Comité de Calidad y Procesos es una instancia interna de LafroX, descrita en el Subdocumento 1, secciones 1.2 y 1.3.1, y no un comité adicional atribuido al Art. 71. Lo preside el Jefe de Aseguramiento de Calidad con los líderes de proyecto; revisa mensualmente procedimientos, defectos y acciones correctivas. El Líder de Calidad aplica los controles bloqueantes de promoción; los desacuerdos se revisan internamente y se escalan a la Gerencia General de LafroX. Ninguna instancia interna puede dispensar un umbral contractual ni sustituir el acta de aceptación del CLIENTE; los cambios de compromisos siguen el control de cambios.
 
 \end{document}
