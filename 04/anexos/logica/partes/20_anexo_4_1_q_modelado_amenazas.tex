@@ -20,7 +20,7 @@ M10 & I: exponer crédito por tablero. & Modelo autorizado, filtros y auditoría
 M11 & T/\allowbreak D: EDI repetido o inválido. & Firma, equivalencia y UUID, repetición/\allowbreak rechazo sin crear pedido. & Canal moderno \\
 M12 & I: uso de GPS fuera de finalidad. & Rol, ruta, retención y consulta auditada, usuario sin asignación. & Flota/\allowbreak Seguridad \\
 \end{tablalafrox}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de la especificación de LafroX sobre límites de M1--M12 y RT-11.02. Diseño propuesto: LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-20-anexo-4-1-q-modelado-amenazas}--\pageref*{fuente-20-anexo-4-1-q-modelado-amenazas-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de la especificación de LafroX sobre límites de M1--M12 y RT-11.02. Diseño propuesto: (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-20-anexo-4-1-q-modelado-amenazas}--\pageref*{fuente-20-anexo-4-1-q-modelado-amenazas-fin}).\par}
 
 \begin{tablalafrox}{Amenazas en fronteras y terceros}{tab:amenazas-fronteras}{F{0.22} F{0.24} Y}{\cab{Elemento} & \cab{Amenaza} & \cab{Control y evidencia de aceptación}}
 INT-06/\allowbreak 07, ACL y ERP & T/\allowbreak R: documento duplicado o incierto. & Clave por carga, consulta antes de reintento y estado explícito, AL-DTE-01. \\
@@ -39,7 +39,7 @@ SEC-SECRETS/\allowbreak AUDIT/\allowbreak SIEM & I/\allowbreak R: clave expuesta
 OBS-COLLECT/\allowbreak LOCAL/\allowbreak CENT & D/\allowbreak R: buffer lleno o traza faltante. & Cuota, alarma y prioridad de auditoría, corte con saturación. \\
 DEV-PIPE/\allowbreak IAC/\allowbreak MDM/\allowbreak UI-WEB/\allowbreak BOR-B2B & S/\allowbreak E: artefacto o acceso de gestión ajeno. & Firma, SBOM, aprobación y MFA, imagen sin procedencia y rol excesivo. \\
 \end{tablalafrox}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de catálogo INT-01--15, inventario del Anexo 4-N y RT-11.02. Seguridad mantiene el registro. Cada dueño ejecuta su escenario con Calidad. Diseño propuesto: LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-20-anexo-4-1-q-modelado-amenazas}--\pageref*{fuente-20-anexo-4-1-q-modelado-amenazas-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de catálogo INT-01--15, inventario del Anexo 4-N y RT-11.02. Seguridad mantiene el registro. Cada dueño ejecuta su escenario con Calidad. Diseño propuesto: (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-20-anexo-4-1-q-modelado-amenazas}--\pageref*{fuente-20-anexo-4-1-q-modelado-amenazas-fin}).\par}
 
 Las integraciones internas heredan los controles de productor y consumidor: INT-01/\allowbreak 02, identidad y UUID; INT-03/\allowbreak 04, sitio y secuencia; INT-05, sensor y frescura; INT-12, cuenta CDC de lectura; INT-13, manifiesto firmado; INT-14, integridad y capacidad del buffer. Toda excepción conserva escenario, consecuencia, responsable, tratamiento y criterio de cierre.
 
@@ -53,6 +53,6 @@ Orden repetida o de estado anterior & Firma, incidente, SSCC, versión, revisió
 Mensaje satelital falso & Validar emisor, contrato y autenticidad antes de M9; inyectar mensajes y duplicados (V11, V13). & Integración \\
 Manipulación de registradores & Conservar original, verificar integridad y firmar hash; conciliación de tres series, CRC solo no autentica (V3, V11). & Calidad / Datos \\
 \end{tablalafrox}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de RT-11.02 (Bases Técnicas Transversales, cap.~11, p.~23), ADR-24 (Anexo 4-O) y las pruebas V1--V21 (Anexo 4-W). Diseño propuesto: LafroX (2026e, Anexo 4-Q).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de RT-11.02 (Bases Técnicas Transversales, cap.~11, p.~23), ADR-24 (Anexo 4-O) y las pruebas V1--V21 (Anexo 4-W). Diseño propuesto: (Subdocumento 4, Anexo 4-Q).\par}
 
 \label{fuente-20-anexo-4-1-q-modelado-amenazas-fin}

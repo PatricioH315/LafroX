@@ -51,7 +51,7 @@ La Tabla~\ref{tab:conexiones} resume cada conexión con su medio, su camino alte
   Región primaria con la secundaria & Replicación nativa de Aurora, DynamoDB y S3 & Respaldo inmutable & Promoción autorizada \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-c-conexiones}--\pageref*{fuente-02-c-conexiones-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-02-c-conexiones}--\pageref*{fuente-02-c-conexiones-fin}).\par}
 
 Los cinco sitios tienen caminos alternativos hacia la nube. Los sitios mantienen las funciones locales de 4.1.15. Una nueva guía sigue dependiendo del ERP de Talca y de su comunicación tributaria. El terreno conserva la captura autorizada sin señal y los termógrafos mantienen su registro interno. Los portales requieren conexión, salvo el Portal de Clientes instalado, que conserva el catálogo descargado y el pedido armado hasta recuperar señal.
 
@@ -71,7 +71,7 @@ La Tabla~\ref{tab:superficie} delimita las únicas entradas desde redes externas
   Túneles de sitio & Sin nombre de dominio: dos direcciones IP públicas de AWS por túnel, registradas en los firewalls & VPN del Transit Gateway, IPsec UDP 500 y 4500 & Firewalls D-01 de los cinco sitios & Autenticación IKE y cifrado IPsec \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-c-conexiones}--\pageref*{fuente-02-c-conexiones-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-02-c-conexiones}--\pageref*{fuente-02-c-conexiones-fin}).\par}
 
 La tabla excluye toda otra entrada desde fuera de la red del CLIENTE. En recuperación ante desastres se mantienen los nombres de dominio y se redirigen las entradas cuyo servicio y dependencias hayan sido restituidos y validados en us-east-1. La promoción de Aurora no recupera por sí sola todos los canales: la cobertura por servicio se distingue en 4.3.2.5 y en el Formulario T-11. MDM, EDR, SII, Transbank, GIS, notificaciones y telemetría de flota son dependencias de salida, detalladas en el Formulario T-11. El canal AS2 entrega el MDN síncrono dentro del tiempo de espera de 60 s del origen de CloudFront, y los mensajes que no alcanzan ese plazo usan MDN asíncrono. Los envíos AS2 de LafroX a las cadenas salen por las IP fijas del NAT Gateway. Si una cadena exige direcciones de destino fijas, se habilitan las IP estáticas Anycast de CloudFront para esa distribución.
 

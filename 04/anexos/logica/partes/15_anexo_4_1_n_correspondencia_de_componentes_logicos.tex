@@ -34,7 +34,7 @@ La matriz completa vincula cada capacidad de 3.3–3.4 con su módulo o capa de 
  3.4.6, participación y adopción por perfil & Capa 1, matriz de actores y permisos, olas de 4.1.8 & C-01/C-02/C-03, portales y consolas, QA de práctica & Terreno, sitios y nube, participación no implica permiso de acceso \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
 
 \begin{tablalafrox}{Correspondencia de módulos y realización física}{tab:correspondencia-modulos}{F{0.10} F{0.27} F{0.19} Y}{\cab{Módulo} & \cab{Capacidad en 3.3/3.4} & \cab{Contrato} & \cab{Realización en 4.2.2}}
 M1 & Recepción & INT-03/06 & Perfil WMS local, base por sitio y ACL ERP. \\
@@ -50,14 +50,14 @@ M10 & Analítica & Eventos canónicos & Ingesta a lago y servicios de consulta a
 M11 & Canal moderno & INT-08 & Reglas Laravel, OpenAS2 y conector por cadena. \\
 M12 & Telemetría & INT-15 & Adaptador de solo lectura y consulta de ruta real. \\
 \end{tablalafrox}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
 
 La tabla verifica la correspondencia de los doce módulos con sus capacidades, contratos y realizaciones. La Tabla~\ref{tab:mapeo-logica} citada en 4.2.2 completa el enlace físico. Las capacidades transversales también se corresponden: presentación y borde con aplicaciones, CloudFront y acceso privado. Puerta de enlace con API central y puerta local, eventos con RabbitMQ, shipper y SQS. Datos con bases, réplica de lectura y objetos, identidad con Keycloak y verificador local, secretos y auditoría con sus servicios de custodia. Observabilidad con OpenTelemetry/ADOT, alarma local y CloudWatch. Notificaciones se traza a INT-11. El motor de optimización de M4 se integra mediante un contrato separado y se ejecuta en su propio contenedor.
 
 La correspondencia entre 3.3, 3.4, 4.1 y 4.2.2 se verifica en ambos sentidos mediante identificador, contrato, responsable y realización física.
 
 \subsection*{Incorporación de las innovaciones del SD13}
-Las cinco innovaciones del Subdocumento 13 (LafroX, 2026h) se realizan sobre los componentes existentes de la manera siguiente:
+Las cinco innovaciones del Subdocumento 13 se realizan sobre los componentes existentes de la manera siguiente:
 \begin{itemize}
 \item Seguimiento de vencimiento posentrega en el local: C-01 y M3 reciben la precarga nocturna de M10/N-10 y registran la respuesta de la visita. M2 y M9 aportan los datos de inventario y trazabilidad. Las capas 1, 4, 5 y 6 soportan el recorrido. El saldo estimado en el local no modifica el inventario oficial ni autoriza disposición sanitaria.
 \item Reproducción de incidentes de terreno: C-01/C-02/C-03 capturan el recorrido causal de M3/M6/M5 con límites de tamaño y frecuencia. OpenTelemetry y CloudWatch aportan la observación. Las capas 7 y 8 controlan acceso y trazas. Los recursos temporales se crean dentro de QA y Preproducción, no en un sexto ambiente, y se destruyen al finalizar, también ante error. Se excluyen nombres, credenciales, firmas, fotografías y contenido comercial. Al cerrar se elimina la captura y solo se conserva el escenario sintético de regresión. Operación recoge el caso, Calidad lo admite y Desarrollo corrige.
@@ -109,9 +109,9 @@ Los siguientes 37 identificadores complementan los doce módulos: el inventario 
  DEV-MDM  &  Gestión de terminales  &  seguridad  &  Enrolamiento  &  N-13 en nube y agentes en C-01/C-02/C-03. Política y borrado  \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
 \subsection*{Correspondencia de actores y permisos del sistema}
-La Tabla~\ref{tab:actores-permisos} realiza el catálogo de quince actores del apartado 3.4.2 del Subdocumento 3 (LafroX, 2026g). Cada acción se autoriza por separado sobre el ámbito indicado. Ni el cargo ni el acceso a una consola conceden todos los permisos de un módulo.
+La Tabla~\ref{tab:actores-permisos} realiza el catálogo de quince actores del apartado 3.4.2 del Subdocumento 3. Cada acción se autoriza por separado sobre el ámbito indicado. Ni el cargo ni el acceso a una consola conceden todos los permisos de un módulo.
 
 \begin{tablalafrox}{Actores del sistema, interfaces y permisos}{tab:actores-permisos}{F{0.17} F{0.22} F{0.24} F{0.24} Y}{\cab{Actor} & \cab{Interfaz y módulos} & \cab{Acciones} & \cab{Ámbito y límite} & \cab{Etapa}}
 Preventista & App de preventa, M3, lectura M2/M7 & Consultar stock y crédito, capturar y sincronizar pedidos & Su cartera, no reserva offline & 1 \\
@@ -130,7 +130,7 @@ Jefe de TI & Consola de administración & Identidad, configuración, integracion
 Gerente de Operaciones & Consola operacional, M2/M4/M5/M6 & Supervisar despacho y excepciones & Sitio, no omite guía ni Calidad & 1 \\
 Jefa de Bodega & Consola de bodega, M1/M2/M5/M8 & Recepción, inventario, FEFO, preparación y retornos & Sitio, ajustes justificados & 1 \\
 \end{tablalafrox}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir del apartado 3.4.2 y del Anexo 3.I del Subdocumento 3. Diseño propuesto: LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir del apartado 3.4.2 y del Anexo 3.I del Subdocumento 3. Diseño propuesto: (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
 
 Recepción, despacho, catálogo, abastecimiento y Tesorería son funciones de personas nominadas con permisos específicos en los perfiles del CLIENTE. Abastecimiento aprueba la sugerencia de reposición de M2 sin crear otro actor. AL-ACT-01 del Anexo 4-V prueba cada fila con una operación permitida y otra denegada.
 

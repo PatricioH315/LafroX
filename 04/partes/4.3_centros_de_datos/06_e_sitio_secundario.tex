@@ -25,7 +25,7 @@ La Tabla~\ref{tab:4-3-3} compara los dos destinos de recuperación con sus dista
   Nube sa-east-1, us-east-1 en contingencia regional & WMS de Talca & $\approx$ 2.700 km de Talca a sa-east-1 & No comparte sismicidad ni suministro eléctrico con Talca. \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-06-e-sitio-secundario}--\pageref*{fuente-06-e-sitio-secundario-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-06-e-sitio-secundario}--\pageref*{fuente-06-e-sitio-secundario-fin}).\par}
 
 Las distancias de la tabla separan los dominios de falla. La región secundaria se sitúa en Virginia del Norte, Estados Unidos, y la primaria en São Paulo, Brasil. Ambas implican transferencia internacional de datos personales desde Chile. AWS actúa como encargado del tratamiento por cuenta del CLIENTE, responsable de los datos, mediante un contrato de encargo que incorpora las cláusulas contractuales tipo aprobadas para la Ley N\textdegree{} 21.719 (Ley N\textdegree{} 21.719, 2024). Los datos se cifran en reposo con claves KMS administradas por el CLIENTE y en tránsito. Se registran las actividades de tratamiento y se controlan y auditan los accesos.
 
@@ -66,7 +66,7 @@ La Tabla~\ref{tab:4-3-5} fija los objetivos medidos en las pruebas de recuperaci
   Infraestructura por componente & Disponibilidad mensual & 99,95 \% \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-06-e-sitio-secundario}--\pageref*{fuente-06-e-sitio-secundario-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-06-e-sitio-secundario}--\pageref*{fuente-06-e-sitio-secundario-fin}).\par}
 
 El RPO de la tabla se sustenta en la extracción continua de datos críticos por tres dominios de falla distintos en los CD: fibra terrestre D-03, red celular D-04 y satélite D-06. En Talca y Concepción, Starlink permanece encendido como tercer camino en espera caliente, con el túnel IPsec establecido y BGP con menor preferencia. Toma el tráfico solo si fallan fibra y LTE. En esa situación, la calidad de servicio prioriza DMS y WAL de Talca, la salida del broker y el outbox, las guías hacia el ERP y el SII, la identidad y la telemetría crítica. El terminal encendido evita los minutos necesarios para adquirir satélites y negociar el túnel durante la falla, sin costo adicional por la tarifa plana. La caída simultánea de fibra y LTE, incluso ante un terremoto que afecte la infraestructura terrestre, permite mantener la réplica de Talca y la publicación de eventos dentro del RPO mediante Starlink. En los cross-docking, Starlink es el camino principal y LTE de Entel y Claro constituye el respaldo. La bodega conserva 24 h de operación local aunque cambie el camino WAN.
 
