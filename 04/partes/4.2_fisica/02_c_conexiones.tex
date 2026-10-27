@@ -22,7 +22,7 @@ Los dos dominios fijos, la nube y el on-premise, se conectan por túneles VPN IP
 
 El terminal satelital de los centros permanece encendido porque adquirir satélites y negociar el túnel durante una falla tardaría minutos, el plan de tarifa plana no agrega costo por mantenerlo encendido.
 
-Los terminales EC55 y TC58e acceden por red celular a CloudFront, cuyas rutas \texttt{/v1} y \texttt{/sync/v1} llegan a la API REST pública.
+Los terminales TC58e de preventa y de reparto acceden por red celular a CloudFront, cuyas rutas \texttt{/v1} y \texttt{/sync/v1} llegan a la API REST pública.
 
 Los flujos principales comprenden HTTPS de usuarios, IPsec de sitios, gateway de camión a IoT Core por móvil y a CloudConnect/SQS por Iridium SBD, Wi-Fi local entre gateway y TC58e y Bluetooth de los dos registradores al TC58e. El listado siguiente detalla medios y continuidad:
 
