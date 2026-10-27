@@ -63,7 +63,7 @@ Integridad de recepción considera exclusivamente líneas de productos que requi
 
 La analítica pesada se ejecuta en Redshift y S3 mediante Glue, separada de OLTP. Las consultas operativas puntuales usan API/proyecciones y las marcas de frescura; la CDC de Talca permanece en el esquema lector separado y no duplica el efecto de los eventos canónicos de negocio. El CLIENTE dispone de filtros, profundización y exportación autónoma del catálogo de 5-H.
 
-La exclusión de predicción de esta ampliación no comprende la estimación determinista de vida útil remanente descrita en la sección 13.3.2 del SD13 y sustentada en las series térmicas y la asociación sensor–lote de 5.1.7. Esta estimación emplea parámetros cinéticos documentados y no modelos aprendidos. INN-03 desarrolla su incorporación distribuida al proceso operacional (LafroX SpA., 2026d, sec. 13.3.2).
+La exclusión de predicción de esta ampliación no comprende la estimación determinista de vida útil remanente descrita en la sección 13.3.2 del SD13 y sustentada en las series térmicas y la asociación sensor–lote de 5.1.7. Esta estimación emplea parámetros cinéticos documentados y no modelos aprendidos. INN-03 desarrolla su incorporación distribuida al proceso operacional (Subdocumento 13, sección 13.3.2).
 
 La creación autónoma de informes usa la autoría QuickSight integrada en las consolas, con permisos distintos de lectura y creación. El modelo semántico de 5.1.11/5-H fija grano, relaciones, fórmulas y casos sin base, los informes admiten filtros guardados y envío por calendario bajo los mismos permisos, sin intervención del ADJUDICATARIO.
 
