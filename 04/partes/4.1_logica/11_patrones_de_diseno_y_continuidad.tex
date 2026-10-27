@@ -53,7 +53,7 @@ Para extender el canal moderno, M11 incorpora un adaptador por cadena bajo un co
 Un adaptador nuevo sustituye a uno previo solo si conserva las respuestas, errores e idempotencia exigidos por el contrato versionado: las pruebas de contrato verifican esa sustitución.
 
 \begin{itemize}
-  \item Las interfaces se separan por capacidad y autorización ---consulta de stock, reserva, recepción de POD y liberación sanitaria--- para que un cliente de lectura no reciba por accidente una operación de escritura.
+  \item Las interfaces se separan por capacidad y autorización (consulta de stock, reserva, recepción de POD y liberación sanitaria) para que un cliente de lectura no reciba por accidente una operación de escritura.
   \item Finalmente, M3, M5 y M7 dependen de puertos de negocio para inventario, documentos y mensajería, no de llamadas directas al SDK de una nube o a tablas del ERP.
   \item En QA se reemplazan esos puertos por dobles de prueba. En producción los adaptadores implementan el contrato. Las pruebas de contrato verifican sustitución, segregación de interfaces e inversión de dependencias.
 \end{itemize}
