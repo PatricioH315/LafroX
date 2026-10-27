@@ -158,7 +158,7 @@ Cada fila conserva sensibilidad y código de política. Los códigos siguientes 
 
 La preferencia vigente tiene unicidad por (\texttt{cliente\_\allowbreak{}id}, \texttt{finalidad}, \texttt{tipo\_\allowbreak{}aviso}, \texttt{canal}). La plantilla y versión de referencia acreditan el contexto inicial, una nueva versión o plantilla de la misma categoría no reinicia la baja. Sus cambios conservan antes/después, actor, fecha y origen en \texttt{gob\_\allowbreak{}auditoria}. \texttt{not\_\allowbreak{}aviso} referencia exactamente la versión usada de \texttt{not\_\allowbreak{}plantilla}, y cada intento usa su canal, las referencias opcionales de pedido y entrega deben pertenecer al mismo cliente. Las fichas térmicas y reglas se distribuyen con su versión, una excursión conserva el \texttt{regla\_\allowbreak{}id} efectivamente aplicado, incluso si es preventivo.
 
-Cada dominio relacional confirma en su autoridad, sin escritor alternativo durante particiones: BD\_RUTAS central con copias lectoras; inventario/preparación local. Ingesta térmica durable acepta consistencia eventual; BI es diferido y Redis reconstruible. S3 aporta durabilidad/versionado, sin transacción distribuida con su referencia. CAP se aplica por perímetro, no solo por motor.
+Cada dominio relacional confirma en su autoridad, sin escritor alternativo durante particiones: BD\_RUTAS central con copias lectoras; inventario/preparación local. Ingesta térmica durable acepta consistencia eventual; BI es diferido y ElastiCache reconstruible. S3 aporta durabilidad/versionado, sin transacción distribuida con su referencia. CAP se aplica por perímetro, no solo por motor.
 
 Las cardinalidades se leen en las vistas de 5.1 y la nulabilidad en 5-A/5-C, las restricciones físicas e índices están en 5-F. La matriz siguiente identifica almacén, motor y autoridad, sin repetir todos los conectores.
 
@@ -297,11 +297,11 @@ El detalle sanitario mantiene ts\_evento=ts\_ocurrencia y no admite cambios post
 \section{Claves de caché, vigencia e invalidación}
 \label{anexo-5g}
 
-Las claves/versiones siguen cache de 5-A y S4 4.1.3.6–7, Anexo 4-O, ADR-06. La autoridad incrementa versión e invalida por outbox, Redis se reconstruye desde ella. Sin enlace, lectura fechada/indicativa, reserva, cobro y precio requieren al escritor competente.
+Las claves/versiones siguen cache de 5-A y S4 4.1.3.6–7, Anexo 4-O, ADR-06. La autoridad incrementa versión e invalida por outbox, ElastiCache se reconstruye desde ella. Sin enlace, lectura fechada/indicativa, reserva, cobro y precio requieren al escritor competente.
 
 \begin{itemize}
 \item \textbf{Permisos:} actor/sitio/versión, credencial 8 h bodega o 14 h terreno. Cambio de rol/sitio invalida, vencimiento bloquea el turno. Relevos preinscritos se verifican con PIN.
-\item \textbf{Manifiesto:} versión/huella/objetos, firmado por Keycloak, 26 h, renovación horaria con enlace o cambio de turno. Verificador comprueba firma/vigencia y avisa antes de vencer; no es Redis ni extiende la credencial.
+\item \textbf{Manifiesto:} versión/huella/objetos, firmado por Keycloak, 26 h, renovación horaria con enlace o cambio de turno. Verificador comprueba firma/vigencia y avisa antes de vencer; no es ElastiCache ni extiende la credencial.
 \item \textbf{Identidad de consulta:} cliente/sitio/versión, 24 h, cambio de maestro/manifiesto refresca, sin autorizar operaciones.
 \item \textbf{Saldo:} sitio/ubicación/producto/lote/unidad/versión, 5 min en pantalla, movimiento invalida y refresca o marca dato indicativo.
 \item \textbf{Precio:} GTIN/canal/versión hasta vigente\_hasta, nueva tarifa invalida, con vigencia pendiente hasta validación.
@@ -390,7 +390,7 @@ La Tabla A.26 fija la ventana relativa final propuesta; los dos ensayos deben de
 
 \parte{tablas/A_26}
 
-Se preserva despacho 05:30–07:00 y congelamientos septiembre/diciembre/cierre mensual. Si no-go ocurre antes, rollback comienza inmediatamente y usa la reserva, se registran tiempos, resultado y frontera recuperada. E1 M16 y E2 M21 requieren marcha blanca previa y últimas cuatro semanas con volumen real. RTO/RPO de S4 continúan siendo condiciones contractuales; esta reserva es hipótesis a demostrar, no resultado de recuperación.
+Se preserva despacho 05:30–07:00 y congelamientos septiembre/diciembre/cierre mensual. Si no-go ocurre antes, rollback comienza inmediatamente y usa la reserva, se registran tiempos, resultado y frontera recuperada. E1 en el mes 16 y E2 en el mes 21 requieren marcha blanca previa y últimas cuatro semanas con volumen real. RTO/RPO de S4 continúan siendo condiciones contractuales; esta reserva es hipótesis a demostrar, no resultado de recuperación.
 
 \section{Correspondencia de modelos y diccionario}
 \label{anexo-5l}

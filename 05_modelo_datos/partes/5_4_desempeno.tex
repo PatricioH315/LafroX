@@ -35,7 +35,7 @@ Una partición se retira solo con todas sus filas/expedientes vencidos y sin ret
 \subsection{Caché y copia local del dispositivo}
 \label{sec:sd5-5-4-4}
 
-5-G fija claves/versiones e invalidación. Redis/ElastiCache acelera lectura, sin confirmar saldo/pago. Stock usa sitio/ubicación/producto/lote/unidad/versión, precio, producto/canal/versión; crédito, cliente/versión. La autoridad escribe e invalida por outbox; tras pérdida, reconstrucción desde esa autoridad.
+5-G fija claves/versiones e invalidación. Amazon ElastiCache (Valkey 8.1) acelera lectura, sin confirmar saldo/pago. Stock usa sitio/ubicación/producto/lote/unidad/versión, precio, producto/canal/versión; crédito, cliente/versión. La autoridad escribe e invalida por outbox; tras pérdida, reconstrucción desde esa autoridad.
 
 Room/SQLite distingue copias indicativas de hechos/POD durables, el móvil cierra la entrega autorizada localmente y verifica el objeto central después. PostgreSQL del sitio confirma reservas; ningún saldo descargado las autoriza. El Portal de Clientes instalable usa IndexedDB para catálogo/precios fechados y pedidos pendientes. UUID y payload de pedido/líneas sobreviven al reinicio hasta acuse durable de M3, que valida stock/crédito/precio y sesión/cuenta. Antes del acuse no hay reserva ni precio/promesa confirmados. M3 es dueño del pedido de preventista, autoatención y canal moderno, canal de captura no cambia el catálogo comercial. Invalidar una cuenta bloquea acceso/envíos sin borrar pendientes sin resolución.
 

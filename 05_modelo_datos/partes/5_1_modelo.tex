@@ -8,7 +8,7 @@ El modelo separa identidad comercial, lote sanitario, unidad logística, comprom
 
 El modelo lógico se presenta por dominios: Figuras 5.2–5.6 y 5.8–5.9 forman sus vistas relacionales, 5.7 presenta el modelo dimensional y 5.10 las estructuras de telemetría, caché y objetos. La Figura 5.1 presenta el MR general de datos de la solución, las Figuras 5.2–5.10 desarrollan sus partes con tablas y relaciones específicas. Las vistas por dominio muestran claves y relaciones esenciales, el diccionario 5-A conserva todos los atributos y tipos. Una caja de referencia en otra vista no redefine la tabla ni representa otra base de datos.
 
-Los quince dominios lógicos de S4 distribuyen autoridad y responsabilidad funcional. Maestros y configuración, preventa, rutas, reparto, cobranza/finanzas, Calidad/trazabilidad, EDI, gobierno/acceso y notificaciones residen en los almacenes centrales declarados, inventario y preparación conservan autoridad en PostgreSQL del sitio. Telemetría usa DynamoDB para ingesta térmica y S3/Glue/Redshift para detalle y agregados; BI consulta Redshift/QuickSight. Redis conserva proyecciones y S3\_DOCS evidencia por clase de retención.
+Los quince dominios lógicos de S4 distribuyen autoridad y responsabilidad funcional. Maestros y configuración, preventa, rutas, reparto, cobranza/finanzas, Calidad/trazabilidad, EDI, gobierno/acceso y notificaciones residen en los almacenes centrales declarados, inventario y preparación conservan autoridad en PostgreSQL del sitio. Telemetría usa DynamoDB para ingesta térmica y S3/Glue/Redshift para detalle y agregados; BI consulta Redshift/QuickSight. Amazon ElastiCache (Valkey 8.1) conserva proyecciones y S3\_DOCS evidencia por clase de retención.
 
 El Anexo 5-B integra los quince nombres, módulos, ubicaciones y motores. BD\_RUTAS tiene autoridad central, con itinerarios descargados de consulta, DMS de Talca replica al esquema lector separado. La distinción permite que una operación local siga confirmada en su perímetro sin presentar la proyección central como actualizada durante un corte.
 
@@ -224,7 +224,7 @@ La Figura 5.10 distingue ingesta térmica cruda en DynamoDB, archivo detallado S
 
 S4, Anexo 4-W.4, fija 127.848 lecturas/día: 6.048 de cámaras, 73.080 de las tres sondas de cada camión, 24.360 de termógrafos y 24.360 de sensores independientes. INT-05 ingiere 30.548 mensajes/día: 6.048 de cámaras, 24.360 del gateway, 112 eventos y 28 descargas. Los 3 gateways de cámara y los 28 gateways de camión usan Greengrass; las reservas no agregan ingesta ordinaria. La temperatura ocupa 6,77 GB/año en crudo, 33,83 GB en cinco años y 1,69 GB/año almacenado; DynamoDB de treinta días ocupa 0,556 GB. Los 8.120 mensajes satelitales diarios de flota (290 por camión) se concilian con el camino móvil sin duplicar hechos.
 
-GPS permanece en sa-east-1, raw treinta días y plazo personal total doce meses, sin réplica internacional. La posición no se confunde con geocerca de configuración. S3\_DOCS conserva originales por clase; Redis contiene lectura reconstruible y Room/SQLite conserva además hechos/evidencias durables. Las claves, vigencias y purgas están en 5-G.
+GPS permanece en sa-east-1, raw treinta días y plazo personal total doce meses, sin réplica internacional. La posición no se confunde con geocerca de configuración. S3\_DOCS conserva originales por clase; ElastiCache contiene lectura reconstruible y Room/SQLite conserva además hechos/evidencias durables. Las claves, vigencias y purgas están en 5-G.
 
 \subsection{Modelo lógico del dominio analítico}
 \label{sec:sd5-5-1-11}

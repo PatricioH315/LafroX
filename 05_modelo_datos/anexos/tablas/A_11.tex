@@ -13,7 +13,7 @@ Cobranza y finanzas & BD\_COBRANZA\_FINANZAS & PostgreSQL central, captura durab
 Documentos y objetos & \texttt{S3\_\allowbreak{}DOCS} & Almacenamiento de objetos con bloqueo de versión & Central y copia por región & La referencia es por clave lógica y huella, nunca por ruta física \\
 Intercambio con canal moderno & \texttt{BD\_\allowbreak{}EDI\_\allowbreak{}CANALMODERNO} & PostgreSQL 16 central & Central & Contrato versionado y mensajes idempotentes \\
 Notificaciones al cliente & BD\_MAILS\_NOTIF & PostgreSQL central & Central & Plantillas/preferencias, intentos y not\_evento para entrega/apertura/error, canales de 5-C \\
-Telemetría y caché de lectura & BD\_TELEMETRIA / REDIS\_SESIONES\_CACHE & DynamoDB raw, S3 Parquet/Glue/Redshift series, Redis caché & M12 ingiere, central consolida, metadatos/calibraciones en Calidad & Caché reconstruible, sin confirmar reservas/pagos \\
+Telemetría y caché de lectura & BD\_TELEMETRIA / REDIS\_SESIONES\_CACHE & DynamoDB raw, S3 Parquet/Glue/Redshift series, caché ElastiCache & M12 ingiere, central consolida, metadatos/calibraciones en Calidad & Caché reconstruible, sin confirmar reservas/pagos \\
 Analítica de explotación & \texttt{BD\_\allowbreak{}BI\_\allowbreak{}GERENCIA} & Amazon S3, AWS Glue, Amazon Redshift Serverless y QuickSight embebido & Región \texttt{sa-east-1} & Consulta sin escritura en el almacén transaccional \\
 Bus de eventos & Cola administrada de brokerage de S4 & Broker de mensajería & Central y por sitio & Publicación con reintento y confirmación durable \\
 Copia local del dispositivo & Persistencia local de captura/consulta & Room/SQLite nativo, IndexedDB en PWA & Dispositivo/cuenta & UUID, payload pendiente y acuse durable, sin autoridad comercial autónoma \\
