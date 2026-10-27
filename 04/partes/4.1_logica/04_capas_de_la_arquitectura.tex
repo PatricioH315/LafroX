@@ -288,7 +288,7 @@ El agente de transferencia publica en la cola SQS FIFO de reconciliación un sob
   \item Los trabajos derivados propios de Laravel usan su conector SQS en colas distintas y declaran grupo y clave de deduplicación cuando requieren orden FIFO.
   \item Esta separación evita entregar mensajes externos al deserializador de trabajos del framework.
   \item RabbitMQ local se conecta mediante un adaptador AMQP probado con \texttt{php-amqplib}. El agente de transferencia confirma la publicación en SQS antes de reconocer el mensaje local.
-  \item No se introduce Redis ni Horizon en los sitios, donde la continuidad depende de PostgreSQL y RabbitMQ.
+  \item No se introduce Valkey ni Horizon en los sitios, donde la continuidad depende de PostgreSQL y RabbitMQ.
 \end{itemize}
 
 Las APIs de la plataforma reciben solicitudes por la Capa 3. Los servicios de negocio invocan sus adaptadores de integración cuando necesitan consultar pagos o mapas, con tiempo máximo de espera explícito (RT-02.08, Bases Técnicas Transversales, cap. 2, p. 7). Los intercambios diferidos con ERP, EDI, telemetría y notificaciones utilizan colas y reintentos. La emisión tributaria se canaliza por el ERP mediante la ACL. No se crea un segundo emisor de documentos ante el SII.
@@ -446,11 +446,11 @@ En los servicios centrales, N-04/N-05 consolidan stock por sitio y la reserva de
 \begin{itemize}
   \item PostgreSQL conserva las transacciones de preventa, reparto y canal moderno.
   \item el flujo de telemetría ingresa en DynamoDB y se consolida para análisis en S3 y Redshift mediante Glue.
-  \item Redis acelera lecturas autorizadas de stock, precios y sesiones,
+  \item Valkey, compatible con Redis, acelera lecturas autorizadas de stock, precios y sesiones,
   \item S3 conserva documentos y evidencias. La función de cada almacén, y no su ubicación física, determina qué módulo puede escribir en él. La topología de replicación y recuperación se especifica en 4.2.
 \end{itemize}
 
-No se incorpora Redis local.
+No se incorpora Valkey local.
 
 \begin{itemize}
   \item Al iniciar el turno con conexión, la aplicación solicita a las APIs una copia de stock, precios y demás datos autorizados. Los servicios la obtienen de sus almacenes, incluido ElastiCache.
