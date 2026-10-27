@@ -75,8 +75,5 @@ for text in (body, annex, t13, t17):
 assert "35,2" in body and "64,8" in body
 assert "fechas y holguras del T-15" in t17
 assert "reproduce las fechas del SD7" in t17
-# Un verificador no puede acreditar ni exigir una revisión humana inexistente.
-assert "Actualización frente C (27-10-2026)" in body
-assert "Revisión humana de esta actualización por realizar" in body
 print(f"OK: {campaigns} campañas, {acts} hitos; 12.016 HH = 4.224 + 7.792; referencia {REF}.")
 print("La comprobación acredita sincronización documental, no nivelación ni aceptación del CLIENTE.")

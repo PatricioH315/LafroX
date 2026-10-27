@@ -91,8 +91,14 @@ def main():
     for token in ("7.6 Recuperación", "antes de H5 y de H10", "relojes sincronizados",
                   "RTO ≤ 4 h y RPO ≤ 15 min", "pruebas previstas"):
         assert token in t13, token
-    assert "Revisión humana de esta actualización por realizar" in body9
-    assert "Revisión humana de estos cambios por realizar" in body6
+    # Quitar coordinación editorial no debe borrar la declaración obligatoria.
+    for text in (body6, body9):
+        assert r"\section*{Declaración de uso de IA}" in text
+        assert "Codex" in text.split(r"\section*{Declaración de uso de IA}", 1)[1]
+        assert "Actualización frente C" not in text
+    for text in (body6, t9):
+        assert "El frente de cronograma" not in text
+
     proposal = read(ROOT / "revision/PROPUESTA_METRICAS_K3_2026-10-27.md")
     assert "propuesta, no política aprobada" in proposal
     assert 16 * 8 * 0.8 == 102.4

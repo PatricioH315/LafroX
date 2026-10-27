@@ -5,7 +5,7 @@
       {
         "file": "contenido.tex",
         "label": "tab:declaracion-uso-ia",
-        "line": 125,
+        "line": 124,
         "columns": 6,
         "format_basis": "Aclaraciones 7.2: seis columnas",
         "candidates": [],
@@ -133,30 +133,11 @@
       {
         "file": "contenido.tex",
         "label": "tab:sd9-12",
-        "line": 362,
+        "line": 364,
         "columns": 4,
         "format_basis": "Aclaraciones 5",
         "candidates": [],
         "sentence_candidates": []
-      },
-      {
-        "file": "contenido.tex",
-        "label": "tab:sd9-ia",
-        "line": 403,
-        "columns": 6,
-        "format_basis": "Aclaraciones 7.2: seis columnas",
-        "candidates": [
-          "posibles celdas con varias frases: revisión semántica"
-        ],
-        "sentence_candidates": [
-          "Patricio Henríquez y Guillermo Castillo. Verificamos la alineación de los antecedentes del Caso 02 (retiro sanitario y excursión térmica), la consistencia de las referencias cruzadas con SD1 a SD7 y la trazabilidad frente a los artículos de las BA/BTT. \\\\",
-          "Patricio Henríquez y Guillermo Castillo. Revisamos los 4 objetivos de calidad, las 8 características de ISO/IEC 25010 y las 8 métricas de código bloqueantes de la Tabla 9.4. También comprobamos el cuadre de las 12.016 HH del costo de la calidad y la sintaxis lógica de las Figuras 9.1 y 9.2. \\\\",
-          "Patricio Henríquez y Guillermo Castillo. Verificamos las reglas y los bloqueos de las compuertas G0–G6, el dimensionamiento de carga con un factor de 1,5$\\times$ y un peak de 21,99 TPS, y el catálogo de 1.352 casos. Además, revisamos el protocolo de datos sintéticos y anonimizados y la consistencia técnica de las Figuras 9.3 a 9.8. \\\\",
-          "Patricio Henríquez y Guillermo Castillo. Comprobamos la conciliación de las 12.016 HH en los paquetes EDT del T-15 y revisamos el calendario de hitos H1–H12. También verificamos que las pruebas quedaran fuera de los períodos de congelamiento de los meses 8, 11 y 20, el cálculo de holguras ante subsanaciones y el diagrama Gantt de la Figura 9.9. \\\\",
-          "Patricio Henríquez y Guillermo Castillo. Revisamos la consistencia matemática de las 42 métricas por subcaracterística, las reglas de las puertas de calidad, el desglose de HH de prevención y evaluación del Anexo 9.C, y la matriz de trazabilidad de los 16 resultados del caso, incluida la trazabilidad de frío de R18-03. \\\\",
-          "Patricio Henríquez y Guillermo Castillo. Verificamos la estructura del plan de pruebas bajo ISO/IEC/IEEE 29119, los criterios de aceptación por tipo de prueba, los protocolos de resiliencia híbrida y las validaciones de frío. Asimismo, comprobamos la concordancia de las fechas y las HH con el formulario T-15. \\\\",
-          "Patricio Henríquez y Guillermo Castillo. Revisamos el protocolo de actas de aceptación técnica y administrativa, las condiciones de cierre de la marcha blanca establecidas en el Art. 17.3 y el esquema de aceptación diferida de los resultados de negocio. También contrastamos las entregas, actas y holguras de los diez hitos con el formulario T-15. \\\\"
-        ]
       }
     ]
   },

@@ -26,7 +26,7 @@
     \LFXcaptionfuente{#3}\label{#4}
   \end{figure}}
 
-%% Legibilidad (BA Art. 40.4; Aclaraciones secciones 4 y 5)
+%% Legibilidad (BA Art. 40.4)
 %% 1. Sin expansion de fuente de microtype: con ella el cuerpo de 11 pt se
 %%    compone a 10,8-10,9 pt y las tablas por debajo de su cuerpo nominal.
 \microtypesetup{expansion=false}
@@ -34,10 +34,9 @@
 %%    en el limite del minimo de 9 pt.
 \DeclareCaptionFont{lfxcap}{\fontsize{9.5pt}{11.5pt}\selectfont}
 \captionsetup{font={lfxcap,color=lafroxGris}}
-%% 3. Sin palabras cortadas por guion dentro de las celdas (Aclaraciones,
-%%    seccion 5: "sin palabras cortadas por columnas angostas"). La seccion 5
-%%    rige solo para el cuerpo del subdocumento: el documento raiz del cuerpo
-%%    activa \LFXsincortestrue; anexos y formularios conservan el corte.
+%% 3. Sin palabras cortadas por guion dentro de las celdas del cuerpo. El
+%%    documento raiz del cuerpo activa \LFXsincortestrue; anexos y
+%%    formularios conservan el corte.
 \newif\ifLFXsincortes \LFXsincortesfalse
 \renewcommand{\LFXcuerpotabla}{%
   \fontsize{9.5pt}{12.5pt}\selectfont
@@ -63,13 +62,17 @@
 %% "---", que la tipografia de la portada no convierte en raya.
 \datoslafrox{sobre = {Sobre N.\textdegree{} 2 — Oferta Técnica}, fecha = {12 de octubre de 2026}}
 
-%% Tablas del cuerpo enteras en una pagina (Aclaraciones, seccion 5). En el
+%% Tablas del cuerpo enteras en una pagina. En el
 %% cuerpo (\LFXsincortestrue) todas las tablas caben en una pagina, asi que
 %% tablalafrox se compone como flotante con tabularx: LaTeX la ubica donde
 %% cabe, sin partirla y sin dejar huecos. flafter impide que una tabla o una
 %% figura aparezca antes del punto del texto que la cita. Mismo estilo de la
 %% clase: titulo arriba, \toprule redefinido con filetes entre filas.
 \RequirePackage{flafter}
+%% tablapartible: copia de la tablalafrox de la clase (xltabular con cabecera
+%% repetida), tomada antes de que \LFXtablasflotantes la redefina. Se usa solo
+%% en la declaracion de uso de IA, que no cabe en una pagina.
+\NewEnvironmentCopy{tablapartible}{tablalafrox}
 \newcommand{\LFXtablasflotantes}{%
   \RenewDocumentEnvironment{tablalafrox}{m m m m +b}{%
     \begin{table}[!htbp]

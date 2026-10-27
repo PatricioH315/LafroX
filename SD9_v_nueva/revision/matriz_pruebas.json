@@ -1,12 +1,33 @@
 {
-  "source_ref": "33508bb3",
-  "source_commit": "33508bb3a8bc92f196f57aa11a5d642da6bde27c",
+  "source_ref": "0e0e0f39",
+  "source_commit": "0e0e0f39ad305ad7f9aa1662c36d147075342c17",
   "test_count": 1352,
+  "counts": {
+    "t12_rows": 653,
+    "requirements": 644,
+    "aliases": 9,
+    "own": 270,
+    "rt": 374,
+    "contracts": 15,
+    "cases": 1352,
+    "priority": {
+      "Crítica": 64,
+      "Alta": 163,
+      "Media": 43
+    },
+    "rt_state": {
+      "Cumple": 334,
+      "Cumple parcialmente": 18,
+      "No cumple": 22
+    },
+    "rt_without_case": 22,
+    "blocks": 13
+  },
   "requirements": [
     {
       "id": "RF-01.01",
       "state": "Cumple",
-      "component": "M1 Recepción (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android en Kotlin con SQLite); terminal Zebra MC9400 estándar; compara SKU y cantidades recibidas contra la orden de compra y emite una alerta por cada discrepancia sin impedir el cierre; el comparativo queda disponible para Calidad",
+      "component": "M1 Recepción (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android 15 en Kotlin 2.4 con SQLite); terminal Zebra MC9400 estándar; compara SKU y cantidades recibidas contra la orden de compra y emite una alerta por cada discrepancia sin impedir el cierre; el comparativo queda disponible para Calidad",
       "edt": "3.4.1",
       "priority": "Crítica",
       "stage": "E1",
@@ -25,7 +46,7 @@
     {
       "id": "RF-01.02",
       "state": "Cumple",
-      "component": "M1 Recepción, Kotlin/Room y Zebra MC9400; captura el lote del proveedor mediante AI 10 o ingreso manual auditado. Si el SKU exige trazabilidad y el lote está vacío, bloquea la línea hasta completarlo.",
+      "component": "M1 Recepción, Kotlin 2.4/Room y Zebra MC9400; captura el lote del proveedor mediante AI 10 o ingreso manual auditado. Si el SKU exige trazabilidad y el lote está vacío, bloquea la línea hasta completarlo.",
       "edt": "3.4.1",
       "priority": "Crítica",
       "stage": "E1",
@@ -44,7 +65,7 @@
     {
       "id": "RF-01.03",
       "state": "Cumple",
-      "component": "M1 Recepción (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android en Kotlin con SQLite); terminal Zebra MC9400 estándar; vincula vencimiento, lote y ubicación para alimentar FEFO; la fecha se captura y se muestra en formato DD/MM/AAAA",
+      "component": "M1 Recepción (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android 15 en Kotlin 2.4 con SQLite); terminal Zebra MC9400 estándar; vincula vencimiento, lote y ubicación para alimentar FEFO; la fecha se captura y se muestra en formato DD/MM/AAAA",
       "edt": "3.4.1",
       "priority": "Crítica",
       "stage": "E1",
@@ -63,7 +84,7 @@
     {
       "id": "RF-01.04",
       "state": "Cumple",
-      "component": "M1 Recepción (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android en Kotlin con SQLite); terminal Zebra MC9400 estándar; M1 registra la no conformidad con su tipo elegido de una lista parametrizada, SKU, lote, cantidad afectada y al menos una fotografía capturada con el terminal",
+      "component": "M1 Recepción (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android 15 en Kotlin 2.4 con SQLite); terminal Zebra MC9400 estándar; M1 registra la no conformidad con su tipo elegido de una lista parametrizada, SKU, lote, cantidad afectada y al menos una fotografía capturada con el terminal",
       "edt": "3.4.1",
       "priority": "Alta",
       "stage": "E1",
@@ -80,7 +101,7 @@
     {
       "id": "RF-01.05",
       "state": "Cumple",
-      "component": "M1 Recepción (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android en Kotlin con SQLite); terminal Zebra MC9400 estándar; al confirmar la no conformidad, M2 pasa a cuarentena la cantidad afectada, bloqueada para la preparación, y M1 alerta en la aplicación al perfil de Calidad dentro de cinco minutos",
+      "component": "M1 Recepción (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android 15 en Kotlin 2.4 con SQLite); terminal Zebra MC9400 estándar; al confirmar la no conformidad, M2 pasa a cuarentena la cantidad afectada, bloqueada para la preparación, y M1 alerta en la aplicación al perfil de Calidad dentro de cinco minutos",
       "edt": "3.4.1",
       "priority": "Alta",
       "stage": "E1",
@@ -97,7 +118,7 @@
     {
       "id": "RF-01.06",
       "state": "Cumple",
-      "component": "M1 Recepción (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android en Kotlin con SQLite); terminal Zebra MC9400 estándar; M1 decodifica los AI 01, 10, 17 y 00, autocompleta GTIN, lote, vencimiento y SSCC y, ante un código inválido o no registrado, habilita el ingreso manual auditado",
+      "component": "M1 Recepción (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android 15 en Kotlin 2.4 con SQLite); terminal Zebra MC9400 estándar; M1 decodifica los AI 01, 10, 17 y 00, autocompleta GTIN, lote, vencimiento y SSCC y, ante un código inválido o no registrado, habilita el ingreso manual auditado",
       "edt": "3.4.1",
       "priority": "Alta",
       "stage": "E1",
@@ -130,7 +151,7 @@
     {
       "id": "RF-01.08",
       "state": "Cumple",
-      "component": "M1 Recepción (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android en Kotlin con SQLite); terminal Zebra MC9400 estándar; el operario escanea el SSCC y la etiqueta de la ubicación, identificada por pasillo, columna, nivel y posición con coordenada única en mae\\_ubicacion; antes de confirmar se valida la compatibilidad térmica de la zona y la capacidad, y se registra el traslado con auditoría",
+      "component": "M1 Recepción (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android 15 en Kotlin 2.4 con SQLite); terminal Zebra MC9400 estándar; el operario escanea el SSCC y la etiqueta de la ubicación, identificada por pasillo, columna, nivel y posición con coordenada única en mae\\_ubicacion; antes de confirmar se valida la compatibilidad térmica de la zona y la capacidad, y se registra el traslado con auditoría",
       "edt": "3.4.1",
       "priority": "Media",
       "stage": "E1",
@@ -184,7 +205,7 @@
     {
       "id": "RF-01.11",
       "state": "Cumple",
-      "component": "M2 Inventario (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android en Kotlin con SQLite); terminal Zebra MC9400 estándar; el putaway compara el tipo y el rango térmico de la ficha del producto con el tipo y el rango de mae\\_zona de la ubicación destino (AMBIENTE equivale a SECO) y bloquea la operación incompatible con INCOMPATIBILIDAD\\_TERMICA",
+      "component": "M2 Inventario (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android 15 en Kotlin 2.4 con SQLite); terminal Zebra MC9400 estándar; el putaway compara el tipo y el rango térmico de la ficha del producto con el tipo y el rango de mae\\_zona de la ubicación destino (AMBIENTE equivale a SECO) y bloquea la operación incompatible con INCOMPATIBILIDAD\\_TERMICA",
       "edt": "3.4.2",
       "priority": "Crítica",
       "stage": "E1",
@@ -254,7 +275,7 @@
     {
       "id": "RF-02.04",
       "state": "Cumple",
-      "component": "M2 Inventario (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio); aplicación nativa Android en Kotlin con SQLite; terminal Zebra MC9400 estándar y Zebra MC9400 Cold Storage Freezer; plan mensual de conteo cíclico por rotación, valor y discrepancia histórica, en conteo ciego sin cantidad teórica; la diferencia se registra con su causa y, sobre el umbral del recinto, queda pendiente de autorización de la jefatura de bodega",
+      "component": "M2 Inventario (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio); aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra MC9400 estándar y Zebra MC9400 Cold Storage Freezer; plan mensual de conteo cíclico por rotación, valor y discrepancia histórica, en conteo ciego sin cantidad teórica; la diferencia se registra con su causa y, sobre el umbral del recinto, queda pendiente de autorización de la jefatura de bodega",
       "edt": "3.4.2",
       "priority": "Alta",
       "stage": "E1",
@@ -294,7 +315,7 @@
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-02.06",
-      "criterion": "(a) Al consultar stock, el usuario visualiza: stock físico en sitio, stock comprometido, stock disponible y stock en tránsito hacia ese sitio con fecha/hora estimada de llegada. (b) El stock en tránsito NO se suma al disponible para venta hasta la recepción confirmada en destino. (c) Al confirmar la recepción en destino, el stock se transfiere automáticamente de «en tránsito» a «físico en sitio». (d) Si el nodo destino está offline al recibir el envío, el operario registra la recepción localmente y el sistema sincroniza al reconectarse. (e) Cada transferencia genera la transacción de movimiento inter-bodegas en el ERP; si el ERP no está disponible, la transacción se encola para reintento automático. (f) El stock en tránsito se muestra como disponibilidad futura, diferenciado del stock físico presente en el sitio.",
+      "criterion": "(a) La consulta distingue stock físico en sitio, comprometido, disponible y en tránsito al sitio, con fecha/hora estimada. (b) El tránsito no suma a disponible hasta la recepción confirmada. (c) Al confirmarla, pasa automáticamente de tránsito a físico en destino. (d) Sin enlace, la recepción se registra localmente y sincroniza al reconectar. (e) Cada transferencia genera el movimiento interbodegas en el ERP; si no está disponible, se encola para reintento automático. (f) El tránsito se muestra como disponibilidad futura separada del stock físico del sitio.",
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-02.06/P01",
@@ -321,7 +342,7 @@
     {
       "id": "RF-02.08",
       "state": "Cumple",
-      "component": "M2 Inventario (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio); aplicación nativa Android en Kotlin con SQLite; terminal Zebra MC9400 estándar y Zebra MC9400 Cold Storage Freezer; M5 dirige misiones GS1: cada línea indica ubicación y secuencia de recorrido, y la asignación aporta producto, lote y cantidad con FEFO; el preparador confirma cada línea y un faltante exige causa estructurada (sin stock, producto dañado, producto vencido, error de ubicación u otro con detalle) antes de confirmar",
+      "component": "M2 Inventario (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio); aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra MC9400 estándar y Zebra MC9400 Cold Storage Freezer; M5 dirige misiones GS1: cada línea indica ubicación y secuencia de recorrido, y la asignación aporta producto, lote y cantidad con FEFO; el preparador confirma cada línea y un faltante exige causa estructurada (sin stock, producto dañado, producto vencido, error de ubicación u otro con detalle) antes de confirmar",
       "edt": "3.4.2, 3.4.3",
       "priority": "Alta",
       "stage": "E1",
@@ -378,7 +399,7 @@
       "stage": "E1",
       "table": "3.A.3b",
       "source_id": "RF-02.11",
-      "criterion": "Por cada plataforma y día se obtiene el tiempo real entre consolidación, llegada, desconsolidación y despacho, y el detalle de excepciones, para medir la brecha de 16 horas (LafroX, 2026a, Anexo 2.2, SP-02).",
+      "criterion": "Por cada plataforma y día se obtiene el tiempo real entre consolidación, llegada, desconsolidación y despacho, y el detalle de excepciones, para medir la brecha de 16 horas (Subdocumento 2, Anexo 2.2, SP-02).",
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-02.11/P01",
@@ -389,7 +410,7 @@
     {
       "id": "RF-03.01",
       "state": "Cumple",
-      "component": "M3 Preventa (aplicación nativa Android en Kotlin con SQLite; terminal Zebra EC55; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache for Redis); M3 consulta por API el stock actual por SKU y T-11 declara respuesta menor a dos segundos",
+      "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); M3 consulta por API el stock actual por SKU y T-11 declara respuesta menor a dos segundos",
       "edt": "3.4.6",
       "priority": "Crítica",
       "stage": "E1",
@@ -408,7 +429,7 @@
     {
       "id": "RF-03.02",
       "state": "Cumple",
-      "component": "M3 Preventa (aplicación nativa Android en Kotlin con SQLite; terminal Zebra EC55; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache for Redis); M3 mantiene copia local con marca de sincronización para consulta sin conexión",
+      "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); M3 mantiene copia local con marca de sincronización para consulta sin conexión",
       "edt": "3.4.6",
       "priority": "Crítica",
       "stage": "E1",
@@ -427,7 +448,7 @@
     {
       "id": "RF-03.03",
       "state": "Cumple",
-      "component": "M3 Preventa (aplicación nativa Android en Kotlin con SQLite; terminal Zebra EC55; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache for Redis); M3 confirma reservas en el servidor central, ordenadas por recepción en ese servidor y sin depender del ERP",
+      "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); M3 confirma reservas en el servidor central, ordenadas por recepción en ese servidor y sin depender del ERP",
       "edt": "3.4.6",
       "priority": "Alta",
       "stage": "E1",
@@ -444,7 +465,7 @@
     {
       "id": "RF-03.04",
       "state": "Cumple",
-      "component": "M3 Preventa (aplicación nativa Android en Kotlin con SQLite; terminal Zebra EC55; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache for Redis); con conectividad, M3 muestra el crédito disponible y la deuda vencida del cliente al tomar el pedido",
+      "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); con conectividad, M3 muestra el crédito disponible y la deuda vencida del cliente al tomar el pedido",
       "edt": "3.4.6",
       "priority": "Crítica",
       "stage": "E1",
@@ -463,7 +484,7 @@
     {
       "id": "RF-03.05",
       "state": "Cumple",
-      "component": "M3 Preventa (aplicación nativa Android en Kotlin con SQLite; terminal Zebra EC55; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache for Redis); sin conectividad, M3 muestra el crédito y la deuda vencida de la última sincronización con su antigüedad",
+      "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); sin conectividad, M3 muestra el crédito y la deuda vencida de la última sincronización con su antigüedad",
       "edt": "3.4.6",
       "priority": "Crítica",
       "stage": "E1",
@@ -482,7 +503,7 @@
     {
       "id": "RF-03.06",
       "state": "Cumple",
-      "component": "M3 Preventa (aplicación nativa Android en Kotlin con SQLite; terminal Zebra EC55; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache for Redis); M3 muestra el historial de compra del cliente con productos y frecuencia",
+      "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); M3 muestra el historial de compra del cliente con productos y frecuencia",
       "edt": "3.4.6",
       "priority": "Alta",
       "stage": "E1",
@@ -499,7 +520,7 @@
     {
       "id": "RF-03.07",
       "state": "Cumple",
-      "component": "M3 Preventa (aplicación nativa Android en Kotlin con SQLite; terminal Zebra EC55; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache for Redis); M3 mantiene en la copia local las promociones vigentes y calcula el descuento de la promoción aplicada a la línea",
+      "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); M3 mantiene en la copia local las promociones vigentes y calcula el descuento de la promoción aplicada a la línea",
       "edt": "3.4.6",
       "priority": "Alta",
       "stage": "E1",
@@ -516,7 +537,7 @@
     {
       "id": "RF-03.08",
       "state": "Cumple",
-      "component": "M3 Preventa (aplicación nativa Android en Kotlin con SQLite; terminal Zebra EC55; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache for Redis); M3 alerta al preventista antes del envío cuando el pedido más la deuda vencida supera el límite de crédito",
+      "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); M3 alerta al preventista antes del envío cuando el pedido más la deuda vencida supera el límite de crédito",
       "edt": "3.4.6",
       "priority": "Crítica",
       "stage": "E1",
@@ -535,7 +556,7 @@
     {
       "id": "RF-03.09",
       "state": "Cumple parcialmente",
-      "component": "M3 implementa bloqueo y excepción auditada del supervisor. RNG-03 somete fórmula y umbral a Finanzas; la expresión «supere el límite en más de 110 \\%» no fija inequívocamente si se compara con 1,10 o 2,10 veces el cupo. El criterio numérico requiere validación antes de configurar y aceptar.",
+      "component": "M3 implementa bloqueo y excepción auditada del supervisor. RNG-03 somete la fórmula y el umbral del 110 \\% a la validación de Finanzas antes de configurarlos.",
       "edt": "3.4.6",
       "priority": "Crítica",
       "stage": "E1",
@@ -554,7 +575,7 @@
     {
       "id": "RF-03.10",
       "state": "Cumple",
-      "component": "M3 Preventa (aplicación nativa Android en Kotlin con SQLite; terminal Zebra EC55; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache for Redis); un supervisor autorizado aprueba el envío del pedido bloqueado, con su identidad, fecha y hora en la auditoría",
+      "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); un supervisor autorizado aprueba el envío del pedido bloqueado, con su identidad, fecha y hora en la auditoría",
       "edt": "3.4.6",
       "priority": "Alta",
       "stage": "E1",
@@ -571,7 +592,7 @@
     {
       "id": "RF-03.11",
       "state": "Cumple",
-      "component": "M3 Preventa (aplicación nativa Android en Kotlin con SQLite; terminal Zebra EC55; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache for Redis); M3 conserva el precio del pedido y lo transmite al ERP por el contrato de integración",
+      "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); M3 conserva el precio del pedido y lo transmite al ERP por el contrato de integración",
       "edt": "3.4.6",
       "priority": "Media",
       "stage": "E1",
@@ -587,7 +608,7 @@
     {
       "id": "RF-03.12",
       "state": "Cumple",
-      "component": "M3 Preventa (aplicación nativa Android en Kotlin con SQLite; terminal Zebra EC55; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache for Redis); el precio pactado es inmutable y prv\\_pedido\\_linea conserva el precio recibido del ERP para facturación y su diferencia; una discrepancia deja la línea BLOQUEADA, impide la facturación y genera una incidencia a Comercial, que la concilia con actor y fecha sin modificar lo acordado",
+      "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); el precio pactado es inmutable y prv\\_pedido\\_linea conserva el precio recibido del ERP para facturación y su diferencia; una discrepancia deja la línea BLOQUEADA, impide la facturación y genera una incidencia a Comercial, que la concilia con actor y fecha sin modificar lo acordado",
       "edt": "3.4.6",
       "priority": "Media",
       "stage": "E1",
@@ -603,7 +624,7 @@
     {
       "id": "RF-03.13",
       "state": "Cumple",
-      "component": "M3 Preventa (aplicación nativa Android en Kotlin con SQLite; terminal Zebra EC55; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache for Redis); antes de confirmar, M3 informa la fecha y la ventana comprometibles según RNG-15, el stock reservable, la capacidad de despacho de la ruta y las franjas del cliente, y conserva la promesa",
+      "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); antes de confirmar, M3 informa la fecha y la ventana comprometibles según RNG-15, el stock reservable, la capacidad de despacho de la ruta y las franjas del cliente, y conserva la promesa",
       "edt": "3.4.6",
       "priority": "Crítica",
       "stage": "E1",
@@ -622,7 +643,7 @@
     {
       "id": "RF-03.14",
       "state": "Cumple",
-      "component": "M3 Preventa (aplicación nativa Android en Kotlin con SQLite; terminal Zebra EC55; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache for Redis); M3 sugiere productos según historial, frecuencia, productos habituales y promociones vigentes, con los criterios que configura Comercial",
+      "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); M3 sugiere productos según historial, frecuencia, productos habituales y promociones vigentes, con los criterios que configura Comercial",
       "edt": "3.4.6",
       "priority": "Alta",
       "stage": "E1",
@@ -639,7 +660,7 @@
     {
       "id": "RF-03.15",
       "state": "Cumple",
-      "component": "M3 Preventa (aplicación nativa Android en Kotlin con SQLite; terminal Zebra EC55; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache for Redis); M3 genera UUID en el dispositivo para cada pedido capturado sin conexión",
+      "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); M3 genera UUID en el dispositivo para cada pedido capturado sin conexión",
       "edt": "3.4.6",
       "priority": "Crítica",
       "stage": "E1",
@@ -658,7 +679,7 @@
     {
       "id": "RF-03.16",
       "state": "Cumple",
-      "component": "M3 Preventa (aplicación nativa Android en Kotlin con SQLite; terminal Zebra EC55; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache for Redis); M3 deduplica reenvíos con el mismo UUID al sincronizar",
+      "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); M3 deduplica reenvíos con el mismo UUID al sincronizar",
       "edt": "3.4.6",
       "priority": "Crítica",
       "stage": "E1",
@@ -811,7 +832,7 @@
     {
       "id": "RF-05.01",
       "state": "Cumple",
-      "component": "M5 Preparación (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android en Kotlin con SQLite; terminal Zebra MC9400 estándar y Zebra MC9400 Cold Storage Freezer); la jefatura de bodega genera las misiones manualmente o las programa al cierre de pedidos del turno, agrupadas por pedido o por ruta",
+      "component": "M5 Preparación (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra MC9400 estándar y Zebra MC9400 Cold Storage Freezer); la jefatura de bodega genera las misiones manualmente o las programa al cierre de pedidos del turno, agrupadas por pedido o por ruta",
       "edt": "3.4.3",
       "priority": "Alta",
       "stage": "E1",
@@ -828,7 +849,7 @@
     {
       "id": "RF-05.02",
       "state": "Cumple",
-      "component": "M5 Preparación (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android en Kotlin con SQLite; terminal Zebra MC9400 estándar y Zebra MC9400 Cold Storage Freezer); M5 exige lectura GS1 en la preparación para validar el SKU y registrar el lote exacto; el ingreso manual del código es una contingencia registrada en la auditoría",
+      "component": "M5 Preparación (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra MC9400 estándar y Zebra MC9400 Cold Storage Freezer); M5 exige lectura GS1 en la preparación para validar el SKU y registrar el lote exacto; el ingreso manual del código es una contingencia registrada en la auditoría",
       "edt": "3.4.3",
       "priority": "Alta",
       "stage": "E1",
@@ -879,7 +900,7 @@
     {
       "id": "RF-05.05",
       "state": "Cumple",
-      "component": "M5 Preparación (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android en Kotlin con SQLite; terminal Zebra MC9400 estándar y Zebra MC9400 Cold Storage Freezer); M5 asigna inventario aplicando FEFO por vencimiento, bloquea la confirmación de un lote posterior si el lote FEFO está disponible y registra el motivo de toda excepción",
+      "component": "M5 Preparación (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra MC9400 estándar y Zebra MC9400 Cold Storage Freezer); M5 asigna inventario aplicando FEFO por vencimiento, bloquea la confirmación de un lote posterior si el lote FEFO está disponible y registra el motivo de toda excepción",
       "edt": "3.4.3",
       "priority": "Alta",
       "stage": "E1",
@@ -913,7 +934,7 @@
     {
       "id": "RF-05.07",
       "state": "Cumple",
-      "component": "M5 Preparación (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android en Kotlin con SQLite; terminal Zebra MC9400 estándar y Zebra MC9400 Cold Storage Freezer); la carga sigue el orden inverso de la ruta con lectura del SSCC de cada bulto, alerta fuera de secuencia y bloqueo de la carga completa si falta un bulto, con aviso a la jefatura de bodega",
+      "component": "M5 Preparación (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra MC9400 estándar y Zebra MC9400 Cold Storage Freezer); la carga sigue el orden inverso de la ruta con lectura del SSCC de cada bulto, alerta fuera de secuencia y bloqueo de la carga completa si falta un bulto, con aviso a la jefatura de bodega",
       "edt": "3.4.3",
       "priority": "Alta",
       "stage": "E1",
@@ -930,7 +951,7 @@
     {
       "id": "RF-06.01",
       "state": "Cumple",
-      "component": "M6 Reparto (aplicación nativa Android en Kotlin con SQLite; terminal Zebra TC58e); M6 registra cantidad recibida, rechazos y evidencia asociada a la guía; el conductor confirma por línea o marca en bloque toda la guía",
+      "component": "M6 Reparto (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e); M6 registra cantidad recibida, rechazos y evidencia asociada a la guía; el conductor confirma por línea o marca en bloque toda la guía",
       "edt": "3.4.8",
       "priority": "Alta",
       "stage": "E1",
@@ -947,7 +968,7 @@
     {
       "id": "RF-06.02",
       "state": "Cumple",
-      "component": "M6 Reparto (aplicación nativa Android en Kotlin con SQLite; terminal Zebra TC58e); M6 captura la firma del receptor y la vincula al POD y a la guía de despacho",
+      "component": "M6 Reparto (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e); M6 captura la firma del receptor y la vincula al POD y a la guía de despacho",
       "edt": "3.4.8",
       "priority": "Crítica",
       "stage": "E1",
@@ -966,7 +987,7 @@
     {
       "id": "RF-06.03",
       "state": "Cumple",
-      "component": "M6 Reparto (aplicación nativa Android en Kotlin con SQLite; terminal Zebra TC58e); M6 registra rechazos parciales o totales, cantidades y causal; el modelo exige causal identificada y tipifica el resultado",
+      "component": "M6 Reparto (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e); M6 registra rechazos parciales o totales, cantidades y causal; el modelo exige causal identificada y tipifica el resultado",
       "edt": "3.4.8",
       "priority": "Media",
       "stage": "E1",
@@ -982,7 +1003,7 @@
     {
       "id": "RF-06.04",
       "state": "Cumple",
-      "component": "M6 Reparto (aplicación nativa Android en Kotlin con SQLite; terminal Zebra TC58e); M6 registra intentos de entrega y distingue entregas no atendidas; el modelo conserva la dirección del punto cliente",
+      "component": "M6 Reparto (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e); M6 registra intentos de entrega y distingue entregas no atendidas; el modelo conserva la dirección del punto cliente",
       "edt": "3.4.8",
       "priority": "Media",
       "stage": "E1",
@@ -1017,7 +1038,7 @@
     {
       "id": "RF-06.06",
       "state": "Cumple",
-      "component": "M6 Reparto: aplicación Kotlin/Room en Zebra TC58e registra hora real de llegada y término de entrega, con evidencia en Amazon S3",
+      "component": "M6 Reparto: aplicación Kotlin 2.4/Room en Zebra TC58e registra hora real de llegada y término de entrega, con evidencia en Amazon S3",
       "edt": "3.4.8",
       "priority": "Alta",
       "stage": "E1",
@@ -1087,7 +1108,7 @@
     {
       "id": "RF-06.10",
       "state": "Cumple",
-      "component": "M8 Devoluciones y envases (aplicación nativa Android en Kotlin con SQLite; terminal Zebra TC58e; cuenta de envases por cliente y tipo); M8 actualiza en línea o de forma diferida los saldos de envases por cliente y parque, asociados al movimiento de entrega o guía",
+      "component": "M8 Devoluciones y envases (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; cuenta de envases por cliente y tipo); M8 actualiza en línea o de forma diferida los saldos de envases por cliente y parque, asociados al movimiento de entrega o guía",
       "edt": "3.4.9",
       "priority": "Alta",
       "stage": "E1",
@@ -1120,7 +1141,7 @@
     {
       "id": "RF-06.12",
       "state": "Cumple",
-      "component": "M6 Reparto (aplicación nativa Android en Kotlin con SQLite; terminal Zebra TC58e); M6 captura firma en pantalla o evidencia fotográfica sin conexión y vincula el POD a la guía",
+      "component": "M6 Reparto (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e); M6 captura firma en pantalla o evidencia fotográfica sin conexión y vincula el POD a la guía",
       "edt": "3.4.8",
       "priority": "Media",
       "stage": "E1",
@@ -1152,7 +1173,7 @@
     {
       "id": "RF-06.14",
       "state": "Cumple",
-      "component": "M6 Reparto: aplicación Kotlin/Room en Zebra TC58e, impresora Zebra ZQ620 Plus y evidencia en Amazon S3; envío de prueba de entrega al ERP y conciliación del acuse por guía",
+      "component": "M6 Reparto: aplicación Kotlin 2.4/Room en Zebra TC58e, impresora Zebra ZQ620 Plus y evidencia en Amazon S3; envío de prueba de entrega al ERP y conciliación del acuse por guía",
       "edt": "3.4.8",
       "priority": "Alta",
       "stage": "E1",
@@ -1169,7 +1190,7 @@
     {
       "id": "RF-07.01",
       "state": "Cumple",
-      "component": "M7 Cobranza y rendición (monolito modular en Laravel 13 sobre PHP 8.5); aplicación nativa Android en Kotlin con SQLite; terminal Zebra TC58e; M7 suma por camión y turno los cobros de cob\\_cobro asociados a la rendición (entregas al contado y abonos en ruta) y guarda el resultado como monto esperado en cob\\_cuadratura.monto\\_sistema; la planilla de rendición (RF-07.02) lo contrasta con cob\\_rendicion.monto\\_declarado y registra la diferencia a justificar (RF-07.03)",
+      "component": "M7 Cobranza y rendición (monolito modular en Laravel 13 sobre PHP 8.5); aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; M7 suma por camión y turno los cobros de cob\\_cobro asociados a la rendición (entregas al contado y abonos en ruta) y guarda el resultado como monto esperado en cob\\_cuadratura.monto\\_sistema; la planilla de rendición (RF-07.02) lo contrasta con cob\\_rendicion.monto\\_declarado y registra la diferencia a justificar (RF-07.03)",
       "edt": "3.4.10",
       "priority": "Alta",
       "stage": "E1",
@@ -1237,7 +1258,7 @@
     {
       "id": "RF-07.05",
       "state": "Cumple",
-      "component": "M3 Preventa (monolito modular en Laravel 13 sobre PHP 8.5; aplicación nativa Android en Kotlin con SQLite; terminal Zebra EC55); cob\\_saldo\\_documento conserva el vencimiento ERP de cada factura y los días de mora a la fecha de corte; con mora superior a 30 días o cupo excedido la aplicación muestra el bloqueo, impide pedidos a crédito y mantiene la venta al contado y el cobro de deuda",
+      "component": "M3 Preventa (monolito modular en Laravel 13 sobre PHP 8.5; aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e); cob\\_saldo\\_documento conserva el vencimiento ERP de cada factura y los días de mora a la fecha de corte; con mora superior a 30 días o cupo excedido la aplicación muestra el bloqueo, impide pedidos a crédito y mantiene la venta al contado y el cobro de deuda",
       "edt": "3.4.6",
       "priority": "Alta",
       "stage": "E1",
@@ -1254,7 +1275,7 @@
     {
       "id": "RF-07.06",
       "state": "Cumple",
-      "component": "M7 Cobranza y rendición (monolito modular en Laravel 13 sobre PHP 8.5; ACL INT-06); aplicación nativa Android en Kotlin con SQLite; terminal Zebra TC58e; terminal de pago PAX A920 Pro; la aplicación recibe por Bluetooth del PAX A920 Pro el código de autorización y M7 lo concilia con la entrega en la rendición diaria, sin digitación",
+      "component": "M7 Cobranza y rendición (monolito modular en Laravel 13 sobre PHP 8.5; ACL INT-06); aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; terminal de pago PAX A920 Pro; la aplicación recibe por Bluetooth del PAX A920 Pro el código de autorización y M7 lo concilia con la entrega en la rendición diaria, sin digitación",
       "edt": "3.4.10, 3.6.2",
       "priority": "Alta",
       "stage": "E1",
@@ -1271,7 +1292,7 @@
     {
       "id": "RF-07.07",
       "state": "Cumple",
-      "component": "Portal autenticado de clientes (Angular 22; Keycloak; S3 privado, CloudFront, AWS WAF y API REST); el estado de cuenta y la cartola derivan los tramos corriente, 1 a 30, 31 a 60, 61 a 90 y más de 90 días desde el vencimiento de cada documento y la fecha de corte (hech\\_cartera\\_antiguedad), descargables en PDF y XLSX por el cliente autenticado desde E2",
+      "component": "Portal autenticado de clientes (Angular 22; Keycloak 26; S3 privado, CloudFront, AWS WAF y API REST); el estado de cuenta y la cartola derivan los tramos corriente, 1 a 30, 31 a 60, 61 a 90 y más de 90 días desde el vencimiento de cada documento y la fecha de corte (hech\\_cartera\\_antiguedad), descargables en PDF y XLSX por el cliente autenticado desde E2",
       "edt": "3.5.2",
       "priority": "Alta",
       "stage": "E2",
@@ -1322,7 +1343,7 @@
     {
       "id": "RF-07.10",
       "state": "Cumple",
-      "component": "M7 Cobranza y rendición (monolito modular en Laravel 13 sobre PHP 8.5; ACL INT-06); aplicación nativa Android en Kotlin con SQLite; terminal Zebra TC58e; el conductor registra el abono parcial en una entrega al contado, la aplicación emite un comprobante digital y el saldo insoluto pasa a la cuenta corriente del cliente en el ERP por la ACL",
+      "component": "M7 Cobranza y rendición (monolito modular en Laravel 13 sobre PHP 8.5; ACL INT-06); aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; el conductor registra el abono parcial en una entrega al contado, la aplicación emite un comprobante digital y el saldo insoluto pasa a la cuenta corriente del cliente en el ERP por la ACL",
       "edt": "3.4.10",
       "priority": "Alta",
       "stage": "E1",
@@ -1356,7 +1377,7 @@
     {
       "id": "RF-08.01",
       "state": "Cumple",
-      "component": "M8 Devoluciones y envases (aplicación nativa Android en Kotlin con SQLite; terminal Zebra TC58e); M8 permite registrar devoluciones durante la entrega desde la aplicación de reparto, incluso sin conexión, con SKU, cantidad y motivo (daño, vencimiento, producto no pedido o error)",
+      "component": "M8 Devoluciones y envases (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e); M8 permite registrar devoluciones durante la entrega desde la aplicación de reparto, incluso sin conexión, con SKU, cantidad y motivo (daño, vencimiento, producto no pedido o error)",
       "edt": "3.4.9",
       "priority": "Crítica",
       "stage": "E1",
@@ -1394,7 +1415,7 @@
     {
       "id": "RF-08.03",
       "state": "Cumple",
-      "component": "M8 Devoluciones y envases (aplicación nativa Android en Kotlin con SQLite; cuenta de envases por cliente y tipo); M8 mantiene saldo de envases retornables por cliente y tipo, y actualiza movimientos de entrega y devolución",
+      "component": "M8 Devoluciones y envases (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; cuenta de envases por cliente y tipo); M8 mantiene saldo de envases retornables por cliente y tipo, y actualiza movimientos de entrega y devolución",
       "edt": "3.4.9",
       "priority": "Alta",
       "stage": "E1",
@@ -1411,7 +1432,7 @@
     {
       "id": "RF-08.04",
       "state": "Cumple",
-      "component": "M8 Devoluciones y envases (aplicación nativa Android en Kotlin con SQLite; cuenta de envases por cliente y tipo); M8 compara el saldo de envases de cada cliente con el umbral del administrador y alerta al preventista dentro de las 24 horas siguientes a superarlo",
+      "component": "M8 Devoluciones y envases (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; cuenta de envases por cliente y tipo); M8 compara el saldo de envases de cada cliente con el umbral del administrador y alerta al preventista dentro de las 24 horas siguientes a superarlo",
       "edt": "3.4.9",
       "priority": "Alta",
       "stage": "E1",
@@ -1536,7 +1557,7 @@
     {
       "id": "RF-09.04",
       "state": "Cumple",
-      "component": "M9; kit en los 28 camiones: gateway B-04 con Greengrass, ioLogik B-05, tres PT100 B-06 y simuladores B-07, sensor independiente B-08 y termógrafo de aire B-03 EYE SENSOR EN12830. Sondas cada 5 s y serie por minuto; móvil e Iridium B-09 siempre activos. LafroX provee, instala y mantiene el kit.",
+      "component": "M9; kit en los 28 camiones: gateway B-04 con Greengrass V2, ioLogik B-05, tres PT100 B-06 y simuladores B-07, sensor independiente B-08 y termógrafo de aire B-03 EYE SENSOR EN12830. Sondas cada 5 s y serie por minuto; móvil e Iridium B-09 siempre activos. LafroX provee, instala y mantiene el kit.",
       "edt": "3.4.4, 3.4.5, 6.5.4",
       "priority": "Crítica",
       "stage": "E1",
@@ -1555,7 +1576,7 @@
     {
       "id": "RF-09.05",
       "state": "Cumple",
-      "component": "M9 evalúa la regla por familia en Greengrass; la desviación de 2 °C durante 15 min se parametriza conforme a la ficha y los límites aplicables. Alarma cableada B-12 sin red y segunda evaluación en TC58e con B-08. Aviso por móvil e Iridium en paralelo, metas $\\leq$ 2 min y $\\leq$ 5 min respectivamente.",
+      "component": "M9 evalúa la regla por familia en Greengrass V2; la desviación de 2 °C durante 15 min se parametriza conforme a la ficha y los límites aplicables. Alarma cableada B-12 sin red y segunda evaluación en TC58e con B-08. Aviso por móvil e Iridium en paralelo, metas $\\leq$ 2 min y $\\leq$ 5 min respectivamente.",
       "edt": "3.4.4, 3.4.5, 6.5.4",
       "priority": "Crítica",
       "stage": "E1",
@@ -1609,7 +1630,7 @@
     {
       "id": "RF-09.08",
       "state": "Cumple",
-      "component": "M5 Preparación, aplicación Kotlin/Room y terminal Zebra MC9400, con variante Cold Storage Freezer para congelado, registra el lote elegido por FEFO en cada línea de picking. Los eventos de preparación y carga alimentan la trazabilidad M9 por lote y SSCC.",
+      "component": "M5 Preparación, aplicación Kotlin 2.4/Room y terminal Zebra MC9400, con variante Cold Storage Freezer para congelado, registra el lote elegido por FEFO en cada línea de picking. Los eventos de preparación y carga alimentan la trazabilidad M9 por lote y SSCC.",
       "edt": "3.4.3, 3.4.4",
       "priority": "Crítica",
       "stage": "E1",
@@ -1647,7 +1668,7 @@
     {
       "id": "RF-09.10",
       "state": "Cumple",
-      "component": "M9 parametriza y versiona por familia límites, exposición, máximos de andén, plazos y tolerancias; Calidad aprueba con segundo aprobador. La regla se distribuye a Greengrass de cámaras y camiones y a la implementación independiente del TC58e. Sin parámetros aprobados rige la regla preventiva de ficha; una versión nueva no libera retenciones históricas.",
+      "component": "M9 parametriza y versiona por familia límites, exposición, máximos de andén, plazos y tolerancias; Calidad aprueba con segundo aprobador. La regla se distribuye a Greengrass V2 de cámaras y camiones y a la implementación independiente del TC58e. Sin parámetros aprobados rige la regla preventiva de ficha; una versión nueva no libera retenciones históricas.",
       "edt": "3.4.4, 3.4.5",
       "priority": "Media",
       "stage": "E1",
@@ -1920,7 +1941,7 @@
     {
       "id": "RF-12.01",
       "state": "Cumple",
-      "component": "M11 Canal moderno (monolito modular en Laravel 13 sobre PHP 8.5; transporte OpenAS2 BSD; perfiles EDI por cadena; INT-08); M11 recibe mensajes comerciales EANCOM y GS1 XML mediante contratos configurados por cadena.",
+      "component": "M11 Canal moderno (monolito modular en Laravel 13 sobre PHP 8.5; transporte OpenAS2 4.9 BSD; perfiles EDI por cadena; INT-08); M11 recibe mensajes comerciales EANCOM y GS1 XML mediante contratos configurados por cadena.",
       "edt": "3.5.1, 3.6.5, 2.1.4",
       "priority": "Alta",
       "stage": "E2",
@@ -1937,7 +1958,7 @@
     {
       "id": "RF-12.02",
       "state": "Cumple",
-      "component": "M11 Canal moderno (reglas del monolito Laravel 13 sobre PHP 8.5; transporte OpenAS2 BSD; perfiles EDI por cadena; INT-08); M11 valida estructura de intercambios y datos de pedido antes de pasarlos a M3",
+      "component": "M11 Canal moderno (reglas del monolito Laravel 13 sobre PHP 8.5; transporte OpenAS2 4.9 BSD; perfiles EDI por cadena; INT-08); M11 valida estructura de intercambios y datos de pedido antes de pasarlos a M3",
       "edt": "3.5.1, 3.6.5, 2.1.4",
       "priority": "Alta",
       "stage": "E2",
@@ -1954,7 +1975,7 @@
     {
       "id": "RF-12.03",
       "state": "Cumple",
-      "component": "M11 Canal moderno (monolito modular en Laravel 13 sobre PHP 8.5; transporte OpenAS2 BSD; perfiles EDI por cadena; INT-08); M11 mantiene equivalencias de códigos por cadena y traduce cada código al producto canónico vigente.",
+      "component": "M11 Canal moderno (monolito modular en Laravel 13 sobre PHP 8.5; transporte OpenAS2 4.9 BSD; perfiles EDI por cadena; INT-08); M11 mantiene equivalencias de códigos por cadena y traduce cada código al producto canónico vigente.",
       "edt": "3.5.1, 3.6.5, 2.1.4",
       "priority": "Alta",
       "stage": "E2",
@@ -1971,7 +1992,7 @@
     {
       "id": "RF-12.04",
       "state": "Cumple",
-      "component": "M11 Canal moderno (reglas del monolito Laravel 13 sobre PHP 8.5; transporte OpenAS2 BSD; perfiles EDI por cadena; INT-08); M11 transforma el mensaje válido y la ACL INT-06 lo deriva al ERP",
+      "component": "M11 Canal moderno (reglas del monolito Laravel 13 sobre PHP 8.5; transporte OpenAS2 4.9 BSD; perfiles EDI por cadena; INT-08); M11 transforma el mensaje válido y la ACL INT-06 lo deriva al ERP",
       "edt": "3.5.1, 3.6.5, 2.1.4",
       "priority": "Alta",
       "stage": "E2",
@@ -1988,7 +2009,7 @@
     {
       "id": "RF-12.05",
       "state": "Cumple",
-      "component": "M11 Canal moderno (reglas del monolito Laravel 13 sobre PHP 8.5; transporte OpenAS2 BSD; perfiles EDI por cadena; INT-08); M11 publica por ACL el pedido normalizado para su consumo por planificación y M3",
+      "component": "M11 Canal moderno (reglas del monolito Laravel 13 sobre PHP 8.5; transporte OpenAS2 4.9 BSD; perfiles EDI por cadena; INT-08); M11 publica por ACL el pedido normalizado para su consumo por planificación y M3",
       "edt": "3.5.1, 3.6.5, 2.1.4",
       "priority": "Alta",
       "stage": "E2",
@@ -2022,7 +2043,7 @@
     {
       "id": "RF-12.07",
       "state": "Cumple",
-      "component": "M11 Canal moderno (reglas del monolito Laravel 13 sobre PHP 8.5; transporte OpenAS2 BSD; perfiles EDI por cadena; INT-08); M11 responde a la cadena con la confirmación o el rechazo del pedido y su causa; el MDN de transporte no sustituye esa respuesta",
+      "component": "M11 Canal moderno (reglas del monolito Laravel 13 sobre PHP 8.5; transporte OpenAS2 4.9 BSD; perfiles EDI por cadena; INT-08); M11 responde a la cadena con la confirmación o el rechazo del pedido y su causa; el MDN de transporte no sustituye esa respuesta",
       "edt": "3.5.1, 3.6.5, 2.1.4",
       "priority": "Alta",
       "stage": "E2",
@@ -2039,7 +2060,7 @@
     {
       "id": "RF-12.08",
       "state": "Cumple",
-      "component": "M11 Canal moderno (reglas del monolito Laravel 13 sobre PHP 8.5; transporte OpenAS2 BSD; perfiles EDI por cadena; INT-08); M11 conserva el historial de estados de cada pedido electrónico: recepción, validación, confirmación, preparación, despacho, ASN y prueba de entrega",
+      "component": "M11 Canal moderno (reglas del monolito Laravel 13 sobre PHP 8.5; transporte OpenAS2 4.9 BSD; perfiles EDI por cadena; INT-08); M11 conserva el historial de estados de cada pedido electrónico: recepción, validación, confirmación, preparación, despacho, ASN y prueba de entrega",
       "edt": "3.5.1, 3.6.5, 2.1.4",
       "priority": "Alta",
       "stage": "E2",
@@ -2056,7 +2077,7 @@
     {
       "id": "RF-12.09",
       "state": "Cumple",
-      "component": "M11 Canal moderno (reglas del monolito Laravel 13 sobre PHP 8.5; transporte OpenAS2 BSD; perfiles EDI por cadena; INT-08); M11 envía por INT-08 el ASN al quedar el pedido cargado, con referencia a la guía emitida, productos, cantidades y hora estimada de llegada",
+      "component": "M11 Canal moderno (reglas del monolito Laravel 13 sobre PHP 8.5; transporte OpenAS2 4.9 BSD; perfiles EDI por cadena; INT-08); M11 envía por INT-08 el ASN al quedar el pedido cargado, con referencia a la guía emitida, productos, cantidades y hora estimada de llegada",
       "edt": "3.5.1, 3.6.5, 2.1.4",
       "priority": "Alta",
       "stage": "E2",
@@ -2107,7 +2128,7 @@
     {
       "id": "RF-12.12",
       "state": "Cumple",
-      "component": "M6 Reparto (aplicación nativa Android en Kotlin con SQLite; terminal Zebra TC58e; POD vinculado a guía); M6 produce POD operativo con receptor, evidencia y asociación a guía; el Anexo 4-U separa acuse operativo y tributario",
+      "component": "M6 Reparto (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; POD vinculado a guía); M6 produce POD operativo con receptor, evidencia y asociación a guía; el Anexo 4-U separa acuse operativo y tributario",
       "edt": "3.5.1, 3.4.8",
       "priority": "Alta",
       "stage": "E2",
@@ -2124,7 +2145,7 @@
     {
       "id": "RF-12.13",
       "state": "Cumple",
-      "component": "M6 Reparto (aplicación nativa Android en Kotlin con SQLite; terminal Zebra TC58e; POD vinculado a guía); M11 envía por INT-08 el acuse comercial digital dentro de 30 minutos desde la descarga, referido a la guía y a su ASN; el Anexo 4-U distingue el POD operativo del acuse tributario",
+      "component": "M6 Reparto (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; POD vinculado a guía); M11 envía por INT-08 el acuse comercial digital dentro de 30 minutos desde la descarga, referido a la guía y a su ASN; el Anexo 4-U distingue el POD operativo del acuse tributario",
       "edt": "3.5.1, 3.4.8",
       "priority": "Alta",
       "stage": "E2",
@@ -2157,7 +2178,7 @@
     {
       "id": "RF-12.15",
       "state": "Cumple",
-      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak; el portal autenticado permite crear pedidos en autoservicio y valida crédito y stock",
+      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak 26; el portal autenticado permite crear pedidos en autoservicio y valida crédito y stock",
       "edt": "3.5.2",
       "priority": "Media",
       "stage": "E2",
@@ -2173,7 +2194,7 @@
     {
       "id": "RF-12.16",
       "state": "Cumple",
-      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak; el portal de clientes permite consultar el estado de entregas y documentación disponible",
+      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak 26; el portal de clientes permite consultar el estado de entregas y documentación disponible",
       "edt": "3.5.2",
       "priority": "Media",
       "stage": "E2",
@@ -2189,7 +2210,7 @@
     {
       "id": "RF-12.17",
       "state": "Cumple",
-      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak; el portal de clientes permite consultar y descargar documentos disponibles de su cuenta",
+      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak 26; el portal de clientes permite consultar y descargar documentos disponibles de su cuenta",
       "edt": "3.5.2",
       "priority": "Media",
       "stage": "E2",
@@ -2205,7 +2226,7 @@
     {
       "id": "RF-12.18",
       "state": "Cumple",
-      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak; el portal de clientes consulta saldo y estado de cuenta desde datos del sistema de gestión",
+      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak 26; el portal de clientes consulta saldo y estado de cuenta desde datos del sistema de gestión",
       "edt": "3.5.2",
       "priority": "Media",
       "stage": "E2",
@@ -2221,7 +2242,7 @@
     {
       "id": "RF-12.19",
       "state": "Cumple",
-      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak; el portal de transportistas consulta las rutas asignadas para el día siguiente",
+      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak 26; el portal de transportistas consulta las rutas asignadas para el día siguiente",
       "edt": "3.5.3",
       "priority": "Media",
       "stage": "E2",
@@ -2253,7 +2274,7 @@
     {
       "id": "RF-12.21",
       "state": "Cumple",
-      "component": "Portal de transportistas N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST; Keycloak); el representante confirma conductor y vehículo antes de entregar la ruta y despacho aprueba la asignación conductor-vehículo-turno.",
+      "component": "Portal de transportistas N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST; Keycloak 26); el representante confirma conductor y vehículo antes de entregar la ruta y despacho aprueba la asignación conductor-vehículo-turno.",
       "edt": "3.5.3",
       "priority": "Media",
       "stage": "E2",
@@ -2269,7 +2290,7 @@
     {
       "id": "RF-12.22",
       "state": "Cumple",
-      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak; el portal de proveedores permite consultar en solo lectura el estado de sus órdenes de compra",
+      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak 26; el portal de proveedores permite consultar en solo lectura el estado de sus órdenes de compra",
       "edt": "3.5.1",
       "priority": "Media",
       "stage": "E2",
@@ -2285,7 +2306,7 @@
     {
       "id": "RF-12.23",
       "state": "Cumple",
-      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak; el portal de proveedores permite consultar en solo lectura las recepciones asociadas a sus órdenes",
+      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak 26; el portal de proveedores permite consultar en solo lectura las recepciones asociadas a sus órdenes",
       "edt": "3.5.1",
       "priority": "Media",
       "stage": "E2",
@@ -2317,7 +2338,7 @@
     {
       "id": "RF-12.25",
       "state": "Cumple",
-      "component": "Autorregistro en el Portal de Clientes con RUT, correo corporativo y contraseña mediante Keycloak, validación de cliente activo contra el ERP y correo de confirmación",
+      "component": "Autorregistro en el Portal de Clientes con RUT, correo corporativo y contraseña mediante Keycloak 26, validación de cliente activo contra el ERP y correo de confirmación",
       "edt": "3.5.2, 3.3.1",
       "priority": "Media",
       "stage": "E2",
@@ -2333,7 +2354,7 @@
     {
       "id": "RF-12.26",
       "state": "Cumple",
-      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak; Keycloak autentica usuarios del portal con credenciales y el diseño exige MFA a perfiles sensibles",
+      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak 26; Keycloak autentica usuarios del portal con credenciales y el diseño exige MFA a perfiles sensibles",
       "edt": "3.5.2, 3.3.1",
       "priority": "Media",
       "stage": "E2",
@@ -2349,7 +2370,7 @@
     {
       "id": "RF-12.27",
       "state": "Cumple",
-      "component": "Keycloak entrega al correo registrado el enlace de recuperación solicitado por el cliente, de un solo uso y con vigencia máxima de 15 min. Al restablecer se invalidan las credenciales anteriores y se registra la recuperación, conforme a la política de identidad y al resultado de RF-12.27.",
+      "component": "Keycloak 26 entrega al correo registrado el enlace de recuperación solicitado por el cliente, de un solo uso y con vigencia máxima de 15 min. Al restablecer se invalidan las credenciales anteriores y se registra la recuperación, conforme a la política de identidad y al resultado de RF-12.27.",
       "edt": "3.5.2, 3.3.1",
       "priority": "Media",
       "stage": "E2",
@@ -2365,7 +2386,7 @@
     {
       "id": "RF-12.28",
       "state": "Cumple",
-      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak; el portal invalida el token al cerrar la sesión y aplica cierre por inactividad",
+      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak 26; el portal invalida el token al cerrar la sesión y aplica cierre por inactividad",
       "edt": "3.5.2, 3.3.1",
       "priority": "Media",
       "stage": "E2",
@@ -2381,7 +2402,7 @@
     {
       "id": "RF-12.29",
       "state": "Cumple",
-      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak; el portal cierra automáticamente las sesiones por inactividad, con límites declarados en el diseño",
+      "component": "Portales N-01 a N-03 (Angular 22; S3 privado, CloudFront, AWS WAF y API REST pública); Keycloak 26; el portal cierra automáticamente las sesiones por inactividad, con límites declarados en el diseño",
       "edt": "3.5.2, 3.3.1",
       "priority": "Media",
       "stage": "E2",
@@ -2500,7 +2521,7 @@
     {
       "id": "RF-14.02",
       "state": "Cumple",
-      "component": "M12 Telemetría (adaptador de solo lectura INT-15; Amazon DynamoDB; fuente de posicionamiento existente); M12 muestra en un mapa la ruta planificada y el recorrido real de cada camión propio",
+      "component": "M12 compara plan y recorrido de los 42 propios desde INT-15 y de los 54 externos desde el GPS del terminal C-02 de reparto; cada registro conserva fuente, fecha y calidad, con envío diferido sin señal",
       "edt": "3.4.5, 3.6.3",
       "priority": "Alta",
       "stage": "E1",
@@ -2517,7 +2538,7 @@
     {
       "id": "RF-14.03",
       "state": "Cumple",
-      "component": "M12 Telemetría (adaptador de solo lectura INT-15; Amazon DynamoDB; fuente de posicionamiento existente); M12 publica el evento de desvío y alerta al centro de control cuando la posición se aleja más de 3 km de la ruta planificada",
+      "component": "M12 evalúa desvíos mayores de 3 km para ambas flotas, con posiciones de INT-15 (42 propios) o del terminal C-02 (54 externos); sin conectividad el registro se conserva y la alerta central se entrega al sincronizar, mostrando su antigüedad",
       "edt": "3.4.5",
       "priority": "Alta",
       "stage": "E1",
@@ -2534,7 +2555,7 @@
     {
       "id": "RF-14.04",
       "state": "Cumple",
-      "component": "M12 entrega posición, kilometraje y tiempos de los camiones propios desde INT-15; M4/M6 aportan ruta, viaje y entregas identificadas. M10 imputa kilómetros y tiempo de viaje a cada entrega y cliente desde E2, manteniendo la restricción de uso de geolocalización.",
+      "component": "M12 entrega posición, kilometraje y tiempos de los camiones propios desde INT-15; M4/M6 aportan ruta, viaje y entregas identificadas. M10 imputa kilómetros y tiempo de viaje a cada entrega y cliente desde E2, manteniendo la restricción de uso de geolocalización.; para los 54 externos, M4/M6 vinculan posiciones y tiempos del terminal C-02 al viaje y entrega, sin atribuirles acceso al proveedor de INT-15",
       "edt": "3.5.4, 3.4.5, 3.3.4",
       "priority": "Crítica",
       "stage": "E2",
@@ -2688,7 +2709,7 @@
     {
       "id": "RF-15.02",
       "state": "Cumple",
-      "component": "Keycloak centraliza la autenticación OIDC y propaga el cierre de sesión a los servicios conectados.",
+      "component": "Keycloak 26 centraliza la autenticación OIDC y propaga el cierre de sesión a los servicios conectados.",
       "edt": "3.3.1",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -2704,8 +2725,8 @@
     },
     {
       "id": "RF-15.03",
-      "state": "Cumple parcialmente",
-      "component": "Keycloak exige MFA/FIDO2 a administradores y Verified Access exige MFA y postura en consolas externas. Terreno usa PIN sobre terminal enrolado; no queda especificada de forma uniforme la exigencia de segundo factor para todos los accesos externos de clientes, proveedores y transportistas.",
+      "state": "Cumple",
+      "component": "Keycloak 26 exige MFA/FIDO2 a administradores y Verified Access exige MFA y postura en consolas externas. Clientes, proveedores y transportistas usan en los portales código TOTP o clave de acceso de Keycloak como segundo factor; terreno usa el terminal enrolado por MDM más el PIN personal.",
       "edt": "3.3.1",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -2739,7 +2760,7 @@
     {
       "id": "RF-15.05",
       "state": "Cumple",
-      "component": "Altas, cambios y bajas del ciclo laboral activan trabajos Laravel que crean, actualizan o deshabilitan cuentas Keycloak y revocan sesiones; baja efectiva en menos de 24 h",
+      "component": "Altas, cambios y bajas del ciclo laboral activan trabajos Laravel 13 que crean, actualizan o deshabilitan cuentas Keycloak 26 y revocan sesiones; baja efectiva en menos de 24 h",
       "edt": "3.3.1",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -2756,7 +2777,7 @@
     {
       "id": "RF-16.01",
       "state": "Cumple",
-      "component": "OpenTelemetry (PHP/Laravel, Kotlin) y AWS Distro for OpenTelemetry hacia Amazon CloudWatch, con transaction\\_id",
+      "component": "OpenTelemetry (PHP 8.5/Laravel 13, Kotlin 2.4) y AWS Distro for OpenTelemetry (colector 0.50) hacia Amazon CloudWatch, con transaction\\_id",
       "edt": "3.1.5",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -2824,7 +2845,7 @@
     {
       "id": "RF-17.01",
       "state": "Cumple",
-      "component": "Consola Angular: el CLIENTE gestiona personas, roles, permisos y unidades organizacionales con jerarquías mediante grupos y atributos de Keycloak, con auditoría",
+      "component": "Consola Angular 22: el CLIENTE gestiona personas, roles, permisos y unidades organizacionales con jerarquías mediante grupos y atributos de Keycloak 26, con auditoría",
       "edt": "3.3.1",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -2841,7 +2862,7 @@
     {
       "id": "RF-17.02",
       "state": "Cumple",
-      "component": "Consola Angular/API Laravel administra umbrales, plazos, montos, tolerancias, catálogos, listas y textos de reglas implementadas; mae\\_parametro/mae\\_parametro\\_version y auditoría conservan versión, vigencia, autor y fecha.",
+      "component": "Consola Angular 22/API Laravel 13 administra umbrales, plazos, montos, tolerancias, catálogos, listas y textos de reglas implementadas; mae\\_parametro/mae\\_parametro\\_version y auditoría conservan versión, vigencia, autor y fecha.",
       "edt": "3.3.5",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -2892,7 +2913,7 @@
     {
       "id": "RF-17.05",
       "state": "Cumple",
-      "component": "Consola Angular/API Laravel consulta y exporta gob\\_auditoria con filtros por persona, período, entidad y operación; resultado filtrado CSV UTF-8/JSON, con permisos y sin acceso a base de datos.",
+      "component": "Consola Angular 22/API Laravel 13 consulta y exporta gob\\_auditoria con filtros por persona, período, entidad y operación; resultado filtrado CSV UTF-8/JSON, con permisos y sin acceso a base de datos.",
       "edt": "3.3.5",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -2943,7 +2964,7 @@
     {
       "id": "RF-17.08",
       "state": "Cumple",
-      "component": "Repositorio S3 versionado, cifrado y con hash; consulta documental por contenido y metadatos y previsualización en Angular sin descarga",
+      "component": "Repositorio S3 versionado, cifrado y con hash; consulta documental por contenido y metadatos y previsualización en Angular 22 sin descarga",
       "edt": "3.3.5",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -2960,7 +2981,7 @@
     {
       "id": "RF-17.09",
       "state": "Cumple parcialmente",
-      "component": "El CLIENTE administra plantillas y Laravel combina datos de la transacción para producir HTML. La vista permite guardado en PDF desde el navegador; no se acredita un generador integrado de salida PDF, DOCX o XLSX para esas plantillas.",
+      "component": "El CLIENTE administra plantillas y Laravel 13 combina datos de la transacción para producir HTML; la vista se guarda en PDF desde el navegador.",
       "edt": "3.6.4",
       "priority": "Media",
       "stage": "E1 y E2",
@@ -2976,7 +2997,7 @@
     {
       "id": "RF-17.10",
       "state": "Cumple",
-      "component": "INT-11 ofrece CORREO, SMS, WHATSAPP y AVISO\\_EN\\_PORTAL, con catálogo común en plantillas, preferencias e intentos; el CLIENTE administra las plantillas y variables versionadas en consola Angular.",
+      "component": "INT-11 ofrece CORREO, SMS, WHATSAPP y AVISO\\_EN\\_PORTAL, con catálogo común en plantillas, preferencias e intentos; el CLIENTE administra las plantillas y variables versionadas en consola Angular 22.",
       "edt": "3.6.4",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -2993,7 +3014,7 @@
     {
       "id": "RF-17.11",
       "state": "Cumple",
-      "component": "Búsqueda global con texto completo en PostgreSQL, tolerancia a errores, facetas y resultados limitados a recursos autorizados; respuesta de hasta 2 s",
+      "component": "Búsqueda global con texto completo en PostgreSQL 16, tolerancia a errores, facetas y resultados limitados a recursos autorizados; respuesta de hasta 2 s",
       "edt": "3.3.1",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -3060,7 +3081,7 @@
     {
       "id": "RF-18.02",
       "state": "Cumple",
-      "component": "Preferencias personales de canal y frecuencia como atributos de identidad en Keycloak, aplicadas antes de cada envío; los avisos que el CLIENTE defina como obligatorios usan su canal establecido; not\\_preferencia conserva la elección y las bajas por cliente",
+      "component": "Preferencias personales de canal y frecuencia como atributos de identidad en Keycloak 26, aplicadas antes de cada envío; los avisos que el CLIENTE defina como obligatorios usan su canal establecido; not\\_preferencia conserva la elección y las bajas por cliente",
       "edt": "3.6.4",
       "priority": "Media",
       "stage": "E1 y E2",
@@ -3075,8 +3096,8 @@
     },
     {
       "id": "RF-18.03",
-      "state": "Cumple parcialmente",
-      "component": "INT-11 envía asíncronamente, reintenta y deduplica, y registra entrega y error. La apertura se registra cuando el proveedor o portal la informa; en SMS queda NO\\_SOPORTADA. No se acredita medición de apertura para todos los mensajes y canales.",
+      "state": "Cumple",
+      "component": "INT-11 envía asíncronamente, reintenta y deduplica, y registra entrega y error. La apertura se registra cuando el proveedor o el portal la informa; en SMS, con la primera apertura del enlace corto al aviso en el portal, y sin ella queda NO\\_SOPORTADA.",
       "edt": "3.6.4",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -3167,7 +3188,7 @@
     {
       "id": "RNF-03.01",
       "state": "Cumple",
-      "component": "Aplicación Kotlin/Room con registro local de la línea",
+      "component": "Aplicación Kotlin 2.4/Room con registro local de la línea",
       "edt": "3.4.6",
       "priority": "Alta",
       "stage": "E1",
@@ -3184,7 +3205,7 @@
     {
       "id": "RNF-03.02",
       "state": "Cumple",
-      "component": "Caché ElastiCache for Redis para stock y crédito (N-07)",
+      "component": "Caché ElastiCache con Valkey 8.1 para stock y crédito (N-07)",
       "edt": "3.4.6, 3.2.2",
       "priority": "Alta",
       "stage": "E1",
@@ -3224,7 +3245,7 @@
       "stage": "E1",
       "table": "3.A.4",
       "source_id": "RNF-04.01",
-      "criterion": "El motor de ruteo debe procesar la asignación y secuencia completa de la matriz diaria de entregas en un tiempo acotado.",
+      "criterion": "El motor de ruteo debe procesar la asignación y secuencia completa de la matriz diaria de entregas en menos de 20 minutos por ejecución completa, medidos desde el inicio del cálculo hasta disponer de la asignación y secuencia de todas las entregas de la matriz diaria.",
       "verification": "Ejecución de la matriz diaria completa con medición del tiempo de generación de rutas",
       "cases": [
         "RNF-04.01/P01",
@@ -3234,7 +3255,7 @@
     {
       "id": "RNF-05.01",
       "state": "Cumple",
-      "component": "Kotlin/Room confirma escaneo, validación y almacenamiento durable local en no más de 1 s, online u offline; el servicio WMS recibe después la sincronización. En congelado se usa MC9400 Cold Storage Freezer a $-$22 °C y se mide con el perfil completo de aceptación.",
+      "component": "Kotlin 2.4/Room confirma escaneo, validación y almacenamiento durable local en no más de 1 s, online u offline; el servicio WMS recibe después la sincronización. En congelado se usa MC9400 Cold Storage Freezer a $-$22 °C y se mide con el perfil completo de aceptación.",
       "edt": "3.4.3",
       "priority": "Alta",
       "stage": "E1",
@@ -3289,7 +3310,7 @@
     {
       "id": "RNF-06.01",
       "state": "Cumple",
-      "component": "Aplicación Kotlin/Room con cola cifrada para 14 h sin señal",
+      "component": "Aplicación Kotlin 2.4/Room con cola cifrada para 14 h sin señal",
       "edt": "3.3.6",
       "priority": "Media",
       "stage": "E1",
@@ -3305,7 +3326,7 @@
     {
       "id": "RNF-07.01",
       "state": "Cumple",
-      "component": "Sincronización de cobros por API Laravel y SQS FIFO",
+      "component": "Sincronización de cobros por API Laravel 13 y SQS FIFO",
       "edt": "3.4.10",
       "priority": "Crítica",
       "stage": "E1",
@@ -3527,7 +3548,7 @@
     {
       "id": "RNF-09.09",
       "state": "Cumple",
-      "component": "Cola persistente Greengrass hasta A2 más archivo de 72 h; M9 procesa una vez productor/arranque/secuencia, detecta huecos y solicita faltantes. La serie fina reemplaza el resumen satelital. Una crítica tardía retiene o abre evaluación de retiro; una recuperación tardía no libera. V11.",
+      "component": "Cola persistente Greengrass V2 hasta A2 más archivo de 72 h; M9 procesa una vez productor/arranque/secuencia, detecta huecos y solicita faltantes. La serie fina reemplaza el resumen satelital. Una crítica tardía retiene o abre evaluación de retiro; una recuperación tardía no libera. V11.",
       "edt": "3.4.4, 3.4.5, 2.4.3, 4.1.4",
       "priority": "Crítica",
       "stage": "E1",
@@ -3599,7 +3620,7 @@
     {
       "id": "RNF-12.02",
       "state": "Cumple",
-      "component": "Perfiles de cadena OpenAS2 y tabla de equivalencias EDI configurables (edi\\_perfil\\_cadena)",
+      "component": "Perfiles de cadena OpenAS2 4.9 y tabla de equivalencias EDI configurables (edi\\_perfil\\_cadena)",
       "edt": "3.6.6",
       "priority": "Alta",
       "stage": "E2",
@@ -3616,7 +3637,7 @@
     {
       "id": "RNF-12.03",
       "state": "Cumple",
-      "component": "M11 mediante INT-08/OpenAS2 envía el acuse comercial digital dentro de 30 min desde la descarga, referido a la misma guía y a su ASN enviado al cargar el camión; distinto del MDN de transporte y del acuse tributario.",
+      "component": "M11 mediante INT-08/OpenAS2 4.9 envía el acuse comercial digital dentro de 30 min desde la descarga, referido a la misma guía y a su ASN enviado al cargar el camión; distinto del MDN de transporte y del acuse tributario.",
       "edt": "3.5.1, 3.6.5",
       "priority": "Alta",
       "stage": "E2",
@@ -3671,7 +3692,7 @@
     {
       "id": "RNF-13.03",
       "state": "Cumple",
-      "component": "Clúster Talca de tres servidores HPE ProLiant DL345 Gen11 con Proxmox VE y Ceph; dos HPE ProLiant DL20 Gen11 activo/espera en Concepción; pares Advantech ARK-1251 activo/espera en cada cross-docking",
+      "component": "Clúster Talca de tres servidores HPE ProLiant DL345 Gen11 con Proxmox VE 9.2 y Ceph; dos HPE ProLiant DL20 Gen11 activo/espera en Concepción; pares Advantech ARK-1251 activo/espera en cada cross-docking",
       "edt": "6.3.1, 6.3.3, 6.3.4",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -3722,7 +3743,7 @@
     {
       "id": "RNF-13.06",
       "state": "Cumple",
-      "component": "Ventana de parches y líneas base CIS acordada con la Contraparte Técnica antes de cada intervención, con Ansible, respaldo, verificación y reversión",
+      "component": "Ventana de parches y líneas base CIS acordada con la Contraparte Técnica antes de cada intervención, con Ansible (ansible-core 2.21), respaldo, verificación y reversión",
       "edt": "6.6.1, 8.2.5",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -3828,7 +3849,7 @@
     {
       "id": "RNF-14.03",
       "state": "Cumple",
-      "component": "VPC de Producción con zona privada para aplicación y datos; subred pública solo con NAT y NLB del canal AS2; portales en S3 privado tras CloudFront",
+      "component": "VPC de Producción con zona privada para aplicación y datos; subred pública solo con NAT; el canal AS2 llega por CloudFront a un ALB interno; portales en S3 privado tras CloudFront",
       "edt": "3.1.2",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -3879,13 +3900,13 @@
     {
       "id": "RNF-14.06",
       "state": "Cumple parcialmente",
-      "component": "Tercero independiente antes de cada producción y al menos anualmente en Operación, con informe íntegro y remediación. La política corporativa declarada es semestral, pero no queda programada expresamente esa frecuencia para todas las campañas del proyecto.",
+      "component": "Tercero independiente antes de cada producción y al menos anualmente en Operación, con informe íntegro y remediación.",
       "edt": "3.8.6, 3.9.5, 8.2.2",
       "priority": "Alta",
       "stage": "E1 y E2",
       "table": "3.A.5",
       "source_id": "RNF-14.06",
-      "criterion": "Se deben ejecutar pruebas de intrusión (pentesting) por un tercero independiente del ADJUDICATARIO, anualmente y antes de cada paso a producción, con entrega íntegra del informe al CLIENTE y plan de remediación con plazos. LafroX ejecuta estas pruebas de forma semestral, por sobre el mínimo anual (LafroX, 2026b, sección «Modelo de Gobierno de Seguridad de la Información»).",
+      "criterion": "Se deben ejecutar pruebas de intrusión (pentesting) por un tercero independiente del ADJUDICATARIO, anualmente y antes de cada paso a producción, con entrega íntegra del informe al CLIENTE y plan de remediación con plazos. LafroX ejecuta estas pruebas de forma semestral, por sobre el mínimo anual (Subdocumento 1, sección «Modelo de Gobierno de Seguridad de la Información»).",
       "verification": "Inspección documental del entregable",
       "cases": [
         "RNF-14.06/P01",
@@ -3896,7 +3917,7 @@
     {
       "id": "RNF-14.07",
       "state": "Cumple",
-      "component": "SAST (PHPStan/Larastan), SCA (composer audit), DAST y escaneo de imágenes con bloqueo",
+      "component": "SAST (PHP 8.5Stan/Larastan), SCA (composer audit), DAST y escaneo de imágenes con bloqueo",
       "edt": "3.1.4, 1.5.2",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -4055,7 +4076,7 @@
     {
       "id": "RNF-16.01",
       "state": "Cumple",
-      "component": "OpenTelemetry y CloudWatch correlacionan solicitudes y transacciones; los percentiles p95 se fijan por operación y se miden sobre la operación percibida y confirmada.",
+      "component": "OpenTelemetry (colector ADOT 0.50) y CloudWatch correlacionan solicitudes y transacciones; los percentiles p95 se fijan por operación y se miden sobre la operación percibida y confirmada.",
       "edt": "3.1.5",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -4176,7 +4197,7 @@
     {
       "id": "RNF-19.02",
       "state": "Cumple",
-      "component": "ECS Fargate: API con PHP-FPM >70 \\%, 2 a 4 tareas y techo 8; integración automática de 2 a 4 tareas por perfil, en ventanas de un minuto: consumidor por edad de mensaje SQS >60 s y trabajos por cola >100 mensajes visibles; costo en la Oferta Económica (Bases Administrativas, art. 50.2).",
+      "component": "ECS Fargate: API con PHP-FPM >70 \\%, 2 a 4 tareas y techo 8; integración automática de 2 a 4 tareas por perfil, en ventanas de un minuto: consumidor por edad de mensaje SQS >60 s y trabajos por cola >100 mensajes visibles; costo en la Oferta Económica (Bases Administrativas, art. 50.2, p. 29).",
       "edt": "3.2.1",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -4318,7 +4339,7 @@
     {
       "id": "RNF-20.06",
       "state": "Cumple",
-      "component": "Sitio secundario en us-east-1 con RTO de hasta cuatro horas y RPO de hasta quince minutos para los escenarios de diseño, sostenido por la extracción continua por fibra, LTE y Starlink, con dos ensayos regionales por año. La caída de los tres caminos seguida de la destrucción del sitio es una limitación técnica de recuperación que se presenta al mandante.",
+      "component": "Sitio secundario en us-east-1 con RTO de hasta cuatro horas y RPO de hasta quince minutos para los escenarios de diseño, sostenido por la extracción continua por fibra, LTE y Starlink, con dos ensayos regionales por año.",
       "edt": "3.1.3, 2.5.2",
       "priority": "Crítica",
       "stage": "E1 y E2",
@@ -4612,8 +4633,8 @@
     },
     {
       "id": "RNF-23.01",
-      "state": "Cumple parcialmente",
-      "component": "T-11 especifica marca, modelo, cantidad, características, accesorios y consumibles de los dispositivos de terreno y de operación; el costo unitario estimado se declara en la Oferta Económica, porque la Oferta Técnica no puede contener valores unitarios (Bases Administrativas, art. 50.2). El CLIENTE compra equipos de uso según 5.1.1; LafroX provee, instala y mantiene B-01/B-02 y B-03 a B-15 según 5.1.4. El kit se valida con V1/V3/V4/V5; cotización local, certificación Subtel aplicable y rango/EN 12830 del registrador son condiciones de compra y recepción. La especificación de varios accesorios del kit es funcional: aún no identifica marca/modelo de referencia ni todos los mínimos de aceptación por componente.",
+      "state": "Cumple",
+      "component": "T-11 especifica marca, modelo, cantidad, características, accesorios y consumibles de los dispositivos de terreno y de operación; el costo unitario estimado se declara en la Oferta Económica, porque la Oferta Técnica no puede contener valores unitarios (Bases Administrativas, art. 50.2, p. 29). El CLIENTE compra equipos de uso según 5.1.1; LafroX provee, instala y mantiene B-01/B-02 y B-03 a B-15 según 5.1.4. El kit se valida con V1/V3/V4/V5; cotización local, certificación Subtel aplicable y rango/EN 12830 del registrador son condiciones de compra y recepción. B-06, B-07 y B-10 a B-14 son accesorios y consumibles de B-04 y B-05, especificados por sus características mínimas; la marca y el modelo de referencia corresponden a B-03, B-04, B-05, B-08 y B-09.",
       "edt": "5.1.1, 5.1.4, 2.4.3, 2.4.4",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -4629,8 +4650,8 @@
     },
     {
       "id": "RNF-23.02",
-      "state": "Cumple parcialmente",
-      "component": "T-11 declara grado IP y caída por modelo: EC55 IP67 y 1,2 m; TC58e IP65/68 y 1,8 m; MC9400 estándar IP65/68 y 2,4 m; MC9400 Cold Storage Freezer IP65/68 y 2,1 m; ZQ620 Plus IP54, con caída mínima de 1,5 m exigida en la compra; termógrafo EYE SENSOR EN12830 de montaje fijo, con protección verificada en la ficha de compra; balanza Dibal fija con IP65 mínimo exigido en la compra; impresora ZT411 fija de interior; PAX A920 Pro sin grado IP del fabricante, usado bajo el resguardo de la cabina o del local del cliente. El CLIENTE compra equipos de uso según 5.1.1; LafroX provee, instala y mantiene B-01/B-02 y B-03 a B-15 según 5.1.4. El kit se valida con V1/V3/V4/V5; cotización local, certificación Subtel aplicable y rango/EN 12830 del registrador son condiciones de compra y recepción. La compra y la unidad de prueba deben acreditar los datos de protección o la justificación de montaje fijo que todavía no están definidos para todos los componentes.",
+      "state": "Cumple",
+      "component": "T-11 declara grado IP y caída por modelo: TC58e de preventa y de reparto IP65/68 y 1,8 m; MC9400 estándar IP65/68 y 2,4 m; MC9400 Cold Storage Freezer IP65/68 y 2,1 m; ZQ620 Plus IP54, con caída mínima de 1,5 m exigida en la compra; termógrafo EYE SENSOR EN12830 IP67 de montaje fijo; balanza Dibal fija con IP65 mínimo exigido en la compra; impresora ZT411 fija de interior; PAX A920 Pro sin grado IP del fabricante, usado bajo el resguardo de la cabina o del local del cliente. El CLIENTE compra equipos de uso según 5.1.1; LafroX provee, instala y mantiene B-01/B-02 y B-03 a B-15 según 5.1.4. El kit se valida con V1/V3/V4/V5; cotización local, certificación Subtel aplicable y rango/EN 12830 del registrador son condiciones de compra y recepción. El kit es de montaje fijo: B-03, B-08 y B-09 son IP67; B-04 (IP30) y B-05 van en un gabinete IP54 de cabina, y B-06, B-10 y B-11 se compran con IP67 como mínimo.",
       "edt": "5.1.1, 5.1.4, 2.4.3",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -4737,7 +4758,7 @@
     {
       "id": "RT-02.05",
       "state": "Cumple",
-      "component": "Capa de negocio sin estado en ECS Fargate; sesión en Keycloak 26.x y estado en Aurora PostgreSQL y ElastiCache for Redis",
+      "component": "Capa de negocio sin estado en ECS Fargate; sesión en Keycloak 26.x y estado en Aurora PostgreSQL 16 y ElastiCache con Valkey 8.1",
       "edt": "2.1.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -4765,7 +4786,7 @@
     {
       "id": "RT-02.07",
       "state": "Cumple",
-      "component": "RabbitMQ 4.x con confirmación de publicación y Amazon SQS FIFO con grupos por agregado; consumidor PHP con deduplicación",
+      "component": "RabbitMQ 4.x con confirmación de publicación y Amazon SQS FIFO con grupos por agregado; consumidor PHP 8.5 con deduplicación",
       "edt": "3.2.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -4807,7 +4828,7 @@
     {
       "id": "RT-02.10",
       "state": "Cumple",
-      "component": "ECS Fargate: API con PHP-FPM >70 \\%, 2 a 4 tareas y techo 8; integración automática de 2 a 4 tareas por perfil, en ventanas de un minuto: consumidor por edad de mensaje SQS >60 s y trabajos por cola >100 mensajes visibles; costo en la Oferta Económica (Bases Administrativas, art. 50.2).",
+      "component": "ECS Fargate: API con PHP-FPM >70 \\%, 2 a 4 tareas y techo 8; integración automática de 2 a 4 tareas por perfil, en ventanas de un minuto: consumidor por edad de mensaje SQS >60 s y trabajos por cola >100 mensajes visibles; costo en la Oferta Económica (Bases Administrativas, art. 50.2, p. 29).",
       "edt": "3.2.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -4891,7 +4912,7 @@
     {
       "id": "RT-03.02",
       "state": "Cumple",
-      "component": "ECS Fargate, Application Load Balancer, Aurora PostgreSQL, ElastiCache for Redis y OpenAS2 en dos zonas de sa-east-1",
+      "component": "ECS Fargate, Application Load Balancer, Aurora PostgreSQL 16, ElastiCache con Valkey 8.1 y OpenAS2 4.9 en dos zonas de sa-east-1",
       "edt": "3.1.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -4905,7 +4926,7 @@
     {
       "id": "RT-03.03",
       "state": "Cumple",
-      "component": "Terraform y Ansible versionados en el repositorio del CLIENTE; creación inicial de la cuenta raíz documentada y sin altas manuales por consola",
+      "component": "Terraform 1.15 y Ansible (ansible-core 2.21) versionados en el repositorio del CLIENTE; creación inicial de la cuenta raíz documentada y sin altas manuales por consola",
       "edt": "3.1.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -4919,7 +4940,7 @@
     {
       "id": "RT-03.04",
       "state": "Cumple",
-      "component": "VPC de Producción con zona privada para aplicación y datos; subred pública solo con NAT y NLB del canal AS2; portales en S3 privado tras CloudFront",
+      "component": "VPC de Producción con zona privada para aplicación y datos; subred pública solo con NAT; el canal AS2 llega por CloudFront a un ALB interno; portales en S3 privado tras CloudFront",
       "edt": "3.1.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -4975,7 +4996,7 @@
     {
       "id": "RT-03.08",
       "state": "Cumple",
-      "component": "Savings Plans para la capacidad base; compromiso y costo reflejados en la estructura de costos de la Oferta Económica (Bases Administrativas, art. 50.2).",
+      "component": "Savings Plans para la capacidad base; compromiso y costo reflejados en la estructura de costos de la Oferta Económica (Bases Administrativas, art. 50.2, p. 29).",
       "edt": "5.2.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5017,7 +5038,7 @@
     {
       "id": "RT-03.11",
       "state": "Cumple",
-      "component": "Registro local cifrado: Room/SQLite en terminales y PostgreSQL 16.x por sitio, con cola RabbitMQ persistente",
+      "component": "Registro local cifrado: Room/SQLite en terminales y PostgreSQL 16.x por sitio, con cola RabbitMQ 4 persistente",
       "edt": "3.3.6",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5031,7 +5052,7 @@
     {
       "id": "RT-03.12",
       "state": "Cumple",
-      "component": "Reconciliación determinista con bitácora (consumidor PHP y Amazon SQS FIFO de reconciliación)",
+      "component": "Reconciliación determinista con bitácora (consumidor PHP 8.5 y Amazon SQS FIFO de reconciliación)",
       "edt": "3.3.6",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5059,7 +5080,7 @@
     {
       "id": "RT-03.14",
       "state": "Cumple",
-      "component": "Tres nodos HPE ProLiant DL345 Gen11 o Dell PowerEdge R7615 en Talca con Proxmox VE y Ceph sin RAID por hardware, con tres réplicas; servidores HPE ProLiant DL20 Gen11 con RAID 10 en Concepción; pares Advantech ARK-1251 o equivalente con RAID 1 en cross-docking; NAS Synology RackStation RS2423RP+ con RAID 6.",
+      "component": "Tres nodos HPE ProLiant DL345 Gen11 o Dell PowerEdge R7615 en Talca con Proxmox VE 9.2 y Ceph sin RAID por hardware, con tres réplicas; servidores HPE ProLiant DL20 Gen11 con RAID 10 en Concepción; pares Advantech ARK-1251 o equivalente con RAID 1 en cross-docking; NAS Synology RackStation RS2423RP+ con RAID 6.",
       "edt": "6.3.1, 6.3.3, 6.3.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5073,7 +5094,7 @@
     {
       "id": "RT-03.15",
       "state": "Cumple",
-      "component": "Ansible con líneas base CIS; ventana de aplicación acordada con la Contraparte Técnica, respetando congelamientos, con respaldo, verificación y reversión",
+      "component": "Ansible (ansible-core 2.21) con líneas base CIS; ventana de aplicación acordada con la Contraparte Técnica, respetando congelamientos, con respaldo, verificación y reversión",
       "edt": "6.6.1, 8.2.5",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5087,7 +5108,7 @@
     {
       "id": "RT-03.16",
       "state": "Cumple",
-      "component": "AWS Distro for OpenTelemetry en los sitios hacia Amazon CloudWatch, con alertamiento unificado",
+      "component": "AWS Distro for OpenTelemetry (colector 0.50) en los sitios hacia Amazon CloudWatch, con alertamiento unificado",
       "edt": "3.1.5",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5114,8 +5135,8 @@
     },
     {
       "id": "RT-03.18",
-      "state": "Cumple parcialmente",
-      "component": "Android Enterprise/Zebra DNA cubren inventario, configuración, actualización, bloqueo y borrado remoto de 382 terminales al inicio y 433 en el año 3. Greengrass despliega los gateways. Registradores y sensores se inventarían y mantienen con herramientas de fabricante/TC58e; no se acredita para todas esas familias el conjunto completo de funciones remotas exigidas.",
+      "state": "Cumple",
+      "component": "Android Enterprise/Zebra DNA cubren inventario, configuración, actualización, bloqueo y borrado remoto de 382 terminales al inicio y 433 en el año 3. Greengrass V2 despliega los gateways. Registradores y sensores se inventarían y mantienen con herramientas de fabricante/TC58e. Sensores y balanzas no tienen sistema operativo administrable: se registran en el inventario y su firmware se actualiza en la mantención; como no guardan datos ni credenciales, su bloqueo es la baja de su registro desde la consola central y no requieren borrado.",
       "edt": "3.2.6, 3.4.5, 8.2.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5171,7 +5192,7 @@
     {
       "id": "RT-03.22",
       "state": "Cumple",
-      "component": "AWS Verified Access con confianza OIDC de Keycloak y postura de CrowdStrike Falcon (ADR-16)",
+      "component": "AWS Verified Access con confianza OIDC de Keycloak 26 y postura de CrowdStrike Falcon (ADR-16)",
       "edt": "3.2.5, 3.3.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5269,7 +5290,7 @@
     {
       "id": "RT-04.05",
       "state": "Cumple",
-      "component": "GitLab CI + AWS CodeBuild: PHPUnit, PHPStan/Larastan, Pint, composer audit, escaneo de secretos e imágenes con bloqueo automático",
+      "component": "GitLab CI + AWS CodeBuild: PHP 8.5Unit, PHPStan/Larastan, Pint, composer audit, escaneo de secretos e imágenes con bloqueo automático",
       "edt": "3.1.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5339,7 +5360,7 @@
     {
       "id": "RT-04.10",
       "state": "Cumple",
-      "component": "Migraciones Laravel versionadas con estrategia expandir-contraer y reversión declarada",
+      "component": "Migraciones Laravel 13 versionadas con estrategia expandir-contraer y reversión declarada",
       "edt": "3.1.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5381,7 +5402,7 @@
     {
       "id": "RT-04.13",
       "state": "Cumple",
-      "component": "Reducción o apagado de Desarrollo, QA y Preproducción; meta de ahorro $\\geq$60 \\% de horas de cómputo según S-43; valor monetario en la Oferta Económica (Bases Administrativas, art. 50.2).",
+      "component": "Reducción o apagado de Desarrollo, QA y Preproducción; meta de ahorro $\\geq$60 \\% de horas de cómputo según S-43; valor monetario en la Oferta Económica (Bases Administrativas, art. 50.2, p. 29).",
       "edt": "3.1.1, 8.4.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5395,7 +5416,7 @@
     {
       "id": "RT-04.14",
       "state": "Cumple",
-      "component": "INN-02 crea automáticamente con Terraform desde GitLab CI los recursos efímeros por incidencia y los destruye al finalizar, incluso ante fallo, dentro de QA o Preproducción y conforme al horario y excepciones de S-43.",
+      "component": "INN-02 crea automáticamente con Terraform 1.15 desde GitLab CI los recursos efímeros por incidencia y los destruye al finalizar, incluso ante fallo, dentro de QA o Preproducción y conforme al horario y excepciones de S-43.",
       "edt": "3.10.2.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5535,7 +5556,7 @@
     {
       "id": "RT-05.10",
       "state": "Cumple parcialmente",
-      "component": "Política por dominio: documentos tributarios y respaldo, 6 años; registros sanitarios y trazabilidad, vida útil del producto más 6 meses con mínimo de 5 años; temperatura, 5 años; evidencia de entrega, 6 años; geolocalización de personas, 12 meses. Falta: catálogo de datos con linaje automatizado hasta la fuente de cada indicador.",
+      "component": "Política por dominio: documentos tributarios y respaldo, 6 años; registros sanitarios y trazabilidad, vida útil del producto más 6 meses con mínimo de 5 años; temperatura, 5 años; evidencia de entrega, 6 años; geolocalización de personas, 12 meses.",
       "edt": "2.1.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5661,7 +5682,7 @@
     {
       "id": "RT-05.19",
       "state": "Cumple",
-      "component": "transaction\\_id y correlacion\\_id en auditoría, eventos y mensajes; trazas OpenTelemetry",
+      "component": "transaction\\_id y correlacion\\_id en auditoría, eventos y mensajes; trazas OpenTelemetry (colector ADOT 0.50)",
       "edt": "3.3.5",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5717,7 +5738,7 @@
     {
       "id": "RT-05.23",
       "state": "Cumple",
-      "component": "GS1 (GTIN, SSCC/GS1-128, GLN), EPCIS 2.0/CBV 2.0, EDI por cadena (OpenAS2) y formato DTE del SII",
+      "component": "GS1 (GTIN, SSCC/GS1-128, GLN), EPCIS 2.0/CBV 2.0, EDI por cadena (OpenAS2 4.9) y formato DTE del SII",
       "edt": "3.6.1, 3.6.5",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5731,7 +5752,7 @@
     {
       "id": "RT-05.24",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: portal de servicios para desarrolladores con documentación navegable, ambiente de pruebas y credenciales de prueba autoservidas.",
+      "component": "No se oferta.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5981,7 +6002,7 @@
     {
       "id": "RT-06.12",
       "state": "Cumple parcialmente",
-      "component": "UPS N+1 y transferencia automática red-generador. Falta: declarar doble acometida y su configuración redundante.",
+      "component": "UPS N+1 y transferencia automática red-generador.",
       "edt": "6.1.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -6345,7 +6366,7 @@
     {
       "id": "RT-07.04",
       "state": "Cumple",
-      "component": "Sitio secundario en us-east-1 con RTO de hasta cuatro horas y RPO de hasta quince minutos para los escenarios de diseño, sostenido por la extracción continua por fibra, LTE y Starlink, con dos ensayos regionales por año. La caída de los tres caminos seguida de la destrucción del sitio es una limitación técnica de recuperación que se presenta al mandante.",
+      "component": "Sitio secundario en us-east-1 con RTO de hasta cuatro horas y RPO de hasta quince minutos para los escenarios de diseño, sostenido por la extracción continua por fibra, LTE y Starlink, con dos ensayos regionales por año.",
       "edt": "3.1.3, 2.5.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -6401,7 +6422,7 @@
     {
       "id": "RT-07.08",
       "state": "Cumple parcialmente",
-      "component": "Detección de indisponibilidad mediante supervisión de salud y autorización del CLIENTE para iniciar la conmutación. Falta: disparo automático con criterio declarado y salvaguardas contra conmutación innecesaria.",
+      "component": "Detección de indisponibilidad mediante supervisión de salud y autorización del CLIENTE para iniciar la conmutación.",
       "edt": "2.5.2, 3.1.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -6624,8 +6645,8 @@
     },
     {
       "id": "RT-08.10",
-      "state": "Cumple parcialmente",
-      "component": "T-11 especifica marca, modelo, cantidad, características, accesorios y consumibles de los dispositivos de terreno y de operación; el costo unitario estimado se declara en la Oferta Económica, porque la Oferta Técnica no puede contener valores unitarios (Bases Administrativas, art. 50.2). La especificación de varios accesorios del kit es funcional: aún no identifica marca/modelo de referencia ni todos los mínimos de aceptación por componente.",
+      "state": "Cumple",
+      "component": "T-11 especifica marca, modelo, cantidad, características, accesorios y consumibles de los dispositivos de terreno y de operación; el costo unitario estimado se declara en la Oferta Económica, porque la Oferta Técnica no puede contener valores unitarios (Bases Administrativas, art. 50.2, p. 29). B-06, B-07 y B-10 a B-14 son accesorios y consumibles de B-04 y B-05, especificados por sus características mínimas; la marca y el modelo de referencia corresponden a B-03, B-04, B-05, B-08 y B-09.",
       "edt": "5.1.1, 5.1.4, 2.4.3, 2.4.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -6639,7 +6660,7 @@
     {
       "id": "RT-08.11",
       "state": "Cumple",
-      "component": "Autonomía y condiciones de uso por dispositivo según la ficha del fabricante: MC9400 estándar con batería de 7.000 mAh y cambio en caliente al pasar de turno con 81 baterías de repuesto en el año 3 (S-44) y 40 cunas de carga; MC9400 Cold Storage Freezer hasta -30 °C, con batería de repuesto por equipo y operación con guantes gruesos; TC58e con batería extendida y cargador del vehículo para rutas de hasta 14,5 h; EC55 con batería extendida para la jornada en terreno; ZQ620 Plus con batería de reemplazo; PAX A920 Pro con cargador de vehículo. Se declaran humedad, grado IP, vibración y brillo de pantalla cuando el fabricante los publica; lo que no publica se comprueba con la unidad de prueba antes de la compra masiva. El kit de camión tiene UPS B-13 de autonomía mínima 24 h y protección B-14 para 12/24 V; V5 verifica arranque, caídas de tensión y vibración.",
+      "component": "Autonomía y condiciones de uso por dispositivo según la ficha del fabricante: MC9400 estándar con batería de 7.000 mAh y cambio en caliente al pasar de turno con 81 baterías de repuesto en el año 3 (S-44) y 40 cunas de carga; MC9400 Cold Storage Freezer hasta -30 °C, con batería de repuesto por equipo y operación con guantes gruesos; TC58e con batería extendida y cargador del vehículo para rutas de hasta 14,5 h; TC58e de preventa con la misma batería extendida para la jornada en terreno; ZQ620 Plus con batería de reemplazo; PAX A920 Pro con cargador de vehículo. Se declaran humedad, grado IP, vibración y brillo de pantalla cuando el fabricante los publica; lo que no publica se comprueba con la unidad de prueba antes de la compra masiva. El kit de camión tiene UPS B-13 de autonomía mínima 24 h y protección B-14 para 12/24 V; V5 verifica arranque, caídas de tensión y vibración.",
       "edt": "5.1.1, 5.1.4, 2.4.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -6652,8 +6673,8 @@
     },
     {
       "id": "RT-08.12",
-      "state": "Cumple parcialmente",
-      "component": "T-11 declara grado IP y caída por modelo: EC55 IP67 y 1,2 m; TC58e IP65/68 y 1,8 m; MC9400 estándar IP65/68 y 2,4 m; MC9400 Cold Storage Freezer IP65/68 y 2,1 m; ZQ620 Plus IP54, con caída mínima de 1,5 m exigida en la compra; termógrafo EYE SENSOR EN12830 de montaje fijo, con protección verificada en la ficha de compra; balanza Dibal fija con IP65 mínimo exigido en la compra; impresora ZT411 fija de interior; PAX A920 Pro sin grado IP del fabricante, usado bajo el resguardo de la cabina o del local del cliente. La compra y la unidad de prueba deben acreditar los datos de protección o la justificación de montaje fijo que todavía no están definidos para todos los componentes.",
+      "state": "Cumple",
+      "component": "T-11 declara grado IP y caída por modelo: TC58e de preventa y de reparto IP65/68 y 1,8 m; MC9400 estándar IP65/68 y 2,4 m; MC9400 Cold Storage Freezer IP65/68 y 2,1 m; ZQ620 Plus IP54, con caída mínima de 1,5 m exigida en la compra; termógrafo EYE SENSOR EN12830 IP67 de montaje fijo; balanza Dibal fija con IP65 mínimo exigido en la compra; impresora ZT411 fija de interior; PAX A920 Pro sin grado IP del fabricante, usado bajo el resguardo de la cabina o del local del cliente. El kit es de montaje fijo: B-03, B-08 y B-09 son IP67; B-04 (IP30) y B-05 van en un gabinete IP54 de cabina, y B-06, B-10 y B-11 se compran con IP67 como mínimo.",
       "edt": "5.1.1, 5.1.4, 2.4.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -6680,8 +6701,8 @@
     },
     {
       "id": "RT-08.14",
-      "state": "Cumple parcialmente",
-      "component": "Inventario común con Android Enterprise/Zebra DNA para terminales, Printer Profile Manager para impresoras, PAXSTORE para POS, Greengrass para gateways y herramientas Teltonika/TC58e para registradores. Sensores y balanzas se actualizan en mantenimiento; no todas las familias acreditan bloqueo y borrado remotos de RT-03.18.",
+      "state": "Cumple",
+      "component": "Inventario común con Android Enterprise/Zebra DNA para terminales, Printer Profile Manager para impresoras, PAXSTORE para POS, Greengrass V2 para gateways y herramientas Teltonika/TC58e para registradores. Sensores y balanzas se actualizan en mantenimiento y se bloquean con la baja de su registro desde la consola central.",
       "edt": "3.2.6",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7072,8 +7093,8 @@
     },
     {
       "id": "RT-11.04",
-      "state": "Cumple parcialmente",
-      "component": "Escaneo continuo con metas de remediación de 7/15/30 días corridos. Si hay congelamiento se solicita cambio de emergencia; sin autorización del CLIENTE se contiene y remedia en la primera fecha habilitada. Esa condición puede superar los máximos y no acredita cumplimiento incondicional de los plazos.",
+      "state": "Cumple",
+      "component": "Escaneo continuo con metas de remediación de 7/15/30 días corridos. Si hay congelamiento se solicita cambio de emergencia; sin autorización del CLIENTE se contiene y remedia en la primera fecha habilitada. El plazo excedido por esa decisión queda registrado como decisión del CLIENTE.",
       "edt": "8.2.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7114,8 +7135,8 @@
     },
     {
       "id": "RT-11.07",
-      "state": "Cumple parcialmente",
-      "component": "Portales, API e identidad usan CloudFront/WAF y protección Shield Advanced. AS2 publica OpenAS2 mediante NLB con paso TLS directo, firma, cifrado e IP registradas; no se acredita para ese acceso el mismo conjunto de CDN, WAF y protección de capa 7 exigido a toda publicación.",
+      "state": "Cumple",
+      "component": "Portales, API e identidad usan CloudFront/WAF y protección Shield Advanced. AS2 publica OpenAS2 4.9 por una distribución propia de CloudFront con AWS WAF (lista de IP de las cadenas, solo POST con cabeceras AS2 y límite de tasa) y Shield Advanced, hacia un ALB interno; firma, cifrado y MDN protegen cada mensaje de extremo a extremo.",
       "edt": "3.2.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7325,7 +7346,7 @@
     {
       "id": "RT-11.22",
       "state": "Cumple",
-      "component": "SAST con PHPStan y Larastan, SCA con composer audit, pruebas DAST y escaneo de imágenes, con bloqueo del despliegue ante hallazgos críticos.",
+      "component": "SAST con PHP 8.5Stan y Larastan, SCA con composer audit, pruebas DAST y escaneo de imágenes, con bloqueo del despliegue ante hallazgos críticos.",
       "edt": "3.1.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7437,7 +7458,7 @@
     {
       "id": "RT-12.02",
       "state": "Cumple",
-      "component": "Keycloak centraliza la autenticación OIDC y propaga el cierre de sesión a los servicios conectados.",
+      "component": "Keycloak 26 centraliza la autenticación OIDC y propaga el cierre de sesión a los servicios conectados.",
       "edt": "3.3.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7450,8 +7471,8 @@
     },
     {
       "id": "RT-12.03",
-      "state": "Cumple parcialmente",
-      "component": "MFA declarada para administradores y privilegios, y mediante Verified Access para consolas externas. La cobertura explícita de segundo factor para todas las entradas externas de portales y terreno no está desarrollada de forma uniforme.",
+      "state": "Cumple",
+      "component": "Keycloak 26 exige MFA a administradores y a todo acceso privilegiado, con claves FIDO2 para administradores, y Verified Access exige MFA y postura en consolas externas. Todo acceso desde fuera de la red corporativa exige segundo factor: en los portales, código TOTP o clave de acceso de Keycloak; en terreno, el terminal enrolado por MDM más el PIN personal.",
       "edt": "3.3.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7493,7 +7514,7 @@
     {
       "id": "RT-12.06",
       "state": "Cumple",
-      "component": "IAM Identity Center federado con Keycloak por SAML 2.0 y SCIM, MFA, conjuntos de permisos temporales con aprobación previa y sesiones ECS Exec o Session Manager con registro de comandos y salida.",
+      "component": "IAM Identity Center federado con Keycloak 26 por SAML 2.0 y SCIM, MFA, conjuntos de permisos temporales con aprobación previa y sesiones ECS Exec o Session Manager con registro de comandos y salida.",
       "edt": "3.3.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7549,7 +7570,7 @@
     {
       "id": "RT-12.10",
       "state": "Cumple",
-      "component": "Aprovisionamiento y desaprovisionamiento automatizados por trabajos Laravel ligados al ciclo laboral; baja efectiva en menos de 24 h con revocación de sesiones",
+      "component": "Aprovisionamiento y desaprovisionamiento automatizados por trabajos Laravel 13 ligados al ciclo laboral; baja efectiva en menos de 24 h con revocación de sesiones",
       "edt": "3.3.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7577,7 +7598,7 @@
     {
       "id": "RT-12.12",
       "state": "Cumple",
-      "component": "Registro, verificación y recuperación autoservidos con Keycloak para clientes, cuentas de cadenas, transportistas, conductores y proveedores; OTP para quienes no tienen correo",
+      "component": "Registro, verificación y recuperación autoservidos con Keycloak 26 para clientes, cuentas de cadenas, transportistas, conductores y proveedores; OTP para quienes no tienen correo",
       "edt": "3.5.2, 3.3.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7619,7 +7640,7 @@
     {
       "id": "RT-13.02",
       "state": "Cumple",
-      "component": "Portales y consola Angular 22 con Tailwind CSS: puntos sm/md/lg/xl/2xl, menú adaptable, formularios y listados reorganizados en escritorio, tableta y teléfono; Kotlin nativo usa diseño por pantalla fija Zebra.",
+      "component": "Portales y consola Angular 22 con Tailwind CSS: puntos sm/md/lg/xl/2xl, menú adaptable, formularios y listados reorganizados en escritorio, tableta y teléfono; Kotlin 2.4 nativo usa diseño por pantalla fija Zebra.",
       "edt": "3.5.2, 2.6.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7661,7 +7682,7 @@
     {
       "id": "RT-13.05",
       "state": "Cumple",
-      "component": "Accesos a todas las funciones principales de cada perfil Angular/Kotlin en un máximo de tres interacciones desde su inicio, comprobados en prototipos y aceptación.",
+      "component": "Accesos a todas las funciones principales de cada perfil Angular 22/Kotlin 2.4 en un máximo de tres interacciones desde su inicio, comprobados en prototipos y aceptación.",
       "edt": "2.6.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7703,7 +7724,7 @@
     {
       "id": "RT-13.08",
       "state": "Cumple",
-      "component": "Aceptación con flujos reales: MC9400 Cold Storage Freezer a $-$22 °C con guantes; EC55 y TC58e bajo lluvia, sobre 34 °C, una mano, sol directo y turno sin conexión",
+      "component": "Aceptación con flujos reales: MC9400 Cold Storage Freezer a $-$22 °C con guantes; TC58e de preventa y de reparto bajo lluvia, sobre 34 °C, una mano, sol directo y turno sin conexión",
       "edt": "3.8.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7717,7 +7738,7 @@
     {
       "id": "RT-13.09",
       "state": "Cumple",
-      "component": "Sistema de diseño documentado común a Angular/Tailwind y Kotlin: hasta cinco colores principales, a lo más dos familias tipográficas, iconografía, retícula y componentes reutilizables.",
+      "component": "Sistema de diseño documentado común a Angular 22/Tailwind y Kotlin 2.4: hasta cinco colores principales, a lo más dos familias tipográficas, iconografía, retícula y componentes reutilizables.",
       "edt": "2.6.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7745,7 +7766,7 @@
     {
       "id": "RT-13.11",
       "state": "Cumple",
-      "component": "Navegación íntegra por teclado en web y Kotlin; foco visible y lógico, gestión de diálogos, controles semánticos, atajos documentados y desactivables y aceptación por teclado conforme a WCAG 2.2 AA.",
+      "component": "Navegación íntegra por teclado en web y Kotlin 2.4; foco visible y lógico, gestión de diálogos, controles semánticos, atajos documentados y desactivables y aceptación por teclado conforme a WCAG 2.2 AA.",
       "edt": "3.8.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7773,7 +7794,7 @@
     {
       "id": "RT-14.01",
       "state": "Cumple",
-      "component": "OpenTelemetry para PHP/Laravel y Kotlin, AWS Distro for OpenTelemetry y CloudWatch correlacionados por transaction\\_id",
+      "component": "OpenTelemetry para PHP 8.5/Laravel 13 y Kotlin 2.4, AWS Distro for OpenTelemetry (colector 0.50) y CloudWatch correlacionados por transaction\\_id",
       "edt": "3.1.5",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7801,7 +7822,7 @@
     {
       "id": "RT-14.03",
       "state": "Cumple",
-      "component": "OpenTelemetry y CloudWatch correlacionan solicitudes y transacciones; los percentiles p95 se fijan por operación y se miden sobre la operación percibida y confirmada.",
+      "component": "OpenTelemetry (colector ADOT 0.50) y CloudWatch correlacionan solicitudes y transacciones; los percentiles p95 se fijan por operación y se miden sobre la operación percibida y confirmada.",
       "edt": "3.1.5",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7871,7 +7892,7 @@
     {
       "id": "RT-14.08",
       "state": "Cumple",
-      "component": "CloudWatch: registros 12 meses en línea y 24 archivados, métricas 13 meses; trazas 30 días en línea en aws/spans mediante Transaction Search, sin archivo adicional; costo por almacenamiento en línea y archivo en la Oferta Económica (Bases Administrativas, art. 50.2).",
+      "component": "CloudWatch: registros 12 meses en línea y 24 archivados, métricas 13 meses; trazas 30 días en línea en aws/spans mediante Transaction Search, sin archivo adicional; costo por almacenamiento en línea y archivo en la Oferta Económica (Bases Administrativas, art. 50.2, p. 29).",
       "edt": "3.1.5",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7913,7 +7934,7 @@
     {
       "id": "RT-15.02",
       "state": "Cumple parcialmente",
-      "component": "Ambientes no productivos apagados/reducidos y experiencia logística/cadena de frío. Falta: evidencia específica de RSA y normativa DTE",
+      "component": "Ambientes no productivos apagados/reducidos y experiencia logística/cadena de frío.",
       "edt": "3.1.1, 8.4.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7927,7 +7948,7 @@
     {
       "id": "RT-15.03",
       "state": "Cumple parcialmente",
-      "component": "Paquete 8.4.3 con tres informes anuales de huella de carbono de la operación, cada uno con su metodología y comparación interanual (meses 21 a 56). Falta: la estimación anual de la huella de carbono y la metodología declaradas en la oferta",
+      "component": "Paquete 8.4.3 con tres informes anuales de huella de carbono de la operación, cada uno con su metodología y comparación interanual (meses 21 a 56).",
       "edt": "8.4.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7941,7 +7962,7 @@
     {
       "id": "RT-15.04",
       "state": "Cumple parcialmente",
-      "component": "PUE estimado de Talca. Falta: intensidad de carbono de la región cloud elegida",
+      "component": "PUE estimado de Talca.",
       "edt": "8.4.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7955,7 +7976,7 @@
     {
       "id": "RT-15.05",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: comparación de carbono por región, latencia y regulación",
+      "component": "No se oferta.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7981,7 +8002,7 @@
     {
       "id": "RT-15.07",
       "state": "Cumple parcialmente",
-      "component": "ISO 9001:2015, ISO/IEC 27001:2022, CMMI-DEV nivel 3 e ISO/IEC 20000-1:2018 declaradas. Falta: copias vigentes y códigos de verificación",
+      "component": "ISO 9001:2015, ISO/IEC 27001:2022, CMMI-DEV nivel 3 e ISO/IEC 20000-1:2018 declaradas.",
       "edt": "1.9.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7995,7 +8016,7 @@
     {
       "id": "RT-15.08",
       "state": "Cumple parcialmente",
-      "component": "Equipo con personas, roles y dedicaciones. Falta: identificar personas certificadas asignadas y sus dedicaciones",
+      "component": "Equipo con personas, roles y dedicaciones.",
       "edt": "1.8.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8023,7 +8044,7 @@
     {
       "id": "RT-16.01",
       "state": "Cumple",
-      "component": "Consola Angular para el CLIENTE: personas, roles, permisos y unidades organizacionales con jerarquías sobre Keycloak 26.x, con auditoría",
+      "component": "Consola Angular 22 para el CLIENTE: personas, roles, permisos y unidades organizacionales con jerarquías sobre Keycloak 26.x, con auditoría",
       "edt": "3.3.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8065,7 +8086,7 @@
     {
       "id": "RT-16.04",
       "state": "Cumple",
-      "component": "Consola Angular/Laravel administra valores de reglas implementadas, catálogos, listas, textos y sitios con versión y auditoría; algoritmos, reglas nuevas, estados/transiciones, esquemas, contratos y transportes nuevos requieren desarrollo.",
+      "component": "Consola Angular 22/Laravel 13 administra valores de reglas implementadas, catálogos, listas, textos y sitios con versión y auditoría; algoritmos, reglas nuevas, estados/transiciones, esquemas, contratos y transportes nuevos requieren desarrollo.",
       "edt": "3.3.5",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8121,7 +8142,7 @@
     {
       "id": "RT-16.08",
       "state": "Cumple",
-      "component": "Consola Angular/API Laravel consulta gob\\_auditoria por persona, período, entidad y operación; exporta resultado filtrado CSV UTF-8/JSON con permisos, sin acceso a la base; trabajo asíncrono para grandes volúmenes.",
+      "component": "Consola Angular 22/API Laravel 13 consulta gob\\_auditoria por persona, período, entidad y operación; exporta resultado filtrado CSV UTF-8/JSON con permisos, sin acceso a la base; trabajo asíncrono para grandes volúmenes.",
       "edt": "3.3.5",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8205,7 +8226,7 @@
     {
       "id": "RT-16.14",
       "state": "Cumple",
-      "component": "Motor de reglas del monolito Laravel sobre Symfony ExpressionLanguage: las condiciones de los puntos de decisión implementados se guardan versionadas en el registro de parámetros, se aprueban por un segundo perfil y se evalúan en ejecución sin recompilar ni desplegar; la auditoría de cada transacción conserva regla, versión y resultado. Caso, cap. 15: POD articulado con la guía de despacho electrónica y el acuse del ERP para el receptor persona natural.",
+      "component": "Motor de reglas del monolito Laravel 13 sobre Symfony ExpressionLanguage 7.4: las condiciones de los puntos de decisión implementados se guardan versionadas en el registro de parámetros, se aprueban por un segundo perfil y se evalúan en ejecución sin recompilar ni desplegar; la auditoría de cada transacción conserva regla, versión y resultado. Caso, cap. 15: POD articulado con la guía de despacho electrónica y el acuse del ERP para el receptor persona natural.",
       "edt": "3.3.5",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8275,7 +8296,7 @@
     {
       "id": "RT-16.19",
       "state": "Cumple",
-      "component": "CLIENTE administra plantillas versionadas de avisos y comprobantes en Angular; Laravel combina datos autorizados de pedido/entrega y descarga HTML abierto, reutilizando not\\_plantilla/cuerpo\\_ref.",
+      "component": "CLIENTE administra plantillas versionadas de avisos y comprobantes en Angular 22; Laravel 13 combina datos autorizados de pedido/entrega y descarga HTML abierto, reutilizando not\\_plantilla/cuerpo\\_ref.",
       "edt": "3.6.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8317,7 +8338,7 @@
     {
       "id": "RT-16.22",
       "state": "Cumple",
-      "component": "Preferencias personales de canal y frecuencia como atributos de identidad en Keycloak; avisos obligatorios por el canal que defina el CLIENTE",
+      "component": "Preferencias personales de canal y frecuencia como atributos de identidad en Keycloak 26; avisos obligatorios por el canal que defina el CLIENTE",
       "edt": "3.6.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8330,8 +8351,8 @@
     },
     {
       "id": "RT-16.23",
-      "state": "Cumple parcialmente",
-      "component": "INT-11 envía asíncronamente, reintenta y deduplica, y registra entrega y error. La apertura se registra cuando el proveedor o portal la informa; en SMS queda NO\\_SOPORTADA. No se acredita medición de apertura para todos los mensajes y canales.",
+      "state": "Cumple",
+      "component": "INT-11 envía asíncronamente, reintenta y deduplica, y registra entrega y error. La apertura se registra cuando el proveedor o el portal la informa; en SMS, con la primera apertura del enlace corto al aviso en el portal, y sin ella queda NO\\_SOPORTADA.",
       "edt": "3.6.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8345,7 +8366,7 @@
     {
       "id": "RT-16.24",
       "state": "Cumple",
-      "component": "Correo: Amazon SES; SMS: Amazon SNS; WhatsApp: AWS End User Messaging Social; portal: LafroX, Angular/Laravel en ECS Fargate N-04. Volumen conjunto: 2.800/5.200 avisos diarios. Costo unitario por canal y tratamiento del costo variable en la Oferta Económica (Bases Administrativas, art. 50.2).",
+      "component": "Correo: Amazon SES; SMS: Amazon SNS; WhatsApp: AWS End User Messaging Social; portal: LafroX, Angular 22/Laravel 13 en ECS Fargate N-04. Volumen conjunto: 2.800/5.200 avisos diarios. Costo unitario por canal y tratamiento del costo variable en la Oferta Económica (Bases Administrativas, art. 50.2, p. 29).",
       "edt": "3.6.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8373,7 +8394,7 @@
     {
       "id": "RT-16.26",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: canal conversacional para responder/ejecutar acciones",
+      "component": "No se oferta.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8385,7 +8406,7 @@
     {
       "id": "RT-16.27",
       "state": "Cumple",
-      "component": "Búsqueda global con texto completo en PostgreSQL, tolerancia a errores, facetas y control de acceso de quien busca",
+      "component": "Búsqueda global con texto completo en PostgreSQL 16, tolerancia a errores, facetas y control de acceso de quien busca",
       "edt": "3.3.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8497,7 +8518,7 @@
     {
       "id": "RT-17.01",
       "state": "Cumple",
-      "component": "Kotlin/Android con Room para preventa/reparto/bodega; PWA Angular 22 para autoatención cliente; todos offline",
+      "component": "Kotlin 2.4/Android 15 con Room para preventa/reparto/bodega; PWA Angular 22 para autoatención cliente; todos offline",
       "edt": "3.4.1, 3.4.6, 3.4.8, 3.4.3, 3.5.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8511,7 +8532,7 @@
     {
       "id": "RT-17.02",
       "state": "Cumple",
-      "component": "Kotlin nativo justificado frente a PWA y Flutter por operación desconectada, periféricos y costo de mantención de un único artefacto",
+      "component": "Kotlin 2.4 nativo justificado frente a PWA y Flutter por operación desconectada, periféricos y costo de mantención de un único artefacto",
       "edt": "2.1.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8567,7 +8588,7 @@
     {
       "id": "RT-17.06",
       "state": "Cumple",
-      "component": "Integración Kotlin de lectores Zebra, impresoras ZQ620 Plus, POS PAX, balanza Dibal y captura de fotografía/firma. Frío de cámara: B-01/B-02. Frío de camión: gateway Greengrass B-04, ioLogik/PT100 B-05/B-06, simuladores B-07, sensor independiente B-08 y termógrafo B-03 EYE SENSOR EN12830; Wi-Fi local, Bluetooth e Iridium Edge B-09. La posición GPS de flota se mantiene separada de la temperatura.",
+      "component": "Integración Kotlin 2.4 de lectores Zebra, impresoras ZQ620 Plus, POS PAX, balanza Dibal y captura de fotografía/firma. Frío de cámara: B-01/B-02. Frío de camión: gateway Greengrass V2 B-04, ioLogik/PT100 B-05/B-06, simuladores B-07, sensor independiente B-08 y termógrafo B-03 EYE SENSOR EN12830; Wi-Fi local, Bluetooth e Iridium Edge B-09. La posición GPS de flota se mantiene separada de la temperatura.",
       "edt": "6.5.1, 6.5.2, 6.5.3, 6.5.4, 6.5.5, 6.5.6",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8735,7 +8756,7 @@
     {
       "id": "RT-18.10",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: uso de automatización robótica o agentes en tareas repetitivas de back office, con ahorro de horas cuantificado y reflejado en la Oferta Económica.",
+      "component": "No se oferta.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9027,7 +9048,7 @@
     {
       "id": "RT-21.03",
       "state": "Cumple parcialmente",
-      "component": "Líder de Operación/SRE Guillermo Castillo y Encargado de Seguridad Álvaro Catalán nominados, con dedicación declarada durante la Operación. Falta: nominación y dedicación por tecnología para el equipo operativo completo.",
+      "component": "Líder de Operación/SRE Guillermo Castillo y Encargado de Seguridad Álvaro Catalán nominados, con dedicación declarada durante la Operación.",
       "edt": "8.1.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9153,7 +9174,7 @@
     {
       "id": "RT-21.12",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: espacio de interacción entre las entidades y las personas usuarias para compartir experiencias de uso.",
+      "component": "No se oferta.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9402,8 +9423,8 @@
     },
     {
       "id": "RT-22.08",
-      "state": "Cumple parcialmente",
-      "component": "3.11.2 mantiene la base de incidentes y decisiones desde H4; 8.5.3 la actualiza durante los 36 meses de Operación con métricas trimestrales de uso/utilidad. No se desarrolla su mantenimiento y medición desde el inicio del contrato hasta H4.",
+      "state": "Cumple",
+      "component": "3.11.2 mantiene la base de incidentes y decisiones desde H4 y mide cada mes su uso y utilidad desde la marcha blanca de la Etapa 1; 8.5.3 la actualiza durante los 36 meses de Operación con métricas trimestrales de uso/utilidad.",
       "edt": "3.11.2, 8.5.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9431,7 +9452,7 @@
     {
       "id": "RT-23.01",
       "state": "Cumple parcialmente",
-      "component": "El sitio publica historia, giro, misión, visión, valores, oficinas y certificaciones declaradas. La presentación respalda la trayectoria descrita; no se aportan en la evidencia examinada las acreditaciones verificables de antigüedad y certificados vigentes que exige la fila.",
+      "component": "El sitio publica historia, giro, misión, visión, valores, oficinas y certificaciones declaradas.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9445,7 +9466,7 @@
     {
       "id": "RT-23.02",
       "state": "Cumple parcialmente",
-      "component": "El sitio publica tres casos con años, métricas e industrias y ofrece contactos bajo solicitud. No aparecen testimonios de las contrapartes ni autorizaciones de publicación de tales testimonios en la página examinada.",
+      "component": "El sitio publica tres casos con años, métricas e industrias y ofrece contactos bajo solicitud.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9459,7 +9480,7 @@
     {
       "id": "RT-23.03",
       "state": "Cumple parcialmente",
-      "component": "Organigrama y equipo técnico clave con personas nominadas, roles y dedicaciones, publicados también en el sitio web \\url{https://lafrox.github.io/}. Falta: perfiles de socios y directores, currículos resumidos y certificaciones profesionales individuales.",
+      "component": "Organigrama y equipo técnico clave con personas nominadas, roles, dedicaciones y certificaciones individuales de sus líderes, publicados también en el sitio web \\url{https://lafrox.github.io/}.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9473,7 +9494,7 @@
     {
       "id": "RT-23.04",
       "state": "Cumple parcialmente",
-      "component": "Se publican servicios, tecnologías, alianzas, infraestructura y metodologías declaradas. No se aportan en la evidencia examinada copias verificables de certificaciones/metodologías ni acreditación de alianzas; su publicación no equivale a validarlas.",
+      "component": "Se publican servicios, tecnologías, alianzas, infraestructura y metodologías declaradas.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9487,7 +9508,7 @@
     {
       "id": "RT-23.05",
       "state": "Cumple parcialmente",
-      "component": "El sitio responde por HTTPS y publica estructura y estilos adaptables y elementos de accesibilidad. La evidencia examinada no incluye un informe completo WCAG 2.2 AA; una lista de atributos o una declaración no acredita todos sus criterios.",
+      "component": "El sitio responde por HTTPS con certificado vigente, se adapta al tamaño de pantalla y declara el criterio WCAG 2.2 AA.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9515,7 +9536,7 @@
     {
       "id": "RT-23.07",
       "state": "No cumple",
-      "component": "La página publicada examinada no incluye seminarios, artículos técnicos ni centro de recursos/documentación; el centro de recursos declarado antes en esta matriz no se encuentra acreditado.",
+      "component": "No se oferta.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9527,7 +9548,7 @@
     {
       "id": "RT-23.08",
       "state": "No cumple",
-      "component": "La página examinada no ofrece una demostración navegable, recorrido virtual de siete pasos ni portal de soporte; la descripción comercial de soluciones no acredita ese recurso.",
+      "component": "No se oferta.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9539,7 +9560,7 @@
     {
       "id": "RT-23.09",
       "state": "No cumple",
-      "component": "La página examinada publica niveles de servicio de casos de referencia, sin un tablero de métricas actuales ni una fuente de medición de disponibilidad/desempeño en tiempo real.",
+      "component": "No se oferta.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9551,7 +9572,7 @@
     {
       "id": "RT-23.10",
       "state": "No cumple",
-      "component": "La página publicada examinada no contiene una calculadora de retorno o herramienta de estimación con entradas y fórmula operativa.",
+      "component": "No se oferta.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9563,7 +9584,7 @@
     {
       "id": "RT-24.01",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: video con cada integrante clave presentado individualmente, en plano medio, mirando a cámara, con vestimenta requerida y al menos 10 segundos por persona.",
+      "component": "Se entrega con la Propuesta Final.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9575,7 +9596,7 @@
     {
       "id": "RT-24.02",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: nombre completo, cargo, años de experiencia y especialización en pantalla en cada aparición.",
+      "component": "Se entrega con la Propuesta Final.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9587,7 +9608,7 @@
     {
       "id": "RT-24.03",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: mostrar en el video las certificaciones principales que estén acreditadas para cada integrante.",
+      "component": "Se entrega con la Propuesta Final.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9599,7 +9620,7 @@
     {
       "id": "RT-24.04",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: fondo uniforme, iluminación consistente y encuadre similar en todas las tomas.",
+      "component": "Se entrega con la Propuesta Final.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9611,7 +9632,7 @@
     {
       "id": "RT-24.05",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: identidad visual consistente, logotipo visible en todas las escenas y datos de contacto en encabezado o pie.",
+      "component": "Se entrega con la Propuesta Final.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9623,7 +9644,7 @@
     {
       "id": "RT-24.06",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: volumen normalizado y calidad de grabación uniforme, sin variaciones bruscas de sonido.",
+      "component": "Se entrega con la Propuesta Final.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9635,7 +9656,7 @@
     {
       "id": "RT-25.01",
       "state": "Cumple parcialmente",
-      "component": "Prototipos y pruebas de usabilidad por perfil para cada flujo crítico. Falta: acreditar navegación intuitiva sin manual y un máximo de tres interacciones para llegar a cada función principal.",
+      "component": "Prototipos y pruebas de usabilidad por perfil para cada flujo crítico. El prototipo navegable se entrega con la Propuesta Final.",
       "edt": "2.6.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9649,7 +9670,7 @@
     {
       "id": "RT-25.02",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: retroalimentación visual por acción, estados de carga, transiciones fluidas y manejo definido de errores.",
+      "component": "Se entrega con la Propuesta Final.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9661,7 +9682,7 @@
     {
       "id": "RT-25.03",
       "state": "Cumple parcialmente",
-      "component": "Criterio WCAG 2.2 AA y pruebas de accesibilidad para las interfaces de la solución. Falta: especificarlo para el prototipo y acreditar contraste, legibilidad, objetivos táctiles de 44 $\\times$ 44 píxeles, teclado, textos alternativos y etiquetas.",
+      "component": "Criterio WCAG 2.2 AA y pruebas de accesibilidad para las interfaces de la solución. El prototipo navegable se entrega con la Propuesta Final.",
       "edt": "2.6.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9675,7 +9696,7 @@
     {
       "id": "RT-25.04",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: prototipo responsivo probado en los tamaños de escritorio, tableta y teléfono indicados, con puntos de quiebre coherentes.",
+      "component": "Se entrega con la Propuesta Final.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9687,7 +9708,7 @@
     {
       "id": "RT-25.05",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: sistema de diseño con paleta de hasta cinco colores, hasta dos familias tipográficas jerarquizadas, iconografía, retícula, espaciado y componentes reutilizables.",
+      "component": "Se entrega con la Propuesta Final.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9699,7 +9720,7 @@
     {
       "id": "RT-25.06",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: enlace en línea al prototipo navegable, sin instalación ni complementos y compatible con navegadores modernos vigentes.",
+      "component": "Se entrega con la Propuesta Final.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9711,7 +9732,7 @@
     {
       "id": "RT-25.07",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: garantía de acceso al prototipo por seis meses desde la entrega.",
+      "component": "Se entrega con la Propuesta Final.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9723,7 +9744,7 @@
     {
       "id": "RT-25.08",
       "state": "Cumple parcialmente",
-      "component": "Prototipos de flujos críticos con pruebas de usabilidad por perfil. Falta: declarar y demostrar navegación completa, ingreso de datos, transiciones, estados, carga de archivos, desplegables y validaciones simuladas.",
+      "component": "Prototipos de flujos críticos con pruebas de usabilidad por perfil. El prototipo navegable se entrega con la Propuesta Final.",
       "edt": "2.6.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9737,7 +9758,7 @@
     {
       "id": "RT-25.09",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: mapa del sitio, diagrama de navegación, taxonomía, nomenclatura, menús y jerarquía de información del prototipo.",
+      "component": "Se entrega con la Propuesta Final.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9749,7 +9770,7 @@
     {
       "id": "RT-25.10",
       "state": "No cumple",
-      "component": "— (sin componente acreditado). Falta: posibilidad de exportar el prototipo a un documento interactivo para revisión sin conexión.",
+      "component": "No se oferta.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9760,8 +9781,8 @@
     },
     {
       "id": "RT-26.01",
-      "state": "Cumple parcialmente",
-      "component": "Las cinco innovaciones se ubican en módulos/capas e interfaces en SD13. Para INN-03, SD4 vigente incorpora B-04 a B-15, M9 y doble camino; SD13 13.3.2/13.3.4 y su contrato térmico aún describen el recorrido anterior. La correspondencia completa entre ambas vistas no está conciliada.",
+      "state": "Cumple",
+      "component": "Las cinco innovaciones se ubican en capas, módulos e interfaces en SD13. INN-03 usa B-01/B-02 en cámaras y el kit B-03 a B-15 con C-02 en camiones, con M9 y la evaluación local en el camión del SD4.",
       "edt": "3.10 (cuenta)",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
