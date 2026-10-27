@@ -219,15 +219,15 @@ Las fichas documentan la valoración cualitativa registrada en T-16 y los detall
 - **Costo:** Pendiente.
 
 #### R-015
-- **Categoría:** Solución y tecnología
-- **Causa–evento–efecto:** Dado que la operación híbrida produce datos en varios sitios y medios, puede que la restauración o promoción pierda datos o supere los límites, teniendo como consecuencia interrupción prolongada y conciliación extraordinaria.
-- **Valoración:** P 3 (0,50); I 4 (0,80); $q_P\times q_I=0,40$; zona Crítica.
-- **Respuesta:** Mitigar; responsable: Guillermo Castillo.
-- **Disparador:** RPO supera 15 min, RTO supera 4 h o dos escritores aceptan operaciones.
+- **Categoría:** Personas y adopción
+- **Causa–evento–efecto:** Dado que la implantación exige que los usuarios incorporen sus transacciones al registro oficial de la solución, puede que parte de ellos continúe registrando exclusivamente en el procedimiento anterior durante una ola, teniendo como consecuencia que no pueda acreditarse la cobertura de adopción requerida para cerrar esa ola y deba extenderse la intervención de implantación.
+- **Valoración:** P 4 (0,70); I 4 (0,40); $q_P\times q_I=0,28$; zona Alta.
+- **Respuesta:** Mitigar; responsable: Líder de gestión del cambio.
+- **Disparador:** Uso exclusivo del procedimiento anterior que impida acreditar la cobertura de adopción requerida al cierre de una ola.
 - **Etapa (no es plazo):** Implementación.
-- **Acción/mitigación y evidencia esperada:** Ensayar desastre total con escritura en curso, exclusión del escritor y retorno. Validar: Informe medido de conmutación y retorno; incluir pérdida simultánea de WAN y nodo.
-- **Plazo/hito:** Pendiente de definición por responsable.
-- **Residual:** objetivo 10 %, condicionado y no validado; condición: Informe medido de conmutación y retorno; incluir pérdida simultánea de WAN y nodo.
+- **Acción/mitigación y evidencia esperada:** Reducir el uso exclusivo del procedimiento anterior mediante piloto y acompañamiento focalizado por turno, verificando transacciones efectivamente incorporadas al registro oficial.
+- **Plazo/hito:** Durante la implantación; hito específico pendiente de definición por responsable.
+- **Residual:** No se consigna una valoración residual validada; evaluar tras verificar la adopción observada.
 - **Contingencia:** Pendiente de definición por responsable.
 - **Riesgo secundario:** Pendiente de definición por responsable.
 - **Costo:** Pendiente.
@@ -675,7 +675,7 @@ Esta matriz presenta, para los 45 riesgos vigentes, las estimaciones iniciales d
 | R-012 | 35% | 10% | 201,6 | 70,560 | 12 |
 | R-013 | 30% | 10% | 105,6 | 31,680 | 11 |
 | R-014 | 20% | 10% | 96,0 | 19,200 | 4 |
-| R-015 | 35% | 10% | 201,6 | 70,560 | 11 |
+| R-015 | 55% | Pendiente | 128,0 | 70,400 | — |
 | R-016 | 30% | 10% | 144,0 | 43,200 | 11 |
 | R-017 | 40% | 20% | 126,4 | 50,560 | 3 |
 | R-018 | 45% | 25% | 150,4 | 67,680 | 11 |

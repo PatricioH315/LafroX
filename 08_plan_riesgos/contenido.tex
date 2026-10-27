@@ -34,7 +34,7 @@ La Tabla 8.1 distingue al responsable del riesgo, la familia de esfuerzo y su vi
 
 \begingroup
 \renewcommand{\thetable}{8.1}
-\begin{tablalafrox}{Responsabilidad y vigencia por familia. Fuente: LafroX (2026a, Subdocumento 1, Tabla 1.6), LafroX (s. f.-a, Subdocumento 13) y Bases Administrativas (Distribuidora Puelche S.A., 2026a, Formulario T-16).}{tab:sd8-cuerpo-1}{>{\hsize=0.48404\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.00760\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.28064\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.22771\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{Familia} & \cab{Hasta mes 21} & \cab{Meses 22\textendash{}56} & \cab{Autoridad/aprobación}}
+\begin{tablalafrox}{Responsabilidad y vigencia por familia. Fuente: LafroX (2026a, Subdocumento 1, Tabla 1.6), LafroX (2026-a, Subdocumento 13) y Bases Administrativas (Distribuidora Puelche S.A., 2026a, Formulario T-16).}{tab:sd8-cuerpo-1}{>{\hsize=0.48404\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.00760\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.28064\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.22771\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{Familia} & \cab{Hasta mes 21} & \cab{Meses 22\textendash{}56} & \cab{Autoridad/aprobación}}
 JP & Alex Aravena & Alex Aravena, dirección de contrato & Registro/escalamiento \\
 ARQ & Bastián Trejo & Trejo, Comité Arquitectura & Diseño/frontera DR \\
 SEG & Álvaro Catalán & Álvaro Catalán & Seguridad/privacidad \\
@@ -46,7 +46,7 @@ IMP & Patricio Henríquez & Guillermo Castillo; equipo IMP & CAL: usuarios; SEG:
 \end{tablalafrox}
 \endgroup
 
-Las responsabilidades de DAT e IMP se transfieren al frente F8 de Operación, como establece el Subdocumento 13 (LafroX, s. f.-a). Para que no dependan de una sola persona, desde el mes 22 Bastián Trejo, que sigue en el Comité de Arquitectura, es suplente de Guillermo Castillo en DAT y DES, y Maximiliano Miño lo es en IMP; ambos continúan hasta el mes 56 (LafroX, 2026a, Subdocumento 1, Tabla 1.6; LafroX, s. f.-a, Subdocumento 13, transferencia desde el mes 22). Las decisiones sanitarias requieren aprobación de Calidad y las de privacidad, de Seguridad. La Contraparte Técnica acepta con acta; Operaciones autoriza cortes y Calidad del CLIENTE decide sobre los aspectos sanitarios. La agenda de decisiones se fija en mes 1 y se sigue en el registro. Los cambios físicos siguen el gobierno de arquitectura.
+Las responsabilidades de DAT e IMP se transfieren al frente F8 de Operación, como establece el Subdocumento 13 (LafroX, 2026-a). Para que no dependan de una sola persona, desde el mes 22 Bastián Trejo, que sigue en el Comité de Arquitectura, es suplente de Guillermo Castillo en DAT y DES, y Maximiliano Miño lo es en IMP; ambos continúan hasta el mes 56 (LafroX, 2026a, Subdocumento 1, Tabla 1.6; LafroX, 2026-a, Subdocumento 13, transferencia desde el mes 22). Las decisiones sanitarias requieren aprobación de Calidad y las de privacidad, de Seguridad. La Contraparte Técnica acepta con acta; Operaciones autoriza cortes y Calidad del CLIENTE decide sobre los aspectos sanitarios. La agenda de decisiones se fija en mes 1 y se sigue en el registro. Los cambios físicos siguen el gobierno de arquitectura.
 
 \subsection{Escalas previas al análisis}
 
@@ -197,7 +197,7 @@ La factibilidad de la respuesta depende de recursos y decisiones compartidas. An
 
 La aceptación no se basa sólo en completar tareas: cada hito se cumple con acta de la Contraparte Técnica; cada entregable incluye artefacto, evidencia objetiva de verificación, trazabilidad a requisitos y registro de observaciones resueltas (Bases Administrativas, arts. 18.1--18.2). El CLIENTE dispone de diez días hábiles para revisar y LafroX de diez días hábiles para subsanar; una segunda presentación observada por la misma naturaleza se considera atraso imputable (art. 18.3). La aceptación no libera responsabilidad por defectos posteriores (art. 18.4). En cada marcha blanca, las seis condiciones del artículo 17.3 son acumulativas: no tener incidentes críticos/altos atribuibles abiertos; alcanzar el volumen real comprometido durante las cuatro últimas semanas; sostener disponibilidad y tiempos de respuesta comprometidos; no tener diferencias de conciliación inexplicadas; contar con personal del CLIENTE capacitado y certificado; y obtener el acta de aceptación. Si no se cumplen al cierre, la marcha blanca debe extenderse a costo del adjudicatario, sin cargo adicional al CLIENTE ni desplazamiento de fases posteriores, sin perjuicio de las multas contractuales. RT-20.04 exige definir indicadores diarios y umbrales de avance, y RT-20.02 exige una salida gradual y reversible (Bases Técnicas Transversales).
 
-Para continuidad, el requisito RT-07.04 fija RTO máximo de 4 horas y RPO máximo de 15 minutos para servicios críticos, salvo exigencia superior del caso; cumplirlo requiere prueba y evidencia, no sólo diseño. La propuesta de recuperación debe demostrar qué copia remota sobrevive ante pérdida del sitio y dónde se satisface el RPO, además de medir RTO/RPO en la conmutación. Destruir el sitio que alberga el NAS puede dejar únicamente la última copia remota consistente; respaldos o retenciones locales no prueban por sí mismos un RPO de 15 minutos. Los escenarios de pérdida simultánea de enlaces y sitio, recuperación de conectividad, conciliación de datos y continuidad de los 96 despachos deben validarse en AL-DR-01/E8-05 y con responsables antes de aceptar el corte. Los 85 minutos de diseño para retiro sanitario tampoco constituyen un ensayo aprobado: debe demostrarse la identificación de clientes afectados con evidencia en menos de dos horas, según las condiciones operativas registradas en el plan.
+Para continuidad, el requisito RT-07.04 fija RTO máximo de 4 horas y RPO máximo de 15 minutos para servicios críticos, salvo exigencia superior del caso; cumplirlo requiere prueba y evidencia, no sólo diseño. La propuesta de recuperación debe demostrar qué copia remota sobrevive ante pérdida del sitio y dónde se satisface el RPO, además de medir RTO/RPO en la conmutación. Destruir el sitio que alberga el NAS puede dejar únicamente la última copia remota consistente; respaldos o retenciones locales no prueban por sí mismos un RPO de 15 minutos. Los escenarios de pérdida simultánea de enlaces y sitio, recuperación de conectividad, conciliación de datos y continuidad de los 96 despachos deben validarse en AL-DR-01 y con responsables antes de aceptar el corte. Los 85 minutos de diseño para retiro sanitario tampoco constituyen un ensayo aprobado: debe demostrarse la identificación de clientes afectados con evidencia en menos de dos horas, según las condiciones operativas registradas en el plan.
 
 La suspensión del proveedor de lácteos entre marzo y septiembre de 2026 es un antecedente ocurrido y se gestiona como dependencia/asunto, no como riesgo futuro. Corresponde obtener con el CLIENTE y el proveedor evidencia de restitución de la trazabilidad antes de depender de ella para aceptar la etapa correspondiente; la fecha y evidencia de restitución no se presumen. En general, cada condición pendiente debe tener responsable, hito, evidencia requerida y decisión documentada. Hasta que existan pruebas satisfactorias y actas exigidas, se mantiene como pendiente la factibilidad de las respuestas afectadas y no se declara aceptado el hito.
 
@@ -210,27 +210,27 @@ Las fuentes citadas en este documento se listan en formato APA 7.ª edición. La
 
 \begingroup
 \small\setlength{\parindent}{-0.5in}\setlength{\leftskip}{0.5in}\setlength{\parskip}{3pt}
-Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación}.
+Distribuidora Puelche S.A. (2026). \emph{Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación}.
 
-Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026}.
+Distribuidora Puelche S.A. (2026). \emph{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026}.
 
-Distribuidora Puelche S.A. (2026c). \emph{Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.}
+Distribuidora Puelche S.A. (2026). \emph{Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.}
 
 International Organization for Standardization. (2018). \emph{ISO 31000:2018 Risk management \textemdash{} Guidelines}. https://www.iso.org/standard/65694.html
 
 LafroX. (2026a). \emph{Subdocumento 1: Presentación de la empresa} (Formulario T-7), Tabla 1.6.
 
-LafroX. (s. f.-a). \emph{Subdocumento 13: Innovaciones}, transferencia operativa desde el mes 22. [Fecha de emisión no verificada.]
+LafroX. (2026a). \emph{Subdocumento 13: Innovaciones}, transferencia operativa desde el mes 22. 
 
-LafroX. (s. f.-b). \emph{Subdocumento 4: Arquitectura lógica y física de la solución}, §§4.1.4.4, 4.2.5.1 y 4.3.2.4; Anexos 4-G, 4-I y 4-W. [Fecha de emisión no verificada.]
+LafroX. (2026). \emph{Subdocumento 4: Arquitectura lógica y física de la solución}, §§4.1.4.4, 4.2.5.1 y 4.3.2.4; Anexos 4-G, 4-I y 4-W. 
 
-LafroX. (2026b). \emph{Subdocumento 5: Modelo y gestión de datos}.
+LafroX. (2026). \emph{Subdocumento 5: Modelo y gestión de datos}.
 
-LafroX. (s. f.-c). \emph{Subdocumento 3: Introducción al alcance de la solución}, Anexo 3.H, consulta V-13. [Fecha de emisión no verificada.]
+LafroX. (2026). \emph{Subdocumento 3: Introducción al alcance de la solución}, Anexo 3.H, consulta V-13. 
 
-LafroX. (2026c). \emph{Subdocumento 6: Metodología de gestión de proyectos y desarrollo de software}.
+LafroX. (2026). \emph{Subdocumento 6: Metodología de gestión de proyectos y desarrollo de software}.
 
-LafroX. (s. f.). \emph{Subdocumento 8: Plan de riesgos}.
+LafroX. (2026). \emph{Subdocumento 8: Plan de riesgos}.
 
 Project Management Institute. (2017). \emph{La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK®)} (6.ª ed.).
 \endgroup

@@ -151,7 +151,7 @@ El registro sigue el formato del Formulario T-16, incluido en las Bases Administ
 - **Prob.:** 4 / 0,70
 - **Impacto:** 4 / 0,40
 - **Expos.:** 0,28 (Alta)
-- **Mitigación:** Mitigar. Reducir el uso exclusivo del procedimiento anterior mediante piloto y acompaÃ±amiento focalizado por turno, verificando transacciones efectivamente incorporadas al registro oficial. Actuar durante implantación. Antes de aprobar trabajo adicional, costearlo y exigir que cueste menos que la reducción del VME; esa rentabilidad aÃºn no estÁ calculada.
+- **Mitigación:** Mitigar. Reducir el uso exclusivo del procedimiento anterior mediante piloto y acompañamiento focalizado por turno, verificando transacciones efectivamente incorporadas al registro oficial. Actuar durante implantación. Antes de aprobar trabajo adicional, costearlo y exigir que cueste menos que la reducción del VME; esa rentabilidad aún no está calculada.
 - **Responsable:** Líder de gestión del cambio
 
 ## R-016

@@ -92,7 +92,7 @@ La estructura de desglose de riesgos (EDR o RBS, por sus siglas en inglés) orga
 
 ![Estructura de desglose de riesgos (EDR/RBS) del proyecto LafroX: siete ramas y 45 riesgos. Fuente: elaboración propia a partir del registro de riesgos actualizado.](../08_plan_riesgos/figuras/EDR_LafroX-Página-3.drawio.svg)
 
-La rama **Solución y tecnología** reúne los riesgos del funcionamiento y la continuidad de la solución: calidad de datos, reconexión, autonomía móvil, operación en frío, trazabilidad sanitaria, capacidad, recuperación, seguridad y dependencias tecnológicas. Incluye, por ejemplo, los conflictos y duplicados tras reconexión (R-005), el retiro sanitario sin trazabilidad completa (R-012) y la recuperación y el retorno que exceden RTO/RPO (R-015). También incorpora las innovaciones de reproducción de incidentes (INN-02, R-037) y estimación de vida útil (INN-03, R-038). Es la rama con más riesgos; esa cantidad describe la distribución del registro y no determina por sí sola su prioridad.
+La rama **Solución y tecnología** reúne los riesgos del funcionamiento y la continuidad de la solución: calidad de datos, reconexión, autonomía móvil, operación en frío, trazabilidad sanitaria, capacidad, recuperación, seguridad y dependencias tecnológicas. Incluye, por ejemplo, los conflictos y duplicados tras reconexión (R-005), el retiro sanitario sin trazabilidad completa (R-012) y la recuperación y el retorno que exceden RTO/RPO, vinculados al ID que corresponda en el registro vigente. R-015 en el T-16 actual corresponde a adopción de usuarios, no a recuperación ante desastres. También incorpora las innovaciones de reproducción de incidentes (INN-02, R-037) y estimación de vida útil (INN-03, R-038). Es la rama con más riesgos; esa cantidad describe la distribución del registro y no determina por sí sola su prioridad.
 
 **Integración y legado** agrupa las dependencias de interfaces del ERP, telemetría de terceros, convivencia del WMS, certificación EDI, avisos, pagos y datos de ruteo; entre ellas están las interfaces del ERP no utilizables (R-001) y la certificación EDI dependiente de las cadenas (R-030). **Operación del cliente** reúne las condiciones de conectividad, infraestructura, disponibilidad de contrapartes, ventanas de intervención, instalaciones y control de los flujos físicos y de efectivo. Ejemplos son la caída simultánea de enlaces de Concepción (R-006), las contrapartes que no validan a tiempo (R-022) y las devoluciones y envases que alteran saldo o custodia (R-044).
 
@@ -115,7 +115,7 @@ El análisis cualitativo del T-16 presenta los niveles ordinales de probabilidad
 | ID | P decimal | I decimal | Exposición decimal ($q_P\times q_I$) | Zona registrada |
 |---|---:|---:|---:|---|
 | R-012 | 0,50 | 0,80 | 0,40 | Crítica |
-| R-015 | 0,50 | 0,80 | 0,40 | Crítica |
+| R-015 | 0,70 | 0,40 | 0,28 | Alta |
 | R-005 | 0,30 | 0,80 | 0,24 | Alta |
 | R-006 | 0,30 | 0,80 | 0,24 | Alta |
 | R-011 | 0,30 | 0,80 | 0,24 | Alta |
@@ -125,7 +125,7 @@ El análisis cualitativo del T-16 presenta los niveles ordinales de probabilidad
 | R-001 | 0,50 | 0,40 | 0,20 | Alta |
 | R-003 | 0,50 | 0,40 | 0,20 | Alta |
 
-Entre los diez seleccionados, R-012 y R-015 tienen exposición decimal 0,40 y zona Crítica; les siguen seis riesgos con 0,24 y zona Alta. El corte en 0,20 deja varios riesgos empatados; para mantener exactamente diez filas se incluyen R-001 y R-003, los primeros por ID ascendente. La exposición ponderada no equivale al impacto estimado en horas-hombre.
+En esta versión del análisis, R-012 tiene exposición decimal 0,40 y zona Crítica; R-015 registra 0,28 y zona Alta. Le siguen seis riesgos con 0,24 y zona Alta. El corte en 0,20 deja varios riesgos empatados; para mantener exactamente diez filas se incluyen R-001 y R-003, los primeros por ID ascendente. La exposición ponderada no equivale al impacto estimado en horas-hombre.
 
 ### Análisis cuantitativo
 
@@ -146,7 +146,7 @@ La Tabla 8.5 ordena los diez mayores valores esperados $VE=p_0\times HH^{\mathrm
 | R-003 | Corte deja saldos divergentes o tareas sin dueño; reversión y convivencia extendida | 40% | 201,6 | 80,640 |
 | R-026 | Observaciones, capacitación o indicadores abiertos al cierre; extensión a cargo de LafroX sin mover fases | 40% | 201,6 | 80,640 |
 | R-012 | Cadena de custodia incompleta en sitio o retorno; identificación tardía de clientes y lote afectado | 35% | 201,6 | 70,560 |
-| R-015 | Restauración o promoción pierde datos o supera límites; interrupción prolongada y conciliación extraordinaria | 35% | 201,6 | 70,560 |
+| R-015 | Usuarios continúan con el procedimiento anterior y no registran transacciones en la solución, impidiendo acreditar adopción al cierre de una ola | 55% | 128,0 | 70,400 |
 | R-001 | Interfaz disponible no soporta contratos necesarios; retrabajo de ACL y atraso de integración | 45% | 152 | 68,400 |
 | R-021 | Retiro antes de transferir y validar excepciones; rutas inseguras o promesas incumplidas | 45% | 152 | 68,400 |
 | R-038 | Estimación inválida o excede uso permitido; decisión de disposición errónea | 45% | 152 | 68,400 |
