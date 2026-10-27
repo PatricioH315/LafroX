@@ -12,7 +12,7 @@ El capítulo se conecta con el resto de la oferta de la siguiente forma:
 \begin{itemize}
   \item \textbf{Arquitectura.} Cada innovación declara en este capítulo qué capas, componentes y módulos utiliza, como exige el RT-26.01 (Bases Técnicas Transversales, cap. 26, p. 44). Esos elementos son los que definen el Capítulo 4 (capas en la sección 4.1.3, módulos en la sección 4.1.4 y emplazamiento en la sección 4.2.2) y que el Capítulo 3 resume en la sección 3.4.2. Las innovaciones reutilizan los componentes ofertados y agregan las responsabilidades funcionales y los contratos descritos en este capítulo, sin incorporar hardware adicional al Formulario T-11. El Anexo 13.B identifica los componentes utilizados. El procesamiento que agregan las innovaciones corre sobre los servicios elásticos de la plataforma analítica N-10 (S3, Glue y Redshift Serverless; Formulario T-11) y sobre recursos efímeros de QA y Preproducción, por lo que se refleja como costo operacional en el flujo de caja de cada innovación y no como capacidad fija adicional. En el borde, la innovación 3 solo acumula la carga térmica sobre las lecturas que el gateway B-02 ya recibe en cámaras y el gateway B-04 en camiones, sin agregar ingesta.
   \item \textbf{EDT y cronograma.} Sus paquetes están en la cuenta de control 3.10 «Innovaciones», en el paquete 5.4.3 y en la cuenta 8.3 «Innovaciones en operación» del Formulario T-14, con los meses del Anexo 7.D (Bases Técnicas Transversales, cap. 26, RT-26.02, p. 44).
-  \item \textbf{Riesgos.} Su riesgo de adopción está registrado en las fichas R8-25 a R8-29 del Anexo 8.A y en el Formulario T-16, con la escala ordinal del Capítulo 8, sección 8.1.3 (Bases Técnicas Transversales, cap. 26, RT-26.04, p. 44).
+  \item \textbf{Riesgos.} Su riesgo de adopción está registrado en los riesgos R-034 a R-040 del Anexo 8.A y en el Formulario T-16, con la escala ordinal del Capítulo 8, sección 8.1.3 (Bases Técnicas Transversales, cap. 26, RT-26.04, p. 44).
   \item \textbf{Flujo de caja.} El impacto económico se expresa por rubro, clase y mes, sin montos, porque la Oferta Técnica no puede contener cifras que permitan inferir el precio (Distribuidora Puelche S.A., 2026a, Art. 50.2, p. 29). La valorización se desarrolla para el Informe 3 y se incorpora al Entregable 2 de la Oferta Económica, ítem 2.7 (Bases Administrativas, Formulario E-21, p. 71); no se presentan costos ni precios de la oferta en este capítulo.
   \item \textbf{Inteligencia artificial.} Ninguna innovación incorpora un modelo aprendido. Por eso no se les aplica el Capítulo 18 de las Bases Técnicas (Bases Técnicas Transversales, cap. 26, RT-26.06, p. 44).
 \end{itemize}
@@ -27,7 +27,7 @@ La Tabla~\ref{tab:sd13-1} resume la cartera. La Figura~\ref{fig:sd13-1} ubica la
 2 & Proceso & Reproducción de incidentes de terreno & Pedidos perdidos o duplicados sin señal, «semanalmente, sin medición» & Mes 5 (circuito); mes 15 (beneficio medido) \\
 3 & Tecnológica o de arquitectura & Vida útil remanente por historia térmica del lote & Excursiones de temperatura sin consecuencia conocida sobre el lote & Mes 16 \\
 4 & Modelo de negocio o de contratación & Tramo variable de la Operación ligado al costo de servir & Costo de servir prorrateado con un criterio de 2016 & Mes 21 (acompañamiento); mes 24 (primera liquidación) \\
-5 & Experiencia de usuario o impacto social & Hoja de negocio del almacenero & Cliente sin internet que no recibe la información de sus compras & Mes 21 \\
+5 & Experiencia de usuario, sostenibilidad o impacto social & Hoja de negocio del almacenero & Cliente sin internet que no recibe la información de sus compras & Mes 21 \\
 \end{tablalafrox}
 
 
@@ -81,7 +81,7 @@ La madurez se declara con la escala TRL de la Comisión Europea (European Commis
 
 Riesenegger et al. (2023) revisan las prácticas contra la merma de alimentos en la operación del comercio minorista: pedido, exhibición, precio y retiro de producto por vencer. Es el mismo punto de la cadena donde actúa esta innovación. Esas prácticas las ejecuta el propio comercio con sus sistemas. Lo propio de esta innovación es que el distribuidor las lleve a un almacén que no tiene sistema, a través de la visita del preventista. Por eso el servicio integrado parte en TRL 2, con dos objetivos: TRL 4 al mes 10 (cierre de los paquetes 3.10.1.2 y 3.10.1.3, con datos sintéticos) y TRL 6 al mes 15 (piloto en la marcha blanca).
 
-\textbf{Investigación adicional declarada.} Falta establecer con qué precisión se estima el ritmo de reposición por local en el canal tradicional. Se investiga en el paquete 3.10.1.2 (meses 9 y 10) con datos sintéticos y se valida en el paquete 3.10.1.4 (meses 11 a 15: certificación del H5 en los meses 11 y 12, y piloto en la marcha blanca de los meses 13 a 15) con el indicador I-01A. La ventana de los meses 11 a 15 que el Anexo 8.A asigna al piloto (ficha R8-25) es la del paquete completo; el piloto con locales reales ocurre solo en la marcha blanca.
+\textbf{Investigación adicional declarada.} Falta establecer con qué precisión se estima el ritmo de reposición por local en el canal tradicional. Se investiga en el paquete 3.10.1.2 (meses 9 y 10) con datos sintéticos y se valida en el paquete 3.10.1.4 (meses 11 a 15: certificación del H5 en los meses 11 y 12, y piloto en la marcha blanca de los meses 13 a 15) con el indicador I-01A. La ventana de los meses 11 a 15 que el Anexo 8.A asigna al piloto (riesgo R-034) es la del paquete completo; el piloto con locales reales ocurre solo en la marcha blanca.
 
 \subsection{Diseño de la incorporación}
 
@@ -105,7 +105,7 @@ INN-01.P4 & 3.10.1.4 & 11 a 15 & Certificación del H5, piloto en marcha blanca 
 
 Los paquetes 3.10.1.2 y 3.10.1.3 se ejecutan del 01-10-2027 al 19-11-2027 (Formulario T-15). No forman parte de la entrega técnica del H4 (22-10-2027) ni de su acta (08-11-2027): cierran el 19-11-2027, dentro del límite contractual del H4 (30-11-2027), con siete días de holgura.
 
-La innovación se materializa en el mes 16, con el paso a producción de la Etapa 1. La dirige el Líder de Datos, Leandro Chamorro, y Comercial y Calidad del CLIENTE validan el catálogo. En los meses 16 a 20 la innovación queda cubierta por la estabilización de la Etapa 1 (paquete 4.2.2). Desde el mes 21, su regla y su catálogo se mantienen dentro del mantenimiento correctivo y evolutivo (paquete 8.2.1); desde el mes 22, ese mantenimiento queda en el frente de Operación que dirige el Líder de Operación / SRE, Guillermo Castillo, porque la dedicación del Líder de Datos termina en el mes 21 (Capítulo 1, Tabla 1.6). La respuesta al riesgo de adopción R8-25 la conduce el Líder de Implantación y Gestión del Cambio, Patricio Henríquez, porque depende de la adopción en terreno (Anexo 8.A, ficha R8-25).
+La innovación se materializa en el mes 16, con el paso a producción de la Etapa 1. La dirige el Líder de Datos, Leandro Chamorro, y Comercial y Calidad del CLIENTE validan el catálogo. En los meses 16 a 20 la innovación queda cubierta por la estabilización de la Etapa 1 (paquete 4.2.2). Desde el mes 21, su regla y su catálogo se mantienen dentro del mantenimiento correctivo y evolutivo (paquete 8.2.1); desde el mes 22, ese mantenimiento queda en el frente de Operación que dirige el Líder de Operación / SRE, Guillermo Castillo, porque la dedicación del Líder de Datos termina en el mes 21 (Capítulo 1, Tabla 1.6). La respuesta al riesgo de adopción R-034 la conduce el Líder de Implantación y Gestión del Cambio, Patricio Henríquez, porque depende de la adopción en terreno (Anexo 8.A, riesgo R-034).
 
 \subsection{Impacto económico}
 
@@ -139,12 +139,12 @@ I-01A es la condición para liberar el servicio al resto de las rutas: mide si e
 
 \subsection{Riesgo de adopción}
 
-El riesgo de adopción está registrado como R8-25 en el Anexo 8.A, con probabilidad 4 e impacto 3 en la escala del Capítulo 8, sección 8.1.3 (exposición 12, nivel alto). La Tabla~\ref{tab:sd13-6} resume sus dos causas.
+El riesgo de adopción está registrado como R-034 en el Anexo 8.A, con probabilidad 4 e impacto 3 en la escala del Capítulo 8, sección 8.1.3 (exposición 0,14, zona Media). La Tabla~\ref{tab:sd13-6} resume sus dos causas.
 
-\begin{tablalafrox}{Riesgo de adopción de la innovación 1. Fuente: elaboración a partir de las fichas R8-25 y su respuesta (LafroX, 2026j, Anexo 8.A; 2026k, T-16) y la aplicación a INN-01 (LafroX, 2026l, sec. 13.1.7).}{tab:sd13-6}{>{\hsize=0.978\hsize\linewidth=\hsize}Y >{\hsize=0.504\hsize\linewidth=\hsize}Y >{\hsize=1.343\hsize\linewidth=\hsize}Y >{\hsize=1.175\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Riesgo de adopción de la innovación 1. Fuente: elaboración a partir del riesgo R-034 y su respuesta (LafroX, 2026j, Anexo 8.A; 2026k, T-16) y la aplicación a INN-01 (LafroX, 2026l, sec. 13.1.7).}{tab:sd13-6}{>{\hsize=0.978\hsize\linewidth=\hsize}Y >{\hsize=0.504\hsize\linewidth=\hsize}Y >{\hsize=1.343\hsize\linewidth=\hsize}Y >{\hsize=1.175\hsize\linewidth=\hsize}Y}
   {\cab{Causa} & \cab{P × I (SD8)} & \cab{Mitigación} & \cab{Contingencia}}
-Avisos falsos por compras irregulares del canal tradicional & 4 × 3 (R8-25) & No liberar sin cumplir I-01A; mostrar la confianza de cada aviso; confirmar el saldo en la visita & Degradar a aviso solo por vida útil remanente del lote, sin estimar el ritmo \\
-Aviso sin acción posible por falta de catálogo & Incluida en R8-25 & El catálogo del paquete 3.10.1.1 es condición de activación & Mantener solo el aviso informativo y escalar a Comercial \\
+Avisos falsos por compras irregulares del canal tradicional & 4 × 3 (R-034) & No liberar sin cumplir I-01A; mostrar la confianza de cada aviso; confirmar el saldo en la visita & Degradar a aviso solo por vida útil remanente del lote, sin estimar el ritmo \\
+Aviso sin acción posible por falta de catálogo & Incluida en R-034 & El catálogo del paquete 3.10.1.1 es condición de activación & Mantener solo el aviso informativo y escalar a Comercial \\
 \end{tablalafrox}
 
 Si la innovación no rinde, la trazabilidad de lote hasta la entrega y la alerta de vida útil en bodega siguen operando, porque son alcance obligatorio y no dependen de ella.
@@ -264,16 +264,16 @@ La línea base de I-02A se forma en QA con incidentes de prueba de los meses 5 a
 
 \subsection{Riesgo de adopción}
 
-El riesgo de adopción está registrado como R8-26 (probabilidad 3, impacto 4, exposición 12), y el riesgo de seguridad asociado como R8-24 (probabilidad 3, impacto 5, exposición 15), ambos en el Anexo 8.A. La Tabla~\ref{tab:sd13-11} los resume.
+El riesgo de adopción está registrado como R-035 (probabilidad 3, impacto 4, exposición 0,20, zona Alta), y el riesgo de seguridad asociado como R-036 (probabilidad 3, impacto 5, exposición 0,40, zona Crítica), ambos en el Anexo 8.A. La Tabla~\ref{tab:sd13-11} los resume.
 
-\begin{tablalafrox}{Riesgos de adopción de la innovación 2. Fuente: elaboración a partir de las fichas R8-24 y R8-26 y su respuesta (LafroX, 2026j, Anexo 8.A; 2026k, T-16) y la aplicación a INN-02 (LafroX, 2026l, sec. 13.2.7).}{tab:sd13-11}{>{\hsize=1.026\hsize\linewidth=\hsize}Y >{\hsize=0.504\hsize\linewidth=\hsize}Y >{\hsize=1.225\hsize\linewidth=\hsize}Y >{\hsize=1.244\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Riesgos de adopción de la innovación 2. Fuente: elaboración a partir de los riesgos R-036 y R-035 y su respuesta (LafroX, 2026j, Anexo 8.A; 2026k, T-16) y la aplicación a INN-02 (LafroX, 2026l, sec. 13.2.7).}{tab:sd13-11}{>{\hsize=1.026\hsize\linewidth=\hsize}Y >{\hsize=0.504\hsize\linewidth=\hsize}Y >{\hsize=1.225\hsize\linewidth=\hsize}Y >{\hsize=1.244\hsize\linewidth=\hsize}Y}
   {\cab{Causa} & \cab{P × I (SD8)} & \cab{Mitigación} & \cab{Contingencia}}
-Reproducción artificial que no explica el incidente & 3 × 4 (R8-26) & Comparar con el estado observado; revisión de muestras por Calidad & Conservar diagnóstico y regresión base con trazas protegidas (R8-26); reproducción semiautomática con un paquete armado por soporte \\
-Consumo de batería o de datos del terminal & Incluida en R8-26 & Cupo y frecuencia de captura & Captura solo a solicitud de soporte \\
-Datos personales en los paquetes & 3 × 5 (R8-24) & Sanitización por reglas fijas; modelado de amenazas (Bases Técnicas Transversales, cap. 26, RT-26.07, p. 45) & Suspender el conjunto afectado y producir una muestra protegida \\
+Reproducción artificial que no explica el incidente & 3 × 4 (R-035) & Comparar con el estado observado; revisión de muestras por Calidad & Conservar diagnóstico y regresión base con trazas protegidas (R-035); reproducción semiautomática con un paquete armado por soporte \\
+Consumo de batería o de datos del terminal & Incluida en R-035 & Cupo y frecuencia de captura & Captura solo a solicitud de soporte \\
+Datos personales en los paquetes & 3 × 5 (R-036) & Sanitización por reglas fijas; modelado de amenazas (Bases Técnicas Transversales, cap. 26, RT-26.07, p. 45) & Suspender el conjunto afectado y producir una muestra protegida \\
 \end{tablalafrox}
 
-Si el circuito no rinde, el diagnóstico convencional y las pruebas obligatorias de resiliencia siguen vigentes, y no se descuentan horas del plan por el ahorro esperado (Anexo 8.F, oportunidad O8-01).
+Si el circuito no rinde, el diagnóstico convencional y las pruebas obligatorias de resiliencia siguen vigentes, y no se descuentan horas del plan por el ahorro esperado.
 
 \section{Innovación 3}
 
@@ -310,9 +310,9 @@ La tecnología tiene cuatro componentes:
 
 \begin{enumerate}
   \item \textbf{EPCIS 2.0 con datos de sensor.} La versión 2.0 del estándar agregó la lista de elementos de sensor (\texttt{sensorElementList}) para adjuntar lecturas o resúmenes de sensor a un evento de negocio (GS1 AISBL, 2022). Cada movimiento del lote (recepción, ubicación en cámara, carga del SSCC al camión y entrega) lleva el resumen térmico del tramo: mínimo, máximo, minutos fuera de rango y carga térmica acumulada.
-  \item \textbf{Asociación lote–sensor por lugar y tiempo.} En cámara, el lote toma la serie del punto B-01 de su zona (21 puntos en total); en ruta, la de las sondas que lee el gateway B-04 de su camión (28 en total), con el termógrafo B-03 y el registrador independiente B-08 como respaldo. Un tramo sin dato queda marcado como tal y nunca se rellena. El modelo de datos ya contiene esta asociación temporal entre sensor y lote (Capítulo 5, sección 5.1.7).
+  \item \textbf{Asociación lote–sensor por lugar y tiempo.} En cámara, el lote toma la serie del punto B-01 de su zona (21 puntos en total); en ruta, la de las sondas que lee el gateway B-04 de su camión (28 en total), con el termógrafo B-03 y el sensor independiente B-08 como respaldo. Un tramo sin dato queda marcado como tal y nunca se rellena. El modelo de datos ya contiene esta asociación temporal entre sensor y lote (Capítulo 5, sección 5.1.7).
   \item \textbf{Modelo cinético por familia} (lácteos, cecinas, congelados y otras). Usa la dependencia de la velocidad de deterioro con la temperatura (Arrhenius o Q10), integrada sobre la historia real del lote. Es el principio del sistema SMAS de gestión de la seguridad de alimentos refrigerados (Koutsoumanis et al., 2005) y del FEFO dinámico en la logística de alimentos (Jedermann et al., 2014). El modelo es determinista: los parámetros vienen de la literatura y de la ficha del proveedor, y los aprueban el Líder de Calidad y Pruebas, Maximiliano Miño, y Calidad del CLIENTE. No es aprendizaje automático.
-  \item \textbf{Cálculo distribuido.} En el borde, el gateway B-02 (AWS IoT Greengrass, en los centros de distribución de Talca y Concepción) acumula la carga térmica de los lotes en cámara aunque el centro esté 24 horas sin enlace. En ruta, el gateway B-04 del camión evalúa las sondas y activa la alarma local sin red, y la aplicación de reparto C-02 evalúa por separado el registrador B-08 (Capítulo 4, sección 4.2). La alerta llega a Calidad durante la ruta por la red móvil o por Iridium; al retorno, N-10 concilia las series y calcula la carga térmica del tramo de ruta. La estimación es una proyección derivada de los eventos: se puede reconstruir con otra versión del modelo para auditoría.
+  \item \textbf{Cálculo distribuido.} En el borde, el gateway B-02 (AWS IoT Greengrass, en los centros de distribución de Talca y Concepción) acumula la carga térmica de los lotes en cámara aunque el centro esté 24 horas sin enlace. En ruta, el gateway B-04 del camión evalúa las sondas y activa la alarma local sin red, y la aplicación de reparto C-02 evalúa por separado el sensor B-08 (Capítulo 4, sección 4.2). La alerta llega a Calidad durante la ruta por la red móvil o por Iridium; al retorno, N-10 concilia las series y calcula la carga térmica del tramo de ruta. La estimación es una proyección derivada de los eventos: se puede reconstruir con otra versión del modelo para auditoría.
 \end{enumerate}
 
 El contrato de datos de la historia térmica del lote se especifica en el Anexo 13.A.
@@ -362,7 +362,7 @@ INN-03.P5 & 8.3.2 & 26, 32, 38, 44, 50 y 56 & Revisión semestral de parámetros
 
 El paquete 3.10.3.3 se ejecuta del 01-10-2027 al 19-11-2027 (Formulario T-15). No forma parte de la entrega técnica del H4 (22-10-2027) ni de su acta (08-11-2027): cierra el 19-11-2027, dentro del límite contractual del H4 (30-11-2027), con siete días de holgura.
 
-Los lácteos son la primera familia priorizada, por la relación con su proveedor descrita en la sección 13.3.1. La innovación se materializa en el mes 16, como apoyo a la decisión de Calidad; el orden de salida sugerido se activa por familia cuando esa familia cumple el indicador I-03B. Los responsables son el Líder de Datos, Leandro Chamorro, y el Arquitecto de Solución, Bastián Trejo, con la validación del Líder de Calidad y Pruebas, Maximiliano Miño, y de la jefa de Calidad del CLIENTE. Desde el mes 22, las revisiones semestrales del paquete 8.3.2 se ejecutan en el frente de Operación que dirige Guillermo Castillo, y Maximiliano Miño y Calidad del CLIENTE aprueban sus parámetros, porque la dedicación del Líder de Datos termina en el mes 21 (Capítulo 1, Tabla 1.6). Las horas del paquete se mantienen en la familia de esfuerzo DAT del Formulario T-15, ejecutadas por el equipo de Operación, como declara el Anexo 8.A (ficha R8-27). Con el inicio supuesto en febrero de 2027 (Anexo 7.A), las revisiones de los meses 32, 44 y 56 caen en septiembre. En esos meses la recalibración se analiza sin intervenir producción, y los parámetros aprobados se activan después del día 25. En todas las revisiones, la activación evita además los tres primeros días hábiles del mes, por el cierre comercial y contable; ambas ventanas forman parte del congelamiento operacional (Distribuidora Puelche S.A., 2026c, cap. 10, restricción 8).
+Los lácteos son la primera familia priorizada, por la relación con su proveedor descrita en la sección 13.3.1. La innovación se materializa en el mes 16, como apoyo a la decisión de Calidad; el orden de salida sugerido se activa por familia cuando esa familia cumple el indicador I-03B. Los responsables son el Líder de Datos, Leandro Chamorro, y el Arquitecto de Solución, Bastián Trejo, con la validación del Líder de Calidad y Pruebas, Maximiliano Miño, y de la jefa de Calidad del CLIENTE. Desde el mes 22, las revisiones semestrales del paquete 8.3.2 se ejecutan en el frente de Operación que dirige Guillermo Castillo, y Maximiliano Miño y Calidad del CLIENTE aprueban sus parámetros, porque la dedicación del Líder de Datos termina en el mes 21 (Capítulo 1, Tabla 1.6). Las horas del paquete se mantienen en la familia de esfuerzo DAT del Formulario T-15, ejecutadas por el equipo de Operación, como declara el Anexo 8.A (riesgo R-037). Con el inicio supuesto en febrero de 2027 (Anexo 7.A), las revisiones de los meses 32, 44 y 56 caen en septiembre. En esos meses la recalibración se analiza sin intervenir producción, y los parámetros aprobados se activan después del día 25. En todas las revisiones, la activación evita además los tres primeros días hábiles del mes, por el cierre comercial y contable; ambas ventanas forman parte del congelamiento operacional (Distribuidora Puelche S.A., 2026c, cap. 10, restricción 8).
 
 \subsection{Impacto económico}
 
@@ -403,13 +403,13 @@ I-03A e I-03B se miden antes del mes 16 y son la condición para habilitar cada 
 
 \subsection{Riesgo de adopción}
 
-El riesgo de adopción está registrado como R8-27 en el Anexo 8.A, con probabilidad 4 e impacto 5 (exposición 20, nivel crítico). La asociación entre sensor y lote está cubierta además por R8-23. La Tabla~\ref{tab:sd13-17} resume las causas.
+El riesgo de adopción está registrado como R-037 en el Anexo 8.A, con probabilidad 4 e impacto 5 (exposición 0,56, zona Crítica). La asociación entre sensor y lote está cubierta además por R-038. La Tabla~\ref{tab:sd13-17} resume las causas.
 
-\begin{tablalafrox}{Riesgos de adopción de la innovación 3. Fuente: elaboración a partir de las fichas R8-23 y R8-27 y su respuesta (LafroX, 2026j, Anexo 8.A; 2026k, T-16) y la aplicación a INN-03 (LafroX, 2026l, sec. 13.3.7).}{tab:sd13-17}{>{\hsize=1.014\hsize\linewidth=\hsize}Y >{\hsize=0.504\hsize\linewidth=\hsize}Y >{\hsize=1.514\hsize\linewidth=\hsize}Y >{\hsize=0.969\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Riesgos de adopción de la innovación 3. Fuente: elaboración a partir de los riesgos R-038 y R-037 y su respuesta (LafroX, 2026j, Anexo 8.A; 2026k, T-16) y la aplicación a INN-03 (LafroX, 2026l, sec. 13.3.7).}{tab:sd13-17}{>{\hsize=1.014\hsize\linewidth=\hsize}Y >{\hsize=0.504\hsize\linewidth=\hsize}Y >{\hsize=1.514\hsize\linewidth=\hsize}Y >{\hsize=0.969\hsize\linewidth=\hsize}Y}
   {\cab{Causa} & \cab{P × I (SD8)} & \cab{Mitigación} & \cab{Contingencia}}
-Parámetros que no representan los productos de Puelche & 4 × 5 (R8-27) & Validación por familia (I-03B) antes de habilitar el orden sugerido; nunca extender el vencimiento por inferencia & La familia queda con historia visible y FEFO por fecha impresa \\
-Que Operaciones lea la estimación como permiso para relajar RNG-04 & Incluida en R8-27 & La regla graduada, el bloqueo de B-02 y la evaluación de B-04 y C-02 en el camión no cambian; la estimación solo informa a Calidad & Mostrar la estimación solo en M9, no en M5 \\
-Lote movido sin evento (asociación errónea) & 4 × 5 (R8-23) & Tramos sin dato explícitos; control de los eventos de ubicación en M2 & Lote marcado «historia incompleta», sin estimación \\
+Parámetros que no representan los productos de Puelche & 4 × 5 (R-037) & Validación por familia (I-03B) antes de habilitar el orden sugerido; nunca extender el vencimiento por inferencia & La familia queda con historia visible y FEFO por fecha impresa \\
+Que Operaciones lea la estimación como permiso para relajar RNG-04 & Incluida en R-037 & La regla graduada, el bloqueo de B-02 y la evaluación de B-04 y C-02 en el camión no cambian; la estimación solo informa a Calidad & Mostrar la estimación solo en M9, no en M5 \\
+Lote movido sin evento (asociación errónea) & 4 × 5 (R-038) & Tramos sin dato explícitos; control de los eventos de ubicación en M2 & Lote marcado «historia incompleta», sin estimación \\
 \end{tablalafrox}
 
 La regla de diseño que acota el riesgo es que la estimación puede acortar la vida útil de un lote, pero nunca alargarla más allá de la fecha impresa.
@@ -521,12 +521,12 @@ La meta de I-04A se exige con OTIF de 95 \% porque en el mes 36 ya rige el tramo
 
 \subsection{Riesgo de adopción}
 
-El riesgo de adopción está registrado como R8-28 en el Anexo 8.A, con probabilidad 3 e impacto 4 (exposición 12, nivel alto). La Tabla~\ref{tab:sd13-23} resume sus causas.
+El riesgo de adopción está registrado como R-039 en el Anexo 8.A, con probabilidad 3 e impacto 4 (exposición 0,20, zona Alta). La Tabla~\ref{tab:sd13-23} resume sus causas.
 
-\begin{tablalafrox}{Riesgo de adopción de la innovación 4. Fuente: elaboración a partir de las fichas R8-28 y su respuesta (LafroX, 2026j, Anexo 8.A; 2026k, T-16) y la aplicación a INN-04 (LafroX, 2026l, sec. 13.4.7).}{tab:sd13-23}{>{\hsize=1.030\hsize\linewidth=\hsize}Y >{\hsize=0.504\hsize\linewidth=\hsize}Y >{\hsize=1.202\hsize\linewidth=\hsize}Y >{\hsize=1.264\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Riesgo de adopción de la innovación 4. Fuente: elaboración a partir del riesgo R-039 y su respuesta (LafroX, 2026j, Anexo 8.A; 2026k, T-16) y la aplicación a INN-04 (LafroX, 2026l, sec. 13.4.7).}{tab:sd13-23}{>{\hsize=1.030\hsize\linewidth=\hsize}Y >{\hsize=0.504\hsize\linewidth=\hsize}Y >{\hsize=1.202\hsize\linewidth=\hsize}Y >{\hsize=1.264\hsize\linewidth=\hsize}Y}
   {\cab{Causa} & \cab{P × I (SD8)} & \cab{Mitigación} & \cab{Contingencia}}
-Variación del costo por causas externas (combustible, cambio de malla, septiembre) & 3 × 4 (R8-28) & Canasta, índices y regla estacional fijados en el paquete 5.4.3, antes de la primera liquidación & Mecanismo contractual de resolución y corrección, sin modificar SLA ni inventar tarifa (R8-28); acotar el tramo al cumplimiento del OTIF, que es atribuible, y mantener el acompañamiento en la tarifa fija \\
-Bajar el costo degradando el servicio o excluyendo clientes & Incluida en R8-28 & Protección del OTIF; denominador sin exclusiones; reproducción por Finanzas & Suspender el devengo del período en disputa según el mecanismo del contrato \\
+Variación del costo por causas externas (combustible, cambio de malla, septiembre) & 3 × 4 (R-039) & Canasta, índices y regla estacional fijados en el paquete 5.4.3, antes de la primera liquidación & Mecanismo contractual de resolución y corrección, sin modificar SLA ni inventar tarifa (R-039); acotar el tramo al cumplimiento del OTIF, que es atribuible, y mantener el acompañamiento en la tarifa fija \\
+Bajar el costo degradando el servicio o excluyendo clientes & Incluida en R-039 & Protección del OTIF; denominador sin exclusiones; reproducción por Finanzas & Suspender el devengo del período en disputa según el mecanismo del contrato \\
 \end{tablalafrox}
 
 Si el modelo no rinde, el contrato vuelve a la estructura de las Bases, con pago fijo y componentes variables de servicio, y el costo de servir sigue disponible como alcance obligatorio de la Etapa 2.
@@ -599,7 +599,7 @@ INN-05.P4 & 3.10.4.4 y 8.3.5 & 18 a 21 y 22 a 26 & Certificación del H10, march
 INN-05.P5 & 8.3.6 & 24 a 27 & Bloque 4: revisión legal, parámetros de agrupación y activación condicionada \\
 \end{tablalafrox}
 
-La cuenta 3.10.4 de la EDT corresponde a la innovación 5, porque la innovación 4 no tiene paquetes de construcción. Los bloques 1 a 3 se materializan en el mes 21; el bloque 4, desde el mes 27 y solo si la revisión legal lo aprueba. Hasta el mes 21 la innovación la dirige el Líder de Implantación y Gestión del Cambio, Patricio Henríquez, con el Encargado de Seguridad de la Información, Álvaro Catalán, a cargo de la privacidad. Desde el mes 22, el despliegue por rutas y el bloque 4 se ejecutan en el frente de Operación que dirige Guillermo Castillo, y Álvaro Catalán aprueba la activación del bloque 4, porque la dedicación del Líder de Implantación termina en el mes 21 (Capítulo 1, Tabla 1.6). Las horas de los paquetes 8.3.5 y 8.3.6 se mantienen en la familia de esfuerzo IMP del Formulario T-15, ejecutadas por el equipo de Operación, como declara el Anexo 8.A (ficha R8-29). Con el inicio supuesto en febrero de 2027 (Anexo 7.A), el despliegue de los meses 22 a 26 va de noviembre de 2028 a marzo de 2029. En el mes 23, diciembre, no se activan rutas, y en los demás meses ninguna activación ocurre en los tres primeros días hábiles, por el congelamiento operacional (Distribuidora Puelche S.A., 2026c, cap. 10, restricción 8).
+La cuenta 3.10.4 de la EDT corresponde a la innovación 5, porque la innovación 4 no tiene paquetes de construcción. Los bloques 1 a 3 se materializan en el mes 21; el bloque 4, desde el mes 27 y solo si la revisión legal lo aprueba. Hasta el mes 21 la innovación la dirige el Líder de Implantación y Gestión del Cambio, Patricio Henríquez, con el Encargado de Seguridad de la Información, Álvaro Catalán, a cargo de la privacidad. Desde el mes 22, el despliegue por rutas y el bloque 4 se ejecutan en el frente de Operación que dirige Guillermo Castillo, y Álvaro Catalán aprueba la activación del bloque 4, porque la dedicación del Líder de Implantación termina en el mes 21 (Capítulo 1, Tabla 1.6). Las horas de los paquetes 8.3.5 y 8.3.6 se mantienen en la familia de esfuerzo IMP del Formulario T-15, ejecutadas por el equipo de Operación, como declara el Anexo 8.A (riesgo R-040). Con el inicio supuesto en febrero de 2027 (Anexo 7.A), el despliegue de los meses 22 a 26 va de noviembre de 2028 a marzo de 2029. En el mes 23, diciembre, no se activan rutas, y en los demás meses ninguna activación ocurre en los tres primeros días hábiles, por el congelamiento operacional (Distribuidora Puelche S.A., 2026c, cap. 10, restricción 8).
 
 \subsection{Impacto económico}
 
@@ -637,12 +637,12 @@ I-05A también se informa sobre el total de 11.600 locales, para mostrar la cobe
 
 \subsection{Riesgo de adopción}
 
-El riesgo de adopción está registrado como R8-29 en el Anexo 8.A, con probabilidad 4 e impacto 3 (exposición 12, nivel alto). La Tabla~\ref{tab:sd13-28} resume sus causas.
+El riesgo de adopción está registrado como R-040 en el Anexo 8.A, con probabilidad 4 e impacto 3 (exposición 0,14, zona Media). La Tabla~\ref{tab:sd13-28} resume sus causas.
 
-\begin{tablalafrox}{Riesgos de adopción de la innovación 5. Fuente: elaboración a partir de las fichas R8-29 y su respuesta (LafroX, 2026j, Anexo 8.A; 2026k, T-16) y la aplicación a INN-05 (LafroX, 2026l, sec. 13.5.7).}{tab:sd13-28}{>{\hsize=1.013\hsize\linewidth=\hsize}Y >{\hsize=0.504\hsize\linewidth=\hsize}Y >{\hsize=1.249\hsize\linewidth=\hsize}Y >{\hsize=1.233\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Riesgos de adopción de la innovación 5. Fuente: elaboración a partir del riesgo R-040 y su respuesta (LafroX, 2026j, Anexo 8.A; 2026k, T-16) y la aplicación a INN-05 (LafroX, 2026l, sec. 13.5.7).}{tab:sd13-28}{>{\hsize=1.013\hsize\linewidth=\hsize}Y >{\hsize=0.504\hsize\linewidth=\hsize}Y >{\hsize=1.249\hsize\linewidth=\hsize}Y >{\hsize=1.233\hsize\linewidth=\hsize}Y}
   {\cab{Causa} & \cab{P × I (SD8)} & \cab{Mitigación} & \cab{Contingencia}}
-Que el almacenero no la lea o no la entienda & 4 × 3 (R8-29) & Prueba de comprensión (I-05B) y co-diseño con almaceneros & Versión de un bloque, explicada de palabra en la visita \\
-Inferir las cifras de un vecino a partir del bloque 4 & Incluida en R8-29 & Umbral y supresión verificados en cada emisión; revisión legal previa & No activar el bloque 4; los bloques 1 a 3 son datos propios del local \\
+Que el almacenero no la lea o no la entienda & 4 × 3 (R-040) & Prueba de comprensión (I-05B) y co-diseño con almaceneros & Versión de un bloque, explicada de palabra en la visita \\
+Inferir las cifras de un vecino a partir del bloque 4 & Incluida en R-040 & Umbral y supresión verificados en cada emisión; revisión legal previa & No activar el bloque 4; los bloques 1 a 3 son datos propios del local \\
 \end{tablalafrox}
 
 Si la innovación no rinde, la visita del preventista, el pago en efectivo y los canales obligatorios siguen operando sin cambios, porque la hoja es un agregado opcional.
@@ -672,7 +672,7 @@ Las citas a las Bases Administrativas y a las Bases Técnicas Transversales iden
   \item LafroX. (2026b). \emph{Subdocumento 3: Esquema de solución y alcance, incluidos sus anexos}.
   \item LafroX. (2026c). \emph{Formulario T-12: Cumplimiento de requisitos funcionales y no funcionales}.
   \item LafroX. (2026d). \emph{Subdocumento 4: Arquitectura lógica y física de la solución}.
-  \item LafroX. (2026e). \emph{Formulario T-11: Inventario de hardware y software}.
+  \item LafroX. (2026e). \emph{Formulario T-11: Especificaciones técnicas ofertadas}.
   \item LafroX. (2026f). \emph{Subdocumento 5: Modelo de datos}.
   \item LafroX. (2026g). \emph{Anexos del Subdocumento 7: Plan de trabajo, EDT, cronograma e implantación}.
   \item LafroX. (2026h). \emph{Formulario T-14: Plan de trabajo, EDT y carta Gantt}.

@@ -1,8 +1,8 @@
 % !TEX root = ../LAFROX-Formulario-T-19.tex
 
-\chapter*{Formulario T-19: Fichas de innovación}
-\addcontentsline{toc}{chapter}{Formulario T-19: Fichas de innovación}
-\markboth{Formulario T-19: Fichas de innovación}{}
+\chapter*{Formulario T-19: Cartera de innovaciones}
+\addcontentsline{toc}{chapter}{Formulario T-19: Cartera de innovaciones}
+\markboth{Formulario T-19: Cartera de innovaciones}{}
 \label{cap:sd13-T19}
 
 Este formulario contiene una ficha por cada una de las cinco innovaciones obligatorias del Artículo 28° de las Bases Administrativas, con los campos del Formulario T-19 en su orden (Distribuidora Puelche S.A., 2026a, Art. 29° y Formulario T-19, pp. 19–20 y 64). El análisis de cada innovación está en el Capítulo 13, secciones 13.1 a 13.5. Los campos de inversión, costo operacional y beneficio se expresan sin montos, por la restricción del Art. 50.2; su valorización está en la Oferta Económica, Entregable 2, ítem 2.7 (Bases Administrativas, Formulario E-21, p. 71). Los requisitos RT citados corresponden a las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b, caps. 5, 10, 14, 16 y 26, pp. 13, 22, 27, 31 y 45). La probabilidad y el impacto usan la escala ordinal 1 a 5 del Capítulo 8, sección 8.1.3.
@@ -23,14 +23,14 @@ Fuente: elaboración a partir de la propuesta INN-01 y sus fuentes tecnológicas
 5. Nivel de madurez y escala utilizada & Escala TRL de la Comisión Europea. Cálculo de cobertura: aritmética conocida. Servicio integrado: TRL 2; objetivo TRL 4 al mes 10 y TRL 6 al mes 15. Investigación adicional: precisión del ritmo de reposición en el canal tradicional (3.10.1.2 y 3.10.1.4). \\
 6. Fuentes citadas (APA 7.ª ed.) & European Commission (2016); Riesenegger et al. (2023). \\
 7. Dónde se inserta en la arquitectura & M10 Analítica (capa 4, datos en N-10, capa 6) calcula la lista nocturna con datos de M2, M8, M9 y M3; M3 Preventa la entrega en la aplicación de preventa C-01 (capa 1) sin señal; la respuesta vuelve por la cola de sincronización (capa 5). Contratos de datos del aviso de vencimiento y de la respuesta de visita (Anexo 13.A). \\
-8. Paquetes de la EDT que la ejecutan & 3.10.1.1 (INN-01.P1), 3.10.1.2 (P2), 3.10.1.3 (P3) y 3.10.1.4 (P4); en operación, mantenimiento dentro de 8.2.1. Responsable: Líder de Datos; desde el mes 22, frente de Operación (Guillermo Castillo). Respuesta al riesgo R8-25: Líder de Implantación y Gestión del Cambio. \\
+8. Paquetes de la EDT que la ejecutan & 3.10.1.1 (INN-01.P1), 3.10.1.2 (P2), 3.10.1.3 (P3) y 3.10.1.4 (P4); en operación, mantenimiento dentro de 8.2.1. Responsable: Líder de Datos; desde el mes 22, frente de Operación (Guillermo Castillo). Respuesta al riesgo R-034: Líder de Implantación y Gestión del Cambio. \\
 9. Mes del cronograma en que se materializa & Mes 16 (paquete 3.10.1.4 en los meses 11 a 15: certificación del H5 en los meses 11 y 12, y piloto con acompañamiento en terreno en la marcha blanca de los meses 13 a 15). \\
 10. Inversión requerida & Horas de datos, desarrollo móvil y diseño del catálogo (meses 7 a 15) y acompañamiento del piloto en terreno (meses 13 a 15). Sin hardware ni licencias. \\
 11. Efecto en el costo operacional & Cálculo nocturno y almacenamiento en nube; mantención de la regla y del catálogo (meses 16 a 56). \\
 12. Beneficio esperado y su cuantificación & Unidades vencidas evitadas en el local por costo unitario, menos canjes y descuentos; desde el mes 16. No se suma a la meta de merma del Capítulo 2 ni a la innovación 3. \\
 13. Indicador de verificación, línea base y meta & I-01A: avisos confirmados / evaluables; base sin medición; meta ≥ 70 \% con ≥ 100 avisos. I-01B: vencido en el local / entregado; base en rutas de control sin avisos, meses 13 a 15; meta \ensuremath{-}25 \%. I-01C: devoluciones por vencimiento próximo / devoluciones; base en rutas de control sin avisos, meses 13 a 15; meta \ensuremath{-}20 \%. \\
 14. Momento de medición & I-01A en el mes 15; I-01B e I-01C en el mes 28. \\
-15. Riesgo de adopción, probabilidad e impacto & R8-25: avisos falsos por compras irregulares o aviso sin acción posible. P = 4, I = 3, exposición 12. \\
+15. Riesgo de adopción, probabilidad e impacto & R-034: avisos falsos por compras irregulares o aviso sin acción posible. P = 4, I = 3, exposición 0,14, zona Media. \\
 16. Estrategia de mitigación & No liberar sin cumplir I-01A; mostrar la confianza de cada aviso; confirmar el saldo en la visita; catálogo como condición de activación. \\
 17. Plan de contingencia si no rinde lo esperado & Degradar a aviso solo por vida útil remanente del lote; mantener el aviso informativo y escalar a Comercial. La trazabilidad de lote obligatoria sigue operando. \\
 \end{tablasimple}
@@ -58,9 +58,9 @@ Fuente: elaboración a partir de la propuesta INN-02 y sus fuentes tecnológicas
 12. Beneficio esperado y su cuantificación & Horas de diagnóstico y regresiones repetidas evitadas; desde el mes 13. El criterio 6 del caso no se cuenta como beneficio de la innovación. \\
 13. Indicador de verificación, línea base y meta & I-02A: mediana de horas hasta la causa reproducida; base: incidentes de prueba en QA de los meses 5 a 10, diagnosticados sin el paquete; meta \ensuremath{-}30 \% con ≥ 20 pares. I-02B: paquetes que reproducen / admitidos; meta ≥ 80 \%. I-02C: reaperturas por la misma causa; meta 0. I-02D: paquetes con datos prohibidos; meta 0. \\
 14. Momento de medición & I-02A en el mes 15; I-02B en el mes 15 y trimestral después; I-02C mensual desde el mes 21; I-02D en cada liberación. \\
-15. Riesgo de adopción, probabilidad e impacto & R8-26: reproducción que no explica el incidente o consumo de batería; P = 3, I = 4, exposición 12. R8-24: datos personales en los paquetes; P = 3, I = 5, exposición 15. \\
+15. Riesgo de adopción, probabilidad e impacto & R-035: reproducción que no explica el incidente o consumo de batería; P = 3, I = 4, exposición 0,20, zona Alta. R-036: datos personales en los paquetes; P = 3, I = 5, exposición 0,40, zona Crítica. \\
 16. Estrategia de mitigación & Comparar con el estado observado y revisión de muestras por Calidad; cupo y frecuencia de captura; sanitización por reglas fijas y modelado de amenazas (Bases Técnicas Transversales, cap. 26, RT-26.07, p. 45). \\
-17. Plan de contingencia si no rinde lo esperado & Conservar diagnóstico y regresión base con trazas protegidas (R8-26); reproducción semiautomática con paquete armado por soporte; captura solo a solicitud; suspender el conjunto afectado. Se mantienen el diagnóstico convencional y las pruebas obligatorias. \\
+17. Plan de contingencia si no rinde lo esperado & Conservar diagnóstico y regresión base con trazas protegidas (R-035); reproducción semiautomática con paquete armado por soporte; captura solo a solicitud; suspender el conjunto afectado. Se mantienen el diagnóstico convencional y las pruebas obligatorias. \\
 \end{tablasimple}
 
 \section*{Ficha 3 — Innovación 3}
@@ -86,7 +86,7 @@ Fuente: elaboración a partir de la propuesta INN-03 y sus fuentes tecnológicas
 12. Beneficio esperado y su cuantificación & Retenciones y descartes sin justificación térmica evitados; rechazos por fecha próxima evitados; dato de vida útil consumida para decidir reubicar o descartar. Desde el mes 16. No se suma a la meta de merma ni a la innovación 1. \\
 13. Indicador de verificación, línea base y meta & I-03A: historia térmica completa; base 0; meta ≥ 95 \%. I-03B: estimación dentro de ±15 \%; sin medición histórica; referencia inicial por familia a establecer en la validación de meses 11 a 15; meta ≥ 80 \% con ≥ 60 lotes por familia. I-03C: excursiones con vida consumida registrada; base 0; meta 100 \%. I-03D: retenidos o descartados por vencimiento; base meses 13 a 15; meta \ensuremath{-}20 \%. \\
 14. Momento de medición & I-03A e I-03B en el mes 15, y I-03B después en cortes trimestrales por familia; I-03C mensual desde el mes 16; I-03D en el mes 28. \\
-15. Riesgo de adopción, probabilidad e impacto & R8-27: parámetros no representativos o lectura de la estimación como permiso para relajar RNG-04; P = 4, I = 5, exposición 20. R8-23: asociación sensor–lote errónea; P = 4, I = 5, exposición 20. \\
+15. Riesgo de adopción, probabilidad e impacto & R-037: parámetros no representativos o lectura de la estimación como permiso para relajar RNG-04; P = 4, I = 5, exposición 0,56, zona Crítica. R-038: asociación sensor–lote errónea; P = 4, I = 5, exposición 0,56, zona Crítica. \\
 16. Estrategia de mitigación & Validación por familia antes de habilitar; la estimación nunca alarga la vida más allá de la fecha impresa; la regla graduada y el bloqueo no cambian; tramos sin dato explícitos. Se considera señal de deriva del desempeño que I-03B sea inferior al 80 \% en dos cortes consecutivos para una misma familia; este umbral activa la recalibración extraordinaria de sus parámetros y no constituye por sí solo un diagnóstico de la causa de la degradación. \\
 17. Plan de contingencia si no rinde lo esperado & La familia queda con historia visible y FEFO por fecha impresa; estimación visible solo en M9; lote marcado «historia incompleta», sin estimación. \\
 \end{tablasimple}
@@ -114,9 +114,9 @@ Fuente: elaboración a partir de la propuesta INN-04 y sus fuentes tecnológicas
 12. Beneficio esperado y su cuantificación & Reducción verificable del costo por entrega de Puelche, desde el mes 24; Puelche paga menos si la solución no rinde y nunca más que el máximo. No se suma a las innovaciones 1, 3 o 5. \\
 13. Indicador de verificación, línea base y meta & I-04A: 1 \ensuremath{-} costo comparable / costo de referencia; base canasta de los meses 21 a 23; meta ≥ 5 \% con OTIF ≥ 95 \%. I-04B: liquidaciones en sombra reproducidas por Finanzas; meta 3 de 3. I-04C: recomendaciones con respuesta y efecto; meta 100 \%. \\
 14. Momento de medición & I-04A en el mes 36 y mensual desde el 24; I-04B en los meses 21 a 23; I-04C mensual desde el mes 21. \\
-15. Riesgo de adopción, probabilidad e impacto & R8-28: variación del costo por causas externas o reducción por degradación del servicio, con disputa en la liquidación. P = 3, I = 4, exposición 12. \\
+15. Riesgo de adopción, probabilidad e impacto & R-039: variación del costo por causas externas o reducción por degradación del servicio, con disputa en la liquidación. P = 3, I = 4, exposición 0,20, zona Alta. \\
 16. Estrategia de mitigación & Canasta, índices y regla estacional fijados antes de la primera liquidación; protección del OTIF; denominador sin exclusiones; reproducción por Finanzas. \\
-17. Plan de contingencia si no rinde lo esperado & Mecanismo contractual de resolución y corrección, sin modificar SLA ni inventar tarifa (R8-28); acotar el tramo al cumplimiento del OTIF; suspender el devengo del período en disputa según el contrato; volver a la estructura de pago de las Bases. \\
+17. Plan de contingencia si no rinde lo esperado & Mecanismo contractual de resolución y corrección, sin modificar SLA ni inventar tarifa (R-039); acotar el tramo al cumplimiento del OTIF; suspender el devengo del período en disputa según el contrato; volver a la estructura de pago de las Bases. \\
 \end{tablasimple}
 
 \section*{Ficha 5 — Innovación 5}
@@ -142,7 +142,7 @@ Fuente: elaboración a partir de la propuesta INN-05 y sus fuentes tecnológicas
 12. Beneficio esperado y su cuantificación & Efecto en la frecuencia y el tamaño del pedido y retención frente al competidor, valorizado solo si se demuestra al mes 33. Beneficio social: la información de gestión llega al cliente pequeño sin exigirle conexión. \\
 13. Indicador de verificación, línea base y meta & I-05A: hojas mostradas / locales que aceptan, y copias entregadas / pedidas; base 0; meta ≥ 90 \% y ≥ 85 \%. I-05B: comprensión de las tres preguntas; base sin medición (la hoja no existe); meta ≥ 80 \%, al menos 20 de 24 participantes. I-05C: compra en rutas con hoja frente a rutas aún sin hoja durante el despliegue, y de cada ruta frente a su período previo; meta estimar el efecto. I-05D: emisiones del bloque 4 sobre el umbral; meta 100 \%. \\
 14. Momento de medición & I-05B en el mes 14, con la prueba de los meses 13 y 14; I-05A en el mes 27; I-05C en los meses 22 a 26 y en el mes 33; I-05D en cada emisión. \\
-15. Riesgo de adopción, probabilidad e impacto & R8-29: el almacenero no la lee o no la entiende, o el bloque 4 permite inferir cifras de un vecino. P = 4, I = 3, exposición 12. \\
+15. Riesgo de adopción, probabilidad e impacto & R-040: el almacenero no la lee o no la entiende, o el bloque 4 permite inferir cifras de un vecino. P = 4, I = 3, exposición 0,14, zona Media. \\
 16. Estrategia de mitigación & Prueba de comprensión y co-diseño; umbral y supresión verificados en cada emisión; revisión legal previa al bloque 4. \\
 17. Plan de contingencia si no rinde lo esperado & Versión de un bloque explicada de palabra en la visita; no activar el bloque 4. La visita, el efectivo y los canales obligatorios no cambian. \\
 \end{tablasimple}
@@ -173,7 +173,7 @@ Las citas a las Bases Administrativas y a las Bases Técnicas Transversales iden
   \item LafroX. (2026b). \emph{Subdocumento 3: Esquema de solución y alcance, incluidos sus anexos}.
   \item LafroX. (2026c). \emph{Formulario T-12: Cumplimiento de requisitos funcionales y no funcionales}.
   \item LafroX. (2026d). \emph{Subdocumento 4: Arquitectura lógica y física de la solución}.
-  \item LafroX. (2026e). \emph{Formulario T-11: Inventario de hardware y software}.
+  \item LafroX. (2026e). \emph{Formulario T-11: Especificaciones técnicas ofertadas}.
   \item LafroX. (2026g). \emph{Anexos del Subdocumento 7: Plan de trabajo, EDT, cronograma e implantación}.
   \item LafroX. (2026h). \emph{Formulario T-14: Plan de trabajo, EDT y carta Gantt}.
   \item LafroX. (2026j). \emph{Subdocumento 8: Plan de gestión de riesgos, incluidos sus anexos}.
