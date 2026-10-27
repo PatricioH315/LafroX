@@ -12,7 +12,7 @@ from bisect import bisect_left
 import calendar, json, math, re, hashlib
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'revision/cpm_20261025'
+OUT = ROOT / 'revision/frente-b/cpm'
 
 def rows(relative):
     text = (ROOT / relative).read_text(encoding='utf-8')
@@ -91,8 +91,12 @@ for c,p in P.items():
     if p['class']=='D' and c.startswith(('3.4.','3.5.')):
         contracts=2*math.ceil(80/(6.4*p['peak']))
         integration=math.ceil(80/(6.4*p['peak']))
-        construction=p['duration']-contracts-integration
-        assert construction>=math.ceil((p['hh']-240)/(6.4*p['peak']))
+        # La ventana S->F contiene también margen y esperas. Atribuir todo ese
+        # tiempo a construcción propaga de nuevo una espera por interfaz y
+        # desplaza artificialmente 3.4.10, H4 y el piloto. Las puertas internas
+        # usan el mínimo de trabajo efectivo; S->F conserva la ventana completa.
+        construction=math.ceil((p['hh']-240)/(6.4*p['peak']))
+        assert contracts + construction + integration <= p['duration']
         node('C:'+c);node('I:'+c)
         edge('S:'+c,'C:'+c,contracts,'trabajo:'+c)
         edge('C:'+c,'I:'+c,construction,'trabajo:'+c)
@@ -264,15 +268,17 @@ for a in adj:
         if ES[b]<ES[a]+w:violations.append((a,b,w))
 assert not violations
 out={'metodo':'CPM con restricciones de fecha y precedencias FC/CC/FF; PERT condicional de duración',
-     'supuestos':['Inicio nominal febrero2027; días laborables lunes-viernes sin feriados nacionales previsibles',
+     'supuestos':['Inicio nominal febrero2027; calendario interno heredado pendiente de confirmación del CLIENTE',
                   'Duraciones de las ventanas diarias vigentes y mínimo HH/(6.4*personas máximas)',
+                  'Puertas internas con trabajo mínimo; ventana completa conserva esperas y margen',
                   'No se acredita asignación nominal ni nivelación fina de recursos por actividad',
+                  'H7/H12 condicionados a actas de cierre: revisión de diez días no encaja antes de producción objetivo; ver K6_VERIFICACION.json',
                   'PERT O=.75d M=d P=1.25d; independencia; calendario y revisiones fijos'],
      'nodos':len(base),'aristas':sum(map(len,adj.values())),'paquetes_entregables':len(P),
      'paquetes_totales':len(EFF),'hh_paquetes':sum(float(r[7]) for r in EFF.values()),
      'hh_programadas':220023,'feriados':[d.isoformat() for d in sorted(HOLIDAYS)],
      'hitos':results,'paquetes':detail,'violaciones_precedencia':violations}
-OUT.mkdir(exist_ok=True)
+OUT.mkdir(parents=True,exist_ok=True)
 (OUT/'resultado_cpm_pert.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
 for h in results:print(h['hito'],h['entrega'],h['acta_temprana'],h['holgura_dias'],h['camino'],h['sigma_dias'])
 print('Nodos',len(base),'aristas',out['aristas'],'; HH',out['hh_paquetes'])

@@ -16,7 +16,7 @@ La tabla lleva a tres conclusiones. Primero, ningún inicio admisible deja las d
 
 Tercero, entre esos tres inicios, febrero de 2027 es el único en que el congelamiento afecta solo el último mes de una marcha blanca (el mes 20, de la Etapa 2) y no un inicio de marcha blanca. Con diciembre de 2026, el H6 caería en diciembre; con marzo de 2027, el H11 caería en septiembre. Con febrero de 2027, las cuatro semanas de cierre de la marcha blanca de la Etapa 2 coinciden con el peak de Fiestas Patrias; por eso toda habilitación de la Etapa 2 ocurre en agosto de 2028 y el cierre se mide con el volumen del peak (Formulario T-18, sección 3.1). LafroX adopta febrero de 2027 como supuesto de calendario de la carta Gantt.
 
-Durante un mes de congelamiento que cae dentro de una marcha blanca no se inicia ninguna ola ni se despliega ningún cambio. La marcha blanca continúa en convivencia con la forma actual de trabajar, se siguen midiendo los indicadores diarios y el volumen real de septiembre sirve como prueba de carga en operación. La fecha efectiva de inicio se confirma con la consulta V-12 (Capítulo 3, Anexo 3.H).
+Durante las fechas efectivamente congeladas no se inicia ninguna ola ni se despliega ningún cambio; se distingue el congelamiento total del 1 al 25 de septiembre de la prohibición de paso a producción durante todo septiembre y diciembre. La política adicional de despliegue de SD4 se aplica como se describe en T-18, sección 1. La marcha blanca continúa en convivencia con la forma actual de trabajar, se siguen midiendo los indicadores diarios y el volumen real de septiembre sirve como prueba de carga en operación. La fecha efectiva de inicio se confirma con la consulta V-12 (Capítulo 3, Anexo 3.H).
 
 \section{Anexo 7.B — Dependencias entre paquetes de trabajo}
 
@@ -50,6 +50,8 @@ La EDT contiene la arquitectura cuando cada módulo y cada interfaz del Capítul
 
 Once de los doce módulos se construyen en la cuenta 3.4 y se prueban en la 3.8; M10 Analítica es el único módulo con trabajo en ambas etapas, porque sus indicadores operacionales entran en la Etapa 1 y el costo de servir en la Etapa 2.
 
+La Tabla \ref{tab:7E2} presenta interfaces de la arquitectura y paquetes de la EDT.
+
 \parte{tablas/tab_7E2}
 
 Las quince interfaces tienen un paquete que las construye, y las interfaces internas (INT-01 a INT-05 e INT-12 a INT-14) dependen de la base compartida o de los módulos que las usan. Además de estas interfaces, el paquete 3.6.1 construye el intercambio de lote y trazabilidad con los proveedores.
@@ -60,13 +62,15 @@ El sistema de cadena de frío requiere cotizaciones escritas de proveedores con 
 
 Esta matriz traslada al Capítulo 8 los supuestos de la planificación que condicionan el cronograma, con su responsable y el control que los vigila. El Capítulo 8 los evalúa con su escala y los registra en el Formulario T-16. Los códigos P7 son identificadores de esta matriz y no renumeran el Formulario T-12.
 
+La Tabla \ref{tab_7F1} presenta anexo 7.F; Supuestos de planificación y dependencias para la gestión de riesgos.
+
 \parte{tablas/tab_7F1}
 
 Los once supuestos se concentran en tres frentes: el tamaño de las estimaciones (P7-01 a P7-03), la fecha efectiva y las ventanas de corte (P7-04 a P7-06) y las dependencias técnicas con la arquitectura (P7-08 a P7-10). Cada uno tiene un control que se revisa en el Comité de Proyecto, y el Capítulo 8 asigna a los de mayor exposición una reserva de contingencia.
 
 \subsection{Política de reservas que recibe el Capítulo 8}
 
-El modelo protege 3.072 HH para correcciones de la Etapa 1 en los meses 13 a 20, además del trabajo base y de la cobertura de servicio. El cálculo vigente del Formulario T-15, sección 5, da estas holguras contractuales en días hábiles: H1 5, H2 11, H3 17, H4 16, H5 20, H7 2, H8 14, H9 19, H10 13 y H12 3. Son márgenes de programación, no capacidad movilizable. La subsanación de observaciones del CLIENTE consume la holgura del hito (T-15, sección 5.5); en el H1, el H7 y el H12, cuya holgura es menor que el plazo de subsanación, el expediente se revisa con la Contraparte Técnica antes de la entrega formal. Toda amenaza a una fecha contractual o a la revisión del CLIENTE se escala con su impacto. La holgura local de convergencia no se suma como reserva adicional. Las últimas cuatro semanas de marcha blanca no son reserva. La reserva de gestión se define en la Oferta Económica, porque la Oferta Técnica no contiene precios.
+El modelo protege 3.072 HH para correcciones de la Etapa 1 en los meses 13 a 20, además del trabajo base y de la cobertura de servicio. El cálculo vigente del Formulario T-15, sección 5, da estas holguras contractuales en días hábiles: H1 5, H2 11, H3 17, H4 16, H5 20, H7 2, H8 14, H9 19, H10 13 y H12 3. Son márgenes de programación, no capacidad movilizable. La subsanación de observaciones del CLIENTE consume la holgura del hito (T-15, sección 5.5); en H1, H7 y H12, la preparación preliminar del expediente no garantiza que quepan la subsanación y una segunda revisión. El plazo aplicable al cierre de marcha blanca tampoco se presume absorbido por H7/H12; la secuencia y su incompatibilidad con producción objetivo están en T-15, sección 5.5. Toda amenaza a una fecha contractual o a la revisión del CLIENTE se escala con su impacto. La holgura local de convergencia no se suma como reserva adicional. Las últimas cuatro semanas de marcha blanca no son reserva. La reserva de gestión se define en la Oferta Económica, porque la Oferta Técnica no contiene precios.
 
 \subsection{Condiciones para aprobar la línea base}
 
@@ -83,7 +87,6 @@ Las fuentes citadas en estos anexos se listan en formato APA 7.ª edición. Las 
 \item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas, Licitación TFEP-01/2026}.
 \item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales, Licitación TFEP-01/2026}.
 \item Distribuidora Puelche S.A. (2026c). \emph{Bases Técnicas del Caso Logística}.
-\item Distribuidora Puelche S.A. (2026d). \emph{Aclaraciones de la Licitación TFEP-01/2026}.
 
 \end{itemize}
 \normalsize

@@ -1,7 +1,7 @@
 \begin{tablalafrox}{Niveles de reversión. Fuente: (Subdocumento 3, sección 3.4.4); (Subdocumento 4, apartados 4.2.4.1.2 y 4.1.8); y (Formulario T-18).}{tab:7-reversion}
   {Y Y Y Y}
-  {\cab{Nivel} & \cab{Qué hace} & \cab{Quién decide} & \cab{Plazo}}
-  Técnico & Devuelve el tráfico a la entrega previa por azul-verde/canario o desactiva el indicador de funcionalidad (feature flag) & Líder de Operación / SRE & Objetivo \ensuremath{\leq}10 minutos, medido en cada ensayo en Preproducción, fuera de la ventana de despacho \\
+  {\cab{Nivel} & \cab{Qué hace} & \cab{Activación y responsabilidad} & \cab{Plazo}}
+  Técnico & El mecanismo de despliegue revierte automáticamente a la entrega previa al incumplir sus controles; cualquier cambio de un indicador de funcionalidad sigue el procedimiento autorizado & El mecanismo ejecuta la reversión automática. SRE supervisa, valida la recuperación y escala; la reversión automática no espera su autorización manual & Objetivo \ensuremath{\leq}10 minutos, medido en cada ensayo en Preproducción, fuera de la ventana de despacho \\
   Operacional, Etapa 1 & Conserva/restaura versión operativa local probada, único escritor y DTE válidos; papel sólo de apoyo & Responsable de operaciones del CLIENTE & Completo antes de las 05:30 \\
   Operacional, Etapa 2 & Desactiva la capacidad de la Etapa 2 que falla, sin tocar la Etapa 1 & Responsable de operaciones del CLIENTE & Fuera de la ventana de 05:30 a 07:00 \\
 \end{tablalafrox}

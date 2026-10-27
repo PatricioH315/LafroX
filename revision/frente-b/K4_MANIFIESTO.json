@@ -1,0 +1,19 @@
+{
+  "head": "93a5e884b3f8397e8f3ec7fc76e1e6a45f351b8e",
+  "fuentes": {
+    "formulario-t15/tablas/tab_T15_2.tex": "283a396b0f6b08a0070e32139dafc8f5be7017925e824159d95c698038e29dce",
+    "formulario-t15/tablas/tab_T15_paquetes.tex": "e6b3ff15fce2d7d98f4a112620724b4bc078e471b530be2e590f2a8177eccbbe",
+    "formulario-t15/tablas/tab_T15_4.tex": "93ce47f9cc3bd2288c4d5fe5b1ead2ff01330019f34eccd6063f906e4ddeae59",
+    "formulario-t15/tablas/tab_T15_4_personas.tex": "68da92c39c799f64f75244a2564b28fa9eea352415a0612c9566058ec4a56fa1"
+  },
+  "paquetes": 227,
+  "entregables": 168,
+  "continuos": 59,
+  "hh_paquetes": 207487,
+  "componentes": {
+    "restauraciones": 128,
+    "soporte_puente": 9336,
+    "reserva_protegida": 3072
+  },
+  "hh_total": 220023
+}

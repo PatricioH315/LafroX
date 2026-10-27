@@ -1,0 +1,16 @@
+﻿canon,asunto,estado,evidencia
+C1,Nombres de archivos,Verificado,Prefijos de cinco entradas y PDF LAFROX; extractor Markdown corregido
+C2,IDs de riesgos R-0xx,Pendiente externo,No se crean IDs ni reservas sin K5 de A
+C3,Mes 1 febrero de 2027,Verificado como supuesto,Se conserva V-12 y confirmación CLIENTE
+C4,Dos actas y fechas,Parcial; conflicto registrado,Separación aplicada; plazo de revisión de cierre no cabe si se usa completo
+C5,Poblaciones,Verificado en B,Preparadores por sitio; conductores distintos de tripulación; S-39 explícito
+C6,SOC propio,Aplicado; disponibilidad pendiente,Valparaíso y contratación antes de mes 13 bajo SEG; turnos por confirmar
+C7,Tres coberturas,Aplicado,"T14 1.5.2 lógica 70%, global 80%, modificado 80%"
+C8,DR,Aplicado en planificación; coordinación pendiente,"AL-DR-01, RTO/RPO, alarmas y campañas; ninguna prueba se declara ejecutada"
+C9,Congelamientos,Verificado y aclarado,Total 1–25 septiembre; producción todo septiembre; SD4 agrega política despliegue
+C10,Terminología,Verificado en alcance B,M12 Telemetría; referencias a SD4/T11; sin renombrar módulos unilateralmente
+C11,Ocho roles,Verificado en B,JP ARQ DES CAL SRE SEG DAT IMP; apoyo no crea roles nuevos
+C12,Títulos oficiales,Verificado en alcance B,T14 plan de trabajo/EDT/Gantt; T15 nivelación; T18 implantación
+C13,Remisiones propias,Aplicado en fuentes y Markdown actualizado,Sin entradas bibliográficas LafroX 2026x en fuentes activas
+C14,Declaración IA,Historial conservado y nueva intervención declarada,No se atribuye revisión humana posterior; SD8 fuera de alcance
+C15,Numeración formularios,Verificado,T14/T15/T18 desde sección 1; referencia T17 secciones 1/2/4.1

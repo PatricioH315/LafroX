@@ -1,0 +1,119 @@
+[
+  {
+    "ref": "origin/LafroX-Subdoc1-LateX",
+    "commit": "0938754e66593e065a81de0fbc68c635c66ea340",
+    "archivo": "contenido.tex",
+    "blob": "834581ad6ea4cd789c4594bd1635e679c52929c2",
+    "sha256": "a663aa2fc5b763e03b46ec124d7aae2ce700db19457c4940256b5546bbadb45b"
+  },
+  {
+    "ref": "origin/LafroX-Subdoc3-LateX",
+    "commit": "8f3662465edea19b676ce1194727ce5d0ec168fb",
+    "archivo": "contenido.tex",
+    "blob": "b91f285e63e99c1d71b80b9357a9115d6e89e9a6",
+    "sha256": "e2a5c0ce043eccd5daa164b802a06cd23ffe3e8264840e38da6ce11d905f47e2"
+  },
+  {
+    "ref": "origin/LafroX-Subdoc3-LateX",
+    "commit": "8f3662465edea19b676ce1194727ce5d0ec168fb",
+    "archivo": "anexos.tex",
+    "blob": "57f25dd52a78c09943eeb0e8bf0c1739a9232d55",
+    "sha256": "7f40ad4b488ecfb80d5914ee41d8f45f33782aa850201099763841a9ae5ec91c"
+  },
+  {
+    "ref": "origin/LafroX-Subdoc6-LateX",
+    "commit": "9b650edebe0c5a139462df4c41fbf84f048cdcd4",
+    "archivo": "subdocumento_6/contenido.tex",
+    "blob": "ccfb587bf79e152bc6f0b406708f3feb5de1c222",
+    "sha256": "53e0abf22dfc42ec7fe27d1377bbc1b9ee049a08eba3f8ae7fbc2276c8db8952"
+  },
+  {
+    "ref": "origin/LafroX-Subdoc6-LateX",
+    "commit": "9b650edebe0c5a139462df4c41fbf84f048cdcd4",
+    "archivo": "Documentos asociados/Bases/Bases_Administrativas.md",
+    "blob": "2db21948d3e4450c76e5f165fcaa2fbc3f661224",
+    "sha256": "103f00b253b9368651bcd94ac9a4c03668e6d7edcd15a6f9a00c82a70b5679a7"
+  },
+  {
+    "ref": "origin/LafroX-Subdoc6-LateX",
+    "commit": "9b650edebe0c5a139462df4c41fbf84f048cdcd4",
+    "archivo": "Documentos asociados/Bases/Bases_Tecnicas_Transversales.md",
+    "blob": "21fb12a248eb2ed2c6a4816d5e3edb6381df20c5",
+    "sha256": "bf7ff0d25089ed491ff479c9485fa6639e455b78ddd107bdd83e7e7613f326c2"
+  },
+  {
+    "ref": "origin/LafroX-Subdoc6-LateX",
+    "commit": "9b650edebe0c5a139462df4c41fbf84f048cdcd4",
+    "archivo": "Documentos asociados/Bases/Caso_02_Logistica.md",
+    "blob": "378b85e31304693c0292135e9373acb6d416fa98",
+    "sha256": "9550b1703e1e0b37c19079bca08d5e068261e5086b76104d36d4fc76d0383d47"
+  },
+  {
+    "ref": "origin/LafroX-Subdoc9-LateX",
+    "commit": "8ff09c2a4d09eb6fd838cfdc2489ef1b2ad86aa2",
+    "archivo": "SD9_v_nueva/T17/contenido.tex",
+    "blob": "43dff5658ff63ff63316438652c402b502333cec",
+    "sha256": "8e1f5fd6ba6fb597171fa0cf84b86131139935b422ef29cfabe3192f7b85c12d"
+  },
+  {
+    "ref": "origin/LafroX-Subdoc9-LateX",
+    "commit": "8ff09c2a4d09eb6fd838cfdc2489ef1b2ad86aa2",
+    "archivo": "SD9_v_nueva/09_plan_calidad/contenido.tex",
+    "blob": "eb7152fc8391388b59ab5cc431ffdac20c0832ef",
+    "sha256": "99e43e62a8ccda09c952a6594660bae6ad93f53e66b360b8b9dccf4c0ca3087f"
+  },
+  {
+    "ref": "origin/Guillermo-subdoc4-consistencia",
+    "commit": "3f4d36ea0ba77d1bb7745c0738e5e2e41f25cbbe",
+    "archivo": "04/partes/4.2_fisica/11_j_despliegue.tex",
+    "blob": "6d1a9a131b19bce4cda39b71b1ab1d4c410ba3ca",
+    "sha256": "81ea0f798247bb62ce4ac6047a7ea85cbe1af813fb2771d7d98e80da2795ab72"
+  },
+  {
+    "ref": "origin/Lafrox_Subdocumento_8_Latex_Nuevo",
+    "commit": "d0bfbc394115922903cd2e482f40030fa7a774fc",
+    "archivo": "08_plan_riesgos/contenido.tex",
+    "blob": "1918cc1921c6300c33e2235da73f82abbacdf736",
+    "sha256": "5c4f3df010ccde4ca5c72a5c9b8e74688d77abb9d358e2003f928b0430773e29"
+  },
+  {
+    "ref": "origin/subdoc-4",
+    "commit": "b0606ac9f7685322c8fb7e2ffd22caab96d3b43c",
+    "archivo": "04/partes/4.2_fisica/11_j_despliegue.tex",
+    "blob": "96cbadb8fd479fdc666cad1a0b2e9fefb45e9678",
+    "sha256": "56746bae471514efb2472d48507e920932c1d41fe33d4a9998df74fe8630ce0d",
+    "estado": "rama vigente local indicada por el plan original"
+  },
+  {
+    "ref": "origin/subdoc-4",
+    "commit": "b0606ac9f7685322c8fb7e2ffd22caab96d3b43c",
+    "archivo": "04/partes/4.1_logica/05_modulos_funcionales_y_limites_de_contexto.tex",
+    "blob": "71a725d8e3b5cbbda3756df41f33579d900317f0",
+    "sha256": "bb066bc1814802ac91ba521de14d5563c8eca9248e217ed984775bd29aa85f5a",
+    "estado": "rama vigente local indicada por el plan original"
+  },
+  {
+    "ref": "origin/subdoc-4",
+    "commit": "b0606ac9f7685322c8fb7e2ffd22caab96d3b43c",
+    "archivo": "04/partes/4.3_centros_de_datos/06_e_sitio_secundario.tex",
+    "blob": "4381fc8a74bbab842c256da2b1609ed0e3658197",
+    "sha256": "e1fb7e027bcf553dd56b0e4322c4846f8fb7c9c054bc2f61ee4f8163d0d8fb67",
+    "estado": "rama vigente local indicada por el plan original"
+  },
+  {
+    "ref": "origin/subdoc-4",
+    "commit": "b0606ac9f7685322c8fb7e2ffd22caab96d3b43c",
+    "archivo": "04/anexos/fisica/16_anexo_4b_memoria_calculo.tex",
+    "blob": "daace01c4a248e26aee3bd1d3eb4f850fcba1b62",
+    "sha256": "143a405b0a2fd5a4ecd616bd44ca16f413cca9b74ac9fc494578bbf10a7a023b",
+    "estado": "rama vigente local indicada por el plan original"
+  },
+  {
+    "ref": "origin/subdoc-4",
+    "commit": "b0606ac9f7685322c8fb7e2ffd22caab96d3b43c",
+    "archivo": "entrega/LAFROX-Subdocumento4.pdf",
+    "blob": "30feb18472d094dd82fad0cf0614c0eafb1f1041",
+    "sha256": "0ad82109addd3c42d8257bae8ca0002201986e7e78579c5e5c1e4f8ffc9f56f4",
+    "estado": "rama vigente local indicada por el plan original"
+  }
+]

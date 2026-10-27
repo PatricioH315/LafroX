@@ -1,17 +1,16 @@
 # Formulario T-18 — Implantación de la solución
 
-> Texto extraído del [PDF final](LafroX-Formulario-T-18.pdf). Las figuras y la composición visual se consultan en el PDF.
+> Texto extraído del [PDF final](LAFROX-Formulario-T-18.pdf). Las figuras y la composición visual se consultan en el PDF.
 
 LafroX SpA
-VERSIÓN FINAL PARA ENTREGA
 LICITACIÓN PÚBLICA
 Licitación N.° TFEP-01/2026
 Proyecto de Plataforma Digital de Misión Crítica
 Caso — Logística
-Sobre N.° 2 --- Oferta Técnica
-Formulario T-18
-Implantación de la Solución
-Implantación de la Solución · Formulario T-18
+Sobre N.° 2 — Oferta Técnica
+Propuesta Técnica
+Formulario T-18 — Implantación de la Solución
+Subdocumento 07 · Formulario T-18
 MANDANTE
 Distribuidora Puelche S.A.
 PROPONENTE
@@ -28,7 +27,7 @@ FECHA DE EMISIÓN
 FIRMA DEL REPRESENTANTE LEGAL
 Alex Aravena
 Jefe de Proyecto y Apoderado · LafroX SpA
-SOBRE2_LAFROX_OFERTA_TECNICA_20261012.ZIP 1
+LAFROX-Formulario-T-18.pdf 1
 
 
 ---
@@ -38,34 +37,34 @@ LafroX SpA
 Índice general 2
 Lista de tablas 3
 Lista de figuras 4
-7 Formulario T-18: Propuesta de implantación y puesta en marcha controlada 5
-7.1 Reglas comunes de implantación 5
-7.2 Etapa 1: marcha blanca de los meses 13 a 15 y producción desde el mes 16 6
-7.2.1 Alcance y olas 6
-7.2.2 Pruebas previas a la marcha blanca y al paso a producción 7
-7.2.3 Convivencia con la operación vigente y conciliación diaria 9
-7.2.4 Indicadores diarios y umbrales de cierre 9
-7.2.5 Procedimiento de reversión 12
-7.2.6 Acompañamiento en terreno y estabilización 13
-7.2.7 Capacitación y certificación 13
-7.2.8 Medición de la adopción 14
-7.2.9 Cierre de la marcha blanca y paso a producción 15
-7.3 Etapa 2: marcha blanca de los meses 19 y 20 y producción desde el mes 21 15
-7.3.1 Alcance y despliegue 15
-7.3.2 Pruebas previas 16
-7.3.3 Indicadores diarios y umbrales de cierre 16
-7.3.4 Reversión 17
-7.3.5 Estabilización, capacitación y certificación 17
-7.3.6 Cierre y aceptación final 17
-7.4 Convivencia entre la Etapa 1 y la Etapa 2 17
-7.5 Transferencia a la Operación 18
-7.6 Condiciones de programación, recursos y continuidad 18
-7.6.1 Alcance completo de las olas y orden de incorporación 18
-7.6.2 Orden de cadenas, portales y cierre E2 20
-7.6.3 Dotación, estabilización y soporte entre etapas 20
-7.6.4 Tiempo de reversión y ensayo de capacidad 22
-7.6.5 Controles nuevos de coordinación y aceptación 22
-Referencias 23
+Formulario T-18: Propuesta de implantación y puesta en marcha controlada 5
+1 Reglas comunes de implantación 5
+2 Etapa 1: marcha blanca de los meses 13 a 15 y producción desde el mes 16 6
+2.1 Alcance y olas 7
+2.2 Pruebas previas a la marcha blanca y al paso a producción 8
+2.3 Convivencia con la operación vigente y conciliación diaria 9
+2.4 Indicadores diarios y umbrales de cierre 9
+2.5 Procedimiento de reversión 12
+2.6 Acompañamiento en terreno y estabilización 13
+2.7 Capacitación y certificación 13
+2.8 Medición de la adopción 14
+2.9 Cierre de la marcha blanca y paso a producción 15
+3 Etapa 2: marcha blanca de los meses 19 y 20 y producción desde el mes 21 15
+3.1 Alcance y despliegue 15
+3.2 Pruebas previas 16
+3.3 Indicadores diarios y umbrales de cierre 16
+3.4 Reversión 17
+3.5 Estabilización, capacitación y certificación 17
+3.6 Cierre y aceptación final 17
+4 Convivencia entre la Etapa 1 y la Etapa 2 18
+5 Transferencia a la Operación 18
+6 Condiciones de programación, recursos y continuidad 19
+6.1 Alcance completo de las olas y orden de incorporación 19
+6.2 Orden de cadenas, portales y cierre E2 21
+6.3 Dotación, estabilización y soporte entre etapas 21
+6.4 Tiempo de reversión y ensayo de capacidad 23
+6.5 Controles nuevos de coordinación y aceptación 23
+Referencias 24
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
@@ -76,15 +75,15 @@ Media firma: Alex Aravena
 
 LafroX SpA
 Lista de tablas
-Tabla 7.1 Olas de implantación de la Etapa 1. 7
-Tabla 7.2 Pruebas previas a la marcha blanca de la Etapa 1. 8
-Tabla 7.3 Volumen de operación real comprometido en la marcha blanca de la Etapa 1. 9
-Tabla 7.4 Indicadores diarios y umbrales de cierre de la Etapa 1. 10
-Tabla 7.5 Dotación de acompañamiento y estabilización de la Etapa 1. 13
-Tabla 7.6 Perfiles operativos y modalidad de capacitación. 14
-Tabla 7.7 Indicadores propios de la marcha blanca de la Etapa 2. 16
-Tabla 7.8 Alcance completo de las olas y orden de incorporación. 19
-Tabla 7.9 Dotación, estabilización y soporte entre etapas. 21
+Tabla 1 Olas de implantación de la Etapa 1. 7
+Tabla 2 Pruebas previas a la marcha blanca de la Etapa 1. 8
+Tabla 3 Volumen de operación real comprometido en la marcha blanca de la Etapa 1. 10
+Tabla 4 Indicadores diarios y umbrales de cierre de la Etapa 1. 10
+Tabla 5 Dotación de acompañamiento y estabilización de la Etapa 1. 13
+Tabla 6 Perfiles operativos y modalidad de capacitación. 14
+Tabla 7 Indicadores propios de la marcha blanca de la Etapa 2. 16
+Tabla 8 Alcance completo de las olas y orden de incorporación. 20
+Tabla 9 Dotación, estabilización y soporte entre etapas. 22
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
@@ -95,11 +94,11 @@ Media firma: Alex Aravena
 
 LafroX SpA
 Lista de figuras
-Figura 7.1 Olas de la Etapa 1 durante la marcha blanca. 8
-Figura 7.2 Ciclo diario de la marcha blanca y condiciones de cierre del artículo 17.3 de
-las Bases Administrativas (p. 13). 11
-Figura 7.3 Procedimiento de reversión de la Etapa 1. 12
-Figura 7.4 Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca. 18
+Figura 1 Despliegue de la ola 3 y período final de validación de la marcha blanca de la
+Etapa 1. 8
+Figura 2 Ciclo diario de la marcha blanca. 11
+Figura 3 Procedimiento de reversión de la Etapa 1. 12
+Figura 4 Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca. 18
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
@@ -108,19 +107,17 @@ Media firma: Alex Aravena
 
 ---
 
-CAPÍTULO 7
 Formulario T-18: Propuesta de
 implantación y puesta en marcha
 controlada
 Este formulario presenta la propuesta de implantación y puesta en marcha controlada que
-exige el Formulario T-18 de las Bases Administrativas (Anexo B, p. 64). Cubre por separado la
-Etapa 1 (marcha blanca de los meses 13 a 15 y producción desde el mes 16) y la Etapa 2 (marcha
-blanca de los meses 19 y 20 y producción desde el mes 21), el plan de convivencia entre ambas
-y el procedimiento de reversión. El Subdocumento 7 (LafroX, 2026p), sección 7.3, resume y
-analiza esta propuesta.
-En este formulario, BA, BTT y Caso designan las Bases Administrativas (Distribuidora
-Puelche S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso
-Logística (2026c).
+exige el Formulario T-18 de las Bases Administrativas (Anexo B, p. 64). Cubre por separado
+la Etapa 1 (marcha blanca de los meses 13 a 15 y producción desde el mes 16) y la Etapa 2
+(marcha blanca de los meses 19 y 20 y producción desde el mes 21), el plan de convivencia entre
+ambas y el procedimiento de reversión. El Subdocumento 7, sección 7.3, resume y analiza esta
+propuesta.
+En este formulario, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas
+Transversales y las Bases Técnicas del caso.
 La propuesta aplica las siete condiciones que el Caso logística impone a toda estrategia de
 puesta en producción (sección 13.3, p. 23), responde los nueve puntos de la sección 17.6 (p. 33)
 y cumple los requisitos RT-20.01 a RT-20.08 de las Bases Técnicas Transversales (cap. 20, p. 35).
@@ -129,16 +126,19 @@ adopción son los declarados en el Capítulo 3, sección 3.4.4. La estrategia t�
 es la del Capítulo 4, apartado 4.2.4.1.2 «Liberación y reversión», con único escritor y olas
 conforme al apartado 4.1.8, y los paquetes de trabajo citados son los de la EDT del Formulario
 T-14.
-7.1 Reglas comunes de implantación
+1 Reglas comunes de implantación
 Las dos etapas siguen las mismas ocho reglas, y cada una responde a una condición del
 caso o de las Bases:
 • Convivencia antes del cambio. Nada entra en producción sin haber convivido con la forma
 actual de trabajar durante su marcha blanca, con conciliación diaria y posibilidad de volver
 atrás (Caso, sección 13.3, condición 1, p. 23; RT-20.03).
-• Fechas prohibidas. Ningún despliegue, paso a producción, inicio de ola ni corte de datos
-ocurre durante todo septiembre, durante diciembre ni en los tres primeros días hábiles
-de cada mes (Capítulo 4, Tabla 8, apartado 4.2.4.1.4). Del 1 al 25 de septiembre no se
-interviene ningún sistema (Caso, cap. 15, RT-10.05, p. 27).
+• Fechas prohibidas. El congelamiento total de intervenciones abarca del 1 al 25 de septiem-
+bre, todo diciembre y los primeros tres días hábiles del mes (Caso, cap. 15, RT-10.05, p. 27).
+El paso a producción está prohibido durante todo septiembre y diciembre (Caso, sección
+13.3, condición 2). La política de despliegue del Capítulo 4, «Ventanas de despliegue», tam-
+bién excluye todo septiembre; es una restricción adicional de arquitectura que no convierte
+los días 26–30 en congelamiento total de cualquier actividad. Las pruebas y trámites sin
+intervención se distinguen de despliegues, cortes e inicios de ola.
 • Olas, no un evento único. El despliegue avanza por proceso, por sitio y por zona comercial,
 LafroX SpA
 Formulario T-18
@@ -160,31 +160,32 @@ de funcionalidad, de modo que la reversión técnica consiste en volver a la ent
 azul-verde/canario o desactivar el indicador (Capítulo 4, apartado 4.2.4.1.2). Cada operación
 tiene un único escritor autorizado: no se habilita doble escritura de stock, cobros ni guías
 de despacho (Capítulo 4, apartado 4.1.8).
-• Reversión en dos niveles. El nivel técnico vuelve a la entrega previa mediante azul-verde/ca-
-nario o desactiva el indicador de funcionalidad. El operacional conserva o restituye la
-versión operativa local probada con un único escritor; lo ordena Operaciones del CLIENTE
-y debe completarse antes de las 05:30. Papel y consultas son apoyo, no sustitución manual
-del despacho crítico. Los registros capturados permanecen en cola y se concilian al retomar
-(Capítulo 3, sección 3.4.4; RT-20.02).
+• Reversión en dos niveles. Durante el canario, el nivel técnico devuelve automáticamente
+el tráfico a la entrega previa si el percentil 95 supera su umbral o aumentan los errores
+respecto de la versión estable en la misma ventana. SRE supervisa y valida la recupera-
+ción, sin autorización manual previa al disparo automático. Desactivar un indicador de
+funcionalidad sigue el procedimiento de cambio autorizado y no se presume equivalente a
+ese automatismo. El operacional conserva o restituye la versión operativa local probada
+con un único escritor; lo ordena Operaciones del CLIENTE y debe completarse antes de
+las 05:30. Papel y consultas son apoyo, no sustitución manual del despacho crítico. Los
+registros capturados permanecen en cola y se concilian al retomar (Capítulo 3, sección
+3.4.4; RT-20.02).
 • Estabilización declarada. Cada paso a producción tiene una estabilización de cuatro sema-
 nas por ola, con la dotación declarada en la sección 2.6 y sin costo adicional (condición 7;
 RT-20.05 y RT-20.06).
 • Definición de terminado y aceptación. La definición de terminado se acordará con el CLIEN-
 TE para cada entregable antes de su ejecución e incluirá código, pruebas, documentación,
 seguridad y despliegue; su cumplimiento se verificará con las evidencias y los criterios
-de aceptación del paquete correspondiente (BTT, cap. 20, RT-20.07, p. 35). El protocolo
-de aceptación de cada hito se formalizará conforme al Formulario T-17 (LafroX, 2026f),
-con criterios objetivos y verificables y las evidencias del hito, firmado por la Contraparte
-Técnica (BTT, cap. 20, RT-20.08, p. 35; BA, art. 18.1, p. 13).
-7.2 Etapa 1: marcha blanca de los meses 13 a 15 y producción desde el
+de aceptación del paquete correspondiente (BTT, cap. 20, RT-20.07, p. 35). El protocolo de
+aceptación de cada hito se formalizará conforme al Formulario T-17, con criterios objetivos
+y verificables y las evidencias del hito, firmado por la Contraparte Técnica; véanse sus
+secciones 2 «Procedimiento de aceptación» y 4.1 de calendario (BTT, cap. 20, RT-20.08, p.
+35; BA, art. 18.1, p. 13).
+2 Etapa 1: marcha blanca de los meses 13 a 15 y producción desde el
 mes 16
 La Etapa 1 pone en producción la mayor parte del alcance y incluye verificaciones de
 catorce de los dieciséis resultados de aceptación del caso; por eso su implantación se describe
 con más detalle que la de la Etapa 2.
-7.2.1 Alcance y olas
-La Etapa 1 pone en producción la trazabilidad de recepción, la bodega con FEFO y la
-preparación nocturna, la cadena de frío, la preventa sin conexión, la planificación de rutas, el
-reparto con prueba de entrega digital, las devoluciones y envases, la rendición y los indicadores
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
@@ -194,10 +195,14 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
+2.1 Alcance y olas
+La Etapa 1 pone en producción la trazabilidad de recepción, la bodega con FEFO y la
+preparación nocturna, la cadena de frío, la preventa sin conexión, la planificación de rutas, el
+reparto con prueba de entrega digital, las devoluciones y envases, la rendición y los indicadores
 operacionales: los módulos M1 a M10 y M12 (paquetes 3.4.1 a 3.4.11 del Formulario T-14). La
 implantación sigue el orden de las dependencias de datos en tres olas (Capítulo 3, sección
-3.4.4; paquete 4.1.1), como presenta la Tabla 7.1.
-Tabla 7.1 Olas de implantación de la Etapa 1. Fuente: elaboración a partir de LafroX (2026k, SD3, sec. 3.4.4).
+3.4.4; paquete 4.1.1), como presenta la Tabla 1.
+Tabla 1 Olas de implantación de la Etapa 1. Fuente: (Subdocumento 3, sección 3.4.4).
 Ola Procesos y módulos Avance Registro oficial al cerrar la ola
 1 Datos maestros y recep-
 ción (M1), captura/re-
@@ -224,13 +229,12 @@ debe respetar 1–25 de septiembre, todo diciembre y los primeros tres días há
 también evita 05:30–07:00 y no detiene rutas. La secuencia vigente de la sección 6.1 adelanta
 los remanentes a semana 8, subordinada a ese límite. Un retraso exige replanificar antes de
 H6; no se recorta la evidencia ni se desplazan automáticamente las fases siguientes.
-La figura presenta la secuencia de las tres olas y la acumulación de evidencia por dominio.
-La sección 6.1 programa las activaciones hasta la semana 8, sujetas a fechas permitidas y al
-límite F − 28 días. Los períodos de evidencia se superponen por dominios sin doble escritura.
-7.2.2 Pruebas previas a la marcha blanca y al paso a producción
-Antes de cada paso a producción se aprueban las pruebas del numeral 20.1 de las Bases
-Técnicas Transversales (p. 35), y su cumplimiento forma parte de la certificación de la Etapa 1
-(H5, mes 12; paquete 3.8.7). La Tabla 7.2 presenta cada prueba con su criterio de éxito.
+La figura presenta el despliegue territorial de la ola 3 y el período final de validación. Las
+activaciones se completan hasta la semana 8, sujetas a fechas permitidas y al límite F − 28
+días. Los rótulos de las semanas 10 a 13 destacan aspectos del seguimiento, sin limitar su
+verificación a una semana específica: el volumen real completo, la conciliación diaria y los
+indicadores en sus umbrales deben cumplirse simultáneamente durante los últimos 28 días.
+Los períodos de evidencia se superponen por dominios sin doble escritura.
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
@@ -248,9 +252,11 @@ Semana 7
 Plataformas
 Semana 8
 Remanentes
-Hito de entrada a la evidencia
-100 % del alcance activo antes de F−28
-días; siguen cuatro semanas de evaluación
+Hito de entrada a la evidencia:
+100 % del alcance activo antes de F−28 días, siguen cuatro semanas
+de evaluación
+H7 / mes 16
+Cierre con acta de la Contraparte Técnica
 Semana 10
 Volumen real
 Semana 11
@@ -260,12 +266,14 @@ Indicadores
 Semana 13
 Criterio
 sostenido
-H7 / mes 16
-Cierre con acta de la Contraparte Técnica
-Figura 7.1 Olas de la Etapa 1 durante la marcha blanca. Fuente: elaboración a partir de LafroX (2026k, SD3, sec.
-3.4.4).
-Tabla 7.2 Pruebas previas a la marcha blanca de la Etapa 1. Fuente: elaboración a partir de Distribuidora Puelche
-S.A. (2026b, num. 20.1) y LafroX (2026d, T-14).
+Figura 1 Despliegue de la ola 3 y período final de validación de la marcha blanca de la Etapa 1. Fuente:
+(Subdocumento 3, sección 3.4.4).
+2.2 Pruebas previas a la marcha blanca y al paso a producción
+Antes de cada paso a producción se aprueban las pruebas del numeral 20.1 de las Bases
+Técnicas Transversales (p. 35), y su cumplimiento forma parte de la certificación de la Etapa 1
+(H5, mes 12; paquete 3.8.7). La Tabla 2 presenta cada prueba con su criterio de éxito.
+Tabla 2 Pruebas previas a la marcha blanca de la Etapa 1. Fuente: (Bases Técnicas Transversales, num. 20.1, pp.
+34–35) y (Formulario T-14).
 Prueba Criterio de éxito Paquete
 Integración, regresión e
 idempotencia
@@ -283,6 +291,18 @@ sin señal en terreno y 24 horas sin enlace en el CD,
 sin pérdidas ni duplicados y con sincronización en 10
 minutos o menos
 3.8.3
+continúa en la página siguiente
+LafroX SpA
+Formulario T-18
+Media firma: Alex Aravena
+8
+
+
+---
+
+LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
+Tabla 2 — continuación
+Prueba Criterio de éxito Paquete
 Carga, estrés y resiliencia Umbrales del capítulo 9 de las Bases Técnicas Trans-
 versales y del RT-09.01 del caso cumplidos a 1,5 veces
 el peak de septiembre; degradación controlada y
@@ -297,18 +317,6 @@ Seguridad ofensiva Sin hallazgos críticos ni altos abiertos 3.8.6
 Migración de datos Dos ensayos previos y conciliación sin diferencias no
 explicadas
 3.7.1 a 3.7.5
-continúa en la página siguiente
-LafroX SpA
-Formulario T-18
-Media firma: Alex Aravena
-8
-
-
----
-
-LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
-Tabla 7.2 — continuación
-Prueba Criterio de éxito Paquete
 Despliegue sin interrup-
 ción
 Despliegue azul-verde y reversión ensayados en Pre-
@@ -317,7 +325,7 @@ producción
 Las pruebas cubren los tres riesgos que el caso hace críticos: la operación sin señal, el peak
 de septiembre y la recuperación ante desastres. La reversión operacional se ensaya además en
 Preproducción antes de cada corte (Capítulo 3, sección 3.4.4).
-7.2.3 Convivencia con la operación vigente y conciliación diaria
+2.3 Convivencia con la operación vigente y conciliación diaria
 Mientras dura la marcha blanca, la solución convive con la forma actual de trabajar: en
 bodega, con la hoja de picking impresa; en ruta, con la guía en papel; y en Talca, con el WMS
 de 2013 en solo lectura como respaldo de consulta hasta el cierre de la marcha blanca del sitio
@@ -326,20 +334,11 @@ Cada día se concilian ambos registros por dominio: documentos, lotes, stock, en
 y cobros. Toda diferencia se clasifica y se explica antes del cierre del día. El papel se retira
 en cada ola cuando cumple su criterio durante cuatro semanas consecutivas a volumen real
 (Capítulo 3, sección 3.4.4; RT-20.03; paquete 4.2.1).
-7.2.4 Indicadores diarios y umbrales de cierre
+2.4 Indicadores diarios y umbrales de cierre
 La segunda condición del artículo 17.3 de las Bases Administrativas (p. 13) exige alcanzar
-«el volumen de operación real comprometido en el plan de implantación» durante al menos
-las cuatro últimas semanas. LafroX compromete la operación real completa de cada proceso
-de la ola, no una muestra ni un grupo piloto. La Tabla 7.3 expresa ese volumen con las cifras
-del caso.
-Tabla 7.3 Volumen de operación real comprometido en la marcha blanca de la Etapa 1. Fuente: elaboración a
-partir de Distribuidora Puelche S.A. (2026c, sec. 14.1).
-Proceso Ola Mes normal Peak de septiembre
-Recepciones de proveedor 1 ≈ 1.150 al mes No informado por el caso
-Líneas de preparación de
-pedidos
-2 ≈ 260.000 al mes No informado por el caso
-continúa en la página siguiente
+«el volumen de operación real comprometido en el plan de implantación» durante al menos las
+cuatro últimas semanas. LafroX compromete la operación real completa de cada proceso de la
+ola, no una muestra ni un grupo piloto. La Tabla 3 expresa ese volumen con las cifras del caso.
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
@@ -349,8 +348,13 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
-Tabla 7.3 — continuación
+Tabla 3 Volumen de operación real comprometido en la marcha blanca de la Etapa 1. Fuente: (Bases Técnicas del
+caso, sección 14.1, pp. 24–25).
 Proceso Ola Mes normal Peak de septiembre
+Recepciones de proveedor 1 ≈ 1.150 al mes No informado por el caso
+Líneas de preparación de
+pedidos
+2 ≈ 260.000 al mes No informado por el caso
 Visitas de preventa 3 ≈ 62.000 al mes No informado por el caso
 Pedidos 3 ≈ 31.000 al mes No informado por el caso
 Entregas 3 ≈ 1.400 por día hábil ≈ 2.600 por día hábil
@@ -368,23 +372,14 @@ cubre una sola zona compromete el volumen de esa zona hasta que entran las demá
 de la marcha blanca, todas las zonas están dentro.
 Los indicadores se miden y publican cada día con el umbral que exige el artículo 17.3 de
 las Bases Administrativas (p. 13) para cerrar la marcha blanca (RT-20.04), como presenta la
-Tabla 7.4.
-Tabla 7.4 Indicadores diarios y umbrales de cierre de la Etapa 1. Fuente: elaboración a partir de Distribuidora
-Puelche S.A. (2026a, art. 17.3); Distribuidora Puelche S.A. (2026c, RT-09.01 y RT-10.05); y LafroX (2026k, SD3, Tabla
-3.5).
+Tabla 4.
+Tabla 4 Indicadores diarios y umbrales de cierre de la Etapa 1. Fuente: (Bases Administrativas, art. 17.3, p. 13);
+(Bases Técnicas del caso, cap. 15, RT-09.01 y RT-10.05, pp. 26–27); y (Subdocumento 3, Tabla 3.5).
 Indicador diario Umbral Condición del Art.
 17.3
 Incidentes críticos y altos abiertos
 atribuibles a la solución
 0 Primera
-Transacciones de la ola registradas
-en la solución sobre el total
-100 % del volumen de la Tabla 7.3, soste-
-nido durante las últimas 4 semanas
-Segunda
-Indisponibilidad en la ventana de
-despacho de 05:30 a 07:00
-0 minutos (RT-10.05 del caso) Tercera
 continúa en la página siguiente
 LafroX SpA
 Formulario T-18
@@ -395,9 +390,17 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
-Tabla 7.4 — continuación
+Tabla 4 — continuación
 Indicador diario Umbral Condición del Art.
 17.3
+Transacciones de la ola registradas
+en la solución sobre el total
+100 % del volumen de la Tabla 3, sosteni-
+do durante las últimas 4 semanas
+Segunda
+Indisponibilidad en la ventana de
+despacho de 05:30 a 07:00
+0 minutos (RT-10.05 del caso) Tercera
 Disponibilidad de la transacción
 crítica, de extremo a extremo
 99,9 % o más (Capítulo 3, Tabla 3.5) Tercera
@@ -418,32 +421,28 @@ perfil
 Pedidos perdidos o duplicados por
 falta de señal
 0 (R18-06) Cuarta
-La sexta condición es el acta de aceptación firmada por la Contraparte Técnica (paquete
-4.2.3, H7). Los resultados del capítulo 18 del caso que se verifican en esta marcha blanca (R18-01
-a R18-03, R18-05 a R18-10 y R18-14 a R18-16) se miden con el método y el período del Capítulo
-3, Anexo 3.J. La Figura 7.2 resume el ciclo diario y las condiciones de cierre.
+La sexta condición es el acta de cierre de la marcha blanca firmada por la Contraparte
+Técnica (4.2.1), previa al paso a producción; H7 (4.2.3) es su aceptación posterior. La revisión
+del cierre se distingue de la de H7 y debe encajar según T-15, sección 5.5. Los resultados del
+capítulo 18 del caso que se verifican en esta marcha blanca (R18-01 a R18-03, R18-05 a R18-10 y
+R18-14 a R18-16) se miden con el método y el período del Capítulo 3, Anexo 3.J. La Figura 2
+resume el ciclo diario.
 Medir
-Indicadores del día
+indicadores y
+conciliar
+registros
 Comparar
-Resultados
-con umbrales
-Decidir
-Continuar, co-
-rregir o revertir
-Conciliar y publicar
-Resultado diario
-Cierre: seis condiciones simultáneas (BA, art. 17.3, p. 13)
-1. Cero incidentes críticos o altos abiertos.
-2. Volumen real completo durante las últimas cuatro semanas.
-3. Sin indisponibilidad en despacho; disponibilidad y respuesta dentro de umbral.
-4. Sin diferencias inexplicadas ni pedidos perdidos o duplicados.
-5. 100 % de usuarios capacitados y certificados.
-6. Acta de aceptación de la Contraparte Técnica (H7).
-Figura 7.2 Ciclo diario de la marcha blanca y condiciones de cierre del artículo 17.3 de las Bases Administrativas
-(p. 13). Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 17.3, p. 13) y Distribuidora Puelche
-S.A. (2026b, RT-20.04, p. 35).
-Cada día se decide entre continuar, corregir o revertir, y la marcha blanca cierra solo cuando
-las seis condiciones se cumplen a la vez.
+resultados con
+los umbrales
+Decidir:
+continuar,
+corregir o
+revertir
+Publicar el
+resultado
+diario
+Figura 2 Ciclo diario de la marcha blanca. Fuente: (Bases Administrativas, art. 17.3, p. 13) y (Bases Técnicas
+Transversales, RT-20.04, p. 35).
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
@@ -453,7 +452,9 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
-7.2.5 Procedimiento de reversión
+Cada día se decide entre continuar, corregir o revertir, y la marcha blanca cierra solo cuando
+las seis condiciones se cumplen a la vez.
+2.5 Procedimiento de reversión
 La reversión la autoriza el responsable de operaciones del CLIENTE cuando un indicador
 amenaza el despacho. Sus disparadores son observables: pedidos sin sincronizar al inicio de la
 carga, rutas del día no disponibles para cargar o un defecto crítico en la ventana de despacho.
@@ -461,35 +462,33 @@ La decisión se toma en el turno de noche, y la restitución de la versión oper
 documentos válidos debe completarse antes de las 05:30; el papel sólo apoya tareas auxiliares y
 no acredita continuidad crítica; la capacidad de los 96 camiones debe demostrarse en el ensayo
 de la sección 6.4. Ese plazo protege el despacho; no es el RTO de recuperación ante desastres.
-La Figura 7.3 presenta el procedimiento por rol.
-Turno de noche
-Se detecta pedido sin sincronizar,
-ruta no disponible o defecto crítico
-Acompañante confirma impacto;
-Operaciones del CLIENTE decide
-¿Se amenaza el despacho?
-No
-Corregir; continuar la ola
-Sí
-Autorizar reversión
+La Figura 3 presenta el procedimiento por rol.
 Operacional
-Versión local y docu-
-mentos ERP válidos
-antes de las 05:30
+Versión local y documentos ERP válidos antes de las
+05:30
+Sí
+Responsable de Operaciones del CLIENTE
+autoriza la reversión operacional
+No
+Corregir; la ola
+continúa
+¿Amenaza el
+despacho?
+Turno de noche
+Se detecta una incidencia que
+podría afectar el despacho.
+Acompañante verifica el
+impacto y lo informa a
+Operaciones del CLIENTE
 Técnica
-Interruptor o versión
-anterior; no reinstalar
-Al retomar, conciliar registros en co-
-la; no perder ni duplicar operaciones
-La ola vuelve a iniciar sus cuatro semanas de criterio
-Figura 7.3 Procedimiento de reversión de la Etapa 1. Fuente: elaboración a partir de LafroX (2026k, SD3, sec.
-3.4.4), y el paquete 4.1.2.
+Volver a versión anterior o desactivar el
+interruptor
+Al retomar, conciliar los registros que quedaron en
+cola, sin pérdida ni duplicación
+La ola afectada reinicia sus cuatro semanas de cumplimiento
+Figura 3 Procedimiento de reversión de la Etapa 1. Fuente: (Subdocumento 3, sección 3.4.4), y el paquete 4.1.2.
 El procedimiento debe conservar información: los registros capturados quedan en cola y
 se concilian al retomar; su integridad se verifica en el ensayo. Lo que se pierde es la jornada
-de operación en la solución nueva para esa ola, que vuelve a empezar su período de cuatro
-semanas (Capítulo 3, sección 3.4.4; paquete 4.1.2; Caso, sección 17.6, p. 33, punto 4). El tiempo
-de cada nivel de reversión se mide en el ensayo en Preproducción que precede a cada corte
-(RT-20.02).
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
@@ -499,12 +498,15 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
-7.2.6 Acompañamiento en terreno y estabilización
+de operación en la solución nueva para esa ola, que vuelve a empezar su período de cuatro
+semanas (Capítulo 3, sección 3.4.4; paquete 4.1.2; Caso, sección 17.6, p. 33, punto 4). El tiempo
+de cada nivel de reversión se mide en el ensayo en Preproducción que precede a cada corte
+(RT-20.02).
+2.6 Acompañamiento en terreno y estabilización
 Después de cada paso a producción hay cuatro semanas de estabilización por ola, el mismo
 período que exige el criterio de avance. La dotación se deriva de la operación del caso (Capítulo
-3, sección 3.4.4; paquete 4.2.2), como muestra la Tabla 7.5.
-Tabla 7.5 Dotación de acompañamiento y estabilización de la Etapa 1. Fuente: elaboración a partir de LafroX
-(2026k, SD3, sec. 3.4.4).
+3, sección 3.4.4; paquete 4.2.2), como muestra la Tabla 5.
+Tabla 5 Dotación de acompañamiento y estabilización de la Etapa 1. Fuente: (Subdocumento 3, sección 3.4.4).
 Frente de acompañamiento Dotación Cálculo
 Bodega, turno de noche (22:00
 a 06:00)
@@ -516,7 +518,7 @@ Calle (preventa y reparto) 7 personas 96 camiones + 62 preventistas = 158 rutas 
 Coordinación 1 persona Líder de Implantación y Gestión del Cambio
 Si la ola cubre solo una zona, la dotación de calle se reduce en proporción a sus rutas, y la
 dotación decrece según la curva de adopción, como exige el RT-20.05.
-7.2.7 Capacitación y certificación
+2.7 Capacitación y certificación
 Cada preparador nuevo, sin experiencia previa con el sistema, completará una misión de
 al menos 20 líneas con una tasa de error máxima del 5 % después de un máximo de dos horas
 de entrenamiento asistido en su puesto dentro de la bodega. No se exigirán sesiones fuera
@@ -529,10 +531,6 @@ mación previstas para mantener la operación (BTT, cap. 22, RT-22.04, p. 38; Ca
 26–27).
 La capacitación se hace en el puesto y en la ruta, sin detener la venta ni el reparto (Caso,
 sección 13.3, condición 5, p. 23). Usa las cuatro modalidades del artículo 90.2 de las Bases
-Administrativas (p. 45): presencial en cada sitio, en línea sincrónica, autoformación en línea y
-acompañamiento en el puesto durante la marcha blanca. Cada perfil se certifica antes de cerrar
-la marcha blanca, porque el artículo 17.3 de las Bases Administrativas (p. 13) exige personal
-«capacitado y certificado conforme al plan de capacitación aprobado» (paquetes 7.1.1 a 7.1.6
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
@@ -542,19 +540,23 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
+Administrativas (p. 45): presencial en cada sitio, en línea sincrónica, autoformación en línea y
+acompañamiento en el puesto durante la marcha blanca. Cada perfil se certifica antes de cerrar
+la marcha blanca, porque el artículo 17.3 de las Bases Administrativas (p. 13) exige personal
+«capacitado y certificado conforme al plan de capacitación aprobado» (paquetes 7.1.1 a 7.1.6
 y 7.3.1). Los usuarios administradores y el equipo técnico del CLIENTE se certifican además
-conforme al artículo 90.4 de las Bases Administrativas (p. 45). La Tabla 7.6 presenta los perfiles
+conforme al artículo 90.4 de las Bases Administrativas (p. 45). La Tabla 6 presenta los perfiles
 operativos.
-Tabla 7.6 Perfiles operativos y modalidad de capacitación. Fuente: elaboración a partir de LafroX (2026j, Anexo
-3.I) y Distribuidora Puelche S.A. (2026c).
+Tabla 6 Perfiles operativos y modalidad de capacitación. Fuente: (Subdocumento 3, Anexo 3.I) y (Bases Técnicas
+del caso, secciones 2.4 y 8, pp. 5, 13–17).
 Perfil Personas Cómo se capacita sin detener la operación
 Preparadores Talca 120 Aprendizaje en el puesto de 2 horas como máximo
 (RNF-05.03) y un tutor por turno; capacitación
 continua por la rotación del 38 %
 Preparadores Concep-
 ción
-Por confirmar. Según
-supuesto S-39 hasta 60
+Hasta 60, según el
+supuesto S-39
 Aprendizaje en el puesto de hasta 2 horas (RNF-
 05.03), tutor por turno y certificación antes del
 cierre de la ola. Confirmar nómina, turnos y cober-
@@ -575,15 +577,11 @@ requiere el acuerdo operacional firmado con cada una de las diez empresas (paque
 una ola de reparto no incluye a una empresa transportista hasta que su acuerdo esté firmado
 (Capítulo 3, Anexo 3.I; Caso, sección 13.3, p. 23, condición 6). El uso del GPS para control de
 jornada requiere el acuerdo previo con el sindicato (paquete 5.4.2; S-13).
-7.2.8 Medición de la adopción
+2.8 Medición de la adopción
 La adopción se mide por perfil y por ola con los indicadores del Capítulo 3, Anexo 3.I:
 pedidos capturados en la aplicación sobre el total, entregas con prueba digital, preparadores
 certificados por turno y conductores con autenticación válida. La meta es que el 100 % de
 los usuarios de la ola esté certificado y que el 100 % de las transacciones de la ola se registre
-en la solución al retirar el papel. Si una ola no alcanza la meta, no avanza y se extiende el
-acompañamiento (paquete 7.2.5).
-La respuesta es distinta según el grupo (Caso, sección 17.6, punto 7, p. 33). El personal con
-20 o 30 años en la compañía recibe acompañamiento individual en su puesto o ruta y reco-
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
@@ -593,19 +591,26 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
+en la solución al retirar el papel. Si una ola no alcanza la meta, no avanza y se extiende el
+acompañamiento (paquete 7.2.5).
+La respuesta es distinta según el grupo (Caso, sección 17.6, punto 7, p. 33). El personal con
+20 o 30 años en la compañía recibe acompañamiento individual en su puesto o ruta y reco-
 nocimiento formal de su conocimiento (paquete 7.2.1), y el personal rotativo de preparación
 cuenta con un tutor por turno y certificación en el puesto (paquete 7.1.2).
-7.2.9 Cierre de la marcha blanca y paso a producción
-La marcha blanca de la Etapa 1 cierra cuando se cumplen a la vez las seis condiciones del
-artículo 17.3 de las Bases Administrativas (p. 13). El paso a producción ocurre en el mes 16,
-fuera de las fechas prohibidas, y se formaliza con el acta del H7 (paquete 4.2.3). Si al término del
-mes 15 no se cumplen las condiciones, la marcha blanca se extiende a costo del adjudicatario,
-sin mover las fechas de las fases siguientes (BA, art. 17.3, p. 13).
-7.3 Etapa 2: marcha blanca de los meses 19 y 20 y producción desde el
+2.9 Cierre de la marcha blanca y paso a producción
+La marcha blanca de la Etapa 1 cierra cuando se cumplen a la vez las seis condiciones
+del artículo 17.3 de las Bases Administrativas (p. 13). El paso a producción ocurre en el mes
+16, fuera de las fechas prohibidas, previa acta de cierre de 4.2.1; la aceptación H7 (4.2.3) es
+posterior. Bajo el inicio supuesto en febrero de 2027, producción tiene objetivo 05-05-2028 y H7
+29-05-2028. El plazo de revisión del cierre debe resolverse conforme a T-15, sección 5.5; estas
+fechas no acreditan una firma anticipada de evidencia incompleta. Si al término del mes 15 no
+se cumplen las condiciones, la marcha blanca se extiende a costo del adjudicatario, sin mover
+las fechas de las fases siguientes (BA, art. 17.3, p. 13).
+3 Etapa 2: marcha blanca de los meses 19 y 20 y producción desde el
 mes 21
 La Etapa 2 se implanta sobre la plataforma ya estabilizada de la Etapa 1, con una marcha
 blanca más corta y en convivencia con la Etapa 1 en producción.
-7.3.1 Alcance y despliegue
+3.1 Alcance y despliegue
 La Etapa 2 pone en producción el intercambio electrónico de pedidos y avisos de despacho
 con las cadenas (M11 Canal moderno), el portal de clientes, el portal de transportistas y el
 costo de servir por cliente y por entrega (M10). Corresponde a los paquetes 3.5.1 a 3.5.4, 3.6.5
@@ -621,13 +626,6 @@ y costo de servir debe activarse antes de F − 28 días; una cadena todavía no
 se excluye del denominador de aceptación. La operación registra el 100 % de sus pedidos
 y entregas reales, con los perfiles certificados y la conciliación requerida. La conversión
 promedio de dos meses a 8,7 semanas no determina una fecha límite contractual.
-En el escenario ilustrativo de inicio en febrero de 2027 (Anexo 7.A del Subdocumento 7), el
-mes 19 cae en agosto de 2028 y el mes 20 en septiembre, lo que tiene tres consecuencias. La
-primera es que toda habilitación de la Etapa 2 ocurre en agosto, porque el congelamiento total
-va del 1 al 25 de septiembre (Caso, cap. 15, RT-10.05, p. 27), además de respetar F − 28 días y
-los primeros tres días hábiles de agosto. La segunda es que la evidencia de cierre atraviesa
-septiembre: incluye el volumen real de cada día y el peak cuando ocurre, con pruebas previas
-a 1,5 veces la carga peak. Este sería el primer septiembre de E1 en producción, por lo que la
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
@@ -637,6 +635,13 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
+En el escenario ilustrativo de inicio en febrero de 2027 (Anexo 7.A del Subdocumento 7), el
+mes 19 cae en agosto de 2028 y el mes 20 en septiembre, lo que tiene tres consecuencias. La
+primera es que toda habilitación de la Etapa 2 ocurre en agosto, porque el congelamiento total
+va del 1 al 25 de septiembre (Caso, cap. 15, RT-10.05, p. 27), además de respetar F − 28 días y
+los primeros tres días hábiles de agosto. La segunda es que la evidencia de cierre atraviesa
+septiembre: incluye el volumen real de cada día y el peak cuando ocurre, con pruebas previas
+a 1,5 veces la carga peak. Este sería el primer septiembre de E1 en producción, por lo que la
 preparación de continuidad de ambas etapas es crítica. La tercera es que entre el 1 y el 25 de
 septiembre no se despliega ningún cambio sobre ninguna de las dos etapas: ante un defecto
 de la Etapa 2, se aplica la contingencia aprobada conforme a la sección 6.4, sin presumir que
@@ -644,16 +649,16 @@ un cambio de configuración está exento del congelamiento.
 La capacidad para ese peak se demuestra antes del H11 con las pruebas de carga a 1,5
 veces el peak, con ambas etapas activas (paquete 3.9.3). El caso advierte que septiembre es «el
 período de mayor exigencia sobre cualquier componente nuevo» (sección 13.2).
-7.3.2 Pruebas previas
+3.2 Pruebas previas
 Antes del paso a producción del mes 21 se aprueban las mismas pruebas de la sección 2.2,
 aplicadas a la Etapa 2 (paquetes 3.9.1 a 3.9.7). Se agrega una exigencia: demostrar que la Etapa
 1, ya en producción, no se degrada. Las pruebas de carga se ejecutan con ambas etapas activas
 (3.9.3), y la recuperación ante desastres, con ambas etapas (3.9.4).
-7.3.3 Indicadores diarios y umbrales de cierre
+3.3 Indicadores diarios y umbrales de cierre
 Se aplican los indicadores de la sección 2.4 a los usuarios y transacciones de la Etapa 2,
-más los propios de su alcance, que presenta la Tabla 7.7.
-Tabla 7.7 Indicadores propios de la marcha blanca de la Etapa 2. Fuente: elaboración a partir de LafroX (2026j,
-Anexo 3.J) y Distribuidora Puelche S.A. (2026a, art. 17.2).
+más los propios de su alcance, que presenta la Tabla 7.
+Tabla 7 Indicadores propios de la marcha blanca de la Etapa 2. Fuente: (Subdocumento 3, Anexo 3.J) y (Bases
+Administrativas, art. 17.2, p. 13).
 Indicador diario Umbral Fuente
 Pedidos de cadenas certificadas recibidos por intercambio
 electrónico
@@ -666,14 +671,7 @@ Entregas con costo de servir calculado 100 % R18-11
 Datos de la Etapa 1 digitados dos veces o con dos escrito-
 res
 0 Art. 17.2, punto 2
-Degradación de los indicadores de la Etapa 1 en produc-
-ción
-Ninguna
-respecto del
-mes anterior
-Art. 17.2, punto 3
-Los dos últimos indicadores protegen a la Etapa 1 durante la convivencia. R18-11 se acepta
-con la reconciliación con la contabilidad del mes (Capítulo 3, Anexo 3.J).
+continúa en la página siguiente
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
@@ -683,7 +681,17 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
-7.3.4 Reversión
+Tabla 7 — continuación
+Indicador diario Umbral Fuente
+Degradación de los indicadores de la Etapa 1 en produc-
+ción
+Ninguna
+respecto del
+mes anterior
+Art. 17.2, punto 3
+Los dos últimos indicadores protegen a la Etapa 1 durante la convivencia. R18-11 se acepta
+con la reconciliación con la contabilidad del mes (Capítulo 3, Anexo 3.J).
+3.4 Reversión
 La reversión de la Etapa 2 no toca la Etapa 1. Desactiva mediante un indicador de funcio-
 nalidad la capacidad de la Etapa 2 que falla, y la operación vuelve al procedimiento anterior
 de esa capacidad: carga manual controlada de los pedidos de la cadena, atención asistida a
@@ -691,31 +699,18 @@ clientes y transportistas, o el cálculo vigente de costos. Estos procedimientos
 gencia auxiliar y no acreditan R18-13 ni habilitan cierre mientras una capacidad requerida
 esté desactivada. Ningún despliegue ni reversión ocurre en la ventana de 05:30 a 07:00 ni en
 fechas prohibidas (paquete 4.1.3).
-7.3.5 Estabilización, capacitación y certificación
-Después del paso a producción del mes 21 hay cuatro semanas de estabilización, concentra-
-da en los usuarios nuevos: Comercial, Finanzas, las cadenas y los transportistas (paquete 4.3.2).
-Comercial y Finanzas se certifican en costo de servir antes del cierre de la marcha blanca
-(paquete 7.3.2), y la gestión del cambio con las cadenas y los transportistas se hace con el
-paquete 7.2.2.
-7.3.6 Cierre y aceptación final
+3.5 Estabilización, capacitación y certificación
+Desde el paso a producción del mes 21 y hasta el cierre del mes 22 rige la estabilización,
+con cuatro semanas reforzadas tras la firma del H12, concentrada en los usuarios nuevos:
+Comercial, Finanzas, las cadenas y los transportistas (paquete 4.3.2). Comercial y Finanzas se
+certifican en costo de servir antes del cierre de la marcha blanca (paquete 7.3.2), y la gestión
+del cambio con las cadenas y los transportistas se hace con el paquete 7.2.2.
+3.6 Cierre y aceptación final
 La marcha blanca de la Etapa 2 cierra con las seis condiciones del artículo 17.3 de las
-Bases Administrativas (p. 13). El paso a producción del mes 21 es la aceptación final de la
-implementación (H12, paquete 4.3.3), condicionada a la constitución de la garantía de correcto
-funcionamiento (paquete 4.3.4; BA, art. 37.1, p. 24).
-7.4 Convivencia entre la Etapa 1 y la Etapa 2
-La convivencia sigue las reglas del artículo 17.2 de las Bases Administrativas (p. 13). En
-los meses 13 a 15 coexisten la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2: el
-desarrollo de la Etapa 2 no despliega en Producción ni modifica las funciones de la Etapa 1 en
-marcha blanca, y los frentes de ambos esfuerzos están en el Formulario T-15. En los meses 19 y
-20 la Etapa 1 está en producción y la Etapa 2 en marcha blanca, con una única fuente de verdad
-para los datos compartidos (pedidos, clientes, guías y entregas): la Etapa 2 lee y extiende los
-registros de la Etapa 1, sin copiarlos ni volver a digitarlos. En el mes 21, el paso a producción
-de la Etapa 2 no degrada la disponibilidad, el desempeño ni la integridad de los datos de la
-Etapa 1, y la Operación comienza ese mes con ambos alcances. La Figura 7.4 muestra el flujo
-de datos de los meses 19 y 20.
-La Etapa 1 escribe en el registro único y la Etapa 2 lo lee y lo extiende; ninguna de las
-dos mantiene una copia de los datos de la otra, por lo que no existe una doble digitación que
-conciliar.
+Bases Administrativas (p. 13). El acta de cierre 4.3.1 habilita el paso a producción objetivo
+del 05-10-2028; la aceptación final H12, paquete 4.3.3, tiene objetivo 25-10-2028 y es un acto
+posterior, condicionado a resolver el procedimiento de revisión del cierre (T-15, sección 5.5) y
+a la constitución de la garantía de correcto funcionamiento (paquete 4.3.4; BA, art. 37.1, p. 24).
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
@@ -725,43 +720,52 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
+4 Convivencia entre la Etapa 1 y la Etapa 2
+La convivencia sigue las reglas del artículo 17.2 de las Bases Administrativas (p. 13). En
+los meses 13 a 15 coexisten la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2: el
+desarrollo de la Etapa 2 no despliega en Producción ni modifica las funciones de la Etapa 1 en
+marcha blanca, y los frentes de ambos esfuerzos están en el Formulario T-15. En los meses 19 y
+20 la Etapa 1 está en producción y la Etapa 2 en marcha blanca, con una única fuente de verdad
+para los datos compartidos (pedidos, clientes, guías y entregas): la Etapa 2 lee y extiende los
+registros de la Etapa 1, sin copiarlos ni volver a digitarlos. En el mes 21 comienza la cobertura
+contractual de Operación, que desde su primer día comprende ambos alcances (BA, art. 17.2,
+punto 4, p. 13): la Etapa 2, que ya opera con datos y usuarios reales desde su marcha blanca,
+continúa sin interrupción y sin degradar la disponibilidad, el desempeño ni la integridad de
+los datos de E1; el H12 formaliza su aceptación. La Figura 4 muestra el flujo de datos de los
+meses 19 y 20.
 ERP
 Registro con-
 table y emisor
 único de guías
 Etapa 1
-Producción estable;
-funciones protegidas
-Registro compartido
-Pedidos, clientes, guías y en-
-tregas; una fuente de verdad
-Etapa 2 en marcha blanca
-M11 Canal moderno,
-portales y costo de servir
-documentos
-válidos opera
-lee
-extiende
+Producción
+estable
+Registro
+compartido
+Pedidos, clientes,
+guías,
+entregas, lotes y
+cobros
+Etapa 2 en marcha
+blanca
+Canal moderno (M11),
+portales y costo de
+servir (M10)
+Extiende
 los datos
-Sin copias ni doble digitación. Cada dominio conserva un escritor autorizado.
-Ningún despliegue de Etapa 2 modifica funciones estabilizadas de Etapa 1.
-Figura 7.4 Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca. Fuente: elaboración a partir
-de LafroX (2026m, SD4, arquitectura lógica).
-7.5 Transferencia a la Operación
+Documentos
+válidos
+Opera y
+escribe
+Lee
+Figura 4 Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca. Fuente: (Subdocumento 4,
+arquitectura lógica).
+La Etapa 1 escribe en el registro único y la Etapa 2 lo lee y lo extiende; ninguna de las
+dos mantiene una copia de los datos de la otra, por lo que no existe una doble digitación que
+conciliar.
+5 Transferencia a la Operación
 La transferencia al equipo de TI de cuatro personas del CLIENTE se hace antes del mes
 21. Comprende los procedimientos de operación documentados y ensayados y la base de
-conocimiento (paquetes 7.1.4 y 3.11.2). Sigue una mentoría de seis meses después del paso a
-producción de la Etapa 2 (paquete 8.5.2; RT-22.07).
-Queda como servicio permanente del adjudicatario durante los 36 meses lo que el Capítulo
-3, sección 3.4.5, asigna a LafroX: el centro de operaciones, la mesa de servicio, la gestión de
-incidentes, la continuidad, la seguridad y el mantenimiento, que corresponden a los paquetes
-8.1 y 8.2 (Caso, sección 17.6, punto 8, p. 33).
-7.6 Condiciones de programación, recursos y continuidad
-Los criterios siguientes gobiernan la programación bajo supuestos explícitos y prevalecen
-sobre descripciones gráficas históricas. La aceptación contractual exige actas y evidencias, no
-la sola descripción de estos controles.
-7.6.1 Alcance completo de las olas y orden de incorporación
-Las olas incorporan todo el alcance de cada etapa en el orden siguiente.
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
@@ -771,20 +775,60 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
-Tabla 7.8 Alcance completo de las olas y orden de incorporación. Fuente: elaboración a partir de Distribuidora
-Puelche S.A. (2026a, arts. 17.2–17.6, pp. 12–13); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6 y 20.2, pp. 32–35);
-LafroX (2026d, T-14); LafroX (2026e, T-15).
+conocimiento (paquetes 7.1.4 y 3.11.2). Sigue una mentoría de seis meses después del paso a
+producción de la Etapa 2 (paquete 8.5.2; RT-22.07).
+Queda como servicio permanente del adjudicatario durante los 36 meses lo que el Capítulo
+3, sección 3.4.5, asigna a LafroX: el centro de operaciones, la mesa de servicio, la gestión de
+incidentes, la continuidad, la seguridad y el mantenimiento, que corresponden a los paquetes
+8.1 y 8.2 (Caso, sección 17.6, punto 8, p. 33).
+6 Condiciones de programación, recursos y continuidad
+Los criterios siguientes gobiernan la programación bajo supuestos explícitos. La aceptación
+contractual exige actas y evidencias, no la sola descripción de estos controles.
+Secuencia de demostración de recuperación ante desastres
+Las campañas 3.8.5 y 3.9.4 se programan respectivamente del 25-10 al 11-11-2027 y del 19-05
+al 01-06-2028, después de la integración y antes de H5/H10. Cada una conserva 320 HH, bajo
+responsabilidad CAL y con apoyo técnico SRE/SEG que debe asignarse sin duplicar capacidad.
+Comprende cuatro bloques de 80 HH: preparar escenario y verificar réplica, respaldos y tres
+enlaces; ejecutar AL-DR-01 con conmutación real y medir RTO/RPO y alarmas de retraso a 5/15
+minutos; corregir brechas y repetir las comprobaciones afectadas; conciliar los datos, probar
+retorno y emitir informe. Los bloques son una distribución del esfuerzo existente y se detallan
+en actividades de hasta 80 HH antes de la campaña.
+El informe registra versión, ambiente, cronología de falla y recuperación, último dato
+durable, pérdida medida, rutas de comunicación, alarmas y conciliación de retorno. La salida
+exige RTO ≤4 horas, RPO ≤15 minutos y cierre de brechas; una restauración de respaldo aislada
+no sustituye esta prueba. Si la corrección supera el bloque reservado, se analiza su impacto
+sobre capacidad, repetición y certificación; no se da el ensayo por aprobado ni se presupone
+una reserva adicional.
+En Operación, 8.1.3 contiene siete campañas de 80 HH, 560 HH ya incluidas en T-15, con
+separación máxima de seis meses y fecha compatible con los congelamientos y la última prueba
+real. No basta con prorratear las HH mensualmente: antes del traspaso a Operación se fija
+cada campaña, su equipo y el informe correspondiente conforme al programa del responsable
+de pruebas.
+6.1 Alcance completo de las olas y orden de incorporación
+Las olas incorporan todo el alcance de cada etapa en el orden siguiente.
+La Tabla 8 presenta alcance completo de las olas y orden de incorporación.
+LafroX SpA
+Formulario T-18
+Media firma: Alex Aravena
+19
+
+
+---
+
+LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
+Tabla 8 Alcance completo de las olas y orden de incorporación. Fuente: (Bases Administrativas, arts. 17.2–17.6,
+pp. 12–13); (Bases Técnicas Transversales, secciones 17.2–17.6 y 20.2, pp. 32–35); (Formulario T-14); (Formulario
+T-15).
 Ola Módulos y alcance Secuencia propuesta Condición previa
 1 Recepción y
 trazabilidad
-M1 Recepción; M9 Ca-
-lidad y trazabilidad:
+M1 Recepción; M9
+Calidad y trazabilidad:
 captura/retención por
-lote; M12 Telemetría:
-adquisición de tempe-
-ratura; M10 Analítica:
-indicadores de recep-
-ción
+lote; M9: adquisición
+de temperatura; M10
+Analítica: indicadores
+de recepción
 Talca como piloto pro-
 puesto en semana 1;
 Concepción y las tres
@@ -797,12 +841,12 @@ escritor
 2 Bodega y pre-
 paración
 M2 Inventario/M5 Pre-
-paración; M9 Calidad y
-trazabilidad: retiro sani-
-tario y liberación; M12
-Telemetría: alertas tér-
-micas; M10 Analítica:
-inventario/faltantes
+paración; M9 Calidad
+y trazabilidad: retiro
+sanitario y liberación;
+M9: alertas térmicas;
+M10 Analítica: inventa-
+rio/faltantes
 Talca en semana 3;
 demás sitios en semana
 4
@@ -820,10 +864,11 @@ ses/M7 Cobranza y
 rendición; M9 Calidad
 y trazabilidad: trazabili-
 dad hasta destinatario;
-M12 Telemetría: tem-
-peratura de transporte;
-M10 Analítica: OTIF y
-reparto
+M9: temperatura de
+transporte; M12 Tele-
+metría: posición de
+flota; M10 Analítica:
+OTIF y reparto
 Grupos de rutas vincu-
 lados a Talca semana 5,
 a Concepción semana 6,
@@ -834,11 +879,14 @@ Pedido/stock/preparación dis-
 ponibles, usuarios certificados,
 acuerdos con transportistas
 y sindicato; coordinación de
-reserva y retención probada
+reserva y retención probada;
+piloto 4.1.4 aprobado y 28 actas
+de kit 6.5.4 antes de iniciar la
+ola 3
 Las semanas son relativas a H6 y son supuestos de preparación; al confirmar fechas se
 convierten a días permitidos. El piloto en Talca facilita probar la integración con WMS/ERP,
-pero no se presume aprobado. No se inventa un número de zonas: el plan de rutas vigente
-del CLIENTE define los grupos y su volumen. El responsable de Operaciones y el Líder de
+pero no se presume aprobado. Los grupos de implantación y su volumen se determinan a
+partir del plan de rutas vigente del CLIENTE. El responsable de Operaciones y el Líder de
 Implantación registran sitio, rutas, módulos, usuarios, escritor autorizado y fecha de activación
 en el acta de cada grupo. Si un grupo no está listo, no se sustituye su volumen por una muestra
 para acreditar cierre.
@@ -846,7 +894,7 @@ Los dominios pueden habilitarse en paralelo sin intervenir simultáneamente el m
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
-19
+20
 
 
 ---
@@ -865,37 +913,38 @@ se mantienen hasta el acta, sin usar esa espera para recortar la marcha blanca.
 El costo de servir de M10 Analítica se reserva a E2; sus indicadores operacionales pertenecen
 a E1. M9 Calidad y trazabilidad y M12 Telemetría se activan desde la primera ola y amplían
 cobertura conforme al proceso.
-7.6.2 Orden de cadenas, portales y cierre E2
+6.2 Orden de cadenas, portales y cierre E2
 En el mes 18 se congela el registro de cadenas y perfiles de intercambio con Operacio-
 nes/Comercial; 3.6.5 y 3.6.6 deben tener pruebas de conformidad antes de activar cada cadena.
 El orden propuesto es: perfiles ya certificados y accesos disponibles primero; perfiles con
 mayor variación o dependencia externa después, todos dentro del mes 19 y antes del inicio de
-las cuatro semanas finales. No se inventan nombres ni cantidades de cadenas.
+las cuatro semanas finales. Las cadenas incluidas en cada grupo y sus perfiles de intercambio
+se identifican en el registro de alcance acordado con Operaciones y Comercial.
 Portales por grupo de usuarios y costo de servir avanzan en paralelo en dominios distintos.
 El acta registra el 100 % del alcance de cadenas exigible, no sólo las que lograron certificarse.
 Si una cadena requerida falta, R18-13 permanece incumplido; la carga manual es contingencia
 y no acredita intercambio electrónico. La habilitación termina antes de septiembre bajo el
 calendario supuesto y antes de la fecha efectiva que permita cuatro semanas de cierre; no se
 usa «4,7 semanas» como fecha límite exacta.
-7.6.3 Dotación, estabilización y soporte entre etapas
+6.3 Dotación, estabilización y soporte entre etapas
 Se mantiene el mínimo simultáneo de 13 puestos de acompañamiento derivado del SD3:
 dos en CD, tres en plataformas, siete en ruta y uno de coordinación. Puestos y personas de
 relevo son conceptos distintos. Para planificar cuatro semanas (24 días operativos), se asumen
 ocho horas por jornada de terreno: 12 × 24 × 8 + 160 de coordinación = 2.464 HH; los relevos se
 dimensionan con 128 HH efectivas/persona-mes en T-15. No se supone que dos personas solas
 cubran todos los turnos nocturnos del mes.
+La Tabla 9 presenta dotación, estabilización y soporte entre etapas.
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
-20
+21
 
 
 ---
 
 LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
-Tabla 7.9 Dotación, estabilización y soporte entre etapas. Fuente: elaboración a partir de Distribuidora Puelche
-S.A. (2026a, art. 17.3, p. 13); Distribuidora Puelche S.A. (2026b, sec. 19.2 y cap. 18, pp. 33–35); LafroX (2026d, T-14);
-LafroX (2026e, T-15).
+Tabla 9 Dotación, estabilización y soporte entre etapas. Fuente: (Bases Administrativas, art. 17.3, p. 13); (Bases
+Técnicas Transversales, sección 19.2 y cap. 18, pp. 33–35); (Formulario T-14); (Formulario T-15).
 Período Previsión de puestos
 simultáneos E1
 Tratamiento
@@ -919,36 +968,39 @@ ruta/plataformas bajo
 demanda
 Sólo con criterios anteriores sostenidos; conserva
 NOC/mesa y reserva DES/QA por separado
-Primeras cuatro se-
-manas tras H12, mes
-21
+Primeras cuatro sema-
+nas tras H12, meses
+21–22
 13 puestos de acom-
 pañamiento E2 como
 supuesto conservador
-Bodega y ruta verifican no degradación de E1; se
-recalibra con el alcance efectivo antes de H11
+Con el acta calculada el 25 de octubre de 2028, el
+acompañamiento va del 26 de octubre al 22 de
+noviembre; bodega y ruta verifican no degradación
+de E1. Se recalibra con el alcance efectivo antes de
+H11 y con la fecha efectiva del acta
 Las previsiones mensuales son una curva inicial, no una retirada automática. El JP y
 Operaciones autorizan cada decremento en un acta con indicadores diarios y cobertura por
 perfil; si falla un indicador, se retiene o restituye el nivel anterior sin desplazar hitos. Toda
 extensión requiere recalcular HH, relevos y capacidad disponible del T-15. Para E2 se prevén
 cuatro semanas de atención reforzada; después se integra a F8 si la Contraparte Técnica
 confirma estabilidad.
-Desde H7 y hasta el mes 20, el paquete 4.2.2 incluye soporte puente: NOC 24×7, mesa
-04:00–22:00 de lunes a sábado y 24×7 en septiembre/diciembre, especialistas para críticos/altos
-24×7 y escalamiento operativo. El T-15 separa cobertura y reserva de correcciones de acompa-
-ñamiento. En el mes 21 se transfiere a 8.1.1/8.1.2 sin brecha de atención. Los responsables
-de incidentes, escalamiento y datos son los mismos en ambas etapas; E2 no dispone de un
-segundo escritor de los datos E1.
+Desde el paso a producción de E1, previo a H7, y hasta el mes 20, el paquete 4.2.2 incluye
+soporte puente: NOC 24×7, mesa 04:00–22:00 de lunes a sábado y 24×7 en septiembre/diciembre,
+especialistas para críticos/altos 24×7 y escalamiento operativo. El T-15 separa cobertura y
+reserva de correcciones de acompañamiento. En el mes 21 se transfiere a 8.1.1/8.1.2 sin brecha
+de atención. Los responsables de incidentes, escalamiento y datos son los mismos en ambas
+etapas; E2 no dispone de un segundo escritor de los datos E1.
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
-21
+22
 
 
 ---
 
 LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
-7.6.4 Tiempo de reversión y ensayo de capacidad
+6.4 Tiempo de reversión y ensayo de capacidad
 Objetivos propuestos para el ensayo previo a cada corte: nivel técnico ≤10 minutos; prepa-
 ración de contingencia operacional ≤30 minutos en paralelo; verificación y autorización de
 despacho ≤10 minutos adicionales. Tiempo total objetivo = máximo(10,30) + 10 = 40 minutos.
@@ -961,9 +1013,9 @@ El ensayo de 4.1.2 registra detección, decisión, comienzo/fin técnico, dispon
 versión local, conciliación mínima, guías emitidas por ERP, disponibilidad de rutas y autoriza-
 ción del CLIENTE. Debe demostrar el flujo completo de los 96 despachos y las integraciones
 fallidas, sin pérdida/duplicación ni emisión tributaria por un sistema no autorizado. Si no
-termina antes de las 05:30 o no acredita ese volumen, el corte no se autoriza y se activa el riesgo
-R8-01 del Subdocumento 8. La falla del ERP requiere su contingencia tributaria aprobada;
-disponer de papel no prueba que se puedan emitir DTE ni cumplir el despacho.
+termina antes de las 05:30 o no acredita ese volumen, el corte no se autoriza. La falla del ERP
+requiere su contingencia tributaria aprobada; disponer de papel no prueba que se puedan
+emitir DTE ni cumplir el despacho.
 WMS permanece en solo lectura como respaldo de consulta conforme a S-14: no se reactiva
 su escritura para revertir. La vuelta operacional mantiene o restituye una versión local probada,
 único escritor y documentos válidos del ERP; conserva UUID/colas para conciliar. El papel y la
@@ -976,54 +1028,40 @@ una función modifica producción, su ejecución requiere el procedimiento de em
 acordado y la autoridad correspondiente. La reversión no puede degradar E1 ni crear doble
 digitación. Fuera de emergencia, las habilitaciones, cortes y cambios respetan todas las fechas
 y ventanas prohibidas.
-7.6.5 Controles nuevos de coordinación y aceptación
+6.5 Controles nuevos de coordinación y aceptación
 Los paquetes 3.3.6, 3.4.2 y 3.4.6 incluyen la coordinación de reserva y retención (SD4,
 apartado 4.1.4.4 y Anexo 4-G): retención local por lote/ubicación, acuse durable antes de
 confirmar pedido, UUID e idempotencia y época de autoridad. 3.8.1/3.8.3 incluyen AL-STOCK-
 01 y AL-ACT-01 con corte, reintento, concurrencia y ausencia de doble descuento o retención
-duplicada. El dimensionamiento se recoge en el Anexo 4-I, Tabla A.10, y el Anexo 4-W, Tablas
-A.32 y A.33: 46.968 mensajes/día normales y 87.228 en peak, con un máximo de cuatro mensajes
-por línea. La retención consumida no se libera, por lo que esa holgura cubre líneas repartidas
-entre lotes o sitios. AL-STOCK-01 mide la proporción de líneas con más de una retención y
-3.8.4/3.9.3 verifican la carga y el drenaje, sin sumar la coordinación al drenaje tras un corte
-(4-W.5).
+duplicada. El dimensionamiento se recoge en el Anexo 4-I y en la sección 4-W.5 del Anexo 4-W:
+46.968 mensajes/día normales y 87.228 en peak, con un máximo de cuatro mensajes por línea.
+La retención consumida no se libera, por lo que esa holgura cubre líneas repartidas entre lotes
+o sitios. AL-STOCK-01 mide la proporción de líneas con más de una retención y 3.8.4/3.9.3
+verifican la carga y el drenaje, sin sumar la coordinación al drenaje tras un corte (4-W.5).
+El RTO de 4 horas y el RPO de 15 minutos se cumplen con tres caminos independientes por
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
-22
+23
 
 
 ---
 
 LafroX SpA Formulario T-18: Propuesta de implantación y puesta en marcha controlada
-El RPO ≤15 min se cumple con fibra, LTE y Starlink. La falla simultánea de los tres caminos
-seguida de la destrucción del sitio antes de reponer alguno es el riesgo residual declarado
-en SD4 4.3.2.4 (RT-02.11), gestionado en SD8 (LafroX, 2026r) con R-015. AL-DR-01 verifica las
-alarmas de retraso a 5 y 15 min, la reposición del enlace, la preemisión de guías y el NAS
-WORM, y mide el RPO y el RTO en conmutación real antes del H5 y del H10.
+centro de distribución (fibra, LTE y Starlink) y con alarmas de retraso de replicación a los 5
+y a los 15 minutos (Subdocumento 4, sección 4.3.2.4). Ambos se miden en conmutación real
+con AL-DR-01 antes del H5 y del H10, y luego dos veces al año durante la Operación (Bases
+Técnicas Transversales, cap. 7, RT-07.07, p. 17).
 ## Referencias
 Las fuentes citadas en este formulario se listan en formato APA 7.ª edición. Las Bases se
 citan en el texto con su documento y el artículo, capítulo, sección o código del requisito.
 • Distribuidora Puelche S.A. (2026a). Bases Administrativas, Licitación TFEP-01/2026.
 • Distribuidora Puelche S.A. (2026b). Bases Técnicas Transversales, Licitación TFEP-01/2026.
 • Distribuidora Puelche S.A. (2026c). Bases Técnicas del Caso Logística.
-• LafroX. (2026d). Formulario T-14: Estructura de desglose del trabajo. Propuesta técnica, Licita-
-ción TFEP-01/2026.
-• LafroX. (2026e). Formulario T-15: Cronograma y asignación de recursos. Propuesta técnica,
-Licitación TFEP-01/2026.
-• LafroX. (2026f). Formulario T-17: Protocolo de aceptación. Propuesta técnica, Licitación TFEP-
-01/2026.
-• LafroX. (2026j). Subdocumento 3: Anexos. Propuesta técnica, Licitación TFEP-01/2026.
-• LafroX. (2026k). Subdocumento 3: Especificación de requerimientos. Propuesta técnica, Licita-
-ción TFEP-01/2026.
-• LafroX. (2026m). Subdocumento 4: Arquitectura de la solución. Propuesta técnica, Licitación
-TFEP-01/2026.
-• LafroX. (2026p). Subdocumento 7: Plan de trabajo. Propuesta técnica, Licitación TFEP-01/2026.
-• LafroX. (2026r). Subdocumento 8: Plan de riesgos. Propuesta técnica, Licitación TFEP-01/2026.
 LafroX SpA
 Formulario T-18
 Media firma: Alex Aravena
-23
+24
 
 
 ---

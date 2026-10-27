@@ -1,0 +1,6 @@
+﻿documento,seccion,titulo,ruta,fundamento
+SD4,4.1.4.4,Módulo M3 Preventa,04/partes/4.1_logica/05_modulos_funcionales_y_limites_de_contexto.tex,Coordinación de reserva comercial y retención durable; corroborado en texto fuente y número del índice PDF
+SD4,4.2.4.1.2,Liberación y reversión,04/partes/4.2_fisica/11_j_despliegue.tex,Canario automático; disparos y objetivo de reversión <=10 min
+SD4,4.3.2.4,RPO y RTO,04/partes/4.3_centros_de_datos/06_e_sitio_secundario.tex,Objetivos y mecanismos de replicación; número en índice PDF
+SD4,4-W.7,Dimensiones 15–16: mesa de ayuda y operación,04/anexos/fisica/16_anexo_4b_memoria_calculo.tex,Sección 7 del anexo con numeración 4-W; dimensionamiento de dotación
+T17,1;2;4.1,Base contractual; Procedimiento de aceptación; calendario,SD9_v_nueva/T17/contenido.tex,Localizado en origin/LafroX-Subdoc9-LateX; edición corresponde a C

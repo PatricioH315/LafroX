@@ -1,0 +1,14 @@
+﻿punto,asunto,estado,resultado
+1,Base K0,Verificada,HEAD 93a5e884; fuentes iniciales sin cambios; PDFs recompilados previamente
+2,K4,Hecho,CSV 227 paquetes y manifiesto numérico anterior a modificaciones
+3,Actas,Implementación local; cierre pendiente,Dos actas; secuencia y brecha de diez días explícitas; decisión CLIENTE/C requerida
+4,Recursos,Implementación local; capacidad pendiente,Responsabilidades aclaradas; brecha CAL probada; disponibilidad/refuerzos por confirmar
+5,Compromisos,Hecho local,Tres coberturas; poblaciones; congelamientos y política adicional diferenciados
+6,DR,Hecho local; coordinación pendiente,"320 HH por campaña; criterios, correcciones y retorno; apoyo y campañas exactas pendientes K3"
+7,K6,Reconciliación local,CPM coincide; HH/fechas intactas; K5/K3/K1 pendientes de cierre integral
+8,Rollback,Hecho,Automatismo y supervisión SRE diferenciados; disparos contrastados con SD4
+9,Referencias,Hecho local; K1 pendiente,Tabla 6.1 corregida; T17 localizado; inventario externo y versiones; numeración final SD4 pendiente
+10,EDT,Hecho local,17 llamadas; tres láminas editadas; revisión de códigos y visual en validación
+11,Formularios/archivos,Hecho con alcance explícito,Peak conjunto del período identificado; seis archivos no incluidos conservados
+12,Forma/metadatos/IA,Hecho local,Fuentes y llamadas; metadatos comunes conservados; intervención IA declarada sin atribuir revisión posterior
+13,Validación,Hecha; condiciones externas registradas,"Cinco PDF, 317 páginas; sin errores fatales, referencias indefinidas ni overfull; inspección completa y detalles ampliados"

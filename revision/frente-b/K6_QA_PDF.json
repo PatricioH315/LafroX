@@ -1,0 +1,276 @@
+{
+  "documentos": [
+    {
+      "documento": "LAFROX-Subdocumento7",
+      "paginas": 66,
+      "sha256": "e0ab213c8d414b3a005eb8e90400422e1c788a0b583476085d29f3ab56de0e48",
+      "errores_fatales": [],
+      "referencias_pendientes": [],
+      "overfull": [],
+      "advertencias": [],
+      "avisos_heredados_glue": 4,
+      "hojas_inspeccion": [
+        "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Subdocumento7-sheet-001.jpg",
+        "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Subdocumento7-sheet-025.jpg",
+        "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Subdocumento7-sheet-049.jpg"
+      ],
+      "detalles": [
+        {
+          "pagina": 1,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Subdocumento7-detail-001.png"
+        },
+        {
+          "pagina": 3,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Subdocumento7-detail-003.png"
+        },
+        {
+          "pagina": 18,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Subdocumento7-detail-018.png"
+        },
+        {
+          "pagina": 54,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Subdocumento7-detail-054.png"
+        },
+        {
+          "pagina": 59,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Subdocumento7-detail-059.png"
+        },
+        {
+          "pagina": 66,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\SD7-IA-sin-fila-66.png"
+        },
+        {
+          "pagina": 9,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\SD7-p9-cuadro-subido.png"
+        }
+      ],
+      "fila_adicional_IA": "retirada por solicitud explícita del usuario"
+    },
+    {
+      "documento": "LAFROX-Subdocumento7-Anexos",
+      "paginas": 25,
+      "sha256": "a6151b2abe1e1b33a20a100e5e6bb5f22ea7c510b8e23e368883da00c04e4d2c",
+      "errores_fatales": [],
+      "referencias_pendientes": [],
+      "overfull": [],
+      "advertencias": [],
+      "avisos_heredados_glue": 14,
+      "hojas_inspeccion": [
+        "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Subdocumento7-Anexos-sheet-001.jpg",
+        "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Subdocumento7-Anexos-sheet-025.jpg"
+      ],
+      "detalles": [
+        {
+          "pagina": 1,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Subdocumento7-Anexos-detail-001.png"
+        },
+        {
+          "pagina": 14,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Subdocumento7-Anexos-detail-014.png"
+        }
+      ]
+    },
+    {
+      "documento": "LAFROX-Formulario-T-14",
+      "paginas": 102,
+      "sha256": "8c37ce2e300688f07e0db0918c1d3fe4644cde110c9fa41c769ed369cf996ef2",
+      "errores_fatales": [],
+      "referencias_pendientes": [],
+      "overfull": [],
+      "advertencias": [],
+      "avisos_heredados_glue": 34,
+      "hojas_inspeccion": [
+        "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-14-sheet-001.jpg",
+        "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-14-sheet-025.jpg",
+        "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-14-sheet-049.jpg",
+        "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-14-sheet-073.jpg",
+        "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-14-sheet-097.jpg"
+      ],
+      "detalles": [
+        {
+          "pagina": 1,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-14-detail-001.png"
+        },
+        {
+          "pagina": 4,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-14-detail-004.png"
+        },
+        {
+          "pagina": 9,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-14-detail-009.png"
+        },
+        {
+          "pagina": 14,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-14-detail-014.png"
+        },
+        {
+          "pagina": 19,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-14-detail-019.png"
+        },
+        {
+          "pagina": 59,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-14-detail-059.png"
+        },
+        {
+          "pagina": 60,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-14-detail-060.png"
+        },
+        {
+          "pagina": 61,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-14-detail-061.png"
+        }
+      ]
+    },
+    {
+      "documento": "LAFROX-Formulario-T-15",
+      "paginas": 99,
+      "sha256": "9901a682b8c834d3244d0335bf0bfef41f529f86334d498a70232225b727e13b",
+      "errores_fatales": [],
+      "referencias_pendientes": [],
+      "overfull": [],
+      "advertencias": [],
+      "avisos_heredados_glue": 2,
+      "hojas_inspeccion": [
+        "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-15-sheet-001.jpg",
+        "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-15-sheet-025.jpg",
+        "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-15-sheet-049.jpg",
+        "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-15-sheet-073.jpg",
+        "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-15-sheet-097.jpg"
+      ],
+      "detalles": [
+        {
+          "pagina": 1,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-15-detail-001.png"
+        },
+        {
+          "pagina": 2,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-15-detail-002.png"
+        },
+        {
+          "pagina": 3,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-15-detail-003.png"
+        },
+        {
+          "pagina": 29,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-15-detail-029.png"
+        },
+        {
+          "pagina": 30,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-15-detail-030.png"
+        },
+        {
+          "pagina": 58,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-15-detail-058.png"
+        },
+        {
+          "pagina": 62,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-15-detail-062.png"
+        }
+      ]
+    },
+    {
+      "documento": "LAFROX-Formulario-T-18",
+      "paginas": 24,
+      "sha256": "0ed6983fd95f407592a2b40720ed5f7e47d6462a6a8f5132156fc69086d493e6",
+      "errores_fatales": [],
+      "referencias_pendientes": [],
+      "overfull": [],
+      "advertencias": [],
+      "avisos_heredados_glue": 3,
+      "hojas_inspeccion": [
+        "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-18-sheet-001.jpg"
+      ],
+      "detalles": [
+        {
+          "pagina": 1,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-18-detail-001.png"
+        },
+        {
+          "pagina": 19,
+          "imagen": "C:\\Users\\Leand\\AppData\\Local\\Temp\\lafrox-frenteB-qa\\LAFROX-Formulario-T-18-detail-019.png"
+        }
+      ]
+    }
+  ],
+  "paginas_totales": 316,
+  "laminas_EDT": [
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 1 (1 de 2).drawio.pdf",
+      "codigos": 18
+    },
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 1 (2 de 2).drawio.pdf",
+      "codigos": 17
+    },
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 2 (1 de 2).drawio.pdf",
+      "codigos": 11
+    },
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 2 (2 de 2).drawio.pdf",
+      "codigos": 9
+    },
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 3 (1 de 5).drawio.pdf",
+      "codigos": 17
+    },
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 3 (2 de 5).drawio.pdf",
+      "codigos": 11
+    },
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 3 (3 de 5).drawio.pdf",
+      "codigos": 23
+    },
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 3 (4 de 5).drawio.pdf",
+      "codigos": 16
+    },
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 3 (5 de 5).drawio.pdf",
+      "codigos": 20
+    },
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 4.drawio.pdf",
+      "codigos": 11
+    },
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 5.drawio.pdf",
+      "codigos": 15
+    },
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 6 (1 de 2).drawio.pdf",
+      "codigos": 12
+    },
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 6 (2 de 2).drawio.pdf",
+      "codigos": 12
+    },
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 7.drawio.pdf",
+      "codigos": 13
+    },
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 8 (1 de 2).drawio.pdf",
+      "codigos": 13
+    },
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 8 (2 de 2).drawio.pdf",
+      "codigos": 13
+    },
+    {
+      "archivo": "imagenes\\Imagenes de la edt\\EDT-Fase 9.drawio.pdf",
+      "codigos": 4
+    }
+  ],
+  "paquetes_EDT_cubiertos": 227,
+  "paquetes_EDT_ausentes": [],
+  "inspeccion_visual": "Imágenes generadas; registrar inspección humana/asistente en VALIDACION_FINAL.md",
+  "correccion_conexion_p9": {
+    "paginas_con_cambio_visual": [
+      9
+    ],
+    "paginas_verificadas": 66,
+    "descripcion": "Cuadro 1.4.3 subido de y=231.65 a 201.30; línea restituida a y=218.55 por indicación del usuario"
+  }
+}

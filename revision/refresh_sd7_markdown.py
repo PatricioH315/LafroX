@@ -10,7 +10,7 @@ titles = {
 }
 
 for stem, title in titles.items():
-    pdf = Path(f'LafroX-{stem}.pdf')
+    pdf = Path(f'LAFROX-{stem}.pdf')
     md = pdf.with_suffix('.md')
     extraction = subprocess.check_output(['pdftotext', '-raw', '-enc', 'UTF-8', str(pdf), '-'])
     body = extraction.decode('utf-8-sig').replace('\r\n', '\n').replace('\f', '\n\n---\n\n').strip()

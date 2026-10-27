@@ -1,0 +1,568 @@
+{
+  "head": "93a5e884b3f8397e8f3ec7fc76e1e6a45f351b8e",
+  "fuentes": {
+    "formulario-t15/tablas/tab_T15_2.tex": "283a396b0f6b08a0070e32139dafc8f5be7017925e824159d95c698038e29dce",
+    "formulario-t15/tablas/tab_T15_paquetes.tex": "e6b3ff15fce2d7d98f4a112620724b4bc078e471b530be2e590f2a8177eccbbe",
+    "formulario-t15/tablas/tab_T15_4.tex": "93ce47f9cc3bd2288c4d5fe5b1ead2ff01330019f34eccd6063f906e4ddeae59",
+    "formulario-t15/tablas/tab_T15_4_personas.tex": "68da92c39c799f64f75244a2564b28fa9eea352415a0612c9566058ec4a56fa1"
+  },
+  "paquetes": 227,
+  "entregables": 168,
+  "continuos": 59,
+  "hh_total": 220023,
+  "peak_mensual": 64,
+  "peaks_periodos": [
+    [
+      "E1 desarrollo",
+      1,
+      12,
+      48,
+      "6"
+    ],
+    [
+      "E1 marcha blanca",
+      13,
+      15,
+      58,
+      "14"
+    ],
+    [
+      "E2 desarrollo",
+      13,
+      18,
+      64,
+      "16"
+    ],
+    [
+      "E2 marcha blanca",
+      19,
+      20,
+      57,
+      "19"
+    ],
+    [
+      "E1 producción y estabilización",
+      16,
+      20,
+      64,
+      "16"
+    ],
+    [
+      "Operación",
+      21,
+      56,
+      46,
+      "22"
+    ],
+    [
+      "E2 cierre y estabilización",
+      21,
+      22,
+      46,
+      "22"
+    ]
+  ],
+  "capacidad": [
+    [
+      "DES",
+      48,
+      40.788,
+      "2027-07-01",
+      132.0,
+      "2027-07-01",
+      "3.4.1;3.4.10;3.4.2;3.4.3;3.4.4;3.4.5;3.4.6;3.4.7;3.4.8;3.4.9;3.6.2;3.6.3;3.6.4"
+    ],
+    [
+      "SRE",
+      44,
+      21.875,
+      "2027-05-03",
+      24.0,
+      "2027-05-03",
+      "3.1.4;3.2.1;3.2.2;3.2.3;3.2.4;5.2.2;5.3.1;5.3.2;5.3.3;6.1.5;6.2.1;6.3.3"
+    ],
+    [
+      "CAL",
+      10,
+      12.955,
+      "2027-10-25",
+      14.0,
+      "2027-10-25",
+      "3.8.2;3.8.3;3.8.4;3.8.5"
+    ],
+    [
+      "ARQ+DAT",
+      15,
+      14.331,
+      "2027-06-10",
+      22.0,
+      "2027-06-10",
+      "3.10.3.2;3.3.2;3.3.3;3.3.4;3.3.5;3.3.6"
+    ],
+    [
+      "SEG",
+      7,
+      5.536,
+      "2027-03-01",
+      8.0,
+      "2027-06-07",
+      "3.3.1;6.4.1;6.4.2"
+    ]
+  ],
+  "intervalos_capacidad": [
+    [
+      "DES",
+      48,
+      "2028-10-02",
+      "2028-10-11",
+      80.0,
+      2150.4,
+      -2070.4,
+      "9.1.1"
+    ],
+    [
+      "SRE",
+      44,
+      "2027-03-01",
+      "2027-03-01",
+      3.2,
+      281.6,
+      -278.4,
+      "5.2.1"
+    ],
+    [
+      "CAL",
+      10,
+      "2027-10-25",
+      "2027-11-11",
+      1049.6,
+      832.0,
+      217.6,
+      "3.8.2;3.8.3;3.8.4;3.8.5"
+    ],
+    [
+      "ARQ+DAT",
+      15,
+      "2027-10-01",
+      "2027-10-01",
+      0,
+      96.0,
+      -96.0,
+      ""
+    ],
+    [
+      "SEG",
+      7,
+      "2027-06-22",
+      "2027-06-24",
+      64.0,
+      134.4,
+      -70.4,
+      "6.4.2;6.4.3"
+    ],
+    [
+      "DES_escenario_40",
+      40,
+      "2028-10-02",
+      "2028-10-11",
+      80.0,
+      1792.0,
+      -1712.0,
+      "9.1.1"
+    ]
+  ],
+  "cierres": [
+    {
+      "etapa": "E1",
+      "evidencia_desde": "2028-04-03",
+      "evidencia_hasta": "2028-04-30",
+      "entrega_completa_escenario": "2028-05-02",
+      "revision_desde": "2028-05-03",
+      "revision_hasta": "2028-05-16",
+      "produccion_objetivo": "2028-05-05",
+      "aceptacion_objetivo": "2028-05-29",
+      "dias_revision_antes_produccion": 2,
+      "compatible_diez_dias_antes_produccion": false,
+      "supuesto": "entrega en primer hábil posterior a evidencia; revisión desde siguiente hábil; sin subsanación"
+    },
+    {
+      "etapa": "E2",
+      "evidencia_desde": "2028-09-03",
+      "evidencia_hasta": "2028-09-30",
+      "entrega_completa_escenario": "2028-10-02",
+      "revision_desde": "2028-10-03",
+      "revision_hasta": "2028-10-17",
+      "produccion_objetivo": "2028-10-05",
+      "aceptacion_objetivo": "2028-10-25",
+      "dias_revision_antes_produccion": 2,
+      "compatible_diez_dias_antes_produccion": false,
+      "supuesto": "entrega en primer hábil posterior a evidencia; revisión desde siguiente hábil; sin subsanación"
+    }
+  ],
+  "hitos": [
+    {
+      "hito": "H1",
+      "mes": 2,
+      "entrega": "2027-03-09",
+      "acta_temprana": "2027-03-23",
+      "limite_entrega": "2027-03-16",
+      "limite_acta": "2027-03-31",
+      "holgura_dias": 5,
+      "camino": [
+        "1.2.4"
+      ],
+      "sigma_dias": 0.5833,
+      "probabilidad_pert": 1.0,
+      "duraciones_camino": [
+        7.0
+      ],
+      "eventos_camino": [
+        [
+          "S:1.2.4",
+          "F:1.2.4",
+          7,
+          "duración publicada/capacidad"
+        ],
+        [
+          "F:1.2.4",
+          "ENT:H1",
+          0,
+          "entrega del hito"
+        ]
+      ]
+    },
+    {
+      "hito": "H2",
+      "mes": 4,
+      "entrega": "2027-04-29",
+      "acta_temprana": "2027-05-13",
+      "limite_entrega": "2027-05-14",
+      "limite_acta": "2027-05-31",
+      "holgura_dias": 11,
+      "camino": [
+        "2.4.1"
+      ],
+      "sigma_dias": 0.75,
+      "probabilidad_pert": 1.0,
+      "duraciones_camino": [
+        9.0
+      ],
+      "eventos_camino": [
+        [
+          "S:2.4.1",
+          "F:2.4.1",
+          9,
+          "duración publicada/capacidad"
+        ],
+        [
+          "F:2.4.1",
+          "ENT:H2",
+          0,
+          "entrega del hito"
+        ]
+      ]
+    },
+    {
+      "hito": "H3",
+      "mes": 6,
+      "entrega": "2027-06-18",
+      "acta_temprana": "2027-07-06",
+      "limite_entrega": "2027-07-15",
+      "limite_acta": "2027-07-30",
+      "holgura_dias": 17,
+      "camino": [
+        "3.1.5"
+      ],
+      "sigma_dias": 1.1667,
+      "probabilidad_pert": 1.0,
+      "duraciones_camino": [
+        14.0
+      ],
+      "eventos_camino": [
+        [
+          "S:3.1.5",
+          "F:3.1.5",
+          14,
+          "duración publicada/capacidad"
+        ],
+        [
+          "F:3.1.5",
+          "ENT:H3",
+          0,
+          "entrega del hito"
+        ]
+      ]
+    },
+    {
+      "hito": "H4",
+      "mes": 10,
+      "entrega": "2027-10-22",
+      "acta_temprana": "2027-11-08",
+      "limite_entrega": "2027-11-16",
+      "limite_acta": "2027-11-30",
+      "holgura_dias": 16,
+      "camino": [
+        "3.8.1"
+      ],
+      "sigma_dias": 1.0833,
+      "probabilidad_pert": 1.0,
+      "duraciones_camino": [
+        13.0
+      ],
+      "eventos_camino": [
+        [
+          "S:3.8.1",
+          "F:3.8.1",
+          13,
+          "duración publicada/capacidad"
+        ],
+        [
+          "F:3.8.1",
+          "ENT:H4",
+          0,
+          "entrega del hito"
+        ]
+      ]
+    },
+    {
+      "hito": "H5",
+      "mes": 12,
+      "entrega": "2027-12-01",
+      "acta_temprana": "2028-01-03",
+      "limite_entrega": "2028-01-17",
+      "limite_acta": "2028-01-31",
+      "holgura_dias": 20,
+      "camino": [
+        "3.8.7"
+      ],
+      "sigma_dias": 0.6667,
+      "probabilidad_pert": 1.0,
+      "duraciones_camino": [
+        8.0
+      ],
+      "eventos_camino": [
+        [
+          "S:3.8.7",
+          "F:3.8.7",
+          8,
+          "duración publicada/capacidad"
+        ],
+        [
+          "F:3.8.7",
+          "ENT:H5",
+          0,
+          "entrega del hito"
+        ]
+      ]
+    },
+    {
+      "hito": "H8",
+      "mes": 14,
+      "entrega": "2028-02-28",
+      "acta_temprana": "2028-03-13",
+      "limite_entrega": "2028-03-17",
+      "limite_acta": "2028-03-31",
+      "holgura_dias": 14,
+      "camino": [
+        "2.4.2"
+      ],
+      "sigma_dias": 0.6667,
+      "probabilidad_pert": 1.0,
+      "duraciones_camino": [
+        8.0
+      ],
+      "eventos_camino": [
+        [
+          "S:2.4.2",
+          "F:2.4.2",
+          8,
+          "duración publicada/capacidad"
+        ],
+        [
+          "F:2.4.2",
+          "ENT:H8",
+          0,
+          "entrega del hito"
+        ]
+      ]
+    },
+    {
+      "hito": "H7",
+      "mes": 16,
+      "entrega": "2028-05-15",
+      "acta_temprana": "2028-05-29",
+      "limite_entrega": "2028-05-17",
+      "limite_acta": "2028-05-31",
+      "holgura_dias": 2,
+      "camino": [
+        "4.2.3"
+      ],
+      "sigma_dias": 0.5833,
+      "probabilidad_pert": 0.999697,
+      "duraciones_camino": [
+        7.0
+      ],
+      "eventos_camino": [
+        [
+          "S:4.2.3",
+          "F:4.2.3",
+          7,
+          "duración publicada/capacidad"
+        ],
+        [
+          "F:4.2.3",
+          "ENT:H7",
+          0,
+          "entrega del hito"
+        ]
+      ]
+    },
+    {
+      "hito": "H9",
+      "mes": 17,
+      "entrega": "2028-05-18",
+      "acta_temprana": "2028-06-01",
+      "limite_entrega": "2028-06-14",
+      "limite_acta": "2028-06-30",
+      "holgura_dias": 19,
+      "camino": [
+        "3.9.1"
+      ],
+      "sigma_dias": 1.0833,
+      "probabilidad_pert": 1.0,
+      "duraciones_camino": [
+        13.0
+      ],
+      "eventos_camino": [
+        [
+          "S:3.9.1",
+          "F:3.9.1",
+          13,
+          "duración publicada/capacidad"
+        ],
+        [
+          "F:3.9.1",
+          "ENT:H9",
+          0,
+          "entrega del hito"
+        ]
+      ]
+    },
+    {
+      "hito": "H10",
+      "mes": 18,
+      "entrega": "2028-06-28",
+      "acta_temprana": "2028-07-12",
+      "limite_entrega": "2028-07-17",
+      "limite_acta": "2028-07-31",
+      "holgura_dias": 13,
+      "camino": [
+        "3.9.6"
+      ],
+      "sigma_dias": 0.5833,
+      "probabilidad_pert": 1.0,
+      "duraciones_camino": [
+        7.0
+      ],
+      "eventos_camino": [
+        [
+          "S:3.9.6",
+          "F:3.9.6",
+          7,
+          "duración publicada/capacidad"
+        ],
+        [
+          "F:3.9.6",
+          "ENT:H10",
+          0,
+          "entrega del hito"
+        ]
+      ]
+    },
+    {
+      "hito": "H12",
+      "mes": 21,
+      "entrega": "2028-10-11",
+      "acta_temprana": "2028-10-25",
+      "limite_entrega": "2028-10-16",
+      "limite_acta": "2028-10-31",
+      "holgura_dias": 3,
+      "camino": [
+        "4.3.3"
+      ],
+      "sigma_dias": 0.5833,
+      "probabilidad_pert": 1.0,
+      "duraciones_camino": [
+        7.0
+      ],
+      "eventos_camino": [
+        [
+          "S:4.3.3",
+          "F:4.3.3",
+          7,
+          "duración publicada/capacidad"
+        ],
+        [
+          "F:4.3.3",
+          "ENT:H12",
+          0,
+          "entrega del hito"
+        ]
+      ]
+    },
+    {
+      "hito": "H6",
+      "mes": 13,
+      "entrega": "2028-02-01",
+      "acta_temprana": "2028-02-01",
+      "limite_entrega": "2028-02-01",
+      "limite_acta": "2028-02-01",
+      "holgura_dias": 0,
+      "camino": [],
+      "sigma_dias": 0.0,
+      "probabilidad_pert": null,
+      "duraciones_camino": [],
+      "eventos_camino": [
+        [
+          "S:4.2.1",
+          "ENT:H6",
+          0,
+          "entrega del hito"
+        ]
+      ]
+    },
+    {
+      "hito": "H11",
+      "mes": 19,
+      "entrega": "2028-08-01",
+      "acta_temprana": "2028-08-01",
+      "limite_entrega": "2028-08-01",
+      "limite_acta": "2028-08-01",
+      "holgura_dias": 0,
+      "camino": [],
+      "sigma_dias": 0.0,
+      "probabilidad_pert": null,
+      "duraciones_camino": [],
+      "eventos_camino": [
+        [
+          "S:4.3.1",
+          "ENT:H11",
+          0,
+          "entrega del hito"
+        ]
+      ]
+    }
+  ],
+  "paquetes_cpm_distintos_publicados": [],
+  "tablas_sin_inclusion": [
+    "formulario-t14/tablas/tab_T14_53.tex",
+    "formulario-t15/tablas/tab_T15_11.tex",
+    "formulario-t15/tablas/tab_T15_5.tex",
+    "formulario-t15/tablas/tab_T15_contingencia.tex",
+    "formulario-t18/tablas/tab_T18_IA.tex",
+    "subdocumento-07-anexos/tablas/tab_IA.tex"
+  ],
+  "tablas_activas": 96,
+  "calendario": "supuesto interno heredado, sujeto a confirmación del CLIENTE",
+  "estado": "reconciliación local; cierre integral condicionado a K1/K3/K5 y resolución de las actas de cierre"
+}

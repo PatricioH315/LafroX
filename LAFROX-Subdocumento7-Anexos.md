@@ -1,17 +1,16 @@
 # Subdocumento 7 — Anexos
 
-> Texto extraído del [PDF final](LafroX-Subdocumento7-Anexos.pdf). Las figuras y la composición visual se consultan en el PDF.
+> Texto extraído del [PDF final](LAFROX-Subdocumento7-Anexos.pdf). Las figuras y la composición visual se consultan en el PDF.
 
 LafroX SpA
-VERSIÓN FINAL PARA ENTREGA
 LICITACIÓN PÚBLICA
 Licitación N.° TFEP-01/2026
 Proyecto de Plataforma Digital de Misión Crítica
 Caso — Logística
-Sobre N.° 2 --- Oferta Técnica
-Subdocumento 7: Anexos
-Anexos del Subdocumento 7
-Anexos del Subdocumento 7 · Subdocumento 7: Anexos
+Sobre N.° 2 — Oferta Técnica
+Propuesta Técnica
+Anexos del Subdocumento 07
+Anexos del Subdocumento 07 · Formulario T-7
 MANDANTE
 Distribuidora Puelche S.A.
 PROPONENTE
@@ -28,7 +27,7 @@ FECHA DE EMISIÓN
 FIRMA DEL REPRESENTANTE LEGAL
 Alex Aravena
 Jefe de Proyecto y Apoderado · LafroX SpA
-SOBRE2_LAFROX_OFERTA_TECNICA_20261012.ZIP 1
+LAFROX-Subdocumento7-Anexos.pdf 1
 
 
 ---
@@ -41,13 +40,13 @@ Lista de tablas 3
 7.1 Anexo 7.A — Meses contractuales y ventanas de congelamiento según la fecha de
 inicio 4
 7.2 Anexo 7.B — Dependencias entre paquetes de trabajo 6
-7.3 Anexo 7.C — Momento de los resultados de aceptación del caso 12
-7.4 Anexo 7.D — Innovaciones en la EDT y en el cronograma 14
+7.3 Anexo 7.C — Momento de los resultados de aceptación del caso 13
+7.4 Anexo 7.D — Innovaciones en la EDT y en el cronograma 15
 7.5 Anexo 7.E — Trazabilidad de módulos e interfaces a la EDT 16
-7.6 Anexo 7.F — Supuestos de planificación y dependencias para la gestión de riesgos 17
-7.6.1 Política de reservas que recibe el Capítulo 8 22
-7.6.2 Condiciones para aprobar la línea base 22
-Referencias 23
+7.6 Anexo 7.F — Supuestos de planificación y dependencias para la gestión de riesgos 18
+7.6.1 Política de reservas que recibe el Capítulo 8 24
+7.6.2 Condiciones para aprobar la línea base 24
+Referencias 25
 LafroX SpA
 Subdocumento 7: Anexos
 Media firma: Alex Aravena
@@ -58,14 +57,14 @@ Media firma: Alex Aravena
 
 LafroX SpA
 Lista de tablas
-Tabla 7.1 Meses calendario de los períodos contractuales según el mes de inicio. 5
+Tabla 7.1 Meses calendario de los períodos contractuales según el mes de inicio. 4
 Tabla 7.2 Dependencias entre paquetes de trabajo. 6
-Tabla 7.3 Momento de los dieciséis resultados de aceptación. 12
-Tabla 7.4 Paquetes y meses de las cinco innovaciones. 14
-Tabla 7.5 Módulos de la solución y paquetes de la EDT. 16
+Tabla 7.3 Momento de los dieciséis resultados de aceptación. 13
+Tabla 7.4 Paquetes y meses de las cinco innovaciones. 15
+Tabla 7.5 Módulos de la solución y paquetes de la EDT. 17
 Tabla 7.6 Interfaces de la arquitectura y paquetes de la EDT. 17
 Tabla 7.7 Anexo 7.F — Supuestos de planificación y dependencias para la gestión de
-riesgos. 18
+riesgos. 19
 LafroX SpA
 Subdocumento 7: Anexos
 Media firma: Alex Aravena
@@ -76,13 +75,11 @@ Media firma: Alex Aravena
 
 CAPÍTULO 7
 Anexos del Subdocumento 7
-Estos anexos detallan los listados que el Subdocumento 7 (LafroX, 2026p) resume. La
-EDT, el diccionario y la carta Gantt están en el Formulario T-14; el método de estimación y
-programación, la ruta crítica y los frentes de trabajo, en el Formulario T-15; y la implantación,
-en el Formulario T-18.
-En estos anexos, BA, BTT y Caso designan las Bases Administrativas (Distribuidora Puelche
-S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso Logística
-(2026c).
+Estos anexos detallan los listados que el Subdocumento 7 resume. La EDT, el diccionario y
+la carta Gantt están en el Formulario T-14; el método de estimación y programación, la ruta
+crítica y los frentes de trabajo, en el Formulario T-15; y la implantación, en el Formulario T-18.
+En estos anexos, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas
+Transversales y las Bases Técnicas del caso.
 7.1 Anexo 7.A — Meses contractuales y ventanas de congelamiento
 según la fecha de inicio
 El artículo 17 de las Bases Administrativas (pp. 12–13) fija los meses del contrato, no sus
@@ -90,12 +87,50 @@ fechas. El mes 1 es el primer mes completo de ejecución (BA, art. 10, p. 8, num
 el contrato se inicia en el mes calendario m, el mes contractual n cae en el mes calendario
 𝑚 + (𝑛 − 1), contado en aritmética de doce meses.
 El caso fija las ventanas del año: congelamiento total del 1 al 25 de septiembre y durante
-todo diciembre; congelamiento en los tres primeros días hábiles de cada mes (Caso, cap. 15,
-RT-10.05, p. 27); y ningún paso a producción en septiembre ni en diciembre (sección 13.3,
+todo diciembre; congelamiento en los tres primeros días hábiles de cada mes (Caso, Capítulo
+15, RT-10.05, p. 27); y ningún paso a producción en septiembre ni en diciembre (sección 13.3,
 condición 2). El Capítulo 3, sección 3.1.2, deriva de esa regla los ocho meses de inicio que no
 ponen los meses 16 ni 21 en septiembre o diciembre (supuesto S-17). La Tabla 7.1 aplica la
 misma fórmula a los meses de marcha blanca; los meses en negrita caen en una ventana de
 congelamiento.
+Tabla 7.1 Meses calendario de los períodos contractuales según el mes de inicio. Fuente: (Bases Administrativas,
+art. 17, pp. 12–13) y (Bases Técnicas del caso, secciones 13.2 y 13.3, pp. 22–23).
+Inicio del
+contrato
+Mes 13 (H6) Meses 14 y
+15
+Mes 16 (H7) Mes 19 (H11) Mes 20 Mes 21 (H12)
+Diciembre
+de 2026
+Diciembre
+de 2027
+Enero y
+febrero de
+2028
+Marzo de
+2028
+Junio de
+2028
+Julio de
+2028
+Agosto de
+2028
+Febrero de
+2027
+Febrero de
+2028
+Marzo y
+abril de
+2028
+Mayo de
+2028
+Agosto de
+2028
+Septiembre
+de 2028
+Octubre de
+2028
+continúa en la página siguiente
 LafroX SpA
 Subdocumento 7: Anexos
 Media firma: Alex Aravena
@@ -105,65 +140,45 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Anexos del Subdocumento 7
-Tabla 7.1 Meses calendario de los períodos contractuales según el mes de inicio. Fuente: elaboración a partir de
-Distribuidora Puelche S.A. (2026a, art. 17) y Distribuidora Puelche S.A. (2026c, secs. 13.2 y 13.3).
+Tabla 7.1 — continuación
 Inicio del
 contrato
-Mes 13 (H6) Meses 14 y 15 Mes 16 (H7) Mes 19 (H11) Mes 20 Mes
-21
-(H12)
-Diciembre de
-2026
-Diciembre de
+Mes 13 (H6) Meses 14 y
+15
+Mes 16 (H7) Mes 19 (H11) Mes 20 Mes 21 (H12)
+Marzo de
 2027
-Enero y fe-
-brero de 2028
 Marzo de
 2028
-Junio de 2028 Julio de 2028 Agos-
-to de
-2028
-Febrero de
-2027
-Febrero de
-2028
-Marzo y abril
-de 2028
-Mayo de 2028 Agosto de
+Abril y ma-
+yo de 2028
+Junio de
 2028
 Septiembre
 de 2028
-Octu-
-bre
-de
-2028
-Marzo de
-2027
-Marzo de
-2028
-Abril y mayo
-de 2028
-Junio de 2028 Septiembre
-de 2028
 Octubre de
 2028
-No-
-viem-
-bre
-de
+Noviembre
+de 2028
+Mayo de
+2027
+Mayo de
 2028
-Mayo de 2027 Mayo de 2028 Junio y julio
+Junio y julio
 de 2028
 Agosto de
 2028
 Noviembre
 de 2028
-Diciembre de
-2028
-Enero
-de
+Diciembre
+de 2028
+Enero de
 2029
-Julio de 2027 Julio de 2028 Agosto y
+Julio de
+2027
+Julio de
+2028
+Agosto y
 septiembre
 de 2028
 Octubre de
@@ -172,8 +187,7 @@ Enero de
 2029
 Febrero de
 2029
-Mar-
-zo de
+Marzo de
 2029
 Agosto de
 2027
@@ -188,46 +202,43 @@ Febrero de
 2029
 Marzo de
 2029
-Abril
-de
+Abril de
 2029
 Octubre de
 2027
 Octubre de
 2028
-Noviembre y
-diciembre de
-2028
+Noviembre
+y diciembre
+de 2028
 Enero de
 2029
-Abril de 2029 Mayo de 2029 Junio
-de
+Abril de
+2029
+Mayo de
+2029
+Junio de
 2029
 Noviembre
 de 2027
 Noviembre
 de 2028
-Diciembre de
-2028 y enero
-de 2029
+Diciembre
+de 2028 y
+enero de
+2029
 Febrero de
 2029
-Mayo de 2029 Junio de 2029 Julio
-de
+Mayo de
+2029
+Junio de
+2029
+Julio de
 2029
 La tabla lleva a tres conclusiones. Primero, ningún inicio admisible deja las dos marchas
 blancas completas fuera de septiembre y diciembre: siempre hay al menos un mes de marcha
 blanca dentro de una ventana de congelamiento. Segundo, solo los inicios de diciembre de
 2026, febrero de 2027 y marzo de 2027 ponen en producción la Etapa 2 antes de enero de
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
-5
-
-
----
-
-LafroX SpA Anexos del Subdocumento 7
 2029, fecha desde la que rigen las condiciones de la principal cadena de supermercados (Caso,
 sección 13.2, p. 22; Capítulo 3, sección 3.1.2).
 Tercero, entre esos tres inicios, febrero de 2027 es el único en que el congelamiento afecta
@@ -237,28 +248,48 @@ en septiembre. Con febrero de 2027, las cuatro semanas de cierre de la marcha bl
 Etapa 2 coinciden con el peak de Fiestas Patrias; por eso toda habilitación de la Etapa 2 ocurre
 en agosto de 2028 y el cierre se mide con el volumen del peak (Formulario T-18, sección 3.1).
 LafroX adopta febrero de 2027 como supuesto de calendario de la carta Gantt.
-Durante un mes de congelamiento que cae dentro de una marcha blanca no se inicia
-ninguna ola ni se despliega ningún cambio. La marcha blanca continúa en convivencia con
+Durante las fechas efectivamente congeladas no se inicia ninguna ola ni se despliega ningún
+cambio; se distingue el congelamiento total del 1 al 25 de septiembre de la prohibición de paso
+a producción durante todo septiembre y diciembre. La política adicional de despliegue de SD4
+LafroX SpA
+Subdocumento 7: Anexos
+Media firma: Alex Aravena
+5
+
+
+---
+
+LafroX SpA Anexos del Subdocumento 7
+se aplica como se describe en T-18, sección 1. La marcha blanca continúa en convivencia con
 la forma actual de trabajar, se siguen midiendo los indicadores diarios y el volumen real de
 septiembre sirve como prueba de carga en operación. La fecha efectiva de inicio se confirma
 con la consulta V-12 (Capítulo 3, Anexo 3.H).
 7.2 Anexo 7.B — Dependencias entre paquetes de trabajo
 La Tabla 7.2 lista las dependencias que estructuran la red del cronograma. Son de tipo fin-
-comienzo (FC), salvo las marcadas como comienzo-comienzo (CC) y las de tipo «por interfaz»,
-en que el sucesor espera los contratos del predecesor para construir y su entrega para integrar;
-cada una indica su fundamento. El Formulario T-15, sección 6.1, aplica estas dependencias
-actividad por actividad. La identificación definitiva de la ruta crítica requiere recalcular la red
-con la línea base vigente y los recursos efectivamente asignados.
-Tabla 7.2 Dependencias entre paquetes de trabajo. Fuente: elaboración a partir de LafroX (2026d, T-14) y LafroX
-(2026s, T-18) y los capítulos indicados.
+comienzo (FC), salvo las marcadas como comienzo-comienzo (CC), las de tipo «por interfaz»,
+en que el sucesor espera los contratos del predecesor para construir y su entrega para integrar,
+y D-01 «por etapa», que distingue inicio preliminar y cierre sujeto a aprobación formal. Cada
+una indica su fundamento. El Formulario T-15, sección 6.1, aplica estas dependencias actividad
+por actividad. La identificación definitiva de la ruta crítica requiere recalcular la red con la
+línea base vigente y los recursos efectivamente asignados.
+Tabla 7.2 Dependencias entre paquetes de trabajo. Fuente: (Formulario T-14) y (Formulario T-18) y los capítulos
+indicados.
 N.° Predecesor Sucesor Tipo Fundamento
-D-01 1.2.1 Línea base de
-alcance de la Etapa 1
-(H1)
+D-01 1.2.1 Versión prelimi-
+nar del alcance de la
+Etapa 1; aprobación H1
 2.1.1 Arquitectura lógi-
 ca
-FC El diseño parte del alcan-
-ce aprobado
+Por etapa La versión preliminar
+entregada en febrero ha-
+bilita el inicio preliminar
+de 2.1.1 el 1 de marzo;
+la aprobación formal de
+H1 condiciona el cierre
+de la arquitectura. Si el
+acta no llega antes de ese
+cierre, se reprograma el
+trabajo afectado
 D-02 1.2.3 Especificación
 de las interfaces sin
 documentación
@@ -267,6 +298,12 @@ ERP
 FC Interfaces sin documen-
 tación (Caso, sección
 17.5)
+D-03 1.2.2 Reglas de ruteo
+del planificador
+3.4.7 M4 Rutas FC Captura del conocimien-
+to antes de la jubilación
+(Caso, Capítulo 18, resul-
+tado 16)
 continúa en la página siguiente
 LafroX SpA
 Subdocumento 7: Anexos
@@ -279,21 +316,15 @@ Media firma: Alex Aravena
 LafroX SpA Anexos del Subdocumento 7
 Tabla 7.2 — continuación
 N.° Predecesor Sucesor Tipo Fundamento
-D-03 1.2.2 Reglas de ruteo
-del planificador
-3.4.7 M4 Rutas FC Captura del conocimien-
-to antes de la jubilación
-(Caso, cap. 18, resultado
-16)
 D-04 2.4.1 Aprobación de
 arquitectura, seguridad
 y datos (H2)
 3.4 Módulos de la Etapa
 1
-FC No se construye sin di-
-seño aprobado (LafroX,
-2026o, SD6, fase de Ela-
-boración)
+FC No se construye sin
+diseño aprobado (Sub-
+documento 6, fase de
+Elaboración)
 D-05 2.6.2 Prototipos y prue-
 bas de usabilidad
 3.4 Módulos de la Etapa
@@ -301,9 +332,10 @@ bas de usabilidad
 FC Diseño con usuarios
 antes de construir (BA,
 Art. 26°); 2.6.2 cierra
-antes de que empiece 3.4
-(Formulario T-15, Tabla
-6.1)
+antes de que empiece
+3.4 (Formulario T-15,
+sección 6.1, lista de
+paquetes con entregable)
 D-06 2.2.1 Plan de seguridad 3.3.1 Identidad y con-
 trol de acceso
 FC La identidad aplica el
@@ -371,11 +403,12 @@ D-11 6.1.5 Recepción técnica
 de la sala
 6.3.1 y 6.3.2 Racks R01 y
 R02
-FC El acta de la sala habilita
-el montaje; 6.1.5 se firma
-después de 6.1.2 a 6.1.4
-(Formulario T-15, Tabla
-6.1)
+FC El acta de la sala habi-
+lita el montaje; 6.1.5 se
+firma después de 6.1.2
+a 6.1.4 (Formulario T-
+15, sección 6.1, lista de
+paquetes con entregable)
 D-12 6.3.1 a 6.3.3 Racks de
 Talca y gabinete de
 Concepción
@@ -569,15 +602,19 @@ sindicato
 Ola de reparto de 4.2.1 FC Capítulo 3, Anexo 3.I
 D-28 4.2.1 y 7.3.1 Certifica-
 ción de usuarios
-4.2.3 Paso a producción
-de la Etapa 1 (H7); lue-
-go 4.2.2 Estabilización
-(meses 16 a 20)
+Acta de cierre 4.2.1;
+paso a producción E1;
+4.2.2 Estabilización y
+4.2.3 Aceptación H7
 FC Bases Administrativas,
 Art. 17.3 y 90.4. La esta-
-bilización 4.2.2 sigue al
-paso a producción y no
-lo condiciona
+bilización comienza con
+producción, sin esperar
+H7. La aceptación H7 es
+posterior; la revisión del
+cierre es una condición
+separada (T-15, sección
+5.5)
 D-29 1.2.5 y 2.4.2 Línea base
 y diseño de la Etapa 2
 (H8)
@@ -620,10 +657,6 @@ gue sin interrupción
 D-32 3.9.6 (H10), 3.6.5 y 4.1.3 4.3.1 Marcha blanca de
 la Etapa 2 (H11)
 FC Formulario E-25, H11
-D-33 4.3.1, 7.3.2, 7.1.4 y 4.3.4 4.3.3 Aceptación final
-(H12)
-FC Bases Administrativas,
-Art. 17.3 y 37.1
 continúa en la página siguiente
 LafroX SpA
 Subdocumento 7: Anexos
@@ -636,23 +669,74 @@ Media firma: Alex Aravena
 LafroX SpA Anexos del Subdocumento 7
 Tabla 7.2 — continuación
 N.° Predecesor Sucesor Tipo Fundamento
+D-33 4.3.1, 7.3.2, 7.1.4 y 4.3.4 4.3.3 Aceptación final
+(H12)
+FC Bases Administrativas,
+Art. 17.3 y 37.1
 D-34 4.3.3 Aceptación final
 (H12)
-8 Operación y 9.1 Cie-
-rre de la implementa-
-ción
-FC Bases Administrativas,
-Art. 17.2, punto 4
-En el escenario nominal histórico, las dependencias D-29 a D-31c forman la cadena de
-menor holgura de la Etapa 2; D-02, D-04 y D-14 a D-25 forman una cadena cercana en la Etapa
-1. D-07 a D-13 convergen en el H3. D-32 a D-34 enlazan la certificación de la Etapa 2 con su
-marcha blanca, aceptación y operación.
+9.1.2 Cierre formal de
+la implementación
+FC El archivo de todas las
+actas sigue al H12. La
+Operación cubre ambas
+etapas desde su primer
+día en el mes 21, simultá-
+neo al paso a producción
+de la Etapa 2, sin espe-
+rar el acta, y la entrega
+preparatoria 9.1.1 puede
+precederla (BA, art. 17.2,
+punto 4)
+D-35 5.1.4 Compra/homolo-
+gación y 5.3.4 servicios
+activos
+2.4.3 Banco de pruebas FC Cotización local, cer-
+tificado, prototipo y
+servicio móvil/SBD
+disponibles antes del
+banco.
+D-36 2.4.3 Banco de pruebas 2.4.4 Mapeo por carro-
+cería
+FC Puntos críticos, botellas
+y tolerancias antes de
+instalar la versión piloto.
+D-37 2.4.4, 3.4.4, 3.4.5,
+3.8.1/H4, 5.3.4 y cua-
+tro actas 6.5.4
+4.1.4 Piloto de seis
+semanas
+FC M9 integrado, caminos
+activos y cuatro camio-
+nes recibidos antes del
+piloto V18/V20/V21.
+D-38 4.1.4 y las 28 actas de
+6.5.4
+Ola 3 de reparto, 4.2.1 FC Piloto aprobado y kit
+completo en cada ca-
+mión antes de iniciar el
+nuevo reparto.
+En el cálculo del Formulario T-15, sección 5, D-14 a D-23 forman la cadena de la Etapa 1
+hasta el H5: la integración de cobranza tras reparto (D-19), la integración 3.8.1 (D-20) y las
+pruebas de certificación (D-21 a D-23). D-29 y D-30 forman la cadena de la Etapa 2, porque
+los módulos 3.5 se construyen entre el H8 y el H9 sin holgura propia. D-33 es el camino que
+controla el H12, con tres días hábiles de holgura. D-07 a D-13 convergen en el H3, y D-32 a D-34
+enlazan la certificación de la Etapa 2 con su marcha blanca, su aceptación y el cierre.
+LafroX SpA
+Subdocumento 7: Anexos
+Media firma: Alex Aravena
+12
+
+
+---
+
+LafroX SpA Anexos del Subdocumento 7
 7.3 Anexo 7.C — Momento de los resultados de aceptación del caso
-El Caso logística, cap. 18, p. 34, exige indicar en qué momento del cronograma se alcanza
-cada resultado y cómo se mide. La Tabla 7.3 ubica en el cronograma las metas y métodos del
-Capítulo 3, Anexo 3.J.
-Tabla 7.3 Momento de los dieciséis resultados de aceptación. Fuente: elaboración a partir de Distribuidora
-Puelche S.A. (2026c, cap. 18) y LafroX (2026j, Anexo 3.J).
+El Caso logística, Capítulo 18, p. 34, exige indicar en qué momento del cronograma se
+alcanza cada resultado y cómo se mide. La Tabla 7.3 ubica en el cronograma las metas y
+métodos del Capítulo 3, Anexo 3.J.
+Tabla 7.3 Momento de los dieciséis resultados de aceptación. Fuente: (Bases Técnicas del caso, Capítulo 18, pp.
+34–35) y (Subdocumento 3, Anexo 3.J).
 ID Resultado Meta Momento Paquetes
 R18-01 Clientes afectados por
 lote en menos de 2
@@ -670,12 +754,16 @@ Etapa 1; H7
 R18-03 Temperatura continua
 y auditable en cámaras
 y vehículos
-100 % con registro
-continuo
+100 % de cámaras y
+camiones; tres series
+conciliadas
 Marcha blanca de la
 Etapa 1; H7
+2.4.3, 2.4.4,
 3.4.4, 3.4.5,
-6.5.3, 6.5.4
+4.1.4, 5.1.4,
+5.3.4, 6.5.3,
+6.5.4
 R18-04 OTIF medido de una
 sola forma
 90 % en el mes 15; 93 %
@@ -685,18 +773,6 @@ Medición diaria desde
 el mes 13; tramos en
 los meses 15, 19 y 32
 3.4.11
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
-12
-
-
----
-
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.3 — continuación
-ID Resultado Meta Momento Paquetes
 R18-05 Stock y crédito visibles
 al tomar el pedido
 100 % de los pedidos Marcha blanca de la
@@ -723,6 +799,18 @@ mismo día
 100 % Marcha blanca de la
 Etapa 1; H7
 3.4.8
+continúa en la página siguiente
+LafroX SpA
+Subdocumento 7: Anexos
+Media firma: Alex Aravena
+13
+
+
+---
+
+LafroX SpA Anexos del Subdocumento 7
+Tabla 7.3 — continuación
+ID Resultado Meta Momento Paquetes
 R18-09 Cero guías extraviadas
 o ilegibles
 0 % Marcha blanca de la
@@ -771,18 +859,6 @@ ola de reparto en la
 marcha blanca de la
 Etapa 1
 3.4.7
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
-13
-
-
----
-
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.3 — continuación
-ID Resultado Meta Momento Paquetes
 R18-15 Causa de cada faltante
 registrada al producir-
 se
@@ -806,24 +882,6 @@ ellos, R18-06, se prueba además antes del H5, y R18-12 se acepta en esa marcha 
 forma provisional. Por eso la certificación de usuarios y el volumen real de esa marcha blanca
 concentran el riesgo de aceptación del proyecto. Dos resultados se confirman en operación: el
 tramo de OTIF del mes 32 y la pérdida de envases tras 12 meses.
-7.4 Anexo 7.D — Innovaciones en la EDT y en el cronograma
-Cada innovación declara sus paquetes de la EDT y sus meses del cronograma, como exige
-el artículo 29, punto 4, de las Bases Administrativas (p. 19). La Tabla 7.4 los presenta con su
-código de innovación y sus meses.
-Tabla 7.4 Paquetes y meses de las cinco innovaciones. Fuente: elaboración a partir de LafroX (2026d, T-14).
-Innovación Paquete de la
-cartera
-Paquete
-de la EDT
-Meses Hito asociado
-1 · Seguimiento de vencimien-
-to posentrega en el local
-INN-01.P1 3.10.1.1 7 a 9 —
-INN-01.P2 3.10.1.2 9 y 10 H4
-INN-01.P3 3.10.1.3 9 y 10 H4
-INN-01.P4 3.10.1.4 11 a 15 H5 y marcha
-blanca E1
-continúa en la página siguiente
 LafroX SpA
 Subdocumento 7: Anexos
 Media firma: Alex Aravena
@@ -833,12 +891,27 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Anexos del Subdocumento 7
-Tabla 7.4 — continuación
+7.4 Anexo 7.D — Innovaciones en la EDT y en el cronograma
+Cada innovación declara sus paquetes de la EDT y sus meses del cronograma, como exige
+el artículo 29, punto 4, de las Bases Administrativas (p. 19). La Tabla 7.4 los presenta con su
+código de innovación y sus meses.
+Tabla 7.4 Paquetes y meses de las cinco innovaciones. Fuente: (Formulario T-14).
 Innovación Paquete de la
 cartera
 Paquete
 de la EDT
 Meses Hito asociado
+1 · Seguimiento de vencimien-
+to posentrega en el local
+INN-01.P1 3.10.1.1 7 a 9 —
+INN-01.P2 3.10.1.2 9 y 10 Límite con-
+tractual del
+H4
+INN-01.P3 3.10.1.3 9 y 10 Límite con-
+tractual del
+H4
+INN-01.P4 3.10.1.4 11 a 15 H5 y marcha
+blanca E1
 2 · Reproducción de incidentes
 de terreno
 INN-02.P1 3.10.2.1 2 y 3 —
@@ -855,9 +928,27 @@ E1
 historia térmica del lote
 INN-03.P1 3.10.3.1 3 a 5 —
 INN-03.P2 3.10.3.2 5 a 9 —
-INN-03.P3 3.10.3.3 9 y 10 H4
+INN-03.P3 3.10.3.3 9 y 10 Límite con-
+tractual del
+H4
 INN-03.P4 3.10.3.4 11 a 15 H5 y marcha
 blanca E1
+continúa en la página siguiente
+LafroX SpA
+Subdocumento 7: Anexos
+Media firma: Alex Aravena
+15
+
+
+---
+
+LafroX SpA Anexos del Subdocumento 7
+Tabla 7.4 — continuación
+Innovación Paquete de la
+cartera
+Paquete
+de la EDT
+Meses Hito asociado
 INN-03.P5 8.3.2 Cada seis meses,
 21 a 56
 Operación
@@ -878,43 +969,12 @@ INN-05.P5 8.3.6 24 a 27 —
 Las innovaciones 1 a 3 concentran su construcción entre los meses 2 y 10 y se validan en la
 marcha blanca de la Etapa 1, por lo que su riesgo queda acotado antes del H7. La innovación
 5 sigue el calendario de la Etapa 2 y se extiende a las rutas durante los primeros meses de
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
-15
-
-
----
-
-LafroX SpA Anexos del Subdocumento 7
 operación, y la innovación 4 liquida desde el mes 24, después de su línea base y de tres
 liquidaciones en sombra.
 7.5 Anexo 7.E — Trazabilidad de módulos e interfaces a la EDT
-La EDT contiene la arquitectura cuando cada módulo y cada interfaz del Capítulo 4 (LafroX,
-2026m) tienen al menos un paquete que los construye y prueba. La Tabla 7.5 presenta esa
+La EDT contiene la arquitectura cuando cada módulo y cada interfaz del Capítulo 4 (Subdo-
+cumento 4) tienen al menos un paquete que los construye y prueba. La Tabla 7.5 presenta esa
 correspondencia para los doce módulos, y la Tabla 7.6, para las quince interfaces.
-Tabla 7.5 Módulos de la solución y paquetes de la EDT. Fuente: elaboración a partir de LafroX (2026k, SD3, Tabla
-3.4), y LafroX (2026d, T-14).
-Módulo Construcción Pruebas Etapa
-M1 Recepción 3.4.1 3.8.1 a 3.8.6 1
-M2 Inventario 3.4.2 3.8.1 a 3.8.6 1
-M3 Preventa 3.4.6 3.8.1 a 3.8.6 1
-M4 Rutas 3.4.7 3.8.1 a 3.8.6 1
-M5 Preparación 3.4.3 3.8.1 a 3.8.6 1
-M6 Reparto 3.4.8 3.8.1 a 3.8.6 1
-M7 Cobranza y rendición 3.4.10 3.8.1 a 3.8.6 1
-M8 Devoluciones y envases 3.4.9 3.8.1 a 3.8.6 1
-M9 Calidad y trazabilidad 3.4.4 3.8.1 a 3.8.6 1
-M10 Analítica 3.4.11 (indica-
-dores y OTIF)
-y 3.5.4 (costo
-de servir)
-3.8 y 3.9 1 y 2
-M11 Canal moderno 3.5.1 3.9.1 a 3.9.5 2
-M12 Telemetría 3.4.5 3.8.1 a 3.8.6 1
-Once de los doce módulos se construyen en la cuenta 3.4 y se prueban en la 3.8; M10 Analítica
-es el único módulo con trabajo en ambas etapas, porque sus indicadores operacionales entran
-en la Etapa 1 y el costo de servir en la Etapa 2.
 LafroX SpA
 Subdocumento 7: Anexos
 Media firma: Alex Aravena
@@ -924,14 +984,59 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Anexos del Subdocumento 7
-Tabla 7.6 Interfaces de la arquitectura y paquetes de la EDT. Fuente: elaboración a partir de LafroX (2026l,
-Anexos 4-G y 4-H), y LafroX (2026d, T-14).
+Tabla 7.5 Módulos de la solución y paquetes de la EDT. Fuente: (Subdocumento 3, Tabla 3.4), y (Formulario T-14).
+Módulo Construcción Pruebas Etapa
+M1 Recepción 3.4.1 3.8.1 a 3.8.6 1
+M2 Inventario 3.4.2 3.8.1 a 3.8.6 1
+M3 Preventa 3.4.6 3.8.1 a 3.8.6 1
+M4 Rutas 3.4.7 3.8.1 a 3.8.6 1
+M5 Preparación 3.4.3 3.8.1 a 3.8.6 1
+M6 Reparto 3.4.8 3.8.1 a 3.8.6 1
+M7 Cobranza y rendición 3.4.10 3.8.1 a 3.8.6 1
+M8 Devoluciones y envases 3.4.9 3.8.1 a 3.8.6 1
+M9 Calidad y trazabilidad 3.4.4 y
+temperatura
+de 3.4.5
+2.4.3, 2.4.4, 4.1.4
+y 3.8.1 a 3.8.6
+1
+M10 Analítica 3.4.11 (indica-
+dores y OTIF)
+y 3.5.4 (costo
+de servir)
+3.8 y 3.9 1 y 2
+M11 Canal moderno 3.5.1 3.9.1 a 3.9.5 2
+M12 Telemetría 3.4.5, solo
+posición
+3.8.1 a 3.8.6 1
+Once de los doce módulos se construyen en la cuenta 3.4 y se prueban en la 3.8; M10 Analítica
+es el único módulo con trabajo en ambas etapas, porque sus indicadores operacionales entran
+en la Etapa 1 y el costo de servir en la Etapa 2.
+La Tabla 7.6 presenta interfaces de la arquitectura y paquetes de la EDT.
+Tabla 7.6 Interfaces de la arquitectura y paquetes de la EDT. Fuente: (Subdocumento 4, Anexos 4-G y 4-H), y
+(Formulario T-14).
 Interfaz Propósito Paquetes
 INT-01 Pedido preventa y consulta 3.4.6, 3.3.6
+continúa en la página siguiente
+LafroX SpA
+Subdocumento 7: Anexos
+Media firma: Alex Aravena
+17
+
+
+---
+
+LafroX SpA Anexos del Subdocumento 7
+Tabla 7.6 — continuación
+Interfaz Propósito Paquetes
 INT-02 Entrega, POD y cobro 3.4.8, 3.4.9, 3.4.10, 3.3.6
 INT-03 Eventos bodega a nube 3.4.2, 3.4.3, 3.3.6
 INT-04 Detalle de cross-docking a la nube 3.4.2, 6.3.4
-INT-05 Eventos de temperatura 3.4.4, 3.4.5, 6.5.3
+INT-05 Temperatura M9: 30.548 mensajes/día, móvil 1 min y satélite
+3 min; 127.848 lecturas/día
+2.4.3, 2.4.4, 3.4.4, 3.4.5,
+4.1.4, 5.1.4, 5.3.4, 6.5.3,
+6.5.4
 INT-06 ERP 2017 3.3.2
 INT-07 Emisor DTE del ERP y SII 3.3.2
 INT-08 Cadenas modernas 3.6.5, 3.6.6
@@ -948,22 +1053,32 @@ Además de estas interfaces, el paquete 3.6.1 construye el intercambio de lote y
 con los proveedores.
 7.6 Anexo 7.F — Supuestos de planificación y dependencias para la
 gestión de riesgos
-Esta matriz traslada al Capítulo 8 los supuestos de la planificación que condicionan el
-cronograma, con su responsable y el control que los vigila. El Capítulo 8 los evalúa con su
-escala y los registra en el Formulario T-16. Los códigos P7 son identificadores de esta matriz y
-no renumeran el Formulario T-12.
+El sistema de cadena de frío requiere cotizaciones escritas de proveedores con domicilio
+en Chile y certificación Subtel aplicable. La homologación de equipos de red móvil reserva
+unas ocho semanas antes del banco de pruebas; los equipos Bluetooth/Wi-Fi requieren su
+certificación de alcance reducido. El paquete 5.1.4 inicia en el mes 1, 2.4.3 valida el banco
+en el mes 3 y 2.4.4 realiza el mapeo por carrocería en el mes 4. El servicio de los contratos
+5.3.4 está disponible en el mes 2, antes del banco. Cuatro actas parciales 6.5.4 y el cierre de
 LafroX SpA
 Subdocumento 7: Anexos
 Media firma: Alex Aravena
-17
+18
 
 
 ---
 
 LafroX SpA Anexos del Subdocumento 7
-Tabla 7.7 Anexo 7.F — Supuestos de planificación y dependencias para la gestión de riesgos. Fuente: elaboración
-a partir de LafroX (2026e, T-15, secs. 4.3, 5 y 6); LafroX (2026r, SD8, anexos 8.C–8.D, pp. 14, 16); Distribuidora
-Puelche S.A. (2026a, art. 17, pp. 12–13).
+integración 3.8.1/H4 preceden al piloto 4.1.4 de seis semanas (meses 10–11); el resto de las
+actas debe estar cerrado antes de la ola 3. La ausencia de certificado, de ensayo aprobado o de
+cotización impide aceptar el equipo y se escala por gobierno de proyecto.
+Esta matriz traslada al Capítulo 8 los supuestos de la planificación que condicionan el
+cronograma, con su responsable y el control que los vigila. El Capítulo 8 los evalúa con su
+escala y los registra en el Formulario T-16. Los códigos P7 son identificadores de esta matriz y
+no renumeran el Formulario T-12.
+La Tabla 7.7 presenta anexo 7.F; Supuestos de planificación y dependencias para la gestión
+de riesgos.
+Tabla 7.7 Anexo 7.F — Supuestos de planificación y dependencias para la gestión de riesgos. Fuente: (Formulario
+T-15, secciones 4.3, 5 y 6); (Subdocumento 8, anexos 8.A y 8.B); (Bases Administrativas, art. 17, pp. 12–13).
 ID Riesgo / supuesto EDT / hitos Responsable de
 tratamiento
 Disparador o con-
@@ -972,7 +1087,7 @@ P7-01 Validación de
 productividad y
 tamaños HH por
 clase
-Los 222 paquetes;
+Los 227 paquetes;
 T-15, sección 4
 JP y líderes de
 frente
@@ -985,39 +1100,11 @@ y ensayos. Se
 recalcula si la
 demanda supera
 la capacidad
-P7-02 Programación por
-paquete depende
-de tamaños y
-equipos supuestos
-D-01–D-34; H2/H3/
-H4/H5/H9/H10
-JP/ARQ T-15, secciones 5
-y 6, programa los
-163 paquetes con
-entregable, con ac-
-tividades hasta el
-H2 y planificación
-gradual después,
-con dependen-
-cias, revisión Art.
-18.3 y nivelación;
-reservas de 4 a
-35 días hábiles
-por hito. Se vali-
-da con el equipo
-en la línea base
-(H1) y se repite
-el cálculo. Se es-
-cala y replanifica
-cuando la desvia-
-ción proyectada
-supera la mitad de
-la reserva
 continúa en la página siguiente
 LafroX SpA
 Subdocumento 7: Anexos
 Media firma: Alex Aravena
-18
+19
 
 
 ---
@@ -1028,6 +1115,34 @@ ID Riesgo / supuesto EDT / hitos Responsable de
 tratamiento
 Disparador o con-
 trol
+P7-02 Programación por
+paquete depende
+de tamaños y
+equipos supuestos
+D-01–D-34; H2/H3/
+H4/H5/H9/H10
+JP/ARQ T-15, secciones 5
+y 6, programa los
+168 paquetes con
+entregable, con ac-
+tividades hasta el
+H2 y planificación
+gradual después,
+con dependen-
+cias, revisión Art.
+18.3 y nivelación;
+holguras de 2 a
+20 días hábiles
+por hito. Se vali-
+da con el equipo
+en la línea base
+(H1) y se repite
+el cálculo. Se es-
+cala y replanifica
+cuando la desvia-
+ción proyectada
+supera la mitad de
+la holgura
 P7-03 Solapamientos
 compiten por
 especialistas
@@ -1052,6 +1167,21 @@ meses relativos
 en calendario; no
 iniciar corte en
 fechas prohibidas
+continúa en la página siguiente
+LafroX SpA
+Subdocumento 7: Anexos
+Media firma: Alex Aravena
+20
+
+
+---
+
+LafroX SpA Anexos del Subdocumento 7
+Tabla 7.7 — continuación
+ID Riesgo / supuesto EDT / hitos Responsable de
+tratamiento
+Disparador o con-
+trol
 P7-05 Ola/cadena no
 lista antes de
 cuatro semanas de
@@ -1082,21 +1212,6 @@ total 40 minutos,
 final antes de
 05:30; contingen-
 cia ERP aprobada
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
-19
-
-
----
-
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.7 — continuación
-ID Riesgo / supuesto EDT / hitos Responsable de
-tratamiento
-Disparador o con-
-trol
 P7-07 Retiro temprano
 de acompaña-
 miento o capa-
@@ -1115,6 +1230,21 @@ y resolución al
 primer contacto y
 calibrar Erlang A
 (T-15, sección 5.6)
+continúa en la página siguiente
+LafroX SpA
+Subdocumento 7: Anexos
+Media firma: Alex Aravena
+21
+
+
+---
+
+LafroX SpA Anexos del Subdocumento 7
+Tabla 7.7 — continuación
+ID Riesgo / supuesto EDT / hitos Responsable de
+tratamiento
+Disparador o con-
+trol
 P7-08 Compra/sala/bor-
 de incumple H3
 5.1.2/6.1/6.3/6.6.3 SRE LafroX emite la
@@ -1150,7 +1280,7 @@ continúa en la página siguiente
 LafroX SpA
 Subdocumento 7: Anexos
 Media firma: Alex Aravena
-20
+22
 
 
 ---
@@ -1173,24 +1303,22 @@ de una retención
 y 3.8.4/3.9.3 ve-
 rifican carga y
 drenaje conforme
-al Anexo 4-I, Ta-
-bla A.10, y Anexo
-4-W, Tablas A.32
-y A.33, sin sumar
-la coordinación al
-drenaje. El riesgo
-residual de falla
-de los tres cami-
-nos seguida de
-destrucción del
-sitio (SD4 4.3.2.4;
-R-015) se verifica
-con AL-DR-01 y
-sus alarmas de 5 y
-15 min, reposición
-del enlace, pre-
-emisión de guías y
-NAS WORM
+al Anexo 4-I y a
+la sección 4-W.5
+del Anexo 4-W, sin
+sumar la coordi-
+nación al drenaje.
+El RTO de 4 h y
+el RPO de 15 min
+se verifican con
+AL-DR-01 (SD4
+4.3.2.4): alarmas
+de retraso de re-
+plicación a 5 y
+15 min, reposi-
+ción del enlace
+y medición en
+conmutación real
 P7-11 Control de conser-
 vación del precio
 pactado
@@ -1209,7 +1337,7 @@ Proyecto, y el Capítulo 8 asigna a los de mayor exposición una reserva de cont
 LafroX SpA
 Subdocumento 7: Anexos
 Media firma: Alex Aravena
-21
+23
 
 
 ---
@@ -1217,14 +1345,17 @@ Media firma: Alex Aravena
 LafroX SpA Anexos del Subdocumento 7
 7.6.1 Política de reservas que recibe el Capítulo 8
 El modelo protege 3.072 HH para correcciones de la Etapa 1 en los meses 13 a 20, además
-del trabajo base y de la cobertura de servicio. El Formulario T-15, Tabla 5.2, fija reservas en días
-hábiles: H1 6, H2 12, H3 19, H4 19, H5 35, H8 4, H9 21 y H10 25. La subsanación de observaciones
-del CLIENTE consume la reserva del hito (T-15, sección 5.5); en el H1 y el H8, cuya reserva es
-menor que el plazo de subsanación, el borrador se revisa con la Contraparte Técnica antes de
-la entrega formal. Toda amenaza se escala cuando la desviación proyectada supera la mitad
-de su reserva, sin esperar a consumirla. La holgura local de convergencia no se suma como
-reserva adicional. Las últimas cuatro semanas de marcha blanca no son reserva. La reserva de
-gestión se define en la Oferta Económica, porque la Oferta Técnica no contiene precios.
+del trabajo base y de la cobertura de servicio. El cálculo vigente del Formulario T-15, sección
+5, da estas holguras contractuales en días hábiles: H1 5, H2 11, H3 17, H4 16, H5 20, H7 2,
+H8 14, H9 19, H10 13 y H12 3. Son márgenes de programación, no capacidad movilizable.
+La subsanación de observaciones del CLIENTE consume la holgura del hito (T-15, sección
+5.5); en H1, H7 y H12, la preparación preliminar del expediente no garantiza que quepan la
+subsanación y una segunda revisión. El plazo aplicable al cierre de marcha blanca tampoco se
+presume absorbido por H7/H12; la secuencia y su incompatibilidad con producción objetivo
+están en T-15, sección 5.5. Toda amenaza a una fecha contractual o a la revisión del CLIENTE
+se escala con su impacto. La holgura local de convergencia no se suma como reserva adicional.
+Las últimas cuatro semanas de marcha blanca no son reserva. La reserva de gestión se define
+en la Oferta Económica, porque la Oferta Técnica no contiene precios.
 7.6.2 Condiciones para aprobar la línea base
 Antes de aprobar la línea base del cronograma en el H1, el Jefe de Proyecto presenta
 al Comité de Proyecto la estimación validada por los líderes de frente, la red detallada, las
@@ -1234,7 +1365,7 @@ cada hito la produce.
 LafroX SpA
 Subdocumento 7: Anexos
 Media firma: Alex Aravena
-22
+24
 
 
 ---
@@ -1246,27 +1377,10 @@ en el texto con su documento y el artículo, capítulo, sección o código del r
 • Distribuidora Puelche S.A. (2026a). Bases Administrativas, Licitación TFEP-01/2026.
 • Distribuidora Puelche S.A. (2026b). Bases Técnicas Transversales, Licitación TFEP-01/2026.
 • Distribuidora Puelche S.A. (2026c). Bases Técnicas del Caso Logística.
-• Distribuidora Puelche S.A. (2026d). Aclaraciones de la Licitación TFEP-01/2026.
-• LafroX. (2026d). Formulario T-14: Estructura de desglose del trabajo. Propuesta técnica, Licita-
-ción TFEP-01/2026.
-• LafroX. (2026e). Formulario T-15: Cronograma y asignación de recursos. Propuesta técnica,
-Licitación TFEP-01/2026.
-• LafroX. (2026j). Subdocumento 3: Anexos. Propuesta técnica, Licitación TFEP-01/2026.
-• LafroX. (2026k). Subdocumento 3: Especificación de requerimientos. Propuesta técnica, Licita-
-ción TFEP-01/2026.
-• LafroX. (2026l). Subdocumento 4: Anexos. Propuesta técnica, Licitación TFEP-01/2026.
-• LafroX. (2026m). Subdocumento 4: Arquitectura de la solución. Propuesta técnica, Licitación
-TFEP-01/2026.
-• LafroX. (2026o). Subdocumento 6: Metodología de desarrollo. Propuesta técnica, Licitación
-TFEP-01/2026.
-• LafroX. (2026p). Subdocumento 7: Plan de trabajo. Propuesta técnica, Licitación TFEP-01/2026.
-• LafroX. (2026r). Subdocumento 8: Plan de riesgos. Propuesta técnica, Licitación TFEP-01/2026.
-• LafroX. (2026s). Formulario T-18: Implantación de la solución. Propuesta técnica, Licitación
-TFEP-01/2026.
 LafroX SpA
 Subdocumento 7: Anexos
 Media firma: Alex Aravena
-23
+25
 
 
 ---

@@ -80,7 +80,7 @@ Las otras cinco fases agrupan el trabajo que no es desarrollo de software, pero 
 
 La descomposición sigue la regla del 100 \%: la suma del trabajo de los niveles inferiores reproduce el trabajo del nivel superior, sin omitir ni agregar alcance (Project Management Institute [PMI], 2017, p. 161). El segundo nivel son 49 cuentas de control, puntos de gestión donde se integran el alcance, el cronograma y el esfuerzo para medir el desempeño. El nivel inferior son 227 paquetes de trabajo, cada uno con un entregable verificable, un criterio de aceptación y un único responsable (PMI, 2017, pp. 161–162). En la cuenta de las innovaciones, cada innovación agrupa sus paquetes en un cuarto nivel.
 
-El último nivel de la EDT es el paquete de trabajo, con su entregable, su responsable y su criterio de aceptación. Fuera de la EDT, cada paquete se descompone en actividades que cumplen la regla del 8/\allowbreak{}80, entre 8 y 80 horas hombre de esfuerzo, y la regla del período de reporte: ninguna actividad dura más de una quincena, el período con que informa el Comité de Proyecto (PMI, 2017, pp. 183–185). Los paquetes de producto se dividen con una plantilla por clase; por ejemplo, un módulo de 960 HH se divide en 12 actividades de 80 HH, desde el análisis de sus requerimientos hasta su entrega en QA. Los 168 paquetes con entregable se programan con fecha, personas y predecesoras; sus actividades se detallan hasta el H2 y, después, por planificación gradual antes de cada fase, cuando el equipo conoce el trabajo (PMI, 2017, p. 185). Así el cronograma no fija hoy el día de una actividad que ocurrirá en 2028, y cada fase se planifica como las iteraciones del proceso RUP del Capítulo 6. El Formulario T-15, Figura 3, muestra los puntos de replanificación (antes del H2, el H4, el H8 y el H9). Los 59 paquetes de esfuerzo continuo, como la cobertura del NOC, las reuniones periódicas o la mentoría posterior al H12, no se descomponen en actividades distintas: se programan por quincena u ocurrencia, en relevos de hasta 64 HH cada uno. La lista de actividades y las reglas de programación están en el Formulario T-15, sección 6.
+El último nivel de la EDT es el paquete de trabajo, con su entregable, su responsable y su criterio de aceptación. Fuera de la EDT, cada paquete se descompone en actividades que cumplen la regla del 8/\allowbreak{}80, entre 8 y 80 horas hombre de esfuerzo, y la regla del período de reporte: ninguna actividad dura más de una quincena, el período con que informa el Comité de Proyecto (PMI, 2017, pp. 183–185). Los paquetes de producto se dividen con una plantilla por clase; por ejemplo, un módulo de 960 HH se divide en 12 actividades de 80 HH, desde el análisis de sus requerimientos hasta su entrega en QA. Los 168 paquetes con entregable se programan con fecha, personas y predecesoras; sus actividades se detallan hasta el H2 y, después, por planificación gradual antes de cada fase, cuando el equipo conoce el trabajo (PMI, 2017, p. 185). Así el cronograma no fija hoy el día de una actividad que ocurrirá en 2028, y cada fase se planifica como las iteraciones del proceso RUP del Capítulo 6. El Formulario T-15, figura de planificación gradual de la sección 6, muestra los puntos de replanificación (antes del H2, el H4, el H8 y el H9). Los 59 paquetes de esfuerzo continuo, como la cobertura del NOC, las reuniones periódicas o la mentoría posterior al H12, no se descomponen en actividades distintas: se programan por quincena u ocurrencia, en relevos de hasta 64 HH cada uno. La lista de actividades y las reglas de programación están en el Formulario T-15, sección 6.
 
 Los paquetes de la fase de Operación son paquetes de esfuerzo continuo. Cada uno cubre un servicio durante los 36 meses y se controla con entregables periódicos, como los informes mensuales de servicio, los informes de pruebas y las actualizaciones anuales, que funcionan como sus puntos de verificación.
 
@@ -106,11 +106,15 @@ Las láminas siguientes desglosan las cuentas de control y los paquetes por fase
 
 La fase de Inicio define el proyecto, fija su alcance y planificación y establece cómo se gobierna y controla. Sus cuentas 1.1 a 1.5 abarcan el acta, la línea base, la planificación, los interesados y la calidad.
 
+La Figura \ref{fig:7-edt-fase-1a} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
+
 \figuraEDTAmpliada[0pt]{imagenes/Imagenes de la edt/EDT-Fase 1 (1 de 2).drawio.pdf}
   {Fase 1 — Inicio, primera parte: cuentas 1.1 a 1.5. Fuente: (Formulario T-14).}
   {fig:7-edt-fase-1a}
 
 La primera lámina contiene los paquetes 1.2.2 y 1.2.3, que documentan las reglas de ruteo capturadas al planificador y las interfaces sin documentación del sistema de gestión. La segunda lámina completa Inicio con las cuentas 1.6 a 1.9: gestión de riesgos, reversibilidad, gobierno y control, y cumplimiento normativo y contractual. Incluye los comités del artículo 71 de las Bases Administrativas (p. 37), el informe de valor ganado y el tablero (RT-19.06 a RT-19.09).
+
+La Figura \ref{fig:7-edt-fase-1b} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
 \figuraEDT[0pt]{imagenes/Imagenes de la edt/EDT-Fase 1 (2 de 2).drawio.pdf}
   {Fase 1 — Inicio, segunda parte: cuentas 1.6 a 1.9, desde riesgos hasta cumplimiento contractual. Fuente: Elaboración a partir de (Formulario T-14).}
@@ -122,11 +126,15 @@ Estas cuentas completan Inicio: identifican los riesgos y la reversibilidad, est
 
 Elaboración diseña la solución antes de programar: arquitectura lógica y física, datos trazables por lote, seguridad, sala técnica de Talca, continuidad y experiencia de usuario. La aprobación de arquitectura, seguridad y modelo de datos corresponde al H2 del mes 4. La primera lámina muestra las cuentas 2.1 a 2.3.
 
+La Figura \ref{fig:7-edt-fase-2a} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
+
 \figuraEDTReducida[260pt]{imagenes/Imagenes de la edt/EDT-Fase 2 (1 de 2).drawio.pdf}
   {Fase 2 — Elaboración, primera parte: arquitectura, seguridad y sala técnica, cuentas 2.1 a 2.3. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-2a}
 
 La continuación cubre la validación de diseños, continuidad del negocio y experiencia de usuario (cuentas 2.4 a 2.6), incluidos los procedimientos manuales y la recuperación ante desastres.
+
+La Figura \ref{fig:7-edt-fase-2b} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
 \figuraEDTReducida[0pt]{imagenes/Imagenes de la edt/EDT-Fase 2 (2 de 2).drawio.pdf}
   {Fase 2 — Elaboración, segunda parte: validación, continuidad y experiencia de usuario, cuentas 2.4 a 2.6. Fuente: Elaboración a partir de (Formulario T-14).}
@@ -138,11 +146,15 @@ Con estas cuentas, los diseños quedan sometidos a validación y se completan lo
 
 Construcción produce los ambientes y servicios de nube, la base compartida, los módulos de ambas etapas, las integraciones, la migración, las pruebas, las innovaciones y la documentación. La primera lámina reúne los ambientes de desarrollo, los servicios de nube y la base compartida (cuentas 3.1 a 3.3).
 
+La Figura \ref{fig:7-edt-fase-3a} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
+
 \figuraEDTEscalada[175pt]{0.931}{0.741}{imagenes/Imagenes de la edt/EDT-Fase 3 (1 de 5).drawio.pdf}
   {Fase 3 — Construcción, primera parte: ambientes, servicios de nube y base compartida, cuentas 3.1 a 3.3. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-3a}
 
 La segunda lámina desglosa los módulos de la Etapa 1 (cuenta 3.4), con los componentes de recepción, inventario, preparación de pedidos, cadena de frío, aplicaciones y operación de tiendas.
+
+La Figura \ref{fig:7-edt-fase-3b} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
 \figuraEDTEscalada[0pt]{0.931}{0.741}{imagenes/Imagenes de la edt/EDT-Fase 3 (2 de 5).drawio.pdf}
   {Fase 3 — Construcción, segunda parte: módulos de la Etapa 1, cuenta 3.4. Fuente: Elaboración a partir de (Formulario T-14).}
@@ -150,17 +162,23 @@ La segunda lámina desglosa los módulos de la Etapa 1 (cuenta 3.4), con los com
 
 La tercera lámina presenta los módulos de la Etapa 2, las integraciones externas, la migración y las pruebas de la Etapa 1 (cuentas 3.5 a 3.8). La integración con el ERP conserva su función de emisor único de la guía de despacho.
 
+La Figura \ref{fig:7-edt-fase-3c} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
+
 \figuraEDT[0pt]{imagenes/Imagenes de la edt/EDT-Fase 3 (3 de 5).drawio.pdf}
   {Fase 3 — Construcción, tercera parte: módulos de la Etapa 2, integraciones, migración y pruebas de la Etapa 1, cuentas 3.5 a 3.8. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-3c}
 
 La cuarta lámina reúne las pruebas de la Etapa 2, las innovaciones y la documentación técnica (cuentas 3.9 a 3.11).
 
+La Figura \ref{fig:7-edt-fase-3d} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
+
 \figuraEDT[345pt]{imagenes/Imagenes de la edt/EDT-Fase 3 (4 de 5).drawio.pdf}
   {Fase 3 — Construcción, cuarta parte: pruebas de la Etapa 2, innovaciones y documentación técnica, cuentas 3.9 a 3.11. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-3d}
 
 La quinta lámina amplía la cuenta 3.10 para que se lean sus paquetes de innovación: seguimiento de vencimientos, reproducción de incidentes, vida útil remanente y hoja de negocio del almacenero.
+
+La Figura \ref{fig:7-edt-fase-3e} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
 \figuraEDT[0pt]{imagenes/Imagenes de la edt/EDT-Fase 3 (5 de 5).drawio.pdf}
   {Fase 3 — Construcción, quinta parte: detalle de los paquetes de las innovaciones agrupadas en la cuenta 3.10. Fuente: Elaboración a partir de (Formulario T-14).}
@@ -172,6 +190,8 @@ El detalle identifica los paquetes de INN-01, INN-02, INN-03 e INN-05 dentro de 
 
 Transición convierte la solución probada en el registro oficial. Su plan contempla las olas y la reversión; luego coordina las marchas blancas, la estabilización y las actas de aceptación de ambas etapas (H7 y H12).
 
+La Figura \ref{fig:7-edt-fase-4} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
+
 \figuraEDTEscalada[0pt]{0.882}{0.702}{imagenes/Imagenes de la edt/EDT-Fase 4.drawio.pdf}
   {Fase 4 — Transición: plan de implantación y marchas blancas de las etapas 1 y 2, cuentas 4.1 a 4.3. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-4}
@@ -181,6 +201,8 @@ La cuenta 4.1 prepara las olas y la reversión; las cuentas 4.2 y 4.3 separan la
 \subsubsection{Fase 5. Adquisiciones y contrataciones}
 
 Esta fase distingue el equipamiento de terreno, que el CLIENTE compra según la especificación de LafroX, de la infraestructura de la sala técnica, los racks, los servidores y los gabinetes de borde, que LafroX especifica, compra y provee. LafroX incorpora el costo de esta infraestructura en su Oferta Económica; el CLIENTE no la adquiere mediante una compra separada. LafroX también contrata nube, enlaces y licencias. La fase formaliza, además, los acuerdos con transportistas y sindicato y la fórmula contractual de la innovación 4.
+
+La Figura \ref{fig:7-edt-fase-5} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
 \figuraEDT[0pt]{imagenes/Imagenes de la edt/EDT-Fase 5.drawio.pdf}
   {Fase 5 — Adquisiciones y contrataciones: hardware, servicios, enlaces y acuerdos con terceros, cuentas 5.1 a 5.4. Fuente: Elaboración a partir de (Formulario T-14).}
@@ -192,11 +214,15 @@ La cuenta 5.1 reúne las adquisiciones de hardware, manteniendo la distinción a
 
 La fase instala la sala técnica de Talca, con energía, climatización y extinción; el cableado, los racks y gabinetes de borde; y la infraestructura de los sitios. La primera lámina cubre la sala, el cableado y el montaje de racks (cuentas 6.1 a 6.3).
 
+La Figura \ref{fig:7-edt-fase-6a} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
+
 \figuraEDTEscalada[0pt]{0.882}{0.702}{imagenes/Imagenes de la edt/EDT-Fase 6 (1 de 2).drawio.pdf}
   {Fase 6 — Infraestructura física y sitios, primera parte: sala técnica, cableado y racks, cuentas 6.1 a 6.3. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-6a}
 
 La segunda lámina incluye seguridad física, equipamiento de campo y configuración de la infraestructura distribuida en los sitios (cuentas 6.4 a 6.6), incluidos los termógrafos de los camiones con frío y la prueba de autonomía de 24 horas.
+
+La Figura \ref{fig:7-edt-fase-6b} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
 \figuraEDTEscalada[0pt]{0.882}{0.702}{imagenes/Imagenes de la edt/EDT-Fase 6 (2 de 2).drawio.pdf}
   {Fase 6 — Infraestructura física y sitios, segunda parte: seguridad física, equipamiento de campo y configuración, cuentas 6.4 a 6.6. Fuente: Elaboración a partir de (Formulario T-14).}
@@ -208,6 +234,8 @@ Con seguridad física, equipamiento de campo y configuración de los sitios, est
 
 La fase atiende la rotación del 38 \% en preparación con capacitación continua del turno de noche; acompaña individualmente al personal con veinte o treinta años en la compañía; incorpora a los conductores externos en el andén; y transfiere conocimiento al equipo de TI del CLIENTE. La certificación de usuarios (cuenta 7.3) es una de las condiciones de cierre de cada marcha blanca.
 
+La Figura \ref{fig:7-edt-fase-7} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
+
 \figuraEDT[0pt]{imagenes/Imagenes de la edt/EDT-Fase 7.drawio.pdf}
   {Fase 7 — Capacitación y gestión del cambio: capacitación por roles, acompañamiento y certificaciones, cuentas 7.1 a 7.3. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-7}
@@ -218,6 +246,8 @@ La lámina muestra que la adopción combina formación por perfil, acompañamien
 
 La fase presta servicios durante los meses 21 a 56: centro de operaciones, gestión de incidentes, continuidad, mantenimiento, innovaciones, informes y transferencia al equipo del CLIENTE. La primera lámina presenta las cuentas 8.1 y 8.2, que reúnen los servicios de operación y el mantenimiento de la solución.
 
+La Figura \ref{fig:7-edt-fase-8a} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
+
 \figuraEDT[0pt]{imagenes/Imagenes de la edt/EDT-Fase 8 (1 de 2).drawio.pdf}
   {Fase 8 — Operación y soporte, primera parte: servicios de operación y mantenimiento, cuentas 8.1 y 8.2. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-8a}
@@ -225,6 +255,8 @@ La fase presta servicios durante los meses 21 a 56: centro de operaciones, gesti
 La primera parte concentra la continuidad del servicio y el mantenimiento del software, la infraestructura y la ciberseguridad. Sus paquetes conservan las frecuencias, horarios y ventanas que condicionan la operación durante los 36 meses.
 
 La segunda lámina completa la fase con las cuentas 8.3 a 8.5: innovaciones en operación, informes y obligaciones periódicas, y capacitación y transferencia. También distingue los períodos particulares de las innovaciones y la mentoría al equipo del CLIENTE.
+
+La Figura \ref{fig:7-edt-fase-8b} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
 \figuraEDT[295pt]{imagenes/Imagenes de la edt/EDT-Fase 8 (2 de 2).drawio.pdf}
   {Fase 8 — Operación y soporte, segunda parte: innovaciones, obligaciones periódicas, capacitación y transferencia, cuentas 8.3 a 8.5. Fuente: Elaboración a partir de (Formulario T-14).}
@@ -236,6 +268,8 @@ Estas cuentas completan la operación con la continuidad de las innovaciones, lo
 
 Cierre comprende dos momentos. El primero corresponde al cierre de la implementación: la entrega del código fuente, la infraestructura como código y los procedimientos de despliegue del paquete 9.1.1 se vincula al H12 del mes 21; el informe de lecciones aprendidas y archivo de la implementación, paquete 9.1.2, se completa después del acta H12. Según la programación vigente del Formulario T-15, este último paquete se ejecuta del 26 de octubre al 7 de noviembre de 2028, entre los meses 21 y 22, bajo el supuesto de inicio en febrero de 2027. El segundo momento corresponde a la salida al término del contrato, con el Plan de Reversibilidad y el tratamiento final de los datos.
 
+La Figura \ref{fig:7-edt-fase-9} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
+
 \figuraEDTEscalada[210pt]{0.6272}{0.4992}{imagenes/Imagenes de la edt/EDT-Fase 9.drawio.pdf}
   {Fase 9 — Cierre: cierre de implementación y salida al término del contrato, cuentas 9.1 y 9.2. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-9}
@@ -244,7 +278,7 @@ La EDT distingue así el cierre de implementación de la salida al término del 
 
 \subsection{Cobertura del alcance}
 
-Las Aclaraciones de la licitación exigen que la EDT contenga explícitamente las innovaciones y las actividades de seguridad, calidad, migración e implantación (sección 11, Capítulo 7), y el Caso logística exige que contenga la arquitectura (Caso, cap. 19, p. 35). La Tabla \ref{tab:7-cobertura} comprueba que cada uno de esos componentes tiene paquetes propios.
+La EDT contiene explícitamente las innovaciones y las actividades de seguridad, calidad, migración e implantación, así como la arquitectura exigida por el Caso logística (Caso, cap. 19, p. 35). La Tabla \ref{tab:7-cobertura} comprueba que cada uno de esos componentes tiene paquetes propios.
 
 \parte{tablas/tab_SD7_2}
 
@@ -257,7 +291,7 @@ La Figura \ref{fig:7-cobertura} ubica esos paquetes por fase y muestra en qué p
   \begin{center}
     \includegraphics[trim=0 423pt 0 0,clip,width=0.97\linewidth,height=0.78\textheight,keepaspectratio]{imagenes/Diagramas que faltaban/Fig_7-19_Cobertura_EDT.pdf}
     \captionsetup{hypcap=false}
-    \captionof{figure}{Ubicación en la EDT de las innovaciones y la seguridad, la calidad, la migración y la implantación. Fuente: (Formulario T-14) y (Aclaraciones de la licitación, sección 11).}\label{fig:7-cobertura}
+    \captionof{figure}{Ubicación en la EDT de las innovaciones y la seguridad, la calidad, la migración y la implantación. Fuente: Formulario T-14.}\label{fig:7-cobertura}
   \end{center}
 \end{anexohorizontal}
 \clearpage
@@ -305,7 +339,7 @@ La red muestra tres convergencias. En el H3 se juntan la cadena de la nube (5.2,
 
 La cadena de diseño, construcción y certificación de la Etapa 2 comprende las dependencias D-29 a D-31c. El camino controlante del H12 identificado por el cálculo vigente de la sección 7.3.1 es distinto: cierre de la marcha blanca 4.3.1, preparación del acta 4.3.3 y diez días hábiles de revisión del CLIENTE. La garantía 4.3.4 se constituye en paralelo y debe estar disponible para la aceptación. La entrega calculada es el 11 de octubre de 2028 y el acta, el 25 de octubre, con tres días hábiles de holgura respecto del límite del 31 de octubre.
 
-El secuenciamiento incorpora además las condiciones de la operación de Puelche que el caso exige ver en el plan (Caso, sección 17.5, p. 33). Los congelamientos de septiembre y diciembre, y el cierre de los tres primeros días hábiles de cada mes, son restricciones de calendario para todo corte, despliegue e inicio de ola (paquete 1.3.1). La implantación en bodega y su acompañamiento se programan en el turno de noche, entre las 22:00 y las 06:00 (paquete 4.2.2), y la rotación del 38 \% se atiende con capacitación continua y no con un evento único (paquete 7.1.2). Los 62 preventistas y la tripulación de reparto, cerca de 244 personas (84 conductores y peonetas propios y unos 160 conductores de transportistas), se capacitan en su ruta, sin detener la venta ni el reparto (paquetes 7.1.1 y 4.2.2).
+El secuenciamiento incorpora además las condiciones de la operación de Puelche que el caso exige ver en el plan (Caso, sección 17.5, p. 33). El congelamiento total del 1 al 25 de septiembre, todo diciembre y los tres primeros días hábiles de cada mes restringen las intervenciones (paquete 1.3.1). La prohibición de paso a producción en todo septiembre y diciembre tiene alcance propio; los despliegues respetan además la política de arquitectura descrita en T-18, sección 1. La implantación en bodega y su acompañamiento se programan en el turno de noche, entre las 22:00 y las 06:00 (paquete 4.2.2), y la rotación del 38 \% se atiende con capacitación continua y no con un evento único (paquete 7.1.2). Los 62 preventistas y la tripulación de reparto, cerca de 244 personas (84 conductores y peonetas propios y unos 160 conductores de transportistas), se capacitan en su ruta, sin detener la venta ni el reparto (paquetes 7.1.1 y 4.2.2).
 
 Los acuerdos con los diez transportistas y con el sindicato preceden a la ola de reparto (paquetes 5.4.1 y 5.4.2), y la certificación del intercambio electrónico es un paquete por cadena y no una tarea única (paquetes 3.6.5 y 3.6.6). Las interfaces del sistema de gestión se levantan en el Inicio y se prueban temprano (paquetes 1.2.3 y 3.3.2). Las reglas de ruteo del planificador se capturan en los talleres de los meses 1 a 3 y se validan sin él durante la marcha blanca (paquete 1.2.2; resultado R18-16).
 
@@ -415,7 +449,7 @@ Las Figuras \ref{fig:7-gantt} a \ref{fig:7-gantt-7} detallan, en siete partes, l
   {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 7 de 7 (filas 134 a 155 de 155), con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de (Formulario T-14).}
   {fig:7-gantt-7}
 
-La carta muestra los periodos fijos del artículo 17 de las Bases Administrativas (pp. 12--13) mes a mes: el mes 16 es mayo de 2028 y el mes 21, octubre de 2028. La marcha blanca de la Etapa 1 (4.2.1) comienza con el H6 el 1 de febrero de 2028, y la de la Etapa 2 (4.3.1), con el H11 el 1 de agosto de 2028; como anticipa la Tabla \ref{tab:7-inicio}, esta última ocupa septiembre. Cada etapa pasa a producción el primer día hábil de su mes posterior a los tres días de cierre comercial y contable, habilitada por el acta de cierre de su marcha blanca: el 5 de mayo de 2028 la Etapa 1 y el 5 de octubre de 2028 la Etapa 2, que inicia también la Operación con ambos alcances (fechas válidas bajo el supuesto de inicio en febrero de 2027). Las actas de aceptación H7 y H12 se firman después del paso a producción y dentro de su mes contractual: el 29 de mayo y el 25 de octubre de 2028. La estabilización 4.3.2 comienza con el paso a producción, el 5 de octubre, y se extiende hasta el 30 de noviembre; sus cuatro semanas reforzadas, del 26 de octubre al 22 de noviembre, siguen a la firma del acta H12, igual que el archivo final 9.1.2. La operación supervisada de la Etapa 2 con datos y usuarios reales durante la marcha blanca no sustituye el paso oficial a producción ni el acta H12.
+La carta muestra los periodos fijos del artículo 17 de las Bases Administrativas (pp. 12--13) mes a mes: el mes 16 es mayo de 2028 y el mes 21, octubre de 2028. La marcha blanca de la Etapa 1 (4.2.1) comienza con el H6 el 1 de febrero de 2028, y la de la Etapa 2 (4.3.1), con el H11 el 1 de agosto de 2028; como anticipa la Tabla \ref{tab:7-inicio}, esta última ocupa septiembre. Cada etapa pasa a producción el primer día hábil de su mes posterior a los tres días de cierre comercial y contable, habilitada por el acta de cierre de su marcha blanca: el 5 de mayo de 2028 la Etapa 1 y el 5 de octubre de 2028 la Etapa 2, que inicia también la Operación con ambos alcances (fechas válidas bajo el supuesto de inicio en febrero de 2027). Las actas de aceptación H7 y H12 se firman después del paso a producción y dentro de su mes contractual: el 29 de mayo y el 25 de octubre de 2028. El encaje del plazo de revisión del acta de cierre se comprueba en T-15, sección 5.5: las fechas de producción son objetivos condicionados a resolver ese procedimiento, y las holguras H7/H12 no prueban su cumplimiento. La estabilización 4.3.2 comienza con el paso a producción, el 5 de octubre, y se extiende hasta el 30 de noviembre; sus cuatro semanas reforzadas, del 26 de octubre al 22 de noviembre, siguen a la firma del acta H12, igual que el archivo final 9.1.2. La operación supervisada de la Etapa 2 con datos y usuarios reales durante la marcha blanca no sustituye el paso oficial a producción ni el acta H12.
 
 Antes de cada paso a producción, el cronograma reserva las pruebas que exige el numeral 20.1 de las Bases Técnicas Transversales (p. 35): carga y estrés a 1,5 veces el peak, resiliencia, recuperación ante desastres con conmutación real, seguridad ofensiva y accesibilidad. Además, programa dos ensayos de migración antes de la migración definitiva. En la Etapa 1 estas pruebas forman la cuenta 3.8, se ejecutan en los meses 9 y 10 y se entregan antes del H5 del mes 12; en la Etapa 2 forman la cuenta 3.9, se ejecutan en los meses 16 y 17 y se entregan antes del H10 del mes 18 (Formulario T-15, sección 5.2).
 
@@ -445,9 +479,10 @@ El avance de cada grupo exige su criterio y acompañamiento. Las cuatro semanas 
 
 La reversión tiene dos niveles, que la Tabla \ref{tab:7-reversion} distingue.
 
+\clearpage
 \parte{tablas/tab_SD7_7}
 
-La reversión operacional se dispara con señales observables: pedidos sin sincronizar al inicio de la carga, rutas del día no disponibles o un defecto crítico en la ventana de despacho. El plazo de las 05:30 protege la salida de los 96 camiones y no es el tiempo de recuperación ante desastres. La Figura \ref{fig:7-reversion} presenta el procedimiento por rol.
+En el nivel técnico, el canario revierte automáticamente si el percentil 95 supera su umbral o si la entrega nueva registra más errores que la estable en la misma ventana de observación, conforme a SD4, «Liberación y reversión». SRE supervisa, valida y escala sin imponer una autorización manual al mecanismo automático. El ensayo registra señal, tiempos, tráfico restituido y conservación de transacciones. La reversión operacional se dispara con señales observables: pedidos sin sincronizar al inicio de la carga, rutas del día no disponibles o un defecto crítico en la ventana de despacho. El plazo de las 05:30 protege la salida de los 96 camiones y no es el tiempo de recuperación ante desastres. La Figura \ref{fig:7-reversion} presenta el procedimiento por rol.
 
 \clearpage
 \begin{figure}[htbp]
@@ -465,9 +500,9 @@ La marcha blanca de la Etapa 1 son tres meses de operación supervisada con dato
 
 \parte{tablas/tab_SD7_8}
 
-Los indicadores reproducen las condiciones del artículo 17.3 de las Bases Administrativas (p. 13) con umbrales que se pueden medir cada día, de modo que el cierre no depende de un juicio al final del período. El volumen comprometido es la operación real completa de cada proceso y no una muestra; con las cifras del caso (Caso, sección 14.1, p. 24), son cerca de 1.150 recepciones de proveedor y 260.000 líneas de preparación al mes, unos 31.000 pedidos al mes y alrededor de 1.400 entregas por día hábil, o 2.600 si las semanas de cierre coinciden con el peak de septiembre. El detalle por proceso está en el Formulario T-18, Tabla 3.
+Los indicadores reproducen las condiciones del artículo 17.3 de las Bases Administrativas (p. 13) con umbrales que se pueden medir cada día, de modo que el cierre no depende de un juicio al final del período. El volumen comprometido es la operación real completa de cada proceso y no una muestra; con las cifras del caso (Caso, sección 14.1, p. 24), son cerca de 1.150 recepciones de proveedor y 260.000 líneas de preparación al mes, unos 31.000 pedidos al mes y alrededor de 1.400 entregas por día hábil, o 2.600 si las semanas de cierre coinciden con el peak de septiembre. El detalle por proceso está en el Formulario T-18, tabla de volúmenes reales de la sección 2.4.
 
-La sexta condición del artículo 17.3 de las Bases Administrativas (p. 13) es el acta de la Contraparte Técnica. En la Etapa 1 es el acta de cierre de la marcha blanca, que la Contraparte firma al término del mes 15 y que habilita el paso a producción del mes 16 (paquete 4.2.1); el H7 es el acta de aceptación posterior a ese paso. Si una condición no se cumple al término del mes 15, la marcha blanca se extiende a costo de LafroX, sin mover las fechas siguientes (BA, art. 17.3, p. 13). La Figura \ref{fig:7-ciclo} resume el ciclo diario de control; las condiciones de cierre se enumeran debajo.
+La sexta condición del artículo 17.3 de las Bases Administrativas (p. 13) es el acta de la Contraparte Técnica. En la Etapa 1 es el acta de cierre de la marcha blanca, que la Contraparte firma tras completar la evidencia del mes 15 y que habilita el paso a producción del mes 16 (paquete 4.2.1); el H7 es el acta de aceptación posterior a ese paso. Si una condición no se cumple al término del mes 15, la marcha blanca se extiende a costo de LafroX, sin mover las fechas siguientes (BA, art. 17.3, p. 13). La Figura \ref{fig:7-ciclo} resume el ciclo diario de control; las condiciones de cierre se enumeran debajo.
 
 \clearpage
 \begin{figure}[htbp]
@@ -487,12 +522,12 @@ El cierre exige cumplir simultáneamente las seis condiciones del artículo 17.3
   \item Sin indisponibilidad en despacho; disponibilidad y respuesta dentro de umbral.
   \item Sin diferencias inexplicadas ni pedidos perdidos o duplicados.
   \item 100\,\% de usuarios capacitados y certificados.
-  \item Acta de aceptación de la Contraparte Técnica (H7).
+  \item Acta de cierre de la marcha blanca firmada por la Contraparte Técnica (4.2.1), previa a producción; el acta de aceptación H7 es posterior.
 \end{enumerate}
 
 Ninguna de estas condiciones compensa a otra.
 
-La capacitación se hace en el puesto y en la ruta con las cuatro modalidades del artículo 90.2 de las Bases Administrativas (p. 45). Cada perfil se certifica antes del cierre, porque el artículo 17.3 de las Bases Administrativas (p. 13) exige que el personal del CLIENTE esté «capacitado y certificado conforme al plan de capacitación aprobado», y los usuarios administradores y el equipo técnico del CLIENTE se certifican además conforme al artículo 90.4 de las Bases Administrativas (p. 45). Los perfiles operativos, tomados del Capítulo 3, Anexo 3.I (Subdocumento 3, anexos), son 180 preparadores, 120 en Talca y 60 en Concepción (Capítulo 3, Anexo 3.C, S-39), con un tutor por turno y un aprendizaje en el puesto de dos horas como máximo; 62 preventistas, en su propia ruta; 84 integrantes de la tripulación propia, entre conductores y peonetas; y cerca de 160 conductores de transportistas, que se incorporan en el andén al asignarse a una ruta.
+La capacitación se hace en el puesto y en la ruta con las cuatro modalidades del artículo 90.2 de las Bases Administrativas (p. 45). Cada perfil se certifica antes del cierre, porque el artículo 17.3 de las Bases Administrativas (p. 13) exige que el personal del CLIENTE esté «capacitado y certificado conforme al plan de capacitación aprobado», y los usuarios administradores y el equipo técnico del CLIENTE se certifican además conforme al artículo 90.4 de las Bases Administrativas (p. 45). Los perfiles operativos, tomados del Capítulo 3, Anexo 3.I (Subdocumento 3, anexos), son hasta 180 preparadores, 120 en Talca y hasta 60 en Concepción (Capítulo 3, Anexo 3.C, S-39), con un tutor por turno y un aprendizaje en el puesto de dos horas como máximo; 62 preventistas, en su propia ruta; 84 integrantes de la tripulación propia, entre conductores y peonetas, de los cuales 42 son conductores; y cerca de 160 conductores de transportistas, que se incorporan en el andén al asignarse a una ruta.
 
 La adopción se mide por perfil y por ola, y si una ola no alcanza la meta, no avanza y se extiende el acompañamiento. La respuesta es distinta según el grupo: el personal con veinte o treinta años en la compañía recibe acompañamiento individual y reconocimiento formal de su conocimiento, y el personal rotativo de preparación cuenta con un tutor por turno (Formulario T-18, secciones 2.7 y 2.8).
 
@@ -500,7 +535,7 @@ La adopción se mide por perfil y por ola, y si una ola no alcanza la meta, no a
 
 La marcha blanca de la Etapa 2 dura los meses 19 y 20 y convive con la Etapa 1 en producción. La regla central del artículo 17.2 de las Bases Administrativas (p. 13) es que exista una única fuente de verdad para los datos compartidos: la Etapa 2 lee y extiende los pedidos, clientes, guías y entregas de la Etapa 1, sin copiarlos ni digitarlos de nuevo, y ningún despliegue de la Etapa 2 modifica las funciones estabilizadas de la Etapa 1 ni ocurre en la ventana de despacho.
 
-Esta marcha blanca dura unas 8,7 semanas (2 \ensuremath{\times} 52 / 12). Como el artículo 17.3 de las Bases Administrativas (p. 13) exige volumen real en las cuatro últimas, todas las cadenas certificadas, los portales y el costo de servir deben quedar habilitados en las primeras 4,7 semanas. Con el inicio supuesto de febrero de 2027, el mes 19 es agosto y el mes 20 es septiembre de 2028, de modo que toda habilitación ocurre en agosto, antes del congelamiento del 1 al 25 de septiembre. Las semanas de cierre se miden con el volumen del peak de Fiestas Patrias, cerca de 2.600 entregas diarias, en el primer septiembre de la Etapa 1 en producción. Durante el congelamiento se aplica continuidad previamente autorizada por el CLIENTE; la sección 6.4 del Formulario T-18 no presume que un cambio de configuración esté exento de las prohibiciones. La capacidad para ese peak se demuestra antes del H11 con la prueba de carga a 1,5 veces el peak, con ambas etapas activas (paquete 3.9.3; Formulario T-18, sección 3.1).
+La marcha blanca ocupa los meses 19 y 20. Todo el alcance de cadenas, portales y costo de servir debe estar habilitado antes de los últimos 28 días completos de evidencia; la conversión promedio de dos meses a semanas no fija una fecha contractual. Con el inicio supuesto de febrero de 2027, el mes 19 es agosto y el mes 20 es septiembre de 2028, de modo que toda habilitación ocurre en agosto, antes del congelamiento del 1 al 25 de septiembre. Las semanas de cierre se miden con el volumen del peak de Fiestas Patrias, cerca de 2.600 entregas diarias, en el primer septiembre de la Etapa 1 en producción. Durante el congelamiento se aplica continuidad previamente autorizada por el CLIENTE; la sección 6.4 del Formulario T-18 no presume que un cambio de configuración esté exento de las prohibiciones. La capacidad para ese peak se demuestra antes del H11 con la prueba de carga a 1,5 veces el peak, con ambas etapas activas (paquete 3.9.3; Formulario T-18, sección 3.1).
 
 A los indicadores de la Tabla \ref{tab:7-indicadores} se suman los propios del alcance de la Etapa 2: los pedidos de las cadenas certificadas recibidos por vía electrónica, los avisos de despacho dentro de dos minutos, las entregas con costo de servir calculado y la ausencia de degradación de los indicadores de la Etapa 1 (Formulario T-18, sección 3.3). La Figura \ref{fig:7-convivencia} muestra cómo fluyen los datos entre ambas etapas.
 
@@ -561,7 +596,6 @@ Las fuentes citadas en este subdocumento se listan en formato APA 7.ª edición.
 \item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas, Licitación TFEP-01/2026}.
 \item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales, Licitación TFEP-01/2026}.
 \item Distribuidora Puelche S.A. (2026c). \emph{Bases Técnicas del Caso Logística}.
-\item Distribuidora Puelche S.A. (2026d). \emph{Aclaraciones de la Licitación TFEP-01/2026}.
 \item Malcolm, D. G., Roseboom, J. H., Clark, C. E., \& Fazar, W. (1959). Application of a technique for research and development program evaluation. \emph{Operations Research, 7}(5), 646–669.
 \item Project Management Institute. (2017). \emph{Guía de los fundamentos para la dirección de proyectos (Guía del PMBOK)} (6.ª ed.). Project Management Institute.
 
@@ -570,6 +604,8 @@ Las fuentes citadas en este subdocumento se listan en formato APA 7.ª edición.
 \phantomsection
 \addcontentsline{toc}{section}{Declaración de uso de IA}
 
-La tabla siguiente presenta la declaración de uso de inteligencia artificial exigida por la sección 7.2 de las Aclaraciones de la licitación. La última columna identifica a la persona responsable y los aspectos revisados en cada sección. Los niveles de uso se contrastarán con el historial de elaboración antes de consolidar la declaración en el Formulario A-6.
+La tabla siguiente presenta la declaración de uso de inteligencia artificial. La última columna identifica a la persona responsable y los aspectos revisados en cada sección.
+
+La Tabla \ref{tab:7-ia} presenta declaración de uso de IA.
 
 \parte{tablas/tab_SD7_12}

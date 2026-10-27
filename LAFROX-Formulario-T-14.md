@@ -1,17 +1,16 @@
 # Formulario T-14 — Estructura de desglose del trabajo
 
-> Texto extraído del [PDF final](LafroX-Formulario-T-14.pdf). Las figuras y la composición visual se consultan en el PDF.
+> Texto extraído del [PDF final](LAFROX-Formulario-T-14.pdf). Las figuras y la composición visual se consultan en el PDF.
 
 LafroX SpA
-VERSIÓN FINAL PARA ENTREGA
 LICITACIÓN PÚBLICA
 Licitación N.° TFEP-01/2026
 Proyecto de Plataforma Digital de Misión Crítica
 Caso — Logística
-Sobre N.° 2 --- Oferta Técnica
-Formulario T-14
-Plan de Trabajo, EDT y Carta Gantt
-Plan de Trabajo, EDT y Carta Gantt · Formulario T-14
+Sobre N.° 2 — Oferta Técnica
+Propuesta Técnica
+Formulario T-14 — Plan de Trabajo, EDT y Carta Gantt
+Subdocumento 07 · Formulario T-14
 MANDANTE
 Distribuidora Puelche S.A.
 PROPONENTE
@@ -28,7 +27,7 @@ FECHA DE EMISIÓN
 FIRMA DEL REPRESENTANTE LEGAL
 Alex Aravena
 Jefe de Proyecto y Apoderado · LafroX SpA
-SOBRE2_LAFROX_OFERTA_TECNICA_20261012.ZIP 1
+LAFROX-Formulario-T-14.pdf 1
 
 
 ---
@@ -38,42 +37,42 @@ LafroX SpA
 Índice general 2
 Lista de tablas 4
 Lista de figuras 6
-7 Formulario T-14: Plan de trabajo, EDT y carta Gantt 7
-7.1 Estructura de descomposición del trabajo 7
-7.2 Diccionario de la EDT 20
-7.2.1 Fase 1. Inicio 21
-7.2.1.1 Cuenta 1.1 — Definición inicial del proyecto 21
-7.2.1.2 Cuenta 1.2 — Alcance del proyecto 22
-7.2.1.3 Cuenta 1.3 — Planificación del proyecto 23
-7.2.1.4 Cuenta 1.4 — Gestión de interesados y comunicaciones 25
-7.2.1.5 Cuenta 1.5 — Gestión de calidad 26
-7.2.1.6 Cuenta 1.6 — Gestión de riesgos 27
-7.2.1.7 Cuenta 1.7 — Plan de Reversibilidad 28
-7.2.1.8 Cuenta 1.8 — Gobierno y control del proyecto 29
-7.2.1.9 Cuenta 1.9 — Cumplimiento normativo y contractual 31
-7.2.2 Fase 2. Elaboración 33
-7.2.2.1 Cuenta 2.1 — Arquitectura de la solución 33
-7.2.2.2 Cuenta 2.2 — Diseño de la seguridad 34
-7.2.2.3 Cuenta 2.3 — Diseño de la sala técnica y de los racks 35
-7.2.2.4 Cuenta 2.4 — Validación de diseños 36
-7.2.2.5 Cuenta 2.5 — Continuidad del negocio 37
-7.2.2.6 Cuenta 2.6 — Experiencia de usuario 38
-7.2.3 Fase 3. Construcción 39
-7.2.3.1 Cuenta 3.1 — Ambientes y cadena de desarrollo 39
-7.2.3.2 Cuenta 3.2 — Servicios de nube de la plataforma 41
-7.2.3.3 Cuenta 3.3 — Base compartida 43
-7.2.3.4 Cuenta 3.4 — Módulos de la Etapa 1 45
-7.2.3.5 Cuenta 3.5 — Módulos de la Etapa 2 49
-7.2.3.6 Cuenta 3.6 — Integraciones externas 51
-7.2.3.7 Cuenta 3.7 — Migración de datos 53
-7.2.3.8 Cuenta 3.8 — Pruebas de la Etapa 1 54
-7.2.3.9 Cuenta 3.9 — Pruebas de la Etapa 2 56
-7.2.3.10 Cuenta 3.10 — Innovaciones 58
-7.2.3.11 Cuenta 3.11 — Documentación técnica 62
-7.2.4 Fase 4. Transición 64
-7.2.4.1 Cuenta 4.1 — Plan de implantación 64
-7.2.4.2 Cuenta 4.2 — Marcha blanca y producción de la Etapa 1 66
-7.2.4.3 Cuenta 4.3 — Marcha blanca y producción de la Etapa 2 67
+Formulario T-14: Plan de trabajo, EDT y carta Gantt 7
+1 Estructura de descomposición del trabajo 7
+2 Diccionario de la EDT 20
+2.1 Fase 1. Inicio 21
+2.1.1 Cuenta 1.1 — Definición inicial del proyecto 21
+2.1.2 Cuenta 1.2 — Alcance del proyecto 21
+2.1.3 Cuenta 1.3 — Planificación del proyecto 23
+2.1.4 Cuenta 1.4 — Gestión de interesados y comunicaciones 24
+2.1.5 Cuenta 1.5 — Gestión de calidad 25
+2.1.6 Cuenta 1.6 — Gestión de riesgos 26
+2.1.7 Cuenta 1.7 — Plan de Reversibilidad 27
+2.1.8 Cuenta 1.8 — Gobierno y control del proyecto 28
+2.1.9 Cuenta 1.9 — Cumplimiento normativo y contractual 30
+2.2 Fase 2. Elaboración 31
+2.2.1 Cuenta 2.1 — Arquitectura de la solución 31
+2.2.2 Cuenta 2.2 — Diseño de la seguridad 32
+2.2.3 Cuenta 2.3 — Diseño de la sala técnica y de los racks 33
+2.2.4 Cuenta 2.4 — Validación de diseños 34
+2.2.5 Cuenta 2.5 — Continuidad del negocio 35
+2.2.6 Cuenta 2.6 — Experiencia de usuario 36
+2.3 Fase 3. Construcción 37
+2.3.1 Cuenta 3.1 — Ambientes y cadena de desarrollo 37
+2.3.2 Cuenta 3.2 — Servicios de nube de la plataforma 39
+2.3.3 Cuenta 3.3 — Base compartida 40
+2.3.4 Cuenta 3.4 — Módulos de la Etapa 1 41
+2.3.5 Cuenta 3.5 — Módulos de la Etapa 2 44
+2.3.6 Cuenta 3.6 — Integraciones externas 45
+2.3.7 Cuenta 3.7 — Migración de datos 47
+2.3.8 Cuenta 3.8 — Pruebas de la Etapa 1 48
+2.3.9 Cuenta 3.9 — Pruebas de la Etapa 2 50
+2.3.10 Cuenta 3.10 — Innovaciones 52
+2.3.11 Cuenta 3.11 — Documentación técnica 55
+2.4 Fase 4. Transición 56
+2.4.1 Cuenta 4.1 — Plan de implantación 56
+2.4.2 Cuenta 4.2 — Marcha blanca y producción de la Etapa 1 58
+2.4.3 Cuenta 4.3 — Marcha blanca y producción de la Etapa 2 60
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -83,35 +82,34 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA
-7.2.5 Fase 5. Adquisiciones y contrataciones 68
-7.2.5.1 Cuenta 5.1 — Hardware e infraestructura 68
-7.2.5.2 Cuenta 5.2 — Servicios de nube y licencias 69
-7.2.5.3 Cuenta 5.3 — Enlaces de comunicaciones 70
-7.2.5.4 Cuenta 5.4 — Acuerdos con terceros 71
-7.2.6 Fase 6. Infraestructura física y sitios 72
-7.2.6.1 Cuenta 6.1 — Adecuación de la sala técnica de Talca 73
-7.2.6.2 Cuenta 6.2 — Cableado estructurado 74
-7.2.6.3 Cuenta 6.3 — Montaje de racks y gabinetes 75
-7.2.6.4 Cuenta 6.4 — Sistemas de seguridad física 77
-7.2.6.5 Cuenta 6.5 — Equipamiento de campo 78
-7.2.6.6 Cuenta 6.6 — Configuración de la infraestructura de los sitios 80
-7.2.7 Fase 7. Capacitación y gestión del cambio 81
-7.2.7.1 Cuenta 7.1 — Capacitación por roles 81
-7.2.7.2 Cuenta 7.2 — Gestión del cambio 83
-7.2.7.3 Cuenta 7.3 — Evaluaciones y certificaciones 84
-7.2.8 Fase 8. Operación y soporte (36 meses) 85
-7.2.8.1 Cuenta 8.1 — Servicios de operación 85
-7.2.8.2 Cuenta 8.2 — Mantenimiento 88
-7.2.8.3 Cuenta 8.3 — Innovaciones en operación 91
-7.2.8.4 Cuenta 8.4 — Informes y obligaciones periódicas 93
-7.2.8.5 Cuenta 8.5 — Capacitación y transferencia en operación 95
-7.2.9 Fase 9. Cierre 96
-7.2.9.1 Cuenta 9.1 — Cierre de la implementación 96
-7.2.9.2 Cuenta 9.2 — Salida al término del contrato 96
-7.3 Carta Gantt de 56 meses 98
-7.3.1 Carta Gantt actualizada por cuenta de control 101
-7.4 Criterios vigentes de programación y recursos 104
-Referencias 104
+2.5 Fase 5. Adquisiciones y contrataciones 63
+2.5.1 Cuenta 5.1 — Hardware e infraestructura 63
+2.5.2 Cuenta 5.2 — Servicios de nube y licencias 64
+2.5.3 Cuenta 5.3 — Enlaces de comunicaciones 65
+2.5.4 Cuenta 5.4 — Acuerdos con terceros 66
+2.6 Fase 6. Infraestructura física y sitios 67
+2.6.1 Cuenta 6.1 — Adecuación de la sala técnica de Talca 67
+2.6.2 Cuenta 6.2 — Cableado estructurado 69
+2.6.3 Cuenta 6.3 — Montaje de racks y gabinetes 70
+2.6.4 Cuenta 6.4 — Sistemas de seguridad física 71
+2.6.5 Cuenta 6.5 — Equipamiento de campo 72
+2.6.6 Cuenta 6.6 — Configuración de la infraestructura de los sitios 73
+2.7 Fase 7. Capacitación y gestión del cambio 74
+2.7.1 Cuenta 7.1 — Capacitación por roles 74
+2.7.2 Cuenta 7.2 — Gestión del cambio 76
+2.7.3 Cuenta 7.3 — Evaluaciones y certificaciones 77
+2.8 Fase 8. Operación y soporte (36 meses) 77
+2.8.1 Cuenta 8.1 — Servicios de operación 77
+2.8.2 Cuenta 8.2 — Mantenimiento 80
+2.8.3 Cuenta 8.3 — Innovaciones en operación 82
+2.8.4 Cuenta 8.4 — Informes y obligaciones periódicas 84
+2.8.5 Cuenta 8.5 — Capacitación y transferencia en operación 85
+2.9 Fase 9. Cierre 86
+2.9.1 Cuenta 9.1 — Cierre de la implementación 86
+2.9.2 Cuenta 9.2 — Salida al término del contrato 87
+3 Carta Gantt 89
+4 Criterios vigentes de programación y recursos 102
+Referencias 102
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -122,38 +120,38 @@ Media firma: Alex Aravena
 
 LafroX SpA
 Lista de tablas
-Tabla 7.1 Cuentas de control y paquetes de trabajo por fase. 8
-Tabla 7.2 Responsables de los paquetes. 20
-Tabla 7.3 Diccionario de la cuenta 1.1. 21
-Tabla 7.4 Diccionario de la cuenta 1.2. 22
-Tabla 7.5 Diccionario de la cuenta 1.3. 24
-Tabla 7.6 Diccionario de la cuenta 1.4. 25
-Tabla 7.7 Diccionario de la cuenta 1.5. 27
-Tabla 7.8 Diccionario de la cuenta 1.6. 28
-Tabla 7.9 Diccionario de la cuenta 1.7. 29
-Tabla 7.10 Diccionario de la cuenta 1.8. 30
-Tabla 7.11 Diccionario de la cuenta 1.9. 32
-Tabla 7.12 Diccionario de la cuenta 2.1. 33
-Tabla 7.13 Diccionario de la cuenta 2.2. 35
-Tabla 7.14 Diccionario de la cuenta 2.3. 36
-Tabla 7.15 Diccionario de la cuenta 2.4. 37
-Tabla 7.16 Diccionario de la cuenta 2.5. 38
-Tabla 7.17 Diccionario de la cuenta 2.6. 39
-Tabla 7.18 Diccionario de la cuenta 3.1. 40
-Tabla 7.19 Diccionario de la cuenta 3.2. 42
-Tabla 7.20 Diccionario de la cuenta 3.3. 43
-Tabla 7.21 Diccionario de la cuenta 3.4. 46
-Tabla 7.22 Diccionario de la cuenta 3.5. 50
-Tabla 7.23 Diccionario de la cuenta 3.6. 51
-Tabla 7.24 Diccionario de la cuenta 3.7. 53
-Tabla 7.25 Diccionario de la cuenta 3.8. 55
-Tabla 7.26 Diccionario de la cuenta 3.9. 57
-Tabla 7.27 Diccionario de la cuenta 3.10. 59
-Tabla 7.28 Diccionario de la cuenta 3.11. 63
-Tabla 7.29 Diccionario de la cuenta 4.1. 64
-Tabla 7.30 Diccionario de la cuenta 4.2. 66
-Tabla 7.31 Diccionario de la cuenta 4.3. 67
-Tabla 7.32 Diccionario de la cuenta 5.1. 69
+Tabla 1 Cuentas de control y paquetes de trabajo por fase. 7
+Tabla 2 Responsables de los paquetes. 20
+Tabla 3 Diccionario de la cuenta 1.1. 21
+Tabla 4 Diccionario de la cuenta 1.2. 22
+Tabla 5 Diccionario de la cuenta 1.3. 23
+Tabla 6 Diccionario de la cuenta 1.4. 24
+Tabla 7 Diccionario de la cuenta 1.5. 25
+Tabla 8 Diccionario de la cuenta 1.6. 27
+Tabla 9 Diccionario de la cuenta 1.7. 27
+Tabla 10 Diccionario de la cuenta 1.8. 28
+Tabla 11 Diccionario de la cuenta 1.9. 30
+Tabla 12 Diccionario de la cuenta 2.1. 32
+Tabla 13 Diccionario de la cuenta 2.2. 33
+Tabla 14 Diccionario de la cuenta 2.3. 34
+Tabla 15 Diccionario de la cuenta 2.4. 35
+Tabla 16 Diccionario de la cuenta 2.5. 36
+Tabla 17 Diccionario de la cuenta 2.6. 37
+Tabla 18 Diccionario de la cuenta 3.1. 38
+Tabla 19 Diccionario de la cuenta 3.2. 39
+Tabla 20 Diccionario de la cuenta 3.3. 40
+Tabla 21 Diccionario de la cuenta 3.4. 42
+Tabla 22 Diccionario de la cuenta 3.5. 45
+Tabla 23 Diccionario de la cuenta 3.6. 46
+Tabla 24 Diccionario de la cuenta 3.7. 47
+Tabla 25 Diccionario de la cuenta 3.8. 48
+Tabla 26 Diccionario de la cuenta 3.9. 50
+Tabla 27 Diccionario de la cuenta 3.10. 52
+Tabla 28 Diccionario de la cuenta 3.11. 55
+Tabla 29 Diccionario de la cuenta 4.1. 57
+Tabla 30 Diccionario de la cuenta 4.2. 59
+Tabla 31 Diccionario de la cuenta 4.3. 61
+Tabla 32 Diccionario de la cuenta 5.1. 63
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -163,26 +161,26 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA
-Tabla 7.33 Diccionario de la cuenta 5.2. 70
-Tabla 7.34 Diccionario de la cuenta 5.3. 71
-Tabla 7.35 Diccionario de la cuenta 5.4. 72
-Tabla 7.36 Diccionario de la cuenta 6.1. 73
-Tabla 7.37 Diccionario de la cuenta 6.2. 74
-Tabla 7.38 Diccionario de la cuenta 6.3. 76
-Tabla 7.39 Diccionario de la cuenta 6.4. 78
-Tabla 7.40 Diccionario de la cuenta 6.5. 79
-Tabla 7.41 Diccionario de la cuenta 6.6. 80
-Tabla 7.42 Diccionario de la cuenta 7.1. 82
-Tabla 7.43 Diccionario de la cuenta 7.2. 83
-Tabla 7.44 Diccionario de la cuenta 7.3. 85
-Tabla 7.45 Diccionario de la cuenta 8.1. 87
-Tabla 7.46 Diccionario de la cuenta 8.2. 89
-Tabla 7.47 Diccionario de la cuenta 8.3. 92
-Tabla 7.48 Diccionario de la cuenta 8.4. 94
-Tabla 7.49 Diccionario de la cuenta 8.5. 95
-Tabla 7.50 Diccionario de la cuenta 9.1. 96
-Tabla 7.51 Diccionario de la cuenta 9.2. 97
-Tabla 7.52 Períodos contractuales e hitos. 99
+Tabla 33 Diccionario de la cuenta 5.2. 65
+Tabla 34 Diccionario de la cuenta 5.3. 66
+Tabla 35 Diccionario de la cuenta 5.4. 67
+Tabla 36 Diccionario de la cuenta 6.1. 68
+Tabla 37 Diccionario de la cuenta 6.2. 69
+Tabla 38 Diccionario de la cuenta 6.3. 70
+Tabla 39 Diccionario de la cuenta 6.4. 72
+Tabla 40 Diccionario de la cuenta 6.5. 72
+Tabla 41 Diccionario de la cuenta 6.6. 74
+Tabla 42 Diccionario de la cuenta 7.1. 75
+Tabla 43 Diccionario de la cuenta 7.2. 76
+Tabla 44 Diccionario de la cuenta 7.3. 77
+Tabla 45 Diccionario de la cuenta 8.1. 79
+Tabla 46 Diccionario de la cuenta 8.2. 81
+Tabla 47 Diccionario de la cuenta 8.3. 83
+Tabla 48 Diccionario de la cuenta 8.4. 85
+Tabla 49 Diccionario de la cuenta 8.5. 86
+Tabla 50 Diccionario de la cuenta 9.1. 87
+Tabla 51 Diccionario de la cuenta 9.2. 88
+Tabla 52 Períodos contractuales e hitos. 90
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -193,12 +191,26 @@ Media firma: Alex Aravena
 
 LafroX SpA
 Lista de figuras
-Figura 7.1 Vista panorámica de la EDT completa del proyecto. Para consultar el detalle
+Figura 1 Vista panorámica de la EDT completa del proyecto. Para consultar el detalle
 por fase, véanse las láminas de la sección «Estructura general» del Subdocumento 7. 19
-Figura 7.2 Carta Gantt de los 56 meses por período contractual y por fase, con inicio en
-febrero de 2027. 100
-Figura 7.3 Carta Gantt actualizada por cuenta de control, meses 1 a 21, fases 1 a 3. 102
-Figura 7.4 Carta Gantt actualizada por cuenta de control, meses 1 a 21, fases 4 a 7. 103
+Figura 2 Carta Gantt de los 56 meses por período contractual, con inicio en febrero de
+2027. 91
+Figura 3 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 1 de 7
+(filas 1 a 23 de 155), con inicio en febrero de 2027. 93
+Figura 4 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 2 de 7
+(filas 24 a 45 de 155), con inicio en febrero de 2027. 94
+Figura 5 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 3 de 7
+(filas 46 a 67 de 155), con inicio en febrero de 2027. 95
+Figura 6 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 4 de 7
+(filas 68 a 89 de 155), con inicio en febrero de 2027. 96
+Figura 7 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 5 de 7
+(filas 90 a 111 de 155), con inicio en febrero de 2027. 97
+Figura 8 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 6 de 7
+(filas 112 a 133 de 155), con inicio en febrero de 2027. 98
+Figura 9 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 7 de 7
+(filas 134 a 155 de 155), con inicio en febrero de 2027. 99
+Figura 10 Vista crítica de la carta Gantt: paquetes de la ruta crítica y sus dependencias
+hasta H6 y H11. 101
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -207,32 +219,35 @@ Media firma: Alex Aravena
 
 ---
 
-CAPÍTULO 7
 Formulario T-14: Plan de trabajo, EDT y
 carta Gantt
-Este formulario detalla lo que el Subdocumento 7 (LafroX, 2026p) resume en sus secciones
-7.1 y 7.3, conforme al Formulario T-14 de las Bases Administrativas y al Capítulo 7 del índice
-obligatorio de las Aclaraciones de la licitación. Contiene la estructura de descomposición
+Este formulario detalla lo que el Subdocumento 7 resume en sus secciones 7.1 y 7.3, confor-
+me al Formulario T-14 de las Bases Administrativas. Contiene la estructura de descomposición
 del trabajo (EDT) completa; su diccionario, con el entregable, el criterio de aceptación, el
-responsable y el período de cada paquete; y la carta Gantt de los 56 meses del contrato. El
-método de estimación y programación, la ruta crítica y los frentes de trabajo se detallan en el
-Formulario T-15, y la implantación de cada etapa, en el Formulario T-18 (LafroX, 2026s). La
-EDT termina en el paquete de trabajo; la descomposición de cada paquete en actividades de
-8 a 80 horas hombre que caben en una quincena, con sus fechas, está en el Formulario T-15,
-sección 6. La EDT termina en el paquete de trabajo; la descomposición de cada paquete en
-actividades de 8 a 80 horas hombre que caben en una quincena está en el Formulario T-15,
-sección 6.
-En este formulario, BA, BTT y Caso designan las Bases Administrativas (Distribuidora
-Puelche S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso
-Logística (2026c).
-7.1 Estructura de descomposición del trabajo
+responsable y el período de cada paquete; y la carta Gantt de los 56 meses del contrato, con
+el detalle de las Etapas 1 y 2. El método de estimación y programación, la ruta crítica y los
+frentes de trabajo se detallan en el Formulario T-15, y la implantación de cada etapa, en el
+Formulario T-18. La EDT termina en el paquete de trabajo; la descomposición de cada paquete
+en actividades de 8 a 80 horas hombre que caben en una quincena, con sus fechas, está en el
+Formulario T-15, sección 6.
+En este formulario, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas
+Transversales y las Bases Técnicas del caso.
+1 Estructura de descomposición del trabajo
 La EDT descompone el 100 % del alcance de la Etapa 1, la Etapa 2 y la Operación (BA, art.
-15, p. 11) en nueve fases, 49 cuentas de control y 222 paquetes de trabajo. Las fases 1 a 4 son
+15, p. 11) en nueve fases, 49 cuentas de control y 227 paquetes de trabajo. Las fases 1 a 4 son
 las del proceso de desarrollo declarado en el Capítulo 6 (Inicio, Elaboración, Construcción
 y Transición) y se recorren una vez por etapa. Las fases 5 a 9 agrupan el trabajo que no es
 desarrollo de software. Cada paquete es la hoja de su rama, tiene un único responsable y
 produce un entregable verificable. En la cuenta 3.10, cada innovación agrupa sus paquetes en
-un cuarto nivel. La Tabla 7.1 resume el tamaño de cada fase.
+un cuarto nivel. La Tabla 1 resume el tamaño de cada fase.
+Tabla 1 Cuentas de control y paquetes de trabajo por fase. Fuente: (Bases Administrativas, arts. 17.2–17.6 y
+Formulario T-14, p. 63); (Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Fase Cuentas de control Paquetes de trabajo
+1. Inicio 9 35
+2. Elaboración 6 20
+3. Construcción 11 79
+4. Transición 3 11
+continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -242,16 +257,11 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.1 Cuentas de control y paquetes de trabajo por fase. Fuente: elaboración a partir de Distribuidora Puelche
-S.A. (2026a, arts. 17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
+Tabla 1 — continuación
 Fase Cuentas de control Paquetes de trabajo
-1. Inicio 9 35
-2. Elaboración 6 18
-3. Construcción 11 79
-4. Transición 3 10
 5. Adquisiciones y contratacio-
 nes
-4 13
+4 15
 6. Infraestructura física y sitios 6 24
 7. Capacitación y gestión del
 cambio
@@ -260,9 +270,9 @@ cambio
 ses)
 5 26
 9. Cierre 2 4
-Total 49 222
-La construcción concentra 79 de los 222 paquetes, y las fases que no son software (5 a 7)
-suman 50. Ninguna cuenta de control tiene un solo paquete. La estructura completa es la
+Total 49 227
+La construcción concentra 79 de los 227 paquetes, y las fases que no son software (5 a 7)
+suman 52. Ninguna cuenta de control tiene un solo paquete. La estructura completa es la
 siguiente, con la raíz «Plataforma logística de Distribuidora Puelche» y sus nueve fases en el
 primer nivel.
 • 1. Inicio
@@ -277,6 +287,12 @@ proveedor de lácteos, las ventanas de paso a producción y el acuse tributario
 • 1.2.2 Documento de reglas de ruteo capturadas al planificador de rutas
 • 1.2.3 Documento de especificación de las interfaces sin documentación del ERP, del WMS
 de 2013 y de la telemetría del tercero
+• 1.2.4 Matriz de trazabilidad: requerimiento, módulo, paquete y prueba (H1)
+• 1.2.5 Documento de línea base de alcance de la Etapa 2: canal moderno y costo de servir
+(H8)
+• 1.3 Planificación del proyecto
+• 1.3.1 Plan para la dirección del proyecto, con el calendario de congelamientos de septiembre,
+diciembre y el cierre mensual
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -286,12 +302,6 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-• 1.2.4 Matriz de trazabilidad: requerimiento, módulo, paquete y prueba (H1)
-• 1.2.5 Documento de línea base de alcance de la Etapa 2: canal moderno y costo de servir
-(H8)
-• 1.3 Planificación del proyecto
-• 1.3.1 Plan para la dirección del proyecto, con el calendario de congelamientos de septiembre,
-diciembre y el cierre mensual
 • 1.3.2 EDT y diccionario de la EDT (línea base del alcance)
 • 1.3.3 Carta Gantt de 56 meses con los hitos H1 a H12 y la ruta crítica
 • 1.3.4 Documento de nivelación de recursos y frentes del solapamiento de los meses 13 a 15
@@ -322,6 +332,11 @@ y 19 a 20
 • 1.8.8 Espacio colaborativo con la documentación, los entregables, las actas, los riesgos y
 los cambios
 • 1.9 Cumplimiento normativo y contractual
+• 1.9.1 Matriz de cumplimiento normativo por obligación legal, con su control y su evidencia
+• 1.9.2 Acuerdo de tratamiento de datos personales con el CLIENTE
+• 1.9.3 Registro de actividades de tratamiento y evaluación de impacto en protección de datos
+• 1.9.4 Certificación ISO/IEC 27001 vigente y entrega anual de los informes de certificación
+• 1.9.5 Garantía de fiel cumplimiento, seguros y certificados laborales vigentes durante el
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -331,11 +346,6 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-• 1.9.1 Matriz de cumplimiento normativo por obligación legal, con su control y su evidencia
-• 1.9.2 Acuerdo de tratamiento de datos personales con el CLIENTE
-• 1.9.3 Registro de actividades de tratamiento y evaluación de impacto en protección de datos
-• 1.9.4 Certificación ISO/IEC 27001 vigente y entrega anual de los informes de certificación
-• 1.9.5 Garantía de fiel cumplimiento, seguros y certificados laborales vigentes durante el
 contrato
 • 2. Elaboración
 • 2.1 Arquitectura de la solución
@@ -357,6 +367,8 @@ cada cambio
 • 2.4 Validación de diseños
 • 2.4.1 Acta de aprobación de la arquitectura, el plan de seguridad y el modelo de datos (H2)
 • 2.4.2 Acta de aprobación del diseño detallado de la Etapa 2 (H8)
+• 2.4.3 Validación del diseño del kit en banco de pruebas
+• 2.4.4 Mapeo térmico por tipo de carrocería
 • 2.5 Continuidad del negocio
 • 2.5.1 Plan de continuidad del negocio según ISO 22301, con análisis de impacto y procedi-
 mientos manuales
@@ -366,6 +378,9 @@ mientos manuales
 • 2.6.2 Prototipos y pruebas de usabilidad con participantes del CLIENTE
 • 2.6.3 Indicadores de usabilidad comprometidos por transacción crítica
 • 3. Construcción
+• 3.1 Ambientes y cadena de desarrollo
+• 3.1.1 Ambientes de Desarrollo y QA en la nube (H3)
+• 3.1.2 Ambientes de Preproducción y Producción en la nube (H3)
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -375,9 +390,6 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-• 3.1 Ambientes y cadena de desarrollo
-• 3.1.1 Ambientes de Desarrollo y QA en la nube (H3)
-• 3.1.2 Ambientes de Preproducción y Producción en la nube (H3)
 • 3.1.3 Ambiente de recuperación ante desastres en la región secundaria (H3)
 • 3.1.4 Cadena de integración y entrega continua, e infraestructura como código
 • 3.1.5 Observabilidad de los doce módulos y de los sitios, con tableros para el CLIENTE (H3)
@@ -400,8 +412,8 @@ LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
 • 3.4.2 Inventario por ubicación y lote, con FEFO y conteo cíclico (M2 Inventario)
 • 3.4.3 Preparación de pedidos en el turno de noche y en la cámara de congelado (M5 Prepa-
 ración)
-• 3.4.4 Cadena de frío, retención de lotes y retiro sanitario (M9 Calidad y trazabilidad)
-• 3.4.5 Ingesta de temperatura y posición de la flota (M12 Telemetría)
+• 3.4.4 Cadena de frío, retención por SSCC y retiro sanitario (M9 Calidad y trazabilidad)
+• 3.4.5 Ingesta de temperatura (M9) y posición de flota (M12)
 • 3.4.6 Aplicación móvil de preventa sin conexión, con stock y crédito (M3 Preventa)
 • 3.4.7 Planificación de rutas corregible por el planificador (M4 Rutas)
 • 3.4.8 Aplicación móvil de reparto con prueba de entrega digital (M6 Reparto)
@@ -410,6 +422,9 @@ ración)
 • 3.4.11 Indicadores operacionales y OTIF diario (M10 Analítica)
 • 3.5 Módulos de la Etapa 2
 • 3.5.1 Pedido electrónico y aviso de despacho para las cadenas, y portal de proveedores
+(M11 Canal moderno)
+• 3.5.2 Portal web de clientes: cuenta, saldo, entregas y documentos
+• 3.5.3 Portal web de transportistas: rutas asignadas del día siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -419,9 +434,6 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-(M11 Canal moderno)
-• 3.5.2 Portal web de clientes: cuenta, saldo, entregas y documentos
-• 3.5.3 Portal web de transportistas: rutas asignadas del día siguiente
 • 3.5.4 Costo de servir por cliente y por entrega (M10 Analítica)
 • 3.6 Integraciones externas
 • 3.6.1 Intercambio de lote y trazabilidad con los proveedores
@@ -454,6 +466,9 @@ Finanzas
 • 3.9.5 Prueba de seguridad ofensiva de la Etapa 2, por un tercero independiente
 • 3.9.6 Acta de certificación de la Etapa 2 y cierre del desarrollo (H10)
 • 3.9.7 Demostración en Preproducción del despliegue sin interrupción de la Etapa 2
+• 3.10 Innovaciones
+• 3.10.1 Innovación 1: seguimiento de vencimiento posentrega en el local
+• 3.10.1.1 Documento de catálogo de acciones y protocolo del piloto (INN-01.P1)
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -463,9 +478,6 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-• 3.10 Innovaciones
-• 3.10.1 Innovación 1: seguimiento de vencimiento posentrega en el local
-• 3.10.1.1 Documento de catálogo de acciones y protocolo del piloto (INN-01.P1)
 • 3.10.1.2 Estimador de saldo y ritmo de reposición (INN-01.P2)
 • 3.10.1.3 Función de lista sin conexión en la aplicación de preventa (INN-01.P3)
 • 3.10.1.4 Informe del piloto en marcha blanca y habilitación (INN-01.P4)
@@ -498,6 +510,9 @@ parte)
 docking
 • 4.1.2 Procedimiento de reversión de la Etapa 1 antes de las 05:30, con versión operativa
 local y DTE emitidos por el ERP
+• 4.1.3 Plan de implantación y reversión de la Etapa 2 fuera de la ventana de 05:30 a 07:00
+• 4.1.4 Piloto de cadena de frío en cuatro camiones
+• 4.2 Marcha blanca y producción de la Etapa 1
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -507,25 +522,24 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-• 4.1.3 Plan de implantación y reversión de la Etapa 2 fuera de la ventana de 05:30 a 07:00
-• 4.2 Marcha blanca y producción de la Etapa 1
 • 4.2.1 Marcha blanca de la Etapa 1 con conciliación diaria (H6)
 • 4.2.2 Estabilización de la Etapa 1 en el turno de noche y acompañamiento en ruta
-• 4.2.3 Acta de paso a producción y cierre de la Etapa 1 (H7)
+• 4.2.3 Acta de aceptación de la Etapa 1 (H7)
 • 4.3 Marcha blanca y producción de la Etapa 2
 • 4.3.1 Marcha blanca de la Etapa 2 en convivencia con la Etapa 1 y fuente única de datos
 (H11)
 • 4.3.2 Estabilización de la Etapa 2 con Comercial, Finanzas, cadenas y transportistas
-• 4.3.3 Acta de paso a producción y aceptación final de la implementación (H12)
+• 4.3.3 Acta de aceptación final de la implementación (H12)
 • 4.3.4 Garantía de correcto funcionamiento constituida, condición de la aceptación final
 (H12)
 • 5. Adquisiciones y contrataciones
 • 5.1 Hardware e infraestructura
-• 5.1.1 Especificación de compra del equipamiento de terreno para el CLIENTE
+• 5.1.1 Especificación de compra de equipos de uso para el CLIENTE
 • 5.1.2 Especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de
 borde
 • 5.1.3 Actas de recepción técnica del equipamiento de terreno comprado por el CLIENTE y
 de la infraestructura provista por LafroX
+• 5.1.4 Especificación y compra del sistema de cadena de frío
 • 5.2 Servicios de nube y licencias
 • 5.2.1 Contrato de los servicios de AWS
 • 5.2.2 Suscripción del servicio de gestión de dispositivos y de detección en endpoints
@@ -535,6 +549,7 @@ de la infraestructura provista por LafroX
 • 5.3.2 Contrato de planes LTE con dos proveedores (ocho planes)
 • 5.3.3 Contrato de Starlink para los cinco sitios: Talca, Concepción y las tres plataformas de
 cross-docking
+• 5.3.4 Contrato de SIM M2M y servicio satelital de los camiones con frío
 • 5.4 Acuerdos con terceros
 • 5.4.1 Acuerdos operacionales firmados con los diez transportistas
 • 5.4.2 Acta de acuerdo con el sindicato sobre terminales, GPS y cámaras
@@ -584,7 +599,7 @@ activo
 • 6.5.1 Terminales de preventa, reparto y bodega configurados y enrolados
 • 6.5.2 Terminales de pago configurados, uno por camión
 • 6.5.3 Sensores de cámara y gateways IoT instalados en Talca y Concepción
-• 6.5.4 Termógrafos instalados en los 28 camiones con frío (propios y de transportistas)
+• 6.5.4 Kit de cadena de frío instalado y recibido en los 28 camiones con frío
 • 6.5.5 Impresoras de cabina instaladas
 • 6.5.6 Impresoras de andén y balanzas de recepción instaladas
 • 6.6 Configuración de la infraestructura de los sitios
@@ -606,7 +621,7 @@ RabbitMQ y Keycloak
 • 7.1.1 Plan de capacitación por perfil: usuarios finales, avanzados, administradores, equipo
 técnico y soporte
 • 7.1.2 Programa de capacitación continua del turno de noche por la rotación del 38 %
-• 7.1.3 Procedimiento de incorporación de los conductores de los transportistas en el andén
+• 7.1.3 Incorporación de conductores de transportistas, escaneos y lectura del rojo
 • 7.1.4 Traspaso al equipo de TI de cuatro personas del CLIENTE
 • 7.1.5 Materiales de capacitación: manuales por perfil, guías rápidas, preguntas frecuentes
 y videos tutoriales
@@ -615,7 +630,7 @@ y videos tutoriales
 • 7.2.1 Acompañamiento del personal con 20 o 30 años en la compañía
 • 7.2.2 Gestión del cambio con las cadenas y los transportistas
 • 7.2.3 Diagnóstico del impacto organizacional por área y perfil, con agentes de cambio
-• 7.2.4 Procedimientos operativos afectados, rediseñados y documentados
+• 7.2.4 Procedimientos operativos rediseñados, contingencia de frío y ruptura confirmada
 • 7.2.5 Medición de la adopción y plan de acción correctiva
 • 7.3 Evaluaciones y certificaciones
 • 7.3.1 Certificación de preventistas, conductores y preparadores (Etapa 1)
@@ -769,7 +784,8 @@ H12 y la ruta crítica
 nivelación de recursos y
 frentes del solapamiento de
 los meses 13 a 15 y 19 a 20
-1.3.5 Minuta reunión
+1.3.5 Reunión semanal de
+seguimiento con su informe
 semanal
 1.4 Gestión de interesados y
 comunicaciones
@@ -786,10 +802,10 @@ impacto
 1.5 Gestión de calidad
 1.5.1 Plan de calidad y plan
 de pruebas
-1.5.2 Puertas de calidad
-automáticas en la cadena de
-integración (cobertura
-mínima del 80 %)
+1.5.2 Puertas de
+calidad: lógica 70 %,
+global 80 % y código
+modificado 80 %
 1.6 Gestión de riesgos
 1.6.1 Plan de riesgos y
 registro inicial de riesgos
@@ -800,8 +816,8 @@ Proyecto
 1.7 Plan de Reversibilidad
 1.7.1 Plan de Reversibilidad
 inicial (primeros 90 días)
-1.7.2 Actualizaciones
-anuales del Plan de
+1.7.2 Primera actualización
+anual del Plan de
 Reversibilidad durante la
 implementación
 1.8 Gobierno y control del
@@ -851,7 +867,7 @@ cumplimiento, seguros y
 certificados laborales
 vigentes durante el contrato
 2. Elaboración
-6 CC · 18 PT
+6 CC · 20 PT
 2.1 Arquitectura de la
 solución
 2.1.1 Documento de
@@ -995,12 +1011,12 @@ en el turno de noche y en la
 cámara de congelado (M5
 Preparación)
 3.4.4 Cadena de frío,
-retención de lotes y retiro
+retención por SSCC y retiro
 sanitario (M9 Calidad y
 trazabilidad)
-3.4.5 Ingesta de temperatura
-y posición de la flota (M12
-Telemetría)
+3.4.5 Ingesta de
+temperatura (M9) y
+posición de flota (M12)
 3.4.6 Aplicación móvil de
 preventa sin conexión, con
 stock y crédito (M3 Preventa)
@@ -1023,7 +1039,8 @@ operacionales y OTIF diario
 3.5 Módulos de la Etapa 2
 3.5.1 Pedido electrónico y
 aviso de despacho para las
-cadenas (M11 Canal
+cadenas, y portal de
+proveedores (M11 Canal
 moderno)
 3.5.2 Portal web de clientes:
 cuenta, saldo, entregas y
@@ -1078,10 +1095,13 @@ QA (H4)
 y de accesibilidad con
 preventistas, conductores y
 bodega
-3.8.3 Pruebas del perfil
-operacional: sin señal, sin
-enlace y a −22 °C con
-guantes
+3.8.3 Cinco condiciones
+físicas: −22 °C con
+guantes, lluvia, calor
+superior a 34 °C, sol directo
+y uso con una mano;
+desconexión separada de
+14 horas
 3.8.4 Pruebas de carga con
 el peak de septiembre y de
 resiliencia
@@ -1126,70 +1146,80 @@ de la Etapa 2
 seguimiento de
 vencimiento posentrega en
 el local
-3.10.1.1 Documento de
-catálogo de acciones y
-protocolo del piloto (INN-
-01.P1)
-3.10.1.2 Estimador de
-saldo y ritmo de
-reposición (INN-01.P2)
-3.10.1.3 Función de lista
-sin conexión en la
+3.10.1.1 Innovación 1:
+documento de catálogo
+de acciones y protocolo
+del piloto (INN-01.P1)
+3.10.1.2 Innovación 1:
+estimador de saldo y
+ritmo de reposición
+(INN-01.P2)
+3.10.1.3 Innovación 1:
+función de lista sin
+conexión en la
 aplicación de preventa
 (INN-01.P3)
-3.10.1.4 Informe del piloto
-en marcha blanca y
+3.10.1.4 Innovación 1:
+informe del piloto en
+marcha blanca y
 habilitación (INN-01.P4)
 3.10.2 Innovación 2:
 reproducción de incidentes
 de terreno
-3.10.2.1 Informe de
-medición inicial y contrato
-de evidencia (INN-02.P1)
-3.10.2.2 Circuito mínimo
-de reproducción en la
+3.10.2.1 Innovación 2:
+informe de medición
+inicial y contrato de
+evidencia (INN-02.P1)
+3.10.2.2 Innovación 2:
+circuito mínimo de
+reproducción en la
 preventa (INN-02.P2)
-3.10.2.3 Captura de
-evidencia en las
-aplicaciones de preventa,
-preparación y reparto
-(INN-02.P3)
-3.10.2.4 Informe de
-validación comparada
-durante la
+3.10.2.3 Innovación 2:
+captura de evidencia en
+las aplicaciones de
+preventa, preparación y
+reparto (INN-02.P3)
+3.10.2.4 Innovación 2:
+informe de validación
+comparada durante la
 implementación (INN-
 02.P4, primera parte)
 3.10.3 Innovación 3: vida
 útil remanente por historia
 térmica del lote
-3.10.3.1 Documento de
-familias priorizadas y
-parámetros aprobados
-(INN-03.P1)
-3.10.3.2 Asociación lote–
-sensor en el borde y en el
+3.10.3.1 Innovación 3:
+documento de familias
+priorizadas y parámetros
+aprobados (INN-03.P1)
+3.10.3.2 Innovación 3:
+asociación lote–sensor
+en el borde y en el
 camión (INN-03.P2)
-3.10.3.3 Vista en M9 y
-orden de salida sugerido
-(INN-03.P3)
-3.10.3.4 Informe de
-validación en marcha
-blanca con Calidad (INN-
-03.P4)
+3.10.3.3 Innovación 3:
+vista en M9 y orden de
+salida sugerido (INN-
+03.P3)
+3.10.3.4 Innovación 3:
+informe de validación en
+marcha blanca con
+Calidad (INN-03.P4)
 3.10.4 Innovación 5: hoja
 de negocio del almacenero
-3.10.4.1 Prototipo e
-informe de la prueba de
-comprensión (INN-05.P1)
-3.10.4.2 Evaluación de
-privacidad y diseño de la
-impresión en cabina (INN-
-05.P2)
-3.10.4.3 Cálculo y
-bloques 1 a 3 de la hoja
-de negocio (INN-05.P3)
-3.10.4.4 Hoja certificada,
-en marcha blanca y en
+3.10.4.1 Innovación 5:
+prototipo e informe de la
+prueba de comprensión
+(INN-05.P1)
+3.10.4.2 Innovación 5:
+evaluación de privacidad
+y diseño de la impresión
+en cabina (INN-05.P2)
+3.10.4.3 Innovación 5:
+cálculo y bloques 1 a 3
+de la hoja de negocio
+(INN-05.P3)
+3.10.4.4 Innovación 5:
+hoja certificada, en
+marcha blanca y en
 producción (INN-05.P4,
 primera parte)
 3.11 Documentación técnica
@@ -1212,16 +1242,17 @@ abierto
 fuente en el repositorio del
 CLIENTE en cada liberación
 4. Transición
-3 CC · 10 PT
+3 CC · 11 PT
 4.1 Plan de implantación
 4.1.1 Plan de olas de la
 Etapa 1 por sitio y zona:
 Talca, Concepción y
 plataformas de cross-docking
 4.1.2 Procedimiento de
-reversión de la Etapa 1 antes
-de las 05:30, con hoja de
-picking y guía en papel
+reversión de la Etapa 1
+antes de las 05:30, con
+versión operativa local y
+DTE emitidos por el ERP
 4.1.3 Plan de implantación y
 reversión de la Etapa 2 fuera
 de la ventana de 05:30 a
@@ -1232,10 +1263,11 @@ producción de la Etapa 1
 Etapa 1 con conciliación
 diaria (H6)
 4.2.2 Estabilización de la
-Etapa 1 en el turno de noche
-y acompañamiento en ruta
-4.2.3 Acta de paso a
-producción y cierre de la
+Etapa 1, acompañamiento
+en ruta y restauraciones de
+soporte puente
+4.2.3 Acta de
+aceptación de la
 Etapa 1 (H7)
 4.3 Marcha blanca y
 producción de la Etapa 2
@@ -1247,27 +1279,30 @@ datos (H11)
 Etapa 2 con Comercial,
 Finanzas, cadenas y
 transportistas
-4.3.3 Acta de paso a
-producción y aceptación final
-de la implementación (H12)
+4.3.3 Acta de
+aceptación final de la
+implementación (H12)
 4.3.4 Garantía de correcto
 funcionamiento constituida,
 condición de la aceptación
 final (H12)
 5. Adquisiciones y contrataciones
-4 CC · 13 PT
+4 CC · 15 PT
 5.1 Hardware e
 infraestructura
 5.1.1 Especificación de
-compra del equipamiento de
-terreno para el CLIENTE
-5.1.2 Especificación de
+compra de equipos de uso
+para el CLIENTE
+5.1.2 Especificación y
 compra de la sala técnica,
-los racks y los gabinetes de
-borde para el CLIENTE
+los racks, los servidores y
+los gabinetes de borde
 5.1.3 Actas de recepción
-técnica de los equipos
-comprados por el CLIENTE
+técnica del equipamiento
+de terreno comprado por el
+CLIENTE y de la
+infraestructura provista por
+LafroX
 5.2 Servicios de nube y
 licencias
 5.2.1 Contrato de los
@@ -1283,11 +1318,14 @@ comunicaciones
 5.3.1 Contrato de fibra óptica
 de los CD de Talca y
 Concepción
-5.3.2 Contrato de planes LTE
-con dos proveedores
+5.3.2 Contrato de planes
+LTE con dos proveedores
+(ocho planes)
 5.3.3 Contrato de Starlink
-para las tres plataformas de
-cross-docking
+para los cinco sitios: Talca,
+Concepción y las tres
+plataformas de cross-
+docking
 5.4 Acuerdos con terceros
 5.4.1 Acuerdos
 operacionales firmados con
@@ -1306,8 +1344,11 @@ independiente
 6 CC · 24 PT
 6.1 Adecuación de la sala
 técnica de Talca
-6.1.1 Obra civil y piso técnico
-de la sala
+6.1.1 Coordinación de la
+obra civil de separación, a
+cargo del CLIENTE (RT-
+06.06), y piso técnico de la
+sala
 6.1.2 Hardware de energía
 instalado: UPS modular N+1,
 generador con 24 horas de
@@ -1338,8 +1379,10 @@ Talca y Concepción
 gabinetes
 6.3.1 Rack R01 de
 servidores montado: clúster
-de tres nodos, respaldo local
-y consola KVM
+de tres nodos, respaldo
+local, consola KVM y
+traslado del servidor del
+ERP del CLIENTE
 6.3.2 Rack R02 de
 comunicaciones montado:
 firewalls, switches de núcleo
@@ -1347,12 +1390,15 @@ y de gestión, y distribución
 de fibra
 6.3.3 Gabinete de borde de
 Concepción montado:
-servidor, firewalls, switches,
+servidores activo y en
+espera, firewalls, switches,
 UPS, climatización y
 monitoreo
 6.3.4 Gabinetes de borde
-montados en Curicó, Chillán
-y Los Ángeles
+montados en Curicó,
+Chillán y Los Ángeles, con
+dos mini-PC (activo y en
+espera) por plataforma
 6.4 Sistemas de seguridad
 física
 6.4.1 Hardware de control de
@@ -1372,9 +1418,9 @@ camión
 6.5.3 Sensores de cámara y
 gateways IoT instalados en
 Talca y Concepción
-6.5.4 Termógrafos instalados
-en los 28 camiones con frío
-(propios y de transportistas)
+6.5.4 Kit de cadena de frío
+instalado y recibido en los
+28 camiones con frío
 6.5.5 Impresoras de cabina
 instaladas
 6.5.6 Impresoras de andén y
@@ -1405,10 +1451,10 @@ equipo técnico y soporte
 capacitación continua del
 turno de noche por la
 rotación del 38 %
-7.1.3 Procedimiento de
-incorporación de los
-conductores de los
-transportistas en el andén
+7.1.3 Incorporación de
+conductores de
+transportistas, escaneos y
+lectura del rojo
 7.1.4 Traspaso al equipo de
 TI de cuatro personas del
 CLIENTE
@@ -1432,8 +1478,9 @@ impacto organizacional por
 área y perfil, con agentes de
 cambio
 7.2.4 Procedimientos
-operativos afectados,
-rediseñados y documentados
+operativos rediseñados,
+contingencia de frío y
+ruptura confirmada
 7.2.5 Medición de la
 adopción y plan de acción
 correctiva
@@ -1470,8 +1517,9 @@ Reversibilidad durante los 36
 meses de operación
 8.1.5 Servicio de centro de
 operaciones de seguridad
-24×7 con SIEM durante los
-36 meses de operación
+24×7 con SIEM desde la
+primera marcha blanca
+(mes 13) hasta el mes 56
 8.1.6 Pruebas mensuales de
 restauración de respaldos
 durante los 36 meses de
@@ -1586,9 +1634,21 @@ acompañamiento de 90 días
 devolución o eliminación de
 datos personales
 Plataforma logística de Distribuidora Puelche
-49 cuentas de control · 222 paquetes de trabajo
-Figura 7.1 Vista panorámica de la EDT completa del proyecto. Para consultar el detalle por fase, véanse las láminas de la sección «Estructura general» del
-Subdocumento 7. Fuente: elaboración propia a partir de la EDT de este formulario.
+49 cuentas de control · 227 paquetes de trabajo
+2.4.3 Validación del diseño
+del kit en banco de pruebas
+2.4.4 Mapeo térmico por
+tipo de carrocería
+4.1.4 Piloto de cadena de
+frío en cuatro camiones
+5.1.4 Especificación y
+compra del sistema de
+cadena de frío
+5.3.4 Contrato de SIM M2M
+y servicio satelital de los
+camiones con frío
+Figura 1 Vista panorámica de la EDT completa del proyecto. Para consultar el detalle por fase, véanse las láminas de la sección «Estructura general» del
+Subdocumento 7. Fuente: estructura de descomposición del trabajo presentada en la sección 1 de este formulario.
 LafroX
 SpA
 Formulario
@@ -1603,10 +1663,10 @@ Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-La vista reúne las nueve fases, sus 49 cuentas de control y los 222 paquetes de trabajo en
+La vista reúne las nueve fases, sus 49 cuentas de control y los 227 paquetes de trabajo en
 una sola estructura. Las secciones siguientes desarrollan el diccionario y la programación
 asociados a esa descomposición.
-7.2 Diccionario de la EDT
+2 Diccionario de la EDT
 El diccionario describe cada paquete con su entregable, su criterio de aceptación, su
 responsable y el período del cronograma en que se ejecuta, con el hito del Formulario E-25
 que habilita cuando corresponde. Todo entregable se recibe con un acta de la Contraparte
@@ -1614,8 +1674,8 @@ Técnica (BA, art. 18.1, p. 13), que acompaña la evidencia de verificación, la
 los requerimientos del Formulario T-12 y las observaciones resueltas (BA, art. 18.2, p. 13). Los
 criterios de cada paquete se suman a esa regla común.
 Los responsables son los roles de la estructura para el proyecto del Capítulo 1, sección 1.5.
-La Tabla 7.2 presenta las siglas usadas en el diccionario.
-Tabla 7.2 Responsables de los paquetes. Fuente: elaboración a partir de LafroX (2026i, SD1, sec. 1.5).
+La Tabla 2 presenta las siglas usadas en el diccionario.
+Tabla 2 Responsables de los paquetes. Fuente: (Subdocumento 1, sección 1.5).
 Sigla Rol Persona
 JP Jefe de Proyecto Alex Aravena
 ARQ Arquitecto de Solución Bastián Trejo
@@ -1642,77 +1702,68 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-7.2.1 Fase 1. Inicio
+2.1 Fase 1. Inicio
 La fase 1 reúne 9 cuentas de control y 35 paquetes de trabajo.
-7.2.1.1 Cuenta 1.1 — Definición inicial del proyecto
+2.1.1 Cuenta 1.1 — Definición inicial del proyecto
 Esta cuenta de control reúne los tres documentos con que el proyecto arranca formalmente.
-La Tabla 7.3 presenta sus paquetes.
-Tabla 7.3 Diccionario de la cuenta 1.1. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+La Tabla 3 presenta sus paquetes.
+Tabla 3 Diccionario de la cuenta 1.1. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-1.1.1 Acta de cons-
-titución del
-proyecto, fir-
-mada con la
-Contraparte
-Técnica
-Acta firmada
-por LafroX y
-Puelche.
-Está firmada
-en el mes 1 e
-identifica al pa-
-trocinador, a
-la Contraparte
+1.1.1 Acta de constitu-
+ción del proyecto,
+firmada con la Con-
+traparte Técnica
+Acta firmada por
+LafroX y Puelche.
+Está firmada en el
+mes 1 e identifica
+al patrocinador,
+a la Contraparte
 Técnica, al Jefe
-de Proyecto y
-los objetivos.
+de Proyecto y los
+objetivos.
 JP Mes 1.
 1.1.2 Documento de
-validación con
-el CLIENTE de
-los problemas
-y metas del
-proyecto
+validación con el
+CLIENTE de los
+problemas y metas
+del proyecto
 Documento de
-validación con
-los cambios
-acordados, si
-los hay.
-Las gerencias
-del CLIENTE
-confirman
-por escrito los
-problemas y
-las metas.
+validación con los
+cambios acordados,
+si los hay.
+Las gerencias del
+CLIENTE confir-
+man por escrito
+los problemas y las
+metas.
 JP Mes 1.
-1.1.3 Acta de con-
-firmación con
-el CLIENTE
-de la fecha de
-inicio, la evi-
-dencia para
-el proveedor
-de lácteos, las
-ventanas de
-paso a produc-
-ción y el acuse
-tributario
-Acta con la
-respuesta del
-CLIENTE a
+1.1.3 Acta de confirma-
+ción con el CLIEN-
+TE de la fecha de
+inicio, la evidencia
+para el proveedor
+de lácteos, las ven-
+tanas de paso a
+producción y el
+acuse tributario
+Acta con la respues-
+ta del CLIENTE a
 cada tema.
-Los cuatro
-temas tienen
-una respuesta
-escrita incor-
-porada al plan.
+Los cuatro temas
+tienen una respues-
+ta escrita incorpora-
+da al plan.
 JP Mes 1, antes
 del H1.
+2.1.2 Cuenta 1.2 — Alcance del proyecto
+Esta cuenta de control fija qué se construye y deja todo listo para diseñar. Incluye la captura
+del conocimiento del planificador y el levantamiento de las interfaces, porque ambos son
+insumos del alcance.
+La Tabla 4 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -1722,64 +1773,92 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-7.2.1.2 Cuenta 1.2 — Alcance del proyecto
-Esta cuenta de control fija qué se construye y deja todo listo para diseñar. Incluye la captura
-del conocimiento del planificador y el levantamiento de las interfaces, porque ambos son
-insumos del alcance.
-La Tabla 7.4 presenta sus paquetes.
-Tabla 7.4 Diccionario de la cuenta 1.2. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 4 Diccionario de la cuenta 1.2. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
 1.2.1 Documento de
-especificación
-de requeri-
-mientos y
-línea base de
-alcance de la
-Etapa 1 (H1)
-Especificación
-de requeri-
-mientos apro-
-bada (línea
-base de alcan-
-ce).
+especificación de
+requerimientos
+y línea base de
+alcance de la Etapa
+1 (H1)
+Especificación de
+requerimientos
+aprobada (línea
+base de alcance).
 El 100 % de los
-requerimien-
-tos de la Etapa
-1 tiene módulo
-y criterio de
-aceptación, y
-la línea base
-está firmada
-en el mes 2.
+requerimientos
+de la Etapa 1 tiene
+módulo y criterio
+de aceptación, y
+la línea base está
+firmada en el mes 2.
 ARQ Mes 1 (H1).
 1.2.2 Documento de
 reglas de ruteo
-capturadas al
-planificador de
-rutas
-Catálogo de
-reglas de ruteo
-validado por
-don Hugo.
-Don Hugo fir-
-ma que las
-reglas repre-
-sentan su crite-
-rio. Las rutas
-que el software
-genera con
-esas reglas
-resultan opera-
-bles cuando se
-comparan con
+capturadas al plani-
+ficador de rutas
+Catálogo de reglas
+de ruteo validado
+por don Hugo.
+Don Hugo firma
+que las reglas repre-
+sentan su criterio.
+Las rutas que el
+software genera con
+esas reglas resultan
+operables cuando
+se comparan con
 las suyas.
 IMP Meses 1 a 3.
-continúa en la página siguiente
+1.2.3 Documento de es-
+pecificación de las
+interfaces sin docu-
+mentación del ERP,
+del WMS de 2013 y
+de la telemetría del
+tercero
+Especificación
+de cada interfaz
+(formato, volumen
+y horario) y prueba
+de conexión.
+Cada interfaz tie-
+ne contrato y una
+prueba de cone-
+xión exitosa en el
+ambiente de De-
+sarrollo antes del
+H2.
+ARQ Meses 1 a 4.
+1.2.4 Matriz de trazabili-
+dad: requerimiento,
+módulo, paquete y
+prueba (H1)
+Matriz de trazabili-
+dad.
+Ningún requeri-
+miento ofertado
+queda sin paquete
+ni sin prueba.
+CAL Mes 2 (H1). Se
+actualiza con
+cada cambio
+aprobado.
+1.2.5 Documento de línea
+base de alcance de
+la Etapa 2: canal
+moderno y costo de
+servir (H8)
+Línea base de al-
+cance de la Etapa
+2.
+Está aprobada por
+la Contraparte Téc-
+nica en el mes 14.
+ARQ Mes 13 (H8).
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -1789,73 +1868,81 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.4 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-1.2.3 Documento
-de especifi-
-cación de las
-interfaces sin
-documenta-
-ción del ERP,
-del WMS de
-2013 y de la
-telemetría del
-tercero
-Especificación
-de cada inter-
-faz (formato,
-volumen y ho-
-rario) y prueba
-de conexión.
-Cada interfaz
-tiene contrato
-y una prueba
-de conexión
-exitosa en el
-ambiente de
-Desarrollo
-antes del H2.
-ARQ Meses 1 a 4.
-1.2.4 Matriz de tra-
-zabilidad: re-
-querimiento,
-módulo, pa-
-quete y prueba
-(H1)
-Matriz de tra-
-zabilidad.
-Ningún re-
-querimiento
-ofertado queda
-sin paquete ni
-sin prueba.
-CAL Mes 2 (H1). Se
-actualiza con
-cada cambio
-aprobado.
-1.2.5 Documento de
-línea base de
-alcance de la
-Etapa 2: canal
-moderno y
-costo de servir
-(H8)
-Línea base de
-alcance de la
-Etapa 2.
-Está aprobada
-por la Contra-
-parte Técnica
-en el mes 14.
-ARQ Mes 13 (H8).
-7.2.1.3 Cuenta 1.3 — Planificación del proyecto
+2.1.3 Cuenta 1.3 — Planificación del proyecto
 Esta cuenta de control reúne los documentos que dicen cómo y cuándo se hará el trabajo, y
 los informes que muestran si se cumple.
-La Tabla 7.5 presenta sus paquetes.
+La Tabla 5 presenta sus paquetes.
+Tabla 5 Diccionario de la cuenta 1.3. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
+Resp. Período
+1.3.1 Plan para la direc-
+ción del proyecto,
+con el calendario
+de congelamientos
+de septiembre, di-
+ciembre y el cierre
+mensual
+Plan para la direc-
+ción con el calenda-
+rio de congelamien-
+tos.
+Ningún paso a pro-
+ducción, corte de
+datos ni desplie-
+gue cae en una
+fecha prohibida;
+los meses 16 y 21
+coinciden con el
+Art. 17°; el plan está
+aprobado.
+JP Mes 1 (H1). Se
+actualiza con
+cada cambio.
+1.3.2 EDT y diccionario
+de la EDT (línea
+base del alcance)
+EDT dibujada y dic-
+cionario aprobados.
+Todo requerimiento
+de la matriz (1.2.4)
+cae en un paquete,
+y ningún paquete
+queda sin responsa-
+ble.
+JP Mes 2 (H1).
+1.3.3 Carta Gantt de 56
+meses con los hitos
+H1 a H12 y la ruta
+crítica
+Carta Gantt aproba-
+da.
+Cubre los 56 meses,
+respeta el Art. 17° y
+nombra la ruta críti-
+ca con su cálculo.
+JP Mes 2.
+1.3.4 Documento de nive-
+lación de recursos
+y frentes del sola-
+pamiento de los
+meses 13 a 15 y 19 a
+20
+Nivelación de recur-
+sos por etapa y por
+frente.
+Ningún mes asigna
+a una persona por
+sobre su capacidad,
+y los dos frentes
+del solapamiento
+tienen dotación
+propia.
+JP Mes 2. Se revisa
+antes del mes
+13.
+continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -1865,95 +1952,61 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.5 Diccionario de la cuenta 1.3. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 5 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-1.3.1 Plan para la
-dirección del
-proyecto, con
-el calendario
-de congela-
-mientos de
-septiembre,
-diciembre y el
-cierre mensual
-Plan para la
-dirección con
-el calendario
-de congela-
-mientos.
-Ningún paso
-a producción,
-corte de datos
-ni despliegue
-cae en una fe-
-cha prohibida;
-los meses 16 y
-21 coinciden
-con el Art. 17°;
-el plan está
-aprobado.
-JP Mes 1 (H1). Se
-actualiza con
-cada cambio.
-1.3.2 EDT y diccio-
-nario de la
-EDT (línea ba-
-se del alcance)
-EDT dibujada
-y diccionario
-aprobados.
-Todo requeri-
-miento de la
-matriz (1.2.4)
-cae en un
-paquete, y
-ningún paque-
-te queda sin
-responsable.
-JP Mes 2 (H1).
-1.3.3 Carta Gantt de
-56 meses con
-los hitos H1 a
-H12 y la ruta
-crítica
-Carta Gantt
-aprobada.
-Cubre los 56
-meses, respeta
-el Art. 17° y
-nombra la ruta
-crítica con su
-cálculo.
-JP Mes 2.
-1.3.4 Documento
-de nivelación
-de recursos
-y frentes del
-solapamiento
-de los meses
-13 a 15 y 19 a
-20
-Nivelación de
-recursos por
-etapa y por
-frente.
-Ningún mes
-asigna a una
-persona por
-sobre su ca-
-pacidad, y los
-dos frentes del
-solapamiento
-tienen dota-
-ción propia.
-JP Mes 2. Se re-
-visa antes del
-mes 13.
+1.3.5 Reunión semanal
+de seguimiento con
+su informe semanal
+Una reunión y un
+informe por sema-
+na.
+La reunión se hace
+cada semana, y su
+informe se publica
+con el avance por
+paquete y las des-
+viaciones frente al
+cronograma.
+JP Semanal, du-
+rante toda la
+implementa-
+ción.
+2.1.4 Cuenta 1.4 — Gestión de interesados y comunicaciones
+Esta cuenta de control reúne el trabajo con las personas que pueden apoyar o frenar el
+proyecto, y el lugar donde se toman las decisiones.
+La Tabla 6 presenta sus paquetes.
+Tabla 6 Diccionario de la cuenta 1.4. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
+Resp. Período
+1.4.1 Registro de intere-
+sados con su in-
+fluencia, interés y
+estrategia
+Registro de interesa-
+dos.
+Están los 17 grupos,
+cada uno con un
+responsable de
+la relación, y el
+registro se revisa
+antes de cada ola de
+implantación.
+JP Mes 1.
+1.4.2 Plan de comunica-
+ciones con calen-
+dario y canales por
+grupo de interés
+Plan de comunica-
+ciones.
+Cada grupo del
+registro tiene su
+mensaje, su canal y
+su frecuencia.
+JP Mes 1.
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -1964,62 +2017,47 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.5 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 6 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-1.3.5 Reunión se-
-manal de se-
-guimiento con
-su informe
-semanal
-Una reunión
-y un informe
-por semana.
-La reunión
-se hace cada
-semana, y su
-informe se
-publica con
-el avance por
-paquete y las
-desviaciones
-frente al cro-
-nograma.
-JP Semanal, du-
-rante toda la
-implementa-
-ción.
-7.2.1.4 Cuenta 1.4 — Gestión de interesados y comunicaciones
-Esta cuenta de control reúne el trabajo con las personas que pueden apoyar o frenar el
-proyecto, y el lugar donde se toman las decisiones.
-La Tabla 7.6 presenta sus paquetes.
-Tabla 7.6 Diccionario de la cuenta 1.4. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+1.4.3 Registro de solicitu-
+des de cambio con
+análisis de impacto
+Registro de solici-
+tudes de cambio
+con su análisis de
+impacto.
+Cada solicitud tie-
+ne su análisis de
+impacto y la deci-
+sión del Comité
+Ejecutivo, y ningún
+cambio se ejecuta
+sin aprobación.
+JP Durante todo el
+contrato.
+2.1.5 Cuenta 1.5 — Gestión de calidad
+Esta cuenta de control reúne las reglas que impiden que algo defectuoso llegue a los usua-
+rios.
+La Tabla 7 presenta sus paquetes.
+Tabla 7 Diccionario de la cuenta 1.5. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-1.4.1 Registro de
-interesados
-con su influen-
-cia, interés y
-estrategia
-Registro de
-interesados.
-Están los 17
-grupos, cada
-uno con un
-responsable de
-la relación, y
-el registro se
-revisa antes
-de cada ola de
-implantación.
-JP Mes 1.
+1.5.1 Plan de calidad y
+plan de pruebas
+Plan de calidad y
+plan de pruebas
+aprobados.
+Cada tipo de prue-
+ba que exigen las
+Bases tiene su am-
+biente, su calenda-
+rio y su criterio de
+salida.
+CAL Mes 2.
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -2030,51 +2068,45 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.6 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 7 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-1.4.2 Plan de comu-
-nicaciones
-con calenda-
-rio y canales
-por grupo de
-interés
-Plan de comu-
-nicaciones.
-Cada grupo del
-registro tiene
-su mensaje,
-su canal y su
-frecuencia.
-JP Mes 1.
-1.4.3 Registro de
-solicitudes de
-cambio con
-análisis de
-impacto
-Registro de
-solicitudes de
-cambio con
-su análisis de
-impacto.
-Cada solicitud
-tiene su análi-
-sis de impacto
-y la decisión
-del Comité Eje-
-cutivo, y nin-
-gún cambio
-se ejecuta sin
-aprobación.
-JP Durante todo
-el contrato.
-7.2.1.5 Cuenta 1.5 — Gestión de calidad
-Esta cuenta de control reúne las reglas que impiden que algo defectuoso llegue a los usua-
-rios.
-La Tabla 7.7 presenta sus paquetes.
+1.5.2 Puertas de calidad
+automáticas: cober-
+tura de lógica de
+negocio del 70 %,
+global del 80 % y del
+código modificado
+del 80 %
+Puertas activas con
+informe separado
+para cada ámbito.
+Se bloquea una
+versión si incum-
+ple cualquiera de
+los tres mínimos:
+lógica de negocio
+70 % (RT-04.11), glo-
+bal 80 % y código
+modificado 80 %
+(políticas de calidad
+de la oferta). Los
+denominadores y
+resultados se infor-
+man por separado;
+ninguna versión
+llega a Preproduc-
+ción con pruebas en
+falla.
+CAL Desde que exis-
+te la cadena
+de integración
+(3.1.4).
+2.1.6 Cuenta 1.6 — Gestión de riesgos
+Esta cuenta de control mantiene vivo el registro de riesgos y verifica que cada respuesta se
+ejecute.
+La Tabla 8 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -2084,71 +2116,60 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.7 Diccionario de la cuenta 1.5. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 8 Diccionario de la cuenta 1.6. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-1.5.1 Plan de cali-
-dad y plan de
-pruebas
-Plan de ca-
-lidad y plan
-de pruebas
-aprobados.
-Cada tipo de
-prueba que
-exigen las
-Bases tiene su
-ambiente, su
-calendario y
-su criterio de
-salida.
-CAL Mes 2.
-1.5.2 Puertas de
-calidad auto-
-máticas en
-la cadena de
-integración
-(cobertura uni-
-taria global del
-80 % y de lógi-
-ca de negocio
-del 70 %)
-Puertas activas
-en la cadena
-de integra-
-ción, con su
-informe de
-métricas.
-Una versión
-queda blo-
-queada si la
-cobertura uni-
-taria global
-es inferior al
-80 % (política
-del SD1) o si
-la cobertura
-de la lógica de
-negocio de los
-módulos es
-inferior al 70 %
-(RT-04.11); nin-
-guna llega a
-Preproducción
-con pruebas
-en falla.
-CAL Desde que
-existe la cade-
-na de integra-
-ción (3.1.4).
-7.2.1.6 Cuenta 1.6 — Gestión de riesgos
-Esta cuenta de control mantiene vivo el registro de riesgos y verifica que cada respuesta se
-ejecute.
-La Tabla 7.8 presenta sus paquetes.
+1.6.1 Plan de riesgos y
+registro inicial de
+riesgos según ISO
+31000
+Plan de riesgos y
+registro inicial.
+Cada riesgo tiene
+dueño, disparador
+y respuesta, y cada
+respuesta tiene
+un paquete o una
+actividad en la EDT.
+JP Mes 2.
+1.6.2 Registro de riesgos
+revisado en cada
+Comité de Proyecto
+Registro actualizado
+con su historial.
+El registro se revi-
+sa en cada Comi-
+té de Proyecto, y
+cada cambio de
+evaluación queda
+registrado.
+JP Quincenal, du-
+rante toda la
+implementa-
+ción.
+2.1.7 Cuenta 1.7 — Plan de Reversibilidad
+Esta cuenta de control asegura que Puelche pueda cambiar de proveedor o asumir la
+operación sin interrumpir el servicio. Lo exige el artículo 77 de las Bases Administrativas (p.
+39).
+La Tabla 9 presenta sus paquetes.
+Tabla 9 Diccionario de la cuenta 1.7. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
+Resp. Período
+1.7.1 Plan de Reversibili-
+dad inicial (prime-
+ros 90 días)
+Plan de Reversibili-
+dad.
+Se entrega dentro
+de los primeros 90
+días con sus cuatro
+contenidos.
+JP Hasta el mes 3.
+continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -2158,55 +2179,61 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.8 Diccionario de la cuenta 1.6. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 9 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-1.6.1 Plan de ries-
-gos y registro
-inicial de ries-
-gos según ISO
-31000
-Plan de ries-
-gos y registro
-inicial.
-Cada riesgo
-tiene dueño,
-disparador y
-respuesta, y
-cada respuesta
-tiene un pa-
-quete o una
-actividad en la
-EDT.
-JP Mes 2.
-1.6.2 Registro de
-riesgos revi-
-sado en cada
-Comité de
-Proyecto
-Registro actua-
-lizado con su
-historial.
-El registro se
-revisa en cada
-Comité de Pro-
-yecto, y cada
-cambio de eva-
-luación queda
-registrado.
-JP Quincenal, du-
+1.7.2 Primera actualiza-
+ción anual del Plan
+de Reversibilidad
+durante la imple-
+mentación
+Plan actualizado. El inventario coinci-
+de con lo instalado
+a la fecha de la ac-
+tualización.
+JP Mes 15, al cum-
+plirse un año
+de la entrega
+de 1.7.1; las
+actualizaciones
+de los meses 27,
+39 y 51 son el
+paquete 8.1.4
+(Art. 77.2).
+2.1.8 Cuenta 1.8 — Gobierno y control del proyecto
+Esta cuenta de control reúne las instancias de gobierno que el artículo 71 de las Bases
+Administrativas (p. 37) hace obligatorias para ambas partes, y los mecanismos de control y
+reporte del capítulo 19 de las Bases Técnicas Transversales. Las actas de todos los comités
+se levantan dentro de los dos días hábiles siguientes, con acuerdos, responsables y plazos
+(RT-19.09).
+La Tabla 10 presenta sus paquetes.
+Tabla 10 Diccionario de la cuenta 1.8. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
+Resp. Período
+1.8.1 Oficina de gestión
+del proyecto con
+metodología basada
+en el PMBOK
+Oficina constituida,
+con su manual de
+procedimientos y
+sus plantillas.
+Los procesos de
+alcance, cronogra-
+ma, costos, riesgos,
+cambios y comu-
+nicaciones tienen
+procedimiento y
+responsable desde
+el mes 1.
+JP Mes 1, y du-
 rante toda la
 implementa-
 ción.
-7.2.1.7 Cuenta 1.7 — Plan de Reversibilidad
-Esta cuenta de control asegura que Puelche pueda cambiar de proveedor o asumir la
-operación sin interrumpir el servicio. Lo exige el artículo 77 de las Bases Administrativas (p.
-39).
-La Tabla 7.9 presenta sus paquetes.
+continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -2216,56 +2243,99 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.9 Diccionario de la cuenta 1.7. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 10 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-1.7.1 Plan de Re-
-versibilidad
-inicial (prime-
-ros 90 días)
-Plan de Rever-
-sibilidad.
-Se entrega
-dentro de
-los primeros
-90 días con
-sus cuatro
-contenidos.
-JP Hasta el mes 3.
-1.7.2 Primera actua-
-lización anual
-del Plan de
-Reversibilidad
+1.8.2 Actas del Comité
+Ejecutivo mensual,
+con la aprobación
+de los cambios de
+alcance
+Un acta por reunión
+mensual, con las
+decisiones y los
+cambios aprobados
+o rechazados.
+Hay un acta por
+mes, levantada
+dentro de dos días
+hábiles, y todo
+cambio ejecutado
+tiene su aprobación
+previa en un acta.
+JP Mensual, du-
+rante todo el
+contrato.
+1.8.3 Actas del Comité de
+Proyecto quincenal
+Un acta por reunión
+quincenal.
+Hay un acta cada
+quince días, levan-
+tada dentro de dos
+días hábiles.
+JP Quincenal,
 durante la im-
-plementación
-Plan actualiza-
-do.
-El inventario
-coincide con
-lo instalado a
-la fecha de la
-actualización.
-JP Mes 15, al
-cumplirse un
-año de la en-
-trega de 1.7.1;
-las actuali-
-zaciones de
-los meses 27,
-39 y 51 son el
-paquete 8.1.4
-(Art. 77.2).
-7.2.1.8 Cuenta 1.8 — Gobierno y control del proyecto
-Esta cuenta de control reúne las instancias de gobierno que el artículo 71 de las Bases
-Administrativas (p. 37) hace obligatorias para ambas partes, y los mecanismos de control y
-reporte del capítulo 19 de las Bases Técnicas Transversales. Las actas de todos los comités
-se levantan dentro de los dos días hábiles siguientes, con acuerdos, responsables y plazos
-(RT-19.09).
-La Tabla 7.10 presenta sus paquetes.
+plementación.
+1.8.4 Actas del Comité
+de Arquitectura
+mensual
+Un acta por reunión
+mensual, con las
+decisiones de arqui-
+tectura registradas.
+Hay un acta por
+mes, y cada deci-
+sión aprobada está
+en el registro de
+decisiones de arqui-
+tectura.
+ARQ Mensual, du-
+rante todo el
+contrato.
+1.8.5 Actas del Comité de
+Operación mensual,
+desde el mes 13
+Un acta por reunión
+mensual, desde el
+mes 13 hasta el mes
+56.
+Hay un acta por
+mes, levantada
+dentro de dos días
+hábiles.
+SRE Mensual, me-
+ses 13 a 56.
+1.8.6 Informe mensual
+de avance con valor
+ganado
+Un informe por
+mes.
+Cada informe trae
+los índices de valor
+ganado, y cada
+desviación mayor al
+10 % tiene su aviso
+y su plan dentro de
+cinco días hábiles.
+JP Mensual, du-
+rante la imple-
+mentación.
+1.8.7 Tablero de esta-
+do del proyecto
+disponible para el
+CLIENTE
+Tablero publicado,
+con acceso para el
+CLIENTE.
+El CLIENTE accede
+en todo momento,
+y los datos coinci-
+den con el último
+informe.
+JP Desde el mes 2.
+continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -2275,100 +2345,63 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.10 Diccionario de la cuenta 1.8. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 10 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-1.8.1 Oficina de
-gestión del
-proyecto con
-metodología
-basada en el
-PMBOK
-Oficina consti-
-tuida, con su
-manual de pro-
-cedimientos y
-sus plantillas.
-Los procesos
-de alcance,
-cronograma,
-costos, ries-
-gos, cambios
-y comunica-
-ciones tienen
-procedimiento
-y responsable
-desde el mes 1.
-JP Mes 1, y du-
-rante toda la
-implementa-
-ción.
-1.8.2 Actas del Co-
-mité Ejecutivo
-mensual, con
-la aprobación
-de los cambios
-de alcance
-Un acta por
-reunión men-
-sual, con las
-decisiones y
-los cambios
-aprobados o
-rechazados.
-Hay un acta
-por mes, le-
-vantada dentro
-de dos días
-hábiles, y todo
-cambio ejecu-
-tado tiene su
-aprobación
-previa en un
-acta.
-JP Mensual, du-
-rante todo el
-contrato.
-1.8.3 Actas del Co-
-mité de Pro-
-yecto quince-
-nal
-Un acta por
-reunión quin-
-cenal.
-Hay un acta
-cada quince
-días, levantada
-dentro de dos
-días hábiles.
-JP Quincenal,
-durante la im-
-plementación.
-1.8.4 Actas del Co-
-mité de Ar-
-quitectura
-mensual
-Un acta por
-reunión men-
-sual, con las
-decisiones de
-arquitectura
-registradas.
-Hay un acta
-por mes, y ca-
-da decisión
-aprobada está
-en el registro
-de decisiones
-de arquitectu-
-ra.
-ARQ Mensual, du-
-rante todo el
-contrato.
+1.8.8 Espacio colabo-
+rativo con la do-
+cumentación, los
+entregables, las ac-
+tas, los riesgos y los
+cambios
+Espacio colabo-
+rativo habilitado,
+con acceso para el
+CLIENTE.
+Cada entregable
+aceptado y cada
+acta están en el es-
+pacio, en su versión
+vigente.
+JP Desde el mes 1.
+2.1.9 Cuenta 1.9 — Cumplimiento normativo y contractual
+Esta cuenta de control reúne las obligaciones legales y contractuales que no producen
+software, pero que el contrato exige mantener y acreditar: cumplimiento normativo, datos
+personales, certificación de seguridad, garantías, seguros y obligaciones laborales.
+La Tabla 11 presenta sus paquetes.
+Tabla 11 Diccionario de la cuenta 1.9. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
+Resp. Período
+1.9.1 Matriz de cumpli-
+miento normativo
+por obligación legal,
+con su control y su
+evidencia
+Matriz de cumpli-
+miento normativo.
+Cada obligación
+aplicable tiene su
+control y su eviden-
+cia, y la matriz está
+aprobada por el
+CLIENTE.
+SEG Mes 1, y ac-
+tualizada ante
+cada cambio
+normativo.
+1.9.2 Acuerdo de trata-
+miento de datos
+personales con el
+CLIENTE
+Acuerdo firmado. Está firmado antes
+de tratar datos
+reales; es decir,
+antes de cargar el
+maestro (3.7.2).
+SEG Mes 1.
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -2379,92 +2412,70 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.10 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 11 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-1.8.5 Actas del Co-
-mité de Opera-
-ción mensual,
-desde el mes
-13
-Un acta por
-reunión men-
-sual, desde el
-mes 13 hasta el
-mes 56.
-Hay un acta
-por mes, le-
-vantada dentro
-de dos días
-hábiles.
-SRE Mensual, me-
-ses 13 a 56.
-1.8.6 Informe men-
-sual de avance
-con valor gana-
-do
-Un informe
+1.9.3 Registro de activida-
+des de tratamiento
+y evaluación de im-
+pacto en protección
+de datos
+Registro de trata-
+mientos y evaluacio-
+nes de impacto.
+Cada tratamiento
+tiene su registro;
+los de alto riesgo
+tienen evaluación
+de impacto; hay
+una contraparte
+designada.
+SEG Mes 2, y actuali-
+zado ante cada
+tratamiento
+nuevo.
+1.9.4 Certificación
+ISO/IEC 27001 vi-
+gente y entrega
+anual de los infor-
+mes de certificación
+Certificación vi-
+gente durante el
+contrato e informe
+anual de certifica-
+ciones.
+La certificación
+nunca está vencida,
+y hay un informe
+entregado cada año.
+SEG Anual, durante
+todo el contra-
+to.
+1.9.5 Garantía de fiel
+cumplimiento, se-
+guros y certificados
+laborales vigentes
+durante el contrato
+Garantía constitui-
+da, pólizas acredi-
+tadas cada año y
+certificados labora-
+les mensuales.
+Ninguna garantía
+ni póliza queda
+vencida, y hay un
+certificado laboral
 por mes.
-Cada informe
-trae los índi-
-ces de valor
-ganado, y ca-
-da desviación
-mayor al 10 %
-tiene su aviso y
-su plan dentro
-de cinco días
-hábiles.
-JP Mensual, du-
-rante la imple-
-mentación.
-1.8.7 Tablero de
-estado del
-proyecto dis-
-ponible para el
-CLIENTE
-Tablero pu-
-blicado, con
-acceso para el
-CLIENTE.
-El CLIENTE
-accede en todo
-momento,
-y los datos
-coinciden
-con el último
-informe.
-JP Desde el mes
-2.
-1.8.8 Espacio cola-
-borativo con
-la documen-
-tación, los
-entregables,
-las actas, los
-riesgos y los
-cambios
-Espacio co-
-laborativo
-habilitado, con
-acceso para el
-CLIENTE.
-Cada entrega-
-ble aceptado y
-cada acta están
-en el espacio,
-en su versión
-vigente.
-JP Desde el mes
-1.
-7.2.1.9 Cuenta 1.9 — Cumplimiento normativo y contractual
-Esta cuenta de control reúne las obligaciones legales y contractuales que no producen
-software, pero que el contrato exige mantener y acreditar: cumplimiento normativo, datos
-personales, certificación de seguridad, garantías, seguros y obligaciones laborales.
-La Tabla 7.11 presenta sus paquetes.
+JP Desde la adju-
+dicación hasta
+el término del
+contrato.
+2.2 Fase 2. Elaboración
+La fase 2 reúne 6 cuentas de control y 20 paquetes de trabajo.
+2.2.1 Cuenta 2.1 — Arquitectura de la solución
+Esta cuenta de control reúne los planos técnicos del software y de su emplazamiento.
+La Tabla 12 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -2474,96 +2485,65 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.11 Diccionario de la cuenta 1.9. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 12 Diccionario de la cuenta 2.1. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-1.9.1 Matriz de cum-
-plimiento
-normativo por
-obligación
-legal, con su
-control y su
-evidencia
-Matriz de cum-
-plimiento
-normativo.
-Cada obliga-
-ción aplica-
-ble tiene su
-control y su
-evidencia, y
-la matriz está
-aprobada por
-el CLIENTE.
-SEG Mes 1, y ac-
-tualizada ante
-cada cambio
-normativo.
-1.9.2 Acuerdo de
-tratamiento
-de datos per-
-sonales con el
-CLIENTE
-Acuerdo firma-
-do.
-Está firmado
-antes de tratar
-datos reales;
-es decir, an-
-tes de cargar
-el maestro
-(3.7.2).
-SEG Mes 1.
-1.9.3 Registro de
-actividades de
-tratamiento
-y evaluación
-de impacto en
-protección de
-datos
-Registro de
-tratamientos y
-evaluaciones
-de impacto.
-Cada trata-
-miento tiene
-su registro;
-los de alto
-riesgo tienen
-evaluación de
-impacto; hay
-una contrapar-
-te designada.
-SEG Mes 2, y actua-
-lizado ante ca-
-da tratamiento
-nuevo.
-1.9.4 Certificación
-ISO/IEC 27001
-vigente y entre-
-ga anual de los
-informes de
-certificación
-Certificación
-vigente duran-
-te el contrato e
-informe anual
-de certificacio-
-nes.
-La certifica-
-ción nunca
-está vencida, y
-hay un infor-
-me entregado
-cada año.
-SEG Anual, durante
-todo el contra-
-to.
-continúa en la página siguiente
+2.1.1 Documento de
+arquitectura lógica:
+capas, módulos M1
+a M12 e interfaces
+Documento de
+arquitectura lógica.
+Está aprobado en el
+H2, y cada requeri-
+miento de la línea
+base apunta a un
+módulo.
+ARQ Mes 2 (H2).
+2.1.2 Documento de ar-
+quitectura física
+híbrida: nube, cen-
+tros de distribución
+y plataformas de
+cross-docking
+Documento de
+arquitectura física.
+Está aprobado en el
+H2, y cada compo-
+nente tiene su lugar
+y su razón.
+ARQ Mes 2 (H2).
+2.1.3 Modelo de datos
+y diccionario de
+datos, con la traza-
+bilidad por lote
+Modelo de datos
+y diccionario de
+datos.
+Está aprobado en
+el H2, y un retiro
+simulado recorre
+un lote desde la
+recepción hasta sus
+clientes.
+DAT Mes 2 (H2).
+2.1.4 Documento de dise-
+ño detallado de M11
+y del intercambio
+con las cadenas
+Documento de
+diseño detallado de
+la Etapa 2.
+Está aprobado en
+el H8 y no cambia
+ningún contrato de
+la Etapa 1.
+ARQ Mes 13 (H8).
+2.2.2 Cuenta 2.2 — Diseño de la seguridad
+Esta cuenta de control define cómo se protegen los datos y los accesos.
+La Tabla 13 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -2573,66 +2553,68 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.11 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 13 Diccionario de la cuenta 2.2. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-1.9.5 Garantía de
-fiel cumpli-
-miento, segu-
-ros y certifica-
-dos laborales
-vigentes duran-
-te el contrato
-Garantía cons-
-tituida, pólizas
-acreditadas
-cada año y
-certificados
-laborales men-
-suales.
-Ninguna ga-
-rantía ni póliza
-queda vencida,
-y hay un certi-
-ficado laboral
-por mes.
-JP Desde la adju-
-dicación hasta
-el término del
-contrato.
-7.2.2 Fase 2. Elaboración
-La fase 2 reúne 6 cuentas de control y 18 paquetes de trabajo.
-7.2.2.1 Cuenta 2.1 — Arquitectura de la solución
-Esta cuenta de control reúne los planos técnicos del software y de su emplazamiento.
-La Tabla 7.12 presenta sus paquetes.
-Tabla 7.12 Diccionario de la cuenta 2.1. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-2.1.1 Documento de
-arquitectura
-lógica: capas,
-módulos M1 a
-M12 e interfa-
-ces
-Documento de
-arquitectura
-lógica.
-Está aproba-
-do en el H2,
-y cada reque-
-rimiento de
-la línea base
-apunta a un
-módulo.
-ARQ Mes 2 (H2).
-continúa en la página siguiente
+2.2.1 Plan de seguridad
+de la información
+Plan de seguridad. Está aprobado en el
+H2, y cada requisito
+de seguridad del T-
+12 tiene su control.
+SEG Mes 2 (H2).
+2.2.2 Modelado de ame-
+nazas por compo-
+nente y por inte-
+gración externa,
+actualizado ante
+cada cambio
+Modelo de amena-
+zas con sus contro-
+les.
+Cada amenaza alta
+tiene un control
+probado o un riesgo
+aceptado por escri-
+to por el CLIENTE.
+SEG Meses 3 a 10,
+y ante cada
+cambio de
+arquitectura.
+2.2.3 Plan de respuesta
+a incidentes de
+seguridad, con
+aviso al CLIENTE
+en dos horas
+Plan de respuesta
+a incidentes de
+seguridad.
+El plan define la
+clasificación, el
+escalamiento, los
+plazos y los respon-
+sables, y se ensaya
+una vez antes del
+H5.
+SEG Mes 3.
+2.2.4 Matriz de clasifi-
+cación de la infor-
+mación y matriz de
+controles
+Las dos matrices. Cada tipo de dato
+tiene su nivel, y ca-
+da nivel tiene sus
+controles imple-
+mentados.
+SEG Mes 2 (con el
+H2).
+2.2.3 Cuenta 2.3 — Diseño de la sala técnica y de los racks
+Esta cuenta de control reúne los planos de la infraestructura física que se instala en la fase
+6. La sala actual de Talca tiene 25 m², un aire acondicionado de pared y una UPS que dura 10
+minutos, y no cumple el estándar exigido (Caso, cap. 5 y 16).
+La Tabla 14 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -2642,67 +2624,55 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.12 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 14 Diccionario de la cuenta 2.3. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-2.1.2 Documento
-de arquitec-
-tura física
-híbrida: nu-
-be, centros de
-distribución y
-plataformas de
+2.3.1 Plano de la sala téc-
+nica de Talca, con
+su cálculo eléctrico
+y térmico
+Plano y memoria de
+cálculo.
+La potencia y la
+climatización cal-
+culadas cubren la
+carga de diseño con
+redundancia N+1.
+SRE Meses 1 y 2.
+2.3.2 Plano de distribu-
+ción de los racks
+R01 de servidores
+y R02 de comunica-
+ciones
+Plano de distribu-
+ción de los racks.
+Los servidores y las
+comunicaciones
+quedan en racks se-
+parados (RT-06.05),
+y cada equipo tiene
+doble alimentación
+(RT-08.04).
+SRE Meses 1 y 2.
+2.3.3 Plano de los gabi-
+netes de borde de
+Concepción y de
+las plataformas de
 cross-docking
-Documento de
-arquitectura
-física.
-Está aproba-
-do en el H2, y
-cada compo-
-nente tiene
-su lugar y su
-razón.
-ARQ Mes 2 (H2).
-2.1.3 Modelo de
-datos y dic-
-cionario de
-datos, con la
-trazabilidad
-por lote
-Modelo de
-datos y dic-
-cionario de
-datos.
-Está aprobado
-en el H2, y un
-retiro simula-
-do recorre un
-lote desde la
-recepción has-
-ta sus clientes.
-DAT Mes 2 (H2).
-2.1.4 Documento de
-diseño deta-
-llado de M11 y
-del intercam-
-bio con las
-cadenas
-Documento
-de diseño
-detallado de la
-Etapa 2.
-Está aprobado
-en el H8 y no
-cambia ningún
-contrato de la
-Etapa 1.
-ARQ Mes 13 (H8).
-7.2.2.2 Cuenta 2.2 — Diseño de la seguridad
-Esta cuenta de control define cómo se protegen los datos y los accesos.
-La Tabla 7.13 presenta sus paquetes.
+Planos de los gabi-
+netes.
+Cada gabinete sos-
+tiene su sitio ope-
+rando sin enlace
+durante el tiempo
+declarado.
+SRE Mes 2.
+2.2.4 Cuenta 2.4 — Validación de diseños
+Esta cuenta de control reúne las dos actas que cierran las fases de Elaboración y dan acceso
+a los hitos de pago.
+La Tabla 15 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -2712,86 +2682,64 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.13 Diccionario de la cuenta 2.2. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 15 Diccionario de la cuenta 2.4. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-2.2.1 Plan de segu-
-ridad de la
-información
-Plan de seguri-
-dad.
-Está aprobado
-en el H2, y
-cada requisito
-de seguridad
-del T-12 tiene
-su control.
-SEG Mes 2 (H2).
-2.2.2 Modelado de
-amenazas por
-componente
-y por integra-
-ción externa,
-actualizado an-
-te cada cambio
-Modelo de
-amenazas con
-sus controles.
-Cada amenaza
-alta tiene un
-control proba-
-do o un riesgo
-aceptado por
-escrito por el
-CLIENTE.
-SEG Meses 3 a 10,
-y ante cada
-cambio de
-arquitectura.
-2.2.3 Plan de res-
-puesta a in-
-cidentes de
-seguridad,
-con aviso al
-CLIENTE en
-dos horas
-Plan de res-
-puesta a in-
-cidentes de
-seguridad.
-El plan define
-la clasificación,
-el escalamien-
-to, los plazos
-y los respon-
-sables, y se
-ensaya una vez
-antes del H5.
-SEG Mes 3.
-2.2.4 Matriz de cla-
-sificación de
-la información
-y matriz de
-controles
-Las dos matri-
-ces.
-Cada tipo de
-dato tiene su
-nivel, y cada
-nivel tiene sus
-controles im-
-plementados.
-SEG Mes 2 (con el
-H2).
-7.2.2.3 Cuenta 2.3 — Diseño de la sala técnica y de los racks
-Esta cuenta de control reúne los planos de la infraestructura física que se instala en la fase
-6. La sala actual de Talca tiene 25 m², un aire acondicionado de pared y una UPS que dura 10
-minutos, y no cumple el estándar exigido (Caso, cap. 5 y 16).
-La Tabla 7.14 presenta sus paquetes.
+2.4.1 Acta de aprobación
+de la arquitectura,
+el plan de seguridad
+y el modelo de
+datos (H2)
+Acta del H2. Está firmada en el
+mes 4, sin observa-
+ciones abiertas.
+ARQ Mes 4 (H2).
+2.4.2 Acta de aprobación
+del diseño detallado
+de la Etapa 2 (H8)
+Acta del H8. Está firmada en el
+mes 14.
+ARQ Mes 13; aproba-
+ción en el mes
+14 (H8).
+2.4.3 Validación del dise-
+ño del kit en banco
+de pruebas
+Kit completo vali-
+dado con carga de
+ensayo
+V1–V3, V5–V8, V11,
+V13, V14, V16, V17
+y V19 aprobadas
+y registradas, sin
+alimento comercial.
+SRE Mes 3; antes
+del mapeo y del
+piloto.
+2.4.4 Mapeo térmico por
+tipo de carrocería
+Punto crítico, volu-
+men de botellas y
+tolerancias por tipo
+de caja
+V4 compara núcleo
+de producto de en-
+sayo, simuladores
+y aire; Calidad del
+CLIENTE valida
+punto y tolerancias
+con LafroX.
+ARQ Mes 4; antes
+del piloto.
+2.2.5 Cuenta 2.5 — Continuidad del negocio
+Esta cuenta de control reúne los planes que dicen cómo sigue operando Puelche si la so-
+lución, un sitio o un proveedor fallan. Va más allá de la recuperación técnica (3.1.3): incluye
+contingencias auxiliares manuales cuando el proceso las admite. El despacho de 96 camio-
+nes entre 05:30 y 07:00 requiere continuidad tecnológica probada, sin sustitución manual ni
+interrupción.
+La Tabla 16 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -2801,71 +2749,57 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.14 Diccionario de la cuenta 2.3. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 16 Diccionario de la cuenta 2.5. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-2.3.1 Plano de la
-sala técnica
-de Talca, con
-su cálculo
-eléctrico y
-térmico
-Plano y memo-
-ria de cálculo.
-La potencia
-y la climati-
-zación calcu-
-ladas cubren
-la carga de
-diseño con
-redundancia
-N+1.
-SRE Meses 1 y 2.
-2.3.2 Plano de dis-
-tribución de
-los racks R01
-de servidores
-y R02 de comu-
-nicaciones
-Plano de distri-
-bución de los
-racks.
-Los servidores
-y las comu-
-nicaciones
-quedan en
-racks separa-
-dos (RT-06.05),
-y cada equipo
-tiene doble
-alimentación
-(RT-08.04).
-SRE Meses 1 y 2.
-2.3.3 Plano de los
-gabinetes
-de borde de
-Concepción
-y de las pla-
-taformas de
-cross-docking
-Planos de los
-gabinetes.
-Cada gabinete
-sostiene su
-sitio operan-
-do sin enlace
-durante el
-tiempo decla-
-rado.
-SRE Mes 2.
-7.2.2.4 Cuenta 2.4 — Validación de diseños
-Esta cuenta de control reúne las dos actas que cierran las fases de Elaboración y dan acceso
-a los hitos de pago.
-La Tabla 7.15 presenta sus paquetes.
+2.5.1 Plan de continuidad
+del negocio según
+ISO 22301, con
+análisis de impacto
+y procedimientos
+manuales
+Plan de continuidad
+del negocio con su
+análisis de impacto.
+Cada proceso iden-
+tifica continuidad y
+activación aproba-
+das por CLIENTE;
+sólo admite apo-
+yo manual donde
+corresponda. El des-
+pacho crítico exige
+cero interrupción
+y flujo tecnológi-
+co/DTE probado,
+independientemen-
+te del RTO general.
+SRE Mes 3.
+2.5.2 Plan de continuidad
+TIC según ISO/IEC
+27031 y plan de
+recuperación ante
+desastres
+Plan de continui-
+dad TIC y plan de
+recuperación ante
+desastres.
+Los dos planes es-
+tán articulados con
+el plan de continui-
+dad del negocio,
+y el RTO y el RPO
+coinciden con los
+comprometidos.
+SRE Mes 3.
+2.2.6 Cuenta 2.6 — Experiencia de usuario
+Esta cuenta de control reúne el trabajo de diseñar la solución con las personas que la van
+a usar, antes de construirla. Lo exige el artículo 26 de las Bases Administrativas (p. 18). En
+Puelche es decisivo: preparadores con guantes a −22 °C, preventistas sin señal, conductores
+externos que se incorporan en minutos y almaceneros sin internet.
+La Tabla 17 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -2875,40 +2809,60 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.15 Diccionario de la cuenta 2.4. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 17 Diccionario de la cuenta 2.6. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-2.4.1 Acta de apro-
-bación de la
-arquitectu-
-ra, el plan de
-seguridad y
-el modelo de
-datos (H2)
-Acta del H2. Está firmada
-en el mes 4,
-sin observacio-
-nes abiertas.
-ARQ Mes 4 (H2).
-2.4.2 Acta de apro-
-bación del
-diseño detalla-
-do de la Etapa
-2 (H8)
-Acta del H8. Está firmada
-en el mes 14.
-ARQ Mes 14 (H8).
-7.2.2.5 Cuenta 2.5 — Continuidad del negocio
-Esta cuenta de control reúne los planes que dicen cómo sigue operando Puelche si la so-
-lución, un sitio o un proveedor fallan. Va más allá de la recuperación técnica (3.1.3): incluye
-contingencias auxiliares manuales cuando el proceso las admite. El despacho de 96 camio-
-nes entre 05:30 y 07:00 requiere continuidad tecnológica probada, sin sustitución manual ni
-interrupción.
-La Tabla 7.16 presenta sus paquetes.
+2.6.1 Investigación con
+preparadores, pre-
+ventistas, conducto-
+res y almaceneros
+Informe de investi-
+gación de usuarios
+por perfil.
+Cada perfil opera-
+cional tiene sus
+tareas críticas y sus
+condiciones de uso
+documentadas.
+IMP Mes 2.
+2.6.2 Prototipos y prue-
+bas de usabilidad
+con participantes
+del CLIENTE
+Prototipos e infor-
+me de las pruebas
+de usabilidad.
+Cada flujo crítico se
+probó con usuarios
+de su perfil, y los
+hallazgos están
+incorporados al
+diseño antes de
+construir el módulo
+(D-05).
+IMP Mes 3.
+2.6.3 Indicadores de usa-
+bilidad comprometi-
+dos por transacción
+crítica
+Tabla de indicado-
+res de usabilidad.
+Cada transacción
+crítica tiene sus
+cuatro indicadores,
+que se verifican
+en las pruebas de
+aceptación (3.8.2).
+IMP Mes 4.
+2.3 Fase 3. Construcción
+La fase 3 reúne 11 cuentas de control y 79 paquetes de trabajo.
+2.3.1 Cuenta 3.1 — Ambientes y cadena de desarrollo
+Esta cuenta de control reúne los lugares donde el software se construye, se prueba y se
+ejecuta, y las herramientas que lo mueven entre ellos. Las Bases exigen cinco ambientes:
+Desarrollo, QA, Preproducción, Producción y Recuperación ante desastres.
+La Tabla 18 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -2918,73 +2872,91 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.16 Diccionario de la cuenta 2.5. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 18 Diccionario de la cuenta 3.1. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-2.5.1 Plan de con-
-tinuidad del
-negocio según
-ISO 22301, con
-análisis de
-impacto y pro-
-cedimientos
-manuales
-Plan de con-
-tinuidad del
-negocio con
-su análisis de
-impacto.
-Cada proce-
-so identifica
-continuidad
-y activación
-aprobadas por
-CLIENTE; sólo
-admite apoyo
-manual donde
-corresponda.
-El despacho
-crítico exige
-cero interrup-
-ción y flujo tec-
-nológico/DTE
-probado, in-
-dependiente-
-mente del RTO
-general.
-SRE Mes 3.
-2.5.2 Plan de con-
-tinuidad TIC
-según ISO/IEC
-27031 y plan
-de recupe-
-ración ante
-desastres
-Plan de conti-
-nuidad TIC y
-plan de recu-
-peración ante
-desastres.
-Los dos planes
-están articula-
-dos con el plan
-de continuidad
-del negocio,
-y el RTO y el
-RPO coinciden
-con los com-
-prometidos.
-SRE Mes 3.
-7.2.2.6 Cuenta 2.6 — Experiencia de usuario
-Esta cuenta de control reúne el trabajo de diseñar la solución con las personas que la van
-a usar, antes de construirla. Lo exige el artículo 26 de las Bases Administrativas (p. 18). En
-Puelche es decisivo: preparadores con guantes a −22 °C, preventistas sin señal, conductores
-externos que se incorporan en minutos y almaceneros sin internet.
-La Tabla 7.17 presenta sus paquetes.
+3.1.1 Ambientes de De-
+sarrollo y QA en la
+nube (H3)
+Ambientes de Desa-
+rrollo y QA operati-
+vos.
+La cadena de inte-
+gración despliega
+todos los módulos
+en ambos ambien-
+tes.
+SRE Hasta el mes 5
+(H3).
+3.1.2 Ambientes de Pre-
+producción y Pro-
+ducción en la nube
+(H3)
+Ambientes de Pre-
+producción y Pro-
+ducción operativos.
+La misma versión
+del software pasa de
+QA a Preproducción
+y a Producción sin
+volver a compilarse;
+toda diferencia
+de escala entre
+Preproducción y
+Producción está
+declarada.
+SRE Hasta el mes 5
+(H3).
+3.1.3 Ambiente de re-
+cuperación ante
+desastres en la re-
+gión secundaria
+(H3)
+Ambiente de recu-
+peración habilitado,
+con su procedimien-
+to de conmutación.
+El ambiente está
+habilitado en el H3.
+La prueba real se
+hace en 3.8.5.
+SRE Hasta el mes 5
+(H3).
+3.1.4 Cadena de inte-
+gración y entrega
+continua, e infra-
+estructura como
+código
+Cadena operativa
+y repositorio de
+infraestructura
+como código.
+Un cambio pasa por
+la cadena hasta QA
+sin intervención
+manual; los am-
+bientes se pueden
+recrear desde el
+repositorio.
+SRE Mes 4.
+3.1.5 Observabilidad de
+los doce módulos
+y de los sitios, con
+tableros para el
+CLIENTE (H3)
+Tableros y alertas
+operativos.
+Cada módulo y cada
+sitio publica sus
+indicadores con
+alertas configura-
+das.
+SRE Hasta el mes
+5 (H3: «con
+observabilidad
+operativa»).
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -2994,75 +2966,73 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.17 Diccionario de la cuenta 2.6. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+2.3.2 Cuenta 3.2 — Servicios de nube de la plataforma
+Esta cuenta de control reúne la puesta en marcha de cada servicio de nube del T-11, antes
+de que el software lo use. Contratar el servicio no basta: hay que configurarlo según el plan de
+seguridad y conectarlo a la observabilidad.
+La Tabla 19 presenta sus paquetes.
+Tabla 19 Diccionario de la cuenta 3.2. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-2.6.1 Investigación
-con prepara-
-dores, pre-
-ventistas, con-
-ductores y
-almaceneros
-Informe de
-investigación
-de usuarios
-por perfil.
-Cada perfil
-operacional
-tiene sus ta-
-reas críticas
-y sus condi-
-ciones de uso
-documenta-
-das.
-IMP Mes 2.
-2.6.2 Prototipos y
-pruebas de
-usabilidad con
-participantes
-del CLIENTE
-Prototipos e
-informe de
-las pruebas de
-usabilidad.
-Cada flujo crí-
-tico se probó
-con usuarios
-de su perfil, y
-los hallazgos
-están incor-
-porados al
-diseño antes
-de construir el
-módulo (D-05).
-IMP Mes 3.
-2.6.3 Indicadores
-de usabilidad
-comprometi-
-dos por tran-
-sacción crítica
-Tabla de in-
-dicadores de
-usabilidad.
-Cada transac-
-ción crítica
-tiene sus cua-
-tro indicado-
-res, que se
-verifican en
-las pruebas
-de aceptación
-(3.8.2).
-IMP Mes 4.
-7.2.3 Fase 3. Construcción
-La fase 3 reúne 11 cuentas de control y 79 paquetes de trabajo.
-7.2.3.1 Cuenta 3.1 — Ambientes y cadena de desarrollo
-Esta cuenta de control reúne los lugares donde el software se construye, se prueba y se
-ejecuta, y las herramientas que lo mueven entre ellos. Las Bases exigen cinco ambientes:
+3.2.1 Servicio de nube
+para la aplicación y
+los portales
+Servicio configura-
+do.
+El software se des-
+pliega en él y cum-
+ple el plan de segu-
+ridad.
+SRE Mes 4.
+3.2.2 Servicio de nube
+de base de datos,
+caché y mensajería
+Servicio configura-
+do.
+La base de datos
+replica a la región
+secundaria y las
+colas entregan
+los mensajes sin
+duplicarlos.
+SRE Mes 4.
+3.2.3 Servicio de nube
+de ingesta de IoT,
+telemetría cruda y
+plataforma analítica
+Servicio configura-
+do.
+Las lecturas de un
+sensor de prueba
+llegan al almacén
+analítico.
+SRE Mes 4.
+3.2.4 Servicio de nube de
+respaldo inmutable
+y réplica entre
+regiones
+Servicio configura-
+do, con su política
+de retención.
+Una restauración de
+prueba recupera los
+datos.
+SRE Mes 4.
+3.2.5 Servicio de nube
+de seguridad y go-
+bierno, y detección
+en endpoints
+Servicio configura-
+do.
+Los controles del
+plan de seguridad
+están activos y los
+equipos físicos re-
+portan a la consola.
+SEG Mes 4.
+continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -3072,73 +3042,68 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Desarrollo, QA, Preproducción, Producción y Recuperación ante desastres.
-La Tabla 7.18 presenta sus paquetes.
-Tabla 7.18 Diccionario de la cuenta 3.1. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 19 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.1.1 Ambientes de
-Desarrollo y
-QA en la nube
-(H3)
-Ambientes de
-Desarrollo y
-QA operativos.
-La cadena de
-integración
-despliega to-
-dos los módu-
-los en ambos
-ambientes.
-SRE Hasta el mes 5
-(H3).
-3.1.2 Ambientes de
-Preproducción
-y Producción
-en la nube
-(H3)
-Ambientes de
-Preproducción
-y Producción
-operativos.
-La misma
-versión del
-software pasa
-de QA a Pre-
-producción y
-a Producción
-sin volver a
-compilarse;
-toda diferencia
-de escala entre
-Preproducción
-y Producción
-está declarada.
-SRE Hasta el mes 5
-(H3).
-3.1.3 Ambiente de
-recuperación
-ante desastres
-en la región
-secundaria
-(H3)
-Ambiente de
-recuperación
-habilitado,
-con su proce-
-dimiento de
-conmutación.
-El ambiente
-está habilitado
-en el H3. La
-prueba real se
-hace en 3.8.5.
-SRE Hasta el mes 5
-(H3).
+3.2.6 Servicio de gestión
+de dispositivos
+móviles
+Servicio configura-
+do.
+Un terminal de
+prueba se enrola,
+recibe la aplica-
+ción y se borra a
+distancia.
+SRE Antes del en-
+rolamiento de
+los terminales
+(6.5.1).
+2.3.3 Cuenta 3.3 — Base compartida
+Esta cuenta de control reúne los servicios de software que usan los doce módulos. Se
+construyen primero porque, si fallan, fallan todos los módulos a la vez.
+La Tabla 20 presenta sus paquetes.
+Tabla 20 Diccionario de la cuenta 3.3. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
+Resp. Período
+3.3.1 Identidad y control
+de acceso, incluidos
+los conductores
+externos que rotan
+sin aviso
+Identidad y control
+de acceso funcio-
+nando en QA.
+Un conductor ex-
+terno nuevo se
+habilita en el andén
+y pierde el acce-
+so al terminar; la
+identidad funciona
+durante un corte de
+24 horas.
+SEG Antes del H4.
+3.3.2 Integración con el
+ERP como único
+emisor de la guía de
+despacho (INT-06 e
+INT-07)
+Integración en QA. Toda guía la emite
+el ERP; cada entre-
+ga se concilia con
+su guía el mismo
+día; una caída del
+ERP no detiene el
+despacho.
+ARQ Meses 5 y 6;
+termina antes
+de la prueba de
+integración del
+H4 (T-15, Tabla
+6.1).
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -3149,57 +3114,60 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.18 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 20 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.1.4 Cadena de
-integración y
-entrega conti-
-nua, e infraes-
-tructura como
-código
-Cadena opera-
-tiva y reposito-
-rio de infraes-
-tructura como
-código.
-Un cambio
-pasa por la ca-
-dena hasta QA
-sin interven-
-ción manual;
-los ambientes
-se pueden re-
-crear desde el
-repositorio.
-SRE Mes 4.
-3.1.5 Observabi-
-lidad de los
-doce módulos
-y de los sitios,
-con tableros
-para el CLIEN-
-TE (H3)
-Tableros y aler-
-tas operativos.
-Cada módulo
-y cada sitio
-publica sus
-indicadores
-con alertas
-configuradas.
-SRE Hasta el mes
-5 (H3: «con
-observabilidad
-operativa»).
-7.2.3.2 Cuenta 3.2 — Servicios de nube de la plataforma
-Esta cuenta de control reúne la puesta en marcha de cada servicio de nube del T-11, antes
-de que el software lo use. Contratar el servicio no basta: hay que configurarlo según el plan de
-seguridad y conectarlo a la observabilidad.
-La Tabla 7.19 presenta sus paquetes.
+3.3.3 Convivencia con el
+WMS de 2013 duran-
+te el reemplazo
+Mecanismo de
+convivencia y pro-
+cedimiento para
+apagar el WMS.
+No hay doble es-
+critura de stock
+durante la conviven-
+cia.
+ARQ Antes del H4.
+3.3.4 Integración con la
+telemetría de los 42
+camiones propios
+(INT-15)
+Integración en QA. M12 recibe la po-
+sición de los 42
+camiones.
+ARQ Antes del H4.
+3.3.5 Registro auditable
+de stock, lotes y
+cobros
+Registro auditable
+en QA.
+Toda operación de
+stock, lote y cobro
+queda registrada y
+se puede consultar.
+ARQ Antes del H4.
+3.3.6 Operación sin co-
+nexión: 14 horas en
+terreno y 24 horas
+en el CD
+Mecanismo de ope-
+ración sin conexión
+en QA.
+En Preproducción,
+una jornada de 14
+horas sin señal y un
+corte de 24 horas
+del CD terminan sin
+pedidos perdidos ni
+duplicados.
+ARQ Antes del H4.
+2.3.4 Cuenta 3.4 — Módulos de la Etapa 1
+Esta cuenta de control reúne los once programas que la Etapa 1 pone en producción en el
+mes 16. Cada uno es un paquete. Se construye por iteraciones de RUP y entra al H4 (mes 10)
+con QA superado.
+La Tabla 21 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -3209,84 +3177,77 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.19 Diccionario de la cuenta 3.2. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 21 Diccionario de la cuenta 3.4. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.2.1 Servicio de
-nube para la
-aplicación y
-los portales
-Servicio confi-
-gurado.
-El software se
-despliega en
-él y cumple
-el plan de
-seguridad.
-SRE Mes 4.
-3.2.2 Servicio de nu-
-be de base de
-datos, caché y
-mensajería
-Servicio confi-
-gurado.
-La base de
-datos replica
-a la región
-secundaria
-y las colas
-entregan los
-mensajes sin
-duplicarlos.
-SRE Mes 4.
-3.2.3 Servicio de nu-
-be de ingesta
-de IoT, tele-
-metría cruda
-y plataforma
-analítica
-Servicio confi-
-gurado.
-Las lecturas de
-un sensor de
-prueba llegan
-al almacén
-analítico.
-SRE Mes 4.
-3.2.4 Servicio de nu-
-be de respaldo
-inmutable y
-réplica entre
-regiones
-Servicio con-
-figurado, con
-su política de
-retención.
-Una restaura-
-ción de prueba
-recupera los
-datos.
-SRE Mes 4.
-3.2.5 Servicio de
-nube de se-
-guridad y
-gobierno, y
-detección en
-endpoints
-Servicio confi-
-gurado.
-Los controles
-del plan de se-
-guridad están
-activos y los
-equipos físicos
-reportan a la
-consola.
-SEG Mes 4.
+3.4.1 Recepción de mer-
+cadería con captura
+de lote y vencimien-
+to (M1 Recepción)
+M1 en QA. Los requerimien-
+tos del T-12 asig-
+nados al módulo
+pasan sus pruebas;
+además, ningún
+producto con traza-
+bilidad obligatoria
+se recibe sin lote.
+DES H4.
+3.4.2 Inventario por ubi-
+cación y lote, con
+FEFO y conteo cícli-
+co (M2 Inventario)
+M2 en QA. Los requerimientos
+del T-12 asignados
+al módulo pasan
+sus pruebas; ade-
+más, cada diferen-
+cia de conteo queda
+con su causa.
+DES H4.
+3.4.3 Preparación de pe-
+didos en el turno de
+noche y en la cáma-
+ra de congelado (M5
+Preparación)
+M5 en QA. Los requerimientos
+del T-12 asignados
+al módulo pasan
+sus pruebas; ade-
+más, se opera con
+guantes en el termi-
+nal de congelado, y
+cada faltante queda
+con su causa.
+DES Meses 5 a 7;
+construye des-
+pués de los
+contratos de
+3.4.1/3.4.2 e
+integra después
+de su entrega
+(D-16).
+3.4.4 Cadena de frío, re-
+tención por SSCC y
+retiro sanitario (M9
+Calidad y trazabili-
+dad)
+M9 y doble evalua-
+ción del TC58e en
+QA.
+Reglas por familia,
+acción por defecto,
+exposición de an-
+dén, disposición y
+protocolo de rup-
+tura; V6–V15 y V21
+con retención por
+SSCC; retiro en
+menos de 2 h.
+DES H4, antes del
+piloto.
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -3297,62 +3258,82 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.19 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 21 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.2.6 Servicio de
-gestión de
-dispositivos
-móviles
-Servicio confi-
-gurado.
-Un terminal
-de prueba se
-enrola, recibe
-la aplicación
-y se borra a
-distancia.
-SRE Antes del en-
-rolamiento de
-los terminales
-(6.5.1).
-7.2.3.3 Cuenta 3.3 — Base compartida
-Esta cuenta de control reúne los servicios de software que usan los doce módulos. Se
-construyen primero porque, si fallan, fallan todos los módulos a la vez.
-La Tabla 7.20 presenta sus paquetes.
-Tabla 7.20 Diccionario de la cuenta 3.3. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-3.3.1 Identidad y
-control de ac-
-ceso, incluidos
-los conducto-
-res externos
-que rotan sin
-aviso
-Identidad y
-control de
-acceso fun-
-cionando en
-QA.
-Un conductor
-externo nuevo
-se habilita en
-el andén y pier-
-de el acceso
-al terminar; la
-identidad fun-
-ciona durante
-un corte de 24
-horas.
-SEG Antes del H4.
+3.4.5 Ingesta de tempera-
+tura (M9) y posición
+de flota (M12)
+Greengrass de ca-
+mión, ingesta móvil
+y satelital M9; posi-
+ción M12 en QA.
+Temperatura a car-
+go de M9 con IoT
+Core y CloudCon-
+nect/SQS; móvil
+y satélite siempre
+activos, sin pérdi-
+das ni duplicados;
+M12 conserva solo
+posición.
+DES H4, antes del
+piloto.
+3.4.6 Aplicación móvil
+de preventa sin co-
+nexión, con stock y
+crédito (M3 Preven-
+ta)
+M3 en QA. Los requerimientos
+del T-12 asignados
+al módulo pasan
+sus pruebas; ade-
+más, ningún pedido
+se pierde ni se du-
+plica al recuperar la
+señal.
+DES H4.
+3.4.7 Planificación de
+rutas corregible por
+el planificador (M4
+Rutas)
+M4 en QA. Los requerimientos
+del T-12 asignados
+al módulo pasan
+sus pruebas; ade-
+más, la ruta se ge-
+nera en menos de
+20 minutos y don
+Hugo la valida.
+DES Meses 5 a 8;
+construye des-
+pués de los
+contratos de
+3.4.3 y 3.4.6 e
+integra después
+de su entrega
+(D-18); H4.
+3.4.8 Aplicación móvil de
+reparto con prueba
+de entrega digital
+(M6 Reparto)
+M6 en QA. Los requerimientos
+del T-12 asignados
+al módulo pasan
+sus pruebas; ade-
+más, funciona sin
+señal, y la prueba
+de entrega llega al
+ERP el mismo día.
+DES Meses 5 a 8;
+construye des-
+pués de los
+contratos de
+3.4.3 y 3.4.6 e
+integra después
+de su entrega
+(D-18); H4.
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -3363,75 +3344,63 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.20 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 21 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.3.2 Integración
-con el ERP
-como único
-emisor de
-la guía de
-despacho (INT-
-06 e INT-07)
-Integración en
-QA.
-Toda guía la
-emite el ERP;
-cada entrega
-se concilia
-con su guía
-el mismo día;
-una caída
-del ERP no
-detiene el
-despacho.
-ARQ Meses 5 y 6;
-termina antes
-de la prueba
-de integración
-del H4 (T-15,
-Tabla 6.1).
-3.3.3 Convivencia
-con el WMS de
-2013 durante
-el reemplazo
-Mecanismo de
-convivencia y
-procedimiento
-para apagar el
-WMS.
-No hay doble
-escritura de
-stock durante
-la convivencia.
-ARQ Antes del H4.
-3.3.4 Integración
-con la teleme-
-tría de los 42
-camiones pro-
-pios (INT-15)
-Integración en
-QA.
-M12 recibe la
-posición de los
-42 camiones.
-ARQ Antes del H4.
-3.3.5 Registro audi-
-table de stock,
-lotes y cobros
-Registro audi-
-table en QA.
-Toda opera-
-ción de stock,
-lote y cobro
-queda registra-
-da y se puede
-consultar.
-ARQ Antes del H4.
-continúa en la página siguiente
+3.4.9 Devoluciones en
+terreno y control
+de envases (M8
+Devoluciones y
+envases)
+M8 en QA. Los requerimientos
+del T-12 asignados
+al módulo pasan
+sus pruebas; ade-
+más, cada devolu-
+ción queda con su
+causa.
+DES Meses 5 a 8;
+H4.
+3.4.10 Cobro en ruta, ren-
+dición y concilia-
+ción (M7 Cobranza
+y rendición)
+M7 en QA. Los requerimientos
+del T-12 asignados
+al módulo pasan
+sus pruebas; ade-
+más, cada cobro
+queda unido a su
+entrega.
+DES Meses 5 a 9;
+construye des-
+pués de los
+contratos de
+3.4.8 e integra
+después de su
+entrega (D-19);
+H4.
+3.4.11 Indicadores ope-
+racionales y OTIF
+diario (M10 Analíti-
+ca)
+Indicadores publica-
+dos.
+Los requerimien-
+tos del T-12 asig-
+nados al módulo
+pasan sus pruebas;
+además, operacio-
+nes reproduce el
+cálculo sobre una
+muestra.
+DAT Mes 8; H4.
+2.3.5 Cuenta 3.5 — Módulos de la Etapa 2
+Esta cuenta de control reúne lo que la Etapa 2 pone en producción en el mes 21. Se construye
+entre los meses 13 y 18, mientras la Etapa 1 está en marcha blanca. Entra al H9 (mes 17) con
+QA superado.
+La Tabla 22 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -3441,37 +3410,84 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.20 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 22 Diccionario de la cuenta 3.5. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.3.6 Operación
-sin conexión:
-14 horas en
-terreno y 24
-horas en el CD
-Mecanismo de
-operación sin
-conexión en
-QA.
-En Prepro-
-ducción, una
-jornada de 14
-horas sin señal
-y un corte de
-24 horas del
-CD terminan
-sin pedidos
-perdidos ni
-duplicados.
-ARQ Antes del H4.
-7.2.3.4 Cuenta 3.4 — Módulos de la Etapa 1
-Esta cuenta de control reúne los once programas que la Etapa 1 pone en producción en el
-mes 16. Cada uno es un paquete. Se construye por iteraciones de RUP y entra al H4 (mes 10)
-con QA superado.
-La Tabla 7.21 presenta sus paquetes.
+3.5.1 Pedido electrónico
+y aviso de despacho
+para las cadenas, y
+portal de provee-
+dores (M11 Canal
+moderno)
+M11 en QA. Los requerimientos
+del T-12 asignados
+pasan sus pruebas,
+incluido el portal
+de proveedores que
+consulta en modo
+de solo lectura
+el estado de sus
+órdenes de compra
+(RF-12.22).
+DES Meses 14 y 15,
+tras la entrega
+del diseño del
+H8; integración
+mes 16 (H9).
+3.5.2 Portal web de clien-
+tes: cuenta, saldo,
+entregas y docu-
+mentos
+Portal en QA. Los requerimientos
+del T-12 asignados
+pasan sus prue-
+bas; además, cada
+cliente ve solo sus
+datos, y el portal
+cumple las normas
+de accesibilidad.
+DES Meses 14 y 15,
+tras la entrega
+del diseño del
+H8; integración
+mes 16 (H9).
+3.5.3 Portal web de trans-
+portistas: rutas
+asignadas del día
+siguiente
+Portal en QA. Los requerimientos
+del T-12 asignados
+pasan sus pruebas;
+además, cada em-
+presa ve solo sus
+rutas.
+DES Meses 14 y 15,
+tras la entrega
+del diseño del
+H8; integración
+mes 16 (H9).
+3.5.4 Costo de servir por
+cliente y por entre-
+ga (M10 Analítica)
+Costo de servir
+publicado.
+Los requerimientos
+del T-12 asignados
+pasan sus pruebas;
+además, finanzas
+reproduce el costo
+de una muestra de
+entregas.
+DAT Meses 14 y 15,
+tras la entrega
+del diseño del
+H8; integración
+mes 16 (H9).
+2.3.6 Cuenta 3.6 — Integraciones externas
+Esta cuenta de control reúne las conexiones con terceros que no están en la base compar-
+tida. Llevan el código de interfaz de la arquitectura del Capítulo 4 (Subdocumento 4). Cada
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -3481,75 +3497,69 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.21 Diccionario de la cuenta 3.4. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+integración tiene una conducta definida para cuando el tercero falla, para que una caída
+externa no detenga la operación.
+La Tabla 23 presenta sus paquetes.
+Tabla 23 Diccionario de la cuenta 3.6. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.4.1 Recepción de
-mercadería
-con captura
-de lote y ven-
-cimiento (M1
-Recepción)
-M1 en QA. Los requeri-
-mientos del
-T-12 asigna-
-dos al módulo
-pasan sus
-pruebas; ade-
-más, ningún
-producto con
-trazabilidad
-obligatoria se
-recibe sin lote.
-DES H4.
-3.4.2 Inventario
-por ubicación
-y lote, con
-FEFO y conteo
-cíclico (M2
-Inventario)
-M2 en QA. Los requeri-
-mientos del T-
-12 asignados al
-módulo pasan
-sus pruebas;
-además, cada
-diferencia de
-conteo queda
-con su causa.
-DES H4.
-3.4.3 Preparación
-de pedidos
-en el turno
-de noche y en
-la cámara de
-congelado (M5
-Preparación)
-M5 en QA. Los requeri-
-mientos del
-T-12 asigna-
-dos al módulo
-pasan sus
-pruebas; ade-
-más, se opera
-con guantes en
-el terminal de
-congelado, y
-cada faltante
-queda con su
-causa.
-DES Meses 5 a 7;
-construye des-
-pués de los
-contratos de
-3.4.1/3.4.2 e in-
-tegra después
-de su entrega
-(D-16).
+3.6.1 Intercambio de lote
+y trazabilidad con
+los proveedores
+Intercambio opera-
+tivo con los provee-
+dores priorizados.
+El proveedor de
+lácteos acepta la
+evidencia de traza-
+bilidad.
+DAT Antes del H5.
+3.6.2 Integración con la
+pasarela de pago
+para el cobro con
+tarjeta (INT-09)
+Integración en QA. Un cobro de prueba
+se autoriza, se con-
+cilia con su entrega,
+y una falla de la
+pasarela no lo deja
+como aprobado.
+DES Antes del H4.
+3.6.3 Integración con el
+servicio de mapas
+y geocodificación
+(INT-10)
+Integración en QA. Las rutas se gene-
+ran con las direc-
+ciones georrefe-
+renciadas, y la ruta
+precargada funcio-
+na sin señal.
+DES Antes del H4.
+3.6.4 Integración con el
+servicio de avisos al
+cliente (INT-11)
+Integración en QA. Un aviso de prueba
+llega por el canal
+configurado, y los
+reintentos quedan
+registrados.
+DES Antes del H4.
+3.6.5 Intercambio electró-
+nico con la princi-
+pal cadena, con sus
+pruebas aprobadas
+(INT-08)
+Intercambio certifi-
+cado por la cadena.
+La cadena aprue-
+ba por escrito las
+pruebas antes del
+H10.
+DES Meses 13 a 18
+(H10).
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -3560,63 +3570,61 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.21 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 23 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.4.4 Cadena de frío,
-retención de
-lotes y reti-
-ro sanitario
-(M9 Calidad y
-trazabilidad)
-M9 en QA. Los requeri-
-mientos del T-
-12 asignados al
-módulo pasan
-sus pruebas;
-además, un re-
-tiro simulado
-entrega la lista
-de clientes en
-menos de 2
-horas.
-DES H4.
-3.4.5 Ingesta de
-temperatura
-y posición de
-la flota (M12
-Telemetría)
-M12 en QA. Los requeri-
-mientos del
-T-12 asignados
-al módulo pa-
-san sus prue-
-bas; además,
-las series no
-tienen brechas
-sin registrar.
-DES H4.
-3.4.6 Aplicación mó-
-vil de preventa
-sin conexión,
-con stock y
-crédito (M3
-Preventa)
-M3 en QA. Los requeri-
-mientos del
-T-12 asignados
-al módulo pa-
-san sus prue-
-bas; además,
-ningún pedido
-se pierde ni
-se duplica al
-recuperar la
-señal.
-DES H4.
+3.6.6 Incorporación de
+las demás cadenas
+al intercambio
+electrónico (INT-08)
+Cadenas incorpora-
+das.
+Cada cadena incor-
+porada tiene sus
+pruebas aprobadas.
+DES Certificación
+antes de ca-
+da activación;
+todo el alcan-
+ce habilitado
+antes de las
+cuatro sema-
+nas finales de
+marcha blanca
+E2.
+2.3.7 Cuenta 3.7 — Migración de datos
+Esta cuenta de control reúne el traslado de los datos actuales a la nueva solución. Las
+Bases exigen dos ensayos antes de la migración definitiva y una conciliación sin diferencias no
+explicadas (BTT, num. 20.1, p. 35).
+La Tabla 24 presenta sus paquetes.
+Tabla 24 Diccionario de la cuenta 3.7. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
+Resp. Período
+3.7.1 Informe de perfi-
+lamiento y datos
+saneados
+Informe de calidad
+de datos y datos
+corregidos.
+Cada defecto tiene
+su corrección o
+una aceptación del
+dueño del dato.
+DAT Antes de 3.7.2.
+3.7.2 Datos maestros
+cargados: 8.400
+SKU, clientes e
+instalaciones
+Maestro cargado en
+Preproducción.
+El maestro cuadra
+con el origen en los
+dos ensayos.
+DAT Antes de la
+primera ola.
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -3627,79 +3635,69 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.21 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 24 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.4.7 Planificación
-de rutas co-
-rregible por el
-planificador
-(M4 Rutas)
-M4 en QA. Los requeri-
-mientos del T-
-12 asignados al
-módulo pasan
-sus pruebas;
-además, la ru-
-ta se genera en
-menos de 20
-minutos y don
-Hugo la valida.
-DES Meses 5 a 7;
-construye des-
-pués de los
-contratos de
-3.4.3 y 3.4.6
-e integra des-
-pués de su
-entrega (D-18);
-H4.
-3.4.8 Aplicación mó-
-vil de reparto
-con prueba de
-entrega digital
-(M6 Reparto)
-M6 en QA. Los requeri-
-mientos del
-T-12 asigna-
-dos al módulo
-pasan sus
-pruebas; ade-
-más, funciona
-sin señal, y la
-prueba de en-
-trega llega al
-ERP el mismo
-día.
-DES Meses 5 a 8;
-construye des-
-pués de los
-contratos de
-3.4.3 y 3.4.6
-e integra des-
-pués de su
-entrega (D-18);
-H4.
-3.4.9 Devoluciones
-en terreno
-y control de
-envases (M8
-Devoluciones y
-envases)
-M8 en QA. Los requeri-
-mientos del T-
-12 asignados al
-módulo pasan
-sus pruebas;
-además, cada
-devolución
-queda con su
-causa.
-DES Meses 5 a 8;
-H4.
+3.7.3 Saldos migrados
+desde el WMS de
+Talca
+Saldos de Talca
+migrados y concilia-
+dos.
+Los documentos y
+los lotes coinciden,
+y cada diferencia
+de inventario queda
+clasificada y explica-
+da.
+DAT Antes de la ola
+de Talca.
+3.7.4 Saldos cargados en
+Concepción desde
+el conteo físico
+Saldos de Concep-
+ción cargados.
+Lo cargado coincide
+con el conteo, y
+cada diferencia
+frente a las planillas
+queda clasificada.
+DAT Antes de la ola
+de Concepción.
+3.7.5 Acta de conciliación
+y corte fuera de
+las ventanas de
+congelamiento
+Acta de corte por
+sitio.
+No quedan diferen-
+cias sin explicar, y
+la fecha no es una
+fecha prohibida.
+DAT Antes del H6.
+2.3.8 Cuenta 3.8 — Pruebas de la Etapa 1
+Esta cuenta de control reúne las pruebas que exigen las Bases antes del paso a producción
+de la Etapa 1, y el acta que las certifica. Cada prueba tiene su criterio de salida en las Bases
+Técnicas Transversales, núm. 20.1, p. 35.
+La Tabla 25 presenta sus paquetes.
+Tabla 25 Diccionario de la cuenta 3.8. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
+Resp. Período
+3.8.1 Pruebas de integra-
+ción, regresión e
+idempotencia en QA
+(H4)
+Informe de prue-
+bas.
+Todos los flujos se
+ejecutan sin error, y
+no hay regresiones.
+CAL Ejecución: mes
+9. Hito H4: mes
+10.
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -3710,57 +3708,93 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.21 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 25 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.4.10 Cobro en ruta,
-rendición y
-conciliación
-(M7 Cobranza
-y rendición)
-M7 en QA. Los requeri-
-mientos del T-
-12 asignados al
-módulo pasan
-sus pruebas;
-además, cada
-cobro queda
-unido a su
-entrega.
-DES Meses 5 a 8;
-construye
-después de los
-contratos de
-3.4.8 e integra
-después de su
-entrega (D-19);
-H4.
-3.4.11 Indicadores
-operacionales
-y OTIF diario
-(M10 Analíti-
-ca)
-Indicadores
-publicados.
-Los requeri-
-mientos del
-T-12 asignados
-al módulo pa-
-san sus prue-
-bas; además,
-operaciones
-reproduce el
-cálculo sobre
-una muestra.
-DAT Mes 8; H4.
-7.2.3.5 Cuenta 3.5 — Módulos de la Etapa 2
-Esta cuenta de control reúne lo que la Etapa 2 pone en producción en el mes 21. Se construye
-entre los meses 13 y 18, mientras la Etapa 1 está en marcha blanca. Entra al H9 (mes 17) con
-QA superado.
-La Tabla 7.22 presenta sus paquetes.
+3.8.2 Pruebas de acepta-
+ción y de accesibili-
+dad con preventis-
+tas, conductores y
+bodega
+Casos de aceptación
+firmados.
+Los casos están
+firmados por la Con-
+traparte Técnica,
+y la accesibilidad
+cumple WCAG 2.2
+AA.
+CAL Antes del H5.
+3.8.3 Cinco condiciones
+físicas: −22 °C con
+guantes, lluvia, ca-
+lor superior a 34
+°C, sol directo y uso
+con una mano; des-
+conexión separada
+de 14 horas
+Informe de las
+cinco condiciones y
+de la desconexión.
+Se verifican las cin-
+co condiciones, sin
+pérdida ni duplica-
+ción de registros y
+con sincronización
+en 10 minutos o
+menos.
+CAL Antes del H5.
+3.8.4 Pruebas de car-
+ga con el peak de
+septiembre y de
+resiliencia
+Informe de carga y
+resiliencia.
+Se cumplen los
+tiempos exigidos
+a 1,5 veces el peak,
+y la solución se
+recupera sin inter-
+vención.
+CAL Antes del H5.
+3.8.5 Prueba de recupera-
+ción ante desastres
+con conmutación
+real
+Informe AL-DR-01,
+mediciones y regis-
+tro de correcciones
+y repetición.
+RTO ≤4 h y RPO
+≤15 min medidos
+en conmutación
+real; tres enlaces,
+alarmas 5/15 min,
+retorno y concilia-
+ción verificados.
+Las brechas impi-
+den la certificación
+hasta su cierre.
+CAL Antes del H5;
+preparación,
+ejecución, co-
+rrecciones y
+cierre dentro
+de la ventana
+de T-15.
+3.8.6 Prueba de seguri-
+dad ofensiva de la
+Etapa 1, por un ter-
+cero independiente
+Informe íntegro del
+tercero y evidencia
+de las correcciones.
+No quedan hallaz-
+gos críticos ni altos
+abiertos.
+SEG Antes del H5.
+continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -3770,73 +3804,69 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.22 Diccionario de la cuenta 3.5. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 25 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.5.1 Pedido electró-
-nico y aviso de
-despacho para
-las cadenas,
-y portal de
-proveedores
-(M11 Canal
-moderno)
-M11 en QA. Los requeri-
-mientos del
-T-12 asigna-
-dos pasan sus
-pruebas, in-
-cluido el portal
-de proveedo-
-res que con-
-sulta en modo
-de solo lectura
-el estado de
-sus órdenes
-de compra
-(RF-12.22).
-DES Mes 15; inte-
-gración mes 16
-(H9).
-3.5.2 Portal web
-de clientes:
-cuenta, saldo,
-entregas y
-documentos
-Portal en QA. Los requeri-
-mientos del
-T-12 asigna-
-dos pasan
-sus pruebas;
-además, cada
-cliente ve solo
-sus datos, y el
-portal cumple
-las normas de
-accesibilidad.
-DES Mes 15; inte-
-gración mes 16
-(H9).
-3.5.3 Portal web de
-transportistas:
-rutas asigna-
-das del día
-siguiente
-Portal en QA. Los requeri-
-mientos del
-T-12 asigna-
-dos pasan
-sus pruebas;
-además, cada
-empresa ve
-solo sus rutas.
-DES Mes 15; inte-
-gración mes 16
-(H9).
+3.8.7 Acta de certifica-
+ción de la Etapa 1
+(H5)
+Acta del H5 con
+su expediente de
+evidencia.
+Las pruebas 3.8.2 a
+3.8.6 y la demostra-
+ción del despliegue
+sin interrupción
+3.8.8 están aproba-
+das, y el acta está
+firmada.
+CAL Ejecución: me-
+ses 10 y 11; el
+acta es docu-
+mental y no
+interviene sis-
+temas. Hito H5
+del Formulario
+E-25: mes 12.
+3.8.8 Demostración en
+Preproducción
+del despliegue sin
+interrupción de la
+Etapa 1
+Informe de la de-
+mostración.
+La versión se des-
+pliega y se revierte
+en Preproducción
+sin interrupción y
+sin intervención
+manual.
+SRE Antes del H5 y
+antes de cada
+paso a produc-
+ción.
+2.3.9 Cuenta 3.9 — Pruebas de la Etapa 2
+Esta cuenta de control reúne las mismas pruebas para la Etapa 2, con una exigencia adicio-
+nal: demostrar que la Etapa 1, ya en producción, no se degrada.
+La Tabla 26 presenta sus paquetes.
+Tabla 26 Diccionario de la cuenta 3.9. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
+Resp. Período
+3.9.1 Pruebas de integra-
+ción y regresión sin
+afectar la Etapa 1 en
+producción (H9)
+Informe de prue-
+bas.
+No hay regresiones
+en la Etapa 1.
+CAL Ejecución: mes
+16. Hito H9 del
+Formulario
+E-25: mes 17.
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -3847,61 +3877,91 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.22 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 26 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.5.4 Costo de servir
-por cliente y
-por entrega
-(M10 Analíti-
-ca)
-Costo de servir
-publicado.
-Los requeri-
-mientos del
-T-12 asigna-
-dos pasan sus
-pruebas; ade-
-más, finanzas
-reproduce el
-costo de una
-muestra de
-entregas.
-DAT Mes 15; inte-
-gración mes 16
-(H9).
-7.2.3.6 Cuenta 3.6 — Integraciones externas
-Esta cuenta de control reúne las conexiones con terceros que no están en la base compartida.
-Llevan el código de interfaz de la arquitectura del Capítulo 4 (LafroX, 2026m). Cada integración
-tiene una conducta definida para cuando el tercero falla, para que una caída externa no detenga
-la operación.
-La Tabla 7.23 presenta sus paquetes.
-Tabla 7.23 Diccionario de la cuenta 3.6. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-3.6.1 Intercambio
-de lote y traza-
-bilidad con los
-proveedores
-Intercambio
-operativo con
-los proveedo-
-res prioriza-
+3.9.2 Pruebas de acepta-
+ción y de accesibi-
+lidad con cadenas,
+transportistas, Co-
+mercial y Finanzas
+Casos firmados. Los casos están
+firmados por la
+Contraparte Técni-
+ca, y los portales
+cumplen WCAG 2.2
+AA.
+CAL Antes del H10.
+3.9.3 Pruebas de carga
+con ambas etapas
+activas y de resilien-
+cia
+Informe. Se cumplen los
+tiempos a 1,5 veces
+el peak.
+CAL Antes del H10.
+3.9.4 Prueba de recupera-
+ción ante desastres
+con ambas etapas
+Informe AL-DR-
+01 y correcciones
+con ambas etapas
+activas.
+Conmutación real
+con RTO ≤4 h, RPO
+≤15 min, alarmas
+5/15 min y concilia-
+ción de retorno, sin
+degradar E1. Se re-
+pite lo afectado tras
+corregir brechas.
+CAL Antes del H10,
+dentro de la
+ventana de
+T-15; prepara-
+ción, ensayo
+y cierre inclui-
 dos.
-El proveedor
-de lácteos
-acepta la evi-
-dencia de
-trazabilidad.
-DAT Antes del H5.
-continúa en la página siguiente
+3.9.5 Prueba de seguri-
+dad ofensiva de la
+Etapa 2, por un ter-
+cero independiente
+Informe y correc-
+ciones.
+No quedan hallaz-
+gos críticos ni altos
+abiertos.
+SEG Antes del H10.
+3.9.6 Acta de certifica-
+ción de la Etapa 2 y
+cierre del desarrollo
+(H10)
+Acta del H10. Las pruebas 3.9.2 a
+3.9.5 y la demostra-
+ción del despliegue
+sin interrupción
+3.9.7 están aproba-
+das, y el acta está
+firmada.
+CAL Ejecución:
+meses 16 y 17.
+Hito H10 del
+Formulario
+E-25: mes 18.
+3.9.7 Demostración en
+Preproducción
+del despliegue sin
+interrupción de la
+Etapa 2
+Informe de la de-
+mostración.
+La versión se des-
+pliega y se revierte
+sin interrumpir
+ninguna de las dos
+etapas.
+SRE Antes del H10.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -3911,78 +3971,76 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.23 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+2.3.10 Cuenta 3.10 — Innovaciones
+Esta cuenta de control reúne los paquetes de construcción de las innovaciones 1, 2, 3 y 5.
+La parte de la innovación 4 que se hace antes de la Operación está en la fase 5 (5.4.3), porque
+es un diseño contractual. Las partes que ocurren durante la Operación están en la fase 8. Las
+metas son propuestas de diseño.
+La Tabla 27 presenta sus paquetes.
+Tabla 27 Diccionario de la cuenta 3.10. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.6.2 Integración
-con la pasarela
-de pago para
-el cobro con
-tarjeta (INT-
-09)
-Integración en
-QA.
-Un cobro de
-prueba se
-autoriza, se
-concilia con
-su entrega, y
-una falla de
-la pasarela no
-lo deja como
-aprobado.
-DES Antes del H4.
-3.6.3 Integración
-con el servicio
-de mapas y
-geocodifica-
-ción (INT-10)
-Integración en
-QA.
-Las rutas se
-generan con
-las direcciones
-georreferencia-
-das, y la ruta
-precargada
-funciona sin
-señal.
-DES Antes del H4.
-3.6.4 Integración
-con el servicio
-de avisos al
-cliente (INT-
-11)
-Integración en
-QA.
-Un aviso de
-prueba llega
-por el canal
-configurado,
-y los reinten-
-tos quedan
-registrados.
-DES Antes del H4.
-3.6.5 Intercambio
-electrónico
-con la princi-
-pal cadena,
-con sus prue-
-bas aprobadas
-(INT-08)
-Intercambio
-certificado por
-la cadena.
-La cadena
-aprueba por
-escrito las
-pruebas antes
-del H10.
-DES Meses 13 a 18
-(H10).
+3.10.1.1 Innovación 1: docu-
+mento de catálogo
+de acciones y pro-
+tocolo del piloto
+(INN-01.P1)
+Documento de catá-
+logo de acciones y
+protocolo del piloto.
+Aprobado por Co-
+mercial y Calidad.
+DAT Meses 7 a 9
+3.10.1.2 Innovación 1: esti-
+mador de saldo y
+ritmo de reposición
+(INN-01.P2)
+Estimador de saldo
+y ritmo de reposi-
+ción.
+Supera QA y cierra
+antes del límite
+contractual del H4
+(30-11-2027), sin
+integrar su entrega
+ni su acta.
+DAT Meses 9 y 10
+(límite del H4)
+3.10.1.3 Innovación 1: fun-
+ción de lista sin
+conexión en la apli-
+cación de preventa
+(INN-01.P3)
+Función de lista
+sin conexión en
+la aplicación de
+preventa.
+Funciona sin señal
+y cierra antes del lí-
+mite contractual del
+H4 (30-11-2027), sin
+integrar su entrega
+ni su acta.
+DAT Meses 9 y 10
+(límite del H4)
+3.10.1.4 Innovación 1: in-
+forme del piloto
+en marcha blan-
+ca y habilitación
+(INN-01.P4)
+Informe del piloto
+en marcha blanca y
+habilitación.
+Al mes 15, al menos
+el 70 % de los avisos
+confirma el riesgo,
+con al menos 100
+avisos.
+DAT Meses 11 a 15
+(H5 y marcha
+blanca)
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -3993,61 +4051,99 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.23 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 27 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.6.6 Incorporación
-de las demás
-cadenas al
-intercambio
-electrónico
-(INT-08)
-Cadenas incor-
-poradas.
-Cada cadena
-incorporada
-tiene sus prue-
-bas aprobadas.
-DES Certificación
-antes de cada
-activación;
-todo el alcan-
-ce habilitado
-antes de las
-cuatro sema-
-nas finales de
-marcha blanca
-E2.
-7.2.3.7 Cuenta 3.7 — Migración de datos
-Esta cuenta de control reúne el traslado de los datos actuales a la nueva solución. Las
-Bases exigen dos ensayos antes de la migración definitiva y una conciliación sin diferencias no
-explicadas (BTT, num. 20.1, p. 35).
-La Tabla 7.24 presenta sus paquetes.
-Tabla 7.24 Diccionario de la cuenta 3.7. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-3.7.1 Informe de
-perfilamiento
-y datos sanea-
-dos
-Informe de
-calidad de
-datos y datos
-corregidos.
-Cada defecto
-tiene su co-
-rrección o una
-aceptación
-del dueño del
-dato.
-DAT Antes de 3.7.2.
+3.10.2.1 Innovación 2: in-
+forme de medición
+inicial y contrato
+de evidencia (INN-
+02.P1)
+Informe de medi-
+ción inicial y contra-
+to de evidencia.
+Aprobado por el
+Encargado de Segu-
+ridad.
+CAL Meses 2 y 3
+3.10.2.2 Innovación 2: cir-
+cuito mínimo de
+reproducción en
+la preventa (INN-
+02.P2)
+Circuito mínimo de
+reproducción en la
+preventa.
+Un incidente se
+reproduce en QA a
+partir de su eviden-
+cia.
+CAL Meses 3 a 5
+3.10.2.3 Innovación 2: cap-
+tura de evidencia
+en las aplicaciones
+de preventa, pre-
+paración y reparto
+(INN-02.P3)
+Captura de eviden-
+cia en las aplicacio-
+nes de preventa,
+preparación y repar-
+to.
+Las tres aplicacio-
+nes envían eviden-
+cia válida antes del
+H4.
+CAL Meses 5 a 10
+(antes del H4)
+3.10.2.4 Innovación 2: infor-
+me de validación
+comparada durante
+la implementación
+(INN-02.P4, primera
+parte)
+Informe de valida-
+ción comparada
+durante la imple-
+mentación.
+Al mes 15 se cum-
+plen dos metas: el
+tiempo de diagnós-
+tico baja 30 %, con
+al menos 20 casos
+comparables, y al
+menos el 80 % de
+los incidentes se
+reproduce.
+CAL Meses 11 a 15
+(validación en
+meses 13 a 15)
+3.10.3.1 Innovación 3: docu-
+mento de familias
+priorizadas y pará-
+metros aprobados
+(INN-03.P1)
+Documento de fa-
+milias priorizadas y
+parámetros aproba-
+dos.
+Los parámetros
+están aprobados
+por Calidad.
+DAT Meses 3 a 5
+3.10.3.2 Innovación 3: aso-
+ciación lote–sensor
+en el borde y en el
+camión (INN-03.P2)
+Asociación lote–sen-
+sor en el borde y en
+el camión.
+Un lote recorre
+todo su camino con
+historia completa
+en QA.
+DAT Meses 5 a 9
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -4058,78 +4154,93 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.24 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 27 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.7.2 Datos maes-
-tros cargados:
-8.400 SKU,
-clientes e insta-
-laciones
-Maestro carga-
-do en Prepro-
-ducción.
-El maestro
-cuadra con el
-origen en los
-dos ensayos.
-DAT Antes de la
-primera ola.
-3.7.3 Saldos migra-
-dos desde el
-WMS de Talca
-Saldos de Tal-
-ca migrados y
-conciliados.
-Los documen-
-tos y los lotes
-coinciden, y
-cada diferen-
-cia de inven-
-tario queda
-clasificada y
-explicada.
-DAT Antes de la ola
-de Talca.
-3.7.4 Saldos carga-
-dos en Concep-
-ción desde el
-conteo físico
-Saldos de Con-
-cepción carga-
-dos.
-Lo cargado
-coincide con el
-conteo, y cada
-diferencia
-frente a las
-planillas queda
-clasificada.
-DAT Antes de la
-ola de Concep-
-ción.
-3.7.5 Acta de conci-
-liación y corte
-fuera de las
-ventanas de
-congelamiento
-Acta de corte
-por sitio.
-No quedan
-diferencias
-sin explicar,
-y la fecha no
-es una fecha
-prohibida.
-DAT Antes del H6.
-7.2.3.8 Cuenta 3.8 — Pruebas de la Etapa 1
-Esta cuenta de control reúne las pruebas que exigen las Bases antes del paso a producción
-de la Etapa 1, y el acta que las certifica. Cada prueba tiene su criterio de salida en las Bases
-Técnicas Transversales, núm. 20.1, p. 35.
-La Tabla 7.25 presenta sus paquetes.
+3.10.3.3 Innovación 3: vista
+en M9 y orden de
+salida sugerido
+(INN-03.P3)
+Vista en M9 y orden
+de salida sugerido.
+No cambia la regla
+de Calidad y cierra
+antes del límite
+contractual del H4
+(30-11-2027), sin
+integrar su entrega
+ni su acta.
+DAT Meses 9 y 10
+(límite del H4)
+3.10.3.4 Innovación 3: infor-
+me de validación en
+marcha blanca con
+Calidad (INN-03.P4)
+Informe de vali-
+dación en marcha
+blanca con Calidad.
+Al mes 15 se cum-
+plen dos metas: al
+menos el 95 % de
+los lotes tiene his-
+toria completa, y al
+menos el 80 % de
+las estimaciones
+queda dentro de
+±15 %.
+DAT Meses 11 a 15
+(H5 y marcha
+blanca)
+3.10.4.1 Innovación 5: proto-
+tipo e informe de la
+prueba de compren-
+sión (INN-05.P1)
+Prototipo e informe
+de la prueba de
+comprensión.
+Al menos el 80 % de
+los 24 almaceneros
+entiende la hoja.
+IMP Meses 13 y 14
+3.10.4.2 Innovación 5: eva-
+luación de priva-
+cidad y diseño de
+la impresión en
+cabina (INN-05.P2)
+Evaluación de pri-
+vacidad y diseño
+de la impresión en
+cabina.
+Aprobada por el
+Encargado de Segu-
+ridad, según la Ley
+21.719.
+IMP Meses 14 y 15
+3.10.4.3 Innovación 5: cálcu-
+lo y bloques 1 a 3 de
+la hoja de negocio
+(INN-05.P3)
+Cálculo y bloques
+1 a 3 de la hoja de
+negocio.
+Entra al H9 y fun-
+ciona sin señal.
+IMP Meses 15 a 17
+(H9)
+3.10.4.4 Innovación 5: ho-
+ja certificada, en
+marcha blanca
+y en producción
+(INN-05.P4, primera
+parte)
+Hoja certificada, en
+marcha blanca y en
+producción.
+Incluida en el acta
+del H12.
+IMP Meses 18 a 21
+(H10 a H12)
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -4139,87 +4250,72 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.25 Diccionario de la cuenta 3.8. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+2.3.11 Cuenta 3.11 — Documentación técnica
+Esta cuenta de control reúne lo que permite entender, mantener y traspasar la solución. Lo
+exige el artículo 77 de las Bases Administrativas (p. 39).
+Cada versión liberada se entregará al CLIENTE junto con su SBOM de 3.11.4 en formato
+CycloneDX o SPDX, identificando los componentes, sus versiones y licencias (BTT, cap. 11,
+RT-11.23, p. 24).
+La Tabla 28 presenta sus paquetes.
+Tabla 28 Diccionario de la cuenta 3.11. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.8.1 Pruebas de
-integración,
-regresión e
-idempotencia
-en QA (H4)
-Informe de
-pruebas.
-Todos los flu-
-jos se ejecutan
-sin error, y no
-hay regresio-
+3.11.1 Documentación
+técnica, funcional,
+de arquitectura,
+de operación y de
+seguridad
+Repositorio docu-
+mental con versio-
 nes.
-CAL Ejecución:
-mes 9. Hito H4:
-mes 10.
-3.8.2 Pruebas de
-aceptación
-y de accesi-
-bilidad con
-preventistas,
-conductores y
-bodega
-Casos de acep-
-tación firma-
-dos.
-Los casos es-
-tán firmados
-por la Contra-
-parte Técnica,
-y la accesibi-
-lidad cumple
-WCAG 2.2 AA.
-CAL Antes del H5.
-3.8.3 Cinco condi-
-ciones físicas:
-−22 °C con
-guantes, lluvia,
-calor superior
-a 34 °C, sol
-directo y uso
-con una mano;
-desconexión
-separada de 14
-horas
-Informe de las
-cinco condi-
-ciones y de la
-desconexión.
-Se verifican
-las cinco con-
-diciones, sin
-pérdida ni du-
-plicación de
-registros y con
-sincronización
-en 10 minutos
-o menos.
-CAL Antes del H5.
-3.8.4 Pruebas de
-carga con
-el peak de
-septiembre y
-de resiliencia
-Informe de
-carga y resi-
-liencia.
-Se cumplen
-los tiempos
-exigidos a 1,5
-veces el peak,
-y la solución se
-recupera sin
-intervención.
-CAL Antes del H5.
+Cada versión en
+producción tiene su
+documentación en
+la misma versión.
+ARQ Se revisa antes
+del H7 y del
+H12.
+3.11.2 Base de conoci-
+miento de inciden-
+tes y decisiones de
+diseño
+Base de conoci-
+miento.
+Cada incidente
+cerrado y cada deci-
+sión de arquitectura
+tienen su entrada.
+Desde la marcha
+blanca de la Etapa 1
+se miden cada mes
+su uso y la utilidad
+declarada por los
+usuarios; 8.5.3 con-
+tinúa la medición
+en la Operación.
+SRE Desde el H4.
+3.11.3 Estándares de codi-
+ficación y documen-
+tación de interfaces
+en OpenAPI y Asyn-
+cAPI
+Documento de
+estándares y do-
+cumentación de
+interfaces publica-
+da.
+Cada interfaz tiene
+su documentación
+generada y versio-
+nada, y la cadena de
+integración verifica
+los estándares.
+DES Desde el mes
+4, y actuali-
+zada en cada
+versión.
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -4230,86 +4326,47 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.25 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 28 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.8.5 Prueba de re-
-cuperación
-ante desastres
-con conmuta-
-ción real
-Informe de la
-prueba.
-Se alcanzan el
-RTO y el RPO
-comprometi-
-dos.
-CAL Antes del H5.
-3.8.6 Prueba de
-seguridad
-ofensiva de la
-Etapa 1, por
-un tercero
-independiente
-Informe ínte-
-gro del tercero
-y evidencia de
-las correccio-
-nes.
-No quedan
-hallazgos crí-
-ticos ni altos
-abiertos.
-SEG Antes del H5.
-3.8.7 Acta de certi-
-ficación de la
-Etapa 1 (H5)
-Acta del H5
-con su ex-
-pediente de
-evidencia.
-Las pruebas
-3.8.2 a 3.8.6
-y la demos-
-tración del
-despliegue sin
-interrupción
-3.8.8 están
-aprobadas, y
-el acta está
-firmada.
-CAL Ejecución:
-mes 10. Hito
-H5 del Formu-
-lario E-25: mes
-12.
-3.8.8 Demostración
-en Prepro-
-ducción del
-despliegue sin
-interrupción
-de la Etapa 1
-Informe de la
-demostración.
-La versión se
-despliega y
-se revierte en
-Preproducción
-sin interrup-
-ción y sin
-intervención
-manual.
-SRE Antes del H5
-y antes de
-cada paso a
-producción.
-7.2.3.9 Cuenta 3.9 — Pruebas de la Etapa 2
-Esta cuenta de control reúne las mismas pruebas para la Etapa 2, con una exigencia adicio-
-nal: demostrar que la Etapa 1, ya en producción, no se degrada.
-La Tabla 7.26 presenta sus paquetes.
+3.11.4 Inventario de com-
+ponentes (SBOM)
+con sus licencias de
+código abierto
+Inventario de com-
+ponentes actualiza-
+do en cada versión.
+Cada componente
+tiene su versión
+y su licencia, y
+ninguna licencia es
+incompatible con el
+uso del CLIENTE.
+DES Desde el mes
+4, y en cada
+versión.
+3.11.5 Depósito del código
+fuente en el reposi-
+torio del CLIENTE
+en cada liberación
+Código depositado
+en cada liberación.
+Cada versión en
+producción está en
+el repositorio del
+CLIENTE, con la
+misma etiqueta de
+versión.
+DES En cada libera-
+ción, desde la
+primera.
+2.4 Fase 4. Transición
+La fase 4 reúne 3 cuentas de control y 11 paquetes de trabajo.
+2.4.1 Cuenta 4.1 — Plan de implantación
+Esta cuenta de control reúne los planes que dicen cómo entra la solución y cómo se vuelve
+atrás si algo falla.
+La Tabla 29 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -4319,80 +4376,70 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.26 Diccionario de la cuenta 3.9. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 29 Diccionario de la cuenta 4.1. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.9.1 Pruebas de
-integración
-y regresión
-sin afectar
-la Etapa 1 en
-producción
-(H9)
-Informe de
-pruebas.
-No hay regre-
-siones en la
-Etapa 1.
-CAL Ejecución:
-mes 16. Hito
-H9 del Formu-
-lario E-25: mes
-17.
-3.9.2 Pruebas de
-aceptación
-y de accesi-
-bilidad con
-cadenas, trans-
-portistas,
-Comercial y
-Finanzas
-Casos firma-
-dos.
-Los casos es-
-tán firmados
-por la Contra-
-parte Técnica,
-y los porta-
-les cumplen
-WCAG 2.2 AA.
-CAL Antes del H10.
-3.9.3 Pruebas de
-carga con
-ambas etapas
-activas y de
-resiliencia
-Informe. Se cumplen los
-tiempos a 1,5
-veces el peak.
-CAL Antes del H10.
-3.9.4 Prueba de
-recuperación
-ante desastres
-con ambas
-etapas
-Informe. Se alcanzan el
-RTO y el RPO
-comprometi-
-dos.
-CAL Antes del H10.
-3.9.5 Prueba de
-seguridad
-ofensiva de la
-Etapa 2, por
-un tercero
-independiente
-Informe y
-correcciones.
-No quedan
-hallazgos crí-
-ticos ni altos
-abiertos.
-SEG Antes del H10.
+4.1.1 Plan de olas de
+la Etapa 1 por si-
+tio y zona: Talca,
+Concepción y pla-
+taformas de cross-
+docking
+Plan de implan-
+tación por sitio y
+perfil.
+Cada ola tiene su
+sitio, su zona, su
+criterio de avance
+escrito y su registro
+oficial.
+IMP Antes del H6.
+4.1.2 Procedimiento
+de reversión de la
+Etapa 1 antes de las
+05:30, con versión
+operativa local y
+DTE emitidos por el
+ERP
+Procedimiento
+escrito y ensayado.
+Ensayo de reversión
+con tiempos medi-
+dos, 96 despachos
+sin interrupción,
+DTE válidos emiti-
+dos sólo por ERP,
+WMS sólo lectura y
+cero pérdida/dupli-
+cación; final antes
+de 05:30 y fechas
+permitidas.
+IMP Antes de cada
+corte.
+4.1.3 Plan de implanta-
+ción y reversión de
+la Etapa 2 fuera de
+la ventana de 05:30
+a 07:00
+Plan de implanta-
+ción de la Etapa
+2.
+La reversión des-
+activa la capacidad
+de la Etapa 2 que
+falla sin tocar ni
+degradar la Etapa 1.
+El ensayo se realiza
+fuera de la ventana
+de 05:30 a 07:00 y
+de las fechas prohi-
+bidas, con tiempos
+medidos y sin pérdi-
+da ni duplicación de
+datos.
+IMP Antes del H11.
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -4403,53 +4450,30 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.26 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 29 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.9.6 Acta de cer-
-tificación de
-la Etapa 2 y
-cierre del desa-
-rrollo (H10)
-Acta del H10. Las pruebas
-3.9.2 a 3.9.5
-y la demos-
-tración del
-despliegue sin
-interrupción
-3.9.7 están
-aprobadas, y
-el acta está
-firmada.
-CAL Ejecución:
-meses 16 y 17.
-Hito H10 del
-Formulario
-E-25: mes 18.
-3.9.7 Demostración
-en Prepro-
-ducción del
-despliegue sin
-interrupción
-de la Etapa 2
-Informe de la
-demostración.
-La versión se
-despliega y se
-revierte sin
-interrumpir
-ninguna de las
-dos etapas.
-SRE Antes del H10.
-7.2.3.10 Cuenta 3.10 — Innovaciones
-Esta cuenta de control reúne los paquetes de construcción de las innovaciones 1, 2, 3 y 5.
-La parte de la innovación 4 que se hace antes de la Operación está en la fase 5 (5.4.3), porque
-es un diseño contractual. Las partes que ocurren durante la Operación están en la fase 8. Las
-metas son propuestas de diseño.
-La Tabla 7.27 presenta sus paquetes.
+4.1.4 Piloto de cadena
+de frío en cuatro
+camiones
+Informe de seis
+semanas de piloto
+Dos camiones rura-
+les, uno urbano y
+uno de transportis-
+ta; V18, V20 y V21
+con evidencia; apro-
+bado antes de la ola
+de reparto.
+IMP Meses 10–11;
+seis semanas
+antes de la ola
+3.
+2.4.2 Cuenta 4.2 — Marcha blanca y producción de la Etapa 1
+Esta cuenta de control reúne la operación supervisada de la Etapa 1, el acompañamiento
+posterior y el acta que la convierte en el registro oficial.
+La Tabla 30 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -4459,93 +4483,72 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.27 Diccionario de la cuenta 3.10. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 30 Diccionario de la cuenta 4.2. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.10.1.1 Innovación
-1: documento
-de catálogo
-de acciones y
-protocolo del
-piloto (INN-
-01.P1)
-Documento
-de catálogo
-de acciones y
-protocolo del
-piloto.
-Aprobado por
-Comercial y
-Calidad.
-DAT Meses 7 a 9
-3.10.1.2 Innovación 1:
-estimador de
-saldo y ritmo
-de reposición
-(INN-01.P2)
-Estimador de
-saldo y ritmo
-de reposición.
-Entra al H4
-con QA supera-
-do.
-DAT Meses 9 y 10
-(H4)
-3.10.1.3 Innovación
-1: función
-de lista sin
-conexión en
-la aplicación
-de preventa
-(INN-01.P3)
-Función de
-lista sin co-
-nexión en la
-aplicación de
-preventa.
-Entra al H4 y
-funciona sin
-señal.
-DAT Meses 9 y 10
-(H4)
-3.10.1.4 Innovación
-1: informe
-del piloto en
-marcha blanca
-y habilitación
-(INN-01.P4)
-Informe del
-piloto en mar-
-cha blanca y
-habilitación.
-Al mes 15, al
-menos el 70 %
-de los avisos
-confirma el
-riesgo, con
-al menos 100
-avisos.
-DAT Meses 11 a 15
-(H5 y marcha
-blanca)
-3.10.2.1 Innovación
-2: informe de
-medición ini-
-cial y contrato
-de evidencia
-(INN-02.P1)
-Informe de
-medición ini-
-cial y contrato
-de evidencia.
-Aprobado por
-el Encargado
-de Seguridad.
-CAL Meses 2 y 3
+4.2.1 Marcha blanca
+de la Etapa 1 con
+conciliación diaria
+(H6)
+Informes diarios
+de indicadores y
+de conciliación;
+informe mensual
+de restauración de
+respaldos; acta de
+cierre de la marcha
+blanca.
+Se cumplen las seis
+condiciones del
+Art. 17.3; cada mes
+se restaura una
+muestra represen-
+tativa sin errores y
+se mide el tiempo
+efectivo (RT-07.12).
+La Contraparte Téc-
+nica firma el acta
+de cierre al término
+del mes 15, lo que
+habilita el paso a
+producción del mes
+16.
+IMP Meses 13 a 15.
+Empieza con el
+H6.
+4.2.2 Estabilización de
+la Etapa 1, acompa-
+ñamiento en ruta y
+restauraciones de
+soporte puente
+Informe de estabili-
+zación por ola y tres
+informes mensua-
+les de restauración,
+de los meses 16 a
+18.
+Cada ruta recibe
+al menos un acom-
+pañamiento, no
+quedan defectos
+críticos ni altos
+abiertos y cada res-
+tauración funciona
+sin errores con su
+tiempo medido
+(RT-07.12).
+IMP Meses 16 a 20,
+desde el paso
+a producción
+objetivo del
+05-05-2028,
+previa acta de
+cierre de 4.2.1;
+no espera la
+aceptación H7
+(D-28).
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -4556,95 +4559,38 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.27 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 30 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.10.2.2 Innovación
-2: circuito
-mínimo de
-reproducción
-en la preventa
-(INN-02.P2)
-Circuito míni-
-mo de repro-
-ducción en la
-preventa.
-Un incidente
-se reproduce
-en QA a partir
-de su eviden-
-cia.
-CAL Meses 3 a 5
-3.10.2.3 Innovación 2:
-captura de evi-
-dencia en las
-aplicaciones
-de preventa,
-preparación y
-reparto (INN-
-02.P3)
-Captura de evi-
-dencia en las
-aplicaciones
-de preventa,
-preparación y
-reparto.
-Las tres aplica-
-ciones envían
-evidencia vá-
-lida antes del
-H4.
-CAL Meses 5 a 10
-(antes del H4)
-3.10.2.4 Innovación
-2: informe
-de validación
-comparada
-durante la im-
-plementación
-(INN-02.P4,
-primera parte)
-Informe de
-validación
-comparada
-durante la im-
-plementación.
-Al mes 15 se
-cumplen dos
-metas: el tiem-
-po de diagnós-
-tico baja 30 %,
-con al menos
-20 casos com-
-parables, y
-al menos el
-80 % de los
-incidentes se
-reproduce.
-CAL Meses 11 a 15
-(validación en
-meses 13 a 15)
-3.10.3.1 Innovación
-3: documento
-de familias
-priorizadas y
-parámetros
-aprobados
-(INN-03.P1)
-Documento
-de familias
-priorizadas y
-parámetros
-aprobados.
-Los paráme-
-tros están
-aprobados por
-Calidad.
-DAT Meses 3 a 5
-continúa en la página siguiente
+4.2.3 Acta de aceptación
+de la Etapa 1 (H7)
+Expediente y acta
+de aceptación fir-
+mada, distintos del
+acta de cierre de
+4.2.1.
+La Contraparte Téc-
+nica acepta en el
+mes 16 después del
+paso a producción;
+entrega objetivo
+15-05-2028 y acta
+29-05-2028, con
+diez días hábiles de
+revisión y sin pre-
+sumir subsanación
+incluida.
+JP Mes 16 (H7);
+fechas bajo
+el supuesto
+de inicio en
+febrero de
+2027.
+2.4.3 Cuenta 4.3 — Marcha blanca y producción de la Etapa 2
+Esta cuenta de control es igual a la 4.2, aplicada a la Etapa 2. Agrega una condición: convivir
+con la Etapa 1 ya en producción, con una sola fuente de verdad para los datos compartidos.
+La Tabla 31 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -4654,83 +4600,43 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.27 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 31 Diccionario de la cuenta 4.3. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.10.3.2 Innovación
-3: asociación
-lote–sensor
-en el borde y
-en el camión
-(INN-03.P2)
-Asociación
-lote–sensor en
-el borde y en
-el camión.
-Un lote reco-
-rre todo su
-camino con
-historia com-
-pleta en QA.
-DAT Meses 5 a 9
-3.10.3.3 Innovación
-3: vista en M9
-y orden de
-salida sugerido
-(INN-03.P3)
-Vista en M9 y
-orden de sali-
-da sugerido.
-Entra al H4
-sin cambiar
-la regla de
-Calidad.
-DAT Meses 9 y 10
-(H4)
-3.10.3.4 Innovación
-3: informe de
-validación en
-marcha blanca
-con Calidad
-(INN-03.P4)
-Informe de
-validación en
-marcha blanca
-con Calidad.
-Al mes 15
-se cumplen
-dos metas: al
-menos el 95 %
-de los lotes
-tiene historia
-completa, y
-al menos el
-80 % de las
-estimaciones
-queda dentro
-de ±15 %.
-DAT Meses 11 a 15
-(H5 y marcha
-blanca)
-3.10.4.1 Innovación
-5: prototipo
-e informe de
-la prueba de
-comprensión
-(INN-05.P1)
-Prototipo e
-informe de
-la prueba de
-comprensión.
-Al menos el
-80 % de los 24
-almaceneros
-entiende la
-hoja.
-IMP Meses 13 y 14
+4.3.1 Marcha blanca de
+la Etapa 2 en convi-
+vencia con la Etapa
+1 y fuente única de
+datos (H11)
+Informes diarios
+de indicadores y
+de conciliación;
+informe mensual
+de restauración de
+respaldos; acta de
+cierre de la marcha
+blanca.
+Se cumplen las seis
+condiciones del Art.
+17.3, no hay doble
+digitación y cada
+mes se restaura una
+muestra represen-
+tativa sin errores
+con su tiempo me-
+dido (RT-07.12). La
+Contraparte Técni-
+ca firma el acta de
+cierre al término
+del mes 20, lo que
+habilita el paso a
+producción del mes
+21.
+IMP Meses 19 y 20.
+Empieza con el
+H11.
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -4741,67 +4647,66 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.27 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 31 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.10.4.2 Innovación 5:
-evaluación de
-privacidad y
-diseño de la
-impresión en
-cabina (INN-
-05.P2)
-Evaluación de
-privacidad y
-diseño de la
-impresión en
-cabina.
-Aprobada por
-el Encargado
-de Seguridad,
-según la Ley
-21.719.
-IMP Meses 14 y 15
-3.10.4.3 Innovación
-5: cálculo y
-bloques 1 a
-3 de la hoja
-de negocio
-(INN-05.P3)
-Cálculo y blo-
-ques 1 a 3 de la
-hoja de nego-
-cio.
-Entra al H9 y
-funciona sin
-señal.
-IMP Meses 15 a 17
-(H9)
-3.10.4.4 Innovación 5:
-hoja certifica-
-da, en marcha
-blanca y en
-producción
-(INN-05.P4,
-primera parte)
-Hoja certifica-
-da, en marcha
-blanca y en
-producción.
-Incluida en el
-acta del H12.
-IMP Meses 18 a 21
-(H10 a H12)
-7.2.3.11 Cuenta 3.11 — Documentación técnica
-Esta cuenta de control reúne lo que permite entender, mantener y traspasar la solución. Lo
-exige el artículo 77 de las Bases Administrativas (p. 39).
-Cada versión liberada se entregará al CLIENTE junto con su SBOM de 3.11.4 en formato
-CycloneDX o SPDX, identificando los componentes, sus versiones y licencias (BTT, cap. 11,
-RT-11.23, p. 24).
-La Tabla 7.28 presenta sus paquetes.
+4.3.2 Estabilización de
+la Etapa 2 con Co-
+mercial, Finanzas,
+cadenas y transpor-
+tistas
+Informe de estabili-
+zación.
+No quedan defectos
+críticos ni altos
+abiertos al cierre
+del período.
+IMP Desde el paso
+a producción
+de la Etapa 2
+hasta el cierre
+del mes 22, con
+cuatro sema-
+nas reforzadas
+posteriores a
+la firma del
+H12; con inicio
+contractual
+supuesto en
+febrero de 2027,
+del 5 de octu-
+bre al 30 de
+noviembre de
+2028, con re-
+fuerzo del 26 de
+octubre al 22
+de noviembre.
+4.3.3 Acta de aceptación
+final de la imple-
+mentación (H12)
+Expediente y acta
+de aceptación final,
+distintos del acta de
+cierre de 4.3.1.
+La Contraparte
+Técnica acepta en el
+mes 21 después del
+paso a producción,
+sin degradación de
+E1; entrega objetivo
+11-10-2028 y acta
+25-10-2028, con
+diez días hábiles de
+revisión y garantía
+constituida.
+JP Mes 21 (H12);
+fechas bajo
+el supuesto
+de inicio en
+febrero de
+2027.
+continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -4811,91 +4716,58 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.28 Diccionario de la cuenta 3.11. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 31 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.11.1 Documenta-
-ción técnica,
-funcional, de
-arquitectura,
-de operación y
-de seguridad
-Repositorio
-documental
-con versiones.
-Cada versión
-en producción
-tiene su do-
-cumentación
-en la misma
-versión.
-ARQ Se revisa antes
-del H7 y del
+4.3.4 Garantía de correc-
+to funcionamiento
+constituida, condi-
+ción de la acepta-
+ción final (H12)
+Garantía constitui-
+da.
+Está entregada
+antes de la entrega
+del expediente del
 H12.
-3.11.2 Base de cono-
-cimiento de
-incidentes y
-decisiones de
-diseño
-Base de cono-
-cimiento.
-Cada inciden-
-te cerrado y
-cada decisión
-de arquitectu-
-ra tienen su
-entrada.
-SRE Desde el H4.
-3.11.3 Estándares de
-codificación
-y documen-
-tación de in-
-terfaces en
-OpenAPI y
-AsyncAPI
-Documento
-de estándares
-y documenta-
-ción de interfa-
-ces publicada.
-Cada interfaz
-tiene su do-
-cumentación
-generada y
-versionada, y
-la cadena de
-integración
-verifica los
-estándares.
-DES Desde el mes
-4, y actuali-
-zada en cada
-versión.
-3.11.4 Inventario de
-componentes
-(SBOM) con
-sus licencias
-de código
-abierto
-Inventario de
-componentes
-actualizado en
-cada versión.
-Cada compo-
-nente tiene su
-versión y su
-licencia, y nin-
-guna licencia
-es incompati-
-ble con el uso
-del CLIENTE.
-DES Desde el mes
-4, y en cada
-versión.
+JP Mes 20, en
+paralelo con la
+marcha blanca
+de la Etapa 2;
+es un trámite
+financiero y
+no interviene
+sistemas.
+2.5 Fase 5. Adquisiciones y contrataciones
+La fase 5 reúne 4 cuentas de control y 15 paquetes de trabajo.
+2.5.1 Cuenta 5.1 — Hardware e infraestructura
+Esta cuenta de control reúne la especificación del equipamiento de terreno que compra el
+CLIENTE, la especificación y compra de la infraestructura que provee LafroX y su recepción
+técnica. LafroX provee, instala, integra y mantiene la infraestructura dentro del precio con-
+tratado (BA, art. 14.2, p. 10); su valorización corresponde a la Oferta Económica conforme al
+artículo 51 de las mismas Bases (p. 29).
+La Tabla 32 presenta sus paquetes.
+Tabla 32 Diccionario de la cuenta 5.1. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
+Resp. Período
+5.1.1 Especificación de
+compra de equi-
+pos de uso para el
+CLIENTE
+Especificación de
+terminales, impre-
+soras, terminales de
+pago y balanzas.
+Modelos, cantida-
+des y necesidad
+por ola aprobados
+por el CLIENTE;
+el sistema de frío
+corresponde a 5.1.4.
+ARQ Mes 2.
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
@@ -4906,63 +4778,63 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.28 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 32 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-3.11.5 Depósito del
-código fuente
-en el reposito-
-rio del CLIEN-
-TE en cada
-liberación
-Código depo-
-sitado en cada
-liberación.
-Cada versión
-en produc-
-ción está en
-el repositorio
-del CLIENTE,
-con la misma
-etiqueta de
-versión.
-DES En cada libera-
-ción, desde la
-primera.
-7.2.4 Fase 4. Transición
-La fase 4 reúne 3 cuentas de control y 10 paquetes de trabajo.
-7.2.4.1 Cuenta 4.1 — Plan de implantación
-Esta cuenta de control reúne los planes que dicen cómo entra la solución y cómo se vuelve
-atrás si algo falla.
-La Tabla 7.29 presenta sus paquetes.
-Tabla 7.29 Diccionario de la cuenta 4.1. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-4.1.1 Plan de olas
-de la Etapa
-1 por sitio y
-zona: Talca,
-Concepción y
-plataformas de
-cross-docking
-Plan de im-
-plantación por
-sitio y perfil.
-Cada ola tie-
-ne su sitio, su
-zona, su crite-
-rio de avance
-escrito y su
-registro oficial.
-IMP Antes del H6.
-continúa en la página siguiente
+5.1.2 Especificación y
+compra de la sala
+técnica, los racks,
+los servidores y los
+gabinetes de borde
+Especificación y
+orden de compra
+emitida por LafroX.
+Coincide con los
+planos de la fase 2
+(2.3) y con el T-11.
+LafroX emite la
+orden de compra
+en el mes 2 para
+instalar la sala en el
+mes 3.
+ARQ Mes 2.
+5.1.3 Actas de recepción
+técnica del equipa-
+miento de terreno
+comprado por el
+CLIENTE y de la
+infraestructura
+provista por LafroX
+Actas de recepción. El 100 % de lo espe-
+cificado se recibe
+conforme antes de
+su instalación (fase
+6).
+SRE Según el ca-
+lendario de
+compra.
+5.1.4 Especificación y
+compra del sistema
+de cadena de frío
+Especificación y
+órdenes de compra
+de LafroX
+B-01/B-02 de cáma-
+ras y componentes
+para 31 kits de ca-
+mión; cotización
+local y certificación
+Subtel aplicable
+antes del banco;
+compra masiva suje-
+ta a aceptación del
+prototipo.
+ARQ Meses 1–2; an-
+tes del banco.
+2.5.2 Cuenta 5.2 — Servicios de nube y licencias
+Esta cuenta de control reúne los servicios de software que LafroX contrata.
+La Tabla 33 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -4972,71 +4844,59 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.29 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 33 Diccionario de la cuenta 5.2. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-4.1.2 Procedimiento
-de reversión
-de la Etapa 1
-antes de las
-05:30, con ver-
-sión operativa
-local y DTE
-emitidos por el
-ERP
-Procedimien-
-to escrito y
-ensayado.
-Ensayo de re-
-versión con
-tiempos medi-
-dos, 96 despa-
-chos sin inte-
-rrupción, DTE
-válidos emiti-
-dos sólo por
-ERP, WMS sólo
-lectura y cero
-pérdida/dupli-
-cación; final
-antes de 05:30
-y fechas permi-
-tidas.
-IMP Antes de cada
-corte.
-4.1.3 Plan de im-
-plantación y
-reversión de la
-Etapa 2 fuera
-de la venta-
-na de 05:30 a
-07:00
-Plan de im-
-plantación de
-la Etapa 2.
-La reversión
-desactiva la
-capacidad de
-la Etapa 2 que
-falla sin tocar
-ni degradar
-la Etapa 1.
-El ensayo se
-realiza fuera
-de la ventana
-de 05:30 a
-07:00 y de
-las fechas
-prohibidas,
-con tiempos
-medidos y sin
-pérdida ni
-duplicación de
-datos.
-IMP Antes del H11.
+5.2.1 Contrato de los
+servicios de AWS
+Servicios contra-
+tados y cuentas
+habilitadas.
+Todos los servicios
+de la arquitectura
+física del Capítulo 4
+están activos antes
+de configurar los
+ambientes (3.1).
+SRE Antes del mes
+4.
+5.2.2 Suscripción del
+servicio de gestión
+de dispositivos y
+de detección en
+endpoints
+Suscripciones acti-
+vas.
+Las licencias cu-
+bren todos los equi-
+pos del T-11 antes
+de su enrolamiento.
+SRE Antes del enro-
+lamiento de los
+terminales.
+5.2.3 Licencias de soft-
+ware de terceros
+constituidas a nom-
+bre del CLIENTE
+Licencias a nombre
+del CLIENTE y su
+registro.
+Ninguna licencia
+de terceros está
+a nombre de La-
+froX, y todas están
+vigentes.
+ARQ Antes de usar
+cada producto.
+2.5.3 Cuenta 5.3 — Enlaces de comunicaciones
+Esta cuenta de control reúne los contratos de conexión de los sitios que contrata LafroX. El
+caso nombra la dependencia de un solo enlace en Concepción como un riesgo, y Los Ángeles
+tiene señal intermitente justo en su ventana de madrugada. Cada CD tiene fibra como enlace
+principal, LTE de respaldo y Starlink como tercer camino en espera caliente. Cada plataforma
+de cross-docking tiene Starlink como enlace principal y LTE de dos proveedores como respaldo.
+La Tabla 34 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -5046,86 +4906,68 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-7.2.4.2 Cuenta 4.2 — Marcha blanca y producción de la Etapa 1
-Esta cuenta de control reúne la operación supervisada de la Etapa 1, el acompañamiento
-posterior y el acta que la convierte en el registro oficial.
-La Tabla 7.30 presenta sus paquetes.
-Tabla 7.30 Diccionario de la cuenta 4.2. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 34 Diccionario de la cuenta 5.3. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-4.2.1 Marcha blanca
-de la Etapa
-1 con conci-
-liación diaria
-(H6)
-Informes dia-
-rios de in-
-dicadores y
-de concilia-
-ción; informe
-mensual de
-restauración
-de respaldos.
-Se cumplen
-las seis condi-
-ciones del Art.
-17.3; cada mes
-se restaura
-una muestra
-representativa
-sin errores
-y se mide el
-tiempo efecti-
-vo (RT-07.12).
-IMP Meses 13 a 15.
-Empieza con
-el H6.
-4.2.2 Estabilización
-de la Etapa
-1, acompaña-
-miento en ruta
-y restauracio-
-nes de soporte
-puente
-Informe de
-estabiliza-
-ción por ola y
-tres informes
-mensuales de
-restauración,
-de los meses
-16 a 18.
-Cada ruta re-
-cibe al menos
-un acompa-
-ñamiento, no
-quedan defec-
-tos críticos ni
-altos abiertos y
-cada restaura-
-ción funciona
-sin errores
-con su tiem-
-po medido
-(RT-07.12).
-IMP Meses 16 a
-20, después
-del paso a
-producción del
-H7 (D-28).
-4.2.3 Acta de paso
-a producción
-y cierre de la
-Etapa 1 (H7)
-Acta firmada. Está firmada
-por la Contra-
-parte Técnica
-en el mes 16.
-JP Mes 16 (H7).
+5.3.1 Contrato de fibra
+óptica de los CD de
+Talca y Concepción
+Contrato y fecha de
+instalación.
+La capacidad con-
+tratada coincide
+con la del T-11.
+SRE Antes del H3.
+5.3.2 Contrato de pla-
+nes LTE con dos
+proveedores (ocho
+planes)
+Contratos. Los ocho planes
+cubren un respaldo
+LTE en Talca, uno
+en Concepción y
+dos de proveedores
+distintos en cada
+plataforma de cross-
+docking.
+SRE Antes del H3.
+5.3.3 Contrato de Starlink
+para los cinco sitios:
+Talca, Concepción y
+las tres plataformas
+de cross-docking
+Contratos y equi-
+pos.
+Cubren los 56 me-
+ses del contrato en
+los cinco sitios.
+SRE Antes del H3.
+5.3.4 Contrato de SIM
+M2M y servicio
+satelital de los ca-
+miones con frío
+Contratos de dos
+operadores móviles
+y Globalsat Chile
+para Iridium SBD
+62 SIM M2M, ser-
+vicio bidireccional
+y camino de inges-
+ta acordado antes
+del piloto; sin con-
+fundir con SIM
+de terminales ni
+enlaces de sitio.
+SRE Mes 2; servicio
+disponible
+antes del banco
+y del piloto.
+2.5.4 Cuenta 5.4 — Acuerdos con terceros
+Esta cuenta de control reúne los acuerdos sin los cuales la solución no puede salir a la ruta,
+y la fórmula contractual de la innovación 4.
+La Tabla 35 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -5135,80 +4977,66 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-7.2.4.3 Cuenta 4.3 — Marcha blanca y producción de la Etapa 2
-Esta cuenta de control es igual a la 4.2, aplicada a la Etapa 2. Agrega una condición: convivir
-con la Etapa 1 ya en producción, con una sola fuente de verdad para los datos compartidos.
-La Tabla 7.31 presenta sus paquetes.
-Tabla 7.31 Diccionario de la cuenta 4.3. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 35 Diccionario de la cuenta 5.4. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-4.3.1 Marcha blanca
-de la Etapa 2
-en convivencia
-con la Etapa 1
-y fuente única
-de datos (H11)
-Informes dia-
-rios de in-
-dicadores y
-de concilia-
-ción; informe
-mensual de
-restauración
-de respaldos.
-Se cumplen
-las seis con-
-diciones del
-Art. 17.3, no
-hay doble digi-
-tación y cada
-mes se restau-
-ra una muestra
-representativa
-sin errores
-con su tiem-
-po medido
-(RT-07.12).
-IMP Meses 19 y 20.
-Empieza con
-el H11.
-4.3.2 Estabilización
-de la Etapa 2
-con Comer-
-cial, Finanzas,
-cadenas y
-transportistas
-Informe de
-estabilización.
-No quedan de-
-fectos críticos
-ni altos abier-
-tos al cierre
-del período.
-IMP Cuatro sema-
-nas desde el
-H12: meses 21
-y 22 con inicio
-en febrero de
-2027.
-4.3.3 Acta de paso
-a producción
-y aceptación
-final de la im-
-plementación
-(H12)
-Acta de acepta-
-ción final.
-Está firmada
-en el mes 21, y
-la Etapa 1 no
-se degradó.
-JP Mes 21 (H12).
-continúa en la página siguiente
+5.4.1 Acuerdos operacio-
+nales firmados con
+los diez transportis-
+tas
+Diez acuerdos fir-
+mados.
+Los diez acuerdos
+están firmados
+antes de la ola de
+reparto.
+IMP Antes del H6.
+5.4.2 Acta de acuerdo con
+el sindicato sobre
+terminales, GPS y
+cámaras
+Acta firmada por
+el sindicato y el
+CLIENTE.
+Está firmada antes
+de la ola de reparto,
+y la configuración
+respeta lo acordado.
+IMP Antes del H6.
+5.4.3 Fórmula aprobada
+del tramo variable:
+reglas de atribución,
+canasta e índices
+(INN-04.P1)
+Fórmula aprobada. Finanzas del CLIEN-
+TE aprueba la fór-
+mula simulada con
+casos antes del mes
+21.
+JP Meses 17 a 20.
+5.4.4 Contrato de custo-
+dia de fuentes con
+un tercero indepen-
+diente
+Contrato de cus-
+todia firmado y
+primer depósito.
+El contrato inclu-
+ye las cláusulas de
+liberación ante in-
+solvencia o incum-
+plimiento grave, y
+el primer depósito
+está hecho.
+JP Antes del H4.
+2.6 Fase 6. Infraestructura física y sitios
+La fase 6 reúne 6 cuentas de control y 24 paquetes de trabajo.
+2.6.1 Cuenta 6.1 — Adecuación de la sala técnica de Talca
+Esta cuenta de control reúne el trabajo de convertir la sala de Talca en una sala técnica que
+cumpla las Bases (BTT, capítulo 6). Termina con un acta que habilita el montaje de los racks.
+La Tabla 36 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -5218,35 +5046,81 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.31 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 36 Diccionario de la cuenta 6.1. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-4.3.4 Garantía de
-correcto fun-
-cionamiento
-constituida,
-condición de
-la aceptación
-final (H12)
-Garantía cons-
-tituida.
-Está entregada
-antes de la
-firma del acta
-del H12.
-JP Mes 21 (H12).
-7.2.5 Fase 5. Adquisiciones y contrataciones
-La fase 5 reúne 4 cuentas de control y 13 paquetes de trabajo.
-7.2.5.1 Cuenta 5.1 — Hardware e infraestructura
-Esta cuenta de control reúne la especificación del equipamiento de terreno que compra el
-CLIENTE, la especificación y compra de la infraestructura que provee LafroX y su recepción
-técnica. LafroX provee, instala, integra y mantiene la infraestructura dentro del precio con-
-tratado (BA, art. 14.2, p. 10); su valorización corresponde a la Oferta Económica conforme al
-artículo 51 de las mismas Bases (p. 29).
-La Tabla 7.32 presenta sus paquetes.
+6.1.1 Coordinación de la
+obra civil de sepa-
+ración, a cargo del
+CLIENTE (RT-06.06),
+y piso técnico de la
+sala
+Sala acondicionada
+según el plano, con
+obra civil de sepa-
+ración especificada
+y coordinada por
+LafroX y piso téc-
+nico provisto por
+LafroX.
+El recinto coincide
+con el plano apro-
+bado, incluido el
+blindaje perimetral
+especificado, y está
+listo para recibir los
+equipos.
+SRE Mes 3, después
+de la especi-
+ficación 5.1.2
+(D-10).
+6.1.2 Hardware de ener-
+gía instalado: UPS
+modular N+1, ge-
+nerador con 24
+horas de autono-
+mía, transferencia
+automática y PDU
+A/B
+Sistema de energía
+instalado y proba-
+do.
+En una prueba con
+carga real, el corte
+de la red pasa a la
+UPS y al generador
+sin que se apague
+ningún equipo.
+SRE Mes 3.
+6.1.3 Hardware de clima-
+tización de preci-
+sión N+1 instalado
+Climatización insta-
+lada y probada.
+Con un equipo
+apagado, la sala se
+mantiene en el ran-
+go de temperatura
+del fabricante.
+SRE Mes 3.
+6.1.4 Hardware de de-
+tección temprana
+de incendio y ex-
+tinción por agente
+limpio instalado
+Sistema instala-
+do y conectado al
+monitoreo.
+Una prueba de
+detección genera
+la alarma en el
+monitoreo, y la
+extinción queda
+armada.
+SRE Mes 3.
+continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -5256,80 +5130,62 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.32 Diccionario de la cuenta 5.1. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 36 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-5.1.1 Especificación
-de compra del
-equipamiento
-de terreno pa-
-ra el CLIENTE
-Especificación
-de compra con
-su calendario.
-Cada partida
-de equipa-
-miento de
-terreno del
-T-11 tiene mo-
-delo, cantidad
-y fecha de ne-
-cesidad antes
-de su ola, y el
-CLIENTE la
-aprueba.
-ARQ Mes 2.
-5.1.2 Especificación
-y compra de
-la sala técnica,
-los racks, los
-servidores y
-los gabinetes
-de borde
-Especifica-
-ción y orden
-de compra
-emitida por
-LafroX.
-Coincide con
-los planos de
-la fase 2 (2.3)
-y con el T-11.
-LafroX emite
-la orden de
-compra en el
-mes 2 para
-instalar la sala
-en el mes 3.
-ARQ Mes 2.
-5.1.3 Actas de recep-
-ción técnica
-del equipa-
-miento de
-terreno com-
-prado por el
-CLIENTE y de
-la infraestruc-
-tura provista
-por LafroX
-Actas de recep-
-ción.
-El 100 % de lo
-especificado
-se recibe con-
-forme antes de
-su instalación
-(fase 6).
-SRE Según el ca-
-lendario de
-compra.
-7.2.5.2 Cuenta 5.2 — Servicios de nube y licencias
-Esta cuenta de control reúne los servicios de software que LafroX contrata.
-La Tabla 7.33 presenta sus paquetes.
+6.1.5 Acta de recepción
+técnica de la sala
+Acta firmada con
+disponibilidad del
+recinto.
+Obra civil y piso
+técnico 6.1.1 recibi-
+dos y pruebas 6.1.2
+a 6.1.4 aprobadas.
+La disponibilidad
+del espacio por el
+CLIENTE se acredi-
+ta, no se presume
+por la fecha planifi-
+cada.
+SRE Mes 4, después
+de 6.1.1 a 6.1.4
+y antes del
+montaje de los
+racks (6.3).
+2.6.2 Cuenta 6.2 — Cableado estructurado
+Esta cuenta de control reúne la red física de cables que conecta los equipos de la sala y de
+las bodegas.
+La Tabla 37 presenta sus paquetes.
+Tabla 37 Diccionario de la cuenta 6.2. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
+Resp. Período
+6.2.1 Cableado de cobre
+Cat6A y fibra OM4
+tendido, con dos
+ductos de ingreso
+independientes
+Cableado tendido. Los dos ductos de
+ingreso están se-
+parados (RT-06.32),
+y todos los puntos
+del diseño están
+cableados.
+SRE Mes 4.
+6.2.2 Certificación de
+enlaces, etiquetado
+y planos as-built
+Informe de certifi-
+cación por enlace y
+planos as-built.
+El 100 % de los enla-
+ces está certificado
+y etiquetado.
+SRE Mes 6.
+continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -5339,73 +5195,78 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.33 Diccionario de la cuenta 5.2. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 37 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-5.2.1 Contrato de los
-servicios de
-AWS
-Servicios con-
-tratados y
-cuentas habili-
-tadas.
-Todos los ser-
-vicios de la
-arquitectura
-física del Ca-
-pítulo 4 están
-activos antes
-de configurar
-los ambientes
-(3.1).
-SRE Antes del mes
-4.
-5.2.2 Suscripción
-del servicio
-de gestión de
-dispositivos y
-de detección
-en endpoints
-Suscripciones
-activas.
-Las licencias
-cubren todos
-los equipos del
-T-11 antes de
-su enrolamien-
-to.
-SRE Antes del en-
-rolamiento de
+6.2.3 Gabinetes de piso y
+switches de acceso
+instalados en las
+bodegas de Talca y
+Concepción
+Gabinetes de piso
+instalados y conec-
+tados.
+Cada punto de la
+bodega tiene red, y
+el Wi-Fi cubre las
+zonas de trabajo de
 los terminales.
-5.2.3 Licencias
-de software
-de terceros
-constituidas
-a nombre del
-CLIENTE
-Licencias a
-nombre del
-CLIENTE y su
-registro.
-Ninguna licen-
-cia de terceros
-está a nombre
-de LafroX, y
-todas están
-vigentes.
-ARQ Antes de usar
-cada producto.
-7.2.5.3 Cuenta 5.3 — Enlaces de comunicaciones
-Esta cuenta de control reúne los contratos de conexión de los sitios que contrata LafroX. El
-caso nombra la dependencia de un solo enlace en Concepción como un riesgo, y Los Ángeles
-tiene señal intermitente justo en su ventana de madrugada. Cada CD tiene fibra como enlace
-principal, LTE de respaldo y Starlink como tercer camino en espera caliente. Cada plataforma
-de cross-docking tiene Starlink como enlace principal y LTE de dos proveedores como respaldo.
-La Tabla 7.34 presenta sus paquetes.
+SRE Antes del H6.
+2.6.3 Cuenta 6.3 — Montaje de racks y gabinetes
+Esta cuenta de control reúne el montaje de los equipos de cómputo y comunicaciones en
+cada uno de los cinco sitios.
+La Tabla 38 presenta sus paquetes.
+Tabla 38 Diccionario de la cuenta 6.3. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
+Resp. Período
+6.3.1 Rack R01 de ser-
+vidores montado:
+clúster de tres no-
+dos, respaldo local,
+consola KVM y tras-
+lado del servidor
+del ERP del CLIEN-
+TE
+Rack montado,
+energizado por los
+dos caminos y co-
+nectado. Servidor
+del ERP de 2017
+trasladado desde
+la sala actual de 25
+m² a R01 (U25–U26),
+con respaldo com-
+pleto verificado, en
+ventana dominical
+y sin cambios de
+software.
+Cada equipo tiene
+doble fuente en cir-
+cuitos distintos. El
+clúster sigue funcio-
+nando con un nodo
+apagado. El trasla-
+do del ERP a R01
+se realiza después
+del H3 y antes de la
+marcha blanca de
+Talca, con respaldo
+completo verificado,
+en ventana domini-
+cal y sin cambios
+de software (SD4,
+4.3.1.4; T-11).
+SRE Montaje antes
+del H3. Tras-
+lado del ERP
+después del H3
+y antes de la
+marcha blanca
+de Talca.
+continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -5415,61 +5276,70 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.34 Diccionario de la cuenta 5.3. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 38 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-5.3.1 Contrato de
-fibra óptica
-de los CD de
-Talca y Con-
-cepción
-Contrato y
-fecha de insta-
-lación.
-La capacidad
-contratada
-coincide con la
-del T-11.
+6.3.2 Rack R02 de comu-
+nicaciones monta-
+do: firewalls, swit-
+ches de núcleo y de
+gestión, y distribu-
+ción de fibra
+Rack montado y
+conectado.
+Al apagar un fire-
+wall o un switch,
+el tráfico sigue sin
+cortarse.
 SRE Antes del H3.
-5.3.2 Contrato de
-planes LTE
-con dos pro-
-veedores (ocho
-planes)
-Contratos. Los ocho pla-
-nes cubren
-un respaldo
-LTE en Talca,
-uno en Con-
-cepción y dos
-de proveedo-
-res distintos
-en cada pla-
-taforma de
-cross-docking.
+6.3.3 Gabinete de bor-
+de de Concepción
+montado: servi-
+dores activo y en
+espera, firewalls,
+switches, UPS, cli-
+matización y moni-
+toreo
+Gabinete montado
+y monitoreado, con
+dos servidores HPE
+DL20 (activo y en
+espera).
+El gabinete reporta
+su estado al centro
+de operaciones, la
+falla de un firewall
+no corta la red y el
+servidor de espera
+toma el servicio si
+falla el activo.
 SRE Antes del H3.
-5.3.3 Contrato de
-Starlink para
-los cinco sitios:
-Talca, Concep-
-ción y las tres
-plataformas de
-cross-docking
-Contratos y
-equipos.
-Cubren los
-56 meses del
-contrato en los
-cinco sitios.
-SRE Antes del H3.
-7.2.5.4 Cuenta 5.4 — Acuerdos con terceros
-Esta cuenta de control reúne los acuerdos sin los cuales la solución no puede salir a la ruta,
-y la fórmula contractual de la innovación 4.
-La Tabla 7.35 presenta sus paquetes.
+6.3.4 Gabinetes de bor-
+de montados en
+Curicó, Chillán y
+Los Ángeles, con
+dos mini-PC (activo
+y en espera) por
+plataforma
+Tres gabinetes
+montados, cada uno
+con dos mini-PC
+industriales E-01
+(activo y en espera).
+Cada plataforma
+opera su ventana de
+madrugada con el
+enlace cortado y el
+mini-PC de espera
+toma el servicio si
+falla el activo.
+SRE Antes de la
+ola de cross-
+docking.
+2.6.4 Cuenta 6.4 — Sistemas de seguridad física
+Esta cuenta de control reúne lo que protege físicamente a la sala y a sus respaldos.
+La Tabla 39 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -5479,81 +5349,65 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.35 Diccionario de la cuenta 5.4. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 39 Diccionario de la cuenta 6.4. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-5.4.1 Acuerdos ope-
-racionales
-firmados con
-los diez trans-
-portistas
-Diez acuerdos
-firmados.
-Los diez acuer-
-dos están fir-
-mados antes
-de la ola de
-reparto.
-IMP Antes del H6.
-5.4.2 Acta de acuer-
-do con el sin-
-dicato sobre
-terminales,
-GPS y cámaras
-Acta firmada
-por el sin-
-dicato y el
-CLIENTE.
-Está firmada
-antes de la ola
-de reparto, y la
-configuración
-respeta lo
-acordado.
-IMP Antes del H6.
-5.4.3 Fórmula apro-
-bada del tramo
-variable: re-
-glas de atribu-
-ción, canasta
-e índices (INN-
-04.P1)
-Fórmula apro-
-bada.
-Finanzas del
-CLIENTE
-aprueba la
-fórmula simu-
-lada con casos
-antes del mes
-21.
-JP Meses 17 a 20.
-5.4.4 Contrato de
-custodia de
-fuentes con
-un tercero
-independiente
-Contrato de
-custodia firma-
-do y primer
-depósito.
-El contrato
-incluye las
-cláusulas de
-liberación ante
-insolvencia
-o incumpli-
-miento grave,
-y el primer
-depósito está
-hecho.
-JP Antes del H4.
-7.2.6 Fase 6. Infraestructura física y sitios
-La fase 6 reúne 6 cuentas de control y 24 paquetes de trabajo.
+6.4.1 Hardware de con-
+trol de acceso bio-
+métrico y esclusa
+instalado
+Control de acceso
+instalado y con las
+personas autoriza-
+das enroladas.
+Solo las personas
+enroladas entran, y
+cada ingreso queda
+registrado.
+SEG Antes del H3.
+6.4.2 Hardware de video-
+vigilancia instalado
+Cámaras instaladas
+y conectadas al
+monitoreo.
+Se pueden consultar
+las imágenes de las
+seis zonas de los
+últimos 30 días.
+SEG Antes del H3.
+6.4.3 Recinto de custo-
+dia de respaldos
+habilitado
+Recinto habilitado. El recinto mantiene
+entre 18 y 27 °C y
+entre 40 y 60 % de
+humedad.
+SEG Antes del H3.
+2.6.5 Cuenta 6.5 — Equipamiento de campo
+Esta cuenta de control reúne la puesta en marcha de los equipos que usan las personas en
+la bodega y en la ruta. Se instalan por olas, antes de que cada ola empiece.
+La Tabla 40 presenta sus paquetes.
+Tabla 40 Diccionario de la cuenta 6.5. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
+Resp. Período
+6.5.1 Terminales de pre-
+venta, reparto y
+bodega configura-
+dos y enrolados
+Terminales enrola-
+dos y asignados.
+El 100 % de los
+terminales de cada
+ola está enrolado y
+probado antes de
+que la ola empiece.
+SRE Antes de cada
+ola (H6).
+continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -5563,88 +5417,79 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-7.2.6.1 Cuenta 6.1 — Adecuación de la sala técnica de Talca
-Esta cuenta de control reúne el trabajo de convertir la sala de Talca en una sala técnica que
-cumpla las Bases (BTT, capítulo 6). Termina con un acta que habilita el montaje de los racks.
-La Tabla 7.36 presenta sus paquetes.
-Tabla 7.36 Diccionario de la cuenta 6.1. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 40 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-6.1.1 Coordinación
-de la obra civil
-de separación,
-a cargo del
-CLIENTE (RT-
-06.06), y piso
-técnico de la
-sala
-Sala acondi-
-cionada según
-el plano, con
-obra civil de
-separación
-especificada
-y coordinada
-por LafroX y
-piso técnico
-provisto por
-LafroX.
-El recinto coin-
-cide con el
-plano aproba-
-do, incluido
-el blindaje
-perimetral
-especificado,
-y está listo pa-
-ra recibir los
-equipos.
-SRE Mes 3, después
-de la especi-
-ficación 5.1.2
-(D-10).
-6.1.2 Hardware
-de energía
-instalado: UPS
-modular N+1,
-generador con
-24 horas de
-autonomía,
-transferencia
-automática y
-PDU A/B
-Sistema de
-energía instala-
-do y probado.
-En una prueba
-con carga real,
-el corte de
-la red pasa
-a la UPS y al
-generador
-sin que se
-apague ningún
-equipo.
-SRE Mes 3.
-6.1.3 Hardware de
-climatización
-de precisión
-N+1 instalado
-Climatización
-instalada y
-probada.
-Con un equipo
-apagado, la sa-
-la se mantiene
-en el rango de
-temperatura
-del fabricante.
-SRE Mes 3.
-continúa en la página siguiente
+6.5.2 Terminales de pago
+configurados, uno
+por camión
+Terminales de pago
+configurados y
+asignados a cada
+camión.
+Un cobro de prueba
+con tarjeta se autori-
+za y queda unido a
+su entrega.
+SRE Antes de la ola
+de reparto.
+6.5.3 Sensores de cámara
+y gateways IoT ins-
+talados en Talca y
+Concepción
+Sensores y gate-
+ways instalados y
+calibrados.
+Los 21 puntos re-
+portan a M12 sin
+brechas durante
+una semana an-
+tes de la marcha
+blanca.
+SRE Antes del H5.
+6.5.4 Kit de cadena de
+frío instalado y
+recibido en los 28
+camiones con frío
+Acta por camión,
+kit instalado y che-
+queo completo.
+Cuatro actas antes
+del piloto y 28 antes
+de la ola 3; alarma
+simulada, asocia-
+ción de registrado-
+res y protección
+local comprobadas.
+SRE Meses 8–12;
+antes de la ola
+de reparto.
+6.5.5 Impresoras de
+cabina instaladas
+Impresoras instala-
+das y vinculadas al
+terminal de reparto.
+Cada camión impri-
+me sin señal.
+SRE Antes de la ola
+de reparto.
+6.5.6 Impresoras de an-
+dén y balanzas de
+recepción instala-
+das
+Equipos instalados
+y conectados.
+La recepción im-
+prime etiquetas
+y registra el peso
+desde M1.
+SRE Antes de la ola
+de recepción.
+2.6.6 Cuenta 6.6 — Configuración de la infraestructura de los sitios
+Esta cuenta de control reúne lo necesario para que el hardware instalado funcione como
+plataforma: el software de base, los enlaces y la prueba de autonomía.
+La Tabla 41 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
@@ -5654,566 +5499,55 @@ Media firma: Alex Aravena
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.36 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 41 Diccionario de la cuenta 6.6. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-6.1.4 Hardware
-de detección
-temprana de
-incendio y
-extinción por
-agente limpio
-instalado
-Sistema ins-
-talado y co-
-nectado al
-monitoreo.
-Una prueba de
-detección ge-
-nera la alarma
-en el monito-
-reo, y la ex-
-tinción queda
-armada.
-SRE Mes 3.
-6.1.5 Acta de recep-
-ción técnica de
-la sala
-Acta firmada. Las pruebas de
-6.1.2 a 6.1.4 es-
-tán aprobadas.
-SRE Mes 4, después
-de 6.1.2 a 6.1.4
-y antes del
-montaje de los
-racks (6.3).
-7.2.6.2 Cuenta 6.2 — Cableado estructurado
-Esta cuenta de control reúne la red física de cables que conecta los equipos de la sala y de
-las bodegas.
-La Tabla 7.37 presenta sus paquetes.
-Tabla 7.37 Diccionario de la cuenta 6.2. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-6.2.1 Cableado de
-cobre Cat6A
-y fibra OM4
-tendido, con
-dos ductos de
-ingreso inde-
-pendientes
-Cableado ten-
-dido.
-Los dos ductos
-de ingreso es-
-tán separados
-(RT-06.32), y to-
-dos los puntos
-del diseño es-
-tán cableados.
-SRE Mes 4.
-continúa en la página siguiente
-LafroX SpA
-Formulario T-14
-Media firma: Alex Aravena
-74
-
-
----
-
-LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.37 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-6.2.2 Certificación
-de enlaces,
-etiquetado y
-planos as-built
-Informe de
-certificación
-por enlace
-y planos as-
-built.
-El 100 % de los
-enlaces está
-certificado y
-etiquetado.
-SRE Mes 6.
-6.2.3 Gabinetes de
-piso y switches
-de acceso
-instalados en
-las bodegas
-de Talca y
-Concepción
-Gabinetes de
-piso instalados
-y conectados.
-Cada punto
-de la bodega
-tiene red, y el
-Wi-Fi cubre
-las zonas de
-trabajo de los
-terminales.
-SRE Antes del H6.
-7.2.6.3 Cuenta 6.3 — Montaje de racks y gabinetes
-Esta cuenta de control reúne el montaje de los equipos de cómputo y comunicaciones en
-cada uno de los cinco sitios.
-La Tabla 7.38 presenta sus paquetes.
-LafroX SpA
-Formulario T-14
-Media firma: Alex Aravena
-75
-
-
----
-
-LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.38 Diccionario de la cuenta 6.3. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-6.3.1 Rack R01 de
-servidores
-montado: clús-
-ter de tres no-
-dos, respaldo
-local, consola
-KVM y trasla-
-do del servidor
-del ERP del
-CLIENTE
-Rack montado,
-energizado
-por los dos
-caminos y
-conectado. Ser-
-vidor del ERP
-de 2017 tras-
-ladado desde
-la sala actual
-de 25 m² a R01
-(U25–U26),
-con respaldo
-completo ve-
-rificado, en
-ventana do-
-minical y sin
-cambios de
-software.
-Cada equipo
-tiene doble
-fuente en cir-
-cuitos distin-
-tos. El clúster
-sigue funcio-
-nando con un
-nodo apagado.
-El traslado del
-ERP a R01 se
-realiza des-
-pués del H3
-y antes de la
-marcha blan-
-ca de Talca,
-con respaldo
-completo ve-
-rificado, en
-ventana do-
-minical y sin
-cambios de
-software (SD4,
-4.3.1.4; T-11).
-SRE Montaje antes
-del H3. Tras-
-lado del ERP
-después del H3
-y antes de la
-marcha blanca
-de Talca.
-6.3.2 Rack R02 de
-comunicacio-
-nes montado:
-firewalls, swit-
-ches de núcleo
-y de gestión, y
-distribución de
-fibra
-Rack montado
-y conectado.
-Al apagar un
-firewall o un
-switch, el
-tráfico sigue
-sin cortarse.
-SRE Antes del H3.
-continúa en la página siguiente
-LafroX SpA
-Formulario T-14
-Media firma: Alex Aravena
-76
-
-
----
-
-LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.38 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-6.3.3 Gabinete de
-borde de
-Concepción
-montado: ser-
-vidores activo
-y en espera,
-firewalls, swit-
-ches, UPS,
-climatización y
-monitoreo
-Gabinete mon-
-tado y moni-
-toreado, con
-dos servido-
-res HPE DL20
-(activo y en
-espera).
-El gabinete
-reporta su es-
-tado al centro
-de operacio-
-nes, la falla de
-un firewall no
-corta la red y
-el servidor de
-espera toma el
-servicio si falla
-el activo.
-SRE Antes del H3.
-6.3.4 Gabinetes de
-borde monta-
-dos en Curicó,
-Chillán y Los
-Ángeles, con
-dos mini-PC
-(activo y en
-espera) por
-plataforma
-Tres gabinetes
-montados,
-cada uno con
-dos mini-PC
-industriales
-E-01 (activo y
-en espera).
-Cada platafor-
-ma opera su
-ventana de ma-
-drugada con el
-enlace cortado
-y el mini-PC de
-espera toma el
-servicio si falla
-el activo.
-SRE Antes de la
-ola de cross-
-docking.
-7.2.6.4 Cuenta 6.4 — Sistemas de seguridad física
-Esta cuenta de control reúne lo que protege físicamente a la sala y a sus respaldos.
-La Tabla 7.39 presenta sus paquetes.
-LafroX SpA
-Formulario T-14
-Media firma: Alex Aravena
-77
-
-
----
-
-LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.39 Diccionario de la cuenta 6.4. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-6.4.1 Hardware de
-control de
-acceso biomé-
-trico y esclusa
-instalado
-Control de
-acceso ins-
-talado y con
-las personas
-autorizadas
-enroladas.
-Solo las perso-
-nas enroladas
-entran, y cada
-ingreso queda
-registrado.
-SEG Antes del H3.
-6.4.2 Hardware de
-videovigilancia
-instalado
-Cámaras ins-
-taladas y co-
-nectadas al
-monitoreo.
-Se pueden
-consultar las
-imágenes de
-las seis zonas
-de los últimos
-30 días.
-SEG Antes del H3.
-6.4.3 Recinto de
-custodia de
-respaldos
-habilitado
-Recinto habili-
-tado.
-El recinto
-mantiene
-entre 18 y
-27 °C y entre
-40 y 60 % de
-humedad.
-SEG Antes del H3.
-7.2.6.5 Cuenta 6.5 — Equipamiento de campo
-Esta cuenta de control reúne la puesta en marcha de los equipos que usan las personas en
-la bodega y en la ruta. Se instalan por olas, antes de que cada ola empiece.
-La Tabla 7.40 presenta sus paquetes.
-LafroX SpA
-Formulario T-14
-Media firma: Alex Aravena
-78
-
-
----
-
-LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.40 Diccionario de la cuenta 6.5. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-6.5.1 Terminales de
-preventa, re-
-parto y bodega
-configurados y
-enrolados
-Terminales
-enrolados y
-asignados.
-El 100 % de
-los terminales
-de cada ola
-está enrolado y
-probado antes
-de que la ola
-empiece.
-SRE Antes de cada
-ola (H6).
-6.5.2 Terminales de
-pago configu-
-rados, uno por
-camión
-Terminales
-de pago con-
-figurados y
-asignados a
-cada camión.
-Un cobro de
-prueba con tar-
-jeta se autoriza
-y queda unido
-a su entrega.
-SRE Antes de la ola
-de reparto.
-6.5.3 Sensores de
-cámara y ga-
-teways IoT
-instalados en
-Talca y Con-
-cepción
-Sensores y
-gateways insta-
-lados y calibra-
-dos.
-Los 21 puntos
-reportan a
-M12 sin bre-
-chas durante
-una semana
-antes de la
-marcha blan-
-ca.
-SRE Antes del H5.
-6.5.4 Termógrafos
-instalados en
-los 28 camio-
-nes con frío
-(propios y de
-transportistas)
-28 camiones
-instrumenta-
-dos.
-Cada camión
-descarga su
-registro com-
-pleto al volver,
-y la alerta se
-ve en la cabi-
-na.
-SRE Antes de la ola
-de reparto.
-6.5.5 Impresoras
-de cabina
-instaladas
-Impresoras
-instaladas y
-vinculadas al
-terminal de
-reparto.
-Cada camión
-imprime sin
-señal.
-SRE Antes de la ola
-de reparto.
-continúa en la página siguiente
-LafroX SpA
-Formulario T-14
-Media firma: Alex Aravena
-79
-
-
----
-
-LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.40 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-6.5.6 Impresoras
-de andén y
-balanzas de
-recepción
-instaladas
-Equipos insta-
-lados y conec-
-tados.
-La recepción
-imprime eti-
-quetas y re-
-gistra el peso
-desde M1.
-SRE Antes de la ola
-de recepción.
-7.2.6.6 Cuenta 6.6 — Configuración de la infraestructura de los sitios
-Esta cuenta de control reúne lo necesario para que el hardware instalado funcione como
-plataforma: el software de base, los enlaces y la prueba de autonomía.
-La Tabla 7.41 presenta sus paquetes.
-Tabla 7.41 Diccionario de la cuenta 6.6. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-6.6.1 Software de
-base instalado
-en los sitios:
-virtualización,
-contenedores,
-PostgreSQL,
-RabbitMQ y
+6.6.1 Software de base
+instalado en los si-
+tios: virtualización,
+contenedores, Post-
+greSQL, RabbitMQ y
 Keycloak
-Software de
-base instalado
-en los cinco
-sitios.
-Cada sitio eje-
-cuta la misma
-imagen de la
-aplicación que
-la nube.
+Software de base
+instalado en los
+cinco sitios.
+Cada sitio ejecuta la
+misma imagen de
+la aplicación que la
+nube.
 SRE Antes del H3.
-6.6.2 Enlaces de
-fibra, LTE y
-Starlink habi-
-litados, con
-conmutación
-al respaldo
-Enlaces opera-
-tivos.
-Al cortar el en-
-lace principal,
-el respaldo
-toma el tráfico
-en menos de
-30 segundos.
+6.6.2 Enlaces de fibra,
+LTE y Starlink habi-
+litados, con conmu-
+tación al respaldo
+Enlaces operativos. Al cortar el enlace
+principal, el respal-
+do toma el tráfico
+en menos de 30
+segundos.
 SRE Antes del H3.
-continúa en la página siguiente
-LafroX SpA
-Formulario T-14
-Media firma: Alex Aravena
-80
-
-
----
-
-LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.41 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-6.6.3 Borde de los
-CD en servicio,
-con la prueba
-de autonomía
-de 24 horas
+6.6.3 Borde de los CD
+en servicio, con
+la prueba de auto-
+nomía de 24 horas
 aprobada
-Informe de
-la prueba de
-autonomía por
-sitio.
-Cada CD ope-
-ra 24 horas
-sin enlace y
-concilia sin
-pérdidas ni
-duplicados.
+Informe de la prue-
+ba de autonomía
+por sitio.
+Cada CD opera 24
+horas sin enlace y
+concilia sin pérdi-
+das ni duplicados.
 SRE Mes 5, antes
-del H3; prue-
-bas de acepta-
-ción ampliadas
+del H3; pruebas
+de aceptación
+ampliadas
 antes del H5.
-7.2.7 Fase 7. Capacitación y gestión del cambio
+2.7 Fase 7. Capacitación y gestión del cambio
 La fase 7 reúne 3 cuentas de control y 13 paquetes de trabajo.
-7.2.7.1 Cuenta 7.1 — Capacitación por roles
+2.7.1 Cuenta 7.1 — Capacitación por roles
 Esta cuenta de control reúne la capacitación de cada grupo según su rol y su situación.
 Todo el material de capacitación de 7.1.5, incluidos manuales por perfil, guías rápidas,
 preguntas frecuentes y videos tutoriales, y la base de conocimiento consultable de 3.11.2 y
@@ -6225,337 +5559,271 @@ calle de lunes a sábado, y considerando los peaks de septiembre y diciembre. La
 de conductores externos se acordará con cada transportista mediante 5.4.1, y la inducción
 continua de preparadores de 7.1.2 atenderá la rotación anual del 38 % sin detener la operación
 (BTT, cap. 22, RT-22.04, p. 38; Caso, cap. 15, pp. 26–27).
-La Tabla 7.42 presenta sus paquetes.
+La Tabla 42 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
-81
+74
 
 
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.42 Diccionario de la cuenta 7.1. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 42 Diccionario de la cuenta 7.1. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-7.1.1 Plan de capa-
-citación por
-perfil: usua-
-rios finales,
-avanzados, ad-
-ministradores,
-equipo técnico
-y soporte
-Plan de ca-
-pacitación
-aprobado.
-Cubre todos
-los perfiles de
-cada ola y está
-aprobado por
+7.1.1 Plan de capaci-
+tación por perfil:
+usuarios finales,
+avanzados, admi-
+nistradores, equipo
+técnico y soporte
+Plan de capacita-
+ción aprobado.
+Cubre todos los
+perfiles de cada ola
+y está aprobado por
 el CLIENTE.
 IMP Antes del H6.
-7.1.2 Programa de
-capacitación
-continua del
-turno de no-
-che por la
-rotación del
-38 %
-Programa de
-inducción con-
-tinua y tutores
-formados.
-Un preparador
-nuevo opera
-su flujo des-
-pués de un
-máximo de
-dos horas de
+7.1.2 Programa de capaci-
+tación continua del
+turno de noche por
+la rotación del 38 %
+Programa de in-
+ducción continua y
+tutores formados.
+Un preparador nue-
+vo opera su flujo
+después de un máxi-
+mo de dos horas de
 aprendizaje.
 IMP Desde el H6, y
 durante toda la
 Operación.
-7.1.3 Procedimiento
-de incorpo-
-ración de los
-conductores
-de los trans-
-portistas en el
-andén
-Procedimiento
-de incorpora-
-ción y registro
-de cada con-
-ductor.
-Ningún con-
-ductor externo
-sale a ruta sin
-su inducción y
-su habilitación
-registradas.
-IMP Desde el H6.
-7.1.4 Traspaso al
-equipo de
-TI de cuatro
-personas del
-CLIENTE
-Acuerdo de
-qué funciones
-se traspasan y
-qué funciones
-quedan como
-servicio, y
-certificación
-de las cuatro
-personas.
-Las cuatro per-
-sonas están
-certificadas
-en sus fun-
-ciones antes
-del cierre de
-cada marcha
+7.1.3 Incorporación
+de conductores
+de transportistas,
+escaneos y lectura
+del rojo
+Inducción y habili-
+tación registrada de
+cada conductor.
+Incluye salida de
+cámara, carga y ba-
+jada, rojo en TC58e
+y prohibición de
+liberar; nadie sale a
+ruta sin inducción.
+IMP Meses 11–20;
+antes de la
+salida de cada
+conductor.
+7.1.4 Traspaso al equipo
+de TI de cuatro per-
+sonas del CLIENTE
+Acuerdo de qué fun-
+ciones se traspasan
+y qué funciones
+quedan como servi-
+cio, y certificación
+de las cuatro perso-
+nas.
+Las cuatro personas
+están certificadas
+en sus funciones
+antes del cierre
+de cada marcha
 blanca.
 IMP Antes del H7 y
 del H12.
-continúa en la página siguiente
-LafroX SpA
-Formulario T-14
-Media firma: Alex Aravena
-82
-
-
----
-
-LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.42 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-7.1.5 Materiales de
-capacitación:
-manuales por
-perfil, guías rá-
-pidas, pregun-
-tas frecuentes
-y videos tuto-
-riales
+7.1.5 Materiales de capa-
+citación: manuales
+por perfil, guías
+rápidas, preguntas
+frecuentes y videos
+tutoriales
 Materiales por
 perfil.
-Cada perfil tie-
-ne su manual,
-su guía rápida,
-sus preguntas
-frecuentes
-y sus videos,
-entregados
-en formato
-editable.
+Cada perfil tiene su
+manual, su guía rá-
+pida, sus preguntas
+frecuentes y sus vi-
+deos, entregados en
+formato editable.
 IMP Antes del H6,
 y actualizados
 antes del H11.
-7.1.6 Plataforma de
-autoformación
-en línea con
-registro de
-avance
-Plataforma
-habilitada con
-los cursos por
-perfil.
-Cada perfil
-tiene su curso,
-y el avance
-de cada per-
-sona queda
-registrado.
+7.1.6 Plataforma de au-
+toformación en
+línea con registro
+de avance
+Plataforma habili-
+tada con los cursos
+por perfil.
+Cada perfil tiene su
+curso, y el avance
+de cada persona
+queda registrado.
 IMP Antes del H6.
-7.2.7.2 Cuenta 7.2 — Gestión del cambio
+LafroX SpA
+Formulario T-14
+Media firma: Alex Aravena
+75
+
+
+---
+
+LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
+2.7.2 Cuenta 7.2 — Gestión del cambio
 Esta cuenta de control reúne el acompañamiento de quienes no basta con capacitar.
-La Tabla 7.43 presenta sus paquetes.
-Tabla 7.43 Diccionario de la cuenta 7.2. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+La Tabla 43 presenta sus paquetes.
+Tabla 43 Diccionario de la cuenta 7.2. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-7.2.1 Acompaña-
-miento del
-personal con
-20 o 30 años en
-la compañía
-Registro del
-acompaña-
-miento por
+7.2.1 Acompañamiento
+del personal con
+20 o 30 años en la
+compañía
+Registro del acom-
+pañamiento por
 persona.
-Cada persona
-identificada
-tiene su plan
-de acompa-
-ñamiento y
-queda certifica-
-da.
+Cada persona iden-
+tificada tiene su
+plan de acompa-
+ñamiento y queda
+certificada.
 IMP Antes del H6 y
 hasta el H7.
+7.2.2 Gestión del cambio
+con las cadenas y
+los transportistas
+Plan de comuni-
+cación externa
+ejecutado.
+Cada cadena y cada
+transportista recibe
+la comunicación y
+su acceso antes de
+la marcha blanca de
+la Etapa 2.
+IMP Antes del H11.
+7.2.3 Diagnóstico del
+impacto organiza-
+cional por área y
+perfil, con agentes
+de cambio
+Diagnóstico de im-
+pacto y nómina de
+agentes de cambio
+habilitados.
+Cada área tiene su
+impacto y sus resis-
+tencias previstas,
+con una estrategia
+para cada una, y
+cada sitio tiene al
+menos un agente de
+cambio.
+IMP Meses 2 a 6.
+7.2.4 Procedimientos
+operativos rediseña-
+dos, contingencia
+de frío y ruptura
+confirmada
+Procedimientos
+por ruta y proceso
+aprobados.
+Incluye reparación,
+trasbordo o retorno,
+entrega parcial,
+ajuste ERP, repo-
+sición, área de no
+aptos y disposición;
+procedimiento de
+frío antes del piloto.
+IMP Meses 8–20;
+antes del piloto
+y de cada ola.
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
-83
+76
 
 
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.43 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 43 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-7.2.2 Gestión del
-cambio con las
-cadenas y los
-transportistas
-Plan de co-
-municación
-externa ejecu-
-tado.
-Cada cadena y
-cada transpor-
-tista recibe la
-comunicación
-y su acceso
-antes de la
-marcha blanca
-de la Etapa 2.
-IMP Antes del H11.
-7.2.3 Diagnóstico
-del impacto
-organizacional
-por área y
-perfil, con
-agentes de
-cambio
-Diagnóstico
-de impacto
-y nómina de
-agentes de
-cambio habili-
-tados.
-Cada área tie-
-ne su impacto
-y sus resisten-
-cias previstas,
-con una es-
-trategia para
-cada una, y
-cada sitio tie-
-ne al menos
-un agente de
-cambio.
-IMP Meses 2 a 6.
-7.2.4 Procedimien-
-tos operativos
-afectados, re-
-diseñados y
-documentados
-Procedimien-
-tos operativos
-documenta-
-dos.
-Cada proceso
-afectado tiene
-su procedi-
-miento nuevo,
-aprobado por
-la jefatura co-
-rrespondiente.
-IMP Antes de cada
-ola.
-7.2.5 Medición de
-la adopción y
-plan de acción
-correctiva
-Informe de
-adopción por
-ola y plan de
-acción cuando
+7.2.5 Medición de la
+adopción y plan de
+acción correctiva
+Informe de adop-
+ción por ola y plan
+de acción cuando
 corresponde.
-Cada ola tiene
-su medición,
-y cada meta
-no alcanzada
+Cada ola tiene su
+medición, y cada
+meta no alcanzada
 tiene su plan.
-IMP Durante ca-
-da marcha
-blanca y en la
-estabilización.
-7.2.7.3 Cuenta 7.3 — Evaluaciones y certificaciones
+IMP Durante cada
+marcha blanca
+y en la estabili-
+zación.
+2.7.3 Cuenta 7.3 — Evaluaciones y certificaciones
 Esta cuenta de control reúne las pruebas con que se demuestra que cada persona sabe usar
 la solución. Es una de las seis condiciones del artículo 17.3 de las Bases Administrativas (p. 13).
-La Tabla 7.44 presenta sus paquetes.
-LafroX SpA
-Formulario T-14
-Media firma: Alex Aravena
-84
-
-
----
-
-LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.44 Diccionario de la cuenta 7.3. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+La Tabla 44 presenta sus paquetes.
+Tabla 44 Diccionario de la cuenta 7.3. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-7.3.1 Certificación
-de preventis-
-tas, conducto-
-res y prepara-
-dores (Etapa
-1)
-Registro de
-certificaciones
-por persona.
-El 100 % de
-los usuarios
-de la ola está
-certificado
-antes de su
-cierre.
+7.3.1 Certificación de pre-
+ventistas, conducto-
+res y preparadores
+(Etapa 1)
+Registro de cer-
+tificaciones por
+persona.
+El 100 % de los
+usuarios de la ola
+está certificado
+antes de su cierre.
 IMP H6 y H7.
-7.3.2 Certificación
-de Comercial
-y Finanzas en
-costo de servir
+7.3.2 Certificación de Co-
+mercial y Finanzas
+en costo de servir
 (Etapa 2)
-Registro de
-certificacio-
-nes.
-El 100 % de
-los usuarios
-definidos está
-certificado
-antes del mes
-19.
+Registro de certifi-
+caciones.
+El 100 % de los
+usuarios definidos
+está certificado
+antes del mes 19.
 IMP Antes del H11.
-7.2.8 Fase 8. Operación y soporte (36 meses)
+2.8 Fase 8. Operación y soporte (36 meses)
 La fase 8 reúne 5 cuentas de control y 26 paquetes de trabajo.
-7.2.8.1 Cuenta 8.1 — Servicios de operación
+2.8.1 Cuenta 8.1 — Servicios de operación
 Esta cuenta de control reúne los servicios que mantienen la solución funcionando cada
 día y la actualización anual del Plan de Reversibilidad, que exige el artículo 77 de las Bases
 Administrativas (p. 39).
+LafroX SpA
+Formulario T-14
+Media firma: Alex Aravena
+77
+
+
+---
+
+LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
 El SOC de 8.1.5 notificará al CLIENTE toda brecha de seguridad o de datos personales dentro
 de las 24 horas de su detección, adjuntando un informe preliminar, y entregará su análisis de
 causa raíz dentro de los cinco días hábiles siguientes a la detección (BTT, cap. 11, RT-11.19, p.
@@ -6569,15 +5837,6 @@ bles y plazos; SRE seguirá cada acción hasta su cierre verificado en la gesti�
 guía de resolución para cada escenario de falla previsible, incluidos los de los contratos de in-
 tegración y el plan de continuidad; el servicio mantendrá estos procedimientos y automatizará
 progresivamente las tareas repetitivas con las herramientas de operación previstas (RT-14.05).
-LafroX SpA
-Formulario T-14
-Media firma: Alex Aravena
-85
-
-
----
-
-LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
 El canal único de la mesa registrará incidentes y solicitudes con número de ticket, clasifica-
 ción por severidad y seguimiento de todas sus actuaciones y estados hasta el cierre conforme,
 con el escalamiento L1–L3 previsto (BTT, cap. 21, RT-21.15, p. 37). El cierre de cada ticket
@@ -6607,117 +5866,93 @@ su atención normal. El traslado no reemplaza la recuperación remota: el restab
 dentro de los plazos del artículo 78 de las Bases Administrativas (p. 40) sigue a cargo del equipo
 en espera, la gestión remota y el responsable del sitio (Subdocumento 4, sección 4.2.4.3), y el
 traslado se destina a la resolución definitiva. El tiempo del especialista se imputa al paquete
-del que proviene; si los traslados exceden esa capacidad, LafroX los cubre sin costo adicional
-para el CLIENTE. Pasajes y viáticos se incluyen en la Oferta Económica, porque el CLIENTE no
-reembolsa viajes ni traslados (BA, arts. 11.2 y 51, pp. 9 y 29; BTT, cap. 21, RT-21.16, p. 37).
-La Tabla 7.45 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
-86
+78
 
 
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.45 Diccionario de la cuenta 8.1. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+del que proviene; si los traslados exceden esa capacidad, LafroX los cubre sin costo adicional
+para el CLIENTE. Pasajes y viáticos se incluyen en la Oferta Económica, porque el CLIENTE no
+reembolsa viajes ni traslados (BA, arts. 11.2 y 51, pp. 9 y 29; BTT, cap. 21, RT-21.16, p. 37).
+La Tabla 45 presenta sus paquetes.
+Tabla 45 Diccionario de la cuenta 8.1. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-8.1.1 Servicio de
-centro de ope-
-raciones 24×7
-y mesa de
-servicio du-
-rante los 36
-meses de ope-
-ración (04:00 a
-22:00; 24×7 en
-septiembre y
+8.1.1 Servicio de centro
+de operaciones 24×7
+y mesa de servicio
+durante los 36 me-
+ses de operación
+(04:00 a 22:00; 24×7
+en septiembre y
 diciembre)
-El servicio
-prestado du-
-rante los 36
-meses, con
-un informe
-mensual de
-servicio y un
-informe anual
-por cada año
-de operación.
-Se cumplen
-los horarios de
-cobertura en
-cada uno de
-los 36 meses.
+El servicio prestado
+durante los 36 me-
+ses, con un informe
+mensual de servicio
+y un informe anual
+por cada año de
+operación.
+Se cumplen los ho-
+rarios de cobertura
+en cada uno de los
+36 meses.
 SRE Meses 21 a 56.
 Se paga en el
 hito mensual.
-8.1.2 Servicio de
-gestión de
-incidentes,
-problemas y
-niveles de ser-
-vicio del Art.
-78° durante los
-36 meses de
-operación
-El servicio
-prestado du-
-rante los 36
-meses, con un
-informe men-
-sual de niveles
-de servicio, los
-informes de
-causa raíz y un
-informe anual.
-Se cumplen
-los tiempos, y
-cada incidente
-crítico tiene
-su informe a
+8.1.2 Servicio de gestión
+de incidentes, pro-
+blemas y niveles
+de servicio del Art.
+78° durante los 36
+meses de operación
+El servicio prestado
+durante los 36 me-
+ses, con un informe
+mensual de nive-
+les de servicio, los
+informes de causa
+raíz y un informe
+anual.
+Se cumplen los
+tiempos, y cada
+incidente crítico
+tiene su informe a
 tiempo.
 SRE Meses 21 a 56.
 Las multas se
 descuentan del
 hito mensual.
-8.1.3 Servicio de
-continuidad
-y pruebas
-semestrales de
-recuperación
-ante desastres
-durante los
-36 meses de
+8.1.3 Servicio de conti-
+nuidad y pruebas
+semestrales de re-
+cuperación ante
+desastres duran-
+te los 36 meses de
 operación
-Siete pruebas
-de conmuta-
-ción en los 36
-meses (una
-al inicio de la
-Operación y
-luego dos por
-año, la última
-en el mes 54),
-cada una con
-su informe.
-Cada prue-
-ba alcanza el
-RTO y el RPO
-comprome-
-tidos en una
-conmutación
-real, progra-
-mada fuera de
-los congela-
-mientos y con
-separación má-
-xima de seis
-meses.
+Siete pruebas de
+conmutación en los
+36 meses (una al ini-
+cio de la Operación
+y luego dos por año,
+la última en el mes
+54), cada una con su
+informe.
+Cada prueba alcan-
+za el RTO y el RPO
+comprometidos en
+una conmutación
+real, programada
+fuera de los con-
+gelamientos y con
+separación máxima
+de seis meses.
 SRE Meses 21, 27,
 33, 39, 45, 51 y
 54.
@@ -6725,113 +5960,95 @@ continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
-87
+79
 
 
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.45 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 45 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-8.1.4 Actualizacio-
-nes anuales
-del Plan de
-Reversibilidad
-durante los
-36 meses de
-operación
-Tres actuali-
-zaciones del
-plan, una por
-año de opera-
+8.1.4 Actualizaciones
+anuales del Plan de
+Reversibilidad du-
+rante los 36 meses
+de operación
+Tres actualizacio-
+nes del plan, una
+por año de opera-
 ción.
-En cada ac-
-tualización,
-el inventario,
-las claves y la
-exportación
-están vigentes.
-JP Meses 27, 39 y
-51, continuan-
-do la serie
+En cada actualiza-
+ción, el inventario,
+las claves y la ex-
+portación están
+vigentes.
+JP Meses 27, 39
+y 51, conti-
+nuando la serie
 anual que ini-
 cia 1.7.2 (Art.
 77.2).
-8.1.5 Servicio de
-centro de ope-
-raciones de
-seguridad 24×7
-con SIEM des-
-de la primera
-marcha blanca
-(mes 13) hasta
-el mes 56
-El servicio
-prestado desde
-el mes 13 hasta
-el mes 56, con
-un informe
-mensual de
+8.1.5 Servicio de centro
+de operaciones
+de seguridad 24×7
+con SIEM desde la
+primera marcha
+blanca (mes 13)
+hasta el mes 56
+El servicio prestado
+desde el mes 13 has-
+ta el mes 56, con un
+informe mensual de
 seguridad.
-Cobertura
-24×7 todos
-los meses,
-cada incidente
-crítico avisado
-dentro de
-dos horas y
-cada brecha
-notificada
-dentro de 24
-horas.
+Cobertura 24×7 to-
+dos los meses, cada
+incidente crítico
+avisado dentro de
+dos horas y cada
+brecha notificada
+dentro de 24 horas.
 SEG Meses 13 a 56.
-8.1.6 Pruebas men-
-suales de res-
-tauración de
-respaldos du-
-rante los 36
-meses de ope-
-ración
+8.1.6 Pruebas mensuales
+de restauración de
+respaldos durante
+los 36 meses de
+operación
 36 informes de
-restauración,
-uno por mes.
-Cada mes la
-restauración
-funciona sin
-errores, con
-su tiempo
-medido.
+restauración, uno
+por mes.
+Cada mes la restau-
+ración funciona
+sin errores, con su
+tiempo medido.
 SRE Mensual, me-
 ses 21 a 56.
-7.2.8.2 Cuenta 8.2 — Mantenimiento
+2.8.2 Cuenta 8.2 — Mantenimiento
 Esta cuenta de control reúne el trabajo que mantiene la solución sana y actualizada, sepa-
 rado por tipo: software, ciberseguridad y hardware.
 LafroX destinará las 2.304 HH DES de 8.2.4 a reducir la deuda técnica durante los 36 meses
-de Operación, equivalentes al 1,7948 % de las 128.373,67 HH de esa etapa: 2.304 ÷ 128.373,67
-× 100 = 1,7948 %. Esa capacidad equivale a 2.304 ÷ 36 = 64 HH mensuales y 64 × 12 = 768
+de Operación, equivalentes al 1,7881 % de las 128.853,67 HH de esa etapa: 2.304 ÷ 128.853,67
+× 100 = 1,7881 %. Esa capacidad equivale a 2.304 ÷ 36 = 64 HH mensuales y 64 × 12 = 768
 HH anuales, con seguimiento en el registro cuantificado y el informe trimestral existentes;
 la fracción corresponde al total del período (BTT, cap. 21, RT-21.21, p. 38; Formulario T-15,
 secciones 4.2, 4.3 y 6.2).
 El paquete 8.2.1 reparte sus 4.608 HH DES, es decir 4.608 ÷ 3 = 1.536 HH por año de
-LafroX SpA
-Formulario T-14
-Media firma: Alex Aravena
-88
-
-
----
-
-LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
 Operación, en dos partes. La bolsa anual de mantención evolutiva es de 768 HH DES por
 año y se reserva para las mejoras funcionales, nuevas características y optimizaciones del
 desempeño que solicite el CLIENTE; la mantención correctiva y la normativa no la consumen.
 Las otras 768 HH anuales son la capacidad estimada para la mantención correctiva, incluido
 el mantenimiento de la Innovación 1 (Formulario T-19), y no son un tope: la corrección de
 defectos no tiene costo adicional y la que exceda esa estimación la absorbe LafroX (BTT, sección
+LafroX SpA
+Formulario T-14
+Media firma: Alex Aravena
+80
+
+
+---
+
+LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
 21.4, pp. 37–38). La bolsa no utilizada en un año no se pierde y se acumula al año siguiente; en
 el tercer año, el Comité de Operación programa el uso del saldo acumulado dentro del período
 de Operación. Las horas que excedan la bolsa disponible se liquidan con la tarifa declarada
@@ -6843,89 +6060,57 @@ ticket. Estimación: DES entrega en cinco días hábiles las HH, el alcance y el
 Aprobación: el CLIENTE aprueba por escrito en el Comité de Operación antes de iniciar el
 trabajo. Liquidación: el informe mensual de 8.1.1 descuenta las HH reales de cada cambio
 desplegado e informa el saldo del año y el saldo acumulado (BTT, cap. 21, RT-21.19, p. 37).
-La Tabla 7.46 presenta sus paquetes.
-Tabla 7.46 Diccionario de la cuenta 8.2. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+La Tabla 46 presenta sus paquetes.
+Tabla 46 Diccionario de la cuenta 8.2. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-8.2.1 Mantenimien-
-to correctivo
-y evolutivo
-del software
-durante los
-36 meses de
-operación, con
-bolsa anual
-de horas y
-fuera de las
-ventanas de
+8.2.1 Mantenimiento
+correctivo y evolu-
+tivo del software
+durante los 36 me-
+ses de operación,
+con bolsa anual
+de horas y fuera
+de las ventanas de
 congelamiento
-Versiones
-desplegadas,
-cada una con
-su registro:
-requisito, cam-
-bio, prueba,
-aprobación y
-despliegue.
-Ningún des-
-pliegue cae
-en una fecha
-prohibida, y
-cada cambio
-tiene su regis-
-tro completo.
+Versiones desple-
+gadas, cada una
+con su registro: re-
+quisito, cambio,
+prueba, aprobación
+y despliegue.
+Ningún despliegue
+cae en una fecha
+prohibida, y cada
+cambio tiene su
+registro completo.
 DES Meses 21 a 56.
-continúa en la página siguiente
-LafroX SpA
-Formulario T-14
-Media firma: Alex Aravena
-89
-
-
----
-
-LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.46 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
-Resp. Período
-8.2.2 Mantenimien-
-to de ciberse-
-guridad duran-
-te los 36 meses
-de operación:
-vulnerabilida-
-des, intrusión
-anual e inyec-
-ción de fallas
-En los 36 me-
-ses, los infor-
-mes periódi-
-cos de vulnera-
-bilidades, tres
-informes de
-intrusión (uno
-por año) y seis
-de resiliencia
-(dos por año).
-Se cumplen
-los plazos de
-corrección; la
-prueba anual
-termina sin
-hallazgos crí-
-ticos ni altos
-abiertos; hay
-dos pruebas de
-resiliencia por
-año, con sepa-
-ración máxima
+8.2.2 Mantenimiento
+de ciberseguridad
+durante los 36 me-
+ses de operación:
+vulnerabilidades,
+intrusión anual e
+inyección de fallas
+En los 36 meses, los
+informes periódicos
+de vulnerabilida-
+des, tres informes
+de intrusión (uno
+por año) y seis de
+resiliencia (dos por
+año).
+Se cumplen los pla-
+zos de corrección;
+la prueba anual
+termina sin hallaz-
+gos críticos ni altos
+abiertos; hay dos
+pruebas de resilien-
+cia por año, con
+separación máxima
 de seis meses.
 SEG Intrusión en
 meses 28, 40 y
@@ -6933,578 +6118,464 @@ meses 28, 40 y
 en meses 26,
 32, 38, 44, 50 y
 55.
-8.2.3 Mantenimien-
-to del hard-
-ware durante
-los 36 meses
-de operación:
-sala técnica,
-racks, gabine-
-tes de borde y
-equipamiento
-de terreno
-Registro de
-mantenimien-
-tos de los 36
-meses y un
-informe anual
-por cada año
-de operación.
-Se cumplen
-los manteni-
-mientos pro-
-gramados, y
-ningún equipo
-crítico queda
-sin repuesto.
-SRE Meses 21 a 56.
-8.2.4 Registro y re-
-ducción de la
-deuda técnica
-durante los
-36 meses de
-operación
-Registro de
-deuda técnica
-e informe
-trimestral de
-su reducción.
-El registro está
-cuantificado
-y se cumple
-la fracción
-de capacidad
-declarada.
-DES Meses 21 a 56.
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
-90
+81
 
 
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.46 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 46 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-8.2.5 Actualizacio-
-nes anuales
-de los compo-
-nentes de base
-durante los
-36 meses de
+8.2.3 Mantenimiento
+del hardware du-
+rante los 36 meses
+de operación: sala
+técnica, racks, ga-
+binetes de borde y
+equipamiento de
+terreno
+Registro de mante-
+nimientos de los 36
+meses y un informe
+anual por cada año
+de operación.
+Se cumplen los
+mantenimientos
+programados, y
+ningún equipo
+crítico queda sin
+repuesto.
+SRE Meses 21 a 56.
+8.2.4 Registro y reduc-
+ción de la deuda
+técnica durante
+los 36 meses de
 operación
-Plan anual de
-actualización y
-su ejecución.
-Cada año hay
-un plan apro-
-bado, ejecu-
-tado en su
-ventana y con
-su reversión
-ensayada.
+Registro de deuda
+técnica e informe
+trimestral de su
+reducción.
+El registro está
+cuantificado y se
+cumple la fracción
+de capacidad decla-
+rada.
+DES Meses 21 a 56.
+8.2.5 Actualizaciones
+anuales de los com-
+ponentes de base
+durante los 36 me-
+ses de operación
+Plan anual de ac-
+tualización y su
+ejecución.
+Cada año hay un
+plan aprobado,
+ejecutado en su
+ventana y con su
+reversión ensayada.
 SRE Una vez por
-año, meses 21
-a 56.
-8.2.6 Revisiones se-
-mestrales de
-las instalacio-
-nes eléctricas
-de la sala du-
-rante los 36
-meses de ope-
-ración
-Seis informes
-de revisión
-eléctrica.
-Cada semestre
-hay una revi-
-sión con su
-informe y sus
+año, meses 21 a
+56.
+8.2.6 Revisiones semes-
+trales de las insta-
+laciones eléctricas
+de la sala durante
+los 36 meses de
+operación
+Seis informes de
+revisión eléctrica.
+Cada semestre hay
+una revisión con
+su informe y sus
 correcciones.
 SRE Semestral,
 meses 21 a 56.
-8.2.7 Ciclo de vida
-del equipa-
-miento duran-
-te los 36 meses
-de operación:
-reposición y
-disposición
+8.2.7 Ciclo de vida del
+equipamiento du-
+rante los 36 meses
+de operación: repo-
+sición y disposición
 final
-Plan de ci-
-clo de vida y
-registro de re-
-posiciones y
-disposiciones.
-Cada tipo de
-equipo del
-T-11 tiene su
-ciclo de vida,
-y cada equipo
-retirado tiene
-su disposición
+Plan de ciclo de
+vida y registro de
+reposiciones y dis-
+posiciones.
+Cada tipo de equipo
+del T-11 tiene su
+ciclo de vida, y cada
+equipo retirado
+tiene su disposición
 registrada.
 SRE Meses 21 a 56.
-7.2.8.3 Cuenta 8.3 — Innovaciones en operación
+2.8.3 Cuenta 8.3 — Innovaciones en operación
 Esta cuenta de control reúne la parte de las innovaciones que ocurre después del mes 21.
 Las metas son propuestas de diseño.
-La Tabla 7.47 presenta sus paquetes.
+La Tabla 47 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
-91
+82
 
 
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.47 Diccionario de la cuenta 8.3. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 47 Diccionario de la cuenta 8.3. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-8.3.1 Innovación
-2: manteni-
-miento de
-escenarios
-de regresión
-(INN-02.P4,
-segunda parte)
-Informe tri-
-mestral.
-Ningún in-
-cidente se
-reabre por la
-misma cau-
-sa, y ninguna
-evidencia con-
-tiene datos
+8.3.1 Innovación 2: man-
+tenimiento de esce-
+narios de regresión
+(INN-02.P4, segun-
+da parte)
+Informe trimestral. Ningún incidente
+se reabre por la
+misma causa, y
+ninguna evidencia
+contiene datos
 personales.
 CAL Desde el mes
 21.
-8.3.2 Innovación
-3: revisión
-semestral de
-parámetros
-durante los
-36 meses de
-operación
-(INN-03.P5)
-Parámetros
-ajustados con
-aprobación
-del Líder de
-Calidad de
-LafroX y de
-Calidad del
-CLIENTE.
-Cada revisión
-semestral que-
-da documenta-
-da y aprobada
-por el Líder de
-Calidad de La-
-froX y Calidad
-del CLIENTE.
-Si la exactitud
-baja del 80 %
-dos veces se-
-guidas, se hace
-un ajuste extra-
-ordinario.
+8.3.2 Innovación 3: revi-
+sión semestral de
+parámetros durante
+los 36 meses de ope-
+ración (INN-03.P5)
+Parámetros ajusta-
+dos con aprobación
+del Líder de Calidad
+de LafroX y de Cali-
+dad del CLIENTE.
+Cada revisión se-
+mestral queda
+documentada y
+aprobada por el
+Líder de Calidad de
+LafroX y Calidad del
+CLIENTE. Si la exac-
+titud baja del 80 %
+dos veces seguidas,
+se hace un ajuste
+extraordinario.
 SRE Meses 26, 32,
 38, 44, 50 y 56
 del proyecto.
-8.3.3 Innovación 4:
-línea base y
-liquidaciones
-en sombra
-(INN-04.P2)
-Línea base y
-tres liquidacio-
-nes de prueba.
-Finanzas re-
-produce las
-tres sin dife-
-rencias.
+8.3.3 Innovación 4: línea
+base y liquidaciones
+en sombra (INN-
+04.P2)
+Línea base y tres
+liquidaciones de
+prueba.
+Finanzas reproduce
+las tres sin diferen-
+cias.
 JP Meses 21 a 23.
-8.3.4 Innovación
-4: liquidación
-mensual del
-tramo variable,
-meses 24 a 56
+8.3.4 Innovación 4: li-
+quidación mensual
+del tramo varia-
+ble, meses 24 a 56
 (INN-04.P3)
-Las 33 liquida-
-ciones men-
-suales (meses
-24 a 56) y el
-registro de las
-recomendacio-
-nes.
-Finanzas re-
-produce cada
-liquidación, y
-cada recomen-
-dación tiene
-su respuesta
-registrada.
-JP Mensual, des-
-de el mes 24.
+Las 33 liquidaciones
+mensuales (meses
+24 a 56) y el registro
+de las recomenda-
+ciones.
+Finanzas reproduce
+cada liquidación,
+y cada recomen-
+dación tiene su
+respuesta registra-
+da.
+JP Mensual, desde
+el mes 24.
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
-92
+83
 
 
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.47 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 47 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-8.3.5 Innovación
-5: despliegue
-gradual por
-rutas (INN-
-05.P4, segunda
-parte)
-Hoja disponi-
-ble en todas
-las rutas.
-Al mes 27, la
-hoja se mues-
-tra en al me-
-nos el 90 % de
+8.3.5 Innovación 5: des-
+pliegue gradual por
+rutas (INN-05.P4,
+segunda parte)
+Hoja disponible en
+todas las rutas.
+Al mes 27, la hoja
+se muestra en al
+menos el 90 % de
 los locales que
 la aceptan, y al
-menos el 85 %
-de las copias
-pedidas se en-
-trega dentro
+menos el 85 % de
+las copias pedidas
+se entrega dentro
 de dos visitas.
 SRE Meses 22 a 26.
-8.3.6 Innovación
-5: bloque 4
-condicionado
+8.3.6 Innovación 5: blo-
+que 4 condicionado
 (INN-05.P5)
-Dictamen legal
-y, si es favora-
-ble, el bloque
-activado.
-No se activa
-sin dictamen
-legal favorable
-y aprobación
-de privacidad
-por el Encar-
-gado de Segu-
-ridad; todas
-las emisiones
-cumplen el
-umbral de
+Dictamen legal y,
+si es favorable, el
+bloque activado.
+No se activa sin
+dictamen legal favo-
+rable y aprobación
+de privacidad por
+el Encargado de
+Seguridad; todas
+las emisiones cum-
+plen el umbral de
 agrupación.
 SRE Meses 24 a 27.
 Desde el mes 22, la responsabilidad de respuesta de los paquetes 8.3.2, 8.3.5 y 8.3.6 pasa al
 frente de Operación, bajo el Líder de Operación / SRE, una vez que concluyen las dedicaciones
 del Líder de Datos y del Líder de Implantación (SD1, Tabla 1.6). Esta transferencia no cambia
-las familias de esfuerzo del T-15: DAT para 8.3.2 e IMP para 8.3.5 y 8.3.6, conforme al Anexo
-8.A, fichas R8-27 y R8-29. Cada paquete conserva el período indicado en su fila.
-7.2.8.4 Cuenta 8.4 — Informes y obligaciones periódicas
+las familias de esfuerzo del T-15: DAT para 8.3.2 e IMP para 8.3.5 y 8.3.6. Cada paquete conserva
+el período indicado en su fila.
+2.8.4 Cuenta 8.4 — Informes y obligaciones periódicas
 Esta cuenta de control reúne los informes y las tareas que las Bases fijan con una periodici-
 dad durante la Operación y que no forman parte de los servicios diarios.
 Cada propuesta trimestral de ajuste de dimensionamiento de 8.4.1 incluirá su efecto en
 el costo de infraestructura, nube, licencias y enlaces respecto de la base contratada, para
 decisión del CLIENTE antes de ejecutarla. La comparación empleará los consumos observados
+y las condiciones económicas vigentes (BTT, cap. 9, RT-09.09, p. 22).
+La Tabla 48 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
-93
+84
 
 
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-y las condiciones económicas vigentes (BTT, cap. 9, RT-09.09, p. 22).
-La Tabla 7.48 presenta sus paquetes.
-Tabla 7.48 Diccionario de la cuenta 8.4. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 48 Diccionario de la cuenta 8.4. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-8.4.1 Gestión de la
-capacidad con
-proyección
-trimestral
-durante los
-36 meses de
+8.4.1 Gestión de la capaci-
+dad con proyección
+trimestral duran-
+te los 36 meses de
 operación
-12 informes
-trimestrales de
-capacidad.
-Cada trimestre
-hay una pro-
-yección, con
-alertas y una
-propuesta de
-ajuste cuando
-corresponde.
+12 informes trimes-
+trales de capacidad.
+Cada trimestre hay
+una proyección,
+con alertas y una
+propuesta de ajuste
+cuando correspon-
+de.
 SRE Trimestral,
 meses 21 a 56.
-8.4.2 Informes men-
-suales de con-
-sumo de nube
-(FinOps) du-
-rante los 36
-meses de ope-
-ración
-36 informes
-mensuales de
-consumo.
-Cada informe
-desglosa el
-consumo, y to-
-da desviación
-sobre el presu-
-puesto tiene
-su alerta y su
+8.4.2 Informes mensua-
+les de consumo de
+nube (FinOps) du-
+rante los 36 meses
+de operación
+36 informes men-
+suales de consumo.
+Cada informe des-
+glosa el consumo, y
+toda desviación so-
+bre el presupuesto
+tiene su alerta y su
 explicación.
 SRE Mensual, me-
 ses 21 a 56.
-8.4.3 Estimaciones
-anuales de
-la huella de
-carbono de la
-operación
-Tres infor-
-mes anuales
-de huella de
+8.4.3 Estimaciones anua-
+les de la huella de
+carbono de la opera-
+ción
+Tres informes anua-
+les de huella de
 carbono.
-Cada informe
-declara su
-metodología
-y compara
-con el año
+Cada informe decla-
+ra su metodología y
+compara con el año
 anterior.
 SRE Anual, meses
 21 a 56.
-8.4.4 Actualizacio-
-nes semestra-
-les del depósi-
-to de custodia
-de fuentes
-durante los
-36 meses de
+8.4.4 Actualizaciones
+semestrales del de-
+pósito de custodia
+de fuentes duran-
+te los 36 meses de
 operación
-Seis actuali-
-zaciones del
-depósito, con
-su constancia.
-Cada semestre
-el depósito
-coincide con
-la versión en
+Seis actualizaciones
+del depósito, con su
+constancia.
+Cada semestre el
+depósito coincide
+con la versión en
 producción.
 JP Semestral,
 meses 21 a 56.
-LafroX SpA
-Formulario T-14
-Media firma: Alex Aravena
-94
-
-
----
-
-LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-7.2.8.5 Cuenta 8.5 — Capacitación y transferencia en operación
+2.8.5 Cuenta 8.5 — Capacitación y transferencia en operación
 Esta cuenta de control reúne la capacitación y el traspaso de conocimiento que las Bases
 exigen después de la implementación.
 El centro de soporte revisará los tickets y la retroalimentación de las personas usuarias
 para identificar necesidades recurrentes y complejidades de la operación. Incorporará las
 soluciones y lecciones validadas en la base de conocimiento de 8.5.3 y revisará trimestralmente
 su uso y utilidad para ajustar los procedimientos de atención (BTT, cap. 21, RT-21.10, p. 36).
-La Tabla 7.49 presenta sus paquetes.
-Tabla 7.49 Diccionario de la cuenta 8.5. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+La Tabla 49 presenta sus paquetes.
+LafroX SpA
+Formulario T-14
+Media firma: Alex Aravena
+85
+
+
+---
+
+LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
+Tabla 49 Diccionario de la cuenta 8.5. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-8.5.1 Dos jornadas
-anuales de
-actualización
-y capacitación
-del personal
-nuevo durante
-los 36 meses
+8.5.1 Dos jornadas anua-
+les de actualización
+y capacitación del
+personal nuevo du-
+rante los 36 meses
 de operación
-Seis jornadas
-de actualiza-
-ción como
-mínimo y re-
-gistro de la
-capacitación
-del personal
-nuevo.
-Cada año hay
-al menos dos
-jornadas, y
-cada persona
-nueva está
-capacitada en
+Seis jornadas de
+actualización como
+mínimo y registro
+de la capacitación
+del personal nuevo.
+Cada año hay al me-
+nos dos jornadas, y
+cada persona nueva
+está capacitada en
 su perfil.
 IMP Meses 21 a 56.
-8.5.2 Mentoría al
-equipo técnico
-del CLIENTE
-durante los
-seis meses
-posteriores al
-mes 21
-Plan de men-
-toría y registro
-de las sesio-
-nes.
-La mentoría
-cubre al me-
-nos seis meses,
-y el equipo de
-TI ejecuta solo
-sus funciones
-al final del
-período.
+8.5.2 Mentoría al equipo
+técnico del CLIEN-
+TE durante los seis
+meses posteriores
+al mes 21
+Plan de mentoría
+y registro de las
+sesiones.
+La mentoría cubre
+al menos seis me-
+ses, y el equipo de
+TI ejecuta solo sus
+funciones al final
+del período.
 IMP Meses 21 a 27.
-8.5.3 Mantenimien-
-to de la base
-de conoci-
-miento duran-
-te los 36 meses
-de operación,
-con métricas
+8.5.3 Mantenimiento de
+la base de conoci-
+miento durante los
+36 meses de opera-
+ción, con métricas
 de uso
-Base de co-
-nocimiento
-actualizada e
-informe tri-
-mestral de
-uso.
+Base de conoci-
+miento actualizada
+e informe trimes-
+tral de uso.
 Cada incidente
-resuelto con
-una solución
-nueva tiene
-su entrada, y
-hay métricas
-de uso y de
-utilidad cada
+resuelto con una
+solución nueva
+tiene su entrada, y
+hay métricas de uso
+y de utilidad cada
 trimestre.
 SRE Meses 21 a 56.
+2.9 Fase 9. Cierre
+La fase 9 reúne 2 cuentas de control y 4 paquetes de trabajo.
+2.9.1 Cuenta 9.1 — Cierre de la implementación
+Esta cuenta de control reúne lo que se entrega cuando termina la implementación.
+La Tabla 50 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
-95
+86
 
 
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-7.2.9 Fase 9. Cierre
-La fase 9 reúne 2 cuentas de control y 4 paquetes de trabajo.
-7.2.9.1 Cuenta 9.1 — Cierre de la implementación
-Esta cuenta de control reúne lo que se entrega cuando termina la implementación.
-La Tabla 7.50 presenta sus paquetes.
-Tabla 7.50 Diccionario de la cuenta 9.1. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 50 Diccionario de la cuenta 9.1. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-9.1.1 Entrega del
-código fuente,
-la infraestruc-
-tura como có-
-digo y los pro-
-cedimientos
-de despliegue
-Repositorios
-entregados.
-El equipo de
-TI de Puelche
-reconstruye
-y despliega
-una versión en
-un ambiente
-de prueba
-siguiendo solo
-lo entregado.
+9.1.1 Entrega del código
+fuente, la infra-
+estructura como
+código y los pro-
+cedimientos de
+despliegue
+Repositorios entre-
+gados.
+El equipo de TI de
+Puelche reconstru-
+ye y despliega una
+versión en un am-
+biente de prueba
+siguiendo solo lo
+entregado.
 DES Mes 21 (H12).
-9.1.2 Informe de lec-
-ciones apren-
-didas y archivo
-de la imple-
+9.1.2 Informe de leccio-
+nes aprendidas y
+archivo de la imple-
 mentación
-Informe de
-lecciones
-aprendidas
-y archivo.
-El informe
-cubre las dos
-etapas, y el ar-
-chivo contiene
-todas las actas
-de H1 a H12.
+Informe de leccio-
+nes aprendidas y
+archivo.
+El informe cubre
+las dos etapas, y el
+archivo contiene
+todas las actas de
+H1 a H12.
 JP Después del
 H12.
-7.2.9.2 Cuenta 9.2 — Salida al término del contrato
+2.9.2 Cuenta 9.2 — Salida al término del contrato
 Esta cuenta de control reúne el traspaso final y la eliminación de los datos personales.
-La Tabla 7.51 presenta sus paquetes.
+La Tabla 51 presenta sus paquetes.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
-96
+87
 
 
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.51 Diccionario de la cuenta 9.2. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts.
-17.2–17.6 y Formulario T-14, p. 63); Distribuidora Puelche S.A. (2026b, secs. 17.2–17.6, pp. 32–34).
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 51 Diccionario de la cuenta 9.2. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63);
+(Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-9.2.1 Ejecución del
-Plan de Re-
-versibilidad
-y acompaña-
-miento de 90
-días
-Acta de traspa-
-so.
-El receptor
-opera sin in-
-terrupción
-durante los 90
-días de acom-
-pañamiento y
-firma la recep-
-ción.
+9.2.1 Ejecución del Plan
+de Reversibilidad y
+acompañamiento
+de 90 días
+Acta de traspaso. El receptor opera
+sin interrupción du-
+rante los 90 días de
+acompañamiento y
+firma la recepción.
 JP Meses 54 a 56:
 el acompaña-
 miento empie-
@@ -7519,89 +6590,76 @@ Si el CLIENTE
 fija un término
 anticipado o
 una transición
-posterior, el
-período se
-ajusta para
-conservar los
-90 días.
+posterior, el pe-
+ríodo se ajusta
+para conservar
+los 90 días.
 continúa en la página siguiente
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
-97
+88
 
 
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-Tabla 7.51 — continuación
-Código Paquete de
-trabajo
-Entregable Criterio de
-aceptación
+Tabla 51 — continuación
+Código Paquete de trabajo Entregable Criterio de acepta-
+ción
 Resp. Período
-9.2.2 Certificado de
-devolución o
-eliminación de
-datos persona-
-les
-Certificado de
-devolución,
-transferencia
-de custodia y
+9.2.2 Certificado de de-
+volución o elimi-
+nación de datos
+personales
+Certificado de de-
+volución, transfe-
+rencia de custodia y
 eliminación.
-Los datos se
-devuelven
-íntegros en
-formatos abier-
-tos; las copias
-en ambientes
-y respaldos
-de LafroX se
-eliminan; los
-objetos con re-
-tención inmu-
-table (Object
-Lock, registro
-de auditoría
-de siete años)
-se transfieren
-en custodia
-al CLIENTE
-sin alterar su
-retención, y su
-eliminación
-se certifica al
-vencer cada
-retención. El
-certificado
-identifica qué
-se eliminó,
-qué se trans-
-firió y con
-qué fecha de
+Los datos se de-
+vuelven íntegros
+en formatos abier-
+tos; las copias en
+ambientes y respal-
+dos de LafroX se
+eliminan; los obje-
+tos con retención
+inmutable (Object
+Lock, registro de
+auditoría de siete
+años) se transfie-
+ren en custodia al
+CLIENTE sin alte-
+rar su retención, y
+su eliminación se
+certifica al vencer
+cada retención. El
+certificado identifi-
+ca qué se eliminó,
+qué se transfirió y
+con qué fecha de
 vencimiento.
 SEG Al término
 del contrato,
 después de
 9.2.1.
-7.3 Carta Gantt de 56 meses
-La carta Gantt cubre los 56 meses del contrato y muestra las ventanas de marcha blanca,
-los pasos a producción y el inicio de la fase de Operación, como exige el Formulario T-14. Su
-estructura contractual la fija el artículo 17 de las Bases Administrativas (pp. 12–13), y los hitos
+3 Carta Gantt
+La carta Gantt muestra las ventanas de marcha blanca, los pasos a producción y el inicio
+de la fase de Operación, como exige el Formulario T-14. Su estructura contractual la fija el
+artículo 17 de las Bases Administrativas (pp. 12–13), y los hitos y sus meses, el Formulario
+E-25. La Tabla 52 presenta esa estructura fija de los 56 meses, sobre la cual se programan los
+paquetes de la sección 2.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
-98
+89
 
 
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-y sus meses, el Formulario E-25. La Tabla 7.52 presenta esa estructura fija, sobre la cual se
-programan los paquetes de la sección 2.
-Tabla 7.52 Períodos contractuales e hitos. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art.
-17 y Formulario E-25).
+Tabla 52 Períodos contractuales e hitos. Fuente: (Bases Administrativas, art. 17 y Formulario E-25, pp. 12–13,
+74–75).
 Período contractual Meses Hitos del período
 Etapa 1 · Desarrollo 1 a 12 H1 (mes 2), H2 (mes 4), H3 (mes
 6), H4 (mes 10), H5 (mes 12)
@@ -7614,17 +6672,25 @@ Etapa 2 · Producción y acepta-
 ción final
 21 H12 (mes 21)
 Operación 21 a 56 Hito mensual (36 pagos)
-Ningún paso a producción, inicio de ola, corte de datos ni intervención con impacto en la
-facturación o en el inventario valorizado se programa en septiembre, en diciembre ni en los tres
-primeros días hábiles de un mes (Caso, secciones 13.2 y 13.3, pp. 22–23). La correspondencia
-entre meses contractuales y meses calendario depende de la fecha de inicio del contrato; se
-analiza en la sección 7.3.2 del Subdocumento 7 y en su Anexo 7.A, que adoptan como supuesto
-un inicio en febrero de 2027. La Figura 7.2 presenta la carta de los 56 meses por período
-contractual y por fase.
+Se distingue el congelamiento total del 1 al 25 de septiembre, todo diciembre y los primeros
+tres días hábiles del mes de la prohibición de paso a producción durante todo septiembre y
+diciembre (Caso, secciones 13.2 y 13.3 y RT-10.05). La política de arquitectura también excluye
+despliegues durante todo septiembre; su alcance se precisa en T-18, sección 1. Los trámites
+documentales sin intervención no equivalen a despliegues. La correspondencia entre meses
+contractuales y meses calendario depende de la fecha de inicio del contrato; se analiza en la
+sección 7.3.2 del Subdocumento 7 y en su Anexo 7.A, que adoptan como supuesto un inicio en
+febrero de 2027.
+Las fechas de producción de la carta son objetivos condicionados a contar con actas de
+cierre previas. La secuencia de evidencia, revisión y firma, y el conflicto si se necesita el
+plazo completo de diez días, se explicitan en T-15, sección 5.5. H7/H12 son aceptaciones
+posteriores a producción. La Figura 2 presenta la carta de los 56 meses del contrato, elaborada
+en GanttProject: los períodos del artículo 17, las ventanas de marcha blanca, los pasos a
+producción del 5 de mayo y del 5 de octubre de 2028 (cuarto día hábil de cada mes), el inicio de
+la Operación, simultáneo con el paso a producción de la Etapa 2, y los hitos H1 a H12.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
-99
+90
 
 
 ---
@@ -7640,38 +6706,8 @@ EDT
 y
 carta
 Gantt
-2027 2028 2029 2030 2031
-1 2 3 4 5 6 7 8 9 1011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556
-Hitos del Formulario E-25 H1 H2 H3 H4 H5
-H6
-H8 H7H9
-H10
-H11
-H12
-Períodos obligatorios del Art. 17°
-Etapa 1 · Desarrollo
-Etapa 1 · Marcha blanca
-Etapa 1 · Producción
-Etapa 2 · Desarrollo
-Etapa 2 · Marcha blanca
-Etapa 2 · Producción y aceptación
-Operación contractual · 36 meses
-Fases de la EDT
-F1 · Inicio, gobierno y control
-F2 · Elaboración
-F3 · Construcción
-F4 · Transición
-F5 · Adquisiciones
-F6 · Infraestructura física
-F7 · Capacitación y cambio
-F7 · Capacitación continua
-F8 · SOC previo a operación
-F8 · Operación y soporte
-F9 · Cierre
-Gris: septiembre y diciembre; no se inician olas ni se despliegan cambios.
-Mes 20: continúa la marcha blanca de E2 durante el congelamiento. SOC comienza en el 13; operación contractual en el 21.
-Figura 7.2 Carta Gantt de los 56 meses por período contractual y por fase, con inicio en febrero de 2027. Fuente: elaboración a partir de Distribuidora Puelche
-S.A. (2026a, art. 17, pp. 12–13 y Formulario E-25) y la sección 2 de este formulario.
+Figura 2 Carta Gantt de los 56 meses por período contractual, con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de (Bases
+Administrativas, art. 17, pp. 12–13 y Formulario E-25) y de las Figuras 3 a 9.
 LafroX
 SpA
 Formulario
@@ -7680,270 +6716,258 @@ Media
 firma:
 Alex
 Aravena
-100
+91
+
+
+---
+
+LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
+Las Figuras 3 a 9 detallan, en siete partes, la implementación de las Etapas 1 y 2: 155 filas
+ordenadas por fecha de inicio, desde febrero de 2027 hasta la estabilización de la Etapa 2, con
+las dependencias entre paquetes visibles. Cada fila es un paquete con entregable, un grupo de
+paquetes que comparten fechas («n elementos») o un hito del Formulario E-25, separado en
+la entrega del expediente y el acta del CLIENTE. El prefijo RC marca los elementos de la ruta
+crítica; PT/H, los demás paquetes y los hitos.
+LafroX SpA
+Formulario T-14
+Media firma: Alex Aravena
+92
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-14:
+Plan
+de
+trabajo,
+EDT
+y
+carta
+Gantt
+Figura 3 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 1 de 7 (filas 1 a 23 de 155), con inicio en febrero de 2027. Fuente: elaboración
+en GanttProject a partir de la sección 2 de este formulario.
+LafroX
+SpA
+Formulario
+T-14
+Media
+firma:
+Alex
+Aravena
+93
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-14:
+Plan
+de
+trabajo,
+EDT
+y
+carta
+Gantt
+Figura 4 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 2 de 7 (filas 24 a 45 de 155), con inicio en febrero de 2027. Fuente:
+elaboración en GanttProject a partir de la sección 2 de este formulario.
+LafroX
+SpA
+Formulario
+T-14
+Media
+firma:
+Alex
+Aravena
+94
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-14:
+Plan
+de
+trabajo,
+EDT
+y
+carta
+Gantt
+Figura 5 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 3 de 7 (filas 46 a 67 de 155), con inicio en febrero de 2027. Fuente:
+elaboración en GanttProject a partir de la sección 2 de este formulario.
+LafroX
+SpA
+Formulario
+T-14
+Media
+firma:
+Alex
+Aravena
+95
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-14:
+Plan
+de
+trabajo,
+EDT
+y
+carta
+Gantt
+Figura 6 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 4 de 7 (filas 68 a 89 de 155), con inicio en febrero de 2027. Fuente:
+elaboración en GanttProject a partir de la sección 2 de este formulario.
+LafroX
+SpA
+Formulario
+T-14
+Media
+firma:
+Alex
+Aravena
+96
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-14:
+Plan
+de
+trabajo,
+EDT
+y
+carta
+Gantt
+Figura 7 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 5 de 7 (filas 90 a 111 de 155), con inicio en febrero de 2027. Fuente:
+elaboración en GanttProject a partir de la sección 2 de este formulario.
+LafroX
+SpA
+Formulario
+T-14
+Media
+firma:
+Alex
+Aravena
+97
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-14:
+Plan
+de
+trabajo,
+EDT
+y
+carta
+Gantt
+Figura 8 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 6 de 7 (filas 112 a 133 de 155), con inicio en febrero de 2027. Fuente:
+elaboración en GanttProject a partir de la sección 2 de este formulario.
+LafroX
+SpA
+Formulario
+T-14
+Media
+firma:
+Alex
+Aravena
+98
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-14:
+Plan
+de
+trabajo,
+EDT
+y
+carta
+Gantt
+Figura 9 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 7 de 7 (filas 134 a 155 de 155), con inicio en febrero de 2027. Fuente:
+elaboración en GanttProject a partir de la sección 2 de este formulario.
+LafroX
+SpA
+Formulario
+T-14
+Media
+firma:
+Alex
+Aravena
+99
 
 
 ---
 
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
 La carta confirma que los períodos fijos del artículo 17 de las Bases Administrativas (pp.
-12–13) se cumplen mes a mes y que ningún paso a producción cae en una columna de congela-
-miento. La sección 3.1 detalla la programación por cuenta de control.
-Según la carta de la sección 3.1, la sala técnica y el borde de los sitios se instalan entre los
-meses 3 y 5, la base compartida y los módulos de la Etapa 1 se construyen entre los meses 5 y 8,
-y las pruebas de integración y certificación de la Etapa 1 ocupan los meses 9 y 10, antes del H5
-del mes 12. Las cuentas de la Etapa 2 (3.5, 3.9, 4.3 y la segunda parte de 5.4) se ubican entre los
-meses 13 y 22, con los módulos en el mes 15 y la integración y certificación en los meses 16 y
+12–13) se cumplen mes a mes y que ningún paso a producción cae en un período de con-
+gelamiento. La sala técnica y el borde de los sitios se instalan entre los meses 3 y 5, la base
+compartida y los módulos de la Etapa 1 se construyen entre los meses 4 y 8, y las pruebas de
+integración y certificación de la Etapa 1 ocupan los meses 9 y 10, antes del H5 del mes 12. Las
+cuentas de la Etapa 2 (3.5, 3.9, 4.3 y la segunda parte de 5.4) se ubican entre los meses 13 y
+22, con los módulos en los meses 14 y 15 y la integración y certificación en los meses 16 y
 17. Las cuentas de capacitación y de gestión del cambio se intensifican desde el mes 10, en
-preparación de cada marcha blanca.
-7.3.1 Carta Gantt actualizada por cuenta de control
-Las siguientes vistas actualizadas detallan las cuentas de control de los meses 1 a 21: la
-primera, las fases 1 a 3; la segunda, las fases 4 a 7. Reemplazan como fuente vigente a las figuras
-anteriores, que conservan la programación previa a la reconciliación de ventanas. La carta de
-56 meses de la Figura 7.2 presenta el panorama contractual completo. Cada barra va desde el
-primer mes del primer paquete de la cuenta hasta el último mes del último paquete, según
-la programación por paquete del Formulario T-15 (secciones 4.2 y 6.1); los hitos se ubican al
-cierre de su mes, salvo H6 y H11, que marcan el inicio de una marcha blanca. El detalle por
-paquete, con sus 222 ventanas, está en esa misma sección, y la red con revisiones del CLIENTE
-y ruta crítica, en su sección 5. Las cuentas recurrentes (1.4, 1.8, 1.9, 7.1 y 8) se muestran como
-barras continuas, aunque su trabajo se ejecute con la frecuencia que fija este diccionario.
+preparación de cada marcha blanca. Las fechas diarias de los paquetes con entregable están
+en el Formulario T-15, sección 6.1, y la red con revisiones del CLIENTE y el cálculo de la ruta
+crítica, en su sección 5.
+La Figura 10 aísla los elementos de la ruta crítica y sus dependencias hasta los inicios de
+las marchas blancas, H6 y H11, cuyas fechas son fijas.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
+100
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-14:
+Plan
+de
+trabajo,
+EDT
+y
+carta
+Gantt
+Figura 10 Vista crítica de la carta Gantt: paquetes de la ruta crítica y sus dependencias hasta H6 y H11. Fuente: elaboración en GanttProject a partir de la
+sección 2 de este formulario.
+LafroX
+SpA
+Formulario
+T-14
+Media
+firma:
+Alex
+Aravena
 101
 
 
 ---
 
-LafroX
-SpA
-Formulario
-T-14:
-Plan
-de
-trabajo,
-EDT
-y
-carta
-Gantt
-2027
-1
-feb
-2
-mar
-3
-abr
-4
-may
-5
-jun
-6
-jul
-7
-ago
-8
-sep
-9
-oct
-10
-nov
-11
-dic
-2028
-12
-ene
-13
-feb
-14
-mar
-15
-abr
-16
-may
-17
-jun
-18
-jul
-19
-ago
-20
-sep
-21
-oct
-Mes contractual →
-Hitos del Formulario E-25
-H1 H2 H3 H4 H5
-H6
-H7
-H8 H9 H10
-H11
-H12
-Fase 1 Inicio
-1.1 Definición inicial del proyecto m1
-1.2 Alcance del proyecto m1–13
-1.3 Planificación del proyecto m1–20
-1.4 Gestión de interesados y comunicaciones m1–56
-1.5 Gestión de calidad m2–20
-1.6 Gestión de riesgos m1–20
-1.7 Plan de Reversibilidad m3–15
-1.8 Gobierno y control del proyecto m1–56
-1.9 Cumplimiento normativo y contractual m1–56
-Fase 2 Elaboración
-2.1 Arquitectura de la solución m2–13
-2.2 Diseño de la seguridad m2–10
-2.3 Diseño de la sala técnica y de los racks m1–2
-2.4 Validación de diseños m3–14
-2.5 Continuidad del negocio m3
-2.6 Experiencia de usuario m2–4
-Fase 3 Construcción
-3.1 Ambientes y cadena de desarrollo m4–5
-3.2 Servicios de nube de la plataforma m4–5
-3.3 Base compartida m5–7
-3.4 Módulos de la Etapa 1 m5–8
-3.5 Módulos de la Etapa 2 m15
-3.6 Integraciones externas m6–19
-3.7 Migración de datos m7–12
-3.8 Pruebas de la Etapa 1 m9–10
-3.9 Pruebas de la Etapa 2 m16–17
-3.10 Innovaciones m2–21
-3.11 Documentación técnica m4–21
-Marcha blanca E1 Marcha blanca E2
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
-Leyenda
-Ventana de la cuenta (primer a último
-paquete)
-Cuenta recurrente (continua o a demanda)
-Marcha blanca (Art. 17°) Septiembre y diciembre (sin pasos a
-producción)
-Hito del Formulario E-25
-(en su mes contractual)
-Figura 7.3 Carta Gantt actualizada por cuenta de control, meses 1 a 21, fases 1 a 3. Fuente: elaboración a partir de la EDT de este formulario y LafroX (2026e,
-T-15, cronograma).
-LafroX
-SpA
-Formulario
-T-14
-Media
-firma:
-Alex
-Aravena
-102
-
-
----
-
-LafroX
-SpA
-Formulario
-T-14:
-Plan
-de
-trabajo,
-EDT
-y
-carta
-Gantt
-2027
-1
-feb
-2
-mar
-3
-abr
-4
-may
-5
-jun
-6
-jul
-7
-ago
-8
-sep
-9
-oct
-10
-nov
-11
-dic
-2028
-12
-ene
-13
-feb
-14
-mar
-15
-abr
-16
-may
-17
-jun
-18
-jul
-19
-ago
-20
-sep
-21
-oct
-Mes contractual →
-Hitos del Formulario E-25
-H1 H2 H3 H4
-H5
-H6
-H7
-H8
-H9
-H10
-H11
-H12
-Fase 4 Transición
-4.1 Plan de implantación m10–17
-4.2 Marcha blanca y producción de la Etapa 1 m13–20
-4.3 Marcha blanca y producción de la Etapa 2 m19–22
-Fase 5 Adquisiciones y contrataciones
-5.1 Hardware e infraestructura m2–5
-5.2 Servicios de nube y licencias m2–4
-5.3 Enlaces de comunicaciones m4
-5.4 Acuerdos con terceros m7–20
-Fase 6 Infraestructura física y sitios
-6.1 Adecuación de la sala técnica de Talca m3–4
-6.2 Cableado estructurado m4–7
-6.3 Montaje de racks y gabinetes m4–9
-6.4 Sistemas de seguridad física m5–6
-6.5 Equipamiento de campo m9–12
-6.6 Configuración de la infraestructura de
-los sitios
-m5
-Fase 7 Capacitación y gestión del cambio
-7.1 Capacitación por roles m10–56
-7.2 Gestión del cambio m2–21
-7.3 Evaluaciones y certificaciones m13–18
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
-Leyenda Ventana de la cuenta (primer a último paquete) Cuenta recurrente (continua o a demanda)
-Marcha blanca (Art. 17°)
-Septiembre y diciembre (sin pasos a
-producción)
-Hito del Formulario E-25
-(en su mes contractual)
-Figura 7.4 Carta Gantt actualizada por cuenta de control, meses 1 a 21, fases 4 a 7. Fuente: elaboración a partir de la EDT de este formulario y LafroX (2026e,
-T-15, cronograma).
-LafroX
-SpA
-Formulario
-T-14
-Media
-firma:
-Alex
-Aravena
-103
-
-
----
-
 LafroX SpA Formulario T-14: Plan de trabajo, EDT y carta Gantt
-7.4 Criterios vigentes de programación y recursos
+4 Criterios vigentes de programación y recursos
 Las ventanas mensuales de asignación y las HH por paquete están en el T-15, sección 4. La
 preparación del H3 sigue esta secuencia: planos 2.3.1/2.3.2 en el mes 1, especificación y orden
 de compra de LafroX 5.1.2 en el mes 2, instalación 6.1.1–6.1.4 en el mes 3 y recepción 6.1.5
@@ -7951,35 +6975,26 @@ en el mes 4. Los racks R01/R02 se montan en los meses 4 y 5, el gabinete de Conc
 el mes 4 y el borde de los CD entra en servicio mediante 6.6.3 en el mes 5. Los gabinetes de
 cross-docking se montan en el mes 9. El CLIENTE compra el equipamiento de terreno antes
 de cada ola.
-4.2.2 incorpora estabilización y soporte puente E1 en los meses 16–20, después del paso a
-producción del H7. La fase contractual de Operación comienza en el mes 21. 4.3.2 comprende
-cuatro semanas reforzadas posteriores al H12, imputadas a los meses 21 y 22. El T-18, sección
-6, declara la dotación y la regla de decremento. 8.3.2 realiza la revisión INN-03.P5 cada seis
-meses: meses 26, 32, 38, 44, 50 y 56 del proyecto. El esfuerzo equivalente mensual del T-15
-conserva esta frecuencia. La coordinación de reserva y retención (SD4, apartado 4.1.4.4) y las
-pruebas AL-STOCK-01/AL-ACT-01 se incorporan a los paquetes existentes conforme al T-18,
-sección 6.5. AL-STOCK-01 mide la proporción de líneas con más de una retención y las pruebas
-de carga 3.8.4/3.9.3 verifican el drenaje.
+4.2.2 incorpora estabilización y soporte puente E1 en los meses 16–20, desde el paso a
+producción previo a H7. La fase contractual de Operación comienza en el mes 21. 4.3.2 abarca
+desde el paso a producción de la Etapa 2 hasta el cierre del mes 22, con cuatro semanas
+reforzadas posteriores al H12, imputadas a los meses 21 y 22. El T-18, sección 6, declara la
+dotación y la regla de decremento. 8.3.2 realiza la revisión INN-03.P5 cada seis meses: meses
+26, 32, 38, 44, 50 y 56 del proyecto. El esfuerzo equivalente mensual del T-15 conserva esta
+frecuencia. La coordinación de reserva y retención (SD4, apartado 4.1.4.4) y las pruebas AL-
+STOCK-01/AL-ACT-01 se incorporan a los paquetes existentes conforme al T-18, sección 6.5.
+AL-STOCK-01 mide la proporción de líneas con más de una retención y las pruebas de carga
+3.8.4/3.9.3 verifican el drenaje.
 ## Referencias
 Las fuentes citadas en este formulario se listan en formato APA 7.ª edición. Las Bases se
 citan en el texto con su documento y el artículo, capítulo, sección o código del requisito.
 • Distribuidora Puelche S.A. (2026a). Bases Administrativas, Licitación TFEP-01/2026.
 • Distribuidora Puelche S.A. (2026b). Bases Técnicas Transversales, Licitación TFEP-01/2026.
 • Distribuidora Puelche S.A. (2026c). Bases Técnicas del Caso Logística.
-• Distribuidora Puelche S.A. (2026d). Aclaraciones de la Licitación TFEP-01/2026.
-• LafroX. (2026e). Formulario T-15: Cronograma y asignación de recursos. Propuesta técnica,
-Licitación TFEP-01/2026.
-• LafroX. (2026i). Subdocumento 1: Presentación de la empresa. Propuesta técnica, Licitación
-TFEP-01/2026.
-• LafroX. (2026m). Subdocumento 4: Arquitectura de la solución. Propuesta técnica, Licitación
-TFEP-01/2026.
-• LafroX. (2026p). Subdocumento 7: Plan de trabajo. Propuesta técnica, Licitación TFEP-01/2026.
-• LafroX. (2026s). Formulario T-18: Implantación de la solución. Propuesta técnica, Licitación
-TFEP-01/2026.
 LafroX SpA
 Formulario T-14
 Media firma: Alex Aravena
-104
+102
 
 
 ---

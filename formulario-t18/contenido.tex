@@ -15,7 +15,7 @@ Las dos etapas siguen las mismas ocho reglas, y cada una responde a una condici�
 \begin{itemize}
 \item \textbf{Convivencia antes del cambio.} Nada entra en producción sin haber convivido con la forma actual de trabajar durante su marcha blanca, con conciliación diaria y posibilidad de volver atrás (Caso, sección 13.3, condición 1, p. 23; RT-20.03).
 
-\item \textbf{Fechas prohibidas.} Ningún despliegue, paso a producción, inicio de ola ni corte de datos ocurre durante todo septiembre, durante diciembre ni en los tres primeros días hábiles de cada mes (Capítulo 4, apartado 4.2.4.1.4). Del 1 al 25 de septiembre no se interviene ningún sistema (Caso, cap. 15, RT-10.05, p. 27).
+\item \textbf{Fechas prohibidas.} El congelamiento total de intervenciones abarca del 1 al 25 de septiembre, todo diciembre y los primeros tres días hábiles del mes (Caso, cap. 15, RT-10.05, p. 27). El paso a producción está prohibido durante todo septiembre y diciembre (Caso, sección 13.3, condición 2). La política de despliegue del Capítulo 4, «Ventanas de despliegue», también excluye todo septiembre; es una restricción adicional de arquitectura que no convierte los días 26--30 en congelamiento total de cualquier actividad. Las pruebas y trámites sin intervención se distinguen de despliegues, cortes e inicios de ola.
 
 \item \textbf{Olas, no un evento único.} El despliegue avanza por proceso, por sitio y por zona comercial, y nunca afecta a la vez a la bodega, la preventa, el reparto y la facturación (condición 3; RT-20.01).
 
@@ -23,11 +23,11 @@ Las dos etapas siguen las mismas ocho reglas, y cada una responde a una condici�
 
 \item \textbf{Despliegue azul-verde con indicadores de funcionalidad (feature flags).} Cada capacidad nueva se publica en un entorno paralelo y se habilita por sitio y por ola mediante indicadores de funcionalidad, de modo que la reversión técnica consiste en volver a la entrega previa por azul-verde/canario o desactivar el indicador (Capítulo 4, apartado 4.2.4.1.2). Cada operación tiene un único escritor autorizado: no se habilita doble escritura de stock, cobros ni guías de despacho (Capítulo 4, apartado 4.1.8).
 
-\item \textbf{Reversión en dos niveles.} El nivel técnico vuelve a la entrega previa mediante azul-verde/canario o desactiva el indicador de funcionalidad. El operacional conserva o restituye la versión operativa local probada con un único escritor; lo ordena Operaciones del CLIENTE y debe completarse antes de las 05:30. Papel y consultas son apoyo, no sustitución manual del despacho crítico. Los registros capturados permanecen en cola y se concilian al retomar (Capítulo 3, sección 3.4.4; RT-20.02).
+\item \textbf{Reversión en dos niveles.} Durante el canario, el nivel técnico devuelve automáticamente el tráfico a la entrega previa si el percentil 95 supera su umbral o aumentan los errores respecto de la versión estable en la misma ventana. SRE supervisa y valida la recuperación, sin autorización manual previa al disparo automático. Desactivar un indicador de funcionalidad sigue el procedimiento de cambio autorizado y no se presume equivalente a ese automatismo. El operacional conserva o restituye la versión operativa local probada con un único escritor; lo ordena Operaciones del CLIENTE y debe completarse antes de las 05:30. Papel y consultas son apoyo, no sustitución manual del despacho crítico. Los registros capturados permanecen en cola y se concilian al retomar (Capítulo 3, sección 3.4.4; RT-20.02).
 
 \item \textbf{Estabilización declarada.} Cada paso a producción tiene una estabilización de cuatro semanas por ola, con la dotación declarada en la sección 2.6 y sin costo adicional (condición 7; RT-20.05 y RT-20.06).
 
-\item \textbf{Definición de terminado y aceptación.} La definición de terminado se acordará con el CLIENTE para cada entregable antes de su ejecución e incluirá código, pruebas, documentación, seguridad y despliegue; su cumplimiento se verificará con las evidencias y los criterios de aceptación del paquete correspondiente (BTT, cap. 20, RT-20.07, p. 35). El protocolo de aceptación de cada hito se formalizará conforme al Formulario T-17, con criterios objetivos y verificables y las evidencias del hito, firmado por la Contraparte Técnica (BTT, cap. 20, RT-20.08, p. 35; BA, art. 18.1, p. 13).
+\item \textbf{Definición de terminado y aceptación.} La definición de terminado se acordará con el CLIENTE para cada entregable antes de su ejecución e incluirá código, pruebas, documentación, seguridad y despliegue; su cumplimiento se verificará con las evidencias y los criterios de aceptación del paquete correspondiente (BTT, cap. 20, RT-20.07, p. 35). El protocolo de aceptación de cada hito se formalizará conforme al Formulario T-17, con criterios objetivos y verificables y las evidencias del hito, firmado por la Contraparte Técnica; véanse sus secciones 2 «Procedimiento de aceptación» y 4.1 de calendario (BTT, cap. 20, RT-20.08, p. 35; BA, art. 18.1, p. 13).
 
 \end{itemize}
 \section{Etapa 1: marcha blanca de los meses 13 a 15 y producción desde el mes 16}
@@ -77,7 +77,7 @@ Los indicadores se miden y publican cada día con el umbral que exige el artícu
 
 \parte{tablas/tab_T18_indicadores}
 
-La sexta condición es el acta de aceptación firmada por la Contraparte Técnica (paquete 4.2.3, H7). Los resultados del capítulo 18 del caso que se verifican en esta marcha blanca (R18-01 a R18-03, R18-05 a R18-10 y R18-14 a R18-16) se miden con el método y el período del Capítulo 3, Anexo 3.J. La Figura \ref{fig:T18-ciclo} resume el ciclo diario.
+La sexta condición es el acta de cierre de la marcha blanca firmada por la Contraparte Técnica (4.2.1), previa al paso a producción; H7 (4.2.3) es su aceptación posterior. La revisión del cierre se distingue de la de H7 y debe encajar según T-15, sección 5.5. Los resultados del capítulo 18 del caso que se verifican en esta marcha blanca (R18-01 a R18-03, R18-05 a R18-10 y R18-14 a R18-16) se miden con el método y el período del Capítulo 3, Anexo 3.J. La Figura \ref{fig:T18-ciclo} resume el ciclo diario.
 
 \begin{figure}[htbp]
   \centering
@@ -129,7 +129,7 @@ La respuesta es distinta según el grupo (Caso, sección 17.6, punto 7, p. 33). 
 
 \subsection{Cierre de la marcha blanca y paso a producción}
 
-La marcha blanca de la Etapa 1 cierra cuando se cumplen a la vez las seis condiciones del artículo 17.3 de las Bases Administrativas (p. 13). El paso a producción ocurre en el mes 16, fuera de las fechas prohibidas, y se formaliza con el acta del H7 (paquete 4.2.3). Si al término del mes 15 no se cumplen las condiciones, la marcha blanca se extiende a costo del adjudicatario, sin mover las fechas de las fases siguientes (BA, art. 17.3, p. 13).
+La marcha blanca de la Etapa 1 cierra cuando se cumplen a la vez las seis condiciones del artículo 17.3 de las Bases Administrativas (p. 13). El paso a producción ocurre en el mes 16, fuera de las fechas prohibidas, previa acta de cierre de 4.2.1; la aceptación H7 (4.2.3) es posterior. Bajo el inicio supuesto en febrero de 2027, producción tiene objetivo 05-05-2028 y H7 29-05-2028. El plazo de revisión del cierre debe resolverse conforme a T-15, sección 5.5; estas fechas no acreditan una firma anticipada de evidencia incompleta. Si al término del mes 15 no se cumplen las condiciones, la marcha blanca se extiende a costo del adjudicatario, sin mover las fechas de las fases siguientes (BA, art. 17.3, p. 13).
 
 \section{Etapa 2: marcha blanca de los meses 19 y 20 y producción desde el mes 21}
 
@@ -169,7 +169,7 @@ Desde el paso a producción del mes 21 y hasta el cierre del mes 22 rige la esta
 
 \subsection{Cierre y aceptación final}
 
-La marcha blanca de la Etapa 2 cierra con las seis condiciones del artículo 17.3 de las Bases Administrativas (p. 13). El paso a producción del mes 21 es la aceptación final de la implementación (H12, paquete 4.3.3), condicionada a la constitución de la garantía de correcto funcionamiento (paquete 4.3.4; BA, art. 37.1, p. 24).
+La marcha blanca de la Etapa 2 cierra con las seis condiciones del artículo 17.3 de las Bases Administrativas (p. 13). El acta de cierre 4.3.1 habilita el paso a producción objetivo del 05-10-2028; la aceptación final H12, paquete 4.3.3, tiene objetivo 25-10-2028 y es un acto posterior, condicionado a resolver el procedimiento de revisión del cierre (T-15, sección 5.5) y a la constitución de la garantía de correcto funcionamiento (paquete 4.3.4; BA, art. 37.1, p. 24).
 
 \section{Convivencia entre la Etapa 1 y la Etapa 2}
 
@@ -194,13 +194,22 @@ Queda como servicio permanente del adjudicatario durante los 36 meses lo que el 
 
 Los criterios siguientes gobiernan la programación bajo supuestos explícitos. La aceptación contractual exige actas y evidencias, no la sola descripción de estos controles.
 
+\subsection*{Secuencia de demostración de recuperación ante desastres}
+Las campañas 3.8.5 y 3.9.4 se programan respectivamente del 25-10 al 11-11-2027 y del 19-05 al 01-06-2028, después de la integración y antes de H5/H10. Cada una conserva 320 HH, bajo responsabilidad CAL y con apoyo técnico SRE/SEG que debe asignarse sin duplicar capacidad. Comprende cuatro bloques de 80 HH: preparar escenario y verificar réplica, respaldos y tres enlaces; ejecutar AL-DR-01 con conmutación real y medir RTO/RPO y alarmas de retraso a 5/15 minutos; corregir brechas y repetir las comprobaciones afectadas; conciliar los datos, probar retorno y emitir informe. Los bloques son una distribución del esfuerzo existente y se detallan en actividades de hasta 80 HH antes de la campaña.
+
+El informe registra versión, ambiente, cronología de falla y recuperación, último dato durable, pérdida medida, rutas de comunicación, alarmas y conciliación de retorno. La salida exige RTO \ensuremath{\leq}4 horas, RPO \ensuremath{\leq}15 minutos y cierre de brechas; una restauración de respaldo aislada no sustituye esta prueba. Si la corrección supera el bloque reservado, se analiza su impacto sobre capacidad, repetición y certificación; no se da el ensayo por aprobado ni se presupone una reserva adicional.
+
+En Operación, 8.1.3 contiene siete campañas de 80 HH, 560 HH ya incluidas en T-15, con separación máxima de seis meses y fecha compatible con los congelamientos y la última prueba real. No basta con prorratear las HH mensualmente: antes del traspaso a Operación se fija cada campaña, su equipo y el informe correspondiente conforme al programa del responsable de pruebas.
+
 \subsection{Alcance completo de las olas y orden de incorporación}
 
 Las olas incorporan todo el alcance de cada etapa en el orden siguiente.
 
+La Tabla \ref{tab_T18_olas_alcance} presenta alcance completo de las olas y orden de incorporación.
+
 \parte{tablas/tab_T18_olas_alcance}
 
-Las semanas son relativas a H6 y son supuestos de preparación; al confirmar fechas se convierten a días permitidos. El piloto en Talca facilita probar la integración con WMS/ERP, pero no se presume aprobado. No se inventa un número de zonas: el plan de rutas vigente del CLIENTE define los grupos y su volumen. El responsable de Operaciones y el Líder de Implantación registran sitio, rutas, módulos, usuarios, escritor autorizado y fecha de activación en el acta de cada grupo. Si un grupo no está listo, no se sustituye su volumen por una muestra para acreditar cierre.
+Las semanas son relativas a H6 y son supuestos de preparación; al confirmar fechas se convierten a días permitidos. El piloto en Talca facilita probar la integración con WMS/ERP, pero no se presume aprobado. Los grupos de implantación y su volumen se determinan a partir del plan de rutas vigente del CLIENTE. El responsable de Operaciones y el Líder de Implantación registran sitio, rutas, módulos, usuarios, escritor autorizado y fecha de activación en el acta de cada grupo. Si un grupo no está listo, no se sustituye su volumen por una muestra para acreditar cierre.
 
 Los dominios pueden habilitarse en paralelo sin intervenir simultáneamente el mismo proceso/sitio ni crear doble escritura. Una recepción habilitada alimenta bodega con conciliación diaria, mientras se acumula su evidencia; el retiro del respaldo exige cuatro semanas consecutivas por grupo. El último grupo se propone en semana 8 y nunca después de F − 28 días. Con apertura del período de H6 el 1 de febrero de 2028, sin activar cambios durante los primeros tres días hábiles, y cierre al comenzar el 1 de mayo de 2028, la evidencia comprende 3–30 de abril; todos los grupos deben estar operativos antes del 3 de abril. La semana 8 cae dentro de marzo y evita depender de la semana 9 de abril. Es un ejemplo calendario, no una fecha aprobada: el calendario hábil del CLIENTE y las fechas efectivas determinan las activaciones. H7/\allowbreak{}H12 respetan también los primeros tres días hábiles de su mes; la continuidad y evidencia se mantienen hasta el acta, sin usar esa espera para recortar la marcha blanca.
 
@@ -208,7 +217,7 @@ El costo de servir de M10 Analítica se reserva a E2; sus indicadores operaciona
 
 \subsection{Orden de cadenas, portales y cierre E2}
 
-En el mes 18 se congela el registro de cadenas y perfiles de intercambio con Operaciones/Comercial; 3.6.5 y 3.6.6 deben tener pruebas de conformidad antes de activar cada cadena. El orden propuesto es: perfiles ya certificados y accesos disponibles primero; perfiles con mayor variación o dependencia externa después, todos dentro del mes 19 y antes del inicio de las cuatro semanas finales. No se inventan nombres ni cantidades de cadenas.
+En el mes 18 se congela el registro de cadenas y perfiles de intercambio con Operaciones/Comercial; 3.6.5 y 3.6.6 deben tener pruebas de conformidad antes de activar cada cadena. El orden propuesto es: perfiles ya certificados y accesos disponibles primero; perfiles con mayor variación o dependencia externa después, todos dentro del mes 19 y antes del inicio de las cuatro semanas finales. Las cadenas incluidas en cada grupo y sus perfiles de intercambio se identifican en el registro de alcance acordado con Operaciones y Comercial.
 
 Portales por grupo de usuarios y costo de servir avanzan en paralelo en dominios distintos. El acta registra el 100 \% del alcance de cadenas exigible, no sólo las que lograron certificarse. Si una cadena requerida falta, R18-13 permanece incumplido; la carga manual es contingencia y no acredita intercambio electrónico. La habilitación termina antes de septiembre bajo el calendario supuesto y antes de la fecha efectiva que permita cuatro semanas de cierre; no se usa «4,7 semanas» como fecha límite exacta.
 
@@ -216,11 +225,13 @@ Portales por grupo de usuarios y costo de servir avanzan en paralelo en dominios
 
 Se mantiene el mínimo simultáneo de 13 puestos de acompañamiento derivado del SD3: dos en CD, tres en plataformas, siete en ruta y uno de coordinación. Puestos y personas de relevo son conceptos distintos. Para planificar cuatro semanas (24 días operativos), se asumen ocho horas por jornada de terreno: 12 \ensuremath{\times} 24 \ensuremath{\times} 8 + 160 de coordinación = 2.464 HH; los relevos se dimensionan con 128 HH efectivas/persona-mes en T-15. No se supone que dos personas solas cubran todos los turnos nocturnos del mes.
 
+La Tabla \ref{tab_T18_prevision} presenta dotación, estabilización y soporte entre etapas.
+
 \parte{tablas/tab_T18_prevision}
 
 Las previsiones mensuales son una curva inicial, no una retirada automática. El JP y Operaciones autorizan cada decremento en un acta con indicadores diarios y cobertura por perfil; si falla un indicador, se retiene o restituye el nivel anterior sin desplazar hitos. Toda extensión requiere recalcular HH, relevos y capacidad disponible del T-15. Para E2 se prevén cuatro semanas de atención reforzada; después se integra a F8 si la Contraparte Técnica confirma estabilidad.
 
-Desde H7 y hasta el mes 20, el paquete 4.2.2 incluye soporte puente: NOC 24\ensuremath{\times}7, mesa 04:00–22:00 de lunes a sábado y 24\ensuremath{\times}7 en septiembre/diciembre, especialistas para críticos/altos 24\ensuremath{\times}7 y escalamiento operativo. El T-15 separa cobertura y reserva de correcciones de acompañamiento. En el mes 21 se transfiere a 8.1.1/\allowbreak{}8.1.2 sin brecha de atención. Los responsables de incidentes, escalamiento y datos son los mismos en ambas etapas; E2 no dispone de un segundo escritor de los datos E1.
+Desde el paso a producción de E1, previo a H7, y hasta el mes 20, el paquete 4.2.2 incluye soporte puente: NOC 24\ensuremath{\times}7, mesa 04:00–22:00 de lunes a sábado y 24\ensuremath{\times}7 en septiembre/diciembre, especialistas para críticos/altos 24\ensuremath{\times}7 y escalamiento operativo. El T-15 separa cobertura y reserva de correcciones de acompañamiento. En el mes 21 se transfiere a 8.1.1/\allowbreak{}8.1.2 sin brecha de atención. Los responsables de incidentes, escalamiento y datos son los mismos en ambas etapas; E2 no dispone de un segundo escritor de los datos E1.
 
 \subsection{Tiempo de reversión y ensayo de capacidad}
 
