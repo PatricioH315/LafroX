@@ -4,7 +4,7 @@
 \markboth{Anexos del Subdocumento 9: Plan de calidad}{}
 \label{cap:sd9-anexos}
 
-Estos anexos contienen el detalle que el cuerpo del Subdocumento 9 (SD9) resume. El plan de pruebas está en el Formulario T-13 y el protocolo de aceptación, en el Formulario T-17. En estos anexos, BA, BTT y Caso designan las Bases Administrativas (Distribuidora Puelche S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso Logística (2026c).
+Estos anexos contienen el detalle que el cuerpo del Subdocumento 9 (SD9) resume. El plan de pruebas está en el Formulario T-13 y el protocolo de aceptación, en el Formulario T-17. En estos anexos, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas Transversales y las Bases Técnicas del caso.
 
 \begin{tablasimple}{>{\hsize=0.41\hsize\linewidth=\hsize}Y >{\hsize=2.18\hsize\linewidth=\hsize}Y >{\hsize=0.41\hsize\linewidth=\hsize}Y}
   {\cab{Anexo} & \cab{Contenido} & \cab{Sección del SD9 que lo cita}}
@@ -13,7 +13,7 @@ Estos anexos contienen el detalle que el cuerpo del Subdocumento 9 (SD9) resume.
 9.C & Cálculo del costo de la calidad en horas-hombre & 9.1.6 y 9.3.1 \\
 9.D & Trazabilidad de los resultados del caso hasta su prueba y su hito & 9.2.5 \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de LafroX (2026r, SD9, secciones 9.1 a 9.3).}
+\fuentesd{Fuente: (Subdocumento 9, secciones 9.1 a 9.3).}
 
 \section*{Anexo 9.A — Métricas de calidad del producto}
 \addcontentsline{toc}{section}{Anexo 9.A — Métricas de calidad del producto}
@@ -31,7 +31,7 @@ La funcionalidad se verifica contra los requisitos ofertados y los casos que ace
 9A-02 & Corrección & Defectos críticos o altos abiertos al certificar & 0 & Art. 17.3 (BA, p. 13) & Registro de defectos & 3.8.7; 3.9.6 \\
 9A-03 & Pertinencia & Casos de aceptación firmados por la Contraparte Técnica & 100 \% de los casos de la etapa & BTT 20.1 (BTT, pp. 34--35) & Aceptación en Preproducción & 3.8.2; 3.9.2 \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts. 17.3 y 24, pp. 13, 17); Distribuidora Puelche S.A. (2026b, sección 20.1, pp. 34--35); Distribuidora Puelche S.A. (2026c, sección 17.1); LafroX (2026c, T-13, sección 6); LafroX (2026d, T-14, cuentas 3 y 4).}
+\fuentesd{Fuente: (Bases Administrativas, arts. 17.3 y 24, pp. 13, 17); (Bases Técnicas Transversales, sección 20.1, pp. 34--35); (Bases Técnicas del caso, sección 17.1, pp. 31--32); (Formulario T-13, sección 6); (Formulario T-14, cuentas 3 y 4).}
 
 \subsection*{9.A.2 Desempeño}
 \addcontentsline{toc}{subsection}{9.A.2 Desempeño}
@@ -50,7 +50,7 @@ El desempeño se mide en percentil 95 con la carga de peak y la concurrencia de 
 9A-11 & Capacidad & Crecimiento sin rediseño & 43,98 TPS (3 × el peak) sin cambio de arquitectura & RT-09.03 (BTT, p. 21) & Escalón de estrés & 3.8.4; 3.9.3 \\
 9A-12 & Capacidad & Degradación al superar la capacidad & 0 transacciones perdidas; encolamiento y mensaje explícito & RT-09.08 (BTT, p. 22) & Escalón de quiebre (4 ×) & 3.8.4; 3.9.3 \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 24, p. 17); Distribuidora Puelche S.A. (2026b, cap. 9, pp. 21--22); Distribuidora Puelche S.A. (2026c, RT-09.01 y RT-10.05); LafroX (2026m, SD4, secciones 4.2.6.3 y 4.2.6.4); LafroX (2026c, T-13, sección 7.1); LafroX (2026d, T-14, cuenta 3).}
+\fuentesd{Fuente: (Bases Administrativas, art. 24, p. 17); (Bases Técnicas Transversales, cap. 9, pp. 21--22); (Bases Técnicas del caso, cap. 15, RT-09.01 y RT-10.05, pp. 26--27); (Subdocumento 4, secciones 4.2.6.3 y 4.2.6.4); (Formulario T-13, sección 7.1); (Formulario T-14, cuenta 3).}
 
 \subsection*{9.A.3 Compatibilidad}
 \addcontentsline{toc}{subsection}{9.A.3 Compatibilidad}
@@ -63,7 +63,7 @@ La compatibilidad se verifica sobre los quince flujos y sus contratos, incluida 
 9A-14 & Interoperabilidad & Contratos rotos en la cadena de integración & 0 & Art. 4.3 (OpenAPI 3.1, AsyncAPI 2.6) (BA, pp. 5--6) & Pact y Spectral & 1.5.2 \\
 9A-15 & Coexistencia & Regresiones de la Etapa 1 al integrar la Etapa 2 & 0 & Art. 17.2, regla 3 (BA, p. 13) & Regresión de la Etapa 1 & 3.9.1 \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b, sección 20.1 y RT-10.08, pp. 22, 34--35); LafroX (2026m, SD4, sección 4.1); LafroX (2026c, T-13, sección 3); LafroX (2026d, T-14, cuentas 1 y 3).}
+\fuentesd{Fuente: (Bases Técnicas Transversales, sección 20.1 y RT-10.08, pp. 22, 34--35); (Subdocumento 4, sección 4.1); (Formulario T-13, sección 3); (Formulario T-14, cuentas 1 y 3).}
 
 \subsection*{9.A.4 Usabilidad}
 \addcontentsline{toc}{subsection}{9.A.4 Usabilidad}
@@ -77,7 +77,7 @@ La usabilidad combina accesibilidad y resultados medidos por perfil en los dispo
 9A-18 & Eficiencia de uso y aprendizaje & Tiempo, pasos, tasa de error y tiempo de aprendizaje por perfil & Preparador ≤ 1 s, 3 pasos, error ≤ 5 \%, aprendizaje ≤ 2 h; recepción ≤ 2 s, 3 pasos, ≤ 5 \%, ≤ 2 h; preventista ≤ 1,5 s, 3 pasos, ≤ 5 \%, ≤ 4 h; conductor ≤ 2 s, 3 o 4 pasos, ≤ 5 \%, ≤ 30 min & RT-13.04; SD3, Tabla 3.A.4a (BTT, p. 26) & Pruebas moderadas por perfil & 2.6.3; 3.8.2 \\
 9A-19 & Adaptabilidad de la interfaz & Funciones completas en escritorio, tableta y teléfono & 100 \% de las vistas de portales y consolas & RT-13.02 (BTT, p. 26) & Regresión visual con Playwright & 3.8.1; 3.9.1 \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 4.3, pp. 5--6); Distribuidora Puelche S.A. (2026b, RT-13.01 a RT-13.04, p. 26); Distribuidora Puelche S.A. (2026c, RT-13.08); LafroX (2026j, Anexos 3, Tabla 3.A.4a); LafroX (2026c, T-13, secciones 6 y 7.3); LafroX (2026d, T-14, cuentas 2 y 3).}
+\fuentesd{Fuente: (Bases Administrativas, art. 4.3, pp. 5--6); (Bases Técnicas Transversales, RT-13.01 a RT-13.04, p. 26); (Bases Técnicas del caso, cap. 15, RT-13.08, p. 27); (Subdocumento 3, Tabla 3.A.4a); (Formulario T-13, secciones 6 y 7.3); (Formulario T-14, cuentas 2 y 3).}
 
 \subsection*{9.A.5 Fiabilidad}
 \addcontentsline{toc}{subsection}{9.A.5 Fiabilidad}
@@ -93,7 +93,7 @@ La fiabilidad se verifica mediante disponibilidad, recuperación e inyección de
 9A-24 & Recuperabilidad & Restauraciones mensuales exitosas, con tiempo medido & 100 \% & RT-07.12 (BTT, p. 18) & Restauración de muestra & 4.2.1; 4.2.2; 4.3.1; 8.1.6 \\
 9A-25 & Operación desconectada & Registros perdidos o duplicados tras 14 h sin señal y 24 h sin enlace & 0; sincronización ≤ 10 min (dispositivo) y ≤ 2 h (centro de distribución) & Caso, RT-03.10 y RT-03.13 & Perfil operacional y resiliencia; regresión del alcance cambiado E2 & 3.8.3; 3.8.4; 3.9.1; 3.9.2 \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 78.2, p. 40); Distribuidora Puelche S.A. (2026b, sección 7.2, RT-07.07 y RT-10.07, pp. 17--18, 22); Distribuidora Puelche S.A. (2026c, RT-10.05); LafroX (2026c, T-13, secciones 7.2 y 9); LafroX (2026d, T-14, cuentas 3 y 8).}
+\fuentesd{Fuente: (Bases Administrativas, art. 78.2, p. 40); (Bases Técnicas Transversales, sección 7.2, RT-07.07 y RT-10.07, pp. 17--18, 22); (Bases Técnicas del caso, cap. 15, RT-10.05, p. 27); (Formulario T-13, secciones 7.2 y 9); (Formulario T-14, cuentas 3 y 8).}
 
 \subsection*{9.A.6 Seguridad}
 \addcontentsline{toc}{subsection}{9.A.6 Seguridad}
@@ -107,7 +107,7 @@ La seguridad se evalúa por hallazgos abiertos y por la aplicación efectiva de 
 9A-28 & Confidencialidad & Datos productivos sin anonimizar fuera de Producción & 0; 0 hallazgos de Amazon Macie & Ley N.º 21.719; Caso, RT-11.10 & Verificación previa a la liberación de cada juego & Todas las campañas \\
 9A-29 & Confidencialidad & Secretos en código, imágenes o configuración & 0 & RT-04.09 (BTT, p. 11) & Escaneo de secretos & 1.5.2 \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b, RT-04.05 y RT-11.20, pp. 10, 24); Distribuidora Puelche S.A. (2026c, cap. 15); LafroX (2026m, SD4, sección 4.1.18); LafroX (2026c, T-13, secciones 3 y 6); LafroX (2026d, T-14, cuentas 1 y 3).}
+\fuentesd{Fuente: (Bases Técnicas Transversales, RT-04.05 y RT-11.20, pp. 10, 24); (Bases Técnicas del caso, cap. 15, pp. 26--27); (Subdocumento 4, sección 4.1.18); (Formulario T-13, secciones 3 y 6); (Formulario T-14, cuentas 1 y 3).}
 
 \subsection*{9.A.7 Mantenibilidad}
 \addcontentsline{toc}{subsection}{9.A.7 Mantenibilidad}
@@ -123,7 +123,7 @@ La mantenibilidad se controla antes de fusionar código. Cada métrica debe prod
 9A-34 & Modificabilidad & Duplicación de código & ≤ 3 \% de las líneas & Formulario T-10 & PHPCPD; jscpd & 1.5.2 \\
 9A-35 & Modificabilidad & Deuda técnica clasificada como bloqueante & 0 & Art. 24; Formulario T-10 (BA, p. 17) & PhpMetrics y registro de deuda & 1.5.2; 8.2.4 \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts. 19 y 24, pp. 14, 17); Distribuidora Puelche S.A. (2026b, RT-04.11, p. 11); LafroX (2026i, SD1, sección 1.3.1); LafroX (2026a, T-10, apartado DevSecOps); McCabe (1976, sección III); LafroX (2026d, T-14, cuentas 1 y 8).}
+\fuentesd{Fuente: (Bases Administrativas, arts. 19 y 24, pp. 14, 17); (Bases Técnicas Transversales, RT-04.11, p. 11); (Subdocumento 1, sección 1.3.1); (Formulario T-10, apartado DevSecOps); McCabe (1976, sección III); (Formulario T-14, cuentas 1 y 8).}
 
 \subsection*{9.A.8 Portabilidad}
 \addcontentsline{toc}{subsection}{9.A.8 Portabilidad}
@@ -136,7 +136,7 @@ La portabilidad se comprueba promoviendo el mismo artefacto y reconstruyendo el 
 9A-37 & Adaptabilidad & Ambientes reconstruibles desde código & 5 de 5 & BTT 4.1 (BTT, p. 10) & Inventario y código de los cinco ambientes; reconstrucción aislada de cada configuración con datos sintéticos y evidencia de equivalencia. Producción/Recuperación se validan sin destruir instancias activas & 3.1 \\
 9A-38 & Reemplazabilidad & Despliegue y reversión sin interrupción & 0 interrupciones; 0 intervenciones manuales & RT-04.06; RT-04.07 (BTT, p. 11) & Demostración en Preproducción & 3.8.8; 3.9.7 \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b, RT-04.06 a RT-04.08 y sección 4.1, pp. 10--11); LafroX (2026m, SD4, sección 4.2.4.1); LafroX (2026c, T-13, secciones 4 y 6); LafroX (2026d, T-14, cuentas 3 y 4).}
+\fuentesd{Fuente: (Bases Técnicas Transversales, RT-04.06 a RT-04.08 y sección 4.1, pp. 10--11); (Subdocumento 4, sección 4.2.4.1); (Formulario T-13, secciones 4 y 6); (Formulario T-14, cuentas 3 y 4).}
 
 \subsection*{9.A.9 Calidad de datos (ISO/IEC 25012)}
 \addcontentsline{toc}{subsection}{9.A.9 Calidad de datos (ISO/IEC 25012)}
@@ -150,7 +150,7 @@ La calidad de datos se mide sobre registros del negocio. Se distinguen completit
 9A-41 & Consistencia & Definiciones del indicador de entregas completas y a tiempo & 1 sola & Caso, cap. 18, resultado 4 & Revisión del modelo analítico & 4.2.1 \\
 9A-42 & Actualidad & Latencia de los indicadores de la operación del día & ≤ 5 min & Caso, RT-05.29 & Medición en marcha blanca & 4.2.1 \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, cap. 18); Distribuidora Puelche S.A. (2026b, RT-04.04 y sección 20.1, pp. 10, 34--35); LafroX (2026n, SD5, sección 5.3.5); LafroX (2026c, T-13, secciones 4 y 7.4); LafroX (2026d, T-14, cuentas 3 y 4).}
+\fuentesd{Fuente: (Bases Técnicas del caso, cap. 18, pp. 34--35); (Bases Técnicas Transversales, RT-04.04 y sección 20.1, pp. 10, 34--35); (Subdocumento 5, sección 5.3.5); (Formulario T-13, secciones 4 y 7.4); (Formulario T-14, cuentas 3 y 4).}
 
 \section*{Anexo 9.B — Puertas de calidad y reglas de bloqueo}
 \addcontentsline{toc}{section}{Anexo 9.B — Puertas de calidad y reglas de bloqueo}
@@ -167,7 +167,7 @@ G4 & Promoción a Preproducción & Regresión con fallas; alerta alta de DAST o 
 G5 & Entrada de cada etapa a Producción (H6 y H11) & Una prueba del T-13 que habilita la entrada no está aprobada; defecto crítico o alto abierto; falta el acta de certificación de la etapa (H5 o H10) & Expediente del T-17 & Nadie. El acta es una condición adicional y no levanta una prueba fallida \\
 G6 & Producción desde H6/H11 y Operación & Canario con p95 sobre su umbral o con más errores que la versión estable; presupuesto de error crítico del mes agotado & Cadena de entrega del SD4; observabilidad & Nadie. La reversión del canario es automática; se suspenden los despliegues no correctivos hasta el mes siguiente \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b, RT-04.05 y RT-04.11, pp. 10--11); LafroX (2026m, SD4, sección 4.2.4.1); LafroX (2026a, T-10, apartado DevSecOps); LafroX (2026c, T-13, sección 6); LafroX (2026f, T-17, sección 4.3).}
+\fuentesd{Fuente: (Bases Técnicas Transversales, RT-04.05 y RT-04.11, pp. 10--11); (Subdocumento 4, sección 4.2.4.1); (Formulario T-10, apartado DevSecOps); (Formulario T-13, sección 6); (Formulario T-17, sección 4.3).}
 
 G5 es la puerta de entrada de cada etapa a Producción en el H6 y el H11 (T-17, 4.3): bloquea la habilitación sin certificación H5/H10 aceptada, pruebas aplicables aprobadas, reversión ensayada, conciliación y capacitación. El H7 y el H12 no son una puerta técnica: son el paso a producción contractual del Formulario E-25 y aceptan la marcha blanca con las seis condiciones del Art. 17.3 (BA, p. 13).
 
@@ -204,7 +204,7 @@ Evaluación & 4.2.1; 4.2.2; 4.3.1 & Ocho restauraciones previas a Operación, co
 \textbf{Subtotal evaluación} &  &  & \textbf{7.792} \\
 \textbf{Total de conformidad} &  &  & \textbf{12.016} \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de LafroX (2026d, T-14, paquetes indicados en cada fila); LafroX (2026e, T-15, estimación por paquete y rol).}
+\fuentesd{Fuente: (Formulario T-14, paquetes indicados en cada fila); (Formulario T-15, estimación por paquete y rol).}
 
 Las 12.016 HH equivalen al 5,5 \% de las 220.023 HH de la línea base (12.016 / 220.023 = 0,0546).
 
@@ -225,7 +225,7 @@ Operación (SRE) & 4 & 8 & Interna: 2 de restitución + 2 de supervisión; exter
 Implantación y coordinación (IMP) & 0 & 4 & Comunicación y coordinación con las personas afectadas por la falla externa \\
 \textbf{Total de referencia} & \textbf{95,5} & \textbf{111,5} & HH por evento; no constituyen dotación ni autorización de gasto \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de LafroX (2026c, T-13, secciones 8.2 y 8.3); LafroX (2026e, T-15, estimación por rol); los supuestos de esfuerzo por evento explicitados en esta sección 9.C.2.}
+\fuentesd{Fuente: (Formulario T-13, secciones 8.2 y 8.3); (Formulario T-15, estimación por rol); los supuestos de esfuerzo por evento explicitados en esta sección 9.C.2.}
 
 Para nI fallas internas y nE externas de este alcance, el esfuerzo de referencia es 95,5 × nI + 111,5 × nE. Un evento de cada tipo representa 207 HH. El costo de calidad del escenario sería 12.016 + 207 = 12.223 HH únicamente si esas horas fueran adicionales y no estuvieran ya incluidas en los paquetes de la línea base. No se adopta ese escenario como pronóstico del contrato: las cantidades nI y nE se revisan con los defectos observados desde las primeras campañas.
 
@@ -242,7 +242,7 @@ Prevención & 4.224 & 35,2 \% \\
 Evaluación & 7.792 & 64,8 \% \\
 \textbf{Total programado} & \textbf{12.016} & \textbf{100,0 \%} \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de LafroX (2026d, T-14, paquetes de prevención y evaluación); LafroX (2026e, T-15, estimación por paquete y rol); el desglose de la sección 9.C.1.}
+\fuentesd{Fuente: (Formulario T-14, paquetes de prevención y evaluación); (Formulario T-15, estimación por paquete y rol); el desglose de la sección 9.C.1.}
 
 Proporciones: 4.224 / 12.016 = 0,3515; 7.792 / 12.016 = 0,6485. El T-15 desglosa campañas por actividad y rol: recuperación inicial 320 HH; siete conmutaciones operacionales de 80 HH (560); intrusión E1/E2 de 320/160 HH. Son estimaciones de planificación, no resultados ejecutados ni valores derivados sólo de la proporción de alcance.
 
@@ -272,7 +272,7 @@ R18-14 Ocupación mínima por camión & Casos de planificación de carga & 4.2.1
 R18-15 Causa de cada faltante & Casos de faltante sin conexión & 4.2.1 & H7 \\
 R18-16 Operación sin el planificador & Generación automática de rutas (R18-07) & 4.2.1 & H7 \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, cap. 18); LafroX (2026c, T-13, sección 7.4); LafroX (2026d, T-14, cuentas 3 y 4); LafroX (2026f, T-17, secciones 4 y 5).}
+\fuentesd{Fuente: (Bases Técnicas del caso, cap. 18, pp. 34--35); (Formulario T-13, sección 7.4); (Formulario T-14, cuentas 3 y 4); (Formulario T-17, secciones 4 y 5).}
 
 \section*{Referencias}
 \addcontentsline{toc}{section}{Referencias}
@@ -288,17 +288,4 @@ Las fuentes siguientes sustentan los criterios citados en este documento; sus re
   \item Ley N.º 21.719. (2024). \emph{Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales}. Diario Oficial de la República de Chile.
   \item McCabe, T. J. (1976). A complexity measure. \emph{IEEE Transactions on Software Engineering, SE-2}(4), 308–320.
   \item Project Management Institute. (2017). \emph{Guía de los fundamentos para la dirección de proyectos (Guía del PMBOK)} (6.ª ed.). Project Management Institute.
-  \item LafroX. (2026a). \emph{Formulario T-10: Metodología de desarrollo de software}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026b). \emph{Formulario T-12: Matriz de trazabilidad}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026c). \emph{Formulario T-13: Plan de pruebas y validación}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026d). \emph{Formulario T-14: Plan de trabajo, EDT y carta Gantt}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026e). \emph{Formulario T-15: Nivelación de recursos}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026f). \emph{Formulario T-17: Protocolo de aceptación}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026i). \emph{Subdocumento 1: Presentación de la empresa}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026j). \emph{Subdocumento 3: Anexos}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026k). \emph{Subdocumento 3: Especificación de requerimientos}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026m). \emph{Subdocumento 4: Arquitectura de la solución}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026n). \emph{Subdocumento 5: Modelo y gestión de datos}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026q). \emph{Subdocumento 9: Anexos 9.A a 9.D}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026r). \emph{Subdocumento 9: Plan de calidad}. Propuesta técnica, Licitación TFEP-01/2026.
 \end{itemize}

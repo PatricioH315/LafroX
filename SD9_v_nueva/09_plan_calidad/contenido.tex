@@ -2,13 +2,13 @@
 \chapter{Introducción al Plan de calidad}
 \label{cap:sd9}
 
-Distribuidora Puelche tardó nueve días en identificar a los clientes afectados por un retiro sanitario y entregó una estimación, no una lista (Distribuidora Puelche S.A., 2026c, cap. 1 y cap. 7.3). Su Jefa de Calidad pidió en la entrevista de levantamiento algo más exigente que un sistema que registre: que bloquee el despacho ante una excursión de temperatura fuera de rango (2026c, cap. 8). Ese es el nivel de exigencia de este plan. La solución opera alimentos bajo fiscalización sanitaria, y en industrias reguladas el control de calidad es más estricto que en otras (Project Management Institute [PMI], 2017, p. 300).
+Distribuidora Puelche tardó nueve días en identificar a los clientes afectados por un retiro sanitario y entregó una estimación, no una lista (Bases Técnicas del caso, cap. 1 y cap. 7.3, pp. 3, 12). Su Jefa de Calidad pidió en la entrevista de levantamiento algo más exigente que un sistema que registre: que bloquee el despacho ante una excursión de temperatura fuera de rango (2026c, cap. 8). Ese es el nivel de exigencia de este plan. La solución opera alimentos bajo fiscalización sanitaria, y en industrias reguladas el control de calidad es más estricto que en otras (Project Management Institute [PMI], 2017, p. 300).
 
 El capítulo responde tres preguntas. La sección 9.1 define con qué se juzga la calidad: los objetivos, las normas, el modelo de calidad del producto, los modelos de madurez, las métricas con umbral y el costo de la calidad. La sección 9.2 describe cómo se asegura y se controla: las puertas de calidad, la revisión y el análisis del código, la estrategia de pruebas, los datos de prueba, la trazabilidad y el ciclo de mejora. La sección 9.3 muestra dónde quedan esas actividades en la EDT y en el cronograma.
 
 El plan se conecta con el resto de la propuesta. Toma los requisitos y criterios de aceptación del Subdocumento 3 (SD3) y del Formulario T-12; los ambientes, la cadena de entrega, los umbrales de respuesta y el dimensionamiento del Subdocumento 4 (SD4); las reglas de calidad de datos y de migración del Subdocumento 5 (SD5); las compuertas y herramientas del Subdocumento 6 (SD6) y su Formulario T-10; los paquetes, fechas y horas del Subdocumento 7 (SD7) y sus Formularios T-14 y T-15; y la coordinación con la gestión de riesgos. El detalle se entrega por separado. El \textbf{Formulario T-13} contiene el plan de pruebas y validación. El \textbf{Formulario T-17} contiene el protocolo de aceptación de cada hito y del producto final. Los \textbf{Anexos 9.A a 9.D} contienen las métricas por subcaracterística, las reglas de las puertas, el cálculo del costo de la calidad y la trazabilidad de los resultados del caso.
 
-En este capítulo, BA, BTT y Caso designan las Bases Administrativas (Distribuidora Puelche S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso Logística (2026c). El mes 1 del contrato es febrero de 2027.
+En este capítulo, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas Transversales y las Bases Técnicas del caso. El mes 1 del contrato es febrero de 2027.
 
 \section{Plan de Calidad}
 
@@ -20,7 +20,7 @@ El plan parte de un principio del PMBOK: la prevención es preferible a la inspe
 
 \textbf{Objetivos.} Los objetivos de calidad del proyecto se derivan de lo que el CLIENTE usará para juzgar el éxito: los dieciséis resultados del Caso, capítulo 18, y las condiciones de cierre de marcha blanca del Art. 17.3. La Tabla~\ref{tab:sd9-1} los agrupa en cuatro objetivos medibles (BA, p. 13).
 
-\begin{tablalafrox}{Objetivos de calidad del proyecto. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 17.3, p. 13); Distribuidora Puelche S.A. (2026c, caps. 17 y 18); LafroX (2026f, T-17, sección 5).}{tab:sd9-1}{>{\hsize=1.074\hsize\linewidth=\hsize}Y >{\hsize=1.829\hsize\linewidth=\hsize}Y >{\hsize=0.549\hsize\linewidth=\hsize}Y >{\hsize=0.548\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Objetivos de calidad del proyecto. Fuente: (Bases Administrativas, art. 17.3, p. 13); (Bases Técnicas del caso, caps. 17 y 18, pp. 31--35); (Formulario T-17, sección 5).}{tab:sd9-1}{>{\hsize=1.074\hsize\linewidth=\hsize}Y >{\hsize=1.829\hsize\linewidth=\hsize}Y >{\hsize=0.549\hsize\linewidth=\hsize}Y >{\hsize=0.548\hsize\linewidth=\hsize}Y}
   {\cab{Objetivo} & \cab{Indicador} & \cab{Meta} & \cab{Origen}}
 Entregar lo ofertado, probado & Requisitos ofertados del T-12 con prueba aprobada & 100 \% antes de su hito & Caso, 17.1 \\
 Llegar a producción sin defectos graves & Defectos críticos o altos abiertos al cierre de cada marcha blanca & 0 & BA, Art. 17.3 (BA, p. 13) \\
@@ -36,7 +36,7 @@ El Líder de Calidad no responde ante el Líder de Desarrollo. Puede vetar una p
 
 La Figura~\ref{fig:sd9-1} presenta el marco completo, desde las normas hasta la aceptación.
 
-\figuralafrox{0.969}{diagramas/Fig_9-1_Marco_Calidad.pdf}{Marco de aseguramiento de la calidad. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts. 4.3, 18.2 y 24, pp. 5--6, 13, 17); LafroX (2026q, Anexos 9, anexos 9.A y 9.B); LafroX (2026c, T-13, secciones 3 y 6); LafroX (2026f, T-17, secciones 3 y 4).}{fig:sd9-1}
+\figuralafrox{0.969}{diagramas/Fig_9-1_Marco_Calidad.pdf}{Marco de aseguramiento de la calidad. Fuente: (Bases Administrativas, arts. 4.3, 18.2 y 24, pp. 5--6, 13, 17); (Subdocumento 9, anexos 9.A y 9.B); (Formulario T-13, secciones 3 y 6); (Formulario T-17, secciones 3 y 4).}{fig:sd9-1}
 
 Todo el marco converge en una sola salida: la evidencia que la Contraparte Técnica revisa para firmar cada acta (BA, Art. 18.2, p. 13). Cada norma gobierna un objeto distinto y ninguna se queda en una mención: cada una se traduce en métricas con umbral, y esas métricas se aplican en una puerta o en una prueba. Las métricas no llegan al CLIENTE como declaraciones, sino como resultados de ejecución en el expediente. Las puertas G0 a G6 que aparecen en la figura son los siete puntos de control de la cadena de entrega, desde el computador del desarrollador hasta la operación; la sección 9.2.1 las describe una por una.
 
@@ -44,7 +44,7 @@ Todo el marco converge en una sola salida: la evidencia que la Contraparte Técn
 
 El Art. 4.3 de las BA exige acreditar cada estándar y advierte que mencionarlo sin evidencia de cómo se satisface vale puntaje cero. La Tabla~\ref{tab:sd9-2} indica, para cada estándar del ámbito de la calidad, cómo se aplica y dónde queda la evidencia (BA, pp. 5--6).
 
-\begin{tablalafrox}{Estándares de calidad y su mecanismo de verificación. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 4.3, pp. 5--6); Distribuidora Puelche S.A. (2026b, RT-13.01, p. 26); LafroX (2026i, SD1, sección 1.3.1); LafroX (2026c, T-13, secciones 2, 3 y 12); LafroX (2026q, Anexos 9, anexo 9.A).}{tab:sd9-2}{>{\hsize=0.719\hsize\linewidth=\hsize}Y >{\hsize=0.737\hsize\linewidth=\hsize}Y >{\hsize=1.68\hsize\linewidth=\hsize}Y >{\hsize=0.864\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Estándares de calidad y su mecanismo de verificación. Fuente: (Bases Administrativas, art. 4.3, pp. 5--6); (Bases Técnicas Transversales, RT-13.01, p. 26); (Subdocumento 1, sección 1.3.1); (Formulario T-13, secciones 2, 3 y 12); (Subdocumento 9, anexo 9.A).}{tab:sd9-2}{>{\hsize=0.719\hsize\linewidth=\hsize}Y >{\hsize=0.737\hsize\linewidth=\hsize}Y >{\hsize=1.68\hsize\linewidth=\hsize}Y >{\hsize=0.864\hsize\linewidth=\hsize}Y}
   {\cab{Estándar} & \cab{Objeto} & \cab{Mecanismo en este plan} & \cab{Evidencia}}
 ISO/IEC 25010 & Calidad del producto & Ocho características con métrica y umbral (9.1.3) & Anexo 9.A; informes del T-13 \\
 ISO/IEC 25012 & Calidad de los datos & Completitud, exactitud, consistencia y actualidad medidas (9.1.3) & Anexo 9.A.9; conciliaciones \\
@@ -64,11 +64,11 @@ Cada umbral se escribe como un requisito verificable: ante un estímulo, en una 
 
 La Figura~\ref{fig:sd9-2} presenta las ocho características con el umbral que las hace exigibles en Puelche.
 
-\figuralafrox{0.969}{diagramas/Fig_9-2_Modelo_ISO25010.pdf}{Modelo de calidad del producto aplicado a la solución. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 24, p. 17); LafroX (2026q, Anexos 9, anexo 9.A, métricas 9A-01 a 9A-38).}{fig:sd9-2}
+\figuralafrox{0.969}{diagramas/Fig_9-2_Modelo_ISO25010.pdf}{Modelo de calidad del producto aplicado a la solución. Fuente: (Bases Administrativas, art. 24, p. 17); (Subdocumento 9, anexo 9.A, métricas 9A-01 a 9A-38).}{fig:sd9-2}
 
 Ninguna de las ocho características queda con un valor genérico: cada una tiene al menos una métrica que nace de la operación de Puelche. La Tabla~\ref{tab:sd9-3} resume la métrica principal de cada una. El Anexo 9.A detalla las 42 métricas por subcaracterística, con método de verificación y paquete de la EDT, e incluye cuatro métricas de calidad de datos según ISO/IEC 25012 (ISO \& IEC, 2008).
 
-\begin{tablalafrox}{Umbral principal por característica. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts. 24 y 78.2, pp. 17, 40); Distribuidora Puelche S.A. (2026b, secciones 7.2, 13 y 20.1, pp. 17--18, 26, 34--35); Distribuidora Puelche S.A. (2026c, RT-09.01 y RT-10.05; sección 17.1); LafroX (2026j, Anexos 3, Tabla 3.A.4a); LafroX (2026q, Anexos 9, anexo 9.A).}{tab:sd9-3}{>{\hsize=0.686\hsize\linewidth=\hsize}Y >{\hsize=1.604\hsize\linewidth=\hsize}Y >{\hsize=1.023\hsize\linewidth=\hsize}Y >{\hsize=0.687\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Umbral principal por característica. Fuente: (Bases Administrativas, arts. 24 y 78.2, pp. 17, 40); (Bases Técnicas Transversales, secciones 7.2, 13 y 20.1, pp. 17--18, 26, 34--35); (Bases Técnicas del caso, cap. 15, RT-09.01 y RT-10.05; sección 17.1, pp. 26--27, 31--32); (Subdocumento 3, Tabla 3.A.4a); (Subdocumento 9, anexo 9.A).}{tab:sd9-3}{>{\hsize=0.686\hsize\linewidth=\hsize}Y >{\hsize=1.604\hsize\linewidth=\hsize}Y >{\hsize=1.023\hsize\linewidth=\hsize}Y >{\hsize=0.687\hsize\linewidth=\hsize}Y}
   {\cab{Característica} & \cab{Métrica principal} & \cab{Umbral} & \cab{Origen}}
 Funcionalidad & Requisitos ofertados con prueba aprobada & 100 \% & Caso, 17.1 \\
 Desempeño & p95 de las transacciones críticas a 1,5 × el peak & Preparación ≤ 1 s; entrega ≤ 2 s; preventa ≤ 1,5 s; stock y crédito ≤ 2 s & Caso, RT-09.01 \\
@@ -94,7 +94,7 @@ El modelo se usa para mejorar el proceso durante el contrato. El Líder de Calid
 
 La mantenibilidad se juzga sobre el código mientras se escribe. La columna «Puerta» de la Tabla~\ref{tab:sd9-4} indica el punto de control donde se aplica cada umbral: G2 es la integración continua, que se ejecuta sobre cada cambio (sección 9.2.1). La Tabla~\ref{tab:sd9-4} fija los umbrales que bloquean una fusión en los tres lenguajes de la solución: PHP con Laravel en el monolito modular, Kotlin en la aplicación Android y TypeScript con Angular en consolas y portales (SD4, sección 4.1.1).
 
-\begin{tablalafrox}{Métricas de código con umbral bloqueante. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts. 19 y 24, pp. 14, 17); Distribuidora Puelche S.A. (2026b, RT-04.11, p. 11); LafroX (2026i, SD1, sección 1.3.1); LafroX (2026a, T-10, apartado DevSecOps); LafroX (2026q, Anexos 9, anexo 9.B); McCabe (1976, sección III).}{tab:sd9-4}{>{\hsize=1.685\hsize\linewidth=\hsize}Y >{\hsize=0.501\hsize\linewidth=\hsize}Y >{\hsize=0.415\hsize\linewidth=\hsize}Y >{\hsize=1.399\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Métricas de código con umbral bloqueante. Fuente: (Bases Administrativas, arts. 19 y 24, pp. 14, 17); (Bases Técnicas Transversales, RT-04.11, p. 11); (Subdocumento 1, sección 1.3.1); (Formulario T-10, apartado DevSecOps); (Subdocumento 9, anexo 9.B); McCabe (1976, sección III).}{tab:sd9-4}{>{\hsize=1.685\hsize\linewidth=\hsize}Y >{\hsize=0.501\hsize\linewidth=\hsize}Y >{\hsize=0.415\hsize\linewidth=\hsize}Y >{\hsize=1.399\hsize\linewidth=\hsize}Y}
   {\cab{Métrica} & \cab{Umbral bloqueante} & \cab{Puerta} & \cab{Origen del umbral}}
 Cobertura de lógica de negocio & ≥ 70 \% & G2 & BA, Art. 24; RT-04.11 (BA, p. 17; BTT, p. 11) \\
 Cobertura unitaria global & ≥ 80 \% & G2 & Política de LafroX (SD1, 1.3.1) \\
@@ -114,7 +114,7 @@ Los umbrales contractuales y las reglas bloqueantes del SD4 y del T-10 no se rel
 
 El código puede cumplir sus umbrales y el proceso puede seguir dejando escapar defectos. Por eso el plan mide también el proceso. La Tabla~\ref{tab:sd9-5} fija las métricas con que el Comité de Calidad lo juzga cada mes.
 
-\begin{tablalafrox}{Métricas de proceso. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts. 17.3, 18.3 y 78.3, pp. 13, 40); Distribuidora Puelche S.A. (2026b, RT-04.12, p. 11); LafroX (2026m, SD4, sección 4.2.4.1.4); LafroX (2026f, T-17, secciones 2 y 4).}{tab:sd9-5}{>{\hsize=1.002\hsize\linewidth=\hsize}Y >{\hsize=1.964\hsize\linewidth=\hsize}Y >{\hsize=0.518\hsize\linewidth=\hsize}Y >{\hsize=0.516\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Métricas de proceso. Fuente: (Bases Administrativas, arts. 17.3, 18.3 y 78.3, pp. 13, 40); (Bases Técnicas Transversales, RT-04.12, p. 11); (Subdocumento 4, sección 4.2.4.1.4); (Formulario T-17, secciones 2 y 4).}{tab:sd9-5}{>{\hsize=1.002\hsize\linewidth=\hsize}Y >{\hsize=1.964\hsize\linewidth=\hsize}Y >{\hsize=0.518\hsize\linewidth=\hsize}Y >{\hsize=0.516\hsize\linewidth=\hsize}Y}
   {\cab{Métrica} & \cab{Fórmula} & \cab{Meta} & \cab{Origen}}
 Defectos escapados & Defectos críticos o altos hallados en un ambiente posterior al que debió detectarlos / total de críticos o altos & 0 en Producción durante la marcha blanca & BA, Art. 17.3 (BA, p. 13) \\
 Densidad de defectos & Defectos confirmados / casos ejecutados, por módulo & Un módulo sobre 1,5 veces la mediana del proyecto pasa a análisis de causa raíz & Regla de LafroX \\
@@ -130,7 +130,7 @@ Las cuatro métricas de entrega del RT-04.12 (frecuencia de despliegue, tiempo d
 
 \textbf{Costo de la calidad y subtotal de conformidad.} El PMBOK distingue el costo de conformidad, que se gasta para evitar fallas (prevención y evaluación), del costo de no conformidad, que se paga por las fallas (internas, si las encuentra el proyecto; externas, si las encuentra el cliente) (PMI, 2017, pp. 274 y 282–283). El plan lo calcula en horas-hombre, porque la Oferta Técnica no puede contener montos (BA, Art. 50.2, p. 29). La Tabla~\ref{tab:sd9-6} sintetiza el subtotal de conformidad del Anexo 9.C.1; el Anexo 9.C.2 estima separadamente el retrabajo interno y externo por evento y evita sumarlo dos veces a la línea base.
 
-\begin{tablalafrox}{Subtotal de conformidad en horas-hombre. Fuente: elaboración a partir de LafroX (2026q, Anexos 9, secciones 9.C.1 y 9.C.3); LafroX (2026d, T-14, paquetes indicados en 9.C.1); LafroX (2026e, T-15, estimación por paquete y rol).}{tab:sd9-6}{>{\hsize=0.77\hsize\linewidth=\hsize}Y >{\hsize=0.457\hsize\linewidth=\hsize}Y >{\hsize=0.488\hsize\linewidth=\hsize}Y >{\hsize=2.285\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Subtotal de conformidad en horas-hombre. Fuente: (Subdocumento 9, secciones 9.C.1 y 9.C.3); (Formulario T-14, paquetes indicados en 9.C.1); (Formulario T-15, estimación por paquete y rol).}{tab:sd9-6}{>{\hsize=0.77\hsize\linewidth=\hsize}Y >{\hsize=0.457\hsize\linewidth=\hsize}Y >{\hsize=0.488\hsize\linewidth=\hsize}Y >{\hsize=2.285\hsize\linewidth=\hsize}Y}
   {\cab{Categoría} & \cab{HH} & \cab{Proporción} & \cab{Paquetes principales}}
 Prevención & 4.224,00 & 35,2 \% & 2.6, 3.10.2 y 8.2.4 \\
 Evaluación & 7.792,00 & 64,8 \% & Banco, mapeo y piloto de frío; certificaciones, restauraciones y pruebas en Operación \\
@@ -147,13 +147,13 @@ Esta sección describe cómo se aplican los umbrales de 9.1. Las puertas y la re
 
 Una puerta de calidad es un punto del recorrido de un cambio donde un criterio objetivo decide si avanza. La Figura~\ref{fig:sd9-3} presenta las siete puertas sobre la cadena de entrega del SD4, desde el computador del desarrollador hasta la operación.
 
-\figuralafrox{0.951}{diagramas/Fig_9-3_Puertas_Calidad.pdf}{Puertas de calidad en la cadena de entrega. Fuente: elaboración a partir de LafroX (2026m, SD4, sección 4.2.4.1); LafroX (2026a, T-10, apartado DevSecOps); LafroX (2026q, Anexos 9, anexo 9.B); LafroX (2026f, T-17, sección 4.3).}{fig:sd9-3}
+\figuralafrox{0.951}{diagramas/Fig_9-3_Puertas_Calidad.pdf}{Puertas de calidad en la cadena de entrega. Fuente: (Subdocumento 4, sección 4.2.4.1); (Formulario T-10, apartado DevSecOps); (Subdocumento 9, anexo 9.B); (Formulario T-17, sección 4.3).}{fig:sd9-3}
 
 G5 se aplica en el momento en que cada etapa entra a Producción, al iniciar su marcha blanca (H6 y H11), porque desde ese día la solución opera con datos y pedidos reales de Puelche. Exige el H5 o el H10 aceptado, las pruebas aplicables del T-13 aprobadas, la reversión ensayada, la conciliación sin diferencias no explicadas y los usuarios de la ola capacitados (T-17, 4.3). Los hitos H7 y H12 no son una puerta técnica: son las actas de aceptación contractual del Formulario E-25. Cada una sigue al paso a producción, que habilita el acta de cierre de la marcha blanca firmada con las seis condiciones copulativas del Art. 17.3 (paquetes 4.2.1 y 4.3.1). G5 no adelanta ese paso; habilita el ambiente de Producción para que la marcha blanca opere con datos reales bajo control (BA, p. 13).
 
 Las puertas están ordenadas por costo: el control es más barato cuanto antes ocurre. G0 a G2 se ejecutan en minutos sobre cada cambio; G5 se ejecuta dos veces en el contrato y exige semanas de prueba. La Tabla~\ref{tab:sd9-7} resume qué bloquea cada puerta y quién puede levantarla; el Anexo 9.B detalla las reglas y herramientas.
 
-\begin{tablalafrox}{Bloqueo y autoridad por puerta. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b, RT-04.05, p. 10); LafroX (2026q, Anexos 9, anexo 9.B); LafroX (2026m, SD4, sección 4.2.4.1.4); LafroX (2026f, T-17, sección 4.3).}{tab:sd9-7}{>{\hsize=0.305\hsize\linewidth=\hsize}Y >{\hsize=0.724\hsize\linewidth=\hsize}Y >{\hsize=1.931\hsize\linewidth=\hsize}Y >{\hsize=1.04\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Bloqueo y autoridad por puerta. Fuente: (Bases Técnicas Transversales, RT-04.05, p. 10); (Subdocumento 9, anexo 9.B); (Subdocumento 4, sección 4.2.4.1.4); (Formulario T-17, sección 4.3).}{tab:sd9-7}{>{\hsize=0.305\hsize\linewidth=\hsize}Y >{\hsize=0.724\hsize\linewidth=\hsize}Y >{\hsize=1.931\hsize\linewidth=\hsize}Y >{\hsize=1.04\hsize\linewidth=\hsize}Y}
   {\cab{Puerta} & \cab{Momento} & \cab{Bloquea si} & \cab{Quién puede levantar el bloqueo}}
 G0–G1 & Compromiso y solicitud de fusión & Falta la aprobación de un par; hay un secreto o un error de formato & Nadie; se corrige \\
 G2 & Integración continua & Falla un umbral de la Tabla~\ref{tab:sd9-4}; hallazgo crítico o alto; contrato roto & Nadie \\
@@ -179,7 +179,7 @@ La estrategia sigue los tres niveles de proceso de ISO/IEC/IEEE 29119-2. En el n
 
 \textbf{Niveles, tipos y ambientes.} La Figura~\ref{fig:sd9-4} ubica cada nivel y tipo de prueba en el ambiente donde se ejecuta.
 
-\figuralafrox{0.969}{diagramas/Fig_9-4_Niveles_Ambientes.pdf}{Niveles y tipos de prueba por ambiente. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b, secciones 4.1 y 20.1, pp. 10, 34--35); Distribuidora Puelche S.A. (2026c, cap. 15); LafroX (2026c, T-13, secciones 3, 4 y 7).}{fig:sd9-4}
+\figuralafrox{0.969}{diagramas/Fig_9-4_Niveles_Ambientes.pdf}{Niveles y tipos de prueba por ambiente. Fuente: (Bases Técnicas Transversales, secciones 4.1 y 20.1, pp. 10, 34--35); (Bases Técnicas del caso, cap. 15, pp. 26--27); (Formulario T-13, secciones 3, 4 y 7).}{fig:sd9-4}
 
 La figura sigue la regla de los ambientes del SD4: el software se prueba en un ambiente cada vez más parecido a producción y lo que se promueve es la misma imagen. Desarrollo concentra las pruebas rápidas y aisladas; QA, las de integración y regresión con datos controlados; Preproducción, equivalente a producción en topología y configuración (RT-04.02), las que dependen de la escala y de las fallas. Las pruebas propias del caso, como el turno sin señal y la cámara de congelado, no caben en un ambiente de nube y se ejecutan en terreno con dispositivos reales.
 
@@ -187,7 +187,7 @@ Las campañas de certificación con estados incompatibles no pueden compartir la
 
 \textbf{Pruebas aplicables por etapa y antes de cada entrada a Producción.} La BTT, sección 20.1, fija diez tipos de prueba con su momento y su criterio de salida. La Tabla~\ref{tab:sd9-8} presenta los diez tipos y dos pruebas adicionales, con alcance en ambas etapas; el T-13, secciones 6 y 7, los especifica con sus criterios de entrada y salida (BTT, pp. 34--35).
 
-\begin{tablalafrox}{Pruebas aplicables por etapa y antes de cada entrada a Producción. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 24, p. 17); Distribuidora Puelche S.A. (2026b, sección 20.1, pp. 34--35); Distribuidora Puelche S.A. (2026c, cap. 15); LafroX (2026c, T-13, secciones 3, 6 y 7).}{tab:sd9-8}{>{\hsize=0.66\hsize\linewidth=\hsize}Y >{\hsize=0.662\hsize\linewidth=\hsize}Y >{\hsize=1.346\hsize\linewidth=\hsize}Y >{\hsize=1.332\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Pruebas aplicables por etapa y antes de cada entrada a Producción. Fuente: (Bases Administrativas, art. 24, p. 17); (Bases Técnicas Transversales, sección 20.1, pp. 34--35); (Bases Técnicas del caso, cap. 15, pp. 26--27); (Formulario T-13, secciones 3, 6 y 7).}{tab:sd9-8}{>{\hsize=0.66\hsize\linewidth=\hsize}Y >{\hsize=0.662\hsize\linewidth=\hsize}Y >{\hsize=1.346\hsize\linewidth=\hsize}Y >{\hsize=1.332\hsize\linewidth=\hsize}Y}
   {\cab{Prueba} & \cab{Ambiente} & \cab{Carga o escenario} & \cab{Criterio de salida}}
 Unitarias y de componente & Desarrollo/CI & Lógica de negocio y componentes, ambas etapas & Cobertura ≥ 70 \% negocio y ≥ 80 \% global; 0 pruebas fallidas \\
 Integración & QA & Interfaces de E1; en E2, las 15 y regresión E1 & 0 flujos con error \\
@@ -209,7 +209,7 @@ Respecto de la BTT, se suman dos pruebas, adicionales a los diez tipos: el perfi
 
 \textbf{Carga derivada del dimensionamiento.} La carga de prueba no se elige: se deriva del SD4, sección 4.2.6, aplicando el factor 1,5 que exigen el Art. 24 y el RT-09.06. La Tabla~\ref{tab:sd9-9} muestra la derivación (BA, p. 17; BTT, p. 21).
 
-\begin{tablalafrox}{Derivación de la carga de prueba. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 24, p. 17); Distribuidora Puelche S.A. (2026b, RT-09.03 y RT-09.06, p. 21); LafroX (2026m, SD4, secciones 4.2.6.3 y 4.2.6.4); LafroX (2026l, Anexos 4, secciones 4-W.2 y 4-W.3); LafroX (2026c, T-13, sección 7.1).}{tab:sd9-9}{>{\hsize=1.43\hsize\linewidth=\hsize}Y >{\hsize=0.405\hsize\linewidth=\hsize}Y >{\hsize=1.165\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Derivación de la carga de prueba. Fuente: (Bases Administrativas, art. 24, p. 17); (Bases Técnicas Transversales, RT-09.03 y RT-09.06, p. 21); (Subdocumento 4, secciones 4.2.6.3 y 4.2.6.4); (Subdocumento 4, secciones 4-W.2 y 4-W.3); (Formulario T-13, sección 7.1).}{tab:sd9-9}{>{\hsize=1.43\hsize\linewidth=\hsize}Y >{\hsize=0.405\hsize\linewidth=\hsize}Y >{\hsize=1.165\hsize\linewidth=\hsize}Y}
   {\cab{Magnitud} & \cab{Peak declarado} & \cab{Carga de prueba}}
 TPS máximo de septiembre & 14,66 TPS & 1,5 × 14,66 = 21,99 TPS \\
 TPS máximo de la ventana de 05:30 a 07:00 & 6,94 TPS & 1,5 × 6,94 = 10,41 TPS, durante 90 minutos \\
@@ -230,7 +230,7 @@ Ningún ambiente no productivo contiene datos productivos reales sin anonimizaci
 
 La Figura~\ref{fig:sd9-5} muestra de dónde vienen los datos de cada ambiente.
 
-\figuralafrox{0.951}{diagramas/Fig_9-5_Datos_Prueba.pdf}{Origen y control de los datos de prueba. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, sección 14.1); LafroX (2026n, SD5, sección 5.3); LafroX (2026c, T-13, secciones 4 y 5).}{fig:sd9-5}
+\figuralafrox{0.951}{diagramas/Fig_9-5_Datos_Prueba.pdf}{Origen y control de los datos de prueba. Fuente: (Bases Técnicas del caso, sección 14.1, pp. 24--25); (Subdocumento 5, sección 5.3); (Formulario T-13, secciones 4 y 5).}{fig:sd9-5}
 
 Los ambientes de prueba se alimentan de dos fuentes. Los datos sintéticos se generan desde la volumetría del Caso, sección 14.1, y respetan las reglas del negocio: lotes con vencimiento, productos refrigerados con su rango térmico y clientes con crédito. Así, la prueba de carga opera sobre un volumen comparable al del peak. Los datos históricos se usan solo en los ensayos de migración, después de anonimizarlos y de verificar con Amazon Macie que no queden datos personales. QA restituye sus juegos a un estado conocido antes de cada ciclo, para que un fallo sea reproducible. Esa misma propiedad usa la innovación INN-02 para convertir un incidente de terreno en una prueba de regresión permanente (SD13, sección 13.2). El T-13, sección 5, especifica cada juego.
 
@@ -238,13 +238,13 @@ Los ambientes de prueba se alimentan de dos fuentes. Los datos sintéticos se ge
 
 La verificación comprueba que cada producto cumpla su especificación; la validación comprueba que la solución resuelva el problema de Puelche. El PMBOK separa ambos momentos: controlar la calidad lo hace el equipo y produce entregables verificados; validar el alcance lo hace el cliente y produce entregables aceptados (PMI, 2017, p. 305). La Figura~\ref{fig:sd9-6} empareja cada artefacto de diseño con la prueba que lo verifica o lo valida y con el hito que lo cierra.
 
-\figuralafrox{0.969}{diagramas/Fig_9-6_Modelo_V.pdf}{Verificación y validación por nivel y por hito. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, Formulario E-25, pp. 74--75); PMI (2017, sección 8.3.3.2); LafroX (2026c, T-13, secciones 3 y 6); LafroX (2026f, T-17, secciones 4 y 5).}{fig:sd9-6}
+\figuralafrox{0.969}{diagramas/Fig_9-6_Modelo_V.pdf}{Verificación y validación por nivel y por hito. Fuente: (Bases Administrativas, Formulario E-25, pp. 74--75); PMI (2017, sección 8.3.3.2); (Formulario T-13, secciones 3 y 6); (Formulario T-17, secciones 4 y 5).}{fig:sd9-6}
 
 La certificación técnica de cada etapa (H5 y H10) no basta para aceptar los resultados del negocio. Los dieciséis resultados del Caso, capítulo 18, tienen aceptación diferenciada según el T-17, sección 5, y el Anexo 9.D: doce se aceptan definitivamente en H7 y dos en H12. R18-04 (OTIF) se acepta por tramos en los meses 15, 19 y 32; R18-12 (envases) tiene aceptación provisional en H7 y final tras doce meses de operación medida. Las actas H7/H12 no anticipan estas dos aceptaciones pendientes. La aceptación no libera de responsabilidad por defectos posteriores (BA, Art. 18.4, p. 13).
 
 \textbf{Trazabilidad.} La cadena que exige el Caso, sección 17.1, va del origen al criterio de aceptación: origen, requisito, componente, paquete de la EDT, prueba y criterio. El RT-04.04 le agrega el cambio de código y el despliegue. La Figura~\ref{fig:sd9-7} presenta la cadena con un requisito crítico como ejemplo: la lista de clientes afectados por un lote en menos de dos horas.
 
-\figuralafrox{0.966}{diagramas/Fig_9-7_Cadena_Trazabilidad.pdf}{Cadena de trazabilidad de extremo a extremo. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b, RT-04.04, p. 10); Distribuidora Puelche S.A. (2026c, sección 17.1 y cap. 18); LafroX (2026q, Anexos 9, anexo 9.D); LafroX (2026c, T-13, sección 7.4); LafroX (2026f, T-17, sección 5).}{fig:sd9-7}
+\figuralafrox{0.966}{diagramas/Fig_9-7_Cadena_Trazabilidad.pdf}{Cadena de trazabilidad de extremo a extremo. Fuente: (Bases Técnicas Transversales, RT-04.04, p. 10); (Bases Técnicas del caso, sección 17.1 y cap. 18, pp. 31--35); (Subdocumento 9, anexo 9.D); (Formulario T-13, sección 7.4); (Formulario T-17, sección 5).}{fig:sd9-7}
 
 Ningún eslabón de la cadena es nuevo: cada uno se apoya en un identificador que ya existe en la propuesta. La matriz se lee en dos sentidos: hacia atrás explica por qué existe cada componente; hacia adelante, dónde quedó implementado y probado cada requisito. Cada caso de prueba lleva el identificador de su requisito, cada solicitud de fusión cita el requisito o la incidencia que atiende, y cada despliegue registra el digest de su imagen. La matriz prevista individual se publica en T-13, sección 8.2: 270 RF/RNF, 374 RT y nueve filas absorbidas o alias identificadas aparte, con criterio de origen, casos previstos, etapa y paquete del T-12. Esta sección es su índice de trazabilidad. El generador del SD9 conserva los identificadores y la versión del catálogo SD3/T-12; el historial de integración agregará después el cambio de código, digest, resultado y acta. No se presenta la matriz prevista como evidencia de pruebas ya ejecutadas. La meta es que el 100 \% de los requisitos ofertados tenga al menos una prueba aprobada antes de su hito. Los 22 RT en estado «No cumple» quedan en la matriz sin prueba, para que la Contraparte Técnica vea la brecha en lugar de un vacío. El Anexo 9.D muestra el tramo final de la cadena para los dieciséis resultados del caso.
 
@@ -260,7 +260,7 @@ Controlar la calidad es comparar el resultado con su criterio y actuar cuando no
 
 \textbf{Ciclo de mejora.} Las acciones siguen el ciclo planificar-hacer-verificar-actuar (PMI, 2017, p. 296). La Figura~\ref{fig:sd9-8} muestra el ciclo y sus entradas.
 
-\figuralafrox{0.969}{diagramas/Fig_9-8_Ciclo_Mejora.pdf}{Ciclo de mejora de la calidad. Fuente: elaboración a partir de PMI (2017, sección 8.2.2.8); LafroX (2026g, T-9, procedimiento de control de cambios); LafroX (2026c, T-13, secciones 10 y 12).}{fig:sd9-8}
+\figuralafrox{0.969}{diagramas/Fig_9-8_Ciclo_Mejora.pdf}{Ciclo de mejora de la calidad. Fuente: elaboración a partir de PMI (2017, sección 8.2.2.8); (Formulario T-9, procedimiento de control de cambios); (Formulario T-13, secciones 10 y 12).}{fig:sd9-8}
 
 El ciclo tiene dos salidas que el PMBOK exige y que suelen faltar en un plan de calidad. La primera es el registro de lecciones aprendidas, que se alimenta de cada acción cerrada y de una retrospectiva al término de cada certificación (H5 y H10) y de cada marcha blanca (H7 y H12); cada retrospectiva revisa qué funcionó, qué se debe cambiar y qué se lleva a la Etapa 2 o a la Operación (PMI, 2017, p. 305). La segunda es la solicitud de cambio: si una acción de mejora toca la línea base del alcance, del cronograma o de un umbral, pasa por el control integrado de cambios del Formulario T-9 (PMI, 2017, p. 296). Una acción se cierra solo cuando el comité siguiente comprueba su eficacia con el mismo criterio que detectó la desviación.
 
@@ -274,7 +274,7 @@ Esta sección muestra dónde quedan las actividades de calidad en la EDT del For
 
 La EDT no tiene una rama de calidad aislada. Las actividades de calidad están en las cuentas donde se produce lo que verifican, y el diccionario de cada paquete registra su criterio de aceptación, como indica el PMBOK para los requisitos de calidad (PMI, 2017, p. 287). La Tabla~\ref{tab:sd9-10} agrupa esos paquetes.
 
-\begin{tablalafrox}{Paquetes de calidad de la EDT. Fuente: elaboración a partir de LafroX (2026d, T-14, cuentas y paquetes indicados); LafroX (2026e, T-15, secciones 5.2 y 6.1); LafroX (2026q, Anexos 9, sección 9.C.1).}{tab:sd9-10}{>{\hsize=2.113\hsize\linewidth=\hsize}Y >{\hsize=0.925\hsize\linewidth=\hsize}Y >{\hsize=0.481\hsize\linewidth=\hsize}Y >{\hsize=0.481\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Paquetes de calidad de la EDT. Fuente: (Formulario T-14, cuentas y paquetes indicados); (Formulario T-15, secciones 5.2 y 6.1); (Subdocumento 9, anexos, sección 9.C.1).}{tab:sd9-10}{>{\hsize=2.113\hsize\linewidth=\hsize}Y >{\hsize=0.925\hsize\linewidth=\hsize}Y >{\hsize=0.481\hsize\linewidth=\hsize}Y >{\hsize=0.481\hsize\linewidth=\hsize}Y}
   {\cab{Cuenta} & \cab{Paquetes} & \cab{Meses} & \cab{HH}}
 1.2 y 1.5: trazabilidad, plan y puertas & 1.2.4; 1.5.1; 1.5.2 & 2; 6 a 20 & 240 \\
 2.6: usabilidad con personas usuarias & 2.6.1 a 2.6.3 & 2 a 4 & 720 \\
@@ -294,11 +294,11 @@ La tabla suma las mismas 12.016 HH de conformidad del costo de la calidad (9.1.6
 
 La Figura~\ref{fig:sd9-9} presenta la vista general de los 56 meses del contrato: las fases de cada etapa, las certificaciones, los doce hitos del Formulario E-25 y cada prueba periódica de la Operación en el mes en que se ejecuta, sobre las bandas de congelamiento del Caso.
 
-\figuralafrox{0.987}{diagramas/Fig_9-9_Calidad_Cronograma.pdf}{Vista general de las actividades de calidad en el cronograma del contrato. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, Formulario E-25, pp. 74--75); Distribuidora Puelche S.A. (2026c, RT-10.05); LafroX (2026d, T-14, cuentas 3, 4 y 8); LafroX (2026e, T-15, sección 6.1); LafroX (2026c, T-13, sección 9); LafroX (2026f, T-17, sección 4).}{fig:sd9-9}
+\figuralafrox{0.987}{diagramas/Fig_9-9_Calidad_Cronograma.pdf}{Vista general de las actividades de calidad en el cronograma del contrato. Fuente: (Bases Administrativas, Formulario E-25, pp. 74--75); (Bases Técnicas del caso, cap. 15, RT-10.05, p. 27); (Formulario T-14, cuentas 3, 4 y 8); (Formulario T-15, sección 6.1); (Formulario T-13, sección 9); (Formulario T-17, sección 4).}{fig:sd9-9}
 
 La vista general muestra dos concentraciones de calidad. La primera son las pruebas de certificación de los meses 9 y 10 y 16 y 17, con cierre documental E1 en el mes 11, que preceden a cada marcha blanca. La segunda son las pruebas periódicas de la Operación: siete recuperaciones, seis resiliencias y tres intrusiones, con separación máxima de seis meses para recuperación y resiliencia y de doce meses para intrusión. Solo dos de esas pruebas caen en una banda de congelamiento, las resiliencias de los meses 32 y 44, y por eso se ejecutan en Preproducción. La restauración de respaldos corre todos los meses desde el 13, cuando la marcha blanca empieza a operar con datos reales. Las Tablas~\ref{tab:sd9-mes1} y~\ref{tab:sd9-mes2} detallan mes a mes la implementación, meses 1 a 21. La fila que encabeza cada fase indica las actividades que corren durante toda la fase; cada mes muestra lo que empieza o se entrega en él, con su paquete de la EDT, y el hito que se acepta. Los meses 8, 11 y 20 están congelados por el Caso.
 
-\begin{tablalafrox}{Actividades de calidad mes a mes en la Etapa 1, meses 1 a 12. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, Formulario E-25, pp. 74--75); Distribuidora Puelche S.A. (2026c, RT-10.05); LafroX (2026d, T-14, cuentas 1 a 4); LafroX (2026e, T-15, sección 6.1); LafroX (2026c, T-13, sección 9.1); LafroX (2026f, T-17, sección 4).}{tab:sd9-mes1}{>{\hsize=0.66\hsize\linewidth=\hsize}Y >{\hsize=2.04\hsize\linewidth=\hsize}Y >{\hsize=0.3\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Actividades de calidad mes a mes en la Etapa 1, meses 1 a 12. Fuente: (Bases Administrativas, Formulario E-25, pp. 74--75); (Bases Técnicas del caso, cap. 15, RT-10.05, p. 27); (Formulario T-14, cuentas 1 a 4); (Formulario T-15, sección 6.1); (Formulario T-13, sección 9.1); (Formulario T-17, sección 4).}{tab:sd9-mes1}{>{\hsize=0.66\hsize\linewidth=\hsize}Y >{\hsize=2.04\hsize\linewidth=\hsize}Y >{\hsize=0.3\hsize\linewidth=\hsize}Y}
   {\cab{Mes} & \cab{Actividades de calidad que empiezan o se entregan (paquete EDT)} & \cab{Hito}}
 \textbf{Fase} & Etapa 1 · desarrollo, meses 1 a 12. Continuas: INN-02 (3.10.2) desde el mes 2; puertas automáticas (1.5.2) desde el mes 6; evaluadores subcontratados en los meses 9 a 12 &  \\
 1 · feb 2027 & — &  \\
@@ -315,7 +315,7 @@ La vista general muestra dos concentraciones de calidad. La primera son las prue
 12 · ene 2028 & Acta de conciliación y corte (3.7.5) & \textbf{H5} \\
 \end{tablalafrox}
 
-\begin{tablalafrox}{Actividades de calidad mes a mes en las marchas blancas, la Etapa 2 y la entrada a la Operación, meses 13 a 21. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, Formulario E-25, pp. 74--75); Distribuidora Puelche S.A. (2026c, RT-10.05); LafroX (2026d, T-14, cuentas 3, 4 y 8); LafroX (2026e, T-15, sección 6.1); LafroX (2026c, T-13, secciones 9.1 y 9.2); LafroX (2026f, T-17, sección 4).}{tab:sd9-mes2}{>{\hsize=0.66\hsize\linewidth=\hsize}Y >{\hsize=2.04\hsize\linewidth=\hsize}Y >{\hsize=0.3\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Actividades de calidad mes a mes en las marchas blancas, la Etapa 2 y la entrada a la Operación, meses 13 a 21. Fuente: (Bases Administrativas, Formulario E-25, pp. 74--75); (Bases Técnicas del caso, cap. 15, RT-10.05, p. 27); (Formulario T-14, cuentas 3, 4 y 8); (Formulario T-15, sección 6.1); (Formulario T-13, secciones 9.1 y 9.2); (Formulario T-17, sección 4).}{tab:sd9-mes2}{>{\hsize=0.66\hsize\linewidth=\hsize}Y >{\hsize=2.04\hsize\linewidth=\hsize}Y >{\hsize=0.3\hsize\linewidth=\hsize}Y}
   {\cab{Mes} & \cab{Actividades de calidad que empiezan o se entregan (paquete EDT)} & \cab{Hito}}
 \textbf{Fase} & Etapa 1 · marcha blanca y Etapa 2 · desarrollo, meses 13 a 15. Continuas: indicadores diarios y restauración mensual de respaldos (4.2.1); INN-02 hasta el mes 15 &  \\
 13 · feb 2028 & Puerta G5: entrada de la Etapa 1 a Producción; inicio de la marcha blanca (4.2.1) & \textbf{H6} \\
@@ -338,7 +338,7 @@ El cierre documental de una certificación no equivale a intervenir sistemas en 
 
 \textbf{Hitos y holgura.} Cada hito se acepta con el protocolo del T-17: el entregable se presenta con su evidencia y su trazabilidad (BA, Art. 18.2, p. 13), el CLIENTE tiene 10 días hábiles para revisarlo y LafroX tiene otros 10 para subsanar observaciones (BA, Art. 18.3, p. 13). La Tabla~\ref{tab:sd9-11} compara la reserva de cada hito con la duración de una subsanación.
 
-\begin{tablalafrox}{Reserva y holgura de los hitos ante una subsanación. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 18.3, p. 13); LafroX (2026f, T-17, secciones 2.3 y 4.1); LafroX (2026e, T-15, secciones 5.2 y 5.5).}{tab:sd9-11}{>{\hsize=0.451\hsize\linewidth=\hsize}Y >{\hsize=2.094\hsize\linewidth=\hsize}Y >{\hsize=0.451\hsize\linewidth=\hsize}Y >{\hsize=1.004\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Reserva y holgura de los hitos ante una subsanación. Fuente: (Bases Administrativas, art. 18.3, p. 13); (Formulario T-17, secciones 2.3 y 4.1); (Formulario T-15, secciones 5.2 y 5.5).}{tab:sd9-11}{>{\hsize=0.451\hsize\linewidth=\hsize}Y >{\hsize=2.094\hsize\linewidth=\hsize}Y >{\hsize=0.451\hsize\linewidth=\hsize}Y >{\hsize=1.004\hsize\linewidth=\hsize}Y}
   {\cab{Hito (mes)} & \cab{Entregable que lo habilita} & \cab{Holgura (días hábiles)} & \cab{Margen tras 10 días de subsanación (días hábiles)}}
 H1 (2) & Matriz de trazabilidad y plan de calidad & 5 & 5 \ensuremath{-} 10 = -5 \\
 H2 (4) & Arquitectura, seguridad y datos & 11 & 11 \ensuremath{-} 10 = 1 \\
@@ -360,7 +360,7 @@ La holgura se mide después de la revisión formal del CLIENTE y no constituye p
 
 Durante los 36 meses de Operación, las Bases exigen pruebas con frecuencia mínima. Toda prueba que intervenga Producción o el sitio de recuperación se programa fuera de los congelamientos de septiembre y diciembre y de los tres primeros días hábiles de cada mes (Caso, RT-10.05). La Tabla~\ref{tab:sd9-12} resume el calendario; el T-13, sección 9.3, lo detalla.
 
-\begin{tablalafrox}{Pruebas periódicas de la Operación. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b, RT-07.07, RT-07.12, RT-10.07 y RT-11.20, pp. 17--18, 22, 24); LafroX (2026d, T-14, cuentas 4 y 8); LafroX (2026c, T-13, sección 9.3).}{tab:sd9-12}{>{\hsize=1.302\hsize\linewidth=\hsize}Y >{\hsize=1.069\hsize\linewidth=\hsize}Y >{\hsize=1.048\hsize\linewidth=\hsize}Y >{\hsize=0.581\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Pruebas periódicas de la Operación. Fuente: (Bases Técnicas Transversales, RT-07.07, RT-07.12, RT-10.07 y RT-11.20, pp. 17--18, 22, 24); (Formulario T-14, cuentas 4 y 8); (Formulario T-13, sección 9.3).}{tab:sd9-12}{>{\hsize=1.302\hsize\linewidth=\hsize}Y >{\hsize=1.069\hsize\linewidth=\hsize}Y >{\hsize=1.048\hsize\linewidth=\hsize}Y >{\hsize=0.581\hsize\linewidth=\hsize}Y}
   {\cab{Prueba} & \cab{Exigencia} & \cab{Meses} & \cab{Paquete}}
 Recuperación con conmutación real & Dos veces al año (RT-07.07) (BTT, p. 17) & 21, 27, 33, 39, 45, 51 y 54 & 8.1.3 \\
 Resiliencia por inyección de fallas & Una vez por semestre (RT-10.07) (BTT, p. 22) & 26, 32, 38, 44, 50 y 55 & 8.2.2 \\
@@ -394,23 +394,6 @@ Las fuentes citadas en este subdocumento se listan en formato APA 7.ª edición.
   \item OWASP Foundation. (2021). \emph{OWASP Top 10:2021}. OWASP Foundation.
   \item Project Management Institute. (2017). \emph{Guía de los fundamentos para la dirección de proyectos (Guía del PMBOK)} (6.ª ed.). Project Management Institute.
   \item World Wide Web Consortium. (2023). \emph{Web Content Accessibility Guidelines (WCAG) 2.2}. W3C Recommendation.
-  \item LafroX. (2026a). \emph{Formulario T-10: Metodología de desarrollo de software}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026b). \emph{Formulario T-12: Matriz de trazabilidad}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026c). \emph{Formulario T-13: Plan de pruebas y validación}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026d). \emph{Formulario T-14: Plan de trabajo, EDT y carta Gantt}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026e). \emph{Formulario T-15: Nivelación de recursos}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026f). \emph{Formulario T-17: Protocolo de aceptación}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026g). \emph{Formulario T-9: Plan de gestión de cambios}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026h). \emph{Subdocumento 13: Innovaciones}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026i). \emph{Subdocumento 1: Presentación de la empresa}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026j). \emph{Subdocumento 3: Anexos}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026k). \emph{Subdocumento 3: Especificación de requerimientos}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026l). \emph{Subdocumento 4: Anexos}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026m). \emph{Subdocumento 4: Arquitectura de la solución}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026n). \emph{Subdocumento 5: Modelo y gestión de datos}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026o). \emph{Subdocumento 6: Metodología de desarrollo}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026p). \emph{Subdocumento 7: Plan de trabajo}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026q). \emph{Subdocumento 9: Anexos 9.A a 9.D}. Propuesta técnica, Licitación TFEP-01/2026.
 \end{itemize}
 
 \section*{Declaración de uso de IA}
