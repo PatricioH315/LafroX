@@ -1,0 +1,25 @@
+\documentclass[carta,firma,final]{lafrox}
+\datoslafrox{
+  documento = {Formulario T-14},
+  subtitulo = {Plan de Trabajo, EDT y Carta Gantt},
+  alcance = {Plan de Trabajo, EDT y Carta Gantt},
+  formulario = {Formulario T-14},
+  fecha = {12 de octubre de 2026},
+  version = {1.0},
+  nomenclatura = {SOBRE2\textunderscore{}LAFROX\textunderscore{}OFERTA\textunderscore{}TECNICA\textunderscore{}20261012.ZIP},
+}
+\input{sd7-firma.tex}
+
+% Formato de portada común, basado en el Subdocumento 1.
+\configurarportadalafrox{Formulario T-14 \textemdash{} Plan de Trabajo, EDT y Carta Gantt}{Subdocumento 07}{Formulario T-14}{LAFROX-Formulario-T-14.pdf}{logo/FIRMA_Alex_Aravena_transparente.png}
+\begin{document}
+\portadalafrox
+\indicelafrox
+\listatablaslafrox
+\listafiguraslafrox
+% Numeración propia del formulario desde 1, sin prefijo de capítulo (canon C15).
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\thefigure}{\arabic{figure}}
+\subdocumento{formulario-t14}
+\end{document}

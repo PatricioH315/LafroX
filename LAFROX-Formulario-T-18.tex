@@ -11,12 +11,15 @@
 \input{sd7-firma.tex}
 
 % Formato de portada común, basado en el Subdocumento 1.
-\configurarportadalafrox{Formulario T-18 \textemdash{} Implantación de la Solución}{Subdocumento 07}{Formulario T-18}{LafroX-Formulario-T-18.pdf}{logo/FIRMA_Alex_Aravena_transparente.png}
+\configurarportadalafrox{Formulario T-18 \textemdash{} Implantación de la Solución}{Subdocumento 07}{Formulario T-18}{LAFROX-Formulario-T-18.pdf}{logo/FIRMA_Alex_Aravena_transparente.png}
 \begin{document}
 \portadalafrox
 \indicelafrox
 \listatablaslafrox
 \listafiguraslafrox
-\setcounter{chapter}{6} % Para que el Subdocumento 7 o posteriores tengan el numero correcto
+% Numeración propia del formulario desde 1, sin prefijo de capítulo (canon C15).
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\thefigure}{\arabic{figure}}
 \subdocumento{formulario-t18}
 \end{document}
