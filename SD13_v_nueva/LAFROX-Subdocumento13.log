@@ -1,17 +1,21 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  27 OCT 2026 00:40
- system commands enabled.
-**LAFROX-Subdocumento13.tex
-(./LAFROX-Subdocumento13.tex
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.21)  27 OCT 2026 06:46
+ restricted system commands enabled.
+ file:line:error style messages enabled.
+**c:/Users/maxim/Documents/Universidad/2026/Propuesta_tecnica_economica/LafroX/
+SD13_v_nueva/LAFROX-Subdocumento13
+
+(c:/Users/maxim/Documents/Universidad/2026/Propuesta_tecnica_economica/LafroX/S
+D13_v_nueva/LAFROX-Subdocumento13.tex
 LaTeX2e <2026-06-01>
-L3 programming layer <2026-07-20>
+L3 programming layer <2026-08-10>
 Lua module: luaotfload 2024-12-03 v3.29 Lua based OpenType font support
 Lua module: lualibs 2023-07-13 v2.76 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2023-07-13 v2.76 ConTeXt Lua libraries -- extended 
 collection.
-luaotfload | conf : Root cache directory is "C:/Users/henri/AppData/Local/MiKTeX
+luaotfload | conf : Root cache directory is "C:/Users/maxim/AppData/Local/MiKTeX
 /luatex-cache/generic/names".
 luaotfload | init : Loading fontloader "fontloader-2023-12-28.lua" from kpse-res
-olved path "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/f
+olved path "C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/f
 ontloader-2023-12-28.lua".
 Lua-only attribute luaotfload@noligature = 1
 luaotfload | init : Context OpenType loader version 3.134
@@ -20,7 +24,7 @@ Inserting `luaotfload.node_processor' in `hpack_filter'.
 Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
 Inserting `luaotfload.define_font' in `define_font'.
 Lua-only attribute luaotfload_color_attribute = 2
-luaotfload | conf : Root cache directory is "C:/Users/henri/AppData/Local/MiKTeX
+luaotfload | conf : Root cache directory is "C:/Users/maxim/AppData/Local/MiKTeX
 /luatex-cache/generic/names".
 Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
 Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
@@ -42,14 +46,14 @@ Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
 Inserting `tracingstacklevels' in `input_level_string'. (./lafrox.cls
 Document Class: lafrox 2026/09/17 v2.2 Clase corporativa LafroX, tema minimalis
 ta
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/base/report.cls
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/base/report.cls
 Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/base/size11.clo
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/base/size11.clo
 File: size11.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
-luaotfload | db : Font names database loaded from C:/Users/henri/AppData/Local/M
+luaotfload | db : Font names database loaded from C:/Users/maxim/AppData/Local/M
 iKTeX/luatex-cache/generic/names/luaotfload-names.luc.gz)
 \c@part=\count274
 \c@chapter=\count275
@@ -64,14 +68,14 @@ iKTeX/luatex-cache/generic/names/luaotfload-names.luc.gz)
 \belowcaptionskip=\skip50
 \bibindent=\dimen149
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty
 Package: geometry 2026/03/07 v6.0 Page Geometry
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty
 Package: keyval 2026-05-17 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
 \Gm@cnth=\count283
@@ -87,18 +91,18 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutvoffset=\dimen157
 \Gm@dimlist=\toks18
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg)) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg)) (C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/color.cfg
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: luatex.def on input line 274.
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics-def/luatex.def
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/graphics-def/luatex.def
 File: luatex.def 2025/09/29 v1.2f Graphics/color driver for luatex
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics/mathcolor.ltx)
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
@@ -108,9 +112,9 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
-) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/colortbl/colortbl.sty
+) (C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2026/05/01 v1.0l Color table columns (DPC)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty
 Package: array 2026/02/24 v2.7b Tabular extension package (FMi)
 \col@sep=\dimen158
 \ar@mcellbox=\box53
@@ -123,45 +127,32 @@ Package: array 2026/02/24 v2.7b Tabular extension package (FMi)
 new hooks used!!
 \minrowclearance=\skip53
 \rownum=\count286
-) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics/dvipsnam.def
+) (C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/graphics/dvipsnam.def
 File: dvipsnam.def 2026-05-17 v3.0m Driver-dependent file (DPC,SPQR)
-) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.sty
-
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/xparse/xpars
-e.sty
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/l3kernel/expl3.sty
-Package: expl3 2026-07-20 L3 programming layer (loader) 
-
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-lua
-tex.def
-File: l3backend-luatex.def 2026-07-20 L3 backend support: PDF output (LuaTeX)
-\l__color_backend_stack_int=\count287
-Inserting `l3color' in `luaotfload.parse_color'.))
-Package: xparse 2025-10-09 L3 Experimental document command parser
-)
-Package: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
-Lua module: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec-luate
+) (C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.sty
+Package: fontspec 2026/08/11 v2.9h Font selection for XeLaTeX and LuaLaTeX
+Lua module: fontspec 2026/08/11 v2.9h Font selection for XeLaTeX and LuaLaTeX
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec-luate
 x.sty
-Package: fontspec-luatex 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaT
+Package: fontspec-luatex 2026/08/11 v2.9h Font selection for XeLaTeX and LuaLaT
 eX
-\l__fontspec_script_int=\count288
-\l__fontspec_language_int=\count289
-\l__fontspec_strnum_int=\count290
-\l__fontspec_tmp_int=\count291
-\l__fontspec_tmpa_int=\count292
-\l__fontspec_tmpb_int=\count293
-\l__fontspec_tmpc_int=\count294
-\l__fontspec_em_int=\count295
-\l__fontspec_emdef_int=\count296
-\l__fontspec_strong_int=\count297
-\l__fontspec_strongdef_int=\count298
+\l__fontspec_script_int=\count287
+\l__fontspec_language_int=\count288
+\l__fontspec_strnum_int=\count289
+\l__fontspec_tmp_int=\count290
+\l__fontspec_tmpa_int=\count291
+\l__fontspec_tmpb_int=\count292
+\l__fontspec_tmpc_int=\count293
+\l__fontspec_em_int=\count294
+\l__fontspec_emdef_int=\count295
+\l__fontspec_strong_int=\count296
+\l__fontspec_strongdef_int=\count297
 \l__fontspec_tmpa_dim=\dimen160
 \l__fontspec_tmpb_dim=\dimen161
 \l__fontspec_tmpc_dim=\dimen162
- (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/base/fontenc.sty
+ (C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/base/fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
-) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.cfg
+) (C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.cfg
 )))
 
 Package fontspec Info: 
@@ -261,26 +252,26 @@ guage=dflt;+smcp;"
 (fontspec)             <->"[SourceSans3-SemiboldIt.otf]:mode=node;script=latn;l
 anguage=dflt;"
 
- (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/plex/plex-mono.sty
+ (C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/plex/plex-mono.sty
 Package: plex-mono 2025/12/04 (Bob Tennent) Style file for IBMPlexMono fonts
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifxetex.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifxetex.sty
 Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifluatex.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifluatex.sty
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkeyval.tex
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkvutils.tex
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkeyval.tex
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks20
 \XKV@tempa@toks=\toks21
 )
-\XKV@depth=\count299
+\XKV@depth=\count298
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/base/textcomp.sty
+)) (C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/base/textcomp.sty
 Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
 )
 
@@ -375,23 +366,35 @@ tn;language=dflt;+tlig;"
 t=latn;language=dflt;+tlig;"
 
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
 th.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/l3kernel/expl3.sty
+Package: expl3 2026-08-10 L3 programming layer (loader) 
+
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/l3kernel/l3backend-luat
+ex.def
+File: l3backend-luatex.def 2026-08-10 L3 backend support: PDF output (LuaTeX)
+\l__color_backend_stack_int=\count299
+Inserting `l3color' in `luaotfload.parse_color'.))
 Package: unicode-math 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLaTeX
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
 th-luatex.sty
 Package: unicode-math-luatex 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaL
 aTeX
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/l3keys2e/l3k
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/xparse/xpars
+e.sty
+Package: xparse 2025-10-09 L3 Experimental document command parser
+)
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/l3keys2e/l3k
 eys2e.sty
 Package: l3keys2e 2025-10-09 LaTeX2e option processing using LaTeX3 keys
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/base/fix-cm.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/base/fix-cm.sty
 Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1enc.def
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
 LaTeX Encoding Info:    Redeclaring text command \capitalcedilla (encoding TS1)
@@ -649,24 +652,24 @@ put line 193.
 LaTeX Encoding Info:    Redeclaring text symbol \textdiv (encoding TS1) on inpu
 t line 194.
 ))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2025/07/09 v2.17z AMS math features
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2026/05/19 v2.18d AMS math features
 \@mathmargin=\skip54
 
 For additional information on amsmath, use the `?' option.
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amstext.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amstext.sty
 Package: amstext 2024/11/17 v2.01 AMS text
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsgen.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks22
 \ex@=\dimen163
 ))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsbsy.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen164
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsopn.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count300
@@ -714,15 +717,15 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \multlinegap=\skip55
 \multlinetaggap=\skip56
 \mathdisplay@stack=\toks26
-LaTeX Info: Redefining \[ on input line 2950.
-LaTeX Info: Redefining \] on input line 2951.
+LaTeX Info: Redefining \[ on input line 2965.
+LaTeX Info: Redefining \] on input line 2966.
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/lualatex/lualatex-math/lualat
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/lualatex/lualatex-math/lualat
 ex-math.sty
 Package: lualatex-math 2022/01/01 v1.12 Patches for mathematics typesetting wit
 h LuaLaTeX
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/etoolbox/etoolbox.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count312
 )
@@ -733,7 +736,7 @@ th LuaLaTeX)
 \l__um_primecount_int=\count315
 \g__um_primekern_muskip=\muskip18
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
 th-table.tex)))
 
 Package fontspec Info: 
@@ -875,10 +878,10 @@ LaTeX Font Info:    Overwriting symbol font `__um_fam1' in version `bold'
 (Font)                  TU/SourceSerif4-Regular.otf(0)/m/n --> TU/SourceSerif4-
 Regular.otf(0)/b/n on input line 143.
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/was/icomma.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/was/icomma.sty
 Package: icomma 2002/03/10 v2.0 (WaS)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype.sty
 Package: microtype 2026/03/01 v3.2d Micro-typographical refinements (RS)
 \MT@toks=\toks27
 \MT@tempbox=\box57
@@ -893,7 +896,7 @@ LaTeX Info: Redefining \microtypecontext on input line 2053.
 LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
 \MT@listname@count=\count317
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype-lua
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype-lua
 tex.def
 File: microtype-luatex.def 2026/03/01 v3.2d Definitions specific to luatex (RS)
 
@@ -905,15 +908,15 @@ LaTeX Info: Redefining \lslig on input line 779.
 )
 Package microtype Info: Loading configuration file microtype.cfg.
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype.cfg
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype.cfg
 File: microtype.cfg 2026/03/01 v3.2d microtype main configuration file (RS)
 )
 LaTeX Info: Redefining \microtypesetup on input line 3065.
-) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty
-Package: babel 2026/08/08 v26.10 The multilingual framework for LuaLaTeX, pdfLa
+) (C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty
+Package: babel 2026/09/09 v26.12 The multilingual framework for LuaLaTeX, pdfLa
 TeX and XeLaTeX
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def
 \bbl@readstream=\read2
 \l@afrikaans=\language2
 Package babel Info: Non-standard hyphenation setup on input line 118.
@@ -998,42 +1001,42 @@ Package babel Info: Non-standard hyphenation setup on input line 118.
 )
 \babel@savecnt=\count318
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input li
-ne 2105.
+ne 2095.
 LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input li
-ne 2107.
+ne 2097.
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input lin
-e 2109.
+e 2099.
 LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input lin
-e 2110.
+e 2100.
 LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) 
-on input line 2111.
+on input line 2101.
 LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) 
-on input line 2113.
+on input line 2103.
 LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) 
-on input line 2138.
+on input line 2128.
 \U@D=\dimen173
 \l@unhyphenated=\language79
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def
 \bbl@attr@locale=\attribute4
 )
 Package babel Info: Configuration files are deprecated, as
 (babel)             they can break document portability.
-(babel)             Reported on input line 4298.
+(babel)             Reported on input line 4331.
 
 *************************************
 * Local config file bblopts.cfg used
 *
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/arabi/bblopts.cfg
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/arabi/bblopts.cfg
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
  babel
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/babel/locale/es/babel
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/babel/locale/es/babel
 -spanish.tex)
 Package babel Info: Importing font and identification data for 'spanish'
-(babel)             from babel-es.ini. Reported on input line 4426.
+(babel)             from babel-es.ini. Reported on input line 4459.
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/babel-spanish/spanish.l
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/babel-spanish/spanish.l
 df
 Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
 \es@quottoks=\toks29
@@ -1041,16 +1044,16 @@ Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
 Package babel Info: Making " an active character on input line 570.
 Package babel Info: Making . an active character on input line 675.
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/hyph-utf8/loadhyph/lo
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/hyph-utf8/loadhyph/lo
 adhyph-es.tex UTF-8 Spanish hyphenation patterns
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/hyph-utf8/patterns/te
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/hyph-utf8/patterns/te
 x/hyph-es.tex))))
 LaTeX Encoding Info:    Redeclaring text command \guillemotleft (encoding OT1) 
 on input line 154.
 LaTeX Encoding Info:    Redeclaring text command \guillemotright (encoding OT1)
  on input line 154.
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.sty
 Package: csquotes 2026-05-19 v5.2p context-sensitive quotations (JAW)
 \csq@reset=\count320
 \csq@gtype=\count321
@@ -1060,25 +1063,25 @@ Package: csquotes 2026-05-19 v5.2p context-sensitive quotations (JAW)
 \csq@tshold=\count325
 \csq@ltx@everypar=\toks30
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.def
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.def
 File: csquotes.def 2026-05-19 v5.2p csquotes generic definitions (JAW)
 )
 Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
 Package csquotes Info: ... configuration file loaded successfully.
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.cfg
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.cfg
 File: csquotes.cfg 
-)) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphicx.st
+)) (C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphicx.st
 y
 Package: graphicx 2026-05-17 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphics.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphics.sty
 Package: graphics 2026-05-17 v1.4h Standard LaTeX Graphics (DPC,SPQR)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/graphics.c
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/graphics.c
 fg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
@@ -1087,42 +1090,42 @@ Package graphics Info: Driver file: luatex.def on input line 106.
 \Gin@req@height=\dimen174
 \Gin@req@width=\dimen175
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/frontendlayer/tikz.
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/pgf/frontendlayer/tikz.
 sty
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgf.sty
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfrcs.st
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgf.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfrcs.st
 y
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
 -common.tex
 \pgfutil@everybye=\toks31
 \pgfutil@tempdima=\dimen176
 \pgfutil@tempdimb=\dimen177
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
 -latex.def
 \pgfutil@abb=\box58
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfrcs.
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfrcs.
 code.tex
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/pgf.revision.tex)
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2026-08-01 v3.1.12 (3.1.12)
 ))
 Package: pgf 2026-08-01 v3.1.12 (3.1.12)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgfcore.
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgfcore.
 sty
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/systemlayer/pgfsys.
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/pgf/systemlayer/pgfsys.
 sty
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
 s.code.tex
 Package: pgfsys 2026-08-01 v3.1.12 (3.1.12)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
 .code.tex
 \pgfkeys@pathtoks=\toks32
 \pgfkeys@temptoks=\toks33
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
 libraryfiltered.code.tex
 \pgfkeys@tmptoks=\toks34
 ))
@@ -1147,39 +1150,39 @@ libraryfiltered.code.tex
 \t@pgf@tokc=\toks37
 \pgf@sys@id@count=\count330
 Lua function pgfsys@strcmp = 31
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgf.c
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgf.c
 fg
 File: pgf.cfg 2026-08-01 v3.1.12 (3.1.12)
 )
 Driver file for pgf: pgfsys-luatex.def
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
 s-luatex.def
 File: pgfsys-luatex.def 2026-08-01 v3.1.12 (3.1.12)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
 s-common-pdf.def
 File: pgfsys-common-pdf.def 2026-08-01 v3.1.12 (3.1.12)
 )))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
 ssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgfsyssoftpath@smallbuffer@items=\count331
 \pgfsyssoftpath@bigbuffer@items=\count332
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
 sprotocol.code.tex
 File: pgfsysprotocol.code.tex 2026-08-01 v3.1.12 (3.1.12)
 ))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 e.code.tex
 Package: pgfcore 2026-08-01 v3.1.12 (3.1.12)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
 .tex
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathutil.
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathutil.
 code.tex)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathparse
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathparse
 r.code.tex
 \pgfmath@dimen=\dimen188
 \pgfmath@count=\count333
@@ -1188,33 +1191,33 @@ r.code.tex
 \pgfmath@stack@operand=\toks39
 \pgfmath@stack@operation=\toks40
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
 ions.code.tex)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
 ions.basic.code.tex)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
 ions.trigonometric.code.tex)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
 ions.random.code.tex)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
 ions.comparison.code.tex)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
 ions.base.code.tex)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
 ions.round.code.tex)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
 ions.misc.code.tex)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
 ions.integerarithmetics.code.tex)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathcalc.
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathcalc.
 code.tex)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfloat
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfloat
 .code.tex
 \c@pgfmathroundto@lastzeros=\count334
 ))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfint.code.
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfint.code.
 tex)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 epoints.code.tex
 File: pgfcorepoints.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgf@picminx=\dimen189
@@ -1232,19 +1235,19 @@ File: pgfcorepoints.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgf@zx=\dimen257
 \pgf@zy=\dimen258
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 epathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgf@path@lastx=\dimen259
 \pgf@path@lasty=\dimen260
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 epathusage.code.tex
 File: pgfcorepathusage.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgf@shorten@end@additional=\dimen261
 \pgf@shorten@start@additional=\dimen262
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 escopes.code.tex
 File: pgfcorescopes.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgfpic=\box60
@@ -1252,96 +1255,96 @@ File: pgfcorescopes.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgf@layerbox@main=\box62
 \pgf@picture@serial@count=\count335
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 egraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgflinewidth=\dimen263
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 etransformations.code.tex
 File: pgfcoretransformations.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgf@pt@x=\dimen264
 \pgf@pt@y=\dimen265
 \pgf@pt@temp=\dimen266
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 equick.code.tex
 File: pgfcorequick.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 eobjects.code.tex
 File: pgfcoreobjects.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 epathprocessing.code.tex
 File: pgfcorepathprocessing.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 earrows.code.tex
 File: pgfcorearrows.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgfarrowsep=\dimen267
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 eshade.code.tex
 File: pgfcoreshade.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgf@max=\dimen268
 \pgf@sys@shading@range@num=\count336
 \pgf@shadingcount=\count337
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 eimage.code.tex
 File: pgfcoreimage.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 eexternal.code.tex
 File: pgfcoreexternal.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgfexternal@startupbox=\box63
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 elayers.code.tex
 File: pgfcorelayers.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 etransparency.code.tex
 File: pgfcoretransparency.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 epatterns.code.tex
 File: pgfcorepatterns.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
 erdf.code.tex
 File: pgfcorerdf.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
 shapes.code.tex
 File: pgfmoduleshapes.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgfnodeparttextbox=\box64
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
 plot.code.tex
 File: pgfmoduleplot.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
 mp-version-0-65.sty
 Package: pgfcomp-version-0-65 2026-08-01 v3.1.12 (3.1.12)
 \pgf@nodesepstart=\dimen269
 \pgf@nodesepend=\dimen270
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
 mp-version-1-18.sty
 Package: pgfcomp-version-1-18 2026-08-01 v3.1.12 (3.1.12)
 ))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgffor.st
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgffor.st
 y
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfkeys.s
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfkeys.s
 ty
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
 .code.tex))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/math/pgfmath.sty
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/pgf/math/pgfmath.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
 .tex))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgffor.
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgffor.
 code.tex
 Package: pgffor 2026-08-01 v3.1.12 (3.1.12)
 \pgffor@iter=\dimen271
@@ -1349,11 +1352,11 @@ Package: pgffor 2026-08-01 v3.1.12 (3.1.12)
 \pgffor@stack=\toks41
 \pgffor@toks=\toks42
 ))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
 z/tikz.code.tex
 Package: tikz 2026-08-01 v3.1.12 (3.1.12)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
 aryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgf@plot@mark@count=\count338
@@ -1376,7 +1379,7 @@ File: pgflibraryplothandlers.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \tikznumberofcurrentchild=\count341
 \tikz@fig@count=\count342
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
 matrix.code.tex
 File: pgfmodulematrix.code.tex 2026-08-01 v3.1.12 (3.1.12)
 \pgfmatrixcurrentrow=\count343
@@ -1385,19 +1388,19 @@ File: pgfmodulematrix.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
 \tikz@expandcount=\count346
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
 z/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
 z/libraries/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
 z/libraries/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2026-08-01 v3.1.12 (3.1.12)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/booktabs/booktabs.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen282
 \lightrulewidth=\dimen283
@@ -1417,7 +1420,7 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count350
 \@thisrulewidth=\dimen294
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/tools/tabularx.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/tools/tabularx.sty
 Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 \TX@col@width=\dimen295
 \TX@old@table=\dimen296
@@ -1427,7 +1430,7 @@ Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 \TX@cols=\count351
 \TX@ftn=\toks43
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/tools/longtable.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/tools/longtable.sty
 Package: longtable 2026-01-28 v4.27 Multi-page Table package (DPC)
 \LTleft=\skip58
 \LTright=\skip59
@@ -1446,25 +1449,25 @@ Package: longtable 2026-01-28 v4.27 Multi-page Table package (DPC)
 \c@LT@chunks=\count356
 \LT@p@ftn=\toks44
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/xltabular/xltabular.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/xltabular/xltabular.sty
 Package: xltabular 2025/02/28 v0.2i `xltabular' package (hv,RN)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/ltablex/ltablex.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/ltablex/ltablex.sty
 Package: ltablex 2014/08/13 v1.1 Modified tabularx
 ))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/multirow/multirow.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/multirow/multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip62
 \multirow@cntb=\count357
 \multirow@dima=\skip63
 \bigstrutjot=\dimen301
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/makecell/makecell.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/makecell/makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \rotheadsize=\dimen302
 \c@nlinenum=\count358
 \TeXr@lab=\toks45
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/enumitem/enumitem.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
 \labelindent=\skip64
 \enit@outerparindent=\dimen303
@@ -1473,7 +1476,7 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 \enit@count@id=\count359
 \enitdp@description=\count360
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titlesec.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box75
 \beforetitleunit=\skip65
@@ -1485,11 +1488,11 @@ Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \titlewidthlast=\dimen307
 \titlewidthfirst=\dimen308
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titletoc.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titletoc.sty
 Package: titletoc 2025/01/04 v2.17 TOC entries
 \ttl@leftsep=\dimen309
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/fancyhdr/fancyhdr.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 
 \f@nch@headwidth=\skip67
@@ -1508,10 +1511,10 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthR=\skip80
 \@temptokenb=\toks48
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption3.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@tempdima=\dimen310
 \captionmargin=\dimen311
@@ -1527,28 +1530,28 @@ Package caption Info: Standard document class detected.
 \c@continuedfloat=\count362
 Package caption Info: longtable package is loaded.
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/caption/ltcaption.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/caption/ltcaption.sty
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 ))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pdflscape/pdflscape.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pdflscape/pdflscape-nom
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/pdflscape/pdflscape-nom
 etadata.sty
 Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PD
 F (HO)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics/lscape.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/graphics/lscape.sty
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/eso-pic/eso-pic.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2026/05/31 v3.0e eso-pic (RN)
 \ESO@tempdima=\dimen318
 \ESO@tempdimb=\dimen319
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/ragged2e/ragged2e.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/ragged2e/ragged2e.sty
 Package: ragged2e 2023/06/22 v3.6 ragged2e Package
 \CenteringLeftskip=\skip81
 \RaggedLeftLeftskip=\skip82
@@ -1565,14 +1568,14 @@ Package: ragged2e 2023/06/22 v3.6 ragged2e Package
 \RaggedRightParindent=\skip93
 \JustifyingParindent=\skip94
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage.sty
 Package: lastpage 2025/08/14 v2.1h lastpage: 2.09 or 2e? (HMM)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage2e.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage2e.sty
 Package: lastpage2e 2025/08/14 v2.1h Decide which 2e lastpage version to use (H
 MM)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpagemodern
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpagemodern
 .sty
 Package: lastpagemodern 2025-08-14 v2.1h Refers to last page's name (HMM; JPG)
 \c@lastpagecount=\count363
@@ -1580,34 +1583,34 @@ Package: lastpagemodern 2025-08-14 v2.1h Refers to last page's name (HMM; JPG)
 ))
 \LFXmonolado=\skip95
 \LFXmonofont=\skip96
- (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/import/import.sty
+ (C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/import/import.sty
 Package: import 2020/04/01  v 6.2
 )
 \c@LFXresumen=\count364
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hyperref.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2026-06-17 v7.01r Hypertext links for LaTeX
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/kvsetkeys/kvsetkeys.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/kvdefinekeys/kvdefine
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/kvdefinekeys/kvdefine
 keys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pdfescape/pdfescape.s
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pdfescape/pdfescape.s
 ty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/ltxcmds/ltxcmds.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pdftexcmds/pdftexcmds
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/pdftexcmds/pdftexcmds
 .sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/infwarerr/infwarerr.s
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/infwarerr/infwarerr.s
 ty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
@@ -1616,25 +1619,25 @@ Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 \pdftexcmds@toks=\toks49
 ))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/hycolor/hycolor.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/nameref.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/nameref.sty
 Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/refcount/refcount.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/gettitlestring/gettit
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/gettitlestring/gettit
 lestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/kvoptions/kvoptions.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
 \c@section@level=\count365
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/stringenc/stringenc.s
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/stringenc/stringenc.s
 ty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
@@ -1642,13 +1645,13 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 \@linkdim=\dimen320
 \Hy@linkcounter=\count366
 \Hy@pagecounter=\count367
- (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/pd1enc.def
+ (C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2026-06-17 v7.01r Hyperref: PDFDocEncoding definition (HO)
-) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/intcalc/intcalc.sty
+) (C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count368
- (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/puenc.def
+ (C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/puenc.def
 File: puenc.def 2026-06-17 v7.01r Hyperref: PDF Unicode definition (HO)
 )
 Package hyperref Info: Option `final' set `true' on input line 4070.
@@ -1663,17 +1666,17 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4466.
 \c@Hy@tempcnt=\count369
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty
 \Urlmuskip=\muskip19
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4805.
 \XeTeXLinkMargin=\dimen321
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/bitset/bitset.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/bigintcalc/bigintcalc
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/bigintcalc/bigintcalc
 .sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
@@ -1694,16 +1697,16 @@ Package hyperref Info: PDF/A mode OFF on input line 6121.
 )
 Package hyperref Info: Driver (autodetected): hluatex.
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hluatex.def
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hluatex.def
 File: hluatex.def 2026-06-17 v7.01r Hyperref driver for luaTeX
 \Fld@listcount=\count374
 \c@bookmark@seq@number=\count375
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfil
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfil
 echeck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/uniquecounter/uniquec
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/generic/uniquecounter/uniquec
 ounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
@@ -1714,25 +1717,25 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 972.
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bookmark.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2026-05-21 v1.32 PDF bookmarks (HO)
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bkm-luatex.def
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bkm-luatex.def
 File: bkm-luatex.def 2026-05-21 v1.32 bookmark driver for luaTeX (HO)
 \BKM@id=\count376
 )) (./lafrox-portada.tex
 \LFXcajasubtituloportada=\box76
 )) (./sd13-comun.tex
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/base/flafter.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/base/flafter.sty
 Package: flafter 2025/08/22 v1.4z Standard LaTeX floats after reference (FMi)
 Applying: [2025/06/01] float order in 2-column on input line 49.
 Already applied: [2015/01/01] float order in 2-column on input line 152.
 Already applied: [0000/00/00] float order in 2-column on input line 254.
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/placeins/placeins.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/float/float.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count377
 \float@exts=\toks50
@@ -1740,7 +1743,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks51
 \@floatcapt=\box78
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/xurl/xurl.sty
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/xurl/xurl.sty
 Package: xurl 2022/01/09 v 0.10 modify URL breaks
 ))
 Package csquotes Info: Checking for multilingual support...
@@ -1812,7 +1815,7 @@ LaTeX Font Info:    ... okay on input line 18.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mk
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count378
@@ -1827,13 +1830,13 @@ ii
 \makeMPintoPDFobject=\count383
 \everyMPtoPDFconversion=\toks53
 )
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
 ase.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/00miktex/epstopdf-sys.c
+(C:/Users/maxim/AppData/Local/Programs/MiKTeX/tex/latex/00miktex/epstopdf-sys.c
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
@@ -1970,7 +1973,7 @@ LaTeX Font Info:    Font shape `TU/IBMPlexMono-Regular.otf(0)/m/n' will be
 (Font)              scaled to size 7.35999pt on input line 19.
  [1
 
-{C:/Users/henri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}<./logo/lafrox_
+{C:/Users/maxim/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}<./logo/lafrox_
 isotipo_naranja.pdf><./logo/firma_representante.png>]
 (./LAFROX-Subdocumento13.toc
 LaTeX Info: Redefining \. on input line 1.
@@ -2296,28 +2299,16 @@ Package luatex.def Info: logo/firma_representante.png  used on input line 287.
  [25]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 305.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 308.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 305.
-LaTeX Info: Redefining \% on input line 305.
+LaTeX Info: Redefining \. on input line 308.
+LaTeX Info: Redefining \% on input line 308.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 305.
+Package luatex.def Info: logo/firma_representante.png  used on input line 308.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [26]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 305.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 305.
-LaTeX Info: Redefining \% on input line 305.
-File: logo/firma_representante.png Graphic file (type png)
-<use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 305.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [27]
 LaTeX Font Info:    Font shape `TU/IBMPlexMono(0)/m/n' will be
 (Font)              scaled to size 10.07397pt on input line 312.
 Package microtype Info: Loading generic protrusion settings for font family
@@ -2335,7 +2326,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 321.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [28]
+ [27]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 340.
@@ -2347,8 +2338,8 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 340.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [29]
-<13_innovaciones/diagramas/Fig_13-4_Recorrido_INN03.pdf, id=461, 435.54718pt x 
+ [28]
+<13_innovaciones/diagramas/Fig_13-4_Recorrido_INN03.pdf, id=457, 435.54718pt x 
 395.55779pt>
 File: 13_innovaciones/diagramas/Fig_13-4_Recorrido_INN03.pdf Graphic file (type
  pdf)
@@ -2367,7 +2358,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 349.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [30<./13_innovaciones/diagramas/Fig_13-4_Recorrido_INN03.pdf>]
+ [29<./13_innovaciones/diagramas/Fig_13-4_Recorrido_INN03.pdf>]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 366.
@@ -2379,7 +2370,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 366.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [31]
+ [30]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 387.
@@ -2391,7 +2382,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 387.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [32]
+ [31]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 402.
@@ -2403,7 +2394,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 402.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [33]
+ [32]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 424.
@@ -2415,7 +2406,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 424.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [34]
+ [33]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 441.
@@ -2427,7 +2418,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 441.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [35]
+ [34]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 465.
@@ -2439,8 +2430,8 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 465.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [36]
-<13_innovaciones/diagramas/Fig_13-5_Recorrido_INN04.pdf, id=514, 435.54718pt x 
+ [35]
+<13_innovaciones/diagramas/Fig_13-5_Recorrido_INN04.pdf, id=510, 435.54718pt x 
 395.55779pt>
 File: 13_innovaciones/diagramas/Fig_13-5_Recorrido_INN04.pdf Graphic file (type
  pdf)
@@ -2459,8 +2450,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 478.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
-
-[37]
+ [36]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 486.
@@ -2472,7 +2462,8 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 486.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [38<./13_innovaciones/diagramas/Fig_13-5_Recorrido_INN04.pdf>]
+
+[37<./13_innovaciones/diagramas/Fig_13-5_Recorrido_INN04.pdf>]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 503.
@@ -2484,7 +2475,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 503.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [39]
+ [38]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 518.
@@ -2496,8 +2487,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 518.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
-
-[40]
+ [39]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 530.
@@ -2509,7 +2499,8 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 530.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [41]
+
+[40]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 544.
@@ -2521,20 +2512,20 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 544.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [42]
+ [41]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 573.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 572.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 573.
-LaTeX Info: Redefining \% on input line 573.
+LaTeX Info: Redefining \. on input line 572.
+LaTeX Info: Redefining \% on input line 572.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 573.
+Package luatex.def Info: logo/firma_representante.png  used on input line 572.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [43]
-<13_innovaciones/diagramas/Fig_13-6_Recorrido_INN05.pdf, id=567, 435.54718pt x 
+ [42]
+<13_innovaciones/diagramas/Fig_13-6_Recorrido_INN05.pdf, id=563, 435.54718pt x 
 395.55779pt>
 File: 13_innovaciones/diagramas/Fig_13-6_Recorrido_INN05.pdf Graphic file (type
  pdf)
@@ -2553,7 +2544,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 590.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [44]
+ [43]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 600.
@@ -2565,7 +2556,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 600.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [45<./13_innovaciones/diagramas/Fig_13-6_Recorrido_INN05.pdf>]
+ [44<./13_innovaciones/diagramas/Fig_13-6_Recorrido_INN05.pdf>]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 618.
@@ -2576,6 +2567,18 @@ LaTeX Info: Redefining \% on input line 618.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 618.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [45]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 632.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 632.
+LaTeX Info: Redefining \% on input line 632.
+File: logo/firma_representante.png Graphic file (type png)
+<use logo/firma_representante.png>
+Package luatex.def Info: logo/firma_representante.png  used on input line 632.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [46]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
@@ -2592,18 +2595,6 @@ Package luatex.def Info: logo/firma_representante.png  used on input line 632.
  [47]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 632.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 632.
-LaTeX Info: Redefining \% on input line 632.
-File: logo/firma_representante.png Graphic file (type png)
-<use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 632.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [48]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 658.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
@@ -2613,7 +2604,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 658.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [49]
+ [48]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 670.
@@ -2625,31 +2616,31 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 670.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [49]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 689.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 689.
+LaTeX Info: Redefining \% on input line 689.
+File: logo/firma_representante.png Graphic file (type png)
+<use logo/firma_representante.png>
+Package luatex.def Info: logo/firma_representante.png  used on input line 689.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [50]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 705.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 689.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 705.
-LaTeX Info: Redefining \% on input line 705.
+LaTeX Info: Redefining \. on input line 689.
+LaTeX Info: Redefining \% on input line 689.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 705.
+Package luatex.def Info: logo/firma_representante.png  used on input line 689.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [51]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 705.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 705.
-LaTeX Info: Redefining \% on input line 705.
-File: logo/firma_representante.png Graphic file (type png)
-<use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 705.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [52])
+ [51])
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 23.
@@ -2660,7 +2651,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 23.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [53]
+ [52]
 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (./LAFROX-Subdocumento13.aux
@@ -2669,35 +2660,36 @@ LaTeX Info: Redefining \% on input line 9.
 )
  ***********
 LaTeX2e <2026-06-01>
-L3 programming layer <2026-07-20>
+L3 programming layer <2026-08-10>
  ***********
 )
 
 Here is how much of LuaTeX's memory you used:
- 38959 strings out of 475695
- 156269,1977958 words of node,token memory allocated
- 825 words of node memory still in use:
-   8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 4 kern, 1 penalty, 3 glyph, 36
- attribute, 79 glue_spec, 19 attribute_list, 2 write, 8 pdf_action nodes
-   avail lists: 1:7,2:4058,3:823,4:509,5:2071,6:232,7:12562,8:116,9:2106,10:25,1
-1:1497
- 58678 multiletter control sequences out of 65536+600000
+ 39089 strings out of 475635
+ 156265,1977958 words of node,token memory allocated
+ 841 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 5 kern, 1 penalty, 1 margin_ke
+rn, 4 glyph, 36 attribute, 79 glue_spec, 19 attribute_list, 2 write, 8 pdf_actio
+n nodes
+   avail lists: 1:5,2:3495,3:756,4:506,5:1951,6:215,7:10702,8:116,9:2038,10:25,1
+1:1298
+ 58911 multiletter control sequences out of 65536+600000
  120 fonts using 46966387 bytes
- 107i,24n,128p,1538b,2851s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
-ourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/op
-entype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/Users/henri/AppData/Local/Pr
+ 107i,24n,128p,1623b,2851s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/maxim/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
+ourceSerif4-RegularIt.otf><C:/Users/maxim/AppData/Local/Programs/MiKTeX/fonts/op
+entype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/Users/maxim/AppData/Local/Pr
 ograms/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSerif4-Semibold.otf><C:/Use
-rs/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSe
-rif4-Regular.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/ib
-m/plex/IBMPlexMono-Regular.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fon
-ts/opentype/adobe/sourcesans/SourceSans3-Regular.otf><c:/users/henri/appdata/loc
-al/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf><C:/Us
-ers/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSa
+rs/maxim/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSe
+rif4-Regular.otf><c:/users/maxim/appdata/local/programs/miktex/fonts/opentype/ib
+m/plex/ibmplexmono-regular.otf><C:/Users/maxim/AppData/Local/Programs/MiKTeX/fon
+ts/opentype/adobe/sourcesans/SourceSans3-Regular.otf><C:/Users/maxim/AppData/Loc
+al/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Medium.otf><C:/Us
+ers/maxim/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSa
 ns3-Semibold.otf>
-Output written on LAFROX-Subdocumento13.pdf (53 pages, 539719 bytes).
+Output written on LAFROX-Subdocumento13.pdf (52 pages, 536577 bytes).
 
-PDF statistics: 844 PDF objects out of 1000 (max. 8388607)
- 145 named destinations out of 1000 (max. 1048576)
+PDF statistics: 840 PDF objects out of 1000 (max. 8388607)
+ 144 named destinations out of 1000 (max. 1048576)
  384 words of extra memory for PDF output out of 10000 (max. 100000000)
 
