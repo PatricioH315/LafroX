@@ -51,13 +51,14 @@ Las compuertas son bloqueantes, no opcionales. El pipeline detiene la promoción
     \item un hallazgo de seguridad crítico o alto en dependencias, código, secretos o imagen;
     \item un contrato público roto sin una nueva edición de la interfaz;
     \item una cobertura de la lógica de negocio inferior al 70\% (RT-04.11);
+    \item una cobertura unitaria global inferior al 80\%, política corporativa de LafroX (Subdocumento 1, sección 1.3; paquete 1.5.2);
     \item una cobertura de líneas por pruebas unitarias del código modificado inferior al 80\%, política corporativa de LafroX (paquete 1.5.2);
     \item una deuda técnica bloqueante o una prueba en falla.
 \end{itemize}
 
 La imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila. La infraestructura de los cinco ambientes se describe como código: Terraform administra los recursos con estados separados por ambiente y Ansible configura los hosts; cada recurso tiene un único propietario de código. Las migraciones de base de datos siguen la estrategia de expandir y contraer y declaran su reversión.
 
-La entrega continua mantiene versiones verificadas y listas para su despliegue en cada ambiente. El paso a Producción se ejecuta sólo dentro de las ventanas permitidas por el caso y, durante el desarrollo, sólo en los hitos aprobados: ningún cambio se despliega en septiembre, en diciembre ni en los tres primeros días hábiles de un mes.
+La entrega continua mantiene versiones verificadas y listas para su despliegue en cada ambiente. El paso a Producción se ejecuta sólo dentro de las ventanas permitidas por el caso y, durante el desarrollo, sólo en los hitos aprobados: ningún cambio se despliega entre el 1 y el 25 de septiembre, en diciembre ni en los tres primeros días hábiles de un mes.
 
 \subsection{Ceremonias, cadencias y decisiones del desarrollo}
 
