@@ -59,7 +59,7 @@ La compatibilidad se verifica sobre los quince flujos y sus contratos, incluida 
 
 \begin{tablasimple}{>{\hsize=0.654\hsize\linewidth=\hsize}Y >{\hsize=0.835\hsize\linewidth=\hsize}Y >{\hsize=2.038\hsize\linewidth=\hsize}Y >{\hsize=0.654\hsize\linewidth=\hsize}Y >{\hsize=1.242\hsize\linewidth=\hsize}Y >{\hsize=0.924\hsize\linewidth=\hsize}Y >{\hsize=0.653\hsize\linewidth=\hsize}Y}
   {\cab{ID} & \cab{Subcaracterística} & \cab{Métrica} & \cab{Umbral} & \cab{Origen} & \cab{Verificación} & \cab{Paquete}}
-9A-13 & Interoperabilidad & Flujos de integración ejecutados sin error & 15 de 15 & BTT 20.1; SD4, sección 4.1 (BTT, pp. 34--35) & Integración en QA & 3.8.1; 3.9.1 \\
+9A-13 & Interoperabilidad & Flujos de integración ejecutados sin error por etapa & 100 \% de E1; 15 de 15 al cierre de E2 & BTT 20.1; SD4, sección 4.1 (BTT, pp. 34--35) & Integración en QA & 3.8.1; 3.9.1 \\
 9A-14 & Interoperabilidad & Contratos rotos en la cadena de integración & 0 & Art. 4.3 (OpenAPI 3.1, AsyncAPI 2.6) (BA, pp. 5--6) & Pact y Spectral & 1.5.2 \\
 9A-15 & Coexistencia & Regresiones de la Etapa 1 al integrar la Etapa 2 & 0 & Art. 17.2, regla 3 (BA, p. 13) & Regresión de la Etapa 1 & 3.9.1 \\
 \end{tablasimple}
@@ -117,7 +117,7 @@ La mantenibilidad se controla antes de fusionar código. Cada métrica debe prod
 \begin{tablasimple}{>{\hsize=0.694\hsize\linewidth=\hsize}Y >{\hsize=0.822\hsize\linewidth=\hsize}Y >{\hsize=1.76\hsize\linewidth=\hsize}Y >{\hsize=0.694\hsize\linewidth=\hsize}Y >{\hsize=1.187\hsize\linewidth=\hsize}Y >{\hsize=1.147\hsize\linewidth=\hsize}Y >{\hsize=0.696\hsize\linewidth=\hsize}Y}
   {\cab{ID} & \cab{Subcaracterística} & \cab{Métrica} & \cab{Umbral} & \cab{Origen} & \cab{Verificación} & \cab{Paquete}}
 9A-30 & Testeabilidad & Cobertura de la lógica de negocio & ≥ 70 \% & Art. 24; RT-04.11 (BA, p. 17; BTT, p. 11) & PHPUnit con PCOV; Kover; Jest & 1.5.2 \\
-9A-31 & Testeabilidad & Cobertura unitaria global & ≥ 80 \% & Política de LafroX (SD1, 1.3.1) & Ídem & 1.5.2 \\
+9A-31 & Testeabilidad & Cobertura unitaria global y de líneas modificadas, medidas por separado & ≥ 80 \% en cada denominador & Política de LafroX (SD1, 1.3.1); T-10, DevSecOps & PHPUnit con PCOV; Kover; Jest, con dos informes separados & 1.5.2 \\
 9A-32 & Analizabilidad & Complejidad ciclomática por método & ≤ 10 & McCabe (1976) & PHPMD; detekt; ESLint & 1.5.2 \\
 9A-33 & Modularidad & Dependencias prohibidas entre módulos; acoplamiento eferente por clase & 0; ≤ 20 clases & Art. 19 (acoplamiento débil); regla de LafroX (BA, p. 14) & deptrac; PhpMetrics; detekt; ESLint & 1.5.2 \\
 9A-34 & Modificabilidad & Duplicación de código & ≤ 3 \% de las líneas & Formulario T-10 & PHPCPD; jscpd & 1.5.2 \\
@@ -181,7 +181,7 @@ El costo de la calidad se expresa en horas-hombre y no en dinero, porque la Ofer
 \subsection*{9.C.1 Costos de conformidad (programados en la línea base)}
 \addcontentsline{toc}{subsection}{9.C.1 Costos de conformidad (programados en la línea base)}
 
-El subtotal reúne los paquetes de prevención y evaluación identificables en la línea base. Cada paquete se cuenta una sola vez.
+El subtotal reúne los paquetes de prevención y evaluación identificables en la línea base. Cada paquete se cuenta una sola vez. Banco 2.4.3, mapeo 2.4.4 y piloto 4.1.4 se clasifican como evaluación porque producen evidencia de conformidad física y aceptación de la cadena de frío: 320 + 240 + 320 = 880 HH. La clase de estimación E del mapeo no determina su categoría de costo de calidad. Estas horas ya pertenecen a las 220.023 HH del T-15; no son un incremento de esa línea base ni se vuelven a contar en las pruebas de integración.
 
 \begin{tablasimple}{>{\hsize=0.729\hsize\linewidth=\hsize}Y >{\hsize=0.664\hsize\linewidth=\hsize}Y >{\hsize=1.943\hsize\linewidth=\hsize}Y >{\hsize=0.664\hsize\linewidth=\hsize}Y}
   {\cab{Categoría} & \cab{Paquete T-14} & \cab{Contenido} & \cab{HH (T-15)}}
@@ -192,6 +192,7 @@ Prevención & 2.6.1 a 2.6.3 & Investigación con usuarios, prototipos e indicado
 Prevención & 3.10.2.1 a 3.10.2.4 & INN-02: reproducción de incidentes de terreno & 960 \\
 Prevención & 8.2.4 & Registro y reducción de la deuda técnica en la Operación & 2.304 \\
 \textbf{Subtotal prevención} &  &  & \textbf{4.224} \\
+Evaluación & 2.4.3; 2.4.4; 4.1.4 & Banco (320), mapeo validado por Calidad (240) y piloto de frío (320) & 880 \\
 Evaluación & 3.8.1 a 3.8.8 & Pruebas y certificación de la Etapa 1 & 2.240 \\
 Evaluación & 3.9.1 a 3.9.7 & Pruebas y certificación de la Etapa 2 & 1.600 \\
 Evaluación & 4.1.2 & Ensayo del procedimiento de reversión & 80 \\
@@ -200,12 +201,12 @@ Evaluación & 8.1.6 & Restauraciones mensuales en la Operación & 576 \\
 Evaluación & 8.2.2 & Vulnerabilidades, intrusión anual e inyección de fallas & 1.152 \\
 Evaluación & 8.3.1 & Regresión de INN-02 en la Operación & 576 \\
 Evaluación & 4.2.1; 4.2.2; 4.3.1 & Ocho restauraciones previas a Operación, componentes SRE adicionales & 128 \\
-\textbf{Subtotal evaluación} &  &  & \textbf{6.912} \\
-\textbf{Total de conformidad} &  &  & \textbf{11.136} \\
+\textbf{Subtotal evaluación} &  &  & \textbf{7.792} \\
+\textbf{Total de conformidad} &  &  & \textbf{12.016} \\
 \end{tablasimple}
 \fuentesd{Fuente: elaboración a partir de LafroX (2026d, T-14, paquetes indicados en cada fila); LafroX (2026e, T-15, estimación por paquete y rol).}
 
-Las 11.136 HH equivalen al 5,1 \% de las 217.543 HH de la línea base (11.136 / 217.543 = 0,0512).
+Las 12.016 HH equivalen al 5,5 \% de las 220.023 HH de la línea base (12.016 / 220.023 = 0,0546).
 
 \textbf{Partidas excluidas.} No se cuentan la migración de datos (cuenta 3.7), cuyos ensayos forman parte del trabajo de migración y no se pueden separar de él, ni la certificación de los usuarios del CLIENTE (7.3.1 y 7.3.2), que verifica personas y no el producto.
 
@@ -214,19 +215,19 @@ Las 11.136 HH equivalen al 5,1 \% de las 217.543 HH de la línea base (11.136 / 
 
 El costo de no conformidad se estima por evento y por especialidad, sin usar importes esperados de un registro de riesgos. Se distingue falla interna, detectada por LafroX antes de entregar, de falla externa, detectada en el uso del CLIENTE. Las cantidades siguientes son dos escenarios de referencia de LafroX para planificar retrabajo: no son mediciones, frecuencia prevista ni reserva autorizada.
 
-En ambos escenarios se supone una corrección acotada que exige un ciclo manual completo de 263 casos a 15 minutos: 263 × 15 / 60 = 65,75 HH, presentado como 65,8 HH. La regresión automática completa dura 8,8 horas transcurridas en un ejecutor; ese tiempo no se suma como si fueran 8,8 HH de una persona. Las HH de preparación, supervisión y análisis de ese ciclo están incluidas en SRE y CAL. Si una corrección modifica la arquitectura, los datos o la superficie de seguridad, se reestima también la campaña especializada afectada.
+En ambos escenarios se supone una corrección acotada que exige un ciclo manual completo de 270 casos a 15 minutos: 270 × 15 / 60 = 67,50 HH, presentado como 67,5 HH. La parte automática de la regresión dura aproximadamente 9,0 horas transcurridas en un ejecutor; ese tiempo no se suma como HH de una persona. Las HH de preparación, supervisión y análisis de ese ciclo están incluidas en SRE y CAL. Si una corrección modifica la arquitectura, los datos o la superficie de seguridad, se reestima también la campaña especializada afectada.
 
 \begin{tablasimple}{Y Y Y Y}
   {\cab{Rol} & \cab{Falla interna, HH/evento} & \cab{Falla externa, HH/evento} & \cab{Desglose de referencia}}
 Desarrollo (DES) & 16 & 24 & Interna: 4 análisis + 8 corrección + 4 pruebas unitarias; externa: 8 + 12 + 4 \\
-Calidad (CAL) & 73,8 & 73,8 & 65,8 de ejecución manual + 4 de análisis + 4 de evidencia \\
+Calidad (CAL) & 75,5 & 75,5 & 67,5 de ejecución manual + 4 de análisis + 4 de evidencia \\
 Operación (SRE) & 4 & 8 & Interna: 2 de restitución + 2 de supervisión; externa: 4 de diagnóstico + 4 de promoción y verificación \\
 Implantación y coordinación (IMP) & 0 & 4 & Comunicación y coordinación con las personas afectadas por la falla externa \\
-\textbf{Total de referencia} & \textbf{93,8} & \textbf{109,8} & HH por evento; no constituyen dotación ni autorización de gasto \\
+\textbf{Total de referencia} & \textbf{95,5} & \textbf{111,5} & HH por evento; no constituyen dotación ni autorización de gasto \\
 \end{tablasimple}
 \fuentesd{Fuente: elaboración a partir de LafroX (2026c, T-13, secciones 8.2 y 8.3); LafroX (2026e, T-15, estimación por rol); los supuestos de esfuerzo por evento explicitados en esta sección 9.C.2.}
 
-Para nI fallas internas y nE externas de este alcance, el esfuerzo de referencia es 93,8 × nI + 109,8 × nE. Un evento de cada tipo representa 203,6 HH. El costo de calidad del escenario sería 11.136 + 203,6 = 11.339,6 HH únicamente si esas horas fueran adicionales y no estuvieran ya incluidas en los paquetes de la línea base. No se adopta ese escenario como pronóstico del contrato: las cantidades nI y nE se revisan con los defectos observados desde las primeras campañas.
+Para nI fallas internas y nE externas de este alcance, el esfuerzo de referencia es 95,5 × nI + 111,5 × nE. Un evento de cada tipo representa 207 HH. El costo de calidad del escenario sería 12.016 + 207 = 12.223 HH únicamente si esas horas fueran adicionales y no estuvieran ya incluidas en los paquetes de la línea base. No se adopta ese escenario como pronóstico del contrato: las cantidades nI y nE se revisan con los defectos observados desde las primeras campañas.
 
 Cada evento registra su requisito, severidad, etapa, causa, versión, HH previstas y reales por rol, pruebas repetidas y paquete de imputación. Se diferencia la repetición causada por el defecto de las pruebas planificadas que ya pertenecen a evaluación. Antes de agregar esfuerzo a la línea base se descuentan las HH ya incluidas y asignadas al mismo trabajo; no se vuelve a sumar la capacidad protegida del T-15 ni la atención correctiva incluida en 8.2.1. El Líder de Calidad informa mensualmente costos internos y externos consumidos y el Jefe de Proyecto autoriza los recursos por control de cambios tras verificar capacidad, sin consumir cobertura de servicio ni reservas protegidas de otro frente.
 
@@ -237,18 +238,18 @@ Las proporciones siguientes comparan prevención y evaluación dentro del subtot
 
 \begin{tablasimple}{>{\hsize=1.052\hsize\linewidth=\hsize}Y >{\hsize=0.974\hsize\linewidth=\hsize}Y >{\hsize=0.974\hsize\linewidth=\hsize}Y}
   {\cab{Categoría} & \cab{HH} & \cab{Proporción}}
-Prevención & 4.224 & 37,9 \% \\
-Evaluación & 6.912 & 62,1 \% \\
-\textbf{Total programado} & \textbf{11.136} & \textbf{100,0 \%} \\
+Prevención & 4.224 & 35,2 \% \\
+Evaluación & 7.792 & 64,8 \% \\
+\textbf{Total programado} & \textbf{12.016} & \textbf{100,0 \%} \\
 \end{tablasimple}
 \fuentesd{Fuente: elaboración a partir de LafroX (2026d, T-14, paquetes de prevención y evaluación); LafroX (2026e, T-15, estimación por paquete y rol); el desglose de la sección 9.C.1.}
 
-Proporciones: 4.224 / 11.136 = 0,3793; 6.912 / 11.136 = 0,6207. El T-15 desglosa campañas por actividad y rol: recuperación inicial 320 HH; siete conmutaciones operacionales de 80 HH (560); intrusión E1/E2 de 320/160 HH. Son estimaciones de planificación, no resultados ejecutados ni valores derivados sólo de la proporción de alcance.
+Proporciones: 4.224 / 12.016 = 0,3515; 7.792 / 12.016 = 0,6485. El T-15 desglosa campañas por actividad y rol: recuperación inicial 320 HH; siete conmutaciones operacionales de 80 HH (560); intrusión E1/E2 de 320/160 HH. Son estimaciones de planificación, no resultados ejecutados ni valores derivados sólo de la proporción de alcance.
 
 \section*{Anexo 9.D — Trazabilidad de los resultados del caso}
 \addcontentsline{toc}{section}{Anexo 9.D — Trazabilidad de los resultados del caso}
 
-La matriz de trazabilidad completa es el entregable del paquete 1.2.4 (H1) y se genera desde el repositorio: cada caso de prueba lleva el identificador de su requisito, cada solicitud de fusión cita el requisito o la incidencia que atiende y cada despliegue registra el digest de su imagen (RT-04.04). En la oferta, la correspondencia entre requisito, componente y sección está en el Formulario T-12.
+La matriz prevista individual está publicada en T-13, sección 8.2, y se indexa en SD9, sección 9.2.5. El entregable 1.2.4 (H1) la completa con las fichas ejecutables y con el registro de evidencias al ejecutar; no parte de un conteo agregado sin identificadores. Su actualización se genera desde el repositorio: cada caso de prueba lleva el identificador de su requisito, cada solicitud de fusión cita el requisito o la incidencia que atiende y cada despliegue registra el digest de su imagen (RT-04.04). En la oferta, la correspondencia entre requisito, componente y sección está en el Formulario T-12.
 
 Este anexo muestra el tramo final de la cadena del Caso, 17.1, para los dieciséis resultados de aceptación: de cada resultado a la prueba que lo ensaya antes de la marcha blanca, al paquete donde se mide y al hito que lo acepta.
 
@@ -256,7 +257,7 @@ Este anexo muestra el tramo final de la cadena del Caso, 17.1, para los diecisé
   {\cab{Resultado} & \cab{Prueba previa (T-13)} & \cab{Paquete de medición} & \cab{Hito de aceptación}}
 R18-01 Retiro sanitario en < 2 h & Simulacro sobre datos sintéticos (sección 7.4) & 4.2.1 & H7 \\
 R18-02 100 \% de recepciones con lote & Casos de recepción; 9A-39 & 4.2.1 & H7 \\
-R18-03 Registro continuo de temperatura & Series con excursiones controladas; bloqueo del despacho (sección 7.4) & 4.2.1 & H7 \\
+R18-03 Registro continuo de temperatura & Banco 2.4.3, mapeo 2.4.4 y piloto 4.1.4; V1–V21 del Anexo 4-W, excursiones y retención por SSCC (T-13, sección 7.4) & 4.2.1 & H7 \\
 R18-04 OTIF medido de una forma & Revisión del modelo analítico; 9A-41 & 4.2.1, 4.3.1 y Operación & Por tramo (meses 15, 19 y 32) \\
 R18-05 Stock y crédito en la preventa & 9A-07 & 4.2.1 & H7 \\
 R18-06 Ningún pedido perdido sin señal & Jornada de 14 h sin señal (sección 7.3); 9A-25 & 4.2.1 & H7 \\
@@ -290,8 +291,8 @@ Las fuentes siguientes sustentan los criterios citados en este documento; sus re
   \item LafroX. (2026a). \emph{Formulario T-10: Metodología de desarrollo de software}. Propuesta técnica, Licitación TFEP-01/2026.
   \item LafroX. (2026b). \emph{Formulario T-12: Matriz de trazabilidad}. Propuesta técnica, Licitación TFEP-01/2026.
   \item LafroX. (2026c). \emph{Formulario T-13: Plan de pruebas y validación}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026d). \emph{Formulario T-14: Estructura de desglose del trabajo}. Propuesta técnica, Licitación TFEP-01/2026.
-  \item LafroX. (2026e). \emph{Formulario T-15: Cronograma y asignación de recursos}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026d). \emph{Formulario T-14: Plan de trabajo, EDT y carta Gantt}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026e). \emph{Formulario T-15: Nivelación de recursos}. Propuesta técnica, Licitación TFEP-01/2026.
   \item LafroX. (2026f). \emph{Formulario T-17: Protocolo de aceptación}. Propuesta técnica, Licitación TFEP-01/2026.
   \item LafroX. (2026i). \emph{Subdocumento 1: Presentación de la empresa}. Propuesta técnica, Licitación TFEP-01/2026.
   \item LafroX. (2026j). \emph{Subdocumento 3: Anexos}. Propuesta técnica, Licitación TFEP-01/2026.

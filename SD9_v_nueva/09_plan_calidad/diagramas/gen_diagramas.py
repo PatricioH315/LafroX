@@ -94,7 +94,7 @@ def fig1():
     n2 = d.box("ISO/IEC 25012<br>datos", 306, 30, 135, 56)
     n4 = d.box("PMBOK cap. 8<br>proceso", 455, 30, 135, 56)
     m1 = d.box("42 métricas de producto y datos (Anexo 9.A)", 160, 150, 160, 56)
-    m2 = d.box("7 métricas de código bloqueantes", 335, 150, 110, 56)
+    m2 = d.box("8 métricas de código bloqueantes", 335, 150, 110, 56)
     m3 = d.box("Métricas de proceso y costo de la calidad", 455, 150, 135, 56)
     c2 = d.box("Pruebas por nivel y ambiente (T-13)", 10, 270, 250, 56)
     c1 = d.box("Puertas G0 a G6", 335, 270, 255, 56)
@@ -119,11 +119,11 @@ def fig2():
     items = [
         ("<b>Funcionalidad</b><br>100 % de requisitos ofertados con prueba aprobada", 0),
         ("<b>Desempeño</b><br>preparación ≤ 1 s · entrega ≤ 2 s · preventa ≤ 1,5 s; p95 a 21,99 TPS", 0),
-        ("<b>Compatibilidad</b><br>15 de 15 integraciones · 0 contratos rotos", 0),
+        ("<b>Compatibilidad</b><br>100 % de E1 · 15 de 15 al cierre E2<br>0 contratos rotos", 0),
         ("<b>Usabilidad</b><br>WCAG 2.2 AA · métricas por perfil<br>guantes a −22 °C · una mano", 0),
         ("<b>Fiabilidad</b><br>99,9 % críticos · 99,95 % infraestructura<br>0 min de 05:30 a 07:00 · RTO ≤ 4 h · RPO ≤ 15 min", 1),
         ("<b>Seguridad</b><br>0 hallazgos críticos o altos abiertos", 1),
-        ("<b>Mantenibilidad</b><br>cobertura 70 % negocio y 80 % global", 1),
+        ("<b>Mantenibilidad</b><br>70 % negocio · 80 % global<br>80 % líneas modificadas", 1),
         ("<b>Portabilidad</b><br>mismo artefacto de QA a Producción", 1),
     ]
     left = [t for t, c in items if c == 0]
@@ -168,7 +168,7 @@ def fig4():
     W = 600
     groups = [
         ("Desarrollo", 0, ["Unitarias y de componente<br>PHPUnit · JUnit 5 · Jest", "Contrato<br>Pact · Spectral"]),
-        ("QA", 100, ["Integración de los 15 flujos", "Sistema y regresión automatizada", "DAST · accesibilidad · carga de regresión"]),
+        ("QA", 100, ["Integración aplicable<br>por etapa", "Sistema y regresión automatizada", "DAST · accesibilidad · carga de regresión"]),
         ("Preproducción", 200, ["Aceptación de usuario", "Carga 1,5× y estrés", "Resiliencia · sitios aislados 24 h<br>gateways de frío", "Migración · despliegue y reversión", "Intrusión por un tercero"]),
         ("Producción", 400, ["Marcha blanca: indicadores diarios"]),
     ]
@@ -313,7 +313,7 @@ def fig9():
     def mx(m):
         return X0 + (m - 1) * PX
 
-    filas = 10
+    filas = 12
     yA = 44
     alto = filas * RH
     for m in CONGELADOS:                      # bandas de congelamiento al fondo
@@ -339,8 +339,8 @@ def fig9():
     d.box("", mx(19), y + 4, 2 * PX, 14, BAR % C_MB)
     y = fila(2, "Operación (36 meses)")
     d.box("", mx(21), y + 4, 36 * PX, 14, BAR % C_OPE)
-    y = fila(3, "Certificaciones 3.8 y 3.9")
-    for a, b in ((9, 10), (16, 17)):
+    y = fila(3, "Certificación y cierre documental")
+    for a, b in ((9, 11), (16, 17)):
         d.box("", mx(a), y + 4, (b - a + 1) * PX, 14, BAR % C_CERT)
     y = fila(4, "Hitos H1 a H12")
     for m in (2, 4, 6, 10, 12, 13, 14, 16, 17, 18, 19, 21):
@@ -358,6 +358,11 @@ def fig9():
     d.box("", mx(13), y + 8, 44 * PX, 6, BAR % C_PUNTO)
     y = fila(9, "Puertas automáticas")
     d.box("", mx(6), y + 8, 51 * PX, 6, BAR % C_PUNTO)
+
+    y = fila(10, "Banco y mapeo de frío")
+    d.box("", mx(3), y + 4, 2 * PX, 14, BAR % C_CERT)
+    y = fila(11, "Piloto de frío (4.1.4)")
+    d.box("", mx(10), y + 4, 2 * PX, 14, BAR % C_CERT)
 
     leyenda(d, yA + alto + 10, [
         ("Desarrollo", BAR % C_DES), ("Marcha blanca", BAR % C_MB),
@@ -379,11 +384,13 @@ def fig10():
     filas = [
         ("1.2.4 · 1.5.1 Matriz y plan", [(2, 2)]),
         ("2.6.1–2.6.3 Usabilidad", [(2, 4)]),
+        ("2.4.3–2.4.4 Banco y mapeo frío", [(3, 4)]),
+        ("4.1.4 Piloto de frío", [(10, 11)]),
         ("3.10.2 INN-02", [(2, 15)]),
         ("1.5.2 Puertas automáticas", [(6, 20)]),
         ("3.7.2–3.7.5 Migración y corte", [(9, 12)]),
         ("3.8.1 Integración E1", [(9, 9)]),
-        ("3.8.2–3.8.8 Certificación E1", [(9, 10)]),
+        ("3.8.2–3.8.8 Pruebas y acta E1", [(9, 11)]),
         ("Evaluadores subcontratados", [(9, 12), (16, 18)]),
         ("4.1.2 Ensayo de reversión", [(11, 11)]),
         ("4.2.1 Marcha blanca E1", [(13, 15)]),
@@ -454,18 +461,18 @@ def fig10v():
     act = {
         1: "—",
         2: "Matriz de trazabilidad (1.2.4) · plan de calidad y de pruebas (1.5.1) · investigación con usuarios (2.6.1) · inicio de INN-02 (3.10.2)",
-        3: "Prototipos y pruebas de usabilidad (2.6.2) · INN-02",
-        4: "Indicadores de usabilidad (2.6.3) · INN-02",
+        3: "Prototipos y usabilidad (2.6.2) · banco de frío (2.4.3) · INN-02",
+        4: "Indicadores de usabilidad (2.6.3) · mapeo de frío (2.4.4) · INN-02",
         5: "INN-02",
         6: "Puertas automáticas activas (1.5.2) · INN-02",
         7: "Puertas automáticas · INN-02",
         8: "Puertas automáticas · INN-02",
         9: "Integración y regresión E1 (3.8.1) · inicio de la certificación E1 (3.8.2–3.8.8) · ensayo de migración 1 (3.7.2) · evaluadores",
-        10: "Certificación E1 y acta (3.8.7) · evaluadores",
-        11: "Ensayo de reversión (4.1.2) · ensayo de migración 2 en Preproducción (3.7.3–3.7.4) · evaluadores",
+        10: "Cierre de pruebas E1 · expediente (3.8.7) · piloto de frío (4.1.4) · evaluadores",
+        11: "Entrega documental H5 (3.8.7) · piloto sin cambios productivos · reversión y migración en Preproducción · evaluadores",
         12: "Acta de conciliación y corte (3.7.5) · evaluadores",
         13: "Marcha blanca E1 con indicadores diarios (4.2.1) · restauración mensual",
-        14: "Marcha blanca E1 · restauración mensual · INN-02",
+        14: "Acta H8 del diseño entregado en febrero · marcha blanca E1 · restauración mensual",
         15: "Marcha blanca E1 · restauración mensual · cierre de INN-02 (3.10.2.4)",
         16: "Integración y regresión E2 (3.9.1) · certificación E2 (3.9.2–3.9.7) · restauración mensual · evaluadores",
         17: "Acta de certificación E2 (3.9.6) · restauración mensual · evaluadores",
