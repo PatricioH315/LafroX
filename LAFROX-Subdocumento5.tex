@@ -1,6 +1,8 @@
 % !TeX program = lualatex
 % Subdocumento 5 (cuerpo). Compilar desde esta carpeta con LuaLaTeX
 \documentclass[carta,firma,final]{lafrox}
+% Los diagramas vectoriales incorporados usan PDF 1.7.
+\pdfvariable minorversion=7
 \usepackage{placeins}
 \datoslafrox{
   documento = {Propuesta Técnica},
@@ -14,6 +16,7 @@
 
 % Formato de portada común, basado en el Subdocumento 1.
 \configurarportadalafrox{Subdocumento 05 \textemdash{} Modelo y gestión de datos}{Subdocumento 05}{Formulario T-7}{LAFROX-Subdocumento5.pdf}{FIRMA_Alex_Aravena_transparente.png}
+\input{ajustes-maquetacion-local.tex}
 \begin{document}
 \portadalafrox
 \preliminareslafrox

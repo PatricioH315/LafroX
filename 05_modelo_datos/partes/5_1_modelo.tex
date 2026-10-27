@@ -19,7 +19,7 @@ M12 captura telemetría, Calidad decide disposición sanitaria. Una excursión m
 
 La Figura 5.1 presenta el MR general con las tablas principales y sus relaciones, agrupadas por dominio, las vistas específicas desarrollan cada parte. Distingue las referencias entre almacenes de las FK físicas y mantiene la vista conceptual de la operación. Las vistas de detalle relacionan productos y lotes con recepción, contenido logístico, custodia, asignaciones del pedido y cumplimiento. El lote se identifica por GTIN canónico+número del proveedor, la unidad tiene UUID interno y SSCC exterior. La composición admite varios lotes por unidad y unidades por lote.
 
-\figurafuente{1.0}{figuras/Fig_5-1_MR_General.pdf}{MR general de datos de la solución}{fig:sd5-mr-general}{elaboración a partir del Caso, RT-05.01/.23 y T-12.}
+\figurafuente{1.0}{figuras/Fig_5-1_MR_General.pdf}{MR general de datos de la solución}{fig:sd5-mr-general}{elaboración a partir del Caso 02 (Distribuidora Puelche S.A., 2026d, sec. 16.1, decisiones 1, 2, 4 y 14, pp. 28–29), RT-05.01/.23 (Distribuidora Puelche S.A., 2026c, cap. 5, pp. 11 y 13) y T-12 (RF-01.07 y RF-09).}
 \FloatBarrier
 
 Cada registro de promesa tiene UUID propio como PK; version ordena sus cambios con unicidad por pedido. La entrega referencia la ORIGINAL del mismo pedido. El pedido conserva ORIGINAL y revisiones como compromisos distintos. Una entrega por pedido admite varios intentos y líneas fragmentadas por asignación/lote/unidad; POD y cobro se vinculan a esos hechos. La cabecera de custodia contiene el evento y su detalle identifica objetos y cantidades. El cliente y sus puntos se desarrollan en 5.1.3 y la Figura 5.8, sin crear una instalación de inventario por cada local de entrega. El documento fiscal emitido por ERP antecede al traslado; el POD acredita el hecho posterior.
@@ -46,14 +46,14 @@ La Figura 5.2 distingue recepción, lote, unidad, contenido, saldo, movimiento y
 \setlength{\paperheight}{8.5in}
 \pagewidth=\paperwidth
 \pageheight=\paperheight
-\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=30pt}
+\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=40pt}
 \setlength{\headwidth}{\textwidth}
 \begin{figure}[p]
   \centering
   \captionsetup{font=footnotesize,skip=3pt}
   \includegraphics[width=\linewidth,height=465bp,keepaspectratio]{figuras/Fig_5-2_Inventario.pdf}
   \caption{Recepción, inventario, lote y unidad logística}\label{fig:sd5-inventario}
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir del Caso y SD4/T-12.}\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir del Caso 02 (Distribuidora Puelche S.A., 2026d, sec. 16.1, decisiones 2 y 14, pp. 28–29) y SD4/T-12 (sec. 4.1.3.6; T-12, RF-01.07 y RF-02).}\par}
 \end{figure}
 \clearpage
 \endgroup
@@ -81,14 +81,14 @@ La Figura 5.3 relaciona pedido, líneas, promesas, asignaciones y misiones; la r
 \setlength{\paperheight}{8.5in}
 \pagewidth=\paperwidth
 \pageheight=\paperheight
-\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=30pt}
+\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=40pt}
 \setlength{\headwidth}{\textwidth}
 \begin{figure}[p]
   \centering
   \captionsetup{font=footnotesize,skip=3pt}
   \includegraphics[width=\linewidth,height=465bp,keepaspectratio]{figuras/Fig_5-3_Pedido_Preparacion.pdf}
   \caption{Pedido, línea, asignación, misión y confirmación de preparación}\label{fig:sd5-pedido}
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de SD3  y SD4.}\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de SD3 (Anexo 3.G, RNG-01/.05/.15) y SD4 (sec. 4.1.4.4).}\par}
 \end{figure}
 \clearpage
 \endgroup
@@ -112,14 +112,14 @@ La Figura 5.4 separa plan de ruta, viaje, parada, entrega e intento. BD\_RUTAS c
 \setlength{\paperheight}{8.5in}
 \pagewidth=\paperwidth
 \pageheight=\paperheight
-\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=30pt}
+\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=40pt}
 \setlength{\headwidth}{\textwidth}
 \begin{figure}[p]
   \centering
   \captionsetup{font=footnotesize,skip=3pt}
   \includegraphics[width=\linewidth,height=465bp,keepaspectratio]{figuras/Fig_5-4_Rutas_Reparto.pdf}
   \caption{Ruta, viaje, paradas, entrega, intento y devolución}\label{fig:sd5-rutas}
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir del Caso y SD4.}\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir del Caso 02 (Distribuidora Puelche S.A., 2026d, sec. 16.1, decisiones 1, 3, 10 y 15, pp. 28–29) y SD4 (secs. 4.1.4.5 y 4.1.4.8).}\par}
 \end{figure}
 \clearpage
 \endgroup
@@ -135,9 +135,9 @@ El vehículo declara capacidades nominales en kg y m³; el punto del cliente con
 \subsection{Trazabilidad sanitaria y cadena de custodia}
 \label{sec:sd5-5-1-7}
 
-La historia térmica por SSCC recorre cámara, andén y compartimento. \texttt{cal\_\allowbreak{}asociacion\_\allowbreak{}ventana} asocia cada unidad logística con el compartimento y el intervalo entre carga y bajada; los eventos SALIDA\_CAMARA y BAJADA\_CAMION delimitan la exposición fuera de frío y el fin de la curva a bordo. \texttt{cal\_\allowbreak{}bloqueo} retiene por SSCC e incidente según la familia, y \texttt{cal\_\allowbreak{}resolucion\_\allowbreak{}calidad} conserva la disposición de Calidad. Una recuperación de temperatura no libera una retención; sin decisión en plazo, el producto vuelve retenido al CD. Estos datos amplían atributos y catálogos de entidades existentes (Anexos 5-A y 5-C).
+La historia térmica por SSCC recorre cámara, andén y compartimento. \texttt{cal\_\allowbreak{}asociacion\_\allowbreak{}ventana} asocia cada unidad logística con el compartimento y el intervalo entre carga y bajada; los eventos SALIDA\_CAMARA y BAJADA\_CAMION delimitan la exposición fuera de frío y el fin de la curva a bordo. \texttt{cal\_\allowbreak{}bloqueo} retiene por SSCC e incidente según la familia, y \texttt{cal\_\allowbreak{}resolucion\_\allowbreak{}calidad} conserva la disposición de Calidad. Una recuperación de temperatura no libera una retención; sin decisión en plazo, el producto vuelve retenido al CD. Estos datos amplían atributos y catálogos de entidades existentes (Anexos 5-A y 5-C). El lote conserva la identidad sanitaria y el SSCC la identidad logística: sus relaciones registran producto, lote y cantidad por unidad y movimiento. La retención térmica se limita a los SSCC expuestos en su ventana; una orden de retiro por lote alcanza todas las unidades y destinos vinculados a ese lote, incluso fuera del incidente térmico (SD3, RNG-04).
 
-Antes de la aprobación de Calidad, \texttt{cal\_\allowbreak{}regla\_\allowbreak{}termica} materializa el rango de ficha como \texttt{PREVENTIVA\_\allowbreak{}FICHA}, con severidad CRITICA y duración cero. No lleva aprobador ni permite liberar: la primera lectura válida fuera de rango retiene el lote. Calidad crea después una versión APROBADA la excursión conserva la regla y ficha efectivamente usadas, sin reinterpretación histórica (5-A, 5-B y 5-C; SD4 4.1.4.8).
+Antes de la aprobación de Calidad, \texttt{cal\_\allowbreak{}regla\_\allowbreak{}termica} materializa el rango de ficha como \texttt{PREVENTIVA\_\allowbreak{}FICHA}, con severidad CRITICA y duración cero. No lleva aprobador ni permite liberar: la primera lectura válida fuera de rango retiene los SSCC expuestos y las cantidades de lote que contienen. Calidad crea después una versión APROBADA; la excursión conserva la regla y ficha efectivamente usadas, sin reinterpretación histórica (5-A, 5-B y 5-C; SD4, sección 4.1.4.2, M9 Calidad y trazabilidad).
 
 La Figura 5.5 relaciona evento, objetos, documentos, sensor, excursión y bloqueo de Calidad. EPCIS 2.0 y CBV 2.0 tienen versiones separadas, perfil\_evento identifica el contrato versionado de la solución descrito en 5-C (GS1, 2022a, 2022b). parent\_event\_id representa causalidad interna y admite NULL en raíz. epcis\_parent\_id identifica el contenedor de una agregación y no un evento causal.
 
@@ -147,14 +147,14 @@ La Figura 5.5 relaciona evento, objetos, documentos, sensor, excursión y bloque
 \setlength{\paperheight}{8.5in}
 \pagewidth=\paperwidth
 \pageheight=\paperheight
-\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=30pt}
+\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=40pt}
 \setlength{\headwidth}{\textwidth}
 \begin{figure}[p]
   \centering
   \captionsetup{font=footnotesize,skip=3pt}
   \includegraphics[width=\linewidth,height=465bp,keepaspectratio]{figuras/Fig_5-5_Custodia_EPCIS.pdf}
   \caption{Cadena de custodia de lote y de unidad logística en formato EPCIS}\label{fig:sd5-custodia}
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de T-12, SD4  y Caso.}\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de T-12 (RF-01.07, RF-09 y RNF-09.02), SD4 (sec. 4.1.4.2) y Caso 02 (Distribuidora Puelche S.A., 2026d, cap. 15, RT-05.23, p. 26).}\par}
 \end{figure}
 \clearpage
 \endgroup
@@ -180,14 +180,14 @@ La Figura 5.6 diferencia cobro, aplicación, cartera, rendición, documento, car
 \setlength{\paperheight}{8.5in}
 \pagewidth=\paperwidth
 \pageheight=\paperheight
-\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=30pt}
+\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=40pt}
 \setlength{\headwidth}{\textwidth}
 \begin{figure}[p]
   \centering
   \captionsetup{font=footnotesize,skip=3pt}
   \includegraphics[width=\linewidth,height=465bp,keepaspectratio]{figuras/Fig_5-6_Cobro_Documentos.pdf}
   \caption{Cobro, rendición, cuenta corriente de envases y documento tributario}\label{fig:sd5-cobro}
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de Bases Técnicas Transversales y Caso y SD4.}\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de Bases Técnicas Transversales y Caso 02 (Distribuidora Puelche S.A., 2026c, RT-16.09, p. 29; 2026d, RT-16.14, p. 27 y decisiones 6/12, p. 28) y SD4 (Anexo 4-U).}\par}
 \end{figure}
 \clearpage
 \endgroup
@@ -224,7 +224,7 @@ La Figura 5.10 distingue ingesta térmica cruda en DynamoDB, archivo detallado S
 
 S4, Anexo 4-W.4, fija 127.848 lecturas/día: 6.048 de cámaras, 73.080 de las tres sondas de cada camión, 24.360 de termógrafos y 24.360 de sensores independientes. INT-05 ingiere 30.548 mensajes/día: 6.048 de cámaras, 24.360 del gateway, 112 eventos y 28 descargas. Los 3 gateways de cámara y los 28 gateways de camión usan Greengrass; las reservas no agregan ingesta ordinaria. La temperatura ocupa 6,77 GB/año en crudo, 33,83 GB en cinco años y 1,69 GB/año almacenado; DynamoDB de treinta días ocupa 0,556 GB. Los 8.120 mensajes satelitales diarios de flota (290 por camión) se concilian con el camino móvil sin duplicar hechos.
 
-GPS permanece en sa-east-1, raw treinta días y plazo personal total doce meses, sin réplica internacional. La posición no se confunde con geocerca de configuración. S3\_DOCS conserva originales por clase; ElastiCache contiene lectura reconstruible y Room/SQLite conserva además hechos/evidencias durables. Las claves, vigencias y purgas están en 5-G.
+GPS permanece en sa-east-1, raw treinta días y plazo personal total doce meses, sin réplica internacional. La posición no se confunde con geocerca de configuración. Para los 42 camiones propios se integra el proveedor existente mediante INT-15; para los 54 de transportistas, M12 recibe la posición y el tiempo del terminal C-02 de reparto. La vinculación al vehículo, la marca de tiempo, la fuente GPS/CELULAR y la precisión se conservan en el modelo de posición de 5-A, Tabla A.9. Los registros sin enlace se sincronizan después; no se declara cobertura en tiempo real permanente ni un contrato de telemetría del proveedor para los externos (SD3, RF-14.01 a RF-14.04 y S-19; SD4, T-11, C-02). S3\_DOCS conserva originales por clase; ElastiCache contiene lectura reconstruible y Room/SQLite conserva además hechos/evidencias durables. Las claves, vigencias y purgas están en 5-G.
 
 \subsection{Modelo lógico del dominio analítico}
 \label{sec:sd5-5-1-11}
@@ -237,14 +237,14 @@ La Figura 5.7 define hechos y dimensiones para analizar servicio, inventario, co
 \setlength{\paperheight}{8.5in}
 \pagewidth=\paperwidth
 \pageheight=\paperheight
-\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=30pt}
+\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=40pt}
 \setlength{\headwidth}{\textwidth}
 \begin{figure}[p]
   \centering
   \captionsetup{font=footnotesize,skip=3pt}
   \includegraphics[width=\linewidth,height=465bp,keepaspectratio]{figuras/Fig_5-7_Dimensional.pdf}
   \caption{Modelo dimensional de explotación}\label{fig:sd5-dimensional}
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de T-12 y SD3 y Caso.}\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de T-12 y SD3 (RF-11.06/.07 y Anexo 3.G, RNG-09) y Caso 02 (Distribuidora Puelche S.A., 2026d, cap. 18, criterios 4 y 11, pp. 34–35).}\par}
 \end{figure}
 \clearpage
 \endgroup
@@ -286,14 +286,14 @@ La Figura 5.8 desarrolla maestros e identidades compartidas descritos en 5.1.3, 
 \setlength{\paperheight}{8.5in}
 \pagewidth=\paperwidth
 \pageheight=\paperheight
-\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=30pt}
+\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=40pt}
 \setlength{\headwidth}{\textwidth}
 \begin{figure}[p]
   \centering
   \captionsetup{font=footnotesize,skip=3pt}
   \includegraphics[width=\linewidth,height=465bp,keepaspectratio]{figuras/Fig_5-8_Maestros.pdf}
   \caption{Maestros e identidades compartidas}\label{fig:sd5-maestros}
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de SD3/T-12, SD4 y RT-05.01.}\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de SD3/T-12 (RF-01 y Anexo 3.G), SD4 (sec. 4.1.5) y RT-05.01 (Distribuidora Puelche S.A., 2026c, cap. 5, p. 11).}\par}
 \end{figure}
 \clearpage
 \endgroup
@@ -312,14 +312,14 @@ La Figura 5.9 desarrolla EDI, notificaciones y gobierno descritos en 5.1.9, con 
 \setlength{\paperheight}{8.5in}
 \pagewidth=\paperwidth
 \pageheight=\paperheight
-\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=30pt}
+\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=40pt}
 \setlength{\headwidth}{\textwidth}
 \begin{figure}[p]
   \centering
   \captionsetup{font=footnotesize,skip=3pt}
   \includegraphics[width=\linewidth,height=465bp,keepaspectratio]{figuras/Fig_5-9_EDI_Notif_Gobierno.pdf}
   \caption{EDI, notificaciones y gobierno}\label{fig:sd5-edi}
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de SD3/T-12, SD4  y RT-16.20/.23.}\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de SD3/T-12 (RF-10 y RF-18.03), SD4 (Anexo 4-H) y RT-16.20/.23 (Distribuidora Puelche S.A., 2026c, cap. 16, pp. 29–30).}\par}
 \end{figure}
 \clearpage
 \endgroup
@@ -338,13 +338,13 @@ La Figura 5.10 desarrolla telemetría, copias de consulta y objetos descritos en
 \setlength{\paperheight}{8.5in}
 \pagewidth=\paperwidth
 \pageheight=\paperheight
-\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=30pt}
+\newgeometry{layoutwidth=13in,layoutheight=8.5in,left=2cm,right=2cm,top=2cm,bottom=2.2cm,headheight=27pt,headsep=16pt,footskip=40pt}
 \setlength{\headwidth}{\textwidth}
 \begin{figure}[p]
   \centering
   \includegraphics[width=\linewidth,height=450bp,keepaspectratio]{figuras/Fig_5-10_Telemetria_Cache.pdf}
   \caption{Telemetría, copias de consulta y objetos}\label{fig:sd5-telemetria}
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de SD3/T-12, SD4 y RT-05.07/.08.}\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de SD3/T-12 (RF-09.03/.04), SD4 (secs. 4.1.3.6 y 4.1.4.2) y RT-05.07/.08 (Distribuidora Puelche S.A., 2026c, cap. 5, p. 12).}\par}
 \end{figure}
 \clearpage
 \endgroup
