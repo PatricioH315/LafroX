@@ -24,7 +24,7 @@ M12 & I: uso de GPS fuera de finalidad. & Rol, ruta, retención y consulta audit
 
 \begin{tablalafrox}{Amenazas en fronteras y terceros}{tab:amenazas-fronteras}{F{0.22} F{0.24} Y}{\cab{Elemento} & \cab{Amenaza} & \cab{Control y evidencia de aceptación}}
 INT-06/\allowbreak 07, ACL y ERP & T/\allowbreak R: documento duplicado o incierto. & Clave por carga, consulta antes de reintento y estado explícito, AL-DTE-01. \\
-INT-08/\allowbreak OpenAS2 & S/\allowbreak T: contraparte falsa o mensaje cambiado. & Certificado registrado, firma y MDN, certificados desconocidos y hash alterado. \\
+INT-08/\allowbreak OpenAS2 & S/\allowbreak T/\allowbreak D: contraparte falsa, mensaje cambiado o saturación del canal. & Certificado registrado, firma y MDN, certificados desconocidos y hash alterado; WAF con lista de IP y límite de tasa, y Shield Advanced en la distribución AS2. \\
 INT-09/\allowbreak POS & T/\allowbreak R: doble cobro por timeout. & Clave de cargo, consulta y conciliación, respuesta tardía después de alternativa. \\
 INT-10/\allowbreak GIS/\allowbreak optimizador & D/\allowbreak T: cuotas o ruta manipulada. & Timeout, límites, ruta aprobada y comprobación de restricciones. \\
 INT-11/\allowbreak avisos & I/\allowbreak T: revelar pedido o avisar tarde. & Consentimiento/\allowbreak canal, mínimo dato y vigencia, aviso vencido. \\

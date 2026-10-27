@@ -213,7 +213,7 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 
 \subsection*{ADR-11. Integración B2B/EDI}
 \label{sub:adr-11}
-\textbf{Decisión adoptada.} M11 traduce EANCOM/GS1 XML y EPCIS por cadena. OpenAS2 gestiona firma, cifrado y MDN. ERP se alcanza por ACL.
+\textbf{Decisión adoptada.} M11 traduce EANCOM/GS1 XML y EPCIS por cadena. OpenAS2 gestiona firma, cifrado y MDN, y se publica por una distribución propia de CloudFront con AWS WAF y Shield Advanced hacia un ALB interno. ERP se alcanza por ACL.
 
 \textbf{Alternativas evaluadas.} Punto a punto por cadena duplica adaptadores, delegar EDI al ERP expone su frontera.
 
@@ -221,9 +221,9 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 
 \textbf{Consecuencias.} Los perfiles de cadena se versionan y las excepciones quedan trazables.
 
-\textbf{Evidencia exigida.} Interoperabilidad por cadena con TLS 1.3, certificados, MDN y rechazo comercial.
+\textbf{Evidencia exigida.} Interoperabilidad por cadena con TLS 1.3, certificados, MDN síncrono dentro de 60 s y rechazo comercial.
 
-\textbf{Requisitos que la sustentan.} RT-11.08, RF-12.03, RF-12.06; Caso, canal moderno.
+\textbf{Requisitos que la sustentan.} RT-11.07, RT-11.08, RF-12.03, RF-12.06; Caso, canal moderno.
 
 \subsection*{ADR-12. Capacidad y peak}
 \label{sub:adr-12}

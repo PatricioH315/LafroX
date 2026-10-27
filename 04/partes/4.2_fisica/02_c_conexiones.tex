@@ -47,7 +47,7 @@ La Tabla~\ref{tab:conexiones} resume cada conexión con su medio, su camino alte
   Kit de camión y TC58e & Móvil de Entel y Claro e Iridium SBD en paralelo, ambos bidireccionales; Wi-Fi local y Bluetooth & Cola hasta A2, archivo 72 h y memoria de registradores; protección local sin red & Sin conmutación entre móvil y satélite: ambos activos \\
   Usuarios externos con los portales & Internet, HTTPS por CloudFront & Portal de Clientes instalado, que conserva el pedido hasta reconectar & No aplica \\
   Oficinas y trabajo remoto con las consolas & Internet, HTTPS por Verified Access & Otra conexión a Internet & No aplica \\
-  Cadenas con el canal AS2 & Internet, TLS 1.3 al Network Load Balancer & Reenvío AS2 hasta el acuse MDN & No aplica \\
+  Cadenas con el canal AS2 & Internet, HTTPS con TLS 1.3 por CloudFront & Reenvío AS2 hasta el acuse MDN & No aplica \\
   Región primaria con la secundaria & Replicación nativa de Aurora, DynamoDB y S3 & Respaldo inmutable & Promoción autorizada \\
 \end{tablalafrox}
 
@@ -67,13 +67,13 @@ La Tabla~\ref{tab:superficie} delimita las únicas entradas desde redes externas
   Portales y API & \texttt{clientes.\textless{}dominio\textgreater{}}, \texttt{transportistas.\textless{}dominio\textgreater{}}, \texttt{proveedores.\textless{}dominio\textgreater{}} y \texttt{api.\textless{}dominio\textgreater{}} & CloudFront, HTTPS 443 & Clientes, transportistas, proveedores y terminales de terreno & WAF, protección contra bots, Shield Advanced y autorizador \\
   Identidad & \texttt{id.\textless{}dominio\textgreater{}} & OIDC de Keycloak por CloudFront, HTTPS 443 & Personas usuarias & WAF y límites de tasa \\
   Consolas & \texttt{consola.\textless{}dominio\textgreater{}} y \texttt{admin-id.\textless{}dominio\textgreater{}} (administración de Keycloak) & Verified Access, HTTPS 443 & Oficina y trabajo remoto & Identidad, MFA y postura \\
-  Canal AS2 & \texttt{as2.\textless{}dominio\textgreater{}} & Network Load Balancer, TCP 443 con TLS 1.3 & Cadenas registradas & Lista de IP, certificados, firma y MDN \\
+  Canal AS2 & \texttt{as2.\textless{}dominio\textgreater{}} & CloudFront, HTTPS 443, hacia un ALB interno & Cadenas registradas & WAF con lista de IP, Shield Advanced, certificados, firma y MDN \\
   Túneles de sitio & Sin nombre de dominio: dos direcciones IP públicas de AWS por túnel, registradas en los firewalls & VPN del Transit Gateway, IPsec UDP 500 y 4500 & Firewalls D-01 de los cinco sitios & Autenticación IKE y cifrado IPsec \\
 \end{tablalafrox}
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-02-c-conexiones}--\pageref*{fuente-02-c-conexiones-fin}).\par}
 
-La tabla excluye toda otra entrada desde fuera de la red del CLIENTE. En recuperación ante desastres se mantienen los nombres de dominio y se redirigen las entradas cuyo servicio y dependencias hayan sido restituidos y validados en us-east-1. La promoción de Aurora no recupera por sí sola todos los canales: la cobertura por servicio se distingue en 4.3.2.5 y en el Formulario T-11. MDM, EDR, SII, Transbank, GIS, notificaciones y telemetría de flota son dependencias de salida, detalladas en el Formulario T-11.
+La tabla excluye toda otra entrada desde fuera de la red del CLIENTE. En recuperación ante desastres se mantienen los nombres de dominio y se redirigen las entradas cuyo servicio y dependencias hayan sido restituidos y validados en us-east-1. La promoción de Aurora no recupera por sí sola todos los canales: la cobertura por servicio se distingue en 4.3.2.5 y en el Formulario T-11. MDM, EDR, SII, Transbank, GIS, notificaciones y telemetría de flota son dependencias de salida, detalladas en el Formulario T-11. El canal AS2 entrega el MDN síncrono dentro del tiempo de espera de 60 s del origen de CloudFront, y los mensajes que no alcanzan ese plazo usan MDN asíncrono. Los envíos AS2 de LafroX a las cadenas salen por las IP fijas del NAT Gateway. Si una cadena exige direcciones de destino fijas, se habilitan las IP estáticas Anycast de CloudFront para esa distribución.
 
 \subsection{Puntos de falla en los sitios y en los enlaces}
 

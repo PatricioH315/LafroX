@@ -74,7 +74,7 @@ Los siguientes 37 identificadores complementan los doce módulos: el inventario 
  UI-HHT  &  Terminales de bodega  &  preparación y disposición sanitaria autorizada  &  INT-03 / API local  &  C-03 y A-01 en los cinco sitios, perfiles separados para M1/M2/M5 y Calidad en M9.  \\
  UI-WEB  &  Portales Angular  &  Administración, portales  &  API autorizada  &  N-01 a N-03 y frontend N-04 en nube. Roles por empresa  \\
  BOR-PUB  &  CloudFront / AWS WAF / AWS Shield Advanced  &  seguridad  &  HTTPS  &  N-01 a N-03 y N-12 en nube. Entrada pública única  \\
- BOR-B2B  &  Superficie AS2  &  canal moderno  &  INT-08  &  N-04, OpenAS2 y NLB en nube. Contrapartes registradas  \\
+ BOR-B2B  &  Superficie AS2  &  canal moderno  &  INT-08  &  N-04, OpenAS2 tras CloudFront, WAF y ALB interno en nube. Contrapartes registradas  \\
  GW-CENT  &  REST API / authorizer  &  plataforma  &  API / sincronización  &  N-04 y N-12, API Gateway y authorizer en nube. ADR-13  \\
  GW-LOCAL  &  Puerta API de sitio  &  WMS  &  INT-03  &  A-01 en VM-01, VM-C01 y E-01. Validación sin WAN  \\
  AUTH-CENT  &  Keycloak  &  seguridad  &  INT-13 / OIDC  &  A-05 en Fargate y N-05 en nube. Autoridad de identidad  \\
