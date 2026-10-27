@@ -31,7 +31,7 @@ Estas líneas se apoyan en dos capacidades operativas:
     \item \textbf{Centro de Operaciones y Mesa de Servicios:} Desde Valparaíso, LafroX mantiene el Centro de Operaciones de Red (NOC), que supervisa la infraestructura, el Centro de Operaciones de Seguridad (SOC), que vigila y analiza amenazas, y la Mesa de Servicios, que recibe consultas, solicitudes e incidentes de los usuarios. La mesa presta atención inicial y deriva los casos que requieren intervención especializada mediante niveles de escalamiento L1, L2 y L3. La cobertura de cada servicio se define en el acuerdo con su cliente.
 \end{itemize}
 
-La capacidad instalada combina equipos asignados a las especialidades y puestos compartidos del Centro de Operaciones. La Tabla~\ref{tab:equipamiento_corporativo} presenta el inventario corporativo de trabajo. El equipamiento que se suministra al cliente se detalla por separado en el Formulario T-11 del Subdocumento 4 (LafroX, 2026a).
+La capacidad instalada combina equipos asignados a las especialidades y puestos compartidos del Centro de Operaciones. La Tabla~\ref{tab:equipamiento_corporativo} presenta el inventario corporativo de trabajo. El equipamiento que se suministra al cliente se detalla por separado en el Formulario T-11 del Subdocumento 4.
 
 \begin{table}[H]
 \centering
@@ -191,11 +191,11 @@ El gobierno interno define quién revisa la calidad, quién decide sobre segurid
 \subsection{Modelo de Gobierno de Calidad}
 LafroX dispone de un Sistema de Gestión de Calidad certificado conforme a ISO 9001:2015 y de una evaluación de madurez de sus procesos de desarrollo bajo CMMI-DEV Nivel 3. Los antecedentes, el alcance y la vigencia declarados se identifican en 1.4.
 
-El Sistema de Gestión de Calidad organiza el diseño, desarrollo, implementación, integración y soporte del software mediante procedimientos, responsables y registros de control. La evaluación CMMI se refiere a la madurez de esos procesos. La aplicación de RUP, proceso de desarrollo iterativo, y DevSecOps, integración de desarrollo, seguridad y operación, a este proyecto se detalla en el Subdocumento 6 (LafroX, 2026b, sección 6.2).
+El Sistema de Gestión de Calidad organiza el diseño, desarrollo, implementación, integración y soporte del software mediante procedimientos, responsables y registros de control. La evaluación CMMI se refiere a la madurez de esos procesos. La aplicación de RUP, proceso de desarrollo iterativo, y DevSecOps, integración de desarrollo, seguridad y operación, a este proyecto se detalla en el Subdocumento 6 (sección 6.2).
 
 \begin{itemize}
     \item \textbf{Instancia colegiada:} El Jefe de Aseguramiento de Calidad (QA) preside el Comité de Calidad y Procesos. El comité se reúne mensualmente con los líderes de proyecto para revisar el cumplimiento de los procedimientos, los defectos detectados y las acciones correctivas.
-    \item \textbf{Políticas y controles de ingeniería:} El flujo de integración y entrega continua (CI/CD) incluye controles automáticos de calidad. La política corporativa exige cobertura unitaria global de al menos 80\%, análisis estático sin hallazgos bloqueantes y conformidad con el estilo de código. El análisis estático detecta problemas sin ejecutar el programa y el control de estilo revisa su formato. Para este proyecto se verifican además, de forma independiente, una cobertura mínima del 70\% de la lógica de negocio (Bases Técnicas Transversales, RT-04.11) y del 80\% del código modificado en cada cambio, ambas en el Formulario T-10.
+    \item \textbf{Políticas y controles de ingeniería:} El flujo de integración y entrega continua (CI/CD) incluye controles automáticos de calidad. La política corporativa exige cobertura unitaria global de al menos 80\%, análisis estático sin hallazgos bloqueantes y conformidad con el estilo de código. El análisis estático detecta problemas sin ejecutar el programa y el control de estilo revisa su formato. Para este proyecto se verifican además, de forma independiente, una cobertura mínima del 70\% de la lógica de negocio (Bases Técnicas Transversales, cap. 4, RT-04.11, p. 11) y del 80\% del código modificado en cada cambio, ambas en el Formulario T-10.
     \item \textbf{Auditorías internas:} Se ejecutan auditorías internas trimestrales a cargo de auditores líderes certificados, orientadas a evaluar la trazabilidad entre requerimientos, código y matrices de prueba.
 \end{itemize}
 
@@ -207,7 +207,7 @@ LafroX gestiona la seguridad mediante su Sistema de Gestión de Seguridad de la 
     \item \textbf{Continuidad operacional:} Los planes de continuidad de negocio (BCP) y recuperación ante desastres (DRP) se prueban semestralmente mediante interrupciones controladas. Los ejercicios verifican los objetivos de restitución de hasta cuatro horas y pérdida de datos de hasta quince minutos.
 \end{itemize}
 
-En el proyecto de Puelche, las pruebas de intrusión previas a cada paso a producción complementan las revisiones periódicas. Un tercero independiente de LafroX las realizará, con frecuencia al menos anual durante la Operación y antes de cada paso a producción. Cada informe se entregará íntegro al CLIENTE junto con el plan de remediación, sus responsables y sus plazos (Distribuidora Puelche S.A., 2026b, RT-11.20, p. 24).
+En el proyecto de Puelche, las pruebas de intrusión previas a cada paso a producción complementan las revisiones periódicas. Un tercero independiente de LafroX las realizará, con frecuencia al menos anual durante la Operación y antes de cada paso a producción. Cada informe se entregará íntegro al CLIENTE junto con el plan de remediación, sus responsables y sus plazos (Bases Técnicas Transversales, RT-11.20, p. 24).
 
 \subsection{Modelo de Gobierno de Gestión del Conocimiento}
 La gestión del conocimiento busca que la operación no dependa de una sola persona. LafroX conserva las decisiones y los procedimientos mediante dos prácticas:
@@ -228,20 +228,20 @@ Los antecedentes institucionales declarados son los siguientes:
     \item \textbf{ISO/IEC 20000-1:2018 (Sistema de Gestión de Servicios de TI):} Certificado N° CL21/8190 emitido por SGS (SGS, 2024). Alcance: ``Provisión de servicios de TI, gestión de incidentes y mesa de ayuda 24$\times$7 para infraestructuras logísticas críticas''. Vigente hasta mayo de 2027.
 \end{itemize}
 
-Las certificaciones con vencimiento durante el contrato se renuevan mediante auditoría de recertificación ante el mismo organismo antes de su fecha de término: ISO/IEC 27001 antes de enero de 2027, ISO/IEC 20000-1 antes de mayo de 2027 e ISO 9001 antes de noviembre de 2028. La evaluación CMMI-DEV se renueva con una nueva evaluación Benchmark antes de noviembre de 2026, y su renovación se presenta ante la Contraparte Técnica junto con la línea base del H1. Mientras no se acredite, el proyecto no invoca ese nivel como garantía y se rige por los procesos auditados bajo ISO 9001. LafroX acredita la vigencia de cada certificado ante la Contraparte Técnica durante los 56 meses del contrato. Las Bases Técnicas Transversales admiten, para ISO/IEC 27001, un certificado vigente o un plan de certificación con hitos dentro de los primeros doce meses, y para ISO/IEC 20000-1 un certificado vigente o un plan declarado (Distribuidora Puelche S.A., 2026b, sección 15.2; 2026a, Art. 34°). LafroX supera ese mínimo: acredita ambos certificados vigentes a la fecha de la oferta, junto con ISO 9001.
+Las certificaciones con vencimiento durante el contrato se renuevan mediante auditoría de recertificación ante el mismo organismo antes de su fecha de término: ISO/IEC 27001 antes de enero de 2027, ISO/IEC 20000-1 antes de mayo de 2027 e ISO 9001 antes de noviembre de 2028. La evaluación CMMI-DEV se renueva con una nueva evaluación Benchmark antes de noviembre de 2026, y su renovación se presenta ante la Contraparte Técnica junto con la línea base del H1. Mientras no se acredite, el proyecto no invoca ese nivel como garantía y se rige por los procesos auditados bajo ISO 9001. LafroX acredita la vigencia de cada certificado ante la Contraparte Técnica durante los 56 meses del contrato. Las Bases Técnicas Transversales admiten, para ISO/IEC 27001, un certificado vigente o un plan de certificación con hitos dentro de los primeros doce meses, y para ISO/IEC 20000-1 un certificado vigente o un plan declarado (Bases Técnicas Transversales, sección 15.2, pp. 27--28; Bases Administrativas, Art. 34, p. 22). LafroX supera ese mínimo: acredita ambos certificados vigentes a la fecha de la oferta, junto con ISO 9001.
 
-En concordancia con el artículo 34 de las Bases Administrativas (Distribuidora Puelche S.A., 2026a) y con las reglas de entrega de formularios (Distribuidora Puelche S.A., 2026d, sección 1), LafroX presenta en el Formulario T-6 el detalle de tres proyectos finalizados en los últimos cinco años y en operación continua, los cuales demuestran experiencia en complejidad técnica y volumétrica equivalente a la del caso:
+En concordancia con el artículo 34 de las Bases Administrativas y con las reglas de entrega de formularios (Aclaraciones de la licitación, sección 1), LafroX presenta en el Formulario T-6 el detalle de tres proyectos finalizados en los últimos cinco años y en operación continua, los cuales demuestran experiencia en complejidad técnica y volumétrica equivalente a la del caso:
 \begin{enumerate}
     \item \textbf{Sistema Híbrido de Reparto y Gestión Logística (LogiNacional S.A.):} Ejecutado entre 2021 y 2022, integró un núcleo logístico modular, ERP y facturación electrónica sobre nube pública y servidores de borde en 14 centros de distribución. Soporta 420 camiones y 22.000 entregas diarias bajo SLA contractual de 99,5\%.
     \item \textbf{Plataforma de Telemetría y Cadena de Frío IoT (FarmaRed S.A.):} Ejecutada entre 2022 y 2023, monitorea cámaras a $-22\,^{\circ}\mathrm{C}$ y una flota refrigerada; procesa más de 12 millones de mediciones mensuales bajo SLA de 99,9\%.
     \item \textbf{Sistema Móvil de Preventa y Ruteo Desconectado (Comercializadora Lácteos del Sur S.A.):} Ejecutado entre 2023 y 2024, habilita a 280 preventistas y procesa 18.000 transacciones comerciales diarias mediante sincronización determinista en diferido y políticas de crédito locales.
 \end{enumerate}
 
-La Tabla~\ref{tab:equivalencia} compara la flota, los sitios, la preventa y la temperatura de trabajo de las referencias con Puelche. Los valores operacionales del caso proceden de sus secciones 2.2 a 2.4 (Distribuidora Puelche S.A., 2026c, pp. 4–5). La disponibilidad se incluye para distinguir los SLA históricos de la exigencia de infraestructura de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b, sección 6.1, p. 14, y sección 7.2, pp. 17–18).
+La Tabla~\ref{tab:equivalencia} compara la flota, los sitios, la preventa y la temperatura de trabajo de las referencias con Puelche. Los valores operacionales del caso proceden de sus secciones 2.2 a 2.4 (Bases Técnicas del caso, pp. 4–5). La disponibilidad se incluye para distinguir los SLA históricos de la exigencia de infraestructura de las Bases Técnicas Transversales (Bases Técnicas Transversales, sección 6.1, p. 14, y sección 7.2, pp. 17–18).
 
 \begin{table}[H]
 \centering
-\caption[Equivalencia entre el caso y los proyectos del Formulario T-6.]{Equivalencia entre el caso y los proyectos del Formulario T-6. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b y 2026c) y del Formulario T-6.}
+\caption[Equivalencia entre el caso y los proyectos del Formulario T-6.]{Equivalencia entre el caso y los proyectos del Formulario T-6. Fuente: (Bases Técnicas Transversales, secciones 6.1 y 7.2, pp. 14, 17--18; Bases Técnicas del caso, secciones 2.2--2.4, pp. 4--5) y del Formulario T-6.}
 \label{tab:equivalencia}
 \small
 \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{3.6cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{2.4cm} >{\raggedright\arraybackslash}X}
@@ -283,7 +283,7 @@ Los tres primeros clientes corresponden a los proyectos detallados en el T-6. La
 
 \section{Estructura para Proyecto}
 
-La organización del proyecto mantiene una jefatura responsable durante los 56 meses del contrato, que incluyen los 36 meses de operación desde el mes 21, y separa la dirección de las especialidades técnicas (Distribuidora Puelche S.A., 2026a, Art. 17°).
+La organización del proyecto mantiene una jefatura responsable durante los 56 meses del contrato, que incluyen los 36 meses de operación desde el mes 21, y separa la dirección de las especialidades técnicas (Bases Administrativas, Art. 17, pp. 12--13).
 
 El proyecto será liderado de forma exclusiva y continua por el Jefe de Proyecto nominado, \textbf{Alex Aravena}, quien actuará como interlocutor único frente a la contraparte técnica y directiva del cliente. Reportando directamente al Jefe de Proyecto, se constituye un comité técnico compuesto por siete líderes de dominio especializados, que cubren los roles mínimos del numeral 19.2 de las Bases Técnicas Transversales según la Tabla~\ref{tab:roles_minimos}:
 \begin{itemize}
@@ -292,15 +292,15 @@ El proyecto será liderado de forma exclusiva y continua por el Jefe de Proyecto
     \item \textbf{Líder de Datos (Leandro Chamorro):} Responsable de la modelación relacional, la estrategia de migración y la reconciliación determinista de inventarios.
     \item \textbf{Líder de Desarrollo (Tomás Pérez):} Responsable del desarrollo del monolito modular Laravel/PHP definido en el Subdocumento 4, con perfiles de ejecución y escalamiento de sus componentes críticos, de los componentes móviles y del canal de entrega continua.
     \item \textbf{Líder de Calidad (Maximiliano Miño):} Responsable del plan de pruebas, automatización y cumplimiento de los umbrales de aseguramiento de calidad ISO/IEC 25010.
-    \item \textbf{Líder de Operación / SRE (Guillermo Castillo):} Responsable de la disponibilidad continua 24$\times$7, observabilidad de infraestructura y gestión de niveles de servicio. Durante la Operación es, además, el gerente de servicio dedicado y la contraparte permanente del CLIENTE (Distribuidora Puelche S.A., 2026b, RT-21.02).
+    \item \textbf{Líder de Operación / SRE (Guillermo Castillo):} Responsable de la disponibilidad continua 24$\times$7, observabilidad de infraestructura y gestión de niveles de servicio. Durante la Operación es, además, el gerente de servicio dedicado y la contraparte permanente del CLIENTE (Bases Técnicas Transversales, cap. 21, RT-21.02, p. 35).
     \item \textbf{Líder de Implantación y Gestión del Cambio (Patricio Henríquez):} Responsable de la adopción en terreno, capacitación de preventistas y conductores, y marchas blancas.
 \end{itemize}
 
-La Tabla~\ref{tab:roles_minimos} resume la asignación y el período de participación de los diez roles del numeral 19.2 (Distribuidora Puelche S.A., 2026b). Las funciones se explican en el texto anterior; aquí se comparan responsables y dedicaciones, sin repetir su descripción.
+La Tabla~\ref{tab:roles_minimos} resume la asignación y el período de participación de los diez roles del numeral 19.2 (Bases Técnicas Transversales, cap. 19, pp. 33--34). Las funciones se explican en el texto anterior; aquí se comparan responsables y dedicaciones, sin repetir su descripción.
 
 \begin{table}[H]
 \centering
-\caption[Asignación y dedicación de los roles del proyecto.]{Asignación y dedicación de los roles del proyecto. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b, numeral 19.2).}
+\caption[Asignación y dedicación de los roles del proyecto.]{Asignación y dedicación de los roles del proyecto. Fuente: (Bases Técnicas Transversales, numeral 19.2, pp. 33--34).}
 \label{tab:roles_minimos}
 \small
 \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{4.1cm} >{\raggedright\arraybackslash}p{3.2cm} >{\raggedright\arraybackslash}X}
@@ -325,9 +325,9 @@ Los diez roles se distribuyen entre ocho personas: Trejo asume Arquitectura e In
 
 La participación de Operación desde el mes 1 cubre el mínimo de incorporación desde el mes 6; Implantación participa desde el mes 1 y cubre el mínimo del mes 8. Si la carga de las marchas blancas lo requiere, se nomina un Líder de Implantación separado sin reducir la dedicación del Líder Funcional. La experiencia y las cartas de compromiso se acreditan conforme a las Bases. Durante los meses 1--4, Desarrollo trabaja en diseño y prototipos, antes de la construcción.
 
-Alex Aravena, Jefe de Proyecto y apoderado de LafroX, tendrá facultades para comprometer al ADJUDICATARIO en materias de ejecución durante toda la implementación, manteniendo la dedicación exclusiva declarada. Los cambios de alcance, plazo o costo se someterán a las instancias de aprobación previstas (Distribuidora Puelche S.A., 2026b, RT-19.02).
+Alex Aravena, Jefe de Proyecto y apoderado de LafroX, tendrá facultades para comprometer al ADJUDICATARIO en materias de ejecución durante toda la implementación, manteniendo la dedicación exclusiva declarada. Los cambios de alcance, plazo o costo se someterán a las instancias de aprobación previstas (Bases Técnicas Transversales, cap. 19, RT-19.02, p. 33).
 
-LafroX mantendrá vigentes las certificaciones del equipo asignado durante todo el contrato y, ante la salida de una persona certificada, propondrá un reemplazo de perfil igual o superior, con certificación vigente y dedicación equivalente. El reemplazo requerirá autorización previa y escrita del CLIENTE, acreditación documental y traslape mínimo de quince días hábiles, sin costo adicional (Distribuidora Puelche S.A., 2026b, RT-15.09; 2026a, Art. 76°).
+LafroX mantendrá vigentes las certificaciones del equipo asignado durante todo el contrato y, ante la salida de una persona certificada, propondrá un reemplazo de perfil igual o superior, con certificación vigente y dedicación equivalente. El reemplazo requerirá autorización previa y escrita del CLIENTE, acreditación documental y traslape mínimo de quince días hábiles, sin costo adicional (Bases Técnicas Transversales, cap. 15, RT-15.09, p. 28; Bases Administrativas, Art. 76, p. 39).
 
 \section{Alianzas}
 
@@ -353,16 +353,13 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 \hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026b). \textit{Bases Técnicas Transversales de Licitación N° TFEP-01/2026}.\par\medskip
 \hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026c). \textit{Caso: Logística -- Especificaciones del Problema y Operación de Distribuidora Puelche S.A.}\par\medskip
 \hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026d). \textit{Aclaraciones de la Licitación N° TFEP-01/2026}.\par\medskip
-\hangindent=1.27cm\hangafter=1 LafroX. (2026a). \textit{Subdocumento 4: Arquitectura de la solución}.\par\medskip
-\hangindent=1.27cm\hangafter=1 LafroX. (2026b). \textit{Subdocumento 6: Metodologías}.\par\medskip
-\hangindent=1.27cm\hangafter=1 LafroX. (2026c). \textit{Subdocumento 7: Plan de trabajo, EDT, cronograma e implantación. Formulario T-15: Nivelación de recursos}.\par\medskip
 \hangindent=1.27cm\hangafter=1 SGS. (2024). \textit{Certificado de Sistema de Gestión de Servicios de TI ISO/IEC 20000-1:2018 N° CL21/8190}. SGS United Kingdom Ltd.\par\medskip
 }
 
 \section*{Declaración de uso de IA}
 \addcontentsline{toc}{section}{Declaración de uso de IA}
 
-La Tabla~\ref{tab:declaracion_ia} identifica las herramientas y el alcance de la asistencia utilizada, conforme a la sección 7.2 de las Aclaraciones (Distribuidora Puelche S.A., 2026d). La declaración se consolida en el Formulario A-6.
+La Tabla~\ref{tab:declaracion_ia} identifica las herramientas y el alcance de la asistencia utilizada, conforme a la sección 7.2 de las Aclaraciones (Aclaraciones de la licitación). La declaración se consolida en el Formulario A-6.
 
 \begin{table}[H]
 \centering
