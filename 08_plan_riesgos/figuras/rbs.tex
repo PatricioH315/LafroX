@@ -1,21 +1,125 @@
 \clearpage
 \begingroup
-% Excepción local A3: el diagrama conserva al menos 9 pt en el PDF final.
-% newgeometry cambia el área de composición; LuaTeX fija el papel de esta hoja.
-\newgeometry{layoutwidth=420mm,layoutheight=297mm,layoutoffset={0mm,0mm},margin=20mm,headheight=27pt,headsep=16pt,includefoot,footskip=28pt}
-\setlength{\paperwidth}{420mm}
-\setlength{\paperheight}{297mm}
+\newgeometry{layoutwidth=330mm,layoutheight=216mm,layoutoffset={0mm,0mm},margin=10mm,headheight=0pt,headsep=0pt,footskip=28pt}
+\setlength{\paperwidth}{330mm}
+\setlength{\paperheight}{216mm}
 \pagewidth=\paperwidth
 \pageheight=\paperheight
-\setlength{\headwidth}{\textwidth}
-\centering
-\begin{minipage}{1000bp}
-\includegraphics[width=\linewidth,height=0.95\textheight,keepaspectratio]{LafroX_RBS_riesgos.pdf}
-{\captionsetup{hypcap=false,skip=6pt}
-\captionof{figure}{Estructura de desglose de riesgos (EDR/RBS) del proyecto LafroX: 40 riesgos. Fuente: elaboración propia.}
-\label{fig:sd8-rbs}}
-\end{minipage}\par
+\setlength{\parindent}{0pt}
+\setlength{\fboxsep}{4pt}
+\newcommand{\RBSrisk}[3]{\noindent\textbf{#1} \hfill {\scriptsize #3}\\[-1pt] #2\par\vspace{3pt}}
+\thispagestyle{empty}
+\begin{center}
+{\Large\bfseries Estructura de desglose de riesgos (RBS)}\\[3pt]
+{\small LafroX · 40 riesgos · clasificación por fuente predominante · página 1 de 2}
+\end{center}
+\captionof{figure}{Estructura de desglose de riesgos (EDR/RBS) del proyecto LafroX: 40 riesgos, organizada en seis ramas y distribuida en dos páginas oficio. Fuente: elaboración propia.}
+\label{fig:sd8-rbs}
+\vspace{5pt}
+\begin{minipage}[t]{0.32\textwidth}
+\fbox{
+\begin{minipage}[t]{0.90\linewidth}
+{\large\bfseries 1 · Solución y tecnología}\\[-1pt]
+{\small 8 riesgos}\\[3pt]\hrule\vspace{5pt}
+\footnotesize
+\RBSrisk{R-002}{Defectos de historia sanitaria impiden cerrar una carga}{Crítica}
+\RBSrisk{R-023}{Credenciales robadas permiten suplantar identidad}{Alta}
+\RBSrisk{R-025}{Terminal enrolado perdido o en poder de otra persona}{Media}
+\RBSrisk{R-026}{Ataques DDoS a los canales públicos}{Media}
+\RBSrisk{R-027}{Cuenta administrativa comprometida (phishing)}{Alta}
+\RBSrisk{R-036}{Datos personales en paquetes de reproducción}{Crítica}
+\RBSrisk{R-037}{Parámetros de vida útil no representativos}{Crítica}
+\RBSrisk{R-038}{Lote asociado a un sensor equivocado}{Crítica}
+\end{minipage}
+}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}
+\fbox{
+\begin{minipage}[t]{0.90\linewidth}
+{\large\bfseries 2 · Integración y legado}\\[-1pt]
+{\small 7 riesgos}\\[3pt]\hrule\vspace{5pt}
+\footnotesize
+\RBSrisk{R-001}{Cadena no completa a tiempo su certificación EDI}{Alta}
+\RBSrisk{R-003}{Historial de ventas inutilizable para carga y reposición}{Media}
+\RBSrisk{R-007}{Deuda viva adicional a la cartera de la volumetría}{Media}
+\RBSrisk{R-008}{SII no responde y deja un trámite tributario pendiente}{Baja}
+\RBSrisk{R-009}{POS deja un pago sin resultado externo comprobable}{Media}
+\RBSrisk{R-010}{Caída del servicio de mapas impide planificar rutas}{Baja}
+\RBSrisk{R-024}{Mensaje EDI falso o alterado de una cadena}{Baja}
+\end{minipage}
+}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}
+\fbox{
+\begin{minipage}[t]{0.90\linewidth}
+{\large\bfseries 3 · Operación del cliente}\\[-1pt]
+{\small 13 riesgos}\\[3pt]\hrule\vspace{5pt}
+\footnotesize
+\RBSrisk{R-004}{Diferencias de inventario sin resolver antes del corte}{Media}
+\RBSrisk{R-005}{Saldo inicial de envases no conciliable (carga M8)}{Media}
+\RBSrisk{R-006}{Historia de origen insuficiente para líneas base de aceptación}{Media}
+\RBSrisk{R-011}{Calidad no entrega la matriz térmica aprobada}{Crítica}
+\RBSrisk{R-012}{Equipos del cliente no llegan antes de la ola}{Media}
+\RBSrisk{R-014}{Transportista no permite instalar el termógrafo}{Media}
+\RBSrisk{R-018}{Contraparte no entrega validación en la fecha prevista}{Alta}
+\RBSrisk{R-019}{Proveedor de conectividad interrumpe el enlace de un sitio}{Baja}
+\RBSrisk{R-020}{Corte eléctrico supera el tiempo de respaldo}{Baja}
+\RBSrisk{R-022}{Cliente no autoriza intervención urgente en congelamiento}{Alta}
+\RBSrisk{R-028}{Fallas mecánicas del camión}{Baja}
+\RBSrisk{R-029}{Camión involucrado en un siniestro}{Baja}
+\RBSrisk{R-030}{Asalto a camión}{Baja}
+\end{minipage}
+}
+\end{minipage}
+\vspace{4pt}
+\clearpage
+\thispagestyle{empty}
+\begin{center}
+{\Large\bfseries Estructura de desglose de riesgos (RBS)}\\[3pt]
+{\small LafroX · 40 riesgos · clasificación por fuente predominante · página 2 de 2}
+\end{center}
+\vspace{8pt}
+\begin{minipage}[t]{0.32\textwidth}
+\fbox{
+\begin{minipage}[t]{0.90\linewidth}
+{\large\bfseries 4 · Personas y adopción}\\[-1pt]
+{\small 8 riesgos}\\[3pt]\hrule\vspace{5pt}
+\footnotesize
+\RBSrisk{R-013}{Transportista no firma a tiempo el acuerdo de incorporación}{Media}
+\RBSrisk{R-015}{Usuarios mantienen el proceso anterior}{Alta}
+\RBSrisk{R-016}{Planificador no disponible antes de validar excepciones}{Alta}
+\RBSrisk{R-017}{Usuarios no asisten a la capacitación antes de la ola}{Baja}
+\RBSrisk{R-031}{Reemplazos de conductores externos sin aviso}{Media}
+\RBSrisk{R-034}{Avisos de vencimiento posentrega sin confianza del local}{Media}
+\RBSrisk{R-035}{Reproducción que no explica el incidente de terreno}{Alta}
+\RBSrisk{R-040}{Hoja de negocio no leída o no entendida}{Media}
+\end{minipage}
+}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}
+\fbox{
+\begin{minipage}[t]{0.90\linewidth}
+{\large\bfseries 5 · Contrato y licitación}\\[-1pt]
+{\small 2 riesgos}\\[3pt]\hrule\vspace{5pt}
+\footnotesize
+\RBSrisk{R-032}{Solicitudes que amplían el alcance}{Media}
+\RBSrisk{R-039}{Disputa en la liquidación del tramo variable}{Alta}
+\end{minipage}
+}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}
+\fbox{
+\begin{minipage}[t]{0.90\linewidth}
+{\large\bfseries 6 · Regulatorio y externo}\\[-1pt]
+{\small 2 riesgos}\\[3pt]\hrule\vspace{5pt}
+\footnotesize
+\RBSrisk{R-021}{Falta aprobación del cliente para datos en regiones de nube}{Media}
+\RBSrisk{R-033}{Cambios normativos}{Media}
+\end{minipage}
+}
+\end{minipage}
+\vspace{4pt}
 \restoregeometry
-\endgroup
 \pagewidth=\paperwidth
 \pageheight=\paperheight
+\endgroup

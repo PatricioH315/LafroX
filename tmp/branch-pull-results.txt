@@ -1,0 +1,48 @@
+main a9691ef1 From https://github.com/PatricioH315/LafroX
+ * branch              main       -> FETCH_HEAD
+Already up to date.
+=> a9691ef1 OK
+LafroX-Subdoc1-LateX 0938754e From https://github.com/PatricioH315/LafroX
+ * branch              LafroX-Subdoc1-LateX -> FETCH_HEAD
+Already up to date.
+=> 0938754e OK
+LafroX-Subdoc2-LateX 7d24b715 From https://github.com/PatricioH315/LafroX
+ * branch              LafroX-Subdoc2-LateX -> FETCH_HEAD
+Already up to date.
+=> 7d24b715 OK
+LafroX-Subdoc3-LateX 8f366246 From https://github.com/PatricioH315/LafroX
+ * branch              LafroX-Subdoc3-LateX -> FETCH_HEAD
+Already up to date.
+=> 8f366246 OK
+LafroX-Subdoc4-LateX 3faaec7a From https://github.com/PatricioH315/LafroX
+ * branch              LafroX-Subdoc4-LateX -> FETCH_HEAD
+Already up to date.
+=> 3faaec7a OK
+LafroX-Subdoc5-LateX 340b4aab From https://github.com/PatricioH315/LafroX
+ * branch              LafroX-Subdoc5-LateX -> FETCH_HEAD
+Already up to date.
+=> 340b4aab OK
+LafroX-Subdoc6-LateX 9b650ede From https://github.com/PatricioH315/LafroX
+ * branch              LafroX-Subdoc6-LateX -> FETCH_HEAD
+Already up to date.
+=> 9b650ede OK
+LafroX-Subdoc7-LateX 93a5e884 From https://github.com/PatricioH315/LafroX
+ * branch              LafroX-Subdoc7-LateX -> FETCH_HEAD
+Already up to date.
+=> 93a5e884 OK
+LafroX-Subdoc9-LateX ee1d661d From https://github.com/PatricioH315/LafroX
+ * branch              LafroX-Subdoc9-LateX -> FETCH_HEAD
+Already up to date.
+=> ee1d661d OK
+LafroX-Subdoc13-LateX 1acf263d From https://github.com/PatricioH315/LafroX
+ * branch              LafroX-Subdoc13-LateX -> FETCH_HEAD
+Already up to date.
+=> 1acf263d OK
+subdoc-4 b0606ac9 From https://github.com/PatricioH315/LafroX
+ * branch              subdoc-4   -> FETCH_HEAD
+Already up to date.
+=> b0606ac9 OK
+Guillermo-subdoc4-consistencia 3f4d36ea From https://github.com/PatricioH315/LafroX
+ * branch              Guillermo-subdoc4-consistencia -> FETCH_HEAD
+Already up to date.
+=> 3f4d36ea OK
