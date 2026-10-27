@@ -117,3 +117,81 @@ Estado: **Corregido** (aplicado en esta revisión), **Decisión** (requiere al e
 | Keycloak se restituye en us-east-1 (4.2.3.5 y 4.3.2.5); la fila A-05 del T-11 solo lo ubicaba en sa-east-1 | T-11 A-05: «Fargate, con restitución en us-east-1» |
 
 El T-11 pasa de 45 a 46 páginas; ningún documento lo cita por página.
+
+## 8. Cruce en profundidad entre el SD4 y el Formulario T-12 (26-10-2026)
+
+**Método.** Se leyeron las 648 filas del T-12 (`origin/LafroX-Subdoc3-LateX`, 590 «Cumple», 36 «Cumple parcialmente» y 22 «No cumple»); 505 citan el SD4 o el T-11. Se validaron por script:
+
+- las 1.296 citas a secciones del cuerpo y a anexos del SD4, contra el índice compilado;
+- los códigos del T-11 citados, contra sus filas;
+- la presencia del código RT/RF en la sección citada (211 filas coinciden; las 8 restantes tratan el tema sin repetir el código);
+- unos 110 datos que el T-12 afirma (versiones, cantidades, plazos, retenciones, márgenes, potencias, distancias y dotación), contra el texto del cuerpo, los anexos y el T-11.
+
+Además, cada brecha declarada («Falta: …») se contrastó con el SD4 vigente.
+
+**Coincide sin cambios.** Todas las citas existen y los datos concuerdan:
+
+- versiones: Laravel 13, PHP 8.5, PostgreSQL 16, Angular 22, Keycloak 26 y RabbitMQ 4.x del Anexo 4-P;
+- capacidad y márgenes: 14,66 y 21,99 TPS; márgenes de 155,6, 151,9 y 158,3 %; 8,9 kW, factor 0,95 y PUE;
+- centro de datos: R01 15U (36 %) y R02 12U (29 %); seis cámaras IP; 7.700 y 2.700 km;
+- retenciones y respaldo: auditoría por 7 años con Object Lock; registros 12 + 24 meses, métricas 13 meses y trazas 30 días; PITR de 35 días;
+- tiempos: ventana de deduplicación de 30 días (4.1.16); alarmas de réplica a 60 s, 5 y 15 min; presupuesto de error de 43 min;
+- dotación: NOC y SOC en Valparaíso con 4 personas por posición, 5 desde el 26-04-2028;
+- terreno: 9,83 MB por turno, 81 baterías y 40 cunas;
+- clasificación de servicios: la de 4.1.10 y la de 4.2.4.3 son idénticas.
+
+Las brechas declaradas siguen vigentes en el SD4: doble acometida, intensidad de carbono, conmutación con autorización del CLIENTE, AS2 por NLB sin CDN/WAF, excepción TLS 1.2 del ERP, segundo factor de portales externos y familias sin borrado remoto. La nota de RT-26.01 sigue siendo cierta: el SD13 aún no incorpora el kit B-04 a B-15.
+
+**Corregido:**
+
+| Incoherencia | Corrección |
+|---|---|
+| El equipo retiró del cuerpo del SD4 la mención explícita a R-015 (06_e, «limitación técnica de recuperación»); el T-12 (RNF-20.06, RT-07.04 y RT-02.11) y el ADR del Anexo 4-O la conservaban | T-12: «es una limitación técnica de recuperación que se presenta al mandante», sin las citas a R-015 del SD8. Anexo 4-O: «Su registro como limitación técnica de recuperación no constituye aceptación del mandante» |
+| RT-08.01 citaba «4-W.5 y 4-W.8»: en la conversión anterior se tradujo mal «Tablas A.38 y A.39» (numeración previa = capacidad por VM y UPS de borde, ambas en 4-W.8; 4-W.5 trata enlaces) | T-12 RT-08.01: «SD4-Anexos 4-W.8» |
+| RT-03.18 hablaba de «433 terminales»; el T-11 (N-13) declara 382 al inicio y 433 en el año 3 | «382 terminales al inicio y 433 en el año 3» |
+| RT-16.20 nombraba solo «Amazon SNS/API de canal»; el SD4 y el T-11 (N-04 — Notificaciones) fijan SES, SNS y End User Messaging Social | Componente con los tres servicios y cita al T-11 (N-04 — Notificaciones) |
+
+Commits: T-12 en `LafroX-Subdoc3-LateX` `6818ecb` (259 páginas, sin referencias indefinidas; nadie lo cita por página); Anexo 4-O en `subdoc-4` (anexos de 116 páginas).
+
+## 9. Cruce del SD4 con el SD8 actualizado (26-10-2026)
+
+**Fuente.** `origin/Lafrox_Subdocumento_8_Latex_Nuevo` (`bfbd7323`, 26-10-2026 20:40): cuerpo (`08_plan_riesgos/contenido.tex`), Anexos 8.A–8.B y Formulario T-16, con 33 riesgos R-001 a R-033. La rama antigua `LafroX-Subdoc8-LateX` (10-10) no se usó. En la rama nueva no hay PDF del cuerpo; solo están los PDF de los anexos y del T-16.
+
+**Citas entre documentos.** El SD4 ya no cita al SD8, al T-16 ni ningún código R-xxx. El SD8 nombra al Subdocumento 4 en su introducción, sin cita, y mantiene una entrada propia en su lista de referencias.
+
+**Datos de los riesgos frente al SD4: todo coincide.**
+
+| Riesgo o afirmación del SD8 | SD4 |
+|---|---|
+| R-009: ante un timeout se consulta el cargo con la misma clave antes de reintentar | Anexo 4-H, INT-09: «se consulta por la misma clave antes de volver a cobrar» |
+| R-010: ruta aprobada y cartografía precargada | Anexo 4-H (INT-10) y Anexo 4-J |
+| R-012: el CLIENTE compra el equipamiento de terreno según la especificación de LafroX | 4.2.1 y T-11: los equipos de uso los compra el CLIENTE (paquete 5.1.1 del T-14) |
+| R-014: el termógrafo en camiones de terceros requiere autorización del propietario | 4.2.1.4: se instala con el acuerdo de cada transportista (S-28) |
+| R-019: los sitios dependen de fibra, LTE o satélite | 4.2.5.1 y T-11 (D-03, D-04 y D-06) |
+| R-021: las regiones de Brasil y Estados Unidos requieren aprobación del CLIENTE | ADR-19: «sujetas a aprobación del CLIENTE»; 4.2.3.2 y 4.3.2.2 |
+| R-022: un cambio urgente en congelamiento requiere autorización | 4.2.4.1.4 (RT-11.04) |
+| R-024, R-025, R-026 y R-027: validación EDI, MDM, WAF/Shield y copias inmutables | OpenAS2 (firma y MDN), Android Enterprise/Zebra DNA, Shield Advanced, Vault Lock y Object Lock |
+| 8.3.3: RTO 4 h, RPO 15 min, NAS destruido junto con el sitio, 96 despachos, retiro sanitario en menos de 2 h y AL-DR-01 | 4.2.4.4, 4.3.2.4 (limitación técnica), 4.1.8, 4.1.4.2 y Anexo 4-V |
+| Tabla 8.1: Bastián Trejo (ARQ) y Encargado de Seguridad | Anexo 4-O (Bastián Trejo, Arquitecto de Solución) y Anexo 4-W.7 |
+
+**Observaciones para el equipo del SD8 (no se modificó):**
+
+1. La referencia «LafroX. (s. f.-b). *Subdocumento 4…*, §§4.1.4.4, 4.2.5.1 y 4.3.2.4; Anexos 4-G, 4-I y 4-W. [Fecha de emisión no verificada.]» tiene tres problemas:
+   - ninguna cita del texto la usa;
+   - el SD4 tiene fecha (12 de octubre de 2026), así que no corresponde «s. f.»;
+   - la nota entre corchetes es una marca de borrador, que la sección 7.1 de las aclaraciones cuenta como indicio de IA. Lo mismo ocurre con las entradas del SD3 y del SD13.
+2. En 8.3.3, «AL-DR-01/E8-05»: E8-05 solo se define en la versión antigua del SD8. AL-DR-01 sí existe en el SD4.
+3. Los 85 minutos del retiro sanitario provienen del SD5 (Anexo 5, Tabla A.23), no del SD4.
+
+**Riesgos residuales del SD4 sin riesgo equivalente en el T-16** (no es una contradicción: RT-02.11 se responde en el SD4):
+
+- la identidad central;
+- el ERP como único emisor de DTE en Talca;
+- las fallas del kit de frío de 4.1.12;
+- la limitación de recuperación ante la caída de los tres caminos seguida de la destrucción del sitio (4.3.2.4).
+
+El SD8 trata este último escenario en 8.3.3 como condición de prueba, sin código de riesgo, igual que el SD4.
+
+**Conflicto que queda: R-015 en el SD7.** En el SD8 y el T-16, R-015 es un riesgo de adopción. El T-18 (`formulario-t18/contenido.tex`, línea 237) y el Anexo 7.F (`tab_7F1.tex`, fila P7-10) lo siguen usando para el escenario de recuperación del SD4.
+
+No requiere cambios en el SD4.
