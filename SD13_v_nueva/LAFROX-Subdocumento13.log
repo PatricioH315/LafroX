@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  26 OCT 2026 23:37
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  27 OCT 2026 00:33
  system commands enabled.
 **LAFROX-Subdocumento13.tex
 (./LAFROX-Subdocumento13.tex
@@ -2628,26 +2628,26 @@ Package luatex.def Info: logo/firma_representante.png  used on input line 670.
  [50]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 706.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 705.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 706.
-LaTeX Info: Redefining \% on input line 706.
+LaTeX Info: Redefining \. on input line 705.
+LaTeX Info: Redefining \% on input line 705.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 706.
+Package luatex.def Info: logo/firma_representante.png  used on input line 705.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [51]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 706.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 705.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 706.
-LaTeX Info: Redefining \% on input line 706.
+LaTeX Info: Redefining \. on input line 705.
+LaTeX Info: Redefining \% on input line 705.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 706.
+Package luatex.def Info: logo/firma_representante.png  used on input line 705.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [52])
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
@@ -2675,12 +2675,12 @@ L3 programming layer <2026-07-20>
 
 Here is how much of LuaTeX's memory you used:
  38959 strings out of 475695
- 195334,1977958 words of node,token memory allocated
+ 156269,1977958 words of node,token memory allocated
  825 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 4 kern, 1 penalty, 3 glyph, 36
  attribute, 79 glue_spec, 19 attribute_list, 2 write, 8 pdf_action nodes
-   avail lists: 1:7,2:4091,3:832,4:510,5:2251,6:233,7:13399,8:116,9:2112,10:25,1
-1:1571
+   avail lists: 1:7,2:4058,3:823,4:509,5:2083,6:232,7:12595,8:117,9:2106,10:25,1
+1:1502
  58678 multiletter control sequences out of 65536+600000
  120 fonts using 46966463 bytes
  107i,24n,128p,1538b,2851s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2695,7 +2695,7 @@ ts/opentype/adobe/sourcesans/SourceSans3-Regular.otf><c:/users/henri/appdata/loc
 al/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf><C:/Us
 ers/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSa
 ns3-Semibold.otf>
-Output written on LAFROX-Subdocumento13.pdf (53 pages, 540132 bytes).
+Output written on LAFROX-Subdocumento13.pdf (53 pages, 539749 bytes).
 
 PDF statistics: 844 PDF objects out of 1000 (max. 8388607)
  145 named destinations out of 1000 (max. 1048576)
