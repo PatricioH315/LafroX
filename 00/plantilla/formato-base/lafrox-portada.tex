@@ -77,16 +77,6 @@
   \pgfmathsetmacro{\LFXmd}{(1in+\oddsidemargin+\hoffset+\textwidth)/\paperwidth}%
 }
 
-% ---- Estado del documento, derivado de la opcion de clase ------------------
-%  Va en el bloque de control documental y repetido en la banda. Un documento
-%  de licitacion declara de si mismo en que estado esta; eso es justamente lo
-%  que lo hace parecer --y ser-- un documento de licitacion.
-\ifLFX@borrador
-  \newcommand{\LFXestadodoc}{Borrador de trabajo}
-\else
-  \newcommand{\LFXestadodoc}{Versión final para entrega}
-\fi
-
 % ---- Marca en negativo: va dentro de la banda oscura -----------------------
 %  ATENCION: si se define la clave \LFXlogo, el archivo debe ser una version
 %  en NEGATIVO (trazo claro). Un logo normal, de trazo oscuro, desaparece
@@ -125,8 +115,35 @@
 % ============================================================================
 %  \portadalafrox
 % ============================================================================
+\providecommand{\LFXestadodoc}{}
+% Datos exclusivos de la portada: no alteran cabeceras ni contenido.
+\newcommand{\configurarportadalafrox}[5]{%
+  \def\LFXsubtituloportada{#1}%
+  \def\LFXalcanceportada{#2}%
+  \def\LFXformularioportada{#3}%
+  \def\LFXnomenclaturaportada{#4}%
+  \def\LFXfirmaportada{#5}%
+}
+\newsavebox{\LFXcajasubtituloportada}
+\newcommand{\LFXsubtituloajustado}{%
+  \sbox{\LFXcajasubtituloportada}{\sffamily\fontsize{16pt}{20pt}\selectfont\LFXsubtitulo}%
+  \ifdim\wd\LFXcajasubtituloportada>\textwidth
+    \resizebox{\textwidth}{!}{\usebox{\LFXcajasubtituloportada}}%
+  \else\usebox{\LFXcajasubtituloportada}\fi
+}
+
 \newcommand{\portadalafrox}{%
   \begingroup
+  \def\LFXdocumento{Propuesta Técnica}%
+  \def\LFXcaso{Caso \textemdash{} Logística}%
+  \def\LFXsobre{Sobre N.\textdegree{} 2 \textemdash{} Oferta Técnica}%
+  \def\LFXfecha{12 de octubre de 2026}%
+  \ifcsname LFXsubtituloportada\endcsname
+    \let\LFXsubtitulo\LFXsubtituloportada
+    \let\LFXalcance\LFXalcanceportada
+    \let\LFXformulario\LFXformularioportada
+    \let\LFXnomenclatura\LFXnomenclaturaportada
+  \fi
   \setcounter{page}{1}%
   \thispagestyle{lfxportada}%
   \LFXcalcularmargenes
@@ -154,11 +171,9 @@
       \LFXen{1}{\LFXbandaDerY+0.028}  --
       \LFXen{0}{\LFXbandaIzqY+0.028}  -- cycle;
 
-    % --- Marca y estado, dentro de la banda --------------------------------
+    % --- Marca, dentro de la banda -----------------------------------------
     \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.050}
       {\LFXmarcaportada};
-    \node[anchor=north east,inner sep=0pt] at \LFXen{\LFXmd}{0.056}
-      {\color{lafroxSobre}\LFXrotulo{\LFXestadodoc}};
 
     % ======================================================================
     %  1-3. Licitacion, objeto y caso  (Art. 49.1, lineas 1 y 2)
@@ -197,8 +212,7 @@
       {\sffamily\bfseries\fontsize{31pt}{34pt}\selectfont
        \color{lafroxFuerte}\LFXdocumento};
     \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.486}
-      {\sffamily\fontsize{16pt}{20pt}\selectfont
-       \color{lafroxTinta}\LFXsubtitulo};
+      {\color{lafroxTinta}\LFXsubtituloajustado};
     \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.516}
       {\sffamily\fontsize{9.5pt}{13pt}\selectfont\color{lafroxGris}
        \LFXalcance\ \textperiodcentered\ \LFXformulario};
@@ -250,17 +264,20 @@
     \LFXfileteportada{0.802}
 
     % ======================================================================
-    %  Firma completa del representante  (Art. 40.2)
-    %  Sobre papel blanco y con los datos BAJO la linea, para que la firma
-    %  sea atribuible. No mover este bloque sobre la banda ni agregarle
-    %  fondo: se firma con lapiz.
+    %  Firma del representante  (Art. 40.2)
+    %  Imagen manuscrita aportada sobre papel blanco; los datos quedan bajo
+    %  la linea para identificar al representante.
     % ======================================================================
     \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.820}
       {\begin{minipage}[t]{0.52\textwidth}
          \sffamily\raggedright
          {\color{lafroxGris}\LFXrotulo{Firma del representante legal}}\par
          \vspace{-1pt}
-         \includegraphics[width=3.4cm]{\LFXfirmaimagen}\par
+         \ifcsname LFXfirmaportada\endcsname
+           \includegraphics[width=3.4cm]{\LFXfirmaportada}%
+         \else
+           \includegraphics[width=3.4cm]{FIRMA_Alex_Aravena_transparente.png}%
+         \fi\par
          \vspace{-5pt}
          {\color{lafroxTinta}\rule{6.4cm}{0.5pt}}\par
          \vspace{4pt}
@@ -275,7 +292,7 @@
     %  un codigo de archivo se busca. Antes tenia bloque propio y empujaba la
     %  firma sobre el pie.
     \node[anchor=base west,inner sep=0pt] at \LFXen{\LFXmi}{0.9565}
-      {\ttfamily\fontsize{8pt}{10pt}\selectfont
+      {\fontspec{IBMPlexMono-Regular.otf}[Scale=0.92]\fontsize{8pt}{10pt}\selectfont
        \color{lafroxGris}\LFXnomenclatura};
 
   \end{tikzpicture}
