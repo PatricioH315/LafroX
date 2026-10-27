@@ -110,7 +110,7 @@ La fase de Inicio define el proyecto, fija su alcance y planificación y estable
   {Fase 1 — Inicio, primera parte: cuentas 1.1 a 1.5. Fuente: elaboración a partir de LafroX (2026d, T-14).}
   {fig:7-edt-fase-1a}
 
-La segunda lámina completa Inicio con gestión de riesgos, reversibilidad, gobierno, control y cumplimiento normativo. Incluye los paquetes 1.2.2 y 1.2.3, que capturan las reglas de ruteo cuya fuente experta se jubila y las interfaces del sistema de gestión que el CLIENTE reconoce no tener documentadas; también incluye los comités del artículo 71 de las Bases Administrativas (p. 37), el informe de valor ganado y el tablero (RT-19.06 a RT-19.09).
+La primera lámina contiene los paquetes 1.2.2 y 1.2.3, que documentan las reglas de ruteo capturadas al planificador y las interfaces sin documentación del sistema de gestión. La segunda lámina completa Inicio con las cuentas 1.6 a 1.9: gestión de riesgos, reversibilidad, gobierno y control, y cumplimiento normativo y contractual. Incluye los comités del artículo 71 de las Bases Administrativas (p. 37), el informe de valor ganado y el tablero (RT-19.06 a RT-19.09).
 
 \figuraEDT[0pt]{imagenes/Imagenes de la edt/EDT-Fase 1 (2 de 2).drawio.pdf}
   {Fase 1 — Inicio, segunda parte: cuentas 1.6 a 1.9, desde riesgos hasta cumplimiento contractual. Fuente: Elaboración a partir de LafroX (2026d, T-14).}
@@ -234,13 +234,13 @@ Estas cuentas completan la operación con la continuidad de las innovaciones, lo
 
 \subsubsection{Fase 9. Cierre}
 
-Cierre comprende dos momentos: completar la implementación en el mes 21, con entrega de código, infraestructura como código y lecciones aprendidas; y ejecutar la salida al término del contrato, con el Plan de Reversibilidad y el tratamiento final de los datos.
+Cierre comprende dos momentos. El primero corresponde al cierre de la implementación: la entrega del código fuente, la infraestructura como código y los procedimientos de despliegue del paquete 9.1.1 se vincula al H12 del mes 21; el informe de lecciones aprendidas y archivo de la implementación, paquete 9.1.2, se completa después del acta H12. Según la programación vigente del Formulario T-15, este último paquete se ejecuta del 26 de octubre al 7 de noviembre de 2028, entre los meses 21 y 22, bajo el supuesto de inicio en febrero de 2027. El segundo momento corresponde a la salida al término del contrato, con el Plan de Reversibilidad y el tratamiento final de los datos.
 
 \figuraEDTEscalada[210pt]{0.6272}{0.4992}{imagenes/Imagenes de la edt/EDT-Fase 9.drawio.pdf}
   {Fase 9 — Cierre: cierre de implementación y salida al término del contrato, cuentas 9.1 y 9.2. Fuente: Elaboración a partir de LafroX (2026d, T-14).}
   {fig:7-edt-fase-9}
 
-La EDT distingue así el cierre de implementación del mes 21 de la salida al término del contrato, que incluye la ejecución del Plan de Reversibilidad y el tratamiento final de los datos.
+La EDT distingue así el cierre de implementación de la salida al término del contrato. El cierre comprende la entrega vinculada al H12 y el archivo posterior de todas las actas; no queda íntegramente limitado al mes 21.
 
 \subsection{Cobertura del alcance}
 
@@ -288,7 +288,7 @@ El orden del trabajo sigue las dependencias de datos y de infraestructura de Pue
 
 La construcción de la Etapa 1 parte por la base compartida, porque si falla, fallan todos los módulos. Sigue con recepción e inventario, que alimentan la preparación y el retiro sanitario, mientras la preventa avanza en paralelo porque necesita stock y crédito. Las rutas y el reparto se integran cuando existen el pedido confirmado y la preparación, y la rendición, cuando existe la entrega registrada. La Etapa 2 se diseña en los meses 13 y 14 (H8), reutiliza los pedidos, las guías y las evidencias ya probadas, y calcula el costo de servir con los hechos acumulados desde la marcha blanca de la Etapa 1.
 
-La Figura \ref{fig:7-red} presenta esa red de precedencias entre cuentas de control. El Anexo 7.B lista las 34 dependencias entre paquetes con su fundamento.
+La Figura \ref{fig:7-red} presenta una síntesis de las precedencias entre cuentas de control e hitos. El Anexo 7.B detalla 41 dependencias entre paquetes, con su tipo y fundamento. En la interpretación de esta red se debe distinguir la cadena de construcción y certificación de la Etapa 2 del camino que controla la aceptación final H12.
 
 \clearpage
 \begin{anexohorizontal}
@@ -301,7 +301,9 @@ La Figura \ref{fig:7-red} presenta esa red de precedencias entre cuentas de cont
 \end{anexohorizontal}
 \clearpage
 
-La red muestra tres convergencias. En el H3 se juntan la cadena de la nube (5.2, 3.2 y 3.1) y la de la sala técnica (2.3, 5.1, 6.1, 6.3 y 6.6). En los hitos H4 y H5 se juntan los módulos, la base compartida, el diseño aprobado y la experiencia de usuario. Al cierre de la marcha blanca se juntan la solución certificada, la migración, el equipamiento de cada ola, la certificación de los usuarios y, en la ola de reparto, los acuerdos con los transportistas y el sindicato. Un atraso en cualquiera de esas ramas se propaga al hito aunque no sea de software. El cálculo de la sección 7.3.1 identifica el cierre de la marcha blanca de la Etapa 2, el acta final y la revisión del CLIENTE como camino controlante del H12, con tres días hábiles de holgura contractual.
+La red muestra tres convergencias. En el H3 se juntan la cadena de la nube (5.2, 3.2 y 3.1) y la de la sala técnica (2.3, 5.1, 6.1, 6.3 y 6.6). En los hitos H4 y H5 se juntan los módulos, la base compartida, el diseño aprobado y la experiencia de usuario. Al cierre de la marcha blanca se juntan la solución certificada, la migración, el equipamiento de cada ola, la certificación de los usuarios y, en la ola de reparto, los acuerdos con los transportistas y el sindicato. Un atraso en cualquiera de esas ramas se propaga al hito aunque no sea de software.
+
+La cadena de diseño, construcción y certificación de la Etapa 2 comprende las dependencias D-29 a D-31c. El camino controlante del H12 identificado por el cálculo vigente de la sección 7.3.1 es distinto: cierre de la marcha blanca 4.3.1, preparación del acta 4.3.3 y diez días hábiles de revisión del CLIENTE. La garantía 4.3.4 se constituye en paralelo y debe estar disponible para la aceptación. La entrega calculada es el 11 de octubre de 2028 y el acta, el 25 de octubre, con tres días hábiles de holgura respecto del límite del 31 de octubre.
 
 El secuenciamiento incorpora además las condiciones de la operación de Puelche que el caso exige ver en el plan (Caso, sección 17.5, p. 33). Los congelamientos de septiembre y diciembre, y el cierre de los tres primeros días hábiles de cada mes, son restricciones de calendario para todo corte, despliegue e inicio de ola (paquete 1.3.1). La implantación en bodega y su acompañamiento se programan en el turno de noche, entre las 22:00 y las 06:00 (paquete 4.2.2), y la rotación del 38 \% se atiende con capacitación continua y no con un evento único (paquete 7.1.2). Los 62 preventistas y los cerca de 200 conductores se capacitan en su ruta, sin detener la venta ni el reparto (paquetes 7.1.1 y 4.2.2).
 
