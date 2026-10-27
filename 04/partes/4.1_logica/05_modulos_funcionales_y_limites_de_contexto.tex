@@ -34,6 +34,7 @@ El mapa expone dependencias que deben permanecer bajo contratos versionados.
 El mapa asigna a cada relación un dueño de contrato y una superficie de intercambio. El catálogo de interfaces (véase el apartado~\ref{sec:catalogo-interfaces}) añade la versión y la conducta ante falla, una relación del Anexo 4-F no equivale por sí sola a un contrato ejecutable.
 
 \subsubsection{Módulo M9 Calidad y trazabilidad}
+\label{subsec:modulo-m9}
 
 El módulo de trazabilidad resuelve el problema central que motivó la licitación: la incapacidad de responder en tiempo real ante un retiro sanitario. En marzo de 2026, un retiro preventivo de queso fresco tomó 9 días en resolverse de forma inexacta, con la apertura de un sumario sanitario y la suspensión como distribuidor autorizado por un proveedor clave por seis meses.
 
@@ -69,6 +70,7 @@ Ante falla del equipo de frío, el aire advierte y la tendencia de los simulador
 La descarga de termógrafo y sensor independiente se verifica y el TC58e firma su hash; la memoria solo se libera tras confirmación de nube. M9 concilia las tres series y los escaneos antes de sellar el expediente, disponible en no más de 2 h tras el regreso. La temperatura se conserva cinco años en S3 con bloqueo de objetos y no incluye GPS.
 
 \subsubsection{Módulo M2 Inventario}
+\label{subsec:modulo-m2}
 
 El módulo de inventario permite saber qué stock existe, dónde está y qué parte puede comprometerse. Mantiene la operación distribuida entre Talca, Concepción y los tres cross-docks. La casa matriz consulta la información consolidada. Sus capacidades son las siguientes:
 
@@ -85,6 +87,7 @@ El módulo de inventario permite saber qué stock existe, dónde está y qué pa
 Para incorporar un nuevo sitio se parametrizan en los maestros su identificador, su bodega, sus rutas y la cartera de clientes asignada, con los permisos de administración que correspondan. El sitio reutiliza el perfil local de bodega y la infraestructura como código ya descritos, sin rediseñar la arquitectura (RT-02.12, Bases Técnicas Transversales, cap. 2, p. 7).
 
 \subsubsection{Módulo M3 Preventa}
+\label{subsec:modulo-m3}
 
 Para los 62 preventistas, tomar un pedido debe seguir siendo posible aun cuando la ruta no tenga cobertura. El módulo reemplaza una aplicación que no consulta stock ni crédito y presenta caídas y duplicación de pedidos. La nueva interacción distingue con claridad lo registrado en el dispositivo de lo confirmado por el servidor:
 
@@ -173,6 +176,7 @@ Las exportaciones de gran volumen se ejecutan como trabajos asíncronos, de modo
 Desde la Etapa 2, M10 envía por correo los informes ejecutivos en PDF y XLSX, cada lunes a las 06:00 y el día 2 de cada mes, con OTIF, fill rate, merma por vencimiento y costo de servir por zona y canal (RF-11.01). El costo de servir de cada entrega y cliente suma los costos directos de transporte —combustible según el kilometraje GPS, peajes de la ruta y tiempos de conducción y de descarga— y prorratea los costos indirectos de bodega y administración (RF-11.02). Con ese costo y el margen comercial, M10 clasifica cada mes a los clientes en rentables, no rentables y estratégicos, y sugiere ajustes de frecuencia de visita o de compra mínima (RF-11.08). El fill rate y el índice de pedido perfecto se calculan contra el pedido original con las entregas confirmadas en el terminal de reparto, desglosados por causa (RF-11.04, Subdocumento 3, Anexo 3.A).
 
 \subsubsection{Recepción, preparación, reparto y servicios asociados}
+\label{subsec:modulos-operativos}
 
 \textbf{M1 Recepción} compara lo recibido con la orden de compra, identifica GTIN, lote, vencimiento y SSCC, y registra cuarentena cuando falta evidencia o hay una diferencia. Publica \texttt{RecepcionConfirmada} para que M2 ubique el stock. No lo reserva para venta. La información del ERP entra y sale exclusivamente por la capa anticorrupción.
 

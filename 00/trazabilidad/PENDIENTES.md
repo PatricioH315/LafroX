@@ -2,7 +2,7 @@
 
 La petición del usuario limita esta etapa a organizar los archivos y conservar íntegros los textos, tablas, figuras y anexos. Este registro identifica asuntos de integración; no los resuelve.
 
-1. **Numeración y estructura de las vistas.** La lógica usa el capítulo 4 y la sección 4.1; la física utiliza capítulos rotulados 4.2 y 4.3. Se mantienen sus mecanismos originales, con destinos PDF diferenciados para evitar colisiones. La armonización editorial queda pendiente.
+1. **[Resuelto 2026-10-27] Numeración y estructura de las vistas.** Armonizada la jerarquía editorial de la vista física y centros de datos bajo el Capítulo 4 (Arquitectura del Sistema): se eliminó la redefinición artificial de `\thechapter` en `04/partes/4.2_fisica/contenido.tex`, convirtiendo Arquitectura física y Data center en secciones (`\section`), desplazando sus divisiones a `\subsection`, `\subsubsection` y `\paragraph`, garantizando numeración unificada y continua (`4.2`, `4.3`, etc.) en el índice y marcadores PDF sin colisiones de hipervínculos.
 2. **ADR físicos.** El registro físico abre como apartado 4.4 en su fuente. Se conserva el archivo y su posición, sin trasladar ni modificar sus fichas. Su ubicación definitiva se decidirá en una revisión posterior.
 3. **T-11 y memoria de cálculo.** Ambos continúan al final del cuerpo físico, conforme al ensamblador original, y cuentan además con raíces independientes. Eliminar su presentación provisional en el cuerpo requiere una instrucción posterior.
 4. **Referencias y declaraciones de IA.** La lógica conserva sus cierres y los anexos lógicos también. El bloque físico conserva sus referencias propias. No se fusionan bibliografías ni se reubican declaraciones en esta etapa.

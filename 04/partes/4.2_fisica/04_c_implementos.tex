@@ -4,20 +4,20 @@
 %
 % ------------------------------------------------------------------
 
-\section{Especificaciones Implementos a proveer (Hardware y Software)}
+\subsection{Especificaciones Implementos a proveer (Hardware y Software)}
 \label{sec:implementos}
 
 Esta sección resume y analiza el equipamiento y el software que la solución requiere en las instalaciones del CLIENTE, en el terreno y en la plataforma de nube. El detalle de cada elemento, con su producto ofertado, su ubicación, su cantidad y su justificación, se entrega en el Formulario T-11. Los equipos de uso ---terminales, lectores, impresoras, terminales de pago y balanzas--- los compra el CLIENTE según la especificación del paquete 5.1.1 del T-14. El sistema de cadena de frío B-01, B-02, B-03 y el kit de camión lo provee, instala y mantiene LafroX (T-14, 5.1.4), como infraestructura que opera y soporta sus niveles de servicio. La infraestructura on-premise la provee el adjudicatario dentro del contrato (Bases Administrativas, art. 14.2, p. 10). Todo el equipamiento lo instala, integra y mantiene el adjudicatario.
 
-\subsection{Síntesis del equipamiento por familia}
+\subsubsection{Síntesis del equipamiento por familia}
 
 La \href{LAFROX-Subdocumento4-Anexos.pdf#tab:t26}{Tabla A.36 del Anexo 4-W} cruza cada familia de equipamiento con el sitio donde se instala. Las cifras son las unidades en operación. La reserva se analiza a continuación.
 
 
 
-La tabla incluye cinco enlaces satelitales: uno en Talca, uno en Concepción y uno por cada cross-docking.
+La Tabla A.36 incluye cinco enlaces satelitales: uno en Talca, uno en Concepción y uno por cada cross-docking.
 
-La tabla muestra que la operación se concentra en el terreno y en las bodegas, no en la sala técnica. Solo en la calle trabajan 62 terminales de preventa y 96 camiones equipados, cada uno con un terminal de conductor, una impresora de cabina y un terminal de pago. En las bodegas y en los cross-docking, 186 terminales y los puntos de acceso que los conectan. Frente a eso, el cómputo y el almacenamiento suman 12 equipos: 3 servidores en Talca, 2 en Concepción, 6 mini-PC y la NAS. A ellos se suma el servidor del ERP del CLIENTE, que se traslada a la sala de Talca y no forma parte de la oferta. Esa proporción refleja el caso, donde la operación ocurre en la calle, en la cámara y en el andén, y explica por qué la gestión de dispositivos (N-13) es un componente con emplazamiento propio y no un accesorio.
+Ese desglose muestra que la operación se concentra en el terreno y en las bodegas, no en la sala técnica. Solo en la calle trabajan 62 terminales de preventa y 96 camiones equipados, cada uno con un terminal de conductor, una impresora de cabina y un terminal de pago. En las bodegas y en los cross-docking, 186 terminales y los puntos de acceso que los conectan. Frente a eso, el cómputo y el almacenamiento suman 12 equipos: 3 servidores en Talca, 2 en Concepción, 6 mini-PC y la NAS. A ellos se suma el servidor del ERP del CLIENTE, que se traslada a la sala de Talca y no forma parte de la oferta. Esa proporción refleja el caso, donde la operación ocurre en la calle, en la cámara y en el andén, y explica por qué la gestión de dispositivos (N-13) es un componente con emplazamiento propio y no un accesorio.
 
 Los equipos de reparto se cuentan por camión y no por conductor, porque los conductores de los transportistas rotan sin aviso y el equipo queda en el vehículo (S-30). Los terminales de bodega se comparten entre turnos, como contempla el perfil operacional del caso (RT-12.11, Bases Técnicas del caso, cap. 15, p. 27), por lo que su cantidad la fija el turno con más personas trabajando a la vez: los 120 preparadores nocturnos de Talca y los 60 de Concepción (S-39). La carga de los camiones la hace esa misma cuadrilla (S-33). Los puntos de acceso son una estimación preliminar por superficie, con mayor densidad dentro de las cámaras, que el estudio de cobertura confirma (S-36).
 
@@ -25,7 +25,7 @@ A las unidades en operación se suma la reserva del numeral 8.4 de las Bases Té
 
 Se proveen ocho estaciones nuevas para despacho, administración, planificación, calidad y TI. Los equipos existentes de los usuarios de oficina se incorporan a la gestión central con CrowdStrike Falcon, cifrado de disco, parches y control de extraíbles como condición de acceso por Verified Access conforme a ADR-16 (Anexo 4-O).
 
-\subsection{Criterios de selección}
+\subsubsection{Criterios de selección}
 
 Cada familia se especifica contra una condición del caso que el equipamiento de oficina no resiste:
 
@@ -75,7 +75,7 @@ La disposición final del equipamiento electrónico se efectúa mediante un gest
 
 El almacenamiento ejecuta verificaciones periódicas de integridad y repara los datos desde las réplicas disponibles, registrando los errores. La observabilidad recoge los indicadores de salud y desgaste de los medios y alerta al NOC cuando anticipan una falla o su agotamiento, para reemplazarlos de forma preventiva (RT-08.02, Bases Técnicas Transversales, cap. 8, p. 18).
 
-\subsection{Software y licenciamiento}
+\subsubsection{Software y licenciamiento}
 
 El software de base que opera el adjudicatario es de código abierto y se organiza así:
 
@@ -87,7 +87,7 @@ El software de base que opera el adjudicatario es de código abierto y se organi
 
 En software y servicios de plataforma, los únicos elementos con suscripción son los servicios de la plataforma de nube, descritos en la sección~\ref{sec:servicios-nube}, la gestión de dispositivos, los agentes de detección en endpoints y el orquestador de integración continua GitLab CI. Esta composición mantiene la reversibilidad de la solución y evita que el CLIENTE quede atado a un licenciamiento propietario.
 
-\subsection{Sistema de cadena de frío en ruta}
+\subsubsection{Sistema de cadena de frío en ruta}
 El mismo kit protege los 28 camiones: UC-8200 con Greengrass V2; ioLogik E1260-T; una PT100 de aire y dos en simuladores de glicol; EYE SENSOR EN12830 independiente en glicol y otro como termógrafo de aire; Iridium Edge, antena móvil/GNSS, sensor de puerta, luz y zumbador, UPS y protección automotriz (Moxa, s.~f.-c; Iridium, s.~f.-a, s.~f.-b). La base es un compartimento y una puerta por camión; el inventario real ajusta sensores por compartimento. La reserva por familia entrega 31 componentes unitarios, 93 sondas, 93 botellas y 62 SIM M2M. El termógrafo registra cada minuto y su memoria de 4.000 lecturas cubre aproximadamente 66 h.
 
 El mapeo por tipo de carrocería fija punto más caliente, volumen de glicol y tolerancias. El gateway va en cabina con base antivibración; Iridium y antena se montan con cielo despejado; la UPS y el acondicionador protegen 12/24 V, con autonomía de al menos 24 h y corte por bajo voltaje. Los proveedores locales son Techvalue para Moxa, Teltonika de Chile para los registradores y Globalsat Chile para Iridium. Antes de la compra se exige cotización escrita local, certificación Subtel aplicable, EN 12830 y calibración del modelo (Subsecretaría de Telecomunicaciones, s.~f.; Teltonika, s.~f.). El EYE cubre −20 a +60 °C: para compartimentos bajo −20 °C se selecciona un registrador con rango y certificación acreditados. El UC-8200 carece de E-mark y se valida con las pruebas V1 y V5; la alternativa RUT956 requiere repetir integración y ensayos (ADR-24).

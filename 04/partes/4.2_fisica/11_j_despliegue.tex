@@ -11,7 +11,7 @@
 % Mini título de cada ambiente: sin número, no entra al índice.
 \providecommand{\minititulo}[1]{\par\addvspace{8pt}\noindent{\intersemibold\color{lafroxTinta}#1}\par\nopagebreak\addvspace{2pt}}
 
-\section{Arquitectura de despliegue}
+\subsection{Arquitectura de despliegue}
 \phantomsection\label{fuente-11-j-despliegue}
 \label{sec:despliegue}
 
@@ -19,7 +19,7 @@ La arquitectura física describe qué componentes existen, dónde viven y cómo 
 
 Esos mecanismos son tres y no se sustituyen entre sí. La alta disponibilidad responde a la falla de un componente sin que la operación lo note. La recuperación ante desastres responde a la pérdida de un sitio o de una región completa. El respaldo responde al daño del dato, sea un borrado accidental, una corrupción o un cifrado malicioso, frente a los cuales las réplicas no protegen, porque replican el daño con la misma fidelidad que una escritura legítima.
 
-\subsection{Ambientes y ciclo de entrega}
+\subsubsection{Ambientes y ciclo de entrega}
 \label{sub:1-ambientes-de-despliegue-rt-04-01}
 
 Un cambio recorre tres ambientes antes de llegar a Producción: Desarrollo, QA y Preproducción. Se construye y se prueba de forma unitaria en Desarrollo, se valida en QA con pruebas funcionales, de integración y de regresión automatizadas, y se ensaya en Preproducción, donde ocurren las pruebas de aceptación, de carga y de resiliencia y el ensayo del paso a producción. Solo entonces se promueve a Producción, sin recompilar, de modo que el artefacto que llega a producción es el mismo que se probó. La marcha blanca de cada etapa ocurre ya en Producción, porque es operación supervisada con datos y usuarios reales en paralelo con la operación vigente. Un quinto ambiente, de Recuperación ante Desastres, sostiene la continuidad: reside en la región us-east-1 para el dominio de nube, mientras que el WMS de Talca se recupera en la plataforma de nube, como se describe en la recuperación ante desastres de esta sección. La Tabla~\ref{tab:t62} muestra cada ambiente con su bloque de direccionamiento, su región y su función.
@@ -216,7 +216,7 @@ La cuenta de último recurso (ADR-06, Anexo 4-O) se usa solo ante la indisponibi
 
 Los portales de clientes, transportistas y proveedores siguen el mismo ciclo: su aplicación Angular se publica por ambiente en S3 privado y CloudFront, con la imagen de aplicación del mismo ambiente como backend. Las consolas Angular, en cambio, corren como contenedor en ECS Fargate tras el balanceador de aplicación privado (N-04).
 
-\subsubsection{Artefacto y perfiles de ejecución}
+\paragraph{Artefacto y perfiles de ejecución}
 
 El flujo de integración continua ejecuta automáticamente en QA las pruebas de carga de regresión, con el perfil versionado del Anexo 4-W, sección 4-W.12, en cada versión candidata y al menos una vez por semana dentro del horario de uso del ambiente, y repite el ensayo en Preproducción antes de liberar. Compara percentil 95, errores y colas con la última versión aceptada bajo la misma carga y configuración. Una regresión de desempeño o un incumplimiento de 4.2.6.11 bloquea la promoción hasta corregirla (RT-09.10, Bases Técnicas Transversales, cap. 9, p. 22).
 
@@ -225,6 +225,7 @@ La aplicación se construye una sola vez por entrega como una imagen PHP 8.5 con
 \paragraph*{Perfiles de ejecución del artefacto Laravel}
 \phantomsection
 \label{tab:perfiles}
+A continuación se definen los distintos roles operativos que adopta la imagen única según su contexto de ejecución:
 \begin{itemize}
 \item \textbf{API.} \textbf{Proceso y función:} Servidor web y PHP-FPM con las APIs de M1--M12 para portales, preventa y reparto. \textbf{Dónde corre:} N-04, ECS Fargate en 2 zonas. \textbf{Escala por:} Procesos PHP-FPM ocupados sobre 70~\%, de 2 a 4 tareas y techo de 8.
 \item \textbf{\texttt{wms\_only}.} \textbf{Proceso y función:} Servidor web y PHP-FPM con M1, M2, M5, bloqueo y disposición sanitaria autorizada de M9 y recepción física de retornos de M8, con la puerta de API local. \textbf{Dónde corre:} VM-01, VM-C01 y E-01. \textbf{Escala por:} Fijo, dimensionado al sitio.
@@ -252,7 +253,8 @@ Cada perfil cumple este ciclo de vida:
 
 Así, ningún reinicio, escalado o despliegue deja un trabajo a medias.
 
-\subsubsection{Liberación y reversión}
+\paragraph{Liberación y reversión}
+\label{subsec:liberacion-reversion}
 
 Cada entrega se libera con estrategia azul-verde: la entrega nueva se despliega junto a la vigente y recibe tráfico de forma gradual, en etapas de canario, después de haberse demostrado el mismo procedimiento en Preproducción (RT-04.07, Bases Técnicas Transversales, cap. 4, p. 11). La puesta en producción avanza por proceso, por sitio o por zona comercial, nunca como un evento único que afecte a la vez a la bodega, la preventa, el reparto y la facturación. En la sustitución del WMS de 2013 por olas, cada capacidad se activa además por sitio mediante indicadores de funcionalidad (\emph{feature flags}), sin volver a desplegar. Revertir una ola devuelve el tráfico a la entrega previa del nuevo servicio. El WMS de 2013 ya no escribe stock y se retira al cerrar la marcha blanca de Talca.
 
@@ -262,7 +264,7 @@ Si la falla de un despliegue se manifestara durante la ventana de despacho, la b
 
 Cada promoción ensaya además la compatibilidad de los mensajes retenidos. Un sitio puede volver de un corte de 24 horas con sobres publicados por la entrega previa, de modo que el consumidor de reconciliación acepta la edición vigente y la inmediatamente previa del sobre JSON, y rechaza hacia la cola de mensajes fallidos cualquier edición que no reconozca, sin aplicarla. Preproducción reproduce ese caso ---sitio emulado desconectado, promoción de la entrega nueva y reconexión--- antes de cada paso a producción.
 
-\subsubsection{Implantación por olas en los sitios}
+\paragraph{Implantación por olas en los sitios}
 
 La arquitectura lógica fija la implantación progresiva por olas (apartado 4.1.8). Su secuencia física es la siguiente:
 
@@ -275,7 +277,7 @@ La arquitectura lógica fija la implantación progresiva por olas (apartado 4.1.
   \item La reversión devuelve el tráfico a la entrega previa del nuevo servicio solo después de detener la nueva, conciliar los mensajes retenidos y comprobar que el esquema sigue legible por la entrega previa. No reactiva el WMS de 2013 como escritor.
 \end{enumerate}
 
-\subsubsection{Calendario y cadencia}
+\paragraph{Calendario y cadencia}
 
 El calendario de Puelche limita cuándo se puede intervenir la plataforma. El caso prohíbe intervenir los sistemas entre el 1 y el 25 de septiembre, en diciembre y durante el cierre contable de cada mes, prohíbe el paso a producción en todo septiembre y en diciembre, y exige indisponibilidad cero en la ventana de despacho (Bases Técnicas del caso, cap. 10, restricción 8, p. 19, y Cap. 13, p. 23; RT-10.05 y RT-10.06, Bases Técnicas Transversales, cap. 10, p. 22; Bases Técnicas del caso, cap. 15, p. 27). La Tabla~\ref{tab:jd02} cruza cada período con lo que admite.
 
@@ -300,7 +302,7 @@ Un incidente crítico activa de inmediato el procedimiento de recuperación: con
 
 Si la recuperación o la remediación de una vulnerabilidad exige una intervención prohibida, el NOC/SOC lo comunica al CLIENTE el mismo día en que detecta el conflicto y le solicita un cambio de emergencia, con la evidencia del plazo y de la contención aplicada. Con autorización escrita del CLIENTE, el cambio se ejecuta por el mismo pipeline, con reversión preparada y fuera de la ventana de despacho. Si el CLIENTE no lo autoriza, LafroX mantiene la contención, registra la aceptación del riesgo por parte del CLIENTE y remedia en la primera fecha habilitada. El plazo que se exceda por esa decisión queda trazado como decisión del CLIENTE. El presupuesto de error de cada servicio crítico es el complemento de su disponibilidad de 99,9~\% mensual, unos 43 minutos al mes. Si se agota, se suspenden los despliegues no correctivos hasta el mes siguiente, sin alterar los congelamientos (RT-10.09, Bases Técnicas Transversales, cap. 10, p. 22).
 
-\subsection{Red de despliegue}
+\subsubsection{Red de despliegue}
 \label{sub:2-redes-topologia-segmentacion-y-conectivi}
 
 La sección de conexiones describe los caminos entre los sitios, el terreno y la nube, y su conmutación (Tabla~\ref{tab:conexiones}). El despliegue agrega tres definiciones sobre esa red: dónde llegan los túneles, cómo se reparte el direccionamiento y cómo se dirige el tráfico entre regiones.
@@ -368,7 +370,7 @@ La red también debe devolver a la normalidad a un sitio que operó desconectado
 
 La calidad de servicio de los enlaces da prioridad a recepción, preparación, despacho y sincronización, junto con identidad, guías y alertas térmicas, por sobre la navegación administrativa, los informes y las transferencias no urgentes. La política se aplica al enlace principal y a los de respaldo, y mantiene la prioridad de recuperación descrita para DMS y WAL (RT-03.24, Bases Técnicas Transversales, cap. 3, p. 10).
 
-\subsection{Alta disponibilidad}
+\subsubsection{Alta disponibilidad}
 \label{sub:3-alta-disponibilidad}
 
 No todos los servicios necesitan el mismo nivel de continuidad. El Artículo 78 (Bases Administrativas, art. 78.2, p. 40) fija cuatro niveles de servicio, y la solución asigna cada servicio a uno según el efecto de su indisponibilidad sobre la operación (RT-10.02, Bases Técnicas Transversales, cap. 10, p. 22), como muestra el listado \hyperref[tab:jd05]{de niveles de servicio}.
@@ -376,6 +378,7 @@ No todos los servicios necesitan el mismo nivel de continuidad. El Artículo 78 
 \paragraph*{Clasificación de servicios por nivel de servicio}
 \phantomsection
 \label{tab:jd05}
+La siguiente categorización agrupa los servicios de la solución según la criticidad operativa y su ventana de resolución:
 \begin{itemize}
 \item \textbf{Crítico.} \textbf{Disponibilidad:} 99,9 \%, \textbf{Resolución:} 4 h, \textbf{Servicios:} Preparación y despacho con emisión de la guía requerida por un cambio de carga en la ventana de 05:30 a 07:00, con el bloqueo por excursión térmica y la identidad de bodega que lo habilitan.
 \item \textbf{Alto.} \textbf{Disponibilidad:} 99,5 \%, \textbf{Resolución:} 8 h. \textbf{Servicios:} Toma de pedido de preventa y consulta de stock y crédito, entrega y evidencia de entrega, planificación de rutas, otros documentos tributarios, integración con el ERP, cobranza y rendición, y registro de temperatura.
@@ -422,24 +425,24 @@ En la nube, todos los servicios con requisito de alta disponibilidad operan en a
 
 Estos tiempos corresponden a los que AWS declara como habituales para cada servicio y se tratan como objetivos que se miden en las pruebas de la sección~\ref{sub:6-verificacion-de-la-continuidad}. Ante el peak de septiembre, el escalamiento automático y la degradación controlada del apartado de dimensionamiento sostienen los umbrales de desempeño sin intervención.
 
-\subsection{Recuperación ante desastres}
+\subsubsection{Recuperación ante desastres}
 \label{sub:4-recuperacion-ante-desastres-ba-art-20-rt}
 
 La recuperación ante desastres es activo-pasiva en caliente: la región us-east-1 mantiene el núcleo de aplicación y los datos replicados con capacidad reducida. Su escalado tiene un presupuesto de hasta 30 minutos y se promueve ante pérdida de la región primaria. Los canales, accesos e ingesta se restituyen según 4.3.2.5. El escalado no representa el RTO completo. Los objetivos son un RTO de hasta 4 horas y un RPO de hasta 15 minutos para los servicios críticos (RT-07.04, Bases Técnicas Transversales, cap. 7, p. 17). Cada dominio de datos alcanza ese RPO con su propio mecanismo de replicación (listado \hyperref[tab:4-3-4]{de replicación y RPO por dominio}): Aurora Global Database mantiene en us-east-1 la réplica promovible de la base en nube, DynamoDB Global Tables los datos de temperatura —las posiciones de flota permanecen solo en sa-east-1—, y la replicación de S3 entre regiones lleva la evidencia, los documentos y las copias de AWS Backup (N-11).
 
-Si Talca pierde fibra y LTE, Starlink D-06, mantenido en espera caliente con el túnel IPsec establecido y BGP de menor preferencia, sostiene la lectura continua de AWS DMS sobre VM-02 y el envío de eventos críticos. La operación local conserva al menos 24 horas de autonomía. El límite residual del RPO y sus mitigaciones se exponen en 4.3.2, bajo «RPO y RTO». El registro retenido se acota con un tope de 5 GB por slot, frente a los unos 0,123 GB diarios de registro de escritura anticipada que estima el dimensionamiento para Talca: cubre con amplio margen un corte de 24 horas y ocupa como máximo la cuarta parte de los 20 GB actuales de VM-02, que crecen a 31 GB a 3$\times$, sin arriesgarlo (Anexo 4-W). El retraso de replicación y el tamaño del registro retenido se miden de forma continua y generan alarma a los 5 y a los 15 minutos de retraso.
+Si Talca pierde fibra y LTE, Starlink D-06, mantenido en espera caliente con el túnel IPsec establecido y BGP de menor preferencia, sostiene la lectura continua de AWS DMS sobre VM-02 y el envío de eventos críticos. La operación local conserva al menos 24 horas de autonomía. El cumplimiento del RPO ante pérdida de enlaces o del sitio y sus mecanismos se exponen en 4.3.2, bajo «RPO y RTO». El registro retenido se acota con un tope de 5 GB por slot, frente a los unos 0,123 GB diarios de registro de escritura anticipada que estima el dimensionamiento para Talca: cubre con amplio margen un corte de 24 horas y ocupa como máximo la cuarta parte de los 20 GB actuales de VM-02, que crecen a 31 GB a 3$\times$, sin arriesgarlo (Anexo 4-W). El retraso de replicación y el tamaño del registro retenido se miden de forma continua y generan alarma a los 5 y a los 15 minutos de retraso.
 
 La réplica por DMS y la reconciliación por eventos cumplen funciones distintas y no se mezclan. DMS copia las tablas del WMS de Talca (VM-02) a un esquema de réplica de solo lectura en Aurora, que sirve a la continuidad y a las consultas. Concepción y los cross-docking no replican sus bases por DMS: publican sus eventos mediante los brokers y SQS FIFO. El consumidor de reconciliación aplica esos sobres JSON a las tablas de dominio del estado central ---stock consolidado, trazabilidad de lotes, pedidos, entregas y cobros---, y en la misma transacción registra la clave de origen del evento, formada por el sitio y el identificador único que el evento trae desde su captura. Una restricción de unicidad sobre esa clave impide aplicar dos veces el mismo evento, aunque SQS lo entregue de nuevo o llegue después de la ventana de deduplicación de la cola. Ninguna tabla de dominio se alimenta de la réplica DMS, y ningún evento escribe en el esquema de réplica.
 
-\subsubsection{Conmutación y retorno}
+\paragraph{Conmutación y retorno}
 
 La conmutación de región y el retorno siguen el procedimiento de la sección \hyperref[sub:conmutacion-regional]{4.3.2.5} (procedimiento \hyperref[tab:4-3-6]{de conmutación de región}): la promoción de la base exige la autorización del CLIENTE y el enrutamiento hacia us-east-1 cambia después de la validación funcional. El retorno se ejecuta de forma coordinada tras la reconciliación. Si la contingencia afecta solo a la sala de Talca, su WMS se levanta en Fargate sobre su copia en Aurora de la región activa, tras excluir VM-02 y transferir la autoridad de M2. El RTO incluye verificar o restituir LAN, firewalls, un camino WAN y acceso de los terminales, según 4.3.2.5. Los dominios de recuperación y sus amenazas comunes se analizan en la Tabla~\ref{tab:4-3-3}.
 
-\subsubsection{Operación durante una contingencia regional}
+\paragraph{Operación durante una contingencia regional}
 
 Mientras la región primaria no está disponible, la bodega y el terreno siguen operando contra sus bases locales y sus dispositivos. Tras la autorización del CLIENTE, la plataforma se promueve en us-east-1 y recupera las transacciones en nube. La analítica se recupera después desde su copia diferida, y las consultas de geolocalización de personas, excluidas de us-east-1 por diseño (sección~\ref{sec:e-especificaciones-del-sitio-secundario-y-}), esperan el retorno. Ninguna es un servicio crítico.
 
-\subsection{Respaldos}
+\subsubsection{Respaldos}
 \label{sub:5-respaldos-esquema-3-2-1-1-0-rnf-20-07}
 
 El respaldo protege contra lo que las réplicas replican: un dato borrado por error, corrompido o cifrado de forma maliciosa. La solución aplica el esquema 3-2-1-1-0 exigido para la nube y el on-premise, con una copia inmutable (RT-07.09, Bases Técnicas Transversales, cap. 7, p. 18). Mantiene tres copias en dos medios, base de datos y almacenamiento de objetos:
@@ -459,6 +462,7 @@ El listado \hyperref[tab:jd12]{de respaldo y restauración por dominio} muestra,
 \paragraph*{Respaldo y restauración por dominio de datos}
 \phantomsection
 \label{tab:jd12}
+El siguiente detalle resume las políticas de periodicidad, retención y tiempo de restitución para cada ámbito de información:
 \begin{itemize}
 \item \textbf{Transaccional de bodega.} \textbf{Frecuencia:} Continua, con copia local D-05 en Talca y, en Concepción y los cross-docking, reconstrucción desde el estado central, \textbf{Retención:} 35 días, \textbf{Restauración:} $\leq$ 4 h.
 \item \textbf{Transaccional en nube.} \textbf{Frecuencia:} Diaria y recuperación continua, \textbf{Retención:} 35 días, \textbf{Restauración:} $\leq$ 4 h.
@@ -480,7 +484,7 @@ AWS Backup aplica a Aurora y DynamoDB los respaldos y la recuperación a un inst
 
 Los dos medios rotativos se inventarían por identificador, contenido y ubicación, con registro de cada entrada y salida, del responsable y de la entrega bajo cadena de custodia. En cada rotación semanal se comprueba su legibilidad con una lectura y una restauración de verificación. El resultado queda registrado y todo medio defectuoso se retira de uso (RT-06.28, Bases Técnicas Transversales, cap. 6, p. 16).
 
-\subsection{Verificación de la continuidad}
+\subsubsection{Verificación de la continuidad}
 \label{sub:6-verificacion-de-la-continuidad}
 
 Los mecanismos descritos se verifican con pruebas periódicas. La aceptación del par activo/espera incluye una partición de ambas redes con los dos equipos encendidos, la pérdida de la réplica, el apagado del activo y el retorno del antiguo primario. Se demuestra que hay un único escritor intentando escribir por ambos extremos, que no es posible promover sin exclusión y que se mantiene la continuidad de UUID y outbox. Además, se miden los tiempos desde la detección hasta la recuperación. Una prueba de apagado aislada no basta para demostrar el manejo de particiones. Antes de cada paso a producción, y al menos una vez por semestre durante la Operación, se inyectan la caída de una instancia, de una zona, del equipo activo de Concepción o de un cross-docking, o de una dependencia externa, la latencia elevada y la saturación de disco (RT-10.07, Bases Técnicas Transversales, cap. 10, p. 22), y se comprueban las resoluciones de los listados \hyperref[tab:fallas-sitios]{de fallas en los sitios y enlaces} y~\hyperref[tab:fallas-nube]{de fallas en nube, terreno e integraciones}. La conmutación regional se ensaya dos veces al año con escrituras de pedidos y sincronización en us-east-1, y el RTO y el RPO medidos deben cumplirse en el 100~\% de los ensayos (Bases Administrativas, art. 78.3, p. 40). Con la misma frecuencia se ensaya la pérdida completa de la sala de Talca, distinta del corte de enlace, levantando su WMS en la nube sobre la copia en Aurora, y los respaldos se restauran mensualmente. Las pruebas se programan fuera de la ventana de despacho y producen un informe de resultados con el plan de corrección de las brechas detectadas (RT-07.07, Bases Técnicas Transversales, cap. 7, p. 17). El plan de continuidad del negocio se elabora conforme a ISO 22301, y la continuidad TIC se estructura conforme a ISO/IEC 27031, articulada con el plan de recuperación ante desastres de esta sección (RT-10.03 y RT-10.04, Bases Técnicas Transversales, cap. 10, p. 22).
@@ -500,5 +504,5 @@ La disponibilidad efectiva de cada servicio, las métricas del proceso de despli
 
 \label{fuente-11-j-despliegue-fin}
 
-\subsection{Despliegue de los kits de camión}
+\subsubsection{Despliegue de los kits de camión}
 Los componentes de Greengrass se promueven desde banco a cuatro camiones piloto y después por etapas a la flota, con versiones fijadas y reversión. Cada acta de camión registra aprovisionamiento con certificado propio, asociación de registradores, chequeo y alarma simulada. El piloto dura seis semanas en dos camiones rurales, uno urbano y uno de transportista; verifica las pruebas V18, V20 y V21 de la Tabla A.42 del Anexo 4-W antes de la ola de reparto. Los 28 kits deben estar instalados y recibidos antes de esa ola. La mantención incluye calibración anual, glicol y baterías; no se despliega durante una entrega activa.

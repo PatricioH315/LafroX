@@ -5,13 +5,13 @@
 %  Puntos únicos de falla declarados conforme a RT-02.11.
 % ------------------------------------------------------------------
 
-\section{Conexiones, puntos de falla y contingencia}
+\subsection{Conexiones, puntos de falla y contingencia}
 \phantomsection\label{fuente-02-c-conexiones}
 \label{sec:conexiones}
 
 Esta sección describe cómo se conectan los sitios, el terreno y la nube, identifica cada punto donde esa conexión o su infraestructura puede fallar, y declara cómo se resuelve cada falla o, cuando no se resuelve de forma automática, cuál es la contingencia. Su punto de partida es el caso: la conectividad actual de Puelche se corta con frecuencia y en algunos lugares no existe, por lo que la solución no puede suponer un enlace disponible y debe decir, para cada conexión, qué pasa cuando no lo está.
 
-\subsection{Conexiones entre sitios, terreno y nube}
+\subsubsection{Conexiones entre sitios, terreno y nube}
 
 Los dos dominios fijos, la nube y el on-premise, se conectan por túneles VPN IPsec que terminan en el par de firewalls de cada sitio (D-01) y en el Transit Gateway de AWS en sa-east-1, con enrutamiento dinámico BGP. Cada sitio publica sus eventos directamente a la nube y opera sin conexión con los sistemas de otra instalación. Los caminos de acceso se distribuyen así:
 
@@ -55,7 +55,7 @@ La Tabla~\ref{tab:conexiones} resume cada conexión con su medio, su camino alte
 
 Los cinco sitios tienen caminos alternativos hacia la nube. Los sitios mantienen las funciones locales de 4.1.15. Una nueva guía sigue dependiendo del ERP de Talca y de su comunicación tributaria. El terreno conserva la captura autorizada sin señal y los termógrafos mantienen su registro interno. Los portales requieren conexión, salvo el Portal de Clientes instalado, que conserva el catálogo descargado y el pedido armado hasta recuperar señal.
 
-\subsection{Superficie de exposición}
+\subsubsection{Superficie de exposición}
 \label{sub:superficie}
 
 La Tabla~\ref{tab:superficie} delimita las únicas entradas desde redes externas. Cada entrada usa un subdominio propio del dominio del CLIENTE gestionado en Route 53. En la tabla, \texttt{\textless{}dominio\textgreater{}} representa ese dominio institucional, que el CLIENTE confirma al inicio del proyecto.
@@ -75,7 +75,7 @@ La Tabla~\ref{tab:superficie} delimita las únicas entradas desde redes externas
 
 La tabla excluye toda otra entrada desde fuera de la red del CLIENTE. En recuperación ante desastres se mantienen los nombres de dominio y se redirigen las entradas cuyo servicio y dependencias hayan sido restituidos y validados en us-east-1. La promoción de Aurora no recupera por sí sola todos los canales: la cobertura por servicio se distingue en 4.3.2.5 y en el Formulario T-11. MDM, EDR, SII, Transbank, GIS, notificaciones y telemetría de flota son dependencias de salida, detalladas en el Formulario T-11. El canal AS2 entrega el MDN síncrono dentro del tiempo de espera de 60 s del origen de CloudFront, y los mensajes que no alcanzan ese plazo usan MDN asíncrono. Los envíos AS2 de LafroX a las cadenas salen por las IP fijas del NAT Gateway. Si una cadena exige direcciones de destino fijas, se habilitan las IP estáticas Anycast de CloudFront para esa distribución.
 
-\subsection{Puntos de falla en los sitios y en los enlaces}
+\subsubsection{Puntos de falla en los sitios y en los enlaces}
 
 Cada conexión se apoya en equipos del sitio que también pueden fallar. El listado \hyperref[tab:fallas-sitios]{de fallas en los sitios y enlaces} recorre esos puntos de falla, desde el enlace hasta la energía del recinto, e indica para cada uno el mecanismo que la resuelve y la contingencia si ese mecanismo no basta.
 
@@ -104,7 +104,7 @@ Cada conexión se apoya en equipos del sitio que también pueden fallar. El list
 
 En Concepción, el RAID 10 tolera la falla de un disco y las fuentes redundantes sostienen cada servidor ante la pérdida de un circuito. Si falla el servidor activo, el de espera toma su lugar con la base al día, y solo la pérdida de ambos obliga a reconstruirla desde el estado central alimentado por sus eventos. En Talca, el tablero respaldado por generador mantiene el registro de frío, y en Concepción la UPS del gabinete permite el apagado ordenado. El listado muestra además que los firewalls van en par en los cinco sitios conforme a RT-08.03 (Bases Técnicas Transversales, cap. 8, p. 18). Concepción y cada cross-docking tienen su cómputo en un par de equipos activo y en espera (RT-03.14, Bases Técnicas Transversales, cap. 3, p. 9). Cada cross-docking tiene además dos switches industriales, y cada equipo, alimentación redundante y discos en RAID 1. El bloqueo sanitario permanece local y el despacho con guía preemitida puede continuar cuando la carga conserva su autorización sanitaria. Una nueva liberación corresponde solo a Calidad, conforme a 4.1.3.5 y 4.1.3.7. La consola central requiere conexión y el perfil Kotlin autorizado usa la puerta local de A-01 con evaluación y auditoría persistentes. Si el expediente local está incompleto o el permiso no está vigente, el lote permanece bloqueado. En la ventana de Talca, VM-02 se reinicia en otro nodo y otra impresora emite la etiqueta si falla la del andén. Los mecanismos de alta disponibilidad se detallan en la sección \hyperref[sub:3-alta-disponibilidad]{4.2.4.3}.
 
-\subsection{Puntos de falla en la nube, el terreno y las integraciones}
+\subsubsection{Puntos de falla en la nube, el terreno y las integraciones}
 
 El listado \hyperref[tab:fallas-nube]{de fallas en nube, terreno e integraciones} completa el recorrido con los puntos de falla que están fuera de los sitios: la nube, el terreno y los sistemas de terceros.
 

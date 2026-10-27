@@ -1,19 +1,19 @@
 % !TeX root = ../../main.tex
 % 4.3.2 Data center secundario.
 
-\section{Especificaciones Data Center Secundario}
+\subsection{Especificaciones Data Center Secundario}
 \phantomsection\label{fuente-06-e-sitio-secundario}
 \label{sec:e-especificaciones-del-sitio-secundario-y-}
 
 El Data Center Secundario cubre dos dominios de recuperación. La región AWS us-east-1 restituye el dominio de nube ante la pérdida de sa-east-1. La plataforma de nube de la región activa restituye el WMS de Talca ante la pérdida de su sala técnica. Si también se pierde sa-east-1, la región activa pasa a ser us-east-1 tras la promoción. Concepción y los cross-docking son sitios operacionales autónomos y no reciben la carga de Talca. Los objetivos para servicios críticos son RTO $\leq$ 4 h y RPO $\leq$ 15 min, con respaldo 3-2-1-1-0 y ensayos semestrales. El Formulario T-11 detalla los recursos de recuperación.
 
-\subsection{Modalidad del sitio secundario}
+\subsubsection{Modalidad del sitio secundario}
 
 La modalidad del dominio de nube es activo-pasiva en caliente para el núcleo de aplicación y los datos replicados. La región us-east-1 mantiene ese núcleo con capacidad reducida. Ante la declaración del incidente se promueve Aurora y se escala la aplicación. Los canales y dependencias que requieren restitución se distinguen en 4.3.2.5 y T-11. No se presume una réplica caliente de todos los servicios del catálogo. El dominio de Talca conserva en Aurora una copia continua de su WMS y la misma imagen \texttt{wms\_only} lista para ejecutarse en ECS Fargate. ADR-09 (Anexo 4-O) registra la selección frente a activo-activo y a la restauración en frío. La primera alternativa exigiría coordinar escrituras simultáneas entre regiones. La segunda agrega la reconstrucción de la plataforma al tiempo de recuperación.
 
 Frente a un esquema activo-activo, la réplica caliente reducida evita pagar de forma permanente dos plataformas a plena carga. Frente a una restauración en frío, mantiene suficiente capacidad en espera para cumplir el RTO sin reconstruir la plataforma. Ese equilibrio entre costo, RTO y complejidad justifica la elección (RT-07.01, Bases Técnicas Transversales, cap. 7, p. 17).
 
-\subsection{Región o sitio de recuperación}
+\subsubsection{Región o sitio de recuperación}
 
 La Tabla~\ref{tab:4-3-3} compara los dos destinos de recuperación con sus distancias y amenazas comunes.
 
@@ -31,13 +31,14 @@ Las distancias de la tabla separan los dominios de falla. La región secundaria 
 
 La réplica secundaria se limita a los datos necesarios para continuidad. La analítica opera en sa-east-1 y se copia de forma diferida a la región secundaria, porque conserva los cinco años de registros de temperatura y de trazabilidad de lote. La copia no incluye las posiciones de flota, solo los kilómetros agregados que alimentan el costo de servir. Las posiciones de flota, que son geolocalización de personas trabajadoras, no salen de sa-east-1 y se protegen con copias inmutables en otra cuenta de esa región. Ante la pérdida total de sa-east-1 se pierde su historial, que solo alimenta el costo de servir. La región secundaria no recibe consultas ordinarias de negocio. Mantiene preparada la consulta sanitaria de emergencia de solo lectura de M9 y sus ensayos. El artículo 23 de las Bases Administrativas sujeta la residencia declarada a aprobación del CLIENTE (Bases Administrativas, art. 23, p. 17), hito contractual de la Etapa 1. La propuesta declara sa-east-1 y us-east-1, y presenta para esa aprobación la base de licitud, el contrato de encargo y los resguardos descritos. Se elige us-east-1 porque ofrece todos los servicios de recuperación del diseño: Aurora Global Database, DynamoDB Global Tables, replicación de S3, ECS Fargate y AWS Backup. Una sola región no permite recuperarse de su propia pérdida con un RTO de 4 horas y un RPO de 15 minutos.
 
-\subsection{Replicación}
+\subsubsection{Replicación}
 
 La replicación continua usa un mecanismo por dominio, resumido en el listado \hyperref[tab:4-3-4]{de replicación y RPO por dominio}.
 
 \paragraph*{Replicación y RPO por dominio de datos}
 \phantomsection
 \label{tab:4-3-4}
+El esquema técnico de sincronización y los objetivos de punto de recuperación por cada dominio se resumen a continuación:
 \begin{itemize}
 \item \textbf{Transaccional en nube (crítico).} \textbf{Mecanismo de replicación:} Aurora Global Database replica la base hacia la región secundaria. \textbf{RPO / retraso declarado:} El RPO objetivo es $\leq$ 15 min y se mide en cada ensayo.
 \item \textbf{WMS de Talca (crítico).} \textbf{Mecanismo de replicación:} AWS DMS replica PostgreSQL VM-02 por la VPN sobre fibra, LTE o Starlink. \textbf{RPO / retraso declarado:} El RPO objetivo es $\leq$ 15 min y se mide en cada ensayo.
@@ -52,7 +53,8 @@ La replicación continua usa un mecanismo por dominio, resumido en el listado \h
 
 El listado separa la copia DMS del WMS de Talca, destinada a su recuperación, del estado central consolidado por eventos idempotentes de todos los sitios. AWS DMS lee VM-02 por el túnel IPsec. La única conexión iniciada desde la nube hacia un sitio termina en esa VM. Aurora Global Database, DynamoDB Global Tables y la replicación de S3 protegen el dominio de nube. S3 Replication Time Control ofrece que el 99,99 \% de los objetos se replique en 15 min. Se vigila la métrica de objetos pendientes y un evento de umbral superado dispara la recopia. DynamoDB Global Tables replica de forma asíncrona con retraso típico de segundos y una alarma de \texttt{ReplicationLatency} a los 60 s. La edad de las réplicas y las colas se mide continuamente y todos los RPO se verifican en los ensayos semestrales.
 
-\subsection{RPO y RTO}
+\subsubsection{RPO y RTO}
+\label{subsec:rpo-rto}
 
 La Tabla~\ref{tab:4-3-5} fija los objetivos medidos en las pruebas de recuperación.
 
@@ -72,7 +74,7 @@ El RPO de la tabla se sustenta en la extracción continua de datos críticos por
 
 El RPO $\leq$ 15 minutos se cumple ante la pérdida regional, la pérdida de uno o dos enlaces y la pérdida del sitio, porque cada centro de distribución replica sus cambios por tres caminos independientes. Las alarmas a los 5 y 15 minutos activan reposición del enlace y conservación de evidencia. AL-DR-01 mide la brecha y el punto recuperable. La restitución de Talca incluye cómputo, LAN, firewall y acceso a la VPN dentro del RTO. Disponer de Fargate por sí solo no recupera sus terminales.
 
-\subsection{Procedimiento de conmutación}
+\subsubsection{Procedimiento de conmutación}
 \label{sub:conmutacion-regional}
 
 La pérdida regional se atiende con la secuencia del procedimiento \hyperref[tab:4-3-6]{de conmutación de región}. La promoción de Aurora requiere autorización del CLIENTE. Route 53 cambia el tráfico solo después de restituir y validar los servicios.
@@ -80,6 +82,7 @@ La pérdida regional se atiende con la secuencia del procedimiento \hyperref[tab
 \paragraph*{Secuencia de conmutación de región}
 \phantomsection
 \label{tab:4-3-6}
+El procedimiento operativo para transferir la carga productiva hacia la región de contingencia se ejecuta en los siguientes pasos:
 \begin{itemize}
 \item \textbf{Paso 1.} \textbf{Acción:} Detección por verificación de salud y alarmas, \textbf{Ejecución:} Route 53 y CloudWatch, \textbf{Tiempo:} $<$ 5 min.
 \item \textbf{Paso 2.} \textbf{Acción:} Declaración del incidente y autorización de la promoción, \textbf{Ejecución:} CLIENTE, con aviso por SNS, \textbf{Tiempo:} $\leq$ 30 min.
@@ -102,17 +105,17 @@ La consulta sanitaria de emergencia opera en los recursos N-04/N-05 de us-east-1
 
 El presupuesto de aceptación desde la solicitud sanitaria es hasta 15 minutos para habilitar el acceso y hasta 60 para producir y verificar la lista, 75 minutos en total y 45 de margen frente a las dos horas. La respuesta identifica punto consistente, retraso por sitio y documentos verificables. Contrasta los eventos locales recuperables con la copia central. Si faltan eventos, originales o claves, se registra la cobertura incompleta y se activa recuperación prioritaria: no se declara satisfecho el criterio sanitario. AL-DR-01 ensaya el retiro durante una pérdida regional con clientes y evidencias esperados, además del RTO general. Este presupuesto es un objetivo de diseño sujeto a prueba, no una medición ejecutada.
 
-\subsection{Procedimiento de retorno}
+\subsubsection{Procedimiento de retorno}
 
 El retorno regional se realiza tras resincronizar las réplicas, conciliar las transacciones de la contingencia y transferir los eventos retenidos. En el retorno del WMS de Talca, VM-02 se reconstruye primero como réplica del escritor de contingencia. Tras verificar la consistencia se detienen las nuevas confirmaciones, se registra la transferencia de autoridad de M2 y se excluye el escritor de contingencia antes de habilitar VM-02. El retorno no permite dos escritores ni reactiva automáticamente el anterior. La operación valida escrituras y consultas en la región primaria, cambia coordinadamente Route 53 y registra el tiempo real empleado. Cada ensayo semestral incluye el retorno.
 
 Para devolver el WMS a Talca se reconstruye su clúster, se carga VM-02 desde Aurora y se invierte temporalmente el sentido de la replicación hasta igualar los datos. Se detienen las escrituras en nube, se verifica la igualdad, se habilita el escritor local y se reconectan los terminales al WMS del sitio. El corte de vuelta se realiza fuera de las ventanas protegidas.
 
-\subsection{Pruebas del plan de recuperación y respaldos}
+\subsubsection{Pruebas del plan de recuperación y respaldos}
 
 Dos veces al año se ensaya la pérdida regional con escrituras de pedidos y sincronización en us-east-1. Con la misma frecuencia se simula la pérdida de la sala de Talca y se levanta su WMS en Fargate sobre la copia en Aurora. Se miden RTO y RPO en cada ensayo y se exige el cumplimiento del 100 \% de ambos objetivos. La restauración mensual de respaldos y la inyección de fallas se describen en la sección~\ref{sub:6-verificacion-de-la-continuidad}.
 
 \label{fuente-06-e-sitio-secundario-fin}
 
-\subsection{Recuperación de la cadena de frío en ruta}
+\subsubsection{Recuperación de la cadena de frío en ruta}
 CloudConnect o el receptor SBD mantiene un segundo destino en us-east-1, contratado en el paquete 5.3.4 del T-14 y verificado con la prueba V17 de la Tabla A.42 del Anexo 4-W. El gateway conserva durante 72 h lo confirmado por A2, o hasta que la plataforma confirme la réplica, y lo reenvía tras pérdida regional sin repetir efectos. En la región recuperada se restituyen IoT Core, reglas, certificados, colas de subida/bajada y M9 con su bandeja de salida. V17 provoca la pérdida justo después de A2 y comprueba recuperación de evento y obligación de aviso. La protección y retención permanecen locales durante toda la recuperación; disponer de réplica no acredita el aviso remoto hasta validar el canal.

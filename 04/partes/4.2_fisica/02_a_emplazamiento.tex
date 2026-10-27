@@ -8,7 +8,7 @@
 %  resume por dominio y criterio, y el detalle por elemento queda en el T-11.
 % ------------------------------------------------------------------
 
-\section{Emplazamiento de cada componente}
+\subsection{Emplazamiento de cada componente}
 \phantomsection\label{fuente-02-a-emplazamiento}
 \label{sec:emplazamiento}
 
@@ -16,7 +16,7 @@ El emplazamiento de cada componente se decide con los seis criterios del Artícu
 
 De esos hechos se desprende la regla que ordena todo el emplazamiento: lo que debe funcionar sin enlace vive en el sitio, y lo que escala, se comparte o está expuesto a Internet vive en la nube. Conforme a esa regla, registrada en ADR-03 (Anexo 4-O), los 36 componentes del catálogo se reparten en 13 de nube pura, 11 on-premise y 12 híbridos, que tienen una parte en cada dominio.
 
-\subsection{Instalaciones y dominios}
+\subsubsection{Instalaciones y dominios}
 
 De las seis instalaciones que cubre la solución, cinco alojan cómputo on-premise. La tipología que fija el caso se aplica así:
 
@@ -151,7 +151,7 @@ En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al 
 
 La figura muestra que cada instalación mantiene su operación local contra sus propios datos, dentro de las funciones y condiciones de 4.1.15 y del Anexo 4-J, aunque Concepción siga recibiendo parte de su surtido desde Talca. Esa autonomía no incluye emitir nuevas guías sin el ERP de Talca ni confirmar autorizaciones externas sin respuesta válida. Talca y Concepción tienen cada uno su WMS, su base, su broker y su caché de identidad. Los cross-docking reúnen esas mismas funciones en un par de mini-PC, uno activo y otro en espera. Y el terreno lleva su propio almacén local en el dispositivo. La nube concentra lo que es común a todos los sitios: los portales, el transaccional compartido, la analítica y los servicios de seguridad. Los doce componentes híbridos aparecen en los dos dominios porque cada uno tiene una parte que debe seguir operando en el sitio y otra que consolida en la nube.
 
-\subsection{Correspondencia con la arquitectura lógica}
+\subsubsection{Correspondencia con la arquitectura lógica}
 
 La \href{LAFROX-Subdocumento4-Anexos.pdf#tab:mapeo-logica}{Tabla A.14 del Anexo 4-N} asocia cada módulo y cada capa transversal de la arquitectura lógica del apartado 4.1 con el componente físico que lo ejecuta y con el lugar donde corre. Es la traza que permite seguir una responsabilidad lógica hasta su emplazamiento. Los componentes físicos se identifican con un catálogo único, agrupado por letra: A para el núcleo de bodega, B para la cadena de frío, C para los dispositivos de operación, D para la red, E para los cross-docking, F para la observabilidad y la seguridad de los nodos, y N para la nube.
 
@@ -161,7 +161,7 @@ El perfil local cubre M1, M2, M5, el bloqueo y la disposición sanitaria autoriz
 
 El recorrido de trazabilidad parte de la capacidad de 3.3–3.4, identifica su módulo y capa en 4.1 y llega al recurso de 4.2 y T-11. El \href{LAFROX-Subdocumento4-Anexos.pdf#anx:N}{Anexo 4-N} completa los doce módulos y los 37 componentes transversales con sus contratos y recursos, y el \href{LAFROX-Subdocumento4-Anexos.pdf#anx:E}{Anexo 4-E} enlaza las familias con las filas individuales de T-12. Un recurso que sirve a varios módulos conserva un identificador único. Compartir Fargate o PostgreSQL no fusiona sus responsabilidades.
 
-\subsection{Síntesis del emplazamiento por dominio y criterio}
+\subsubsection{Síntesis del emplazamiento por dominio y criterio}
 
 La Tabla~\ref{tab:t21} resume cómo se distribuyen los 36 componentes entre los tres dominios y los seis criterios del Artículo 16.2 (Bases Administrativas, art. 16.2, p. 11) que deciden cada emplazamiento. A continuación se justifica, dominio por dominio, por qué cada componente vive donde vive. El producto, la cantidad y la ubicación exacta de cada elemento no son materia del emplazamiento y se especifican en el Formulario T-11.
 
@@ -191,7 +191,7 @@ El emplazamiento responde a cuatro criterios decisivos del caso:
 
 La columna Total suma 37 en las filas de criterios porque la plataforma analítica (N-10) se contabiliza en los dos criterios que deciden su emplazamiento, volumen de datos y costo total de propiedad. La fila final suma los 36 componentes efectivos. El kit de cadena de frío de camión se cuenta como un solo componente híbrido, aunque la Figura~\ref{fig:emplazamiento-dominios} y el Formulario T-11 lo abren en sus trece códigos, B-03 a B-15.
 
-\subsection{Componentes de nube pura}
+\subsubsection{Componentes de nube pura}
 
 Los trece componentes de nube pura viven solo en la nube. La justificación de cada uno y el criterio del Artículo 16.2 (Bases Administrativas, art. 16.2, p. 11) que la determina son los siguientes:
 
@@ -213,7 +213,7 @@ Los trece componentes de nube pura viven solo en la nube. La justificación de c
 
 Ningún componente de nube pura participa en las transacciones que el caso exige resolver sin enlace: la confirmación de preparación, el despacho y el registro de entrega se ejecutan en el sitio o en el dispositivo. Lo que sube a la nube lo hace por tres razones. Los portales y la gestión de identidades externas lo hacen por regulación, porque RT-03.22 no admite exponer servicios internos a Internet (Bases Técnicas Transversales, cap. 3, p. 10). La plataforma de aplicación, la analítica y la telemetría lo hacen por volumen y costo, porque su carga varía con la estación y se paga por uso. Y la seguridad y el respaldo lo hacen porque un equipo de TI de cuatro personas no puede operar esos controles en sus propios servidores.
 
-\subsection{Componentes on-premise}
+\subsubsection{Componentes on-premise}
 
 Los once componentes on-premise viven solo en las instalaciones del CLIENTE. La justificación de cada uno y su criterio:
 
@@ -235,7 +235,7 @@ En el on-premise dominan la latencia y la conectividad. Los sensores, las impres
 
 LafroX acuerda con la Contraparte Técnica del CLIENTE la ventana de cada aplicación de parches y líneas base CIS en los sitios, dentro de la programación de mantenimiento y respetando los congelamientos y las ventanas protegidas de 4.2.4.1.4. Ansible aplica el cambio con respaldo, verificación y reversión preparados, y el resultado queda registrado en la gestión de configuración (RT-03.15, Bases Técnicas Transversales, cap. 3, p. 9).
 
-\subsection{Componentes híbridos}
+\subsubsection{Componentes híbridos}
 
 Los doce componentes híbridos tienen una parte en cada dominio. Para cada uno, la justificación explica qué parte vive en el sitio, qué parte vive en la nube y por qué se reparten así:
 
@@ -256,13 +256,14 @@ Los doce componentes híbridos tienen una parte en cada dominio. Para cada uno, 
 
 Los componentes híbridos siguen todos el mismo patrón: la parte que atiende la operación queda en el sitio y la parte que consolida queda en la nube, unidas por un mecanismo que tolera el corte. En el núcleo de bodega, Talca replica su base por DMS y los demás sitios sincronizan eventos por colas. En el terreno, el almacén local del dispositivo. Y en la observabilidad, el buffer en disco de los colectores. Por eso la conectividad es el criterio dominante en siete de los doce: cada uno existe en dos lugares precisamente porque el enlace entre ellos no es confiable.
 
-\subsection{Autonomía de cada ámbito sin enlace}
+\subsubsection{Autonomía de cada ámbito sin enlace}
 
 El emplazamiento descrito se verifica en lo que cada ámbito puede hacer cuando pierde el enlace. El listado \hyperref[tab:t29]{de autonomía por ámbito} declara esa autonomía y el tiempo en que cada ámbito vuelve a quedar sincronizado.
 
 \paragraph*{Autonomía por ámbito ante la pérdida del enlace}
 \phantomsection
 \label{tab:t29}
+El siguiente desglose especifica las capacidades operativas y ventanas de autonomía garantizadas para cada entorno ante un corte:
 \begin{itemize}
 \item \textbf{Centros de distribución de Talca y Concepción.} \textbf{Autonomía sin enlace:} 24 h o más, con reconciliación determinista.
 \item \textbf{Terreno.} \textbf{Autonomía sin enlace:} 14 h, un turno completo.

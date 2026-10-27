@@ -112,7 +112,7 @@ N-01 a N-03 --- Portales & S3 privado, CloudFront, AWS WAF y API REST pública. 
   F-03 --- Detección y respuesta en endpoints y cargas de trabajo & CrowdStrike Falcon para servidores y endpoints, GuardDuty Runtime Monitoring para tareas Linux Amazon ECS Fargate, plataforma 1.4 o posterior y rol de ejecución habilitado & Falcon en los 11 equipos físicos, 14 VM y 192 estaciones, GuardDuty en tareas Fargate de sa-east-1 y us-east-1 & 25 servidores + 192 estaciones = 217 endpoints, más agente administrado por tarea Fargate & GuardDuty incorpora el sidecar administrado a tareas nuevas cubiertas y envía los hallazgos a Security Hub. Las tareas existentes se reinician o redespliegan al habilitarlo (RT-11.16, Amazon Web Services, s.~f.-a, s.~f.-b). El servidor del ERP del CLIENTE no recibe el agente, porque se traslada sin cambios de software. El firewall de Talca restringe las entradas al tráfico de la ACL en VM-04 y a la administración autorizada del CLIENTE. Permite las salidas tributarias del ERP hacia el SII por los caminos habilitados, con destinos, puertos y reglas documentados en el levantamiento de INT-07, esto no habilita escrituras directas de los módulos al ERP. \\
   Dependencias de salida & MDM, EDR, SII, Transbank, GIS, notificaciones (Amazon SES, Amazon SNS y AWS End User Messaging Social) y telemetría de flota & Conexiones salientes de la solución & 7 dependencias & Integraciones externas sin entrada a la VPC de Producción (superficie de exposición, apartado 4.2.5). \\
   \multicolumn{5}{@{}l}{\intersemibold Software de base y licenciamiento} \\
- A-01 — Motor WMS (artefacto Laravel)  &  Monolito modular en Laravel 13 sobre PHP 8.5, con PHP-FPM y PHP CLI, dependencias fijadas por \texttt{composer.lock}, código abierto  &  Nube (Fargate), VM-01, VM-C01, E-01, VM-03, VM-C04 y VM-04  &  1 imagen firmada  &  El perfil \texttt{wms\_only} es el Motor WMS de VM-01, VM-C01 y E-01. Incluye la puerta de API local y las funciones de M9 para bloqueo y disposición sanitaria por el perfil Kotlin de Calidad, con permiso vigente, expediente local suficiente y auditoría durable (4.1.3.5). Una sola base de código y esquema para los perfiles de API, \texttt{wms\_only}, shipper, consumidor, trabajos, planificador y \texttt{erp-sync}. VM-04 ejecuta dos procesos PHP CLI (ADR-01 y ADR-17, Anexo 4-O).  \\
+ A-01 — Motor WMS (artefacto Laravel)  &  Monolito modular en Laravel 13 sobre PHP 8.5, con PHP-FPM y PHP CLI, dependencias fijadas por \texttt{composer.lock}, código abierto  &  Nube (Fargate), VM-01, VM-C01, E-01, VM-03, VM-C04 y VM-04  &  1 imagen firmada  &  El perfil \texttt{wms\_only} es el Motor WMS de VM-01, VM-C01 y E-01. Incluye la puerta de API local y las funciones de M9 para bloqueo y disposición sanitaria por el perfil Kotlin de Calidad, con permiso vigente, expediente local suficiente y auditoría durable (4.1.4.2 y 4.1.3.5). Una sola base de código y esquema para los perfiles de API, \texttt{wms\_only}, shipper, consumidor, trabajos, planificador y \texttt{erp-sync}. VM-04 ejecuta dos procesos PHP CLI (ADR-01 y ADR-17, Anexo 4-O).  \\
   Aplicación de terreno & Aplicación nativa Android en Kotlin, con SQLite y Zebra DataWedge & TC58e y MC9400 & 1 artefacto con perfiles de preventa, reparto, bodega y Calidad & Controla los periféricos industriales y conserva las funciones autorizadas de cada perfil sin señal; Calidad actúa con permiso vigente, expediente local y auditoría durable, según A-01 y A-05 (ADR-07). \\
   Portales web y consolas & Angular con TypeScript y Tailwind CSS, código abierto & Portales en S3 y CloudFront, consolas en Fargate & 3 portales y consolas & Comparte componentes y contratos TypeScript. Las consolas se sirven tras ALB privado. \\
   A-02 --- Base transaccional del WMS & PostgreSQL 16 con PostGIS, código abierto & VM-02, VM-C02 y su copia, y los seis E-01 & 9 instancias, 4 en espera & Registro local de cada bodega durante los cortes. En Concepción y en los cross-docking, la instancia activa se replica en forma sincrónica a la de espera. Solo VM-02 (Talca) se replica a Aurora por DMS, Concepción y los cross-docking sincronizan eventos por los flujos de integración de 4.2.5. \\
@@ -147,43 +147,40 @@ LafroX provee, instala y mantiene B-01, B-02, B-03 y todos los componentes del k
 \phantomsection\addcontentsline{toc}{section}{Referencias}
 \markboth{Referencias}{Referencias}
 
-Las fuentes citadas en este formulario se listan a continuación en formato APA 7.ª edición.
+Las fuentes citadas en este formulario se listan a continuación en formato APA 7.ª edición. Los documentos rectores del proceso licitatorio citados en el texto bajo títulos abreviados (\textit{Bases Administrativas}, \textit{Bases Técnicas Transversales} y \textit{Bases Técnicas del caso}) corresponden a las referencias formales \textit{Distribuidora Puelche S.A. (2026a, 2026b, 2026c)}.
 
 \begin{list}{}{\setlength{\leftmargin}{1.27cm}\setlength{\itemindent}{-1.27cm}\setlength{\itemsep}{0.5\baselineskip}\raggedright}
+\item Advantech. (2025). \textit{ARK-1251: Intel Core Ultra U series processor with DIN-Rail fanless box PC}. \url{https://advdownload.advantech.com/productfile/PIS/ARK-1251/file/ARK-1251_DS%28121925%2920251219172626.pdf}
 \item Amazon Web Services. (s.~f.-a). \textit{GuardDuty Runtime Monitoring}. \url{https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html}
 \item Amazon Web Services. (s.~f.-b). \textit{How Runtime Monitoring works with Fargate (Amazon ECS only)}. \url{https://docs.aws.amazon.com/guardduty/latest/ug/how-runtime-monitoring-works-ecs-fargate.html}
+\item Cisco. (2026). \textit{Cisco Catalyst 9200 Series Switches Data Sheet}. \url{https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.pdf}
+\item Dibal. (s.~f.-a). \textit{Básculas monocélula BEV Industria}. \url{https://www.dibal.com/es/basculas-monocelula-bev-industria}
+\item Dibal. (s.~f.-b). \textit{Plataformas monocélula ME Industria}. \url{https://www.dibal.com/es/plataformas-monocelula-me-industria}
+\item Dibal. (s.~f.-c). \textit{Indicateurs de poids DMI-610}. \url{https://www.dibal.com/fr/indicateurs-de-poids-dmi-610}
 \item Distribuidora Puelche S.A. (2026a). \textit{Bases Administrativas de Licitación N.º TFEP-01/2026}.
 \item Distribuidora Puelche S.A. (2026b). \textit{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026}.
 \item Distribuidora Puelche S.A. (2026c). \textit{Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.}
+\item Ebyte. (s.~f.). \textit{ME31-XDXX0400: módulo de adquisición PT100 de cuatro canales}. \url{https://www.ebyte.com/product/2176.html}
+\item Feller Rate. (2023). \textit{Compañía Nacional de Teléfonos, Telefónica del Sur S.A.: Informe de clasificación, junio 2023}. \url{https://www.gtd.cl/documents/1600018/0/TELSUR+-+Rese%C3%B1a+anual+de+clasificaci%C3%B3n+-+junio+2023+-+Feller.pdf}
+\item Fortinet. (s.~f.). \textit{FortiGate Rugged Series Data Sheet}. \url{https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/FortiGate_Rugged_Series.pdf}
+\item Iridium. (s. f.). \textit{Iridium Short Burst Data (SBD)}. \url{https://www.iridium.com/services/iridium-short-burst-data-sbd}
+\item Moxa. (s.~f.-a). \textit{EDS-P506E Series}. \url{https://www.moxa.com/en/products/industrial-network-infrastructure/ethernet-switches/poe-switches/eds-p506e-series}
+\item Moxa. (s.~f.-b). \textit{UC-8200 Series}. \url{https://www.moxa.com/en/products/industrial-computing/arm-based-computers/uc-8200-series}
+\item Moxa. (s. f.-c). \textit{ioLogik E1260}. \url{https://www.moxa.com/Products/INDUSTRIAL-EDGE-CONNECTIVITY/Controllers-and-IOs/Universal-Controllers-and-I-Os/ioLogik-E1200-Series/ioLogik-E1260}
+\item Opensignal. (2026). \textit{Chile: Mobile Network Experience Report, marzo 2026}. \url{https://insights.opensignal.com/reports/2026/03/chile/mobile-network-experience}
+\item PAX Technology. (s.~f.). \textit{A920Pro: Android SmartPOS, variantes Duo Premium y Core}. \url{https://www.paxtechnology.com/a920pro}
+\item Starlink. (s.~f.). \textit{Standard 4 X Kit Specifications}. \url{https://www.starlink.com/public-files/specification_sheet_standard.pdf}
 \item Telecommunications Industry Association. (2016). \textit{ANSI/TIA-568.3-D: Optical fiber cabling and components standard}.
 \item Telecommunications Industry Association. (2017a). \textit{ANSI/TIA-606-C: Administration standard for telecommunications infrastructure}.
 \item Telecommunications Industry Association. (2017b). \textit{ANSI/TIA-942-B: Telecommunications infrastructure standard for data centers}.
 \item Telecommunications Industry Association. (2018). \textit{ANSI/TIA-568.2-D: Balanced twisted-pair telecommunications cabling and components standard}.
 \item Telecommunications Industry Association. (2019). \textit{ANSI/TIA-569-E: Telecommunications pathways and spaces}.
-
-
-
-\item Advantech. (2025). \textit{ARK-1251: Intel Core Ultra U series processor with DIN-Rail fanless box PC}. \url{https://advdownload.advantech.com/productfile/PIS/ARK-1251/file/ARK-1251_DS%28121925%2920251219172626.pdf}
-\item Cisco. (2026). \textit{Cisco Catalyst 9200 Series Switches Data Sheet}. \url{https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9200-series-switches/nb-06-cat9200-ser-data-sheet-cte-en.pdf}
-\item Fortinet. (s.~f.). \textit{FortiGate Rugged Series Data Sheet}. \url{https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/FortiGate_Rugged_Series.pdf}
-\item Moxa. (s.~f.-a). \textit{EDS-P506E Series}. \url{https://www.moxa.com/en/products/industrial-network-infrastructure/ethernet-switches/poe-switches/eds-p506e-series}
-\item Moxa. (s.~f.-b). \textit{UC-8200 Series}. \url{https://www.moxa.com/en/products/industrial-computing/arm-based-computers/uc-8200-series}
+\item Teltonika. (s. f.). \textit{EYE SENSOR EN12830: Datasheet 1.0}. \url{https://wiki.teltonika-gps.com/images/b/b1/EYE_SENSOR_EN12830_Datasheet_1.0.pdf}
 \item Zebra Technologies. (s.~f.-a). \textit{Zebra Enterprise Mobile Computers: Supported Android Versions}. \url{https://www.zebra.com/us/en/support-downloads/notifications/mobile-computers-supported-android-versions.html}
 \item Zebra Technologies. (s.~f.-b). \textit{TC53e/TC53e-RFID/TC58e Mobile Computers Specification Sheet}. \url{https://www.zebra.com/gb/en/products/spec-sheets/mobile-computers/handheld/tc53e-tc53e-rfid-tc58e.html}
 \item Zebra Technologies. (s.~f.-c). \textit{MC9400/MC9450 Mobile Computer Specification Sheet}. \url{https://www.zebra.com/gb/en/products/spec-sheets/mobile-computers/handheld/mc9400-mc9450.html}
 \item Zebra Technologies. (s.~f.-d). \textit{ZQ610 Plus/ZQ620 Plus/ZQ630 Plus User Guide: Printer Specifications}. \url{https://docs.zebra.com/us/en/printers/mobile/zq610-620-630-plus-ug/r-zq6x0plus-specifications/r-zq6x0plus-printer-specifications.html}
 \item Zebra Technologies. (s.~f.-e). \textit{ZT411 Technical Specifications}. \url{https://www.zebra.com/content/dam/zebra_dam/en/tech-specs/zt411-tech-specs-en-us.pdf}
-\item PAX Technology. (s.~f.). \textit{A920Pro: Android SmartPOS, variantes Duo Premium y Core}. \url{https://www.paxtechnology.com/a920pro}
-\item Dibal. (s.~f.-a). \textit{Básculas monocélula BEV Industria}. \url{https://www.dibal.com/es/basculas-monocelula-bev-industria}
-\item Dibal. (s.~f.-b). \textit{Plataformas monocélula ME Industria}. \url{https://www.dibal.com/es/plataformas-monocelula-me-industria}
-\item Dibal. (s.~f.-c). \textit{Indicateurs de poids DMI-610}. \url{https://www.dibal.com/fr/indicateurs-de-poids-dmi-610}
-\item Ebyte. (s.~f.). \textit{ME31-XDXX0400: módulo de adquisición PT100 de cuatro canales}. \url{https://www.ebyte.com/product/2176.html}
-\item Starlink. (s.~f.). \textit{Standard 4 X Kit Specifications}. \url{https://www.starlink.com/public-files/specification_sheet_standard.pdf}
-\item Teltonika. (s. f.). \textit{EYE SENSOR EN12830: Datasheet 1.0}. \url{https://wiki.teltonika-gps.com/images/b/b1/EYE_SENSOR_EN12830_Datasheet_1.0.pdf}
-\item Feller Rate. (2023). \textit{Compañía Nacional de Teléfonos, Telefónica del Sur S.A.: Informe de clasificación, junio 2023}. \url{https://www.gtd.cl/documents/1600018/0/TELSUR+-+Rese%C3%B1a+anual+de+clasificaci%C3%B3n+-+junio+2023+-+Feller.pdf}
-\item Opensignal. (2026). \textit{Chile: Mobile Network Experience Report, marzo 2026}. \url{https://insights.opensignal.com/reports/2026/03/chile/mobile-network-experience}
-\item Iridium. (s. f.). \textit{Iridium Short Burst Data (SBD)}. \url{https://www.iridium.com/services/iridium-short-burst-data-sbd}
-\item Moxa. (s. f.-c). \textit{ioLogik E1260}. \url{https://www.moxa.com/Products/INDUSTRIAL-EDGE-CONNECTIVITY/Controllers-and-IOs/Universal-Controllers-and-I-Os/ioLogik-E1200-Series/ioLogik-E1260}
 \end{list}
 
 \label{fuente-15-anexo-t11-fin}

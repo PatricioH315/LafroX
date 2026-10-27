@@ -259,6 +259,7 @@ El planificador de Laravel revisa los plazos de los flujos y escala automáticam
 
 \begin{landscape}
 \subsubsection{Capa de integración y eventos (Capa 5)}
+\label{subsec:capa-5-integracion}
 
 La Figura~\ref{fig:arql-capa-5} presenta las responsabilidades de esta capa.
 
@@ -463,7 +464,7 @@ La vigencia de los datos de lectura es independiente de la identidad. Las creden
 
 La separación transaccional/analítica es estricta: la analítica no lee del transaccional para evitar degradar la ventana crítica de despacho. Las latencias comprometidas son: operación del día $\leq$ 5 minutos, cierre comercial $\leq$ 2 horas, gestión $\leq$ 4 horas.
 
-Cada evento conserva identidad, estado y resultado hasta recibir confirmación durable. DMS replica el WMS de Talca hacia un esquema de lectura. No escribe en las tablas de negocio centrales. Los consumidores de eventos actualizan estas últimas con deduplicación transaccional por sitio y UUID. Concepción y los cross-docking sincronizan sus eventos sin presumir un flujo DMS propio. Durante un corte cada sitio retiene sus cambios dentro de una capacidad comprobada para 24 horas. La extracción continua de DMS/WAL de Talca y de la bandeja transaccional de salida por fibra, LTE y satélite sostiene RPO $\leq$ 15 minutos. AL-DR-01 del Anexo 4-M verifica la protección externa y 4.3.2 justifica el límite residual. El esquema 3-2-1-1-0, los medios de respaldo y la restauración se desarrollan en 4.2.
+Cada evento conserva identidad, estado y resultado hasta recibir confirmación durable. DMS replica el WMS de Talca hacia un esquema de lectura. No escribe en las tablas de negocio centrales. Los consumidores de eventos actualizan estas últimas con deduplicación transaccional por sitio y UUID. Concepción y los cross-docking sincronizan sus eventos sin presumir un flujo DMS propio. Durante un corte cada sitio retiene sus cambios dentro de una capacidad comprobada para 24 horas. La extracción continua de DMS/WAL de Talca y de la bandeja transaccional de salida por fibra, LTE y satélite sostiene RPO $\leq$ 15 minutos. AL-DR-01 del Anexo 4-M verifica la protección externa y 4.3.2 detalla la replicación por tres caminos independientes que asegura el RPO. El esquema 3-2-1-1-0, los medios de respaldo y la restauración se desarrollan en 4.2.
 
 
 \subsubsection{Capa de seguridad transversal (Capa 7)}
