@@ -79,7 +79,7 @@ El saldo estimado nunca entra al inventario oficial ni bloquea una venta, y la d
 
 La madurez se declara con la escala TRL de la Comisión Europea (European Commission, 2016). El cálculo de cobertura es aritmética conocida. Lo que decide la calidad del aviso es estimar el ritmo de reposición por local en el canal tradicional, donde las compras son irregulares.
 
-Riesenegger et al. (2023) revisan las prácticas contra la merma de alimentos en la operación del comercio minorista: pedido, exhibición, precio y retiro de producto por vencer. Es el mismo punto de la cadena donde actúa esta innovación. Esas prácticas las ejecuta el propio comercio con sus sistemas. Lo propio de esta innovación es que el distribuidor las lleve a un almacén que no tiene sistema, a través de la visita del preventista. Por eso el servicio integrado parte en TRL 2, con dos objetivos: TRL 4 al mes 10 (H4, con datos sintéticos) y TRL 6 al mes 15 (piloto en la marcha blanca).
+Riesenegger et al. (2023) revisan las prácticas contra la merma de alimentos en la operación del comercio minorista: pedido, exhibición, precio y retiro de producto por vencer. Es el mismo punto de la cadena donde actúa esta innovación. Esas prácticas las ejecuta el propio comercio con sus sistemas. Lo propio de esta innovación es que el distribuidor las lleve a un almacén que no tiene sistema, a través de la visita del preventista. Por eso el servicio integrado parte en TRL 2, con dos objetivos: TRL 4 al mes 10 (cierre de los paquetes 3.10.1.2 y 3.10.1.3, con datos sintéticos) y TRL 6 al mes 15 (piloto en la marcha blanca).
 
 \textbf{Investigación adicional declarada.} Falta establecer con qué precisión se estima el ritmo de reposición por local en el canal tradicional. Se investiga en el paquete 3.10.1.2 (meses 9 y 10) con datos sintéticos y se valida en el paquete 3.10.1.4 (meses 11 a 15: certificación del H5 en los meses 11 y 12, y piloto en la marcha blanca de los meses 13 a 15) con el indicador I-01A. La ventana de los meses 11 a 15 que el Anexo 8.A asigna al piloto (ficha R8-25) es la del paquete completo; el piloto con locales reales ocurre solo en la marcha blanca.
 
@@ -98,10 +98,12 @@ El piloto se hace en 120 locales de 12 rutas, con al menos 100 avisos evaluables
 \begin{tablalafrox}{Paquetes de la EDT de la innovación 1. Fuente: elaboración a partir de los paquetes 3.10.1.1 a 3.10.1.4 y su calendario (LafroX, 2026h, T-14; 2026g, Anexo 7.D).}{tab:sd13-3}{>{\hsize=0.65\hsize\linewidth=\hsize}Y >{\hsize=0.65\hsize\linewidth=\hsize}Y >{\hsize=0.65\hsize\linewidth=\hsize}Z >{\hsize=2.05\hsize\linewidth=\hsize}Y}
   {\cab{Paquete} & \cab{EDT} & \cab{Meses} & \cab{Entregable}}
 INN-01.P1 & 3.10.1.1 & 7 a 9 & Catálogo de acciones autorizadas y protocolo del piloto \\
-INN-01.P2 & 3.10.1.2 & 9 y 10 & Estimador de saldo y ritmo de reposición (H4) \\
-INN-01.P3 & 3.10.1.3 & 9 y 10 & Lista sin conexión y respuesta de visita en M3 (H4) \\
+INN-01.P2 & 3.10.1.2 & 9 y 10 & Estimador de saldo y ritmo de reposición \\
+INN-01.P3 & 3.10.1.3 & 9 y 10 & Lista sin conexión y respuesta de visita en M3 \\
 INN-01.P4 & 3.10.1.4 & 11 a 15 & Certificación del H5, piloto en marcha blanca e informe de habilitación \\
 \end{tablalafrox}
+
+Los paquetes 3.10.1.2 y 3.10.1.3 se ejecutan del 01-10-2027 al 19-11-2027 (Formulario T-15). No forman parte de la entrega técnica del H4 (22-10-2027) ni de su acta (08-11-2027): cierran el 19-11-2027, dentro del límite contractual del H4 (30-11-2027), con siete días de holgura.
 
 La innovación se materializa en el mes 16, con el paso a producción de la Etapa 1. La dirige el Líder de Datos, Leandro Chamorro, y Comercial y Calidad del CLIENTE validan el catálogo. En los meses 16 a 20 la innovación queda cubierta por la estabilización de la Etapa 1 (paquete 4.2.2). Desde el mes 21, su regla y su catálogo se mantienen dentro del mantenimiento correctivo y evolutivo (paquete 8.2.1); desde el mes 22, ese mantenimiento queda en el frente de Operación que dirige el Líder de Operación / SRE, Guillermo Castillo, porque la dedicación del Líder de Datos termina en el mes 21 (Capítulo 1, Tabla 1.6). La respuesta al riesgo de adopción R8-25 la conduce el Líder de Implantación y Gestión del Cambio, Patricio Henríquez, porque depende de la adopción en terreno (Anexo 8.A, ficha R8-25).
 
@@ -331,7 +333,7 @@ Al no ser un modelo aprendido, no se le aplica el Capítulo 18 de las Bases Téc
 
 \subsection{Nivel de madurez}
 
-EPCIS 2.0 es un estándar publicado (GS1 AISBL, 2022). Los modelos cinéticos de vida útil están validados experimentalmente para alimentos refrigerados (Koutsoumanis et al., 2005), y Jedermann et al. (2014) documentan el FEFO dinámico en logística refrigerada. Con la escala de la Comisión Europea (European Commission, 2016), la integración propuesta, con cálculo en el borde sin enlace, asociación por eventos y uso por Calidad en la operación de Puelche, parte en TRL 2. Sus objetivos son TRL 4 al mes 10 (H4, con series y eventos sintéticos) y TRL 6 al mes 15 (marcha blanca con lotes reales).
+EPCIS 2.0 es un estándar publicado (GS1 AISBL, 2022). Los modelos cinéticos de vida útil están validados experimentalmente para alimentos refrigerados (Koutsoumanis et al., 2005), y Jedermann et al. (2014) documentan el FEFO dinámico en logística refrigerada. Con la escala de la Comisión Europea (European Commission, 2016), la integración propuesta, con cálculo en el borde sin enlace, asociación por eventos y uso por Calidad en la operación de Puelche, parte en TRL 2. Sus objetivos son TRL 4 al mes 10 (cierre del paquete 3.10.3.3, con series y eventos sintéticos) y TRL 6 al mes 15 (marcha blanca con lotes reales).
 
 \textbf{Investigación adicional declarada.} Faltan los parámetros cinéticos de cada familia para los productos que distribuye Puelche, porque la literatura entrega rangos generales. Se definen en el paquete 3.10.3.1 (meses 3 a 5) con las fichas de los proveedores y se validan con lotes reales en el paquete 3.10.3.4 (meses 11 a 15) con el indicador I-03B, con un laboratorio externo si Calidad lo requiere.
 
@@ -353,10 +355,12 @@ La Tabla~\ref{tab:sd13-14} presenta los paquetes de la EDT.
   {\cab{Paquete} & \cab{EDT} & \cab{Meses} & \cab{Entregable}}
 INN-03.P1 & 3.10.3.1 & 3 a 5 & Familias priorizadas, parámetros aprobados por Maximiliano Miño y Calidad del CLIENTE, y protocolo de validación \\
 INN-03.P2 & 3.10.3.2 & 5 a 9 & Asociación lote–sensor en el borde y en el camión, por eventos EPCIS \\
-INN-03.P3 & 3.10.3.3 & 9 y 10 & Vista en M9, publicación en N-10 y orden sugerido a M2 y M5 (H4) \\
+INN-03.P3 & 3.10.3.3 & 9 y 10 & Vista en M9, publicación en N-10 y orden sugerido a M2 y M5 \\
 INN-03.P4 & 3.10.3.4 & 11 a 15 & Certificación del H5 y validación en marcha blanca contra la evaluación de Calidad \\
 INN-03.P5 & 8.3.2 & 26, 32, 38, 44, 50 y 56 & Revisión semestral de parámetros y extensión a nuevas familias \\
 \end{tablalafrox}
+
+El paquete 3.10.3.3 se ejecuta del 01-10-2027 al 19-11-2027 (Formulario T-15). No forma parte de la entrega técnica del H4 (22-10-2027) ni de su acta (08-11-2027): cierra el 19-11-2027, dentro del límite contractual del H4 (30-11-2027), con siete días de holgura.
 
 Los lácteos son la primera familia priorizada, por la relación con su proveedor descrita en la sección 13.3.1. La innovación se materializa en el mes 16, como apoyo a la decisión de Calidad; el orden de salida sugerido se activa por familia cuando esa familia cumple el indicador I-03B. Los responsables son el Líder de Datos, Leandro Chamorro, y el Arquitecto de Solución, Bastián Trejo, con la validación del Líder de Calidad y Pruebas, Maximiliano Miño, y de la jefa de Calidad del CLIENTE. Desde el mes 22, las revisiones semestrales del paquete 8.3.2 se ejecutan en el frente de Operación que dirige Guillermo Castillo, y Maximiliano Miño y Calidad del CLIENTE aprueban sus parámetros, porque la dedicación del Líder de Datos termina en el mes 21 (Capítulo 1, Tabla 1.6). Las horas del paquete se mantienen en la familia de esfuerzo DAT del Formulario T-15, ejecutadas por el equipo de Operación, como declara el Anexo 8.A (ficha R8-27). Con el inicio supuesto en febrero de 2027 (Anexo 7.A), las revisiones de los meses 32, 44 y 56 caen en septiembre. En esos meses la recalibración se analiza sin intervenir producción, y los parámetros aprobados se activan después del día 25. En todas las revisiones, la activación evita además los tres primeros días hábiles del mes, por el cierre comercial y contable; ambas ventanas forman parte del congelamiento operacional (Distribuidora Puelche S.A., 2026c, cap. 10, restricción 8).
 
