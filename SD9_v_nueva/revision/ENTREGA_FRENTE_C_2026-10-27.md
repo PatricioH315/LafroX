@@ -6,7 +6,7 @@
 
 | Documento | Rama / versión consultada | Trabajo del frente C |
 |---|---|---|
-| SD6 | `LafroX-Subdoc6-LateX`, `f20ed720` | Copia gestionada separada, rama `codex/frente-c-sd6`, commit `9b650ede`; original de Claude intacto |
+| SD6 | `LafroX-Subdoc6-LateX`, `f20ed720` | Trabajo preparado en copia gestionada separada; commit `9b650ede` incorporado por fast-forward a `LafroX-Subdoc6-LateX`, preservando auxiliares locales |
 | SD9 | `LafroX-Subdoc9-LateX`, `91a5f7e6` | Checkout existente, sin cambiar de rama |
 | SD1 | `0938754e` | Solo lectura: gobierno y dotación |
 | SD3 | `8f366246`; matriz heredada desde `33508bb3` | Solo lectura; no se recibió K2 final |
@@ -115,8 +115,12 @@ python SD9_v_nueva/revision/verificar_frente_c.py --sd6 'C:/Users/henri/.codex/w
 
 ## Commits locales de esta entrega
 
-- SD6: `9b650edebe0c5a139462df4c41fbf84f048cdcd4`, rama `codex/frente-c-sd6`.
+- SD6: `9b650edebe0c5a139462df4c41fbf84f048cdcd4`, rama oficial `LafroX-Subdoc6-LateX`.
 - SD9, fuentes y verificadores: `db5c59cf01d5a6804286842c40de0e76e93d05b9`, rama `LafroX-Subdoc9-LateX`.
 - El registro de entrega y sus evidencias se guarda en un commit documental posterior, identificable en el historial de SD9.
 - Se excluyen PDF de compilación, logs, auxiliares y planes preexistentes ajenos a estos cambios.
 - Por indicación del usuario, los pendientes se retomarán en la revisión general cuando los demás frentes estén listos. No se presentan como resueltos.
+
+### Corrección del destino de entrega
+
+Por indicación del usuario, los cambios de SD6 se incorporaron a su rama oficial `LafroX-Subdoc6-LateX` mediante fast-forward. La rama auxiliar `codex/frente-c-sd6` no es el destino de publicación. Los tres auxiliares `.lfxlists` modificados de la copia oficial se preservaron y se comprobaron sus hashes. SD9 se publica en `LafroX-Subdoc9-LateX`. No se modifica ni reescribe historia ajena.
