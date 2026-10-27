@@ -48,7 +48,7 @@ Este anexo define los atributos del modelo de 5.1, agrupados por dominio. El glo
 
 \textbf{Convenciones del diccionario.} NULL representa ausencia de valor, no cero ni cadena vacía. WGS 84 es el sistema geodésico mundial y EPSG:4326 su identificador de referencia, SRID identifica el sistema espacial. IANA mantiene identificadores de zona horaria, RTC es reloj de tiempo real. ORDERS/ORDRSP, DESADV, RECADV, INVOIC y APERAK son mensajes EDI de pedido/respuesta, aviso de despacho, recepción, factura y acuse de aplicación. Los estados en mayúsculas son valores de catálogo, no siglas. CLP designa pesos chilenos, KB/MB/GB son unidades decimales y KiB es unidad binaria, p95 es el percentil 95. Las expresiones técnicas de tipos y operaciones conservan su sintaxis del motor. Las fechas siguen ISO 8601-1 (International Organization for Standardization, 2019).
 
-Se aplican las Bases Administrativas (Bases Administrativas, arts. 16–17 y 85, pp. 11–13 y 44), el Caso 02 (Bases Técnicas del caso, cap. 15, pp. 26–27) y las Bases Técnicas Transversales (Bases Técnicas Transversales, caps. 5 y 16, pp. 11–13 y 29–30). La presentación sigue las Aclaraciones (Aclaraciones de la licitación, secciones 2–6 y 11).
+Se aplican las Bases Administrativas (Bases Administrativas, arts. 16–17 y 85, pp. 11–13 y 44), el Caso 02 (Bases Técnicas del caso, cap. 15, pp. 26–27) y las Bases Técnicas Transversales (Bases Técnicas Transversales, caps. 5 y 16, pp. 11–13 y 29–30).
 
 Los antecedentes de empresa, problema, alcance y arquitectura proceden de los Subdocumentos 1, 2, 3 y 4, respectivamente, sus remisiones señalan el apartado específico utilizado (Subdocumento 4; Subdocumento 3; Subdocumento 1; Subdocumento 2).
 
@@ -250,7 +250,7 @@ Aviso, clave idempotente y outbox se confirman juntos. Un trabajador despacha as
 \section{Retención por dominio y por atributo}
 \label{anexo-5d}
 
-La correspondencia normativa sigue 5.2.7: RT-05.10 del capítulo 15 del caso identifica plazos de retención, mientras RT-05.10 transversal es linaje automatizado y RT-16.10 transversal, retención de auditoría. La aclaración de códigos solicitada al CLIENTE no se presume respondida; A.14 aplica los plazos por clase de dato sin reducirlos ni convertir el linaje automatizado en capacidad ofertada (Bases Técnicas del caso, cap. 15, p. 26; Bases Técnicas Transversales, caps. 5 y 16, pp. 12 y 29).
+La correspondencia normativa sigue 5.2.7: RT-05.10 del capítulo 15 del caso identifica plazos de retención, mientras RT-05.10 transversal es linaje automatizado y RT-16.10 transversal, retención de auditoría. La consulta de códigos dirigida al CLIENTE no se presume respondida; A.14 aplica los plazos por clase de dato sin reducirlos ni convertir el linaje automatizado en capacidad ofertada (Bases Técnicas del caso, cap. 15, p. 26; Bases Técnicas Transversales, caps. 5 y 16, pp. 12 y 29).
 
 La retención se determina por clase, no por estar en S3: documentos/POD seis años; trazabilidad máximo entre vida útil más seis meses y cinco años; térmico detallado cinco años; GPS y datos personales de posición doce meses totales (raw treinta días en sa-east-1, sin réplica internacional); auditoría siete años, logs doce meses online más veinticuatro de archivo y respaldos treinta y cinco días según S4. Las copias personales y versiones temporales se incluyen en purga/inventario. Geocercas de configuración no son posición personal. Maestros, reglas y calibraciones sobreviven mientras permitan interpretar cualquier expediente retenido.
 
@@ -402,9 +402,9 @@ Todos los modelos se presentan en la sección 5.1 del Subdocumento 5. La Figura 
 
 \begin{list}{}{\setlength{\leftmargin}{1.27cm}\setlength{\itemindent}{-1.27cm}\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}}
 \raggedright
-\item Distribuidora Puelche S.A. (2026b). \emph{Bases Administrativas de Licitación N.º TFEP-01/2026}.
-\item Distribuidora Puelche S.A. (2026c). \emph{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026}.
-\item Distribuidora Puelche S.A. (2026d). \emph{Caso: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.}
+\item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas de Licitación N.º TFEP-01/2026}.
+\item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026}.
+\item Distribuidora Puelche S.A. (2026c). \emph{Caso: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.}
 \item GS1. (2022a). \emph{Core Business Vocabulary Standard} (Release 2.0). \url{https://ref.gs1.org/standards/cbv/2.0.0/}
 \item GS1. (2022b). \emph{EPCIS Standard} (Release 2.0). \url{https://ref.gs1.org/standards/epcis/2.0.0/}
 \item International Organization for Standardization.  \emph{ISO/IEC 25012:2008: Software engineering — Software product Quality Requirements and Evaluation (SQuaRE) — Data quality model}. \url{https://www.iso.org/standard/35736.html}
