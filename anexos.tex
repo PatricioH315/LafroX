@@ -6,10 +6,10 @@ El presente documento recopila los listados detallados que sustentan el análisi
 \section*{Anexo 2.1: Listado de Requerimientos del Cliente}
 \addcontentsline{toc}{section}{Anexo 2.1: Listado de Requerimientos del Cliente}
 
-A partir de la narrativa del caso, de las entrevistas a los actores clave (Distribuidora Puelche S.A., 2026c, cap. 8, pp. 13--17) y de las Bases Técnicas Transversales, se identifican catorce familias funcionales prioritarias y cinco condiciones no funcionales rectoras. Los códigos \textbf{F-01 a F-14} identifican familias de síntesis de este anexo; el catálogo atómico y sus códigos RF/RNF se desarrollan en el Subdocumento 3 y en el Formulario T-12.
+A partir de la narrativa del caso, de las entrevistas a los actores clave (Bases Técnicas del caso, cap. 8, pp. 13--17) y de las Bases Técnicas Transversales, se identifican catorce familias funcionales prioritarias y cinco condiciones no funcionales rectoras. Los códigos \textbf{F-01 a F-14} identifican familias de síntesis de este anexo; el catálogo atómico y sus códigos RF/RNF se desarrollan en el Subdocumento 3 y en el Formulario T-12.
 
 \renewcommand{\thetable}{2.A.1}
-\begin{tablalafrox}{Catálogo consolidado de requerimientos funcionales del caso. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, caps. 9 y 18, pp. 18--19 y 34--35).}%
+\begin{tablalafrox}{Catálogo consolidado de requerimientos funcionales del caso. Fuente: (Bases Técnicas del caso, caps. 9 y 18, pp. 18--19 y 34--35).}%
   {tab:2-A-1}%
   {F{0.11} F{0.20} Y G{0.12} G{0.12}}%
   {\cab{Familia} & \cab{Nombre del Requerimiento} & \cab{Descripción Operativa y Criterio de Verificación} & \cab{Prioridad} & \cab{Etapa}}
@@ -30,24 +30,24 @@ A partir de la narrativa del caso, de las entrevistas a los actores clave (Distr
 \end{tablalafrox}
 
 \renewcommand{\thetable}{2.A.2}
-\begin{tablalafrox}{Requerimientos no funcionales rectores del proyecto. Fuente: Distribuidora Puelche S.A. (2026a, 2026b y 2026c), ISO/IEC (2022) y Ley N.º 21.719 (2024), según se indica en cada fila.}%
+\begin{tablalafrox}{Requerimientos no funcionales rectores del proyecto. Fuente: (Bases Administrativas, art. 78, p. 40; Bases Técnicas Transversales, caps. 3 y 7, pp. 8--9, 17--18; Bases Técnicas del caso, caps. 10 y 15, pp. 19--20, 26--27), ISO/IEC (2022) y Ley N.º 21.719 (2024), según se indica en cada fila.}%
   {tab:2-A-2}%
   {F{0.13} F{0.16} Y F{0.27}}%
   {\cab{Código} & \cab{Dimensión de Calidad} & \cab{Criterio y Métrica de Aceptación} & \cab{Fuente}}
-  RNF-DISP & Disponibilidad del Servicio & Disponibilidad mensual $\ge$ 99,95\% para los componentes de infraestructura y $\ge$ 99,9\% para la transacción crítica de extremo a extremo. & Distribuidora Puelche S.A. (2026b, cap. 7, pp. 17--18; 2026a, art. 78, p. 40) \\
-  RNF-REND & Sincronización tras reconexión & Sincronización móvil completa en un máximo de 10 minutos tras 14 horas sin señal y sincronización de un centro de distribución en un máximo de 2 horas tras 24 horas desconectado. & Distribuidora Puelche S.A. (2026c, cap. 15, p. 26; 2026b, RT-03.12, p. 9) \\
-  RNF-RESIL & Autonomía Desconectada & Capacidad de operación autónoma en terminales móviles de 14 horas de turno y en centros de distribución de $\ge$ 24 horas sin enlace WAN. & Distribuidora Puelche S.A. (2026c, cap. 10, p. 19; 2026b, RT-03.10, p. 9) \\
+  RNF-DISP & Disponibilidad del Servicio & Disponibilidad mensual $\ge$ 99,95\% para los componentes de infraestructura y $\ge$ 99,9\% para la transacción crítica de extremo a extremo. & (Bases Técnicas Transversales, cap. 7, pp. 17--18; Bases Administrativas, art. 78, p. 40) \\
+  RNF-REND & Sincronización tras reconexión & Sincronización móvil completa en un máximo de 10 minutos tras 14 horas sin señal y sincronización de un centro de distribución en un máximo de 2 horas tras 24 horas desconectado. & (Bases Técnicas del caso, cap. 15, p. 26; Bases Técnicas Transversales, RT-03.12, p. 9) \\
+  RNF-RESIL & Autonomía Desconectada & Capacidad de operación autónoma en terminales móviles de 14 horas de turno y en centros de distribución de $\ge$ 24 horas sin enlace WAN. & (Bases Técnicas del caso, cap. 10, p. 19; Bases Técnicas Transversales, RT-03.10, p. 9) \\
   RNF-SEG & Ciberseguridad y Privacidad & Cifrado de datos locales y en tránsito, autenticación multifactor y preparación para el cumplimiento de Ley 21.719 desde su entrada en vigencia. & ISO/IEC (2022); Ley N.º 21.719 (2024) \\
-  RNF-DR & Continuidad y Recuperación & Centro de datos secundario con RTO $\le$ 4 horas y RPO $\le$ 15 minutos, validado mediante simulacros semestrales obligatorios. & Distribuidora Puelche S.A. (2026b, RT-07.04 y RT-07.07, p. 17) \\
+  RNF-DR & Continuidad y Recuperación & Centro de datos secundario con RTO $\le$ 4 horas y RPO $\le$ 15 minutos, validado mediante simulacros semestrales obligatorios. & (Bases Técnicas Transversales, RT-07.04 y RT-07.07, p. 17) \\
 \end{tablalafrox}
 
 \section*{Anexo 2.2: Listado de Supuestos, Exclusiones y Restricciones}
 \addcontentsline{toc}{section}{Anexo 2.2: Listado de Supuestos, Exclusiones y Restricciones}
 
-La Tabla 2.A.3 registra como supuestos de formulación las dieciséis decisiones que el numeral 16.1 del caso deja abiertas y que LafroX resuelve; el supuesto S-N responde a la decisión N (Distribuidora Puelche S.A., 2026c, sección 16.1, pp. 28--29). Cada fila explicita la conducta adoptada, la consecuencia que asume el diseño, el efecto si el supuesto resulta falso y la instancia del CLIENTE que lo valida. La trazabilidad a requisitos detallados se desarrolla en el Subdocumento 3, Anexo 3.C.
+La Tabla 2.A.3 registra como supuestos de formulación las dieciséis decisiones que el numeral 16.1 del caso deja abiertas y que LafroX resuelve; el supuesto S-N responde a la decisión N (Bases Técnicas del caso, sección 16.1, pp. 28--29). Cada fila explicita la conducta adoptada, la consecuencia que asume el diseño, el efecto si el supuesto resulta falso y la instancia del CLIENTE que lo valida. La trazabilidad a requisitos detallados se desarrolla en el Subdocumento 3, Anexo 3.C.
 
 \renewcommand{\thetable}{2.A.3}
-\begin{tablalafrox}{Supuestos de formulación derivados de las decisiones abiertas del caso. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, sección 16.1, pp. 28--29).}%
+\begin{tablalafrox}{Supuestos de formulación derivados de las decisiones abiertas del caso. Fuente: (Bases Técnicas del caso, sección 16.1, pp. 28--29).}%
   {tab:2-A-3}%
   {F{0.08} Y F{0.27} F{0.18} F{0.16}}%
   {\cab{ID} & \cab{Supuesto adoptado} & \cab{Consecuencia asumida} & \cab{Si resulta falso} & \cab{Validación}}
@@ -72,19 +72,19 @@ La Tabla 2.A.3 registra como supuestos de formulación las dieciséis decisiones
 Además de las decisiones del caso, LafroX formula tres supuestos propios sobre el diagnóstico. Sostienen cifras e hipótesis del cuerpo de este subdocumento que el caso no permite confirmar.
 
 \renewcommand{\thetable}{2.A.4}
-\begin{tablalafrox}{Supuestos propios del diagnóstico. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c), según se indica en la columna Fundamento.}%
+\begin{tablalafrox}{Supuestos propios del diagnóstico. Fuente: (Bases Técnicas del caso, caps. 2, 4 y 7, pp. 4--12), según se indica en la columna Fundamento.}%
   {tab:2-A-4}%
   {F{0.09} Y F{0.23} F{0.19} F{0.17}}%
   {\cab{ID} & \cab{Supuesto} & \cab{Fundamento} & \cab{Si resulta falso} & \cab{Validación}}
-  SP-01 & La tasa de reentregas de 4,2 \% se aplica sobre las $\approx$ 1.400 entregas diarias de un día hábil normal, y cada reentrega corresponde a una entrega. & Distribuidora Puelche S.A. (2026c, secciones 2.2 y 7.1, pp. 5 y 11). & Cambia la estimación de $\approx$ 59 reentregas diarias. & Gerencia de Operaciones, con los registros de reentrega, mes 1. \\
-  SP-02 & La brecha de 16 horas entre la reducción prometida y la lograda en cross-docking se origina, al menos en parte, en la consolidación, la desconsolidación y la validación manual. & Sospecha interna registrada en el caso: el tiempo se perdería en la consolidación en Talca, sin datos que lo confirmen (Distribuidora Puelche S.A., 2026c, cap. 3, p. 6); descripción de las plataformas (sección 2.3, p. 5) y tabla 7.2 (p. 12). & La mejora del control de cross-docking no reduce la brecha y la causa debe buscarse en el transporte troncal o en las esperas. & Medición de tiempos en Talca y en las tres plataformas, meses 1 a 3. \\
-  SP-03 & La falta de registro de lote no se limita al producto del retiro de marzo, aunque su magnitud general se desconoce. & El lote se anota «en un campo de texto libre, cuando se anota» (Distribuidora Puelche S.A., 2026c, sección 4.1, p. 7). & La brecha de captura es menor y la meta de 100 \% se alcanza antes. & Jefa de Calidad, con la medición de cobertura de lote en las recepciones del mes 1. \\
+  SP-01 & La tasa de reentregas de 4,2 \% se aplica sobre las $\approx$ 1.400 entregas diarias de un día hábil normal, y cada reentrega corresponde a una entrega. & (Bases Técnicas del caso, secciones 2.2 y 7.1, pp. 5 y 11). & Cambia la estimación de $\approx$ 59 reentregas diarias. & Gerencia de Operaciones, con los registros de reentrega, mes 1. \\
+  SP-02 & La brecha de 16 horas entre la reducción prometida y la lograda en cross-docking se origina, al menos en parte, en la consolidación, la desconsolidación y la validación manual. & Sospecha interna registrada en el caso: el tiempo se perdería en la consolidación en Talca, sin datos que lo confirmen (Bases Técnicas del caso, cap. 3, p. 6); descripción de las plataformas (sección 2.3, p. 5) y tabla 7.2 (p. 12). & La mejora del control de cross-docking no reduce la brecha y la causa debe buscarse en el transporte troncal o en las esperas. & Medición de tiempos en Talca y en las tres plataformas, meses 1 a 3. \\
+  SP-03 & La falta de registro de lote no se limita al producto del retiro de marzo, aunque su magnitud general se desconoce. & El lote se anota «en un campo de texto libre, cuando se anota» (Bases Técnicas del caso, sección 4.1, p. 7). & La brecha de captura es menor y la meta de 100 \% se alcanza antes. & Jefa de Calidad, con la medición de cobertura de lote en las recepciones del mes 1. \\
 \end{tablalafrox}
 
 La Tabla 2.A.5 detalla las exclusiones explícitas de alcance que delimitan la responsabilidad contractual del proponente, garantizando la viabilidad del proyecto.
 
 \renewcommand{\thetable}{2.A.5}
-\begin{tablalafrox}{Exclusiones explícitas del alcance del proyecto. Fuente: Distribuidora Puelche S.A. (2026c, cap. 11, p. 20).}%
+\begin{tablalafrox}{Exclusiones explícitas del alcance del proyecto. Fuente: (Bases Técnicas del caso, cap. 11, p. 20).}%
   {tab:2-A-5}%
   {F{0.08} F{0.22} F{0.30} Y}%
   {\cab{N°} & \cab{Exclusión de Alcance} & \cab{Justificación Técnica y Contractual} & \cab{Manejo / Mitigación}}
@@ -102,7 +102,7 @@ La Tabla 2.A.5 detalla las exclusiones explícitas de alcance que delimitan la r
 La Tabla 2.A.6 reproduce las doce restricciones no negociables que condicionan la solución. No son supuestos ni exclusiones: su cumplimiento es obligatorio y debe demostrarse en arquitectura, plan de trabajo y pruebas.
 
 \renewcommand{\thetable}{2.A.6}
-\begin{tablalafrox}{Restricciones no negociables del caso. Fuente: Distribuidora Puelche S.A. (2026c, cap. 10, pp. 19--20).}%
+\begin{tablalafrox}{Restricciones no negociables del caso. Fuente: (Bases Técnicas del caso, cap. 10, pp. 19--20).}%
   {tab:2-A-6}%
   {F{0.08} Y F{0.33}}%
   {\cab{N°} & \cab{Restricción} & \cab{Implicación para la propuesta}}
@@ -126,7 +126,7 @@ La Tabla 2.A.6 reproduce las doce restricciones no negociables que condicionan l
 La Tabla 2.A.7 presenta el catálogo nominal y extendido de los 19 actores que componen el ecosistema humano y operacional de Distribuidora Puelche S.A.
 
 \renewcommand{\thetable}{2.A.7}
-\begin{tablalafrox}{Catálogo nominal extendido de los 19 actores del ecosistema Puelche. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, caps. 2, 4, 8 y 13, pp. 4--9, 13--17 y 22--23).}%
+\begin{tablalafrox}{Catálogo nominal extendido de los 19 actores del ecosistema Puelche. Fuente: (Bases Técnicas del caso, caps. 2, 4, 8 y 13, pp. 4--9, 13--17 y 22--23).}%
   {tab:2-A-7}%
   {F{0.14} F{0.15} Y G{0.13} G{0.10} F{0.21}}%
   {\cab{Actor / Cargo} & \cab{Rol en el Ecosistema} & \cab{Ineficiencia que enfrenta en la situación actual} & \cab{Influencia} & \cab{Interés} & \cab{Estrategia de participación}}
@@ -151,10 +151,10 @@ La Tabla 2.A.7 presenta el catálogo nominal y extendido de los 19 actores que c
   Autoridad Sanitaria & Fiscalización SEREMI & Observó en su última fiscalización la ausencia de registro continuo de temperatura. & Media & Alto & Canal formal para entregar evidencia de trazabilidad y temperatura. \\
 \end{tablalafrox}
 
-La Tabla 2.A.8 resume los ocho sistemas y registros que operan actualmente en Distribuidora Puelche S.A., con el destino que el caso les asigna (Distribuidora Puelche S.A., 2026c, cap. 5, p. 10).
+La Tabla 2.A.8 resume los ocho sistemas y registros que operan actualmente en Distribuidora Puelche S.A., con el destino que el caso les asigna (Bases Técnicas del caso, cap. 5, p. 10).
 
 \renewcommand{\thetable}{2.A.8}
-\begin{tablalafrox}{Inventario de sistemas legados de Distribuidora Puelche S.A. Fuente: Distribuidora Puelche S.A. (2026c, cap. 5, p. 10).}%
+\begin{tablalafrox}{Inventario de sistemas legados de Distribuidora Puelche S.A. Fuente: (Bases Técnicas del caso, cap. 5, p. 10).}%
   {tab:2-A-8}%
   {F{0.14} F{0.15} G{0.10} Y F{0.22}}%
   {\cab{Sistema / Aplicación} & \cab{Tipo} & \cab{Año de inicio} & \cab{Estado operacional y deficiencias} & \cab{Destino según el caso}}
