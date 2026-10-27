@@ -10,7 +10,7 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-REF = sys.argv[1] if len(sys.argv) > 1 else "70aed659"
+REF = sys.argv[1] if len(sys.argv) > 1 else "93a5e884"
 
 
 def source(path):
@@ -70,11 +70,13 @@ assert round(Decimal(12016) / Decimal(220023) * 100, 1) == Decimal("5.5")
 for text in (body, annex, t13, t17):
     assert "217.543" not in text
     assert "11.136" not in text
-    assert not re.search(r"T-15, secci(?:ón|ones) [456](?:\.|\b)", text)
+    # C15 eliminó el prefijo de capítulo: las secciones 4/5/6 son válidas.
+    assert not re.search(r"T-15, secci(?:ón|ones) 7\.[456](?:\.|\b)", text)
 assert "35,2" in body and "64,8" in body
-assert "se toman del T-15 vigente" in t17
-assert "cuya revisión humana fue confirmada por el usuario" in body
-assert "revisión humana está pendiente" not in body
-assert "revisión humana de esta actualización pendiente" not in body
+assert "fechas y holguras del T-15" in t17
+assert "reproduce las fechas del SD7" in t17
+# Un verificador no puede acreditar ni exigir una revisión humana inexistente.
+assert "Actualización frente C (27-10-2026)" in body
+assert "Revisión humana de esta actualización por realizar" in body
 print(f"OK: {campaigns} campañas, {acts} hitos; 12.016 HH = 4.224 + 7.792; referencia {REF}.")
 print("La comprobación acredita sincronización documental, no nivelación ni aceptación del CLIENTE.")
