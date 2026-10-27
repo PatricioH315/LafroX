@@ -18,7 +18,7 @@ Rutas de trabajo:
 - SD6: `C:/Users/henri/.codex/worktrees/frente-c-sd6/LafroX`.
 - SD9: `C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Repositorios/Principal/LafroX/SD9_v_nueva`.
 - Fuente del reparto leído: `C:/Users/henri/Downloads/plan/PLAN_PARALELO_LAFROX_2026-10-27.md`.
-- Se preservaron los planes no seguidos y los auxiliares que ya estaban modificados en SD9. Las compilaciones nuevas usan `revision/frente-c-build/`, no los PDF antiguos de la raíz.
+- Se preservaron los planes no seguidos y los auxiliares que ya estaban modificados en SD9. Las compilaciones usan `revision/frente-c-build/`; los cuatro PDF finales de SD9 se copiaron posteriormente a sus rutas oficiales y se versionaron. Los temporales se conservan en disco y se excluyen mediante `.gitignore`.
 
 ## Estado por ficha
 
@@ -108,17 +108,17 @@ python SD9_v_nueva/revision/verificar_frente_c.py --sd6 'C:/Users/henri/.codex/w
 - [LAFROX-Formulario-T-9](C:/Users/henri/.codex/worktrees/frente-c-sd6/LafroX/revision/frente-c-build/LAFROX-Formulario-T-9.pdf) — 9 páginas.
 - [LAFROX-Subdocumento6-Anexos](C:/Users/henri/.codex/worktrees/frente-c-sd6/LafroX/revision/frente-c-build/LAFROX-Subdocumento6-Anexos.pdf) — 8 páginas.
 - [LAFROX-Subdocumento6](C:/Users/henri/.codex/worktrees/frente-c-sd6/LafroX/revision/frente-c-build/LAFROX-Subdocumento6.pdf) — 13 páginas.
-- [LAFROX-Formulario-T-13](C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Repositorios/Principal/LafroX/SD9_v_nueva/revision/frente-c-build/LAFROX-Formulario-T-13.pdf) — 76 páginas.
-- [LAFROX-Formulario-T-17](C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Repositorios/Principal/LafroX/SD9_v_nueva/revision/frente-c-build/LAFROX-Formulario-T-17.pdf) — 16 páginas.
-- [LAFROX-Subdocumento9-Anexos](C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Repositorios/Principal/LafroX/SD9_v_nueva/revision/frente-c-build/LAFROX-Subdocumento9-Anexos.pdf) — 20 páginas.
-- [LAFROX-Subdocumento9](C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Repositorios/Principal/LafroX/SD9_v_nueva/revision/frente-c-build/LAFROX-Subdocumento9.pdf) — 34 páginas.
+- [LAFROX-Formulario-T-13](C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Repositorios/Principal/LafroX/SD9_v_nueva/LAFROX-Formulario-T-13.pdf) — 76 páginas.
+- [LAFROX-Formulario-T-17](C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Repositorios/Principal/LafroX/SD9_v_nueva/LAFROX-Formulario-T-17.pdf) — 16 páginas.
+- [LAFROX-Subdocumento9-Anexos](C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Repositorios/Principal/LafroX/SD9_v_nueva/LAFROX-Subdocumento9-Anexos.pdf) — 20 páginas.
+- [LAFROX-Subdocumento9](C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Repositorios/Principal/LafroX/SD9_v_nueva/LAFROX-Subdocumento9.pdf) — 34 páginas.
 
 ## Commits locales de esta entrega
 
 - SD6: `9b650edebe0c5a139462df4c41fbf84f048cdcd4`, rama oficial `LafroX-Subdoc6-LateX`.
 - SD9, fuentes y verificadores: `db5c59cf01d5a6804286842c40de0e76e93d05b9`, rama `LafroX-Subdoc9-LateX`.
 - El registro de entrega y sus evidencias se guarda en un commit documental posterior, identificable en el historial de SD9.
-- Se excluyen PDF de compilación, logs, auxiliares y planes preexistentes ajenos a estos cambios.
+- Se excluyen temporales de compilación y QA, logs y auxiliares. Posteriormente, por solicitud de ordenar todos los archivos pendientes, se conservaron en Git los cuatro planes preexistentes y se actualizaron los cuatro PDF finales de SD9.
 - Por indicación del usuario, los pendientes se retomarán en la revisión general cuando los demás frentes estén listos. No se presentan como resueltos.
 
 ### Corrección del destino de entrega

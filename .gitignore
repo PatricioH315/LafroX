@@ -1,0 +1,3 @@
+# Artefactos locales de compilación y QA del frente C (se conservan en disco).
+/SD9_v_nueva/revision/frente-c-build/
+/SD9_v_nueva/*.synctex.gz
