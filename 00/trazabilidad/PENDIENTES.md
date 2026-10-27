@@ -32,3 +32,7 @@ Implementación documental aplicada en SD2–SD7. El registro `IMPLEMENTACION_CA
 ## Resultado de revisión semántica de formularios — 25-10-2026
 
 El [registro semántico](REVISION_SEMANTICA_FORMULARIOS_2026-10-25.md) identifica las brechas de las 653 filas y las condiciones de los 98 recursos del T-11. Se conserva la exclusión de SD13: su vista de INN-03 requiere conciliarse con el kit y doble camino vigentes. La base por camión de un compartimento/una puerta se confirma mediante mapeo; los ocho PC nuevos y el inventario de la entrada SBD requieren detalle de ingeniería. Las brechas de oferta no se cerraron por compilar los PDF.
+
+## Figuras de red aprobadas — 27-10-2026
+
+El usuario aprobó las nuevas vistas de las figuras 24–26, sin textos explicativos al pie, y autorizó su integración en el cuerpo. Los activos anteriores se conservan. Alcance y verificación en [el registro de integración](FIGURAS_RED_APROBADAS_2026-10-27.md). Esta aprobación gráfica no cierra los ensayos ni las condiciones contractuales de continuidad.
