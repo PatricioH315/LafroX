@@ -1,6 +1,6 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {chapter}{Índice general}{2}{section*.1}%
-\contentsline {chapter}{Formulario T-19: Fichas de innovación}{3}{chapter*.2}%
+\contentsline {chapter}{Formulario T-19: Cartera de innovaciones}{3}{chapter*.2}%
 \contentsline {section}{Ficha 1 — Innovación 1}{3}{chapter*.2}%
 \contentsline {section}{Ficha 2 — Innovación 2}{5}{table.sd13.12.1}%
 \contentsline {section}{Ficha 3 — Innovación 3}{7}{table.sd13.12.2}%
