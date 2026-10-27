@@ -1,3 +1,4 @@
+\captionsetup[figure]{hypcap=false}
 \setcounter{chapter}{2}
 \chapter{Introducción al Alcance de la Solución}
 
@@ -9,9 +10,9 @@ La propuesta aborda tres necesidades relacionadas: recuperar la trazabilidad san
 
 \subsection{Capacidades de la solución}
 
-La cadena de frío mantiene registro continuo, alerta y decisión en ruta también sin red móvil, con bloqueo local de la entrega del producto afectado por SSCC.
-
 El alcance funcional comprende preventa desconectada con consulta de stock y crédito, recepción con lote y vencimiento, gestión de bodega con FEFO, preparación por olas, cross-docking controlado, planificación de rutas, control de frío, entrega digital, acuse de recibo de la guía de despacho articulado con el ERP, conciliación de efectivo, reposición y retiro sanitario. El portal de clientes, la integración electrónica del canal moderno y el costo de servir completan el alcance de la segunda etapa. Estas capacidades corresponden a las familias F-01 a F-14 del Subdocumento 2, Anexo 2.1.
+
+La cadena de frío mantiene registro continuo, alerta y decisión en ruta también sin red móvil, con bloqueo local de la entrega del producto afectado por SSCC.
 
 Estas capacidades se entienden mejor desde cada uno de los tres problemas del Subdocumento 2.
 
@@ -75,11 +76,8 @@ La Tabla 3.2 resume la asignación de las familias F-01 a F-14 a las etapas. La 
   {tab:3-2}%
   {F{0.300} F{0.161} F{0.106} Y}%
   {\cab{Capacidad} & \cab{Familias SD2} & \cab{Etapa} & \cab{Dependencia principal}}
-  Preventa, recepción, bodega y preparación & F-01 a F-05 & 1 & Datos comerciales, lotes e inventario. \\
-  Rutas, frío, entrega y acuse & F-06 a F-09 & 1 & Pedidos y movimientos registrados. \\
-  Efectivo y retiro sanitario & F-10 y F-11 & 1 & Entregas, cobros y lotes. \\
-  Portal e intercambio electrónico & F-12 y F-13 & 2 & Pedidos y entregas disponibles. \\
-  Costo de servir & F-14 & 2 & Hechos operacionales por entrega. \\
+  Captura, trazabilidad, venta, rutas y rendición & F-01 a F-11 & 1 & Maestros, pedidos, lotes, movimientos, entregas y cobros. \\
+  Portal, intercambio electrónico y costo de servir & F-12 a F-14 & 2 & Hechos operacionales consolidados de la Etapa 1. \\
 \end{tablalafrox}
 
 La captura precede a la explotación de los datos. Sin registrar el lote en recepción, el retiro sanitario no puede reconstruir sus destinos. Sin vincular pedido, entrega y cobro, la conciliación conserva las discontinuidades actuales. La analítica necesita esos hechos antes de producir un costo individual confiable. Por ello, la Etapa 1 concentra captura y continuidad, y la Etapa 2 usa esa base para nuevos canales y análisis.
@@ -117,7 +115,7 @@ El Anexo 3.C registra 44 supuestos. Los dieciséis primeros responden a las deci
   \item \textbf{Local cerrado:} la entrega se reagenda.
   \item \textbf{Envases y devoluciones:} los envases se controlan por saldo y la devolución se registra en terreno.
   \item \textbf{Promesa de entrega:} sigue el arbitraje del Subdocumento 2 (sección «Arbitraje de tensiones operacionales y comerciales», tensión 1): \textbf{24 horas para clientes urbanos con pedidos ingresados antes de las 14:00, y 48 horas para clientes rurales, periféricos o abastecidos por cross-docking}. Para los pedidos urbanos ingresados a las 14:00 o después, LafroX fija 48 horas (Anexo 3.G, RNG-15; Anexo 3.C, S-21). Esta promesa es distinta de la ventana de 30 minutos del canal moderno.
-  \item \textbf{Excursión térmica:} una excursión menor y transitoria genera una alerta preventiva en cabina; ante una crítica y sostenida, el sistema bloquea preventivamente el lote y notifica a Calidad, que decide su liberación, bloqueo o rechazo (Anexo 2.2, S-04).
+  \item \textbf{Excursión térmica:} una excursión menor y transitoria genera una alerta preventiva en cabina; ante una crítica y sostenida, el sistema bloquea preventivamente los SSCC expuestos y las cantidades de lote que contienen, y notifica a Calidad, que decide su liberación, bloqueo o rechazo (Anexo 2.2, S-04).
 \end{itemize}
 
 \subsection{Catálogo de requerimientos y correspondencia}
@@ -158,7 +156,7 @@ Cinco reglas concentran las decisiones más sensibles del caso, y cada una respo
 
 El Anexo 3.H registra 18 consultas con su pregunta, efecto en el alcance, supuesto de oferta y responsable. Tres se dirigen al mandante porque tratan diferencias entre las condiciones de la licitación: la suma del Formulario T-21, el número de ambientes y la compatibilización del calendario contractual (\textit{Bases Administrativas}, 2026, art. 17.1, p. 12) con la prohibición de realizar pasos a producción en septiembre o diciembre (\textit{Caso: Logística}, 2026, cap. 13.3, p. 23). Esta última incompatibilidad aparece si la fecha de inicio sitúa el paso a producción del mes 16 o del mes 21 en uno de esos meses; la consulta V-17 requiere una respuesta formal del mandante, sin alterar por sí sola los hitos contractuales.
 
-Frente a la diferencia en el número de ambientes, LafroX adopta cinco (DEV, QA, PREPROD, PROD y DR), en coherencia con el Subdocumento 1, sección «Presentación de la empresa». El universo de instalaciones difiere entre las entrevistas (cinco) y la volumetría (seis) del caso; la solución se parametriza por sitio y se confirma en el mes 1.
+Frente a la diferencia en el número de ambientes, LafroX adopta cinco (DEV, QA, PREPROD, PROD y DR), en coherencia con el Subdocumento 1, sección «Presentación de la empresa». La cobertura comprende las seis instalaciones exigidas por RT-21.16 del Caso; la solución se parametriza por sitio.
 
 \subsection{Criterios de aceptación}
 
@@ -172,7 +170,7 @@ La Tabla 3.3 relaciona los tres problemas con resultados verificables. Distingue
   {F{0.183} F{0.285} Y F{0.110}}%
   {\cab{Problema} & \cab{Resultado exigido} & \cab{Meta} & \cab{Registro}}
   Trazabilidad sanitaria & Clientes afectados por lote con evidencia. & Menos de 2 horas (caso). & R18-01 \\
-  Confiabilidad del servicio & OTIF medido de una sola forma. & 90 \% en el mes 15, 93 \% en el mes 19 y 95 \% en el mes 32 (LafroX). & R18-04 \\
+  Confiabilidad del servicio & OTIF medido de una sola forma. & 90 \% en el mes 15, 93 \% en el mes 19 y más de 95 \% en el mes 32 (LafroX). & R18-04 \\
   Costo desconocido & Costo por cliente y entrega desde los hechos. & 100 \% de entregas costeadas (caso). & R18-11 \\
 \end{tablalafrox}
 
@@ -187,14 +185,14 @@ La verificación de los resultados críticos se diseña para que la Contraparte 
   \item \textbf{Rendición (R18-10):} Se verifica que cada diferencia del día tenga causal y responsable antes del cierre, y que la suma de los cobros por entrega cuadre con lo depositado.
 \end{itemize}
 
-La aceptación exige demostrar resultados, no solo disponibilidad de pantallas. Un reporte de lotes sin evidencia no satisface R18-01, y registrar pedidos sin comprobar la reconciliación no acredita R18-06. La meta de OTIF parte del 82,4 \% actual (Subdocumento 2, Tabla 2.1) y alcanza el 95 \% en el mes 32, como compromiso propio de LafroX. El caso señala como referencia un valor superior al 95 \% y establece como criterio de aceptación alcanzar la meta comprometida por el proponente (\textit{Caso: Logística}, 2026, cap. 18, p. 34).
+La aceptación exige demostrar resultados, no solo disponibilidad de pantallas. Un reporte de lotes sin evidencia no satisface R18-01, y registrar pedidos sin comprobar la reconciliación no acredita R18-06. La meta de OTIF parte del 82,4 \% actual (Subdocumento 2, Tabla 2.1) y supera el 95 \% en el mes 32, como compromiso de LafroX alineado con la referencia del Caso. El caso señala como referencia un valor superior al 95 \% y establece como criterio de aceptación alcanzar la meta comprometida por el proponente (\textit{Caso: Logística}, 2026, cap. 18, p. 34).
 
 La meta se fija un año después de la producción de la Etapa 2 (mes 21) porque requiere las dos etapas estabilizadas: rutas, preventa y entrega de la Etapa 1, y pedido electrónico y aviso de despacho de la Etapa 2, operando durante un ciclo anual completo que incluya los peaks de septiembre y diciembre. La ventana de 30 minutos que exigirá la principal cadena desde enero de 2029 no depende de este tramo: se mide con su propio indicador de llegada dentro de la ventana (Anexo 3.A, RF-12.10 y RF-12.11) desde la Etapa 2. Los tramos intermedios son propios de LafroX y siguen la entrada de las capacidades:
 
 \begin{itemize}
   \item 90 \% al cierre de la marcha blanca de la Etapa 1 (mes 15), con preventa con stock y crédito visibles y rutas generadas por el sistema, todavía en convivencia con el papel.
   \item 93 \% en el mes 19, tras tres meses de producción sin papel.
-  \item 95 \% en el mes 32, tras un ciclo anual completo con ambas etapas en producción.
+  \item Más de 95 \% en el mes 32, tras un ciclo anual completo con ambas etapas en producción.
 \end{itemize}
 
 La línea base de 82,4 \% se mide hoy de forma distinta por cada área. Si la medición con la definición única de S-01 arroja otra cifra, los tramos se recalculan en el comité del mes 1 conservando la meta final (Anexo 3.C, S-01; Anexo 3.H, V-10).
@@ -207,6 +205,8 @@ El caso no fija la meta de pérdida de envases (R18-12) ni el umbral de ocupaci�
 \end{itemize}
 
 Cada resultado lo acepta la Contraparte Técnica en el acta de cierre de la marcha blanca. La pérdida anual de envases solo puede medirse sobre un año: R18-12 se acepta de forma provisional en ese cierre, con el saldo conciliado, y de forma definitiva tras 12 meses de operación. Lo mismo ocurre con el tramo final de OTIF, que se confirma en el mes 32 (Anexo 3.J).
+
+El OTIF se calcula sobre todos los pedidos comprometidos para el período y los canales y flotas incluidos en la operación, conforme a RNG-09: pedidos entregados completos dentro de la ventana originalmente pactada / pedidos comprometidos para el período $\times$ 100. Se registra diariamente y se evalúa mensualmente; un cambio de promesa no borra la original ni convierte una entrega tardía en conforme. Las metas de los meses 15 y 19 son umbrales mínimos de 90 y 93 \%, respectivamente. En el mes 32 se exige un resultado estrictamente mayor que 95 \%: 95,00 \% no cumple el umbral final; la comparación usa el cociente sin redondear. El Caso fija esa referencia en la tabla 7.1 y el capítulo 18 define la aceptación de la meta comprometida (\textit{Caso: Logística}, 2026, caps. 7 y 18).
 
 \section{Esquema de solución}
 
@@ -229,7 +229,6 @@ Los pedidos confirmados alimentan la planificación de rutas, cuya asignación y
 
 El ERP recibe el detalle preparado, con SKU, cantidad efectivamente recolectada y lote por línea vinculados al pedido, para emitir la guía de despacho (RF-05.06); recibe también la evidencia de recepción de la entrega y los datos de devolución para emitir la nota de crédito cuando corresponde. Conserva el registro contable y es el único emisor tributario. El estado del acuse se consulta al ERP para completar la conciliación documental. Los pedidos tomados sin señal ingresan a la planificación después de sincronizarse y confirmarse, como se explica en la sección 3.3.3.
 
-\noindent\begin{minipage}{\linewidth}
 \subsection{Trazabilidad y cadena de frío}
 
 La Figura 3.2 distingue el recorrido del lote de la información que se conserva para consultarlo. Las líneas continuas muestran el paso por recepción, bodega y preparación, y transporte y entrega; las discontinuas indican los datos que alimentan la información y consulta de trazabilidad.
@@ -242,14 +241,13 @@ La Figura 3.2 distingue el recorrido del lote de la información que se conserva
 \label{fig:lote}
 \end{minipage}
 \par\medskip
-\end{minipage}
-\par\medskip
 
 En recepción se registran el lote y su vencimiento; en bodega, sus movimientos y existencias; y en la entrega, el cliente de destino, la guía, la fecha y la cantidad recibida. El cuadro «Información y consulta de trazabilidad» reúne esos registros para reconstruir el origen y los destinos del lote. Ante un retiro sanitario, permite obtener la lista de clientes afectados con evidencia en menos de dos horas.
 
 La historia térmica se reconstruye por SSCC: cámara del CD, andén y compartimento del camión. Los escaneos de salida de cámara, carga y bajada delimitan la exposición fuera de frío y los minutos a bordo. Cada SSCC hereda únicamente la curva de su compartimento durante ese intervalo, medida en el punto más caliente fijado por el mapeo térmico, y se evalúa según la regla de su familia. Una excursión posterior a la bajada no afecta su historia.
 
-\noindent\begin{minipage}{\linewidth}
+El lote del proveedor conserva la identidad sanitaria; el SSCC identifica la unidad logística y sus movimientos vinculan los lotes y cantidades que contiene. Una excursión térmica retiene las unidades y cantidades expuestas durante su ventana, no todos los SSCC de un lote por compartir su identificador. Ante un retiro sanitario por lote, la inmovilización alcanza todas sus existencias y destinos identificados, aunque estén en distintos SSCC. Calidad decide el alcance sanitario y la disposición; el conductor no libera producto (Anexo 3.G, RNG-04; Subdocumento 2, Anexo 2.2, S-02 y S-04).
+
 \subsection{Continuidad e integración}
 
 La Figura 3.3 muestra dos recorridos de izquierda a derecha: la operación de preventa y reparto, y la del centro de distribución. Ambos parten del trabajo sin conexión y terminan en la información conciliada en la plataforma central.
@@ -268,9 +266,7 @@ Durante la desconexión, los dispositivos de preventa y reparto guardan los regi
 
 \par\smallskip
 La plataforma conserva una cola local durable e idempotente: cada transacción lleva un identificador único y, al restablecerse el enlace, se envía en orden y se reconcilia sin perder ni duplicar pedidos. Los conflictos de versión se resuelven mediante una regla determinista documentada, sin sobrescritura silenciosa y con una bitácora auditable de cada decisión (Anexo 3.G, RNG-12). Después de integrar los registros pendientes se recalculan los indicadores del día. En preventa, la consulta sin conexión muestra la antigüedad del dato y el stock es indicativo; la reserva firme se realiza al confirmar el pedido en el servidor central. Por ello, un pedido capturado sin señal queda pendiente de sincronización y confirmación antes de incorporarse a la planificación.
-\end{minipage}
 \par\medskip
-
 
 \section{Explicación de la Solución}
 
@@ -278,9 +274,9 @@ La solución se interpreta a través de la jornada de Puelche y de los actores i
 
 \subsection{Aplicación en la jornada operacional}
 
-La tripulación escanea la salida de cámara y la bajada de cada SSCC de frío, además de la carga. El TC58e muestra verde para entrega habilitada, amarillo para advertencia y rojo para retención o estado no confiable: no se entrega. La bajada exige latido válido de menos de 30 s, manifiesto vigente y ausencia de retención y contradicción; después puede registrarse el POD dentro del local sin alcance del Wi-Fi de cabina.
-
 En recepción se captura lote y vencimiento antes de perder el vínculo con el producto. Bodega usa esa información para FEFO y preparación por olas; los faltantes registran su causa cuando se producen. La preparación nocturna y el despacho concentrado exigen que la captura local continúe durante un corte del enlace (Anexo 2.1, F-02 a F-05).
+
+La tripulación escanea la salida de cámara y la bajada de cada SSCC de frío, además de la carga. El TC58e muestra verde para entrega habilitada, amarillo para advertencia y rojo para retención o estado no confiable: no se entrega. La bajada exige latido válido de menos de 30 s, manifiesto vigente y ausencia de retención y contradicción; después puede registrarse el POD dentro del local sin alcance del Wi-Fi de cabina.
 
 En la calle, el preventista consulta stock y crédito al registrar el pedido y ve la promesa de entrega que corresponde al cliente. El conductor registra la entrega, el cobro y el acuse con o sin señal. Al recuperar conectividad, los registros se integran sin duplicación. El almacenero conserva su forma de compra y pago; la aplicación no presupone que tenga un teléfono o una conexión propia.
 
@@ -292,7 +288,7 @@ La jornada completa muestra cómo se encadenan las capacidades:
   \item \textbf{22:00 a 06:00, bodega.} Los preparadores reciben las olas en su dispositivo y confirman cada línea por lectura. En la cámara a $-$22\,°C trabajan con guantes, sin señal, con la sincronización diferida al salir. Un faltante se registra con su causa en el momento. Si el enlace de Talca o Concepción se corta, el borde del centro de distribución sostiene la preparación y la carga, y la reconciliación con la nube ocurre al volver el enlace.
   \item \textbf{Madrugada, cross-docking.} El camión de línea llega a cada plataforma y sus unidades se leen a la llegada y al cargarse en el reparto. Queda medido cuánto dura cada tramo y qué excepciones ocurren, que es la información que hoy falta para explicar la brecha de 16 horas.
   \item \textbf{05:30 a 07:00, despacho.} Salen los 96 camiones. La ventana no admite indisponibilidad; por eso ningún cambio se despliega en ella y la operación local no depende del enlace.
-  \item \textbf{Durante el día, calle.} El preventista toma pedidos con stock y crédito a la vista y la promesa que corresponde al cliente; sin señal, el pedido queda en cola y ocupa su lugar al sincronizar. El conductor registra entrega, evidencia, devoluciones, envases y cobro. Ante una excursión térmica menor y transitoria, el conductor recibe una advertencia; ante una crítica y sostenida, el sistema retiene preventivamente el lote y notifica a Calidad, que decide su liberación, bloqueo o rechazo.
+  \item \textbf{Durante el día, calle.} El preventista toma pedidos con stock y crédito a la vista y la promesa que corresponde al cliente; sin señal, el pedido queda en cola y ocupa su lugar al sincronizar. El conductor registra entrega, evidencia, devoluciones, envases y cobro. Ante una excursión térmica menor y transitoria, el conductor recibe una advertencia; ante una crítica y sostenida, el sistema retiene preventivamente los SSCC expuestos y sus cantidades de lote, y notifica a Calidad, que decide su liberación, bloqueo o rechazo.
   \item \textbf{15:00 a 18:30, planificación.} Los pedidos confirmados quedan disponibles para la ruta del día siguiente, que se genera en minutos y el planificador corrige. Cada corrección queda registrada.
   \item \textbf{Retorno, rendición y cierre.} Al volver, el camión rinde contra sus cobros por entrega; toda diferencia tiene causal antes de cerrar. La evidencia de entrega ya está en el ERP, que registra el acuse de cada guía.
 \end{itemize}
@@ -480,14 +476,14 @@ El WMS se conserva en solo lectura hasta el cierre de la marcha blanca del sitio
 
 \subsection{Operación}
 
-Ante falla del equipo de frío, el aviso temprano del aire y la tendencia de los simuladores muestran minutos restantes por familia; despacho aplica el plan de ruta para reparación, trasbordo o retorno. Se retienen solo los SSCC a bordo que superan su regla. Ante ruptura confirmada se entrega lo no afectado, se registra el POD con diferencias, el ERP emite el ajuste tributario y se programa reposición. Al regreso se segrega en el área de no aptos marcada con X roja y Calidad registra liberación, venta con descuento solo si es apto, devolución al proveedor, uso no alimentario autorizado o destrucción autorizada; una crítica tardía sobre producto entregado abre evaluación de retiro (Ministerio de Salud, 1996, arts. 102, 105 y 192).
-
 La operación cubre los 36 meses contractuales y complementa al equipo de cuatro personas del CLIENTE con monitoreo, gestión de incidentes, continuidad, seguridad, datos y evolución controlada. Distingue dos servicios:
 
 \begin{itemize}
   \item \textbf{Centro de operaciones de red:} monitorea la plataforma 24$\times$7 (RNF-21.01; \textit{Bases Técnicas Transversales}, 2026, cap. 21, RT-21.01, p. 35).
   \item \textbf{Mesa de servicio:} atiende de 04:00 a 22:00 de lunes a sábado, con cobertura 24$\times$7 en septiembre y diciembre (\textit{Caso: Logística}, 2026, cap. 15, RT-21.06, p. 27). Incluye un canal asistido para clientes tradicionales; la autoatención no se impone como condición para recibir soporte.
 \end{itemize}
+
+Ante falla del equipo de frío, el aviso temprano del aire y la tendencia de los simuladores muestran minutos restantes por familia; despacho aplica el plan de ruta para reparación, trasbordo o retorno. Se retienen solo los SSCC a bordo que superan su regla. Ante ruptura confirmada se entrega lo no afectado, se registra el POD con diferencias, el ERP emite el ajuste tributario y se programa reposición. Al regreso se segrega en el área de no aptos marcada con X roja y Calidad registra liberación, venta con descuento solo si es apto, devolución al proveedor, uso no alimentario autorizado o destrucción autorizada; una crítica tardía sobre producto entregado abre evaluación de retiro (Ministerio de Salud, 1996, arts. 102 y 105, p. 29 del texto consolidado de marzo de 2026).
 
 Los incidentes críticos y altos se atienden 24$\times$7$\times$365, con respuesta en 15 minutos y 1 hora, y resolución en 4 y 8 horas, respectivamente (\textit{Bases Administrativas}, 2026, art. 78.2, p. 40). El canal único registra incidentes y solicitudes, con número de ticket, clasificación por severidad y seguimiento del ciclo completo hasta el cierre conforme del CLIENTE (\textit{Bases Técnicas Transversales}, 2026, cap. 21, RT-21.15, p. 37; RNF-21.06 del Anexo 3.B). La mesa cubre orientación funcional, desde consultas simples hasta situaciones complejas y preguntas técnicas frecuentes sobre la aplicación y su entorno, con atención N1 y escalamiento a especialistas N2/N3 según complejidad, apoyados en la base de conocimiento del paquete 8.5.3 del Formulario T-14 (\textit{Bases Técnicas Transversales}, 2026, cap. 21, RT-21.08, p. 36).
 
@@ -526,9 +522,9 @@ El equipo de cuatro personas del CLIENTE conserva la gestión de sus sistemas y 
 
 \subsection{Participación de los grupos de interés}
 
-La Jefa de Calidad aprueba las reglas y tiempos por familia, las tolerancias del mapeo y la lista rotativa de llamada; la falta de respuesta conserva la retención y el retorno al CD.
-
 La estrategia de apoyo mantiene los 19 actores del Subdocumento 2, Anexo 2.3, con sus nombres. El Anexo 3.I asigna a cada uno actividad, momento, responsable LafroX, indicador y respuesta ante resistencia. Los responsables son los roles de la estructura de proyecto del Subdocumento 1, sección «Estructura para Proyecto».
+
+La Jefa de Calidad aprueba las reglas y tiempos por familia, las tolerancias del mapeo y la lista rotativa de llamada; la falta de respuesta conserva la retención y el retorno al CD.
 
 Los roles de gobierno y de validación se distribuyen así (Subdocumento 2, sección «Actores y Grupos de Interés»; Subdocumento 2, anexos 2.2 y 2.3):
 
@@ -562,6 +558,7 @@ Las Bases se citan en el texto con sus títulos abreviados: \textit{Bases Admini
 \hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026b). \textit{Bases Técnicas Transversales de Licitación N.\textsuperscript{o} TFEP-01/2026}.\par\medskip
 \hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026c). \textit{Caso: Logística}.\par\medskip
 \hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026d). \textit{Aclaraciones de la Licitación N.\textsuperscript{o} TFEP-01/2026}.\par\medskip
+\hangindent=1.27cm\hangafter=1 Ministerio de Salud. (1996). \textit{Reglamento Sanitario de los Alimentos, Decreto Supremo N.º 977/96} (texto consolidado al 6 de marzo de 2026). \url{https://www.minsal.cl/wp-content/uploads/2026/05/RSA-Decreto-977-96-actualizado-06-03-2026.pdf}\par\medskip
 }
 
 \section*{Declaración de uso de IA}
@@ -577,7 +574,7 @@ La Tabla 3.6 declara el uso de herramientas de inteligencia artificial por secci
   3.1 & Codex; Claude Code & Contraste con las Bases y redacción. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Patricio Henríquez: se confirmó la verificación del resumen de la solución dentro de los marcos establecidos, tanto en el caso como en las Bases propuestas. \\
   3.2 & Codex; Claude Code & Contraste con las Bases y los Subdocumentos 1 y 2; redacción; propuestas para las reglas RNG-04 y RNG-15. Incorporación de la cadena de frío en ruta. Coherencia del alcance con el Formulario T-12. & Alto & Ninguno & Patricio Henríquez: se verificó el alcance organizado según lo que requería el CLIENTE y los módulos que lo necesitan, junto con las exclusiones, restricciones y supuestos. El catálogo de requerimientos se encuentra en regla, junto con las reglas de negocio y sus derivados. \\
   3.3 & Codex; Claude Code & Descripción estructurada de las figuras; revisión de la continuidad. Incorporación de la cadena de frío en ruta. & Alto & Alto & Patricio Henríquez: las figuras propuestas son legibles y fáciles de entender; diagraman el esquema de la solución y mejoran el entendimiento de la sección. \\
-  3.4 & Codex; Claude Code & Redacción de implementación, implantación y operación; revisión de reversión, actores, módulos y referencias. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Patricio Henríquez: verificó la explicación de la solución, contrastándola con los actores propuestos y las aplicaciones ejecutivas en Puelche. Los diagramas son legibles y coherentes. Cita constantemente el caso y su paginación para una revisión más detallada. \\
+  3.4 & Codex; Claude Code & Redacción del desarrollo, despliegue y operación; revisión de reversión, actores, módulos y referencias. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Patricio Henríquez: verificó la explicación de la solución, contrastándola con los actores propuestos y las aplicaciones ejecutivas en Puelche. Los diagramas son legibles y coherentes. Cita constantemente el caso y su paginación para una revisión más detallada. \\
   Anexo 3.A & Codex; Claude Code & Conversión del catálogo funcional. Incorporación de la cadena de frío en ruta. Revisión de resultados y precondiciones del catálogo. & Alto & Ninguno & Guillermo Castillo: se verifica que el catálogo de RF se muestra de forma legible y con todas sus columnas correspondientes. Distingue prioridad y etapa. \\
   Anexo 3.B & Codex; Claude Code & Conversión del catálogo no funcional. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Guillermo Castillo: se verifica que el catálogo de RNF se muestra de forma legible y con todas sus columnas correspondientes. Distingue prioridad y etapa. \\
   Anexo 3.C & Codex; Claude Code & Redacción de supuestos. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Guillermo Castillo: se verifica que el catálogo de supuestos se muestra de forma legible y con todas sus columnas correspondientes. Distingue impacto si resulta falso, validación y origen. \\
@@ -589,6 +586,6 @@ La Tabla 3.6 declara el uso de herramientas de inteligencia artificial por secci
   Anexo 3.I & Codex; Claude Code & Redacción de la participación de actores. & Alto & Ninguno & Guillermo Castillo: se distinguen los actores mencionados en el Subdocumento 2 y cómo se conectan con el subdocumento actual. \\
   Anexo 3.J & Codex; Claude Code & Redacción de criterios de aceptación. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Guillermo Castillo: los criterios de aceptación muestran correctamente el resultado exigido para cada requerimiento de Puelche, junto con su situación actual, la meta y el método. \\
   Anexo 3.K & Codex; Claude Code & Glosario. & Medio & Ninguno & Guillermo Castillo: pequeña ayuda de glosario que ayuda al entendimiento del subdocumento. \\
-  Formulario T-12 & Codex; Claude Code & Generación de la matriz de cumplimiento. Incorporación de la cadena de frío en ruta. Revisión de componentes, paquetes, referencias y estado de cumplimiento por requisito. & Alto & Ninguno & Patricio Henríquez: se verificó la correcta disposición y legibilidad del formulario; cada requerimiento cuenta con un ID que permite la trazabilidad en el documento de manera sencilla y bien justificada. \\
+  T-12 & Codex; Claude Code & Generación de la matriz de cumplimiento. Incorporación de la cadena de frío en ruta. Revisión de componentes, paquetes, referencias y estado de cumplimiento por requisito. & Alto & Ninguno & Patricio Henríquez: se verificó la correcta disposición y legibilidad del formulario; cada requerimiento cuenta con un ID que permite la trazabilidad en el documento de manera sencilla y bien justificada. \\
 \end{tablalafrox}
 

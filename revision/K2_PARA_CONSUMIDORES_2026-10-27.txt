@@ -1,0 +1,18 @@
+LafroX — Contrato K2, Frente D, 27-10-2026 (publicación del Frente D autorizada por el usuario).
+Consumidores C/A/E/B: no se han editado sus documentos ni enviado mensajes automáticamente.
+
+ENTRADA: SD3 8f3662465edea19b676ce1194727ce5d0ec168fb; SD5 340b4aabf3a079cd934ed1ddac9f44e6550c851e.
+K1 consultado: subdoc-4 b0606ac9f7685322c8fb7e2ffd22caab96d3b43c; las diez ramas pedidas fueron actualizadas, incluida la rama plantilla SD4 solicitada, que se conserva.
+
+C — Catálogo: 270 RF/RNF únicos =180 RF+90 RNF. Prioridades64/163/43 (crítica/alta/media). T-12 conserva279 RF/RNF (9 alias/absorbidos)+374 RT=653 filas. Estados609 Cumple/22 parciales/22 No cumple. No hay cambios de IDs, estados ni prioridades. Delta semántico T-12: RF-14.02, RF-14.03, RF-14.04, RNF-04.01. RF-14.01–05 del Caso y RF-14.01–05-BTT son orígenes diferentes; se conservan ambos. Las filas RF-19.01–05 son absorbidas por RT de seguridad, no nuevos RF.
+C — La versión publicada de T-13, sección8.2, ya cuenta270 y653 correctamente, pero todavía menciona28 respuestas parciales; el T-12 vigente tiene22 en total (4 del catálogo y18 RT). Revisar ese pasaje sin cambiar las22 brechas No cumple. Los352 RT con oferta total/parcial siguen siendo374−22; no cambian los1.352 casos dimensionados por esta corrección.
+A — OTIF: registro diario y evaluación mensual, todos los pedidos comprometidos en canales/flotas ofertados. Mes15≥90%, mes19≥93%, mes32>95%, sobre cociente sin redondear. I-04A en SD13 debe usar desigualdad estricta para la meta final. No se modifica SD13.
+E — Retención: lote conserva identidad sanitaria; excursión retiene SSCC/cantidades expuestos en su ventana. Retiro por lote inmoviliza todas sus unidades/destinos. Calidad decide, conductor no libera. SD2 S-04 habla de lote: explicitar el alcance físico/térmico sin eliminar identidad sanitaria. No se modifica SD2. Se conserva numeración Anexo3.A–3.K y Anexo5-A–5-L; cualquier cambio de estilo se coordina antes de renumerar.
+E — Sitios: cobertura contractual de seis instalaciones, según RT-21.16, con parametrización por sitio. Se conserva ese universo.
+E/C — Telemetría: proveedor existente cubre42 propios (Caso cap.5);54 externos usan posición/tiempo C-02, asignado uno por camión en T-11. Se mantienen procedencia, fecha y sincronización diferida; no se presume telemetría precontratada de terceros. Conciliar este alcance explícito en K1/pruebas. Vehículos no son personas.
+B/C — Remisiones: T-13§8.2 contiene el catálogo de pruebas; T-18§6.4 el objetivo de reversión40min (04:45→05:25). SD3§3.4.3 Implementación,3.4.4 Implantación,3.4.5 Operación y Anexo3.I Participación conservan destino. SD5§5.1.7 corrigeM9 aSD4§4.1.4.2.
+
+MÉTODO Y EVIDENCIA: inventario.py, catalogo-entrada.json, catalogo-actual.json, entidades-actual.json, K2-FRENTE-D.json. 121 entidades/995 atributos en A.2–A.10;139 no es reproducible con el diccionario vigente. Las notas25-10 son históricas y no sustituyen este recuento.
+ESTADO: paquete verificado incluido en la publicación autorizada del SD3; la compilación no acredita pruebas ejecutadas ni aceptación contractual.
+
+Actualización: RF-02.06 conserva las seis condiciones de su resultado con redacción compacta; IDs, prioridades y estados del catálogo/T-12 permanecen iguales.
