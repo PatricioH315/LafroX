@@ -48,18 +48,9 @@ La sección 5 calcula CPM y PERT sobre la línea base vigente de 220.023 HH e in
 La red de la sección 5 identifica como camino controlante del H12 el cierre de la marcha blanca de la Etapa 2 (4.3.1), la preparación del acta 4.3.3 y los diez días hábiles de revisión del CLIENTE. La garantía 4.3.4 se constituye en septiembre, en paralelo con la marcha blanca, porque es un trámite financiero que no interviene sistemas y no tiene predecesoras; así no se suma a la cadena del acta. El acta calculada cae el 25 de octubre de 2028 frente al límite del 31 de octubre: holgura contractual de tres días hábiles. La Tabla \ref{tab_T15_7} conserva la diferencia entre entrega y acta.
 
 \clearpage
-\begin{figure}[p]
+\begin{figure}[htbp]
 \centering
-\begin{tikzpicture}[every node/.style={font=\fontsize{10pt}{12pt}\selectfont,align=center}]
-\node[draw,rectangle,text width=6.2cm,minimum height=1.7cm] (a) at (-3.4,0) {4.3.1 --- Marcha blanca de la Etapa 2\\Meses 19 y 20\\Cierre: 30 de septiembre de 2028};
-\node[draw,rectangle,dashed,text width=6.2cm,minimum height=1.7cm] (g) at (3.4,0) {4.3.4 --- Garantía\\de correcto funcionamiento\\7 días hábiles; 80 HH\\13 al 25 de septiembre de 2028};
-\node[draw,rectangle,text width=9cm,minimum height=1.7cm] (b) at (0,-2.6) {4.3.3 --- Preparación del acta de aceptación\\7 días hábiles; 80 HH\\Entrega calculada: 11 de octubre de 2028};
-\node[draw,rectangle,text width=9cm,minimum height=1.7cm] (c) at (0,-5.2) {Revisión del CLIENTE --- Art. 18.3\\10 días hábiles\\Acta calculada: 25 de octubre de 2028};
-\draw[->] (a.south)--(b.north);
-\draw[->,dashed] (g.south)--(b.north);
-\draw[->] (b.south)--(c.north);
-\node[text width=13cm] at (0,-7.4) {H12: límite 31 de octubre de 2028\\Holgura contractual: 3 días hábiles (26, 30 y 31 de octubre).\\La garantía corre en paralelo y no forma parte del camino controlante.};
-\end{tikzpicture}
+\includegraphics[width=0.72\linewidth]{imagenes/Diagramas que faltaban/Fig_Camino_H12.pdf}
 \caption{Camino que controla el H12 y su holgura contractual. Fuente: elaboración a partir del T-15, secciones 5.1--5.3 y 6.1.}\label{fig:T15-ruta}
 \end{figure}
 \clearpage

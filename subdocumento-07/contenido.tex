@@ -350,18 +350,9 @@ La ruta crítica se calcula con el método de la ruta crítica sobre la red del 
 El cálculo de la red vigente utiliza las 220.023 HH, los 168 paquetes con entregable, las dependencias del Anexo 7.B y diez días hábiles de revisión del CLIENTE. El T-15, sección 5, publica las fechas tempranas y tardías, las holguras y el PERT condicional. El camino que controla H12 es 4.3.1 (cierre de la marcha blanca de la Etapa 2) \ensuremath{\rightarrow} 4.3.3 (acta) \ensuremath{\rightarrow} revisión del CLIENTE. La garantía 4.3.4 se constituye en septiembre, en paralelo, porque es un trámite financiero que no interviene sistemas y no tiene predecesoras. La entrega calculada es el 11 de octubre de 2028 y el acta, el 25 de octubre: quedan tres días hábiles antes del límite contractual del 31 de octubre, mes 21. Para hacer simultáneos el H12, el paso oficial a producción de la Etapa 2 y el inicio de la Operación con ambos alcances (BA, art. 17.2, punto 4, p. 13), se fija como fecha objetivo el primer día hábil del mes contractual 21 posterior al cierre comercial y contable, porque el paso a producción no puede ocurrir en los tres primeros días hábiles del mes (Caso, sección 13.3, condición 2, p. 23). Bajo el supuesto de inicio en febrero de 2027, el mes 21 es octubre de 2028, sus tres primeros días hábiles son el 2, el 3 y el 4, y la fecha objetivo es el jueves 5 de octubre de 2028; desde ese día, la Operación de los meses 21 a 56 comprende ambos alcances. El 25 de octubre es el resultado de la programación aún vigente, no la fecha objetivo: la diferencia requiere reprogramar la preparación y aceptación del H12 y comprobar el calendario efectivo del contrato. La Figura \ref{fig:7-ruta} muestra el cálculo vigente, no acredita todavía el cumplimiento de la fecha objetivo.
 
 \clearpage
-\begin{figure}[p]
+\begin{figure}[htbp]
 \centering
-\begin{tikzpicture}[every node/.style={font=\fontsize{10pt}{12pt}\selectfont,align=center}]
-\node[draw,rectangle,text width=6.2cm,minimum height=1.7cm] (a) at (-3.4,0) {4.3.1 --- Marcha blanca de la Etapa 2\\Meses 19 y 20\\Cierre: 30 de septiembre de 2028};
-\node[draw,rectangle,dashed,text width=6.2cm,minimum height=1.7cm] (g) at (3.4,0) {4.3.4 --- Garantía\\de correcto funcionamiento\\7 días hábiles; 80 HH\\13 al 25 de septiembre de 2028};
-\node[draw,rectangle,text width=9cm,minimum height=1.7cm] (b) at (0,-2.6) {4.3.3 --- Preparación del acta de aceptación\\7 días hábiles; 80 HH\\Entrega calculada: 11 de octubre de 2028};
-\node[draw,rectangle,text width=9cm,minimum height=1.7cm] (c) at (0,-5.2) {Revisión del CLIENTE --- Art. 18.3\\10 días hábiles\\Acta calculada: 25 de octubre de 2028};
-\draw[->] (a.south)--(b.north);
-\draw[->,dashed] (g.south)--(b.north);
-\draw[->] (b.south)--(c.north);
-\node[text width=13cm] at (0,-7.4) {H12: límite 31 de octubre de 2028\\Holgura contractual: 3 días hábiles (26, 30 y 31 de octubre).\\La garantía corre en paralelo y no forma parte del camino controlante.};
-\end{tikzpicture}
+\includegraphics[width=0.72\linewidth]{imagenes/Diagramas que faltaban/Fig_Camino_H12.pdf}
 \caption{Camino que controla el H12 y su holgura contractual. Fuente: elaboración a partir del T-15, secciones 5.1--5.3 y 6.1.}\label{fig:7-ruta}
 \end{figure}
 \clearpage
