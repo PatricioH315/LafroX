@@ -1,18 +1,22 @@
-% Plantilla común LafroX. Compilar desde esta carpeta: latexmk main.tex
-\documentclass[carta,firma,borrador]{lafrox}
+\documentclass[carta,sinfirma,borrador]{lafrox}
 \datoslafrox{
-  documento = {Plantilla de subdocumento LafroX},
-  subtitulo = {Ejemplo de trabajo --- completar informe},
-  alcance = {Subdocumento de ejemplo},
-  formulario = {Completar formulario aplicable},
-  fecha = {Completar fecha de entrega},
-  version = {0.1},
-  nomenclatura = {EJEMPLO\_LAFROX\_NO\_ENTREGAR.ZIP},
+  documento = {Oferta Económica},
+  subtitulo = {Análisis económico-financiero},
+  alcance = {Entregable 2},
+  formulario = {Formulario E-21},
+  sobre = {Sobre N.\textdegree{} 3 \textemdash{} Oferta Económica},
+  rut = {\mbox{}}, representante = {\mbox{}}, cargo = {\mbox{}}, domicilio = {\mbox{}},
+  correo = {\mbox{}}, telefono = {\mbox{}}, fecha = {}, version = {}, nomenclatura = {},
 }
 \begin{document}
 \portadalafrox
-\preliminareslafrox
-% Para compilar el Subdocumento N por separado, fijar chapter en N-1:
-% \setcounter{chapter}{3} % Ejemplo: Subdocumento 4.
-\subdocumento{subdocumento-ejemplo}
+\setcounter{chapter}{1}
+\chapter{Análisis económico-financiero}
+\section{Análisis comparativo de costos frente a precio}
+\section{Evaluación financiera}
+\section{Curva S}
+\section{Estrategia de adquisiciones}
+\section{Modelo de costos operacionales}
+\section{Estructura de mantención y soporte}
+\section{Valorización de las cinco innovaciones}
 \end{document}
