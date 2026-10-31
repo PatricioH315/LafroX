@@ -1,0 +1,24 @@
+# Auxiliares de compilacion LaTeX; reglas compartidas con las ramas de documentos.
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.bcf
+*.bbl
+*.blg
+*.run.xml
+*.xdv
+*.nav
+*.snm
+*.vrb
+
+# Solo el PDF generico de compilacion. Los PDF de entrega, figuras y logos,
+# y las planillas Excel (incluida outputs/) se pueden seguir versionando.
+/main.pdf
+/main-*.pdf
