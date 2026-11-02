@@ -1,0 +1,169 @@
+/* Sistema de diseño LafroX — tokens (RT-25.05)
+   Paleta principal de cinco colores tomada de lafrox.cls:
+   tinta #111111 · gris #5F5F5F · fondo #F4F4F4 · superficie #FFFFFF · naranja #E8641B
+   Los colores de estado son semánticos y no forman parte de la paleta principal. */
+
+:root {
+  /* Paleta principal */
+  --c-ink: #111111;
+  --c-gray: #5f5f5f;
+  --c-bg: #f4f4f4;
+  --c-surface: #ffffff;
+  --c-accent: #e8641b;
+
+  /* Derivados de la paleta (opacidades y mezclas de los cinco colores) */
+  --c-line: #c7c7c7;
+  --c-line-soft: #dcdcdc;
+  --c-surface-2: #fafafa;
+  --c-accent-soft: #fdeee5;
+  --c-accent-ink: #111111;      /* texto sobre naranja: 5,7:1 */
+  --c-accent-strong: #a8440c;   /* naranja apto para texto sobre blanco: 5,4:1 */
+  --c-overlay: rgba(17, 17, 17, 0.55);
+
+  /* Semánticos de estado */
+  --c-success: #1e7a3c;
+  --c-success-soft: #e6f2ea;
+  --c-warning: #8a5a00;
+  --c-warning-soft: #fbf1dc;
+  --c-danger: #b3261e;
+  --c-danger-soft: #fbe9e7;
+  --c-info: #1d5fa8;
+  --c-info-soft: #e7eff9;
+
+  /* Series de gráficos: derivadas de la paleta principal */
+  --chart-1: #e8641b;
+  --chart-2: #111111;
+  --chart-3: #8a8a8a;
+  --chart-4: #f29a5e;
+  --chart-5: #c7c7c7;
+  --chart-6: #5f5f5f;
+
+  /* Tipografía: dos familias jerarquizadas */
+  --font-sans: "Source Sans 3", "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --fs-root: 16px;
+  --fs-xs: 0.8125rem;   /* 13 */
+  --fs-sm: 0.875rem;    /* 14 */
+  --fs-md: 1rem;        /* 16 */
+  --fs-lg: 1.125rem;    /* 18 */
+  --fs-xl: 1.375rem;    /* 22 */
+  --fs-2xl: 1.75rem;    /* 28 */
+  --fs-3xl: 2.25rem;    /* 36 */
+  --fs-4xl: 3rem;       /* 48 */
+  --lh-tight: 1.2;
+  --lh-body: 1.5;
+
+  /* Retícula de 8 px */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --shadow-1: 0 1px 2px rgba(17, 17, 17, 0.06), 0 1px 3px rgba(17, 17, 17, 0.08);
+  --shadow-2: 0 4px 12px rgba(17, 17, 17, 0.1), 0 2px 4px rgba(17, 17, 17, 0.06);
+  --shadow-3: 0 16px 40px rgba(17, 17, 17, 0.18);
+
+  --target: 44px;           /* objetivo táctil mínimo (RT-25.03) */
+  --row-h: 52px;            /* densidad de listados */
+  --sidebar-w: 264px;
+  --topbar-h: 64px;
+
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 320ms;
+
+  color-scheme: light;
+}
+
+/* Modo oscuro (RT-13.12 de SD4: preferencia claro u oscuro) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --c-ink: #f4f4f4;
+    --c-gray: #b5b5b5;
+    --c-bg: #111111;
+    --c-surface: #1b1b1b;
+    --c-accent: #f29a5e;
+    --c-line: #3c3c3c;
+    --c-line-soft: #2a2a2a;
+    --c-surface-2: #222222;
+    --c-accent-soft: #3a2416;
+    --c-accent-ink: #111111;
+    --c-accent-strong: #f29a5e;
+    --c-overlay: rgba(0, 0, 0, 0.7);
+    --c-success: #6fcf8f;
+    --c-success-soft: #173323;
+    --c-warning: #f0c060;
+    --c-warning-soft: #3a2d12;
+    --c-danger: #ff8a80;
+    --c-danger-soft: #3d1a17;
+    --c-info: #8ab8f0;
+    --c-info-soft: #172a40;
+    --chart-1: #f29a5e;
+    --chart-2: #f4f4f4;
+    --chart-3: #9a9a9a;
+    --chart-4: #e8641b;
+    --chart-5: #5f5f5f;
+    --chart-6: #c7c7c7;
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.5);
+    --shadow-3: 0 16px 40px rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --c-ink: #f4f4f4;
+  --c-gray: #b5b5b5;
+  --c-bg: #111111;
+  --c-surface: #1b1b1b;
+  --c-accent: #f29a5e;
+  --c-line: #3c3c3c;
+  --c-line-soft: #2a2a2a;
+  --c-surface-2: #222222;
+  --c-accent-soft: #3a2416;
+  --c-accent-ink: #111111;
+  --c-accent-strong: #f29a5e;
+  --c-overlay: rgba(0, 0, 0, 0.7);
+  --c-success: #6fcf8f;
+  --c-success-soft: #173323;
+  --c-warning: #f0c060;
+  --c-warning-soft: #3a2d12;
+  --c-danger: #ff8a80;
+  --c-danger-soft: #3d1a17;
+  --c-info: #8ab8f0;
+  --c-info-soft: #172a40;
+  --chart-1: #f29a5e;
+  --chart-2: #f4f4f4;
+  --chart-3: #9a9a9a;
+  --chart-4: #e8641b;
+  --chart-5: #5f5f5f;
+  --chart-6: #c7c7c7;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-3: 0 16px 40px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+/* Preferencias de la persona usuaria: tamaño de texto y densidad */
+:root[data-text="lg"] { --fs-root: 18px; }
+:root[data-text="xl"] { --fs-root: 20px; }
+:root[data-density="compact"] { --row-h: 44px; }
+:root[data-density="comfortable"] { --row-h: 60px; }
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur: 0ms;
+    --dur-slow: 0ms;
+  }
+}
