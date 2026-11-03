@@ -67,7 +67,7 @@
   });
 
   L.route('/inventario', {
-    title: 'Inventario', parent: '/inicio', block: 'Proceso operacional principal', module: 'M2 Inventario', rf: ['RF-02.02', 'RF-02.04', 'RF-02.05', 'RF-02.06', 'RF-02.07', 'RF-02.09', 'RF-10.01'], actors: ['Jefa de Bodega', 'Gerente de Operaciones', 'Preventistas'],
+    title: 'Inventario', parent: '/inicio', block: 'Proceso operacional principal', module: 'M2 Inventario', rf: ['RF-02.02', 'RF-02.04', 'RF-02.05', 'RF-02.06', 'RF-02.07', 'RF-02.09', 'RF-10.01', 'RF-10.02', 'RF-10.03', 'RNG-02', 'RNG-10'], actors: ['Jefa de Bodega', 'Gerente de Operaciones', 'Preventistas'],
     render: () => `<div class="page-head"><div class="titles"><h1>Inventario</h1><p class="muted" style="margin:0">Stock físico, comprometido, disponible y en tránsito por sitio. Disponible = físico habilitado − reservas (RNG-02).</p></div><div class="actions"><button type="button" class="btn btn-secondary" id="iv-cc">${icon('clipboard')}Plan de conteo cíclico</button><button type="button" class="btn btn-primary" id="iv-rep">${icon('cart')}Sugerencia de reposición</button></div></div>
       <div class="grid grid-${D.sitios.length > 4 ? 3 : 4}" style="margin-bottom:var(--sp-5)">${D.sitios.slice(0, 3).map((s) => `<div class="card"><div class="row-between"><strong>${esc(s.nombre)}</strong><span class="num">${s.ocupacion} %</span></div><div class="progress ${s.ocupacion > 80 ? 'danger' : 'dark'}" style="margin:8px 0"><span style="width:${s.ocupacion}%"></span></div>${s.zonas ? `<div class="row small muted">${Object.entries(s.zonas).map(([z, v]) => `<span>${z} ${v} %</span>`).join(' · ')}</div>` : `<span class="small muted">${esc(s.tipo)}</span>`}</div>`).join('')}</div>
       <div class="card card-flush" id="iv-t"></div>`,

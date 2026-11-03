@@ -110,7 +110,7 @@
   };
 
   L.route('/inicio', {
-    title: 'Inicio', noCrumb: true, block: 'Portal principal', module: 'Transversal', rf: ['RF-17.07', 'RF-16.02'], actors: ['Todos los perfiles'],
+    title: 'Inicio', noCrumb: true, block: 'Portal principal', module: 'Transversal', rf: ['RF-17.07', 'RF-16.02', 'RF-17.11', 'RF-12.28'], actors: ['Todos los perfiles'],
     render: () => {
       const p = L.me();
       const h = D.today.getHours();

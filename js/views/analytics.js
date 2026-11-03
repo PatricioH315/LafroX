@@ -28,7 +28,7 @@
   };
 
   L.route('/analitica', {
-    title: 'Tablero analítico', parent: '/inicio', block: 'Tablero analítico', module: 'M10 Analítica', rf: ['RF-11.01', 'RF-11.02', 'RF-11.03', 'RF-11.04', 'RF-11.05', 'RF-11.06', 'RF-16.02'], actors: ['Gerente Comercial', 'Gerente de Finanzas', 'Gerente de Operaciones', 'Jefa de Calidad'],
+    title: 'Tablero analítico', parent: '/inicio', block: 'Tablero analítico', module: 'M10 Analítica', rf: ['RF-11.01', 'RF-11.02', 'RF-11.03', 'RF-11.04', 'RF-11.05', 'RF-11.06', 'RF-16.02', 'RNG-09'], actors: ['Gerente Comercial', 'Gerente de Finanzas', 'Gerente de Operaciones', 'Jefa de Calidad'],
     render: () => `<div class="page-head"><div class="titles"><span class="page-kicker">M10 · datos al día · actualizado hace 3 min</span><h1>Tablero analítico</h1><p class="muted" style="margin:0">Indicadores del caso contra la línea base 2025. Haga clic en un indicador o en un gráfico para profundizar hasta la entrega.</p></div>
       <div class="actions no-print"><button type="button" class="btn btn-secondary" id="an-sched">${icon('calendar')}Programar envío</button><button type="button" class="btn btn-secondary" id="an-print">${icon('printer')}Imprimir</button><button type="button" class="btn btn-primary" id="an-exp">${icon('download')}Exportar informe</button></div></div>
       <div id="an-filters"></div><div id="an-body" aria-live="polite"></div>`,

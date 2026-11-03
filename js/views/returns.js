@@ -6,7 +6,7 @@
   const kind = (e) => ({ 'Registrada en ruta': 'info', 'Recepcionada en andén': 'info', 'En evaluación': 'warning', Aprobada: 'success', Rechazada: 'danger', 'Nota de crédito emitida': 'success' }[e]);
 
   L.route('/devoluciones', {
-    title: 'Devoluciones y envases', parent: '/inicio', block: 'Proceso operacional secundario', module: 'M8 Devoluciones y envases', rf: ['RF-08.01', 'RF-08.02', 'RF-08.03', 'RF-08.06', 'RF-17.12'], actors: ['Conductores', 'Jefa de Bodega', 'Gerente de Finanzas'],
+    title: 'Devoluciones y envases', parent: '/inicio', block: 'Proceso operacional secundario', module: 'M8 Devoluciones y envases', rf: ['RF-08.01', 'RF-08.02', 'RF-08.03', 'RF-08.06', 'RF-17.12', 'RNG-07'], actors: ['Conductores', 'Jefa de Bodega', 'Gerente de Finanzas'],
     render: () => `<div class="page-head"><div class="titles"><h1>Devoluciones y envases</h1><p class="muted" style="margin:0">Desde el registro en ruta hasta la nota de crédito, con decisión de destino aprobada.</p></div><div class="actions"><a class="btn btn-primary" href="#/devoluciones/nueva">${icon('plus')}Registrar devolución</a></div></div>
       ${L.tabsHtml('dv', [{ id: 'dev', label: 'Devoluciones', count: D.devoluciones.length }, { id: 'env', label: 'Envases retornables' }], 'dev')}
       <div ${L.panelAttrs('dv', 'dev', 'dev')}>

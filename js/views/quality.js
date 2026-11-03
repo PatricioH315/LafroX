@@ -21,7 +21,7 @@
   });
 
   L.route('/calidad/lotes/:id', {
-    title: (p) => (p.id ? `Lote ${p.id}` : 'Detalle de lote'), parent: '/calidad', block: 'Módulo adicional 1', module: 'M9 Calidad y trazabilidad', rf: ['RF-02.10', 'RF-09.01', 'RF-09.02', 'RF-09.09'], actors: ['Jefa de Calidad'],
+    title: (p) => (p.id ? `Lote ${p.id}` : 'Detalle de lote'), parent: '/calidad', block: 'Módulo adicional 1', module: 'M9 Calidad y trazabilidad', rf: ['RF-02.10', 'RF-09.01', 'RF-09.02', 'RF-09.09', 'RNG-04', 'RNG-17'], actors: ['Jefa de Calidad'],
     render: ({ id }) => {
       const l = D.lotes.find((x) => x.id === id);
       if (!l) return L.empty('search', 'Lote no encontrado', `No existe el lote ${id}.`, '<a class="btn btn-primary" href="#/calidad">Volver</a>');

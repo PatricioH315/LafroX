@@ -33,7 +33,8 @@
   };
   const pick = (name) => { const p = D.productos.find((x) => x.nombre === name); return { sku: p.sku, nombre: p.nombre, temp: p.temp, precio: p.precio, stock: p.stock }; };
   const subtotal = (o) => o.lines.reduce((a, l) => a + l.cant * l.precio, 0);
-  const discount = (o) => (o.promo ? Math.floor(o.lines[2].cant / 3) * o.lines[2].precio : 0);
+  const extraDisc = (o) => (o.extra ? Math.round((subtotal(o) - (o.promo ? Math.floor(o.lines[2].cant / 3) * o.lines[2].precio : 0)) * o.extra.pct / 100) : 0);
+  const discount = (o) => (o.promo ? Math.floor(o.lines[2].cant / 3) * o.lines[2].precio : 0) + extraDisc(o);
   const total = (o) => subtotal(o) - discount(o);
 
   let O = null;
@@ -41,7 +42,7 @@
   const nowTime = () => new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
   L.route('/flujo', {
-    title: 'Flujo de pedido', parent: '/pedidos', block: 'Proceso operacional principal', module: 'M3 · M2 · M4 · M5 · M6 · M7', rf: ['RF-03.01', 'RF-03.03', 'RF-03.09', 'RF-03.15', 'RF-03.16', 'RF-04.01', 'RF-04.06', 'RF-05.02', 'RF-05.05', 'RF-05.07', 'RF-06.01', 'RF-06.02', 'RF-06.04', 'RF-07.02', 'RF-07.03'], actors: ['Preventista', 'Planificador de Rutas', 'Preparador', 'Jefa de Bodega', 'Conductor', 'Gerente de Finanzas'],
+    title: 'Flujo de pedido', parent: '/pedidos', block: 'Proceso operacional principal', module: 'M3 · M2 · M4 · M5 · M6 · M7', rf: ['RF-03.01', 'RF-03.03', 'RF-03.09', 'RF-03.15', 'RF-03.16', 'RF-04.01', 'RF-04.06', 'RF-05.02', 'RF-05.05', 'RF-05.07', 'RF-06.01', 'RF-06.02', 'RF-06.04', 'RF-07.02', 'RF-07.03', 'RF-03.04', 'RF-03.07', 'RF-03.08', 'RF-03.10', 'RF-03.14', 'RF-05.03', 'RF-05.06', 'RF-06.03', 'RF-07.09', 'RF-09.11', 'RNG-01', 'RNG-03', 'RNG-05', 'RNG-08', 'RNG-12', 'RNG-13', 'RNG-15', 'RNG-16', 'RNG-17', 'RF-06.10', 'RF-06.12', 'RF-07.10', 'RF-09.07'], actors: ['Preventista', 'Planificador de Rutas', 'Preparador', 'Jefa de Bodega', 'Conductor', 'Gerente de Finanzas'],
     render: () => `<div class="page-head"><div class="titles"><span class="page-kicker">${icon('activity', 'icon-sm')}Proceso principal · de punta a punta</span><h1>Flujo de un pedido: de la preventa a la rendición</h1><p class="muted" style="margin:0">Simule el pedido PV-264822 de Almacén Doña Rosa en los 7 pasos, incluidos los estados intermedios y la excepción «local cerrado».</p></div>
         <div class="actions"><button type="button" class="btn btn-secondary" id="fl-reset">${icon('sync')}Reiniciar simulación</button></div></div>
       <div id="fl-stepper"></div>
@@ -92,12 +93,21 @@
           <div class="table-wrap" style="border:1px solid var(--c-line-soft)"><table class="table"><caption class="sr-only">Líneas del pedido</caption><thead><tr><th>Producto</th><th class="right">Stock ${O.offline ? '(06:00)' : ''}</th><th class="right">Precio</th><th>Cantidad</th><th class="right">Subtotal</th><th><span class="sr-only">Quitar</span></th></tr></thead>
           <tbody>${O.lines.map((l, i) => `<tr><td class="wrap"><strong>${esc(l.nombre)}</strong><div class="small muted mono">${esc(l.sku)} ${l.temp !== 'Seco' ? '· ' + esc(l.temp) : ''}</div></td><td class="num right">${fmt.n(l.stock)}</td><td class="num right">${fmt.clp(l.precio)}</td><td><div class="row" style="flex-wrap:nowrap;gap:4px"><button type="button" class="btn btn-secondary btn-icon btn-sm" data-q="${i}" data-d="-1" aria-label="Restar una unidad de ${esc(l.nombre)}">${icon('minus', 'icon-sm')}</button><input class="input num" style="width:64px;text-align:center" value="${l.cant}" data-qi="${i}" inputmode="numeric" aria-label="Cantidad de ${esc(l.nombre)}"><button type="button" class="btn btn-secondary btn-icon btn-sm" data-q="${i}" data-d="1" aria-label="Sumar una unidad de ${esc(l.nombre)}">${icon('plus', 'icon-sm')}</button></div></td><td class="num right">${fmt.clp(l.cant * l.precio)}</td><td><button type="button" class="btn btn-tertiary btn-icon" data-rm="${i}" aria-label="Quitar ${esc(l.nombre)}">${icon('trash')}</button></td></tr>`).join('')}</tbody></table></div>
           <div class="row-between" style="margin-top:var(--sp-4)">
-            <label class="check"><input type="checkbox" id="pv-promo" ${O.promo ? 'checked' : ''}> Aplicar promoción vigente 3×2 en bebidas (RF-03.07)</label>
+            <div class="stack" style="gap:var(--sp-1)"><label class="check"><input type="checkbox" id="pv-promo" ${O.promo ? 'checked' : ''}> Aplicar promoción vigente 3×2 en bebidas (RF-03.07)</label>
+            ${O.extra ? `<span class="small">${L.badge(`Descuento excepcional ${O.extra.pct} %`, 'success')} autorizado por ${esc(O.extra.by)} · ${esc(O.extra.why)} (RNG-16)</span>` : `<button type="button" class="btn btn-tertiary btn-sm" id="pv-extra" style="align-self:flex-start">${icon('key', 'icon-sm')}Solicitar descuento excepcional</button>`}</div>
             <div style="text-align:right"><div class="small muted">Subtotal ${fmt.clp(subtotal(O))}${O.promo ? ` · descuento −${fmt.clp(discount(O))}` : ''}</div><div style="font-size:var(--fs-xl);font-weight:700" class="num">Total ${fmt.clp(total(O))}</div></div>
           </div>
           ${over ? `<div style="margin-top:var(--sp-3)">${L.alert('warning', 'El pedido supera el crédito disponible del cliente', 'Puede guardarlo: al sincronizar, el sistema revalida el crédito y, si excede el umbral, lo retiene para autorización (RF-03.08, RNG-03).')}</div>` : ''}
           <div class="row-between" style="margin-top:var(--sp-5)"><span class="small muted">El precio acordado queda fijo en el pedido (RNG-08).</span><button type="button" class="btn btn-primary big-btn" id="pv-save">${icon(O.offline ? 'download' : 'send')}${O.offline ? 'Guardar pedido sin conexión' : 'Enviar pedido'}</button></div>`;
         $('#pv-net', b).onchange = (e) => { O.offline = !e.target.checked; preventa(b); };
+        $('#pv-extra', b) && ($('#pv-extra', b).onclick = () => L.modal({
+          title: 'Descuento excepcional',
+          body: `<p class="muted" style="margin-top:0">Las promociones vigentes las aplica el preventista. Todo descuento fuera de ellas requiere autorización del supervisor comercial antes de confirmar, con pedido, monto y motivo registrados (RNG-16).</p>
+            <div class="form-grid"><div class="field"><label for="xd-p">Descuento (%) <span class="req" aria-hidden="true">*</span></label><input id="xd-p" class="input num" inputmode="numeric" value="5"></div>
+            <div class="field"><label for="xd-m">Motivo <span class="req" aria-hidden="true">*</span></label><select id="xd-m" class="select"><option value="">Seleccione…</option><option>Igualar precio de la competencia</option><option>Compra por volumen fuera de promoción</option><option>Compensación por entrega fallida</option></select></div></div>`,
+          onOpen: (d) => { L.bindField($('#xd-p', d), ['required', (v) => (+v > 0 && +v <= 15 ? '' : 'Ingrese un porcentaje entre 1 y 15.')]); L.bindField($('#xd-m', d), ['required']); },
+          actions: [{ label: 'Cancelar' }, { label: 'Enviar al supervisor', cls: 'btn-primary', onClick: async (api) => { if (!L.validateAll(api.el)) return false; const pct = +$('#xd-p', api.el).value, why = $('#xd-m', api.el).value; L.toast('Solicitud enviada', 'Esperando autorización del supervisor comercial…', 'info', { duration: 1800 }); await L.sleep(1500); O.extra = { pct, why, by: 'Rubén Salinas, supervisor comercial' }; setState(O.estado, `Descuento excepcional ${pct} % autorizado · ${why}`); L.toast('Descuento autorizado', `${pct} % · queda registrado quién autorizó, monto y motivo.`, 'success'); preventa(b); } }]
+        }));
         $('#pv-promo', b).onchange = (e) => { O.promo = e.target.checked; preventa(b); if (O.promo) L.toast('Promoción aplicada', `3×2 en ${O.lines[2]?.nombre || 'bebidas'}: −${fmt.clp(discount(O))}`, 'success'); };
         $$('[data-q]', b).forEach((x) => (x.onclick = () => { const l = O.lines[x.dataset.q]; l.cant = Math.max(1, l.cant + Number(x.dataset.d)); preventa(b); $(`[data-q="${x.dataset.q}"][data-d="${x.dataset.d}"]`, b).focus(); }));
         $$('[data-qi]', b).forEach((x) => (x.onchange = () => { const v = parseInt(x.value, 10); if (!(v > 0)) { L.toast('Cantidad no válida', 'Ingrese un número entero mayor que cero.', 'error'); x.value = O.lines[x.dataset.qi].cant; return; } O.lines[x.dataset.qi].cant = v; preventa(b); }));
@@ -253,7 +263,7 @@
       /* Paso 6 · Entrega con prueba digital (reutiliza el componente de terreno) */
       function entrega(b) {
         if (O.delivered) { b.innerHTML = `${L.alert('success', O.estado === 'Parcial' ? 'Entrega parcial registrada' : 'Entrega registrada', 'La prueba de entrega se asoció a la guía electrónica y se enviará al ERP (RF-06.14).')}<div class="row" style="justify-content:flex-end;margin-top:var(--sp-4)"><button type="button" class="btn btn-primary big-btn" id="en-next">Continuar a rendición${icon('arrow-right')}</button></div>`; $('#en-next', b).onclick = next; return; }
-        const stop = { nombre: O.cli.nombre, dir: 'Av. Prat 512, Cauquenes', ventana: O.reprog || O.cli.ventana, contado: true, monto: total(O) - (O.short ? O.short.q * O.lines[O.short.i].precio : 0) };
+        const stop = { cliente: O.cli.id, nombre: O.cli.nombre, dir: 'Av. Prat 512, Cauquenes', ventana: O.reprog || O.cli.ventana, contado: true, monto: total(O) - (O.short ? O.short.q * O.lines[O.short.i].precio : 0) };
         const lines = O.lines.map((l, i) => ({ nombre: l.nombre, cant: O.short?.i === i ? l.cant - O.short.q : l.cant, precio: l.precio }));
         b.innerHTML = `${O.reprog ? L.alert('info', 'Segundo intento en la nueva ventana', `Entrega reprogramada a ${esc(O.reprog)} (RNG-05).`) : ''}<div id="en-host" style="margin-top:var(--sp-3)"></div>`;
         L.delivery($('#en-host', b), {
@@ -308,7 +318,9 @@
 
   /* ---------- Componente de entrega reutilizable (flujo y app de terreno) ---------- */
   L.delivery = (host, { stop, lines, onDone, onClosed, allowClosed = true, compact = false }) => {
-    const st = { qty: lines.map((l) => l.cant), reason: '', signed: false, photo: false, crates: 0 };
+    const st = { qty: lines.map((l) => l.cant), reason: '', signed: false, photo: false, crates: 0, method: 'sign', receiver: '', partialPay: false };
+    const cli = stop.cliente ? L.findClient(stop.cliente) : null;
+    const crateBase = cli ? cli.envases.canastillos : 24;
     host.innerHTML = `
       <div class="row-between" style="margin-bottom:var(--sp-3)"><div><strong style="font-size:var(--fs-lg)">${esc(stop.nombre)}</strong><div class="small muted">${icon('pin', 'icon-sm')} ${esc(stop.dir)} · ventana ${esc(stop.ventana)}</div></div>${allowClosed ? `<button type="button" class="btn btn-secondary" data-closed>${icon('door')}Local cerrado</button>` : ''}</div>
       <h3>1. Confirme lo entregado</h3>
@@ -316,29 +328,42 @@
       <div id="dl-rej"></div>
       <h3 style="margin-top:var(--sp-4)">2. Envases retornados (RF-06.09)</h3>
       <div class="row"><span>Canastillos devueltos</span><button type="button" class="btn btn-secondary btn-icon btn-sm" data-cr="-1" aria-label="Restar canastillo">${icon('minus', 'icon-sm')}</button><output id="dl-cr" class="num" style="min-width:24px;text-align:center;font-weight:700">0</output><button type="button" class="btn btn-secondary btn-icon btn-sm" data-cr="1" aria-label="Sumar canastillo">${icon('plus', 'icon-sm')}</button></div>
+      <p class="small muted" id="dl-crs" style="margin:6px 0 0" aria-live="polite"></p>
       <h3 style="margin-top:var(--sp-4)">3. Prueba de entrega</h3>
-      <div class="segmented" role="tablist" aria-label="Método de confirmación" style="margin-bottom:var(--sp-3)"><button type="button" role="tab" aria-selected="true" data-pm="sign">Firma en pantalla</button><button type="button" role="tab" aria-selected="false" data-pm="qr">Código QR del cliente</button></div>
+      <div class="segmented" role="tablist" aria-label="Método de confirmación" style="margin-bottom:var(--sp-3)"><button type="button" role="tab" aria-selected="true" data-pm="sign">Firma en pantalla</button><button type="button" role="tab" aria-selected="false" data-pm="qr">Código QR del cliente</button><button type="button" role="tab" aria-selected="false" data-pm="name">Foto y nombre</button></div>
       <div data-pmp="sign"><canvas class="sign-pad" id="dl-sign" aria-label="Área de firma. Firme con el dedo o presione Enter para una firma simulada."></canvas><div class="row-between" style="margin-top:6px"><span class="small muted" id="dl-sign-st">Sin firma</span><div class="btn-group"><button type="button" class="btn btn-tertiary btn-sm" data-sign-fake>Firma de ejemplo</button><button type="button" class="btn btn-tertiary btn-sm" data-sign-clear>Borrar</button></div></div></div>
       <div data-pmp="qr" hidden><div class="row"><svg viewBox="0 0 21 21" width="120" height="120" role="img" aria-label="Código QR de confirmación">${Array.from({ length: 21 * 21 }, (_, k) => ((k * 7919) % 13 < 6 || [0, 1, 2, 3, 4, 5, 6].some((z) => (k % 21 === z && k < 147) || (Math.floor(k / 21) === z && k % 21 < 7))) ? `<rect x="${k % 21}" y="${Math.floor(k / 21)}" width="1" height="1" fill="var(--c-ink)"/>` : '').join('')}</svg><p class="small muted">El cliente escanea este código desde su teléfono para confirmar la recepción (RF-06.11).</p></div><button type="button" class="btn btn-secondary btn-sm" data-qr-ok>Simular escaneo del cliente</button></div>
+      <div data-pmp="name" hidden><p class="small muted" style="margin-top:0">Para cuando quien recibe no es el titular, no puede firmar o no tiene teléfono: basta la foto de la mercadería y el nombre de quien recibe (RF-06.12, RF-12.12).</p><div class="field"><label for="dl-rcv">Nombre de quien recibe <span class="req" aria-hidden="true">*</span></label><input id="dl-rcv" class="input" autocomplete="off" placeholder="Ej.: Pedro Muñoz, encargado de bodega"></div></div>
       <div style="margin-top:var(--sp-3)"><div class="dropzone" id="dl-photo" style="min-height:96px">${icon('camera', 'icon-lg')}<div><strong>Foto de la mercadería entregada</strong></div><span class="small">Toque para tomar la foto o arrastre una imagen</span></div><button type="button" class="btn btn-tertiary btn-sm" data-photo-fake style="margin-top:6px">Usar foto de ejemplo</button></div>
-      ${stop.contado ? `<h3 style="margin-top:var(--sp-4)">4. Cobro al contado (RF-06.05)</h3><div class="form-grid"><div class="field"><label for="dl-cash">Monto recibido en efectivo <span class="req" aria-hidden="true">*</span></label><div class="input-group"><span class="addon">$</span><input id="dl-cash" class="input num" inputmode="numeric"></div><span class="hint" id="dl-exp"></span></div></div>` : ''}
+      ${stop.contado ? `<h3 style="margin-top:var(--sp-4)">4. Cobro al contado (RF-06.05)</h3><div class="form-grid"><div class="field"><label for="dl-cash">Monto recibido en efectivo <span class="req" aria-hidden="true">*</span></label><div class="input-group"><span class="addon">$</span><input id="dl-cash" class="input num" inputmode="numeric"></div><span class="hint" id="dl-exp"></span></div></div><div id="dl-pp"></div>` : ''}
       <div id="dl-err" aria-live="assertive" style="margin-top:var(--sp-3)"></div>
       <button type="button" class="btn btn-primary btn-block big-btn" data-confirm style="margin-top:var(--sp-4)">${icon('check')}Confirmar entrega</button>`;
     const $h = (s) => host.querySelector(s);
     const expected = () => lines.reduce((a, l, i) => a + st.qty[i] * l.precio, 0);
-    const updExp = () => { if ($h('#dl-exp')) $h('#dl-exp').textContent = `Esperado según lo entregado: ${fmt.clp(expected())}`; if ($h('#dl-cash')) $h('#dl-cash').value = expected(); };
-    updExp();
+    const updExp = () => { if ($h('#dl-exp')) $h('#dl-exp').textContent = `Esperado según lo entregado: ${fmt.clp(expected())}`; if ($h('#dl-cash')) $h('#dl-cash').value = expected(); updPay(); };
+    const cashIn = () => ($h('#dl-cash') ? parseInt(($h('#dl-cash').value || '').replace(/\D/g, ''), 10) || 0 : 0);
+    // Abono o pago parcial al contado: el saldo insoluto pasa a la cuenta corriente (RF-07.10)
+    const updPay = () => {
+      const box = $h('#dl-pp'); if (!box) return;
+      const c = cashIn(), exp = expected();
+      st.partialPay = c > 0 && c < exp;
+      box.innerHTML = st.partialPay ? `${L.alert('warning', 'Pago parcial', `Se emitirá un comprobante digital de abono por ${fmt.clp(c)} y el saldo de ${fmt.clp(exp - c)} pasará a la cuenta corriente del cliente (RF-07.10).`)}<label class="check" style="margin-top:6px"><input type="checkbox" id="dl-ppok"> El cliente acepta el abono y el saldo pendiente</label>` : '';
+    };
+    const updCrates = () => { $h('#dl-crs').textContent = `Saldo de envases del cliente: ${crateBase} → ${Math.max(0, crateBase - st.crates)} canastillos. Se actualiza ${L.online() ? 'en línea' : 'en el dispositivo y se sincroniza al reconectar'} junto con la guía (RF-06.10).`; };
+    updExp(); updCrates();
+    if ($h('#dl-cash')) $h('#dl-cash').oninput = updPay;
     host.querySelectorAll('[data-dq]').forEach((x) => (x.oninput = () => {
       const i = +x.dataset.dq;
       const v = Math.max(0, Math.min(lines[i].cant, parseInt(x.value, 10) || 0));
       st.qty[i] = v;
       const partial = st.qty.some((q, k) => q < lines[k].cant);
       $h('#dl-rej').innerHTML = partial ? `<div class="field" style="margin-top:var(--sp-3)"><label for="dl-rr">Motivo del rechazo parcial (RF-06.03) <span class="req" aria-hidden="true">*</span></label><select id="dl-rr" class="select"><option value="">Seleccione…</option><option>Producto dañado</option><option>Vencimiento próximo</option><option>No corresponde a lo pedido</option><option>Sospecha de ruptura de cadena de frío</option></select></div>` : '';
-      if (partial) { const sel = $h('#dl-rr'); sel.value = st.reason; sel.onchange = () => (st.reason = sel.value); L.bindField(sel, ['required']); }
+      if (partial) { const sel = $h('#dl-rr'); sel.value = st.reason; const coldInfo = () => { const old = $h('#dl-cold'); if (old) old.remove(); if (st.reason === 'Sospecha de ruptura de cadena de frío') sel.closest('.field').insertAdjacentHTML('afterend', `<div id="dl-cold" style="margin-top:var(--sp-2)">${L.alert('danger', 'Rechazo por cadena de frío', 'El rechazo queda asociado al sensor S-KXTR-21 en el tramo 09:00–09:30 (máx. 8,6 °C, consigna 4 °C). El terminal retiene el SSCC afectado aunque no haya red, y Calidad recibe el caso (RF-09.07, RF-09.13).')}</div>`); }; coldInfo(); sel.onchange = () => { st.reason = sel.value; coldInfo(); }; L.bindField(sel, ['required']); }
       updExp();
     }));
-    host.querySelectorAll('[data-cr]').forEach((x) => (x.onclick = () => { st.crates = Math.max(0, st.crates + Number(x.dataset.cr)); $h('#dl-cr').textContent = st.crates; }));
-    host.querySelectorAll('[data-pm]').forEach((x) => (x.onclick = () => { host.querySelectorAll('[data-pm]').forEach((y) => y.setAttribute('aria-selected', y === x)); host.querySelectorAll('[data-pmp]').forEach((p) => (p.hidden = p.dataset.pmp !== x.dataset.pm)); }));
+    host.querySelectorAll('[data-cr]').forEach((x) => (x.onclick = () => { st.crates = Math.max(0, st.crates + Number(x.dataset.cr)); $h('#dl-cr').textContent = st.crates; updCrates(); }));
+    host.querySelectorAll('[data-pm]').forEach((x) => (x.onclick = () => { st.method = x.dataset.pm; host.querySelectorAll('[data-pm]').forEach((y) => y.setAttribute('aria-selected', y === x)); host.querySelectorAll('[data-pmp]').forEach((p) => (p.hidden = p.dataset.pmp !== x.dataset.pm)); }));
+    $h('#dl-rcv').oninput = (e) => (st.receiver = e.target.value.trim());
     const pad = L.signaturePad($h('#dl-sign'), (v) => { st.signed = v; $h('#dl-sign-st').textContent = v ? 'Firma capturada' : 'Sin firma'; $h('#dl-sign-st').style.color = v ? 'var(--c-success)' : ''; });
     $h('[data-sign-fake]').onclick = () => pad.fake();
     $h('[data-sign-clear]').onclick = () => pad.clear();
@@ -359,13 +384,14 @@
       const errs = [];
       const partial = st.qty.some((q, k) => q < lines[k].cant);
       if (partial && !st.reason) { errs.push('Indique el motivo del rechazo parcial.'); $h('#dl-rr')?._validate?.(); }
-      if (!st.signed) errs.push('Falta la firma del receptor o la confirmación por QR.');
+      if (st.method === 'name' ? !st.receiver : !st.signed) errs.push(st.method === 'name' ? 'Ingrese el nombre de quien recibe.' : 'Falta la firma del receptor o la confirmación por QR.');
       if (!st.photo) errs.push('Falta la foto de la entrega.');
-      const cash = stop.contado ? parseInt(($h('#dl-cash').value || '').replace(/\D/g, ''), 10) || 0 : 0;
+      const cash = stop.contado ? cashIn() : 0;
       if (stop.contado && cash <= 0) errs.push('Ingrese el monto recibido en efectivo.');
+      if (st.partialPay && !$h('#dl-ppok')?.checked) errs.push('Confirme que el cliente acepta el abono y el saldo pendiente.');
       $h('#dl-err').innerHTML = errs.length ? L.alert('danger', 'No se puede confirmar todavía', `<ul style="margin:4px 0 0;padding-left:18px">${errs.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`) : '';
       if (errs.length) { $h('#dl-err').scrollIntoView({ block: 'center', behavior: 'smooth' }); return; }
-      L.busy(e.currentTarget, () => { L.toast(partial ? 'Entrega parcial registrada' : 'Entrega confirmada', L.online() ? 'Sincronizada con la central.' : 'Guardada en el dispositivo; se enviará al reconectar.', 'success'); onDone?.({ partial, rejectReason: st.reason, cash, crates: st.crates }); }, 900);
+      L.busy(e.currentTarget, () => { L.toast(partial ? 'Entrega parcial registrada' : 'Entrega confirmada', L.online() ? 'Sincronizada con la central.' : 'Guardada en el dispositivo; se enviará al reconectar.', 'success'); if (st.partialPay) L.toast('Comprobante de abono emitido', `Saldo ${fmt.clp(expected() - cash)} traspasado a la cuenta corriente.`, 'info'); onDone?.({ partial, rejectReason: st.reason, cash, crates: st.crates, partialPay: st.partialPay, receiver: st.method === 'name' ? st.receiver : '' }); }, 900);
     };
   };
 })(window.LFX);

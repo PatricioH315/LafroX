@@ -3,7 +3,7 @@
 (function (L) {
   const { esc, icon, $, $$, data: D, fmt } = L;
 
-  const stops = () => L.store.get('field.stops', D.paradas.map((p) => ({ id: p.id, estado: p.estado })));
+  const stops = () => L.store.get('field.stops', null) || D.paradas.map((p) => ({ id: p.id, estado: p.estado }));
   const setStop = (id, estado) => { const s = stops(); s.find((x) => x.id === id).estado = estado; L.store.set('field.stops', s); };
   const queue = () => L.store.get('field.queue', []);
   const setQueue = (q) => L.store.set('field.queue', q);
@@ -32,7 +32,7 @@
 
   /* ---------- App de reparto ---------- */
   L.route('/terreno', {
-    title: 'Reparto en terreno', parent: '/inicio', block: 'Perfil de terreno', module: 'M6 Reparto · M7 · M8', rf: ['RF-06.01', 'RF-06.02', 'RF-06.04', 'RF-06.05', 'RF-06.07', 'RF-06.09', 'RF-06.11', 'RF-07.06', 'RF-09.06'], actors: ['Conductor propio', 'Conductor externo'],
+    title: 'Reparto en terreno', parent: '/inicio', block: 'Perfil de terreno', module: 'M6 Reparto · M7 · M8', rf: ['RF-06.01', 'RF-06.02', 'RF-06.04', 'RF-06.05', 'RF-06.07', 'RF-06.09', 'RF-06.11', 'RF-07.06', 'RF-09.06', 'RF-06.13', 'RF-09.12', 'RNG-12', 'RF-06.10', 'RF-06.12', 'RF-07.10', 'RF-09.07', 'RF-09.13'], actors: ['Conductor propio', 'Conductor externo'],
     render: () => `<div class="page-head hide-sm"><div class="titles"><span class="page-kicker">${icon('phone', 'icon-sm')}Perfil de terreno · app de reparto</span><h1>App de reparto · ruta R-01 Cauquenes</h1><p class="muted" style="margin:0">Vista móvil del conductor. Use el interruptor de la barra superior de la app para simular la pérdida de señal.</p></div><div class="actions"><button type="button" class="btn btn-secondary" id="tr-reset">${icon('sync')}Reiniciar ruta</button></div></div>
       <div class="split"><div id="tr-host"></div><aside class="card hide-sm stack"><h2>Qué funciona sin conexión</h2><p class="small muted" style="margin:0">Según SD4, Anexo 4-J.</p>
         <ul class="list">${[['Entrega y prueba de entrega', 'Captura 14 h · cola cifrada', 'success'], ['Cobro en efectivo', 'Comprobante local', 'success'], ['Devoluciones y envases', 'Se registran en el dispositivo', 'success'], ['Mapas', 'Precargados con la ruta', 'success'], ['Autorización POS', 'No disponible: efectivo o crédito autorizado', 'danger'], ['Recalcular ruta', 'No disponible: secuencia precargada', 'danger']].map(([t, d, k]) => `<li><span class="badge badge-${k} plain" style="padding:4px">${icon(k === 'success' ? 'check' : 'ban', 'icon-sm')}</span><div class="grow"><div class="title">${t}</div><div class="sub">${d}</div></div></li>`).join('')}</ul></aside></div>`,
@@ -106,7 +106,7 @@
 
   /* ---------- App de preventa ---------- */
   L.route('/terreno/preventa', {
-    title: 'Preventa en terreno', parent: '/inicio', block: 'Perfil de terreno', module: 'M3 Preventa', rf: ['RF-03.02', 'RF-03.05', 'RF-03.06', 'RF-03.13', 'RF-03.15', 'RF-07.05', 'RF-08.04'], actors: ['Preventista'],
+    title: 'Preventa en terreno', parent: '/inicio', block: 'Perfil de terreno', module: 'M3 Preventa', rf: ['RF-03.02', 'RF-03.05', 'RF-03.06', 'RF-03.13', 'RF-03.15', 'RF-07.05', 'RF-08.04', 'RF-07.11'], actors: ['Preventista'],
     render: () => `<div class="page-head hide-sm"><div class="titles"><span class="page-kicker">${icon('phone', 'icon-sm')}Perfil de terreno · app de preventa</span><h1>App de preventa · zona Curicó</h1><p class="muted" style="margin:0">Visitas del día, ficha comercial y toma de pedido sin señal.</p></div><div class="actions"><a class="btn btn-secondary" href="#/flujo">Ver el pedido en el flujo completo</a></div></div>
       <div id="pv-host"></div>`,
     mount: (root) => {
@@ -124,7 +124,7 @@
           title = c.nombre; back = 'visitas';
           body = `<div class="grid grid-2" style="gap:8px"><div class="card" style="padding:12px;box-shadow:none"><div class="small muted">Crédito disponible</div><strong class="num">${fmt.clp(c.credito - c.deuda)}</strong></div><div class="card" style="padding:12px;box-shadow:none"><div class="small muted">Deuda vencida</div><strong class="num" style="${c.vencida ? 'color:var(--c-danger)' : ''}">${fmt.clp(c.vencida)}</strong></div></div>
             <p class="small muted" style="margin:0">${L.online() ? 'Datos en línea' : 'Última sincronización: hoy 06:00 (hace 3 h 42 min)'}</p>
-            ${c.vencida ? L.alert('danger', 'Cliente con mora', 'Deuda vencida sobre 30 días: el pedido quedará sujeto a autorización (RF-07.05).') : ''}
+            ${c.vencida ? L.alert('danger', 'Cliente con mora', 'Deuda vencida sobre 30 días: el pedido quedará sujeto a autorización (RF-07.05).') + `<button type="button" class="btn btn-secondary btn-block" data-collect style="margin-top:var(--sp-2)">${icon('cash')}Cobrar facturas vencidas</button>` : ''}
             ${c.envases.canastillos > 40 ? L.alert('warning', 'Saldo de envases sobre el umbral', `${c.envases.canastillos} canastillos en poder del cliente (RF-08.04).`) : ''}
             <h3>Compra habitual (RF-03.06)</h3><ul class="list">${D.productos.slice(0, 4).map((p, i) => `<li><span class="grow"><span class="title">${esc(p.nombre)}</span><span class="sub" style="display:block">Cada ${[7, 7, 14, 10][i]} días · última: ${[12, 24, 6, 18][i]} u</span></span><button type="button" class="btn btn-secondary btn-sm" data-add="${p.sku}">${icon('plus', 'icon-sm')}Agregar</button></li>`).join('')}</ul>
             <button type="button" class="btn btn-primary btn-block big-btn" data-order>${icon('cart')}Tomar pedido</button>`;
@@ -146,6 +146,15 @@
         $('[data-fab]', host) && ($('[data-fab]', host).onclick = () => { S.cli = mine[0].id; S.cart = []; S.screen = 'pedido'; draw(); });
         $$('[data-add]', host).forEach((b) => (b.onclick = () => { const p = D.productos.find((x) => x.sku === b.dataset.add); S.cart.push({ ...p, cant: 12 }); L.toast('Agregado al pedido', p.nombre, 'success', { duration: 1500 }); b.disabled = true; }));
         $('[data-order]', host) && ($('[data-order]', host).onclick = () => { S.screen = 'pedido'; draw(); });
+        // Cobranza en efectivo de facturas vencidas en el local, con recibo provisional y rendición del día (RF-07.11)
+        $('[data-collect]', host) && ($('[data-collect]', host).onclick = () => { const c = L.findClient(S.cli); const facts = [['FE-71204', Math.round(c.vencida * 0.6)], ['FE-70988', c.vencida - Math.round(c.vencida * 0.6)]]; L.modal({
+          title: 'Cobrar facturas vencidas',
+          body: `<ul class="list">${facts.map(([f, m], i) => `<li><label class="check" style="width:100%"><input type="checkbox" data-fc="${m}" checked> <span class="grow mono">${f}</span><span class="num">${fmt.clp(m)}</span></label></li>`).join('')}</ul>
+            <div class="field" style="margin-top:var(--sp-3)"><label for="cb-m">Monto recibido en efectivo <span class="req" aria-hidden="true">*</span></label><div class="input-group"><span class="addon">$</span><input id="cb-m" class="input num" inputmode="numeric" value="${c.vencida}"></div></div>
+            <p class="hint">Se emite un recibo provisional digital. El efectivo debe rendirse hoy en caja; si no, el turno queda con descuadre.</p>`,
+          onOpen: (d) => L.bindField($('#cb-m', d), ['required', (v) => (parseInt(String(v).replace(/\D/g, ''), 10) > 0 ? '' : 'Ingrese el monto recibido.')]),
+          actions: [{ label: 'Cancelar' }, { label: 'Emitir recibo provisional', cls: 'btn-primary', onClick: (api) => { if (!L.validateAll(api.el)) return false; const m = parseInt($('#cb-m', api.el).value.replace(/\D/g, ''), 10); const id = 'RP-' + (5120 + queue().length); if (!L.online()) setQueue([...queue(), { t: `Recibo ${id} · ${c.nombre}`, icon: 'cash', uuid: 'rcb-' + Math.random().toString(16).slice(2, 8), at: '09:4' + queue().length }]); L.toast(`Recibo provisional ${id} emitido`, `${fmt.clp(m)} · debe rendirse hoy en caja.`, 'success'); } }]
+        }); });
         $$('[data-cq]', host).forEach((b) => (b.onclick = () => { const l = S.cart[b.dataset.cq]; l.cant += Number(b.dataset.d); if (l.cant <= 0) S.cart.splice(b.dataset.cq, 1); draw(); }));
         if ($('#pv-add', host)) L.combobox($('#pv-add', host), () => D.productos.map((p) => ({ label: p.nombre, meta: p.sku, p })), { onSelect: (it) => { S.cart.push({ ...it.p, cant: 6 }); draw(); } });
         $('[data-save]', host) && ($('[data-save]', host).onclick = (e) => L.busy(e.currentTarget, () => {

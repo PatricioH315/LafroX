@@ -210,6 +210,9 @@
   /* ---------- Bandeja de tareas (RF-17.07) y notificaciones ---------- */
   const ret = D.pedidos.find((p) => p.estado === 'Retenido');
   D.pedidoRetenido = ret.id;
+  // Pedido con diferencia entre el importe a facturar y el precio pactado (RF-03.12)
+  const dif = D.pedidos.find((p) => ['Cargado', 'En ruta'].includes(p.estado)) || D.pedidos[3];
+  D.pedidoDifPrecio = dif.id;
   D.tareas = [
     { id: 'T-1', titulo: 'Autorizar pedido retenido por crédito', ref: ret.id, tipo: 'Aprobación', plazo: 'Hoy 12:00', prioridad: 'Alta', ruta: '/pedidos/' + ret.id, perfiles: ['finanzas', 'comercial', 'evaluador', 'gerente-ops'] },
     { id: 'T-2', titulo: 'Aprobar destino de devolución', ref: 'DV-5527', tipo: 'Aprobación', plazo: 'Hoy 17:00', prioridad: 'Media', ruta: '/devoluciones/DV-5527', perfiles: ['bodega', 'finanzas', 'evaluador', 'gerente-ops'] },
@@ -224,6 +227,7 @@
     { id: 'T-11', titulo: 'Iniciar ruta R-01 Cauquenes (6 entregas)', ref: 'R-01', tipo: 'Tarea', plazo: 'Hoy 07:30', prioridad: 'Alta', ruta: '/terreno', perfiles: ['conductor', 'conductor-ext'] },
     { id: 'T-12', titulo: 'Misión M-3302: 42 líneas en zona refrigerada', ref: 'M-3302', tipo: 'Tarea', plazo: 'Turno noche', prioridad: 'Alta', ruta: '/preparacion', perfiles: ['preparador', 'bodega'] },
     { id: 'T-13', titulo: 'Confirmar conductor y vehículo de 3 rutas de mañana', ref: 'Despacho 14-11', tipo: 'Tarea', plazo: 'Hoy 18:00', prioridad: 'Alta', ruta: '/portal/transportista', perfiles: ['transportista', 'evaluador'] },
+    { id: 'T-15', titulo: 'Corregir diferencia de precio antes de facturar', ref: dif.id, tipo: 'Alerta', plazo: 'Antes del cierre', prioridad: 'Alta', ruta: '/pedidos/' + dif.id, perfiles: ['comercial', 'evaluador', 'finanzas'] },
     { id: 'T-14', titulo: 'Revisar recepción de OC-88412 con 2 discrepancias', ref: 'OC-88412', tipo: 'Revisión', plazo: 'Mañana', prioridad: 'Media', ruta: '/portal/proveedor', perfiles: ['proveedor', 'evaluador'] }
   ];
   D.notificaciones = [
