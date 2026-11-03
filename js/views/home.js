@@ -171,7 +171,7 @@
 
   /* ---------- Perfil y preferencias (RT-13.12 de SD4, RF-18.02) ---------- */
   L.route('/perfil', {
-    title: 'Mi perfil y preferencias', parent: '/inicio', block: 'Portal principal', module: 'Transversal', rf: ['RF-18.02', 'RF-15.03'], actors: ['Todos los perfiles'],
+    title: 'Mi perfil y preferencias', parent: '/inicio', block: 'Portal principal', module: 'Transversal', rf: ['RF-18.02', 'RF-15.03', 'RF-12.29'], actors: ['Todos los perfiles'],
     render: () => {
       const p = L.me();
       const pref = (k, d) => L.store.pref(k, d);
@@ -195,6 +195,8 @@
       </div>
       <aside class="card stack"><div class="row"><span class="avatar lg">${L.initials(p.name)}</span><div><strong>${esc(p.name)}</strong><div class="small muted">${esc(p.role)}</div></div></div>
         <dl class="desc-list"><dt>Interfaz</dt><dd>${esc(p.iface)}</dd><dt>Segundo factor</dt><dd>${p.mfa ? L.badge('Activo', 'success') : L.badge('No exigido', '')}</dd><dt>Sesión</dt><dd>Única para todos los módulos (SSO)</dd></dl>
+        <p class="hint">Portal de clientes: cierre tras 15 minutos sin actividad. La prueba siguiente adelanta el reloj de demostración (RF-12.29).</p>
+        <button type="button" class="btn btn-secondary" id="pf-idle">Probar cierre por inactividad</button>
         <button type="button" class="btn btn-secondary" data-switch>${icon('users')}Cambiar perfil de demostración</button>
         <button type="button" class="btn btn-tertiary" onclick="LFX.signOut()">${icon('logout')}Cerrar sesión</button></aside></div>`;
     },
@@ -207,6 +209,10 @@
         else L.applyPrefs();
         L.toast('Preferencia aplicada', b.textContent, 'success', { duration: 2000 });
       }));
+      $('#pf-idle', root).onclick = () => {
+        if (!['cliente', 'cliente-moderno'].includes(L.session().profile)) { L.toast('Solo portal de clientes', 'Cambie a un perfil de cliente para probar el cierre.', 'info'); return; }
+        L.checkInactivity(Date.now() + L.idleLimit() + 1000);
+      };
       $('#pf-keys', root).onclick = () => L.showShortcuts();
       $('#pf-save', root).onclick = (e) => L.busy(e.currentTarget, () => L.toast('Preferencias guardadas', 'Se aplican en todos sus dispositivos.', 'success'), 700);
     }

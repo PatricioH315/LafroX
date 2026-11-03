@@ -226,6 +226,22 @@ hr { border: 0; border-top: 1px solid var(--c-line-soft); margin: var(--sp-5) 0;
 }
 
 /* Menú completo plegable de izquierda a derecha (escritorio) */
+/* Portal ligero: catálogo sin imágenes, seis productos por página y sin movimiento. */
+[data-portal-light="on"] *, [data-portal-light="on"] *::before, [data-portal-light="on"] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+.table-json { margin: var(--sp-3); }
+/* Los enlaces operativos aislados también son objetivos táctiles, no solo botones. */
+:is(.view, .auth-wrap) :is(td, dd, li, p) > a:not(.btn) {
+  display: inline-flex; align-items: center; min-width: var(--target); min-height: var(--target);
+}
+@media (max-width: 600px) {
+  #otp { gap: 2px !important; }
+  #otp input { width: 44px !important; min-width: 44px; }
+}
+
 .menu-toggle { display: inline-flex; }
 @media (min-width: 1024px) {
   .app { transition: grid-template-columns var(--dur) var(--ease); }

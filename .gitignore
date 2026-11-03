@@ -1,1 +1,5 @@
 .claude/
+
+# Evidencia bruta local; el informe legible y los verificadores sí se versionan.
+revision/qa_*.json
+docs/*.xlsx.inspect.ndjson

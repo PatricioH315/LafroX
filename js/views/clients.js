@@ -2,7 +2,7 @@
    portal de clientes (pedido, entregas, cuenta) y canal moderno EDI (M11). */
 (function (L) {
   const { esc, icon, $, $$, data: D, fmt } = L;
-  const stars = (v) => `<span aria-label="${fmt.n(v, 1)} de 5" role="img" style="color:var(--c-accent-strong);letter-spacing:2px">${'★'.repeat(Math.round(v))}<span style="color:var(--c-line)">${'★'.repeat(5 - Math.round(v))}</span></span>`;
+  const stars = (v) => `<span aria-label="${fmt.n(v, 1)} de 5" role="img" style="color:var(--c-accent-strong);letter-spacing:2px">${'★'.repeat(Math.round(v))}<span style="color:var(--c-line-strong)">${'★'.repeat(5 - Math.round(v))}</span></span>`;
 
   L.route('/clientes', {
     title: 'Clientes', parent: '/inicio', block: 'Gestión de terceros', module: 'M3 · M7 · M10 (cartera)', rf: ['RF-03.06', 'RF-07.04', 'RF-11.08', 'RF-17.12'], actors: ['Preventista', 'Gerente Comercial', 'Gerente de Finanzas'],
@@ -83,22 +83,37 @@
 
   /* ---------- Portal de clientes ---------- */
   L.route('/portal/pedido', {
-    title: 'Hacer un pedido', parent: '/inicio', block: 'Gestión de terceros', module: 'Portal de clientes · M3', rf: ['RF-12.15', 'RF-12.30'], actors: ['Cliente del canal tradicional', 'Cliente del canal moderno'],
+    title: 'Hacer un pedido', parent: '/inicio', block: 'Gestión de terceros', module: 'Portal de clientes · M3', rf: ['RF-12.15', 'RF-12.30', 'RF-12.29'], actors: ['Cliente del canal tradicional', 'Cliente del canal moderno'],
     render: () => `<div class="page-head"><div class="titles"><h1>Hacer un pedido</h1><p class="muted" style="margin:0">Mismo control de crédito y stock que la preventa. Crédito disponible: <strong>${fmt.clp(612000)}</strong></p></div></div>
       <div class="split"><div class="card"><div class="row" style="margin-bottom:var(--sp-4)"><div class="input-wrap" style="flex:1 1 260px">${icon('search')}<label class="sr-only" for="pp-q">Buscar producto</label><input id="pp-q" class="input" type="search" placeholder="Buscar producto"></div><label class="sr-only" for="pp-cat">Categoría</label><select id="pp-cat" class="select" style="width:auto"><option value="">Todas las categorías</option>${[...new Set(D.productos.map((p) => p.categoria))].map((c) => `<option>${c}</option>`).join('')}</select></div><div class="grid grid-auto" id="pp-grid"></div></div>
       <aside class="card stack" style="position:sticky;top:calc(var(--topbar-h) + 16px)"><h2>Su pedido</h2><div id="pp-cart"></div></aside></div>`,
     mount: (root) => {
-      const cart = {};
+      const draftKey = L.draftKey('portal');
+      const cart = L.store.get(draftKey, {});
+      let page = 1;
+      const light = L.store.pref('portalLight', 'off') === 'on';
+      document.documentElement.dataset.portalLight = light ? 'on' : 'off';
+      L.onLeave(() => { delete document.documentElement.dataset.portalLight; });
+      $('.page-head', root).insertAdjacentHTML('beforeend', `<div class="actions"><button type="button" class="btn btn-secondary" id="pp-light" aria-pressed="${light}">${light ? 'Vista completa' : 'Activar vista ligera'}</button><button type="button" class="btn btn-secondary" id="pp-draft">Guardar borrador</button></div>`);
+      $('#pp-grid', root).insertAdjacentHTML('afterend', '<div class="row-between" id="pp-pages" style="margin-top:16px"></div>');
+      L.registerDraft(() => { L.store.set(draftKey, cart); L.toast('Borrador guardado', 'Disponible al volver en esta pestaña y con este perfil. No se envió el pedido.', 'success'); });
+      $('#pp-draft', root).onclick = () => L.saveDraft();
+      $('#pp-light', root).onclick = () => { L.store.set(draftKey, cart); L.store.setPref('portalLight', light ? 'off' : 'on'); L.router.resolve(); };
       const draw = () => {
         const q = $('#pp-q', root).value.toLowerCase(), cat = $('#pp-cat', root).value;
         const list = D.productos.filter((p) => (!cat || p.categoria === cat) && p.nombre.toLowerCase().includes(q));
-        $('#pp-grid', root).innerHTML = list.length ? list.map((p) => `<div class="card" style="box-shadow:none;padding:var(--sp-4)"><div class="small muted">${esc(p.categoria)}</div><strong>${esc(p.nombre)}</strong><div class="row-between" style="margin-top:8px"><span class="num">${fmt.clp(p.precio)}</span><button type="button" class="btn btn-secondary btn-sm" data-add="${p.sku}" aria-label="Agregar ${esc(p.nombre)}">${icon('plus', 'icon-sm')}${cart[p.sku] ? cart[p.sku] : 'Agregar'}</button></div></div>`).join('') : L.empty('search', 'Sin productos', 'Pruebe con otra búsqueda.');
+        const per = light ? 6 : 12, pages = Math.max(1, Math.ceil(list.length / per));
+        page = Math.min(page, pages);
+        $('#pp-grid', root).innerHTML = list.length ? list.slice((page - 1) * per, page * per).map((p) => `<div class="card" style="box-shadow:none;padding:var(--sp-4)"><div class="small muted">${esc(p.categoria)}</div><strong>${esc(p.nombre)}</strong><div class="row-between" style="margin-top:8px"><span class="num">${fmt.clp(p.precio)}</span><button type="button" class="btn btn-secondary btn-sm" data-add="${p.sku}" aria-label="Agregar ${esc(p.nombre)}">${icon('plus', 'icon-sm')}${cart[p.sku] ? cart[p.sku] : 'Agregar'}</button></div></div>`).join('') : L.empty('search', 'Sin productos', 'Pruebe con otra búsqueda.');
+        $('#pp-pages', root).innerHTML = `<span role="status">${light ? 'Vista ligera · sin imágenes ni animaciones · ' : ''}Página ${page} de ${pages} · ${list.length} productos</span><div class="btn-group"><button type="button" class="btn btn-secondary" id="pp-prev" ${page === 1 ? 'disabled' : ''}>Anterior</button><button type="button" class="btn btn-secondary" id="pp-next" ${page === pages ? 'disabled' : ''}>Siguiente</button></div>`;
+        $('#pp-prev', root).onclick = () => { page--; draw(); $('#pp-prev', root).focus(); };
+        $('#pp-next', root).onclick = () => { page++; draw(); $('#pp-next', root).focus(); };
         const items = Object.entries(cart).map(([s, n]) => ({ p: D.productos.find((x) => x.sku === s), n }));
         const tot = items.reduce((a, i) => a + i.p.precio * i.n, 0);
         $('#pp-cart', root).innerHTML = items.length ? `<ul class="list">${items.map((i) => `<li><span class="grow small">${esc(i.p.nombre)}</span><span class="num small">${i.n} × ${fmt.clp(i.p.precio)}</span><button type="button" class="btn btn-tertiary btn-icon btn-sm" data-rm="${i.p.sku}" aria-label="Quitar ${esc(i.p.nombre)}">${icon('x', 'icon-sm')}</button></li>`).join('')}</ul><div class="row-between"><strong>Total</strong><strong class="num">${fmt.clp(tot)}</strong></div>${tot > 612000 ? L.alert('danger', 'Supera su crédito disponible', 'Reduzca el pedido o pague el saldo pendiente.') : ''}<div class="field"><label for="pp-pay">Forma de pago</label><select id="pp-pay" class="select"><option>Crédito 30 días</option><option>Pago en línea (Transbank)</option><option>Contado contra entrega</option></select></div><p class="small muted" style="margin:0">Entrega comprometida: sáb 14-11 · 09:00–09:30</p><button type="button" class="btn btn-primary big-btn" id="pp-send" ${tot > 612000 ? 'disabled' : ''}>${icon('send')}Enviar pedido</button>` : L.empty('box', 'Pedido vacío', 'Agregue productos del catálogo.');
         $$('[data-add]', root).forEach((b) => (b.onclick = () => { cart[b.dataset.add] = (cart[b.dataset.add] || 0) + 6; draw(); $(`[data-add="${b.dataset.add}"]`, root)?.focus(); }));
         $$('[data-rm]', root).forEach((b) => (b.onclick = () => { delete cart[b.dataset.rm]; draw(); }));
-        $('#pp-send', root) && ($('#pp-send', root).onclick = (e) => L.busy(e.currentTarget, () => { Object.keys(cart).forEach((k) => delete cart[k]); draw(); L.modal({ title: 'Pedido recibido', icon: 'success:check-circle', body: '<p>Pedido <strong class="mono">PV-264840</strong> enviado. Le confirmaremos stock y crédito en minutos y le avisaremos por SMS la ventana de entrega.</p>', actions: [{ label: 'Seguir comprando' }, { label: 'Ver mis entregas', cls: 'btn-primary', onClick: () => L.go('/portal/entregas') }] }); }, 1200));
+        $('#pp-send', root) && ($('#pp-send', root).onclick = (e) => L.busy(e.currentTarget, () => { Object.keys(cart).forEach((k) => delete cart[k]); L.store.set(draftKey, {}); draw(); L.modal({ title: 'Pedido recibido', icon: 'success:check-circle', body: '<p>Pedido <strong class="mono">PV-264840</strong> enviado. Le confirmaremos stock y crédito en minutos y le avisaremos por SMS la ventana de entrega.</p>', actions: [{ label: 'Seguir comprando' }, { label: 'Ver mis entregas', cls: 'btn-primary', onClick: () => L.go('/portal/entregas') }] }); }, 1200));
       };
       $('#pp-q', root).oninput = L.debounce(draw, 150);
       $('#pp-cat', root).onchange = draw;
@@ -120,11 +135,18 @@
   });
 
   L.route('/portal/cuenta', {
-    title: 'Estado de cuenta', parent: '/inicio', block: 'Gestión de terceros', module: 'Portal de clientes · M7', rf: ['RF-07.07', 'RF-12.17', 'RF-12.18'], actors: ['Clientes'],
-    render: () => `<div class="page-head"><div class="titles"><h1>Estado de cuenta</h1></div><div class="actions"><button type="button" class="btn btn-primary" id="pc-pay">${icon('cash')}Pagar saldo</button></div></div>
+    title: 'Estado de cuenta', parent: '/inicio', block: 'Gestión de terceros', module: 'Portal de clientes · M7', rf: ['RF-07.07', 'RF-12.17', 'RF-12.18', 'RF-18.01'], actors: ['Clientes'],
+    render: () => `<div class="page-head"><div class="titles"><h1>Estado de cuenta</h1></div><div class="actions"><button type="button" class="btn btn-secondary" id="pc-sign">Firmar acuerdo</button><button type="button" class="btn btn-secondary" id="pc-evidence">Mis firmas</button><button type="button" class="btn btn-primary" id="pc-pay">${icon('cash')}Pagar saldo</button></div></div>
       <div class="grid grid-3" style="margin-bottom:var(--sp-5)"><div class="card kpi"><span class="label">Saldo por pagar</span><span class="value">${fmt.clp(188000)}</span></div><div class="card kpi"><span class="label">Vencido</span><span class="value">${fmt.clp(0)}</span></div><div class="card kpi"><span class="label">Crédito disponible</span><span class="value">${fmt.clp(612000)}</span></div></div>
       <section class="card"><div class="card-head"><h2>Antigüedad de la deuda</h2></div>${L.charts.bar([{ label: 'Por vencer', value: 142000 }, { label: '1–30 días', value: 46000 }, { label: '31–60 días', value: 0 }, { label: '+60 días', value: 0 }], { unit: '$', label: 'Deuda por tramo', h: 220 })}</section>`,
-    mount: (root) => { $('#pc-pay', root).onclick = () => L.modal({ title: 'Pagar saldo', body: `<p>Será redirigido a la plataforma de pagos para pagar <strong>${fmt.clp(188000)}</strong> (RF-12.30).</p><p class="small muted">Prototipo: no se realiza ningún cargo.</p>`, actions: [{ label: 'Cancelar' }, { label: 'Continuar al pago', cls: 'btn-primary', onClick: () => L.toast('Pago simulado', 'Comprobante enviado a su correo.', 'success') }] }); }
+    mount: (root) => {
+      $('#pc-sign', root).onclick = () => L.signDocument('Acuerdo de cuenta · Almacén Doña Rosa · versión 1');
+      $('#pc-evidence', root).onclick = () => {
+        const records = L.store.get('signatures.' + L.session().profile, []);
+        if (records.length) L.showSignature(records[records.length - 1]);
+        else L.toast('Sin firmas', 'Firme un acuerdo para consultar su evidencia.', 'info');
+      };
+      $('#pc-pay', root).onclick = () => L.modal({ title: 'Pagar saldo', body: `<p>Será redirigido a la plataforma de pagos para pagar <strong>${fmt.clp(188000)}</strong> (RF-12.30).</p><p class="small muted">Prototipo: no se realiza ningún cargo.</p>`, actions: [{ label: 'Cancelar' }, { label: 'Continuar al pago', cls: 'btn-primary', onClick: () => L.toast('Pago simulado', 'Comprobante enviado a su correo.', 'success') }] }); }
   });
 
   /* ---------- Canal moderno EDI (M11) ---------- */

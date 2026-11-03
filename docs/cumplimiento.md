@@ -85,7 +85,7 @@ Detalle de los mínimos exigidos:
 ## Pruebas realizadas
 
 - Ingreso directo con los 16 perfiles predeterminados, sin errores.
-- Recorrido automático de las 51 pantallas con el perfil de evaluación: ninguna con error de ejecución y todas con su título.
+- Recorrido automático de las 49 rutas con el perfil de evaluación: ninguna con error de ejecución y todas con su título.
 - Revisión de los 144 enlaces internos distintos y de los destinos de profundización de los gráficos: ninguno roto.
 - Sin desplazamiento horizontal de página a 375 px en ninguna pantalla; revisión visual a 768, 1366 y 1920 px.
 - Revisión automática de nombres accesibles: todos los botones, enlaces y campos tienen nombre o etiqueta.
@@ -96,3 +96,9 @@ Detalle de los mínimos exigidos:
 - Publicar el enlace definitivo (RT-25.06 y RT-25.07) y registrarlo en el Informe 3.
 - Revisión con lector de pantalla (NVDA o VoiceOver): no se ha hecho; la revisión de accesibilidad fue automática y por teclado.
 - Apertura sin servidor (RT-25.10): el código no usa módulos ES, `fetch` ni rutas absolutas, pero falta abrir `index.html` con doble clic en Chrome, Edge y Firefox para confirmarlo.
+
+## Continuación verificada el 03-11-2026
+
+Prioridad 3 completada: inactividad, firma avanzada simulada, JSON transversal, borradores con atajo y portal ligero. Barrido de 49 rutas en cinco tamaños (245 combinaciones); revisión de las diez pantallas intervenidas en cuatro modos de tema/contraste (200 combinaciones). Sin errores de JavaScript ni desbordamiento de página en los estados probados.
+
+La planilla y la matriz se regeneraron; las casillas verificadas de Prioridad 3 quedaron marcadas. No se certifica el cumplimiento integral de los criterios no recorridos. Véase [evidencia, reproducción y límites](../revision/verificacion_prioridad3.md).

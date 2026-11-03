@@ -76,6 +76,7 @@
     const close = (val) => {
       back.remove();
       document.removeEventListener('keydown', onKey, true);
+      document.removeEventListener('lfx:session-expired', onExpire);
       if (!$('.modal-backdrop')) document.body.style.overflow = '';
       if (opener && opener.focus) opener.focus();
       api.resolve?.(val);
@@ -84,6 +85,8 @@
       if (e.key === 'Escape' && dismissible) { e.stopPropagation(); close(null); }
       if (e.key === 'Tab') trapFocus(e, dlg);
     };
+    const onExpire = () => close(null);
+    document.addEventListener('lfx:session-expired', onExpire);
     document.addEventListener('keydown', onKey, true);
     back.addEventListener('mousedown', (e) => { if (e.target === back && dismissible) close(null); });
     $$('[data-close]', dlg).forEach((b) => (b.onclick = () => close(null)));
@@ -466,6 +469,7 @@
 
   /* ---------- Tabla con orden, filtro, paginación y selección ---------- */
   L.dataTable = (host, cfg) => {
+    host.dataset.managedTable = 'true';
     const st = { q: '', sort: cfg.sort || null, dir: cfg.dir || 'asc', page: 1, per: cfg.per || 10, sel: new Set(), filters: {} };
     const rowsAll = () => (typeof cfg.rows === 'function' ? cfg.rows() : cfg.rows);
     const norm = (s) => String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -487,6 +491,7 @@
         ${(cfg.filters || []).map((f) => `<label class="sr-only" for="${id}-f-${f.key}">${L.esc(f.label)}</label><select id="${id}-f-${f.key}" class="select" data-filter="${f.key}" style="width:auto;min-width:160px"><option value="">${L.esc(f.label)}: todos</option>${f.options.map((o) => `<option>${L.esc(o)}</option>`).join('')}</select>`).join('')}
         <span class="grow"></span>
         ${cfg.toolbarExtra || ''}
+        <button type="button" class="btn btn-secondary btn-sm" data-json-export aria-label="Exportar JSON: ${L.esc(cfg.caption || 'Listado')}">${L.icon('download', 'icon-sm')}Exportar JSON</button>
       </div>
       <div class="bulk-slot"></div>
       <div class="table-wrap"><table class="table" aria-describedby="${id}-sum"><caption class="sr-only">${L.esc(cfg.caption || 'Listado')}</caption><thead></thead><tbody></tbody></table></div>
@@ -511,6 +516,11 @@
       cfg.onDraw?.(host, all);
     };
     host.addEventListener('click', (e) => {
+      if (e.target.closest('[data-json-export]')) {
+        L.download(`${id}.json`, JSON.stringify(filtered(), null, 2), 'application/json');
+        L.toast('JSON exportado', 'Todos los registros filtrados, en el orden aplicado.', 'success');
+        return;
+      }
       const s = e.target.closest('[data-sort]');
       if (s) { const k = s.dataset.sort; st.dir = st.sort === k && st.dir === 'asc' ? 'desc' : 'asc'; st.sort = k; draw(); $(`[data-sort="${k}"]`, host).focus(); return; }
       const p = e.target.closest('[data-page]');

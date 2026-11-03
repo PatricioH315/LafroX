@@ -318,6 +318,12 @@ Las bases los piden en otros entregables. Se listan para no confundirlos con el 
 | Matriz de navegadores y política de actualización | RT-13.10; Art. 26° | Propuesta técnica |
 | Matriz de cumplimiento sobre todos los RT | Formulario T-12 | Entregable 24, Sobre N° 2 |
 
+## Continuación: pantallas de Prioridad 3 (03-11-2026)
+
+Repetido el barrido de 49 rutas reales en los cinco tamaños exigidos: 245 combinaciones, sin errores de JavaScript ni desplazamiento horizontal de página. Se corrigieron stepper, OTP y enlaces táctiles. Para las diez pantallas intervenidas, se revisó el contraste del texto HTML en claro, oscuro y alto contraste (200 combinaciones); esta medición no cubre SVG, imágenes ni todos los estados de interacción.
+
+Las funciones de Prioridad 3 tienen pruebas reproducibles en `verify.cjs`; alcance, resultados y límites en `verificacion_prioridad3.md`. No constituye el informe formal de accesibilidad ni cierra los pendientes documentales de esta lista.
+
 ## 9. Pendientes detectados
 
 | Punto | Pantalla o ruta | Observación | Responsable |

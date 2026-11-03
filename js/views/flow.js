@@ -48,7 +48,13 @@
       <div id="fl-stepper"></div>
       <div class="split"><div id="fl-main" class="stack-lg"></div><aside class="stack-lg" id="fl-side"></aside></div>`,
     mount: (root, params, q) => {
-      O = O && !q.nuevo ? O : newOrder();
+      const draftKey = L.draftKey('flujo');
+      O = !q.nuevo ? L.store.get(draftKey, null) || newOrder() : newOrder();
+      O.log.forEach((entry) => { entry.at = new Date(entry.at); });
+      $('.page-head .actions', root).insertAdjacentHTML('afterbegin', '<button type="button" class="btn btn-secondary" id="fl-draft">Guardar borrador</button>');
+      L.registerDraft(() => { L.store.set(draftKey, O); L.toast('Borrador guardado', 'Puede retomarlo en esta pestaña con este perfil. No se envió ninguna transacción.', 'success'); });
+      $('#fl-draft', root).onclick = () => L.saveDraft();
+      L.onLeave(() => { L.store.set(draftKey, O); });
       const draw = () => {
         $('#fl-stepper', root).innerHTML = `<ol class="stepper" aria-label="Pasos del proceso">${STEPS.map((s, i) => { const cls = O.estado === 'Fallido' && i === 5 ? 'error' : i === O.step && !(i === 6 && O.rendido) ? 'current' : i < O.maxStep || (i === 6 && O.rendido) ? 'done' : ''; const can = i <= O.maxStep && i !== O.step && !(i === 6 && O.rendido && O.step === 6); return `<li class="${cls}"><${can ? 'button type="button"' : 'div'} class="step" ${can ? `data-go="${i}"` : ''} ${i === O.step ? 'aria-current="step"' : ''}><span class="bar"></span><span class="lbl">${esc(s.t)}<span class="sr-only">${cls === 'done' ? ' (completado)' : cls === 'current' ? ' (paso actual)' : ''}</span></span></${can ? 'button' : 'div'}></li>`; }).join('')}</ol>`;
         side();
@@ -310,7 +316,7 @@
       }
 
       root.addEventListener('click', (e) => { const g = e.target.closest('[data-go]'); if (g) { O.step = +g.dataset.go; draw(); } });
-      $('#fl-reset', root).onclick = async () => { if (await L.confirm({ title: '¿Reiniciar la simulación?', message: 'Se descartará el avance del pedido PV-264822.', confirmLabel: 'Reiniciar' })) { O = newOrder(); draw(); L.toast('Simulación reiniciada', '', 'info'); } };
+      $('#fl-reset', root).onclick = async () => { if (await L.confirm({ title: '¿Reiniciar la simulación?', message: 'Se descartará el avance del pedido PV-264822.', confirmLabel: 'Reiniciar' })) { O = newOrder(); L.store.set(draftKey, O); draw(); L.toast('Simulación reiniciada', '', 'info'); } };
       if (q.paso) { O.step = Math.min(6, +q.paso - 1); O.maxStep = Math.max(O.maxStep, O.step); }
       draw();
     }

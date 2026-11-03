@@ -81,7 +81,7 @@ Cada actor debe tener un perfil con su interfaz y su menú. Ningún interesado s
 - [ ] Portal de transportistas: revisar rutas y confirmar conductor y vehículo.
 - [ ] Portal de proveedores: consultar órdenes y recepciones.
 - [ ] Consolas de decisión para Calidad, gerencias, planificación y TI.
-- [ ] Vista ligera del Portal de Clientes para teléfonos de bajo costo: imágenes bajo demanda, listados paginados y sin animaciones.
+- [x] Vista ligera del Portal de Clientes para teléfonos de bajo costo: imágenes bajo demanda, listados paginados y sin animaciones.
 
 ### Uso y accesibilidad
 
@@ -95,9 +95,9 @@ Cada actor debe tener un perfil con su interfaz y su menú. Ningún interesado s
 - [ ] Funciona en ambas orientaciones de tableta.
 - [ ] Todo se recorre por teclado, con foco visible y orden acorde a la lectura (RT-13.11).
 - [ ] Los diálogos reciben el foco al abrirse y lo devuelven al control de origen al cerrarse.
-- [ ] Atajos documentados y desactivables para buscar, guardar borrador y volver al inicio del perfil, sin interferir al escribir.
+- [x] Atajos documentados y desactivables para buscar, guardar borrador y volver al inicio del perfil, sin interferir al escribir.
 - [ ] Búsqueda global que tolera errores de escritura, filtra por tipo y muestra solo lo que el perfil puede ver (RF-17.11).
-- [ ] Listados ordenables, filtrables y paginados; la exportación CSV o JSON respeta filtros y orden e incluye todos los registros filtrados (RF-17.12).
+- [x] Listados ordenables, filtrables y paginados; la exportación CSV o JSON respeta filtros y orden e incluye todos los registros filtrados (RF-17.12).
 - [ ] Registro del cliente del canal moderno con RUT de la empresa, correo corporativo y contraseña; envía confirmación por correo (RF-12.25).
 - [ ] Si el RUT no está habilitado, el registro indica contactar al ejecutivo comercial (RF-12.25).
 - [ ] En el canal tradicional la activación asistida por SMS es opcional y la compra asistida no exige cuenta.
@@ -684,7 +684,7 @@ El prototipo debe mostrar qué sigue funcionando sin señal y qué ocurre al rec
 - [ ] **RF-12.28** — El portal debe permitir al cliente cerrar su sesión de forma explícita, invalidando el token de sesión activo.
   - Actor: Canal Moderno · Prioridad/etapa: Media / E2
   - Verificar: La sesión queda invalidada y el cliente es redirigido a la pantalla de inicio de sesión.
-- [ ] **RF-12.29** — El portal debe cerrar automáticamente la sesión del cliente tras un período de inactividad definido, sin requerir acción explícita de cierre.
+- [x] **RF-12.29** — El portal debe cerrar automáticamente la sesión del cliente tras un período de inactividad definido, sin requerir acción explícita de cierre.
   - Actor: Canal Moderno · Prioridad/etapa: Media / E2
   - Verificar: La sesión expira y el cliente debe iniciar sesión nuevamente para acceder a su área privada.
 - [ ] **RF-12.30** — El portal debe permitir al cliente pagar los pedidos generados en autoservicio (RF-12.15) mediante la plataforma de pagos Transbank.
@@ -810,7 +810,7 @@ El prototipo debe mostrar qué sigue funcionando sin señal y qué ocurre al rec
   - Actor: Jefe de TI / Gerente Comercial / Gerente de Operaciones / Gerente de Finanzas / Jefa de Calidad / Jefa de Bodega / Planificador de Rutas / Preventistas / Preparadores · Prioridad/etapa: Alta / E1 y E2
   - Verificar: El usuario encuentra información relevante mediante una búsqueda que no sobrepase más de 2 segundos en la respuesta y ademas de poder estar filtrada.
   - Respaldo: BTT, RT-16.27
-- [ ] **RF-17.12** · Listados ordenables, filtrables, paginados y exportables — El sistema debe presentar listados ordenables, filtrables, paginados y exportables en formatos abiertos, con el filtro aplicado reflejado en la exportación.
+- [x] **RF-17.12** · Listados ordenables, filtrables, paginados y exportables — El sistema debe presentar listados ordenables, filtrables, paginados y exportables en formatos abiertos, con el filtro aplicado reflejado en la exportación.
   - Actor: Jefe de TI / Gerente Comercial / Gerente de Operaciones / Gerente de Finanzas / Jefa de Calidad / Jefa de Bodega / Planificador de Rutas / Preventistas / Preparadores · Prioridad/etapa: Alta / E1 y E2
   - Verificar: El usuario ordena, filtra y exporta los datos del listado.
   - Respaldo: BTT, RT-16.28
@@ -821,7 +821,7 @@ El prototipo debe mostrar qué sigue funcionando sin señal y qué ocurre al rec
 
 ### Firma y notificaciones
 
-- [ ] **RF-18.01** · Soporte de firma electrónica y firma avanzada cuando corresponda — El sistema debe soportar firma electrónica conforme a la Ley N.º 19.799 (2002, art. 2, letra g, y arts. 3–5). La firma avanzada se aplica cuando corresponda según las exigencias legales y del CLIENTE. Se verifica la validez del certificado al firmar, cuando la modalidad lo requiera, y se genera sello de tiempo y conserva la evidencia de firma (Bases Técnicas Transversales, 2026, cap. 16, RT-16.17 y RT-16.18, p. 30).
+- [x] **RF-18.01** · Soporte de firma electrónica y firma avanzada cuando corresponda — El sistema debe soportar firma electrónica conforme a la Ley N.º 19.799 (2002, art. 2, letra g, y arts. 3–5). La firma avanzada se aplica cuando corresponda según las exigencias legales y del CLIENTE. Se verifica la validez del certificado al firmar, cuando la modalidad lo requiera, y se genera sello de tiempo y conserva la evidencia de firma (Bases Técnicas Transversales, 2026, cap. 16, RT-16.17 y RT-16.18, p. 30).
   - Actor: Jefe de TI / Gerente de Finanzas · Prioridad/etapa: Alta / E1 y E2
   - Verificar: El documento queda firmado mediante la modalidad aplicable y se conserva su evidencia para la verificación posterior.
   - Respaldo: BTT, RT-16.17, RT-16.18
@@ -865,8 +865,16 @@ Se cumplen en el texto de la propuesta (SD4), no en pantallas. Se listan para no
 - **RF-13.03** · Registro de decisiones de arquitectura (ADR)
 - **RF-13.04** · Modelo de dominio de negocio
 
-## 8. Pendientes detectados
+## 8. Verificación de la continuación (03-11-2026)
+
+Se marcaron los controles de Prioridad 3 comprobados en `revision/verify.cjs`: RF-12.29, RF-17.12, RF-18.01, vista ligera y atajos/borradores. RF-18.01 se marca **solo como simulación**, con evidencia local, sin certificado real ni validez legal. La vista ligera omite las imágenes por completo en vez de descargarlas.
+
+La planilla fue regenerada: 186 RF/RNG con ruta, 10 RT con su evaluación previa y 6 requerimientos documentales. Sus estados indican trazabilidad, no aceptación. No se marcan automáticamente las demás casillas por tener una etiqueta en el código; las verificaciones de Prioridades 1–2 comunicadas en el traspaso no sustituyen repetir cada criterio de esta lista.
+
+Detalle de pruebas, barrido responsive y limitaciones: `revision/verificacion_prioridad3.md`.
+
+## 9. Pendientes detectados
 
 | Código | Pantalla o ruta | Observación | Responsable |
 |---|---|---|---|
-| | | | |
+| Aceptación detallada | Todas las rutas | Repetir criterios no marcados antes de certificar cumplimiento integral; no confundirlos con funcionalidades ausentes | |

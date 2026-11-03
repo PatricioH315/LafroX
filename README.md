@@ -2,7 +2,7 @@
 
 Prototipo navegable de alta fidelidad de la plataforma logística que LafroX propone para Distribuidora Puelche S.A. (Caso 02 Logística). Responde al capítulo 25 de las Bases Técnicas Transversales y se entrega junto con el Informe 3.
 
-- 51 pantallas que cubren los 9 bloques del numeral 25.2, los componentes del 25.4 y los requisitos RT-25.01 a RT-25.10.
+- 49 pantallas que cubren los 9 bloques del numeral 25.2, los componentes del 25.4 y los requisitos RT-25.01 a RT-25.10.
 - Cada pantalla declara su módulo de SD4 (M1–M12), sus requerimientos de SD3 y sus actores. La documentación de cumplimiento está en `docs/` y no se publica en el sitio.
 - Datos simulados; nada se envía a un servidor ni se guarda de forma permanente.
 
@@ -48,3 +48,13 @@ docs/                 Trazabilidad y cumplimiento
 ## Publicación (RT-25.06 y RT-25.07)
 
 El sitio es estático, por lo que puede publicarse en GitHub Pages desde la rama `LafroX-Prototipo-HTML` (Settings → Pages → Deploy from a branch → raíz). El enlace no vence mientras exista el repositorio, lo que cubre los seis meses exigidos. Las tipografías se cargan desde Google Fonts; si no están disponibles, la interfaz usa las fuentes del sistema sin perder funciones.
+
+## Funciones de demostración (Prioridad 3)
+
+- En **Perfil**, un cliente puede probar el cierre tras 15 minutos de inactividad adelantando el reloj de prueba. El temporizador también funciona sin ese botón.
+- En **Estado de cuenta → Firmar acuerdo**, se simulan firma simple y avanzada, certificados vigentes/vencidos/revocados y evidencia descargable. Sin validez legal.
+- Todas las tablas ofrecen **Exportar JSON**. Las tablas con filtros incluyen todos los registros filtrados y ordenados, no solo la página.
+- **Guardar borrador** o `g s` en Flujo de pedido y Portal de pedidos. Los borradores duran la pestaña y están separados por perfil; no envían el pedido.
+- **Activar vista ligera** en Portal de pedidos: seis productos por página, sin imágenes ni animaciones.
+
+Pruebas reproducibles y límites: [revision/verificacion_prioridad3.md](revision/verificacion_prioridad3.md).

@@ -324,6 +324,7 @@
     ['g b', 'Ir a la bandeja de tareas', '/bandeja'],
     ['g n', 'Ir a las notificaciones', '/notificaciones'],
     ['g p', 'Ir a mi perfil y preferencias', '/perfil'],
+    ['g s', 'Guardar borrador del pedido (Flujo o Portal)', null],
     ['?', 'Ver los atajos de teclado', null]
   ];
   L.showShortcuts = () => L.modal({
@@ -341,6 +342,12 @@
     if (e.key === 'g') { pendingG = Date.now(); return; }
     if (pendingG && Date.now() - pendingG < 1200) {
       pendingG = 0;
+      if (e.key.toLowerCase() === 's') {
+        e.preventDefault();
+        if (L.saveDraft) L.saveDraft();
+        else L.toast('Sin borrador en esta pantalla', 'Disponible en Flujo de pedido y Hacer un pedido.', 'info');
+        return;
+      }
       const hit = L.shortcuts.find(([k]) => k === 'g ' + e.key.toLowerCase());
       if (hit && L.allowed(hit[2])) { e.preventDefault(); L.go(hit[2]); }
     }
