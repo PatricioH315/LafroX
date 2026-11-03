@@ -52,7 +52,7 @@
     el.querySelector('button[aria-label]').onclick = close;
     if (opts.action) el.querySelector('.t-action').onclick = () => { opts.onAction?.(); close(); };
     region.appendChild(el);
-    setTimeout(close, opts.duration || 5200);
+    if (opts.duration || (type !== 'error' && !opts.action)) setTimeout(close, opts.duration || 5200);
   };
 
   /* ---------- Modales y diálogos ---------- */

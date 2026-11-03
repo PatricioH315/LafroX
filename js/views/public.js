@@ -97,6 +97,6 @@
 
   L.route('*', {
     title: 'Página no encontrada', layout: 'public', block: 'Transversal', module: 'Transversal', rf: [], actors: ['Todos'],
-    render: () => L.empty('search', 'No encontramos esta página', 'Puede que el enlace esté mal escrito o que la pantalla haya cambiado de lugar. Use el menú o vuelva al inicio.', `<div class="btn-group"><a class="btn btn-primary" href="#/${L.session() ? 'inicio' : ''}">Volver al inicio</a><a class="btn btn-secondary" href="#/arquitectura">Ver mapa del sitio</a></div>`)
+    render: () => L.empty('search', 'No encontramos esta página', 'Puede que el enlace esté mal escrito o que la pantalla haya cambiado de lugar. Use el menú o vuelva al inicio.', `<div class="btn-group"><a class="btn btn-primary" href="#/${L.session() ? 'inicio' : ''}">Volver al inicio</a></div>`)
   });
 })(window.LFX);

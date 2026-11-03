@@ -45,14 +45,9 @@
       { path: '/admin/roles', label: 'Roles y permisos', icon: 'key' },
       { path: '/admin/parametros', label: 'Parámetros', icon: 'sliders' },
       { path: '/admin/auditoria', label: 'Auditoría', icon: 'history' }
-    ] },
-    { group: 'Sobre el prototipo', items: [
-      { path: '/arquitectura', label: 'Arquitectura de información', icon: 'sitemap' },
-      { path: '/sistema-diseno', label: 'Sistema de diseño', icon: 'palette' },
-      { path: '/cumplimiento', label: 'Cumplimiento y trazabilidad', icon: 'check-circle' }
     ] }
   ];
-  const ALWAYS = ['/inicio', '/tablero', '/bandeja', '/perfil', '/notificaciones', '/arquitectura', '/sistema-diseno', '/cumplimiento', '/bienvenida'];
+  const ALWAYS = ['/inicio', '/tablero', '/bandeja', '/perfil', '/notificaciones', '/bienvenida'];
 
   /* ---------- Sesión simulada ---------- */
   L.session = () => L.store.get('session', null);
@@ -125,7 +120,7 @@
       ${s ? '<a class="btn btn-primary" href="#/inicio">Ir a mi espacio</a>' : `<a class="btn btn-tertiary hide-sm" href="#/registro">Crear cuenta</a><a class="btn btn-primary" href="#/ingresar">${icon('user')}Ingresar</a>`}
     </header>
     <main id="main" class="public-main" tabindex="-1"><div class="view-enter">${inner}</div></main>
-    <footer class="public-foot">Distribuidora Puelche S.A. · Talca, Región del Maule · Prototipo de LafroX para la licitación (Bases, cap. 25). Datos simulados.<br><a href="#/arquitectura">Arquitectura de información</a> · <a href="#/sistema-diseno">Sistema de diseño</a> · <a href="#/cumplimiento">Cumplimiento</a></footer>`;
+    <footer class="public-foot">Distribuidora Puelche S.A. · Talca, Región del Maule · Prototipo de LafroX para la licitación (Bases, cap. 25). Datos simulados.</footer>`;
   }
 
   const logo = (cls = 'brand-logo') => `<img class="${cls}" src="assets/logo.svg" alt="" width="32" height="34">`;

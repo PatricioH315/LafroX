@@ -114,7 +114,7 @@ hr { border: 0; border-top: 1px solid var(--c-line-soft); margin: var(--sp-5) 0;
 .nav a[aria-current="page"] { background: #2a2a2a; color: #fff; font-weight: 600; }
 .nav a[aria-current="page"]::before { content: ""; position: absolute; left: -12px; top: 8px; bottom: 8px; width: 4px; border-radius: 0 4px 4px 0; background: #e8641b; }
 .nav a .tag { margin-left: auto; font-size: var(--fs-xs); background: #e8641b; color: #111; border-radius: var(--radius-pill); padding: 0 8px; font-weight: 600; }
-.nav .mod { margin-left: auto; font-family: var(--font-mono); font-size: 11px; color: #9a9a9a; white-space: nowrap; }
+.nav .mod { margin-left: auto; font-family: var(--font-mono); font-size: 12px; color: #9a9a9a; white-space: nowrap; }
 .nav :focus-visible { outline-color: #f29a5e; }
 
 .sidebar-foot { margin-top: auto; padding: var(--sp-4) var(--sp-5); border-top: 1px solid #2a2a2a; font-size: var(--fs-xs); color: #9a9a9a; }

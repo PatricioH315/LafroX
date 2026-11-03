@@ -84,7 +84,7 @@
 
   /* ---------- Acciones principales por perfil (RT-25.01: máx. 3 interacciones) ---------- */
   const QUICK = {
-    evaluador: [['activity', 'Recorrer el flujo de un pedido', '7 pasos de punta a punta', '/flujo'], ['truck', 'Ver la app de reparto', 'Perfil de terreno sin conexión', '/terreno'], ['chart', 'Abrir el tablero analítico', '7 tipos de gráfico', '/analitica'], ['sitemap', 'Arquitectura de información', 'Mapa del sitio y navegación', '/arquitectura']],
+    evaluador: [['activity', 'Recorrer el flujo de un pedido', '7 pasos de punta a punta', '/flujo'], ['truck', 'Ver la app de reparto', 'Perfil de terreno sin conexión', '/terreno'], ['chart', 'Abrir el tablero analítico', '7 tipos de gráfico', '/analitica']],
     'gerente-ops': [['route', 'Revisar rutas del día', '12 rutas en curso', '/rutas'], ['chart', 'OTIF de hoy', 'Profundizar hasta la entrega', '/analitica/otif'], ['alert', 'Excepciones abiertas', '3 requieren decisión', '/bandeja']],
     planificador: [['route', 'Revisar ruta propuesta', 'Plan de mañana, 84 rutas', '/rutas'], ['thermo', 'Ver recorridos reales', 'Desvíos y telemetría', '/telemetria'], ['clipboard', 'Pedidos por planificar', 'Confirmados sin ruta', '/pedidos?estado=Confirmado']],
     preventista: [['cart', 'Tomar un pedido', 'Funciona sin señal', '/terreno/preventa'], ['store', 'Mis clientes', 'Crédito, deuda e historial', '/clientes'], ['clipboard', 'Mis pedidos', 'Estado de sincronización', '/pedidos']],

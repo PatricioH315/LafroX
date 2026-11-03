@@ -3,7 +3,7 @@
 Prototipo navegable de alta fidelidad de la plataforma logística que LafroX propone para Distribuidora Puelche S.A. (Caso 02 Logística). Responde al capítulo 25 de las Bases Técnicas Transversales y se entrega junto con el Informe 3.
 
 - 51 pantallas que cubren los 9 bloques del numeral 25.2, los componentes del 25.4 y los requisitos RT-25.01 a RT-25.10.
-- Cada pantalla declara su módulo de SD4 (M1–M12), sus requerimientos de SD3 y sus actores. Ver [docs/trazabilidad.md](docs/trazabilidad.md) y [docs/cumplimiento.md](docs/cumplimiento.md).
+- Cada pantalla declara su módulo de SD4 (M1–M12), sus requerimientos de SD3 y sus actores. La documentación de cumplimiento está en `docs/` y no se publica en el sitio.
 - Datos simulados; nada se envía a un servidor ni se guarda de forma permanente.
 
 ## Cómo abrirlo
@@ -24,8 +24,7 @@ Para recorrerlo, entre por «Ingresar», elija un actor en la lista desplegable 
 2. `#/terreno`: la app del conductor; apague el interruptor de señal para ver el modo sin conexión y la cola de sincronización.
 3. `#/devoluciones`: el proceso secundario con su flujo de aprobación.
 4. `#/analitica`: indicadores, 8 tipos de gráfico, filtros y profundización hasta la entrega.
-5. `#/arquitectura` y `#/sistema-diseno`: arquitectura de información (RT-25.09) y sistema de diseño (RT-25.05).
-6. `#/cumplimiento`: dónde se demuestra cada exigencia y la matriz de trazabilidad con SD3 y SD4.
+5. Trazabilidad con SD3 y SD4: ver [docs/trazabilidad.md](docs/trazabilidad.md) y [docs/cumplimiento.md](docs/cumplimiento.md) (no forman parte del sitio).
 
 ## Estructura
 
