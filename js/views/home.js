@@ -102,6 +102,13 @@
     proveedor: [['box', 'Órdenes y recepciones', 'Solo lectura', '/portal/proveedor'], ['inbox', 'Mis tareas', 'Discrepancias por revisar', '/bandeja']]
   };
 
+  const guideHtml = (p) => {
+    const steps = L.guides?.[p.id];
+    if (!steps) return '';
+    return `<section class="card guide" aria-labelledby="gd-t" style="margin-bottom:var(--sp-5)"><div class="card-head"><div><h2 id="gd-t">Cómo usar su perfil</h2><p class="muted small" style="margin:0">Recorrido sugerido para ${esc(p.actor)}, en ${steps.length} pasos.</p></div></div>
+      <ol class="guide-list">${steps.map(([t, d, r], i) => `<li><span class="guide-n" aria-hidden="true">${i + 1}</span><div class="guide-b"><strong>${esc(t)}</strong><span class="muted">${esc(d)}</span></div><a class="btn btn-secondary btn-sm" href="#${r}">Abrir<span class="sr-only">: ${esc(t)}</span></a></li>`).join('')}</ol></section>`;
+  };
+
   L.route('/inicio', {
     title: 'Inicio', noCrumb: true, block: 'Portal principal', module: 'Transversal', rf: ['RF-17.07', 'RF-16.02'], actors: ['Todos los perfiles'],
     render: () => {
@@ -113,6 +120,18 @@
         <div class="grid grid-2" id="widgets"></div>`;
     },
     mount: (root) => mountWidgets(root, 'w.home.' + L.me().id, L.me().home)
+  });
+
+  L.route('/guia', {
+    title: 'Guía de mi perfil', parent: '/inicio', block: 'Portal principal', module: 'Transversal', rf: ['RF-17.07', 'RF-16.02'], actors: ['Todos los perfiles'],
+    render: () => {
+      const p = L.me();
+      const menu = L.nav.map((g) => ({ g: g.group, items: g.items.filter((i) => L.allowed(i.path) && i.path !== '/guia') })).filter((x) => x.items.length);
+      return `<div class="page-head"><div class="titles"><span class="page-kicker">${esc(p.iface)}</span><h1>Guía de mi perfil</h1><p class="muted" style="margin:0">${esc(p.actor)} · ${esc(p.role)}. Siga estos pasos para recorrer lo que su perfil puede hacer.</p></div></div>
+        ${guideHtml(p)}
+        <section class="card" aria-labelledby="gm-t"><div class="card-head"><h2 id="gm-t">Lo que ve en su menú</h2></div>
+          <div class="grid grid-3">${menu.map((x) => `<div><h3 class="small muted" style="text-transform:uppercase;letter-spacing:0.08em">${esc(x.g)}</h3><ul style="list-style:none;margin:0;padding:0">${x.items.map((i) => `<li><a href="#${i.path}">${esc(i.label)}</a></li>`).join('')}</ul></div>`).join('')}</div></section>`;
+    }
   });
 
   L.route('/tablero', {

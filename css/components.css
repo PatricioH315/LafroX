@@ -441,3 +441,11 @@ kbd { font-family: var(--font-mono); font-size: 12px; padding: 1px 6px; border: 
 .sitemap > div > ul { padding-left: 0; border-left: 0; }
 .sitemap li { padding: 3px 0; }
 .sitemap li a { font-weight: 500; }
+
+/* Ruta explicativa del perfil */
+.guide-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-2); }
+.guide-list li { display: flex; align-items: center; gap: var(--sp-4); padding: var(--sp-3); border: 1px solid var(--c-line-soft); border-radius: var(--radius); }
+.guide-n { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--c-accent-soft); color: var(--c-accent-strong); font-weight: 700; font-variant-numeric: tabular-nums; }
+.guide-b { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.guide-b .muted { font-size: var(--fs-sm); }
+@media (max-width: 600px) { .guide-list li { flex-wrap: wrap; } .guide-b { flex-basis: calc(100% - 56px); } .guide-list li .btn { margin-inline-start: 48px; } }

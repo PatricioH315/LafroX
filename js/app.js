@@ -7,6 +7,7 @@
   L.nav = [
     { group: 'Inicio', items: [
       { path: '/inicio', label: 'Inicio', icon: 'home' },
+      { path: '/guia', label: 'Guía de mi perfil', icon: 'route' },
       { path: '/tablero', label: 'Tablero', icon: 'grid' },
       { path: '/bandeja', label: 'Bandeja de tareas', icon: 'inbox', badge: 'tareas' }
     ] },
@@ -47,7 +48,7 @@
       { path: '/admin/auditoria', label: 'Auditoría', icon: 'history' }
     ] }
   ];
-  const ALWAYS = ['/inicio', '/tablero', '/bandeja', '/perfil', '/notificaciones', '/bienvenida'];
+  const ALWAYS = ['/inicio', '/guia', '/tablero', '/bandeja', '/perfil', '/notificaciones', '/bienvenida'];
 
   /* ---------- Sesión simulada ---------- */
   L.session = () => L.store.get('session', null);
@@ -201,14 +202,30 @@
   function updateShell(path) {
     const p = L.me();
     const tasks = L.myTasks().length;
-    $('#nav').innerHTML = L.nav.map((g) => {
+    const state = L.store.get('nav.open', {});
+    $('#nav').innerHTML = L.nav.map((g, gi) => {
       const items = g.items.filter((i) => L.allowed(i.path));
       if (!items.length) return '';
-      return `<div class="nav-group"><span class="nav-label" id="ng-${esc(g.group)}">${esc(g.group)}</span><ul role="list" style="list-style:none;margin:0;padding:0" aria-labelledby="ng-${esc(g.group)}">${items.map((i) => {
-        const cur = path === i.path || (i.path !== '/inicio' && path.startsWith(i.path + '/') && !g.items.some((o) => o !== i && path.startsWith(o.path) && o.path.length > i.path.length));
-        return `<li><a href="#${i.path}" ${cur ? 'aria-current="page"' : ''}>${icon(i.icon)}<span>${esc(i.label)}</span>${i.badge && tasks ? `<span class="tag" aria-label="${tasks} pendientes">${tasks}</span>` : i.mod && p.all ? `<span class="mod">${esc(i.mod)}</span>` : ''}</a></li>`;
-      }).join('')}</ul></div>`;
+      const cls = items.map((i) => path === i.path || (i.path !== '/inicio' && path.startsWith(i.path + '/') && !g.items.some((o) => o !== i && path.startsWith(o.path) && o.path.length > i.path.length)));
+      if (cls.some(Boolean)) state[g.group] = true; // el grupo de la pantalla actual siempre se abre
+      const open = g.group in state ? state[g.group] : gi === 0;
+      return `<div class="nav-group"><h2 class="nav-label"><button type="button" class="nav-toggle" aria-expanded="${open}" aria-controls="ng-${gi}" data-group="${esc(g.group)}"><span>${esc(g.group)}</span>${icon('chev-down', 'icon-sm')}</button></h2><ul role="list" id="ng-${gi}" class="nav-list" style="list-style:none;margin:0;padding:0" ${open ? '' : 'hidden'}>${items.map((i, k) => `<li><a href="#${i.path}" ${cls[k] ? 'aria-current="page"' : ''}>${icon(i.icon)}<span>${esc(i.label)}</span>${i.badge && tasks ? `<span class="tag" aria-label="${tasks} pendientes">${tasks}</span>` : i.mod && p.all ? `<span class="mod">${esc(i.mod)}</span>` : ''}</a></li>`).join('')}</ul></div>`;
     }).join('');
+    L.store.set('nav.open', state);
+    const navEl = $('#nav');
+    if (!navEl._wired) {
+      navEl._wired = true;
+      navEl.addEventListener('click', (e) => {
+        const b = e.target.closest('.nav-toggle');
+        if (!b) return;
+        const open = b.getAttribute('aria-expanded') !== 'true';
+        b.setAttribute('aria-expanded', open);
+        $('#' + b.getAttribute('aria-controls'), navEl).hidden = !open;
+        const st = L.store.get('nav.open', {});
+        st[b.dataset.group] = open;
+        L.store.set('nav.open', st);
+      });
+    }
     $('#me-av').textContent = L.initials(p.name);
     $('#me-name').innerHTML = `<strong style="display:block;font-size:var(--fs-sm)">${esc(p.name.split(' ').slice(0, 2).join(' '))}</strong><span class="small muted">${esc(p.role.split(' ·')[0])}</span>`;
     $$('[data-theme-toggle]').forEach((b) => (b.innerHTML = icon(isDark() ? 'sun' : 'moon')));
