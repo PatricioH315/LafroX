@@ -12,7 +12,7 @@
   const deviceShell = (title, body, { back, tabs, active, fab } = {}) => `
     <div class="device"><div class="device-status" aria-hidden="true"><span>09:42</span><span class="row" style="gap:6px">${icon(L.online() ? 'wifi' : 'wifi-off', 'icon-sm')}<span>87 %</span></span></div>
     <div class="device-screen" id="dev">
-      <div class="app-bar">${back ? `<button type="button" class="btn btn-tertiary btn-icon" data-dback="${back}" aria-label="Volver">${icon('arrow-left')}</button>` : `<img src="assets/logo.svg" alt="" width="26" height="28">`}<h2>${esc(title)}</h2><label class="switch" style="min-height:0" title="Simular conectividad"><input type="checkbox" id="dev-net" ${L.online() ? 'checked' : ''} aria-label="Conectividad del dispositivo (simulación)"></label></div>
+      <div class="app-bar">${back ? `<button type="button" class="btn btn-tertiary btn-icon" data-dback="${back}" aria-label="Volver">${icon('arrow-left')}</button>` : `<img src="assets/logo.svg" alt="" width="26" height="28">`}<h2>${esc(title)}</h2><label class="switch" title="Simular conectividad"><input type="checkbox" id="dev-net" ${L.online() ? 'checked' : ''} aria-label="Conectividad del dispositivo (simulación)"></label></div>
       <div class="net-banner ${L.online() ? 'online' : 'offline'}" role="status">${icon(L.online() ? 'wifi' : 'wifi-off', 'icon-sm')}<span class="grow">${L.online() ? 'En línea · todo sincronizado' : `Sin conexión · ${queue().length} evento(s) en cola`}</span>${!L.online() ? '<span class="small">Turno de 14 h</span>' : ''}</div>
       <div class="app-body">${body}</div>
       ${fab || ''}

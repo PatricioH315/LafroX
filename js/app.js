@@ -117,7 +117,7 @@
         ${[['/', 'Inicio'], ['/catalogo', 'Catálogo'], ['/cobertura', 'Cobertura'], ['/contacto', 'Contacto']].map(([p, l]) => `<a href="#${p}" ${p === path ? 'aria-current="page"' : ''}>${l}</a>`).join('')}
       </nav>
       <span style="flex:1"></span>
-      <button type="button" class="btn btn-tertiary btn-icon" data-theme-toggle aria-label="Cambiar entre modo claro y oscuro">${icon(isDark() ? 'sun' : 'moon')}</button>
+      <button type="button" class="btn btn-tertiary btn-icon" data-theme-toggle aria-label="Cambiar entre modo claro y oscuro">${themeBtn()}</button>
       ${s ? '<a class="btn btn-primary" href="#/inicio">Ir a mi espacio</a>' : `<a class="btn btn-tertiary hide-sm" href="#/registro">Crear cuenta</a><a class="btn btn-primary" href="#/ingresar">${icon('user')}Ingresar</a>`}
     </header>
     <main id="main" class="public-main" tabindex="-1"><div class="view-enter">${inner}</div></main>
@@ -146,8 +146,8 @@
         <span class="grow"></span>
         <span id="net-ind"></span>
         <div class="menu-wrap"><button type="button" class="btn btn-primary hide-sm" id="quick">${icon('plus')}Nuevo</button><button type="button" class="btn btn-primary btn-icon show-sm" id="quick-sm" aria-label="Acciones rápidas">${icon('plus')}</button></div>
-        <div class="menu-wrap"><button type="button" class="btn btn-tertiary btn-icon" id="bell" aria-label="Notificaciones" style="position:relative">${icon('bell')}<span class="badge-dot" style="position:absolute;top:9px;right:9px"></span></button></div>
-        <button type="button" class="btn btn-tertiary btn-icon hide-sm" data-theme-toggle aria-label="Cambiar entre modo claro y oscuro">${icon(isDark() ? 'sun' : 'moon')}</button>
+        <div class="menu-wrap"><button type="button" class="btn btn-tertiary btn-icon" id="bell" aria-label="Avisos y notificaciones" style="position:relative">${icon('bell')}<span class="btn-label" aria-hidden="true">Avisos</span><span class="badge-dot" style="position:absolute;top:9px;right:9px"></span></button></div>
+        <button type="button" class="btn btn-tertiary btn-icon hide-sm" data-theme-toggle aria-label="Cambiar entre modo claro y oscuro">${themeBtn()}</button>
         <div class="menu-wrap"><button type="button" class="btn btn-tertiary" id="usermenu" style="padding:0 6px" aria-label="Menú de usuario"><span class="avatar" id="me-av"></span><span class="hide-md" id="me-name" style="text-align:left;line-height:1.15"></span>${icon('chev-down', 'icon-sm hide-md')}</button></div>
       </header>
       <main id="main" class="main" tabindex="-1"></main>`;
@@ -175,7 +175,7 @@
 
     L.menu($('#usermenu'), () => [
       { title: L.me().name },
-      { label: 'Mi perfil y preferencias', icon: 'user', onClick: () => L.go('/perfil') },
+      { label: 'Mi perfil y preferencias', icon: 'user', onClick: () => L.go('/perfil') }, { label: 'Atajos de teclado', icon: 'info', kbd: '?', onClick: () => L.showShortcuts() },
       { label: 'Cambiar perfil de demostración', icon: 'users', onClick: () => L.switchProfile() },
       { label: 'Ver recorrido guiado', icon: 'help', onClick: () => { L.go('/inicio'); setTimeout(L.startTour, 400); } },
       { label: isDark() ? 'Modo claro' : 'Modo oscuro', icon: isDark() ? 'sun' : 'moon', onClick: toggleTheme },
@@ -229,7 +229,7 @@
     }).join('');
     $('#me-av').textContent = L.initials(p.name);
     $('#me-name').innerHTML = `<strong style="display:block;font-size:var(--fs-sm)">${esc(p.name.split(' ').slice(0, 2).join(' '))}</strong><span class="small muted">${esc(p.role.split(' ·')[0])}</span>`;
-    $$('[data-theme-toggle]').forEach((b) => (b.innerHTML = icon(isDark() ? 'sun' : 'moon')));
+    $$('[data-theme-toggle]').forEach((b) => (b.innerHTML = themeBtn()));
     renderNet();
   }
 
@@ -300,7 +300,8 @@
   /* ---------- Preferencias: tema, tamaño de texto y densidad ---------- */
   const isDark = () => document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
   L.isDark = isDark;
-  const toggleTheme = () => { const t = isDark() ? 'light' : 'dark'; document.documentElement.dataset.theme = t; L.store.setPref('theme', t); $$('[data-theme-toggle]').forEach((b) => (b.innerHTML = icon(t === 'dark' ? 'sun' : 'moon'))); L.toast(t === 'dark' ? 'Modo oscuro activado' : 'Modo claro activado', '', 'info', { duration: 2200 }); };
+  const themeBtn = () => `${icon(isDark() ? 'sun' : 'moon')}<span class="btn-label" aria-hidden="true">${isDark() ? 'Claro' : 'Oscuro'}</span>`;
+  const toggleTheme = () => { const t = isDark() ? 'light' : 'dark'; document.documentElement.dataset.theme = t; L.store.setPref('theme', t); $$('[data-theme-toggle]').forEach((b) => (b.innerHTML = themeBtn())); L.toast(t === 'dark' ? 'Modo oscuro activado' : 'Modo claro activado', '', 'info', { duration: 2200 }); };
   L.toggleTheme = toggleTheme;
   L.applyPrefs = () => {
     const d = document.documentElement;
@@ -308,6 +309,7 @@
     if (t) d.dataset.theme = t;
     d.dataset.text = L.store.pref('text', 'md');
     d.dataset.density = L.store.pref('density', 'normal');
+    d.dataset.contrast = L.store.pref('contrast', 'normal');
   };
 
   /* ---------- Atajos y eventos globales ---------- */
@@ -315,10 +317,33 @@
     if (e.target.closest('[data-theme-toggle]')) toggleTheme();
     if (e.target.closest('[data-switch]')) L.switchProfile();
   });
+  // Atajos de una tecla (RT-13.11): no actúan al escribir ni con modificadores, y se pueden desactivar en «Mi perfil»
+  L.shortcuts = [
+    ['/', 'Buscar', null],
+    ['g i', 'Ir al inicio de mi perfil', '/inicio'],
+    ['g b', 'Ir a la bandeja de tareas', '/bandeja'],
+    ['g n', 'Ir a las notificaciones', '/notificaciones'],
+    ['g p', 'Ir a mi perfil y preferencias', '/perfil'],
+    ['?', 'Ver los atajos de teclado', null]
+  ];
+  L.showShortcuts = () => L.modal({
+    title: 'Atajos de teclado',
+    body: `<table class="table"><caption class="sr-only">Atajos disponibles</caption><thead><tr><th>Teclas</th><th>Acción</th></tr></thead><tbody>${L.shortcuts.map(([k, l]) => `<tr><td>${k.split(' ').map((x) => `<kbd>${L.esc(x)}</kbd>`).join(' luego ')}</td><td>${L.esc(l)}</td></tr>`).join('')}</tbody></table><p class="hint">Se desactivan en Mi perfil › Accesibilidad. No funcionan mientras escribe en un campo.</p>`,
+    actions: [{ label: 'Cerrar', cls: 'btn-primary' }]
+  });
+  let pendingG = 0;
   document.addEventListener('keydown', (e) => {
     const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || document.activeElement.isContentEditable;
-    if (e.key === '/' && !typing && $('#gsearch')) { e.preventDefault(); $('#gsearch').focus(); }
     if (e.key === 'Escape' && app().classList.contains('nav-open')) toggleNav(false);
+    if (typing || e.ctrlKey || e.metaKey || e.altKey || L.store.pref('shortcuts', 'on') === 'off' || !L.me() || document.querySelector('[role="dialog"][aria-modal="true"]')) return;
+    if (e.key === '/' && $('#gsearch')) { e.preventDefault(); $('#gsearch').focus(); return; }
+    if (e.key === '?') { e.preventDefault(); L.showShortcuts(); return; }
+    if (e.key === 'g') { pendingG = Date.now(); return; }
+    if (pendingG && Date.now() - pendingG < 1200) {
+      pendingG = 0;
+      const hit = L.shortcuts.find(([k]) => k === 'g ' + e.key.toLowerCase());
+      if (hit && L.allowed(hit[2])) { e.preventDefault(); L.go(hit[2]); }
+    }
   });
 
   L.boot = () => {

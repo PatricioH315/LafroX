@@ -23,6 +23,16 @@ El prototipo es una simulación sin servidor. Las bases no exigen funcionalidad 
 
 Estos puntos siguen en la lista, pero se marcan con la evidencia de la última columna, no navegando el prototipo.
 
+## Resultado de la revisión (03-11-2026)
+
+Revisión sobre la rama LafroX-Prototipo-HTML (commit 20cab1d8), con el perfil de evaluación, en servidor local. Se recorrieron las 49 rutas: sin errores de consola, sin enlaces internos rotos y con contraste AA en modo claro y oscuro. Se midieron los 5 tamaños exigidos y los objetivos táctiles de cada pantalla.
+
+- [x] = cumple, verificado en el prototipo o en su código.
+- [ ] con ⚠ = no cumple, parcial o pendiente; el motivo va debajo y se repite en la tabla de pendientes.
+- ✓ = observación de la primera revisión, ya corregida y verificada en el navegador.
+
+**Segunda revisión (03-11-2026, tras las correcciones):** sin desplazamiento horizontal en 375, 768, 1024, 1366 y 1920 px; todos los controles con al menos 44 × 44 px (salvo la excepción del mapa de telemetría); contraste AA también en alto contraste; atajos y burbujas de ayuda probados; sin errores de consola.
+
 ## Cómo usar esta lista
 
 1. Abra el prototipo desde el enlace en línea que se entregará, no desde la copia local.
@@ -45,234 +55,254 @@ Estos puntos siguen en la lista, pero se marcan con la evidencia de la última c
 ## 1. Entrega y acceso
 
 - [ ] Se entrega junto con el **Informe 3**, el **13-11-2026** (Cap. 25.1; entregable 27; cronograma hito 10).
-- [ ] Es un prototipo interactivo de **alta fidelidad** (Cap. 25.1).
+  - ⚠ Pendiente: la entrega es el 13-11-2026.
+- [x] Es un prototipo interactivo de **alta fidelidad** (Cap. 25.1).
 - [ ] Se entrega como **enlace navegable en línea** (RT-25.06).
-- [ ] Funciona **sin instalación ni complementos** (RT-25.06).
+  - ⚠ No cumple: el sitio no está publicado (patricioh315.github.io/LafroX responde 404).
+- [x] Funciona **sin instalación ni complementos** (RT-25.06).
 - [ ] Es compatible con los **navegadores modernos vigentes** (RT-25.06).
+  - ⚠ Parcial: probado solo en Chromium (navegador integrado); falta Firefox y Safari.
 - [ ] El acceso está garantizado por **al menos seis meses** desde la entrega (RT-25.07).
-- [ ] Simula de forma realista la navegación y los flujos sin servicios de fondo ni base de datos (Cap. 25.1).
-- [ ] Permite recorrerlo **desde la perspectiva de los distintos perfiles** de personas usuarias (Cap. 25.1).
+  - ⚠ No cumple aún: depende de publicar el enlace.
+- [x] Simula de forma realista la navegación y los flujos sin servicios de fondo ni base de datos (Cap. 25.1).
+- [x] Permite recorrerlo **desde la perspectiva de los distintos perfiles** de personas usuarias (Cap. 25.1).
 - [ ] Deseable: se puede exportar a un documento interactivo para revisión **sin conexión** (RT-25.10).
+  - ⚠ No verificado: no hay un documento interactivo exportado para revisión sin conexión.
 
 ## 2. Alcance mínimo (Cap. 25.2)
 
 ### 2.1 Portal principal
 
-- [ ] Página de inicio pública.
-- [ ] Página de inicio con sesión iniciada, **personalizada por perfil**.
-- [ ] Tablero principal con **componentes configurables**.
-- [ ] Menú de navegación completo y funcional.
-- [ ] Rastro de navegación (migas de pan).
-- [ ] Navegación contextual.
+- [x] Página de inicio pública.
+- [x] Página de inicio con sesión iniciada, **personalizada por perfil**.
+- [x] Tablero principal con **componentes configurables**.
+- [x] Menú de navegación completo y funcional.
+- [x] Rastro de navegación (migas de pan).
+- [x] Navegación contextual.
 
 ### 2.2 Autenticación e incorporación
 
-- [ ] Pantalla de inicio de sesión **unificada**.
-- [ ] Registro de una persona usuaria externa en **al menos cinco pasos**.
-- [ ] Recuperación de acceso.
-- [ ] Segundo factor de autenticación.
-- [ ] Tablero de primer ingreso con **recorrido guiado**.
+- [x] Pantalla de inicio de sesión **unificada**.
+- [x] Registro de una persona usuaria externa en **al menos cinco pasos**.
+- [x] Recuperación de acceso.
+- [x] Segundo factor de autenticación.
+- [x] Tablero de primer ingreso con **recorrido guiado**.
 
 ### 2.3 Proceso operacional principal
 
-- [ ] Flujo de negocio central del caso, **de extremo a extremo**.
-- [ ] Tiene **al menos seis pasos**, desde el inicio hasta el cierre.
-- [ ] Muestra los **estados intermedios**.
-- [ ] Incluye el manejo de la **excepción más frecuente**.
+- [x] Flujo de negocio central del caso, **de extremo a extremo**.
+- [x] Tiene **al menos seis pasos**, desde el inicio hasta el cierre.
+- [x] Muestra los **estados intermedios**.
+- [x] Incluye el manejo de la **excepción más frecuente**.
 
 ### 2.4 Proceso operacional secundario
 
-- [ ] Listado.
-- [ ] Vista de detalle.
-- [ ] Creación.
-- [ ] Flujo de aprobación **visual**.
+- [x] Listado.
+- [x] Vista de detalle.
+- [x] Creación.
+- [x] Flujo de aprobación **visual**.
 
 ### 2.5 Perfil de terreno u operación
 
-- [ ] Vista que usa la persona operacional en su puesto real.
-- [ ] Versión **móvil**.
-- [ ] Comportamiento **sin conexión**, si el caso lo requiere.
+- [x] Vista que usa la persona operacional en su puesto real.
+- [x] Versión **móvil**.
+- [x] Comportamiento **sin conexión**, si el caso lo requiere.
 
 ### 2.6 Gestión de terceros
 
-- [ ] Directorio de la contraparte externa (clientes, proveedores u otra).
-- [ ] Ficha completa.
-- [ ] Evaluación.
-- [ ] Historial.
+- [x] Directorio de la contraparte externa (clientes, proveedores u otra).
+- [x] Ficha completa.
+- [x] Evaluación.
+- [x] Historial.
 
 ### 2.7 Tablero analítico
 
-- [ ] Indicadores principales con visualizaciones.
-- [ ] **Al menos seis tipos de gráfico distintos**.
-- [ ] Filtro por **período**.
-- [ ] Filtro por **categoría**.
-- [ ] Profundización desde el indicador **hasta el detalle**.
-- [ ] Exportación de informes.
+- [x] Indicadores principales con visualizaciones.
+- [x] **Al menos seis tipos de gráfico distintos**.
+- [x] Filtro por **período**.
+- [x] Filtro por **categoría**.
+- [x] Profundización desde el indicador **hasta el detalle**.
+- [x] Exportación de informes.
 
 ### 2.8 Administración
 
-- [ ] Gestión de personas usuarias.
-- [ ] Gestión de roles y permisos.
-- [ ] Parametrización.
-- [ ] Consulta de auditoría.
+- [x] Gestión de personas usuarias.
+- [x] Gestión de roles y permisos.
+- [x] Parametrización.
+- [x] Consulta de auditoría.
 
 ### 2.9 Módulos adicionales
 
-- [ ] Primer módulo adicional pertinente al caso.
-- [ ] Segundo módulo adicional pertinente al caso.
+- [x] Primer módulo adicional pertinente al caso.
+- [x] Segundo módulo adicional pertinente al caso.
 
 ## 3. Principios de diseño exigidos
 
 ### RT-25.01 · Navegación intuitiva (también RT-13.05)
 
-- [ ] Se usa sin necesidad de manual.
-- [ ] Toda funcionalidad principal se alcanza en **tres interacciones o menos** desde el inicio del perfil.
+- [x] Se usa sin necesidad de manual.
+- [x] Toda funcionalidad principal se alcanza en **tres interacciones o menos** desde el inicio del perfil.
 
 ### RT-25.02 · Retroalimentación (también RT-13.06)
 
-- [ ] Hay retroalimentación visual clara ante **cada acción**.
-- [ ] Hay estados de carga y transiciones fluidos.
-- [ ] Los errores indican **qué ocurrió y qué hacer**.
-- [ ] No hay mensajes técnicos dirigidos a la persona usuaria final.
+- [x] Hay retroalimentación visual clara ante **cada acción**.
+- [x] Hay estados de carga y transiciones fluidos.
+- [x] Los errores indican **qué ocurrió y qué hacer**.
+- [x] No hay mensajes técnicos dirigidos a la persona usuaria final.
 
 ### RT-25.03 · Accesibilidad WCAG 2.2 AA (también RT-13.01, RT-13.07, RT-13.11; Art. 26°)
 
-- [ ] Contraste adecuado (texto 4,5:1; texto grande y controles 3:1).
-- [ ] Tamaños de fuente legibles.
-- [ ] Objetivos táctiles de **al menos 44 × 44 px**.
-- [ ] Navegación **completa por teclado**.
-- [ ] Orden de foco lógico.
-- [ ] Atajos de teclado para operaciones frecuentes (RT-13.11).
-- [ ] Textos alternativos en imágenes y gráficos.
-- [ ] Etiquetas de accesibilidad en controles.
-- [ ] Iconografía acompañada de texto (RT-13.07).
-- [ ] Flujos guiados paso a paso para baja alfabetización digital (RT-13.07).
-- [ ] Alto contraste disponible (RT-13.07).
+- [x] Contraste adecuado (texto 4,5:1; texto grande y controles 3:1).
+- [x] Tamaños de fuente legibles.
+- [x] Objetivos táctiles de **al menos 44 × 44 px**.
+  - ✓ Corregido: todos los controles miden al menos 44 × 44 px en los 5 tamaños. Excepción: en teléfono y tableta los marcadores del mapa de /telemetria se reducen con el SVG; la misma información está en Rutas con controles de 44 px (excepción de función equivalente, WCAG 2.5.8).
+- [x] Navegación **completa por teclado**.
+- [x] Orden de foco lógico.
+- [x] Atajos de teclado para operaciones frecuentes (RT-13.11).
+  - ✓ Corregido: «/» buscar, «g» luego «i», «b», «n» o «p» para ir a inicio, bandeja, notificaciones o perfil, y «?» para ver la lista. Se desactivan en Mi perfil › Accesibilidad.
+- [x] Textos alternativos en imágenes y gráficos.
+- [x] Etiquetas de accesibilidad en controles.
+- [x] Iconografía acompañada de texto (RT-13.07).
+  - ✓ Corregido en lo principal: la paginación muestra «Anterior» y «Siguiente», y en escritorio amplio los botones de la barra superior muestran «Avisos» y el tema. Siguen solo con ícono el botón «⋯» de cada fila y el de plegar el menú, ambos con nombre accesible.
+- [x] Flujos guiados paso a paso para baja alfabetización digital (RT-13.07).
+- [x] Alto contraste disponible (RT-13.07).
+  - ✓ Corregido: Mi perfil › Accesibilidad › Contraste: alto contraste, en claro y en oscuro.
 - [ ] Verificado con herramientas automatizadas **y** pruebas manuales (RT-13.01; Art. 26°).
+  - ⚠ Pendiente: no hay informe de conformidad; en esta revisión se hizo un barrido automático de contraste y de tamaños.
 
 ### RT-25.04 · Diseño responsivo (también RT-13.02)
 
-- [ ] Escritorio **1920 × 1080**.
-- [ ] Escritorio **1366 × 768**.
-- [ ] Tableta **768 × 1024 vertical**.
-- [ ] Tableta **1024 × 768 horizontal**.
-- [ ] Teléfono **375 × 812**.
-- [ ] Puntos de quiebre coherentes.
-- [ ] El contenido se adapta, no solo se reduce (RT-13.02).
+- [x] Escritorio **1920 × 1080**.
+- [x] Escritorio **1366 × 768**.
+- [x] Tableta **768 × 1024 vertical**.
+- [x] Tableta **1024 × 768 horizontal**.
+- [x] Teléfono **375 × 812**.
+- [x] Puntos de quiebre coherentes.
+- [x] El contenido se adapta, no solo se reduce (RT-13.02).
 
 ### RT-25.05 · Sistema de diseño documentado (también RT-13.09)
 
-- [ ] Paleta de **a lo más cinco colores principales**.
-- [ ] **A lo más dos familias tipográficas**, jerarquizadas.
-- [ ] Iconografía coherente.
-- [ ] Retícula y espaciado consistentes.
-- [ ] Componentes reutilizables.
-- [ ] El sistema está **documentado** (entregable 17 y RT-25.05).
+- [x] Paleta de **a lo más cinco colores principales**.
+- [x] **A lo más dos familias tipográficas**, jerarquizadas.
+- [x] Iconografía coherente.
+- [x] Retícula y espaciado consistentes.
+- [x] Componentes reutilizables.
+- [x] El sistema está **documentado** (entregable 17 y RT-25.05).
+  - ✓ Corregido: docs/sistema_diseno.md.
 
 ### Interfaces de terreno (RT-13.08, según caso; Art. 26°)
 
 - [ ] Usable con guantes (objetivos amplios).
+  - ⚠ No verificable en simulación; los objetivos ya miden al menos 44 × 44 px.
 - [ ] Legible a la intemperie y con luminosidad variable.
+  - ⚠ No verificable en simulación.
 - [ ] Funciona sin conexión.
+  - ⚠ Simulado: la app muestra la cola y la sincronización; la operación real no se puede probar.
 
 ### Deseable (RT-13.12)
 
-- [ ] Modo oscuro.
-- [ ] Personalización de la interfaz por persona usuaria.
+- [x] Modo oscuro.
+- [x] Personalización de la interfaz por persona usuaria.
 
 ## 4. Componentes de interfaz obligatorios (Cap. 25.4)
 
 ### Navegación
 
-- [ ] Menú principal.
-- [ ] Menú secundario contextual.
-- [ ] Rastro de navegación.
-- [ ] Paginación.
-- [ ] Pestañas.
-- [ ] Acordeones.
-- [ ] Navegación por pasos.
-- [ ] Menú de acciones rápidas.
+- [x] Menú principal.
+- [x] Menú secundario contextual.
+- [x] Rastro de navegación.
+- [x] Paginación.
+- [x] Pestañas.
+- [x] Acordeones.
+- [x] Navegación por pasos.
+- [x] Menú de acciones rápidas.
 
 ### Formularios
 
-- [ ] Campos de texto con validación en tiempo real.
-- [ ] Selectores y desplegables.
-- [ ] Casillas de verificación.
-- [ ] Botones de opción.
-- [ ] Selector de fecha.
-- [ ] Selector de hora.
-- [ ] Carga de archivos con arrastrar y soltar.
-- [ ] Autocompletado.
-- [ ] Formulario de múltiples pasos.
+- [x] Campos de texto con validación en tiempo real.
+- [x] Selectores y desplegables.
+- [x] Casillas de verificación.
+- [x] Botones de opción.
+- [x] Selector de fecha.
+- [x] Selector de hora.
+- [x] Carga de archivos con arrastrar y soltar.
+- [x] Autocompletado.
+- [x] Formulario de múltiples pasos.
 
 ### Visualización de datos
 
-- [ ] Tabla con ordenamiento.
-- [ ] Tabla con filtrado.
-- [ ] Gráfico de barras.
-- [ ] Gráfico de líneas.
-- [ ] Gráfico circular.
-- [ ] Tarjetas de información.
-- [ ] Línea de tiempo.
-- [ ] Indicadores de progreso.
-- [ ] Distintivos y etiquetas.
-- [ ] Información contextual emergente (tooltip).
+- [x] Tabla con ordenamiento.
+- [x] Tabla con filtrado.
+- [x] Gráfico de barras.
+- [x] Gráfico de líneas.
+- [x] Gráfico circular.
+- [x] Tarjetas de información.
+- [x] Línea de tiempo.
+- [x] Indicadores de progreso.
+- [x] Distintivos y etiquetas.
+- [x] Información contextual emergente (tooltip).
 
 ### Retroalimentación
 
-- [ ] Mensaje de éxito.
-- [ ] Mensaje de error.
-- [ ] Mensaje de advertencia.
-- [ ] Mensaje de información.
-- [ ] Ventanas modales y diálogos.
-- [ ] Notificaciones emergentes.
-- [ ] Esqueletos de carga.
-- [ ] Indicadores de progreso.
-- [ ] Estados vacíos **ilustrados**.
+- [x] Mensaje de éxito.
+- [x] Mensaje de error.
+- [x] Mensaje de advertencia.
+- [x] Mensaje de información.
+- [x] Ventanas modales y diálogos.
+- [x] Notificaciones emergentes.
+- [x] Esqueletos de carga.
+- [x] Indicadores de progreso.
+- [x] Estados vacíos **ilustrados**.
 
 ### Acción
 
-- [ ] Botón primario.
-- [ ] Botón secundario.
-- [ ] Botón terciario.
-- [ ] Botón de acción flotante.
-- [ ] Acciones en línea.
-- [ ] Menús contextuales.
-- [ ] Acciones masivas.
-- [ ] Confirmación de acciones críticas.
+- [x] Botón primario.
+- [x] Botón secundario.
+- [x] Botón terciario.
+- [x] Botón de acción flotante.
+- [x] Acciones en línea.
+- [x] Menús contextuales.
+- [x] Acciones masivas.
+- [x] Confirmación de acciones críticas.
 
 ## 5. Nivel de interactividad (RT-25.08)
 
-- [ ] Navegación completa entre pantallas.
-- [ ] Simulación de ingreso de datos.
-- [ ] Transiciones y animaciones básicas.
-- [ ] Estados de posado (hover).
-- [ ] Estados activos.
-- [ ] Simulación de carga de archivos.
-- [ ] Elementos desplegables funcionales.
-- [ ] Simulación de validaciones.
+- [x] Navegación completa entre pantallas.
+- [x] Simulación de ingreso de datos.
+- [x] Transiciones y animaciones básicas.
+- [x] Estados de posado (hover).
+- [x] Estados activos.
+- [x] Simulación de carga de archivos.
+- [x] Elementos desplegables funcionales.
+- [x] Simulación de validaciones.
 
 ## 6. Arquitectura de información (RT-25.09)
 
 Se entrega junto al prototipo, como documento aparte.
 
-- [ ] Mapa del sitio completo.
-- [ ] Diagrama de navegación.
-- [ ] Taxonomía y nomenclatura.
-- [ ] Estructura de menús.
-- [ ] Jerarquía de la información.
+- [x] Mapa del sitio completo.
+  - ✓ Corregido: docs/arquitectura_informacion.md, sección 1.
+- [x] Diagrama de navegación.
+  - ✓ Corregido: docs/arquitectura_informacion.md, sección 2.
+- [x] Taxonomía y nomenclatura.
+  - ✓ Corregido: docs/arquitectura_informacion.md, sección 3.
+- [x] Estructura de menús.
+  - ✓ Corregido: docs/arquitectura_informacion.md, sección 4.
+- [x] Jerarquía de la información.
+  - ✓ Corregido: docs/arquitectura_informacion.md, sección 5.
 
 ## 7. Causas de penalización (Cap. 25.6)
 
 Cada casilla marcada significa que el riesgo **no** está presente.
 
-- [ ] No hay pantallas estáticas ni no navegables.
-- [ ] El diseño está personalizado al caso, no es genérico.
-- [ ] No hay incumplimientos de accesibilidad.
-- [ ] No hay navegación confusa.
-- [ ] No hay **enlaces rotos**.
-- [ ] No hay inconsistencias visuales evidentes.
-- [ ] Responde bien en **todos** los tamaños exigidos.
+- [x] No hay pantallas estáticas ni no navegables.
+- [x] El diseño está personalizado al caso, no es genérico.
+- [x] No hay incumplimientos de accesibilidad.
+  - ✓ Corregido: objetivos de 44 px; el informe formal de conformidad sigue pendiente (ver RT-13.01).
+- [x] No hay navegación confusa.
+- [x] No hay **enlaces rotos**.
+- [x] No hay inconsistencias visuales evidentes.
+- [x] Responde bien en **todos** los tamaños exigidos.
 
 No se exige (Cap. 25.6): servicios de fondo reales, base de datos, procesamiento real, integraciones externas, autenticación real ni persistencia de datos.
 
@@ -292,4 +322,6 @@ Las bases los piden en otros entregables. Se listan para no confundirlos con el 
 
 | Punto | Pantalla o ruta | Observación | Responsable |
 |---|---|---|---|
-| | | | |
+| RT-25.06, RT-25.07 | Todo el sitio | Publicar en GitHub Pages (rama LafroX-Prototipo-HTML) y probar el enlace | |
+| RT-13.01 | Documento aparte | Informe de conformidad WCAG con pruebas automáticas y manuales | |
+| RT-25.10 (deseable) | Documento aparte | Exportar el prototipo para revisión sin conexión | |

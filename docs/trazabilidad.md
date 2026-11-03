@@ -1,6 +1,6 @@
 # Trazabilidad del prototipo con SD3 y SD4
 
-Matriz de cada pantalla del prototipo con el bloque del numeral 25.2, el módulo de la arquitectura lógica (SD4) y los requerimientos que demuestra (SD3). Se genera desde el registro de rutas de la aplicación (`js/router.js`), el mismo que alimenta el menú y el mapa del sitio. La versión interactiva está en `#/cumplimiento`, pestaña «Trazabilidad SD3 / SD4».
+Matriz de cada pantalla del prototipo con el bloque del numeral 25.2, el módulo de la arquitectura lógica (SD4) y los requerimientos que demuestra (SD3). Se genera desde el registro de rutas de la aplicación (`js/router.js`), el mismo que alimenta el menú y el mapa del sitio.
 
 ## Fuentes
 

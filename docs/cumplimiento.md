@@ -1,6 +1,6 @@
 # Cumplimiento del capítulo 25 de las Bases
 
-Dónde se demuestra cada exigencia del capítulo 25 (Bases Técnicas Transversales) en el prototipo. Las rutas se abren agregando el fragmento a la URL publicada, por ejemplo `…/index.html#/flujo`. La versión interactiva está en `#/cumplimiento`.
+Dónde se demuestra cada exigencia del capítulo 25 (Bases Técnicas Transversales) en el prototipo. Las rutas se abren agregando el fragmento a la URL publicada, por ejemplo `…/index.html#/flujo`. El sistema de diseño y la arquitectura de información se documentan en `docs/sistema_diseno.md` y `docs/arquitectura_informacion.md`; ya no forman parte del sitio.
 
 ## Alcance mínimo (numeral 25.2)
 
@@ -54,13 +54,13 @@ Detalle de los mínimos exigidos:
 | Visualización | Indicadores de progreso | `#/rutas` |
 | Visualización | Distintivos y etiquetas | `#/pedidos` |
 | Visualización | Información contextual emergente | `#/analitica` |
-| Retroalimentación | Éxito, error, advertencia e información | `#/sistema-diseno` |
+| Retroalimentación | Éxito, error, advertencia e información | `docs/sistema_diseno.md` |
 | Retroalimentación | Modales y diálogos | `#/admin/usuarios` |
 | Retroalimentación | Notificaciones emergentes | `#/flujo` |
 | Retroalimentación | Esqueletos de carga | `#/analitica` |
 | Retroalimentación | Indicadores de progreso | `#/calidad/retiro` |
 | Retroalimentación | Estados vacíos ilustrados | `#/rutas` |
-| Acción | Botones primarios, secundarios y terciarios | `#/sistema-diseno` |
+| Acción | Botones primarios, secundarios y terciarios | `docs/sistema_diseno.md` |
 | Acción | Botón de acción flotante | `#/terreno/preventa` |
 | Acción | Acciones en línea | `#/flujo` |
 | Acción | Menús contextuales | `#/pedidos` |
@@ -71,16 +71,16 @@ Detalle de los mínimos exigidos:
 
 | Código | Requisito | Evidencia | Dónde |
 |---|---|---|---|
-| RT-25.01 | Navegación intuitiva, máximo tres interacciones | Tabla de caminos por perfil, accesos principales en el inicio, búsqueda global y acciones rápidas. | `#/arquitectura` |
-| RT-25.02 | Retroalimentación, carga y errores | Avisos, esqueletos, botones con carga, validación en línea y errores con instrucciones. | `#/sistema-diseno` |
-| RT-25.03 | WCAG 2.2 AA | Contraste verificado, 44 × 44 px, teclado completo, foco visible, saltar al contenido, etiquetas ARIA y textos alternativos. | `#/sistema-diseno` |
-| RT-25.04 | Diseño responsivo | Puntos de quiebre 375 / 768 / 1024 / 1366 / 1920; menú desplegable bajo 1024 px. | `#/sistema-diseno` |
-| RT-25.05 | Sistema de diseño documentado | 5 colores, 2 familias, iconografía, retícula de 8 px y componentes vivos. | `#/sistema-diseno` |
+| RT-25.01 | Navegación intuitiva, máximo tres interacciones | Tabla de caminos por perfil, accesos principales en el inicio, búsqueda global y acciones rápidas. | `docs/arquitectura_informacion.md` |
+| RT-25.02 | Retroalimentación, carga y errores | Avisos, esqueletos, botones con carga, validación en línea y errores con instrucciones. | `docs/sistema_diseno.md` |
+| RT-25.03 | WCAG 2.2 AA | Contraste verificado, 44 × 44 px, teclado completo, foco visible, saltar al contenido, etiquetas ARIA y textos alternativos. | `docs/sistema_diseno.md` |
+| RT-25.04 | Diseño responsivo | Puntos de quiebre 375 / 768 / 1024 / 1366 / 1920; menú desplegable bajo 1024 px. | `docs/sistema_diseno.md` |
+| RT-25.05 | Sistema de diseño documentado | 5 colores, 2 familias, iconografía, retícula de 8 px y componentes vivos. | `docs/sistema_diseno.md` |
 | RT-25.06 | Enlace navegable sin instalación | HTML, CSS y JavaScript estáticos, sin complementos ni compilación. | `#/` |
 | RT-25.07 | Acceso por seis meses | Publicación estática sin dependencias externas de ejecución (solo tipografías, con respaldo del sistema). | `#/` |
 | RT-25.08 | Navegación completa e interactividad | Ingreso de datos, transiciones, posado y activo, carga de archivos, desplegables y validaciones simuladas. | `#/flujo` |
-| RT-25.09 | Arquitectura de información | Mapa del sitio, diagrama de navegación, taxonomía, menús y jerarquía. | `#/arquitectura` |
-| RT-25.10 | Exportación para revisión sin conexión (deseable) | La carpeta funciona abriendo `index.html` sin servidor; se entrega en .zip. | `#/cumplimiento` |
+| RT-25.09 | Arquitectura de información | Mapa del sitio, diagrama de navegación, taxonomía, menús y jerarquía. | `docs/arquitectura_informacion.md` |
+| RT-25.10 | Exportación para revisión sin conexión (deseable) | La carpeta funciona abriendo `index.html` sin servidor; se entrega en .zip. | `abrir-prototipo.bat` |
 
 ## Pruebas realizadas
 

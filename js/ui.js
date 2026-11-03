@@ -497,14 +497,14 @@
       const pages = Math.max(1, Math.ceil(all.length / st.per));
       st.page = Math.min(st.page, pages);
       const slice = all.slice((st.page - 1) * st.per, st.page * st.per);
-      thead.innerHTML = `<tr>${cfg.selectable ? `<th style="width:52px"><label class="check" style="min-height:0"><input type="checkbox" data-all aria-label="Seleccionar todos los de esta página"></label></th>` : ''}${cfg.columns.map((c) => `<th class="${c.right ? 'right' : ''}" ${st.sort === c.key ? `aria-sort="${st.dir === 'asc' ? 'ascending' : 'descending'}"` : ''}>${c.sortable === false ? L.esc(c.label) : `<button type="button" class="th-sort" data-sort="${c.key}" ${st.sort === c.key ? `aria-sort="${st.dir}"` : ''}>${L.esc(c.label)}${L.icon(st.sort === c.key ? (st.dir === 'asc' ? 'chev-up' : 'chev-down') : 'arrow-up-down')}</button>`}</th>`).join('')}${cfg.rowActions ? '<th class="right"><span class="sr-only">Acciones</span></th>' : ''}</tr>`;
+      thead.innerHTML = `<tr>${cfg.selectable ? `<th style="width:52px"><label class="check check-cell"><input type="checkbox" data-all aria-label="Seleccionar todos los de esta página"></label></th>` : ''}${cfg.columns.map((c) => `<th class="${c.right ? 'right' : ''}" ${st.sort === c.key ? `aria-sort="${st.dir === 'asc' ? 'ascending' : 'descending'}"` : ''}>${c.sortable === false ? L.esc(c.label) : `<button type="button" class="th-sort" data-sort="${c.key}" ${st.sort === c.key ? `aria-sort="${st.dir}"` : ''}>${L.esc(c.label)}${L.icon(st.sort === c.key ? (st.dir === 'asc' ? 'chev-up' : 'chev-down') : 'arrow-up-down')}</button>`}</th>`).join('')}${cfg.rowActions ? '<th class="right"><span class="sr-only">Acciones</span></th>' : ''}</tr>`;
       tbody.innerHTML = slice.length
-        ? slice.map((r) => `<tr data-id="${L.esc(r[cfg.key || 'id'])}" class="${st.sel.has(String(r[cfg.key || 'id'])) ? 'is-selected' : ''}" tabindex="-1">${cfg.selectable ? `<td><label class="check" style="min-height:0"><input type="checkbox" data-sel aria-label="Seleccionar ${L.esc(r[cfg.key || 'id'])}" ${st.sel.has(String(r[cfg.key || 'id'])) ? 'checked' : ''}></label></td>` : ''}${cfg.columns.map((c) => `<td class="${c.right ? 'num right' : ''} ${c.wrap ? 'wrap' : ''}">${c.render ? c.render(r) : L.esc(r[c.key])}</td>`).join('')}${cfg.rowActions ? `<td class="right"><div class="menu-wrap"><button type="button" class="btn btn-tertiary btn-icon" data-rowmenu aria-label="Acciones para ${L.esc(r[cfg.key || 'id'])}">${L.icon('more')}</button></div></td>` : ''}</tr>`).join('')
+        ? slice.map((r) => `<tr data-id="${L.esc(r[cfg.key || 'id'])}" class="${st.sel.has(String(r[cfg.key || 'id'])) ? 'is-selected' : ''}" tabindex="-1">${cfg.selectable ? `<td><label class="check check-cell"><input type="checkbox" data-sel aria-label="Seleccionar ${L.esc(r[cfg.key || 'id'])}" ${st.sel.has(String(r[cfg.key || 'id'])) ? 'checked' : ''}></label></td>` : ''}${cfg.columns.map((c) => `<td class="${c.right ? 'num right' : ''} ${c.wrap ? 'wrap' : ''}">${c.render ? c.render(r) : L.esc(r[c.key])}</td>`).join('')}${cfg.rowActions ? `<td class="right"><div class="menu-wrap"><button type="button" class="btn btn-tertiary btn-icon" data-rowmenu aria-label="Acciones para ${L.esc(r[cfg.key || 'id'])}">${L.icon('more')}</button></div></td>` : ''}</tr>`).join('')
         : `<tr><td colspan="99">${L.empty('search', 'Sin resultados', 'No hay registros que coincidan con la búsqueda o los filtros. Pruebe con otros términos o limpie los filtros.', '<button type="button" class="btn btn-secondary" data-clear>Limpiar filtros</button>')}</td></tr>`;
       sum.textContent = all.length ? `Mostrando ${(st.page - 1) * st.per + 1}–${Math.min(st.page * st.per, all.length)} de ${all.length}` : '0 resultados';
       const nums = [];
       for (let p = 1; p <= pages; p++) if (p === 1 || p === pages || Math.abs(p - st.page) <= 1) nums.push(p); else if (nums[nums.length - 1] !== '…') nums.push('…');
-      pag.innerHTML = `<li><button type="button" data-page="${st.page - 1}" ${st.page === 1 ? 'disabled' : ''} aria-label="Página anterior">${L.icon('chev-left')}</button></li>${nums.map((p) => (p === '…' ? '<li aria-hidden="true" style="align-self:center;padding:0 4px">…</li>' : `<li><button type="button" data-page="${p}" ${p === st.page ? 'aria-current="page"' : ''} aria-label="Página ${p}">${p}</button></li>`)).join('')}<li><button type="button" data-page="${st.page + 1}" ${st.page === pages ? 'disabled' : ''} aria-label="Página siguiente">${L.icon('chev-right')}</button></li>`;
+      pag.innerHTML = `<li><button type="button" data-page="${st.page - 1}" ${st.page === 1 ? 'disabled' : ''} aria-label="Página anterior">${L.icon('chev-left')}<span aria-hidden="true">Anterior</span></button></li>${nums.map((p) => (p === '…' ? '<li aria-hidden="true" style="align-self:center;padding:0 4px">…</li>' : `<li><button type="button" data-page="${p}" ${p === st.page ? 'aria-current="page"' : ''} aria-label="Página ${p}">${p}</button></li>`)).join('')}<li><button type="button" data-page="${st.page + 1}" ${st.page === pages ? 'disabled' : ''} aria-label="Página siguiente"><span aria-hidden="true">Siguiente</span>${L.icon('chev-right')}</button></li>`;
       const allBox = $('[data-all]', thead);
       if (allBox) { const ids = slice.map((r) => String(r[cfg.key || 'id'])); allBox.checked = ids.length && ids.every((x) => st.sel.has(x)); allBox.indeterminate = !allBox.checked && ids.some((x) => st.sel.has(x)); }
       bulk.innerHTML = st.sel.size && cfg.bulkActions ? `<div class="bulkbar" role="region" aria-label="Acciones masivas"><strong>${st.sel.size} seleccionado${st.sel.size > 1 ? 's' : ''}</strong>${cfg.bulkActions.map((a, i) => `<button type="button" class="btn btn-sm ${a.cls || 'btn-secondary'}" data-bulk="${i}">${a.icon ? L.icon(a.icon, 'icon-sm') : ''}${L.esc(a.label)}</button>`).join('')}<button type="button" class="btn btn-sm btn-tertiary" style="color:inherit" data-unsel>Quitar selección</button></div>` : '';
@@ -556,6 +556,19 @@
     L.timeout(() => { el.innerHTML = html; el.removeAttribute('aria-busy'); after?.(el); }, ms);
   };
 
+  // Mantiene la burbuja de ayuda dentro de la ventana para que no genere desplazamiento horizontal
+  const fitTip = (e) => {
+    const b = e.target.closest?.('.tip')?.querySelector('.tip-bubble');
+    if (!b) return;
+    b.style.setProperty('--tip-shift', '0px');
+    // Se mide de inmediato: leer el rectángulo fuerza el cálculo con la burbuja ya visible
+    const r = b.getBoundingClientRect(), pad = 8, vw = document.documentElement.clientWidth;
+    if (!r.width) return;
+    const shift = r.right > vw - pad ? vw - pad - r.right : r.left < pad ? pad - r.left : 0;
+    b.style.setProperty('--tip-shift', `${Math.round(shift)}px`);
+  };
+  document.addEventListener('mouseover', fitTip);
+  document.addEventListener('focusin', fitTip);
   L.tip = (text) => `<span class="tip"><button type="button" class="tip-btn" aria-label="Más información: ${L.esc(text)}">${L.icon('info', 'icon-sm')}</button><span class="tip-bubble" role="tooltip">${L.esc(text)}</span></span>`;
 
   L.badge = (text, kind = '') => `<span class="badge ${kind ? 'badge-' + kind : ''}">${L.esc(text)}</span>`;

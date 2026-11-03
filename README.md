@@ -25,6 +25,7 @@ Para recorrerlo, entre por «Ingresar», elija un actor en la lista desplegable 
 3. `#/devoluciones`: el proceso secundario con su flujo de aprobación.
 4. `#/analitica`: indicadores, 8 tipos de gráfico, filtros y profundización hasta la entrega.
 5. Trazabilidad con SD3 y SD4: ver [docs/trazabilidad.md](docs/trazabilidad.md) y [docs/cumplimiento.md](docs/cumplimiento.md) (no forman parte del sitio).
+6. Arquitectura de información (RT-25.09) y sistema de diseño (RT-25.05): ver [docs/arquitectura_informacion.md](docs/arquitectura_informacion.md) y [docs/sistema_diseno.md](docs/sistema_diseno.md).
 
 ## Estructura
 

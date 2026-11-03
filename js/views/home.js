@@ -183,6 +183,12 @@
             <div><span id="pf-tx" style="font-weight:600;display:block;margin-bottom:6px">Tamaño del texto</span><div class="segmented" role="group" aria-labelledby="pf-tx">${[['md', 'Normal'], ['lg', 'Grande'], ['xl', 'Muy grande']].map(([v, l]) => `<button type="button" data-pref="text" data-v="${v}" aria-pressed="${pref('text', 'md') === v}">${l}</button>`).join('')}</div></div>
             <div><span id="pf-dn" style="font-weight:600;display:block;margin-bottom:6px">Densidad de los listados</span><div class="segmented" role="group" aria-labelledby="pf-dn">${[['compact', 'Compacta'], ['normal', 'Normal'], ['comfortable', 'Amplia']].map(([v, l]) => `<button type="button" data-pref="density" data-v="${v}" aria-pressed="${pref('density', 'normal') === v}">${l}</button>`).join('')}</div></div>
           </div></section>
+        <section class="card"><div class="card-head"><h2>Accesibilidad</h2></div>
+          <div class="stack">
+            <div><span id="pf-ct" style="font-weight:600;display:block;margin-bottom:6px">Contraste</span><div class="segmented" role="group" aria-labelledby="pf-ct">${[['normal', 'Normal'], ['high', 'Alto contraste']].map(([v, l]) => `<button type="button" data-pref="contrast" data-v="${v}" aria-pressed="${pref('contrast', 'normal') === v}">${l}</button>`).join('')}</div></div>
+            <div><span id="pf-sc" style="font-weight:600;display:block;margin-bottom:6px">Atajos de teclado</span><div class="segmented" role="group" aria-labelledby="pf-sc">${[['on', 'Activados'], ['off', 'Desactivados']].map(([v, l]) => `<button type="button" data-pref="shortcuts" data-v="${v}" aria-pressed="${pref('shortcuts', 'on') === v}">${l}</button>`).join('')}</div>
+              <button type="button" class="btn btn-tertiary btn-sm" style="margin-top:var(--sp-2)" id="pf-keys">${icon('info', 'icon-sm')}Ver atajos disponibles</button></div>
+          </div></section>
         <section class="card"><div class="card-head"><h2>Notificaciones</h2></div>
           <div class="table-wrap"><table class="table"><caption class="sr-only">Canales por tipo de aviso</caption><thead><tr><th>Aviso</th><th>App</th><th>Correo</th><th>SMS</th></tr></thead><tbody>${['Tareas asignadas', 'Alertas críticas', 'Resumen diario'].map((t, i) => `<tr><td>${t}</td>${[1, i !== 1, i === 1].map((on, j) => `<td><label class="switch"><input type="checkbox" ${on ? 'checked' : ''} aria-label="${t} por ${['app', 'correo', 'SMS'][j]}"></label></td>`).join('')}</tr>`).join('')}</tbody></table></div>
           <button type="button" class="btn btn-primary" style="margin-top:var(--sp-4)" id="pf-save">Guardar preferencias</button></section>
@@ -201,6 +207,7 @@
         else L.applyPrefs();
         L.toast('Preferencia aplicada', b.textContent, 'success', { duration: 2000 });
       }));
+      $('#pf-keys', root).onclick = () => L.showShortcuts();
       $('#pf-save', root).onclick = (e) => L.busy(e.currentTarget, () => L.toast('Preferencias guardadas', 'Se aplican en todos sus dispositivos.', 'success'), 700);
     }
   });

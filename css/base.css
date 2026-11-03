@@ -237,7 +237,7 @@ hr { border: 0; border-top: 1px solid var(--c-line-soft); margin: var(--sp-5) 0;
 /* Botón visible para plegar y desplegar el menú lateral (borde del menú) */
 .sidebar-fold { display: none; }
 @media (min-width: 1024px) {
-  .sidebar-fold { display: grid; place-items: center; position: fixed; z-index: 70; top: 20px; left: calc(var(--sidebar-w) - 16px); width: 32px; height: 32px; padding: 0; border: 1px solid var(--c-line-strong); border-radius: 50%; background: var(--c-surface); color: var(--c-ink); box-shadow: var(--shadow-2); cursor: pointer; transition: left var(--dur) var(--ease); }
+  .sidebar-fold { display: grid; place-items: center; position: fixed; z-index: 70; top: 20px; left: calc(var(--sidebar-w) - 22px); width: var(--target); height: var(--target); padding: 0; border: 1px solid var(--c-line-strong); border-radius: 50%; background: var(--c-surface); color: var(--c-ink); box-shadow: var(--shadow-2); cursor: pointer; transition: left var(--dur) var(--ease); }
   .app.sidebar-collapsed .sidebar-fold { left: var(--sp-3); }
   .topbar .menu-toggle { display: none; }
   .topbar { transition: padding var(--dur) var(--ease); }

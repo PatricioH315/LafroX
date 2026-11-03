@@ -126,7 +126,7 @@
         <div id="f2-msg" aria-live="polite" style="margin-top:var(--sp-3)"></div>
         <p class="hint">Demostración: cualquier código de 6 dígitos es válido; «000000» muestra el error.</p>
         <button class="btn btn-primary btn-block big-btn" type="submit" style="margin-top:var(--sp-3)">Verificar e ingresar</button>
-        <div class="row-between" style="margin-top:var(--sp-3)"><button type="button" class="btn btn-tertiary" id="resend" disabled>Reenviar código en 30 s</button><a href="#/ingresar">Usar otra cuenta</a></div>
+        <div class="row-between" style="margin-top:var(--sp-3)"><button type="button" class="btn btn-tertiary" id="resend" disabled>Reenviar código en 30 s</button><a href="#/ingresar" class="btn btn-tertiary">Usar otra cuenta</a></div>
       </form></div>`;
     },
     mount: (root) => {
