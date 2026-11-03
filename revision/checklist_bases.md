@@ -4,6 +4,25 @@ Lista de todo lo que el prototipo debe contener o demostrar según las **Bases T
 
 Marque cada casilla solo después de comprobarla en el prototipo. Si un punto no se cumple, anote la pantalla o el motivo en la columna de observaciones de la sección final.
 
+## Constancia: lo que el prototipo no puede demostrar por sí mismo
+
+El prototipo es una simulación sin servidor. Las bases no exigen funcionalidad real (Cap. 25.6), pero algunos puntos de esta lista no se comprueban navegando el prototipo: dependen de la publicación, de un proceso de pruebas o de otro entregable.
+
+| # | Exigencia | Fuente | Por qué no se demuestra en la simulación | Cómo se acredita |
+|---|---|---|---|---|
+| 1 | Acceso garantizado por seis meses | RT-25.07 | Depende del servicio donde se publique, no del prototipo | Publicar en un servicio estable y conservar el enlace |
+| 2 | Enlace navegable en línea | RT-25.06 | La copia local con `.bat` no es un enlace en línea | Publicar antes del 13-11-2026 y probar el enlace |
+| 3 | Verificación de WCAG con herramientas automatizadas y pruebas manuales | RT-13.01; Art. 26° | Es un proceso de prueba, no una pantalla | Informe de conformidad de accesibilidad (entregable 17) |
+| 4 | Pruebas de usabilidad con personas usuarias reales del CLIENTE | RT-13.03; Art. 26° | Requiere participantes reales | Documento de hallazgos y cambios de diseño |
+| 5 | Indicadores de usabilidad comprometidos (tiempo, pasos, errores, aprendizaje) | RT-13.04; Art. 26° | Se miden con personas usuarias, no se simulan | Propuesta técnica, con su método de medición |
+| 6 | Uso con guantes, a la intemperie y con luminosidad variable | RT-13.08; Art. 26° | Solo se prueba en el dispositivo y el lugar reales | Prueba en terreno con el terminal especificado |
+| 7 | Operación real sin conexión | RT-13.08; Cap. 25.2 | El prototipo simula la cola y la sincronización, sin persistencia ni servidor | Pruebas de aceptación con dispositivos reales |
+| 8 | Compatibilidad con navegadores | RT-25.06; RT-13.10 | Hay que probarlo en cada navegador; la simulación no lo garantiza | Matriz de navegadores y registro de pruebas |
+| 9 | Arquitectura de información | RT-25.09 | Es un documento que acompaña al prototipo, no una pantalla | Documento con mapa del sitio, diagrama, taxonomía, menús y jerarquía |
+| 10 | Exportar a documento interactivo sin conexión (deseable) | RT-25.10 | Es un formato de entrega adicional | Archivo exportado entregado junto al enlace |
+
+Estos puntos siguen en la lista, pero se marcan con la evidencia de la última columna, no navegando el prototipo.
+
 ## Cómo usar esta lista
 
 1. Abra el prototipo desde el enlace en línea que se entregará, no desde la copia local.

@@ -4,6 +4,28 @@ Lista de lo que el prototipo debe demostrar según los requerimientos del **Subd
 
 Marque cada casilla solo después de verla funcionando en el prototipo. El prototipo no tiene servidor (Bases Técnicas Transversales, 25.6): lo que depende de integraciones, cálculo central o persistencia se da por cumplido si la pantalla **simula** el resultado de forma creíble (por ejemplo, la alerta que llega, el estado que cambia o el documento que se descarga).
 
+## Constancia: lo que una simulación no puede demostrar
+
+El prototipo es estático: no tiene servidor, base de datos, integraciones ni dispositivos reales. Las Bases Técnicas Transversales (25.6) declaran que nada de eso se exige. Por eso, en los requerimientos de la tabla, el prototipo **solo puede mostrar la pantalla y el resultado simulado**; la parte indicada en «No demostrable» queda pendiente para la construcción y la aceptación.
+
+| # | Límite | Requerimientos afectados | Lo que sí muestra el prototipo | No demostrable |
+|---|---|---|---|---|
+| 1 | Integración real con el ERP | RF-01.09, RF-02.06, RF-03.11, RF-05.06, RF-06.14, RF-07.04, RF-07.08, RF-07.09, RF-08.02, RF-10.03 | El estado «enviado al ERP» y el mensaje si el ERP no responde | Que la transacción llegue, se concilie y quede sin diferencias |
+| 2 | Intercambio EDI con cadenas de supermercados | RF-12.01, RF-12.02, RF-12.04, RF-12.09, RF-12.13 | La bandeja de pedidos EDI, sus validaciones y excepciones | Recepción y envío real de mensajes EDI, ASN y acuses |
+| 3 | Dispositivos y sensores | RF-09.03, RF-09.04, RF-09.05, RF-14.01, RF-14.02, RF-14.03, RF-14.04, RF-11.02 | Mapas, curvas de temperatura, alertas y desvíos con datos de ejemplo | Lectura continua de GPS, telemetría y sensores de frío |
+| 4 | Lectores e impresoras | RF-01.02, RF-01.07, RF-01.08, RF-05.02, RF-05.05, RF-05.07, RF-06.13 | El botón de escaneo, la validación del código y la etiqueta o comprobante en pantalla | Escaneo GS1 con lector físico e impresión térmica |
+| 5 | Plazos y tiempos de respuesta | RF-01.05 (≤ 5 min), RF-07.05 (< 2 s), RF-08.04 (≤ 24 h), RF-12.01 (15 s), RF-12.04 (2 min), RF-12.09 (2 min), RF-12.13 (30 min), RF-17.11 (2 s), RF-06.08 (2 min) | Que el aviso o el resultado aparece | Medir el plazo con carga y datos reales |
+| 6 | Resultados operacionales | RF-12.10 (80 % dentro de la ventana), RF-09.01 (retiro en < 2 h con datos reales) | El cálculo y el simulacro con datos de ejemplo | El porcentaje logrado en la operación |
+| 7 | Envío real de mensajes | RF-04.06, RF-11.01, RF-12.25, RF-12.27, RF-17.10, RF-18.02, RF-18.03 | La notificación en la app, el aviso de «correo enviado» y la configuración de canales | Entrega de correos y SMS, reintentos y expiración de enlaces |
+| 8 | Procesos automáticos de fondo | RF-02.03, RF-06.07, RF-11.01, RF-15.05 | El resultado del proceso (propuesta, reporte, cuenta creada) | La ejecución programada y sin intervención |
+| 9 | Seguridad y garantías de integridad | RF-17.04, RF-17.08, RF-18.01, RF-07.09 | La consulta de auditoría, las versiones y la firma en pantalla | Inalterabilidad, cifrado, firma avanzada válida e idempotencia |
+| 10 | Identidad real | RF-15.01, RF-15.02, RF-15.03, RF-15.04 | Inicio de sesión unificado, segundo factor y permisos por perfil, simulados | Federación, SSO entre módulos y MFA reales |
+| 11 | Concurrencia entre personas usuarias | RF-03.03, RNG-01 | El quiebre parcial cuando el stock no alcanza | Que dos preventistas confirmen a la vez y gane el primero |
+| 12 | Sincronización sin conexión real | RF-06.07 y Anexo 4-J (SD4) | La cola de pendientes y la sincronización al volver la señal | Persistencia cifrada en el dispositivo y conciliación con el servidor |
+| 13 | Observabilidad y operación | RF-16.01, RF-16.03, RF-16.04 | Tableros y alertas de negocio con datos de ejemplo | Métricas, registros y trazas reales e informes de causa raíz |
+
+Al marcar un requerimiento de esta tabla, verifique solo la columna «Lo que sí muestra el prototipo».
+
 ## Cómo usar esta lista
 
 1. Ingrese con el perfil del actor indicado en cada requerimiento.
