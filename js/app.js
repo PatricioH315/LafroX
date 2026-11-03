@@ -136,6 +136,7 @@
         <nav class="nav" id="nav" aria-label="Principal"></nav>
         <div class="sidebar-foot">Prototipo navegable · datos simulados<br>Caso 02 Logística · Informe 3</div>
       </aside>
+      <button type="button" class="sidebar-fold" aria-controls="sidebar" aria-expanded="true" aria-label="Ocultar menú" data-fold>${icon('chev-left')}</button>
       <div class="scrim" data-close-nav></div>
       <header class="topbar">
         <button type="button" class="btn btn-tertiary btn-icon menu-toggle" aria-label="Abrir menú" aria-controls="sidebar" aria-expanded="false" data-open-nav>${icon('menu')}</button>
@@ -152,6 +153,7 @@
       <main id="main" class="main" tabindex="-1"></main>`;
 
     $('[data-open-nav]').onclick = () => (isDesktop() ? setCollapsed(!app().classList.contains('sidebar-collapsed')) : toggleNav(!app().classList.contains('nav-open')));
+    $('[data-fold]').onclick = () => setCollapsed(!app().classList.contains('sidebar-collapsed'));
     setCollapsed(L.store.get('nav.collapsed', false), false);
     $('[data-close-nav]').onclick = () => toggleNav(false);
     $('#nav').addEventListener('click', (e) => { if (e.target.closest('a') && !isDesktop()) toggleNav(false); });
@@ -200,6 +202,10 @@
     app().classList.toggle('sidebar-collapsed', c);
     if (save) L.store.set('nav.collapsed', c);
     const b = $('[data-open-nav]');
+    const f = $('[data-fold]');
+    f.innerHTML = icon(c ? 'chev-right' : 'chev-left');
+    f.setAttribute('aria-expanded', !c);
+    f.setAttribute('aria-label', c ? 'Mostrar menú' : 'Ocultar menú');
     if (isDesktop()) { b.setAttribute('aria-expanded', !c); b.setAttribute('aria-label', c ? 'Mostrar menú' : 'Ocultar menú'); }
   }
 
