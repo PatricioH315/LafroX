@@ -97,8 +97,9 @@ hr { border: 0; border-top: 1px solid var(--c-line-soft); margin: var(--sp-5) 0;
 .sidebar-head { display: flex; align-items: center; gap: var(--sp-2); height: var(--topbar-h); flex: none; padding: 0 var(--sp-3) 0 var(--sp-5); border-bottom: 1px solid #2a2a2a; }
 .sidebar .brand { display: flex; align-items: center; gap: var(--sp-3); flex: 1; min-width: 0; text-decoration: none; color: inherit; }
 /* Botón de plegar dentro del menú: mismo lenguaje que los enlaces del menú */
-.sidebar-fold { display: grid; place-items: center; flex: none; width: var(--target); height: var(--target); padding: 0; border: 0; border-radius: var(--radius-sm); background: transparent; color: #b5b5b5; cursor: pointer; transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease); }
-@media (hover: hover) { .sidebar-fold:hover { background: #2a2a2a; color: #fff; } }
+.sidebar-fold { display: grid; place-items: center; flex: none; width: var(--target); height: var(--target); padding: 0; border: 1px solid #3a3a3a; border-radius: var(--radius-sm); background: #232323; color: #f4f4f4; cursor: pointer; transition: background-color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease); }
+.sidebar-fold .icon { width: 22px; height: 22px; stroke-width: 2.2; }
+@media (hover: hover) { .sidebar-fold:hover { background: #2f2f2f; border-color: #e8641b; color: #fff; } }
 .sidebar-fold:active { background: #333; }
 .sidebar-fold:focus-visible { outline-color: #f29a5e; }
 .brand-logo { width: 32px; height: 34px; flex: none; }

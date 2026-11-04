@@ -132,7 +132,7 @@
     app().innerHTML = `
       <a class="skip-link" href="#main">Saltar al contenido</a>
       <aside class="sidebar" id="sidebar" aria-label="Menú principal">
-        <div class="sidebar-head"><a class="brand" href="#/inicio">${logo()}<span class="brand-name">Puelche<span class="brand-sub">Plataforma LafroX</span></span></a><button type="button" class="sidebar-fold" aria-controls="sidebar" aria-expanded="true" aria-label="Plegar menú" title="Plegar menú" data-fold>${icon('sidebar')}</button></div>
+        <div class="sidebar-head"><a class="brand" href="#/inicio">${logo()}<span class="brand-name">Puelche<span class="brand-sub">Plataforma LafroX</span></span></a><button type="button" class="sidebar-fold" aria-controls="sidebar" aria-expanded="true" aria-label="Plegar menú" title="Plegar menú" data-fold>${icon('chev-left')}</button></div>
         <nav class="nav" id="nav" aria-label="Principal"></nav>
         <div class="sidebar-foot">Prototipo navegable · datos simulados<br>Caso 02 Logística · Informe 3</div>
       </aside>
@@ -211,7 +211,7 @@
     if (save) L.store.set('nav.collapsed', c);
     const f = $('[data-fold]');
     const label = isDesktop() ? (c ? 'Desplegar menú' : 'Plegar menú') : 'Cerrar menú';
-    f.innerHTML = icon(isDesktop() ? 'sidebar' : 'x');
+    f.innerHTML = icon(isDesktop() ? (c ? 'chev-right' : 'chev-left') : 'x');
     f.setAttribute('aria-expanded', isDesktop() ? !c : true);
     f.setAttribute('aria-label', label);
     f.title = label;
