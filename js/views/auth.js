@@ -56,6 +56,7 @@
           <div class="field"><label for="ot-r">RUT del conductor <span class="req" aria-hidden="true">*</span></label><input id="ot-r" class="input mono" inputmode="text" placeholder="12.345.678-5" required></div>
           <div class="field"><label for="ot-c">Código de turno <span class="req" aria-hidden="true">*</span></label><input id="ot-c" class="input mono" inputmode="numeric" maxlength="8" placeholder="8 dígitos" required></div>
           <button class="btn btn-secondary btn-block big-btn" type="submit">Iniciar turno</button>
+          <p class="hint" style="margin:0">Simulación: el código emitido para Óscar Vidal (RUT 15.482.337-9) es <span class="mono">48213705</span>. Otro código se rechaza; <span class="mono">00000000</span> simula un código vencido.</p>
         </form>`)}
       <p class="small muted" style="margin:var(--sp-4) 0 0;text-align:center">¿Su almacén aún no es cliente? <a href="#/registro">Solicite una cuenta</a></p>
     </div></div>`,
@@ -105,7 +106,12 @@
       fo.onsubmit = (e) => {
         e.preventDefault();
         if (!L.validateAll(fo)) return;
-        L.busy($('[type=submit]', fo), () => { L.toast('Turno iniciado', 'Credencial válida por 14 horas, renovable a las 12 horas.', 'success'); finish('conductor-ext'); }, 1000);
+        const code = $('#ot-c', fo).value, rut = L.rut.clean($('#ot-r', fo).value);
+        L.busy($('[type=submit]', fo), () => {
+          if (code === '00000000') { err.innerHTML = L.alert('danger', 'Código vencido', 'Este código ya no es válido: cada código sirve para un solo turno. Pida uno nuevo a su jefe de flota.'); $('#ot-c', fo).focus(); return; }
+          if (code !== '48213705' || rut !== '154823379') { err.innerHTML = L.alert('danger', 'Código o RUT incorrecto', 'El código no corresponde a este RUT. Revise ambos datos o pida un código nuevo a su jefe de flota.'); $('#ot-c', fo).focus(); return; }
+          err.innerHTML = ''; L.toast('Turno iniciado', 'Credencial válida por 14 horas, renovable a las 12 horas.', 'success'); finish('conductor-ext');
+        }, 1000);
       };
     }
   });

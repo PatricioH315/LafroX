@@ -51,14 +51,19 @@
       <div id="ro-sod" style="margin-top:var(--sp-4)"></div>`,
     mount: (root) => {
       const changes = new Set();
+      // A role that can both create (1) and approve (3) breaks segregation of duties (RF-17.03)
+      const sod = () => {
+        const roles = D.roles.filter((r) => $(`[data-r="${r.id}"][data-i="1"]`, root).checked && $(`[data-r="${r.id}"][data-i="3"]`, root).checked);
+        $('#ro-sod', root).innerHTML = roles.length ? L.alert('warning', `Segregación de funciones: ${roles.length} rol(es) pueden crear y aprobar`, `${roles.map((r) => esc(r.nombre)).join(', ')}. Mientras tengan ambos permisos, el sistema impide que una misma persona apruebe una transacción que ella creó: la aprobación pasa a otra persona del rol. Revise antes de guardar.`) : '';
+      };
       $$('[data-r]', root).forEach((c) => (c.onchange = () => {
         const k = c.dataset.r + c.dataset.i;
         changes.has(k) ? changes.delete(k) : changes.add(k);
         $('#ro-save', root).disabled = !changes.size;
         $('#ro-save', root).innerHTML = `${icon('check')}Guardar cambios${changes.size ? ` (${changes.size})` : ''}`;
-        const conflict = $(`[data-r="conductor"][data-i="3"]`, root).checked || $(`[data-r="finanzas"][data-i="1"]`, root).checked && $(`[data-r="finanzas"][data-i="3"]`, root).checked;
-        $('#ro-sod', root).innerHTML = conflict ? L.alert('warning', 'Posible conflicto de segregación de funciones', 'Un mismo rol podría crear y aprobar la misma transacción. Revise antes de guardar.') : '';
+        sod();
       }));
+      sod();
       $('#ro-save', root).onclick = async () => { if (await L.confirm({ title: `¿Guardar ${changes.size} cambio(s) de permisos?`, message: 'Los cambios con impacto operacional quedan pendientes de aprobación por un segundo perfil (RF-17.03).', confirmLabel: 'Enviar a aprobación' })) { changes.clear(); $('#ro-save', root).disabled = true; $('#ro-save', root).innerHTML = `${icon('check')}Guardar cambios`; L.toast('Cambios enviados a aprobación', 'Gerencia de Operaciones debe aprobarlos.', 'success'); } };
       $('#ro-new', root).onclick = () => L.modal({ title: 'Nuevo rol', body: `<div class="field"><label for="nr-n">Nombre del rol</label><input id="nr-n" class="input"></div><div class="field" style="margin-top:12px"><label for="nr-b">Basado en</label><select id="nr-b" class="select">${D.roles.map((r) => `<option>${esc(r.nombre)}</option>`).join('')}</select></div>`, onOpen: (d) => L.bindField($('#nr-n', d), ['required', (v) => (D.roles.some((r) => r.nombre.toLowerCase() === v.toLowerCase()) ? 'Ya existe un rol con ese nombre.' : '')]), actions: [{ label: 'Cancelar' }, { label: 'Crear rol', cls: 'btn-primary', onClick: (api) => { if (!L.validateAll(api.el)) return false; L.toast('Rol creado', $('#nr-n', api.el).value, 'success'); } }] });
     }

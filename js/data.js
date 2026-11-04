@@ -60,6 +60,13 @@
     stock: int(120, 4800), reservado: int(10, 400), transito: int(0, 300),
     trazable: p[2] !== 'Seco' || i % 3 === 0
   }));
+  // Reservations cannot exceed physical stock: available stock is never negative (RNG-02)
+  D.productos.forEach((p) => { p.reservado = Math.min(p.reservado, Math.floor(p.stock * 0.4)); });
+  // Price exceptions per client or chain, configured by Comercial (RF-03.11)
+  D.excepcionesPrecio = [
+    { id: 'EP-104', alcance: 'Cadena', destino: 'Supermercado Regional Maule', sku: D.productos[6].sku, producto: D.productos[6].nombre, tipo: 'Precio fijo', valor: 2490, vigencia: '01-11-2026 a 31-12-2026', aprobado: 'Rubén Salinas Fuentealba', estado: 'Vigente' },
+    { id: 'EP-103', alcance: 'Cliente', destino: 'Hotel Plaza Talca', sku: D.productos[11].sku, producto: D.productos[11].nombre, tipo: 'Descuento', valor: 6, vigencia: '15-10-2026 a 15-01-2027', aprobado: 'Rubén Salinas Fuentealba', estado: 'Vigente' }
+  ];
 
   /* ---------- Clientes (contraparte externa, RT-12.12) ---------- */
   const nombres = ['Almacén Doña Rosa', 'Minimarket El Roble', 'Supermercado La Esquina', 'Almacén San Expedito', 'Botillería Los Aromos', 'Minimarket Santa Elena', 'Almacén Las Rosas', 'Distribuidora Don Lucho', 'Almacén El Copihue', 'Minimarket Vista Hermosa', 'Restaurante El Fogón', 'Casino Agroindustrial Maule', 'Hotel Plaza Talca', 'Almacén La Palmera', 'Minimarket Lircay', 'Almacén Doña Inés', 'Panadería La Espiga', 'Almacén El Quillay', 'Minimarket Piduco', 'Supermercado Regional Maule · Local 12', 'Supermercado Regional Maule · Local 7', 'Almacén Las Camelias', 'Almacén Rayito de Sol', 'Fuente de soda El Paso', 'Minimarket Los Castaños', 'Almacén Tres Esquinas', 'Almacén El Maitén', 'Colegio San Agustín · Casino', 'Almacén Doña Juanita', 'Minimarket Florida', 'Almacén Los Laureles', 'Supermercado Regional Maule · Local 3', 'Almacén Santa Rita', 'Minimarket Cordillera', 'Almacén El Sauce', 'Restaurante Mar y Tierra', 'Almacén Doña Berta', 'Minimarket Villa Alegre', 'Almacén El Trébol', 'Almacén Empedrado Centro', 'Minimarket Linares Sur', 'Almacén Constitución Puerto', 'Almacén Doña Marta', 'Minimarket Parral Centro', 'Almacén El Boldo', 'Almacén San Clemente', 'Cafetería Universitaria', 'Almacén Los Niches'];
@@ -109,6 +116,13 @@
     };
   });
 
+  // Agreed list price changed after some orders were taken (RF-03.11, RF-03.12)
+  D.cambiosLista = [{ sku: D.productos[2].sku, nuevo: 1290, desde: '12-11-2026' }, { sku: D.productos[9].sku, nuevo: 1190, desde: '12-11-2026' }];
+  D.cambiosLista.forEach((c) => { const pr = D.productos.find((x) => x.sku === c.sku); c.anterior = pr.precio; c.nombre = pr.nombre; pr.precio = c.nuevo; });
+  // Orders not yet invoiced whose agreed price differs from the current list (RF-03.12)
+  D.porFacturar = ['Capturado sin conexión', 'Pendiente de validación', 'Confirmado', 'Retenido', 'Planificado', 'En picking', 'Cargado', 'En ruta', 'Reprogramado'];
+  L.difPrecio = (o) => { if (o.precioCorregido || !D.porFacturar.includes(o.estado)) return null; const lineas = o.lineas.filter((l) => { const pr = D.productos.find((x) => x.sku === l.sku); return pr && pr.precio !== l.precio; }); if (!lineas.length) return null; const lista = o.lineas.reduce((a, l) => a + l.cant * D.productos.find((x) => x.sku === l.sku).precio, 0); return { lineas, lista, diferencia: lista - o.total }; };
+
   /* ---------- Flota y rutas (M4, M6, M12) ---------- */
   const conductores = ['Jonathan Curihual', 'Manuel Gatica', 'Rodrigo Poblete', 'Iván Leiva', 'Carlos Navarrete', 'Felipe Arriagada', 'Mauricio Toro', 'Claudio Fuentes', 'Óscar Vidal', 'Andrés Cáceres', 'Sergio Lagos', 'Esteban Medina'];
   const zonasRuta = ['Cauquenes', 'Talca Norte', 'Talca Sur', 'Curicó', 'Linares', 'Constitución', 'San Javier', 'Molina', 'Parral', 'Chillán', 'Concepción', 'Los Ángeles'];
@@ -119,7 +133,17 @@
     paradas: int(14, 34), hechas: 0, ocupacion: int(58, 96), km: int(80, 260), estado: '', otif: Math.round((78 + rnd() * 20) * 10) / 10,
     salida: '07:' + String(int(0, 45)).padStart(2, '0'), eta: '', desvio: i === 6
   }));
+  const PLATES = ['KXTR-21', 'LBHP-34', 'JZWS-62', 'PFGD-51', 'RTKC-13', 'KXTR-47', 'LBHP-86', 'JZWS-29', 'KXTR-98', 'PFGD-73', 'RTKC-58', 'LBHP-15'];
+  D.rutas.forEach((r, i) => { r.camion = PLATES[i]; });
   D.rutas.forEach((r, i) => { r.hechas = Math.min(r.paradas, Math.round(r.paradas * [0.45, 0.8, 0.6, 1, 0.3, 0.55, 0.7, 0.2, 0.9, 0.5, 0.65, 0.4][i])); r.estado = r.hechas === r.paradas ? 'Completada' : r.hechas > 0 ? 'En ruta' : 'Por salir'; r.eta = `${14 + (i % 4)}:${String(int(0, 59)).padStart(2, '0')}`; });
+
+  // Orders not yet planned have no route assigned
+  const preRuta = ['Capturado sin conexión', 'Pendiente de validación', 'Confirmado', 'Retenido'];
+  D.pedidos.forEach((p) => { if (preRuta.includes(p.estado)) p.ruta = ''; });
+  // Orders of today's R-01 stops travel on R-01
+  [1, 5, 9, 13, 17, 21].forEach((k) => { D.pedidos[k].ruta = 'R-01'; D.pedidos[k].estado = 'En ruta'; });
+  // Other R-01 orders: delivered earlier today or still to be delivered on the truck
+  D.pedidos.forEach((p) => { if (p.ruta === 'R-01' && !['En ruta', 'Entregado', 'Parcial', 'Fallido', 'Rendido'].includes(p.estado)) p.estado = 'Entregado'; });
 
   // Paradas de la ruta del conductor (R-01 Cauquenes) para la vista de terreno
   D.paradas = [
@@ -136,10 +160,18 @@
   D.estadosDev = ['Registrada en ruta', 'Recepcionada en andén', 'En evaluación', 'Aprobada', 'Rechazada', 'Nota de crédito emitida'];
   D.devoluciones = Array.from({ length: 26 }, (_, i) => {
     const p = D.pedidos[(i * 3) % D.pedidos.length];
-    const prod = pick(D.productos);
+    pick(D.productos);
+    const ln = p.lineas[i % p.lineas.length];
+    const prod = D.productos.find((x) => x.sku === ln.sku);
     const est = ['Registrada en ruta', 'Recepcionada en andén', 'En evaluación', 'En evaluación', 'Aprobada', 'Nota de crédito emitida', 'Rechazada'][i % 7];
-    return { id: `DV-${String(5530 - i * 3)}`, pedido: p.id, cliente: p.cliente, clienteNombre: p.clienteNombre, sku: prod.sku, producto: prod.nombre, temp: prod.temp, cant: int(1, 24), lote: `L${int(2600, 2699)}-${int(10, 99)}`, motivo: pick(D.motivosDevolucion), estado: est, fecha: day(-Math.floor(i / 3), 10 + (i % 7)), conductor: pick(conductores), monto: int(4, 120) * 1000, destino: est === 'Aprobada' || est === 'Nota de crédito emitida' ? pick(['Reingreso a stock', 'Merma', 'Devolución a proveedor']) : '' };
+    return { id: `DV-${String(5530 - i * 3)}`, pedido: p.id, cliente: p.cliente, clienteNombre: p.clienteNombre, sku: prod.sku, producto: prod.nombre, temp: prod.temp, cant: Math.min(ln.cant, int(1, 24)), lote: (int(0, 1), int(0, 1), ln.lote), motivo: pick(D.motivosDevolucion), estado: est, fecha: day(-Math.floor(i / 3), 10 + (i % 7)), conductor: pick(conductores), monto: int(4, 120) * 1000, destino: est === 'Aprobada' || est === 'Nota de crédito emitida' ? pick(['Reingreso a stock', 'Merma', 'Devolución a proveedor']) : '' };
   });
+
+  // Cost to serve = base components + returns and waste of the client (RF-08.07).
+  // Share of the returned amount that becomes cost, by destination.
+  D.costoDestino = { Merma: 1, 'Devolución a proveedor': 0.25, 'Venta con descuento': 0.4, 'Reingreso a stock': 0.15, '': 0.15 };
+  L.costoDevol = (c) => { const ds = D.devoluciones.filter((d) => d.cliente === c.id && d.estado !== 'Rechazada'); const monto = ds.reduce((a, d) => a + d.monto * (D.costoDestino[d.destino] ?? 0.15), 0); return { n: ds.length, mermas: ds.filter((d) => d.destino === 'Merma').length, monto: Math.round(monto), pct: Math.round((monto / c.ventaMes) * 1000) / 10 }; };
+  D.clientes.forEach((c) => { c.costoBase = Math.round(c.costoServir * 0.86 * 10) / 10; Object.defineProperty(c, 'costoServir', { enumerable: true, configurable: true, get: () => Math.round((c.costoBase + L.costoDevol(c).pct) * 10) / 10 }); });
 
   /* ---------- Lotes y calidad (M9) ---------- */
   D.lotes = [
@@ -152,7 +184,7 @@
   ];
 
   /* ---------- Telemetría y cadena de frío (M12) ---------- */
-  D.camiones = D.rutas.filter((r) => r.frio).map((r, i) => ({ ruta: r.id, camion: r.camion, conductor: r.conductor, temp: [3.4, 4.1, -19.6, 7.9, 2.8, -21.2][i], setpoint: [4, 4, -18, 4, 4, -18][i], estado: i === 3 ? 'Excursión crítica' : i === 1 ? 'Advertencia' : 'Normal', señal: i === 4 ? 'Satélite' : 'Móvil', lat: 0, lng: 0 }));
+  D.camiones = D.rutas.filter((r) => r.frio).map((r, i) => ({ ruta: r.id, camion: r.camion, conductor: r.conductor, temp: [3.4, 4.1, -19.6, 8.6, 2.8, -21.2][i], setpoint: [4, 4, -18, 4, 4, -18][i], estado: i === 3 ? 'Excursión crítica' : i === 1 ? 'Advertencia' : 'Normal', señal: i === 4 ? 'Satélite' : 'Móvil', lat: 0, lng: 0 }));
 
   /* ---------- Usuarios, roles y auditoría (administración) ---------- */
   D.roles = [
@@ -211,7 +243,8 @@
   const ret = D.pedidos.find((p) => p.estado === 'Retenido');
   D.pedidoRetenido = ret.id;
   // Pedido con diferencia entre el importe a facturar y el precio pactado (RF-03.12)
-  const dif = D.pedidos.find((p) => ['Cargado', 'En ruta'].includes(p.estado)) || D.pedidos[3];
+  const difs = D.pedidos.filter((p) => L.difPrecio(p));
+  const dif = difs[0] || D.pedidos[3];
   D.pedidoDifPrecio = dif.id;
   D.tareas = [
     { id: 'T-1', titulo: 'Autorizar pedido retenido por crédito', ref: ret.id, tipo: 'Aprobación', plazo: 'Hoy 12:00', prioridad: 'Alta', ruta: '/pedidos/' + ret.id, perfiles: ['finanzas', 'comercial', 'evaluador', 'gerente-ops'] },
@@ -227,14 +260,15 @@
     { id: 'T-11', titulo: 'Iniciar ruta R-01 Cauquenes (6 entregas)', ref: 'R-01', tipo: 'Tarea', plazo: 'Hoy 07:30', prioridad: 'Alta', ruta: '/terreno', perfiles: ['conductor', 'conductor-ext'] },
     { id: 'T-12', titulo: 'Misión M-3302: 42 líneas en zona refrigerada', ref: 'M-3302', tipo: 'Tarea', plazo: 'Turno noche', prioridad: 'Alta', ruta: '/preparacion', perfiles: ['preparador', 'bodega'] },
     { id: 'T-13', titulo: 'Confirmar conductor y vehículo de 3 rutas de mañana', ref: 'Despacho 14-11', tipo: 'Tarea', plazo: 'Hoy 18:00', prioridad: 'Alta', ruta: '/portal/transportista', perfiles: ['transportista', 'evaluador'] },
-    { id: 'T-15', titulo: 'Corregir diferencia de precio antes de facturar', ref: dif.id, tipo: 'Alerta', plazo: 'Antes del cierre', prioridad: 'Alta', ruta: '/pedidos/' + dif.id, perfiles: ['comercial', 'evaluador', 'finanzas'] },
+    { id: 'T-15', titulo: `Corregir diferencia de precio en ${difs.length} pedido(s) antes de facturar`, ref: dif.id, tipo: 'Alerta', plazo: 'Antes del cierre', prioridad: 'Alta', ruta: '/pedidos?precio=dif', perfiles: ['comercial', 'evaluador', 'finanzas'] },
     { id: 'T-14', titulo: 'Revisar recepción de OC-88412 con 2 discrepancias', ref: 'OC-88412', tipo: 'Revisión', plazo: 'Mañana', prioridad: 'Media', ruta: '/portal/proveedor', perfiles: ['proveedor', 'evaluador'] }
   ];
+  D.plan = { rutas: D.rutas.length, entregas: D.rutas.reduce((a, r) => a + r.paradas + 2, 0) };
   D.notificaciones = [
     { t: 'Excursión crítica en camión ' + D.camiones[3].camion, d: 'Lote retenido automáticamente. Calidad debe decidir.', kind: 'danger', ruta: '/telemetria', hace: 'hace 4 min' },
     { t: 'Ruta R-07 con desvío de 3,4 km', d: 'Molina · conductor Mauricio Toro', kind: 'warning', ruta: '/telemetria', hace: 'hace 12 min' },
     { t: `Pedido ${ret.id} retenido por crédito`, d: 'Excede el límite en 14 %', kind: 'warning', ruta: '/pedidos/' + ret.id, hace: 'hace 25 min' },
-    { t: 'Rutas de mañana generadas en 11 min', d: '84 rutas · 1.432 entregas', kind: 'success', ruta: '/rutas', hace: 'hace 1 h' },
+    { t: 'Rutas de mañana generadas en 11 min', d: `${D.plan.rutas} rutas · ${L.fmt.n(D.plan.entregas)} entregas`, kind: 'success', ruta: '/rutas', hace: 'hace 1 h' },
     { t: 'Sincronización completa de 62 preventistas', d: '1.118 pedidos sin duplicados', kind: 'info', ruta: '/pedidos', hace: 'hace 2 h' }
   ];
 

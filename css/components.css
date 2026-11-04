@@ -241,6 +241,7 @@ fieldset > legend { margin-bottom: var(--sp-2); padding: 0; }
 .stepper { position: relative; display: flex; list-style: none; margin: 0 0 var(--sp-5); padding: 0; gap: var(--sp-2); counter-reset: step; overflow-x: auto; padding-bottom: var(--sp-1); }
 .stepper li { flex: 1 1 0; min-width: 110px; counter-increment: step; }
 .stepper .step { display: flex; flex-direction: column; gap: var(--sp-2); width: 100%; padding: 0; border: 0; background: none; font: inherit; text-align: left; color: var(--c-gray); cursor: default; }
+.stepper .step { min-height: var(--target); }
 .stepper button.step { cursor: pointer; }
 .stepper .bar { height: 4px; border-radius: 4px; background: var(--c-line-soft); transition: background var(--dur-slow) var(--ease); }
 .stepper .lbl { display: flex; align-items: center; gap: var(--sp-2); font-size: var(--fs-sm); font-weight: 600; }
@@ -411,7 +412,7 @@ fieldset > legend { margin-bottom: var(--sp-2); padding: 0; }
 .net-banner { display: flex; align-items: center; gap: var(--sp-2); padding: var(--sp-2) var(--sp-3); font-size: var(--fs-sm); font-weight: 600; }
 .net-banner.offline { background: var(--c-warning-soft); color: var(--c-warning); }
 .net-banner.online { background: var(--c-success-soft); color: var(--c-success); }
-.big-btn { min-height: 56px; font-size: var(--fs-lg); }
+.big-btn { min-height: 60px; font-size: var(--fs-lg); } /* 60 px ≈ 15,9 mm: operable con guantes (RNF-05.02) */
 
 /* Firma */
 .sign-pad { width: 100%; height: 160px; border: 1px dashed var(--c-line-strong); border-radius: var(--radius-sm); background: var(--c-surface); touch-action: none; cursor: crosshair; display: block; }

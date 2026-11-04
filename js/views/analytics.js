@@ -102,7 +102,7 @@
     title: (p) => (p.id ? `Entregas de ${p.id}` : 'Entregas de la ruta'), parent: (p) => `/analitica/${p.kpi || 'otif'}`, block: 'Tablero analítico', module: 'M10 · M6', rf: ['RF-11.03', 'RF-06.06'], actors: ['Gerencias'],
     render: ({ kpi, id }) => {
       const r = D.rutas.find((x) => x.id === id) || D.rutas[0];
-      const peds = D.pedidos.filter((p) => p.ruta === r.id).concat(D.pedidos.slice(0, 3));
+      const peds = D.pedidos.filter((p) => p.ruta === r.id && ['En ruta', 'Entregado', 'Parcial', 'Fallido', 'Reprogramado', 'Rendido'].includes(p.estado));
       return `<div class="page-head"><div class="titles"><span class="page-kicker">Profundización · nivel 3 de 3</span><h1>Entregas de ${r.id} · ${esc(r.zona)}</h1><p class="muted" style="margin:0">Cada entrega con su cumplimiento y causal. Una entrega parcial o tardía cuenta como incumplida (RNG-09).</p></div></div>
         <section class="card card-flush"><div class="table-wrap"><table class="table"><thead><tr><th>Pedido</th><th>Cliente</th><th>Ventana</th><th>Llegada real</th><th>A tiempo</th><th>Completa</th><th>Causal</th></tr></thead><tbody>${peds.map((p, i) => { const late = i % 4 === 2, part = i % 5 === 3; return `<tr><td><a class="row-link mono" href="#/pedidos/${p.id}">${p.id}</a></td><td>${esc(p.clienteNombre)}</td><td>${esc(p.ventana)}</td><td class="mono">${p.ventana.split('–')[late ? 1 : 0].replace(/:(\d\d)/, (m, mm) => ':' + String((+mm + 12 + i) % 60).padStart(2, '0'))}</td><td>${late ? L.badge('No', 'danger') : L.badge('Sí', 'success')}</td><td>${part ? L.badge('No', 'danger') : L.badge('Sí', 'success')}</td><td>${late ? 'Tráfico en ruta 5' : part ? 'Faltante en preparación' : '—'}</td></tr>`; }).join('')}</tbody></table></div></section>`;
     }

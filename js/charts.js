@@ -39,9 +39,10 @@
   };
 
   L.charts = {
-    bar(data, { w = 560, h = 260, unit = '', label = 'Gráfico de barras', target, color, highlight } = {}) {
+    bar(data, { w = 560, h = 260, unit = '', label = 'Gráfico de barras', target, targetLabel = 'Meta', color, highlight } = {}) {
       const pad = { t: 16, r: 12, b: 40, l: 48 };
-      const max = nice(Math.max(...data.map((d) => d.value), target || 0) * 1.1);
+      const top = Math.max(...data.map((d) => d.value), target || 0);
+      const max = unit === '%' && top <= 100 ? Math.min(100, nice(top * 1.1)) : nice(top * 1.1);
       const bw = (w - pad.l - pad.r) / data.length;
       const y = (v) => h - pad.b - ((h - pad.t - pad.b) * v) / max;
       let g = yAxis(w, h, pad, max, unit);
@@ -52,7 +53,7 @@
         g += `<rect x="${x}" y="${y(d.value)}" width="${bw * 0.64}" height="${Math.max(0, bh)}" rx="3" fill="${fill}" data-tip="${esc(d.label)}: ${fmtV(d.value, unit)}" ${focusable(d.drill, `${d.label}: ${fmtV(d.value, unit)}`)}><animate attributeName="height" from="0" to="${Math.max(0, bh)}" dur="0.5s" fill="freeze"/><animate attributeName="y" from="${h - pad.b}" to="${y(d.value)}" dur="0.5s" fill="freeze"/></rect>`;
         g += `<text x="${x + bw * 0.32}" y="${h - pad.b + 18}" text-anchor="middle">${esc(d.short || d.label)}</text>`;
       });
-      if (target != null) g += `<line x1="${pad.l}" x2="${w - pad.r}" y1="${y(target)}" y2="${y(target)}" stroke="var(--c-ink)" stroke-dasharray="5 4" stroke-width="1.5"/><text x="${w - pad.r}" y="${y(target) - 6}" text-anchor="end" style="fill:var(--c-ink);font-weight:600">Meta ${fmtV(target, unit)}</text>`;
+      if (target != null) g += `<line x1="${pad.l}" x2="${w - pad.r}" y1="${y(target)}" y2="${y(target)}" stroke="var(--c-ink)" stroke-dasharray="5 4" stroke-width="1.5"/><text x="${w - pad.r}" y="${y(target) - 6}" text-anchor="end" style="fill:var(--c-ink);font-weight:600">${esc(targetLabel)} ${fmtV(target, unit)}</text>`;
       g += `<line class="axis" x1="${pad.l}" x2="${w - pad.r}" y1="${h - pad.b}" y2="${h - pad.b}"/>`;
       return svg(w, h, label, g);
     },
@@ -73,7 +74,7 @@
       return svg(w, h, label, g);
     },
 
-    line(labels, series, { w = 560, h = 260, unit = '', label = 'Gráfico de líneas', target, area = false, min = 0 } = {}) {
+    line(labels, series, { w = 560, h = 260, unit = '', label = 'Gráfico de líneas', target, targetLabel = 'Meta', area = false, min = 0 } = {}) {
       const pad = { t: 16, r: 16, b: 40, l: 48 };
       const all = series.flatMap((s) => s.values).concat(target || 0);
       const max = unit === '%' ? Math.min(100, nice(Math.max(...all) * 1.02)) : nice(Math.max(...all) * 1.1);
@@ -84,7 +85,7 @@
       for (let i = 0; i <= 4; i++) { const v = lo + ((max - lo) / 4) * i; g += `<line class="grid-line" x1="${pad.l}" x2="${w - pad.r}" y1="${y(v)}" y2="${y(v)}"/><text x="${pad.l - 8}" y="${y(v) + 4}" text-anchor="end">${unit === '%' ? Math.round(v) + '%' : L.fmt.n(v)}</text>`; }
       const step = Math.ceil(labels.length / 8);
       labels.forEach((l, i) => { if (i % step === 0 || i === labels.length - 1) g += `<text x="${x(i)}" y="${h - pad.b + 18}" text-anchor="middle">${esc(l)}</text>`; });
-      if (target != null) g += `<line x1="${pad.l}" x2="${w - pad.r}" y1="${y(target)}" y2="${y(target)}" stroke="var(--c-ink)" stroke-dasharray="5 4" stroke-width="1.5"/><text x="${w - pad.r}" y="${y(target) - 6}" text-anchor="end" style="fill:var(--c-ink);font-weight:600">Meta ${fmtV(target, unit)}</text>`;
+      if (target != null) g += `<line x1="${pad.l}" x2="${w - pad.r}" y1="${y(target)}" y2="${y(target)}" stroke="var(--c-ink)" stroke-dasharray="5 4" stroke-width="1.5"/><text x="${w - pad.r}" y="${y(target) - 6}" text-anchor="end" style="fill:var(--c-ink);font-weight:600">${esc(targetLabel)} ${fmtV(target, unit)}</text>`;
       series.forEach((s, si) => {
         const col = s.color || C(si);
         const pts = s.values.map((v, i) => `${x(i)},${y(v)}`).join(' ');

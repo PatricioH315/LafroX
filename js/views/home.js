@@ -86,7 +86,7 @@
   const QUICK = {
     evaluador: [['activity', 'Recorrer el flujo de un pedido', '7 pasos de punta a punta', '/flujo'], ['truck', 'Ver la app de reparto', 'Perfil de terreno sin conexión', '/terreno'], ['chart', 'Abrir el tablero analítico', '7 tipos de gráfico', '/analitica']],
     'gerente-ops': [['route', 'Revisar rutas del día', '12 rutas en curso', '/rutas'], ['chart', 'OTIF de hoy', 'Profundizar hasta la entrega', '/analitica/otif'], ['alert', 'Excepciones abiertas', '3 requieren decisión', '/bandeja']],
-    planificador: [['route', 'Revisar ruta propuesta', 'Plan de mañana, 84 rutas', '/rutas'], ['thermo', 'Ver recorridos reales', 'Desvíos y telemetría', '/telemetria'], ['clipboard', 'Pedidos por planificar', 'Confirmados sin ruta', '/pedidos?estado=Confirmado']],
+    planificador: [['route', 'Revisar ruta propuesta', `Plan de mañana, ${D.plan.rutas} rutas`, '/rutas'], ['thermo', 'Ver recorridos reales', 'Desvíos y telemetría', '/telemetria'], ['clipboard', 'Pedidos por planificar', 'Confirmados sin ruta', '/pedidos?estado=Confirmado']],
     preventista: [['cart', 'Tomar un pedido', 'Funciona sin señal', '/terreno/preventa'], ['store', 'Mis clientes', 'Crédito, deuda e historial', '/clientes'], ['clipboard', 'Mis pedidos', 'Estado de sincronización', '/pedidos']],
     conductor: [['truck', 'Iniciar mi ruta', '6 entregas · R-01', '/terreno'], ['undo', 'Registrar devolución', 'Producto y envases', '/devoluciones/nueva'], ['cash', 'Rendir mi turno', 'Efectivo y documentos', '/rendicion']],
     preparador: [['scan', 'Continuar misión', 'M-3302 · 16 líneas', '/preparacion'], ['download', 'Recepción en andén', 'OC-88412 en curso', '/recepcion/nueva']],

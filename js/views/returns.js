@@ -113,7 +113,7 @@
       $('#a2', root) && ($('#a2', root).onclick = (e) => L.busy(e.currentTarget, () => advance('En evaluación', 'Enviada a Calidad')));
       if ($('#a3', root)) {
         L.bindField($('#a3-c', root), ['required']);
-        $('#a3', root).onsubmit = (e) => { e.preventDefault(); if (!L.validateAll(e.target)) return; d.destino = $('[name=dest]:checked', root).value; L.busy($('#a3 [type=submit]', root), () => advance('Aprobada', 'Destino aprobado')); };
+        $('#a3', root).onsubmit = (e) => { e.preventDefault(); if (!L.validateAll(e.target)) return; d.destino = $('[name=dest]:checked', root).value; const cl = L.findClient(d.cliente); L.busy($('#a3 [type=submit]', root), () => advance('Aprobada', cl ? `Destino «${d.destino}» aprobado · costo de servir de ${cl.nombre}: ${fmt.pct(cl.costoServir)} (RF-08.07)` : 'Destino aprobado')); };
         $('#a3-rej', root).onclick = async () => { if (await L.confirm({ title: '¿Rechazar la devolución?', message: 'El producto vuelve al cliente o se gestiona como merma del transporte. Esta decisión queda auditada.', confirmLabel: 'Rechazar', danger: true })) advance('Rechazada', 'Devolución rechazada'); };
       }
       $('#a4', root) && ($('#a4', root).onclick = (e) => L.busy(e.currentTarget, () => advance('Nota de crédito emitida', 'Nota de crédito emitida'), 1400));
