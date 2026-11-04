@@ -1,0 +1,313 @@
+\subsection{Asignación de esfuerzo por perfil y días equivalentes}
+\label{sec:T15-asignacion-perfil}
+
+La propuesta de asignación desglosa las familias de recursos entre los 31 perfiles de costeo para el horizonte de 56 meses. Conserva los códigos, períodos y HH de los paquetes. El código 00 identifica partidas clasificadas provisionalmente como servicio externo. El total de 220.023 HH comprende 207.487 HH de los 227 paquetes, 128 HH de restauraciones, 9.336 HH de soporte puente y 3.072 HH de reserva protegida. El escenario atribuye 218.698,20 HH a los perfiles y 1.324,80 HH a servicios externos.
+
+Los días equivalentes exactos se obtienen dividiendo las HH del perfil entre la dotación de referencia y una jornada de ocho horas. Para registrar días enteros, se toma el entero superior si puede financiarse con las HH asignadas al perfil. Cuando excede las HH disponibles, se toma el entero inferior y las HH restantes se conservan como fracción de jornada. La Tabla~\ref{tab:T15-perfiles} presenta los días enteros y conserva las HH originales. La dotación de referencia puede variar en la programación mensual y su suma no equivale a una dotación simultánea ni a los 124 especialistas de planta del Subdocumento 1. Las coberturas se desglosan según este formulario y el acompañamiento según el T-18. Las asignaciones por especialidad y el reparto de las marchas blancas se presentan como supuestos de planificación.
+
+\paragraph{Conciliación con la dedicación pagada.}
+El costeo distingue el esfuerzo imputado a los paquetes de la capacidad contratada por período. Se aplican las siguientes reglas:
+
+\begin{itemize}
+\item \textbf{Gerencia de Servicio.} El perfil tiene 182,4 días equivalentes exactos de esfuerzo y 182 días enteros en la tabla. Para remuneraciones en Operación se considera una dedicación del 100~\% en los meses 21 a 56: 36 meses por 160 HH nominales al mes, equivalentes a 5.760 HH o 720 jornadas nominales de ocho horas. Este valor se aplica únicamente a la dedicación durante Operación. Las HH de los paquetes ejecutadas dentro de esa dedicación se imputan a la misma asignación, sin sumarlas de nuevo al sueldo.
+\item \textbf{Funciones compartidas.} Arquitectura e Integración, y Funcional e Implantación, conservan su desglose de esfuerzo por perfil. En los períodos con un responsable común, se registra una sola dedicación pagada por persona y se distribuye su costo entre funciones según la asignación efectiva del período. Los refuerzos con otra persona se imputan a su propia dedicación.
+\item \textbf{Mesa N1, NOC y SOC.} La tabla conserva las HH de cobertura. Para remuneraciones se dimensionan los turnos por período según el Anexo 4-W.7 del Subdocumento 4 y la sección 4.1 de este formulario. La ingeniería de seguridad se separa de la cobertura SOC. Los días equivalentes de la tabla sirven para conciliar esfuerzo y la nómina se calcula con los turnos y relevos aprobados.
+\end{itemize}
+
+La conciliación económica se realiza por período y no altera las 220.023 HH del cronograma. La equivalencia de la tabla queda definida para este escenario; la disponibilidad nominal y los turnos se validan según la sección 5.7.
+
+La asignación diaria debe comprobar el refuerzo de Calidad y el solapamiento de Implantación en los meses 19 y 20. En el intervalo crítico de Calidad, 13 personas durante 13 días a 6,4 HH efectivas por día aportan 1.081,6 HH frente a una demanda mínima de 1.049,6 HH. La reserva protegida se conserva por separado.
+
+\begin{tablalafrox}{Perfiles de costeo y días equivalentes enteros. Fuente: elaboración a partir del Subdocumento 1, sección 1.5, y los Formularios T-15 y T-18.}{tab:T15-perfiles}
+{C{0.65cm} Y C{1.8cm} R{2cm} R{2.1cm}}
+{\cab{N.°} & \cab{Perfil} & \cab{Personas de referencia} & \cab{HH} & \cab{Días enteros}}
+  1 & Jefe de Proyecto & 1 & 4.748 & 593 \\
+  2 & Líder de Integración & 1 & 985,6 & 123 \\
+  3 & Arquitecto de Solución & 1 & 3.206,4 & 400 \\
+  4 & Líder de Desarrollo & 1 & 2.307,2 & 288 \\
+  5 & Líder Funcional & 1 & 144 & 18 \\
+  6 & Analista de Requerimientos & 4 & 368 & 11 \\
+  7 & Desarrollador Móvil Android / Kotlin & 3 & 3.685,6 & 153 \\
+  8 & Desarrollador Front-end Web & 2 & 4.048,8 & 253 \\
+  9 & Desarrollador Back-end & 5 & 11.196,8 & 279 \\
+  10 & Ingeniero de Datos & 2 & 3.624 & 226 \\
+  11 & Diseñador UX/UI y Accesibilidad & 1 & 468 & 58 \\
+  12 & Especialista en Integración & 3 & 3.728 & 155 \\
+  13 & Encargado de Seguridad de la Información & 1 & 1.248 & 156 \\
+  14 & Ingeniero DevOps / SRE & 2 & 6.892 & 430 \\
+  15 & Administrador de Base de Datos & 1 & 2.174,4 & 271 \\
+  16 & Líder de Calidad y Pruebas & 1 & 914,4 & 114 \\
+  17 & Operador de Mesa de Servicio — N1 & 9 & 59.903 & 831 \\
+  18 & Especialista de Soporte Técnico — N2 & 2 & 1.267,2 & 79 \\
+  19 & Analista QA y Automatización de Pruebas & 13 & 4.765,6 & 45 \\
+  20 & Documentador & 2 & 3.128,8 & 195 \\
+  21 & Líder de Implantación y Gestión del Cambio & 1 & 4.583,2 & 572 \\
+  22 & Instructor de Capacitación & 2 & 3.992 & 249 \\
+  23 & Líder de Datos & 1 & 1.449,6 & 181 \\
+  24 & Líder de Operación / SRE — Gerente de Servicio & 1 & 1.459,2 & 182 \\
+  25 & Gestor de Adquisiciones & 1 & 456 & 57 \\
+  26 & Apoyo en Bodega Nocturna & 2 & 4.224 & 264 \\
+  27 & Apoyo en Cross-docking & 3 & 4.608 & 192 \\
+  28 & Acompañante en Ruta & 7 & 9.600 & 171 \\
+  29 & Administrador de Plataforma y Redes & 5 & 5.080,8 & 127 \\
+  30 & Operador NOC & 5 & 29.952 & 748 \\
+  31 & Especialista de Ciberseguridad / Analista SOC & 5 & 34.489,6 & 862 \\
+\end{tablalafrox}
+
+Los días enteros de los 31 perfiles representan 218.320,00 HH. Las 378,20 HH de fracciones de jornada permanecen en la asignación original y se consideran al costear el esfuerzo completo.
+
+En la Tabla~\ref{tab:T15-perfiles-partidas}, la columna «Perfil y HH» presenta el código de perfil de la Tabla~\ref{tab:T15-perfiles} seguido de las HH asignadas entre paréntesis. La suma de esas HH reproduce el esfuerzo de la partida.
+
+\begin{anexohorizontal}
+\setlength{\textwidth}{\linewidth}
+\begin{tablalafrox}{Asignación propuesta de HH por partida. Fuente: elaboración a partir de los Formularios T-14, T-15 y T-18.}{tab:T15-perfiles-partidas}
+{L{1.45cm} Y C{0.85cm} C{1.4cm} R{1.55cm} L{4.4cm} L{3cm}}
+{\cab{EDT} & \cab{Partida} & \cab{Familia} & \cab{Meses} & \cab{HH} & \cab{Perfil y HH} & \cab{Estado}}
+  1.1.1 & Acta de constitución del proyecto, firmada con la Contraparte Técnica & JP & 1–1 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  1.1.2 & Documento de validación con el CLIENTE de los problemas y metas del proyecto & JP & 1–1 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  1.1.3 & Acta de confirmación con el CLIENTE de la fecha de inicio, la evidencia para el proveedor de lácteos, las ventanas de paso a producción y el acuse tributario & JP & 1–1 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  1.2.1 & Documento de especificación de requerimientos y línea base de alcance de la Etapa 1 (H1) & ARQ & 1–1 & 80 & 03 (16), 05 (24), 06 (40) & Estimación por perfil \\
+  1.2.2 & Documento de reglas de ruteo capturadas al planificador de rutas & IMP & 1–3 & 80 & 05 (24), 06 (36), 21 (20) & Estimación por perfil \\
+  1.2.3 & Documento de especificación de las interfaces sin documentación del ERP, del WMS de 2013 y de la telemetría del tercero & ARQ & 1–4 & 80 & 02 (16), 03 (16), 12 (48) & Estimación por perfil \\
+  1.2.4 & Matriz de trazabilidad: requerimiento, módulo, paquete y prueba (H1) & CAL & 2–2 & 80 & 16 (48), 19 (32) & Estimación por perfil \\
+  1.2.5 & Documento de línea base de alcance de la Etapa 2: canal moderno y costo de servir (H8) & ARQ & 13–13 & 80 & 03 (16), 05 (24), 06 (40) & Estimación por perfil \\
+  1.3.1 & Plan para la dirección del proyecto, con el calendario de congelamientos de septiembre, diciembre y el cierre mensual & JP & 1–1 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  1.3.2 & EDT y diccionario de la EDT (línea base del alcance) & JP & 2–2 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  1.3.3 & Carta Gantt de 56 meses con los hitos H1 a H12 y la ruta crítica & JP & 2–2 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  1.3.4 & Documento de nivelación de recursos y frentes del solapamiento de los meses 13 a 15 y 19 a 20 & JP & 2–2 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  1.3.5 & Reunión semanal de seguimiento con su informe semanal & JP & 1–20 & 480 & 01 (336), 20 (144) & Estimación por perfil \\
+  1.4.1 & Registro de interesados con su influencia, interés y estrategia & JP & 1–1 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  1.4.2 & Plan de comunicaciones con calendario y canales por grupo de interés & JP & 1–1 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  1.4.3 & Registro de solicitudes de cambio con análisis de impacto & JP & 1–56 & 896 & 01 (627,2), 20 (268,8) & Estimación por perfil \\
+  1.5.1 & Plan de calidad y plan de pruebas & CAL & 2–2 & 80 & 16 (48), 19 (32) & Estimación por perfil \\
+  1.5.2 & Puertas de calidad automáticas en la cadena de integración (cobertura unitaria global del 80 \% y de lógica de negocio del 70 \%) & CAL & 6–20 & 80 & 16 (12), 19 (68) & Estimación por perfil \\
+  1.6.1 & Plan de riesgos y registro inicial de riesgos según ISO 31000 & JP & 2–2 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  1.6.2 & Registro de riesgos revisado en cada Comité de Proyecto & JP & 1–20 & 160 & 01 (112), 20 (48) & Estimación por perfil \\
+  1.7.1 & Plan de Reversibilidad inicial (primeros 90 días) & JP & 3–3 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  1.7.2 & Primera actualización anual del Plan de Reversibilidad durante la implementación & JP & 15–15 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  1.8.1 & Oficina de gestión del proyecto con metodología basada en el PMBOK & JP & 1–20 & 320 & 01 (224), 20 (96) & Estimación por perfil \\
+  1.8.2 & Actas del Comité Ejecutivo mensual, con la aprobación de los cambios de alcance & JP & 1–56 & 448 & 01 (313,6), 20 (134,4) & Estimación por perfil \\
+  1.8.3 & Actas del Comité de Proyecto quincenal & JP & 1–20 & 240 & 01 (168), 20 (72) & Estimación por perfil \\
+  1.8.4 & Actas del Comité de Arquitectura mensual & ARQ & 1–56 & 448 & 03 (358,4), 02 (89,6) & Estimación por perfil \\
+  1.8.5 & Actas del Comité de Operación mensual, desde el mes 13 & SRE & 13–56 & 352 & 24 (264), 14 (88) & Estimación por perfil \\
+  1.8.6 & Informe mensual de avance con valor ganado & JP & 1–20 & 480 & 01 (336), 20 (144) & Estimación por perfil \\
+  1.8.7 & Tablero de estado del proyecto disponible para el CLIENTE & JP & 2–56 & 440 & 01 (308), 20 (132) & Estimación por perfil \\
+  1.8.8 & Espacio colaborativo con la documentación, los entregables, las actas, los riesgos y los cambios & JP & 1–56 & 448 & 01 (313,6), 20 (134,4) & Estimación por perfil \\
+  1.9.1 & Matriz de cumplimiento normativo por obligación legal, con su control y su evidencia & SEG & 1–1 & 80 & 13 (56), 31 (24) & Estimación por perfil \\
+  1.9.2 & Acuerdo de tratamiento de datos personales con el CLIENTE & SEG & 1–1 & 80 & 13 (56), 31 (24) & Estimación por perfil \\
+  1.9.3 & Registro de actividades de tratamiento y evaluación de impacto en protección de datos & SEG & 2–2 & 80 & 13 (56), 31 (24) & Estimación por perfil \\
+  1.9.4 & Certificación ISO/IEC 27001 vigente y entrega anual de los informes de certificación & SEG & 1–56 & 224 & 13 (156,8), 31 (67,2) & Estimación por perfil \\
+  1.9.5 & Garantía de fiel cumplimiento, seguros y certificados laborales vigentes durante el contrato & JP & 1–56 & 224 & 01 (156,8), 20 (67,2) & Estimación por perfil \\
+  2.1.1 & Documento de arquitectura lógica: capas, módulos M1 a M12 e interfaces & ARQ & 2–2 & 240 & 02 (48), 03 (48), 12 (144) & Estimación por perfil \\
+  2.1.2 & Documento de arquitectura física híbrida: nube, centros de distribución y plataformas de cross-docking & ARQ & 2–2 & 240 & 03 (192), 02 (48) & Estimación por perfil \\
+  2.1.3 & Modelo de datos y diccionario de datos, con la trazabilidad por lote & DAT & 2–2 & 240 & 23 (48), 10 (120), 15 (72) & Estimación por perfil \\
+  2.1.4 & Documento de diseño detallado de M11 y del intercambio con las cadenas & ARQ & 13–13 & 240 & 03 (192), 02 (48) & Estimación por perfil \\
+  2.2.1 & Plan de seguridad de la información & SEG & 2–2 & 240 & 13 (168), 31 (72) & Estimación por perfil \\
+  2.2.2 & Modelado de amenazas por componente y por integración externa, actualizado ante cada cambio & SEG & 3–10 & 240 & 13 (48), 31 (192) & Estimación por perfil \\
+  2.2.3 & Plan de respuesta a incidentes de seguridad, con aviso al CLIENTE en dos horas & SEG & 3–3 & 240 & 13 (168), 31 (72) & Estimación por perfil \\
+  2.2.4 & Matriz de clasificación de la información y matriz de controles & SEG & 2–2 & 240 & 13 (168), 31 (72) & Estimación por perfil \\
+  2.3.1 & Plano de la sala técnica de Talca, con su cálculo eléctrico y térmico & SRE & 1–2 & 240 & 14 (132), 29 (84), 24 (24) & Estimación por perfil \\
+  2.3.2 & Plano de distribución de los racks R01 de servidores y R02 de comunicaciones & SRE & 1–2 & 240 & 14 (132), 29 (84), 24 (24) & Estimación por perfil \\
+  2.3.3 & Plano de los gabinetes de borde de Concepción y de las plataformas de cross-docking & SRE & 2–2 & 240 & 14 (132), 29 (84), 24 (24) & Estimación por perfil \\
+  2.4.1 & Acta de aprobación de la arquitectura, el plan de seguridad y el modelo de datos (H2) & ARQ & 3–3 & 240 & 03 (192), 02 (48) & Estimación por perfil \\
+  2.4.2 & Acta de aprobación del diseño detallado de la Etapa 2 (H8) & ARQ & 13–13 & 240 & 03 (192), 02 (48) & Estimación por perfil \\
+  2.4.3 & Validación del diseño del kit en banco de pruebas & SRE & 3–3 & 320 & 14 (176), 29 (112), 24 (32) & Estimación por perfil \\
+  2.4.4 & Mapeo térmico por tipo de carrocería & ARQ & 4–4 & 240 & 03 (192), 02 (48) & Estimación por perfil \\
+  2.5.1 & Plan de continuidad del negocio según ISO 22301, con análisis de impacto y procedimientos manuales & SRE & 3–3 & 240 & 14 (132), 29 (84), 24 (24) & Estimación por perfil \\
+  2.5.2 & Plan de continuidad TIC según ISO/IEC 27031 y plan de recuperación ante desastres & SRE & 3–3 & 240 & 14 (132), 29 (84), 24 (24) & Estimación por perfil \\
+  2.6.1 & Investigación con preparadores, preventistas, conductores y almaceneros & IMP & 2–2 & 240 & 05 (72), 06 (108), 21 (60) & Estimación por perfil \\
+  2.6.2 & Prototipos y pruebas de usabilidad con participantes del CLIENTE & IMP & 3–3 & 240 & 11 (156), 06 (48), 21 (36) & Estimación por perfil \\
+  2.6.3 & Indicadores de usabilidad comprometidos por transacción crítica & IMP & 4–4 & 240 & 11 (156), 06 (48), 21 (36) & Estimación por perfil \\
+  3.1.1 & Ambientes de Desarrollo y QA en la nube (H3) & SRE & 5–5 & 240 & 14 (132), 29 (84), 24 (24) & Estimación por perfil \\
+  3.1.2 & Ambientes de Preproducción y Producción en la nube (H3) & SRE & 5–5 & 240 & 14 (132), 29 (84), 24 (24) & Estimación por perfil \\
+  3.1.3 & Ambiente de recuperación ante desastres en la región secundaria (H3) & SRE & 5–5 & 240 & 14 (132), 29 (84), 24 (24) & Estimación por perfil \\
+  3.1.4 & Cadena de integración y entrega continua, e infraestructura como código & SRE & 4–4 & 240 & 14 (132), 29 (84), 24 (24) & Estimación por perfil \\
+  3.1.5 & Observabilidad de los doce módulos y de los sitios, con tableros para el CLIENTE (H3) & SRE & 5–5 & 240 & 14 (132), 29 (84), 24 (24) & Estimación por perfil \\
+  3.2.1 & Servicio de nube para la aplicación y los portales & SRE & 4–4 & 240 & 14 (132), 29 (84), 24 (24) & Estimación por perfil \\
+  3.2.2 & Servicio de nube de base de datos, caché y mensajería & SRE & 4–4 & 240 & 14 (132), 29 (84), 24 (24) & Estimación por perfil \\
+  3.2.3 & Servicio de nube de ingesta de IoT, telemetría cruda y plataforma analítica & SRE & 4–4 & 240 & 14 (132), 29 (84), 24 (24) & Estimación por perfil \\
+  3.2.4 & Servicio de nube de respaldo inmutable y réplica entre regiones & SRE & 4–4 & 240 & 14 (132), 29 (84), 24 (24) & Estimación por perfil \\
+  3.2.5 & Servicio de nube de seguridad y gobierno, y detección en endpoints & SEG & 4–4 & 240 & 13 (48), 31 (192) & Estimación por perfil \\
+  3.2.6 & Servicio de gestión de dispositivos móviles & SRE & 5–5 & 240 & 14 (132), 29 (84), 24 (24) & Estimación por perfil \\
+  3.3.1 & Identidad y control de acceso, incluidos los conductores externos que rotan sin aviso & SEG & 5–7 & 480 & 13 (96), 31 (384) & Estimación por perfil \\
+  3.3.2 & Integración con el ERP como único emisor de la guía de despacho (INT-06 e INT-07) & ARQ & 5–6 & 480 & 02 (96), 03 (96), 12 (288) & Estimación por perfil \\
+  3.3.3 & Convivencia con el WMS de 2013 durante el reemplazo & ARQ & 5–6 & 480 & 03 (384), 02 (96) & Estimación por perfil \\
+  3.3.4 & Integración con la telemetría de los 42 camiones propios (INT-15) & ARQ & 5–6 & 480 & 02 (96), 03 (96), 12 (288) & Estimación por perfil \\
+  3.3.5 & Registro auditable de stock, lotes y cobros & ARQ & 5–7 & 480 & 03 (384), 02 (96) & Estimación por perfil \\
+  3.3.6 & Operación sin conexión: 14 horas en terreno y 24 horas en el CD & ARQ & 5–7 & 480 & 03 (384), 02 (96) & Estimación por perfil \\
+  3.4.1 & Recepción de mercadería con captura de lote y vencimiento (M1 Recepción) & DES & 5–7 & 960 & 04 (96), 07 (336), 08 (144), 09 (384) & Estimación por perfil \\
+  3.4.2 & Inventario por ubicación y lote, con FEFO y conteo cíclico (M2 Inventario) & DES & 5–7 & 960 & 04 (96), 07 (336), 08 (144), 09 (384) & Estimación por perfil \\
+  3.4.3 & Preparación de pedidos en el turno de noche y en la cámara de congelado (M5 Preparación) & DES & 5–7 & 960 & 04 (96), 09 (384), 12 (480) & Estimación por perfil \\
+  3.4.4 & Cadena de frío, retención por SSCC y retiro sanitario (M9 Calidad y trazabilidad) & DES & 5–8 & 1.440 & 04 (144), 08 (432), 09 (864) & Estimación por perfil \\
+  3.4.5 & Ingesta de temperatura (M9) y posición de flota (M12) & DES & 5–7 & 1.440 & 04 (144), 09 (576), 12 (720) & Estimación por perfil \\
+  3.4.6 & Aplicación móvil de preventa sin conexión, con stock y crédito (M3 Preventa) & DES & 5–7 & 960 & 04 (96), 09 (384), 12 (480) & Estimación por perfil \\
+  3.4.7 & Planificación de rutas corregible por el planificador (M4 Rutas) & DES & 5–8 & 960 & 04 (96), 07 (336), 08 (144), 09 (384) & Estimación por perfil \\
+  3.4.8 & Aplicación móvil de reparto con prueba de entrega digital (M6 Reparto) & DES & 5–8 & 960 & 04 (96), 07 (336), 08 (144), 09 (384) & Estimación por perfil \\
+  3.4.9 & Devoluciones en terreno y control de envases (M8 Devoluciones y envases) & DES & 5–8 & 960 & 04 (96), 08 (288), 09 (576) & Estimación por perfil \\
+  3.4.10 & Cobro en ruta, rendición y conciliación (M7 Cobranza y rendición) & DES & 5–9 & 960 & 04 (96), 07 (336), 08 (144), 09 (384) & Estimación por perfil \\
+  3.4.11 & Indicadores operacionales y OTIF diario (M10 Analítica) & DAT & 8–8 & 960 & 23 (192), 10 (480), 15 (288) & Estimación por perfil \\
+  3.5.1 & Pedido electrónico y aviso de despacho para las cadenas, y portal de proveedores (M11 Canal moderno) & DES & 14–15 & 960 & 04 (96), 09 (384), 12 (480) & Estimación por perfil \\
+  3.5.2 & Portal web de clientes: cuenta, saldo, entregas y documentos & DES & 14–15 & 960 & 04 (96), 07 (336), 08 (144), 09 (384) & Estimación por perfil \\
+  3.5.3 & Portal web de transportistas: rutas asignadas del día siguiente & DES & 14–15 & 960 & 04 (96), 07 (336), 08 (144), 09 (384) & Estimación por perfil \\
+  3.5.4 & Costo de servir por cliente y por entrega (M10 Analítica) & DAT & 14–15 & 960 & 23 (192), 10 (480), 15 (288) & Estimación por perfil \\
+  3.6.1 & Intercambio de lote y trazabilidad con los proveedores & DAT & 7–8 & 480 & 23 (96), 10 (240), 15 (144) & Estimación por perfil \\
+  3.6.2 & Integración con la pasarela de pago para el cobro con tarjeta (INT-09) & DES & 6–7 & 480 & 04 (48), 09 (192), 12 (240) & Estimación por perfil \\
+  3.6.3 & Integración con el servicio de mapas y geocodificación (INT-10) & DES & 6–7 & 480 & 04 (48), 09 (192), 12 (240) & Estimación por perfil \\
+  3.6.4 & Integración con el servicio de avisos al cliente (INT-11) & DES & 6–7 & 480 & 04 (48), 09 (192), 12 (240) & Estimación por perfil \\
+  3.6.5 & Intercambio electrónico con la principal cadena, con sus pruebas aprobadas (INT-08) & DES & 13–18 & 480 & 04 (48), 08 (144), 09 (288) & Estimación por perfil \\
+  3.6.6 & Incorporación de las demás cadenas al intercambio electrónico (INT-08) & DES & 17–19 & 480 & 04 (48), 08 (144), 09 (288) & Estimación por perfil \\
+  3.7.1 & Informe de perfilamiento y datos saneados & DAT & 7–9 & 480 & 23 (96), 10 (240), 15 (144) & Estimación por perfil \\
+  3.7.2 & Datos maestros cargados: 8.400 SKU, clientes e instalaciones & DAT & 9–10 & 480 & 23 (96), 10 (240), 15 (144) & Estimación por perfil \\
+  3.7.3 & Saldos migrados desde el WMS de Talca & DAT & 11–11 & 480 & 23 (96), 10 (240), 15 (144) & Estimación por perfil \\
+  3.7.4 & Saldos cargados en Concepción desde el conteo físico & DAT & 11–11 & 480 & 23 (96), 10 (240), 15 (144) & Estimación por perfil \\
+  3.7.5 & Acta de conciliación y corte fuera de las ventanas de congelamiento & DAT & 12–12 & 480 & 23 (96), 10 (240), 15 (144) & Estimación por perfil \\
+  3.8.1 & Pruebas de integración, regresión e idempotencia en QA (H4) & CAL & 9–9 & 160 & 16 (24), 19 (136) & Estimación por perfil \\
+  3.8.2 & Pruebas de aceptación y de accesibilidad con preventistas, conductores y bodega & CAL & 9–10 & 320 & 16 (48), 19 (272) & Estimación por perfil \\
+  3.8.3 & Cinco condiciones físicas: −22 °C con guantes, lluvia, calor superior a 34 °C, sol directo y uso con una mano; desconexión separada de 14 horas & CAL & 9–10 & 320 & 16 (48), 19 (272) & Estimación por perfil \\
+  3.8.4 & Pruebas de carga con el peak de septiembre y de resiliencia & CAL & 9–10 & 320 & 16 (48), 19 (272) & Estimación por perfil \\
+  3.8.5 & Prueba de recuperación ante desastres con conmutación real & CAL & 9–10 & 320 & 16 (48), 19 (272) & Estimación por perfil \\
+  3.8.6 & Prueba de seguridad ofensiva de la Etapa 1, por un tercero independiente & SEG & 9–10 & 320 & 00 (320) & Estimación por perfil \\
+  3.8.7 & Acta de certificación de la Etapa 1 (H5) & CAL & 10–11 & 160 & 16 (96), 19 (64) & Estimación por perfil \\
+  3.8.8 & Demostración en Preproducción del despliegue sin interrupción de la Etapa 1 & SRE & 9–10 & 320 & 14 (176), 29 (112), 24 (32) & Estimación por perfil \\
+  3.9.1 & Pruebas de integración y regresión sin afectar la Etapa 1 en producción (H9) & CAL & 16–16 & 160 & 16 (24), 19 (136) & Estimación por perfil \\
+  3.9.2 & Pruebas de aceptación y de accesibilidad con cadenas, transportistas, Comercial y Finanzas & CAL & 17–17 & 320 & 16 (48), 19 (272) & Estimación por perfil \\
+  3.9.3 & Pruebas de carga con ambas etapas activas y de resiliencia & CAL & 16–17 & 320 & 16 (48), 19 (272) & Estimación por perfil \\
+  3.9.4 & Prueba de recuperación ante desastres con ambas etapas & CAL & 16–17 & 320 & 16 (48), 19 (272) & Estimación por perfil \\
+  3.9.5 & Prueba de seguridad ofensiva de la Etapa 2, por un tercero independiente & SEG & 16–16 & 160 & 00 (160) & Estimación por perfil \\
+  3.9.6 & Acta de certificación de la Etapa 2 y cierre del desarrollo (H10) & CAL & 17–17 & 160 & 16 (96), 19 (64) & Estimación por perfil \\
+  3.9.7 & Demostración en Preproducción del despliegue sin interrupción de la Etapa 2 & SRE & 16–17 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  3.10.1.1 & Innovación 1: documento de catálogo de acciones y protocolo del piloto (INN-01.P1) & DAT & 7–9 & 240 & 23 (48), 10 (120), 15 (72) & Estimación por perfil \\
+  3.10.1.2 & Innovación 1: estimador de saldo y ritmo de reposición (INN-01.P2) & DAT & 9–10 & 240 & 23 (48), 10 (120), 15 (72) & Estimación por perfil \\
+  3.10.1.3 & Innovación 1: función de lista sin conexión en la aplicación de preventa (INN-01.P3) & DAT & 9–10 & 240 & 23 (48), 10 (120), 15 (72) & Estimación por perfil \\
+  3.10.1.4 & Innovación 1: informe del piloto en marcha blanca y habilitación (INN-01.P4) & DAT & 11–15 & 240 & 23 (48), 10 (120), 15 (72) & Estimación por perfil \\
+  3.10.2.1 & Innovación 2: informe de medición inicial y contrato de evidencia (INN-02.P1) & CAL & 2–3 & 240 & 16 (36), 19 (204) & Estimación por perfil \\
+  3.10.2.2 & Innovación 2: circuito mínimo de reproducción en la preventa (INN-02.P2) & CAL & 3–5 & 240 & 16 (36), 19 (204) & Estimación por perfil \\
+  3.10.2.3 & Innovación 2: captura de evidencia en las aplicaciones de preventa, preparación y reparto (INN-02.P3) & CAL & 5–10 & 240 & 16 (36), 19 (204) & Estimación por perfil \\
+  3.10.2.4 & Innovación 2: informe de validación comparada durante la implementación (INN-02.P4, primera parte) & CAL & 11–15 & 240 & 16 (36), 19 (204) & Estimación por perfil \\
+  3.10.3.1 & Innovación 3: documento de familias priorizadas y parámetros aprobados (INN-03.P1) & DAT & 3–5 & 240 & 23 (48), 10 (120), 15 (72) & Estimación por perfil \\
+  3.10.3.2 & Innovación 3: asociación lote–sensor en el borde y en el camión (INN-03.P2) & DAT & 5–9 & 240 & 23 (48), 10 (120), 15 (72) & Estimación por perfil \\
+  3.10.3.3 & Innovación 3: vista en M9 y orden de salida sugerido (INN-03.P3) & DAT & 9–10 & 240 & 23 (48), 10 (120), 15 (72) & Estimación por perfil \\
+  3.10.3.4 & Innovación 3: informe de validación en marcha blanca con Calidad (INN-03.P4) & DAT & 11–15 & 240 & 23 (48), 10 (120), 15 (72) & Estimación por perfil \\
+  3.10.4.1 & Innovación 5: prototipo e informe de la prueba de comprensión (INN-05.P1) & IMP & 13–14 & 240 & 11 (156), 06 (48), 21 (36) & Estimación por perfil \\
+  3.10.4.2 & Innovación 5: evaluación de privacidad y diseño de la impresión en cabina (INN-05.P2) & IMP & 14–15 & 240 & 21 (144), 22 (48), 20 (48) & Estimación por perfil \\
+  3.10.4.3 & Innovación 5: cálculo y bloques 1 a 3 de la hoja de negocio (INN-05.P3) & IMP & 15–17 & 240 & 21 (144), 22 (48), 20 (48) & Estimación por perfil \\
+  3.10.4.4 & Innovación 5: hoja certificada, en marcha blanca y en producción (INN-05.P4, primera parte) & IMP & 18–21 & 240 & 21 (144), 22 (48), 20 (48) & Estimación por perfil \\
+  3.11.1 & Documentación técnica, funcional, de arquitectura, de operación y de seguridad & ARQ & 15–21 & 80 & 03 (64), 02 (16) & Estimación por perfil \\
+  3.11.2 & Base de conocimiento de incidentes y decisiones de diseño & SRE & 10–20 & 80 & 14 (44), 29 (28), 24 (8) & Estimación por perfil \\
+  3.11.3 & Estándares de codificación y documentación de interfaces en OpenAPI y AsyncAPI & DES & 4–20 & 80 & 04 (8), 09 (32), 12 (40) & Estimación por perfil \\
+  3.11.4 & Inventario de componentes (SBOM) con sus licencias de código abierto & DES & 4–20 & 80 & 04 (8), 07 (28), 08 (12), 09 (32) & Estimación por perfil \\
+  3.11.5 & Depósito del código fuente en el repositorio del CLIENTE en cada liberación & DES & 6–20 & 80 & 04 (8), 08 (24), 09 (48) & Estimación por perfil \\
+  4.1.1 & Plan de olas de la Etapa 1 por sitio y zona: Talca, Concepción y plataformas de cross-docking & IMP & 10–10 & 80 & 21 (48), 22 (16), 20 (16) & Estimación por perfil \\
+  4.1.2 & Procedimiento de reversión de la Etapa 1 antes de las 05:30, con versión operativa local y DTE emitidos por el ERP & IMP & 11–11 & 80 & 21 (48), 22 (16), 20 (16) & Estimación por perfil \\
+  4.1.3 & Plan de implantación y reversión de la Etapa 2 fuera de la ventana de 05:30 a 07:00 & IMP & 17–17 & 80 & 21 (48), 22 (16), 20 (16) & Estimación por perfil \\
+  4.1.4 & Piloto de cadena de frío en cuatro camiones & IMP & 10–11 & 320 & 21 (192), 22 (64), 20 (64) & Estimación por perfil \\
+  4.2.1 & Marcha blanca de la Etapa 1 con conciliación diaria (H6) & IMP & 13–15 & 1.152 & 26 (1.152) & Propuesto \\
+  4.2.1 & Marcha blanca de la Etapa 1 con conciliación diaria (H6) & IMP & 13–15 & 1.728 & 27 (1.728) & Propuesto \\
+  4.2.1 & Marcha blanca de la Etapa 1 con conciliación diaria (H6) & IMP & 13–15 & 4.032 & 28 (4.032) & Propuesto \\
+  4.2.1 & Marcha blanca de la Etapa 1 con conciliación diaria (H6) & IMP & 13–15 & 480 & 21 (480) & Propuesto \\
+  4.2.2 & Estabilización de la Etapa 1, acompañamiento en ruta y restauraciones de soporte puente & IMP & 16–20 & 1.920 & 26 (1.920) & Escenario T-18 \\
+  4.2.2 & Estabilización de la Etapa 1, acompañamiento en ruta y restauraciones de soporte puente & IMP & 16–20 & 1.152 & 27 (1.152) & Escenario T-18 \\
+  4.2.2 & Estabilización de la Etapa 1, acompañamiento en ruta y restauraciones de soporte puente & IMP & 16–20 & 1.536 & 28 (1.536) & Escenario T-18 \\
+  4.2.2 & Estabilización de la Etapa 1, acompañamiento en ruta y restauraciones de soporte puente & IMP & 16–20 & 800 & 21 (800) & Escenario T-18 \\
+  4.2.3 & Acta de paso a producción y cierre de la Etapa 1 (H7) & JP & 16–16 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  4.3.1 & Marcha blanca de la Etapa 2 en convivencia con la Etapa 1 y fuente única de datos (H11) & IMP & 19–20 & 768 & 26 (768) & Propuesto \\
+  4.3.1 & Marcha blanca de la Etapa 2 en convivencia con la Etapa 1 y fuente única de datos (H11) & IMP & 19–20 & 1.152 & 27 (1.152) & Propuesto \\
+  4.3.1 & Marcha blanca de la Etapa 2 en convivencia con la Etapa 1 y fuente única de datos (H11) & IMP & 19–20 & 2.688 & 28 (2.688) & Propuesto \\
+  4.3.1 & Marcha blanca de la Etapa 2 en convivencia con la Etapa 1 y fuente única de datos (H11) & IMP & 19–20 & 320 & 21 (320) & Propuesto \\
+  4.3.2 & Estabilización de la Etapa 2 con Comercial, Finanzas, cadenas y transportistas & IMP & 21–22 & 384 & 26 (384) & Escenario T-18 \\
+  4.3.2 & Estabilización de la Etapa 2 con Comercial, Finanzas, cadenas y transportistas & IMP & 21–22 & 576 & 27 (576) & Escenario T-18 \\
+  4.3.2 & Estabilización de la Etapa 2 con Comercial, Finanzas, cadenas y transportistas & IMP & 21–22 & 1.344 & 28 (1.344) & Escenario T-18 \\
+  4.3.2 & Estabilización de la Etapa 2 con Comercial, Finanzas, cadenas y transportistas & IMP & 21–22 & 160 & 21 (160) & Escenario T-18 \\
+  4.3.3 & Acta de paso a producción y aceptación final de la implementación (H12) & JP & 21–21 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  4.3.4 & Garantía de correcto funcionamiento constituida, condición de la aceptación final (H12) & JP & 20–20 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  5.1.1 & Especificación de compra de equipos de uso para el CLIENTE & ARQ & 2–2 & 80 & 03 (64), 02 (16) & Estimación por perfil \\
+  5.1.2 & Especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de borde & ARQ & 2–2 & 80 & 03 (64), 02 (16) & Estimación por perfil \\
+  5.1.3 & Actas de recepción técnica del equipamiento de terreno comprado por el CLIENTE y de la infraestructura provista por LafroX & SRE & 5–5 & 80 & 25 (56), 29 (24) & Estimación por perfil \\
+  5.1.4 & Especificación y compra del sistema de cadena de frío & ARQ & 1–2 & 240 & 03 (192), 02 (48) & Estimación por perfil \\
+  5.2.1 & Contrato de los servicios de AWS & SRE & 2–2 & 80 & 25 (56), 29 (24) & Estimación por perfil \\
+  5.2.2 & Suscripción del servicio de gestión de dispositivos y de detección en endpoints & SRE & 4–4 & 80 & 25 (56), 29 (24) & Estimación por perfil \\
+  5.2.3 & Licencias de software de terceros constituidas a nombre del CLIENTE & ARQ & 4–4 & 80 & 03 (64), 02 (16) & Estimación por perfil \\
+  5.3.1 & Contrato de fibra óptica de los CD de Talca y Concepción & SRE & 4–4 & 80 & 25 (56), 29 (24) & Estimación por perfil \\
+  5.3.2 & Contrato de planes LTE con dos proveedores (ocho planes) & SRE & 4–4 & 80 & 25 (56), 29 (24) & Estimación por perfil \\
+  5.3.3 & Contrato de Starlink para los cinco sitios: Talca, Concepción y las tres plataformas de cross-docking & SRE & 4–4 & 80 & 25 (56), 29 (24) & Estimación por perfil \\
+  5.3.4 & Contrato de SIM M2M y servicio satelital de los camiones con frío & SRE & 2–2 & 80 & 25 (56), 29 (24) & Estimación por perfil \\
+  5.4.1 & Acuerdos operacionales firmados con los diez transportistas & IMP & 9–12 & 80 & 21 (48), 22 (16), 20 (16) & Estimación por perfil \\
+  5.4.2 & Acta de acuerdo con el sindicato sobre terminales, GPS y cámaras & IMP & 9–12 & 80 & 21 (48), 22 (16), 20 (16) & Estimación por perfil \\
+  5.4.3 & Fórmula aprobada del tramo variable: reglas de atribución, canasta e índices (INN-04.P1) & JP & 17–20 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  5.4.4 & Contrato de custodia de fuentes con un tercero independiente & JP & 7–7 & 80 & 25 (64), 01 (16) & Estimación por perfil \\
+  6.1.1 & Coordinación de la obra civil de separación, a cargo del CLIENTE (RT-06.06), y piso técnico de la sala & SRE & 3–3 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  6.1.2 & Hardware de energía instalado: UPS modular N+1, generador con 24 horas de autonomía, transferencia automática y PDU A/B & SRE & 3–3 & 160 & 00 (128), 29 (32) & Estimación por perfil \\
+  6.1.3 & Hardware de climatización de precisión N+1 instalado & SRE & 3–3 & 160 & 00 (128), 29 (32) & Estimación por perfil \\
+  6.1.4 & Hardware de detección temprana de incendio y extinción por agente limpio instalado & SRE & 3–3 & 160 & 00 (128), 29 (32) & Estimación por perfil \\
+  6.1.5 & Acta de recepción técnica de la sala & SRE & 4–4 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  6.2.1 & Cableado de cobre Cat6A y fibra OM4 tendido, con dos ductos de ingreso independientes & SRE & 4–4 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  6.2.2 & Certificación de enlaces, etiquetado y planos as-built & SRE & 6–6 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  6.2.3 & Gabinetes de piso y switches de acceso instalados en las bodegas de Talca y Concepción & SRE & 7–7 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  6.3.1 & Rack R01 de servidores montado: clúster de tres nodos, respaldo local, consola KVM y traslado del servidor del ERP del CLIENTE & SRE & 4–5 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  6.3.2 & Rack R02 de comunicaciones montado: firewalls, switches de núcleo y de gestión, y distribución de fibra & SRE & 4–5 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  6.3.3 & Gabinete de borde de Concepción montado: servidores activo y en espera, firewalls, switches, UPS, climatización y monitoreo & SRE & 4–4 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  6.3.4 & Gabinetes de borde montados en Curicó, Chillán y Los Ángeles, con dos mini-PC (activo y en espera) por plataforma & SRE & 9–9 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  6.4.1 & Hardware de control de acceso biométrico y esclusa instalado & SEG & 5–5 & 160 & 13 (32), 31 (128) & Estimación por perfil \\
+  6.4.2 & Hardware de videovigilancia instalado & SEG & 5–5 & 160 & 13 (32), 31 (128) & Estimación por perfil \\
+  6.4.3 & Recinto de custodia de respaldos habilitado & SEG & 5–6 & 160 & 13 (32), 31 (128) & Estimación por perfil \\
+  6.5.1 & Terminales de preventa, reparto y bodega configurados y enrolados & SRE & 9–12 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  6.5.2 & Terminales de pago configurados, uno por camión & SRE & 10–12 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  6.5.3 & Sensores de cámara y gateways IoT instalados en Talca y Concepción & SRE & 9–11 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  6.5.4 & Kit de cadena de frío instalado y recibido en los 28 camiones con frío & SRE & 8–12 & 320 & 14 (176), 29 (112), 24 (32) & Estimación por perfil \\
+  6.5.5 & Impresoras de cabina instaladas & SRE & 10–12 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  6.5.6 & Impresoras de andén y balanzas de recepción instaladas & SRE & 9–12 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  6.6.1 & Software de base instalado en los sitios: virtualización, contenedores, PostgreSQL, RabbitMQ y Keycloak & SRE & 5–5 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  6.6.2 & Enlaces de fibra, LTE y Starlink habilitados, con conmutación al respaldo & SRE & 5–5 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  6.6.3 & Borde de los CD en servicio, con la prueba de autonomía de 24 horas aprobada & SRE & 5–5 & 160 & 14 (88), 29 (56), 24 (16) & Estimación por perfil \\
+  7.1.1 & Plan de capacitación por perfil: usuarios finales, avanzados, administradores, equipo técnico y soporte & IMP & 10–12 & 160 & 22 (120), 21 (24), 20 (16) & Estimación por perfil \\
+  7.1.2 & Programa de capacitación continua del turno de noche por la rotación del 38 \% & IMP & 13–56 & 2.816 & 22 (2.112), 21 (422,4), 20 (281,6) & Estimación por perfil \\
+  7.1.3 & Incorporación de conductores de transportistas, escaneos y lectura del rojo & IMP & 11–20 & 240 & 21 (144), 22 (48), 20 (48) & Estimación por perfil \\
+  7.1.4 & Traspaso al equipo de TI de cuatro personas del CLIENTE & IMP & 15–20 & 160 & 21 (96), 22 (32), 20 (32) & Estimación por perfil \\
+  7.1.5 & Materiales de capacitación: manuales por perfil, guías rápidas, preguntas frecuentes y videos tutoriales & IMP & 10–18 & 160 & 22 (120), 21 (24), 20 (16) & Estimación por perfil \\
+  7.1.6 & Plataforma de autoformación en línea con registro de avance & IMP & 10–12 & 160 & 22 (120), 21 (24), 20 (16) & Estimación por perfil \\
+  7.2.1 & Acompañamiento del personal con 20 o 30 años en la compañía & IMP & 10–16 & 160 & 21 (96), 22 (32), 20 (32) & Estimación por perfil \\
+  7.2.2 & Gestión del cambio con las cadenas y los transportistas & IMP & 16–18 & 160 & 21 (96), 22 (32), 20 (32) & Estimación por perfil \\
+  7.2.3 & Diagnóstico del impacto organizacional por área y perfil, con agentes de cambio & IMP & 2–6 & 160 & 21 (96), 22 (32), 20 (32) & Estimación por perfil \\
+  7.2.4 & Procedimientos operativos rediseñados, contingencia de frío y ruptura confirmada & IMP & 8–20 & 240 & 21 (144), 22 (48), 20 (48) & Estimación por perfil \\
+  7.2.5 & Medición de la adopción y plan de acción correctiva & IMP & 13–21 & 160 & 21 (96), 22 (32), 20 (32) & Estimación por perfil \\
+  7.3.1 & Certificación de preventistas, conductores y preparadores (Etapa 1) & IMP & 13–15 & 160 & 21 (96), 22 (32), 20 (32) & Estimación por perfil \\
+  7.3.2 & Certificación de Comercial y Finanzas en costo de servir (Etapa 2) & IMP & 18–18 & 160 & 21 (96), 22 (32), 20 (32) & Estimación por perfil \\
+  8.1.1 & Servicio de centro de operaciones 24\textbackslash{}ensuremath\{\textbackslash{}times\}7 y mesa de servicio durante los 36 meses de operación (04:00 a 22:00; 24\textbackslash{}ensuremath\{\textbackslash{}times\}7 en septiembre y diciembre) & SRE & 21–56 & 26.280 & 30 (26.280) & Cobertura NOC de Operación \\
+  8.1.2 & Servicio de gestión de incidentes, problemas y niveles de servicio del Art. 78° durante los 36 meses de operación & SRE & 21–56 & 54.239 & 17 (54.239) & Cobertura Mesa N1 de Operación \\
+  8.1.3 & Servicio de continuidad y pruebas semestrales de recuperación ante desastres durante los 36 meses de operación & SRE & 21–56 & 560 & 14 (308), 29 (196), 24 (56) & Estimación por perfil \\
+  8.1.4 & Actualizaciones anuales del Plan de Reversibilidad durante los 36 meses de operación & JP & 21–56 & 288 & 01 (201,6), 20 (86,4) & Estimación por perfil \\
+  8.1.5 & Servicio de centro de operaciones de seguridad 24\textbackslash{}ensuremath\{\textbackslash{}times\}7 con SIEM desde la primera marcha blanca (mes 13) hasta el mes 56 & SEG & 13–56 & 32.112 & 31 (32.112) & Cobertura SOC; excluye ingeniería adicional \\
+  8.1.6 & Pruebas mensuales de restauración de respaldos durante los 36 meses de operación & SRE & 21–56 & 576 & 14 (316,8), 29 (201,6), 24 (57,6) & Estimación por perfil \\
+  8.2.1 & Mantenimiento correctivo y evolutivo del software durante los 36 meses de operación, con bolsa anual de horas y fuera de las ventanas de congelamiento & DES & 21–56 & 4.608 & 04 (460,8), 07 (691,2), 08 (691,2), 09 (1.843,2), 18 (921,6) & Estimación por perfil \\
+  8.2.2 & Mantenimiento de ciberseguridad durante los 36 meses de operación: vulnerabilidades, intrusión anual e inyección de fallas & SEG & 21–56 & 1.152 & 31 (806,4), 13 (115,2), 00 (230,4) & Estimación por perfil \\
+  8.2.3 & Mantenimiento del hardware durante los 36 meses de operación: sala técnica, racks, gabinetes de borde y equipamiento de terreno & SRE & 21–56 & 1.152 & 29 (576), 14 (230,4), 18 (345,6) & Estimación por perfil \\
+  8.2.4 & Registro y reducción de la deuda técnica durante los 36 meses de operación & DES & 21–56 & 2.304 & 04 (230,4), 08 (691,2), 09 (1.382,4) & Estimación por perfil \\
+  8.2.5 & Actualizaciones anuales de los componentes de base durante los 36 meses de operación & SRE & 21–56 & 288 & 14 (158,4), 29 (100,8), 24 (28,8) & Estimación por perfil \\
+  8.2.6 & Revisiones semestrales de las instalaciones eléctricas de la sala durante los 36 meses de operación & SRE & 21–56 & 288 & 00 (230,4), 29 (57,6) & Estimación por perfil \\
+  8.2.7 & Ciclo de vida del equipamiento durante los 36 meses de operación: reposición y disposición final & SRE & 21–56 & 864 & 14 (475,2), 29 (302,4), 24 (86,4) & Estimación por perfil \\
+  8.3.1 & Innovación 2: mantenimiento de escenarios de regresión (INN-02.P4, segunda parte) & CAL & 21–56 & 576 & 16 (86,4), 19 (489,6) & Estimación por perfil \\
+  8.3.2 & Innovación 3: revisión semestral de parámetros durante los 36 meses de operación (INN-03.P5) & DAT & 21–56 & 288 & 23 (57,6), 10 (144), 15 (86,4) & Estimación por perfil \\
+  8.3.3 & Innovación 4: línea base y liquidaciones en sombra (INN-04.P2) & JP & 21–23 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  8.3.4 & Innovación 4: liquidación mensual del tramo variable, meses 24 a 56 (INN-04.P3) & JP & 24–56 & 528 & 01 (369,6), 20 (158,4) & Estimación por perfil \\
+  8.3.5 & Innovación 5: despliegue gradual por rutas (INN-05.P4, segunda parte) & IMP & 22–26 & 80 & 21 (48), 22 (16), 20 (16) & Estimación por perfil \\
+  8.3.6 & Innovación 5: bloque 4 condicionado (INN-05.P5) & IMP & 24–27 & 80 & 21 (48), 22 (16), 20 (16) & Estimación por perfil \\
+  8.4.1 & Gestión de la capacidad con proyección trimestral durante los 36 meses de operación & SRE & 21–56 & 576 & 14 (316,8), 29 (201,6), 24 (57,6) & Estimación por perfil \\
+  8.4.2 & Informes mensuales de consumo de nube (FinOps) durante los 36 meses de operación & SRE & 21–56 & 576 & 14 (316,8), 29 (201,6), 24 (57,6) & Estimación por perfil \\
+  8.4.3 & Estimaciones anuales de la huella de carbono de la operación & SRE & 21–56 & 288 & 14 (158,4), 29 (100,8), 24 (28,8) & Estimación por perfil \\
+  8.4.4 & Actualizaciones semestrales del depósito de custodia de fuentes durante los 36 meses de operación & JP & 21–56 & 288 & 01 (201,6), 20 (86,4) & Estimación por perfil \\
+  8.5.1 & Dos jornadas anuales de actualización y capacitación del personal nuevo durante los 36 meses de operación & IMP & 21–56 & 1.152 & 22 (864), 21 (172,8), 20 (115,2) & Estimación por perfil \\
+  8.5.2 & Mentoría al equipo técnico del CLIENTE durante los seis meses posteriores al mes 21 & IMP & 21–27 & 80 & 21 (48), 22 (16), 20 (16) & Estimación por perfil \\
+  8.5.3 & Mantenimiento de la base de conocimiento durante los 36 meses de operación, con métricas de uso & SRE & 21–56 & 576 & 14 (316,8), 29 (201,6), 24 (57,6) & Estimación por perfil \\
+  9.1.1 & Entrega del código fuente, la infraestructura como código y los procedimientos de despliegue & DES & 21–21 & 80 & 04 (8), 09 (32), 12 (40) & Estimación por perfil \\
+  9.1.2 & Informe de lecciones aprendidas y archivo de la implementación & JP & 21–22 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  9.2.1 & Ejecución del Plan de Reversibilidad y acompañamiento de 90 días & JP & 54–56 & 80 & 01 (56), 20 (24) & Estimación por perfil \\
+  9.2.2 & Certificado de devolución o eliminación de datos personales & SEG & 56–56 & 80 & 13 (16), 31 (64) & Estimación por perfil \\
+  4.2.2 & Puente NOC & SRE & 16–20 & 3.672 & 30 (3.672) & Cobertura puente \\
+  4.2.2 & Puente N1 & SRE & 16–20 & 5.664 & 17 (5.664) & Cobertura puente \\
+  4.2.1 & Restauraciones previas & SRE & 13–15 & 48 & 14 (26,4), 29 (16,8), 24 (4,8) & Estimación por perfil \\
+  4.2.2 & Restauraciones previas & SRE & 16–20 & 48 & 14 (26,4), 29 (16,8), 24 (4,8) & Estimación por perfil \\
+  4.3.1 & Restauraciones previas & SRE & 19–20 & 32 & 14 (17,6), 29 (11,2), 24 (3,2) & Estimación por perfil \\
+  — & Reserva protegida DES & DES & 13–20 & 2.048 & 07 (614,4), 08 (614,4), 09 (819,2) & Estimación por perfil \\
+  — & Reserva protegida CAL & CAL & 13–20 & 1.024 & 19 (1.024) & Estimación por perfil \\
+\end{tablalafrox}
+\end{anexohorizontal}
