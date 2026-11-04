@@ -47,6 +47,8 @@ docs/                 Trazabilidad y cumplimiento
 
 ## Publicación (RT-25.06 y RT-25.07)
 
+Enlace en línea: https://patricioh315.github.io/LafroX/ (GitHub Pages, publicado el 04-11-2026).
+
 El sitio es estático, por lo que puede publicarse en GitHub Pages desde la rama `LafroX-Prototipo-HTML` (Settings → Pages → Deploy from a branch → raíz). El enlace no vence mientras exista el repositorio, lo que cubre los seis meses exigidos. Las tipografías se cargan desde Google Fonts; si no están disponibles, la interfaz usa las fuentes del sistema sin perder funciones.
 
 ## Funciones de demostración (Prioridad 3)

@@ -59,14 +59,13 @@ Revisión sobre la rama LafroX-Prototipo-HTML (commit 20cab1d8), con el perfil d
 - [ ] Se entrega junto con el **Informe 3**, el **13-11-2026** (Cap. 25.1; entregable 27; cronograma hito 10).
   - ⚠ Pendiente: la entrega es el 13-11-2026.
 - [x] Es un prototipo interactivo de **alta fidelidad** (Cap. 25.1).
-- [ ] Se entrega como **enlace navegable en línea** (RT-25.06).
-  - ⚠ No cumple: el sitio no está publicado (patricioh315.github.io/LafroX responde 404).
-  - **Corregible fuera del prototipo**: activar GitHub Pages en la rama LafroX-Prototipo-HTML. No es un límite de la simulación.
+- [x] Se entrega como **enlace navegable en línea** (RT-25.06).
+  - ✓ Corregido el 04-11-2026: publicado en https://patricioh315.github.io/LafroX/ desde la rama LafroX-Prototipo-HTML. Responde 200 y las rutas probadas cargan sin errores.
 - [x] Funciona **sin instalación ni complementos** (RT-25.06).
 - [ ] Es compatible con los **navegadores modernos vigentes** (RT-25.06).
   - ⚠ Parcial: probado solo en Chromium (navegador integrado); falta Firefox y Safari.
 - [ ] El acceso está garantizado por **al menos seis meses** desde la entrega (RT-25.07).
-  - ⚠ No cumple aún: depende de publicar el enlace.
+  - ⚠ El enlace ya está publicado (04-11-2026); falta que se cumplan los seis meses.
   - **No corregible en el prototipo**: publicar resuelve el acceso, pero los seis meses solo se comprueban con el paso del tiempo. Se acredita con la publicación estable y el compromiso de mantener el repositorio.
 - [x] Simula de forma realista la navegación y los flujos sin servicios de fondo ni base de datos (Cap. 25.1).
 - [x] Permite recorrerlo **desde la perspectiva de los distintos perfiles** de personas usuarias (Cap. 25.1).
@@ -334,7 +333,7 @@ Las funciones de Prioridad 3 tienen pruebas reproducibles en `verify.cjs`; alcan
 
 | Punto | Pantalla o ruta | Observación | Responsable |
 |---|---|---|---|
-| RT-25.06 | Todo el sitio | Publicar en GitHub Pages (rama LafroX-Prototipo-HTML) y probar el enlace. Corregible fuera del prototipo | |
+| RT-25.06 | Todo el sitio | ✓ Publicado en https://patricioh315.github.io/LafroX/ | |
 | RT-25.07 | Todo el sitio | Seis meses de acceso: no demostrable en la entrega; se acredita con publicación estable | |
 | RT-25.03 | `/flujo`, pasos | ✓ Corregido: botones del paso a paso a 44 px | |
 | RNF-05.02 | `/flujo?paso=4` | ✓ Corregido: «Cerrar misión» a 60 px (≈ 15,9 mm) | |

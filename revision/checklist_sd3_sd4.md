@@ -205,7 +205,7 @@ El prototipo debe mostrar qué sigue funcionando sin señal y qué ocurre al rec
   - Actor: Jefa de Bodega · Prioridad/etapa: Alta / E1
   - Verificar: (a) Al generar las tareas de picking, el sistema prioriza las ubicaciones con menor vida útil remanente para cada SKU. (b) Si un producto en stock tiene una vida útil remanente inferior al umbral configurado (ej. 30 días), el sistema genera una alerta al jefe de bodega con la acción recomendada (descuento, devolución al proveedor, destrucción). (c) El sistema genera un reporte semanal de productos próximos a vencer por zona y por SKU.
   - Respaldo: Caso, Cap. 9.10; Cap. 12, inocuidad alimentaria (vencimientos y merma)
-  - ⚠ Revisión externa (04-11-2026) · **Sin verificar** · **Corregible fuera del prototipo**: no tenía título en el catálogo de main (`Requerimientos/…Consolidado de Requerimientos Funcionales.csv`). ✓ Título agregado en la rama `fix/rf-catalog-titles` (commits 3101c6e4 y 4a02bc00): RF-02.09 pasa a «Gestión FEFO y alertas de vida útil», el título que estaba mal asignado a RF-02.08; RF-02.08 queda como «Preparación dirigida y registro de faltantes», acorde a su descripción; falta fusionarla en main. Pendiente: verificar la casilla en `/inventario`. Nota: las tablas `tablas/anx_rf_vacios.tex` y `tablas/t12_caso.tex` del SD3, que no se compilan, aún lo llaman «Retención sanitaria de lote en inventario».
+  - ⚠ Revisión externa (04-11-2026) · **Sin verificar** · **Corregible fuera del prototipo**: no tenía título en el catálogo de main (`Requerimientos/…Consolidado de Requerimientos Funcionales.csv`). ✓ Título agregado en la rama `fix/rf-catalog-titles` (commits 3101c6e4 y 4a02bc00): RF-02.09 pasa a «Gestión FEFO y alertas de vida útil», el título que estaba mal asignado a RF-02.08; RF-02.08 queda como «Preparación dirigida y registro de faltantes», acorde a su descripción; PR https://github.com/PatricioH315/LafroX/pull/1, falta fusionarlo en main. Pendiente: verificar la casilla en `/inventario`. Nota: las tablas `tablas/anx_rf_vacios.tex` y `tablas/t12_caso.tex` del SD3, que no se compilan, aún lo llaman «Retención sanitaria de lote en inventario».
 - [ ] **RF-02.10** — El sistema debe proveer una interfaz de trazabilidad que permita buscar y detallar el ciclo de vida completo de un lote. Al consultar un lote específico, debe desglosar su estado actual, ubicación física en bodega, datos de recepción de proveedor y detalle de salida (clientes/mermas).
   - Actor: Jefa de Calidad / Jefa de Bodega · Prioridad/etapa: Alta / E1
   - Verificar: (a) El sistema provee un buscador de lotes por SKU, fecha o proveedor, devolviendo una lista con el estado (activo, agotado, en cuarentena). (b) Al seleccionar un lote, se despliega su ficha detallando: SKU, fecha vencimiento y cantidad física remanente por ubicación (pasillo/posición). (c) Se detalla el origen: fecha de recepción, proveedor, cantidad recibida inicial y documento. (d) Se detalla la salida de unidades: guías de despacho, cliente, fecha y cantidad entregada. (e) Se detallan excepciones: mermas, devoluciones o ajustes asociados. (f) Todo el detalle es exportable a hoja de cálculo para retiro sanitario inmediato.
@@ -1037,9 +1037,9 @@ Un mismo requerimiento puede tener una parte corregible y otra no: la parte simu
 
 | Código | Observación | Acción |
 |---|---|---|
-| RT-25.06 | patricioh315.github.io/LafroX responde 404 | Pendiente: la rama ya está en origin; el dueño del repositorio debe activar Pages (Settings → Pages → rama LafroX-Prototipo-HTML, raíz) y probar el enlace |
-| RF-02.09 | Sin título en el catálogo de main | ✓ Título agregado en la rama `fix/rf-catalog-titles`; falta fusionarla en main |
-| RF-12.30 | Sin título en el catálogo de main | ✓ Título agregado en la rama `fix/rf-catalog-titles`; falta fusionarla en main |
+| RT-25.06 | patricioh315.github.io/LafroX respondía 404 | ✓ Publicado el 04-11-2026 en https://patricioh315.github.io/LafroX/ (rama LafroX-Prototipo-HTML, raíz). Responde 200; probadas 7 rutas sin errores de JavaScript |
+| RF-02.09 | Sin título en el catálogo de main | ✓ Título agregado en el PR https://github.com/PatricioH315/LafroX/pull/1; falta fusionarlo |
+| RF-12.30 | Sin título en el catálogo de main | ✓ Título agregado en el mismo PR; falta fusionarlo |
 
 ### 10.3 Corregibles en el prototipo: requerimientos (✓ corregidos el 04-11-2026)
 
