@@ -93,7 +93,10 @@ Detalle de los mínimos exigidos:
 
 ## Pendiente antes de la entrega
 
-- Publicar el enlace definitivo (RT-25.06 y RT-25.07) y registrarlo en el Informe 3.
+- Publicar el enlace definitivo (RT-25.06) y registrarlo en el Informe 3. Hoy responde 404. Los seis meses de RT-25.07 no se pueden demostrar en la entrega: se acreditan con la publicación estable.
+- ✓ Hecho el 04-11-2026: se corrigió en el prototipo todo lo que la revisión externa marcó como corregible: 8 requerimientos (RF-03.11, RF-03.12, RF-06.08, RF-07.08, RF-08.07, RF-14.06, RNF-05.02 y los botones de 38 px de RT-25.03) y 10 incoherencias de datos. Detalle en `revision/checklist_sd3_sd4.md`, sección 10.
+- Corregir fuera del prototipo los títulos de RF-02.09 y RF-12.30 en el catálogo del SD3.
+- No corregibles en el prototipo, por ser simulación: RNF-05.03, RNF-08.01, RNF-12.01, la revisión con lector de pantalla y la parte real (ERP, OTP, Transbank, GPS) de los requerimientos anteriores.
 - Revisión con lector de pantalla (NVDA o VoiceOver): no se ha hecho; la revisión de accesibilidad fue automática y por teclado.
 - Apertura sin servidor (RT-25.10): el código no usa módulos ES, `fetch` ni rutas absolutas, pero falta abrir `index.html` con doble clic en Chrome, Edge y Firefox para confirmarlo.
 

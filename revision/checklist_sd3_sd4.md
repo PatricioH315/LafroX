@@ -205,6 +205,7 @@ El prototipo debe mostrar qué sigue funcionando sin señal y qué ocurre al rec
   - Actor: Jefa de Bodega · Prioridad/etapa: Alta / E1
   - Verificar: (a) Al generar las tareas de picking, el sistema prioriza las ubicaciones con menor vida útil remanente para cada SKU. (b) Si un producto en stock tiene una vida útil remanente inferior al umbral configurado (ej. 30 días), el sistema genera una alerta al jefe de bodega con la acción recomendada (descuento, devolución al proveedor, destrucción). (c) El sistema genera un reporte semanal de productos próximos a vencer por zona y por SKU.
   - Respaldo: Caso, Cap. 9.10; Cap. 12, inocuidad alimentaria (vencimientos y merma)
+  - ⚠ Revisión externa (04-11-2026) · **Sin verificar** · **Corregible fuera del prototipo**: el catálogo del SD3 no le da un título único. `tablas_anexo/rf_caso.tex` y el T-12 lo describen como FEFO con alerta de vida útil; `tablas/anx_rf_vacios.tex` y `tablas/t12_caso.tex` lo llaman «Retención sanitaria de lote en inventario» y lo dejan sin desarrollar. Se unifica en SD3 (rama main) y después se verifica `/inventario`.
 - [ ] **RF-02.10** — El sistema debe proveer una interfaz de trazabilidad que permita buscar y detallar el ciclo de vida completo de un lote. Al consultar un lote específico, debe desglosar su estado actual, ubicación física en bodega, datos de recepción de proveedor y detalle de salida (clientes/mermas).
   - Actor: Jefa de Calidad / Jefa de Bodega · Prioridad/etapa: Alta / E1
   - Verificar: (a) El sistema provee un buscador de lotes por SKU, fecha o proveedor, devolviendo una lista con el estado (activo, agotado, en cuarentena). (b) Al seleccionar un lote, se despliega su ficha detallando: SKU, fecha vencimiento y cantidad física remanente por ubicación (pasillo/posición). (c) Se detalla el origen: fecha de recepción, proveedor, cantidad recibida inicial y documento. (d) Se detalla la salida de unidades: guías de despacho, cliente, fecha y cantidad entregada. (e) Se detallan excepciones: mermas, devoluciones o ajustes asociados. (f) Todo el detalle es exportable a hoja de cálculo para retiro sanitario inmediato.
@@ -272,9 +273,11 @@ El prototipo debe mostrar qué sigue funcionando sin señal y qué ocurre al rec
 - [ ] **RF-03.11** — El sistema debe registrar y conservar en cada pedido de preventa el precio acordado por el preventista al tomarlo, conforme a las condiciones comerciales autorizadas, sin modificarlo por cambios posteriores de la lista de precios.
   - Actor: Gerente Comercial · Prioridad/etapa: Media / E1
   - Verificar: El pedido conserva el precio acordado y lo transmite al ERP para la facturación.
+  - ⚠ Revisión externa (04-11-2026) · **No cumplía** · ✓ **Corregido**: en Ficha de cliente › «Excepciones de precio» se crea una excepción por cliente o, en el canal moderno, por toda la cadena (descuento o precio fijo, con vigencia). Un descuento sobre 15 % queda «Por autorizar» (RNG-16). Los pedidos ya tomados conservan su precio. **Límite de la simulación**: la transmisión del precio al ERP para facturar (Constancia, fila 1).
 - [ ] **RF-03.12** — El sistema debe generar una alerta al responsable comercial cuando el importe calculado para el despacho o la facturación difiera del precio registrado en el pedido, para corregir la discrepancia antes de facturar y conservar el precio acordado (RF-03.11).
   - Actor: Gerente Comercial · Prioridad/etapa: Media / E1
   - Verificar: La diferencia queda alertada al responsable comercial y se corrige antes de facturar, conservando el precio acordado.
+  - ⚠ Revisión externa (04-11-2026) · **Era parcial** · ✓ **Corregido**: la alerta se calcula en cada pedido no facturado cuyo precio pactado difiere de la lista vigente (hoy, 20 pedidos por el alza de azúcar y leche). Se ven con el filtro «Precio: Con diferencia» de `/pedidos` y desde la tarea T-15 de la bandeja. El destinatario interno es correcto: SD3 pide alertar al responsable comercial, no al cliente.
 - [ ] **RF-03.13** — El sistema debe informar al preventista la fecha y ventana horaria de entrega que puede comprometer, considerando stock, capacidad de despacho y restricciones del cliente.
   - Actor: Preventistas · Prioridad/etapa: Crítica / E1
   - Verificar: El preventista visualiza la ventana disponible antes de confirmar; la promesa queda registrada.
@@ -392,6 +395,7 @@ El prototipo debe mostrar qué sigue funcionando sin señal y qué ocurre al rec
   - Actor: Tripulación propia y peoneta / Conductores externos / Empresas Transp. · Prioridad/etapa: Alta / E1
   - Verificar: Un conductor nuevo de una empresa externa se autentica en 2 minutos con un código que le da su jefe de flota, y puede iniciar su ruta.
   - Respaldo: Caso, Restricción #6, RT-12.11, Cap. 16.1 (Decisión #5)
+  - ⚠ Revisión externa (04-11-2026) · **Era parcial** · ✓ **Corregido**: en `/ingresar` › Credencial de turno, solo entra el código emitido (RUT 15.482.337-9, código 48213705). Otro código o RUT muestra «Código o RUT incorrecto» y 00000000 muestra «Código vencido». **Límite de la simulación**: la emisión real del OTP por el jefe de flota, su expiración y el plazo de 2 minutos (Constancia, filas 5 y 10).
 - [ ] **RF-06.09** — Al registrar una entrega, el sistema debe permitir al conductor capturar la cantidad de canastillos y pallets devueltos por el cliente, identificando el tipo y estado.
   - Actor: Tripulación propia y peoneta / Conductores externos · Prioridad/etapa: Alta / E1
   - Verificar: El conductor registra que el cliente devolvió 5 canastillos; el sistema descuenta del saldo del cliente y actualiza el inventario de envases.
@@ -446,6 +450,7 @@ El prototipo debe mostrar qué sigue funcionando sin señal y qué ocurre al rec
 - [ ] **RF-07.08** — El sistema debe proveer una bandeja de validación para pagos reportados en el portal web de clientes, permitiendo al cajero verificar el comprobante bancario y autorizar su traspaso estructurado al ERP.
   - Actor: Gerente de Finanzas / Canal Moderno · Prioridad/etapa: Alta / E2
   - Verificar: Pago web queda en estado «En Revisión» hasta que el cajero lo aprueba, momento en que se envía la rebaja contable al ERP.
+  - ⚠ Revisión externa (04-11-2026) · **Era parcial** · ✓ **Corregido**: al aprobar un pago web se agrega un mensaje nuevo («Rebaja por pago web…», en cola) en la pestaña «Envío al ERP». **Límite de la simulación**: que la rebaja llegue al ERP real y se concilie (Constancia, fila 1).
 - [ ] **RF-07.09** — El sistema debe transferir de forma estructurada, asíncrona e idempotente los comprobantes de recaudación y cierres comerciales aprobados hacia el ERP para actualizar automáticamente las cuentas por cobrar.
   - Actor: Jefe de TI / Gerente de Finanzas · Prioridad/etapa: Alta / E1
   - Verificar: Abonos y cancelaciones contables reflejados en el ERP el mismo día sin intervención manual de digitación (Restricción R4).
@@ -485,6 +490,7 @@ El prototipo debe mostrar qué sigue funcionando sin señal y qué ocurre al rec
 - [ ] **RF-08.07** — El sistema debe incluir el costo de devoluciones y mermas por cliente como componente del cálculo del costo de servir (Épica 11).
   - Actor: Gerente de Finanzas · Prioridad/etapa: Alta / E2
   - Verificar: El costo de servir de un cliente con alta tasa de devolución refleja ese costo adicional.
+  - ⚠ Revisión externa (04-11-2026) · **Era parcial** · ✓ **Corregido**: el costo de servir suma las devoluciones del cliente según su destino (merma al 100 % del monto; reingreso a stock, 15 %). Prueba: una merma de 900 u de azúcar subió el costo de servir de Almacén Doña Rosa de 15,5 % a 63,9 %, y la ficha muestra la composición recalculada. **Límite de la simulación**: que el cálculo use datos reales y se conserve al recargar.
 
 ### M9 · Calidad y trazabilidad
 
@@ -690,6 +696,7 @@ El prototipo debe mostrar qué sigue funcionando sin señal y qué ocurre al rec
 - [ ] **RF-12.30** — El portal debe permitir al cliente pagar los pedidos generados en autoservicio (RF-12.15) mediante la plataforma de pagos Transbank.
   - Actor: Canal Moderno · Prioridad/etapa: Media / E2
   - Verificar: El pago es procesado por Transbank y el portal registra la confirmación o rechazo de la transacción.
+  - ⚠ Revisión externa (04-11-2026) · **Sin verificar** · **Corregible fuera del prototipo**: falta el título en el catálogo del SD3 (rama main; en `tablas/t12_caso.tex` figura como «Materia sin desarrollar»). Se corrige en SD3. **Límite de la simulación**: el cobro real por Transbank (INT-09); el prototipo solo puede mostrar la confirmación o el rechazo simulados.
 
 ### M12 · Telemetría
 
@@ -719,6 +726,7 @@ El prototipo debe mostrar qué sigue funcionando sin señal y qué ocurre al rec
 - [ ] **RF-14.06** — El sistema debe permitir la gestión de geocercas zonas geográficas, para identificar cuándo un camión entra o sale de una zona ej: CD Talca, zona de clientes, para medir tiempos de llegada y salida.
   - Actor: Gerente de Operaciones / Tripulación propia y peoneta / Conductores externos · Prioridad/etapa: Media / E1
   - Verificar: El sistema registra automáticamente la hora de llegada del camión al área del cliente, para validar el cumplimiento de la ventana horaria.
+  - ⚠ Revisión externa (04-11-2026) · **Era parcial** · ✓ **Corregido**: la geocerca creada aparece en la tabla «Geocercas configuradas» y en el mapa de `/telemetria`, y se conserva mientras dure la pestaña. **Límite de la simulación**: la detección automática de entrada y salida con GPS real (Constancia, fila 3).
 
 ## 5. Requerimientos transversales (SD3, RF de las BTT)
 
@@ -876,7 +884,7 @@ SD3 define 90 RNF. Se clasifican según cómo se verifican: 18 se demuestran en 
 | **RNF-01.02** | Retención de registros de recepción | `/admin/auditoria` | Política de retención por tipo de dato y restauración simulada de una muestra |
 | **RNF-01.03** | Operación offline de recepción (24 horas) | `/recepcion` | Corte de enlace simulado: la recepción sigue en la puerta local y encola sin pérdida |
 | **RNF-02.01** | Operación offline del CD (24 horas) | `/inventario` | Corte de enlace simulado en inventario, recepción y preparación, con cola y sincronización |
-| **RNF-05.02** | Operabilidad con guantes a −22 °C | `/flujo?paso=4` | Botones de picking de 60 px (≥ 15 mm) y sin gestos |
+| **RNF-05.02** | Operabilidad con guantes a −22 °C | `/flujo?paso=4` | Botones de picking de 60 px (≈ 15,9 mm) y sin gestos. ✓ Corregido el 04-11-2026: «Cerrar misión» medía 56 px (14,8 mm); ahora todo `.big-btn` mide 60 px. **Límite de la simulación**: el uso real con guantes a −22 °C |
 | **RNF-06.01** | Autonomía de reparto sin cobertura | `/terreno` | La app de reparto completa la ruta sin señal: entregas, cobros y prueba de entrega en cola |
 | **RNF-08.02** | Retención de registros de devoluciones y mermas | `/admin/auditoria` | Plazos de retención de devoluciones y mermas, con restauración de muestra |
 | **RNF-09.02** | Retención de registros sanitarios y de trazabilidad | `/admin/auditoria` | Retención de registros sanitarios: vida útil + 6 meses, mínimo 5 años |
@@ -919,6 +927,8 @@ El prototipo muestra la función, pero el valor exigido solo se comprueba midien
 | RNF-19.04 | Pruebas de carga en Preproducción con 1.5× peak y pruebas de estrés | Pruebas de carga en Preproducción |
 | RNF-20.01 | Disponibilidad mensual mínima del 99.9% para servicios críticos | Disponibilidad medida en operación |
 | RNF-20.04 | Pruebas de resiliencia con inyección de fallas | Inyección de fallas en infraestructura |
+
+> **No se pueden corregir en el prototipo.** La revisión externa del 04-11-2026 marcó RNF-05.03 (aprender en 2 h) y RNF-08.01 (50 devoluciones en 25 min) como parciales. Quedan así: el prototipo muestra la función, pero el valor exigido solo se mide con personas y carga reales. No cuentan como un defecto del prototipo.
 
 ### Documentales
 
@@ -978,6 +988,8 @@ Se cumple en la propuesta técnica (SD4 y anexos), no en pantallas: infraestruct
 | RNF-23.03 | Ciclo de vida esperado de cada dispositivo y plan de reposición durante 56 meses |
 | RNF-23.04 | Estaciones de trabajo para operación y administración con monitores duales |
 
+> **No se puede corregir en el prototipo.** RNF-12.01 (hito de producción del canal moderno), marcado parcial en la revisión externa del 04-11-2026, es una fecha del plan de trabajo. Se acredita en el SD7 (Gantt y T-15), no en una pantalla.
+
 ## 8. Verificación de la continuación (03-11-2026)
 
 Se marcaron los controles de Prioridad 3 comprobados en `revision/verify.cjs`: RF-12.29, RF-17.12, RF-18.01, vista ligera y atajos/borradores. RF-18.01 se marca **solo como simulación**, con evidencia local, sin certificado real ni validez legal. La vista ligera omite las imágenes por completo en vez de descargarlas.
@@ -991,3 +1003,70 @@ Detalle de pruebas, barrido responsive y limitaciones: `revision/verificacion_pr
 | Código | Pantalla o ruta | Observación | Responsable |
 |---|---|---|---|
 | Aceptación detallada | Todas las rutas | Repetir criterios no marcados antes de certificar cumplimiento integral; no confundirlos con funcionalidades ausentes | |
+| Revisión externa 04-11-2026 | Ver sección 10 | ✓ Corregidos los 8 requerimientos y los 10 datos. Pendiente: las 3 acciones fuera del prototipo (10.2). Los límites de 10.1 no se corrigen | |
+
+## 10. Revisión externa del 04-11-2026: qué se corrige y qué no
+
+Cada observación se clasifica en una de tres categorías. Solo la tercera es un límite del prototipo; las otras dos son defectos.
+
+**Estado al 04-11-2026:** todo lo corregible en el prototipo (10.3 y 10.4) quedó corregido y verificado en el navegador, con el perfil de evaluación, en escritorio y a 375 px, sin errores de JavaScript ni desplazamiento horizontal. Siguen pendientes las tres acciones de 10.2 (fuera del prototipo) y los límites de 10.1, que no se pueden corregir.
+
+- **Corregible en el prototipo**: falta la pantalla, el dato está mal o la simulación no reacciona. Se arregla en `js/` o `css/`.
+- **Corregible fuera del prototipo**: depende de publicar el sitio o de corregir otro documento (SD3).
+- **No corregible: límite de la simulación**: exige servidor, integración, dispositivos, personas o tiempo reales (Bases Técnicas Transversales, 25.6). Se acredita en otro entregable.
+
+Un mismo requerimiento puede tener una parte corregible y otra no: la parte simulada se corrige y la parte real se declara.
+
+### 10.1 No corregibles: límites de la simulación
+
+| Código | Qué no se puede demostrar | Cómo se acredita |
+|---|---|---|
+| RT-25.07 | Que el enlace siga en línea durante seis meses: solo se comprueba con el paso del tiempo | Publicación estable y compromiso de mantener el repositorio |
+| RT-25.03 | La revisión con lector de pantalla no es una pantalla, es una prueba manual | Informe de conformidad WCAG (entregable 17) |
+| RNF-05.02 | Uso real con guantes a −22 °C | Prueba en terreno con el terminal especificado |
+| RNF-05.03 | Aprendizaje en 2 h | Prueba de usabilidad con operarios nuevos |
+| RNF-08.01 | 50 devoluciones en 25 min | Prueba de desempeño en peak |
+| RNF-12.01 | Hito de producción del canal moderno | SD7: Gantt y T-15 |
+| RF-03.11, RF-07.08 | Envío y conciliación real con el ERP | Pruebas de integración (Constancia, fila 1) |
+| RF-06.08 | Emisión real del OTP, su expiración y el plazo de 2 min | Pruebas de aceptación (Constancia, filas 5 y 10) |
+| RF-08.07 | Costo de servir con datos reales y persistencia | Pruebas de aceptación de M10 |
+| RF-12.30 | Cobro real por Transbank | Pruebas de integración INT-09 |
+| RF-14.06 | Entrada y salida detectadas por GPS real | Pruebas con telemetría (Constancia, fila 3) |
+
+### 10.2 Corregibles fuera del prototipo
+
+| Código | Observación | Acción |
+|---|---|---|
+| RT-25.06 | patricioh315.github.io/LafroX responde 404 | Activar GitHub Pages en la rama LafroX-Prototipo-HTML y probar el enlace |
+| RF-02.09 | Sin título único en el catálogo del SD3 de main | Unificar el título en `sd3/tablas/` y `sd3/tablas_anexo/` |
+| RF-12.30 | Sin título en el catálogo del SD3 de main | Completar el título en `sd3/tablas/` |
+
+### 10.3 Corregibles en el prototipo: requerimientos (✓ corregidos el 04-11-2026)
+
+| Código | Observación | Corrección | Dónde verificar |
+|---|---|---|---|
+| RF-03.11 | No hay excepción de precio por cliente o cadena | ✓ Excepciones por cliente o cadena, con vigencia y autorización sobre 15 % | `/clientes/:id` › Excepciones de precio |
+| RF-03.12 | La alerta de cambio de precio existe en un solo pedido | ✓ Se calcula en cada pedido no facturado con diferencia contra la lista vigente | `/pedidos?precio=dif` |
+| RF-06.08 | Acepta cualquier código de 8 dígitos | ✓ Solo el código emitido; rechaza el incorrecto y el vencido | `/ingresar` › Credencial de turno |
+| RF-07.08 | Al aprobar un pago no aparece en «Envío al ERP» | ✓ Cada aprobación agrega su mensaje | `/rendicion` › Pagos web › Envío al ERP |
+| RF-08.07 | Una merma no cambia el costo de servir; el 14 % es fijo | ✓ El costo de servir suma las devoluciones por destino | `/devoluciones/:id` y `/clientes/:id` |
+| RF-14.06 | La geocerca nueva no aparece en la lista ni en el mapa | ✓ Aparece en ambos | `/telemetria` › Geocercas |
+| RNF-05.02 | «Cerrar misión» mide 14,8 mm | ✓ 60 px (≈ 15,9 mm) | `/flujo?paso=4` |
+| RT-25.03 | Botones del paso a paso de 38 px de alto | ✓ 44 px | `/flujo` y todo `.stepper` |
+
+### 10.4 Corregibles en el prototipo: datos simulados (✓ corregidos el 04-11-2026)
+
+Ninguno era un límite de la simulación: eran datos de ejemplo incoherentes entre sí.
+
+| Dato | Incoherencia | Corrección |
+|---|---|---|
+| Patente KXTR-98 | Estaba en R-09 (con frío) y en R-12 (sin frío) | ✓ Una patente distinta por ruta; KXTR-98 queda solo en R-09 |
+| Ruta R-01 | Usaba PFGD-51 en Rutas y KXTR-21 en la app de reparto | ✓ R-01 usa KXTR-21 en todas las pantallas |
+| Stock disponible | Negativo en Azúcar, Detergente y Papel higiénico | ✓ Lo reservado nunca supera el stock físico; ningún disponible es negativo |
+| Ruta R-10 | Decía «Consolidada · 82 %» y su ocupación seguía en 68 % | ✓ Pasa de 64 % a 82 % al consolidar |
+| Plan de rutas | Decía «84 rutas» y la tabla mostraba 12 | ✓ Plan, aviso e inicio dicen 12 rutas y 343 entregas, calculadas de la tabla |
+| Devolución DV-5530 | Usaba un lote que no existía para ese producto | ✓ Toda devolución usa producto y lote de una línea de su pedido |
+| OTIF por ruta | El eje llegaba a 200 % | ✓ Los ejes en porcentaje terminan en 100 % |
+| Alerta térmica | Decía «consigna de 4 °C» y el gráfico marcaba «Meta 8» | ✓ La alerta y el gráfico distinguen consigna (4 °C) y límite de excursión (8 °C). La lectura crítica pasó de 7,9 °C a 8,6 °C, porque 7,9 °C no superaba el límite |
+| Pedidos de R-01 | La ruta iba en camino y sus pedidos figuraban como «Capturado sin conexión» | ✓ Los pedidos sin planificar no tienen ruta; los de R-01 están «En ruta» o entregados |
+| Segregación de funciones | El aviso solo se activaba para Finanzas | ✓ El aviso revisa todos los roles con «Crear» y «Aprobar», al abrir y al cambiar la matriz |

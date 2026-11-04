@@ -23,6 +23,8 @@ El prototipo es una simulación sin servidor. Las bases no exigen funcionalidad 
 
 Estos puntos siguen en la lista, pero se marcan con la evidencia de la última columna, no navegando el prototipo.
 
+> **Revisión externa del 04-11-2026.** De sus observaciones, solo son límites del prototipo RT-25.07 (los seis meses), la revisión con lector de pantalla de RT-25.03 y el uso real con guantes. RT-25.06 se corrige publicando el sitio. Los botones de 38 px y «Cerrar misión» de 14,8 mm ya se corrigieron en el código (✓ 04-11-2026). La clasificación completa, con los requerimientos de SD3 y los errores de datos, está en `checklist_sd3_sd4.md`, sección 10.
+
 ## Resultado de la revisión (03-11-2026)
 
 Revisión sobre la rama LafroX-Prototipo-HTML (commit 20cab1d8), con el perfil de evaluación, en servidor local. Se recorrieron las 49 rutas: sin errores de consola, sin enlaces internos rotos y con contraste AA en modo claro y oscuro. Se midieron los 5 tamaños exigidos y los objetivos táctiles de cada pantalla.
@@ -59,11 +61,13 @@ Revisión sobre la rama LafroX-Prototipo-HTML (commit 20cab1d8), con el perfil d
 - [x] Es un prototipo interactivo de **alta fidelidad** (Cap. 25.1).
 - [ ] Se entrega como **enlace navegable en línea** (RT-25.06).
   - ⚠ No cumple: el sitio no está publicado (patricioh315.github.io/LafroX responde 404).
+  - **Corregible fuera del prototipo**: activar GitHub Pages en la rama LafroX-Prototipo-HTML. No es un límite de la simulación.
 - [x] Funciona **sin instalación ni complementos** (RT-25.06).
 - [ ] Es compatible con los **navegadores modernos vigentes** (RT-25.06).
   - ⚠ Parcial: probado solo en Chromium (navegador integrado); falta Firefox y Safari.
 - [ ] El acceso está garantizado por **al menos seis meses** desde la entrega (RT-25.07).
   - ⚠ No cumple aún: depende de publicar el enlace.
+  - **No corregible en el prototipo**: publicar resuelve el acceso, pero los seis meses solo se comprueban con el paso del tiempo. Se acredita con la publicación estable y el compromiso de mantener el repositorio.
 - [x] Simula de forma realista la navegación y los flujos sin servicios de fondo ni base de datos (Cap. 25.1).
 - [x] Permite recorrerlo **desde la perspectiva de los distintos perfiles** de personas usuarias (Cap. 25.1).
 - [ ] Deseable: se puede exportar a un documento interactivo para revisión **sin conexión** (RT-25.10).
@@ -155,6 +159,7 @@ Revisión sobre la rama LafroX-Prototipo-HTML (commit 20cab1d8), con el perfil d
 - [x] Contraste adecuado (texto 4,5:1; texto grande y controles 3:1).
 - [x] Tamaños de fuente legibles.
 - [x] Objetivos táctiles de **al menos 44 × 44 px**.
+  - ✓ Corregido el 04-11-2026: los botones del paso a paso medían 38 px de alto (revisión externa); ahora miden 44 px (`.stepper .step`).
   - ✓ Corregido: todos los controles miden al menos 44 × 44 px en los 5 tamaños. Excepción: en teléfono y tableta los marcadores del mapa de /telemetria se reducen con el SVG; la misma información está en Rutas con controles de 44 px (excepción de función equivalente, WCAG 2.5.8).
 - [x] Navegación **completa por teclado**.
 - [x] Orden de foco lógico.
@@ -169,6 +174,7 @@ Revisión sobre la rama LafroX-Prototipo-HTML (commit 20cab1d8), con el perfil d
   - ✓ Corregido: Mi perfil › Accesibilidad › Contraste: alto contraste, en claro y en oscuro.
 - [ ] Verificado con herramientas automatizadas **y** pruebas manuales (RT-13.01; Art. 26°).
   - ⚠ Pendiente: no hay informe de conformidad; en esta revisión se hizo un barrido automático de contraste y de tamaños.
+  - **No corregible en el prototipo**: la revisión con lector de pantalla (NVDA o VoiceOver) es una prueba manual que se documenta en el informe de conformidad, no un cambio de pantalla.
 
 ### RT-25.04 · Diseño responsivo (también RT-13.02)
 
@@ -193,7 +199,7 @@ Revisión sobre la rama LafroX-Prototipo-HTML (commit 20cab1d8), con el perfil d
 ### Interfaces de terreno (RT-13.08, según caso; Art. 26°)
 
 - [ ] Usable con guantes (objetivos amplios).
-  - ⚠ No verificable en simulación; los objetivos ya miden al menos 44 × 44 px.
+  - ⚠ No verificable en simulación: el uso real con guantes **no se puede corregir** en el prototipo. ✓ Lo corregible ya se hizo: «Cerrar misión» medía 14,8 mm y ahora mide 60 px (≈ 15,9 mm, RNF-05.02).
 - [ ] Legible a la intemperie y con luminosidad variable.
   - ⚠ No verificable en simulación.
 - [ ] Funciona sin conexión.
@@ -328,6 +334,9 @@ Las funciones de Prioridad 3 tienen pruebas reproducibles en `verify.cjs`; alcan
 
 | Punto | Pantalla o ruta | Observación | Responsable |
 |---|---|---|---|
-| RT-25.06, RT-25.07 | Todo el sitio | Publicar en GitHub Pages (rama LafroX-Prototipo-HTML) y probar el enlace | |
+| RT-25.06 | Todo el sitio | Publicar en GitHub Pages (rama LafroX-Prototipo-HTML) y probar el enlace. Corregible fuera del prototipo | |
+| RT-25.07 | Todo el sitio | Seis meses de acceso: no demostrable en la entrega; se acredita con publicación estable | |
+| RT-25.03 | `/flujo`, pasos | ✓ Corregido: botones del paso a paso a 44 px | |
+| RNF-05.02 | `/flujo?paso=4` | ✓ Corregido: «Cerrar misión» a 60 px (≈ 15,9 mm) | |
 | RT-13.01 | Documento aparte | Informe de conformidad WCAG con pruebas automáticas y manuales | |
 | RT-25.10 (deseable) | Documento aparte | Exportar el prototipo para revisión sin conexión | |
