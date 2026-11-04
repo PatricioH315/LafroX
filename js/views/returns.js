@@ -86,7 +86,7 @@
   });
 
   L.route('/devoluciones/:id', {
-    title: (p) => p.id || 'Detalle de devolución', parent: '/devoluciones', block: 'Proceso operacional secundario', module: 'M8 Devoluciones y envases', rf: ['RF-08.02', 'RF-17.03', 'RF-17.06'], actors: ['Jefa de Bodega', 'Jefa de Calidad', 'Gerente de Finanzas'],
+    title: (p) => p.id || 'Detalle de devolución', parent: '/devoluciones', block: 'Proceso operacional secundario', module: 'M8 Devoluciones y envases', rf: ['RF-08.02', 'RF-17.06'], actors: ['Jefa de Bodega', 'Jefa de Calidad', 'Gerente de Finanzas'],
     render: ({ id }) => {
       const d = D.devoluciones.find((x) => x.id === id);
       if (!d) return L.empty('search', 'Devolución no encontrada', `No existe el folio ${id}.`, '<a class="btn btn-primary" href="#/devoluciones">Volver</a>');

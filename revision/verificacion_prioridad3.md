@@ -88,3 +88,21 @@ Revisión independiente en el navegador integrado (Chromium), sin Playwright, so
 | Prioridad 3 | Inactividad, firma, JSON, borradores con `g s` y vista ligera | Funcionan; el borrador de Flujo se restaura tras recargar |
 
 Corrección adicional: una sesión de cliente sin marca de tiempo se cerraba de inmediato por inactividad; ahora empieza a contar desde ese momento.
+
+## Correcciones por análisis externo (03-11-2026)
+
+Un análisis externo marcó 32 puntos. Verificados contra el texto de SD3 y el código:
+
+| Resultado | Puntos |
+|---|---|
+| Faltaban y se construyeron | RF-07.05 y RF-03.09 (bloqueo de crédito en preventa), RF-07.06 (POS con código de autorización y voucher conciliado), RF-07.11 (recibos del preventista consolidados en lo que rinde), RF-07.08 (bandeja de pagos web «En revisión»), RF-07.09 (envío idempotente al ERP), RF-11.04 (Perfect Order por causa raíz), RF-11.08 (segmentación por rentabilidad con simulación), RF-14.06 (geocercas con entradas y salidas), RF-01.09 (cola y reintento al ERP), RNF-02.01 (CD sin enlace 24 h), RNF-05.02 (picking de 60 px, ≥ 15 mm), RNF-09.03 (auditoría de consultas con finalidad), RNF-12.02 (configurar una cadena EDI nueva) |
+| Existían débiles y se reforzaron | RF-07.10 (abono visible en la ficha), RF-04.07 (ventana editable), RF-08.07 (devoluciones y mermas en el costo de servir), RF-03.08 (se usa la deuda vencida, como dice SD3) |
+| Incorrectos en el análisis | RF-03.12 (SD3 alerta al responsable comercial, no al cliente; ya estaba) y RF-03.11 (SD3 pide conservar el precio pactado, no excepciones por cliente) |
+| No demostrables en simulación | RNF-05.03, RNF-08.01 y RNF-12.01, más la retención real de RNF-01.02, 08.02 y 09.02 (se muestra la política y una restauración simulada) |
+| Acción externa | RT-25.06 y RT-25.07: publicar en GitHub Pages |
+
+Además:
+
+- **RNF incorporados.** Los 90 RNF de SD3 no estaban en la planilla ni en el checklist. Ahora están: 18 demostrables con ruta, 21 no demostrables en simulación y 51 documentales. La planilla pasa a 292 filas.
+- **Etiquetas auditadas.** Se revisó cada código declarado contra lo que muestra su pantalla. Se quitaron o movieron etiquetas sin respaldo (RF-04.02, RF-04.04, RF-14.02, RF-17.03, RF-12.23, RF-03.06 y las de `/guia`) y se construyó la evidencia que faltaba para RF-07.04 (cartera vencida con promesas de pago) y RF-18.03 (registro de envíos por canal). Las URL de la planilla se regeneraron desde las rutas.
+- **Barrido final.** 49 rutas × 5 tamaños, pestañas nuevas a 375 px, 13 pantallas intervenidas en 4 modos de contraste y 16 perfiles: sin errores, desbordes, enlaces rotos ni controles bajo 44 px. La estrella vacía de la valoración es un gráfico y cumple 3:1.

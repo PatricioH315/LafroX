@@ -456,3 +456,6 @@ kbd { font-family: var(--font-mono); font-size: 12px; padding: 1px 6px; border: 
 .guide-b { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .guide-b .muted { font-size: var(--fs-sm); }
 @media (max-width: 600px) { .guide-list li { flex-wrap: wrap; } .guide-b { flex-basis: calc(100% - 56px); } .guide-list li .btn { margin-inline-start: 48px; } }
+
+/* Picking con guantes: 15 mm ≈ 57 px CSS; se usa 60 px (RNF-05.02) */
+.glove .btn { min-height: 60px; min-width: 60px; font-size: var(--fs-md); }

@@ -8,6 +8,8 @@
   const queue = () => L.store.get('field.queue', []);
   const setQueue = (q) => L.store.set('field.queue', q);
   L.fieldDone = () => stops().filter((s) => s.estado !== 'Pendiente').length;
+  // Recibos provisionales del preventista: se consolidan en el efectivo que debe rendir al volver (RF-07.11)
+  L.preventaRecibos = () => L.store.get('preventa.recibos', null) || [{ id: 'RP-5114', cliente: 'Minimarket El Roble', monto: 84200, hora: '10:12', rendido: false }, { id: 'RP-5117', cliente: 'Almacén San Expedito', monto: 51900, hora: '11:40', rendido: false }];
 
   const deviceShell = (title, body, { back, tabs, active, fab } = {}) => `
     <div class="device"><div class="device-status" aria-hidden="true"><span>09:42</span><span class="row" style="gap:6px">${icon(L.online() ? 'wifi' : 'wifi-off', 'icon-sm')}<span>87 %</span></span></div>
@@ -32,7 +34,7 @@
 
   /* ---------- App de reparto ---------- */
   L.route('/terreno', {
-    title: 'Reparto en terreno', parent: '/inicio', block: 'Perfil de terreno', module: 'M6 Reparto · M7 · M8', rf: ['RF-06.01', 'RF-06.02', 'RF-06.04', 'RF-06.05', 'RF-06.07', 'RF-06.09', 'RF-06.11', 'RF-07.06', 'RF-09.06', 'RF-06.13', 'RF-09.12', 'RNG-12', 'RF-06.10', 'RF-06.12', 'RF-07.10', 'RF-09.07', 'RF-09.13'], actors: ['Conductor propio', 'Conductor externo'],
+    title: 'Reparto en terreno', parent: '/inicio', block: 'Perfil de terreno', module: 'M6 Reparto · M7 · M8', rf: ['RF-06.01', 'RF-06.02', 'RF-06.04', 'RF-06.05', 'RF-06.07', 'RF-06.09', 'RF-06.11', 'RF-07.06', 'RF-09.06', 'RF-06.13', 'RF-09.12', 'RNG-12', 'RF-06.10', 'RF-06.12', 'RF-07.10', 'RF-09.07', 'RF-09.13', 'RNF-06.01', 'RNF-09.06', 'RNF-13.02'], actors: ['Conductor propio', 'Conductor externo'],
     render: () => `<div class="page-head hide-sm"><div class="titles"><span class="page-kicker">${icon('phone', 'icon-sm')}Perfil de terreno · app de reparto</span><h1>App de reparto · ruta R-01 Cauquenes</h1><p class="muted" style="margin:0">Vista móvil del conductor. Use el interruptor de la barra superior de la app para simular la pérdida de señal.</p></div><div class="actions"><button type="button" class="btn btn-secondary" id="tr-reset">${icon('sync')}Reiniciar ruta</button></div></div>
       <div class="split"><div id="tr-host"></div><aside class="card hide-sm stack"><h2>Qué funciona sin conexión</h2><p class="small muted" style="margin:0">Según SD4, Anexo 4-J.</p>
         <ul class="list">${[['Entrega y prueba de entrega', 'Captura 14 h · cola cifrada', 'success'], ['Cobro en efectivo', 'Comprobante local', 'success'], ['Devoluciones y envases', 'Se registran en el dispositivo', 'success'], ['Mapas', 'Precargados con la ruta', 'success'], ['Autorización POS', 'No disponible: efectivo o crédito autorizado', 'danger'], ['Recalcular ruta', 'No disponible: secuencia precargada', 'danger']].map(([t, d, k]) => `<li><span class="badge badge-${k} plain" style="padding:4px">${icon(k === 'success' ? 'check' : 'ban', 'icon-sm')}</span><div class="grow"><div class="title">${t}</div><div class="sub">${d}</div></div></li>`).join('')}</ul></aside></div>`,
@@ -106,7 +108,7 @@
 
   /* ---------- App de preventa ---------- */
   L.route('/terreno/preventa', {
-    title: 'Preventa en terreno', parent: '/inicio', block: 'Perfil de terreno', module: 'M3 Preventa', rf: ['RF-03.02', 'RF-03.05', 'RF-03.06', 'RF-03.13', 'RF-03.15', 'RF-07.05', 'RF-08.04', 'RF-07.11'], actors: ['Preventista'],
+    title: 'Preventa en terreno', parent: '/inicio', block: 'Perfil de terreno', module: 'M3 Preventa', rf: ['RF-03.02', 'RF-03.05', 'RF-03.06', 'RF-03.13', 'RF-03.15', 'RF-07.05', 'RF-08.04', 'RF-07.11', 'RF-03.08', 'RF-03.09'], actors: ['Preventista'],
     render: () => `<div class="page-head hide-sm"><div class="titles"><span class="page-kicker">${icon('phone', 'icon-sm')}Perfil de terreno · app de preventa</span><h1>App de preventa · zona Curicó</h1><p class="muted" style="margin:0">Visitas del día, ficha comercial y toma de pedido sin señal.</p></div><div class="actions"><a class="btn btn-secondary" href="#/flujo">Ver el pedido en el flujo completo</a></div></div>
       <div id="pv-host"></div>`,
     mount: (root) => {
@@ -124,7 +126,7 @@
           title = c.nombre; back = 'visitas';
           body = `<div class="grid grid-2" style="gap:8px"><div class="card" style="padding:12px;box-shadow:none"><div class="small muted">Crédito disponible</div><strong class="num">${fmt.clp(c.credito - c.deuda)}</strong></div><div class="card" style="padding:12px;box-shadow:none"><div class="small muted">Deuda vencida</div><strong class="num" style="${c.vencida ? 'color:var(--c-danger)' : ''}">${fmt.clp(c.vencida)}</strong></div></div>
             <p class="small muted" style="margin:0">${L.online() ? 'Datos en línea' : 'Última sincronización: hoy 06:00 (hace 3 h 42 min)'}</p>
-            ${c.vencida ? L.alert('danger', 'Cliente con mora', 'Deuda vencida sobre 30 días: el pedido quedará sujeto a autorización (RF-07.05).') + `<button type="button" class="btn btn-secondary btn-block" data-collect style="margin-top:var(--sp-2)">${icon('cash')}Cobrar facturas vencidas</button>` : ''}
+            ${c.vencida ? L.alert('danger', 'Cliente bloqueado por mora', 'Deuda vencida sobre 30 días: no se aceptan pedidos a crédito. Solo venta al contado o cobro de la deuda (RF-07.05).') + `<button type="button" class="btn btn-secondary btn-block" data-collect style="margin-top:var(--sp-2)">${icon('cash')}Cobrar facturas vencidas</button>` : ''}
             ${c.envases.canastillos > 40 ? L.alert('warning', 'Saldo de envases sobre el umbral', `${c.envases.canastillos} canastillos en poder del cliente (RF-08.04).`) : ''}
             <h3>Compra habitual (RF-03.06)</h3><ul class="list">${D.productos.slice(0, 4).map((p, i) => `<li><span class="grow"><span class="title">${esc(p.nombre)}</span><span class="sub" style="display:block">Cada ${[7, 7, 14, 10][i]} días · última: ${[12, 24, 6, 18][i]} u</span></span><button type="button" class="btn btn-secondary btn-sm" data-add="${p.sku}">${icon('plus', 'icon-sm')}Agregar</button></li>`).join('')}</ul>
             <button type="button" class="btn btn-primary btn-block big-btn" data-order>${icon('cart')}Tomar pedido</button>`;
@@ -132,20 +134,29 @@
           const c = L.findClient(S.cli);
           title = 'Pedido · ' + c.nombre; back = 'cliente';
           const tot = S.cart.reduce((a, l) => a + l.cant * l.precio, 0);
+          // Crédito: mora bloquea el crédito; el pedido más la deuda vencida sobre el límite alerta, y sobre 110 % bloquea (RF-07.05, RF-03.08, RF-03.09)
+          const moroso = c.vencida > 0;
+          if (moroso) S.pago = 'contado';
+          const pago = S.pago || 'credito';
+          const uso = c.credito ? Math.round(((c.vencida + tot) / c.credito) * 100) : 0;
+          const sobre = pago === 'credito' && uso > 100, bloqueo = pago === 'credito' && uso > 110;
           body = `<div class="field combo"><label for="pv-add">Agregar producto</label><input id="pv-add" class="input" placeholder="Nombre o SKU"></div>
             ${S.cart.length ? `<ul class="list">${S.cart.map((l, i) => `<li><span class="grow"><span class="title">${esc(l.nombre)}</span><span class="sub" style="display:block">${fmt.clp(l.precio)} · stock ${L.online() ? '' : '(06:00) '}${fmt.n(l.stock)}</span></span><button type="button" class="btn btn-secondary btn-icon btn-sm" data-cq="${i}" data-d="-1" aria-label="Restar">${icon('minus', 'icon-sm')}</button><strong class="num" style="min-width:28px;text-align:center">${l.cant}</strong><button type="button" class="btn btn-secondary btn-icon btn-sm" data-cq="${i}" data-d="1" aria-label="Sumar">${icon('plus', 'icon-sm')}</button></li>`).join('')}</ul>` : L.empty('box', 'Pedido vacío', 'Busque un producto o agregue desde la compra habitual.')}
             <div class="row-between"><span class="muted">Entrega: sáb 14-11 · ${esc(c.ventana)}</span><strong class="num">${fmt.clp(tot)}</strong></div>
-            <button type="button" class="btn btn-primary btn-block big-btn" data-save ${S.cart.length ? '' : 'disabled'}>${icon(L.online() ? 'send' : 'download')}${L.online() ? 'Enviar pedido' : 'Guardar sin conexión'}</button>`;
+            <fieldset><legend>Condición de pago</legend><div class="segmented" role="group" aria-label="Condición de pago"><button type="button" data-pago="credito" aria-pressed="${pago === 'credito'}" ${moroso ? 'disabled' : ''}>Crédito 30 días</button><button type="button" data-pago="contado" aria-pressed="${pago === 'contado'}">Contado</button></div>${moroso ? '<p class="hint">Crédito bloqueado por mora (RF-07.05).</p>' : ''}</fieldset>
+            ${S.cart.length && bloqueo ? L.alert('danger', 'Pedido bloqueado por crédito', `El pedido más la deuda vencida llega al ${uso} % del límite: sobre 110 % no se puede enviar a crédito (RF-03.09). Reduzca el pedido o cámbielo a contado.`) : S.cart.length && sobre ? L.alert('warning', 'El pedido supera el límite de crédito', `El pedido más la deuda vencida llega al ${uso} % del límite de crédito (RF-03.08). Puede enviarlo: quedará sujeto a revisión.`) : ''}
+            <button type="button" class="btn btn-primary btn-block big-btn" data-save ${S.cart.length && !bloqueo ? '' : 'disabled'}>${icon(L.online() ? 'send' : 'download')}${L.online() ? 'Enviar pedido' : 'Guardar sin conexión'}</button>`;
         }
         host.innerHTML = deviceShell(title, body, { back, fab, tabs: [['visitas', 'list', 'Visitas'], ['cola', 'sync', 'Cola'], ['clientes', 'store', 'Clientes'], ['mas', 'menu', 'Más']], active: 'visitas' });
         $('#dev-net', host).onchange = (e) => { L.setOnline(e.target.checked); if (e.target.checked) syncQueue(draw); else { L.toast('Sin conexión', 'Puede seguir tomando pedidos.', 'warning'); draw(); } };
         $('[data-dback]', host) && ($('[data-dback]', host).onclick = () => { S.screen = $('[data-dback]', host).dataset.dback; draw(); });
-        $$('[data-dtab]', host).forEach((b) => (b.onclick = () => { if (b.dataset.dtab === 'clientes') L.go('/clientes'); else if (b.dataset.dtab === 'cola') L.toast(`${queue().length} evento(s) en cola`, queue().length ? 'Se enviarán al reconectar.' : 'Todo sincronizado.', 'info'); else if (b.dataset.dtab === 'mas') L.go('/pedidos'); else { S.screen = 'visitas'; draw(); } }));
+        $$('[data-dtab]', host).forEach((b) => (b.onclick = () => { if (b.dataset.dtab === 'clientes') L.go('/clientes'); else if (b.dataset.dtab === 'cola') L.toast(`${queue().length} evento(s) en cola`, queue().length ? 'Se enviarán al reconectar.' : 'Todo sincronizado.', 'info'); else if (b.dataset.dtab === 'mas') { const rs = L.preventaRecibos().filter((r) => !r.rendido); L.modal({ title: 'Efectivo por rendir hoy', body: rs.length ? `<ul class="list">${rs.map((r) => `<li><span class="mono">${r.id}</span><span class="grow">${esc(r.cliente)} · ${r.hora}</span><span class="num">${fmt.clp(r.monto)}</span></li>`).join('')}</ul><p class="row-between"><strong>Total a rendir</strong><strong class="num">${fmt.clp(rs.reduce((a, r) => a + r.monto, 0))}</strong></p><p class="hint">La rendición es obligatoria al volver a base; Finanzas la ve en Cobranza y rendición (RF-07.11).</p>` : L.empty('done', 'Nada por rendir', 'No hay recibos provisionales pendientes.'), actions: [{ label: 'Ver mis pedidos', onClick: () => L.go('/pedidos') }, { label: 'Cerrar', cls: 'btn-primary' }] }); } else { S.screen = 'visitas'; draw(); } }));
         $$('[data-cli]', host).forEach((b) => (b.onclick = () => { S.cli = b.dataset.cli; S.cart = []; S.screen = 'cliente'; draw(); }));
         $('#pv-q', host) && ($('#pv-q', host).oninput = (e) => { const v = e.target.value.toLowerCase(); $$('#pv-list li', host).forEach((li) => (li.hidden = !li.textContent.toLowerCase().includes(v))); });
         $('[data-fab]', host) && ($('[data-fab]', host).onclick = () => { S.cli = mine[0].id; S.cart = []; S.screen = 'pedido'; draw(); });
         $$('[data-add]', host).forEach((b) => (b.onclick = () => { const p = D.productos.find((x) => x.sku === b.dataset.add); S.cart.push({ ...p, cant: 12 }); L.toast('Agregado al pedido', p.nombre, 'success', { duration: 1500 }); b.disabled = true; }));
-        $('[data-order]', host) && ($('[data-order]', host).onclick = () => { S.screen = 'pedido'; draw(); });
+        $('[data-order]', host) && ($('[data-order]', host).onclick = () => { S.pago = null; S.screen = 'pedido'; draw(); });
+        $$('[data-pago]', host).forEach((b) => (b.onclick = () => { S.pago = b.dataset.pago; draw(); }));
         // Cobranza en efectivo de facturas vencidas en el local, con recibo provisional y rendición del día (RF-07.11)
         $('[data-collect]', host) && ($('[data-collect]', host).onclick = () => { const c = L.findClient(S.cli); const facts = [['FE-71204', Math.round(c.vencida * 0.6)], ['FE-70988', c.vencida - Math.round(c.vencida * 0.6)]]; L.modal({
           title: 'Cobrar facturas vencidas',
@@ -153,7 +164,7 @@
             <div class="field" style="margin-top:var(--sp-3)"><label for="cb-m">Monto recibido en efectivo <span class="req" aria-hidden="true">*</span></label><div class="input-group"><span class="addon">$</span><input id="cb-m" class="input num" inputmode="numeric" value="${c.vencida}"></div></div>
             <p class="hint">Se emite un recibo provisional digital. El efectivo debe rendirse hoy en caja; si no, el turno queda con descuadre.</p>`,
           onOpen: (d) => L.bindField($('#cb-m', d), ['required', (v) => (parseInt(String(v).replace(/\D/g, ''), 10) > 0 ? '' : 'Ingrese el monto recibido.')]),
-          actions: [{ label: 'Cancelar' }, { label: 'Emitir recibo provisional', cls: 'btn-primary', onClick: (api) => { if (!L.validateAll(api.el)) return false; const m = parseInt($('#cb-m', api.el).value.replace(/\D/g, ''), 10); const id = 'RP-' + (5120 + queue().length); if (!L.online()) setQueue([...queue(), { t: `Recibo ${id} · ${c.nombre}`, icon: 'cash', uuid: 'rcb-' + Math.random().toString(16).slice(2, 8), at: '09:4' + queue().length }]); L.toast(`Recibo provisional ${id} emitido`, `${fmt.clp(m)} · debe rendirse hoy en caja.`, 'success'); } }]
+          actions: [{ label: 'Cancelar' }, { label: 'Emitir recibo provisional', cls: 'btn-primary', onClick: (api) => { if (!L.validateAll(api.el)) return false; const m = parseInt($('#cb-m', api.el).value.replace(/\D/g, ''), 10); const id = 'RP-' + (5120 + L.preventaRecibos().length); L.store.set('preventa.recibos', [...L.preventaRecibos(), { id, cliente: c.nombre, monto: m, hora: new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' }), rendido: false }]); if (!L.online()) setQueue([...queue(), { t: `Recibo ${id} · ${c.nombre}`, icon: 'cash', uuid: 'rcb-' + Math.random().toString(16).slice(2, 8), at: '09:4' + queue().length }]); L.toast(`Recibo provisional ${id} emitido`, `${fmt.clp(m)} · se suma a su efectivo por rendir hoy en caja.`, 'success'); } }]
         }); });
         $$('[data-cq]', host).forEach((b) => (b.onclick = () => { const l = S.cart[b.dataset.cq]; l.cant += Number(b.dataset.d); if (l.cant <= 0) S.cart.splice(b.dataset.cq, 1); draw(); }));
         if ($('#pv-add', host)) L.combobox($('#pv-add', host), () => D.productos.map((p) => ({ label: p.nombre, meta: p.sku, p })), { onSelect: (it) => { S.cart.push({ ...it.p, cant: 6 }); draw(); } });

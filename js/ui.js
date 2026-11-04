@@ -7,6 +7,8 @@
   L.$$ = $$;
 
   L.esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  // Registro de consultas a información sensible, con finalidad (RNF-09.03)
+  L.logConsulta = (entidad, detalle, finalidad) => { const me = L.me?.(); if (!me) return; L.store.set('audit.consultas', [{ id: `AU-C${Date.now().toString().slice(-6)}`, fecha: `2026-11-13T${String(new Date().getHours()).padStart(2, '0')}:${String(new Date().getMinutes()).padStart(2, '0')}:00`, persona: me.name, operacion: 'Consulta', entidad, detalle: `${detalle} · finalidad: ${finalidad}`, ip: '10.20.1.15', origen: 'Consola web' }, ...L.store.get('audit.consultas', [])].slice(0, 50)); };
   L.uid = (p = 'id') => `${p}-${Math.random().toString(36).slice(2, 8)}`;
   L.sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 

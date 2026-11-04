@@ -17,7 +17,7 @@ Matriz de cada pantalla del prototipo con el bloque del numeral 25.2, el módulo
 
 ## Verificación
 
-- El registro declara 186 códigos RF y RNG en 49 rutas. La declaración localiza la evidencia; no sustituye la prueba de aceptación.
+- El registro declara 204 códigos RF, RNG y RNF en 49 rutas. La declaración localiza la evidencia; no sustituye la prueba de aceptación.
 - Los nombres de los 12 módulos coinciden entre SD3 (`contenido.tex`) y SD4 (Anexo 4-D). No se detectaron discrepancias.
 - Cada módulo M1 a M12 tiene al menos una pantalla (ver la cobertura más abajo).
 - Cada ruta tiene módulo y RF de SD3. Los documentos del prototipo están en `docs/`; no son rutas navegables.
@@ -56,42 +56,42 @@ Matriz de cada pantalla del prototipo con el bloque del numeral 25.2, el módulo
 | Tablero | `/tablero` | Portal principal | M10 Analítica (vista operacional) | RF-11.06, RF-16.02 | Gerentes, Jefaturas, Planificador |
 | Bandeja de tareas | `/bandeja` | Portal principal | Transversal (flujos RF-17.06) | RF-17.06, RF-17.07 | Todos los perfiles |
 | Notificaciones | `/notificaciones` | Portal principal | Transversal | RF-17.10, RF-18.03 | Todos los perfiles |
-| Mi perfil y preferencias | `/perfil` | Portal principal | Transversal | RF-18.02, RF-15.03, RF-12.29 | Todos los perfiles |
-| Flujo de pedido | `/flujo` | Proceso operacional principal | M3 · M2 · M4 · M5 · M6 · M7 | RF-03.01, RF-03.03, RF-03.09, RF-03.15, RF-03.16, RF-04.01, RF-04.06, RF-05.02, RF-05.05, RF-05.07, RF-06.01, RF-06.02, RF-06.04, RF-07.02, RF-07.03, RF-03.04, RF-03.07, RF-03.08, RF-03.10, RF-03.14, RF-05.03, RF-05.06, RF-06.03, RF-07.09, RF-09.11, RNG-01, RNG-03, RNG-05, RNG-08, RNG-12, RNG-13, RNG-15, RNG-16, RNG-17, RF-02.08, RF-06.10, RF-06.12, RF-07.10, RF-09.07 | Preventista, Planificador de Rutas, Preparador, Jefa de Bodega, Conductor, Gerente de Finanzas |
-| Reparto en terreno | `/terreno` | Perfil de terreno | M6 Reparto · M7 · M8 | RF-06.01, RF-06.02, RF-06.04, RF-06.05, RF-06.07, RF-06.09, RF-06.11, RF-07.06, RF-09.06, RF-06.13, RF-09.12, RNG-12, RF-06.10, RF-06.12, RF-07.10, RF-09.07, RF-09.13 | Conductor propio, Conductor externo |
-| Preventa en terreno | `/terreno/preventa` | Perfil de terreno | M3 Preventa | RF-03.02, RF-03.05, RF-03.06, RF-03.13, RF-03.15, RF-07.05, RF-08.04, RF-07.11 | Preventista |
+| Mi perfil y preferencias | `/perfil` | Portal principal | Transversal | RF-18.02, RF-15.03, RF-12.29, RNF-15.01 | Todos los perfiles |
+| Flujo de pedido | `/flujo` | Proceso operacional principal | M3 · M2 · M4 · M5 · M6 · M7 | RF-03.01, RF-03.03, RF-03.09, RF-03.15, RF-03.16, RF-04.01, RF-04.06, RF-05.02, RF-05.05, RF-05.07, RF-06.01, RF-06.02, RF-06.04, RF-07.02, RF-07.03, RF-03.04, RF-03.07, RF-03.08, RF-03.10, RF-03.14, RF-05.03, RF-05.06, RF-06.03, RF-07.09, RF-09.11, RNG-01, RNG-03, RNG-05, RNG-08, RNG-12, RNG-13, RNG-15, RNG-16, RNG-17, RF-02.08, RNF-05.02, RF-06.10, RF-06.12, RF-07.10, RF-09.07, RF-04.02, RF-04.04 | Preventista, Planificador de Rutas, Preparador, Jefa de Bodega, Conductor, Gerente de Finanzas |
+| Reparto en terreno | `/terreno` | Perfil de terreno | M6 Reparto · M7 · M8 | RF-06.01, RF-06.02, RF-06.04, RF-06.05, RF-06.07, RF-06.09, RF-06.11, RF-07.06, RF-09.06, RF-06.13, RF-09.12, RNG-12, RF-06.10, RF-06.12, RF-07.10, RF-09.07, RF-09.13, RNF-06.01, RNF-09.06, RNF-13.02 | Conductor propio, Conductor externo |
+| Preventa en terreno | `/terreno/preventa` | Perfil de terreno | M3 Preventa | RF-03.02, RF-03.05, RF-03.06, RF-03.13, RF-03.15, RF-07.05, RF-08.04, RF-07.11, RF-03.08, RF-03.09 | Preventista |
 | Pedidos | `/pedidos` | Proceso operacional principal | M3 Preventa | RF-03.03, RF-03.16, RF-17.12 | Preventista, Gerente Comercial, Gerente de Operaciones, Planificador de Rutas |
 | Detalle de pedido | `/pedidos/:id` | Proceso operacional principal | M3 · M6 · M7 | RF-03.11, RF-06.14, RF-12.08, RNG-08, RF-03.10, RF-03.12 | Preventista, Gerente Comercial, Cliente |
-| Rutas | `/rutas` | Proceso operacional principal | M4 Rutas | RF-04.01, RF-04.02, RF-04.03, RF-04.05, RF-11.05, RNG-14 | Planificador de Rutas, Gerente de Operaciones |
-| Detalle de ruta | `/rutas/:id` | Proceso operacional principal | M4 Rutas · M12 | RF-04.02, RF-04.04, RF-14.02, RF-14.05, RF-04.08, RF-14.04 | Planificador de Rutas |
-| Preparación | `/preparacion` | Proceso operacional principal | M5 Preparación | RF-05.01, RF-05.02, RF-05.04, RF-05.05, RF-09.08, RF-02.08 | Preparador, Jefa de Bodega |
-| Cobranza y rendición | `/rendicion` | Proceso operacional principal | M7 Cobranza y rendición | RF-07.01, RF-07.02, RF-07.03, RF-07.08, RF-11.07 | Conductores, Gerente de Finanzas |
+| Rutas | `/rutas` | Proceso operacional principal | M4 Rutas | RF-04.01, RF-04.03, RF-04.05, RF-11.05, RNG-14 | Planificador de Rutas, Gerente de Operaciones |
+| Detalle de ruta | `/rutas/:id` | Proceso operacional principal | M4 Rutas · M12 | RF-14.05, RF-04.08, RF-14.04 | Planificador de Rutas |
+| Preparación | `/preparacion` | Proceso operacional principal | M5 Preparación | RF-05.01, RF-05.02, RF-05.04, RF-05.05, RF-09.08, RF-02.08, RNF-02.01, RNF-05.02, RNF-09.04 | Preparador, Jefa de Bodega |
+| Cobranza y rendición | `/rendicion` | Proceso operacional principal | M7 Cobranza y rendición | RF-07.01, RF-07.02, RF-07.03, RF-07.08, RF-11.07, RF-07.06, RF-07.09, RF-07.11 | Conductores, Gerente de Finanzas |
 | Devoluciones y envases | `/devoluciones` | Proceso operacional secundario | M8 Devoluciones y envases | RF-08.01, RF-08.02, RF-08.03, RF-08.06, RF-17.12, RNG-07 | Conductores, Jefa de Bodega, Gerente de Finanzas |
 | Registrar devolución | `/devoluciones/nueva` | Proceso operacional secundario | M8 Devoluciones y envases | RF-08.01, RF-06.09, RNG-06 | Conductores, Jefa de Bodega |
-| Detalle de devolución | `/devoluciones/:id` | Proceso operacional secundario | M8 Devoluciones y envases | RF-08.02, RF-17.03, RF-17.06 | Jefa de Bodega, Jefa de Calidad, Gerente de Finanzas |
-| Clientes | `/clientes` | Gestión de terceros | M3 · M7 · M10 (cartera) | RF-03.06, RF-07.04, RF-11.08, RF-17.12 | Preventista, Gerente Comercial, Gerente de Finanzas |
-| Ficha de cliente | `/clientes/:id` | Gestión de terceros | M3 · M6 · M7 · M8 · M10 | RF-03.06, RF-04.07, RF-07.04, RF-08.03, RF-11.02, RF-17.08, RF-08.07, RNG-03 | Preventista, Gerente Comercial, Gerente de Finanzas |
+| Detalle de devolución | `/devoluciones/:id` | Proceso operacional secundario | M8 Devoluciones y envases | RF-08.02, RF-17.06 | Jefa de Bodega, Jefa de Calidad, Gerente de Finanzas |
+| Clientes | `/clientes` | Gestión de terceros | M3 · M7 · M10 (cartera) | RF-07.04, RF-11.08, RF-17.12 | Preventista, Gerente Comercial, Gerente de Finanzas |
+| Ficha de cliente | `/clientes/:id` | Gestión de terceros | M3 · M6 · M7 · M8 · M10 | RF-03.06, RF-04.07, RF-07.04, RF-08.03, RF-11.02, RF-17.08, RF-08.07, RNG-03, RF-07.10, RNF-09.03 | Preventista, Gerente Comercial, Gerente de Finanzas |
 | Hacer un pedido | `/portal/pedido` | Gestión de terceros | Portal de clientes · M3 | RF-12.15, RF-12.30, RF-12.29 | Cliente del canal tradicional, Cliente del canal moderno |
 | Mis entregas | `/portal/entregas` | Gestión de terceros | Portal de clientes · M6 | RF-12.16, RF-06.11 | Clientes |
 | Estado de cuenta | `/portal/cuenta` | Gestión de terceros | Portal de clientes · M7 | RF-07.07, RF-12.17, RF-12.18, RF-18.01 | Clientes |
 | Portal de transportistas | `/portal/transportista` | Gestión de terceros | Portal de transportistas (canal M11) · M4 · M6 · M12 | RF-12.19, RF-12.20, RF-12.21, RF-06.08, RF-14.05 | Empresa transportista |
 | Portal de proveedores | `/portal/proveedor` | Gestión de terceros | Portal de proveedores (canal M11) · M1 | RF-12.22, RF-12.23, RF-12.24, RF-01.01 | Proveedor |
-| Canal moderno EDI | `/canal-moderno` | Gestión de terceros | M11 Canal moderno | RF-12.01, RF-12.02, RF-12.03, RF-12.04, RF-12.05, RF-12.06, RF-12.07, RF-12.09, RF-12.10, RF-12.11, RF-12.12, RF-12.13, RNG-11 | Cliente del canal moderno, Gerente Comercial |
+| Canal moderno EDI | `/canal-moderno` | Gestión de terceros | M11 Canal moderno | RF-12.01, RF-12.02, RF-12.03, RF-12.04, RF-12.05, RF-12.06, RF-12.07, RF-12.09, RF-12.10, RF-12.11, RF-12.12, RF-12.13, RNG-11, RNF-12.02 | Cliente del canal moderno, Gerente Comercial |
 | Tablero analítico | `/analitica` | Tablero analítico | M10 Analítica | RF-11.01, RF-11.02, RF-11.03, RF-11.04, RF-11.05, RF-11.06, RF-16.02, RNG-09 | Gerente Comercial, Gerente de Finanzas, Gerente de Operaciones, Jefa de Calidad |
 | Detalle del indicador | `/analitica/:kpi` | Tablero analítico | M10 Analítica | RF-11.03, RF-11.06, RF-16.02 | Gerencias |
 | Entregas de la ruta | `/analitica/:kpi/ruta/:id` | Tablero analítico | M10 · M6 | RF-11.03, RF-06.06 | Gerencias |
 | Personas usuarias | `/admin/usuarios` | Administración | Base compartida (Keycloak) | RF-17.01, RF-15.05, RF-15.03 | Jefe de TI |
 | Roles y permisos | `/admin/roles` | Administración | Base compartida (RBAC) | RF-15.04, RF-17.01, RF-17.03 | Jefe de TI |
 | Parámetros | `/admin/parametros` | Administración | Registro versionado de parámetros | RF-17.02, RF-17.03, RF-02.01, RF-09.10, RF-17.09, RF-16.03 | Jefe de TI, Gerente de Finanzas, Jefa de Calidad |
-| Auditoría | `/admin/auditoria` | Administración | Registro de auditoría inalterable | RF-17.04, RF-17.05 | Jefe de TI, Gerencias |
+| Auditoría | `/admin/auditoria` | Administración | Registro de auditoría inalterable | RF-17.04, RF-17.05, RNF-09.03, RNF-01.02, RNF-08.02, RNF-09.02, RNF-15.03, RNF-17.01 | Jefe de TI, Gerencias |
 | Calidad y trazabilidad | `/calidad` | Módulo adicional 1 | M9 Calidad y trazabilidad | RF-02.10, RF-09.01, RF-09.02, RF-09.14 | Jefa de Calidad |
 | Detalle de lote | `/calidad/lotes/:id` | Módulo adicional 1 | M9 Calidad y trazabilidad | RF-02.10, RF-09.01, RF-09.02, RF-09.09, RNG-04, RNG-17 | Jefa de Calidad |
 | Simulacro de retiro sanitario | `/calidad/retiro` | Módulo adicional 1 | M9 Calidad y trazabilidad | RF-09.01, RF-09.06, RF-17.10 | Jefa de Calidad |
-| Telemetría y frío | `/telemetria` | Módulo adicional 2 | M12 Telemetría | RF-09.04, RF-09.05, RF-09.06, RF-14.02, RF-14.03, RF-14.06, RF-09.03, RF-14.01, RNG-04 | Planificador de Rutas, Gerente de Operaciones, Jefa de Calidad |
-| Recepción | `/recepcion` | Proceso operacional principal | M1 Recepción | RF-01.01, RF-01.08, RF-01.09, RF-12.23 | Jefa de Bodega, Preparador, Proveedor |
+| Telemetría y frío | `/telemetria` | Módulo adicional 2 | M12 Telemetría | RF-09.04, RF-09.05, RF-09.06, RF-14.02, RF-14.03, RF-14.06, RF-09.03, RF-14.01, RNG-04, RNF-09.03, RNF-09.05, RNF-14.11 | Planificador de Rutas, Gerente de Operaciones, Jefa de Calidad |
+| Recepción | `/recepcion` | Proceso operacional principal | M1 Recepción | RF-01.01, RF-01.08, RF-01.09, RNF-02.01, RNF-01.03 | Jefa de Bodega, Preparador, Proveedor |
 | Registrar recepción | `/recepcion/nueva` | Proceso operacional principal | M1 Recepción | RF-01.01, RF-01.02, RF-01.03, RF-01.04, RF-01.05, RF-01.06, RF-01.07, RF-01.11 | Jefa de Bodega, Preparador |
-| Inventario | `/inventario` | Proceso operacional principal | M2 Inventario | RF-02.02, RF-02.04, RF-02.05, RF-02.06, RF-02.07, RF-02.09, RF-10.01, RF-10.02, RF-10.03, RNG-02, RNG-10, RF-01.10, RF-02.03, RF-02.11, RF-08.05, RNG-11 | Jefa de Bodega, Gerente de Operaciones, Preventistas |
-| Guía de mi perfil | `/guia` | Portal principal | Transversal | RF-17.07, RF-16.02 | Todos los perfiles |
+| Inventario | `/inventario` | Proceso operacional principal | M2 Inventario | RF-02.02, RF-02.04, RF-02.05, RF-02.06, RF-02.07, RF-02.09, RF-10.01, RF-10.02, RF-10.03, RNG-02, RNG-10, RF-01.10, RF-02.03, RF-02.11, RF-08.05, RNG-11, RNF-02.01, RNF-13.01 | Jefa de Bodega, Gerente de Operaciones, Preventistas |
+| Guía de mi perfil | `/guia` | Portal principal | Transversal |  | Todos los perfiles |
 
 ## Cierre de Prioridad 3 (03-11-2026)
 
@@ -101,6 +101,6 @@ Matriz de cada pantalla del prototipo con el bloque del numeral 25.2, el módulo
 - Borradores: botón y atajo `g s` en Flujo de pedido y Portal de pedidos; por perfil y pestaña. El atajo se desactiva en Perfil y no opera al escribir ni sobre un diálogo.
 - Portal ligero: seis productos por página, sin imágenes ni animaciones; conserva el carrito al cambiar de modo.
 
-La planilla conserva 202 filas: 186 RF/RNG con ruta, 10 RT con la evaluación preexistente y 6 documentales (RF-13.01 a RF-13.04, RF-16.01 y RF-16.04). Las capas 2–8 se clasifican «No aplica» al prototipo estático. «Sí» significa trazabilidad declarada; no certificación de producción ni validación automática de cada criterio.
+La planilla tiene 292 filas: 186 RF/RNG con ruta, 10 RT con la evaluación preexistente, 6 RF documentales (RF-13.01 a RF-13.04, RF-16.01 y RF-16.04) y los 90 RNF de SD3 (18 demostrables con ruta, 21 no demostrables en simulación y 51 documentales). Las capas 2–8 se clasifican «No aplica» al prototipo estático. «Sí» significa trazabilidad declarada; no certificación de producción ni validación automática de cada criterio.
 
 Para regenerar: `node revision/update_trace.cjs` y `node revision/update_workbook.mjs` con el runtime de `@oai/artifact-tool`. Ver `revision/verificacion_prioridad3.md` para pruebas y límites.

@@ -865,6 +865,119 @@ Se cumplen en el texto de la propuesta (SD4), no en pantallas. Se listan para no
 - **RF-13.03** · Registro de decisiones de arquitectura (ADR)
 - **RF-13.04** · Modelo de dominio de negocio
 
+## 7.1 Requerimientos no funcionales (SD3, RNF)
+
+SD3 define 90 RNF. Se clasifican según cómo se verifican: 18 se demuestran en el prototipo, 21 requieren medición o pruebas reales (ver «Constancia») y 51 se cumplen en la propuesta técnica.
+
+### Demostrables en el prototipo
+
+| Código | Requerimiento | Dónde | Qué se ve |
+|---|---|---|---|
+| **RNF-01.02** | Retención de registros de recepción | `/admin/auditoria` | Política de retención por tipo de dato y restauración simulada de una muestra |
+| **RNF-01.03** | Operación offline de recepción (24 horas) | `/recepcion` | Corte de enlace simulado: la recepción sigue en la puerta local y encola sin pérdida |
+| **RNF-02.01** | Operación offline del CD (24 horas) | `/inventario` | Corte de enlace simulado en inventario, recepción y preparación, con cola y sincronización |
+| **RNF-05.02** | Operabilidad con guantes a −22 °C | `/flujo?paso=4` | Botones de picking de 60 px (≥ 15 mm) y sin gestos |
+| **RNF-06.01** | Autonomía de reparto sin cobertura | `/terreno` | La app de reparto completa la ruta sin señal: entregas, cobros y prueba de entrega en cola |
+| **RNF-08.02** | Retención de registros de devoluciones y mermas | `/admin/auditoria` | Plazos de retención de devoluciones y mermas, con restauración de muestra |
+| **RNF-09.02** | Retención de registros sanitarios y de trazabilidad | `/admin/auditoria` | Retención de registros sanitarios: vida útil + 6 meses, mínimo 5 años |
+| **RNF-09.03** | Auditoría de consultas y modificaciones de trazabilidad | `/admin/auditoria` | Consultas a lotes, clientes y geolocalización registradas con su finalidad |
+| **RNF-09.04** | Operación sin cobertura y sincronización en cámara de frío | `/preparacion` | La bodega opera sin enlace y sincroniza al recuperar la conexión |
+| **RNF-09.05** | Frecuencia de registro de temperatura | `/telemetria` | Lectura de cámaras cada 5 minutos |
+| **RNF-09.06** | Alarma en ruta sin red | `/terreno` | Alarma y retención del SSCC en la app de reparto sin red móvil ni satélite |
+| **RNF-12.02** | Configurabilidad de integración EDI para nuevas cadenas | `/canal-moderno` | Asistente para configurar el mapeo de una cadena nueva sin desarrollo |
+| **RNF-13.01** | Disponibilidad del sitio on-premise durante corte de enlace (24h) | `/inventario` | Operación local de la bodega ante corte total del enlace con la nube |
+| **RNF-13.02** | Declaración de funciones no disponibles en modo desconectado | `/terreno` | Panel «Qué funciona sin conexión» con las funciones no disponibles y su alternativa |
+| **RNF-14.11** | Privacidad de la geolocalización de personas | `/telemetria` | Posición registrada por camión y ruta, no por persona |
+| **RNF-15.01** | Política de sesión: duración, inactividad, renovación, revocación | `/perfil` | Cierre de sesión por inactividad del portal, con prueba de demostración |
+| **RNF-15.03** | Registro completo del ciclo de vida de la identidad (auditoría) | `/admin/auditoria` | Altas, cambios de rol y cierres de sesión en la auditoría |
+| **RNF-17.01** | Retención de auditoría mínima de 5 años | `/admin/auditoria` | Retención de la auditoría por al menos 5 años |
+
+### No demostrables en una simulación
+
+El prototipo muestra la función, pero el valor exigido solo se comprueba midiendo con datos, equipos o personas reales.
+
+| Código | Requerimiento | Cómo se verifica |
+|---|---|---|
+| RNF-01.01 | Tiempo de respuesta de registro de ítem en recepción | Tiempo de respuesta medido |
+| RNF-03.01 | Tiempo de respuesta de registro de línea de pedido | Tiempo de respuesta medido |
+| RNF-03.02 | Tiempo de respuesta de consulta de stock y crédito con conectividad | Tiempo de respuesta medido |
+| RNF-03.03 | Tiempo de respuesta de consulta de historial de compra | Tiempo de respuesta medido |
+| RNF-04.01 | Tiempo de generación de rutas diarias | Tiempo del motor de ruteo con datos reales |
+| RNF-05.01 | Latencia de confirmación de picking ( 1s) | Latencia en el dispositivo |
+| RNF-05.03 | Curva de aprendizaje (≤ 2 horas) | Prueba de usabilidad con operarios nuevos |
+| RNF-07.01 | Tiempo de sincronización de cobranzas tras reconexión | Sincronización con servidor real |
+| RNF-08.01 | Tiempo de registro de devoluciones en el andén | Prueba de desempeño en peak |
+| RNF-09.01 | Tiempo de obtención de clientes afectados por lote | Tiempo con datos reales |
+| RNF-09.07 | Doble camino siempre activo | Redes móviles e Iridium reales |
+| RNF-09.08 | Decisión térmica y registro certificado | Termógrafo certificado y mapeo térmico |
+| RNF-09.09 | Coherencia de datos | Coherencia de datos con servidor real |
+| RNF-11.01 | Latencia de indicadores operacionales del día | Latencia de datos reales |
+| RNF-12.03 | Envío del acuse de recibo al canal moderno | Plazo de envío del acuse |
+| RNF-16.01 | Indicadores de nivel de servicio medidos sobre experiencia real del usuario | Medición sobre usuarios reales |
+| RNF-17.02 | Exportaciones de gran volumen procesadas de forma asíncrona | Exportaciones de gran volumen en servidor |
+| RNF-17.03 | Portal público resistente a picos de tráfico | Picos de tráfico reales |
+| RNF-19.04 | Pruebas de carga en Preproducción con 1.5× peak y pruebas de estrés | Pruebas de carga en Preproducción |
+| RNF-20.01 | Disponibilidad mensual mínima del 99.9% para servicios críticos | Disponibilidad medida en operación |
+| RNF-20.04 | Pruebas de resiliencia con inyección de fallas | Inyección de fallas en infraestructura |
+
+### Documentales
+
+Se cumple en la propuesta técnica (SD4 y anexos), no en pantallas: infraestructura, seguridad, continuidad, soporte, capacitación y hardware.
+
+| Código | Requerimiento |
+|---|---|
+| RNF-07.02 | Cifrado de datos de pagos y comportamiento comercial |
+| RNF-11.02 | Aislamiento del procesamiento analítico y transaccional |
+| RNF-12.01 | Hito de producción del canal moderno |
+| RNF-13.03 | Redundancia de equipos on-premise críticos |
+| RNF-13.04 | Tolerancia del almacenamiento local a la falla de un disco |
+| RNF-13.05 | Declaración y justificación del nivel RAID |
+| RNF-13.06 | Endurecimiento de sistemas on-premise según CIS Benchmarks |
+| RNF-13.07 | Enlace redundante entre on-premise y nube |
+| RNF-13.08 | Dimensionamiento de ancho de banda por sitio |
+| RNF-13.09 | Estudio de cobertura de red inalámbrica en sitios operacionales (incluye cámaras de frío) |
+| RNF-14.01 | Cifrado en tránsito con TLS 1.3 |
+| RNF-14.02 | Cifrado en reposo de todos los datos |
+| RNF-14.03 | Segregación de red en la nube (subredes privadas) |
+| RNF-14.04 | SIEM con casos de uso de detección específicos del negocio |
+| RNF-14.05 | Detección y respuesta en puntos finales (EDR) |
+| RNF-14.06 | Pruebas de intrusión anuales por tercero independiente |
+| RNF-14.07 | Análisis estático de código, SCA y escaneo de contenedores en CI/CD |
+| RNF-14.08 | Inventario de componentes de software (SBOM) en formato CycloneDX/SPDX |
+| RNF-14.09 | Verificación de procedencia de artefactos según SLSA nivel 3 |
+| RNF-14.10 | Prohibición de datos productivos en ambientes no productivos |
+| RNF-14.12 | Categorías de datos personales en terreno |
+| RNF-15.02 | Credenciales de sesión firmadas y de vida breve |
+| RNF-16.02 | Libro de operación y guía de resolución documentados |
+| RNF-16.03 | Registros sin datos personales sensibles ni credenciales |
+| RNF-19.01 | Cálculo de capacidad con supuestos de usuarios concurrentes y TPS |
+| RNF-19.02 | Escalamiento horizontal automático de capas de aplicación e integración |
+| RNF-19.03 | Identificación del cuello de botella al crecer la carga |
+| RNF-20.02 | Clasificación de servicios por criticidad (crítico, alto, medio, bajo) |
+| RNF-20.03 | Plan de continuidad del negocio conforme a ISO 22301 |
+| RNF-20.05 | Documentación de comportamiento ante falla de dependencias externas |
+| RNF-20.06 | Site secundario para DR: RTO 4h, RPO 15 min |
+| RNF-20.07 | Política de respaldo 3-2-1-1-0 (3 copias, 2 medios, 1 fuera de sitio, 1 inmutable, 0 errores) |
+| RNF-21.01 | Centro de operaciones de red (NOC) 24×7×365 |
+| RNF-21.02 | Gerente de servicio dedicado para el CLIENTE |
+| RNF-21.03 | Centro de atención telefónica: 80% en 20 segundos, 70% resolución primer contacto |
+| RNF-21.04 | Horario de atención ampliado a 24×7 para incidentes críticos y ventana de despacho (05:30-07:00) |
+| RNF-21.05 | Dimensionamiento de la dotación del centro de atención con teoría de colas o Erlang C |
+| RNF-21.06 | Canal único de registro de incidentes con ticket y seguimiento |
+| RNF-21.07 | Traslado a sitios alejados (Curicó, Chillán, Los Ángeles) para resolución de incidentes |
+| RNF-21.08 | Bolsa anual de horas de mantención evolutiva |
+| RNF-21.09 | Planificación anual de actualizaciones de versiones de componentes |
+| RNF-22.01 | Plan de capacitación estructurado por perfil (usuarios, administradores, técnicos) |
+| RNF-22.02 | Material de capacitación en español, editable y de propiedad del CLIENTE |
+| RNF-22.03 | Capacitación sin afectar la operación: programación por turnos y horarios acordados |
+| RNF-22.04 | Evaluación y certificación de usuarios administradores y equipo técnico |
+| RNF-22.05 | Capacitación de personal nuevo del CLIENTE sin costo adicional durante la Operación |
+| RNF-22.06 | Acompañamiento y mentoría al equipo técnico del CLIENTE durante 6 meses post producción |
+| RNF-23.01 | Especificación de hardware de terreno con marca, modelo, cantidad y características |
+| RNF-23.02 | Dispositivos con grado de protección IP y resistencia a caídas coherentes con el entorno |
+| RNF-23.03 | Ciclo de vida esperado de cada dispositivo y plan de reposición durante 56 meses |
+| RNF-23.04 | Estaciones de trabajo para operación y administración con monitores duales |
+
 ## 8. Verificación de la continuación (03-11-2026)
 
 Se marcaron los controles de Prioridad 3 comprobados en `revision/verify.cjs`: RF-12.29, RF-17.12, RF-18.01, vista ligera y atajos/borradores. RF-18.01 se marca **solo como simulación**, con evidencia local, sin certificado real ni validez legal. La vista ligera omite las imágenes por completo en vez de descargarlas.

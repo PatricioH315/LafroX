@@ -123,7 +123,7 @@
   });
 
   L.route('/guia', {
-    title: 'Guía de mi perfil', parent: '/inicio', block: 'Portal principal', module: 'Transversal', rf: ['RF-17.07', 'RF-16.02'], actors: ['Todos los perfiles'],
+    title: 'Guía de mi perfil', parent: '/inicio', block: 'Portal principal', module: 'Transversal', rf: [], actors: ['Todos los perfiles'],
     render: () => {
       const p = L.me();
       const menu = L.nav.map((g) => ({ g: g.group, items: g.items.filter((i) => L.allowed(i.path) && i.path !== '/guia') })).filter((x) => x.items.length);
@@ -165,13 +165,14 @@
   L.route('/notificaciones', {
     title: 'Notificaciones', parent: '/inicio', block: 'Portal principal', module: 'Transversal', rf: ['RF-17.10', 'RF-18.03'], actors: ['Todos los perfiles'],
     render: () => `<div class="page-head"><div class="titles"><h1>Notificaciones</h1></div><div class="actions"><button type="button" class="btn btn-secondary" id="nt-read">${icon('check')}Marcar todas como leídas</button></div></div>
-      <div class="card"><ul class="list" id="nt">${D.notificaciones.map((n) => `<li><span class="badge-dot" style="background:var(--c-accent)"></span><a class="grow item-link" href="#${n.ruta}" style="display:block;min-height:0"><div class="title">${esc(n.t)}</div><div class="sub">${esc(n.d)} · ${esc(n.hace)}</div></a>${L.badge(n.kind === 'danger' ? 'Crítica' : n.kind === 'warning' ? 'Advertencia' : n.kind === 'success' ? 'Éxito' : 'Información', n.kind)}</li>`).join('')}</ul></div>`,
+      <div class="card"><ul class="list" id="nt">${D.notificaciones.map((n) => `<li><span class="badge-dot" style="background:var(--c-accent)"></span><a class="grow item-link" href="#${n.ruta}" style="display:block;min-height:0"><div class="title">${esc(n.t)}</div><div class="sub">${esc(n.d)} · ${esc(n.hace)}</div></a>${L.badge(n.kind === 'danger' ? 'Crítica' : n.kind === 'warning' ? 'Advertencia' : n.kind === 'success' ? 'Éxito' : 'Información', n.kind)}</li>`).join('')}</ul></div>
+      <section class="card card-flush" style="margin-top:var(--sp-5)"><div class="card-head" style="padding:var(--sp-4) var(--sp-5) 0"><h2>Registro de envíos</h2></div><p class="small muted" style="padding:0 var(--sp-5)">Cada aviso se envía de forma asíncrona, con reintento ante falla y control de duplicados; queda registrada la entrega, la apertura o el error por canal (RF-18.03).</p><div class="table-wrap"><table class="table"><caption class="sr-only">Estado de envío por canal</caption><thead><tr><th>Aviso</th><th>Canal</th><th>Estado</th><th class="right">Intentos</th></tr></thead><tbody>${D.notificaciones.slice(0, 4).flatMap((n, i) => [['App', i === 3 ? 'Entregada' : 'Abierta', 1], ['Correo', i === 1 ? 'Error: buzón lleno' : 'Entregada', i === 1 ? 3 : 1], ['SMS', i === 2 ? 'Reintento programado' : 'Entregada', i === 2 ? 2 : 1]].map(([c, e, k]) => `<tr><td class="wrap">${esc(n.t)}</td><td>${c}</td><td>${L.badge(e, e.startsWith('Error') ? 'danger' : e.startsWith('Reintento') ? 'warning' : 'success')}</td><td class="num right">${k}</td></tr>`)).join('')}</tbody></table></div></section>`,
     mount: (root) => { $('#nt-read', root).onclick = () => { $$('.badge-dot', root).forEach((d) => (d.style.background = 'var(--c-line)')); L.toast('Notificaciones leídas', '', 'success'); }; }
   });
 
   /* ---------- Perfil y preferencias (RT-13.12 de SD4, RF-18.02) ---------- */
   L.route('/perfil', {
-    title: 'Mi perfil y preferencias', parent: '/inicio', block: 'Portal principal', module: 'Transversal', rf: ['RF-18.02', 'RF-15.03', 'RF-12.29'], actors: ['Todos los perfiles'],
+    title: 'Mi perfil y preferencias', parent: '/inicio', block: 'Portal principal', module: 'Transversal', rf: ['RF-18.02', 'RF-15.03', 'RF-12.29', 'RNF-15.01'], actors: ['Todos los perfiles'],
     render: () => {
       const p = L.me();
       const pref = (k, d) => L.store.pref(k, d);
