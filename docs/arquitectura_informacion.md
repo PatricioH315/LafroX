@@ -104,7 +104,7 @@ Además existe una página de «no encontrado» para cualquier ruta inexistente,
 | Avisos y notificaciones | Barra superior | Clic o `g` luego `n` |
 | Tema claro u oscuro | Barra superior | Clic |
 | Menú de usuario (perfil, cambiar perfil, atajos, cerrar sesión) | Barra superior | Clic |
-| Plegar o desplegar el menú lateral | Borde del menú (escritorio) o botón de menú (tableta y teléfono) | Clic |
+| Plegar o desplegar el menú lateral | Primer botón de la barra superior: ícono de panel en escritorio, ícono de menú en tableta y teléfono | Clic |
 | Atajos de teclado | Global | `?` muestra la lista |
 
 ---

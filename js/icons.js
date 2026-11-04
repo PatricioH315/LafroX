@@ -22,6 +22,7 @@
     search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
     bell: '<path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/>',
     menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
+    sidebar: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/>',
     x: '<path d="M18 6 6 18M6 6l12 12"/>',
     check: '<path d="m5 12 5 5 9-10"/>',
     'check-circle': '<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>',

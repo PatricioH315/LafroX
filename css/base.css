@@ -90,8 +90,11 @@ hr { border: 0; border-top: 1px solid var(--c-line-soft); margin: var(--sp-5) 0;
   color: #f4f4f4;
   overflow-y: auto;
   overscroll-behavior: contain;
+  color-scheme: dark;            /* barra de desplazamiento oscura, como el menú */
+  scrollbar-width: thin;
+  scrollbar-color: #3a3a3a transparent;
 }
-.sidebar .brand { display: flex; align-items: center; gap: var(--sp-3); padding: var(--sp-4) var(--sp-5); min-height: var(--topbar-h); text-decoration: none; color: inherit; }
+.sidebar .brand { display: flex; align-items: center; gap: var(--sp-3); padding: 0 var(--sp-5); height: var(--topbar-h); flex: none; border-bottom: 1px solid #2a2a2a; text-decoration: none; color: inherit; }
 .brand-logo { width: 32px; height: 34px; flex: none; }
 .brand-name { font-weight: 700; font-size: var(--fs-lg); letter-spacing: 0.02em; }
 .brand-sub { display: block; font-size: var(--fs-xs); color: #b5b5b5; font-weight: 400; letter-spacing: 0; }
@@ -109,7 +112,7 @@ hr { border: 0; border-top: 1px solid var(--c-line-soft); margin: var(--sp-5) 0;
   text-decoration: none;
   transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
-.nav a:hover { background: #2a2a2a; color: #fff; }
+@media (hover: hover) { .nav a:hover { background: #2a2a2a; color: #fff; } }
 .nav a:active { background: #333; }
 .nav a[aria-current="page"] { background: #2a2a2a; color: #fff; font-weight: 600; }
 .nav a[aria-current="page"]::before { content: ""; position: absolute; left: -12px; top: 8px; bottom: 8px; width: 4px; border-radius: 0 4px 4px 0; background: #e8641b; }
@@ -172,7 +175,6 @@ hr { border: 0; border-top: 1px solid var(--c-line-soft); margin: var(--sp-5) 0;
 }
 
 @media (max-width: 1365px) {
-  :root { --sidebar-w: 240px; }
   .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
@@ -250,13 +252,9 @@ hr { border: 0; border-top: 1px solid var(--c-line-soft); margin: var(--sp-5) 0;
   .app.sidebar-collapsed .sidebar { transform: translateX(-100%); visibility: hidden; transition: transform var(--dur) var(--ease), visibility 0s linear var(--dur); }
 }
 
-/* Botón visible para plegar y desplegar el menú lateral (borde del menú) */
-.sidebar-fold { display: none; }
-@media (min-width: 1024px) {
-  .sidebar-fold { display: grid; place-items: center; position: fixed; z-index: 70; top: 20px; left: calc(var(--sidebar-w) - 22px); width: var(--target); height: var(--target); padding: 0; border: 1px solid var(--c-line-strong); border-radius: 50%; background: var(--c-surface); color: var(--c-ink); box-shadow: var(--shadow-2); cursor: pointer; transition: left var(--dur) var(--ease); }
-  .app.sidebar-collapsed .sidebar-fold { left: var(--sp-3); }
-  .topbar .menu-toggle { display: none; }
-  .topbar { transition: padding var(--dur) var(--ease); }
-  .app.sidebar-collapsed .topbar { padding-left: 60px; }
-}
-@media (hover: hover) { .sidebar-fold:hover { background: var(--c-accent-soft); border-color: var(--c-accent); } }
+/* Plegar y desplegar el menú: un solo botón, el primero de la barra superior, con el mismo estilo que sus vecinos */
+.topbar .menu-toggle { margin-left: -12px; }
+/* Nombre y rol del usuario: se recortan antes de desbordar la barra en escritorio angosto */
+#me-name { max-width: 180px; min-width: 0; }
+#me-name > * { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 1279px) { #me-name { max-width: 120px; } } /* el trazo del icono queda alineado con el margen de la barra (optical alignment) */

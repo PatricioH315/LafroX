@@ -115,7 +115,7 @@ Interlineado: 1,2 en títulos y 1,5 en texto. La persona usuaria puede ampliar e
 |---|---|---|
 | `--target` | 44 px | Objetivo táctil mínimo de todo control (RT-25.03) |
 | `--row-h` | 52 px (44 compacta, 60 amplia) | Alto de fila según la densidad elegida |
-| `--sidebar-w` | 264 px | Menú lateral |
+| `--sidebar-w` | 280 px | Menú lateral; ancho en que ninguna etiqueta se parte en dos líneas |
 | `--topbar-h` | 64 px | Barra superior |
 | `--radius-sm`, `--radius`, `--radius-lg` | 6, 10 y 16 px | Esquinas de controles, tarjetas y modales |
 

@@ -75,7 +75,7 @@
 
   --target: 44px;           /* objetivo táctil mínimo (RT-25.03) */
   --row-h: 52px;            /* densidad de listados */
-  --sidebar-w: 264px;
+  --sidebar-w: 280px;          /* ancho en que ninguna etiqueta del menú se parte en dos líneas */
   --topbar-h: 64px;
 
   --ease: cubic-bezier(0.2, 0, 0, 1);
