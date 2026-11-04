@@ -132,13 +132,13 @@
     app().innerHTML = `
       <a class="skip-link" href="#main">Saltar al contenido</a>
       <aside class="sidebar" id="sidebar" aria-label="Menú principal">
-        <a class="brand" href="#/inicio">${logo()}<span class="brand-name">Puelche<span class="brand-sub">Plataforma LafroX</span></span></a>
+        <div class="sidebar-head"><a class="brand" href="#/inicio">${logo()}<span class="brand-name">Puelche<span class="brand-sub">Plataforma LafroX</span></span></a><button type="button" class="sidebar-fold" aria-controls="sidebar" aria-expanded="true" aria-label="Plegar menú" title="Plegar menú" data-fold>${icon('sidebar')}</button></div>
         <nav class="nav" id="nav" aria-label="Principal"></nav>
         <div class="sidebar-foot">Prototipo navegable · datos simulados<br>Caso 02 Logística · Informe 3</div>
       </aside>
       <div class="scrim" data-close-nav></div>
       <header class="topbar">
-        <button type="button" class="btn btn-tertiary btn-icon menu-toggle" aria-label="Abrir menú" aria-controls="sidebar" aria-expanded="false" data-open-nav>${icon(isDesktop() ? 'sidebar' : 'menu')}</button>
+        <button type="button" class="btn btn-tertiary btn-icon menu-toggle" aria-label="Abrir menú" aria-controls="sidebar" aria-expanded="false" data-open-nav>${icon('menu')}</button>
         <div class="combo" style="flex:1 1 auto;max-width:520px">
           <div class="input-wrap">${icon('search')}<label class="sr-only" for="gsearch">Búsqueda global</label><input id="gsearch" class="input" type="search" placeholder="Buscar cliente, pedido, ruta o pantalla…  ( / )"></div>
         </div>
@@ -151,10 +151,18 @@
       </header>
       <main id="main" class="main" tabindex="-1"></main>`;
 
-    $('[data-open-nav]').onclick = () => (isDesktop() ? setCollapsed(!app().classList.contains('sidebar-collapsed')) : toggleNav(!app().classList.contains('nav-open')));
+    $('[data-open-nav]').onclick = () => toggleNav(!app().classList.contains('nav-open'));
+    // Desktop: fold to an icon rail and back. Phone and tablet: close the drawer.
+    $('[data-fold]').onclick = () => (isDesktop() ? setCollapsed(!app().classList.contains('sidebar-collapsed')) : toggleNav(false));
     setCollapsed(L.store.get('nav.collapsed', false), false);
     // The same button swaps between sidebar (desktop) and menu (drawer) icons when the breakpoint changes
-    window.matchMedia('(min-width: 1024px)').addEventListener('change', (e) => { const b = $('[data-open-nav]'); if (!b) return; toggleNav(false); b.removeAttribute('title'); if (e.matches) setCollapsed(app().classList.contains('sidebar-collapsed'), false); else { b.innerHTML = icon('menu'); b.setAttribute('aria-label', 'Abrir menú'); } });
+    if (!L._bpWatch) {
+      L._bpWatch = true;
+      let wasDesktop = isDesktop();
+      const onBp = () => { const d = isDesktop(); if (d === wasDesktop || !$('[data-fold]')) return; wasDesktop = d; toggleNav(false); setCollapsed(app().classList.contains('sidebar-collapsed'), false); };
+      window.matchMedia('(min-width: 1024px)').addEventListener('change', onBp);
+      window.addEventListener('resize', onBp);
+    }
     $('[data-close-nav]').onclick = () => toggleNav(false);
     $('#nav').addEventListener('click', (e) => { if (e.target.closest('a') && !isDesktop()) toggleNav(false); });
 
@@ -201,8 +209,19 @@
   function setCollapsed(c, save = true) {
     app().classList.toggle('sidebar-collapsed', c);
     if (save) L.store.set('nav.collapsed', c);
-    const b = $('[data-open-nav]');
-    if (isDesktop()) { b.innerHTML = icon('sidebar'); b.setAttribute('aria-expanded', !c); b.setAttribute('aria-label', c ? 'Mostrar menú' : 'Ocultar menú'); b.title = c ? 'Mostrar menú' : 'Ocultar menú'; }
+    const f = $('[data-fold]');
+    const label = isDesktop() ? (c ? 'Desplegar menú' : 'Plegar menú') : 'Cerrar menú';
+    f.innerHTML = icon(isDesktop() ? 'sidebar' : 'x');
+    f.setAttribute('aria-expanded', isDesktop() ? !c : true);
+    f.setAttribute('aria-label', label);
+    f.title = label;
+    railTitles();
+  }
+
+  // In the icon rail each link shows its name as a tooltip; the visible label stays in the DOM for screen readers
+  function railTitles() {
+    const rail = app().classList.contains('sidebar-collapsed') && isDesktop();
+    $$('#nav a').forEach((a) => { const t = a.querySelector('.nav-text')?.textContent || ''; rail ? (a.title = t) : a.removeAttribute('title'); });
   }
 
   function toggleNav(open) {
@@ -220,9 +239,10 @@
       if (!items.length) return '';
       return `<div class="nav-group"><span class="nav-label" id="ng-${esc(g.group)}">${esc(g.group)}</span><ul role="list" style="list-style:none;margin:0;padding:0" aria-labelledby="ng-${esc(g.group)}">${items.map((i) => {
         const cur = path === i.path || (i.path !== '/inicio' && path.startsWith(i.path + '/') && !g.items.some((o) => o !== i && path.startsWith(o.path) && o.path.length > i.path.length));
-        return `<li><a href="#${i.path}" ${cur ? 'aria-current="page"' : ''}>${icon(i.icon)}<span>${esc(i.label)}</span>${i.badge && tasks ? `<span class="tag" aria-label="${tasks} pendientes">${tasks}</span>` : i.mod && p.all && /^M\d/.test(i.mod) ? `<span class="mod">${esc(i.mod)}</span>` : ''}</a></li>`;
+        return `<li><a href="#${i.path}" ${cur ? 'aria-current="page"' : ''}>${icon(i.icon)}<span class="nav-text">${esc(i.label)}</span>${i.badge && tasks ? `<span class="tag" aria-label="${tasks} pendientes">${tasks}</span>` : i.mod && p.all && /^M\d/.test(i.mod) ? `<span class="mod">${esc(i.mod)}</span>` : ''}</a></li>`;
       }).join('')}</ul></div>`;
     }).join('');
+    railTitles();
     $('#me-av').textContent = L.initials(p.name);
     $('#me-name').innerHTML = `<strong style="display:block;font-size:var(--fs-sm)">${esc(p.name.split(' ').slice(0, 2).join(' '))}</strong><span class="small muted">${esc(p.role.split(' ·')[0])}</span>`;
     $$('[data-theme-toggle]').forEach((b) => (b.innerHTML = themeBtn()));

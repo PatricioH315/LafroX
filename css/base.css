@@ -94,7 +94,13 @@ hr { border: 0; border-top: 1px solid var(--c-line-soft); margin: var(--sp-5) 0;
   scrollbar-width: thin;
   scrollbar-color: #3a3a3a transparent;
 }
-.sidebar .brand { display: flex; align-items: center; gap: var(--sp-3); padding: 0 var(--sp-5); height: var(--topbar-h); flex: none; border-bottom: 1px solid #2a2a2a; text-decoration: none; color: inherit; }
+.sidebar-head { display: flex; align-items: center; gap: var(--sp-2); height: var(--topbar-h); flex: none; padding: 0 var(--sp-3) 0 var(--sp-5); border-bottom: 1px solid #2a2a2a; }
+.sidebar .brand { display: flex; align-items: center; gap: var(--sp-3); flex: 1; min-width: 0; text-decoration: none; color: inherit; }
+/* Botón de plegar dentro del menú: mismo lenguaje que los enlaces del menú */
+.sidebar-fold { display: grid; place-items: center; flex: none; width: var(--target); height: var(--target); padding: 0; border: 0; border-radius: var(--radius-sm); background: transparent; color: #b5b5b5; cursor: pointer; transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease); }
+@media (hover: hover) { .sidebar-fold:hover { background: #2a2a2a; color: #fff; } }
+.sidebar-fold:active { background: #333; }
+.sidebar-fold:focus-visible { outline-color: #f29a5e; }
 .brand-logo { width: 32px; height: 34px; flex: none; }
 .brand-name { font-weight: 700; font-size: var(--fs-lg); letter-spacing: 0.02em; }
 .brand-sub { display: block; font-size: var(--fs-xs); color: #b5b5b5; font-weight: 400; letter-spacing: 0; }
@@ -244,17 +250,29 @@ hr { border: 0; border-top: 1px solid var(--c-line-soft); margin: var(--sp-5) 0;
   #otp input { width: 44px !important; min-width: 44px; }
 }
 
-.menu-toggle { display: inline-flex; }
+/* Escritorio: el menú se pliega a un riel de íconos; el botón de plegar sigue arriba, dentro del menú */
 @media (min-width: 1024px) {
   .app { transition: grid-template-columns var(--dur) var(--ease); }
-  .sidebar { transition: transform var(--dur) var(--ease), visibility 0s linear 0s; }
-  .app.sidebar-collapsed { grid-template-columns: 0 minmax(0, 1fr); }
-  .app.sidebar-collapsed .sidebar { transform: translateX(-100%); visibility: hidden; transition: transform var(--dur) var(--ease), visibility 0s linear var(--dur); }
+  .sidebar { overflow-x: hidden; }
+  .app.sidebar-collapsed { grid-template-columns: var(--rail-w) minmax(0, 1fr); }
+  .app.sidebar-collapsed .sidebar { scrollbar-width: none; }               /* sin barra: los enlaces conservan 48 px de ancho */
+  .app.sidebar-collapsed .sidebar::-webkit-scrollbar { display: none; }
+  .app.sidebar-collapsed .sidebar-head { justify-content: center; padding: 0; }
+  .app.sidebar-collapsed .brand,
+  .app.sidebar-collapsed .sidebar-foot { display: none; }
+  .app.sidebar-collapsed .nav-group > .nav-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .app.sidebar-collapsed .nav-group + .nav-group { border-top: 1px solid #2a2a2a; padding-top: var(--sp-2); margin-top: var(--sp-2); }
+  .app.sidebar-collapsed .nav a { justify-content: center; padding: 0; }
+  .app.sidebar-collapsed .nav a .nav-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .app.sidebar-collapsed .nav a .mod { display: none; }
+  .app.sidebar-collapsed .nav a .tag { position: absolute; top: 4px; right: 2px; margin: 0; padding: 0 5px; font-size: 10px; line-height: 16px; }
+  .app.sidebar-collapsed .nav a[aria-current="page"]::before { left: -12px; }
 }
-
-/* Plegar y desplegar el menú: un solo botón, el primero de la barra superior, con el mismo estilo que sus vecinos */
+/* Una sola línea siempre: durante la animación de despliegue las etiquetas no se parten */
+.nav a .nav-text, .brand-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .topbar .menu-toggle { margin-left: -12px; }
+@media (min-width: 1024px) { .topbar .menu-toggle { display: none; } } /* en escritorio el botón está dentro del menú */ /* el trazo del ícono queda alineado con el margen de la barra */
 /* Nombre y rol del usuario: se recortan antes de desbordar la barra en escritorio angosto */
 #me-name { max-width: 180px; min-width: 0; }
 #me-name > * { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-@media (max-width: 1279px) { #me-name { max-width: 120px; } } /* el trazo del icono queda alineado con el margen de la barra (optical alignment) */
+@media (max-width: 1279px) { #me-name { max-width: 120px; } }

@@ -76,6 +76,7 @@
   --target: 44px;           /* objetivo táctil mínimo (RT-25.03) */
   --row-h: 52px;            /* densidad de listados */
   --sidebar-w: 280px;          /* ancho en que ninguna etiqueta del menú se parte en dos líneas */
+  --rail-w: 72px;               /* menú plegado: riel de íconos (44 px de objetivo + márgenes) */
   --topbar-h: 64px;
 
   --ease: cubic-bezier(0.2, 0, 0, 1);
