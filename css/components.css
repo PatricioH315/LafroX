@@ -393,14 +393,22 @@ fieldset > legend { margin-bottom: var(--sp-2); padding: 0; }
 .tour-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--c-line); }
 .tour-dots span.on { background: var(--c-accent); width: 20px; border-radius: 4px; }
 
-/* Marco de dispositivo móvil (vista de terreno) */
-.device { width: 390px; max-width: 100%; margin: 0 auto; border: 10px solid #141414; border-radius: 40px; background: var(--c-bg); box-shadow: var(--shadow-3); overflow: hidden; position: relative; }
-.device-screen { height: 760px; max-height: calc(100dvh - 180px); min-height: 560px; overflow-y: auto; display: flex; flex-direction: column; position: relative; }
-.device-status { display: flex; justify-content: space-between; align-items: center; padding: 8px 20px 4px; font-size: 12px; font-weight: 600; background: #141414; color: #fff; }
+/* Field app panel (reparto y preventa): a real app view, no device mock-up */
+.field-app { max-width: 560px; padding: 0; overflow: clip; display: flex; flex-direction: column; }
+.field-app .app-bar { order: 0; position: static; border-radius: var(--radius) var(--radius) 0 0; }
+.field-app .net-banner { order: 1; }
+.field-app .app-tabbar { order: 2; position: static; border-top: 0; border-bottom: 1px solid var(--c-line-soft); }
+.field-app .app-body { order: 3; }
+.field-app .fab { order: 4; }
+.field-net { gap: 6px; align-items: center; }
+.app-tabbar button { position: relative; }
+.tab-count { position: absolute; top: 6px; left: calc(50% + 8px); padding: 0 6px; }
 @media (max-width: 767px) {
-  .device { width: 100%; border: 0; border-radius: 0; box-shadow: none; margin: calc(var(--sp-4) * -1) calc(var(--sp-4) * -1) 0; width: calc(100% + 2 * var(--sp-4)); max-width: none; }
-  .device-status { display: none; }
-  .device-screen { height: auto; max-height: none; min-height: calc(100dvh - var(--topbar-h)); }
+  .field-app { max-width: none; margin: calc(var(--sp-4) * -1) calc(var(--sp-4) * -1) 0; width: calc(100% + 2 * var(--sp-4)); border: 0; border-radius: 0; box-shadow: none; min-height: calc(100dvh - var(--topbar-h)); }
+  .field-app .app-bar { border-radius: 0; position: sticky; top: var(--topbar-h); }
+  /* the floating action sits above the bottom tab bar, never on top of it */
+  .field-app .fab { bottom: calc(60px + var(--sp-4)) !important; }
+  .field-app .app-tabbar { order: 5; position: sticky; bottom: 0; z-index: 5; border-top: 1px solid var(--c-line-soft); border-bottom: 0; margin-top: auto; }
 }
 .app-bar { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: var(--sp-2); padding: var(--sp-2) var(--sp-3); min-height: 56px; background: var(--c-surface); border-bottom: 1px solid var(--c-line-soft); }
 .app-bar h2 { margin: 0; font-size: var(--fs-lg); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

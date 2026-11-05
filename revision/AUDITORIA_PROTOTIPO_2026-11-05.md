@@ -295,3 +295,23 @@ Se revisaron otra vez el cap. 13, el cap. 25 de las Bases Técnicas y el art. 26
 - **RT-13.08, uso a la intemperie.** La app de terreno tiene ahora un acceso directo a la «Pantalla para pleno sol» (alto contraste), que queda guardada en el equipo.
 
 **Lo que no se cambió.** RT-13.12 pide varios idiomas solo «cuando el caso lo justifique». El Caso 02 no lo justifica: no menciona usuarios de otra lengua.
+
+## 12. App de terreno sin maqueta de teléfono (05-11-2026)
+
+En escritorio, `/terreno` y `/terreno/preventa` dibujaban un teléfono: marco negro de 390 px, barra de estado falsa con «09:42» y «87 %», y una pantalla interna de altura fija con su propio desplazamiento.
+
+**Por qué se cambió:**
+- El 25.2 pide la vista del puesto real, y el conductor y el preventista usan la app a pantalla completa en su terminal.
+- La versión móvil ya la cubre el diseño responsivo (RT-25.04, RT-13.02).
+- El doble desplazamiento se acercaba a la «navegación confusa» que penaliza el 25.6.
+
+**Cómo quedó:**
+- **Escritorio y tableta:** la app es un panel normal de la plataforma, con sus pestañas arriba y sin desplazamiento interno.
+- **Teléfono:** ocupa la pantalla completa, con las pestañas fijas abajo y el botón «Pedido» por encima de ellas.
+- **Encabezado:** pasa a ser de negocio. Por ejemplo, «Ruta R-01 Cauquenes · 6 entregas · salida» toma la hora real de R-01, la misma que usan ahora el inicio y el flujo.
+- **Sin cambios:** la lógica, las simulaciones (señal, frío, enlace, satélite) y la cola de sincronización.
+
+**Verificación:**
+- Flujo completo de reparto (entrega, sin conexión, cola y reporte de cierre) y de preventa.
+- Cinco tamaños sin desplazamiento horizontal y controles de 44 px o más.
+- 151 pantallas de los 16 perfiles sin errores.

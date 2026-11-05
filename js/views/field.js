@@ -11,15 +11,15 @@
   // Recibos provisionales del preventista: se consolidan en el efectivo que debe rendir al volver (RF-07.11)
   L.preventaRecibos = () => L.store.get('preventa.recibos', null) || [{ id: 'RP-5114', cliente: 'Minimarket El Roble', monto: 84200, hora: '10:12', rendido: false }, { id: 'RP-5117', cliente: 'Almacén San Expedito', monto: 51900, hora: '11:40', rendido: false }];
 
+  // Field app shown as a real app panel: tabs on top on wide screens, fixed at the bottom on phones
   const deviceShell = (title, body, { back, tabs, active, fab } = {}) => `
-    <div class="device"><div class="device-status" aria-hidden="true"><span>09:42</span><span class="row" style="gap:6px">${icon(L.online() ? 'wifi' : 'wifi-off', 'icon-sm')}<span>87 %</span></span></div>
-    <div class="device-screen" id="dev">
-      <div class="app-bar">${back ? `<button type="button" class="btn btn-tertiary btn-icon" data-dback="${back}" aria-label="Volver">${icon('arrow-left')}</button>` : `<img src="assets/logo.svg" alt="" width="26" height="28">`}<h2>${esc(title)}</h2><label class="switch" title="Simular conectividad"><input type="checkbox" id="dev-net" ${L.online() ? 'checked' : ''} aria-label="Conectividad del dispositivo (simulación)"></label></div>
+    <section class="card field-app" id="dev" aria-label="${esc(title)}">
+      <div class="app-bar">${back ? `<button type="button" class="btn btn-tertiary btn-icon" data-dback="${back}" aria-label="Volver">${icon('arrow-left')}</button>` : `<img src="assets/logo.svg" alt="" width="26" height="28">`}<h2>${esc(title)}</h2><label class="switch field-net" title="Simular la señal del equipo"><input type="checkbox" id="dev-net" ${L.online() ? 'checked' : ''}> <span class="small">Señal</span></label></div>
       <div class="net-banner ${L.online() ? 'online' : 'offline'}" role="status">${icon(L.online() ? 'wifi' : 'wifi-off', 'icon-sm')}<span class="grow">${L.online() ? 'En línea · todo sincronizado' : `Sin conexión · ${queue().length} evento(s) en cola`}</span>${!L.online() ? '<span class="small">Turno de 14 h</span>' : ''}</div>
+      ${tabs ? `<nav class="app-tabbar" aria-label="Secciones de la app">${tabs.map(([id, ic, lb]) => `<button type="button" data-dtab="${id}" ${active === id ? 'aria-current="page"' : ''}>${icon(ic)}<span>${lb}</span>${id === 'cola' && queue().length ? `<span class="badge badge-warning plain tab-count">${queue().length}</span>` : ''}</button>`).join('')}</nav>` : ''}
       <div class="app-body">${body}</div>
       ${fab || ''}
-      ${tabs ? `<nav class="app-tabbar" aria-label="Navegación de la app">${tabs.map(([id, ic, lb]) => `<button type="button" data-dtab="${id}" ${active === id ? 'aria-current="page"' : ''}>${icon(ic)}<span>${lb}</span>${id === 'cola' && queue().length ? `<span class="badge badge-warning plain" style="padding:0 6px;position:absolute;margin-left:28px;margin-top:-30px">${queue().length}</span>` : ''}</button>`).join('')}</nav>` : ''}
-    </div></div>`;
+    </section>`;
 
   // Sincronización automática al reconectar (RF-06.07, RNG-12)
   const syncQueue = async (onDone) => {
@@ -45,7 +45,7 @@
   /* ---------- App de reparto ---------- */
   L.route('/terreno', {
     title: 'Reparto en terreno', parent: '/inicio', block: 'Perfil de terreno', module: 'M6 Reparto · M7 · M8', rf: ['RF-06.01', 'RF-06.02', 'RF-06.04', 'RF-06.05', 'RF-06.07', 'RF-06.09', 'RF-06.11', 'RF-07.06', 'RF-09.06', 'RF-06.13', 'RF-09.12', 'RNG-12', 'RF-06.10', 'RF-06.12', 'RF-07.10', 'RF-09.07', 'RF-09.13', 'RNF-06.01', 'RNF-09.06', 'RNF-13.02'], actors: ['Conductor propio', 'Conductor externo'],
-    render: () => `<div class="page-head hide-sm"><div class="titles"><span class="page-kicker">${icon('phone', 'icon-sm')}Perfil de terreno · app de reparto</span><h1>App de reparto · ruta R-01 Cauquenes</h1><p class="muted" style="margin:0">Vista móvil del conductor. Use el interruptor de la barra superior de la app para simular la pérdida de señal.</p></div><div class="actions"><button type="button" class="btn btn-secondary" id="tr-reset">${icon('sync')}Reiniciar ruta</button></div></div>
+    render: () => `<div class="page-head hide-sm"><div class="titles"><span class="page-kicker">${icon('truck', 'icon-sm')}App de reparto</span><h1>Ruta R-01 Cauquenes</h1><p class="muted" style="margin:0">${D.paradas.length} entregas · camión KXTR-21 con equipo de frío · salida ${D.rutas[0].salida}</p></div><div class="actions"><button type="button" class="btn btn-secondary" id="tr-reset">${icon('sync')}Reiniciar ruta</button></div></div>
       <div class="split"><div id="tr-host"></div><aside class="card hide-sm stack"><h2>Qué funciona sin conexión</h2>
         <ul class="list">${[['Entrega y prueba de entrega', 'Captura 14 h · cola cifrada', 'success'], ['Cobro en efectivo', 'Comprobante local', 'success'], ['Devoluciones y envases', 'Se registran en el dispositivo', 'success'], ['Mapas', 'Precargados con la ruta', 'success'], ['Autorización POS', 'No disponible: efectivo o crédito autorizado', 'danger'], ['Recalcular ruta', 'No disponible: secuencia precargada', 'danger']].map(([t, d, k]) => `<li><span class="badge badge-${k} plain" style="padding:4px">${icon(k === 'success' ? 'check' : 'ban', 'icon-sm')}</span><div class="grow"><div class="title">${t}</div><div class="sub">${d}</div></div></li>`).join('')}</ul></aside></div>`,
     mount: (root) => {
@@ -131,7 +131,7 @@
   /* ---------- App de preventa ---------- */
   L.route('/terreno/preventa', {
     title: 'Preventa en terreno', parent: '/inicio', block: 'Perfil de terreno', module: 'M3 Preventa', rf: ['RF-03.02', 'RF-03.05', 'RF-03.06', 'RF-03.13', 'RF-03.15', 'RF-07.05', 'RF-08.04', 'RF-07.11', 'RF-03.08', 'RF-03.09'], actors: ['Preventista'],
-    render: () => `<div class="page-head hide-sm"><div class="titles"><span class="page-kicker">${icon('phone', 'icon-sm')}Perfil de terreno · app de preventa</span><h1>App de preventa · zona Curicó</h1><p class="muted" style="margin:0">Visitas del día, ficha comercial y toma de pedido sin señal.</p></div><div class="actions"><a class="btn btn-secondary" href="#/flujo">Ver el pedido en el flujo completo</a></div></div>
+    render: () => `<div class="page-head hide-sm"><div class="titles"><span class="page-kicker">${icon('cart', 'icon-sm')}App de preventa</span><h1>Zona Curicó</h1><p class="muted" style="margin:0">Visitas del día, ficha comercial y toma de pedido sin señal.</p></div><div class="actions"><a class="btn btn-secondary" href="#/flujo">Ver el pedido en el flujo completo</a></div></div>
       <div id="pv-host"></div>`,
     mount: (root) => {
       const S = { screen: 'visitas', cli: null, cart: [] };

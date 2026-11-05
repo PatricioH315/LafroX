@@ -303,7 +303,7 @@
           $('#cg-out', b).innerHTML = `<div class="card" style="box-shadow:none"><div class="row"><span class="spinner"></span><strong>${O.cloudOff ? 'Sin enlace con la nube: solicitando la guía al ERP desde el CD Talca…' : 'Solicitando guía electrónica al ERP…'}</strong></div><div class="progress indeterminate" style="margin-top:12px"><span></span></div></div>`;
           L.busy(btn, () => { clearInterval(t); O.loaded = true; O.guia = 'GDE 884133'; setState('Cargado', 'Guía electrónica 884133 emitida'); $('#cg-out', b).innerHTML = L.alert('success', 'Guía de despacho electrónica 884133 emitida', `Folio vinculado a los SSCC de ${O.id}; los ${bultos.length} bultos del camión quedaron confirmados por escaneo.`); carga(b); }, 1800);
         };
-        if ($('#cg-go', b)) $('#cg-go', b).onclick = () => { setState('En ruta', 'Camión KXTR-21 salió del CD Talca 06:45'); L.toast('Camión despachado', 'El cliente recibió el SMS con su ventana de 30 minutos.', 'success'); next(); };
+        if ($('#cg-go', b)) $('#cg-go', b).onclick = () => { setState('En ruta', `Camión KXTR-21 salió del CD Talca ${D.rutas[0].salida}`); L.toast('Camión despachado', 'El cliente recibió el SMS con su ventana de 30 minutos.', 'success'); next(); };
       }
 
       /* Paso 6 · Entrega con prueba digital (reutiliza el componente de terreno) */
