@@ -271,3 +271,27 @@ No son defectos. Se acreditan en otros entregables o requieren condiciones reale
 - Una red de seguridad oculta cualquier enlace hacia una pantalla no permitida.
 
 **Verificación.** Se recorrieron 151 pantallas en los 16 perfiles, abriendo «Nuevo», los avisos y los menús de fila. Resultado: 0 códigos visibles, 0 enlaces u opciones hacia pantallas ajenas y 0 errores. Además, a 375 px no hay desplazamiento horizontal.
+
+## 11. Segundo contraste con las bases (05-11-2026)
+
+Se revisaron otra vez el cap. 13, el cap. 25 de las Bases Técnicas y el art. 26° de las Administrativas con barridos automáticos en los 16 perfiles.
+
+**Lo que ya cumplía** (sin cambios):
+
+| Exigencia | Resultado |
+|---|---|
+| Objetivos táctiles de 44 × 44 px (RT-25.03, RT-13.07) | Cumplen en las 157 pantallas |
+| Nombre accesible de cada campo | Todos los campos lo tienen |
+| Contraste AA (RT-25.03) | Cumple en modo claro, oscuro y alto contraste, en los modos claro y oscuro |
+| Tamaños exigidos (RT-25.04) | Sin desplazamiento horizontal en 375 × 812, 768 × 1024, 1024 × 768, 1366 × 768 y 1920 × 1080 |
+
+**Lo que se mejoró:**
+- **RT-13.06, sin mensajes técnicos.** Los usuarios de negocio, de terreno y externos ya no ven nombres técnicos:
+  - Kotlin, HHT, PWA, SSO, UUID, erp-sync, VM-04, «puerta local A-01», gateway, Iridium y TC58e se reemplazaron por lenguaje de negocio: app de bodega, servidor local del CD, equipo de frío del camión, satélite, terminal;
+  - en la auditoría, el origen «App Kotlin» pasó a «App móvil»;
+  - la consola de integraciones de TI conserva el detalle técnico, porque es su público.
+- **Exportar JSON solo para TI y evaluación.** Los usuarios de negocio exportan en CSV, un formato abierto que abre en Excel.
+- **RT-13.07, íconos con texto.** En pantallas de 1280 px o más, los menús de fila y de la bandeja muestran «Acciones» y el botón de quitar muestra «Quitar». En pantallas menores conservan su nombre accesible.
+- **RT-13.08, uso a la intemperie.** La app de terreno tiene ahora un acceso directo a la «Pantalla para pleno sol» (alto contraste), que queda guardada en el equipo.
+
+**Lo que no se cambió.** RT-13.12 pide varios idiomas solo «cuando el caso lo justifique». El Caso 02 no lo justifica: no menciona usuarios de otra lengua.

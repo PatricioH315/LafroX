@@ -41,7 +41,7 @@
   // Tablas manuales: exporta filas actuales; dataTable usa todos los datos filtrados.
   L.enableTableExports = (root = document) => {
     $$('table.table', root).forEach((table) => {
-      if (table.dataset.jsonExport || table.closest('[data-managed-table]')) return;
+      if (table.dataset.jsonExport || table.closest('[data-managed-table]') || !(L.me?.()?.all || L.me?.()?.id === 'ti')) return;
       table.dataset.jsonExport = 'true';
       const btn = document.createElement('button');
       btn.type = 'button'; btn.className = 'btn btn-secondary btn-sm table-json';

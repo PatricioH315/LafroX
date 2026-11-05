@@ -107,7 +107,7 @@
     const first = !L.store.get('seen.' + profileId, false);
     L.setSession({ profile: profileId, at: Date.now(), first });
   };
-  L.signOut = () => { L.setSession(null); L.toast('Sesión cerrada', 'Su sesión se cerró en todos los módulos (SSO).', 'info'); L.go('/'); };
+  L.signOut = () => { L.setSession(null); L.toast('Sesión cerrada', 'Su sesión se cerró en todos los módulos.', 'info'); L.go('/'); };
 
   // Only the notifications that lead to a screen of the profile
   L.myNotifs = () => L.data.notificaciones.filter((n) => L.allowed(String(n.ruta || '/inicio').split('?')[0]));

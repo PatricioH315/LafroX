@@ -156,7 +156,7 @@
     mount: (root) => {
       const draw = (tipo) => {
         const t = L.myTasks().filter((x) => tipo === 'todas' || x.tipo === tipo);
-        $('#bt-list', root).innerHTML = t.length ? `<ul class="list" style="padding:0 var(--sp-5)">${t.map((x) => `<li data-t="${x.id}" tabindex="-1"><span class="badge ${x.prioridad === 'Crítica' ? 'badge-danger' : x.prioridad === 'Alta' ? 'badge-warning' : 'badge-info'}">${esc(x.prioridad)}</span><div class="grow"><div class="title">${esc(x.titulo)}</div><div class="sub">${esc(x.tipo)} · ${esc(x.ref)} · vence ${esc(x.plazo)}</div></div><a class="btn btn-primary btn-sm" href="#${x.ruta}">Atender</a><div class="menu-wrap"><button type="button" class="btn btn-tertiary btn-icon" data-tm="${x.id}" aria-label="Más acciones para ${esc(x.titulo)}">${icon('more')}</button></div></li>`).join('')}</ul>` : L.empty('done', 'Bandeja al día', 'No tiene tareas de este tipo.');
+        $('#bt-list', root).innerHTML = t.length ? `<ul class="list" style="padding:0 var(--sp-5)">${t.map((x) => `<li data-t="${x.id}" tabindex="-1"><span class="badge ${x.prioridad === 'Crítica' ? 'badge-danger' : x.prioridad === 'Alta' ? 'badge-warning' : 'badge-info'}">${esc(x.prioridad)}</span><div class="grow"><div class="title">${esc(x.titulo)}</div><div class="sub">${esc(x.tipo)} · ${esc(x.ref)} · vence ${esc(x.plazo)}</div></div><a class="btn btn-primary btn-sm" href="#${x.ruta}">Atender</a><div class="menu-wrap"><button type="button" class="btn btn-tertiary btn-icon" data-tm="${x.id}" aria-label="Más acciones para ${esc(x.titulo)}">${icon('more')}<span class="btn-label" aria-hidden="true">Acciones</span></button></div></li>`).join('')}</ul>` : L.empty('done', 'Bandeja al día', 'No tiene tareas de este tipo.');
         $$('[data-tm]', root).forEach((b) => L.menu(b, [{ label: 'Delegar a otra persona', icon: 'users', onClick: () => L.toast('Tarea delegada', 'Quedó registrada la delegación.', 'success') }, { label: 'Posponer 1 hora', icon: 'clock', onClick: () => L.toast('Tarea pospuesta', '', 'info') }, { sep: true }, { label: 'Marcar como resuelta', icon: 'check', onClick: () => { b.closest('li').remove(); L.toast('Tarea resuelta', '', 'success'); } }]));
       };
       L.tabs(root.querySelector('.tabs'), draw);
@@ -197,7 +197,7 @@
           <button type="button" class="btn btn-primary" style="margin-top:var(--sp-4)" id="pf-save">Guardar preferencias</button></section>
       </div>
       <aside class="card stack"><div class="row"><span class="avatar lg">${L.initials(p.name)}</span><div><strong>${esc(p.name)}</strong><div class="small muted">${esc(p.role)}</div></div></div>
-        <dl class="desc-list"><dt>Interfaz</dt><dd>${esc(p.iface)}</dd><dt>Segundo factor</dt><dd>${p.mfa ? L.badge('Activo', 'success') : L.badge('No exigido', '')}</dd><dt>Sesión</dt><dd>Única para todos los módulos (SSO)</dd></dl>
+        <dl class="desc-list"><dt>Interfaz</dt><dd>${esc(p.iface)}</dd><dt>Segundo factor</dt><dd>${p.mfa ? L.badge('Activo', 'success') : L.badge('No exigido', '')}</dd><dt>Sesión</dt><dd>Única para todos los módulos</dd></dl>
         <p class="hint">Portal de clientes: cierre tras 15 minutos sin actividad. La prueba siguiente adelanta el reloj de demostración.</p>
         <button type="button" class="btn btn-secondary" id="pf-idle">Probar cierre por inactividad</button>
         <button type="button" class="btn btn-secondary" data-switch>${icon('users')}Cambiar perfil de demostración</button>
