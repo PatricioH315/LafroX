@@ -95,7 +95,7 @@
             <div class="card" style="box-shadow:none;padding:var(--sp-4)"><div class="small muted">Entrega comprometida ${L.tip('Pedido antes de las 14:00 en zona urbana: promesa 24 h (RNG-15, RF-03.13).')}</div><div style="font-size:var(--fs-lg);font-weight:700">Sáb 14-11</div><div class="small muted">Ventana ${esc(c.ventana)}</div></div>
           </div>
           <div class="field combo" style="margin-bottom:var(--sp-3)"><label for="pv-add">Agregar producto</label><div class="input-wrap">${icon('search')}<input id="pv-add" class="input" placeholder="Escriba nombre o SKU (p. ej. «yogur»)"></div></div>
-          <div class="row" style="margin-bottom:var(--sp-3)"><span class="small muted">Sugeridos por historial (RF-03.14):</span>${['Yogur batido frutilla · 125 g', 'Aceite maravilla · 1 L', 'Papel higiénico · 12 rollos'].map((n) => `<button type="button" class="chip" data-sug="${esc(n)}">${icon('plus', 'icon-sm')}${esc(n.split(' ·')[0])}</button>`).join('')}</div>
+          <div class="row" style="margin-bottom:var(--sp-3)"><span class="small muted">Sugeridos (RF-03.14) · criterios de Comercial: historial ${L.param('sug-hist')} %, promociones ${L.param('sug-promo')} %:</span>${['Yogur batido frutilla · 125 g', 'Aceite maravilla · 1 L', 'Papel higiénico · 12 rollos'].map((n) => `<button type="button" class="chip" data-sug="${esc(n)}">${icon('plus', 'icon-sm')}${esc(n.split(' ·')[0])}</button>`).join('')}</div>
           <div class="table-wrap" style="border:1px solid var(--c-line-soft)"><table class="table"><caption class="sr-only">Líneas del pedido</caption><thead><tr><th>Producto</th><th class="right">Stock ${O.offline ? '(06:00)' : ''}</th><th class="right">Precio</th><th>Cantidad</th><th class="right">Subtotal</th><th><span class="sr-only">Quitar</span></th></tr></thead>
           <tbody>${O.lines.map((l, i) => `<tr><td class="wrap"><strong>${esc(l.nombre)}</strong><div class="small muted mono">${esc(l.sku)} ${l.temp !== 'Seco' ? '· ' + esc(l.temp) : ''}</div></td><td class="num right">${fmt.n(l.stock)}</td><td class="num right">${fmt.clp(l.precio)}</td><td><div class="row" style="flex-wrap:nowrap;gap:4px"><button type="button" class="btn btn-secondary btn-icon btn-sm" data-q="${i}" data-d="-1" aria-label="Restar una unidad de ${esc(l.nombre)}">${icon('minus', 'icon-sm')}</button><input class="input num" style="width:64px;text-align:center" value="${l.cant}" data-qi="${i}" inputmode="numeric" aria-label="Cantidad de ${esc(l.nombre)}"><button type="button" class="btn btn-secondary btn-icon btn-sm" data-q="${i}" data-d="1" aria-label="Sumar una unidad de ${esc(l.nombre)}">${icon('plus', 'icon-sm')}</button></div></td><td class="num right">${fmt.clp(l.cant * l.precio)}</td><td><button type="button" class="btn btn-tertiary btn-icon" data-rm="${i}" aria-label="Quitar ${esc(l.nombre)}">${icon('trash')}</button></td></tr>`).join('')}</tbody></table></div>
           <div class="row-between" style="margin-top:var(--sp-4)">
@@ -133,13 +133,18 @@
       function validacion(b) {
         b.innerHTML = `
           ${O.estado === 'Capturado sin conexión' ? L.alert('warning', '1 pedido en la cola del dispositivo', `El pedido ${esc(O.id)} espera señal. La sincronización es automática al reconectar o al volver al CD (RF-06.07).`) : ''}
-          <label class="check" style="margin-top:var(--sp-3)"><input type="checkbox" id="vl-sim" ${O.simCredit ? 'checked' : ''}> Simular que el cliente excede su crédito en más del 10 % (genera estado «Retenido»)</label>
+          <fieldset style="margin-top:var(--sp-3)"><legend class="small muted">Simulaciones de la sincronización</legend>
+          <label class="check"><input type="checkbox" id="vl-sim" ${O.simCredit ? 'checked' : ''}> El cliente excede su crédito en más del 10 % (estado «Retenido»)</label>
+          <label class="check"><input type="checkbox" id="vl-dup" ${O.simDup ? 'checked' : ''}> El dispositivo reenvía el mismo pedido dos veces (RF-03.16)</label>
+          <label class="check"><input type="checkbox" id="vl-qb" ${O.simQuiebre ? 'checked' : ''}> Otro preventista confirmó antes el último helado disponible (RF-03.03)</label></fieldset>
           <ol class="list" id="vl-steps" style="margin-top:var(--sp-3)">
             ${[['sync', 'Recepción en el servidor central y control de duplicados', 'RF-03.16 · RNG-12'], ['box', 'Reserva firme de stock por orden de llegada', 'RF-03.03 · RNG-01'], ['cash', 'Revalidación de crédito y deuda vencida', 'RF-03.09 · RNG-03'], ['calendar', 'Confirmación de fecha y ventana de entrega', 'RF-03.13 · RNG-15']].map(([i, t, r], k) => `<li data-k="${k}"><span class="avatar" style="border-radius:10px">${icon(i)}</span><div class="grow"><div class="title">${t}</div><div class="sub">${r}</div></div><span class="vl-st small muted">En espera</span></li>`).join('')}
           </ol>
           <div id="vl-out" style="margin-top:var(--sp-4)"></div>
           <div class="row" style="justify-content:flex-end;margin-top:var(--sp-4)"><button type="button" class="btn btn-primary big-btn" id="vl-go">${icon('wifi')}Recuperar señal y sincronizar</button></div>`;
         $('#vl-sim', b).onchange = (e) => (O.simCredit = e.target.checked);
+        $('#vl-dup', b).onchange = (e) => (O.simDup = e.target.checked);
+        $('#vl-qb', b).onchange = (e) => (O.simQuiebre = e.target.checked);
         $('#vl-go', b).onclick = async (e) => {
           const btn = e.currentTarget;
           btn.disabled = true;
@@ -151,7 +156,10 @@
             st.innerHTML = '<span class="spinner" aria-hidden="true"></span>';
             await L.sleep(650);
             if (k === 2 && O.simCredit) { st.innerHTML = L.badge('Excede 14 %', 'danger'); break; }
-            st.innerHTML = L.badge(k === 1 ? '4 de 4 líneas reservadas' : 'Correcto', 'success');
+            // RF-03.16: a resend with the same UUID is discarded and audited; RF-03.03: first to reach the server wins
+            if (k === 0 && O.simDup) { st.innerHTML = L.badge('1 reenvío descartado', 'warning'); setState(O.estado, `Reenvío duplicado del UUID ${O.uuid} descartado`); L.logAudit('Creación', 'Pedido', `Reenvío duplicado de ${O.id} (UUID ${O.uuid}) descartado al sincronizar; se conserva el primero`, 'App Kotlin'); continue; }
+            if (k === 1 && O.simQuiebre && !O.quiebre) { const li = O.lines.findIndex((l) => l.temp === 'Congelado'); const ln = O.lines[li >= 0 ? li : O.lines.length - 1]; const falta = Math.min(ln.cant - 1, 4); ln.cant -= falta; O.quiebre = { nombre: ln.nombre, falta }; setState(O.estado, `Quiebre parcial: ${falta} u de ${ln.nombre} reservadas antes por PV-264819 (orden de llegada al servidor)`); L.logAudit('Creación', 'Pedido', `Quiebre parcial en ${O.id}: ${falta} u de ${ln.nombre}; PV-264819 llegó primero al servidor (RNG-01)`, 'API'); }
+            st.innerHTML = k === 1 && O.quiebre ? L.badge(`${O.lines.length - 1} de ${O.lines.length} completas · quiebre parcial`, 'warning') : L.badge(k === 1 ? `${O.lines.length} de ${O.lines.length} líneas reservadas` : 'Correcto', 'success');
           }
           if (O.simCredit) {
             setState('Retenido', 'Crédito excedido en 14 % (umbral 10 %)');
@@ -170,7 +178,7 @@
             return;
           }
           setState('Confirmado', 'Stock reservado y crédito validado');
-          $('#vl-out', b).innerHTML = L.alert('success', 'Pedido confirmado', 'Se notificó a Almacén Doña Rosa la fecha comprometida: sábado 14-11, ' + esc(O.cli.ventana) + '.');
+          $('#vl-out', b).innerHTML = (O.quiebre ? L.alert('warning', `Quiebre parcial: faltan ${O.quiebre.falta} u de ${esc(O.quiebre.nombre)}`, 'Otro preventista confirmó antes ese stock: el servidor reserva por orden de llegada (RF-03.03, RNG-01). La línea queda con lo disponible y se notificó a la preventista.') + '<div style="height:12px"></div>' : '') + L.alert('success', 'Pedido confirmado', `Se notificó a ${esc(O.cli.nombre)} la fecha comprometida: sábado 14-11, ${esc(O.cli.ventana)}.`);
           btn.outerHTML = `<button type="button" class="btn btn-primary big-btn" id="vl-next">Continuar a planificación${icon('arrow-right')}</button>`;
           $('#vl-next', b).onclick = next;
           $('#vl-next', b).focus();
@@ -293,7 +301,7 @@
           $('#cg-out', b).innerHTML = `<div class="card" style="box-shadow:none"><div class="row"><span class="spinner"></span><strong>Solicitando guía electrónica al ERP…</strong></div><div class="progress indeterminate" style="margin-top:12px"><span></span></div></div>`;
           L.busy(btn, () => { clearInterval(t); O.loaded = true; O.guia = 'GDE 884133'; setState('Cargado', 'Guía electrónica 884133 emitida'); $('#cg-out', b).innerHTML = L.alert('success', 'Guía de despacho electrónica 884133 emitida', `Folio vinculado a los SSCC de ${O.id}; los ${bultos.length} bultos del camión quedaron confirmados por escaneo.`); carga(b); }, 1800);
         };
-        if ($('#cg-go', b)) $('#cg-go', b).onclick = () => { setState('En ruta', 'Camión KXTR-21 salió del CD Talca 07:15'); L.toast('Camión despachado', 'El cliente recibió el SMS con su ventana de 30 minutos.', 'success'); next(); };
+        if ($('#cg-go', b)) $('#cg-go', b).onclick = () => { setState('En ruta', 'Camión KXTR-21 salió del CD Talca 06:45'); L.toast('Camión despachado', 'El cliente recibió el SMS con su ventana de 30 minutos.', 'success'); next(); };
       }
 
       /* Paso 6 · Entrega con prueba digital (reutiliza el componente de terreno) */
@@ -354,17 +362,20 @@
 
   /* ---------- Componente de entrega reutilizable (flujo y app de terreno) ---------- */
   L.delivery = (host, { stop, lines, onDone, onClosed, allowClosed = true, compact = false }) => {
-    const st = { qty: lines.map((l) => l.cant), reason: '', signed: false, photo: false, crates: 0, method: 'sign', receiver: '', partialPay: false };
+    // RF-06.06: arrival time is recorded when the delivery screen opens, completion time when it is confirmed
+    const st = { qty: lines.map((l) => l.cant), reason: '', signed: false, photo: false, crates: 0, pallets: 0, envEstado: 'Buen estado', method: 'sign', receiver: '', partialPay: false, llegada: new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' }) };
     const cli = stop.cliente ? L.findClient(stop.cliente) : null;
     st.pay = 'cash'; st.pos = null;
     const crateBase = cli ? cli.envases.canastillos : 24;
     host.innerHTML = `
       <div class="row-between" style="margin-bottom:var(--sp-3)"><div><strong style="font-size:var(--fs-lg)">${esc(stop.nombre)}</strong><div class="small muted">${icon('pin', 'icon-sm')} ${esc(stop.dir)} · ventana ${esc(stop.ventana)}</div></div>${allowClosed ? `<button type="button" class="btn btn-secondary" data-closed>${icon('door')}Local cerrado</button>` : ''}</div>
-      <h3>1. Confirme lo entregado</h3>
+      <p class="small muted" style="margin:0 0 var(--sp-2)">${icon('clock', 'icon-sm')} Llegada registrada a las ${st.llegada} (RF-06.06)</p>
+      <div class="row-between"><h3 style="margin:0">1. Confirme lo entregado</h3><button type="button" class="btn btn-tertiary btn-sm" data-allok>${icon('check', 'icon-sm')}Todo conforme según guía</button></div>
       <ul class="list">${lines.map((l, i) => `<li><div class="grow"><div class="title">${esc(l.nombre)}</div><div class="sub">Pedido: ${l.cant} u</div></div><label class="sr-only" for="dq-${i}">Entregado de ${esc(l.nombre)}</label><input id="dq-${i}" class="input num" data-dq="${i}" type="number" min="0" max="${l.cant}" value="${l.cant}" style="width:${compact ? 72 : 88}px;text-align:center"></li>`).join('')}</ul>
       <div id="dl-rej"></div>
       <h3 style="margin-top:var(--sp-4)">2. Envases retornados (RF-06.09)</h3>
       <div class="row"><span>Canastillos devueltos</span><button type="button" class="btn btn-secondary btn-icon btn-sm" data-cr="-1" aria-label="Restar canastillo">${icon('minus', 'icon-sm')}</button><output id="dl-cr" class="num" style="min-width:24px;text-align:center;font-weight:700">0</output><button type="button" class="btn btn-secondary btn-icon btn-sm" data-cr="1" aria-label="Sumar canastillo">${icon('plus', 'icon-sm')}</button></div>
+      <div class="row" style="margin-top:6px"><span>Pallets devueltos</span><button type="button" class="btn btn-secondary btn-icon btn-sm" data-pl="-1" aria-label="Restar pallet">${icon('minus', 'icon-sm')}</button><output id="dl-pl" class="num" style="min-width:24px;text-align:center;font-weight:700">0</output><button type="button" class="btn btn-secondary btn-icon btn-sm" data-pl="1" aria-label="Sumar pallet">${icon('plus', 'icon-sm')}</button><label class="sr-only" for="dl-ee">Estado de los envases</label><select id="dl-ee" class="select" style="width:auto"><option>Buen estado</option><option>Dañados</option><option>Mezcla: algunos dañados</option></select></div>
       <p class="small muted" id="dl-crs" style="margin:6px 0 0" aria-live="polite"></p>
       <h3 style="margin-top:var(--sp-4)">3. Prueba de entrega</h3>
       <div class="segmented" role="tablist" aria-label="Método de confirmación" style="margin-bottom:var(--sp-3)"><button type="button" role="tab" aria-selected="true" data-pm="sign">Firma en pantalla</button><button type="button" role="tab" aria-selected="false" data-pm="qr">Código QR del cliente</button><button type="button" role="tab" aria-selected="false" data-pm="name">Foto y nombre</button></div>
@@ -387,7 +398,8 @@
       st.partialPay = c > 0 && c < exp;
       box.innerHTML = st.partialPay ? `${L.alert('warning', 'Pago parcial', `Se emitirá un comprobante digital de abono por ${fmt.clp(c)} y el saldo de ${fmt.clp(exp - c)} pasará a la cuenta corriente del cliente (RF-07.10).`)}<label class="check" style="margin-top:6px"><input type="checkbox" id="dl-ppok"> El cliente acepta el abono y el saldo pendiente</label>` : '';
     };
-    const updCrates = () => { $h('#dl-crs').textContent = `Saldo de envases del cliente: ${crateBase} → ${Math.max(0, crateBase - st.crates)} canastillos. Se actualiza ${L.online() ? 'en línea' : 'en el dispositivo y se sincroniza al reconectar'} junto con la guía (RF-06.10).`; };
+    const palletBase = cli ? cli.envases.pallets : 2;
+    const updCrates = () => { $h('#dl-crs').textContent = `Saldo de envases del cliente: ${crateBase} → ${Math.max(0, crateBase - st.crates)} canastillos y ${palletBase} → ${Math.max(0, palletBase - st.pallets)} pallets (${st.envEstado.toLowerCase()}). Se actualiza ${L.online() ? 'en línea' : 'en el dispositivo y se sincroniza al reconectar'} junto con la guía (RF-06.10).`; };
     updExp(); updCrates();
     if ($h('#dl-cash')) $h('#dl-cash').oninput = updPay;
     // Cobro con tarjeta: el terminal Bluetooth entrega el código de autorización que se concilia en la liquidación (RF-07.06)
@@ -403,6 +415,10 @@
       updExp();
     }));
     host.querySelectorAll('[data-cr]').forEach((x) => (x.onclick = () => { st.crates = Math.max(0, st.crates + Number(x.dataset.cr)); $h('#dl-cr').textContent = st.crates; updCrates(); }));
+    host.querySelectorAll('[data-pl]').forEach((x) => (x.onclick = () => { st.pallets = Math.max(0, st.pallets + Number(x.dataset.pl)); $h('#dl-pl').textContent = st.pallets; updCrates(); }));
+    $h('#dl-ee').onchange = (e) => { st.envEstado = e.target.value; updCrates(); };
+    // RF-06.01: bulk confirmation of the whole guide
+    $h('[data-allok]').onclick = () => { host.querySelectorAll('[data-dq]').forEach((x, i) => { x.value = lines[i].cant; st.qty[i] = lines[i].cant; }); $h('#dl-rej').innerHTML = ''; st.reason = ''; updExp(); L.toast('Guía marcada conforme', `${lines.length} línea(s) entregadas completas.`, 'success', { duration: 1800 }); };
     host.querySelectorAll('[data-pm]').forEach((x) => (x.onclick = () => { st.method = x.dataset.pm; host.querySelectorAll('[data-pm]').forEach((y) => y.setAttribute('aria-selected', y === x)); host.querySelectorAll('[data-pmp]').forEach((p) => (p.hidden = p.dataset.pmp !== x.dataset.pm)); }));
     $h('#dl-rcv').oninput = (e) => (st.receiver = e.target.value.trim());
     const pad = L.signaturePad($h('#dl-sign'), (v) => { st.signed = v; $h('#dl-sign-st').textContent = v ? 'Firma capturada' : 'Sin firma'; $h('#dl-sign-st').style.color = v ? 'var(--c-success)' : ''; });
@@ -437,7 +453,8 @@
       const acuse = $h('#dl-acuse')?.value || 'Recibido conforme';
       L.busy(e.currentTarget, () => { L.toast(partial ? 'Entrega parcial registrada' : 'Entrega confirmada', `Acuse de la guía: ${acuse}. ` + (L.online() ? 'Sincronizada con la central.' : 'Guardada en el dispositivo; se enviará al reconectar.'), 'success'); if (acuse === 'Sin acuse') L.toast('Guía sin acuse', 'Se alertó a Finanzas y al jefe de ruta: la guía queda pendiente de acuse.', 'warning'); if (byPos) L.store.set('pos.vouchers', [...L.store.get('pos.vouchers', []), { ...st.pos, cliente: stop.nombre }]);
         if (!byPos && st.partialPay) { L.store.set('cc.movs', [...L.store.get('cc.movs', []), { cliente: stop.cliente || '', nombre: stop.nombre, abono: cash, saldo: expected() - cash, fecha: new Date().toISOString() }]); L.toast('Comprobante de abono emitido', `Saldo ${fmt.clp(expected() - cash)} traspasado a la cuenta corriente del cliente en el ERP.`, 'info'); }
-        onDone?.({ partial, rejectReason: st.reason, cash: byPos ? st.pos.monto : cash, pos: byPos ? st.pos : null, crates: st.crates, partialPay: !byPos && st.partialPay, receiver: st.method === 'name' ? st.receiver : '' }); }, 900);
+        const termino = new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' });
+        onDone?.({ partial, rejectReason: st.reason, cash: byPos ? st.pos.monto : cash, pos: byPos ? st.pos : null, crates: st.crates, pallets: st.pallets, envEstado: st.envEstado, partialPay: !byPos && st.partialPay, receiver: st.method === 'name' ? st.receiver : '', llegada: st.llegada, termino }); }, 900);
     };
   };
 })(window.LFX);

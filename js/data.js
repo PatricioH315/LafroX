@@ -134,7 +134,7 @@
     transportista: i % 3 === 2 ? pick(['Transportes Maule Ltda.', 'Fletes del Sur SpA', 'TransAndes Carga']) : 'Flota propia',
     camion: `${pick(['KXTR', 'LBHP', 'JZWS', 'PFGD', 'RTKC'])}-${int(10, 99)}`, frio: i % 2 === 0,
     paradas: int(14, 34), hechas: 0, ocupacion: int(58, 96), km: int(80, 260), estado: '', otif: Math.round((78 + rnd() * 20) * 10) / 10,
-    salida: '07:' + String(int(0, 45)).padStart(2, '0'), eta: '', desvio: i === 6
+    salida: ((m) => { const t = 330 + m * 2; return `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`; })(int(0, 45)), eta: '', desvio: i === 6
   }));
   const PLATES = ['KXTR-21', 'LBHP-34', 'JZWS-62', 'PFGD-51', 'RTKC-13', 'KXTR-47', 'LBHP-86', 'JZWS-29', 'KXTR-98', 'PFGD-73', 'RTKC-58', 'LBHP-15'];
   D.rutas.forEach((r, i) => { r.camion = PLATES[i]; });
@@ -240,6 +240,7 @@
     { grupo: 'Rutas y entregas (RNG-05, RNG-14, RNG-15)', items: [{ id: 'ventana', label: 'Ventana informada al cliente', valor: 30, unidad: 'min', rf: 'RF-04.06' }, { id: 'ocup-min', label: 'Ocupación mínima de camión al salir', valor: 70, unidad: '%', rf: 'RNG-14' }, { id: 'corte', label: 'Hora de corte para promesa 24 h', valor: '14:00', unidad: 'h', rf: 'RNG-15' }, { id: 'desvio', label: 'Alerta de desvío de ruta', valor: 3, unidad: 'km', rf: 'RF-14.03' }] },
     { grupo: 'Vida útil y FEFO (RF-02.09)', items: [{ id: 'vida-umbral', label: 'Alerta cuando la vida útil remanente baja de', valor: 30, unidad: 'días', rf: 'RF-02.09' }] },
     { grupo: 'Lectura de temperatura por tipo de producto (RNF-09.05)', items: [{ id: 'lec-ref-cam', label: 'Refrigerados · cámara', valor: 5, unidad: 'min', rf: 'RF-09.03' }, { id: 'lec-con-cam', label: 'Congelados · cámara', valor: 5, unidad: 'min', rf: 'RF-09.03' }, { id: 'lec-ref-tru', label: 'Refrigerados · camión', valor: 15, unidad: 'min', rf: 'RF-09.04' }, { id: 'lec-con-tru', label: 'Congelados · camión', valor: 10, unidad: 'min', rf: 'RF-09.04' }] },
+    { grupo: 'Sugerencias de preventa (RF-03.14)', items: [{ id: 'sug-hist', label: 'Peso del historial de compra', valor: 60, unidad: '%', rf: 'RF-03.14' }, { id: 'sug-promo', label: 'Peso de las promociones vigentes', valor: 40, unidad: '%', rf: 'RF-03.14' }, { id: 'sug-max', label: 'Sugerencias por cliente', valor: 3, unidad: 'productos', rf: 'RF-03.14' }] },
     { grupo: 'Envases retornables (RNG-07)', items: [{ id: 'env-umbral', label: 'Saldo máximo de canastillos por cliente', valor: 40, unidad: 'u', rf: 'RF-08.04' }] },
     { grupo: 'Sesión y seguridad', items: [{ id: 'inact', label: 'Cierre por inactividad en portal', valor: 15, unidad: 'min', rf: 'RF-12.29' }, { id: 'otp', label: 'Vigencia del OTP de conductor externo', valor: 14, unidad: 'h', rf: 'RF-06.08' }] }
   ];

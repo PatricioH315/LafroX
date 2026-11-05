@@ -29,7 +29,17 @@
     await L.sleep(1400);
     setQueue([]);
     L.toast('Sincronización completa', `${q.length} evento(s) enviados sin duplicados ni pérdidas.`, 'success');
+    L.cierreTurno();
     onDone?.();
+  };
+
+  // RF-06.07: when the device syncs, the central system rebuilds the whole shift and issues the closing report for settlement
+  L.cierreTurno = () => {
+    if (!/^#\/terreno(\?|$)/.test(location.hash)) return;
+    const t = L.store.get('field.times', {}), st = stops();
+    const hechas = st.filter((s) => s.estado === 'Entregado').length, rep = st.filter((s) => s.estado === 'Reprogramada').length;
+    const cobro = Object.values(t).reduce((a, x) => a + (x.cash || 0), 0), cr = Object.values(t).reduce((a, x) => a + (x.crates || 0), 0), pl = Object.values(t).reduce((a, x) => a + (x.pallets || 0), 0);
+    L.modal({ title: 'Reporte de cierre del turno · R-01', body: `<p class="muted" style="margin-top:0">Generado automáticamente al sincronizar: el sistema recuperó todos los despachos registrados en el turno y los consolidó para la rendición (RF-06.07).</p><dl class="desc-list"><dt>Entregas confirmadas</dt><dd>${hechas} de ${st.length}</dd><dt>Reprogramadas</dt><dd>${rep}</dd><dt>Cobrado en ruta</dt><dd class="num">${fmt.clp(cobro)}</dd><dt>Envases retornados</dt><dd>${cr} canastillos · ${pl} pallets</dd><dt>Horas por entrega</dt><dd>${Object.entries(t).map(([k, x]) => `${esc(D.paradas.find((p) => p.id === k)?.nombre || k)}: ${x.llegada}–${x.termino}`).join(' · ') || '—'}</dd></dl>`, actions: [{ label: 'Cerrar' }, { label: 'Ir a la rendición', cls: 'btn-primary', onClick: () => L.go('/rendicion') }] });
   };
 
   /* ---------- App de reparto ---------- */
@@ -56,7 +66,7 @@
           title = p.nombre; back = 'ruta';
           body = `<dl class="desc-list"><dt>Dirección</dt><dd>${esc(p.dir)}</dd><dt>Ventana</dt><dd>${esc(p.ventana)}</dd><dt>Pedido</dt><dd class="mono">${esc(p.pedido)}</dd><dt>Bultos</dt><dd>${p.bultos}${p.frio ? ' · incluye frío' : ''}</dd><dt>Cobro</dt><dd>${p.contado ? 'Contado ' + fmt.clp(p.monto) : 'Crédito 30 días'}</dd></dl>
             ${p.frio ? (coldState() === 'ok' ? L.alert('success', 'Cadena de frío vigente', 'Latido del gateway hace 4 s · 3,4 °C, manifiesto vigente y sin retención. Se habilita la bajada del SSCC (RF-09.12).') : L.alert('danger', coldState() === 'enlace' ? 'Bajada bloqueada: sin latido del camión' : 'Bajada bloqueada: SSCC retenido por excursión', coldState() === 'enlace' ? 'El terminal no recibe el latido del gateway hace más de 30 s. Sin estado confiable no se baja producto de frío; el SSCC queda retenido y vuelve al CD si Calidad no decide en plazo (RF-09.12, RF-09.13).' : 'El SSCC 0078012345000001255 quedó retenido por excursión crítica. Solo Calidad puede liberarlo (RF-09.06).')) : ''}
-            ${e === 'Pendiente' ? `<button type="button" class="btn btn-secondary btn-block big-btn" data-nav>${icon('pin')}Navegar ${L.online() ? '' : '(mapa precargado)'}</button>${p.frio && coldState() !== 'ok' ? `<button type="button" class="btn btn-primary btn-block big-btn" disabled>${icon('lock')}Entrega de frío bloqueada</button><button type="button" class="btn btn-tertiary btn-block" data-dtab="frio">Ver estado de la cadena de frío</button>` : `<button type="button" class="btn btn-primary btn-block big-btn" data-arrive>${icon('check')}Llegué: iniciar entrega</button>`}` : L.alert(e === 'Entregado' ? 'success' : 'warning', `Parada ${e.toLowerCase()}`, e === 'Entregado' ? 'Prueba de entrega registrada.' : 'Reprogramada a la próxima ventana compatible.')}`;
+            ${e === 'Pendiente' ? `<button type="button" class="btn btn-secondary btn-block big-btn" data-nav>${icon('pin')}Navegar ${L.online() ? '' : '(mapa precargado)'}</button>${p.frio && coldState() !== 'ok' ? `<button type="button" class="btn btn-primary btn-block big-btn" disabled>${icon('lock')}Entrega de frío bloqueada</button><button type="button" class="btn btn-tertiary btn-block" data-dtab="frio">Ver estado de la cadena de frío</button>` : `<button type="button" class="btn btn-primary btn-block big-btn" data-arrive>${icon('check')}Llegué: iniciar entrega</button>`}` : L.alert(e === 'Entregado' ? 'success' : 'warning', `Parada ${e.toLowerCase()}`, e === 'Entregado' ? `Prueba de entrega registrada. Llegada ${L.store.get('field.times', {})[p.id]?.llegada || '—'} · término ${L.store.get('field.times', {})[p.id]?.termino || '—'}.` : 'Reprogramada a la próxima ventana compatible.')}`;
         } else if (S.screen === 'entrega') {
           const p = D.paradas.find((x) => x.id === S.stop);
           title = 'Entrega · ' + p.nombre; back = 'parada';
@@ -90,7 +100,7 @@
           L.delivery($('#dv-host', host), {
             stop: { ...p, ventana: p.ventana }, compact: true,
             lines: ped.lineas.slice(0, 4).map((l) => ({ nombre: l.nombre, cant: l.cant, precio: Math.round(p.monto / ped.lineas.slice(0, 4).reduce((a, x) => a + x.cant, 0)) })),
-            onDone: (r) => { setStop(p.id, 'Entregado'); if (!L.online()) setQueue([...queue(), { t: `Entrega ${p.nombre}`, icon: 'check', uuid: 'pod-' + Math.random().toString(16).slice(2, 8), at: '09:4' + queue().length }, ...(r.cash ? [{ t: `Cobro ${fmt.clp(r.cash)}`, icon: 'cash', uuid: 'cob-' + Math.random().toString(16).slice(2, 8), at: '09:4' + queue().length }] : [])]); S.screen = 'ruta'; draw(); },
+            onDone: (r) => { setStop(p.id, 'Entregado'); L.store.set('field.times', { ...L.store.get('field.times', {}), [p.id]: { llegada: r.llegada, termino: r.termino, cash: r.cash || 0, crates: r.crates, pallets: r.pallets } }); if (!L.online()) setQueue([...queue(), { t: `Entrega ${p.nombre}`, icon: 'check', uuid: 'pod-' + Math.random().toString(16).slice(2, 8), at: '09:4' + queue().length }, ...(r.cash ? [{ t: `Cobro ${fmt.clp(r.cash)}`, icon: 'cash', uuid: 'cob-' + Math.random().toString(16).slice(2, 8), at: '09:4' + queue().length }] : [])]); S.screen = 'ruta'; draw(); },
             onClosed: (r) => { setStop(p.id, 'Reprogramada'); if (!L.online()) setQueue([...queue(), { t: `Local cerrado ${p.nombre}`, icon: 'door', uuid: 'evt-' + Math.random().toString(16).slice(2, 8), at: '09:5' + queue().length }]); S.screen = 'ruta'; draw(); }
           });
         }
@@ -109,7 +119,7 @@
       };
       document.addEventListener('lfx:net', draw);
       L.onLeave(() => document.removeEventListener('lfx:net', draw));
-      $('#tr-reset', root) && ($('#tr-reset', root).onclick = () => { L.store.set('field.stops', null); setQueue([]); S.screen = 'ruta'; draw(); L.toast('Ruta reiniciada', '', 'info'); });
+      $('#tr-reset', root) && ($('#tr-reset', root).onclick = () => { L.store.set('field.stops', null); L.store.set('field.times', {}); L.store.set('field.coldState', 'ok'); setQueue([]); S.screen = 'ruta'; draw(); L.toast('Ruta reiniciada', '', 'info'); });
       draw();
     }
   });
