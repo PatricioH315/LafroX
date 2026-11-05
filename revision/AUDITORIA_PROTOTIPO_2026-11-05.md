@@ -35,6 +35,12 @@ Fecha: 05-11-2026. Rama `LafroX-Prototipo-HTML`, commit local `5b727c25`.
   - Las nuevas quedan «Por validar» hasta que las confirme un segundo perfil, distinto de quien las registró.
   - El plan de rutas declara cuántas restricciones vigentes aplicó.
   - Responde al criterio 16 del caso.
+- **Preparación y carga (M5) corregidas** en `/flujo`, pasos 4 y 5:
+  - **RF-05.04 y RNG-13:** refrigerado se libera al terminar seco, y congelado al terminar ambos.
+  - **RF-05.02:** el ingreso manual de contingencia valida el GTIN y el lote instruidos y se registra como «Ingreso Manual» en la auditoría.
+  - **RF-05.05:** una lectura de un lote más nuevo muestra «Lote X con vencimiento anterior disponible en [ubicación]». La excepción FEFO exige motivo (no encontrado, dañado o cantidad insuficiente) y queda auditada.
+  - **RF-05.07:** cada bulto se carga escaneando su SSCC, en secuencia inversa a la ruta. Un bulto fuera de secuencia pide motivo, y cerrar con bultos sin escanear se bloquea y avisa a la Jefa de Bodega.
+  - Nuevo `L.logAudit()`: los eventos operacionales aparecen en `/admin/auditoria`.
 - **Los seis hallazgos críticos están corregidos.** Siguen pendientes los parciales de las secciones 4 a 6.
 
 ## 2. Bases Técnicas y Administrativas (Cap. 25, Cap. 13, Art. 26°)
