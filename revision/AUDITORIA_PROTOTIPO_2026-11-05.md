@@ -48,6 +48,13 @@ Fecha: 05-11-2026. Rama `LafroX-Prototipo-HTML`, commit local `5b727c25`.
   - **Rango refrigerado:** es 2–8 °C en todas las pantallas (SD3, RF-02.01).
   - **Regla térmica única (RF-09.05):** consigna más 2 °C sostenido 15 minutos, definida en el parámetro `frio-ref`. La usan la alerta de telemetría, los gráficos y la tabla de lácteos.
   - **RF-12.21:** una ruta sin confirmar muestra la asignación planificada como «Supuesto no verificado», tal como dice SD3.
+- **Parciales de M9 Calidad corregidos:**
+  - **RF-09.05, 09.06:** en la pestaña «Frío» de la app del conductor se simula una excursión. Aparece la alerta en cabina con vibración, el SSCC queda retenido y el conductor registra observaciones obligatorias que van a Calidad (en cola si no hay red).
+  - **RF-09.12, 09.13:** se simula la pérdida de enlace. Sin latido en los últimos 30 s, o con el SSCC retenido, la parada con frío bloquea la entrega.
+  - **RF-02.10:** la ficha del lote muestra el estado, la ubicación por posición, el origen con su orden de compra, las salidas con guía, las devoluciones y mermas, y se exporta a hoja de cálculo.
+  - **RF-09.09:** se descarga el expediente de cadena de frío en JSON.
+  - **RF-09.03:** se exporta el registro de temperatura de las cámaras.
+  - **RF-09.14:** la disposición incluye «Uso no alimentario» y exige confirmar el área de no aptos marcada con X roja. Queda en la auditoría.
 - **Los seis hallazgos críticos están corregidos.** Siguen pendientes los parciales de las secciones 4 a 6.
 
 ## 2. Bases Técnicas y Administrativas (Cap. 25, Cap. 13, Art. 26°)
