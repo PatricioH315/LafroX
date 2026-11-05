@@ -2,7 +2,7 @@
 
 Prototipo navegable de alta fidelidad de la plataforma logística que LafroX propone para Distribuidora Puelche S.A. (Caso 02 Logística). Responde al capítulo 25 de las Bases Técnicas Transversales y se entrega junto con el Informe 3.
 
-- 49 pantallas que cubren los 9 bloques del numeral 25.2, los componentes del 25.4 y los requisitos RT-25.01 a RT-25.10.
+- 52 pantallas que cubren los 9 bloques del numeral 25.2, los componentes del 25.4 y los requisitos RT-25.01 a RT-25.10.
 - Cada pantalla declara su módulo de SD4 (M1–M12), sus requerimientos de SD3 y sus actores. La documentación de cumplimiento está en `docs/` y no se publica en el sitio.
 - Datos simulados; nada se envía a un servidor ni se guarda de forma permanente.
 

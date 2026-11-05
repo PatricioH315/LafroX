@@ -90,6 +90,8 @@ Administración
 ├── Personas usuarias ..................... /admin/usuarios
 ├── Roles y permisos ...................... /admin/roles
 ├── Parámetros ............................ /admin/parametros
+├── Flujos de aprobación .................. /admin/flujos
+├── Integraciones y monitoreo ............. /admin/integraciones
 └── Auditoría ............................. /admin/auditoria
 ```
 
@@ -204,7 +206,7 @@ Cada estado usa siempre el mismo color: éxito en verde, advertencia en ámbar, 
 | Calidad y flota | Calidad y trazabilidad · Telemetría y frío |
 | Clientes y canales | Clientes · Canal moderno EDI · Hacer un pedido · Mis entregas · Estado de cuenta · Portal de transportistas · Portal de proveedores |
 | Analítica | Tablero analítico |
-| Administración | Personas usuarias · Roles y permisos · Parámetros · Auditoría |
+| Administración | Personas usuarias · Roles y permisos · Parámetros · Flujos de aprobación · Integraciones y monitoreo · Auditoría |
 
 En escritorio el menú se pliega hacia la izquierda y recuerda la preferencia. En tableta y teléfono se abre como panel lateral desde el botón de menú.
 

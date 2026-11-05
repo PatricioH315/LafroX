@@ -69,8 +69,8 @@ Revisión sobre la rama LafroX-Prototipo-HTML (commit 20cab1d8), con el perfil d
   - **No corregible en el prototipo**: publicar resuelve el acceso, pero los seis meses solo se comprueban con el paso del tiempo. Se acredita con la publicación estable y el compromiso de mantener el repositorio.
 - [x] Simula de forma realista la navegación y los flujos sin servicios de fondo ni base de datos (Cap. 25.1).
 - [x] Permite recorrerlo **desde la perspectiva de los distintos perfiles** de personas usuarias (Cap. 25.1).
-- [ ] Deseable: se puede exportar a un documento interactivo para revisión **sin conexión** (RT-25.10).
-  - ⚠ No verificado: no hay un documento interactivo exportado para revisión sin conexión.
+- [x] Deseable: se puede exportar a un documento interactivo para revisión **sin conexión** (RT-25.10).
+  - ✓ 05-11-2026: la carpeta del prototipo abre con `index.html` sin servidor ni red; no usa `fetch` ni módulos, y el almacenamiento está protegido. Sin red, las tipografías caen a las del sistema. Se entrega la carpeta comprimida junto al enlace.
 
 ## 2. Alcance mínimo (Cap. 25.2)
 
@@ -338,4 +338,4 @@ Las funciones de Prioridad 3 tienen pruebas reproducibles en `verify.cjs`; alcan
 | RT-25.03 | `/flujo`, pasos | ✓ Corregido: botones del paso a paso a 44 px | |
 | RNF-05.02 | `/flujo?paso=4` | ✓ Corregido: «Cerrar misión» a 60 px (≈ 15,9 mm) | |
 | RT-13.01 | Documento aparte | Informe de conformidad WCAG con pruebas automáticas y manuales | |
-| RT-25.10 (deseable) | Documento aparte | Exportar el prototipo para revisión sin conexión | |
+| RT-25.10 (deseable) | Todo el sitio | ✓ La carpeta abre con `index.html` sin servidor; entregar comprimida junto al enlace | |

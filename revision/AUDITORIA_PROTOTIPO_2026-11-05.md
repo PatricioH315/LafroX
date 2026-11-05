@@ -199,3 +199,60 @@ Solo se listan los parciales y los incumplimientos. El resto de los RF del check
 5. **Bloqueos de M5**: secuencia térmica, ingreso manual auditado y SSCC fuera de secuencia (RF-05.02, 05.04, 05.07).
 6. **Coherencia de datos**: umbral del 40 % en `/flujo`, clientes afectados en el retiro sanitario, rango 2–8 °C, regla térmica y RF-12.21.
 7. **El resto de los parciales** de la sección 5, según el tiempo disponible.
+
+
+## 9. Cierre de la auditoría (05-11-2026)
+
+Se corrigió todo lo que el prototipo puede mostrar. Commits en `LafroX-Prototipo-HTML`, de `22428d50` en adelante.
+
+### Requerimientos parciales de la sección 5, corregidos
+
+| Módulo | Requerimientos | Qué se agregó |
+|---|---|---|
+| M1 | RF-01.04, 01.05, 01.06, 01.10 | Foto obligatoria en la no conformidad. La cuarentena es inmediata y avisa a Calidad. «Producto no encontrado» con ingreso manual. Ficha con clasificación sanitaria, RUT del proveedor, alta nueva e historial de GTIN |
+| M2 | RF-02.01, 02.02, 02.03, 02.04, 02.06, 02.07 | Topología de posiciones con zona obligatoria. Desglose por sitio y zona. Slotting decidido por movimiento, con instrucciones. Conteo ciego con umbral valorizado. Tránsito con hora de llegada y recepción. Ocupación con 12 meses y exportación |
+| M3 | RF-03.03, 03.14, 03.16 | Quiebre parcial por orden de llegada. Sugerencias con criterios de Comercial. Reenvío duplicado descartado y auditado |
+| M4 | RF-04.03, 04.05 | Agregar un pedido valida peso, volumen y equipo de frío |
+| M5 | RF-05.02, 05.04, 05.05, 05.07 | Secuencia térmica. Ingreso manual auditado. Excepción FEFO con motivo. Carga por SSCC en secuencia inversa |
+| M6 | RF-06.01, 06.06, 06.07, 06.09 | Marcado masivo por guía. Horas de llegada y término. Reporte de cierre al sincronizar. Pallets con estado |
+| M9 | RF-09.03, 09.05, 09.06, 09.09, 09.12, 09.13, 09.14, 02.10 | Ver el estado de corrección de M9, más arriba |
+| M10 | RF-11.03, 11.05 | OTIF por zona y bitácora de viajes subutilizados en la ventana 05:30–07:00. El rango de fechas de Analítica ahora filtra |
+| M11 | RF-12.08, 12.09, 12.15, 12.21 | Historial del pedido EDI, ASN con su contenido y XML, stock validado en el portal y asignación «sin verificar» |
+| M12 | RF-14.01 | Vista de los 42 camiones propios |
+| Transversales | RF-15.03, 15.05, 16.01, 16.04, 17.01, 17.04, 17.06, 17.11, 18.02, 12.25 | Llave FIDO2. Baja automática por RR. HH. Consola de integraciones con trazas e informes de causa raíz. Unidades organizacionales. Auditoría con antes y después, zona horaria y encadenamiento. Delegación por ausencia. Búsqueda con permisos. Frecuencia de notificaciones con canales obligatorios. RUT habilitado en el registro del canal moderno |
+
+### Funciones sin conexión del Anexo 4-J, ahora simuladas
+
+Todas las filas del Anexo 4-J se pueden ver en pantalla. La pestaña «Contingencia» de `/admin/integraciones` las resume. Las que se agregaron:
+- pedido de autoatención en cola con UUID;
+- guía electrónica por erp-sync local;
+- caída del canal EDI;
+- caída del tablero central;
+- curva de frío por Iridium sin red móvil;
+- liberación sanitaria en la puerta local.
+
+### Actores y reglas
+
+- El peoneta tiene su propia sesión.
+- El Jefe de TI tiene la consola de interfaces y observabilidad.
+- RNG-04: se suspenden solo las advertencias con la puerta abierta, y el producto vuelve al CD si nadie decide.
+- RNG-10: a igual vencimiento, sale la recepción más antigua.
+- RNG-13: secuencia térmica.
+
+### Defectos encontrados y corregidos durante la auditoría
+
+- Las tablas cuyas filas no tenían `id` (stock, maestro de productos, cross-docking, vouchers, equivalencias EDI) no abrían su menú de acciones.
+- Las rutas salían entre 07:00 y 07:45, fuera de la ventana de despacho 05:30–07:00 del caso. Ahora salen entre 05:30 y 07:00.
+- El aviso de guía emitida desaparecía al redibujar la pantalla.
+
+### Lo que queda fuera del prototipo
+
+No son defectos. Se acreditan en otros entregables o requieren condiciones reales.
+
+| Punto | Cómo se acredita |
+|---|---|
+| Navegadores Firefox y Safari (RT-25.06, RT-13.10) | Probar el enlace en ambos antes del 13-11-2026 y registrar el resultado en la matriz de navegadores |
+| Informe de conformidad WCAG con lector de pantalla (RT-13.01) | Entregable 17 |
+| Seis meses de acceso (RT-25.07) | Publicación estable |
+| Uso con guantes, intemperie, aprendizaje en 2 h y desempeño en peak | Pruebas en terreno y de aceptación |
+| Integraciones reales (ERP, EDI, Transbank, telemetría, mensajería) | Tabla «Constancia» de `checklist_sd3_sd4.md` |
