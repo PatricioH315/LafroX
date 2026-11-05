@@ -20,6 +20,12 @@ Fecha: 05-11-2026. Rama `LafroX-Prototipo-HTML`, commit local `5b727c25`.
 | C5 | **Faltan funciones del portal de clientes que exige el caso.** No hay descarga de la cartola PDF/Excel con detalle de facturas (RF-07.07). No hay listado ni descarga de factura, guía y nota de crédito (RF-12.17). No hay consulta de la historia de temperatura del envío (RF-09.04; Caso, criterio 3: «disponible para el cliente»). | `/portal/cuenta` solo muestra 3 indicadores y un gráfico. Los documentos están en `/clientes/:id`, que el cliente no puede abrir. | Tres RF de etapa 2 y un criterio de aceptación del caso: **No cumple**. |
 | C6 | **Criterio 16 del caso (jubilación de Don Hugo) sin pantalla.** El Planificador «registra restricciones» (SD3, actores), pero no existe dónde registrar restricciones o conocimiento de ruta por cliente o zona. | No hay coincidencias de «restricción», «conocimiento» ni «jubil» en `js/`. | El caso dice que el criterio 16 «no es una nota de color». Es el punto más visible frente a la comisión. |
 
+### Estado de las correcciones (05-11-2026)
+
+- **C1 y C2 corregidos**: se publicó el commit `5b727c25` y los scripts y estilos llevan versión (`?v=`).
+- **C3 corregido**: `L.can(acción)` en `js/app.js` define, con la matriz `PERM`, quién ejecuta cada acción. Se aplica en clientes, pedidos, rutas, preparación, rendición, recepción, inventario, devoluciones, calidad, telemetría, canal moderno y acciones rápidas. Los perfiles sin la acción ven solo consulta. La Preventista y el Preparador ahora tienen `/flujo`, porque sus pantallas enlazan a él. Se verificaron 154 pantallas en los 16 perfiles, sin errores.
+- Pendientes: C4, C5 y C6.
+
 ## 2. Bases Técnicas y Administrativas (Cap. 25, Cap. 13, Art. 26°)
 
 Lo marcado como cumplido en `checklist_bases.md` se confirma, con estas salvedades:
