@@ -74,7 +74,7 @@
   /* ---------- Rutas (M4) ---------- */
   L.route('/rutas', {
     title: 'Rutas', parent: '/inicio', block: 'Proceso operacional principal', module: 'M4 Rutas', rf: ['RF-04.01', 'RF-04.03', 'RF-04.05', 'RF-11.05', 'RNG-14'], actors: ['Planificador de Rutas', 'Gerente de Operaciones'],
-    render: () => `<div class="page-head"><div class="titles"><h1>Rutas</h1><p class="muted" style="margin:0">Hoy en ejecución y plan de mañana propuesto por el motor de ruteo.</p></div><div class="actions">${L.can('ruta.planificar') ? `<button type="button" class="btn btn-primary" id="rt-gen">${icon('zap')}Generar plan de mañana</button>` : ''}</div></div>
+    render: () => `<div class="page-head"><div class="titles"><h1>Rutas</h1><p class="muted" style="margin:0">Hoy en ejecución y plan de mañana propuesto por el motor de ruteo.</p></div><div class="actions"><a class="btn btn-secondary" href="#/rutas/restricciones">${icon('sliders')}Restricciones de ruta</a>${L.can('ruta.planificar') ? `<button type="button" class="btn btn-primary" id="rt-gen">${icon('zap')}Generar plan de mañana</button>` : ''}</div></div>
       ${L.tabsHtml('rt', [{ id: 'hoy', label: 'En ejecución hoy', count: D.rutas.length }, { id: 'manana', label: 'Plan de mañana' }], 'hoy')}
       <div ${L.panelAttrs('rt', 'hoy', 'hoy')}><div class="grid grid-auto">${D.rutas.map((r) => `<a class="card card-link" href="#/rutas/${r.id}"><div class="row-between"><strong>${r.id} · ${esc(r.zona)}</strong>${L.badge(r.estado, r.estado === 'Completada' ? 'success' : r.estado === 'En ruta' ? 'accent' : '')}</div><p class="small muted" style="margin:4px 0 12px">${esc(r.conductor)} · ${esc(r.camion)} ${r.frio ? '· frío' : ''}${r.externo ? ' · ' + esc(r.transportista) : ''}</p><div class="row-between small"><span>Entregas</span><span class="num">${r.hechas}/${r.paradas}</span></div><div class="progress"><span style="width:${(r.hechas / r.paradas) * 100}%"></span></div><div class="row-between small" style="margin-top:8px"><span>Ocupación</span><span class="num">${r.ocupacion} %</span></div><div class="progress dark"><span style="width:${r.ocupacion}%"></span></div>${r.desvio ? `<p class="small" style="color:var(--c-danger);margin:8px 0 0">${icon('alert', 'icon-sm')} Desvío de 3,4 km</p>` : ''}</a>`).join('')}</div></div>
       <div ${L.panelAttrs('rt', 'manana', 'hoy')}><div class="card" id="rt-plan">${L.empty('truck', 'El plan de mañana aún no se genera', L.can('ruta.planificar') ? 'Genere la propuesta: el motor asigna los pedidos confirmados respetando capacidad, frío y ventanas, y usted la corrige antes de aprobar.' : 'Lo genera y aprueba el Planificador de Rutas (RF-15.04).', L.can('ruta.planificar') ? `<button type="button" class="btn btn-primary" data-gen>${icon('zap')}Generar plan</button>` : '')}</div></div>`,
@@ -86,10 +86,10 @@
       const gen = async (btn) => {
         tabs.select('manana');
         const host = $('#rt-plan', root);
-        host.innerHTML = `<div class="stack"><div class="row"><span class="spinner"></span><strong id="gp-t">Asignando ${fmt.n(D.plan.entregas)} entregas a ${D.plan.rutas} camiones…</strong></div><div class="progress"><span id="gp-b" style="width:5%"></span></div><p class="small muted" id="gp-s">Restricciones: capacidad, frío, ventanas horarias, ocupación mínima 70 %.</p></div>`;
+        host.innerHTML = `<div class="stack"><div class="row"><span class="spinner"></span><strong id="gp-t">Asignando ${fmt.n(D.plan.entregas)} entregas a ${D.plan.rutas} camiones…</strong></div><div class="progress"><span id="gp-b" style="width:5%"></span></div><p class="small muted" id="gp-s">Restricciones: capacidad, frío, ventanas horarias, ocupación mínima 70 % y ${L.restricciones().filter((x) => x.estado === 'Vigente').length} restricciones de ruta registradas.</p></div>`;
         const msgs = ['Agrupando por zona logística…', 'Respetando ventanas de recepción…', 'Asignando carga refrigerada solo a camiones con frío…', 'Secuenciando y calculando ETA…'];
         for (let i = 0; i < 4; i++) { await L.sleep(600); $('#gp-b', root).style.width = 25 * (i + 1) + '%'; $('#gp-t', root).textContent = msgs[i]; }
-        host.innerHTML = `${L.alert('success', 'Plan generado en 11 minutos (simulado)', `${D.plan.rutas} rutas, ${fmt.n(D.plan.entregas)} entregas, ocupación promedio ${Math.round(D.rutas.reduce((a, r, i) => a + planOcc(r, i), 0) / D.rutas.length)} %. Revise y corrija antes de aprobar; cada corrección queda registrada.`)}
+        host.innerHTML = `${L.alert('success', 'Plan generado en 11 minutos (simulado)', `${D.plan.rutas} rutas, ${fmt.n(D.plan.entregas)} entregas, ocupación promedio ${Math.round(D.rutas.reduce((a, r, i) => a + planOcc(r, i), 0) / D.rutas.length)} %. Se aplicaron ${L.restricciones().filter((x) => x.estado === 'Vigente').length} restricciones de ruta registradas (criterio 16). Revise y corrija antes de aprobar; cada corrección queda registrada.`)}
           <div class="table-wrap" style="margin-top:var(--sp-4)"><table class="table"><thead><tr><th>Ruta</th><th>Zona</th><th>Camión</th><th class="right">Entregas</th><th class="right">Peso</th><th class="right">Ocupación</th><th>Observación</th></tr></thead><tbody>${D.rutas.map((r, i) => `<tr><td class="mono">${r.id}</td><td>${esc(r.zona)}</td><td>${esc(r.camion)}${r.frio ? ' ' + L.badge('Frío', 'info') : ''}</td><td class="num right" data-ent="${i}">${r.paradas + 2}</td><td class="num right" data-peso="${i}">${fmt.n(2800 + i * 97)} kg</td><td class="num right" data-occ="${i}">${planOcc(r, i)} %</td><td data-obs="${i}">${i === 4 ? L.badge('2 entregas fuera de ventana', 'warning') : i === 9 ? L.badge('Bajo 70 %: consolidar', 'danger') : L.badge('Lista', 'success')}</td></tr>`).join('')}</tbody></table></div>
           <div id="gp-cap" style="margin-top:var(--sp-4)">${L.alert('danger', 'Una ruta no puede salir', `${D.rutas[9] ? D.rutas[9].id : 'R-10'} queda bajo la ocupación mínima de 70 %. Ningún camión sale bajo ese umbral ni sobre su peso, volumen o condición térmica (RNG-14).`, '<button type="button" class="btn btn-secondary btn-sm" id="gp-cons">Consolidar con la ruta vecina</button>')}</div>
           <div class="row" style="justify-content:flex-end;margin-top:var(--sp-4)"><button type="button" class="btn btn-secondary" id="gp-sms">${icon('send')}Vista previa de avisos</button>${L.can('ruta.aprobar') ? `<button type="button" class="btn btn-primary" id="gp-ok">${icon('check')}Aprobar plan</button>` : '<span class="small muted">La aprobación es del Planificador de Rutas.</span>'}</div>`;
@@ -107,6 +107,61 @@
       };
       if ($('#rt-gen', root)) $('#rt-gen', root).onclick = (e) => gen(e.currentTarget);
       root.addEventListener('click', (e) => { if (e.target.closest('[data-gen]')) gen(); });
+    }
+  });
+
+  /* ---------- Route restrictions and planner knowledge (Case 02, acceptance criterion 16; RF-04.04, RF-04.07) ---------- */
+  // What today lives only in Don Hugo's head becomes parameters that the routing engine applies to every plan
+  const RESTR_BASE = [
+    { id: 'RR-001', tipo: 'Acceso vehicular', ambito: 'Calle Prat, Cauquenes (centro)', regla: 'Sin camiones sobre 8 t de 08:00 a 10:00', motivo: 'Restricción municipal en horario escolar', fuente: 'Entrevista a Hugo Maldonado', estado: 'Vigente', usos: 41 },
+    { id: 'RR-002', tipo: 'Cliente', ambito: 'Almacén Doña Rosa', regla: 'Descargar por el pasaje lateral; la entrada principal no tiene estacionamiento', motivo: 'Evita multas y 10 min de descarga extra', fuente: 'Entrevista a Hugo Maldonado', estado: 'Vigente', usos: 18 },
+    { id: 'RR-003', tipo: 'Horario', ambito: 'Panadería La Espiga', regla: 'Entregar antes de las 07:30', motivo: 'Después enciende los hornos y no recibe', fuente: 'Conductor Jonathan Curihual', estado: 'Vigente', usos: 22 },
+    { id: 'RR-004', tipo: 'Zona', ambito: 'Feria libre de Linares (martes)', regla: 'Calle Independencia cerrada de 06:00 a 15:00; entrar por Av. León Bustos', motivo: 'Feria semanal', fuente: 'Entrevista a Hugo Maldonado', estado: 'Vigente', usos: 9 },
+    { id: 'RR-005', tipo: 'Secuencia', ambito: 'Costa de Constitución y Empedrado', regla: 'En invierno, ir por la ruta del valle y no por la cuesta costera', motivo: 'Neblina y barro; ya hubo dos camiones atascados', fuente: 'Entrevista a Hugo Maldonado', estado: 'Vigente', usos: 6 },
+    { id: 'RR-006', tipo: 'Vehículo', ambito: 'Casino Agroindustrial Maule', regla: 'Solo camiones de hasta 6 m: el portón no permite girar', motivo: 'Acceso estrecho', fuente: 'Conductor Óscar Vidal', estado: 'Por validar', usos: 0 },
+    { id: 'RR-007', tipo: 'Cliente', ambito: 'Supermercado Regional Maule · Local 12', regla: 'Andén 2 reservado para Puelche de 07:00 a 07:30', motivo: 'Acuerdo con la cadena', fuente: 'Gerencia Comercial', estado: 'Vigente', usos: 30 },
+    { id: 'RR-008', tipo: 'Zona', ambito: 'Curicó, sector Aguas Negras', regla: 'No programar después de las 17:00', motivo: 'Seguridad del conductor y de la carga', fuente: 'Entrevista a Hugo Maldonado', estado: 'Vigente', usos: 12 }
+  ];
+  L.restricciones = () => [...L.store.get('rutas.restr', []), ...RESTR_BASE].map((r) => ({ ...r, ...(L.store.get('rutas.restr.mod', {})[r.id] || {}) }));
+  const TIPOS_R = ['Acceso vehicular', 'Horario', 'Cliente', 'Zona', 'Secuencia', 'Vehículo'];
+
+  L.route('/rutas/restricciones', {
+    title: 'Restricciones de ruta', parent: '/rutas', block: 'Proceso operacional principal', module: 'M4 Rutas', rf: ['RF-04.04', 'RF-04.07', 'RF-04.02'], actors: ['Planificador de Rutas', 'Gerente de Operaciones'],
+    render: () => {
+      const rs = L.restricciones();
+      const vig = rs.filter((r) => r.estado === 'Vigente').length;
+      return `<div class="page-head"><div class="titles"><span class="page-kicker">${icon('route', 'icon-sm')}M4 · criterio 16 del caso</span><h1>Restricciones y conocimiento de ruta</h1><p class="muted" style="margin:0">Lo que hoy sabe solo el planificador queda registrado como reglas que el motor de ruteo aplica en cada plan. Así la operación no depende de una persona.</p></div><div class="actions">${L.can('ruta.restricciones') ? `<button type="button" class="btn btn-primary" id="rr-new">${icon('plus')}Nueva restricción</button>` : ''}</div></div>
+        <div class="grid grid-4" style="margin-bottom:var(--sp-5)">${[['Restricciones documentadas', rs.length, 'Meta: 100 % antes de la jubilación'], ['Vigentes en el motor', vig, `${rs.length - vig} por validar en terreno`], ['Aplicadas en el último mes', rs.reduce((a, r) => a + (r.usos || 0), 0), 'Veces que cambiaron una ruta'], ['Plan sin corrección manual', '91 %', 'Antes: 3,5 h de una persona']].map(([a, b, c]) => `<div class="card kpi"><span class="label">${a}</span><span class="value" style="font-size:var(--fs-2xl)">${b}</span><span class="meta">${c}</span></div>`).join('')}</div>
+        ${L.alert('info', 'Captura del conocimiento antes de la jubilación', 'Registre aquí cada regla que hoy se aplica de memoria: accesos, horarios, clientes y zonas. Las nuevas quedan «Por validar» hasta que un segundo perfil las confirma en terreno; desde ahí el motor las aplica en cada plan.')}
+        <div class="card card-flush" style="margin-top:var(--sp-5)" id="rr-t"></div>`;
+    },
+    mount: (root) => {
+      const tbl = L.dataTable($('#rr-t', root), {
+        id: 'rr', caption: 'Restricciones de ruta registradas', rows: () => L.restricciones(), searchKeys: ['ambito', 'regla', 'motivo', 'fuente'], searchPlaceholder: 'Buscar por cliente, calle, zona o regla',
+        filters: [{ key: 'tipo', label: 'Tipo', options: TIPOS_R }, { key: 'estado', label: 'Estado', options: ['Vigente', 'Por validar', 'Inactiva'] }],
+        columns: [{ key: 'id', label: 'Folio', render: (r) => `<span class="mono">${r.id}</span>` }, { key: 'tipo', label: 'Tipo' }, { key: 'ambito', label: 'Ámbito', wrap: true }, { key: 'regla', label: 'Regla', wrap: true, render: (r) => `${esc(r.regla)}<div class="small muted">${esc(r.motivo)}</div>` }, { key: 'fuente', label: 'Fuente', wrap: true }, { key: 'usos', label: 'Aplicada', right: true, render: (r) => `${r.usos || 0} veces` }, { key: 'estado', label: 'Estado', render: (r) => L.badge(r.estado, r.estado === 'Vigente' ? 'success' : r.estado === 'Por validar' ? 'warning' : '') }],
+        rowActions: (r, redraw) => (!L.can('ruta.restricciones') ? [] : [
+          ...(r.estado === 'Por validar' ? [{ label: 'Validar en terreno', icon: 'check', onClick: () => { if (r.autor && r.autor === L.me().name) { L.toast('Necesita un segundo perfil', 'Quien registró la restricción no puede validarla.', 'warning'); return; } mod(r.id, { estado: 'Vigente' }); redraw(); L.toast('Restricción vigente', `${r.id}: el motor la aplica desde el próximo plan.`, 'success'); } }] : []),
+          r.estado === 'Inactiva' ? { label: 'Reactivar', icon: 'sync', onClick: () => { mod(r.id, { estado: 'Vigente' }); redraw(); } } : { label: 'Desactivar', icon: 'ban', onClick: () => { mod(r.id, { estado: 'Inactiva' }); redraw(); L.toast('Restricción desactivada', 'Se conserva en el historial.', 'info'); } }
+        ])
+      });
+      const mod = (id, patch) => L.store.set('rutas.restr.mod', { ...L.store.get('rutas.restr.mod', {}), [id]: { ...(L.store.get('rutas.restr.mod', {})[id] || {}), ...patch } });
+      if ($('#rr-new', root)) $('#rr-new', root).onclick = () => L.modal({
+        title: 'Nueva restricción de ruta', size: 'lg',
+        body: `<div class="form-grid"><div class="field"><label for="nr-t">Tipo <span class="req" aria-hidden="true">*</span></label><select id="nr-t" class="select"><option value="">Seleccione…</option>${TIPOS_R.map((t) => `<option>${t}</option>`).join('')}</select></div>
+          <div class="field combo"><label for="nr-a">Ámbito: cliente, calle o zona <span class="req" aria-hidden="true">*</span></label><input id="nr-a" class="input" placeholder="Ej.: Minimarket Lircay o Av. San Miguel, Talca"></div>
+          <div class="field full"><label for="nr-r">Regla que debe aplicar el motor <span class="req" aria-hidden="true">*</span></label><input id="nr-r" class="input" placeholder="Ej.: No entregar los viernes después de las 12:00"></div>
+          <div class="field full"><label for="nr-m">Motivo <span class="req" aria-hidden="true">*</span></label><input id="nr-m" class="input" placeholder="Por qué existe la regla"></div>
+          <div class="field"><label for="nr-f">Fuente</label><select id="nr-f" class="select"><option>Entrevista a Hugo Maldonado</option><option>Conductor</option><option>Cliente</option><option>Corrección manual del plan</option></select></div></div>
+          <p class="hint">Queda «Por validar» hasta que otro perfil la confirme en terreno; luego el motor la aplica en cada plan.</p>`,
+        onOpen: (d) => { ['#nr-t', '#nr-a', '#nr-r', '#nr-m'].forEach((s) => L.bindField($(s, d), ['required'])); L.combobox($('#nr-a', d), () => D.clientes.map((c) => ({ label: c.nombre, meta: c.comuna }))); },
+        actions: [{ label: 'Cancelar' }, { label: 'Registrar restricción', cls: 'btn-primary', onClick: (api) => {
+          if (!L.validateAll(api.el)) return false;
+          const e = api.el, id = 'RR-' + String(9 + L.store.get('rutas.restr', []).length).padStart(3, '0');
+          L.store.set('rutas.restr', [{ id, tipo: $('#nr-t', e).value, ambito: $('#nr-a', e).value.trim(), regla: $('#nr-r', e).value.trim(), motivo: $('#nr-m', e).value.trim(), fuente: $('#nr-f', e).value, estado: 'Por validar', usos: 0, autor: L.me().name }, ...L.store.get('rutas.restr', [])]);
+          tbl.draw(); L.toast('Restricción registrada', `${id} queda por validar en terreno.`, 'success');
+        } }]
+      });
     }
   });
 

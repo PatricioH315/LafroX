@@ -50,6 +50,7 @@ Operación
 │   ├── Detalle de pedido ................. /pedidos/:id
 │   └── Flujo de pedido (M3–M7) ........... /flujo
 ├── Rutas (M4) ............................ /rutas
+│   ├── Restricciones de ruta ............. /rutas/restricciones
 │   └── Detalle de ruta ................... /rutas/:id
 ├── Preparación (M5) ...................... /preparacion
 ├── Reparto en terreno (M6) ............... /terreno
@@ -198,7 +199,7 @@ Cada estado usa siempre el mismo color: éxito en verde, advertencia en ámbar, 
 | Grupo | Entradas |
 |---|---|
 | Inicio | Inicio · Guía de mi perfil · Tablero · Bandeja de tareas |
-| Operación | Pedidos · Flujo de pedido · Rutas · Preparación · Reparto en terreno · Preventa en terreno · Cobranza y rendición |
+| Operación | Pedidos · Flujo de pedido · Rutas · Restricciones de ruta · Preparación · Reparto en terreno · Preventa en terreno · Cobranza y rendición |
 | Bodega | Recepción · Inventario · Devoluciones y envases |
 | Calidad y flota | Calidad y trazabilidad · Telemetría y frío |
 | Clientes y canales | Clientes · Canal moderno EDI · Hacer un pedido · Mis entregas · Estado de cuenta · Portal de transportistas · Portal de proveedores |
