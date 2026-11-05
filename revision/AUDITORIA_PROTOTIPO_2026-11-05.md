@@ -30,7 +30,12 @@ Fecha: 05-11-2026. Rama `LafroX-Prototipo-HTML`, commit local `5b727c25`.
   - «Mis entregas» muestra los pedidos reales del cliente, con POD y la temperatura del envío refrigerado, descargable (RF-09.04).
   - Al pedir en el portal se valida el stock disponible (RF-12.15).
   - Para que el cliente tradicional tenga algo que mostrar, se agregaron 3 entregas pasadas de Almacén Doña Rosa, marcadas `hist`, que no aparecen en la ruta de hoy.
-- Pendiente: C6.
+- **C6 corregido**: nueva pantalla `/rutas/restricciones`, «Restricciones de ruta» en el menú de Operación, para el Planificador y el Gerente de Operaciones.
+  - Registra las reglas que hoy se aplican de memoria (accesos, horarios, clientes, zonas, secuencias y vehículos), con su motivo, su fuente (por ejemplo, «Entrevista a Hugo Maldonado») y cuántas veces se aplicaron.
+  - Las nuevas quedan «Por validar» hasta que las confirme un segundo perfil, distinto de quien las registró.
+  - El plan de rutas declara cuántas restricciones vigentes aplicó.
+  - Responde al criterio 16 del caso.
+- **Los seis hallazgos críticos están corregidos.** Siguen pendientes los parciales de las secciones 4 a 6.
 
 ## 2. Bases Técnicas y Administrativas (Cap. 25, Cap. 13, Art. 26°)
 
