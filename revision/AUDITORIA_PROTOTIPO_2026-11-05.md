@@ -41,6 +41,13 @@ Fecha: 05-11-2026. Rama `LafroX-Prototipo-HTML`, commit local `5b727c25`.
   - **RF-05.05:** una lectura de un lote más nuevo muestra «Lote X con vencimiento anterior disponible en [ubicación]». La excepción FEFO exige motivo (no encontrado, dañado o cantidad insuficiente) y queda auditada.
   - **RF-05.07:** cada bulto se carga escaneando su SSCC, en secuencia inversa a la ruta. Un bulto fuera de secuencia pide motivo, y cerrar con bultos sin escanear se bloquea y avisa a la Jefa de Bodega.
   - Nuevo `L.logAudit()`: los eventos operacionales aparecen en `/admin/auditoria`.
+- **Coherencia de datos corregida:**
+  - **RF-03.08:** en `/flujo`, la alerta de crédito se dispara al superar el 100 % del límite, no el 40 %.
+  - **RF-09.01:** el retiro sanitario traza los pedidos reales que llevaron el lote, con guía, unidades, fecha y situación («Entregado» o «En camión: retenido»). Declara que trabaja sobre la muestra de 48 clientes.
+  - **Lote del queso:** L2611-21 decía 0 clientes y ya tenía entregas; ahora dice 156.
+  - **Rango refrigerado:** es 2–8 °C en todas las pantallas (SD3, RF-02.01).
+  - **Regla térmica única (RF-09.05):** consigna más 2 °C sostenido 15 minutos, definida en el parámetro `frio-ref`. La usan la alerta de telemetría, los gráficos y la tabla de lácteos.
+  - **RF-12.21:** una ruta sin confirmar muestra la asignación planificada como «Supuesto no verificado», tal como dice SD3.
 - **Los seis hallazgos críticos están corregidos.** Siguen pendientes los parciales de las secciones 4 a 6.
 
 ## 2. Bases Técnicas y Administrativas (Cap. 25, Cap. 13, Art. 26°)
