@@ -115,7 +115,7 @@
     render: ({ id }) => {
       const r = D.rutas.find((x) => x.id === id);
       if (!r) return L.empty('search', 'Ruta no encontrada', `No existe la ruta ${id}.`, '<a class="btn btn-primary" href="#/rutas">Volver a rutas</a>');
-      const peds = D.pedidos.filter((p) => p.ruta === id);
+      const peds = D.pedidos.filter((p) => p.ruta === id && !p.hist);
       return `<div class="page-head"><div class="titles"><span class="page-kicker">${esc(r.transportista)}</span><h1>${r.id} · ${esc(r.zona)}</h1><p class="muted" style="margin:0">${esc(r.conductor)} · ${esc(r.camion)} · salida ${r.salida} · término estimado ${r.eta}</p></div></div>
         <div class="grid grid-4" style="margin-bottom:var(--sp-5)">${[['Entregas', `${r.hechas}/${r.paradas}`], ['Ocupación', r.ocupacion + ' %'], ['Kilómetros', r.km + ' km'], ['OTIF de la ruta', fmt.pct(r.otif)]].map(([a, b]) => `<div class="card kpi" style="padding:var(--sp-4)"><span class="label">${a}</span><span class="value" style="font-size:var(--fs-2xl)">${b}</span></div>`).join('')}</div>
         ${r.desvio ? L.alert('warning', 'Desvío de 3,4 km sobre la ruta planificada', 'Alerta generada por telemetría (RF-14.03). Contacte al conductor o registre la causa.', '<a class="btn btn-secondary btn-sm" href="#/telemetria">Ver en el mapa</a>') + '<div style="height:16px"></div>' : ''}

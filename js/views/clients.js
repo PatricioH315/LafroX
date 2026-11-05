@@ -126,11 +126,12 @@
   /* ---------- Portal de clientes ---------- */
   L.route('/portal/pedido', {
     title: 'Hacer un pedido', parent: '/inicio', block: 'Gestión de terceros', module: 'Portal de clientes · M3', rf: ['RF-12.15', 'RF-12.30', 'RF-12.29'], actors: ['Cliente del canal tradicional', 'Cliente del canal moderno'],
-    render: () => `<div class="page-head"><div class="titles"><h1>Hacer un pedido</h1><p class="muted" style="margin:0">Mismo control de crédito y stock que la preventa. Crédito disponible: <strong>${fmt.clp(612000)}</strong></p></div></div>
+    render: () => `<div class="page-head"><div class="titles"><h1>Hacer un pedido</h1><p class="muted" style="margin:0">${esc(L.portalCliente().nombre)} · mismo control de crédito y stock que la preventa. Crédito disponible: <strong>${fmt.clp(L.portalCuenta().disponible)}</strong></p></div></div>
       <div class="split"><div class="card"><div class="row" style="margin-bottom:var(--sp-4)"><div class="input-wrap" style="flex:1 1 260px">${icon('search')}<label class="sr-only" for="pp-q">Buscar producto</label><input id="pp-q" class="input" type="search" placeholder="Buscar producto"></div><label class="sr-only" for="pp-cat">Categoría</label><select id="pp-cat" class="select" style="width:auto"><option value="">Todas las categorías</option>${[...new Set(D.productos.map((p) => p.categoria))].map((c) => `<option>${c}</option>`).join('')}</select></div><div class="grid grid-auto" id="pp-grid"></div></div>
       <aside class="card stack" style="position:sticky;top:calc(var(--topbar-h) + 16px)"><h2>Su pedido</h2><div id="pp-cart"></div></aside></div>`,
     mount: (root) => {
       const draftKey = L.draftKey('portal');
+      const credito = L.portalCuenta().disponible;
       const cart = L.store.get(draftKey, {});
       let page = 1;
       const light = L.store.pref('portalLight', 'off') === 'on';
@@ -152,7 +153,8 @@
         $('#pp-next', root).onclick = () => { page++; draw(); $('#pp-next', root).focus(); };
         const items = Object.entries(cart).map(([s, n]) => ({ p: D.productos.find((x) => x.sku === s), n }));
         const tot = items.reduce((a, i) => a + i.p.precio * i.n, 0);
-        $('#pp-cart', root).innerHTML = items.length ? `<ul class="list">${items.map((i) => `<li><span class="grow small">${esc(i.p.nombre)}</span><span class="num small">${i.n} × ${fmt.clp(i.p.precio)}</span><button type="button" class="btn btn-tertiary btn-icon btn-sm" data-rm="${i.p.sku}" aria-label="Quitar ${esc(i.p.nombre)}">${icon('x', 'icon-sm')}</button></li>`).join('')}</ul><div class="row-between"><strong>Total</strong><strong class="num">${fmt.clp(tot)}</strong></div>${tot > 612000 ? L.alert('danger', 'Supera su crédito disponible', 'Reduzca el pedido o pague el saldo pendiente.') : ''}<div class="field"><label for="pp-pay">Forma de pago</label><select id="pp-pay" class="select"><option>Crédito 30 días</option><option>Pago en línea (Transbank)</option><option>Contado contra entrega</option></select></div><p class="small muted" style="margin:0">Entrega comprometida: sáb 14-11 · 09:00–09:30</p><button type="button" class="btn btn-primary big-btn" id="pp-send" ${tot > 612000 ? 'disabled' : ''}>${icon('send')}Enviar pedido</button>` : L.empty('box', 'Pedido vacío', 'Agregue productos del catálogo.');
+        const sinStock = items.filter((i) => i.n > i.p.stock - i.p.reservado);
+        $('#pp-cart', root).innerHTML = items.length ? `<ul class="list">${items.map((i) => `<li><span class="grow small">${esc(i.p.nombre)}</span><span class="num small">${i.n} × ${fmt.clp(i.p.precio)}</span><button type="button" class="btn btn-tertiary btn-icon btn-sm" data-rm="${i.p.sku}" aria-label="Quitar ${esc(i.p.nombre)}">${icon('x', 'icon-sm')}</button></li>`).join('')}</ul><div class="row-between"><strong>Total</strong><strong class="num">${fmt.clp(tot)}</strong></div>${sinStock.length ? L.alert('warning', 'Stock insuficiente', `${sinStock.map((i) => `${esc(i.p.nombre)}: disponibles ${fmt.n(i.p.stock - i.p.reservado)} u`).join(' · ')}. Ajuste la cantidad (RF-12.15).`) : ''}${tot > credito ? L.alert('danger', 'Supera su crédito disponible', `Disponible ${fmt.clp(credito)}. Reduzca el pedido o pague el saldo pendiente.`) : ''}<div class="field"><label for="pp-pay">Forma de pago</label><select id="pp-pay" class="select"><option>Crédito 30 días</option><option>Pago en línea (Transbank)</option><option>Contado contra entrega</option></select></div><p class="small muted" style="margin:0">Entrega comprometida: sáb 14-11 · 09:00–09:30</p><button type="button" class="btn btn-primary big-btn" id="pp-send" ${tot > credito || sinStock.length ? 'disabled' : ''}>${icon('send')}Enviar pedido</button>` : L.empty('box', 'Pedido vacío', 'Agregue productos del catálogo.');
         $$('[data-add]', root).forEach((b) => (b.onclick = () => { cart[b.dataset.add] = (cart[b.dataset.add] || 0) + 6; draw(); $(`[data-add="${b.dataset.add}"]`, root)?.focus(); }));
         $$('[data-rm]', root).forEach((b) => (b.onclick = () => { delete cart[b.dataset.rm]; draw(); }));
         $('#pp-send', root) && ($('#pp-send', root).onclick = (e) => L.busy(e.currentTarget, () => { Object.keys(cart).forEach((k) => delete cart[k]); L.store.set(draftKey, {}); draw(); L.modal({ title: 'Pedido recibido', icon: 'success:check-circle', body: '<p>Pedido <strong class="mono">PV-264840</strong> enviado. Le confirmaremos stock y crédito en minutos y le avisaremos por SMS la ventana de entrega.</p>', actions: [{ label: 'Seguir comprando' }, { label: 'Ver mis entregas', cls: 'btn-primary', onClick: () => L.go('/portal/entregas') }] }); }, 1200));
@@ -163,26 +165,103 @@
     }
   });
 
+  /* ---------- Client portal model: everything comes from the signed-in client (RF-12.16 to RF-12.18) ---------- */
+  const DAY = 864e5;
+  // Each client profile is bound to its own customer record; the evaluation profile sees the traditional client
+  L.portalCliente = () => {
+    const pid = L.session()?.profile;
+    if (pid === 'cliente-moderno') return D.clientes.find((c) => c.nombre.startsWith('Supermercado Regional Maule · Local 12')) || D.clientes[0];
+    return D.clientes.find((c) => c.id === 'CL-10021') || D.clientes[0];
+  };
+  const tramoDe = (vence) => { const d = Math.floor((D.today - vence) / DAY); return d <= 0 ? 'Por vencer' : d <= 30 ? '1–30 días' : d <= 60 ? '31–60 días' : '+60 días'; };
+  // Pending invoices built from the client's debt; payments are applied to the oldest invoice first
+  L.portalCuenta = (c = L.portalCliente()) => {
+    const saldo = L.store.get('cuenta.saldo.' + c.id, c.deuda);
+    const vig = c.deuda - c.vencida;
+    const base = [
+      ...(c.vencida ? [{ dias: 75, monto: Math.round(c.vencida * 0.3) }, { dias: 40, monto: c.vencida - Math.round(c.vencida * 0.3) }] : []),
+      { dias: 12, monto: Math.round(vig * 0.55) }, { dias: 5, monto: vig - Math.round(vig * 0.55) }
+    ].filter((f) => f.monto > 0);
+    let pagado = c.deuda - saldo;
+    const facturas = base.map((f, i) => {
+      const emision = new Date(D.today.getTime() - f.dias * DAY), vence = new Date(emision.getTime() + 30 * DAY);
+      const abono = Math.min(f.monto, Math.max(0, pagado)); pagado -= abono;
+      return { folio: `FE-${71180 + i * 23 + (parseInt(c.id.slice(3), 10) % 97)}`, emision, vence, monto: f.monto, pendiente: f.monto - abono, tramo: tramoDe(vence) };
+    }).filter((f) => f.pendiente > 0);
+    const tramos = ['Por vencer', '1–30 días', '31–60 días', '+60 días'].map((t) => ({ label: t, value: facturas.filter((f) => f.tramo === t).reduce((a, f) => a + f.pendiente, 0) }));
+    return { c, saldo, vencido: tramos.slice(1).reduce((a, t) => a + t.value, 0), disponible: Math.max(0, c.credito - saldo), facturas, tramos };
+  };
+  const ENTREGADO = ['Entregado', 'Parcial', 'Rendido'];
+  const portalPedidos = (c) => D.pedidos.filter((p) => p.cliente === c.id);
+  // Tax documents of the client's delivered orders and returns (RF-12.17)
+  const portalDocs = (c) => {
+    const docs = [];
+    portalPedidos(c).filter((p) => ENTREGADO.includes(p.estado)).forEach((p, i) => {
+      docs.push({ tipo: 'Factura electrónica', folio: `FE-${70800 + parseInt(p.id.slice(3), 10) % 900}`, fecha: p.entrega, monto: p.total, pedido: p.id });
+      docs.push({ tipo: 'Guía de despacho electrónica', folio: `GDE-884${p.id.slice(-3)}`, fecha: p.entrega, monto: p.total, pedido: p.id });
+    });
+    D.devoluciones.filter((d) => d.cliente === c.id).forEach((d) => docs.push({ tipo: 'Nota de crédito', folio: `NC-${d.id.slice(3)}`, fecha: d.fecha, monto: -d.monto, pedido: d.pedido, pendiente: d.estado !== 'Nota de crédito emitida' }));
+    return docs.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+  };
+  const dteXml = (d, c) => `<?xml version="1.0" encoding="UTF-8"?>\n<!-- Prototipo LafroX: documento simulado, sin validez tributaria -->\n<DTE>\n  <Tipo>${d.tipo}</Tipo>\n  <Folio>${d.folio}</Folio>\n  <Emisor>Distribuidora Puelche S.A.</Emisor>\n  <Receptor rut="${c.rut}">${c.nombre}</Receptor>\n  <Fecha>${new Date(d.fecha).toISOString().slice(0, 10)}</Fecha>\n  <Pedido>${d.pedido}</Pedido>\n  <MontoTotal>${d.monto}</MontoTotal>\n</DTE>\n`;
+  // Temperature record of a refrigerated shipment, from loading to delivery (RF-09.04)
+  const curvaEnvio = (p) => { const k = parseInt(p.id.slice(3), 10); const horas = ['06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30']; return { horas, valores: horas.map((_, i) => +(3.4 + Math.sin((k % 7) + i) * 0.7 + (i === 5 ? 0.6 : 0)).toFixed(1)) }; };
+  const temperaturaModal = (p) => {
+    const { horas, valores } = curvaEnvio(p);
+    L.modal({ title: `Temperatura del envío · ${p.id}`, size: 'lg', body: `<p class="muted" style="margin-top:0">Registro automático del sensor del camión desde la carga hasta la entrega en su local (RF-09.04, RF-09.09).</p>${L.charts.line(horas, [{ name: 'Compartimento refrigerado', values: valores }], { label: `Temperatura del envío ${p.id}`, unit: '°C', min: 0, target: 8, targetLabel: 'Límite', w: 640, h: 220 })}<p class="small">Máxima ${fmt.n(Math.max(...valores), 1)} °C · mínima ${fmt.n(Math.min(...valores), 1)} °C · ${L.badge('Sin excursiones', 'success')}</p>`,
+      actions: [{ label: 'Descargar registro (CSV)', cls: 'btn-secondary', onClick: () => { L.download(`temperatura_${p.id}.csv`, L.toCSV(horas.map((h, i) => ({ h, t: valores[i] })), [{ label: 'Hora', key: 'h' }, { label: 'Temperatura (°C)', key: 't' }])); L.toast('Registro descargado', p.id, 'success'); return false; } }, { label: 'Cerrar', cls: 'btn-primary' }] });
+  };
+
   L.route('/portal/entregas', {
-    title: 'Mis entregas', parent: '/inicio', block: 'Gestión de terceros', module: 'Portal de clientes · M6', rf: ['RF-12.16', 'RF-06.11'], actors: ['Clientes'],
-    render: () => `<div class="page-head"><div class="titles"><h1>Mis entregas</h1></div></div>
-      <div class="split"><section class="card"><div class="card-head"><h2>PV-264821 · mañana</h2>${L.badge('Reprogramada', 'warning')}</div><ol class="timeline"><li class="done"><span class="dot"></span><div class="t-title">Pedido confirmado</div><div class="t-meta">Mié 11-11 15:20</div></li><li class="error"><span class="dot"></span><div class="t-title">Intento fallido: local cerrado</div><div class="t-meta">Vie 13-11 09:12 · con foto de evidencia</div></li><li class="current"><span class="dot"></span><div class="t-title">Nueva ventana: lun 16-11, 09:00–09:30</div><div class="t-meta">Puede cambiarla hasta el domingo 18:00</div></li><li><span class="dot"></span><div class="t-title pending">Entregado</div></li></ol>
+    title: 'Mis entregas', parent: '/inicio', block: 'Gestión de terceros', module: 'Portal de clientes · M6 · M9', rf: ['RF-12.16', 'RF-06.11', 'RF-09.04'], actors: ['Clientes'],
+    render: () => {
+      const c = L.portalCliente();
+      const peds = portalPedidos(c);
+      const prox = peds.filter((p) => !ENTREGADO.includes(p.estado) && p.estado !== 'Fallido');
+      const prev = peds.filter((p) => ENTREGADO.includes(p.estado));
+      const pasos = ['Pedido confirmado', 'Preparado', 'En ruta', 'Entregado'];
+      const paso = (p) => (['En ruta', 'Reprogramado'].includes(p.estado) ? 2 : ['En picking', 'Cargado'].includes(p.estado) ? 1 : 0);
+      const frio = (p) => p.lineas.some((l) => l.temp !== 'Seco');
+      return `<div class="page-head"><div class="titles"><span class="page-kicker">${esc(c.nombre)}</span><h1>Mis entregas</h1><p class="muted" style="margin:0">Estado de cada pedido, ventana comprometida, prueba de entrega y temperatura de los productos refrigerados.</p></div></div>
+      <div class="split"><section class="card"><div class="card-head"><h2>Próximas entregas</h2></div>${prox.length ? prox.slice(0, 3).map((p) => `<div style="border-bottom:1px solid var(--c-line-soft);padding-bottom:var(--sp-3);margin-bottom:var(--sp-3)"><div class="row-between"><strong class="mono">${p.id}</strong>${L.estadoBadge(p.estado)}</div><p class="small muted" style="margin:4px 0 8px">Entrega ${fmt.date(p.entrega)} · ventana ${esc(p.ventana)} · ${fmt.clp(p.total)}</p><ol class="timeline">${pasos.map((t, i) => `<li class="${i < paso(p) ? 'done' : i === paso(p) ? 'current' : ''}"><span class="dot"></span><div class="t-title ${i > paso(p) ? 'pending' : ''}">${t}</div></li>`).join('')}</ol></div>`).join('') : L.empty('done', 'Sin entregas pendientes', 'Sus pedidos ya fueron entregados.')}
         <div class="btn-group"><button type="button" class="btn btn-primary" id="pe-ch">${icon('calendar')}Cambiar ventana</button><button type="button" class="btn btn-secondary" id="pe-qr">${icon('qr')}Mi código de recepción</button></div></section>
-        <section class="card"><div class="card-head"><h2>Entregas anteriores</h2></div><ul class="list">${['PV-264790 · 12-11 · completo', 'PV-264733 · 09-11 · completo', 'PV-264688 · 05-11 · parcial (1 línea dañada)'].map((t) => `<li>${icon('check-circle')}<span class="grow small">${t}</span><button type="button" class="btn btn-tertiary btn-sm" data-pod>Ver POD</button></li>`).join('')}</ul></section></div>`,
+        <section class="card"><div class="card-head"><h2>Entregas anteriores</h2></div>${prev.length ? `<ul class="list">${prev.slice(0, 6).map((p) => `<li>${icon('check-circle')}<span class="grow small"><strong class="mono">${p.id}</strong> · ${fmt.dateShort(p.entrega)} · ${p.estado === 'Parcial' ? 'parcial' : 'completo'}${frio(p) ? ' · con refrigerados' : ''}</span><button type="button" class="btn btn-tertiary btn-sm" data-pod="${p.id}">Ver POD</button>${frio(p) ? `<button type="button" class="btn btn-tertiary btn-sm" data-temp="${p.id}">${icon('thermo', 'icon-sm')}Temperatura</button>` : ''}</li>`).join('')}</ul>` : L.empty('box', 'Sin entregas anteriores', 'Aquí verá la prueba de entrega y la temperatura de cada envío.')}</section></div>`;
+    },
     mount: (root) => {
+      const c = L.portalCliente();
       $('#pe-ch', root).onclick = () => L.modal({ title: 'Cambiar ventana de entrega', body: `<div class="form-grid"><div class="field"><label for="ch-d">Fecha</label><input id="ch-d" type="date" class="input" value="2026-11-16" min="2026-11-14" max="2026-11-20"></div><div class="field"><label for="ch-w">Ventana</label><select id="ch-w" class="select"><option>09:00–09:30</option><option>10:30–11:00</option><option>15:00–15:30</option></select></div></div><p class="hint">Solo se muestran ventanas compatibles con la ruta de su zona.</p>`, onOpen: (d) => L.bindField($('#ch-d', d), [(v) => (new Date(v).getDay() === 6 ? 'No hay reparto en su zona los domingos.' : '')]), actions: [{ label: 'Cancelar' }, { label: 'Confirmar cambio', cls: 'btn-primary', onClick: (api) => { if (!L.validateAll(api.el)) return false; L.toast('Ventana actualizada', 'Le enviaremos el aviso por SMS.', 'success'); } }] });
       $('#pe-qr', root).onclick = () => L.modal({ title: 'Código de recepción', body: '<p class="muted">Muestre este código al conductor para confirmar la recepción sin firmar en su equipo (RF-06.11).</p><div style="display:grid;place-items:center;padding:16px"><svg viewBox="0 0 21 21" width="180" height="180" role="img" aria-label="Código QR">' + Array.from({ length: 441 }, (_, k) => ((k * 7919) % 13 < 6 ? `<rect x="${k % 21}" y="${Math.floor(k / 21)}" width="1" height="1" fill="currentColor"/>` : '')).join('') + '</svg></div>', actions: [{ label: 'Cerrar', cls: 'btn-primary' }] });
-      $$('[data-pod]', root).forEach((b) => (b.onclick = () => L.modal({ title: 'Prueba de entrega', body: '<dl class="desc-list"><dt>Recibido por</dt><dd>Rosa Fuentes</dd><dt>Hora</dt><dd>09:14</dd><dt>Guía</dt><dd class="mono">884120</dd><dt>Evidencia</dt><dd>Firma digital y foto</dd></dl>', actions: [{ label: 'Descargar PDF', cls: 'btn-secondary', onClick: () => L.toast('POD descargada', '', 'success') }, { label: 'Cerrar', cls: 'btn-primary' }] })));
+      $$('[data-pod]', root).forEach((b) => (b.onclick = () => { const p = L.findOrder(b.dataset.pod); L.modal({ title: `Prueba de entrega · ${p.id}`, body: `<dl class="desc-list"><dt>Recibido por</dt><dd>${esc(c.contacto)}</dd><dt>Fecha</dt><dd>${fmt.date(p.entrega)}</dd><dt>Guía</dt><dd class="mono">GDE-884${p.id.slice(-3)}</dd><dt>Evidencia</dt><dd>${c.canal === 'Moderno' ? 'Foto de la mercadería y nombre de quien recibe' : 'Firma digital y foto'}</dd></dl>`, actions: [{ label: 'Descargar PDF', cls: 'btn-secondary', onClick: () => L.toast('POD descargada', p.id, 'success') }, { label: 'Cerrar', cls: 'btn-primary' }] }); }));
+      $$('[data-temp]', root).forEach((b) => (b.onclick = () => temperaturaModal(L.findOrder(b.dataset.temp))));
     }
   });
 
   L.route('/portal/cuenta', {
-    title: 'Estado de cuenta', parent: '/inicio', block: 'Gestión de terceros', module: 'Portal de clientes · M7', rf: ['RF-07.07', 'RF-12.17', 'RF-12.18', 'RF-18.01'], actors: ['Clientes'],
-    render: () => `<div class="page-head"><div class="titles"><h1>Estado de cuenta</h1></div><div class="actions"><button type="button" class="btn btn-secondary" id="pc-sign">Firmar acuerdo</button><button type="button" class="btn btn-secondary" id="pc-evidence">Mis firmas</button><button type="button" class="btn btn-primary" id="pc-pay">${icon('cash')}Pagar saldo</button></div></div>
-      <div class="grid grid-3" style="margin-bottom:var(--sp-5)"><div class="card kpi"><span class="label">Saldo por pagar</span><span class="value">${fmt.clp(L.store.get('cuenta.saldo', 188000))}</span></div><div class="card kpi"><span class="label">Vencido</span><span class="value">${fmt.clp(0)}</span></div><div class="card kpi"><span class="label">Crédito disponible</span><span class="value">${fmt.clp(612000 + 188000 - L.store.get('cuenta.saldo', 188000))}</span></div></div>
-      <section class="card"><div class="card-head"><h2>Antigüedad de la deuda</h2></div>${L.charts.bar([{ label: 'Por vencer', value: 142000 }, { label: '1–30 días', value: 46000 }, { label: '31–60 días', value: 0 }, { label: '+60 días', value: 0 }], { unit: '$', label: 'Deuda por tramo', h: 220 })}</section>`,
+    title: 'Estado de cuenta', parent: '/inicio', block: 'Gestión de terceros', module: 'Portal de clientes · M7', rf: ['RF-07.07', 'RF-12.17', 'RF-12.18', 'RF-18.01', 'RF-12.30'], actors: ['Clientes'],
+    render: () => {
+      const k = L.portalCuenta();
+      const c = k.c;
+      return `<div class="page-head"><div class="titles"><span class="page-kicker">${esc(c.nombre)} · <span class="mono">${c.rut}</span></span><h1>Estado de cuenta</h1><p class="muted" style="margin:0">Saldo según el sistema de gestión, al ${fmt.date(D.today)} (RF-12.18).</p></div><div class="actions"><button type="button" class="btn btn-secondary" id="pc-sign">Firmar acuerdo</button><button type="button" class="btn btn-secondary" id="pc-evidence">Mis firmas</button><button type="button" class="btn btn-primary" id="pc-pay">${icon('cash')}Pagar saldo</button></div></div>
+      <div class="grid grid-3" style="margin-bottom:var(--sp-5)"><div class="card kpi"><span class="label">Saldo por pagar</span><span class="value">${fmt.clp(k.saldo)}</span></div><div class="card kpi"><span class="label">Vencido</span><span class="value" style="${k.vencido ? 'color:var(--c-danger)' : ''}">${fmt.clp(k.vencido)}</span></div><div class="card kpi"><span class="label">Crédito disponible</span><span class="value">${fmt.clp(k.disponible)}</span><span class="meta">Límite ${fmt.clp(c.credito)}</span></div></div>
+      ${L.tabsHtml('pcu', [{ id: 'car', label: 'Cartola' }, { id: 'doc', label: 'Documentos tributarios' }], 'car')}
+      <div ${L.panelAttrs('pcu', 'car', 'car')}><div class="grid grid-2">
+        <section class="card"><div class="card-head"><h2>Antigüedad de la deuda</h2></div>${L.charts.bar(k.tramos, { unit: '$', label: 'Deuda por tramo', h: 220 })}</section>
+        <section class="card card-flush"><div class="card-head" style="padding:var(--sp-4) var(--sp-5) 0"><h2>Facturas pendientes</h2><div class="btn-group"><button type="button" class="btn btn-secondary btn-sm" id="pc-pdf">${icon('download', 'icon-sm')}PDF</button><button type="button" class="btn btn-secondary btn-sm" id="pc-xls">${icon('download', 'icon-sm')}Excel</button></div></div>${k.facturas.length ? `<div class="table-wrap"><table class="table"><caption class="sr-only">Facturas pendientes de pago</caption><thead><tr><th>Factura</th><th>Emisión</th><th>Vence</th><th>Tramo</th><th class="right">Pendiente</th></tr></thead><tbody>${k.facturas.map((f) => `<tr><td class="mono">${f.folio}</td><td>${fmt.dateShort(f.emision)}</td><td>${fmt.dateShort(f.vence)}</td><td>${L.badge(f.tramo, f.tramo === 'Por vencer' ? 'success' : f.tramo === '1–30 días' ? 'warning' : 'danger')}</td><td class="num right">${fmt.clp(f.pendiente)}</td></tr>`).join('')}</tbody></table></div>` : `<div style="padding:var(--sp-4)">${L.empty('done', 'Cuenta al día', 'No tiene facturas pendientes.')}</div>`}<p class="small muted" style="padding:0 var(--sp-5) var(--sp-4)">Cartola descargable en PDF y Excel con tramos corriente, 30, 60 y 90+ días (RF-07.07).</p></section></div></div>
+      <div ${L.panelAttrs('pcu', 'doc', 'car')}><section class="card card-flush"><div class="table-wrap"><table class="table"><caption class="sr-only">Facturas, guías y notas de crédito</caption><thead><tr><th>Documento</th><th>Folio</th><th>Fecha</th><th>Pedido</th><th class="right">Monto</th><th><span class="sr-only">Descargas</span></th></tr></thead><tbody id="pc-docs"></tbody></table></div><p class="small muted" style="padding:var(--sp-3) var(--sp-5) var(--sp-4)">Facturas, guías de despacho electrónicas y notas de crédito de sus operaciones (RF-12.17). Puelche no emite los documentos desde esta plataforma: los emite el sistema de gestión.</p></section></div>`;
+    },
     mount: (root) => {
-      $('#pc-sign', root).onclick = () => L.signDocument('Acuerdo de cuenta · Almacén Doña Rosa · versión 1');
+      const k = L.portalCuenta();
+      const c = k.c;
+      L.tabs($('.tabs', root));
+      const docs = portalDocs(c);
+      $('#pc-docs', root).innerHTML = docs.length ? docs.map((d, i) => `<tr><td>${esc(d.tipo)}${d.pendiente ? ` ${L.badge('En emisión', 'warning')}` : ''}</td><td class="mono">${d.folio}</td><td>${fmt.dateShort(d.fecha)}</td><td class="mono">${d.pedido}</td><td class="num right">${fmt.clp(d.monto)}</td><td class="right"><div class="btn-group"><button type="button" class="btn btn-tertiary btn-sm" data-dpdf="${i}" ${d.pendiente ? 'disabled' : ''} aria-label="Descargar PDF de ${esc(d.tipo)} ${d.folio}">PDF</button><button type="button" class="btn btn-tertiary btn-sm" data-dxml="${i}" ${d.pendiente ? 'disabled' : ''} aria-label="Descargar XML de ${esc(d.tipo)} ${d.folio}">XML</button></div></td></tr>`).join('') : `<tr><td colspan="6">${L.empty('file', 'Sin documentos', 'Aparecerán cuando reciba su primera entrega.')}</td></tr>`;
+      $$('[data-dxml]', root).forEach((b) => (b.onclick = () => { const d = docs[+b.dataset.dxml]; L.download(`${d.folio}.xml`, dteXml(d, c), 'application/xml'); L.toast('Documento descargado', `${d.tipo} ${d.folio} (XML)`, 'success'); }));
+      $$('[data-dpdf]', root).forEach((b) => (b.onclick = () => L.busy(b, () => L.toast('Documento descargado', `${docs[+b.dataset.dpdf].tipo} ${docs[+b.dataset.dpdf].folio} (PDF simulado)`, 'success'), 500)));
+      const cols = [{ label: 'Factura', key: 'folio' }, { label: 'Emisión', key: 'em' }, { label: 'Vencimiento', key: 've' }, { label: 'Tramo', key: 'tramo' }, { label: 'Pendiente', key: 'pendiente' }];
+      const rows = () => k.facturas.map((f) => ({ ...f, em: f.emision.toISOString().slice(0, 10), ve: f.vence.toISOString().slice(0, 10) }));
+      $('#pc-xls', root).onclick = (e) => L.busy(e.currentTarget, () => { L.download(`cartola_${c.id}.csv`, L.toCSV(rows(), cols)); L.toast('Cartola descargada', 'Archivo para Excel (CSV UTF-8) con sus facturas pendientes y tramos.', 'success'); }, 500);
+      $('#pc-pdf', root).onclick = (e) => L.busy(e.currentTarget, () => { const w = window.open('', '_blank'); if (!w) { L.toast('Permita las ventanas emergentes', 'La cartola PDF se abre en una pestaña para imprimir o guardar.', 'warning'); return; } w.document.write(`<!doctype html><html lang="es"><meta charset="utf-8"><title>Cartola ${esc(c.nombre)}</title><body style="font-family:system-ui,sans-serif;padding:24px"><h1 style="font-size:20px">Cartola de cuenta · ${esc(c.nombre)}</h1><p>RUT ${c.rut} · al ${fmt.date(D.today)} · Distribuidora Puelche S.A. (documento simulado)</p><table border="1" cellpadding="6" style="border-collapse:collapse"><tr><th>Factura</th><th>Emisión</th><th>Vence</th><th>Tramo</th><th>Pendiente</th></tr>${k.facturas.map((f) => `<tr><td>${f.folio}</td><td>${fmt.dateShort(f.emision)}</td><td>${fmt.dateShort(f.vence)}</td><td>${f.tramo}</td><td style="text-align:right">${fmt.clp(f.pendiente)}</td></tr>`).join('')}</table><p><strong>Saldo: ${fmt.clp(k.saldo)}</strong> · vencido ${fmt.clp(k.vencido)}</p><script>print()<\/script></body></html>`); w.document.close(); }, 500);
+      $('#pc-sign', root).onclick = () => L.signDocument(`Acuerdo de cuenta · ${c.nombre} · versión 1`);
       $('#pc-evidence', root).onclick = () => {
         const records = L.store.get('signatures.' + L.session().profile, []);
         if (records.length) L.showSignature(records[records.length - 1]);
@@ -190,14 +269,15 @@
       };
       // Webpay Plus (Transbank): approved and rejected outcomes (RF-12.30)
       $('#pc-pay', root).onclick = () => {
-        const saldo = L.store.get('cuenta.saldo', 188000);
+        const saldo = k.saldo;
         const pagados = L.store.get('cuenta.pedidosPagados', []);
-        const auto = D.pedidos.filter((p) => p.cliente === 'CL-10021' && !pagados.includes(p.id) && p.estado !== 'Rendido').slice(0, 2);
+        const auto = D.pedidos.filter((p) => p.cliente === c.id && p.origen === 'Portal' && !pagados.includes(p.id) && p.estado !== 'Rendido').slice(0, 2);
         const opts = [...auto.map((p) => ({ v: p.id, label: `Pedido de autoservicio ${p.id}`, monto: p.total })), ...(saldo > 0 ? [{ v: 'saldo', label: 'Saldo de la cuenta corriente', monto: saldo }] : [])];
         if (!opts.length) { L.toast('Sin montos por pagar', 'Su cuenta está al día.', 'info'); return; }
         L.modal({ title: 'Pagar con Transbank', body: `<p>Será redirigido a <strong>Webpay Plus de Transbank</strong> para pagar con tarjeta de débito o crédito (RF-12.30).</p><fieldset><legend>¿Qué desea pagar?</legend>${opts.map((o, i) => `<label class="radio"><input type="radio" name="tb" value="${o.v}" data-m="${o.monto}" ${i === 0 ? 'checked' : ''}> ${esc(o.label)} · <strong>${fmt.clp(o.monto)}</strong></label>`).join('')}</fieldset><div id="tb-res" style="margin-top:12px" aria-live="polite"></div><p class="small muted">Prototipo: ambiente de integración de Transbank; no se realiza ningún cargo. Use «Simular rechazo» para ver el caso de tarjeta rechazada.</p>`,
-          actions: [{ label: 'Cancelar' }, { label: 'Simular rechazo', onClick: (api) => { $('#tb-res', api.el).innerHTML = L.alert('danger', 'Transbank rechazó la transacción', 'Código -1: tarjeta rechazada por el emisor. No se hizo ningún cargo y su saldo no cambió. Pruebe con otra tarjeta.'); return false; } }, { label: 'Pagar con Webpay', cls: 'btn-primary', onClick: (api) => { const ch = $('[name=tb]:checked', api.el), m = +ch.dataset.m; if (ch.value === 'saldo') L.store.set('cuenta.saldo', Math.max(0, saldo - m)); else L.store.set('cuenta.pedidosPagados', [...pagados, ch.value]); L.toast('Pago aprobado por Transbank', `${fmt.clp(m)} · autorización ${String(Math.abs(m * 7) % 900000 + 100000)} · comprobante enviado a su correo.`, 'success'); L.router.resolve(); } }] });
-      }; }
+          actions: [{ label: 'Cancelar' }, { label: 'Simular rechazo', onClick: (api) => { $('#tb-res', api.el).innerHTML = L.alert('danger', 'Transbank rechazó la transacción', 'Código -1: tarjeta rechazada por el emisor. No se hizo ningún cargo y su saldo no cambió. Pruebe con otra tarjeta.'); return false; } }, { label: 'Pagar con Webpay', cls: 'btn-primary', onClick: (api) => { const ch = $('[name=tb]:checked', api.el), m = +ch.dataset.m; if (ch.value === 'saldo') L.store.set('cuenta.saldo.' + c.id, Math.max(0, saldo - m)); else L.store.set('cuenta.pedidosPagados', [...pagados, ch.value]); L.toast('Pago aprobado por Transbank', `${fmt.clp(m)} · autorización ${String(Math.abs(m * 7) % 900000 + 100000)} · comprobante enviado a su correo.`, 'success'); L.router.resolve(); } }] });
+      };
+    }
   });
 
   /* ---------- Canal moderno EDI (M11) ---------- */

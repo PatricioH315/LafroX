@@ -302,6 +302,13 @@
   D.edi = Array.from({ length: 12 }, (_, i) => ({ id: `EDI-${77120 + i}`, cadena: pick(['Supermercado Regional Maule', 'Cadena Sur Express', 'HiperCentro']), local: `Local ${int(1, 18)}`, lineas: int(12, 80), estado: i % 4 === 1 ? 'Excepción' : i % 4 === 3 ? 'Confirmado' : i % 4 === 2 ? 'Registrado' : 'Validado', causa: i % 4 === 1 ? pick(['Código GTIN no resuelto', 'Precio fuera de contrato', 'Local no registrado']) : '', recibido: day(0, 6 + (i % 6), (i * 11) % 60), ventana: pick(['07:00–07:30', '07:30–08:00', '08:00–08:30']) }));
   D.ocs = Array.from({ length: 8 }, (_, i) => ({ id: `OC-${88412 - i * 3}`, proveedor: pick(['Lácteos del Sur S.A.', 'Molinos del Maule', 'Bebidas Andinas', 'Cecinas Centinela', 'Frigorífico Ñuble', 'Limpieza Total Ltda.']), lineas: int(4, 22), estado: i === 0 ? 'En recepción' : i < 3 ? 'Programada' : 'Cerrada', anden: `Andén ${int(1, 8)}`, hora: `${String(6 + i).padStart(2, '0')}:00`, discrepancias: i === 4 ? 2 : 0 }));
 
+  // Past deliveries of Almacén Doña Rosa, so her portal shows POD, tax documents and shipment temperature (RF-12.16, RF-12.17, RF-09.04).
+  // Marked hist: they belong to earlier days and do not appear in today's route.
+  [['PV-264790', -1, 'Rendido', 'Preventa'], ['PV-264733', -4, 'Entregado', 'Portal'], ['PV-264690', -8, 'Parcial', 'Preventa']].forEach(([id, d, estado, origen], k) => {
+    const cli = D.clientes[0];
+    const lineas = [[9, 24], [0, 20], [10, 36 - k * 6], [15, 6]].map(([pi, cant]) => { const p = D.productos[pi]; return { sku: p.sku, nombre: p.nombre, temp: p.temp, cant, precio: p.precio, lote: p.lote, vence: day(p.loteVence) }; });
+    D.pedidos.push({ id, cliente: cli.id, clienteNombre: cli.nombre, canal: cli.canal, comuna: cli.comuna, preventista: cli.preventista, creado: day(d - 1, 11), entrega: day(d), ventana: cli.ventana, lineas, total: lineas.reduce((a, l) => a + l.cant * l.precio, 0), estado, ruta: 'R-01', origen, hist: true });
+  });
   L.data = D;
   L.findClient = (id) => D.clientes.find((c) => c.id === id);
   L.findOrder = (id) => D.pedidos.find((p) => p.id === id);
