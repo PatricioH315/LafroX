@@ -217,7 +217,7 @@
         rowActions: (r, redraw) => (r.rendido || !L.can('rend.gestionar') ? [] : [{ label: 'Recibir en caja', icon: 'cash', onClick: () => { L.store.set('preventa.recibos', L.preventaRecibos().map((x) => (x.id === r.id ? { ...x, rendido: true } : x))); redraw(); L.toast('Efectivo recibido', `${r.id}: ${fmt.clp(r.monto)} rendido en caja.`, 'success'); } }])
       });
       const vouchers = () => [...L.store.get('pos.vouchers', []), { code: '418832', card: '4417', monto: 126400, cliente: 'Minimarket El Roble' }, { code: '402215', card: '9081', monto: 74900, cliente: 'Botillería Los Aromos' }].map((v) => ({ ...v, conciliado: 'Conciliado' }));
-      L.dataTable($('#rd-pos', root), { id: 'rdv', caption: 'Vouchers POS de la ruta', rows: vouchers, searchKeys: ['code', 'cliente'],
+      L.dataTable($('#rd-pos', root), { id: 'rdv', key: 'code', caption: 'Vouchers POS de la ruta', rows: vouchers, searchKeys: ['code', 'cliente'],
         columns: [{ key: 'code', label: 'Autorización', render: (r) => `<span class="mono">${r.code}</span>` }, { key: 'cliente', label: 'Cliente' }, { key: 'card', label: 'Tarjeta', render: (r) => `•••• ${r.card}` }, { key: 'monto', label: 'Monto', right: true, render: (r) => fmt.clp(r.monto) }, { key: 'conciliado', label: 'Conciliación', render: () => L.badge('Conciliado con la entrega', 'success') }]
       });
       L.erpEnvios = L.erpEnvios || [{ id: 'MSG-77120', tipo: 'Cierre comercial R-01', estado: 'Confirmado por el ERP' }, { id: 'MSG-77121', tipo: 'Recaudación R-03', estado: 'Confirmado por el ERP' }, { id: 'MSG-77122', tipo: 'Recaudación R-07', estado: 'En cola' }];
