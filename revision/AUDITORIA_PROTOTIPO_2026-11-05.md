@@ -282,7 +282,7 @@ Se revisaron otra vez el cap. 13, el cap. 25 de las Bases Técnicas y el art. 26
 |---|---|
 | Objetivos táctiles de 44 × 44 px (RT-25.03, RT-13.07) | Cumplen en las 157 pantallas |
 | Nombre accesible de cada campo | Todos los campos lo tienen |
-| Contraste AA (RT-25.03) | Cumple en modo claro, oscuro y alto contraste, en los modos claro y oscuro |
+| Contraste AA (RT-25.03) | Cumple en modo claro y oscuro, con y sin alto contraste |
 | Tamaños exigidos (RT-25.04) | Sin desplazamiento horizontal en 375 × 812, 768 × 1024, 1024 × 768, 1366 × 768 y 1920 × 1080 |
 
 **Lo que se mejoró:**
