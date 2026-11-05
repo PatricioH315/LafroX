@@ -256,3 +256,18 @@ No son defectos. Se acreditan en otros entregables o requieren condiciones reale
 | Seis meses de acceso (RT-25.07) | Publicación estable |
 | Uso con guantes, intemperie, aprendizaje en 2 h y desempeño en peak | Pruebas en terreno y de aceptación |
 | Integraciones reales (ERP, EDI, Transbank, telemetría, mensajería) | Tabla «Constancia» de `checklist_sd3_sd4.md` |
+
+## 10. Interfaz sin códigos y opciones solo del perfil (05-11-2026)
+
+**Códigos fuera de la interfaz.** Se retiraron de todo texto visible los códigos de la propuesta: `RF-`, `RNF-`, `RNG-`, `RT-`, SD3, SD4, Anexo, módulos `M1`–`M12`, `INT-xx`, «Etapa 2», «criterio 16» y la referencia a las bases. Esto responde a RT-13.06: la persona usuaria final no debe ver mensajes técnicos.
+- La trazabilidad sigue intacta en los metadatos de cada ruta (`rf`, `module`, `block`), en los comentarios y en `docs/`.
+- Los roles muestran el nombre de cada módulo (Recepción, Inventario…) en vez de su código.
+
+**Cada perfil ve solo lo suyo.** Se cuidó la perspectiva de cada perfil (Bases Técnicas, 25.1) y se evitó la navegación confusa (25.6):
+- «Nuevo» ofrece acciones propias de cada perfil y se oculta si no hay ninguna.
+- Ya no existe el aviso «no está habilitada para su perfil»: una ruta ajena lleva en silencio al inicio.
+- «Tablero» queda solo para los perfiles internos que lo tienen.
+- Los componentes del inicio, las notificaciones y el rastro de navegación se filtran por perfil.
+- Una red de seguridad oculta cualquier enlace hacia una pantalla no permitida.
+
+**Verificación.** Se recorrieron 151 pantallas en los 16 perfiles, abriendo «Nuevo», los avisos y los menús de fila. Resultado: 0 códigos visibles, 0 enlaces u opciones hacia pantallas ajenas y 0 errores. Además, a 375 px no hay desplazamiento horizontal.

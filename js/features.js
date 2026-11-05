@@ -16,7 +16,7 @@
     document.body.style.overflow = '';
     L.setSession(null);
     L.go('/ingresar');
-    L.toast('Sesión cerrada por inactividad', 'Vuelva a ingresar para continuar. RF-12.29.', 'warning');
+    L.toast('Sesión cerrada por inactividad', 'Vuelva a ingresar para continuar.', 'warning');
     return true;
   };
   const activity = () => {

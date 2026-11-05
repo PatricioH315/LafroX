@@ -51,7 +51,7 @@
     title: 'Catálogo', layout: 'public', parent: '/', block: 'Portal principal', module: 'Portal público', rf: ['RF-12.14'], actors: ['Visitante'],
     render: () => {
       const cats = [...new Set(D.productos.map((p) => p.categoria))];
-      return `<div class="page-head"><div class="titles"><span class="page-kicker">Catálogo público</span><h1>Nuestros productos</h1><p class="muted" style="margin:0">Catálogo vigente sin precios ni stock (RF-12.14). Para comprar, ingrese como cliente.</p></div></div>
+      return `<div class="page-head"><div class="titles"><span class="page-kicker">Catálogo público</span><h1>Nuestros productos</h1><p class="muted" style="margin:0">Catálogo vigente sin precios ni stock. Para comprar, ingrese como cliente.</p></div></div>
         <div class="row" style="margin-bottom:var(--sp-4)" role="group" aria-label="Filtrar por categoría">${['Todas', ...cats].map((c, i) => `<button type="button" class="chip" aria-pressed="${i === 0}" data-cat="${esc(c)}">${esc(c)}</button>`).join('')}</div>
         <div class="grid grid-auto" id="cat-grid"></div>`;
     },

@@ -51,7 +51,7 @@
       { path: '/admin/auditoria', label: 'Auditoría', icon: 'history' }
     ] }
   ];
-  const ALWAYS = ['/inicio', '/guia', '/tablero', '/bandeja', '/perfil', '/notificaciones', '/bienvenida'];
+  const ALWAYS = ['/inicio', '/guia', '/bandeja', '/perfil', '/notificaciones', '/bienvenida'];
 
   /* ---------- Sesión simulada ---------- */
   L.session = () => L.store.get('session', null);
@@ -102,14 +102,33 @@
   L.perm = PERM;
   L.can = (act) => { const p = L.me(); return !!p && (p.all || (PERM[act] || []).includes(p.id)); };
   // Short notice for screens where the profile only consults
-  L.readOnly = (txt) => L.alert('info', 'Solo consulta para su perfil', txt || 'Las acciones de esta pantalla las ejecutan los perfiles responsables (RF-15.04).');
+  L.readOnly = (txt) => L.alert('info', 'Solo consulta para su perfil', txt || 'Las acciones de esta pantalla las ejecutan los perfiles responsables.');
   L.signIn = (profileId, { remember = true } = {}) => {
     const first = !L.store.get('seen.' + profileId, false);
     L.setSession({ profile: profileId, at: Date.now(), first });
   };
   L.signOut = () => { L.setSession(null); L.toast('Sesión cerrada', 'Su sesión se cerró en todos los módulos (SSO).', 'info'); L.go('/'); };
 
+  // Only the notifications that lead to a screen of the profile
+  L.myNotifs = () => L.data.notificaciones.filter((n) => L.allowed(String(n.ruta || '/inicio').split('?')[0]));
   L.myTasks = () => { const p = L.me(); return L.data.tareas.filter((t) => !p || t.perfiles.includes(p.id)); };
+
+  // Quick actions of the profile: only what it can open and execute
+  L.quickList = () => [
+    { label: 'Nuevo pedido de preventa', icon: 'cart', path: '/flujo' },
+    { label: 'Tomar un pedido en terreno', icon: 'cart', path: '/terreno/preventa', only: ['preventista'] },
+    { label: 'Abrir la app de reparto', icon: 'truck', path: '/terreno', only: ['conductor', 'conductor-ext'] },
+    { label: 'Registrar devolución', icon: 'undo', path: '/devoluciones/nueva', act: 'dev.registrar' },
+    { label: 'Simulacro de retiro sanitario', icon: 'shield', path: '/calidad/retiro', act: 'calidad.retiro' },
+    { label: 'Registrar recepción', icon: 'download', path: '/recepcion/nueva', act: 'recepcion.registrar' },
+    { label: 'Invitar persona usuaria', icon: 'users', path: '/admin/usuarios?nuevo=1' },
+    { label: 'Exportar informe del día', icon: 'download', path: '/analitica?exportar=1' },
+    { label: 'Hacer un pedido', icon: 'cart', path: '/portal/pedido' },
+    { label: 'Seguir mis entregas', icon: 'truck', path: '/portal/entregas' },
+    { label: 'Pagar o descargar documentos', icon: 'file', path: '/portal/cuenta' },
+    { label: 'Asignar conductor y vehículo', icon: 'truck', path: '/portal/transportista' },
+    { label: 'Ver órdenes y recepciones', icon: 'box', path: '/portal/proveedor' }
+  ].filter((i) => L.allowed(i.path.split('?')[0]) && (!i.act || L.can(i.act)) && (!i.only || L.me()?.all || i.only.includes(L.me()?.id))).map((i) => ({ label: i.label, icon: i.icon, onClick: () => L.go(i.path) }));
 
   /* ---------- Render principal ---------- */
   const app = () => $('#app');
@@ -119,17 +138,17 @@
     const layout = route.layout;
     document.title = `${L.titleOf(route, params)} · Puelche · LafroX`;
     if (layout === 'app') {
+      if (!L.allowed(path)) { L.go('/inicio'); return; }
       if (!$('.app .sidebar')) shell();
       updateShell(path);
       const main = $('#main');
-      const denied = !L.allowed(path);
-      const crumbs = L.crumbs(route, params, path);
+      const crumbs = L.crumbs(route, params, path).filter((c, i, a) => i === a.length - 1 || L.allowed(c.path.split('?')[0]));
       const bc = route.noCrumb ? '' : `<nav class="breadcrumb" aria-label="Rastro de navegación"><ol>${crumbs.map((c, i) => (i === crumbs.length - 1 ? `<li><span aria-current="page">${esc(c.label)}</span></li>` : `<li><a href="#${c.path}">${i === 0 && c.path === '/inicio' ? icon('home', 'icon-sm') + '<span class="sr-only">' : ''}${esc(c.label)}${i === 0 && c.path === '/inicio' ? '</span>' : ''}</a></li>`)).join('')}</ol></nav>`;
       let html;
-      try { html = denied ? deniedView(route) : route.render(params, query); }
+      try { html = route.render(params, query); }
       catch (e) { console.error(e); html = L.empty('box', 'No pudimos mostrar esta pantalla', 'Ocurrió un error inesperado al preparar la vista. Vuelva al inicio e intente de nuevo.', '<a class="btn btn-primary" href="#/inicio">Volver al inicio</a>'); }
       main.innerHTML = `<div class="view view-enter">${bc}${html}</div>`;
-      if (!denied) { try { route.mount?.(main.firstElementChild, params, query); } catch (e) { console.error(e); L.toast('Algo no funcionó en esta pantalla', 'Recargue la página o vuelva al inicio.', 'error'); } }
+      try { route.mount?.(main.firstElementChild, params, query); } catch (e) { console.error(e); L.toast('Algo no funcionó en esta pantalla', 'Recargue la página o vuelva al inicio.', 'error'); }
       L.accordions(main);
       main.focus({ preventScroll: true });
       window.scrollTo(0, 0);
@@ -145,10 +164,6 @@
     }
   };
 
-  function deniedView(route) {
-    const owners = L.data.profiles.filter((p) => !p.all && p.menu?.some((m) => route.path.startsWith(m))).map((p) => p.role.split(' ·')[0]);
-    return `${L.empty('box', 'Esta vista no está habilitada para su perfil', `El control de acceso basado en roles (RF-15.04) limita «${L.titleOf(route, {})}» a: ${owners.join(', ') || 'perfiles autorizados'}. Puede cambiar de perfil de demostración para revisarla.`, '<div class="btn-group"><a class="btn btn-secondary" href="#/inicio">Volver al inicio</a><button type="button" class="btn btn-primary" data-switch>Cambiar de perfil</button></div>')}`;
-  }
 
   function publicShell(inner, path) {
     const s = L.session();
@@ -163,7 +178,7 @@
       ${s ? '<a class="btn btn-primary" href="#/inicio">Ir a mi espacio</a>' : `<a class="btn btn-tertiary hide-sm" href="#/registro">Crear cuenta</a><a class="btn btn-primary" href="#/ingresar">${icon('user')}Ingresar</a>`}
     </header>
     <main id="main" class="public-main" tabindex="-1"><div class="view-enter">${inner}</div></main>
-    <footer class="public-foot">Distribuidora Puelche S.A. · Talca, Región del Maule · Prototipo de LafroX para la licitación (Bases, cap. 25). Datos simulados.</footer>`;
+    <footer class="public-foot">Distribuidora Puelche S.A. · Talca, Región del Maule · Prototipo de LafroX. Datos simulados.</footer>`;
   }
 
   const logo = (cls = 'brand-logo') => `<img class="${cls}" src="assets/logo.svg" alt="" width="32" height="34">`;
@@ -176,7 +191,7 @@
       <aside class="sidebar" id="sidebar" aria-label="Menú principal">
         <div class="sidebar-head"><a class="brand" href="#/inicio">${logo()}<span class="brand-name">Puelche<span class="brand-sub">Plataforma LafroX</span></span></a><button type="button" class="sidebar-fold" aria-controls="sidebar" aria-expanded="true" aria-label="Plegar menú" title="Plegar menú" data-fold>${icon('chev-left')}</button></div>
         <nav class="nav" id="nav" aria-label="Principal"></nav>
-        <div class="sidebar-foot">Prototipo navegable · datos simulados<br>Caso 02 Logística · Informe 3</div>
+        <div class="sidebar-foot">Prototipo navegable<br>Datos simulados</div>
       </aside>
       <div class="scrim" data-close-nav></div>
       <header class="topbar">
@@ -208,23 +223,12 @@
     $('[data-close-nav]').onclick = () => toggleNav(false);
     $('#nav').addEventListener('click', (e) => { if (e.target.closest('a') && !isDesktop()) toggleNav(false); });
 
-    // Only the quick actions the profile can open and execute (RF-15.04)
-    const quickItems = () => {
-      const items = [
-        { label: 'Nuevo pedido de preventa', icon: 'cart', kbd: 'P', path: '/flujo' },
-        { label: 'Registrar devolución', icon: 'undo', kbd: 'D', path: '/devoluciones/nueva', act: 'dev.registrar' },
-        { label: 'Simulacro de retiro sanitario', icon: 'shield', path: '/calidad/retiro', act: 'calidad.retiro' },
-        { label: 'Registrar recepción', icon: 'download', path: '/recepcion/nueva', act: 'recepcion.registrar' },
-        { label: 'Invitar persona usuaria', icon: 'users', path: '/admin/usuarios?nuevo=1' },
-        { label: 'Exportar informe del día', icon: 'download', path: '/analitica?exportar=1' }
-      ].filter((i) => L.allowed(i.path.split('?')[0]) && (!i.act || L.can(i.act))).map((i) => ({ label: i.label, icon: i.icon, kbd: i.kbd, onClick: () => L.go(i.path) }));
-      return [{ title: 'Acciones rápidas' }, ...(items.length ? items : [{ label: 'Sin acciones rápidas para su perfil', icon: 'info', onClick: () => {} }])];
-    };
+    const quickItems = () => [{ title: 'Acciones rápidas' }, ...L.quickList()];
     L.menu($('#quick'), quickItems);
     L.menu($('#quick-sm'), quickItems);
 
-    L.menu($('#bell'), () => [{ title: 'Notificaciones' }, ...L.data.notificaciones.map((n) => ({ label: n.t, icon: n.kind === 'danger' ? 'alert-circle' : n.kind === 'warning' ? 'alert' : n.kind === 'success' ? 'check-circle' : 'info', onClick: () => L.go(n.ruta) })), { sep: true }, { label: 'Ver todas las notificaciones', icon: 'bell', onClick: () => L.go('/notificaciones') }]);
-
+    L.menu($('#bell'), () => [{ title: 'Notificaciones' }, ...L.myNotifs().map((n) => ({ label: n.t, icon: n.kind === 'danger' ? 'alert-circle' : n.kind === 'warning' ? 'alert' : n.kind === 'success' ? 'check-circle' : 'info', onClick: () => L.go(n.ruta) })), ...(L.myNotifs().length ? [] : [{ label: 'Sin notificaciones nuevas', icon: 'check-circle', onClick: () => {} }]), { sep: true }, { label: 'Ver todas las notificaciones', icon: 'bell', onClick: () => L.go('/notificaciones') }]);
+    
     L.menu($('#usermenu'), () => [
       { title: L.me().name },
       { label: 'Mi perfil y preferencias', icon: 'user', onClick: () => L.go('/perfil') }, { label: 'Atajos de teclado', icon: 'info', kbd: '?', onClick: () => L.showShortcuts() },
@@ -283,10 +287,13 @@
       if (!items.length) return '';
       return `<div class="nav-group"><span class="nav-label" id="ng-${esc(g.group)}">${esc(g.group)}</span><ul role="list" style="list-style:none;margin:0;padding:0" aria-labelledby="ng-${esc(g.group)}">${items.map((i) => {
         const cur = path === i.path || (i.path !== '/inicio' && path.startsWith(i.path + '/') && !g.items.some((o) => o !== i && path.startsWith(o.path) && o.path.length > i.path.length));
-        return `<li><a href="#${i.path}" ${cur ? 'aria-current="page"' : ''}>${icon(i.icon)}<span class="nav-text">${esc(i.label)}</span>${i.badge && tasks ? `<span class="tag" aria-label="${tasks} pendientes">${tasks}</span>` : i.mod && p.all && /^M\d/.test(i.mod) ? `<span class="mod">${esc(i.mod)}</span>` : ''}</a></li>`;
+        return `<li><a href="#${i.path}" ${cur ? 'aria-current="page"' : ''}>${icon(i.icon)}<span class="nav-text">${esc(i.label)}</span>${i.badge && tasks ? `<span class="tag" aria-label="${tasks} pendientes">${tasks}</span>` : ''}</a></li>`;
       }).join('')}</ul></div>`;
     }).join('');
     railTitles();
+    const hasQuick = L.quickList().length > 0;
+    $('#quick').closest('.menu-wrap').hidden = !hasQuick;
+    $('.badge-dot', $('#bell')).hidden = !L.myNotifs().length;
     $('#me-av').textContent = L.initials(p.name);
     $('#me-name').innerHTML = `<strong style="display:block;font-size:var(--fs-sm)">${esc(p.name.split(' ').slice(0, 2).join(' '))}</strong><span class="small muted">${esc(p.role.split(' ·')[0])}</span>`;
     $$('[data-theme-toggle]').forEach((b) => (b.innerHTML = themeBtn()));
@@ -328,7 +335,7 @@
     const cur = L.session()?.profile || 'evaluador';
     return L.modal({
       title: 'Cambiar de perfil',
-      body: `<p class="muted">Un perfil predeterminado por cada actor del sistema (SD3, Anexo 3.A.12a). Cada uno ve su propio inicio y menú.</p>
+      body: `<p class="muted">Un perfil predeterminado por cada actor del sistema. Cada uno ve su propio inicio y menú.</p>
         <div class="field"><label for="sw-p">Actor</label>${L.profileSelectHtml('sw-p', cur)}</div>
         <div class="card" id="sw-card" style="box-shadow:none;margin-top:var(--sp-3)">${L.profileCard(cur)}</div>`,
       onOpen(dlg) { const sel = $('#sw-p', dlg); sel.onchange = () => ($('#sw-card', dlg).innerHTML = L.profileCard(sel.value)); },
@@ -414,6 +421,10 @@
       if (hit && L.allowed(hit[2])) { e.preventDefault(); L.go(hit[2]); }
     }
   });
+
+  const guardLinks = () => { if (!L.me() || !app()?.classList.contains('app')) return; document.querySelectorAll('a[href^="#/"]').forEach((a) => { const p = a.getAttribute('href').slice(1).split('?')[0]; const ok = L.allowed(p); if (a.hidden !== !ok) a.hidden = !ok; }); };
+  let guardRaf = 0;
+  new MutationObserver(() => { if (!guardRaf) guardRaf = setTimeout(() => { guardRaf = 0; guardLinks(); }, 0); }).observe(document.body, { childList: true, subtree: true });
 
   L.boot = () => {
     L.applyPrefs();

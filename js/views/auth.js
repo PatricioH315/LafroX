@@ -32,7 +32,7 @@
       <div class="row" style="margin-bottom:var(--sp-4)">${L.logo('brand-logo')}<div><h1 style="margin:0">Ingresar</h1><p class="muted small" style="margin:0">Un solo acceso para portal, consolas y aplicaciones</p></div></div>
       <section aria-labelledby="qa-h" class="stack">
         <h2 id="qa-h" style="font-size:var(--fs-lg);margin:0">Ingresar con un perfil predeterminado</h2>
-        <p class="small muted" style="margin:0">Sin contraseña. Hay un perfil por cada actor del sistema (SD3, Anexo 3.A.12a).</p>
+        <p class="small muted" style="margin:0">Sin contraseña. Hay un perfil por cada actor del sistema.</p>
         <div class="field"><label for="li-prof">Actor del sistema</label>${L.profileSelectHtml('li-prof', 'evaluador')}</div>
         <div class="card" id="li-card" style="box-shadow:none;padding:var(--sp-4)" aria-live="polite">${L.profileCard('evaluador')}</div>
         <button type="button" class="btn btn-primary btn-block big-btn" id="li-go">${icon('arrow-right')}Ingresar como este perfil</button>
@@ -52,7 +52,7 @@
           <p class="hint" style="margin:0">Simulación: cualquier contraseña de 4 o más caracteres funciona; «error» muestra el manejo de credenciales incorrectas. Los perfiles de consola piden segundo factor.</p>
         </form>
         <form id="f-otp" novalidate class="stack" hidden>
-          <p class="small muted" style="margin:0">Para conductores de empresas transportistas sin correo corporativo (RF-06.08). El jefe de flota entrega un código de un solo uso válido por el turno.</p>
+          <p class="small muted" style="margin:0">Para conductores de empresas transportistas sin correo corporativo. El jefe de flota entrega un código de un solo uso válido por el turno.</p>
           <div class="field"><label for="ot-r">RUT del conductor <span class="req" aria-hidden="true">*</span></label><input id="ot-r" class="input mono" inputmode="text" placeholder="12.345.678-5" required></div>
           <div class="field"><label for="ot-c">Código de turno <span class="req" aria-hidden="true">*</span></label><input id="ot-c" class="input mono" inputmode="numeric" maxlength="8" placeholder="8 dígitos" required></div>
           <button class="btn btn-secondary btn-block big-btn" type="submit">Iniciar turno</button>
@@ -124,7 +124,7 @@
       return `<div class="auth-wrap"><form class="card auth-card" id="f2" novalidate style="padding:var(--sp-6)">
         <span class="modal-icon info" style="margin-bottom:var(--sp-3)">${icon('fingerprint')}</span>
         <h1>Verificación en dos pasos</h1>
-        <p class="muted">Su perfil (${esc(p ? p.role : '')}) exige un segundo factor (RF-15.03). Ingrese el código de 6 dígitos de su aplicación autenticadora.</p>
+        <p class="muted">Su perfil (${esc(p ? p.role : '')}) exige un segundo factor. Ingrese el código de 6 dígitos de su aplicación autenticadora.</p>
         <div class="segmented" role="radiogroup" aria-label="Método" style="margin-bottom:var(--sp-4)"><button type="button" role="radio" aria-checked="true" aria-pressed="true" data-m="app">${icon('phone', 'icon-sm')} App autenticadora</button><button type="button" role="radio" aria-checked="false" aria-pressed="false" data-m="sms">${icon('mail', 'icon-sm')} SMS al +56 9 •••• 4821</button><button type="button" role="radio" aria-checked="false" aria-pressed="false" data-m="key">${icon('key', 'icon-sm')} Llave de seguridad o clave de acceso</button></div>
         <div id="fido" hidden class="card" style="box-shadow:none;margin-bottom:var(--sp-3)"><p class="small" style="margin-top:0">Factor resistente a suplantación (FIDO2 / WebAuthn): toque su llave de seguridad o confirme con la huella o el rostro en su equipo.</p><button type="button" class="btn btn-primary btn-block big-btn" id="fido-go">${icon('fingerprint')}Usar llave de seguridad</button></div>
         <fieldset><legend class="sr-only">Código de verificación</legend>
@@ -228,7 +228,7 @@
           <fieldset class="full"><legend>Días en que puede recibir <span class="req" aria-hidden="true">*</span></legend><div class="options-row" id="rg-dias">${['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'].map((d, i) => `<label class="check"><input type="checkbox" value="${d}" ${i < 5 ? 'checked' : ''}> ${d}</label>`).join('')}</div><div class="field-msg error" id="rg-dias-err" aria-live="polite"></div></fieldset>
           <div class="field"><label for="rg-desde">Recibe desde <span class="req" aria-hidden="true">*</span></label><input id="rg-desde" class="input" type="time" value="09:00" required></div>
           <div class="field"><label for="rg-hasta">Recibe hasta <span class="req" aria-hidden="true">*</span></label><input id="rg-hasta" class="input" type="time" value="13:00" required></div>
-          <div class="full">${L.alert('info', 'Ventana de recepción', 'Con esta ventana el planificador secuencia sus entregas (RF-04.07) y le avisamos por SMS una ventana de 30 minutos.')}</div>
+          <div class="full">${L.alert('info', 'Ventana de recepción', 'Con esta ventana el planificador secuencia sus entregas y le avisamos por SMS una ventana de 30 minutos.')}</div>
         </section>
         <section data-step="2" class="form-grid" hidden>
           <div class="field"><label for="rg-cn">Nombre de contacto <span class="req" aria-hidden="true">*</span></label><input id="rg-cn" class="input" required autocomplete="name"></div>
@@ -236,7 +236,7 @@
           <div class="field"><label for="rg-ce">Correo corporativo <span class="req" aria-hidden="true">*</span></label><input id="rg-ce" class="input" type="email" required autocomplete="email"></div>
           <div class="field"><label for="rg-tel">Teléfono móvil <span class="req" aria-hidden="true">*</span></label><div class="input-group"><span class="addon">+56</span><input id="rg-tel" class="input" inputmode="tel" required placeholder="9 1234 5678" autocomplete="tel-national"></div></div>
           <div class="full" data-trad>${L.alert('info', 'Activación asistida, opcional', 'Puede activar su cuenta con un código que le enviamos por SMS. Crear la cuenta es voluntario: si prefiere, siga comprando con su preventista como siempre, sin cuenta ni internet.')}<label class="check" style="margin-top:8px"><input type="checkbox" id="rg-sms"> Activar mi cuenta con un código por SMS</label></div>
-          <fieldset class="full"><legend>¿Cómo quiere recibir avisos de entrega? (RF-18.02)</legend><div class="options-row">${[['SMS', true], ['Correo electrónico', true], ['WhatsApp', false], ['Notificación en la app', false]].map(([c, on]) => `<label class="check"><input type="checkbox" ${on ? 'checked' : ''}> ${c}</label>`).join('')}</div></fieldset>
+          <fieldset class="full"><legend>¿Cómo quiere recibir avisos de entrega?</legend><div class="options-row">${[['SMS', true], ['Correo electrónico', true], ['WhatsApp', false], ['Notificación en la app', false]].map(([c, on]) => `<label class="check"><input type="checkbox" ${on ? 'checked' : ''}> ${c}</label>`).join('')}</div></fieldset>
         </section>
         <section data-step="3" hidden>
           <p class="muted">Adjunte la carpeta tributaria y la patente municipal. Formatos PDF, JPG o PNG, máximo 10 MB cada uno.</p>
@@ -293,7 +293,7 @@
       $('#rg-terms-open', root).onclick = (e) => { e.preventDefault(); L.modal({ title: 'Términos de uso', body: '<p>Prototipo: texto de referencia. Los datos se tratan conforme a la Ley N.º 19.628 y solo se usan para gestionar pedidos, entregas y cobranza.</p><p>Puede solicitar acceso, rectificación o eliminación escribiendo a privacidad@puelche.cl.</p>', actions: [{ label: 'Entendido', cls: 'btn-primary' }] }); };
 
       const extraValid = () => {
-        if (cur === 0) { const canal = $('[name=rg-canal]:checked', root).value; const hab = D.clientes.filter((c) => c.canal === 'Moderno').map((c) => L.rut.clean(c.rut)); const ok = canal !== 'Moderno' || hab.includes(L.rut.clean(rutIn.value)); $('#rg-rut-msg', root).innerHTML = ok ? '' : L.alert('danger', 'RUT no habilitado para el canal moderno', `Este RUT no figura como cliente activo de Puelche en el sistema de gestión. Contacte a su ejecutivo comercial para habilitarlo (RF-12.25). Para la demostración puede usar ${D.clientes.find((c) => c.canal === 'Moderno').rut}.`); return ok; }
+        if (cur === 0) { const canal = $('[name=rg-canal]:checked', root).value; const hab = D.clientes.filter((c) => c.canal === 'Moderno').map((c) => L.rut.clean(c.rut)); const ok = canal !== 'Moderno' || hab.includes(L.rut.clean(rutIn.value)); $('#rg-rut-msg', root).innerHTML = ok ? '' : L.alert('danger', 'RUT no habilitado para el canal moderno', `Este RUT no figura como cliente activo de Puelche en el sistema de gestión. Contacte a su ejecutivo comercial para habilitarlo. Para la demostración puede usar ${D.clientes.find((c) => c.canal === 'Moderno').rut}.`); return ok; }
         if (cur === 1) { const any = $$('#rg-dias input:checked', root).length > 0; $('#rg-dias-err', root).style.display = any ? 'none' : 'flex'; $('#rg-dias-err', root).innerHTML = any ? '' : `${icon('alert-circle', 'icon-sm')}Elija al menos un día.`; $('#rg-dias-err', root).style.color = 'var(--c-danger)'; return any; }
         if (cur === 3) { const ok = dz.files.length > 0; if (!ok) $('#rg-docs-err', root).innerHTML = L.alert('danger', 'Falta adjuntar documentos', 'Adjunte al menos la carpeta tributaria para continuar.'); return ok; }
         return true;
