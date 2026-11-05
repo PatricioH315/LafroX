@@ -47,6 +47,7 @@
       { path: '/admin/roles', label: 'Roles y permisos', icon: 'key' },
       { path: '/admin/parametros', label: 'Parámetros', icon: 'sliders' },
       { path: '/admin/flujos', label: 'Flujos de aprobación', icon: 'route' },
+      { path: '/admin/integraciones', label: 'Integraciones y monitoreo', icon: 'activity' },
       { path: '/admin/auditoria', label: 'Auditoría', icon: 'history' }
     ] }
   ];
@@ -237,10 +238,10 @@
     // Búsqueda global (RF-17.11): clientes, pedidos, rutas y pantallas
     L.combobox($('#gsearch'), () => [
       ...L.nav.flatMap((g) => g.items).filter((i) => L.allowed(i.path)).map((i) => ({ label: i.label, meta: 'Pantalla', path: i.path, icon: i.icon })),
-      ...L.data.clientes.map((c) => ({ label: c.nombre, meta: `Cliente · ${c.comuna}`, path: '/clientes/' + c.id, icon: 'store' })),
-      ...L.data.pedidos.map((p) => ({ label: p.id, meta: `Pedido · ${p.clienteNombre}`, path: '/pedidos/' + p.id, icon: 'clipboard' })),
-      ...L.data.rutas.map((r) => ({ label: `${r.id} ${r.zona}`, meta: `Ruta · ${r.conductor}`, path: '/rutas/' + r.id, icon: 'route' })),
-      ...L.data.lotes.map((l) => ({ label: l.id, meta: `Lote · ${l.producto}`, path: '/calidad/lotes/' + l.id, icon: 'shield' }))
+      ...(L.allowed('/clientes') ? L.data.clientes.map((c) => ({ label: c.nombre, meta: `Cliente · ${c.comuna}`, path: '/clientes/' + c.id, icon: 'store' })) : []),
+      ...(L.allowed('/pedidos') ? L.data.pedidos.map((p) => ({ label: p.id, meta: `Pedido · ${p.clienteNombre}`, path: '/pedidos/' + p.id, icon: 'clipboard' })) : []),
+      ...(L.allowed('/rutas') ? L.data.rutas.map((r) => ({ label: `${r.id} ${r.zona}`, meta: `Ruta · ${r.conductor}`, path: '/rutas/' + r.id, icon: 'route' })) : []),
+      ...(L.allowed('/calidad') ? L.data.lotes.map((l) => ({ label: l.id, meta: `Lote · ${l.producto}`, path: '/calidad/lotes/' + l.id, icon: 'shield' })) : [])
     ], {
       onSelect: (it) => { L.go(it.path); $('#gsearch').value = ''; $('#gsearch').blur(); },
       render: (it, q, hl) => `${icon(it.icon)}<span>${hl(it.label, q)}</span><span class="small muted" style="margin-left:auto;text-align:right">${esc(it.meta)}</span>`

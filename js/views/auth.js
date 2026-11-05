@@ -125,7 +125,8 @@
         <span class="modal-icon info" style="margin-bottom:var(--sp-3)">${icon('fingerprint')}</span>
         <h1>Verificación en dos pasos</h1>
         <p class="muted">Su perfil (${esc(p ? p.role : '')}) exige un segundo factor (RF-15.03). Ingrese el código de 6 dígitos de su aplicación autenticadora.</p>
-        <div class="segmented" role="radiogroup" aria-label="Método" style="margin-bottom:var(--sp-4)"><button type="button" role="radio" aria-checked="true" aria-pressed="true" data-m="app">${icon('phone', 'icon-sm')} App autenticadora</button><button type="button" role="radio" aria-checked="false" aria-pressed="false" data-m="sms">${icon('mail', 'icon-sm')} SMS al +56 9 •••• 4821</button></div>
+        <div class="segmented" role="radiogroup" aria-label="Método" style="margin-bottom:var(--sp-4)"><button type="button" role="radio" aria-checked="true" aria-pressed="true" data-m="app">${icon('phone', 'icon-sm')} App autenticadora</button><button type="button" role="radio" aria-checked="false" aria-pressed="false" data-m="sms">${icon('mail', 'icon-sm')} SMS al +56 9 •••• 4821</button><button type="button" role="radio" aria-checked="false" aria-pressed="false" data-m="key">${icon('key', 'icon-sm')} Llave de seguridad o clave de acceso</button></div>
+        <div id="fido" hidden class="card" style="box-shadow:none;margin-bottom:var(--sp-3)"><p class="small" style="margin-top:0">Factor resistente a suplantación (FIDO2 / WebAuthn): toque su llave de seguridad o confirme con la huella o el rostro en su equipo.</p><button type="button" class="btn btn-primary btn-block big-btn" id="fido-go">${icon('fingerprint')}Usar llave de seguridad</button></div>
         <fieldset><legend class="sr-only">Código de verificación</legend>
           <div class="row" style="gap:8px;flex-wrap:nowrap" id="otp">${Array.from({ length: 6 }, (_, i) => `<input class="input mono" inputmode="numeric" maxlength="1" aria-label="Dígito ${i + 1} de 6" style="width:48px;height:56px;text-align:center;font-size:var(--fs-xl);padding:0" autocomplete="${i === 0 ? 'one-time-code' : 'off'}">`).join('')}</div>
         </fieldset>
@@ -144,7 +145,8 @@
         inp.addEventListener('paste', (e) => { const t = (e.clipboardData.getData('text') || '').replace(/\D/g, '').slice(0, 6); if (t.length) { e.preventDefault(); t.split('').forEach((c, j) => (ins[j].value = c)); ins[Math.min(5, t.length)].focus(); } });
       });
       ins[0].focus();
-      $$('[data-m]', root).forEach((b) => (b.onclick = () => { $$('[data-m]', root).forEach((x) => { x.setAttribute('aria-checked', x === b); x.setAttribute('aria-pressed', x === b); }); if (b.dataset.m === 'sms') L.toast('Código enviado', 'Revise el SMS en su teléfono terminado en 4821.', 'info'); }));
+      $$('[data-m]', root).forEach((b) => (b.onclick = () => { $$('[data-m]', root).forEach((x) => { x.setAttribute('aria-checked', x === b); x.setAttribute('aria-pressed', x === b); }); if (b.dataset.m === 'sms') L.toast('Código enviado', 'Revise el SMS en su teléfono terminado en 4821.', 'info'); $('#fido', root).hidden = b.dataset.m !== 'key'; $('#otp', root).closest('fieldset').hidden = b.dataset.m === 'key'; $('#f2 [type=submit]', root).hidden = b.dataset.m === 'key'; }));
+      $('#fido-go', root).onclick = (e) => L.busy(e.currentTarget, () => { L.toast('Llave de seguridad verificada', 'Segundo factor FIDO2 aceptado.', 'success'); const next = L.store.get('pending2fa', '/inicio'); L.go(L.session().first ? '/bienvenida' : next); }, 1400);
       let s = 30;
       const rs = $('#resend', root);
       const t = L.interval(() => { s--; rs.textContent = s > 0 ? `Reenviar código en ${s} s` : 'Reenviar código'; if (s <= 0) { rs.disabled = false; clearInterval(t); } }, 1000);
@@ -216,6 +218,7 @@
           <div class="field"><label for="rg-rs">Razón social <span class="req" aria-hidden="true">*</span></label><input id="rg-rs" class="input" required autocomplete="organization"></div>
           <div class="field"><label for="rg-nf">Nombre de fantasía</label><input id="rg-nf" class="input" placeholder="Ej.: Almacén Doña Rosa"></div>
           <div class="field"><label for="rg-giro">Giro <span class="req" aria-hidden="true">*</span></label><select id="rg-giro" class="select" required><option value="">Seleccione…</option><option>Almacén de barrio</option><option>Minimarket</option><option>Botillería</option><option>Restaurante o casino</option><option>Supermercado</option><option>Panadería</option></select></div>
+          <div class="full" id="rg-rut-msg"></div>
           <fieldset class="full"><legend>Canal <span class="req" aria-hidden="true">*</span></legend><div class="options-row">${['Tradicional', 'Food service', 'Moderno'].map((c, i) => `<label class="radio"><input type="radio" name="rg-canal" value="${c}" ${i === 0 ? 'checked' : ''}> ${c}</label>`).join('')}</div></fieldset>
         </section>
         <section data-step="1" class="form-grid" hidden>
@@ -232,6 +235,7 @@
           <div class="field"><label for="rg-cargo">Cargo</label><select id="rg-cargo" class="select"><option>Dueña o dueño</option><option>Administrador</option><option>Encargado de compras</option></select></div>
           <div class="field"><label for="rg-ce">Correo corporativo <span class="req" aria-hidden="true">*</span></label><input id="rg-ce" class="input" type="email" required autocomplete="email"></div>
           <div class="field"><label for="rg-tel">Teléfono móvil <span class="req" aria-hidden="true">*</span></label><div class="input-group"><span class="addon">+56</span><input id="rg-tel" class="input" inputmode="tel" required placeholder="9 1234 5678" autocomplete="tel-national"></div></div>
+          <div class="full" data-trad>${L.alert('info', 'Activación asistida, opcional', 'Puede activar su cuenta con un código que le enviamos por SMS. Crear la cuenta es voluntario: si prefiere, siga comprando con su preventista como siempre, sin cuenta ni internet.')}<label class="check" style="margin-top:8px"><input type="checkbox" id="rg-sms"> Activar mi cuenta con un código por SMS</label></div>
           <fieldset class="full"><legend>¿Cómo quiere recibir avisos de entrega? (RF-18.02)</legend><div class="options-row">${[['SMS', true], ['Correo electrónico', true], ['WhatsApp', false], ['Notificación en la app', false]].map(([c, on]) => `<label class="check"><input type="checkbox" ${on ? 'checked' : ''}> ${c}</label>`).join('')}</div></fieldset>
         </section>
         <section data-step="3" hidden>
@@ -289,6 +293,7 @@
       $('#rg-terms-open', root).onclick = (e) => { e.preventDefault(); L.modal({ title: 'Términos de uso', body: '<p>Prototipo: texto de referencia. Los datos se tratan conforme a la Ley N.º 19.628 y solo se usan para gestionar pedidos, entregas y cobranza.</p><p>Puede solicitar acceso, rectificación o eliminación escribiendo a privacidad@puelche.cl.</p>', actions: [{ label: 'Entendido', cls: 'btn-primary' }] }); };
 
       const extraValid = () => {
+        if (cur === 0) { const canal = $('[name=rg-canal]:checked', root).value; const hab = D.clientes.filter((c) => c.canal === 'Moderno').map((c) => L.rut.clean(c.rut)); const ok = canal !== 'Moderno' || hab.includes(L.rut.clean(rutIn.value)); $('#rg-rut-msg', root).innerHTML = ok ? '' : L.alert('danger', 'RUT no habilitado para el canal moderno', `Este RUT no figura como cliente activo de Puelche en el sistema de gestión. Contacte a su ejecutivo comercial para habilitarlo (RF-12.25). Para la demostración puede usar ${D.clientes.find((c) => c.canal === 'Moderno').rut}.`); return ok; }
         if (cur === 1) { const any = $$('#rg-dias input:checked', root).length > 0; $('#rg-dias-err', root).style.display = any ? 'none' : 'flex'; $('#rg-dias-err', root).innerHTML = any ? '' : `${icon('alert-circle', 'icon-sm')}Elija al menos un día.`; $('#rg-dias-err', root).style.color = 'var(--c-danger)'; return any; }
         if (cur === 3) { const ok = dz.files.length > 0; if (!ok) $('#rg-docs-err', root).innerHTML = L.alert('danger', 'Falta adjuntar documentos', 'Adjunte al menos la carpeta tributaria para continuar.'); return ok; }
         return true;
@@ -307,6 +312,7 @@
         $('#rg-back', root).style.visibility = n === 0 ? 'hidden' : 'visible';
         $('#rg-next', root).innerHTML = n === 4 ? `${icon('send')}Enviar solicitud` : `Continuar${icon('arrow-right')}`;
         if (n === 4) { $('#rg-user', root).value = $('#rg-ce', root).value; summary(); }
+        if (n === 2) $('[data-trad]', root).hidden = $('[name=rg-canal]:checked', root).value !== 'Tradicional';
         $('#rg-title', root).setAttribute('tabindex', '-1');
         $('#rg-title', root).focus();
       };
@@ -320,7 +326,7 @@
         if (cur < 4) { L.busy($('#rg-next', root), () => show(cur + 1), 450); return; }
         L.busy($('#rg-next', root), () => {
           $('#rg', root).innerHTML = `${stepperHtml(STEPS, 5)}${L.empty('done', 'Solicitud enviada', `Folio SOL-${Math.floor(Math.random() * 9000 + 1000)}. Comercial validará su crédito y le escribirá dentro de 24 horas hábiles a ${$('#rg-ce', root)?.value || 'su correo'}.`, '<div class="btn-group"><a class="btn btn-primary" href="#/ingresar">Ir a ingresar</a><a class="btn btn-secondary" href="#/">Volver al inicio</a></div>')}`;
-          L.toast('Solicitud recibida', 'Le enviamos un correo de confirmación.', 'success');
+          L.toast('Solicitud recibida', $('#rg-sms', root)?.checked ? 'Le enviamos un correo de confirmación y un código de activación por SMS.' : 'Le enviamos un correo de confirmación de la cuenta.', 'success');
         }, 1200);
       };
       show(0);

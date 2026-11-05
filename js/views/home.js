@@ -191,7 +191,7 @@
               <button type="button" class="btn btn-tertiary btn-sm" style="margin-top:var(--sp-2)" id="pf-keys">${icon('info', 'icon-sm')}Ver atajos disponibles</button></div>
           </div></section>
         <section class="card"><div class="card-head"><h2>Notificaciones</h2></div>
-          <div class="table-wrap"><table class="table"><caption class="sr-only">Canales por tipo de aviso</caption><thead><tr><th>Aviso</th><th>App</th><th>Correo</th><th>SMS</th></tr></thead><tbody>${['Tareas asignadas', 'Alertas críticas', 'Resumen diario'].map((t, i) => `<tr><td>${t}</td>${[1, i !== 1, i === 1].map((on, j) => `<td><label class="switch"><input type="checkbox" ${on ? 'checked' : ''} aria-label="${t} por ${['app', 'correo', 'SMS'][j]}"></label></td>`).join('')}</tr>`).join('')}</tbody></table></div>
+          <div class="table-wrap"><table class="table"><caption class="sr-only">Canales por tipo de aviso</caption><thead><tr><th>Aviso</th><th>App</th><th>Correo</th><th>SMS</th><th>Frecuencia</th></tr></thead><tbody>${['Tareas asignadas', 'Alertas críticas', 'Resumen diario'].map((t, i) => `<tr><td>${t}${i === 1 ? '<div class="small muted">App obligatoria por definición del CLIENTE</div>' : ''}</td>${[1, i !== 1, i === 1].map((on, j) => `<td><label class="switch"><input type="checkbox" ${on ? 'checked' : ''} ${i === 1 && j === 0 ? 'disabled' : ''} aria-label="${t} por ${['app', 'correo', 'SMS'][j]}${i === 1 && j === 0 ? ' (obligatorio)' : ''}"></label></td>`).join('')}<td><label class="sr-only" for="nf-${i}">Frecuencia de ${t}</label><select id="nf-${i}" class="select" style="width:auto" ${i === 1 ? 'disabled' : ''}>${(i === 1 ? ['Inmediata'] : ['Inmediata', 'Resumen cada hora', 'Resumen diario 07:00', 'Resumen semanal (lunes)']).map((f) => `<option ${(i === 2 && f.startsWith('Resumen diario')) ? 'selected' : ''}>${f}</option>`).join('')}</select></td></tr>`).join('')}</tbody></table></div><p class="hint">Las alertas críticas siempre llegan de inmediato a la app; usted elige los demás canales y la frecuencia (RF-18.02).</p>
           <button type="button" class="btn btn-primary" style="margin-top:var(--sp-4)" id="pf-save">Guardar preferencias</button></section>
       </div>
       <aside class="card stack"><div class="row"><span class="avatar lg">${L.initials(p.name)}</span><div><strong>${esc(p.name)}</strong><div class="small muted">${esc(p.role)}</div></div></div>
@@ -215,7 +215,7 @@
         L.checkInactivity(Date.now() + L.idleLimit() + 1000);
       };
       $('#pf-keys', root).onclick = () => L.showShortcuts();
-      $('#pf-save', root).onclick = (e) => L.busy(e.currentTarget, () => L.toast('Preferencias guardadas', 'Se aplican en todos sus dispositivos.', 'success'), 700);
+      $('#pf-save', root).onclick = (e) => L.busy(e.currentTarget, () => L.toast('Preferencias guardadas', 'Canales y frecuencia registrados en su cuenta; la apariencia queda en este dispositivo.', 'success'), 700);
     }
   });
 })(window.LFX);
