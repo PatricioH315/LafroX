@@ -460,3 +460,6 @@ kbd { font-family: var(--font-mono); font-size: 12px; padding: 1px 6px; border: 
 
 /* Picking con guantes: 15 mm ≈ 57 px CSS; se usa 60 px (RNF-05.02) */
 .glove .btn { min-height: 60px; min-width: 60px; font-size: var(--fs-md); }
+
+/* Hidden attribute must win over display:flex/grid from layout helpers */
+[hidden] { display: none !important; }

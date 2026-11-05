@@ -34,7 +34,7 @@
     { id: 'calidad', grupo: 'Bodega y calidad', actor: 'Jefa de Calidad', name: 'Katherine Ñanco Millán', role: 'Jefa de Calidad y Aseguramiento', iface: 'Consola de Calidad', mfa: true, home: ['calidad', 'telemetria', 'alertas', 'tareas'], menu: ['/inicio', '/tablero', '/bandeja', '/calidad', '/telemetria', '/inventario', '/devoluciones', '/analitica'] },
     { id: 'comercial', grupo: 'Oficina y gerencia', actor: 'Gerente Comercial', name: 'Rubén Salinas Fuentealba', role: 'Gerente Comercial', iface: 'Consola comercial y tableros', mfa: true, home: ['kpis', 'clientes', 'alertas', 'tareas'], menu: ['/inicio', '/tablero', '/bandeja', '/clientes', '/pedidos', '/canal-moderno', '/analitica'] },
     { id: 'finanzas', grupo: 'Oficina y gerencia', actor: 'Gerente de Finanzas', name: 'Patricio Vergara Undurraga', role: 'Gerente de Administración y Finanzas', iface: 'Consola financiera y tableros', mfa: true, home: ['kpis', 'rendicion', 'tareas', 'alertas'], menu: ['/inicio', '/tablero', '/bandeja', '/rendicion', '/clientes', '/devoluciones', '/analitica'] },
-    { id: 'ti', grupo: 'Oficina y gerencia', actor: 'Jefe de TI', name: 'Eduardo Kaufmann Vial', role: 'Jefe de Tecnologías de Información', iface: 'Consola de administración', mfa: true, home: ['admin', 'alertas', 'tareas'], menu: ['/inicio', '/tablero', '/bandeja', '/admin/usuarios', '/admin/roles', '/admin/parametros', '/admin/auditoria', '/analitica'] },
+    { id: 'ti', grupo: 'Oficina y gerencia', actor: 'Jefe de TI', name: 'Eduardo Kaufmann Vial', role: 'Jefe de Tecnologías de Información', iface: 'Consola de administración', mfa: true, home: ['admin', 'alertas', 'tareas'], menu: ['/inicio', '/tablero', '/bandeja', '/admin/usuarios', '/admin/roles', '/admin/parametros', '/admin/flujos', '/admin/auditoria', '/analitica'] },
     { id: 'cliente', grupo: 'Externos', actor: 'Cliente del canal tradicional', name: 'Rosa Fuentes Lagos', role: 'Cliente · Almacén Doña Rosa (canal tradicional)', iface: 'Portal de clientes (PWA)', mfa: false, home: ['mis-pedidos', 'cuenta', 'tareas'], menu: ['/inicio', '/portal/pedido', '/portal/entregas', '/portal/cuenta', '/bandeja'] },
     { id: 'conductor-ext', grupo: 'Terreno', actor: 'Conductor externo', name: 'Óscar Vidal Rebolledo', role: 'Conductor externo · Transportes Maule Ltda.', iface: 'App de reparto (Kotlin) con credencial de turno', mfa: false, field: true, home: ['ruta-dia', 'tareas'], menu: ['/inicio', '/terreno', '/devoluciones', '/rendicion', '/bandeja'] },
     { id: 'cliente-moderno', grupo: 'Externos', actor: 'Cliente del canal moderno', name: 'Paula Herrera Soto', role: 'Cliente · Supermercado Regional Maule (canal moderno)', iface: 'Portal de clientes; EDI de la cadena', mfa: false, home: ['mis-pedidos', 'cuenta', 'tareas'], menu: ['/inicio', '/portal/pedido', '/portal/entregas', '/portal/cuenta', '/bandeja'] },
@@ -62,6 +62,9 @@
   }));
   // Reservations cannot exceed physical stock: available stock is never negative (RNG-02)
   D.productos.forEach((p) => { p.reservado = Math.min(p.reservado, Math.floor(p.stock * 0.4)); });
+  // One lot per product so that order lines, returns and Quality share the same lot ids
+  const LOTE_FIJO = { 9: 'L2611-47', 10: 'L2611-52', 15: 'L2610-88', 13: 'L2611-03', 11: 'L2611-21', 17: 'L2610-64' };
+  D.productos.forEach((p, i) => { p.lote = LOTE_FIJO[i] || `L2612-${String(10 + i * 3).padStart(2, '0')}`; p.loteVence = { 9: 28, 10: 19, 15: 240, 13: 24, 11: 46, 17: 150 }[i] ?? 60 + (i * 7) % 90; });
   // Price exceptions per client or chain, configured by Comercial (RF-03.11)
   D.excepcionesPrecio = [
     { id: 'EP-104', alcance: 'Cadena', destino: 'Supermercado Regional Maule', sku: D.productos[6].sku, producto: D.productos[6].nombre, tipo: 'Precio fijo', valor: 2490, vigencia: '01-11-2026 a 31-12-2026', aprobado: 'Rubén Salinas Fuentealba', estado: 'Vigente' },
@@ -106,7 +109,7 @@
   const estPeso = ['Entregado', 'Entregado', 'Entregado', 'Rendido', 'Rendido', 'En ruta', 'En ruta', 'Cargado', 'En picking', 'Planificado', 'Confirmado', 'Pendiente de validación', 'Capturado sin conexión', 'Parcial', 'Fallido', 'Retenido', 'Reprogramado'];
   D.pedidos = Array.from({ length: 64 }, (_, i) => {
     const cli = D.clientes[i % D.clientes.length];
-    const lineas = Array.from({ length: int(3, 7) }, () => { const p = pick(D.productos); const q = int(2, 36); return { sku: p.sku, nombre: p.nombre, temp: p.temp, cant: q, precio: p.precio, lote: `L${int(2600, 2699)}-${int(10, 99)}`, vence: day(int(20, 180)) }; });
+    const lineas = Array.from({ length: int(3, 7) }, () => { const p = pick(D.productos); const q = int(2, 36); int(2600, 2699); int(10, 99); int(20, 180); return { sku: p.sku, nombre: p.nombre, temp: p.temp, cant: q, precio: p.precio, lote: p.lote, vence: day(p.loteVence) }; });
     const total = lineas.reduce((a, l) => a + l.cant * l.precio, 0);
     const estado = i === 0 ? 'Capturado sin conexión' : estPeso[i % estPeso.length];
     return {
@@ -137,15 +140,28 @@
   D.rutas.forEach((r, i) => { r.camion = PLATES[i]; });
   D.rutas.forEach((r, i) => { r.hechas = Math.min(r.paradas, Math.round(r.paradas * [0.45, 0.8, 0.6, 1, 0.3, 0.55, 0.7, 0.2, 0.9, 0.5, 0.65, 0.4][i])); r.estado = r.hechas === r.paradas ? 'Completada' : r.hechas > 0 ? 'En ruta' : 'Por salir'; r.eta = `${14 + (i % 4)}:${String(int(0, 59)).padStart(2, '0')}`; });
 
-  // Orders not yet planned have no route assigned
-  const preRuta = ['Capturado sin conexión', 'Pendiente de validación', 'Confirmado', 'Retenido'];
-  D.pedidos.forEach((p) => { if (preRuta.includes(p.estado)) p.ruta = ''; });
-  // Orders of today's R-01 stops travel on R-01
-  [1, 5, 9, 13, 17, 21].forEach((k) => { D.pedidos[k].ruta = 'R-01'; D.pedidos[k].estado = 'En ruta'; });
-  // Other R-01 orders: delivered earlier today or still to be delivered on the truck
-  D.pedidos.forEach((p) => { if (p.ruta === 'R-01' && !['En ruta', 'Entregado', 'Parcial', 'Fallido', 'Rendido'].includes(p.estado)) p.estado = 'Entregado'; });
-
   // Paradas de la ruta del conductor (R-01 Cauquenes) para la vista de terreno
+  const STOP_ORD = [1, 5, 9, 13, 17, 21];
+  const STOP_CLI = [[0, 'Cauquenes'], [4, 'Cauquenes'], [8, 'Cauquenes'], [16, 'Cauquenes'], [21, 'Cauquenes'], [39, 'Empedrado']];
+  STOP_CLI.forEach(([ci, com]) => { D.clientes[ci].comuna = com; });
+  STOP_ORD.forEach((k, j) => { const c = D.clientes[STOP_CLI[j][0]], o = D.pedidos[k]; Object.assign(o, { cliente: c.id, clienteNombre: c.nombre, canal: c.canal, comuna: c.comuna, preventista: c.preventista, ventana: c.ventana }); });
+
+  // Route is assigned by delivery zone of the client; order status follows the status of its route
+  const zonaRuta = { Cauquenes: 0, Empedrado: 0, Talca: 1, 'San Clemente': 1, Curicó: 3, Rancagua: 3, Linares: 4, 'Villa Alegre': 4, Constitución: 5, 'San Javier': 6, Molina: 7, Parral: 8, Chillán: 9, Concepción: 10, 'Los Ángeles': 11, Temuco: 11 };
+  const preRuta = ['Capturado sin conexión', 'Pendiente de validación', 'Confirmado', 'Retenido'];
+  const cnt = {};
+  D.pedidos.forEach((p, i) => {
+    if (preRuta.includes(p.estado)) { p.ruta = ''; return; }
+    let zi = zonaRuta[p.comuna] ?? 1;
+    if (p.comuna === 'Talca' && (i >> 1) % 2) zi = 2;
+    const r = D.rutas[zi]; p.ruta = r.id;
+    const k = (cnt[r.id] = (cnt[r.id] || 0) + 1) - 1;
+    if (STOP_ORD.includes(i)) p.estado = 'En ruta';
+    else if (r.estado === 'Completada') p.estado = ['Entregado', 'Rendido', 'Parcial', 'Entregado'][k % 4];
+    else if (r.estado === 'En ruta') p.estado = ['En ruta', 'En ruta', 'Entregado', 'En ruta', 'Parcial', 'Fallido'][k % 6];
+    else p.estado = ['Planificado', 'En picking', 'Cargado'][k % 3];
+  });
+
   D.paradas = [
     { id: 'E-1', cliente: D.clientes[0].id, nombre: 'Almacén Doña Rosa', dir: 'Av. Prat 512, Cauquenes', ventana: '09:00–09:30', estado: 'Pendiente', pedido: D.pedidos[1].id, bultos: 14, monto: 186400, contado: true, frio: true },
     { id: 'E-2', cliente: D.clientes[4].id, nombre: 'Botillería Los Aromos', dir: 'Los Aromos 1180, Cauquenes', ventana: '09:30–10:00', estado: 'Pendiente', pedido: D.pedidos[5].id, bultos: 8, monto: 94300, contado: true },
@@ -154,6 +170,8 @@
     { id: 'E-5', cliente: D.clientes[21].id, nombre: 'Almacén Las Camelias', dir: 'Camino a Chanco km 3', ventana: '11:30–12:00', estado: 'Pendiente', pedido: D.pedidos[17].id, bultos: 9, monto: 101200, contado: false },
     { id: 'E-6', cliente: D.clientes[39].id, nombre: 'Almacén Empedrado Centro', dir: 'Calle Errázuriz 40, Empedrado', ventana: '13:00–13:30', estado: 'Pendiente', pedido: D.pedidos[21].id, bultos: 5, monto: 45200, contado: true }
   ];
+  // Amount to collect at each stop is the total of its order, so cash payments reconcile exactly
+  D.paradas.forEach((st) => { st.monto = D.pedidos.find((o) => o.id === st.pedido).total; });
 
   /* ---------- Devoluciones y envases (M8, proceso secundario) ---------- */
   D.motivosDevolucion = ['Producto dañado en tránsito', 'Vencimiento próximo', 'Error de preparación', 'Rechazo por cadena de frío', 'Sobrestock del cliente', 'Envase defectuoso'];
@@ -170,7 +188,9 @@
   // Cost to serve = base components + returns and waste of the client (RF-08.07).
   // Share of the returned amount that becomes cost, by destination.
   D.costoDestino = { Merma: 1, 'Devolución a proveedor': 0.25, 'Venta con descuento': 0.4, 'Reingreso a stock': 0.15, '': 0.15 };
-  L.costoDevol = (c) => { const ds = D.devoluciones.filter((d) => d.cliente === c.id && d.estado !== 'Rechazada'); const monto = ds.reduce((a, d) => a + d.monto * (D.costoDestino[d.destino] ?? 0.15), 0); return { n: ds.length, mermas: ds.filter((d) => d.destino === 'Merma').length, monto: Math.round(monto), pct: Math.round((monto / c.ventaMes) * 1000) / 10 }; };
+  // Waste registered in inventory (SKU, lot, quantity, origin); waste found on a client's shelf adds to their cost to serve (RF-08.05)
+  D.mermas = [];
+  L.costoDevol = (c) => { const ds = D.devoluciones.filter((d) => d.cliente === c.id && d.estado !== 'Rechazada'); const mm = D.mermas.filter((m) => m.cliente === c.id); const monto = ds.reduce((a, d) => a + d.monto * (D.costoDestino[d.destino] ?? 0.15), 0) + mm.reduce((a, m) => a + m.monto, 0); return { n: ds.length + mm.length, mermas: ds.filter((d) => d.destino === 'Merma').length + mm.length, monto: Math.round(monto), pct: Math.round((monto / c.ventaMes) * 1000) / 10 }; };
   D.clientes.forEach((c) => { c.costoBase = Math.round(c.costoServir * 0.86 * 10) / 10; Object.defineProperty(c, 'costoServir', { enumerable: true, configurable: true, get: () => Math.round((c.costoBase + L.costoDevol(c).pct) * 10) / 10 }); });
 
   /* ---------- Lotes y calidad (M9) ---------- */
@@ -182,6 +202,10 @@
     { id: 'L2611-21', sku: D.productos[11].sku, producto: 'Queso gauda laminado · 250 g', proveedor: 'Lácteos del Sur S.A.', recepcion: day(-4), vence: day(46), unidades: 5400, clientes: 0, estado: 'Liberado', temp: 'Refrigerado' },
     { id: 'L2610-64', sku: D.productos[17].sku, producto: 'Hamburguesas de vacuno · 4 u', proveedor: 'Frigorífico Ñuble', recepcion: day(-25), vence: day(150), unidades: 4800, clientes: 97, estado: 'Liberado', temp: 'Congelado' }
   ];
+
+  // Lots for the remaining products, so every lot referenced by an order exists in Quality
+  const provCat = { Abarrotes: 'Molinos del Maule', Bebidas: 'Bebidas Andinas', Lácteos: 'Lácteos del Sur S.A.', Cecinas: 'Cecinas Centinela', Congelados: 'Frigorífico Ñuble', Limpieza: 'Limpieza Total Ltda.', Confites: 'Molinos del Maule' };
+  D.productos.forEach((p, i) => { if (D.lotes.some((l) => l.id === p.lote)) return; D.lotes.push({ id: p.lote, sku: p.sku, producto: p.nombre, proveedor: provCat[p.categoria], recepcion: day(-(3 + (i * 5) % 20)), vence: day(p.loteVence), unidades: 2400 + (i * 613) % 9000, clientes: 40 + (i * 29) % 300, estado: 'Liberado', temp: p.temp }); });
 
   /* ---------- Telemetría y cadena de frío (M12) ---------- */
   D.camiones = D.rutas.filter((r) => r.frio).map((r, i) => ({ ruta: r.id, camion: r.camion, conductor: r.conductor, temp: [3.4, 4.1, -19.6, 8.6, 2.8, -21.2][i], setpoint: [4, 4, -18, 4, 4, -18][i], estado: i === 3 ? 'Excursión crítica' : i === 1 ? 'Advertencia' : 'Normal', señal: i === 4 ? 'Satélite' : 'Móvil', lat: 0, lng: 0 }));
@@ -208,12 +232,14 @@
   D.usuarios = personas.map(([n, r], i) => ({ id: `U-${1001 + i}`, nombre: n, rol: r, correo: n.split(' ')[0].toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '') + '.' + n.split(' ')[1].toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '') + '@puelche.cl', sitio: pick(['CD Talca', 'CD Concepción', 'Plataforma Curicó', 'Plataforma Chillán']), estado: i === 15 ? 'Suspendido' : i === 21 ? 'Pendiente' : 'Activo', mfa: ['bodega', 'calidad', 'planificador', 'finanzas', 'comercial', 'gerencia', 'admin'].includes(r), ultimo: day(-int(0, 6), int(7, 20), int(0, 59)) }));
 
   const ops = [['Consulta', 'Lote', 'Trazabilidad del lote L2611-47 y clientes afectados · finalidad: simulacro de retiro'], ['Consulta', 'Cliente', 'Comportamiento de pago de Almacén Doña Rosa · finalidad: evaluación de crédito'], ['Consulta', 'Geolocalización', 'Posición del conductor de R-03 · finalidad: control de desvío'], ['Modificación', 'Parámetro', 'Umbral de bloqueo de crédito: 10 % → 12 %'], ['Creación', 'Usuario', 'Alta de conductor externo con OTP'], ['Aprobación', 'Ruta', 'Ruta R-04 aprobada con 3 correcciones'], ['Modificación', 'Pedido', 'Precio acordado conservado tras cambio de lista'], ['Eliminación', 'Sesión', 'Cierre de sesión forzado por inactividad'], ['Aprobación', 'Devolución', 'Destino «Reingreso a stock» aprobado'], ['Creación', 'Lote', 'Bloqueo preventivo por excursión térmica'], ['Exportación', 'Auditoría', 'Exportación CSV filtrada por período'], ['Modificación', 'Rol', 'Permiso «Aprobar» agregado a Jefatura de Bodega'], ['Creación', 'Rendición', 'Descuadre tipificado: vuelto mal entregado']];
-  D.auditoria = Array.from({ length: 48 }, (_, i) => { const o = ops[i % ops.length]; const u = D.usuarios[(i * 5) % D.usuarios.length]; return { id: `AU-${90412 - i}`, fecha: day(-Math.floor(i / 6), 8 + (i % 11), (i * 13) % 60), persona: u.nombre, operacion: o[0], entidad: o[1], detalle: o[2], ip: `10.20.${int(1, 9)}.${int(10, 250)}`, origen: pick(['Consola web', 'App Kotlin', 'API', 'Portal de clientes']) }; });
+  D.auditoria = Array.from({ length: 48 }, (_, i) => { const o = ops[i % ops.length]; const act = D.usuarios.filter((x) => x.estado === 'Activo'); const u = act[(i * 5) % act.length]; return { id: `AU-${90412 - i}`, fecha: day(-Math.floor(i / 6), 8 + (i % 11), (i * 13) % 60), persona: u.nombre, operacion: o[0], entidad: o[1], detalle: o[2], ip: `10.20.${int(1, 9)}.${int(10, 250)}`, origen: pick(['Consola web', 'App Kotlin', 'API', 'Portal de clientes']) }; });
 
   D.parametros = [
     { grupo: 'Crédito y cobranza (RNG-03)', items: [{ id: 'cred-umbral', label: 'Umbral de bloqueo sobre límite de crédito', valor: 10, unidad: '%', rf: 'RF-03.09' }, { id: 'mora-dias', label: 'Días de mora para bloqueo', valor: 30, unidad: 'días', rf: 'RF-07.05' }] },
     { grupo: 'Cadena de frío (RNG-04, RNG-17)', items: [{ id: 'frio-ref', label: 'Excursión crítica en refrigerados', valor: 8, unidad: '°C por 20 min', rf: 'RF-09.10' }, { id: 'anden-max', label: 'Tiempo máximo fuera de frío en andén', valor: 25, unidad: 'min', rf: 'RF-09.11' }] },
     { grupo: 'Rutas y entregas (RNG-05, RNG-14, RNG-15)', items: [{ id: 'ventana', label: 'Ventana informada al cliente', valor: 30, unidad: 'min', rf: 'RF-04.06' }, { id: 'ocup-min', label: 'Ocupación mínima de camión al salir', valor: 70, unidad: '%', rf: 'RNG-14' }, { id: 'corte', label: 'Hora de corte para promesa 24 h', valor: '14:00', unidad: 'h', rf: 'RNG-15' }, { id: 'desvio', label: 'Alerta de desvío de ruta', valor: 3, unidad: 'km', rf: 'RF-14.03' }] },
+    { grupo: 'Vida útil y FEFO (RF-02.09)', items: [{ id: 'vida-umbral', label: 'Alerta cuando la vida útil remanente baja de', valor: 30, unidad: 'días', rf: 'RF-02.09' }] },
+    { grupo: 'Lectura de temperatura por tipo de producto (RNF-09.05)', items: [{ id: 'lec-ref-cam', label: 'Refrigerados · cámara', valor: 5, unidad: 'min', rf: 'RF-09.03' }, { id: 'lec-con-cam', label: 'Congelados · cámara', valor: 5, unidad: 'min', rf: 'RF-09.03' }, { id: 'lec-ref-tru', label: 'Refrigerados · camión', valor: 15, unidad: 'min', rf: 'RF-09.04' }, { id: 'lec-con-tru', label: 'Congelados · camión', valor: 10, unidad: 'min', rf: 'RF-09.04' }] },
     { grupo: 'Envases retornables (RNG-07)', items: [{ id: 'env-umbral', label: 'Saldo máximo de canastillos por cliente', valor: 40, unidad: 'u', rf: 'RF-08.04' }] },
     { grupo: 'Sesión y seguridad', items: [{ id: 'inact', label: 'Cierre por inactividad en portal', valor: 15, unidad: 'min', rf: 'RF-12.29' }, { id: 'otp', label: 'Vigencia del OTP de conductor externo', valor: 14, unidad: 'h', rf: 'RF-06.08' }] }
   ];

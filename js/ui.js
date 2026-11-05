@@ -440,7 +440,13 @@
       const q = input.value.trim();
       if (q.length < min) { close(); return; }
       const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
-      items = source().filter((it) => norm(it.label + ' ' + (it.meta || '')).includes(norm(q))).slice(0, max);
+      const lev = (a, b) => { const d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]); for (let j = 1; j <= b.length; j++) d[0][j] = j; for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); return d[a.length][b.length]; };
+      // Typo tolerance (RF-17.11): substring, ignoring spaces, or every word within 1-2 edits of a word of the text
+      const fuzzy = (txt, qn) => { if (txt.includes(qn) || txt.replace(/\s/g, '').includes(qn.replace(/\s/g, ''))) return true; const words = txt.split(/[^a-z0-9]+/).filter(Boolean); return qn.split(/\s+/).filter(Boolean).every((t) => t.length < 3 ? txt.includes(t) : words.some((w) => w.startsWith(t) || lev(t, w.slice(0, t.length + 1)) <= (t.length > 5 ? 2 : 1) || lev(t, w) <= (t.length > 5 ? 2 : 1))); };
+      // Result-type filter: «cliente: roble», «pedido: 2648», «ruta:», «lote:», «pantalla:»
+      const tm = q.match(/^(cliente|pedido|ruta|lote|pantalla)s?\s*:\s*(.*)$/i);
+      const qq = tm ? tm[2] : q;
+      items = source().filter((it) => (!tm || norm(it.meta || '').startsWith(norm(tm[1]))) && fuzzy(norm(it.label + ' ' + (it.meta || '')), norm(qq))).slice(0, max);
       list.innerHTML = items.length
         ? items.map((it, i) => `<li role="option" id="${list.id}-${i}" aria-selected="false" data-i="${i}">${render ? render(it, q, hl) : `<span>${hl(it.label, q)}</span>${it.meta ? `<span class="small muted" style="margin-left:auto">${L.esc(it.meta)}</span>` : ''}`}</li>`).join('')
         : `<li role="option" aria-disabled="true" class="muted">Sin coincidencias para «${L.esc(q)}»</li>`;

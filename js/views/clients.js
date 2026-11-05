@@ -12,7 +12,7 @@
       <div class="card card-flush" id="cl-t"></div>`,
     mount: (root) => {
       // Matriz mensual de rentabilidad neta: margen comercial frente a costo de servir (RF-11.08)
-      const seg = (c) => { const m = +(18 - c.costoServir).toFixed(1); return { ...c, margen: m, segmento: c.canal === 'Moderno' && m <= 3 ? 'Estratégico' : m > 7 ? 'Rentable' : m > 3 ? 'Rentable con ajuste' : 'No rentable' }; };
+      const seg = (c) => { const m = +(18 - c.costoServir).toFixed(1); return { ...c, margen: m, segmento: c.canal === 'Moderno' ? 'Estratégico' : m > 7 ? 'Rentable' : m > 3 ? 'Rentable con ajuste' : 'No rentable' }; };
       $('#cl-mora', root).onclick = () => { const ejec = ['Camila Fuentes', 'Diego Tapia', 'Paz Orellana']; const rows = D.clientes.filter((c) => c.vencida > 0).map((c, i) => ({ ...c, ejecutivo: ejec[i % 3] })); const promesas = L.store.get('cartera.promesas', {}); L.modal({ title: 'Cartera vencida al día', size: 'lg', body: `<p class="muted" style="margin-top:0">Cartera de crédito a 30 días sincronizada con el ERP, asignada por ejecutivo. Cada promesa de pago queda auditada y crea una tarea automática de seguimiento (RF-07.04).</p><div class="table-wrap"><table class="table"><caption class="sr-only">Clientes con deuda vencida</caption><thead><tr><th>Cliente</th><th>Ejecutivo</th><th class="right">Vencido</th><th>Promesa de pago</th><th><span class="sr-only">Acción</span></th></tr></thead><tbody>${rows.map((r) => `<tr><td>${esc(r.nombre)}</td><td>${r.ejecutivo}</td><td class="num right">${fmt.clp(r.vencida)}</td><td data-pr="${r.id}">${promesas[r.id] ? L.badge('Promete ' + promesas[r.id], 'info') : '—'}</td><td class="right"><button type="button" class="btn btn-tertiary btn-sm" data-prm="${r.id}">Registrar promesa</button></td></tr>`).join('')}</tbody></table></div>`,
         onOpen: (d) => $$('[data-prm]', d).forEach((b) => (b.onclick = () => {
           const id = b.dataset.prm, cell = $(`[data-pr="${id}"]`, d), inp = $('input', cell);
@@ -56,6 +56,15 @@
     }
   });
 
+  // Client documents with searchable metadata and content keywords (RF-17.08)
+  const DOCS = (c) => [
+    { t: 'Factura electrónica 1.204.511', v: 1, f: new Date(2026, 10, 12), kw: 'factura iva neto total pedido despacho ' + c.nombre },
+    { t: 'Guía de despacho 884.120', v: 1, f: new Date(2026, 10, 8), kw: 'guía transporte bultos camión patente ruta frío' },
+    { t: 'Nota de crédito 5.512', v: 1, f: new Date(2026, 10, 4), kw: 'devolución merma producto dañado crédito' },
+    { t: 'Carpeta tributaria (registro)', v: 2, f: new Date(2026, 9, 31), kw: 'sii giro rut inicio de actividades' },
+    { t: 'Contrato de crédito 30 días', v: 2, f: new Date(2026, 9, 27), kw: 'crédito 30 días límite mora garantía firma' }
+  ];
+
   L.route('/clientes/:id', {
     title: (p) => L.findClient(p.id)?.nombre || 'Ficha de cliente', parent: '/clientes', block: 'Gestión de terceros', module: 'M3 · M6 · M7 · M8 · M10', rf: ['RF-03.06', 'RF-04.07', 'RF-07.04', 'RF-08.03', 'RF-11.02', 'RF-17.08', 'RF-08.07', 'RNG-03', 'RF-07.10', 'RNF-09.03'], actors: ['Preventista', 'Gerente Comercial', 'Gerente de Finanzas'],
     render: ({ id }) => {
@@ -83,7 +92,7 @@
           <section class="card span-all"><div class="card-head"><h2>Calificar la visita</h2></div><form id="cf-rate" class="row" novalidate><fieldset><legend class="sr-only">Calificación</legend><div class="row">${[1, 2, 3, 4, 5].map((n) => `<label class="radio"><input type="radio" name="rt" value="${n}" ${n === 4 ? 'checked' : ''}> ${n} ★</label>`).join('')}</div></fieldset><input class="input" style="flex:1 1 240px" placeholder="Comentario (opcional)" aria-label="Comentario"><button type="submit" class="btn btn-secondary">Guardar evaluación</button></form></section>
         </div></div>
         <div ${L.panelAttrs('cf', 'his', 'res')}><div class="card"><ol class="timeline">${[...peds.map((p) => ({ t: `Pedido ${p.id} · ${p.estado}`, d: p.creado, m: fmt.clp(p.total), r: '/pedidos/' + p.id })), { t: 'Visita de preventa', d: '2026-11-10T10:00:00', m: 'Sandra Riffo · sin pedido (cliente con stock)' }, { t: 'Reclamo resuelto: producto dañado', d: '2026-11-03T12:30:00', m: 'Nota de crédito NC-5512' }, { t: 'Cambio de ventana de recepción', d: '2026-10-21T09:00:00', m: 'De 08:00–11:00 a ' + c.ventana }, { t: 'Aumento de límite de crédito', d: '2026-09-02T16:00:00', m: 'Aprobado por Finanzas' }].map((h, i) => `<li class="${i === 0 ? 'current' : 'done'}"><span class="dot"></span><div class="t-title">${h.r ? `<a href="#${h.r}">${esc(h.t)}</a>` : esc(h.t)}</div><div class="t-meta">${fmt.dt(h.d)} · ${esc(h.m)}</div></li>`).join('')}</ol></div></div>
-        <div ${L.panelAttrs('cf', 'doc', 'res')}><div class="card"><ul class="list">${['Factura electrónica 1.204.511', 'Guía de despacho 884.120', 'Nota de crédito 5.512', 'Carpeta tributaria (registro)', 'Contrato de crédito 30 días'].map((t, i) => `<li>${icon('file')}<span class="grow">${t}<span class="small muted" style="display:block">Versión ${i < 3 ? 1 : 2} · ${fmt.date(new Date(2026, 10, 12 - i * 4))}</span></span><button type="button" class="btn btn-tertiary btn-sm" data-dl>${icon('download', 'icon-sm')}Descargar</button></li>`).join('')}</ul></div></div>
+        <div ${L.panelAttrs('cf', 'doc', 'res')}><div class="card"><div class="field" style="margin-bottom:var(--sp-3)"><label for="doc-q">Buscar en documentos</label><div class="input-wrap">${icon('search')}<input id="doc-q" class="input" type="search" placeholder="Por nombre, número, versión, fecha o contenido (ej.: «30 días», «frío»)"></div></div><p class="small muted" id="doc-n" role="status" aria-live="polite"></p><ul class="list" id="doc-l">${DOCS(c).map((d, i) => `<li data-doc="${i}" data-kw="${esc((d.t + ' ' + d.kw + ' versión ' + d.v + ' ' + fmt.date(d.f)).toLowerCase())}">${icon('file')}<span class="grow">${d.t}<span class="small muted" style="display:block">Versión ${d.v} · ${fmt.date(d.f)}</span></span><button type="button" class="btn btn-tertiary btn-sm" data-pv="${i}" aria-label="Vista previa de ${esc(d.t)}">${icon('eye', 'icon-sm')}Vista previa</button><button type="button" class="btn btn-tertiary btn-sm" data-dl>${icon('download', 'icon-sm')}Descargar</button></li>`).join('')}</ul></div></div>
         <div ${L.panelAttrs('cf', 'env', 'res')}><div class="grid grid-2"><section class="card"><dl class="stat-list"><div><dt>Canastillos</dt><dd class="num" style="font-size:var(--fs-2xl)">${c.envases.canastillos}</dd></div><div><dt>Pallets</dt><dd class="num" style="font-size:var(--fs-2xl)">${c.envases.pallets}</dd></div></dl>${c.envases.canastillos > 40 ? L.alert('warning', 'Saldo sobre el umbral', 'Se notificó al preventista (RF-08.04).') : ''}</section>
           <section class="card"><h2>Movimientos recientes</h2>${L.charts.line(['Sem 41', 'Sem 42', 'Sem 43', 'Sem 44', 'Sem 45', 'Sem 46'], [{ name: 'Saldo de canastillos', values: [22, 26, 31, 29, 35, c.envases.canastillos] }], { h: 200, label: 'Saldo de canastillos por semana' })}</section></div></div>`;
     },
@@ -95,6 +104,13 @@
       if (!c) return;
       L.tabs($('.tabs', root));
       $$('[data-dl]', root).forEach((b) => (b.onclick = () => L.busy(b, () => L.toast('Documento descargado', '', 'success'), 500)));
+      // Preview without downloading, and search by metadata or content
+      const dl = $('#doc-l', root);
+      if (dl) {
+        const nz = (t) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+        $('#doc-q', root).oninput = (e) => { const q = nz(e.target.value.trim()); let n = 0; $$('[data-doc]', dl).forEach((li) => { const ok = !q || nz(li.dataset.kw).includes(q); li.hidden = !ok; if (ok) n++; }); $('#doc-n', root).textContent = q ? (n ? `${n} documento(s) coinciden con «${e.target.value.trim()}».` : 'Sin documentos para esa búsqueda.') : ''; };
+        $$('[data-pv]', root).forEach((b) => (b.onclick = () => { const d = DOCS(c)[+b.dataset.pv]; L.modal({ title: `Vista previa · ${d.t}`, size: 'lg', body: `<div class="card" style="box-shadow:none;background:var(--c-surface-2)"><p class="small muted" style="margin-top:0">Versión ${d.v} · ${fmt.date(d.f)} · solo lectura, sin descarga</p><h3 style="margin:0 0 8px">${esc(d.t)}</h3><dl class="desc-list"><dt>Cliente</dt><dd>${esc(c.nombre)}</dd><dt>RUT</dt><dd class="mono">${c.rut}</dd><dt>Emisor</dt><dd>Distribuidora Puelche S.A.</dd><dt>Contenido</dt><dd class="small">${esc(d.kw)}</dd></dl></div>`, actions: [{ label: 'Descargar', cls: 'btn-secondary', onClick: () => L.toast('Documento descargado', '', 'success') }, { label: 'Cerrar', cls: 'btn-primary' }] }); }));
+      }
       $('#cf-rate', root).onsubmit = (e) => { e.preventDefault(); L.toast('Evaluación guardada', 'Se suma al historial del cliente.', 'success'); };
       // Price exceptions per client or chain (RF-03.11)
       const cadena = c.canal === 'Moderno' ? c.nombre.split(' · ')[0] : '';
@@ -163,7 +179,7 @@
   L.route('/portal/cuenta', {
     title: 'Estado de cuenta', parent: '/inicio', block: 'Gestión de terceros', module: 'Portal de clientes · M7', rf: ['RF-07.07', 'RF-12.17', 'RF-12.18', 'RF-18.01'], actors: ['Clientes'],
     render: () => `<div class="page-head"><div class="titles"><h1>Estado de cuenta</h1></div><div class="actions"><button type="button" class="btn btn-secondary" id="pc-sign">Firmar acuerdo</button><button type="button" class="btn btn-secondary" id="pc-evidence">Mis firmas</button><button type="button" class="btn btn-primary" id="pc-pay">${icon('cash')}Pagar saldo</button></div></div>
-      <div class="grid grid-3" style="margin-bottom:var(--sp-5)"><div class="card kpi"><span class="label">Saldo por pagar</span><span class="value">${fmt.clp(188000)}</span></div><div class="card kpi"><span class="label">Vencido</span><span class="value">${fmt.clp(0)}</span></div><div class="card kpi"><span class="label">Crédito disponible</span><span class="value">${fmt.clp(612000)}</span></div></div>
+      <div class="grid grid-3" style="margin-bottom:var(--sp-5)"><div class="card kpi"><span class="label">Saldo por pagar</span><span class="value">${fmt.clp(L.store.get('cuenta.saldo', 188000))}</span></div><div class="card kpi"><span class="label">Vencido</span><span class="value">${fmt.clp(0)}</span></div><div class="card kpi"><span class="label">Crédito disponible</span><span class="value">${fmt.clp(612000 + 188000 - L.store.get('cuenta.saldo', 188000))}</span></div></div>
       <section class="card"><div class="card-head"><h2>Antigüedad de la deuda</h2></div>${L.charts.bar([{ label: 'Por vencer', value: 142000 }, { label: '1–30 días', value: 46000 }, { label: '31–60 días', value: 0 }, { label: '+60 días', value: 0 }], { unit: '$', label: 'Deuda por tramo', h: 220 })}</section>`,
     mount: (root) => {
       $('#pc-sign', root).onclick = () => L.signDocument('Acuerdo de cuenta · Almacén Doña Rosa · versión 1');
@@ -172,7 +188,16 @@
         if (records.length) L.showSignature(records[records.length - 1]);
         else L.toast('Sin firmas', 'Firme un acuerdo para consultar su evidencia.', 'info');
       };
-      $('#pc-pay', root).onclick = () => L.modal({ title: 'Pagar saldo', body: `<p>Será redirigido a la plataforma de pagos para pagar <strong>${fmt.clp(188000)}</strong> (RF-12.30).</p><p class="small muted">Prototipo: no se realiza ningún cargo.</p>`, actions: [{ label: 'Cancelar' }, { label: 'Continuar al pago', cls: 'btn-primary', onClick: () => L.toast('Pago simulado', 'Comprobante enviado a su correo.', 'success') }] }); }
+      // Webpay Plus (Transbank): approved and rejected outcomes (RF-12.30)
+      $('#pc-pay', root).onclick = () => {
+        const saldo = L.store.get('cuenta.saldo', 188000);
+        const pagados = L.store.get('cuenta.pedidosPagados', []);
+        const auto = D.pedidos.filter((p) => p.cliente === 'CL-10021' && !pagados.includes(p.id) && p.estado !== 'Rendido').slice(0, 2);
+        const opts = [...auto.map((p) => ({ v: p.id, label: `Pedido de autoservicio ${p.id}`, monto: p.total })), ...(saldo > 0 ? [{ v: 'saldo', label: 'Saldo de la cuenta corriente', monto: saldo }] : [])];
+        if (!opts.length) { L.toast('Sin montos por pagar', 'Su cuenta está al día.', 'info'); return; }
+        L.modal({ title: 'Pagar con Transbank', body: `<p>Será redirigido a <strong>Webpay Plus de Transbank</strong> para pagar con tarjeta de débito o crédito (RF-12.30).</p><fieldset><legend>¿Qué desea pagar?</legend>${opts.map((o, i) => `<label class="radio"><input type="radio" name="tb" value="${o.v}" data-m="${o.monto}" ${i === 0 ? 'checked' : ''}> ${esc(o.label)} · <strong>${fmt.clp(o.monto)}</strong></label>`).join('')}</fieldset><div id="tb-res" style="margin-top:12px" aria-live="polite"></div><p class="small muted">Prototipo: ambiente de integración de Transbank; no se realiza ningún cargo. Use «Simular rechazo» para ver el caso de tarjeta rechazada.</p>`,
+          actions: [{ label: 'Cancelar' }, { label: 'Simular rechazo', onClick: (api) => { $('#tb-res', api.el).innerHTML = L.alert('danger', 'Transbank rechazó la transacción', 'Código -1: tarjeta rechazada por el emisor. No se hizo ningún cargo y su saldo no cambió. Pruebe con otra tarjeta.'); return false; } }, { label: 'Pagar con Webpay', cls: 'btn-primary', onClick: (api) => { const ch = $('[name=tb]:checked', api.el), m = +ch.dataset.m; if (ch.value === 'saldo') L.store.set('cuenta.saldo', Math.max(0, saldo - m)); else L.store.set('cuenta.pedidosPagados', [...pagados, ch.value]); L.toast('Pago aprobado por Transbank', `${fmt.clp(m)} · autorización ${String(Math.abs(m * 7) % 900000 + 100000)} · comprobante enviado a su correo.`, 'success'); L.router.resolve(); } }] });
+      }; }
   });
 
   /* ---------- Canal moderno EDI (M11) ---------- */

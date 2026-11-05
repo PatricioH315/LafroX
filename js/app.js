@@ -45,6 +45,7 @@
       { path: '/admin/usuarios', label: 'Personas usuarias', icon: 'users' },
       { path: '/admin/roles', label: 'Roles y permisos', icon: 'key' },
       { path: '/admin/parametros', label: 'Parámetros', icon: 'sliders' },
+      { path: '/admin/flujos', label: 'Flujos de aprobación', icon: 'route' },
       { path: '/admin/auditoria', label: 'Auditoría', icon: 'history' }
     ] }
   ];
@@ -140,7 +141,7 @@
       <header class="topbar">
         <button type="button" class="btn btn-tertiary btn-icon menu-toggle" aria-label="Abrir menú" aria-controls="sidebar" aria-expanded="false" data-open-nav>${icon('menu')}</button>
         <div class="combo" style="flex:1 1 auto;max-width:520px">
-          <div class="input-wrap">${icon('search')}<label class="sr-only" for="gsearch">Búsqueda global</label><input id="gsearch" class="input" type="search" placeholder="Buscar cliente, pedido, ruta o pantalla…  ( / )"></div>
+          <div class="input-wrap">${icon('search')}<label class="sr-only" for="gsearch">Búsqueda global</label><input id="gsearch" class="input" type="search" placeholder="Buscar cliente, pedido, ruta o pantalla…  ( / )" title="Filtre por tipo: cliente:, pedido:, ruta:, lote: o pantalla:"></div>
         </div>
         <span class="grow"></span>
         <span id="net-ind"></span>
@@ -273,6 +274,8 @@
     L.signIn(pid);
     const next = L.store.get('next', '') || '/inicio';
     L.store.set('next', '');
+    // Profiles that require a second factor (RF-15.03) also do so through the shortcut
+    if (L.profile(pid).mfa) { L.store.set('pending2fa', next); L.go('/verificacion'); return; }
     L.toast('Sesión iniciada', `${L.profile(pid).actor}: ${L.profile(pid).name}`, 'success');
     L.go(L.session().first ? '/bienvenida' : next);
   };
