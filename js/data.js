@@ -199,7 +199,7 @@
     { id: 'L2611-52', sku: D.productos[10].sku, producto: 'Yogur batido frutilla · 125 g', proveedor: 'Lácteos del Sur S.A.', recepcion: day(-9), vence: day(19), unidades: 28800, clientes: 486, estado: 'Retenido', temp: 'Refrigerado' },
     { id: 'L2610-88', sku: D.productos[15].sku, producto: 'Helado vainilla · 1 L', proveedor: 'Heladería Andina Ltda.', recepcion: day(-20), vence: day(240), unidades: 3600, clientes: 141, estado: 'Liberado', temp: 'Congelado' },
     { id: 'L2611-03', sku: D.productos[13].sku, producto: 'Jamón de pavo · 250 g', proveedor: 'Cecinas Centinela', recepcion: day(-6), vence: day(24), unidades: 6200, clientes: 208, estado: 'En evaluación', temp: 'Refrigerado' },
-    { id: 'L2611-21', sku: D.productos[11].sku, producto: 'Queso gauda laminado · 250 g', proveedor: 'Lácteos del Sur S.A.', recepcion: day(-4), vence: day(46), unidades: 5400, clientes: 0, estado: 'Liberado', temp: 'Refrigerado' },
+    { id: 'L2611-21', sku: D.productos[11].sku, producto: 'Queso gauda laminado · 250 g', proveedor: 'Lácteos del Sur S.A.', recepcion: day(-4), vence: day(46), unidades: 5400, clientes: 156, estado: 'Liberado', temp: 'Refrigerado' },
     { id: 'L2610-64', sku: D.productos[17].sku, producto: 'Hamburguesas de vacuno · 4 u', proveedor: 'Frigorífico Ñuble', recepcion: day(-25), vence: day(150), unidades: 4800, clientes: 97, estado: 'Liberado', temp: 'Congelado' }
   ];
 
@@ -236,7 +236,7 @@
 
   D.parametros = [
     { grupo: 'Crédito y cobranza (RNG-03)', items: [{ id: 'cred-umbral', label: 'Umbral de bloqueo sobre límite de crédito', valor: 10, unidad: '%', rf: 'RF-03.09' }, { id: 'mora-dias', label: 'Días de mora para bloqueo', valor: 30, unidad: 'días', rf: 'RF-07.05' }] },
-    { grupo: 'Cadena de frío (RNG-04, RNG-17)', items: [{ id: 'frio-ref', label: 'Excursión crítica en refrigerados', valor: 8, unidad: '°C por 20 min', rf: 'RF-09.10' }, { id: 'anden-max', label: 'Tiempo máximo fuera de frío en andén', valor: 25, unidad: 'min', rf: 'RF-09.11' }] },
+    { grupo: 'Cadena de frío (RNG-04, RNG-17)', items: [{ id: 'frio-ref', label: 'Desviación crítica sobre la consigna en refrigerados', valor: 2, unidad: '°C por 15 min', rf: 'RF-09.05, RF-09.10' }, { id: 'anden-max', label: 'Tiempo máximo fuera de frío en andén', valor: 25, unidad: 'min', rf: 'RF-09.11' }] },
     { grupo: 'Rutas y entregas (RNG-05, RNG-14, RNG-15)', items: [{ id: 'ventana', label: 'Ventana informada al cliente', valor: 30, unidad: 'min', rf: 'RF-04.06' }, { id: 'ocup-min', label: 'Ocupación mínima de camión al salir', valor: 70, unidad: '%', rf: 'RNG-14' }, { id: 'corte', label: 'Hora de corte para promesa 24 h', valor: '14:00', unidad: 'h', rf: 'RNG-15' }, { id: 'desvio', label: 'Alerta de desvío de ruta', valor: 3, unidad: 'km', rf: 'RF-14.03' }] },
     { grupo: 'Vida útil y FEFO (RF-02.09)', items: [{ id: 'vida-umbral', label: 'Alerta cuando la vida útil remanente baja de', valor: 30, unidad: 'días', rf: 'RF-02.09' }] },
     { grupo: 'Lectura de temperatura por tipo de producto (RNF-09.05)', items: [{ id: 'lec-ref-cam', label: 'Refrigerados · cámara', valor: 5, unidad: 'min', rf: 'RF-09.03' }, { id: 'lec-con-cam', label: 'Congelados · cámara', valor: 5, unidad: 'min', rf: 'RF-09.03' }, { id: 'lec-ref-tru', label: 'Refrigerados · camión', valor: 15, unidad: 'min', rf: 'RF-09.04' }, { id: 'lec-con-tru', label: 'Congelados · camión', valor: 10, unidad: 'min', rf: 'RF-09.04' }] },

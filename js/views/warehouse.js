@@ -3,7 +3,7 @@
   const { esc, icon, $, $$, data: D, fmt } = L;
 
   // Ficha maestra de producto con sus atributos obligatorios (RF-01.10) y equivalencias (RNG-11)
-  const RANGE = { Seco: [15, 25], Refrigerado: [0, 8], Congelado: [-25, -18] };
+  const RANGE = { Seco: [15, 25], Refrigerado: [2, 8], Congelado: [-25, -18] };
 
   // CD sin enlace con la nube: la puerta local sostiene inventario, movimientos, conteos y consultas hasta 24 h (RNF-02.01)
   const cd = () => L.store.get('cd.offline', null);

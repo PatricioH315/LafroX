@@ -86,7 +86,7 @@
       /* Paso 1 · Preventa sin conexión */
       function preventa(b) {
         const c = O.cli;
-        const over = total(O) + c.vencida > c.credito * 0.4;
+        const over = total(O) + c.vencida > c.credito;
         b.innerHTML = `
           <div class="net-banner ${O.offline ? 'offline' : 'online'}" style="border-radius:var(--radius-sm);margin-bottom:var(--sp-4)">${icon(O.offline ? 'wifi-off' : 'wifi')}<span class="grow">${O.offline ? 'Sin señal en el local: el pedido se guarda en el dispositivo' : 'En línea: stock y crédito en tiempo real'}</span><label class="switch"><input type="checkbox" id="pv-net" ${O.offline ? '' : 'checked'} aria-label="Simular conectividad"> <span class="small">Señal</span></label></div>
           <div class="grid grid-3" style="margin-bottom:var(--sp-4)">

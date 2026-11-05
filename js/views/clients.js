@@ -323,7 +323,7 @@
   L.route('/portal/transportista', {
     title: 'Portal de transportistas', parent: '/inicio', block: 'Gestión de terceros', module: 'Portal de transportistas (canal M11) · M4 · M6 · M12', rf: ['RF-12.19', 'RF-12.20', 'RF-12.21', 'RF-06.08', 'RF-14.05'], actors: ['Empresa transportista'],
     render: () => `<div class="page-head"><div class="titles"><span class="page-kicker">Transportes Maule Ltda.</span><h1>Portal de transportistas</h1><p class="muted" style="margin:0">Rutas asignadas para mañana, documentación de despacho y asignación de conductor y vehículo.</p></div></div>
-      ${L.alert('warning', 'Confirme antes de las 18:00', 'Las rutas sin conductor y vehículo confirmados vuelven a despacho para reasignación (RF-12.21).')}
+      ${L.alert('warning', 'Confirme antes de las 18:00', 'Si no confirma, se mantiene la asignación planificada como supuesto no verificado y despacho la revisa antes de la salida (RF-12.21).')}
       <div style="height:16px"></div>
       ${L.tabsHtml('tp', [{ id: 'rutas', label: 'Rutas de mañana' }, { id: 'docs', label: 'Documentación' }, { id: 'cond', label: 'Conductores' }], 'rutas')}
       <div ${L.panelAttrs('tp', 'rutas', 'rutas')}><div class="card card-flush"><div class="table-wrap"><table class="table"><caption class="sr-only">Rutas asignadas a la empresa</caption><thead><tr><th>Ruta</th><th>Zona</th><th>Fecha</th><th class="right">Entregas</th><th>Frío</th><th>Conductor</th><th>Vehículo</th><th>Estado</th><th><span class="sr-only">Acción</span></th></tr></thead><tbody id="tp-body"></tbody></table></div></div></div>
@@ -333,7 +333,7 @@
       L.tabs($('.tabs', root));
       const rows = D.rutas.filter((r) => r.externo).map((r, i) => ({ ...r, fecha: 'Sáb 14-11', confirmada: i === 0, conductorAsig: i === 0 ? DRIVERS[0] : '', camionAsig: i === 0 ? r.camion : '' }));
       const draw = () => {
-        $('#tp-body', root).innerHTML = rows.map((r) => `<tr><td class="mono">${r.id}</td><td>${esc(r.zona)}</td><td>${r.fecha}</td><td class="num right">${r.paradas}</td><td>${r.frio ? L.badge('Sí', 'info') : '—'}</td><td>${esc(r.conductorAsig || '—')}</td><td class="mono">${esc(r.camionAsig || '—')}</td><td>${L.badge(r.confirmada ? 'Confirmada' : 'Por confirmar', r.confirmada ? 'success' : 'warning')}</td><td class="right"><button type="button" class="btn ${r.confirmada ? 'btn-tertiary' : 'btn-primary'} btn-sm" data-asg="${r.id}">${r.confirmada ? 'Cambiar' : 'Asignar'}<span class="sr-only"> conductor y vehículo de ${r.id}</span></button></td></tr>`).join('');
+        $('#tp-body', root).innerHTML = rows.map((r) => `<tr><td class="mono">${r.id}</td><td>${esc(r.zona)}</td><td>${r.fecha}</td><td class="num right">${r.paradas}</td><td>${r.frio ? L.badge('Sí', 'info') : '—'}</td><td>${r.confirmada ? esc(r.conductorAsig) : `${esc(r.conductor)}<div class="small muted">Planificado, sin verificar</div>`}</td><td class="mono">${esc(r.confirmada ? r.camionAsig : r.camion)}</td><td>${L.badge(r.confirmada ? 'Confirmada' : 'Supuesto no verificado', r.confirmada ? 'success' : 'warning')}</td><td class="right"><button type="button" class="btn ${r.confirmada ? 'btn-tertiary' : 'btn-primary'} btn-sm" data-asg="${r.id}">${r.confirmada ? 'Cambiar' : 'Asignar'}<span class="sr-only"> conductor y vehículo de ${r.id}</span></button></td></tr>`).join('');
         $$('[data-asg]', root).forEach((b) => (b.onclick = () => assign(rows.find((x) => x.id === b.dataset.asg))));
       };
       const assign = (r) => L.modal({
