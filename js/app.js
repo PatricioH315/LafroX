@@ -62,6 +62,44 @@
     const top = '/' + path.split('/').filter(Boolean).slice(0, path.startsWith('/admin') || path.startsWith('/portal') || path.startsWith('/terreno/') ? 2 : 1).join('/');
     return ALWAYS.includes(top) || p.menu.includes(top) || p.menu.includes(path);
   };
+  /* Action-level permissions (RF-15.04; SD4 4.1: an actor related to a module does not see all its functions).
+     The menu says which screens a profile opens; this matrix says what it may do inside them. */
+  const PERM = {
+    'cliente.bloquear': ['comercial', 'finanzas'],
+    'cliente.cartera': ['comercial', 'finanzas'],
+    'cliente.segmentar': ['comercial', 'finanzas'],
+    'cliente.crear': ['comercial', 'preventista'],
+    'cliente.editar': ['comercial', 'preventista'],
+    'cliente.ventana': ['comercial', 'planificador'],
+    'precio.excepcion': ['comercial'],
+    'pedido.anular': ['comercial', 'gerente-ops'],
+    'pedido.asignar': ['planificador', 'gerente-ops'],
+    'pedido.autorizar': ['finanzas'],
+    'pedido.facturar': ['comercial'],
+    'ruta.planificar': ['planificador', 'gerente-ops'],
+    'ruta.aprobar': ['planificador'],
+    'prep.misiones': ['bodega'],
+    'recepcion.registrar': ['bodega'],
+    'recepcion.ubicar': ['bodega', 'preparador'],
+    'erp.simular': ['bodega'],
+    'inv.gestionar': ['bodega'],
+    'inv.reposicion': ['bodega', 'gerente-ops'],
+    'inv.ficha': ['gerente-ops'],
+    'xd.causa': ['bodega', 'gerente-ops'],
+    'dev.registrar': ['conductor', 'conductor-ext', 'bodega'],
+    'dev.recepcionar': ['bodega'],
+    'dev.destino': ['bodega'],
+    'dev.nc': ['finanzas', 'bodega'],
+    'calidad.disponer': ['calidad'],
+    'calidad.retiro': ['calidad'],
+    'geocerca.gestionar': ['gerente-ops'],
+    'rend.gestionar': ['finanzas'],
+    'edi.gestionar': ['comercial']
+  };
+  L.perm = PERM;
+  L.can = (act) => { const p = L.me(); return !!p && (p.all || (PERM[act] || []).includes(p.id)); };
+  // Short notice for screens where the profile only consults
+  L.readOnly = (txt) => L.alert('info', 'Solo consulta para su perfil', txt || 'Las acciones de esta pantalla las ejecutan los perfiles responsables (RF-15.04).');
   L.signIn = (profileId, { remember = true } = {}) => {
     const first = !L.store.get('seen.' + profileId, false);
     L.setSession({ profile: profileId, at: Date.now(), first });
@@ -167,16 +205,18 @@
     $('[data-close-nav]').onclick = () => toggleNav(false);
     $('#nav').addEventListener('click', (e) => { if (e.target.closest('a') && !isDesktop()) toggleNav(false); });
 
-    const quickItems = () => [
-      { title: 'Acciones rápidas' },
-      { label: 'Nuevo pedido de preventa', icon: 'cart', kbd: 'P', onClick: () => L.go('/flujo') },
-      { label: 'Registrar devolución', icon: 'undo', kbd: 'D', onClick: () => L.go('/devoluciones/nueva') },
-      { label: 'Simulacro de retiro sanitario', icon: 'shield', onClick: () => L.go('/calidad/retiro') },
-      { label: 'Registrar recepción', icon: 'download', onClick: () => L.go('/recepcion/nueva') },
-      { label: 'Invitar persona usuaria', icon: 'users', onClick: () => L.go('/admin/usuarios?nuevo=1') },
-      { sep: true },
-      { label: 'Exportar informe del día', icon: 'download', onClick: () => L.go('/analitica?exportar=1') }
-    ];
+    // Only the quick actions the profile can open and execute (RF-15.04)
+    const quickItems = () => {
+      const items = [
+        { label: 'Nuevo pedido de preventa', icon: 'cart', kbd: 'P', path: '/flujo' },
+        { label: 'Registrar devolución', icon: 'undo', kbd: 'D', path: '/devoluciones/nueva', act: 'dev.registrar' },
+        { label: 'Simulacro de retiro sanitario', icon: 'shield', path: '/calidad/retiro', act: 'calidad.retiro' },
+        { label: 'Registrar recepción', icon: 'download', path: '/recepcion/nueva', act: 'recepcion.registrar' },
+        { label: 'Invitar persona usuaria', icon: 'users', path: '/admin/usuarios?nuevo=1' },
+        { label: 'Exportar informe del día', icon: 'download', path: '/analitica?exportar=1' }
+      ].filter((i) => L.allowed(i.path.split('?')[0]) && (!i.act || L.can(i.act))).map((i) => ({ label: i.label, icon: i.icon, kbd: i.kbd, onClick: () => L.go(i.path) }));
+      return [{ title: 'Acciones rápidas' }, ...(items.length ? items : [{ label: 'Sin acciones rápidas para su perfil', icon: 'info', onClick: () => {} }])];
+    };
     L.menu($('#quick'), quickItems);
     L.menu($('#quick-sm'), quickItems);
 
