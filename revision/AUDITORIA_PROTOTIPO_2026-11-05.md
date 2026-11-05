@@ -24,7 +24,13 @@ Fecha: 05-11-2026. Rama `LafroX-Prototipo-HTML`, commit local `5b727c25`.
 
 - **C1 y C2 corregidos**: se publicó el commit `5b727c25` y los scripts y estilos llevan versión (`?v=`).
 - **C3 corregido**: `L.can(acción)` en `js/app.js` define, con la matriz `PERM`, quién ejecuta cada acción. Se aplica en clientes, pedidos, rutas, preparación, rendición, recepción, inventario, devoluciones, calidad, telemetría, canal moderno y acciones rápidas. Los perfiles sin la acción ven solo consulta. La Preventista y el Preparador ahora tienen `/flujo`, porque sus pantallas enlazan a él. Se verificaron 154 pantallas en los 16 perfiles, sin errores.
-- Pendientes: C4, C5 y C6.
+- **C4 y C5 corregidos**: `L.portalCliente()` asocia cada perfil de cliente a su propia ficha, y `L.portalCuenta()` calcula el saldo, lo vencido, el crédito y las facturas desde ella. Con esto:
+  - El estado de cuenta tiene una cartola con facturas pendientes por tramo, descargable en PDF (vista para imprimir) y en Excel (CSV) (RF-07.07).
+  - Una pestaña de documentos tributarios descarga facturas, guías y notas de crédito en XML y PDF (RF-12.17).
+  - «Mis entregas» muestra los pedidos reales del cliente, con POD y la temperatura del envío refrigerado, descargable (RF-09.04).
+  - Al pedir en el portal se valida el stock disponible (RF-12.15).
+  - Para que el cliente tradicional tenga algo que mostrar, se agregaron 3 entregas pasadas de Almacén Doña Rosa, marcadas `hist`, que no aparecen en la ruta de hoy.
+- Pendiente: C6.
 
 ## 2. Bases Técnicas y Administrativas (Cap. 25, Cap. 13, Art. 26°)
 
