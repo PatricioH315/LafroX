@@ -315,3 +315,25 @@ En escritorio, `/terreno` y `/terreno/preventa` dibujaban un teléfono: marco ne
 - Flujo completo de reparto (entrega, sin conexión, cola y reporte de cierre) y de preventa.
 - Cinco tamaños sin desplazamiento horizontal y controles de 44 px o más.
 - 151 pantallas de los 16 perfiles sin errores.
+
+## 13. Tercer contraste con las bases y el Caso 02 (05-11-2026)
+
+Se volvió a leer el caso (capítulos 8, 9, 10, 15 y 16.1) buscando situaciones concretas que el prototipo aún no mostraba.
+
+| Situación del caso o requisito | Qué se agregó | Dónde |
+|---|---|---|
+| Entrevista a Hugo: el conocimiento de rutas vive en su cabeza (8, 16.1) | Las restricciones semilla son ahora las de su entrevista: puente a Pelluhue sin camión grande, Minimarket Villa Alegre antes de las 11:00 y cliente de Longaví sin conductores nuevos | `/rutas/restricciones` |
+| «Cada corrección enseña algo al sistema» (9.3) | Si el planificador mueve una entrega y aprueba, se le pide el motivo y puede guardarlo como restricción «Por validar» | `/flujo`, paso 3 |
+| Entrevista a Sandra: lo que ve en la góndola se pierde | «Registrar lo que vi en la góndola»: producto vencido (se registra como merma de góndola del cliente), exhibidor de la competencia, local por cerrar, faltante. Queda en auditoría y funciona sin conexión | App de preventa |
+| Efectivo a bordo como riesgo (16.1, 9.7, entrevista al conductor) | Indicador «Efectivo a bordo» y aviso al superar el parámetro nuevo «Límite de efectivo a bordo por camión» ($800.000) | App de reparto, `/admin/parametros` |
+| RT-16.21, avisos por el canal del cliente | Canal de avisos por cliente (SMS, WhatsApp, correo o llamada del preventista), editable con auditoría y usado en la vista previa del aviso de ruta | Ficha del cliente, `/flujo` paso 3 |
+| RT-17.06, periféricos de bodega | Campo «Peso en balanza» con «Leer balanza» y comparación con el peso teórico | `/recepcion/nueva` |
+| Reposición con estacionalidad y plazo de proveedor (9.10) | Columnas «Plazo» y «Estacionalidad» en la sugerencia de reposición | `/inventario` |
+| RT-05.10, retención por tipo de dato (15) | Temperatura 5 años, evidencia de entrega 6 años, documentos tributarios 6 años, geolocalización de personas 12 meses | `/admin/auditoria` |
+| RT-10.05, ventanas protegidas | Aviso de que los cambios aprobados se aplican fuera de 05:30–07:00, del 1 al 25 de septiembre, de diciembre y de los tres primeros días hábiles | `/admin/parametros` |
+| Restricción 11 y RT-22.04, rotación del turno noche (38 %) | «Modo guiado para personal nuevo» en el picking, con instrucciones paso a paso para la siguiente línea | `/flujo`, paso 4 |
+
+**Verificación:**
+- Cada flujo nuevo se probó con su perfil: planificador, evaluación, preventista, conductor, comercial, bodega y TI.
+- 222 pantallas de los 16 perfiles: 0 errores, 0 códigos de requisito visibles, 0 nombres técnicos y 0 enlaces fuera de perfil.
+- En 375 px, ninguna de las pantallas tocadas tiene desplazamiento horizontal y los controles nuevos miden 44 px o más.
