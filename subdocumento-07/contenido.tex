@@ -2,6 +2,29 @@
 
 \label{cap:subdoc07}
 
+
+% Continuaciones de una misma figura: conserva números, etiquetas y lista de figuras.
+\newcounter{laminaGanttLocal}
+\newcommand{\figuraGanttLocal}[4]{%
+  \begingroup
+  \setcounter{laminaGanttLocal}{1}%
+  \loop
+    \clearpage
+    \begin{anexohorizontal}
+      \centering
+      \includegraphics[width=\linewidth]{#1-\arabic{laminaGanttLocal}.pdf}\par
+      \captionsetup{hypcap=false}
+      \ifnum\value{laminaGanttLocal}=1
+        \captionof{figure}{#3}\label{#4}%
+      \else
+        \captionof*{figure}{Figura \ref{#4} (continuación \arabic{laminaGanttLocal} de #2). #3}%
+      \fi
+    \end{anexohorizontal}
+    \stepcounter{laminaGanttLocal}%
+  \ifnum\value{laminaGanttLocal}<\numexpr#2+1\relax
+  \repeat
+  \endgroup\clearpage}
+
 \newcommand{\figuraDiagramaHorizontal}[4][0pt]{%
   \par\clearpage
   \begin{anexohorizontal}
@@ -21,6 +44,27 @@
   \captionof{figure}{#2}\label{#3}
   \vspace*{\fill}
   \clearpage}
+
+
+
+% La EDT conserva sus figuras; el detalle continúa en páginas sucesivas.
+\newcounter{laminaEDTLocal}
+\newcommand{\figuraEDTLocal}[4]{%
+  \begingroup\setcounter{laminaEDTLocal}{1}%
+  \loop
+    \ifnum\value{laminaEDTLocal}>1\clearpage\fi
+    \par\begin{center}\begin{minipage}{\linewidth}\centering
+      \includegraphics[width=\linewidth]{#1-\arabic{laminaEDTLocal}.pdf}\par
+      \captionsetup{hypcap=false}
+      \ifnum\value{laminaEDTLocal}=1
+        \captionof{figure}{#3}\label{#4}%
+      \else
+        \captionof*{figure}{Figura \ref{#4} (continuación \arabic{laminaEDTLocal} de #2). #3}%
+      \fi
+    \end{minipage}\end{center}\stepcounter{laminaEDTLocal}%
+  \ifnum\value{laminaEDTLocal}<\numexpr#2+1\relax\repeat
+  \endgroup\par}
+
 
 \newcommand{\figuraEDTbase}[6]{%
   \par\begin{center}
@@ -66,7 +110,7 @@ La sección 7.1 descompone el 100 \% del alcance en una estructura de descomposi
 
 El capítulo se apoya en otros tres capítulos de la oferta: el Capítulo 3 (Subdocumento 3) fija el alcance de cada etapa y los criterios de olas y estabilización; el Capítulo 4 (Subdocumento 4) define los módulos M1 a M12 y las interfaces que la EDT construye; y el Capítulo 6 (Subdocumento 6) establece el proceso de desarrollo cuyas fases organizan la EDT y la gestión del proyecto que la controla. El detalle va en tres formularios y un archivo de anexos: el Formulario T-14 contiene la EDT completa, su diccionario y la carta Gantt; el Formulario T-15, el método de estimación y programación, la ruta crítica y los frentes de trabajo; el Formulario T-18, la implantación y la puesta en marcha controlada, con una propuesta de calendario, dotación y decisiones en su sección 6; y los Anexos 7.A a 7.F, los listados de apoyo y la preparación de riesgos.
 
-En este capítulo, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas Transversales y las Bases Técnicas del caso.
+En este capítulo, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas Transversales y las Bases Técnicas del caso. SD seguido de un número identifica el Subdocumento correspondiente. EDT significa estructura de descomposición del trabajo; PT, paquete de trabajo; HH, horas hombre; y E1/E2, Etapas 1 y 2. En las cartas Gantt, RC identifica los elementos marcados como ruta crítica en la fuente de programación y PT/H identifica los demás paquetes e hitos. H1–H12 son los hitos del Formulario E-25 y F1–F8, los frentes de trabajo. QA designa el ambiente de calidad; SRE, el equipo de operación e ingeniería de fiabilidad; NOC, el centro de operaciones; SOC, el centro de operaciones de seguridad; y DTE, los documentos tributarios electrónicos.
 
 \section{EDT}
 
@@ -100,7 +144,7 @@ Las fases de desarrollo (1 a 4) se recorren una vez por etapa; las fases 5 a 7 l
 
 \subsection{Estructura general}
 
-Las láminas siguientes desglosan las cuentas de control y los paquetes por fase. Cada imagen se presenta inmediatamente después de su descripción. La fase 3 se divide en cinco láminas para facilitar la lectura: las dos primeras separan la base técnica de los módulos de la Etapa 1; las tres restantes muestran las cuentas 3.5 a 3.11, con una lámina adicional para ampliar los paquetes de innovación de la cuenta 3.10.
+Las figuras siguientes desglosan las cuentas de control y los paquetes por fase. Cada figura está precedida por su descripción y puede continuar en varias láminas. La fase 3 se presenta en cinco figuras: base técnica, módulos de la Etapa 1, cuentas 3.5 a 3.8, cuentas 3.9 a 3.11 y detalle de los paquetes de innovación de la cuenta 3.10.
 
 \subsubsection{Fase 1. Inicio}
 
@@ -108,15 +152,15 @@ La fase de Inicio define el proyecto, fija su alcance y planificación y estable
 
 La Figura \ref{fig:7-edt-fase-1a} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDTAmpliada[0pt]{imagenes/Imagenes de la edt/EDT-Fase 1 (1 de 2).drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-01}{2}
   {Fase 1 — Inicio, primera parte: cuentas 1.1 a 1.5. Fuente: (Formulario T-14).}
   {fig:7-edt-fase-1a}
 
-La primera lámina contiene los paquetes 1.2.2 y 1.2.3, que documentan las reglas de ruteo capturadas al planificador y las interfaces sin documentación del sistema de gestión. La segunda lámina completa Inicio con las cuentas 1.6 a 1.9: gestión de riesgos, reversibilidad, gobierno y control, y cumplimiento normativo y contractual. Incluye los comités del artículo 71 de las Bases Administrativas (p. 37), el informe de valor ganado y el tablero (RT-19.06 a RT-19.09).
+La primera figura contiene los paquetes 1.2.2 y 1.2.3, que documentan las reglas de ruteo capturadas al planificador y las interfaces sin documentación del sistema de gestión. La segunda figura completa Inicio con las cuentas 1.6 a 1.9: gestión de riesgos, reversibilidad, gobierno y control, y cumplimiento normativo y contractual. Incluye los comités del artículo 71 de las Bases Administrativas (p. 37), el informe de valor ganado y el tablero (RT-19.06 a RT-19.09).
 
 La Figura \ref{fig:7-edt-fase-1b} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDT[0pt]{imagenes/Imagenes de la edt/EDT-Fase 1 (2 de 2).drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-02}{2}
   {Fase 1 — Inicio, segunda parte: cuentas 1.6 a 1.9, desde riesgos hasta cumplimiento contractual. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-1b}
 
@@ -124,11 +168,11 @@ Estas cuentas completan Inicio: identifican los riesgos y la reversibilidad, est
 
 \subsubsection{Fase 2. Elaboración}
 
-Elaboración diseña la solución antes de programar: arquitectura lógica y física, datos trazables por lote, seguridad, sala técnica de Talca, continuidad y experiencia de usuario. La aprobación de arquitectura, seguridad y modelo de datos corresponde al H2 del mes 4. La primera lámina muestra las cuentas 2.1 a 2.3.
+Elaboración diseña la solución antes de programar: arquitectura lógica y física, datos trazables por lote, seguridad, sala técnica de Talca, continuidad y experiencia de usuario. La aprobación de arquitectura, seguridad y modelo de datos corresponde al H2 del mes 4. La primera figura muestra las cuentas 2.1 a 2.3.
 
 La Figura \ref{fig:7-edt-fase-2a} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDTReducida[260pt]{imagenes/Imagenes de la edt/EDT-Fase 2 (1 de 2).drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-03}{1}
   {Fase 2 — Elaboración, primera parte: arquitectura, seguridad y sala técnica, cuentas 2.1 a 2.3. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-2a}
 
@@ -136,7 +180,7 @@ La continuación cubre la validación de diseños, continuidad del negocio y exp
 
 La Figura \ref{fig:7-edt-fase-2b} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDTReducida[0pt]{imagenes/Imagenes de la edt/EDT-Fase 2 (2 de 2).drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-04}{1}
   {Fase 2 — Elaboración, segunda parte: validación, continuidad y experiencia de usuario, cuentas 2.4 a 2.6. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-2b}
 
@@ -144,43 +188,43 @@ Con estas cuentas, los diseños quedan sometidos a validación y se completan lo
 
 \subsubsection{Fase 3. Construcción}
 
-Construcción produce los ambientes y servicios de nube, la base compartida, los módulos de ambas etapas, las integraciones, la migración, las pruebas, las innovaciones y la documentación. La primera lámina reúne los ambientes de desarrollo, los servicios de nube y la base compartida (cuentas 3.1 a 3.3).
+Construcción produce los ambientes y servicios de nube, la base compartida, los módulos de ambas etapas, las integraciones, la migración, las pruebas, las innovaciones y la documentación. La primera figura reúne los ambientes de desarrollo, los servicios de nube y la base compartida (cuentas 3.1 a 3.3).
 
 La Figura \ref{fig:7-edt-fase-3a} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDTEscalada[175pt]{0.931}{0.741}{imagenes/Imagenes de la edt/EDT-Fase 3 (1 de 5).drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-05}{2}
   {Fase 3 — Construcción, primera parte: ambientes, servicios de nube y base compartida, cuentas 3.1 a 3.3. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-3a}
 
-La segunda lámina desglosa los módulos de la Etapa 1 (cuenta 3.4), con los componentes de recepción, inventario, preparación de pedidos, cadena de frío, aplicaciones y operación de tiendas.
+La segunda figura desglosa los módulos de la Etapa 1 (cuenta 3.4), con los componentes de recepción, inventario, preparación de pedidos, cadena de frío, aplicaciones y operación de tiendas.
 
 La Figura \ref{fig:7-edt-fase-3b} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDTEscalada[0pt]{0.931}{0.741}{imagenes/Imagenes de la edt/EDT-Fase 3 (2 de 5).drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-06}{1}
   {Fase 3 — Construcción, segunda parte: módulos de la Etapa 1, cuenta 3.4. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-3b}
 
-La tercera lámina presenta los módulos de la Etapa 2, las integraciones externas, la migración y las pruebas de la Etapa 1 (cuentas 3.5 a 3.8). La integración con el ERP conserva su función de emisor único de la guía de despacho.
+La tercera figura presenta los módulos de la Etapa 2, las integraciones externas, la migración y las pruebas de la Etapa 1 (cuentas 3.5 a 3.8). La integración con el ERP conserva su función de emisor único de la guía de despacho.
 
 La Figura \ref{fig:7-edt-fase-3c} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDT[0pt]{imagenes/Imagenes de la edt/EDT-Fase 3 (3 de 5).drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-07}{2}
   {Fase 3 — Construcción, tercera parte: módulos de la Etapa 2, integraciones, migración y pruebas de la Etapa 1, cuentas 3.5 a 3.8. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-3c}
 
-La cuarta lámina reúne las pruebas de la Etapa 2, las innovaciones y la documentación técnica (cuentas 3.9 a 3.11).
+La cuarta figura reúne las pruebas de la Etapa 2, las innovaciones y la documentación técnica (cuentas 3.9 a 3.11).
 
 La Figura \ref{fig:7-edt-fase-3d} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDT[345pt]{imagenes/Imagenes de la edt/EDT-Fase 3 (4 de 5).drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-08}{2}
   {Fase 3 — Construcción, cuarta parte: pruebas de la Etapa 2, innovaciones y documentación técnica, cuentas 3.9 a 3.11. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-3d}
 
-La quinta lámina amplía la cuenta 3.10 para que se lean sus paquetes de innovación: seguimiento de vencimientos, reproducción de incidentes, vida útil remanente y hoja de negocio del almacenero.
+La quinta figura detalla los paquetes de innovación agrupados en la cuenta 3.10: seguimiento de vencimientos, reproducción de incidentes, vida útil remanente y hoja de negocio del almacenero.
 
 La Figura \ref{fig:7-edt-fase-3e} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDT[0pt]{imagenes/Imagenes de la edt/EDT-Fase 3 (5 de 5).drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-09}{2}
   {Fase 3 — Construcción, quinta parte: detalle de los paquetes de las innovaciones agrupadas en la cuenta 3.10. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-3e}
 
@@ -192,7 +236,7 @@ Transición convierte la solución probada en el registro oficial. Su plan conte
 
 La Figura \ref{fig:7-edt-fase-4} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDTEscalada[0pt]{0.882}{0.702}{imagenes/Imagenes de la edt/EDT-Fase 4.drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-10}{1}
   {Fase 4 — Transición: plan de implantación y marchas blancas de las etapas 1 y 2, cuentas 4.1 a 4.3. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-4}
 
@@ -204,7 +248,7 @@ Esta fase distingue el equipamiento de terreno, que el CLIENTE compra según la 
 
 La Figura \ref{fig:7-edt-fase-5} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDT[0pt]{imagenes/Imagenes de la edt/EDT-Fase 5.drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-11}{2}
   {Fase 5 — Adquisiciones y contrataciones: hardware, servicios, enlaces y acuerdos con terceros, cuentas 5.1 a 5.4. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-5}
 
@@ -212,19 +256,19 @@ La cuenta 5.1 reúne las adquisiciones de hardware, manteniendo la distinción a
 
 \subsubsection{Fase 6. Infraestructura física y sitios}
 
-La fase instala la sala técnica de Talca, con energía, climatización y extinción; el cableado, los racks y gabinetes de borde; y la infraestructura de los sitios. La primera lámina cubre la sala, el cableado y el montaje de racks (cuentas 6.1 a 6.3).
+La fase instala la sala técnica de Talca, con energía, climatización y extinción; el cableado, los racks y gabinetes de borde; y la infraestructura de los sitios. La primera figura cubre la sala, el cableado y el montaje de racks (cuentas 6.1 a 6.3).
 
 La Figura \ref{fig:7-edt-fase-6a} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDTEscalada[0pt]{0.882}{0.702}{imagenes/Imagenes de la edt/EDT-Fase 6 (1 de 2).drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-12}{2}
   {Fase 6 — Infraestructura física y sitios, primera parte: sala técnica, cableado y racks, cuentas 6.1 a 6.3. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-6a}
 
-La segunda lámina incluye seguridad física, equipamiento de campo y configuración de la infraestructura distribuida en los sitios (cuentas 6.4 a 6.6), incluidos los termógrafos de los camiones con frío y la prueba de autonomía de 24 horas.
+La segunda figura incluye seguridad física, equipamiento de campo y configuración de la infraestructura distribuida en los sitios (cuentas 6.4 a 6.6), incluidos los termógrafos de los camiones con frío y la prueba de autonomía de 24 horas.
 
 La Figura \ref{fig:7-edt-fase-6b} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDTEscalada[0pt]{0.882}{0.702}{imagenes/Imagenes de la edt/EDT-Fase 6 (2 de 2).drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-13}{1}
   {Fase 6 — Infraestructura física y sitios, segunda parte: seguridad física, equipamiento de campo y configuración, cuentas 6.4 a 6.6. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-6b}
 
@@ -236,7 +280,7 @@ La fase atiende la rotación del 38 \% en preparación con capacitación continu
 
 La Figura \ref{fig:7-edt-fase-7} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDT[0pt]{imagenes/Imagenes de la edt/EDT-Fase 7.drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-14}{2}
   {Fase 7 — Capacitación y gestión del cambio: capacitación por roles, acompañamiento y certificaciones, cuentas 7.1 a 7.3. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-7}
 
@@ -244,21 +288,21 @@ La lámina muestra que la adopción combina formación por perfil, acompañamien
 
 \subsubsection{Fase 8. Operación y soporte}
 
-La fase presta servicios durante los meses 21 a 56: centro de operaciones, gestión de incidentes, continuidad, mantenimiento, innovaciones, informes y transferencia al equipo del CLIENTE. La primera lámina presenta las cuentas 8.1 y 8.2, que reúnen los servicios de operación y el mantenimiento de la solución.
+La fase presta servicios durante los meses 21 a 56: centro de operaciones, gestión de incidentes, continuidad, mantenimiento, innovaciones, informes y transferencia al equipo del CLIENTE. La primera figura presenta las cuentas 8.1 y 8.2, que reúnen los servicios de operación y el mantenimiento de la solución.
 
 La Figura \ref{fig:7-edt-fase-8a} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDT[0pt]{imagenes/Imagenes de la edt/EDT-Fase 8 (1 de 2).drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-15}{2}
   {Fase 8 — Operación y soporte, primera parte: servicios de operación y mantenimiento, cuentas 8.1 y 8.2. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-8a}
 
 La primera parte concentra la continuidad del servicio y el mantenimiento del software, la infraestructura y la ciberseguridad. Sus paquetes conservan las frecuencias, horarios y ventanas que condicionan la operación durante los 36 meses.
 
-La segunda lámina completa la fase con las cuentas 8.3 a 8.5: innovaciones en operación, informes y obligaciones periódicas, y capacitación y transferencia. También distingue los períodos particulares de las innovaciones y la mentoría al equipo del CLIENTE.
+La segunda figura completa la fase con las cuentas 8.3 a 8.5: innovaciones en operación, informes y obligaciones periódicas, y capacitación y transferencia. También distingue los períodos particulares de las innovaciones y la mentoría al equipo del CLIENTE.
 
 La Figura \ref{fig:7-edt-fase-8b} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDT[295pt]{imagenes/Imagenes de la edt/EDT-Fase 8 (2 de 2).drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-16}{2}
   {Fase 8 — Operación y soporte, segunda parte: innovaciones, obligaciones periódicas, capacitación y transferencia, cuentas 8.3 a 8.5. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-8b}
 
@@ -270,7 +314,7 @@ Cierre comprende dos momentos. El primero corresponde al cierre de la implementa
 
 La Figura \ref{fig:7-edt-fase-9} presenta el detalle descrito a continuación; se lee desde la cuenta de control hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 
-\figuraEDTEscalada[210pt]{0.6272}{0.4992}{imagenes/Imagenes de la edt/EDT-Fase 9.drawio.pdf}
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-detalle-17}{1}
   {Fase 9 — Cierre: cierre de implementación y salida al término del contrato, cuentas 9.1 y 9.2. Fuente: Elaboración a partir de (Formulario T-14).}
   {fig:7-edt-fase-9}
 
@@ -281,6 +325,8 @@ La EDT distingue así el cierre de implementación de la salida al término del 
 La EDT contiene explícitamente las innovaciones y las actividades de seguridad, calidad, migración e implantación, así como la arquitectura exigida por el Caso logística (Caso, cap. 19, p. 35). La Tabla \ref{tab:7-cobertura} comprueba que cada uno de esos componentes tiene paquetes propios.
 
 \parte{tablas/tab_SD7_2}
+
+El portal de proveedores se construye con M11 Canal moderno, en el paquete 3.5.1. Las categorías de cobertura se superponen: sus cantidades no se suman para obtener los 227 paquetes de la EDT.
 
 La tabla muestra que ninguna exigencia descansa en un paquete genérico. La seguridad, por ejemplo, aparece en las cinco fases donde ocurre: el diseño de la Elaboración, la identidad y las pruebas de seguridad ofensiva de la Construcción, la seguridad física de la sala y el centro de operaciones de seguridad durante la Operación. Las pruebas de seguridad ofensiva 3.8.6 y 3.9.5 se cuentan en la fila de seguridad y en la de calidad, porque son a la vez control de seguridad y prueba de certificación. Las pruebas de la Etapa 2 repiten las de la Etapa 1 con una exigencia adicional: demostrar que la Etapa 1 en producción no se degrada.
 
@@ -328,7 +374,7 @@ La Figura \ref{fig:7-red} presenta una síntesis de las precedencias entre cuent
 \begin{anexohorizontal}
   \noindent\begin{minipage}{\linewidth}
     \centering
-    \makebox[\linewidth][c]{\includegraphics[trim=0 455pt 0 0,clip,width=1.12\linewidth,height=0.90\textheight,keepaspectratio]{imagenes/Diagramas que faltaban/Fig_7-20_Red_Precedencias.pdf}}
+    \makebox[\linewidth][c]{\includegraphics[trim=0 455pt 0 0,clip,width=0.97\linewidth,height=0.90\textheight,keepaspectratio]{imagenes/Diagramas que faltaban/Revision-local/Fig_7-20_Red_Precedencias.pdf}}
     \captionsetup{hypcap=false}
     \captionof{figure}{Red de precedencias entre cuentas de control e hitos. Fuente: (Subdocumento 7, Anexo 7.B) y (Bases Administrativas, Formulario E-25, pp. 74--75).}\label{fig:7-red}
   \end{minipage}
@@ -359,7 +405,7 @@ La operación concentra el 59 \% de las horas programadas (128.854 de 220.023 HH
 
 El trabajo se organiza en ocho frentes. Cada frente es un equipo con un responsable que avanza en paralelo con los demás sobre un conjunto de cuentas de control. El frente de construcción de la Etapa 1 (F3) se divide en los tres subfrentes del Capítulo 3, sección 3.4.3 (Subdocumento 3): bodega y calidad (M1, M2, M5, M9 y M12); preventa, rutas y reparto (M3, M4, M6 y M8); y datos y rendición (M7 y M10). La Figura \ref{fig:7-frentes} presenta los frentes, su rol líder, sus cuentas de control y su ventana de actividad entre los meses 1 y 21; la correspondencia completa está en el Formulario T-15.
 
-\figuraDiagramaHorizontal[597pt]{imagenes/Diagramas que faltaban/Fig_7-6_T15-2_Frentes_Trabajo.pdf}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Frentes-trabajo}{2}
   {Frentes de trabajo de los meses 1 a 21. Fuente: (Formulario T-14) y (Formulario T-15).}
   {fig:7-frentes}
 
@@ -395,8 +441,8 @@ La holgura se gestiona en la reunión semanal y el Comité de Proyecto quincenal
 
 La Figura \ref{fig:7-gantt-critica} complementa la Figura \ref{fig:7-ruta}: muestra en la carta Gantt los paquetes de la ruta crítica y sus dependencias hasta los inicios de las marchas blancas, H6 y H11, cuyas fechas son fijas.
 
-\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/LafroX-Gantt-vista-critica.png}
-  {Vista crítica de la carta Gantt: paquetes de la ruta crítica y sus dependencias hasta H6 y H11. Fuente: elaboración en GanttProject a partir de (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-vista-critica}{3}
+  {Vista crítica de la carta Gantt: paquetes de la ruta crítica y sus dependencias hasta H6 y H11. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).}
   {fig:7-gantt-critica}
 
 \subsection{Carta Gantt y calendario}
@@ -413,40 +459,40 @@ Los meses contractuales caen en meses calendario distintos según la fecha de in
 
 Ningún inicio admisible deja las dos marchas blancas completas fuera de septiembre y diciembre; el Anexo 7.A extiende el análisis a los ocho meses de inicio admisibles. Con un inicio en diciembre de 2026, el inicio de la marcha blanca de la Etapa 1 cae en diciembre; con uno en marzo de 2027, el inicio de la marcha blanca de la Etapa 2 cae en septiembre. Con febrero de 2027, en cambio, el congelamiento afecta solo el segundo mes de la marcha blanca de la Etapa 2 y no un inicio, por lo que LafroX lo adopta como supuesto de calendario del cronograma. Su costo es que las semanas de cierre de esa marcha blanca coinciden con el peak de septiembre, que la sección 7.3.5 trata. Dentro de un mes de congelamiento no se inicia ninguna ola ni se despliega ningún cambio, y la marcha blanca continúa en convivencia, con medición diaria.
 
-La Figura \ref{fig:7-gantt-56} presenta la carta de los 56 meses con ese supuesto de inicio, elaborada en GanttProject: los períodos contractuales, las ventanas de marcha blanca, los pasos a producción del 5 de mayo y del 5 de octubre de 2028 (cuarto día hábil de cada mes), el inicio de la Operación y los hitos H1 a H12.
+La Figura \ref{fig:7-gantt-56} presenta la carta de los 56 meses con ese supuesto de inicio, basada en la programación en GanttProject: los períodos contractuales, las ventanas de marcha blanca, los pasos a producción del 5 de mayo y del 5 de octubre de 2028 (cuarto día hábil de cada mes), el inicio de la Operación y los hitos H1 a H12.
 
-\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/LafroX-Gantt-56-meses.png}
-  {Carta Gantt de los 56 meses por período contractual, con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de (Bases Administrativas, art. 17, pp. 12--13 y Formulario E-25) y (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-56-meses}{6}
+  {Carta Gantt de los 56 meses por período contractual, con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Bases Administrativas, art. 17, pp. 12--13 y Formulario E-25) y (Formulario T-14).}
   {fig:7-gantt-56}
 
 Las Figuras \ref{fig:7-gantt} a \ref{fig:7-gantt-7} detallan, en siete partes, la implementación de las Etapas 1 y 2: 155 filas ordenadas por fecha de inicio, desde febrero de 2027 hasta la estabilización de la Etapa 2, con las dependencias entre paquetes visibles. Cada fila es un paquete con entregable, un grupo de paquetes que comparten fechas o un hito, separado en la entrega del expediente y el acta del CLIENTE; el prefijo RC marca la ruta crítica. Ambas cartas están también en el Formulario T-14, sección 3.
 
-\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-1-de-7.png}
-  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 1 de 7 (filas 1 a 23 de 155), con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-1}{5}
+  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 1 de 7 (filas 1 a 23 de 155), con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).}
   {fig:7-gantt}
 
-\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-2-de-7.png}
-  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 2 de 7 (filas 24 a 45 de 155), con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-2}{5}
+  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 2 de 7 (filas 24 a 45 de 155), con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).}
   {fig:7-gantt-2}
 
-\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-3-de-7.png}
-  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 3 de 7 (filas 46 a 67 de 155), con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-3}{7}
+  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 3 de 7 (filas 46 a 67 de 155), con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).}
   {fig:7-gantt-3}
 
-\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-4-de-7.png}
-  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 4 de 7 (filas 68 a 89 de 155), con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-4}{6}
+  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 4 de 7 (filas 68 a 89 de 155), con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).}
   {fig:7-gantt-4}
 
-\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-5-de-7.png}
-  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 5 de 7 (filas 90 a 111 de 155), con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-5}{5}
+  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 5 de 7 (filas 90 a 111 de 155), con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).}
   {fig:7-gantt-5}
 
-\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-6-de-7.png}
-  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 6 de 7 (filas 112 a 133 de 155), con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-6}{5}
+  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 6 de 7 (filas 112 a 133 de 155), con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).}
   {fig:7-gantt-6}
 
-\figuraDiagramaHorizontal[0pt]{imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-7-de-7.png}
-  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 7 de 7 (filas 134 a 155 de 155), con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-7}{5}
+  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 7 de 7 (filas 134 a 155 de 155), con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).}
   {fig:7-gantt-7}
 
 La carta muestra los periodos fijos del artículo 17 de las Bases Administrativas (pp. 12--13) mes a mes: el mes 16 es mayo de 2028 y el mes 21, octubre de 2028. La marcha blanca de la Etapa 1 (4.2.1) comienza con el H6 el 1 de febrero de 2028, y la de la Etapa 2 (4.3.1), con el H11 el 1 de agosto de 2028; como anticipa la Tabla \ref{tab:7-inicio}, esta última ocupa septiembre. Cada etapa pasa a producción el primer día hábil de su mes posterior a los tres días de cierre comercial y contable, habilitada por el acta de cierre de su marcha blanca: el 5 de mayo de 2028 la Etapa 1 y el 5 de octubre de 2028 la Etapa 2, que inicia también la Operación con ambos alcances (fechas válidas bajo el supuesto de inicio en febrero de 2027). Las actas de aceptación H7 y H12 se firman después del paso a producción y dentro de su mes contractual: el 29 de mayo y el 25 de octubre de 2028. El encaje del plazo de revisión del acta de cierre se comprueba en T-15, sección 5.5: las fechas de producción son objetivos condicionados a resolver ese procedimiento, y las holguras H7/H12 no prueban su cumplimiento. La estabilización 4.3.2 comienza con el paso a producción, el 5 de octubre, y se extiende hasta el 30 de noviembre; sus cuatro semanas reforzadas, del 26 de octubre al 22 de noviembre, siguen a la firma del acta H12, igual que el archivo final 9.1.2. La operación supervisada de la Etapa 2 con datos y usuarios reales durante la marcha blanca no sustituye el paso oficial a producción ni el acta H12.
@@ -481,6 +527,8 @@ La reversión tiene dos niveles, que la Tabla \ref{tab:7-reversion} distingue.
 
 \clearpage
 \parte{tablas/tab_SD7_7}
+
+El objetivo técnico de hasta 10 minutos es una parte del ensayo de reversión; el objetivo total es de 40 minutos. La preparación de la contingencia operacional dispone de hasta 30 minutos en paralelo con la reversión técnica; la verificación y autorización de despacho dispone de hasta 10 minutos adicionales. Por tanto, el total se calcula como \(\max(10,30)+10=40\) minutos (Formulario T-18, sección 6.4). La decisión límite propuesta es a las 04:45 y la restauración operacional objetivo, a las 05:25, antes de las 05:30. El ensayo mide estos objetivos; la medición se realiza en Preproducción y fuera de la ventana de despacho. El papel sólo apoya las tareas auxiliares y no sustituye el despacho crítico. En E2, la desactivación afecta únicamente a la capacidad que falla y conserva la Etapa 1. Los cambios de indicadores de funcionalidad siguen su procedimiento autorizado, distinto del disparo técnico automático.
 
 En el nivel técnico, el canario revierte automáticamente si el percentil 95 supera su umbral o si la entrega nueva registra más errores que la estable en la misma ventana de observación, conforme a SD4, «Liberación y reversión». SRE supervisa, valida y escala sin imponer una autorización manual al mecanismo automático. El ensayo registra señal, tiempos, tráfico restituido y conservación de transacciones. La reversión operacional se dispara con señales observables: pedidos sin sincronizar al inicio de la carga, rutas del día no disponibles o un defecto crítico en la ventana de despacho. El plazo de las 05:30 protege la salida de los 96 camiones y no es el tiempo de recuperación ante desastres. La Figura \ref{fig:7-reversion} presenta el procedimiento por rol.
 
@@ -583,7 +631,9 @@ El cronograma rector usa meses contractuales 1 a 56. El Anexo 7.A traduce esos m
 
 El Formulario T-18, sección 6, define la cobertura por ola de M9, M12 y M10, propone Talca como sitio piloto, ordena las olas por sitio, por rutas y por certificación de cadenas, declara la estabilización de la Etapa 2 y el soporte de la Etapa 1 en los meses 16 a 20, y fija un objetivo de 40 minutos para el ensayo de reversión. El corte exige un ensayo con volumen real y la contingencia tributaria; el respaldo manual por sí solo no sustituye ese ensayo para los 96 despachos. El WMS queda en modo de solo lectura conforme al supuesto S-14.
 
-El Anexo 7.F traslada al Capítulo 8 los supuestos, disparadores, responsables y paquetes de la planificación. La regla de precio es única en la oferta: el precio acordado al capturar el pedido (Subdocumento 2, Anexo 2.2, S-09; RF-03.11 y RF-03.12). La coordinación de reserva y retención (SD4, apartado 4.1.4.4) está dimensionada en los Anexos 4-I y 4-W (Subdocumento 4, anexos). El máximo de cuatro mensajes por línea incluye una holgura porque la retención consumida no se libera. La proporción de líneas con más de una retención se mide con AL-STOCK-01 antes del H4, y la carga y el drenaje se verifican en 3.8.4 y 3.9.3, sin sumar la coordinación al drenaje tras un corte. El RTO de 4 horas y el RPO de 15 minutos se cumplen con tres caminos independientes por centro de distribución (fibra, LTE y Starlink) y con alarmas de retraso de replicación a los 5 y a los 15 minutos (Subdocumento 4, sección 4.3.2.4). Ambos se miden en conmutación real con AL-DR-01 antes del H5 y del H10, y luego dos veces al año durante la Operación (Bases Técnicas Transversales, cap. 7, RT-07.07, p. 17).
+El Anexo 7.F traslada al Capítulo 8 los supuestos, disparadores, responsables y paquetes de la planificación. La prueba de precio verifica que se conserve el acordado al capturar el pedido (Subdocumento 2, Anexo 2.2, S-09; RF-03.11 y RF-03.12). La coordinación de reserva y retención se verifica antes del H4 con AL-STOCK-01 y AL-ACT-01; los paquetes 3.8.4 y 3.9.3 comprueban carga y drenaje.
+
+El Formulario T-18, sección 6.5, especifica las condiciones técnicas de estas verificaciones y sus referencias al Subdocumento 4. La recuperación se demuestra con AL-DR-01 antes del H5 y del H10 y, después, dos veces al año durante la Operación (Bases Técnicas Transversales, cap. 7, RT-07.07, p. 17). El calendario y la asignación del equipo de cada campaña se completan conforme al programa de pruebas, sin alterar sus criterios de aceptación.
 
 \clearpage
 \section*{Referencias}

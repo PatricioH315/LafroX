@@ -1,0 +1,472 @@
+% Compilar con LuaLaTeX. Archivo autónomo; no requiere la clase corporativa.
+\documentclass[11pt,letterpaper]{article}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Heros}
+\usepackage[margin=2cm]{geometry}
+\usepackage{longtable,array,booktabs,enumitem,xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\definecolor{naranja}{HTML}{D75A16}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\setcounter{tocdepth}{1}
+\setlist[itemize]{leftmargin=*,topsep=2pt,itemsep=2pt,parsep=0pt}
+\newcommand{\punteo}[1]{\begin{itemize}[nosep,leftmargin=1em]#1\end{itemize}}
+\newcommand{\ruta}[1]{\nolinkurl{#1}}
+\newcommand{\inicioTabla}{%
+  \small
+  \begin{longtable}{@{}>{\raggedright\arraybackslash}p{.13\linewidth}>{\raggedright\arraybackslash}p{.43\linewidth}>{\raggedright\arraybackslash}p{.39\linewidth}@{}}
+  \toprule
+  \textbf{ID / página de revisión} & \textbf{Punto de la revisión} & \textbf{Cambios realizados que contribuyen a resolverlo} \\
+  \midrule\endfirsthead
+  \toprule
+  \textbf{ID / página de revisión} & \textbf{Punto de la revisión (continuación)} & \textbf{Cambios realizados (continuación)} \\
+  \midrule\endhead
+  \midrule\multicolumn{3}{r}{\footnotesize Continúa en la página siguiente.}\\\endfoot
+  \bottomrule\endlastfoot
+}
+\newcommand{\finTabla}{\end{longtable}\normalsize}
+
+\title{\textcolor{naranja}{Trazabilidad de la revisión}\\Cambios locales del Subdocumento 7}
+\author{Registro de modificaciones y justificación}
+\date{5 de noviembre de 2026}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Objeto, fuentes y criterio de lectura}
+
+Este registro detalla las modificaciones realizadas en la rama
+\ruta{LafroX-Subdoc7-LateX-CORRIGIENDO}. El ámbito editado comprende el
+Subdocumento 7 (S7), sus anexos, los formularios T-14, T-15 y T-18, sus figuras,
+fuentes y herramientas de regeneración. No se modificaron otros subdocumentos
+ni otras ramas.
+
+La fuente evaluadora es \emph{G02 -- LAFROX -- Primera Revisión Informe 2.pdf},
+de 55 páginas, ubicado en la carpeta Downloads del usuario. Las páginas de la
+columna izquierda remiten a ese PDF. Las páginas que se mencionan como evidencia
+de un cambio corresponden a los entregables finales regenerados.
+
+Las tablas incluyen los puntos que requieren corrección o seguimiento en la
+revisión, tanto del S7 como del resto del proyecto. Se agrupan las reiteraciones
+de una misma observación, incluidas sus repeticiones en «Qué se espera» y en las
+consideraciones transversales. Los reconocimientos «OK» y las observaciones del
+Informe 1 que el evaluador ya declaró corregidas no se convierten en nuevas
+tareas: son antecedentes, no correcciones ejecutadas en esta intervención.
+
+\textbf{Una celda vacía en la columna de cambios significa que en esta
+intervención no se realizó ninguna modificación orientada a mejorar ese punto.}
+No significa que el punto esté resuelto ni que no aplique. Las celdas con punteo
+describen acciones efectivamente realizadas; cuando sólo existe una mejora
+parcial, se declara su límite. Los controles y diagnósticos previos, por sí solos,
+no se cuentan como correcciones.
+
+Los identificadores de este archivo son propios del registro. No son números
+asignados por el evaluador. Se conserva la numeración S7-01 a S7-24 del análisis
+previo y se desagregan aspectos adicionales cuando conviene evitar que una mejora
+editorial parezca cerrar un problema de planificación.
+
+\section{Cambios realizados: detalle y justificación}
+
+\subsection{C01. Recomposición de las cartas Gantt}
+\textbf{Qué cambió.} Se sustituyeron las reproducciones densas por láminas
+vectoriales con nombres completos, columnas separadas de inicio y fin, eje
+temporal, identificación de filas y leyenda. Los siete tramos del resumen
+mantienen sus rangos de filas. Los vínculos que continúan fuera de una lámina se
+pueden seguir mediante las hojas de relaciones por ID. También se recompusieron
+las vistas de 56 meses, la vista crítica y la presentación de los ocho frentes.
+
+\textbf{Justificación.} Los rótulos pequeños, encabezados superpuestos y códigos
+sin leyenda impedían consultar el calendario. Dividir los gráficos mejora su
+lectura conservando el contenido de la programación existente.
+
+\textbf{Fuentes y evidencia.} Integración en \ruta{subdocumento-07/contenido.tex},
+\ruta{formulario-t14/contenido.tex} y \ruta{formulario-t15/contenido.tex};
+herramienta \ruta{revision/gantt_local_vector.py}; activos en
+\ruta{imagenes/Diagramas que faltaban/Revision-local/}.
+Ejemplo: S7, Figura 7.25, p. 64. Se preservaron los números 7.25 a 7.31.
+
+\textbf{Límite.} Se conservan las 155 filas y 262 relaciones de la fuente del
+resumen. No se agregaron predecesoras, no se desagruparon los paquetes del modelo,
+no se programaron iteraciones y no se recalculó la ruta crítica. Una mejor
+representación de la red existente no demuestra que ésta esté completa.
+
+\subsection{C02. Recomposición de las figuras de EDT}
+\textbf{Qué cambió.} Se redibujaron las 17 figuras detalladas y la vista completa
+del T-14 en láminas con nombres completos, jerarquía visible y continuaciones.
+Se conservó el cuarto nivel de las innovaciones. La comprobación de pertenencia
+cubre los 227 paquetes de la vista completa.
+
+\textbf{Justificación.} El texto de las figuras originales resultaba demasiado
+pequeño. La tipografía mínima medida de los nuevos gráficos Gantt/EDT es de
+9,5 puntos en sus láminas de origen. La división en páginas evita reducir de
+nuevo las figuras para hacerlas caber en una única hoja.
+
+\textbf{Fuentes y evidencia.} \ruta{revision/edt_local_vector.py}, integraciones
+en S7 y T-14 y activos en la misma carpeta de revisión local. Ejemplo: S7,
+Figura 7.10, p. 23, con las agrupaciones y paquetes de innovación.
+
+\textbf{Límite.} Es una mejora propia de presentación. La EDT sigue organizada
+por las fases y cuentas existentes: no se ejecutó la reorganización por productos
+que solicita el evaluador.
+
+\subsection{C03. Eliminación de una llamada inexistente en la Figura 7.20}
+\textbf{Qué cambió.} Se eliminó la indicación «detalle de aceptación H12 abajo»
+del objeto de texto del PDF y de la fuente Draw.io recuperada. Se mantuvieron
+los hitos y los 33 enlaces. Se ajustó la inclusión de la figura al ancho útil y
+se mejoró la identificación de relaciones en el diagrama.
+
+\textbf{Justificación.} La llamada remitía a un detalle que no estaba dibujado.
+Su eliminación corrige la inconsistencia sin inventar un procedimiento de
+aceptación ni alterar el grafo.
+
+\textbf{Fuentes y evidencia.} Derivados
+\ruta{Revision-local/Fig_7-20_Red_Precedencias.drawio} y su PDF;
+\ruta{revision/arreglos_locales_sd7.py}. Figura 7.20 del S7, p. 43.
+Los activos originales se conservaron.
+
+\subsection{C04. Definición de siglas y leyendas}
+\textbf{Qué cambió.} Se incorporaron explicaciones breves en los cinco cuerpos
+para SD, EDT, PT, HH, E1/E2, RC, PT/H, H1--H12, F1--F8, QA, SRE, NOC, SOC y DTE.
+Las nuevas láminas explican sus códigos y cómo seguir los vínculos.
+
+\textbf{Justificación.} El lector puede interpretar las abreviaturas sin buscar
+una definición dispersa en otro formulario. Esta corrección responde a las
+observaciones de comprensión, no a un cambio de alcance.
+
+\textbf{Fuentes.} Archivos \ruta{contenido.tex} de S7, anexos, T-14, T-15 y T-18,
+y generadores de gráficos locales.
+
+\subsection{C05. Separación entre elaboración y aprobación en H1 y H8}
+\textbf{Qué cambió.} En la tabla del diccionario de la cuenta 1.2 se corrigieron
+dos períodos:
+\begin{itemize}
+\item 1.2.1: elaboración preliminar en mes 1; aprobación en H1, mes 2.
+\item 1.2.5: elaboración en mes 13; aprobación en H8, mes 14.
+\end{itemize}
+\textbf{Justificación.} La redacción anterior asociaba el mes de elaboración al
+hito de aprobación y parecía contradecir el criterio de aceptación de la misma
+fila. La aclaración de H1 responde directamente a la revisión; la de H8 es una
+corrección adicional del mismo tipo identificada durante el análisis.
+
+\textbf{Fuente y evidencia.} \ruta{formulario-t14/tablas/tab_T14_4.tex};
+T-14, tabla 4, p. 48. No se movieron fechas ni hitos de la programación.
+
+\subsection{C06. Explicación de los objetivos de reversión}
+\textbf{Qué cambió.} Se integró junto a la tabla 7.8 del S7 una explicación de
+los dos niveles: hasta 10 minutos de reversión técnica; hasta 30 minutos de
+preparación operacional en paralelo; y hasta 10 minutos adicionales de
+verificación y autorización. El objetivo total se expresa como
+\(\max(10,30)+10=40\) minutos. Se mantienen la decisión límite propuesta a las
+04:45, la restauración objetivo a las 05:25 y el margen anterior a las 05:30.
+
+Se aclaran el carácter automático del mecanismo técnico y la supervisión SRE,
+las responsabilidades del CLIENTE en la contingencia operacional, la medición en
+Preproducción y el papel auxiliar del soporte en papel. Se remite a T-18,
+sección 6.4, para el procedimiento desarrollado.
+
+\textbf{Justificación.} El cuerpo mencionaba 10 y 40 minutos sin explicar
+suficientemente su relación, aunque T-18 ya contenía el desglose.
+
+\textbf{Fuentes y evidencia.} \ruta{subdocumento-07/contenido.tex} y
+\ruta{subdocumento-07/tablas/tab_SD7_7.tex}; S7, p. 105.
+Son objetivos para un ensayo futuro; no se declara que el ensayo se haya realizado.
+
+\subsection{C07. Simplificación de tablas y conservación de las explicaciones}
+\textbf{Qué cambió.} Se acortaron las celdas de cobertura de módulos de la tabla
+7.2 y las tres filas de niveles de reversión de la tabla 7.8. Los detalles se
+conservaron en prosa cercana, incluida la cobertura del portal del proveedor y
+las reglas operacionales de reversión.
+
+\textbf{Justificación.} Las tablas sirven para comparar elementos breves; los
+párrafos largos dificultaban seguir columnas y condiciones. No se eliminaron
+módulos, cantidades, responsabilidades ni ventanas por abreviar las celdas.
+
+\textbf{Fuentes.} \ruta{subdocumento-07/tablas/tab_SD7_2.tex},
+\ruta{subdocumento-07/tablas/tab_SD7_7.tex} y el cuerpo del S7.
+
+\subsection{C08. Depuración parcial de duplicaciones y rótulos}
+\textbf{Qué cambió.} Se condensaron los párrafos finales de la sección 7.3.8 del
+S7 sobre precio, coordinación de stock y recuperación. Se conservan las reglas
+y referencias necesarias para la planificación, remitiendo al detalle ya
+existente en T-18, sección 6.5. En éste se sustituyó el título «Controles nuevos
+de coordinación y aceptación» por «Verificaciones programadas de coordinación
+y recuperación». Se ajustaron expresiones de continuidad entre figuras y sus
+leyendas de procedencia.
+
+\textbf{Justificación.} Reducir la repetición facilita distinguir planificación
+de diseño técnico. El nuevo título describe el contenido sin presentar el bloque
+como una respuesta de una ronda de corrección.
+
+\textbf{Límite.} La observación amplia queda parcialmente atendida: no se migró
+todo el contenido técnico a S4 ni se depuró toda la prosa defensiva del proyecto.
+Se mantuvieron las advertencias que revelan problemas reales aún pendientes.
+
+\subsection{C09. Comprobación de referencias y composición}
+\textbf{Qué cambió.} Se integraron los nuevos activos manteniendo etiquetas y
+numeración, se recompilaron los cinco entregables y se verificaron referencias
+LaTeX internas, etiquetas duplicadas, glifos ausentes, marcadores de referencia
+sin resolver y desbordes. No se detectaron esas incidencias en los archivos finales.
+
+\textbf{Justificación.} Cambiar el número de láminas puede romper llamadas,
+índices o numeración. La comprobación evita entregar una fuente actualizada con
+un PDF antiguo o con referencias pendientes.
+
+\textbf{Límite.} No certifica la vigencia de todas las fuentes externas ni
+equivale a una revisión técnica humana. Persisten avisos heredados de composición
+«Infinite glue shrinkage»; no se modificó la clase corporativa para suprimirlos.
+
+\subsection{C10. Regeneración y registro de evidencia}
+\textbf{Qué cambió.} Se regeneraron los cinco PDF finales y sus cinco versiones
+Markdown. Se sincronizó \ruta{main.pdf} con la compilación del S7. Se adaptó
+\ruta{revision/refresh_sd7_markdown.py} para extraer con pypdf y eliminar espacios
+finales de línea. Se añadieron controles de rama a las herramientas locales.
+
+Se registraron los hashes iniciales y finales y las comprobaciones en
+\ruta{revision/local-20261105/BASE_INICIAL.json},
+\ruta{GANTT_VECTOR.json}, \ruta{EDT_VECTOR.json} y \ruta{VERIFICACION.json}.
+El informe de cierre está en
+\ruta{revision/local-20261105/CIERRE_LOCAL_SD7_2026-11-05.md}.
+
+\textbf{Justificación.} La trazabilidad necesita evidencia reproducible y una
+base de comparación. Se comprobó la conservación de las cuatro tablas numéricas
+protegidas del T-15 y los tres archivos de programación \ruta{.gan}.
+
+\textbf{Resultado.} Se conservan 227 paquetes, 168 con fecha y 59 continuos,
+220.023 HH y un máximo programado de 64 personas. La inspección visual del
+asistente cubrió 434 páginas mediante 39 hojas de contacto, con ampliaciones
+seleccionadas. No se realizó commit ni push.
+
+\section{Tabla de trazabilidad: Subdocumento 7 y cruces directos}
+
+Las celdas con acciones no implican el cierre completo de la observación. Las
+mejoras gráficas conservan el modelo existente; no se atribuyen a las filas de
+estimación, dependencias o nivelación porque no se corrigieron esos problemas.
+
+\inicioTabla
+S7-01\newline 27--28, 32 & Primer nivel de EDT organizado por fases, sin justificación de agrupación por productos. & \\
+S7-02\newline 28, 32 & Etapas como ramas de módulos, pruebas y marcha blanca, en lugar de atributo de los productos. & \\
+S7-03\newline 28, 32 & Estimación por clases sin tamaño derivado del T-12 para cada módulo. & \\
+S7-04\newline 28, 32 & O/M/P uniformes y probabilidades PERT que no fundamentan la incertidumbre del camino completo. & \\
+S7-05\newline 29, 32 & Red incompleta: 102 de 168 paquetes con entregable no declaran predecesora; faltan vínculos de migración, cadenas e innovaciones. & \\
+S7-06\newline 29--30, 32 & CPM basado en fechas publicadas, en vez de generar el calendario desde duraciones y relaciones. & \\
+S7-07\newline 28--29, 32 & Paralelismo concentrado de módulos y capacidad simultánea de desarrollo sin nivelación demostrada. & \\
+S7-08\newline 25, 29--30, 32 & Actividades detalladas sólo hasta H2; no hay iteraciones, ceremonias, demostraciones ni entregas programadas para construcción. & \\
+S7-09\newline 25, 30, 40--41 & Pruebas ampliadas concentradas después de construir, sin pruebas visibles por incremento. & \\
+S7-10\newline 29, 32 & Dos días de revisión de cierre antes del corte frente al plazo completo de revisión; H7/H12 condicionados. & \\
+S7-11\newline 28, 30, 32 & Insuficiencia de calidad: faltan 217,60 HH frente a la dotación de diez personas. & \\
+S7-12\newline 28, 30, 32 & Implantación llega a 27 equivalentes sin provisión demostrada; dirección fuera de la tabla corporativa; falta asignación coherente con S1/capítulo 12. & \\
+S7-13\newline 36, 38, 53 & Reservas de contingencia, gestión y reserva protegida sin conciliación ni reflejo completo en el calendario. & \\
+S7-14\newline 31, 33 & Falta plan para defecto crítico o alto detectado durante el congelamiento de septiembre E2 y su efecto en evidencia y cierre. & \\
+S7-15\newline 31 & Inicio tardío del intercambio/certificación de cadenas, sin margen suficiente frente a agosto de 2028. & \\
+S7-16\newline 31 & No se concreta la evidencia temprana al proveedor de lácteos entre el inicio y H5. & \\
+S7-17\newline 41 & Holgura negativa de H1, H7 y H12 al considerar la subsanación, sin ajuste del cronograma. & \\
+S7-18\newline 27 & Contradicción editorial del período de 1.2.1: mes 1 asociado a H1, cuya aprobación es en mes 2. & \punteo{\item C05: separación explícita entre elaboración preliminar del mes 1 y aprobación H1 del mes 2.\item Corrección equivalente adicional de H8: elaboración mes 13 y aprobación mes 14.} \\
+S7-19\newline 29--30, 32 & Gantt pequeña; rótulos truncados y encabezados superpuestos. & \punteo{\item C01: láminas vectoriales distribuidas en más páginas; nombres completos y fechas separadas.\item C04: leyendas propias.\item C09: comprobación visual de la composición final.} \\
+S7-20\newline 30 & Barras agrupadas dificultan rastrear paquetes y relaciones. & \punteo{\item C01: códigos completos, continuidad por ID y hojas de relaciones para consultar los enlaces de la fuente.\item Avance parcial: se conservan las agrupaciones del modelo; no se demuestra independencia lógica por paquete.} \\
+S7-21\newline 32 & Figura 7.20 anuncia un detalle de aceptación H12 que no existe. & \punteo{\item C03: eliminación de la llamada del PDF y de la fuente editable.\item Se conservan los 33 enlaces y los hitos; la red calculada no se reconcilió ni completó.} \\
+S7-22\newline 31 & El cuerpo no explica la relación entre los objetivos de reversión de 10 y 40 minutos. & \punteo{\item C06: explicación integrada de niveles, paralelismo y verificación final.\item Fórmula total y horarios explícitos; remisión a T-18, sección 6.4.\item Se distinguen objetivos futuros de resultados de ensayo.} \\
+S7-23\newline 31--33 & Tablas 7.2 y 7.8 con párrafos extensos; contenido de diseño en 7.3.8 duplicado en T-18. & \punteo{\item C07: celdas breves y explicaciones en prosa próxima.\item C08: cierre de 7.3.8 condensado y remisión al detalle de T-18.\item Avance parcial: no se trasladó todo el diseño fuera del ámbito S7.} \\
+S7-24a\newline 32 & Siglas SD4/SD8, PT/H y RC sin definición suficiente. & \punteo{\item C04: definiciones en los cinco cuerpos y leyendas de gráficos.} \\
+S7-24b\newline 32 & Volumen excesivo del cuerpo, formularios y anexos. & \punteo{\item C07--C08: simplificación localizada de celdas y párrafos duplicados.\item Avance limitado: la extensión total aumenta de 316 a 434 páginas por priorizar legibilidad; no se cumple una reducción global.} \\
+S7-24c\newline 3, 32, 54 & Foliación reiniciada por archivo; se pide foliación correlativa de la oferta final. & \\
+S7-25\newline 32, 54 & Pendiente literal de incompatibilidad reconocido en T-15 y en S7. & \\
+S7-26\newline 32 & Prosa defensiva y bloque denominado «Controles nuevos» como respuesta de corrección sin integrar. & \punteo{\item C08: condensación parcial del bloque repetido y nuevo título descriptivo en T-18.\item No se eliminaron advertencias sobre problemas reales ni se depuró toda la prosa defensiva.} \\
+S7-27\newline 30 & Remisión a las iteraciones de la sección 6.2, cuya cadencia se especifica en T-10 y no en ese cuerpo. & \\
+S7-28\newline 32 & Ruta crítica de construcción E1 que permita sustentar el plazo, además del tramo final. & \\
+\finTabla
+
+\section{Tabla de trazabilidad: demás puntos de la revisión}
+
+Este inventario reúne los demás puntos de corrección y seguimiento del documento
+evaluador. Sus celdas de cambios se dejan vacías: no se realizaron modificaciones
+en esos capítulos. Una mejora del S7 no se registra como solución de una figura,
+tabla o procedimiento de otro subdocumento. Las repeticiones transversales se
+identifican mediante remisiones para evitar contar dos veces el mismo problema.
+
+\subsection{General y Subdocumento 1}
+\inicioTabla
+G-01\newline 1--3, 54 & Nomenclatura no conforme del archivo de trazabilidad del Art. 46; integrarlo en una ubicación admitida. & \\
+G-02\newline 1--3, 54 & Revisión humana técnica y distribuida, declaración de IA coherente y capacidad de defensa de todos los integrantes. & \\
+G-03\newline 2--3 & Reducir volumen general, especialmente S4 y anexos; distinguir síntesis y detalle. La intervención localizada de S7 se registra en S7-24b. & \\
+G-04\newline 3 & Erratas de figuras S2: «enERP», «enpapel», «retornarr» y rótulo de diferencias no conciliadas. & \\
+G-05\newline 3 & Dominio del sitio corporativo GitHub frente al correo lafrox.cl. & \\
+G-06\newline 3 & Páginas oficio de la RBS sin folio/firma y fuentes de tablas S8 con «contenido academico». & \\
+S1-01\newline 4--6 & Antecedentes financieros: ventas, patrimonio y capacidad de garantía. & \\
+S1-02\newline 5--6 & Una sola versión del SOC: existente, contratado o por implementar. & \\
+S1-03\newline 5--6 & Unificar demanda de desarrolladores (31 FTE/40 simultáneos) con T-15 y disponibilidad real. & \\
+S1-04\newline 4--6 & Trasladar equipo nominado de 1.5 al capítulo 12; mantener organización del proyecto en S1. & \\
+S1-05\newline 5 & Completar organigrama con funciones comerciales/administrativas y ubicación de los dos centros de datos. & \\
+S1-06\newline 5--6 & Retirar repetición del plan de renovación de certificaciones. & \\
+S1-07\newline 4--6 & Acreditar conocimiento sanitario y de documentos tributarios exigido en RT-15.02. & \\
+S1-08\newline 5 & Analizar vencimientos de alianzas entre meses 2 y 11 y su renovación. & \\
+S1-09\newline 6 & Explicar referencia farmacéutica con cámaras a menos 22 grados Celsius si se mantiene. & \\
+\finTabla
+
+\subsection{Subdocumentos 2 y 3}
+\inicioTabla
+S2-01\newline 6--8 & Separar problema de solución: promesa 24/48 horas, corte de las 14:00 y retención por SSCC deben tratarse en S3. & \\
+S2-02\newline 7--8 & Agregar preparación nocturna, hoja de picking y faltante sin causa al AS-IS de la Figura 2.3. & \\
+S2-03\newline 7--8 & Corregir afirmaciones no respaldadas sobre soporte del WMS y módulos satélites del ERP; identificar correctamente la aplicación de preventa. & \\
+S2-04\newline 7 & Ubicar rotación del 38 por ciento en el problema de operación de bodega. & \\
+S2-05\newline 8 & Completar tabla de restricciones con R-01, R-02, R-03, R-06, R-07, R-09 y R-11. & \\
+S2-06\newline 8, 54 & Verificar cita Boulaksil y Belkora: Casablanca en el texto frente a Valencia en la referencia. & \\
+S2-07\newline 8 & Corregir declaración de IA de 2.1 que aún atribuye validación de una propuesta de valor. & \\
+S3-01\newline 9 & Prioridades con escasa discriminación: 84 por ciento en Crítica o Alta. & \\
+S3-02\newline 10--13, 53 & Matriz única de origen, requerimiento, componente, EDT, prueba y criterio, hasta el último eslabón. & \\
+S3-03\newline 10 & Desarrollar análisis de interoperabilidad, escalabilidad, desempeño y seguridad más allá de remisiones breves. & \\
+S3-04\newline 11, 13 & Rehacer Figura 3.4 legible; representar qué corre en CD, plataformas, camión y nube. & \\
+S3-05\newline 11 & Corregir «Gerente de operacions» y rótulos invertidos de las figuras 3.4, 3.5 y 3.7. & \\
+S3-06\newline 11 & Recuperar fundamentos de decisiones necesarios para entender Anexo 3.F sin depender de otras lecturas. & \\
+S3-07\newline 11, 13 & Completar la columna Origen vacía o cortada en Tabla 3.A.1. & \\
+S3-08\newline 11 & Evitar repetir la pila tecnológica completa por fila en T-12; reducir volumen sin perder componente específico. & \\
+S3-09\newline 12--13 & Resumir mecanismo de incorporación de conductores externos en 3.4.4. & \\
+S3-10\newline 12--13 & Cuantificar dotación de mesa/NOC o remitir expresamente a S10. & \\
+S3-11\newline 12--13 & Unificar meta OTIF del cuerpo y Anexo 3.J: mayor que 95 frente a alcanzar 95 por ciento. & \\
+S3-12\newline 13, 53 & Usar los mismos nombres de M10 y M11 en S3 y S4. & \\
+S3-13\newline 13 & Declaración de IA y revisión técnica coherentes con secciones que contienen figuras. & \\
+S3-14\newline 43, 45, 53 & Incorporar las cinco innovaciones al alcance de S3. & \\
+\finTabla
+
+\subsection{Subdocumento 4: arquitectura lógica y física}
+\inicioTabla
+S4-01\newline 14--16 & Figura 1 ilegible; dividir o redibujar con rótulos legibles. & \\
+S4-02\newline 14--16 & Trazabilidad requerimiento--módulo--capa por requisito, no sólo por familia; remisión exacta al T-12. & \\
+S4-03\newline 15--16 & Leyendas de fuente específicas: indicar los datos que sustentan cada figura. & \\
+S4-04\newline 15 & Reducir reproducciones de requisitos que no cambian la arquitectura y el volumen del cuerpo. & \\
+S4-05\newline 15--16, 53 & Reconocer y explicar el cambio Django a Laravel respecto del Informe 1. & \\
+S4-06\newline 15 & Corregir redacción defectuosa sobre disponibilidad y redundancia. & \\
+S4-07\newline 16 & Sustentar existencia y compatibilidad de versiones ofrecidas a la fecha de oferta y tratamiento de dependencias incompatibles. & \\
+S4-08\newline 16, 19, 54 & Sustituir referencia inexistente a sección 2.5 del caso por la fuente correcta de clasificación de sala. & \\
+S4-09\newline 16, 19 & Revisión humana distribuida y declaración de IA coherente, incluida 4.3 con figuras declaradas como «Ninguno». & \\
+S4-10\newline 17, 19, 53 & Plano acotado, superficie y justificación de recintos de la sala técnica. & \\
+S4-11\newline 17, 19, 53 & Alternativa si el CLIENTE no aprueba residencia internacional; efectos en latencia, RTO y costo. & \\
+S4-12\newline 17, 19, 53 & Estudio de cobertura en cámaras, o método, alcance y fecha de ejecución. & \\
+S4-13\newline 18 & Ciclo de vida y plan de reposición por equipo en T-11. & \\
+S4-14\newline 18--19 & Figura 18 de topología AWS legible. & \\
+S4-15\newline 19 & Cuantificar y llevar al plan de riesgos la residencia exterior y su riesgo regulatorio/latencia. & \\
+S4-16\newline 19, 25, 53 & Alinear provisión de cadena de frío por LafroX con exclusión del capítulo 11 del caso. & \\
+S4-17\newline 19 & Explicar en Tabla 14 el total por máximo coincidente. & \\
+\finTabla
+
+\subsection{Subdocumento 5}
+\inicioTabla
+S5-01\newline 21--22 & Modelo general Figura 5.1 y vistas por dominio legibles al tamaño de impresión; evitar título duplicado dentro de imagen y leyenda. & \\
+S5-02\newline 21 & Unificar significado de M: exclusivamente módulo frente a módulo/mes en el glosario. & \\
+S5-03\newline 22 & Fundamentar umbral de desviación monetaria de inventario de 0,3 por ciento. & \\
+S5-04\newline 22 & Mostrar cálculo de volúmenes de registros por bytes sin obligar a reconstruirlo en S4. & \\
+S5-05\newline 22, 53 & Explicar prosa comprimida, siglas, remisiones y relevos preinscritos de 8/16 horas. & \\
+S5-06\newline 22 & Revisión humana técnica del modelo de custodia y de Tabla 5.1. & \\
+S5-07\newline 22, 53 & Explicar credencial de turno de 14 horas ante rutas de hasta 14,5 horas y su relación con identidad sin enlace. & \\
+\finTabla
+
+\subsection{Subdocumento 6}
+\inicioTabla
+S6-01\newline 23, 26, 54 & Completar regla truncada de valor ganado: umbral, acción, autoridad y plazo. & \\
+S6-02\newline 23--26 & Explicar adaptación PMBOK/RUP, alternativas, convivencia Kanban--iteraciones y límites de adaptación respecto de hitos fijos. & \\
+S6-03\newline 23, 26 & Incorporar reglas Art. 72: análisis de impacto, tope acumulado y cambios en etapas de fecha fija. & \\
+S6-04\newline 23, 26 & Escalamiento con disparador, destinatario y plazo. & \\
+S6-05\newline 23, 26 & Comunicaciones específicas con terreno, turno nocturno, terceros y planificador. & \\
+S6-06\newline 23--26, 53 & Unificar 17/19 interesados y completar influencia, interés y estrategia, incluidas empresas transportistas. & \\
+S6-07\newline 24, 26, 54 & Retirar duplicación de evaluadores externos entre S6 y T-9 y ubicar su dimensionamiento donde corresponde. & \\
+S6-08\newline 24 & Método de seguimiento y nivelación de capacidad propia en solapamientos. & \\
+S6-09\newline 24 & Desarrollar gestión de requerimientos, arquitectura evolutiva, refactorización y deuda técnica. & \\
+S6-10\newline 24, 26 & Adaptar desarrollo y validación al caso: desconexión, frío, ERP sin documentación, cadenas, planificador y transferencia a cuatro personas de TI. & \\
+S6-11\newline 25--26 & Nombrar ambientes, artefactos promovidos y aprobaciones en T-10. & \\
+S6-12\newline 25--26 & Programar iteraciones, ceremonias, entregas y pruebas por incremento en Gantt. Corresponde también a S7-08 y S7-09. & \\
+S6-13\newline 25--26 & Corregir fuente de Figura 6.1; agregar diagramas de gobierno, iteración y cadena de integración. & \\
+S6-14\newline 26 & T-9 y T-10 deben detallar operación, matrices, plantillas, umbrales y plazos, sin repetir el cuerpo. & \\
+S6-15\newline 26 & Declaración y revisión humana de contenido coherentes con la autoría efectiva. & \\
+\finTabla
+
+\subsection{Subdocumento 8}
+\inicioTabla
+S8-01\newline 33, 38 & Escala de impacto anclada en plazo, HH, alcance, calidad sanitaria y contrato; definir factores decimales en el cuerpo. & \\
+S8-02\newline 33, 38 & Eliminar solape de bandas de probabilidad en 70 por ciento. & \\
+S8-03\newline 33 & Conciliar frase sobre zona de prioridad con umbrales de exposición de la tabla. & \\
+S8-04\newline 33--34 & Explicar y conciliar probabilidades cualitativas y cuantitativas distintas para el mismo evento. & \\
+S8-05\newline 34, 37, 54 & Resolver en diseño/calidad los 13 riesgos internos del proveedor; no trasladarlos al CLIENTE, especialmente los altos/críticos. & \\
+S8-06\newline 34, 37, 54 & Identificar contraparte del CLIENTE, solicitud concreta, fecha y contingencia por falta de respuesta. & \\
+S8-07\newline 34 & Riesgo de jubilación del planificador con fecha y pérdida de cumplimiento, no sólo indisponibilidad genérica. & \\
+S8-08\newline 34, 37 & Incorporar objeción sindical a cámaras y GPS. & \\
+S8-09\newline 34 & Incorporar rechazo de conductores de terceros al uso de la solución. & \\
+S8-10\newline 35, 37 & Incorporar rotación del 38 por ciento en preparación nocturna. & \\
+S8-11\newline 35, 37 & Incorporar interfaces ERP/WMS sin documentación. & \\
+S8-12\newline 35, 37 & Tratar enlace único de Concepción de forma específica. & \\
+S8-13\newline 35, 37 & Incorporar peak de septiembre sobre la fase del proyecto. & \\
+S8-14\newline 35, 38, 53 & Aplicar modos de falla, árbol de fallas o simulación a los riesgos pertinentes. & \\
+S8-15\newline 35, 37 & Incorporar obsolescencia, bloqueo por proveedor y escalabilidad. & \\
+S8-16\newline 35--37 & Llevar al registro puntos únicos de falla de S4, manifiesto de identidad, cobertura en cámaras y enlaces de cross-docking. & \\
+S8-17\newline 35 & Revisar pertinencia de eventos operacionales reescritos sólo como afectación de una prueba frente a riesgos de proyecto ausentes. & \\
+S8-18\newline 35--37, 54 & Estimar riesgo residual y plan adicional para todo residual alto/crítico; contingencias específicas. & \\
+S8-19\newline 36, 38, 53 & Análisis costo-beneficio de respuestas, corregir antecedente de retorno 0,84 y justificar retornos menores que uno. & \\
+S8-20\newline 36--38 & Acciones con esfuerzo, plazo, fecha/hito y contingencia ejecutable. & \\
+S8-21\newline 36, 38, 53 & Derivar 1.600 HH de gestión y conciliar reservas de S8 y S7 en T-15 y cronograma. Véase S7-13. & \\
+S8-22\newline 36 & Definir y calcular VME mencionado en T-16. & \\
+S8-23\newline 36 & Conciliar ventana meses 11--15 de R-034 citada por S13 con Anexo 8.A sin meses. & \\
+S8-24\newline 37--38 & Renumerar tablas 8.4 duplicadas y revisar exceso de columnas de Tabla 8.5. & \\
+S8-25\newline 37--38, 54 & Quitar «contenido academico», corregir fuentes normativas, tildes y erratas. & \\
+S8-26\newline 37 & Incorporar folio/firma a RBS oficio y revisar suficiencia del desarrollo del capítulo. & \\
+S8-27\newline 37, 54 & Integrar pendientes declarados, depurar estilo defensivo y efectuar revisión humana técnica de riesgos y T-16. & \\
+\finTabla
+
+\subsection{Subdocumentos 9 y 13}
+\inicioTabla
+S9-01\newline 38--39, 42 & Evidencia de acreditación CMMI vigente o presentación como plan, sin invocar garantía no acreditada. & \\
+S9-02\newline 40--42, 53 & Prueba del manifiesto de identidad en corte: emisión, relevo, expiración, revocación y criterio de salida. & \\
+S9-03\newline 40, 42 & Usabilidad con recién ingresados al turno nocturno, población explícita y productividad de primera semana. & \\
+S9-04\newline 40, 42 & Ambiente de restauraciones mensuales durante septiembre y diciembre. & \\
+S9-05\newline 40--41, 54 & Pruebas por iteración y cronograma ajustado por subsanación. Véanse S7-09 y S7-17. & \\
+S9-06\newline 41 & Resumen por módulo al inicio de la matriz de casos T-13. & \\
+S9-07\newline 41--42 & Corregir errata «extbfCorrecciones en congelamiento» y superposición de «Recuperación» en Figura 9.4. & \\
+S9-08\newline 41--42 & Unificar «paso a producción»: apertura a marcha blanca frente a producción desde meses 16 y 21. & \\
+S9-09\newline 41--42 & Una sola regla de correcciones durante congelamiento, coherente con S6 y Bases. & \\
+S9-10\newline 41--42 & Depurar salvedades defensivas que oscurecen las reglas. & \\
+S13-01\newline 43, 45, 53 & Innovaciones explícitas en alcance S3. Véase S3-14. & \\
+S13-02\newline 43, 45 & Defender INN-02 como innovación de proceso del CLIENTE o reformularla. & \\
+S13-03\newline 43--45, 53 & Resolver doble uso de INN-03 como innovación y cumplimiento de RT-05.30. & \\
+S13-04\newline 44--45, 53 & Cuantificar beneficio de cada innovación en unidades físicas con datos del caso. & \\
+S13-05\newline 44 & Verificar fechas y ventanas de paquetes con S7, T-14, T-15, T-16 y Anexo 8.A. & \\
+S13-06\newline 44, 54 & Sustituir referencia a «Informe 3» por destino propio de la oferta. & \\
+S13-07\newline 44--45 & Declaración de IA y revisión técnica efectiva de modelos, umbrales y cálculos. & \\
+\finTabla
+
+\section{Conservación de datos y aspectos que no se deben dar por resueltos}
+
+La conservación de cantidades y fechas fue una condición de esta intervención
+editorial. No constituye una validación de suficiencia de la planificación.
+Permanecen los problemas de estimación, red incompleta, CPM, nivelación, revisión
+de actas, congelamientos y reservas identificados en las celdas vacías.
+
+No se modificaron la clase corporativa, los metadatos comunes, la fecha de
+portada ni la declaración humana de IA. La foliación integrada pertenece a la
+consolidación de la oferta completa. Tampoco se incorporaron contrataciones,
+acuerdos del CLIENTE, ensayos ejecutados o resultados de pruebas que no existen.
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Entregable} & \textbf{Páginas antes} & \textbf{Páginas después}\\
+\midrule
+S7 & 66 & 117\\
+Anexos S7 & 25 & 26\\
+T-14 & 102 & 166\\
+T-15 & 99 & 100\\
+T-18 & 24 & 25\\
+\midrule
+Total & 316 & 434\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+La mayor extensión responde a la división de gráficos para permitir su lectura.
+No se presenta como una reducción global de volumen. El presente registro es un
+documento de trabajo de trazabilidad; no se incorpora automáticamente a la oferta
+ni pretende resolver su nomenclatura contractual.
+
+\end{document}

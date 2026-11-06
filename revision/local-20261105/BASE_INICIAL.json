@@ -1,0 +1,35 @@
+{
+  "rama": "LafroX-Subdoc7-LateX-CORRIGIENDO",
+  "head": "7fab59236b3176b1e55fe255eb246081135e68fa",
+  "invariantes": {
+    "formulario-t15/tablas/tab_T15_2.tex": "283a396b0f6b08a0070e32139dafc8f5be7017925e824159d95c698038e29dce",
+    "formulario-t15/tablas/tab_T15_paquetes.tex": "e6b3ff15fce2d7d98f4a112620724b4bc078e471b530be2e590f2a8177eccbbe",
+    "formulario-t15/tablas/tab_T15_4.tex": "93ce47f9cc3bd2288c4d5fe5b1ead2ff01330019f34eccd6063f906e4ddeae59",
+    "formulario-t15/tablas/tab_T15_4_personas.tex": "68da92c39c799f64f75244a2564b28fa9eea352415a0612c9566058ec4a56fa1",
+    "imagenes/Diagramas que faltaban/Fig_7_Gantt_Resumen_Dependencias.gan": "2717f58539eedd69f4da88abbb165f05375a76195c42ad291e256ac99d70318b",
+    "imagenes/Diagramas que faltaban/Fig_7_Gantt_56_Meses.gan": "07d5990aba9278dc9eb75d80ee49c98290251bd7edd0a3f8100b25d712c8eef3",
+    "imagenes/Diagramas que faltaban/Fig_7_Gantt_Vista_Critica.gan": "b08cbc6d1226b46cd48f2791d897852601892b0295a099914679329be0235270"
+  },
+  "documentos": {
+    "LAFROX-Subdocumento7": {
+      "sha256": "c5609ae88e6482dff69f66ce5d322fd184252e9206af469f99130b11e576e88d",
+      "paginas": 66
+    },
+    "LAFROX-Subdocumento7-Anexos": {
+      "sha256": "f3298973acf2833e0c9270032fba73bfdc88ad751f295281a47f4b394e2ecb72",
+      "paginas": 25
+    },
+    "LAFROX-Formulario-T-14": {
+      "sha256": "a4ca76fe1a2d035c3132061b18362e11ec0544af317f639680eccbd77fa3e9d7",
+      "paginas": 102
+    },
+    "LAFROX-Formulario-T-15": {
+      "sha256": "ddb12b2f5dea2b25caa7b8b3c7aebe4a7299c14b8a24cdcf4c8dd2c4c821f454",
+      "paginas": 99
+    },
+    "LAFROX-Formulario-T-18": {
+      "sha256": "bff1b620b0ec707f9820e060625dafecd70cf3102f2668639a1740acb6df8e54",
+      "paginas": 24
+    }
+  }
+}

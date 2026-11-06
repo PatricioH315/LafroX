@@ -1,19 +1,29 @@
+"""Extrae el texto de los cinco PDF; los diagramas se consultan en el PDF.
+
+Usa pypdf del runtime, evitando la dependencia implícita del pdftotext de MiKTeX.
+"""
 from pathlib import Path
 import subprocess
+from pypdf import PdfReader
+
+ROOT = Path(__file__).resolve().parents[1]
+branch = subprocess.check_output(['git', 'branch', '--show-current'], cwd=ROOT, text=True).strip()
+if branch != 'LafroX-Subdoc7-LateX-CORRIGIENDO':
+    raise RuntimeError('Rama no autorizada para regenerar entregables: ' + branch)
 
 titles = {
-    'Subdocumento7': 'Subdocumento 7 — Plan de trabajo',
-    'Subdocumento7-Anexos': 'Subdocumento 7 — Anexos',
-    'Formulario-T-14': 'Formulario T-14 — Estructura de desglose del trabajo',
-    'Formulario-T-15': 'Formulario T-15 — Cronograma y asignación de recursos',
-    'Formulario-T-18': 'Formulario T-18 — Implantación de la solución',
+    'Subdocumento7': 'Subdocumento 7 — Plan de trabajo, EDT, cronograma e implantación',
+    'Subdocumento7-Anexos': 'Anexos del Subdocumento 7',
+    'Formulario-T-14': 'Formulario T-14 — Plan de trabajo, EDT y carta Gantt',
+    'Formulario-T-15': 'Formulario T-15 — Nivelación de recursos',
+    'Formulario-T-18': 'Formulario T-18 — Propuesta de implantación y puesta en marcha controlada',
 }
 
 for stem, title in titles.items():
-    pdf = Path(f'LAFROX-{stem}.pdf')
+    pdf = ROOT / f'LAFROX-{stem}.pdf'
     md = pdf.with_suffix('.md')
-    extraction = subprocess.check_output(['pdftotext', '-raw', '-enc', 'UTF-8', str(pdf), '-'])
-    body = extraction.decode('utf-8-sig').replace('\r\n', '\n').replace('\f', '\n\n---\n\n').strip()
+    body = '\n\n---\n\n'.join((p.extract_text() or '').strip() for p in PdfReader(pdf).pages).strip()
+    body = '\n'.join(line.rstrip() for line in body.splitlines())
     where = body.rfind('\nReferencias\n')
     if where < 0:
         raise RuntimeError(f'No references in {pdf}')

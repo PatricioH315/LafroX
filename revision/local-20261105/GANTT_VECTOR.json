@@ -1,0 +1,5888 @@
+{
+  "fuentes": {
+    "Fig_7_Gantt_Resumen_Dependencias.gan": {
+      "sha256": "2717f58539eedd69f4da88abbb165f05375a76195c42ad291e256ac99d70318b",
+      "tareas": [
+        {
+          "id": "1",
+          "name": "RC | 5.1.4 Especificación y compra del sistema de cadena de frío",
+          "start": "2027-02-01",
+          "end": "2027-03-31",
+          "duration": 42,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 0,
+          "attributes": {
+            "id": "1",
+            "name": "RC | 5.1.4 Especificación y compra del sistema de cadena de frío",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-02-01",
+            "duration": "42",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "2",
+          "name": "PT/H | 7 elementos: 1.1.1, 1.1.2, 1.1.3, 1.4.1, 1.4.2, 1.9.1, 1.9.2",
+          "start": "2027-02-01",
+          "end": "2027-02-09",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 1,
+          "attributes": {
+            "id": "2",
+            "name": "PT/H | 7 elementos: 1.1.1, 1.1.2, 1.1.3, 1.4.1, 1.4.2, 1.9.1, 1.9.2",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-02-01",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "3",
+          "name": "PT/H | 1.2.1 Documento de especificación de requerimientos y línea base de alcance de la Etapa 1 (H1)",
+          "start": "2027-02-01",
+          "end": "2027-02-09",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 2,
+          "attributes": {
+            "id": "3",
+            "name": "PT/H | 1.2.1 Documento de especificación de requerimientos y línea base de alcance de la Etapa 1 (H1)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-02-01",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "4",
+          "name": "PT/H | 1.2.2 Documento de reglas de ruteo capturadas al planificador de rutas",
+          "start": "2027-02-01",
+          "end": "2027-04-30",
+          "duration": 64,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 3,
+          "attributes": {
+            "id": "4",
+            "name": "PT/H | 1.2.2 Documento de reglas de ruteo capturadas al planificador de rutas",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-02-01",
+            "duration": "64",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "5",
+          "name": "PT/H | 1.2.3 Documento de especificación de las interfaces sin documentación del ERP, del WMS de 2013 y de la telemetría del tercero",
+          "start": "2027-02-01",
+          "end": "2027-02-09",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 4,
+          "attributes": {
+            "id": "5",
+            "name": "PT/H | 1.2.3 Documento de especificación de las interfaces sin documentación del ERP, del WMS de 2013 y de la telemetría del tercero",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-02-01",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "6",
+          "name": "PT/H | 5 elementos: 1.3.5, 1.6.2, 1.8.1, 1.8.3, 1.8.6",
+          "start": "2027-02-01",
+          "end": "2028-09-29",
+          "duration": 419,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 5,
+          "attributes": {
+            "id": "6",
+            "name": "PT/H | 5 elementos: 1.3.5, 1.6.2, 1.8.1, 1.8.3, 1.8.6",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-02-01",
+            "duration": "419",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "7",
+          "name": "PT/H | 2 elementos: 2.3.1, 2.3.2",
+          "start": "2027-02-01",
+          "end": "2027-03-01",
+          "duration": 21,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 6,
+          "attributes": {
+            "id": "7",
+            "name": "PT/H | 2 elementos: 2.3.1, 2.3.2",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-02-01",
+            "duration": "21",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "8",
+          "name": "PT/H | 1.3.1 Plan para la dirección del proyecto, con el calendario de congelamientos de septiembre, diciembre y el cierre mensual",
+          "start": "2027-02-10",
+          "end": "2027-02-18",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 7,
+          "attributes": {
+            "id": "8",
+            "name": "PT/H | 1.3.1 Plan para la dirección del proyecto, con el calendario de congelamientos de septiembre, diciembre y el cierre mensual",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-02-10",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "9",
+          "name": "PT/H | 1.2.4 Matriz de trazabilidad: requerimiento, módulo, paquete y prueba (H1)",
+          "start": "2027-03-01",
+          "end": "2027-03-09",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 8,
+          "attributes": {
+            "id": "9",
+            "name": "PT/H | 1.2.4 Matriz de trazabilidad: requerimiento, módulo, paquete y prueba (H1)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-03-01",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "10",
+          "name": "PT/H | 7 elementos: 1.3.2, 1.3.3, 1.3.4, 1.5.1, 1.6.1, 1.9.3, 5.1.1",
+          "start": "2027-03-01",
+          "end": "2027-03-09",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 9,
+          "attributes": {
+            "id": "10",
+            "name": "PT/H | 7 elementos: 1.3.2, 1.3.3, 1.3.4, 1.5.1, 1.6.1, 1.9.3, 5.1.1",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-03-01",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "11",
+          "name": "PT/H | 2.1.1 Documento de arquitectura lógica: capas, módulos M1 a M12 e interfaces",
+          "start": "2027-03-01",
+          "end": "2027-03-29",
+          "duration": 20,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 10,
+          "attributes": {
+            "id": "11",
+            "name": "PT/H | 2.1.1 Documento de arquitectura lógica: capas, módulos M1 a M12 e interfaces",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-03-01",
+            "duration": "20",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "12",
+          "name": "PT/H | 3 elementos: 2.1.2, 2.1.3, 2.2.4",
+          "start": "2027-03-01",
+          "end": "2027-03-29",
+          "duration": 20,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 11,
+          "attributes": {
+            "id": "12",
+            "name": "PT/H | 3 elementos: 2.1.2, 2.1.3, 2.2.4",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-03-01",
+            "duration": "20",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "13",
+          "name": "PT/H | 2.2.1 Plan de seguridad de la información",
+          "start": "2027-03-01",
+          "end": "2027-03-29",
+          "duration": 20,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 12,
+          "attributes": {
+            "id": "13",
+            "name": "PT/H | 2.2.1 Plan de seguridad de la información",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-03-01",
+            "duration": "20",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "14",
+          "name": "PT/H | 2 elementos: 2.3.3, 2.6.1",
+          "start": "2027-03-01",
+          "end": "2027-03-29",
+          "duration": 20,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 13,
+          "attributes": {
+            "id": "14",
+            "name": "PT/H | 2 elementos: 2.3.3, 2.6.1",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-03-01",
+            "duration": "20",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "15",
+          "name": "PT/H | 3.10.2.1 Innovación 2: informe de medición inicial y contrato de evidencia (INN-02.P1)",
+          "start": "2027-03-01",
+          "end": "2027-04-20",
+          "duration": 36,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 14,
+          "attributes": {
+            "id": "15",
+            "name": "PT/H | 3.10.2.1 Innovación 2: informe de medición inicial y contrato de evidencia (INN-02.P1)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-03-01",
+            "duration": "36",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "16",
+          "name": "PT/H | 5.2.1 Contrato de los servicios de AWS",
+          "start": "2027-03-01",
+          "end": "2027-03-09",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 15,
+          "attributes": {
+            "id": "16",
+            "name": "PT/H | 5.2.1 Contrato de los servicios de AWS",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-03-01",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "17",
+          "name": "PT/H | 5.3.4 Contrato de SIM M2M y servicio satelital de los camiones con frío",
+          "start": "2027-03-01",
+          "end": "2027-03-12",
+          "duration": 10,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 16,
+          "attributes": {
+            "id": "17",
+            "name": "PT/H | 5.3.4 Contrato de SIM M2M y servicio satelital de los camiones con frío",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-03-01",
+            "duration": "10",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "18",
+          "name": "PT/H | 7.2.3 Diagnóstico del impacto organizacional por área y perfil, con agentes de cambio",
+          "start": "2027-03-01",
+          "end": "2027-05-25",
+          "duration": 60,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 17,
+          "attributes": {
+            "id": "18",
+            "name": "PT/H | 7.2.3 Diagnóstico del impacto organizacional por área y perfil, con agentes de cambio",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-03-01",
+            "duration": "60",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "19",
+          "name": "PT/H | 5.1.2 Especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de borde",
+          "start": "2027-03-02",
+          "end": "2027-03-10",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 18,
+          "attributes": {
+            "id": "19",
+            "name": "PT/H | 5.1.2 Especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de borde",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-03-02",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "20",
+          "name": "PT/H | H1 — entrega del expediente",
+          "start": "2027-03-09",
+          "end": "2027-03-09",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 19,
+          "attributes": {
+            "id": "20",
+            "name": "PT/H | H1 — entrega del expediente",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2027-03-09",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "21",
+          "name": "PT/H | H1 — acta del CLIENTE (límite: mes 2)",
+          "start": "2027-03-23",
+          "end": "2027-03-23",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 20,
+          "attributes": {
+            "id": "21",
+            "name": "PT/H | H1 — acta del CLIENTE (límite: mes 2)",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2027-03-23",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "22",
+          "name": "RC | 2.4.3 Validación del diseño del kit en banco de pruebas",
+          "start": "2027-04-01",
+          "end": "2027-04-30",
+          "duration": 22,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 21,
+          "attributes": {
+            "id": "22",
+            "name": "RC | 2.4.3 Validación del diseño del kit en banco de pruebas",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-04-01",
+            "duration": "22",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "23",
+          "name": "PT/H | 1.7.1 Plan de Reversibilidad inicial (primeros 90 días)",
+          "start": "2027-04-01",
+          "end": "2027-04-09",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 22,
+          "attributes": {
+            "id": "23",
+            "name": "PT/H | 1.7.1 Plan de Reversibilidad inicial (primeros 90 días)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-04-01",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "24",
+          "name": "PT/H | 2.2.2 Modelado de amenazas por componente y por integración externa, actualizado ante cada cambio",
+          "start": "2027-04-01",
+          "end": "2027-11-30",
+          "duration": 167,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 23,
+          "attributes": {
+            "id": "24",
+            "name": "PT/H | 2.2.2 Modelado de amenazas por componente y por integración externa, actualizado ante cada cambio",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-04-01",
+            "duration": "167",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "25",
+          "name": "PT/H | 2.2.3 Plan de respuesta a incidentes de seguridad, con aviso al CLIENTE en dos horas",
+          "start": "2027-04-01",
+          "end": "2027-04-16",
+          "duration": 12,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 24,
+          "attributes": {
+            "id": "25",
+            "name": "PT/H | 2.2.3 Plan de respuesta a incidentes de seguridad, con aviso al CLIENTE en dos horas",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-04-01",
+            "duration": "12",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "26",
+          "name": "PT/H | 2 elementos: 2.5.1, 2.5.2",
+          "start": "2027-04-01",
+          "end": "2027-04-29",
+          "duration": 21,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 25,
+          "attributes": {
+            "id": "26",
+            "name": "PT/H | 2 elementos: 2.5.1, 2.5.2",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-04-01",
+            "duration": "21",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "27",
+          "name": "PT/H | 2.6.2 Prototipos y pruebas de usabilidad con participantes del CLIENTE",
+          "start": "2027-04-01",
+          "end": "2027-04-29",
+          "duration": 21,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 26,
+          "attributes": {
+            "id": "27",
+            "name": "PT/H | 2.6.2 Prototipos y pruebas de usabilidad con participantes del CLIENTE",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-04-01",
+            "duration": "21",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "28",
+          "name": "PT/H | 2 elementos: 3.10.2.2, 3.10.3.1",
+          "start": "2027-04-01",
+          "end": "2027-06-09",
+          "duration": 49,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 27,
+          "attributes": {
+            "id": "28",
+            "name": "PT/H | 2 elementos: 3.10.2.2, 3.10.3.1",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-04-01",
+            "duration": "49",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "29",
+          "name": "PT/H | 4 elementos: 6.1.1, 6.1.2, 6.1.3, 6.1.4",
+          "start": "2027-04-01",
+          "end": "2027-04-20",
+          "duration": 14,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 28,
+          "attributes": {
+            "id": "29",
+            "name": "PT/H | 4 elementos: 6.1.1, 6.1.2, 6.1.3, 6.1.4",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-04-01",
+            "duration": "14",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "30",
+          "name": "PT/H | 2.4.1 Acta de aprobación de la arquitectura, el plan de seguridad y el modelo de datos (H2)",
+          "start": "2027-04-19",
+          "end": "2027-04-29",
+          "duration": 9,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 29,
+          "attributes": {
+            "id": "30",
+            "name": "PT/H | 2.4.1 Acta de aprobación de la arquitectura, el plan de seguridad y el modelo de datos (H2)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-04-19",
+            "duration": "9",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "31",
+          "name": "PT/H | H2 — entrega del expediente",
+          "start": "2027-04-29",
+          "end": "2027-04-29",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 30,
+          "attributes": {
+            "id": "31",
+            "name": "PT/H | H2 — entrega del expediente",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2027-04-29",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "32",
+          "name": "RC | 2.6.3 Indicadores de usabilidad comprometidos por transacción crítica",
+          "start": "2027-05-03",
+          "end": "2027-05-31",
+          "duration": 20,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 31,
+          "attributes": {
+            "id": "32",
+            "name": "RC | 2.6.3 Indicadores de usabilidad comprometidos por transacción crítica",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-05-03",
+            "duration": "20",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "33",
+          "name": "RC | 3.1.4 Cadena de integración y entrega continua, e infraestructura como código",
+          "start": "2027-05-03",
+          "end": "2027-05-31",
+          "duration": 20,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 32,
+          "attributes": {
+            "id": "33",
+            "name": "RC | 3.1.4 Cadena de integración y entrega continua, e infraestructura como código",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-05-03",
+            "duration": "20",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "34",
+          "name": "RC | 4 elementos: 3.2.1, 3.2.2, 3.2.4, 3.2.5",
+          "start": "2027-05-03",
+          "end": "2027-05-31",
+          "duration": 20,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 33,
+          "attributes": {
+            "id": "34",
+            "name": "RC | 4 elementos: 3.2.1, 3.2.2, 3.2.4, 3.2.5",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-05-03",
+            "duration": "20",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "35",
+          "name": "RC | 3.2.3 Servicio de nube de ingesta de IoT, telemetría cruda y plataforma analítica",
+          "start": "2027-05-03",
+          "end": "2027-05-31",
+          "duration": 20,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 34,
+          "attributes": {
+            "id": "35",
+            "name": "RC | 3.2.3 Servicio de nube de ingesta de IoT, telemetría cruda y plataforma analítica",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-05-03",
+            "duration": "20",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "36",
+          "name": "RC | 6.1.5 Acta de recepción técnica de la sala",
+          "start": "2027-05-03",
+          "end": "2027-05-20",
+          "duration": 14,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 35,
+          "attributes": {
+            "id": "36",
+            "name": "RC | 6.1.5 Acta de recepción técnica de la sala",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-05-03",
+            "duration": "14",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "37",
+          "name": "PT/H | 2.4.4 Mapeo térmico por tipo de carrocería",
+          "start": "2027-05-03",
+          "end": "2027-05-28",
+          "duration": 19,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 36,
+          "attributes": {
+            "id": "37",
+            "name": "PT/H | 2.4.4 Mapeo térmico por tipo de carrocería",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-05-03",
+            "duration": "19",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "38",
+          "name": "PT/H | 2 elementos: 3.11.3, 3.11.4",
+          "start": "2027-05-03",
+          "end": "2028-09-29",
+          "duration": 355,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 37,
+          "attributes": {
+            "id": "38",
+            "name": "PT/H | 2 elementos: 3.11.3, 3.11.4",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-05-03",
+            "duration": "355",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "39",
+          "name": "PT/H | 5 elementos: 5.2.2, 5.2.3, 5.3.1, 5.3.2, 5.3.3",
+          "start": "2027-05-03",
+          "end": "2027-05-11",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 38,
+          "attributes": {
+            "id": "39",
+            "name": "PT/H | 5 elementos: 5.2.2, 5.2.3, 5.3.1, 5.3.2, 5.3.3",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-05-03",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "40",
+          "name": "PT/H | 6.2.1 Cableado de cobre Cat6A y fibra OM4 tendido, con dos ductos de ingreso independientes",
+          "start": "2027-05-03",
+          "end": "2027-05-20",
+          "duration": 14,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 39,
+          "attributes": {
+            "id": "40",
+            "name": "PT/H | 6.2.1 Cableado de cobre Cat6A y fibra OM4 tendido, con dos ductos de ingreso independientes",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-05-03",
+            "duration": "14",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "41",
+          "name": "PT/H | 6.3.3 Gabinete de borde de Concepción montado: servidores activo y en espera, firewalls, switches, UPS, climatización y monitoreo",
+          "start": "2027-05-03",
+          "end": "2027-05-20",
+          "duration": 14,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 40,
+          "attributes": {
+            "id": "41",
+            "name": "PT/H | 6.3.3 Gabinete de borde de Concepción montado: servidores activo y en espera, firewalls, switches, UPS, climatización y monitoreo",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-05-03",
+            "duration": "14",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "42",
+          "name": "PT/H | H2 — acta del CLIENTE (límite: mes 4)",
+          "start": "2027-05-13",
+          "end": "2027-05-13",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 41,
+          "attributes": {
+            "id": "42",
+            "name": "PT/H | H2 — acta del CLIENTE (límite: mes 4)",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2027-05-13",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "43",
+          "name": "RC | 2 elementos: 6.3.1, 6.3.2",
+          "start": "2027-05-24",
+          "end": "2027-06-09",
+          "duration": 13,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 42,
+          "attributes": {
+            "id": "43",
+            "name": "RC | 2 elementos: 6.3.1, 6.3.2",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-05-24",
+            "duration": "13",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "44",
+          "name": "PT/H | 3 elementos: 3.1.1, 3.1.2, 3.1.3",
+          "start": "2027-06-01",
+          "end": "2027-06-18",
+          "duration": 14,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 43,
+          "attributes": {
+            "id": "44",
+            "name": "PT/H | 3 elementos: 3.1.1, 3.1.2, 3.1.3",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-01",
+            "duration": "14",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "45",
+          "name": "PT/H | 3.1.5 Observabilidad de los doce módulos y de los sitios, con tableros para el CLIENTE (H3)",
+          "start": "2027-06-01",
+          "end": "2027-06-18",
+          "duration": 14,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 44,
+          "attributes": {
+            "id": "45",
+            "name": "PT/H | 3.1.5 Observabilidad de los doce módulos y de los sitios, con tableros para el CLIENTE (H3)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-01",
+            "duration": "14",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "46",
+          "name": "PT/H | 3.2.6 Servicio de gestión de dispositivos móviles",
+          "start": "2027-06-01",
+          "end": "2027-06-29",
+          "duration": 19,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 45,
+          "attributes": {
+            "id": "46",
+            "name": "PT/H | 3.2.6 Servicio de gestión de dispositivos móviles",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-01",
+            "duration": "19",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "47",
+          "name": "PT/H | 3.3.1 Identidad y control de acceso, incluidos los conductores externos que rotan sin aviso",
+          "start": "2027-06-01",
+          "end": "2027-08-05",
+          "duration": 45,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 46,
+          "attributes": {
+            "id": "47",
+            "name": "PT/H | 3.3.1 Identidad y control de acceso, incluidos los conductores externos que rotan sin aviso",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-01",
+            "duration": "45",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "48",
+          "name": "PT/H | 3.3.2 Integración con el ERP como único emisor de la guía de despacho (INT-06 e INT-07)",
+          "start": "2027-06-01",
+          "end": "2027-07-01",
+          "duration": 21,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 47,
+          "attributes": {
+            "id": "48",
+            "name": "PT/H | 3.3.2 Integración con el ERP como único emisor de la guía de despacho (INT-06 e INT-07)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-01",
+            "duration": "21",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "49",
+          "name": "PT/H | 3.3.3 Convivencia con el WMS de 2013 durante el reemplazo",
+          "start": "2027-06-01",
+          "end": "2027-07-07",
+          "duration": 25,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 48,
+          "attributes": {
+            "id": "49",
+            "name": "PT/H | 3.3.3 Convivencia con el WMS de 2013 durante el reemplazo",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-01",
+            "duration": "25",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "50",
+          "name": "PT/H | 3.3.5 Registro auditable de stock, lotes y cobros",
+          "start": "2027-06-01",
+          "end": "2027-08-03",
+          "duration": 43,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 49,
+          "attributes": {
+            "id": "50",
+            "name": "PT/H | 3.3.5 Registro auditable de stock, lotes y cobros",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-01",
+            "duration": "43",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "51",
+          "name": "PT/H | 3.10.2.3 Innovación 2: captura de evidencia en las aplicaciones de preventa, preparación y reparto (INN-02.P3)",
+          "start": "2027-06-01",
+          "end": "2027-10-08",
+          "duration": 90,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 50,
+          "attributes": {
+            "id": "51",
+            "name": "PT/H | 3.10.2.3 Innovación 2: captura de evidencia en las aplicaciones de preventa, preparación y reparto (INN-02.P3)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-01",
+            "duration": "90",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "52",
+          "name": "PT/H | 5.1.3 Actas de recepción técnica del equipamiento de terreno comprado por el CLIENTE y de la infraestructura provista por LafroX",
+          "start": "2027-06-01",
+          "end": "2027-06-09",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 51,
+          "attributes": {
+            "id": "52",
+            "name": "PT/H | 5.1.3 Actas de recepción técnica del equipamiento de terreno comprado por el CLIENTE y de la infraestructura provista por LafroX",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-01",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "53",
+          "name": "PT/H | 6.4.1 Hardware de control de acceso biométrico y esclusa instalado",
+          "start": "2027-06-01",
+          "end": "2027-06-18",
+          "duration": 14,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 52,
+          "attributes": {
+            "id": "53",
+            "name": "PT/H | 6.4.1 Hardware de control de acceso biométrico y esclusa instalado",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-01",
+            "duration": "14",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "54",
+          "name": "PT/H | 3.3.6 Operación sin conexión: 14 horas en terreno y 24 horas en el CD",
+          "start": "2027-06-07",
+          "end": "2027-08-03",
+          "duration": 39,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 53,
+          "attributes": {
+            "id": "54",
+            "name": "PT/H | 3.3.6 Operación sin conexión: 14 horas en terreno y 24 horas en el CD",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-07",
+            "duration": "39",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "55",
+          "name": "PT/H | 3.10.3.2 Innovación 3: asociación lote–sensor en el borde y en el camión (INN-03.P2)",
+          "start": "2027-06-07",
+          "end": "2027-09-20",
+          "duration": 72,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 54,
+          "attributes": {
+            "id": "55",
+            "name": "PT/H | 3.10.3.2 Innovación 3: asociación lote–sensor en el borde y en el camión (INN-03.P2)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-07",
+            "duration": "72",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "56",
+          "name": "PT/H | 6.4.2 Hardware de videovigilancia instalado",
+          "start": "2027-06-07",
+          "end": "2027-06-24",
+          "duration": 13,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 55,
+          "attributes": {
+            "id": "56",
+            "name": "PT/H | 6.4.2 Hardware de videovigilancia instalado",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-07",
+            "duration": "13",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "57",
+          "name": "RC | 2 elementos: 6.6.1, 6.6.2",
+          "start": "2027-06-10",
+          "end": "2027-06-30",
+          "duration": 13,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 56,
+          "attributes": {
+            "id": "57",
+            "name": "RC | 2 elementos: 6.6.1, 6.6.2",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-06-10",
+            "duration": "13",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "58",
+          "name": "PT/H | 3.3.4 Integración con la telemetría de los 42 camiones propios (INT-15)",
+          "start": "2027-06-10",
+          "end": "2027-07-12",
+          "duration": 21,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 57,
+          "attributes": {
+            "id": "58",
+            "name": "PT/H | 3.3.4 Integración con la telemetría de los 42 camiones propios (INT-15)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-10",
+            "duration": "21",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "59",
+          "name": "PT/H | 3.4.1 Recepción de mercadería con captura de lote y vencimiento (M1 Recepción)",
+          "start": "2027-06-10",
+          "end": "2027-08-10",
+          "duration": 41,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 58,
+          "attributes": {
+            "id": "59",
+            "name": "PT/H | 3.4.1 Recepción de mercadería con captura de lote y vencimiento (M1 Recepción)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-10",
+            "duration": "41",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "60",
+          "name": "PT/H | 3.4.2 Inventario por ubicación y lote, con FEFO y conteo cíclico (M2 Inventario)",
+          "start": "2027-06-10",
+          "end": "2027-08-11",
+          "duration": 42,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 59,
+          "attributes": {
+            "id": "60",
+            "name": "PT/H | 3.4.2 Inventario por ubicación y lote, con FEFO y conteo cíclico (M2 Inventario)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-10",
+            "duration": "42",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "61",
+          "name": "PT/H | 3.4.10 Cobro en ruta, rendición y conciliación (M7 Cobranza y rendición)",
+          "start": "2027-06-10",
+          "end": "2027-10-04",
+          "duration": 79,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 60,
+          "attributes": {
+            "id": "61",
+            "name": "PT/H | 3.4.10 Cobro en ruta, rendición y conciliación (M7 Cobranza y rendición)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-10",
+            "duration": "79",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "62",
+          "name": "PT/H | 6.6.3 Borde de los CD en servicio, con la prueba de autonomía de 24 horas aprobada",
+          "start": "2027-06-10",
+          "end": "2027-06-18",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 61,
+          "attributes": {
+            "id": "62",
+            "name": "PT/H | 6.6.3 Borde de los CD en servicio, con la prueba de autonomía de 24 horas aprobada",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-10",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "63",
+          "name": "PT/H | 3.4.3 Preparación de pedidos en el turno de noche y en la cámara de congelado (M5 Preparación)",
+          "start": "2027-06-14",
+          "end": "2027-08-18",
+          "duration": 45,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 62,
+          "attributes": {
+            "id": "63",
+            "name": "PT/H | 3.4.3 Preparación de pedidos en el turno de noche y en la cámara de congelado (M5 Preparación)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-14",
+            "duration": "45",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "64",
+          "name": "PT/H | 3.4.4 Cadena de frío, retención por SSCC y retiro sanitario (M9 Calidad y trazabilidad)",
+          "start": "2027-06-14",
+          "end": "2027-09-29",
+          "duration": 74,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 63,
+          "attributes": {
+            "id": "64",
+            "name": "PT/H | 3.4.4 Cadena de frío, retención por SSCC y retiro sanitario (M9 Calidad y trazabilidad)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-14",
+            "duration": "74",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "65",
+          "name": "PT/H | 3.4.5 Ingesta de temperatura (M9) y posición de flota (M12)",
+          "start": "2027-06-14",
+          "end": "2027-08-30",
+          "duration": 53,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 64,
+          "attributes": {
+            "id": "65",
+            "name": "PT/H | 3.4.5 Ingesta de temperatura (M9) y posición de flota (M12)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-14",
+            "duration": "53",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "66",
+          "name": "PT/H | 3.4.6 Aplicación móvil de preventa sin conexión, con stock y crédito (M3 Preventa)",
+          "start": "2027-06-16",
+          "end": "2027-08-17",
+          "duration": 42,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 65,
+          "attributes": {
+            "id": "66",
+            "name": "PT/H | 3.4.6 Aplicación móvil de preventa sin conexión, con stock y crédito (M3 Preventa)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-16",
+            "duration": "42",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "67",
+          "name": "PT/H | 3.4.7 Planificación de rutas corregible por el planificador (M4 Rutas)",
+          "start": "2027-06-16",
+          "end": "2027-09-08",
+          "duration": 58,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 66,
+          "attributes": {
+            "id": "67",
+            "name": "PT/H | 3.4.7 Planificación de rutas corregible por el planificador (M4 Rutas)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-16",
+            "duration": "58",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "68",
+          "name": "PT/H | 3.4.8 Aplicación móvil de reparto con prueba de entrega digital (M6 Reparto)",
+          "start": "2027-06-16",
+          "end": "2027-09-09",
+          "duration": 59,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 67,
+          "attributes": {
+            "id": "68",
+            "name": "PT/H | 3.4.8 Aplicación móvil de reparto con prueba de entrega digital (M6 Reparto)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-16",
+            "duration": "59",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "69",
+          "name": "RC | 3.4.9 Devoluciones en terreno y control de envases (M8 Devoluciones y envases)",
+          "start": "2027-06-18",
+          "end": "2027-09-30",
+          "duration": 71,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 68,
+          "attributes": {
+            "id": "69",
+            "name": "RC | 3.4.9 Devoluciones en terreno y control de envases (M8 Devoluciones y envases)",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-06-18",
+            "duration": "71",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "70",
+          "name": "PT/H | H3 — entrega del expediente",
+          "start": "2027-06-18",
+          "end": "2027-06-18",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 69,
+          "attributes": {
+            "id": "70",
+            "name": "PT/H | H3 — entrega del expediente",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2027-06-18",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "71",
+          "name": "PT/H | 6.4.3 Recinto de custodia de respaldos habilitado",
+          "start": "2027-06-22",
+          "end": "2027-07-09",
+          "duration": 13,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 70,
+          "attributes": {
+            "id": "71",
+            "name": "PT/H | 6.4.3 Recinto de custodia de respaldos habilitado",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-06-22",
+            "duration": "13",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "72",
+          "name": "PT/H | 2 elementos: 1.5.2, 3.11.5",
+          "start": "2027-07-01",
+          "end": "2028-09-29",
+          "duration": 315,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 71,
+          "attributes": {
+            "id": "72",
+            "name": "PT/H | 2 elementos: 1.5.2, 3.11.5",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-07-01",
+            "duration": "315",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "73",
+          "name": "PT/H | 3 elementos: 3.6.2, 3.6.3, 3.6.4",
+          "start": "2027-07-01",
+          "end": "2027-08-02",
+          "duration": 22,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 72,
+          "attributes": {
+            "id": "73",
+            "name": "PT/H | 3 elementos: 3.6.2, 3.6.3, 3.6.4",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-07-01",
+            "duration": "22",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "74",
+          "name": "PT/H | 6.2.2 Certificación de enlaces, etiquetado y planos as-built",
+          "start": "2027-07-01",
+          "end": "2027-07-20",
+          "duration": 13,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 73,
+          "attributes": {
+            "id": "74",
+            "name": "PT/H | 6.2.2 Certificación de enlaces, etiquetado y planos as-built",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-07-01",
+            "duration": "13",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "75",
+          "name": "PT/H | H3 — acta del CLIENTE (límite: mes 6)",
+          "start": "2027-07-06",
+          "end": "2027-07-06",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 74,
+          "attributes": {
+            "id": "75",
+            "name": "PT/H | H3 — acta del CLIENTE (límite: mes 6)",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2027-07-06",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "76",
+          "name": "PT/H | 3.6.1 Intercambio de lote y trazabilidad con los proveedores",
+          "start": "2027-08-02",
+          "end": "2027-09-01",
+          "duration": 23,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 75,
+          "attributes": {
+            "id": "76",
+            "name": "PT/H | 3.6.1 Intercambio de lote y trazabilidad con los proveedores",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-08-02",
+            "duration": "23",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "77",
+          "name": "PT/H | 3.10.1.1 Innovación 1: documento de catálogo de acciones y protocolo del piloto (INN-01.P1)",
+          "start": "2027-08-02",
+          "end": "2027-10-08",
+          "duration": 49,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 76,
+          "attributes": {
+            "id": "77",
+            "name": "PT/H | 3.10.1.1 Innovación 1: documento de catálogo de acciones y protocolo del piloto (INN-01.P1)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-08-02",
+            "duration": "49",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "78",
+          "name": "PT/H | 5.4.4 Contrato de custodia de fuentes con un tercero independiente",
+          "start": "2027-08-02",
+          "end": "2027-08-10",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 77,
+          "attributes": {
+            "id": "78",
+            "name": "PT/H | 5.4.4 Contrato de custodia de fuentes con un tercero independiente",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-08-02",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "79",
+          "name": "PT/H | 6.2.3 Gabinetes de piso y switches de acceso instalados en las bodegas de Talca y Concepción",
+          "start": "2027-08-02",
+          "end": "2027-08-19",
+          "duration": 14,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 78,
+          "attributes": {
+            "id": "79",
+            "name": "PT/H | 6.2.3 Gabinetes de piso y switches de acceso instalados en las bodegas de Talca y Concepción",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-08-02",
+            "duration": "14",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "80",
+          "name": "PT/H | 3.7.1 Informe de perfilamiento y datos saneados",
+          "start": "2027-08-04",
+          "end": "2027-10-01",
+          "duration": 42,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 79,
+          "attributes": {
+            "id": "80",
+            "name": "PT/H | 3.7.1 Informe de perfilamiento y datos saneados",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-08-04",
+            "duration": "42",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "81",
+          "name": "PT/H | 6.5.4 Kit de cadena de frío instalado y recibido en los 28 camiones con frío",
+          "start": "2027-09-01",
+          "end": "2028-01-14",
+          "duration": 94,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 80,
+          "attributes": {
+            "id": "81",
+            "name": "PT/H | 6.5.4 Kit de cadena de frío instalado y recibido en los 28 camiones con frío",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-09-01",
+            "duration": "94",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "82",
+          "name": "PT/H | 7.2.4 Procedimientos operativos rediseñados, contingencia de frío y ruptura confirmada",
+          "start": "2027-09-01",
+          "end": "2028-09-29",
+          "duration": 272,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 81,
+          "attributes": {
+            "id": "82",
+            "name": "PT/H | 7.2.4 Procedimientos operativos rediseñados, contingencia de frío y ruptura confirmada",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-09-01",
+            "duration": "272",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "83",
+          "name": "PT/H | 3.4.11 Indicadores operacionales y OTIF diario (M10 Analítica)",
+          "start": "2027-09-02",
+          "end": "2027-09-27",
+          "duration": 17,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 82,
+          "attributes": {
+            "id": "83",
+            "name": "PT/H | 3.4.11 Indicadores operacionales y OTIF diario (M10 Analítica)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-09-02",
+            "duration": "17",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "84",
+          "name": "PT/H | Cuatro kits de frío recibidos para el piloto",
+          "start": "2027-09-30",
+          "end": "2027-09-30",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 83,
+          "attributes": {
+            "id": "84",
+            "name": "PT/H | Cuatro kits de frío recibidos para el piloto",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2027-09-30",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "85",
+          "name": "PT/H | 3 elementos: 3.10.1.2, 3.10.1.3, 3.10.3.3",
+          "start": "2027-10-01",
+          "end": "2027-11-19",
+          "duration": 34,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 84,
+          "attributes": {
+            "id": "85",
+            "name": "PT/H | 3 elementos: 3.10.1.2, 3.10.1.3, 3.10.3.3",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-10-01",
+            "duration": "34",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "86",
+          "name": "PT/H | 2 elementos: 5.4.1, 5.4.2",
+          "start": "2027-10-01",
+          "end": "2027-10-12",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 85,
+          "attributes": {
+            "id": "86",
+            "name": "PT/H | 2 elementos: 5.4.1, 5.4.2",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-10-01",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "87",
+          "name": "PT/H | 6.3.4 Gabinetes de borde montados en Curicó, Chillán y Los Ángeles, con dos mini-PC (activo y en espera) por plataforma",
+          "start": "2027-10-01",
+          "end": "2027-10-20",
+          "duration": 13,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 86,
+          "attributes": {
+            "id": "87",
+            "name": "PT/H | 6.3.4 Gabinetes de borde montados en Curicó, Chillán y Los Ángeles, con dos mini-PC (activo y en espera) por plataforma",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-10-01",
+            "duration": "13",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "88",
+          "name": "PT/H | 3.7.2 Datos maestros cargados: 8.400 SKU, clientes e instalaciones",
+          "start": "2027-10-04",
+          "end": "2027-11-03",
+          "duration": 21,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 87,
+          "attributes": {
+            "id": "88",
+            "name": "PT/H | 3.7.2 Datos maestros cargados: 8.400 SKU, clientes e instalaciones",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-10-04",
+            "duration": "21",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "89",
+          "name": "PT/H | 3.8.1 Pruebas de integración, regresión e idempotencia en QA (H4)",
+          "start": "2027-10-05",
+          "end": "2027-10-22",
+          "duration": 13,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 88,
+          "attributes": {
+            "id": "89",
+            "name": "PT/H | 3.8.1 Pruebas de integración, regresión e idempotencia en QA (H4)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-10-05",
+            "duration": "13",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "90",
+          "name": "PT/H | 6.5.1 Terminales de preventa, reparto y bodega configurados y enrolados",
+          "start": "2027-10-06",
+          "end": "2028-01-14",
+          "duration": 70,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 89,
+          "attributes": {
+            "id": "90",
+            "name": "PT/H | 6.5.1 Terminales de preventa, reparto y bodega configurados y enrolados",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-10-06",
+            "duration": "70",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "91",
+          "name": "PT/H | 6.5.3 Sensores de cámara y gateways IoT instalados en Talca y Concepción",
+          "start": "2027-10-06",
+          "end": "2027-11-25",
+          "duration": 35,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 90,
+          "attributes": {
+            "id": "91",
+            "name": "PT/H | 6.5.3 Sensores de cámara y gateways IoT instalados en Talca y Concepción",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-10-06",
+            "duration": "35",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "92",
+          "name": "PT/H | 6.5.6 Impresoras de andén y balanzas de recepción instaladas",
+          "start": "2027-10-06",
+          "end": "2028-01-14",
+          "duration": 70,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 91,
+          "attributes": {
+            "id": "92",
+            "name": "PT/H | 6.5.6 Impresoras de andén y balanzas de recepción instaladas",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-10-06",
+            "duration": "70",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "93",
+          "name": "PT/H | H4 — entrega del expediente",
+          "start": "2027-10-22",
+          "end": "2027-10-22",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 92,
+          "attributes": {
+            "id": "93",
+            "name": "PT/H | H4 — entrega del expediente",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2027-10-22",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "94",
+          "name": "PT/H | 2 elementos: 3.8.2, 3.8.3",
+          "start": "2027-10-25",
+          "end": "2027-11-19",
+          "duration": 19,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 93,
+          "attributes": {
+            "id": "94",
+            "name": "PT/H | 2 elementos: 3.8.2, 3.8.3",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-10-25",
+            "duration": "19",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "95",
+          "name": "PT/H | 4 elementos: 3.8.4, 3.8.5, 3.8.6, 3.8.8",
+          "start": "2027-10-25",
+          "end": "2027-11-11",
+          "duration": 13,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 94,
+          "attributes": {
+            "id": "95",
+            "name": "PT/H | 4 elementos: 3.8.4, 3.8.5, 3.8.6, 3.8.8",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-10-25",
+            "duration": "13",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "96",
+          "name": "PT/H | 3.11.2 Base de conocimiento de incidentes y decisiones de diseño",
+          "start": "2027-11-02",
+          "end": "2028-09-29",
+          "duration": 231,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 95,
+          "attributes": {
+            "id": "96",
+            "name": "PT/H | 3.11.2 Base de conocimiento de incidentes y decisiones de diseño",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-11-02",
+            "duration": "231",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "97",
+          "name": "PT/H | 4.1.1 Plan de olas de la Etapa 1 por sitio y zona: Talca, Concepción y plataformas de cross-docking",
+          "start": "2027-11-02",
+          "end": "2027-11-10",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 96,
+          "attributes": {
+            "id": "97",
+            "name": "PT/H | 4.1.1 Plan de olas de la Etapa 1 por sitio y zona: Talca, Concepción y plataformas de cross-docking",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-11-02",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "98",
+          "name": "PT/H | 2 elementos: 7.1.1, 7.1.6",
+          "start": "2027-11-02",
+          "end": "2027-12-24",
+          "duration": 38,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 97,
+          "attributes": {
+            "id": "98",
+            "name": "PT/H | 2 elementos: 7.1.1, 7.1.6",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-11-02",
+            "duration": "38",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "99",
+          "name": "PT/H | 7.1.5 Materiales de capacitación: manuales por perfil, guías rápidas, preguntas frecuentes y videos tutoriales",
+          "start": "2027-11-02",
+          "end": "2028-07-31",
+          "duration": 190,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 98,
+          "attributes": {
+            "id": "99",
+            "name": "PT/H | 7.1.5 Materiales de capacitación: manuales por perfil, guías rápidas, preguntas frecuentes y videos tutoriales",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-11-02",
+            "duration": "190",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "100",
+          "name": "PT/H | 7.2.1 Acompañamiento del personal con 20 o 30 años en la compañía",
+          "start": "2027-11-02",
+          "end": "2028-05-31",
+          "duration": 149,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 99,
+          "attributes": {
+            "id": "100",
+            "name": "PT/H | 7.2.1 Acompañamiento del personal con 20 o 30 años en la compañía",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-11-02",
+            "duration": "149",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "101",
+          "name": "PT/H | 2 elementos: 6.5.2, 6.5.5",
+          "start": "2027-11-04",
+          "end": "2028-01-14",
+          "duration": 51,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 100,
+          "attributes": {
+            "id": "101",
+            "name": "PT/H | 2 elementos: 6.5.2, 6.5.5",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-11-04",
+            "duration": "51",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "102",
+          "name": "PT/H | H4 — acta del CLIENTE (límite: mes 10)",
+          "start": "2027-11-08",
+          "end": "2027-11-08",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 101,
+          "attributes": {
+            "id": "102",
+            "name": "PT/H | H4 — acta del CLIENTE (límite: mes 10)",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2027-11-08",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "103",
+          "name": "PT/H | 4.1.4 Piloto de cadena de frío en cuatro camiones",
+          "start": "2027-11-09",
+          "end": "2027-12-20",
+          "duration": 29,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 102,
+          "attributes": {
+            "id": "103",
+            "name": "PT/H | 4.1.4 Piloto de cadena de frío en cuatro camiones",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-11-09",
+            "duration": "29",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "104",
+          "name": "PT/H | 3.8.7 Acta de certificación de la Etapa 1 (H5)",
+          "start": "2027-11-22",
+          "end": "2027-12-01",
+          "duration": 8,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 103,
+          "attributes": {
+            "id": "104",
+            "name": "PT/H | 3.8.7 Acta de certificación de la Etapa 1 (H5)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-11-22",
+            "duration": "8",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "105",
+          "name": "RC | 2 elementos: 3.7.3, 3.7.4",
+          "start": "2027-12-01",
+          "end": "2027-12-31",
+          "duration": 22,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 104,
+          "attributes": {
+            "id": "105",
+            "name": "RC | 2 elementos: 3.7.3, 3.7.4",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-12-01",
+            "duration": "22",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "106",
+          "name": "PT/H | 3 elementos: 3.10.1.4, 3.10.2.4, 3.10.3.4",
+          "start": "2027-12-01",
+          "end": "2028-03-20",
+          "duration": 78,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 105,
+          "attributes": {
+            "id": "106",
+            "name": "PT/H | 3 elementos: 3.10.1.4, 3.10.2.4, 3.10.3.4",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-12-01",
+            "duration": "78",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "107",
+          "name": "PT/H | 4.1.2 Procedimiento de reversión de la Etapa 1 antes de las 05:30, con versión operativa local y DTE emitidos por el ERP",
+          "start": "2027-12-01",
+          "end": "2027-12-10",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 106,
+          "attributes": {
+            "id": "107",
+            "name": "PT/H | 4.1.2 Procedimiento de reversión de la Etapa 1 antes de las 05:30, con versión operativa local y DTE emitidos por el ERP",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-12-01",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "108",
+          "name": "PT/H | 7.1.3 Incorporación de conductores de transportistas, escaneos y lectura del rojo",
+          "start": "2027-12-01",
+          "end": "2028-09-29",
+          "duration": 210,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 107,
+          "attributes": {
+            "id": "108",
+            "name": "PT/H | 7.1.3 Incorporación de conductores de transportistas, escaneos y lectura del rojo",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-12-01",
+            "duration": "210",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "109",
+          "name": "PT/H | H5 — entrega del expediente",
+          "start": "2027-12-01",
+          "end": "2027-12-01",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 108,
+          "attributes": {
+            "id": "109",
+            "name": "PT/H | H5 — entrega del expediente",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2027-12-01",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "110",
+          "name": "PT/H | 3.7.5 Acta de conciliación y corte fuera de las ventanas de congelamiento",
+          "start": "2028-01-03",
+          "end": "2028-01-27",
+          "duration": 19,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 109,
+          "attributes": {
+            "id": "110",
+            "name": "PT/H | 3.7.5 Acta de conciliación y corte fuera de las ventanas de congelamiento",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-01-03",
+            "duration": "19",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "111",
+          "name": "PT/H | H5 — acta del CLIENTE (límite: mes 12)",
+          "start": "2028-01-03",
+          "end": "2028-01-03",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 110,
+          "attributes": {
+            "id": "111",
+            "name": "PT/H | H5 — acta del CLIENTE (límite: mes 12)",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2028-01-03",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "112",
+          "name": "RC | H6 — inicio de marcha blanca (mes 13)",
+          "start": "2028-02-01",
+          "end": "2028-02-01",
+          "duration": 0,
+          "color": "#c00000",
+          "milestone": true,
+          "order": 111,
+          "attributes": {
+            "id": "112",
+            "name": "RC | H6 — inicio de marcha blanca (mes 13)",
+            "color": "#c00000",
+            "meeting": "true",
+            "start": "2028-02-01",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "113",
+          "name": "PT/H | 1.2.5 Documento de línea base de alcance de la Etapa 2: canal moderno y costo de servir (H8)",
+          "start": "2028-02-01",
+          "end": "2028-02-09",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 112,
+          "attributes": {
+            "id": "113",
+            "name": "PT/H | 1.2.5 Documento de línea base de alcance de la Etapa 2: canal moderno y costo de servir (H8)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-02-01",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "114",
+          "name": "PT/H | 2.1.4 Documento de diseño detallado de M11 y del intercambio con las cadenas",
+          "start": "2028-02-01",
+          "end": "2028-02-16",
+          "duration": 12,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 113,
+          "attributes": {
+            "id": "114",
+            "name": "PT/H | 2.1.4 Documento de diseño detallado de M11 y del intercambio con las cadenas",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-02-01",
+            "duration": "12",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "115",
+          "name": "PT/H | 3.6.5 Intercambio electrónico con la principal cadena, con sus pruebas aprobadas (INT-08)",
+          "start": "2028-02-01",
+          "end": "2028-07-04",
+          "duration": 107,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 114,
+          "attributes": {
+            "id": "115",
+            "name": "PT/H | 3.6.5 Intercambio electrónico con la principal cadena, con sus pruebas aprobadas (INT-08)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-02-01",
+            "duration": "107",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "116",
+          "name": "PT/H | 3.10.4.1 Innovación 5: prototipo e informe de la prueba de comprensión (INN-05.P1)",
+          "start": "2028-02-01",
+          "end": "2028-03-21",
+          "duration": 36,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 115,
+          "attributes": {
+            "id": "116",
+            "name": "PT/H | 3.10.4.1 Innovación 5: prototipo e informe de la prueba de comprensión (INN-05.P1)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-02-01",
+            "duration": "36",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "117",
+          "name": "PT/H | 4.2.1 Marcha blanca de la Etapa 1 con conciliación diaria (H6)",
+          "start": "2028-02-01",
+          "end": "2028-04-28",
+          "duration": 63,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 116,
+          "attributes": {
+            "id": "117",
+            "name": "PT/H | 4.2.1 Marcha blanca de la Etapa 1 con conciliación diaria (H6)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-02-01",
+            "duration": "63",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "118",
+          "name": "PT/H | 7.2.5 Medición de la adopción y plan de acción correctiva",
+          "start": "2028-02-01",
+          "end": "2028-10-31",
+          "duration": 187,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 117,
+          "attributes": {
+            "id": "118",
+            "name": "PT/H | 7.2.5 Medición de la adopción y plan de acción correctiva",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-02-01",
+            "duration": "187",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "119",
+          "name": "PT/H | 7.3.1 Certificación de preventistas, conductores y preparadores (Etapa 1)",
+          "start": "2028-02-01",
+          "end": "2028-03-24",
+          "duration": 39,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 118,
+          "attributes": {
+            "id": "119",
+            "name": "PT/H | 7.3.1 Certificación de preventistas, conductores y preparadores (Etapa 1)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-02-01",
+            "duration": "39",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "120",
+          "name": "PT/H | 2.4.2 Acta de aprobación del diseño detallado de la Etapa 2 (H8)",
+          "start": "2028-02-17",
+          "end": "2028-02-28",
+          "duration": 8,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 119,
+          "attributes": {
+            "id": "120",
+            "name": "PT/H | 2.4.2 Acta de aprobación del diseño detallado de la Etapa 2 (H8)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-02-17",
+            "duration": "8",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "121",
+          "name": "PT/H | H8 — entrega del expediente",
+          "start": "2028-02-28",
+          "end": "2028-02-28",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 120,
+          "attributes": {
+            "id": "121",
+            "name": "PT/H | H8 — entrega del expediente",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2028-02-28",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "122",
+          "name": "PT/H | Inicio de la ola 3 de reparto",
+          "start": "2028-02-29",
+          "end": "2028-02-29",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 121,
+          "attributes": {
+            "id": "122",
+            "name": "PT/H | Inicio de la ola 3 de reparto",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2028-02-29",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "123",
+          "name": "PT/H | 3.10.4.2 Innovación 5: evaluación de privacidad y diseño de la impresión en cabina (INN-05.P2)",
+          "start": "2028-03-01",
+          "end": "2028-04-19",
+          "duration": 35,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 122,
+          "attributes": {
+            "id": "123",
+            "name": "PT/H | 3.10.4.2 Innovación 5: evaluación de privacidad y diseño de la impresión en cabina (INN-05.P2)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-03-01",
+            "duration": "35",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "124",
+          "name": "PT/H | H8 — acta del CLIENTE (límite: mes 14)",
+          "start": "2028-03-13",
+          "end": "2028-03-13",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 123,
+          "attributes": {
+            "id": "124",
+            "name": "PT/H | H8 — acta del CLIENTE (límite: mes 14)",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2028-03-13",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "125",
+          "name": "RC | 4 elementos: 3.5.1, 3.5.2, 3.5.3, 3.5.4",
+          "start": "2028-03-15",
+          "end": "2028-04-28",
+          "duration": 32,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 124,
+          "attributes": {
+            "id": "125",
+            "name": "RC | 4 elementos: 3.5.1, 3.5.2, 3.5.3, 3.5.4",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2028-03-15",
+            "duration": "32",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "126",
+          "name": "PT/H | 1.7.2 Primera actualización anual del Plan de Reversibilidad durante la implementación",
+          "start": "2028-04-03",
+          "end": "2028-04-11",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 125,
+          "attributes": {
+            "id": "126",
+            "name": "PT/H | 1.7.2 Primera actualización anual del Plan de Reversibilidad durante la implementación",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-04-03",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "127",
+          "name": "PT/H | 3.10.4.3 Innovación 5: cálculo y bloques 1 a 3 de la hoja de negocio (INN-05.P3)",
+          "start": "2028-04-03",
+          "end": "2028-06-09",
+          "duration": 48,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 126,
+          "attributes": {
+            "id": "127",
+            "name": "PT/H | 3.10.4.3 Innovación 5: cálculo y bloques 1 a 3 de la hoja de negocio (INN-05.P3)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-04-03",
+            "duration": "48",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "128",
+          "name": "PT/H | 3.11.1 Documentación técnica, funcional, de arquitectura, de operación y de seguridad",
+          "start": "2028-04-03",
+          "end": "2028-10-31",
+          "duration": 143,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 127,
+          "attributes": {
+            "id": "128",
+            "name": "PT/H | 3.11.1 Documentación técnica, funcional, de arquitectura, de operación y de seguridad",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-04-03",
+            "duration": "143",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "129",
+          "name": "PT/H | 7.1.4 Traspaso al equipo de TI de cuatro personas del CLIENTE",
+          "start": "2028-04-03",
+          "end": "2028-09-29",
+          "duration": 123,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 128,
+          "attributes": {
+            "id": "129",
+            "name": "PT/H | 7.1.4 Traspaso al equipo de TI de cuatro personas del CLIENTE",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-04-03",
+            "duration": "123",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "130",
+          "name": "PT/H | 3.9.1 Pruebas de integración y regresión sin afectar la Etapa 1 en producción (H9)",
+          "start": "2028-05-02",
+          "end": "2028-05-18",
+          "duration": 13,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 129,
+          "attributes": {
+            "id": "130",
+            "name": "PT/H | 3.9.1 Pruebas de integración y regresión sin afectar la Etapa 1 en producción (H9)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-05-02",
+            "duration": "13",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "131",
+          "name": "PT/H | 4.2.2 Estabilización de la Etapa 1, acompañamiento en ruta y restauraciones de soporte puente",
+          "start": "2028-05-05",
+          "end": "2028-09-29",
+          "duration": 101,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 130,
+          "attributes": {
+            "id": "131",
+            "name": "PT/H | 4.2.2 Estabilización de la Etapa 1, acompañamiento en ruta y restauraciones de soporte puente",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-05-05",
+            "duration": "101",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "132",
+          "name": "PT/H | 7.2.2 Gestión del cambio con las cadenas y los transportistas",
+          "start": "2028-05-02",
+          "end": "2028-06-23",
+          "duration": 38,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 131,
+          "attributes": {
+            "id": "132",
+            "name": "PT/H | 7.2.2 Gestión del cambio con las cadenas y los transportistas",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-05-02",
+            "duration": "38",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "133",
+          "name": "PT/H | 4.2.3 Acta de aceptación de la Etapa 1 (H7)",
+          "start": "2028-05-05",
+          "end": "2028-05-15",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 132,
+          "attributes": {
+            "id": "133",
+            "name": "PT/H | 4.2.3 Acta de aceptación de la Etapa 1 (H7)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-05-05",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "134",
+          "name": "PT/H | H7 — entrega del expediente",
+          "start": "2028-05-15",
+          "end": "2028-05-15",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 133,
+          "attributes": {
+            "id": "134",
+            "name": "PT/H | H7 — entrega del expediente",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2028-05-15",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "135",
+          "name": "PT/H | H9 — entrega del expediente",
+          "start": "2028-05-18",
+          "end": "2028-05-18",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 134,
+          "attributes": {
+            "id": "135",
+            "name": "PT/H | H9 — entrega del expediente",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2028-05-18",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "136",
+          "name": "PT/H | 3 elementos: 3.9.3, 3.9.4, 3.9.7",
+          "start": "2028-05-19",
+          "end": "2028-06-01",
+          "duration": 10,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 135,
+          "attributes": {
+            "id": "136",
+            "name": "PT/H | 3 elementos: 3.9.3, 3.9.4, 3.9.7",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-05-19",
+            "duration": "10",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "137",
+          "name": "PT/H | 3.9.5 Prueba de seguridad ofensiva de la Etapa 2, por un tercero independiente",
+          "start": "2028-05-19",
+          "end": "2028-05-26",
+          "duration": 6,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 136,
+          "attributes": {
+            "id": "137",
+            "name": "PT/H | 3.9.5 Prueba de seguridad ofensiva de la Etapa 2, por un tercero independiente",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-05-19",
+            "duration": "6",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "138",
+          "name": "RC | H7 — acta del CLIENTE (límite: mes 16)",
+          "start": "2028-05-29",
+          "end": "2028-05-29",
+          "duration": 0,
+          "color": "#c00000",
+          "milestone": true,
+          "order": 137,
+          "attributes": {
+            "id": "138",
+            "name": "RC | H7 — acta del CLIENTE (límite: mes 16)",
+            "color": "#c00000",
+            "meeting": "true",
+            "start": "2028-05-29",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "139",
+          "name": "PT/H | 3.6.6 Incorporación de las demás cadenas al intercambio electrónico (INT-08)",
+          "start": "2028-06-01",
+          "end": "2028-08-23",
+          "duration": 57,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 138,
+          "attributes": {
+            "id": "139",
+            "name": "PT/H | 3.6.6 Incorporación de las demás cadenas al intercambio electrónico (INT-08)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-06-01",
+            "duration": "57",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "140",
+          "name": "PT/H | 4.1.3 Plan de implantación y reversión de la Etapa 2 fuera de la ventana de 05:30 a 07:00",
+          "start": "2028-06-01",
+          "end": "2028-06-09",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 139,
+          "attributes": {
+            "id": "140",
+            "name": "PT/H | 4.1.3 Plan de implantación y reversión de la Etapa 2 fuera de la ventana de 05:30 a 07:00",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-06-01",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "141",
+          "name": "PT/H | 5.4.3 Fórmula aprobada del tramo variable: reglas de atribución, canasta e índices (INN-04.P1)",
+          "start": "2028-06-01",
+          "end": "2028-06-09",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 140,
+          "attributes": {
+            "id": "141",
+            "name": "PT/H | 5.4.3 Fórmula aprobada del tramo variable: reglas de atribución, canasta e índices (INN-04.P1)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-06-01",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "142",
+          "name": "PT/H | H9 — acta del CLIENTE (límite: mes 17)",
+          "start": "2028-06-01",
+          "end": "2028-06-01",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 141,
+          "attributes": {
+            "id": "142",
+            "name": "PT/H | H9 — acta del CLIENTE (límite: mes 17)",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2028-06-01",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "143",
+          "name": "PT/H | 3.9.2 Pruebas de aceptación y de accesibilidad con cadenas, transportistas, Comercial y Finanzas",
+          "start": "2028-06-02",
+          "end": "2028-06-15",
+          "duration": 10,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 142,
+          "attributes": {
+            "id": "143",
+            "name": "PT/H | 3.9.2 Pruebas de aceptación y de accesibilidad con cadenas, transportistas, Comercial y Finanzas",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-06-02",
+            "duration": "10",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "144",
+          "name": "PT/H | 3.9.6 Acta de certificación de la Etapa 2 y cierre del desarrollo (H10)",
+          "start": "2028-06-16",
+          "end": "2028-06-28",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 143,
+          "attributes": {
+            "id": "144",
+            "name": "PT/H | 3.9.6 Acta de certificación de la Etapa 2 y cierre del desarrollo (H10)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-06-16",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "145",
+          "name": "PT/H | H10 — entrega del expediente",
+          "start": "2028-06-28",
+          "end": "2028-06-28",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 144,
+          "attributes": {
+            "id": "145",
+            "name": "PT/H | H10 — entrega del expediente",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2028-06-28",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "146",
+          "name": "PT/H | 3.10.4.4 Innovación 5: hoja certificada, en marcha blanca y en producción (INN-05.P4, primera parte)",
+          "start": "2028-07-03",
+          "end": "2028-09-29",
+          "duration": 62,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 145,
+          "attributes": {
+            "id": "146",
+            "name": "PT/H | 3.10.4.4 Innovación 5: hoja certificada, en marcha blanca y en producción (INN-05.P4, primera parte)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-07-03",
+            "duration": "62",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "147",
+          "name": "PT/H | 7.3.2 Certificación de Comercial y Finanzas en costo de servir (Etapa 2)",
+          "start": "2028-07-03",
+          "end": "2028-07-25",
+          "duration": 17,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 146,
+          "attributes": {
+            "id": "147",
+            "name": "PT/H | 7.3.2 Certificación de Comercial y Finanzas en costo de servir (Etapa 2)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-07-03",
+            "duration": "17",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "148",
+          "name": "PT/H | H10 — acta del CLIENTE (límite: mes 18)",
+          "start": "2028-07-12",
+          "end": "2028-07-12",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 147,
+          "attributes": {
+            "id": "148",
+            "name": "PT/H | H10 — acta del CLIENTE (límite: mes 18)",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2028-07-12",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "149",
+          "name": "RC | H11 — inicio de marcha blanca (mes 19)",
+          "start": "2028-08-01",
+          "end": "2028-08-01",
+          "duration": 0,
+          "color": "#c00000",
+          "milestone": true,
+          "order": 148,
+          "attributes": {
+            "id": "149",
+            "name": "RC | H11 — inicio de marcha blanca (mes 19)",
+            "color": "#c00000",
+            "meeting": "true",
+            "start": "2028-08-01",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "150",
+          "name": "PT/H | 4.3.1 Marcha blanca de la Etapa 2 en convivencia con la Etapa 1 y fuente única de datos (H11)",
+          "start": "2028-08-01",
+          "end": "2028-09-29",
+          "duration": 41,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 149,
+          "attributes": {
+            "id": "150",
+            "name": "PT/H | 4.3.1 Marcha blanca de la Etapa 2 en convivencia con la Etapa 1 y fuente única de datos (H11)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-08-01",
+            "duration": "41",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "151",
+          "name": "PT/H | 4.3.4 Garantía de correcto funcionamiento constituida, condición de la aceptación final (H12)",
+          "start": "2028-09-13",
+          "end": "2028-09-25",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 150,
+          "attributes": {
+            "id": "151",
+            "name": "PT/H | 4.3.4 Garantía de correcto funcionamiento constituida, condición de la aceptación final (H12)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-09-13",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "152",
+          "name": "PT/H | 4.3.2 Estabilización de la Etapa 2 con Comercial, Finanzas, cadenas y transportistas",
+          "start": "2028-10-05",
+          "end": "2028-11-30",
+          "duration": 38,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 151,
+          "attributes": {
+            "id": "152",
+            "name": "PT/H | 4.3.2 Estabilización de la Etapa 2 con Comercial, Finanzas, cadenas y transportistas",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-10-05",
+            "duration": "38",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "153",
+          "name": "PT/H | 4.3.3 Acta de aceptación final de la implementación (H12)",
+          "start": "2028-10-02",
+          "end": "2028-10-11",
+          "duration": 7,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 152,
+          "attributes": {
+            "id": "153",
+            "name": "PT/H | 4.3.3 Acta de aceptación final de la implementación (H12)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-10-02",
+            "duration": "7",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "154",
+          "name": "PT/H | H12 — entrega del expediente",
+          "start": "2028-10-11",
+          "end": "2028-10-11",
+          "duration": 0,
+          "color": "#404040",
+          "milestone": true,
+          "order": 153,
+          "attributes": {
+            "id": "154",
+            "name": "PT/H | H12 — entrega del expediente",
+            "color": "#404040",
+            "meeting": "true",
+            "start": "2028-10-11",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "155",
+          "name": "RC | H12 — acta del CLIENTE (límite: mes 21)",
+          "start": "2028-10-25",
+          "end": "2028-10-25",
+          "duration": 0,
+          "color": "#c00000",
+          "milestone": true,
+          "order": 154,
+          "attributes": {
+            "id": "155",
+            "name": "RC | H12 — acta del CLIENTE (límite: mes 21)",
+            "color": "#c00000",
+            "meeting": "true",
+            "start": "2028-10-25",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        }
+      ],
+      "relaciones": [
+        {
+          "source": "1",
+          "target": "22",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "1",
+          "target": "17",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "1",
+          "target": "81",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "3",
+          "target": "11",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "3",
+          "target": "20",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "4",
+          "target": "67",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "5",
+          "target": "48",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "7",
+          "target": "19",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "9",
+          "target": "20",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "11",
+          "target": "30",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "12",
+          "target": "30",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "13",
+          "target": "30",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "13",
+          "target": "47",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "16",
+          "target": "34",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "16",
+          "target": "35",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "16",
+          "target": "46",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "17",
+          "target": "22",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "17",
+          "target": "103",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "19",
+          "target": "29",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "19",
+          "target": "36",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "20",
+          "target": "21",
+          "type": "2",
+          "difference": "10",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "21",
+          "target": "11",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "22",
+          "target": "37",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "22",
+          "target": "64",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "22",
+          "target": "65",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "22",
+          "target": "103",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "22",
+          "target": "81",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "25",
+          "target": "30",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "27",
+          "target": "59",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "27",
+          "target": "60",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "27",
+          "target": "63",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "27",
+          "target": "64",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "27",
+          "target": "65",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "27",
+          "target": "66",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "27",
+          "target": "67",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "27",
+          "target": "68",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "27",
+          "target": "69",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "27",
+          "target": "61",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "27",
+          "target": "83",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "29",
+          "target": "36",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "30",
+          "target": "59",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "30",
+          "target": "60",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "30",
+          "target": "63",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "30",
+          "target": "64",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "30",
+          "target": "65",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "30",
+          "target": "66",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "30",
+          "target": "67",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "30",
+          "target": "68",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "30",
+          "target": "69",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "30",
+          "target": "61",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "30",
+          "target": "83",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "30",
+          "target": "31",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "31",
+          "target": "42",
+          "type": "2",
+          "difference": "10",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "33",
+          "target": "59",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "33",
+          "target": "60",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "33",
+          "target": "63",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "33",
+          "target": "64",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "33",
+          "target": "65",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "33",
+          "target": "66",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "33",
+          "target": "67",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "33",
+          "target": "68",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "33",
+          "target": "69",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "33",
+          "target": "61",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "33",
+          "target": "83",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "34",
+          "target": "44",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "35",
+          "target": "65",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "36",
+          "target": "43",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "37",
+          "target": "64",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "37",
+          "target": "65",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "37",
+          "target": "103",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "37",
+          "target": "81",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "41",
+          "target": "57",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "41",
+          "target": "62",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "42",
+          "target": "59",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "42",
+          "target": "60",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "42",
+          "target": "63",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "42",
+          "target": "64",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "42",
+          "target": "65",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "42",
+          "target": "66",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "42",
+          "target": "67",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "42",
+          "target": "68",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "42",
+          "target": "69",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "42",
+          "target": "61",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "42",
+          "target": "83",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "43",
+          "target": "57",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "43",
+          "target": "62",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "44",
+          "target": "59",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "44",
+          "target": "60",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "44",
+          "target": "63",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "44",
+          "target": "64",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "44",
+          "target": "65",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "44",
+          "target": "66",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "44",
+          "target": "67",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "44",
+          "target": "68",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "44",
+          "target": "69",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "44",
+          "target": "61",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "44",
+          "target": "83",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "44",
+          "target": "70",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "45",
+          "target": "59",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "45",
+          "target": "60",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "45",
+          "target": "63",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "45",
+          "target": "64",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "45",
+          "target": "65",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "45",
+          "target": "66",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "45",
+          "target": "67",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "45",
+          "target": "68",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "45",
+          "target": "69",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "45",
+          "target": "61",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "45",
+          "target": "83",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "45",
+          "target": "70",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "46",
+          "target": "90",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "47",
+          "target": "59",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "47",
+          "target": "60",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "47",
+          "target": "63",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "47",
+          "target": "64",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "47",
+          "target": "65",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "47",
+          "target": "66",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "47",
+          "target": "67",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "47",
+          "target": "68",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "47",
+          "target": "69",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "47",
+          "target": "61",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "47",
+          "target": "83",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "48",
+          "target": "59",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "48",
+          "target": "60",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "48",
+          "target": "63",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "48",
+          "target": "64",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "48",
+          "target": "65",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "48",
+          "target": "66",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "48",
+          "target": "67",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "48",
+          "target": "68",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "48",
+          "target": "69",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "48",
+          "target": "61",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "48",
+          "target": "83",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "49",
+          "target": "59",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "49",
+          "target": "60",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "49",
+          "target": "63",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "49",
+          "target": "64",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "49",
+          "target": "65",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "49",
+          "target": "66",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "49",
+          "target": "67",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "49",
+          "target": "68",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "49",
+          "target": "69",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "49",
+          "target": "61",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "49",
+          "target": "83",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "50",
+          "target": "59",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "50",
+          "target": "60",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "50",
+          "target": "63",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "50",
+          "target": "64",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "50",
+          "target": "65",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "50",
+          "target": "66",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "50",
+          "target": "67",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "50",
+          "target": "68",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "50",
+          "target": "69",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "50",
+          "target": "61",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "50",
+          "target": "83",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "54",
+          "target": "59",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "54",
+          "target": "60",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "54",
+          "target": "63",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "54",
+          "target": "64",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "54",
+          "target": "65",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "54",
+          "target": "66",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "54",
+          "target": "67",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "54",
+          "target": "68",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "54",
+          "target": "69",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "54",
+          "target": "61",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "54",
+          "target": "83",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "58",
+          "target": "59",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "58",
+          "target": "60",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "58",
+          "target": "63",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "58",
+          "target": "64",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "58",
+          "target": "65",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "58",
+          "target": "66",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "58",
+          "target": "67",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "58",
+          "target": "68",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "58",
+          "target": "69",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "58",
+          "target": "61",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "58",
+          "target": "83",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "59",
+          "target": "63",
+          "type": "3",
+          "difference": "2",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "59",
+          "target": "64",
+          "type": "3",
+          "difference": "2",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "59",
+          "target": "89",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "60",
+          "target": "63",
+          "type": "3",
+          "difference": "2",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "60",
+          "target": "64",
+          "type": "3",
+          "difference": "2",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "60",
+          "target": "66",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "60",
+          "target": "89",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "61",
+          "target": "89",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "62",
+          "target": "70",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "63",
+          "target": "67",
+          "type": "3",
+          "difference": "2",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "63",
+          "target": "68",
+          "type": "3",
+          "difference": "2",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "63",
+          "target": "89",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "64",
+          "target": "89",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "64",
+          "target": "103",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "65",
+          "target": "89",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "65",
+          "target": "103",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "66",
+          "target": "67",
+          "type": "3",
+          "difference": "2",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "66",
+          "target": "68",
+          "type": "3",
+          "difference": "2",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "66",
+          "target": "89",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "67",
+          "target": "89",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "68",
+          "target": "61",
+          "type": "3",
+          "difference": "2",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "68",
+          "target": "89",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "69",
+          "target": "89",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "70",
+          "target": "75",
+          "type": "2",
+          "difference": "10",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "73",
+          "target": "89",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "76",
+          "target": "89",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "80",
+          "target": "110",
+          "type": "3",
+          "difference": "3",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "81",
+          "target": "84",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "81",
+          "target": "122",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "83",
+          "target": "89",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "84",
+          "target": "103",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "86",
+          "target": "122",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "88",
+          "target": "110",
+          "type": "3",
+          "difference": "3",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "89",
+          "target": "94",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "89",
+          "target": "95",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "89",
+          "target": "103",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "89",
+          "target": "93",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "93",
+          "target": "102",
+          "type": "2",
+          "difference": "10",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "94",
+          "target": "104",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "95",
+          "target": "104",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "97",
+          "target": "117",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "102",
+          "target": "103",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "103",
+          "target": "122",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "104",
+          "target": "109",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "105",
+          "target": "110",
+          "type": "3",
+          "difference": "3",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "107",
+          "target": "117",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "109",
+          "target": "111",
+          "type": "2",
+          "difference": "10",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "110",
+          "target": "117",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "111",
+          "target": "117",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "113",
+          "target": "120",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "113",
+          "target": "125",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "113",
+          "target": "121",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "114",
+          "target": "120",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "115",
+          "target": "150",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "117",
+          "target": "133",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "117",
+          "target": "112",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "119",
+          "target": "133",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "120",
+          "target": "125",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "120",
+          "target": "121",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "121",
+          "target": "124",
+          "type": "2",
+          "difference": "10",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "124",
+          "target": "125",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "125",
+          "target": "130",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "129",
+          "target": "153",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "130",
+          "target": "143",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "130",
+          "target": "136",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "130",
+          "target": "137",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "130",
+          "target": "144",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "130",
+          "target": "135",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "133",
+          "target": "134",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "134",
+          "target": "138",
+          "type": "2",
+          "difference": "10",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "135",
+          "target": "142",
+          "type": "2",
+          "difference": "10",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "136",
+          "target": "144",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "137",
+          "target": "144",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "140",
+          "target": "150",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "143",
+          "target": "144",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "144",
+          "target": "145",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "145",
+          "target": "148",
+          "type": "2",
+          "difference": "10",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "147",
+          "target": "153",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "148",
+          "target": "150",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "150",
+          "target": "153",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "150",
+          "target": "149",
+          "type": "1",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "151",
+          "target": "153",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "151",
+          "target": "154",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "153",
+          "target": "154",
+          "type": "2",
+          "difference": "-1",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "154",
+          "target": "155",
+          "type": "2",
+          "difference": "10",
+          "hardness": "Rubber"
+        }
+      ]
+    },
+    "Fig_7_Gantt_56_Meses.gan": {
+      "sha256": "07d5990aba9278dc9eb75d80ee49c98290251bd7edd0a3f8100b25d712c8eef3",
+      "tareas": [
+        {
+          "id": "0",
+          "name": "Etapa 1 · Desarrollo (meses 1 a 12)",
+          "start": "2027-02-01",
+          "end": "2028-01-31",
+          "duration": 252,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 0,
+          "attributes": {
+            "id": "0",
+            "name": "Etapa 1 · Desarrollo (meses 1 a 12)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2027-02-01",
+            "duration": "252",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "1",
+          "name": "H1 — acta del CLIENTE (mes 2)",
+          "start": "2027-03-23",
+          "end": "2027-03-23",
+          "duration": 0,
+          "color": "#000000",
+          "milestone": true,
+          "order": 1,
+          "attributes": {
+            "id": "1",
+            "name": "H1 — acta del CLIENTE (mes 2)",
+            "color": "#000000",
+            "meeting": "true",
+            "start": "2027-03-23",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "2",
+          "name": "H2 — acta del CLIENTE (mes 4)",
+          "start": "2027-05-13",
+          "end": "2027-05-13",
+          "duration": 0,
+          "color": "#000000",
+          "milestone": true,
+          "order": 2,
+          "attributes": {
+            "id": "2",
+            "name": "H2 — acta del CLIENTE (mes 4)",
+            "color": "#000000",
+            "meeting": "true",
+            "start": "2027-05-13",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "3",
+          "name": "H3 — acta del CLIENTE (mes 6)",
+          "start": "2027-07-06",
+          "end": "2027-07-06",
+          "duration": 0,
+          "color": "#000000",
+          "milestone": true,
+          "order": 3,
+          "attributes": {
+            "id": "3",
+            "name": "H3 — acta del CLIENTE (mes 6)",
+            "color": "#000000",
+            "meeting": "true",
+            "start": "2027-07-06",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "4",
+          "name": "H4 — acta del CLIENTE (mes 10)",
+          "start": "2027-11-08",
+          "end": "2027-11-08",
+          "duration": 0,
+          "color": "#000000",
+          "milestone": true,
+          "order": 4,
+          "attributes": {
+            "id": "4",
+            "name": "H4 — acta del CLIENTE (mes 10)",
+            "color": "#000000",
+            "meeting": "true",
+            "start": "2027-11-08",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "5",
+          "name": "H5 — acta del CLIENTE (mes 12)",
+          "start": "2028-01-03",
+          "end": "2028-01-03",
+          "duration": 0,
+          "color": "#000000",
+          "milestone": true,
+          "order": 5,
+          "attributes": {
+            "id": "5",
+            "name": "H5 — acta del CLIENTE (mes 12)",
+            "color": "#000000",
+            "meeting": "true",
+            "start": "2028-01-03",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "6",
+          "name": "Etapa 1 · Marcha blanca (meses 13 a 15; 4.2.1)",
+          "start": "2028-02-01",
+          "end": "2028-04-28",
+          "duration": 63,
+          "color": "#e69138",
+          "milestone": false,
+          "order": 6,
+          "attributes": {
+            "id": "6",
+            "name": "Etapa 1 · Marcha blanca (meses 13 a 15; 4.2.1)",
+            "color": "#e69138",
+            "meeting": "false",
+            "start": "2028-02-01",
+            "duration": "63",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "7",
+          "name": "H6 — inicio de la marcha blanca de la Etapa 1 (mes 13)",
+          "start": "2028-02-01",
+          "end": "2028-02-01",
+          "duration": 0,
+          "color": "#000000",
+          "milestone": true,
+          "order": 7,
+          "attributes": {
+            "id": "7",
+            "name": "H6 — inicio de la marcha blanca de la Etapa 1 (mes 13)",
+            "color": "#000000",
+            "meeting": "true",
+            "start": "2028-02-01",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "8",
+          "name": "Etapa 1 · Paso a producción (mes 16)",
+          "start": "2028-05-05",
+          "end": "2028-05-05",
+          "duration": 0,
+          "color": "#000000",
+          "milestone": true,
+          "order": 8,
+          "attributes": {
+            "id": "8",
+            "name": "Etapa 1 · Paso a producción (mes 16)",
+            "color": "#000000",
+            "meeting": "true",
+            "start": "2028-05-05",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "9",
+          "name": "Etapa 1 · Estabilización (4.2.2)",
+          "start": "2028-05-05",
+          "end": "2028-09-29",
+          "duration": 101,
+          "color": "#6aa84f",
+          "milestone": false,
+          "order": 9,
+          "attributes": {
+            "id": "9",
+            "name": "Etapa 1 · Estabilización (4.2.2)",
+            "color": "#6aa84f",
+            "meeting": "false",
+            "start": "2028-05-05",
+            "duration": "101",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "10",
+          "name": "H7 — acta del CLIENTE (mes 16)",
+          "start": "2028-05-29",
+          "end": "2028-05-29",
+          "duration": 0,
+          "color": "#000000",
+          "milestone": true,
+          "order": 10,
+          "attributes": {
+            "id": "10",
+            "name": "H7 — acta del CLIENTE (mes 16)",
+            "color": "#000000",
+            "meeting": "true",
+            "start": "2028-05-29",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "11",
+          "name": "Etapa 2 · Desarrollo (meses 13 a 18)",
+          "start": "2028-02-01",
+          "end": "2028-07-31",
+          "duration": 126,
+          "color": "#4472c4",
+          "milestone": false,
+          "order": 11,
+          "attributes": {
+            "id": "11",
+            "name": "Etapa 2 · Desarrollo (meses 13 a 18)",
+            "color": "#4472c4",
+            "meeting": "false",
+            "start": "2028-02-01",
+            "duration": "126",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "12",
+          "name": "H8 — acta del CLIENTE (mes 14)",
+          "start": "2028-03-13",
+          "end": "2028-03-13",
+          "duration": 0,
+          "color": "#000000",
+          "milestone": true,
+          "order": 12,
+          "attributes": {
+            "id": "12",
+            "name": "H8 — acta del CLIENTE (mes 14)",
+            "color": "#000000",
+            "meeting": "true",
+            "start": "2028-03-13",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "13",
+          "name": "H9 — acta del CLIENTE (mes 17)",
+          "start": "2028-06-01",
+          "end": "2028-06-01",
+          "duration": 0,
+          "color": "#000000",
+          "milestone": true,
+          "order": 13,
+          "attributes": {
+            "id": "13",
+            "name": "H9 — acta del CLIENTE (mes 17)",
+            "color": "#000000",
+            "meeting": "true",
+            "start": "2028-06-01",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "14",
+          "name": "H10 — acta del CLIENTE (mes 18)",
+          "start": "2028-07-12",
+          "end": "2028-07-12",
+          "duration": 0,
+          "color": "#000000",
+          "milestone": true,
+          "order": 14,
+          "attributes": {
+            "id": "14",
+            "name": "H10 — acta del CLIENTE (mes 18)",
+            "color": "#000000",
+            "meeting": "true",
+            "start": "2028-07-12",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "15",
+          "name": "Etapa 2 · Marcha blanca (meses 19 y 20; 4.3.1)",
+          "start": "2028-08-01",
+          "end": "2028-09-29",
+          "duration": 41,
+          "color": "#e69138",
+          "milestone": false,
+          "order": 15,
+          "attributes": {
+            "id": "15",
+            "name": "Etapa 2 · Marcha blanca (meses 19 y 20; 4.3.1)",
+            "color": "#e69138",
+            "meeting": "false",
+            "start": "2028-08-01",
+            "duration": "41",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "16",
+          "name": "H11 — inicio de la marcha blanca de la Etapa 2 (mes 19)",
+          "start": "2028-08-01",
+          "end": "2028-08-01",
+          "duration": 0,
+          "color": "#000000",
+          "milestone": true,
+          "order": 16,
+          "attributes": {
+            "id": "16",
+            "name": "H11 — inicio de la marcha blanca de la Etapa 2 (mes 19)",
+            "color": "#000000",
+            "meeting": "true",
+            "start": "2028-08-01",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "17",
+          "name": "Etapa 2 · Paso a producción e inicio de la Operación (mes 21)",
+          "start": "2028-10-05",
+          "end": "2028-10-05",
+          "duration": 0,
+          "color": "#000000",
+          "milestone": true,
+          "order": 17,
+          "attributes": {
+            "id": "17",
+            "name": "Etapa 2 · Paso a producción e inicio de la Operación (mes 21)",
+            "color": "#000000",
+            "meeting": "true",
+            "start": "2028-10-05",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "18",
+          "name": "Etapa 2 · Estabilización (4.3.2)",
+          "start": "2028-10-05",
+          "end": "2028-11-30",
+          "duration": 38,
+          "color": "#6aa84f",
+          "milestone": false,
+          "order": 18,
+          "attributes": {
+            "id": "18",
+            "name": "Etapa 2 · Estabilización (4.3.2)",
+            "color": "#6aa84f",
+            "meeting": "false",
+            "start": "2028-10-05",
+            "duration": "38",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "19",
+          "name": "H12 — acta del CLIENTE (mes 21)",
+          "start": "2028-10-25",
+          "end": "2028-10-25",
+          "duration": 0,
+          "color": "#000000",
+          "milestone": true,
+          "order": 19,
+          "attributes": {
+            "id": "19",
+            "name": "H12 — acta del CLIENTE (mes 21)",
+            "color": "#000000",
+            "meeting": "true",
+            "start": "2028-10-25",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "20",
+          "name": "Operación y soporte con ambos alcances (meses 21 a 56)",
+          "start": "2028-10-05",
+          "end": "2031-09-30",
+          "duration": 738,
+          "color": "#6aa84f",
+          "milestone": false,
+          "order": 20,
+          "attributes": {
+            "id": "20",
+            "name": "Operación y soporte con ambos alcances (meses 21 a 56)",
+            "color": "#6aa84f",
+            "meeting": "false",
+            "start": "2028-10-05",
+            "duration": "738",
+            "complete": "0",
+            "expand": "true"
+          }
+        }
+      ],
+      "relaciones": [
+        {
+          "source": "0",
+          "target": "6",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "6",
+          "target": "8",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "8",
+          "target": "9",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "11",
+          "target": "15",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "15",
+          "target": "17",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "17",
+          "target": "18",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "17",
+          "target": "20",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        }
+      ]
+    },
+    "Fig_7_Gantt_Vista_Critica.gan": {
+      "sha256": "b08cbc6d1226b46cd48f2791d897852601892b0295a099914679329be0235270",
+      "tareas": [
+        {
+          "id": "1",
+          "name": "RC | 5.1.4 Especificación y compra del sistema de cadena de frío",
+          "start": "2027-02-01",
+          "end": "2027-03-31",
+          "duration": 42,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 0,
+          "attributes": {
+            "id": "1",
+            "name": "RC | 5.1.4 Especificación y compra del sistema de cadena de frío",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-02-01",
+            "duration": "42",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "22",
+          "name": "RC | 2.4.3 Validación del diseño del kit en banco de pruebas",
+          "start": "2027-04-01",
+          "end": "2027-04-30",
+          "duration": 22,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 1,
+          "attributes": {
+            "id": "22",
+            "name": "RC | 2.4.3 Validación del diseño del kit en banco de pruebas",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-04-01",
+            "duration": "22",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "32",
+          "name": "RC | 2.6.3 Indicadores de usabilidad comprometidos por transacción crítica",
+          "start": "2027-05-03",
+          "end": "2027-05-31",
+          "duration": 20,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 2,
+          "attributes": {
+            "id": "32",
+            "name": "RC | 2.6.3 Indicadores de usabilidad comprometidos por transacción crítica",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-05-03",
+            "duration": "20",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "33",
+          "name": "RC | 3.1.4 Cadena de integración y entrega continua, e infraestructura como código",
+          "start": "2027-05-03",
+          "end": "2027-05-31",
+          "duration": 20,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 3,
+          "attributes": {
+            "id": "33",
+            "name": "RC | 3.1.4 Cadena de integración y entrega continua, e infraestructura como código",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-05-03",
+            "duration": "20",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "34",
+          "name": "RC | 4 elementos: 3.2.1, 3.2.2, 3.2.4, 3.2.5",
+          "start": "2027-05-03",
+          "end": "2027-05-31",
+          "duration": 20,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 4,
+          "attributes": {
+            "id": "34",
+            "name": "RC | 4 elementos: 3.2.1, 3.2.2, 3.2.4, 3.2.5",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-05-03",
+            "duration": "20",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "35",
+          "name": "RC | 3.2.3 Servicio de nube de ingesta de IoT, telemetría cruda y plataforma analítica",
+          "start": "2027-05-03",
+          "end": "2027-05-31",
+          "duration": 20,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 5,
+          "attributes": {
+            "id": "35",
+            "name": "RC | 3.2.3 Servicio de nube de ingesta de IoT, telemetría cruda y plataforma analítica",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-05-03",
+            "duration": "20",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "36",
+          "name": "RC | 6.1.5 Acta de recepción técnica de la sala",
+          "start": "2027-05-03",
+          "end": "2027-05-20",
+          "duration": 14,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 6,
+          "attributes": {
+            "id": "36",
+            "name": "RC | 6.1.5 Acta de recepción técnica de la sala",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-05-03",
+            "duration": "14",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "43",
+          "name": "RC | 2 elementos: 6.3.1, 6.3.2",
+          "start": "2027-05-24",
+          "end": "2027-06-09",
+          "duration": 13,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 7,
+          "attributes": {
+            "id": "43",
+            "name": "RC | 2 elementos: 6.3.1, 6.3.2",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-05-24",
+            "duration": "13",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "57",
+          "name": "RC | 2 elementos: 6.6.1, 6.6.2",
+          "start": "2027-06-10",
+          "end": "2027-06-30",
+          "duration": 13,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 8,
+          "attributes": {
+            "id": "57",
+            "name": "RC | 2 elementos: 6.6.1, 6.6.2",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-06-10",
+            "duration": "13",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "69",
+          "name": "RC | 3.4.9 Devoluciones en terreno y control de envases (M8 Devoluciones y envases)",
+          "start": "2027-06-18",
+          "end": "2027-09-30",
+          "duration": 71,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 9,
+          "attributes": {
+            "id": "69",
+            "name": "RC | 3.4.9 Devoluciones en terreno y control de envases (M8 Devoluciones y envases)",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-06-18",
+            "duration": "71",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "105",
+          "name": "RC | 2 elementos: 3.7.3, 3.7.4",
+          "start": "2027-12-01",
+          "end": "2027-12-31",
+          "duration": 22,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 10,
+          "attributes": {
+            "id": "105",
+            "name": "RC | 2 elementos: 3.7.3, 3.7.4",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2027-12-01",
+            "duration": "22",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "112",
+          "name": "RC | H6 — inicio de marcha blanca (mes 13)",
+          "start": "2028-02-01",
+          "end": "2028-02-01",
+          "duration": 0,
+          "color": "#c00000",
+          "milestone": true,
+          "order": 11,
+          "attributes": {
+            "id": "112",
+            "name": "RC | H6 — inicio de marcha blanca (mes 13)",
+            "color": "#c00000",
+            "meeting": "true",
+            "start": "2028-02-01",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "125",
+          "name": "RC | 4 elementos: 3.5.1, 3.5.2, 3.5.3, 3.5.4",
+          "start": "2028-03-15",
+          "end": "2028-04-28",
+          "duration": 32,
+          "color": "#c00000",
+          "milestone": false,
+          "order": 12,
+          "attributes": {
+            "id": "125",
+            "name": "RC | 4 elementos: 3.5.1, 3.5.2, 3.5.3, 3.5.4",
+            "color": "#c00000",
+            "meeting": "false",
+            "start": "2028-03-15",
+            "duration": "32",
+            "complete": "0",
+            "expand": "true"
+          }
+        },
+        {
+          "id": "149",
+          "name": "RC | H11 — inicio de marcha blanca (mes 19)",
+          "start": "2028-08-01",
+          "end": "2028-08-01",
+          "duration": 0,
+          "color": "#c00000",
+          "milestone": true,
+          "order": 13,
+          "attributes": {
+            "id": "149",
+            "name": "RC | H11 — inicio de marcha blanca (mes 19)",
+            "color": "#c00000",
+            "meeting": "true",
+            "start": "2028-08-01",
+            "duration": "0",
+            "complete": "0",
+            "expand": "true"
+          }
+        }
+      ],
+      "relaciones": [
+        {
+          "source": "1",
+          "target": "22",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "22",
+          "target": "112",
+          "type": "1",
+          "difference": "164",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "33",
+          "target": "69",
+          "type": "3",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "33",
+          "target": "112",
+          "type": "1",
+          "difference": "75",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "34",
+          "target": "69",
+          "type": "1",
+          "difference": "-37",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "34",
+          "target": "112",
+          "type": "1",
+          "difference": "89",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "35",
+          "target": "112",
+          "type": "1",
+          "difference": "122",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "36",
+          "target": "43",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "43",
+          "target": "57",
+          "type": "2",
+          "difference": "0",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "69",
+          "target": "112",
+          "type": "1",
+          "difference": "120",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "105",
+          "target": "112",
+          "type": "1",
+          "difference": "25",
+          "hardness": "Rubber"
+        },
+        {
+          "source": "125",
+          "target": "149",
+          "type": "1",
+          "difference": "71",
+          "hardness": "Rubber"
+        }
+      ]
+    }
+  },
+  "laminas": {
+    "Gantt-detalle-1": {
+      "paginas": 5,
+      "filas": 23,
+      "relaciones": 9
+    },
+    "Gantt-detalle-2": {
+      "paginas": 5,
+      "filas": 22,
+      "relaciones": 14
+    },
+    "Gantt-detalle-3": {
+      "paginas": 7,
+      "filas": 22,
+      "relaciones": 117
+    },
+    "Gantt-detalle-4": {
+      "paginas": 6,
+      "filas": 22,
+      "relaciones": 59
+    },
+    "Gantt-detalle-5": {
+      "paginas": 5,
+      "filas": 22,
+      "relaciones": 20
+    },
+    "Gantt-detalle-6": {
+      "paginas": 5,
+      "filas": 22,
+      "relaciones": 19
+    },
+    "Gantt-detalle-7": {
+      "paginas": 5,
+      "filas": 22,
+      "relaciones": 24
+    },
+    "Gantt-56-meses": {
+      "paginas": 6,
+      "filas": 21,
+      "relaciones": 7
+    },
+    "Gantt-vista-critica": {
+      "paginas": 3,
+      "filas": 14,
+      "relaciones": 12
+    }
+  },
+  "frentes": {
+    "fuente": "formulario-t15/tablas/tab_T15_1.tex",
+    "sha256": "8a94cdc2a99a0d0afdd442b3c3f0d6e955394067c3633e5e5d3ad8addf4156df",
+    "frentes": 8,
+    "paginas": 2
+  },
+  "mapeo": {
+    "imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-1-de-7.png": {
+      "stem": "Gantt-detalle-1",
+      "pages": 5
+    },
+    "imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-2-de-7.png": {
+      "stem": "Gantt-detalle-2",
+      "pages": 5
+    },
+    "imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-3-de-7.png": {
+      "stem": "Gantt-detalle-3",
+      "pages": 7
+    },
+    "imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-4-de-7.png": {
+      "stem": "Gantt-detalle-4",
+      "pages": 6
+    },
+    "imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-5-de-7.png": {
+      "stem": "Gantt-detalle-5",
+      "pages": 5
+    },
+    "imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-6-de-7.png": {
+      "stem": "Gantt-detalle-6",
+      "pages": 5
+    },
+    "imagenes/Diagramas que faltaban/Gantt-Resumen-Tramos/LafroX-Gantt-resumen-7-de-7.png": {
+      "stem": "Gantt-detalle-7",
+      "pages": 5
+    },
+    "imagenes/Diagramas que faltaban/LafroX-Gantt-56-meses.png": {
+      "stem": "Gantt-56-meses",
+      "pages": 6
+    },
+    "imagenes/Diagramas que faltaban/LafroX-Gantt-vista-critica.png": {
+      "stem": "Gantt-vista-critica",
+      "pages": 3
+    },
+    "imagenes/Diagramas que faltaban/Fig_7-6_T15-2_Frentes_Trabajo.pdf": {
+      "stem": "Frentes-trabajo",
+      "pages": 2
+    }
+  },
+  "tamano_tipografico_minimo_pdf_pt": 9.5
+}

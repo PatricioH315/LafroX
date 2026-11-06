@@ -2,6 +2,29 @@
 \addcontentsline{toc}{chapter}{Formulario T-15: Nivelación de recursos}
 \markboth{Formulario T-15: Nivelación de recursos}{}
 
+
+% Continuaciones de una misma figura: conserva números, etiquetas y lista de figuras.
+\newcounter{laminaGanttLocal}
+\newcommand{\figuraGanttLocal}[4]{%
+  \begingroup
+  \setcounter{laminaGanttLocal}{1}%
+  \loop
+    \clearpage
+    \begin{anexohorizontal}
+      \centering
+      \includegraphics[width=\linewidth]{#1-\arabic{laminaGanttLocal}.pdf}\par
+      \captionsetup{hypcap=false}
+      \ifnum\value{laminaGanttLocal}=1
+        \captionof{figure}{#3}\label{#4}%
+      \else
+        \captionof*{figure}{Figura \ref{#4} (continuación \arabic{laminaGanttLocal} de #2). #3}%
+      \fi
+    \end{anexohorizontal}
+    \stepcounter{laminaGanttLocal}%
+  \ifnum\value{laminaGanttLocal}<\numexpr#2+1\relax
+  \repeat
+  \endgroup\clearpage}
+
 \newcommand{\figuraDiagramaHorizontal}[4][0pt]{%
   \par\clearpage
   \begin{anexohorizontal}
@@ -24,7 +47,7 @@
 
 Este formulario presenta la información de planificación que pide el Formulario T-15 de las Bases Administrativas para el Subdocumento 7: el método con que se estiman las horas hombre de cada paquete, la programación sobre la red de dependencias, la ruta crítica y sus holguras, y los frentes de trabajo, con el detalle de los solapamientos de los meses 13 a 15 y 19 a 20. Los paquetes de trabajo son los de la EDT del Formulario T-14. Este formulario no contiene precios ni costos (artículo 50.2 de las Bases Administrativas (p. 29)).
 
-En este formulario, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas Transversales y las Bases Técnicas del caso.
+En este formulario, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas Transversales y las Bases Técnicas del caso. SD seguido de un número identifica el Subdocumento correspondiente. EDT significa estructura de descomposición del trabajo; PT, paquete de trabajo; HH, horas hombre; y E1/E2, Etapas 1 y 2. En las cartas Gantt, RC identifica los elementos marcados como ruta crítica en la fuente de programación y PT/H identifica los demás paquetes e hitos. H1–H12 son los hitos del Formulario E-25 y F1–F8, los frentes de trabajo. QA designa el ambiente de calidad; SRE, el equipo de operación e ingeniería de fiabilidad; NOC, el centro de operaciones; SOC, el centro de operaciones de seguridad; y DTE, los documentos tributarios electrónicos.
 
 \section{Método de estimación y de programación}
 
@@ -72,7 +95,7 @@ Un frente de trabajo es un equipo con un responsable y un conjunto de cuentas de
 
 Los frentes se sincronizan en los hitos del Formulario E-25 y en los comités del artículo 71 de las Bases Administrativas (p. 37), cuyas actas registran los acuerdos entre frentes (paquetes 1.8.2 a 1.8.5). La Figura \ref{fig:T15-frentes} presenta su ventana de actividad entre los meses 1 y 21.
 
-\figuraDiagramaHorizontal[597pt]{imagenes/Diagramas que faltaban/Fig_7-6_T15-2_Frentes_Trabajo.pdf}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Frentes-trabajo}{2}
   {Frentes de trabajo de los meses 1 a 21 y solapamientos del artículo 17.2 de las Bases Administrativas (p. 13). Fuente: elaboración a partir de la Tabla \ref{tab:T15-frentes} y (Formulario T-14).}
   {fig:T15-frentes}
 

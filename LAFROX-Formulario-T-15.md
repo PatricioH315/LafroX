@@ -1,4 +1,4 @@
-# Formulario T-15 — Cronograma y asignación de recursos
+# Formulario T-15 — Nivelación de recursos
 
 > Texto extraído del [PDF final](LAFROX-Formulario-T-15.pdf). Las figuras y la composición visual se consultan en el PDF.
 
@@ -29,7 +29,6 @@ Alex Aravena
 Jefe de Proyecto y Apoderado · LafroX SpA
 LAFROX-Formulario-T-15.pdf 1
 
-
 ---
 
 LafroX SpA
@@ -40,56 +39,54 @@ Lista de figuras 4
 Formulario T-15: Nivelación de recursos 5
 1 Método de estimación y de programación 5
 1.1 Estimación 5
-1.2 Programación 5
+1.2 Programación 6
 2 Ruta crítica y holguras 6
 3 Frentes de trabajo y solapamientos 7
-4 Modelo cuantitativo de recursos 10
-4.1 Supuestos y cálculo 10
-4.2 Horas por los 227 paquetes 13
-4.3 Resumen T-15 29
-4.4 Curvas mensuales: horas por etapa y personas por rol 31
-4.5 Reservas de contingencia y de gestión 41
-5 Red agregada, restricciones y escenarios de calendario 41
-5.1 Cálculo reproducible 41
-5.2 Lectura de las secuencias y las restricciones 55
-5.3 Reservas y análisis PERT de duración 55
-5.4 Gobierno 57
-5.5 Presentación de entregables y revisión del CLIENTE 57
-5.6 Medición de los niveles de atención 59
-5.7 Dotación requerida, roles mínimos y dotación declarada 59
-6 Lista de actividades: regla del 8/80 y del período de reporte 62
-6.1 Paquetes con entregable y planificación gradual 63
-6.2 Paquetes de esfuerzo continuo 92
-Referencias 99
+4 Modelo cuantitativo de recursos 11
+4.1 Supuestos y cálculo 11
+4.2 Horas por los 227 paquetes 14
+4.3 Resumen T-15 30
+4.4 Curvas mensuales: horas por etapa y personas por rol 32
+4.5 Reservas de contingencia y de gestión 42
+5 Red agregada, restricciones y escenarios de calendario 42
+5.1 Cálculo reproducible 42
+5.2 Lectura de las secuencias y las restricciones 56
+5.3 Reservas y análisis PERT de duración 56
+5.4 Gobierno 58
+5.5 Presentación de entregables y revisión del CLIENTE 58
+5.6 Medición de los niveles de atención 60
+5.7 Dotación requerida, roles mínimos y dotación declarada 60
+6 Lista de actividades: regla del 8/80 y del período de reporte 63
+6.1 Paquetes con entregable y planificación gradual 64
+6.2 Paquetes de esfuerzo continuo 93
+Referencias 100
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
 2
-
 
 ---
 
 LafroX SpA
 Lista de tablas
 Tabla 1 Frentes de trabajo. 8
-Tabla 2 Supuestos y cálculo. 12
-Tabla 3 Horas por los 227 paquetes. 15
-Tabla 4 Resumen T-15. 30
-Tabla 5 Curva mensual de horas por etapa. 32
-Tabla 6 Curva mensual de personas por rol. 37
-Tabla 7 Fechas tempranas, tardías y holguras de los 168 paquetes con entregable. 44
-Tabla 8 CPM y PERT de los hitos con la línea base de 220.023 HH. 56
-Tabla 9 Secuencia de cierre, producción y aceptación. 58
-Tabla 10 Dotación requerida, roles mínimos y dotación declarada. 60
-Tabla 11 Programación de los paquetes con entregable. 66
-Tabla 12 Actividades de los paquetes que terminan hasta el H2. 77
-Tabla 13 Actividades de los paquetes que terminan hasta el H2. 83
-Tabla 14 Actividades de los paquetes de esfuerzo continuo. 93
+Tabla 2 Supuestos y cálculo. 13
+Tabla 3 Horas por los 227 paquetes. 16
+Tabla 4 Resumen T-15. 31
+Tabla 5 Curva mensual de horas por etapa. 33
+Tabla 6 Curva mensual de personas por rol. 38
+Tabla 7 Fechas tempranas, tardías y holguras de los 168 paquetes con entregable. 45
+Tabla 8 CPM y PERT de los hitos con la línea base de 220.023 HH. 57
+Tabla 9 Secuencia de cierre, producción y aceptación. 59
+Tabla 10 Dotación requerida, roles mínimos y dotación declarada. 61
+Tabla 11 Programación de los paquetes con entregable. 67
+Tabla 12 Actividades de los paquetes que terminan hasta el H2. 78
+Tabla 13 Actividades de los paquetes que terminan hasta el H2. 84
+Tabla 14 Actividades de los paquetes de esfuerzo continuo. 94
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
 3
-
 
 ---
 
@@ -98,12 +95,11 @@ Lista de figuras
 Figura 1 Camino que controla el H12 y su holgura contractual. 7
 Figura 2 Frentes de trabajo de los meses 1 a 21 y solapamientos del artículo 17.2 de las
 Bases Administrativas (p. 13). 9
-Figura 3 Planificación gradual del cronograma. 64
+Figura 3 Planificación gradual del cronograma. 65
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
 4
-
 
 ---
 
@@ -115,7 +111,14 @@ holguras, y los frentes de trabajo, con el detalle de los solapamientos de los m
 20. Los paquetes de trabajo son los de la EDT del Formulario T-14. Este formulario no contiene
 precios ni costos (artículo 50.2 de las Bases Administrativas (p. 29)).
 En este formulario, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas
-Transversales y las Bases Técnicas del caso.
+Transversales y las Bases Técnicas del caso. SD seguido de un número identifica el Subdocu-
+mento correspondiente. EDT significa estructura de descomposición del trabajo; PT, paquete
+de trabajo; HH, horas hombre; y E1/E2, Etapas 1 y 2. En las cartas Gantt, RC identifica los ele-
+mentos marcados como ruta crítica en la fuente de programación y PT/H identifica los demás
+paquetes e hitos. H1–H12 son los hitos del Formulario E-25 y F1–F8, los frentes de trabajo. QA
+designa el ambiente de calidad; SRE, el equipo de operación e ingeniería de fiabilidad; NOC, el
+centro de operaciones; SOC, el centro de operaciones de seguridad; y DTE, los documentos
+tributarios electrónicos.
 1 Método de estimación y de programación
 La estimación y la programación siguen el PMBOK y la técnica PERT, de modo que cada
 duración y cada holgura se puedan reconstruir a partir de valores declarados.
@@ -127,28 +130,27 @@ peor escenario. La incertidumbre de cada estimación se representa con una distr
 que el PMBOK admite entre las distribuciones para modelar la incertidumbre (PMI, 2017, p.
 432). Con ella, la técnica PERT calcula el valor esperado y la desviación (Malcolm et al., 1959):
 T_E = (O + 4M + P) / 6; 𝜎 = (P − O) / 6.
-La p. 201 del PMBOK presenta también la distribución triangular, (𝑂+𝑀+𝑃)/3. Se usa la beta
+La p. 201 del PMBOK presenta también la distribución triangular ,(𝑂 +𝑀 +𝑃)/3. Se usa la beta
 porque pondera más el valor más probable, que se funda en los requerimientos y cantidades
 de cada paquete.
 Las bases de cada estimación se declaran por tipo de paquete. Los módulos y las inte-
 graciones se estiman con los requerimientos del Formulario T-12 asignados al paquete; la
 infraestructura, con las cantidades del Formulario T-11; la implantación y la capacitación, con
 las personas y rutas del caso y la dotación del Formulario T-18, sección 2.6; y la operación, con
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+5
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
 los horarios de cobertura de los paquetes 8.1.1 y 8.1.2 y la periodicidad de los informes. Los
 paquetes de la fase 8 son de esfuerzo continuo: su estimación es mensual y se multiplica por
 los 36 meses de operación.
 1.2 Programación
 La duración se contrasta con esfuerzo, capacidad efectiva y dependencias. La sección 6
 programa los paquetes y descompone en actividades de 8 a 80 HH, que caben en una quincena,
-LafroX SpA
-Formulario T-15
-Media firma: Alex Aravena
-5
-
-
----
-
-LafroX SpA Formulario T-15: Nivelación de recursos
 sólo los que terminan hasta el H2; los demás se detallan por planificación gradual antes de
 cada fase. Las ventanas de la sección 4 son supuestos de asignación y la red agregada de la
 sección 5 explicita el cálculo del calendario. Las dependencias entre paquetes están en el
@@ -178,7 +180,6 @@ LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
 6
-
 
 ---
 
@@ -220,7 +221,6 @@ LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
 7
-
 
 ---
 
@@ -274,113 +274,137 @@ Formulario T-15
 Media firma: Alex Aravena
 8
 
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+Frentes de trabajo · meses 1 a 21
+Lámina 1 de 2 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Frente y responsable
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+10
+Período: 02/2027 a 10/2028
+F1
+F1 Dirección, gobierno y cumplimiento. Jefe
+de Proyecto. Cuentas: 1.1 a 1.4, 1.6 a 1.9,
+5.4.1 a 5.4.3, 8.4, 9. Meses: 1 a 56
+01/02/27
+30/09/31
+F2
+F2 Arquitectura, seguridad y datos.
+Arquitecto de Solución, con Seguridad y
+Datos. Cuentas: 2.1 a 2.6, 3.3, 3.7, 3.11.
+Meses: 1 a 21
+01/02/27
+31/10/28
+F3
+F3 Construcción y correcciones E1. Líder de
+Desarrollo. Cuentas: 3.4, 3.6.1 a 3.6.4,
+3.10.1 a 3.10.3; capacidad protegida 4.2.2.
+Meses: 1 a 20
+01/02/27
+30/09/28
+F4
+F4 Construcción de la Etapa 2. Líder de
+Desarrollo. Cuentas: 3.5, 3.6.5, 3.6.6, 3.10.4.
+Meses: 13 a 20
+01/02/28
+30/09/28
+F1–F8 identifican los frentes de trabajo y sus responsables.
+Las barras con flecha derecha continúan después del mes 21.
+Figura 2 Frentes de trabajo de los meses 1 a 21 y solapamientos del artículo 17.2 de las Bases Administrativas (p. 13). Fuente: elaboración a partir de la Tabla 1 y
+(Formulario T-14).
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+9
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
-2027
-1
-feb
-2
-mar
-3
-abr
-4
-may
-5
-jun
-6
-jul
-7
-ago
-8
-sep
-9
-oct
+LafroX SpA Formulario T-15: Nivelación de recursos
+Frentes de trabajo · meses 1 a 21
+Lámina 2 de 2 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Frente y responsable
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
 10
-nov
 11
-dic
-2028
 12
-ene
-13
-feb
-14
-mar
-15
-abr
-16
-may
-17
-jun
-18
-jul
-19
-ago
-20
-sep
-21
-oct
-Mes contractual →
-Hitos del Formulario E-25
-H1 H2 H3 H4
-H6
-H7
-H8
-H9
-H10
-H11
-H12
-F1 Dirección, gobierno y cumplimiento
-Jefe de Proyecto · meses 1 a 56
-→ hasta
-el mes
-56
-F2 Arquitectura, seguridad y datos
-Arquitecto de Solución · meses 1 a 21
-F3 Construcción y correcciones E1
-Líder de Desarrollo · meses 1 a 20 4.2.2 capacidad protegida
-F4 Construcción de la Etapa 2
-Líder de Desarrollo · meses 13 a 20
+01
+02
+03
+04
+05
+06
+07
+08
+09
+10
+Período: 02/2027 a 10/2028
+F5
 F5 Plataforma, infraestructura y soporte
-puente 4.2.2 soporte puente
-F6 Calidad y pruebas
-Líder de Calidad · meses 1 a 21
-F7 Implantación y gestión del cambio
-Líder de Implantación y GC · meses 9 a 21
-F8 Operación y soporte
-Líder de Operación / SRE · meses 21 a 56
-8.1–8.3,
-8.5:
-desde el
-mes 21
-hasta el
+puente. Líder de Operación / SRE. Cuentas:
+3.1, 3.2, 5.1 a 5.3, 6.1 a 6.6; soporte 4.2.2.
+Meses: 1 a 20
+01/02/27
+30/09/28
+F6
+F6 Calidad y pruebas. Líder de Calidad.
+Cuentas: 1.5, 3.8, 3.9. Meses: 1 a 21
+01/02/27
+31/10/28
+F7
+F7 Implantación y gestión del cambio. Líder
+de Implantación y Gestión del Cambio.
+Cuentas: 4.1 a 4.3, 7.1 a 7.3. Meses: 2 a 21:
+diagnóstico del cambio en 2–6, preparación
+desde el 8 y piloto de frío en 10–11
+01/03/27
+31/10/28
+F8
+F8 Operación y soporte. Líder de Operación
+/ SRE. Cuentas: 8.1 a 8.3, 8.5. Meses: 21 a
 56
-Solapamiento · meses 13 a 15 Solapamiento · meses 19 y 20
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
-Leyenda Ventana del frente (Tabla T15.1) Cuentas de control activas (GanttPRO) Capacidad protegida / soporte puente 4.2.2
-Solapamiento de etapas (Art. 17.2) Septiembre y diciembre (sin pasos a producción) Hito del Formulario E-25 (en su mes contractual)
-H5
-Líder de Operación / SRE · meses 1 a 20
-Figura 2 Frentes de trabajo de los meses 1 a 21 y solapamientos del artículo 17.2 de las Bases Administrativas (p. 13). Fuente: elaboración a partir de la Tabla 1 y
-(Formulario T-14).
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-9
-
+01/10/28
+30/09/31
+F1–F8 identifican los frentes de trabajo y sus responsables.
+Las barras con flecha derecha continúan después del mes 21.
+Figura 2 (continuación 2 de 2). Frentes de trabajo de los meses 1 a 21 y solapamientos del artículo 17.2 de las Bases Administrativas (p. 13). Fuente: elaboración a
+partir de la Tabla 1 y (Formulario T-14).
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+10
 
 ---
 
@@ -424,24 +448,23 @@ efectiva del CLIENTE; si cambia, se recalcula el reparto sin acortar las cuatro 
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-10
-
+11
 
 ---
 
 LafroX SpA Formulario T-15: Nivelación de recursos
 • C identifica cobertura por horas-posición del calendario real, con el mes 1 en febrero de
-2027 (Anexo 7.A). NOC (8.1.1) y SOC (8.1.5) mantienen un puesto 24×7 cada uno: días del
+2027 (Anexo 7.A). NOC (8.1.1) y SOC (8.1.5) mantienen un puesto 24 ×7 cada uno: días del
 mes × 24, es decir 744 HH en un mes de 31 días, 720 en uno de 30 y 672 en febrero. La mesa
 (8.1.2, primera línea de incidentes del artículo 78 de las Bases Administrativas (p. 40)) aplica
-las posiciones del SD4 (Subdocumento 4), Anexo 4-W.7: 7 en la hora cargada y 2 en las otras
+las posiciones del SD4 (Subdocumento 4), Anexo 4-W .7: 7 en la hora cargada y 2 en las otras
 17 horas de 04:00 a 22:00, o 41 horas-posición por día de lunes a sábado, y desde el mes 25
 un tercer agente en esas 17 horas, 58 horas-posición por día, con el que la dotación cubre
-los tres niveles de servicio hasta 2.391 contactos al mes (SD4, Anexo 4-W.7); en septiembre y
+los tres niveles de servicio hasta 2.391 contactos al mes (SD4, Anexo 4-W .7); en septiembre y
 diciembre se suman 6 horas-posición de 22:00 a 04:00 de lunes a sábado y 24 los domingos.
 Así, un mes de 26 días de lunes a sábado exige 26 × 41 = 1.066 HH de mesa, y septiembre de
 2028 exige 26 × 47 + 4 × 24 = 1.318 HH. El SOC es propio de LafroX y opera desde su Centro
-de Operaciones en Valparaíso (RT-11.17; SD4, Anexo 4-W.7); sus HH se imputan aquí. Las
+de Operaciones en Valparaíso (RT-11.17; SD4, Anexo 4-W .7); sus HH se imputan aquí. Las
 posiciones de la mesa provienen de un Erlang C con supuestos de demanda: no acreditan
 abandono ni resolución al primer contacto, que se miden según la sección 5.6. La curva
 dimensiona relevos con 128 HH efectivas.
@@ -474,8 +497,7 @@ blanca ya trata datos reales. Operación contractual empieza en el mes 21.
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-11
-
+12
 
 ---
 
@@ -519,8 +541,7 @@ continúa en la página siguiente
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-12
-
+13
 
 ---
 
@@ -571,7 +592,7 @@ acta
 obra civil y piso técnico
 de la sala
 4.2 Horas por los 227 paquetes
-La ampliación de frío agrega 1.200 HH: banco 2.4.3, 320 HH (pruebaV); mapeo 2.4.4, 240 HH
+La ampliación de frío agrega 1.200 HH: banco 2.4.3, 320 HH (prueba V); mapeo 2.4.4, 240 HH
 (diseño E); piloto 4.1.4, 320 HH (prueba V); compra 5.1.4, 240 HH (especificación E); contratos
 5.3.4, 80 HH (gestión G). Reestima 1.280 HH adicionales en paquetes existentes: 480 HH en
 3.4.4 para reglas, escaneos y disposición; 480 HH en 3.4.5 para Greengrass e ingesta satelital;
@@ -583,8 +604,7 @@ integrada; sus pruebas se repiten sobre esa versión antes del piloto.
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-13
-
+14
 
 ---
 
@@ -595,18 +615,11 @@ La Tabla 3 presenta horas por los 227 paquetes.
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-14
-
+15
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 3 Horas por los 227 paquetes. Fuente: elaboración a partir de las secs. 4.1–4.4 de este formulario y de (Formulario T-14, EDT).
 EDT Clase Rol Meses O HH M HH P HH E HH
 1.1.1 G JP 1–1 60.00 80.00 100.00 80.00
@@ -627,26 +640,14 @@ EDT Clase Rol Meses O HH M HH P HH E HH
 1.4.3 R JP 1–56 672.00 896.00 1120.00 896.00
 1.5.1 G CAL 2–2 60.00 80.00 100.00 80.00
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-15
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+16
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 3 — continuación
 EDT Clase Rol Meses O HH M HH P HH E HH
 1.5.2 G CAL 6–20 60.00 80.00 100.00 80.00
@@ -667,26 +668,14 @@ EDT Clase Rol Meses O HH M HH P HH E HH
 1.9.3 G SEG 2–2 60.00 80.00 100.00 80.00
 1.9.4 R SEG 1–56 168.00 224.00 280.00 224.00
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-16
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+17
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 3 — continuación
 EDT Clase Rol Meses O HH M HH P HH E HH
 1.9.5 R JP 1–56 168.00 224.00 280.00 224.00
@@ -707,26 +696,14 @@ EDT Clase Rol Meses O HH M HH P HH E HH
 2.4.4 E ARQ 4–4 180.00 240.00 300.00 240.00
 2.5.1 E SRE 3–3 180.00 240.00 300.00 240.00
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-17
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+18
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 3 — continuación
 EDT Clase Rol Meses O HH M HH P HH E HH
 2.5.2 E SRE 3–3 180.00 240.00 300.00 240.00
@@ -747,26 +724,14 @@ EDT Clase Rol Meses O HH M HH P HH E HH
 3.3.1 I SEG 5–7 360.00 480.00 600.00 480.00
 3.3.2 I ARQ 5–6 360.00 480.00 600.00 480.00
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-18
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+19
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 3 — continuación
 EDT Clase Rol Meses O HH M HH P HH E HH
 3.3.3 I ARQ 5–6 360.00 480.00 600.00 480.00
@@ -787,26 +752,14 @@ EDT Clase Rol Meses O HH M HH P HH E HH
 3.5.1 D DES 14–15 720.00 960.00 1200.00 960.00
 3.5.2 D DES 14–15 720.00 960.00 1200.00 960.00
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-19
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+20
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 3 — continuación
 EDT Clase Rol Meses O HH M HH P HH E HH
 3.5.3 D DES 14–15 720.00 960.00 1200.00 960.00
@@ -827,26 +780,14 @@ EDT Clase Rol Meses O HH M HH P HH E HH
 3.8.3 V CAL 9–10 240.00 320.00 400.00 320.00
 3.8.4 V CAL 9–10 240.00 320.00 400.00 320.00
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-20
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+21
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 3 — continuación
 EDT Clase Rol Meses O HH M HH P HH E HH
 3.8.5 V CAL 9–10 240.00 320.00 400.00 320.00
@@ -867,26 +808,14 @@ EDT Clase Rol Meses O HH M HH P HH E HH
 3.10.2.1 E CAL 2–3 180.00 240.00 300.00 240.00
 3.10.2.2 E CAL 3–5 180.00 240.00 300.00 240.00
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-21
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+22
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 3 — continuación
 EDT Clase Rol Meses O HH M HH P HH E HH
 3.10.2.3 E CAL 5–10 180.00 240.00 300.00 240.00
@@ -907,26 +836,14 @@ EDT Clase Rol Meses O HH M HH P HH E HH
 4.1.1 G IMP 10–10 60.00 80.00 100.00 80.00
 4.1.2 G IMP 11–11 60.00 80.00 100.00 80.00
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-22
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+23
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 3 — continuación
 EDT Clase Rol Meses O HH M HH P HH E HH
 4.1.3 G IMP 17–17 60.00 80.00 100.00 80.00
@@ -947,26 +864,14 @@ EDT Clase Rol Meses O HH M HH P HH E HH
 5.2.3 G ARQ 4–4 60.00 80.00 100.00 80.00
 5.3.1 G SRE 4–4 60.00 80.00 100.00 80.00
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-23
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+24
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 3 — continuación
 EDT Clase Rol Meses O HH M HH P HH E HH
 5.3.2 G SRE 4–4 60.00 80.00 100.00 80.00
@@ -987,26 +892,14 @@ EDT Clase Rol Meses O HH M HH P HH E HH
 6.3.1 T SRE 4–5 120.00 160.00 200.00 160.00
 6.3.2 T SRE 4–5 120.00 160.00 200.00 160.00
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-24
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+25
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 3 — continuación
 EDT Clase Rol Meses O HH M HH P HH E HH
 6.3.3 T SRE 4–4 120.00 160.00 200.00 160.00
@@ -1027,26 +920,14 @@ EDT Clase Rol Meses O HH M HH P HH E HH
 7.1.2 R IMP 13–56 2112.00 2816.00 3520.00 2816.00
 7.1.3 T IMP 11–20 180.00 240.00 300.00 240.00
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-25
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+26
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 3 — continuación
 EDT Clase Rol Meses O HH M HH P HH E HH
 7.1.4 T IMP 15–20 120.00 160.00 200.00 160.00
@@ -1067,26 +948,14 @@ EDT Clase Rol Meses O HH M HH P HH E HH
 8.1.6 R SRE 21–56 432.00 576.00 720.00 576.00
 8.2.1 R DES 21–56 3456.00 4608.00 5760.00 4608.00
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-26
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+27
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 3 — continuación
 EDT Clase Rol Meses O HH M HH P HH E HH
 8.2.2 R SEG 21–56 864.00 1152.00 1440.00 1152.00
@@ -1107,26 +976,14 @@ EDT Clase Rol Meses O HH M HH P HH E HH
 8.4.4 R JP 21–56 216.00 288.00 360.00 288.00
 8.5.1 R IMP 21–56 864.00 1152.00 1440.00 1152.00
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-27
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+28
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 3 — continuación
 EDT Clase Rol Meses O HH M HH P HH E HH
 8.5.2 G IMP 21–27 60.00 80.00 100.00 80.00
@@ -1135,16 +992,10 @@ EDT Clase Rol Meses O HH M HH P HH E HH
 9.1.2 G JP 21–22 60.00 80.00 100.00 80.00
 9.2.1 G JP 54–56 60.00 80.00 100.00 80.00
 9.2.2 G SEG 56–56 60.00 80.00 100.00 80.00
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-28
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+29
 
 ---
 
@@ -1172,18 +1023,11 @@ inventada.
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-29
-
+30
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 4 Resumen T-15. Fuente: elaboración a partir de las secs. 4.1–4.4 de este formulario y de (Formulario T-14, EDT).
 Etapa HH base y cobertura HH reserva protegida HH programadas Frentes Meses N.° personas
 (peak)*
@@ -1198,16 +1042,10 @@ Operación 128853.67 0 128853.67 F1,F8 21–56 46
 E2 Cierre y estabiliza-
 ción posterior al H12
 2694.54 0 2694.54 F1,F2,F4,F6,F7 21–22 46
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-30
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+31
 
 ---
 
@@ -1227,7 +1065,7 @@ por mayor resto entre meses y se concilian por etapa; la suma publicada conserva
 exactas. La mesa de ayuda de 8.1.2 incluye desde el mes 25, cuando empieza el tercer año del
 contrato y la demanda proyectada llega a 2.258 contactos al mes, un tercer agente en las franjas
 de menor demanda (17 horas por día de lunes a sábado, 14.161 HH), con el que la dotación
-base cubre los tres niveles de servicio hasta 2.391 contactos al mes (SD4, Anexo 4-W.7). En los
+base cubre los tres niveles de servicio hasta 2.391 contactos al mes (SD4, Anexo 4-W .7). En los
 meses 21 a 24, con 2.000 contactos estimados, bastan dos agentes en esas franjas (límite 2.283).
 4.4 Curvas mensuales: horas por etapa y personas por rol
 La tabla siguiente presenta, mes a mes, las horas por etapa y las personas equivalentes por
@@ -1236,18 +1074,11 @@ La Tabla 5 presenta curva mensual de horas por etapa.
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-31
-
+32
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 5 Curva mensual de horas por etapa. Fuente: elaboración a partir de la sección 4.4 de este formulario.
 Mes E1 desarrollo E1 MB E2 desarrollo E2 MB E1 producción
 y estabiliza-
@@ -1273,26 +1104,14 @@ Total HH
 14 0.00 4340.25 2251.43 0.00 0.00 0.00 0.00 6591.68
 15 0.00 4067.14 2125.71 0.00 0.00 0.00 0.00 6192.85
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-32
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+33
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 5 — continuación
 Mes E1 desarrollo E1 MB E2 desarrollo E2 MB E1 producción
 y estabiliza-
@@ -1318,26 +1137,14 @@ Total HH
 29 0.00 0.00 0.00 0.00 0.00 3529.78 0.00 3529.78
 30 0.00 0.00 0.00 0.00 0.00 3577.78 0.00 3577.78
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-33
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+34
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 5 — continuación
 Mes E1 desarrollo E1 MB E2 desarrollo E2 MB E1 producción
 y estabiliza-
@@ -1363,26 +1170,14 @@ Total HH
 44 0.00 0.00 0.00 0.00 0.00 3741.78 0.00 3741.78
 45 0.00 0.00 0.00 0.00 0.00 3729.11 0.00 3729.11
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-34
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+35
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 5 — continuación
 Mes E1 desarrollo E1 MB E2 desarrollo E2 MB E1 producción
 y estabiliza-
@@ -1403,16 +1198,10 @@ Total HH
 54 0.00 0.00 0.00 0.00 0.00 3746.88 0.00 3746.88
 55 0.00 0.00 0.00 0.00 0.00 3599.99 0.00 3599.99
 56 0.00 0.00 0.00 0.00 0.00 3888.44 0.00 3888.44
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-35
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+36
 
 ---
 
@@ -1421,18 +1210,11 @@ La Tabla 6 presenta curva mensual de personas por rol.
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-36
-
+37
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 6 Curva mensual de personas por rol. Fuente: elaboración a partir de la sección 4.4 de este formulario.
 Mes JP ARQ SEG DAT DES CAL SRE IMP Personas
 totales
@@ -1454,26 +1236,14 @@ totales
 16 2 1 9 0 4 7 18 23 64
 17 2 1 6 0 4 6 16 15 50
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-37
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+38
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 6 — continuación
 Mes JP ARQ SEG DAT DES CAL SRE IMP Personas
 totales
@@ -1495,26 +1265,14 @@ totales
 33 1 1 7 1 2 2 21 1 36
 34 1 1 6 1 2 1 19 1 32
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-38
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+39
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 6 — continuación
 Mes JP ARQ SEG DAT DES CAL SRE IMP Personas
 totales
@@ -1536,26 +1294,14 @@ totales
 50 1 1 7 1 2 1 19 1 33
 51 1 1 6 1 2 2 20 1 34
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-39
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+40
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 6 — continuación
 Mes JP ARQ SEG DAT DES CAL SRE IMP Personas
 totales
@@ -1564,16 +1310,10 @@ totales
 54 1 1 7 1 2 2 21 1 36
 55 1 1 7 1 2 1 19 1 33
 56 1 1 7 1 2 1 21 1 35
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-40
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+41
 
 ---
 
@@ -1616,8 +1356,7 @@ comprobar fechas tempranas, tardías y holguras.
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-41
-
+42
 
 ---
 
@@ -1635,13 +1374,13 @@ duración agregada reservada, no una declaración de que el equipo máximo traba
 días. Las actividades de la sección 6 mantienen el límite de una quincena. Las ocho semanas
 de homologación y las seis semanas de piloto se conservan en las ventanas publicadas.
 • Trabajo interno y margen. En módulos, las puertas de contratos e integración usan sus HH
-efectivas y la construcción usa ⌈(𝐻𝐻 −240)/(6,4 𝑛máx)⌉. El vínculo global inicio–fin conserva
+efectivas y la construcción usa ⌈(𝐻𝐻 − 240)/(6,4 𝑛máx)⌉. El vínculo global inicio–fin conserva
 toda la ventana publicada, con sus esperas y márgenes. Así, una espera por interfaz no
 vuelve a contarse como construcción obligatoria. El recálculo conserva las fechas de los
 168 paquetes publicados; es una comprobación lógica con equipos máximos supuestos, no
 una nivelación diaria demostrada.
 • Precedencias. FC conecta el fin del predecesor con el inicio del sucesor; CC conecta sus
-inicios. La disponibilidad de QA condiciona la entrega del módulo, no su análisis en DEV.
+inicios. La disponibilidad de QA condiciona la entrega del módulo, no su análisis en DEV .
 En las interfaces, la entrega precedente condiciona el último incremento de integración del
 sucesor; se reserva al menos una actividad de 80 HH con su equipo máximo. En los módulos,
 A01/A02 y el incremento final se representan como puertas internas: la construcción espera
@@ -1665,8 +1404,7 @@ límite; la de un paquete también considera su ventana propia y puede ser menor
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-42
-
+43
 
 ---
 
@@ -1679,18 +1417,11 @@ La Tabla 7 presenta fechas tempranas, tardías y holguras de los 168 paquetes co
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-43
-
+44
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 7 Fechas tempranas, tardías y holguras de los 168 paquetes con entregable. Fuente: elaboración a partir de las secciones 4.2, 5.1 y 6.1 y del Anexo 7.B.
 EDT Dura-
 ción
@@ -1718,26 +1449,14 @@ HH
 1.6.1 7 01-03-2027 09-03-2027 22-03-2027 31-03-2027 15 80
 1.7.1 7 01-04-2027 09-04-2027 22-04-2027 30-04-2027 15 80
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-44
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+45
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 7 — continuación
 EDT Dura-
 ción
@@ -1765,26 +1484,14 @@ HH
 2.4.1 9 19-04-2027 29-04-2027 20-04-2027 30-04-2027 1 240
 2.4.2 8 17-02-2028 28-02-2028 18-02-2028 29-02-2028 1 240
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-45
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+46
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 7 — continuación
 EDT Dura-
 ción
@@ -1812,26 +1519,14 @@ HH
 3.2.3 20 03-05-2027 31-05-2027 03-05-2027 31-05-2027 0 240
 3.2.4 20 03-05-2027 31-05-2027 03-05-2027 31-05-2027 0 240
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-46
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+47
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 7 — continuación
 EDT Dura-
 ción
@@ -1859,26 +1554,14 @@ HH
 3.4.7 58 16-06-2027 08-09-2027 09-07-2027 30-09-2027 15 960
 3.4.8 59 16-06-2027 09-09-2027 24-06-2027 30-09-2027 5 960
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-47
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+48
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 7 — continuación
 EDT Dura-
 ción
@@ -1906,26 +1589,14 @@ HH
 3.7.2 21 04-10-2027 03-11-2027 02-11-2027 30-11-2027 19 480
 3.7.3 22 01-12-2027 31-12-2027 01-12-2027 31-12-2027 0 480
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-48
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+49
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 7 — continuación
 EDT Dura-
 ción
@@ -1953,26 +1624,14 @@ HH
 3.9.5 6 19-05-2028 26-05-2028 24-05-2028 31-05-2028 3 160
 3.9.6 7 16-06-2028 28-06-2028 21-06-2028 30-06-2028 2 160
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-49
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+50
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 7 — continuación
 EDT Dura-
 ción
@@ -2000,26 +1659,14 @@ HH
 3.10.4.2 35 01-03-2028 19-04-2028 10-03-2028 28-04-2028 7 240
 3.10.4.3 48 03-04-2028 09-06-2028 21-04-2028 30-06-2028 13 240
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-50
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+51
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 7 — continuación
 EDT Dura-
 ción
@@ -2047,26 +1694,14 @@ HH
 5.2.3 7 03-05-2027 11-05-2027 20-05-2027 31-05-2027 13 80
 5.3.1 7 03-05-2027 11-05-2027 20-05-2027 31-05-2027 13 80
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-51
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+52
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 7 — continuación
 EDT Dura-
 ción
@@ -2094,26 +1729,14 @@ HH
 6.2.3 14 02-08-2027 19-08-2027 12-08-2027 31-08-2027 8 160
 6.3.1 13 24-05-2027 09-06-2027 24-05-2027 09-06-2027 0 160
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-52
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+53
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 7 — continuación
 EDT Dura-
 ción
@@ -2141,26 +1764,14 @@ HH
 6.6.3 7 10-06-2027 18-06-2027 18-06-2027 30-06-2027 6 160
 7.1.1 38 02-11-2027 24-12-2027 09-12-2027 31-01-2028 26 160
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-53
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+54
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 7 — continuación
 EDT Dura-
 ción
@@ -2179,16 +1790,10 @@ HH
 9.1.1 7 02-10-2028 11-10-2028 20-10-2028 31-10-2028 13 80
 9.1.2 7 26-10-2028 07-11-2028 22-11-2028 30-11-2028 17 80
 9.2.2 7 01-09-2031 09-09-2031 22-09-2031 30-09-2031 13 80
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-54
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+55
 
 ---
 
@@ -2211,12 +1816,12 @@ el 28 de junio de 2028 y su revisión lleva H10 al 12 de julio, dentro del mes 1
 El piloto comienza el 9 de noviembre de 2027, el día siguiente al acta del H4, y termina el 20
 de diciembre, en los meses 10 y 11. Su tramo de diciembre no contraviene el congelamiento:
 la solución todavía no está en producción, los camiones siguen operando con sus termógrafos
-actuales y el piloto no modifica el ERP, el WMS ni la facturación. Ningún kit se instala ni se
+actuales y el piloto no modifica el ERP , el WMS ni la facturación. Ningún kit se instala ni se
 ajusta en la ventana de despacho de 05:30 a 07:00. La recepción completa de kits precede a la
 ola de reparto del mes 14.
 5.3 Reservas y análisis PERT de duración
 Se mantiene la hipótesis explícita 𝑂 = 0,75𝑑, 𝑀 = 𝑑 y 𝑃 = 1,25𝑑 para la duración agregada
-con el equipo previsto: 𝑇𝐸 = (𝑂 + 4𝑀 + 𝑃)/6 = 𝑑 y 𝜎 = (𝑃 − 𝑂)/6 = 𝑑/12 (Malcolm et al., 1959).
+con el equipo previsto: 𝑇𝐸 = (𝑂 + 4𝑀 + 𝑃)/6 = 𝑑 y 𝜎 = (𝑃 − 𝑂)/ 6 = 𝑑/12 (Malcolm et al., 1959).
 La varianza de un camino suma las varianzas de sus duraciones, bajo independencia; los diez
 días de revisión y los inicios contractuales son restricciones fijas y no reciben varianza de
 esfuerzo. La aproximación normal Φ((𝐿 − 𝑇𝐸)/𝜎) es una probabilidad condicional del camino
@@ -2226,18 +1831,11 @@ La Tabla 8 presenta cPM y PERT de los hitos con la línea base de 220.023 HH.
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-55
-
+56
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 8 CPM y PERT de los hitos con la línea base de 220.023 HH. Fuente: elaboración a partir de las secciones 4.2, 5.1 y 6.1, y del Anexo 7.B.
 Hito Entrega
 calculada
@@ -2268,16 +1866,10 @@ H9 18-05-2028 01-06-2028 30-06-2028 19 3.9.1 13.0 1,08 >99,9 %
 H10 28-06-2028 12-07-2028 31-07-2028 13 3.9.6 7.0 0,58 >99,9 %
 H11 01-08-2028 01-08-2028 01-08-2028 0 Inicio contractual fijo 0 — —
 H12 11-10-2028 25-10-2028 31-10-2028 3 4.3.3 7.0 0,58 >99,9 %
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-56
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+57
 
 ---
 
@@ -2321,8 +1913,7 @@ de sus últimos 28 días antes de completarlos.
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-57
-
+58
 
 ---
 
@@ -2390,20 +1981,19 @@ objetivo condicionado, sin autorizar producción sin acta. El protocolo T-17 del
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-58
-
+59
 
 ---
 
 LafroX SpA Formulario T-15: Nivelación de recursos
 5.6 Medición de los niveles de atención
-Durante la atención de 04:00 a 22:00 de lunes a sábado y su cobertura 24×7 en los peaks de
+Durante la atención de 04:00 a 22:00 de lunes a sábado y su cobertura 24 ×7 en los peaks de
 septiembre y diciembre y ante incidentes críticos en la ventana de despacho, LafroX atenderá
 al menos el 80 % de los contactos antes de 20 segundos, resolverá al menos el 70 % en el primer
 contacto y mantendrá el abandono en un máximo del 5 %. Estos resultados se medirán y
 reportarán mensualmente y activarán las medidas de recalibración y refuerzo previstas en
 esta sección (BTT, cap. 21, RT-21.06, p. 36; Caso, cap. 15, pp. 26–27).
-El Erlang C de la mesa (SD4, Anexo 4-W.7) dimensiona la espera con llegadas de Poisson,
+El Erlang C de la mesa (SD4, Anexo 4-W .7) dimensiona la espera con llegadas de Poisson,
 atención exponencial y paciencia infinita. Sirve para el 80 % de respuestas antes de 20 segundos,
 pero no modela el abandono ni la resolución al primer contacto del RT-21.06 de las Bases
 Técnicas Transversales (p. 36). Para ambos se aplica medición: desde la marcha blanca de
@@ -2425,8 +2015,7 @@ La Tabla 10 presenta dotación requerida, roles mínimos y dotación declarada.
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-59
-
+60
 
 ---
 
@@ -2478,12 +2067,12 @@ SOC; 6 simultáneas
 sin el SOC
 CISO y especialistas
 en ciberseguridad
-7 El puesto SOC 24×7 suma 744
+7 El puesto SOC 24 ×7 suma 744
 HH en un mes de 31 días, es
 decir, 6 personas equivalentes
 con las 128 HH efectivas de la
 sección 4.1; el SD4, Anexo 4-
-W.7, lo cubre con 4 personas
+W .7, lo cubre con 4 personas
 a 42 horas semanales (5 desde
 el 26-04-2028) y la diferencia
 corresponde a ausencias y relevos.
@@ -2498,8 +2087,7 @@ continúa en la página siguiente
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-60
-
+61
 
 ---
 
@@ -2576,8 +2164,7 @@ capacidad conjunta de 15.
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-61
-
+62
 
 ---
 
@@ -2623,8 +2210,7 @@ del paquete. La Tabla 11 da las fechas de cada paquete y la Tabla 12 las activid
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-62
-
+63
 
 ---
 
@@ -2647,7 +2233,7 @@ Cada paquete se descompone en actividades de 8 a 80 HH que caben en una quincena
 una plantilla por clase: un módulo (D, 960 HH) se construye en iteraciones de dos semanas
 con análisis, diseño de contratos, incrementos, pruebas de contrato, integración en QA y
 entrega; una integración (I, 480 HH), en seis actividades; un diseño (E, 240 HH), en tres; una
-instalación o capacitación (T, 160 HH), en dos, y una prueba ampliada (V, 320 HH), en cuatro.
+instalación o capacitación (T, 160 HH), en dos, y una prueba ampliada (V , 320 HH), en cuatro.
 La Tabla 12 detalla las 119 actividades de los 60 paquetes que terminan hasta el H2 (mes 4).
 El resto se descompone por planificación gradual (PMI, 2017, p. 185): antes de cada fase (H2,
 H4, H8 y H9) el líder del frente detalla las actividades de la fase siguiente con la estimación
@@ -2659,18 +2245,11 @@ detalla el resto.
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-63
-
+64
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Inicio, alcance y diseño
 E1
 Actividades
@@ -2737,18 +2316,11 @@ ago
 sep
 21
 oct
-2027 2028
-Figura 3 Planificación gradual del cronograma. Fuente: elaboración a partir de las Tablas 11 y 12.
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-64
-
+2027 2028Figura 3 Planificación gradual del cronograma. Fuente: elaboración a partir de las Tablas 11 y 12.
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+65
 
 ---
 
@@ -2761,18 +2333,11 @@ ocurrirá un año después.
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-65
-
+66
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 11 Programación de los paquetes con entregable. Fuente: elaboración a partir de las secciones 4.1, 4.2 y 5.1 de este formulario y (Subdocumento 7,
 Anexo 7.B).
 Paquete Rol Personas (prom.
@@ -2795,26 +2360,14 @@ HH Inicio Fin Predecesoras (cuenta o paquete)
 1.6.1 JP 1,8 / 2 80 01-03-2027 09-03-2027 —
 1.7.1 JP 1,8 / 2 80 01-04-2027 09-04-2027 —
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-66
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+67
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 11 — continuación
 Paquete Rol Personas (prom.
 / máx.)
@@ -2837,26 +2390,14 @@ HH Inicio Fin Predecesoras (cuenta o paquete)
 2.4.2 ARQ 4,7 / 5 240 17-02-2028 28-02-2028 1.2.5, 2.1.4
 2.5.1 SRE 1,8 / 2 240 01-04-2027 29-04-2027 —
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-67
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+68
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 11 — continuación
 Paquete Rol Personas (prom.
 / máx.)
@@ -2879,26 +2420,14 @@ HH Inicio Fin Predecesoras (cuenta o paquete)
 3.3.1 SEG 3,3 / 4 480 01-06-2027 05-08-2027 2.2.1 (D-06)
 3.3.2 ARQ 3,6 / 4 480 01-06-2027 01-07-2027 1.2.3 (D-02)
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-68
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+69
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 11 — continuación
 Paquete Rol Personas (prom.
 / máx.)
@@ -2921,26 +2450,14 @@ faz)
 3.4.10 DES 7,5 / 12 960 10-06-2027 04-10-2027 2.4.1, 2.6.2, 3.1 (QA), 3.3 (CC), 3.4.8 (interfaz)
 3.4.11 DAT 8,9 / 12 960 02-09-2027 27-09-2027 2.4.1, 2.6.2, 3.1 (QA), 3.3 (CC)
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-69
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+70
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 11 — continuación
 Paquete Rol Personas (prom.
 / máx.)
@@ -2963,26 +2480,14 @@ HH Inicio Fin Predecesoras (cuenta o paquete)
 3.8.1 CAL 1,8 / 2 160 05-10-2027 22-10-2027 3.4, 3.6.1–3.6.4 (D-20)
 3.8.2 CAL 2,5 / 3 320 25-10-2027 19-11-2027 3.8.1
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-70
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+71
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 11 — continuación
 Paquete Rol Personas (prom.
 / máx.)
@@ -3005,26 +2510,14 @@ HH Inicio Fin Predecesoras (cuenta o paquete)
 3.10.1.3 DAT 1,8 / 2 240 01-10-2027 19-11-2027 —
 3.10.1.4 DAT 1,8 / 2 240 01-12-2027 20-03-2028 —
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-71
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+72
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 11 — continuación
 Paquete Rol Personas (prom.
 / máx.)
@@ -3047,26 +2540,14 @@ HH Inicio Fin Predecesoras (cuenta o paquete)
 4.2.3 JP 1,8 / 2 80 05-05-2028 15-05-2028 4.2.1, 7.3.1 (D-28)
 4.3.3 JP 1,8 / 2 80 02-10-2028 11-10-2028 4.3.1, 4.3.4, 7.1.4, 7.3.2 (D-33)
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-72
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+73
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 11 — continuación
 Paquete Rol Personas (prom.
 / máx.)
@@ -3089,26 +2570,14 @@ HH Inicio Fin Predecesoras (cuenta o paquete)
 6.1.2 SRE 1,8 / 2 160 01-04-2027 20-04-2027 5.1.2 (D-10)
 6.1.3 SRE 1,8 / 2 160 01-04-2027 20-04-2027 5.1.2 (D-10)
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-73
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+74
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 11 — continuación
 Paquete Rol Personas (prom.
 / máx.)
@@ -3131,26 +2600,14 @@ HH Inicio Fin Predecesoras (cuenta o paquete)
 6.5.4 SRE 2 / 3 320 01-09-2027 14-01-2028 5.1.4, 2.4.3, 2.4.4; cuatro kits al 30-09-2027 para 4.1.4
 6.5.5 SRE 1,8 / 2 160 04-11-2027 14-01-2028 —
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-74
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+75
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 11 — continuación
 Paquete Rol Personas (prom.
 / máx.)
@@ -3173,26 +2630,14 @@ HH Inicio Fin Predecesoras (cuenta o paquete)
 4.1.4 IMP 1,7 / 2 320 09-11-2027 20-12-2027 2.4.3, 2.4.4, 3.4.4, 3.4.5, 3.8.1 y H4, 5.3.4; cuatro actas
 parciales 6.5.4
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-75
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+76
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 11 — continuación
 Paquete Rol Personas (prom.
 / máx.)
@@ -3201,26 +2646,14 @@ HH Inicio Fin Predecesoras (cuenta o paquete)
 móvil
 5.3.4 SRE 1,8 / 2 80 01-03-2027 12-03-2027 5.1.4 (especificación, CC); servicio de banco antes de
 2.4.3
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-76
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+77
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 12 Actividades de los paquetes que terminan hasta el H2. Fuente: elaboración a partir de la Tabla 11. Bloque 1 de 2.
 Actividad Nombre Rol Per-
 sonas
@@ -3258,26 +2691,14 @@ JP 2 80 01-03-2027 09-03-2027 7 —
 aprobación del entregable
 JP 2 80 01-03-2027 09-03-2027 7 —
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-77
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+78
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 12 — continuación
 Actividad Nombre Rol Per-
 sonas
@@ -3315,26 +2736,14 @@ ARQ 2 80 01-03-2027 09-03-2027 7 1.2.1.A01
 ble
 ARQ 2 80 10-03-2027 18-03-2027 7 2.1.1.A01
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-78
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+79
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 12 — continuación
 Actividad Nombre Rol Per-
 sonas
@@ -3369,26 +2778,14 @@ DAT 2 80 19-03-2027 29-03-2027 7 2.1.3.A02
 mos y análisis
 SEG 2 80 01-03-2027 09-03-2027 7 —
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-79
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+80
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 12 — continuación
 Actividad Nombre Rol Per-
 sonas
@@ -3423,26 +2820,14 @@ presentación para aproba-
 ción
 SEG 2 80 19-03-2027 29-03-2027 7 2.2.4.A02
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-80
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+81
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 12 — continuación
 Actividad Nombre Rol Per-
 sonas
@@ -3476,26 +2861,14 @@ SRE 2 80 01-03-2027 09-03-2027 7 —
 ble
 SRE 2 80 10-03-2027 18-03-2027 7 2.3.3.A01
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-81
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+82
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 12 — continuación
 Actividad Nombre Rol Per-
 sonas
@@ -3532,26 +2905,14 @@ SRE 2 80 21-04-2027 29-04-2027 7 2.5.1.A02
 mos y análisis
 SRE 2 80 01-04-2027 09-04-2027 7 —
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-82
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+83
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 12 — continuación
 Actividad Nombre Rol Per-
 sonas
@@ -3582,26 +2943,14 @@ presentación para aproba-
 ción
 IMP 2 80 19-03-2027 29-03-2027 7 2.6.1.A02
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-83
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+84
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 13 — continuación
 Actividad Nombre Rol Per-
 sonas
@@ -3635,26 +2984,14 @@ SRE 2 80 03-05-2027 11-05-2027 7 —
 ble
 SRE 2 80 12-05-2027 20-05-2027 7 3.1.4.A01
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-84
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+85
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 13 — continuación
 Actividad Nombre Rol Per-
 sonas
@@ -3689,26 +3026,14 @@ SRE 2 80 21-05-2027 31-05-2027 7 3.2.2.A02
 mos y análisis
 SRE 2 80 03-05-2027 11-05-2027 7 5.2.1.A01
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-85
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+86
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 13 — continuación
 Actividad Nombre Rol Per-
 sonas
@@ -3743,26 +3068,14 @@ presentación para aproba-
 ción
 SEG 2 80 21-05-2027 31-05-2027 7 3.2.5.A02
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-86
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+87
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 13 — continuación
 Actividad Nombre Rol Per-
 sonas
@@ -3798,26 +3111,14 @@ ARQ 2 80 03-05-2027 11-05-2027 7 —
 aprobación del entregable
 SRE 2 80 03-05-2027 11-05-2027 7 —
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-87
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+88
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 13 — continuación
 Actividad Nombre Rol Per-
 sonas
@@ -3852,26 +3153,14 @@ SRE 2 80 01-04-2027 09-04-2027 7 5.1.2.A01
 corrección y acta
 SRE 2 80 12-04-2027 20-04-2027 7 6.1.3.A01
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-88
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+89
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 13 — continuación
 Actividad Nombre Rol Per-
 sonas
@@ -3908,26 +3197,14 @@ SRE 2 80 03-05-2027 11-05-2027 7 —
 corrección y acta
 SRE 2 80 12-05-2027 20-05-2027 7 6.3.3.A01
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-89
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+90
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 13 — continuación
 Actividad Nombre Rol Per-
 sonas
@@ -3961,26 +3238,14 @@ ARQ 3 80 03-05-2027 07-05-2027 5 2.4.3
 simuladores y aire
 ARQ 3 80 10-05-2027 14-05-2027 5 2.4.4.A01
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-90
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+91
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 13 — continuación
 Actividad Nombre Rol Per-
 sonas
@@ -4008,16 +3273,10 @@ desde inicio de gestión
 y habilitación del servicio
 de banco
 SRE 2 80 01-03-2027 09-03-2027 7 5.1.4.A01 (especificación)
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-91
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+92
 
 ---
 
@@ -4030,7 +3289,7 @@ se dividen en entregables más pequeños, sino por ocurrencia o por quincena:
 semestral o anual) tiene una actividad por ocurrencia, ejecutada dentro de una quincena.
 Si una ocurrencia supera 64 HH, se reparte entre dos o más personas.
 • Un paquete continuo tiene una actividad por quincena. Si la quincena exige más de 64 HH,
-la actividad se divide en relevos o puestos: por ejemplo, el NOC 24×7 de un mes de 31 días
+la actividad se divide en relevos o puestos: por ejemplo, el NOC 24 ×7 de un mes de 31 días
 requiere 744 ÷ 2 = 372 HH por quincena, es decir, seis relevos de 62 HH.
 • Las preparaciones de comités con frecuencia contractual quincenal (1.6.2 y 1.8.3) tienen
 menos de 8 HH por ocurrencia. Son la única excepción al mínimo de la regla: se mantienen
@@ -4043,18 +3302,11 @@ durante el contrato y el esfuerzo máximo de cada uno.
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-92
-
+93
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 14 Actividades de los paquetes de esfuerzo continuo. Fuente: elaboración a partir de las secciones 4.1, 4.2 y 4.4 y el diccionario de (Formulario T-14).
 Paquete Clase Rol Meses E HH Regla de programación Relevos u
 ocurrencias
@@ -4088,26 +3340,14 @@ dentro de una quincena; 1 actividad(es) por ocurrencia
 dentro de una quincena; 1 actividad(es) por ocurrencia
 44 8.0
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-93
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+94
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 14 — continuación
 Paquete Clase Rol Meses E HH Regla de programación Relevos u
 ocurrencias
@@ -4143,26 +3383,14 @@ o periódica
 o periódica
 9 8.9
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-94
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+95
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 14 — continuación
 Paquete Clase Rol Meses E HH Regla de programación Relevos u
 ocurrencias
@@ -4199,26 +3427,14 @@ periódica
 periódica
 2 80.0
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-95
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+96
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 14 — continuación
 Paquete Clase Rol Meses E HH Regla de programación Relevos u
 ocurrencias
@@ -4255,26 +3471,14 @@ dentro de una quincena; 1 actividad(es) por ocurrencia
 36 16.0
 8.2.1 R DES 21–56 4608 Una actividad de nivel de esfuerzo por quincena 72 64.0
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-96
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+97
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 14 — continuación
 Paquete Clase Rol Meses E HH Regla de programación Relevos u
 ocurrencias
@@ -4306,26 +3510,14 @@ dentro de una quincena; 1 actividad(es) por ocurrencia
 periódica
 10 8.0
 continúa en la página siguiente
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-97
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+98
 
 ---
 
-LafroX
-SpA
-Formulario
-T-15:
-Nivelación
-de
-recursos
+LafroX SpA Formulario T-15: Nivelación de recursos
 Tabla 14 — continuación
 Paquete Clase Rol Meses E HH Regla de programación Relevos u
 ocurrencias
@@ -4359,16 +3551,10 @@ o periódica
 9.2.1 G JP 54–56 80 Una actividad por quincena, por presencia continua o
 periódica
 6 13.3
-LafroX
-SpA
-Formulario
-T-15
-Media
-firma:
-Alex
-Aravena
-98
-
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+99
 
 ---
 
@@ -4381,21 +3567,18 @@ Ningún paquete se informa al 50 % durante semanas: el avance de cada quincena s
 las actividades terminadas y por los relevos u ocurrencias cumplidos, que alimentan el valor
 ganado del SD6, sección 6.1.5.
 ## Referencias
-Las fuentes citadas en este formulario se listan en formato APA 7.ª edición. Las Bases se
+Las fuentes citadas en este formulario se listan en formato APA 7. ª edición. Las Bases se
 citan en el texto con su documento y el artículo, capítulo, sección o código del requisito.
-• Dirección del Trabajo. (s.f.). Código del Trabajo: artículos 35 y 35 ter y compendio de feriados
+• Dirección del Trabajo. (s.f.).Código del Trabajo: artículos 35 y 35 ter y compendio de feriados
 legales. https://dt.gob.cl/legislacion/1624/articles-95516_recurso_1.pdf
 • Distribuidora Puelche S.A. (2026a). Bases Administrativas, Licitación TFEP-01/2026.
 • Distribuidora Puelche S.A. (2026b). Bases Técnicas Transversales, Licitación TFEP-01/2026.
 • Distribuidora Puelche S.A. (2026c). Bases Técnicas del Caso Logística.
-• Malcolm, D. G., Roseboom, J. H., Clark, C. E., & Fazar, W. (1959). Application of a technique
+• Malcolm, D. G., Roseboom, J. H., Clark, C. E., & Fazar , W . (1959). Application of a technique
 for research and development program evaluation. Operations Research, 7(5), 646–669.
 • Project Management Institute. (2017). Guía de los fundamentos para la dirección de proyectos
-(Guía del PMBOK) (6.ª ed.). Project Management Institute.
+(Guía del PMBOK) (6. ª ed.). Project Management Institute.
 LafroX SpA
 Formulario T-15
 Media firma: Alex Aravena
-99
-
-
----
+100

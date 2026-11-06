@@ -1,4 +1,4 @@
-# Subdocumento 7 — Plan de trabajo
+# Subdocumento 7 — Plan de trabajo, EDT, cronograma e implantación
 
 > Texto extraído del [PDF final](LAFROX-Subdocumento7.pdf). Las figuras y la composición visual se consultan en el PDF.
 
@@ -9,7 +9,7 @@ Proyecto de Plataforma Digital de Misión Crítica
 Caso — Logística
 Sobre N.° 2 — Oferta Técnica
 Propuesta Técnica
-Subdocumento 07 — Plan de Trabajo, EDT, Cronograma e Implantación
+Subdocumento 07 — Plan de Trabajo, EDT , Cronograma e Implantación
 Subdocumento 07 · Formulario T-7
 MANDANTE
 Distribuidora Puelche S.A.
@@ -29,7 +29,6 @@ Alex Aravena
 Jefe de Proyecto y Apoderado · LafroX SpA
 LAFROX-Subdocumento7.pdf 1
 
-
 ---
 
 LafroX SpA
@@ -39,143 +38,139 @@ Lista de tablas 3
 Lista de figuras 4
 7 Introducción al Plan de trabajo 6
 7.1 EDT 6
-7.1.1 Criterio de descomposición 6
+7.1.1 Criterio de descomposición 7
 7.1.2 Estructura general 9
 7.1.2.1 Fase 1. Inicio 9
-7.1.2.2 Fase 2. Elaboración 10
-7.1.2.3 Fase 3. Construcción 12
-7.1.2.4 Fase 4. Transición 17
-7.1.2.5 Fase 5. Adquisiciones y contrataciones 18
-7.1.2.6 Fase 6. Infraestructura física y sitios 19
-7.1.2.7 Fase 7. Capacitación y gestión del cambio 21
-7.1.2.8 Fase 8. Operación y soporte 22
-7.1.2.9 Fase 9. Cierre 24
-7.1.3 Cobertura del alcance 25
-7.1.4 Diccionario y asignación de responsables 28
-7.2 Plan de trabajo 29
-7.2.1 Secuenciamiento y dependencias 29
-7.2.2 Estimación 32
-7.2.3 Frentes de trabajo y sincronización 34
-7.2.4 Solapamientos de los meses 13 a 15 y 19 a 20 36
-7.3 Cronograma e implantación 36
-7.3.1 Ruta crítica y holguras 36
-7.3.2 Carta Gantt y calendario 40
-7.3.3 Plan de implantación y puesta en marcha 51
-7.3.4 Marcha blanca de la Etapa 1 55
-7.3.5 Marcha blanca de la Etapa 2 y convivencia 58
-7.3.6 Estabilización y transferencia 59
-7.3.7 Momento de los resultados comprometidos 60
-7.3.8 Base de planificación y recursos 62
-Referencias 64
-Declaración de uso de IA 64
+7.1.2.2 Fase 2. Elaboración 13
+7.1.2.3 Fase 3. Construcción 15
+7.1.2.4 Fase 4. Transición 24
+7.1.2.5 Fase 5. Adquisiciones y contrataciones 25
+7.1.2.6 Fase 6. Infraestructura física y sitios 27
+7.1.2.7 Fase 7. Capacitación y gestión del cambio 30
+7.1.2.8 Fase 8. Operación y soporte 32
+7.1.2.9 Fase 9. Cierre 36
+7.1.3 Cobertura del alcance 37
+7.1.4 Diccionario y asignación de responsables 40
+7.2 Plan de trabajo 41
+7.2.1 Secuenciamiento y dependencias 41
+7.2.2 Estimación 44
+7.2.3 Frentes de trabajo y sincronización 46
+7.2.4 Solapamientos de los meses 13 a 15 y 19 a 20 49
+7.3 Cronograma e implantación 49
+7.3.1 Ruta crítica y holguras 49
+7.3.2 Carta Gantt y calendario 55
+7.3.3 Plan de implantación y puesta en marcha 102
+7.3.4 Marcha blanca de la Etapa 1 106
+7.3.5 Marcha blanca de la Etapa 2 y convivencia 109
+7.3.6 Estabilización y transferencia 110
+7.3.7 Momento de los resultados comprometidos 111
+7.3.8 Base de planificación y recursos 113
+Referencias 115
+Declaración de uso de IA 115
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
 2
 
-
 ---
 
 LafroX SpA
 Lista de tablas
-Tabla 7.1 Cuentas de control y paquetes por fase. 7
-Tabla 7.2 Cobertura del alcance en la EDT. 26
-Tabla 7.3 Paquetes por responsable. 28
-Tabla 7.4 Horas hombre programadas por etapa — 33
-Tabla 7.5 Hitos del Formulario E-25 en el cronograma. 40
-Tabla 7.6 Meses contractuales según la fecha de inicio. 41
-Tabla 7.7 Olas de implantación de la Etapa 1. 52
-Tabla 7.8 Niveles de reversión. 54
-Tabla 7.9 Indicadores diarios de la marcha blanca. 56
-Tabla 7.10 Estabilización por ola. 59
-Tabla 7.11 Momento de los resultados de aceptación del caso. 60
-Tabla 7.12 Innovaciones en el cronograma. 61
-Tabla 7.13 Declaración de uso de IA. 65
+Tabla 7.1 Cuentas de control y paquetes por fase. 8
+Tabla 7.2 Cobertura del alcance en la EDT. 37
+Tabla 7.3 Paquetes por responsable. 40
+Tabla 7.4 Horas hombre programadas por etapa — 45
+Tabla 7.5 Hitos del Formulario E-25 en el cronograma. 55
+Tabla 7.6 Meses contractuales según la fecha de inicio. 56
+Tabla 7.7 Olas de implantación de la Etapa 1. 103
+Tabla 7.8 Niveles de reversión. 105
+Tabla 7.9 Indicadores diarios de la marcha blanca. 107
+Tabla 7.10 Estabilización por ola. 110
+Tabla 7.11 Momento de los resultados de aceptación del caso. 111
+Tabla 7.12 Innovaciones en el cronograma. 112
+Tabla 7.13 Declaración de uso de IA. 116
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
 3
-
 
 ---
 
 LafroX SpA
 Lista de figuras
 Figura 7.1 Vista del primer nivel de la EDT: raíz del proyecto y sus nueve fases. 8
-Figura 7.2 Fase 1 — Inicio, primera parte: cuentas 1.1 a 1.5. 9
+Figura 7.2 Fase 1 — Inicio, primera parte: cuentas 1.1 a 1.5. 10
 Figura 7.3 Fase 1 — Inicio, segunda parte: cuentas 1.6 a 1.9, desde riesgos hasta cumpli-
-miento contractual. 10
+miento contractual. 12
 Figura 7.4 Fase 2 — Elaboración, primera parte: arquitectura, seguridad y sala técnica,
-cuentas 2.1 a 2.3. 11
+cuentas 2.1 a 2.3. 14
 Figura 7.5 Fase 2 — Elaboración, segunda parte: validación, continuidad y experiencia
-de usuario, cuentas 2.4 a 2.6. 12
+de usuario, cuentas 2.4 a 2.6. 15
 Figura 7.6 Fase 3 — Construcción, primera parte: ambientes, servicios de nube y base
-compartida, cuentas 3.1 a 3.3. 13
-Figura 7.7 Fase 3 — Construcción, segunda parte: módulos de la Etapa 1, cuenta 3.4. 14
+compartida, cuentas 3.1 a 3.3. 16
+Figura 7.7 Fase 3 — Construcción, segunda parte: módulos de la Etapa 1, cuenta 3.4. 18
 Figura 7.8 Fase 3 — Construcción, tercera parte: módulos de la Etapa 2, integraciones,
-migración y pruebas de la Etapa 1, cuentas 3.5 a 3.8. 15
+migración y pruebas de la Etapa 1, cuentas 3.5 a 3.8. 19
 Figura 7.9 Fase 3 — Construcción, cuarta parte: pruebas de la Etapa 2, innovaciones y
-documentación técnica, cuentas 3.9 a 3.11. 16
+documentación técnica, cuentas 3.9 a 3.11. 21
 Figura 7.10 Fase 3 — Construcción, quinta parte: detalle de los paquetes de las innova-
-ciones agrupadas en la cuenta 3.10. 17
+ciones agrupadas en la cuenta 3.10. 23
 Figura 7.11 Fase 4 — Transición: plan de implantación y marchas blancas de las etapas 1
-y 2, cuentas 4.1 a 4.3. 18
+y 2, cuentas 4.1 a 4.3. 25
 Figura 7.12 Fase 5 — Adquisiciones y contrataciones: hardware, servicios, enlaces y
-acuerdos con terceros, cuentas 5.1 a 5.4. 19
+acuerdos con terceros, cuentas 5.1 a 5.4. 26
 Figura 7.13 Fase 6 — Infraestructura física y sitios, primera parte: sala técnica, cableado
-y racks, cuentas 6.1 a 6.3. 20
+y racks, cuentas 6.1 a 6.3. 28
 Figura 7.14 Fase 6 — Infraestructura física y sitios, segunda parte: seguridad física,
-equipamiento de campo y configuración, cuentas 6.4 a 6.6. 21
+equipamiento de campo y configuración, cuentas 6.4 a 6.6. 30
 Figura 7.15 Fase 7 — Capacitación y gestión del cambio: capacitación por roles, acompa-
-ñamiento y certificaciones, cuentas 7.1 a 7.3. 22
+ñamiento y certificaciones, cuentas 7.1 a 7.3. 31
 Figura 7.16 Fase 8 — Operación y soporte, primera parte: servicios de operación y
-mantenimiento, cuentas 8.1 y 8.2. 23
+mantenimiento, cuentas 8.1 y 8.2. 33
 Figura 7.17 Fase 8 — Operación y soporte, segunda parte: innovaciones, obligaciones
-periódicas, capacitación y transferencia, cuentas 8.3 a 8.5. 24
+periódicas, capacitación y transferencia, cuentas 8.3 a 8.5. 35
 Figura 7.18 Fase 9 — Cierre: cierre de implementación y salida al término del contrato,
-cuentas 9.1 y 9.2. 25
+cuentas 9.1 y 9.2. 37
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
 4
 
-
 ---
 
 LafroX SpA
 Figura 7.19 Ubicación en la EDT de las innovaciones y la seguridad, la calidad, la migra-
-ción y la implantación. 27
-Figura 7.20 Red de precedencias entre cuentas de control e hitos. 31
-Figura 7.21 Frentes de trabajo de los meses 1 a 21. 35
-Figura 7.22 Camino que controla el H12 y su holgura contractual. 37
+ción y la implantación. 39
+Figura 7.20 Red de precedencias entre cuentas de control e hitos. 43
+Figura 7.21 Frentes de trabajo de los meses 1 a 21. 47
+Figura 7.22 Camino que controla el H12 y su holgura contractual. 50
 Figura 7.23 Vista crítica de la carta Gantt: paquetes de la ruta crítica y sus dependencias
-hasta H6 y H11. 39
+hasta H6 y H11. 52
 Figura 7.24 Carta Gantt de los 56 meses por período contractual, con inicio en febrero
-de 2027. 42
+de 2027. 57
 Figura 7.25 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 1
-de 7 (filas 1 a 23 de 155), con inicio en febrero de 2027. 44
+de 7 (filas 1 a 23 de 155), con inicio en febrero de 2027. 64
 Figura 7.26 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 2
-de 7 (filas 24 a 45 de 155), con inicio en febrero de 2027. 45
+de 7 (filas 24 a 45 de 155), con inicio en febrero de 2027. 69
 Figura 7.27 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 3
-de 7 (filas 46 a 67 de 155), con inicio en febrero de 2027. 46
+de 7 (filas 46 a 67 de 155), con inicio en febrero de 2027. 74
 Figura 7.28 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 4
-de 7 (filas 68 a 89 de 155), con inicio en febrero de 2027. 47
+de 7 (filas 68 a 89 de 155), con inicio en febrero de 2027. 81
 Figura 7.29 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 5
-de 7 (filas 90 a 111 de 155), con inicio en febrero de 2027. 48
+de 7 (filas 90 a 111 de 155), con inicio en febrero de 2027. 87
 Figura 7.30 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 6
-de 7 (filas 112 a 133 de 155), con inicio en febrero de 2027. 49
+de 7 (filas 112 a 133 de 155), con inicio en febrero de 2027. 92
 Figura 7.31 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 7
-de 7 (filas 134 a 155 de 155), con inicio en febrero de 2027. 50
+de 7 (filas 134 a 155 de 155), con inicio en febrero de 2027. 97
 Figura 7.32 Despliegue de la ola 3 y período final de validación de la marcha blanca de la
-Etapa 1. 53
-Figura 7.33 Procedimiento de reversión de la Etapa 1 en la ventana de despacho. 55
-Figura 7.34 Ciclo diario de la marcha blanca. 57
-Figura 7.35 Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca. 59
+Etapa 1. 104
+Figura 7.33 Procedimiento de reversión de la Etapa 1 en la ventana de despacho. 106
+Figura 7.34 Ciclo diario de la marcha blanca. 108
+Figura 7.35 Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca. 110
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
 5
-
 
 ---
 
@@ -201,27 +196,33 @@ implantación y la puesta en marcha controlada, con una propuesta de calendario,
 decisiones en su sección 6; y los Anexos 7.A a 7.F, los listados de apoyo y la preparación de
 riesgos.
 En este capítulo, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas
-Transversales y las Bases Técnicas del caso.
+Transversales y las Bases Técnicas del caso. SD seguido de un número identifica el Subdocu-
+mento correspondiente. EDT significa estructura de descomposición del trabajo; PT, paquete
+de trabajo; HH, horas hombre; y E1/E2, Etapas 1 y 2. En las cartas Gantt, RC identifica los ele-
+mentos marcados como ruta crítica en la fuente de programación y PT/H identifica los demás
+paquetes e hitos. H1–H12 son los hitos del Formulario E-25 y F1–F8, los frentes de trabajo. QA
+designa el ambiente de calidad; SRE, el equipo de operación e ingeniería de fiabilidad; NOC, el
+centro de operaciones; SOC, el centro de operaciones de seguridad; y DTE, los documentos
+tributarios electrónicos.
 7.1 EDT
 La EDT es la base común del plan: el cronograma, la estimación y la asignación de respon-
 sables se construyen sobre sus paquetes, y su diccionario fija qué se entrega y cómo se acepta
 cada uno. Esta sección explica cómo se descompuso el trabajo, cómo queda la estructura, cómo
 cubre el alcance y cómo se asignan los responsables.
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+6
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
 7.1.1 Criterio de descomposición
 La EDT de Puelche se organiza en nueve fases. Las cuatro primeras son las fases del proceso
 de desarrollo del Capítulo 6 (Inicio, Elaboración, Construcción y Transición) y se recorren una
 vez por cada etapa del artículo 17 de las Bases Administrativas (pp. 12–13). El primer recorrido
 produce la Etapa 1, con la trazabilidad de recepción, la bodega, la cadena de frío, la preventa,
 las rutas, el reparto y la rendición, y termina con el paso a producción del mes 16. El segundo
-LafroX SpA
-Subdocumento 7
-Media firma: Alex Aravena
-6
-
-
----
-
-LafroX SpA Introducción al Plan de trabajo
 produce la Etapa 2, con el canal moderno, los portales y el costo de servir, y termina con el
 paso a producción del mes 21.
 Las otras cinco fases agrupan el trabajo que no es desarrollo de software, pero sin el cual la
@@ -255,21 +256,17 @@ un servicio durante los 36 meses y se controla con entregables periódicos, como
 mensuales de servicio, los informes de pruebas y las actualizaciones anuales, que funcionan
 como sus puntos de verificación.
 La Tabla 7.1 muestra el tamaño de cada fase y los hitos que produce.
-Tabla 7.1 Cuentas de control y paquetes por fase. Fuente: (Formulario T-14) y el Formulario E-25.
-Fase CC PT Etapa Hitos
-1 Inicio 9 35 E1 y E2 H1, H8
-continúa en la página siguiente
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
 7
 
-
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-Tabla 7.1 — continuación
+Tabla 7.1 Cuentas de control y paquetes por fase. Fuente: (Formulario T-14) y el Formulario E-25.
 Fase CC PT Etapa Hitos
+1 Inicio 9 35 E1 y E2 H1, H8
 2 Elaboración 6 20 E1 y E2 H2, H8
 3 Construcción 11 79 E1 y E2 H3, H4, H5, H9,
 H10
@@ -300,307 +297,221 @@ acuerdos con diez transportistas y con el sindicato y la capacitación de una op
 puede detenerse son trabajo planificado y controlado, no supuestos.
 La Figura 7.1 resume el primer nivel de la EDT: la raíz del proyecto y sus nueve fases.
 Plataforma logística de Distribuidora Puelche
-1.
-Inicio
-2.
-Elaboración
-3.
-Construcción
-4.
-Transición
-5.
-Adquisiciones
-y
-contrataciones
-6.
-Infraestructura
-física y sitios
-7.
-Capacitación
-y gestión del
-cambio
-8.
-Operación y
-soporte
-9.
-Cierre
+1. Inicio 2.Elaboración3.Construcción4. Transición
+5.Adquisicionesycontrataciones
+6.Infraestructurafísica y sitios
+7.Capacitacióny gestión delcambio
+8. Operación ysoporte
+9. Cierre
 Figura 7.1 Vista del primer nivel de la EDT: raíz del proyecto y sus nueve fases. Fuente: (Formulario T-14).
-Las fases de desarrollo (1 a 4) se recorren una vez por etapa; las fases 5 a 7 las habilitan en
-paralelo, y las fases 8 y 9 cubren la operación y el cierre. La figura muestra la estructura, no la
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
 8
 
-
 ---
 
 LafroX SpA Introducción al Plan de trabajo
+Las fases de desarrollo (1 a 4) se recorren una vez por etapa; las fases 5 a 7 las habilitan en
+paralelo, y las fases 8 y 9 cubren la operación y el cierre. La figura muestra la estructura, no la
 secuencia temporal: el número de una fase no indica cuándo ocurre; sus fechas están en la
 carta Gantt de la sección 7.3.2.
 7.1.2 Estructura general
-Las láminas siguientes desglosan las cuentas de control y los paquetes por fase. Cada
-imagen se presenta inmediatamente después de su descripción. La fase 3 se divide en cinco
-láminas para facilitar la lectura: las dos primeras separan la base técnica de los módulos de
-la Etapa 1; las tres restantes muestran las cuentas 3.5 a 3.11, con una lámina adicional para
-ampliar los paquetes de innovación de la cuenta 3.10.
+Las figuras siguientes desglosan las cuentas de control y los paquetes por fase. Cada figura
+está precedida por su descripción y puede continuar en varias láminas. La fase 3 se presenta
+en cinco figuras: base técnica, módulos de la Etapa 1, cuentas 3.5 a 3.8, cuentas 3.9 a 3.11 y
+detalle de los paquetes de innovación de la cuenta 3.10.
 7.1.2.1 Fase 1. Inicio
 La fase de Inicio define el proyecto, fija su alcance y planificación y establece cómo se
 gobierna y controla. Sus cuentas 1.1 a 1.5 abarcan el acta, la línea base, la planificación, los
 interesados y la calidad.
 La Figura 7.2 presenta el detalle descrito a continuación; se lee desde la cuenta de control
 hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
-1. Inicio
-1.1 Definición inicial del
-proyecto
-1.1.1 Acta de
-constitución del
-proyecto, firmada con
-la Contraparte Técnica
-1.1.2 Documento de
-validación con el
-CLIENTE de los
-problemas y metas del
-proyecto
-1.1.3 Acta de
-confirmación con el
-CLIENTE de la fecha
-de inicio, la evidencia
-para el proveedor de
-lácteos, las ventanas
-de paso a producción
-y el acuse tributario
-1.2 Alcance del proyecto
-1.2.1 Documento de
-especificación de
-requerimientos y línea
-base de alcance de la
-Etapa 1 (H1)
-1.2.2 Documento de
-reglas de ruteo
-capturadas al
-planificador de rutas
-1.2.3 Documento de
-especificación de las
-interfaces sin
-documentación del
-ERP, del WMS de 2013
-y de la telemetría del
-tercero
-1.2.4 Matriz de
-trazabilidad:
-requerimiento,
-módulo, paquete y
-prueba (H1)
-1.2.5 Documento de
-línea base de alcance
-de la Etapa 2: canal
-moderno y costo de
-servir (H8)
-1.3 Planificación del
-proyecto
-1.3.1 Plan para la
-dirección del proyecto,
-con el calendario de
-congelamientos de
-septiembre, diciembre
-y el cierre mensual
-1.3.2 EDT y diccionario
-de la EDT (línea base
-del alcance)
-1.3.3 Carta Gantt de 56
-meses con los hitos
-H1 a H12 y la ruta
-crítica
-1.3.4 Documento de
-nivelación de recursos
-y frentes del
-solapamiento de los
-meses 13 a 15 y 19 a
-20
-1.3.5 Reunión
-semanal de
-seguimiento con su
-informe semanal
-1.4 Gestión de interesados
-y comunicaciones
-1.4.1 Registro de
-interesados con su
-influencia, interés y
-estrategia
-1.4.2 Plan de
-comunicaciones con
-calendario y canales
-por grupo de interés
-1.4.3 Registro de
-solicitudes de cambio
-con análisis de
-impacto
-1.5 Gestión de calidad
-1.5.1 Plan de calidad y
-plan de pruebas
-1.5.2 Puertas de
-calidad: lógica 70 %,
-global 80 % y código
-modificado 80 %
-Figura 7.2 Fase 1 — Inicio, primera parte: cuentas 1.1 a 1.5. Fuente: (Formulario T-14).
-La primera lámina contiene los paquetes 1.2.2 y 1.2.3, que documentan las reglas de ruteo
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
 9
 
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Fase 1 · Inicio
+Cuentas y paquetes · lámina 1 de 2
+1.1 Definición inicial
+del proyecto
+1.1.1 Acta de constitución del proyecto, firmada con la
+Contraparte Técnica
+1.1.2 Documento de validación con el CLIENTE de los problemas
+y metas del proyecto
+1.1.3 Acta de confirmación con el CLIENTE de la fecha de inicio,
+la evidencia para el proveedor de lácteos, las ventanas de paso a
+producción y el acuse tributario
+1.2 Alcance del
+proyecto
+1.2.1 Documento de especificación de requerimientos y línea
+base de alcance de la Etapa 1 (H1)
+1.2.2 Documento de reglas de ruteo capturadas al planificador de
+rutas
+1.2.3 Documento de especificación de las interfaces sin
+documentación del ERP, del WMS de 2013 y de la telemetría del
+tercero
+1.2.4 Matriz de trazabilidad: requerimiento, módulo, paquete y
+prueba (H1)
+1.2.5 Documento de línea base de alcance de la Etapa 2: canal
+moderno y costo de servir (H8)
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
+Figura 7.2 Fase 1 — Inicio, primera parte: cuentas 1.1 a 1.5. Fuente: (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+10
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
+Fase 1 · Inicio
+Cuentas y paquetes · lámina 2 de 2
+1.3 Planificación del
+proyecto
+1.3.1 Plan para la dirección del proyecto, con el calendario de
+congelamientos de septiembre, diciembre y el cierre mensual
+1.3.2 EDT y diccionario de la EDT (línea base del alcance)
+1.3.3 Carta Gantt de 56 meses con los hitos H1 a H12 y la ruta
+crítica
+1.3.4 Documento de nivelación de recursos y frentes del
+solapamiento de los meses 13 a 15 y 19 a 20
+1.3.5 Reunión semanal de seguimiento con su informe semanal
+1.4 Gestión de
+interesados y
+comunicaciones
+1.4.1 Registro de interesados con su influencia, interés y
+estrategia
+1.4.2 Plan de comunicaciones con calendario y canales por grupo
+de interés
+1.4.3 Registro de solicitudes de cambio con análisis de impacto
+1.5 Gestión de
+calidad
+1.5.1 Plan de calidad y plan de pruebas
+1.5.2 Puertas de calidad automáticas en la cadena de integración
+(cobertura mínima del 80 %)
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
+Figura 7.2 (continuación 2 de 2). Fase 1 — Inicio, primera parte: cuentas 1.1 a 1.5. Fuente: (Formulario T-14).
+La primera figura contiene los paquetes 1.2.2 y 1.2.3, que documentan las reglas de ruteo
 capturadas al planificador y las interfaces sin documentación del sistema de gestión. La segun-
-da lámina completa Inicio con las cuentas 1.6 a 1.9: gestión de riesgos, reversibilidad, gobierno
+da figura completa Inicio con las cuentas 1.6 a 1.9: gestión de riesgos, reversibilidad, gobierno
 y control, y cumplimiento normativo y contractual. Incluye los comités del artículo 71 de las
 Bases Administrativas (p. 37), el informe de valor ganado y el tablero (RT-19.06 a RT-19.09).
 La Figura 7.3 presenta el detalle descrito a continuación; se lee desde la cuenta de control
 hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
-1. Inicio
-1.6 Gestión de riesgos
-1.6.1 Plan de riesgos y
-registro inicial de
-riesgos según ISO
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+11
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Fase 1 · Inicio
+Cuentas y paquetes · lámina 1 de 2
+1.6 Gestión de
+riesgos
+1.6.1 Plan de riesgos y registro inicial de riesgos según ISO
 31000
-1.6.2 Registro de
-riesgos revisado en
-cada Comité de
-Proyecto
-1.7 Plan de Reversibilidad
-1.7.1 Plan de
-Reversibilidad inicial
-(primeros 90 días)
-1.7.2 Primera
-actualización anual
-del Plan de
+1.6.2 Registro de riesgos revisado en cada Comité de Proyecto
+1.7 Plan de
 Reversibilidad
-durante la
-implementación
-1.8 Gobierno y control del
-proyecto
-1.8.1 Oficina de gestión del
-proyecto con metodología
-basada en el PMBOK
-1.8.2 Actas del Comité
-Ejecutivo mensual, con la
-aprobación de los cambios
-de alcance
-1.8.3 Actas del Comité de
-Proyecto quincenal
-1.8.4 Actas del Comité de
-Arquitectura mensual
-1.8.5 Actas del Comité de
-Operación mensual, desde
-el mes 13
-1.8.6 Informe mensual de
-avance con valor ganado
-1.8.7 Tablero de estado del
-proyecto disponible para el
-CLIENTE
-1.8.8 Espacio colaborativo
-con la documentación, los
-entregables, las actas, los
-riesgos y los cambios
-1.9 Cumplimiento
-normativo y contractual
-1.9.1 Matriz de cumplimiento
-normativo por obligación
-legal, con su control y su
-evidencia
-1.9.2 Acuerdo de
-tratamiento de datos
-personales con el CLIENTE
-1.9.3 Registro de
-actividades de tratamiento y
-evaluación de impacto en
-protección de datos
-1.9.4 Certificación ISO/IEC
-27001 vigente y entrega
-anual de los informes de
-certificación
-1.9.5 Garantía de fiel
-cumplimiento, seguros y
-certificados laborales
-vigentes durante el contrato
+1.7.1 Plan de Reversibilidad inicial (primeros 90 días)
+1.7.2 Primera actualización anual del Plan de Reversibilidad
+durante la implementación
+1.8 Gobierno y
+control del proyecto
+1.8.1 Oficina de gestión del proyecto con metodología basada en
+el PMBOK
+1.8.2 Actas del Comité Ejecutivo mensual, con la aprobación de
+los cambios de alcance
+1.8.3 Actas del Comité de Proyecto quincenal
+1.8.4 Actas del Comité de Arquitectura mensual
+1.8.5 Actas del Comité de Operación mensual, desde el mes 13
+1.8.6 Informe mensual de avance con valor ganado
+1.8.7 Tablero de estado del proyecto disponible para el CLIENTE
+1.8.8 Espacio colaborativo con la documentación, los
+entregables, las actas, los riesgos y los cambios
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
 Figura 7.3 Fase 1 — Inicio, segunda parte: cuentas 1.6 a 1.9, desde riesgos hasta cumplimiento contractual.
 Fuente: Elaboración a partir de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+12
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Fase 1 · Inicio
+Cuentas y paquetes · lámina 2 de 2
+1.9 Cumplimiento
+normativo y
+contractual
+1.9.1 Matriz de cumplimiento normativo por obligación legal, con
+su control y su evidencia
+1.9.2 Acuerdo de tratamiento de datos personales con el
+CLIENTE
+1.9.3 Registro de actividades de tratamiento y evaluación de
+impacto en protección de datos
+1.9.4 Certificación ISO/IEC 27001 vigente y entrega anual de los
+informes de certificación
+1.9.5 Garantía de fiel cumplimiento, seguros y certificados
+laborales vigentes durante el contrato
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
+Figura 7.3 (continuación 2 de 2). Fase 1 — Inicio, segunda parte: cuentas 1.6 a 1.9, desde riesgos hasta
+cumplimiento contractual. Fuente: Elaboración a partir de (Formulario T-14).
 Estas cuentas completan Inicio: identifican los riesgos y la reversibilidad, establecen el
 gobierno y control del proyecto y cierran con el cumplimiento normativo y contractual.
 7.1.2.2 Fase 2. Elaboración
 Elaboración diseña la solución antes de programar: arquitectura lógica y física, datos
 trazables por lote, seguridad, sala técnica de Talca, continuidad y experiencia de usuario. La
 aprobación de arquitectura, seguridad y modelo de datos corresponde al H2 del mes 4. La
-primera lámina muestra las cuentas 2.1 a 2.3.
+primera figura muestra las cuentas 2.1 a 2.3.
+La Figura 7.4 presenta el detalle descrito a continuación; se lee desde la cuenta de control
+hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-10
-
+13
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-La Figura 7.4 presenta el detalle descrito a continuación; se lee desde la cuenta de control
-hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
-2. Elaboración
+Fase 2 · Elaboración
+Cuentas y paquetes · lámina 1 de 1
 2.1 Arquitectura de la
 solución
-2.1.1 Documento de
-arquitectura lógica:
-capas, módulos M1 a
+2.1.1 Documento de arquitectura lógica: capas, módulos M1 a
 M12 e interfaces
-2.1.2 Documento de
-arquitectura física
-híbrida: nube, centros
-de distribución y
-plataformas de cross-
-docking
-2.1.3 Modelo de datos
-y diccionario de datos,
-con la trazabilidad por
-lote
-2.1.4 Documento de
-diseño detallado de
-M11 y del intercambio
+2.1.2 Documento de arquitectura física híbrida: nube, centros de
+distribución y plataformas de cross-docking
+2.1.3 Modelo de datos y diccionario de datos, con la trazabilidad
+por lote
+2.1.4 Documento de diseño detallado de M11 y del intercambio
 con las cadenas
-2.2 Diseño de la seguridad
-2.2.1 Plan de
-seguridad de la
-información
-2.2.2 Modelado de
-amenazas por
-componente y por
-integración externa,
-actualizado ante cada
-cambio
-2.2.3 Plan de respuesta
-a incidentes de
-seguridad, con aviso al
+2.2 Diseño de la
+seguridad
+2.2.1 Plan de seguridad de la información
+2.2.2 Modelado de amenazas por componente y por integración
+externa, actualizado ante cada cambio
+2.2.3 Plan de respuesta a incidentes de seguridad, con aviso al
 CLIENTE en dos horas
-2.2.4 Matriz de
-clasificación de la
-información y matriz
-de controles
+2.2.4 Matriz de clasificación de la información y matriz de
+controles
 2.3 Diseño de la sala
 técnica y de los racks
-2.3.1 Plano de la sala
-técnica de Talca, con
-su cálculo eléctrico y
+2.3.1 Plano de la sala técnica de Talca, con su cálculo eléctrico y
 térmico
-2.3.2 Plano de
-distribución de los
-racks R01 de
-servidores y R02 de
-comunicaciones
-2.3.3 Plano de los
-gabinetes de borde de
-Concepción y de las
-plataformas de cross-
-docking
+2.3.2 Plano de distribución de los racks R01 de servidores y R02
+de comunicaciones
+2.3.3 Plano de los gabinetes de borde de Concepción y de las
+plataformas de cross-docking
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
 Figura 7.4 Fase 2 — Elaboración, primera parte: arquitectura, seguridad y sala técnica, cuentas 2.1 a 2.3. Fuente:
 Elaboración a partir de (Formulario T-14).
 La continuación cubre la validación de diseños, continuidad del negocio y experiencia
@@ -611,56 +522,35 @@ hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-11
-
+14
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-2. Elaboración
-2.4 Validación de diseños
-2.4.1 Acta de
-aprobación de la
-arquitectura, el plan de
-seguridad y el modelo
-de datos (H2)
-2.4.2 Acta de
-aprobación del diseño
-detallado de la Etapa 2
-(H8)
+Fase 2 · Elaboración
+Cuentas y paquetes · lámina 1 de 1
+2.4 Validación de
+diseños
+2.4.1 Acta de aprobación de la arquitectura, el plan de seguridad
+y el modelo de datos (H2)
+2.4.2 Acta de aprobación del diseño detallado de la Etapa 2 (H8)
+2.4.3 Validación del diseño del kit en banco de pruebas
+2.4.4 Mapeo térmico por tipo de carrocería
 2.5 Continuidad del
 negocio
-2.5.1 Plan de
-continuidad del
-negocio según ISO
-22301, con análisis de
-impacto y
-procedimientos
-manuales
-2.5.2 Plan de
-continuidad TIC según
-ISO/IEC 27031 y plan
-de recuperación ante
-desastres
-2.6 Experiencia de usuario
-2.6.1 Investigación con
-preparadores,
-preventistas,
-conductores y
+2.5.1 Plan de continuidad del negocio según ISO 22301, con
+análisis de impacto y procedimientos manuales
+2.5.2 Plan de continuidad TIC según ISO/IEC 27031 y plan de
+recuperación ante desastres
+2.6 Experiencia de
+usuario
+2.6.1 Investigación con preparadores, preventistas, conductores y
 almaceneros
-2.6.2 Prototipos y
-pruebas de usabilidad
-con participantes del
+2.6.2 Prototipos y pruebas de usabilidad con participantes del
 CLIENTE
-2.6.3 Indicadores de
-usabilidad
-comprometidos por
-transacción crítica
-2.4.3 Validación del
-diseño del kit en
-banco de pruebas
-2.4.4 Mapeo térmico
-por tipo de carrocería
+2.6.3 Indicadores de usabilidad comprometidos por transacción
+crítica
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
 Figura 7.5 Fase 2 — Elaboración, segunda parte: validación, continuidad y experiencia de usuario, cuentas 2.4 a
 2.6. Fuente: Elaboración a partir de (Formulario T-14).
 Con estas cuentas, los diseños quedan sometidos a validación y se completan los planes de
@@ -668,383 +558,319 @@ continuidad y experiencia de usuario que orientan la fase de Construcción.
 7.1.2.3 Fase 3. Construcción
 Construcción produce los ambientes y servicios de nube, la base compartida, los módulos de
 ambas etapas, las integraciones, la migración, las pruebas, las innovaciones y la documentación.
-La primera lámina reúne los ambientes de desarrollo, los servicios de nube y la base compartida
+La primera figura reúne los ambientes de desarrollo, los servicios de nube y la base compartida
 (cuentas 3.1 a 3.3).
 La Figura 7.6 presenta el detalle descrito a continuación; se lee desde la cuenta de control
 hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-12
-
+15
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-3. Construcción
-3.1 Ambientes y cadena de
-desarrollo
-3.1.1 Ambientes de
-Desarrollo y QA en la
-nube (H3)
-3.1.2 Ambientes de
-Preproducción y
-Producción en la nube
-(H3)
-3.1.3 Ambiente de
-recuperación ante
-desastres en la región
+Fase 3 · Construcción
+Cuentas y paquetes · lámina 1 de 2
+3.1 Ambientes y
+cadena de desarrollo
+3.1.1 Ambientes de Desarrollo y QA en la nube (H3)
+3.1.2 Ambientes de Preproducción y Producción en la nube (H3)
+3.1.3 Ambiente de recuperación ante desastres en la región
 secundaria (H3)
-3.1.4 Cadena de
-integración y entrega
-continua, e
-infraestructura como
-código
-3.1.5 Observabilidad
-de los doce módulos y
-de los sitios, con
-tableros para el
-CLIENTE (H3)
-3.2 Servicios de nube de
-la plataforma
-3.2.1 Servicio de nube
-para la aplicación y los
-portales
-3.2.2 Servicio de nube
-de base de datos,
-caché y mensajería
-3.2.3 Servicio de nube
-de ingesta de IoT,
-telemetría cruda y
+3.1.4 Cadena de integración y entrega continua, e infraestructura
+como código
+3.1.5 Observabilidad de los doce módulos y de los sitios, con
+tableros para el CLIENTE (H3)
+3.2 Servicios de nube
+de la plataforma
+3.2.1 Servicio de nube para la aplicación y los portales
+3.2.2 Servicio de nube de base de datos, caché y mensajería
+3.2.3 Servicio de nube de ingesta de IoT, telemetría cruda y
 plataforma analítica
-3.2.4 Servicio de nube
-de respaldo inmutable
-y réplica entre
+3.2.4 Servicio de nube de respaldo inmutable y réplica entre
 regiones
-3.2.5 Servicio de nube
-de seguridad y
-gobierno, y detección
-en endpoints
-3.2.6 Servicio de
-gestión de
-dispositivos móviles
-3.3 Base compartida
-3.3.1 Identidad y control de
-acceso, incluidos los
-conductores externos que
-rotan sin aviso
-3.3.2 Integración con el
-ERP como único emisor de
-la guía de despacho (INT-
-06 e INT-07)
-3.3.3 Convivencia con el
-WMS de 2013 durante el
-reemplazo
-3.3.4 Integración con la
-telemetría de los 42
-camiones propios (INT-15)
-3.3.5 Registro auditable de
-stock, lotes y cobros
-3.3.6 Operación sin
-conexión: 14 horas en
-terreno y 24 horas en el CD
+3.2.5 Servicio de nube de seguridad y gobierno, y detección en
+endpoints
+3.2.6 Servicio de gestión de dispositivos móviles
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
 Figura 7.6 Fase 3 — Construcción, primera parte: ambientes, servicios de nube y base compartida, cuentas 3.1 a
 3.3. Fuente: Elaboración a partir de (Formulario T-14).
-La segunda lámina desglosa los módulos de la Etapa 1 (cuenta 3.4), con los componentes
-de recepción, inventario, preparación de pedidos, cadena de frío, aplicaciones y operación de
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+16
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Fase 3 · Construcción
+Cuentas y paquetes · lámina 2 de 2
+3.3 Base compartida
+3.3.1 Identidad y control de acceso, incluidos los conductores
+externos que rotan sin aviso
+3.3.2 Integración con el ERP como único emisor de la guía de
+despacho (INT-06 e INT-07)
+3.3.3 Convivencia con el WMS de 2013 durante el reemplazo
+3.3.4 Integración con la telemetría de los 42 camiones propios
+(INT-15)
+3.3.5 Registro auditable de stock, lotes y cobros
+3.3.6 Operación sin conexión: 14 horas en terreno y 24 horas en
+el CD
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
+Figura 7.6 (continuación 2 de 2). Fase 3 — Construcción, primera parte: ambientes, servicios de nube y base
+compartida, cuentas 3.1 a 3.3. Fuente: Elaboración a partir de (Formulario T-14).
+La segunda figura desglosa los módulos de la Etapa 1 (cuenta 3.4), con los componentes de
+recepción, inventario, preparación de pedidos, cadena de frío, aplicaciones y operación de
 tiendas.
 La Figura 7.7 presenta el detalle descrito a continuación; se lee desde la cuenta de control
 hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-13
-
+17
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-3. Construcción
-3.4 Módulos de la Etapa 1
-3.4.1 Recepción de mercadería con captura de lote y vencimiento (M1 Recepción)
-3.4.2 Inventario por ubicación y lote, con FEFO y conteo cíclico (M2 Inventario)
-3.4.3 Preparación de pedidos en el turno de noche y en la cámara de congelado (M5
-Preparación)
-3.4.4 Cadena de frío, retención por SSCC y retiro sanitario (M9 Calidad y
-trazabilidad)
+Fase 3 · Construcción
+Cuentas y paquetes · lámina 1 de 1
+3.4 Módulos de la
+Etapa 1
+3.4.1 Recepción de mercadería con captura de lote y vencimiento
+(M1 Recepción)
+3.4.2 Inventario por ubicación y lote, con FEFO y conteo cíclico
+(M2 Inventario)
+3.4.3 Preparación de pedidos en el turno de noche y en la cámara
+de congelado (M5 Preparación)
+3.4.4 Cadena de frío, retención por SSCC y retiro sanitario (M9
+Calidad y trazabilidad)
 3.4.5 Ingesta de temperatura (M9) y posición de flota (M12)
-3.4.6 Aplicación móvil de preventa sin conexión, con stock y crédito (M3 Preventa)
-3.4.7 Planificación de rutas corregible por el planificador (M4 Rutas)
-3.4.8 Aplicación móvil de reparto con prueba de entrega digital (M6 Reparto)
-3.4.9 Devoluciones en terreno y control de envases (M8 Devoluciones y envases)
-3.4.10 Cobro en ruta, rendición y conciliación (M7 Cobranza y rendición)
+3.4.6 Aplicación móvil de preventa sin conexión, con stock y
+crédito (M3 Preventa)
+3.4.7 Planificación de rutas corregible por el planificador (M4
+Rutas)
+3.4.8 Aplicación móvil de reparto con prueba de entrega digital
+(M6 Reparto)
+3.4.9 Devoluciones en terreno y control de envases (M8
+Devoluciones y envases)
+3.4.10 Cobro en ruta, rendición y conciliación (M7 Cobranza y
+rendición)
 3.4.11 Indicadores operacionales y OTIF diario (M10 Analítica)
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
 Figura 7.7 Fase 3 — Construcción, segunda parte: módulos de la Etapa 1, cuenta 3.4. Fuente: Elaboración a partir
 de (Formulario T-14).
-La tercera lámina presenta los módulos de la Etapa 2, las integraciones externas, la mi-
-gración y las pruebas de la Etapa 1 (cuentas 3.5 a 3.8). La integración con el ERP conserva su
-función de emisor único de la guía de despacho.
+La tercera figura presenta los módulos de la Etapa 2, las integraciones externas, la migración
+y las pruebas de la Etapa 1 (cuentas 3.5 a 3.8). La integración con el ERP conserva su función
+de emisor único de la guía de despacho.
 La Figura 7.8 presenta el detalle descrito a continuación; se lee desde la cuenta de control
 hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-14
-
+18
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-3. Construcción
-3.5 Módulos de la Etapa 2
-3.5.1 Pedido
-electrónico y aviso de
-despacho para las
-cadenas, y portal de
-proveedores (M11
-Canal moderno)
-3.5.2 Portal web de
-clientes: cuenta, saldo,
-entregas y
+Fase 3 · Construcción
+Cuentas y paquetes · lámina 1 de 2
+3.5 Módulos de la
+Etapa 2
+3.5.1 Pedido electrónico y aviso de despacho para las cadenas, y
+portal de proveedores (M11 Canal moderno)
+3.5.2 Portal web de clientes: cuenta, saldo, entregas y
 documentos
-3.5.3 Portal web de
-transportistas: rutas
-asignadas del día
+3.5.3 Portal web de transportistas: rutas asignadas del día
 siguiente
-3.5.4 Costo de servir
-por cliente y por
-entrega (M10 Analítica)
-3.6 Integraciones externas
-3.6.1 Intercambio de
-lote y trazabilidad con
-los proveedores
-3.6.2 Integración con la
-pasarela de pago para
-el cobro con tarjeta
-(INT-09)
-3.6.3 Integración con el
-servicio de mapas y
-geocodificación (INT-
-10)
-3.6.4 Integración con el
-servicio de avisos al
-cliente (INT-11)
-3.6.5 Intercambio
-electrónico con la
-principal cadena, con
-sus pruebas
-aprobadas (INT-08)
-3.6.6 Incorporación de
-las demás cadenas al
-intercambio
+3.5.4 Costo de servir por cliente y por entrega (M10 Analítica)
+3.6 Integraciones
+externas
+3.6.1 Intercambio de lote y trazabilidad con los proveedores
+3.6.2 Integración con la pasarela de pago para el cobro con
+tarjeta (INT-09)
+3.6.3 Integración con el servicio de mapas y geocodificación
+(INT-10)
+3.6.4 Integración con el servicio de avisos al cliente (INT-11)
+3.6.5 Intercambio electrónico con la principal cadena, con sus
+pruebas aprobadas (INT-08)
+3.6.6 Incorporación de las demás cadenas al intercambio
 electrónico (INT-08)
-3.7 Migración de datos
-3.7.1 Informe de
-perfilamiento y datos
-saneados
-3.7.2 Datos maestros
-cargados: 8.400 SKU,
-clientes e
-instalaciones
-3.7.3 Saldos migrados
-desde el WMS de Talca
-3.7.4 Saldos cargados
-en Concepción desde
-el conteo físico
-3.7.5 Acta de
-conciliación y corte
-fuera de las ventanas
-de congelamiento
-3.8 Pruebas de la Etapa 1
-3.8.1 Pruebas de integración, regresión
-e idempotencia en QA (H4)
-3.8.2 Pruebas de aceptación y de
-accesibilidad con preventistas,
-conductores y bodega
-3.8.3 Cinco condiciones físicas: −22
-°C con guantes, lluvia, calor superior
-a 34 °C, sol directo y uso con una
-mano; desconexión separada de 14
-horas
-3.8.4 Pruebas de carga con el peak de
-septiembre y de resiliencia
-3.8.5 Prueba de recuperación ante
-desastres con conmutación real
-3.8.6 Prueba de seguridad ofensiva de
-la Etapa 1, por un tercero independiente
-3.8.7 Acta de certificación de la Etapa 1
-(H5)
-3.8.8 Demostración en Preproducción
-del despliegue sin interrupción de la
-Etapa 1
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
 Figura 7.8 Fase 3 — Construcción, tercera parte: módulos de la Etapa 2, integraciones, migración y pruebas de la
 Etapa 1, cuentas 3.5 a 3.8. Fuente: Elaboración a partir de (Formulario T-14).
-La cuarta lámina reúne las pruebas de la Etapa 2, las innovaciones y la documentación
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+19
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Fase 3 · Construcción
+Cuentas y paquetes · lámina 2 de 2
+3.7 Migración de
+datos
+3.7.1 Informe de perfilamiento y datos saneados
+3.7.2 Datos maestros cargados: 8.400 SKU, clientes e
+instalaciones
+3.7.3 Saldos migrados desde el WMS de Talca
+3.7.4 Saldos cargados en Concepción desde el conteo físico
+3.7.5 Acta de conciliación y corte fuera de las ventanas de
+congelamiento
+3.8 Pruebas de la
+Etapa 1
+3.8.1 Pruebas de integración, regresión e idempotencia en QA
+(H4)
+3.8.2 Pruebas de aceptación y de accesibilidad con preventistas,
+conductores y bodega
+3.8.3 Pruebas del perfil operacional: cinco condiciones físicas y
+desconexión de 14 horas
+3.8.4 Pruebas de carga con el peak de septiembre y de resiliencia
+3.8.5 Prueba de recuperación ante desastres con conmutación
+real
+3.8.6 Prueba de seguridad ofensiva de la Etapa 1, por un tercero
+independiente
+3.8.7 Acta de certificación de la Etapa 1 (H5)
+3.8.8 Demostración en Preproducción del despliegue sin
+interrupción de la Etapa 1
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
+Figura 7.8 (continuación 2 de 2). Fase 3 — Construcción, tercera parte: módulos de la Etapa 2, integraciones,
+migración y pruebas de la Etapa 1, cuentas 3.5 a 3.8. Fuente: Elaboración a partir de (Formulario T-14).
+La cuarta figura reúne las pruebas de la Etapa 2, las innovaciones y la documentación
 técnica (cuentas 3.9 a 3.11).
 La Figura 7.9 presenta el detalle descrito a continuación; se lee desde la cuenta de control
 hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-15
-
+20
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-3. Construcción
-3.9 Pruebas de la Etapa 2
-3.9.1 Pruebas de integración y regresión
-sin afectar la Etapa 1 en producción (H9)
-3.9.2 Pruebas de aceptación y de
-accesibilidad con cadenas,
+Fase 3 · Construcción
+Cuentas y paquetes · lámina 1 de 2
+3.9 Pruebas de la
+Etapa 2
+3.9.1 Pruebas de integración y regresión sin afectar la Etapa 1 en
+producción (H9)
+3.9.2 Pruebas de aceptación y de accesibilidad con cadenas,
 transportistas, Comercial y Finanzas
-3.9.3 Pruebas de carga con ambas etapas
-activas y de resiliencia
-3.9.4 Prueba de recuperación ante
-desastres con ambas etapas
-3.9.5 Prueba de seguridad ofensiva de la
-Etapa 2, por un tercero independiente
-3.9.6 Acta de certificación de la Etapa 2 y
-cierre del desarrollo (H10)
-3.9.7 Demostración en Preproducción del
-despliegue sin interrupción de la Etapa 2
+3.9.3 Pruebas de carga con ambas etapas activas y de resiliencia
+3.9.4 Prueba de recuperación ante desastres con ambas etapas
+3.9.5 Prueba de seguridad ofensiva de la Etapa 2, por un tercero
+independiente
+3.9.6 Acta de certificación de la Etapa 2 y cierre del desarrollo
+(H10)
+3.9.7 Demostración en Preproducción del despliegue sin
+interrupción de la Etapa 2
 3.10 Innovaciones
-3.10.1 Innovación 1:
-seguimiento de
-vencimiento
-posentrega en el local
-3.10.2 Innovación 2:
-reproducción de
-incidentes de terreno
-3.10.3 Innovación 3:
-vida útil remanente por
-historia térmica del lote
-3.10.4 Innovación 5:
-hoja de negocio del
-almacenero
-3.11 Documentación técnica
-3.11.1 Documentación técnica, funcional,
-de arquitectura, de operación y de
-seguridad
-3.11.2 Base de conocimiento de
-incidentes y decisiones de diseño
-3.11.3 Estándares de codificación y
-documentación de interfaces en OpenAPI
-y AsyncAPI
-3.11.4 Inventario de componentes
-(SBOM) con sus licencias de código
-abierto
-3.11.5 Depósito del código fuente en el
-repositorio del CLIENTE en cada
-liberación
+3.10.1 Innovación 1: seguimiento de vencimiento posentrega
+en el local
+3.10.2 Innovación 2: reproducción de incidentes de terreno
+3.10.3 Innovación 3: vida útil remanente por historia térmica
+del lote
+3.10.4 Innovación 5: hoja de negocio del almacenero
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
 Figura 7.9 Fase 3 — Construcción, cuarta parte: pruebas de la Etapa 2, innovaciones y documentación técnica,
 cuentas 3.9 a 3.11. Fuente: Elaboración a partir de (Formulario T-14).
-La quinta lámina amplía la cuenta 3.10 para que se lean sus paquetes de innovación: segui-
-miento de vencimientos, reproducción de incidentes, vida útil remanente y hoja de negocio
-del almacenero.
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+21
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Fase 3 · Construcción
+Cuentas y paquetes · lámina 2 de 2
+3.11 Documentación
+técnica
+3.11.1 Documentación técnica, funcional, de arquitectura, de
+operación y de seguridad
+3.11.2 Base de conocimiento de incidentes y decisiones de
+diseño
+3.11.3 Estándares de codificación y documentación de interfaces
+en OpenAPI y AsyncAPI
+3.11.4 Inventario de componentes (SBOM) con sus licencias de
+código abierto
+3.11.5 Depósito del código fuente en el repositorio del CLIENTE
+en cada liberación
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
+Figura 7.9 (continuación 2 de 2). Fase 3 — Construcción, cuarta parte: pruebas de la Etapa 2, innovaciones y
+documentación técnica, cuentas 3.9 a 3.11. Fuente: Elaboración a partir de (Formulario T-14).
+La quinta figura detalla los paquetes de innovación agrupados en la cuenta 3.10: seguimien-
+to de vencimientos, reproducción de incidentes, vida útil remanente y hoja de negocio del
+almacenero.
 La Figura 7.10 presenta el detalle descrito a continuación; se lee desde la cuenta de control
 hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-16
-
+22
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-3. Construcción
+Fase 3 · Construcción
+Cuentas y paquetes · lámina 1 de 2
 3.10 Innovaciones
-3.10.1 Innovación 1:
-seguimiento de
-vencimiento posentrega
+3.10.1 Innovación 1: seguimiento de vencimiento posentrega
 en el local
-3.10.1.1 Innovación 1:
-documento de
-catálogo de acciones
-y protocolo del piloto
-(INN-01.P1)
-3.10.1.2 Innovación 1:
-estimador de saldo y
-ritmo de reposición
-(INN-01.P2)
-3.10.1.3 Innovación 1:
-función de lista sin
-conexión en la
-aplicación de preventa
-(INN-01.P3)
-3.10.1.4 Innovación 1:
-informe del piloto en
-marcha blanca y
-habilitación (INN-
-01.P4)
-3.10.2 Innovación 2:
-reproducción de
-incidentes de terreno
-3.10.2.1 Innovación 2:
-informe de medición
-inicial y contrato de
-evidencia (INN-02.P1)
-3.10.2.2 Innovación 2:
-circuito mínimo de
-reproducción en la
-preventa (INN-02.P2)
-3.10.2.3 Innovación 2:
-captura de evidencia
-en las aplicaciones de
-preventa, preparación
-y reparto (INN-02.P3)
-3.10.2.4 Innovación 2:
-informe de validación
-comparada durante la
-implementación (INN-
-02.P4, primera parte)
-3.10.3 Innovación 3: vida
-útil remanente por historia
-térmica del lote
-3.10.3.1 Innovación 3:
-documento de familias
-priorizadas y
-parámetros aprobados
-(INN-03.P1)
-3.10.3.2 Innovación 3:
-asociación
-lote–sensor en el
-borde y en el camión
-(INN-03.P2)
-3.10.3.3 Innovación 3:
-vista en M9 y orden de
-salida sugerido (INN-
-03.P3)
-3.10.3.4 Innovación 3:
-informe de validación
-en marcha blanca con
-Calidad (INN-03.P4)
-3.10.4 Innovación 5: hoja
-de negocio del
-almacenero
-3.10.4.1 Innovación 5:
-prototipo e informe de
-la prueba de
-comprensión (INN-
-05.P1)
-3.10.4.2 Innovación 5:
-evaluación de
-privacidad y diseño de
-la impresión en cabina
-(INN-05.P2)
-3.10.4.3 Innovación 5:
-cálculo y bloques 1 a
-3 de la hoja de
-negocio (INN-05.P3)
-3.10.4.4 Innovación 5:
-hoja certificada, en
-marcha blanca y en
-producción (INN-
-05.P4, primera parte)
+3.10.1.1 Documento de catálogo de acciones y protocolo del
+piloto (INN-01.P1)
+3.10.1.2 Estimador de saldo y ritmo de reposición (INN-01.P2)
+3.10.1.3 Función de lista sin conexión en la aplicación de
+preventa (INN-01.P3)
+3.10.1.4 Informe del piloto en marcha blanca y habilitación
+(INN-01.P4)
+3.10.2 Innovación 2: reproducción de incidentes de terreno
+3.10.2.1 Informe de medición inicial y contrato de evidencia
+(INN-02.P1)
+3.10.2.2 Circuito mínimo de reproducción en la preventa
+(INN-02.P2)
+3.10.2.3 Captura de evidencia en las aplicaciones de preventa,
+preparación y reparto (INN-02.P3)
+3.10.2.4 Informe de validación comparada durante la
+implementación (INN-02.P4, primera parte)
+3.10.3 Innovación 3: vida útil remanente por historia térmica
+del lote
+3.10.3.1 Documento de familias priorizadas y parámetros
+aprobados (INN-03.P1)
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
 Figura 7.10 Fase 3 — Construcción, quinta parte: detalle de los paquetes de las innovaciones agrupadas en la
 cuenta 3.10. Fuente: Elaboración a partir de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+23
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Fase 3 · Construcción
+Cuentas y paquetes · lámina 2 de 2
+3.10 Innovaciones
+3.10.3 Innovación 3: vida útil remanente por historia térmica
+del lote (continuación)
+3.10.3.2 Asociación lote–sensor en el borde y en el camión
+(INN-03.P2)
+3.10.3.3 Vista en M9 y orden de salida sugerido (INN-03.P3)
+3.10.3.4 Informe de validación en marcha blanca con Calidad
+(INN-03.P4)
+3.10.4 Innovación 5: hoja de negocio del almacenero
+3.10.4.1 Prototipo e informe de la prueba de comprensión
+(INN-05.P1)
+3.10.4.2 Evaluación de privacidad y diseño de la impresión en
+cabina (INN-05.P2)
+3.10.4.3 Cálculo y bloques 1 a 3 de la hoja de negocio
+(INN-05.P3)
+3.10.4.4 Hoja certificada, en marcha blanca y en producción
+(INN-05.P4, primera parte)
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
+Figura 7.10 (continuación 2 de 2). Fase 3 — Construcción, quinta parte: detalle de los paquetes de las innovaciones
+agrupadas en la cuenta 3.10. Fuente: Elaboración a partir de (Formulario T-14).
 El detalle identifica los paquetes de INN-01, INN-02, INN-03 e INN-05 dentro de 3.10. INN-04
 conserva su tratamiento distinto: su fórmula contractual se acuerda en la cuenta 5.4, como
 muestra la fase de Adquisiciones y contrataciones.
@@ -1057,68 +883,40 @@ hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-17
-
+24
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-4. Transición
-4.1 Plan de implantación
-4.1.1 Plan de olas de la
-Etapa 1 por sitio y
-zona: Talca,
-Concepción y
-plataformas de cross-
-docking
-4.1.2 Procedimiento
-de reversión de la
-Etapa 1 antes de las
-05:30, con versión
-operativa local y DTE
-emitidos por el ERP
-4.1.3 Plan de
-implantación y
-reversión de la Etapa 2
-fuera de la ventana de
-05:30 a 07:00
+Fase 4 · Transición
+Cuentas y paquetes · lámina 1 de 1
+4.1 Plan de
+implantación
+4.1.1 Plan de olas de la Etapa 1 por sitio y zona: Talca,
+Concepción y plataformas de cross-docking
+4.1.2 Procedimiento de reversión de la Etapa 1 antes de las
+05:30, con versión operativa local y DTE emitidos por el ERP
+4.1.3 Plan de implantación y reversión de la Etapa 2 fuera de la
+ventana de 05:30 a 07:00
+4.1.4 Piloto de cadena de frío en cuatro camiones
 4.2 Marcha blanca y
-producción de la Etapa 1
-4.2.1 Marcha blanca de
-la Etapa 1 con
-conciliación diaria (H6)
-4.2.2 Estabilización
-de la Etapa 1,
-acompañamiento en
-ruta y restauraciones
-de soporte puente
-4.2.3 Acta de
-aceptación de la
-Etapa 1 (H7)
+producción de la
+Etapa 1
+4.2.1 Marcha blanca de la Etapa 1 con conciliación diaria (H6)
+4.2.2 Estabilización de la Etapa 1 en el turno de noche y
+acompañamiento en ruta
+4.2.3 Acta de aceptación de la Etapa 1 (H7)
 4.3 Marcha blanca y
-producción de la Etapa 2
-4.3.1 Marcha blanca de
-la Etapa 2 en
-convivencia con la
-Etapa 1 y fuente única
-de datos (H11)
-4.3.2 Estabilización de
-la Etapa 2 con
-Comercial, Finanzas,
-cadenas y
-transportistas
-4.3.3 Acta de
-aceptación final de la
-implementación (H12)
-4.3.4 Garantía de
-correcto
-funcionamiento
-constituida, condición
-de la aceptación final
-(H12)
-4.1.4 Piloto de cadena
-de frío en cuatro
-camiones
+producción de la
+Etapa 2
+4.3.1 Marcha blanca de la Etapa 2 en convivencia con la Etapa 1
+y fuente única de datos (H11)
+4.3.2 Estabilización de la Etapa 2 con Comercial, Finanzas,
+cadenas y transportistas
+4.3.3 Acta de aceptación final de la implementación (H12)
+4.3.4 Garantía de correcto funcionamiento constituida, condición
+de la aceptación final (H12)
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
 Figura 7.11 Fase 4 — Transición: plan de implantación y marchas blancas de las etapas 1 y 2, cuentas 4.1 a 4.3.
 Fuente: Elaboración a partir de (Formulario T-14).
 La cuenta 4.1 prepara las olas y la reversión; las cuentas 4.2 y 4.3 separan la marcha blanca
@@ -1130,184 +928,137 @@ gabinetes de borde, que LafroX especifica, compra y provee. LafroX incorpora el 
 infraestructura en su Oferta Económica; el CLIENTE no la adquiere mediante una compra
 separada. LafroX también contrata nube, enlaces y licencias. La fase formaliza, además, los
 acuerdos con transportistas y sindicato y la fórmula contractual de la innovación 4.
-La Figura 7.12 presenta el detalle descrito a continuación; se lee desde la cuenta de control
-hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-18
-
+25
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-5. Adquisiciones y contrataciones
+La Figura 7.12 presenta el detalle descrito a continuación; se lee desde la cuenta de control
+hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
+Fase 5 · Adquisiciones y contrataciones
+Cuentas y paquetes · lámina 1 de 2
 5.1 Hardware e
 infraestructura
-5.1.1 Especificación
-de compra de
-equipos de uso para
-el CLIENTE
-5.1.2 Especificación y
-compra de la sala
-técnica, los racks, los
-servidores y los
-gabinetes de borde
-5.1.3 Actas de
-recepción técnica del
-equipamiento de
-terreno comprado por
-el CLIENTE y de la
-infraestructura
-provista por LafroX
-5.2 Servicios de nube y
-licencias
-5.2.1 Contrato de los
-servicios de AWS
-5.2.2 Suscripción del
-servicio de gestión de
-dispositivos y de
-detección en
-endpoints
-5.2.3 Licencias de
-software de terceros
-constituidas a nombre
-del CLIENTE
+5.1.1 Especificación de compra de equipos de uso para el
+CLIENTE
+5.1.2 Especificación y compra de la sala técnica, los racks, los
+servidores y los gabinetes de borde
+5.1.3 Actas de recepción técnica del equipamiento de terreno
+comprado por el CLIENTE y de la infraestructura provista por
+LafroX
+5.1.4 Especificación y compra del sistema de cadena de frío
+5.2 Servicios de nube
+y licencias
+5.2.1 Contrato de los servicios de AWS
+5.2.2 Suscripción del servicio de gestión de dispositivos y de
+detección en endpoints
+5.2.3 Licencias de software de terceros constituidas a nombre del
+CLIENTE
 5.3 Enlaces de
 comunicaciones
-5.3.1 Contrato de fibra
-óptica de los CD de
-Talca y Concepción
-5.3.2 Contrato de
-planes LTE con dos
-proveedores (ocho
-planes)
-5.3.3 Contrato de
-Starlink para los
-cinco sitios: Talca,
-Concepción y las tres
-plataformas de cross-
-docking
-5.4 Acuerdos con terceros
-5.4.1 Acuerdos
-operacionales
-firmados con los diez
-transportistas
-5.4.2 Acta de acuerdo
-con el sindicato sobre
-terminales, GPS y
-cámaras
-5.4.3 Fórmula
-aprobada del tramo
-variable: reglas de
-atribución, canasta e
-índices (INN-04.P1)
-5.4.4 Contrato de
-custodia de fuentes
-con un tercero
-independiente
-5.1.4 Especificación y
-compra del sistema
-de cadena de frío
-5.3.4 Contrato de SIM
-M2M y servicio
-satelital de los
-camiones con frío
+5.3.1 Contrato de fibra óptica de los CD de Talca y Concepción
+5.3.2 Contrato de planes LTE con dos proveedores (ocho planes)
+5.3.3 Contrato de Starlink para los cinco sitios: Talca, Concepción
+y las tres plataformas de cross-docking
+5.3.4 Contrato de SIM M2M y servicio satelital de los camiones
+con frío
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
 Figura 7.12 Fase 5 — Adquisiciones y contrataciones: hardware, servicios, enlaces y acuerdos con terceros,
 cuentas 5.1 a 5.4. Fuente: Elaboración a partir de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+26
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Fase 5 · Adquisiciones y contrataciones
+Cuentas y paquetes · lámina 2 de 2
+5.4 Acuerdos con
+terceros
+5.4.1 Acuerdos operacionales firmados con los diez transportistas
+5.4.2 Acta de acuerdo con el sindicato sobre terminales, GPS y
+cámaras
+5.4.3 Fórmula aprobada del tramo variable: reglas de atribución,
+canasta e índices (INN-04.P1)
+5.4.4 Contrato de custodia de fuentes con un tercero
+independiente
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
+Figura 7.12 (continuación 2 de 2). Fase 5 — Adquisiciones y contrataciones: hardware, servicios, enlaces y acuerdos
+con terceros, cuentas 5.1 a 5.4. Fuente: Elaboración a partir de (Formulario T-14).
 La cuenta 5.1 reúne las adquisiciones de hardware, manteniendo la distinción anterior:
 el CLIENTE compra el equipamiento de terreno y LafroX compra y provee la infraestructura
 de sala, incluida en su Oferta Económica. Las cuentas 5.2 a 5.4 organizan nube y licencias,
 enlaces y acuerdos con terceros.
 7.1.2.6 Fase 6. Infraestructura física y sitios
 La fase instala la sala técnica de Talca, con energía, climatización y extinción; el cableado,
-los racks y gabinetes de borde; y la infraestructura de los sitios. La primera lámina cubre la
-sala, el cableado y el montaje de racks (cuentas 6.1 a 6.3).
+los racks y gabinetes de borde; y la infraestructura de los sitios. La primera figura cubre la sala,
+el cableado y el montaje de racks (cuentas 6.1 a 6.3).
 La Figura 7.13 presenta el detalle descrito a continuación; se lee desde la cuenta de control
 hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-19
-
+27
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-6. Infraestructura física y sitios
-6.1 Adecuación de la sala
-técnica de Talca
-6.1.1 Coordinación de
-la obra civil de
-separación, a cargo
-del CLIENTE (RT-
-06.06), y piso técnico
-de la sala
-6.1.2 Hardware de
-energía instalado: UPS
-modular N+1,
-generador con 24
-horas de autonomía,
-transferencia
-automática y PDU A/B
-6.1.3 Hardware de
-climatización de
-precisión N+1
-instalado
-6.1.4 Hardware de
-detección temprana de
-incendio y extinción
-por agente limpio
-instalado
-6.1.5 Acta de
-recepción técnica de la
-sala
-6.2 Cableado estructurado
-6.2.1 Cableado de
-cobre Cat6A y fibra
-OM4 tendido, con dos
-ductos de ingreso
-independientes
-6.2.2 Certificación de
-enlaces, etiquetado y
-planos as-built
-6.2.3 Gabinetes de
-piso y switches de
-acceso instalados en
-las bodegas de Talca y
-Concepción
-6.3 Montaje de racks y
-gabinetes
-6.3.1 Rack R01 de
-servidores montado:
-clúster de tres nodos,
-respaldo local,
-consola KVM y
-traslado del servidor
-del ERP del CLIENTE
-6.3.2 Rack R02 de
-comunicaciones
-montado: firewalls,
-switches de núcleo y
-de gestión, y
-distribución de fibra
-6.3.3 Gabinete de
-borde de Concepción
-montado: servidores
-activo y en espera,
-firewalls, switches,
-UPS, climatización y
-monitoreo
-6.3.4 Gabinetes de
-borde montados en
-Curicó, Chillán y Los
-Ángeles, con dos
-mini-PC (activo y en
-espera) por
-plataforma
+Fase 6 · Infraestructura física y sitios
+Cuentas y paquetes · lámina 1 de 2
+6.1 Adecuación de la
+sala técnica de Talca
+6.1.1 Coordinación de la obra civil de separación, a cargo del
+CLIENTE (RT-06.06), y piso técnico de la sala
+6.1.2 Hardware de energía instalado: UPS modular N+1,
+generador con 24 horas de autonomía, transferencia automática y
+PDU A/B
+6.1.3 Hardware de climatización de precisión N+1 instalado
+6.1.4 Hardware de detección temprana de incendio y extinción
+por agente limpio instalado
+6.1.5 Acta de recepción técnica de la sala
+6.2 Cableado
+estructurado
+6.2.1 Cableado de cobre Cat6A y fibra OM4 tendido, con dos
+ductos de ingreso independientes
+6.2.2 Certificación de enlaces, etiquetado y planos as-built
+6.2.3 Gabinetes de piso y switches de acceso instalados en las
+bodegas de Talca y Concepción
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
 Figura 7.13 Fase 6 — Infraestructura física y sitios, primera parte: sala técnica, cableado y racks, cuentas 6.1 a 6.3.
 Fuente: Elaboración a partir de (Formulario T-14).
-La segunda lámina incluye seguridad física, equipamiento de campo y configuración de la
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+28
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Fase 6 · Infraestructura física y sitios
+Cuentas y paquetes · lámina 2 de 2
+6.3 Montaje de racks
+y gabinetes
+6.3.1 Rack R01 de servidores montado: clúster de tres nodos,
+respaldo local, consola KVM y traslado del servidor del ERP del
+CLIENTE a U25–U26, con respaldo completo verificado, en
+ventana dominical después del H3 y antes de la marcha blanca
+de Talca, sin cambios de software
+6.3.2 Rack R02 de comunicaciones montado: firewalls, switches
+de núcleo y de gestión, y distribución de fibra
+6.3.3 Gabinete de borde de Concepción montado: servidores
+activo y en espera, firewalls, switches, UPS, climatización y
+monitoreo, con toma del servicio por el de espera si falla el activo
+6.3.4 Gabinetes de borde montados en Curicó, Chillán y Los
+Ángeles, con dos mini-PC (activo y en espera) por plataforma
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
+Figura 7.13 (continuación 2 de 2). Fase 6 — Infraestructura física y sitios, primera parte: sala técnica, cableado y
+racks, cuentas 6.1 a 6.3. Fuente: Elaboración a partir de (Formulario T-14).
+La segunda figura incluye seguridad física, equipamiento de campo y configuración de la
 infraestructura distribuida en los sitios (cuentas 6.4 a 6.6), incluidos los termógrafos de los
 camiones con frío y la prueba de autonomía de 24 horas.
 La Figura 7.14 presenta el detalle descrito a continuación; se lee desde la cuenta de control
@@ -1315,65 +1066,40 @@ hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-20
-
+29
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-6. Infraestructura física y sitios
-6.4 Sistemas de seguridad
-física
-6.4.1 Hardware de
-control de acceso
-biométrico y esclusa
+Fase 6 · Infraestructura física y sitios
+Cuentas y paquetes · lámina 1 de 1
+6.4 Sistemas de
+seguridad física
+6.4.1 Hardware de control de acceso biométrico y esclusa
 instalado
-6.4.2 Hardware de
-videovigilancia
-instalado
-6.4.3 Recinto de
-custodia de respaldos
-habilitado
+6.4.2 Hardware de videovigilancia instalado
+6.4.3 Recinto de custodia de respaldos habilitado
 6.5 Equipamiento de
 campo
-6.5.1 Terminales de
-preventa, reparto y
-bodega configurados y
+6.5.1 Terminales de preventa, reparto y bodega configurados y
 enrolados
-6.5.2 Terminales de
-pago configurados,
-uno por camión
-6.5.3 Sensores de
-cámara y gateways IoT
-instalados en Talca y
+6.5.2 Terminales de pago configurados, uno por camión
+6.5.3 Sensores de cámara y gateways IoT instalados en Talca y
 Concepción
-6.5.4 Kit de cadena de
-frío instalado y
-recibido en los 28
+6.5.4 Kit de cadena de frío instalado y recibido en los 28
 camiones con frío
-6.5.5 Impresoras de
-cabina instaladas
-6.5.6 Impresoras de
-andén y balanzas de
-recepción instaladas
-6.6 Configuración de la
-infraestructura de los
-sitios
-6.6.1 Software de base
-instalado en los sitios:
-virtualización,
-contenedores,
-PostgreSQL, RabbitMQ
-y Keycloak
-6.6.2 Enlaces de fibra,
-LTE y Starlink
-habilitados, con
-conmutación al
-respaldo
-6.6.3 Borde de los CD
-en servicio, con la
-prueba de autonomía
-de 24 horas aprobada
+6.5.5 Impresoras de cabina instaladas
+6.5.6 Impresoras de andén y balanzas de recepción instaladas
+6.6 Configuración de
+la infraestructura de
+los sitios
+6.6.1 Software de base instalado en los sitios: virtualización,
+contenedores, PostgreSQL, RabbitMQ y Keycloak
+6.6.2 Enlaces de fibra, LTE y Starlink habilitados, con
+conmutación al respaldo
+6.6.3 Borde de los CD en servicio, con la prueba de autonomía de
+24 horas aprobada
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
 Figura 7.14 Fase 6 — Infraestructura física y sitios, segunda parte: seguridad física, equipamiento de campo y
 configuración, cuentas 6.4 a 6.6. Fuente: Elaboración a partir de (Formulario T-14).
 Con seguridad física, equipamiento de campo y configuración de los sitios, estas cuentas
@@ -1384,137 +1110,136 @@ de noche; acompaña individualmente al personal con veinte o treinta años en la
 incorpora a los conductores externos en el andén; y transfiere conocimiento al equipo de TI
 del CLIENTE. La certificación de usuarios (cuenta 7.3) es una de las condiciones de cierre de
 cada marcha blanca.
-La Figura 7.15 presenta el detalle descrito a continuación; se lee desde la cuenta de control
-hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-21
-
+30
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-7. Capacitación y gestión del cambio
-7.1 Capacitación por roles
-7.1.1 Plan de capacitación
-por perfil: usuarios finales,
-avanzados, administradores,
-equipo técnico y soporte
-7.1.2 Programa de
-capacitación continua del
-turno de noche por la
-rotación del 38 %
-7.1.3 Incorporación de
-conductores de
-transportistas, escaneos y
+La Figura 7.15 presenta el detalle descrito a continuación; se lee desde la cuenta de control
+hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
+Fase 7 · Capacitación y gestión del cambio
+Cuentas y paquetes · lámina 1 de 2
+7.1 Capacitación por
+roles
+7.1.1 Plan de capacitación por perfil: usuarios finales, avanzados,
+administradores, equipo técnico y soporte
+7.1.2 Programa de capacitación continua del turno de noche por
+la rotación del 38 %
+7.1.3 Incorporación de conductores de transportistas, escaneos y
 lectura del rojo
-7.1.4 Traspaso al equipo de
-TI de cuatro personas del
-CLIENTE
-7.1.5 Materiales de
-capacitación: manuales por
-perfil, guías rápidas,
-preguntas frecuentes y
-videos tutoriales
-7.1.6 Plataforma de
-autoformación en línea con
-registro de avance
-7.2 Gestión del cambio
-7.2.1 Acompañamiento del
-personal con 20 o 30 años en
-la compañía
-7.2.2 Gestión del cambio con
-las cadenas y los
-transportistas
-7.2.3 Diagnóstico del impacto
-organizacional por área y
-perfil, con agentes de cambio
-7.2.4 Procedimientos
-operativos rediseñados,
-contingencia de frío y
-ruptura confirmada
-7.2.5 Medición de la adopción
-y plan de acción correctiva
-7.3 Evaluaciones y
-certificaciones
-7.3.1 Certificación de
-preventistas, conductores y
-preparadores (Etapa 1)
-7.3.2 Certificación de
-Comercial y Finanzas en
-costo de servir (Etapa 2)
+7.1.4 Traspaso al equipo de TI de cuatro personas del CLIENTE
+7.1.5 Materiales de capacitación: manuales por perfil, guías
+rápidas, preguntas frecuentes y videos tutoriales
+7.1.6 Plataforma de autoformación en línea con registro de
+avance
+7.2 Gestión del
+cambio
+7.2.1 Acompañamiento del personal con 20 o 30 años en la
+compañía
+7.2.2 Gestión del cambio con las cadenas y los transportistas
+7.2.3 Diagnóstico del impacto organizacional por área y perfil, con
+agentes de cambio
+7.2.4 Procedimientos operativos rediseñados, contingencia de
+frío y ruptura confirmada
+7.2.5 Medición de la adopción y plan de acción correctiva
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
 Figura 7.15 Fase 7 — Capacitación y gestión del cambio: capacitación por roles, acompañamiento y
 certificaciones, cuentas 7.1 a 7.3. Fuente: Elaboración a partir de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+31
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Fase 7 · Capacitación y gestión del cambio
+Cuentas y paquetes · lámina 2 de 2
+7.3 Evaluaciones y
+certificaciones
+7.3.1 Certificación de preventistas, conductores y preparadores
+(Etapa 1)
+7.3.2 Certificación de Comercial y Finanzas en costo de servir
+(Etapa 2)
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
+Figura 7.15 (continuación 2 de 2). Fase 7 — Capacitación y gestión del cambio: capacitación por roles,
+acompañamiento y certificaciones, cuentas 7.1 a 7.3. Fuente: Elaboración a partir de (Formulario T-14).
 La lámina muestra que la adopción combina formación por perfil, acompañamiento del
 personal y certificaciones antes de los cierres de marcha blanca.
 7.1.2.8 Fase 8. Operación y soporte
 La fase presta servicios durante los meses 21 a 56: centro de operaciones, gestión de
 incidentes, continuidad, mantenimiento, innovaciones, informes y transferencia al equipo
-del CLIENTE. La primera lámina presenta las cuentas 8.1 y 8.2, que reúnen los servicios de
+del CLIENTE. La primera figura presenta las cuentas 8.1 y 8.2, que reúnen los servicios de
 operación y el mantenimiento de la solución.
 La Figura 7.16 presenta el detalle descrito a continuación; se lee desde la cuenta de control
 hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-22
-
+32
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-8. Operación y soporte (36 meses)
-8.1 Servicios de operación
-8.1.1 Servicio de centro de operaciones 24×7
-y mesa de servicio durante los 36 meses de
-operación (04:00 a 22:00; 24×7 en
-septiembre y diciembre)
-8.1.2 Servicio de gestión de incidentes,
-problemas y niveles de servicio del Art. 78°
-durante los 36 meses de operación
-8.1.3 Servicio de continuidad y pruebas
-semestrales de recuperación ante desastres
-durante los 36 meses de operación
-8.1.4 Actualizaciones anuales del Plan de
-Reversibilidad durante los 36 meses de
+Fase 8 · Operación y soporte (36 meses)
+Cuentas y paquetes · lámina 1 de 2
+8.1 Servicios de
 operación
-8.1.5 Servicio de centro de operaciones de
-seguridad 24×7 con SIEM desde la primera
-marcha blanca (mes 13) hasta el mes 56
-8.1.6 Pruebas mensuales de restauración de
-respaldos durante los 36 meses de
-operación
-8.2 Mantenimiento
-8.2.1 Mantenimiento correctivo y evolutivo
-del software durante los 36 meses de
-operación, con bolsa anual de horas y fuera
-de las ventanas de congelamiento
-8.2.2 Mantenimiento de ciberseguridad
-durante los 36 meses de operación:
-vulnerabilidades, intrusión anual e inyección
-de fallas
-8.2.3 Mantenimiento del hardware durante
-los 36 meses de operación: sala técnica,
-racks, gabinetes de borde y equipamiento de
-terreno
-8.2.4 Registro y reducción de la deuda
-técnica durante los 36 meses de operación
-8.2.5 Actualizaciones anuales de los
-componentes de base durante los 36 meses
-de operación
-8.2.6 Revisiones semestrales de las
-instalaciones eléctricas de la sala durante
+8.1.1 Servicio de centro de operaciones 24\ensuremath{\times}7 y
+mesa de servicio durante los 36 meses de operación (04:00 a
+22:00; 24\ensuremath{\times}7 en septiembre y diciembre)
+8.1.2 Servicio de gestión de incidentes, problemas y niveles de
+servicio del artículo 78 de las Bases Administrativas (p. 40)
+durante los 36 meses de operación
+8.1.3 Servicio de continuidad y pruebas semestrales de
+recuperación ante desastres durante los 36 meses de operación
+8.1.4 Actualizaciones anuales del Plan de Reversibilidad durante
 los 36 meses de operación
-8.2.7 Ciclo de vida del equipamiento durante
-los 36 meses de operación: reposición y
-disposición final
+8.1.5 Servicio de centro de operaciones de seguridad
+24\ensuremath{\times}7 con SIEM desde la primera marcha
+blanca (mes 13) hasta el mes 56
+8.1.6 Pruebas mensuales de restauración de respaldos durante
+los 36 meses de operación
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
 Figura 7.16 Fase 8 — Operación y soporte, primera parte: servicios de operación y mantenimiento, cuentas 8.1 y
 8.2. Fuente: Elaboración a partir de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+33
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Fase 8 · Operación y soporte (36 meses)
+Cuentas y paquetes · lámina 2 de 2
+8.2 Mantenimiento
+8.2.1 Mantenimiento correctivo y evolutivo del software durante
+los 36 meses de operación, con bolsa anual de horas y fuera de
+las ventanas de congelamiento
+8.2.2 Mantenimiento de ciberseguridad durante los 36 meses de
+operación: vulnerabilidades, intrusión anual e inyección de fallas
+8.2.3 Mantenimiento del hardware durante los 36 meses de
+operación: sala técnica, racks, gabinetes de borde y
+equipamiento de terreno
+8.2.4 Registro y reducción de la deuda técnica durante los 36
+meses de operación
+8.2.5 Actualizaciones anuales de los componentes de base
+durante los 36 meses de operación
+8.2.6 Revisiones semestrales de las instalaciones eléctricas de la
+sala durante los 36 meses de operación
+8.2.7 Ciclo de vida del equipamiento durante los 36 meses de
+operación: reposición y disposición final
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
+Figura 7.16 (continuación 2 de 2). Fase 8 — Operación y soporte, primera parte: servicios de operación y
+mantenimiento, cuentas 8.1 y 8.2. Fuente: Elaboración a partir de (Formulario T-14).
 La primera parte concentra la continuidad del servicio y el mantenimiento del software,
 la infraestructura y la ciberseguridad. Sus paquetes conservan las frecuencias, horarios y
 ventanas que condicionan la operación durante los 36 meses.
-La segunda lámina completa la fase con las cuentas 8.3 a 8.5: innovaciones en operación,
+La segunda figura completa la fase con las cuentas 8.3 a 8.5: innovaciones en operación,
 informes y obligaciones periódicas, y capacitación y transferencia. También distingue los
 períodos particulares de las innovaciones y la mentoría al equipo del CLIENTE.
 La Figura 7.17 presenta el detalle descrito a continuación; se lee desde la cuenta de control
@@ -1522,68 +1247,62 @@ hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-23
-
+34
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-8. Operación y soporte (36 meses)
-8.3 Innovaciones en operación
-8.3.1 Innovación 2:
-mantenimiento de escenarios
-de regresión (INN-02.P4,
-segunda parte)
-8.3.2 Innovación 3: revisión
-semestral de parámetros
-durante los 36 meses de
-operación (INN-03.P5)
-8.3.3 Innovación 4: línea base
-y liquidaciones en sombra
+Fase 8 · Operación y soporte (36 meses)
+Cuentas y paquetes · lámina 1 de 2
+8.3 Innovaciones en
+operación
+8.3.1 Innovación 2: mantenimiento de escenarios de regresión
+(INN-02.P4, segunda parte)
+8.3.2 Innovación 3: revisión semestral de parámetros durante los
+36 meses de operación (INN-03.P5)
+8.3.3 Innovación 4: línea base y liquidaciones en sombra
 (INN-04.P2)
-8.3.4 Innovación 4:
-liquidación mensual del
-tramo variable, meses 24 a 56
-(INN-04.P3)
-8.3.5 Innovación 5:
-despliegue gradual por rutas
-(INN-05.P4, segunda parte)
-8.3.6 Innovación 5: bloque 4
-condicionado (INN-05.P5)
-8.4 Informes y obligaciones
+8.3.4 Innovación 4: liquidación mensual del tramo variable, meses
+24 a 56 (INN-04.P3)
+8.3.5 Innovación 5: despliegue gradual por rutas (INN-05.P4,
+segunda parte)
+8.3.6 Innovación 5: bloque 4 condicionado (INN-05.P5)
+8.4 Informes y
+obligaciones
 periódicas
-8.4.1 Gestión de la capacidad
-con proyección trimestral
-durante los 36 meses de
-operación
-8.4.2 Informes mensuales de
-consumo de nube (FinOps)
-durante los 36 meses de
-operación
-8.4.3 Estimaciones anuales
-de la huella de carbono de la
-operación
-8.4.4 Actualizaciones
-semestrales del depósito de
-custodia de fuentes durante
+8.4.1 Gestión de la capacidad con proyección trimestral durante
 los 36 meses de operación
-8.5 Capacitación y transferencia
-en operación
-8.5.1 Dos jornadas anuales de
-actualización y capacitación
-del personal nuevo durante
+8.4.2 Informes mensuales de consumo de nube (FinOps) durante
 los 36 meses de operación
-8.5.2 Mentoría al equipo
-técnico del CLIENTE durante
-los seis meses posteriores al
-mes 21
-8.5.3 Mantenimiento de la
-base de conocimiento
-durante los 36 meses de
-operación, con métricas de
-uso
+8.4.3 Estimaciones anuales de la huella de carbono de la
+operación
+8.4.4 Actualizaciones semestrales del depósito de custodia de
+fuentes durante los 36 meses de operación
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
 Figura 7.17 Fase 8 — Operación y soporte, segunda parte: innovaciones, obligaciones periódicas, capacitación y
 transferencia, cuentas 8.3 a 8.5. Fuente: Elaboración a partir de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+35
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Fase 8 · Operación y soporte (36 meses)
+Cuentas y paquetes · lámina 2 de 2
+8.5 Capacitación y
+transferencia en
+operación
+8.5.1 Dos jornadas anuales de actualización y capacitación del
+personal nuevo durante los 36 meses de operación
+8.5.2 Mentoría al equipo técnico del CLIENTE durante los seis
+meses posteriores al mes 21
+8.5.3 Mantenimiento de la base de conocimiento durante los 36
+meses de operación, con métricas de uso
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
+Figura 7.17 (continuación 2 de 2). Fase 8 — Operación y soporte, segunda parte: innovaciones, obligaciones
+periódicas, capacitación y transferencia, cuentas 8.3 a 8.5. Fuente: Elaboración a partir de (Formulario T-14).
 Estas cuentas completan la operación con la continuidad de las innovaciones, los informes
 recurrentes y la transferencia de conocimiento. La mentoría al equipo técnico del CLIENTE
 se extiende durante los seis meses posteriores al mes 21, mientras que el tramo variable de
@@ -1598,39 +1317,29 @@ de 2028, entre los meses 21 y 22, bajo el supuesto de inicio en febrero de 2027.
 momento corresponde a la salida al término del contrato, con el Plan de Reversibilidad y el
 tratamiento final de los datos.
 La Figura 7.18 presenta el detalle descrito a continuación; se lee desde la cuenta de control
+hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-24
-
+36
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-hacia sus paquetes, identificados con los mismos códigos del diccionario T-14.
-9. Cierre
+Fase 9 · Cierre
+Cuentas y paquetes · lámina 1 de 1
 9.1 Cierre de la
 implementación
-9.1.1 Entrega del
-código fuente, la
-infraestructura como
-código y los
-procedimientos de
-despliegue
-9.1.2 Informe de
-lecciones aprendidas y
-archivo de la
+9.1.1 Entrega del código fuente, la infraestructura como código y
+los procedimientos de despliegue
+9.1.2 Informe de lecciones aprendidas y archivo de la
 implementación
-9.2 Salida al término del
-contrato
-9.2.1 Ejecución del
-Plan de Reversibilidad
-y acompañamiento de
+9.2 Salida al término
+del contrato
+9.2.1 Ejecución del Plan de Reversibilidad y acompañamiento de
 90 días
-9.2.2 Certificado de
-devolución o
-eliminación de datos
-personales
+9.2.2 Certificado de devolución o eliminación de datos personales
+Jerarquía: fase → cuenta de control → paquete o agrupación de innovación.
 Figura 7.18 Fase 9 — Cierre: cierre de implementación y salida al término del contrato, cuentas 9.1 y 9.2. Fuente:
 Elaboración a partir de (Formulario T-14).
 La EDT distingue así el cierre de implementación de la salida al término del contrato. El
@@ -1640,25 +1349,11 @@ cierre comprende la entrega vinculada al H12 y el archivo posterior de todas las
 La EDT contiene explícitamente las innovaciones y las actividades de seguridad, calidad,
 migración e implantación, así como la arquitectura exigida por el Caso logística (Caso, cap. 19,
 p. 35). La Tabla 7.2 comprueba que cada uno de esos componentes tiene paquetes propios.
-LafroX SpA
-Subdocumento 7
-Media firma: Alex Aravena
-25
-
-
----
-
-LafroX SpA Introducción al Plan de trabajo
 Tabla 7.2 Cobertura del alcance en la EDT. Fuente: Formulario T-14 y Subdocumento 4.
 Componente Elementos PT Cuentas de control Exigencia
-Módulos M1–M12 y los por-
-tales de clientes
-y de transportis-
-tas; el portal de
-proveedores se
-construye con
-M11 Canal mo-
-derno (3.5.1)
+Módulos M1–M12 y porta-
+les de clientes y
+transportistas
 15 3.4, 3.5 Caso logística,
 Capítulo 19
 Interfaces INT-01 a INT-15 21 3.1, 3.3, 3.4, 3.6,
@@ -1666,6 +1361,17 @@ Interfaces INT-01 a INT-15 21 3.1, 3.3, 3.4, 3.6,
 Caso logística,
 Capítulo 19
 Innovaciones INN-01 a INN-05 23 3.10, 5.4, 8.3 BA, Art. 29°
+continúa en la página siguiente
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+37
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Tabla 7.2 — continuación
+Componente Elementos PT Cuentas de control Exigencia
 Seguridad Diseño, construc-
 ción, pruebas y
 operación
@@ -1687,6 +1393,9 @@ Implantación Olas, marchas
 blancas, capacita-
 ción y cambio
 24 4.1 a 4.3, 7.1 a 7.3 RT-20.01 a 20.08
+El portal de proveedores se construye con M11 Canal moderno, en el paquete 3.5.1. Las
+categorías de cobertura se superponen: sus cantidades no se suman para obtener los 227
+paquetes de la EDT.
 La tabla muestra que ninguna exigencia descansa en un paquete genérico. La seguridad,
 por ejemplo, aparece en las cinco fases donde ocurre: el diseño de la Elaboración, la identidad
 y las pruebas de seguridad ofensiva de la Construcción, la seguridad física de la sala y el centro
@@ -1699,79 +1408,34 @@ del cronograma quedan las actividades de cada categoría.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-26
-
+38
 
 ---
 
-LafroX
-SpA
-Introducción
-al
-Plan
-de
-trabajo
-Fase de la EDT
-Innovaciones
-23 Paquetes de
-Trabajo
-Seguridad
-17 Paquetes de
-Trabajo
-Calidad
-19 Paquetes de
-Trabajo
-Migración
-6 Paquetes de
-Trabajo
-Implantación
-24 Paquetes de
-Trabajo
-1 Inicio —
-1.9.2, 1.9.3,
-1.9.4
-1.5.1, 1.5.2 — —
-2 Elaboración — 2.2.1–2.2.4 — — —
+LafroX SpA Introducción al Plan de trabajo
+Fase de la EDTInnovaciones23 Paquetes deTrabajo
+Seguridad17 Paquetes deTrabajo
+Calidad19 Paquetes deTrabajo
+Migración6 Paquetes deTrabajo
+Implantación24 Paquetes deTrabajo
+1 Inicio — 1.9.2, 1.9.3,1.9.4 1.5.1, 1.5.2— —
+2 Elaboración— 2.2.1–2.2.4— — —
 3 Construcción
-3.10.1 INN-01
-3.10.2 INN-02
-3.10.3 INN-03
-3.10.4 INN-05
-3.2.5, 3.3.1
-3.8.6, 3.9.5
-3.11.4
-3.8.1–3.8.8
-3.9.1–3.9.7
-3.11.3
-3.3.3
-3.7.1–3.7.5
-—
-4 Transición — — — —
-4.1.1–4.1.4
-4.2.1–4.2.3
-4.3.1–4.3.4
-5 Adquisiciones 5.4.3 INN-04 — — — —
-6 Infraestructura — 6.4.1–6.4.3 — — —
-7 Capacitación — — — —
-7.1.1–7.1.6
-7.2.1–7.2.5
-7.3.1, 7.3.2
-8 Operación
-8.3.1–8.3.6
-(INN-02 a INN-05)
-8.1.5, 8.2.2 8.2.4 — —
+3.10.1 INN-013.10.2 INN-023.10.3 INN-033.10.4 INN-05
+3.2.5, 3.3.13.8.6, 3.9.53.11.4
+3.8.1–3.8.83.9.1–3.9.73.11.3
+3.3.33.7.1–3.7.5—
+4 Transición — — — — 4.1.1–4.1.44.2.1–4.2.34.3.1–4.3.4
+5 Adquisiciones5.4.3 INN-04— — — —
+6 Infraestructura— 6.4.1–6.4.3— — —
+7 Capacitación— — — — 7.1.1–7.1.67.2.1–7.2.57.3.1, 7.3.2
+8 Operación8.3.1–8.3.6(INN-02 a INN-05)8.1.5, 8.2.28.2.4 — —
 9 Cierre — — — — —
 Figura 7.19 Ubicación en la EDT de las innovaciones y la seguridad, la calidad, la migración y la implantación. Fuente: Formulario T-14.
-LafroX
-SpA
-Subdocumento
-7
-Media
-firma:
-Alex
-Aravena
-27
-
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+39
 
 ---
 
@@ -1815,8 +1479,7 @@ continúa en la página siguiente
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-28
-
+40
 
 ---
 
@@ -1857,8 +1520,7 @@ en el H3 del mes 6.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-29
-
+41
 
 ---
 
@@ -1877,18 +1539,11 @@ camino que controla la aceptación final H12.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-30
-
+42
 
 ---
 
-LafroX
-SpA
-Introducción
-al
-Plan
-de
-trabajo
+LafroX SpA Introducción al Plan de trabajo
 ETAPA 1 · meses 1 a 16
 ETAPA 2 · meses 13 a 21
 Alcance y
@@ -1982,33 +1637,23 @@ producción E2
 implementación
 Cadena de construcción y certificación E2
 Diseño → módulos → pruebas
-D-29 a D-31c · detalle de aceptación H12 abajo
 H3
 mes 6
-◆ H1 ◆ H2
-◆ H5
-◆ H4
-◆ H7
-◆ H6
-◆ H8 ◆ H10
-◆ H9 ◆ H12
-◆ H11
+  H1  H2
+  H5  H4
+  H7  H6
+  H8  H10  H9  H12  H11
 1.2.3 → 3.3.2 (interfaces ERP)
 Ambientes
 QA y DR
 4.1.3
 D-20
+D-29 a D-31c
 Figura 7.20 Red de precedencias entre cuentas de control e hitos. Fuente: (Subdocumento 7, Anexo 7.B) y (Bases Administrativas, Formulario E-25, pp. 74–75).
-LafroX
-SpA
-Subdocumento
-7
-Media
-firma:
-Alex
-Aravena
-31
-
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+43
 
 ---
 
@@ -2046,8 +1691,8 @@ se capturan en los talleres de los meses 1 a 3 y se validan sin él durante la m
 El esfuerzo se estima por paquete con tres valores en horas hombre: optimista, más probable
 y pesimista (PMI, 2017, p. 201). La incertidumbre de cada estimación se representa con una
 distribución beta, una de las que el PMBOK admite para modelar la incertidumbre de duración y
-recursos (PMI, 2017, p. 432). Con ella, la técnica PERT da el esfuerzo esperado 𝑇𝐸 = (𝑂+4𝑀+𝑃)/6
-y su desviación 𝜎 = (𝑃 −𝑂)/6 (Malcolm et al., 1959). El PMBOK presenta también la distribución
+recursos (PMI, 2017, p. 432). Con ella, la técnica PERT da el esfuerzo esperado𝑇𝐸 = (𝑂+4𝑀 +𝑃)/6
+y su desviación 𝜎 = (𝑃 − 𝑂)/6 (Malcolm et al., 1959). El PMBOK presenta también la distribución
 triangular, (𝑂 + 𝑀 + 𝑃)/3 (PMI, 2017, p. 201); se prefiere la beta porque da cuatro veces más
 peso al valor más probable, que el equipo funda en los requerimientos del Formulario T-12 y
 en las cantidades del Formulario T-11.
@@ -2056,8 +1701,7 @@ se estiman a partir de los requerimientos del Formulario T-12 asignados a cada p
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-32
-
+44
 
 ---
 
@@ -2108,8 +1752,7 @@ demanda proyectada se acerca a su límite, un tercer agente en las franjas de me
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-33
-
+45
 
 ---
 
@@ -2137,114 +1780,137 @@ completa está en el Formulario T-15.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-34
-
+46
 
 ---
 
-LafroX
-SpA
-Introducción
-al
-Plan
-de
-trabajo
-2027
-1
-feb
-2
-mar
-3
-abr
-4
-may
-5
-jun
-6
-jul
-7
-ago
-8
-sep
-9
-oct
+LafroX SpA Introducción al Plan de trabajo
+Frentes de trabajo · meses 1 a 21
+Lámina 1 de 2 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Frente y responsable
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
 10
-nov
 11
-dic
-2028
 12
-ene
-13
-feb
-14
-mar
-15
-abr
-16
-may
-17
-jun
-18
-jul
-19
-ago
-20
-sep
-21
-oct
-Mes contractual →
-Hitos del Formulario E-25
-H1 H2 H3 H4
-H6
-H7
-H8
-H9
-H10
-H11
-H12
-F1 Dirección, gobierno y cumplimiento
-Jefe de Proyecto · meses 1 a 56
-→ hasta
-el mes
-56
-F2 Arquitectura, seguridad y datos
-Arquitecto de Solución · meses 1 a 21
-F3 Construcción y correcciones E1
-Líder de Desarrollo · meses 1 a 20 4.2.2 capacidad protegida
-F4 Construcción de la Etapa 2
-Líder de Desarrollo · meses 13 a 20
-F5 Plataforma, infraestructura y soporte
-puente 4.2.2 soporte puente
-F6 Calidad y pruebas
-Líder de Calidad · meses 1 a 21
-F7 Implantación y gestión del cambio
-Líder de Implantación y GC · meses 9 a 21
-F8 Operación y soporte
-Líder de Operación / SRE · meses 21 a 56
-8.1–8.3,
-8.5:
-desde el
-mes 21
-hasta el
-56
-Solapamiento · meses 13 a 15 Solapamiento · meses 19 y 20
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
-Leyenda Ventana del frente (Tabla T15.1) Cuentas de control activas (GanttPRO) Capacidad protegida / soporte puente 4.2.2
-Solapamiento de etapas (Art. 17.2) Septiembre y diciembre (sin pasos a producción) Hito del Formulario E-25 (en su mes contractual)
-H5
-Líder de Operación / SRE · meses 1 a 20
+01
+02
+03
+04
+05
+06
+07
+08
+09
+10
+Período: 02/2027 a 10/2028
+F1
+F1 Dirección, gobierno y cumplimiento. Jefe
+de Proyecto. Cuentas: 1.1 a 1.4, 1.6 a 1.9,
+5.4.1 a 5.4.3, 8.4, 9. Meses: 1 a 56
+01/02/27
+30/09/31
+F2
+F2 Arquitectura, seguridad y datos.
+Arquitecto de Solución, con Seguridad y
+Datos. Cuentas: 2.1 a 2.6, 3.3, 3.7, 3.11.
+Meses: 1 a 21
+01/02/27
+31/10/28
+F3
+F3 Construcción y correcciones E1. Líder de
+Desarrollo. Cuentas: 3.4, 3.6.1 a 3.6.4,
+3.10.1 a 3.10.3; capacidad protegida 4.2.2.
+Meses: 1 a 20
+01/02/27
+30/09/28
+F4
+F4 Construcción de la Etapa 2. Líder de
+Desarrollo. Cuentas: 3.5, 3.6.5, 3.6.6, 3.10.4.
+Meses: 13 a 20
+01/02/28
+30/09/28
+F1–F8 identifican los frentes de trabajo y sus responsables.
+Las barras con flecha derecha continúan después del mes 21.
 Figura 7.21 Frentes de trabajo de los meses 1 a 21. Fuente: (Formulario T-14) y (Formulario T-15).
-LafroX
-SpA
-Subdocumento
-7
-Media
-firma:
-Alex
-Aravena
-35
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+47
 
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Frentes de trabajo · meses 1 a 21
+Lámina 2 de 2 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Frente y responsable
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+10
+Período: 02/2027 a 10/2028
+F5
+F5 Plataforma, infraestructura y soporte
+puente. Líder de Operación / SRE. Cuentas:
+3.1, 3.2, 5.1 a 5.3, 6.1 a 6.6; soporte 4.2.2.
+Meses: 1 a 20
+01/02/27
+30/09/28
+F6
+F6 Calidad y pruebas. Líder de Calidad.
+Cuentas: 1.5, 3.8, 3.9. Meses: 1 a 21
+01/02/27
+31/10/28
+F7
+F7 Implantación y gestión del cambio. Líder
+de Implantación y Gestión del Cambio.
+Cuentas: 4.1 a 4.3, 7.1 a 7.3. Meses: 2 a 21:
+diagnóstico del cambio en 2–6, preparación
+desde el 8 y piloto de frío en 10–11
+01/03/27
+31/10/28
+F8
+F8 Operación y soporte. Líder de Operación
+/ SRE. Cuentas: 8.1 a 8.3, 8.5. Meses: 21 a
+56
+01/10/28
+30/09/31
+F1–F8 identifican los frentes de trabajo y sus responsables.
+Las barras con flecha derecha continúan después del mes 21.
+Figura 7.21 (continuación 2 de 2). Frentes de trabajo de los meses 1 a 21. Fuente: (Formulario T-14) y (Formulario T-15).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+48
 
 ---
 
@@ -2268,7 +1934,7 @@ frentes de dirección y de arquitectura (F1 y F2).
 F3 y F4 dependen del mismo rol, el Líder de Desarrollo, pero son equipos distintos. Si
 el mismo equipo atendiera la marcha blanca y desarrollara la Etapa 2, cada incidente de la
 marcha blanca atrasaría la Etapa 2, que es precisamente la situación que el artículo 17.2 de las
-Bases Administrativas (p. 13) busca evitar. La Figura 7.21 lo hace visible: en la franja sombreada
+Bases Administrativas (p. 13) busca evitar . La Figura7.21 lo hace visible: en la franja sombreada
 de los meses 13 a 15, las barras de F3 y F4 coexisten en carriles separados.
 En los meses 19 y 20 la Etapa 1 está en producción y la Etapa 2 en marcha blanca. Trabajan
 F7, en la marcha blanca de la Etapa 2; F4, en sus correcciones; F6, en las pruebas; y el soporte
@@ -2287,8 +1953,7 @@ La ruta crítica se calcula con el método de la ruta crítica sobre la red del 
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-36
-
+49
 
 ---
 
@@ -2338,8 +2003,7 @@ de catorce, dieciséis y trece, respectivamente. Las fechas fijas de inicio de l
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-37
-
+50
 
 ---
 
@@ -2361,30 +2025,173 @@ son fijas.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-38
-
+51
 
 ---
 
-LafroX
-SpA
-Introducción
-al
-Plan
-de
-trabajo
-Figura 7.23 Vista crítica de la carta Gantt: paquetes de la ruta crítica y sus dependencias hasta H6 y H11. Fuente: elaboración en GanttProject a partir de
-(Formulario T-14).
-LafroX
-SpA
-Subdocumento
-7
-Media
-firma:
-Alex
-Aravena
-39
+LafroX SpA Introducción al Plan de trabajo
+Vista de la ruta crítica
+Lámina 1 de 2 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+Período: 02/2027 a 08/2028
+1
+RC | 5.1.4 Especificación y compra del
+sistema de cadena de frío
+01/02/27
+31/03/27
+22
+RC | 2.4.3 Validación del diseño del kit en
+banco de pruebas
+01/04/27
+30/04/27
+32
+RC | 2.6.3 Indicadores de usabilidad
+comprometidos por transacción crítica
+03/05/27
+31/05/27
+33
+RC | 3.1.4 Cadena de integración y entrega
+continua, e infraestructura como código
+03/05/27
+31/05/27
+34
+RC | 4 elementos: 3.2.1, 3.2.2, 3.2.4, 3.2.5
+03/05/27
+31/05/27
+35
+RC | 3.2.3 Servicio de nube de ingesta de
+IoT, telemetría cruda y plataforma analítica
+03/05/27
+31/05/27
+36
+RC | 6.1.5 Acta de recepción técnica de la
+sala
+03/05/27
+20/05/27
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.23 Vista crítica de la carta Gantt: paquetes de la ruta crítica y sus dependencias hasta H6 y H11. Fuente: elaboración gráfica a partir de la
+programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+52
 
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Vista de la ruta crítica
+Lámina 2 de 2 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+Período: 02/2027 a 08/2028
+43
+RC | 2 elementos: 6.3.1, 6.3.2
+24/05/27
+09/06/27
+57
+RC | 2 elementos: 6.6.1, 6.6.2
+10/06/27
+30/06/27
+69
+RC | 3.4.9 Devoluciones en terreno y control
+de envases (M8 Devoluciones y envases)
+18/06/27
+30/09/27
+105
+RC | 2 elementos: 3.7.3, 3.7.4
+01/12/27
+31/12/27
+112
+RC | H6 — inicio de marcha blanca (mes 13)
+01/02/28
+01/02/28
+125
+RC | 4 elementos: 3.5.1, 3.5.2, 3.5.3, 3.5.4
+15/03/28
+28/04/28
+149
+RC | H11 — inicio de marcha blanca (mes
+19)
+01/08/28
+01/08/28
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.23 (continuación 2 de 3). Vista crítica de la carta Gantt: paquetes de la ruta crítica y sus dependencias hasta H6 y H11. Fuente: elaboración gráfica a
+partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+53
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Vista de la ruta crítica
+Dependencias · ID de origen → ID de destino; tipo y desfase
+CC: comienzo-comienzo; FC: fin-comienzo; FF: fin-fin; CF: comienzo-fin.
+1 → 22   FC   desfase 0
+22 → 112   CC   desfase 164
+33 → 69   FF   desfase 0
+33 → 112   CC   desfase 75
+34 → 69   CC   desfase -37
+34 → 112   CC   desfase 89
+35 → 112   CC   desfase 122
+36 → 43   FC   desfase 0
+43 → 57   FC   desfase 0
+69 → 112   CC   desfase 120
+105 → 112   CC   desfase 25
+125 → 149   CC   desfase 71
+Los ID permiten seguir los vínculos entre láminas. Desfases en días hábiles.
+Figura 7.23 (continuación 3 de 3). Vista crítica de la carta Gantt: paquetes de la ruta crítica y sus dependencias hasta H6 y H11. Fuente: elaboración gráfica a
+partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+54
 
 ---
 
@@ -2438,8 +2245,7 @@ final
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-40
-
+55
 
 ---
 
@@ -2477,37 +2283,334 @@ cronograma. Su costo es que las semanas de cierre de esa marcha blanca coinciden
 peak de septiembre, que la sección 7.3.5 trata. Dentro de un mes de congelamiento no se inicia
 ninguna ola ni se despliega ningún cambio, y la marcha blanca continúa en convivencia, con
 medición diaria.
-La Figura 7.24 presenta la carta de los 56 meses con ese supuesto de inicio, elaborada en
-GanttProject: los períodos contractuales, las ventanas de marcha blanca, los pasos a producción
-del 5 de mayo y del 5 de octubre de 2028 (cuarto día hábil de cada mes), el inicio de la Operación
-y los hitos H1 a H12.
+La Figura 7.24 presenta la carta de los 56 meses con ese supuesto de inicio, basada en la
+programación en GanttProject: los períodos contractuales, las ventanas de marcha blanca, los
+pasos a producción del 5 de mayo y del 5 de octubre de 2028 (cuarto día hábil de cada mes), el
+inicio de la Operación y los hitos H1 a H12.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-41
-
+56
 
 ---
 
-LafroX
-SpA
-Introducción
-al
-Plan
-de
-trabajo
-Figura 7.24 Carta Gantt de los 56 meses por período contractual, con inicio en febrero de 2027. Fuente: elaboración en GanttProject a partir de (Bases
-Administrativas, art. 17, pp. 12–13 y Formulario E-25) y (Formulario T-14).
-LafroX
-SpA
-Subdocumento
+LafroX SpA Introducción al Plan de trabajo
+Carta de los 56 meses
+Lámina 1 de 5 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+Período: 02/2027 a 01/2029
+0
+Etapa 1 · Desarrollo (meses 1 a 12)
+01/02/27
+31/01/28
+1
+H1 — acta del CLIENTE (mes 2)
+23/03/27
+23/03/27
+2
+H2 — acta del CLIENTE (mes 4)
+13/05/27
+13/05/27
+3
+H3 — acta del CLIENTE (mes 6)
+06/07/27
+06/07/27
+4
+H4 — acta del CLIENTE (mes 10)
+08/11/27
+08/11/27
+5
+H5 — acta del CLIENTE (mes 12)
+03/01/28
+03/01/28
+6
+Etapa 1 · Marcha blanca (meses 13 a 15;
+4.2.1)
+01/02/28
+28/04/28
 7
-Media
-firma:
-Alex
-Aravena
-42
+H6 — inicio de la marcha blanca de la Etapa
+1 (mes 13)
+01/02/28
+01/02/28
+8
+Etapa 1 · Paso a producción (mes 16)
+05/05/28
+05/05/28
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.24 Carta Gantt de los 56 meses por período contractual, con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en
+GanttProject y de (Bases Administrativas, art. 17, pp. 12–13 y Formulario E-25) y (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+57
 
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Carta de los 56 meses
+Lámina 2 de 5 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+Período: 02/2027 a 01/2029
+9
+Etapa 1 · Estabilización (4.2.2)
+05/05/28
+29/09/28
+10
+H7 — acta del CLIENTE (mes 16)
+29/05/28
+29/05/28
+11
+Etapa 2 · Desarrollo (meses 13 a 18)
+01/02/28
+31/07/28
+12
+H8 — acta del CLIENTE (mes 14)
+13/03/28
+13/03/28
+13
+H9 — acta del CLIENTE (mes 17)
+01/06/28
+01/06/28
+14
+H10 — acta del CLIENTE (mes 18)
+12/07/28
+12/07/28
+15
+Etapa 2 · Marcha blanca (meses 19 y 20;
+4.3.1)
+01/08/28
+29/09/28
+16
+H11 — inicio de la marcha blanca de la
+Etapa 2 (mes 19)
+01/08/28
+01/08/28
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.24 (continuación 2 de 6). Carta Gantt de los 56 meses por período contractual, con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la
+programación en GanttProject y de (Bases Administrativas, art. 17, pp. 12–13 y Formulario E-25) y (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+58
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Carta de los 56 meses
+Lámina 3 de 5 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+Período: 02/2027 a 01/2029
+17
+Etapa 2 · Paso a producción e inicio de la
+Operación (mes 21)
+05/10/28
+05/10/28
+18
+Etapa 2 · Estabilización (4.3.2)
+05/10/28
+30/11/28
+19
+H12 — acta del CLIENTE (mes 21)
+25/10/28
+25/10/28
+20
+Operación y soporte con ambos alcances
+(meses 21 a 56)
+05/10/28
+30/09/31
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.24 (continuación 3 de 6). Carta Gantt de los 56 meses por período contractual, con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la
+programación en GanttProject y de (Bases Administrativas, art. 17, pp. 12–13 y Formulario E-25) y (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+59
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Carta de los 56 meses
+Lámina 4 de 5 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+Período: 02/2029 a 01/2031
+20
+Operación y soporte con ambos alcances
+(meses 21 a 56)
+05/10/28
+30/09/31
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.24 (continuación 4 de 6). Carta Gantt de los 56 meses por período contractual, con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la
+programación en GanttProject y de (Bases Administrativas, art. 17, pp. 12–13 y Formulario E-25) y (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+60
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Carta de los 56 meses
+Lámina 5 de 5 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 02/2031 a 09/2031
+20
+Operación y soporte con ambos alcances
+(meses 21 a 56)
+05/10/28
+30/09/31
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.24 (continuación 5 de 6). Carta Gantt de los 56 meses por período contractual, con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la
+programación en GanttProject y de (Bases Administrativas, art. 17, pp. 12–13 y Formulario E-25) y (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+61
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Carta de los 56 meses
+Dependencias · ID de origen → ID de destino; tipo y desfase
+CC: comienzo-comienzo; FC: fin-comienzo; FF: fin-fin; CF: comienzo-fin.
+0 → 6   FC   desfase 0
+6 → 8   FC   desfase 0
+8 → 9   FC   desfase 0
+11 → 15   FC   desfase 0
+15 → 17   FC   desfase 0
+17 → 18   FC   desfase 0
+17 → 20   FC   desfase 0
+Los ID permiten seguir los vínculos entre láminas. Desfases en días hábiles.
+Figura 7.24 (continuación 6 de 6). Carta Gantt de los 56 meses por período contractual, con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la
+programación en GanttProject y de (Bases Administrativas, art. 17, pp. 12–13 y Formulario E-25) y (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+62
 
 ---
 
@@ -2521,162 +2624,2082 @@ T-14, sección 3.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-43
-
+63
 
 ---
 
-LafroX
-SpA
-Introducción
-al
-Plan
-de
-trabajo
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 1 de 7
+Lámina 1 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 02/2027 a 09/2028
+1
+RC | 5.1.4 Especificación y compra del
+sistema de cadena de frío
+01/02/27
+31/03/27
+2
+PT/H | 7 elementos: 1.1.1, 1.1.2, 1.1.3, 1.4.1,
+1.4.2, 1.9.1, 1.9.2
+01/02/27
+09/02/27
+3
+PT/H | 1.2.1 Documento de especificación de
+requerimientos y línea base de alcance de la
+Etapa 1 (H1)
+01/02/27
+09/02/27
+4
+PT/H | 1.2.2 Documento de reglas de ruteo
+capturadas al planificador de rutas
+01/02/27
+30/04/27
+5
+PT/H | 1.2.3 Documento de especificación de
+las interfaces sin documentación del ERP,
+del WMS de 2013 y de la telemetría del
+tercero
+01/02/27
+09/02/27
+6
+PT/H | 5 elementos: 1.3.5, 1.6.2, 1.8.1, 1.8.3,
+1.8.6
+01/02/27
+29/09/28
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
 Figura 7.25 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 1 de 7 (filas 1 a 23 de 155), con inicio en febrero de 2027. Fuente:
-elaboración en GanttProject a partir de (Formulario T-14).
-LafroX
-SpA
-Subdocumento
-7
-Media
-firma:
-Alex
-Aravena
-44
-
+elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+64
 
 ---
 
-LafroX
-SpA
-Introducción
-al
-Plan
-de
-trabajo
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 1 de 7
+Lámina 2 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 02/2027 a 09/2028
+7
+PT/H | 2 elementos: 2.3.1, 2.3.2
+01/02/27
+01/03/27
+8
+PT/H | 1.3.1 Plan para la dirección del
+proyecto, con el calendario de
+congelamientos de septiembre, diciembre y
+el cierre mensual
+10/02/27
+18/02/27
+9
+PT/H | 1.2.4 Matriz de trazabilidad:
+requerimiento, módulo, paquete y prueba
+(H1)
+01/03/27
+09/03/27
+10
+PT/H | 7 elementos: 1.3.2, 1.3.3, 1.3.4, 1.5.1,
+1.6.1, 1.9.3, 5.1.1
+01/03/27
+09/03/27
+11
+PT/H | 2.1.1 Documento de arquitectura
+lógica: capas, módulos M1 a M12 e
+interfaces
+01/03/27
+29/03/27
+12
+PT/H | 3 elementos: 2.1.2, 2.1.3, 2.2.4
+01/03/27
+29/03/27
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.25 (continuación 2 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 1 de 7 (filas 1 a 23 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+65
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 1 de 7
+Lámina 3 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 02/2027 a 09/2028
+13
+PT/H | 2.2.1 Plan de seguridad de la
+información
+01/03/27
+29/03/27
+14
+PT/H | 2 elementos: 2.3.3, 2.6.1
+01/03/27
+29/03/27
+15
+PT/H | 3.10.2.1 Innovación 2: informe de
+medición inicial y contrato de evidencia
+(INN-02.P1)
+01/03/27
+20/04/27
+16
+PT/H | 5.2.1 Contrato de los servicios de
+AWS
+01/03/27
+09/03/27
+17
+PT/H | 5.3.4 Contrato de SIM M2M y servicio
+satelital de los camiones con frío
+01/03/27
+12/03/27
+18
+PT/H | 7.2.3 Diagnóstico del impacto
+organizacional por área y perfil, con agentes
+de cambio
+01/03/27
+25/05/27
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.25 (continuación 3 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 1 de 7 (filas 1 a 23 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+66
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 1 de 7
+Lámina 4 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 02/2027 a 09/2028
+19
+PT/H | 5.1.2 Especificación y compra de la
+sala técnica, los racks, los servidores y los
+gabinetes de borde
+02/03/27
+10/03/27
+20
+PT/H | H1 — entrega del expediente
+09/03/27
+09/03/27
+21
+PT/H | H1 — acta del CLIENTE (límite: mes
+2)
+23/03/27
+23/03/27
+22
+RC | 2.4.3 Validación del diseño del kit en
+banco de pruebas
+01/04/27
+30/04/27
+23
+PT/H | 1.7.1 Plan de Reversibilidad inicial
+(primeros 90 días)
+01/04/27
+09/04/27
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.25 (continuación 4 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 1 de 7 (filas 1 a 23 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+67
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 1 de 7
+Dependencias · ID de origen → ID de destino; tipo y desfase
+CC: comienzo-comienzo; FC: fin-comienzo; FF: fin-fin; CF: comienzo-fin.
+1 → 22   FC   desfase 0
+1 → 17   CC   desfase 0
+3 → 11   FF   desfase 0
+3 → 20   FC   desfase -1
+7 → 19   FC   desfase 0
+9 → 20   FC   desfase -1
+17 → 22   FC   desfase 0
+20 → 21   FC   desfase 10
+21 → 11   FF   desfase 0
+Los ID permiten seguir los vínculos entre láminas. Desfases en días hábiles.
+Figura 7.25 (continuación 5 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 1 de 7 (filas 1 a 23 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+68
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 2 de 7
+Lámina 1 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 04/2027 a 09/2028
+24
+PT/H | 2.2.2 Modelado de amenazas por
+componente y por integración externa,
+actualizado ante cada cambio
+01/04/27
+30/11/27
+25
+PT/H | 2.2.3 Plan de respuesta a incidentes
+de seguridad, con aviso al CLIENTE en dos
+horas
+01/04/27
+16/04/27
+26
+PT/H | 2 elementos: 2.5.1, 2.5.2
+01/04/27
+29/04/27
+27
+PT/H | 2.6.2 Prototipos y pruebas de
+usabilidad con participantes del CLIENTE
+01/04/27
+29/04/27
+28
+PT/H | 2 elementos: 3.10.2.2, 3.10.3.1
+01/04/27
+09/06/27
+29
+PT/H | 4 elementos: 6.1.1, 6.1.2, 6.1.3, 6.1.4
+01/04/27
+20/04/27
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
 Figura 7.26 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 2 de 7 (filas 24 a 45 de 155), con inicio en febrero de 2027. Fuente:
-elaboración en GanttProject a partir de (Formulario T-14).
-LafroX
-SpA
-Subdocumento
-7
-Media
-firma:
-Alex
-Aravena
+elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+69
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 2 de 7
+Lámina 2 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 04/2027 a 09/2028
+30
+PT/H | 2.4.1 Acta de aprobación de la
+arquitectura, el plan de seguridad y el
+modelo de datos (H2)
+19/04/27
+29/04/27
+31
+PT/H | H2 — entrega del expediente
+29/04/27
+29/04/27
+32
+RC | 2.6.3 Indicadores de usabilidad
+comprometidos por transacción crítica
+03/05/27
+31/05/27
+33
+RC | 3.1.4 Cadena de integración y entrega
+continua, e infraestructura como código
+03/05/27
+31/05/27
+34
+RC | 4 elementos: 3.2.1, 3.2.2, 3.2.4, 3.2.5
+03/05/27
+31/05/27
+35
+RC | 3.2.3 Servicio de nube de ingesta de
+IoT, telemetría cruda y plataforma analítica
+03/05/27
+31/05/27
+36
+RC | 6.1.5 Acta de recepción técnica de la
+sala
+03/05/27
+20/05/27
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.26 (continuación 2 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 2 de 7 (filas 24 a 45 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+70
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 2 de 7
+Lámina 3 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 04/2027 a 09/2028
+37
+PT/H | 2.4.4 Mapeo térmico por tipo de
+carrocería
+03/05/27
+28/05/27
+38
+PT/H | 2 elementos: 3.11.3, 3.11.4
+03/05/27
+29/09/28
+39
+PT/H | 5 elementos: 5.2.2, 5.2.3, 5.3.1, 5.3.2,
+5.3.3
+03/05/27
+11/05/27
+40
+PT/H | 6.2.1 Cableado de cobre Cat6A y fibra
+OM4 tendido, con dos ductos de ingreso
+independientes
+03/05/27
+20/05/27
+41
+PT/H | 6.3.3 Gabinete de borde de
+Concepción montado: servidores activo y en
+espera, firewalls, switches, UPS,
+climatización y monitoreo
+03/05/27
+20/05/27
+42
+PT/H | H2 — acta del CLIENTE (límite: mes
+4)
+13/05/27
+13/05/27
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.26 (continuación 3 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 2 de 7 (filas 24 a 45 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+71
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 2 de 7
+Lámina 4 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+04
+05
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 04/2027 a 09/2028
+43
+RC | 2 elementos: 6.3.1, 6.3.2
+24/05/27
+09/06/27
+44
+PT/H | 3 elementos: 3.1.1, 3.1.2, 3.1.3
+01/06/27
+18/06/27
 45
-
+PT/H | 3.1.5 Observabilidad de los doce
+módulos y de los sitios, con tableros para el
+CLIENTE (H3)
+01/06/27
+18/06/27
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.26 (continuación 4 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 2 de 7 (filas 24 a 45 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+72
 
 ---
 
-LafroX
-SpA
-Introducción
-al
-Plan
-de
-trabajo
-Figura 7.27 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 3 de 7 (filas 46 a 67 de 155), con inicio en febrero de 2027. Fuente:
-elaboración en GanttProject a partir de (Formulario T-14).
-LafroX
-SpA
-Subdocumento
-7
-Media
-firma:
-Alex
-Aravena
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 2 de 7
+Dependencias · ID de origen → ID de destino; tipo y desfase
+CC: comienzo-comienzo; FC: fin-comienzo; FF: fin-fin; CF: comienzo-fin.
+11 → 30   FC   desfase 0
+12 → 30   FC   desfase 0
+13 → 30   FC   desfase 0
+16 → 34   FC   desfase 0
+16 → 35   FC   desfase 0
+19 → 29   FC   desfase 0
+19 → 36   FC   desfase 0
+22 → 37   FC   desfase 0
+25 → 30   FC   desfase 0
+29 → 36   FC   desfase 0
+30 → 31   FC   desfase -1
+31 → 42   FC   desfase 10
+34 → 44   FC   desfase 0
+36 → 43   FC   desfase 0
+Los ID permiten seguir los vínculos entre láminas. Desfases en días hábiles.
+Figura 7.26 (continuación 5 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 2 de 7 (filas 24 a 45 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+73
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 3 de 7
+Lámina 1 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+06
+07
+08
+09
+10
+Período: 06/2027 a 10/2027
 46
-
-
----
-
-LafroX
-SpA
-Introducción
-al
-Plan
-de
-trabajo
-Figura 7.28 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 4 de 7 (filas 68 a 89 de 155), con inicio en febrero de 2027. Fuente:
-elaboración en GanttProject a partir de (Formulario T-14).
-LafroX
-SpA
-Subdocumento
-7
-Media
-firma:
-Alex
-Aravena
+PT/H | 3.2.6 Servicio de gestión de
+dispositivos móviles
+01/06/27
+29/06/27
 47
-
-
----
-
-LafroX
-SpA
-Introducción
-al
-Plan
-de
-trabajo
-Figura 7.29 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 5 de 7 (filas 90 a 111 de 155), con inicio en febrero de 2027. Fuente:
-elaboración en GanttProject a partir de (Formulario T-14).
-LafroX
-SpA
-Subdocumento
-7
-Media
-firma:
-Alex
-Aravena
+PT/H | 3.3.1 Identidad y control de acceso,
+incluidos los conductores externos que rotan
+sin aviso
+01/06/27
+05/08/27
 48
-
-
----
-
-LafroX
-SpA
-Introducción
-al
-Plan
-de
-trabajo
-Figura 7.30 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 6 de 7 (filas 112 a 133 de 155), con inicio en febrero de 2027. Fuente:
-elaboración en GanttProject a partir de (Formulario T-14).
-LafroX
-SpA
-Subdocumento
-7
-Media
-firma:
-Alex
-Aravena
+PT/H | 3.3.2 Integración con el ERP como
+único emisor de la guía de despacho (INT-06
+e INT-07)
+01/06/27
+01/07/27
 49
-
+PT/H | 3.3.3 Convivencia con el WMS de
+2013 durante el reemplazo
+01/06/27
+07/07/27
+50
+PT/H | 3.3.5 Registro auditable de stock,
+lotes y cobros
+01/06/27
+03/08/27
+51
+PT/H | 3.10.2.3 Innovación 2: captura de
+evidencia en las aplicaciones de preventa,
+preparación y reparto (INN-02.P3)
+01/06/27
+08/10/27
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.27 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 3 de 7 (filas 46 a 67 de 155), con inicio en febrero de 2027. Fuente:
+elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+74
 
 ---
 
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 3 de 7
+Lámina 2 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+06
+07
+08
+09
+10
+Período: 06/2027 a 10/2027
+52
+PT/H | 5.1.3 Actas de recepción técnica del
+equipamiento de terreno comprado por el
+CLIENTE y de la infraestructura provista por
 LafroX
-SpA
-Introducción
-al
-Plan
-de
-trabajo
-Figura 7.31 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 7 de 7 (filas 134 a 155 de 155), con inicio en febrero de 2027. Fuente:
-elaboración en GanttProject a partir de (Formulario T-14).
-LafroX
-SpA
-Subdocumento
-7
-Media
-firma:
-Alex
-Aravena
-50
+01/06/27
+09/06/27
+53
+PT/H | 6.4.1 Hardware de control de acceso
+biométrico y esclusa instalado
+01/06/27
+18/06/27
+54
+PT/H | 3.3.6 Operación sin conexión: 14
+horas en terreno y 24 horas en el CD
+07/06/27
+03/08/27
+55
+PT/H | 3.10.3.2 Innovación 3: asociación
+lote–sensor en el borde y en el camión
+(INN-03.P2)
+07/06/27
+20/09/27
+56
+PT/H | 6.4.2 Hardware de videovigilancia
+instalado
+07/06/27
+24/06/27
+57
+RC | 2 elementos: 6.6.1, 6.6.2
+10/06/27
+30/06/27
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.27 (continuación 2 de 7). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 3 de 7 (filas 46 a 67 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+75
 
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 3 de 7
+Lámina 3 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+06
+07
+08
+09
+10
+Período: 06/2027 a 10/2027
+58
+PT/H | 3.3.4 Integración con la telemetría de
+los 42 camiones propios (INT-15)
+10/06/27
+12/07/27
+59
+PT/H | 3.4.1 Recepción de mercadería con
+captura de lote y vencimiento (M1
+Recepción)
+10/06/27
+10/08/27
+60
+PT/H | 3.4.2 Inventario por ubicación y lote,
+con FEFO y conteo cíclico (M2 Inventario)
+10/06/27
+11/08/27
+61
+PT/H | 3.4.10 Cobro en ruta, rendición y
+conciliación (M7 Cobranza y rendición)
+10/06/27
+04/10/27
+62
+PT/H | 6.6.3 Borde de los CD en servicio,
+con la prueba de autonomía de 24 horas
+aprobada
+10/06/27
+18/06/27
+63
+PT/H | 3.4.3 Preparación de pedidos en el
+turno de noche y en la cámara de congelado
+(M5 Preparación)
+14/06/27
+18/08/27
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.27 (continuación 3 de 7). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 3 de 7 (filas 46 a 67 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+76
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 3 de 7
+Lámina 4 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+06
+07
+08
+09
+10
+Período: 06/2027 a 10/2027
+64
+PT/H | 3.4.4 Cadena de frío, retención por
+SSCC y retiro sanitario (M9 Calidad y
+trazabilidad)
+14/06/27
+29/09/27
+65
+PT/H | 3.4.5 Ingesta de temperatura (M9) y
+posición de flota (M12)
+14/06/27
+30/08/27
+66
+PT/H | 3.4.6 Aplicación móvil de preventa sin
+conexión, con stock y crédito (M3 Preventa)
+16/06/27
+17/08/27
+67
+PT/H | 3.4.7 Planificación de rutas corregible
+por el planificador (M4 Rutas)
+16/06/27
+08/09/27
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.27 (continuación 4 de 7). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 3 de 7 (filas 46 a 67 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+77
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 3 de 7
+Dependencias · ID de origen → ID de destino; tipo y desfase
+CC: comienzo-comienzo; FC: fin-comienzo; FF: fin-fin; CF: comienzo-fin.
+4 → 67   FC   desfase 0
+5 → 48   FC   desfase 0
+13 → 47   FC   desfase 0
+16 → 46   FC   desfase 0
+22 → 64   FC   desfase 0
+22 → 65   FC   desfase 0
+27 → 59   FC   desfase 0
+27 → 60   FC   desfase 0
+27 → 63   FC   desfase 0
+27 → 64   FC   desfase 0
+27 → 65   FC   desfase 0
+27 → 66   FC   desfase 0
+27 → 67   FC   desfase 0
+27 → 61   FC   desfase 0
+30 → 59   FC   desfase 0
+30 → 60   FC   desfase 0
+30 → 63   FC   desfase 0
+30 → 64   FC   desfase 0
+30 → 65   FC   desfase 0
+30 → 66   FC   desfase 0
+30 → 67   FC   desfase 0
+30 → 61   FC   desfase 0
+33 → 59   FF   desfase 0
+33 → 60   FF   desfase 0
+33 → 63   FF   desfase 0
+33 → 64   FF   desfase 0
+33 → 65   FF   desfase 0
+33 → 66   FF   desfase 0
+33 → 67   FF   desfase 0
+33 → 61   FF   desfase 0
+35 → 65   FC   desfase 0
+37 → 64   FC   desfase 0
+37 → 65   FC   desfase 0
+41 → 57   FC   desfase 0
+41 → 62   FC   desfase 0
+42 → 59   FC   desfase 0
+42 → 60   FC   desfase 0
+42 → 63   FC   desfase 0
+42 → 64   FC   desfase 0
+42 → 65   FC   desfase 0
+Los ID permiten seguir los vínculos entre láminas. Desfases en días hábiles.
+Figura 7.27 (continuación 5 de 7). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 3 de 7 (filas 46 a 67 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+78
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 3 de 7
+Dependencias · ID de origen → ID de destino; tipo y desfase
+CC: comienzo-comienzo; FC: fin-comienzo; FF: fin-fin; CF: comienzo-fin.
+42 → 66   FC   desfase 0
+42 → 67   FC   desfase 0
+42 → 61   FC   desfase 0
+43 → 57   FC   desfase 0
+43 → 62   FC   desfase 0
+44 → 59   FF   desfase 0
+44 → 60   FF   desfase 0
+44 → 63   FF   desfase 0
+44 → 64   FF   desfase 0
+44 → 65   FF   desfase 0
+44 → 66   FF   desfase 0
+44 → 67   FF   desfase 0
+44 → 61   FF   desfase 0
+45 → 59   FF   desfase 0
+45 → 60   FF   desfase 0
+45 → 63   FF   desfase 0
+45 → 64   FF   desfase 0
+45 → 65   FF   desfase 0
+45 → 66   FF   desfase 0
+45 → 67   FF   desfase 0
+45 → 61   FF   desfase 0
+47 → 59   CC   desfase 0
+47 → 60   CC   desfase 0
+47 → 63   CC   desfase 0
+47 → 64   CC   desfase 0
+47 → 65   CC   desfase 0
+47 → 66   CC   desfase 0
+47 → 67   CC   desfase 0
+47 → 61   CC   desfase 0
+48 → 59   CC   desfase 0
+48 → 60   CC   desfase 0
+48 → 63   CC   desfase 0
+48 → 64   CC   desfase 0
+48 → 65   CC   desfase 0
+48 → 66   CC   desfase 0
+48 → 67   CC   desfase 0
+48 → 61   CC   desfase 0
+49 → 59   CC   desfase 0
+49 → 60   CC   desfase 0
+49 → 63   CC   desfase 0
+Los ID permiten seguir los vínculos entre láminas. Desfases en días hábiles.
+Figura 7.27 (continuación 6 de 7). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 3 de 7 (filas 46 a 67 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+79
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 3 de 7
+Dependencias · ID de origen → ID de destino; tipo y desfase
+CC: comienzo-comienzo; FC: fin-comienzo; FF: fin-fin; CF: comienzo-fin.
+49 → 64   CC   desfase 0
+49 → 65   CC   desfase 0
+49 → 66   CC   desfase 0
+49 → 67   CC   desfase 0
+49 → 61   CC   desfase 0
+50 → 59   CC   desfase 0
+50 → 60   CC   desfase 0
+50 → 63   CC   desfase 0
+50 → 64   CC   desfase 0
+50 → 65   CC   desfase 0
+50 → 66   CC   desfase 0
+50 → 67   CC   desfase 0
+50 → 61   CC   desfase 0
+54 → 59   CC   desfase 0
+54 → 60   CC   desfase 0
+54 → 63   CC   desfase 0
+54 → 64   CC   desfase 0
+54 → 65   CC   desfase 0
+54 → 66   CC   desfase 0
+54 → 67   CC   desfase 0
+54 → 61   CC   desfase 0
+58 → 59   CC   desfase 0
+58 → 60   CC   desfase 0
+58 → 63   CC   desfase 0
+58 → 64   CC   desfase 0
+58 → 65   CC   desfase 0
+58 → 66   CC   desfase 0
+58 → 67   CC   desfase 0
+58 → 61   CC   desfase 0
+59 → 63   FF   desfase 2
+59 → 64   FF   desfase 2
+60 → 63   FF   desfase 2
+60 → 64   FF   desfase 2
+60 → 66   CC   desfase 0
+63 → 67   FF   desfase 2
+66 → 67   FF   desfase 2
+68 → 61   FF   desfase 2
+Los ID permiten seguir los vínculos entre láminas. Desfases en días hábiles.
+Figura 7.27 (continuación 7 de 7). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 3 de 7 (filas 46 a 67 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+80
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 4 de 7
+Lámina 1 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 06/2027 a 09/2028
+68
+PT/H | 3.4.8 Aplicación móvil de reparto con
+prueba de entrega digital (M6 Reparto)
+16/06/27
+09/09/27
+69
+RC | 3.4.9 Devoluciones en terreno y control
+de envases (M8 Devoluciones y envases)
+18/06/27
+30/09/27
+70
+PT/H | H3 — entrega del expediente
+18/06/27
+18/06/27
+71
+PT/H | 6.4.3 Recinto de custodia de
+respaldos habilitado
+22/06/27
+09/07/27
+72
+PT/H | 2 elementos: 1.5.2, 3.11.5
+01/07/27
+29/09/28
+73
+PT/H | 3 elementos: 3.6.2, 3.6.3, 3.6.4
+01/07/27
+02/08/27
+74
+PT/H | 6.2.2 Certificación de enlaces,
+etiquetado y planos as-built
+01/07/27
+20/07/27
+75
+PT/H | H3 — acta del CLIENTE (límite: mes
+6)
+06/07/27
+06/07/27
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.28 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 4 de 7 (filas 68 a 89 de 155), con inicio en febrero de 2027. Fuente:
+elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+81
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 4 de 7
+Lámina 2 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 06/2027 a 09/2028
+76
+PT/H | 3.6.1 Intercambio de lote y
+trazabilidad con los proveedores
+02/08/27
+01/09/27
+77
+PT/H | 3.10.1.1 Innovación 1: documento de
+catálogo de acciones y protocolo del piloto
+(INN-01.P1)
+02/08/27
+08/10/27
+78
+PT/H | 5.4.4 Contrato de custodia de fuentes
+con un tercero independiente
+02/08/27
+10/08/27
+79
+PT/H | 6.2.3 Gabinetes de piso y switches de
+acceso instalados en las bodegas de Talca y
+Concepción
+02/08/27
+19/08/27
+80
+PT/H | 3.7.1 Informe de perfilamiento y datos
+saneados
+04/08/27
+01/10/27
+81
+PT/H | 6.5.4 Kit de cadena de frío instalado y
+recibido en los 28 camiones con frío
+01/09/27
+14/01/28
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.28 (continuación 2 de 6). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 4 de 7 (filas 68 a 89 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+82
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 4 de 7
+Lámina 3 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 06/2027 a 09/2028
+82
+PT/H | 7.2.4 Procedimientos operativos
+rediseñados, contingencia de frío y ruptura
+confirmada
+01/09/27
+29/09/28
+83
+PT/H | 3.4.11 Indicadores operacionales y
+OTIF diario (M10 Analítica)
+02/09/27
+27/09/27
+84
+PT/H | Cuatro kits de frío recibidos para el
+piloto
+30/09/27
+30/09/27
+85
+PT/H | 3 elementos: 3.10.1.2, 3.10.1.3,
+3.10.3.3
+01/10/27
+19/11/27
+86
+PT/H | 2 elementos: 5.4.1, 5.4.2
+01/10/27
+12/10/27
+87
+PT/H | 6.3.4 Gabinetes de borde montados
+en Curicó, Chillán y Los Ángeles, con dos
+mini-PC (activo y en espera) por plataforma
+01/10/27
+20/10/27
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.28 (continuación 3 de 6). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 4 de 7 (filas 68 a 89 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+83
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 4 de 7
+Lámina 4 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+06
+07
+08
+09
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 06/2027 a 09/2028
+88
+PT/H | 3.7.2 Datos maestros cargados: 8.400
+SKU, clientes e instalaciones
+04/10/27
+03/11/27
+89
+PT/H | 3.8.1 Pruebas de integración,
+regresión e idempotencia en QA (H4)
+05/10/27
+22/10/27
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.28 (continuación 4 de 6). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 4 de 7 (filas 68 a 89 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+84
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 4 de 7
+Dependencias · ID de origen → ID de destino; tipo y desfase
+CC: comienzo-comienzo; FC: fin-comienzo; FF: fin-fin; CF: comienzo-fin.
+1 → 81   FC   desfase 0
+22 → 81   FC   desfase 0
+27 → 68   FC   desfase 0
+27 → 69   FC   desfase 0
+27 → 83   FC   desfase 0
+30 → 68   FC   desfase 0
+30 → 69   FC   desfase 0
+30 → 83   FC   desfase 0
+33 → 68   FF   desfase 0
+33 → 69   FF   desfase 0
+33 → 83   FF   desfase 0
+37 → 81   FC   desfase 0
+42 → 68   FC   desfase 0
+42 → 69   FC   desfase 0
+42 → 83   FC   desfase 0
+44 → 68   FF   desfase 0
+44 → 69   FF   desfase 0
+44 → 83   FF   desfase 0
+44 → 70   FC   desfase -1
+45 → 68   FF   desfase 0
+45 → 69   FF   desfase 0
+45 → 83   FF   desfase 0
+45 → 70   FC   desfase -1
+47 → 68   CC   desfase 0
+47 → 69   CC   desfase 0
+47 → 83   CC   desfase 0
+48 → 68   CC   desfase 0
+48 → 69   CC   desfase 0
+48 → 83   CC   desfase 0
+49 → 68   CC   desfase 0
+49 → 69   CC   desfase 0
+49 → 83   CC   desfase 0
+50 → 68   CC   desfase 0
+50 → 69   CC   desfase 0
+50 → 83   CC   desfase 0
+54 → 68   CC   desfase 0
+54 → 69   CC   desfase 0
+54 → 83   CC   desfase 0
+58 → 68   CC   desfase 0
+58 → 69   CC   desfase 0
+Los ID permiten seguir los vínculos entre láminas. Desfases en días hábiles.
+Figura 7.28 (continuación 5 de 6). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 4 de 7 (filas 68 a 89 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+85
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 4 de 7
+Dependencias · ID de origen → ID de destino; tipo y desfase
+CC: comienzo-comienzo; FC: fin-comienzo; FF: fin-fin; CF: comienzo-fin.
+58 → 83   CC   desfase 0
+59 → 89   FC   desfase 0
+60 → 89   FC   desfase 0
+61 → 89   FC   desfase 0
+62 → 70   FC   desfase -1
+63 → 68   FF   desfase 2
+63 → 89   FC   desfase 0
+64 → 89   FC   desfase 0
+65 → 89   FC   desfase 0
+66 → 68   FF   desfase 2
+66 → 89   FC   desfase 0
+67 → 89   FC   desfase 0
+68 → 89   FC   desfase 0
+69 → 89   FC   desfase 0
+70 → 75   FC   desfase 10
+73 → 89   FC   desfase 0
+76 → 89   FC   desfase 0
+81 → 84   CC   desfase 0
+83 → 89   FC   desfase 0
+Los ID permiten seguir los vínculos entre láminas. Desfases en días hábiles.
+Figura 7.28 (continuación 6 de 6). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 4 de 7 (filas 68 a 89 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+86
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 5 de 7
+Lámina 1 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 10/2027 a 09/2028
+90
+PT/H | 6.5.1 Terminales de preventa, reparto
+y bodega configurados y enrolados
+06/10/27
+14/01/28
+91
+PT/H | 6.5.3 Sensores de cámara y
+gateways IoT instalados en Talca y
+Concepción
+06/10/27
+25/11/27
+92
+PT/H | 6.5.6 Impresoras de andén y
+balanzas de recepción instaladas
+06/10/27
+14/01/28
+93
+PT/H | H4 — entrega del expediente
+22/10/27
+22/10/27
+94
+PT/H | 2 elementos: 3.8.2, 3.8.3
+25/10/27
+19/11/27
+95
+PT/H | 4 elementos: 3.8.4, 3.8.5, 3.8.6, 3.8.8
+25/10/27
+11/11/27
+96
+PT/H | 3.11.2 Base de conocimiento de
+incidentes y decisiones de diseño
+02/11/27
+29/09/28
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.29 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 5 de 7 (filas 90 a 111 de 155), con inicio en febrero de 2027. Fuente:
+elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+87
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 5 de 7
+Lámina 2 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 10/2027 a 09/2028
+97
+PT/H | 4.1.1 Plan de olas de la Etapa 1 por
+sitio y zona: Talca, Concepción y
+plataformas de cross-docking
+02/11/27
+10/11/27
+98
+PT/H | 2 elementos: 7.1.1, 7.1.6
+02/11/27
+24/12/27
+99
+PT/H | 7.1.5 Materiales de capacitación:
+manuales por perfil, guías rápidas, preguntas
+frecuentes y videos tutoriales
+02/11/27
+31/07/28
+100
+PT/H | 7.2.1 Acompañamiento del personal
+con 20 o 30 años en la compañía
+02/11/27
+31/05/28
+101
+PT/H | 2 elementos: 6.5.2, 6.5.5
+04/11/27
+14/01/28
+102
+PT/H | H4 — acta del CLIENTE (límite: mes
+10)
+08/11/27
+08/11/27
+103
+PT/H | 4.1.4 Piloto de cadena de frío en
+cuatro camiones
+09/11/27
+20/12/27
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.29 (continuación 2 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 5 de 7 (filas 90 a 111 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+88
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 5 de 7
+Lámina 3 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 10/2027 a 09/2028
+104
+PT/H | 3.8.7 Acta de certificación de la Etapa
+1 (H5)
+22/11/27
+01/12/27
+105
+RC | 2 elementos: 3.7.3, 3.7.4
+01/12/27
+31/12/27
+106
+PT/H | 3 elementos: 3.10.1.4, 3.10.2.4,
+3.10.3.4
+01/12/27
+20/03/28
+107
+PT/H | 4.1.2 Procedimiento de reversión de
+la Etapa 1 antes de las 05:30, con versión
+operativa local y DTE emitidos por el ERP
+01/12/27
+10/12/27
+108
+PT/H | 7.1.3 Incorporación de conductores
+de transportistas, escaneos y lectura del rojo
+01/12/27
+29/09/28
+109
+PT/H | H5 — entrega del expediente
+01/12/27
+01/12/27
+110
+PT/H | 3.7.5 Acta de conciliación y corte
+fuera de las ventanas de congelamiento
+03/01/28
+27/01/28
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.29 (continuación 3 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 5 de 7 (filas 90 a 111 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+89
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 5 de 7
+Lámina 4 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+10
+11
+12
+01
+02
+03
+04
+05
+06
+07
+08
+09
+Período: 10/2027 a 09/2028
+111
+PT/H | H5 — acta del CLIENTE (límite: mes
+12)
+03/01/28
+03/01/28
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.29 (continuación 4 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 5 de 7 (filas 90 a 111 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+90
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 5 de 7
+Dependencias · ID de origen → ID de destino; tipo y desfase
+CC: comienzo-comienzo; FC: fin-comienzo; FF: fin-fin; CF: comienzo-fin.
+17 → 103   FC   desfase 0
+22 → 103   FC   desfase 0
+37 → 103   FC   desfase 0
+46 → 90   FC   desfase 0
+64 → 103   FC   desfase 0
+65 → 103   FC   desfase 0
+80 → 110   FF   desfase 3
+84 → 103   FC   desfase 0
+88 → 110   FF   desfase 3
+89 → 94   FC   desfase 0
+89 → 95   FC   desfase 0
+89 → 103   FC   desfase 0
+89 → 93   FC   desfase -1
+93 → 102   FC   desfase 10
+94 → 104   FC   desfase 0
+95 → 104   FC   desfase 0
+102 → 103   FC   desfase 0
+104 → 109   FC   desfase -1
+105 → 110   FF   desfase 3
+109 → 111   FC   desfase 10
+Los ID permiten seguir los vínculos entre láminas. Desfases en días hábiles.
+Figura 7.29 (continuación 5 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 5 de 7 (filas 90 a 111 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+91
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 6 de 7
+Lámina 1 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+10
+Período: 02/2028 a 10/2028
+112
+RC | H6 — inicio de marcha blanca (mes 13)
+01/02/28
+01/02/28
+113
+PT/H | 1.2.5 Documento de línea base de
+alcance de la Etapa 2: canal moderno y
+costo de servir (H8)
+01/02/28
+09/02/28
+114
+PT/H | 2.1.4 Documento de diseño detallado
+de M11 y del intercambio con las cadenas
+01/02/28
+16/02/28
+115
+PT/H | 3.6.5 Intercambio electrónico con la
+principal cadena, con sus pruebas
+aprobadas (INT-08)
+01/02/28
+04/07/28
+116
+PT/H | 3.10.4.1 Innovación 5: prototipo e
+informe de la prueba de comprensión
+(INN-05.P1)
+01/02/28
+21/03/28
+117
+PT/H | 4.2.1 Marcha blanca de la Etapa 1
+con conciliación diaria (H6)
+01/02/28
+28/04/28
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.30 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 6 de 7 (filas 112 a 133 de 155), con inicio en febrero de 2027. Fuente:
+elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+92
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 6 de 7
+Lámina 2 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+10
+Período: 02/2028 a 10/2028
+118
+PT/H | 7.2.5 Medición de la adopción y plan
+de acción correctiva
+01/02/28
+31/10/28
+119
+PT/H | 7.3.1 Certificación de preventistas,
+conductores y preparadores (Etapa 1)
+01/02/28
+24/03/28
+120
+PT/H | 2.4.2 Acta de aprobación del diseño
+detallado de la Etapa 2 (H8)
+17/02/28
+28/02/28
+121
+PT/H | H8 — entrega del expediente
+28/02/28
+28/02/28
+122
+PT/H | Inicio de la ola 3 de reparto
+29/02/28
+29/02/28
+123
+PT/H | 3.10.4.2 Innovación 5: evaluación de
+privacidad y diseño de la impresión en
+cabina (INN-05.P2)
+01/03/28
+19/04/28
+124
+PT/H | H8 — acta del CLIENTE (límite: mes
+14)
+13/03/28
+13/03/28
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.30 (continuación 2 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 6 de 7 (filas 112 a 133 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+93
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 6 de 7
+Lámina 3 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+10
+Período: 02/2028 a 10/2028
+125
+RC | 4 elementos: 3.5.1, 3.5.2, 3.5.3, 3.5.4
+15/03/28
+28/04/28
+126
+PT/H | 1.7.2 Primera actualización anual del
+Plan de Reversibilidad durante la
+implementación
+03/04/28
+11/04/28
+127
+PT/H | 3.10.4.3 Innovación 5: cálculo y
+bloques 1 a 3 de la hoja de negocio
+(INN-05.P3)
+03/04/28
+09/06/28
+128
+PT/H | 3.11.1 Documentación técnica,
+funcional, de arquitectura, de operación y de
+seguridad
+03/04/28
+31/10/28
+129
+PT/H | 7.1.4 Traspaso al equipo de TI de
+cuatro personas del CLIENTE
+03/04/28
+29/09/28
+130
+PT/H | 3.9.1 Pruebas de integración y
+regresión sin afectar la Etapa 1 en
+producción (H9)
+02/05/28
+18/05/28
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.30 (continuación 3 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 6 de 7 (filas 112 a 133 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+94
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 6 de 7
+Lámina 4 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+02
+03
+04
+05
+06
+07
+08
+09
+10
+Período: 02/2028 a 10/2028
+131
+PT/H | 4.2.2 Estabilización de la Etapa 1,
+acompañamiento en ruta y restauraciones de
+soporte puente
+05/05/28
+29/09/28
+132
+PT/H | 7.2.2 Gestión del cambio con las
+cadenas y los transportistas
+02/05/28
+23/06/28
+133
+PT/H | 4.2.3 Acta de aceptación de la Etapa
+1 (H7)
+05/05/28
+15/05/28
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.30 (continuación 4 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 6 de 7 (filas 112 a 133 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+95
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 6 de 7
+Dependencias · ID de origen → ID de destino; tipo y desfase
+CC: comienzo-comienzo; FC: fin-comienzo; FF: fin-fin; CF: comienzo-fin.
+81 → 122   FC   desfase -1
+86 → 122   FC   desfase -1
+97 → 117   FC   desfase 0
+103 → 122   FC   desfase -1
+107 → 117   FC   desfase 0
+110 → 117   FC   desfase 0
+111 → 117   FC   desfase 0
+113 → 120   FC   desfase 0
+113 → 125   FC   desfase 0
+113 → 121   FC   desfase -1
+114 → 120   FC   desfase 0
+117 → 133   FC   desfase 0
+117 → 112   CC   desfase 0
+119 → 133   FC   desfase 0
+120 → 125   FC   desfase 0
+120 → 121   FC   desfase -1
+121 → 124   FC   desfase 10
+124 → 125   FC   desfase 0
+125 → 130   FC   desfase 0
+Los ID permiten seguir los vínculos entre láminas. Desfases en días hábiles.
+Figura 7.30 (continuación 5 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 6 de 7 (filas 112 a 133 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+96
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 7 de 7
+Lámina 1 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+05
+06
+07
+08
+09
+10
+11
+Período: 05/2028 a 11/2028
+134
+PT/H | H7 — entrega del expediente
+15/05/28
+15/05/28
+135
+PT/H | H9 — entrega del expediente
+18/05/28
+18/05/28
+136
+PT/H | 3 elementos: 3.9.3, 3.9.4, 3.9.7
+19/05/28
+01/06/28
+137
+PT/H | 3.9.5 Prueba de seguridad ofensiva
+de la Etapa 2, por un tercero independiente
+19/05/28
+26/05/28
+138
+RC | H7 — acta del CLIENTE (límite: mes
+16)
+29/05/28
+29/05/28
+139
+PT/H | 3.6.6 Incorporación de las demás
+cadenas al intercambio electrónico (INT-08)
+01/06/28
+23/08/28
+140
+PT/H | 4.1.3 Plan de implantación y reversión
+de la Etapa 2 fuera de la ventana de 05:30 a
+07:00
+01/06/28
+09/06/28
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.31 Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 7 de 7 (filas 134 a 155 de 155), con inicio en febrero de 2027. Fuente:
+elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+97
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 7 de 7
+Lámina 2 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+05
+06
+07
+08
+09
+10
+11
+Período: 05/2028 a 11/2028
+141
+PT/H | 5.4.3 Fórmula aprobada del tramo
+variable: reglas de atribución, canasta e
+índices (INN-04.P1)
+01/06/28
+09/06/28
+142
+PT/H | H9 — acta del CLIENTE (límite: mes
+17)
+01/06/28
+01/06/28
+143
+PT/H | 3.9.2 Pruebas de aceptación y de
+accesibilidad con cadenas, transportistas,
+Comercial y Finanzas
+02/06/28
+15/06/28
+144
+PT/H | 3.9.6 Acta de certificación de la Etapa
+2 y cierre del desarrollo (H10)
+16/06/28
+28/06/28
+145
+PT/H | H10 — entrega del expediente
+28/06/28
+28/06/28
+146
+PT/H | 3.10.4.4 Innovación 5: hoja
+certificada, en marcha blanca y en
+producción (INN-05.P4, primera parte)
+03/07/28
+29/09/28
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.31 (continuación 2 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 7 de 7 (filas 134 a 155 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+98
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 7 de 7
+Lámina 3 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+05
+06
+07
+08
+09
+10
+11
+Período: 05/2028 a 11/2028
+147
+PT/H | 7.3.2 Certificación de Comercial y
+Finanzas en costo de servir (Etapa 2)
+03/07/28
+25/07/28
+148
+PT/H | H10 — acta del CLIENTE (límite: mes
+18)
+12/07/28
+12/07/28
+149
+RC | H11 — inicio de marcha blanca (mes
+19)
+01/08/28
+01/08/28
+150
+PT/H | 4.3.1 Marcha blanca de la Etapa 2 en
+convivencia con la Etapa 1 y fuente única de
+datos (H11)
+01/08/28
+29/09/28
+151
+PT/H | 4.3.4 Garantía de correcto
+funcionamiento constituida, condición de la
+aceptación final (H12)
+13/09/28
+25/09/28
+152
+PT/H | 4.3.2 Estabilización de la Etapa 2 con
+Comercial, Finanzas, cadenas y
+transportistas
+05/10/28
+30/11/28
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.31 (continuación 3 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 7 de 7 (filas 134 a 155 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+99
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 7 de 7
+Lámina 4 de 4 · meses calendario · continuidad de filas y vínculos por ID
+ID
+Paquete o hito
+Inicio
+Fin
+05
+06
+07
+08
+09
+10
+11
+Período: 05/2028 a 11/2028
+153
+PT/H | 4.3.3 Acta de aceptación final de la
+implementación (H12)
+02/10/28
+11/10/28
+154
+PT/H | H12 — entrega del expediente
+11/10/28
+11/10/28
+155
+RC | H12 — acta del CLIENTE (límite: mes
+21)
+25/10/28
+25/10/28
+RC: ruta crítica marcada en la fuente. PT/H: demás paquetes e hitos.
+Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.
+Figura 7.31 (continuación 4 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 7 de 7 (filas 134 a 155 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+100
+
+---
+
+LafroX SpA Introducción al Plan de trabajo
+Gantt de implementación · tramo 7 de 7
+Dependencias · ID de origen → ID de destino; tipo y desfase
+CC: comienzo-comienzo; FC: fin-comienzo; FF: fin-fin; CF: comienzo-fin.
+115 → 150   FC   desfase 0
+129 → 153   FC   desfase 0
+130 → 143   FC   desfase 0
+130 → 136   FC   desfase 0
+130 → 137   FC   desfase 0
+130 → 144   FC   desfase 0
+130 → 135   FC   desfase -1
+133 → 134   FC   desfase -1
+134 → 138   FC   desfase 10
+135 → 142   FC   desfase 10
+136 → 144   FC   desfase 0
+137 → 144   FC   desfase 0
+140 → 150   FC   desfase 0
+143 → 144   FC   desfase 0
+144 → 145   FC   desfase -1
+145 → 148   FC   desfase 10
+147 → 153   FC   desfase 0
+148 → 150   FC   desfase 0
+150 → 153   FC   desfase 0
+150 → 149   CC   desfase 0
+151 → 153   FC   desfase 0
+151 → 154   FC   desfase -1
+153 → 154   FC   desfase -1
+154 → 155   FC   desfase 10
+Los ID permiten seguir los vínculos entre láminas. Desfases en días hábiles.
+Figura 7.31 (continuación 5 de 5). Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 7 de 7 (filas 134 a 155 de 155), con inicio en febrero de
+2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+101
 
 ---
 
@@ -2713,7 +4736,7 @@ termógrafos actuales (Caso, cap. 10, restricción 8, p. 19). Los cuatro kits pi
 del ensayo y los 28 kits de flota quedan instalados y recibidos antes de que comience la ola 3
 (6.5.4).
 La implantación sigue el principio que impone el caso: nada entra en producción sin haber
-convivido con la forma actual de trabajar, y nada se despliega como un único evento (Caso, sec-
+convivido con la forma actual de trabajar , y nada se despliega como un único evento (Caso, sec-
 ción 13.3, condiciones 1 y 3, p. 23). Técnicamente, cada capacidad se publica con un despliegue
 azul-verde y se habilita por sitio y por ola mediante indicadores de funcionalidad (feature flags),
 conforme al Capítulo 4, apartado 4.2.4.1.2. Así, cada ola puede revertirse sin reinstalar y cada
@@ -2724,8 +4747,7 @@ La Etapa 1 entra en tres olas, en el orden de las dependencias de datos (Capítu
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-51
-
+102
 
 ---
 
@@ -2764,8 +4786,7 @@ doble escritura.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-52
-
+103
 
 ---
 
@@ -2794,8 +4815,7 @@ La reversión tiene dos niveles, que la Tabla 7.8 distingue.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-53
-
+104
 
 ---
 
@@ -2805,43 +4825,34 @@ Tabla 7.8 Niveles de reversión. Fuente: (Subdocumento 3, sección 3.4.4); (Subd
 Nivel Qué hace Activación y responsabi-
 lidad
 Plazo
-Técnico El mecanismo de des-
-pliegue revierte auto-
-máticamente a la entre-
-ga previa al incumplir
-sus controles; cualquier
-cambio de un indica-
-dor de funcionalidad
-sigue el procedimiento
-autorizado
-El mecanismo ejecuta
-la reversión automá-
-tica. SRE supervisa,
-valida la recuperación
-y escala; la reversión
-automática no espera
-su autorización manual
-Objetivo ≤10 minutos,
-medido en cada ensayo
-en Preproducción,
-fuera de la ventana de
-despacho
-Operacional, Etapa 1 Conserva/restaura
-versión operativa local
-probada, único escritor
-y DTE válidos; papel
-sólo de apoyo
-Responsable de opera-
-ciones del CLIENTE
-Completo antes de las
-05:30
-Operacional, Etapa 2 Desactiva la capacidad
-de la Etapa 2 que falla,
-sin tocar la Etapa 1
-Responsable de opera-
-ciones del CLIENTE
-Fuera de la ventana de
-05:30 a 07:00
+Técnico Restitución automática
+de la entrega previa
+Mecanismo automático;
+supervisión SRE
+Objetivo: ≤10 minutos
+en Preproducción
+Operacional, Etapa 1 Versión local probada,
+escritor único y DTE
+válidos
+Operaciones del CLIEN-
+TE
+Antes de las 05:30
+Operacional, Etapa 2 Desactivación de la
+capacidad afectada de
+E2
+Operaciones del CLIEN-
+TE
+Fuera de 05:30–07:00
+El objetivo técnico de hasta 10 minutos es una parte del ensayo de reversión; el objetivo total
+es de 40 minutos. La preparación de la contingencia operacional dispone de hasta 30 minutos
+en paralelo con la reversión técnica; la verificación y autorización de despacho dispone de
+hasta 10 minutos adicionales. Por tanto, el total se calcula como máx(10,30) + 10 = 40 minutos
+(Formulario T-18, sección 6.4). La decisión límite propuesta es a las 04:45 y la restauración
+operacional objetivo, a las 05:25, antes de las 05:30. El ensayo mide estos objetivos; la medición
+se realiza en Preproducción y fuera de la ventana de despacho. El papel sólo apoya las tareas
+auxiliares y no sustituye el despacho crítico. En E2, la desactivación afecta únicamente a la
+capacidad que falla y conserva la Etapa 1. Los cambios de indicadores de funcionalidad siguen
+su procedimiento autorizado, distinto del disparo técnico automático.
 En el nivel técnico, el canario revierte automáticamente si el percentil 95 supera su umbral
 o si la entrega nueva registra más errores que la estable en la misma ventana de observación,
 conforme a SD4, «Liberación y reversión». SRE supervisa, valida y escala sin imponer una auto-
@@ -2853,8 +4864,7 @@ tiempo de recuperación ante desastres. La Figura 7.33 presenta el procedimiento
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-54
-
+105
 
 ---
 
@@ -2899,8 +4909,7 @@ publican diariamente, con sus umbrales de cierre (RT-20.04).
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-55
-
+106
 
 ---
 
@@ -2951,8 +4960,7 @@ condiciones de cierre se enumeran debajo.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-56
-
+107
 
 ---
 
@@ -3006,8 +5014,7 @@ T-18, secciones 2.7 y 2.8).
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-57
-
+108
 
 ---
 
@@ -3037,8 +5044,7 @@ los datos entre ambas etapas.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-58
-
+109
 
 ---
 
@@ -3090,8 +5096,7 @@ continúa en la página siguiente
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-59
-
+110
 
 ---
 
@@ -3137,8 +5142,7 @@ continúa en la página siguiente
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-60
-
+111
 
 ---
 
@@ -3189,8 +5193,7 @@ calendario de la Etapa 2, y la innovación 4 empieza a liquidar recién desde el
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-61
-
+112
 
 ---
 
@@ -3202,7 +5205,7 @@ El Formulario T-15, sección 4, estima las horas de los 227 paquetes con tres va
 timista, más probable y pesimista) por clase de tamaño, y separa las curvas mensuales de
 implementación, soporte puente de la Etapa 1 y Operación. La cobertura del centro de ope-
 raciones, la mesa de servicio y el SOC sigue las posiciones dimensionadas en el Capítulo 4,
-Anexo 4-W.7 (Subdocumento 4, anexos). Con esa base, el total programado es de 220.023 HH
+Anexo 4-W .7 (Subdocumento 4, anexos). Con esa base, el total programado es de 220.023 HH
 (207.615 HH de paquetes y restauraciones previas a Operación, 9.336 HH de soporte puente
 de la Etapa 1 y 3.072 HH de reserva del frente de construcción y de calidad) y el máximo
 mensual es de 64 personas equivalentes en el mes 16, cuando el paso a producción de la Etapa
@@ -3228,46 +5231,42 @@ estabilización de la Etapa 2 y el soporte de la Etapa 1 en los meses 16 a 20, y
 de 40 minutos para el ensayo de reversión. El corte exige un ensayo con volumen real y la
 contingencia tributaria; el respaldo manual por sí solo no sustituye ese ensayo para los 96
 despachos. El WMS queda en modo de solo lectura conforme al supuesto S-14.
-El Anexo 7.F traslada al Capítulo 8 los supuestos, disparadores, responsables y paquetes de
-la planificación. La regla de precio es única en la oferta: el precio acordado al capturar el pedido
-(Subdocumento 2, Anexo 2.2, S-09; RF-03.11 y RF-03.12). La coordinación de reserva y retención
-(SD4, apartado 4.1.4.4) está dimensionada en los Anexos 4-I y 4-W (Subdocumento 4, anexos).
-El máximo de cuatro mensajes por línea incluye una holgura porque la retención consumida
-no se libera. La proporción de líneas con más de una retención se mide con AL-STOCK-01
-antes del H4, y la carga y el drenaje se verifican en 3.8.4 y 3.9.3, sin sumar la coordinación al
+El Anexo 7.F traslada al Capítulo 8 los supuestos, disparadores, responsables y paquetes
+de la planificación. La prueba de precio verifica que se conserve el acordado al capturar el
+pedido (Subdocumento 2, Anexo 2.2, S-09; RF-03.11 y RF-03.12). La coordinación de reserva
+y retención se verifica antes del H4 con AL-STOCK-01 y AL-ACT-01; los paquetes 3.8.4 y 3.9.3
+comprueban carga y drenaje.
+El Formulario T-18, sección 6.5, especifica las condiciones técnicas de estas verificaciones
+y sus referencias al Subdocumento 4. La recuperación se demuestra con AL-DR-01 antes del
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-62
-
+113
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
-drenaje tras un corte. El RTO de 4 horas y el RPO de 15 minutos se cumplen con tres caminos
-independientes por centro de distribución (fibra, LTE y Starlink) y con alarmas de retraso de
-replicación a los 5 y a los 15 minutos (Subdocumento 4, sección 4.3.2.4). Ambos se miden en
-conmutación real con AL-DR-01 antes del H5 y del H10, y luego dos veces al año durante la
-Operación (Bases Técnicas Transversales, cap. 7, RT-07.07, p. 17).
+H5 y del H10 y, después, dos veces al año durante la Operación (Bases Técnicas Transversales,
+cap. 7, RT-07.07, p. 17). El calendario y la asignación del equipo de cada campaña se completan
+conforme al programa de pruebas, sin alterar sus criterios de aceptación.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-63
-
+114
 
 ---
 
 LafroX SpA Introducción al Plan de trabajo
 ## Referencias
-Las fuentes citadas en este subdocumento se listan en formato APA 7.ª edición. Las Bases
+Las fuentes citadas en este subdocumento se listan en formato APA 7. ª edición. Las Bases
 se citan en el texto con su documento y el artículo, capítulo, sección o código del requisito.
 • Distribuidora Puelche S.A. (2026a). Bases Administrativas, Licitación TFEP-01/2026.
 • Distribuidora Puelche S.A. (2026b). Bases Técnicas Transversales, Licitación TFEP-01/2026.
 • Distribuidora Puelche S.A. (2026c). Bases Técnicas del Caso Logística.
-• Malcolm, D. G., Roseboom, J. H., Clark, C. E., & Fazar, W. (1959). Application of a technique
+• Malcolm, D. G., Roseboom, J. H., Clark, C. E., & Fazar , W . (1959). Application of a technique
 for research and development program evaluation. Operations Research, 7(5), 646–669.
 • Project Management Institute. (2017). Guía de los fundamentos para la dirección de proyectos
-(Guía del PMBOK) (6.ª ed.). Project Management Institute.
+(Guía del PMBOK) (6. ª ed.). Project Management Institute.
 Declaración de uso de IA
 La tabla siguiente presenta la declaración de uso de inteligencia artificial. La última columna
 identifica a la persona responsable y los aspectos revisados en cada sección.
@@ -3275,24 +5274,17 @@ La Tabla 7.13 presenta declaración de uso de IA.
 LafroX SpA
 Subdocumento 7
 Media firma: Alex Aravena
-64
-
+115
 
 ---
 
-LafroX
-SpA
-Introducción
-al
-Plan
-de
-trabajo
+LafroX SpA Introducción al Plan de trabajo
 Tabla 7.13 Declaración de uso de IA. Fuente: elaboración a partir de registro del equipo.
 Sección Herramienta Finalidad del uso Nivel en texto Nivel en diagramas Revisión humana
 (quién y qué verificó)
-Introducción Claude Code Borrador de síntesis
-de las Bases y los
-capítulos de la oferta
+Introducción Claude Code Síntesis de las Bases
+y los capítulos de la
+oferta
 Alto Ninguno Leandro Chamorro:
 contrastó el alcance
 y las referencias a
@@ -3327,26 +5319,14 @@ frente al Gantt y las
 etapas de implanta-
 ción.
 continúa en la página siguiente
-LafroX
-SpA
-Subdocumento
-7
-Media
-firma:
-Alex
-Aravena
-65
-
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+116
 
 ---
 
-LafroX
-SpA
-Introducción
-al
-Plan
-de
-trabajo
+LafroX SpA Introducción al Plan de trabajo
 Tabla 7.13 — continuación
 Sección Herramienta Finalidad del uso Nivel en texto Nivel en diagramas Revisión humana
 (quién y qué verificó)
@@ -3387,15 +5367,7 @@ criterios de marcha
 blanca, estabilización
 y reversión con el
 cronograma.
-LafroX
-SpA
-Subdocumento
-7
-Media
-firma:
-Alex
-Aravena
-66
-
-
----
+LafroX SpA
+Subdocumento 7
+Media firma: Alex Aravena
+117
