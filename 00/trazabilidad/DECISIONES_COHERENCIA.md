@@ -116,3 +116,10 @@ Suma ≈ 1 h 45 min más la decisión, dentro de RTO 4 h. No hay conmutación au
 - El equipo en espera no atiende transacciones: WMS y shipper detenidos. Su observabilidad se modela en 20 % de un nodo activo (0,05 GB y 200 eventos por día). INT-14 = 14.400; totales 230.252 / 353.333; drenaje Concepción 1,44 Mbps y cross-docking 0,35 Mbps.
 - Energía: UPS de Concepción de 3 a 5 kVA (3,42 kVA, 68 %); cross-docking 0,42 kVA (57 % de 0,75 kVA). EDR: 11 equipos físicos y 14 VM.
 - Archivos: 4.1 (capas), 4.2.0, 02_a (incl. figura TikZ), 02_c, 04_c, 11_j (alta disponibilidad y pruebas), 12_k, Anexos 4-G, 4-I, 4-O (ADR-10), 4-W, T-11 y `calculo.py`.
+
+## D42. Compra del sistema de cadena de frío conforme al Cap. 11 del caso (2026-11-06)
+
+- Decisión del usuario, tras la revisión del Informe 2 («el T-11 hace que LafroX provea la cadena de frío, contra la exclusión del Cap. 11 del caso»): se vuelve a lo que dicen las Bases. Reemplaza la decisión del 24-10-2026 registrada en `BRIEF_IMPLEMENTACION_CADENA_FRIO.md` y en `Solucion_Cadena_de_Frio_en_Ruta.md` (punto 2 de la sección de decisiones), que se conservan como historial.
+- El CLIENTE adquiere, según la especificación de LafroX, los sensores de cámara B-01 y los componentes B-03 a B-14 del kit de camión (Bases Técnicas del caso, cap. 11, p. 20; RT-08.10). LafroX los instala, integra, configura y mantiene.
+- Se mantienen con LafroX: los gateways IoT B-02 de las cámaras (infraestructura on-premise, Bases Administrativas, art. 14.2), las SIM M2M B-15 y el servicio satelital (paquete 5.3.4 del T-14) y la unidad de prueba previa a la compra masiva (RT-08.15).
+- Archivos del SD4: 4.2.1 (`04_c_implementos.tex`), 4.2.2 (`02_a_emplazamiento.tex`, B-03 a B-15), Anexo 4-O (ADR-24) y T-11 (introducción, fila B-03 y nota de responsabilidad del sistema de frío). Detalle en `CIERRE_REVISION_I2_FRIO_SD4.md`.
