@@ -139,7 +139,7 @@ ADR-24 & Protección térmica autónoma en ruta & 12 de octubre de 2026 & Propue
 
 \subsection*{ADR-06. Identidad híbrida}
 \label{sub:adr-06}
-\textbf{Decisión adoptada.} Keycloak es autoridad central y cada sitio verifica manifiestos firmados y PIN local para relevos sin WAN.
+\textbf{Decisión adoptada.} Keycloak es autoridad central y cada sitio verifica manifiestos firmados y PIN local para relevos sin WAN. El manifiesto de bodega dura 26 h y se renueva cada hora, con antigüedad máxima de 1 h al corte. La asignación de reparto expira al fin programado más 30 min y nunca después de 16 h desde emisión, realizada dentro de la hora anterior a salir. Bodega conserva su límite personal de 8 h. AL-ID-01 verifica expiración, reloj y exposición de bajas no recibidas.
 
 \textbf{Alternativas evaluadas.} IdP solo nube impide nuevos relevos, directorio maestro local duplica autoridad.
 
@@ -382,7 +382,7 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 
 \subsection*{ADR-23. Selección del backend del monolito modular}
 \label{sub:adr-23}
-\textbf{Decisión adoptada.} Laravel 13/PHP 8.5 implementa M1--M12 con contextos de dominio y perfiles HTTP/CLI; ADR-01 conserva la decisión sobre el estilo. La sección 4.1.7.1 contiene el contraste detallado.
+\textbf{Decisión adoptada.} El Informe 1 proponía Django/Python. Esta oferta sustituye esa selección por Laravel 13/PHP 8.5 para M1--M12 con contextos de dominio y perfiles HTTP/CLI; ADR-01 conserva la decisión sobre el estilo. La sección 4.1.7.1 contiene el contraste detallado.
 
 \textbf{Alternativas evaluadas.} Django/Python con apps y Celery es el contraste principal. Spring Boot con Java o Kotlin, Ktor/Kotlin sobre JVM, Node.js con NestJS/TypeScript y ASP.NET Core/C\# también permiten implementar el núcleo. Son alternativas a Laravel, no nuevos componentes ofertados.
 

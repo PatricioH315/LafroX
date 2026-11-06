@@ -12,10 +12,21 @@ El reparto evita que M6 emita DTE o que M10 escriba pedidos. M1 y M5 entregan da
 
 Las cinco innovaciones del Subdocumento 13 amplían reglas, contratos y recorridos sobre los módulos existentes: seguimiento posentrega en M2/M3/M9/M10, reproducción de incidentes de M3/M5/M6 en QA y Preproducción, historia térmica en M2/M5/M9/M10, liquidación ligada al costo de servir en M6/M7/M8/M10. Y hoja de negocio en M3/M6/M10. Reutilizar estos componentes no elimina el desarrollo adicional ni acredita capacidad suficiente. El Anexo 4-N identifica su realización y sus límites. El Subdocumento 13 conserva la definición, los indicadores y la aceptación de cada innovación.
 
-El Anexo 4-E hace visible el paso del requerimiento al componente y a la capa que lo realiza. Es una síntesis de los dominios, no una sustitución del catálogo requisito por requisito del Formulario T-12. Allí se debe conservar también origen, etapa, prueba y criterio de aceptación de cada RF y RNF.
+El Anexo 4-E conserva la síntesis por familias y añade la matriz de requisitos individuales críticos, con origen, módulo, capa, contrato, protocolo y criterio medible. Se identifica expresamente si un código pertenece al caso o a las Transversales. El catálogo completo de requisitos continúa en T-12; una marca de cumplimiento no sustituye una prueba ejecutada.
 
-
-La trazabilidad transversal se prueba sobre esos mismos recorridos: RT-03.10 para 24 horas en sitio y 14 horas en terreno, RT-03.12 para reconciliación determinista y RT-03.13 para funciones no disponibles sin conexión y plazos de sincronización del caso en M1, M3, M5 y M6. RT-02.06 mediante UUID y resultado persistente en M2/M3/M6, RT-02.13 mediante el modelo de dominio. Y RT-11/12 mediante autorización y auditoría en cada cruce. El entorno de prueba y el caso de aceptación deben reproducir la falla, no limitarse a una marca de cumplimiento.
+La siguiente síntesis permite leer cuatro decisiones críticas sin abrir el catálogo completo. Los anexos 4-M y 4-V contienen los pasos y resultados esperados.
+\begingroup
+\renewcommand{\thetable}{4.1-A}
+\renewcommand{\theHtable}{resumencriticos41}
+\begin{tablalafrox}{Recorridos críticos de arquitectura lógica}{tab:criticos-logica-cuerpo}{F{0.22} F{0.25} F{0.20} Y}{\cab{Requisito y origen} & \cab{Módulo y capas} & \cab{Prueba} & \cab{Aceptación}}
+RT-02.06, Transversales & M2/M3/M6; 4--6. & AL-MOD-01 & UUID repetido: un solo efecto y respuesta durable. \\
+RT-03.10, caso & Servicio local; 1, 3--7. & AL-OFF-01 & 24 h con dos relevos, sin pérdida ni salida sin guía. \\
+RT-12.05, Transversales & M7/M9; 4 y 7. & AL-ACT-01 & Sin autoaprobación de diferencias ni liberación por rol ajeno. \\
+RT-12.07, Transversales & Identidad; 1, 3 y 7. & AL-ID-01 & Vencimiento respetado y ruta de 14,5 h cubierta según política firmada. \\
+\end{tablalafrox}
+\addtocounter{table}{-1}
+\endgroup
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: requisitos individuales indicados; diseño de protocolos LafroX en anexos 4-E, 4-M y 4-V.\par}
 
 M3 conserva el precio acordado por el preventista al tomar el pedido y la versión de condiciones comerciales aplicada, conforme a RNG-08 del Subdocumento 3. Un cambio posterior de la lista de precios no altera ese importe. Una propuesta offline fuera de las condiciones autorizadas queda en excepción y el precio no se sustituye en silencio. La condición aplicada viaja en el pedido y en el intercambio con el ERP, para comprobar que la facturación respeta el importe acordado.
 
@@ -72,34 +83,18 @@ La descarga de termógrafo y sensor independiente se verifica y el TC58e firma s
 \subsubsection{Módulo M2 Inventario}
 \label{subsec:modulo-m2}
 
-El módulo de inventario permite saber qué stock existe, dónde está y qué parte puede comprometerse. Mantiene la operación distribuida entre Talca, Concepción y los tres cross-docks. La casa matriz consulta la información consolidada. Sus capacidades son las siguientes:
+El módulo de inventario permite saber qué stock existe, dónde está y qué parte puede comprometerse. Mantiene la operación distribuida entre Talca, Concepción y los tres cross-docks. La casa matriz consulta la información consolidada. Las decisiones y límites son los siguientes:
 
-\begin{itemize}
-  \item \textbf{Stock por sitio (RF-02.02, RT-02.12, Bases Técnicas Transversales, cap. 2, p. 7).} Cada instalación operativa informa sus movimientos al consolidado. Con conexión se consulta disponibilidad actual. Sin ella se muestra la copia descargada, identificada como información con fecha de actualización. La parametrización admite nuevos sitios sin convertir a la casa matriz en una bodega ni asignarle stock operativo por defecto.
-\item \textbf{Slotting y conteo ciego.} Asignación de ubicaciones por criterio documentado de rotación, peso y compatibilidad, con conteo cíclico de inventario mediado por terminales HHT con escáner GS1, reduciendo la discrepancia actual del 2,3\% del valor contado a menos del 1\%. El plan mensual de conteo cubre las posiciones que fija Bodega y las elige por rotación, valor y discrepancia histórica. El terminal no muestra la cantidad teórica. M2 compara lo contado con el teórico y registra la diferencia con su causa: si su valor no supera el umbral del recinto, el ajuste se aplica. Si lo supera, la tarea queda pendiente de autorización y se avisa a la jefatura de bodega (RF-02.04, Subdocumento 3, Anexo 3.A).
-\item \textbf{FEFO (First Expired, First Out).} La preparación y el despacho respetan el principio de primer vencimiento, con secuenciación térmica para productos refrigerados y congelados. M2 alerta a la jefatura de bodega cuando un lote en stock queda bajo el umbral configurable de vida útil remanente, con la acción recomendada (RF-02.09).
-  \item \textbf{Stock disponible.} Con conexión se consulta la disponibilidad mediante APIs. Sin conexión se utiliza la copia autorizada descargada al inicio del turno y almacenada en SQLite/Room. La reserva comercial se confirma en M2 central después del acuse durable de la retención en M2 del sitio. Los pedidos capturados sin señal permanecen a la espera de validación. Los conflictos se resuelven con reglas documentadas de asignación y prioridad, no mediante la sola comparación de marcas de tiempo.
-
-\item \textbf{Cross-docking (RF-02.11).} En cada plataforma, M2 registra la lectura de cada unidad logística al llegar el camión de línea y al cargarla en el camión de reparto, con la hora de cada evento. Una unidad faltante, sobrante o dañada queda como excepción con su causa, de modo que se mide el tiempo real entre consolidación, llegada, desconsolidación y despacho (Subdocumento 3, Anexo 3.A).
-  \item \textbf{Reposición de compras (RF-10.01 a RF-10.03).} M2 sugiere la reposición por SKU y proveedor a partir de la venta real, la estacionalidad, las promociones comprometidas y el plazo de cada proveedor. La función de abastecimiento revisa y aprueba la sugerencia con permisos específicos dentro de los perfiles autorizados del CLIENTE. Cada modificación registra responsable y motivo. La sugerencia aprobada se traspasa al módulo de compras del ERP mediante la ACL de INT-06. El ERP conserva la emisión de las órdenes de compra (Subdocumento 3, D-05).
-\end{itemize}
+La decisión central de M2 es separar stock físico, stock disponible y reserva comercial. Cada sitio conserva autoridad sobre sus movimientos; una copia descargada permite consulta fechada, pero no confirma una reserva remota. FEFO y cuarentena condicionan la preparación. Slotting, conteo ciego y sugerencias de reposición conservan su aprobación de negocio; la integración con compras pasa por la ACL del ERP. El Anexo 4-D, «Detalle funcional por contexto», conserva los requisitos de cada capacidad. AL-STOCK-01 comprueba concurrencia y retención durable.
 
 Para incorporar un nuevo sitio se parametrizan en los maestros su identificador, su bodega, sus rutas y la cartera de clientes asignada, con los permisos de administración que correspondan. El sitio reutiliza el perfil local de bodega y la infraestructura como código ya descritos, sin rediseñar la arquitectura (RT-02.12, Bases Técnicas Transversales, cap. 2, p. 7).
 
 \subsubsection{Módulo M3 Preventa}
 \label{subsec:modulo-m3}
 
-Para los 62 preventistas, tomar un pedido debe seguir siendo posible aun cuando la ruta no tenga cobertura. El módulo reemplaza una aplicación que no consulta stock ni crédito y presenta caídas y duplicación de pedidos. La nueva interacción distingue con claridad lo registrado en el dispositivo de lo confirmado por el servidor:
+Para los 62 preventistas, tomar un pedido debe seguir siendo posible aun cuando la ruta no tenga cobertura. El módulo reemplaza una aplicación que no consulta stock ni crédito y presenta caídas y duplicación de pedidos. La nueva interacción distingue lo capturado de lo confirmado.
 
-\begin{itemize}
-  \item \textbf{Toma de pedido offline (RF-03.02).} El preventista toma el pedido sin señal de red. La aplicación mantiene una foto local de datos de lectura (stock, crédito del cliente, precios vigentes, promociones) que se descarga al inicio del turno cuando hay conectividad.
-  \item \textbf{Identificador único y deduplicación (RF-03.16).} Cada evento recibe un UUID que se conserva en todos sus reintentos. El servicio de negocio registra su procesamiento y evita ejecutar dos veces la misma operación.
-  \item \textbf{Validación de stock y crédito.} La validación definitiva ocurre en la sincronización con la regla de negocio del servidor (reserva de stock, RF-03.03, crédito del cliente, RF-03.08/09). Sin conexión, el pedido queda como a la espera de validación y se resuelve en la sincronización posterior.
-
-\item \textbf{Consulta y control comercial (RF-03.01 a RF-03.10, RF-03.13, RF-03.14 y RF-07.05).} Con conectividad, la aplicación muestra el stock disponible por SKU y el crédito disponible y la deuda vencida del cliente. Sin ella, muestra los de la última sincronización con su antigüedad visible. También muestra el historial de compra con productos y frecuencia, en no más de 2 segundos con conectividad (RNF-03.03). Sugiere productos según historial, frecuencia, productos habituales y promociones vigentes, con los criterios que configura Comercial, y calcula el descuento de la promoción vigente aplicada a una línea. Al seleccionar un cliente con mora de más de 30 días o con su deuda sobre el cupo, la aplicación muestra el bloqueo y solo admite venta al contado o cobro. En los demás casos, si el pedido más la deuda vencida supera el límite de crédito, alerta al preventista antes del envío. Si lo supera en más de 110 \%, bloquea el envío hasta que un supervisor autorizado lo apruebe, con su identidad, fecha y hora en la auditoría. Antes de confirmar, el preventista ve la fecha y la ventana que puede comprometer según RNG-15, el stock reservable, la capacidad de despacho de la ruta y las franjas del cliente (Subdocumento 3, Anexos 3.A y 3.B).
-  \item \textbf{Sincronización diferida.} Al recuperar cobertura, el dispositivo envía las escrituras acumuladas por API Gateway. El Gateway aplica los controles de entrada. El servicio de negocio valida, deduplica, procesa y confirma cada evento. El dispositivo conserva los eventos que aún no tienen confirmación.
-  \item \textbf{Pedido de autoatención (RT-16.30 y RT-17.01 del caso, Bases Técnicas del caso, cap.~15, p.~27).} M3 recibe también el pedido que el cliente arma en el Portal de Clientes, incluido el armado sin señal en su modo instalable, con la misma deduplicación por UUID y la misma validación de stock y crédito. M3 es el único dueño del pedido en sus tres canales: preventista, autoatención y canal moderno (M11).
-\end{itemize}
+M3 distingue captura local y confirmación central: el UUID identifica el mismo pedido durante reintentos y la copia cifrada conserva la jornada. La confirmación requiere validar stock con M2 y crédito con M7; un dato descargado no autoriza sobreventa ni crédito nuevo. El precio y la regla comercial del pedido se mantienen trazables. El canal de autoatención reutiliza estos contratos y no crea otro dueño del pedido. El Anexo 4-D detalla consultas, controles y sincronización; AL-MOD-01 y AL-STOCK-01 comprueban el recorrido.
 
 La prueba de aceptación de terreno considera un turno de 14 horas sin cobertura. El caso exige que un dispositivo de reparto sincronice esa jornada en un máximo de 10 minutos. Para el CD, fija hasta 2 horas tras un corte de 24 horas (RT-03.13 del caso, Bases Técnicas del caso, cap.~15, p.~26). Estos límites se verifican con la volumetría correspondiente y reconciliación determinista (RT-03.12, Bases Técnicas Transversales, cap. 3, p. 9), sin extender automáticamente el umbral del repartidor a cualquier carga de preventa.
 
@@ -130,14 +125,9 @@ La coordinación usa colas e identidades por sitio, separadas de las del ERP, de
 
 \subsubsection{Módulo M4 Rutas}
 
-El módulo de planificación de rutas automatiza un proceso que actualmente depende de una sola persona (21 años de conocimiento concentrado, con retiro programado en 2 años) que administra una planilla de 11 hojas. El módulo implementa:
+El módulo de planificación de rutas automatiza un proceso que actualmente depende de una sola persona (21 años de conocimiento concentrado, con retiro programado en 2 años) que administra una planilla de 11 hojas. Su responsabilidad lógica se delimita a continuación.
 
-\begin{itemize}
-  \item \textbf{Secuenciación automática.} Optimización determinista de rutas con capacidad y ventanas de tiempo (VRP), con objetivo de ejecución inferior a 20 minutos (Bases Técnicas del caso, cap. 18, p. 34). El planificador puede conocer las restricciones utilizadas y revisar el resultado.
-  \item \textbf{Ventanas horarias y capacidad.} Considera capacidad de vehículo, ventanas de entrega del cliente y cadena de frío.
-  \item \textbf{Integración con GIS.} Consulta de direcciones, cálculo de ETA y geocercas por API externa, con caché de mapas por zona en dispositivos para degradación a ruta offline con secuencia cargada.
-  \item \textbf{Costo de entrega.} Alimenta el cálculo del costo de servir por cliente, uno de los ejes de evaluación del caso.
-\end{itemize}
+M4 conserva restricciones versionadas de capacidad y ventanas, y permite al planificador revisar la secuencia obtenida en menos de 20 minutos. PostgreSQL/PostGIS aporta datos espaciales y la alternativa de rutas se evalúa contra restricciones, no solo distancia. La decisión de negocio y sus excepciones quedan trazadas para transferir el conocimiento del planificador. La ejecución de la ruta pertenece a M6 y el costo comparable a M10. El Anexo 4-D concentra las capacidades de secuenciación, GIS y costo.
 
 La propuesta automática no convierte las excepciones del planificador en reglas opacas: M4 conserva restricción, motivo de ajuste y autor de la ruta aprobada para transferir conocimiento y comprobar el criterio de aceptación.
 
@@ -149,15 +139,9 @@ El planificador puede modificar la secuencia y reasignar pedidos entre vehículo
 
 \subsubsection{Módulo M7 Cobranza y rendición}
 
-El módulo de rendición y cobro permite investigar las causas de las diferencias de rendición que hoy quedan sin explicación. Implementa:
+El módulo de rendición y cobro permite investigar las causas de las diferencias de rendición que hoy quedan sin explicación. Sus límites de autorización son los siguientes.
 
-\begin{itemize}
-  \item \textbf{Rendición digital individual (RF-07.01 a RF-07.03).} M7 calcula para cada camión y turno el monto esperado de rendición con las entregas al contado confirmadas y los cobros registrados en ruta. Cada conductor rinde sus cobros del turno de forma digital contra ese monto, con causales de descuadre clasificadas y trazables. La rendición no se cierra mientras quede un saldo sin una causal tipificada (RF-07.03).
-  \item \textbf{Cobranza en ruta (RF-07.06 y RF-07.10).} El conductor registra el cobro y conserva su evidencia para la rendición. En pagos con POS móvil, la captura local de una operación no se presenta como autorización bancaria. El tratamiento sin cobertura depende de las capacidades y condiciones acordadas con la pasarela. Se concilia al reconectar sin generar cargos duplicados. En pagos con tarjeta, la aplicación recibe por Bluetooth el código de autorización del terminal PAX y M7 lo concilia con la entrega en la rendición diaria, sin digitación (RF-07.06). En una entrega al contado, el conductor puede registrar un abono parcial: la aplicación emite un comprobante digital y el saldo insoluto pasa a la cuenta corriente del cliente en el ERP por la ACL (RF-07.10).
-  \item \textbf{Pagos informados en el portal (RF-07.08).} Desde la Etapa 2, un pago que el cliente informa en el Portal de Clientes queda «En revisión» en una bandeja donde el cajero de Tesorería verifica el comprobante bancario y autoriza su traspaso estructurado al ERP.
-  \item \textbf{Interfaz con ERP (RF-07.09 e INT-06).} La rendición aprobada se publica en la cola FIFO de solicitudes al ERP. Dos procesos del servicio de integración con el ERP en VM-04 de Talca consumen esa cola por conexión saliente y la cola RabbitMQ local, y entregan a la \textbf{capa anticorrupción (ACL)} de la misma VM, la ACL integra con el ERP. Nunca hay escritura directa al ERP. El ERP permanece como única fuente de verdad tributaria y único emisor de DTE.
-  \item \textbf{Costo de servir (RF-11).} El módulo alimenta el tablero de BI con el costo real por entrega, incluyendo kilometraje real (telemetría M12), tiempo de servicio y deducciones por devoluciones.
-\end{itemize}
+M7 calcula lo esperado para cada camión y turno y exige una causal para cada diferencia antes del cierre. Separa registrar, conciliar y aprobar: el autor de un cobro no aprueba su propio descuadre. Un pago electrónico incierto se consulta por la misma clave y no se vuelve a cobrar ni se declara autorizado por silencio. El ERP conserva la emisión tributaria y la ACL el intercambio. El Anexo 4-D mantiene el detalle de rendición, pagos informados y costo de servir; AL-ACT-01 verifica segregación.
 
 \subsubsection{Módulo M10 Analítica}
 

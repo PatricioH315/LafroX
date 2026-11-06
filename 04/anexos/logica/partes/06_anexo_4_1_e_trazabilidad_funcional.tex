@@ -34,8 +34,35 @@ RF-13 & Base compartida & Transversal & Entregables de arquitectura y contratos 
 
 Fuente: elaboración a partir del catálogo de requerimientos del capítulo 3 y de la Tabla~\ref{tab:modulos-funcionales}. Diseño propuesto: (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-06-anexo-4-1-e-trazabilidad-funcional}--\pageref*{fuente-06-anexo-4-1-e-trazabilidad-funcional-fin}).
 
-La tabla agrupa familias para facilitar la lectura. La trazabilidad individual de RF, RNF y RT se conserva en el Formulario T-12, que identifica el componente y la sección que desarrolla cada requisito. Los anexos 4-D, 4-F y 4-N aportan responsabilidad, contrato, capas y realización física. T-11 identifica el recurso ofertado. El estado de cumplimiento de T-12 no demuestra por sí solo una prueba ejecutada.
+\subsection*{Requisitos individuales críticos y aceptación}
+\label{traza:criticos-logicos}
+La tabla siguiente completa la síntesis por familias con obligaciones individuales. «T» identifica las Bases Técnicas Transversales y «C» las Bases Técnicas del caso; la distinción evita confundir códigos iguales con contenidos diferentes. Son protocolos propuestos: ninguna fila acredita pruebas ejecutadas. El catálogo funcional completo permanece en el Formulario T-12; esta matriz permite verificar los recorridos críticos de 4.1 sin atribuir al formulario resultados que no contiene.
 
-Los RNF se siguen por la capacidad que condicionan: desempeño y concurrencia en 4.2.6 y Anexo 4-T. Autonomía y sincronización en 4.1.15–4.1.16 y anexos 4-J/4-K, identidad, seguridad y auditoría en 4.1.3.7 y anexos 4-Q/4-R, disponibilidad y recuperación en 4.2.4–4.3.2. Observabilidad en 4.1.3.8. Para soporte y capacitación, el Subdocumento 4 declara los recursos y dependencias arquitectónicas, mientras sus planes y evidencias se desarrollan en los subdocumentos respectivos. Así se conserva la correspondencia sin atribuir al capítulo 4 responsabilidades de ejecución ajenas.
+\begingroup
+\renewcommand{\thetable}{A.6a}
+\renewcommand{\theHtable}{criticos41}
+\begin{tablalafrox}{Trazabilidad individual de obligaciones críticas de 4.1}{tab:traza-critica-individual}{F{0.17} F{0.22} F{0.18} F{0.17} Y}{\cab{Origen y requisito} & \cab{Responsable y capas} & \cab{Contrato/control} & \cab{Protocolo local} & \cab{Criterio de aceptación}}
+T, cap. 2: RT-02.01 & M1--M12; capas 1--8. & Interfaces por capa; 4.1.3. & AL-MOD-01 & Cada intercambio usa el contrato declarado; ningún navegador escribe en datos. \\
+T, cap. 2: RT-02.04 & Arquitectura; transversal. & ADR-01 a ADR-24, Anexo 4-O. & AL-MOD-01 & Toda selección crítica tiene fecha, alternativas y criterio trazables. \\
+T, cap. 2: RT-02.06 & M2/M3/M6; capas 4--6. & UUID y outbox; Anexo 4-K. & AL-MOD-01; AL-STOCK-01 & Reintento del UUID produce un único efecto y conserva el resultado original. \\
+T, cap. 2: RT-02.11 & Identidad, ERP, contratos; capas 3--7. & Dependencias de 4.1.12. & AL-MOD-01; AL-ID-01 & Falla conocida no produce aprobación ficticia; el límite residual queda registrado. \\
+T, cap. 2: RT-02.13 & M1--M12; capas 4--6. & Entidad, dueño y evento; 4.1.5. & AL-MOD-01 & Cada escritura del recorrido tiene dueño y evento compatible con el dominio. \\
+C, cap. 15: RT-03.10 & M1/M2/M5/M8/M9; capas 1, 3--7. & Servicio local y manifiesto. & AL-OFF-01; AL-ID-01 & Recepción, preparación y despacho válidos durante 24 h con dos relevos; terreno cubre 14 h y la ruta declarada de 14,5 h. \\
+T, cap. 3: RT-03.12 & M2/M3/M6; capas 4--6. & Conciliación, Anexo 4-K. & AL-MOD-01; AL-STOCK-01 & Orden alterado, repetición y reintento conservan el mismo estado final y bitácora. \\
+C, cap. 15: RT-03.13 & Sincronización; capas 3--6. & Acuse durable y UUID. & AL-OFF-01 & Dispositivo se sincroniza en $\leq$ 10 min; sitio de 24 h en $\leq$ 2 h; cero hechos confirmados perdidos. \\
+T, cap. 3: RT-03.13 & Canales locales; capas 1, 3--7. & Catálogo offline, Anexo 4-J. & AL-OFF-01 & Cada función disponible se ejecuta y cada función no disponible se deniega con procedimiento declarado. \\
+T, cap. 11: RT-11.01 & Puertas y módulos; capas 2--7. & OIDC y política por recurso. & AL-ACT-01 & Token válido con rol, ruta o empresa ajenos no autoriza la operación. \\
+T, cap. 11: RT-11.02 & Módulos e interfaces; transversal. & STRIDE, Anexo 4-Q. & AL-MOD-01 & Cada frontera del recorrido tiene amenaza, control, dueño y caso negativo. \\
+T, cap. 12: RT-12.01 & Identidad; capas 1, 3 y 7. & Keycloak/OIDC y directorio. & AL-ID-01; AL-ACT-01 & Identidad federada válida conserva sus atributos; cuenta deshabilitada no inicia acceso conectado. \\
+T, cap. 12: RT-12.05 & M7/M9 y restantes módulos; capas 4 y 7. & Rol/atributo; Anexo 4-N. & AL-ACT-01; AL-FRIO-01 & Quien registra no aprueba su diferencia; solo Calidad autoriza disposición de lote. \\
+T, cap. 12: RT-12.07 & Identidad; capas 1, 3 y 7. & Sesión, turno y baja. & AL-ID-01 & Expiración y baja local bloquean acceso; reinicio no prolonga; baja no recibida se concilia sin ocultar exposición. \\
+T, cap. 13: RT-13.01 & Angular/Kotlin; capas 1 y 7. & Interfaz accesible; Anexo 4-N. & AL-UI-01 & Ningún incumplimiento A/AA confirmado queda abierto al aceptar los flujos. \\
+T, cap. 16: RT-16.08 & Consola/API; capas 1, 4, 6 y 7. & Filtro y exportación de auditoría. & AL-UI-01 & Exporta todos los registros autorizados filtrados; no exige acceso directo a base ni expone otra empresa. \\
+\end{tablalafrox}
+\addtocounter{table}{-1}
+\endgroup
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Bases Técnicas Transversales, caps. 2, 3, 11--13 y 16, códigos de cada fila; Bases Técnicas del caso, cap. 15, parámetros RT-03.10 y RT-03.13. Módulos y controles: diseño LafroX de 4.1; protocolos completos en anexos 4-M y 4-V.\par}
+
+Los anexos 4-D y 4-F identifican dueño y límites; 4-N relaciona actor, acción y contrato con la realización ya declarada. Los códigos físicos se citan como referencia y no sustituyen la prueba lógica. El resto de RF, RNF y RT conserva su catálogo completo en T-12. La disponibilidad y recuperación física se desarrollan en las secciones correspondientes, sin convertir esta muestra de obligaciones críticas en una declaración de cobertura total del catálogo.
 
 \label{fuente-06-anexo-4-1-e-trazabilidad-funcional-fin}

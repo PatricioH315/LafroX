@@ -6,6 +6,15 @@
 \addcontentsline{toc}{section}{Anexo 4-P — Tecnologías, soporte y actualización}
 
 Este anexo relaciona los nombres funcionales con los servicios técnicos y declara, para cada tecnología, su versión, su soporte y su política de actualización.
+\subsection*{Disponibilidad y compatibilidad de la línea base lógica}
+La fecha de referencia de esta oferta es el 12 de octubre de 2026. La tabla distingue lanzamiento del producto, compatibilidad publicada y soporte: comprobar una versión no equivale a ejecutar la aplicación ni garantiza que una biblioteca adicional sea compatible. La verificación documental se realizó el 5 de noviembre de 2026 contra los historiales oficiales citados.
+
+La Tabla~\ref{tab:soporte-logico} reúne lanzamiento, compatibilidad, soporte y actualización en un único registro para evitar duplicaciones.
+
+
+
+Los productos de la tabla existían antes de la fecha de oferta. La aceptación de una imagen exige además resolver dependencias y ejecutar construcción, contratos, seguridad y regresión sobre el conjunto exacto. Composer y Gradle conservan archivos de bloqueo y la construcción web fija Angular, TypeScript, Node y RxJS. Un fallo de compatibilidad bloquea la liberación y obliga a seleccionar una combinación soportada que conserve los contratos; no permite sustituir la pila en silencio ni acreditar una prueba no ejecutada. Se revisan avisos y ciclos trimestralmente y antes de cada liberación. El expediente registra versión, fuente, soporte, resultado de prueba y reversión. Las versiones concretas de bibliotecas que aún no han formado una imagen no se presentan como una instalación comprobada.
+
 \subsection*{Detalle de selección por capa}
 
 La selección siguiente organiza las tecnologías por responsabilidad arquitectónica y explica su función, compatibilidad y continuidad durante el contrato.
@@ -29,7 +38,7 @@ La selección siguiente organiza las tecnologías por responsabilidad arquitect�
 
 \item \textbf{Serie consolidada (OLAP).} S3 Parquet + AWS Glue + Redshift Serverless. OLAP por diseño: DynamoDB raw → Glue → S3 Parquet → Redshift, sin motor de series adicional.
 
-\item \textbf{Caché y datos de turno.} Valkey, compatible con Redis, acelera las lecturas centrales. No se exige Valkey en cada sitio. Las APIs entregan una copia cifrada para SQLite/Room y conservan por separado la cola de escrituras sin confirmar. La identidad usa credenciales de 8 horas en bodega y 14 horas en terreno. Su caché local de solo lectura tiene TTL de 24 horas en VM-05, VM-C03 y cada E-01, junto al verificador local de relevos (ADR-06).
+\item \textbf{Caché y datos de turno.} Valkey, compatible con Redis, acelera las lecturas centrales. No se exige Valkey en cada sitio. Las APIs entregan una copia cifrada para SQLite/Room y conservan por separado la cola de escrituras sin confirmar. La identidad usa credenciales de hasta 8 horas en bodega; reparto expira al fin programado más 30 minutos, con máximo de 16 horas desde emisión y validación AL-ID-01. Su caché local de solo lectura tiene TTL de 24 horas en VM-05, VM-C03 y cada E-01, junto al verificador local de relevos (ADR-06).
 
 \item \textbf{Mensajería asíncrona (Capa 5).} RabbitMQ en on-premise mediante adaptador AMQP \texttt{php-amqplib}, SQS FIFO con sobre JSON y consumidor PHP para reconciliación, colas SQS separadas para trabajos Laravel, y SNS para difusión y alertas en nube. Un único planificador Laravel programa las tareas periódicas. \textbf{Dos procesos del servicio de integración con el ERP en VM-04 consumen RabbitMQ local y, por salida, la cola FIFO de solicitudes al ERP, ERP integrado exclusivamente vía ACL, Hub EDI GS1 centralizado en nube (EANCOM, GS1 XML, EPCIS), AS2 como transporte.}
 
@@ -63,15 +72,17 @@ El perfil local de bodega se identifica técnicamente como \texttt{wms\_only}; e
 
 El inventario distingue versión de referencia de una imagen exacta de producción. Cada liberación fija parches, hashes y compatibilidad en los archivos de bloqueo y SBOM. Las versiones futuras se aprueban mediante pruebas antes de promoverse. La hoja de ruta cubre los 56 meses mediante actualizaciones, no suponiendo soporte de una misma versión durante todo el contrato (Bases Técnicas Transversales, numeral 1.6, pp. 4--5).
 
-\begin{tablalafrox}{Ciclo de soporte del núcleo lógico}{tab:soporte-logico}{F{0.16} F{0.15} F{0.23} Y}{\cab{Producto} & \cab{Referencia} & \cab{Fin de soporte publicado} & \cab{Plan de actualización}}
-Laravel & 13.x & Seguridad: 17-03-2028. & Evaluación anual, migrar al menos 6 meses antes del fin. \\
-PHP & 8.5.x & Seguridad: 31-12-2029. & Actualización compatible antes del fin, ensayo de APIs y colas. \\
-PostgreSQL & 16.x & 09-11-2028. & Ensayo de migración mayor y reversión 6 meses antes. \\
-Angular & 22.x & LTS: junio de 2028, fecha orientativa del fabricante. & Revisión semestral y actualización anual por compatibilidad. \\
-TypeScript & 6.0.x & Sin fecha contractual independiente. & Versión compatible con Angular, archivo de bloqueo y pruebas. \\
-RabbitMQ & Rama 4.x con soporte comunitario vigente al liberar. & 4.3.x, comunidad: 31-01-2027. & Se instala la rama vigente y se actualiza antes de su fin. No se presume licencia comercial. \\
+\begin{tablalafrox}{Existencia y restricciones de compatibilidad de 4.1}{tab:soporte-logico}{F{0.19} F{0.20} F{0.29} Y}{\cab{Producto} & \cab{Lanzamiento estable} & \cab{Compatibilidad publicada} & \cab{Soporte y decisión}}
+Laravel 13 & 17-03-2026. & PHP 8.3--8.5; PHP 8.5 está admitido. & Seguridad hasta 17-03-2028; migración mayor antes del fin. \\
+PHP 8.5 & 20-11-2025. & Línea compatible con Laravel 13. & Seguridad hasta 31-12-2029; dependencias fijadas y probadas. \\
+Angular 22 & 03-06-2026. & TypeScript $\geq$ 6.0 y $<$ 6.1; Node 22.22.3 o superior dentro de 22.x, o ramas 24.15+/26.x; RxJS 6.5.3+ o 7.4+. & LTS publicado hasta junio de 2028; las fechas orientativas se revisan por versión. \\
+TypeScript 6.0 & 23-03-2026. & Mantener 6.0.x para Angular 22.0.x; no actualizar a 7.x de forma independiente. & El conjunto Angular/compilador se migra y prueba como unidad. \\
+Kotlin 2.4 & 03-06-2026, según historial de versiones. & Registrar conjuntamente Kotlin, plugin Gradle, Android Gradle Plugin, Room y SDK Zebra. & Soporte de seguridad de la biblioteca estándar JVM hasta 03-12-2027; no se atribuye esa garantía a todo el parque Android. \\
+PostgreSQL 16 & 14-09-2023. & PDO/SQL y PostGIS compatible; la versión de Aurora conserva su ciclo gestionado propio. & Comunidad hasta 09-11-2028; no confundir soporte comunitario con el del servicio gestionado. \\
+RabbitMQ 4.3 & 23-04-2026. & Adaptador AMQP y Erlang según matriz de la rama y parche liberado. & Comunidad hasta 31-01-2027; actualización temprana. No se presupone soporte comercial. \\
+Keycloak 26 & 04-10-2024. & Integración OIDC y claves publicadas; probar servidor y adaptadores juntos. & Política de parches y actualización por rama; no se declara un EOL contractual no publicado. \\
 \end{tablalafrox}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Laravel (2026), PHP (2026), PostgreSQL (2026), Angular (2026a, 2026b) y RabbitMQ (2026). Diseño propuesto: (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-19-anexo-4-1-p-tecnologias-soporte}--\pageref*{fuente-19-anexo-4-1-p-tecnologias-soporte-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Laravel (2026); PHP (2026); Angular (2026a, 2026b); Microsoft TypeScript (2026); JetBrains (s.~f.-c); PostgreSQL (2026); RabbitMQ (2026); Keycloak (2024). Historial y matriz oficial de cada producto, consultados el 5 de noviembre de 2026.\par}
 
 Laravel, PHP, PostgreSQL y Angular tienen horizontes inferiores al contrato: el responsable de Desarrollo registra cada trimestre su soporte y planifica la sustitución antes de vencimiento. RabbitMQ requiere una actualización temprana antes del fin comunitario de la rama de referencia, aun durante desarrollo. No se atribuye al CLIENTE un contrato de soporte comercial no contratado.
 
@@ -79,7 +90,7 @@ La Tabla~\ref{tab:inventario-software} reúne el inventario complementario y la 
 
 \begin{tablalafrox}{Inventario complementario y control de vigencia}{tab:inventario-software}{F{0.23} F{0.23} Y}{\cab{Componente} & \cab{Línea base lógica} & \cab{Control durante 56 meses}}
 PostGIS & 3.x compatible con PostgreSQL 16. & Compatibilidad y fin de soporte de la distribución registrados antes de liberar. \\
-Kotlin/Android & Kotlin 2.4 y Android 15 en TC58e y MC9400, que el fabricante actualiza hasta Android 18. & Kotlin 2.4 tiene soporte hasta diciembre de 2027 y se migra a la rama siguiente antes de su fin. Matriz OS, SDK y periféricos por modelo, MDM impide OS fuera de soporte. \\
+Kotlin/Android & Kotlin 2.4 y Android 15 en TC58e y MC9400, que el fabricante actualiza hasta Android 18. & La biblioteca estándar JVM de Kotlin 2.4 tiene soporte de seguridad hasta el 3 de diciembre de 2027; los plugins y periféricos se comprueban por separado y la línea se actualiza antes de su fin. Matriz OS, SDK y periféricos por modelo, MDM impide OS fuera de soporte. \\
 Room/SQLite & Versión estable de AndroidX Room y SQLite incorporada. & Parches fijados por Gradle, migración de cola sin perder registros sin confirmar. \\
 Keycloak & 26.x, parche soportado al liberar. & Revisión trimestral del ciclo oficial, migrar junto al adaptador OIDC. \\
 Tailwind/Node/RxJS & Versiones compatibles con Angular y su toolchain. & Archivo de bloqueo y matriz de compatibilidad, Node solo construye el cliente. \\
@@ -90,7 +101,6 @@ Apple Safari --- macOS, iOS y iPadOS & Versión estable mayor vigente y la inmed
 Composer\slash PHPUnit\slash PCOV\slash PHPStan\slash Pint\slash PHPMD\slash PHPCPD\slash PhpMetrics\slash deptrac & Versiones compatibles con PHP 8.5 y Laravel 13. & Composer lock, análisis de licencia, audit, cobertura, complejidad, duplicación, deuda, fronteras entre módulos y regresión, no entran herramientas de prueba al runtime. \\
 JUnit 5/Kover/Espresso/detekt/ktlint & Versiones compatibles con Kotlin, Android y el parque Zebra. & Cobertura de dominio y sincronización, pruebas de interfaz y controles de estilo y complejidad antes de liberar el artefacto móvil. \\
  Jest\slash Playwright\slash ESLint\slash axe-core\slash OWASP ZAP\slash Pact\slash Spectral\slash MobSF\slash k6\slash AWS Fault Injection Service  &  Versiones compatibles con Angular, Android, las APIs y los ambientes AWS.  &  Regresión y pruebas de extremo a extremo de portales, lint, accesibilidad WCAG 2.2 A/AA, DAST, contratos, análisis de la aplicación Android, carga y estrés e inyección controlada de fallas en QA y Preproducción.  \\
-Symfony ExpressionLanguage & Versión mantenida compatible con PHP 8.5 y Laravel 13, fijada en Composer lock. & Motor de reglas de 4.1.3.4: registrar versión y soporte, revisar vulnerabilidades y probar resultados de reglas y reversión antes de actualizar. \\
 php-amqplib/AWS SDK/swagger-php & Bibliotecas mantenidas compatibles con PHP 8.5. & Contrato AMQP, sobre JSON y generación OpenAPI bloquean cambios incompatibles. \\
 OpenAS2/JVM & OpenAS2 4.9 sobre Java 21 LTS, compatible con los perfiles de las cadenas. & Certificados, licencia, runtime Java y pruebas MDN registrados antes de habilitar INT-08. \\
 OpenTelemetry/ADOT & Colector ADOT 0.50 y SDK estable de OpenTelemetry para PHP. & Ensayo de recepción OTLP, correlación, buffer y exportación tras corte. \\
@@ -122,6 +132,6 @@ Identidad y administración & Guard OIDC, políticas por recurso y portal Angula
 Contratos, pruebas y trazas & \texttt{swagger-php}, AsyncAPI, PHPUnit y OpenTelemetry PHP. & Contratos de API y eventos verificados, con correlación. \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-19-anexo-4-1-p-tecnologias-soporte}--\pageref*{fuente-19-anexo-4-1-p-tecnologias-soporte-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: capacidades documentadas de Laravel 13 (s.~f.-a--d), contratos OIDC/AMQP y diseño de perfiles HTTP/CLI en ADR-23. La tabla define comprobaciones de integración, no resultados ejecutados.\par}
 
 \label{fuente-19-anexo-4-1-p-tecnologias-soporte-fin}

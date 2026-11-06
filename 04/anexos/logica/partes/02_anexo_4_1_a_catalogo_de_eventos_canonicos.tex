@@ -5,26 +5,26 @@
 \addcontentsline{toc}{section}{Anexo 4-A — Catálogo de eventos canónicos}
 La tabla identifica, para cada evento canónico, su productor, sus consumidores, la clave de partición y el hecho del caso o la decisión del numeral 16.1 que lo origina.
 
-\begin{tablalafrox}{Eventos canónicos del dominio}{tab:eventos-canonicos}{F{0.16} F{0.08} F{0.18} F{0.15} Y}{\cab{Evento} & \cab{Productor} & \cab{Consumidores} & \cab{Clave de partición} & \cab{Origen en el caso / Decisión}}
-RecepcionConfirmada & M1 & M2, M9, ACL$\rightarrow$ERP & site\_id & Cap. 18, criterio 1: retiro sanitario < 2 h \\
-StockReservado / ReservaLiberada & M2 & M3, M5 & sku\_id & Decisión 16.1 N\textdegree{} 8: doble compromiso stock \\
-PedidoConfirmado & M3 & M4, M5, M10, M11 & pedido\_id & M11 consume el evento solo para responder a la cadena en pedidos de ese canal, M3 confirma el pedido \\
-MisionPreparada & M5 & M6, ACL$\rightarrow$ERP & pedido\_id & Cierra ciclo bodega a andén \\
-EntregaRegistrada & M6 & M7, M8, M10, ACL & entrega\_id & Decisión 16.1 N\textdegree{} 1: entrega cumplida / OTIF \\
-DevolucionRegistrada & M8 & M2, M7, M10 & entrega\_id & Decisión 16.1 N\textdegree{} 12: efecto sobre DTE emitido \\
-EnvaseMovido & M8 & M2, M10 & cliente\_id & Decisión 16.1 N\textdegree{} 10: 68.000 canastillos, 9.400 pallets, 14\% pérdida \\
- ExcursionTermicaDetectada  &  M9 (borde)  &  M2 (retención), M5 (bloqueo), M10, alertas  &  shipment\_id  &  Decisión 16.1 N° 4: bloqueo local < 5 s  \\
+\begin{tablalafrox}{Eventos canónicos del dominio}{tab:eventos-canonicos}{F{0.16} F{0.11} F{0.18} F{0.15} Y}{\cab{Evento} & \cab{Emisor} & \cab{Consumidores} & \cab{Clave de partición} & \cab{Origen en el caso / Decisión}}
+\mbox{Recepcion}\allowbreak\mbox{Confirmada} & M1 & M2, M9, ACL$\rightarrow$ERP & site\_id & Cap. 18, criterio 1: retiro sanitario < 2 h \\
+\mbox{Stock}\allowbreak\mbox{Reservado} / \mbox{Reserva}\allowbreak\mbox{Liberada} & M2 & M3, M5 & sku\_id & Decisión 16.1 N\textdegree{} 8: doble compromiso stock \\
+\mbox{Pedido}\allowbreak\mbox{Confirmado} & M3 & M4, M5, M10, M11 & pedido\_id & M11 consume el evento solo para responder a la cadena en pedidos de ese canal, M3 confirma el pedido \\
+\mbox{Mision}\allowbreak\mbox{Preparada} & M5 & M6, ACL$\rightarrow$ERP & pedido\_id & Cierra ciclo bodega a andén \\
+\mbox{Entrega}\allowbreak\mbox{Registrada} & M6 & M7, M8, M10, ACL & entrega\_id & Decisión 16.1 N\textdegree{} 1: entrega cumplida / OTIF \\
+\mbox{Devolucion}\allowbreak\mbox{Registrada} & M8 & M2, M7, M10 & entrega\_id & Decisión 16.1 N\textdegree{} 12: efecto sobre DTE emitido \\
+\mbox{Envase}\allowbreak\mbox{Movido} & M8 & M2, M10 & cliente\_id & Decisión 16.1 N\textdegree{} 10: 68.000 canastillos, 9.400 pallets, 14\% pérdida \\
+\mbox{Excursion}\allowbreak\mbox{Termica}\allowbreak\mbox{Detectada} &  M9 (borde)  &  M2 (retención), M5 (bloqueo), M10, alertas  &  shipment\_id  &  Decisión 16.1 N° 4: bloqueo local < 5 s  \\
 
- DisposicionSanitariaRegistrada  &  M9  &  M2, M5, M10  &  sitio y lote  &  Decisión 16.1 N° 4: solo Calidad dispone, UUID, versión, motivo y evidencia registrados antes de continuar.  \\
-RendicionCerrada & M7 & M10, ACL$\rightarrow$ERP & conductor\_id & Control efectivo que circula en ruta \\
- DesviacionDeRutaDetectada  &  M12  &  M10, M9  &  ruta\_id  &  Costo de servir y alerta al centro de control sobre 3 km de desvío, no control de jornada.  \\
-  AdvertenciaTermica & M9 borde & TC58e, M10, avisos & vehículo / compartimento & Aviso temprano; regla por familia. \\
-  CriticaTermica & M9 borde & TC58e, M9, M6 & SSCC / incidente & Retención sin red; nunca se cierra por recuperación. \\
-  SSCCRetenido & M9 (gateway o TC58e) & M2, M5, M6 & SSCC / incidente & Crítica, contradicción, exposición o estado no confiable. \\
-  ContradiccionTermica & M9 (TC58e) & M9, Calidad & vehículo / compartimento & Comparación de simulador, sensor independiente y aire. \\
-  EstadoNoConfiable & M9 (TC58e) & M9, M6 & vehículo / compartimento & Latido vencido o dos simuladores fallidos. \\
-  KitSinReportar & M9 nube & Calidad, despacho & vehículo & Silencio de ambos caminos durante 6 min. \\
-  OrdenCalidadAplicada / OrdenCalidadRechazada & M9 (TC58e) & M9, M2, M6 & SSCC / incidente / versión & Firma, revisión y estado vigente; ejecución idempotente. \\
+\mbox{Disposicion}\allowbreak\mbox{Sanitaria}\allowbreak\mbox{Registrada} &  M9  &  M2, M5, M10  &  sitio y lote  &  Decisión 16.1 N° 4: solo Calidad dispone, UUID, versión, motivo y evidencia registrados antes de continuar.  \\
+\mbox{Rendicion}\allowbreak\mbox{Cerrada} & M7 & M10, ACL$\rightarrow$ERP & conductor\_id & Control efectivo que circula en ruta \\
+\mbox{Desviacion}\allowbreak\mbox{De}\allowbreak\mbox{Ruta}\allowbreak\mbox{Detectada} &  M12  &  M10, M9  &  ruta\_id  &  Costo de servir y alerta al centro de control sobre 3 km de desvío, no control de jornada.  \\
+\mbox{Advertencia}\allowbreak\mbox{Termica} & M9 borde & TC58e, M10, avisos & vehículo / compartimento & Aviso temprano; regla por familia. \\
+\mbox{Critica}\allowbreak\mbox{Termica} & M9 borde & TC58e, M9, M6 & SSCC / incidente & Retención sin red; nunca se cierra por recuperación. \\
+\mbox{SSCC}\allowbreak\mbox{Retenido} & M9 (gateway o TC58e) & M2, M5, M6 & SSCC / incidente & Crítica, contradicción, exposición o estado no confiable. \\
+\mbox{Contradiccion}\allowbreak\mbox{Termica} & M9 (TC58e) & M9, Calidad & vehículo / compartimento & Comparación de simulador, sensor independiente y aire. \\
+\mbox{Estado}\allowbreak\mbox{No}\allowbreak\mbox{Confiable} & M9 (TC58e) & M9, M6 & vehículo / compartimento & Latido vencido o dos simuladores fallidos. \\
+\mbox{Kit}\allowbreak\mbox{Sin}\allowbreak\mbox{Reportar} & M9 nube & Calidad, despacho & vehículo & Silencio de ambos caminos durante 6 min. \\
+\mbox{Orden}\allowbreak\mbox{Calidad}\allowbreak\mbox{Aplicada} / \mbox{Orden}\allowbreak\mbox{Calidad}\allowbreak\mbox{Rechazada} & M9 (TC58e) & M9, M2, M6 & SSCC / incidente / versión & Firma, revisión y estado vigente; ejecución idempotente. \\
 \end{tablalafrox}
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de las Bases Técnicas del caso (cap.~16, pp.~28--29) y de los flujos del apartado 4.1. Diseño propuesto: (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-02-anexo-4-1-a-catalogo-de-eventos-canonicos}--\pageref*{fuente-02-anexo-4-1-a-catalogo-de-eventos-canonicos-fin}).\par}
