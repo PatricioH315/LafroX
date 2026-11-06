@@ -12,7 +12,7 @@ Los conductores de transportistas externos ($\approx$\,160, de 10 empresas) no p
   \item La autorización se limita a la ruta asignada y a M6, M7 y M8 mediante rol y atributos de turno, sitio y dispositivo.
 \end{itemize}
 
-La aplicación conserva localmente una asignación firmada para el turno de hasta 14 horas y permite capturar eventos mientras no exista red.
+La autorización de bodega conserva el límite de 8 horas por turno. En reparto, la asignación firmada se emite dentro de la hora anterior a la salida y caduca 30 minutos después del fin programado de la ruta, sin superar 16 horas desde su emisión. Este margen es una decisión de diseño para cubrir la ruta de hasta 14,5 horas; no modifica el mínimo contractual de 14 horas sin señal ni autoriza nuevas rutas. La asignación fija conductor, vehículo, ruta, dispositivo, acciones y fechas de inicio y fin. No se renueva sin conexión ni se prolonga por actividad o reinicio. Si vence, el terminal conserva lo capturado y bloquea nuevas operaciones protegidas hasta revalidar la identidad. AL-ID-01 del Anexo 4-M comprueba los límites temporales.
 
 \begin{itemize}
   \item La caché local de identidad, de solo lectura y TTL de 24 horas, no acorta por sí sola la vigencia de esa asignación de terreno, tampoco la renueva.
@@ -28,9 +28,9 @@ Al finalizar el turno expiran la asignación y sus permisos.
 
 \begin{itemize}
   \item Si se denuncia pérdida de dispositivo o baja anticipada, Keycloak revoca el acceso conectado y el equipo borra los datos al recuperar conexión.
-  \item La revocación inmediata de RT-12.07 (Bases Técnicas Transversales, cap. 12, p. 25) se cumple en todo lo que depende de la solución.
-  \item Al recibir la denuncia, Keycloak revoca la sesión y las credenciales, la API rechaza toda operación posterior del dispositivo y la sincronización rechaza los eventos firmados después de la hora de revocación, que quedan en cuarentena para revisión.
+  \item RT-12.07 (Bases Técnicas Transversales, cap. 12) exige declarar la revocación; se distingue su efecto conectado de la exposición del equipo aislado.
+  \item Al recibir la denuncia, Keycloak revoca la sesión y las credenciales, la API rechaza el acceso posterior conectado y la sincronización pone en cuarentena los eventos posteriores a la revocación. Se conserva su evidencia y se concilia contra operaciones realizadas; no se descartan hechos físicos ni se confía solo en la hora declarada por el terminal.
   \item Un equipo sin señal no puede borrarse antes de que se conecte.
   \item Para ese intervalo, la aplicación exige el PIN personal en cada sesión, cifra los datos locales y bloquea la rendición y el cobro hasta validar la evidencia.
-  \item La exposición queda acotada a los datos ya presentes en el equipo y a un máximo de 14 horas.
+  \item La exposición se limita a los datos y ruta autorizados hasta la expiración firmada, con cota de 16 horas desde emisión y hasta 30 minutos después del fin programado. Una baja no conocida localmente no se presenta como revocada instantáneamente. AL-ID-01 comprueba bloqueo local y conciliación posterior.
 \end{itemize}

@@ -45,6 +45,9 @@ LafroX documenta la creación inicial de la cuenta raíz y guarda el procedimien
 
 La selección distingue dos decisiones. El monolito modular de ADR-01 reúne M1--M12 bajo contratos de dominio y evita administrar un servicio por módulo. Laravel/PHP implementa ese estilo según ADR-23. La carga mensual y la dotación de operación orientan la decisión, pero la capacidad se verifica con la mezcla de operaciones, las ráfagas y la reconciliación de los Anexos 4-T y 4-W. El mismo estilo puede implementarse con los otros entornos de la Tabla~\ref{tab:comparacion-backends}.
 
+\paragraph{Cambio respecto del Informe 1}
+El Informe 1 proponía Django/Python. La presente propuesta adopta Laravel 13/PHP 8.5 por la composición de APIs, políticas, migraciones, trabajos y planificación del núcleo HTTP/CLI, registrada en ADR-23. Conserva el estilo modular y los contratos de negocio; cambia la implementación del servidor y sus herramientas de construcción y pruebas. Kotlin/Android, Angular, OIDC/AMQP y los eventos JSON mantienen su función. La selección exige repetir contratos, fronteras, idempotencia y autonomía antes de habilitar una ola. Es un cambio de propuesta: no se presupone código previo migrado, experiencia acreditada del equipo ni ventajas de rendimiento sin medición.
+
 \paragraph{Adecuación al núcleo transaccional y al despliegue híbrido}
 Laravel integra rutas, validación, políticas, acceso transaccional, migraciones, trabajos y planificación en un marco común. La propuesta utiliza esas capacidades para los servicios de pedido, inventario y trazabilidad; el contenedor de dependencias vincula interfaces y adaptadores de cada contexto. PHP-FPM atiende HTTP y PHP CLI ejecuta procesos de fondo desde la misma imagen. Los perfiles de 4.2.4.1.1 permiten separar permisos, recursos y reversión de API, WMS local, reconciliación y trabajos (Laravel, s.~f.-a, s.~f.-b, s.~f.-c, s.~f.-d).
 

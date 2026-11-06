@@ -13,11 +13,11 @@ La arquitectura se presenta primero mediante su vista general completa (Figura~\
 \clearpage
 \begin{landscape}
 \begin{center}
-  \includegraphics[width=\linewidth,height=0.86\textheight,keepaspectratio]{figuras/logica/capas/ARQL-01_General_definitivo.pdf}
-  \captionof{figure}{Vista general completa de la arquitectura lógica}
+  \includegraphics[width=\linewidth,height=0.86\textheight,keepaspectratio]{figuras/logica/capas/ARQL-01_General_41_corregida.pdf}
+  \captionof{figure}{Vista general de capas, canales y responsabilidades lógicas}
   \label{fig:arql-general-completa}
 \end{center}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, sección~2.1, pp.~6--7), para los requisitos de capas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Bases Técnicas Transversales, RT-02.01 (ocho capas); caso, cap. 15, RT-03.10 (autonomía). Diseño LafroX: ADR-01/06/23 y contratos de anexos 4-D/4-F.\par}
 \end{landscape}
 
 La vista general muestra cómo cada actor accede a la solución desde su aplicación, portal o consola y se relaciona con los módulos M1--M12. Se lee desde las personas hacia las reglas de negocio, las integraciones y los datos, distinguiendo los componentes de nube y los del sitio. Las conexiones representan intercambios sujetos a autorización, no acceso directo a las bases de datos. Seguridad y observabilidad acompañan todo el recorrido. Sus controles y las condiciones de operación sin conexión se desarrollan en los apartados siguientes.
@@ -36,7 +36,7 @@ La Figura~\ref{fig:arql-capa-1} presenta las responsabilidades de esta capa.
   \captionof{figure}{Presentación: aplicaciones y superficies de trabajo}
   \label{fig:arql-capa-1}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, sección~2.1, pp.~6--7), para los requisitos de capas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Bases Técnicas Transversales, caps. 13 y 17 (interfaces y movilidad); caso, RT-16.30 y RT-17.01 (autoatención). Asignación de actores y canales: Anexo 4-N.\par}
   \end{minipage}
 \end{center}
 
@@ -71,33 +71,9 @@ La autoatención del Portal de Clientes cubre las consultas de estado de entrega
 
 Las consolas de rutas, calidad, BI y administración TI acceden a sus dominios mediante APIs autorizadas. Ningún navegador se conecta directamente a las bases de datos. Esta separación permite aplicar las mismas reglas de acceso y auditoría con independencia de la pantalla utilizada.
 
-Cada perfil de los portales, consolas Angular y aplicaciones Kotlin tiene accesos a todas sus funcionalidades principales desde su pantalla de inicio en un máximo de tres interacciones. Este límite se comprueba por función y perfil en los prototipos y en la aceptación (RT-13.05, Bases Técnicas Transversales, cap. 13, p. 26).
+La presentación distingue operación confirmada, pendiente y rechazada, y conserva la identidad personal en terminales compartidos. Angular y Kotlin utilizan un sistema de diseño común; la vista web se adapta al dispositivo y el terminal de bodega prioriza lectura, guantes y captura local. La autoatención es opcional y no sustituye la compra asistida del canal tradicional.
 
-Angular/Tailwind y Kotlin comparten un sistema de diseño documentado: paleta de hasta cinco colores principales, jerarquía tipográfica de a lo más dos familias, iconografía coherente, retícula y componentes reutilizables con sus estados y reglas de uso (RT-13.09, Bases Técnicas Transversales, cap. 13, p. 26).
-
-Los portales, consolas y aplicaciones permiten elegir modo claro u oscuro, tamaño de texto y densidad de los listados, conservando la preferencia de cada persona en su dispositivo y manteniendo la accesibilidad. Se entregan en español. El caso no exige otros idiomas para sus perfiles operacionales (RT-13.12, Bases Técnicas Transversales, cap. 13, p. 26).
-
-El Portal de Clientes ofrece una vista ligera para teléfonos de bajo costo o de generaciones anteriores, con imágenes bajo demanda, listados paginados y sin animaciones, conservando pedido, estado de entrega, documentos y saldo. Usa los navegadores y sistemas compatibles de la \href{LAFROX-Subdocumento4-Anexos.pdf#tab:inventario-software}{Tabla A.21} del Anexo 4-P y se prueba en equipos de esas categorías antes de su aceptación (RT-17.08, Bases Técnicas Transversales, cap. 17, p. 32).
-
-Los portales y la consola web en Angular 22 con Tailwind CSS adaptan su contenido a escritorio, tableta y teléfono conforme a RT-13.02 (Bases Técnicas Transversales, cap. 13, p. 26). El diseño parte de la pantalla pequeña y utiliza los puntos de quiebre de Tailwind: \texttt{sm} 40 rem, \texttt{md} 48 rem, \texttt{lg} 64 rem, \texttt{xl} 80 rem y \texttt{2xl} 96 rem, equivalentes a 640, 768, 1.024, 1.280 y 1.536 píxeles con la referencia de 16 píxeles por rem (Tailwind Labs, s.~f.). En teléfono, la navegación se recoge en un menú, los formularios se ordenan en una columna y los listados presentan tarjetas con acceso al detalle. En tableta se distribuyen los controles y en escritorio se muestran paneles y columnas adicionales. Se conservan todas las operaciones y los datos necesarios, sin reducir simplemente la escala. La aceptación comprueba cada transición y ambas orientaciones. Los terminales Zebra con Kotlin nativo usan la pantalla fija de cada modelo y un diseño específico para su perfil, con tamaños legibles y controles accesibles.
-
-La matriz de navegadores, versiones y actualización de la \href{LAFROX-Subdocumento4-Anexos.pdf#tab:inventario-software}{Tabla A.21} del Anexo 4-P se aplica a los portales y a la consola web (RT-13.10, Bases Técnicas Transversales, cap. 13, p. 26). Las versiones exactas se registran antes de cada liberación y se contrastan con el conjunto Baseline de la versión de Angular utilizada (Angular, 2026b). El soporte del framework no sustituye las pruebas de la aplicación.
-
-Todas las interfaces permiten recorrer y ejecutar íntegramente sus funciones por teclado, con orden de foco acorde con la lectura y la secuencia de trabajo, foco visible, acceso directo al contenido y ausencia de bloqueos del foco. Los diálogos reciben el foco al abrirse y lo devuelven al control de origen al cerrarse. Tablas, menús y formularios tienen controles semánticos operables mediante Tab, Shift+Tab, flechas, Enter y Escape según corresponda. Se ofrecen atajos documentados y desactivables para buscar, guardar un borrador y volver al inicio del perfil, sin interferir con los del navegador, del sistema ni con la escritura en campos. En Kotlin se verifica además la navegación con teclado físico o conectado al terminal. La aceptación recorre cada flujo por teclado, comprueba el orden y la recuperación del foco y conserva la conformidad WCAG 2.2 AA comprometida (World Wide Web Consortium [W3C], 2023; RT-13.11, Bases Técnicas Transversales, cap. 13, p. 26).
-
-En el canal moderno, el cliente puede registrarse por sí mismo en el Portal de Clientes con el RUT de la empresa, un correo corporativo y una contraseña administrada por Keycloak. Antes de activar la cuenta, la integración con el ERP verifica que el RUT corresponda a un cliente activo habilitado por Puelche. El portal envía un correo de confirmación. Si el RUT no está habilitado, indica que se debe contactar al ejecutivo comercial. En el canal tradicional, la activación asistida por SMS sigue siendo opcional (RF-12.25, Subdocumento 3, Anexo 3.A).
-
-LafroX verifica la conformidad con WCAG 2.2 nivel AA en todas las interfaces de uso humano, con herramientas automáticas y con pruebas manuales de los flujos, incluidos el teclado y las tecnologías de asistencia. Todo incumplimiento confirmado de nivel A o AA impide la promoción a Preproducción y la aceptación hasta que se corrija. El informe de conformidad y la evidencia de las correcciones se entregan al CLIENTE junto con los expedientes de aceptación (RT-13.01, Bases Técnicas Transversales, cap. 13, p. 26).
-
-Cada acción muestra un resultado visual claro, que distingue entre operación confirmada, pendiente de sincronización y rechazada. Los mensajes de error explican en lenguaje simple qué ocurrió y qué debe hacer el usuario, sin mostrar códigos ni trazas técnicas (RT-13.06, Bases Técnicas Transversales, cap. 13, p. 26).
-
-Las interfaces ofrecen alto contraste, controles táctiles de al menos 44 × 44 píxeles, iconos acompañados de texto y flujos guiados paso a paso para usuarios con baja alfabetización digital. En picking se aplican además el tamaño mínimo de 15 × 15 mm y la ausencia de gestos complejos descritos en 4.2.1.2 (RT-13.07, Bases Técnicas Transversales, cap. 13, p. 26).
-
-La pantalla de inicio de cada usuario reúne en una bandeja única las aprobaciones, revisiones y excepciones pendientes de todos los módulos, según sus permisos. En la aplicación Kotlin incluye también los pendientes locales registrados durante un corte. Las tareas se ordenan por criticidad y plazo, con alertas de vencimiento, y cada una se resuelve en el flujo del módulo responsable (RT-16.13, Bases Técnicas Transversales, cap. 16, p. 30).
-
-La búsqueda global de portales, consolas y perfiles Kotlin consulta las interfaces públicas de los módulos. Usa índices de texto completo en PostgreSQL, tolera errores de escritura y ofrece filtros por tipo de información. Cada módulo entrega solo los resultados que el usuario puede ver, también en los conteos de cada filtro. La aceptación verifica una respuesta de hasta dos segundos (RF-17.11). Durante un corte, la aplicación Kotlin busca solo en los datos locales autorizados (RT-16.27, Bases Técnicas Transversales, cap. 16, p. 31).
-
-Los listados de portales, consolas y perfiles Kotlin se pueden ordenar, filtrar y paginar dentro de los permisos del usuario. La exportación en CSV UTF-8 o JSON respeta los filtros y el orden elegidos e incluye todos los registros filtrados, no solo la página visible. Si la exportación necesita datos centrales y no hay enlace, queda pendiente hasta que se recupere la conexión (RT-16.28, Bases Técnicas Transversales, cap. 16, p. 31).
+La accesibilidad WCAG 2.2 AA, la navegación por teclado y los controles comprensibles se verifican por flujo y perfil. La misma política por recurso gobierna bandeja de tareas, búsqueda y exportación: el cliente no puede ampliar su ámbito cambiando un filtro. El Anexo 4-N, apartado «Comportamiento transversal de interfaces», conserva los requisitos concretos, los puntos de quiebre, la matriz de interacción y los criterios de aceptación. AL-UI-01 del Anexo 4-V define la comprobación de accesibilidad y auditoría. La matriz oficial de navegadores y herramientas está en el Anexo 4-P (RT-13.01--13.12 y RT-16.13/27/28, Bases Técnicas Transversales).
 
 \paragraph{Actores del sistema, interfaces y autorización}
 
@@ -137,7 +113,7 @@ La Figura~\ref{fig:arql-capa-2} presenta las responsabilidades de esta capa.
   \captionof{figure}{Borde: entradas públicas, privadas y locales}
   \label{fig:arql-capa-2}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, sección~2.1, pp.~6--7), para los requisitos de capas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Bases Técnicas Transversales, RT-11.07/11.13 (borde y segmentación). Superficies de acceso propuestas: ADR-16 y Anexo 4-R.\par}
   \end{minipage}
 \end{center}
 \end{landscape}
@@ -168,11 +144,11 @@ La Figura~\ref{fig:arql-capa-3} presenta las responsabilidades de esta capa.
 
 \begin{center}
   \begin{minipage}{\linewidth}\centering
-  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{figuras/logica/capas/ARQL-23_Enlace_servicios.pdf}
+  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{figuras/logica/capas/ARQL-23_Enlace_servicios_41_corregida.pdf}
   \captionof{figure}{Puertas de servicio: recorrido central y local}
   \label{fig:arql-capa-3}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, sección~2.1, pp.~6--7), para los requisitos de capas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Caso, RT-03.10 (continuidad); Transversales, RT-12.05 (autorización). Contratos de entrada y perfiles: ADR-06/13 y Anexo 4-N.\par}
   \end{minipage}
 \end{center}
 \end{landscape}
@@ -202,10 +178,10 @@ La bodega dispone además de una puerta de API \emph{local} como función del mo
   \label{fig:arql-17}
 \end{center}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, sección~2.1, pp.~6--7), para los requisitos de capas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Caso, RT-03.10 y RT-03.13 (corte y sincronización); Transversales, RT-12.05/07 (permisos y sesiones). Diseño de acceso local: ADR-06 y protocolos AL-OFF-01/AL-ID-01 del Anexo 4-M.\par}
 \end{landscape}
 
-El manifiesto de turno firmado por Keycloak llega antes del corte. En cada relevo el verificador local, alojado junto a la caché, valida el manifiesto y un segundo factor local: el PIN personal sobre el terminal enrolado por MDM. El manifiesto cubre una ventana de 26 horas y se renueva al menos cada hora mientras hay enlace. Esa vigencia no se confunde con el TTL de 24 horas de la caché ni con la duración de la credencial personal. Si la firma, el turno o los permisos no son válidos, el acceso se deniega y se audita. El permiso queda limitado a funciones de bodega, incluida la recepción física de retornos de M8 y las acciones autorizadas de M9, mientras los eventos y la bitácora se envían después con su identificador original. La prueba debe iniciar el corte antes de dos relevos sucesivos y medir vencimiento, denegación, reintentos y recuperación. La caché de identidad de 24 horas no emite sesiones y el relevo lo habilita el verificador local.
+El acceso local valida el manifiesto de bodega firmado antes del corte y el PIN personal del terminal enrolado. Sus 26 horas de vigencia, renovación horaria y turnos preinscritos permiten los relevos dentro de las 24 horas de autonomía. El vencimiento de la caché descriptiva no renueva ni invalida por sí mismo el manifiesto. La capa de seguridad precisa la referencia temporal, la caducidad personal y la revocación; AL-OFF-01 y AL-ID-01 del Anexo 4-M verifican esos límites.
 
 \begin{landscape}
 \subsubsection{Capa de lógica de negocio (Capa 4)}
@@ -214,11 +190,11 @@ La Figura~\ref{fig:arql-capa-4} presenta las responsabilidades de esta capa.
 
 \begin{center}
   \begin{minipage}{\linewidth}\centering
-  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{figuras/logica/capas/ARQL-24_Negocio.pdf}
+  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{figuras/logica/capas/ARQL-24_Negocio_41_corregida.pdf}
   \captionof{figure}{Negocio: monolito modular Laravel y sus doce módulos}
   \label{fig:arql-capa-4}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, sección~2.1, pp.~6--7), para los requisitos de capas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Caso, cap. 17 (alcance trazable). Límites de los doce módulos y contratos: diseño LafroX, anexos 4-D/4-F y ADR-01/23.\par}
   \end{minipage}
 \end{center}
 \end{landscape}
@@ -265,11 +241,11 @@ La Figura~\ref{fig:arql-capa-5} presenta las responsabilidades de esta capa.
 
 \begin{center}
   \begin{minipage}{\linewidth}\centering
-  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{figuras/logica/capas/ARQL-25_Integracion_eventos.pdf}
+  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{figuras/logica/capas/ARQL-25_Integracion_eventos_41_corregida.pdf}
   \captionof{figure}{Integración: continuidad local y contratos con terceros}
   \label{fig:arql-capa-5}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, sección~2.1, pp.~6--7), para los requisitos de capas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Transversales, RT-02.06 y RT-03.12 (idempotencia y conciliación); caso, cap. 11 (ERP conservado). Interfaces y ACL: anexos 4-G/4-H y ADR-05/17.\par}
   \end{minipage}
 \end{center}
 \end{landscape}
@@ -329,7 +305,7 @@ La disposición sanitaria local usa el perfil de Calidad de la aplicación Kotli
   \label{fig:arql-15}
 \end{center}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, sección~2.1, pp.~6--7), para los requisitos de capas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Caso, RT-03.10/13 y cap. 17 (operación sin señal y alcance); Transversales, RT-02.06/03.12. Recorrido pedido--reserva: contratos de anexos 4-G/4-K y AL-STOCK-01 del Anexo 4-V.\par}
 \end{landscape}
 
 Con conexión, la aplicación envía el pedido por la entrada pública autorizada y M3 valida sus reglas de precio y crédito antes de solicitar la reserva a M2 central. El agente de transferencia del sitio recoge la solicitud mediante conexión saliente. M2 local valida existencia y Calidad y persiste retención, auditoría y bandeja transaccional de salida. Solo después del acuse durable M2 central confirma la reserva y M3 confirma el pedido. La publicación de \texttt{PedidoConfirmado} habilita a M5. M4 y M10 también consumen ese evento conforme a sus contratos. La línea del sitio agrupa M2, su agente de transferencia y el broker local para explicar el protocolo. Las flechas representan mensajes lógicos y no una conexión entrante de la nube al sitio. La secuencia se limita a la confirmación y habilitación de la preparación: la carga preparada sigue retenida si M9 informa un bloqueo o si el ERP no devuelve una guía válida para esa carga, según el apartado de POD, DTE y acuse. Un pedido confirmado no autoriza por sí mismo la salida física.
@@ -341,7 +317,7 @@ Con conexión, la aplicación envía el pedido por la entrada pública autorizad
   \label{fig:arql-16}
 \end{center}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, sección~2.1, pp.~6--7), para los requisitos de capas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Caso, RT-03.10/13 y cap. 17 (operación sin señal y alcance); Transversales, RT-02.06/03.12. Recorrido pedido--reserva: contratos de anexos 4-G/4-K y AL-STOCK-01 del Anexo 4-V.\par}
 \end{landscape}
 
 Sin conexión, la aplicación conserva la intención de compra, no una reserva firme. Al recuperar cobertura envía el mismo UUID por el servicio de sincronización. M3 deduplica y solicita la reserva mediante el mismo protocolo de retención local y acuse durable mostrado en la secuencia conectada. M3 y M2 producen un resultado durable con la regla y la causal de excepción. Si se pierde el acuse de respuesta, el dispositivo conserva el evento y pregunta por ese UUID antes de eliminarlo. Sin acuse local durable, el pedido permanece pendiente. Solo un pedido confirmado alimenta M5, lo que permite explicar al cliente un faltante sin duplicar la venta.
@@ -424,7 +400,7 @@ La Figura~\ref{fig:arql-capa-6} presenta las responsabilidades de esta capa.
   \captionof{figure}{Datos: propiedad y persistencia híbrida}
   \label{fig:arql-capa-6}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, sección~2.1, pp.~6--7), para los requisitos de capas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Transversales, caps. 2 y 5 (dominio y separación de datos); caso, RT-03.10 (autonomía). Dueños de escritura y almacenes: ADR-04 y Anexo 4-N.\par}
   \end{minipage}
 \end{center}
 \end{landscape}
@@ -460,7 +436,7 @@ No se incorpora Valkey local.
   \item Reemplazar la copia de lectura nunca debe borrar pedidos, cobros ni evidencias aún no confirmados por el servidor.
 \end{itemize}
 
-La vigencia de los datos de lectura es independiente de la identidad. Las credenciales de turno duran 8 horas en bodega y 14 horas en terreno. La caché local de identidad es de solo lectura y tiene TTL de 24 horas en VM-05 (Talca), VM-C03 (Concepción) y E-01 de cada cross-docking. Una copia reciente de precios no renueva la sesión y una sesión válida no convierte el stock descargado en una reserva confirmada. El relevo de turno sin IdP lo habilita el verificador local del mismo nodo, conforme a la capa de seguridad de este apartado.
+La vigencia de los datos de lectura es independiente de la identidad. Las credenciales de bodega duran hasta 8 horas; las de reparto cubren el fin programado de la ruta con el límite absoluto de 16 horas y el margen de 30 minutos definidos en la capa de seguridad. La caché local de identidad es de solo lectura y tiene TTL de 24 horas en VM-05 (Talca), VM-C03 (Concepción) y E-01 de cada cross-docking. Una copia reciente de precios no renueva la sesión y una sesión válida no convierte el stock descargado en una reserva confirmada. El relevo de turno sin IdP lo habilita el verificador local del mismo nodo, conforme a la capa de seguridad de este apartado.
 
 La separación transaccional/analítica es estricta: la analítica no lee del transaccional para evitar degradar la ventana crítica de despacho. Las latencias comprometidas son: operación del día $\leq$ 5 minutos, cierre comercial $\leq$ 2 horas, gestión $\leq$ 4 horas.
 
@@ -480,7 +456,7 @@ La Figura~\ref{fig:arql-capa-7} presenta las responsabilidades de esta capa.
   \captionof{figure}{Seguridad: identidad y autorización transversal}
   \label{fig:arql-capa-7}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, sección~2.1, pp.~6--7), para los requisitos de capas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Transversales, RT-11.01 y RT-12.01/05/07 (confianza cero, identidad y sesiones); NIST (2020). Controles propuestos: ADR-06 y Anexo 4-R.\par}
   \end{minipage}
 \end{center}
 \end{landscape}
@@ -522,14 +498,11 @@ En conexión, el token de acceso dura como máximo 30 minutos,
   \item Estas duraciones no renuevan ni alargan una autorización offline, responden a los controles de RT-12.07--12.08.
 \end{itemize}
 
-La credencial de turno dura hasta 8 horas en bodega y hasta 14 horas en terreno. Su vigencia se cuenta desde la emisión, no desde la última pérdida de señal. La ventana física de ruta de hasta 14,5 horas de 4.2.1.2 no extiende esa autorización: al vencer, se conserva lo capturado y se requiere renovación con conexión antes de nuevas operaciones protegidas.
+La autorización de bodega conserva el límite de 8 horas por turno. En reparto, la asignación firmada se emite dentro de la hora anterior a la salida y caduca 30 minutos después del fin programado de la ruta, sin superar 16 horas desde su emisión. Este margen es una decisión de diseño para cubrir la ruta de hasta 14,5 horas; no modifica el mínimo contractual de 14 horas sin señal ni autoriza nuevas rutas. La asignación fija conductor, vehículo, ruta, dispositivo, acciones y fechas de inicio y fin. No se renueva sin conexión ni se prolonga por actividad o reinicio. Si vence, el terminal conserva lo capturado y bloquea nuevas operaciones protegidas hasta revalidar la identidad. AL-ID-01 del Anexo 4-M comprueba los límites temporales.
 
-\begin{itemize}
-  \item Mientras existe enlace, Keycloak renueva al menos cada hora un manifiesto firmado con los turnos y permisos preinscritos para una ventana de 26 horas. Así, incluso si el corte comienza justo antes de la renovación siguiente, quedan al menos 25 horas de verificación local.
-  \item La caché de identidad, de solo lectura y TTL de 24 horas, conserva datos recibidos en VM-05 (Talca), VM-C03 (Concepción) y E-01 de cada cross-docking, pero no emite sesiones.
-  \item Al relevarse un turno sin enlace, el verificador del mismo nodo comprueba la firma y vigencia del manifiesto y un segundo factor local: el PIN personal sobre el terminal enrolado por MDM. Limita el acceso a M1, M2, M5, a la recepción física de retornos de M8 y a las acciones autorizadas de M9, bloquea intentos repetidos y registra cada decisión.
-  \item El dispositivo compartido identifica el contexto, pero no sustituye la identidad personal del operario. Los detalles de claves y alojamiento pertenecen a 4.2 (ADR-06).
-\end{itemize}
+El manifiesto de bodega contiene identidades, dispositivos, roles y turnos autorizados y lo firma la autoridad central antes del corte. Dura 26 horas desde la emisión y se renueva al menos cada hora mientras existe enlace; con una antigüedad inicial no mayor de una hora quedan al menos 25 horas de vigencia. Cada credencial personal sigue limitada a su propio turno. El verificador comprueba firma, emisor, sitio, dispositivo, turno y permisos, exige PIN personal y registra la decisión. La caché descriptiva de 24 horas no emite ni renueva sesiones: al vencer, el manifiesto vigente aporta por sí mismo los atributos firmados necesarios para el acceso acotado. Sin manifiesto válido, o si no puede establecerse una hora confiable, no se abre una sesión nueva.
+
+El nodo conserva la última referencia temporal validada y comprueba que el reloj no retroceda para extender permisos. Un reinicio no cambia la expiración; si se pierde la referencia temporal y no se puede verificar su continuidad, se deniega la nueva autenticación. Una revocación conocida en el sitio bloquea el permiso local de inmediato. Una revocación solo conocida por la autoridad central no puede propagarse durante un aislamiento total: el permiso conserva como límite su expiración y se concilian los eventos contra el registro de bajas al reconectar. AL-OFF-01 y AL-ID-01 especifican estas comprobaciones.
 
 La revocación es inmediata en los servicios conectados.
 
@@ -540,15 +513,7 @@ La revocación es inmediata en los servicios conectados.
   \item La cuenta de emergencia exige doble autorización, alcance acotado, custodia fuera de banda, registro y rotación posterior, no reemplaza la autenticación ordinaria de todos los operarios (RT-03.10 y RT-12.13, Bases Técnicas Transversales, cap. 3, p. 9, y cap. 12, p. 26).
 \end{itemize}
 
-Keycloak centraliza la identidad con OpenID Connect y OAuth 2.1, o con SAML 2.0 cuando la integración con el CLIENTE lo requiera, y se conecta con su directorio corporativo mediante LDAP o su equivalente en la nube. La aceptación verifica los protocolos usados y la sincronización con ese directorio (RT-12.01, Bases Técnicas Transversales, cap. 12, p. 25).
-
-Las altas, los cambios de permisos y las bajas del ciclo laboral o contractual, registrados por perfiles autorizados, activan trabajos de Laravel que crean, actualizan o deshabilitan la cuenta en Keycloak y revocan sus sesiones y credenciales. La baja se completa antes de 24 horas desde la desvinculación, con aprobación y auditoría, y se aplica tanto a la revocación conectada como a la local descritas en este apartado (RT-12.10, Bases Técnicas Transversales, cap. 12, p. 26).
-
-El CLIENTE administra por sí mismo, desde la consola Angular, usuarios, roles, permisos y unidades organizacionales con sus jerarquías, mediante los grupos y atributos de Keycloak. Cada cambio registra su autor y su alcance, y la autorización sobre cada recurso sigue en el módulo que lo administra (RT-16.01, Bases Técnicas Transversales, cap. 16, p. 29).
-
-En los terminales enrolados, la autenticación usa pasos guiados con texto e iconos. El PIN personal puede ingresarse con guantes térmicos a −22 °C en bodega, y con una mano, de pie y a la intemperie en la puerta del cliente. En los equipos compartidos, cada relevo cierra la sesión anterior y valida su identidad con la credencial de turno firmada. Ante una rotación sin aviso se usan los suplentes ya enrolados (4.1.18). La aceptación verifica estas interacciones y la incorporación asistida, con un tutor de turno y aprendizaje en el puesto, pensada para la baja alfabetización digital y el 38~\% de rotación anual en preparación (RT-12.11, Bases Técnicas Transversales, cap. 12, p. 26; Bases Técnicas del caso, cap. 15, p. 27).
-
-Los clientes tradicionales y de food service, las cuentas de personas de los supermercados, las empresas transportistas con sus conductores y los proveedores se registran, verifican su identidad y recuperan su acceso por sí mismos en sus portales, con Keycloak como única autoridad de identidad. En el canal tradicional, el uso del portal sigue siendo opcional. El registro comprueba el contacto y su vínculo con la entidad y el perfil antes de otorgar permisos. Quienes no tienen correo corporativo usan el teléfono y el código OTP descritos en 4.1.18. La recuperación exige un factor enrolado previamente, invalida las credenciales anteriores y queda auditada. Conocer el RUT o el nombre de la empresa no basta para recuperar el acceso (RT-12.12, Bases Técnicas Transversales, cap. 12, p. 26; Bases Técnicas del caso, cap. 15, p. 27).
+La federación OIDC y la integración del directorio mantienen a Keycloak como única autoridad. Altas, cambios de rol y bajas se tramitan desde perfiles autorizados con aprobación y auditoría. El Anexo 4-R, apartado «Ciclo de identidad y custodia», conserva los protocolos de federación, gestión de claves y sesiones; AL-ID-01 verifica los límites temporales locales y AL-ACT-01 la segregación por recurso.
 
 \paragraph{Clasificación, cifrado y custodia}
 La Tabla~\ref{tab:seguridad-clasificacion} resume cómo cambia el control según el dato. La clasificación se aplica al evento, su copia local, las APIs y las exportaciones, no solo a la base de datos central.
@@ -563,7 +528,7 @@ Público & Catálogo sin precios. & Lectura anónima controlada. & Integridad y 
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de RT-11.03, RT-11.09 y RT-11.10 (Bases Técnicas Transversales, cap.~11, p.~23; Bases Técnicas del caso, cap.~15, p.~27). Diseño propuesto: (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
 
-La categoría confidencial exige separar quién puede usar el dato de quién administra su almacenamiento: el acceso a la base no revela por sí solo comportamiento de pago ni geolocalización. Todo dato en reposo se cifra. Los campos sensibles del caso reciben además cifrado por campo con AES-256 y claves de AWS KMS. En tránsito se exige TLS 1.3 en las entradas externas y entre los componentes de la solución, se prohíben TLS 1.0 y 1.1, se automatiza la gestión de certificados con alerta previa a su vencimiento y se emplea mTLS entre servicios. La configuración y sus excepciones documentadas se detallan en el Anexo 4-R. La custodia y rotación de claves mantienen separación de funciones. El PAN de tarjetas no se almacena. Se usa la tokenización de la pasarela. El RUT requiere una técnica de seudonimización con acceso a la clave separado y una finalidad documentada, sin confundir cifrado reversible con anonimización. La geolocalización de personas conserva la retención de 12 meses del caso y un registro de consultas. La región primaria sa-east-1 y la secundaria us-east-1 implican transferencias internacionales sujetas a aprobación del CLIENTE. AWS actúa como encargado bajo contrato con cláusulas tipo. El CLIENTE administra KMS y la geolocalización de personas se excluye de la réplica secundaria, conforme se desarrolla en 4.3.2 (Bases Técnicas del caso, cap. 15, pp. 26–30; Bases Técnicas Transversales, cap. 11, pp. 23–24; RT-11.08–11.10 y RT-16.09).
+La clasificación acompaña al dato en API, evento, terminal y exportación. El cifrado por campo impide que administrar la base conceda acceso al texto sensible; las claves y sus permisos se separan del rol de almacenamiento. El Anexo 4-R detalla custodia, rotación, cifrado en tránsito y exclusiones de datos. La residencia y el despliegue mantienen lo declarado en las secciones físicas; esta vista define permisos y límites de uso, sin dar por aprobada una transferencia.
 
 El CLIENTE consulta y exporta la auditoría desde la consola Angular mediante la API Laravel, con filtros combinables por persona, período, entidad y tipo de operación, sin acceso a la base de datos. La consulta reutiliza los campos del registro de auditoría y exporta el resultado filtrado en CSV UTF-8 o JSON bajo los permisos del perfil. Para volúmenes extensos emplea el trabajo asíncrono, seguimiento y descarga protegida de 5.2.8 (Subdocumento 5, sección 5.2.8; Subdocumento 5, Anexo 5-A; RT-16.08, Bases Técnicas Transversales, cap. 16, p. 29).
 
@@ -604,7 +569,7 @@ La Figura~\ref{fig:arql-capa-8} presenta las responsabilidades de esta capa.
   \captionof{figure}{Observabilidad: correlación de nube y sitios}
   \label{fig:arql-capa-8}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, sección~2.1, pp.~6--7), para los requisitos de capas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Transversales, RT-03.16 (observabilidad). Correlación, retención local y alarmas: ADR-14 y Anexo 4-N.\par}
   \end{minipage}
 \end{center}
 \end{landscape}
