@@ -16,7 +16,7 @@
 \setcounter{chapter}{7}
 \chapter{Introducción a los Riesgos}
 
-Este subdocumento establece cómo LafroX gestionará los riesgos que podrían comprometer la ejecución y la operación de la solución propuesta para Distribuidora Puelche S.A. Su análisis parte de las necesidades de trazabilidad sanitaria, confiabilidad de las entregas y control de la información descritas en el Subdocumento 2, y considera cómo los eventos inciertos pueden afectar el alcance y los criterios de aceptación definidos en el Subdocumento 3. Así, las decisiones de arquitectura e integración del Subdocumento 4 se examinan frente a posibles interrupciones de conectividad, fallas de servicios externos o incidentes de seguridad, mientras que el modelo y la gestión de datos del Subdocumento 5 permiten reconocer la exposición asociada a antecedentes incompletos, diferencias de inventario y dificultades de migración que podrían afectar la trazabilidad o impedir una puesta en marcha aceptable. Estas condiciones también dependen de las personas y de la coordinación del proyecto: la organización presentada en el Subdocumento 1 proporciona la base para asignar responsabilidades, y los mecanismos de gobierno del Subdocumento 6 encauzan las decisiones y el escalamiento. A su vez, la EDT, las dependencias y las olas de implantación del Subdocumento 7 permiten situar los riesgos en el trabajo previsto, considerando la disponibilidad de equipos, la participación de la contraparte y la adopción de los usuarios, así como sus posibles efectos sobre los hitos y la continuidad operacional. Para abordar estas relaciones, la sección 8.1 define el ciclo de gestión, los roles, las escalas de valoración y las reglas de registro y cierre; la sección 8.2 organiza los riesgos mediante la RBS y desarrolla su análisis cualitativo y la estimación cuantitativa del esfuerzo adicional; y la sección 8.3 plantea las respuestas, la gestión de reservas y las condiciones de factibilidad y aceptación. El desarrollo se complementa con el Anexo 8.A, que detalla las respuestas propuestas, y el Anexo 8.B, que presenta las estimaciones de esfuerzo y sus valores esperados. El Formulario T-16 reúne el registro de riesgos, sus valoraciones, disparadores y responsables propuestos, y conserva los identificadores que permiten seguir cada riesgo entre el cuerpo del subdocumento y los anexos. Esta articulación vincula el análisis con las decisiones del proyecto y facilita su seguimiento, sin dar por implementadas las respuestas ni por comprobada su eficacia.
+Este subdocumento establece cómo LafroX gestionará los riesgos que podrían comprometer la ejecución y la operación de la solución propuesta para Distribuidora Puelche S.A. Su análisis parte de las necesidades de trazabilidad sanitaria, confiabilidad de las entregas y control de la información descritas en el Subdocumento 2, y considera cómo los eventos inciertos pueden afectar el alcance y los criterios de aceptación definidos en el Subdocumento 3. Así, las decisiones de arquitectura e integración del Subdocumento 4 se examinan frente a posibles interrupciones de conectividad, fallas de servicios externos o incidentes de seguridad, mientras que el modelo y la gestión de datos del Subdocumento 5 permiten reconocer la exposición asociada a antecedentes incompletos, diferencias de inventario y dificultades de migración que podrían afectar la trazabilidad o impedir una puesta en marcha aceptable. Estas condiciones también dependen de las personas y de la coordinación del proyecto: la organización presentada en el Subdocumento 1 proporciona la base para asignar responsabilidades, y los mecanismos de gobierno del Subdocumento 6 encauzan las decisiones y el escalamiento. A su vez, la EDT, las dependencias y las olas de implantación del Subdocumento 7 permiten situar los riesgos en el trabajo previsto, considerando la disponibilidad de equipos, la participación de la contraparte y la adopción de los usuarios, así como sus posibles efectos sobre los hitos y la continuidad operacional. Para abordar estas relaciones, la sección 8.1 define el ciclo de gestión, los roles, las escalas de valoración y las reglas de registro y cierre; la sección 8.2 organiza los riesgos mediante la RBS y desarrolla su análisis cualitativo y la estimación cuantitativa del esfuerzo adicional; y la sección 8.3 plantea las respuestas, la gestión de reservas y las condiciones de factibilidad y aceptación. El desarrollo se complementa con el Anexo 8.A, que detalla las respuestas propuestas, y el Anexo 8.B, que presenta las estimaciones de esfuerzo y sus valores esperados, y el Anexo 8.C, que justifica las valoraciones de impacto. El Anexo 8.D documenta los cruces con S4, S7 y S13 y distingue las correspondencias verificadas de los hallazgos incorporados y su clasificación vigente. El Anexo 8.E conserva el seguimiento interno de diseño y calidad y sus destinos propuestos. El Formulario T-16 reúne el registro de riesgos, sus valoraciones, disparadores y responsables propuestos, y conserva los identificadores que permiten seguir cada riesgo entre el cuerpo del subdocumento y los anexos. Esta articulación vincula el análisis con las decisiones del proyecto y facilita su seguimiento, sin dar por implementadas las respuestas ni por comprobada su eficacia.
 
 \section{Plan de riesgos}
 
@@ -48,49 +48,57 @@ IMP & Patricio Henríquez & Guillermo Castillo; equipo IMP & CAL: usuarios; SEG:
 
 Las responsabilidades de DAT e IMP se transfieren al frente F8 de Operación, como establece el Subdocumento 13. Para que no dependan de una sola persona, desde el mes 22 Bastián Trejo, que sigue en el Comité de Arquitectura, es suplente de Guillermo Castillo en DAT y DES, y Maximiliano Miño lo es en IMP; ambos continúan hasta el mes 56 (Subdocumento 1, Tabla 1.6; Subdocumento 13, transferencia desde el mes 22). Las decisiones sanitarias requieren aprobación de Calidad y las de privacidad, de Seguridad. La Contraparte Técnica acepta con acta; Operaciones autoriza cortes y Calidad del CLIENTE decide sobre los aspectos sanitarios. La agenda de decisiones se fija en mes 1 y se sigue en el registro. Los cambios físicos siguen el gobierno de arquitectura.
 
+\paragraph{Dependencias y decisiones del CLIENTE.}
+Para los 28 riesgos que requieren un insumo o decisión del CLIENTE, la Tabla 8.A.2 identifica la contraparte funcional, la solicitud con evidencia, el plazo y la contingencia por falta de respuesta. El dueño LafroX conserva la gestión del riesgo; la contraparte entrega o decide dentro de su autoridad. La Contraparte Técnica (CT) recibe y encauza solicitudes y acepta entregables con acta; no sustituye la decisión sanitaria de Calidad ni la autorización del propietario de un vehículo. El Jefe de Proyecto registra en mes 1 el titular designado y suplente de cada cargo del CLIENTE, sin atribuirle una persona no identificada por este.
+
+Los meses son relativos al inicio contractual. En la matriz, D es la fecha de la actividad o ventana indicada de la línea base vigente; D-10 y D-5 son diez y cinco días hábiles antes de D. LafroX cursa solicitudes completas a D-10 y pide respuesta a D-5, salvo plazo específico más temprano. Para compromisos de mes 1, las cursa en los primeros cinco días hábiles. Cada solicitud incluye ID, antecedentes, decisión o evidencia requerida, destinatario, fecha límite y actividad bloqueada. Las fechas D se registran al programar cada ola o actividad, sin cambiar el calendario contractual. Estos objetivos de coordinación se proponen para acordarlos en el arranque; no acreditan aceptación previa del CLIENTE ni sustituyen los diez días hábiles de revisión y diez de subsanación del art. 18.3 para recepción formal de entregables.
+
+Al vencer una solicitud, el dueño informa a JP y CT el mismo día hábil con la evidencia faltante y efecto en la tarea. JP solicita a CT encauzar la decisión en un día hábil; si sigue sin resolución a los dos días hábiles del vencimiento, pide una instancia extraordinaria al Comité Ejecutivo con la gerencia competente. Una amenaza a seguridad, continuidad o hito se escala inmediatamente, sin esperar ese plazo ni la sesión mensual (S6, 6.1.6; T-9, 1.6). En urgencias rige además el plazo específico de R-022. La promoción regional sigue la excepción de S4, 4.3.2.5: si el titular no responde en 15 min decide el suplente dentro del máximo de 30 min; R-018 recoge este plazo y R-021 conserva la aprobación previa de residencia de datos. El silencio activa la contingencia, conserva la tarea dependiente bloqueada y permite continuar sólo trabajo independiente; no aprueba datos, cambios, transferencia, aceptación o desplazamiento de hitos. Resolver la dependencia exige evidencia recibida y validación por la autoridad competente, registradas por JP.
+
 \subsection{Escalas previas al análisis}
 
-Para analizar los riesgos, se definen la probabilidad (P), el impacto (I) y la prioridad (P x I).
-
-La probabilidad cualitativa (P) expresa el juicio ordinal sobre la posibilidad de ocurrencia del riesgo. Se asigna en una escala de \textbf{1 a 5} mediante las bandas de ponderación cualitativa $q$ de la tabla 8.2. Estas bandas no se aplican a $p_0$, la estimación inicial porcentual de ocurrencia usada en el análisis cuantitativo de 8.2.3 para calcular el valor esperado en HH.
+La probabilidad inicial $p_0$ estima la ocurrencia de al menos un episodio en la ventana de exposición de cada riesgo, tanto para el análisis cualitativo como para el cuantitativo. El nivel P se obtiene de esa misma estimación con las bandas de la Tabla 8.2. Su factor $q_P$ representa la categoría para priorizar; no constituye una segunda probabilidad del evento. Por ejemplo, R-002 tiene $p_0=60\%$, nivel 4 y factor 0,70; R-016 tiene $p_0=20\%$, nivel 2 y factor 0,30; R-036 tiene $p_0=35\%$, nivel 3 y factor 0,50. Para calcular las HH esperadas se utiliza $p_0$, conservando la misma ventana y el supuesto de episodios del Anexo 8.B.
 
 \begin{tablalafrox}{Escala cualitativa de probabilidad -- Fuente: elaboración propia basandose en contenido academico; escala contextualizada al proyecto}{tab:tabla-probabilidad}%
-  {G{0.08} G{0.16} Y Y}%
-  {\cab{Valor} & \cab{Banda cualitativa ($q$)} & \cab{Descripción} & \cab{Criterio cualitativo}}
-  1 & $1\%\leq q\leq10\%$ &Muy baja & Poco probable que ocurra; condiciones excepcionales \\
-  2 & $11\%\leq q\leq30\%$ & Baja & Puede ocurrir en casos aislados \\
-  3 & $31\%\leq q\leq50\%$ &Media & Podría ocurrir algunas veces durante el proyecto \\
-  4 & $51\%\leq q \leq70\%$ &Alta & Ocurrirá con frecuencia si no se mitiga \\
-  5 & $ q\geq70\%$ &Muy alta & Casi seguro de que ocurra \\
+{G{0.08} F{0.27} Y G{0.15}}
+{\cab{Nivel P} & \cab{Banda de $p_0$} & \cab{Descripción} & \cab{Factor $q_P$}}
+1 & $0\%\leq p_0\leq10\%$ & Muy baja & 0,10 \\
+2 & $10\%<p_0\leq30\%$ & Baja & 0,30 \\
+3 & $30\%<p_0\leq50\%$ & Media & 0,50 \\
+4 & $50\%<p_0\leq70\%$ & Alta & 0,70 \\
+5 & $70\%<p_0\leq100\%$ & Muy alta & 0,90 \\
 \end{tablalafrox}
-
-Por otro lado, el impacto (I) representa el nivel de afectación que tendria el riesgo si llegara a materializarse. Se evalúa también en una escala de \textbf{1 a 5}, donde 1 representa un impacto insignificante y 5 un impacto muy alto.
 
 \begin{tablalafrox}{Escala de impacto -- Fuente: elaboración propia basandose en contenido academico; escala contextualizada al proyecto}{tab:tabla-impacto}%
-  {F{0.24} Y Y}%
-  {\cab{Valor} & \cab{Descripción} & \cab{Criterio cualitativo}}
-  1 & Insignificante & Impacto imperceptible en el proyecto \\
-  2 & Menor & Afectación leve, fácil de controlar \\
-  3 & Moderado & Impacto parcial en entregables o plazos \\
-  4 & Alto & Afecta hitos principales o desempeño general \\
-  5 & Muy alto & Compromete el éxito total del proyecto \\
+{G{0.07} G{0.12} F{0.19} Y}
+{\cab{Nivel I} & \cab{Factor $q_I$} & \cab{PERT condicional (HH)} & \cab{Plazo, alcance, calidad o contrato}}
+1 & 0,05 & $H\leq24$ & Corrección localizada dentro de la tarea, sin afectar aceptación. \\
+2 & 0,10 & $24<H\leq80$ & Repetición o ajuste dentro del paquete, sin desplazar hitos. \\
+3 & 0,20 & $80<H\leq160$ & Reprogramación interna o reproceso de entregable, conservando requisitos e hitos contractuales. \\
+4 & 0,40 & $160<H\leq320$ & Amenaza a un hito contractual, aceptación o nivel de servicio; exige decisión y recuperación coordinadas. \\
+5 & 0,80 & $H>320$ & Consecuencia sanitaria grave, pérdida irrecuperable de trazabilidad o incumplimiento que compromete el alcance obligatorio o la continuidad contractual. \\
 \end{tablalafrox}
 
-La ponderación decimal cualitativa de probabilidad e impacto produce la exposición $q_P\times q_I$. Las escalas y bandas son definiciones del proyecto contextualizadas para este registro; no son umbrales numéricos prescritos por Project Management Institute (PMI, 2017, cap. 11, §11.3, Tabla 11-1, p. 407), que ofrece un ejemplo y no prescribe las bandas numéricas específicas de este proyecto. La banda cualitativa de probabilidad presenta un solapamiento en 70\%, que se conserva sin reclasificar riesgos.
+El impacto I representa la afectación que tendría el evento si se materializa, antes de descontar la eficacia de las respuestas propuestas. Se evalúan por separado esfuerzo, plazo, alcance, calidad sanitaria y consecuencias contractuales; se adopta el mayor nivel aplicable, sin promediar dimensiones. Las HH se clasifican por el PERT condicional acumulado del Anexo 8.B, no por su valor esperado. La Tabla 8.3 define los criterios propios de planificación; el Anexo 8.C documenta su aplicación a los 35 riesgos. Una amenaza a aceptación o servicio es nivel 4; el nivel 5 requiere la consecuencia grave indicada, no una aprobación simplemente pendiente.
+
+Las condiciones de aceptación de los arts. 17.3 y 18.1--18.3, y los compromisos de continuidad descritos en 8.3.3, permiten reconocer amenazas contractuales. La gravedad se valora por la consecuencia del evento documentado, sin presumir multas concretas, terminación contractual ni daños no descritos. Las HH no se convierten directamente en días; el efecto calendario depende de secuencia, perfiles y holguras.
+
+La exposición es $E=q_P\times q_I$. Las bandas, factores y umbrales son definiciones propias del proyecto, no valores prescritos por Project Management Institute (PMI, 2017, cap. 11, §11.3, Tabla 11-1, p. 407). El producto es un índice de priorización; no representa una probabilidad, un importe ni HH esperadas.
+
 \begin{tablalafrox}{Escala de exposición -- Fuente: elaboración propia basandose en contenido academico; criterio registrado para el proyecto}{tab:tabla-exposicion}%
-  {F{0.40} F{0.20}}%
-  {\cab{Exposición decimal} & \cab{Zona registrada} }
-  $q_P \times q_I < 0.08$ & Baja \\
-  $0.08 \leq q_P\times q_I < 0.20 $ & Media \\
-  $0.20 \leq q_P\times q_I < 0.40 $ & Alta \\
-  $q_P \times q_I \geq 0.40$ & Crítica  \\
+{F{0.40} F{0.20}}
+{\cab{Exposición decimal} & \cab{Zona de prioridad}}
+$E<0.08$ & Baja \\
+$0.08\leq E<0.20$ & Media \\
+$0.20\leq E<0.40$ & Alta \\
+$E\geq0.40$ & Crítica \\
 \end{tablalafrox}
 
-La zona de prioridad de cada riesgo es la zona registrada y adoptada del registro vigente; no se infiere a partir de umbrales sobre la exposición decimal. Los niveles ordinales de P e I se conservan junto con sus ponderaciones decimales. $p_0$ y las HH permanecen separados.
+La zona se calcula obligatoriamente con estos umbrales: los límites 0,08, 0,20 y 0,40 pertenecen, respectivamente, a Media, Alta y Crítica. Se conservan nivel y factor para hacer trazable el cálculo. La Tabla 8.5 y la RBS reflejan las zonas calculadas del T-16.
 
 \subsection{Registro y cierre}
 
-El responsable actualiza fuente, estado, disparador, tratamiento, consumo de HH y evidencia. Estados: identificado, en tratamiento, control verificado o materializado. Materializar el evento abre un problema y conserva su ID. CAL verifica cierre técnico; JP registra la decisión; la aceptación contractual corresponde al CLIENTE. La puntuación residual efectiva exige eficacia comprobada; C.5 sólo compara hipótesis. Verificar un control no libera reserva automáticamente. Ninguna aceptación de riesgo exime requisitos obligatorios.
+El responsable actualiza fuente, estado, disparador, tratamiento, consumo de HH y evidencia. Estados: identificado, en tratamiento, control verificado o materializado. Materializar el evento abre un problema y conserva su ID. CAL verifica cierre técnico; JP registra la decisión; la aceptación contractual corresponde al CLIENTE. La puntuación residual efectiva exige eficacia comprobada; Verificar un control no libera reserva automáticamente. Ninguna aceptación de riesgo exime requisitos obligatorios.
 
 \section{Identificación y Análisis de Riesgos}
 
@@ -98,73 +106,75 @@ Esta sección identifica los riesgos con una RBS y los analiza cualitativamente 
 
 \subsection{RBS y análisis separados}
 
-La estructura de desglose de riesgos (EDR o RBS, por sus siglas en inglés) organiza los \textbf{40 riesgos} representados en la Figura~\ref{fig:sd8-rbs} en seis ramas, según su fuente predominante: \textbf{Solución y tecnología} (8), \textbf{Integración y legado} (7), \textbf{Operación del cliente} (13), \textbf{Personas y adopción} (8), \textbf{Contrato y licitación} (2) y \textbf{Regulatorio y externo} (2). La figura agrupa los riesgos por origen principal y conserva para cada uno su identificador, descripción y zona registrada. La clasificación facilita localizar y revisar los riesgos; no determina por sí sola su prioridad ni limita las áreas del proyecto que puedan verse afectadas.
+La estructura de desglose de riesgos (EDR o RBS) organiza los \textbf{35 riesgos vigentes de T-16} de la Figura~\ref{fig:sd8-rbs}, conservando sus ID originales. Las seis ramas identifican la fuente predominante, no la prioridad: \textbf{Solución y tecnología} (3), \textbf{Integración y legado} (6), \textbf{Operación del cliente} (13), \textbf{Personas y adopción} (8), \textbf{Contrato y licitación} (3) y \textbf{Regulatorio y externo} (2).
 
 \parte{figuras/rbs}
 
-\textbf{Solución y tecnología} reúne riesgos propios del producto, su seguridad y su funcionamiento: defectos de historia sanitaria que impiden cerrar una carga (R-002), cuentas comprometidas o credenciales robadas (R-027 y R-023), ataques DDoS a canales públicos (R-026) y terminales enrolados perdidos o en poder de terceros (R-025). Incluye además tres riesgos de las innovaciones: datos personales en los paquetes de reproducción de la innovación 2 (R-036), parámetros de vida útil que no representan los productos (R-037) y lotes asociados a un sensor equivocado (R-038), ambos de la innovación 3. Esta rama contiene ocho riesgos.
+\textbf{Solución y tecnología} conserva la historia sanitaria de origen que el CLIENTE debe aportar (R-002), el cambio excepcional externo de soporte/compatibilidad (R-045) y la restricción efectiva de salida o sustitución del proveedor tecnológico (R-046). La elección, el mantenimiento ordinario y la portabilidad del diseño siguen a cargo de LafroX. R-045/R-046 no cubren tecnología elegida sin soporte ni falta de un plan de salida obligatorio.
 
-\textbf{Integración y legado} comprende fallas o dependencias de servicios, plataformas y procesos conectados: certificación EDI incompleta de una cadena (R-001), historial de ventas inutilizable (R-003), deuda viva adicional a la volumetría (R-007), pagos sin resultado comprobable (R-009), mensajes EDI falsos o alterados (R-024), indisponibilidad del SII (R-008) y caída del servicio de mapas (R-010). Agrupa siete riesgos.
+\textbf{Integración y legado} reúne certificación externa de cadenas (R-001), historia de ventas (R-003), deuda vigente adicional (R-007), respuesta del SII (R-008), interfaces legadas no documentadas (R-043) y disponibilidad del ERP del CLIENTE para emitir nuevas guías (R-049). La idempotencia del POS y la continuidad del servicio de mapas elegido se siguen como CI-009 y CI-010, fuera de T-16.
 
-\textbf{Operación del cliente} concentra las condiciones de ejecución cotidiana y preparación del cliente: calidad de la matriz térmica y autorización de intervenciones urgentes (R-011 y R-022), validaciones y diferencias de inventario (R-018 y R-004), suficiencia de la historia de origen para aceptación (R-006), disponibilidad de equipos e instalación de termógrafos (R-012 y R-014), conciliación de envases (R-005), respaldo eléctrico y conectividad de sitios (R-020 y R-019), y eventos de transporte como asaltos o siniestros (R-030 y R-029), además de fallas mecánicas (R-028). Es la rama más numerosa, con trece riesgos; el tamaño de la rama refleja la composición de este registro, no un nivel mayor de prioridad.
+\textbf{Operación del cliente} conserva R-004--R-006, R-011--R-012, R-014, R-018--R-020, R-022 y R-028--R-030: conciliaciones y datos de aceptación, matriz térmica, equipamiento y permisos, decisiones, enlaces y energía externos y eventos de transporte. Son trece riesgos; cada episodio se imputa una sola vez a su causa principal.
 
-\textbf{Personas y adopción} agrupa riesgos asociados a la participación y disponibilidad de usuarios, planificadores, conductores y transportistas: continuidad de procesos anteriores (R-015), disponibilidad del planificador para validar excepciones (R-016), reemplazos de conductores externos sin aviso (R-031), firma tardía del acuerdo de incorporación (R-013) y ausencia de usuarios a la capacitación (R-017). Suma también la adopción de tres innovaciones: avisos de vencimiento posentrega que pierden la confianza del local (R-034), reproducciones de incidentes que no explican la falla de terreno (R-035) y una hoja de negocio que el almacenero no lee o no entiende (R-040). La rama contiene ocho riesgos.
+\textbf{Personas y adopción} conserva ocho riesgos: firma del transportista (R-013), adopción del proceso (R-015), transferencia del conocimiento del planificador (R-016), asistencia a capacitación (R-017), sustitutos no habilitados (R-031), acuerdo de telemetría (R-041), rotación nocturna (R-042) y rechazo individual de conductores externos (R-051). El 38\% es rotación anual, no $p_0$.
 
-\textbf{Contrato y licitación} contiene dos riesgos: solicitudes que amplían el alcance (R-032) y disputas en la liquidación del tramo variable de la innovación 4 (R-039). \textbf{Regulatorio y externo} reúne la falta de aprobación para alojar datos en regiones de nube (R-021) y posibles cambios normativos (R-033). Cada una de estas dos ramas contiene dos riesgos.
+\textbf{Contrato y licitación} conserva cambios de alcance (R-032), liquidación variable de INN-04 (R-039) y coordinación del cierre bajo peak/congelamiento (R-044). \textbf{Regulatorio y externo} conserva residencia/transferencia aprobada (R-021) y cambios normativos aplicables (R-033).
 
-La RBS es una clasificación por fuente predominante, no una evaluación completa de cada riesgo. De acuerdo con el procedimiento de análisis, para cada registro se distingue la condición que origina el riesgo, el evento posible y el efecto sobre los objetivos; luego se conservan su ID y su categoría para mantener la trazabilidad. Un riesgo puede afectar varias áreas, pero se presenta una sola vez en la rama principal para evitar duplicarlo. La probabilidad, el impacto, la exposición y la zona se analizan por separado y no se deducen de la rama RBS.
+\textbf{Separación del seguimiento interno.} La revisión identifica trece asuntos de diseño y construcción: R-009, R-010, R-023--R-027, R-034--R-038 y R-040. Se retiran de T-16, 8.A--8.C y la RBS, sin renumerar los restantes, y pasan a CI con el mismo sufijo en el Anexo 8.E. El mismo criterio se aplica a R-047, R-048 y R-050: dimensionamiento, identidad y consistencia central son obligaciones de arquitectura/calidad, no incertidumbre transferible al CLIENTE. Las brechas B-S4-01 y B-S4-03 quedan vinculadas a CI-048 y CI-050; B-S4-02 y B-S7-01 conservan R-049 y R-042.
 
-Los riesgos R-034 a R-040 son los riesgos de adopción de las cinco innovaciones del Capítulo 13. Cada uno conserva el ID con que lo cita ese capítulo y la respuesta que desarrolla su sección de riesgo de adopción (Subdocumento 13, secciones 13.1 a 13.5).
-\newpage
+El Anexo 8.E fija destino propuesto en S4/S13/S9, dueño, control obligatorio, evidencia, momento de verificación y actuación ante incumplimiento. Sus valoraciones previas se conservan sólo como historia; no forman parte de la exposición ni de las reservas del registro del CLIENTE. La reubicación no declara implementado ni cerrado ningún control. Los otros subdocumentos se consultan y su sincronización queda pendiente, sin editarlos aquí.
+
+Para CI-034 se conserva el paquete 3.10.1.4 en meses 11--15: certificación H5 en 11--12 y piloto con locales reales en 13--15. IMP coordina el piloto, DAT dirige INN-01 y Comercial/Calidad validan el catálogo en meses 7--9. I-01A exige al menos 70\% con al menos 100 avisos evaluables en mes 15; mientras no se demuestre, no se amplía la innovación. Su ubicación interna no elimina el piloto ni convierte su resultado pendiente en aceptación de un defecto.
+
 \subsection{Análisis cualitativo de riesgos}
 
-El análisis cualitativo asigna a probabilidad e impacto niveles ordinales de 1 a 5 y sus ponderaciones decimales ($q_P$ y $q_I$). La exposición se calcula como $q_P\times q_I$ y sirve para priorizar; no es un porcentaje de probabilidad ni una estimación de pérdida. La probabilidad porcentual estimada para el análisis cuantitativo ($p_0$) se mantiene separada de $q_P$, como establece el procedimiento. La Tabla 8.5 presenta los diez riesgos de mayor exposición entre los 40, ordenados de mayor a menor producto y, en caso de empate, por ID ascendente. La zona se transcribe del análisis cualitativo; no se utiliza como sustituto del producto ni se confunde con el impacto en HH.
+El análisis cualitativo asigna a probabilidad e impacto niveles ordinales de 1 a 5 y sus ponderaciones decimales ($q_P$ y $q_I$). La exposición se calcula como $q_P\times q_I$ y sirve para priorizar; no es un porcentaje de probabilidad ni una estimación de pérdida. El nivel de probabilidad y su factor se derivan de la misma estimación $p_0$ utilizada en el análisis cuantitativo, conforme a la Tabla 8.2. La Tabla 8.5 presenta los diez riesgos de mayor exposición entre los 35, ordenados de mayor a menor producto y, en caso de empate, por ID ascendente. La zona se calcula con los umbrales de la Tabla 8.4; no se utiliza como sustituto del producto ni se confunde con el impacto en HH.
 
 \begingroup
 \renewcommand{\thetable}{8.5}
-\begin{tablalafrox}{Diez riesgos de mayor exposición cualitativa. Fuente: análisis cualitativo de los 40 riesgos; criterios del procedimiento de análisis.}{tab:sd8-cuerpo-4}{>{\hsize=0.8\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.05\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.4\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{ID} & \cab{$q_P$} & \cab{$q_I$} & \cab{Exposición ($q_P\times q_I$)} & \cab{Zona registrada}}
+\begin{tablalafrox}{Diez riesgos de mayor exposición cualitativa. Fuente: análisis cualitativo de los 35 riesgos; criterios del procedimiento de análisis.}{tab:sd8-cuerpo-4}{>{\hsize=0.8\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.05\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.4\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{ID} & \cab{$q_P$} & \cab{$q_I$} & \cab{Exposición ($q_P\times q_I$)} & \cab{Zona registrada}}
 R-002 & 0,70 & 0,80 & 0,56 & Crítica \\
-R-037 & 0,70 & 0,80 & 0,56 & Crítica \\
-R-038 & 0,70 & 0,80 & 0,56 & Crítica \\
-R-011 & 0,50 & 0,80 & 0,40 & Crítica \\
-R-036 & 0,50 & 0,80 & 0,40 & Crítica \\
+R-004 & 0,70 & 0,40 & 0,28 & Alta \\
+R-006 & 0,70 & 0,40 & 0,28 & Alta \\
 R-015 & 0,70 & 0,40 & 0,28 & Alta \\
-R-016 & 0,30 & 0,80 & 0,24 & Alta \\
-R-022 & 0,30 & 0,80 & 0,24 & Alta \\
-R-023 & 0,30 & 0,80 & 0,24 & Alta \\
-R-027 & 0,30 & 0,80 & 0,24 & Alta \\
+R-042 & 0,70 & 0,40 & 0,28 & Alta \\
+R-001 & 0,50 & 0,40 & 0,20 & Alta \\
+R-005 & 0,50 & 0,40 & 0,20 & Alta \\
+R-011 & 0,50 & 0,40 & 0,20 & Alta \\
+R-013 & 0,50 & 0,40 & 0,20 & Alta \\
+R-018 & 0,50 & 0,40 & 0,20 & Alta \\
 \end{tablalafrox}
 \endgroup
 
-R-002, R-037 y R-038 encabezan la selección con una exposición de 0,56, y R-011 y R-036 siguen con 0,40; los cinco están en zona Crítica. Tres de ellos son riesgos de adopción de las innovaciones 2 y 3, por lo que esas innovaciones sólo se habilitan tras cumplir sus indicadores de validación (Subdocumento 13, secciones 13.2.7 y 13.3.7). R-015 sigue con 0,28 y cuatro riesgos empatan en 0,24, con lo que se completan las diez filas; en empates se aplica ID ascendente. Los factores y la exposición son ponderaciones para priorizar, no porcentajes de ocurrencia ni horas-hombre. Las probabilidades porcentuales y los valores esperados se tratan por separado en el análisis cuantitativo.
+El registro del CLIENTE contiene 1 riesgo crítico, 14 altos, 15 medios y 5 bajos. R-002 conserva E=0,56 y zona Crítica; retirar CI no reduce su valoración. La Tabla 8.5 selecciona diez por producto y desempata por ID, sin sustituir el conjunto de riesgos altos. Las valoraciones históricas internas se distinguen en 8.E y no se mezclan con esta distribución. La evaluación residual de los riesgos vigentes corresponde a la siguiente tarea de respuestas.
 
 \subsection{Análisis cuantitativo}
 
 El análisis estima las horas-hombre (HH) adicionales atribuibles a cada riesgo, separando el trabajo extraordinario del trabajo ordinario del proyecto. Para cada perfil y riesgo se estimaron tres valores por episodio: optimista ($O$), más probable ($M$) y pesimista ($P$). Las horas de los dos perfiles se suman dentro de cada escenario; cuando el modelo supone episodios repetidos, se multiplica por el número de episodios condicionado a que ocurra al menos uno. Así se obtienen las HH condicionales acumuladas $O_i$, $M_i$ y $P_i$.
 
-El valor central condicional se calcula con PERT: $H_i^{\mathrm{cond}}=(O_i+4M_i+P_i)/6$. El escenario más probable recibe cuatro veces el peso de cada extremo. Luego se calcula el valor esperado de esfuerzo $VE_i=p_{0,i}\times H_i^{\mathrm{cond}}$, donde $p_0$ es la probabilidad estimada de al menos un episodio en toda la ventana del riesgo. La Tabla 8.6 ordena por $VE$ descendente los diez riesgos de mayor esfuerzo esperado entre los 40 riesgos; la columna PERT muestra el esfuerzo condicional, no la probabilidad. Los valores O/M/P detallados se presentan en el Anexo 8.B. Se desempata por ID ascendente. Las estimaciones son supuestos de planificación, no frecuencias históricas, compromisos de horas ni resultados de simulación.
+El valor central condicional se calcula con PERT: $H_i^{\mathrm{cond}}=(O_i+4M_i+P_i)/6$. El escenario más probable recibe cuatro veces el peso de cada extremo. Luego se calcula el valor esperado de esfuerzo $VE_i=p_{0,i}\times H_i^{\mathrm{cond}}$, donde $p_0$ es la probabilidad estimada de al menos un episodio en toda la ventana del riesgo. La Tabla 8.6 ordena por $VE$ descendente los diez riesgos de mayor esfuerzo esperado entre los 35 riesgos; la columna PERT muestra el esfuerzo condicional, no la probabilidad. Los valores O/M/P detallados se presentan en el Anexo 8.B. Se desempata por ID ascendente. Las estimaciones son supuestos de planificación, no frecuencias históricas, compromisos de horas ni resultados de simulación.
 
 \begingroup
 \renewcommand{\thetable}{8.6}
 \begin{tablalafrox}{Diez mayores valores esperados de esfuerzo. Fuente: Tabla de análisis cuantitativo; estimación de tres valores según el procedimiento.}{tab:sd8-cuantitativo}{>{\hsize=0.35\hsize\linewidth=\hsize\centering\arraybackslash}X >{\hsize=2.2\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.65\hsize\linewidth=\hsize\centering\arraybackslash}X >{\hsize=0.9\hsize\linewidth=\hsize\centering\arraybackslash}X >{\hsize=0.9\hsize\linewidth=\hsize\centering\arraybackslash}X}{\cab{ID} & \cab{Riesgo (síntesis)} & \cab{$p_0$} & \cab{PERT (HH)} & \cab{$VE$ (HH)}}
-R-002 & Defectos de historia sanitaria de origen impiden cerrar una carga & 60\% & 184,0 & 116,80 \\
-R-015 & Usuarios mantienen el proceso anterior sin registrar en la solución & 55\% & 120,0 & 70,40 \\
-R-037 & Parámetros de vida útil que no representan los productos & 55\% & 112,0 & 66,73 \\
-R-003 & Historial de ventas no utilizable para carga y reposición & 50\% & 120,0 & 64,00 \\
-R-004 & Diferencias de inventario sin resolver antes del corte & 55\% & 104,0 & 60,87 \\
-R-038 & Lote asociado a un sensor equivocado por un movimiento sin evento & 55\% & 96,0 & 56,47 \\
-R-006 & Historia de origen insuficiente para las líneas base de aceptación & 55\% & 96,0 & 55,73 \\
-R-005 & Saldo inicial de envases no conciliable para la carga de M8 & 50\% & 88,0 & 48,00 \\
-R-001 & Cadena comercial no completa a tiempo la certificación EDI & 45\% & 96,0 & 46,80 \\
-R-018 & Contraparte no entrega una validación en la fecha prevista & 45\% & 80,0 & 38,40 \\
+R-002 & Historia sanitaria de origen no reconstruible & 60\% & 194,67 & 116,80 \\
+R-042 & Rotación nocturna supera inducción disponible & 55\% & 208,00 & 114,40 \\
+R-015 & Usuarios mantienen el proceso anterior & 55\% & 128,00 & 70,40 \\
+R-043 & Interfaces ERP/WMS no verificables a tiempo & 50\% & 140,00 & 70,00 \\
+R-003 & Historial de ventas inutilizable para carga y reposición & 50\% & 128,00 & 64,00 \\
+R-004 & Diferencias de inventario sin resolver antes del corte & 55\% & 110,67 & 60,87 \\
+R-006 & Historia de origen insuficiente para líneas base de aceptación & 55\% & 101,33 & 55,73 \\
+R-005 & Saldo inicial de envases no conciliable (carga M8) & 50\% & 96,00 & 48,00 \\
+R-001 & Cadena no completa a tiempo su certificación EDI & 45\% & 104,00 & 46,80 \\
+R-045 & Cambio de soporte exige adecuación extraordinaria & 40\% & 106,67 & 42,67 \\
 \end{tablalafrox}
 \endgroup
 
-Los diez riesgos aportan aproximadamente \textbf{624,20 HH de valor esperado}, el 56,7\% de las 1.100,60 HH esperadas para los 40 riesgos, bajo las mismas probabilidades y supuestos. El valor central PERT de cada riesgo representa esfuerzo condicional si ocurre; $VE$ pondera ese esfuerzo por su probabilidad y no equivale a una asignación cierta de trabajo. Las HH no se convierten directamente en días de atraso: el efecto calendario depende de secuencia, concurrencia, disponibilidad de perfiles y holguras. No se presenta simulación Monte Carlo ni percentil de confianza.
+Los diez riesgos aportan aproximadamente \textbf{689,67 HH de valor esperado}, el 58,3\% de las 1.183,11 HH esperadas para los 35 riesgos, bajo las mismas probabilidades y supuestos. El valor central PERT de cada riesgo representa esfuerzo condicional si ocurre; $VE$ pondera ese esfuerzo por su probabilidad y no equivale a una asignación cierta de trabajo. Las HH no se convierten directamente en días de atraso: el efecto calendario depende de secuencia, concurrencia, disponibilidad de perfiles y holguras. No se presenta simulación Monte Carlo ni percentil de confianza.
 
 \section{Plan de Acción a Riesgos}
 
-Este plan establece respuestas propuestas para los 40 riesgos del registro vigente (R-001--R-040), relaciona su prioridad con los resultados de 8.2 y fija cómo gobernar la reserva de esfuerzo y verificar la factibilidad. Las respuestas de la matriz del Anexo 8.A son propuestas de tratamiento derivadas del evento, los disparadores y los responsables consignados en T-16; no certifican controles ya implementados ni eficacia residual. Los responsables son los dueños propuestos del riesgo y coordinan a las áreas pertinentes; no se presume que ejecuten individualmente todo el esfuerzo.
+Este plan establece respuestas propuestas para los 35 riesgos del registro vigente, con ID originales discontinuos, relaciona su prioridad con los resultados de 8.2 y fija cómo gobernar la reserva de esfuerzo y verificar la factibilidad. La Tabla 8.A.1 presenta las respuestas y la Tabla 8.A.2 concreta la coordinación de 28 riesgos con el CLIENTE: contraparte, solicitud, plazo y contingencia. Las respuestas son propuestas de tratamiento derivadas del evento, los disparadores y los responsables consignados en T-16; no certifican controles ya implementados ni eficacia residual. Los responsables son los dueños propuestos del riesgo y coordinan a las áreas pertinentes; no se presume que ejecuten individualmente todo el esfuerzo.
 
 \subsection{Respuestas y costo-beneficio técnico}
 
@@ -176,13 +186,15 @@ La eficacia no se presume: CAL verifica resultados y evidencia; JP registra deci
 
 \subsection{Reservas y cronograma}
 
-El análisis cuantitativo de 8.2 estima para los 40 registros un total de \textbf{1.100,60 HH esperadas}, calculadas como $\sum_i p_{0,i}H_i^{\mathrm{cond}}$, donde $H_i^{\mathrm{cond}}$ es el esfuerzo condicional estimado mediante tres valores y PERT. Los diez mayores riesgos suman \textbf{624,20 HH} (aproximadamente 56,7\%); son un subconjunto del total y no se suman nuevamente. Estos valores expresan exposición de esfuerzo del portafolio, no esfuerzo cierto, capacidad disponible, presupuesto aprobado ni resultado de simulación. Tampoco permiten derivar directamente días de atraso: para ello se requiere modelar secuencia, concurrencia, perfiles, holguras y ruta crítica.
+La reclasificación conserva la conciliación histórica: 1.594,93 HH de los 51 registros anteriores = 1.183,11 HH de los 35 riesgos vigentes + 411,82 HH de los 16 asuntos internos archivados en 8.E. Es una separación de perímetro, no una reducción de esfuerzo demostrada ni reserva liberada. Las HH históricas internas no se agregan a la contingencia del CLIENTE ni se convierten automáticamente en costo de calidad. Su trabajo ordinario debe verificarse contra los paquetes existentes; cualquier diferencia requiere estimación y control de cambios, sin duplicación.
+
+El análisis cuantitativo de 8.2 estima para los 35 registros un total de \textbf{1.183,11 HH esperadas}, calculadas como $\sum_i p_{0,i}H_i^{\mathrm{cond}}$, donde $H_i^{\mathrm{cond}}$ es el esfuerzo condicional estimado mediante tres valores y PERT. Los diez mayores riesgos suman \textbf{689,67 HH} (aproximadamente 58,3\%); son un subconjunto del total y no se suman nuevamente. Estos valores expresan exposición de esfuerzo del portafolio, no esfuerzo cierto, capacidad disponible, presupuesto aprobado ni resultado de simulación. Tampoco permiten derivar directamente días de atraso: para ello se requiere modelar secuencia, concurrencia, perfiles, holguras y ruta crítica.
 
 \begingroup
 \renewcommand{\thetable}{8.7}
 \begin{tablalafrox}{Lectura y estado de las reservas de esfuerzo, HH. Fuente: estimación de 8.2 .}{tab:sd8-cuerpo-6}{>{\hsize=0.65\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.45\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.90\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{Concepto} & \cab{HH} & \cab{Interpretación y tratamiento}}
-Valor esperado de los 40 riesgos & 1.100,60 & Estimación agregada de exposición en HH; no se afirma que esté asignada o financiada como reserva disponible. Distribuirla entre períodos, perfiles y paquetes requiere estimar las respuestas y nivelar la capacidad. \\
-Diez mayores valores esperados & 624,20 & Subconjunto de las 1.100,60 HH (56,7\%); indicador de focalización, no una reserva adicional. \\
+Valor esperado de los 35 riesgos & 1.183,11 & Estimación agregada de exposición en HH; no se afirma que esté asignada o financiada como reserva disponible. Distribuirla entre períodos, perfiles y paquetes requiere estimar las respuestas y nivelar la capacidad. \\
+Diez mayores valores esperados & 689,67 & Subconjunto de las 1.183,11 HH (58,3\%); indicador de focalización, no una reserva adicional. \\
 Reserva de gestión  & 1.600 & Mantenerla separada y no sumar, comprometer ni cargar costos contra ella hasta reconciliar su autorización y gobernanza. \\
 \end{tablalafrox}
 \endgroup
@@ -195,7 +207,7 @@ La factibilidad de la respuesta depende de recursos y decisiones compartidas. An
 
 La aceptación no se basa sólo en completar tareas: cada hito se cumple con acta de la Contraparte Técnica; cada entregable incluye artefacto, evidencia objetiva de verificación, trazabilidad a requisitos y registro de observaciones resueltas (Bases Administrativas, arts. 18.1--18.2, p. 13). El CLIENTE dispone de diez días hábiles para revisar y LafroX de diez días hábiles para subsanar; una segunda presentación observada por la misma naturaleza se considera atraso imputable (art. 18.3). La aceptación no libera responsabilidad por defectos posteriores (art. 18.4). En cada marcha blanca, las seis condiciones del artículo 17.3 son acumulativas: no tener incidentes críticos/altos atribuibles abiertos; alcanzar el volumen real comprometido durante las cuatro últimas semanas; sostener disponibilidad y tiempos de respuesta comprometidos; no tener diferencias de conciliación inexplicadas; contar con personal del CLIENTE capacitado y certificado; y obtener el acta de aceptación. Si no se cumplen al cierre, la marcha blanca debe extenderse a costo del adjudicatario, sin cargo adicional al CLIENTE ni desplazamiento de fases posteriores, sin perjuicio de las multas contractuales. RT-20.04 exige definir indicadores diarios y umbrales de avance, y RT-20.02 exige una salida gradual y reversible (Bases Técnicas Transversales, cap. 20, §20.2, RT-20.02 y RT-20.04).
 
-En continuidad, la solución compromete un RTO de 4 horas y un RPO de 15 minutos para los servicios críticos (Bases Técnicas Transversales, cap. 7, RT-07.04, p. 17). Cada centro de distribución replica hacia la nube por tres caminos independientes, y las alarmas de retraso de replicación a los 5 y a los 15 minutos activan la respuesta antes de que se exceda el RPO (Subdocumento 4, sección 4.3.2.4). El RTO y el RPO se miden en conmutación real con AL-DR-01 antes del H5 y del H10, y luego dos veces al año durante la Operación (Bases Técnicas Transversales, cap. 7, RT-07.07, p. 17). La misma prueba verifica la continuidad de los 96 despachos y la conciliación de datos al reponer los enlaces. Además, ensaya el retiro sanitario, diseñado para identificar a los clientes afectados en 85 minutos frente al máximo de dos horas.
+En continuidad se mantienen los objetivos RTO de 4 horas y RPO de 15 minutos para servicios críticos (Bases Técnicas Transversales, cap. 7, RT-07.04, p. 17). S4, 4.3.2.4--4.3.2.7 (pp. 181--184), distingue extracción multicanal, recuperación del WMS, restitución de accesos y recuperación del ERP del CLIENTE. Las alarmas a los 5 y 15 minutos y AL-DR-01 verifican brecha y punto recuperable; se ensayan antes de H5/H10 y semestralmente durante Operación. AL-OFF-01 comprueba 24 h sin WAN y relevos a las 8 y 16 h; el manifiesto de 26 h no sustituye la caché de 24 h ni renueva por sí solo credenciales. AL-DTE-01 comprueba las 96 salidas con guía válida, preemisión, cambio de carga y nueva emisión del ERP. Estas evidencias se complementan: aprobar una no demuestra las otras. La pérdida de la sala de Talca detiene nuevas guías hasta restituir el ERP; recuperar el WMS en nube no resuelve esa dependencia ni permite exceptuar el RTO requerido. La dependencia se registra en R-049, vinculada a B-S4-02; su valoración no acredita por sí sola continuidad completa. Para el retiro sanitario durante pérdida regional, S4, 4.3.2.5 (p. 184), plantea hasta 15 min de habilitación y 60 de consulta y verificación: 75 min frente al máximo de dos horas, sujetos a prueba y cobertura de evidencia.
 
 La suspensión del proveedor de lácteos entre marzo y septiembre de 2026 es un antecedente ocurrido y se gestiona como dependencia/asunto, no como riesgo futuro. Corresponde obtener con el CLIENTE y el proveedor evidencia de restitución de la trazabilidad antes de depender de ella para aceptar la etapa correspondiente; la fecha y evidencia de restitución no se presumen. En general, cada condición pendiente debe tener responsable, hito, evidencia requerida y decisión documentada. Hasta que existan pruebas satisfactorias y actas exigidas, se mantiene como pendiente la factibilidad de las respuestas afectadas y no se declara aceptado el hito.
 
