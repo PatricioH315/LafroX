@@ -4725,9 +4725,14 @@ compra.
 5.1.4 Especificación y
 compra del sistema
 de cadena de frío
-Especificación y
-órdenes de compra
-de LafroX
+Especificación de
+compra para el
+CLIENTE (B-01 y
+kits de camión) y
+orden de compra
+de LafroX para los
+gateways B-02 y el
+prototipo.
 B-01/B-02 de cáma-
 ras y componentes
 para 31 kits de ca-
@@ -4735,8 +4740,9 @@ mión; cotización
 local y certificación
 Subtel aplicable
 antes del banco;
-compra masiva suje-
-ta a aceptación del
+compra masiva del
+CLIENTE sujeta
+a aceptación del
 prototipo.
 ARQ Meses 1–2; an-
 tes del banco.
