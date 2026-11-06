@@ -8,15 +8,15 @@ Los días equivalentes son 31.000 pedidos/mes ÷ 1.400 entregas/día = **22,14 d
 
 ## Dimensiones 1–3: transacciones por segundo
 
-Se calcula el máximo horario de cada régimen para evitar sumar ventanas que no coinciden. Cross-docking opera de 03:00 a 06:00: tres operaciones por entrega entre 03:00 y 05:00 y el despacho entre 05:00 y 06:00. SV-04 se aplica sólo en la hora cargada de cada tramo.
-En régimen normal el máximo horario es **12,34 TPS a las 12:00**. Los máximos por lugar son Talca 1,46, Concepción 0,73, cada cross-docking 1,17, nube 2,71 y portal 9,63 TPS.
-En septiembre el máximo es **14,66 TPS a las 12:00**. Por lugar: Talca 2,68, Concepción 1,34, cada cross-docking 2,17, nube 5,03 y portal 9,63 TPS.
-La dimensión 2 toma el mayor total horario dentro de 05:30–07:00: las horas 05:00 y 06:00, suponiendo uniforme el tramo 05:30–06:00; resulta **6,94 TPS** peak y **3,76 TPS** normal. Los 2.852 DTE/día peak son el total de documentos tributarios electrónicos, no sólo guías; tratarlos todos como guías que deben emitirse antes de la salida constituye una cota conservadora. Para el portal, 2.600 ÷ 9 × 2 por SV-04 × 60 ÷ 3.600 = 9,63 solicitudes/s.
-La prueba BTT RT-09.06 aplica una sola vez 1,5 × 14,66 = **21,99 TPS**.
+Se suman los lugares por bloque y se elige el máximo agregado coincidente. No se suman máximos individuales. Cross-docking opera de 03:00 a 06:00: tres operaciones por entrega entre 03:00 y 05:00 y el despacho entre 05:00 y 06:00. SV-04 duplica la tasa de la hora cargada sin reducir las demás: es un margen de diseño.
+En régimen normal el máximo horario es **12,34 TPS a las 12:00**. Los máximos por lugar son Talca 1,46, Concepción 0,73, el conjunto de las tres plataformas de cross-docking 1,17, nube 2,71 y portal 9,63 TPS.
+En septiembre el máximo es **14,66 TPS a las 12:00**. Por lugar: Talca 2,68, Concepción 1,34, el conjunto de las tres plataformas de cross-docking 2,17, nube 5,03 y portal 9,63 TPS.
+La dimensión 2 compara 05:30–06:00 y 06:00–07:00; para el primer tramo usa la tasa del bloque 05:00–06:00 bajo el supuesto de uniformidad. El máximo modelado resulta en **6,94 TPS** peak y **3,76 TPS** normal. Los 2.852 DTE/día peak son el total de documentos tributarios electrónicos, no sólo guías; tratarlos todos como guías que deben emitirse antes de la salida constituye una cota conservadora. Para el portal, 2.600 ÷ 9 × 2 por SV-04 × 60 ÷ 3.600 = 9,63 solicitudes/s.
+El T-13 aplica 1,5 a cada máximo declarado por separado: 14,66 produce **21,99 TPS** para RT-09.06 y 6,94 produce **10,41 TPS** para despacho durante 90 minutos, con cero minutos de indisponibilidad.
 
 ### Perfil horario de 24 horas
 
-La tabla conserva las tasas por hora y por lugar. La fila máxima explica la dimensión 1 y la dimensión 3.
+Cada hora marca el inicio del bloque. Cada total se calcula antes de redondear. Los máximos de día completo sustentan las dimensiones 1 y 3; los bloques de las 05:00 y 06:00 sustentan la dimensión 2.
 | Hora | Talca normal / peak | Concepción normal / peak | Cross-docking normal / peak | Nube normal / peak | Portal normal / peak | Total normal / peak |
 |---:|---:|---:|---:|---:|---:|---:|
 | 00:00 | 0,54 / 1,01 | 0,27 / 0,50 | 0,00 / 0,00 | 0,74 / 1,37 | 0,00 / 0,00 | 1,55 / 2,88 |
@@ -117,7 +117,7 @@ Las VMs de Talca suman 14 vCPU, 23 GB RAM, 210 GB disco lógico, 136 IOPS; con h
 
 ## Capacidad en nube
 
-El perfil de API atiende aplicaciones y portales N-01 a N-03. Una tarea Fargate entrega 0,70 ÷ 0,05 = **14,00 solicitudes/s**. Régimen: 12,34 solicitudes/s y 2 tareas; peak: 14,66 y 2; RT-09.06: 21,99 y 2; cota extrema: 48,37 y 4; sensibilidad de 120 solicitudes por sesión: 21,97 y 2 en régimen, 91,70 y 7 en cota. El techo es ocho tareas.
+El perfil de API atiende aplicaciones y portales N-01 a N-03. La capacidad estimada de una tarea Fargate es 0,70 ÷ 0,05 = **14,00 solicitudes/s**. La cota trata cada operación de nube y portal como una solicitud equivalente; no todas son llamadas HTTP. Régimen: 12,34 solicitudes equivalentes/s y 2 tareas; peak: 14,66 y 2; RT-09.06: 21,99 y 2; cota extrema: 48,37 y 4; sensibilidad de 120 solicitudes por sesión: 21,97 y 2 en régimen, 91,70 y 7 en cota. El techo es ocho tareas.
 
 ## Ventana dominical
 
@@ -128,7 +128,7 @@ El perfil de API atiende aplicaciones y portales N-01 a N-03. Una tarea Fargate 
 ## Crecimiento, umbrales y cuello de botella
 
 Año 3 usa 36.000 pedidos/mes (36.000 ÷ 31.000 = 1,16×), 305.000 líneas/mes (1,17×), 1.650/3.100 entregas/día y 40.000 DTE/mes. Por separado, 3× es 93.000 pedidos, 780.000 líneas, 4.200/7.800 entregas y 102.000 DTE mensuales.
-La tabla de capacidad del año 3 se obtiene con una base por métrica: WMS Talca 2,68 × (305.000 ÷ 260.000) = 3,15 TPS; cross-docking 2,17 TPS actual, 2,58 en año 3 y 6,50 a 3×; nube más portal 14,66 × (36.000 ÷ 31.000) = 17,03 solicitudes/s; evidencia 87,72 × (36.000 ÷ 31.000) = 101,87 GB/año; Talca usa 5,20 Mbps en el peor caso y 5,64 Mbps a 3×; bodega Talca usa 151 terminales; mesa conserva 2.258 contactos/mes. La columna 3× cubre carga técnica, no aumenta el parque de personas.
+El año 3 usa valores del modelo sin redondear: WMS Talca escala por 305.000 ÷ 260.000 y alcanza 3,15 TPS; cross-docking 2,17 TPS actual, 2,58 en año 3 y 6,50 a 3×; nube más portal escala por 36.000 ÷ 31.000 y alcanza 17,03 solicitudes equivalentes/s; evidencia 87,72 × (36.000 ÷ 31.000) = 101,87 GB/año; Talca usa 5,20 Mbps en el peor caso y 5,64 Mbps a 3×; bodega Talca usa 151 terminales; mesa conserva 2.258 contactos/mes. La columna 3× cubre carga técnica, no aumenta el parque de personas.
 El umbral de SV-04, expresado como múltiplo de la tasa peak antes de saturar la capacidad calculada, es Talca 333,73×, Concepción 166,87×, cada cross-docking 12,92× y nube más portal 7,64×. La cota extrema combinada requiere 4 tareas; la sensibilidad exige 7 y se mantiene bajo el techo de ocho.
 Para los 2.852 DTE peak, el tiempo máximo por documento es 27.000 ÷ 2.852 = 9,47 s si se reparte en toda la preparación; 4,42 s si se concentra al final; y 1,89 s si se conserva la práctica actual. El diseño emite el documento cuando confirma la carga, durante la noche. Se detectan documentos pendientes frente a la hora de salida de cada camión; se resuelve priorizando la cola y reconciliando el folio, sin crear otro emisor: el ERP sigue siendo el único emisor y el documento acompaña el traslado.
 Con la dotación de 7 agentes en la hora cargada y 2 en las demás, la mesa tolera 2.283 contactos mensuales antes de requerir una posición adicional. Se observan percentiles 95, colas, errores, IOPS, Wi-Fi, ERP y drenaje en RT-09.06 y en la operación.

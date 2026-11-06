@@ -17,7 +17,7 @@ El alcance de capacidad incorpora también las cinco innovaciones del Subdocumen
 
 Un hecho del caso se cita y no se registra como supuesto. Un requisito proviene de las Bases o del Capítulo 15. Un parámetro de diseño es una decisión que imponemos a la solución. Un supuesto completa una cifra que el caso calla y declara fundamento, impacto y validación. Un cálculo se deriva de las entradas anteriores. Los parámetros de plataforma son 50 ms de CPU por solicitud, 64 MB de memoria por proceso y 150 ms de permanencia del proceso en Fargate. Son parámetros de diseño que se perfilan y se verifican en las pruebas de RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21). Los tiempos de respuesta se evalúan en el percentil 95 conforme al numeral 9.1 de las Bases Técnicas Transversales (cap. 9, p. 21).
 
-La cadena evita mezclar decisiones de diseño con hechos del CLIENTE. En particular, el factor SV-04 se aplica sólo a la hora cargada de cada ventana y no se usa para sumar procesos que ocurren en horas diferentes.
+SV-04 duplica la tasa media en la hora cargada de cada ventana sin reducir las demás horas. Es un margen de carga del perfil de diseño, no una redistribución del mismo volumen diario ni una medición del CLIENTE.
 
 \subsubsection{Perfil de carga y regímenes de diseño}
 \label{sec:dimensionamiento-regimenes}
@@ -34,7 +34,7 @@ Las Bases Técnicas del caso (anexo B, p. 38) distribuyen la operación en estas
   \item Sincronización de 17:00 a 20:00.
 \end{itemize}
 
-La hora más exigente es 12:00, con 12,34 TPS normales y 14,66 TPS en septiembre. Esa hora es una convención del cálculo: el factor SV-04 concentra la preventa y el portal en la hora central de su ventana, y el máximo sería el mismo en cualquier otra hora de esa ventana. En esa hora el portal aporta 9,63 TPS y la nube 2,71 TPS normales o 5,03 TPS en peak. Talca, Concepción y cada cross-docking están fuera de sus ventanas de mayor carga. El promedio diario engaña porque oculta la coincidencia de preventa, reparto y sesiones del portal.
+En el perfil modelado, el bloque de 12:00 a 13:00 reúne los máximos agregados de 12,34 TPS en régimen normal y 14,66 TPS en septiembre. El modelo hace coincidir allí la carga alta de preventa, reparto y portal. El portal aporta 9,63 TPS y la nube, sin el portal, 2,71 TPS en régimen normal y 5,03 TPS en septiembre. Los máximos locales de los WMS y del conjunto de las tres plataformas de cross-docking ocurren de madrugada. El Anexo 4-W.2 conserva el perfil de 24 horas.
 
 La Tabla~\ref{tab:dimensionamiento-calendario} resume los factores de calendario que se usan en la memoria.
 
@@ -55,17 +55,19 @@ Los 22,14 días son una equivalencia de cálculo, no una cantidad de días hábi
 
 La dimensión 1, «Transacciones por segundo en régimen normal», toma el máximo horario normal. La dimensión 2, «Transacciones por segundo en el peak de la ventana de despacho de 05:30 a 07:00», incluye la cota de emisión de guías y el re-despacho del cross-docking. La dimensión 3, «Transacciones por segundo en el peak de septiembre», toma el máximo horario del perfil de septiembre.
 
-La Tabla~\ref{tab:t76} presenta los lugares de proceso y separa el portal de la nube. El despacho se muestra como una cota independiente porque el caso lo identifica como peak actual de emisión de documentos.
+La Tabla~\ref{tab:t76} compara los máximos diarios y desglosa la carga dentro de la ventana de despacho, en régimen normal y en septiembre.
 
 \Needspace{0.60\textheight}
-\begin{tablalafrox}{Transacciones por segundo por lugar de proceso}{tab:t76}{Y G{0.20} G{0.20} G{0.20}}{\cab{Lugar o flujo} & \cab{Régimen normal} & \cab{Ventana de despacho} & \cab{Peak septiembre}}
-WMS de Talca & 1,46 TPS & 1,46 TPS & 2,68 TPS \\
-WMS de Concepción & 0,73 TPS & 0,73 TPS & 1,34 TPS \\
-Conjunto de los tres cross-docking & 1,17 TPS & 0,78 TPS & 2,17 TPS \\
-Nube, sin portal & 2,71 TPS & 0,79 TPS & 5,03 TPS \\
-Portal & 9,63 TPS & -- & 9,63 TPS \\
-Total & 12,34 TPS & 3,76 / 6,94 TPS & 14,66 TPS \\
+\begin{tablalafrox}{Transacciones por segundo por lugar de proceso (TPS)}{tab:t76}{Y G{0.16} G{0.16} G{0.16} G{0.16}}{\cab{Lugar o flujo} & \cab{Día normal} & \cab{Despacho normal} & \cab{Despacho en septiembre} & \cab{Día de septiembre}}
+WMS de Talca & 1,46 & 1,46 & 2,68 & 2,68 \\
+WMS de Concepción & 0,73 & 0,73 & 1,34 & 1,34 \\
+Tres plataformas de cross-docking & 1,17 & 0,78 & 1,44 & 2,17 \\
+Nube, sin portal & 2,71 & 0,79 & 1,47 & 5,03 \\
+Portal & 9,63 & 0,00 & 0,00 & 9,63 \\
+\textbf{Máximo agregado coincidente} & \textbf{12,34} & \textbf{3,76} & \textbf{6,94} & \textbf{14,66} \\
 \end{tablalafrox}
+
+{\fontsize{9pt}{11pt}\selectfont\raggedright Nota: las columnas de día completo muestran el máximo de cada lugar, aunque ocurra en horas distintas. El máximo agregado coincidente suma los aportes de cada bloque y elige la mayor de esas sumas, no suma los máximos por lugar. En despacho, las filas muestran los aportes del tramo 05:30--06:00, que determina el máximo en ambos regímenes. El modelo aplica a ese tramo la tasa del bloque 05:00--06:00, suponiéndola uniforme. Los totales se calculan antes de redondear. Véase el perfil horario del Anexo 4-W.2.\par}
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
@@ -75,13 +77,12 @@ La distribución de las cargas de procesamiento por nodo y servicio se fundament
 \item \textbf{WMS de Talca.} preparación y despacho según perfil horario y SV-03.
 \item \textbf{WMS de Concepción.} 2/3 y 1/3 de preparación y despacho, SV-03.
 \item \textbf{Conjunto de los tres cross-docking.} Tres operaciones de llegada y una de despacho sobre el volumen agregado.
-\item \textbf{Nube, sin portal.} preventa, reparto, recepción, trazabilidad, guías y sincronización.
+\item \textbf{Nube, sin portal.} Preventa, reparto, recepción, trazabilidad, guías, sincronización y el escenario EDI.
 \item \textbf{Portal.} 2.600 ÷ 9 × 2 por SV-04 × 60 ÷ 3.600.
-\item \textbf{Total.} El máximo global de septiembre ocurre a las 12:00 con preventa y portal, y el máximo de despacho entre 05:30 y 07:00 llega a 6,94 TPS con guías y re-despacho.
 \end{itemize}
 
 
-El despacho de 05:30 a 07:00 se reparte entre ambos centros conforme a SV-03, en la misma proporción que la preparación. La dimensión 2 toma el máximo real del perfil en las horas 05:00 y 06:00. El tramo 05:30–06:00 se considera uniforme, por lo que resulta 3,76 TPS normal y 6,94 TPS peak. Los aproximadamente 2.852 documentos/día peak son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías. Considerarlos todos como guías que deben emitirse antes de la salida es una cota conservadora. Las 2.600 sesiones diarias del portal son un parámetro de diseño: una por cada cliente de food service y de cadenas, 2.100 + 500 (Bases Técnicas del caso, cap. 2, p. 4), y no son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, anexo B, p. 38). La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) es 1,5 × 14,66 = 21,99 TPS y no recibe un segundo multiplicador.
+El despacho se reparte entre ambos centros conforme a SV-03, en la misma proporción que la preparación. Los aproximadamente 2.852 documentos/día de septiembre son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías. Considerarlos todos como guías que deben emitirse antes de la salida es una cota conservadora. Las 2.600 sesiones diarias del portal son un parámetro de diseño: una por cada cliente de food service y de cadenas, 2.100 + 500 (Bases Técnicas del caso, cap. 2, p. 4), y no son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, anexo B, p. 38). Los objetivos de prueba de septiembre y de despacho se distinguen en la Tabla~\ref{tab:t86}.
 
 \subsubsection{Personas usuarias, concurrencia y dispositivos: dimensiones 4–6}
 \label{sec:dimensionamiento-usuarios}
@@ -206,14 +207,14 @@ Ceph entrega 1,92 TB útiles con seis NVMe de 960 GB, tres réplicas y sin RAID.
 \subsubsection{Capacidad en nube}
 \label{sec:dimensionamiento-nube}
 
-La plataforma utiliza Fargate, Aurora, ElastiCache, SQS, IoT Core, DynamoDB y S3 como servicios administrados. Una tarea entrega 14 solicitudes por segundo al 70\,\% de uso con 50 ms de CPU. El escalado reacciona con métricas de un minuto y pone una tarea nueva en servicio en menos de tres minutos, valor de diseño que mide la prueba de carga. El balanceador drena la tarea que sale sin perder transacciones en curso (RT-09.04, Bases Técnicas Transversales, cap. 9, p. 21). La Tabla~\ref{tab:dimensionamiento-nube} separa el portal y compara cada perfil con el techo de ocho tareas.
+La plataforma utiliza Fargate, Aurora, ElastiCache, SQS, IoT Core, DynamoDB y S3 como servicios administrados. Con un supuesto de 50 ms de CPU por solicitud, se estima una capacidad de 14 solicitudes por segundo por tarea al 70\,\% de uso. Para dimensionar la API, la Tabla~\ref{tab:dimensionamiento-nube} trata conservadoramente cada operación de nube y portal como una solicitud equivalente. El perfil también incluye trabajo asíncrono: no todas esas operaciones son llamadas HTTP. La prueba mide por separado las solicitudes de API, las colas, la CPU de cada perfil y el tiempo de escalado. El diseño usa métricas de un minuto y busca poner en servicio una tarea nueva en menos de tres minutos. El balanceador drena la tarea que sale sin perder transacciones en curso (RT-09.04, Bases Técnicas Transversales, cap. 9, p. 21).
 
 \Needspace{0.60\textheight}
 \begin{tablalafrox}{Procesos Fargate por perfil}{tab:dimensionamiento-nube}{F{0.30} G{0.22} G{0.14} Y}{\cab{Perfil} & \cab{Carga} & \cab{Tareas} & \cab{Conclusión}}
-Régimen normal & 12,34 solicitudes/s (nube + portal) & 2 & Cumple \\
-Peak de septiembre & 14,66 solicitudes/s (nube + portal) & 2 & Cumple \\
-Prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) & 21,99 solicitudes/s totales, distribuido por perfil horario & 2 & Una sola multiplicación \\
-Cota extrema & 48,37 solicitudes/s (5,03 + 43,33) & 4 & Bajo el techo \\
+Régimen normal & 12,34 solicitudes equivalentes/s (nube + portal) & 2 & Capacidad estimada \\
+Peak de septiembre & 14,66 solicitudes equivalentes/s (nube + portal) & 2 & Capacidad estimada \\
+Prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) & 21,99 solicitudes equivalentes/s para la cota de la API & 2 & A verificar en Preproducción \\
+Cota extrema & 48,37 solicitudes equivalentes/s (nube + portal extremo) & 4 & Bajo el techo \\
 Sensibilidad 120 solicitudes & 21,97 / 91,70 solicitudes/s, régimen / cota & 2 / 7 & Bajo el techo \\
 Cota extrema más canal tradicional & 111,70 solicitudes/s (91,70 + cuota de 20) & 8 & Cota completa de ADR-12, verificar mezcla y latencia \\
 \end{tablalafrox}
@@ -231,14 +232,16 @@ La Tabla~\ref{tab:dimensionamiento-plan} mantiene separadas la proyección del a
 
 \Needspace{0.6\textheight}
 \begin{tablalafrox}{Proyección y crecimiento de capacidad}{tab:dimensionamiento-plan}{Y G{0.18} G{0.18} G{0.18}}{\cab{Componente} & \cab{Año 1} & \cab{Año 3} & \cab{3×}}
-WMS de Talca, TPS peak & 2,68 & 2,68 × (305.000 ÷ 260.000) = 3,15 & 8,05 \\
+WMS de Talca, TPS peak & 2,68 & 3,15 & 8,05 \\
 Cota por cross-docking, basada en la carga agregada de las tres plataformas & 2,17 & 2,58 & 6,50 \\
-Nube, TPS peak / tareas & 14,66 / 2 & 14,66 × (36.000 ÷ 31.000) = 17,03 / 2 & 43,98 / 4 \\
+Nube y portal, TPS peak / tareas & 14,66 / 2 & 17,03 / 2 & 43,98 / 4 \\
 Evidencia anual & 87,72 GB & 87,72 × (36.000 ÷ 31.000) = 101,87 GB & 263,16 GB \\
 Enlace de Talca, escenario horario distribuido & 5,16 Mbps & 5,20 Mbps, con los flujos de volumen × 305.000 ÷ 260.000 & 5,64 Mbps \\
 Terminales de bodega de Talca & 132 & (23 + 3) de congelado + (113 + 12) estándar = 151 & no aplica \\
 Mesa de ayuda, contactos & 2.000/mes & 2.000 × (350 ÷ 310) = 2.258/mes & 6.000/mes \\
 \end{tablalafrox}
+
+{\fontsize{9pt}{11pt}\selectfont\raggedright Nota: las proyecciones del año 3 usan los valores del modelo sin redondear. El escenario global de 3× usa el máximo declarado de 14,66 TPS como base. Las bases por componente se detallan en el Anexo 4-W.\par}
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
@@ -305,11 +308,12 @@ Los otros candidatos son la base WMS, los IOPS, la Wi-Fi y el drenaje. Se detect
 \subsubsection{Validación mediante pruebas de carga y estrés}
 \label{sec:dimensionamiento-pruebas}
 
-La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) carga una sola vez 1,5 × la dimensión 3, es decir, 21,99 TPS totales. La Tabla~\ref{tab:t86} vincula cada ensayo con la decisión que debe cerrar.
+La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) usa 1,5 × el máximo declarado de septiembre: 21,99 TPS totales. El ensayo separado de despacho usa 1,5 × su máximo declarado de 6,94 TPS: 10,41 TPS durante 90 minutos. Ambos objetivos se calculan sobre las cifras declaradas de la Tabla~\ref{tab:t76} y se trazan al Formulario T-13. La mezcla de una ventana no sustituye la de la otra.
 
 \Needspace{0.60\textheight}
 \begin{tablalafrox}{Pruebas que confirman el dimensionamiento}{tab:t86}{F{0.31} G{0.27} Y F{0.20}}{\cab{Prueba} & \cab{Carga} & \cab{Qué confirma} & \cab{Criterio}}
-  Carga RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) & 21,99 TPS totales, distribuidos por lugar según el perfil horario & CPU, Fargate, portal, WMS, base e IOPS & Percentil 95 \\
+  Carga RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) & 21,99 TPS totales, mezcla del peak de septiembre & API, portal, base y transacciones críticas del T-13 & Umbrales p95 del T-13 \\
+  Despacho (RT-10.05 del caso) & 10,41 TPS durante 90 min, mezcla de despacho & WMS, guías del ERP y salida de cargas & 0 min de indisponibilidad \\
   Estrés RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) & Sobre cota extrema portal y 3× & Umbral de quiebre y degradación & Sin pérdida ni duplicación \\
   Corte de enlace & 24 h y drenaje en 2 h & WAL, broker, telemetría y observabilidad & Drenaje completo \\
   Sincronización de dispositivo & Peor ruta en 10 min & 0,13 Mbps efectivos & Ruta reconciliada \\

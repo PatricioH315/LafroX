@@ -85,7 +85,7 @@ La Tabla~\ref{tab:anexo-4b-supuestos} declara el fundamento, impacto y validaci�
   SV-01 & Un pedido genera una entrega, 31.000/1.400 produce 22,14 días y concuerda con 2.100/96. & Cambian evidencia, mensajes y almacenamiento. & Conciliación ERP–guías–entregas en Etapa 1. \\
   SV-02 & Septiembre escala los flujos de volumen y diciembre no supera su exigencia. El factor 1,857 es cálculo. & Falta capacidad en el nuevo peak. & Serie mensual antes del congelamiento. \\
   SV-03 & Talca prepara 2/3 y Concepción 1/3 por superficies y función de abastecimiento adicional. & Faltan terminales, WMS o enlace en el centro subestimado. & Exportación WMS por centro. \\
-  SV-04 & La hora cargada duplica la media de su propia ventana, una sola vez. & El cuello se traslada a WMS, ERP, Wi-Fi o nube. & Perfil horario y RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21). \\
+  SV-04 & La hora cargada duplica la media de su ventana, sin descontar carga de las demás horas. Es un margen de diseño. & Puede cambiar el cuello de botella entre WMS, ERP, Wi-Fi y nube. & Contrastar el perfil modelado con tasas por ventana en las pruebas. \\
   SV-05 & La cadena principal no supera 11\,\% de los pedidos en el escenario EDI, que opera todos los días desde enero de 2029. El caso informa que pesa 11\,\% de la venta, y como sus pedidos son mayores que el promedio, tomar 11\,\% de los pedidos es una cota holgada. & Aumentan colas EDI. & Contrato y certificación del intercambio. \\
   SV-06 & 2,5 contactos por persona/mes, 10 minutos y 25\,\% en hora cargada. & Se requieren más personas. & Tickets y Erlang C mensual. \\
   SV-07 & La API de telemetría de los camiones propios continúa disponible. & Posición automática se degrada a ruta planificada. & Prueba contractual y técnica. \\
@@ -96,15 +96,15 @@ La Tabla~\ref{tab:anexo-4b-supuestos} declara el fundamento, impacto y validaci�
 \section{Dimensiones 1–3: transacciones por segundo}
 \label{sec:anexo-4b-dimensiones-1-3}
 
-Se calcula el máximo horario de cada lugar para no sumar ventanas que no coinciden. Los días equivalentes son 31.000 ÷ 1.400 = 22,14 días (los cálculos usan el cociente sin redondear, 22,142857) y el control cruzado es 2.100 ÷ 96 = 21,88 días. El factor de septiembre es 2.600 ÷ 1.400 = 1,857.
+El perfil suma las tasas de los lugares en cada bloque horario antes de elegir el máximo agregado coincidente. Los máximos individuales sirven para dimensionar cada lugar, no para obtener el total. Los días equivalentes son 31.000 ÷ 1.400 = 22,14 días (los cálculos usan el cociente sin redondear, 22,142857) y el control cruzado es 2.100 ÷ 96 = 21,88 días. El factor de septiembre es 2.600 ÷ 1.400 = 1,857.
 
 El volumen de cross-docking de la Tabla~\ref{tab:anexo-4b-horario} corresponde al conjunto de las tres plataformas y se suma una sola vez al total. No se declara ese volumen completo como carga medida de cada sitio. El dimensionamiento de cada equipo puede usarlo como cota conservadora sin multiplicarlo en el total global. Las operaciones de cada entrega se reparten en recepción, escaneo y desconsolidación de 03:00 a 05:00, y despacho de 05:00 a 06:00. SV-04 concentra sólo la hora cargada de cada tramo. La preparación normal de Talca se calcula como 11.742 líneas por noche × 2 operaciones × 2/3 ÷ 28.800 segundos = 0,54 TPS de media. La hora cargada de SV-04 alcanza 1,09 TPS. El despacho se distribuye entre Talca y Concepción según SV-03. A las 05:00 el WMS alcanza 1,46 TPS normal y 2,68 TPS en septiembre en Talca, y 0,73 y 1,34 TPS en Concepción.
 
 La nube suma preventa, reparto, recepción, trazabilidad, guías, sincronización y el escenario EDI. Los aproximadamente 2.852 documentos/día peak son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías. Tomarlos todos como guías a emitir antes de la salida es una cota conservadora. El portal queda separado: 2.600 ÷ 9 × 2 por SV-04 = 578 sesiones en la hora cargada. 578 × 60 ÷ 3.600 = 9,63 solicitudes/s y 578 × 10 ÷ 60 = 96,30 concurrentes. La cota extrema es 2.600 × 60 ÷ 3.600 = 43,33 solicitudes/s y 433,33 concurrentes. Las 2.600 sesiones diarias del portal son un parámetro de diseño: se toma una sesión por cada cliente de food service y de cadenas, 2.100 + 500 = 2.600 (Bases Técnicas del caso, cap. 2, p. 4). La cota cubre esos dos canales y no al canal tradicional, cuyo uso del portal es opcional y no tiene medición en el caso. Ese canal se admite con una cuota propia en la puerta de enlace: 20 solicitudes/s agregadas para los clientes tradicionales, que es la capacidad remanente bajo el techo de 8 tareas en la cota extrema (8 × 14,00 − 91,70 = 20,30 solicitudes/s). Si la adopción medida acerca el uso a esa cuota, se amplía la capacidad antes de subirla. La cuota no rechaza pedidos de preventa, que usan su propio perfil. No son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, anexo B, p. 38). Que las dos cifras coincidan es casualidad.
 
-La dimensión 1 es \textbf{12,34 TPS a las 12:00} en régimen normal. La dimensión 2 es \textbf{3,76 TPS normal y 6,94 TPS peak}, máximos reales del perfil horario entre 05:00 y 06:00 para la ventana 05:30–07:00. La dimensión 3 es \textbf{14,66 TPS a las 12:00} en septiembre. RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) es 1,5 × 14,66 = \textbf{21,99 TPS}.
+La dimensión 1 es \textbf{12,34 TPS} en el bloque de 12:00 a 13:00 en régimen normal. La dimensión 2 compara los tramos 05:30--06:00 y 06:00--07:00. Para el primer tramo usa la tasa del bloque 05:00--06:00 bajo el supuesto de uniformidad, y ese tramo determina los máximos de \textbf{3,76 TPS normal y 6,94 TPS en septiembre}. La dimensión 3 es \textbf{14,66 TPS} en el bloque de 12:00 a 13:00 en septiembre. Los objetivos de ensayo se calculan sobre los máximos declarados en el cuerpo y se trazan al T-13.
 
-La Tabla~\ref{tab:anexo-4b-horario} conserva el perfil hora por hora que produce esos máximos.
+La Tabla~\ref{tab:anexo-4b-horario} conserva el perfil hora por hora que produce esos máximos. N/P indica régimen normal y peak de septiembre, en ese orden.
 
 \begin{anexohorizontal}
 \begin{tablalarga}{Perfil horario por lugar de proceso}{tab:anexo-4b-horario}{F{0.09} G{0.13} G{0.13} G{0.15} G{0.13} G{0.13} G{0.15}}{\cab{Hora} & \cab{Talca N/P} & \cab{Concepción N/P} & \cab{Cross-\allowbreak{}docking agregado N/P} & \cab{Nube N/P} & \cab{Portal N/P} & \cab{Total N/P}}
@@ -137,7 +137,7 @@ La Tabla~\ref{tab:anexo-4b-horario} conserva el perfil hora por hora que produce
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29) y de los supuestos y cálculos de (Subdocumento 4, anexo~4-W, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
 
-La fila de las 12:00 gobierna los TPS totales porque coincide la hora cargada de preventa, reparto y portal. La hora de preparación conserva la mayor carga local de WMS, pero no la mayor suma de lugares.
+Cada hora identifica el inicio de su bloque. Los totales por bloque se calculan antes de redondear, por lo que no siempre coinciden con la suma de las celdas impresas. El bloque de las 12:00 determina el máximo agregado porque el modelo hace coincidir la hora cargada de preventa, reparto y portal. Los máximos de los WMS ocurren en el bloque de las 05:00 y el máximo agregado de cross-docking en el de las 04:00.
 
 \section{Dimensiones 4–6: personas, concurrencia y dispositivos}
 \label{sec:anexo-4b-dimensiones-4-6}
@@ -330,9 +330,9 @@ En los tres casos la UPS requerida, que es la carga de diseño dividida por 0,8,
 \section{Capacidad en nube}
 \label{sec:anexo-4b-nube}
 
-El perfil de API atiende aplicaciones y portales N-01 a N-03. Una tarea Fargate entrega 0,70 ÷ 0,05 = \textbf{14,00 solicitudes/s}. La tabla de carga es: régimen, 12,34 solicitudes/s de nube más portal y 2 tareas; peak, 14,66 y 2; RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21), 21,99 y 2; cota extrema, 5,03 + 43,33 = 48,37 y 4. La sensibilidad de 120 solicitudes por sesión conserva las sesiones repartidas en la hora: 2,71 + 19,26 = 21,97 y 2 tareas en régimen; 5,03 + 86,67 = 91,70 y 7 tareas en cota. Con la cuota agregada del canal tradicional, la cota de 91,70 aumenta a 111,70 solicitudes/s y requiere 8 tareas. Este caso alcanza el techo y se prueba con la mezcla real antes de ampliar la cuota.
+El perfil de API atiende aplicaciones y portales N-01 a N-03. Una tarea Fargate tiene una capacidad estimada de 0,70 ÷ 0,05 = \textbf{14,00 solicitudes/s}. La cota de capacidad trata cada operación de nube y portal como una solicitud equivalente, sin afirmar que todo ese trabajo ingrese por HTTP. La estimación resulta en 2 tareas a 12,34 en régimen, 14,66 en septiembre y 21,99 en la prueba de carga. Para la cota extrema, la suma de nube y portal calculada sin redondear da 48,37 y requiere 4 tareas. Con 120 solicitudes por sesión, los escenarios de régimen y cota dan 21,97 y 91,70, que requieren 2 y 7 tareas. La cuota de 20 solicitudes/s del canal tradicional lleva la cota a 111,70 y a 8 tareas. La prueba distingue las solicitudes de API, los eventos en cola y el trabajo de cada perfil antes de acreditar capacidad o ampliar la cuota.
 
-Aurora se dimensiona con la misma cota que la API, para que la base no sea el límite de un escenario que la API admite. Como cota, cada solicitud consume en la base los mismos 50 ms de CPU que en la aplicación, sin descontar la parte que atiendan el lector o la caché. Así se cubre también la falla del lector, cuando el escritor recibe toda la carga. La carga de nube a 3×, 43,98 solicitudes/s, exige 43,98 × 0,05 ÷ 0,70 = 3,14 vCPU. La cota extrema con la cuota del canal tradicional, 91,70 + 20 = 111,70 solicitudes/s, exige 111,70 × 0,05 = 5,59 vCPU, que sobre 8 vCPU es un uso de 69,8\,\%, bajo el 70\,\%. Se adopta db.r6g.2xlarge, de 8 vCPU y 64 GiB, para el escritor y el lector de sa-east-1 y para la instancia de us-east-1, que hereda la carga al conmutar. El peak actual, 14,66 × 0,05 = 0,73 vCPU, cabría en una instancia menor, pero cambiar de clase exigiría intervenir en el congelamiento de septiembre (ADR-12). Por eso la capacidad queda fija desde el inicio y se verifica en la prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21), midiendo la mezcla real de lecturas y escrituras.
+Aurora se dimensiona con la misma cota de solicitudes equivalentes que la API. Para estimar el consumo, se asignan a cada solicitud equivalente los mismos 50 ms de CPU en la base que en la aplicación, sin descontar la parte que atiendan el lector o la caché. Así se contempla la falla del lector, cuando el escritor recibe toda la carga. La carga de nube a 3×, 43,98 solicitudes equivalentes/s, exige 43,98 × 0,05 ÷ 0,70 = 3,14 vCPU. La cota extrema con la cuota del canal tradicional, 91,70 + 20 = 111,70 solicitudes equivalentes/s, exige 111,70 × 0,05 = 5,59 vCPU, que sobre 8 vCPU es un uso de 69,8\,\%, bajo el 70\,\%. Se adopta db.r6g.2xlarge, de 8 vCPU y 64 GiB, para el escritor y el lector de sa-east-1 y para la instancia de us-east-1, que hereda la carga al conmutar. La estimación del peak base, 14,66 × 0,05 = 0,73 vCPU, cabría en una instancia menor, pero cambiar de clase exigiría intervenir en el congelamiento de septiembre (ADR-12). Por eso la capacidad queda fija desde el inicio y se verifica en la prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21), midiendo la mezcla real de lecturas y escrituras.
 
 \section{Crecimiento, enlaces y ventana dominical}
 \label{sec:anexo-4b-crecimiento}
@@ -341,7 +341,7 @@ La proyección de año 3 del numeral 14.1 de las Bases Técnicas del caso (cap. 
 
 \begin{itemize}
   \item WMS Talca = 2,68 × (305.000 ÷ 260.000) = 3,15 TPS.
-  \item Nube más portal = 14,66 × (36.000 ÷ 31.000) = 17,03 solicitudes/s.
+  \item Nube más portal: el máximo modelado sin redondear se escala por 36.000 ÷ 31.000 y resulta en 17,03 solicitudes equivalentes/s.
   \item Evidencia = 87,72 × (36.000 ÷ 31.000) = 101,87 GB/año.
   \item Enlace de Talca, escenario horario distribuido = 5,20 Mbps a año 3 y 5,64 Mbps a 3×. El retorno simultáneo se verifica por separado en 4-W.5–4-W.6.
   \item Terminales de bodega de Talca = (23 + 3) de congelado + (113 + 12) estándar = 151.
@@ -353,7 +353,7 @@ Por separado, RT-09.03 (Bases Técnicas Transversales, cap. 9, p. 21) exige 3×:
 \begin{tablalafrox}{Plan de capacidad}{tab:anexo-4b-plan}{F{0.28} G{0.16} G{0.16} G{0.16} Y}{\cab{Componente} & \cab{Año 1} & \cab{Año 3} & \cab{3×} & \cab{Acción}}
   WMS de Talca, TPS peak & 2,68 & 3,15 & 8,05 & Revisar CPU e IOPS trimestralmente \\
 Cota por cross-docking con carga agregada de las tres plataformas & 2,17 & 2,58 & 6,50 & Contrastar distribución real por sitio, revisar CPU e IOPS trimestralmente \\
-  Nube, TPS peak / tareas & 14,66 / 2 & 17,03 / 2 & 43,98 / 4 & Escalamiento y prueba trimestral \\
+  Nube y portal, TPS peak / tareas & 14,66 / 2 & 17,03 / 2 & 43,98 / 4 & Escalamiento y prueba trimestral \\
   Evidencia anual & 87,72 GB & 101,87 GB & 263,16 GB & Escalar S3 y retención \\
  Enlace de Talca, escenario horario distribuido  &  5,16 Mbps  &  5,20 Mbps  &  5,64 Mbps  &  Contrastar además el retorno simultáneo de la Tabla~\ref{tab:anexo-4b-enlaces}  \\
   Terminales de bodega de Talca & 132 & 151 & no aplica & Ajustar parque a la dotación \\
@@ -362,7 +362,7 @@ Cota por cross-docking con carga agregada de las tres plataformas & 2,17 & 2,58 
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
 
-La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) usa una sola multiplicación: 14,66 × 1,5 = 21,99 TPS. Las tareas, colas y almacenamiento en nube escalan por política. La reserva N+1, la Wi-Fi y los enlaces se amplían mediante revisión planificada.
+El escenario global de 3× usa el máximo declarado de 14,66 TPS como base: 43,98 TPS. Las proyecciones del año 3 y las cotas por componente se calculan con los valores del modelo sin redondear. Las tareas, colas y almacenamiento en nube escalan por política. La reserva N+1, la Wi-Fi y los enlaces se amplían mediante revisión planificada.
 
 \section{Umbrales de quiebre y cuello de botella}
 \label{sec:anexo-4b-umbrales}
@@ -374,7 +374,7 @@ La emisión tributaria es el primer candidato a cuello de botella: tratar los 2.
 \section{Pruebas de carga, estrés y operación}
 \label{sec:anexo-4b-pruebas}
 
-La carga RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) se ejecuta a \textbf{21,99 TPS totales}, distribuidos por lugar según el perfil horario, sin multiplicar cada lugar por separado. El estrés que exige el mismo RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) supera la cota extrema del portal y la volumetría 3×. La prueba de corte dura 24 horas y debe drenar en dos. La sincronización de la peor ruta debe completar en diez minutos. Se ejecutan dos ensayos de migración conforme a RT-05.13 (Bases Técnicas Transversales, cap. 5, p. 12) y una verificación de la ventana dominical para cada sitio.
+La carga RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) usa \textbf{21,99 TPS totales} con la mezcla del peak de septiembre. Se obtiene aplicando 1,5 una vez a los 14,66 TPS declarados, no a cada máximo local. El ensayo separado de despacho usa \textbf{10,41 TPS durante 90 minutos} con la mezcla de esa ventana: 1,5 × los 6,94 TPS declarados, con 0 minutos de indisponibilidad (RT-10.05 del caso). Ambos objetivos corresponden al Formulario T-13. El estrés supera la cota extrema del portal y la volumetría 3×. La prueba de corte dura 24 horas y debe drenar en dos. La sincronización de la peor ruta debe completar en diez minutos. Se ejecutan dos ensayos de migración conforme a RT-05.13 (Bases Técnicas Transversales, cap. 5, p. 12) y una verificación de la ventana dominical para cada sitio.
 
 Se conservan percentil 95, utilización, colas, errores, pérdida o duplicación, estado de conciliación y parámetros confirmados. El perfil horario, la migración y la operación dominical se cierran con evidencia de prueba, sin convertir el resultado medido en un hecho previo.
 

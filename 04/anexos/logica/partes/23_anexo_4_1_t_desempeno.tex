@@ -19,7 +19,7 @@ Liberar despachos & 96 salidas 05:30--07:00. & Guías por destino/carga y cambio
 \end{tablalafrox}
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de las Bases Técnicas del caso (caps.~14--15, pp.~24--28, y cap.~18, p.~34). Las pruebas son compromisos de ejecución, no resultados obtenidos. Diseño propuesto: (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-23-anexo-4-1-t-desempeno}--\pageref*{fuente-23-anexo-4-1-t-desempeno-fin}).\par}
 
-La prueba RT-09.06 usa una carga total de 1,5 $\times$ 14,66 = 21,99 TPS, distribuida por perfil horario y sitio. Las tasas por integración se detallan en el Anexo 4-W del Subdocumento 4. El crecimiento de RT-09.03 ensaya tres veces la volumetría inicial sin rediseñar contratos ni identificadores.
+La prueba RT-09.06 usa 1,5 $\times$ el máximo declarado de septiembre, 14,66 TPS, para un objetivo de 21,99 TPS con la mezcla de ese peak. El ensayo separado de despacho usa 1,5 $\times$ los 6,94 TPS declarados para esa ventana: 10,41 TPS durante 90 minutos, con cero minutos de indisponibilidad. El T-13 especifica ambos ensayos y el Anexo 4-W conserva las tasas de origen. El crecimiento de RT-09.03 ensaya tres veces la volumetría inicial sin rediseñar contratos ni identificadores.
 
 Las reservas se serializan por agregado para evitar doble compromiso. Los perfiles ERP, reconciliación, EDI y reportes tienen mamparos de concurrencia y colas independientes. Bajo sobrecarga, lectura degrada a copia fechada, escritura permanece sin confirmar y objetos se transfieren por reanudación. El usuario recibe estado y causal. Nunca se descarta una operación confirmada para recuperar velocidad.
 
