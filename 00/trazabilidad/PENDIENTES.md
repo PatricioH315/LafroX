@@ -36,3 +36,14 @@ El [registro semántico](REVISION_SEMANTICA_FORMULARIOS_2026-10-25.md) identific
 ## Figuras de red aprobadas — 27-10-2026
 
 El usuario aprobó las nuevas vistas de las figuras 24–26, sin textos explicativos al pie, y autorizó su integración en el cuerpo. Los activos anteriores se conservan. Alcance y verificación en [el registro de integración](FIGURAS_RED_APROBADAS_2026-10-27.md). Esta aprobación gráfica no cierra los ensayos ni las condiciones contractuales de continuidad.
+
+## Estudio de cobertura y red inalámbrica — 6 de noviembre de 2026
+
+D45 cerró el estudio de cobertura en el SD4 (Anexo 4-W.13). Queda pendiente:
+
+- **Figuras (solo a pedido del usuario):** la Figura 28 (racks del CD Talca) no dibuja el par de controladores CW9800L en U30 de R02 ni la ocupación de 13U. La figura del CD Talca no muestra los controladores ni el RADIUS de VM-05.
+- **SD3, resuelto** en `LafroX-Subdoc3-LateX-CORRIGIENDO` (`c38619fa`): T-12 (RNF-13.09, RT-03.23, RT-03.24 y RT-06.11 con 9,2 kW) y S-36.
+- **SD7, resuelto** en `LafroX-Subdoc7-LateX-CORRIGIENDO` (`1779817f`): 2.1.2 entrega el estudio verificado en el mes 2, 5.1.2 incluye la red inalámbrica, 6.2.3 y 6.3.4 se aceptan con la cobertura medida; espejo Markdown y K4 actualizados, T-14 sin cambio de páginas. Las filas S4-12 y S8-16 de su trazabilidad siguen sin completar, como el resto de esa tabla.
+- **SD8:** la revisión pide llevar la cobertura en cámaras al registro de riesgos (S8-16). La nota TR-11 propone no crear un riesgo por defecto; hay que conciliar ambas posturas.
+- **Autoridad certificadora y MDM, resuelto en D46:** AWS Private CA y Microsoft Intune quedan nombrados en el SD4 y el T-11.
+- **Convención (resuelta el 7 de noviembre de 2026):** la sección de cobertura quedaba fuera del grupo que numera el Anexo 4-W y salía como «4.13»; ahora sale como «4-W.13», igual que las doce anteriores y que las citas del texto.

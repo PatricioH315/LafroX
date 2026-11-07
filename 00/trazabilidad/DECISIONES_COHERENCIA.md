@@ -135,3 +135,16 @@ Suma ≈ 1 h 45 min más la decisión, dentro de RTO 4 h. No hay conmutación au
 - Responde a la revisión del Informe 2 («la Figura 18 tiene rótulos de unos 6 a 7 puntos»). Ya estaba en página horizontal a todo el ancho, con texto de 7,8 pt.
 - El texto del `.drawio` pasa de 37 y 34 unidades a 44, y el diagrama se reacomoda: el cuadro de los cinco sitios on-premise baja bajo la VPC Hub, el contenido se estira a lo ancho y AWS Cloud y us-east-1 se extienden a la derecha. En la página queda a unos 9,1 pt (347 ppi).
 - Mismos 197 elementos (144 componentes y 51 conexiones), con los mismos textos, estilos, contenedores y extremos de conexión; solo cambian posiciones, anchos de cajas y tamaño de letra. El original queda respaldado en la carpeta local `drawio/4.2_fisica/prueba_fig18/`.
+
+## D45. Estudio de cobertura inalámbrica y red inalámbrica sin punto único de falla (2026-11-06)
+
+- Responde a la revisión del Informe 2 (RT-03.24 del caso: «El estudio no se presenta»). El Anexo 4-W.13 presenta el estudio en tres fases: diseño predictivo por zona, verificación en sitio en el mes 2, antes del cableado del mes 4, y medición de aceptación antes de cada marcha blanca. Las densidades de 500 m² con racks (S-36), 300 m² por cámara con mínimo de dos y 900 m² en nave abierta reproducen 39 + 20 + 6 = 65 AP, más 7 de reserva.
+- Decisión del usuario: Cisco Catalyst IW9167I en los cinco sitios y un par de controladores CW9800L con conmutación de estado en R02 (U30) de Talca. Los AP operan en FlexConnect con conmutación local y autentican con EAP-TLS contra FreeRADIUS 3.2, junto a la caché de identidad en VM-05, VM-C03 y E-01. El respaldo RADIUS es Talca para Concepción y los cross-docking, y Concepción para Talca.
+- Sala de Talca: carga TI de diseño de 9.156 W (≈ 9,2 kW), UPS ≈ 12,0 kVA sobre 15 kVA, PUE 1,5, sitio ≈ 13,9 kW y generador al 70 %. R02 pasa a 13U. Las cantidades del T-11 no cambian.
+- Detalle y fuentes en `CIERRE_REVISION_I2_COBERTURA_SD4.md`; pendientes en otros subdocumentos y figuras en `PENDIENTES.md`.
+
+## D46. Autoridad certificadora y MDM nombrados (2026-11-07)
+
+- Cierra el hueco que dejaba el EAP-TLS de D45 y el mTLS entre servicios: el SD4 no nombraba quién emite los certificados ni qué producto MDM los instala.
+- AWS Private CA, en una cuenta del CLIENTE, emite los certificados privados de mTLS y, en una autoridad dedicada, los certificados de dispositivo de la Wi-Fi mediante su conector SCEP para Microsoft Intune (Amazon Web Services, s. f.-q). Intune, con inscripción Android Enterprise y las herramientas Zebra DNA, es el producto MDM de N-13; sus perfiles SCEP para equipos dedicados o administrados se usan en la Wi-Fi, y la revocación se hace en la autoridad, porque Intune no revoca esos certificados (Microsoft, 2026).
+- Archivos: 4.2.2 (N-13), 4.2.3 (servicios de nube), Anexo 4-P, Anexo 4-R, Anexo 4-W.13 y T-11 (N-12 y N-13). Sin cambio de páginas en los tres PDF.
