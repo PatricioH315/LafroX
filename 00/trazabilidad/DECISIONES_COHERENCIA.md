@@ -148,3 +148,13 @@ Suma ≈ 1 h 45 min más la decisión, dentro de RTO 4 h. No hay conmutación au
 - Cierra el hueco que dejaba el EAP-TLS de D45 y el mTLS entre servicios: el SD4 no nombraba quién emite los certificados ni qué producto MDM los instala.
 - AWS Private CA, en una cuenta del CLIENTE, emite los certificados privados de mTLS y, en una autoridad dedicada, los certificados de dispositivo de la Wi-Fi mediante su conector SCEP para Microsoft Intune (Amazon Web Services, s. f.-q). Intune, con inscripción Android Enterprise y las herramientas Zebra DNA, es el producto MDM de N-13; sus perfiles SCEP para equipos dedicados o administrados se usan en la Wi-Fi, y la revocación se hace en la autoridad, porque Intune no revoca esos certificados (Microsoft, 2026).
 - Archivos: 4.2.2 (N-13), 4.2.3 (servicios de nube), Anexo 4-P, Anexo 4-R, Anexo 4-W.13 y T-11 (N-12 y N-13). Sin cambio de páginas en los tres PDF.
+
+## D47. Superficie útil del recinto técnico de Talca (2026-11-07)
+
+- Responde a la revisión del Informe 2 (RT-06.03): la sala «no declara su superficie ni tiene plano acotado» y el recinto está «cargado de recintos sin superficie declarada».
+- Decisión del usuario: ≈ 31 m² útiles en cinco recintos (Tabla 26 del 4.3.1.4): pasillo de control 1,2 × 3,0 m, esclusa 1,2 × 1,2 m, sala de servidores y comunicaciones 3,6 × 3,5 m, sala de UPS y baterías 2,4 × 3,0 m y zona de trabajo y respaldo 2,4 × 2,5 m. Bitácora, videovigilancia, tablero, acometida, climatización, detección y extinción dejan de contarse como zonas: son elementos dentro de un recinto. La zona de respaldo se une a la de trabajo con un armario de custodia.
+- Se mantienen la esclusa y la biometría, porque el numeral 6.1 exige control de acceso a la sala secundaria (RT-06.20 a RT-06.23); así no cambian las filas «Cumple» del T-12 (SD3) ni el paquete 6.4.1 del T-14 (SD7).
+- La sala de UPS sigue aparte: sus 0,8 kW de pérdidas llevarían la sala de servidores a ≈ 10,0 kW, el límite de una unidad de 10 kW, sin margen N+1.
+- Supuestos de medidas: racks de 0,6 × 1,2 m, climatización en fila de 0,3 m de ancho y gabinetes de UPS y baterías de 0,6 m; el T-11 no fija modelos.
+- T-11: climatización de precisión en fila con condensadoras exteriores; el recinto de custodia pasa a ser un armario ignífugo en la zona de trabajo y respaldo.
+- Cuerpo de 194 a 195 páginas; ningún documento cita páginas del SD4 posteriores a la 178. La Figura 29 sigue como esquema por líneas hasta que se dibuje el plano acotado (pendiente).

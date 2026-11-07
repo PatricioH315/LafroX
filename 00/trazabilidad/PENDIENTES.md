@@ -47,3 +47,10 @@ D45 cerró el estudio de cobertura en el SD4 (Anexo 4-W.13). Queda pendiente:
 - **SD8:** la revisión pide llevar la cobertura en cámaras al registro de riesgos (S8-16). La nota TR-11 propone no crear un riesgo por defecto; hay que conciliar ambas posturas.
 - **Autoridad certificadora y MDM, resuelto en D46:** AWS Private CA y Microsoft Intune quedan nombrados en el SD4 y el T-11.
 - **Convención (resuelta el 7 de noviembre de 2026):** la sección de cobertura quedaba fuera del grupo que numera el Anexo 4-W y salía como «4.13»; ahora sale como «4-W.13», igual que las doce anteriores y que las citas del texto.
+
+## Plano acotado del recinto de Talca — 7 de noviembre de 2026
+
+D47 declaró la superficie (≈ 31 m² en cinco recintos, Tabla 26 del 4.3.1.4). Queda pendiente:
+
+- **Figura 29 (a pedido del usuario, al final):** reemplazar el esquema por líneas por un plano en planta acotado, con escala, cotas de cada recinto, puertas, racks y climatización, conforme a RT-06.03. Hoy la figura todavía muestra «Zona de respaldo y repuestos» separada y bitácora, videovigilancia y tablero como zonas.
+- **SD3, al cambiar la figura:** la fila RT-06.03 del T-12 dice «Plano de distribución interna por zonas y líneas de acceso»; debería decir «plano acotado».
