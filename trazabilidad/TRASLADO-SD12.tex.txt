@@ -1,0 +1,40 @@
+% CONTENIDO RETIRADO DE SD1: integrar y conciliar con SD12/T-8/T-15.
+% No constituye SD12 entregado ni debe compilarse como parte de SD1.
+
+El proyecto será liderado de forma exclusiva y continua por el Jefe de Proyecto nominado, \textbf{Alex Aravena}, quien actuará como interlocutor único frente a la contraparte técnica y directiva del cliente. Reportando directamente al Jefe de Proyecto, se constituye un comité técnico compuesto por siete líderes de dominio especializados, que cubren los roles mínimos del numeral 19.2 de las Bases Técnicas Transversales según la Tabla~\ref{tab:roles_minimos}:
+\begin{itemize}
+    \item \textbf{Arquitecto de Solución (Bastián Trejo):} Responsable del diseño técnico global, la consistencia entre capas lógicas y la articulación del modelo híbrido nube/on-premise.
+    \item \textbf{Encargado de Seguridad de la Información (Álvaro Catalán):} Responsable del cumplimiento de la norma ISO/IEC 27001, la arquitectura Zero Trust y los controles de acceso.
+    \item \textbf{Líder de Datos (Leandro Chamorro):} Responsable de la modelación relacional, la estrategia de migración y la reconciliación determinista de inventarios.
+    \item \textbf{Líder de Desarrollo (Tomás Pérez):} Responsable del desarrollo del monolito modular Laravel/PHP definido en el Subdocumento 4, con perfiles de ejecución y escalamiento de sus componentes críticos, de los componentes móviles y del canal de entrega continua.
+    \item \textbf{Líder de Calidad (Maximiliano Miño):} Responsable del plan de pruebas, automatización y cumplimiento de los umbrales de aseguramiento de calidad ISO/IEC 25010.
+    \item \textbf{Líder de Operación / SRE (Guillermo Castillo):} Responsable de la disponibilidad continua 24$\times$7, observabilidad de infraestructura y gestión de niveles de servicio. Durante la Operación es, además, el gerente de servicio dedicado y la contraparte permanente del CLIENTE (Bases Técnicas Transversales, cap. 21, RT-21.02, p. 35).
+    \item \textbf{Líder de Implantación y Gestión del Cambio (Patricio Henríquez):} Responsable de la adopción en terreno, capacitación de preventistas y conductores, y marchas blancas.
+\end{itemize}
+
+La Tabla~\ref{tab:roles_minimos} resume la asignación y el período de participación de los diez roles del numeral 19.2 (Bases Técnicas Transversales, cap. 19, pp. 33--34). Las funciones se explican en el texto anterior; aquí se comparan responsables y dedicaciones, sin repetir su descripción.
+
+\begin{tablalafrox}{Asignación y dedicación de los roles del proyecto. Fuente: (Bases Técnicas Transversales, numeral 19.2, pp. 33--34).}{tab:roles_minimos}{L{4.1cm} L{3.2cm} Y}
+  {\cab{Rol} & \cab{Responsable} & \cab{Dedicación asignada}}
+  Jefe de Proyecto & Alex Aravena & 100\% meses 1--21; dirección en Operación \\
+  Arquitecto de Solución & Bastián Trejo & 100\% meses 1--21; Comité hasta mes 56 \\
+  Líder de Integración & Bastián Trejo & Incluido en el 100\% de meses 1--21 \\
+  Encargado de Seguridad & Álvaro Catalán & Meses 1--56 \\
+  Líder de Datos & Leandro Chamorro & Meses 1--21 \\
+  Líder de Desarrollo & Tomás Pérez & 100\% meses 1--21 \\
+  Líder Funcional & Patricio Henríquez & 100\% meses 1--21 \\
+  Líder de Calidad y Pruebas & Maximiliano Miño & Meses 1--56 \\
+  Líder de Operación / SRE & Guillermo Castillo & Meses 1--56; 100\% en Operación (21--56) \\
+  Líder de Implantación & Patricio Henríquez & Incluido en el 100\% de meses 1--21 \\
+\end{tablalafrox}
+
+Los diez roles se distribuyen entre ocho personas: Trejo asume Arquitectura e Integración y Henríquez, el frente Funcional y la Implantación. Esa acumulación no suma dos dedicaciones de 100\% para una misma persona. Trejo dirige el equipo de interfaces con ERP y terceros; Henríquez coordina el levantamiento, las reglas de negocio, los prototipos y las pruebas de aceptación con analistas funcionales y el equipo de implantación. Los recursos de apoyo se programan en el T-15, sección 5.7 del Subdocumento 7.
+
+La dotación técnica corporativa de la Tabla~\ref{tab:dotacion} se conecta directamente con el dimensionamiento del personal asignado al proyecto en el Formulario T-15 (Subdocumento 7). La demanda de personal técnico alcanza un máximo de 31 equivalentes a jornada completa (FTE) mensuales en los meses 6 y 7, con un límite superior en períodos punta de hasta 40 desarrolladores simultáneos en fábrica. Dicha carga se absorbe íntegramente dentro de los 48 desarrolladores permanentes de LafroX en Sede Central (dejando 8 desarrolladores en reserva corporativa o asignados a otros servicios). Asimismo, el Centro de Operaciones de Seguridad (SOC) propio e in-house en Valparaíso se implementa, dota y entra en régimen operacional pleno antes del mes 13, de acuerdo con la programación temporal y perfiles de atención fijados en el Formulario T-15.
+
+La participación de Operación desde el mes 1 cubre el mínimo de incorporación desde el mes 6; Implantación participa desde el mes 1 y cubre el mínimo del mes 8. Si la carga de las marchas blancas lo requiere, se nomina un Líder de Implantación separado sin reducir la dedicación del Líder Funcional. La experiencia y las cartas de compromiso se acreditan conforme a las Bases. Durante los meses 1--4, Desarrollo trabaja en diseño y prototipos, antes de la construcción.
+
+Alex Aravena, Jefe de Proyecto y apoderado de LafroX, tendrá facultades para comprometer al ADJUDICATARIO en materias de ejecución durante toda la implementación, manteniendo la dedicación exclusiva declarada. Los cambios de alcance, plazo o costo se someterán a las instancias de aprobación previstas (Bases Técnicas Transversales, cap. 19, RT-19.02, p. 33).
+
+LafroX mantendrá vigentes las certificaciones del equipo asignado durante todo el contrato y, ante la salida de una persona certificada, propondrá un reemplazo de perfil igual o superior, con certificación vigente y dedicación equivalente. El reemplazo requerirá autorización previa y escrita del CLIENTE, acreditación documental y traslape mínimo de quince días hábiles, sin costo adicional (Bases Técnicas Transversales, cap. 15, RT-15.09, p. 28; Bases Administrativas, Art. 76, p. 39).
+

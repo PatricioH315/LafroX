@@ -1,0 +1,15 @@
+% Figura 1.1: todas las medidas caben en el bloque de texto; sin escalado de fuente.
+\begin{tikzpicture}[box/.style={draw=lafroxLinea,rounded corners=2pt,align=center,font=\sffamily\fontsize{9pt}{11pt}\selectfont,inner sep=4pt},edge/.style={draw=lafroxGris}]
+\node[box,text width=4cm] (gg) at (0,0) {Gerencia General};
+\node[box,text width=2.8cm] (com) at (-5,-1.8) {Gestión Comercial};
+\node[box,text width=2.8cm] (ops) at (-1.7,-1.8) {Dirección de\\Operaciones};
+\node[box,text width=2.8cm] (adm) at (1.7,-1.8) {Administración\\y Finanzas};
+\node[box,text width=2.8cm] (seg) at (5,-1.8) {Seguridad\\CISO y especialistas};
+\foreach \n in {com,ops,adm,seg} {\draw[edge] (gg.south) -- (0,-.7) -| (\n.north);}
+\node[box,text width=2.8cm] (ing) at (-5,-3.7) {Ingeniería\\Desarrollo\\Arquitectura e\\integración};
+\node[box,text width=2.8cm] (infra) at (-1.7,-3.7) {Infraestructura\\NOC, SRE y redes};
+\node[box,text width=2.8cm] (qa) at (1.7,-3.7) {Calidad\\Pruebas y procesos};
+\foreach \n in {ing,infra,qa} {\draw[edge] (ops.south) -- (-1.7,-2.6) -| (\n.north);}
+\node[box,text width=6cm,dashed] (dc) at (-1.7,-5.7) {Infraestructura corporativa administrada\\Centro de datos primario: Santiago\\Centro de datos secundario: Valparaíso};
+\draw[edge,dashed] (infra.south) -- (dc.north);
+\end{tikzpicture}

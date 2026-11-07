@@ -8,7 +8,7 @@
 \chapter{Introducción}
 \label{cap:empresa}
 
-Este capítulo presenta la trayectoria, las capacidades instaladas, los servicios y la organización de LafroX. Describe su gobierno de calidad, seguridad y conocimiento, y analiza su experiencia en logística. La sección 1.5 explica la organización para el proyecto de Distribuidora Puelche S.A. El Formulario T-6 detalla tres proyectos de referencia conforme al Artículo 34° (Bases Administrativas, Art. 34, p. 22). La arquitectura y el plan de trabajo se desarrollan en los Subdocumentos 4 y 7, y el equipo nominado en el Capítulo 12.
+Este capítulo presenta la trayectoria, las capacidades instaladas, los servicios y la organización de LafroX. Describe su gobierno de calidad, seguridad y conocimiento, y analiza su experiencia en logística. La sección 1.5 explica la organización para el proyecto de Distribuidora Puelche S.A. El Formulario T-6 detalla tres proyectos de referencia conforme al Artículo 34° (Bases Administrativas, Art. 34, p. 22). La arquitectura y el plan de trabajo se desarrollan en los Subdocumentos 4 y 7, y el equipo nominado en el Subdocumento 12.
 
 \section{Presentación de la empresa}
 
@@ -27,8 +27,8 @@ LafroX trabaja en tres líneas de negocio:
 
 Estas líneas se apoyan en dos capacidades operativas:
 \begin{itemize}
-    \item \textbf{Infraestructura y ambientes:} Plataforma de cómputo en nube pública y dos centros de datos, primario y secundario en configuración activo-pasivo. Soportan cinco ambientes segregados: Desarrollo (DEV), Aseguramiento de Calidad (QA), Preproducción (PREPROD), Producción (PROD) y Recuperación ante Desastres (DR). La capacitación utiliza datos ficticios en espacios aislados dentro de estos ambientes. Los ejercicios semestrales de recuperación verifican objetivos de tiempo de restitución (RTO) de hasta cuatro horas y pérdida de datos (RPO) de hasta quince minutos.
-    \item \textbf{Centro de Operaciones y Mesa de Servicios:} Desde Valparaíso, LafroX mantiene el Centro de Operaciones de Red (NOC), que supervisa la infraestructura, el Centro de Operaciones de Seguridad (SOC), que vigila y analiza amenazas, y la Mesa de Servicios, que recibe consultas, solicitudes e incidentes de los usuarios. La mesa presta atención inicial y deriva los casos que requieren intervención especializada mediante niveles de escalamiento L1, L2 y L3. La cobertura de cada servicio se define en el acuerdo con su cliente.
+    \item \textbf{Infraestructura y ambientes:} LafroX dispone de una plataforma de cómputo en nube pública y de infraestructura corporativa alojada en dos centros de datos: uno primario en Santiago y otro secundario en Valparaíso, en configuración activo-pasivo. La División de Infraestructura administra ambos emplazamientos y coordina su operación con el NOC. Esta capacidad soporta cinco ambientes segregados: Desarrollo (DEV), Aseguramiento de Calidad (QA), Preproducción (PREPROD), Producción (PROD) y Recuperación ante Desastres (DR). La capacitación utiliza datos ficticios en espacios aislados dentro de estos ambientes. Los ejercicios semestrales de recuperación verifican objetivos de tiempo de restitución (RTO) de hasta cuatro horas y pérdida de datos (RPO) de hasta quince minutos.
+    \item \textbf{Centro de Operaciones y Mesa de Servicios:} Desde Valparaíso, LafroX mantiene el Centro de Operaciones de Red (NOC), responsable de supervisar la infraestructura, y la Mesa de Servicios, que recibe consultas, solicitudes e incidentes de los usuarios. La función corporativa de seguridad está dirigida por el CISO y sus especialistas, quienes evalúan amenazas, coordinan la respuesta a incidentes y definen los controles de protección. La mesa presta atención inicial y deriva los casos que requieren intervención especializada mediante niveles de escalamiento L1, L2 y L3. La cobertura de cada servicio se define en el acuerdo con su cliente.
 \end{itemize}
 
 La capacidad instalada combina equipos asignados a las especialidades y puestos compartidos del Centro de Operaciones. La Tabla~\ref{tab:equipamiento_corporativo} presenta el inventario corporativo de trabajo. El equipamiento que se suministra al cliente se detalla por separado en el Formulario T-11 del Subdocumento 4.
@@ -44,6 +44,10 @@ La capacidad instalada combina equipos asignados a las especialidades y puestos 
 
 Los 92 equipos asignados corresponden a los especialistas de Ingeniería, Calidad, Seguridad y SRE: 48 + 15 + 10 + 7 + 12 = 92. De ellos, 80 trabajan en Santiago y 12 en Valparaíso. Los 32 profesionales del NOC comparten ocho puestos conforme a sus turnos. Cada puesto de atención incluye computador, monitor, auriculares y acceso a las herramientas del servicio. El inventario suma 92 equipos asignados, 16 puestos compartidos y cuatro equipos de reemplazo: 112 equipos de cómputo.
 
+La capacidad financiera de LafroX complementa su dotación técnica y su infraestructura. La empresa mantiene un patrimonio positivo durante los ejercicios 2023, 2024 y 2025, con \$1.600 millones, \$1.900 millones y \$2.200 millones, respectivamente. Al cierre de 2025, registra ventas anuales de \$6.800 millones y una liquidez corriente de 1,8, equivalente a \$1,80 en activos corrientes por cada peso de obligaciones de corto plazo. Estos antecedentes respaldan la continuidad de sus actividades y el financiamiento habitual de remuneraciones, proveedores y servicios operacionales.
+
+LafroX cuenta, además, con una capacidad disponible de \$500 millones para emitir garantías mediante instrumentos bancarios o pólizas de garantía. Esta capacidad respalda sus obligaciones contractuales y se administra separadamente de los recursos destinados al funcionamiento habitual de la empresa.
+
 La Tabla~\ref{tab:puestos_operaciones} distingue los puestos de servicio de los puestos destinados a relevos y contingencias.
 
 \begin{tablalafrox}{Distribución de puestos del Centro de Operaciones. Fuente: antecedentes corporativos declarados por LafroX.}{tab:puestos_operaciones}{Y R{2.5cm} R{3.8cm} R{3.5cm}}
@@ -52,7 +56,7 @@ La Tabla~\ref{tab:puestos_operaciones} distingue los puestos de servicio de los 
   Mesa de Servicios & 8 & Hasta 7 & 1 \\
 \end{tablalafrox}
 
-El NOC mantiene seis puestos activos de supervisión continua y dos habilitados para relevos o contingencias. La mesa dispone de siete puestos de atención y uno de reserva. Los agentes son las personas que atienden a los usuarios y utilizan esos puestos. Su dotación y sus turnos se dimensionan para cada servicio contratado. Los agentes de mesa y los analistas contratados del SOC se contabilizan por separado de los 124 especialistas de la Tabla~\ref{tab:dotacion}. El dimensionamiento de la mesa para Puelche se detalla en el Subdocumento 4, Anexo 4-W.7, y el Formulario T-15, secciones 4.1 y 5.6.
+El NOC mantiene seis puestos activos de supervisión continua y dos habilitados para relevos o contingencias. La mesa dispone de siete puestos de atención y uno de reserva. Los agentes son las personas que atienden a los usuarios y utilizan esos puestos. Su dotación y sus turnos se dimensionan para cada servicio contratado. Los agentes de la Mesa de Servicios se contabilizan por separado de los 124 especialistas técnicos de planta de la Tabla~\ref{tab:dotacion}. La dotación adicional prevista para el futuro SOC tampoco forma parte de ese total. El dimensionamiento de la mesa para Puelche se detalla en el Subdocumento 4, Anexo 4-W.7, y el Formulario T-15, secciones 4.1 y 5.6.
 
 El catálogo de la empresa se organiza en productos de software, servicios profesionales y servicios de infraestructura y conectividad.
 
@@ -93,7 +97,7 @@ LafroX organiza su trabajo en las áreas de Ingeniería, Infraestructura, Calida
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{figuras/Figura 1.1.pdf}
+\input{figuras/organigrama-corporativo.tex}
 \caption[Estructura organizacional corporativa de LafroX.]{Estructura organizacional corporativa de LafroX. Fuente: elaboración a partir de los antecedentes corporativos declarados por LafroX.}
 \label{fig:organigrama}
 \end{figure}
@@ -107,7 +111,9 @@ La Dirección de Operaciones coordina tres divisiones, cada una con una responsa
 
 El Oficial de Seguridad de la Información, denominado CISO por la sigla inglesa de \textit{Chief Information Security Officer}, dirige la función de seguridad. Reporta directamente a la Gerencia General y se sitúa fuera de la Dirección de Operaciones para evaluar riesgos con independencia de los responsables de entrega. La Dirección de Operaciones coordina Ingeniería, Infraestructura y Calidad. El Jefe de Calidad puede bloquear un paso a producción si no se cumplen los controles exigidos. El Comité de Calidad y Procesos revisa las observaciones y los desacuerdos se escalan a la Gerencia General.
 
-La Tabla~\ref{tab:dotacion} distribuye los 124 especialistas por área y sede e indica su antigüedad en LafroX. Este total corresponde a la dotación técnica de planta. La Gerencia General, la Dirección de Operaciones, las funciones comerciales y administrativas, los agentes de mesa y los analistas contratados del SOC se contabilizan por separado.
+La Gerencia General cuenta también con las áreas de Gestión Comercial y Administración y Finanzas. Gestión Comercial administra las relaciones con clientes, las oportunidades de negocio y la coordinación de propuestas. Administración y Finanzas gestiona el presupuesto corporativo, la tesorería, las compras y los procesos administrativos de personal. Estas funciones se contabilizan por separado de los 124 especialistas técnicos de planta.
+
+La Tabla~\ref{tab:dotacion} distribuye los 124 especialistas por área y sede e indica su antigüedad en LafroX. Este total corresponde a la dotación técnica de planta. La Gerencia General, la Dirección de Operaciones, las funciones comerciales y administrativas y los agentes de mesa se contabilizan por separado. La dotación adicional prevista para el futuro SOC tampoco forma parte de los 124 especialistas de planta.
 
 \begin{tablalafrox}{Dotación técnica por área, sede y antigüedad. Fuente: antecedentes corporativos declarados por LafroX.}{tab:dotacion}{L{2.5cm} Y L{2.8cm} R{1.7cm} L{2.15cm}}
   {\cab{División} & \cab{Área / rol principal} & \cab{Sede} & \cab{Personas} & \cab{Antigüedad en LafroX}}
@@ -192,7 +198,7 @@ Los antecedentes institucionales declarados son los siguientes:
     \item \textbf{ISO/IEC 20000-1:2018 (Sistema de Gestión de Servicios de TI):} Certificado N° CL21/8190 emitido por SGS (SGS, 2024). Alcance: ``Provisión de servicios de TI, gestión de incidentes y mesa de ayuda 24$\times$7 para infraestructuras logísticas críticas''. Vigente hasta mayo de 2027.
 \end{itemize}
 
-LafroX formaliza a continuación el plan estructurado de renovación de sus cuatro certificaciones corporativas institucionales, distinguiendo expresamente su alcance organizacional respecto a las certificaciones profesionales e individuales del personal clave nominado en la sección 1.5:
+LafroX formaliza a continuación el plan estructurado de renovación de sus cuatro certificaciones corporativas institucionales, distinguiendo expresamente su alcance organizacional respecto a las certificaciones profesionales e individuales del personal clave nominado en el Subdocumento 12:
 \begin{itemize}
     \item \textbf{CMMI-DEV Nivel 3 (Modelo de Madurez de Capacidades para Desarrollo):}
     \begin{itemize}
@@ -216,28 +222,28 @@ LafroX formaliza a continuación el plan estructurado de renovación de sus cuat
     \begin{itemize}
         \item \textit{Objeto y alcance:} Sistema de gestión de servicios corporativo para provisión de TI, gestión de incidentes y mesa de ayuda 24$\times$7 (Certificado N° CL21/8190).
         \item \textit{Responsable interno:} Líder de Operación / SRE.
-        \item \textit{Fecha objetivo respecto al contrato:} Vigente hasta mayo de 2027 (mes 4 de ejecución del contrato). La recertificación se calendariza para su conclusión antes del término del mes 4.
+        \item \textit{Fecha objetivo respecto al contrato:} La certificación se mantiene vigente hasta mayo de 2027. LafroX programará la auditoría de renovación con al menos 60 días de anticipación al vencimiento y realizará seguimiento de las observaciones hasta su cierre.
         \item \textit{Actividad:} Auditoría externa de recertificación ante la entidad certificadora (SGS).
-        \item \textit{Evidencia exigida:} Acreditación y entrega del certificado renovado ante la Contraparte Técnica con anterioridad a su expiración.
-        \item \textit{Contingencia si no se obtiene a tiempo:} Aplicación del plan de certificación por hitos en los primeros 12 meses (Bases Técnicas Transversales, sección 15.2, pp. 27--28; Bases Administrativas, Art. 34, p. 22), manteniendo los protocolos ITIL/SRE y la mesa de ayuda plenamente operativos desde el inicio contractual.
+        \item \textit{Evidencia exigida:} Certificado renovado y documentación del resultado de la auditoría, con identificación del alcance y del nuevo período de vigencia.
+        \item \textit{Contingencia si no se obtiene a tiempo:} El Líder de Operación / SRE mantendrá un plan de regularización con actividades, responsables y fechas de cierre, y dará seguimiento a las observaciones del organismo certificador. Durante ese período se mantendrán los procesos de gestión de servicios y sus controles internos. Si el certificado vence antes de renovarse, su estado se declarará expresamente, sin presentarlo como vigente.
     \end{itemize}
     \item \textbf{ISO 9001:2015 (Sistema de Gestión de la Calidad):}
     \begin{itemize}
         \item \textit{Objeto y alcance:} SGC corporativo para diseño, desarrollo, implementación, integración y soporte de software logístico y transaccional (Certificado N° BV-CH-94821).
         \item \textit{Responsable interno:} Líder de Calidad y Pruebas.
-        \item \textit{Fecha objetivo respecto al contrato:} Vigente hasta noviembre de 2028 (mes 22 del contrato). La auditoría de renovación trienal y auditorías de seguimiento anuales se programan antes de cumplirse el mes 22.
+        \item \textit{Fecha objetivo respecto al contrato:} Vigente hasta noviembre de 2028 (mes 22 del contrato). La auditoría de renovación trienal se ejecutará con al menos 60 días de anticipación al vencimiento; las auditorías de seguimiento se programarán anualmente.
         \item \textit{Actividad:} Auditoría externa de renovación trienal ante Bureau Veritas.
         \item \textit{Evidencia exigida:} Entrega del certificado de calidad renovado a la Contraparte Técnica previo a la fecha de vencimiento.
         \item \textit{Contingencia si no se obtiene a tiempo:} Continuidad ininterrumpida de las auditorías internas trimestrales y supervisión mensual del Comité de Calidad y Procesos, asegurando el cumplimiento riguroso de los procedimientos corporativos.
     \end{itemize}
 \end{itemize}
 
-El plan precedente formaliza la renovación de las cuatro certificaciones institucionales de LafroX SpA, distinguiendo con precisión el alcance corporativo de la empresa respecto a las certificaciones profesionales e individuales del personal clave nominado en la sección 1.5. El contrato con Distribuidora Puelche S.A. inicia formalmente en febrero de 2027 (mes 1). En dicho marco, la reevaluación Benchmark de CMMI-DEV Nivel 3 y la auditoría de renovación de ISO/IEC 27001:2022 se encuentran calendarizadas para su sustanciación ante sus respectivos organismos emisores (CMMI Institute y AENOR) con anterioridad al inicio contractual, comprometiendo la entrega de la evidencia formal (informe oficial \textit{Appraisal Disclosure Statement} y certificado renovado o expediente de auditoría externa) ante la Contraparte Técnica en la entrega de la línea base del Hito 1 (febrero de 2027). Para ISO/IEC 20000-1:2018 (vigente hasta mayo de 2027, mes 4 del contrato) y para ISO 9001:2015 (vigente hasta noviembre de 2028, mes 22 del contrato), las auditorías de recertificación ante SGS y Bureau Veritas se ejecutarán con al menos 60 días de antelación a su vencimiento, acreditando el nuevo certificado ante la Contraparte Técnica con anterioridad a su fecha de expiración. En caso de demoras administrativas de los entes certificadores, operan las contingencias contractuales previstas: para CMMI-DEV, el gobierno técnico opera bajo los procesos certificados de ISO 9001 sin invocar CMMI nivel 3 como garantía hasta su formal ratificación; para ISO/IEC 27001 e ISO/IEC 20000-1, se activa el régimen supletorio de plan de certificación por hitos dentro de los primeros 12 meses admitido expresamente por las Bases Técnicas Transversales (sección 15.2, pp. 27--28) y las Bases Administrativas (Art. 34, p. 22), garantizando que todos los controles de seguridad y procesos de mesa operen de forma ininterrumpida desde el primer día de servicio.
+La prioridad del plan es completar la reevaluación de CMMI-DEV Nivel 3 y la renovación de ISO/IEC 27001 antes del inicio contractual, debido a la proximidad de sus vencimientos. Las renovaciones de ISO/IEC 20000-1 e ISO 9001 se programan durante la ejecución, con seguimiento de sus responsables para anticipar las auditorías y evitar interrupciones en la vigencia de las acreditaciones.
 
 En concordancia con el artículo 34 de las Bases Administrativas (Bases Administrativas, Art. 34, p. 22), LafroX presenta en el Formulario T-6 el detalle de tres proyectos finalizados en los últimos cinco años y en operación continua, los cuales demuestran experiencia en complejidad técnica y volumétrica equivalente a la del caso:
 \begin{enumerate}
     \item \textbf{Sistema Híbrido de Reparto y Gestión Logística (LogiNacional S.A.):} Ejecutado entre 2021 y 2022, integró un núcleo logístico modular, ERP y facturación electrónica sobre nube pública y servidores de borde en 14 centros de distribución. Soporta 420 camiones y 22.000 entregas diarias bajo SLA contractual de 99,5\%.
-    \item \textbf{Plataforma de Telemetría y Cadena de Frío IoT (FarmaRed S.A.):} Ejecutada entre 2022 y 2023, monitorea cámaras a $-22\,^{\circ}\mathrm{C}$ y una flota refrigerada; procesa más de 12 millones de mediciones mensuales bajo SLA de 99,9\%.
+    \item \textbf{Plataforma de Telemetría y Cadena de Frío IoT (FarmaRed S.A.):} Ejecutada entre 2022 y 2023, integra el monitoreo de cámaras de almacenamiento y de una flota de transporte con temperatura controlada. El alcance incluye una línea de reactivos y materiales de diagnóstico almacenados en doce cámaras de congelación con consigna de $-22\,^{\circ}\mathrm{C}$, conforme a las condiciones de conservación definidas para esos productos. Esta temperatura corresponde al almacenamiento de dicha línea y no se aplica de forma general a todos los productos ni a toda la flota. La plataforma procesa 12 millones de mediciones mensuales y opera bajo un SLA de disponibilidad de 99,9\%.
     \item \textbf{Sistema Móvil de Preventa y Ruteo Desconectado (Comercializadora Lácteos del Sur S.A.):} Ejecutado entre 2023 y 2024, habilita a 280 preventistas y procesa 18.000 transacciones comerciales diarias mediante sincronización determinista en diferido y políticas de crédito locales.
 \end{enumerate}
 
@@ -249,13 +255,19 @@ La Tabla~\ref{tab:equivalencia} compara la flota, los sitios, la preventa y la t
   Entregas diarias & $\approx$ 1.400; $\approx$ 2.600 en peak & 1 & 22.000 \\
   Instalaciones con borde & 5 o 6 & 1 & 14 centros de distribución \\
   Preventistas desconectados & 62 & 3 & 280 \\
-  Congelado & $-22\,^{\circ}\mathrm{C}$ & 2 & $-22\,^{\circ}\mathrm{C}$ \\
+  Congelado & $-22\,^{\circ}\mathrm{C}$ & 2 & Cámaras de reactivos y materiales de diagnóstico: consigna de $-22\,^{\circ}\mathrm{C}$ \\
   Disponibilidad & 99,95\,\% de infraestructura & 1 y 2 & 99,5\,\% y 99,9\,\% \\
 \end{tablalafrox}
 
 Las referencias aportan experiencia en operaciones de mayor escala: el Proyecto 1 combina 14 centros de distribución y 420 camiones; el Proyecto 2 trabaja con cadena de frío; y el Proyecto 3 cubre la preventa sin señal. Este último no es híbrido según el Artículo 16° (Bases Administrativas, Art. 16, p. 11), por lo que su aporte es la operación móvil desconectada, no la infraestructura local.
 
 Los SLA de 99,5\% y 99,9\% del T-6 corresponden a servicios de esos proyectos; el 99,95\% de Puelche corresponde a infraestructura. No son mediciones equivalentes ni una prueba de cumplimiento del nuevo contrato. La propuesta debe responder a esa exigencia mediante su diseño y sus pruebas de aceptación.
+
+LafroX dispone de conocimiento especializado del Reglamento Sanitario de los Alimentos aplicado a los procesos de almacenamiento y distribución. Sus equipos funcionales y de calidad cuentan con formación en condiciones de conservación y transporte, control de temperatura, identificación de lotes, registro de movimientos y retiro de productos. Este conocimiento permite traducir las necesidades de control sanitario en requisitos de información y procedimientos verificables, cuya validación se realiza con los responsables de calidad de cada cliente.
+
+En materia de documentos tributarios electrónicos, sus equipos de arquitectura e integración cuentan con formación en los procesos de facturación, emisión de guías de despacho, notas de crédito y acuses de recibo. La experiencia de integración con ERP y facturación electrónica del proyecto LogiNacional, descrito en el Formulario T-6, respalda su capacidad para relacionar las operaciones logísticas con los documentos comerciales y tributarios correspondientes.
+
+La experiencia sectorial se sustenta en los proyectos LogiNacional y Comercializadora Lácteos del Sur, vinculados a la distribución de consumo masivo, y en FarmaRed, orientado al monitoreo de cadena de frío. Los antecedentes de estos proyectos se presentan en el Formulario T-6. La formación sanitaria y tributaria se respalda mediante registros de capacitación que identifican contenidos, participantes, fechas y resultados de evaluación, administrados por el área de Calidad. Estos antecedentes sustentan el conocimiento y la experiencia sectorial requeridos por la RT-15.02 de las Bases Técnicas del caso (p. 27).
 
 \subsection{Cartera de Clientes}
 
@@ -280,42 +292,26 @@ Los tres primeros clientes corresponden a los proyectos detallados en el T-6. La
 
 La organización del proyecto mantiene una jefatura responsable durante los 56 meses del contrato, que incluyen los 36 meses de operación desde el mes 21, y separa la dirección de las especialidades técnicas (Bases Administrativas, Art. 17, pp. 12--13).
 
-El proyecto será liderado de forma exclusiva y continua por el Jefe de Proyecto nominado, \textbf{Alex Aravena}, quien actuará como interlocutor único frente a la contraparte técnica y directiva del cliente. Reportando directamente al Jefe de Proyecto, se constituye un comité técnico compuesto por siete líderes de dominio especializados, que cubren los roles mínimos del numeral 19.2 de las Bases Técnicas Transversales según la Tabla~\ref{tab:roles_minimos}:
+La organización del proyecto comprende una Jefatura de Proyecto y siete ámbitos de responsabilidad técnica. La Jefatura dirige la ejecución, coordina las especialidades y actúa como interlocutor frente al cliente. Los responsables de los siguientes ámbitos reportan a la Jefatura de Proyecto:
 \begin{itemize}
-    \item \textbf{Arquitecto de Solución (Bastián Trejo):} Responsable del diseño técnico global, la consistencia entre capas lógicas y la articulación del modelo híbrido nube/on-premise.
-    \item \textbf{Encargado de Seguridad de la Información (Álvaro Catalán):} Responsable del cumplimiento de la norma ISO/IEC 27001, la arquitectura Zero Trust y los controles de acceso.
-    \item \textbf{Líder de Datos (Leandro Chamorro):} Responsable de la modelación relacional, la estrategia de migración y la reconciliación determinista de inventarios.
-    \item \textbf{Líder de Desarrollo (Tomás Pérez):} Responsable del desarrollo del monolito modular Laravel/PHP definido en el Subdocumento 4, con perfiles de ejecución y escalamiento de sus componentes críticos, de los componentes móviles y del canal de entrega continua.
-    \item \textbf{Líder de Calidad (Maximiliano Miño):} Responsable del plan de pruebas, automatización y cumplimiento de los umbrales de aseguramiento de calidad ISO/IEC 25010.
-    \item \textbf{Líder de Operación / SRE (Guillermo Castillo):} Responsable de la disponibilidad continua 24$\times$7, observabilidad de infraestructura y gestión de niveles de servicio. Durante la Operación es, además, el gerente de servicio dedicado y la contraparte permanente del CLIENTE (Bases Técnicas Transversales, cap. 21, RT-21.02, p. 35).
-    \item \textbf{Líder de Implantación y Gestión del Cambio (Patricio Henríquez):} Responsable de la adopción en terreno, capacitación de preventistas y conductores, y marchas blancas.
+    \item \textbf{Arquitectura e Integración:} define el diseño técnico de la solución, mantiene la coherencia entre sus componentes y coordina las interfaces con los sistemas existentes y servicios de terceros.
+    \item \textbf{Seguridad de la Información:} establece los controles de protección, revisa los riesgos de seguridad y supervisa su tratamiento durante el desarrollo y la operación.
+    \item \textbf{Datos:} conduce el modelamiento, la migración y la conciliación de datos, coordinando las reglas de calidad y la trazabilidad de la información.
+    \item \textbf{Desarrollo:} dirige la construcción de los componentes de software, las aplicaciones móviles y el proceso de integración y entrega continua.
+    \item \textbf{Calidad y Pruebas:} planifica y verifica las pruebas, controla los criterios de aceptación y comunica los incumplimientos que impiden aprobar una entrega.
+    \item \textbf{Operación y Confiabilidad de Servicios:} prepara el monitoreo, el soporte y la recuperación de los servicios, y asume la coordinación de la operación una vez habilitada.
+    \item \textbf{Gestión Funcional e Implantación:} coordina el levantamiento de necesidades, la validación funcional, la capacitación de usuarios y la adopción de la solución en terreno.
 \end{itemize}
 
-La Tabla~\ref{tab:roles_minimos} resume la asignación y el período de participación de los diez roles del numeral 19.2 (Bases Técnicas Transversales, cap. 19, pp. 33--34). Las funciones se explican en el texto anterior; aquí se comparan responsables y dedicaciones, sin repetir su descripción.
+Esta estructura cubre diez roles: la Jefatura de Proyecto y nueve roles de especialidad. Arquitectura e Integración comprende los roles de Arquitecto de Solución y Líder de Integración; Gestión Funcional e Implantación comprende los de Líder Funcional y Líder de Implantación. Los demás ámbitos corresponden, cada uno, a un rol especializado.
 
-\begin{tablalafrox}{Asignación y dedicación de los roles del proyecto. Fuente: (Bases Técnicas Transversales, numeral 19.2, pp. 33--34).}{tab:roles_minimos}{L{4.1cm} L{3.2cm} Y}
-  {\cab{Rol} & \cab{Responsable} & \cab{Dedicación asignada}}
-  Jefe de Proyecto & Alex Aravena & 100\% meses 1--21; dirección en Operación \\
-  Arquitecto de Solución & Bastián Trejo & 100\% meses 1--21; Comité hasta mes 56 \\
-  Líder de Integración & Bastián Trejo & Incluido en el 100\% de meses 1--21 \\
-  Encargado de Seguridad & Álvaro Catalán & Meses 1--56 \\
-  Líder de Datos & Leandro Chamorro & Meses 1--21 \\
-  Líder de Desarrollo & Tomás Pérez & 100\% meses 1--21 \\
-  Líder Funcional & Patricio Henríquez & 100\% meses 1--21 \\
-  Líder de Calidad y Pruebas & Maximiliano Miño & Meses 1--56 \\
-  Líder de Operación / SRE & Guillermo Castillo & Meses 1--56; 100\% en Operación (21--56) \\
-  Líder de Implantación & Patricio Henríquez & Incluido en el 100\% de meses 1--21 \\
-\end{tablalafrox}
+La Jefatura de Proyecto reúne a los responsables técnicos para revisar avances, dependencias y decisiones que afectan a más de una especialidad. Arquitectura e Integración coordina las decisiones de diseño; Calidad y Pruebas verifica los resultados con independencia de quienes los construyen; y Operación participa en la preparación de las entregas para asegurar su soporte y continuidad. Los desacuerdos que comprometan alcance, plazo o recursos se elevan a la instancia de gobierno correspondiente.
 
-Los diez roles se distribuyen entre ocho personas: Trejo asume Arquitectura e Integración y Henríquez, el frente Funcional y la Implantación. Esa acumulación no suma dos dedicaciones de 100\% para una misma persona. Trejo dirige el equipo de interfaces con ERP y terceros; Henríquez coordina el levantamiento, las reglas de negocio, los prototipos y las pruebas de aceptación con analistas funcionales y el equipo de implantación. Los recursos de apoyo se programan en el T-15, sección 5.7 del Subdocumento 7.
+La nominación del equipo, sus antecedentes profesionales, certificaciones, dedicaciones y períodos de participación se presentan en el Subdocumento 12 --- Equipo de trabajo, subcontrataciones y alianzas, y se complementan con las fichas del Formulario T-8. El Formulario T-15 detalla la distribución mensual del esfuerzo y la asignación de recursos durante la ejecución.
 
-La dotación técnica corporativa de la Tabla~\ref{tab:dotacion} se conecta directamente con el dimensionamiento del personal asignado al proyecto en el Formulario T-15 (Subdocumento 7). La demanda de personal técnico alcanza un máximo de 31 equivalentes a jornada completa (FTE) mensuales en los meses 6 y 7, con un límite superior en períodos punta de hasta 40 desarrolladores simultáneos en fábrica. Dicha carga se absorbe íntegramente dentro de los 48 desarrolladores permanentes de LafroX en Sede Central (dejando 8 desarrolladores en reserva corporativa o asignados a otros servicios). Asimismo, el Centro de Operaciones de Seguridad (SOC) propio e in-house en Valparaíso se implementa, dota y entra en régimen operacional pleno antes del mes 13, de acuerdo con la programación temporal y perfiles de atención fijados en el Formulario T-15.
+LafroX dispone de 48 desarrolladores de software y 15 especialistas en arquitectura e integración dentro de su dotación técnica permanente. Esta capacidad permite conformar equipos de desarrollo con apoyo especializado en diseño de soluciones, interfaces y tratamiento de datos. La asignación de personal se organiza por especialidad y dedicación, considerando las necesidades del proyecto y los compromisos de la empresa con otros servicios. El Formulario T-15 detalla la demanda mensual, las dedicaciones y la distribución del equipo durante la ejecución.
 
-La participación de Operación desde el mes 1 cubre el mínimo de incorporación desde el mes 6; Implantación participa desde el mes 1 y cubre el mínimo del mes 8. Si la carga de las marchas blancas lo requiere, se nomina un Líder de Implantación separado sin reducir la dedicación del Líder Funcional. La experiencia y las cartas de compromiso se acreditan conforme a las Bases. Durante los meses 1--4, Desarrollo trabaja en diseño y prototipos, antes de la construcción.
-
-Alex Aravena, Jefe de Proyecto y apoderado de LafroX, tendrá facultades para comprometer al ADJUDICATARIO en materias de ejecución durante toda la implementación, manteniendo la dedicación exclusiva declarada. Los cambios de alcance, plazo o costo se someterán a las instancias de aprobación previstas (Bases Técnicas Transversales, cap. 19, RT-19.02, p. 33).
-
-LafroX mantendrá vigentes las certificaciones del equipo asignado durante todo el contrato y, ante la salida de una persona certificada, propondrá un reemplazo de perfil igual o superior, con certificación vigente y dedicación equivalente. El reemplazo requerirá autorización previa y escrita del CLIENTE, acreditación documental y traslape mínimo de quince días hábiles, sin costo adicional (Bases Técnicas Transversales, cap. 15, RT-15.09, p. 28; Bases Administrativas, Art. 76, p. 39).
+LafroX habilitará un SOC propio en Valparaíso, con personal adicional a la dotación técnica de planta. Su preparación comprenderá la incorporación de analistas, la configuración de las herramientas de monitoreo, la elaboración de procedimientos y la ejecución de pruebas de detección, escalamiento y respuesta. Durante la habilitación, el equipo corporativo de seguridad, dirigido por el CISO, coordinará la atención de eventos de seguridad con el NOC. La dotación, los turnos y el calendario de puesta en marcha se detallan en el plan de trabajo y el Formulario T-15.
 
 \section{Alianzas}
 
@@ -327,7 +323,11 @@ Las alianzas corporativas cubren nube, equipos de terreno y comunicaciones. Su r
     \item \textbf{Starlink Business (Authorized Enterprise Reseller):} Convenio para la provisión e integración de terminales satelitales de baja órbita con prioridad de tráfico corporativo, como medio alternativo de comunicación ante caídas de enlace en centros de distribución, cross-dockings y almacenes remotos. Vigente hasta diciembre de 2027 (mes 11 del contrato).
 \end{itemize}
 
-El proceso de renovación anual de cada alianza tecnológica es gestionado internamente por el Líder de Operación / SRE en coordinación con el Arquitecto de Solución, iniciándose formalmente con al menos 60 días de anticipación a la fecha de término respectiva. La evidencia documental exigida (certificado de membresía de canal actualizado o carta de ratificación formal emitida por el fabricante) se remitirá a la Contraparte Técnica con anterioridad a su vencimiento. En caso de demoras en la emisión administrativa de la renovación por parte de las marcas, la continuidad operacional queda plenamente asegurada: los contratos vigentes de soporte empresarial directo con cada fabricante y el personal técnico certificado de LafroX (Líder de Desarrollo, Líder de Operación / SRE y Arquitecto de Solución, acreditados en la sección 1.5) garantizan la vigencia de garantías de hardware y software, el aprovisionamiento de partes y piezas, el acceso a soporte de ingeniería nivel 3 y los acuerdos de nivel de servicio sin interrupción alguna.
+Las cuatro alianzas requieren renovación durante el primer año contractual: AWS en marzo de 2027, Zebra en junio, Fortinet/Cisco en septiembre y Starlink en diciembre. Estos vencimientos concentran las gestiones de continuidad comercial y tecnológica en un período en que la empresa debe sostener el acceso a soporte, el suministro de equipamiento y la preparación de los servicios de operación.
+
+El Líder de Operación / SRE, en coordinación con el Arquitecto de Solución, iniciará cada renovación con al menos 60 días de anticipación. La revisión comprenderá los requisitos de permanencia en el programa, las certificaciones del personal y la vigencia de los acuerdos de soporte y suministro asociados. Cada renovación quedará respaldada por el certificado de membresía o la confirmación formal del proveedor.
+
+La vigencia de una alianza comercial y la de los servicios contratados se controlarán por separado. Ante una demora en la renovación, LafroX verificará qué prestaciones continúan cubiertas por sus contratos y cuáles dependen de la condición de socio. Para estas últimas, gestionará una extensión o un acuerdo de soporte y suministro antes del vencimiento. La continuidad se respaldará mediante esos acuerdos, sin asumir que la membresía se prorroga automáticamente.
 
 Estas alianzas cubren funciones distintas: AWS aporta servicios de nube; Zebra, equipos de captura; Fortinet/Cisco, redes de borde; y Starlink, un enlace alternativo. Ninguna sustituye la verificación de los equipos ni las pruebas de continuidad. Las especificaciones de los implementos se detallan en el Formulario T-11 del Subdocumento 4; la participación de socios en este proyecto corresponde a 12.3.
 \section*{Referencias}
@@ -346,6 +346,7 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 \hangindent=1.27cm\hangafter=1 SGS. (2024). \textit{Certificado de Sistema de Gestión de Servicios de TI ISO/IEC 20000-1:2018 N° CL21/8190}. SGS United Kingdom Ltd.\par\medskip
 }
 
+\clearpage
 \section*{Declaración de uso de IA}
 \addcontentsline{toc}{section}{Declaración de uso de IA}
 
@@ -357,9 +358,11 @@ La Tabla~\ref{tab:declaracion_ia} identifica las herramientas y el alcance de la
   1.2 & Claude / Gemini; OpenAI Codex & Organigrama, antigüedad, turnos y respaldos del NOC & Alto & Alto & Alex Aravena: Se verificó el organigrama y sus áreas, además del equipo y la antigüedad. \\
   1.3 & Claude / Gemini; OpenAI Codex & Redacción de gobierno y responsabilidades & Alto & Ninguno & Alex Aravena: Se validaron los modelos de gobierno planteados. \\
   1.4 & Claude / Gemini; OpenAI Codex & Comparación de experiencia y SLA & Alto & Ninguno & Alex Aravena: Se validaron la experiencia y los proyectos realizados. \\
-  1.5 & Claude / Gemini; Claude Code; OpenAI Codex & Síntesis de roles y dedicaciones & Alto & Ninguno & Alex Aravena: Se validaron la estructura del proyecto y su jerarquía. \\
+  1.5 & Claude / Gemini; Claude Code; OpenAI Codex & Organización por ámbitos y coordinación de roles & Alto & Ninguno & Alex Aravena: Se validaron la estructura del proyecto y su jerarquía. \\
   1.6 & Claude / Gemini; OpenAI Codex & Redacción de alcance de alianzas & Alto & Ninguno & Alex Aravena: Se validaron las alianzas establecidas. \\
   T-6 & Claude / Gemini; OpenAI Codex & Formato, introducción y referencias & Alto & Ninguno & Alex Aravena: Se verificaron los once campos de los tres proyectos y su coherencia con la sección 1.4. \\
 \end{tablalafrox}
 
-Tal como sintetiza la Tabla~\ref{tab:declaracion_ia}, el uso de herramientas de asistencia basada en inteligencia artificial se circunscribió a un nivel alto en la redacción y síntesis de texto a lo largo de las distintas secciones del subdocumento y del Formulario T-6, y a un nivel alto en diagramas exclusivamente en la sección 1.2 para el apoyo en la estructuración gráfica del organigrama corporativo (y «Ninguno» en las demás secciones y en el Formulario T-6). En todos los casos, los planteamientos conceptuales, las cifras de dotación y equipamiento, y las formulaciones estratégicas fueron objeto de revisión humana integral, comprobación documental y validación experta por parte del responsable del equipo.
+Tal como sintetiza la Tabla~\ref{tab:declaracion_ia}, el uso de herramientas de asistencia basada en inteligencia artificial se circunscribió a un nivel alto en la redacción y síntesis de texto a lo largo de las distintas secciones del subdocumento y del Formulario T-6, y a un nivel alto en diagramas exclusivamente en la sección 1.2 para el apoyo en la estructuración gráfica del organigrama corporativo (y «Ninguno» en las demás secciones y en el Formulario T-6). Las revisiones humanas consignadas corresponden a la entrega anterior. Los antecedentes financieros y de formación, los ajustes del organigrama y las correcciones de organización, SOC, certificaciones, alianzas y experiencia incorporados en esta revisión requieren validación humana antes de la entrega final.
+
+% Cambios de revisión 2026-11-07: registro y pendientes en trazabilidad/REVISION-SD1.md.
