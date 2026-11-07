@@ -123,3 +123,9 @@ Suma ≈ 1 h 45 min más la decisión, dentro de RTO 4 h. No hay conmutación au
 - El CLIENTE adquiere, según la especificación de LafroX, los sensores de cámara B-01 y los componentes B-03 a B-14 del kit de camión (Bases Técnicas del caso, cap. 11, p. 20; RT-08.10). LafroX los instala, integra, configura y mantiene.
 - Se mantienen con LafroX: los gateways IoT B-02 de las cámaras (infraestructura on-premise, Bases Administrativas, art. 14.2), las SIM M2M B-15 y el servicio satelital (paquete 5.3.4 del T-14) y la unidad de prueba previa a la compra masiva (RT-08.15).
 - Archivos del SD4: 4.2.1 (`04_c_implementos.tex`), 4.2.2 (`02_a_emplazamiento.tex`, B-03 a B-15), Anexo 4-O (ADR-24) y T-11 (introducción, fila B-03 y nota de responsabilidad del sistema de frío). Detalle en `CIERRE_REVISION_I2_FRIO_SD4.md`.
+
+## D43. Ciclo de vida y reposición por dispositivo en el T-11 (2026-11-06)
+
+- Responde a la revisión del Informe 2 (RT-08.10 a RT-08.13: «no declara ciclo de vida ni plan de reposición por equipo»). El T-11 agrega la Tabla 2, con ciclo de vida esperado, repuestos y plan de reposición en 56 meses para cada dispositivo de terreno y de operación. Sus datos salen del T-11, del 4.2.1, del Anexo 4-P (Android 18, PAXSTORE, Greengrass) y del 4.2.4 (calibración anual, glicol y baterías del kit).
+- Regla nueva, derivada de D42: si una unidad se da de baja, la reserva la reemplaza y el CLIENTE compra la unidad que restituye la reserva, igual que la ampliación del año 3. La reserva de B-02 la restituye LafroX.
+- El 4.2.1 remite a la tabla. En el mismo commit, el 4.3.1 deja de copiar «son un medio, no un fin» del numeral 7.2 y cita el art. 78.2 de las Bases Administrativas.
