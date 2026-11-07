@@ -8,7 +8,7 @@
 
 - SD6: corregido en la rama `LafroX-Subdoc6-LateX-corrigiendo` (commit `2c82d936` sobre `LafroX-Subdoc6-LateX` `df7eacb1`: 6.1.3, Anexo 6.B y T-9, con sus tres PDF regenerados y el mismo número de páginas).
 - SD7: corregido en `LafroX-Subdoc7-LateX-CORRIGIENDO` (commit `648f2fea` sobre `f97e9f71`): entregable del paquete 5.1.4 del T-14, su PDF (166 páginas, sin cambio), el espejo Markdown y la tabla de auditoría K4. El título del paquete se conserva, porque LafroX compra los gateways B-02 y el prototipo; así no cambian las Gantt.
-- SD3 (`LafroX-Subdoc3-LateX`), pendiente por decisión del usuario: E-09, su párrafo en anexos, S-28 y las filas RF-09.03, RF-09.04 y RNF-23.01 del T-12 siguen con la decisión anterior. La rama `LafroX-Subdoc3-LateX-CORRIGIENDO` es del 21-09-2026 y no comparte historia con la rama LaTeX vigente.
+- SD3: corregido en `LafroX-Subdoc3-LateX-CORRIGIENDO` (commit `1b145ecd` sobre `866619f1`): E-09 y su párrafo en el Anexo 3.D, S-28, S-38 y las filas RF-09.03, RF-09.04, RNF-23.01 y RNF-23.02 del T-12, con los PDF de anexos (184 páginas) y del T-12 (261 páginas) regenerados. El cuerpo no cambia. Ningún documento cita páginas del SD3, así que la página adicional no desplaza referencias.
 - Informe 3: fuera de alcance de esta corrección.
 
 ## Verificación
