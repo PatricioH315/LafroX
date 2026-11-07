@@ -2449,11 +2449,18 @@ tros de distribución
 y plataformas de
 cross-docking
 Documento de
-arquitectura física.
+arquitectura física,
+con el estudio de
+cobertura verificado
+en sitio.
 Está aprobado en el
 H2, y cada compo-
 nente tiene su lugar
-y su razón.
+y su razón. La veri-
+ficación en sitio fija
+los puntos de acceso
+antes del cableado
+(SD4, Anexo 4-W.13).
 ARQ Mes 2 (H2).
 2.1.3 Modelo de datos
 y diccionario de
@@ -4705,7 +4712,11 @@ LafroX emite la
 orden de compra
 en el mes 2 para
 instalar la sala en el
-mes 3.
+mes 3. Incluye la
+red inalámbrica del
+T-11; la reserva
+cubre la diferencia
+que fije 2.1.2.
 ARQ Mes 2.
 5.1.3 Actas de recepción
 técnica del equipa-
@@ -5113,13 +5124,13 @@ instalados en las
 bodegas de Talca y
 Concepción
 Gabinetes de piso
+y puntos de acceso
 instalados y conec-
 tados.
-Cada punto de la
-bodega tiene red, y
-el Wi-Fi cubre las
-zonas de trabajo de
-los terminales.
+Cada punto tiene
+red y la cobertura
+medida cumple el
+SD4, Anexo 4-W.13.
 SRE Antes del H6.
 2.6.3 Cuenta 6.3 — Montaje de racks y gabinetes
 Esta cuenta de control reúne el montaje de los equipos de cómputo y comunicaciones en
@@ -5240,7 +5251,10 @@ madrugada con el
 enlace cortado y el
 mini-PC de espera
 toma el servicio si
-falla el activo.
+falla el activo. La
+cobertura medida
+cumple el SD4, Ane-
+xo 4-W.13.
 SRE Antes de la
 ola de cross-
 docking.
