@@ -129,3 +129,9 @@ Suma ≈ 1 h 45 min más la decisión, dentro de RTO 4 h. No hay conmutación au
 - Responde a la revisión del Informe 2 (RT-08.10 a RT-08.13: «no declara ciclo de vida ni plan de reposición por equipo»). El T-11 agrega la Tabla 2, con ciclo de vida esperado, repuestos y plan de reposición en 56 meses para cada dispositivo de terreno y de operación. Sus datos salen del T-11, del 4.2.1, del Anexo 4-P (Android 18, PAXSTORE, Greengrass) y del 4.2.4 (calibración anual, glicol y baterías del kit).
 - Regla nueva, derivada de D42: si una unidad se da de baja, la reserva la reemplaza y el CLIENTE compra la unidad que restituye la reserva, igual que la ampliación del año 3. La reserva de B-02 la restituye LafroX.
 - El 4.2.1 remite a la tabla. En el mismo commit, el 4.3.1 deja de copiar «son un medio, no un fin» del numeral 7.2 y cita el art. 78.2 de las Bases Administrativas.
+
+## D44. Figura 18 (topología AWS) legible a 9 pt (2026-11-06)
+
+- Responde a la revisión del Informe 2 («la Figura 18 tiene rótulos de unos 6 a 7 puntos»). Ya estaba en página horizontal a todo el ancho, con texto de 7,8 pt.
+- El texto del `.drawio` pasa de 37 y 34 unidades a 44, y el diagrama se reacomoda: el cuadro de los cinco sitios on-premise baja bajo la VPC Hub, el contenido se estira a lo ancho y AWS Cloud y us-east-1 se extienden a la derecha. En la página queda a unos 9,1 pt (347 ppi).
+- Mismos 197 elementos (144 componentes y 51 conexiones), con los mismos textos, estilos, contenedores y extremos de conexión; solo cambian posiciones, anchos de cajas y tamaño de letra. El original queda respaldado en la carpeta local `drawio/4.2_fisica/prueba_fig18/`.
