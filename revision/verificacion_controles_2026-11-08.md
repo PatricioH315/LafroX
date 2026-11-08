@@ -14,6 +14,8 @@ Alcance: perfil **Comisión evaluadora**, en el prototipo estático. No se modif
 | E-08 · Generar misiones | Agrega misiones de práctica para pedidos elegibles sin duplicarlas; cada enlace conserva el pedido y la misión. |
 | E-09 · Acciones por fila | Las filas sin acciones aplicables no muestran un menú vacío. |
 
+La revisión adicional de contraste en Clientes corrigió las estrellas de valoración: ahora se distinguen por su forma, no por un gris de bajo contraste.
+
 ## Repetir las pruebas
 
 Desde la raíz del prototipo, con Node y Playwright instalados:

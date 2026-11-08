@@ -2,7 +2,7 @@
    portal de clientes (pedido, entregas, cuenta) y canal moderno EDI (M11). */
 (function (L) {
   const { esc, icon, $, $$, data: D, fmt } = L;
-  const stars = (v) => `<span aria-label="${fmt.n(v, 1)} de 5" role="img" style="color:var(--c-accent-strong);letter-spacing:2px">${'★'.repeat(Math.round(v))}<span style="color:var(--c-line-strong)">${'★'.repeat(5 - Math.round(v))}</span></span>`;
+  const stars = (v) => `<span aria-label="${fmt.n(v, 1)} de 5" role="img" style="color:var(--c-accent-strong);letter-spacing:2px">${'★'.repeat(Math.round(v))}${'☆'.repeat(5 - Math.round(v))}</span>`;
 
   L.route('/clientes', {
     title: 'Clientes', parent: '/inicio', block: 'Gestión de terceros', module: 'M3 · M7 · M10 (cartera)', rf: ['RF-07.04', 'RF-11.08', 'RF-17.12'], actors: ['Preventista', 'Gerente Comercial', 'Gerente de Finanzas'],
