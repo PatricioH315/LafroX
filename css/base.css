@@ -217,6 +217,11 @@ hr { border: 0; border-top: 1px solid var(--c-line-soft); margin: var(--sp-5) 0;
   .span-2, .span-3 { grid-column: auto; }
   .hide-sm { display: none !important; }
   .topbar { gap: var(--sp-2); }
+  .public-top { gap: var(--sp-2); }
+  .public-top .brand { gap: var(--sp-2); min-width: 0; }
+  .public-top .brand-name { overflow-wrap: anywhere; }
+  .public-top .btn { flex: none; }
+  .public-spacer { min-width: 0; }
   #net-ind { display: none; }
   .alert { flex-wrap: wrap; }
   .alert > div:not(.alert-actions) { flex: 1 1 200px; }

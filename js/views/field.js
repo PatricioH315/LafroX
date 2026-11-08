@@ -3,10 +3,20 @@
 (function (L) {
   const { esc, icon, $, $$, data: D, fmt } = L;
 
-  const stops = () => L.store.get('field.stops', null) || D.paradas.map((p) => ({ id: p.id, estado: p.estado }));
-  const setStop = (id, estado) => { const s = stops(); s.find((x) => x.id === id).estado = estado; L.store.set('field.stops', s); };
-  const queue = () => L.store.get('field.queue', []);
-  const setQueue = (q) => L.store.set('field.queue', q);
+
+  L.fieldRoute = () => D.rutas.find((r) => r.id === (L.me()?.id === 'conductor-ext' ? 'R-09' : 'R-01'));
+  L.fieldStops = () => L.me()?.id === 'conductor-ext' ? D.pedidos.filter((p) => p.ruta === L.fieldRoute().id).map((p) => ({
+    id: 'EXT-' + p.id, cliente: p.cliente, nombre: p.clienteNombre, dir: p.comuna + ' · dirección de demostración',
+    ventana: p.ventana, estado: 'Pendiente', pedido: p.id, bultos: p.lineas.length, monto: p.total, contado: true,
+    frio: p.lineas.some((l) => l.temp !== 'Seco')
+  })) : D.paradas;
+  const scope = () => 'field.' + (L.me()?.id || 'anon') + '.' + (location.hash.startsWith('#/terreno/preventa') ? 'preventa' : L.fieldRoute().id) + '.';
+  const read = (k, fallback) => L.store.get(scope() + k, fallback);
+  const write = (k, value) => L.store.set(scope() + k, value);
+  const stops = () => read('stops', null) || L.fieldStops().map((p) => ({ id: p.id, estado: p.estado }));
+  const setStop = (id, estado) => { const s = stops(); s.find((x) => x.id === id).estado = estado; write('stops', s); };
+  const queue = () => read('queue', []);
+  const setQueue = (q) => write('queue', q);
   L.fieldDone = () => stops().filter((s) => s.estado !== 'Pendiente').length;
   // Recibos provisionales del preventista: se consolidan en el efectivo que debe rendir al volver (RF-07.11)
   L.preventaRecibos = () => L.store.get('preventa.recibos', null) || [{ id: 'RP-5114', cliente: 'Minimarket El Roble', monto: 84200, hora: '10:12', rendido: false }, { id: 'RP-5117', cliente: 'Almacén San Expedito', monto: 51900, hora: '11:40', rendido: false }];
@@ -23,11 +33,14 @@
 
   // Sincronización automática al reconectar (RF-06.07, RNG-12)
   const syncQueue = async (onDone) => {
+    const key = scope();
     const q = queue();
     if (!q.length) return onDone?.();
     L.toast('Señal recuperada', `Sincronizando ${q.length} evento(s)…`, 'info', { duration: 2000 });
     await L.sleep(1400);
-    setQueue([]);
+    const synced = new Set(q.map((x) => x.uuid));
+    L.store.set(key + 'queue', L.store.get(key + 'queue', []).filter((x) => !synced.has(x.uuid)));
+    if (scope() !== key || !location.hash.startsWith('#/terreno')) return;
     L.toast('Sincronización completa', `${q.length} evento(s) enviados sin duplicados ni pérdidas.`, 'success');
     L.cierreTurno();
     onDone?.();
@@ -36,21 +49,23 @@
   // RF-06.07: when the device syncs, the central system rebuilds the whole shift and issues the closing report for settlement
   L.cierreTurno = () => {
     if (!/^#\/terreno(\?|$)/.test(location.hash)) return;
-    const t = L.store.get('field.times', {}), st = stops();
+    const t = read('times', {}), st = stops();
     const hechas = st.filter((s) => s.estado === 'Entregado').length, rep = st.filter((s) => s.estado === 'Reprogramada').length;
     const cobro = Object.values(t).reduce((a, x) => a + (x.cash || 0), 0), cr = Object.values(t).reduce((a, x) => a + (x.crates || 0), 0), pl = Object.values(t).reduce((a, x) => a + (x.pallets || 0), 0);
-    L.modal({ title: 'Reporte de cierre del turno · R-01', body: `<p class="muted" style="margin-top:0">Generado automáticamente al sincronizar: el sistema recuperó todos los despachos registrados en el turno y los consolidó para la rendición.</p><dl class="desc-list"><dt>Entregas confirmadas</dt><dd>${hechas} de ${st.length}</dd><dt>Reprogramadas</dt><dd>${rep}</dd><dt>Cobrado en ruta</dt><dd class="num">${fmt.clp(cobro)}</dd><dt>Envases retornados</dt><dd>${cr} canastillos · ${pl} pallets</dd><dt>Horas por entrega</dt><dd>${Object.entries(t).map(([k, x]) => `${esc(D.paradas.find((p) => p.id === k)?.nombre || k)}: ${x.llegada}–${x.termino}`).join(' · ') || '—'}</dd></dl>`, actions: [{ label: 'Cerrar' }, { label: 'Ir a la rendición', cls: 'btn-primary', onClick: () => L.go('/rendicion') }] });
+    L.modal({ title: 'Reporte de cierre del turno · ' + L.fieldRoute().id, body: `<p class="muted" style="margin-top:0">Generado automáticamente al sincronizar: el sistema recuperó todos los despachos registrados en el turno y los consolidó para la rendición.</p><dl class="desc-list"><dt>Entregas confirmadas</dt><dd>${hechas} de ${st.length}</dd><dt>Reprogramadas</dt><dd>${rep}</dd><dt>Cobrado en ruta</dt><dd class="num">${fmt.clp(cobro)}</dd><dt>Envases retornados</dt><dd>${cr} canastillos · ${pl} pallets</dd><dt>Horas por entrega</dt><dd>${Object.entries(t).map(([k, x]) => `${esc(L.fieldStops().find((p) => p.id === k)?.nombre || k)}: ${x.llegada}–${x.termino}`).join(' · ') || '—'}</dd></dl>`, actions: [{ label: 'Cerrar' }, { label: 'Ir a la rendición', cls: 'btn-primary', onClick: () => L.go('/rendicion') }] });
   };
 
   /* ---------- App de reparto ---------- */
   L.route('/terreno', {
     title: 'Reparto en terreno', parent: '/inicio', block: 'Perfil de terreno', module: 'M6 Reparto · M7 · M8', rf: ['RF-06.01', 'RF-06.02', 'RF-06.04', 'RF-06.05', 'RF-06.07', 'RF-06.09', 'RF-06.11', 'RF-07.06', 'RF-09.06', 'RF-06.13', 'RF-09.12', 'RNG-12', 'RF-06.10', 'RF-06.12', 'RF-07.10', 'RF-09.07', 'RF-09.13', 'RNF-06.01', 'RNF-09.06', 'RNF-13.02'], actors: ['Conductor propio', 'Conductor externo'],
-    render: () => `<div class="page-head hide-sm"><div class="titles"><span class="page-kicker">${icon('truck', 'icon-sm')}App de reparto</span><h1>Ruta R-01 Cauquenes</h1><p class="muted" style="margin:0">${D.paradas.length} entregas · camión KXTR-21 con equipo de frío · salida ${D.rutas[0].salida}</p></div><div class="actions"><button type="button" class="btn btn-secondary" id="tr-reset">${icon('sync')}Reiniciar ruta</button></div></div>
+    render: () => `<div class="page-head hide-sm"><div class="titles"><span class="page-kicker">${icon('truck', 'icon-sm')}App de reparto</span><h1>Ruta ${esc(L.fieldRoute().id + " " + L.fieldRoute().zona)}</h1><p class="muted" style="margin:0">${L.fieldStops().length} entregas · camión ${esc(L.fieldRoute().camion)} · salida ${L.fieldRoute().salida}</p></div><div class="actions"><button type="button" class="btn btn-secondary" id="tr-reset">${icon('sync')}Reiniciar ruta</button></div></div>
       <div class="split"><div id="tr-host"></div><aside class="card hide-sm stack"><h2>Qué funciona sin conexión</h2>
         <ul class="list">${[['Entrega y prueba de entrega', 'Captura 14 h · cola cifrada', 'success'], ['Cobro en efectivo', 'Comprobante local', 'success'], ['Devoluciones y envases', 'Se registran en el dispositivo', 'success'], ['Mapas', 'Precargados con la ruta', 'success'], ['Autorización POS', 'No disponible: efectivo o crédito autorizado', 'danger'], ['Recalcular ruta', 'No disponible: secuencia precargada', 'danger']].map(([t, d, k]) => `<li><span class="badge badge-${k} plain" style="padding:4px">${icon(k === 'success' ? 'check' : 'ban', 'icon-sm')}</span><div class="grow"><div class="title">${t}</div><div class="sub">${d}</div></div></li>`).join('')}</ul></aside></div>`,
     mount: (root) => {
       const S = { screen: 'ruta', stop: null };
-      const coldState = () => L.store.get('field.coldState', 'ok');
+      const route = L.fieldRoute();
+      const crewCash = route.externo ? 0 : 412000;
+      const coldState = () => read('coldState', 'ok');
       const host = $('#tr-host', root);
       const tabs = [['ruta', 'route', 'Ruta'], ['cola', 'sync', 'Cola'], ['frio', 'thermo', 'Frío'], ['mas', 'menu', 'Más']];
       const draw = () => {
@@ -58,17 +73,17 @@
         let title = 'Mi ruta', body = '', back = '';
         if (S.screen === 'ruta') {
           const done = st.filter((s) => s.estado !== 'Pendiente').length;
-          body = `<div class="card" style="padding:var(--sp-4)"><div class="row"><div class="ring" style="--p:${Math.round((done / st.length) * 100)}" data-label="${done}/${st.length}"></div><div><strong>R-01 Cauquenes</strong><div class="small muted">KXTR-21 · con equipo de frío</div><div class="small muted">Credencial válida hasta 21:15</div>${(() => { const t = L.store.get('field.times', {}); const cash = Object.values(t).reduce((a, x) => a + (x.cash || 0), 0) + 412000; const max = L.param('efectivo-max') || 800000; return `<div class="small" style="margin-top:4px">Efectivo a bordo: <strong class="num" style="${cash > max ? 'color:var(--c-danger)' : ''}">${fmt.clp(cash)}</strong> <span class="muted">de ${fmt.clp(max)} permitidos</span></div>`; })()}</div></div></div>
-            <ol class="list" aria-label="Entregas de la ruta">${D.paradas.map((p, i) => { const e = st[i].estado; return `<li><button type="button" class="btn btn-tertiary" data-stop="${p.id}" style="width:100%;justify-content:flex-start;text-align:left;min-height:64px;padding:0 4px;font-weight:400"><span class="avatar ${e === 'Pendiente' ? 'dark' : ''}" style="width:36px;height:36px">${e === 'Pendiente' ? i + 1 : icon(e === 'Entregado' ? 'check' : 'alert', 'icon-sm')}</span><span class="grow" style="min-width:0"><strong style="display:block;white-space:normal">${esc(p.nombre)}</strong><span class="small muted">${esc(p.ventana)} · ${p.bultos} bultos${p.frio ? ' · frío' : ''}</span></span>${e !== 'Pendiente' ? L.badge(e, e === 'Entregado' ? 'success' : 'warning') : icon('chev-right')}</button></li>`; }).join('')}</ol>`;
+          body = `<div class="card" style="padding:var(--sp-4)"><div class="row"><div class="ring" style="--p:${Math.round((done / st.length) * 100)}" data-label="${done}/${st.length}"></div><div><strong>${esc(route.id + " " + route.zona)}</strong><div class="small muted">${esc(route.camion)} · ${route.frio ? "con equipo de frío" : "seco"}</div><div class="small muted">Credencial válida hasta 21:15</div>${(() => { const t = read('times', {}); const cash = Object.values(t).reduce((a, x) => a + (x.cash || 0), 0) + crewCash; const max = L.param('efectivo-max') || 800000; return `<div class="small" style="margin-top:4px">Efectivo a bordo: <strong class="num" style="${cash > max ? 'color:var(--c-danger)' : ''}">${fmt.clp(cash)}</strong> <span class="muted">de ${fmt.clp(max)} permitidos</span></div>`; })()}</div></div></div>
+            <ol class="list" aria-label="Entregas de la ruta">${L.fieldStops().map((p, i) => { const e = st[i].estado; return `<li><button type="button" class="btn btn-tertiary" data-stop="${p.id}" style="width:100%;justify-content:flex-start;text-align:left;min-height:64px;padding:0 4px;font-weight:400"><span class="avatar ${e === 'Pendiente' ? 'dark' : ''}" style="width:36px;height:36px">${e === 'Pendiente' ? i + 1 : icon(e === 'Entregado' ? 'check' : 'alert', 'icon-sm')}</span><span class="grow" style="min-width:0"><strong style="display:block;white-space:normal">${esc(p.nombre)}</strong><span class="small muted">${esc(p.ventana)} · ${p.bultos} bultos${p.frio ? ' · frío' : ''}</span></span>${e !== 'Pendiente' ? L.badge(e, e === 'Entregado' ? 'success' : 'warning') : icon('chev-right')}</button></li>`; }).join('')}</ol>`;
         } else if (S.screen === 'parada') {
-          const p = D.paradas.find((x) => x.id === S.stop);
+          const p = L.fieldStops().find((x) => x.id === S.stop);
           const e = st.find((x) => x.id === p.id).estado;
           title = p.nombre; back = 'ruta';
           body = `<dl class="desc-list"><dt>Dirección</dt><dd>${esc(p.dir)}</dd><dt>Ventana</dt><dd>${esc(p.ventana)}</dd><dt>Pedido</dt><dd class="mono">${esc(p.pedido)}</dd><dt>Bultos</dt><dd>${p.bultos}${p.frio ? ' · incluye frío' : ''}</dd><dt>Cobro</dt><dd>${p.contado ? 'Contado ' + fmt.clp(p.monto) : 'Crédito 30 días'}</dd></dl>
             ${p.frio ? (['ok', 'satelite'].includes(coldState()) ? L.alert('success', 'Cadena de frío vigente', 'Señal del equipo de frío del camión hace 4 s · 3,4 °C, carga vigente y sin retención. Se habilita la bajada del SSCC.') : L.alert('danger', coldState() === 'enlace' ? 'Bajada bloqueada: sin latido del camión' : 'Bajada bloqueada: SSCC retenido por excursión', coldState() === 'enlace' ? 'El terminal no recibe señal del equipo de frío del camión hace más de 30 s. Sin estado confiable no se baja producto de frío; el SSCC queda retenido y vuelve al CD si Calidad no decide en plazo.' : 'El SSCC 0078012345000001255 quedó retenido por excursión crítica. Solo Calidad puede liberarlo.')) : ''}
-            ${e === 'Pendiente' ? `<button type="button" class="btn btn-secondary btn-block big-btn" data-nav>${icon('pin')}Navegar ${L.online() ? '' : '(mapa precargado)'}</button>${p.frio && !['ok', 'satelite'].includes(coldState()) ? `<button type="button" class="btn btn-primary btn-block big-btn" disabled>${icon('lock')}Entrega de frío bloqueada</button><button type="button" class="btn btn-tertiary btn-block" data-dtab="frio">Ver estado de la cadena de frío</button>` : `<button type="button" class="btn btn-primary btn-block big-btn" data-arrive>${icon('check')}Llegué: iniciar entrega</button>`}` : L.alert(e === 'Entregado' ? 'success' : 'warning', `Parada ${e.toLowerCase()}`, e === 'Entregado' ? `Prueba de entrega registrada. Llegada ${L.store.get('field.times', {})[p.id]?.llegada || '—'} · término ${L.store.get('field.times', {})[p.id]?.termino || '—'}.` : 'Reprogramada a la próxima ventana compatible.')}`;
+            ${e === 'Pendiente' ? `<button type="button" class="btn btn-secondary btn-block big-btn" data-nav>${icon('pin')}Navegar ${L.online() ? '' : '(mapa precargado)'}</button>${p.frio && !['ok', 'satelite'].includes(coldState()) ? `<button type="button" class="btn btn-primary btn-block big-btn" disabled>${icon('lock')}Entrega de frío bloqueada</button><button type="button" class="btn btn-tertiary btn-block" data-dtab="frio">Ver estado de la cadena de frío</button>` : `<button type="button" class="btn btn-primary btn-block big-btn" data-arrive>${icon('check')}Llegué: iniciar entrega</button>`}` : L.alert(e === 'Entregado' ? 'success' : 'warning', `Parada ${e.toLowerCase()}`, e === 'Entregado' ? `Prueba de entrega registrada. Llegada ${read('times', {})[p.id]?.llegada || '—'} · término ${read('times', {})[p.id]?.termino || '—'}.` : 'Reprogramada a la próxima ventana compatible.')}`;
         } else if (S.screen === 'entrega') {
-          const p = D.paradas.find((x) => x.id === S.stop);
+          const p = L.fieldStops().find((x) => x.id === S.stop);
           title = 'Entrega · ' + p.nombre; back = 'parada';
           body = '<div id="dv-host"></div>';
         } else if (S.screen === 'cola') {
@@ -77,7 +92,7 @@
           body = q.length ? `<p class="small muted">Eventos guardados en el dispositivo con identificador único. Se envían solos al recuperar señal o al volver al CD.</p><ul class="list">${q.map((x) => `<li>${icon(x.icon)}<div class="grow"><div class="title">${esc(x.t)}</div><div class="sub">Guardado a las ${esc(x.at)} · no se duplica al enviarse</div></div>${L.badge('En cola', 'warning')}</li>`).join('')}</ul>${L.online() ? `<button type="button" class="btn btn-primary btn-block" data-sync>${icon('sync')}Sincronizar ahora</button>` : L.alert('info', 'Sin señal', 'Nada se pierde: la cola persiste aunque se reinicie el equipo.')}` : L.empty('done', 'Todo sincronizado', 'No hay eventos pendientes de envío.');
         } else if (S.screen === 'frio') {
           title = 'Cadena de frío';
-          const cs = coldState(), exc = cs === 'excursion', obs = L.store.get('field.coldObs', []);
+          const cs = coldState(), exc = cs === 'excursion', obs = read('coldObs', []);
           const vals = exc ? [3.8, 3.5, 4.4, 5.6, 6.8, 7.4] : [3.8, 3.5, 4.4, 3.9, 3.6, 3.4];
           body = `${cs === 'satelite' ? L.alert('info', 'Sin red móvil: enlace por satélite', 'Los dos operadores móviles no tienen cobertura. El equipo de frío envía la curva cada 3 min y las alarmas de inmediato por satélite, y Calidad puede bajar órdenes firmadas. Al volver la red se concilia con la serie fina; nada se libera por la sola recuperación.') : cs === 'ok' ? '' : L.alert('danger', exc ? 'Alerta en cabina: excursión crítica' : 'Sin señal del equipo de frío del camión', exc ? '7,4 °C, sobre 6 °C (consigna 4 °C + 2 °C) durante 16 min. El terminal retuvo el SSCC 0078012345000001255 sin depender de red móvil ni satélite. Usted no puede liberarlo: registre lo observado y Calidad decide.' : 'Último latido hace 45 s (máximo 30 s). Las bajadas de frío quedan bloqueadas hasta recuperar el enlace local con el camión.')}
             <div class="card" style="padding:var(--sp-4)"><div class="row-between"><strong>Compartimento refrigerado</strong>${L.badge(exc ? 'Excursión crítica' : cs === 'enlace' ? 'Sin enlace' : cs === 'satelite' ? 'Normal · vía satélite' : 'Normal', cs === 'ok' || cs === 'satelite' ? 'success' : 'danger')}</div><div style="font-size:var(--fs-3xl);font-weight:700" class="num">${exc ? '7,4' : '3,4'} °C</div><div class="small muted">Consigna 4 °C · límite 6 °C sostenido 15 min · sensor independiente ${exc ? '7,6' : '3,6'} °C</div></div>
@@ -92,17 +107,17 @@
             <li><a class="btn btn-tertiary" style="width:100%;justify-content:flex-start" href="#/devoluciones/nueva">${icon('undo')}<span class="grow" style="text-align:left">Registrar devolución</span></a></li>
             <li><a class="btn btn-tertiary" style="width:100%;justify-content:flex-start" href="#/rendicion">${icon('file')}<span class="grow" style="text-align:left">Rendir el turno</span></a></li>
             <li><button type="button" class="btn btn-tertiary" style="width:100%;justify-content:flex-start" data-sun aria-pressed="${L.store.pref('contrast', 'normal') === 'high'}">${icon('sun')}<span class="grow" style="text-align:left">Pantalla para pleno sol<span class="small muted" style="display:block">${L.store.pref('contrast', 'normal') === 'high' ? 'Activada: alto contraste' : 'Más contraste para leer a la intemperie'}</span></span></button></li>
-            <li><button type="button" class="btn btn-tertiary" style="width:100%;justify-content:flex-start" data-crew>${icon('users')}<span class="grow" style="text-align:left">Tripulación del turno<span class="small muted" style="display:block">Conductor y peoneta, cada uno con su sesión</span></span></button></li>
+            <li><button type="button" class="btn btn-tertiary" style="width:100%;justify-content:flex-start" data-crew>${icon('users')}<span class="grow" style="text-align:left">Tripulación del turno<span class="small muted" style="display:block">Quién opera el terminal de la ruta</span></span></button></li>
             <li><button type="button" class="btn btn-tertiary" style="width:100%;justify-content:flex-start" data-print>${icon('printer')}<span class="grow" style="text-align:left">Imprimir comprobante</span></button></li></ul>`;
         }
         host.innerHTML = deviceShell(title, body, { back, tabs, active: ['parada', 'entrega'].includes(S.screen) ? 'ruta' : S.screen });
         if (S.screen === 'entrega') {
-          const p = D.paradas.find((x) => x.id === S.stop);
+          const p = L.fieldStops().find((x) => x.id === S.stop);
           const ped = L.findOrder(p.pedido);
           L.delivery($('#dv-host', host), {
             stop: { ...p, ventana: p.ventana }, compact: true,
             lines: ped.lineas.slice(0, 4).map((l) => ({ nombre: l.nombre, cant: l.cant, precio: Math.round(p.monto / ped.lineas.slice(0, 4).reduce((a, x) => a + x.cant, 0)) })),
-            onDone: (r) => { const max = L.param('efectivo-max') || 800000, before = Object.values(L.store.get('field.times', {})).reduce((a, x) => a + (x.cash || 0), 0) + 412000; if (before + (r.cash || 0) > max && before <= max) L.toast('Supera el efectivo permitido a bordo', `Lleva ${fmt.clp(before + (r.cash || 0))}. Deposítelo en el próximo punto acordado y regístrelo en «Rendir el turno».`, 'warning'); setStop(p.id, 'Entregado'); L.store.set('field.times', { ...L.store.get('field.times', {}), [p.id]: { llegada: r.llegada, termino: r.termino, cash: r.cash || 0, crates: r.crates, pallets: r.pallets } }); if (!L.online()) setQueue([...queue(), { t: `Entrega ${p.nombre}`, icon: 'check', uuid: 'pod-' + Math.random().toString(16).slice(2, 8), at: '09:4' + queue().length }, ...(r.cash ? [{ t: `Cobro ${fmt.clp(r.cash)}`, icon: 'cash', uuid: 'cob-' + Math.random().toString(16).slice(2, 8), at: '09:4' + queue().length }] : [])]); S.screen = 'ruta'; draw(); },
+            onDone: (r) => { const max = L.param('efectivo-max') || 800000, before = Object.values(read('times', {})).reduce((a, x) => a + (x.cash || 0), 0) + crewCash; if (before + (r.cash || 0) > max && before <= max) L.toast('Supera el efectivo permitido a bordo', `Lleva ${fmt.clp(before + (r.cash || 0))}. Deposítelo en el próximo punto acordado y regístrelo en «Rendir el turno».`, 'warning'); setStop(p.id, 'Entregado'); write('times', { ...read('times', {}), [p.id]: { llegada: r.llegada, termino: r.termino, cash: r.cash || 0, crates: r.crates, pallets: r.pallets } }); if (!L.online()) setQueue([...queue(), { t: `Entrega ${p.nombre}`, icon: 'check', uuid: 'pod-' + Math.random().toString(16).slice(2, 8), at: '09:4' + queue().length }, ...(r.cash ? [{ t: `Cobro ${fmt.clp(r.cash)}`, icon: 'cash', uuid: 'cob-' + Math.random().toString(16).slice(2, 8), at: '09:4' + queue().length }] : [])]); S.screen = 'ruta'; draw(); },
             onClosed: (r) => { setStop(p.id, 'Reprogramada'); if (!L.online()) setQueue([...queue(), { t: `Local cerrado ${p.nombre}`, icon: 'door', uuid: 'evt-' + Math.random().toString(16).slice(2, 8), at: '09:5' + queue().length }]); S.screen = 'ruta'; draw(); }
           });
         }
@@ -111,19 +126,26 @@
         $('[data-dback]', host) && ($('[data-dback]', host).onclick = () => { S.screen = $('[data-dback]', host).dataset.dback; draw(); });
         $$('[data-stop]', host).forEach((b) => (b.onclick = () => { S.stop = b.dataset.stop; S.screen = 'parada'; draw(); }));
         $('[data-arrive]', host) && ($('[data-arrive]', host).onclick = () => { S.screen = 'entrega'; draw(); });
-        $$('[data-cold]', host).forEach((b) => (b.onclick = () => { const v = b.dataset.cold; L.store.set('field.coldState', v); if (v === 'satelite') L.toast('Sin red móvil', 'Curva y alarmas siguen por satélite.', 'info'); else if (v !== 'ok') { if (navigator.vibrate) navigator.vibrate([300, 150, 300]); L.toast(v === 'excursion' ? 'Alarma de frío en cabina' : 'Sin latido del camión', v === 'excursion' ? 'SSCC retenido. Registre sus observaciones.' : 'Bajadas de frío bloqueadas.', 'error'); } else L.store.set('field.coldObs', []); draw(); }));
-        $('#co-f', host) && ($('#co-f', host).onsubmit = (ev) => { ev.preventDefault(); const t = $('#co-o', host).value.trim(); if (!t) { L.toast('Escriba lo que observó', 'La observación es obligatoria para Calidad.', 'error'); $('#co-o', host).focus(); return; } const at = new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' }); L.store.set('field.coldObs', [{ t, at, cola: !L.online() }, ...L.store.get('field.coldObs', [])]); if (!L.online()) setQueue([...queue(), { t: 'Observación de frío', icon: 'thermo', uuid: 'obs-' + Math.random().toString(16).slice(2, 8), at }]); L.logAudit('Creación', 'Cadena de frío', `Observación del conductor sobre excursión en SSCC 0078012345000001255: ${t}`, 'App móvil'); L.toast('Observación enviada a Calidad', L.online() ? 'Calidad decide liberar, bloquear o rechazar.' : 'Guardada en el dispositivo; se enviará al reconectar.', 'success'); draw(); });
+        $$('[data-cold]', host).forEach((b) => (b.onclick = () => { const v = b.dataset.cold; write('coldState', v); if (v === 'satelite') L.toast('Sin red móvil', 'Curva y alarmas siguen por satélite.', 'info'); else if (v !== 'ok') { if (navigator.vibrate) navigator.vibrate([300, 150, 300]); L.toast(v === 'excursion' ? 'Alarma de frío en cabina' : 'Sin latido del camión', v === 'excursion' ? 'SSCC retenido. Registre sus observaciones.' : 'Bajadas de frío bloqueadas.', 'error'); } else write('coldObs', []); draw(); }));
+        $('#co-f', host) && ($('#co-f', host).onsubmit = (ev) => { ev.preventDefault(); const t = $('#co-o', host).value.trim(); if (!t) { L.toast('Escriba lo que observó', 'La observación es obligatoria para Calidad.', 'error'); $('#co-o', host).focus(); return; } const at = new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' }); write('coldObs', [{ t, at, cola: !L.online() }, ...read('coldObs', [])]); if (!L.online()) setQueue([...queue(), { t: 'Observación de frío', icon: 'thermo', uuid: 'obs-' + Math.random().toString(16).slice(2, 8), at }]); L.logAudit('Creación', 'Cadena de frío', `Observación del conductor sobre excursión en SSCC 0078012345000001255: ${t}`, 'App móvil'); L.toast('Observación enviada a Calidad', L.online() ? 'Calidad decide liberar, bloquear o rechazar.' : 'Guardada en el dispositivo; se enviará al reconectar.', 'success'); draw(); });
         $('[data-nav]', host) && ($('[data-nav]', host).onclick = () => L.toast(L.online() ? 'Navegación iniciada' : 'Mapa precargado', L.online() ? 'ETA 6 min · 2,1 km' : 'Sin recálculo en línea: siga la secuencia precargada.', 'info'));
         $('[data-sync]', host) && ($('[data-sync]', host).onclick = () => syncQueue(draw));
         $('[data-pos]', host) && ($('[data-pos]', host).onclick = () => (L.online() ? L.toast('Terminal POS listo', 'Acerque la tarjeta del cliente.', 'info') : L.modal({ title: 'Cobro con tarjeta no disponible', icon: 'warning:wifi-off', body: '<p>Sin conexión no se puede autorizar un pago con tarjeta. Cobre en efectivo o registre el crédito autorizado del cliente; nunca se presenta una captura POS como pago autorizado.</p>', actions: [{ label: 'Entendido', cls: 'btn-primary' }] })));
         $('[data-sun]', host) && ($('[data-sun]', host).onclick = () => { const on = L.store.pref('contrast', 'normal') !== 'high'; L.store.setPref('contrast', on ? 'high' : 'normal'); L.applyPrefs(); L.toast(on ? 'Pantalla para pleno sol activada' : 'Contraste normal', on ? 'Se conserva en este equipo; puede cambiarla en Mi perfil.' : '', 'success', { duration: 2000 }); draw(); });
-        $('[data-crew]', host) && ($('[data-crew]', host).onclick = () => L.modal({ title: 'Tripulación del turno · R-01', body: `<ul class="list"><li>${icon('user')}<div class="grow"><div class="title">${esc(L.me().name)}</div><div class="sub">Conductor · sesión en este terminal</div></div>${L.badge('Sesión activa', 'success')}</li><li>${icon('user')}<div class="grow"><div class="title">Luis Mora Fuentes</div><div class="sub">Peoneta · sesión propia en su terminal</div></div>${L.badge(L.store.get('field.peoneta', false) ? 'Sesión activa' : 'Sin iniciar', L.store.get('field.peoneta', false) ? 'success' : 'warning')}</li></ul><p class="hint">El peoneta no usa la sesión del conductor ni hay cuentas genéricas por cargo: cada entrega, cobro o devolución queda a nombre de quien la registra (4.1).</p>`, actions: [{ label: 'Cerrar' }, ...(L.store.get('field.peoneta', false) ? [] : [{ label: 'El peoneta inicia su sesión', cls: 'btn-primary', onClick: () => { L.store.set('field.peoneta', true); L.logAudit('Creación', 'Sesión', 'Luis Mora Fuentes (peoneta) inició sesión propia en su terminal para la ruta R-01', 'App móvil'); L.toast('Sesión del peoneta iniciada', 'En su propio terminal, con su credencial.', 'success'); } }])] }));
+
+        if ($('[data-crew]', host)) $('[data-crew]', host).onclick = () => L.modal({
+          title: 'Tripulación del turno · ' + route.id,
+          body: `<ul class="list"><li>${icon('user')}<div class="grow"><strong>${esc(L.me().name)}</strong><div class="sub">Identidad activa en el terminal de la ruta</div></div></li>
+            ${L.me().id === 'conductor-ext' ? '' : `<li>${icon('user')}<div class="grow"><strong>Luis Mora Fuentes</strong><div class="sub">Peoneta · apoyo de carga y descarga, sin sesión compartida</div></div></li>`}</ul>
+            <p class="hint">El prototipo usa un terminal por camión. Los registros de este turno quedan atribuidos a quien usa su propia sesión.</p>`,
+          actions: [{ label: 'Cerrar', cls: 'btn-primary' }]
+        });
         $('[data-print]', host) && ($('[data-print]', host).onclick = (e) => L.busy(e.currentTarget, () => L.toast('Comprobante impreso', 'Impresora portátil ZQ220.', 'success'), 900));
         $('#dev', host).scrollTop = 0;
       };
       document.addEventListener('lfx:net', draw);
       L.onLeave(() => document.removeEventListener('lfx:net', draw));
-      $('#tr-reset', root) && ($('#tr-reset', root).onclick = () => { L.store.set('field.stops', null); L.store.set('field.times', {}); L.store.set('field.coldState', 'ok'); setQueue([]); S.screen = 'ruta'; draw(); L.toast('Ruta reiniciada', '', 'info'); });
+      $('#tr-reset', root) && ($('#tr-reset', root).onclick = () => { write('stops', null); write('times', {}); write('coldState', 'ok'); setQueue([]); S.screen = 'ruta'; draw(); L.toast('Ruta reiniciada', '', 'info'); });
       draw();
     }
   });

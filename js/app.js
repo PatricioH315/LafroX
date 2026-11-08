@@ -61,6 +61,8 @@
     const p = L.me();
     if (!p) return false;
     if (p.all) return true;
+    const route = L.findRoute(path);
+    if (route?.permission && !L.can(route.permission)) return false;
     const top = '/' + path.split('/').filter(Boolean).slice(0, path.startsWith('/admin') || path.startsWith('/portal') || path.startsWith('/terreno/') ? 2 : 1).join('/');
     return ALWAYS.includes(top) || p.menu.includes(top) || p.menu.includes(path);
   };
@@ -100,7 +102,11 @@
     'edi.gestionar': ['comercial']
   };
   L.perm = PERM;
-  L.can = (act) => { const p = L.me(); return !!p && (p.all || (PERM[act] || []).includes(p.id)); };
+  L.profileCan = (profile, action) => {
+    const value = L.store.get('permisos.vigentes', {})[action]?.[profile];
+    return value ?? (PERM[action] || []).includes(profile);
+  };
+  L.can = (act) => { const p = L.me(); return !!p && (p.all || L.profileCan(p.id, act)); };
   // Short notice for screens where the profile only consults
   L.readOnly = (txt) => L.alert('info', 'Solo consulta para su perfil', txt || 'Las acciones de esta pantalla las ejecutan los perfiles responsables.');
   L.signIn = (profileId, { remember = true } = {}) => {
@@ -115,7 +121,8 @@
 
   // Quick actions of the profile: only what it can open and execute
   L.quickList = () => [
-    { label: 'Nuevo pedido de preventa', icon: 'cart', path: '/flujo' },
+    { label: 'Nuevo pedido de preventa', icon: 'cart', path: '/flujo', only: ['preventista'] },
+    { label: 'Revisar autorizaciones de crédito', icon: 'cash', path: '/flujo', only: ['finanzas'] },
     { label: 'Tomar un pedido en terreno', icon: 'cart', path: '/terreno/preventa', only: ['preventista'] },
     { label: 'Abrir la app de reparto', icon: 'truck', path: '/terreno', only: ['conductor', 'conductor-ext'] },
     { label: 'Registrar devolución', icon: 'undo', path: '/devoluciones/nueva', act: 'dev.registrar' },
@@ -138,7 +145,11 @@
     const layout = route.layout;
     document.title = `${L.titleOf(route, params)} · Puelche · LafroX`;
     if (layout === 'app') {
-      if (!L.allowed(path)) { L.go('/inicio'); return; }
+      if (!L.allowed(path)) {
+        L.toast('Acción no disponible para su perfil', 'Volvió a su inicio. Use un perfil autorizado para abrir esta pantalla.', 'warning');
+        L.go('/inicio');
+        return;
+      }
       if (!$('.app .sidebar')) shell();
       updateShell(path);
       const main = $('#main');
@@ -173,7 +184,7 @@
       <nav class="public-nav" aria-label="Sitio público">
         ${[['/', 'Inicio'], ['/catalogo', 'Catálogo'], ['/cobertura', 'Cobertura'], ['/contacto', 'Contacto']].map(([p, l]) => `<a href="#${p}" ${p === path ? 'aria-current="page"' : ''}>${l}</a>`).join('')}
       </nav>
-      <span style="flex:1"></span>
+      <span class="public-spacer" style="flex:1"></span>
       <button type="button" class="btn btn-tertiary btn-icon" data-theme-toggle aria-label="Cambiar entre modo claro y oscuro">${themeBtn()}</button>
       ${s ? '<a class="btn btn-primary" href="#/inicio">Ir a mi espacio</a>' : `<a class="btn btn-tertiary hide-sm" href="#/registro">Crear cuenta</a><a class="btn btn-primary" href="#/ingresar">${icon('user')}Ingresar</a>`}
     </header>
@@ -287,7 +298,8 @@
       if (!items.length) return '';
       return `<div class="nav-group"><span class="nav-label" id="ng-${esc(g.group)}">${esc(g.group)}</span><ul role="list" style="list-style:none;margin:0;padding:0" aria-labelledby="ng-${esc(g.group)}">${items.map((i) => {
         const cur = path === i.path || (i.path !== '/inicio' && path.startsWith(i.path + '/') && !g.items.some((o) => o !== i && path.startsWith(o.path) && o.path.length > i.path.length));
-        return `<li><a href="#${i.path}" ${cur ? 'aria-current="page"' : ''}>${icon(i.icon)}<span class="nav-text">${esc(i.label)}</span>${i.badge && tasks ? `<span class="tag" aria-label="${tasks} pendientes">${tasks}</span>` : ''}</a></li>`;
+        const label = i.path === '/flujo' && L.me()?.id === 'finanzas' ? 'Autorizaciones de crédito' : i.label;
+        return `<li><a href="#${i.path}" ${cur ? 'aria-current="page"' : ''}>${icon(i.icon)}<span class="nav-text">${esc(label)}</span>${i.badge && tasks ? `<span class="tag" aria-label="${tasks} pendientes">${tasks}</span>` : ''}</a></li>`;
       }).join('')}</ul></div>`;
     }).join('');
     railTitles();
@@ -301,8 +313,9 @@
   }
 
   /* ---------- Conectividad simulada (terreno) ---------- */
-  L.online = () => L.store.get('online', true);
-  L.setOnline = (v) => { L.store.set('online', v); renderNet(); document.dispatchEvent(new CustomEvent('lfx:net', { detail: v })); };
+  const connectionKey = () => 'online.' + (L.me()?.id || 'anon');
+  L.online = () => L.store.get(connectionKey(), true);
+  L.setOnline = (v) => { L.store.set(connectionKey(), v); renderNet(); document.dispatchEvent(new CustomEvent('lfx:net', { detail: v })); };
   function renderNet() {
     const el = $('#net-ind');
     if (!el) return;
@@ -425,6 +438,15 @@
   const guardLinks = () => { if (!L.me() || !app()?.classList.contains('app')) return; document.querySelectorAll('a[href^="#/"]').forEach((a) => { const p = a.getAttribute('href').slice(1).split('?')[0]; const ok = L.allowed(p); if (a.hidden !== !ok) a.hidden = !ok; }); };
   let guardRaf = 0;
   new MutationObserver(() => { if (!guardRaf) guardRaf = setTimeout(() => { guardRaf = 0; guardLinks(); }, 0); }).observe(document.body, { childList: true, subtree: true });
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.skip-link')) return;
+    const main = $('#main');
+    if (!main) return;
+    event.preventDefault(); // #main no es una ruta del prototipo.
+    main.focus();
+    main.scrollIntoView({ block: 'start' });
+  });
 
   L.boot = () => {
     L.applyPrefs();

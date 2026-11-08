@@ -129,6 +129,32 @@ function auditContrast() {
     await page.keyboard.press('g');await page.keyboard.press('i');await page.waitForTimeout(100);
     assert.match(page.url(), /inicio/);
     report.functional.push('Borrador de flujo y atajo g s; preferencia de desactivación respetada');
+
+    await login(); await go('/analitica');
+    assert.equal(await page.locator('.kpi a button, a.kpi button').count(), 0);
+    await page.locator('.skip-link').focus(); await page.keyboard.press('Enter');
+    assert.equal(await page.evaluate(() => document.activeElement.id), 'main');
+    assert.match(page.url(), /#\/analitica$/);
+    await go('/pedidos');
+    await page.locator('button[data-sort]').first().focus(); await page.keyboard.press('Enter');
+    assert.equal(await page.locator('button[aria-sort]').count(), 0);
+    assert.equal(await page.locator('th[aria-sort]').count(), 1);
+    assert.ok(await page.evaluate(() => document.activeElement.hasAttribute('data-sort')));
+    report.functional.push('Teclado: salto a contenido sin cambiar ruta, orden de tabla y controles KPI no anidados');
+
+    await login('conductor'); await go('/terreno');
+    assert.match(await page.locator('#tr-host').innerText(), /R-01 Cauquenes/);
+    await page.locator('#dev-net').uncheck();
+    await page.locator('[data-dtab=mas]').click();
+    await page.locator('[data-crew]').click();
+    assert.match(await page.getByRole('dialog').innerText(), /sin sesión compartida/);
+    assert.equal(await page.getByRole('button', {name:/inicia su sesión/}).count(), 0);
+    await page.keyboard.press('Escape');
+    await login('conductor-ext'); await go('/terreno');
+    assert.match(await page.locator('#tr-host').innerText(), /R-09 Parral/);
+    assert.ok(await page.locator('#dev-net').isChecked());
+    assert.equal(await page.locator('[data-stop^="E-"]').count(), 0);
+    report.functional.push('Tripulación sin sesión ficticia y ruta/señal aisladas por perfil');
     const routes = await page.evaluate(() => LFX.routes.filter((r) => r.path !== '*').map((r) => r.path.replace(':kpi', LFX.data.kpis[0].id).replace(':id', r.path.includes('/pedidos') ? LFX.data.pedidos[0].id : r.path.includes('/clientes') ? LFX.data.clientes[0].id : r.path.includes('/rutas') ? LFX.data.rutas[0].id : r.path.includes('/devoluciones') ? LFX.data.devoluciones[0].id : r.path.includes('/lotes') ? LFX.data.lotes[0].id : LFX.data.rutas[0].id)));
     for (const mode of (process.env.LFX_THEMES || 'light:normal').split(',')) {
     const [theme,contrastMode] = mode.split(':');

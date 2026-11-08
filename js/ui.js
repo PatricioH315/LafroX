@@ -58,8 +58,12 @@
       <button type="button" aria-label="Cerrar aviso">${L.icon('x', 'icon-sm')}</button>`;
     const close = () => { el.classList.add('out'); setTimeout(() => el.remove(), 220); };
     el.querySelector('button[aria-label]').onclick = close;
-    if (opts.action) el.querySelector('.t-action').onclick = () => { opts.onAction?.(); close(); };
+    if (opts.action) {
+      el.querySelector('.t-action').onclick = () => { opts.onAction?.(); close(); };
+      L.onLeave(() => el.remove()); // Una acción de deshacer pertenece a la vista que la creó.
+    }
     region.appendChild(el);
+    while (region.childElementCount > 3) region.firstElementChild.remove();
     if (opts.duration || (type !== 'error' && !opts.action)) setTimeout(close, opts.duration || 5200);
   };
 
@@ -516,7 +520,7 @@
       const pages = Math.max(1, Math.ceil(all.length / st.per));
       st.page = Math.min(st.page, pages);
       const slice = all.slice((st.page - 1) * st.per, st.page * st.per);
-      thead.innerHTML = `<tr>${cfg.selectable ? `<th style="width:52px"><label class="check check-cell"><input type="checkbox" data-all aria-label="Seleccionar todos los de esta página"></label></th>` : ''}${cfg.columns.map((c) => `<th class="${c.right ? 'right' : ''}" ${st.sort === c.key ? `aria-sort="${st.dir === 'asc' ? 'ascending' : 'descending'}"` : ''}>${c.sortable === false ? L.esc(c.label) : `<button type="button" class="th-sort" data-sort="${c.key}" ${st.sort === c.key ? `aria-sort="${st.dir}"` : ''}>${L.esc(c.label)}${L.icon(st.sort === c.key ? (st.dir === 'asc' ? 'chev-up' : 'chev-down') : 'arrow-up-down')}</button>`}</th>`).join('')}${cfg.rowActions ? '<th class="right"><span class="sr-only">Acciones</span></th>' : ''}</tr>`;
+      thead.innerHTML = `<tr>${cfg.selectable ? `<th style="width:52px"><label class="check check-cell"><input type="checkbox" data-all aria-label="Seleccionar todos los de esta página"></label></th>` : ''}${cfg.columns.map((c) => `<th class="${c.right ? 'right' : ''}" ${st.sort === c.key ? `aria-sort="${st.dir === 'asc' ? 'ascending' : 'descending'}"` : ''}>${c.sortable === false ? L.esc(c.label) : `<button type="button" class="th-sort" data-sort="${c.key}">${L.esc(c.label)}${L.icon(st.sort === c.key ? (st.dir === 'asc' ? 'chev-up' : 'chev-down') : 'arrow-up-down')}</button>`}</th>`).join('')}${cfg.rowActions ? '<th class="right"><span class="sr-only">Acciones</span></th>' : ''}</tr>`;
       tbody.innerHTML = slice.length
         ? slice.map((r) => `<tr data-id="${L.esc(r[cfg.key || 'id'])}" class="${st.sel.has(String(r[cfg.key || 'id'])) ? 'is-selected' : ''}" tabindex="-1">${cfg.selectable ? `<td><label class="check check-cell"><input type="checkbox" data-sel aria-label="Seleccionar ${L.esc(r[cfg.key || 'id'])}" ${st.sel.has(String(r[cfg.key || 'id'])) ? 'checked' : ''}></label></td>` : ''}${cfg.columns.map((c) => `<td class="${c.right ? 'num right' : ''} ${c.wrap ? 'wrap' : ''}">${c.render ? c.render(r) : L.esc(r[c.key])}</td>`).join('')}${cfg.rowActions ? `<td class="right"><div class="menu-wrap"><button type="button" class="btn btn-tertiary btn-icon" data-rowmenu aria-label="Acciones para ${L.esc(r[cfg.key || 'id'])}">${L.icon('more')}<span class="btn-label" aria-hidden="true">Acciones</span></button></div></td>` : ''}</tr>`).join('')
         : `<tr><td colspan="99">${L.empty('search', 'Sin resultados', 'No hay registros que coincidan con la búsqueda o los filtros. Pruebe con otros términos o limpie los filtros.', '<button type="button" class="btn btn-secondary" data-clear>Limpiar filtros</button>')}</td></tr>`;
