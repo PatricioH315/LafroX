@@ -1,0 +1,17 @@
+{
+  "LAFROX-Subdocumento8.pdf": {
+    "bytes": 165902,
+    "sha256": "62388378a79f4f1591e438ce9fe5974e19c14538f2a174cda2c6a9bcaa1fc9ef",
+    "match": true
+  },
+  "LAFROX-Subdocumento8-Anexos.pdf": {
+    "bytes": 481117,
+    "sha256": "6d65b9bc6eea2dc82692b9244bf5a4b722cf3bd9e8bcbed4b4aca76e9f4825ad",
+    "match": true
+  },
+  "LAFROX-Formulario-T-16.pdf": {
+    "bytes": 131702,
+    "sha256": "ec7f9c20d74a77a6c676588e2a5f3577f74d69f97e9b194b5b5ade9047f429ea",
+    "match": true
+  }
+}

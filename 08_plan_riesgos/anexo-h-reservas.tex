@@ -1,0 +1,114 @@
+\clearpage
+\section{Anexo 8.H: Reservas, perfiles y programación del esfuerzo}
+\label{sec:cierre-reservas}
+La exposición inicial de los 35 riesgos es de 1.183,11 HH, calculada con las probabilidades y los esfuerzos condicionales del Anexo 8.B. Los controles técnicos de diseño, innovación y calidad forman parte del trabajo ordinario; una diferencia de esfuerzo requiere estimación y aprobación específica.
+
+La propuesta de contingencia específica es la suma p1 H0 de los 35 eventos: incluye atención contingente C y remanente L=H0-C. La prevención A es trabajo planificado adicional y se solicita como tal, separado de reserva. No se suman otra vez la exposición inicial, p1L y T=A+p1C a p1H0. La estimación corresponde al valor esperado; no determina percentiles ni suficiencia estadística de la reserva. Las hipótesis p1 dependen de evidencia; si no se verifica, se retiene la exposición inicial para replanificar y escalar, sin gastar una reserva proyectada como si ya estuviera aprobada.
+
+La reserva protegida de S7, Tabla 7.4, p. 33, es 3.072 HH: 1.152 en marcha blanca E1 (13--15) y 1.920 en producción/estabilización E1 (16--20). Ya integra 220.023 HH programadas sobre 216.951 HH base/cobertura. No se suma nuevamente a esos totales ni se presta a E2. El crédito inicial contra la contingencia específica es cero y sólo podrá reconocerse tras verificar la coincidencia de capacidades, perfiles, causas y períodos. JP podrá reconocer solapamiento sólo con la triple correspondencia riesgo--paquete--perfil/mes y acta de capacidad; al hacerlo, se resta exactamente una vez de la propuesta adicional, conservando la protección E1. Las fichas preventivas también se descuentan si ya están incluidas en paquetes.
+
+La reserva de gestión propuesta es de 160 HH, sujeta a autorización: cuatro ciclos extraordinarios por causas todavía no identificadas, uno por bloque 1--12, 13--20, 21--38 y 39--56. Cada ciclo reúne JP 8, ARQ 16, CAL 8 y SRE 8 HH: 4 por 40=160 HH. Son tolerancias de revisión, diagnóstico, coordinación y replanificación de un asunto emergente; no incluyen remediación de un riesgo conocido, controles técnicos ordinarios, cambios normativos ya registrados, correcciones ordinarias ni los 35 eventos. Si el asunto se identifica como un riesgo de T-16 se reclasifica, se anula su doble imputación y se usa su contingencia específica. Si excede el sobre de 40 HH, el Comité Ejecutivo decide capacidad/cambio antes de comprometer más trabajo. Sensibilidad de tolerancia: dos ciclos por bloque exigirían 320 HH, sin adoptar ese importe ni asegurar cobertura de eventos desconocidos.
+
+La tabla mensual distribuye p1H0 uniformemente entre los meses de atención propuestos de cada ficha, 60\% al dueño y 40\% al apoyo (CAL, o ARQ si CAL es dueño). No predice fechas de ocurrencia ni cambia la ventana probabilística. Las cantidades de cálculo conservan precisión; el redondeo de impresión a 0,01 HH puede crear diferencias de centésimas al sumar celdas; los totales se calculan sobre los valores sin redondear. Prevención y gestión tienen sus propios calendarios y no están incluidas en esa tabla. La reserva distribuida es exposición esperada, no dotación comprometida: JP debe recalcular la ruta crítica y nivelar perfiles antes de solicitar su aprobación. No se convierten HH directamente a días.
+
+\begingroup
+\renewcommand{\thetable}{8.H.1}
+\begin{landscape}
+\setlength{\textwidth}{\linewidth}
+\renewcommand{\arraystretch}{1.08}
+\begin{tablalafrox}{Conciliación de esfuerzo y reservas, HH. Fuente: 8.B/8.F, S7 Tabla 7.4 y escenario explícito de gestión.}{tab:cierre-reserva}{F{0.28} G{0.14} Y}{\cab{Concepto} & \cab{HH} & \cab{Tratamiento y no duplicación}}
+Exposición inicial vigente & 1.183,11 & Valoración previa al tratamiento; no sumar a la proyección posterior. \\
+Trabajo preventivo adicional A & 180,00 & Trabajo planificado, 60/40 por ficha; descontar coincidencia con EDT antes de aprobar. \\
+Contingencia específica propuesta p1H0 & 821,13 & Incluye C y L; condición: evidencia que sustenta p1. \\
+Dentro de contingencia: p1C & 137,20 & Subconjunto; no reserva adicional. \\
+Dentro de contingencia: p1L & 683,93 & Subconjunto de contingencia, no sumar otra vez. \\
+Esfuerzo esperado posterior A+p1H0 & 1001,13 & Prevención más contingencia específica; sin gestión ni protección S7. \\
+Gestión propuesta & 160,00 & Cuatro ciclos extraordinarios de 40 HH, con perfiles y bloques definidos. \\
+Protección ya programada en S7 & 3.072,00 & Sólo E1; 1.152+1.920. Crédito demostrado inicialmente cero. \\
+\end{tablalafrox}
+\end{landscape}
+\endgroup
+
+\begingroup
+\renewcommand{\thetable}{8.H.2}
+\begin{landscape}
+\setlength{\textwidth}{\linewidth}
+\renewcommand{\arraystretch}{1.08}
+\begin{tablalafrox}{Trabajo preventivo adicional propuesto por mes de primera atención y perfil (HH). Fuente: fichas 8.F.1; ejecutar antes del primer hito dependiente.}{tab:cierre-preventiva}{G{0.07} G{0.10} G{0.10} G{0.10} G{0.10} G{0.10} G{0.10} G{0.10}}{\cab{Mes} & \cab{JP} & \cab{ARQ} & \cab{DAT} & \cab{CAL} & \cab{SRE} & \cab{IMP} & \cab{SEG}}
+1 & 8,40 & 18,00 & 22,80 & 48,40 & 2,40 & 15,60 & 2,40 \\
+2 & 0,00 & 0,00 & 0,00 & 5,60 & 0,00 & 8,40 & 0,00 \\
+13 & 0,00 & 8,40 & 0,00 & 13,60 & 0,00 & 12,00 & 0,00 \\
+19 & 4,80 & 0,00 & 0,00 & 3,20 & 0,00 & 0,00 & 0,00 \\
+20 & 3,60 & 0,00 & 0,00 & 2,40 & 0,00 & 0,00 & 0,00 \\
+\end{tablalafrox}
+\end{landscape}
+\endgroup
+
+\begingroup
+\renewcommand{\thetable}{8.H.3}
+\begin{landscape}
+\setlength{\textwidth}{\linewidth}
+\renewcommand{\arraystretch}{1.08}
+\begin{tablalafrox}{Distribución mensual propuesta de contingencia específica (HH). Fuente: p1H0 y ventanas de 8.F.}{tab:cierre-mensual}{G{0.06} G{0.09} G{0.09} G{0.09} G{0.09} G{0.09} G{0.09} G{0.09} G{0.10}}{\cab{Mes} & \cab{JP} & \cab{ARQ} & \cab{DAT} & \cab{CAL} & \cab{SRE} & \cab{IMP} & \cab{SEG} & \cab{Total}}
+1 & 1,01 & 6,86 & 7,32 & 12,49 & 0,13 & 2,98 & 0,05 & 30,83 \\
+2 & 1,01 & 6,86 & 7,32 & 12,93 & 0,13 & 3,65 & 0,05 & 31,95 \\
+3 & 1,01 & 2,70 & 7,32 & 10,16 & 0,13 & 3,65 & 0,05 & 25,02 \\
+4 & 1,01 & 2,70 & 7,32 & 10,16 & 0,13 & 3,65 & 0,05 & 25,02 \\
+5 & 1,01 & 2,70 & 7,32 & 10,16 & 0,13 & 3,65 & 0,05 & 25,02 \\
+6 & 1,01 & 2,70 & 7,32 & 10,16 & 0,13 & 3,65 & 0,05 & 25,02 \\
+7 & 1,01 & 2,70 & 7,32 & 10,16 & 0,13 & 3,65 & 0,05 & 25,02 \\
+8 & 1,01 & 2,70 & 7,32 & 10,16 & 0,13 & 3,65 & 0,05 & 25,02 \\
+9 & 1,01 & 2,70 & 7,32 & 10,16 & 0,13 & 3,65 & 0,05 & 25,02 \\
+10 & 1,01 & 2,70 & 7,32 & 10,16 & 0,13 & 3,65 & 0,05 & 25,02 \\
+11 & 1,01 & 2,70 & 7,32 & 10,16 & 0,13 & 3,65 & 0,05 & 25,02 \\
+12 & 1,01 & 2,70 & 7,32 & 10,16 & 0,13 & 3,65 & 0,05 & 25,02 \\
+13 & 1,01 & 5,02 & 7,32 & 12,76 & 0,19 & 5,17 & 0,05 & 31,52 \\
+14 & 1,01 & 5,02 & 7,32 & 12,76 & 0,19 & 5,17 & 0,05 & 31,52 \\
+15 & 1,01 & 5,02 & 7,32 & 12,76 & 0,19 & 5,17 & 0,05 & 31,52 \\
+16 & 1,01 & 5,02 & 7,32 & 12,22 & 0,19 & 4,34 & 0,05 & 30,16 \\
+17 & 1,01 & 5,02 & 7,32 & 12,22 & 0,19 & 4,34 & 0,05 & 30,16 \\
+18 & 1,01 & 5,02 & 7,32 & 12,22 & 0,19 & 4,34 & 0,05 & 30,16 \\
+19 & 8,71 & 3,39 & 5,36 & 14,96 & 0,19 & 4,34 & 0,05 & 37,00 \\
+20 & 8,96 & 3,39 & 5,36 & 15,12 & 0,19 & 4,34 & 0,05 & 37,42 \\
+21 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+22 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+23 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+24 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+25 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+26 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+27 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+28 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+29 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+30 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+31 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+32 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+33 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+34 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+35 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+36 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+37 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+38 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+39 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+40 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+41 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+42 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+43 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+44 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+45 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+46 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+47 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+48 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+49 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+50 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+51 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+52 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+53 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+54 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+55 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+56 & 0,75 & 1,13 & 0,00 & 2,76 & 0,19 & 2,03 & 0,05 & 6,91 \\
+\end{tablalafrox}
+\end{landscape}
+\endgroup
+\paragraph{Programación y autorización.} JP asigna las fichas preventivas y la contingencia a los paquetes de migración/datos, implantación, integración, soporte, gobierno o salida que atienden cada evento. Antes de autorizar capacidad adicional debe verificar paquete, perfil, mes y capacidad existente, descontando toda coincidencia. La prevención se programa en el mes de primera atención y antes del hito dependiente; la contingencia se nivela con la distribución mensual propuesta. Las 3.072 HH protegidas mantienen su uso exclusivo en E1. Los ciclos de gestión se sitúan en los meses 1, 13, 21 y 39 como capacidad de decisión; sólo se consumen ante un asunto emergente autorizado. Las familias DAT/IMP conservan su clasificación de esfuerzo y SRE asume responsabilidad desde mes 22, sin duplicar cargas por relevo.
+
+La programación está sujeta a nivelación y autorización de la línea base. JP verifica precedencias, holguras y ruta crítica, preservando congelamientos y las cuatro semanas finales de evidencia. Si la capacidad no permite cumplir, eleva refuerzo o cambio antes del hito, sin desplazarlo unilateralmente. La valoración económica utiliza la misma diferencia aprobada por mes y perfil, multiplicada por la tarifa neta validada. Gestión y protección no se registran como costo consumido por el solo hecho de reservarlas. JP presenta la conciliación al arranque, la actualiza en cada comité quincenal y antes de H5/H10; el Comité Ejecutivo autoriza los cambios y CAL verifica la ausencia de doble imputación. Una propuesta de reserva no acredita financiamiento aprobado.
