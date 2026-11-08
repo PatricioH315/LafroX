@@ -39,8 +39,8 @@ Seguridad aplica OWASP SAMM al inicio del desarrollo y lo reevalúa anualmente c
 \subsection*{Evidencia negativa y límites del control local}
 AL-ID-01 (Anexo 4-M) prueba expiración, reloj, firma y baja: una revocación remota desconocida en un equipo aislado no se considera aplicada hasta recepción o caducidad. AL-MOD-01 (Anexo 4-V) comprueba límites de contexto, UUID y acuse perdido; AL-FRIO-01 impide liberación por rol ajeno y decisiones repetidas. La matriz de 4-E identifica el requisito individual y su criterio. Cada acta debe identificar configuración, rol, entrada negativa, salida esperada y observada; la presente especificación no certifica eficacia ni ensayos ejecutados.
 
+\phantomsection\label{anxR:ciclo-identidad}
 \subsection*{Ciclo de identidad y custodia}
-\label{anxR:ciclo-identidad}
 La siguiente especificación concentra la federación, provisión de cuentas y protección de datos de la capa 7. Las políticas temporales de manifiesto y reparto se desarrollan en 4.1.3.7 y en AL-ID-01; ningún control de cifrado sustituye la autorización personal.
 
 Keycloak centraliza la identidad con OpenID Connect y OAuth 2.1, o con SAML 2.0 cuando la integración con el CLIENTE lo requiera, y se conecta con su directorio corporativo mediante LDAP o su equivalente en la nube. La aceptación verifica los protocolos usados y la sincronización con ese directorio (RT-12.01, Bases Técnicas Transversales, cap. 12, p. 25).

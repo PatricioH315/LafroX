@@ -380,8 +380,8 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 \textbf{Requisitos que la sustentan.} RT-03.10, Caso, cadena de frío.
 
 
+\phantomsection\label{sub:adr-23}
 \subsection*{ADR-23. Selección del backend del monolito modular}
-\label{sub:adr-23}
 \textbf{Decisión adoptada.} El Informe 1 proponía Django/Python. Esta oferta sustituye esa selección por Laravel 13/PHP 8.5 para M1--M12 con contextos de dominio y perfiles HTTP/CLI; ADR-01 conserva la decisión sobre el estilo. La sección 4.1.7.1 contiene el contraste detallado.
 
 \textbf{Alternativas evaluadas.} Django/Python con apps y Celery es el contraste principal. Spring Boot con Java o Kotlin, Ktor/Kotlin sobre JVM, Node.js con NestJS/TypeScript y ASP.NET Core/C\# también permiten implementar el núcleo. Son alternativas a Laravel, no nuevos componentes ofertados.

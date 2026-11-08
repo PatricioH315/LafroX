@@ -85,7 +85,7 @@ La Figura~\ref{fig:arql-resumen-logico} resume los recorridos central y local.
   \addtocounter{figure}{-1}
   \endgroup
 \end{center}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Elaboración LafroX a partir de 4.1.3 y de los anexos 4-D y 4-N.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: diseño LafroX. El apartado 4.1.3 define los recorridos central y local; el Anexo 4-D asigna responsabilidades a los módulos y el 4-N vincula actores con sus canales.\par}
 \end{landscape}
 
 \clearpage
@@ -127,41 +127,20 @@ Los portales web, implementados en Angular con Tailwind CSS, permiten a transpor
   \item Se publica además como aplicación web progresiva, instalable desde el navegador en el teléfono del almacenero, y constituye el perfil de autoatención con operación desconectada de RT-17.01 del caso (Bases Técnicas del caso, cap.~15, p.~27).
   \item Sin señal, muestra el catálogo y los precios descargados con su fecha y permite armar el pedido, que queda en cola con su UUID y se envía por el servicio de sincronización al recuperar cobertura. El pedido existe para la compañía solo cuando M3 lo recibe. La confirmación de stock, crédito y fecha de entrega espera esa recepción.
   \item La cuenta se activa en la visita del preventista con un código enviado por SMS al teléfono registrado, y nadie queda obligado a usarla.
-  \item El catálogo público admite consulta sin autenticación. Las funciones privadas requieren identidad OIDC mediante Keycloak y permisos por rol.
-  \item El acceso administrativo exige MFA y una ruta autorizada, definida físicamente en 4.2.
+  \item El catálogo es público. Las funciones privadas requieren iniciar sesión conforme a 4.1.3.7.
 \end{itemize}
 
 La autoatención del Portal de Clientes cubre las consultas de estado de entrega, saldo y documentos tributarios. Según S-42 del Anexo 3.C del Subdocumento 3 (anexos), se espera reducir en al menos 15~\% las consultas asistidas al cierre del primer año de Operación. El indicador es el número de consultas asistidas de estado de entrega, saldo y documentos por cliente activo. Su línea base se mide durante la marcha blanca y se informa mensualmente al CLIENTE (RT-16.33, Bases Técnicas Transversales, cap. 16, p. 31).
 
 Las consolas de rutas, calidad, BI y administración TI acceden a sus dominios mediante APIs autorizadas. Ningún navegador se conecta directamente a las bases de datos. Esta separación permite aplicar las mismas reglas de acceso y auditoría con independencia de la pantalla utilizada.
 
-La presentación distingue operación confirmada, pendiente y rechazada, y conserva la identidad personal en terminales compartidos. Angular y Kotlin utilizan un sistema de diseño común; la vista web se adapta al dispositivo y el terminal de bodega prioriza lectura, guantes y captura local. La autoatención es opcional y no sustituye la compra asistida del canal tradicional.
+La presentación distingue operación confirmada, pendiente y rechazada. Angular y Kotlin comparten un sistema de diseño. La vista web se adapta al dispositivo y el terminal de bodega prioriza lectura, uso con guantes y captura local.
 
-La accesibilidad WCAG 2.2 AA, la navegación por teclado y los controles comprensibles se verifican por flujo y perfil. La misma política por recurso gobierna bandeja de tareas, búsqueda y exportación: el cliente no puede ampliar su ámbito cambiando un filtro. El Anexo 4-N, apartado «Comportamiento transversal de interfaces», conserva los requisitos concretos, los puntos de quiebre, la matriz de interacción y los criterios de aceptación. AL-UI-01 del Anexo 4-V define la comprobación de accesibilidad y auditoría. La matriz oficial de navegadores y herramientas está en el Anexo 4-P (RT-13.01--13.12 y RT-16.13/27/28, Bases Técnicas Transversales).
+La accesibilidad WCAG 2.2 AA se verifica por flujo y perfil. El \href{LAFROX-Subdocumento4-Anexos.pdf#anxN:interaccion}{Anexo 4-N} detalla navegación por teclado, adaptación de pantalla, bandeja, búsqueda y exportación. AL-UI-01 del Anexo 4-V define su comprobación y el Anexo 4-P identifica los navegadores compatibles (RT-13.01--13.12 y RT-16.13/27/28, Bases Técnicas Transversales).
 
-\paragraph{Actores del sistema, interfaces y autorización}
+\paragraph{Actores y canales}
 
-El apartado 3.4.2 y el Anexo 3.I del Subdocumento 3 fijan quince actores del sistema: Preventista, Conductor propio, Conductor externo, Preparador, Cliente del canal tradicional, Cliente del canal moderno, Empresa transportista, Proveedor, Jefa de Calidad, Gerente Comercial, Gerente de Finanzas, Planificador de Rutas, Jefe de TI, Gerente de Operaciones y Jefa de Bodega. El Anexo 4-N relaciona cada actor con su interfaz, sus acciones, su ámbito de datos y su etapa. Una relación gráfica entre un actor y un módulo no concede acceso a todas sus funciones.
-
-Empresa transportista y Proveedor acceden mediante personas representantes, identificadas y autorizadas por su organización.
-
-\begin{itemize}
-  \item Conductor externo usa una identidad personal distinta, limitada a su turno y su ruta.
-  \item Cliente del canal moderno tiene acceso humano al portal.
-  \item El conector EDI de su cadena usa credenciales técnicas separadas.
-  \item El canal tradicional mantiene la compra asistida y el pago en efectivo sin cuenta obligatoria. Su autoatención opcional y los portales externos se habilitan en la Etapa 2.
-\end{itemize}
-
-Los diecinueve interesados del negocio conservan su participación definida en los Subdocumentos 2 y 3. La Gerenta General recibe información de gobierno. El Sindicato de Choferes participa en los acuerdos de privacidad. La Autoridad Sanitaria recibe exportaciones auditadas de Calidad. Ninguno de ellos tiene cuenta directa en el sistema. El peoneta no comparte la sesión del conductor. Food service conserva su segmento comercial y usa el perfil de cliente del canal acordado. Recepción, despacho, catálogo y Tesorería son funciones autorizadas dentro de estos perfiles. Cada ejecutor tiene identidad personal y no existen cuentas genéricas por cargo.
-
-El servicio verifica acción, recurso, empresa, sitio, ruta y turno antes de cada operación.
-
-\begin{itemize}
-  \item Se separan registrar y aprobar una diferencia de caja, solicitar y autorizar una liberación sanitaria, y consultar y modificar reglas.
-  \item La función de Tesorería se asigna a personas nominadas, distintas de quien registra.
-  \item TI administra la plataforma con elevación controlada y no adquiere facultades de cobro ni de liberación sanitaria.
-  \item Altas, cambios y bajas conservan el historial de permisos y la autoría de cada decisión.
-\end{itemize}
+El \href{LAFROX-Subdocumento4-Anexos.pdf#tab:actores-permisos}{Anexo 4-N} asigna a los quince actores del Subdocumento 3 (3.4.2 y Anexo 3.I) su interfaz, acciones, ámbito de datos y etapa. Los proveedores y las empresas transportistas usan sus portales mediante representantes autorizados. El canal moderno dispone de portal y conector EDI. El canal tradicional conserva la compra asistida y el pago en efectivo. La autoatención opcional y los portales externos se habilitan en la Etapa 2. La sección 4.1.3.7 define cómo se aplican los permisos de cada perfil.
 
 
 \subsubsection{Capa de borde y exposición (Capa 2)}
@@ -260,7 +239,7 @@ La Figura~\ref{fig:arql-capa-4} presenta las responsabilidades de esta capa.
   \captionof{figure}{Negocio: monolito modular Laravel y sus doce módulos}
   \label{fig:arql-capa-4}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Caso, cap. 17 (alcance trazable). Límites de los doce módulos y contratos: diseño LafroX, anexos 4-D/4-F y ADR-01/23.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Bases Técnicas Transversales, RT-02.02 (modularidad y límites de contexto). Los anexos 4-D y 4-F definen dueños y contratos de M1--M12; ADR-01 y ADR-23 sustentan el monolito modular y Laravel.\par}
   \end{minipage}
 \end{center}
 \end{landscape}
@@ -372,7 +351,7 @@ La disposición sanitaria local usa el perfil de Calidad de la aplicación Kotli
   \label{fig:arql-15}
 \end{center}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Caso, RT-03.10/13 y cap. 17 (operación sin señal y alcance); Transversales, RT-02.06/03.12. Recorrido pedido--reserva: contratos de anexos 4-G/4-K y AL-STOCK-01 del Anexo 4-V.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Bases Técnicas Transversales, RT-02.06 (escrituras idempotentes). INT-01 del Anexo 4-G define la entrada de M3; AL-STOCK-01 del Anexo 4-V describe la confirmación tras la retención durable de M2.\par}
 \end{landscape}
 
 Con conexión, la aplicación envía el pedido por la entrada pública autorizada y M3 valida sus reglas de precio y crédito antes de solicitar la reserva a M2 central. El agente de transferencia del sitio recoge la solicitud mediante conexión saliente. M2 local valida existencia y Calidad y persiste retención, auditoría y bandeja transaccional de salida. Solo después del acuse durable M2 central confirma la reserva y M3 confirma el pedido. La publicación de \texttt{PedidoConfirmado} habilita a M5. M4 y M10 también consumen ese evento conforme a sus contratos. La línea del sitio agrupa M2, su agente de transferencia y el broker local para explicar el protocolo. Las flechas representan mensajes lógicos y no una conexión entrante de la nube al sitio. La secuencia se limita a la confirmación y habilitación de la preparación: la carga preparada sigue retenida si M9 informa un bloqueo o si el ERP no devuelve una guía válida para esa carga, según el apartado de POD, DTE y acuse. Un pedido confirmado no autoriza por sí mismo la salida física.
@@ -384,7 +363,7 @@ Con conexión, la aplicación envía el pedido por la entrada pública autorizad
   \label{fig:arql-16}
 \end{center}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Caso, RT-03.10/13 y cap. 17 (operación sin señal y alcance); Transversales, RT-02.06/03.12. Recorrido pedido--reserva: contratos de anexos 4-G/4-K y AL-STOCK-01 del Anexo 4-V.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Formulario T-12, Parte A, RF-03.16 (deduplicación de pedidos al sincronizar); Bases Técnicas Transversales, RT-03.12 (conciliación). INT-01 del Anexo 4-G describe la captura pendiente y el Anexo 4-K, el reenvío por UUID.\par}
 \end{landscape}
 
 Sin conexión, la aplicación conserva la intención de compra, no una reserva firme. Al recuperar cobertura envía el mismo UUID por el servicio de sincronización. M3 deduplica y solicita la reserva mediante el mismo protocolo de retención local y acuse durable mostrado en la secuencia conectada. M3 y M2 producen un resultado durable con la regla y la causal de excepción. Si se pierde el acuse de respuesta, el dispositivo conserva el evento y pregunta por ese UUID antes de eliminarlo. Sin acuse local durable, el pedido permanece pendiente. Solo un pedido confirmado alimenta M5, lo que permite explicar al cliente un faltante sin duplicar la venta.
@@ -529,9 +508,6 @@ La Figura~\ref{fig:arql-capa-7} presenta las responsabilidades de esta capa.
 \end{landscape}
 \restoregeometry
 
-Keycloak emite la identidad y cada módulo decide la autorización sobre su recurso. Sin enlace, el verificador usa permisos de turno previamente firmados. El cifrado y la auditoría protegen los datos y decisiones a lo largo de todas las capas.
-
-
 La seguridad atraviesa las ocho capas. Su unidad de decisión no es la red desde la que llega una solicitud, sino el sujeto, el recurso, la acción y el contexto del turno. Keycloak conserva la autoridad de identidad. El servicio dueño del recurso conserva la decisión de autorización. Esta separación evita que un token válido permita, por sí solo, liberar una carga, consultar crédito o modificar una regla de calidad (Bases Técnicas Transversales, caps.~11--12, pp.~23--26; RT-11.01 y RT-12.05, National Institute of Standards and Technology [NIST], 2020).
 
 \paragraph{Límites de confianza y capa expuesta}
@@ -539,7 +515,7 @@ La Figura~\ref{fig:arql-general-completa} distingue personas, dispositivos, siti
 
 \begin{itemize}
   \item CloudFront protege los portales externos y sus APIs. El origen de esas APIs rechaza el acceso público directo.
-  \item Las consolas internas usan acceso verificado por identidad y postura del dispositivo hacia servicios privados.
+  \item Las consolas internas usan acceso verificado por identidad y postura del dispositivo hacia servicios privados. La administración exige MFA y la ruta de acceso definida en 4.2.
   \item OpenAS2 expone un canal B2B distinto, publicado por su propia distribución de CloudFront con AWS WAF y Shield Advanced, limitado a contrapartes registradas y con validación criptográfica y MDN. No es una API pública de negocio.
   \item Los almacenes de datos no son superficies públicas. El inventario de dominios, puertos y rutas de 4.2 debe representar las tres superficies por separado (RT-11.07 y RT-11.13, Bases Técnicas Transversales, cap. 11, p. 23).
 \end{itemize}
@@ -551,7 +527,9 @@ La política lógica prohíbe el ingreso público directo a los sitios. Las exce
 Cuando AWS WAF presenta un reto progresivo, el usuario dispone de una alternativa accesible dentro del flujo de autenticación, operable con teclado y tecnologías de asistencia. La aceptación verifica esos recorridos y el acceso de usuarios legítimos. Las reglas que generen bloqueos falsos se ajustan sin retirar los controles de tasa y abuso (RT-11.12, Bases Técnicas Transversales, cap. 11, p. 23).
 
 \paragraph{Identidad, autorización y sesiones}
-La identidad central utiliza OIDC, SSO y MFA. Todo acceso originado fuera de la red corporativa exige un segundo factor: en los portales de clientes, proveedores y transportistas, un código TOTP o una clave de acceso de Keycloak; en terreno, el terminal enrolado por MDM más el PIN personal (RT-12.03, Bases Técnicas Transversales, cap. 12, p. 25). El rol se complementa con atributos de instalación, turno, ruta, dispositivo y empresa transportista. El proveedor solo consulta sus órdenes. El representante del transportista declara sus conductores y consulta sus rutas asignadas. El conductor actúa sobre su entrega y rendición. Calidad decide sobre un lote bloqueado. Y Tesorería aprueba la conciliación, sin que quien registró el cobro pueda aprobar su propia diferencia. Los administradores elevan privilegios por tiempo limitado, con aprobación y registro de sesión. El alta, cambio de rol y baja quedan vinculados al ciclo de vida laboral o contractual, con baja efectiva antes de 24 horas desde la desvinculación, y los administradores usan además claves de acceso FIDO2. Las personas externas disponen de registro, verificación y recuperación de acceso sin requerir correo corporativo (RT-12.01--12.06 y RT-12.09--12.12, Bases Técnicas Transversales, cap. 12, pp. 25--26).
+Keycloak proporciona OIDC, SSO y MFA. El acceso desde fuera de la red corporativa exige un segundo factor. Los portales usan TOTP o una clave de acceso de Keycloak. En terreno se usa un terminal enrolado por MDM y PIN personal. Cada persona usa su propia identidad, incluso en terminales compartidos. El peoneta no usa la sesión del conductor y las credenciales del conector EDI se separan de las cuentas del portal. El \href{LAFROX-Subdocumento4-Anexos.pdf#anxR:ciclo-identidad}{Anexo 4-R} detalla el alta, el cambio de rol, la baja en menos de 24 horas y la recuperación de acceso de personas externas (RT-12.01--12.06 y RT-12.09--12.12, Bases Técnicas Transversales, cap. 12, pp. 25--26).
+
+Cada módulo aplica el rol junto con los atributos de empresa, sitio, ruta, turno y dispositivo. Quien registra un cobro no puede aprobar su propia diferencia, función que corresponde a Tesorería nominada. Solo Calidad puede autorizar la liberación de un lote retenido. Consultar una regla y modificarla son permisos distintos. TI administra con claves FIDO2 y privilegios temporales, aprobados y auditados, sin permisos de negocio.
 
 En las APIs Laravel, un guard OIDC comprueba firma con las claves publicadas por Keycloak, emisor, audiencia, vencimiento y alcance. Las políticas del módulo dueño verifican además recurso, turno y atributos. Se prueban tanto rutas HTTP como trabajos asíncronos para que una cola no eluda la autorización. El acceso local usa exclusivamente el verificador de manifiestos descrito abajo. Laravel no emite otra identidad de usuario mediante Sanctum o Passport: Keycloak sigue siendo el único IdP y la administración de personas se realiza en el portal Angular autorizado.
 
@@ -571,14 +549,7 @@ El manifiesto de bodega contiene identidades, dispositivos, roles y turnos autor
 
 El nodo conserva la última referencia temporal validada y comprueba que el reloj no retroceda para extender permisos. Un reinicio no cambia la expiración; si se pierde la referencia temporal y no se puede verificar su continuidad, se deniega la nueva autenticación. Una revocación conocida en el sitio bloquea el permiso local de inmediato. Una revocación solo conocida por la autoridad central no puede propagarse durante un aislamiento total: el permiso conserva como límite su expiración y se concilian los eventos contra el registro de bajas al reconectar. AL-OFF-01 y AL-ID-01 especifican estas comprobaciones.
 
-La revocación es inmediata en los servicios conectados.
-
-\begin{itemize}
-  \item Durante una desconexión no se promete revocación remota instantánea: el permiso local expira al terminar su turno, no se amplía sin enlace y la incidencia se marca para revisar operaciones al reconectar.
-  \item Una baja conocida localmente bloquea de inmediato la credencial en ese sitio. El verificador sincroniza las revocaciones y auditorías al restablecerse el enlace.
-  \item Se ensayan dos relevos dentro de 24 horas, vencimiento, pérdida de dispositivo y recuperación del enlace.
-  \item La cuenta de emergencia exige doble autorización, alcance acotado, custodia fuera de banda, registro y rotación posterior, no reemplaza la autenticación ordinaria de todos los operarios (RT-03.10 y RT-12.13, Bases Técnicas Transversales, cap. 3, p. 9, y cap. 12, p. 26).
-\end{itemize}
+Los servicios conectados aplican la revocación de inmediato. Al reconectar, el verificador sincroniza las revocaciones y la auditoría. Los protocolos incluyen dos relevos en 24 horas, vencimiento, pérdida de dispositivo y recuperación del enlace. La cuenta de emergencia exige doble autorización, alcance acotado, custodia fuera de banda, registro y rotación posterior (RT-03.10 y RT-12.13, Bases Técnicas Transversales, cap. 3, p. 9, y cap. 12, p. 26).
 
 La federación OIDC y la integración del directorio mantienen a Keycloak como única autoridad. Altas, cambios de rol y bajas se tramitan desde perfiles autorizados con aprobación y auditoría. El Anexo 4-R, apartado «Ciclo de identidad y custodia», conserva los protocolos de federación, gestión de claves y sesiones; AL-ID-01 verifica los límites temporales locales y AL-ACT-01 la segregación por recurso.
 
