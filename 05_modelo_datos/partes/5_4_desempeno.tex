@@ -1,12 +1,12 @@
 \section{Estrategia de desempeño}
 \label{sec:sd5-5-4}
 
-Esta sección aplica los escenarios de carga de S4 a índices, particiones, caché, concurrencia y pruebas del modelo. Las decisiones protegen la operación repetitiva y permiten detectar saturación sin alterar las autoridades ni identidades de 5.1.
+Esta sección aplica los escenarios de carga de SD4 a índices, particiones, caché, concurrencia y pruebas del modelo. Las decisiones protegen la operación repetitiva y permiten detectar saturación sin alterar las autoridades ni identidades de 5.1.
 
 \subsection{Escenarios de carga de referencia}
 \label{sec:sd5-5-4-1}
 
-La Tabla 5.3 relaciona los escenarios de S4 con su efecto sobre el modelo y la prueba prevista. RT-09.01–03 exige dimensionamiento, umbrales bajo carga y crecimiento 3\ensuremath{\times}; RT-09.06 exige carga a 1,5\ensuremath{\times}pico y estrés hasta saturación.
+La Tabla 5.3 relaciona los escenarios de SD4 con su efecto sobre el modelo y la prueba prevista. RT-09.01–03 exige dimensionamiento, umbrales bajo carga y crecimiento 3\ensuremath{\times}; RT-09.06 exige carga a 1,5\ensuremath{\times}pico y estrés hasta saturación.
 
 \parte{tablas/escenarios_carga}
 
@@ -19,7 +19,9 @@ Los escenarios conservan identidades/restricciones, UUID internos y equivalencia
 
 La consulta térmica parte del SSCC, resuelve su unidad logística y filtra \texttt{cal\_\allowbreak{}asociacion\_\allowbreak{}ventana} por unidad, compartimento e intervalo [desde,hasta); el índice compuesto comienza por unidad logística y compartimento, seguido de desde y hasta. La serie se consulta por sensor e instante. El Anexo 5-F conserva el plan de consulta y su verificación con EXPLAIN.
 
-Los índices del Anexo 5-F responden a predicados reales del modelo: disponibilidad por sitio/ubicación/lote/unidad, composición por unidad y recorrido inverso por lote en inv\_unidad\_contenido, custodia por lote o unidad en cal\_evento\_objeto y unión a cabecera; excursiones por cal\_excursion(lote\_id, inicio), excepciones por gob\_excepcion\_sync(correlacion\_id, clave) y (estado, fecha). Actor y dispositivo de una excepción se reconstruyen desde su payload histórico y auditoría, sin inventar una columna dispositivo\_id.
+Los índices se eligen a partir de las preguntas que debe resolver la operación. Para consultar disponibilidad se filtra por sitio, ubicación, lote y unidad logística. La tabla inv\_unidad\_contenido permite conocer los lotes de una unidad y localizar, en sentido inverso, todas las unidades que contienen un lote. Ese recorrido es necesario para un retiro sanitario.
+
+En la custodia, cal\_evento\_objeto permite buscar por lote o unidad y recuperar después la cabecera del evento. Las excursiones térmicas se consultan por lote y fecha de inicio en cal\_excursion. Las excepciones de sincronización se buscan por correlación y clave, o por estado y fecha, en gob\_excepcion\_sync. El actor y el dispositivo se reconstruyen con el contenido histórico de la excepción y la auditoría. El Anexo 5-F detalla los índices que sostienen estas consultas.
 
 La identidad fiscal usa tipo/emisor/folio/versión, no el hash. Los mensajes, eventos y cobros necesitan identidad global, la unicidad no depende del mes de llegada. Los índices y restricciones se verifican en PREPROD mediante creación del esquema y planes EXPLAIN con volumen representativo, conservando versión del motor, consultas y resultados. Una consulta sanitaria sin fecha conocida recorre todas las particiones pertinentes por lote y no presupone poda temporal.
 
@@ -30,7 +32,7 @@ La identidad fiscal usa tipo/emisor/folio/versión, no el hash. Los mensajes, ev
 
 cal\_evento\_objeto usa ts\_evento inmutable y PK/UK/FK completas, concordantes con cabecera. Saldo, movimiento, excursión/bloqueo, POD y auditoría mantienen UUID global sin partición, series/hechos analíticos siguen A.17.
 
-Una partición se retira solo con todas sus filas/expedientes vencidos y sin retención legal; de otro modo se borran filas elegibles con control y auditoría. Archivo conserva reglas, maestros y calibraciones que interpretan expedientes vivos. Se ensaya restauración según S4.
+Una partición se retira solo con todas sus filas/expedientes vencidos y sin retención legal; de otro modo se borran filas elegibles con control y auditoría. Archivo conserva reglas, maestros y calibraciones que interpretan expedientes vivos. Se ensaya restauración según SD4.
 
 \subsection{Caché y copia local del dispositivo}
 \label{sec:sd5-5-4-4}
@@ -44,14 +46,14 @@ Keycloak preemite y firma el manifiesto de 26 h, renueva al menos cada hora con 
 \subsection{Conexiones, concurrencia y colas}
 \label{sec:sd5-5-4-5}
 
-S4 dimensiona 438,30 usuarios en régimen, extremo de 775,33 con portal y 158 dispositivos de terreno. Los pools limitan conexiones por instancia y la API limita tasa/espera; al exceder capacidad encola o devuelve estado explícito sin pérdida silenciosa. Los límites concretos de pool se calibran en PREPROD con el perfil de 5.4.1, no se presentan como medidos.
+SD4 dimensiona 438,30 usuarios en régimen, extremo de 775,33 con portal y 158 dispositivos de terreno. Los pools limitan conexiones por instancia y la API limita tasa/espera; al exceder capacidad encola o devuelve estado explícito sin pérdida silenciosa. Los límites concretos de pool se calibran en PREPROD con el perfil de 5.4.1, no se presentan como medidos.
 
-SQS FIFO no sustituye la deduplicación durable ni la conciliación. Outbox/inbox conservan identidad y resultado, edad/profundidad de cola y versión del agregado permiten detectar retrasos. La nube escala según S4 y el sitio usa capacidad local reservada, saturar el enlace no habilita dos escritores del mismo saldo.
+SQS FIFO no sustituye la deduplicación durable ni la conciliación. Outbox/inbox conservan identidad y resultado, edad/profundidad de cola y versión del agregado permiten detectar retrasos. La nube escala según SD4 y el sitio usa capacidad local reservada, saturar el enlace no habilita dos escritores del mismo saldo.
 
 \subsection{Medición y pruebas propuestas}
 \label{sec:sd5-5-4-6}
 
-En PREPROD se probará carga a 1,5\ensuremath{\times}pico=21,99 TPS, con distribución por sitio y hora de S4, y estrés hasta identificar saturación. Se medirán p95, recursos, error, profundidad/edad de cola, recuperación y ausencia de pérdida/duplicación, el informe incluirá curvas y punto de quiebre. Las pruebas de índices ejecutarán creación de restricciones y planes con volumen representativo.
+En PREPROD se probará carga a 1,5\ensuremath{\times}pico=21,99 TPS, con distribución por sitio y hora de SD4, y estrés hasta identificar saturación. Se medirán p95, recursos, error, profundidad/edad de cola, recuperación y ausencia de pérdida/duplicación, el informe incluirá curvas y punto de quiebre. Las pruebas de índices ejecutarán creación de restricciones y planes con volumen representativo.
 
 Autonomía: bodega 24 h sin WAN y terreno 14 h sin señal, acuse local \ensuremath{\leq}2 s, sincronización de reparto \ensuremath{\leq}10 min y de sitio \ensuremath{\le}2 h tras reconexión. AL-CLI-01 prueba reinicio, UUID y sesión/cuenta de autoatención, sin extenderle el plazo de reparto. AL-DR-01 distingue autonomía de pérdida del sitio: RTO\ensuremath{\leq}4 h/RPO\ensuremath{\leq}15 min críticos, RPO\ensuremath{\leq}24 h analítica/mensajes no críticos y GPS dentro de sa-east-1. 5-J verifica extracción por fibra/LTE/Starlink y recuperación, buffer local no acredita RPO externo. Restauración por clase sigue 5-J.
 

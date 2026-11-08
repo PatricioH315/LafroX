@@ -2,7 +2,7 @@
 \begin{tablalafrox}{Límites declarados de operación sin cobertura y sincronización posterior}{tab:sd5-limites-offline}
 {L{2.7cm} L{2.9cm} Y Y}
 {\cab{Alcance} & \cab{Límite} & \cab{Mecanismo} & \cab{Al vencer}}
-Bodega sin WAN & 24 h & PostgreSQL local, outbox durable & Escalamiento y continuidad del sitio según S4 \\
+Bodega sin WAN & 24 h & PostgreSQL local, outbox durable & Escalamiento y continuidad del sitio según SD4 \\
 Terreno sin señal & 14 h & Room/SQLite y hechos autorizados & Sin nuevas capturas fuera de autorización vigente \\
 Sincronización móvil & \ensuremath{\leq}10 min al recuperar enlace & Reintento ordenado y deduplicación & Excepción visible, sin pérdida silenciosa \\
 Consolidación de sitio & \ensuremath{\le}2 h tras recuperar enlace & Shipper y conciliación & Escalamiento por antigüedad de cola \\

@@ -19,13 +19,15 @@
 \chapter{Introducción al Modelo y gestión de datos}
 \label{cap:sd5}
 
-El ítem 5 define cómo los datos sostienen trazabilidad sanitaria, cumplimiento de entrega y control de existencias para Distribuidora Puelche S.A. S2 aporta el problema, S3 y el Formulario T-12 fijan alcance y aceptación, S4 y T-11 fijan autoridades, motores, despliegue y capacidad. El capítulo desarrolla modelo, gestión, migración y desempeño sin cambiar esas decisiones. S1–S5 y SD1–SD5 designan subdocumentos, M seguido de número designa exclusivamente un módulo de arquitectura; los plazos se expresan como «mes N». El glosario del Anexo 5-A define las siglas técnicas utilizadas en cuerpo y anexos, los códigos de requisitos, componentes y políticas conservan sus identificadores de origen.
+El ítem 5 explica cómo se organizan y conservan los datos para seguir un lote, comprobar una entrega y controlar las existencias de Distribuidora Puelche S.A. El Subdocumento 2 describe el problema. El Subdocumento 3 y el Formulario T-12 establecen el alcance y los criterios de aceptación. El Subdocumento 4 y el Formulario T-11 determinan qué sistema puede escribir cada dato, dónde se almacena y qué capacidad necesita. A partir de esas decisiones, este capítulo desarrolla el modelo, su gestión, la migración y el desempeño.
+
+La abreviatura SD seguida de un número identifica un subdocumento. La letra M seguida de un número se reserva para los módulos de arquitectura y los plazos se escriben como «mes N». La denominación Amazon S3 identifica el servicio de almacenamiento de objetos. El glosario del Anexo 5-A desarrolla las siglas técnicas y los códigos conservan sus identificadores de origen.
 
 Las decisiones aplican las Bases Administrativas (Distribuidora Puelche S.A., 2026a), el Caso: Logística (2026c) y las Bases Técnicas Transversales (2026b).
 
 Los antecedentes de empresa, problema, alcance y arquitectura proceden de los Subdocumentos 1, 2, 3 y 4, respectivamente, sus remisiones señalan el apartado específico utilizado.
 
-El cuerpo explica los modelos críticos y las decisiones de operación. El anexo aporta diccionario, cardinalidades, catálogos, retención, índices, cachés, linaje, pruebas y mapeo de migración, las figuras de 5.1 reúnen también maestros, EDI/gobierno y telemetría, y 5-L remite a sus modelos. Los plazos y capacidades son compromisos o cálculos de diseño, no resultados de ensayos ejecutados.
+El cuerpo explica los modelos críticos y las decisiones de operación. Los anexos detallan los atributos, las relaciones, las validaciones, la conservación y los procedimientos de prueba. Las vistas de la sección 5.1 incluyen los maestros, el intercambio electrónico de datos (EDI), el gobierno del acceso y la telemetría. El Anexo 5-L permite localizar cada modelo. Los plazos y las capacidades corresponden a compromisos o cálculos de diseño cuya verificación se realizará en los ensayos.
 \parte{partes/5_1_modelo}
 \parte{partes/5_2_gestion}
 \parte{partes/5_3_migracion}

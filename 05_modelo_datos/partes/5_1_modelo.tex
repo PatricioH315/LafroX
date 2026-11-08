@@ -1,28 +1,30 @@
 \section{Modelo}
 \label{sec:sd5-5-1}
 
-El modelo separa identidad comercial, lote sanitario, unidad logística, compromiso del pedido y evidencia de entrega. La Figura 5.1 presenta las relaciones generales y las Figuras 5.2–5.10 desarrollan inventario, pedido/preparación, reparto, custodia, cobranza/documentos, analítica, maestros, EDI/gobierno y telemetría. El diccionario 5-A contiene cada atributo, 5-B y 5-C precisan integridad y validación.
+El modelo distingue el producto que se vende, el lote sanitario al que pertenece y la unidad logística que lo transporta. También separa el compromiso asumido con el cliente de los hechos que acreditan la entrega. Esta separación permite reconstruir qué se prometió, qué se despachó y qué recibió el destinatario. La Figura 5.1 presenta las relaciones generales y las Figuras 5.2 a 5.10 desarrollan los dominios de la operación. El Anexo 5-A define los atributos. Los Anexos 5-B y 5-C detallan las relaciones y las validaciones que mantienen su integridad.
 
 \subsection{Dominios de información y almacenes lógicos}
 \label{sec:sd5-5-1-1}
 
 El modelo lógico se presenta por dominios: Figuras 5.2–5.6 y 5.8–5.9 forman sus vistas relacionales, 5.7 presenta el modelo dimensional y 5.10 las estructuras de telemetría, caché y objetos. La Figura 5.1 presenta el MR general de datos de la solución, las Figuras 5.2–5.10 desarrollan sus partes con tablas y relaciones específicas. Las vistas por dominio muestran claves y relaciones esenciales, el diccionario 5-A conserva todos los atributos y tipos. Una caja de referencia en otra vista no redefine la tabla ni representa otra base de datos.
 
-Los quince dominios lógicos de S4 distribuyen autoridad y responsabilidad funcional. Maestros y configuración, preventa, rutas, reparto, cobranza/finanzas, Calidad/trazabilidad, EDI, gobierno/acceso y notificaciones residen en los almacenes centrales declarados, inventario y preparación conservan autoridad en PostgreSQL del sitio. Telemetría usa DynamoDB para ingesta térmica y S3/Glue/Redshift para detalle y agregados; BI consulta Redshift/QuickSight. Amazon ElastiCache (Valkey 8.1) conserva proyecciones y S3\_DOCS evidencia por clase de retención.
+Los quince dominios lógicos de SD4 distribuyen autoridad y responsabilidad funcional. Maestros y configuración, preventa, rutas, reparto, cobranza/finanzas, Calidad/trazabilidad, EDI, gobierno/acceso y notificaciones residen en los almacenes centrales declarados, inventario y preparación conservan autoridad en PostgreSQL del sitio. Telemetría usa DynamoDB para ingesta térmica y Amazon S3, AWS Glue y Redshift para detalle y agregados; BI consulta Redshift/QuickSight. Amazon ElastiCache (Valkey 8.1) conserva proyecciones y S3\_DOCS evidencia por clase de retención.
 
 El Anexo 5-B integra los quince nombres, módulos, ubicaciones y motores. BD\_RUTAS tiene autoridad central, con itinerarios descargados de consulta, DMS de Talca replica al esquema lector separado. La distinción permite que una operación local siga confirmada en su perímetro sin presentar la proyección central como actualizada durante un corte.
 
-M12 captura telemetría, Calidad decide disposición sanitaria. Una excursión menor transitoria genera advertencia, una crítica y sostenida activa el bloqueo definido en S3/S4 y la resolución final corresponde a Calidad. El ERP conserva emisión tributaria única. Estas responsabilidades evitan tanto dos escritores de un saldo como una resolución sanitaria atribuida al sensor.
+M12 captura telemetría, Calidad decide disposición sanitaria. Una excursión menor transitoria genera advertencia, una crítica y sostenida activa el bloqueo definido en SD3 y SD4 y la resolución final corresponde a Calidad. El ERP conserva emisión tributaria única. Estas responsabilidades evitan tanto dos escritores de un saldo como una resolución sanitaria atribuida al sensor.
 
 \subsection{Modelo conceptual de la operación de Puelche}
 \label{sec:sd5-5-1-2}
 
-La Figura 5.1 presenta el MR general con las tablas principales y sus relaciones, agrupadas por dominio, las vistas específicas desarrollan cada parte. Distingue las referencias entre almacenes de las FK físicas y mantiene la vista conceptual de la operación. Las vistas de detalle relacionan productos y lotes con recepción, contenido logístico, custodia, asignaciones del pedido y cumplimiento. El lote se identifica por GTIN canónico+número del proveedor, la unidad tiene UUID interno y SSCC exterior. La composición admite varios lotes por unidad y unidades por lote.
+La Figura 5.1 agrupa los dominios de información y muestra las referencias principales entre ellos. Las Figuras 5.2 a 5.10 detallan las tablas, claves y cardinalidades de cada dominio y distinguen las referencias entre almacenes de las claves foráneas físicas. Las vistas de detalle relacionan productos y lotes con recepción, contenido logístico, custodia, asignaciones del pedido y cumplimiento. El lote se identifica por GTIN canónico+número del proveedor, la unidad tiene UUID interno y SSCC exterior. La composición admite varios lotes por unidad y unidades por lote.
 
-\figurafuente{1.0}{figuras/Fig_5-1_MR_General.pdf}{MR general de datos de la solución}{fig:sd5-mr-general}{elaboración a partir del Caso 02 (Distribuidora Puelche S.A., 2026c, sec. 16.1, decisiones 1, 2, 4 y 14, pp. 28–29), RT-05.01/.23 (Distribuidora Puelche S.A., 2026b, cap. 5, pp. 11 y 13) y T-12 (RF-01.07 y RF-09).}
+\figurafuente{1.0}{figuras/Fig_5-1_MR_General.pdf}{Dominios de datos y relaciones principales}{fig:sd5-mr-general}{elaboración a partir del Caso 02 (Distribuidora Puelche S.A., 2026c, sec. 16.1, decisiones 1, 2, 4 y 14, pp. 28–29), RT-05.01/.23 (Distribuidora Puelche S.A., 2026b, cap. 5, pp. 11 y 13) y T-12 (RF-01.07 y RF-09).}
 \FloatBarrier
 
-Cada registro de promesa tiene UUID propio como PK; version ordena sus cambios con unicidad por pedido. La entrega referencia la ORIGINAL del mismo pedido. El pedido conserva ORIGINAL y revisiones como compromisos distintos. Una entrega por pedido admite varios intentos y líneas fragmentadas por asignación/lote/unidad; POD y cobro se vinculan a esos hechos. La cabecera de custodia contiene el evento y su detalle identifica objetos y cantidades. El cliente y sus puntos se desarrollan en 5.1.3 y la Figura 5.8, sin crear una instalación de inventario por cada local de entrega. El documento fiscal emitido por ERP antecede al traslado; el POD acredita el hecho posterior.
+Cada promesa tiene un identificador universal único (UUID) como clave primaria. Su número de versión ordena los cambios dentro del pedido. La entrega referencia la promesa de tipo ORIGINAL, de modo que una reprogramación posterior no modifique el compromiso usado para evaluar el servicio. Un pedido puede dar lugar a una entrega con varios intentos, y sus cantidades pueden abastecerse desde distintos lotes y unidades logísticas. La evidencia de entrega (POD) y los cobros se vinculan a esos hechos concretos.
+
+En la cadena de custodia, la cabecera registra el evento y el detalle identifica los objetos y las cantidades involucrados. Un punto de entrega del cliente se distingue de una instalación que mantiene inventario, como muestran la sección 5.1.3 y la Figura 5.8. El sistema de planificación de recursos empresariales (ERP) emite el documento fiscal antes del traslado. La evidencia de entrega acredita lo ocurrido después en el destino.
 
 \subsection{Maestros compartidos e identidad única}
 \label{sec:sd5-5-1-3}
@@ -51,7 +53,7 @@ La Figura 5.2 distingue recepción, lote, unidad, contenido, saldo, movimiento y
 \begin{figure}[p]
   \centering
   \captionsetup{font=footnotesize,skip=3pt}
-  \includegraphics[width=\linewidth,height=465bp,keepaspectratio]{figuras/Fig_5-2_Inventario.pdf}
+  \includegraphics[width=\linewidth,height=465bp]{figuras/Fig_5-2_Inventario.pdf}
   \caption{Recepción, inventario, lote y unidad logística}\label{fig:sd5-inventario}
   {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir del Caso 02 (Distribuidora Puelche S.A., 2026c, sec. 16.1, decisiones 2 y 14, pp. 28–29) y SD4/T-12 (sec. 4.1.3.6; T-12, RF-01.07 y RF-02).}\par}
 \end{figure}
@@ -62,7 +64,9 @@ La Figura 5.2 distingue recepción, lote, unidad, contenido, saldo, movimiento y
 \restoregeometry
 \FloatBarrier
 
-El saldo tiene grano sitio+ubicación+producto+lote+unidad de medida, la conversión se valida antes de comparar o reservar. La transacción bloquea el saldo, valida disponibilidad y registra movimiento/outbox sin duplicar reintentos. Varias asignaciones abastecen una línea de pedido. secuencia\_documento solo existe si el documento de origen aporta ordinal; no se inventa para identificar un hecho histórico. Los ajustes y anulaciones de 5-C conservan causa, dirección y movimiento original, no sobrescriben saldo ni evidencia sin autorización.
+Cada saldo corresponde a una combinación de sitio, ubicación, producto, lote y unidad de medida. Antes de comparar cantidades o reservarlas, se comprueba que sus unidades sean compatibles. La transacción bloquea el saldo, verifica la disponibilidad y registra tanto el movimiento como el mensaje pendiente de publicación en la bandeja de salida transaccional, denominada outbox. Así, un reintento conserva la identidad de la operación y evita descontar dos veces la misma cantidad.
+
+Una línea de pedido puede abastecerse mediante varias asignaciones. El campo secuencia\_documento se conserva únicamente cuando el documento de origen aporta ese ordinal. Los ajustes y las anulaciones mantienen la causa, el sentido del movimiento y la referencia al hecho original, conforme al Anexo 5-C. La corrección queda autorizada y trazable.
 
 El inventario en tránsito se deriva de los eventos de despacho con carga confirmada sin recepción confirmada correlacionada, mediante la transacción, la unidad logística y las cantidades de custodia de 5-A, y se muestra como disponibilidad futura separada del stock físico, comprometido y disponible, con fecha y hora estimada de llegada. La recepción física confirmada en destino cierra ese tránsito y habilita el stock físico local, conservando su registro offline y sincronización idempotente; la fecha de registro no sustituye el hito de recepción. Cada transferencia genera el movimiento inter-bodegas en el ERP mediante la ACL de INT-06, con encolamiento y reintento automático ante indisponibilidad y sin duplicar el efecto contable (Anexo 3.A, RF-02.06, Anexo 4-H, INT-06).
 
@@ -97,7 +101,7 @@ La Figura 5.3 relaciona pedido, líneas, promesas, asignaciones y misiones; la r
 \restoregeometry
 \FloatBarrier
 
-La promesa conserva las condiciones de S3: 24 h para urbano ingresado antes de las 14:00 y 48 h para rural, periférico o abastecido por cross-docking, según RNG-15. OTIF evalúa ORIGINAL aun después de su cierre de vigencia. La preparación puede dividir una línea entre lotes/unidades y confirmar cantidades parciales; la reserva validada por PostgreSQL del sitio sigue confirmada localmente durante un corte, con consolidación central pendiente. El móvil no reserva contra una copia indicativa de stock.
+La promesa conserva las condiciones de SD3: 24 h para urbano ingresado antes de las 14:00 y 48 h para rural, periférico o abastecido por cross-docking, según RNG-15. OTIF evalúa ORIGINAL aun después de su cierre de vigencia. La preparación puede dividir una línea entre lotes/unidades y confirmar cantidades parciales; la reserva validada por PostgreSQL del sitio sigue confirmada localmente durante un corte, con consolidación central pendiente. El móvil no reserva contra una copia indicativa de stock.
 
 Cada línea de misión explicita ubicación y secuencia, la asignación aporta producto/lote/cantidad y respeta FEFO. Un faltante exige causa y detalle si es OTRO antes de confirmar y avisar a Comercial, ola identifica grupo de preparación, no duración. El precio pactado permanece inmutable: se conserva cálculo ERP de despacho/facturación, diferencia y estado de conciliación. Una discrepancia bloquea facturación y genera incidencia a Comercial, cálculo ERP corregido con actor/fecha resuelve la línea sin modificar lo acordado (RF-02.08 y RF-03.12).
 
@@ -163,16 +167,16 @@ La Figura 5.5 relaciona evento, objetos, documentos, sensor, excursión y bloque
 \restoregeometry
 \FloatBarrier
 
-Una cabecera puede mencionar varios objetos/cantidades, la asociación temporal vincula sensor, lote, unidad y producto con las lecturas efectivamente aplicables. Regla y calibración se conservan en su versión histórica. Una advertencia menor transitoria no equivale a disposición final, el bloqueo crítico y sostenido se aplica conforme S3/S4 y únicamente Calidad libera o rechaza con fundamento. Lecturas inválidas se preservan marcadas, separando defecto de sensor, excursión y pérdida de cobertura.
+Una cabecera puede mencionar varios objetos/cantidades, la asociación temporal vincula sensor, lote, unidad y producto con las lecturas efectivamente aplicables. Regla y calibración se conservan en su versión histórica. Una advertencia menor transitoria no equivale a disposición final, el bloqueo crítico y sostenido se aplica conforme SD3 y SD4 y únicamente Calidad libera o rechaza con fundamento. Lecturas inválidas se preservan marcadas, separando defecto de sensor, excursión y pérdida de cobertura.
 
-La consulta forward sigue lote\allowbreak{}\ensuremath{\rightarrow}\allowbreak{}contenido/unidades\allowbreak{}\ensuremath{\rightarrow}\allowbreak{}objetos/eventos\allowbreak{}\ensuremath{\rightarrow}\allowbreak{}asignaciones\allowbreak{}\ensuremath{\rightarrow}\allowbreak{}intentos/entregas\allowbreak{}\ensuremath{\rightarrow}\allowbreak{}documentos/POD. La backward invierte ese recorrido hasta recepción y proveedor; múltiples recepciones del mismo lote se distinguen por su evidencia, sin atribuir origen único cuando no puede determinarse.
+La consulta hacia adelante parte de un lote e identifica las unidades logísticas que lo contienen. Desde ellas recupera los eventos de custodia, las asignaciones a pedidos y los intentos de entrega. El recorrido termina en los documentos y las evidencias que permiten identificar a los destinatarios. La consulta inversa parte de una entrega y reconstruye el recorrido hasta las recepciones y el proveedor. Si un lote ingresó en varias recepciones, cada una conserva su evidencia para evitar atribuirle un origen único sin respaldo.
 
 El retiro identifica clientes y documentos en \ensuremath{<}2 h desde la solicitud de Calidad (Bases Técnicas del caso, cap. 18, criterio 1, p. 34). Su presupuesto de diseño es 5 min identificación +10 custodia +15 entregas/documentos +10 pendientes +15 expediente +15 revisión +15 margen =85 min, a demostrar en prueba. Calidad consulta autoridades locales y central; despacho de cada sitio contrasta carga/ruta y conductores aportan pendientes. Los clientes planificados con lote aún offline integran el universo potencial a contactar/bloquear, distinto de entregas confirmadas. A los 30 min sin respuesta se escala a Operaciones; una lista parcial que no identifica ese universo no cumple aceptación. El Anexo 5-J fija evidencia y prueba offline, un sello de última sincronización por sí solo no demuestra completitud.
 
 \subsection{Cobranza, envases, documentos y POD}
 \label{sec:sd5-5-1-8}
 
-La Figura 5.6 diferencia cobro, aplicación, cartera, rendición, documento, carga y POD; las autorizaciones y compensaciones se especifican en 5-A/5-C. El ERP es único emisor fiscal y el documento habilitador precede al traslado; no existe timbre diferido desde el móvil. POD, acuse técnico SII y recepción de mercadería son evidencias distintas. Según S4, Anexo 4-U, el recibo del destinatario conserva XML validado del ERP/canal EDI o copia de la constancia impresa, según su perfil tributario, vinculado al documento en doc\_acuse\_destinatario con origen, firmante, fecha y estado. Una negativa a firmar queda en excepción y no acredita acuse legal obtenido.
+La Figura 5.6 diferencia cobro, aplicación, cartera, rendición, documento, carga y POD; las autorizaciones y compensaciones se especifican en 5-A/5-C. El ERP es único emisor fiscal y el documento habilitador precede al traslado; no existe timbre diferido desde el móvil. POD, acuse técnico SII y recepción de mercadería son evidencias distintas. Según SD4, Anexo 4-U, el recibo del destinatario conserva XML validado del ERP/canal EDI o copia de la constancia impresa, según su perfil tributario, vinculado al documento en doc\_acuse\_destinatario con origen, firmante, fecha y estado. Una negativa a firmar queda en excepción y no acredita acuse legal obtenido.
 
 \clearpage
 \begingroup
@@ -185,7 +189,7 @@ La Figura 5.6 diferencia cobro, aplicación, cartera, rendición, documento, car
 \begin{figure}[p]
   \centering
   \captionsetup{font=footnotesize,skip=3pt}
-  \includegraphics[width=\linewidth,height=465bp,keepaspectratio]{figuras/Fig_5-6_Cobro_Documentos.pdf}
+  \includegraphics[width=\linewidth,height=465bp]{figuras/Fig_5-6_Cobro_Documentos.pdf}
   \caption{Cobro, rendición, cuenta corriente de envases y documento tributario}\label{fig:sd5-cobro}
   {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de Bases Técnicas Transversales y Caso 02 (Distribuidora Puelche S.A., 2026b, RT-16.09, p. 29; 2026c, RT-16.14, p. 27 y decisiones 6/12, p. 28) y SD4 (Anexo 4-U).}\par}
 \end{figure}
@@ -198,7 +202,7 @@ La Figura 5.6 diferencia cobro, aplicación, cartera, rendición, documento, car
 
 La identidad fiscal usa tipo/emisor/folio/versión, hash verifica contenido y las referencias tipadas comprueban la entidad de negocio. POD admite varias evidencias por entrega/intento, el móvil puede cerrar localmente bajo autorización con evidencia durable, conservando estado de verificación central posterior.
 
-Un timeout de POS mantiene pago incierto: consulta, conciliación y eventual cancelación/compensación dependen del contrato del tercero. Un pago alternativo necesita autorización financiera y vínculo al primero; agotar reintentos no prueba rechazo ni evita por sí mismo doble cargo. Autoriza un actor con rol financiero distinto del ejecutor. ajuste\_redondeo expresa importe registrado menos importe externo comprobado solo para tarjeta; efectivo/crédito no fabrican autorización externa. Las cuentas de envases son saldos por cliente/tipo. S4, Anexo 4-M, define AL-DTE-01 y AL-DR-01, su aceptación requiere ensayo.
+Un timeout de POS mantiene pago incierto: consulta, conciliación y eventual cancelación/compensación dependen del contrato del tercero. Un pago alternativo necesita autorización financiera y vínculo al primero; agotar reintentos no prueba rechazo ni evita por sí mismo doble cargo. Autoriza un actor con rol financiero distinto del ejecutor. ajuste\_redondeo expresa importe registrado menos importe externo comprobado solo para tarjeta; efectivo/crédito no fabrican autorización externa. Las cuentas de envases son saldos por cliente/tipo. SD4, Anexo 4-M, define AL-DTE-01 y AL-DR-01, su aceptación requiere ensayo.
 
 La cobranza distingue REPARTO, PREVENTA y PORTAL. El preventista registra efectivo de facturas vencidas del cliente sin entrega ni vehículo, emite recibo provisional digital con folio único e incorpora el cobro a su rendición diaria en caja, cob\_aplicacion vincula pago y facturas sin duplicar documento\_id en el cobro. Una factura ERP puede carecer de carga y conserva vencimiento, guía de despacho mantiene carga obligatoria. Cartera conserva deuda por documento, ejecutivo, gestiones, compromisos y recontactos. Mora mayor a treinta días o cupo excedido bloquea crédito, contado/cobro mantienen permisos. La cartola deriva tramos del vencimiento y corte, disponible al cliente autenticado en E2 (RF-07.04/.05/.07/.11).
 
@@ -211,18 +215,20 @@ RT-16.20 de las Bases Técnicas Transversales exige al menos tres canales: corre
 
 Plantillas, preferencias e intentos comparten CORREO, SMS, WHATSAPP y AVISO\_EN\_PORTAL. La preferencia vigente se identifica por cliente, finalidad, categoría y canal; la plantilla/versionado de referencia acredita la elección inicial, sin limitar la baja a esa edición. Antes de emitir o reintentar se comprueba la baja comercial, que persiste hasta nueva decisión expresa. Los avisos operacionales obligatorios se distinguen de los comerciales. Los atributos, nulabilidad y restricciones vigentes se especifican en 5-A–5-C; las vistas gráficas resumen sus relaciones.
 
-El envío se desacopla mediante outbox y trabajador asíncrono, con reintento por política versionada y claves de aviso/intento contra duplicados internos (RF-18.03 / RT-16.23). not\_intento distingue entrega, apertura y error; not\_evento conserva evidencia e identidad del emisor para deduplicar callbacks y reconstruir historia. apertura\_estado es INFORMADA, NO\_INFORMADA o NO\_SOPORTADA; solo INFORMADA lleva fecha y evento comprobables. Acceder explícitamente al aviso del portal bajo sesión autorizada puede acreditar apertura de ese aviso con origen PORTAL, sin acreditar lectura del SMS. Sin señal no se inventa fecha ni se concluye «no leído». 5-B/5-C precisan correlación, incertidumbre externa y transiciones; 5-D/5-F, conservación e índices.
+El envío usa una bandeja de salida transaccional y un proceso asíncrono que publica los avisos. Cada aviso y cada intento mantienen su identidad para impedir duplicados internos y aplicar una política de reintentos versionada (RF-18.03 y RT-16.23). La entidad not\_intento distingue la entrega técnica, la apertura y el error. La entidad not\_evento conserva la respuesta del proveedor y su identidad para reconocer notificaciones repetidas y reconstruir la historia.
+
+El campo apertura\_estado admite INFORMADA, NO\_INFORMADA y NO\_SOPORTADA. El primer estado exige una fecha y un evento comprobables. Una persona que abre el aviso del portal desde una sesión autorizada aporta evidencia de esa apertura, aunque haya llegado desde un enlace SMS. Esa acción no acredita la lectura del mensaje de texto. Los Anexos 5-B y 5-C explican cómo se correlaciona esa evidencia y cómo cambia el estado ante respuestas externas inciertas. Los Anexos 5-D y 5-F detallan su conservación y consulta.
 
 La Figura 5.9 desarrolla perfil de cadena, mensajes/ASN, avisos, asignación de roles y auditoría; las equivalencias y excepciones se especifican en 5-A/5-C. El perfil establece esquema y campos admitidos; se conserva mensaje original, hash, identidad externa y correlación. Un reintento devuelve resultado previo sin duplicar efecto. Un código de cadena se traduce a identidad canónica; no crea cliente/producto por defecto.
 
-La auditoría registra actor, dispositivo, instante, operación, resultado y valores anteriores/posteriores mínimos. La excepción conserva contexto histórico, regla y versión; su identidad es (correlacion\_id, clave), no hora de llegada. Los mensajes/notificaciones usan solo integraciones habilitadas en S4 y su estado de envío no sustituye recepción de mercadería ni acuse fiscal.
+La auditoría registra actor, dispositivo, instante, operación, resultado y valores anteriores/posteriores mínimos. La excepción conserva contexto histórico, regla y versión; su identidad es (correlacion\_id, clave), no hora de llegada. Los mensajes/notificaciones usan solo integraciones habilitadas en SD4 y su estado de envío no sustituye recepción de mercadería ni acuse fiscal.
 
 \subsection{Telemetría, caché y objetos}
 \label{sec:sd5-5-1-10}
 
-La Figura 5.10 distingue ingesta térmica cruda en DynamoDB, archivo detallado S3 Parquet/Glue, serie/analítica Redshift, posición personal y objetos. Raw dura treinta días; el perfil detallado y las versiones que lo interpretan permanecen cinco años. El agregado no permite reconstruir una lectura perdida, por lo que no sustituye el detalle.
+La Figura 5.10 distingue ingesta térmica cruda en DynamoDB, archivo detallado Amazon S3 en formato Parquet, procesado con AWS Glue, serie/analítica Redshift, posición personal y objetos. Raw dura treinta días; el perfil detallado y las versiones que lo interpretan permanecen cinco años. El agregado no permite reconstruir una lectura perdida, por lo que no sustituye el detalle.
 
-S4, Anexo 4-W.4, fija 127.848 lecturas/día: 6.048 de cámaras, 73.080 de las tres sondas de cada camión, 24.360 de termógrafos y 24.360 de sensores independientes. INT-05 ingiere 30.548 mensajes/día: 6.048 de cámaras, 24.360 del gateway, 112 eventos y 28 descargas. Los 3 gateways de cámara y los 28 gateways de camión usan Greengrass; las reservas no agregan ingesta ordinaria. La temperatura ocupa 6,77 GB/año en crudo, 33,83 GB en cinco años y 1,69 GB/año almacenado; DynamoDB de treinta días ocupa 0,556 GB. Los 8.120 mensajes satelitales diarios de flota (290 por camión) se concilian con el camino móvil sin duplicar hechos.
+SD4, Anexo 4-W.4, fija 127.848 lecturas/día: 6.048 de cámaras, 73.080 de las tres sondas de cada camión, 24.360 de termógrafos y 24.360 de sensores independientes. INT-05 ingiere 30.548 mensajes/día: 6.048 de cámaras, 24.360 del gateway, 112 eventos y 28 descargas. Los 3 gateways de cámara y los 28 gateways de camión usan Greengrass; las reservas no agregan ingesta ordinaria. La temperatura ocupa 6,77 GB/año en crudo, 33,83 GB en cinco años y 1,69 GB/año almacenado; DynamoDB de treinta días ocupa 0,556 GB. Los 8.120 mensajes satelitales diarios de flota (290 por camión) se concilian con el camino móvil sin duplicar hechos.
 
 GPS permanece en sa-east-1, raw treinta días y plazo personal total doce meses, sin réplica internacional. La posición no se confunde con geocerca de configuración. Para los 42 camiones propios se integra el proveedor existente mediante INT-15; para los 54 de transportistas, M12 recibe la posición y el tiempo del terminal C-02 de reparto. La vinculación al vehículo, la marca de tiempo, la fuente GPS/CELULAR y la precisión se conservan en el modelo de posición de 5-A, Tabla A.9. Los registros sin enlace se sincronizan después; no se declara cobertura en tiempo real permanente ni un contrato de telemetría del proveedor para los externos (SD3, RF-14.01 a RF-14.04 y S-19; SD4, T-11, C-02). S3\_DOCS conserva originales por clase; ElastiCache contiene lectura reconstruible y Room/SQLite conserva además hechos/evidencias durables. Las claves, vigencias y purgas están en 5-G.
 
@@ -242,7 +248,7 @@ La Figura 5.7 define hechos y dimensiones para analizar servicio, inventario, co
 \begin{figure}[p]
   \centering
   \captionsetup{font=footnotesize,skip=3pt}
-  \includegraphics[width=\linewidth,height=465bp,keepaspectratio]{figuras/Fig_5-7_Dimensional.pdf}
+  \includegraphics[width=\linewidth,height=465bp]{figuras/Fig_5-7_Dimensional.pdf}
   \caption{Modelo dimensional de explotación}\label{fig:sd5-dimensional}
   {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de T-12 y SD3 (RF-11.06/.07 y Anexo 3.G, RNG-09) y Caso 02 (Distribuidora Puelche S.A., 2026c, cap. 18, criterios 4 y 11, pp. 34–35).}\par}
 \end{figure}
@@ -253,7 +259,7 @@ La Figura 5.7 define hechos y dimensiones para analizar servicio, inventario, co
 \restoregeometry
 \FloatBarrier
 
-El modelo incluye dimensiones de fecha, cliente, producto, sitio, ruta y canal; cliente, producto, sitio y ruta conservan versiones y vigencias. El cálculo previo al grano del pedido evita multiplicar OTIF/importes al unir líneas; cada hecho conserva origen y controles monetarios/GPS. Redshift/QuickSight sirve analítica pesada y la API consultas operativas. 5-H fija fórmulas, audiencia, filtros, profundización y latencia; costo de servir inicia E2. RT-05.10/.24 deseables conservan su alcance no ofertado; RT-05.30 se oferta mediante la estimación determinista de vida útil remanente descrita en la sección 13.3.2 del SD13, sustentada en las series térmicas y la asociación sensor–lote de la sección 5.1.7. INN-03 desarrolla la incorporación distribuida de esta estimación al proceso operacional, diferenciada del modelo cinético que la sustenta.
+El modelo incluye dimensiones de fecha, cliente, producto, sitio, ruta y canal; cliente, producto, sitio y ruta conservan versiones y vigencias. El cálculo previo al grano del pedido evita multiplicar OTIF/importes al unir líneas; cada hecho conserva origen y controles monetarios/GPS. Redshift/QuickSight sirve analítica pesada y la API consultas operativas. 5-H fija fórmulas, audiencia, filtros, profundización y latencia; costo de servir inicia E2. RT-05.10/.24 deseables conservan su alcance no ofertado; RT-05.30 se oferta mediante la estimación determinista de vida útil remanente descrita en la sección 13.3.2 del SD13, sustentada en las series térmicas y la asociación sensor–lote de la sección 5.1.7. El cumplimiento de RT-05.30 se acredita mediante el modelo cinético, sus variables, su métrica de desempeño y la recalibración documentada. El aporte de INN-03 se evalúa por la incorporación operativa descrita en el SD13: el cálculo de la exposición en cámara sin enlace, la reconstrucción central por lote y el uso del resultado por Calidad, Inventario y Preparación. El modelo cinético se registra una vez como capacidad analítica.
 
 Se incorporan hech\_ocupacion\_diaria por sitio/zona/día, hech\_viaje por viaje despachado y hech\_cartera\_antiguedad por cliente/corte/tramo. Las medidas preservan topología, capacidades y fecha de negocio de origen. Costo de servir en E2 suma operación, manejo de devoluciones y merma valorizada al costo ERP, una vez por origen; incluye merma atribuible a cliente sin entrega. Si falta costo comprobado informa resultado incompleto. 5-H define fórmulas, casos sin base y exportación, sin inventar historia previa a captura.
 
@@ -291,7 +297,7 @@ La Figura 5.8 desarrolla maestros e identidades compartidas descritos en 5.1.3, 
 \begin{figure}[p]
   \centering
   \captionsetup{font=footnotesize,skip=3pt}
-  \includegraphics[width=\linewidth,height=465bp,keepaspectratio]{figuras/Fig_5-8_Maestros.pdf}
+  \includegraphics[width=\linewidth,height=465bp]{figuras/Fig_5-8_Maestros.pdf}
   \caption{Maestros e identidades compartidas}\label{fig:sd5-maestros}
   {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de SD3/T-12 (RF-01 y Anexo 3.G), SD4 (sec. 4.1.5) y RT-05.01 (Distribuidora Puelche S.A., 2026b, cap. 5, p. 11).}\par}
 \end{figure}
@@ -317,7 +323,7 @@ La Figura 5.9 desarrolla EDI, notificaciones y gobierno descritos en 5.1.9, con 
 \begin{figure}[p]
   \centering
   \captionsetup{font=footnotesize,skip=3pt}
-  \includegraphics[width=\linewidth,height=465bp,keepaspectratio]{figuras/Fig_5-9_EDI_Notif_Gobierno.pdf}
+  \includegraphics[width=\linewidth,height=465bp]{figuras/Fig_5-9_EDI_Notif_Gobierno.pdf}
   \caption{EDI, notificaciones y gobierno}\label{fig:sd5-edi}
   {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: elaboración a partir de SD3/T-12 (RF-10 y RF-18.03), SD4 (Anexo 4-H) y RT-16.20/.23 (Distribuidora Puelche S.A., 2026b, cap. 16, pp. 29–30).}\par}
 \end{figure}

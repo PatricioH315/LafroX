@@ -12,21 +12,35 @@ La Tabla 5.2 separa bytes de origen de almacenamiento estimado, KB y GB son deci
 
 \parte{tablas/volumen_migracion}
 
-El intervalo de sensibilidad de la estimación base de almacenamiento es 30,73–33,49 GB. La ampliación de cartera viva y trace faltante tiene que cuantificarse durante el perfilado; no se declara cubierta por ese intervalo. El ERP conserva la emisión única y puede aportar copias documentales con su identidad fiscal, sin reemitirlas.
+
+El cálculo distingue cantidad de registros, tamaño medio estimado y meses de historia. Con unidades decimales, el volumen de origen en KB se obtiene como registros por mes multiplicados por meses y por KB estimados por registro. Las Bases del caso aportan 31.000 pedidos, 260.000 líneas de pedido, 1.150 recepciones, 14.500 movimientos de pallets en Talca, 3.400 posiciones de conteo y aproximadamente 34.000 documentos tributarios al mes (Caso 02, cap. 14, sec. 14.1, p. 24). Los tamaños medios son hipótesis de dimensionamiento que deberán medirse durante el perfilado.
+
+\begin{itemize}
+\item \textbf{Ventas y pedidos.} Se estiman 1 KB por cabecera y 1 KB por línea. Para tres años, $(\text{31.000}+\text{260.000})\times36\times1=\text{10.476.000}$ KB.
+\item \textbf{Inventario y movimientos.} La base mensual reúne 260.000 líneas, 14.500 pallets, 3.400 posiciones de conteo y 1.150 recepciones. Con 0,5 KB por registro y dos años, $(\text{260.000}+\text{14.500}+\text{3.400}+\text{1.150})\times24\times0{,}5=\text{3.348.600}$ KB.
+\item \textbf{Recepciones.} El escenario central usa veinte líneas por recepción y 1 KB por línea. Para cinco años, $\text{1.150}\times20\times60\times1=\text{1.380.000}$ KB. El número de líneas es un supuesto, y la historia con lote se incorpora según su disponibilidad comprobada.
+\item \textbf{Cartera histórica.} Se usa como aproximación un registro de 1 KB por cada documento tributario mensual durante dos años. Así, $\text{34.000}\times24\times1=\text{816.000}$ KB. El perfilado debe añadir la deuda viva anterior que no esté incluida en esa base.
+\item \textbf{Maestros.} Se conserva la base agregada de 34.180 KB del dimensionamiento del SD4. El perfilado determinará los recuentos y los tamaños medios de cada maestro para sustituir ese subtotal por una medición del origen.
+\end{itemize}
+
+Los cinco conjuntos suman 16.054.780 KB. Al dividir por 1.000.000 se obtienen 16,05478 GB de origen. El almacenamiento estimado de destino es $16{,}05478\times2=32{,}10956$ GB. El factor dos reserva capacidad para el destino y no duplica los bytes que deben viajar por la red. Si el promedio de recepción fuera de diez o treinta líneas, ese conjunto ocuparía 690.000 o 2.070.000 KB. Los totales de destino serían entonces 30,72956 y 33,48956 GB, respectivamente, que explican el intervalo redondeado de 30,73 a 33,49 GB.
+
+
+El intervalo cubre la variación de líneas por recepción. El perfilado cuantificará aparte la deuda viva adicional y la historia de trazabilidad disponible. El ERP conserva la emisión única y aporta, cuando corresponda, copias con su identidad fiscal original.
 
 \subsection{Perfilado y saneamiento}
 \label{sec:sd5-5-3-2}
 
-Leandro Chamorro, líder de datos de S1, coordinará el perfilado con responsables de maestros, inventario, Finanzas y Calidad del CLIENTE. Se documentarán tablas/campos reales, claves, disponibilidad temporal, bytes serializados, duplicados, valores nulos, unidades, RUT/GTIN, lotes y cobertura documental. No se presupone el esquema físico de sistemas legados que aún no ha sido levantado.
+Leandro Chamorro, líder de Datos identificado en el SD1, coordinará el perfilado con los responsables de maestros, inventario, Finanzas y Calidad del CLIENTE. El levantamiento identificará las tablas y los campos reales, sus claves, la antigüedad disponible y el tamaño de los registros serializados. También medirá duplicados, valores nulos, unidades de medida, identificadores tributarios y comerciales, lotes y respaldo documental. Con ese diagnóstico se determina qué registros pueden transformarse y cuáles requieren una decisión funcional.
 
 Cada registro se acepta sin cambio, se corrige con regla aprobada/versionada o se aísla para decisión. Se conservan original y transformación, sin inventar cliente activo, ubicación, lote, medición ni fecha. Clientes históricos no resolubles permanecen consultables en staging hasta aprobación; saldos no localizados quedan pendientes de ubicación, sin atribuir una posición de tránsito como hecho comprobado.
 
-Los defectos de 5-C se concilian por conjunto. Calidad valida trazabilidad; Finanzas importes/cartera; bodega saldos y conteo. LafroX fija como criterio de aceptación de la migración una desviación monetaria de inventario de \ensuremath{\leq}0,3 \% del valor contado, con toda diferencia explicada y aprobada. Es una meta de diseño que reduce aproximadamente 7,67 veces la diferencia actual de 2,3 \% del conteo cíclico, y esa línea base no se acepta como tolerancia de carga. Los registros aislados permanecen consultables conforme RT-05.15.
+Los defectos de 5-C se concilian por conjunto. Calidad valida trazabilidad; Finanzas importes/cartera; bodega saldos y conteo. LafroX fija como criterio de aceptación de la migración una desviación monetaria de inventario de \ensuremath{\leq}0,3 \% del valor contado, con toda diferencia explicada y aprobada. LafroX adopta este umbral como control de riesgo para la carga inicial: limita la diferencia monetaria explicada y aprobada a tres pesos por cada mil pesos de inventario contado. El 2,3 \% del conteo cíclico del caso sirve de referencia para dimensionar el saneamiento. La aceptación exige, además, cero diferencias sin explicación y el respaldo de cada ajuste por sitio. Los registros aislados permanecen consultables conforme RT-05.15.
 
 \subsection{Transformación, herramientas y artefactos}
 \label{sec:sd5-5-3-3}
 
-La extracción usa conexiones de solo lectura al ERP/WMS y archivos originales para planillas. S3 conserva paquetes con hash, conteos, ventana y versión, Glue ejecuta transformaciones versionadas y PostgreSQL carga masivamente en staging antes de publicar maestros y hechos. DMS se limita a Talca y su esquema lector: no es herramienta universal ni aplica de nuevo negocio ya recibido por eventos.
+La extracción consulta el ERP y el sistema de gestión de almacenes (WMS) mediante conexiones de solo lectura. Para las planillas se conserva el archivo original. Amazon S3 guarda cada paquete junto con su huella de integridad, sus recuentos, el período extraído y la versión del esquema. AWS Glue ejecuta las transformaciones versionadas. PostgreSQL recibe los datos en un área temporal de preparación, denominada staging, donde se validan antes de publicarlos como maestros o hechos operativos. El servicio AWS Database Migration Service (DMS) se limita a la réplica de Talca hacia su esquema lector. Los efectos de negocio que ya llegaron por eventos se reconocen para evitar aplicarlos otra vez.
 
 El Anexo 5-K declara mapeo semántico origen\ensuremath{\rightarrow}destino, campos críticos, claves, conversión, rechazo, conciliación y responsable. El contrato de extracción incorporará nombres físicos comprobados durante el perfilado, sin inventar tablas legadas. Toda conversión mantiene procedencia, versión y valores originales; los ensayos comprobarán ese mapeo con datos completos.
 
@@ -46,7 +60,9 @@ Las siete fases de la ola de ventas suman 285 min: 45+30+40+60+35+30+45. Con fue
 \subsection{Conciliación y criterios de corte}
 \label{sec:sd5-5-3-5}
 
-La conciliación cubre el universo: origen=aceptados+corregidos+aislados/excluidos con decisión, destino=aceptados/corregidos bajo transformación documentada. Compara claves/recuentos, importes por mes/moneda, cantidades homologadas por producto, saldos por sitio y cartera por cliente, incluida deuda viva anterior. Cada diferencia exige causa, evidencia y aprobación, diferencias no explicadas=cero.
+La conciliación comprueba todos los registros extraídos. Cada registro de origen debe quedar identificado como aceptado sin cambios, corregido mediante una regla documentada, aislado para resolución o excluido mediante una decisión aprobada. El destino debe contener exactamente los registros aceptados y corregidos que corresponda publicar.
+
+Los controles comparan las claves y los recuentos, los importes por mes y moneda, las cantidades expresadas en unidades compatibles, los saldos de cada sitio y la cartera por cliente. Esta última incluye la deuda viva anterior al período histórico. Toda diferencia debe tener una causa, una evidencia y una aprobación. El corte exige cero diferencias no explicadas.
 
 El muestreo dirigido de lotes, equivalencias, documentos y riesgos complementa los controles completos; ni 19/20 ni 95 \% basta para aceptar. Se exige trazabilidad del universo migrado y consulta de no migrados, inventario con conteo, desviación monetaria \ensuremath{\leq}0,3 \% y toda diferencia explicada, separada de exactitud por cantidad.
 
@@ -59,4 +75,4 @@ Snapshot y marcas de agua delimitan el corte por autoridad. El delta del escrito
 
 Rollback detiene el escritor nuevo, preserva evidencia, restaura el punto de control, concilia delta y devuelve autoridad al sistema previo de cada perímetro, WMS Talca no es escritor previo de todas las sedes. El ensayo comprueba recuperación, emisión ERP y cero pérdida/duplicación, no solo cambio nominal de escritor.
 
-La continuidad manual/papel de S3 conserva captura y conciliación, sin dos escritores ni traslado sin guía vigente. S4, Anexo 4-M, AL-DTE-01, exige preemisión por el ERP al cerrar la carga nocturna: Talca usa RabbitMQ/erp-sync en VM-04 otras sedes, shipper y colas de solicitud/respuesta con comunicación del sitio. Cambio de carga exige anulación/reemisión antes de liberarlo; sin comunicación, solo sale la carga amparada y el ajuste pasa al siguiente viaje. S5 consulta/archiva copias, sin emitir ni modificar DTE. Los protocolos AL-DTE-01 y AL-DR-01 se acreditarán en ensayo.
+La continuidad manual/papel de SD3 conserva captura y conciliación, sin dos escritores ni traslado sin guía vigente. SD4, Anexo 4-M, AL-DTE-01, exige preemisión por el ERP al cerrar la carga nocturna: Talca usa RabbitMQ/erp-sync en VM-04 otras sedes, shipper y colas de solicitud/respuesta con comunicación del sitio. Cambio de carga exige anulación/reemisión antes de liberarlo; sin comunicación, solo sale la carga amparada y el ajuste pasa al siguiente viaje. SD5 consulta/archiva copias, sin emitir ni modificar DTE. Los protocolos AL-DTE-01 y AL-DR-01 se acreditarán en ensayo.
