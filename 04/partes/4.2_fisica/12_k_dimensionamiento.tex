@@ -46,7 +46,7 @@ La Tabla~\ref{tab:dimensionamiento-calendario} resume los factores de calendario
   Totales anuales & 12 × volumen mensual & Evita inventar días hábiles & Bases Técnicas del caso, cap. 14, p. 24 \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para la volumetría y el peak de septiembre, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, p.~24, y anexo~B, p.~38), para la volumetría y el período peak de septiembre, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
 Los 22,14 días son una equivalencia de cálculo, no una cantidad de días hábiles. El peak se obtiene por el cociente entre entregas de septiembre y entregas normales. Diciembre no agrega un factor porque el caso identifica septiembre como la mayor exigencia.
 
@@ -69,7 +69,7 @@ Portal & 9,63 & 0,00 & 0,00 & 9,63 \\
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Nota: las columnas de día completo muestran el máximo de cada lugar, aunque ocurra en horas distintas. El máximo agregado coincidente suma los aportes de cada bloque y elige la mayor de esas sumas, no suma los máximos por lugar. En despacho, las filas muestran los aportes del tramo 05:30--06:00, que determina el máximo en ambos regímenes. El modelo aplica a ese tramo la tasa del bloque 05:00--06:00, suponiéndola uniforme. Los totales se calculan antes de redondear. Véase el perfil horario del Anexo 4-W.2.\par}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para la volumetría de transacciones por lugar, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25, y anexo~B, p.~38), para la volumetría y las ventanas de operación, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
 \paragraph*{Derivación por lugar de proceso}
 La distribución de las cargas de procesamiento por nodo y servicio se fundamenta en los siguientes criterios de derivación:
@@ -98,7 +98,7 @@ La dimensión 4, «Personas usuarias registradas, internas y externas», es 15.1
   Cota extrema del portal & 342 & 433,33 & 775,33 \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para los usuarios y dispositivos concurrentes, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25, y anexo~B, p.~38), para los usuarios y dispositivos concurrentes por ventana, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
 La operación sin portal, que carga la Wi-Fi y los sitios, llega a 342 personas o equipos concurrentes durante el día. Los seis del cross-docking son personas con terminal inalámbrico, dos por plataforma (S-35). Los 96 equipos de reparto equivalen a 96 conductores en ruta. La dimensión 5 se expresa en personas o sesiones y no en camiones. La cota extrema del portal se conserva como prueba separada. La dimensión 6, «Dispositivos de terreno en operación simultánea», es 62 preventistas + 96 equipos de reparto = 158.
 
@@ -160,7 +160,7 @@ Cada cross-docking & D-06 satélite & 2 Mbps & 20,65\,\% \\
 Cada cross-docking & D-04 LTE & 2 Mbps & 17,70\,\% \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para el ancho de banda por sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25, y anexo~B, p.~38), para el ancho de banda por sitio y las ventanas de sincronización, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
 \paragraph*{Escenarios de carga por enlace}
 Los requerimientos de ancho de banda calculados para cada emplazamiento y medio de conectividad se desglosan a continuación:

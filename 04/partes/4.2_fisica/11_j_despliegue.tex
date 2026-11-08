@@ -317,7 +317,7 @@ La Figura~\ref{fig:red-sitios-regiones} sitúa las cinco instalaciones con cómp
   \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/fisica/Red_01_sitios_regiones_aprobada.pdf}
   \caption{Red de los cinco sitios operacionales y las regiones de producción y recuperación}
   \label{fig:red-sitios-regiones}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~3, p.~9), para la conectividad y las redes, y (Bases Técnicas del caso, cap.~6, p.~10), para las condiciones de cada sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~3, p.~10), para la conectividad y las redes, y (Bases Técnicas del caso, cap.~6, p.~10), para las condiciones de cada sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 \end{landscape}
 
@@ -329,7 +329,7 @@ La vista general distingue los cinco dominios locales y sus caminos regionales. 
   \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/fisica/Red_02_red_local_aprobada.pdf}
   \caption{Red local y continuidad de Talca, Concepción y las plataformas de cross-docking}
   \label{fig:red-detalle-sitios}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~3, p.~9), para la conectividad y las redes, y (Bases Técnicas del caso, cap.~6, p.~10), para las condiciones de cada sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~3, p.~10), para la conectividad y las redes, y (Bases Técnicas del caso, cap.~6, p.~10), para las condiciones de cada sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 \end{landscape}
 
@@ -341,7 +341,7 @@ La red local conecta el cómputo redundante con dos switches y el par de firewal
   \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/fisica/Red_03_red_aws_aprobada.pdf}
   \caption{Conectividad regional, servicios privados y replicación de Aurora y S3}
   \label{fig:red-detalle-regiones}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~3, p.~9), para la conectividad y las redes, y (Bases Técnicas del caso, cap.~6, p.~10), para las condiciones de cada sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~3, p.~10), para la conectividad y las redes, y (Bases Técnicas del caso, cap.~6, p.~10), para las condiciones de cada sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 \end{landscape}
 
@@ -360,7 +360,7 @@ La vista regional muestra la terminación de las VPN y el tránsito hacia Produc
   VPC Producción, zona privada & Resto de 10.101.0.0/16 & ALB de aplicación, consolas y AS2, aplicación y datos, enlazada a los sitios por el Transit Gateway de la VPC Hub \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~3, p.~9), para la conectividad y las redes, y (Bases Técnicas del caso, cap.~6, p.~10), para las condiciones de cada sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~3, p.~10), para la conectividad y las redes, y (Bases Técnicas del caso, cap.~6, p.~10), para las condiciones de cada sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 
 Cada sitio con cómputo dispone de un bloque propio. La séptima instalación que el caso proyecta a tres años y el centro de distribución que Puelche evalúa abrir hacia 2030 en la Región de Los Lagos tienen reservados 10.6.0.0/16 y 10.7.0.0/16, de modo que su incorporación es una parametrización de la infraestructura como código (RT-02.12, Bases Técnicas Transversales, cap. 2, p. 7; Bases Técnicas del caso, cap. 15, p. 26). En la nube, los ALB de aplicación, consolas y AS2 son privados, y la subred pública solo aloja el NAT. El canal AS2 llega por CloudFront a su ALB interno. Los portales residen en S3 privado, servido únicamente por CloudFront. La VPC de Producción usa endpoints de interfaz execute-api, IoT Core, SQS, SSM y Elastic Container Registry, y endpoints de puerta de enlace para DynamoDB y S3. Como los de puerta de enlace no son alcanzables desde los sitios por la VPN, los sitios descargan la imagen por el endpoint de interfaz de Elastic Container Registry y por un endpoint de interfaz de S3, donde se almacenan las capas de las imágenes, sin salir a Internet.
 
