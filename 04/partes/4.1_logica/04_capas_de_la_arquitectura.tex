@@ -1,3 +1,48 @@
+% Los diagramas del PPT se conservan como fondo. Los rótulos siguen el Anexo 4-D.
+\newsavebox{\cajaVistaArql}
+\definecolor{arqlFondoModulo}{RGB}{247,249,251}
+\newcommand{\nombresModulosArql}{%
+  {Recepción},{Inventario},{Preventa},{Rutas},{Preparación},{Reparto},%
+  {Cobranza\\y rendición},{Devoluciones\\y envases},{Calidad y\\trazabilidad},%
+  {Analítica},{Canal\\moderno},{Telemetría}%
+}
+\newcommand{\vistaArqlConRotulos}[5]{%
+  \sbox{\cajaVistaArql}{\includegraphics[#1]{#2}}%
+  \begin{tikzpicture}[
+    x={\dimexpr\wd\cajaVistaArql/#3\relax},
+    y={\dimexpr-\ht\cajaVistaArql/#4\relax},
+    arql-rotulo/.style={
+      align=center,inner sep=0pt,
+      font=\sffamily\bfseries\fontsize{8bp}{9.2bp}\selectfont
+    }
+  ]
+    \node[anchor=north west,inner sep=0pt,outer sep=0pt] at (0,0) {\usebox{\cajaVistaArql}};
+    #5
+  \end{tikzpicture}%
+}
+\newcommand{\rotulosArqlFila}[4]{%
+  \foreach \arqlNombre [count=\arqlId from 1] in \nombresModulosArql {%
+    \pgfmathsetmacro{\arqlX}{105+(\arqlId-1)*#1}%
+    \fill[arqlFondoModulo] ({\arqlX-77},#2) rectangle ({\arqlX+77},#3);
+    \node[arql-rotulo] at (\arqlX,#4) {M\arqlId\\\arqlNombre};
+  }%
+}
+\newcommand{\rotulosArqlNegocio}{%
+  \tikzset{arql-rotulo/.append style={font=\sffamily\bfseries\fontsize{10bp}{11.5bp}\selectfont}}%
+  \foreach \arqlNombre [count=\arqlId from 1] in \nombresModulosArql {%
+    \pgfmathsetmacro{\arqlX}{186+mod(\arqlId-1,6)*335.5}%
+    \pgfmathsetmacro{\arqlY}{424+floor((\arqlId-1)/6)*275}%
+    \ifnum\arqlId=4
+      % Se conserva el ícono PostGIS a la izquierda del rótulo de M4.
+      \fill[white] (1165,383) rectangle (1323,466);
+      \node[arql-rotulo] at (1244,424) {M\arqlId\\\arqlNombre};
+    \else
+      \fill[white] ({\arqlX-135},{\arqlY-48}) rectangle ({\arqlX+135},{\arqlY+48});
+      \node[arql-rotulo] at (\arqlX,\arqlY) {M\arqlId\\\arqlNombre};
+    \fi
+  }%
+}
+
 \subsection{Capas de la arquitectura}
 \phantomsection\label{fuente-04-capas-de-la-arquitectura}
 
@@ -13,8 +58,8 @@ La arquitectura se presenta primero mediante su vista general completa (Figura~\
 \clearpage
 \begin{landscape}
 \begin{center}
-  \includegraphics[width=\linewidth,height=0.86\textheight,keepaspectratio]{figuras/logica/capas/ARQL-01_General_41_corregida.pdf}
-  \captionof{figure}{Vista general de capas, canales y responsabilidades lógicas}
+  \includegraphics[width=\linewidth,height=0.86\textheight,keepaspectratio]{figuras/logica/capas/ARQL-01_General_definitivo.pdf}
+  \captionof{figure}{Vista general completa de la arquitectura lógica}
   \label{fig:arql-general-completa}
 \end{center}
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Bases Técnicas Transversales, RT-02.01 (ocho capas); caso, cap. 15, RT-03.10 (autonomía). Diseño LafroX: ADR-01/06/23 y contratos de anexos 4-D/4-F.\par}
@@ -24,6 +69,25 @@ La vista general muestra cómo cada actor accede a la solución desde su aplicac
 
 La lectura por capas destaca sus responsabilidades: presentación captura y muestra información. Borde protege la entrada. Las puertas de servicio validan las solicitudes, el negocio aplica las reglas en Laravel. Integración conserva y distribuye eventos. Y acceso a datos administra la persistencia. Seguridad y observabilidad son transversales, no pasos finales del procesamiento. La puerta local permite que la bodega siga operando sin WAN, mientras las colas conservan el trabajo sin confirmar para reconciliarlo al recuperar la conexión.
 
+La Figura~\ref{fig:arql-resumen-logico} resume los recorridos central y local.
+
+\clearpage
+\begin{landscape}
+\begin{center}
+  \begingroup
+  % La figura complementaria conserva la numeración de las vistas por capa.
+  \edef\numeroResumenArql{\thefigure a}
+  \renewcommand{\thefigure}{\numeroResumenArql}
+  \renewcommand{\theHfigure}{arql.resumen}
+  \includegraphics[width=\linewidth,height=0.86\textheight,keepaspectratio]{figuras/logica/capas/ARQL-01A_Resumen_logico.pdf}
+  \captionof{figure}{Resumen lógico}
+  \label{fig:arql-resumen-logico}
+  \addtocounter{figure}{-1}
+  \endgroup
+\end{center}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Elaboración LafroX a partir de 4.1.3 y de los anexos 4-D y 4-N.\par}
+\end{landscape}
+
 \clearpage
 \begin{landscape}
 \subsubsection{Capa de presentación (Capa 1)}
@@ -32,7 +96,7 @@ La Figura~\ref{fig:arql-capa-1} presenta las responsabilidades de esta capa.
 
 \begin{center}
   \begin{minipage}{\linewidth}\centering
-  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{figuras/logica/capas/ARQL-21_Presentacion.pdf}
+  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{figuras/logica/capas/ARQL-21_Presentacion_PPT.png}
   \captionof{figure}{Presentación: aplicaciones y superficies de trabajo}
   \label{fig:arql-capa-1}
   \par\smallskip
@@ -144,7 +208,8 @@ La Figura~\ref{fig:arql-capa-3} presenta las responsabilidades de esta capa.
 
 \begin{center}
   \begin{minipage}{\linewidth}\centering
-  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{figuras/logica/capas/ARQL-23_Enlace_servicios_41_corregida.pdf}
+  \vistaArqlConRotulos{trim=0 308bp 0 0,clip,width=\linewidth,height=0.78\textheight,keepaspectratio}
+    {figuras/logica/capas/ARQL-23_Enlace_servicios_PPT.png}{2048}{1070}{\rotulosArqlFila{168.5}{780}{870}{824}}
   \captionof{figure}{Puertas de servicio: recorrido central y local}
   \label{fig:arql-capa-3}
   \par\smallskip
@@ -190,7 +255,8 @@ La Figura~\ref{fig:arql-capa-4} presenta las responsabilidades de esta capa.
 
 \begin{center}
   \begin{minipage}{\linewidth}\centering
-  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{figuras/logica/capas/ARQL-24_Negocio_41_corregida.pdf}
+  \vistaArqlConRotulos{width=\linewidth,height=0.78\textheight,keepaspectratio}
+    {figuras/logica/capas/ARQL-24_Negocio_PPT.png}{2045}{1158}{\rotulosArqlNegocio}
   \captionof{figure}{Negocio: monolito modular Laravel y sus doce módulos}
   \label{fig:arql-capa-4}
   \par\smallskip
@@ -241,7 +307,8 @@ La Figura~\ref{fig:arql-capa-5} presenta las responsabilidades de esta capa.
 
 \begin{center}
   \begin{minipage}{\linewidth}\centering
-  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{figuras/logica/capas/ARQL-25_Integracion_eventos_41_corregida.pdf}
+  \vistaArqlConRotulos{width=\linewidth,height=0.78\textheight,keepaspectratio}
+    {figuras/logica/capas/ARQL-25_Integracion_eventos_PPT.png}{2048}{997}{\rotulosArqlFila{169}{126}{211}{167}}
   \captionof{figure}{Integración: continuidad local y contratos con terceros}
   \label{fig:arql-capa-5}
   \par\smallskip
