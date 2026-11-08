@@ -116,3 +116,45 @@ Suma ≈ 1 h 45 min más la decisión, dentro de RTO 4 h. No hay conmutación au
 - El equipo en espera no atiende transacciones: WMS y shipper detenidos. Su observabilidad se modela en 20 % de un nodo activo (0,05 GB y 200 eventos por día). INT-14 = 14.400; totales 230.252 / 353.333; drenaje Concepción 1,44 Mbps y cross-docking 0,35 Mbps.
 - Energía: UPS de Concepción de 3 a 5 kVA (3,42 kVA, 68 %); cross-docking 0,42 kVA (57 % de 0,75 kVA). EDR: 11 equipos físicos y 14 VM.
 - Archivos: 4.1 (capas), 4.2.0, 02_a (incl. figura TikZ), 02_c, 04_c, 11_j (alta disponibilidad y pruebas), 12_k, Anexos 4-G, 4-I, 4-O (ADR-10), 4-W, T-11 y `calculo.py`.
+
+## D42. Compra del sistema de cadena de frío conforme al Cap. 11 del caso (2026-11-06)
+
+- Decisión del usuario, tras la revisión del Informe 2 («el T-11 hace que LafroX provea la cadena de frío, contra la exclusión del Cap. 11 del caso»): se vuelve a lo que dicen las Bases. Reemplaza la decisión del 24-10-2026 registrada en `BRIEF_IMPLEMENTACION_CADENA_FRIO.md` y en `Solucion_Cadena_de_Frio_en_Ruta.md` (punto 2 de la sección de decisiones), que se conservan como historial.
+- El CLIENTE adquiere, según la especificación de LafroX, los sensores de cámara B-01 y los componentes B-03 a B-14 del kit de camión (Bases Técnicas del caso, cap. 11, p. 20; RT-08.10). LafroX los instala, integra, configura y mantiene.
+- Se mantienen con LafroX: los gateways IoT B-02 de las cámaras (infraestructura on-premise, Bases Administrativas, art. 14.2), las SIM M2M B-15 y el servicio satelital (paquete 5.3.4 del T-14) y la unidad de prueba previa a la compra masiva (RT-08.15).
+- Archivos del SD4: 4.2.1 (`04_c_implementos.tex`), 4.2.2 (`02_a_emplazamiento.tex`, B-03 a B-15), Anexo 4-O (ADR-24) y T-11 (introducción, fila B-03 y nota de responsabilidad del sistema de frío). Detalle en `CIERRE_REVISION_I2_FRIO_SD4.md`.
+
+## D43. Ciclo de vida y reposición por dispositivo en el T-11 (2026-11-06)
+
+- Responde a la revisión del Informe 2 (RT-08.10 a RT-08.13: «no declara ciclo de vida ni plan de reposición por equipo»). El T-11 agrega la Tabla 2, con ciclo de vida esperado, repuestos y plan de reposición en 56 meses para cada dispositivo de terreno y de operación. Sus datos salen del T-11, del 4.2.1, del Anexo 4-P (Android 18, PAXSTORE, Greengrass) y del 4.2.4 (calibración anual, glicol y baterías del kit).
+- Regla nueva, derivada de D42: si una unidad se da de baja, la reserva la reemplaza y el CLIENTE compra la unidad que restituye la reserva, igual que la ampliación del año 3. La reserva de B-02 la restituye LafroX.
+- El 4.2.1 remite a la tabla. En el mismo commit, el 4.3.1 deja de copiar «son un medio, no un fin» del numeral 7.2 y cita el art. 78.2 de las Bases Administrativas.
+
+## D44. Figura 18 (topología AWS) legible a 9 pt (2026-11-06)
+
+- Responde a la revisión del Informe 2 («la Figura 18 tiene rótulos de unos 6 a 7 puntos»). Ya estaba en página horizontal a todo el ancho, con texto de 7,8 pt.
+- El texto del `.drawio` pasa de 37 y 34 unidades a 44, y el diagrama se reacomoda: el cuadro de los cinco sitios on-premise baja bajo la VPC Hub, el contenido se estira a lo ancho y AWS Cloud y us-east-1 se extienden a la derecha. En la página queda a unos 9,1 pt (347 ppi).
+- Mismos 197 elementos (144 componentes y 51 conexiones), con los mismos textos, estilos, contenedores y extremos de conexión; solo cambian posiciones, anchos de cajas y tamaño de letra. El original queda respaldado en la carpeta local `drawio/4.2_fisica/prueba_fig18/`.
+
+## D45. Estudio de cobertura inalámbrica y red inalámbrica sin punto único de falla (2026-11-06)
+
+- Responde a la revisión del Informe 2 (RT-03.24 del caso: «El estudio no se presenta»). El Anexo 4-W.13 presenta el estudio en tres fases: diseño predictivo por zona, verificación en sitio en el mes 2, antes del cableado del mes 4, y medición de aceptación antes de cada marcha blanca. Las densidades de 500 m² con racks (S-36), 300 m² por cámara con mínimo de dos y 900 m² en nave abierta reproducen 39 + 20 + 6 = 65 AP, más 7 de reserva.
+- Decisión del usuario: Cisco Catalyst IW9167I en los cinco sitios y un par de controladores CW9800L con conmutación de estado en R02 (U30) de Talca. Los AP operan en FlexConnect con conmutación local y autentican con EAP-TLS contra FreeRADIUS 3.2, junto a la caché de identidad en VM-05, VM-C03 y E-01. El respaldo RADIUS es Talca para Concepción y los cross-docking, y Concepción para Talca.
+- Sala de Talca: carga TI de diseño de 9.156 W (≈ 9,2 kW), UPS ≈ 12,0 kVA sobre 15 kVA, PUE 1,5, sitio ≈ 13,9 kW y generador al 70 %. R02 pasa a 13U. Las cantidades del T-11 no cambian.
+- Detalle y fuentes en `CIERRE_REVISION_I2_COBERTURA_SD4.md`; pendientes en otros subdocumentos y figuras en `PENDIENTES.md`.
+
+## D46. Autoridad certificadora y MDM nombrados (2026-11-07)
+
+- Cierra el hueco que dejaba el EAP-TLS de D45 y el mTLS entre servicios: el SD4 no nombraba quién emite los certificados ni qué producto MDM los instala.
+- AWS Private CA, en una cuenta del CLIENTE, emite los certificados privados de mTLS y, en una autoridad dedicada, los certificados de dispositivo de la Wi-Fi mediante su conector SCEP para Microsoft Intune (Amazon Web Services, s. f.-q). Intune, con inscripción Android Enterprise y las herramientas Zebra DNA, es el producto MDM de N-13; sus perfiles SCEP para equipos dedicados o administrados se usan en la Wi-Fi, y la revocación se hace en la autoridad, porque Intune no revoca esos certificados (Microsoft, 2026).
+- Archivos: 4.2.2 (N-13), 4.2.3 (servicios de nube), Anexo 4-P, Anexo 4-R, Anexo 4-W.13 y T-11 (N-12 y N-13). Sin cambio de páginas en los tres PDF.
+
+## D47. Superficie útil del recinto técnico de Talca (2026-11-07)
+
+- Responde a la revisión del Informe 2 (RT-06.03): la sala «no declara su superficie ni tiene plano acotado» y el recinto está «cargado de recintos sin superficie declarada».
+- Decisión del usuario: ≈ 31 m² útiles en cinco recintos (Tabla 26 del 4.3.1.4): pasillo de control 1,2 × 3,0 m, esclusa 1,2 × 1,2 m, sala de servidores y comunicaciones 3,6 × 3,5 m, sala de UPS y baterías 2,4 × 3,0 m y zona de trabajo y respaldo 2,4 × 2,5 m. Bitácora, videovigilancia, tablero, acometida, climatización, detección y extinción dejan de contarse como zonas: son elementos dentro de un recinto. La zona de respaldo se une a la de trabajo con un armario de custodia.
+- Se mantienen la esclusa y la biometría, porque el numeral 6.1 exige control de acceso a la sala secundaria (RT-06.20 a RT-06.23); así no cambian las filas «Cumple» del T-12 (SD3) ni el paquete 6.4.1 del T-14 (SD7).
+- La sala de UPS sigue aparte: sus 0,8 kW de pérdidas llevarían la sala de servidores a ≈ 10,0 kW, el límite de una unidad de 10 kW, sin margen N+1.
+- Supuestos de medidas: racks de 0,6 × 1,2 m, climatización en fila de 0,3 m de ancho y gabinetes de UPS y baterías de 0,6 m; el T-11 no fija modelos.
+- T-11: climatización de precisión en fila con condensadoras exteriores; el recinto de custodia pasa a ser un armario ignífugo en la zona de trabajo y respaldo.
+- Cuerpo de 194 a 195 páginas; ningún documento cita páginas del SD4 posteriores a la 178. La Figura 29 sigue como esquema por líneas hasta que se dibuje el plano acotado (pendiente).

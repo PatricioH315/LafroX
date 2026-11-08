@@ -10,7 +10,7 @@
 \markboth{Anexo 4-W — Memoria de cálculo}{Anexo 4-W — Memoria de cálculo}
 \addcontentsline{toc}{chapter}{Anexo 4-W — Memoria de cálculo del dimensionamiento}
 
-La memoria avanza desde los datos del caso hasta la capacidad de cada sitio y de la nube, en doce secciones.
+La memoria avanza desde los datos del caso hasta la capacidad de cada sitio y de la nube, en trece secciones.
 
 \subsection*{Síntesis de las dieciséis dimensiones}
 La síntesis siguiente reúne las dieciséis dimensiones del caso, sus valores por régimen y sus derivaciones, las secciones posteriores desarrollan cada cálculo.
@@ -321,9 +321,9 @@ La energía de los gabinetes de borde y de piso se calcula con el método de la 
   Borde de cross-docking & 2 mini-PC × 59,44 W, 2 firewalls × 24 W, 2 switches × 18,96 W, 2 puntos de acceso PoE+ × 30 W, Starlink 100 W, total 365 W & 438 W, 0,46 kVA & 0,75 kVA, 61~\% \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de la especificación de LafroX, Advantech (2025, p.~1), Cisco (2026, p.~10), Fortinet (s.~f., p.~22), Moxa (s.~f.-a y s.~f.-b, Power Parameters, sin paginación), Zebra Technologies (s.~f.-f, Power Specifications) y Starlink (s.~f., p.~3), con las condiciones y las hipótesis de carga explicadas debajo de la tabla. Diseño propuesto: (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de la especificación de LafroX, Advantech (2025, p.~1), Cisco (2026a, p.~10), Fortinet (s.~f., p.~22), Moxa (s.~f.-a y s.~f.-b, Power Parameters, sin paginación), Zebra Technologies (s.~f.-f, Power Specifications) y Starlink (s.~f., p.~3), con las condiciones y las hipótesis de carga explicadas debajo de la tabla. Diseño propuesto: (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
 
-Los 59,44 W del ARK-1251 corresponden al Core Ultra 5-125U en la ficha revisada el 19 de diciembre de 2025 (Advantech, 2025, Specifications, p.~1). Los 24 W corresponden al máximo del FGR-60F-3G4G (Fortinet, s.~f., Dimensions and Power, p.~22). Los 18,96 W del EDS-P506E excluyen los dispositivos PoE; los dos puntos de acceso se cuentan por separado y no se suma además el presupuesto PoE completo (Moxa, s.~f.-a, Power Parameters, sin paginación). La fuente de 600 W y los 370 W de PoE del C9200-24P se documentan en Cisco (2026, tabla~4, p.~10), y los 10 W del gateway en Moxa (s.~f.-b, Power Parameters, sin paginación). Los 98 W de la ZT411 corresponden a potencia de impresión de referencia, no a una cota máxima garantizada (Zebra Technologies, s.~f.-f, Power Specifications). Para Starlink Standard 4, 75--100 W es consumo medio; los 100 W se conservan como hipótesis que debe validarse con picos y pérdidas de conversión del conjunto instalado (Starlink, s.~f., Standard, p.~3). La aceptación de la UPS exige medir esas cargas y comprobar autonomía antes de confirmar las cotas de la tabla.
+Los 59,44 W del ARK-1251 corresponden al Core Ultra 5-125U en la ficha revisada el 19 de diciembre de 2025 (Advantech, 2025, Specifications, p.~1). Los 24 W corresponden al máximo del FGR-60F-3G4G (Fortinet, s.~f., Dimensions and Power, p.~22). Los 18,96 W del EDS-P506E excluyen los dispositivos PoE; los dos puntos de acceso se cuentan por separado y no se suma además el presupuesto PoE completo (Moxa, s.~f.-a, Power Parameters, sin paginación). La fuente de 600 W y los 370 W de PoE del C9200-24P se documentan en Cisco (2026a, tabla~4, p.~10), y los 10 W del gateway en Moxa (s.~f.-b, Power Parameters, sin paginación). Los 98 W de la ZT411 corresponden a potencia de impresión de referencia, no a una cota máxima garantizada (Zebra Technologies, s.~f.-f, Power Specifications). Para Starlink Standard 4, 75--100 W es consumo medio; los 100 W se conservan como hipótesis que debe validarse con picos y pérdidas de conversión del conjunto instalado (Starlink, s.~f., Standard, p.~3). La aceptación de la UPS exige medir esas cargas y comprobar autonomía antes de confirmar las cotas de la tabla.
 
 En los tres casos la UPS requerida, que es la carga de diseño dividida por 0,8, queda bajo la capacidad ofertada: 4,28, 1,10 y 0,58 kVA. Cada UPS lleva baterías para 30 minutos a su carga de diseño. Los consumos declarados de los servidores de Concepción y de los mini-PC satisfacen RT-08.01 (Bases Técnicas Transversales, cap. 8, p. 18).
 
@@ -391,8 +391,6 @@ Para cada recurso, la demanda total es la carga base más el incremento medido e
 
 El informe de prueba compara base e incremento por innovación y por recurso, identifica el primer umbral superado y conserva percentil 95, duración de trabajos, máxima cola, errores, reconciliación y recuperación. Incluye ventanas críticas, falla del componente previsto en N+1, corte WAN y retorno simultáneo. Solo declara suficiencia cuando los ensayos satisfacen los límites de 4.2.6.12. Estos criterios describen la verificación exigida, no resultados ya obtenidos.
 
-\endgroup
-
 \label{fuente-16-anexo-4b-memoria-calculo-fin}
 
 \subsection*{Verificación del sistema de cadena de frío en ruta}
@@ -424,3 +422,84 @@ V21 & Ruptura confirmada de punta a punta: retención, entrega parcial, ajuste t
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de RT-03.10 y RT-03.13 (Bases Técnicas Transversales, cap.~3, p.~9) y de ADR-24 (Anexo 4-O). Diseño propuesto: (Subdocumento 4, Anexo 4-W).\par}
 
 La meta móvil de aviso a Calidad es de no más de 2 min en al menos 99 \%; por satélite, no más de 5 min en al menos 95 \%, sujeto a V2/V18. Las condiciones de ruta y camino se miden por población; sin red móvil ni cielo, la alarma y retención local continúan y se registra la duración del corte de aviso. El tablero presenta antigüedad de la última curva; no se afirma latencia remota durante ausencia de ambos caminos.
+
+\section{Estudio de cobertura inalámbrica de los centros de distribución}
+\label{sec:anexo-4b-cobertura}
+\phantomsection\label{fuente-16-anexo-4b-cobertura}
+
+El caso exige un estudio de cobertura de los centros de distribución que incluya el interior de las cámaras de refrigerado y de congelado, hoy sin señal, y la propuesta técnica para resolverlo (RT-03.24, Bases Técnicas del caso, cap. 15, p. 26). Las Bases Técnicas Transversales exigen además cobertura verificada mediante estudio de sitio (RT-03.23, cap. 3, p. 10). El estudio tiene tres fases con un mismo criterio de aceptación: el diseño predictivo de esta sección, que fija la cantidad y la posición inicial de los puntos de acceso; la verificación en sitio antes del cableado; y la medición de aceptación después de instalar.
+
+\subsection*{Fase 1: diseño predictivo}
+
+La cantidad se calcula por zona, según cómo se propaga la señal en cada una. La bodega con racks usa un punto de acceso cada 500\,m\textsuperscript{2} (S-36). Cada cámara usa uno cada 300\,m\textsuperscript{2}, con un mínimo de dos. La estructura metálica y aislante de las cámaras impide que entre la red de la bodega (Bases Técnicas del caso, cap. 6, p. 10), de modo que cada cámara es una celda propia, y el producto almacenado atenúa la señal. Con dos puntos de acceso como mínimo, una cámara conserva cobertura si falla uno. La nave de cada cross-docking no tiene almacenamiento (Bases Técnicas del caso, cap. 2, p. 5) y usa uno cada 900\,m\textsuperscript{2}, también con un mínimo de dos. Las tres densidades son hipótesis de diseño que la fase 2 confirma o corrige con mediciones. La superficie de bodega seca es la del sitio menos sus cámaras.
+
+\begin{tablalafrox}{Diseño predictivo de puntos de acceso por zona}{tab:anexo-4b-cobertura}{F{0.30} G{0.16} G{0.22} Y}{\cab{Sitio y zona} & \cab{Superficie} & \cab{Densidad de diseño} & \cab{Puntos de acceso}}
+  Talca, bodega seca y andenes & 16.700\,m\textsuperscript{2} & 500\,m\textsuperscript{2} por punto & 16.700 ÷ 500 = 33,4; se adoptan 34 \\
+  Talca, cámara de refrigerado & 900\,m\textsuperscript{2} & 300\,m\textsuperscript{2} por punto, mínimo 2 & 900 ÷ 300 = 3 \\
+  Talca, cámara de congelado a $-$22\,\textdegree{}C & 400\,m\textsuperscript{2} & 300\,m\textsuperscript{2} por punto, mínimo 2 & 400 ÷ 300 = 1,3; se adoptan 2 \\
+  Concepción, bodega seca & 8.550\,m\textsuperscript{2} & 500\,m\textsuperscript{2} por punto & 8.550 ÷ 500 = 17,1; se adoptan 18 \\
+  Concepción, cámara de refrigerado & 450\,m\textsuperscript{2} (S-37) & 300\,m\textsuperscript{2} por punto, mínimo 2 & 450 ÷ 300 = 1,5; se adoptan 2 \\
+  Cada cross-docking, nave sin racks & 1.200 a 1.800\,m\textsuperscript{2} & 900\,m\textsuperscript{2} por punto, mínimo 2 & 1.800 ÷ 900 = 2 por plataforma; 6 en total \\
+  \textbf{Total} & & & \textbf{65 en operación + 7 de reserva = 72} \\
+\end{tablalafrox}
+
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de las superficies del caso (Bases Técnicas del caso, cap. 2, p. 5), las cámaras sin señal (cap. 6, p. 10) y los supuestos S-36 y S-37 (Subdocumento 3). Diseño propuesto: (Subdocumento 4, Anexo 4-W).\par}
+
+Talca suma 34 + 3 + 2 = 39 puntos de acceso, Concepción 18 + 2 = 20 y los cross-docking 6: 65 en operación. La reserva del 10 \% del numeral 8.4 de las Bases Técnicas Transversales (cap. 8, p. 19) da 6,5, redondeado a 7. Son las 72 unidades del Formulario T-11.
+
+\subsection*{Criterio de aceptación}
+
+Las fases 2 y 3 miden con los terminales MC9400 del parque, en la banda de 5 GHz, y exigen:
+
+\begin{itemize}
+  \item Señal del punto de acceso más fuerte de al menos $-$67 dBm en el 95 \% del área de trabajo de cada zona.
+  \item Relación señal a ruido de al menos 25 dB en esa misma área.
+  \item Un segundo punto de acceso sobre $-$75 dBm en los pasillos y a ambos lados de cada puerta de cámara, para que el terminal cambie de punto de acceso sin cortar la sesión.
+  \item En cada cámara, los dos primeros criterios se cumplen también con uno de sus puntos de acceso apagado.
+  \item Al cruzar la puerta de una cámara con una preparación en curso, el WMS confirma la transacción sin reintento manual.
+\end{itemize}
+
+La banda de 6 GHz se habilita solo si la verificación la confirma con los terminales del parque. El diseño no depende de ella.
+
+\subsection*{Propuesta técnica para las cámaras}
+
+Los puntos de acceso son Cisco Catalyst IW9167I, el mismo modelo en los cinco sitios para compartir la reserva. Operan de $-$40 a +55\,\textdegree{}C, con grado IP67 y antenas integradas (Cisco, 2025, tabla~4), por lo que se instalan dentro de las cámaras, incluida la de congelado. Se alimentan por PoE+ desde switches de acceso ubicados fuera de la cámara. Con PoE+ cada punto de acceso consume 25 W y opera sus radios en 2x2 (Cisco, 2025, tabla~4). Cada switch C9200-24P alimenta como máximo diez, 250 W, dentro de sus 370 W de PoE (Cisco, 2026a, tabla~4, p.~10): Talca reparte sus 39 puntos de acceso en cuatro switches y Concepción sus 20 en dos. En cada cross-docking, cada punto de acceso se conecta a uno de los dos switches industriales.
+
+El cable entra a la cámara por un pasamuros sellado, para no formar un puente térmico ni acumular hielo en el ducto. Los puntos de acceso se montan lejos del umbral de las puertas, donde la humedad se condensa al abrir. Los de cada cámara se conectan a dos switches de acceso distintos.
+
+\subsection*{Control, autenticación y puntos de falla}
+
+Un par de controladores Cisco CW9800L, en el rack R02 de Talca, gestiona los 72 puntos de acceso de los cinco sitios. Cada controlador admite hasta 500 puntos de acceso y el par opera en alta disponibilidad con conmutación de estado mediante su puerto de redundancia (Cisco, 2026b, tablas~1 y~5). Los puntos de acceso operan en modo FlexConnect (Cisco, s.~f.) con conmutación local: el tráfico de los terminales va directo al WMS del sitio sin pasar por el controlador. Si un punto de acceso pierde el controlador o el enlace WAN, sigue operando con su última configuración y autentica a los terminales contra un servidor RADIUS del propio sitio. Cada grupo de puntos de acceso admite dos servidores RADIUS, uno principal y uno de respaldo (Cisco, 2024, Local authentication and backup radius server).
+
+El servidor RADIUS es FreeRADIUS de la rama 3.2 (FreeRADIUS, 2026) y corre junto a la caché de identidad: en VM-05 en Talca, en VM-C03 en Concepción y en E-01 en cada cross-docking, sin cambiar los recursos de esas máquinas. La prueba de carga de cada sitio mide su consumo junto al resto. El servidor principal de cada sitio es el local. El de respaldo es el de Talca para Concepción y los cross-docking, y el de Concepción para Talca. Los terminales se autentican con EAP-TLS y un certificado de dispositivo (RT-03.23). Lo emite una autoridad de AWS Private CA dedicada a ese uso, mediante su conector SCEP para Microsoft Intune, y lo instala Intune con un perfil SCEP para equipos Android Enterprise dedicados o administrados, que admite su uso en la red Wi-Fi (Amazon Web Services, s.~f.-q; Microsoft, 2026). Como Intune no revoca los certificados de esos equipos, la revocación se hace en la autoridad emisora. El servidor RADIUS valida el certificado contra la cadena de esa autoridad y su lista de revocación copiada en el sitio, cuya vigencia supera las 24 horas de operación sin enlace (RT-03.10, Bases Técnicas del caso, cap. 15, p. 26). Así, la autenticación no depende de la WAN.
+
+\begin{tablalafrox}{Puntos de falla de la red inalámbrica y su verificación}{tab:anexo-4b-cobertura-fallas}{F{0.22} Y F{0.28}}{\cab{Falla} & \cab{Qué sostiene la operación} & \cab{Cómo se verifica}}
+  Un punto de acceso de una cámara & Los demás puntos de acceso de la cámara cumplen el criterio de aceptación. & Medición de las fases 2 y 3 con ese punto de acceso apagado. \\
+  Un punto de acceso de la bodega seca & Los vecinos cubren su área con la señal de traspaso, sobre $-$75 dBm, hasta que la reserva lo reemplaza. & Medición de la fase 3 con un punto de acceso apagado por zona. \\
+  Un switch de acceso & En cada cámara queda operando el punto de acceso conectado al otro switch. En la bodega seca, los puntos de acceso vecinos se alternan entre switches, y un terminal que pierde la señal guarda la captura en su cola local hasta reconectar (Room, Anexo 4-P). El switch de reserva de Talca lo reemplaza. & Prueba de la fase 3 con un switch apagado: captura sin pérdida y sincronización al reconectar. \\
+  El controlador activo & El controlador en espera toma el control con conmutación de estado (Cisco, 2026b). & Apagar el controlador activo y comprobar que los terminales siguen asociados. \\
+  Ambos controladores, o el enlace WAN de un sitio & Los puntos de acceso siguen con su última configuración y autentican contra el RADIUS del sitio (Cisco, 2024). & Prueba de corte de 24 horas (4-W.12), con la asociación de un terminal nuevo durante el corte. \\
+  El servidor RADIUS del sitio & Con enlace, responde el servidor de respaldo de otro sitio. La máquina que lo aloja se reinicia en otro nodo en Talca o en el equipo en espera en Concepción y en los cross-docking. Si la falla coincide con un corte de WAN, un terminal que deba autenticarse de nuevo espera ese reinicio. & Apagar la máquina con el enlace activo y asociar un terminal; medir el tiempo de reinicio. \\
+  Un circuito eléctrico & Los switches de acceso tienen una fuente en la UPS del gabinete y otra en un circuito directo. Cada controlador tiene alimentación redundante desde los circuitos A y B (Cisco, 2026b, tabla~1). & Prueba de RT-08.04, desconectando un circuito a la vez. \\
+\end{tablalafrox}
+
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Cisco (2024, 2025, 2026a, 2026b, s.~f.), FreeRADIUS (2026), Amazon Web Services (s.~f.-q), Microsoft (2026), RT-08.04 (Bases Técnicas Transversales, cap. 8, p. 18) y el Formulario T-11. Diseño propuesto: (Subdocumento 4, Anexo 4-W).\par}
+
+\subsection*{Fase 2: verificación en sitio}
+
+\begin{itemize}
+  \item \textbf{Método.} Puntos de acceso del modelo ofertado, montados en trípode en las posiciones del diseño predictivo, con las cámaras a su temperatura de operación, las puertas cerradas, una ocupación de racks representativa y el MC9400 de cada zona, incluido el Cold Storage Freezer en el congelado. Se mide el criterio de aceptación en 5 y en 6 GHz, y en cada cámara se repite con un punto de acceso apagado.
+  \item \textbf{Alcance.} Los cinco sitios: en Talca, la bodega seca, los andenes y las dos cámaras; en Concepción, la bodega seca y la cámara de refrigerado, cuya superficie se mide para confirmar S-37; y la nave de cada cross-docking.
+  \item \textbf{Fecha y responsables.} Mes 2 del cronograma, dentro del documento de arquitectura física (Formulario T-14, paquete 2.1.2), antes del cableado estructurado del mes 4, porque el estudio fija los puntos de red. La ejecuta LafroX con la jefatura de bodega de cada sitio, que da acceso a las cámaras.
+  \item \textbf{Entregable.} Informe con mapas de señal y de relación señal a ruido por zona y banda, posición y cantidad definitivas de los puntos de acceso y lista de los puntos de red que se cablean.
+\end{itemize}
+
+Si la verificación exige más puntos de acceso que los 65 en operación, una diferencia de hasta siete se cubre con la reserva, que LafroX repone para mantener el 10 \% del numeral 8.4, porque los puntos de acceso son infraestructura on-premise del adjudicatario (Bases Administrativas, art. 14.2, p. 10). Una diferencia mayor se informa al CLIENTE en el mismo informe, antes del cableado.
+
+\subsection*{Fase 3: medición de aceptación}
+
+Después de instalar y antes de la marcha blanca de cada sitio, como aceptación de los paquetes 6.2.3 y 6.3.4 del Formulario T-14, se repite la medición con los puntos de acceso definitivos y se ejecutan las pruebas de la Tabla~\ref{tab:anexo-4b-cobertura-fallas}. La medición se repite si cambia la disposición de los racks de una zona o se reconfigura una cámara. El informe de aceptación conserva los mapas, las mediciones, la configuración y el resultado de cada prueba.
+
+\label{fuente-16-anexo-4b-cobertura-fin}
+
+\endgroup

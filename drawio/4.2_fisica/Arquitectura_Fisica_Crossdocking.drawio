@@ -1,0 +1,107 @@
+<mxfile host="drawio"><diagram name="Cross-docking" id="crossdocking"><mxGraphModel dx="2947" dy="2273" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="c1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#475569;strokeWidth=2;fillColor=#ffffff;verticalAlign=top;align=left;spacingLeft=14;spacingTop=8;fontSize=30;fontColor=#1e293b;" value="Cross-docking × 3 · gabinete de borde&lt;br&gt;Curicó, Chillán y Los Ángeles" vertex="1">
+      <mxGeometry height="1060" width="1220" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-starlink" parent="1" style="image;html=1;image=img/lib/clip_art/telecommunication/Signal_tower_on_128x128.png;fontSize=30;fontColor=#1e293b;verticalLabelPosition=bottom;verticalAlign=top;labelWidth=200;whiteSpace=wrap;" value="Starlink&lt;br&gt;(principal)" vertex="1">
+      <mxGeometry height="80" width="80" x="90" y="130" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-lte" parent="1" style="image;html=1;image=img/lib/clip_art/networking/Wireless_Router_N_128x128.png;fontSize=30;fontColor=#1e293b;verticalLabelPosition=bottom;verticalAlign=top;labelWidth=220;whiteSpace=wrap;" value="LTE&lt;br&gt;2 proveedores" vertex="1">
+      <mxGeometry height="80" width="80" x="90" y="330" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-fw-grupo" connectable="0" parent="1" style="group;fontSize=30;strokeWidth=2;" value="" vertex="1">
+      <mxGeometry height="170" width="420" x="330" y="120" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-fw-caja" parent="cd-fw-grupo" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#94a3b8;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=30;fontColor=#334155;strokeWidth=2;" value="Firewalls compactos · par HA" vertex="1">
+      <mxGeometry height="170" width="420" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-fw-a" parent="cd-fw-grupo" style="image;html=1;image=img/lib/clip_art/networking/Firewall_02_128x128.png;fontSize=30;fontColor=#1e293b;verticalLabelPosition=bottom;verticalAlign=top;labelWidth=150;whiteSpace=wrap;" value="firewall a" vertex="1">
+      <mxGeometry height="70" width="70" x="70" y="50" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-fw-b" parent="cd-fw-grupo" style="image;html=1;image=img/lib/clip_art/networking/Firewall_02_128x128.png;fontSize=30;fontColor=#1e293b;verticalLabelPosition=bottom;verticalAlign=top;labelWidth=150;whiteSpace=wrap;" value="firewall b" vertex="1">
+      <mxGeometry height="70" width="70" x="280" y="50" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-fw-ha" edge="1" parent="cd-fw-grupo" source="cd-fw-a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;fontSize=30;labelBackgroundColor=#ffffff;dashed=1;endArrow=none;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="cd-fw-b" value="HA">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-sw-grupo" connectable="0" parent="1" style="group;fontSize=30;strokeWidth=2;" value="" vertex="1">
+      <mxGeometry height="170" width="420" x="330" y="360" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-sw-caja" parent="cd-sw-grupo" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#94a3b8;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=30;fontColor=#334155;strokeWidth=2;" value="Switches industriales" vertex="1">
+      <mxGeometry height="170" width="420" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-sw-a" parent="cd-sw-grupo" style="image;html=1;image=img/lib/clip_art/networking/Switch_128x128.png;fontSize=30;fontColor=#1e293b;verticalLabelPosition=bottom;verticalAlign=top;labelWidth=150;whiteSpace=wrap;" value="switch a" vertex="1">
+      <mxGeometry height="70" width="70" x="70" y="50" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-sw-b" parent="cd-sw-grupo" style="image;html=1;image=img/lib/clip_art/networking/Switch_128x128.png;fontSize=30;fontColor=#1e293b;verticalLabelPosition=bottom;verticalAlign=top;labelWidth=150;whiteSpace=wrap;" value="switch b" vertex="1">
+      <mxGeometry height="70" width="70" x="280" y="50" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-ap-grupo" connectable="0" parent="1" style="group;fontSize=30;strokeWidth=2;" value="" vertex="1">
+      <mxGeometry height="170" width="360" x="820" y="360" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-ap-caja" parent="cd-ap-grupo" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#94a3b8;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=30;fontColor=#334155;strokeWidth=2;" value="Puntos de acceso" vertex="1">
+      <mxGeometry height="170" width="360" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-ap-1" parent="cd-ap-grupo" style="image;html=1;image=img/lib/clip_art/networking/Wireless_Router_128x128.png;fontSize=30;fontColor=#1e293b;verticalLabelPosition=bottom;verticalAlign=top;labelWidth=120;whiteSpace=wrap;" value="AP 1" vertex="1">
+      <mxGeometry height="70" width="70" x="70" y="50" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-ap-2" parent="cd-ap-grupo" style="image;html=1;image=img/lib/clip_art/networking/Wireless_Router_128x128.png;fontSize=30;fontColor=#1e293b;verticalLabelPosition=bottom;verticalAlign=top;labelWidth=120;whiteSpace=wrap;" value="AP 2" vertex="1">
+      <mxGeometry height="70" width="70" x="220" y="50" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-pc-grupo" connectable="0" parent="1" style="group;fontSize=30;strokeWidth=2;" value="" vertex="1">
+      <mxGeometry height="420" width="420" x="330" y="600" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-pc-caja" parent="cd-pc-grupo" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#94a3b8;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=30;fontColor=#334155;strokeWidth=2;" value="Dos mini-PC industriales" vertex="1">
+      <mxGeometry height="420" width="420" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-pc-pila" parent="cd-pc-grupo" style="image;html=1;image=img/lib/clip_art/computers/Virtual_Machine_128x128.png;fontSize=30;fontColor=#1e293b;verticalLabelPosition=bottom;verticalAlign=top;labelWidth=150;whiteSpace=wrap;" value="activo" vertex="1">
+      <mxGeometry height="70" width="70" x="70" y="60" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-pc-espera" parent="cd-pc-grupo" style="image;html=1;image=img/lib/clip_art/computers/Virtual_Machine_128x128.png;fontSize=30;fontColor=#1e293b;verticalLabelPosition=bottom;verticalAlign=top;labelWidth=150;whiteSpace=wrap;" value="en espera" vertex="1">
+      <mxGeometry height="70" width="70" x="280" y="60" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-pc-replica" edge="1" parent="cd-pc-grupo" source="cd-pc-pila" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;fontSize=30;labelBackgroundColor=#ffffff;dashed=1;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="cd-pc-espera" value="réplica">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-pc-texto" parent="cd-pc-grupo" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=top;fontSize=30;fontColor=#1e293b;" value="WMS · PostgreSQL&lt;br&gt;RabbitMQ · caché Keycloak&lt;br&gt;ADOT&lt;br&gt;réplica sincrónica de PostgreSQL" vertex="1">
+      <mxGeometry height="210" width="380" x="20" y="190" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-op-grupo" connectable="0" parent="1" style="group;fontSize=30;strokeWidth=2;" value="" vertex="1">
+      <mxGeometry height="260" width="360" x="820" y="600" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-op-caja" parent="cd-op-grupo" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#94a3b8;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=30;fontColor=#334155;strokeWidth=2;" value="Operación" vertex="1">
+      <mxGeometry height="260" width="360" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-op-term" parent="cd-op-grupo" style="image;html=1;image=img/lib/clip_art/computers/IBM_Tablet_128x128.png;fontSize=30;fontColor=#1e293b;verticalLabelPosition=bottom;verticalAlign=top;labelWidth=300;whiteSpace=wrap;" value="Terminales MC9400&lt;br&gt;GS1 · 2 por sitio" vertex="1">
+      <mxGeometry height="70" width="70" x="145" y="70" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-e-starlink" edge="1" parent="1" source="cd-starlink" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;fontSize=30;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.294;entryDx=0;entryDy=0;" target="cd-fw-caja" value="">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-e-lte" edge="1" parent="1" source="cd-lte" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;fontSize=30;labelBackgroundColor=#ffffff;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.765;entryDx=0;entryDy=0;" target="cd-fw-caja" value="respaldo">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="250" y="370" />
+          <mxPoint x="250" y="250" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="cd-e-fw-sw" edge="1" parent="1" source="cd-fw-caja" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;fontSize=30;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="cd-sw-caja" value="">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-e-sw-ap" edge="1" parent="1" source="cd-sw-caja" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;fontSize=30;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="cd-ap-caja" value="">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-e-sw-pc-1" edge="1" parent="1" source="cd-sw-caja" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;fontSize=30;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="cd-pc-caja" value="">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-e-sw-pc-2" edge="1" parent="1" source="cd-sw-caja" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;fontSize=30;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="cd-pc-caja" value="">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="cd-e-ap-op" edge="1" parent="1" source="cd-ap-caja" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;fontSize=30;labelBackgroundColor=#ffffff;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="cd-op-caja" value="Wi-Fi 6E">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel></diagram></mxfile>

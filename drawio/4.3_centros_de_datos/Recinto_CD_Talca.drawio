@@ -1,0 +1,108 @@
+<mxfile host="drawio"><diagram name="Recinto CD Talca" id="recinto-talca"><mxGraphModel dx="2094" dy="1104" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="col1" parent="1" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;fillColor=#f6f4ef;strokeColor=#8a8f98;strokeWidth=1.5;verticalAlign=top;spacingTop=8;fontSize=18;fontStyle=1;fontColor=#4b5058;" value="1.ª LÍNEA&lt;br&gt;Control de acceso" vertex="1">
+      <mxGeometry height="510" width="178" as="geometry" />
+    </mxCell>
+    <mxCell id="col2" parent="1" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;fillColor=#f6f4ef;strokeColor=#3b6a8f;strokeWidth=1.5;verticalAlign=top;spacingTop=8;fontSize=18;fontStyle=1;fontColor=#2d5573;" value="2.ª LÍNEA&lt;br&gt;Técnica" vertex="1">
+      <mxGeometry height="510" width="178" x="190" as="geometry" />
+    </mxCell>
+    <mxCell id="col3" parent="1" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;fillColor=#f6f4ef;strokeColor=#b3261e;strokeWidth=1.5;verticalAlign=top;spacingTop=8;fontSize=18;fontStyle=1;fontColor=#9b2c22;" value="3.ª LÍNEA&lt;br&gt;Restringida" vertex="1">
+      <mxGeometry height="510" width="178" x="380" as="geometry" />
+    </mxCell>
+    <mxCell id="col4" parent="1" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;fillColor=#f6f4ef;strokeColor=#8a8f98;strokeWidth=1.5;verticalAlign=top;spacingTop=8;fontSize=18;fontStyle=1;fontColor=#4b5058;" value="EXTERIOR&lt;br&gt;del edificio" vertex="1">
+      <mxGeometry height="510" width="178" x="570" as="geometry" />
+    </mxCell>
+    <mxCell id="acceso" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9ca3af;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Acceso principal&lt;/b&gt;" vertex="1">
+      <mxGeometry height="44" width="162" x="8" y="80" as="geometry" />
+    </mxCell>
+    <mxCell id="pasillo" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9ca3af;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Pasillo de control&lt;/b&gt;&lt;br&gt;y enrolamiento" vertex="1">
+      <mxGeometry height="56" width="162" x="8" y="134" as="geometry" />
+    </mxCell>
+    <mxCell id="bitacora" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9ca3af;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Bitácora&lt;/b&gt;&lt;br&gt;auditable" vertex="1">
+      <mxGeometry height="56" width="162" x="8" y="200" as="geometry" />
+    </mxCell>
+    <mxCell id="video" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9ca3af;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Videovigilancia&lt;/b&gt;&lt;br&gt;IP" vertex="1">
+      <mxGeometry height="56" width="162" x="8" y="266" as="geometry" />
+    </mxCell>
+    <mxCell id="fuera" parent="1" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#8a8f98;strokeWidth=1.5;dashed=1;dashPattern=6 4;verticalAlign=top;spacingTop=4;fontSize=17;fontStyle=2;fontColor=#4b5058;" value="Fuera del recinto" vertex="1">
+      <mxGeometry height="166" width="162" x="8" y="334" as="geometry" />
+    </mxCell>
+    <mxCell id="enrolamiento" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9ca3af;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Enrolamiento&lt;/b&gt;&lt;br&gt;en oficinas del CD" vertex="1">
+      <mxGeometry height="56" width="150" x="14" y="370" as="geometry" />
+    </mxCell>
+    <mxCell id="banos" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9ca3af;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Baños y cañerías&lt;/b&gt;" vertex="1">
+      <mxGeometry height="44" width="150" x="14" y="436" as="geometry" />
+    </mxCell>
+    <mxCell id="esclusa" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dfeaf3;strokeColor=#3b6a8f;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Esclusa&lt;/b&gt;&lt;br&gt;de a una persona" vertex="1">
+      <mxGeometry height="56" width="162" x="198" y="80" as="geometry" />
+    </mxCell>
+    <mxCell id="trabajo" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dfeaf3;strokeColor=#3b6a8f;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Zona de trabajo&lt;/b&gt;&lt;br&gt;y monitoreo" vertex="1">
+      <mxGeometry height="56" width="162" x="198" y="146" as="geometry" />
+    </mxCell>
+    <mxCell id="respaldo" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dfeaf3;strokeColor=#3b6a8f;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Zona de respaldo&lt;/b&gt;&lt;br&gt;y repuestos" vertex="1">
+      <mxGeometry height="56" width="162" x="198" y="212" as="geometry" />
+    </mxCell>
+    <mxCell id="ups" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fbeec7;strokeColor=#c99a1e;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Sala de UPS&lt;/b&gt;&lt;br&gt;y baterías" vertex="1">
+      <mxGeometry height="56" width="162" x="198" y="278" as="geometry" />
+    </mxCell>
+    <mxCell id="tablero" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fbeec7;strokeColor=#c99a1e;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Tablero eléctrico&lt;/b&gt;&lt;br&gt;independiente" vertex="1">
+      <mxGeometry height="56" width="162" x="198" y="344" as="geometry" />
+    </mxCell>
+    <mxCell id="acometida" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dfeaf3;strokeColor=#3b6a8f;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Acometida de&lt;/b&gt;&lt;br&gt;&lt;b&gt;comunicaciones&lt;/b&gt;" vertex="1">
+      <mxGeometry height="56" width="162" x="198" y="410" as="geometry" />
+    </mxCell>
+    <mxCell id="sala" parent="1" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#d6ebe4;strokeColor=#2f5d50;strokeWidth=2;fontSize=17;fontColor=#1f4d40;spacing=4;" value="&lt;b&gt;Sala de servidores&lt;br&gt;y comunicaciones&lt;/b&gt;&lt;br&gt;&lt;br&gt;Racks R01 y R02" vertex="1">
+      <mxGeometry height="126" width="162" x="388" y="80" as="geometry" />
+    </mxCell>
+    <mxCell id="clima" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ebe4f5;strokeColor=#6d5a9e;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Climatización&lt;/b&gt;&lt;br&gt;de precisión" vertex="1">
+      <mxGeometry height="56" width="162" x="388" y="216" as="geometry" />
+    </mxCell>
+    <mxCell id="extincion" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fbeec7;strokeColor=#c99a1e;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Detección&lt;/b&gt;&lt;br&gt;y extinción" vertex="1">
+      <mxGeometry height="56" width="162" x="388" y="282" as="geometry" />
+    </mxCell>
+    <mxCell id="generador" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fbeec7;strokeColor=#c99a1e;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Grupo electrógeno&lt;/b&gt;&lt;br&gt;y estanque" vertex="1">
+      <mxGeometry height="56" width="162" x="578" y="80" as="geometry" />
+    </mxCell>
+    <mxCell id="empalme" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fbeec7;strokeColor=#c99a1e;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Empalme&lt;/b&gt;&lt;br&gt;y transferencia&lt;br&gt;automática" vertex="1">
+      <mxGeometry height="76" width="162" x="578" y="146" as="geometry" />
+    </mxCell>
+    <mxCell id="condensadoras" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ebe4f5;strokeColor=#6d5a9e;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Condensadoras&lt;/b&gt;&lt;br&gt;de climatización" vertex="1">
+      <mxGeometry height="56" width="162" x="578" y="232" as="geometry" />
+    </mxCell>
+    <mxCell id="enlaces" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dfeaf3;strokeColor=#3b6a8f;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Fibra y LTE&lt;/b&gt;&lt;br&gt;ductos separados" vertex="1">
+      <mxGeometry height="56" width="162" x="578" y="298" as="geometry" />
+    </mxCell>
+    <mxCell id="starlink" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dfeaf3;strokeColor=#3b6a8f;fontSize=17;fontColor=#1f2937;spacing=4;" value="&lt;b&gt;Starlink&lt;/b&gt;&lt;br&gt;tercer camino" vertex="1">
+      <mxGeometry height="56" width="162" x="578" y="364" as="geometry" />
+    </mxCell>
+    <mxCell id="e0" edge="1" parent="1" source="acceso" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeColor=#2f5d50;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="pasillo">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e1" edge="1" parent="1" source="pasillo" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeColor=#2f5d50;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="esclusa">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e2" edge="1" parent="1" source="esclusa" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=block;endFill=1;strokeColor=#2f5d50;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.222;entryDx=0;entryDy=0;" target="sala">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="lg1" parent="1" style="rounded=1;html=1;fillColor=#dfeaf3;strokeColor=#3b6a8f;strokeWidth=1.5;" value="" vertex="1">
+      <mxGeometry height="18" width="26" x="40" y="529" as="geometry" />
+    </mxCell>
+    <mxCell id="lg1t" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=17;fontColor=#374151;whiteSpace=nowrap;" value="Operación y comunicaciones" vertex="1">
+      <mxGeometry height="28" width="230" x="72" y="524" as="geometry" />
+    </mxCell>
+    <mxCell id="lg2" parent="1" style="rounded=1;html=1;fillColor=#fbeec7;strokeColor=#c99a1e;strokeWidth=1.5;" value="" vertex="1">
+      <mxGeometry height="18" width="26" x="318" y="529" as="geometry" />
+    </mxCell>
+    <mxCell id="lg2t" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=17;fontColor=#374151;whiteSpace=nowrap;" value="Energía e incendio" vertex="1">
+      <mxGeometry height="28" width="160" x="350" y="524" as="geometry" />
+    </mxCell>
+    <mxCell id="lg3" parent="1" style="rounded=1;html=1;fillColor=#ebe4f5;strokeColor=#6d5a9e;strokeWidth=1.5;" value="" vertex="1">
+      <mxGeometry height="18" width="26" x="530" y="529" as="geometry" />
+    </mxCell>
+    <mxCell id="lg3t" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=17;fontColor=#374151;whiteSpace=nowrap;" value="Climatización" vertex="1">
+      <mxGeometry height="28" width="120" x="562" y="524" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel></diagram></mxfile>
