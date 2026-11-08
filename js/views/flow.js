@@ -79,6 +79,28 @@
     });
   }
 
+
+  const nextDraftId = () => {
+    const n = L.store.get('flujo.secuencia', 0) + 1;
+    L.store.set('flujo.secuencia', n);
+    return 'BOR-' + String(n).padStart(4, '0');
+  };
+  const withStock = (line) => ({ ...line, stock: D.productos.find((p) => p.sku === line.sku)?.stock ?? 0 });
+  function viewOrder(root, id) {
+    const order = L.findOrder(id);
+    $('.page-head h1', root).textContent = order ? 'Flujo de ' + order.id : 'Pedido no encontrado';
+    $('.page-head p', root).textContent = 'Consulta del pedido seleccionado. No cambia el estado ni el borrador del recorrido.';
+    $('#fl-reset', root).hidden = true;
+    if (!order) {
+      $('#fl-main', root).innerHTML = L.empty('search', 'Pedido no encontrado', 'Elija un pedido del listado.', '<a class="btn btn-primary" href="#/pedidos">Volver a pedidos</a>');
+      return;
+    }
+    const step = STEP_STATES.findIndex((states) => states.includes(order.estado));
+    $('#fl-main', root).innerHTML = `<section class="card stack"><h2>Seguimiento de ${esc(order.id)}</h2><p>${esc(order.clienteNombre)} · ${L.estadoBadge(order.estado)}</p>
+      <ol class="timeline">${STEPS.map((s, i) => `<li class="${i < step ? 'done' : i === step ? 'current' : ''}"><span class="dot"></span><strong>${esc(s.t)}</strong>${i === step ? '<div>Estado actual: ' + esc(order.estado) + '</div>' : ''}</li>`).join('')}</ol>
+      <a class="btn btn-secondary" href="#/pedidos/${esc(order.id)}">Ver ficha del pedido</a></section>`;
+  }
+
   let O = null;
   const setState = (estado, note) => { O.estado = estado; O.log.unshift({ at: new Date(), estado, note }); L.announce(`Estado del pedido: ${estado}`); };
   const nowTime = () => new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
@@ -97,27 +119,62 @@
         financeQueue(root);
         return;
       }
+
+      if (q.pedido) { viewOrder(root, q.pedido); return; }
       const scenario = q.escena === 'preparacion' && L.allowed('/preparacion');
-      const draftKey = L.draftKey(scenario ? 'flujo.preparacion' : 'flujo');
+      const mission = scenario ? L.prepMissions().find((m) => m.id === (q.mision || 'M-3302')) : null;
+      const requestedClient = q.cliente && L.findClient(q.cliente);
+      const source = q.duplicar && L.findOrder(q.duplicar);
+      const saved = q.borrador && /^BOR-\d+$/.test(q.borrador) && L.store.get(L.draftKey('flujo.' + q.borrador), null);
+      if ((scenario && !mission?.practicable) || (q.cliente && !requestedClient) || (q.duplicar && !source) || (q.borrador && !saved)) {
+        $('#fl-reset', root).hidden = true;
+        $('#fl-main', root).innerHTML = L.empty('search', 'Registro no encontrado', 'Vuelva al listado y seleccione un registro válido.', '<a class="btn btn-primary" href="#/pedidos">Volver a pedidos</a>');
+        return;
+      }
+      const activeDraft = L.store.get(L.draftKey('flujo.activo'), '');
+      const creation = !scenario && (q.alta || source);
+      const draftId = creation ? nextDraftId() : q.nuevo ? '' : q.borrador || activeDraft;
+      const draftKey = L.draftKey(scenario ? 'flujo.preparacion.' + mission.id : draftId ? 'flujo.' + draftId : 'flujo');
       const fresh = () => {
         const order = newOrder();
         if (scenario) {
+          order.mision = mission.id;
+          if (mission.pedido) {
+            order.id = mission.pedido.id;
+            order.cli = L.findClient(mission.pedido.cliente);
+            order.lines = mission.pedido.lineas.map(withStock);
+          }
           order.estado = 'Planificado';
           order.step = order.maxStep = 3;
           order.log.push({ at: new Date(), estado: 'Planificado', note: 'Escenario de práctica: pedido ya validado y asignado a la ruta.' });
+        } else if (draftId) {
+          order.id = draftId;
+          const previous = L.store.get(draftKey, null);
+          const original = source || (previous?.origenCopia && L.findOrder(previous.origenCopia));
+          order.cli = (original ? L.findClient(original.cliente) : requestedClient || previous?.cli) || D.clientes[0];
+          order.lines = original ? original.lineas.map(withStock) : [];
+          order.chooseClient = !original && !requestedClient && (previous?.chooseClient ?? !previous);
+          if (original) order.origenCopia = original.id;
         }
         return order;
       };
       O = !q.nuevo ? L.store.get(draftKey, null) || fresh() : fresh();
+      if (creation) {
+        L.store.set(draftKey, O);
+        L.store.set(L.draftKey('flujo.activo'), draftId);
+        history.replaceState(null, '', '#/flujo?borrador=' + draftId); // Recargar no vuelve a crear ni duplicar el borrador.
+      }
       // No reabrir un borrador antiguo que se guardó tras forzar un paso futuro.
       if ((O.maxStep >= 6 && !O.delivered) ||
         (O.maxStep >= 5 && !O.guia) ||
         (O.maxStep >= 3 && !O.log.some((e) => e.estado === 'Planificado'))) O = fresh();
       O.log.forEach((entry) => { entry.at = new Date(entry.at); });
-      if (scenario) $('.page-head', root).insertAdjacentHTML('afterend', L.alert('info', 'Escenario de práctica: preparación', 'Este pedido de ejemplo ya está validado y planificado. No altera su borrador del recorrido completo.'));
+      if (scenario) $('.page-head', root).insertAdjacentHTML('afterend', L.alert('info', 'Escenario de práctica: preparación · ' + mission.id, 'Se simula la planificación para practicar el picking. No cambia el pedido de origen ni el borrador del recorrido completo.'));
+      $('.page-head p', root).textContent = O.origenCopia ? 'Borrador nuevo a partir de ' + O.origenCopia + '. El pedido de origen no cambia.' :
+        draftId ? 'Borrador nuevo. Agregue productos antes de guardar o enviar.' : 'Recorra los siete pasos de la simulación, incluida la excepción «local cerrado».';
       $('.page-head .actions', root).insertAdjacentHTML('afterbegin', '<button type="button" class="btn btn-secondary" id="fl-draft">Guardar borrador</button>');
       L.registerDraft(() => { L.store.set(draftKey, O); L.toast('Borrador guardado', 'Puede retomarlo en esta pestaña con este perfil. No se envió ninguna transacción.', 'success'); });
-      $('#fl-draft', root).onclick = () => L.saveDraft();
+      $('#fl-draft', root).onclick = () => O.lines.length ? L.saveDraft() : L.toast('Agregue productos al borrador', '', 'warning');
       L.onLeave(() => { L.store.set(draftKey, O); });
       const draw = () => {
         $('#fl-stepper', root).innerHTML = `<ol class="stepper" aria-label="Pasos del proceso">${STEPS.map((s, i) => { const cls = O.estado === 'Fallido' && i === 5 ? 'error' : i === O.step && !(i === 6 && O.rendido) ? 'current' : i < O.maxStep || (i === 6 && O.rendido) ? 'done' : ''; const can = i <= O.maxStep && i !== O.step && !(i === 6 && O.rendido && O.step === 6); return `<li class="${cls}"><${can ? 'button type="button"' : 'div'} class="step" ${can ? `data-go="${i}"` : ''} ${i === O.step ? 'aria-current="step"' : ''}><span class="bar"></span><span class="lbl">${esc(s.t)}<span class="sr-only">${cls === 'done' ? ' (completado)' : cls === 'current' ? ' (paso actual)' : ''}</span></span></${can ? 'button' : 'div'}></li>`; }).join('')}</ol>`;
@@ -155,6 +212,7 @@
         const over = total(O) + c.vencida > c.credito;
         b.innerHTML = `
           <div class="net-banner ${O.offline ? 'offline' : 'online'}" style="border-radius:var(--radius-sm);margin-bottom:var(--sp-4)">${icon(O.offline ? 'wifi-off' : 'wifi')}<span class="grow">${O.offline ? 'Sin señal en el local: el pedido se guarda en el dispositivo' : 'En línea: stock y crédito en tiempo real'}</span><label class="switch"><input type="checkbox" id="pv-net" ${O.offline ? '' : 'checked'} aria-label="Simular conectividad"> <span class="small">Señal</span></label></div>
+          ${O.chooseClient ? `<div class="field" style="margin-bottom:var(--sp-4)"><label for="pv-client">Cliente del pedido</label><select class="select" id="pv-client">${D.clientes.map((client) => `<option value="${esc(client.id)}" ${client.id === c.id ? 'selected' : ''}>${esc(client.nombre)}</option>`).join('')}</select></div>` : ''}
           <div class="grid grid-3" style="margin-bottom:var(--sp-4)">
             <div class="card" style="box-shadow:none;padding:var(--sp-4)"><div class="small muted">Crédito disponible ${L.tip(O.offline ? 'Dato de la última sincronización válida, con su antigüedad visible.' : 'Dato en línea desde el ERP.')}</div><div class="num" style="font-size:var(--fs-xl);font-weight:700">${fmt.clp(c.credito - c.deuda)}</div><div class="small muted">${O.offline ? 'Sincronizado hoy 06:00 · hace 3 h 30 min' : 'Actualizado ahora'}</div></div>
             <div class="card" style="box-shadow:none;padding:var(--sp-4)"><div class="small muted">Deuda vencida</div><div class="num" style="font-size:var(--fs-xl);font-weight:700">${fmt.clp(c.vencida)}</div><div class="small muted">Límite ${fmt.clp(c.credito)}</div></div>
@@ -170,7 +228,9 @@
             <div style="text-align:right"><div class="small muted">Subtotal ${fmt.clp(subtotal(O))}</div><div id="pv-discount" class="small muted">${discount(O) ? 'Descuento −' + fmt.clp(discount(O)) : 'Sin descuento'}</div><div style="font-size:var(--fs-xl);font-weight:700" class="num">${fmt.clp(total(O))}</div></div>
           </div>
           ${over ? `<div style="margin-top:var(--sp-3)">${L.alert('warning', 'El pedido supera el crédito disponible del cliente', 'Puede guardarlo: al sincronizar, el sistema revalida el crédito y, si excede el umbral, lo retiene para autorización.')}</div>` : ''}
-          <div class="row-between" style="margin-top:var(--sp-5)"><span class="small muted">El precio acordado queda fijo en el pedido.</span><button type="button" class="btn btn-primary big-btn" id="pv-save">${icon(O.offline ? 'download' : 'send')}${O.offline ? 'Guardar pedido sin conexión' : 'Enviar pedido'}</button></div>`;
+          <div class="row-between" style="margin-top:var(--sp-5)"><span class="small muted">El precio acordado queda fijo en el pedido.</span><button type="button" class="btn btn-primary big-btn" id="pv-save" ${O.lines.length ? '' : 'disabled'}>${icon(O.offline ? 'download' : 'send')}${O.offline ? 'Guardar pedido sin conexión' : 'Enviar pedido'}</button></div>`;
+        const clientSelect = $('#pv-client', b);
+        if (clientSelect) clientSelect.onchange = () => { O.cli = L.findClient(clientSelect.value); draw(); $('#pv-client', root).focus(); };
         $('#pv-net', b).onchange = (e) => { O.offline = !e.target.checked; preventa(b); };
         $('#pv-extra', b) && ($('#pv-extra', b).onclick = () => L.modal({
           title: 'Descuento excepcional',
@@ -188,7 +248,7 @@
         };
         $$('[data-q]', b).forEach((x) => (x.onclick = () => { const l = O.lines[x.dataset.q]; l.cant = Math.max(1, l.cant + Number(x.dataset.d)); preventa(b); $(`[data-q="${x.dataset.q}"][data-d="${x.dataset.d}"]`, b).focus(); }));
         $$('[data-qi]', b).forEach((x) => (x.onchange = () => { const v = parseInt(x.value, 10); if (!(v > 0)) { L.toast('Cantidad no válida', 'Ingrese un número entero mayor que cero.', 'error'); x.value = O.lines[x.dataset.qi].cant; return; } O.lines[x.dataset.qi].cant = v; preventa(b); }));
-        $$('[data-rm]', b).forEach((x) => (x.onclick = () => { if (O.lines.length === 1) { L.toast('El pedido necesita al menos una línea', '', 'warning'); return; } const [rm] = O.lines.splice(x.dataset.rm, 1); preventa(b); L.toast('Línea quitada', rm.nombre, 'info', { action: 'Deshacer', onAction: () => { O.lines.splice(x.dataset.rm, 0, rm); preventa(b); } }); }));
+        $$('[data-rm]', b).forEach((x) => (x.onclick = () => { const [rm] = O.lines.splice(x.dataset.rm, 1); preventa(b); L.toast('Línea quitada', rm.nombre, 'info', { action: 'Deshacer', onAction: () => { if (O.step === 0 && !O.lines.some((l) => l.sku === rm.sku)) { O.lines.splice(x.dataset.rm, 0, rm); preventa(b); } } }); }));
         const add = (name) => { if (O.lines.some((l) => l.nombre === name)) { L.toast('Ya está en el pedido', 'Ajuste la cantidad en la tabla.', 'info'); return; } O.lines.push({ ...pick(name), cant: 6 }); preventa(b); L.toast('Producto agregado', name, 'success', { duration: 2000 }); };
         $$('[data-sug]', b).forEach((x) => (x.onclick = () => add(x.dataset.sug)));
         L.combobox($('#pv-add', b), () => D.productos.map((p) => ({ label: p.nombre, meta: `${p.sku} · ${p.temp}` })), { onSelect: (it) => add(it.label) });
@@ -324,7 +384,7 @@
         const order = { Seco: 0, Refrigerado: 1, Congelado: 2 };
         const lines = [...O.lines].map((l, i) => ({ ...l, i, ubic: `${['A', 'B', 'R', 'C'][order[l.temp] + (l.temp === 'Seco' ? i % 2 : 1)]}-${String(10 + i * 7).padStart(2, '0')}-${(i % 4) + 1}`, lote: `L26${11 - (i % 2)}-${40 + i * 3}`, vence: fmt.date(new Date(2026, 11 + (i % 3), 4 + i * 5)) })).sort((a, z) => order[a.temp] - order[z.temp]);
         O.manual = O.manual || {}; O.fefoExc = O.fefoExc || {};
-        if (O.estado === 'Planificado') setState('En picking', 'Misión M-3302 iniciada (FEFO)');
+        if (O.estado === 'Planificado') setState('En picking', 'Misión ' + (O.mision || 'M-3302') + ' iniciada (FEFO)');
         side();
         const done = lines.filter((l) => O.picked[l.i]).length;
         // Thermal sequence: cold zones are released only when the previous zones are complete (RF-05.04, RNG-13)
@@ -366,14 +426,14 @@
           title: 'Lote FEFO no disponible', icon: 'warning:layers',
           body: `<p>${esc(O.lines[i].nombre)}: el siguiente lote en orden FEFO es <strong class="mono">L2612-07</strong> en <span class="mono">B-22-3</span>.</p><div class="field"><label for="fe-m">Motivo <span class="req" aria-hidden="true">*</span></label><select id="fe-m" class="select"><option value="">Seleccione…</option><option>No encontrado</option><option>Dañado</option><option>Cantidad insuficiente</option></select></div><p class="hint">La excepción queda en la bitácora de auditoría con preparador, lote y motivo.</p>`,
           onOpen: (dlg) => L.bindField($('#fe-m', dlg), ['required']),
-          actions: [{ label: 'Cancelar' }, { label: 'Tomar siguiente lote', cls: 'btn-primary', onClick: (api) => { if (!L.validateAll(api.el)) return false; const motivo = $('#fe-m', api.el).value; O.fefoExc[i] = { lote: 'L2612-07', motivo }; O.picked[i] = true; O.log.unshift({ at: new Date(), estado: 'En picking', note: `Excepción FEFO · ${O.lines[i].nombre} · ${motivo}` }); L.logAudit('Creación', 'Picking', `Excepción FEFO en misión M-3302: ${O.lines[i].nombre}, lote L2612-07 en vez del instruido · motivo: ${motivo}`, 'App móvil'); picking(b); L.toast('Excepción FEFO registrada', `${motivo} · quedó en la auditoría.`, 'warning'); } }]
+          actions: [{ label: 'Cancelar' }, { label: 'Tomar siguiente lote', cls: 'btn-primary', onClick: (api) => { if (!L.validateAll(api.el)) return false; const motivo = $('#fe-m', api.el).value; O.fefoExc[i] = { lote: 'L2612-07', motivo }; O.picked[i] = true; O.log.unshift({ at: new Date(), estado: 'En picking', note: `Excepción FEFO · ${O.lines[i].nombre} · ${motivo}` }); L.logAudit('Creación', 'Picking', `Excepción FEFO en misión ${O.mision || 'M-3302'}: ${O.lines[i].nombre}, lote L2612-07 en vez del instruido · motivo: ${motivo}`, 'App móvil'); picking(b); L.toast('Excepción FEFO registrada', `${motivo} · quedó en la auditoría.`, 'warning'); } }]
         });
         // Manual entry only as an audited contingency: the code must still match the instructed product (RF-05.02)
         const manual = (i) => { const l = lines.find((x) => x.i === i); const code = String(7800000000000 + parseInt(l.sku.replace(/\D/g, ''), 10) * 7).slice(0, 13); L.modal({
           title: 'Ingreso manual de contingencia', icon: 'warning:edit',
           body: `<p class="muted" style="margin-top:0">Use esta opción solo si la etiqueta está ilegible o el lector falla. El evento queda en la bitácora como «Ingreso Manual» para la auditoría de calidad.</p><div class="form-grid"><div class="field"><label for="mn-c">Código numérico (GTIN) <span class="req" aria-hidden="true">*</span></label><input id="mn-c" class="input mono" inputmode="numeric" placeholder="13 dígitos"><span class="hint">Código de este producto: <span class="mono">${code}</span></span></div><div class="field"><label for="mn-l">Lote <span class="req" aria-hidden="true">*</span></label><input id="mn-l" class="input mono" value=""><span class="hint">Lote instruido: <span class="mono">${l.lote}</span></span></div><div class="field full"><label for="mn-m">Motivo <span class="req" aria-hidden="true">*</span></label><select id="mn-m" class="select"><option value="">Seleccione…</option><option>Etiqueta ilegible</option><option>Lector sin batería o con falla</option><option>Etiqueta ausente</option></select></div></div>`,
           onOpen: (dlg) => { L.bindField($('#mn-c', dlg), [(v) => (v.trim() === code ? '' : 'El código no corresponde al producto instruido: la confirmación queda bloqueada.')]); L.bindField($('#mn-l', dlg), [(v) => (v.trim().toUpperCase() === l.lote ? '' : `El lote no corresponde al instruido (${l.lote}).`)]); L.bindField($('#mn-m', dlg), ['required']); },
-          actions: [{ label: 'Cancelar' }, { label: 'Confirmar con ingreso manual', cls: 'btn-primary', onClick: (api) => { if (!L.validateAll(api.el)) return false; const motivo = $('#mn-m', api.el).value; O.manual[i] = motivo; O.picked[i] = true; O.log.unshift({ at: new Date(), estado: 'En picking', note: `Ingreso Manual · ${l.nombre} · ${motivo}` }); L.logAudit('Creación', 'Picking', `Ingreso Manual en misión M-3302: ${l.nombre}, lote ${l.lote} · motivo: ${motivo}`, 'App móvil'); picking(b); L.toast('Línea confirmada por ingreso manual', 'Quedó registrada como «Ingreso Manual» en la auditoría.', 'warning'); } }]
+          actions: [{ label: 'Cancelar' }, { label: 'Confirmar con ingreso manual', cls: 'btn-primary', onClick: (api) => { if (!L.validateAll(api.el)) return false; const motivo = $('#mn-m', api.el).value; O.manual[i] = motivo; O.picked[i] = true; O.log.unshift({ at: new Date(), estado: 'En picking', note: `Ingreso Manual · ${l.nombre} · ${motivo}` }); L.logAudit('Creación', 'Picking', `Ingreso Manual en misión ${O.mision || 'M-3302'}: ${l.nombre}, lote ${l.lote} · motivo: ${motivo}`, 'App móvil'); picking(b); L.toast('Línea confirmada por ingreso manual', 'Quedó registrada como «Ingreso Manual» en la auditoría.', 'warning'); } }]
         }); };
         $('#pk-close', b).onclick = (e) => L.busy(e.currentTarget, () => { O.log.unshift({ at: new Date(), estado: 'En picking', note: 'Misión cerrada; detalle enviado al ERP' }); L.toast('Misión cerrada', 'Detalle por línea, lote y faltantes enviado al ERP.', 'success'); next(); }, 800);
       }
@@ -468,7 +528,7 @@
       }
 
       root.addEventListener('click', (e) => { const g = e.target.closest('[data-go]'); if (g) { O.step = +g.dataset.go; draw(); } });
-      $('#fl-reset', root).onclick = async () => { if (await L.confirm({ title: '¿Reiniciar la simulación?', message: 'Se descartará el avance del pedido PV-264822.', confirmLabel: 'Reiniciar' })) { O = fresh(); L.store.set(draftKey, O); draw(); L.toast('Simulación reiniciada', '', 'info'); } };
+      $('#fl-reset', root).onclick = async () => { if (await L.confirm({ title: '¿Reiniciar la simulación?', message: 'Se descartará el avance del pedido ' + O.id + '.', confirmLabel: 'Reiniciar' })) { O = fresh(); L.store.set(draftKey, O); draw(); L.toast('Simulación reiniciada', '', 'info'); } };
       const requested = Number(q.paso) - 1;
       if (q.paso && Number.isInteger(requested) && requested >= 0 && requested <= O.maxStep) O.step = requested;
       else if (q.paso) L.toast('Ese paso aún no está disponible', 'Complete los pasos anteriores para continuar.', 'warning');

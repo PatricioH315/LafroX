@@ -27,6 +27,23 @@
 
   const ficha = (p, i) => ({ ...p, formato: (p.nombre.match(/·\s*(.+)$/) || [])[1] || 'Unidad', almacenamiento: p.temp, tmin: RANGE[p.temp][0], tmax: RANGE[p.temp][1], peso: +(0.25 + (i % 7) * 0.35).toFixed(2), dims: `${20 + (i % 4) * 5} × ${15 + (i % 3) * 5} × ${10 + (i % 5) * 4}`, vida: p.temp === 'Seco' ? 180 + (i % 4) * 60 : p.temp === 'Refrigerado' ? 21 + (i % 3) * 7 : 270, vence: p.temp !== 'Seco' || i % 2 === 0, equivalencias: [`SRM-${40210 + i * 17}`, `CSE-${81000 + i * 3}`] });
 
+
+  const receiptOrder = (id) => D.ocs.find((order) => order.id === (id || 'OC-88412'));
+  const receiptEntries = (id) => L.store.get('recepcion.pallets.' + id, []);
+  const receiptState = (o) => o.estado === 'Programada' && receiptEntries(o.id).length ? 'En recepción' : o.estado;
+  function receiptComparison(o) {
+    const known = o.id === 'OC-88412' ? [
+      ['Leche entera · 1 L', 1200, 1200], ['Yogur batido frutilla', 2400, 2304],
+      ['Queso gauda laminado', 600, 0], ['Mantequilla con sal', 480, 0]
+    ] : [];
+    return `<section class="card stack" id="rc-cmp"><h2>Comparativo OC vs. recibido</h2>
+      <dl class="desc-list"><dt>Orden</dt><dd>${esc(o.id)}</dd><dt>Líneas de la OC</dt><dd>${o.lineas}</dd><dt>Discrepancias de la muestra</dt><dd>${o.discrepancias}</dd></dl>
+      ${known.length ? `<ul class="list">${known.map(([name, planned, received]) => `<li><span class="grow">${esc(name)}</span><span class="num">${fmt.n(received)}/${fmt.n(planned)}</span></li>`).join('')}</ul>` :
+      '<p class="muted">La muestra de esta OC no incluye el desglose original de cantidades por SKU.</p>'}
+      ${receiptEntries(o.id).length ? `<h3>Pallets registrados en esta sesión</h3><ul class="list">${receiptEntries(o.id).map((e) => `<li><span class="grow">${esc(e.producto)} · lote ${esc(e.lote)} · ${e.cantidad} u</span><span class="mono">${esc(e.sscc)}</span></li>`).join('')}</ul>` : ''}
+    </section>`;
+  }
+
   L.route('/recepcion', {
     title: 'Recepción', parent: '/inicio', block: 'Proceso operacional principal', module: 'M1 Recepción', rf: ['RF-01.01', 'RF-01.08', 'RF-01.09', 'RNF-02.01', 'RNF-01.03'], actors: ['Jefa de Bodega', 'Preparador', 'Proveedor'],
     render: () => `<div class="page-head"><div class="titles"><h1>Recepción de proveedores</h1><p class="muted" style="margin:0">Órdenes de compra programadas por andén. Cada lote queda registrado al ingresar.</p></div><div class="actions">${L.can('recepcion.ubicar') ? `<button type="button" class="btn btn-secondary" id="rc-loc">${icon('pin')}Ubicar pallet</button>` : ''}${L.can('recepcion.registrar') ? `<a class="btn btn-primary" href="#/recepcion/nueva">${icon('scan')}Registrar recepción</a>` : ''}</div></div>
@@ -46,16 +63,24 @@
       actions: [{ label: 'Cancelar' }, { label: 'Confirmar ubicación', cls: 'btn-primary', onClick: (api) => { if (!L.validateAll(api.el)) return false; L.toast('Pallet ubicado', `SSCC asociado a ${$('#ub-u', api.el).value.split(' ·')[0]}.`, 'success'); } }]
     });
     L.dataTable($('#oc-t', root), {
-      id: 'oc', caption: 'Órdenes de compra', rows: D.ocs, searchKeys: ['id', 'proveedor'], filters: [{ key: 'estado', label: 'Estado', options: ['Programada', 'En recepción', 'Cerrada'] }],
+      id: 'oc', caption: 'Órdenes de compra', rows: () => D.ocs.map((o) => ({ ...o, estado: receiptState(o) })), searchKeys: ['id', 'proveedor'], filters: [{ key: 'estado', label: 'Estado', options: ['Programada', 'En recepción', 'Cerrada'] }],
       columns: [{ key: 'id', label: 'Orden', render: (r) => `<span class="mono">${r.id}</span>` }, { key: 'proveedor', label: 'Proveedor' }, { key: 'lineas', label: 'Líneas', right: true }, { key: 'anden', label: 'Andén' }, { key: 'hora', label: 'Hora' }, { key: 'discrepancias', label: 'Discrepancias', right: true, render: (r) => (r.discrepancias ? L.badge(r.discrepancias + ' alertas', 'warning') : '—') }, { key: 'estado', label: 'Estado', render: (r) => L.badge(r.estado, r.estado === 'Cerrada' ? 'success' : r.estado === 'En recepción' ? 'accent' : 'info') }],
-      rowActions: (r) => (L.can('recepcion.registrar') ? [{ label: r.estado === 'Cerrada' ? 'Ver comparativo' : 'Recepcionar', icon: 'scan', onClick: () => L.go('/recepcion/nueva') }] : [])
+      rowActions: (r) => !L.can('recepcion.registrar') ? [] : [{ label: 'Ver comparativo', icon: 'eye', onClick: () => L.go('/recepcion/nueva?oc=' + encodeURIComponent(r.id) + '&modo=consulta') },
+        ...(r.estado !== 'Cerrada' && L.can('recepcion.registrar') ? [{ label: 'Recepcionar', icon: 'scan', onClick: () => L.go('/recepcion/nueva?oc=' + encodeURIComponent(r.id)) }] : [])]
     }); }
   });
 
   L.route('/recepcion/nueva', {
     permission: 'recepcion.registrar',
     title: 'Registrar recepción', parent: '/recepcion', block: 'Proceso operacional principal', module: 'M1 Recepción', rf: ['RF-01.01', 'RF-01.02', 'RF-01.03', 'RF-01.04', 'RF-01.05', 'RF-01.06', 'RF-01.07', 'RF-01.11'], actors: ['Jefa de Bodega', 'Preparador'],
-    render: () => `<div class="page-head"><div class="titles"><span class="page-kicker">OC-88412 · Lácteos del Sur S.A. · andén 3</span><h1>Registrar recepción</h1><p class="muted" style="margin:0">Escanee la etiqueta GS1-128: el sistema interpreta GTIN (01), lote (10), vencimiento (17) y SSCC (00).</p></div></div>
+    render: (_, query) => {
+      const order = receiptOrder(query.oc);
+      if (!order) return L.empty('search', 'Orden de compra no encontrada', 'Seleccione una orden del listado.', '<a class="btn btn-primary" href="#/recepcion">Volver a recepción</a>');
+      const header = `<div class="page-head"><div class="titles"><span class="page-kicker">${esc(order.id)} · ${esc(order.proveedor)} · ${esc(order.anden)}</span>`;
+      if (order.estado === 'Cerrada' || query.modo === 'consulta') {
+        return header + `<h1>Comparativo de recepción</h1><p>${L.estadoBadge(receiptState(order))} · Solo consulta</p></div><a class="btn btn-secondary" href="#/recepcion">Volver a recepción</a></div>${receiptComparison(order)}`;
+      }
+      return header + `<h1>Registrar recepción</h1><p class="muted">Escanee la etiqueta GS1-128: GTIN (01), lote (10), vencimiento (17) y SSCC (00).</p></div></div>
       <div class="split"><form class="card stack-lg" id="rc" novalidate>
         <div class="field"><label for="rc-scan">Lectura GS1</label><div class="row" style="flex-wrap:nowrap"><div class="input-wrap" style="flex:1">${icon('scan')}<input id="rc-scan" class="input mono" placeholder="(01)07801234500017(10)L2611-47(17)261211"></div><button type="button" class="btn btn-secondary" id="rc-sim">Simular lectura</button></div><span class="hint">Pruebe también una lectura sin lote para ver la validación.</span></div>
         <div class="form-grid">
@@ -71,9 +96,14 @@
         ${L.accordionHtml('Registrar no conformidad', `<div class="form-grid"><div class="field"><label for="nc-t">Tipo</label><select id="nc-t" class="select"><option>Embalaje dañado</option><option>Temperatura fuera de rango</option><option>Etiqueta ilegible</option><option>Producto distinto al pedido</option></select></div><div class="field"><label for="nc-q">Unidades afectadas</label><input id="nc-q" class="input num" type="number" min="0" value="0"></div><div class="full"><div class="dropzone" id="nc-ph" style="min-height:90px">${icon('camera')}<span>Foto de la no conformidad</span></div><button type="button" class="btn btn-tertiary btn-sm" id="nc-fake" style="margin-top:6px">Usar foto de ejemplo</button></div></div><p class="hint">Al confirmar, la cantidad afectada pasa a «Cuarentena» y se notifica a Calidad.</p>`)}
         <div class="row" style="justify-content:flex-end"><button type="submit" class="btn btn-primary big-btn">${icon('check')}Confirmar pallet y generar SSCC</button></div>
       </form>
-      <aside class="card stack"><h2>Comparativo OC vs. recibido</h2><ul class="list" id="rc-cmp">${[['Leche entera · 1 L', 1200, 1200], ['Yogur batido frutilla', 2400, 2304], ['Queso gauda laminado', 600, 0], ['Mantequilla con sal', 480, 0]].map(([n, o, r]) => `<li><span class="grow small">${n}</span><span class="num small">${fmt.n(r)}/${fmt.n(o)}</span>${r && r < o ? L.badge('−' + (o - r), 'warning') : r ? L.badge('OK', 'success') : L.badge('Pendiente')}</li>`).join('')}</ul>${L.alert('info', 'Sin bloquear el cierre', 'Las discrepancias generan alertas pero no impiden cerrar la recepción.')}</aside></div>`,
-    mount: (root) => {
+      <aside>${receiptComparison(order)}</aside></div>`;
+    },
+    mount: (root, _, query) => {
       const f = $('#rc', root);
+      const order = receiptOrder(query.oc);
+      if (!f || !order) return;
+      const expected = order.id === 'OC-88412' ? 1200 : null;
+      if (expected === null) $('#rc-oc', root).textContent = 'La muestra de esta OC no informa cantidad esperada por SKU.';
       const sku = $('#rc-sku', root), lot = $('#rc-l', root), venc = $('#rc-v', root), q = $('#rc-q', root), zone = $('#rc-z', root);
       L.bindField(sku, ['required']);
       L.bindField(q, ['positive']);
@@ -91,15 +121,15 @@
         sku.value = D.productos[9].sku; sku._validate();
         if (g.lot) { lot.value = g.lot; lot._validate(); } else { lot.value = ''; lot._validate(); lot.focus(); }
         if (g.exp) { venc.value = `20${g.exp.slice(0, 2)}-${g.exp.slice(2, 4)}-${g.exp.slice(4, 6)}`; venc._validate(); }
-        q.value = q.value || 1200; q._validate();
+        q.value = q.value || expected || ''; q._validate();
         L.toast('Etiqueta GS1 interpretada', `GTIN ${g.gtin}${g.lot ? ' · lote ' + g.lot : ' · sin lote'}${g.exp ? ' · vence ' + g.exp : ''}`, g.lot ? 'success' : 'warning');
       };
       let n = 0;
       $('#rc-sim', root).onclick = () => { const s = ['(01)07801234500017(10)L2611-47(17)261211', '(01)07801234500024(17)261130', '(01)07809999999998(10)LX-2290(17)270115'][n++ % 3]; $('#rc-scan', root).value = s; apply(s); };
       $('#rc-scan', root).addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); apply(e.target.value); } });
-      q.addEventListener('change', () => { $('#rc-alerts', root).innerHTML = q.value && +q.value !== 1200 ? L.alert('warning', `Discrepancia con la OC: ${q.value > 1200 ? '+' : ''}${q.value - 1200} unidades`, 'Se generará una alerta al cerrar, sin bloquear el cierre.') : ''; });
+      q.addEventListener('change', () => { $('#rc-alerts', root).innerHTML = expected !== null && q.value && +q.value !== expected ? L.alert('warning', `Discrepancia con la OC: ${q.value > expected ? '+' : ''}${q.value - expected} unidades`, 'Se generará una alerta al cerrar, sin bloquear el cierre.') : ''; });
       const ncDz = L.dropzone($('#nc-ph', root), { accept: 'image/*' });
-      $('#rc-bal', root).onclick = (e) => L.busy(e.currentTarget, () => { const n = +q.value || 1200; const teo = +(n * 1.03).toFixed(1); const real = +(teo * 0.994).toFixed(1); $('#rc-kg', root).value = real; $('#rc-kgh', root).textContent = `Teórico ${fmt.n(teo, 1)} kg · diferencia ${fmt.n(Math.abs(real - teo), 1)} kg (dentro de la tolerancia de 2 %).`; }, 800);
+      $('#rc-bal', root).onclick = (e) => L.busy(e.currentTarget, () => { const n = +q.value || expected || 1; const teo = +(n * 1.03).toFixed(1); const real = +(teo * 0.994).toFixed(1); $('#rc-kg', root).value = real; $('#rc-kgh', root).textContent = `Teórico ${fmt.n(teo, 1)} kg · diferencia ${fmt.n(Math.abs(real - teo), 1)} kg (dentro de la tolerancia de 2 %).`; }, 800);
       $('#nc-fake', root).onclick = async () => ncDz.add([await L.fakeFile('no_conformidad.png')]);
       f.onsubmit = (e) => {
         e.preventDefault();
@@ -108,15 +138,19 @@
         const ncQ = +($('#nc-q', root).value || 0);
         // RF-01.04: a non-conformity needs at least one photo
         if (ncQ > 0 && !ncDz.files.length) { L.toast('Falta la foto de la no conformidad', 'Adjunte al menos una fotografía de las unidades afectadas.', 'error'); return; }
+        const entry = { producto: D.productos.find((p) => p.sku === sku.value)?.nombre || sku.value, lote: lot.value, cantidad: +q.value };
         L.busy($('[type=submit]', f), () => {
           const sscc = '00780123450' + String(Math.floor(Math.random() * 1e8)).padStart(8, '0');
-          const local = L.cdEvent(`Recepción pallet ${sscc.slice(-6)}`);
+          L.store.set('recepcion.pallets.' + order.id, [...receiptEntries(order.id), { ...entry, sscc }]);
+          const oldComparison = $('#rc-cmp', root);
+          if (oldComparison) oldComparison.outerHTML = receiptComparison(order);
+          const local = L.cdEvent(`Recepción ${order.id} · pallet ${sscc.slice(-6)}`);
           if (erpDown() || local) { L.store.set('erp.queue', [...erpQueue(), sscc]); L.toast(local ? 'Guardado en el servidor local del CD' : 'ERP no disponible', 'El ingreso quedó en cola y se enviará al ERP automáticamente, sin volver a digitarlo.', 'warning'); }
           else L.toast('Ingreso enviado al ERP', 'Transacción de inventario registrada.', 'success');
           // RF-01.05: the affected quantity goes to quarantine at once and Quality is notified in the app
           let ncHtml = '';
           if (ncQ > 0) { const lote = lot.value, prod = D.productos.find((x) => x.sku === sku.value); const lt = D.lotes.find((x) => x.id === lote); if (lt && lt.estado === 'Liberado') lt.estado = 'En evaluación'; D.notificaciones.unshift({ t: `No conformidad en recepción: ${ncQ} u en cuarentena`, d: `${prod?.nombre || 'Producto'} · lote ${lote} · ${$('#nc-t', root).value}`, kind: 'warning', ruta: '/calidad', hace: 'ahora' }); L.logAudit('Creación', 'Recepción', `No conformidad «${$('#nc-t', root).value}»: ${ncQ} u del lote ${lote} pasan a Cuarentena, bloqueadas para picking; Calidad notificada`); ncHtml = L.alert('warning', `${ncQ} u en cuarentena`, `Las unidades afectadas del lote ${esc(lote)} quedaron bloqueadas para picking y Calidad recibió la alerta en la aplicación. La foto se descarga desde Calidad.`); }
-          L.modal({ title: 'Pallet confirmado', icon: 'success:check-circle', body: `${ncHtml}<p>SSCC generado bajo GS1-128 y asociado a GTIN, lote, vencimiento y fecha de recepción.</p><div class="card" style="box-shadow:none;text-align:center"><svg viewBox="0 0 220 60" width="100%" height="60" role="img" aria-label="Código de barras del SSCC">${Array.from({ length: 70 }, (_, i) => `<rect x="${i * 3.1}" y="0" width="${(i * 7) % 3 ? 1.2 : 2.2}" height="60" fill="currentColor"/>`).join('')}</svg><div class="mono" style="margin-top:6px">(00) ${sscc}</div></div>`, actions: [{ label: 'Imprimir etiqueta', cls: 'btn-secondary', icon: 'printer', onClick: () => L.toast('Etiqueta enviada a la impresora del andén', '', 'success') }, { label: 'Siguiente pallet', cls: 'btn-primary', onClick: () => { f.reset(); $$('.field', f).forEach((x) => x.classList.remove('is-invalid', 'is-valid')); } }] });
+          L.modal({ title: 'Pallet confirmado', icon: 'success:check-circle', body: `${ncHtml}<p>Orden ${esc(order.id)}. SSCC generado bajo GS1-128 y asociado a GTIN, lote, vencimiento y fecha de recepción.</p><div class="card" style="box-shadow:none;text-align:center"><svg viewBox="0 0 220 60" width="100%" height="60" role="img" aria-label="Código de barras del SSCC">${Array.from({ length: 70 }, (_, i) => `<rect x="${i * 3.1}" y="0" width="${(i * 7) % 3 ? 1.2 : 2.2}" height="60" fill="currentColor"/>`).join('')}</svg><div class="mono" style="margin-top:6px">(00) ${sscc}</div></div>`, actions: [{ label: 'Imprimir etiqueta', cls: 'btn-secondary', icon: 'printer', onClick: () => L.toast('Etiqueta enviada a la impresora del andén', '', 'success') }, { label: 'Siguiente pallet', cls: 'btn-primary', onClick: () => { f.reset(); $$('.field', f).forEach((x) => x.classList.remove('is-invalid', 'is-valid')); } }] });
         }, 900);
       };
     }

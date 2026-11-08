@@ -6,7 +6,7 @@
   L.route('/pedidos', {
     title: 'Pedidos', parent: '/inicio', block: 'Proceso operacional principal', module: 'M3 Preventa', rf: ['RF-03.03', 'RF-03.16', 'RF-17.12'], actors: ['Preventista', 'Gerente Comercial', 'Gerente de Operaciones', 'Planificador de Rutas'],
     render: () => `<div class="page-head"><div class="titles"><h1>Pedidos</h1><p class="muted" style="margin:0">Preventa, portal de clientes y EDI en un solo listado, con su estado en el proceso.</p></div>
-      <div class="actions"><button type="button" class="btn btn-secondary" id="pd-exp">${icon('download')}Exportar CSV</button>${L.allowed('/flujo') ? `<a class="btn btn-primary" href="#/flujo">${icon('plus')}Nuevo pedido</a>` : L.allowed('/terreno/preventa') ? `<a class="btn btn-primary" href="#/terreno/preventa">${icon('plus')}Nuevo pedido</a>` : ''}</div></div>
+      <div class="actions"><button type="button" class="btn btn-secondary" id="pd-exp">${icon('download')}Exportar CSV</button>${L.allowed('/flujo') ? `<a class="btn btn-primary" href="#/flujo?alta=1">${icon('plus')}Nuevo pedido</a>` : L.allowed('/terreno/preventa') ? `<a class="btn btn-primary" href="#/terreno/preventa">${icon('plus')}Nuevo pedido</a>` : ''}</div></div>
       <div class="grid grid-4" style="margin-bottom:var(--sp-5)" id="pd-kpi"></div>
       <div class="card card-flush" id="pd-t"></div>`,
     mount: (root, p, q) => {
@@ -27,7 +27,7 @@
         ],
         rowActions: (r, redraw) => [
           { label: 'Ver detalle', icon: 'eye', onClick: () => L.go('/pedidos/' + r.id) },
-          ...(L.allowed('/flujo') ? [{ label: 'Ver en el flujo', icon: 'activity', onClick: () => L.go('/flujo') }, { label: 'Duplicar pedido', icon: 'copy', onClick: () => L.toast('Pedido duplicado', `Borrador creado a partir de ${r.id}.`, 'success') }] : []),
+          ...(L.allowed('/flujo') ? [{ label: 'Ver en el flujo', icon: 'activity', onClick: () => L.go('/flujo?pedido=' + encodeURIComponent(r.id)) }, { label: 'Duplicar pedido', icon: 'copy', onClick: () => L.go('/flujo?duplicar=' + encodeURIComponent(r.id)) }] : []),
           ...(!L.can('pedido.anular') ? [] : [{ sep: true },
           { label: 'Anular pedido', icon: 'ban', danger: true, onClick: async () => { if (await L.confirm({ title: `¿Anular ${r.id}?`, message: 'Se liberará el stock reservado y se avisará al cliente. Queda registrado en la auditoría.', confirmLabel: 'Anular pedido', danger: true, requireText: 'ANULAR' })) { L.logAudit('Modificación', 'Pedido', `Anulación de ${r.id}`, 'Consola web', r.estado, 'Anulado'); r.estado = 'Fallido'; redraw(); L.toast('Pedido anulado', r.id, 'success'); } } }])
         ],
@@ -56,7 +56,7 @@
         ${o.estado === 'Retenido' ? L.alert('danger', 'Pedido retenido por crédito', 'Excede el límite en 14 % sobre el umbral de 10 %. Requiere autorización registrada de un supervisor.') + '<div style="height:16px"></div>' : ''}
         <div class="split"><div class="stack-lg">
           <section class="card card-flush"><div class="card-head"><h2>Líneas</h2><span class="small muted">Precio acordado conservado</span></div><div class="table-wrap"><table class="table"><thead><tr><th>Producto</th><th>Lote</th><th class="right">Cantidad</th><th class="right">Precio pactado</th><th class="right">Subtotal</th></tr></thead><tbody>${o.lineas.map((l) => { const pr = D.productos.find((x) => x.sku === l.sku); return `<tr><td class="wrap">${esc(l.nombre)}<div class="small muted mono">${l.sku}</div></td><td class="mono small">${o.estado.match(/picking|Cargado|ruta|Entregado|Rendido|Parcial/) ? l.lote : '—'}</td><td class="num right">${l.cant}</td><td class="num right">${fmt.clp(l.precio)}${pr && pr.precio !== l.precio ? `<div class="small muted">Lista vigente ${fmt.clp(pr.precio)}</div>` : ''}</td><td class="num right">${fmt.clp(l.cant * l.precio)}</td></tr>`; }).join('')}</tbody><tfoot><tr><td colspan="4" class="right"><strong>Total</strong></td><td class="num right"><strong>${fmt.clp(o.total)}</strong></td></tr></tfoot></table></div></section>
-          <section class="card"><div class="card-head"><h2>Documentos</h2></div><ul class="list">${[['Nota de venta', 'PDF'], ...(curI >= 5 ? [['Guía de despacho electrónica 884' + o.id.slice(-3), 'PDF · XML']] : []), ...(curI >= 7 ? [['Prueba de entrega (firma y foto)', 'PDF'], ['Factura electrónica', 'PDF · XML']] : [])].map(([t, f]) => `<li>${icon('file')}<span class="grow">${t}</span><span class="small muted">${f}</span><button type="button" class="btn btn-tertiary btn-sm" data-doc="${esc(t)}">${icon('download', 'icon-sm')}Descargar</button></li>`).join('')}</ul></section>
+          <section class="card"><div class="card-head"><h2>Documentos</h2></div><ul class="list">${[['Nota de venta', 'TXT de ejemplo'], ...(curI >= 5 ? [['Guía de despacho electrónica 884' + o.id.slice(-3), 'TXT de ejemplo']] : []), ...(curI >= 7 ? [['Registro de entrega', 'TXT de ejemplo'], ['Factura electrónica', 'TXT de ejemplo']] : [])].map(([t, f]) => `<li>${icon('file')}<span class="grow">${t}</span><span class="small muted">${f}</span><button type="button" class="btn btn-tertiary btn-sm" data-doc="${esc(t)}">${icon('download', 'icon-sm')}Descargar</button></li>`).join('')}</ul></section>
         </div>
         <aside class="stack-lg"><section class="card"><div class="card-head"><h2>Seguimiento</h2></div><ol class="timeline">${idx.map((s, i) => `<li class="${i < curI ? 'done' : i === curI ? (['Retenido', 'Fallido'].includes(o.estado) ? 'error' : 'current') : ''}"><span class="dot"></span><div class="t-title ${i > curI ? 'pending' : ''}">${i === curI && o.estado !== s ? esc(o.estado) : esc(s)}</div>${i <= curI ? `<div class="t-meta">${fmt.dt(new Date(new Date(o.creado).getTime() + i * 3.1 * 3600e3))}</div>` : ''}</li>`).join('')}</ol></section>
           <section class="card"><dl class="desc-list"><dt>Preventista</dt><dd>${esc(o.preventista)}</dd><dt>Creado</dt><dd>${fmt.dt(o.creado)}</dd><dt>Entrega</dt><dd>${fmt.date(o.entrega)} · ${esc(o.ventana)}</dd><dt>Ruta</dt><dd>${o.ruta ? `<a href="#/rutas/${o.ruta}">${o.ruta}</a>` : 'Sin asignar: entra al próximo plan'}</dd></dl></section></aside></div>`;
@@ -64,7 +64,7 @@
     mount: (root, { id }) => {
       const o = L.findOrder(id);
       if (!o) return;
-      $$('[data-doc]', root).forEach((b) => (b.onclick = () => L.busy(b, () => L.toast('Documento descargado', b.dataset.doc, 'success'), 600)));
+      $$('[data-doc]', root).forEach((b) => (b.onclick = () => L.downloadDemoText(o.id, b.dataset.doc, { Cliente: o.clienteNombre, Estado: o.estado, Total: fmt.clp(o.total), Entrega: fmt.date(o.entrega) })));
       $('#od-fixp', root) && ($('#od-fixp', root).onclick = (e) => L.busy(e.currentTarget, () => { o.precioCorregido = true; L.toast('Diferencia corregida', 'La factura usará el precio pactado; queda registro en la bitácora.', 'success'); L.router.resolve(); }, 700));
       $('#od-auth', root) && ($('#od-auth', root).onclick = () => L.modal({ title: 'Autorizar envío del pedido', body: `<div class="field"><label for="au-m">Motivo <span class="req" aria-hidden="true">*</span></label><select id="au-m" class="select"><option value="">Seleccione…</option><option>Cliente con historial de pago puntual</option><option>Abono comprometido</option><option>Excepción comercial</option></select></div>`, onOpen: (d) => L.bindField($('#au-m', d), ['required']), actions: [{ label: 'Cancelar' }, { label: 'Autorizar', cls: 'btn-primary', onClick: (api) => { if (!L.validateAll(api.el)) return false; L.logAudit('Aprobación', 'Pedido', `Envío de ${o.id} autorizado · motivo: ${$('#au-m', api.el).value}`, 'Consola web', 'Retenido', 'Confirmado'); o.estado = 'Confirmado'; L.toast('Pedido autorizado', 'Queda registrado supervisor, fecha, hora y motivo.', 'success'); L.router.resolve(); } }] }));
       L.menu($('#od-more', root), [{ label: 'Ver cliente', icon: 'store', onClick: () => L.go('/clientes/' + o.cliente) }, ...(o.ruta ? [{ label: 'Ver ruta', icon: 'route', onClick: () => L.go('/rutas/' + o.ruta) }] : []), { label: 'Imprimir', icon: 'printer', onClick: () => window.print() }, ...(L.can('pedido.anular') ? [{ sep: true }, { label: 'Anular pedido', icon: 'ban', danger: true, onClick: async () => { if (await L.confirm({ title: `¿Anular ${o.id}?`, message: 'Se liberará el stock reservado y se avisará al cliente.', confirmLabel: 'Anular', danger: true, requireText: 'ANULAR' })) L.toast('Pedido anulado', o.id, 'success'); } }] : [])]);
@@ -181,12 +181,51 @@
   });
 
   /* ---------- Preparación (M5) ---------- */
+
+  const baseMissions = [
+    { id: 'M-3301', zona: 'Seco', cantidad: 64, hechas: 64, estado: 'Completada' },
+    { id: 'M-3302', zona: 'Refrigerado', cantidad: 42, hechas: 26, estado: 'En curso', practicable: true },
+    { id: 'M-3303', zona: 'Congelado', cantidad: 18, hechas: 0, estado: 'Pendiente' },
+    { id: 'M-3304', zona: 'Seco', cantidad: 71, hechas: 12, estado: 'En curso' },
+    { id: 'M-3305', zona: 'Seco', cantidad: 55, hechas: 0, estado: 'Pendiente' },
+    { id: 'M-3306', zona: 'Refrigerado', cantidad: 38, hechas: 0, estado: 'Pendiente' }
+  ];
+  const generatedMissions = () => L.store.get('preparacion.misiones', []);
+  L.prepMissions = () => [...baseMissions, ...generatedMissions().flatMap((m) => {
+    const pedido = L.findOrder(m.pedidoId);
+    if (!pedido) return [];
+    const zonas = [...new Set(pedido.lineas.map((l) => l.temp))];
+    return [{ ...m, pedido, zona: zonas.join(' / '), cantidad: pedido.lineas.length, hechas: 0, estado: 'Pendiente', practicable: true }];
+  })];
+  const missionCard = (m) => `<div class="card" data-mission="${esc(m.id)}">
+    <div class="row-between"><strong class="mono">${esc(m.id)}</strong>${L.badge(m.estado, m.estado === 'Completada' ? 'success' : m.estado === 'En curso' ? 'accent' : '')}</div>
+    <p class="small muted">${esc(m.zona)} · ${m.cantidad} líneas${m.pedido ? ' · Pedido ' + esc(m.pedido.id) : ''}</p>
+    <div class="progress"><span style="width:${m.cantidad ? 100 * m.hechas / m.cantidad : 0}%"></span></div>
+    <div class="row-between" style="margin-top:12px"><span class="small num">${m.hechas}/${m.cantidad}</span>${m.practicable && L.allowed('/flujo') ?
+      `<a class="btn btn-secondary btn-sm" href="#/flujo?escena=preparacion&amp;mision=${encodeURIComponent(m.id)}">${icon('scan', 'icon-sm')}${m.pedido ? 'Iniciar misión' : 'Abrir práctica'}</a>` :
+      '<span class="small muted">Solo consulta</span>'}</div></div>`;
   L.route('/preparacion', {
-    title: 'Preparación', parent: '/inicio', block: 'Proceso operacional principal', module: 'M5 Preparación', rf: ['RF-05.01', 'RF-05.02', 'RF-05.04', 'RF-05.05', 'RF-09.08', 'RF-02.08', 'RNF-02.01', 'RNF-05.02', 'RNF-09.04'], actors: ['Preparador', 'Jefa de Bodega'],
-    render: () => `<div class="page-head"><div class="titles"><h1>Preparación de pedidos</h1><p class="muted" style="margin:0">Misiones del turno noche en CD Talca, con secuencia térmica y FEFO.</p></div><div class="actions">${L.can('prep.misiones') ? `<button type="button" class="btn btn-primary" id="pp-gen">${icon('zap')}Generar misiones</button>` : ''}</div></div>
-      ${L.cdBanner()}
-      <div class="grid grid-3">${[['M-3301', 'Seco', 64, 64, 'Completada'], ['M-3302', 'Refrigerado', 42, 26, 'En curso'], ['M-3303', 'Congelado', 18, 0, 'Pendiente'], ['M-3304', 'Seco', 71, 12, 'En curso'], ['M-3305', 'Seco', 55, 0, 'Pendiente'], ['M-3306', 'Refrigerado', 38, 0, 'Pendiente']].map(([id, z, n, d, e]) => `<div class="card"><div class="row-between"><strong class="mono">${id}</strong>${L.badge(e, e === 'Completada' ? 'success' : e === 'En curso' ? 'accent' : '')}</div><p class="small muted" style="margin:4px 0 12px">Zona ${z} · ${n} líneas · ${d ? 'Matías Lagos' : 'sin asignar'}</p><div class="progress"><span style="width:${(d / n) * 100}%"></span></div><div class="row-between" style="margin-top:12px"><span class="small num">${d}/${n}</span>${e === 'Completada' ? '' : `<a class="btn btn-secondary btn-sm" href="#/flujo?escena=preparacion">${icon('scan', 'icon-sm')}${e === 'En curso' ? 'Continuar' : 'Iniciar'}</a>`}</div></div>`).join('')}</div>`,
-    mount: (root) => { L.cdWire(root, () => L.router.resolve()); if ($('#pp-gen', root)) $('#pp-gen', root).onclick = (e) => L.busy(e.currentTarget, () => { L.cdEvent('Generación de misiones'); L.toast('Misiones generadas', '6 misiones agrupadas por pasillo y zona térmica.', 'success'); }, 1200); }
+    title: 'Preparación', parent: '/inicio', block: 'Proceso operacional principal', module: 'M5 Preparación',
+    rf: ['RF-05.01', 'RF-05.02', 'RF-05.04', 'RF-05.05', 'RF-09.08', 'RF-02.08', 'RNF-02.01', 'RNF-13.01', 'RNF-09.04'], actors: ['Preparador', 'Jefa de Bodega'],
+    render: () => `<div class="page-head"><div class="titles"><h1>Preparación de pedidos</h1><p class="muted">Práctica con pedidos confirmados o en preparación. La generación no cambia los pedidos de origen; las tarjetas históricas son de consulta.</p></div><div class="actions">${L.can('prep.misiones') ? `<button type="button" class="btn btn-primary" id="pp-gen">${icon('zap')}Generar misiones</button>` : ''}</div></div>
+      ${L.cdBanner()}<div class="grid grid-3" id="prep-missions">${L.prepMissions().map(missionCard).join('')}</div>`,
+    mount: (root) => {
+      L.cdWire(root, () => L.router.resolve());
+      const generate = $('#pp-gen', root);
+      if (!generate) return;
+      generate.onclick = () => {
+        if (!L.can('prep.misiones')) return;
+        const previous = generatedMissions();
+        const assigned = new Set(previous.map((m) => m.pedidoId));
+        const added = D.pedidos.filter((p) => p.lineas.length && ['Confirmado', 'Planificado', 'En picking'].includes(p.estado) && !assigned.has(p.id))
+          .map((p, i) => ({ id: 'M-' + (3307 + previous.length + i), pedidoId: p.id }));
+        if (!added.length) { L.toast('No hay pedidos nuevos para preparar', 'No se duplicaron misiones.', 'info'); return; }
+        L.store.set('preparacion.misiones', [...previous, ...added]);
+        L.cdEvent('Generación de ' + added.length + ' misiones');
+        $('#prep-missions', root).innerHTML = L.prepMissions().map(missionCard).join('');
+        L.toast('Misiones de práctica generadas', added.length + ' pedidos agregados al listado.', 'success');
+      };
+    }
   });
 
   /* ---------- Cobranza y rendición (M7) ---------- */

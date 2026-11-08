@@ -121,7 +121,7 @@
 
   // Quick actions of the profile: only what it can open and execute
   L.quickList = () => [
-    { label: 'Nuevo pedido de preventa', icon: 'cart', path: '/flujo', only: ['preventista'] },
+    { label: 'Nuevo pedido de preventa', icon: 'cart', path: '/flujo?alta=1', only: ['preventista'] },
     { label: 'Revisar autorizaciones de crédito', icon: 'cash', path: '/flujo', only: ['finanzas'] },
     { label: 'Tomar un pedido en terreno', icon: 'cart', path: '/terreno/preventa', only: ['preventista'] },
     { label: 'Abrir la app de reparto', icon: 'truck', path: '/terreno', only: ['conductor', 'conductor-ext'] },
