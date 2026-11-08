@@ -36,28 +36,32 @@ Fuente: elaboración a partir del catálogo de requerimientos del capítulo 3 y 
 
 \subsection*{Requisitos individuales críticos y aceptación}
 \label{traza:criticos-logicos}
-La tabla siguiente completa la síntesis por familias con obligaciones individuales. «T» identifica las Bases Técnicas Transversales y «C» las Bases Técnicas del caso; la distinción evita confundir códigos iguales con contenidos diferentes. Son protocolos propuestos: ninguna fila acredita pruebas ejecutadas. El catálogo funcional completo permanece en el Formulario T-12; esta matriz permite verificar los recorridos críticos de 4.1 sin atribuir al formulario resultados que no contiene.
+La tabla completa la síntesis por familias con una muestra de obligaciones individuales. «T» identifica las Bases Técnicas Transversales y «C», las Bases Técnicas del caso. Cada fila remite al Formulario T-12 por código, parte y página del PDF. La Parte A contiene los RF y la Parte B, los RT. T-12 consolida en una fila por código los aportes del caso y de las Transversales a RT-03.10 y RT-03.13. Aquí se distingue el alcance de cada criterio. Los protocolos son propuestos y su conformidad exige ejecución y evidencia.
 
 \begingroup
 \renewcommand{\thetable}{A.6a}
 \renewcommand{\theHtable}{criticos41}
-\begin{tablalafrox}{Trazabilidad individual de obligaciones críticas de 4.1}{tab:traza-critica-individual}{F{0.17} F{0.22} F{0.18} F{0.17} Y}{\cab{Origen y requisito} & \cab{Responsable y capas} & \cab{Contrato/control} & \cab{Protocolo local} & \cab{Criterio de aceptación}}
-T, cap. 2: RT-02.01 & M1--M12; capas 1--8. & Interfaces por capa; 4.1.3. & AL-MOD-01 & Cada intercambio usa el contrato declarado; ningún navegador escribe en datos. \\
-T, cap. 2: RT-02.04 & Arquitectura; transversal. & ADR-01 a ADR-24, Anexo 4-O. & AL-MOD-01 & Toda selección crítica tiene fecha, alternativas y criterio trazables. \\
-T, cap. 2: RT-02.06 & M2/M3/M6; capas 4--6. & UUID y outbox; Anexo 4-K. & AL-MOD-01; AL-STOCK-01 & Reintento del UUID produce un único efecto y conserva el resultado original. \\
-T, cap. 2: RT-02.11 & Identidad, ERP, contratos; capas 3--7. & Dependencias de 4.1.12. & AL-MOD-01; AL-ID-01 & Falla conocida no produce aprobación ficticia; el límite residual queda registrado. \\
-T, cap. 2: RT-02.13 & M1--M12; capas 4--6. & Entidad, dueño y evento; 4.1.5. & AL-MOD-01 & Cada escritura del recorrido tiene dueño y evento compatible con el dominio. \\
-C, cap. 15: RT-03.10 & M1/M2/M5/M8/M9; capas 1, 3--7. & Servicio local y manifiesto. & AL-OFF-01; AL-ID-01 & Recepción, preparación y despacho válidos durante 24 h con dos relevos; terreno cubre 14 h y la ruta declarada de 14,5 h. \\
-T, cap. 3: RT-03.12 & M2/M3/M6; capas 4--6. & Conciliación, Anexo 4-K. & AL-MOD-01; AL-STOCK-01 & Orden alterado, repetición y reintento conservan el mismo estado final y bitácora. \\
-C, cap. 15: RT-03.13 & Sincronización; capas 3--6. & Acuse durable y UUID. & AL-OFF-01 & Dispositivo se sincroniza en $\leq$ 10 min; sitio de 24 h en $\leq$ 2 h; cero hechos confirmados perdidos. \\
-T, cap. 3: RT-03.13 & Canales locales; capas 1, 3--7. & Catálogo offline, Anexo 4-J. & AL-OFF-01 & Cada función disponible se ejecuta y cada función no disponible se deniega con procedimiento declarado. \\
-T, cap. 11: RT-11.01 & Puertas y módulos; capas 2--7. & OIDC y política por recurso. & AL-ACT-01 & Token válido con rol, ruta o empresa ajenos no autoriza la operación. \\
-T, cap. 11: RT-11.02 & Módulos e interfaces; transversal. & STRIDE, Anexo 4-Q. & AL-MOD-01 & Cada frontera del recorrido tiene amenaza, control, dueño y caso negativo. \\
-T, cap. 12: RT-12.01 & Identidad; capas 1, 3 y 7. & Keycloak/OIDC y directorio. & AL-ID-01; AL-ACT-01 & Identidad federada válida conserva sus atributos; cuenta deshabilitada no inicia acceso conectado. \\
-T, cap. 12: RT-12.05 & M7/M9 y restantes módulos; capas 4 y 7. & Rol/atributo; Anexo 4-N. & AL-ACT-01; AL-FRIO-01 & Quien registra no aprueba su diferencia; solo Calidad autoriza disposición de lote. \\
-T, cap. 12: RT-12.07 & Identidad; capas 1, 3 y 7. & Sesión, turno y baja. & AL-ID-01 & Expiración y baja local bloquean acceso; reinicio no prolonga; baja no recibida se concilia sin ocultar exposición. \\
-T, cap. 13: RT-13.01 & Angular/Kotlin; capas 1 y 7. & Interfaz accesible; Anexo 4-N. & AL-UI-01 & Ningún incumplimiento A/AA confirmado queda abierto al aceptar los flujos. \\
-T, cap. 16: RT-16.08 & Consola/API; capas 1, 4, 6 y 7. & Filtro y exportación de auditoría. & AL-UI-01 & Exporta todos los registros autorizados filtrados; no exige acceso directo a base ni expone otra empresa. \\
+\begin{tablalafrox}{Trazabilidad individual de obligaciones críticas de 4.1}{tab:traza-critica-individual}{F{0.16} F{0.22} F{0.17} F{0.14} Y}{\cab{Origen y requisito} & \cab{Responsable y capas} & \cab{Contrato/control} & \cab{Protocolo local} & \cab{Criterio de aceptación}}
+T, cap. 2: RT-02.01\newline T-12 B, p.~131 & M1--M12; capas 1--8. & Interfaces por capa; 4.1.3. & AL-MOD-01 & Cada intercambio usa el contrato declarado; ningún navegador escribe en datos. \\
+T, cap. 2: RT-02.04\newline T-12 B, p.~132 & Arquitectura; transversal. & ADR-01 a ADR-24, Anexo 4-O. & AL-MOD-01 & Toda selección crítica tiene fecha, alternativas y criterio trazables. \\
+T, cap. 2: RT-02.06\newline T-12 B, p.~132 & M2/M3/M6; capas 4--6. & UUID y outbox; Anexo 4-K. & AL-MOD-01; AL-STOCK-01 & Reintento del UUID produce un único efecto y conserva el resultado original. \\
+T, cap. 2: RT-02.11\newline T-12 B, p.~134 & Identidad, ERP, contratos; capas 3--7. & Dependencias de 4.1.12. & AL-MOD-01; AL-ID-01 & Falla conocida no produce aprobación ficticia; el límite residual queda registrado. \\
+T, cap. 2: RT-02.13\newline T-12 B, p.~135 & M1--M12; capas 4--6. & Entidad, dueño y evento; 4.1.5. & AL-MOD-01 & Cada escritura del recorrido tiene dueño y evento compatible con el dominio. \\
+C, cap. 15: RT-03.10\newline T-12 B, p.~139 & M1/M2/M5/M8/M9; capas 1, 3--7. & Servicio local y manifiesto. & AL-OFF-01; AL-ID-01 & El sitio opera 24 h con dos relevos. Reparto cubre el mínimo de 14 h sin señal y la ruta prevista de 14,5 h. \\
+T, cap. 3: RT-03.12\newline T-12 B, p.~140 & M2/M3/M6; capas 4--6. & Conciliación, Anexo 4-K. & AL-MOD-01; AL-STOCK-01 & Orden alterado, repetición y reintento conservan el mismo estado final y bitácora. \\
+C, cap. 15: RT-03.13\newline T-12 B, p.~141 & Sincronización; capas 3--6. & Acuse durable y UUID. & AL-OFF-01 & Dispositivo se sincroniza en $\leq$ 10 min; sitio de 24 h en $\leq$ 2 h; cero hechos confirmados perdidos. \\
+T, cap. 3: RT-03.13\newline T-12 B, p.~141 & Canales locales; capas 1, 3--7. & Catálogo offline, Anexo 4-J. & AL-OFF-01 & Cada función disponible se ejecuta y cada función no disponible se deniega con procedimiento declarado. \\
+T, cap. 11: RT-11.01\newline T-12 B, p.~193 & Puertas y módulos; capas 2--7. & OIDC y política por recurso. & AL-ACT-01 & Token válido con rol, ruta o empresa ajenos no autoriza la operación. \\
+T, cap. 11: RT-11.02\newline T-12 B, p.~193 & Módulos e interfaces; transversal. & STRIDE, Anexo 4-Q. & AL-MOD-01 & Cada frontera del recorrido tiene amenaza, control, dueño y caso negativo. \\
+T, cap. 12: RT-12.01\newline T-12 B, p.~203 & Identidad; capas 1, 3 y 7. & Keycloak/OIDC y directorio. & AL-ID-01; AL-ACT-01 & Identidad federada válida conserva sus atributos; cuenta deshabilitada no inicia acceso conectado. \\
+T, cap. 12: RT-12.05\newline T-12 B, p.~204 & M7/M9 y restantes módulos; capas 4 y 7. & Rol/atributo; Anexo 4-N. & AL-ACT-01; AL-FRIO-01 & Quien registra no aprueba su diferencia; solo Calidad autoriza disposición de lote. \\
+T, cap. 12: RT-12.07\newline T-12 B, p.~204 & Identidad; capas 1, 3 y 7. & Sesión, turno y baja. & AL-ID-01 & Expiración y baja local bloquean acceso; reinicio no prolonga; baja no recibida se concilia sin ocultar exposición. \\
+T, cap. 13: RT-13.01\newline T-12 B, p.~207 & Angular/Kotlin; capas 1 y 7. & Interfaz accesible; Anexo 4-N. & AL-UI-01 & Ningún incumplimiento A/AA confirmado queda abierto al aceptar los flujos. \\
+T, cap. 16: RT-16.08\newline T-12 B, p.~219 & Consola/API; capas 1, 4, 6 y 7. & Filtro y exportación de auditoría. & AL-UI-01 & Exporta todos los registros autorizados filtrados; no exige acceso directo a base ni expone otra empresa. \\
+RF-03.16\newline T-12 A, p.~24 & M3 Preventa; capas 1, 3--6. & UUID del pedido; Anexo 4-K. & AL-CLI-01; AL-MOD-01 & Reenviar el mismo pedido tras reconectar conserva un solo pedido y el acuse original. \\
+RF-05.02\newline T-12 A, p.~29 & M5 Preparación; capas 1, 4--6. & Escaneo GS1 y registro del lote; 4.1.4.8. & AL-OFF-01 & Se valida el SKU y se captura el lote exacto por línea. El ingreso manual queda auditado como contingencia. \\
+RF-07.03\newline T-12 A, p.~38 & M7 Cobranza y rendición; capas 1, 4, 6 y 7. & Causal categorizada y cierre; 4.1.4.6. & AL-ACT-01 & Toda diferencia tiene causal estructurada y cualquier saldo sin justificar impide el cierre. \\
+RF-09.06\newline T-12 A, p.~50 & M9 Calidad y trazabilidad, M5 y M6; capas 1--7. & Regla térmica y disposición; 4.1.4.2. & AL-FRIO-01 & Excursión crítica sostenida bloquea el despacho y avisa a Calidad. Excursión menor transitoria alerta en cabina y registra la observación del conductor. \\
 \end{tablalafrox}
 \addtocounter{table}{-1}
 \endgroup

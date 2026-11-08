@@ -60,3 +60,18 @@ D47 declaró la superficie (≈ 31 m² en cinco recintos, Tabla 26 del 4.3.1.4).
 - **Vigencia de reparto verificada en las fuentes y los PDF.** La asignación se emite en la hora anterior a la salida y vence 30 min después del fin programado, con un máximo de 16 h desde la emisión. Se armonizaron 4.1, el Anexo 4-G y dos menciones de continuidad en 4.2. Las 14 h corresponden al mínimo contractual de autonomía sin señal. Se comprobó la regla temporal de AL-ID-01 para emisión al salir y 30/60 min antes de una ruta de 14,5 h.
 - **Figuras 1, 2, 4, 6 y 7.** Por instrucción del usuario, la Figura 1 vuelve a usar el original ARQL-01. Las demás usan las imágenes incrustadas en «LafroX - Presentación Informe 2 v10 alterna» (diapositivas 9, 11, 12 y 13 de la copia más reciente), como base visual. Las figuras 4, 6 y 7 usan los doce nombres de módulos del Anexo 4-D. La Figura 4 conserva el recorte del listado de actores. La Figura 1 original se conserva. Por instrucción del usuario, la vista visual de los recorridos central y local se incorpora como Figura 1a, «Resumen lógico», después de la explicación general de 4.1.3. El requisito de legibilidad de la Figura 1 original queda pendiente. La referencia a la página 6 dentro de la Figura 7 pertenece a la vista de la presentación.
 - **Pendiente la revisión humana de esta versión.** Registrar nombre, fecha y alcance de la revisión del texto, anexos y figuras de 4.1 y de las referencias de vigencia corregidas. Las revisiones anteriores y la compilación no acreditan este cierre.
+
+## Recorrecciones del Informe 2 en 4.1 — 8 de noviembre de 2026
+
+- Presentación (4.1.3.1) concentra las interfaces y sus acciones. Seguridad (4.1.3.7) concentra las reglas de acceso y segregación. Los anexos 4-N y 4-R conservan el detalle.
+- La Tabla 4.1-A del cuerpo y la Tabla A.6a del Anexo 4-E remiten a parte y página del PDF del Formulario T-12. Se cotejaron con la versión de SD3 registrada en `c38619fa`. Las cuatro filas RF añadidas a la muestra ya pertenecen a ese catálogo. Los anexos 4-M y 4-V describen ensayos propuestos.
+- Se revisó el respaldo de las catorce vistas lógicas y se precisaron las fuentes de las figuras 1a, 6, 8 y 9. Se conservaron los diagramas.
+- La revisión humana de esta versión permanece pendiente de acreditar.
+
+### Fila propuesta para la tabla del Art. 46
+
+| Observación | Ajuste documentado | Localizador |
+| --- | --- | --- |
+| Explicitar y justificar la selección del backend respecto del Informe 1. | El Informe 1 proponía Django/Python. El Informe 2 selecciona Laravel 13/PHP 8.5 para integrar APIs, políticas, migraciones, trabajos y planificación en el núcleo HTTP/CLI. El diseño mantiene el monolito modular y los contratos de los módulos M1–M12. | SD4, apartado 4.1.7.1, «Cambio respecto del Informe 1», y Anexo 4-O, ADR-23. |
+
+La fila queda preparada para incorporar en la tabla compartida. La revisión y la incorporación siguen pendientes.
