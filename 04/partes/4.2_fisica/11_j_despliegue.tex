@@ -35,7 +35,7 @@ Un cambio recorre tres ambientes antes de llegar a Producción: Desarrollo, QA y
   Recuperación ante Desastres & 10.201.0.0/16 & us-east-1 & Réplica en caliente del dominio de nube y recuperación del WMS de Talca en la nube \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~4, pp.~10--11), para los ambientes obligatorios, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 
 Cada ambiente reside en una cuenta AWS propia, bajo una organización de AWS Control Tower cuyas políticas de control de servicio impiden que un error o un acceso indebido en un ambiente alcance a otro. La organización incorpora además sus cuentas de gestión, de archivo de registros y de auditoría. Los bloques de direccionamiento no se solapan entre sí ni con los de los sitios on-premise, y solo el ambiente de recuperación reside fuera de la región primaria. Los cinco ambientes quedan habilitados y operativos en el hito H3 del Formulario E-25, en el mes 6 del contrato, antes de la primera marcha blanca (RT-04.01, Bases Técnicas Transversales, cap. 4, p. 10).
 
@@ -73,7 +73,7 @@ La Figura~\ref{fig:amb-desarrollo} muestra cómo llega una entrega a Desarrollo.
 \begin{figure}[htbp]\centering
   \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_desarrollo.png}
   \caption{Ambiente de Desarrollo}\label{fig:amb-desarrollo}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~4, pp.~10--11), para los ambientes obligatorios, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 \FloatBarrier
 
@@ -96,7 +96,7 @@ QA repite la secuencia de Desarrollo en su propia cuenta y su propia VPC (Figura
 \begin{figure}[htbp]\centering
   \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_qa.png}
   \caption{Ambiente de QA}\label{fig:amb-qa}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~4, pp.~10--11), para los ambientes obligatorios, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 \FloatBarrier
 
@@ -117,7 +117,7 @@ En Preproducción la secuencia se ensaya sobre la topología de Producción y so
 \begin{figure}[htbp]\centering
   \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_preproduccion.png}
   \caption{Ambiente de Preproducción}\label{fig:amb-preproduccion}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~4, pp.~10--11), para los ambientes obligatorios, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 \FloatBarrier
 
@@ -145,7 +145,7 @@ En Producción la secuencia se ejecuta de forma automática y llega además a lo
 \begin{figure}[!htbp]\centering
   \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_produccion.png}
   \caption{Ambiente de Producción}\label{fig:amb-produccion}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~4, pp.~10--11), para los ambientes obligatorios, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 
 \FloatBarrier
@@ -175,7 +175,7 @@ La Figura~\ref{fig:amb-recuperacion} muestra las dos rutas de recuperación: ant
 \begin{figure}[!ht]\centering
   \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_recuperacion.png}
   \caption{Ambiente de Recuperación ante Desastres}\label{fig:amb-recuperacion}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~4, pp.~10--11), para los ambientes obligatorios, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 
 Los pasos de la figura son los siguientes:
@@ -202,7 +202,7 @@ El paso de un ambiente a otro lo controla el pipeline de integración continua: 
   \item Medición de la cobertura de la lógica de negocio y de la cobertura unitaria global.
 \end{itemize}
 
-El pipeline bloquea el despliegue ante un hallazgo crítico o alto, ante un contrato público roto sin nueva edición o ante una cobertura de la lógica de negocio inferior al 70 \% (RT-04.11, Bases Técnicas Transversales, cap. 4, p. 11). Además aplica la política corporativa de LafroX del Subdocumento 1 (sección 1.3.1): bloquea toda versión con cobertura de pruebas unitarias inferior al 80 \%. Son dos métricas distintas, medidas en la misma ejecución del pipeline, y una versión debe superar ambas. Primero, la imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila. El paso a Producción es automático una vez que la imagen supera los controles del pipeline y el ensayo en Preproducción, dentro de las ventanas de la Tabla~\ref{tab:jd02} (RT-04.06, Bases Técnicas Transversales, cap. 4, p. 11). Segundo, la configuración no sensible se externaliza por ambiente en SSM Parameter Store y los secretos se gestionan en AWS Secrets Manager con rotación automática (ADR-15, Anexo 4-O). La imagen no contiene secretos ni el archivo de entorno (RT-04.08 y RT-04.09, Bases Técnicas Transversales, cap. 4, p. 11). Tercero, las migraciones de base de datos son migraciones Laravel basales y aditivas, que siguen la estrategia de expandir y contraer: se ejecutan como un paso único del despliegue antes de cambiar el tráfico, cada entrega solo agrega estructuras, de modo que la entrega previa y la nueva de la aplicación funcionan sobre el mismo esquema durante el despliegue, y las estructuras obsoletas se eliminan en una entrega posterior. Cada migración declara además su reversión, de modo que el esquema puede volver a la entrega previa (RT-04.10, Bases Técnicas Transversales, cap. 4, p. 11). Luego, el código reside en un repositorio con ramas protegidas, revisión obligatoria por pares y sin escritura directa sobre la rama principal (RT-04.03, Bases Técnicas Transversales, cap. 4, p. 10).
+El pipeline bloquea el despliegue ante un hallazgo crítico o alto, ante un contrato público roto sin nueva edición o ante una cobertura de la lógica de negocio inferior al 70 \% (RT-04.11, Bases Técnicas Transversales, cap. 4, p. 11). Además aplica la política corporativa de LafroX del Subdocumento 1 (sección 1.3.1): bloquea toda versión con cobertura de pruebas unitarias inferior al 80 \%. Son dos métricas distintas, medidas en la misma ejecución del pipeline, y una versión debe superar ambas. Primero, la imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila. El paso a Producción es automático una vez que la imagen supera los controles del pipeline y el ensayo en Preproducción, dentro de las ventanas de la Tabla~\ref{tab:jd02} (RT-04.06, Bases Técnicas Transversales, cap. 4, p. 11). Segundo, la configuración no sensible se externaliza por ambiente en SSM Parameter Store y los secretos se gestionan en AWS Secrets Manager con rotación automática (ADR-15, Anexo 4-O). La imagen no contiene secretos ni el archivo de entorno (RT-04.08 y RT-04.09, Bases Técnicas Transversales, cap. 4, p. 11). Tercero, los cambios de esquema de la base de datos son migraciones Laravel basales y aditivas, que siguen la estrategia de expandir y contraer: se ejecutan como un paso único del despliegue antes de cambiar el tráfico, cada entrega solo agrega estructuras, de modo que la entrega previa y la nueva de la aplicación funcionan sobre el mismo esquema durante el despliegue, y las estructuras obsoletas se eliminan en una entrega posterior. Cada migración declara además su reversión, de modo que el esquema puede volver a la entrega previa (RT-04.10, Bases Técnicas Transversales, cap. 4, p. 11). Luego, el código reside en un repositorio con ramas protegidas, revisión obligatoria por pares y sin escritura directa sobre la rama principal (RT-04.03, Bases Técnicas Transversales, cap. 4, p. 10).
 
 A Producción no se llega de otra forma: su acceso es restringido y auditado, y los desarrolladores no tienen acceso interactivo directo a ese ambiente (numeral 4.1 de las Bases Técnicas Transversales; Bases Técnicas Transversales, cap. 4, p. 10). El acceso privilegiado excepcional reúne estos controles:
 
@@ -300,7 +300,7 @@ El despliegue sin interrupción es la regla. Las ventanas horarias de la Tabla~\
 
 Un incidente crítico activa de inmediato el procedimiento de recuperación: conmutación, restauración o vuelta a una versión ya instalada y aceptada, siempre que sean compatibles con la prohibición de intervenir. Restaurar el servicio en 4 horas no significa terminar un desarrollo nuevo en ese plazo. Una corrección de código usa el mismo pipeline, con prioridad y fuera de la cadencia quincenal, pero eso no la autoriza a intervenir en fechas prohibidas. Las vulnerabilidades mantienen los plazos máximos de 7, 15 y 30 días corridos para severidad crítica, alta y media, contados desde su publicación o detección (Bases Administrativas, art. 21.1, p. 15; RT-11.04, Bases Técnicas Transversales, cap. 11, p. 23). La contención se registra por separado y no cuenta como remediación.
 
-Si la recuperación o la remediación de una vulnerabilidad exige una intervención prohibida, el NOC/SOC lo comunica al CLIENTE el mismo día en que detecta el conflicto y le solicita un cambio de emergencia, con la evidencia del plazo y de la contención aplicada. Con autorización escrita del CLIENTE, el cambio se ejecuta por el mismo pipeline, con reversión preparada y fuera de la ventana de despacho. Si el CLIENTE no lo autoriza, LafroX mantiene la contención, registra la aceptación del riesgo por parte del CLIENTE y remedia en la primera fecha habilitada. El plazo que se exceda por esa decisión queda trazado como decisión del CLIENTE. El presupuesto de error de cada servicio crítico es el complemento de su disponibilidad de 99,9~\% mensual, unos 43 minutos al mes. Si se agota, se suspenden los despliegues no correctivos hasta el mes siguiente, sin alterar los congelamientos (RT-10.09, Bases Técnicas Transversales, cap. 10, p. 22).
+Si la recuperación o la remediación de una vulnerabilidad exige una intervención prohibida, el NOC/SOC lo comunica al CLIENTE el mismo día en que detecta el conflicto y le solicita un cambio de emergencia, con la evidencia del plazo y de la contención aplicada. Con autorización escrita del CLIENTE, el cambio se ejecuta por el mismo pipeline, con reversión preparada y fuera de la ventana de despacho. Si el CLIENTE no lo autoriza, LafroX mantiene la contención, registra la aceptación del riesgo por parte del CLIENTE y remedia en la primera fecha habilitada. El plazo que se exceda por esa decisión queda registrado como responsabilidad del CLIENTE. El presupuesto de error de cada servicio crítico es el complemento de su disponibilidad de 99,9~\% mensual, unos 43 minutos al mes. Si se agota, se suspenden los despliegues no correctivos hasta el mes siguiente, sin alterar los congelamientos (RT-10.09, Bases Técnicas Transversales, cap. 10, p. 22).
 
 \subsubsection{Red de despliegue}
 \label{sub:2-redes-topologia-segmentacion-y-conectivi}
@@ -317,7 +317,7 @@ La Figura~\ref{fig:red-sitios-regiones} sitúa las cinco instalaciones con cómp
   \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/fisica/Red_01_sitios_regiones_aprobada.pdf}
   \caption{Red de los cinco sitios operacionales y las regiones de producción y recuperación}
   \label{fig:red-sitios-regiones}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~3, p.~9), para la conectividad y las redes, y (Bases Técnicas del caso, cap.~6, p.~10), para las condiciones de cada sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 \end{landscape}
 
@@ -329,7 +329,7 @@ La vista general distingue los cinco dominios locales y sus caminos regionales. 
   \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/fisica/Red_02_red_local_aprobada.pdf}
   \caption{Red local y continuidad de Talca, Concepción y las plataformas de cross-docking}
   \label{fig:red-detalle-sitios}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~3, p.~9), para la conectividad y las redes, y (Bases Técnicas del caso, cap.~6, p.~10), para las condiciones de cada sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 \end{landscape}
 
@@ -341,7 +341,7 @@ La red local conecta el cómputo redundante con dos switches y el par de firewal
   \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/fisica/Red_03_red_aws_aprobada.pdf}
   \caption{Conectividad regional, servicios privados y replicación de Aurora y S3}
   \label{fig:red-detalle-regiones}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~3, p.~9), para la conectividad y las redes, y (Bases Técnicas del caso, cap.~6, p.~10), para las condiciones de cada sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 \end{figure}
 \end{landscape}
 
@@ -360,7 +360,7 @@ La vista regional muestra la terminación de las VPN y el tránsito hacia Produc
   VPC Producción, zona privada & Resto de 10.101.0.0/16 & ALB de aplicación, consolas y AS2, aplicación y datos, enlazada a los sitios por el Transit Gateway de la VPC Hub \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~3, p.~9), para la conectividad y las redes, y (Bases Técnicas del caso, cap.~6, p.~10), para las condiciones de cada sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
 
 Cada sitio con cómputo dispone de un bloque propio. La séptima instalación que el caso proyecta a tres años y el centro de distribución que Puelche evalúa abrir hacia 2030 en la Región de Los Lagos tienen reservados 10.6.0.0/16 y 10.7.0.0/16, de modo que su incorporación es una parametrización de la infraestructura como código (RT-02.12, Bases Técnicas Transversales, cap. 2, p. 7; Bases Técnicas del caso, cap. 15, p. 26). En la nube, los ALB de aplicación, consolas y AS2 son privados, y la subred pública solo aloja el NAT. El canal AS2 llega por CloudFront a su ALB interno. Los portales residen en S3 privado, servido únicamente por CloudFront. La VPC de Producción usa endpoints de interfaz execute-api, IoT Core, SQS, SSM y Elastic Container Registry, y endpoints de puerta de enlace para DynamoDB y S3. Como los de puerta de enlace no son alcanzables desde los sitios por la VPN, los sitios descargan la imagen por el endpoint de interfaz de Elastic Container Registry y por un endpoint de interfaz de S3, donde se almacenan las capas de las imágenes, sin salir a Internet.
 
@@ -436,7 +436,7 @@ La réplica por DMS y la reconciliación por eventos cumplen funciones distintas
 
 \paragraph{Conmutación y retorno}
 
-La conmutación de región y el retorno siguen el procedimiento de la sección \hyperref[sub:conmutacion-regional]{4.3.2.5} (procedimiento \hyperref[tab:4-3-6]{de conmutación de región}): la promoción de la base exige la autorización del CLIENTE y el enrutamiento hacia us-east-1 cambia después de la validación funcional. El retorno se ejecuta de forma coordinada tras la reconciliación. Si la contingencia afecta solo a la sala de Talca, su WMS se levanta en Fargate sobre su copia en Aurora de la región activa, tras excluir VM-02 y transferir la autoridad de M2. El RTO incluye verificar o restituir LAN, firewalls, un camino WAN y acceso de los terminales, según 4.3.2.5. Los dominios de recuperación y sus amenazas comunes se analizan en la Tabla~\ref{tab:4-3-3}.
+La conmutación de región y el retorno siguen el \hyperref[tab:4-3-6]{procedimiento de conmutación de región} de la sección \hyperref[sub:conmutacion-regional]{4.3.2.5}: la promoción de la base exige la autorización del CLIENTE y el enrutamiento hacia us-east-1 cambia después de la validación funcional. El retorno se ejecuta de forma coordinada tras la reconciliación. Si la contingencia afecta solo a la sala de Talca, su WMS se levanta en Fargate sobre su copia en Aurora de la región activa, tras excluir VM-02 y transferir la autoridad de M2. El RTO incluye verificar o restituir LAN, firewalls, un camino WAN y acceso de los terminales, según 4.3.2.5. Los dominios de recuperación y sus amenazas comunes se analizan en la Tabla~\ref{tab:4-3-3}.
 
 \paragraph{Operación durante una contingencia regional}
 

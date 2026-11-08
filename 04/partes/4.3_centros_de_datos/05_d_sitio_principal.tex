@@ -53,7 +53,7 @@ La sala actual de 25 m\textsuperscript{2} del edificio de oficinas aloja hoy el 
 
 El listado completo de componentes de sala (UPS, generador, climatización, seguridad física, extinción, cableado y gabinetes) y del equipamiento de cómputo y red que alojan los gabinetes se entrega en el Formulario T-11. La ocupación por rack y el margen de crecimiento se declaran en la Figura~\ref{fig:racks-talca}.
 
-Para la disponibilidad y la redundancia la disponibilidad de infraestructura comprometida es del 99,95 \% mensual por componente en energía del recinto, climatización, red y comunicaciones, servidores y cómputo, y motor de base de datos. Además se sostiene con redundancia N+1 en energía y climatización, con generación autónoma y con monitoreo continuo con alertamiento. No se invoca una clasificación de instalación de terceros, como un nivel TIER certificado. El compromiso que se mide y se penaliza es la disponibilidad de la transacción de negocio de extremo a extremo (Bases Administrativas, art. 78.2, p. 40; Bases Técnicas Transversales, cap. 7, p. 17).
+La disponibilidad comprometida de la infraestructura es del 99,95 \% mensual por componente en energía del recinto, climatización, red y comunicaciones, servidores y cómputo, y motor de base de datos. La sostienen la redundancia N+1 en energía y climatización, la generación autónoma y el monitoreo continuo con alertamiento. No se invoca una clasificación de instalación de terceros, como un nivel TIER certificado. El compromiso que se mide y se penaliza es la disponibilidad de la transacción de negocio de extremo a extremo (Bases Administrativas, art. 78.2, p. 40; Bases Técnicas Transversales, cap. 7, p. 17).
 
 La Figura~\ref{fig:cd-talca} muestra cómo se conecta el equipamiento de la sala con la bodega, la cadena de frío y el ERP.
 
@@ -62,7 +62,7 @@ La Figura~\ref{fig:cd-talca} muestra cómo se conecta el equipamiento de la sala
   \includegraphics[width=\linewidth]{figuras/centros_de_datos/Arquitectura_Fisica_CD_Talca.png}
   \caption{Arquitectura física del sitio on-premise del CD Talca}
   \label{fig:cd-talca}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~6, pp.~14--16), para los requisitos del recinto, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
 \end{figure}
 \FloatBarrier
 
@@ -91,7 +91,7 @@ Para el cálculo de carga eléctrica se usa una cota conservadora por equipo, se
   \textbf{Carga TI de diseño} & & & \textbf{9.156 W $\approx$ 9,2 kW} \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~6, pp.~14--16), para la energía (RT-06.07 a RT-06.11), y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
 
 El cálculo eléctrico sigue estos pasos:
 
@@ -115,7 +115,7 @@ Para calcular la carga térmica, se considera que cada kW eléctrico consumido p
   \textbf{Carga térmica sensible de diseño} & \textbf{$\approx$ 9,2 kW} \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~6, pp.~14--16), para la climatización (RT-06.13), y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
 
 Sobre esa carga se instalan dos unidades de climatización de precisión de 10 kW cada una, en configuración N+1. Una sola cubre los 9,2 kW de diseño. La temperatura y la humedad relativa se controlan dentro de los rangos del fabricante del equipamiento. La sala de UPS y baterías dispone de climatización de confort propia de 3,5 kW ($\approx$ 12.000 BTU/h), que mantiene 20--25\,\textdegree{}C, y de ventilación. Disipa las pérdidas del UPS ($\approx$ 0,8 kW) y el calor de carga de las baterías.
 
@@ -138,7 +138,7 @@ La Figura~\ref{fig:racks-talca} muestra cómo se reparte el equipamiento de cóm
   \includegraphics[width=\linewidth]{figuras/centros_de_datos/Racks_CD_Talca.png}
   \caption{Distribución de U y ocupación proyectada de los racks del CD Talca}
   \label{fig:racks-talca}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~6, pp.~14--16), para los racks y su ocupación (RT-06.05), y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
 \end{figure}
 \FloatBarrier
 
