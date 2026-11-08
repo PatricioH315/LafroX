@@ -52,8 +52,9 @@ D45 cerró el estudio de cobertura en el SD4 (Anexo 4-W.13). Queda pendiente:
 
 D47 declaró la superficie (≈ 31 m² en cinco recintos, Tabla 26 del 4.3.1.4). Queda pendiente:
 
-- **Figura 29 (a pedido del usuario, al final):** reemplazar el esquema por líneas por un plano en planta acotado, con escala, cotas de cada recinto, puertas, racks y climatización, conforme a RT-06.03. Hoy la figura todavía muestra «Zona de respaldo y repuestos» separada y bitácora, videovigilancia y tablero como zonas.
-- **SD3, al cambiar la figura:** la fila RT-06.03 del T-12 dice «Plano de distribución interna por zonas y líneas de acceso»; debería decir «plano acotado».
+- **Figura 29, resuelto el 8 de noviembre de 2026 a pedido del usuario:** el esquema por zonas se reemplazó por el plano en planta acotado `04/figuras/centros_de_datos/Recinto_CD_Talca_plano.pdf` (vectorial, 9,5 pt impresos, escala ≈ 1:60), generado por `drawio/4.3_centros_de_datos/plano_recinto_talca/fuente/plano.py`. Sin cuadro de superficies, que queda en la Tabla 26. La Tabla 26 se alineó con el plano (sala de UPS 3,6 × 2,0 m; pasillo trasero de la sala de servidores 1,1 m) y numera los recintos 1 a 5 como el plano. Se descartó la propuesta 3D. El esquema anterior `Recinto_CD_Talca.png` se conserva sin uso.
+- **SD3, pendiente en su rama:** la fila RT-06.03 del T-12 dice «Plano de distribución interna por zonas y líneas de acceso»; debe decir «Plano acotado del recinto técnico (Figura 29 del 4.3.1)».
+- **Opcional:** símbolos de lector facial, cámaras y extintores en el plano (RT-06.20, 06.23, 06.24 y 06.18); hoy se describen solo en el texto.
 
 ## Correcciones de 4.1 — 8 de noviembre de 2026
 

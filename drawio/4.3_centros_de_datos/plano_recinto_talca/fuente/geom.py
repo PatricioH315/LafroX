@@ -3,7 +3,6 @@ interior suroeste de la zona de trabajo; x hacia el este, y hacia el norte)."""
 
 T_INT = 0.15   # tabique interior
 T_EXT = 0.20   # muro perimetral con blindaje
-H_WALL = 3.0   # altura libre (para la vista 3D)
 
 ROOMS = {
     # id: (x0, y0, x1, y1, nombre)

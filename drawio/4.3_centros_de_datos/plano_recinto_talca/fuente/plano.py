@@ -1,11 +1,11 @@
 """Genera el plano acotado del recinto técnico del CD Talca en draw.io."""
 import sys
 from xml.sax.saxutils import escape
-from geom import ROOMS, NUM, DOORS, EQUIP, FM200, EXTERIOR, DUCTS, T_EXT, T_INT, FACADE_Y, area
+from geom import ROOMS, DOORS, EQUIP, FM200, EXTERIOR, DUCTS, T_EXT, T_INT, FACADE_Y
 
 U = 60.0            # unidades draw.io por metro: 1:60 si el ancho impreso es 9,40 m / 60
 XMIN, XMAX = -0.95, 8.45
-YMAX, YMIN = 8.45, -3.05
+YMAX, YMIN = 8.45, -2.85
 FS = 12             # 12 u = 9,45 pt en la página
 
 COL = {
@@ -133,7 +133,7 @@ text(5.60, 3.00, 3.2, 0.5, '<b>5 Sala de servidores y<br>comunicaciones</b>')
 text(5.70, 0.30, 3.4, 0.3, '<b>4 Sala de UPS y baterías</b>')
 text(1.50, 0.98, 1.9, 0.5, '<b>1 Zona de trabajo<br>y respaldo</b>')
 text(3.20, 2.05, 2.0, 0.3, '<b>2 Pasillo de control</b>', rot=-90)
-text(3.15, 4.12, 1.1, 0.3, '<b>3 Esclusa</b>')
+text(3.15, 4.20, 1.1, 0.3, '<b>3 Esclusa</b>')
 
 # --- Exterior ----------------------------------------------------------------
 for eid, x0, y0, x1, y1, lab, fam, _h in EXTERIOR:
@@ -162,7 +162,7 @@ dim_v(0.00, 2.00, 8.12, 0.40, '2,00', toward='W')
 dim_v(2.15, 5.65, 8.12, 0.40, '3,50', toward='W')
 dim_v(0.00, 2.50, -0.62, 0.40, '2,50', toward='E')
 dim_v(0.00, 3.00, 3.62, 0.08, '3,00', toward='W')
-dim_v(3.15, 4.35, 3.62, 0.08, '1,20', toward='W')
+dim_v(3.15, 4.35, 2.22, 0.08, '1,20', toward='W')   # fuera de la esclusa: no cruza el rótulo
 dim_h(3.90, 4.90, 2.27, 0.08, '1,00')
 dim_h(4.90, 6.70, 2.27, 0.08, '1,80')
 dim_h(6.70, 7.50, 2.27, 0.08, '0,80')
@@ -170,7 +170,7 @@ dim_v(2.15, 3.35, 7.38, 0.08, '1,20', toward='W')
 dim_v(3.35, 4.55, 7.38, 0.08, '1,20', toward='W')
 dim_v(4.55, 5.65, 7.38, 0.08, '1,10', toward='W')
 
-# --- Banda inferior: escala, leyenda y cuadro de superficies --------------------
+# --- Banda inferior: escala y leyenda (las superficies van en la Tabla del texto) ---
 for i in range(3):
     rect_w(-0.20 + i, -1.55, 0.80 + i, -1.45, f'fillColor={"#1A1A1A" if i % 2 == 0 else "#FFFFFF"};strokeColor=#1A1A1A;strokeWidth=0.8;')
 for i, t in enumerate(['0', '1', '2', '3 m']):
@@ -183,13 +183,6 @@ for i, (lab, f, s) in enumerate(leg):
     yy = -1.42 - 0.30 * i
     rect_w(3.35, yy - 0.10, 3.63, yy + 0.10, f'fillColor={f};strokeColor={s};')
     text(3.73 + 0.95, yy, 1.9, 0.28, lab, align='left')
-cu = ''.join(f'<tr><td style="vertical-align:top">{NUM[k]}&nbsp;</td><td>{ROOMS[k][4]}&nbsp;&nbsp;</td><td style="text-align:right;vertical-align:bottom">{area(k):.1f}</td></tr>'.replace('.', ',')
-             for k in ['W', 'P', 'E', 'U', 'S'])
-tot = sum(area(k) for k in ROOMS)
-cu += f'<tr><td></td><td><b>Superficie útil</b></td><td style="text-align:right"><b>{tot:.1f}</b></td></tr>'.replace('.', ',')
-tbl2 = (f'<div style="text-align:left"><b>Cuadro de superficies (m²)</b><table style="font-size:{FS}px;border-collapse:collapse" cellpadding="0">'
-        f'{cu}</table></div>')
-text(7.02, -2.12, 2.9, 1.85, tbl2, align='left')
 add('shape=singleArrow;direction=north;arrowWidth=0.45;arrowSize=0.45;fillColor=#1A1A1A;strokeColor=none;', X(7.92), Y(8.30), 14, 26)
 text(8.04, 7.70, 0.4, 0.3, '<b>N</b>')
 
