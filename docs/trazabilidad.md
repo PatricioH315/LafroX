@@ -17,7 +17,7 @@ Matriz de cada pantalla del prototipo con el bloque del numeral 25.2, el módulo
 
 ## Verificación
 
-- El registro declara 204 códigos RF, RNG y RNF en 49 rutas. La declaración localiza la evidencia; no sustituye la prueba de aceptación.
+- El registro declara 207 códigos RF, RNG y RNF en 52 rutas. La declaración localiza la evidencia; no sustituye la prueba de aceptación.
 - Los nombres de los 12 módulos coinciden entre SD3 (`contenido.tex`) y SD4 (Anexo 4-D). No se detectaron discrepancias.
 - Cada módulo M1 a M12 tiene al menos una pantalla (ver la cobertura más abajo).
 - Cada ruta tiene módulo y RF de SD3. Los documentos del prototipo están en `docs/`; no son rutas navegables.
@@ -29,17 +29,17 @@ Matriz de cada pantalla del prototipo con el bloque del numeral 25.2, el módulo
 | M1 | `/portal/proveedor`, `/recepcion`, `/recepcion/nueva` |
 | M2 | `/flujo`, `/inventario` |
 | M3 | `/registro`, `/flujo`, `/terreno/preventa`, `/pedidos`, `/pedidos/:id`, `/clientes`, `/clientes/:id`, `/portal/pedido` |
-| M4 | `/flujo`, `/rutas`, `/rutas/:id`, `/portal/transportista` |
+| M4 | `/flujo`, `/rutas`, `/rutas/:id`, `/portal/transportista`, `/rutas/restricciones` |
 | M5 | `/flujo`, `/preparacion` |
 | M6 | `/flujo`, `/terreno`, `/pedidos/:id`, `/clientes/:id`, `/portal/entregas`, `/portal/transportista`, `/analitica/:kpi/ruta/:id` |
 | M7 | `/flujo`, `/terreno`, `/pedidos/:id`, `/rendicion`, `/clientes`, `/clientes/:id`, `/portal/cuenta` |
 | M8 | `/terreno`, `/devoluciones`, `/devoluciones/nueva`, `/devoluciones/:id`, `/clientes/:id` |
-| M9 | `/calidad`, `/calidad/lotes/:id`, `/calidad/retiro` |
+| M9 | `/portal/entregas`, `/calidad`, `/calidad/lotes/:id`, `/calidad/retiro` |
 | M10 | `/tablero`, `/clientes`, `/clientes/:id`, `/analitica`, `/analitica/:kpi`, `/analitica/:kpi/ruta/:id` |
 | M11 | `/registro`, `/portal/transportista`, `/portal/proveedor`, `/canal-moderno` |
 | M12 | `/rutas/:id`, `/portal/transportista`, `/telemetria` |
 
-## Matriz completa (49 pantallas)
+## Matriz completa (52 pantallas)
 
 | Pantalla | Ruta | Bloque 25.2 | Módulo SD4 | RF / RNG de SD3 | Actores (SD3, Anexo 3.A.12a) |
 |---|---|---|---|---|
@@ -72,8 +72,8 @@ Matriz de cada pantalla del prototipo con el bloque del numeral 25.2, el módulo
 | Clientes | `/clientes` | Gestión de terceros | M3 · M7 · M10 (cartera) | RF-07.04, RF-11.08, RF-17.12 | Preventista, Gerente Comercial, Gerente de Finanzas |
 | Ficha de cliente | `/clientes/:id` | Gestión de terceros | M3 · M6 · M7 · M8 · M10 | RF-03.06, RF-04.07, RF-07.04, RF-08.03, RF-11.02, RF-17.08, RF-08.07, RNG-03, RF-07.10, RNF-09.03 | Preventista, Gerente Comercial, Gerente de Finanzas |
 | Hacer un pedido | `/portal/pedido` | Gestión de terceros | Portal de clientes · M3 | RF-12.15, RF-12.30, RF-12.29 | Cliente del canal tradicional, Cliente del canal moderno |
-| Mis entregas | `/portal/entregas` | Gestión de terceros | Portal de clientes · M6 | RF-12.16, RF-06.11 | Clientes |
-| Estado de cuenta | `/portal/cuenta` | Gestión de terceros | Portal de clientes · M7 | RF-07.07, RF-12.17, RF-12.18, RF-18.01 | Clientes |
+| Mis entregas | `/portal/entregas` | Gestión de terceros | Portal de clientes · M6 · M9 | RF-12.16, RF-06.11, RF-09.04 | Clientes |
+| Estado de cuenta | `/portal/cuenta` | Gestión de terceros | Portal de clientes · M7 | RF-07.07, RF-12.17, RF-12.18, RF-18.01, RF-12.30 | Clientes |
 | Portal de transportistas | `/portal/transportista` | Gestión de terceros | Portal de transportistas (canal M11) · M4 · M6 · M12 | RF-12.19, RF-12.20, RF-12.21, RF-06.08, RF-14.05 | Empresa transportista |
 | Portal de proveedores | `/portal/proveedor` | Gestión de terceros | Portal de proveedores (canal M11) · M1 | RF-12.22, RF-12.23, RF-12.24, RF-01.01 | Proveedor |
 | Canal moderno EDI | `/canal-moderno` | Gestión de terceros | M11 Canal moderno | RF-12.01, RF-12.02, RF-12.03, RF-12.04, RF-12.05, RF-12.06, RF-12.07, RF-12.09, RF-12.10, RF-12.11, RF-12.12, RF-12.13, RNG-11, RNF-12.02 | Cliente del canal moderno, Gerente Comercial |
@@ -81,7 +81,7 @@ Matriz de cada pantalla del prototipo con el bloque del numeral 25.2, el módulo
 | Detalle del indicador | `/analitica/:kpi` | Tablero analítico | M10 Analítica | RF-11.03, RF-11.06, RF-16.02 | Gerencias |
 | Entregas de la ruta | `/analitica/:kpi/ruta/:id` | Tablero analítico | M10 · M6 | RF-11.03, RF-06.06 | Gerencias |
 | Personas usuarias | `/admin/usuarios` | Administración | Base compartida (Keycloak) | RF-17.01, RF-15.05, RF-15.03 | Jefe de TI |
-| Roles y permisos | `/admin/roles` | Administración | Base compartida (RBAC) | RF-15.04, RF-17.01, RF-17.03 | Jefe de TI |
+| Roles y permisos | `/admin/roles` | Administración | Base compartida (RBAC) | RF-15.04, RF-17.01, RF-17.03 | Jefe de TI, Gerente de Operaciones |
 | Parámetros | `/admin/parametros` | Administración | Registro versionado de parámetros | RF-17.02, RF-17.03, RF-02.01, RF-09.10, RF-17.09, RF-16.03 | Jefe de TI, Gerente de Finanzas, Jefa de Calidad |
 | Auditoría | `/admin/auditoria` | Administración | Registro de auditoría inalterable | RF-17.04, RF-17.05, RNF-09.03, RNF-01.02, RNF-08.02, RNF-09.02, RNF-15.03, RNF-17.01 | Jefe de TI, Gerencias |
 | Calidad y trazabilidad | `/calidad` | Módulo adicional 1 | M9 Calidad y trazabilidad | RF-02.10, RF-09.01, RF-09.02, RF-09.14 | Jefa de Calidad |
@@ -92,6 +92,9 @@ Matriz de cada pantalla del prototipo con el bloque del numeral 25.2, el módulo
 | Registrar recepción | `/recepcion/nueva` | Proceso operacional principal | M1 Recepción | RF-01.01, RF-01.02, RF-01.03, RF-01.04, RF-01.05, RF-01.06, RF-01.07, RF-01.11 | Jefa de Bodega, Preparador |
 | Inventario | `/inventario` | Proceso operacional principal | M2 Inventario | RF-02.02, RF-02.04, RF-02.05, RF-02.06, RF-02.07, RF-02.09, RF-10.01, RF-10.02, RF-10.03, RNG-02, RNG-10, RF-01.10, RF-02.03, RF-02.11, RF-08.05, RNG-11, RNF-02.01, RNF-13.01 | Jefa de Bodega, Gerente de Operaciones, Preventistas |
 | Guía de mi perfil | `/guia` | Portal principal | Transversal |  | Todos los perfiles |
+| Flujos de aprobación | `/admin/flujos` | Administración | Base compartida (flujos) | RF-17.06, RF-17.07 | Jefe de TI |
+| Integraciones y monitoreo | `/admin/integraciones` | Administración | Base compartida (observabilidad) | RF-16.01, RF-16.03, RF-16.04, RNF-20.05 | Jefe de TI |
+| Restricciones de ruta | `/rutas/restricciones` | Proceso operacional principal | M4 Rutas | RF-04.04, RF-04.07, RF-04.02 | Planificador de Rutas, Gerente de Operaciones |
 
 ## Cierre de Prioridad 3 (03-11-2026)
 
@@ -101,6 +104,6 @@ Matriz de cada pantalla del prototipo con el bloque del numeral 25.2, el módulo
 - Borradores: botón y atajo `g s` en Flujo de pedido y Portal de pedidos; por perfil y pestaña. El atajo se desactiva en Perfil y no opera al escribir ni sobre un diálogo.
 - Portal ligero: seis productos por página, sin imágenes ni animaciones; conserva el carrito al cambiar de modo.
 
-La planilla tiene 292 filas: 186 RF/RNG con ruta, 10 RT con la evaluación preexistente, 6 RF documentales (RF-13.01 a RF-13.04, RF-16.01 y RF-16.04) y los 90 RNF de SD3 (18 demostrables con ruta, 21 no demostrables en simulación y 51 documentales). Las capas 2–8 se clasifican «No aplica» al prototipo estático. «Sí» significa trazabilidad declarada; no certificación de producción ni validación automática de cada criterio.
+La planilla tiene 292 filas: 186 RF/RNG con ruta, 10 RT con la evaluación preexistente, 6 RF documentales (RF-13.01 a RF-13.04, RF-16.01 y RF-16.04) y los 90 RNF de SD3 (18 demostrables con ruta, 21 no demostrables en simulación y 51 documentales). Las capas 2–8 se clasifican «No aplica» al prototipo estático. «Ruta identificada» señala una ubicación en la demo; no certifica producción ni validación automática de cada criterio. La evidencia reproducible de este corte está en verificacion_2026-11-07.md.
 
 Para regenerar: `node revision/update_trace.cjs` y `node revision/update_workbook.mjs` con el runtime de `@oai/artifact-tool`. Ver `revision/verificacion_prioridad3.md` para pruebas y límites.

@@ -25,7 +25,7 @@ Detalle de los mínimos exigidos:
 - **Proceso secundario:** devoluciones y envases (M8) con listado, detalle, creación y flujo de aprobación visual en 5 etapas.
 - **Perfil de terreno:** apps de reparto y preventa en vista móvil, con modo sin conexión, cola de sincronización y funciones no disponibles sin señal, según SD4 Anexo 4-J.
 - **Terceros:** directorio de clientes (tabla y tarjetas, paginación, filtros por canal), ficha con pestañas, evaluación, historial, documentos y envases; portal de transportistas (asignación de conductor y vehículo) y portal de proveedores (solo lectura).
-- **Tablero analítico:** 6 indicadores del caso y 8 tipos de gráfico (líneas, barras, circular, barras apiladas, área, aguja, mapa de calor y dispersión); filtros por período, canal, zona y fechas; profundización en 3 niveles (indicador → ruta → entrega); exportación CSV, impresión y envío programado.
+- **Tablero analítico:** ocho tipos de gráfico, filtros por fechas, canal y zona, y detalle por ruta y pedido sobre la misma muestra simulada. El CSV contiene las secciones elegidas y conserva los filtros. Impresión y programación local de ejemplo, sin enviar correos.
 - **Administración:** personas usuarias (invitar, cambiar rol, suspender, importar CSV), matriz de roles y permisos con aviso de segregación de funciones, parámetros con aprobación de un segundo perfil y auditoría con filtros y exportación CSV o JSON.
 
 ## Componentes de interfaz (numeral 25.4)
@@ -73,7 +73,7 @@ Detalle de los mínimos exigidos:
 |---|---|---|---|
 | RT-25.01 | Navegación intuitiva, máximo tres interacciones | Tabla de caminos por perfil, accesos principales en el inicio, búsqueda global y acciones rápidas. | `docs/arquitectura_informacion.md` |
 | RT-25.02 | Retroalimentación, carga y errores | Avisos, esqueletos, botones con carga, validación en línea y errores con instrucciones. | `docs/sistema_diseno.md` |
-| RT-25.03 | WCAG 2.2 AA | Contraste verificado, 44 × 44 px, teclado completo, foco visible, saltar al contenido, etiquetas ARIA y textos alternativos. | `docs/sistema_diseno.md` |
+| RT-25.03 | WCAG 2.2 AA | Pruebas dirigidas de teclado, orden de tabla y semántica de controles. Falta acreditar conformidad integral y probar con lector de pantalla. | [Verificación actual](../revision/verificacion_2026-11-07.md) |
 | RT-25.04 | Diseño responsivo | Puntos de quiebre 375 / 768 / 1024 / 1366 / 1920; menú desplegable bajo 1024 px. | `docs/sistema_diseno.md` |
 | RT-25.05 | Sistema de diseño documentado | 5 colores, 2 familias, iconografía, retícula de 8 px y componentes vivos. | `docs/sistema_diseno.md` |
 | RT-25.06 | Enlace navegable sin instalación | HTML, CSS y JavaScript estáticos, sin complementos ni compilación. | `#/` |
@@ -82,7 +82,9 @@ Detalle de los mínimos exigidos:
 | RT-25.09 | Arquitectura de información | Mapa del sitio, diagrama de navegación, taxonomía, menús y jerarquía. | `docs/arquitectura_informacion.md` |
 | RT-25.10 | Exportación para revisión sin conexión (deseable) | La carpeta funciona abriendo `index.html` sin servidor; se entrega en .zip. | `abrir-prototipo.bat` |
 
-## Pruebas realizadas
+## Evidencia histórica anterior al corte 07-11-2026
+
+Los resultados actuales se registran en [verificación del prototipo](../revision/verificacion_2026-11-07.md).
 
 - Ingreso directo con los 16 perfiles predeterminados, sin errores.
 - Recorrido automático de las 49 rutas con el perfil de evaluación: ninguna con error de ejecución y todas con su título.

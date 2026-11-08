@@ -1,6 +1,6 @@
 # Arquitectura de información del prototipo
 
-Entregable del RT-25.09 (Bases Técnicas Transversales, cap. 25.5). Describe las 49 pantallas navegables del prototipo de Distribuidora Puelche: mapa del sitio, diagrama de navegación, taxonomía y nomenclatura, estructura de menús y jerarquía de la información.
+Entregable del RT-25.09 (Bases Técnicas Transversales, cap. 25.5). Describe las 52 pantallas navegables del prototipo de Distribuidora Puelche: mapa del sitio, diagrama de navegación, taxonomía y nomenclatura, estructura de menús y jerarquía de la información.
 
 Los datos salen del registro de rutas del prototipo (`js/router.js` y las vistas en `js/views/`), el mismo que arma el menú. Si cambia una ruta, este documento debe actualizarse.
 

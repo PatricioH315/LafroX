@@ -2,7 +2,7 @@
 
 Prototipo navegable de alta fidelidad de la plataforma logística que LafroX propone para Distribuidora Puelche S.A. (Caso 02 Logística). Responde al capítulo 25 de las Bases Técnicas Transversales y se entrega junto con el Informe 3.
 
-- 52 pantallas que cubren los 9 bloques del numeral 25.2, los componentes del 25.4 y los requisitos RT-25.01 a RT-25.10.
+- 52 pantallas de demostración de los nueve bloques del numeral 25.2. La presencia de una pantalla no acredita la aceptación del requisito.
 - Cada pantalla declara su módulo de SD4 (M1–M12), sus requerimientos de SD3 y sus actores. La documentación de cumplimiento está en `docs/` y no se publica en el sitio.
 - Datos simulados; nada se envía a un servidor ni se guarda de forma permanente.
 
@@ -23,7 +23,7 @@ Para recorrerlo, entre por «Ingresar», elija un actor en la lista desplegable 
 1. `#/flujo`: el proceso principal de 7 pasos, con la opción de crédito retenido y la excepción «local cerrado».
 2. `#/terreno`: la app del conductor; apague el interruptor de señal para ver el modo sin conexión y la cola de sincronización.
 3. `#/devoluciones`: el proceso secundario con su flujo de aprobación.
-4. `#/analitica`: indicadores, 8 tipos de gráfico, filtros y profundización hasta la entrega.
+4. `#/analitica`: ocho tipos de gráfico sobre una muestra simulada. Fecha, canal y zona se mantienen al profundizar hasta la entrega y al exportar el CSV.
 5. Trazabilidad con SD3 y SD4: ver [docs/trazabilidad.md](docs/trazabilidad.md) y [docs/cumplimiento.md](docs/cumplimiento.md) (no forman parte del sitio).
 6. Arquitectura de información (RT-25.09) y sistema de diseño (RT-25.05): ver [docs/arquitectura_informacion.md](docs/arquitectura_informacion.md) y [docs/sistema_diseno.md](docs/sistema_diseno.md).
 
@@ -59,4 +59,4 @@ El sitio es estático, por lo que puede publicarse en GitHub Pages desde la rama
 - **Guardar borrador** o `g s` en Flujo de pedido y Portal de pedidos. Los borradores duran la pestaña y están separados por perfil; no envían el pedido.
 - **Activar vista ligera** en Portal de pedidos: seis productos por página, sin imágenes ni animaciones.
 
-Pruebas reproducibles y límites: [revision/verificacion_prioridad3.md](revision/verificacion_prioridad3.md).
+Pruebas anteriores: [verificación de Prioridad 3](revision/verificacion_prioridad3.md). Cambios y pruebas del corte actual: [verificación del prototipo](revision/verificacion_2026-11-07.md).
