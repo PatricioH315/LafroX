@@ -5,6 +5,57 @@
   // Business names of the functional modules shown to users
   const roleName = (id) => D.roles.find((r) => r.id === id)?.nombre || id;
 
+  const importKey = 'admin.usuariosImportados';
+  function csvRows(content) {
+    const rows = [];
+    let row = [], value = '', quoted = false, closed = false;
+    const push = () => { row.push(value.trim()); value = ''; closed = false; };
+    for (let i = 0; i < content.length; i++) {
+      const c = content[i];
+      if (quoted) {
+        if (c !== '"') value += c;
+        else if (content[i + 1] === '"') { value += '"'; i++; }
+        else { quoted = false; closed = true; }
+      } else if (c === ';') push();
+      else if (c === '\n' || c === '\r') {
+        if (c === '\r' && content[i + 1] === '\n') i++;
+        push(); rows.push(row); row = [];
+      } else if (c === '"' && !closed && !value.trim()) { value = ''; quoted = true; }
+      else if (c === '"' || (closed && c.trim())) throw new Error('Comillas CSV incorrectas.');
+      else value += c;
+    }
+    if (quoted) throw new Error('Hay un campo entre comillas sin cerrar.');
+    push(); rows.push(row);
+    return rows;
+  }
+
+  function importPeople(content) {
+    const rows = csvRows(content.replace(/^\uFEFF/, ''));
+    const header = rows.shift().map((v) => v.toLowerCase());
+    if (header.join(';') !== 'nombre;correo;rol;sitio') throw new Error('Use el encabezado nombre;correo;rol;sitio.');
+    const seen = new Set(D.usuarios.map((u) => u.correo.toLowerCase()));
+    const stored = L.store.get(importKey, []);
+    const people = [], errors = [];
+    rows.forEach((cells, i) => {
+      if (cells.length === 1 && !cells[0]) return;
+      const [nombre, rawEmail, rawRole, rawSite] = cells;
+      const correo = rawEmail?.toLowerCase();
+      const role = D.roles.find((r) => r.id === rawRole?.toLowerCase() || r.nombre.toLowerCase() === rawRole?.toLowerCase());
+      const site = D.sitios.find((s) => s.nombre.toLowerCase() === rawSite?.toLowerCase() || s.id.toLowerCase() === rawSite?.toLowerCase());
+      const error = cells.length !== 4 || !nombre ? 'Se requieren las cuatro columnas y el nombre.'
+        : L.validators.email(correo) || (!correo.endsWith('@puelche.cl') ? 'Se requiere un correo @puelche.cl.' : '')
+        || (seen.has(correo) ? 'Correo duplicado.' : '') || (!role ? 'Rol desconocido.' : '') || (!site ? 'Sitio desconocido.' : '');
+      if (error) { errors.push('Registro ' + (i + 1) + ': ' + error); return; }
+      seen.add(correo);
+      people.push({ id: 'U-CSV-' + (stored.length + people.length + 1), nombre, correo, rol: role.id, sitio: site.nombre, estado: 'Pendiente', mfa: false, ultimo: null });
+    });
+    if (people.length) {
+      L.store.set(importKey, [...stored, ...people]);
+      D.usuarios.unshift(...people);
+    }
+    return { added: people.length, errors };
+  }
+
   L.route('/admin/usuarios', {
     title: 'Personas usuarias', parent: '/inicio', block: 'Administración', module: 'Base compartida (Keycloak)', rf: ['RF-17.01', 'RF-15.05', 'RF-15.03'], actors: ['Jefe de TI'],
     render: () => `<div class="page-head"><div class="titles"><h1>Personas usuarias</h1><p class="muted" style="margin:0">Altas, bajas, roles y segundo factor, sin intervención del proveedor.</p></div><div class="actions"><button type="button" class="btn btn-secondary" id="us-imp">${icon('upload')}Importar CSV</button><button type="button" class="btn btn-primary" id="us-new">${icon('plus')}Invitar persona</button></div></div>
@@ -13,15 +64,17 @@
         <section class="card"><div class="card-head"><h2>Sincronización con Recursos Humanos</h2><button type="button" class="btn btn-secondary btn-sm" id="hr-sim">Simular desvinculación</button></div><p class="small muted" style="margin-top:0">Altas y bajas ligadas al ciclo laboral: una desvinculación suspende la cuenta en todos los módulos en menos de 24 h.</p><ul class="list" id="hr-l"></ul></section></div>
       <div class="card card-flush" id="us-t"></div>`,
     mount: (root, p, q) => {
+      const restored = L.store.get(importKey, []).filter((person) => !D.usuarios.some((u) => u.id === person.id));
+      D.usuarios.unshift(...restored);
       const tbl = L.dataTable($('#us-t', root), {
         id: 'us', caption: 'Personas usuarias', rows: D.usuarios, searchKeys: ['nombre', 'correo', 'sitio'], searchPlaceholder: 'Buscar por nombre o correo',
         filters: [{ key: 'rol', label: 'Rol', options: D.roles.map((r) => r.id) }, { key: 'estado', label: 'Estado', options: ['Activo', 'Suspendido', 'Pendiente'] }],
         sort: 'nombre', selectable: true,
         columns: [
-          { key: 'nombre', label: 'Persona', render: (r) => `<div class="row" style="flex-wrap:nowrap"><span class="avatar" style="width:36px;height:36px">${L.initials(r.nombre)}</span><div>${esc(r.nombre)}<div class="small muted">${esc(r.correo)}</div></div></div>` },
+          { key: 'nombre', label: 'Persona', render: (r) => `<div class="row" style="flex-wrap:nowrap"><span class="avatar" style="width:36px;height:36px">${esc(L.initials(r.nombre))}</span><div>${esc(r.nombre)}<div class="small muted">${esc(r.correo)}</div></div></div>` },
           { key: 'rol', label: 'Rol', render: (r) => esc(roleName(r.rol)) }, { key: 'sitio', label: 'Sitio' },
           { key: 'mfa', label: 'Segundo factor', render: (r) => (r.mfa ? L.badge('Exigido', 'success') : L.badge('No exigido', '')) },
-          { key: 'ultimo', label: 'Último acceso', render: (r) => fmt.dt(r.ultimo), sortVal: (r) => r.ultimo },
+          { key: 'ultimo', label: 'Último acceso', render: (r) => (r.ultimo ? fmt.dt(r.ultimo) : '—'), sortVal: (r) => r.ultimo },
           { key: 'estado', label: 'Estado', render: (r) => L.badge(r.estado, r.estado === 'Activo' ? 'success' : r.estado === 'Suspendido' ? 'danger' : 'warning') }
         ],
         rowActions: (r, redraw) => [
@@ -43,7 +96,28 @@
         actions: [{ label: 'Cancelar' }, { label: 'Enviar invitación', cls: 'btn-primary', icon: 'send', onClick: async (api, btn) => { if (!L.validateAll(api.el)) return false; await L.busy(btn, () => {}, 800); D.usuarios.unshift({ id: 'U-' + (2000 + D.usuarios.length), nombre: $('#iv-n', api.el).value, correo: $('#iv-e', api.el).value, rol: $('#iv-r', api.el).value, sitio: $('#iv-s', api.el).value, estado: 'Pendiente', mfa: $('#iv-m', api.el).checked, ultimo: new Date().toISOString() }); tbl.draw(); L.toast('Invitación enviada', 'La persona recibirá un enlace de activación.', 'success'); } }]
       });
       $('#us-new', root).onclick = invite;
-      $('#us-imp', root).onclick = () => L.modal({ title: 'Importar personas desde CSV', body: `<div class="dropzone" id="imp-dz">${icon('upload', 'icon-lg')}<div><strong>Arrastre el archivo CSV</strong> o haga clic</div><span class="small">Columnas: nombre; correo; rol; sitio</span></div><button type="button" class="btn btn-tertiary btn-sm" id="imp-f" style="margin-top:6px">Usar archivo de ejemplo</button>`, onOpen: (d) => { const z = L.dropzone($('#imp-dz', d), { accept: '.csv,text/csv', multiple: false, maxMB: 2 }); $('#imp-f', d).onclick = async () => z.add([await L.fakeFile('personas.csv', 'text/csv', 4)]); d._z = z; }, actions: [{ label: 'Cancelar' }, { label: 'Validar e importar', cls: 'btn-primary', onClick: (api) => { if (!api.el._z.files.length) { L.toast('Adjunte un archivo CSV', '', 'error'); return false; } L.toast('Importación validada', '12 filas válidas · 1 con correo duplicado (omitida).', 'warning'); } }] });
+      $('#us-imp', root).onclick = () => L.modal({
+        title: 'Importar personas desde CSV',
+        body: `<div class="dropzone" id="imp-dz">${icon('upload', 'icon-lg')}<div><strong>Arrastre el archivo CSV</strong> o haga clic</div><span class="small">Encabezado: nombre;correo;rol;sitio</span></div><button type="button" class="btn btn-tertiary btn-sm" id="imp-f">Usar archivo de ejemplo</button><p class="hint">Las altas quedan pendientes en esta sesión de demostración. No se envían invitaciones ni se modifica ningún perfil.</p><div id="imp-out" role="status"></div>`,
+        onOpen: (d) => {
+          const z = L.dropzone($('#imp-dz', d), { accept: '.csv,text/csv', multiple: false, maxMB: 2 });
+          $('#imp-f', d).onclick = () => z.add([new File(['nombre;correo;rol;sitio\nPersona de ejemplo;ejemplo.csv@puelche.cl;preventista;CD Talca'], 'personas-ejemplo.csv', { type: 'text/csv' })]);
+          d._z = z;
+        },
+        actions: [{ label: 'Cerrar' }, { label: 'Validar e importar', cls: 'btn-primary', onClick: async (api, btn) => {
+          const [file] = api.el._z.files;
+          const out = $('#imp-out', api.el);
+          if (!file) { out.textContent = 'Adjunte un archivo CSV.'; return false; }
+          await L.busy(btn, async () => {
+            try {
+              const { added, errors } = importPeople(await file.text());
+              tbl.draw();
+              out.innerHTML = `<p><strong>${added} incorporadas · ${errors.length} omitidas</strong></p>${errors.length ? `<ul>${errors.slice(0, 10).map((error) => `<li>${esc(error)}</li>`).join('')}</ul>${errors.length > 10 ? '<p>Se muestran los primeros 10 errores.</p>' : ''}` : !added ? '<p>El archivo no contiene personas.</p>' : ''}${added ? '<p>Consulte las altas pendientes en la tabla de personas usuarias.</p>' : ''}`;
+            } catch (error) { out.textContent = error.message || 'No se pudo leer el CSV.'; }
+          }, 0);
+          return false;
+        } }]
+      });
       if (q.nuevo) invite();
       const OU = () => L.store.get('org.units', [['Gerencia General', 0], ['Gerencia de Operaciones y Logística', 1], ['Bodega CD Talca', 2], ['Bodega CD Concepción', 2], ['Planificación de rutas', 2], ['Calidad y Aseguramiento', 1], ['Gerencia Comercial', 1], ['Preventa zona Curicó', 2], ['Gerencia de Administración y Finanzas', 1], ['Tecnologías de Información', 1]]);
       const drawOU = () => ($('#ou-l', root).innerHTML = OU().map(([n, lv]) => `<li style="padding-left:${lv * 20}px">${icon(lv ? 'chev-right' : 'home', 'icon-sm')}<span class="grow">${esc(n)}</span></li>`).join(''));
@@ -199,13 +273,13 @@
       return `<div class="page-head"><div class="titles"><h1>Integraciones y monitoreo</h1><p class="muted" style="margin:0">Estado de las interfaces, métricas, registros y trazas correlacionadas por identificador de transacción, e incidentes con su análisis de causa raíz.</p></div></div>
       ${L.tabsHtml('ig', [{ id: 'int', label: 'Interfaces' }, { id: 'tr', label: 'Trazas' }, { id: 'inc', label: 'Incidentes' }, { id: 'cont', label: 'Contingencia' }], 'int')}
       <div ${L.panelAttrs('ig', 'int', 'int')}><section class="card card-flush"><div class="table-wrap"><table class="table"><caption class="sr-only">Estado de las interfaces</caption><thead><tr><th>Interfaz</th><th>Estado</th><th class="right">Latencia p95</th><th class="right">En cola</th><th>Último evento</th></tr></thead><tbody>${ints.map(([n, e, l, q, x]) => `<tr><td>${esc(n)}</td><td>${L.badge(e, kind(e))}</td><td class="num right">${l}</td><td class="num right">${q}</td><td class="wrap small">${esc(x)}</td></tr>`).join('')}</tbody></table></div><p class="small muted" style="padding:var(--sp-3) var(--sp-5) var(--sp-4)">Métricas, registros y trazas de nube y on-premise en una sola consola, instrumentadas con OpenTelemetry. Las alertas de negocio se configuran en Parámetros.</p></section></div>
-      <div ${L.panelAttrs('ig', 'tr', 'int')}><section class="card"><form class="row" id="tr-f" novalidate><div class="field" style="flex:1 1 280px"><label for="tr-id">Identificador de transacción o de pedido</label><input id="tr-id" class="input mono" value="PV-264822" placeholder="PV-264822 o trace-id"></div><button type="submit" class="btn btn-primary" style="align-self:flex-end">${icon('search')}Ver traza</button></form><div id="tr-out" style="margin-top:var(--sp-4)"></div></section></div>
+      <div ${L.panelAttrs('ig', 'tr', 'int')}><section class="card"><form class="row" id="tr-f" novalidate><div class="field" style="flex:1 1 280px"><label for="tr-id">Identificador de transacción o de pedido</label><input id="tr-id" class="input mono" value="${D.pedidos[0].id}" placeholder="Identificador de ejemplo"></div><button type="submit" class="btn btn-primary" style="align-self:flex-end">${icon('search')}Ver traza</button></form><div id="tr-out" style="margin-top:var(--sp-4)"></div></section></div>
       <div ${L.panelAttrs('ig', 'inc', 'int')}><section class="card card-flush"><div class="table-wrap"><table class="table"><caption class="sr-only">Incidentes críticos y causa raíz</caption><thead><tr><th>Incidente</th><th>Severidad</th><th>Inicio</th><th>Informe de causa raíz</th><th class="right">Acciones abiertas</th><th><span class="sr-only">Ver</span></th></tr></thead><tbody>${[['INC-2288', 'Ventana 05:30–07:00: 14 guías sin emitir', 'Crítico', '10-11 05:42', 'Entregado 12-11 (2 días hábiles)', 1], ['INC-2275', 'Excursión térmica sin alerta en R-09', 'Crítico', '04-11 08:10', 'Entregado 07-11 (3 días hábiles)', 0], ['INC-2291', 'Canal EDI sin conexión', 'Alto', 'Hoy', 'Vence 20-11 (5 días hábiles)', 2]].map(([id, t, s, d, r, a]) => `<tr><td><strong class="mono">${id}</strong><div class="small">${esc(t)}</div></td><td>${L.badge(s, s === 'Crítico' ? 'danger' : 'warning')}</td><td>${d}</td><td class="small">${r}</td><td class="num right">${a}</td><td class="right"><button type="button" class="btn btn-tertiary btn-sm" data-rca="${id}">Ver</button></td></tr>`).join('')}</tbody></table></div><p class="small muted" style="padding:var(--sp-3) var(--sp-5) var(--sp-4)">Tras cada incidente crítico se entrega un análisis de causa raíz en 5 días hábiles, con seguimiento de las acciones correctivas hasta su cierre.</p></section></div>
       <div ${L.panelAttrs('ig', 'cont', 'int')}><section class="card"><p class="muted" style="margin-top:0">Qué sigue funcionando si se cae cada pieza.</p><table class="table"><caption class="sr-only">Funciones sin conexión</caption><thead><tr><th>Si falla</th><th>Qué sigue operando</th><th>Al reconectar</th></tr></thead><tbody>${[['Tablero central', 'Alarmas y bitácora local de cada CD sostienen el despacho', 'Se repone telemetría y estado'], ['Enlace del CD con la nube', 'Recepción, inventario, preparación y liberación sanitaria en la puerta local A-01 (24 h)', 'Eventos a la nube y conciliación'], ['ERP', 'Recepciones y rendiciones se cierran; los envíos quedan en cola', 'Reintento automático sin digitación'], ['Ruteo y mapas en línea', 'Secuencia y mapas precargados', 'Se recalculan los cambios sin confirmar'], ['Canal EDI', 'Incidente y aviso acordado con la cadena', 'Cola y bandeja de excepciones'], ['Red móvil en ruta', 'Entrega, POD, cobro en efectivo y alarmas de frío en el terminal', 'Sincronización sin duplicados'], ['Autorización POS', 'Efectivo o crédito autorizado; nunca cargo presunto', 'Se autoriza una sola vez']].map(([a, b, c]) => `<tr><td><strong>${a}</strong></td><td class="wrap small">${b}</td><td class="wrap small">${c}</td></tr>`).join('')}</tbody></table><div class="row" style="margin-top:var(--sp-4)"><button type="button" class="btn btn-secondary" id="ct-dash">Simular caída del tablero central</button></div><div id="ct-out" style="margin-top:var(--sp-3)"></div></section></div>`;
     },
     mount: (root) => {
       L.tabs($('.tabs', root));
-      $('#tr-f', root).onsubmit = (e) => { e.preventDefault(); const id = $('#tr-id', root).value.trim() || 'PV-264822'; const tid = 'trace-' + (id.replace(/\D/g, '').slice(-6) || '000000') + 'a9f'; const spans = [['portal-clientes / app-preventa', 'Envío del pedido', 0, 120], ['api-gateway', 'Autenticación (Keycloak)', 20, 40], ['m3-preventa', 'Validación del pedido', 60, 180], ['m2-inventario', 'Reserva de stock por orden de llegada', 240, 95], ['m7-cobranza', 'Control de crédito', 250, 130], ['erp-sync (VM-04)', 'Registro en el ERP por ACL', 390, 420]]; const tot = 810; $('#tr-out', root).innerHTML = `<p class="small muted" style="margin-top:0">Traza <span class="mono">${esc(tid)}</span> de ${esc(id)} · ${tot} ms · registros y métricas enlazados por el mismo identificador.</p><div class="stack">${spans.map(([s, t, st, d]) => `<div><div class="row-between small"><span><strong>${s}</strong> · ${t}</span><span class="num">${d} ms</span></div><div style="position:relative;height:10px;background:var(--c-surface-2);border-radius:4px"><span style="position:absolute;left:${(st / tot) * 100}%;width:${(d / tot) * 100}%;top:0;bottom:0;background:var(--chart-1);border-radius:4px"></span></div></div>`).join('')}</div><table class="table" style="margin-top:var(--sp-4)"><caption class="sr-only">Registros correlacionados</caption><thead><tr><th>Hora</th><th>Servicio</th><th>Registro</th></tr></thead><tbody>${[['09:42:10.112', 'm3-preventa', `INFO pedido ${esc(id)} recibido · uuid local verificado`], ['09:42:10.352', 'm2-inventario', 'INFO reserva firme 4 líneas · correlativo 88213'], ['09:42:10.922', 'erp-sync', 'INFO nota de venta registrada · sin datos personales en el registro']].map(([h, s, m]) => `<tr><td class="mono small">${h}</td><td class="mono small">${s}</td><td class="small">${m}</td></tr>`).join('')}</tbody></table>`; L.logConsulta('Observabilidad', `Traza ${tid} de ${id}`, 'soporte técnico'); };
+      $('#tr-f', root).onsubmit = (e) => { e.preventDefault(); const query = $('#tr-id', root).value.trim().toUpperCase(); const traceId = (order) => 'trace-' + order.id.replace(/\D/g, '') + 'a9f'; const order = D.pedidos.find((p) => p.id === query || traceId(p).toUpperCase() === query); if (!order) { $('#tr-out', root).innerHTML = L.alert('warning', 'Sin resultados', query ? 'No existe una traza de ejemplo para ese identificador.' : 'Ingrese un identificador de pedido o de traza.'); return; } const id = order.id, tid = traceId(order); const spans = [['portal-clientes / app-preventa', 'Envío del pedido', 0, 120], ['api-gateway', 'Autenticación (Keycloak)', 20, 40], ['m3-preventa', 'Validación del pedido', 60, 180], ['m2-inventario', 'Reserva de stock por orden de llegada', 240, 95], ['m7-cobranza', 'Control de crédito', 250, 130], ['erp-sync (VM-04)', 'Registro en el ERP por ACL', 390, 420]]; const tot = 810; $('#tr-out', root).innerHTML = `<p class="small muted" style="margin-top:0">Traza simulada <span class="mono">${esc(tid)}</span> de ${esc(id)} · ${tot} ms · ejemplo ilustrativo; no corresponde a registros operativos.</p><div class="stack">${spans.map(([s, t, st, d]) => `<div><div class="row-between small"><span><strong>${s}</strong> · ${t}</span><span class="num">${d} ms</span></div><div style="position:relative;height:10px;background:var(--c-surface-2);border-radius:4px"><span style="position:absolute;left:${(st / tot) * 100}%;width:${(d / tot) * 100}%;top:0;bottom:0;background:var(--chart-1);border-radius:4px"></span></div></div>`).join('')}</div><table class="table" style="margin-top:var(--sp-4)"><caption class="sr-only">Registros correlacionados</caption><thead><tr><th>Hora</th><th>Servicio</th><th>Registro</th></tr></thead><tbody>${[['09:42:10.112', 'm3-preventa', `INFO pedido ${esc(id)} recibido · uuid local verificado`], ['09:42:10.352', 'm2-inventario', 'INFO reserva firme 4 líneas · correlativo 88213'], ['09:42:10.922', 'erp-sync', 'INFO nota de venta registrada · sin datos personales en el registro']].map(([h, s, m]) => `<tr><td class="mono small">${h}</td><td class="mono small">${s}</td><td class="small">${m}</td></tr>`).join('')}</tbody></table>`; L.logConsulta('Observabilidad', `Traza ${tid} de ${id}`, 'soporte técnico'); };
       $$('[data-rca]', root).forEach((b) => (b.onclick = () => { const id = b.dataset.rca; L.modal({ title: `Causa raíz · ${id}`, body: id === 'INC-2291' ? L.alert('info', 'Informe en preparación', 'Plazo: 5 días hábiles desde el inicio (vence el 20-11).') : `<dl class="desc-list"><dt>Causa raíz</dt><dd>${id === 'INC-2288' ? 'Certificado del canal tributario vencido en la integración erp-sync.' : 'Umbral del sensor configurado en la familia equivocada tras un cambio de parámetro.'}</dd><dt>Acciones correctivas</dt><dd>${id === 'INC-2288' ? 'Alerta 30 días antes del vencimiento (cerrada) · prueba de emisión diaria a las 05:00 (en curso)' : 'Doble aprobación del parámetro (cerrada) · prueba de alarma semanal (cerrada)'}</dd><dt>Entregado al CLIENTE</dt><dd>Dentro de 5 días hábiles</dd></dl>`, actions: [{ label: 'Cerrar', cls: 'btn-primary' }] }); }));
       $('#ct-dash', root).onclick = (e) => L.busy(e.currentTarget, () => { $('#ct-out', root).innerHTML = L.alert('warning', 'Tablero central no disponible (simulación)', 'Cada CD sigue despachando con sus alarmas y la bitácora local de la puerta A-01. Al volver el tablero, se repone la telemetría y el estado de cada ruta sin perder eventos.'); L.logAudit('Creación', 'Integración', 'Simulación de caída del tablero central: despacho con alarmas y bitácora local', 'Consola web'); }, 700);
     }

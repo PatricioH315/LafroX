@@ -341,6 +341,7 @@
 
   function menuKeys(e, ul, onEsc) {
     const its = $$('[role=menuitem]', ul);
+    if (!its.length) { onEsc(); return; }
     const i = its.indexOf(document.activeElement);
     if (e.key === 'ArrowDown') { e.preventDefault(); its[(i + 1) % its.length].focus(); }
     else if (e.key === 'ArrowUp') { e.preventDefault(); its[(i - 1 + its.length) % its.length].focus(); }
@@ -354,6 +355,7 @@
     const show = (x, y, target) => {
       $('.context-menu')?.remove();
       const its = itemsFor(target);
+      if (!its.some((it) => !it.sep && it.label)) return;
       const ul = document.createElement('ul');
       ul.className = 'menu context-menu';
       ul.setAttribute('role', 'menu');
@@ -522,7 +524,7 @@
       const slice = all.slice((st.page - 1) * st.per, st.page * st.per);
       thead.innerHTML = `<tr>${cfg.selectable ? `<th style="width:52px"><label class="check check-cell"><input type="checkbox" data-all aria-label="Seleccionar todos los de esta página"></label></th>` : ''}${cfg.columns.map((c) => `<th class="${c.right ? 'right' : ''}" ${st.sort === c.key ? `aria-sort="${st.dir === 'asc' ? 'ascending' : 'descending'}"` : ''}>${c.sortable === false ? L.esc(c.label) : `<button type="button" class="th-sort" data-sort="${c.key}">${L.esc(c.label)}${L.icon(st.sort === c.key ? (st.dir === 'asc' ? 'chev-up' : 'chev-down') : 'arrow-up-down')}</button>`}</th>`).join('')}${cfg.rowActions ? '<th class="right"><span class="sr-only">Acciones</span></th>' : ''}</tr>`;
       tbody.innerHTML = slice.length
-        ? slice.map((r) => `<tr data-id="${L.esc(r[cfg.key || 'id'])}" class="${st.sel.has(String(r[cfg.key || 'id'])) ? 'is-selected' : ''}" tabindex="-1">${cfg.selectable ? `<td><label class="check check-cell"><input type="checkbox" data-sel aria-label="Seleccionar ${L.esc(r[cfg.key || 'id'])}" ${st.sel.has(String(r[cfg.key || 'id'])) ? 'checked' : ''}></label></td>` : ''}${cfg.columns.map((c) => `<td class="${c.right ? 'num right' : ''} ${c.wrap ? 'wrap' : ''}">${c.render ? c.render(r) : L.esc(r[c.key])}</td>`).join('')}${cfg.rowActions ? `<td class="right"><div class="menu-wrap"><button type="button" class="btn btn-tertiary btn-icon" data-rowmenu aria-label="Acciones para ${L.esc(r[cfg.key || 'id'])}">${L.icon('more')}<span class="btn-label" aria-hidden="true">Acciones</span></button></div></td>` : ''}</tr>`).join('')
+        ? slice.map((r) => `<tr data-id="${L.esc(r[cfg.key || 'id'])}" class="${st.sel.has(String(r[cfg.key || 'id'])) ? 'is-selected' : ''}" tabindex="-1">${cfg.selectable ? `<td><label class="check check-cell"><input type="checkbox" data-sel aria-label="Seleccionar ${L.esc(r[cfg.key || 'id'])}" ${st.sel.has(String(r[cfg.key || 'id'])) ? 'checked' : ''}></label></td>` : ''}${cfg.columns.map((c) => `<td class="${c.right ? 'num right' : ''} ${c.wrap ? 'wrap' : ''}">${c.render ? c.render(r) : L.esc(r[c.key])}</td>`).join('')}${cfg.rowActions ? `<td class="right">${cfg.rowActions(r, draw).some((it) => !it.sep && it.label) ? `<div class="menu-wrap"><button type="button" class="btn btn-tertiary btn-icon" data-rowmenu aria-label="Acciones para ${L.esc(r[cfg.key || 'id'])}">${L.icon('more')}<span class="btn-label" aria-hidden="true">Acciones</span></button></div>` : ''}</td>` : ''}</tr>`).join('')
         : `<tr><td colspan="99">${L.empty('search', 'Sin resultados', 'No hay registros que coincidan con la búsqueda o los filtros. Pruebe con otros términos o limpie los filtros.', '<button type="button" class="btn btn-secondary" data-clear>Limpiar filtros</button>')}</td></tr>`;
       sum.textContent = all.length ? `Mostrando ${(st.page - 1) * st.per + 1}–${Math.min(st.page * st.per, all.length)} de ${all.length}` : '0 resultados';
       const nums = [];
@@ -622,6 +624,13 @@
     a.click();
     a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  };
+  L.downloadDemoText = (id, title, fields) => {
+    const name = title.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '');
+    L.download(id + '_' + name + '_demo.txt', [
+      'Prototipo LafroX: documento simulado, sin validez legal ni tributaria',
+      title + ' · ' + id, '', ...Object.entries(fields).map(([key, value]) => key + ': ' + (value ?? '—')), ''
+    ].join('\n'), 'text/plain;charset=utf-8');
   };
   L.toCSV = (rows, cols) => [cols.map((c) => c.label).join(';'), ...rows.map((r) => cols.map((c) => `"${String(c.val ? c.val(r) : r[c.key]).replace(/"/g, '""')}"`).join(';'))].join('\n');
 

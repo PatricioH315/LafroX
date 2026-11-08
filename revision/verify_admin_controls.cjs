@@ -1,0 +1,40 @@
+const { runControls, startControls, expect, assert } = require('./controls_harness.cjs');
+
+runControls(async (page, base) => {
+  const { go, button, row } = await startControls(page, base);
+  const orderId = 'PV-264716';
+  await go('/admin/usuarios');
+  await page.locator('#us-imp').click();
+  await page.locator('#imp-dz + input[type=file]').setInputFiles({ name: 'qa.csv', mimeType: 'text/csv', buffer: Buffer.from('\uFEFFnombre;correo;rol;sitio\r\n"QA; Demo";qa-controles@puelche.cl;admin;CD Talca\r\nDuplicado;QA-CONTROLES@puelche.cl;admin;CD Talca\r\nInválido;foo@puelche.cl;no-existe;CD Talca') });
+  await page.locator('.file-list .st').getByText('Cargado', { exact: true }).waitFor();
+  await button('Validar e importar').click();
+  await expect(page.locator('#imp-out')).toContainText('1 incorporadas · 2 omitidas');
+  await expect(page.locator('#imp-out')).toContainText('Correo duplicado');
+  await expect(page.locator('#imp-out')).toContainText('Rol desconocido');
+  await button('Cerrar').last().click();
+  await page.reload();
+  await page.locator('#us-q').fill('qa-controles@puelche.cl');
+  await expect(page.locator('#us-t tbody')).toContainText('QA; Demo');
+  await expect(page.locator('#us-t tbody')).toContainText('Pendiente');
+  await go('/canal-moderno');
+  await page.locator('#cm-eq').click();
+  await expect(row('SRM-40210')).toBeVisible();
+  await expect(row('SRM-40210').locator('[data-rowmenu]')).toHaveCount(0);
+  await row('SRM-40210').click({ button: 'right' });
+  await expect(page.locator('.context-menu')).toHaveCount(0);
+  await go('/inventario');
+  await page.locator('#ivt-xd').click();
+  await expect(row('0078012345000041200')).toBeVisible();
+  await expect(row('0078012345000041200').locator('[data-rowmenu]')).toHaveCount(0);
+  await go('/admin/integraciones');
+  await page.locator('#ig-tr').click();
+  await page.locator('#tr-id').fill('NO-EXISTE-999999');
+  await button('Ver traza').click();
+  await expect(page.locator('#tr-out')).toContainText('Sin resultados');
+  await expect(page.locator('#tr-out table')).toHaveCount(0);
+  await page.locator('#tr-id').fill(orderId);
+  await button('Ver traza').click();
+  await expect(page.locator('#tr-out')).toContainText('Traza simulada');
+  await expect(page.locator('#tr-out')).toContainText(orderId);
+}, 'E-05, E-07 y E-09')
+  .catch((error) => { console.error(error); process.exitCode = 1; });
