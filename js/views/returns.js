@@ -39,6 +39,7 @@
   });
 
   L.route('/devoluciones/nueva', {
+    permission: 'dev.registrar',
     title: 'Registrar devolución', parent: '/devoluciones', block: 'Proceso operacional secundario', module: 'M8 Devoluciones y envases', rf: ['RF-08.01', 'RF-06.09', 'RNG-06'], actors: ['Conductores', 'Jefa de Bodega'],
     render: () => `<div class="page-head"><div class="titles"><h1>Registrar devolución</h1><p class="muted" style="margin:0">Se captura en la entrega, aun sin señal; el producto se evalúa antes de habilitarlo para la venta.</p></div></div>
       <form class="split" id="nd" novalidate><div class="card stack-lg">
@@ -74,6 +75,7 @@
       $('#nd-fake', root).onclick = async () => dz.add([await L.fakeFile('devolucion.png')]);
       f.onsubmit = (e) => {
         e.preventDefault();
+        if (!L.can('dev.registrar')) return;
         if (!L.validateAll(f)) { L.toast('Revise el formulario', 'Hay campos obligatorios sin completar o con errores.', 'error'); return; }
         L.busy($('[type=submit]', f), () => {
           const id = 'DV-' + (5531 + Math.floor(Math.random() * 40));

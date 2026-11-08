@@ -33,9 +33,51 @@
   };
   const pick = (name) => { const p = D.productos.find((x) => x.nombre === name); return { sku: p.sku, nombre: p.nombre, temp: p.temp, precio: p.precio, stock: p.stock }; };
   const subtotal = (o) => o.lines.reduce((a, l) => a + l.cant * l.precio, 0);
-  const extraDisc = (o) => (o.extra ? Math.round((subtotal(o) - (o.promo ? Math.floor(o.lines[2].cant / 3) * o.lines[2].precio : 0)) * o.extra.pct / 100) : 0);
-  const discount = (o) => (o.promo ? Math.floor(o.lines[2].cant / 3) * o.lines[2].precio : 0) + extraDisc(o);
+  const promoSku = D.productos.find((p) => p.nombre === 'Bebida cola · 3 L').sku;
+  const promoLine = (o) => o.lines.find((l) => l.sku === promoSku);
+  const promoDiscount = (o) => {
+    const line = promoLine(o);
+    return o.promo && line ? Math.floor(line.cant / 3) * line.precio : 0;
+  };
+  const extraDisc = (o) => (o.extra ? Math.round((subtotal(o) - promoDiscount(o)) * o.extra.pct / 100) : 0);
+  const discount = (o) => promoDiscount(o) + extraDisc(o);
   const total = (o) => subtotal(o) - discount(o);
+
+
+  const creditRequests = () => L.store.get('flujo.credito', {});
+  const creditDecision = (key, decision, reason, asDemoFinance = false) => {
+    const actor = L.me();
+    const requests = creditRequests(), row = requests[key];
+    if (!row || row.decision || !L.can('pedido.autorizar') || (actor.id === row.by && !(actor.all && asDemoFinance)) || !reason.trim()) return false;
+    const by = actor.all && asDemoFinance ? 'Finanzas (perfil simulado por Evaluación)' : actor.name;
+    requests[key] = { ...row, decision, reason, reviewer: by };
+    L.store.set('flujo.credito', requests);
+    L.logAudit(decision === 'Confirmado' ? 'Aprobación' : 'Rechazo', 'Crédito', row.id + ' · ' + by + ' · ' + reason);
+    return true;
+  };
+
+  function financeQueue(root) {
+    const pending = Object.values(creditRequests()).filter((r) => !r.decision);
+    $('#fl-main', root).innerHTML = `<section class="card stack"><h2>Solicitudes de autorización de crédito</h2>${pending.length ? pending.map((r) => `<div class="card stack"><strong>${esc(r.id)} · ${esc(r.cliente)}</strong><p>Importe: ${fmt.clp(r.total)}</p><div class="btn-group"><button type="button" class="btn btn-secondary" data-credit="${esc(r.key)}">Revisar solicitud</button></div></div>`).join('') : '<p>No hay pedidos retenidos pendientes.</p>'}</section>`;
+    $$('[data-credit]', root).forEach((button) => button.onclick = () => {
+      const apply = (decision) => (api) => {
+        const reason = $('#credit-reason', api.el).value.trim();
+        if (!L.validateAll(api.el)) return false;
+        if (!creditDecision(button.dataset.credit, decision, reason)) {
+          L.toast('No se cambió el pedido', 'La solicitud ya no está disponible o su perfil no puede resolverla.', 'warning');
+          return false;
+        }
+        financeQueue(root);
+        L.toast('Decisión registrada', 'Preventa puede consultar el resultado.', 'success');
+      };
+      L.modal({
+        title: 'Decidir autorización de crédito',
+        body: '<div class="field"><label for="credit-reason">Motivo de la decisión</label><textarea class="textarea" id="credit-reason" required></textarea></div>',
+        onOpen: (dlg) => L.bindField($('#credit-reason', dlg), ['required']),
+        actions: [{ label: 'Cancelar' }, { label: 'Rechazar pedido', onClick: apply('Rechazado') }, { label: 'Autorizar pedido', cls: 'btn-primary', onClick: apply('Confirmado') }]
+      });
+    });
+  }
 
   let O = null;
   const setState = (estado, note) => { O.estado = estado; O.log.unshift({ at: new Date(), estado, note }); L.announce(`Estado del pedido: ${estado}`); };
@@ -48,9 +90,31 @@
       <div id="fl-stepper"></div>
       <div class="split"><div id="fl-main" class="stack-lg"></div><aside class="stack-lg" id="fl-side"></aside></div>`,
     mount: (root, params, q) => {
-      const draftKey = L.draftKey('flujo');
-      O = !q.nuevo ? L.store.get(draftKey, null) || newOrder() : newOrder();
+      if (L.me()?.id === 'finanzas') {
+        $('.page-head h1', root).textContent = 'Autorizaciones de crédito';
+        $('.page-head p', root).textContent = 'Resuelva las solicitudes de pedidos retenidos por el límite de crédito.';
+        $('#fl-reset', root).hidden = true;
+        financeQueue(root);
+        return;
+      }
+      const scenario = q.escena === 'preparacion' && L.allowed('/preparacion');
+      const draftKey = L.draftKey(scenario ? 'flujo.preparacion' : 'flujo');
+      const fresh = () => {
+        const order = newOrder();
+        if (scenario) {
+          order.estado = 'Planificado';
+          order.step = order.maxStep = 3;
+          order.log.push({ at: new Date(), estado: 'Planificado', note: 'Escenario de práctica: pedido ya validado y asignado a la ruta.' });
+        }
+        return order;
+      };
+      O = !q.nuevo ? L.store.get(draftKey, null) || fresh() : fresh();
+      // No reabrir un borrador antiguo que se guardó tras forzar un paso futuro.
+      if ((O.maxStep >= 6 && !O.delivered) ||
+        (O.maxStep >= 5 && !O.guia) ||
+        (O.maxStep >= 3 && !O.log.some((e) => e.estado === 'Planificado'))) O = fresh();
       O.log.forEach((entry) => { entry.at = new Date(entry.at); });
+      if (scenario) $('.page-head', root).insertAdjacentHTML('afterend', L.alert('info', 'Escenario de práctica: preparación', 'Este pedido de ejemplo ya está validado y planificado. No altera su borrador del recorrido completo.'));
       $('.page-head .actions', root).insertAdjacentHTML('afterbegin', '<button type="button" class="btn btn-secondary" id="fl-draft">Guardar borrador</button>');
       L.registerDraft(() => { L.store.set(draftKey, O); L.toast('Borrador guardado', 'Puede retomarlo en esta pestaña con este perfil. No se envió ninguna transacción.', 'success'); });
       $('#fl-draft', root).onclick = () => L.saveDraft();
@@ -86,6 +150,8 @@
       /* Paso 1 · Preventa sin conexión */
       function preventa(b) {
         const c = O.cli;
+        const eligible = promoLine(O);
+        if (!eligible) O.promo = false;
         const over = total(O) + c.vencida > c.credito;
         b.innerHTML = `
           <div class="net-banner ${O.offline ? 'offline' : 'online'}" style="border-radius:var(--radius-sm);margin-bottom:var(--sp-4)">${icon(O.offline ? 'wifi-off' : 'wifi')}<span class="grow">${O.offline ? 'Sin señal en el local: el pedido se guarda en el dispositivo' : 'En línea: stock y crédito en tiempo real'}</span><label class="switch"><input type="checkbox" id="pv-net" ${O.offline ? '' : 'checked'} aria-label="Simular conectividad"> <span class="small">Señal</span></label></div>
@@ -99,9 +165,9 @@
           <div class="table-wrap" style="border:1px solid var(--c-line-soft)"><table class="table"><caption class="sr-only">Líneas del pedido</caption><thead><tr><th>Producto</th><th class="right">Stock ${O.offline ? '(06:00)' : ''}</th><th class="right">Precio</th><th>Cantidad</th><th class="right">Subtotal</th><th><span class="sr-only">Quitar</span></th></tr></thead>
           <tbody>${O.lines.map((l, i) => `<tr><td class="wrap"><strong>${esc(l.nombre)}</strong><div class="small muted mono">${esc(l.sku)} ${l.temp !== 'Seco' ? '· ' + esc(l.temp) : ''}</div></td><td class="num right">${fmt.n(l.stock)}</td><td class="num right">${fmt.clp(l.precio)}</td><td><div class="row" style="flex-wrap:nowrap;gap:4px"><button type="button" class="btn btn-secondary btn-icon btn-sm" data-q="${i}" data-d="-1" aria-label="Restar una unidad de ${esc(l.nombre)}">${icon('minus', 'icon-sm')}</button><input class="input num" style="width:64px;text-align:center" value="${l.cant}" data-qi="${i}" inputmode="numeric" aria-label="Cantidad de ${esc(l.nombre)}"><button type="button" class="btn btn-secondary btn-icon btn-sm" data-q="${i}" data-d="1" aria-label="Sumar una unidad de ${esc(l.nombre)}">${icon('plus', 'icon-sm')}</button></div></td><td class="num right">${fmt.clp(l.cant * l.precio)}</td><td><button type="button" class="btn btn-tertiary btn-icon" data-rm="${i}" aria-label="Quitar ${esc(l.nombre)}">${icon('trash')}<span class="btn-label" aria-hidden="true">Quitar</span></button></td></tr>`).join('')}</tbody></table></div>
           <div class="row-between" style="margin-top:var(--sp-4)">
-            <div class="stack" style="gap:var(--sp-1)"><label class="check"><input type="checkbox" id="pv-promo" ${O.promo ? 'checked' : ''}> Aplicar promoción vigente 3×2 en bebidas</label>
+            <div class="stack" style="gap:var(--sp-1)"><label class="check"><input type="checkbox" id="pv-promo" ${O.promo ? 'checked' : ''} ${eligible ? '' : 'disabled'}> Aplicar promoción 3×2 en bebida cola</label>
             ${O.extra ? `<span class="small">${L.badge(`Descuento excepcional ${O.extra.pct} %`, 'success')} autorizado por ${esc(O.extra.by)} · ${esc(O.extra.why)}</span>` : `<button type="button" class="btn btn-tertiary btn-sm" id="pv-extra" style="align-self:flex-start">${icon('key', 'icon-sm')}Solicitar descuento excepcional</button>`}</div>
-            <div style="text-align:right"><div class="small muted">Subtotal ${fmt.clp(subtotal(O))}${O.promo ? ` · descuento −${fmt.clp(discount(O))}` : ''}</div><div style="font-size:var(--fs-xl);font-weight:700" class="num">Total ${fmt.clp(total(O))}</div></div>
+            <div style="text-align:right"><div class="small muted">Subtotal ${fmt.clp(subtotal(O))}</div><div id="pv-discount" class="small muted">${discount(O) ? 'Descuento −' + fmt.clp(discount(O)) : 'Sin descuento'}</div><div style="font-size:var(--fs-xl);font-weight:700" class="num">${fmt.clp(total(O))}</div></div>
           </div>
           ${over ? `<div style="margin-top:var(--sp-3)">${L.alert('warning', 'El pedido supera el crédito disponible del cliente', 'Puede guardarlo: al sincronizar, el sistema revalida el crédito y, si excede el umbral, lo retiene para autorización.')}</div>` : ''}
           <div class="row-between" style="margin-top:var(--sp-5)"><span class="small muted">El precio acordado queda fijo en el pedido.</span><button type="button" class="btn btn-primary big-btn" id="pv-save">${icon(O.offline ? 'download' : 'send')}${O.offline ? 'Guardar pedido sin conexión' : 'Enviar pedido'}</button></div>`;
@@ -114,7 +180,12 @@
           onOpen: (d) => { L.bindField($('#xd-p', d), ['required', (v) => (+v > 0 && +v <= 15 ? '' : 'Ingrese un porcentaje entre 1 y 15.')]); L.bindField($('#xd-m', d), ['required']); },
           actions: [{ label: 'Cancelar' }, { label: 'Enviar al supervisor', cls: 'btn-primary', onClick: async (api) => { if (!L.validateAll(api.el)) return false; const pct = +$('#xd-p', api.el).value, why = $('#xd-m', api.el).value; L.toast('Solicitud enviada', 'Esperando autorización del supervisor comercial…', 'info', { duration: 1800 }); await L.sleep(1500); O.extra = { pct, why, by: 'Rubén Salinas, supervisor comercial' }; setState(O.estado, `Descuento excepcional ${pct} % autorizado · ${why}`); L.toast('Descuento autorizado', `${pct} % · queda registrado quién autorizó, monto y motivo.`, 'success'); preventa(b); } }]
         }));
-        $('#pv-promo', b).onchange = (e) => { O.promo = e.target.checked; preventa(b); if (O.promo) L.toast('Promoción aplicada', `3×2 en ${O.lines[2]?.nombre || 'bebidas'}: −${fmt.clp(discount(O))}`, 'success'); };
+        $('#pv-promo', b).onchange = (e) => {
+          O.promo = e.target.checked && !!promoLine(O);
+          preventa(b);
+          $('#pv-promo', b).focus();
+          if (O.promo) L.toast('Promoción activada', promoLine(O).nombre + ': −' + fmt.clp(promoDiscount(O)), 'success');
+        };
         $$('[data-q]', b).forEach((x) => (x.onclick = () => { const l = O.lines[x.dataset.q]; l.cant = Math.max(1, l.cant + Number(x.dataset.d)); preventa(b); $(`[data-q="${x.dataset.q}"][data-d="${x.dataset.d}"]`, b).focus(); }));
         $$('[data-qi]', b).forEach((x) => (x.onchange = () => { const v = parseInt(x.value, 10); if (!(v > 0)) { L.toast('Cantidad no válida', 'Ingrese un número entero mayor que cero.', 'error'); x.value = O.lines[x.dataset.qi].cant; return; } O.lines[x.dataset.qi].cant = v; preventa(b); }));
         $$('[data-rm]', b).forEach((x) => (x.onclick = () => { if (O.lines.length === 1) { L.toast('El pedido necesita al menos una línea', '', 'warning'); return; } const [rm] = O.lines.splice(x.dataset.rm, 1); preventa(b); L.toast('Línea quitada', rm.nombre, 'info', { action: 'Deshacer', onAction: () => { O.lines.splice(x.dataset.rm, 0, rm); preventa(b); } }); }));
@@ -122,15 +193,50 @@
         $$('[data-sug]', b).forEach((x) => (x.onclick = () => add(x.dataset.sug)));
         L.combobox($('#pv-add', b), () => D.productos.map((p) => ({ label: p.nombre, meta: `${p.sku} · ${p.temp}` })), { onSelect: (it) => add(it.label) });
         $('#pv-save', b).onclick = (e) => L.busy(e.currentTarget, () => {
-          O.uuid = 'a3f2c9e1-' + Math.random().toString(16).slice(2, 6) + '-4b7d-9e21';
+          O.uuid = crypto.randomUUID?.() || 'pedido-' + Date.now() + '-' + Math.random().toString(36).slice(2);
           if (O.offline) { setState('Capturado sin conexión', 'Identificador único generado en el dispositivo'); L.toast('Pedido guardado en el dispositivo', 'Se enviará al recuperar la señal.', 'success'); }
           else { setState('Capturado sin conexión', 'Captura en línea'); setState('Pendiente de validación', 'Enviado al servidor'); }
           next();
         }, 800);
       }
 
+
+      function heldCredit(b) {
+        const request = creditRequests()[O.uuid];
+        if (request?.decision && O.estado === 'Retenido') {
+          setState(request.decision, request.reviewer + ' · ' + request.reason);
+          side();
+        }
+        if (O.estado === 'Rechazado') {
+          b.innerHTML = L.alert('danger', 'Pedido rechazado por Finanzas', request?.reason || 'No se autorizó el crédito.');
+          return;
+        }
+        if (O.estado === 'Confirmado') {
+          b.innerHTML = L.alert('success', 'Crédito autorizado', request?.reason || 'El pedido puede pasar a planificación.') + '<button class="btn btn-primary" type="button" id="vl-next">Continuar a planificación</button>';
+          $('#vl-next', b).onclick = next;
+          return;
+        }
+        b.innerHTML = L.alert('warning', 'Pedido retenido por crédito', 'La solicitud queda en la bandeja de Finanzas. Consulte la decisión al volver a este pedido.') +
+          '<button type="button" class="btn btn-secondary" id="vl-refresh">Consultar decisión</button>';
+        $('#vl-refresh', b).onclick = () => heldCredit(b);
+        if (!L.me()?.all) return;
+        b.insertAdjacentHTML('beforeend', '<button type="button" class="btn btn-secondary" id="vl-demo-finance">Representar a Finanzas (Evaluación)</button>');
+        $('#vl-demo-finance', b).onclick = () => {
+          const apply = (decision) => (api) => {
+            if (!L.validateAll(api.el) || !creditDecision(O.uuid, decision, $('#vl-mot', api.el).value, true)) return false;
+            heldCredit(b);
+          };
+          L.modal({ title: 'Decisión de Finanzas · rol de demostración',
+            body: '<div class="field"><label for="vl-mot">Motivo</label><textarea id="vl-mot" class="textarea" required></textarea></div>',
+            onOpen: (d) => L.bindField($('#vl-mot', d), ['required']),
+            actions: [{ label: 'Cancelar' }, { label: 'Rechazar pedido', onClick: apply('Rechazado') }, { label: 'Autorizar pedido', cls: 'btn-primary', onClick: apply('Confirmado') }]
+          });
+        };
+      }
+
       /* Paso 2 · Sincronización y validación */
       function validacion(b) {
+        if (O.held) { heldCredit(b); return; }
         b.innerHTML = `
           ${O.estado === 'Capturado sin conexión' ? L.alert('warning', '1 pedido en la cola del dispositivo', `El pedido ${esc(O.id)} espera señal. La sincronización es automática al reconectar o al volver al CD.`) : ''}
           <fieldset style="margin-top:var(--sp-3)"><legend class="small muted">Simulaciones de la sincronización</legend>
@@ -164,17 +270,15 @@
           if (O.simCredit) {
             setState('Retenido', 'Crédito excedido en 14 % (umbral 10 %)');
             O.held = true;
+            const requests = creditRequests();
+            const key = O.uuid ||= crypto.randomUUID?.() || 'credito-' + Date.now();
+            if (!requests[key]) {
+              requests[key] = { key, by: L.me().id, id: O.id, cliente: O.cli.nombre, total: total(O) };
+              L.store.set('flujo.credito', requests);
+              L.logAudit('Creación', 'Crédito', 'Solicitud de revisión para ' + O.id);
+            }
             side();
-            $('#vl-out', b).innerHTML = `${L.alert('danger', 'Pedido retenido por crédito', 'El pedido más la deuda vencida supera el límite en 14 %. Solo un supervisor de crédito puede autorizar el envío.')}
-              <form class="card" style="box-shadow:none;margin-top:var(--sp-3)" id="vl-auth" novalidate><h3>Autorización del supervisor</h3><div class="form-grid">
-                <div class="field"><label for="vl-mot">Motivo <span class="req" aria-hidden="true">*</span></label><select id="vl-mot" class="select" required><option value="">Seleccione…</option><option>Cliente con historial de pago puntual</option><option>Abono comprometido esta semana</option><option>Excepción comercial autorizada por gerencia</option></select></div>
-                <div class="field"><label for="vl-sup">Supervisor</label><input id="vl-sup" class="input" value="Patricio Vergara U." readonly></div>
-                <div class="field full"><label for="vl-com">Comentario</label><textarea id="vl-com" class="textarea" placeholder="Opcional"></textarea></div></div>
-                <div class="row" style="justify-content:flex-end;margin-top:var(--sp-3)"><button type="button" class="btn btn-secondary" id="vl-rej">Rechazar pedido</button><button type="submit" class="btn btn-primary">${icon('check')}Autorizar y confirmar</button></div></form>`;
-            L.bindField($('#vl-mot', b), ['required']);
-            $('#vl-rej', b).onclick = async () => { if (await L.confirm({ title: '¿Rechazar el pedido?', message: 'El cliente y la preventista recibirán el aviso. Esta acción queda registrada en la auditoría.', confirmLabel: 'Rechazar pedido', danger: true })) { L.toast('Pedido rechazado', 'Para continuar la simulación, autorícelo.', 'warning'); } };
-            $('#vl-auth', b).onsubmit = (ev) => { ev.preventDefault(); if (!L.validateAll(ev.target)) return; L.busy($('#vl-auth [type=submit]', b), () => { setState('Confirmado', 'Autorizado por supervisor de crédito'); L.toast('Pedido confirmado', 'Autorización registrada con supervisor, monto y motivo.', 'success'); next(); }); };
-            btn.remove();
+            heldCredit(b);
             return;
           }
           setState('Confirmado', 'Stock reservado y crédito validado');
@@ -336,7 +440,11 @@
           $('#rd-again', b).onclick = () => { O = newOrder(); O.simCredit = true; draw(); L.toast('Simulación reiniciada', 'Pruebe «crédito excedido» y luego «local cerrado».', 'info'); };
           return;
         }
-        const expected = O.delivered?.cash ?? total(O);
+        if (!O.delivered) {
+          b.innerHTML = L.alert('warning', 'No hay una entrega confirmada', 'Registre primero la prueba de entrega para habilitar la rendición.');
+          return;
+        }
+        const expected = O.delivered.cash ?? 0;
         b.innerHTML = `<p class="muted">Al volver al CD, el sistema calcula lo esperado por camión y turno a partir de las entregas al contado confirmadas y lo contrasta con lo declarado.</p>
           <form id="rd-f" novalidate><div class="grid grid-3">
             <div class="card" style="box-shadow:none"><div class="small muted">Esperado para este pedido</div><div class="num" style="font-size:var(--fs-xl);font-weight:700">${fmt.clp(expected)}</div></div>
@@ -360,8 +468,10 @@
       }
 
       root.addEventListener('click', (e) => { const g = e.target.closest('[data-go]'); if (g) { O.step = +g.dataset.go; draw(); } });
-      $('#fl-reset', root).onclick = async () => { if (await L.confirm({ title: '¿Reiniciar la simulación?', message: 'Se descartará el avance del pedido PV-264822.', confirmLabel: 'Reiniciar' })) { O = newOrder(); L.store.set(draftKey, O); draw(); L.toast('Simulación reiniciada', '', 'info'); } };
-      if (q.paso) { O.step = Math.min(6, +q.paso - 1); O.maxStep = Math.max(O.maxStep, O.step); }
+      $('#fl-reset', root).onclick = async () => { if (await L.confirm({ title: '¿Reiniciar la simulación?', message: 'Se descartará el avance del pedido PV-264822.', confirmLabel: 'Reiniciar' })) { O = fresh(); L.store.set(draftKey, O); draw(); L.toast('Simulación reiniciada', '', 'info'); } };
+      const requested = Number(q.paso) - 1;
+      if (q.paso && Number.isInteger(requested) && requested >= 0 && requested <= O.maxStep) O.step = requested;
+      else if (q.paso) L.toast('Ese paso aún no está disponible', 'Complete los pasos anteriores para continuar.', 'warning');
       draw();
     }
   });

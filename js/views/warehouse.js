@@ -53,6 +53,7 @@
   });
 
   L.route('/recepcion/nueva', {
+    permission: 'recepcion.registrar',
     title: 'Registrar recepción', parent: '/recepcion', block: 'Proceso operacional principal', module: 'M1 Recepción', rf: ['RF-01.01', 'RF-01.02', 'RF-01.03', 'RF-01.04', 'RF-01.05', 'RF-01.06', 'RF-01.07', 'RF-01.11'], actors: ['Jefa de Bodega', 'Preparador'],
     render: () => `<div class="page-head"><div class="titles"><span class="page-kicker">OC-88412 · Lácteos del Sur S.A. · andén 3</span><h1>Registrar recepción</h1><p class="muted" style="margin:0">Escanee la etiqueta GS1-128: el sistema interpreta GTIN (01), lote (10), vencimiento (17) y SSCC (00).</p></div></div>
       <div class="split"><form class="card stack-lg" id="rc" novalidate>
@@ -102,6 +103,7 @@
       $('#nc-fake', root).onclick = async () => ncDz.add([await L.fakeFile('no_conformidad.png')]);
       f.onsubmit = (e) => {
         e.preventDefault();
+        if (!L.can('recepcion.registrar')) return;
         if (!L.validateAll(f)) { L.toast('Revise la recepción', 'Hay datos obligatorios faltantes o incompatibles.', 'error'); return; }
         const ncQ = +($('#nc-q', root).value || 0);
         // RF-01.04: a non-conformity needs at least one photo

@@ -3,7 +3,6 @@
 (function (L) {
   const { esc, icon, $, $$, data: D, fmt } = L;
   // Business names of the functional modules shown to users
-  const MODN = { M1: 'Recepción', M2: 'Inventario', M3: 'Preventa', M4: 'Rutas', M5: 'Preparación', M6: 'Reparto', M7: 'Cobranza', M8: 'Devoluciones', M9: 'Calidad', M10: 'Analítica', M11: 'Canal moderno', M12: 'Telemetría' };
   const roleName = (id) => D.roles.find((r) => r.id === id)?.nombre || id;
 
   L.route('/admin/usuarios', {
@@ -57,28 +56,78 @@
     }
   });
 
+
+  const permissionNames = {
+    'cliente.bloquear': 'Bloquear cliente por crédito', 'cliente.cartera': 'Consultar cartera', 'cliente.segmentar': 'Segmentar clientes',
+    'cliente.crear': 'Crear cliente', 'cliente.editar': 'Editar cliente', 'cliente.ventana': 'Cambiar ventana de recepción',
+    'precio.excepcion': 'Autorizar descuento excepcional', 'pedido.anular': 'Anular pedido', 'pedido.asignar': 'Asignar pedido a ruta',
+    'pedido.autorizar': 'Autorizar o rechazar crédito', 'pedido.facturar': 'Revisar facturación', 'ruta.planificar': 'Planificar rutas',
+    'ruta.aprobar': 'Aprobar rutas', 'ruta.restricciones': 'Gestionar restricciones de ruta', 'prep.misiones': 'Generar misiones de preparación',
+    'recepcion.registrar': 'Registrar recepción', 'recepcion.ubicar': 'Ubicar pallets', 'erp.simular': 'Simular disponibilidad del ERP',
+    'inv.gestionar': 'Gestionar inventario', 'inv.reposicion': 'Aprobar reposición', 'inv.ficha': 'Editar ficha de producto',
+    'xd.causa': 'Registrar causa de cross-docking', 'dev.registrar': 'Registrar devolución', 'dev.recepcionar': 'Recepcionar devolución',
+    'dev.destino': 'Aprobar destino de devolución', 'dev.nc': 'Solicitar nota de crédito', 'calidad.disponer': 'Decidir disposición sanitaria',
+    'calidad.retiro': 'Ejecutar retiro sanitario', 'geocerca.gestionar': 'Gestionar geocercas', 'rend.gestionar': 'Gestionar rendición',
+    'edi.gestionar': 'Gestionar canal EDI'
+  };
+  const roleProposals = () => L.store.get('permisos.pendientes', []);
   L.route('/admin/roles', {
-    title: 'Roles y permisos', parent: '/inicio', block: 'Administración', module: 'Base compartida (RBAC)', rf: ['RF-15.04', 'RF-17.01', 'RF-17.03'], actors: ['Jefe de TI'],
-    render: () => `<div class="page-head"><div class="titles"><h1>Roles y permisos</h1><p class="muted" style="margin:0">Control de acceso basado en roles, con mínimo privilegio y segregación de funciones.</p></div><div class="actions"><button type="button" class="btn btn-secondary" id="ro-new">${icon('plus')}Nuevo rol</button><button type="button" class="btn btn-primary" id="ro-save" disabled>${icon('check')}Guardar cambios</button></div></div>
-      <section class="card card-flush"><div class="table-wrap"><table class="table"><caption class="sr-only">Matriz de roles y permisos</caption><thead><tr><th>Rol</th><th>Módulos</th><th class="right">Personas</th>${D.permisos.map((p) => `<th style="text-align:center">${p}</th>`).join('')}</tr></thead><tbody>${D.roles.map((r) => `<tr><td><strong>${esc(r.nombre)}</strong><div class="small muted">${esc(r.desc)}</div></td><td>${r.modulos.map((m) => `<span class="badge plain">${MODN[m] || m}</span>`).join(' ')}</td><td class="num right">${r.usuarios}</td>${D.permisos.map((p, i) => `<td style="text-align:center"><label class="check check-cell"><input type="checkbox" data-r="${r.id}" data-i="${i}" ${D.matriz[r.id][i] ? 'checked' : ''} ${r.id === 'admin' && i === 5 ? 'disabled' : ''} aria-label="${p} para ${esc(r.nombre)}"></label></td>`).join('')}</tr>`).join('')}</tbody></table></div></section>
-      <div id="ro-sod" style="margin-top:var(--sp-4)"></div>`,
+    title: 'Roles y permisos', parent: '/inicio', block: 'Administración', module: 'Base compartida (RBAC)', rf: ['RF-15.04', 'RF-17.01', 'RF-17.03'], actors: ['Jefe de TI', 'Gerente de Operaciones'],
+    render: () => `<div class="page-head"><div class="titles"><h1>Roles y permisos</h1><p class="muted">Permisos de acción de los perfiles de la demostración. No modifican las cuentas reales ni abren módulos fuera del menú del perfil.</p></div></div>
+      <section class="card stack" id="ro-pending" aria-label="Propuestas pendientes"></section>
+      <section class="card stack" style="margin-top:var(--sp-4)"><div class="field"><label for="ro-profile">Perfil</label><select id="ro-profile" class="select">${D.profiles.filter((p) => !p.all).map((p) => `<option value="${p.id}">${esc(p.actor)}</option>`).join('')}</select></div>
+      <div id="ro-matrix" class="table-wrap"></div><button type="button" class="btn btn-primary" id="ro-save" disabled>Enviar cambios a aprobación</button></section>`,
     mount: (root) => {
-      const changes = new Set();
-      // A role that can both create (1) and approve (3) breaks segregation of duties (RF-17.03)
-      const sod = () => {
-        const roles = D.roles.filter((r) => $(`[data-r="${r.id}"][data-i="1"]`, root).checked && $(`[data-r="${r.id}"][data-i="3"]`, root).checked);
-        $('#ro-sod', root).innerHTML = roles.length ? L.alert('warning', `Segregación de funciones: ${roles.length} rol(es) pueden crear y aprobar`, `${roles.map((r) => esc(r.nombre)).join(', ')}. Mientras tengan ambos permisos, el sistema impide que una misma persona apruebe una transacción que ella creó: la aprobación pasa a otra persona del rol. Revise antes de guardar.`) : '';
+      const me = L.me();
+      const propose = me.all || me.id === 'ti';
+      const review = me.all || me.id === 'gerente-ops';
+      const profile = $('#ro-profile', root), matrix = $('#ro-matrix', root), save = $('#ro-save', root);
+      const selectedChanges = () => $$('[data-permission]', matrix).filter((x) => x.checked !== L.profileCan(profile.value, x.dataset.permission))
+        .map((x) => ({ action: x.dataset.permission, enabled: x.checked }));
+      const drawMatrix = () => {
+        matrix.innerHTML = `<table class="table"><caption class="sr-only">Permisos vigentes del perfil</caption><thead><tr><th scope="col">Acción</th><th scope="col">Permitida</th></tr></thead><tbody>${Object.keys(L.perm).map((action) => `<tr><th scope="row">${esc(permissionNames[action] || action)}</th><td><label class="check check-cell"><input type="checkbox" data-permission="${action}" aria-label="${esc(permissionNames[action] || action)}" ${L.profileCan(profile.value, action) ? 'checked' : ''} ${propose ? '' : 'disabled'}></label></td></tr>`).join('')}</tbody></table>`;
+        save.hidden = !propose;
+        save.disabled = true;
       };
-      $$('[data-r]', root).forEach((c) => (c.onchange = () => {
-        const k = c.dataset.r + c.dataset.i;
-        changes.has(k) ? changes.delete(k) : changes.add(k);
-        $('#ro-save', root).disabled = !changes.size;
-        $('#ro-save', root).innerHTML = `${icon('check')}Guardar cambios${changes.size ? ` (${changes.size})` : ''}`;
-        sod();
-      }));
-      sod();
-      $('#ro-save', root).onclick = async () => { if (await L.confirm({ title: `¿Guardar ${changes.size} cambio(s) de permisos?`, message: 'Los cambios con impacto operacional quedan pendientes de aprobación por un segundo perfil.', confirmLabel: 'Enviar a aprobación' })) { changes.clear(); $('#ro-save', root).disabled = true; $('#ro-save', root).innerHTML = `${icon('check')}Guardar cambios`; L.toast('Cambios enviados a aprobación', 'Gerencia de Operaciones debe aprobarlos.', 'success'); } };
-      $('#ro-new', root).onclick = () => L.modal({ title: 'Nuevo rol', body: `<div class="field"><label for="nr-n">Nombre del rol</label><input id="nr-n" class="input"></div><div class="field" style="margin-top:12px"><label for="nr-b">Basado en</label><select id="nr-b" class="select">${D.roles.map((r) => `<option>${esc(r.nombre)}</option>`).join('')}</select></div>`, onOpen: (d) => L.bindField($('#nr-n', d), ['required', (v) => (D.roles.some((r) => r.nombre.toLowerCase() === v.toLowerCase()) ? 'Ya existe un rol con ese nombre.' : '')]), actions: [{ label: 'Cancelar' }, { label: 'Crear rol', cls: 'btn-primary', onClick: (api) => { if (!L.validateAll(api.el)) return false; L.toast('Rol creado', $('#nr-n', api.el).value, 'success'); } }] });
+      const drawPending = () => {
+        const host = $('#ro-pending', root);
+        const pending = roleProposals();
+        host.innerHTML = `<h2>Cambios pendientes</h2>${pending.length ? `<ul class="stack">${pending.map((p) => `<li><strong>${esc(L.profile(p.profile)?.actor || p.profile)}</strong> · propuesto por ${esc(L.profile(p.by)?.name || p.by)}
+          <ul>${p.changes.map((x) => `<li>${x.enabled ? 'Permitir' : 'Revocar'}: ${esc(permissionNames[x.action] || x.action)}</li>`).join('')}</ul>
+          ${review && p.by !== me.id ? `<div class="btn-group"><button type="button" class="btn btn-primary" data-review="${p.id}" data-accept="yes">Aprobar</button><button type="button" class="btn btn-secondary" data-review="${p.id}" data-accept="no">Rechazar</button></div>` : '<p class="hint">Debe resolver otro perfil autorizado.</p>'}</li>`).join('')}</ul>` : '<p class="muted">No hay cambios pendientes.</p>'}`;
+      };
+      matrix.onchange = () => { save.disabled = !selectedChanges().length; };
+      profile.onchange = drawMatrix;
+      save.onclick = async () => {
+        const actor = L.me();
+        if (!actor?.all && actor?.id !== 'ti') return;
+        const target = profile.value, changes = selectedChanges();
+        if (!changes.length || !(await L.confirm({ title: '¿Enviar cambios a aprobación?', message: 'El permiso actual no cambia hasta que otro perfil apruebe.', confirmLabel: 'Enviar a aprobación' }))) return;
+        if (L.me()?.id !== actor.id) return;
+        const id = String(Date.now());
+        L.store.set('permisos.pendientes', [...roleProposals(), { id, by: actor.id, profile: target, changes }]);
+        L.logAudit('Creación', 'Permisos', 'Propuesta ' + id + ' para ' + L.profile(target).actor);
+        drawMatrix(); drawPending();
+        L.toast('Cambios enviados a aprobación', 'Gerencia de Operaciones puede resolverlos.', 'success');
+      };
+      $('#ro-pending', root).onclick = (event) => {
+        const b = event.target.closest('[data-review]');
+        const actor = L.me(), proposal = b && roleProposals().find((p) => p.id === b.dataset.review);
+        if (!proposal || proposal.by === actor?.id || (!actor?.all && actor?.id !== 'gerente-ops')) return;
+        const accept = b.dataset.accept === 'yes';
+        if (accept) {
+          const values = L.store.get('permisos.vigentes', {});
+          for (const { action, enabled } of proposal.changes) {
+            values[action] = { ...values[action], [proposal.profile]: enabled };
+          }
+          L.store.set('permisos.vigentes', values);
+        }
+        L.store.set('permisos.pendientes', roleProposals().filter((p) => p.id !== proposal.id));
+        L.logAudit(accept ? 'Aprobación' : 'Rechazo', 'Permisos', 'Propuesta ' + proposal.id);
+        drawMatrix(); drawPending();
+        L.toast(accept ? 'Permisos actualizados' : 'Propuesta rechazada', '', accept ? 'success' : 'info');
+      };
+      drawMatrix(); drawPending();
     }
   });
 
