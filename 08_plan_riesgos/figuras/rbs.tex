@@ -1,122 +1,16 @@
 \clearpage
-\begingroup
-\newgeometry{layoutwidth=330mm,layoutheight=216mm,layoutoffset={0mm,0mm},left=10mm,right=10mm,top=22mm,bottom=30mm,headheight=27pt,headsep=10pt,footskip=28pt}
-\setlength{\headwidth}{\textwidth}
-\setlength{\paperwidth}{330mm}
-\setlength{\paperheight}{216mm}
-\pagewidth=\paperwidth
-\pageheight=\paperheight
-\setlength{\parindent}{0pt}
-\setlength{\fboxsep}{4pt}
-\newcommand{\RBSrisk}[3]{\noindent\textbf{#1} \hfill {\scriptsize #3}\\[-1pt] #2\par\vspace{0pt}}
-\thispagestyle{lafrox}
+% La RBS es apaisada; se recorta únicamente el espacio blanco inferior del PDF
+% fuente para aprovechar la página sin reducir la tipografía del diagrama.
+\newgeometry{top=0.7cm,bottom=2.0cm,left=1.0cm,right=1.0cm,
+             headheight=27pt,headsep=0pt,footskip=52pt}
+\begin{landscape}
+\thispagestyle{plain}
 \begin{center}
-{\Large\bfseries Estructura de desglose de riesgos (RBS)}\\[3pt]
-{\small LafroX · 35 riesgos · clasificación por fuente predominante · página 1 de 2}
+  \includegraphics[width=0.98\linewidth,height=0.95\textheight,
+    trim=0 340 0 0,clip,keepaspectratio]{figuras/LafroX_RBS_35_riesgos_S8_v3.pdf}
+  \captionof{figure}{Estructura de desglose de riesgos (RBS) del proyecto LafroX. Fuente: elaboración propia.}
+  \label{fig:sd8-rbs}
 \end{center}
-\captionof{figure}{Estructura de desglose de riesgos (EDR/RBS) del proyecto LafroX: 35 riesgos, organizada en seis ramas y distribuida en dos páginas oficio. Fuente: elaboración propia.}
-\label{fig:sd8-rbs}
-\vspace{5pt}
-\begin{minipage}[t]{0.32\textwidth}
-\fbox{
-\begin{minipage}[t]{0.90\linewidth}
-{\large\bfseries 1 · Solución y tecnología}\\[-1pt]
-{\small 3 riesgos}\\[3pt]\hrule\vspace{5pt}
-\footnotesize
-\RBSrisk{R-002}{Historia sanitaria de origen no reconstruible}{Crítica}
-\RBSrisk{R-032}{Cambio de soporte exige adecuación extraordinaria}{Alta}
-\RBSrisk{R-033}{Dependencia de proveedor limita salida o sustitución}{Media}
-\end{minipage}
-}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\fbox{
-\begin{minipage}[t]{0.90\linewidth}
-{\large\bfseries 2 · Integración y legado}\\[-1pt]
-{\small 6 riesgos}\\[3pt]\hrule\vspace{5pt}
-\footnotesize
-\RBSrisk{R-001}{Cadena no completa a tiempo su certificación EDI}{Alta}
-\RBSrisk{R-003}{Historial de ventas inutilizable para carga y reposición}{Media}
-\RBSrisk{R-007}{Deuda viva adicional a la cartera de la volumetría}{Media}
-\RBSrisk{R-008}{SII no responde y deja un trámite tributario pendiente}{Baja}
-\RBSrisk{R-030}{Interfaces ERP/WMS no verificables a tiempo}{Alta}
-\RBSrisk{R-034}{ERP indisponible impide nueva guía válida}{Media}
-\end{minipage}
-}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\fbox{
-\begin{minipage}[t]{0.90\linewidth}
-{\large\bfseries 3 · Operación del cliente}\\[-1pt]
-{\small 13 riesgos}\\[3pt]\hrule\vspace{5pt}
-\footnotesize
-\RBSrisk{R-004}{Diferencias de inventario sin resolver antes del corte}{Alta}
-\RBSrisk{R-005}{Saldo inicial de envases no conciliable (carga M8)}{Alta}
-\RBSrisk{R-006}{Historia de origen insuficiente para líneas base de aceptación}{Alta}
-\RBSrisk{R-009}{Calidad no entrega la matriz térmica aprobada}{Alta}
-\RBSrisk{R-010}{Equipos del cliente no llegan antes de la ola}{Media}
-\RBSrisk{R-012}{Transportista no permite instalar el termógrafo}{Media}
-\RBSrisk{R-016}{Contraparte no entrega validación en la fecha prevista}{Alta}
-\RBSrisk{R-017}{Proveedor de conectividad interrumpe el enlace de un sitio}{Media}
-\RBSrisk{R-018}{Corte eléctrico supera el tiempo de respaldo}{Baja}
-\RBSrisk{R-020}{Cliente no autoriza intervención urgente en congelamiento}{Media}
-\RBSrisk{R-021}{Fallas mecánicas del camión}{Baja}
-\RBSrisk{R-022}{Camión involucrado en un siniestro}{Baja}
-\RBSrisk{R-023}{Asalto a camión}{Baja}
-\end{minipage}
-}
-\end{minipage}
-\vspace{4pt}
-\clearpage
-\thispagestyle{lafrox}
-\begin{center}
-{\Large\bfseries Estructura de desglose de riesgos (RBS)}\\[3pt]
-{\small LafroX · 35 riesgos · clasificación por fuente predominante · página 2 de 2}
-\end{center}
-\vspace{8pt}
-\begin{minipage}[t]{0.32\textwidth}
-\fbox{
-\begin{minipage}[t]{0.90\linewidth}
-{\large\bfseries 4 · Personas y adopción}\\[-1pt]
-{\small 8 riesgos}\\[3pt]\hrule\vspace{5pt}
-\footnotesize
-\RBSrisk{R-011}{Transportista no firma a tiempo el acuerdo de incorporación}{Alta}
-\RBSrisk{R-013}{Usuarios mantienen el proceso anterior}{Alta}
-\RBSrisk{R-014}{Planificador no disponible antes de validar excepciones}{Media}
-\RBSrisk{R-015}{Usuarios no asisten a la capacitación antes de la ola}{Media}
-\RBSrisk{R-024}{Reemplazos de conductores externos sin aviso}{Media}
-\RBSrisk{R-028}{Desacuerdo sobre telemetría impide incorporación}{Alta}
-\RBSrisk{R-029}{Rotación nocturna supera inducción disponible}{Alta}
-\RBSrisk{R-035}{Conductor externo rechaza uso de la solución}{Alta}
-\end{minipage}
-}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\fbox{
-\begin{minipage}[t]{0.90\linewidth}
-{\large\bfseries 5 · Contrato y licitación}\\[-1pt]
-{\small 3 riesgos}\\[3pt]\hrule\vspace{5pt}
-\footnotesize
-\RBSrisk{R-025}{Solicitudes que amplían el alcance}{Media}
-\RBSrisk{R-027}{Disputa en la liquidación del tramo variable}{Media}
-\RBSrisk{R-031}{Peak y congelamiento impiden cierre de fase}{Alta}
-\end{minipage}
-}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\fbox{
-\begin{minipage}[t]{0.90\linewidth}
-{\large\bfseries 6 · Regulatorio y externo}\\[-1pt]
-{\small 2 riesgos}\\[3pt]\hrule\vspace{5pt}
-\footnotesize
-\RBSrisk{R-019}{Falta aprobación del cliente para datos en regiones de nube}{Media}
-\RBSrisk{R-026}{Cambios normativos}{Media}
-\end{minipage}
-}
-\end{minipage}
-\vspace{4pt}
-\clearpage
-\endgroup
+\end{landscape}
 \restoregeometry
-\pagewidth=\paperwidth
-\pageheight=\paperheight
+\clearpage
