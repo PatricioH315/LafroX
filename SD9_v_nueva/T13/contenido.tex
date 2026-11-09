@@ -80,7 +80,7 @@ Carga y estrés & Preproducción & k6 & Total & 3.8.4; 3.9.3 & Art. 24; RT-09.06
 Resiliencia & Preproducción & AWS Fault Injection Service; desconexiones controladas del sitio emulado; corte de gateways de frío y de enlaces & Total en la inyección; manual en la observación & 3.8.4; 3.9.3; 8.2.2 & RT-10.07 (BTT, p. 22) \\
 Continuidad de la arquitectura híbrida & Preproducción y sitio emulado & Nueve protocolos del SD4, Anexo 4-V (sección 7.5) & Parcial & 3.8.1; 3.8.3 a 3.8.5; 3.9.1; 3.9.3; 3.9.4 & RT-03.10; RT-07.04 (BTT, p. 17) \\
 Recuperación ante desastres & Recuperación ante Desastres (us-east-1) & Conmutación regional real y recuperación del WMS de Talca en la nube (AL-DR-01) & Procedimiento automatizado con verificación manual & 3.8.5; 3.9.4; 8.1.3 & RT-07.07 (BTT, p. 17) \\
-Restauración de respaldos & Producción y Recuperación & Restauración de una muestra representativa & Procedimiento automatizado & 4.2.1; 4.2.2; 4.3.1; 8.1.6 & RT-07.12 (BTT, p. 18) \\
+Restauración de respaldos & Producción y Recuperación; excepción en sección 9.3 & Restauración de una muestra representativa & Procedimiento automatizado & 4.2.1; 4.2.2; 4.3.1; 8.1.6 & RT-07.12 (BTT, p. 18) \\
 Seguridad ofensiva & Preproducción con versión congelada & Tercero independiente & Manual & 3.8.6; 3.9.5; 8.2.2 & RT-11.20 (BTT, p. 24) \\
 Despliegue sin interrupción y reversión & Preproducción & Cadena de entrega del SD4 (canario con reversión automática) & Total & 3.8.8; 3.9.7 & Art. 24; RT-04.07 (BA, p. 17; BTT, p. 11) \\
 Migración de datos & Preproducción & Procedimiento de extracción, carga y conciliación del SD5 & Parcial & 3.7.1 a 3.7.5 & BTT 20.1; RT-05.11 (BTT, pp. 12, 34--35) \\
@@ -99,10 +99,12 @@ Los cinco ambientes se diferencian por sus datos y por el control que permiten. 
 Desarrollo & Unitarias, de componente y de contrato & Sintéticos & Reconstruible desde código \\
 QA & Integración, sistema, regresión, análisis dinámico, accesibilidad automatizada, carga de regresión semanal & Juegos sintéticos versionados & Restituido a un estado conocido (BTT 4.1, p. 10) \\
 Preproducción & Aceptación, carga y estrés, resiliencia, ensayo del paso a producción, migración, seguridad ofensiva & Sintéticos con volumen de peak; históricos anonimizados solo para migración & Equivalente a Producción en topología, configuración y versiones (RT-04.02) (BTT, p. 10) \\
-Producción & Verificación posterior al despliegue, indicadores diarios de la marcha blanca, restauración de respaldos & Reales & No se prueba con datos ficticios \\
+Producción & Verificación posterior al despliegue, indicadores diarios de la marcha blanca, restauración de respaldos fuera de septiembre y diciembre & Reales & No se prueba con datos ficticios \\
 Recuperación ante Desastres & Conmutación real & Réplica productiva protegida & No se usa como ambiente funcional de prueba \\
 \end{tablasimple}
 \fuentesd{Fuente: (Bases Técnicas Transversales, sección 4.1, p. 10); (Subdocumento 4, sección 4.2.4.1); (Subdocumento 5, sección 5.3).}
+
+En septiembre y diciembre, la restauración de prueba se aloja en una instancia aislada de Preproducción con datos sintéticos, según la sección 9.3.
 
 \subsection*{4.1 Instancias de Preproducción por campaña}
 \addcontentsline{toc}{subsection}{4.1 Instancias de Preproducción por campaña}
@@ -432,6 +434,8 @@ Cada corrección & Puertas G0 a G4 y G6, regresión completa, DAST y carga de re
 \end{tablasimple}
 \fuentesd{Fuente: (Bases Administrativas, art. 17.3, p. 13); (Subdocumento 7, Tabla 7.9); (Formulario T-14, cuenta 4).}
 
+A las restauraciones de los meses 13 a 20 se les aplica la misma excepción de ambiente para septiembre y diciembre que a las de Operación (sección 9.3).
+
 Cada restauración previa tiene 16 HH SRE (4 preparación, 4 ejecución, 4 validación y 4 informe); se agregan 48 HH a 4.2.1, 48 a 4.2.2 y 32 a 4.3.1 como componentes separados de la cobertura NOC/mesa. Las siete conmutaciones operacionales requieren 560 HH y la recuperación inicial 320 HH según el desglose por actividades/roles del T-15; el mismo formulario justifica 320/160 HH de intrusión E1/E2.
 
 \subsection*{9.3 Operación (meses 21 a 56)}
@@ -448,6 +452,8 @@ Restauración de respaldos & Al menos mensual (RT-07.12) (BTT, p. 18) & 21 a 56 
 Regresión de INN-02 & Escenarios reproducidos de incidentes & 21 a 56 & Trimestral (informe) & 12 & 8.3.1 \\
 \end{tablasimple}
 \fuentesd{Fuente: (Bases Técnicas Transversales, RT-07.07, RT-07.12, RT-10.07 y RT-11.20, pp. 17--18, 22, 24); (Bases Técnicas del caso, cap. 15, RT-10.05, p. 27); (Formulario T-14, cuenta 8); (Formulario T-15, sección 6.1).}
+
+\textbf{Restauración mensual en septiembre y diciembre.} Desde el mes 13, en ambos meses se usa una instancia aislada de Preproducción, sin intervenir Producción ni el sitio de Recuperación ni realizar una conmutación. Se restaura una muestra representativa de un respaldo de prueba generado con datos sintéticos, con la misma estructura y un volumen representativo. SRE ejecuta el mismo procedimiento automatizado y registra el resultado y el tiempo efectivo de restauración (RT-07.12; BTT, p. 18). No se usan datos productivos ni se acredita la integridad de un respaldo de Producción.
 
 Las resiliencias de septiembre (meses 32 y 44) se ejecutan en Preproducción, porque septiembre está congelado. Cada prueba periódica produce un informe con el resultado medido, la comparación con su umbral y el plan de corrección de las brechas (RT-07.07) (BTT, p. 17).
 
