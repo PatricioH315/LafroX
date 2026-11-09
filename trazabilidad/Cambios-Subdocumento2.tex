@@ -1,0 +1,83 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[spanish]{babel}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{TeX Gyre Heros}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{longtable,array,booktabs,xcolor,hyperref}
+\definecolor{lfx}{HTML}{B4501C}
+\hypersetup{colorlinks=true,urlcolor=lfx,linkcolor=lfx}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\renewcommand{\arraystretch}{1.18}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\begin{document}
+{\sffamily\LARGE\color{lfx} Trazabilidad de correcciones}\par
+{\large Subdocumento 2 · LafroX}\par
+Fecha de implementación: 8 de noviembre de 2026.\par
+Rama: \texttt{LafroX-Subdoc2-LateX-CORRIGIENDO}.\par
+Base de comparación: \texttt{6adcf15e}.
+
+\section*{Alcance y criterio de registro}
+Este documento interno registra la implementación de los trece puntos revisados y las alternativas acordadas. La autorización de implementación comprende el cuerpo del Subdocumento 2, las figuras afectadas y este registro. Los anexos se conservan, incluido el texto íntegro de S-04. No se modifican otras ramas ni se incorporan reglas de solución al diagnóstico.
+
+El registro distingue la edición efectuada y su comprobación técnica de la validación final del equipo. Las revisiones atribuidas a Alex Aravena en la versión anterior se mantienen como antecedentes históricos; no se presume que haya revisado esta edición.
+
+\section*{Tabla de cambios por punto}
+La tabla conserva los identificadores de los puntos discutidos. Su extensión responde al carácter interno de este registro; la síntesis de restricciones del documento de oferta se desarrolla en párrafos.
+\small
+\begin{longtable}{P{0.55cm}P{2.25cm}P{2.1cm}P{6.1cm}P{4.05cm}}
+\toprule
+\textbf{ID}&\textbf{Punto}&\textbf{Ubicación}&\textbf{Cambio realizado}&\textbf{Base y estado}\\\midrule
+\endfirsthead
+\toprule
+\textbf{ID}&\textbf{Punto}&\textbf{Ubicación}&\textbf{Cambio realizado}&\textbf{Base y estado}\\\midrule
+\endhead
+\bottomrule\endfoot
+01 & Promesa de entrega & 2.2.3 y 2.5.1 & Se retiraron del diagnóstico el corte de las 14:00 y los plazos propuestos por segmento. Se mantienen los horarios actuales y se remite el diseño al SD3. & Caso, cap. 8 y B.1. Opción A. \\ \addlinespace
+02 & Cadena de frío & 2.2.3; Anexo 2.2 & Se expone el conflicto entre áreas, la necesidad de evidencia y la autoridad de Calidad. Se retiran del cuerpo los mecanismos propuestos. S-04 se conserva íntegro. & Caso, cap. 8 y 16.1. Opción A ajustada. \\ \addlinespace
+03 & Preparación y plataformas & 2.3, proceso 3; Figura 2.3 & Se incorporan dos paneles, el circuito de la hoja de picking y la pérdida de la causa del faltante. Se distinguen los despachos directos. Se preserva SP-02 como hipótesis. & Caso, cap. 3 y sección 4.5. Opción A. \\ \addlinespace
+04 & Doce restricciones & 2.5.3 & Se reemplaza la tabla parcial por cuatro párrafos con los doce códigos R-01 a R-12. La tabla de IA pasa de 2.4 a 2.3. & Caso, cap. 10 y RT-03.10. Opción B. \\ \addlinespace
+05 & Aplicación de preventa & 2.1 & Se distingue la aplicación móvil de 2016 sin proveedor ni soporte del ERP implantado en 2017. & Caso, secciones 4.2, 4.3 y cap. 5. Opción A. \\ \addlinespace
+06 & Cobertura del WMS & 2.1 & Se elimina la afirmación no respaldada de soporte discontinuado. Se explica Talca con WMS, Concepción con planillas y plataformas sin control de inventario. & Caso, sección 4.2 y cap. 5. Opción A. \\ \addlinespace
+07 & Rotación de preparadores & 2.2.1 y 2.3, proceso 3 & Se traslada el 38\% desde costo de servir a preparación nocturna. Se explica su relación con el aprendizaje sin atribuir una tasa de errores no medida. & Caso, R-11 y sección 4.5. Opción A. \\ \addlinespace
+08 & Modelos de atención & 2.2.4 & Se aclara que Valencia es fabricante de jugos en el estudio de Casablanca. Se acota la atribución al artículo y se explica la relación con Puelche y R-05. & Caso, 16.2 y glosario; resumen verificable del artículo. Opción A. \\ \addlinespace
+09 & IA en resumen ejecutivo & Tabla 2.3, fila 2.1 & Se sustituye la validación de propuesta de valor por el registro histórico de revisión del resumen. Se declara el contraste asistido de cifras y sistemas. & Implementado; nueva validación humana por cerrar. \\ \addlinespace
+10 & Texto en Figura 2.1 & Figura 2.1 & Se corrige enERP por en el ERP conservando nodos, conectores y geometría. & Opción A; fuente editable recuperada del PDF. \\ \addlinespace
+11 & Texto en Figura 2.5 & Figura 2.5 & Se corrige enpapel por en papel. La fuente recuperada ya dice retornar correctamente; se verifica en la exportación. Se conserva la distribución. & Opción A; sin rediseño. \\ \addlinespace
+12 & Rama negativa & Figura 2.6 & Se retira No del cuadro de resultado y se conserva como etiqueta del conector. Se mantiene Diferencias no conciliadas, descuadre no rastreable por entrega. & Opción A; sin cambiar la rama afirmativa. \\ \addlinespace
+13 & Declaración completa de IA & Tabla 2.3 y cierre & Se conservan las seis columnas y todas las secciones y anexos. Se agrega Codex en las partes intervenidas y se distingue el historial de revisión de la validación de esta edición. & Implementado; nombres y comprobaciones finales requieren confirmación humana. \\ \addlinespace
+\end{longtable}
+\normalsize
+\section*{Fuentes y límites de comprobación}
+La revisión inicial corresponde a \textit{G02 -- LAFROX -- Primera Revisión Informe 2}. Para contrastar el contenido se utilizan las Bases Administrativas, el Caso 02 -- Logística y las Bases Técnicas Transversales aportadas por el usuario. Las páginas citadas en el cuerpo corresponden a la numeración impresa.
+
+En el punto 8 se verificó el resumen bibliográfico del artículo de Boulaksil y Belkora (2017), \textit{Distribution Strategies Toward Nanostores in Emerging Markets: The Valencia Case}, DOI \url{https://doi.org/10.1287/inte.2017.0914}. No se declara revisión del texto completo. Las definiciones de preventa y autoventa proceden del glosario del caso y la aplicación a Puelche constituye análisis del diagnóstico.
+
+\section*{Archivos y cambios de presentación}
+\texttt{contenido.tex} contiene las modificaciones del cuerpo y de la declaración de IA. Las Figuras 2.1, 2.3, 2.5 y 2.6 se exportan nuevamente desde las fuentes editables de \texttt{figuras/fuentes}. Estas fuentes se recuperaron del contenido XML incorporado a los PDF originales. La Figura 2.3 se amplía; las otras tres conservan la disposición de sus elementos. Las Figuras 2.2 y 2.4 permanecen intactas.
+
+La supresión de la tabla de restricciones elimina su entrada del índice y renumera la declaración de IA como Tabla 2.3. Se actualizan sus referencias cruzadas. La declaración comienza en una página nueva y se redistribuyen sus seis columnas para mejorar la lectura. Se registra asistencia alta en la Figura 2.3 y media en las restantes figuras. El PDF principal se recompila desde las fuentes corregidas. Este informe se mantiene separado del documento de oferta.
+
+La comprobación visual detectó que los recortes de inclusión originales ya no correspondían a los márgenes de los PDF reexportados. Se ajustó la exportación de las Figuras 2.1, 2.5 y 2.6 al contenido completo, conservando la geometría de nodos y conectores, y se actualizaron sus inclusiones en LaTeX. La Figura 2.5 se exporta en una sola superficie continua, sin cambiar su disposición gráfica. Se normalizaron los paréntesis de las fuentes recuperadas para evitar que sus caracteres de escape aparecieran impresos.
+
+\section*{Dependencias con el Subdocumento 3}
+Las reglas de promesa comercial, cortes y tratamiento térmico siguen perteneciendo al diseño del Subdocumento 3. Las referencias allí existentes que atribuyan al cuerpo del Subdocumento 2 un arbitraje detallado deben revisarse en esa rama al integrar los documentos. Esta implementación no modifica el SD3 ni altera S-04 para acomodarlo a una redacción nueva.
+
+\section*{Cierre humano de la declaración de IA}
+Antes de entregar la oferta, el equipo debe registrar quién revisó esta edición y qué comprobó. El alcance sugerido es el siguiente.
+\begin{itemize}
+\item 2.1: cifras de base, tres problemas y distinción entre ERP, aplicación de preventa y WMS.
+\item 2.2: contexto, tensiones, fuentes y separación entre diagnóstico y solución.
+\item 2.3: cálculos, supuestos y seis flujos AS-IS, incluida la preparación y la legibilidad de las figuras.
+\item 2.4: correspondencia de los 19 actores entre la matriz y el Anexo 2.3.
+\item 2.5: cobertura de las doce restricciones y correspondencia con los anexos.
+\item Anexo 2.1: familias de requerimientos, condiciones no funcionales y fuentes.
+\item Anexo 2.2: supuestos, exclusiones, restricciones y coherencia con el cuerpo y el SD3.
+\item Anexo 2.3: actores, dotaciones y sistemas legados.
+\end{itemize}
+Alex Aravena continuará como responsable de la revisión humana, según la confirmación del usuario durante esta implementación. Este cierre permanece pendiente de su revisión efectiva. La aceptación de las propuestas editoriales no se registra como certificación de estas comprobaciones.
+
+\section*{Verificación técnica}
+\input{verificacion.tex}
+\end{document}

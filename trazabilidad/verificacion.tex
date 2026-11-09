@@ -1,0 +1,7 @@
+El Subdocumento 2 compila con LuaLaTeX y latexmk y conserva 30 páginas. Las referencias cruzadas quedan resueltas y el registro final no presenta desbordamientos de caja. Se revisaron las páginas renderizadas, con atención a las cuatro figuras intervenidas, la síntesis de restricciones y la declaración de IA. La tabla de IA y su explicación caben en una página.
+
+Se verificó por comparación con Git que \texttt{anexos.tex} permanece íntegro respecto de la base, incluido S-04. Las Figuras 2.2 y 2.4 tampoco se modificaron. El contenido revisado no conserva las expresiones incorrectas de preventa y soporte del WMS, y los doce códigos de restricción están presentes en la síntesis.
+
+Para compilar fue necesario instalar los paquetes \texttt{needspace} y \texttt{float} en MiKTeX. Persisten avisos de espaciado y de versión PDF al incluir figuras 1.7 desde la configuración 1.5 de la plantilla; la comprobación visual no detectó pérdidas de contenido en las figuras corregidas. No se modificó la clase corporativa.
+
+La comparación textual exacta del cuerpo se conserva en \texttt{cambios-contenido.patch}. No se realizó commit ni publicación. La revisión humana final de esta edición sigue pendiente y corresponde a Alex Aravena.

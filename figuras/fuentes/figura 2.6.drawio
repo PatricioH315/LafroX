@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram id="DkTufZPPIE-LdgKCr4Tk" name="2.6">
+    <mxGraphModel dx="672" dy="570" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sYTYL7Y0pe_uHtMEbY9P-1" edge="1" parent="1" source="sYTYL7Y0pe_uHtMEbY9P-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="sYTYL7Y0pe_uHtMEbY9P-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sYTYL7Y0pe_uHtMEbY9P-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="1. Cobro en efectivo en punto de entrega (Canal tradicional)" vertex="1">
+          <mxGeometry height="60" width="150" x="353" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sYTYL7Y0pe_uHtMEbY9P-3" edge="1" parent="1" source="sYTYL7Y0pe_uHtMEbY9P-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="sYTYL7Y0pe_uHtMEbY9P-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sYTYL7Y0pe_uHtMEbY9P-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="3. Rendición en caja a la mañana siguiente contra listado de entregas" vertex="1">
+          <mxGeometry height="60" width="170" x="343" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="sYTYL7Y0pe_uHtMEbY9P-5" edge="1" parent="1" source="sYTYL7Y0pe_uHtMEbY9P-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="sYTYL7Y0pe_uHtMEbY9P-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sYTYL7Y0pe_uHtMEbY9P-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" value="2. El conductor conserva el dinero hasta su regreso" vertex="1">
+          <mxGeometry height="60" width="180" x="338" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="sYTYL7Y0pe_uHtMEbY9P-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Diferencias no conciliadas, descuadre no rastreable por entrega" vertex="1">
+          <mxGeometry height="60" width="150" x="513" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="sYTYL7Y0pe_uHtMEbY9P-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Registro coincide" vertex="1">
+          <mxGeometry height="60" width="150" x="193" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="sYTYL7Y0pe_uHtMEbY9P-9" edge="1" parent="1" source="sYTYL7Y0pe_uHtMEbY9P-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="sYTYL7Y0pe_uHtMEbY9P-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sYTYL7Y0pe_uHtMEbY9P-10" connectable="0" parent="sYTYL7Y0pe_uHtMEbY9P-9" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="No" vertex="1">
+          <mxGeometry relative="1" x="-0.3455" y="-2" as="geometry">
+            <mxPoint x="-22" y="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sYTYL7Y0pe_uHtMEbY9P-11" edge="1" parent="1" source="sYTYL7Y0pe_uHtMEbY9P-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="sYTYL7Y0pe_uHtMEbY9P-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="268" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sYTYL7Y0pe_uHtMEbY9P-12" connectable="0" parent="sYTYL7Y0pe_uHtMEbY9P-11" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Si" vertex="1">
+          <mxGeometry relative="1" x="-0.3913" y="3" as="geometry">
+            <mxPoint y="-13" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sYTYL7Y0pe_uHtMEbY9P-13" parent="1" style="rhombus;whiteSpace=wrap;html=1;shapeInside=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="¿Dinero coincide con el listado?" vertex="1">
+          <mxGeometry height="80" width="170" x="343" y="390" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

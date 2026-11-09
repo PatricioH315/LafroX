@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="2.1" id="c9CeIxd5pBFojuLV9kMR">
+    <mxGraphModel dx="1030" dy="570" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="IMHy1qtxW-DmavkcVZZW-1" edge="1" parent="1" source="IMHy1qtxW-DmavkcVZZW-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="IMHy1qtxW-DmavkcVZZW-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IMHy1qtxW-DmavkcVZZW-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="1. Visita presencial al cliente (62 preventistas)" vertex="1">
+          <mxGeometry height="60" width="150" x="210" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="IMHy1qtxW-DmavkcVZZW-3" edge="1" parent="1" source="IMHy1qtxW-DmavkcVZZW-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="IMHy1qtxW-DmavkcVZZW-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IMHy1qtxW-DmavkcVZZW-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="3. Transmisión al recuperar cobertura (retraso en zonas sin señal)" vertex="1">
+          <mxGeometry height="60" width="207" x="181.5" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="IMHy1qtxW-DmavkcVZZW-5" edge="1" parent="1" source="IMHy1qtxW-DmavkcVZZW-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="IMHy1qtxW-DmavkcVZZW-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IMHy1qtxW-DmavkcVZZW-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" value="2. Captura pedido en App móvil offline sin stock ni crédito" vertex="1">
+          <mxGeometry height="60" width="180" x="195" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="IMHy1qtxW-DmavkcVZZW-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Falta de stock: pedido incompleto / venta perdida.&lt;div&gt;7,8% de las líneas con quiebre.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="180" x="370" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="IMHy1qtxW-DmavkcVZZW-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="4. Ingreso formal a cola de procesamiento en el ERP" vertex="1">
+          <mxGeometry height="60" width="150" x="50" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="IMHy1qtxW-DmavkcVZZW-9" edge="1" parent="1" source="IMHy1qtxW-DmavkcVZZW-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="IMHy1qtxW-DmavkcVZZW-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t_O75UH6Wm0lx-wy3Gwk-2" connectable="0" parent="IMHy1qtxW-DmavkcVZZW-9" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="No" vertex="1">
+          <mxGeometry relative="1" x="-0.4765" y="3" as="geometry">
+            <mxPoint y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IMHy1qtxW-DmavkcVZZW-10" edge="1" parent="1" source="IMHy1qtxW-DmavkcVZZW-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="IMHy1qtxW-DmavkcVZZW-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="125" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="t_O75UH6Wm0lx-wy3Gwk-1" connectable="0" parent="IMHy1qtxW-DmavkcVZZW-10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Si" vertex="1">
+          <mxGeometry relative="1" x="0.017" y="-5" as="geometry">
+            <mxPoint x="5" y="-5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qnDCUwsVJtakCMxB1NiC-2" edge="1" parent="1" source="IMHy1qtxW-DmavkcVZZW-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="qnDCUwsVJtakCMxB1NiC-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="677" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IMHy1qtxW-DmavkcVZZW-11" parent="1" style="rhombus;whiteSpace=wrap;html=1;shapeInside=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="¿Stock disponible y crédito aprobado?" vertex="1">
+          <mxGeometry height="80" width="170" x="200" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="qnDCUwsVJtakCMxB1NiC-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Bloqueo por crédito: pedido retenido en el ERP.&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Revisión por Crédito y Cobranza al día siguiente.&lt;/span&gt;" vertex="1">
+          <mxGeometry height="70" width="220" x="567" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="qnDCUwsVJtakCMxB1NiC-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="*Los motivos pueden coincidir." vertex="1">
+          <mxGeometry height="30" width="170" x="607" y="380" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

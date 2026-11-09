@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram id="Ez9BGbTeh-_6TG8_4c4b" name="2.5">
+    <mxGraphModel dx="672" dy="570" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="oPTlWyqV9RR9vXPlEWRZ-1" edge="1" parent="1" source="oPTlWyqV9RR9vXPlEWRZ-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="oPTlWyqV9RR9vXPlEWRZ-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oPTlWyqV9RR9vXPlEWRZ-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="2. Arribo a local comercial (Almacén o Food Service)" vertex="1">
+          <mxGeometry height="53" width="170" x="343" y="313" as="geometry" />
+        </mxCell>
+        <mxCell id="oPTlWyqV9RR9vXPlEWRZ-3" edge="1" parent="1" source="oPTlWyqV9RR9vXPlEWRZ-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="oPTlWyqV9RR9vXPlEWRZ-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oPTlWyqV9RR9vXPlEWRZ-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" value="1. Despacho matinal de camión a ruta (05:30 a 07:00 hrs)" vertex="1">
+          <mxGeometry height="53" width="180" x="338" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="oPTlWyqV9RR9vXPlEWRZ-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;div&gt;Local cerrado&lt;/div&gt;&lt;div&gt;A criterio del conductor:&lt;/div&gt;&lt;div&gt;• Volver más tarde&lt;/div&gt;&lt;div&gt;• Dejar con el negocio vecino&lt;/div&gt;&lt;div&gt;• Retornar el pedido&lt;/div&gt;" vertex="1">
+          <mxGeometry height="97" width="170" x="513" y="479.5" as="geometry" />
+        </mxCell>
+        <mxCell id="oPTlWyqV9RR9vXPlEWRZ-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="3. Firma física de guía de despacho en papel" vertex="1">
+          <mxGeometry height="60" width="150" x="193" y="483" as="geometry" />
+        </mxCell>
+        <mxCell id="oPTlWyqV9RR9vXPlEWRZ-7" edge="1" parent="1" source="oPTlWyqV9RR9vXPlEWRZ-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="oPTlWyqV9RR9vXPlEWRZ-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oPTlWyqV9RR9vXPlEWRZ-8" connectable="0" parent="oPTlWyqV9RR9vXPlEWRZ-7" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="No" vertex="1">
+          <mxGeometry relative="1" x="-0.3455" y="-2" as="geometry">
+            <mxPoint y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oPTlWyqV9RR9vXPlEWRZ-9" edge="1" parent="1" source="oPTlWyqV9RR9vXPlEWRZ-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="oPTlWyqV9RR9vXPlEWRZ-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="268" y="433" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oPTlWyqV9RR9vXPlEWRZ-10" connectable="0" parent="oPTlWyqV9RR9vXPlEWRZ-9" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Si" vertex="1">
+          <mxGeometry relative="1" x="-0.3913" y="3" as="geometry">
+            <mxPoint x="5" y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u65DZBhw352QhbjHajf_-2" edge="1" parent="1" source="oPTlWyqV9RR9vXPlEWRZ-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="u65DZBhw352QhbjHajf_-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oPTlWyqV9RR9vXPlEWRZ-11" parent="1" style="rhombus;whiteSpace=wrap;html=1;shapeInside=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="&lt;div&gt;¿Local abierto y cliente conforme?&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="170" x="343" y="393" as="geometry" />
+        </mxCell>
+        <mxCell id="u65DZBhw352QhbjHajf_-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;div&gt;Producto rechazado&lt;/div&gt;&lt;div&gt;Anotar en guía y retornar&lt;/div&gt;&lt;div&gt;el producto rechazado&lt;/div&gt;" vertex="1">
+          <mxGeometry height="67" width="150" x="710" y="479.5" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

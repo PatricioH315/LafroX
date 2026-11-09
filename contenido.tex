@@ -18,7 +18,7 @@ Este capítulo establece la línea base conceptual y cuantitativa para el resto 
 
 Distribuidora Puelche S.A. enfrenta una crisis de eficiencia y competitividad operacional producto de la obsolescencia y desarticulación de su ecosistema informático. Su operación integra los centros de distribución de Talca y Concepción y tres plataformas de \textit{cross-docking}. La flota comprende 96 camiones: 42 propios y 54 de diez transportistas, de los cuales 28 cuentan con frío. La dotación en terreno considera cerca de 244 personas en reparto: 84 conductores y peonetas propios y cerca de 160 conductores de transportistas, y se atienden 14.200 puntos de entrega. La operación actual exhibe un índice de entrega a tiempo y completa (OTIF) de 82,4 \%, frente a una referencia de 95 \% (Bases Técnicas del caso, cap. 7, tabla 7.1, p. 11). Por tanto, el 17,6 \% de los despachos no llega completo y a tiempo. Esto deteriora la relación con el canal tradicional y pone en riesgo a la principal cadena de supermercados, que representa el 11 \% de la venta y fija nuevas condiciones desde enero de 2029 (Bases Técnicas del caso, cap. 1, p. 3).
 
-La raíz del problema no reside en un único sistema defectuoso, sino en un tejido heterogéneo y desconectado: un ERP implantado en 2017 cuyos módulos satélites de preventa fueron abandonados por su proveedor, un WMS de 2013 con soporte discontinuado y procesos críticos gobernados mediante planillas de cálculo y papel. Esta desconexión tecnológica genera tres impactos críticos inmediatos:
+La fragmentación tecnológica involucra sistemas distintos. El ERP fue implantado en 2017 y debe mantenerse como registro contable y tributario. La aplicación móvil de preventa data de 2016; su proveedor desapareció, carece de soporte y presenta problemas de compatibilidad. El WMS de 2013 opera únicamente en Talca, mientras Concepción utiliza planillas y las plataformas no tienen control de inventario. Esta cobertura desigual, junto con la falta de visibilidad de stock y crédito en preventa, dificulta disponer de información coherente entre la toma del pedido y su despacho (Bases Técnicas del caso, secciones 4.2 y 4.3, p. 7, y cap. 5, p. 10). La desconexión genera tres impactos críticos inmediatos:
 
 \begin{enumerate}
   \item \textbf{Vulnerabilidad sanitaria y regulatoria:} El retiro preventivo de marzo de 2026 demoró 9 días y alcanzó 4.800 kg del lote 24-0217, con una pérdida directa de dinero. El proveedor suspendió a Puelche por seis meses de su lista de distribuidores autorizados; ese proveedor representa el 6\% de las ventas. En el producto involucrado, el 41\% de las recepciones no registraba lote en el sistema.
@@ -39,7 +39,7 @@ El caso pide distinguir tres problemas entrelazados (Bases Técnicas del caso, c
 \begin{enumerate}
   \item \textbf{Habilitación sanitaria y comercial comprometida:} El cumplimiento del Reglamento Sanitario de los Alimentos (Decreto 977) exige el control riguroso de la cadena de frío (congelados a $-$18\,°C o menos; la cámara de congelado de Talca opera a $-$22\,°C) (Ministerio de Salud, 1996) y la trazabilidad bidireccional inmediata de lotes. En la actualidad, el registro de temperatura es discontinuo e instrumentalizado por el propio conductor, sin alarmas automáticas ante excursiones térmicas. Al recibir mercadería de los 180 proveedores, el personal revisa las fechas de vencimiento por muestreo y registra el lote de manera incompleta, en un campo de texto libre. La trazabilidad depende del papel de recepción y de la memoria de quienes despacharon, sin estar disponible de forma consultable en los sistemas. Esta carencia expone a Puelche a sanciones de la autoridad sanitaria, que ya observó la ausencia de registro continuo de temperatura en su última fiscalización. También le impide acreditar ante el proveedor de lácteos la capacidad de trazabilidad que este exige para restablecer la relación tras la suspensión, que vence en septiembre de 2026.
   \item \textbf{Pérdida de competitividad del servicio:} El nivel de servicio actual (OTIF 82,4 \% y \textit{fill rate} 91,3 \%) está lejos de las referencias de 95 \% y 97 \% que el caso asocia a esos indicadores. Además, la principal cadena exigirá desde enero de 2029 pedido electrónico, aviso de despacho, ventana de entrega de 30 minutos con penalización y prueba de entrega digital. Hoy Puelche entrega entre las 08:00 y las 18:00. Los clientes del canal tradicional (11.600 almacenes) y \textit{food service} (2.100 puntos) enfrentan faltantes y retrasos. La falta de visibilidad en preventa y la rigidez de las rutas provocan reentregas equivalentes al 4,2\% de las entregas. Sobre la referencia de 1.400 entregas diarias, ello equivale a aproximadamente 59 reentregas al día (1.400 $\times$ 0,042 = 58,8).
-  \item \textbf{Desconocimiento estructural del costo de servir:} La fijación de precios y márgenes se calcula sobre un costo de transporte promedio estático que data de 2016. Puelche desconoce el costo real de atender a cada cliente, subsidiando rutas rurales remotas de baja densidad a expensas de clientes urbanos de alta rotación. La ocupación promedio de la flota es 68\% y cae a 41\% en días de baja utilización. La rotación anual de preparadores de pedidos alcanza 38\%, lo que incrementa el esfuerzo de capacitación e induce errores recurrentes en el armado de pedidos.
+  \item \textbf{Desconocimiento estructural del costo de servir:} La fijación de precios y márgenes se calcula sobre un costo de transporte promedio estático que data de 2016. Puelche desconoce el costo real de atender a cada cliente, subsidiando rutas rurales remotas de baja densidad a expensas de clientes urbanos de alta rotación. La ocupación promedio de la flota es 68\% y cae a 41\% en días de baja utilización.
 \end{enumerate}
 
 Los tres problemas no son independientes: comparten la causa descrita en la sección 2.1, un dato que no se registra donde ocurre el hecho. La cadena parte en la habilitación sanitaria: sin lote en la recepción no se puede saber qué cliente recibió qué producto. Sigue en el servicio: sin stock confiable en la preventa ni evidencia digital de la entrega, el OTIF no se puede medir de una sola forma ni mejorar. Y termina en el costo: si la entrega no deja registro de su tiempo, su carga y sus reentregas, el costo de servir solo puede seguir prorrateándose con el criterio de 2016. Por eso la captura del dato es la condición previa para medir el servicio y, después, para conocer el costo.
@@ -63,8 +63,8 @@ A este marco se añade el impacto crítico de la \textbf{estacionalidad}, durant
 Las entrevistas de levantamiento del caso (Bases Técnicas del caso, cap. 8, pp. 13--17) muestran contradicciones estructurales entre las distintas gerencias de Puelche. Estas tensiones no constituyen discrepancias accidentales, sino el reflejo de objetivos locales descoordinados que exigen una decisión antes de diseñar la solución. Para cada tensión se indica la condición operativa y de negocio que impone la necesidad del caso:
 
 \begin{enumerate}
-  \item \textbf{Promesa de entrega (Comercial contra Operaciones):} La Gerencia Comercial busca captar clientes prometiendo entregas en 24 horas a todo evento. La Gerencia de Operaciones afirma que tal promesa es materialmente imposible en la flota actual y genera frustración y reclamos. \textbf{Condición que impone la necesidad:} una promesa diferenciada y viable que distinga 24 horas para clientes urbanos con pedidos ingresados antes del corte de las 14:00, y 48 horas para clientes rurales, periféricos o abastecidos mediante \textit{cross-docking}. El corte de las 14:00 responde a la restricción del ciclo operativo del caso: la preventa trabaja de 09:00 a 18:00, la planificación de rutas se ejecuta de 15:00 a 18:30 requiriendo pedidos cerrados, la preparación nocturna opera de 22:00 a 06:00 y los camiones despachan de 05:30 a 07:00 (Bases Técnicas del caso, sección B.1, p. 38); un pedido posterior al corte no alcanza dicho ciclo físico. El diseño de la solución que informa y gestiona esta promesa se desarrolla en el Subdocumento 3.
-  \item \textbf{Control de cadena de frío (Calidad contra Operaciones):} La Jefa de Calidad exige que cualquier excursión térmica fuera de norma bloquee automáticamente el producto para entrega. Operaciones y los choferes argumentan que bloqueos ciegos obligan a retornar camiones cargados y provocan pérdidas catastróficas. \textbf{Condición que impone la necesidad:} un control térmico graduado bajo las exigencias del RSA: las excursiones menores y transitorias (apertura de puertas durante la descarga) justifican una advertencia preventiva, mientras que una excursión crítica y sostenida (que supere el umbral del RSA) exige retener o bloquear preventivamente las unidades logísticas afectadas (\textit{SSCC}) o el lote expuesto según el alcance del evento, reservando la disposición sanitaria final (liberar, bloquear o rechazar) a Calidad (Anexo~2.2, S-04). El diseño de la solución para el monitoreo y los mecanismos de retención se desarrolla en el Subdocumento 3.
+  \item \textbf{Promesa de entrega (Comercial contra Operaciones):} Comercial busca captar clientes prometiendo entregas en 24 horas a todo evento, mientras Operaciones advierte que la capacidad actual impide sostener esa promesa. La preventa funciona de 09:00 a 18:00, la planificación de rutas de 15:00 a 18:30, la preparación de 22:00 a 06:00 y el despacho de 05:30 a 07:00 (Bases Técnicas del caso, sección B.1, p. 38). El solapamiento entre toma de pedidos y planificación, las distancias y el paso por plataformas condicionan el compromiso con cada cliente. La necesidad es contar con una promesa viable, coherente con la capacidad y comunicada antes de confirmar el pedido. Los plazos por segmento, las horas de corte y sus reglas de aplicación se definen en el Subdocumento 3.
+  \item \textbf{Control de cadena de frío (Calidad contra Operaciones):} Calidad exige bloquear automáticamente la entrega ante una excursión térmica fuera de norma. Operaciones y los choferes advierten que un bloqueo sin considerar las características del incidente puede obligar a retornar carga y provocar pérdidas. La necesidad es disponer de evidencia confiable sobre la temperatura, la duración de la excursión y los productos afectados, y establecer responsabilidades claras para actuar oportunamente. La disposición sanitaria corresponde a Calidad. El tratamiento de las excursiones y los mecanismos de control se desarrollan en el Subdocumento 3, considerando el supuesto S-04 del Anexo~2.2 y las decisiones exigidas por el caso (sección 16.1, p. 28).
   \item \textbf{Gestión del efectivo (Finanzas contra Comercial):} Finanzas exige erradicar el efectivo y exigir transferencias o prepagos para evitar pérdidas. Comercial sostiene que exigir bancarización liquidará al canal tradicional. \textbf{Condición que impone la necesidad:} preservar la recaudación en efectivo en el canal tradicional sin exigir al almacenero contar con conectividad ni dispositivo propio, garantizando a la vez la trazabilidad de cada cobro asociado individualmente a su entrega para auditar las diferencias de rendición por entrega en vez de detectarlas al día siguiente en caja. El mecanismo de registro, comprobante y cuadratura de la solución se desarrolla en el Subdocumento 3.
   \item \textbf{Nube y cortes de enlace (Jefe de TI contra la operación):} El jefe de TI prefiere todo en la nube y él mismo explica por qué la operación no puede depender de ella: la fibra se corta cuatro veces al año, Concepción no tiene respaldo y las plataformas de cross-docking operan solo con red móvil. \textbf{Condición que impone la necesidad:} la operación no puede supeditarse a la conectividad continua; cada centro de distribución debe operar de forma autónoma (recepción, preparación y despacho) durante al menos 24 horas sin enlace WAN, mientras que la preventa y el reparto en ruta deben operar un turno completo de 14 horas sin señal, sin pérdida ni duplicación de datos al sincronizar (Bases Técnicas del caso, cap. 10, restricciones 2 y 3, p. 19, y cap. 15, p. 26), respetando el modelo de despliegue híbrido obligatorio impuesto por las Bases Administrativas (art. 16.1, p. 11). La solución funcional ofrecida se describe en el Subdocumento 3 y su arquitectura técnica, en el Subdocumento 4.
   \item \textbf{Planificación de rutas (Conocimiento tácito contra Algoritmo):} La empresa depende absolutamente del criterio mental de un único planificador con más de 20 años en la compañía, quien se jubilará en dos años. Operaciones teme que un software estándar genere rutas teóricas absurdas que los choferes rechacen. \textbf{Condición que impone la necesidad:} explicitar, documentar y preservar formalmente las reglas y restricciones tácitas de terreno dominadas por el planificador antes de su retiro (mediante un proceso riguroso de elicitación en los primeros meses), garantizando además la capacidad de ajuste y sobreescritura manual sobre cualquier propuesta de ruteo para evitar inviabilidades operacionales (Anexo~2.2, S-16). La implementación de este motor algorítmico y sus interfaces se desarrolla en el Subdocumento 3.
@@ -90,7 +90,7 @@ El caso enumera doce materias que el proponente debe investigar porque el docume
 
 \textbf{Logística inversa.} La logística inversa gestiona el flujo de productos que vuelve desde el cliente, y una de sus decisiones centrales es el destino que se da a cada devolución (Agrawal et al., 2015). Elegir bien ese destino exige conocer la causa de la devolución. En Puelche las devoluciones equivalen al 2,9 \% del volumen despachado; cada una puede volver a stock, venderse con descuento, devolverse al proveedor o destruirse, pero la decisión se toma producto por producto y no queda registrada de forma estructurada. La merma por vencimiento llega al 1,7 \% del valor del inventario al año, y del parque estimado de 68.000 canastillos y 9.400 pallets se pierde el 14 \% cada año, con los movimientos anotados en un cuaderno (Bases Técnicas del caso, sección 4.8, p. 9).
 
-\textbf{Modelos de atención al canal tradicional.} En la preventa, un vendedor toma el pedido y el camión lo entrega en un viaje posterior; en la autoventa, el camión lleva la mercadería y la venta y la entrega ocurren en la misma visita (Bases Técnicas del caso, cap. C, p. 40). Boulaksil y Belkora (2017) compararon ambos modelos en la distribución a almacenes de barrio de Casablanca. La preventa necesita vendedores dedicados, pero el camión solo visita a quien hizo un pedido; la autoventa cobra y entrega en el acto, pero el camión recorre todos los locales, compren o no. Cuál conviene depende de la distancia entre los locales y de cuántas visitas terminan en pedido. La autoatención digital, en que el almacenero hace su propio pedido, también ahorra la visita, pero exige que el cliente tenga dispositivo y conexión. Puelche usa preventa, con 62 preventistas que visitan a cada cliente una vez por semana o cada quince días, mientras el competidor que llegó a Talca ofrece pedido autónomo y entrega en 24 horas (Bases Técnicas del caso, cap. 1, p. 3, y sección 4.3, pp. 7--8). La autoatención no puede ser obligatoria, porque la mayoría de los almacenes no tiene internet y la restricción R-05 impide exigírselo.
+\textbf{Modelos de atención al canal tradicional.} En la preventa, el vendedor toma el pedido y la entrega ocurre posteriormente; en la autoventa, venta y entrega se realizan en la misma visita desde un vehículo con mercadería (Bases Técnicas del caso, cap. C, p. 40). Boulaksil y Belkora (2017) comparan estas estrategias para Valencia, fabricante de jugos que distribuye a pequeños comercios en Casablanca, Marruecos. El caso de estudio aporta un antecedente para comparar formas de atención; no establece cuál conviene a Puelche. En esta distribuidora, los 62 preventistas visitan a los clientes semanal o quincenalmente, mientras un competidor ofrece pedido autónomo y entrega en 24 horas (Bases Técnicas del caso, cap. 1, p. 3, y sección 4.3, pp. 7--8). Evaluar alternativas exige relacionar el costo de tomar pedidos y realizar entregas con la frecuencia de atención y el volumen por cliente. La autoatención digital podría reducir visitas destinadas a tomar pedidos, pero la entrega física sigue siendo necesaria. Además, R-05 impide exigir internet o dispositivo al almacenero. Esta comparación responde a la investigación solicitada en la sección 16.2 del caso (p. 29) y permite fundamentar la evaluación del costo de servir sin anticipar la modalidad que adoptará la solución.
 
 Las ocho materias llevan a la misma conclusión que la sección 2.2.1: cada práctica de la industria depende de un dato que hoy Puelche no registra.
 
@@ -98,7 +98,7 @@ Las ocho materias llevan a la misma conclusión que la sección 2.2.1: cada prá
 
 Esta sección cuantifica las brechas con las cifras del caso y analiza los seis procesos actuales donde se originan.
 
-%  El subtítulo 2.3.1 y la Tabla 2.1 van juntos en una página (Aclaraciones §5).
+% Mantener el subtítulo junto a la tabla.
 \needspace{0.80\textheight}
 \subsection{Cuantificación del impacto operacional y financiero}
 
@@ -150,7 +150,7 @@ Como se aprecia en la Figura~2.1, el flujo comercial parte con el preventista vi
 \begin{landscape}
 \begin{figure}[p]
 \centering
-\includegraphics[page=1,trim=32pt 407pt 42pt 68pt,clip,scale=1.15]{figuras/figura 2.1.pdf}
+\includegraphics[width=0.98\linewidth]{figuras/figura 2.1.pdf}
 \caption[Proceso de Preventa y Toma de Pedidos AS-IS.]{Proceso de Preventa y Toma de Pedidos AS-IS. Fuente: (Bases Técnicas del caso, secciones 4.3 y 7.1, pp. 7--8 y 11).}
 \label{fig:asis_preventa}
 \end{figure}
@@ -194,15 +194,21 @@ En la Figura~2.2 se ve que el lote se pierde en el paso 3, en el andén, y ning�
 
 \subsubsection{Proceso 3: Preparación de Pedidos y Cross-Docking AS-IS}
 
-La operación de las tres plataformas de cross-docking (Curicó, Chillán y Los Ángeles) se detalla en la Figura~2.3, según la descripción del caso.
+La Figura~2.3 presenta dos paneles del proceso actual. El primero muestra la preparación nocturna y el recorrido de la información sobre faltantes. El segundo describe el traslado por las plataformas de Curicó, Chillán y Los Ángeles, aplicable a los pedidos que utilizan ese circuito; los despachos directos no pasan por ellas.
 
 \renewcommand{\thefigure}{2.3}
 \begin{figure}[H]
 \centering
-\includegraphics[page=1,trim=392pt 446pt 90pt 116pt,clip,scale=1.14]{figuras/figura 2.3.pdf}
-\caption[Proceso de Preparación y Cross-Docking AS-IS.]{Proceso de Preparación y Cross-Docking AS-IS. Fuente: (Bases Técnicas del caso, cap. 3, p. 6).}
+\includegraphics[width=\linewidth]{figuras/figura 2.3.pdf}
+\caption[Proceso de Preparación y Cross-Docking AS-IS.]{Proceso de Preparación y Cross-Docking AS-IS. Fuente: (Bases Técnicas del caso, cap. 3, p. 6, y sección 4.5, p. 8).}
 \label{fig:asis_crossdocking}
 \end{figure}
+
+En el panel A, la preparación se realiza entre las 22:00 y las 06:00 con una hoja impresa ordenada por ubicación. El preparador recoge los productos, marca con lápiz y anota los faltantes al pie. La hoja vuelve a oficina, donde se digitan los faltantes para ajustar la facturación; la causa del faltante no queda registrada. Los productos fríos se preparan al final y la carga sigue el orden inverso de la ruta (Bases Técnicas del caso, sección 4.5, p. 8).
+
+La rotación anual de 38\% de los preparadores nocturnos condiciona este proceso (Bases Técnicas del caso, cap. 10, restricción 11, p. 20). La incorporación de personal exige aprender ubicaciones, recorridos y rutinas en papel. Esa dependencia del aprendizaje y del conocimiento de bodega puede dificultar la continuidad de la preparación; el caso no cuantifica una tasa de errores atribuible a la rotación.
+
+El panel B conserva las cuatro etapas del circuito de plataformas:
 
 \begin{enumerate}
   \item En Talca se consolida la carga de cada plataforma en el camión de línea.
@@ -213,7 +219,7 @@ La operación de las tres plataformas de cross-docking (Curicó, Chillán y Los 
 
 Las plataformas operan con conectividad únicamente por red móvil y sin control de inventario (Bases Técnicas del caso, cap. 6, pp. 10--11, y sección 4.2, p. 7).
 
-La Figura~2.3 tiene cuatro tramos, pero ninguno deja hora registrada: no se sabe cuándo sale el camión de Talca, cuándo llega a la plataforma ni cuánto dura la desconsolidación. Sin esas marcas, las 16 horas no se pueden repartir entre consolidación, viaje, espera o descarga. La compañía sospecha de la consolidación en Talca, pero no hay datos que lo confirmen ni que lo desmientan, así que se trata como hipótesis (Anexo~2.2, SP-02) hasta medir cada tramo.
+El circuito de plataformas del panel B de la Figura~2.3 carece de marcas horarias disponibles para explicar la brecha: no se sabe cuándo sale el camión de Talca, cuándo llega a la plataforma ni cuánto dura la desconsolidación. Sin esas marcas, las 16 horas no se pueden repartir entre consolidación, viaje, espera o descarga. La compañía sospecha de la consolidación en Talca, pero no hay datos que lo confirmen ni que lo desmientan, así que se trata como hipótesis (Anexo~2.2, SP-02) hasta medir cada tramo.
 
 \subsubsection{Proceso 4: Planificación de Rutas AS-IS}
 
@@ -257,8 +263,7 @@ La interacción en la última milla entre los camiones de reparto y los puntos d
 \centering
 %  La exportación de draw.io reparte el diagrama en dos páginas: la segunda
 %  contiene el borde derecho de la última caja. Se unen sin alterarlas.
-\includegraphics[page=1,trim=146pt 374pt 20.2pt 176pt,clip,scale=1.24]{figuras/figura 2.5.pdf}%
-\includegraphics[page=2,trim=20.02pt 374pt 582.1pt 176pt,clip,scale=1.24]{figuras/figura 2.5.pdf}
+\includegraphics[width=0.98\linewidth]{figuras/figura 2.5.pdf}
 \caption[Proceso de Reparto y Entrega AS-IS.]{Proceso de Reparto y Entrega AS-IS. Fuente: (Bases Técnicas del caso, sección 4.6, pp. 8--9).}
 \label{fig:asis_reparto}
 \end{figure}
@@ -275,7 +280,7 @@ Por último, la liquidación de valores cobrados en efectivo se esquematiza en l
 \renewcommand{\thefigure}{2.6}
 \begin{figure}[H]
 \centering
-\includegraphics[page=1,trim=146pt 399pt 142pt 103pt,clip,scale=1.24]{figuras/figura 2.6.pdf}
+\includegraphics[width=0.95\linewidth]{figuras/figura 2.6.pdf}
 \caption[Proceso de Rendición y Cobranza AS-IS.]{Proceso de Rendición y Cobranza AS-IS. Fuente: (Bases Técnicas del caso, sección 4.7, p. 9).}
 \label{fig:asis_rendicion}
 \end{figure}
@@ -292,13 +297,13 @@ Por último, la liquidación de valores cobrados en efectivo se esquematiza en l
 
 La Figura~2.6 muestra un desfase: el descuadre ocurre en la calle, pero se descubre a la mañana siguiente en la caja, cuando ya no se sabe en qué entrega se produjo. Por eso los \$ 4,2 millones mensuales de diferencia siguen sin investigar. El problema no es que falte control en la caja, sino que el cobro no queda unido a su entrega en el momento en que ocurre.
 
-Leídos juntos, los seis procesos repiten un mismo patrón: el dato nace en terreno, se anota en papel o queda en la memoria de alguien, y se reconstruye después, cuando ya no se puede verificar. Así se pierden el lote en la recepción, la causa del faltante en la preventa, la evidencia en la guía y el origen del descuadre en la rendición. Cada pérdida afecta al proceso siguiente, y por eso los tres problemas de la sección 2.2.1 aparecen juntos.
+Leídos juntos, los seis procesos repiten un mismo patrón: el dato nace en terreno, se anota en papel o queda en la memoria de alguien, y se reconstruye después, cuando ya no se puede verificar. Así se pierden el lote en la recepción, la causa del faltante en la preparación, la evidencia en la guía y el origen del descuadre en la rendición. Cada pérdida afecta al proceso siguiente, y por eso los tres problemas de la sección 2.2.1 aparecen juntos.
 
 \section{Actores y Grupos de Interés}
 
 El éxito del proyecto depende de alinear a los 19 actores que conforman el ecosistema de Distribuidora Puelche S.A. Cada uno posee incentivos, niveles de poder y resistencias particulares frente a la automatización de procesos.
 
-%  La Tabla 2.2 no se corta entre páginas (Aclaraciones §5).
+% Mantener la tabla de actores en una página.
 \needspace{0.42\textheight}
 La Tabla~2.2 ubica a los 19 actores en una matriz de influencia e interés, con los niveles que les asigna el Anexo~2.3.
 
@@ -329,7 +334,7 @@ A partir del análisis del problema y de las entrevistas del caso (Bases Técnic
 \begin{itemize}
   \item \textbf{Preventa y comercialización:} El preventista necesita conocer stock y crédito al tomar el pedido y seguir trabajando un turno completo sin señal, sin que ningún pedido se pierda ni se duplique.
   \item \textbf{Gestión de bodegas y trazabilidad de lotes:} Todo producto que lo requiera debe quedar con lote y vencimiento desde su recepción, salir en orden de vencimiento, también en la cámara a $-$22\,°C, y permitir identificar a los clientes afectados por un lote en menos de 2 horas.
-  \item \textbf{Despacho y última milla:} Rutas que respeten la promesa segmentada y las ventanas de servicio, evidencia de cada entrega disponible el mismo día y acuse de recibo válido de la Guía de Despacho Electrónica.
+  \item \textbf{Despacho y última milla:} Rutas que permitan cumplir una promesa viable y las ventanas de servicio, evidencia de cada entrega disponible el mismo día y acuse de recibo válido de la Guía de Despacho Electrónica.
   \item \textbf{Conciliación financiera:} Cada cobro en efectivo debe quedar asociado a su entrega, y toda diferencia de rendición debe explicarse el mismo día con causal y responsable.
 \end{itemize}
 
@@ -343,21 +348,15 @@ Los supuestos que dependen de la solución están en los subdocumentos que la de
 
 \subsection{Exclusiones y restricciones no negociables}
 
-Complementariamente, la Tabla~2.3 sintetiza cinco de las doce restricciones del caso, con los mismos códigos del Anexo~2.2. La inmutabilidad del canal tradicional y la prohibición de intervenir sistemas del 1 al 25 de septiembre, durante todo diciembre y en los tres primeros días hábiles de cada mes condicionan la propuesta de dos formas. Obligan a que la operación de terreno no dependa del sistema central. También obligan a programar despliegues y pasos a producción fuera de esos períodos (Bases Técnicas del caso, cap. 10, pp. 19--20, y sección 13.3, p. 23). El inventario íntegro de exclusiones y restricciones se encuentra en el Anexo~2.2.
+Las doce restricciones del caso condicionan la operación, los recursos y la implantación. Se resumen en cuatro ámbitos, conservando los códigos del Anexo~2.2, donde se presenta el inventario completo junto con las exclusiones (Bases Técnicas del caso, cap. 10, pp. 19--20).
 
-\renewcommand{\thetable}{2.3}
-\begin{tablalafrox}{Síntesis de restricciones no negociables del caso. Fuente: (Bases Técnicas del caso, cap. 10, pp. 19--20); detalle en el Anexo 2.2.}%
-  {tab:2-3}%
-  {F{0.11} F{0.30} Y}%
-  {\cab{Código} & \cab{Restricción} & \cab{Condición que impone}}
-  R-04 & ERP como registro contable único & El ERP no se sustituye y sigue siendo el único emisor de documentos tributarios. \\
-  R-05 & Canal tradicional sin cambios & A los 11.600 almacenes no se les exige internet, dispositivo propio ni pago electrónico. \\
-  R-08 & Ventanas de congelamiento & No se interviene del 1 al 25 de septiembre, en diciembre ni en los tres primeros días hábiles de cada mes. \\
-  R-10 & Privacidad laboral & El sindicato objetó las cámaras en cabina y el control de jornada por GPS. \\
-  R-12 & Validez de los documentos tributarios & La guía de despacho electrónica y su acuse tienen efectos legales que no se pueden comprometer. \\
-\end{tablalafrox}
+\textbf{Continuidad operacional (R-01, R-02 y R-03).} La implantación debe preservar el despacho de 05:30 a 07:00. Los centros de distribución requieren autonomía de al menos 24 horas sin enlace y la operación móvil un turno de 14 horas sin señal, sin pérdida ni duplicación de datos al sincronizar. Estas duraciones precisan la continuidad exigida por el caso (cap. 15, RT-03.10, p. 26) y condicionan tanto la operación diaria como las intervenciones.
 
-Las cinco restricciones de la Tabla~2.3 limitan la propuesta en tres planos. En terreno, R-05 y R-10 exigen generar la evidencia de entrega y cobro con recursos de Puelche y respetar los límites al uso de cámaras y GPS. En la integración, R-04 y R-12 mantienen al ERP como emisor de documentos tributarios. En el calendario, R-08 condiciona las intervenciones y los pasos a producción a las ventanas permitidas.
+\textbf{Trabajo en terreno y atención al cliente (R-05, R-06 y R-07).} A los almaceneros no se les puede exigir internet, dispositivo propio ni pago electrónico. La participación de conductores externos que rotan entre transportistas y el trabajo en cámaras a $-$22\,°C, con guantes y sin señal, obligan a considerar las condiciones reales de uso y aprendizaje. La continuidad del servicio no puede depender de recursos tecnológicos aportados por el cliente.
+
+\textbf{Capacidad humana y privacidad (R-09, R-10 y R-11).} El equipo de TI tiene cuatro integrantes y debe sostener la operación habitual. El sindicato ha objetado las cámaras en cabina y el uso del GPS para controlar la jornada, lo que exige respetar esos límites al definir controles. La rotación anual de 38\% de los preparadores nocturnos condiciona la capacitación y la conservación del conocimiento operativo.
+
+\textbf{Integración y calendario (R-04, R-08 y R-12).} El ERP se mantiene sin reemplazo ni modificación como registro contable y tributario único. Debe preservarse la validez de la guía de despacho electrónica y su acuse. Las intervenciones deben programarse fuera del 1 al 25 de septiembre, de todo diciembre y de los tres primeros días hábiles de cada mes. Estas condiciones limitan las integraciones y las fechas de puesta en producción, aun cuando otras actividades del proyecto puedan continuar.
 
 \section*{Referencias}
 \addcontentsline{toc}{section}{Referencias}
@@ -389,24 +388,25 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
   \item Vidal, T., Laporte, G., y Matl, P. (2020). A concise guide to existing and emerging vehicle routing problem variants. \textit{European Journal of Operational Research, 286}(2), 401--416. \url{https://doi.org/10.1016/j.ejor.2019.10.010}
 \end{itemize}
 
+\clearpage
 \section*{Declaración de uso de IA}
 \addcontentsline{toc}{section}{Declaración de uso de IA}
 
-La Tabla~\ref{tab:2-4} declara el uso asistido de herramientas de inteligencia artificial en la elaboración del presente subdocumento y de sus anexos.
+La Tabla~\ref{tab:2-3} declara el uso de IA en este subdocumento y sus anexos. La revisión humana corresponde a la versión anterior y no acredita la validación de esta edición.
 
-\renewcommand{\thetable}{2.4}
+\renewcommand{\thetable}{2.3}
 \begin{tablalafrox}{Declaración de uso de IA por sección del Subdocumento 2. Fuente: registro del equipo.}%
-  {tab:2-4}%
-  {F{0.22} F{0.14} Y G{0.12} G{0.13} F{0.20}}%
+  {tab:2-3}%
+  {F{0.14} F{0.14} Y G{0.11} G{0.13} F{0.24}}%
   {\cab{Sección} & \cab{Herramienta} & \cab{Finalidad del uso} & \cab{Nivel en texto} & \cab{Nivel en diagramas} & \cab{Revisión humana (quién y qué verificó)}}
-  2.1 Resumen Ejec. & Claude / Gemini & Síntesis ejecutiva y estilo formal & Alto & Ninguno & Alex Aravena: revisión del resumen y validación de la propuesta de valor. \\
-  2.2 Comprensión & Claude / Gemini; Codex & Estructuración de los tres problemas y precisión de los artículos del RSA y de las tolerancias de transporte. & Alto & Ninguno & Alex Aravena: revisión de los tres problemas y de su respaldo normativo frente al caso. \\
-  2.3 Dimensionamiento & Claude / Gemini & Descripción estructurada de los 6 flujos AS-IS & Alto & Medio & Alex Aravena: revisión de los flujos y validación de los cálculos. \\
+  2.1 Resumen & Claude / Gemini / Codex & Síntesis y contraste de cifras y sistemas & Alto & Ninguno & Alex Aravena: revisión del resumen de la versión anterior. \\
+  2.2 Problema & Claude / Gemini / Codex & Diagnóstico, tensiones y modelos de atención & Alto & Ninguno & Alex Aravena: revisión de problemas y respaldo normativo. \\
+  2.3 Procesos & Claude / Gemini / Codex & Flujos AS-IS y corrección de figuras & Alto & Alto / Medio & Alex Aravena: revisión de flujos y cálculos. \\
   2.4 Actores & Claude / Gemini & Disposición tabular de actores & Alto & Ninguno & Alex Aravena: validación de los actores frente al catálogo. \\
-  2.5 Requerimientos & Claude / Gemini & Formato y redacción de supuestos & Alto & Ninguno & Alex Aravena: revisión de supuestos y restricciones. \\
+  2.5 Síntesis & Claude / Gemini / Codex & Requerimientos y doce restricciones & Alto & Ninguno & Alex Aravena: revisión de supuestos y restricciones. \\
   Anexo~2.1 & Claude / Gemini & Maquetación del listado de requerimientos & Alto & Ninguno & Alex Aravena: validación del listado frente al catálogo. \\
-  Anexo~2.2 & Claude / Gemini / Codex & Consolidación de decisiones, exclusiones y restricciones; alineación de S-09 con el precio registrado y el control de diferencias con el ERP & Alto & Ninguno & Alex Aravena: revisión frente a los capítulos 10, 11 y 16.1 del caso y validación de S-09. \\
+  Anexo~2.2 & Claude / Gemini / Codex & Supuestos, restricciones y ajuste de S-09 & Alto & Ninguno & Alex Aravena: contraste con caps. 10, 11 y 16.1; revisión de S-09. \\
   Anexo~2.3 & Claude / Gemini & Maquetación de actores y sistemas legados & Alto & Ninguno & Alex Aravena: revisión de actores, cifras y sistemas. \\
 \end{tablalafrox}
 
-La Tabla~\ref{tab:2-4} muestra que la IA se utilizó con nivel alto en el texto de las secciones y anexos, con nivel medio en los diagramas únicamente en la sección~2.3 (que contiene las Figuras~2.1 a 2.6) y con nivel «Ninguno» en diagramas en las restantes secciones y anexos, individualizando además al integrante del equipo que revisó y validó cada componente.
+La asistencia gráfica fue alta en la Figura~2.3 y media en las demás. Codex intervino en las Figuras~2.1, 2.3, 2.5 y 2.6; el uso gráfico se limita a la sección~2.3.
