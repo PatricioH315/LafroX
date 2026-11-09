@@ -14,6 +14,8 @@ El alcance funcional comprende preventa desconectada con consulta de stock y cr�
 
 La cadena de frío mantiene registro continuo, alerta y decisión en ruta también sin red móvil, con bloqueo local de la entrega del producto afectado por SSCC.
 
+Además del alcance obligatorio, la oferta incorpora cinco innovaciones para Puelche: seguimiento de vencimientos después de la entrega, reproducción de incidentes de terreno para restablecer la operación, uso de la vida útil estimada por lote incluso sin conexión, un tramo variable ligado al costo de servir y una hoja de negocio para el almacenero. El Subdocumento 13 y el Formulario T-19 describen qué agrega cada una y cómo se verifica. Estos aportes no sustituyen requisitos obligatorios. En particular, el modelo de vida útil se oferta como parte del requisito deseable; la innovación es su uso operativo por lote sin conexión.
+
 Estas capacidades se entienden mejor desde cada uno de los tres problemas del Subdocumento 2.
 
 \textbf{Trazabilidad sanitaria y comercial:} Hoy el lote se anota en texto libre, cuando se anota, y en el producto del retiro de marzo de 2026 el 41 \% de las recepciones no lo registraba; el retiro demoró 9 días (Subdocumento 2, sección 2.1). La solución ataca la causa en el punto donde se pierde el dato: la recepción no se cierra sin lote y vencimiento en los productos que lo requieren, el inventario los arrastra en cada movimiento y la entrega los asocia a la guía y al cliente. Con esa cadena, la lista de clientes afectados por un lote es una consulta y no una reconstrucción manual. El registro térmico continuo en cámaras y vehículos reemplaza las tres lecturas manuales por viaje y aporta la evidencia que la autoridad sanitaria observó como ausente.
@@ -273,6 +275,8 @@ La plataforma conserva una cola local durable e idempotente: cada transacción l
 \section{Explicación de la Solución}
 
 La solución se interpreta a través de la jornada de Puelche y de los actores identificados en el Subdocumento 2. Su valor depende de que la información se capture donde ocurre la operación y pueda seguirse hasta los resultados del CLIENTE.
+
+El seguimiento de vencimientos y la hoja de negocio se integran al terminal de preventa; la reproducción de incidentes usa la evidencia de los terminales y se valida en ambientes de prueba; la vida útil estimada combina la historia térmica del lote con cálculo local y reconstrucción central; y el tramo variable utiliza los datos de entregas y costos operativos sin modificar los niveles de servicio. Los componentes y controles de cada innovación se detallan en el Subdocumento 13.
 
 \subsection{Aplicación en la jornada operacional}
 
