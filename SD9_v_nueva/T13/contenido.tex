@@ -78,7 +78,7 @@ Aceptación de usuario & Preproducción & Casos del SD3 ejecutados por personas 
 Perfil operacional de terreno & Terreno, cámara de congelado y Preproducción & Dispositivos reales, Espresso para los flujos repetibles & Parcial & 3.8.3; 3.9.1; 3.9.2 & RT-03.10; RT-03.13; RT-13.08 \\
 Carga y estrés & Preproducción & k6 & Total & 3.8.4; 3.9.3 & Art. 24; RT-09.06 a RT-09.08 (BA, p. 17; BTT, pp. 21--22) \\
 Resiliencia & Preproducción & AWS Fault Injection Service; desconexiones controladas del sitio emulado; corte de gateways de frío y de enlaces & Total en la inyección; manual en la observación & 3.8.4; 3.9.3; 8.2.2 & RT-10.07 (BTT, p. 22) \\
-Continuidad de la arquitectura híbrida & Preproducción y sitio emulado & Nueve protocolos del SD4, Anexo 4-V (sección 7.5) & Parcial & 3.8.1; 3.8.3 a 3.8.5; 3.9.1; 3.9.3; 3.9.4 & RT-03.10; RT-07.04 (BTT, p. 17) \\
+Continuidad de la arquitectura híbrida & Preproducción y sitio emulado & Diez protocolos del SD4, Anexos 4-V y 4-M (sección 7.5) & Parcial & 3.8.1; 3.8.3 a 3.8.5; 3.9.1; 3.9.3; 3.9.4 & RT-03.10; RT-07.04 (BTT, p. 17) \\
 Recuperación ante desastres & Recuperación ante Desastres (us-east-1) & Conmutación regional real y recuperación del WMS de Talca en la nube (AL-DR-01) & Procedimiento automatizado con verificación manual & 3.8.5; 3.9.4; 8.1.3 & RT-07.07 (BTT, p. 17) \\
 Restauración de respaldos & Producción y Recuperación; excepción en sección 9.3 & Restauración de una muestra representativa & Procedimiento automatizado & 4.2.1; 4.2.2; 4.3.1; 8.1.6 & RT-07.12 (BTT, p. 18) \\
 Seguridad ofensiva & Preproducción con versión congelada & Tercero independiente & Manual & 3.8.6; 3.9.5; 8.2.2 & RT-11.20 (BTT, p. 24) \\
@@ -270,25 +270,34 @@ Los dieciséis resultados se aceptan con el protocolo del Formulario T-17, en el
 \subsection*{7.5 Protocolos de aceptación de la arquitectura híbrida}
 \addcontentsline{toc}{subsection}{7.5 Protocolos de aceptación de la arquitectura híbrida}
 
-El SD4, Anexo 4-V, define nueve protocolos que verifican la continuidad de la arquitectura en la nube y en los cinco sitios con servicio local. Se ejecutan en Preproducción antes de la ola aplicable, dentro de las campañas de este plan:
+Se ejecutan diez protocolos en Preproducción antes de la ola aplicable para verificar la continuidad de la arquitectura en la nube y en los cinco sitios con servicio local. Se incluyen los nueve protocolos del SD4, Anexo 4-V, y el protocolo de identidad AL-ID-01 del Anexo 4-M.
 
 \begin{tablasimple}{Y Y Y}
-  {\cab{Protocolo} & \cab{Qué verifica (SD4, Anexo 4-V)} & \cab{Campaña de este plan}}
+  {\cab{Protocolo} & \cab{Qué verifica (SD4, Anexos 4-V y 4-M)} & \cab{Campaña de este plan}}
 AL-DTE-01 & 96 guías por las rutas de Talca y de los demás sitios, con fallas y cambio de carga; emisión por fibra, LTE o Starlink & Resiliencia (3.8.4; 3.9.3) \\
 AL-POD-01 & Entrega total, parcial y con receptor sustituto sin señal & Perfil operacional (3.8.3) \\
 AL-SLA-01 & Ventanas y cuotas del ERP, del SII y de las contrapartes & Integración (3.8.1; 3.9.1) \\
 AL-OFF-01 & Aislamiento de cada sitio por 24 horas, con relevos y despacho con guía preemitida & Resiliencia (3.8.4; 3.9.3) \\
+AL-ID-01 & Emisión y vigencia del manifiesto, relevos, autorización de reparto, expiración y baja durante un corte & Resiliencia (3.8.4 para H5; 3.9.3 para H10) \\
 AL-CLI-01 & Pedidos sin señal en el Portal de Clientes instalado y reconexión & Integración E2 (3.9.1); no condiciona H4/H5, porque el portal se construye en 3.5.2 \\
 AL-DR-01 & Corte de los caminos y recuperación del WMS de Talca en la nube & Recuperación ante desastres (3.8.5; 3.9.4) \\
 AL-PERF-01 & Carga de 3× con mamparos por perfil & Carga y estrés (3.8.4; 3.9.3) \\
 AL-STOCK-01 & Última unidad con cortes y acuses perdidos: preventa en E1; preventa, portal y EDI en E2 & 3.8.1 para E1; 3.9.1 para el escenario completo de E2 \\
 AL-ACT-01 & Cada actor con una operación permitida y una denegada, solo sobre las capacidades habilitadas en su etapa & 3.8.1 para actores/capacidades E1; 3.9.1 amplía a portales y EDI E2 \\
 \end{tablasimple}
-\fuentesd{Fuente: (Subdocumento 4, anexo 4-V, protocolos AL-DTE-01 a AL-ACT-01); (Formulario T-14, paquetes indicados en cada fila).}
+\fuentesd{Fuente: (Subdocumento 4, anexos 4-V y 4-M, incluido AL-ID-01); (Formulario T-14, paquetes indicados en cada fila).}
 
 Cada protocolo deja su acta con la carga, la falla inyectada, el resultado observado y los responsables, dentro del expediente H5 o H10 según su etapa (T-17, sección 3.1). La asignación sigue las capacidades y paquetes del Anexo 7.E: H4/H5 no exigen un portal instalado ni EDI todavía no construidos; los contratos futuros pueden ensayarse con simuladores, pero eso no acredita aceptación del producto de E2. AL-CLI-01 se ejecuta con el portal real en E2 y AL-STOCK-01/AL-ACT-01 amplían allí su cobertura, sin omitir ninguna de las quince interfaces finales.
 
 AL-DTE-01 incluye la carga que conserva su guía preemitida y la carga modificada que exige invalidarla y obtener una nueva. Se inyectan pérdida de enlace e indisponibilidad del ERP: se verifica el bloqueo de salida sin guía válida, la conservación de la solicitud idempotente y la recuperación sin doble emisión. El ERP sigue siendo el único emisor; una guía preemitida no acredita una modificación posterior de carga ni autoriza emisión por otro sistema. La evidencia distingue bloqueo correcto de continuidad de las 96 salidas: si esta última no se sostiene, se registra la brecha para arquitectura, riesgos y programación, sin declarar el requisito satisfecho (Subdocumento 4, capas de la arquitectura, integración tributaria INT-07 y sitio secundario; Formulario T-17, sección 3.1).
+
+\textbf{AL-ID-01. Identidad local durante el corte.} Se ejecuta en Preproducción según el SD4, Anexo 4-M, con un terminal enrolado, identidades y claves de prueba y registro de bajas con hora del servidor. Se emite y verifica la firma de un manifiesto de bodega de 26 h y se aísla el sitio una hora después de la emisión. Se comprueban dos relevos válidos, a las 8 y 16 h del corte, mediante PIN y turno vigentes. Se deniegan y auditan la firma o permisos alterados, los turnos o manifiestos vencidos, el PIN incorrecto y las cuentas sin preinscripción. Un reinicio, la actividad o el retroceso del reloj no amplían la vigencia. Si no se puede demostrar la continuidad de la hora confiable, se deniega una sesión nueva.
+
+En reparto se verifica una ruta de 14,5 h, con una entrega registrada después de 14 h sin señal. La asignación se emite dentro de la hora anterior a la salida y expira 30 minutos después del fin programado, con un máximo de 16 h desde su emisión. Al vencer, se bloquean nuevas operaciones protegidas y se conserva la cola. La reconexión y la reautenticación permiten conciliar una sola vez los eventos válidos conservando sus UUID.
+
+Una baja conocida por el sitio bloquea el acceso inmediatamente. Si solo la autoridad central conoce la baja durante el corte, se registra la exposición hasta que el sitio recibe la baja o caduca la autorización, lo que ocurra primero. Al reconectar, se verifica el bloqueo y la cuarentena de los eventos posteriores a la baja para conciliarlos sin borrarlos.
+
+El criterio de salida exige los dos relevos válidos, la cobertura de la ruta de 14,5 h, cero accesos indebidos en los escenarios denegados y la conservación y conciliación de la cola. El acta para H5 o H10 registra emisión, caducidad, huella del manifiesto, política y versión del verificador, horas de relevo, decisiones de acceso y resultado de la conciliación. Se excluyen del acta los PIN y secretos. AL-ID-01 se ejecuta dentro de las campañas previstas y se registra por separado del catálogo de 1.328 casos de la sección 8.2.
 
 \subsection*{7.6 Recuperación ante desastres: demostración y evidencia}
 \addcontentsline{toc}{subsection}{7.6 Recuperación ante desastres: demostración y evidencia}
@@ -305,7 +314,7 @@ El programa distingue las certificaciones iniciales de las pruebas periódicas. 
 \end{tablasimple}
 \fuentesd{Fuente: (Formulario T-15, paquetes 3.8.5, 3.9.4 y 8.1.3); (Formulario T-14, paquete 8.1.3); (Bases Administrativas, Art. 20); (Bases Técnicas Transversales, RT-07.07, p. 17).}
 
-El intervalo de siete meses entre 3.8.5 y 3.9.4 ocurre antes de la Operación, cuando aún no rige la exigencia semestral de las Bases Administrativas (Art. 20), que se refiere a la fase de Operación. Desde el paso a producción de la Etapa 1, en el mes 13, ningún período con datos productivos supera seis meses sin conmutación real: 3.9.4 llega en el mes 16 y la primera periódica en el mes 21. Cada año contractual de Operación tiene al menos dos (meses 21 y 27; 33 y 39; 45, 51 y 54), como exige el RT-07.07. Ninguna cae en septiembre ni en diciembre. El día de intervención se fija en el plan 1.3.1 fuera de los tres primeros días hábiles y de la ventana de 05:30 a 07:00, con el aviso previo de diez días hábiles del RT-10.05 de las Bases Técnicas Transversales; la del mes 21 se programa después del paso a producción de la Etapa 2, el 5 de octubre de 2028 (Formulario T-15).
+El intervalo de siete meses entre 3.8.5 y 3.9.4 ocurre antes de la Operación, cuando aún no rige la exigencia semestral de las Bases Administrativas (Art. 20), que se refiere a la fase de Operación. Desde el inicio de la marcha blanca de la Etapa 1, en el mes 13, con datos productivos, ningún período supera seis meses sin conmutación real: 3.9.4 llega en el mes 16 y la primera periódica en el mes 21. Cada año contractual de Operación tiene al menos dos (meses 21 y 27; 33 y 39; 45, 51 y 54), como exige el RT-07.07. Ninguna cae en septiembre ni en diciembre. El día de intervención se fija en el plan 1.3.1 fuera de los tres primeros días hábiles y de la ventana de 05:30 a 07:00, con el aviso previo de diez días hábiles del RT-10.05 de las Bases Técnicas Transversales; la conmutación del mes 21 se programa después del paso a producción efectivo de la Etapa 2, conforme a la ventana del T-15 y al T-18. La marcha blanca de E1 se realiza en los meses 13 a 15 y su paso a producción corresponde al mes 16. La marcha blanca de E2 se realiza en los meses 19 y 20 y su paso a producción corresponde al mes 21. Las restauraciones mensuales comienzan en el mes 13, al iniciarse el uso de datos productivos.
 
 \textbf{Prerrequisitos y ambiente.} SRE verifica los tres caminos independientes de cada CD, las alarmas de retraso de replicación a 5 y 15 minutos, los respaldos, la capacidad del sitio de recuperación y el procedimiento versionado de conmutación y retorno. CAL identifica la versión, los datos controlados y las transacciones críticas que validará. La autorización de la sesión registra personal, horarios, reversión y criterios de interrupción; no permite intervenir Producción o Recuperación en congelamiento ni causar indisponibilidad de 05:30 a 07:00.
 
