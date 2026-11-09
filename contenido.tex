@@ -35,14 +35,14 @@ La capacidad instalada combina equipos asignados a las especialidades y puestos 
 
 \begin{tablalafrox}{Equipamiento corporativo de trabajo y atención. Fuente: antecedentes corporativos declarados por LafroX.}{tab:equipamiento_corporativo}{Y R{1.8cm} L{3cm} Y}
   {\cab{Equipamiento} & \cab{Cantidad} & \cab{Sede} & \cab{Uso}}
-  Equipos de Ingeniería, Calidad, Seguridad y SRE & 92 & Santiago: 80; Valparaíso: 12 & Desarrollo, pruebas, seguridad y administración de plataforma \\
+  Equipos de Ingeniería, Calidad, Implantación, Seguridad y SRE & 101 & Santiago: 89; Valparaíso: 12 & Desarrollo, pruebas, implantación, seguridad y administración de plataforma \\
   Puestos compartidos del Centro de Operaciones & 16 & Valparaíso & Supervisión de infraestructura y atención de usuarios \\
   Equipos de reemplazo & 4 & Dos en cada sede & Sustitución temporal de equipos de trabajo \\
   \midrule
-  \textbf{Total de equipos de cómputo} & \textbf{112} & & \\
+  \textbf{Total de equipos de cómputo} & \textbf{121} & & \\
 \end{tablalafrox}
 
-Los 92 equipos asignados corresponden a los especialistas de Ingeniería, Calidad, Seguridad y SRE: 48 + 15 + 10 + 7 + 12 = 92. De ellos, 80 trabajan en Santiago y 12 en Valparaíso. Los 32 profesionales del NOC comparten ocho puestos conforme a sus turnos. Cada puesto de atención incluye computador, monitor, auriculares y acceso a las herramientas del servicio. El inventario suma 92 equipos asignados, 16 puestos compartidos y cuatro equipos de reemplazo: 112 equipos de cómputo.
+Los 101 equipos asignados corresponden a los especialistas de Ingeniería, Calidad, Implantación y Gestión del Cambio, Seguridad y SRE: 48 + 15 + 10 + 9 + 7 + 12 = 101. De ellos, 89 trabajan en Santiago y 12 en Valparaíso. Los 32 profesionales del NOC comparten ocho puestos conforme a sus turnos. Cada puesto de atención incluye computador, monitor, auriculares y acceso a las herramientas del servicio. El inventario suma 101 equipos asignados, 16 puestos compartidos y cuatro equipos de reemplazo: 121 equipos de cómputo.
 
 La capacidad financiera de LafroX complementa su dotación técnica y su infraestructura. La empresa mantiene un patrimonio positivo durante los ejercicios 2023, 2024 y 2025, con \$1.600 millones, \$1.900 millones y \$2.200 millones, respectivamente. Al cierre de 2025, registra ventas anuales de \$6.800 millones y una liquidez corriente de 1,8, equivalente a \$1,80 en activos corrientes por cada peso de obligaciones de corto plazo. Estos antecedentes respaldan la continuidad de sus actividades y el financiamiento habitual de remuneraciones, proveedores y servicios operacionales.
 
@@ -56,7 +56,7 @@ La Tabla~\ref{tab:puestos_operaciones} distingue los puestos de servicio de los 
   Mesa de Servicios & 8 & Hasta 7 & 1 \\
 \end{tablalafrox}
 
-El NOC mantiene seis puestos activos de supervisión continua y dos habilitados para relevos o contingencias. La mesa dispone de siete puestos de atención y uno de reserva. Los agentes son las personas que atienden a los usuarios y utilizan esos puestos. Su dotación y sus turnos se dimensionan para cada servicio contratado. Los agentes de la Mesa de Servicios se contabilizan por separado de los 124 especialistas técnicos de planta de la Tabla~\ref{tab:dotacion}. La dotación adicional prevista para el futuro SOC tampoco forma parte de ese total. El dimensionamiento de la mesa para Puelche se detalla en el Subdocumento 4, Anexo 4-W.7, y el Formulario T-15, secciones 4.1 y 5.6.
+El NOC mantiene seis puestos activos de supervisión continua y dos habilitados para relevos o contingencias. La mesa dispone de siete puestos de atención y uno de reserva. Los agentes son las personas que atienden a los usuarios y utilizan esos puestos. Su dotación y sus turnos se dimensionan para cada servicio contratado. Los agentes de la Mesa de Servicios se contabilizan por separado de los 133 especialistas técnicos de planta de la Tabla~\ref{tab:dotacion}. La dotación adicional prevista para el futuro SOC tampoco forma parte de ese total. El dimensionamiento de la mesa para Puelche se detalla en el Subdocumento 4, Anexo 4-W.7, y el Formulario T-15, secciones 4.1 y 5.6.
 
 El catálogo de la empresa se organiza en productos de software, servicios profesionales y servicios de infraestructura y conectividad.
 
@@ -93,7 +93,7 @@ La empresa también presta servicios para sostener la operación en terreno:
 
 \section{Estructura Organizacional}
 
-LafroX organiza su trabajo en las áreas de Ingeniería, Infraestructura, Calidad y Seguridad. La dotación técnica de planta asignable a proyectos es de 124 especialistas. La Gerencia General dirige la empresa. La Figura~\ref{fig:organigrama} muestra las dependencias de sus áreas y la línea de reporte de Seguridad.
+LafroX organiza su trabajo en las áreas de Ingeniería, Infraestructura, Calidad, Implantación y Gestión del Cambio, y Seguridad. La dotación técnica de planta asignable a proyectos es de 133 especialistas. La Gerencia General dirige la empresa. La Figura~\ref{fig:organigrama} muestra las dependencias de sus áreas y la línea de reporte de Seguridad.
 
 \begin{figure}[H]
 \centering
@@ -102,18 +102,19 @@ LafroX organiza su trabajo en las áreas de Ingeniería, Infraestructura, Calida
 \label{fig:organigrama}
 \end{figure}
 
-La Dirección de Operaciones coordina tres divisiones, cada una con una responsabilidad distinta:
+La Dirección de Operaciones coordina cuatro divisiones, cada una con una responsabilidad distinta:
 \begin{itemize}
     \item \textbf{Ingeniería:} desarrolla el software y reúne las especialidades de datos, arquitectura e integración.
     \item \textbf{Infraestructura:} sostiene la operación de los servicios mediante el NOC, los equipos de confiabilidad de servicios (SRE) y redes.
     \item \textbf{Calidad:} realiza las pruebas y revisa la aplicación de los procesos de ingeniería.
+    \item \textbf{Implantación y Gestión del Cambio:} pone en marcha las soluciones en los sitios del cliente: planifica las olas, capacita y certifica a los usuarios, acompaña la operación en bodega y en ruta durante la marcha blanca y la estabilización, y mide la adopción. Para el trabajo de terreno de cada implantación incorpora asistentes contratados por obra o faena, que trabajan a cargo de sus jefes de frente.
 \end{itemize}
 
-El Oficial de Seguridad de la Información, denominado CISO por la sigla inglesa de \textit{Chief Information Security Officer}, dirige la función de seguridad. Reporta directamente a la Gerencia General y se sitúa fuera de la Dirección de Operaciones para evaluar riesgos con independencia de los responsables de entrega. La Dirección de Operaciones coordina Ingeniería, Infraestructura y Calidad. El Jefe de Calidad puede bloquear un paso a producción si no se cumplen los controles exigidos. El Comité de Calidad y Procesos revisa las observaciones y los desacuerdos se escalan a la Gerencia General.
+El Oficial de Seguridad de la Información, denominado CISO por la sigla inglesa de \textit{Chief Information Security Officer}, dirige la función de seguridad. Reporta directamente a la Gerencia General y se sitúa fuera de la Dirección de Operaciones para evaluar riesgos con independencia de los responsables de entrega. La Dirección de Operaciones coordina Ingeniería, Infraestructura, Calidad e Implantación y Gestión del Cambio. El Jefe de Calidad puede bloquear un paso a producción si no se cumplen los controles exigidos. El Comité de Calidad y Procesos revisa las observaciones y los desacuerdos se escalan a la Gerencia General.
 
-La Gerencia General cuenta también con las áreas de Gestión Comercial y Administración y Finanzas. Gestión Comercial administra las relaciones con clientes, las oportunidades de negocio y la coordinación de propuestas. Administración y Finanzas gestiona el presupuesto corporativo, la tesorería, las compras y los procesos administrativos de personal. Estas funciones se contabilizan por separado de los 124 especialistas técnicos de planta.
+La Gerencia General cuenta también con las áreas de Gestión Comercial y Administración y Finanzas. Gestión Comercial administra las relaciones con clientes, las oportunidades de negocio y la coordinación de propuestas. Administración y Finanzas gestiona el presupuesto corporativo, la tesorería, las compras y los procesos administrativos de personal. Estas funciones se contabilizan por separado de los 133 especialistas técnicos de planta.
 
-La Tabla~\ref{tab:dotacion} distribuye los 124 especialistas por área y sede e indica su antigüedad en LafroX. Este total corresponde a la dotación técnica de planta. La Gerencia General, la Dirección de Operaciones, las funciones comerciales y administrativas y los agentes de mesa se contabilizan por separado. La dotación adicional prevista para el futuro SOC tampoco forma parte de los 124 especialistas de planta.
+La Tabla~\ref{tab:dotacion} distribuye los 133 especialistas por área y sede e indica su antigüedad en LafroX. Este total corresponde a la dotación técnica de planta. La Gerencia General, la Dirección de Operaciones, las funciones comerciales y administrativas y los agentes de mesa se contabilizan por separado. La dotación adicional prevista para el futuro SOC y los asistentes de terreno contratados por obra o faena para cada implantación tampoco forman parte de los 133 especialistas de planta.
 
 \begin{tablalafrox}{Dotación técnica por área, sede y antigüedad. Fuente: antecedentes corporativos declarados por LafroX.}{tab:dotacion}{L{2.5cm} Y L{2.8cm} R{1.7cm} L{2.15cm}}
   {\cab{División} & \cab{Área / rol principal} & \cab{Sede} & \cab{Personas} & \cab{Antigüedad en LafroX}}
@@ -122,12 +123,13 @@ La Tabla~\ref{tab:dotacion} distribuye los 124 especialistas por área y sede e 
   Infraestructura & NOC 24$\times$7 & Operaciones (Valparaíso) & 32 & 1--7 años \\
   Infraestructura & SRE y nube & Operaciones (Valparaíso) & 12 & 2--8 años \\
   Calidad & Aseguramiento y automatización de pruebas & Central (Santiago) & 10 & 2--9 años \\
+  Implantación y Gestión del Cambio & Implantación, capacitación y adopción en terreno & Central (Santiago), con trabajo en los sitios del cliente & 9 & 2--9 años \\
   Seguridad & CISO y especialistas en ciberseguridad & Central (Santiago) & 7 & 2--8 años \\
   \midrule
-  \textbf{Total} & & & \textbf{124} & \\
+  \textbf{Total} & & & \textbf{133} & \\
 \end{tablalafrox}
 
-La dotación se concentra en dos frentes principales: Ingeniería reúne $48 + 15 = 63$ especialistas e Infraestructura, $32 + 12 = 44$. Calidad aporta 10 y Seguridad, 7; la suma total es $63 + 44 + 10 + 7 = 124$. En el área de Ingeniería, los 48 desarrolladores de software de la dotación permanente en Sede Central (Santiago) están especializados y operan directamente en el stack tecnológico ofrecido para la solución integral: PHP/Laravel en los componentes de backend y arquitectura modular, y Kotlin en las aplicaciones móviles nativas de terreno con persistencia local. Asimismo, los 15 especialistas de Arquitectura e integración cubren tanto el diseño de arquitectura de solución e interfaces de integración (rol ARQ) como el modelamiento, ingeniería y reconciliación de datos transaccionales (rol DAT). Esta distribución distingue la construcción del software de su operación y de sus controles de aseguramiento.
+La dotación se concentra en dos frentes principales: Ingeniería reúne $48 + 15 = 63$ especialistas e Infraestructura, $32 + 12 = 44$. Calidad aporta 10; Implantación y Gestión del Cambio, 9; y Seguridad, 7. La suma total es $63 + 44 + 10 + 9 + 7 = 133$. Implantación reúne al líder de implantación, dos coordinadores, un instructor y cinco jefes de frente, consultores funcionales que dirigen el trabajo en bodega, plataformas y ruta; ningún desarrollador se asigna a ese acompañamiento. En el área de Ingeniería, los 48 desarrolladores de software de la dotación permanente en Sede Central (Santiago) están especializados y operan directamente en el stack tecnológico ofrecido para la solución integral: PHP/Laravel en los componentes de backend y arquitectura modular, y Kotlin en las aplicaciones móviles nativas de terreno con persistencia local. Asimismo, los 15 especialistas de Arquitectura e integración cubren tanto el diseño de arquitectura de solución e interfaces de integración (rol ARQ) como el modelamiento, ingeniería y reconciliación de datos transaccionales (rol DAT). Esta distribución distingue la construcción del software de su operación y de sus controles de aseguramiento.
 
 \begin{samepage}
 La antigüedad indica el tiempo de permanencia en LafroX. Los rangos combinan personal estable con incorporaciones recientes y permiten reconocer la continuidad del equipo en cada especialidad.\par
