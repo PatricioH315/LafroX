@@ -1,0 +1,76 @@
+\subsection{Perfiles y esfuerzo para la valorización}
+\label{sec:T15-perfiles-internos}
+
+La Tabla~\ref{tab:T15-perfiles-internos} desglosa 37 perfiles, contando Senior y Junior por separado, e identifica su categoría E-26, el esfuerzo por fase y las plazas propuestas. Las diez funciones mínimas de BTT 19.2 permanecen identificadas. Los códigos de origen ING, ARQ, NOC, SRE, CAL y SEG remiten a los seis grupos técnicos del SD1; la capacidad y las condiciones de asignación se contrastan en 5.7.
+
+\paragraph{Horas y jornadas.}
+Las HH son el esfuerzo acumulado del equipo de cada perfil, no de una sola persona. Las jornadas equivalentes de ocho horas se calculan como $D_{eq}=HH/8$. Son una unidad de esfuerzo para la valorización: no son días transcurridos, días laborables consecutivos ni duración del Gantt. Se conservan los decimales del cálculo; no se redondea cada perfil a jornadas enteras.
+
+Con $n$ personas del mismo perfil, el esfuerzo medio por persona es $HH/n$, equivalente a $D_{eq}/n$ jornadas completas. Esto no supone que todas trabajen a jornada completa durante toda la ventana. La duración y la dedicación de cada actividad se obtienen del calendario y las precedencias de las secciones 5 y 6.1, y la capacidad disponible se contrasta con las 128 HH efectivas por persona y mes de 4.1.
+
+\paragraph{Aplicación a la hoja económica.}
+Para cada fase, $Costo=HH\times c$ y $Tarifa=HH\times t$, donde $c$ y $t$ son los valores horarios que se seleccionen dentro de E-26. La categoría E-26 es una equivalencia de valorización, no otra área ni una plaza adicional. Los importes se consignan únicamente en la oferta económica.
+
+Si se emplea la estructura de ocho horas del ejemplo financiero, la columna de días debe rotularse \textit{Jornadas equivalentes de esfuerzo}: $D_{eq}\times8=HH$. La cantidad de personas no vuelve a multiplicar esas HH. Si la hoja conserva \textit{Días según Gantt}, debe usar los días laborables reales y las horas diarias asignadas al perfil: $D_{Gantt}\times h_{perfil/día}=HH$. Sólo corresponde fijar $h_{perfil/día}=8$ cuando la asignación diaria efectivamente lo justifica.
+
+Como control, el Jefe de Proyecto tiene 1.377,20 HH de implementación: 172,15 jornadas equivalentes de ocho horas. Las 4.782,72 HH de Back-end Senior equivalen a 597,84 jornadas acumuladas; entre tres personas son 199,28 jornadas equivalentes por persona. Ninguno de estos resultados reemplaza la duración de las actividades.
+
+\begin{anexohorizontal}
+\setlength{\textwidth}{\linewidth}
+\renewcommand{\arraystretch}{1.28}
+\begin{tablalafrox}{Perfiles, plazas propuestas y jornadas equivalentes por fase. Fuente: elaboración a partir de las HH de la EDT del T-14 y del T-15; SD1, Tabla 1.3; y BA, Formulario E-26.}{tab:T15-perfiles-internos}
+{C{0.8cm} C{1.0cm} Y L{2.8cm} C{1.0cm} R{1.7cm} R{1.7cm} R{1.7cm} R{1.7cm}}
+{\cab{Cód.} & \cab{Origen propuesto} & \cab{Perfil} & \cab{Categoría E-26} & \cab{Plazas propuestas} & \cab{HH implem.} & \cab{Jornadas implem. HH/8} & \cab{HH oper.} & \cab{Jornadas oper. HH/8}}
+01 & ING & Jefe de Proyecto & Jefe de Proyecto & 1 & 1.377,2 & 172,15 & 996,8 & 124,6 \\
+20 & ING & Analista PMO, documentación y compras & Analista / Diseñador Senior & 2 & 3.714 & 464,25 & 2.244,8 & 280,6 \\
+02 & ARQ & Líder de Integración & Jefe de TIC & 1 & 928 & 116 & 57,6 & 7,2 \\
+03S & ARQ & Arquitecto de Solución Senior & Arquitecto Senior & 2 & 1.984,02 & 248,0025 & 153,6 & 19,2 \\
+03J & ARQ & Arquitecto de Solución Junior & Arquitecto Junior & 1 & 991,98 & 123,9975 & 76,8 & 9,6 \\
+05 & ARQ & Líder Funcional & Jefe de Análisis y Diseño & 1 & 144 & 18 & 0 & 0 \\
+06S & ARQ & Analista Funcional y UX Senior & Analista / Diseñador Senior & 1 & 557,34 & 69,6675 & 0 & 0 \\
+06J & ARQ & Analista Funcional y UX Junior & Analista / Diseñador Junior & 1 & 278,66 & 34,8325 & 0 & 0 \\
+12S & ARQ & Ingeniero de Integración Senior & Ingeniero Senior & 2 & 2.485,34 & 310,6675 & 0 & 0 \\
+12J & ING & Ingeniero de Integración Junior & Ingeniero Junior & 1 & 1.242,66 & 155,3325 & 0 & 0 \\
+04 & ING & Líder de Desarrollo & Jefe de Desarrollo & 1 & 1.616 & 202 & 691,2 & 86,4 \\
+07S & ING & Desarrollador Móvil Senior & Ingeniero Senior & 1 & 1.996,27 & 249,53375 & 460,8 & 57,6 \\
+07J & ING & Desarrollador Móvil Junior & Ingeniero Junior & 1 & 998,13 & 124,76625 & 230,4 & 28,8 \\
+08S & ING & Desarrollador Front-end Senior & Ingeniero Senior & 1 & 1.333,2 & 166,65 & 691,2 & 86,4 \\
+08J & ING & Desarrollador Front-end Junior & Ingeniero Junior & 1 & 1.333,2 & 166,65 & 691,2 & 86,4 \\
+09S & ING & Desarrollador Back-end Senior & Ingeniero Senior & 3 & 4.782,72 & 597,84 & 2.488,32 & 311,04 \\
+09J & ING & Desarrollador Back-end Junior & Ingeniero Junior & 2 & 3.188,48 & 398,56 & 1.658,88 & 207,36 \\
+23 & ARQ & Líder de Datos & Ingeniero Experto & 1 & 1.392 & 174 & 57,6 & 7,2 \\
+10S & ARQ & Ingeniero de Datos y Bases Senior & Ingeniero de Datos & 3 & 3.712 & 464 & 153,6 & 19,2 \\
+10J & ARQ & Ingeniero de Datos y Bases Junior & Ingeniero de Datos & 2 & 1.856 & 232 & 76,8 & 9,6 \\
+16 & CAL & Líder de Calidad y Pruebas & Analista QA Experto & 1 & 414 & 51,75 & 43,2 & 5,4 \\
+19S & CAL & Analista QA Senior & Analista QA Senior & 9 & 3.523,82 & 440,4775 & 399,27 & 49,90875 \\
+19J & ING & Analista QA Junior & Analista QA Junior & 3 & 1.166,18 & 145,7725 & 133,53 & 16,69125 \\
+21 & ING & Líder de Implantación y Gestión del Cambio & Jefe de Análisis y Diseño & 1 & 1.306,94 & 163,3675 & 220,8 & 27,6 \\
+32 & ING & Coordinador de Implantación & Analista / Diseñador Senior & 2 & 2.613,86 & 326,7325 & 441,6 & 55,2 \\
+22 & ING & Instructor de Capacitación & Analista / Diseñador Senior & 1 & 1.352 & 169 & 2.640 & 330 \\
+26 & ING & Apoyo en Bodega Nocturna & Analista / Diseñador Junior & 6 & 4.224 & 528 & 0 & 0 \\
+27 & ING & Apoyo en Cross-docking & Analista / Diseñador Junior & 5 & 4.608 & 576 & 0 & 0 \\
+28 & ING & Acompañante en Ruta & Analista / Diseñador Junior & 11 & 9.600 & 1.200 & 0 & 0 \\
+24 & SRE & Líder de Operación / SRE & Jefe de TIC & 1 & 812,8 & 101,6 & 646,4 & 80,8 \\
+14S & SRE & Ingeniero DevOps y Plataforma Senior & Ingeniero DevOps / SRE & 5 & 4.775,46 & 596,9325 & 3.436,8 & 429,6 \\
+14J & SRE & Ingeniero DevOps y Plataforma Junior & Ingeniero DevOps / SRE & 3 & 2.387,74 & 298,4675 & 1.718,4 & 214,8 \\
+17 & NOC & Operador de Mesa N1 & TIC & 16 & 5.664 & 708 & 54.239 & 6.779,875 \\
+30 & NOC & Operador NOC & TIC & 6 & 3.672 & 459 & 26.280 & 3.285 \\
+13 & SEG & Encargado de Seguridad de la Información & Encargado de Seguridad TI & 1 & 1.016 & 127 & 232 & 29 \\
+31E & SEG & Especialista de Ciberseguridad Senior & Ingeniero Senior & 2 & 1.464 & 183 & 913,6 & 114,2 \\
+31O & SEG/\allowbreak{}NOC & Analista SOC & Ingeniero Senior & 6 & 5.832 & 729 & 26.280 & 3.285 \\
+ & & \textbf{Total de perfiles} & & \textbf{108} & \textbf{90.344} & \textbf{11.293} & \textbf{128.354,20} & \textbf{16.044,275} \\
+\end{tablalafrox}
+\end{anexohorizontal}
+
+Las plazas son la propuesta de procedencia de 5.7, no una nómina confirmada ni la aprobación de su concurrencia. En SOC se proponen cuatro personas de SEG y dos de NOC; cada persona se cuenta una sola vez. La selección de categoría económica no acredita por sí sola competencia para desempeñar el rol.
+
+\paragraph{Conciliación por fase.}
+Los perfiles aportan 90.344 HH de implementación y 128.354,20 HH de operación y reversibilidad. Los servicios especializados por resultado se añaden por separado, sin inventar plazas: 864 HH de implementación y 460,80 de operación. Por tanto:
+\[
+\begin{aligned}
+HH_{implem.}&=90.344+864=91.208,\\
+HH_{oper.}&=128.354,20+460,80=128.815,\\
+HH_{proyecto}&=91.208+128.815=220.023.
+\end{aligned}
+\]
+En jornadas equivalentes son 11.401 de implementación y 16.101,875 de operación: 27.502,875 en total. Estas cantidades no se suman como duración del proyecto. En el modelo financiero, los servicios se valorizan una sola vez conforme a su partida; no se duplican dentro del costo de los perfiles.
