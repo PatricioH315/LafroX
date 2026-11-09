@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  27 OCT 2026 00:29
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  9 NOV 2026 18:30
  system commands enabled.
 **LAFROX-Formulario-T-13.tex
 (./LAFROX-Formulario-T-13.tex
@@ -1965,7 +1965,7 @@ LaTeX Info: Redefining \% on input line 1.
 \tf@toc=\write4
 
 \openout4 = LAFROX-Formulario-T-13.toc
-<logo/lafrox_isotipo_negro.pdf, id=83, 433.62pt x 433.62pt>
+<logo/lafrox_isotipo_negro.pdf, id=85, 433.62pt x 433.62pt>
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 18.
@@ -1990,28 +1990,28 @@ t line 28.
 ]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 41.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 42.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 41.
-LaTeX Info: Redefining \% on input line 41.
+LaTeX Info: Redefining \. on input line 42.
+LaTeX Info: Redefining \% on input line 42.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
-(babel)             Reported on input line 41.
+(babel)             Reported on input line 42.
 File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
 <use logo/FIRMA_Alex_Aravena_transparente.png>
 Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 41.
+t line 42.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [4]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 61.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 87.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 61.
-LaTeX Info: Redefining \% on input line 61.
+LaTeX Info: Redefining \. on input line 87.
+LaTeX Info: Redefining \% on input line 87.
 File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
 <use logo/FIRMA_Alex_Aravena_transparente.png>
 Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 61.
+t line 87.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [5]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
@@ -2053,876 +2053,174 @@ t line 104.
  [8]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 118.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 120.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 118.
-LaTeX Info: Redefining \% on input line 118.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
 File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
 <use logo/FIRMA_Alex_Aravena_transparente.png>
 Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 118.
+t line 120.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [9]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 131.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 133.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 131.
-LaTeX Info: Redefining \% on input line 131.
+LaTeX Info: Redefining \. on input line 133.
+LaTeX Info: Redefining \% on input line 133.
 File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
 <use logo/FIRMA_Alex_Aravena_transparente.png>
 Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 131.
+t line 133.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [10]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 147.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 149.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 147.
-LaTeX Info: Redefining \% on input line 147.
+LaTeX Info: Redefining \. on input line 149.
+LaTeX Info: Redefining \% on input line 149.
 File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
 <use logo/FIRMA_Alex_Aravena_transparente.png>
 Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 147.
+t line 149.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [11]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 177.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 179.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 177.
-LaTeX Info: Redefining \% on input line 177.
+LaTeX Info: Redefining \. on input line 179.
+LaTeX Info: Redefining \% on input line 179.
 File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
 <use logo/FIRMA_Alex_Aravena_transparente.png>
 Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 177.
+t line 179.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [12]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 177.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 179.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 177.
-LaTeX Info: Redefining \% on input line 177.
+LaTeX Info: Redefining \. on input line 179.
+LaTeX Info: Redefining \% on input line 179.
 File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
 <use logo/FIRMA_Alex_Aravena_transparente.png>
 Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 177.
+t line 179.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [13]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 203.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 205.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 203.
-LaTeX Info: Redefining \% on input line 203.
+LaTeX Info: Redefining \. on input line 205.
+LaTeX Info: Redefining \% on input line 205.
 File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
 <use logo/FIRMA_Alex_Aravena_transparente.png>
 Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 203.
+t line 205.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [14]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 227.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 229.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 227.
-LaTeX Info: Redefining \% on input line 227.
+LaTeX Info: Redefining \. on input line 229.
+LaTeX Info: Redefining \% on input line 229.
 File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
 <use logo/FIRMA_Alex_Aravena_transparente.png>
 Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 227.
+t line 229.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
 
 [15]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 245.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 247.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 245.
-LaTeX Info: Redefining \% on input line 245.
+LaTeX Info: Redefining \. on input line 247.
+LaTeX Info: Redefining \% on input line 247.
 File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
 <use logo/FIRMA_Alex_Aravena_transparente.png>
 Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 245.
+t line 247.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [16]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 261.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 265.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 261.
-LaTeX Info: Redefining \% on input line 261.
+LaTeX Info: Redefining \. on input line 265.
+LaTeX Info: Redefining \% on input line 265.
 File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
 <use logo/FIRMA_Alex_Aravena_transparente.png>
 Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 261.
+t line 265.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [17]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 282.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 287.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 282.
-LaTeX Info: Redefining \% on input line 282.
+LaTeX Info: Redefining \. on input line 287.
+LaTeX Info: Redefining \% on input line 287.
 File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
 <use logo/FIRMA_Alex_Aravena_transparente.png>
 Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 282.
+t line 287.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [18]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 310.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 293.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 310.
-LaTeX Info: Redefining \% on input line 310.
+LaTeX Info: Redefining \. on input line 293.
+LaTeX Info: Redefining \% on input line 293.
 File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
 <use logo/FIRMA_Alex_Aravena_transparente.png>
 Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 310.
+t line 293.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [19] (./T13/matriz_requisitos.tex
+ [19]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 55.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 314.
+
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 55.
-LaTeX Info: Redefining \% on input line 55.
+LaTeX Info: Redefining \. on input line 314.
+LaTeX Info: Redefining \% on input line 314.
 File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
 <use logo/FIRMA_Alex_Aravena_transparente.png>
 Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 55.
+t line 314.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [20]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 55.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 322.
+
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 55.
-LaTeX Info: Redefining \% on input line 55.
+LaTeX Info: Redefining \. on input line 322.
+LaTeX Info: Redefining \% on input line 322.
 File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
 <use logo/FIRMA_Alex_Aravena_transparente.png>
 Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 55.
+t line 322.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [21]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 55.
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 55.
-LaTeX Info: Redefining \% on input line 55.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 55.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [22]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 55.
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 55.
-LaTeX Info: Redefining \% on input line 55.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 55.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [23]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 110.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 110.
-LaTeX Info: Redefining \% on input line 110.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 110.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
-
-[24]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 110.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 110.
-LaTeX Info: Redefining \% on input line 110.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 110.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [25]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 110.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 110.
-LaTeX Info: Redefining \% on input line 110.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 110.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [26]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 165.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 165.
-LaTeX Info: Redefining \% on input line 165.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 165.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [27]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 165.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 165.
-LaTeX Info: Redefining \% on input line 165.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 165.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [28]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 165.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 165.
-LaTeX Info: Redefining \% on input line 165.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 165.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [29]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 165.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 165.
-LaTeX Info: Redefining \% on input line 165.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 165.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [30]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 220.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 220.
-LaTeX Info: Redefining \% on input line 220.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 220.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [31]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 220.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 220.
-LaTeX Info: Redefining \% on input line 220.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 220.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [32]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 220.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 220.
-LaTeX Info: Redefining \% on input line 220.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 220.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [33]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 275.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 275.
-LaTeX Info: Redefining \% on input line 275.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 275.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [34]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 275.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 275.
-LaTeX Info: Redefining \% on input line 275.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 275.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [35]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 275.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 275.
-LaTeX Info: Redefining \% on input line 275.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 275.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [36]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 275.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 275.
-LaTeX Info: Redefining \% on input line 275.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 275.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [37]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 330.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 330.
-LaTeX Info: Redefining \% on input line 330.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 330.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [38]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 330.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 330.
-LaTeX Info: Redefining \% on input line 330.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 330.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
-
-[39]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 330.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 330.
-LaTeX Info: Redefining \% on input line 330.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 330.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [40]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 385.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 385.
-LaTeX Info: Redefining \% on input line 385.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 385.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [41]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 385.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 385.
-LaTeX Info: Redefining \% on input line 385.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 385.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [42]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 385.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 385.
-LaTeX Info: Redefining \% on input line 385.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 385.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [43]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 385.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 385.
-LaTeX Info: Redefining \% on input line 385.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 385.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [44]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 440.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 440.
-LaTeX Info: Redefining \% on input line 440.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 440.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [45]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 440.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 440.
-LaTeX Info: Redefining \% on input line 440.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 440.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [46]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 440.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 440.
-LaTeX Info: Redefining \% on input line 440.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 440.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [47]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 495.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 495.
-LaTeX Info: Redefining \% on input line 495.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 495.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [48]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 495.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 495.
-LaTeX Info: Redefining \% on input line 495.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 495.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [49]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 495.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 495.
-LaTeX Info: Redefining \% on input line 495.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 495.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [50]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 495.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 495.
-LaTeX Info: Redefining \% on input line 495.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 495.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [51]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 550.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 550.
-LaTeX Info: Redefining \% on input line 550.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 550.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [52]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 550.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 550.
-LaTeX Info: Redefining \% on input line 550.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 550.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [53]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 550.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 550.
-LaTeX Info: Redefining \% on input line 550.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 550.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
-
-[54]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 605.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 605.
-LaTeX Info: Redefining \% on input line 605.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 605.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [55]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 605.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 605.
-LaTeX Info: Redefining \% on input line 605.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 605.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [56]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 605.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 605.
-LaTeX Info: Redefining \% on input line 605.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 605.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [57]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 605.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 605.
-LaTeX Info: Redefining \% on input line 605.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 605.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [58]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 660.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 660.
-LaTeX Info: Redefining \% on input line 660.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 660.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [59]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 660.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 660.
-LaTeX Info: Redefining \% on input line 660.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 660.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [60]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 660.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 660.
-LaTeX Info: Redefining \% on input line 660.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 660.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [61]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 709.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 709.
-LaTeX Info: Redefining \% on input line 709.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 709.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [62]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 709.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 709.
-LaTeX Info: Redefining \% on input line 709.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 709.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [63]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 709.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 709.
-LaTeX Info: Redefining \% on input line 709.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 709.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [64]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 723.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 723.
-LaTeX Info: Redefining \% on input line 723.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 723.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [65]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 723.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 723.
-LaTeX Info: Redefining \% on input line 723.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 723.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [66]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 742.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 742.
-LaTeX Info: Redefining \% on input line 742.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 742.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [67])
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 337.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 337.
-LaTeX Info: Redefining \% on input line 337.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 337.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [68]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 373.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 373.
-LaTeX Info: Redefining \% on input line 373.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 373.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
-
-[69]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 381.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 381.
-LaTeX Info: Redefining \% on input line 381.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 381.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [70]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 411.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 411.
-LaTeX Info: Redefining \% on input line 411.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 411.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [71]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 427.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 427.
-LaTeX Info: Redefining \% on input line 427.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 427.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [72]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 446.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 446.
-LaTeX Info: Redefining \% on input line 446.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 446.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [73]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 462.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 462.
-LaTeX Info: Redefining \% on input line 462.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 462.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [74]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 482.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 482.
-LaTeX Info: Redefining \% on input line 482.
-File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
-<use logo/FIRMA_Alex_Aravena_transparente.png>
-Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
-t line 482.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [75])
+ [21] (./T13/resumen_modulos.tex
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 21.
@@ -2934,7 +2232,3109 @@ File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
 Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
 t line 21.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [22])
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 352.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 352.
+LaTeX Info: Redefining \% on input line 352.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 352.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [23]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 362.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 362.
+LaTeX Info: Redefining \% on input line 362.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 362.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[24] (./T13/matriz_requisitos.tex
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 30.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 30.
+LaTeX Info: Redefining \% on input line 30.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 30.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [25]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 30.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 30.
+LaTeX Info: Redefining \% on input line 30.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 30.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [26]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 30.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 30.
+LaTeX Info: Redefining \% on input line 30.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 30.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [27]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 30.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 30.
+LaTeX Info: Redefining \% on input line 30.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 30.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [28]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 30.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 30.
+LaTeX Info: Redefining \% on input line 30.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 30.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [29]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 30.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 30.
+LaTeX Info: Redefining \% on input line 30.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 30.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [30]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 30.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 30.
+LaTeX Info: Redefining \% on input line 30.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 30.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [31]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 30.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 30.
+LaTeX Info: Redefining \% on input line 30.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 30.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [32]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 30.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 30.
+LaTeX Info: Redefining \% on input line 30.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 30.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[33]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 30.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 30.
+LaTeX Info: Redefining \% on input line 30.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 30.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [34]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 30.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 30.
+LaTeX Info: Redefining \% on input line 30.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 30.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [35]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 30.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 30.
+LaTeX Info: Redefining \% on input line 30.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 30.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [36]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 30.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 30.
+LaTeX Info: Redefining \% on input line 30.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 30.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [37]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 30.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 30.
+LaTeX Info: Redefining \% on input line 30.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 30.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [38]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 60.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 60.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [39]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 60.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 60.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [40]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 60.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 60.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [41]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 60.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 60.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [42]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 60.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 60.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [43]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 60.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 60.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [44]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 60.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 60.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [45]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 60.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 60.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [46]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 60.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 60.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [47]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 60.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 60.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[48]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 60.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 60.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [49]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 90.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 90.
+LaTeX Info: Redefining \% on input line 90.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 90.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [50]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 90.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 90.
+LaTeX Info: Redefining \% on input line 90.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 90.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [51]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 90.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 90.
+LaTeX Info: Redefining \% on input line 90.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 90.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [52]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 90.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 90.
+LaTeX Info: Redefining \% on input line 90.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 90.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [53]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 90.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 90.
+LaTeX Info: Redefining \% on input line 90.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 90.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [54]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 90.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 90.
+LaTeX Info: Redefining \% on input line 90.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 90.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [55]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 90.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 90.
+LaTeX Info: Redefining \% on input line 90.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 90.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [56]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 90.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 90.
+LaTeX Info: Redefining \% on input line 90.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 90.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [57]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 90.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 90.
+LaTeX Info: Redefining \% on input line 90.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 90.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [58]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 90.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 90.
+LaTeX Info: Redefining \% on input line 90.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 90.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [59]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 90.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 90.
+LaTeX Info: Redefining \% on input line 90.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 90.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [60]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 120.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 120.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [61]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 120.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 120.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [62]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 120.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 120.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[63]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 120.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 120.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [64]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 120.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 120.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [65]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 120.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 120.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [66]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 120.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 120.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [67]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 120.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 120.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [68]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 120.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 120.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [69]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 120.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 120.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [70]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 120.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 120.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [71]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 120.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 120.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [72]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 120.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 120.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [73]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 150.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 150.
+LaTeX Info: Redefining \% on input line 150.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 150.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [74]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 150.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 150.
+LaTeX Info: Redefining \% on input line 150.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 150.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [75]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 150.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 150.
+LaTeX Info: Redefining \% on input line 150.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 150.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [76]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 150.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 150.
+LaTeX Info: Redefining \% on input line 150.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 150.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [77]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 150.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 150.
+LaTeX Info: Redefining \% on input line 150.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 150.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[78]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 150.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 150.
+LaTeX Info: Redefining \% on input line 150.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 150.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [79]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 150.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 150.
+LaTeX Info: Redefining \% on input line 150.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 150.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [80]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 150.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 150.
+LaTeX Info: Redefining \% on input line 150.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 150.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [81]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 150.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 150.
+LaTeX Info: Redefining \% on input line 150.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 150.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [82]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 150.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 150.
+LaTeX Info: Redefining \% on input line 150.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 150.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [83]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 180.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 180.
+LaTeX Info: Redefining \% on input line 180.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 180.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [84]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 180.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 180.
+LaTeX Info: Redefining \% on input line 180.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 180.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [85]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 180.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 180.
+LaTeX Info: Redefining \% on input line 180.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 180.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [86]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 180.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 180.
+LaTeX Info: Redefining \% on input line 180.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 180.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [87]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 180.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 180.
+LaTeX Info: Redefining \% on input line 180.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 180.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [88]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 180.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 180.
+LaTeX Info: Redefining \% on input line 180.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 180.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [89]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 180.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 180.
+LaTeX Info: Redefining \% on input line 180.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 180.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [90]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 180.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 180.
+LaTeX Info: Redefining \% on input line 180.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 180.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [91]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 180.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 180.
+LaTeX Info: Redefining \% on input line 180.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 180.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [92]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 210.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 210.
+LaTeX Info: Redefining \% on input line 210.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 210.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[93]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 210.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 210.
+LaTeX Info: Redefining \% on input line 210.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 210.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [94]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 210.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 210.
+LaTeX Info: Redefining \% on input line 210.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 210.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [95]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 210.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 210.
+LaTeX Info: Redefining \% on input line 210.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 210.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [96]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 210.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 210.
+LaTeX Info: Redefining \% on input line 210.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 210.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [97]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 210.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 210.
+LaTeX Info: Redefining \% on input line 210.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 210.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [98]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 210.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 210.
+LaTeX Info: Redefining \% on input line 210.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 210.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [99]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 210.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 210.
+LaTeX Info: Redefining \% on input line 210.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 210.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [100]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 240.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 240.
+LaTeX Info: Redefining \% on input line 240.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 240.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [101]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 240.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 240.
+LaTeX Info: Redefining \% on input line 240.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 240.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [102]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 240.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 240.
+LaTeX Info: Redefining \% on input line 240.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 240.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [103]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 240.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 240.
+LaTeX Info: Redefining \% on input line 240.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 240.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [104]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 240.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 240.
+LaTeX Info: Redefining \% on input line 240.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 240.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [105]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 240.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 240.
+LaTeX Info: Redefining \% on input line 240.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 240.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [106]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 240.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 240.
+LaTeX Info: Redefining \% on input line 240.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 240.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[107]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 240.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 240.
+LaTeX Info: Redefining \% on input line 240.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 240.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [108]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 270.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 270.
+LaTeX Info: Redefining \% on input line 270.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 270.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [109]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 270.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 270.
+LaTeX Info: Redefining \% on input line 270.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 270.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [110]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 270.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 270.
+LaTeX Info: Redefining \% on input line 270.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 270.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [111]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 270.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 270.
+LaTeX Info: Redefining \% on input line 270.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 270.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [112]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 270.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 270.
+LaTeX Info: Redefining \% on input line 270.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 270.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [113]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 270.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 270.
+LaTeX Info: Redefining \% on input line 270.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 270.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [114]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 270.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 270.
+LaTeX Info: Redefining \% on input line 270.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 270.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [115]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 270.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 270.
+LaTeX Info: Redefining \% on input line 270.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 270.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [116]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 270.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 270.
+LaTeX Info: Redefining \% on input line 270.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 270.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [117]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 300.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 300.
+LaTeX Info: Redefining \% on input line 300.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 300.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [118]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 300.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 300.
+LaTeX Info: Redefining \% on input line 300.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 300.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[119]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 300.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 300.
+LaTeX Info: Redefining \% on input line 300.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 300.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [120]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 300.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 300.
+LaTeX Info: Redefining \% on input line 300.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 300.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [121]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 300.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 300.
+LaTeX Info: Redefining \% on input line 300.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 300.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [122]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 300.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 300.
+LaTeX Info: Redefining \% on input line 300.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 300.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [123]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 300.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 300.
+LaTeX Info: Redefining \% on input line 300.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 300.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [124]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 330.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 330.
+LaTeX Info: Redefining \% on input line 330.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 330.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [125]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 330.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 330.
+LaTeX Info: Redefining \% on input line 330.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 330.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [126]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 330.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 330.
+LaTeX Info: Redefining \% on input line 330.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 330.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [127]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 330.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 330.
+LaTeX Info: Redefining \% on input line 330.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 330.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [128]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 330.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 330.
+LaTeX Info: Redefining \% on input line 330.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 330.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [129]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 330.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 330.
+LaTeX Info: Redefining \% on input line 330.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 330.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [130]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 330.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 330.
+LaTeX Info: Redefining \% on input line 330.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 330.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[131]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 330.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 330.
+LaTeX Info: Redefining \% on input line 330.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 330.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [132]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 330.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 330.
+LaTeX Info: Redefining \% on input line 330.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 330.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [133]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 360.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 360.
+LaTeX Info: Redefining \% on input line 360.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 360.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [134]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 360.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 360.
+LaTeX Info: Redefining \% on input line 360.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 360.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [135]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 360.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 360.
+LaTeX Info: Redefining \% on input line 360.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 360.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [136]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 360.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 360.
+LaTeX Info: Redefining \% on input line 360.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 360.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [137]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 360.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 360.
+LaTeX Info: Redefining \% on input line 360.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 360.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [138]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 360.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 360.
+LaTeX Info: Redefining \% on input line 360.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 360.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [139]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 360.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 360.
+LaTeX Info: Redefining \% on input line 360.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 360.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [140]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 360.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 360.
+LaTeX Info: Redefining \% on input line 360.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 360.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [141]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 390.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 390.
+LaTeX Info: Redefining \% on input line 390.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 390.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [142]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 390.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 390.
+LaTeX Info: Redefining \% on input line 390.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 390.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[143]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 390.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 390.
+LaTeX Info: Redefining \% on input line 390.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 390.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [144]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 390.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 390.
+LaTeX Info: Redefining \% on input line 390.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 390.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [145]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 390.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 390.
+LaTeX Info: Redefining \% on input line 390.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 390.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [146]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 390.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 390.
+LaTeX Info: Redefining \% on input line 390.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 390.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [147]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 390.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 390.
+LaTeX Info: Redefining \% on input line 390.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 390.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [148]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 390.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 390.
+LaTeX Info: Redefining \% on input line 390.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 390.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [149]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 420.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 420.
+LaTeX Info: Redefining \% on input line 420.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 420.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [150]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 420.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 420.
+LaTeX Info: Redefining \% on input line 420.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 420.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [151]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 420.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 420.
+LaTeX Info: Redefining \% on input line 420.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 420.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [152]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 420.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 420.
+LaTeX Info: Redefining \% on input line 420.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 420.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [153]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 420.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 420.
+LaTeX Info: Redefining \% on input line 420.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 420.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [154]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 420.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 420.
+LaTeX Info: Redefining \% on input line 420.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 420.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[155]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 450.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 450.
+LaTeX Info: Redefining \% on input line 450.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 450.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [156]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 450.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 450.
+LaTeX Info: Redefining \% on input line 450.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 450.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [157]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 450.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 450.
+LaTeX Info: Redefining \% on input line 450.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 450.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [158]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 450.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 450.
+LaTeX Info: Redefining \% on input line 450.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 450.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [159]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 450.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 450.
+LaTeX Info: Redefining \% on input line 450.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 450.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [160]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 450.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 450.
+LaTeX Info: Redefining \% on input line 450.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 450.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [161]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 450.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 450.
+LaTeX Info: Redefining \% on input line 450.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 450.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [162]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 480.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 480.
+LaTeX Info: Redefining \% on input line 480.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 480.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [163]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 480.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 480.
+LaTeX Info: Redefining \% on input line 480.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 480.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [164]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 480.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 480.
+LaTeX Info: Redefining \% on input line 480.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 480.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [165]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 480.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 480.
+LaTeX Info: Redefining \% on input line 480.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 480.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [166]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 480.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 480.
+LaTeX Info: Redefining \% on input line 480.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 480.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[167]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 480.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 480.
+LaTeX Info: Redefining \% on input line 480.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 480.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [168]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 510.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 510.
+LaTeX Info: Redefining \% on input line 510.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 510.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [169]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 510.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 510.
+LaTeX Info: Redefining \% on input line 510.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 510.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [170]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 510.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 510.
+LaTeX Info: Redefining \% on input line 510.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 510.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [171]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 510.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 510.
+LaTeX Info: Redefining \% on input line 510.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 510.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [172]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 510.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 510.
+LaTeX Info: Redefining \% on input line 510.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 510.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [173]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 510.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 510.
+LaTeX Info: Redefining \% on input line 510.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 510.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [174]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 510.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 510.
+LaTeX Info: Redefining \% on input line 510.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 510.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [175]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 510.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 510.
+LaTeX Info: Redefining \% on input line 510.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 510.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [176]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 510.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 510.
+LaTeX Info: Redefining \% on input line 510.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 510.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [177]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 510.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 510.
+LaTeX Info: Redefining \% on input line 510.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 510.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [178]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 510.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 510.
+LaTeX Info: Redefining \% on input line 510.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 510.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[179]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 540.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 540.
+LaTeX Info: Redefining \% on input line 540.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 540.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [180]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 540.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 540.
+LaTeX Info: Redefining \% on input line 540.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 540.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [181]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 540.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 540.
+LaTeX Info: Redefining \% on input line 540.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 540.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [182]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 540.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 540.
+LaTeX Info: Redefining \% on input line 540.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 540.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [183]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 540.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 540.
+LaTeX Info: Redefining \% on input line 540.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 540.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [184]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 540.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 540.
+LaTeX Info: Redefining \% on input line 540.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 540.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [185]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 540.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 540.
+LaTeX Info: Redefining \% on input line 540.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 540.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [186]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 540.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 540.
+LaTeX Info: Redefining \% on input line 540.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 540.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [187]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 540.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 540.
+LaTeX Info: Redefining \% on input line 540.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 540.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [188]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 570.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 570.
+LaTeX Info: Redefining \% on input line 570.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 570.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [189]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 570.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 570.
+LaTeX Info: Redefining \% on input line 570.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 570.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [190]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 570.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 570.
+LaTeX Info: Redefining \% on input line 570.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 570.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[191]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 570.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 570.
+LaTeX Info: Redefining \% on input line 570.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 570.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [192]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 570.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 570.
+LaTeX Info: Redefining \% on input line 570.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 570.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [193]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 570.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 570.
+LaTeX Info: Redefining \% on input line 570.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 570.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [194]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 570.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 570.
+LaTeX Info: Redefining \% on input line 570.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 570.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [195]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 570.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 570.
+LaTeX Info: Redefining \% on input line 570.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 570.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [196]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 600.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 600.
+LaTeX Info: Redefining \% on input line 600.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 600.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [197]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 600.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 600.
+LaTeX Info: Redefining \% on input line 600.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 600.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [198]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 600.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 600.
+LaTeX Info: Redefining \% on input line 600.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 600.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [199]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 600.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 600.
+LaTeX Info: Redefining \% on input line 600.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 600.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [200]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 600.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 600.
+LaTeX Info: Redefining \% on input line 600.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 600.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [201]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 600.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 600.
+LaTeX Info: Redefining \% on input line 600.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 600.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [202]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 600.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 600.
+LaTeX Info: Redefining \% on input line 600.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 600.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[203]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 600.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 600.
+LaTeX Info: Redefining \% on input line 600.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 600.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [204]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 630.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 630.
+LaTeX Info: Redefining \% on input line 630.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 630.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [205]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 630.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 630.
+LaTeX Info: Redefining \% on input line 630.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 630.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [206]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 630.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 630.
+LaTeX Info: Redefining \% on input line 630.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 630.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [207]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 630.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 630.
+LaTeX Info: Redefining \% on input line 630.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 630.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [208]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 630.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 630.
+LaTeX Info: Redefining \% on input line 630.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 630.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [209]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 630.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 630.
+LaTeX Info: Redefining \% on input line 630.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 630.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [210]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 630.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 630.
+LaTeX Info: Redefining \% on input line 630.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 630.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [211]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 630.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 630.
+LaTeX Info: Redefining \% on input line 630.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 630.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [212]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 630.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 630.
+LaTeX Info: Redefining \% on input line 630.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 630.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [213]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 660.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 660.
+LaTeX Info: Redefining \% on input line 660.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 660.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [214]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 660.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 660.
+LaTeX Info: Redefining \% on input line 660.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 660.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[215]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 660.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 660.
+LaTeX Info: Redefining \% on input line 660.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 660.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [216]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 660.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 660.
+LaTeX Info: Redefining \% on input line 660.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 660.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [217]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 660.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 660.
+LaTeX Info: Redefining \% on input line 660.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 660.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [218]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 660.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 660.
+LaTeX Info: Redefining \% on input line 660.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 660.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [219]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 660.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 660.
+LaTeX Info: Redefining \% on input line 660.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 660.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [220]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 660.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 660.
+LaTeX Info: Redefining \% on input line 660.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 660.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [221]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 660.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 660.
+LaTeX Info: Redefining \% on input line 660.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 660.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [222]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 690.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 690.
+LaTeX Info: Redefining \% on input line 690.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 690.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [223]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 690.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 690.
+LaTeX Info: Redefining \% on input line 690.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 690.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [224]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 690.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 690.
+LaTeX Info: Redefining \% on input line 690.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 690.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [225]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 690.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 690.
+LaTeX Info: Redefining \% on input line 690.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 690.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [226]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 690.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 690.
+LaTeX Info: Redefining \% on input line 690.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 690.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[227]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 690.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 690.
+LaTeX Info: Redefining \% on input line 690.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 690.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [228]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 690.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 690.
+LaTeX Info: Redefining \% on input line 690.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 690.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [229]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 720.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 720.
+LaTeX Info: Redefining \% on input line 720.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 720.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [230]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 720.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 720.
+LaTeX Info: Redefining \% on input line 720.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 720.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [231]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 720.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 720.
+LaTeX Info: Redefining \% on input line 720.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 720.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [232]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 720.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 720.
+LaTeX Info: Redefining \% on input line 720.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 720.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [233]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 720.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 720.
+LaTeX Info: Redefining \% on input line 720.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 720.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [234]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 720.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 720.
+LaTeX Info: Redefining \% on input line 720.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 720.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [235]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 720.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 720.
+LaTeX Info: Redefining \% on input line 720.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 720.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [236]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 720.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 720.
+LaTeX Info: Redefining \% on input line 720.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 720.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [237]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 720.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 720.
+LaTeX Info: Redefining \% on input line 720.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 720.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [238]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 720.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 720.
+LaTeX Info: Redefining \% on input line 720.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 720.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[239]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 750.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 750.
+LaTeX Info: Redefining \% on input line 750.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 750.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [240]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 750.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 750.
+LaTeX Info: Redefining \% on input line 750.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 750.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [241]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 750.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 750.
+LaTeX Info: Redefining \% on input line 750.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 750.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [242]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 750.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 750.
+LaTeX Info: Redefining \% on input line 750.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 750.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [243]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 750.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 750.
+LaTeX Info: Redefining \% on input line 750.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 750.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [244]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 750.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 750.
+LaTeX Info: Redefining \% on input line 750.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 750.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [245]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 774.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 774.
+LaTeX Info: Redefining \% on input line 774.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 774.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [246]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 774.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 774.
+LaTeX Info: Redefining \% on input line 774.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 774.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [247]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 774.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 774.
+LaTeX Info: Redefining \% on input line 774.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 774.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [248]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 774.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 774.
+LaTeX Info: Redefining \% on input line 774.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 774.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [249]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 774.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 774.
+LaTeX Info: Redefining \% on input line 774.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 774.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [250]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 788.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 788.
+LaTeX Info: Redefining \% on input line 788.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 788.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+
+[251]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 788.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 788.
+LaTeX Info: Redefining \% on input line 788.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 788.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [252]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 807.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 807.
+LaTeX Info: Redefining \% on input line 807.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 807.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [253])
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 382.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 382.
+LaTeX Info: Redefining \% on input line 382.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 382.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [254]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 428.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 428.
+LaTeX Info: Redefining \% on input line 428.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 428.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [255]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 428.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 428.
+LaTeX Info: Redefining \% on input line 428.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 428.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [256]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 443.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 443.
+LaTeX Info: Redefining \% on input line 443.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 443.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [257]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 468.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 468.
+LaTeX Info: Redefining \% on input line 468.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 468.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [258]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 486.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 486.
+LaTeX Info: Redefining \% on input line 486.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 486.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [259]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 505.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 505.
+LaTeX Info: Redefining \% on input line 505.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 505.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [260]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 521.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 521.
+LaTeX Info: Redefining \% on input line 521.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 521.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [261])
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 21.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 21.
+LaTeX Info: Redefining \% on input line 21.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 21.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [262]
 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (./LAFROX-Formulario-T-13.aux
@@ -2948,19 +5348,19 @@ L3 programming layer <2026-07-20>
 )
 
 Here is how much of LuaTeX's memory you used:
- 39695 strings out of 475695
- 305239,4921788 words of node,token memory allocated
- 729 words of node memory still in use:
-   8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 4 kern, 1 penalty, 3 glyph, 20
- attribute, 79 glue_spec, 11 attribute_list, 2 write nodes
-   avail lists: 1:4,2:11630,3:2525,4:737,5:3582,6:843,7:21510,8:3,9:6889,10:32,1
-1:1536
- 58495 multiletter control sequences out of 65536+600000
- 119 fonts using 46729355 bytes
- 107i,23n,128p,1503b,5560s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 48132 strings out of 475695
+ 745223,12246980 words of node,token memory allocated
+ 753 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 4 kern, 1 penalty, 3 glyph, 24
+ attribute, 79 glue_spec, 13 attribute_list, 2 write, 2 pdf_action nodes
+   avail lists: 1:8,2:7211,3:2169,4:1130,5:13538,6:535,7:69522,8:25,9:4794,10:36
+,11:7921
+ 58906 multiletter control sequences out of 65536+600000
+ 121 fonts using 47143019 bytes
+ 107i,23n,128p,1503b,19137s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
-ourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/op
-entype/adobe/sourceserif/SourceSerif4-Regular.otf><C:/Users/henri/AppData/Local/
+ourceSerif4-Regular.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/open
+type/adobe/sourceserif/SourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/
 Programs/MiKTeX/fonts/opentype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/User
 s/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSer
 if4-Semibold.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/ad
@@ -2970,9 +5370,9 @@ ocal/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Regular.otf><c:
 /users/henri/appdata/local/programs/miktex/fonts/opentype/adobe/sourcesans/sourc
 esans3-medium.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/a
 dobe/sourcesans/SourceSans3-Semibold.otf>
-Output written on LAFROX-Formulario-T-13.pdf (76 pages, 296375 bytes).
+Output written on LAFROX-Formulario-T-13.pdf (262 pages, 940579 bytes).
 
-PDF statistics: 593 PDF objects out of 1000 (max. 8388607)
- 115 named destinations out of 1000 (max. 1048576)
- 256 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 1396 PDF objects out of 1440 (max. 8388607)
+ 317 named destinations out of 1000 (max. 1048576)
+ 264 words of extra memory for PDF output out of 10000 (max. 100000000)
 
