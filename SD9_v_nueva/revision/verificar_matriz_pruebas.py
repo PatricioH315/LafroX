@@ -29,6 +29,21 @@ for line in source.splitlines():
         source_states[cells[0]] = cells[2]
 assert set(ids) == set(source_states)
 assert all(x["state"] == source_states[x["id"]] for x in requirements)
+source_rows = {}
+for line in source.splitlines():
+    if re.match(r"\s*(?:RF|RNF|RT)-\d", line):
+        cells = [c.strip() for c in line.strip().removesuffix(r"\\").split(" & ")]
+        source_rows[cells[0]] = cells
+for item in requirements:
+    assert item["origin"].strip() and item["criterion"].strip(), item["id"]
+    assert item["component"] == source_rows[item["id"]][3], item["id"]
+    assert item["edt"] == source_rows[item["id"]][4], item["id"]
+    assert bool(item["cases"]) == (item["state"] != "No cumple"), item["id"]
+by_id = {item["id"]: item for item in requirements}
+for alias in aliases:
+    assert alias["covered_by"] in by_id and not alias["cases"], alias["id"]
+    assert alias["source_table"] in {"3.A.3a", "3.A.5a"}, alias["id"]
+
 own = [x for x in requirements if not x["id"].startswith("RT-")]
 rt = [x for x in requirements if x["id"].startswith("RT-")]
 assert len(own) == counts["own"] and len(rt) == counts["rt"]
@@ -137,6 +152,14 @@ matrix = (ROOT / "T13/matriz_requisitos.tex").read_text(encoding="utf-8")
 assert matrix.count("0; brecha visible") == counts["rt_without_case"] == rt_state["No cumple"]
 assert "RF-\\allowbreak{}09.11" in matrix
 assert matrix.count("Matriz individual: bloque") == counts["blocks"]
+assert matrix.count("Requisito y origen") == counts["blocks"]
+assert matrix.count("Componente y paquete EDT") == counts["blocks"]
+assert matrix.count("Criterio verificable") == counts["blocks"]
+assert "/P02 intento con lote vacío" in matrix
+assert "Lote requerido para este producto" in matrix
+assert "umbral y verificación" in matrix
+assert "Alias y origen" in matrix
+
 assert all(row.rstrip().endswith((" H5 \\\\", " H10 \\\\", " H5 y H10 \\\\"))
            for row in matrix.splitlines()
            if re.match(r"(RF|RNF)-", row) and " & 0 \\" not in row), "fila sin hito"
