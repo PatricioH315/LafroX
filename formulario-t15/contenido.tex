@@ -66,11 +66,11 @@ Las bases de cada estimación se declaran por tipo de paquete. Los módulos y la
 
 La duración se contrasta con esfuerzo, capacidad efectiva y dependencias. La sección 6 programa los paquetes y descompone en actividades de 8 a 80 HH, que caben en una quincena, sólo los que terminan hasta el H2; los demás se detallan por planificación gradual antes de cada fase. Las ventanas de la sección 4 son supuestos de asignación y la red agregada de la sección 5 explicita el cálculo del calendario. Las dependencias entre paquetes están en el Anexo 7.B del Subdocumento 7, y sobre esa red se aplica el método de la ruta crítica (PMI, 2017, pp. 210–211): una pasada hacia adelante da el inicio y el fin tempranos; una pasada hacia atrás, desde los meses fijos del artículo 17 de las Bases Administrativas (pp. 12--13), da el inicio y el fin tardíos; la diferencia LS − ES es la holgura total; la holgura libre se calcula respecto del ES de sus sucesores. Los hitos del Formulario E-25 son restricciones de fecha fija: un camino que no llega a su hito tiene holgura negativa y obliga a replanificar.
 
-La sección 5 calcula CPM y PERT sobre la línea base vigente de 220.023 HH e incorpora las revisiones del CLIENTE como retardos. Las fechas fuente de la sección 6 se conservan; las fechas calculadas se presentan aparte. La red agregada obtiene holguras no negativas y tres días para H12, condicionadas a los supuestos de recursos y aceptación. La Tabla \ref{tab:T15-actas} identifica por separado una incompatibilidad entre el plazo completo de revisión del cierre de marcha blanca y las fechas objetivo de producción. Por ello, esas holguras no acreditan por sí solas la viabilidad integral de la aceptación. La asignación nominal y la nivelación fina también requieren validación.
+La sección 5 documenta el escenario base de 220.023 HH y los plazos de revisión del CLIENTE. Las fechas y holguras del escenario se contrastan con las condiciones de cierre, producción y aceptación en la Tabla \ref{tab:T15-actas}.
 
 \section{Ruta crítica y holguras}
 
-La red de la sección 5 identifica como camino controlante del H12 el cierre de la marcha blanca de la Etapa 2 (4.3.1), la preparación del acta 4.3.3 y los diez días hábiles de revisión del CLIENTE. La garantía 4.3.4 se constituye en septiembre, en paralelo con la marcha blanca, porque es un trámite financiero que no interviene sistemas y no tiene predecesoras; así no se suma a la cadena del acta. El acta calculada cae el 25 de octubre de 2028 frente al límite del 31 de octubre: holgura contractual de tres días hábiles. La Tabla \ref{tab_T15_7} conserva la diferencia entre entrega y acta.
+El camino de aceptación de H12 pasa por el cierre de la marcha blanca, la revisión del expediente y el corte autorizado. La garantía 4.3.4 se tramita en paralelo y debe estar constituida al presentar el expediente. La sección 5.5 distingue la carta base, el contraste con dos revisiones y la propuesta de expediente integrado.
 
 % Mantener el diagrama y su explicación juntos, sin flotación.
 \par\addvspace{\intextsep}
@@ -113,7 +113,7 @@ Los supuestos y el cálculo del modelo de recursos son los siguientes.
 \item Capacidad nominal asumida: 160 HH/persona-mes; disponibilidad programable 80 \%; capacidad efectiva 128 HH. El 20 \% cubre ausencias y coordinación no imputada. No es una jornada contractual ni un cálculo de cumplimiento laboral.
 \item Esfuerzo inicial por clase y paquete: G gestión/acta 80 HH; E diseño/configuración/innovación 240 HH; D módulo 960 HH; I integración/migración 480 HH; V prueba 320 HH (integración y cierres de certificación: 160 HH); T instalación/capacitación 160 HH. Las clases de tamaño se fundan en los requerimientos del T-12 y en las cantidades del T-11, y se recalculan con el equipo al establecer la línea base. La tabla al final de esta sección explica qué contiene cada clase.
 \item R identifica esfuerzo recurrente mensual, incluidos equivalentes mensuales de actividades anuales/semestrales: la distribución contable no cambia la frecuencia de ejecución del T-14.
-\item A identifica acompañamiento: 13 puestos simultáneos de terreno/coordinación; 12 \ensuremath{\times} 24 días \ensuremath{\times} 8 horas + 160 HH de coordinación = 2.464 HH por cuatro semanas; soporte E1 meses 16–20 con previsión 2.464/\allowbreak{}1.312/\allowbreak{}544/\allowbreak{}544/\allowbreak{}544 HH para puestos 13/\allowbreak{}7/\allowbreak{}3/\allowbreak{}3/\allowbreak{}3, condicionada a los indicadores del T-18. La estabilización 4.3.2 abarca desde el paso a producción de la Etapa 2, el 5 de octubre de 2028, hasta el 30 de noviembre, según la carta Gantt del T-14; sus cuatro semanas reforzadas empiezan después de la firma de H12: con el acta calculada para el 25 de octubre de 2028 en la Tabla \ref{tab_T15_7}, el acompañamiento comienza el 26 de octubre, termina el 22 de noviembre y ocupa 5 de sus 24 días de lunes a sábado en el mes 21 y 19 en el mes 22. A razón de 2.464/24 HH por día, la imputación es 513,33 HH en el mes 21 y 1.950,67 HH en el mes 22. La fecha es un supuesto de programación, sujeto a la firma efectiva del CLIENTE; si cambia, se recalcula el reparto sin acortar las cuatro semanas.
+\item A identifica acompañamiento: 13 puestos simultáneos de terreno/coordinación; 12 \ensuremath{\times} 24 días \ensuremath{\times} 8 horas + 160 HH de coordinación = 2.464 HH por cuatro semanas; soporte E1 meses 16–20 con previsión 2.464/\allowbreak{}1.312/\allowbreak{}544/\allowbreak{}544/\allowbreak{}544 HH para puestos 13/\allowbreak{}7/\allowbreak{}3/\allowbreak{}3/\allowbreak{}3, condicionada a los indicadores del T-18. La estabilización 4.3.2 se inicia con el paso efectivo a producción. La distribución de la carta base para sus cuatro semanas reforzadas es de 513,33 HH en el mes 21 y 1.950,67 HH en el 22. Si se confirma el expediente integrado y H12 se cumple el 18 de octubre de 2028, el refuerzo empieza el día 19 y concluye el 15 de noviembre: 11 de sus 24 jornadas de lunes a sábado caen en el mes 21 y 13 en el 22. A razón de 2.464/24 HH por jornada, corresponden 1.129,33 y 1.334,67 HH. El reparto alternativo conserva las 2.464 HH y no se suma a la carta base.
 \item C identifica cobertura por horas-posición del calendario real, con el mes 1 en febrero de 2027 (Anexo 7.A). NOC (8.1.1) y SOC (8.1.5) mantienen un puesto 24\ensuremath{\times}7 cada uno: días del mes \ensuremath{\times} 24, es decir 744 HH en un mes de 31 días, 720 en uno de 30 y 672 en febrero. La mesa (8.1.2, primera línea de incidentes del artículo 78 de las Bases Administrativas (p. 40)) aplica las posiciones del SD4 (Subdocumento 4), Anexo 4-W.7: 7 en la hora cargada y 2 en las otras 17 horas de 04:00 a 22:00, o 41 horas-posición por día de lunes a sábado, y desde el mes 25 un tercer agente en esas 17 horas, 58 horas-posición por día, con el que la dotación cubre los tres niveles de servicio hasta 2.391 contactos al mes (SD4, Anexo 4-W.7); en septiembre y diciembre se suman 6 horas-posición de 22:00 a 04:00 de lunes a sábado y 24 los domingos. Así, un mes de 26 días de lunes a sábado exige 26 \ensuremath{\times} 41 = 1.066 HH de mesa, y septiembre de 2028 exige 26 \ensuremath{\times} 47 + 4 \ensuremath{\times} 24 = 1.318 HH. El SOC es propio de LafroX y opera desde su Centro de Operaciones en Valparaíso (RT-11.17; SD4, Anexo 4-W.7); sus HH se imputan aquí. Las posiciones de la mesa provienen de un Erlang C con supuestos de demanda: no acreditan abandono ni resolución al primer contacto, que se miden según la sección 5.6. La curva dimensiona relevos con 128 HH efectivas.
 \item O = 0,75M; P = 1,25M; E = (O + 4M + P)/6 = M. Para A/C, O = M = P: no se reduce cobertura por un escenario optimista. Los riesgos de demanda y ausencias se tratan separadamente.
 \item E se reparte uniformemente entre los meses inclusivos declarados como presupuesto preliminar, salvo las pruebas de certificación reprogramadas 3.9.2–3.9.7 y el acompañamiento 4.3.2, que se imputan por los días de ejecución de cada mes. Las ventanas relativas pueden abarcar meses de reserva sin trabajo continuo: la Tabla \ref{tab_T15_paquetes} fija el inicio y fin de los paquetes con entregable y el diccionario T-14 mantiene las restricciones de aceptación. Coincidir en un mes no demuestra que una precedencia dentro del mes se haya satisfecho.
@@ -148,6 +148,53 @@ La Tabla \ref{tab_T15_3} resume las horas programadas por etapa contractual y a�
 \parte{tablas/tab_T15_3}
 
 Total exacto de paquetes y componentes = 220023.00 HH (207.487 HH de los 227 paquetes + 128 HH de restauraciones previas a Operación + 9.336 HH de soporte puente + 3.072 HH de reserva protegida); peak mensual conjunto = 64 personas equivalentes en el mes 16, cuando coinciden el paso a producción de la Etapa 1 con su estabilización y soporte puente y las pruebas de certificación de la Etapa 2. En el solapamiento de los meses 13 a 15 el máximo es de 58 personas, en el mes 14: la construcción de los cuatro módulos de la Etapa 2 se reparte en los meses 14 y 15, con cinco personas por módulo como máximo, en lugar de concentrarse en abril. La mesa y el SOC dimensionados en el SD4, aplicados sobre el calendario real, determinan las horas de operación y de soporte puente. La implementación imputada a los meses 21 y 22 se separa de Operación; las actividades generales que continúan como servicio permanecen en Operación. Los peaks de etapas no se suman. Las centésimas de presentación se distribuyen por mayor resto entre meses y se concilian por etapa; la suma publicada conserva 220.023 HH exactas. La mesa de ayuda de 8.1.2 incluye desde el mes 25, cuando empieza el tercer año del contrato y la demanda proyectada llega a 2.258 contactos al mes, un tercer agente en las franjas de menor demanda (17 horas por día de lunes a sábado, 14.161 HH), con el que la dotación base cubre los tres niveles de servicio hasta 2.391 contactos al mes (SD4, Anexo 4-W.7). En los meses 21 a 24, con 2.000 contactos estimados, bastan dos agentes en esas franjas (límite 2.283).
+
+\paragraph{Alcance funcional trazado por paquete.}
+La columna «Paquete EDT» del Formulario T-12 permite contar los identificadores distintos de requisitos funcionales, no funcionales y técnicos vinculados a cada módulo. Un requisito vinculado a varios paquetes se cuenta en cada paquete pertinente; los recuentos no se suman como tamaño global. La asociación indica alcance trazado, no una unidad homogénea de esfuerzo.
+
+\begin{itemize}
+\item 3.4.1 a 3.4.6: 12, 16, 16, 22, 15 y 23 requisitos, respectivamente.
+\item 3.4.7 a 3.4.11: 11, 22, 12, 14 y 15 requisitos, respectivamente.
+\item 3.5.1 a 3.5.4: 18, 22, 3 y 6 requisitos, respectivamente.
+\end{itemize}
+
+La recepción (3.4.1) incluye validación física y de lote; el portal de transportistas (3.5.3) requiere segregación por empresa; la planificación de rutas (3.4.7) incorpora restricciones de negocio y validación con el planificador. Para estimar sus duraciones se distinguen flujos, interfaces, trabajo sin conexión, pruebas y riesgos de cada entregable. El recuento no sustituye la estimación ni convierte la clase inicial en una productividad validada.
+
+\paragraph{Estimación por alcance de los paquetes de software.}
+Se ensaya una estimación ascendente a partir del T-12 corregido, separada de la línea base de la oferta. Se cuentan identificadores distintos por paquete: RF funcionales y RNF/RT no funcionales o técnicos. El componente común de 240 HH representa tres bloques de hasta 80 HH de preparación, integración y entrega. Para cada RF se ensayan 16/24/32 HH y para cada RNF o RT 8/16/24 HH en los escenarios optimista, más probable y pesimista. Las tasas son supuestos de estimación, no rendimientos observados. El escenario pesimista añade horas de repetición de pruebas por paquete: integración y datos para los flujos centrales, desconexión para las aplicaciones móviles, dispositivos y certificación para frío, interfaces externas para cadenas, y segregación y conciliación para portales y analítica. Se descompone cada repetición en tareas de hasta 80 HH. El valor esperado se obtiene con $(O+4M+P)/6$.
+
+\begin{tablalafrox}{Escenarios de esfuerzo de los módulos (HH). Fuente: paquetes vinculados en el T-12 y supuestos de estimación de esta sección.}{tab:T15-tamano-escenario}
+{L{1.7cm} C{1.7cm} C{1.45cm} R{1.15cm} R{1.15cm} R{1.15cm} R{1.35cm}}
+{\cab{Paquete} & \cab{RF / RNF y RT} & \cab{Reprueba} & \cab{O} & \cab{M} & \cab{P} & \cab{Esperado}}
+  3.4.1 & 10 / 2 & 40 & 416 & 512 & 648 & 518,7 \\
+  3.4.2 & 16 / 0 & 48 & 496 & 624 & 800 & 632,0 \\
+  3.4.3 & 12 / 4 & 56 & 464 & 592 & 776 & 601,3 \\
+  3.4.4 & 16 / 6 & 120 & 544 & 720 & 1016 & 740,0 \\
+  3.4.5 & 9 / 6 & 120 & 432 & 552 & 792 & 572,0 \\
+  3.4.6 & 19 / 4 & 96 & 576 & 760 & 1040 & 776,0 \\
+  3.4.7 & 10 / 1 & 104 & 408 & 496 & 688 & 513,3 \\
+  3.4.8 & 20 / 2 & 96 & 576 & 752 & 1024 & 768,0 \\
+  3.4.9 & 11 / 1 & 56 & 424 & 520 & 672 & 529,3 \\
+  3.4.10 & 13 / 1 & 72 & 456 & 568 & 752 & 580,0 \\
+  3.4.11 & 7 / 8 & 56 & 416 & 536 & 712 & 545,3 \\
+  3.5.1 & 16 / 2 & 96 & 512 & 656 & 896 & 672,0 \\
+  3.5.2 & 14 / 8 & 72 & 528 & 704 & 952 & 716,0 \\
+  3.5.3 & 3 / 0 & 32 & 288 & 312 & 368 & 317,3 \\
+  3.5.4 & 6 / 0 & 56 & 336 & 384 & 488 & 393,3 \\
+\end{tablalafrox}
+
+Este escenario no sustituye las HH de la línea base: se debe contrastar cada tasa y repetir el cálculo de capacidad, cronograma y costeo antes de adoptarlo. No se usan estas cifras para declarar una probabilidad de cumplimiento contractual.
+
+\paragraph{Contraste de tres estimaciones del conjunto de paquetes.}
+El escenario cubre 227 paquetes: 15 módulos estimados por alcance, 153 paquetes con entregable contrastados por clase y condición de ejecución, y 59 continuos con el esfuerzo de servicio programado. Para los 153, el caso más probable conserva las HH base. El caso optimista descuenta un bloque de reutilización de 8 o 16 HH según la clase. El pesimista añade un bloque de 8, 24 o 32 HH según la clase, y 8 HH por cada condición identificada de coordinación externa, repetición de datos o interfaces y repetición en contingencia. Los bloques son supuestos de planificación aplicados al entregable y a su criterio de aceptación del T-14. Para los paquetes continuos se conserva la cobertura por calendario, turno u ocurrencia.
+
+La suma de los valores esperados del escenario es 201.341,67 HH. Al agregar 128 HH de restauraciones, 9.336 HH de soporte puente y 3.072 HH de reserva protegida, resulta un escenario de 213.877,67 HH. Esta cifra permite comparar el efecto de los supuestos; las tablas de programación y costeo conservan la línea base de 220.023 HH.
+
+\paragraph{Sensibilidad de los rendimientos y reprocesos.}
+Al reducir o aumentar en 20 \% las HH variables por requisito de los módulos, manteniendo los bloques comunes, las repruebas y las coberturas, el esperado total cambia de 213.877,67 HH a 212.860,07 o 214.895,27 HH, respectivamente. Al duplicar únicamente los bloques pesimistas de reproceso, el esperado resulta 214.692,33 HH. Las variaciones se ensayan por separado; son contrastes de planificación y no intervalos de confianza.
+
+Para validar una tasa se registran la actividad terminada, la cantidad ejecutada, las HH efectivas y las HH de reproceso, separando esperas externas. La revisión quincenal compara flujos e interfaces de complejidad comparable y contrasta el tiempo observado por unidad con el supuesto usado en O, M y P. Dirección actualiza las estimaciones afectadas y verifica su efecto en precedencias, capacidad y costeo antes de aprobar un cambio de línea base. La comparación conserva las 220.023 HH programadas.
+
 
 \subsection{Curvas mensuales: horas por etapa y personas por rol}
 
@@ -201,15 +248,62 @@ El piloto comienza el 9 de noviembre de 2027, el día siguiente al acta del H4, 
 
 \subsection{Reservas y análisis PERT de duración}
 
-Se mantiene la hipótesis explícita $O=0,75d$, $M=d$ y $P=1,25d$ para la duración agregada con el equipo previsto: $T_E=(O+4M+P)/6=d$ y $\sigma=(P-O)/6=d/12$ (Malcolm et al., 1959). La varianza de un camino suma las varianzas de sus duraciones, bajo independencia; los diez días de revisión y los inicios contractuales son restricciones fijas y no reciben varianza de esfuerzo. La aproximación normal $\Phi((L-T_E)/\sigma)$ es una probabilidad condicional del camino controlante, no del proyecto completo. No se calcula una probabilidad para H6/H11 cuando el control es sólo su fecha fija de inicio.
+La comparación de holguras usa las duraciones del escenario base. La banda uniforme de 25 \% sobre la duración se utiliza solo como sensibilidad y no como estimación de probabilidad de cumplimiento. Para el PERT de compromiso, cada paquete requiere escenarios optimista, más probable y pesimista respaldados por sus riesgos, rendimientos y condiciones de ejecución; los plazos de revisión y los inicios contractuales se mantienen como restricciones de calendario.
 
-La Tabla \ref{tab_T15_7} presenta cPM y PERT de los hitos con la línea base de 220.023 HH.
+La Tabla \ref{tab_T15_7} presenta las fechas y holguras del escenario base de 220.023 HH, antes de recalcular la red con las precedencias incorporadas.
 
 \parte{tablas/tab_T15_7}
 
-H12 tiene entrega calculada el 11 de octubre de 2028; sus diez días de revisión van del 12 al 25 de octubre, descontando los fines de semana. Frente al 31 de octubre quedan tres días hábiles: 26, 30 y 31 de octubre, porque el 27 es feriado. La holgura proviene de constituir la garantía 4.3.4 en septiembre, en paralelo con la marcha blanca, y no de acortar la revisión del CLIENTE ni las cuatro semanas finales de evidencia.
+La Tabla \ref{tab_T15_7} conserva el cálculo de la carta base para identificar los cambios de programación. Sus tres días de holgura para H12 no incluyen una segunda revisión formal del cierre. La Tabla \ref{tab:T15-recalculo-duraciones} compara el escenario de dos revisiones y la sección 5.5 desarrolla la propuesta de expediente integrado.
 
 La cuantificación de riesgos del SD8 (valores esperados de esfuerzo, Anexo 8.B) no se recalcula aquí ni se traduce en fechas para esta red. Incorporar riesgos correlacionados, subsanaciones, tiempos de suministro y disponibilidad real requiere su conciliación específica. El PERT no mide la probabilidad de cumplir la aceptación copulativa de una marcha blanca.
+
+\paragraph{Recálculo por duraciones y límite de capacidad.}
+La pasada CPM parte de los meses de liberación y las precedencias entre entregables, sin fijar el comienzo diario de cada paquete a la carta base. La duración mínima de trabajo es el techo de las HH del paquete divididas por la capacidad de su equipo (máximo de personas por 6,4 HH efectivas diarias); los módulos distinguen preparación, construcción e integración. La red tiene 405 eventos y 622 relaciones, e incorpora la revisión formal del cierre antes de producción y otra revisión para la aceptación posterior.
+
+El segundo escenario retrasa el inicio cuando la reserva de equipos supera 40 personas DES o 13 CAL en paquetes con entregable. Los picos reservados en esta prueba son 36 DES y 10 CAL. Se trata de una comprobación parcial de capacidad; no incluye todas las coberturas continuas, la reserva protegida, el detalle de las demás familias ni la asignación de personas. En particular, el pico del escenario no sustituye el mínimo de 13 CAL de la ventana publicada del 25 de octubre al 11 de noviembre, cuyo reparto y fechas son diferentes. Ambos escenarios usan las HH de la línea base, no los escenarios paramétricos de esfuerzo.
+
+\begin{tablalafrox}{Resultados del recálculo por duraciones y capacidad. Holguras en días hábiles.}{tab:T15-recalculo-duraciones}
+{C{1cm} C{2.6cm} C{1.6cm} C{2.6cm} C{1.6cm}}
+{\cab{Hito} & \cab{Acta o inicio CPM} & \cab{Holgura} & \cab{Acta o inicio con límite} & \cab{Holgura}}
+  H1 & 23-03-2027 & 5 & 23-03-2027 & 5 \\
+  H2 & 10-05-2027 & 14 & 10-05-2027 & 14 \\
+  H3 & 05-07-2027 & 18 & 05-07-2027 & 18 \\
+  H4 & 04-11-2027 & 18 & 04-11-2027 & 18 \\
+  H5 & 03-01-2028 & 20 & 03-01-2028 & 20 \\
+  H8 & 09-03-2028 & 16 & 09-03-2028 & 16 \\
+  H7 & 08-06-2028 & -6 & 08-06-2028 & -6 \\
+  H9 & 01-06-2028 & 19 & 01-06-2028 & 19 \\
+  H10 & 11-07-2028 & 14 & 12-07-2028 & 13 \\
+  H12 & 13-11-2028 & -8 & 13-11-2028 & -8 \\
+  H6 & 01-02-2028 & 0 & 01-02-2028 & 0 \\
+  H11 & 01-08-2028 & 0 & 01-08-2028 & 0 \\
+\end{tablalafrox}
+
+La cadena de certificación de la Etapa 1 enlaza 3.8.1, 3.8.2 y 3.8.7. Para H7 y H12, el camino determinante pasa por la entrega del cierre, su revisión, la habilitación de Producción y la aceptación posterior. Con revisión ordinaria y sin observaciones, el modelo habilita una primera ventana de producción el 17 de mayo y el 18 de octubre de 2028, respectivamente. Con las duraciones modeladas para las actividades posteriores, las actas se proyectan al 8 de junio y al 13 de noviembre: seis y ocho días hábiles fuera del límite. Esas fechas son resultados del escenario, no sustituyen los hitos contractuales. La línea base requiere una secuencia que cumpla los plazos o un procedimiento de revisión confirmado por escrito por la Contraparte Técnica, sin recortar la evidencia final ni habilitar Producción sin acta.
+
+\paragraph{Contraste por familia y prioridad de hito.}
+Una tercera pasada reserva los equipos de los paquetes con entregable por orden de fecha límite de sus hitos sucesores. El límite de contraste es 40 DES, 13 CAL, 15 compartidos entre ARQ y DAT, 12 SRE, 7 SEG, 27 IMP y 5 JP. ARQ/DAT, SRE y SEG se contrastan con la dotación de planta declarada en el SD1; los límites de DES, CAL, IMP y JP se usan para probar el escenario de programación. Los picos reservados son 40, 10, 14, 12, 6, 6 y 4 personas, respectivamente. H3 se proyecta al 14 de julio de 2027, con 11 días hábiles de holgura; H4 al 11 de noviembre, con 13. H7 y H12 conservan las holguras negativas de seis y ocho días hábiles. Esta pasada incluye los 168 paquetes con entregable. Los 59 paquetes continuos se asignan por turno u ocurrencia y deben conciliarse con estas reservas de capacidad; el pico IMP de los paquetes con entregable no sustituye los 27 equivalentes mensuales ni cubre por sí solo la marcha blanca.
+
+\paragraph{Capacidad mensual conjunta de entregables y servicios continuos.}
+El contraste suma las HH de los 168 paquetes con entregable, los 59 continuos y los componentes adicionales. Las HH de NOC, Mesa N1 y SOC se calculan por horas-posición del calendario; el soporte puente se separa en 3.672 HH de NOC y 5.664 HH de Mesa N1. El acompañamiento sigue la distribución de la carta base. Para los demás paquetes continuos sin distribución mensual específica se usa el promedio de la ventana. Las 220.023 HH se concilian sin duplicar las coberturas. La comparación usa 128 HH efectivas mensuales por plaza y no sustituye la comprobación de turnos.
+
+\begin{tablalafrox}{Picos mensuales del escenario de capacidad conjunta.}{tab:T15-capacidad-conjunta}
+{L{2.1cm} C{1.2cm} R{2.2cm} R{2cm} Y}
+{\cab{Familia} & \cab{Mes} & \cab{HH} & \cab{Equivalentes} & \cab{Umbral de contraste}}
+DES & 6 & 4.472,54 & 34,94 & 40 \\
+CAL & 10 & 1.086,96 & 8,49 & 13 \\
+ARQ y DAT & 5 & 1.738,53 & 13,58 & 15 compartidas \\
+SRE & 6 & 1.545,77 & 12,08 & 12 \\
+SEG & 5 & 772,46 & 6,03 & 7 \\
+IMP & 20 & 3.158,91 & 24,68 & 27 \\
+JP & 1 & 577,14 & 4,51 & 5 \\
+\end{tablalafrox}
+
+SRE supera su umbral de 1.536 HH en 9,77 HH en el mes 6. Para cubrir esa carga, Infraestructura programa un refuerzo de al menos dos jornadas efectivas de 6,4 HH y lo asigna a los días de mayor concurrencia; ese refuerzo distribuye las HH ya estimadas entre más personas. Calidad conserva el refuerzo de tres plazas para el intervalo crítico: la media mensual no reemplaza el umbral diario de certificación. El turno de Mesa N1 se dimensiona por separado, con un máximo calculado de 1.784 HH mensuales; NOC y SOC alcanzan 744 HH cada uno.
+
+\paragraph{Límites de entrega de H7 y H12 con revisión ordinaria.}
+Para conservar los hitos, el expediente de aceptación tendría que entregarse como máximo el 17 de mayo para H7 y el 16 de octubre para H12, dejando diez días hábiles de revisión en ambos casos. En H7, la primera ventana de producción del escenario coincide con ese último día de entrega: solo queda una jornada y la actividad 4.2.3 requiere siete en el modelo. En H12, la última fecha de entrega es anterior a la primera ventana de producción del 18 de octubre. El procedimiento de revisión o una secuencia alternativa de aceptación debe acordarse por escrito con la Contraparte Técnica antes de comprometer el calendario. Hasta entonces, se mantienen las fechas contractuales como límites, la evidencia de las últimas cuatro semanas y la exigencia de acta de cierre antes de Producción.
 
 \subsection{Gobierno}
 
@@ -223,12 +317,24 @@ La Tabla \ref{tab_T15_7} distingue entrega, acta calculada y límite contractual
 
 H1, H7 y H12 disponen de cinco, dos y tres días hábiles de holgura contractual, menos que los diez días de subsanación. La preparación y revisión preliminar del expediente reducen errores, pero no sustituyen los diez días de revisión formal, la subsanación ni una segunda revisión. No se presupone aprobada una revisión anticipada de evidencia que aún no se ha producido. H8 dispone de catorce días porque el diseño de la Etapa 2 se entrega en febrero de 2028.
 
-\paragraph{Dos actas por etapa y condición previa a producción.}
-El acta de cierre pertenece a 4.2.1/4.3.1 y habilita producción; el acta de aceptación H7/H12 corresponde a 4.2.3/4.3.3 y es posterior. La Tabla \ref{tab:T15-actas} separa evidencia, entrega, revisión, firma y producción bajo el calendario supuesto. La revisión durante la marcha blanca puede preparar el expediente, pero no demuestra aceptación de sus últimos 28 días antes de completarlos.
+\paragraph{Secuencia de aceptación y condición previa a producción.}
+Los paquetes 4.2.1 y 4.3.1 producen la evidencia del cierre; 4.2.3 y 4.3.3 consolidan el expediente del hito y registran el resultado del paso a producción. El escenario de dos revisiones sucesivas se conserva como contraste en la Tabla \ref{tab:T15-actas}. La propuesta de expediente integrado se presenta después de esa tabla.
 
 \parte{tablas/tab_T15_actas}
 
-Si se exige el plazo completo del art. 18.3 al cierre, no cabe antes de las fechas objetivo del 5 de mayo y del 5 de octubre. Tampoco cabe una subsanación de diez días más una segunda revisión. La Contraparte Técnica debe precisar por escrito el procedimiento aplicable a estas actas y su encaje con el art. 17.3 antes de aprobar la línea base. Si no permite conservar las fechas, se presenta la reprogramación para aprobación; la carta publicada permanece como objetivo condicionado, sin autorizar producción sin acta. El protocolo T-17 del SD9, secciones 1, 2 y 4.1, debe recibir la misma decisión.
+Para H7 y H12 se propone un expediente integrado por etapa, conforme a la agrupación de entregables del E-25. Dirección prepara el expediente de 4.2.3 o 4.3.3 durante la marcha blanca, conserva las HH de cada paquete y adjunta la evidencia final de 4.2.1 o 4.3.1 solo después de completar las últimas cuatro semanas. En E2 se adjunta también la garantía de 4.3.4 antes de presentar el expediente. Se respetan diez días hábiles completos de revisión formal desde la entrega. La Contraparte firma el acta exigida por el artículo 17.3 antes de autorizar el corte; se incorpora al expediente el registro de producción efectiva. El hito solo se registra como cumplido una vez que consten la firma, el paso efectivo y, para H12, la aceptación final. El procedimiento integrado y la forma de incorporar ese registro deben ser confirmados por escrito por la Contraparte; si requiere un entregable posterior separado, conserva su plazo de revisión y se aplica el contraste de dos revisiones.
+
+\begin{tablalafrox}{Propuesta de revisión integrada de H7 y H12. Calendario nominal sin observaciones.}{tab:T15-actas-integradas}
+{Y L{2.65cm} L{2.65cm}}
+{\cab{Evento} & \cab{H7: Etapa 1} & \cab{H12: Etapa 2}}
+Cierre de las cuatro semanas de evidencia & 30-04-2028 & 30-09-2028 \\
+Entrega del expediente completo & 02-05-2028 & 02-10-2028 \\
+Diez días hábiles de revisión & 03--16 de mayo & 03--17 de octubre \\
+Primera ventana de producción tras revisión y firma & 17-05-2028 & 18-10-2028 \\
+Mes contractual & 16 & 21 \\
+\end{tablalafrox}
+
+Cada paquete de aceptación conserva 80 HH: seis jornadas hábiles de preparación con dos personas a 6,4 HH/día (76,8 HH) y 3,2 HH para consolidar y presentar el expediente el día de entrega. La preparación se programa del 21 al 28 de abril y del 22 al 29 de septiembre, respectivamente, y comprende revisión de registros y armado documental, sin intervenciones en Producción durante el congelamiento. El Jefe de Proyecto reserva ese equipo y distribuye las 80 HH entre preparación y cierre del expediente, sin sumar esfuerzo a la línea base. Si hay observaciones, se mantiene el derecho de revisión y subsanación del artículo 18.3; las fechas de producción no se confirman hasta verificar las seis condiciones de cierre.
 
 \subsection{Medición de los niveles de atención}
 
@@ -248,9 +354,11 @@ La obra civil de separación de 6.1.1 corresponde al CLIENTE (RT-06.06); LafroX 
 
 La contratación de analistas del SOC propio debe completarse antes del mes 13 bajo SEG. La cobertura 24\ensuremath{\times}7 y los relevos se incluyen en 8.1.5; el total de siete especialistas declarados no demuestra por sí solo disponibilidad simultánea para SOC y las demás tareas de seguridad. Se confirma su asignación por turno y se contrasta el equipo compartido de ARQ/DAT con su capacidad conjunta de 15.
 
+Para implantación, el responsable de frente presenta por semana y turno la asignación de personal propio, de otras divisiones y de refuerzos contratados. El dimensionamiento de acompañamiento del T-18 cubre sus puestos de terreno y coordinación; se concilia por separado con capacitación, despliegue y marcha blanca para evitar duplicar personas. El refuerzo contratado se documenta con alcance, período y dotación antes de autorizar la ola.
+
 La suma de máximos de paquetes cuyas ventanas coinciden es una cota superior, no demanda simultánea demostrada. A su vez, repartir uniformemente HH en la ventana sólo da una demanda media hipotética. Con esas reglas, el escenario uniforme alcanza 40,79 DES y 12,96 CAL en determinados días: señala necesidad de nivelación, pero no prueba un máximo real de 40 ni disponibilidad de 16 evaluadores. La aprobación exige un calendario de actividades con personas distintas, competencias, dedicaciones y cobertura de los servicios continuos.
 
-Existe además una condición necesaria más fuerte: entre el 25-10 y el 11-11-2027, los paquetes CAL 3.8.2 a 3.8.5 deben ejecutar al menos 1.049,60 HH dentro del intervalo, aun aprovechando al máximo sus días exteriores. Trece días hábiles con diez personas a 6,4 HH/día ofrecen 832 HH: faltan 217,60 HH. La capacidad requerida en algún momento es al menos trece personas CAL, sin incluir servicios continuos. Por tanto, las diez declaradas no bastan bajo estas ventanas y máximos; se necesita refuerzo asignado o una nivelación que revise esas restricciones antes de aprobar la línea base. Este mínimo no demuestra que trece sean suficientes ni acredita una contratación; no se agrega esfuerzo ni se modifican fechas por inferencia.
+Entre el 25-10 y el 11-11-2027, los paquetes CAL 3.8.2 a 3.8.5 requieren al menos 1.049,60 HH dentro del intervalo. Con diez personas de planta durante trece días a 6,4 HH efectivas por día se cubren 832 HH. El plan reserva un mínimo de tres refuerzos CAL para ese tramo: aportan 249,60 HH y elevan la capacidad teórica a 1.081,60 HH. Antes de iniciar las pruebas, Calidad debe acreditar los refuerzos y comprobar la disponibilidad diaria para pruebas y servicios simultáneos. Si no puede cubrirlos, se nivela el calendario y se vuelven a comprobar H5 y las ventanas de aceptación.
 
 Los roles mínimos del numeral 19.2 de las Bases Técnicas Transversales (p. 34) se imputan a las familias así. El Jefe de Proyecto (100 \% en implementación) se imputa a JP en los meses 1–21. El Líder de Desarrollo (100 \% en implementación) se imputa a ARQ en los meses 1–4, donde participa en el diseño 2.1 y en los prototipos 2.6.2, y a DES desde el mes 4 (3.11.3/\allowbreak{}3.11.4 y los módulos); por eso la curva muestra DES cero en los meses 1–3 sin que el rol quede sin horas. El Líder Funcional (100 \% en implementación) se imputa a IMP en los meses 1–4 (1.2.2 y 2.6) y a CAL e IMP desde el mes 5 (pruebas de aceptación y olas). El Líder de Integración (permanente en implementación) se imputa a ARQ (1.2.3, 3.3 y 3.6). Ninguna de estas imputaciones agrega horas: forman parte de las horas de los paquetes donde trabajan. El SD1, sección 1.5 (Subdocumento 1), nomina a las personas que ocupan cada rol.
 
@@ -283,6 +391,42 @@ La figura muestra que sólo los cuatro primeros meses, hasta el H2, se presentan
 
 \parte{tablas/tab_T15_9}
 
+\paragraph{Secuencia quincenal de construcción: recepción (3.4.1).}
+El paquete de recepción se desglosa en la siguiente secuencia de trabajo dentro de su ventana de junio a agosto de 2027. Al comienzo de cada iteración se prioriza el trabajo en Kanban; al cierre, Desarrollo y Calidad ejecutan las pruebas del incremento, registran defectos y demuestran el resultado en QA. Estas demostraciones no autorizan un paso a Producción.
+
+\begin{itemize}
+\item 10--23 de junio: contrato de recepción e interfaces de producto, lote y unidad logística; revisión del contrato con Inventario.
+\item 24 de junio--7 de julio: captura de recepción y validación de producto, lote y vencimiento; demostración del flujo principal y de un rechazo.
+\item 8--21 de julio: registro de diferencias, retenciones y reintentos; demostración de que un reenvío no duplica la recepción.
+\item 22 de julio--4 de agosto: integración con Inventario y trazabilidad, con conciliación y regresión en QA.
+\item 5--10 de agosto: cierre de defectos del incremento y entrega del paquete en QA.
+\end{itemize}
+
+Preparación puede avanzar con datos de prueba una vez aprobado el contrato de recepción e inventario; su prueba integrada espera los incrementos disponibles en QA, según D-16. Las pruebas ampliadas de 3.8 y 3.9 certifican el conjunto tras las pruebas de cada incremento. Las fechas anteriores detallan el paquete 3.4.1; la programación de los demás módulos debe aplicar los hitos de interfaz y el límite de capacidad de la sección 5.7.
+
+\paragraph{Calendario de iteraciones de los módulos en el escenario de capacidad.}
+Se muestran las ventanas calculadas de construcción, descompuestas en intervalos de hasta 14 días calendario. En el primer intervalo se revisan contratos y criterios de aceptación; cada intervalo intermedio termina con demostración del incremento y pruebas de regresión aplicables; el último entrega la versión integrada en QA. Cuando un contrato o una entrega precedente aún no está disponible, se priorizan preparación y pruebas con datos controlados, y se mantiene bloqueada la integración real. Estas fechas se calculan sobre las HH de la línea base y no sustituyen las fechas de la carta hasta conciliar las demás familias y el calendario de aceptación.
+
+\begin{tablalafrox}{Iteraciones de construcción del escenario de capacidad (día/mes).}{tab:T15-iteraciones-escenario}
+{L{1.5cm} C{1.1cm} Y}
+{\cab{Paquete} & \cab{Año} & \cab{Ventanas de iteración}}
+  3.4.1 & 2027 & 01/06--14/06, 15/06--23/06 \\
+  3.4.2 & 2027 & 01/06--14/06, 15/06--23/06 \\
+  3.4.3 & 2027 & 01/06--14/06, 15/06--25/06 \\
+  3.4.4 & 2027 & 24/06--07/07, 08/07--21/07, 22/07--27/07 \\
+  3.4.5 & 2027 & 24/06--07/07, 08/07--21/07, 22/07--27/07 \\
+  3.4.6 & 2027 & 19/08--01/09, 02/09--09/09 \\
+  3.4.7 & 2027 & 28/07--10/08, 11/08--24/08, 25/08--07/09, 08/09--13/09 \\
+  3.4.8 & 2027 & 28/07--10/08, 11/08--24/08, 25/08--07/09, 08/09--13/09 \\
+  3.4.9 & 2027 & 29/07--11/08, 12/08--19/08 \\
+  3.4.10 & 2027 & 19/08--01/09, 02/09--15/09 \\
+  3.4.11 & 2027 & 01/09--14/09, 15/09--23/09 \\
+  3.5.1 & 2028 & 10/03--23/03, 24/03--06/04, 07/04--20/04, 21/04--25/04 \\
+  3.5.2 & 2028 & 10/03--23/03, 24/03--06/04, 07/04--20/04, 21/04--25/04 \\
+  3.5.3 & 2028 & 10/03--23/03, 24/03--06/04, 07/04--20/04, 21/04--25/04 \\
+  3.5.4 & 2028 & 10/03--23/03, 24/03--06/04, 07/04--20/04, 21/04--25/04 \\
+\end{tablalafrox}
+
 \subsection{Paquetes de esfuerzo continuo}
 
 Los paquetes recurrentes (R), de acompañamiento (A) y de cobertura (C) son de nivel de esfuerzo: no producen un entregable único, sino un servicio o una reunión que se repite. No se dividen en entregables más pequeños, sino por ocurrencia o por quincena:
@@ -295,9 +439,13 @@ Los paquetes recurrentes (R), de acompañamiento (A) y de cobertura (C) son de n
 \end{itemize}
 Estos 59 paquetes no se descomponen en una lista de actividades distintas, porque su trabajo se repite: se programan por quincena u ocurrencia, en relevos de hasta 64 HH cada uno. La Tabla \ref{tab_T15_10} presenta la regla de cada paquete, el número de relevos u ocurrencias que programa durante el contrato y el esfuerzo máximo de cada uno.
 
+La conciliación del inventario de paquetes separa 160.047 HH de los 59 paquetes continuos y 47.440 HH de los 168 con entregable. No hay códigos duplicados entre ambos grupos; juntos reproducen las 207.487 HH de los 227 paquetes. A estas se añaden 128 HH de restauraciones, 9.336 HH de soporte puente y 3.072 HH de reserva protegida, para un total de 220.023 HH. Este cruce valida el esfuerzo, mientras que la cobertura diaria se verifica con el registro de personas y turnos de la sección 6.3.
+
 \parte{tablas/tab_T15_10}
 
 Así, los 227 paquetes quedan programados de dos formas: los 168 paquetes con entregable, con fechas en la Tabla \ref{tab_T15_paquetes} y actividades de 80 HH o menos detalladas hasta el H2 y luego por planificación gradual, y 59 paquetes de esfuerzo continuo que se programan por quincena u ocurrencia, en relevos de hasta 64 HH cada uno. En ambos casos nada supera una quincena. Ningún paquete se informa al 50 \% durante semanas: el avance de cada quincena se mide por las actividades terminadas y por los relevos u ocurrencias cumplidos, que alimentan el valor ganado del SD6, sección 6.1.5.
+
+\parte{tablas/tab_T15_asignacion_perfiles}
 
 \section*{Referencias}
 \phantomsection

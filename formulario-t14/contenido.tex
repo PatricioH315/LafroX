@@ -63,6 +63,24 @@ En este formulario, BA, BTT y Caso designan las Bases Administrativas, las Bases
 
 \section{Estructura de descomposición del trabajo}
 
+\paragraph{Estructura de alcance por productos.}
+La EDT de alcance se lee por producto verificable. Los códigos de cuenta y paquete se mantienen como identificadores de control para el diccionario, T-12, T-15 y T-18. La etapa es un atributo de habilitación del paquete: el mismo producto reúne sus incrementos de ambas etapas y la etapa no es una rama de esta vista.
+
+\begin{itemize}
+\item Gobierno y diseño aprobados: cuentas 1 y 2.
+\item Plataforma base y servicios comunes: cuentas 3.1 a 3.3.
+\item Software operativo y analítica: cuentas 3.4 y 3.5.
+\item Integraciones y datos migrados: cuentas 3.6 y 3.7.
+\item Evidencia de certificación y documentación técnica: cuentas 3.8, 3.9 y 3.11.
+\item Innovaciones verificadas: cuenta 3.10.
+\item Equipamiento, servicios y sitios habilitados: cuentas 5 y 6.
+\item Implantación y usuarios habilitados: cuentas 4 y 7.
+\item Servicios de operación y entregables de cierre: cuentas 8 y 9.
+\end{itemize}
+Cada cuenta del índice de control pertenece a una sola agrupación; las agrupaciones se definen por el resultado que se acepta y no por el mes en que se ejecuta. El diccionario conserva sus 227 paquetes. Los códigos de control en las láminas permiten localizar sus paquetes en el índice siguiente.
+
+\paragraph{Índice por códigos de control.}
+
 La EDT descompone el 100 \% del alcance de la Etapa 1, la Etapa 2 y la Operación (BA, art. 15, p. 11) en nueve fases, 49 cuentas de control y 227 paquetes de trabajo. Las fases 1 a 4 son las del proceso de desarrollo declarado en el Capítulo 6 (Inicio, Elaboración, Construcción y Transición) y se recorren una vez por etapa. Las fases 5 a 9 agrupan el trabajo que no es desarrollo de software. Cada paquete es la hoja de su rama, tiene un único responsable y produce un entregable verificable. En la cuenta 3.10, cada innovación agrupa sus paquetes en un cuarto nivel. La Tabla \ref{tab:T14-1} resume el tamaño de cada fase.
 
 \parte{tablas/tab_T14_1}
