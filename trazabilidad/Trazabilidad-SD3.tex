@@ -1,0 +1,85 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=2.25cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage{array,longtable}
+\usepackage{fontspec}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\renewcommand{\arraystretch}{1.2}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\begin{document}
+\begin{center}
+  {\Large\bfseries Trazabilidad de correcciones del Subdocumento 3}\par
+  LafroX · Grupo 2 · Informe 2
+\end{center}
+
+La matriz cruza las observaciones de la primera revisión del Informe 2 con los cambios del cuerpo, los anexos y el Formulario T-12. Las remisiones a otros subdocumentos identifican dependencias de cierre. Se distinguen las correcciones aplicadas de las tareas pendientes y de los puntos que la revisión ya daba por corregidos.
+
+\begin{longtable}{@{}P{0.33\textwidth}P{\dimexpr0.67\textwidth-2\tabcolsep\relax}@{}}
+\hline
+\textbf{Punto de la revisión} & \textbf{Cómo se corrigió o qué queda pendiente} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Punto de la revisión} & \textbf{Cómo se corrigió o qué queda pendiente} \\
+\hline
+\endhead
+\hline
+\endfoot
+Origen ausente, incompleto o cortado en la Tabla 3.A.1 (folios 11 y 13). &
+Se reconstruyeron las referencias del catálogo funcional y se precisaron referencias en requisitos propios y no funcionales. Origen indica el apartado del que se extrajo el requisito. Se retiraron las etiquetas «Diseño LafroX» e «Implementación LafroX» como origen. La corrección está en el Anexo 3.A y los catálogos relacionados. \\
+Prioridades poco discriminantes (folio 9). &
+Se aplicó el techo de prioridad por familia del SD2 y se revisaron las asignaciones de los requisitos. El cuerpo y el anexo declaran 58 críticos, 157 altos y 55 medios sobre 270. El texto explica la diferencia entre prioridad y compromiso de entrega. \\
+Cadena de trazabilidad incompleta (folios 10 y 13). &
+Se enlazó el T-12 con la matriz única del T-13, que reúne origen, requisito, componente, paquete EDT, prueba y criterio. El T-17 conserva los criterios de aceptación contractual. Se actualizó la referencia del formulario. \\
+Umbral OTIF contradictorio en el mes 32 (folios 12 y 13). &
+Se alinearon el cuerpo, la tabla y el cierre del Anexo 3.J y la fila R18-04 del T-17. El umbral es estrictamente superior al 95\,\% antes de redondear. Se mantienen 90\,\% en el mes 15 y 93\,\% en el mes 19. La evidencia registra pedidos conformes y comprometidos. \\
+Promesa de entrega atribuida al arbitraje del SD2 (folios 6--9). &
+El SD2 §2.2.3 fundamenta la necesidad de una promesa viable. El SD3 define en §3.2.2, S-21, D-03 y RNG-15 el corte a las 14:00 y los plazos de 24 horas para urbanos antes del corte y 48 horas para el resto. Se alineó también la referencia de S-27. Se conserva la ventana de 30 minutos del canal moderno como obligación distinta. \\
+Figura 3.4 ilegible y emplazamiento ausente (folios 11 y 13). &
+Se incorporó en §3.4.2 una síntesis de lo que se ejecuta en centros de distribución, plataformas, camiones y nube, sustentada en el Anexo 4-N del SD4. Queda pendiente la edición manual de la vista general como mapa de cuatro bloques y del esquema gráfico de emplazamiento. Verificar rótulos de al menos 9 puntos a tamaño final y las erratas señaladas en las Figuras 3.4, 3.5 y 3.7. \\
+Nombres de módulos distintos en SD3 y SD4 (folio 13). &
+Se cotejaron los doce nombres del cuerpo con el Anexo 4-D de la rama corregida del SD4. Coinciden. La edición manual de figuras debe usar los nombres de esa matriz, en particular M10 Analítica y M11 Canal moderno. \\
+Incorporación de conductores externos insuficientemente explicada (folios 12 y 13). &
+En §3.4.4 se documentaron la declaración del transportista, el registro por etapa, el alta con código de un solo uso, la aprobación por Despacho y los permisos de ruta. Se resumió la reasignación a un suplente habilitado y la alternativa de reasignar o reprogramar cuando no lo hay. \\
+Dotación de la mesa de servicio y del NOC sin dimensionar (folios 12 y 13). &
+En §3.4.5 se conservaron los horarios de cobertura y se remitieron al SD10 los turnos, guardias y refuerzos. Se indicó que los tickets de marcha blanca servirán para ajustar la dotación inicial. El cálculo de personal queda pendiente en el SD10. \\
+Revisión humana descrita solo en términos de forma y declaración de diagramas (folio 13). &
+La Tabla 3.6 identifica a Patricio Henríquez para el cuerpo y el T-12, y a Guillermo Castillo para los anexos. Cada fila especifica el contenido y las fuentes del cotejo pendiente de confirmación. §3.4 mantiene «Ninguno» en diagramas, cuya edición quedó asignada al equipo. \\
+Descripción repetitiva del componente en el T-12 (folio 11). &
+El formulario se revisó semánticamente y se precisaron componentes y referencias en filas del T-12. La eliminación sistemática de descripciones repetidas de la pila no fue parte del cierre acordado. \\
+Interoperabilidad, escalabilidad, desempeño y seguridad resumidos en cuatro viñetas (folio 10). &
+El cuerpo conserva el análisis y las referencias al SD4. La síntesis de emplazamiento complementa esa explicación. No se registra un cierre independiente de la observación. \\
+Fundamentos de decisiones de alcance abreviados en 3.F (folio 11). &
+Se mantuvo el registro resumido y se precisó la fundamentación de D-03 junto con S-21 y RNG-15. La ampliación general de los fundamentos no se incluyó en el cierre acordado. \\
+Innovaciones ausentes en el SD3 (síntesis del informe). &
+La observación se conserva como pendiente fuera de los cinco ajustes acordados. Su cierre requiere cotejar la versión vigente del documento de innovaciones y sus referencias cruzadas. \\
+\end{longtable}
+
+\section*{Cambios asociados registrados en la rama}
+
+\begin{longtable}{@{}P{0.33\textwidth}P{\dimexpr0.67\textwidth-2\tabcolsep\relax}@{}}
+\hline
+\textbf{Punto o materia} & \textbf{Cambio y ubicación} \\
+\hline
+\endhead
+\hline
+\endfoot
+Cadena de frío y trazabilidad sanitaria. &
+Se distinguió el lote sanitario del SSCC logístico. Se incorporaron requisitos y reglas de frío en ruta, retención de las unidades y cantidades expuestas, disposición a cargo de Calidad y retiro por lote. Se alinearon el cuerpo, los anexos y el T-12 con el SD4 y el T-11. Se precisó que el CLIENTE adquiere los sensores y kits conforme al capítulo 11 del caso. \\
+Cobertura, recinto y emplazamiento. &
+Se mantuvo la cobertura contractual de seis instalaciones. Se retiró la consulta V-01. El T-12 remite al estudio de cobertura en cámaras del SD4 y al plano acotado y la ocupación del recinto R02 para RT-06.03. \\
+Telemetría y cálculo de rutas. &
+Se distinguieron 42 camiones propios y 54 externos, con INT-15 para los propios y posición y tiempo del terminal C-02 para los externos. Se precisó el umbral inferior a 20 minutos para la matriz diaria completa en RNF-04.01. \\
+Coherencia técnica y contractual del T-12. &
+Se revisaron las 653 filas y se actualizaron referencias a la arquitectura, la EDT, los hitos, la reversión y el riesgo R-015. Se corrigieron referencias de frío, terminales y notificaciones y la respuesta de RT-11.07 sobre el canal AS2. Se conservaron las brechas declaradas. \\
+Síntesis y maquetación del SD3. &
+Se sintetizó la Tabla 3.2 por etapa, se corrigieron cortes de tablas, títulos, referencias e índices y se integraron los párrafos de frío. Se retiraron restos de plantilla, menciones a las Aclaraciones y la remisión al A-6 en la declaración activa. \\
+Calendario y prueba de identidad vinculados con el SD9. &
+En T-13 se distinguieron marcha blanca y producción conforme al SD3 y al T-18, y se mantuvo el inicio de las restauraciones mensuales en el mes 13. Se incorporó AL-ID-01 a campañas existentes. Su ejecución y acta son evidencia posterior de campaña. \\
+\end{longtable}
+
+\textbf{Fuentes de contraste.} Primera revisión del Informe 2, apartado del Subdocumento 3, folios 9--13 y síntesis general. Cuerpo y anexos vigentes del SD3, formularios T-12, T-13 y T-17, anexos 4-D, 4-M y 4-N del SD4, historial de la rama y registro del Frente D del 27 de octubre de 2026.
+
+\end{document}
