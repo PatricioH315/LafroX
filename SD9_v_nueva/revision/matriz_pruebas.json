@@ -1,6 +1,6 @@
 {
-  "source_ref": "0e0e0f39",
-  "source_commit": "0e0e0f39ad305ad7f9aa1662c36d147075342c17",
+  "source_ref": "6e3b8c51",
+  "source_commit": "6e3b8c5102ec7e9e3a712faf1a7e776178cf4889",
   "test_count": 1352,
   "counts": {
     "t12_rows": 653,
@@ -1538,7 +1538,7 @@
     {
       "id": "RF-09.03",
       "state": "Cumple",
-      "component": "M9 Calidad y trazabilidad; 21 puntos de cámara B-01 (Ebyte ME31-XDXX0400 con PT100) y tres gateways B-02 Moxa UC-8200 con Greengrass V2. Registro inicial cada 5 min, 288 lecturas por punto y día; evaluación y bloqueo locales. LafroX provee, instala y mantiene los sensores y gateways de cámara.",
+      "component": "M9 Calidad y trazabilidad; 21 puntos de cámara B-01 (Ebyte ME31-XDXX0400 con PT100) y tres gateways B-02 Moxa UC-8200 con Greengrass V2. Registro inicial cada 5 min, 288 lecturas por punto y día; evaluación y bloqueo locales. El CLIENTE adquiere los sensores B-01 según la especificación de LafroX (\\textit{Caso: Logística}, 2026, cap. 11, p. 20); LafroX los instala y mantiene, y provee los gateways B-02 como infraestructura on-premise.",
       "edt": "3.4.4, 6.5.3",
       "priority": "Crítica",
       "stage": "E1",
@@ -1557,7 +1557,7 @@
     {
       "id": "RF-09.04",
       "state": "Cumple",
-      "component": "M9; kit en los 28 camiones: gateway B-04 con Greengrass V2, ioLogik B-05, tres PT100 B-06 y simuladores B-07, sensor independiente B-08 y termógrafo de aire B-03 EYE SENSOR EN12830. Sondas cada 5 s y serie por minuto; móvil e Iridium B-09 siempre activos. LafroX provee, instala y mantiene el kit.",
+      "component": "M9; kit en los 28 camiones: gateway B-04 con Greengrass V2, ioLogik B-05, tres PT100 B-06 y simuladores B-07, sensor independiente B-08 y termógrafo de aire B-03 EYE SENSOR EN12830. Sondas cada 5 s y serie por minuto; móvil e Iridium B-09 siempre activos. El CLIENTE adquiere el kit según la especificación de LafroX (\\textit{Caso: Logística}, 2026, cap. 11, p. 20), y LafroX lo instala y mantiene.",
       "edt": "3.4.4, 3.4.5, 6.5.4",
       "priority": "Crítica",
       "stage": "E1",
@@ -3794,8 +3794,8 @@
     {
       "id": "RNF-13.09",
       "state": "Cumple",
-      "component": "Wi-Fi 6E industrial segmentado por VLAN con autenticación empresarial; estudio de cobertura comprometido dentro de las cámaras, que fija la cantidad definitiva sobre la base de 65 + 7 puntos de acceso",
-      "edt": "6.2.3",
+      "component": "Wi-Fi 6E industrial Cisco IW9167I segmentado por VLAN con autenticación EAP-TLS; estudio de cobertura presentado: diseño predictivo por zona de 65 + 7 puntos de acceso, con al menos dos por cámara, verificación en sitio en el mes 2 y medición de aceptación antes de cada marcha blanca",
+      "edt": "2.1.2, 6.2.3",
       "priority": "Alta",
       "stage": "E1 y E2",
       "table": "3.A.5",
@@ -4634,7 +4634,7 @@
     {
       "id": "RNF-23.01",
       "state": "Cumple",
-      "component": "T-11 especifica marca, modelo, cantidad, características, accesorios y consumibles de los dispositivos de terreno y de operación; el costo unitario estimado se declara en la Oferta Económica, porque la Oferta Técnica no puede contener valores unitarios (Bases Administrativas, art. 50.2, p. 29). El CLIENTE compra equipos de uso según 5.1.1; LafroX provee, instala y mantiene B-01/B-02 y B-03 a B-15 según 5.1.4. El kit se valida con V1/V3/V4/V5; cotización local, certificación Subtel aplicable y rango/EN 12830 del registrador son condiciones de compra y recepción. B-06, B-07 y B-10 a B-14 son accesorios y consumibles de B-04 y B-05, especificados por sus características mínimas; la marca y el modelo de referencia corresponden a B-03, B-04, B-05, B-08 y B-09.",
+      "component": "T-11 especifica marca, modelo, cantidad, características, accesorios y consumibles de los dispositivos de terreno y de operación; el costo unitario estimado se declara en la Oferta Económica, porque la Oferta Técnica no puede contener valores unitarios (Bases Administrativas, art. 50.2, p. 29). El CLIENTE compra los equipos de uso según 5.1.1, y B-01 y B-03 a B-14 según 5.1.4 (\\textit{Caso: Logística}, 2026, cap. 11, p. 20); LafroX los instala y mantiene, provee B-02 como infraestructura on-premise y contrata las SIM B-15 en 5.3.4. El kit se valida con V1/V3/V4/V5; cotización local, certificación Subtel aplicable y rango/EN 12830 del registrador son condiciones de compra y recepción. B-06, B-07 y B-10 a B-14 son accesorios y consumibles de B-04 y B-05, especificados por sus características mínimas; la marca y el modelo de referencia corresponden a B-03, B-04, B-05, B-08 y B-09.",
       "edt": "5.1.1, 5.1.4, 2.4.3, 2.4.4",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -4651,7 +4651,7 @@
     {
       "id": "RNF-23.02",
       "state": "Cumple",
-      "component": "T-11 declara grado IP y caída por modelo: TC58e de preventa y de reparto IP65/68 y 1,8 m; MC9400 estándar IP65/68 y 2,4 m; MC9400 Cold Storage Freezer IP65/68 y 2,1 m; ZQ620 Plus IP54, con caída mínima de 1,5 m exigida en la compra; termógrafo EYE SENSOR EN12830 IP67 de montaje fijo; balanza Dibal fija con IP65 mínimo exigido en la compra; impresora ZT411 fija de interior; PAX A920 Pro sin grado IP del fabricante, usado bajo el resguardo de la cabina o del local del cliente. El CLIENTE compra equipos de uso según 5.1.1; LafroX provee, instala y mantiene B-01/B-02 y B-03 a B-15 según 5.1.4. El kit se valida con V1/V3/V4/V5; cotización local, certificación Subtel aplicable y rango/EN 12830 del registrador son condiciones de compra y recepción. El kit es de montaje fijo: B-03, B-08 y B-09 son IP67; B-04 (IP30) y B-05 van en un gabinete IP54 de cabina, y B-06, B-10 y B-11 se compran con IP67 como mínimo.",
+      "component": "T-11 declara grado IP y caída por modelo: TC58e de preventa y de reparto IP65/68 y 1,8 m; MC9400 estándar IP65/68 y 2,4 m; MC9400 Cold Storage Freezer IP65/68 y 2,1 m; ZQ620 Plus IP54, con caída mínima de 1,5 m exigida en la compra; termógrafo EYE SENSOR EN12830 IP67 de montaje fijo; balanza Dibal fija con IP65 mínimo exigido en la compra; impresora ZT411 fija de interior; PAX A920 Pro sin grado IP del fabricante, usado bajo el resguardo de la cabina o del local del cliente. El CLIENTE compra los equipos de uso según 5.1.1, y B-01 y B-03 a B-14 según 5.1.4 (\\textit{Caso: Logística}, 2026, cap. 11, p. 20); LafroX los instala y mantiene, provee B-02 como infraestructura on-premise y contrata las SIM B-15 en 5.3.4. El kit se valida con V1/V3/V4/V5; cotización local, certificación Subtel aplicable y rango/EN 12830 del registrador son condiciones de compra y recepción. El kit es de montaje fijo: B-03, B-08 y B-09 son IP67; B-04 (IP30) y B-05 van en un gabinete IP54 de cabina, y B-06, B-10 y B-11 se compran con IP67 como mínimo.",
       "edt": "5.1.1, 5.1.4, 2.4.3",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -5206,8 +5206,8 @@
     {
       "id": "RT-03.23",
       "state": "Cumple",
-      "component": "Wi-Fi 6E industrial segmentado por VLAN, autenticación por certificado o credencial de empresa y estudio de cobertura",
-      "edt": "6.2.3",
+      "component": "Wi-Fi 6E industrial segmentado por VLAN, autenticación EAP-TLS por certificado contra el RADIUS local de cada sitio y cobertura verificada en sitio en el mes 2 y en la aceptación",
+      "edt": "2.1.2, 6.2.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
@@ -5220,8 +5220,8 @@
     {
       "id": "RT-03.24",
       "state": "Cumple",
-      "component": "QoS de enlaces principal y de respaldo que prioriza recepción, preparación, despacho, sincronización, identidad, guías y alertas térmicas sobre tráfico administrativo; Caso, cap. 15: estudio de cobertura de los CD que incluye el interior de las cámaras de refrigerado y congelado, con mayor densidad de puntos de acceso Wi-Fi 6E industriales en las cámaras y equipos de hasta $-$40 °C en congelado (S-36)",
-      "edt": "6.6.2",
+      "component": "QoS de enlaces principal y de respaldo que prioriza recepción, preparación, despacho, sincronización, identidad, guías y alertas térmicas sobre tráfico administrativo; Caso, cap. 15: estudio de cobertura de los CD presentado, que incluye el interior de las cámaras de refrigerado y congelado, con al menos dos puntos de acceso Wi-Fi 6E industriales por cámara, aptos hasta $-$40 °C, y verificación en sitio en el mes 2 (S-36)",
+      "edt": "6.6.2; 2.1.2, 6.2.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
@@ -5876,7 +5876,7 @@
     {
       "id": "RT-06.03",
       "state": "Cumple",
-      "component": "Plano de distribución interna por zonas y líneas de acceso",
+      "component": "Plano en planta acotado y a escala del recinto de Talca, con cinco recintos de superficie declarada ($\\approx$ 31 m\\textsuperscript{2} útiles) y zonas separadas de generador, baterías, climatización, servidores, comunicaciones, trabajo y respaldo",
       "edt": "2.3.1, 6.1.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5904,7 +5904,7 @@
     {
       "id": "RT-06.05",
       "state": "Cumple",
-      "component": "Racks R01 (servidores, 15U/42U, 36 \\%) y R02 (comunicaciones, 12U/42U, 29 \\%) independientes, con margen de crecimiento",
+      "component": "Racks R01 (servidores, 15U/42U, 36 \\%) y R02 (comunicaciones, 13U/42U, 31 \\%) independientes, con margen de crecimiento",
       "edt": "2.3.2, 6.3.1, 6.3.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5988,7 +5988,7 @@
     {
       "id": "RT-06.11",
       "state": "Cumple",
-      "component": "Carga TI de diseño 8,9 kW, factor de potencia 0,95, PUE estimado $\\approx$ 1,5",
+      "component": "Carga TI de diseño 9,2 kW, factor de potencia 0,95, PUE estimado $\\approx$ 1,5",
       "edt": "2.3.1, 6.1.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
