@@ -120,7 +120,7 @@ Mantención de la regla y del catálogo & Costo operacional / recursos humanos &
 Unidades vencidas evitadas en el local, netas de canjes y descuentos & Beneficio & Desde el mes 16; primera medición en el mes 28 \\
 \end{tablalafrox}
 
-El beneficio se calcula como unidades vencidas evitadas en el local por su costo unitario, menos los canjes y descuentos que la acción comercial otorgue. No se suma al beneficio de la meta de merma del Capítulo 2 ni al de la innovación 3, para no contar dos veces el mismo ahorro.
+En un escenario ilustrativo, si el piloto registra 100 unidades vencidas por cada 10.000 entregadas en las rutas de control, la reducción relativa del 25 \% equivale a 25 unidades vencidas evitadas por cada 10.000 entregadas. Las 100 unidades son un supuesto, no un dato del Caso: la estimación se recalcula con la línea base medida. En la Oferta Económica, el beneficio se valoriza a partir de las unidades evitadas, descontando canjes y descuentos. No se suma al beneficio de la meta de merma del Capítulo 2 ni al de la innovación 3, para no contar dos veces el mismo ahorro.
 
 \subsection{Indicador de verificación}
 
@@ -151,7 +151,7 @@ Si la innovación no rinde, la trazabilidad de lote hasta la entrega y la alerta
 
 \section{Innovación 2}
 
-\textbf{Tipo 2, proceso: Reproducción de incidentes de terreno (INN-02).} Cambia cómo se atiende un fallo de terreno. El incidente real se convierte en un escenario reproducible, la corrección se valida contra ese escenario y solo entonces se cierra el incidente.
+\textbf{Tipo 2, proceso: Reproducción de incidentes de terreno (INN-02).} Cambia cómo Puelche recupera la operación después de un fallo de terreno. El incidente se reproduce y la corrección se valida; el actor de terreno confirma que puede continuar la tarea afectada antes de cerrar el caso.
 
 \subsection{Problema u oportunidad}
 
@@ -182,7 +182,7 @@ Todo lo anterior prueba fallas que el equipo imagina. La innovación agrega el c
   \item El escenario queda como prueba de regresión permanente.
 \end{enumerate}
 
-El incidente no se cierra sin reproducción satisfactoria y sin la confirmación del actor de terreno que lo reportó.
+El actor de terreno informa qué tarea quedó detenida y confirma que puede retomarla sin repetir el ingreso del pedido ni dejarlo sin conciliar. Puelche registra la hora del aviso y la hora de reanudación confirmada; el equipo técnico sigue siendo responsable de reproducir el incidente y verificar la corrección. No se cierra el caso sin ambas verificaciones.
 
 \textbf{Por qué no es práctica estándar.} Las herramientas corrientes de reporte de fallos móviles registran las caídas de la aplicación y los pasos previos. El defecto típico de Puelche no es una caída: la aplicación sigue funcionando y el pedido se pierde o se duplica porque la cola local y el servidor procesaron los eventos en otro orden durante la reconexión. Ese defecto no deja rastro en un reporte de fallos. Solo se reproduce con el orden causal de la cola local, los reintentos y el estado de conectividad, que es lo que contiene el paquete de esta innovación.
 
@@ -218,7 +218,7 @@ La Figura~\ref{fig:sd13-3} muestra cómo un incidente real se transforma en un e
 
 La secuencia separa la captura por el terminal, la protección de la evidencia, la admisión por Calidad y la corrección por Desarrollo. El cierre depende de reproducir satisfactoriamente el caso y de la confirmación del actor de terreno, no solo de redactar una causa. Los recursos efímeros se destruyen al terminar incluso ante una falla; el diagnóstico convencional permanece como contingencia.
 
-El flujo de responsabilidades es el siguiente: Operación/SRE recoge la evidencia, Calidad admite el paquete y Desarrollo corrige. La Tabla~\ref{tab:sd13-8} presenta los paquetes de la EDT.
+Operación/SRE recoge la evidencia, Calidad admite el paquete y Desarrollo corrige. El actor de terreno de Puelche confirma la recuperación de la tarea e informa si el pedido sigue pendiente de conciliación. La Tabla~\ref{tab:sd13-8} presenta los paquetes de la EDT.
 
 \begin{tablalafrox}{Paquetes de la EDT de la innovación 2. Fuente: elaboración a partir de los paquetes 3.10.2.1 a 3.10.2.4 y 8.3.1 y su calendario (Formulario T-14; Subdocumento 7, Anexo 7.D).}{tab:sd13-8}{>{\hsize=0.65\hsize\linewidth=\hsize}Y >{\hsize=0.65\hsize\linewidth=\hsize}Y >{\hsize=0.65\hsize\linewidth=\hsize}Z >{\hsize=2.05\hsize\linewidth=\hsize}Y}
   {\cab{Paquete} & \cab{EDT} & \cab{Meses} & \cab{Entregable}}
@@ -241,10 +241,10 @@ Cobertura de M3, M5 y M6 & Inversión / recursos humanos & 5 a 10 \\
 Validación comparada en la marcha blanca (paquete 3.10.2.4) & Inversión / recursos humanos & 11 a 15 \\
 Cómputo efímero por corrida en QA y Preproducción & Costo operacional & 5 a 56 \\
 Mantención de los escenarios de regresión & Costo operacional / recursos humanos & 21 a 56 \\
-Horas de diagnóstico y regresiones repetidas evitadas & Beneficio & Desde el mes 13; primera medición en el mes 15 \\
+Tiempo de interrupción operativa evitado para Puelche & Beneficio & Desde el mes 13; primera medición en el mes 15 \\
 \end{tablalafrox}
 
-El beneficio son horas de diagnóstico y regresiones repetidas evitadas. «Cero pedidos perdidos o duplicados» es el criterio de aceptación 6 del caso y no se cuenta como beneficio de la innovación.
+El beneficio para Puelche se mide en minutos de interrupción evitados, desde el aviso hasta que la persona afectada confirma que puede retomar la tarea. Si la referencia operativa resulta ser de 120 minutos por incidente y el piloto reduce ese tiempo un 30 \%, el efecto ilustrativo sería de 36 minutos menos por incidente. El 30 \% se usa aquí como supuesto de escenario, no como meta de interrupción ni como resultado obtenido. Las horas de diagnóstico y las regresiones evitadas son beneficios internos del proveedor. No se contabiliza como beneficio innovador el criterio del Caso de cero pedidos perdidos o duplicados.
 
 \subsection{Indicador de verificación}
 
@@ -260,7 +260,7 @@ I-02C & Incidentes reabiertos por la misma causa después del cierre & Sin medic
 I-02D & Paquetes con datos prohibidos & Cero por diseño & 0 & En cada liberación \\
 \end{tablalafrox}
 
-La línea base de I-02A se forma en QA con incidentes de prueba de los meses 5 a 10: fallas de enlace y de reconexión inyectadas con los escenarios del RT-10.07, que se diagnostican del modo convencional y sin abrir el paquete de evidencia, aunque el circuito ya exista desde el mes 5. No se usan incidentes de terreno, porque antes de la marcha blanca no hay operación en terreno. En el mes 15, cada incidente de la marcha blanca diagnosticado con su paquete se compara con un incidente de la línea base del mismo tipo de falla y del mismo módulo, hasta reunir al menos veinte pares. Un par se forma cuando ambos incidentes comparten tipo de falla (pérdida de enlace, reconexión con reordenamiento de la cola o reintento duplicado) y módulo (M3, M5 o M6). Calidad asigna cada par antes de conocer el tiempo de diagnóstico del incidente de la marcha blanca, y un incidente sin par no se cuenta en la comparación. La comparación es conservadora: un incidente real de terreno es más difícil de diagnosticar a ciegas que una falla inyectada en QA, por lo que la base tiende a subestimar el tiempo del diagnóstico convencional. I-02D es una condición de seguridad y no de beneficio: un solo paquete con datos prohibidos detiene la captura.
+La línea base de I-02A se forma en QA con incidentes de prueba de los meses 5 a 10: fallas de enlace y de reconexión inyectadas con los escenarios del RT-10.07, que se diagnostican del modo convencional y sin abrir el paquete de evidencia, aunque el circuito ya exista desde el mes 5. No se usan incidentes de terreno, porque antes de la marcha blanca no hay operación en terreno. En el mes 15, cada incidente de la marcha blanca diagnosticado con su paquete se compara con un incidente de la línea base del mismo tipo de falla y del mismo módulo, hasta reunir al menos veinte pares. Un par se forma cuando ambos incidentes comparten tipo de falla (pérdida de enlace, reconexión con reordenamiento de la cola o reintento duplicado) y módulo (M3, M5 o M6). Calidad asigna cada par antes de conocer el tiempo de diagnóstico del incidente de la marcha blanca, y un incidente sin par no se cuenta en la comparación. La comparación de diagnóstico contrasta fallas inyectadas en QA con incidentes reales y no mide interrupción del cliente. Para estimar esta última se registran por separado incidentes operativos comparables atendidos con el proceso habitual y con el circuito, del mismo tipo y módulo. Si faltan tiempos de aviso o reanudación, o no hay incidentes comparables, no se atribuye un ahorro a Puelche. I-02D es una condición de seguridad y no de beneficio: un solo paquete con datos prohibidos detiene la captura.
 
 \subsection{Riesgo de adopción}
 
@@ -502,7 +502,7 @@ Tramo variable & Ingreso contingente; vale cero en los meses 21 a 23 & 24 a 56, 
 Reducción del costo por entrega de Puelche & Beneficio & Desde el mes 24; meta en el mes 36 \\
 \end{tablalafrox}
 
-El beneficio del CLIENTE es el ahorro operacional verificable, sin sumar lo ya atribuido a las innovaciones 1, 3 o 5.
+El beneficio del CLIENTE es el ahorro operacional verificable, sin sumar lo ya atribuido a las innovaciones 1, 3 o 5. Como indicador físico complementario, pasar de 20 a 19 minutos-persona de trabajo por entrega comparable equivaldría a 1.000 minutos-persona menos por cada 1.000 entregas (16 horas y 40 minutos). Son valores ilustrativos, no una línea base medida ni una conversión de la meta de costo del 5 \%. Se compara el tiempo de trabajo en entregas equivalentes sin degradar el cumplimiento de entrega completa y a tiempo.
 
 \subsection{Indicador de verificación}
 
@@ -617,7 +617,7 @@ Minutos de explicación en la visita & Costo operacional (tiempo de preventa) & 
 Efecto en la frecuencia y el tamaño del pedido, si se demuestra & Beneficio & Desde el mes 33 \\
 \end{tablalafrox}
 
-El beneficio comercial es la frecuencia y el tamaño del pedido en los locales que reciben la hoja, y la retención frente al competidor con aplicación; se valoriza solo si se demuestra al mes 33. El beneficio social es que la información de gestión deja de ser privilegio del cliente grande, sin exigir al almacenero conexión ni dispositivo.
+El beneficio comercial es la frecuencia y el tamaño del pedido en los locales que reciben la hoja, y la retención frente al competidor con aplicación; se valoriza solo si se demuestra al mes 33. El beneficio social es que el almacenero accede a información de gestión sin conexión ni dispositivo propio. En un escenario ilustrativo, si la misma decisión de reposición pasa de 10 a 8 minutos por visita, se ahorran 2 minutos por decisión. Se mide con tareas equivalentes con y sin la hoja, registrando el tiempo hasta que el almacenero decide qué reponer. No se presume un aumento de compras ni se presenta el escenario como medición.
 
 \subsection{Indicador de verificación}
 
