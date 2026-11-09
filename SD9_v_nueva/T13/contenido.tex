@@ -261,7 +261,7 @@ Las pruebas técnicas no aceptan por sí solas los resultados del Caso, cap. 18.
 R18-01: clientes afectados por un lote en menos de 2 h & Simulacro de retiro sanitario sobre datos sintéticos con lotes trazados & Aceptación de la Etapa 1 (3.8.2) \\
 R18-03: registro continuo de temperatura & Banco, mapeo y piloto físico; series con excursiones, desconexión, retención por SSCC y decisión de Calidad, conforme a V1–V21 del Anexo 4-W & 2.4.3; 2.4.4; 4.1.4; integración (3.8.1) y aceptación (3.8.2) \\
 R18-06: ningún pedido perdido ni duplicado por falta de señal & Jornada de 14 h sin señal (sección 7.3) & Perfil operacional (3.8.3) \\
-R18-07: ruta del día siguiente en menos de 20 minutos & Generación de la ruta con el volumen de un día de peak & Carga (3.8.4) \\
+R18-07: ruta del día siguiente en menos de 20 minutos & Generación de la ruta con el volumen de un día de peak; corrección manual, registro del cambio y recálculo de la ruta & Carga (3.8.4) \\
 \end{tablasimple}
 \fuentesd{Fuente: (Bases Técnicas del caso, cap. 18, pp. 34--35); (Subdocumento 13, sección 13.2); (Formulario T-17, sección 5).}
 
@@ -334,20 +334,22 @@ El catálogo se dimensiona por riesgo, con la prioridad de cada requisito en el 
 
 \begin{tablasimple}{>{\hsize=1.719\hsize\linewidth=\hsize}Y >{\hsize=0.76\hsize\linewidth=\hsize}Y >{\hsize=0.76\hsize\linewidth=\hsize}Y >{\hsize=0.761\hsize\linewidth=\hsize}Y}
   {\cab{Grupo} & \cab{Cantidad} & \cab{Casos por requisito} & \cab{Casos}}
-RF y RNF de prioridad crítica & 64 & 5 & 320 \\
-RF y RNF de prioridad alta & 163 & 3 & 489 \\
-RF y RNF de prioridad media & 43 & 2 & 86 \\
+RF y RNF de prioridad crítica & 58 & 5 & 290 \\
+RF y RNF de prioridad alta & 157 & 3 & 471 \\
+RF y RNF de prioridad media & 55 & 2 & 110 \\
 RT en estado «Cumple» o «Cumple parcialmente» en el T-12 & 352 & 1 & 352 \\
 Contratos de integración & 15 & 7 & 105 \\
-\textbf{Total} &  &  & \textbf{1.352} \\
+\textbf{Total} &  &  & \textbf{1.328} \\
 \end{tablasimple}
 \fuentesd{Fuente: (Subdocumento 3, catálogo de RF y RNF); (Formulario T-12, catálogo de RT ofertados); (Subdocumento 4, sección 4.1); las reglas de dimensionamiento 5/3/2, un caso por RT y siete por integración de esta sección 8.2.}
 
-Los 270 RF y RNF con prioridad propia son los del catálogo del SD3: 64 críticos, 163 altos y 43 medios. Las nueve filas RF y RNF restantes del T-12 (279 en total) se verifican con la fila que las contiene y no suman casos. Los 22 RT en estado «No cumple» no tienen casos; quedan en la matriz de trazabilidad como brecha visible.
+Los 270 RF y RNF con prioridad propia son los del catálogo del SD3: 58 críticos, 157 altos y 55 medios. Las nueve filas RF y RNF restantes del T-12 (279 en total) se verifican con la fila que las contiene y no suman casos. Los 22 RT en estado «No cumple» no tienen casos; quedan en la matriz de trazabilidad como brecha visible.
 
-La matriz siguiente vincula individualmente los 270 RF/RNF y los 374 RT del T-12, sin crear obligaciones nuevas. Cada identificador /Pnn se antepone con el ID de la fila: RF-09.01/P01, por ejemplo. Son casos previstos, no pruebas ejecutadas ni aprobadas. El criterio es el resultado esperado del RF, el umbral del RNF o el requisito RT y su alcance ofertado en la fuente indicada. La matriz se genera desde el catálogo vigente del SD3 y su T-12 (versión 0e0e0f39) y completa la cadena requisito, caso, criterio e hito: cada etapa remite al hito de certificación que recibe su evidencia (E1 al H5, E2 al H10 y ambas etapas a los dos); los RT conservan el hito de su paquete del T-12. La versión del criterio se conserva por referencia a SD3/T-12; la ficha ejecutable añade datos, pasos, ambiente, resultado observado y acta al detallar el plan del H1.
+La matriz siguiente vincula individualmente los 270 RF/RNF y los 374 RT del T-12, sin crear obligaciones nuevas. Cada identificador /Pnn se antepone con el ID de la fila: RF-09.01/P01, por ejemplo. Son casos previstos, no pruebas ejecutadas ni aprobadas. El criterio es el resultado esperado del RF, el umbral del RNF o el requisito RT y su alcance ofertado en la fuente indicada. La matriz se genera desde el catálogo vigente del SD3 y su T-12 (versión 85596706) y completa la cadena requisito, caso, criterio e hito: cada etapa remite al hito de certificación que recibe su evidencia (E1 al H5, E2 al H10 y ambas etapas a los dos); los RT conservan el hito de su paquete del T-12. La versión del criterio se conserva por referencia a SD3/T-12; la ficha ejecutable añade datos, pasos, ambiente, resultado observado y acta al detallar el plan del H1.
 
 Para los RF/RNF, /P01 verifica el flujo o valor conforme y /P02 una entrada o condición no conforme; /P03 cubre el límite o transición cuando la prioridad es alta o crítica; /P04 y /P05 cubren falla/reintento e integridad del resultado en los críticos. Se usan las técnicas de la sección 2.1 y las precondiciones de cada fila fuente; cuando una condición no aplica, el líder documenta un escenario equivalente que compruebe el mismo criterio antes de ejecutar. El caso RT /P01 reúne la evidencia requerida por su naturaleza: ensayo funcional, de carga, desconexión o recuperación cuando corresponde, y revisión del entregable o certificado en los requisitos documentales. Las 18 respuestas parciales conservan su alcance parcial; los 22 RT no cumplidos permanecen como brecha sin casos. Las nueve filas absorbidas o alias no duplican casos.
+
+Para RF-09.06, la serie V1–V21 del Anexo 4-W y el ensayo de la sección 7.4 respaldan la comprobación de la retención por SSCC, el aviso al conductor y a Calidad, y el registro de la decisión exclusiva de Calidad. Para RF-04.02, el ensayo de R18-07 incluye la corrección manual, el registro del cambio y el recálculo de la ruta. En los RF de costo de servir de la Etapa 2 (RF-04.08, RF-08.07 y RF-14.04), los casos conformes y no conformes comprueban el costo por entrega y cliente, la imputación de devoluciones y mermas y la imputación de kilómetros y tiempo. Estas comprobaciones aportan evidencia a R18-11 en el T-17.
 
 Los siete casos de cada contrato son éxito, ausencia de respuesta, error, lentitud, duplicado, orden y versión, conforme a la sección 2.1. INT-08 corresponde a E2; los demás contratos se prueban en E1 según el Anexo 7.E y se incluyen en la regresión E2. Este catálogo cuenta identificadores únicos, no el número de ejecuciones repetidas durante el contrato.
 
@@ -356,11 +358,11 @@ Los siete casos de cada contrato son éxito, ausencia de respuesta, error, lenti
 \subsection*{8.3 Duración de la regresión}
 \addcontentsline{toc}{subsection}{8.3 Duración de la regresión}
 
-El dimensionamiento usa 80 \% de automatización, 30 segundos por caso automático y 15 minutos por caso manual. Aplicado a 1.352 casos: 1.082 automáticos y 270 manuales, conservando la suma exacta. La parte automática requiere 1.082 × 30 / 3.600 = 9,02 horas de ejecutor, aproximadamente 9,0; con dos ejecutores independientes, 4,51 horas, aproximadamente 4,5. La parte manual requiere 270 × 15 / 60 = 67,5 HH por ciclo.
+El dimensionamiento usa 80 \% de automatización, 30 segundos por caso automático y 15 minutos por caso manual. Aplicado a 1.328 casos: 1.062 automáticos y 266 manuales, conservando la suma exacta. La parte automática requiere 1.062 × 30 / 3.600 = 8,85 horas con un ejecutor; con dos ejecutores independientes, 4,43 horas redondeadas a dos decimales. La parte manual requiere 266 × 15 / 60 = 66,5 HH por ciclo.
 
-«Regresión completa» comprende ambas partes y no equivale a la ejecución automática nocturna. G4 y el expediente del T-17 exigen evidencia vigente de todos los casos aplicables a la etapa; en E1 no se exige una capacidad que el Anexo 7.E sitúa en E2. Las promociones ordinarias y las correcciones de marcha blanca mantienen esa exigencia: no se declara aprobada una regresión de 1.352 casos solo porque terminó el trabajo de los ejecutores.
+«Regresión completa» comprende ambas partes y no equivale a la ejecución automática nocturna. G4 y el expediente del T-17 exigen evidencia vigente de todos los casos aplicables a la etapa; en E1 no se exige una capacidad que el Anexo 7.E sitúa en E2. Las promociones ordinarias y las correcciones de marcha blanca mantienen esa exigencia: no se declara aprobada una regresión de 1.328 casos solo porque terminó el trabajo de los ejecutores.
 
-Las dos partes pueden ejecutarse en paralelo únicamente en instancias compatibles, con datos y versión controlados. Antes de reservar la ventana, CAL registra las personas y su capacidad neta, sin presumir que el máximo de 16 evaluadores previsto por T-15 esté disponible para esta sesión. Aun con dieciséis evaluadores exclusivos, 270 casos indivisibles de quince minutos requieren al menos 17 tandas, 4,25 horas transcurridas, además de coordinación e incidencias; no se promete un cierre nocturno integral sin ese cuadrante. Con la hipótesis de 6,4 HH netas por evaluador y día (Subdocumento 6, sección 6.1.3), el esfuerzo manual de 67,5 HH requiere al menos 11 evaluadores-día, antes de coordinación e incidencias; la simultaneidad y la duración de cada sesión se verifican por separado. Las horas de ejecutor no se suman como HH humanas ni crean una reserva adicional a la línea base.
+Las dos partes pueden ejecutarse en paralelo únicamente en instancias compatibles, con datos y versión controlados. Antes de reservar la ventana, CAL registra las personas y su capacidad neta, sin presumir que el máximo de 16 evaluadores previsto por T-15 esté disponible para esta sesión. Aun con dieciséis evaluadores exclusivos, 266 casos indivisibles de quince minutos requieren al menos 17 tandas, 4,25 horas transcurridas, además de coordinación e incidencias; no se promete un cierre nocturno integral sin ese cuadrante. Con la hipótesis de 6,4 HH netas por evaluador y día (Subdocumento 6, sección 6.1.3), el esfuerzo manual de 66,5 HH requiere al menos 11 evaluadores-día, antes de coordinación e incidencias; la simultaneidad y la duración de cada sesión se verifican por separado. Las horas de ejecutor no se suman como HH humanas ni crean una reserva adicional a la línea base.
 
 La tabla siguiente comprueba la concurrencia diaria de cada campaña con los paquetes del T-15: las HH de cada paquete CAL se reparten en sus días hábiles (feriado del 1 de noviembre de 2027 incluido) y se suman los paquetes activos el mismo día. La jornada neta de 6,4 HH ya descuenta el 20 \% de ausencias y coordinación.
 

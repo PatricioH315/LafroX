@@ -1,7 +1,7 @@
 {
-  "source_ref": "0e0e0f39",
-  "source_commit": "0e0e0f39ad305ad7f9aa1662c36d147075342c17",
-  "test_count": 1352,
+  "source_ref": "85596706592cd3ee076096c1fbe9bb03b631d3e5",
+  "source_commit": "85596706592cd3ee076096c1fbe9bb03b631d3e5",
+  "test_count": 1328,
   "counts": {
     "t12_rows": 653,
     "requirements": 644,
@@ -9,11 +9,11 @@
     "own": 270,
     "rt": 374,
     "contracts": 15,
-    "cases": 1352,
+    "cases": 1328,
     "priority": {
-      "Crítica": 64,
-      "Alta": 163,
-      "Media": 43
+      "Alta": 157,
+      "Crítica": 58,
+      "Media": 55
     },
     "rt_state": {
       "Cumple": 334,
@@ -29,7 +29,7 @@
       "state": "Cumple",
       "component": "M1 Recepción (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android 15 en Kotlin 2.4 con SQLite); terminal Zebra MC9400 estándar; compara SKU y cantidades recibidas contra la orden de compra y emite una alerta por cada discrepancia sin impedir el cierre; el comparativo queda disponible para Calidad",
       "edt": "3.4.1",
-      "priority": "Crítica",
+      "priority": "Alta",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-01.01",
@@ -38,9 +38,7 @@
       "cases": [
         "RF-01.01/P01",
         "RF-01.01/P02",
-        "RF-01.01/P03",
-        "RF-01.01/P04",
-        "RF-01.01/P05"
+        "RF-01.01/P03"
       ]
     },
     {
@@ -103,7 +101,7 @@
       "state": "Cumple",
       "component": "M1 Recepción (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; aplicación nativa Android 15 en Kotlin 2.4 con SQLite); terminal Zebra MC9400 estándar; al confirmar la no conformidad, M2 pasa a cuarentena la cantidad afectada, bloqueada para la preparación, y M1 alerta en la aplicación al perfil de Calidad dentro de cinco minutos",
       "edt": "3.4.1",
-      "priority": "Alta",
+      "priority": "Crítica",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-01.05",
@@ -112,7 +110,9 @@
       "cases": [
         "RF-01.05/P01",
         "RF-01.05/P02",
-        "RF-01.05/P03"
+        "RF-01.05/P03",
+        "RF-01.05/P04",
+        "RF-01.05/P05"
       ]
     },
     {
@@ -188,7 +188,7 @@
       "state": "Cumple",
       "component": "M1 Recepción (Laravel 13 sobre PHP 8.5 y PostgreSQL 16); mae\\_producto exige descripción, formato, GTIN, SKU interno único, tipo de almacenamiento, temperatura mínima y máxima, peso neto y bruto, alto, ancho y largo con volumen derivado, vida útil, indicadores de lote y de vencimiento, clasificación sanitaria aprobada por Calidad y proveedor con su RUT; una ficha con campos obligatorios vacíos se rechaza (FICHA\\_PRODUCTO\\_INCOMPLETA) y los cambios de GTIN o SKU quedan auditados",
       "edt": "3.4.1, 3.7.2",
-      "priority": "Crítica",
+      "priority": "Alta",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-01.10",
@@ -197,9 +197,7 @@
       "cases": [
         "RF-01.10/P01",
         "RF-01.10/P02",
-        "RF-01.10/P03",
-        "RF-01.10/P04",
-        "RF-01.10/P05"
+        "RF-01.10/P03"
       ]
     },
     {
@@ -260,7 +258,7 @@
       "state": "Cumple",
       "component": "M2 Inventario (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; Aurora PostgreSQL); la propuesta de slotting (inv\\_reubicacion\\_propuesta) conserva período ABC configurable, clase, motivo (ABC, peso, volumen o zona), ubicación actual y propuesta; la clase A prioriza ubicaciones de menor distancia al andén de salida sin exceder peso, volumen ni zona; el movimiento solo se instruye después de la aprobación del jefe de bodega, que queda registrada con aprobador y fecha",
       "edt": "3.4.2",
-      "priority": "Alta",
+      "priority": "Media",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-02.03",
@@ -268,8 +266,7 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-02.03/P01",
-        "RF-02.03/P02",
-        "RF-02.03/P03"
+        "RF-02.03/P02"
       ]
     },
     {
@@ -327,7 +324,7 @@
       "state": "Cumple",
       "component": "M2 Inventario (monolito modular en Laravel 13 sobre PHP 8.5 y PostgreSQL 16 por sitio; Aurora PostgreSQL); hech\\_ocupacion\\_diaria calcula por sitio, zona y día el porcentaje de posiciones con stock físico positivo sobre las posiciones habilitadas, contando una vez cada posición aunque tenga varios lotes o SSCC, con al menos doce meses de historia",
       "edt": "3.4.2",
-      "priority": "Alta",
+      "priority": "Media",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-02.07",
@@ -335,8 +332,7 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-02.07/P01",
-        "RF-02.07/P02",
-        "RF-02.07/P03"
+        "RF-02.07/P02"
       ]
     },
     {
@@ -505,7 +501,7 @@
       "state": "Cumple",
       "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); M3 muestra el historial de compra del cliente con productos y frecuencia",
       "edt": "3.4.6",
-      "priority": "Alta",
+      "priority": "Media",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-03.06",
@@ -513,8 +509,7 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-03.06/P01",
-        "RF-03.06/P02",
-        "RF-03.06/P03"
+        "RF-03.06/P02"
       ]
     },
     {
@@ -522,7 +517,7 @@
       "state": "Cumple",
       "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); M3 mantiene en la copia local las promociones vigentes y calcula el descuento de la promoción aplicada a la línea",
       "edt": "3.4.6",
-      "priority": "Alta",
+      "priority": "Media",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-03.07",
@@ -530,8 +525,7 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-03.07/P01",
-        "RF-03.07/P02",
-        "RF-03.07/P03"
+        "RF-03.07/P02"
       ]
     },
     {
@@ -539,7 +533,7 @@
       "state": "Cumple",
       "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); M3 alerta al preventista antes del envío cuando el pedido más la deuda vencida supera el límite de crédito",
       "edt": "3.4.6",
-      "priority": "Crítica",
+      "priority": "Alta",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-03.08",
@@ -548,9 +542,7 @@
       "cases": [
         "RF-03.08/P01",
         "RF-03.08/P02",
-        "RF-03.08/P03",
-        "RF-03.08/P04",
-        "RF-03.08/P05"
+        "RF-03.08/P03"
       ]
     },
     {
@@ -558,7 +550,7 @@
       "state": "Cumple parcialmente",
       "component": "M3 implementa bloqueo y excepción auditada del supervisor. RNG-03 somete la fórmula y el umbral del 110 \\% a la validación de Finanzas antes de configurarlos.",
       "edt": "3.4.6",
-      "priority": "Crítica",
+      "priority": "Alta",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-03.09",
@@ -567,9 +559,7 @@
       "cases": [
         "RF-03.09/P01",
         "RF-03.09/P02",
-        "RF-03.09/P03",
-        "RF-03.09/P04",
-        "RF-03.09/P05"
+        "RF-03.09/P03"
       ]
     },
     {
@@ -645,7 +635,7 @@
       "state": "Cumple",
       "component": "M3 Preventa (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; monolito modular en Laravel 13 sobre PHP 8.5; ElastiCache con Valkey 8.1); M3 sugiere productos según historial, frecuencia, productos habituales y promociones vigentes, con los criterios que configura Comercial",
       "edt": "3.4.6",
-      "priority": "Alta",
+      "priority": "Media",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-03.14",
@@ -653,8 +643,7 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-03.14/P01",
-        "RF-03.14/P02",
-        "RF-03.14/P03"
+        "RF-03.14/P02"
       ]
     },
     {
@@ -717,7 +706,7 @@
       "state": "Cumple",
       "component": "M4 Rutas (monolito modular en Laravel 13 sobre PHP 8.5; motor propio de optimización en contenedor ECS Fargate; INT-10, mapas y geocodificación); el planificador modifica la secuencia y reasigna pedidos entre vehículos, y M4 recalcula de inmediato la carga y las horas estimadas",
       "edt": "3.4.7, 3.6.3",
-      "priority": "Media",
+      "priority": "Alta",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-04.02",
@@ -725,7 +714,8 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-04.02/P01",
-        "RF-04.02/P02"
+        "RF-04.02/P02",
+        "RF-04.02/P03"
       ]
     },
     {
@@ -817,7 +807,7 @@
       "state": "Cumple",
       "component": "M4 Rutas (monolito modular en Laravel 13 sobre PHP 8.5; motor propio de optimización en contenedor ECS Fargate; INT-10, mapas y geocodificación); M4 alimenta el costo de servir y el modelo calcula costo por entrega y cliente",
       "edt": "3.5.4, 3.4.7",
-      "priority": "Alta",
+      "priority": "Media",
       "stage": "E2",
       "table": "3.A.1",
       "source_id": "RF-04.08",
@@ -825,8 +815,7 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-04.08/P01",
-        "RF-04.08/P02",
-        "RF-04.08/P03"
+        "RF-04.08/P02"
       ]
     },
     {
@@ -970,7 +959,7 @@
       "state": "Cumple",
       "component": "M6 Reparto (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e); M6 captura la firma del receptor y la vincula al POD y a la guía de despacho",
       "edt": "3.4.8",
-      "priority": "Crítica",
+      "priority": "Alta",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-06.02",
@@ -979,9 +968,7 @@
       "cases": [
         "RF-06.02/P01",
         "RF-06.02/P02",
-        "RF-06.02/P03",
-        "RF-06.02/P04",
-        "RF-06.02/P05"
+        "RF-06.02/P03"
       ]
     },
     {
@@ -1143,7 +1130,7 @@
       "state": "Cumple",
       "component": "M6 Reparto (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e); M6 captura firma en pantalla o evidencia fotográfica sin conexión y vincula el POD a la guía",
       "edt": "3.4.8",
-      "priority": "Media",
+      "priority": "Alta",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-06.12",
@@ -1151,7 +1138,8 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-06.12/P01",
-        "RF-06.12/P02"
+        "RF-06.12/P02",
+        "RF-06.12/P03"
       ]
     },
     {
@@ -1277,7 +1265,7 @@
       "state": "Cumple",
       "component": "M7 Cobranza y rendición (monolito modular en Laravel 13 sobre PHP 8.5; ACL INT-06); aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; terminal de pago PAX A920 Pro; la aplicación recibe por Bluetooth del PAX A920 Pro el código de autorización y M7 lo concilia con la entrega en la rendición diaria, sin digitación",
       "edt": "3.4.10, 3.6.2",
-      "priority": "Alta",
+      "priority": "Media",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-07.06",
@@ -1285,8 +1273,7 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-07.06/P01",
-        "RF-07.06/P02",
-        "RF-07.06/P03"
+        "RF-07.06/P02"
       ]
     },
     {
@@ -1294,7 +1281,7 @@
       "state": "Cumple",
       "component": "Portal autenticado de clientes (Angular 22; Keycloak 26; S3 privado, CloudFront, AWS WAF y API REST); el estado de cuenta y la cartola derivan los tramos corriente, 1 a 30, 31 a 60, 61 a 90 y más de 90 días desde el vencimiento de cada documento y la fecha de corte (hech\\_cartera\\_antiguedad), descargables en PDF y XLSX por el cliente autenticado desde E2",
       "edt": "3.5.2",
-      "priority": "Alta",
+      "priority": "Media",
       "stage": "E2",
       "table": "3.A.1",
       "source_id": "RF-07.07",
@@ -1302,8 +1289,7 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-07.07/P01",
-        "RF-07.07/P02",
-        "RF-07.07/P03"
+        "RF-07.07/P02"
       ]
     },
     {
@@ -1311,7 +1297,7 @@
       "state": "Cumple",
       "component": "M7 Cobranza y rendición (monolito modular en Laravel 13 sobre PHP 8.5; ACL INT-06); Portal de Clientes; el pago informado en el portal queda «En revisión» en una bandeja donde el cajero de Tesorería verifica el comprobante bancario y autoriza su traspaso estructurado al ERP",
       "edt": "3.5.2, 3.4.10",
-      "priority": "Alta",
+      "priority": "Media",
       "stage": "E2",
       "table": "3.A.1",
       "source_id": "RF-07.08",
@@ -1319,8 +1305,7 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-07.08/P01",
-        "RF-07.08/P02",
-        "RF-07.08/P03"
+        "RF-07.08/P02"
       ]
     },
     {
@@ -1345,7 +1330,7 @@
       "state": "Cumple",
       "component": "M7 Cobranza y rendición (monolito modular en Laravel 13 sobre PHP 8.5; ACL INT-06); aplicación nativa Android 15 en Kotlin 2.4 con SQLite; terminal Zebra TC58e; el conductor registra el abono parcial en una entrega al contado, la aplicación emite un comprobante digital y el saldo insoluto pasa a la cuenta corriente del cliente en el ERP por la ACL",
       "edt": "3.4.10",
-      "priority": "Alta",
+      "priority": "Media",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-07.10",
@@ -1353,8 +1338,7 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-07.10/P01",
-        "RF-07.10/P02",
-        "RF-07.10/P03"
+        "RF-07.10/P02"
       ]
     },
     {
@@ -1434,7 +1418,7 @@
       "state": "Cumple",
       "component": "M8 Devoluciones y envases (aplicación nativa Android 15 en Kotlin 2.4 con SQLite; cuenta de envases por cliente y tipo); M8 compara el saldo de envases de cada cliente con el umbral del administrador y alerta al preventista dentro de las 24 horas siguientes a superarlo",
       "edt": "3.4.9",
-      "priority": "Alta",
+      "priority": "Media",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-08.04",
@@ -1442,8 +1426,7 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-08.04/P01",
-        "RF-08.04/P02",
-        "RF-08.04/P03"
+        "RF-08.04/P02"
       ]
     },
     {
@@ -1485,7 +1468,7 @@
       "state": "Cumple",
       "component": "M7 y M10 (monolito modular en Laravel 13 sobre PHP 8.5; almacén analítico S3, Glue, Redshift Serverless y QuickSight); inv\\_merma registra la merma por conteo, preparación, góndola o devolución con su cliente, y hech\\_actividad\\_costo suma al costo de servir de cada cliente el manejo de devoluciones y la merma valorizada al costo ERP, una sola vez por origen, desde E2",
       "edt": "3.5.4, 3.4.9",
-      "priority": "Alta",
+      "priority": "Media",
       "stage": "E2",
       "table": "3.A.1",
       "source_id": "RF-08.07",
@@ -1493,8 +1476,7 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-08.07/P01",
-        "RF-08.07/P02",
-        "RF-08.07/P03"
+        "RF-08.07/P02"
       ]
     },
     {
@@ -1538,7 +1520,7 @@
     {
       "id": "RF-09.03",
       "state": "Cumple",
-      "component": "M9 Calidad y trazabilidad; 21 puntos de cámara B-01 (Ebyte ME31-XDXX0400 con PT100) y tres gateways B-02 Moxa UC-8200 con Greengrass V2. Registro inicial cada 5 min, 288 lecturas por punto y día; evaluación y bloqueo locales. LafroX provee, instala y mantiene los sensores y gateways de cámara.",
+      "component": "M9 Calidad y trazabilidad; 21 puntos de cámara B-01 (Ebyte ME31-XDXX0400 con PT100) y tres gateways B-02 Moxa UC-8200 con Greengrass V2. Registro inicial cada 5 min, 288 lecturas por punto y día; evaluación y bloqueo locales. El CLIENTE adquiere los sensores B-01 según la especificación de LafroX (\\textit{Caso: Logística}, 2026, cap. 11, p. 20); LafroX los instala y mantiene, y provee los gateways B-02 como infraestructura on-premise.",
       "edt": "3.4.4, 6.5.3",
       "priority": "Crítica",
       "stage": "E1",
@@ -1557,7 +1539,7 @@
     {
       "id": "RF-09.04",
       "state": "Cumple",
-      "component": "M9; kit en los 28 camiones: gateway B-04 con Greengrass V2, ioLogik B-05, tres PT100 B-06 y simuladores B-07, sensor independiente B-08 y termógrafo de aire B-03 EYE SENSOR EN12830. Sondas cada 5 s y serie por minuto; móvil e Iridium B-09 siempre activos. LafroX provee, instala y mantiene el kit.",
+      "component": "M9; kit en los 28 camiones: gateway B-04 con Greengrass V2, ioLogik B-05, tres PT100 B-06 y simuladores B-07, sensor independiente B-08 y termógrafo de aire B-03 EYE SENSOR EN12830. Sondas cada 5 s y serie por minuto; móvil e Iridium B-09 siempre activos. El CLIENTE adquiere el kit según la especificación de LafroX (\\textit{Caso: Logística}, 2026, cap. 11, p. 20), y LafroX lo instala y mantiene.",
       "edt": "3.4.4, 3.4.5, 6.5.4",
       "priority": "Crítica",
       "stage": "E1",
@@ -1597,7 +1579,7 @@
       "state": "Cumple",
       "component": "M9 y TC58e retienen por SSCC e incidente, según su familia; M2/M5 impiden preparar o despachar lo retenido y M6 impide su entrega. La advertencia no libera una crítica. Calidad decide la disposición y, sin decisión en plazo, el SSCC vuelve retenido al CD.",
       "edt": "3.4.4, 3.4.2, 3.4.3, 3.4.8",
-      "priority": "Media",
+      "priority": "Crítica",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-09.06",
@@ -1605,7 +1587,10 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-09.06/P01",
-        "RF-09.06/P02"
+        "RF-09.06/P02",
+        "RF-09.06/P03",
+        "RF-09.06/P04",
+        "RF-09.06/P05"
       ]
     },
     {
@@ -1613,7 +1598,7 @@
       "state": "Cumple",
       "component": "M6 registra el rechazo por sospecha de ruptura con causal, SSCC, sensor, compartimento y tramo temporal de la ruta; M9 lo vincula a la historia térmica entre carga y bajada y al tramo de entrega. La temperatura no incorpora GPS.",
       "edt": "3.4.8, 3.4.4",
-      "priority": "Crítica",
+      "priority": "Alta",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-09.07",
@@ -1622,9 +1607,7 @@
       "cases": [
         "RF-09.07/P01",
         "RF-09.07/P02",
-        "RF-09.07/P03",
-        "RF-09.07/P04",
-        "RF-09.07/P05"
+        "RF-09.07/P03"
       ]
     },
     {
@@ -1859,7 +1842,7 @@
       "state": "Cumple",
       "component": "M10 Analítica (S3, Glue, Redshift Serverless y QuickSight embebido); M10 calcula fill rate e índice de pedido perfecto contra el pedido original con las entregas confirmadas en el terminal de reparto, desglosados por causa",
       "edt": "3.4.11",
-      "priority": "Alta",
+      "priority": "Media",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-11.04",
@@ -1867,8 +1850,7 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-11.04/P01",
-        "RF-11.04/P02",
-        "RF-11.04/P03"
+        "RF-11.04/P02"
       ]
     },
     {
@@ -2504,7 +2486,7 @@
       "state": "Cumple",
       "component": "INT-15 consume de la plataforma existente posición GPS, velocidad y kilometraje de los 42 camiones propios; M12 los presenta con fecha y entrega kilometraje a M10",
       "edt": "3.3.4",
-      "priority": "Crítica",
+      "priority": "Alta",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-14.01",
@@ -2513,9 +2495,7 @@
       "cases": [
         "RF-14.01/P01",
         "RF-14.01/P02",
-        "RF-14.01/P03",
-        "RF-14.01/P04",
-        "RF-14.01/P05"
+        "RF-14.01/P03"
       ]
     },
     {
@@ -2540,7 +2520,7 @@
       "state": "Cumple",
       "component": "M12 evalúa desvíos mayores de 3 km para ambas flotas, con posiciones de INT-15 (42 propios) o del terminal C-02 (54 externos); sin conectividad el registro se conserva y la alerta central se entrega al sincronizar, mostrando su antigüedad",
       "edt": "3.4.5",
-      "priority": "Alta",
+      "priority": "Media",
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-14.03",
@@ -2548,8 +2528,7 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-14.03/P01",
-        "RF-14.03/P02",
-        "RF-14.03/P03"
+        "RF-14.03/P02"
       ]
     },
     {
@@ -2557,7 +2536,7 @@
       "state": "Cumple",
       "component": "M12 entrega posición, kilometraje y tiempos de los camiones propios desde INT-15; M4/M6 aportan ruta, viaje y entregas identificadas. M10 imputa kilómetros y tiempo de viaje a cada entrega y cliente desde E2, manteniendo la restricción de uso de geolocalización.; para los 54 externos, M4/M6 vinculan posiciones y tiempos del terminal C-02 al viaje y entrega, sin atribuirles acceso al proveedor de INT-15",
       "edt": "3.5.4, 3.4.5, 3.3.4",
-      "priority": "Crítica",
+      "priority": "Media",
       "stage": "E2",
       "table": "3.A.1",
       "source_id": "RF-14.04",
@@ -2565,10 +2544,7 @@
       "verification": "Precondición y resultado esperado",
       "cases": [
         "RF-14.04/P01",
-        "RF-14.04/P02",
-        "RF-14.04/P03",
-        "RF-14.04/P04",
-        "RF-14.04/P05"
+        "RF-14.04/P02"
       ]
     },
     {
@@ -3794,8 +3770,8 @@
     {
       "id": "RNF-13.09",
       "state": "Cumple",
-      "component": "Wi-Fi 6E industrial segmentado por VLAN con autenticación empresarial; estudio de cobertura comprometido dentro de las cámaras, que fija la cantidad definitiva sobre la base de 65 + 7 puntos de acceso",
-      "edt": "6.2.3",
+      "component": "Wi-Fi 6E industrial Cisco IW9167I segmentado por VLAN con autenticación EAP-TLS; estudio de cobertura presentado: diseño predictivo por zona de 65 + 7 puntos de acceso, con al menos dos por cámara, verificación en sitio en el mes 2 y medición de aceptación antes de cada marcha blanca",
+      "edt": "2.1.2, 6.2.3",
       "priority": "Alta",
       "stage": "E1 y E2",
       "table": "3.A.5",
@@ -4634,7 +4610,7 @@
     {
       "id": "RNF-23.01",
       "state": "Cumple",
-      "component": "T-11 especifica marca, modelo, cantidad, características, accesorios y consumibles de los dispositivos de terreno y de operación; el costo unitario estimado se declara en la Oferta Económica, porque la Oferta Técnica no puede contener valores unitarios (Bases Administrativas, art. 50.2, p. 29). El CLIENTE compra equipos de uso según 5.1.1; LafroX provee, instala y mantiene B-01/B-02 y B-03 a B-15 según 5.1.4. El kit se valida con V1/V3/V4/V5; cotización local, certificación Subtel aplicable y rango/EN 12830 del registrador son condiciones de compra y recepción. B-06, B-07 y B-10 a B-14 son accesorios y consumibles de B-04 y B-05, especificados por sus características mínimas; la marca y el modelo de referencia corresponden a B-03, B-04, B-05, B-08 y B-09.",
+      "component": "T-11 especifica marca, modelo, cantidad, características, accesorios y consumibles de los dispositivos de terreno y de operación; el costo unitario estimado se declara en la Oferta Económica, porque la Oferta Técnica no puede contener valores unitarios (Bases Administrativas, art. 50.2, p. 29). El CLIENTE compra los equipos de uso según 5.1.1, y B-01 y B-03 a B-14 según 5.1.4 (\\textit{Caso: Logística}, 2026, cap. 11, p. 20); LafroX los instala y mantiene, provee B-02 como infraestructura on-premise y contrata las SIM B-15 en 5.3.4. El kit se valida con V1/V3/V4/V5; cotización local, certificación Subtel aplicable y rango/EN 12830 del registrador son condiciones de compra y recepción. B-06, B-07 y B-10 a B-14 son accesorios y consumibles de B-04 y B-05, especificados por sus características mínimas; la marca y el modelo de referencia corresponden a B-03, B-04, B-05, B-08 y B-09.",
       "edt": "5.1.1, 5.1.4, 2.4.3, 2.4.4",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -4651,7 +4627,7 @@
     {
       "id": "RNF-23.02",
       "state": "Cumple",
-      "component": "T-11 declara grado IP y caída por modelo: TC58e de preventa y de reparto IP65/68 y 1,8 m; MC9400 estándar IP65/68 y 2,4 m; MC9400 Cold Storage Freezer IP65/68 y 2,1 m; ZQ620 Plus IP54, con caída mínima de 1,5 m exigida en la compra; termógrafo EYE SENSOR EN12830 IP67 de montaje fijo; balanza Dibal fija con IP65 mínimo exigido en la compra; impresora ZT411 fija de interior; PAX A920 Pro sin grado IP del fabricante, usado bajo el resguardo de la cabina o del local del cliente. El CLIENTE compra equipos de uso según 5.1.1; LafroX provee, instala y mantiene B-01/B-02 y B-03 a B-15 según 5.1.4. El kit se valida con V1/V3/V4/V5; cotización local, certificación Subtel aplicable y rango/EN 12830 del registrador son condiciones de compra y recepción. El kit es de montaje fijo: B-03, B-08 y B-09 son IP67; B-04 (IP30) y B-05 van en un gabinete IP54 de cabina, y B-06, B-10 y B-11 se compran con IP67 como mínimo.",
+      "component": "T-11 declara grado IP y caída por modelo: TC58e de preventa y de reparto IP65/68 y 1,8 m; MC9400 estándar IP65/68 y 2,4 m; MC9400 Cold Storage Freezer IP65/68 y 2,1 m; ZQ620 Plus IP54, con caída mínima de 1,5 m exigida en la compra; termógrafo EYE SENSOR EN12830 IP67 de montaje fijo; balanza Dibal fija con IP65 mínimo exigido en la compra; impresora ZT411 fija de interior; PAX A920 Pro sin grado IP del fabricante, usado bajo el resguardo de la cabina o del local del cliente. El CLIENTE compra los equipos de uso según 5.1.1, y B-01 y B-03 a B-14 según 5.1.4 (\\textit{Caso: Logística}, 2026, cap. 11, p. 20); LafroX los instala y mantiene, provee B-02 como infraestructura on-premise y contrata las SIM B-15 en 5.3.4. El kit se valida con V1/V3/V4/V5; cotización local, certificación Subtel aplicable y rango/EN 12830 del registrador son condiciones de compra y recepción. El kit es de montaje fijo: B-03, B-08 y B-09 son IP67; B-04 (IP30) y B-05 van en un gabinete IP54 de cabina, y B-06, B-10 y B-11 se compran con IP67 como mínimo.",
       "edt": "5.1.1, 5.1.4, 2.4.3",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -5206,8 +5182,8 @@
     {
       "id": "RT-03.23",
       "state": "Cumple",
-      "component": "Wi-Fi 6E industrial segmentado por VLAN, autenticación por certificado o credencial de empresa y estudio de cobertura",
-      "edt": "6.2.3",
+      "component": "Wi-Fi 6E industrial segmentado por VLAN, autenticación EAP-TLS por certificado contra el RADIUS local de cada sitio y cobertura verificada en sitio en el mes 2 y en la aceptación",
+      "edt": "2.1.2, 6.2.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
@@ -5220,8 +5196,8 @@
     {
       "id": "RT-03.24",
       "state": "Cumple",
-      "component": "QoS de enlaces principal y de respaldo que prioriza recepción, preparación, despacho, sincronización, identidad, guías y alertas térmicas sobre tráfico administrativo; Caso, cap. 15: estudio de cobertura de los CD que incluye el interior de las cámaras de refrigerado y congelado, con mayor densidad de puntos de acceso Wi-Fi 6E industriales en las cámaras y equipos de hasta $-$40 °C en congelado (S-36)",
-      "edt": "6.6.2",
+      "component": "QoS de enlaces principal y de respaldo que prioriza recepción, preparación, despacho, sincronización, identidad, guías y alertas térmicas sobre tráfico administrativo; Caso, cap. 15: estudio de cobertura de los CD presentado, que incluye el interior de las cámaras de refrigerado y congelado, con al menos dos puntos de acceso Wi-Fi 6E industriales por cámara, aptos hasta $-$40 °C, y verificación en sitio en el mes 2 (S-36)",
+      "edt": "6.6.2; 2.1.2, 6.2.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
@@ -5876,7 +5852,7 @@
     {
       "id": "RT-06.03",
       "state": "Cumple",
-      "component": "Plano de distribución interna por zonas y líneas de acceso",
+      "component": "Plano en planta acotado y a escala del recinto de Talca, con cinco recintos de superficie declarada ($\\approx$ 31 m\\textsuperscript{2} útiles) y zonas separadas de generador, baterías, climatización, servidores, comunicaciones, trabajo y respaldo",
       "edt": "2.3.1, 6.1.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5904,7 +5880,7 @@
     {
       "id": "RT-06.05",
       "state": "Cumple",
-      "component": "Racks R01 (servidores, 15U/42U, 36 \\%) y R02 (comunicaciones, 12U/42U, 29 \\%) independientes, con margen de crecimiento",
+      "component": "Racks R01 (servidores, 15U/42U, 36 \\%) y R02 (comunicaciones, 13U/42U, 31 \\%) independientes, con margen de crecimiento",
       "edt": "2.3.2, 6.3.1, 6.3.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -5988,7 +5964,7 @@
     {
       "id": "RT-06.11",
       "state": "Cumple",
-      "component": "Carga TI de diseño 8,9 kW, factor de potencia 0,95, PUE estimado $\\approx$ 1,5",
+      "component": "Carga TI de diseño 9,2 kW, factor de potencia 0,95, PUE estimado $\\approx$ 1,5",
       "edt": "2.3.1, 6.1.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",

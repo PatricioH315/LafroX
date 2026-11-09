@@ -215,19 +215,19 @@ Las 12.016 HH equivalen al 5,5 \% de las 220.023 HH de la línea base (12.016 / 
 
 El costo de no conformidad se estima por evento y por especialidad, sin usar importes esperados de un registro de riesgos. Se distingue falla interna, detectada por LafroX antes de entregar, de falla externa, detectada en el uso del CLIENTE. Las cantidades siguientes son dos escenarios de referencia de LafroX para planificar retrabajo: no son mediciones, frecuencia prevista ni reserva autorizada.
 
-En ambos escenarios se supone una corrección acotada que exige un ciclo manual completo de 270 casos a 15 minutos: 270 × 15 / 60 = 67,50 HH, presentado como 67,5 HH. La parte automática de la regresión dura aproximadamente 9,0 horas transcurridas en un ejecutor; ese tiempo no se suma como HH de una persona. Las HH de preparación, supervisión y análisis de ese ciclo están incluidas en SRE y CAL. Si una corrección modifica la arquitectura, los datos o la superficie de seguridad, se reestima también la campaña especializada afectada.
+En ambos escenarios se supone una corrección acotada que exige un ciclo manual completo de 266 casos a 15 minutos: 266 × 15 / 60 = 66,5 HH. La parte automática de la regresión dura 8,85 horas transcurridas en un ejecutor; ese tiempo no se suma como HH de una persona. Las HH de preparación, supervisión y análisis de ese ciclo están incluidas en SRE y CAL. Si una corrección modifica la arquitectura, los datos o la superficie de seguridad, se reestima también la campaña especializada afectada.
 
 \begin{tablasimple}{Y Y Y Y}
   {\cab{Rol} & \cab{Falla interna, HH/evento} & \cab{Falla externa, HH/evento} & \cab{Desglose de referencia}}
 Desarrollo (DES) & 16 & 24 & Interna: 4 análisis + 8 corrección + 4 pruebas unitarias; externa: 8 + 12 + 4 \\
-Calidad (CAL) & 75,5 & 75,5 & 67,5 de ejecución manual + 4 de análisis + 4 de evidencia \\
+Calidad (CAL) & 74,5 & 74,5 & 66,5 de ejecución manual + 4 de análisis + 4 de evidencia \\
 Operación (SRE) & 4 & 8 & Interna: 2 de restitución + 2 de supervisión; externa: 4 de diagnóstico + 4 de promoción y verificación \\
 Implantación y coordinación (IMP) & 0 & 4 & Comunicación y coordinación con las personas afectadas por la falla externa \\
-\textbf{Total de referencia} & \textbf{95,5} & \textbf{111,5} & HH por evento; no constituyen dotación ni autorización de gasto \\
+\textbf{Total de referencia} & \textbf{94,5} & \textbf{110,5} & HH por evento; no constituyen dotación ni autorización de gasto \\
 \end{tablasimple}
 \fuentesd{Fuente: (Formulario T-13, secciones 8.2 y 8.3); (Formulario T-15, estimación por rol); los supuestos de esfuerzo por evento explicitados en esta sección 9.C.2.}
 
-Para nI fallas internas y nE externas de este alcance, el esfuerzo de referencia es 95,5 × nI + 111,5 × nE. Un evento de cada tipo representa 207 HH. El costo de calidad del escenario sería 12.016 + 207 = 12.223 HH únicamente si esas horas fueran adicionales y no estuvieran ya incluidas en los paquetes de la línea base. No se adopta ese escenario como pronóstico del contrato: las cantidades nI y nE se revisan con los defectos observados desde las primeras campañas.
+Para nI fallas internas y nE externas de este alcance, el esfuerzo de referencia es 94,5 × nI + 110,5 × nE. Un evento de cada tipo representa 205 HH. El costo de calidad del escenario sería 12.016 + 205 = 12.221 HH únicamente si esas horas fueran adicionales y no estuvieran ya incluidas en los paquetes de la línea base. No se adopta ese escenario como pronóstico del contrato: las cantidades nI y nE se revisan con los defectos observados desde las primeras campañas.
 
 Cada evento registra su requisito, severidad, etapa, causa, versión, HH previstas y reales por rol, pruebas repetidas y paquete de imputación. Se diferencia la repetición causada por el defecto de las pruebas planificadas que ya pertenecen a evaluación. Antes de agregar esfuerzo a la línea base se descuentan las HH ya incluidas y asignadas al mismo trabajo; no se vuelve a sumar la capacidad protegida del T-15 ni la atención correctiva incluida en 8.2.1. El Líder de Calidad informa mensualmente costos internos y externos consumidos y el Jefe de Proyecto autoriza los recursos por control de cambios tras verificar capacidad, sin consumir cobertura de servicio ni reservas protegidas de otro frente.
 
