@@ -8,13 +8,6 @@ Las HH son el esfuerzo acumulado del equipo de cada perfil, no de una sola perso
 
 Con $n$ personas del mismo perfil, el esfuerzo medio por persona es $HH/n$, equivalente a $D_{eq}/n$ jornadas completas. Esto no supone que todas trabajen a jornada completa durante toda la ventana. La duración y la dedicación de cada actividad se obtienen del calendario y las precedencias de las secciones 5 y 6.1, y la capacidad disponible se contrasta con las 128 HH efectivas por persona y mes de 4.1.
 
-\paragraph{Aplicación a la hoja económica}
-Para cada fase, $Costo=HH\times c$ y $Tarifa=HH\times t$, donde $c$ y $t$ son los valores horarios que se seleccionen dentro de E-26. La categoría E-26 es una equivalencia de valorización, no otra área ni una plaza adicional. Los importes se consignan únicamente en la oferta económica.
-
-Si se emplea la estructura de ocho horas del ejemplo financiero, la columna de días debe rotularse \textit{Jornadas equivalentes de esfuerzo}: $D_{eq}\times8=HH$. La cantidad de personas no vuelve a multiplicar esas HH. Si la hoja conserva \textit{Días según Gantt}, debe usar los días laborables reales y las horas diarias asignadas al perfil: $D_{Gantt}\times h_{perfil/día}=HH$. Sólo corresponde fijar $h_{perfil/día}=8$ cuando la asignación diaria efectivamente lo justifica.
-
-Como control, el Jefe de Proyecto tiene 1.377,20 HH de implementación: 172,15 jornadas equivalentes de ocho horas. Las 4.743,66 HH de Back-end Senior equivalen a 592,96 jornadas acumuladas; entre nueve personas son 65,88 jornadas equivalentes por persona, concentradas en la construcción de los meses 5 a 8. Ninguno de estos resultados reemplaza la duración de las actividades.
-
 \begin{anexohorizontal}
 \setlength{\textwidth}{\linewidth}
 \renewcommand{\arraystretch}{1.28}
@@ -65,7 +58,7 @@ Como control, el Jefe de Proyecto tiene 1.377,20 HH de implementación: 172,15 j
 Las plazas son la propuesta de procedencia de 5.7, no una nómina confirmada ni la aprobación de su concurrencia. En SOC se proponen cuatro personas de SEG y dos de NOC; cada persona se cuenta una sola vez. Las HH de los jefes de frente y de los asistentes de terreno se reparten en proporción a sus plazas. Las instalaciones físicas de la sala técnica, el cableado, los racks, los gabinetes de borde y los enlaces (6.1, 6.2, 6.3, 6.6.2 y 6.6.3; 2.240 HH) las ejecuta personal de redes y operación de la división Infraestructura, bajo la responsabilidad del Líder de Operación / SRE; esas HH se descuentan de los perfiles DevOps en proporción a sus horas. La selección de categoría económica no acredita por sí sola competencia para desempeñar el rol.
 
 \paragraph{Conciliación por fase}
-Los perfiles aportan 90.048,83 HH de implementación y 128.354,20 HH de operación y reversibilidad. Los servicios especializados por resultado se añaden por separado, sin inventar plazas: 864 HH de implementación y 460,80 de operación. Por tanto:
+Los perfiles aportan 90.048,83 HH de implementación y 128.354,20 HH de operación y reversibilidad. Los servicios especializados por resultado se añaden por separado, sin asignarles plazas: 864 HH de implementación y 460,80 de operación. Por tanto:
 \[
 \begin{aligned}
 HH_{implem.}&=90.048,83+864=90.912,83,\\
@@ -75,4 +68,4 @@ HH_{proyecto}&=90.912,83+128.815=219.727,83.
 \]
 Esta separación sigue la fase de valorización de cada paquete; el resumen por etapa de la sección 4.3 sigue el mes calendario de ejecución. Por eso la implementación y la operación difieren en 102,97 HH entre ambas tablas (90.809,86 y 128.917,97 HH en el resumen por etapa), con el mismo total de 219.727,83 HH.
 
-En jornadas equivalentes son 11.364,10 de implementación y 16.101,875 de operación: 27.465,98 en total. Estas cantidades no se suman como duración del proyecto. En el modelo financiero, los servicios se valorizan una sola vez conforme a su partida; no se duplican dentro del costo de los perfiles.
+En jornadas equivalentes son 11.364,10 de implementación y 16.101,875 de operación: 27.465,98 en total. Estas cantidades no se suman como duración del proyecto.
