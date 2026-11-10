@@ -2,1372 +2,1523 @@
 
 > Texto extraído del [PDF final](LAFROX-Subdocumento7-Anexos.pdf). Las figuras y la composición visual se consultan en el PDF.
 
-LafroX SpA
-LICITACIÓN PÚBLICA
-Licitación N.° TFEP-01/2026
-Proyecto de Plataforma Digital de Misión Crítica
-Caso — Logística
-Sobre N.° 2 — Oferta Técnica
-Propuesta Técnica
-Anexos del Subdocumento 07
-Anexos del Subdocumento 07 · Formulario T-7
+LafroXSpA
+LICITACIÓNPÚBLICA
+LicitaciónN.°TFEP-01/2026
+ProyectodePlataformaDigitaldeMisiónCrítica
+Caso—Logística
+SobreN.°2—OfertaTécnica
+PropuestaTécnica
+AnexosdelSubdocumento07
+AnexosdelSubdocumento07·FormularioT-7
 MANDANTE
-Distribuidora Puelche S.A.
+DistribuidoraPuelcheS.A.
 PROPONENTE
-LafroX SpA
-RUT 77.418.902-K
-Av. Brasil 2241, Valparaíso
-REPRESENTANTE LEGAL
-Alex Aravena
-Jefe de Proyecto y Apoderado
+LafroXSpA
+RUT77.418.902-K
+Av.Brasil2241,Valparaíso
+REPRESENTANTELEGAL
+AlexAravena
+JefedeProyectoyApoderado
 contacto@lafrox.cl
-+56 32 250 4100
-FECHA DE EMISIÓN
-12 de octubre de 2026
-FIRMA DEL REPRESENTANTE LEGAL
-Alex Aravena
-Jefe de Proyecto y Apoderado · LafroX SpA
++56322504100
+FECHADEEMISIÓN
+12deoctubrede2026
+FIRMADELREPRESENTANTELEGAL
+AlexAravena
+JefedeProyectoyApoderado·LafroXSpA
 LAFROX-Subdocumento7-Anexos.pdf 1
 
 ---
 
-LafroX SpA
-Índice general
-Índice general 2
-Lista de tablas 3
-7 Anexos del Subdocumento 7 4
-7.1 Anexo 7.A — Meses contractuales y ventanas de congelamiento según la fecha de
+LafroXSpA
+Índicegeneral
+Índicegeneral 2
+Listadetablas 3
+7 AnexosdelSubdocumento7 4
+7.1 Anexo7.A—Mesescontractualesyventanasdecongelamientosegúnlafechade
 inicio 4
-7.2 Anexo 7.B — Dependencias entre paquetes de trabajo 6
-7.3 Anexo 7.C — Momento de los resultados de aceptación del caso 13
-7.4 Anexo 7.D — Innovaciones en la EDT y en el cronograma 15
-7.5 Anexo 7.E — Trazabilidad de módulos e interfaces a la EDT 17
-7.6 Anexo 7.F — Supuestos de planificación y dependencias para la gestión de riesgos 19
-7.6.1 Política de reservas que recibe el Capítulo 8 25
-7.6.2 Condiciones para aprobar la línea base 25
-Referencias 26
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+7.2 Anexo7.B—Dependenciasentrepaquetesdetrabajo 6
+7.3 Anexo7.C—Momentodelosresultadosdeaceptacióndelcaso 15
+7.4 Anexo7.D—InnovacionesenlaEDTyenelcronograma 17
+7.5 Anexo7.E—TrazabilidaddemóduloseinterfacesalaEDT 19
+7.6 Anexo7.F—Supuestosdeplanificaciónydependenciasparalagestiónderiesgos 21
+7.6.1 PolíticadereservasquerecibeelCapítulo8 27
+7.6.2 Condicionesparaaprobarlalíneabase 27
+Referencias 28
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 2
 
 ---
 
-LafroX SpA
-Lista de tablas
-Tabla 7.1 Meses calendario de los períodos contractuales según el mes de inicio. 5
-Tabla 7.2 Dependencias entre paquetes de trabajo. 6
-Tabla 7.3 Momento de los dieciséis resultados de aceptación. 14
-Tabla 7.4 Paquetes y meses de las cinco innovaciones. 16
-Tabla 7.5 Módulos de la solución y paquetes de la EDT. 17
-Tabla 7.6 Interfaces de la arquitectura y paquetes de la EDT. 18
-Tabla 7.7 Anexo 7.F — Supuestos de planificación y dependencias para la gestión de
-riesgos. 20
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+LafroXSpA
+Listadetablas
+Tabla7.1 Mesescalendariodelosperíodoscontractualessegúnelmesdeinicio. 5
+Tabla7.2 Dependenciasentrepaquetesdetrabajo. 6
+Tabla7.3 Momentodelosdieciséisresultadosdeaceptación. 15
+Tabla7.4 Paquetesymesesdelascincoinnovaciones. 18
+Tabla7.5 MódulosdelasoluciónypaquetesdelaEDT. 19
+Tabla7.6 InterfacesdelaarquitecturaypaquetesdelaEDT. 20
+Tabla 7.7Anexo 7.F — Supuestos de planificación y dependencias para la gestión de
+riesgos. 22
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 3
 
 ---
 
-CAPÍTULO 7
-Anexos del Subdocumento 7
-Estos anexos detallan los listados que el Subdocumento 7 resume. La EDT, el diccionario y
-la carta Gantt están en el Formulario T-14; el método de estimación y programación, la ruta
-crítica y los frentes de trabajo, en el Formulario T-15; y la implantación, en el Formulario T-18.
-En estos anexos, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas
-Transversales y las Bases Técnicas del caso. SD seguido de un número identifica el Subdocu-
-mento correspondiente. EDT significa estructura de descomposición del trabajo; PT, paquete
-de trabajo; HH, horas hombre; y E1/E2, Etapas 1 y 2. En las cartas Gantt, RC identifica los ele-
-mentos marcados como ruta crítica en la fuente de programación y PT/H identifica los demás
-paquetes e hitos. H1–H12 son los hitos del Formulario E-25 y F1–F8, los frentes de trabajo. QA
-designa el ambiente de calidad; SRE, el equipo de operación e ingeniería de fiabilidad; NOC, el
-centro de operaciones; SOC, el centro de operaciones de seguridad; y DTE, los documentos
-tributarios electrónicos.
+CAPÍTULO7
+AnexosdelSubdocumento7
+EstosanexosdetallanloslistadosqueelSubdocumento7resume.LaEDT,eldiccionarioy
+lacartaGanttestánenelFormularioT-14;elmétododeestimaciónyprogramación,laruta
+críticaylosfrentesdetrabajo,enelFormularioT-15;ylaimplantación,enelFormularioT-18.
+En estos anexos, BA, BTTy Caso designan las Bases Administrativas, las BasesTécnicas
+TransversalesylasBasesTécnicasdelcaso.SDseguidodeunnúmeroidentificaelSubdocu-
+mentocorrespondiente.EDTsignificaestructuradedescomposicióndeltrabajo;PT,paquete
+detrabajo;HH,horashombre;yE1/E2,Etapas1y2.EnlascartasGantt,RCidentificalosele-
+mentosmarcadoscomorutacríticaenlafuentedeprogramaciónyPT/Hidentificalosdemás
+paquetesehitos.H1–H12sonloshitosdelFormularioE-25yF1–F8,losfrentesdetrabajo.QA
+designaelambientedecalidad;SRE,elequipodeoperacióneingenieríadefiabilidad;NOC,el
+centrodeoperaciones;SOC,elcentrodeoperacionesdeseguridad;yDTE,losdocumentos
+tributarioselectrónicos.
 7.1 Anexo 7.A — Meses contractuales y ventanas de congelamiento
-según la fecha de inicio
-El artículo 17 de las Bases Administrativas (pp. 12–13) fija los meses del contrato, no sus
+segúnlafechadeinicio
+Elartículo17delasBasesAdministrativas(pp.12–13)fijalosmesesdelcontrato,nosus
 fechas. El mes 1 es el primer mes completo de ejecución (BA, art. 10, p. 8, numeral 2). Si
 el contrato se inicia en el mes calendario m, el mes contractual n cae en el mes calendario
-𝑚 + (𝑛 − 1), contado en aritmética de doce meses.
-El caso fija las ventanas del año: congelamiento total del 1 al 25 de septiembre y durante
-todo diciembre; congelamiento en los tres primeros días hábiles de cada mes (Caso, Capítulo
-15, RT-10.05, p. 27); y ningún paso a producción en septiembre ni en diciembre (sección 13.3,
-condición 2). El Capítulo 3, sección 3.1.2, deriva de esa regla los ocho meses de inicio que no
-ponen los meses 16 ni 21 en septiembre o diciembre (supuesto S-17). La Tabla 7.1 aplica la
-misma fórmula a los meses de marcha blanca; los meses en negrita caen en una ventana de
+𝑚 + (𝑛 − 1),contadoenaritméticadedocemeses.
+Elcasofijalasventanasdelaño:congelamientototaldel1al25deseptiembreydurante
+tododiciembre;congelamientoenlostresprimerosdíashábilesdecadames(Caso,Capítulo
+15,RT-10.05,p.27);yningúnpasoaproducciónenseptiembreniendiciembre(sección13.3,
+condición2).ElCapítulo3,sección3.1.2,derivadeesareglalosochomesesdeinicioqueno
+ponen los meses 16 ni 21 en septiembre o diciembre (supuesto S-17). LaTabla7.1 aplica la
+mismafórmulaalosmesesdemarchablanca;losmesesennegritacaenenunaventanade
 congelamiento.
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 4
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.1 Meses calendario de los períodos contractuales según el mes de inicio. Fuente: (Bases Administrativas,
-art. 17, pp. 12–13) y (Bases Técnicas del caso, secciones 13.2 y 13.3, pp. 22–23).
-Inicio del
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.1 Mesescalendariodelosperíodoscontractualessegúnelmesdeinicio.Fuente:(BasesAdministrativas,
+art.17,pp.12–13)y(BasesTécnicasdelcaso,secciones13.2y13.3,pp.22–23).
+Iniciodel
 contrato
-Mes 13 (H6) Meses 14 y
+Mes13(H6) Meses14y
 15
-Mes 16 (H7) Mes 19 (H11) Mes 20 Mes 21 (H12)
+Mes16(H7) Mes19(H11) Mes20 Mes21(H12)
 Diciembre
-de 2026
+de2026
 Diciembre
-de 2027
-Enero y
-febrero de
+de2027
+Eneroy
+febrerode
 2028
-Marzo de
+Marzode
 2028
-Junio de
+Juniode
 2028
-Julio de
+Juliode
 2028
-Agosto de
+Agostode
 2028
-Febrero de
+Febrerode
 2027
-Febrero de
+Febrerode
 2028
-Marzo y
-abril de
+Marzoy
+abrilde
 2028
-Mayo de
+Mayode
 2028
-Agosto de
+Agostode
 2028
 Septiembre
-de 2028
-Octubre de
+de2028
+Octubrede
 2028
-Marzo de
+Marzode
 2027
-Marzo de
+Marzode
 2028
-Abril y ma-
-yo de 2028
-Junio de
+Abrilyma-
+yode2028
+Juniode
 2028
 Septiembre
-de 2028
-Octubre de
+de2028
+Octubrede
 2028
 Noviembre
-de 2028
-Mayo de
+de2028
+Mayode
 2027
-Mayo de
+Mayode
 2028
-Junio y julio
-de 2028
-Agosto de
+Junioyjulio
+de2028
+Agostode
 2028
 Noviembre
-de 2028
+de2028
 Diciembre
-de 2028
-Enero de
+de2028
+Enerode
 2029
-Julio de
+Juliode
 2027
-Julio de
+Juliode
 2028
-Agosto y
+Agostoy
 septiembre
-de 2028
-Octubre de
+de2028
+Octubrede
 2028
-Enero de
+Enerode
 2029
-Febrero de
+Febrerode
 2029
-Marzo de
+Marzode
 2029
-Agosto de
+Agostode
 2027
-Agosto de
+Agostode
 2028
 Septiembre
-y octubre de
+yoctubrede
 2028
 Noviembre
-de 2028
-Febrero de
+de2028
+Febrerode
 2029
-Marzo de
+Marzode
 2029
-Abril de
+Abrilde
 2029
-Octubre de
+Octubrede
 2027
-Octubre de
+Octubrede
 2028
 Noviembre
-y diciembre
-de 2028
-Enero de
+ydiciembre
+de2028
+Enerode
 2029
-Abril de
+Abrilde
 2029
-Mayo de
+Mayode
 2029
-Junio de
+Juniode
 2029
 Noviembre
-de 2027
+de2027
 Noviembre
-de 2028
+de2028
 Diciembre
-de 2028 y
-enero de
+de2028y
+enerode
 2029
-Febrero de
+Febrerode
 2029
-Mayo de
+Mayode
 2029
-Junio de
+Juniode
 2029
-Julio de
+Juliode
 2029
-La tabla lleva a tres conclusiones. Primero, ningún inicio admisible deja las dos marchas
-blancas completas fuera de septiembre y diciembre: siempre hay al menos un mes de marcha
-blanca dentro de una ventana de congelamiento. Segundo, solo los inicios de diciembre de
+Latablallevaatresconclusiones.Primero,ningúninicioadmisibledejalasdosmarchas
+blancascompletasfueradeseptiembreydiciembre:siemprehayalmenosunmesdemarcha
+blancadentrodeunaventanadecongelamiento.Segundo,sololosiniciosdediciembrede
 2026, febrero de 2027 y marzo de 2027 ponen en producción la Etapa 2 antes de enero de
-2029, fecha desde la que rigen las condiciones de la principal cadena de supermercados (Caso,
-sección 13.2, p. 22; Capítulo 3, sección 3.1.2).
-Tercero, entre esos tres inicios, febrero de 2027 es el único en que el congelamiento afecta
-solo el último mes de una marcha blanca (el mes 20, de la Etapa 2) y no un inicio de marcha
-blanca. Con diciembre de 2026, el H6 caería en diciembre; con marzo de 2027, el H11 caería
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+2029,fechadesdelaquerigenlascondicionesdelaprincipalcadenadesupermercados(Caso,
+sección13.2,p.22;Capítulo3,sección3.1.2).
+Tercero,entreesostresinicios,febrerode2027eselúnicoenqueelcongelamientoafecta
+soloelúltimomesdeunamarchablanca(elmes20,delaEtapa2)ynouniniciodemarcha
+blanca.Condiciembrede2026,elH6caeríaendiciembre;conmarzode2027,elH11caería
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 5
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-en septiembre. Con febrero de 2027, las cuatro semanas de cierre de la marcha blanca de la
-Etapa 2 coinciden con el peak de Fiestas Patrias; por eso toda habilitación de la Etapa 2 ocurre
-en agosto de 2028 y el cierre se mide con el volumen del peak (Formulario T-18, sección 3.1).
-LafroX adopta febrero de 2027 como supuesto de calendario de la carta Gantt.
-Durante las fechas efectivamente congeladas no se inicia ninguna ola ni se despliega ningún
-cambio; se distingue el congelamiento total del 1 al 25 de septiembre de la prohibición de paso
-a producción durante todo septiembre y diciembre. La política adicional de despliegue de SD4
-se aplica como se describe en T-18, sección 1. La marcha blanca continúa en convivencia con
-la forma actual de trabajar, se siguen midiendo los indicadores diarios y el volumen real de
-septiembre sirve como prueba de carga en operación. La fecha efectiva de inicio se confirma
-con la consulta V-12 (Capítulo 3, Anexo 3.H).
-7.2 Anexo 7.B — Dependencias entre paquetes de trabajo
-La Tabla 7.2 lista las dependencias que estructuran la red del cronograma. Son de tipo fin-
-comienzo (FC), salvo las marcadas como comienzo-comienzo (CC), las de tipo «por interfaz»,
-en que el sucesor espera los contratos del predecesor para construir y su entrega para integrar ,
-y D-01 «por etapa», que distingue inicio preliminar y cierre sujeto a aprobación formal. Cada
-una indica su fundamento. El Formulario T-15, sección 6.1, aplica estas dependencias actividad
-por actividad. La identificación definitiva de la ruta crítica requiere recalcular la red con la
-línea base vigente y los recursos efectivamente asignados.
-Tabla 7.2 Dependencias entre paquetes de trabajo. Fuente: (Formulario T-14) y (Formulario T-18) y los capítulos
+LafroXSpA AnexosdelSubdocumento7
+enseptiembre.Confebrerode2027,lascuatrosemanasdecierredelamarchablancadela
+Etapa2coincidenconelpeakdeFiestasPatrias;poresotodahabilitacióndelaEtapa2ocurre
+enagostode2028yelcierresemideconelvolumendelpeak(FormularioT-18,sección3.1).
+LafroXadoptafebrerode2027comosupuestodecalendariodelacartaGantt.
+Durantelasfechasefectivamentecongeladasnoseinicianingunaolanisedesplieganingún
+cambio;sedistingueelcongelamientototaldel1al25deseptiembredelaprohibicióndepaso
+aproduccióndurantetodoseptiembreydiciembre.LapolíticaadicionaldedesplieguedeSD4
+seaplicacomosedescribeenT-18,sección1.Lamarchablancacontinúaenconvivenciacon
+laformaactualdetrabajar,sesiguenmidiendolosindicadoresdiariosyelvolumenrealde
+septiembresirvecomopruebadecargaenoperación.Lafechaefectivadeinicioseconfirma
+conlaconsultaV-12(Capítulo3,Anexo3.H).
+7.2 Anexo7.B—Dependenciasentrepaquetesdetrabajo
+LaTabla 7.2listalasdependenciasqueestructuranlareddelcronograma.Sondetipofin-
+comienzo(FC),salvolasmarcadascomocomienzo-comienzo(CC),lasdetipo«porinterfaz»,
+enqueelsucesoresperaloscontratosdelpredecesorparaconstruirysuentregaparaintegrar,
+yD-01«poretapa»,quedistingueiniciopreliminarycierresujetoaaprobaciónformal.Cada
+unaindicasufundamento.ElFormularioT-15,sección6.1,aplicaestasdependenciasactividad
+poractividad.Laidentificacióndefinitivadelarutacríticarequiererecalcularlaredconla
+líneabasevigenteylosrecursosefectivamenteasignados.
+Tabla7.2 Dependenciasentrepaquetesdetrabajo.Fuente:(FormularioT-14)y(FormularioT-18)yloscapítulos
 indicados.
 N.° Predecesor Sucesor Tipo Fundamento
-D-01 1.2.1 Versión prelimi-
-nar del alcance de la
-Etapa 1; aprobación H1
-2.1.1 Arquitectura lógi-
+D-01 1.2.1Versiónprelimi-
+nardelalcancedela
+Etapa1;aprobaciónH1
+2.1.1Arquitecturalógi-
 ca
-Por etapa La versión preliminar
-entregada en febrero ha-
-bilita el inicio preliminar
-de 2.1.1 el 1 de marzo;
-la aprobación formal de
-H1 condiciona el cierre
-de la arquitectura. Si el
-acta no llega antes de ese
-cierre, se reprograma el
-trabajo afectado
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+Poretapa Laversiónpreliminar
+entregadaenfebreroha-
+bilitaeliniciopreliminar
+de2.1.1el1demarzo;
+laaprobaciónformalde
+H1condicionaelcierre
+delaarquitectura.Siel
+actanollegaantesdeese
+cierre,sereprogramael
+trabajoafectado
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 6
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.2 — continuación
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.2—continuación
 N.° Predecesor Sucesor Tipo Fundamento
-D-02 1.2.3 Especificación
-de las interfaces sin
+D-02 1.2.3Especificación
+delasinterfacessin
 documentación
-3.3.2 Integración con el
+3.3.2Integraciónconel
 ERP
-FC Interfaces sin documen-
-tación (Caso, sección
+FC Interfacessindocumen-
+tación(Caso,sección
 17.5)
-D-03 1.2.2 Reglas de ruteo
-del planificador
-3.4.7 M4 Rutas FC Captura del conocimien-
-to antes de la jubilación
-(Caso, Capítulo 18, resul-
-tado 16)
-D-04 2.4.1 Aprobación de
-arquitectura, seguridad
-y datos (H2)
-3.4 Módulos de la Etapa
+D-03 1.2.2Reglasderuteo
+delplanificador
+3.4.7M4Rutas FC Capturadelconocimien-
+toantesdelajubilación
+(Caso,Capítulo18,resul-
+tado16)
+D-04 2.4.1Aprobaciónde
+arquitectura,seguridad
+ydatos(H2)
+3.4MódulosdelaEtapa
 1
-FC No se construye sin
-diseño aprobado (Sub-
-documento 6, fase de
+FC Noseconstruyesin
+diseñoaprobado(Sub-
+documento6,fasede
 Elaboración)
-D-05 2.6.2 Prototipos y prue-
-bas de usabilidad
-3.4 Módulos de la Etapa
+D-05 2.6.2Prototiposyprue-
+basdeusabilidad
+3.4MódulosdelaEtapa
 1
-FC Diseño con usuarios
-antes de construir (BA,
-Art. 26°); 2.6.2 cierra
-antes de que empiece
-3.4 (Formulario T-15,
-sección 6.1, lista de
-paquetes con entregable)
-D-06 2.2.1 Plan de seguridad 3.3.1 Identidad y con-
-trol de acceso
-FC La identidad aplica el
-plan de seguridad apro-
-bado en el H2
-D-07 5.2.1 Contrato de los
-servicios de A WS
-3.2 Servicios de nube FC Servicios activos antes
-de configurar ambientes
-D-08 3.2.1, 3.2.2, 3.2.4 y
-3.2.5 Servicios de nube
-de aplicación, datos,
-respaldo y seguridad
-3.1.1 a 3.1.3 Ambientes
-en la nube (H3)
-FC Los ambientes usan los
-servicios configurados.
-La ingesta de IoT 3.2.3
-precede a M12 (3.4.5) y
-la gestión de dispositivos
-3.2.6 precede a la confi-
-guración de terminales
-(6.5.1); no condicionan
-los ambientes
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+FC Diseñoconusuarios
+antesdeconstruir(BA,
+Art.26°);2.6.2cierra
+antesdequeempiece
+3.4(FormularioT-15,
+sección6.1,listade
+paquetesconentregable)
+D-06 2.2.1Plandeseguridad 3.3.1Identidadycon-
+troldeacceso
+FC Laidentidadaplicael
+plandeseguridadapro-
+badoenelH2
+D-07 5.2.1Contratodelos
+serviciosdeAWS
+3.2Serviciosdenube FC Serviciosactivosantes
+deconfigurarambientes
+D-08 3.2.1,3.2.2,3.2.4y
+3.2.5Serviciosdenube
+deaplicación,datos,
+respaldoyseguridad
+3.1.1a3.1.3Ambientes
+enlanube(H3)
+FC Losambientesusanlos
+serviciosconfigurados.
+LaingestadeIoT3.2.3
+precedeaM12(3.4.5)y
+lagestióndedispositivos
+3.2.6precedealaconfi-
+guracióndeterminales
+(6.5.1);nocondicionan
+losambientes
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 7
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.2 — continuación
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.2—continuación
 N.° Predecesor Sucesor Tipo Fundamento
-D-09 2.3.1 y 2.3.2 Planos de
-sala y racks
-5.1.2 Especificación
-y compra de la sala
-técnica, los racks, los
-servidores y los gabine-
-tes de borde
-FC Planos en el mes 1; La-
-froX especifica y emite
-la orden de compra en el
-mes 2
-D-10 5.1.2 Especificación
-y compra de la sala
-técnica, los racks, los
-servidores y los gabine-
-tes de borde
-6.1 Sala técnica de
+D-09 2.3.1y2.3.2Planosde
+salayracks
+5.1.2Especificación
+ycompradelasala
+técnica,losracks,los
+servidoresylosgabine-
+tesdeborde
+FC Planosenelmes1;La-
+froXespecificayemite
+laordendecompraenel
+mes2
+D-10 5.1.2Especificación
+ycompradelasala
+técnica,losracks,los
+servidoresylosgabine-
+tesdeborde
+6.1Salatécnicade
 Talca
-FC LafroX compra lo es-
-pecificado en el mes 2
-y recibe el suministro
-antes del montaje. La
-instalación 6.1 empieza
-en el mes 3. El CLIENTE
-compra solo el hardware
-de terreno, antes de cada
+FC LafroXcompraloes-
+pecificadoenelmes2
+yrecibeelsuministro
+antesdelmontaje.La
+instalación6.1empieza
+enelmes3.ElCLIENTE
+comprasoloelhardware
+deterreno,antesdecada
 ola
-D-11 6.1.5 Recepción técnica
-de la sala
-6.3.1 y 6.3.2 Racks R01 y
+D-11 6.1.5Recepcióntécnica
+delasala
+6.3.1y6.3.2RacksR01y
 R02
-FC El acta de la sala habi-
-lita el montaje; 6.1.5 se
-firma después de 6.1.2
-a 6.1.4 (Formulario T-
-15, sección 6.1, lista de
-paquetes con entregable)
-D-12 6.3.1 a 6.3.3 Racks de
-Talca y gabinete de
+FC Elactadelasalahabi-
+litaelmontaje;6.1.5se
+firmadespuésde6.1.2
+a6.1.4(FormularioT-
+15,sección6.1,listade
+paquetesconentregable)
+D-12 6.3.1a6.3.3Racksde
+Talcaygabinetede
 Concepción
-6.6 Configuración de
-los sitios
-FC El software de base se
-instala sobre el hardware
-montado. Los gabinetes
-de cross-docking (6.3.4)
-se montan junto con el
-equipamiento de campo
-de cada ola (6.5.1, CC)
-y no condicionan la
-configuración de los CD
-D-13 6.6.3 Borde de los CD
-en servicio y validación
+6.6Configuraciónde
+lossitios
+FC Elsoftwaredebasese
+instalasobreelhardware
+montado.Losgabinetes
+decross-docking(6.3.4)
+semontanjuntoconel
+equipamientodecampo
+decadaola(6.5.1,CC)
+ynocondicionanla
+configuracióndelosCD
+D-13 6.6.3BordedelosCD
+enservicioyvalidación
 inicial
-H3 (mes 6); pruebas
-ampliadas antes de H5
-FC Infraestructura híbrida
-del H3 (Formulario E-25)
-D-14 3.1 Ambientes (H3) Entrega y ejecución en
-QA de 3.4; no el inicio
-de desarrollo en DEV
-FC Los módulos se entregan
-en QA
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+H3(mes6);pruebas
+ampliadasantesdeH5
+FC Infraestructurahíbrida
+delH3(FormularioE-25)
+D-14 3.1Ambientes(H3) Entregayejecuciónen
+QAde3.4;noelinicio
+dedesarrolloenDEV
+FC Losmódulosseentregan
+enQA
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 8
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.2 — continuación
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.2—continuación
 N.° Predecesor Sucesor Tipo Fundamento
-D-15 3.3 Base compartida 3.4 Módulos de la Etapa
+D-15 3.3Basecompartida 3.4MódulosdelaEtapa
 1
-CC La base compartida
-se construye primero
-(Capítulo 3, sección
+CC Labasecompartida
+seconstruyeprimero
+(Capítulo3,sección
 3.4.3)
-D-16 3.4.1 M1 Recepción y
-3.4.2 M2 Inventario
-3.4.3 M5 Preparación
-y 3.4.4 M9 Calidad y
+D-16 3.4.1M1Recepcióny
+3.4.2M2Inventario
+3.4.3M5Preparación
+y3.4.4M9Calidady
 trazabilidad
 Por
 interfaz
-Recepción e inventario
-alimentan preparación
-y retiro (Capítulo 3, sec-
-ción 3.4.3). El sucesor
-construye después de
-que el predecesor fija sus
-contratos (actividad A02)
-e integra después de que
-el predecesor entrega en
-QA (A12)
-D-17 3.4.2 M2 Inventario 3.4.6 M3 Preventa CC La preventa necesita
-stock (Capítulo 3, sec-
-ción 3.4.3)
-D-18 3.4.3 M5 Preparación y
-3.4.6 M3 Preventa
-3.4.7 M4 Rutas y 3.4.8
-M6 Reparto
+Recepcióneinventario
+alimentanpreparación
+yretiro(Capítulo3,sec-
+ción3.4.3).Elsucesor
+construyedespuésde
+queelpredecesorfijasus
+contratos(actividadA02)
+eintegradespuésdeque
+elpredecesorentregaen
+QA(A12)
+D-17 3.4.2M2Inventario 3.4.6M3Preventa CC Lapreventanecesita
+stock(Capítulo3,sec-
+ción3.4.3)
+D-18 3.4.3M5Preparacióny
+3.4.6M3Preventa
+3.4.7M4Rutasy3.4.8
+M6Reparto
 Por
 interfaz
-Rutas y reparto requie-
-ren pedido confirmado y
-preparación (Capítulo 3,
-sección 3.4.3). El sucesor
-construye después de
-que el predecesor fija sus
-contratos (actividad A02)
-e integra después de que
-el predecesor entrega en
-QA (A12)
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+Rutasyrepartorequie-
+renpedidoconfirmadoy
+preparación(Capítulo3,
+sección3.4.3).Elsucesor
+construyedespuésde
+queelpredecesorfijasus
+contratos(actividadA02)
+eintegradespuésdeque
+elpredecesorentregaen
+QA(A12)
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 9
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.2 — continuación
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.2—continuación
 N.° Predecesor Sucesor Tipo Fundamento
-D-19 3.4.8 M6 Reparto 3.4.10 M7 Cobranza y
+D-19 3.4.8M6Reparto 3.4.10M7Cobranzay
 rendición
 Por
 interfaz
-La rendición requiere la
-entrega registrada (Ca-
-pítulo 3, sección 3.4.3).
-El sucesor construye
-después de que el prede-
-cesor fija sus contratos
-(actividad A02) e integra
-después de que el pre-
-decesor entrega en QA
+Larendiciónrequierela
+entregaregistrada(Ca-
+pítulo3,sección3.4.3).
+Elsucesorconstruye
+despuésdequeelprede-
+cesorfijasuscontratos
+(actividadA02)eintegra
+despuésdequeelpre-
+decesorentregaenQA
 (A12)
-D-20 3.4 Módulos de la Etapa
-1 y 3.6.1 a 3.6.4 Integra-
-ciones externas
-3.8.1 Pruebas de inte-
-gración (H4)
-FC Formulario E-25, H4: el
-software de la Etapa 1
-se prueba con todas sus
-interfaces externas
-D-21 3.8.1 Pruebas de inte-
+D-20 3.4MódulosdelaEtapa
+1y3.6.1a3.6.4Integra-
+cionesexternas
+3.8.1Pruebasdeinte-
+gración(H4)
+FC FormularioE-25,H4:el
+softwaredelaEtapa1
+sepruebacontodassus
+interfacesexternas
+D-21 3.8.1Pruebasdeinte-
 gración
-3.8.2 Aceptación y 3.8.3
-Operación sin conexión
-FC Bases Técnicas Trans-
-versales, numeral 20.1.
-Empiezan al terminar
-3.8.1, en paralelo con la
-revisión del H4 por el
+3.8.2Aceptacióny3.8.3
+Operaciónsinconexión
+FC BasesTécnicasTrans-
+versales,numeral20.1.
+Empiezanalterminar
+3.8.1,enparaleloconla
+revisióndelH4porel
 CLIENTE
-D-21b 3.8.1 Integración y
-regresión de la Etapa 1
+D-21b 3.8.1Integracióny
+regresióndelaEtapa1
 terminada
-3.8.4 Carga, 3.8.5 Recu-
-peración, 3.8.6 Segu-
-ridad ofensiva y 3.8.8
-Despliegue sin interrup-
+3.8.4Carga,3.8.5Recu-
+peración,3.8.6Segu-
+ridadofensivay3.8.8
+Desplieguesininterrup-
 ción
-FC Las pruebas no fun-
-cionales certifican en
-Preproducción la versión
-integrada; pueden eje-
-cutarse en paralelo con
-la revisión del H4 por el
+FC Laspruebasnofun-
+cionalescertificanen
+Preproducciónlaversión
+integrada;puedeneje-
+cutarseenparalelocon
+larevisióndelH4porel
 CLIENTE
-D-22 3.1.3 Ambiente de
+D-22 3.1.3Ambientede
 recuperación
-3.8.5 Prueba de recupe-
-ración ante desastres
-FC La prueba exige conmu-
-tación real
-D-23 3.8.2 a 3.8.6 y 3.8.8 3.8.7 Certificación de la
-Etapa 1 (H5)
-FC Formulario E-25, H5; RT-
-04.07 para el despliegue
-sin interrupción
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+3.8.5Pruebaderecupe-
+raciónantedesastres
+FC Lapruebaexigeconmu-
+taciónreal
+D-23 3.8.2a3.8.6y3.8.8 3.8.7Certificacióndela
+Etapa1(H5)
+FC FormularioE-25,H5;RT-
+04.07paraeldespliegue
+sininterrupción
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 10
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.2 — continuación
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.2—continuación
 N.° Predecesor Sucesor Tipo Fundamento
-D-24 3.7.1 a 3.7.4 Migración
-y ensayos
-3.7.5 Conciliación y
+D-24 3.7.1a3.7.4Migración
+yensayos
+3.7.5Conciliacióny
 corte
-FC Dos ensayos previos
-(numeral 20.1). El corte
-(3.7.5.A06) espera los
-ensayos 3.7.3 y 3.7.4; la
-preparación del corte
-avanza en paralelo en
-ambientes no producti-
+FC Dosensayosprevios
+(numeral20.1).Elcorte
+(3.7.5.A06)esperalos
+ensayos3.7.3y3.7.4;la
+preparacióndelcorte
+avanzaenparaleloen
+ambientesnoproducti-
 vos
-D-25 3.8.7 (H5), 3.7.5, 4.1.1 y
+D-25 3.8.7(H5),3.7.5,4.1.1y
 4.1.2
-4.2.1 Marcha blanca de
-la Etapa 1 (H6)
-FC Formulario E-25, H6;
-RT-20.01 y RT-20.02
-D-26 6.5 Equipamiento de
-campo de cada ola
-Ola correspondiente de
+4.2.1Marchablancade
+laEtapa1(H6)
+FC FormularioE-25,H6;
+RT-20.01yRT-20.02
+D-26 6.5Equipamientode
+campodecadaola
+Olacorrespondientede
 4.2.1
-FC Equipamiento instalado
-antes de la ola
-D-27 5.4.1 y 5.4.2 Acuerdos
-con transportistas y
+FC Equipamientoinstalado
+antesdelaola
+D-27 5.4.1y5.4.2Acuerdos
+contransportistasy
 sindicato
-Ola de reparto de 4.2.1 FC Capítulo 3, Anexo 3.I
-D-28 4.2.1 y 7.3.1 Certifica-
-ción de usuarios
-Acta de cierre 4.2.1;
-paso a producción E1;
-4.2.2 Estabilización y
-4.2.3 Aceptación H7
-FC Bases Administrativas,
-Art. 17.3 y 90.4. La esta-
-bilización comienza con
-producción, sin esperar
-H7. La aceptación H7 es
-posterior; la revisión del
-cierre es una condición
-separada (T-15, sección
+Oladerepartode4.2.1 FC Capítulo3,Anexo3.I
+D-28 4.2.1y7.3.1Certifica-
+cióndeusuarios
+Actadecierre4.2.1;
+pasoaproducciónE1;
+4.2.2Estabilizacióny
+4.2.3AceptaciónH7
+FC BasesAdministrativas,
+Art.17.3y90.4.Laesta-
+bilizacióncomienzacon
+producción,sinesperar
+H7.LaaceptaciónH7es
+posterior;larevisióndel
+cierreesunacondición
+separada(T-15,sección
 5.5)
-D-29 1.2.5 y 2.4.2 Línea base
-y diseño de la Etapa 2
+D-29 1.2.5y2.4.2Líneabase
+ydiseñodelaEtapa2
 (H8)
-3.5 Módulos de la Etapa
+3.5MódulosdelaEtapa
 2
-FC Formulario E-25, H8
-D-30 3.5 Módulos de la Etapa
+FC FormularioE-25,H8
+D-30 3.5MódulosdelaEtapa
 2
-3.9.1 Pruebas de inte-
-gración (H9)
-FC Formulario E-25, H9
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+3.9.1Pruebasdeinte-
+gración(H9)
+FC FormularioE-25,H9
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 11
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.2 — continuación
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.2—continuación
 N.° Predecesor Sucesor Tipo Fundamento
-D-31 3.9.1 Pruebas de inte-
+D-31 3.9.1Pruebasdeinte-
 gración
-3.9.2 Aceptación FC Bases Técnicas Trans-
-versales, numeral 20.1.
-Los ciclos de aceptación
-empiezan al terminar
-3.9.1, en paralelo con la
-revisión del H9; la prepa-
-ración de casos y datos
-avanza antes
-D-31b 3.9.1 Integración y
-regresión de la Etapa 2
+3.9.2Aceptación FC BasesTécnicasTrans-
+versales,numeral20.1.
+Losciclosdeaceptación
+empiezanalterminar
+3.9.1,enparaleloconla
+revisióndelH9;laprepa-
+racióndecasosydatos
+avanzaantes
+D-31b 3.9.1Integracióny
+regresióndelaEtapa2
 terminada
-3.9.3 Carga, 3.9.4 Recu-
-peración, 3.9.5 Segu-
-ridad ofensiva y 3.9.7
-Despliegue sin interrup-
+3.9.3Carga,3.9.4Recu-
+peración,3.9.5Segu-
+ridadofensivay3.9.7
+Desplieguesininterrup-
 ción
-FC Las pruebas no fun-
-cionales certifican en
-Preproducción la versión
-integrada sin degradar la
-Etapa 1
-D-31c 3.9.2 a 3.9.5 y 3.9.7 3.9.6 Certificación de la
-Etapa 2 (H10)
-FC Formulario E-25, H10;
-RT-04.07 para el desplie-
-gue sin interrupción
-D-32 3.9.6 (H10), 3.6.5 y 4.1.3 4.3.1 Marcha blanca de
-la Etapa 2 (H11)
-FC Formulario E-25, H11
-D-33 4.3.1, 7.3.2, 7.1.4 y 4.3.4 4.3.3 Aceptación final
+FC Laspruebasnofun-
+cionalescertificanen
+Preproducciónlaversión
+integradasindegradarla
+Etapa1
+D-31c 3.9.2a3.9.5y3.9.7 3.9.6Certificacióndela
+Etapa2(H10)
+FC FormularioE-25,H10;
+RT-04.07paraeldesplie-
+guesininterrupción
+D-32 3.9.6(H10),3.6.5y4.1.3 4.3.1Marchablancade
+laEtapa2(H11)
+FC FormularioE-25,H11
+D-33 4.3.1,7.3.2,7.1.4y4.3.4 4.3.3Aceptaciónfinal
 (H12)
-FC Bases Administrativas,
-Art. 17.3 y 37.1
-D-34 4.3.3 Aceptación final
+FC BasesAdministrativas,
+Art.17.3y37.1
+D-34 4.3.3Aceptaciónfinal
 (H12)
-9.1.2 Cierre formal de
-la implementación
-FC El archivo de todas las
-actas sigue al H12. La
-Operación cubre ambas
-etapas desde su primer
-día en el mes 21, simultá-
-neo al paso a producción
-de la Etapa 2, sin espe-
-rar el acta, y la entrega
-preparatoria 9.1.1 puede
-precederla (BA, art. 17.2,
-punto 4)
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+9.1.2Cierreformalde
+laimplementación
+FC Elarchivodetodaslas
+actassiguealH12.La
+Operacióncubreambas
+etapasdesdesuprimer
+díaenelmes21,simultá-
+neoalpasoaproducción
+delaEtapa2,sinespe-
+rarelacta,ylaentrega
+preparatoria9.1.1puede
+precederla(BA,art.17.2,
+punto4)
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 12
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.2 — continuación
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.2—continuación
 N.° Predecesor Sucesor Tipo Fundamento
-D-35 5.1.4 Compra/homolo-
-gación y 5.3.4 servicios
+D-35 5.1.4Compra/homolo-
+gacióny5.3.4servicios
 activos
-2.4.3 Banco de pruebas FC Cotización local, cer-
-tificado, prototipo y
-servicio móvil/SBD
-disponibles antes del
+2.4.3Bancodepruebas FC Cotizaciónlocal,cer-
+tificado,prototipoy
+serviciomóvil/SBD
+disponiblesantesdel
 banco.
-D-36 2.4.3 Banco de pruebas 2.4.4 Mapeo por carro-
+D-36 2.4.3Bancodepruebas 2.4.4Mapeoporcarro-
 cería
-FC Puntos críticos, botellas
-y tolerancias antes de
-instalar la versión piloto.
-D-37 2.4.4, 3.4.4, 3.4.5,
-3.8.1/H4, 5.3.4 y cua-
-tro actas 6.5.4
-4.1.4 Piloto de seis
+FC Puntoscríticos,botellas
+ytoleranciasantesde
+instalarlaversiónpiloto.
+D-37 2.4.4,3.4.4,3.4.5,
+3.8.1/H4,5.3.4ycua-
+troactas6.5.4
+4.1.4Pilotodeseis
 semanas
-FC M9 integrado, caminos
-activos y cuatro camio-
-nes recibidos antes del
-piloto V18/V20/V21.
-D-38 4.1.4 y las 28 actas de
+FC M9integrado,caminos
+activosycuatrocamio-
+nesrecibidosantesdel
+pilotoV18/V20/V21.
+D-38 4.1.4ylas28actasde
 6.5.4
-Ola 3 de reparto, 4.2.1 FC Piloto aprobado y kit
-completo en cada ca-
-mión antes de iniciar el
-nuevo reparto.
-En el cálculo del Formulario T-15, sección 5, D-14 a D-23 forman la cadena de la Etapa 1
-hasta el H5: la integración de cobranza tras reparto (D-19), la integración 3.8.1 (D-20) y las
-pruebas de certificación (D-21 a D-23). D-29 y D-30 forman la cadena de la Etapa 2, porque
-los módulos 3.5 se construyen entre el H8 y el H9 sin holgura propia. D-33 es el camino que
-controla el H12, con tres días hábiles de holgura. D-07 a D-13 convergen en el H3, y D-32 a D-34
-enlazan la certificación de la Etapa 2 con su marcha blanca, su aceptación y el cierre.
-7.3 Anexo 7.C — Momento de los resultados de aceptación del caso
-El Caso logística, Capítulo 18, p. 34, exige indicar en qué momento del cronograma se
-alcanza cada resultado y cómo se mide. La Tabla 7.3 ubica en el cronograma las metas y
-métodos del Capítulo 3, Anexo 3.J.
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+Ola3dereparto,4.2.1 FC Pilotoaprobadoykit
+completoencadaca-
+miónantesdeiniciarel
+nuevoreparto.
+D-39 1.1.3Actadeevidencia
+inicial
+3.6.1Intercambiocon
+proveedores
+FC CalidadyDatosparten
+delaevidenciayelcanal
+validadosporelCLIEN-
+TE.
+D-40 1.2.3Levantamientode
+interfaces
+3.6.2a3.6.6Integracio-
+nesexternas
+FC Elinventarioinicial
+identificaserviciosy
+contrapartes;lascade-
+nasrequierenademás
+perfildeintercambio,
+ambienteyfechade
+certificaciónantesde
+activar.
+D-41 2.1.3Modelodedatosy
+3.3.2InterfacesdelERP
+3.7.1Perfilamientoy
+saneamiento
+FC Elperfilamientousael
+modelodestinoylos
+contratosdeextracción
+delERP.
+D-42 3.7.1Perfilamiento 3.7.2Cargademaestros FC Lacargausalosconjun-
+tosyreglasdesanea-
+mientoaprobados.
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 13
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.3 Momento de los dieciséis resultados de aceptación. Fuente: (Bases Técnicas del caso, Capítulo 18, pp.
-34–35) y (Subdocumento 3, Anexo 3.J).
-ID Resultado Meta Momento Paquetes
-R18-01 Clientes afectados por
-lote en menos de 2
-horas
-Menos de 2 horas Marcha blanca de la
-Etapa 1 (meses 13 a 15);
-se acepta en el H7
-3.4.4
-R18-02 Lote registrado en el
-100 % de las recepcio-
-nes que lo requieren
-100 % Marcha blanca de la
-Etapa 1; H7
-3.4.1
-R18-03 Temperatura continua
-y auditable en cámaras
-y vehículos
-100 % de cámaras y
-camiones; tres series
-conciliadas
-Marcha blanca de la
-Etapa 1; H7
-2.4.3, 2.4.4,
-3.4.4, 3.4.5,
-4.1.4, 5.1.4,
-5.3.4, 6.5.3,
-6.5.4
-R18-04 OTIF medido de una
-sola forma
-90 % en el mes 15; 93 %
-en el mes 19; 95 % en
-el mes 32
-Medición diaria desde
-el mes 13; tramos en
-los meses 15, 19 y 32
-3.4.11
-R18-05 Stock y crédito visibles
-al tomar el pedido
-100 % de los pedidos Marcha blanca de la
-Etapa 1; H7
-3.4.6
-R18-06 Ningún pedido perdi-
-do ni duplicado por
-falta de señal
-0 Prueba de 14 horas
-antes del H5 y con-
-ciliación diaria en la
-marcha blanca de la
-Etapa 1
-3.3.6, 3.8.3
-R18-07 Ruta del día siguiente
-en menos de 20 minu-
-tos, corregible
-Menos de 20 minutos Marcha blanca de la
-Etapa 1; H7
-3.4.7
-R18-08 Prueba de entrega
-digital disponible el
-mismo día
-100 % Marcha blanca de la
-Etapa 1; H7
-3.4.8
-R18-09 Cero guías extraviadas
-o ilegibles
-0 % Marcha blanca de la
-Etapa 1; H7
-3.3.2, 3.4.8
-R18-10 Rendición cuadrada el
-mismo día
-100 % de diferencias
-con causal
-Marcha blanca de la
-Etapa 1; H7
-3.4.10
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.2—continuación
+N.° Predecesor Sucesor Tipo Fundamento
+D-43 3.7.2Cargademaestros 3.7.3y3.7.4Cargade
+saldosporsitio
+FC Laconciliacióndesaldos
+usaelmaestrocargadoy
+conciliado.
+D-44 3.10.1.1;3.10.1.2y
+3.10.1.3
+Estimadorylistasinco-
+nexión;luego3.10.1.4
+Poren-
+tregable
+parcial
+/FC
+Estimadorylistausan
+elprotocoloinicial;el
+pilotoesperaambos
+incrementos.
+D-45 3.10.2.1,3.10.2.2y
+3.10.2.3
+3.10.2.2,3.10.2.3y
+3.10.2.4,respectivamen-
+te
+Poren-
+tregable
+parcial
+/FC
+Elcircuitousaelcon-
+tratodeevidencia;la
+extensiónusaelcircuito
+mínimo;lavalidación
+esperalacapturacom-
+pleta.
+D-46 3.10.3.1,3.10.3.2y
+3.10.3.3
+3.10.3.2,3.10.3.3y
+3.10.3.4,respectivamen-
+te
+Poren-
+tregable
+parcial
+/FC
+Asociacióntrasaproba-
+cióndeparámetros;vista
+trasasociación;valida-
+cióntrasvistaintegrada.
+D-47 3.10.4.1,3.10.4.2y
+3.10.4.3
+Diseñodeimpresión,
+construcciónycertifica-
+cióndeINN-05
+Poren-
+tregable
+parcial
+/FC
+Privacidadrevisael
+prototipoinicial;cons-
+trucciónesperaeldiseño
+validado;certificación
+esperalosbloquesimple-
+mentados.
+D-48 3.8.1Integracióndela
+Etapa1
+4.1.1Plandeolasdela
+Etapa1
+FC Elplandeolasusala
+versiónintegradaysus
+resultadosdeprueba.
+D-49 4.1.1Plandeolas,3.7.2
+Cargademaestrosy
+3.8.2Pruebasdeacepta-
+ción
+4.1.2Procedimientoy
+ensayodereversiónde
+laEtapa1
+FC Elensayousaelplande
+olas,datosmigradosyla
+versiónaceptada.
+D-50 4.1.2Reversióndela
+Etapa1y3.9.1Integra-
+cióndelaEtapa2
+4.1.3Plandeimplanta-
+ciónyreversióndela
+Etapa2
+FC LareversióndelaEtapa
+2sediseñasobrelade
+laEtapa1ylaversión
+integrada.
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 14
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.3 — continuación
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.2—continuación
+N.° Predecesor Sucesor Tipo Fundamento
+D-51 3.6.6Incorporaciónde
+lasdemáscadenas
+Iniciodelascuatro
+semanasfinalesde
+4.3.1yexpediente4.3.3
+(H12)
+FC Todoelalcancedecade-
+nassehabilitaantesde
+F−28días(BA,art.17.3;
+R18-13).
+EnelcálculodelFormularioT-15,sección5,D-14aD-23formanlacadenadelaEtapa1
+hasta el H5: la integración de cobranza tras reparto (D-19), la integración 3.8.1 (D-20) y las
+pruebas de certificación (D-21 a D-23). D-29 y D-30 forman la cadena de la Etapa 2, porque
+losmódulos3.5seconstruyenentreelH8yelH9sinholgurapropia.D-33eselcaminoque
+controlaelH12,conochodíashábilesdeholgura.D-07aD-13convergenenelH3,yD-32a
+D-34enlazanlacertificacióndelaEtapa2consumarchablanca,suaceptaciónyelcierre.
+7.3 Anexo7.C—Momentodelosresultadosdeaceptacióndelcaso
+El Caso logística, Capítulo 18, p. 34, exige indicar en qué momento del cronograma se
+alcanza cada resultado y cómo se mide. La Tabla7.3 ubica en el cronograma las metas y
+métodosdelCapítulo3,Anexo3.J.
+Tabla7.3 Momentodelosdieciséisresultadosdeaceptación.Fuente:(BasesTécnicasdelcaso,Capítulo18,pp.
+34–35)y(Subdocumento3,Anexo3.J).
 ID Resultado Meta Momento Paquetes
-R18-11 Costo de servir por
-cliente y entrega
-100 % de las entregas Marcha blanca de la
-Etapa 2 (meses 19 y 20);
-H12
-3.5.4
-R18-12 Pérdida anual de enva-
-ses bajo la meta
-Hasta 7 % del parque al
-año
-Provisional al cierre de
-la marcha blanca de la
-Etapa 1 (H7); final tras
-12 meses de operación
-3.4.9
-R18-13 Pedidos de cadenas
-por vía electrónica y
-aviso de despacho
-100 % de las cadenas
-certificadas
-Marcha blanca de
-la Etapa 2; cadenas
-certificadas antes del
-mes 21
-3.5.1, 3.6.5,
-3.6.6
-R18-14 Ocupación mínima de
-cada camión y prome-
-dio superior
-60 % o más por salida;
-promedio sobre 68 %
-Cuatro semanas de la
-ola de reparto en la
-marcha blanca de la
-Etapa 1
-3.4.7
-R18-15 Causa de cada faltante
-registrada al producir-
-se
-100 % Marcha blanca de la
-Etapa 1; H7
-3.4.3
-R18-16 El planificador puede
-jubilarse sin que la
-operación se resienta
-OTIF sin caída respec-
-to del período con el
-planificador
-Dos semanas de pla-
-nificación sin el plani-
-ficador en la marcha
-blanca de la Etapa 1
-1.2.2, 3.4.7
-Los resultados R18-01 a R18-10 y R18-12/R18-14/R18-15/R18-16 tienen verificaciones en
-la marcha blanca de la Etapa 1 (14 resultados); R18-11 y R18-13 corresponden a E2. Uno de
-ellos, R18-06, se prueba además antes del H5, y R18-12 se acepta en esa marcha blanca solo de
-forma provisional. Por eso la certificación de usuarios y el volumen real de esa marcha blanca
-concentran el riesgo de aceptación del proyecto. Dos resultados se confirman en operación: el
-tramo de OTIF del mes 32 y la pérdida de envases tras 12 meses.
-7.4 Anexo 7.D — Innovaciones en la EDT y en el cronograma
-Cada innovación declara sus paquetes de la EDT y sus meses del cronograma, como exige
-el artículo 29, punto 4, de las Bases Administrativas (p. 19). La Tabla 7.4 los presenta con su
-código de innovación y sus meses.
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+R18-01 Clientesafectadospor
+loteenmenosde2
+horas
+Menosde2horas Marchablancadela
+Etapa1(meses13a15);
+seaceptaenelH7
+3.4.4
+R18-02 Loteregistradoenel
+100%delasrecepcio-
+nesquelorequieren
+100% Marchablancadela
+Etapa1;H7
+3.4.1
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 15
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.4 Paquetes y meses de las cinco innovaciones. Fuente: (Formulario T-14).
-Innovación Paquete de la
-cartera
-Paquete
-de la EDT
-Meses Hito asociado
-1 · Seguimiento de vencimien-
-to posentrega en el local
-INN-01.P1 3.10.1.1 7 a 9 —
-INN-01.P2 3.10.1.2 9 y 10 Límite con-
-tractual del
-H4
-INN-01.P3 3.10.1.3 9 y 10 Límite con-
-tractual del
-H4
-INN-01.P4 3.10.1.4 11 a 15 H5 y marcha
-blanca E1
-2 · Reproducción de incidentes
-de terreno
-INN-02.P1 3.10.2.1 2 y 3 —
-INN-02.P2 3.10.2.2 3 a 5 —
-INN-02.P3 3.10.2.3 5 a 10 H4
-INN-02.P4 3.10.2.4
-y 8.3.1
-11 a 15 (valida-
-ción) y 21 a 56
-(mantenimiento)
-Marcha blanca
-E1
-3 · Vida útil remanente por
-historia térmica del lote
-INN-03.P1 3.10.3.1 3 a 5 —
-INN-03.P2 3.10.3.2 5 a 9 —
-INN-03.P3 3.10.3.3 9 y 10 Límite con-
-tractual del
-H4
-INN-03.P4 3.10.3.4 11 a 15 H5 y marcha
-blanca E1
-INN-03.P5 8.3.2 Cada seis meses,
-21 a 56
-Operación
-4 · Tramo variable de la Opera-
-ción ligado al costo de servir
-INN-04.P1 5.4.3 17 a 20 —
-INN-04.P2 8.3.3 21 a 23 —
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.3—continuación
+ID Resultado Meta Momento Paquetes
+R18-03 Temperaturacontinua
+yauditableencámaras
+yvehículos
+100%decámarasy
+camiones;tresseries
+conciliadas
+Marchablancadela
+Etapa1;H7
+2.4.3,2.4.4,
+3.4.4,3.4.5,
+4.1.4,5.1.4,
+5.3.4,6.5.3,
+6.5.4
+R18-04 OTIFmedidodeuna
+solaforma
+90%enelmes15;93%
+enelmes19;95%en
+elmes32
+Medicióndiariadesde
+elmes13;tramosen
+losmeses15,19y32
+3.4.11
+R18-05 Stockycréditovisibles
+altomarelpedido
+100%delospedidos Marchablancadela
+Etapa1;H7
+3.4.6
+R18-06 Ningúnpedidoperdi-
+doniduplicadopor
+faltadeseñal
+0 Pruebade14horas
+antesdelH5ycon-
+ciliacióndiariaenla
+marchablancadela
+Etapa1
+3.3.6,3.8.3
+R18-07 Rutadeldíasiguiente
+enmenosde20minu-
+tos,corregible
+Menosde20minutos Marchablancadela
+Etapa1;H7
+3.4.7
+R18-08 Pruebadeentrega
+digitaldisponibleel
+mismodía
+100% Marchablancadela
+Etapa1;H7
+3.4.8
+R18-09 Ceroguíasextraviadas
+oilegibles
+0% Marchablancadela
+Etapa1;H7
+3.3.2,3.4.8
+R18-10 Rendicióncuadradael
+mismodía
+100%dediferencias
+concausal
+Marchablancadela
+Etapa1;H7
+3.4.10
+R18-11 Costodeservirpor
+clienteyentrega
+100%delasentregas Marchablancadela
+Etapa2(meses19y20);
+H12
+3.5.4
+R18-12 Pérdidaanualdeenva-
+sesbajolameta
+Hasta7%delparqueal
+año
+Provisionalalcierrede
+lamarchablancadela
+Etapa1(H7);finaltras
+12mesesdeoperación
+3.4.9
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 16
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.4 — continuación
-Innovación Paquete de la
-cartera
-Paquete
-de la EDT
-Meses Hito asociado
-INN-04.P3 8.3.4 24 a 56 Hito mensual
-5 · Hoja de negocio del almace-
-nero
-INN-05.P1 3.10.4.1 13 y 14 —
-INN-05.P2 3.10.4.2 14 y 15 —
-INN-05.P3 3.10.4.3 15 a 17 H9
-INN-05.P4 3.10.4.4
-y 8.3.5
-18 a 26 H10 a H12
-INN-05.P5 8.3.6 24 a 27 —
-Las innovaciones 1 a 3 concentran su construcción entre los meses 2 y 10 y se validan en la
-marcha blanca de la Etapa 1, por lo que su riesgo queda acotado antes del H7. La innovación
-5 sigue el calendario de la Etapa 2 y se extiende a las rutas durante los primeros meses de
-operación, y la innovación 4 liquida desde el mes 24, después de su línea base y de tres
-liquidaciones en sombra.
-7.5 Anexo 7.E — Trazabilidad de módulos e interfaces a la EDT
-La EDT contiene la arquitectura cuando cada módulo y cada interfaz del Capítulo 4 (Subdo-
-cumento 4) tienen al menos un paquete que los construye y prueba. La Tabla 7.5 presenta esa
-correspondencia para los doce módulos, y la Tabla 7.6, para las quince interfaces.
-Tabla 7.5 Módulos de la solución y paquetes de la EDT. Fuente: (Subdocumento 3, Tabla 3.4), y (Formulario T-14).
-Módulo Construcción Pruebas Etapa
-M1 Recepción 3.4.1 3.8.1 a 3.8.6 1
-M2 Inventario 3.4.2 3.8.1 a 3.8.6 1
-M3 Preventa 3.4.6 3.8.1 a 3.8.6 1
-M4 Rutas 3.4.7 3.8.1 a 3.8.6 1
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.3—continuación
+ID Resultado Meta Momento Paquetes
+R18-13 Pedidosdecadenas
+porvíaelectrónicay
+avisodedespacho
+100%delascadenas
+certificadas
+Marchablancade
+laEtapa2;cadenas
+certificadasantesdel
+mes21
+3.5.1,3.6.5,
+3.6.6
+R18-14 Ocupaciónmínimade
+cadacamiónyprome-
+diosuperior
+60%omásporsalida;
+promediosobre68%
+Cuatrosemanasdela
+oladerepartoenla
+marchablancadela
+Etapa1
+3.4.7
+R18-15 Causadecadafaltante
+registradaalproducir-
+se
+100% Marchablancadela
+Etapa1;H7
+3.4.3
+R18-16 Elplanificadorpuede
+jubilarsesinquela
+operaciónseresienta
+OTIFsincaídarespec-
+todelperíodoconel
+planificador
+Dossemanasdepla-
+nificaciónsinelplani-
+ficadorenlamarcha
+blancadelaEtapa1
+1.2.2,3.4.7
+Los resultados R18-01 a R18-10 y R18-12/R18-14/R18-15/R18-16 tienen verificaciones en
+la marcha blanca de la Etapa 1 (14 resultados); R18-11 y R18-13 corresponden a E2. Uno de
+ellos,R18-06,sepruebaademásantesdelH5,yR18-12seaceptaenesamarchablancasolode
+formaprovisional.Poresolacertificacióndeusuariosyelvolumenrealdeesamarchablanca
+concentranelriesgodeaceptacióndelproyecto.Dosresultadosseconfirmanenoperación:el
+tramodeOTIFdelmes32ylapérdidadeenvasestras12meses.
+7.4 Anexo7.D—InnovacionesenlaEDTyenelcronograma
+CadainnovacióndeclarasuspaquetesdelaEDTysusmesesdelcronograma,comoexige
+elartículo29,punto4,delasBasesAdministrativas(p.19).LaTabla 7.4lospresentaconsu
+códigodeinnovaciónysusmeses.
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 17
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.5 — continuación
-Módulo Construcción Pruebas Etapa
-M5 Preparación 3.4.3 3.8.1 a 3.8.6 1
-M6 Reparto 3.4.8 3.8.1 a 3.8.6 1
-M7 Cobranza y rendición 3.4.10 3.8.1 a 3.8.6 1
-M8 Devoluciones y envases 3.4.9 3.8.1 a 3.8.6 1
-M9 Calidad y trazabilidad 3.4.4 y
-temperatura
-de 3.4.5
-2.4.3, 2.4.4, 4.1.4
-y 3.8.1 a 3.8.6
-1
-M10 Analítica 3.4.11 (indica-
-dores y OTIF)
-y 3.5.4 (costo
-de servir)
-3.8 y 3.9 1 y 2
-M11 Canal moderno 3.5.1 3.9.1 a 3.9.5 2
-M12 Telemetría 3.4.5, solo
-posición
-3.8.1 a 3.8.6 1
-Once de los doce módulos se construyen en la cuenta 3.4 y se prueban en la 3.8; M10 Analítica
-es el único módulo con trabajo en ambas etapas, porque sus indicadores operacionales entran
-en la Etapa 1 y el costo de servir en la Etapa 2.
-La Tabla 7.6 presenta interfaces de la arquitectura y paquetes de la EDT.
-Tabla 7.6 Interfaces de la arquitectura y paquetes de la EDT. Fuente: (Subdocumento 4, Anexos 4-G y 4-H), y
-(Formulario T-14).
-Interfaz Propósito Paquetes
-INT-01 Pedido preventa y consulta 3.4.6, 3.3.6
-INT-02 Entrega, POD y cobro 3.4.8, 3.4.9, 3.4.10, 3.3.6
-INT-03 Eventos bodega a nube 3.4.2, 3.4.3, 3.3.6
-INT-04 Detalle de cross-docking a la nube 3.4.2, 6.3.4
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.4 Paquetesymesesdelascincoinnovaciones.Fuente:(FormularioT-14).
+Innovación Paquetedela
+cartera
+Paquete
+delaEDT
+Meses Hitoasociado
+1·Seguimientodevencimien-
+toposentregaenellocal
+INN-01.P1 3.10.1.1 7a9 —
+INN-01.P2 3.10.1.2 9y10 Límitecon-
+tractualdel
+H4
+INN-01.P3 3.10.1.3 9y10 Límitecon-
+tractualdel
+H4
+INN-01.P4 3.10.1.4 11a15 H5ymarcha
+blancaE1
+2·Reproduccióndeincidentes
+deterreno
+INN-02.P1 3.10.2.1 2y3 —
+INN-02.P2 3.10.2.2 3a5 —
+INN-02.P3 3.10.2.3 5a10 H4
+INN-02.P4 3.10.2.4
+y8.3.1
+11a15(valida-
+ción)y21a56
+(mantenimiento)
+Marchablanca
+E1
+3·Vidaútilremanentepor
+historiatérmicadellote
+INN-03.P1 3.10.3.1 3a5 —
+INN-03.P2 3.10.3.2 5a9 —
+INN-03.P3 3.10.3.3 9y10 Límitecon-
+tractualdel
+H4
+INN-03.P4 3.10.3.4 11a15 H5ymarcha
+blancaE1
+INN-03.P5 8.3.2 Cadaseismeses,
+21a56
+Operación
+4·TramovariabledelaOpera-
+ciónligadoalcostodeservir
+INN-04.P1 5.4.3 17a20 —
+INN-04.P2 8.3.3 21a23 —
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 18
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.6 — continuación
-Interfaz Propósito Paquetes
-INT-05 Temperatura M9: 30.548 mensajes/día, móvil 1 min y satélite
-3 min; 127.848 lecturas/día
-2.4.3, 2.4.4, 3.4.4, 3.4.5,
-4.1.4, 5.1.4, 5.3.4, 6.5.3,
-6.5.4
-INT-06 ERP 2017 3.3.2
-INT-07 Emisor DTE del ERP y SII 3.3.2
-INT-08 Cadenas modernas 3.6.5, 3.6.6
-INT-09 Pasarela de pago 3.6.2
-INT-10 Mapas y geocodificación 3.6.3
-INT-11 Avisos al cliente 3.6.4
-INT-12 Réplica de lectura del WMS de Talca 3.2.2
-INT-13 Identidad y manifiestos 3.3.1
-INT-14 Métricas, logs y trazas 3.1.5
-INT-15 Telemetría de flota 3.3.4
-Las quince interfaces tienen un paquete que las construye, y las interfaces internas (INT-01
-a INT-05 e INT-12 a INT-14) dependen de la base compartida o de los módulos que las usan.
-Además de estas interfaces, el paquete 3.6.1 construye el intercambio de lote y trazabilidad
-con los proveedores.
-7.6 Anexo 7.F — Supuestos de planificación y dependencias para la
-gestión de riesgos
-El sistema de cadena de frío requiere cotizaciones escritas de proveedores con domicilio
-en Chile y certificación Subtel aplicable. La homologación de equipos de red móvil reserva
-unas ocho semanas antes del banco de pruebas; los equipos Bluetooth/Wi-Fi requieren su
-certificación de alcance reducido. El paquete 5.1.4 inicia en el mes 1, 2.4.3 valida el banco
-en el mes 3 y 2.4.4 realiza el mapeo por carrocería en el mes 4. El servicio de los contratos
-5.3.4 está disponible en el mes 2, antes del banco. Cuatro actas parciales 6.5.4 y el cierre de
-integración 3.8.1/H4 preceden al piloto 4.1.4 de seis semanas (meses 10–11); el resto de las
-actas debe estar cerrado antes de la ola 3. La ausencia de certificado, de ensayo aprobado o de
-cotización impide aceptar el equipo y se escala por gobierno de proyecto.
-Esta matriz traslada al Capítulo 8 los supuestos de la planificación que condicionan el
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.4—continuación
+Innovación Paquetedela
+cartera
+Paquete
+delaEDT
+Meses Hitoasociado
+INN-04.P3 8.3.4 24a56 Hitomensual
+5·Hojadenegociodelalmace-
+nero
+INN-05.P1 3.10.4.1 13y14 —
+INN-05.P2 3.10.4.2 14y15 —
+INN-05.P3 3.10.4.3 15a17 H9
+INN-05.P4 3.10.4.4
+y8.3.5
+18a26 H10aH12
+INN-05.P5 8.3.6 24a27 —
+Lasinnovaciones1a3concentransuconstrucciónentrelosmeses2y10ysevalidanenla
+marchablancadelaEtapa1,porloquesuriesgoquedaacotadoantesdelH7.Lainnovación
+5 sigue el calendario de la Etapa 2 y se extiende a las rutas durante los primeros meses de
+operación, y la innovación 4 liquida desde el mes 24, después de su línea base y de tres
+liquidacionesensombra.
+7.5 Anexo7.E—TrazabilidaddemóduloseinterfacesalaEDT
+LaEDTcontienelaarquitecturacuandocadamóduloycadainterfazdelCapítulo4(Subdo-
+cumento4)tienenalmenosunpaquetequelosconstruyeyprueba.LaTabla 7.5presentaesa
+correspondenciaparalosdocemódulos,ylaTabla 7.6,paralasquinceinterfaces.
+Tabla7.5 MódulosdelasoluciónypaquetesdelaEDT.Fuente:(Subdocumento3,Tabla3.4),y(FormularioT-14).
+Módulo Construcción Pruebas Etapa
+M1Recepción 3.4.1 3.8.1a3.8.6 1
+M2Inventario 3.4.2 3.8.1a3.8.6 1
+M3Preventa 3.4.6 3.8.1a3.8.6 1
+M4Rutas 3.4.7 3.8.1a3.8.6 1
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 19
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-cronograma, con su responsable y el control que los vigila. El Capítulo 8 los evalúa con su
-escala y los registra en el Formulario T-16. Los códigos P7 son identificadores de esta matriz y
-no renumeran el Formulario T-12.
-La Tabla 7.7 presenta anexo 7.F; Supuestos de planificación y dependencias para la gestión
-de riesgos.
-Tabla 7.7 Anexo 7.F — Supuestos de planificación y dependencias para la gestión de riesgos. Fuente: (Formulario
-T-15, secciones 4.3, 5 y 6); (Subdocumento 8, anexos 8.A y 8.B); (Bases Administrativas, art. 17, pp. 12–13).
-ID Riesgo / supuesto EDT / hitos Responsable de
-tratamiento
-Disparador o con-
-trol
-P7-01 Validación de
-productividad y
-tamaños HH por
-clase
-Los 227 paquetes;
-T-15, sección 4
-JP y líderes de
-frente
-Se valida con el
-equipo en la línea
-base (H1), con
-trazabilidad a T-
-12, cantidades
-y ensayos. Se
-recalcula si la
-demanda supera
-la capacidad
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.5—continuación
+Módulo Construcción Pruebas Etapa
+M5Preparación 3.4.3 3.8.1a3.8.6 1
+M6Reparto 3.4.8 3.8.1a3.8.6 1
+M7Cobranzayrendición 3.4.10 3.8.1a3.8.6 1
+M8Devolucionesyenvases 3.4.9 3.8.1a3.8.6 1
+M9Calidadytrazabilidad 3.4.4y
+temperatura
+de3.4.5
+2.4.3,2.4.4,4.1.4
+y3.8.1a3.8.6
+1
+M10Analítica 3.4.11(indica-
+doresyOTIF)
+y3.5.4(costo
+deservir)
+3.8y3.9 1y2
+M11Canalmoderno 3.5.1 3.9.1a3.9.5 2
+M12Telemetría 3.4.5,solo
+posición
+3.8.1a3.8.6 1
+Oncedelosdocemódulosseconstruyenenlacuenta3.4ysepruebanenla3.8;M10Analítica
+eselúnicomódulocontrabajoenambasetapas,porquesusindicadoresoperacionalesentran
+enlaEtapa1yelcostodeservirenlaEtapa2.
+LaTabla 7.6presentainterfacesdelaarquitecturaypaquetesdelaEDT.
+Tabla7.6 InterfacesdelaarquitecturaypaquetesdelaEDT.Fuente:(Subdocumento4,Anexos4-Gy4-H),y
+(FormularioT-14).
+Interfaz Propósito Paquetes
+INT-01 Pedidopreventayconsulta 3.4.6,3.3.6
+INT-02 Entrega,PODycobro 3.4.8,3.4.9,3.4.10,3.3.6
+INT-03 Eventosbodegaanube 3.4.2,3.4.3,3.3.6
+INT-04 Detalledecross-dockingalanube 3.4.2,6.3.4
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 20
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.7 — continuación
-ID Riesgo / supuesto EDT / hitos Responsable de
-tratamiento
-Disparador o con-
-trol
-P7-02 Programación por
-paquete depende
-de tamaños y
-equipos supuestos
-D-01–D-34; H2/H3/
-H4/H5/H9/H10
-JP/ARQ T-15, secciones 5
-y 6, programa los
-168 paquetes con
-entregable, con ac-
-tividades hasta el
-H2 y planificación
-gradual después,
-con dependen-
-cias, revisión Art.
-18.3 y nivelación;
-holguras de 2 a
-20 días hábiles
-por hito. Se vali-
-da con el equipo
-en la línea base
-(H1) y se repite
-el cálculo. Se es-
-cala y replanifica
-cuando la desvia-
-ción proyectada
-supera la mitad de
-la holgura
-P7-03 Solapamientos
-compiten por
-especialistas
-4.2.1/4.2.2, 3.5,
-4.3.1; meses
-13–15/19–20
-Líder DES y CAL Mantener 256
-HH DES + 128
-HH CAL/mes
-protegidas E1, sin
-préstamo a F4;
-asignar personas
-nominales
-P7-04 Fecha efectiva
-cambia congela-
-mientos
-1.1.3, 4.1; V-12/H6/
-H11/H7/H12
-JP/CLIENTE Confirmar fecha
-y transformar
-meses relativos
-en calendario; no
-iniciar corte en
-fechas prohibidas
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.6—continuación
+Interfaz Propósito Paquetes
+INT-05 TemperaturaM9:30.548mensajes/día,móvil1minysatélite
+3min;127.848lecturas/día
+2.4.3,2.4.4,3.4.4,3.4.5,
+4.1.4,5.1.4,5.3.4,6.5.3,
+6.5.4
+INT-06 ERP2017 3.3.2
+INT-07 EmisorDTEdelERPySII 3.3.2
+INT-08 Cadenasmodernas 3.6.5,3.6.6
+INT-09 Pasareladepago 3.6.2
+INT-10 Mapasygeocodificación 3.6.3
+INT-11 Avisosalcliente 3.6.4
+INT-12 RéplicadelecturadelWMSdeTalca 3.2.2
+INT-13 Identidadymanifiestos 3.3.1
+INT-14 Métricas,logsytrazas 3.1.5
+INT-15 Telemetríadeflota 3.3.4
+Lasquinceinterfacestienenunpaquetequelasconstruye,ylasinterfacesinternas(INT-01
+aINT-05eINT-12aINT-14)dependendelabasecompartidaodelosmódulosquelasusan.
+Ademásdeestasinterfaces,elpaquete3.6.1construyeelintercambiodeloteytrazabilidad
+conlosproveedores.
+7.6 Anexo 7.F — Supuestos de planificación y dependencias para la
+gestiónderiesgos
+Elsistemadecadenadefríorequierecotizacionesescritasdeproveedorescondomicilio
+enChileycertificaciónSubtelaplicable.Lahomologacióndeequiposderedmóvilreserva
+unas ocho semanas antes del banco de pruebas; los equipos Bluetooth/Wi-Fi requieren su
+certificación de alcance reducido. El paquete 5.1.4 inicia en el mes 1, 2.4.3 valida el banco
+en el mes 3 y 2.4.4 realiza el mapeo por carrocería en el mes 4. El servicio de los contratos
+5.3.4estádisponibleenelmes2,antesdelbanco.Cuatroactasparciales6.5.4yelcierrede
+integración 3.8.1/H4 preceden al piloto 4.1.4 de seis semanas (meses 10–11); el resto de las
+actasdebeestarcerradoantesdelaola3.Laausenciadecertificado,deensayoaprobadoode
+cotizaciónimpideaceptarelequipoyseescalaporgobiernodeproyecto.
+Esta matriz traslada al Capítulo 8 los supuestos de la planificación que condicionan el
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 21
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.7 — continuación
-ID Riesgo / supuesto EDT / hitos Responsable de
+LafroXSpA AnexosdelSubdocumento7
+cronograma, con su responsable y el control que los vigila. El Capítulo 8 los evalúa con su
+escalaylosregistraenelFormularioT-16.LoscódigosP7sonidentificadoresdeestamatrizy
+norenumeranelFormularioT-12.
+LaTabla 7.7presentaanexo7.F;Supuestosdeplanificaciónydependenciasparalagestión
+deriesgos.
+Tabla7.7 Anexo7.F—Supuestosdeplanificaciónydependenciasparalagestiónderiesgos.Fuente:(Formulario
+T-15,secciones4.3,5y6);(Subdocumento8,anexos8.Ay8.B);(BasesAdministrativas,art.17,pp.12–13).
+ID Riesgo/supuesto EDT/hitos Responsablede
 tratamiento
-Disparador o con-
+Disparadorocon-
 trol
-P7-05 Ola/cadena no
-lista antes de
-cuatro semanas de
-cierre
-4.2.1/4.3.1, 7.3,
-3.6.5/6
-IMP/Comer-
-cial/Operaciones
-Registro de todo
-el alcance, acti-
-vación antes del
-tramo final, cero
-incidentes críti-
-cos/altos; no reem-
-plazar alcance por
-muestra
-P7-06 Reversión ma-
-nual no soporta
-despacho o falla
-DTE
-4.1.2/3.3.2; H6/
-H11
-Operacio-
-nes/ARQ/SRE
-Ensayo de 96 des-
-pachos, objetivo
-total 40 minutos,
-final antes de
-05:30; contingen-
-cia ERP aprobada
-P7-07 Retiro temprano
-de acompaña-
-miento o capa-
-cidad de mesa
-insuficiente
-4.2.2/4.3.2/8.1.1/
-8.1.2/8.1.5
-IMP/SRE Decremento sólo
-con acta e indica-
-dores sostenidos;
-mesa con las po-
-siciones del SD4 y
-SOC 24×7 en T-15;
-medir abandono
-y resolución al
-primer contacto y
-calibrar Erlang A
-(T-15, sección 5.6)
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+P7-01 Validaciónde
+productividady
+tamañosHHpor
+clase
+Los227paquetes;
+T-15,sección4
+JPylíderesde
+frente
+Sevalidaconel
+equipoenlalínea
+base(H1),con
+trazabilidadaT-
+12,cantidades
+yensayos.Se
+recalculasila
+demandasupera
+lacapacidad
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 22
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.7 — continuación
-ID Riesgo / supuesto EDT / hitos Responsable de
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.7—continuación
+ID Riesgo/supuesto EDT/hitos Responsablede
 tratamiento
-Disparador o con-
+Disparadorocon-
 trol
-P7-08 Compra/sala/bor-
-de incumple H3
-5.1.2/6.1/6.3/6.6.3 SRE LafroX emite la
-orden de compra
-en el mes 2. La
-sala se instala
-en el mes 3 y se
-recibe en el mes
-4, antes de racks y
-configuración. El
-borde de los CD
-entra en servicio
-en el mes 5 para el
-H3
-P7-09 Reserva de
-stock/retención
-duplica o confir-
-ma sin acuse
-3.3.6/3.4.2/3.4.6/
-3.8.1/3.8.3
-ARQ/DES/CAL La coordinación
-de reserva y reten-
-ción (SD4, apar-
-tado 4.1.4.4) se
-valida antes del H4
-con AL-STOCK-01/
-AL-ACT-01: con-
-currencia, corte,
-reintento, acuse
-durable y autori-
-dad por época
-continúa en la página siguiente
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+P7-02 Programaciónpor
+paquetedepende
+detamañosy
+equipossupuestos
+D-01–D-34;H2/H3/
+H4/H5/H9/H10
+JP/ARQ T-15,secciones5
+y6,programalos
+168paquetescon
+entregable,conac-
+tividadeshastael
+H2yplanificación
+gradualdespués,
+condependen-
+cias,revisiónArt.
+18.3ynivelación;
+holgurasde5a
+20díashábiles
+porhito.Sevali-
+daconelequipo
+enlalíneabase
+(H1)yserepite
+elcálculo.Sees-
+calayreplanifica
+cuandoladesvia-
+ciónproyectada
+superalamitadde
+laholgura
+P7-03 Solapamientos
+compitenpor
+especialistas
+4.2.1/4.2.2,3.5,
+4.3.1;meses
+13–15/19–20
+LíderDESyCAL Mantener256
+HHDES+128
+HHCAL/mes
+protegidasE1,sin
+préstamoaF4;
+asignarpersonas
+nominales
+P7-04 Fechaefectiva
+cambiacongela-
+mientos
+1.1.3,4.1;V-12/H6/
+H11/H7/H12
+JP/CLIENTE Confirmarfecha
+ytransformar
+mesesrelativos
+encalendario;no
+iniciarcorteen
+fechasprohibidas
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 23
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-Tabla 7.7 — continuación
-ID Riesgo / supuesto EDT / hitos Responsable de
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.7—continuación
+ID Riesgo/supuesto EDT/hitos Responsablede
 tratamiento
-Disparador o con-
+Disparadorocon-
 trol
-P7-10 Tráfico adicional
-o recuperación
-excede diseño
-3.8.4/3.9.3; SD4
-física/DR
-ARQ/SRE AL-STOCK-01 mi-
-de la proporción
-de líneas con más
-de una retención
-y 3.8.4/3.9.3 ve-
-rifican carga y
-drenaje conforme
-al Anexo 4-I y a
-la sección 4-W .5
-del Anexo 4-W , sin
-sumar la coordi-
-nación al drenaje.
-El RTO de 4 h y
-el RPO de 15 min
-se verifican con
-AL-DR-01 (SD4
-4.3.2.4): alarmas
-de retraso de re-
-plicación a 5 y
-15 min, reposi-
-ción del enlace
-y medición en
-conmutación real
-P7-11 Control de conser-
-vación del precio
-pactado
-1.2.1/3.4.6; SD2
-S-09, RF-03.11/12 y
-SD3 RNG-08
-Comercial/JP Probar cambio de
-lista entre pedido
-y despacho y de-
-tectar diferencias
-ERP
-Los once supuestos se concentran en tres frentes: el tamaño de las estimaciones (P7-01
-a P7-03), la fecha efectiva y las ventanas de corte (P7-04 a P7-06) y las dependencias técnicas
-con la arquitectura (P7-08 a P7-10). Cada uno tiene un control que se revisa en el Comité de
-Proyecto, y el Capítulo 8 asigna a los de mayor exposición una reserva de contingencia.
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+P7-05 Ola/cadenano
+listaantesde
+cuatrosemanasde
+cierre
+4.2.1/4.3.1,7.3,
+3.6.5/6
+IMP/Comer-
+cial/Operaciones
+Registrodetodo
+elalcance,acti-
+vaciónantesdel
+tramofinal,cero
+incidentescríti-
+cos/altos;noreem-
+plazaralcancepor
+muestra
+P7-06 Reversiónma-
+nualnosoporta
+despachoofalla
+DTE
+4.1.2/3.3.2;H6/
+H11
+Operacio-
+nes/ARQ/SRE
+Ensayode96des-
+pachos,objetivo
+total40minutos,
+finalantesde
+05:30;contingen-
+ciaERPaprobada
+P7-07 Retirotemprano
+deacompaña-
+mientoocapa-
+cidaddemesa
+insuficiente
+4.2.2/4.3.2/8.1.1/
+8.1.2/8.1.5
+IMP/SRE Decrementosólo
+conactaeindica-
+doressostenidos;
+mesaconlaspo-
+sicionesdelSD4y
+SOC24 ×7enT-15;
+medirabandono
+yresoluciónal
+primercontactoy
+calibrarErlangA
+(T-15,sección5.6)
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 24
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-7.6.1 Política de reservas que recibe el Capítulo 8
-El modelo protege 3.072 HH para correcciones de la Etapa 1 en los meses 13 a 20, además
-del trabajo base y de la cobertura de servicio. El cálculo vigente del Formulario T-15, sección
-5, da estas holguras contractuales en días hábiles: H1 5, H2 11, H3 17, H4 16, H5 20, H7 2,
-H8 14, H9 19, H10 13 y H12 3. Son márgenes de programación, no capacidad movilizable.
-La subsanación de observaciones del CLIENTE consume la holgura del hito (T-15, sección
-5.5); en H1, H7 y H12, la preparación preliminar del expediente no garantiza que quepan la
-subsanación y una segunda revisión. El plazo aplicable al cierre de marcha blanca tampoco se
-presume absorbido por H7/H12; la secuencia y su incompatibilidad con producción objetivo
-están en T-15, sección 5.5. Toda amenaza a una fecha contractual o a la revisión del CLIENTE
-se escala con su impacto. La holgura local de convergencia no se suma como reserva adicional.
-Las últimas cuatro semanas de marcha blanca no son reserva. La reserva de gestión se define
-en la Oferta Económica, porque la Oferta Técnica no contiene precios.
-7.6.2 Condiciones para aprobar la línea base
-Antes de aprobar la línea base del cronograma en el H1, el Jefe de Proyecto presenta
-al Comité de Proyecto la estimación validada por los líderes de frente, la red detallada, las
-personas y turnos asignados a cada frente, la fecha efectiva de inicio confirmada por el CLIENTE
-y las decisiones de la consulta V-12. La evidencia de los ensayos se incorpora a medida que
-cada hito la produce.
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.7—continuación
+ID Riesgo/supuesto EDT/hitos Responsablede
+tratamiento
+Disparadorocon-
+trol
+P7-08 Compra/sala/bor-
+deincumpleH3
+5.1.2/6.1/6.3/6.6.3 SRE LafroXemitela
+ordendecompra
+enelmes2.La
+salaseinstala
+enelmes3yse
+recibeenelmes
+4,antesderacksy
+configuración.El
+bordedelosCD
+entraenservicio
+enelmes5parael
+H3
+P7-09 Reservade
+stock/retención
+duplicaoconfir-
+masinacuse
+3.3.6/3.4.2/3.4.6/
+3.8.1/3.8.3
+ARQ/DES/CAL Lacoordinación
+dereservayreten-
+ción(SD4,apar-
+tado4.1.4.4)se
+validaantesdelH4
+conAL-STOCK-01/
+AL-ACT-01:con-
+currencia,corte,
+reintento,acuse
+durableyautori-
+dadporépoca
+continúaenlapáginasiguiente
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 25
 
 ---
 
-LafroX SpA Anexos del Subdocumento 7
-## Referencias
-Las fuentes citadas en estos anexos se listan en formato APA 7. ª edición. Las Bases se citan
-en el texto con su documento y el artículo, capítulo, sección o código del requisito.
-• Distribuidora Puelche S.A. (2026a). Bases Administrativas, Licitación TFEP-01/2026.
-• Distribuidora Puelche S.A. (2026b). Bases Técnicas Transversales, Licitación TFEP-01/2026.
-• Distribuidora Puelche S.A. (2026c). Bases Técnicas del Caso Logística.
-LafroX SpA
-Subdocumento 7: Anexos
-Media firma: Alex Aravena
+LafroXSpA AnexosdelSubdocumento7
+Tabla7.7—continuación
+ID Riesgo/supuesto EDT/hitos Responsablede
+tratamiento
+Disparadorocon-
+trol
+P7-10 Tráficoadicional
+orecuperación
+excedediseño
+3.8.4/3.9.3;SD4
+física/DR
+ARQ/SRE AL-STOCK-01mi-
+delaproporción
+delíneasconmás
+deunaretención
+y3.8.4/3.9.3ve-
+rificancargay
+drenajeconforme
+alAnexo4-Iya
+lasección4-W.5
+delAnexo4-W,sin
+sumarlacoordi-
+naciónaldrenaje.
+ElRTOde4hy
+elRPOde15min
+severificancon
+AL-DR-01(SD4
+4.3.2.4):alarmas
+deretrasodere-
+plicacióna5y
+15min,reposi-
+cióndelenlace
+ymediciónen
+conmutaciónreal
+P7-11 Controldeconser-
+vacióndelprecio
+pactado
+1.2.1/3.4.6;SD2
+S-09,RF-03.11/12y
+SD3RNG-08
+Comercial/JP Probarcambiode
+listaentrepedido
+ydespachoyde-
+tectardiferencias
+ERP
+Los once supuestos se concentran en tres frentes: el tamaño de las estimaciones (P7-01
+aP7-03),lafechaefectivaylasventanasdecorte(P7-04aP7-06)ylasdependenciastécnicas
+conlaarquitectura(P7-08aP7-10).CadaunotieneuncontrolqueserevisaenelComitéde
+Proyecto,yelCapítulo8asignaalosdemayorexposiciónunareservadecontingencia.
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
 26
+
+---
+
+LafroXSpA AnexosdelSubdocumento7
+7.6.1 PolíticadereservasquerecibeelCapítulo8
+Elmodeloprotege3.072HHparacorreccionesdelaEtapa1enlosmeses13a20,además
+del trabajo base y de la cobertura de servicio. El Formulario T-15, sección 5, calcula estas
+holgurasendíashábiles:H15,H214,H318,H418,H520,H710,H816,H919,H1014yH128.
+Sonmárgenesdeprogramación,nocapacidadmovilizable.Lasubsanacióndeobservaciones
+delCLIENTEconsumelaholguradelhito;enH7yH12,sialtérminodelamarchablancano
+secumplenlascondicionesdelartículo17.3,LafroXlaextiendeasucostosindesplazarlas
+fechascontractuales(T-15,sección5.5).Todaamenazaaunafechacontractualoalarevisión
+del CLIENTE se escala con su impacto. La holgura local de convergencia no se suma como
+reservaadicional.Lasúltimascuatrosemanasdemarchablancanosonreserva.Lareservade
+gestiónsedefineenlaOfertaEconómica,porquelaOfertaTécnicanocontieneprecios.
+7.6.2 Condicionesparaaprobarlalíneabase
+Antes de aprobar la línea base del cronograma en el H1, el Jefe de Proyecto presenta
+al Comité de Proyecto la estimación validada por los líderes de frente, la red detallada, las
+personasyturnosasignadosacadafrente,lafechaefectivadeinicioconfirmadaporelCLIENTE
+ylasdecisionesdelaconsultaV-12.Laevidenciadelosensayosseincorporaamedidaque
+cadahitolaproduce.
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
+27
+
+---
+
+LafroXSpA AnexosdelSubdocumento7
+## Referencias
+LasfuentescitadasenestosanexosselistanenformatoAPA7.ªedición.LasBasessecitan
+eneltextoconsudocumentoyelartículo,capítulo,secciónocódigodelrequisito.
+• DistribuidoraPuelcheS.A.(2026a). Bases Administrativas, Licitación TFEP-01/2026.
+• DistribuidoraPuelcheS.A.(2026b). Bases Técnicas Transversales, Licitación TFEP-01/2026.
+• DistribuidoraPuelcheS.A.(2026c). Bases Técnicas del Caso Logística.
+LafroXSpA
+Subdocumento7: Anexos
+Mediafirma: AlexAravena
+28

@@ -1,0 +1,186 @@
+\begin{tablalafrox}{Elementos de alcance de cada módulo. Fuente: Formulario T-12, columna Paquete EDT; tasas M de esta sección.}{tab:T15-tamano-detalle}
+  {L{1.3cm} Y L{3.2cm} L{2.0cm} R{1.0cm}}
+  {\cab{Paquete} & \cab{Elemento de alcance} & \cab{Requisitos T-12} & \cab{Tipo} & \cab{M (HH)}}
+  3.4.1 M1 & Recepción contra OC con alerta por discrepancia & RF-01.01 & Flujo M & 48 \\
+   & Captura de lote y vencimiento por GS1 & RF-01.02, RF-01.03, RF-01.06 & Flujo M & 48 \\
+   & No conformidad con fotografía y cuarentena & RF-01.04, RF-01.05 & Flujo M & 48 \\
+   & Generación de SSCC y etiqueta GS1-128 & RF-01.07 & Flujo M & 48 \\
+   & Ubicación del SSCC con validación térmica & RF-01.08 & Flujo S & 24 \\
+   & Maestro de productos & RF-01.10 & Flujo M & 48 \\
+   & Ingreso de inventario al ERP con cola y reintento & RF-01.09 & Interfaz & 64 \\
+   & Impresora de etiquetas & RF-01.07 & Dispositivo & 64 \\
+   & Operación sin conexión en bodega & RT-17.01 & Sin conexión & 120 \\
+   & Registro de ítem dentro del tiempo exigido & RNF-01.01 & Rendimiento & 24 \\
+  \midrule
+  3.4.2 M2 & Instalaciones, zonas y ubicaciones & RF-02.01 & Flujo M & 48 \\
+   & Stock consolidado y disponible para venta & RF-02.02, RF-02.05 & Flujo M & 48 \\
+   & Propuesta de slotting por rotación ABC & RF-02.03 & Flujo C & 96 \\
+   & Conteo cíclico y ajuste & RF-02.04 & Flujo M & 48 \\
+   & Inventario en tránsito entre sitios & RF-02.06 & Flujo M & 48 \\
+   & Ocupación por zona & RF-02.07 & Flujo S & 24 \\
+   & Control FEFO y alertas de vencimiento & RF-02.09 & Flujo M & 48 \\
+   & Lecturas en cross-docking & RF-02.11 & Flujo M & 48 \\
+   & Validación térmica en reubicación & RF-01.11 & Flujo S & 24 \\
+   & Mermas por vencimiento & RF-08.05 & Flujo S & 24 \\
+   & Reposición sugerida con promociones & RF-10.01, RF-10.02 & Flujo C & 96 \\
+   & Traspaso de reposición y transferencias al ERP & RF-10.03, RF-02.06 & Interfaz & 64 \\
+  \midrule
+  3.4.3 M5 & Generación de misiones por turno & RF-05.01 & Flujo M & 48 \\
+   & Picking dirigido con secuencia seco, refrigerado, congelado & RF-02.08, RF-05.04 & Flujo C & 96 \\
+   & Validación por escaneo y registro de lote & RF-05.02, RF-09.08 & Flujo M & 48 \\
+   & Faltantes con motivo & RF-05.03 & Flujo S & 24 \\
+   & Asignación FEFO & RF-05.05 & Flujo M & 48 \\
+   & Carga en secuencia inversa a la ruta & RF-05.07 & Flujo M & 48 \\
+   & Tiempo fuera de frío en andén & RF-09.11 & Flujo M & 48 \\
+   & Cierre de misión al ERP & RF-05.06 & Interfaz & 64 \\
+   & Operación sin cobertura en cámara & RNF-09.04, RT-17.01 & Sin conexión & 120 \\
+   & Confirmación de línea en 1 segundo & RNF-05.01 & Rendimiento & 24 \\
+   & Interfaz operable con guantes a −22 °C & RNF-05.02 & Necesidad especial & 48 \\
+  \midrule
+  3.4.4 M9 & Ciclo de vida del lote & RF-02.10 & Flujo C & 96 \\
+   & Trazabilidad hacia adelante y hacia atrás & RF-09.01, RF-09.02 & Flujo C & 96 \\
+   & Registro continuo de temperatura en cámaras & RF-09.03, RNF-09.05 & Flujo M & 48 \\
+   & Motor de excursión térmica parametrizable y alertas & RF-09.05, RF-09.10 & Flujo C & 96 \\
+   & Bloqueo preventivo del lote & RF-09.06 & Flujo M & 48 \\
+   & Rechazo por sospecha de ruptura de frío & RF-09.07 & Flujo S & 24 \\
+   & Evidencia de cumplimiento de cadena de frío & RF-09.09 & Flujo M & 48 \\
+   & Habilitación de bajada de SSCC por latido y manifiesto & RF-09.12 & Flujo C & 96 \\
+   & Retención en el terminal sin red & RF-09.13, RNF-09.06 & Flujo C & 96 \\
+   & Disposición del producto retenido & RF-09.14 & Flujo M & 48 \\
+   & Sensores y gateways de cámara & RF-09.03 & Dispositivo & 64 \\
+   & Termógrafo certificado y simuladores de producto & RNF-09.08 & Dispositivo & 64 \\
+   & Publicación a la capa analítica & RT-05.29 & Interfaz & 64 \\
+   & Coherencia sin pérdidas ni duplicados en datos de sensores & RNF-09.09 & Necesidad especial & 48 \\
+   & Clientes afectados por lote en menos de 2 horas & RNF-09.01 & Rendimiento & 24 \\
+  \midrule
+  3.4.5 M12 & Registro de temperatura en camiones & RF-09.04 & Flujo M & 48 \\
+   & Ruta planificada frente a recorrida & RF-14.02 & Flujo M & 48 \\
+   & Alerta por desvío de ruta & RF-14.03 & Flujo M & 48 \\
+   & Envío de kilómetros y tiempos a costo de servir & RF-14.04 & Flujo S & 24 \\
+   & Vínculo conductor, camión y viaje & RF-14.05 & Flujo M & 48 \\
+   & Geocercas & RF-14.06 & Flujo M & 48 \\
+   & Gateways de camión y telemetría del tercero & RF-09.04 & Dispositivo & 64 \\
+   & Doble camino móvil e Iridium SBD & RNF-09.07 & Dispositivo & 64 \\
+   & Administración remota de dispositivos & RT-03.18 & Interfaz & 64 \\
+   & Ingesta en tiempo real con coherencia de secuencia & RNF-09.09 & Necesidad especial & 48 \\
+  \midrule
+  3.4.6 M3 & Stock con y sin conexión & RF-03.01, RF-03.02 & Flujo M & 48 \\
+   & Reserva de stock por orden de llegada al servidor & RF-03.03 & Flujo C & 96 \\
+   & Crédito y deuda con y sin conexión & RF-03.04, RF-03.05 & Flujo M & 48 \\
+   & Historial de compra & RF-03.06 & Flujo S & 24 \\
+   & Promociones & RF-03.07 & Flujo M & 48 \\
+   & Alerta, bloqueo de crédito y autorización de supervisor & RF-03.08, RF-03.09, RF-03.10, RF-07.05 & Flujo M & 48 \\
+   & Precio acordado y alerta de discrepancia & RF-03.11, RF-03.12 & Flujo M & 48 \\
+   & Fecha y ventana de entrega comprometible & RF-03.13 & Flujo C & 96 \\
+   & Sugerencia de productos & RF-03.14 & Flujo M & 48 \\
+   & Identificador único y descarte de duplicados & RF-03.15, RF-03.16 & Flujo M & 48 \\
+   & Cobranza en efectivo del preventista & RF-07.11 & Flujo M & 48 \\
+   & Pedido, crédito y deuda con el ERP & RF-03.04 & Interfaz & 64 \\
+   & Preventa sin conexión & RT-17.01 & Sin conexión & 120 \\
+   & Registro de línea en 1,5 s & RNF-03.01 & Rendimiento & 24 \\
+   & Consulta de stock y crédito en 2 s & RNF-03.02 & Rendimiento & 24 \\
+   & Consulta de historial en 2 s & RNF-03.03 & Rendimiento & 24 \\
+  \midrule
+  3.4.7 M4 & Asignación y secuenciación por capacidad y zona & RF-04.01 & Flujo C & 96 \\
+   & Edición manual de secuencia y reasignación & RF-04.02 & Flujo M & 48 \\
+   & Bloqueo por peso y volumen & RF-04.03 & Flujo S & 24 \\
+   & Ventanas horarias del cliente en la secuencia & RF-04.04, RF-04.07 & Flujo C & 96 \\
+   & Restricción de pedidos de frío a camiones con equipo & RF-04.05 & Flujo S & 24 \\
+   & Aviso de llegada con ventana de 30 minutos & RF-04.06 & Flujo M & 48 \\
+   & Planificación de la ventana del canal moderno & RF-12.10 & Flujo M & 48 \\
+   & Motor de ruteo & RF-04.01 & Interfaz & 64 \\
+   & Notificación al contacto del cliente & RF-04.06 & Interfaz & 64 \\
+   & Rutas del día en menos de 20 minutos & RNF-04.01 & Rendimiento & 24 \\
+  \midrule
+  3.4.8 M6 & Recepción conforme por línea o guía & RF-06.01 & Flujo M & 48 \\
+   & Firma o fotografía como evidencia de entrega & RF-06.02, RF-06.12, RF-12.12 & Flujo M & 48 \\
+   & Rechazo total o parcial & RF-06.03 & Flujo M & 48 \\
+   & Local cerrado & RF-06.04 & Flujo S & 24 \\
+   & Hora de llegada y término & RF-06.06 & Flujo S & 24 \\
+   & Sincronización completa del turno & RF-06.07 & Flujo C & 96 \\
+   & Inicio de jornada con OTP para conductores externos & RF-06.08 & Flujo M & 48 \\
+   & Confirmación por QR & RF-06.11 & Flujo M & 48 \\
+   & Comprobante térmico por Bluetooth & RF-06.13 & Flujo M & 48 \\
+   & Evidencia y acuse con el ERP & RF-06.14 & Flujo M & 48 \\
+   & Acuse digital al canal moderno & RF-12.13 & Flujo M & 48 \\
+   & Cumplimiento de la ventana de 30 minutos & RF-12.11 & Flujo S & 24 \\
+   & Firma electrónica conforme a la Ley 19.799 & RF-18.01 & Flujo C & 96 \\
+   & Evidencia de entrega y acuse tributario con el ERP & RF-06.14 & Interfaz & 64 \\
+   & Impresora portátil Bluetooth & RF-06.13 & Dispositivo & 64 \\
+   & Enlace local con el gateway del camión & RF-09.13 & Dispositivo & 64 \\
+   & Reparto sin conexión & RT-17.01 & Sin conexión & 120 \\
+   & Documentos cifrados con verificación de integridad & RT-16.16 & Necesidad especial & 48 \\
+  \midrule
+  3.4.9 M8 & Envases devueltos en la entrega & RF-06.09 & Flujo S & 24 \\
+   & Cuenta corriente de envases y parque retornable & RF-06.10, RF-08.03 & Flujo M & 48 \\
+   & Devolución en la entrega sin conexión & RF-08.01 & Flujo M & 48 \\
+   & Destino de la devolución en andén & RF-08.02 & Flujo M & 48 \\
+   & Alerta por umbral de envases & RF-08.04 & Flujo S & 24 \\
+   & Reporte de pérdida de envases & RF-08.06 & Flujo S & 24 \\
+   & Devoluciones al ERP & RF-08.02 & Interfaz & 64 \\
+   & Registro en andén en 30 s por ítem & RNF-08.01 & Rendimiento & 24 \\
+  \midrule
+  3.4.10 M7 & Monto en efectivo recaudado & RF-06.05 & Flujo S & 24 \\
+   & Monto esperado de rendición por camión & RF-07.01 & Flujo M & 48 \\
+   & Planilla digital de rendición & RF-07.02 & Flujo C & 96 \\
+   & Causales de diferencia con bloqueo & RF-07.03 & Flujo M & 48 \\
+   & Consola de cartera de crédito a 30 días & RF-07.04 & Flujo C & 96 \\
+   & Cobro con tarjeta en ruta & RF-07.06 & Flujo M & 48 \\
+   & Bandeja de validación de pagos del portal & RF-07.08 & Flujo M & 48 \\
+   & Anticipos y pagos parciales & RF-07.10 & Flujo M & 48 \\
+   & Liquidación y cierre comercial por camión & RF-11.07 & Flujo C & 96 \\
+   & Recaudación idempotente hacia cuentas por cobrar del ERP & RF-07.09 & Interfaz & 64 \\
+   & Terminal de pago por Bluetooth & RF-07.06 & Dispositivo & 64 \\
+   & Sincronización de cobranzas en 10 minutos & RNF-07.01 & Rendimiento & 24 \\
+   & Controles de seguridad del medio de pago & RF-07.06 & Necesidad especial & 48 \\
+  \midrule
+  3.4.11 M10 & Indicador OTIF & RF-11.03 & Flujo C & 96 \\
+   & Fill rate y pedido perfecto & RF-11.04 & Flujo M & 48 \\
+   & Utilización de capacidad por viaje & RF-11.05 & Flujo M & 48 \\
+   & Tablero operacional en tiempo real & RF-11.06 & Flujo C & 96 \\
+   & Reportes ejecutivos programados y exportables & RF-11.01, RT-05.28 & Flujo M & 48 \\
+   & Filtros y detalle hasta la transacción & RT-05.26 & Flujo M & 48 \\
+   & Ingesta desde la base transaccional & RT-05.25, RT-05.29 & Interfaz & 64 \\
+   & Indicadores del día en 5 minutos & RNF-11.01 & Rendimiento & 24 \\
+   & Indicadores de gestión dentro de su latencia & RNF-11.04 & Rendimiento & 24 \\
+   & Aislamiento entre analítica y transacciones & RNF-11.02 & Necesidad especial & 48 \\
+  \midrule
+  3.5.1 M11 & Recepción del pedido electrónico & RF-12.01 & Flujo M & 48 \\
+   & Validación del pedido & RF-12.02 & Flujo M & 48 \\
+   & Equivalencias de producto por cadena & RF-12.03 & Flujo M & 48 \\
+   & Registro automático en el ERP & RF-12.04 & Flujo M & 48 \\
+   & Pedido disponible para rutas & RF-12.05 & Flujo S & 24 \\
+   & Bandeja de excepciones & RF-12.06 & Flujo M & 48 \\
+   & Confirmación o rechazo a la cadena & RF-12.07 & Flujo M & 48 \\
+   & Historial de estados del pedido & RF-12.08 & Flujo S & 24 \\
+   & Aviso de despacho (ASN) & RF-12.09 & Flujo M & 48 \\
+   & Portal de proveedores de solo lectura & RF-12.22, RF-12.23, RF-12.24 & Flujo M & 48 \\
+   & Mensajería con las cadenas & RF-12.01, RF-12.07, RF-12.09 & Interfaz & 64 \\
+   & Pedidos al ERP & RF-12.04 & Interfaz & 64 \\
+   & Acuse a la cadena dentro de 30 minutos & RNF-12.03 & Rendimiento & 24 \\
+  \midrule
+  3.5.2 M11 & Portal público con catálogo & RF-12.14, RF-17.13, RT-16.31 & Flujo M & 48 \\
+   & Pedido en autoservicio con crédito y stock & RF-12.15 & Flujo C & 96 \\
+   & Estado de entregas & RF-12.16 & Flujo S & 24 \\
+   & Documentos tributarios descargables & RF-12.17 & Flujo M & 48 \\
+   & Saldo, estado de cuenta y cartola & RF-12.18, RF-07.07 & Flujo M & 48 \\
+   & Registro, autenticación y recuperación de acceso & RF-12.25 a RF-12.29, RT-12.12 & Flujo C & 96 \\
+   & Pago en Transbank & RF-12.30 & Flujo M & 48 \\
+   & Medición de la autoatención & RT-16.32, RT-16.33 & Flujo S & 24 \\
+   & Saldo y documentos desde el ERP & RF-12.17, RF-12.18 & Interfaz & 64 \\
+   & Plataforma de pagos & RF-12.30 & Interfaz & 64 \\
+   & Diseño responsivo y para equipos de bajo costo & RT-13.02, RT-17.08 & Necesidad especial & 48 \\
+   & Seguridad de cuentas de usuarios externos & RT-12.12 & Necesidad especial & 48 \\
+  \midrule
+  3.5.3 M11 & Rutas asignadas del día siguiente & RF-12.19 & Flujo S & 24 \\
+   & Documentación de despacho por ruta & RF-12.20 & Flujo S & 24 \\
+   & Confirmación de conductor y vehículo & RF-12.21 & Flujo M & 48 \\
+   & Segregación por empresa & RF-12.19 & Necesidad especial & 48 \\
+  \midrule
+  3.5.4 M10 & Costo de cada entrega & RF-04.08 & Flujo C & 96 \\
+   & Costo de devoluciones y mermas por cliente & RF-08.07 & Flujo M & 48 \\
+   & Costo de servir real por entrega y cliente & RF-11.02, RF-14.04 & Flujo C & 96 \\
+   & Segmentación por rentabilidad & RF-11.08 & Flujo C & 96 \\
+   & Costos directos desde el ERP & RF-11.02 & Interfaz & 64 \\
+  \midrule
+\end{tablalafrox}
