@@ -10,6 +10,10 @@ Todo lo necesario para producir y entregar el video de presentación de la propu
 | `Checklist_Video_LafroX_v04.docx` | **Checklist de verificación** del video contra las Bases (67 puntos; columna "Video final") | No (uso interno) |
 | `declaracion/LAFROX-Declaracion-Derechos-Video.pdf` | **Declaración** de titularidad de derechos y autorización de uso del video (BTT 24.5). La firma **Alex Aravena** (Jefe de Proyecto y Apoderado) | **Sí**, firmada |
 | `declaracion/LAFROX-Autorizacion-Imagen-Equipo.pdf` | **Autorización** de uso de imagen y voz de los 8 integrantes (respaldo interno de la declaración; las Bases no la exigen) | Opcional (puede ir en la USB) |
+| `Guia_Produccion_Video_LafroX_v07.docx` | **Guía de producción**: auditoría del Cap. 24, reglas de la dinámica, escenas en tablas, kit visual, tiempos, plan de grabación y verificaciones | No (uso interno) |
+| `Guion_Dinamica_Objeto_v01.docx` | Detalle de la dinámica "de la guía de papel al terminal" escena por escena y utilería | No (uso interno) |
+| `Dinamica_vs_Bases_v01.docx` | La dinámica comparada con las exigencias de las Bases (9 condiciones) | No (uso interno) |
+| `visuales/` | **Kit visual** para la edición (ver abajo) | No (se usa para editar) |
 
 ## Qué se entrega al profesor (BTT 24.5)
 
@@ -36,4 +40,30 @@ latexmk LAFROX-Autorizacion-Imagen-Equipo.tex
 
 La declaración redefine el pie para dejar **la línea de media firma vacía** (sin firma escaneada).
 
-> El kit visual (logo, láminas, rótulos y animación) y la guía de producción con las explicaciones están en la carpeta de trabajo `productos/Video/` del equipo audiovisual.
+## Kit visual (`visuales/`)
+
+Identidad tomada del sitio oficial `lafrox.github.io`: isotipo del zorro, paleta `#0B0D12` / `#FF5A2C` / `#E8641B` y tipografías Archivo e IBM Plex Mono (licencia SIL OFL 1.1).
+
+| Archivo o carpeta | Contenido | Uso en la edición |
+|---|---|---|
+| `visuales/video/E1_logo_animado.mp4` | Animación del logo (4 s, 1920×1080, 30 fps) | Pista V1, 0:00–0:04 |
+| `visuales/png/00_capa_marca_permanente.png` | Logo, encabezado y pie de contacto (transparente) | Pista V3, desde 0:04 hasta el final |
+| `visuales/png/0x_E*_*.png` | Láminas de fondo completo (cifras, beneficios, innovaciones, arquitectura, stack, casos, placas) | Pista V1 |
+| `visuales/png/*_lateral.png`, `05_E5_mosaico_equipo.png`, `06_E6_rotulos_plano_grupal.png` | Paneles y capas transparentes | Pista V2 |
+| `visuales/png/rotulo_01…08_*.png` | Rótulo de cada integrante (RT-24.02) | Pista V2, desde que la persona mira a cámara |
+| `visuales/logo/` | Isotipo oficial (`oficial/lafrox-isotipo.svg`) y logotipo horizontal en PNG | Otros usos |
+| `visuales/previews/` | Miniaturas de cada pieza con la capa de marca encima | Revisión |
+| `visuales/fuente/` | Generadores (Python y Node) y tipografías | Regenerar piezas y documentos |
+
+### Regenerar las piezas (cuando lleguen los datos pendientes)
+
+Editar la sección `CONFIGURACIÓN` de `visuales/fuente/generar_visuales.py` (fecha, nombre del proyecto, años de experiencia y certificaciones de cada integrante) y ejecutar:
+
+```bash
+cd visuales/fuente
+python generar_visuales.py
+```
+
+Requiere Python 3 y Chrome o Edge. Para regenerar solo algunas piezas: `python generar_visuales.py rotulo`. La animación del logo se regenera con `python logo_animado.py` (requiere Pillow y ffmpeg).
+
+> **Pendiente del equipo antes de grabar:** años de experiencia, certificaciones según el T-8 (el CSV y el sitio web se contradicen en 6 de 8 personas), cargos exactos, fecha y nombre oficial del proyecto. Hoy las piezas muestran "[__]" donde faltan datos.
