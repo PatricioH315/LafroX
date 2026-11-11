@@ -1,3 +1,34 @@
 % !TEX root = ../../LAFROX_AnalisisFinanciero_2.tex
 \section{Estrategia de adquisiciones}
 \label{sec:e2-adquisiciones}
+
+La estrategia vincula la recepción de los suministros con la secuencia de instalación y las olas de implantación del Formulario T-14.
+
+\subsection{Matriz y cronograma de adquisiciones}
+
+La Tabla~\ref{tab:e2-adquisiciones} reúne las compras que condicionan los ambientes y las olas de terreno (LafroX, 2026a, Formulario T-11; LafroX, 2026b, Anexo 6.B; LafroX, 2026c, T-14, cuentas 5.1 a 5.4). LafroX provee la infraestructura en sitio y especifica el hardware de terreno, con marca, modelo, cantidad, características y costo unitario estimado (Distribuidora Puelche S.A., 2026a, art.~14.2, p.~10; 2026b, cap.~8, RT-08.10, p.~19). La separación civil de la sala corresponde al CLIENTE y LafroX la especifica y coordina (Distribuidora Puelche S.A., 2026b, cap.~6, RT-06.06, p.~15). LafroX provee el piso técnico e instala su infraestructura (LafroX, 2026b, sección 6.1).
+
+\begin{tablalafrox}{Adquisiciones principales y fechas de necesidad. Fuente: SD4 y T-11, SD6 y Anexo 6.B, T-14 cuentas 5.1 a 5.4 y T-15.}{tab:e2-adquisiciones}{F{0.25} F{0.31} F{0.44}}{\textbf{Adquisición} & \textbf{Responsable y referencia técnica} & \textbf{Ventana y condición de aceptación}}
+Sala, servidores, almacenamiento, racks y gabinetes & LafroX. Infraestructura de Talca, Concepción y plataformas de cross-docking según T-11. & Orden en el mes 2, instalación inicial en el 3 y recepción de sala en el 4. \\
+Terminales, impresoras, terminales de pago y balanzas & El CLIENTE compra los equipos de uso. LafroX especifica, verifica e integra. & Especificación en el mes 2 (5.1.1), entrega antes de la ola respectiva y acta de recepción técnica (5.1.3). \\
+Cadena de frío & El CLIENTE compra B-01 y los componentes B-03 a B-14. LafroX provee los gateways B-02 y adquiere el prototipo (5.1.4). & Validar el prototipo antes de la compra masiva. Disponer de cuatro kits para el piloto y de 28 kits instalados y recibidos antes de la ola de reparto. \\
+Nube & LafroX. AWS para ambientes, datos, seguridad, observabilidad y recuperación. & Habilitar cuentas y servicios antes del mes 4 y antes de configurar los ambientes (5.2.1). H3 exige infraestructura híbrida y ambientes habilitados. \\
+MDM, protección de endpoints y licencias de terceros & LafroX tramita las suscripciones y el registro de licencias. Las licencias de terceros se constituyen a nombre del CLIENTE. & Activar la cobertura antes del enrolamiento y las demás licencias antes de su primer uso (5.2.2 y 5.2.3). \\
+Enlaces de comunicaciones & LafroX. Dos enlaces de fibra, ocho planes LTE y cinco enlaces Starlink. T-11 identifica a Telsur, Entel y Claro como referencias de red fija y móvil. & Contratar antes de H3 (5.3.1 a 5.3.3). Verificar factibilidad y capacidad por sitio y comprobar la conmutación antes de aceptar cada camino. \\
+\end{tablalafrox}
+
+La sala y los servicios de nube y conectividad tienen prioridad porque habilitan los ambientes de H3. El montaje de racks y gabinetes sigue el calendario por sitio del T-14, con los gabinetes de cross-docking en el mes 9. Los equipos de uso adquiridos por el CLIENTE se registran en el inventario informativo y se imputan al flujo de LafroX las actividades de instalación, configuración e integración a su cargo.
+
+La conectividad de los camiones con frío queda disponible en el mes 2, antes del banco de pruebas (5.3.4). LafroX gestiona 62 SIM M2M de Entel y Claro y contrata el servicio Iridium SBD con Globalsat Chile. SRE verifica los contratos. La custodia de fuentes se contrata antes de H4 (5.4.4). El jefe de proyecto verifica el contrato y el primer depósito, y el paquete 8.4.4 programa las actualizaciones semestrales durante la Operación (LafroX, 2026b, Anexo 6.B; LafroX, 2026c, T-14; Distribuidora Puelche S.A., 2026a, art.~84.6).
+
+Los acuerdos con los transportistas y el acta relativa al uso de terminales, GPS y cámaras se gestionan antes de H6 (5.4.1 y 5.4.2). Son dependencias de la salida a ruta y se controlan junto con la disponibilidad del equipamiento.
+
+\subsection{Negociación y contratos críticos}
+
+Para los equipos de sala y borde, la comparación de ofertas considera conformidad con el T-11, plazo hasta la recepción, garantía, disponibilidad de repuestos y soporte. La conformidad técnica y el acta de recepción sirven de base para aceptar cada suministro. En comunicaciones, la evaluación combina factibilidad por dirección, capacidad sostenida y diversidad efectiva de operadores. El T-11 prevé recurrir a otro operador de red fija distinto de Entel si Telsur carece de factibilidad.
+
+Los contratos de nube, conectividad y licencias son críticos para la disponibilidad de los ambientes y la continuidad del servicio. La comparación de sus condiciones considera unidad de cobro, vigencia, renovación, cobertura, soporte y continuidad al término del servicio. Para la cadena de frío, la evaluación técnica vincula la compra masiva con la homologación y la aceptación del prototipo.
+
+\subsection{Decisión de hacer o comprar}
+
+LafroX conserva el desarrollo de la aplicación, la integración con sistemas y dispositivos, las pruebas de aceptación y la coordinación de la operación. Compra la infraestructura comercial y contrata servicios de nube, comunicaciones, protección de endpoints y gestión de dispositivos. El soporte del fabricante se incorpora como escalamiento especializado bajo la coordinación de LafroX. LafroX instala, integra y mantiene el equipamiento de frío. El T-11 y el Anexo 6.B prevén cotización escrita de un proveedor domiciliado en Chile (LafroX, 2026a, T-11, B-01 a B-15; LafroX, 2026b, Anexo 6.B; LafroX, 2026c, T-14, paquete 5.1.4).

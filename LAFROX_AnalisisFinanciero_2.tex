@@ -1,20 +1,41 @@
 % !TEX program = lualatex
 %% LAFROX_AnalisisFinanciero_2.tex -- documento raiz del Entregable 2.
 %% Compilar: latexmk LAFROX_AnalisisFinanciero_2.tex
-\documentclass[carta,sinfirma,borrador]{lafrox}
+\documentclass[carta,firma]{lafrox}
 \datoslafrox{
   documento    = {Oferta Económica},
   subtitulo    = {Análisis económico-financiero},
   alcance      = {Entregable 2},
   formulario   = {Formulario E-21},
   sobre        = {Sobre N.\textdegree{} 3 \textemdash{} Oferta Económica},
-  rut = {\mbox{}}, representante = {\mbox{}}, cargo = {\mbox{}}, domicilio = {\mbox{}},
-  correo = {\mbox{}}, telefono = {\mbox{}}, fecha = {}, version = {},
-  nomenclatura = {LAFROX\_AnalisisFinanciero\_2\_AAAAMMDD.pdf},
+  empresa = {LafroX SpA},
+  rut = {77.418.902-K},
+  domicilio = {Av. Brasil 2241, Valparaíso},
+  representante = {Alex Aravena},
+  cargo = {Jefe de Proyecto y Apoderado},
+  correo = {contacto@lafrox.cl},
+  telefono = {+56 32 250 4100},
+  fecha = {10 de noviembre de 2026},
+  version = {},
+  nomenclatura = {LAFROX-AnalisisFinanciero2.pdf},
 }
+\newcommand{\LFXfirmaeconomica}{logo/FIRMA_Alex_Aravena_transparente.png}
+\renewcommand{\LFXpiederecho}{%
+  \begingroup\LFXpiebase
+  \begin{tabular}[b]{@{}r@{}}
+    {\color{lafroxGris}\rule{3.4cm}{0.4pt}%
+     \begin{tikzpicture}[remember picture,overlay]
+       \node[anchor=south east,inner sep=0pt] at (0,1mm)
+         {\includegraphics[height=7mm]{\LFXfirmaeconomica}};
+     \end{tikzpicture}}\\[-1pt]
+    {\LFXchico Media firma: \LFXrepresentante}\\
+    {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}\LFXfoliotexto}
+  \end{tabular}%
+  \endgroup}
 \begin{document}
 \portadalafrox
-\preliminareslafrox
+\indicelafrox
+\listatablaslafrox
 \setcounter{chapter}{1}
 \subdocumento{02_analisis_economico_financiero}
 \end{document}

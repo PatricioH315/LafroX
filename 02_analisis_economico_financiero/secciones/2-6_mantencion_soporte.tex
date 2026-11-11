@@ -1,3 +1,24 @@
 % !TEX root = ../../LAFROX_AnalisisFinanciero_2.tex
 \section{Estructura de mantención y soporte}
 \label{sec:e2-mantencion}
+
+El modelo de soporte distingue las coberturas dedicadas de las intervenciones de especialistas imputadas a los paquetes de mantención (LafroX, 2026c, T-14, cuentas 8.1 y 8.2, y T-15).
+
+\subsection{Cobertura y asignación de recursos}
+
+El gerente de servicio tiene dedicación completa durante la Operación y responde por los niveles de servicio, la atención de incidentes y el plan de mejora continua. La mesa N1 recibe y clasifica las solicitudes de 04:00 a 22:00, con cobertura 24×7 en septiembre y diciembre durante la Operación (8.1.1). El NOC mantiene cobertura 24×7 durante la Operación y el SOC presta servicio 24×7 desde el mes 13 hasta el mes 56, según los paquetes 8.1.1 y 8.1.5. Para el escalamiento técnico, SRE atiende infraestructura y terreno desde el paquete 8.2.3, Desarrollo atiende la aplicación desde 8.2.1 y LafroX coordina el soporte de fabricante de nivel 4. Los puestos de mesa, NOC y SOC conservan su cobertura durante los escalamientos.
+
+El costo de la cobertura se asigna por puesto y ventana de atención. La intervención de especialistas de infraestructura y aplicación se imputa por horas al paquete de mantención que la ejecuta. El registro del ticket vincula diagnóstico, actuación, responsable y resultado. Las intervenciones en terreno incorporan los recursos de traslado que correspondan y el equipo en espera conserva la capacidad de recuperación remota. El costo de los traslados requeridos se incluye en la oferta (Distribuidora Puelche S.A., 2026b, cap.~21, RT-21.16, p.~37).
+
+\subsection{Prevención, correctivos y evolución}
+
+La Tabla~\ref{tab:e2-mantencion} vincula el programa preventivo y evolutivo con sus unidades de costeo (LafroX, 2026c, T-14, cuentas 8.1 y 8.2). La mantención preventiva sigue un calendario anual acordado con el CLIENTE e incluye auditorías técnicas al menos trimestrales con informe (Distribuidora Puelche S.A., 2026b, sección 21.4, pp.~37--38).
+
+\begin{tablalafrox}{Actividades de mantención y criterio de costeo. Fuente: T-14, cuentas 8.1, 8.2 y 8.5, y Bases Técnicas Transversales, sección 21.4.}{tab:e2-mantencion}{F{0.24} F{0.43} F{0.33}}{\textbf{Actividad} & \textbf{Programación o capacidad} & \textbf{Base de costeo}}
+Prevención & Restauración mensual, mantención programada y revisión eléctrica semestral & Intervenciones, HH y materiales \\
+Correctivos & 768 HH de Desarrollo por año estimadas (8.2.1) & HH imputadas a defectos \\
+Mejora continua & 768 HH de Desarrollo por año en la bolsa evolutiva (8.2.1) & HH por cambio aprobado \\
+Actualización tecnológica & Plan anual con ventana aprobada y reversión ensayada (8.2.5) & HH de preparación y despliegue, licencias o equipos \\
+\end{tablalafrox}
+
+La capacidad correctiva es una estimación para costeo. LafroX absorbe la corrección de defectos y la mantención normativa conforme a las Bases. La bolsa evolutiva acumula el saldo de un año al siguiente. El CLIENTE registra la solicitud, Desarrollo estima alcance y HH, el Comité de Operación aprueba el cambio y el informe mensual liquida las horas ejecutadas. El paquete 8.2.4 asigna 2.304 HH de Desarrollo a la reducción de deuda técnica durante los 36 meses de Operación, equivalentes a 64 HH mensuales ($2.304 \div 36$), con seguimiento trimestral (LafroX, 2026c, T-14, cuenta 8.2).
