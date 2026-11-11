@@ -74,7 +74,7 @@
     'cliente.segmentar': ['comercial', 'finanzas'],
     'cliente.crear': ['comercial', 'preventista'],
     'cliente.editar': ['comercial', 'preventista'],
-    'cliente.ventana': ['comercial', 'planificador'],
+    'cliente.ventana': ['planificador'], // SD4 4.1.4 M4: el planificador mantiene las franjas de recepción (RF-04.07)
     'precio.excepcion': ['comercial'],
     'pedido.anular': ['comercial', 'gerente-ops'],
     'pedido.asignar': ['planificador', 'gerente-ops'],
@@ -94,11 +94,15 @@
     'dev.registrar': ['conductor', 'conductor-ext', 'bodega'],
     'dev.recepcionar': ['bodega'],
     'dev.destino': ['bodega'],
-    'dev.nc': ['finanzas', 'bodega'],
+    'dev.nc': ['finanzas'], // el ERP emite la nota de crédito; el prototipo solo registra la solicitud (SD4 M8)
     'calidad.disponer': ['calidad'],
     'calidad.retiro': ['calidad'],
-    'geocerca.gestionar': ['gerente-ops'],
+    'geocerca.gestionar': ['gerente-ops', 'planificador'], // RF-14.06 (Gerente de Operaciones) y SD4 M12 (planificador)
+    'asignacion.aprobar': ['gerente-ops'], // despacho aprueba conductor–vehículo–turno (RF-06.08, SD4 conductores externos)
     'rend.gestionar': ['finanzas'],
+    'rend.tipificar': ['conductor', 'conductor-ext'], // tipifica su descuadre; no lo aprueba (SD4 Anexo 4-N)
+    'calidad.umbral.proponer': ['calidad'],
+    'calidad.umbral.aprobar': ['calidad'], // las reglas de Calidad solo las aprueba Calidad (SD4 Capa 4)
     'edi.gestionar': ['comercial']
   };
   L.perm = PERM;
