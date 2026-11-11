@@ -14,7 +14,7 @@
       D.pedidos.forEach((x) => (x.precioEstado = L.difPrecio(x) ? 'Con diferencia' : 'Sin diferencia'));
       $('#pd-kpi', root).innerHTML = [['Por validar', counts('Pendiente de validación') + counts('Capturado sin conexión'), 'sync'], ['Retenidos', counts('Retenido'), 'alert'], ['En ruta', counts('En ruta'), 'truck'], ['Entregados hoy', counts('Entregado') + counts('Rendido'), 'check-circle']].map(([t, v, i]) => `<div class="card kpi" style="padding:var(--sp-4)"><span class="label">${icon(i, 'icon-sm')}${t}</span><span class="value" style="font-size:var(--fs-2xl)">${v * 17}</span></div>`).join('');
       const tbl = L.dataTable($('#pd-t', root), {
-        id: 'pd', caption: 'Listado de pedidos', rows: D.pedidos, searchKeys: ['id', 'clienteNombre', 'comuna', 'preventista'], searchPlaceholder: 'Buscar por pedido, cliente o comuna',
+        id: 'pd', caption: 'Listado de pedidos', rows: L.me()?.id === 'preventista' ? D.pedidos.filter((x) => x.preventista === 'Sandra Riffo') : D.pedidos, searchKeys: ['id', 'clienteNombre', 'comuna', 'preventista'], searchPlaceholder: 'Buscar por pedido, cliente o comuna',
         filters: [{ key: 'estado', label: 'Estado', options: D.estadosPedido }, { key: 'canal', label: 'Canal', options: ['Tradicional', 'Food service', 'Moderno'] }, { key: 'origen', label: 'Origen', options: ['Preventa', 'Portal', 'EDI'] }, { key: 'precioEstado', label: 'Precio', options: ['Con diferencia', 'Sin diferencia'] }],
         sort: 'id', dir: 'desc', selectable: true,
         columns: [

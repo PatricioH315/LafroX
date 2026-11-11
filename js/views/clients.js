@@ -29,7 +29,7 @@
         onOpen: (d) => { const upd = () => { const f = +$('#sg-f', d).value, n = cnt('No rentable'); $('#sg-out', d).textContent = f === 1 ? `${n} clientes no rentables con la frecuencia actual.` : `Impacto estimado: el costo de servir de los ${n} no rentables baja de ${fmt.pct(17.4)} a ${fmt.pct(17.4 * (0.55 + f * 0.45))}, con ${Math.round(n * (1 - f) * 4)} visitas menos al mes.`; }; $('#sg-f', d).onchange = upd; upd(); }, actions: [{ label: 'Cerrar', cls: 'btn-primary' }] }); };
       let view = 'tabla';
       const tbl = L.dataTable($('#cl-t', root), {
-        id: 'cl', caption: 'Directorio de clientes', rows: D.clientes, per: 12, searchKeys: ['nombre', 'rut', 'comuna', 'contacto', 'id'], searchPlaceholder: 'Buscar por nombre, RUT, comuna o contacto',
+        id: 'cl', caption: 'Directorio de clientes', rows: L.me()?.id === 'preventista' ? D.clientes.filter((c) => c.preventista === 'Sandra Riffo') : D.clientes, per: 12, searchKeys: ['nombre', 'rut', 'comuna', 'contacto', 'id'], searchPlaceholder: 'Buscar por nombre, RUT, comuna o contacto',
         filters: [{ key: 'comuna', label: 'Comuna', options: [...new Set(D.clientes.map((c) => c.comuna))].sort() }, { key: 'estado', label: 'Estado', options: ['Activo', 'Bloqueado'] }],
         sort: 'nombre',
         columns: [

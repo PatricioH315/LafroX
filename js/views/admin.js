@@ -141,7 +141,7 @@
     'inv.gestionar': 'Gestionar inventario', 'inv.reposicion': 'Aprobar reposición', 'inv.ficha': 'Editar ficha de producto',
     'xd.causa': 'Registrar causa de cross-docking', 'dev.registrar': 'Registrar devolución', 'dev.recepcionar': 'Recepcionar devolución',
     'dev.destino': 'Aprobar destino de devolución', 'dev.nc': 'Solicitar nota de crédito', 'calidad.disponer': 'Decidir disposición sanitaria',
-    'calidad.retiro': 'Ejecutar retiro sanitario', 'geocerca.gestionar': 'Gestionar geocercas', 'rend.gestionar': 'Gestionar rendición',
+    'calidad.retiro': 'Ejecutar retiro sanitario', 'geocerca.gestionar': 'Gestionar geocercas', 'rend.gestionar': 'Gestionar rendición (Tesorería nominada, dentro de Finanzas)',
     'edi.gestionar': 'Gestionar canal EDI', 'asignacion.aprobar': 'Aprobar asignación conductor–vehículo–turno', 'rend.tipificar': 'Tipificar descuadre propio (sin aprobarlo)',
     'calidad.umbral.proponer': 'Proponer reglas de excursión', 'calidad.umbral.aprobar': 'Aprobar reglas de excursión'
   };

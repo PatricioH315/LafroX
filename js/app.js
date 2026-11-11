@@ -113,6 +113,18 @@
   L.can = (act) => { const p = L.me(); return !!p && (p.all || L.profileCan(p.id, act)); };
   // Short notice for screens where the profile only consults
   L.readOnly = (txt) => L.alert('info', 'Solo consulta para su perfil', txt || 'Las acciones de esta pantalla las ejecutan los perfiles responsables.');
+  // Indicadores de contexto en la cabecera: etapa del proyecto y ámbito (cartera, ruta, sitio y turno) del perfil (SD4 Capa 7)
+  L.scopeChip = (root, txt, kind = 'info') => { const t = root?.querySelector?.('.page-head .titles'); if (t && !t.querySelector('[data-chip="' + txt + '"]')) t.insertAdjacentHTML('beforeend', `<div data-chip="${txt}" style="margin-top:8px">${L.badge(txt, kind)}</div>`); };
+  L.contextChips = (root, path) => {
+    const me = L.me();
+    if (!me) return;
+    if (/^\/(portal|canal-moderno)/.test(path)) L.scopeChip(root, me.id === 'cliente' ? 'Etapa 2 · portal opcional' : 'Etapa 2', 'accent');
+    if (path === '/despacho/asignaciones') L.scopeChip(root, 'Etapa 1 · función de despacho', 'accent');
+    if (me.id === 'preventista' && /^\/(clientes|pedidos)/.test(path)) L.scopeChip(root, 'Su cartera');
+    if (['conductor', 'conductor-ext'].includes(me.id) && /^\/(devoluciones|rendicion)/.test(path)) L.scopeChip(root, 'Su ruta y turno · ' + L.fieldRoute().id);
+    if (me.id === 'preparador' && /^\/(preparacion|recepcion|flujo)/.test(path)) L.scopeChip(root, 'Sitio CD Talca · turno noche');
+    if (me.id === 'bodega' && /^\/(preparacion|recepcion|inventario|devoluciones)/.test(path)) L.scopeChip(root, 'Sitio CD Talca');
+  };
   L.signIn = (profileId, { remember = true } = {}) => {
     const first = !L.store.get('seen.' + profileId, false);
     L.setSession({ profile: profileId, at: Date.now(), first });
@@ -165,6 +177,7 @@
       main.innerHTML = `<div class="view view-enter">${bc}${html}</div>`;
       try { route.mount?.(main.firstElementChild, params, query); } catch (e) { console.error(e); L.toast('Algo no funcionó en esta pantalla', 'Recargue la página o vuelva al inicio.', 'error'); }
       L.accordions(main);
+      try { L.contextChips(main.firstElementChild, path); } catch (e) { console.error(e); }
       main.focus({ preventScroll: true });
       window.scrollTo(0, 0);
       L.announce(`${L.titleOf(route, params)} cargado`);

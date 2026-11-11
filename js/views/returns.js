@@ -19,7 +19,7 @@
     mount: (root) => {
       L.tabs($('.tabs', root));
       const tbl = L.dataTable($('#dv-t', root), {
-        id: 'dvl', caption: 'Devoluciones', rows: D.devoluciones, searchKeys: ['id', 'clienteNombre', 'producto', 'pedido', 'lote'], searchPlaceholder: 'Buscar por folio, cliente, producto o lote',
+        id: 'dvl', caption: 'Devoluciones', rows: ['conductor', 'conductor-ext'].includes(L.me()?.id) ? D.devoluciones.filter((d) => D.pedidos.find((p) => p.id === d.pedido)?.ruta === L.fieldRoute().id) : D.devoluciones, searchKeys: ['id', 'clienteNombre', 'producto', 'pedido', 'lote'], searchPlaceholder: 'Buscar por folio, cliente, producto o lote',
         filters: [{ key: 'estado', label: 'Estado', options: [...FLOW, 'Rechazada'] }, { key: 'motivo', label: 'Motivo', options: D.motivosDevolucion }],
         sort: 'id', dir: 'desc', selectable: true,
         columns: [

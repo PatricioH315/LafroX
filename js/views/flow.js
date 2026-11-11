@@ -120,6 +120,8 @@
         return;
       }
 
+      // SD4 Anexo 4-N: el preparador opera M5; en el flujo abre la escena de preparación y el resto es de consulta
+      if (L.me()?.id === 'preparador' && !q.escena && !q.pedido) { L.go('/flujo?escena=preparacion'); return; }
       if (q.pedido) { viewOrder(root, q.pedido); return; }
       const scenario = q.escena === 'preparacion' && L.allowed('/preparacion');
       const mission = scenario ? L.prepMissions().find((m) => m.id === (q.mision || 'M-3302')) : null;
@@ -187,6 +189,10 @@
           return;
         }
         [preventa, validacion, ruta, picking, carga, entrega, rendicion][O.step]($('#fl-body', root));
+        if (L.me()?.id === 'preparador' && O.step !== 3) {
+          $('#fl-main section', root).insertAdjacentHTML('beforebegin', L.readOnly('Su acceso es la preparación (M5). Los demás pasos del pedido son de consulta.'));
+          $$('#fl-body button, #fl-body input, #fl-body select, #fl-body textarea', root).forEach((e) => (e.disabled = true));
+        }
       };
       const side = () => {
         const reached = (st) => O.log.some((l) => l.estado === st);
