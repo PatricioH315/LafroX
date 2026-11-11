@@ -34,7 +34,7 @@
       ['Rinda su turno', 'Cierre con efectivo y documentos para que Finanzas lo revise.', '/rendicion']
     ],
     'conductor-ext': [
-      ['Inicie su ruta', 'Ingresó con credencial de turno de 14 horas. Verá solo sus entregas.', '/terreno'],
+      ['Inicie su ruta', 'Ingresó con su PIN y una asignación aprobada por despacho (máx. 16 h). Verá solo sus entregas.', '/terreno'],
       ['Entregue y deje constancia', 'Registre la prueba digital; si el local está cerrado, marque el intento fallido.', '/terreno'],
       ['Registre una devolución', 'Indique producto y envases devueltos por el cliente.', '/devoluciones/nueva'],
       ['Rinda su turno', 'Cierre con efectivo y documentos al terminar.', '/rendicion']

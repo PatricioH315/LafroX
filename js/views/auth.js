@@ -41,7 +41,7 @@
       ${L.accordionHtml(`${icon('lock')} Ingresar con credenciales`, `
         <div class="segmented" role="tablist" aria-label="Método de ingreso" style="width:100%;margin-bottom:var(--sp-4)">
           <button type="button" role="tab" aria-selected="true" data-mode="pwd" style="flex:1">Correo y contraseña</button>
-          <button type="button" role="tab" aria-selected="false" data-mode="otp" style="flex:1">Credencial de turno</button>
+          <button type="button" role="tab" aria-selected="false" data-mode="otp" style="flex:1">Conductor externo</button>
         </div>
         <div id="login-err"></div>
         <form id="f-pwd" novalidate class="stack">
@@ -52,13 +52,15 @@
           <p class="hint" style="margin:0">Simulación: cualquier contraseña de 4 o más caracteres funciona; «error» muestra el manejo de credenciales incorrectas. Los perfiles de consola piden segundo factor.</p>
         </form>
         <form id="f-otp" novalidate class="stack" hidden>
-          <p class="small muted" style="margin:0">Para conductores de empresas transportistas sin correo corporativo. El jefe de flota entrega un código de un solo uso válido por el turno.</p>
+          <p class="small muted" style="margin:0">Para conductores de empresas transportistas sin correo corporativo. El jefe de flota solicita un código de un solo uso para el alta inicial, que exige conexión. Después se ingresa con el PIN personal y la asignación aprobada por despacho.</p>
+          <fieldset><legend class="sr-only">Tipo de ingreso</legend><div class="options-row"><label class="radio"><input type="radio" name="ot-modo" value="alta" checked> Alta inicial con código (OTP)</label><label class="radio"><input type="radio" name="ot-modo" value="pin"> Ingreso con PIN personal</label></div></fieldset>
           <div class="field"><label for="ot-r">RUT del conductor <span class="req" aria-hidden="true">*</span></label><input id="ot-r" class="input mono" inputmode="text" placeholder="12.345.678-5" required></div>
-          <div class="field"><label for="ot-c">Código de turno <span class="req" aria-hidden="true">*</span></label><input id="ot-c" class="input mono" inputmode="numeric" maxlength="8" placeholder="8 dígitos" required></div>
-          <button class="btn btn-secondary btn-block big-btn" type="submit">Iniciar turno</button>
-          <p class="hint" style="margin:0">Simulación: el código emitido para Óscar Vidal (RUT 15.482.337-9) es <span class="mono">48213705</span>. Otro código se rechaza; <span class="mono">00000000</span> simula un código vencido.</p>
+          <div class="field" id="ot-c-wrap"><label for="ot-c">Código de un solo uso <span class="req" aria-hidden="true">*</span></label><input id="ot-c" class="input mono" inputmode="numeric" maxlength="8" placeholder="8 dígitos" required></div>
+          <div class="field" id="ot-p-wrap" hidden><label for="ot-p">PIN personal <span class="req" aria-hidden="true">*</span></label><input id="ot-p" class="input mono" type="password" inputmode="numeric" maxlength="6" placeholder="4 a 6 dígitos"></div>
+          <button class="btn btn-secondary btn-block big-btn" type="submit">Ingresar</button>
+          <p class="hint" style="margin:0" id="ot-hint">Simulación: el código emitido para Óscar Vidal (RUT 15.482.337-9) es <span class="mono">48213705</span>. Otro código se rechaza; <span class="mono">00000000</span> simula un código vencido.</p>
         </form>`)}
-      <p class="small muted" style="margin:var(--sp-4) 0 0;text-align:center">¿Su almacén aún no es cliente? <a href="#/registro">Solicite una cuenta</a></p>
+      <p class="small muted" style="margin:var(--sp-4) 0 0;text-align:center">¿Su cadena aún no tiene cuenta? <a href="#/registro">Solicite una cuenta</a>. Los almacenes activan la suya con su preventista.</p>
     </div></div>`,
     mount: (root) => {
       // Acceso directo por perfil
@@ -103,14 +105,32 @@
           finish(pid);
         }, 1100);
       };
+      $$('[name=ot-modo]', fo).forEach((r) => (r.onchange = () => {
+        const pin = $('[name=ot-modo]:checked', fo).value === 'pin';
+        $('#ot-c-wrap', fo).hidden = pin; $('#ot-p-wrap', fo).hidden = !pin;
+        $('#ot-c', fo).required = !pin;
+        $('#ot-hint', fo).innerHTML = pin ? 'Simulación: PIN <span class="mono">4821</span> para Óscar Vidal (RUT 15.482.337-9).' : 'Simulación: el código emitido para Óscar Vidal (RUT 15.482.337-9) es <span class="mono">48213705</span>. Otro código se rechaza; <span class="mono">00000000</span> simula un código vencido.';
+      }));
       fo.onsubmit = (e) => {
         e.preventDefault();
         if (!L.validateAll(fo)) return;
+        const pinMode = $('[name=ot-modo]:checked', fo).value === 'pin';
         const code = $('#ot-c', fo).value, rut = L.rut.clean($('#ot-r', fo).value);
+        if (pinMode) {
+          const pin = $('#ot-p', fo).value;
+          if (!/^\d{4,6}$/.test(pin)) { err.innerHTML = L.alert('warning', 'PIN incompleto', 'Ingrese su PIN personal de 4 a 6 dígitos.'); $('#ot-p', fo).focus(); return; }
+          L.busy($('[type=submit]', fo), () => {
+            if (rut !== '154823379' || pin !== '4821') { err.innerHTML = L.alert('danger', 'RUT o PIN incorrecto', 'Revise los datos. Si no recuerda su PIN, pida al jefe de flota un nuevo alta con código.'); $('#ot-p', fo).focus(); return; }
+            const asg = (L.store.get('asignaciones', {}) || {})['R-09'];
+            if (asg && asg.estado !== 'Aprobada') { err.innerHTML = L.alert('warning', 'Asignación pendiente de despacho', 'Su asignación conductor–vehículo–turno aún no está aprobada. Despacho debe aprobarla antes de la salida.'); return; }
+            err.innerHTML = ''; L.toast('Asignación vigente', 'Vence 30 min después del fin de la ruta, sin superar 16 h. No se renueva sin conexión.', 'success'); finish('conductor-ext');
+          }, 800);
+          return;
+        }
         L.busy($('[type=submit]', fo), () => {
-          if (code === '00000000') { err.innerHTML = L.alert('danger', 'Código vencido', 'Este código ya no es válido: cada código sirve para un solo turno. Pida uno nuevo a su jefe de flota.'); $('#ot-c', fo).focus(); return; }
+          if (code === '00000000') { err.innerHTML = L.alert('danger', 'Código vencido', 'Este código ya no es válido: sirve una sola vez, para el alta. Pida uno nuevo a su jefe de flota.'); $('#ot-c', fo).focus(); return; }
           if (code !== '48213705' || rut !== '154823379') { err.innerHTML = L.alert('danger', 'Código o RUT incorrecto', 'El código no corresponde a este RUT. Revise ambos datos o pida un código nuevo a su jefe de flota.'); $('#ot-c', fo).focus(); return; }
-          err.innerHTML = ''; L.toast('Turno iniciado', 'Credencial válida por 14 horas, renovable a las 12 horas.', 'success'); finish('conductor-ext');
+          err.innerHTML = ''; L.toast('Alta completada', 'El código de un solo uso queda consumido. Desde ahora ingresa con su PIN personal; la asignación vence 30 min después del fin de la ruta, sin superar 16 h.', 'success'); finish('conductor-ext');
         }, 1000);
       };
     }
@@ -121,10 +141,11 @@
     title: 'Verificación en dos pasos', layout: 'public', parent: '/ingresar', block: 'Autenticación e incorporación', module: 'Base compartida (Keycloak)', rf: ['RF-15.03'], actors: ['Perfiles administradores y de consola'],
     render: () => {
       const p = L.me();
+      const portalSet = new Set(['cliente', 'cliente-moderno', 'transportista', 'proveedor']);
       return `<div class="auth-wrap"><form class="card auth-card" id="f2" novalidate style="padding:var(--sp-6)">
         <span class="modal-icon info" style="margin-bottom:var(--sp-3)">${icon('fingerprint')}</span>
         <h1>Verificación en dos pasos</h1>
-        <p class="muted">Su perfil (${esc(p ? p.role : '')}) exige un segundo factor. Ingrese el código de 6 dígitos de su aplicación autenticadora.</p>
+        <p class="muted">Su perfil (${esc(p ? p.role : '')}) exige un segundo factor. ${p?.id === 'ti' ? 'La administración usa una clave FIDO2 (llave de seguridad).' : portalSet.has(p?.id) ? 'En los portales se usa una aplicación TOTP o una clave de acceso.' : 'Ingrese el código de 6 dígitos de su aplicación autenticadora.'}</p>
         <div class="segmented" role="radiogroup" aria-label="Método" style="margin-bottom:var(--sp-4)"><button type="button" role="radio" aria-checked="true" aria-pressed="true" data-m="app">${icon('phone', 'icon-sm')} App autenticadora</button><button type="button" role="radio" aria-checked="false" aria-pressed="false" data-m="sms">${icon('mail', 'icon-sm')} SMS al +56 9 •••• 4821</button><button type="button" role="radio" aria-checked="false" aria-pressed="false" data-m="key">${icon('key', 'icon-sm')} Llave de seguridad o clave de acceso</button></div>
         <div id="fido" hidden class="card" style="box-shadow:none;margin-bottom:var(--sp-3)"><p class="small" style="margin-top:0">Factor resistente a suplantación (FIDO2 / WebAuthn): toque su llave de seguridad o confirme con la huella o el rostro en su equipo.</p><button type="button" class="btn btn-primary btn-block big-btn" id="fido-go">${icon('fingerprint')}Usar llave de seguridad</button></div>
         <fieldset><legend class="sr-only">Código de verificación</legend>
@@ -138,6 +159,11 @@
     },
     mount: (root) => {
       if (!L.session()) { L.go('/ingresar'); return; }
+      // SD4 Capa 7: TI usa FIDO2; los portales usan TOTP o clave de acceso (sin SMS)
+      const who = L.me()?.id;
+      const portal = ['cliente', 'cliente-moderno', 'transportista', 'proveedor'].includes(who);
+      if (who === 'ti' || portal) $('[data-m=sms]', root).remove();
+      if (who === 'ti') $('[data-m=app]', root).remove();
       const ins = $$('#otp input', root);
       ins.forEach((inp, i) => {
         inp.addEventListener('input', () => { inp.value = inp.value.replace(/\D/g, ''); if (inp.value && ins[i + 1]) ins[i + 1].focus(); });
@@ -145,7 +171,9 @@
         inp.addEventListener('paste', (e) => { const t = (e.clipboardData.getData('text') || '').replace(/\D/g, '').slice(0, 6); if (t.length) { e.preventDefault(); t.split('').forEach((c, j) => (ins[j].value = c)); ins[Math.min(5, t.length)].focus(); } });
       });
       ins[0].focus();
-      $$('[data-m]', root).forEach((b) => (b.onclick = () => { $$('[data-m]', root).forEach((x) => { x.setAttribute('aria-checked', x === b); x.setAttribute('aria-pressed', x === b); }); if (b.dataset.m === 'sms') L.toast('Código enviado', 'Revise el SMS en su teléfono terminado en 4821.', 'info'); $('#fido', root).hidden = b.dataset.m !== 'key'; $('#otp', root).closest('fieldset').hidden = b.dataset.m === 'key'; $('#f2 [type=submit]', root).hidden = b.dataset.m === 'key'; }));
+      const modes = $$('[data-m]', root);
+      modes.forEach((b) => (b.onclick = () => { $$('[data-m]', root).forEach((x) => { x.setAttribute('aria-checked', x === b); x.setAttribute('aria-pressed', x === b); }); if (b.dataset.m === 'sms') L.toast('Código enviado', 'Revise el SMS en su teléfono terminado en 4821.', 'info'); $('#fido', root).hidden = b.dataset.m !== 'key'; $('#otp', root).closest('fieldset').hidden = b.dataset.m === 'key'; $('#f2 [type=submit]', root).hidden = b.dataset.m === 'key'; }));
+      if (who === 'ti') modes[0].click();
       $('#fido-go', root).onclick = (e) => L.busy(e.currentTarget, () => { L.toast('Llave de seguridad verificada', 'Segundo factor FIDO2 aceptado.', 'success'); const next = L.store.get('pending2fa', '/inicio'); L.go(L.session().first ? '/bienvenida' : next); }, 1400);
       let s = 30;
       const rs = $('#resend', root);
@@ -219,7 +247,7 @@
           <div class="field"><label for="rg-nf">Nombre de fantasía</label><input id="rg-nf" class="input" placeholder="Ej.: Almacén Doña Rosa"></div>
           <div class="field"><label for="rg-giro">Giro <span class="req" aria-hidden="true">*</span></label><select id="rg-giro" class="select" required><option value="">Seleccione…</option><option>Almacén de barrio</option><option>Minimarket</option><option>Botillería</option><option>Restaurante o casino</option><option>Supermercado</option><option>Panadería</option></select></div>
           <div class="full" id="rg-rut-msg"></div>
-          <fieldset class="full"><legend>Canal <span class="req" aria-hidden="true">*</span></legend><div class="options-row">${['Tradicional', 'Food service', 'Moderno'].map((c, i) => `<label class="radio"><input type="radio" name="rg-canal" value="${c}" ${i === 0 ? 'checked' : ''}> ${c}</label>`).join('')}</div></fieldset>
+          <fieldset class="full"><legend>Canal <span class="req" aria-hidden="true">*</span></legend><div class="options-row"><label class="radio"><input type="radio" name="rg-canal" value="Moderno" checked> Moderno</label></div><span class="hint">El autorregistro es del canal moderno (RF-12.25). Los almacenes del canal tradicional activan su cuenta, si la desean, en la visita de su preventista con un código por SMS; la compra asistida sigue sin cuenta.</span></fieldset>
         </section>
         <section data-step="1" class="form-grid" hidden>
           <div class="field"><label for="rg-reg">Región <span class="req" aria-hidden="true">*</span></label><select id="rg-reg" class="select" required><option value="">Seleccione…</option>${Object.keys(regiones).map((r) => `<option>${esc(r)}</option>`).join('')}</select></div>
@@ -235,7 +263,6 @@
           <div class="field"><label for="rg-cargo">Cargo</label><select id="rg-cargo" class="select"><option>Dueña o dueño</option><option>Administrador</option><option>Encargado de compras</option></select></div>
           <div class="field"><label for="rg-ce">Correo corporativo <span class="req" aria-hidden="true">*</span></label><input id="rg-ce" class="input" type="email" required autocomplete="email"></div>
           <div class="field"><label for="rg-tel">Teléfono móvil <span class="req" aria-hidden="true">*</span></label><div class="input-group"><span class="addon">+56</span><input id="rg-tel" class="input" inputmode="tel" required placeholder="9 1234 5678" autocomplete="tel-national"></div></div>
-          <div class="full" data-trad>${L.alert('info', 'Activación asistida, opcional', 'Puede activar su cuenta con un código que le enviamos por SMS. Crear la cuenta es voluntario: si prefiere, siga comprando con su preventista como siempre, sin cuenta ni internet.')}<label class="check" style="margin-top:8px"><input type="checkbox" id="rg-sms"> Activar mi cuenta con un código por SMS</label></div>
           <fieldset class="full"><legend>¿Cómo quiere recibir avisos de entrega?</legend><div class="options-row">${[['SMS', true], ['Correo electrónico', true], ['WhatsApp', false], ['Notificación en la app', false]].map(([c, on]) => `<label class="check"><input type="checkbox" ${on ? 'checked' : ''}> ${c}</label>`).join('')}</div></fieldset>
         </section>
         <section data-step="3" hidden>
@@ -312,7 +339,6 @@
         $('#rg-back', root).style.visibility = n === 0 ? 'hidden' : 'visible';
         $('#rg-next', root).innerHTML = n === 4 ? `${icon('send')}Enviar solicitud` : `Continuar${icon('arrow-right')}`;
         if (n === 4) { $('#rg-user', root).value = $('#rg-ce', root).value; summary(); }
-        if (n === 2) $('[data-trad]', root).hidden = $('[name=rg-canal]:checked', root).value !== 'Tradicional';
         $('#rg-title', root).setAttribute('tabindex', '-1');
         $('#rg-title', root).focus();
       };
@@ -326,7 +352,7 @@
         if (cur < 4) { L.busy($('#rg-next', root), () => show(cur + 1), 450); return; }
         L.busy($('#rg-next', root), () => {
           $('#rg', root).innerHTML = `${stepperHtml(STEPS, 5)}${L.empty('done', 'Solicitud enviada', `Folio SOL-${Math.floor(Math.random() * 9000 + 1000)}. Comercial validará su crédito y le escribirá dentro de 24 horas hábiles a ${$('#rg-ce', root)?.value || 'su correo'}.`, '<div class="btn-group"><a class="btn btn-primary" href="#/ingresar">Ir a ingresar</a><a class="btn btn-secondary" href="#/">Volver al inicio</a></div>')}`;
-          L.toast('Solicitud recibida', $('#rg-sms', root)?.checked ? 'Le enviamos un correo de confirmación y un código de activación por SMS.' : 'Le enviamos un correo de confirmación de la cuenta.', 'success');
+          L.toast('Solicitud recibida', 'Le enviamos un correo de confirmación de la cuenta.', 'success');
         }, 1200);
       };
       show(0);

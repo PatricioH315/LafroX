@@ -99,7 +99,7 @@
     ti: [['users', 'Personas usuarias', 'Altas, bajas y roles', '/admin/usuarios'], ['sliders', 'Parámetros', '1 cambio por aprobar', '/admin/parametros'], ['history', 'Auditoría', 'Consultar y exportar', '/admin/auditoria']],
     cliente: [['cart', 'Hacer un pedido', 'Con su crédito disponible', '/portal/pedido'], ['truck', 'Seguir mi entrega', 'Ventana de 30 minutos', '/portal/entregas'], ['file', 'Descargar documentos', 'Facturas y guías', '/portal/cuenta']],
     'cliente-moderno': [['cart', 'Pedido manual', 'Además del EDI de la cadena', '/portal/pedido'], ['truck', 'Entregas por local', 'Ventana de 30 minutos', '/portal/entregas'], ['file', 'Documentos y acuses', 'Facturas, guías y ASN', '/portal/cuenta']],
-    'conductor-ext': [['truck', 'Iniciar mi ruta', 'Credencial de turno de 14 h', '/terreno'], ['undo', 'Registrar devolución', 'Producto y envases', '/devoluciones/nueva'], ['cash', 'Rendir mi turno', 'Efectivo y documentos', '/rendicion']],
+    'conductor-ext': [['truck', 'Iniciar mi ruta', 'Asignación aprobada por despacho', '/terreno'], ['undo', 'Registrar devolución', 'Producto y envases', '/devoluciones/nueva'], ['cash', 'Rendir mi turno', 'Efectivo y documentos', '/rendicion']],
     transportista: [['truck', 'Asignar conductor y vehículo', 'Rutas de mañana', '/portal/transportista'], ['inbox', 'Mis tareas', 'Plazo hoy 18:00', '/bandeja']],
     proveedor: [['box', 'Órdenes y recepciones', 'Solo lectura', '/portal/proveedor'], ['inbox', 'Mis tareas', 'Discrepancias por revisar', '/bandeja']]
   };
@@ -198,7 +198,7 @@
       </div>
       <aside class="card stack"><div class="row"><span class="avatar lg">${L.initials(p.name)}</span><div><strong>${esc(p.name)}</strong><div class="small muted">${esc(p.role)}</div></div></div>
         <dl class="desc-list"><dt>Interfaz</dt><dd>${esc(p.iface)}</dd><dt>Segundo factor</dt><dd>${p.mfa ? L.badge('Activo', 'success') : L.badge('No exigido', '')}</dd><dt>Sesión</dt><dd>Única para todos los módulos</dd></dl>
-        <p class="hint">Portal de clientes: cierre tras 15 minutos sin actividad. La prueba siguiente adelanta el reloj de demostración.</p>
+        <p class="hint">Cierre por inactividad: 15 minutos en la sesión administrativa (TI) y 30 minutos en portales y demás consolas. Reparto y bodega se rigen por su asignación o turno. La prueba siguiente adelanta el reloj de demostración.</p>
         <button type="button" class="btn btn-secondary" id="pf-idle">Probar cierre por inactividad</button>
         <button type="button" class="btn btn-secondary" data-switch>${icon('users')}Cambiar perfil de demostración</button>
         <button type="button" class="btn btn-tertiary" onclick="LFX.signOut()">${icon('logout')}Cerrar sesión</button></aside></div>`;
@@ -213,7 +213,7 @@
         L.toast('Preferencia aplicada', b.textContent, 'success', { duration: 2000 });
       }));
       $('#pf-idle', root).onclick = () => {
-        if (!['cliente', 'cliente-moderno'].includes(L.session().profile)) { L.toast('Solo portal de clientes', 'Cambie a un perfil de cliente para probar el cierre.', 'info'); return; }
+        if (!['cliente', 'cliente-moderno', 'transportista', 'proveedor', 'ti', 'gerente-ops', 'planificador', 'bodega', 'calidad', 'comercial', 'finanzas'].includes(L.session().profile)) { L.toast('No aplica a este perfil', 'Reparto y bodega se rigen por su asignación o turno; cambie a un portal o consola.', 'info'); return; }
         L.checkInactivity(Date.now() + L.idleLimit() + 1000);
       };
       $('#pf-keys', root).onclick = () => L.showShortcuts();

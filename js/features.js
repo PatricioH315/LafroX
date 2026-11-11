@@ -1,9 +1,11 @@
 /* Prioridad 3: comportamiento transversal del prototipo, sin servicios externos. */
 (function (L) {
   const { $, $$, esc } = L;
-  const clients = ['cliente', 'cliente-moderno'];
-  const clientSession = () => clients.includes(L.session()?.profile);
-  L.idleLimit = () => Number(L.data.parametros.flatMap((g) => g.items).find((p) => p.id === 'inact').valor) * 60000;
+  // SD4 Capa 7: la sesión administrativa cierra a los 15 min y las demás a los 30. Reparto y bodega se rigen por su asignación o turno.
+  const timed = ['cliente', 'cliente-moderno', 'transportista', 'proveedor', 'ti', 'gerente-ops', 'planificador', 'bodega', 'calidad', 'comercial', 'finanzas'];
+  const clientSession = () => timed.includes(L.session()?.profile);
+  const param = (id) => Number(L.data.parametros.flatMap((g) => g.items).find((p) => p.id === id).valor);
+  L.idleLimit = () => param(L.session()?.profile === 'ti' ? 'inact-admin' : 'inact') * 60000;
   L.checkInactivity = (now = Date.now()) => {
     const s = L.session();
     if (!clientSession()) return false;
