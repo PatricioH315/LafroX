@@ -124,6 +124,8 @@
     if (['conductor', 'conductor-ext'].includes(me.id) && /^\/(devoluciones|rendicion)/.test(path)) L.scopeChip(root, 'Su ruta y turno · ' + L.fieldRoute().id);
     if (me.id === 'preparador' && /^\/(preparacion|recepcion|flujo)/.test(path)) L.scopeChip(root, 'Sitio CD Talca · turno noche');
     if (me.id === 'bodega' && /^\/(preparacion|recepcion|inventario|devoluciones)/.test(path)) L.scopeChip(root, 'Sitio CD Talca');
+    if (['finanzas', 'comercial'].includes(me.id) && path === '/admin/parametros') L.scopeChip(root, me.id === 'finanzas' ? 'Solo parámetros financieros' : 'Solo criterios de sugerencia de preventa');
+    if (me.id === 'preparador' && path === '/preparacion') root.querySelector('.page-head')?.insertAdjacentHTML('afterend', L.alert('info', 'Manifiesto de bodega firmado', 'El terminal opera con el manifiesto vigente (26 h, renovado cada hora con enlace) y su PIN personal; sin enlace tiene autonomía de 24 h. La sesión no hereda el permiso del usuario anterior.'));
   };
   L.signIn = (profileId, { remember = true } = {}) => {
     const first = !L.store.get('seen.' + profileId, false);

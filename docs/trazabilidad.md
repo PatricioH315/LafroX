@@ -123,3 +123,27 @@ Cada cambio sigue a los subdocumentos; donde una observación contradecía un su
 - **Ámbito**: cartera del preventista, ruta y turno del conductor, y sitio y turno de bodega, visibles como indicadores en cabecera.
 - **Gerente de Operaciones**: sin acceso a rendición, clientes, recepción ni app de terreno; devoluciones en solo consulta (RF-08.06).
 - **Pendiente en el SD4**: nombrar el perfil que aprueba los cambios de rol (SD4 Capa 7 solo dice «perfiles autorizados»), y declarar en el Anexo 4-N crear/editar cliente, anular pedido y solicitud de nota de crédito.
+
+## Segunda verificación de accesos (11-11-2026)
+
+Se contrastó la segunda comparación con el SD3 y el SD4. Los subdocumentos mandan sobre las observaciones.
+
+**Aplicadas**
+- **Despacho (SD4, Capa 4):** quien registra una asignación no la aprueba; la aprueba otra persona de despacho.
+- **Parámetros por dominio (SD3 actores_sistema: «configuración autorizada por dominio»; SD4 4-D, M3):** Finanzas propone los parámetros de crédito y Comercial los criterios de sugerencia de preventa. TI conserva la administración completa (RF-17.02) y aprueba como segundo perfil (RF-17.03).
+- **Gerenta General (SD4, 4-N):** sin cuenta directa; se quitó el rol «Gerencia (consulta)» y su usuario.
+- **Cantidades del catálogo de roles (SD3, participación de actores):** tripulación propia y peoneta 84, preparadores 180 (120 en Talca y 60 en Concepción), equipo de TI de 4.
+- **Gerente de Operaciones:** sin consola de Calidad (SD4 M9; SD3 RF-09 no lo incluye).
+- **Elevación temporal de privilegios de TI (SD4, Capa 7):** solicitud con motivo y hasta 8 h, aprobada por un segundo perfil y auditada, en `/admin/roles`.
+- **Manifiesto de bodega (SD4, Capa 7):** aviso en la preparación del terminal con manifiesto firmado, PIN y autonomía de 24 h.
+- **Alerta de desvío (RF-14.03):** el destinatario es el centro de control, a cargo del Gerente de Operaciones.
+
+**No aplicadas, por contradecir el SD3 o por corresponder al SD4**
+- **Carga dirigida (RF-05.07):** ya existe como paso «Carga» de `/flujo`, con escaneo de SSCC en secuencia inversa; el actor del RF es la Jefa de Bodega.
+- **TI sin tablero ni analítica:** el RF-16.02 incluye al Jefe de TI en los tableros.
+- **Planificador en analítica:** el RF-11.05 lo incluye.
+- **Filtro de inventario por sitio:** el RF-02.02 y el RF-02.07 piden la consolidación de todos los nodos para la Jefa de Bodega.
+- **TI solo con parámetros técnicos:** el RF-17.02 y el RF-17.03 asignan a TI la parametrización de reglas de negocio.
+- **Declaraciones en el Anexo 4-N y 4-D** (crear y editar cliente, anular pedido, nota de crédito, consultas de M8, M9 y M10, aprobador de cambios de rol): son cambios del SD4.
+- **Cuenta de emergencia (break-glass, Capa 7):** no demostrada en el prototipo.
+- **Acceso local de Calidad en el terminal de bodega:** el prototipo simula la puerta local dentro de `/calidad`; no hay una app de terminal separada para Calidad.
