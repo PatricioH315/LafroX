@@ -1,0 +1,86 @@
+% Declaración de titularidad de derechos y autorización de uso del video (BTT numeral 24.5)
+% Formato corporativo LafroX: clase lafrox.cls (rama LafroX-Subdoc4-LateX, 00/plantilla/formato-base, 26-10-2026).
+% Compilar desde esta carpeta:  latexmk LAFROX-Declaracion-Derechos-Video.tex   (LuaLaTeX)
+\documentclass[carta,firma,final]{lafrox}
+
+\datoslafrox{
+  documento = {Declaración de derechos y autorización de uso del video},
+  subtitulo = {Video de presentación de la propuesta},
+  alcance   = {Bases Técnicas Transversales, Capítulo 24, numeral 24.5},
+  formulario = {Documento complementario de la Propuesta Final},
+  version   = {1.0},
+}
+
+% Pie de media firma (Art. 40.2) SIN imagen: queda la línea en blanco para que
+% el representante firme a mano en cada página.
+\renewcommand{\LFXpiefirma}{%
+  \begin{tabular}[b]{@{}r@{}}
+    {\color{lafroxGris}\rule{3.4cm}{0.4pt}}\\[-1pt]
+    {\LFXchico Media firma: \LFXrepresentante}\\
+    {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}\LFXfoliotexto}
+  \end{tabular}}
+
+\newcommand{\campo}[1]{\underline{\makebox[#1]{}}}
+\setlist[enumerate,1]{itemsep=2pt,topsep=4pt}
+\setlist[enumerate,2]{itemsep=0pt,topsep=2pt}
+
+\begin{document}
+\markboth{Declaración de derechos y autorización de uso del video}{}
+
+\begin{center}
+  {\intersemibold\fontsize{16pt}{20pt}\selectfont\color{lafroxFuerte}
+   DECLARACIÓN DE TITULARIDAD DE DERECHOS\\ Y AUTORIZACIÓN DE USO DEL VIDEO DE PRESENTACIÓN\par}
+  \vspace{3pt}
+  {\intermedium\fontsize{10pt}{13pt}\selectfont\color{lafroxGris}
+   \LFXlicitacion{} · Caso 02 — Logística · \LFXcliente\\
+   Bases Técnicas Transversales, Capítulo 24, numeral 24.5\par}
+\end{center}
+
+\vspace{4pt}
+\noindent Valparaíso, \campo{1.2cm} de \campo{3.2cm} de 2026.
+
+\vspace{4pt}
+\noindent Quien suscribe, \textbf{\LFXrepresentante}, cédula de identidad N.\textdegree{} \campo{3.2cm},
+en su calidad de \textbf{\LFXcargo} de \textbf{\LFXempresa}, RUT \LFXrut, con domicilio en \LFXdomicilio,
+en representación del PROPONENTE y en relación con el video de presentación de la propuesta exigido por el
+Capítulo 24 de las Bases Técnicas Transversales de la \LFXlicitacion, declara lo siguiente:
+
+\begin{enumerate}
+  \item \textbf{Identificación del video.} El video de presentación corresponde al archivo\linebreak
+  \texttt{LAFROX\_Video\_TFEP-01-2026\_Caso02.mp4}, de una duración de \campo{1.6cm} (minutos:segundos),
+  y se entrega junto con la Propuesta Final por dos vías: (a) una unidad de almacenamiento USB etiquetada con
+  el nombre de la empresa y del proyecto, que contiene el video y un archivo de respaldo, y (b) un enlace de
+  descarga sin restricciones y con una vigencia mínima de sesenta (60) días, cuya contraseña se entrega en un
+  documento separado.
+
+  \item \textbf{Titularidad de derechos.} \LFXempresa{} garantiza que posee todos los derechos necesarios
+  sobre la totalidad del material incluido en el video: la imagen y la voz de los integrantes del equipo
+  clave, quienes autorizaron su uso; el logotipo y la identidad corporativa, de su propiedad; los gráficos,
+  láminas, animaciones, textos y locuciones, de elaboración propia; las tipografías Archivo e IBM Plex Mono,
+  bajo licencia SIL Open Font License 1.1, y la música o las imágenes de terceros que se hubieran incluido,
+  con licencia acreditable que se adjunta en la carpeta \texttt{licencias/} de la unidad USB.
+
+  \item \textbf{Autorización de uso.} \LFXempresa{} autoriza el uso del video para fines de evaluación de la
+  propuesta y su proyección en las sesiones de evaluación de la presente licitación.
+
+  \item \textbf{Veracidad.} La información presentada en el video es veraz y coincide con la contenida en la
+  propuesta técnico-económica y en los formularios que la integran.
+
+  \item \textbf{Confidencialidad.} \LFXempresa{} toma conocimiento de que la Comisión Evaluadora mantendrá la
+  confidencialidad del contenido, no lo distribuirá sin autorización y eliminará las copias una vez finalizada
+  la evaluación, en caso de que la propuesta no resulte seleccionada.
+\end{enumerate}
+
+\begin{center}
+\begin{minipage}{8.2cm}
+  \centering
+  \vspace*{1.3cm}% espacio para la firma
+  {\color{lafroxTinta}\rule{8.2cm}{0.6pt}}\\[4pt]
+  {\intersemibold \LFXrepresentante}\\
+  {\intermedium\fontsize{10pt}{13pt}\selectfont \LFXcargo}\\
+  {\intermedium\fontsize{10pt}{13pt}\selectfont \LFXempresa{} · RUT \LFXrut}\\[2pt]
+  {\LFXchico Firma del representante del PROPONENTE}
+\end{minipage}
+\end{center}
+
+\end{document}

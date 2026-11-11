@@ -1,0 +1,53 @@
+% Autorización de uso de imagen y voz de los integrantes del equipo (respaldo interno de la
+% declaración de derechos del numeral 24.5). NO es exigida por las Bases: se archiva y puede ir en la USB.
+% Compilar desde esta carpeta:  latexmk LAFROX-Autorizacion-Imagen-Equipo.tex   (LuaLaTeX)
+\documentclass[carta,sinfirma,final]{lafrox}
+
+\datoslafrox{
+  documento = {Autorización de uso de imagen y voz del equipo},
+  subtitulo = {Video de presentación de la propuesta},
+  version   = {1.0},
+}
+\newcommand{\campo}[1]{\underline{\makebox[#1]{}}}
+\newcommand{\filafirma}[2]{%
+  #1 & #2 & & \\[18pt]\midrule}
+
+\begin{document}
+\markboth{Autorización de uso de imagen y voz del equipo}{}
+
+\begin{center}
+  {\intersemibold\fontsize{15pt}{19pt}\selectfont\color{lafroxFuerte}
+   AUTORIZACIÓN DE USO DE IMAGEN Y VOZ\\ DE LOS INTEGRANTES DEL EQUIPO CLAVE\par}
+  \vspace{6pt}
+  {\intermedium\fontsize{10pt}{13pt}\selectfont\color{lafroxGris}
+   Video de presentación · \LFXlicitacion{} · Caso 02 — Logística · \LFXcliente\par}
+\end{center}
+
+\vspace{10pt}
+\noindent Los abajo firmantes, integrantes del equipo clave de \LFXempresa{} (RUT \LFXrut), autorizan a
+\LFXempresa{} a grabar, editar y utilizar su imagen y su voz en el video de presentación de la propuesta de la
+\LFXlicitacion, y a entregarlo a la Comisión Evaluadora para fines de evaluación y para su proyección en las
+sesiones de evaluación. Declaran que la información que entregaron para su rótulo en pantalla (nombre, cargo,
+años de experiencia, especialización y certificaciones) es verdadera. Esta autorización es gratuita y se limita
+al proceso de la licitación indicada.
+
+\vspace{6pt}
+\noindent Valparaíso, \campo{1.2cm} de \campo{3.2cm} de 2026.
+
+\vspace{12pt}
+\renewcommand{\arraystretch}{1.25}
+\noindent\begin{tabularx}{\textwidth}{@{}p{3.6cm}Xp{2.6cm}p{3.6cm}@{}}
+\toprule
+\textbf{Nombre} & \textbf{Cargo en el proyecto} & \textbf{RUN} & \textbf{Firma} \\
+\midrule
+\filafirma{Alex Aravena}{Jefe de Proyecto}
+\filafirma{Bastián Trejo}{Arquitecto de Solución}
+\filafirma{Álvaro Catalán}{Encargado de Seguridad de la Información}
+\filafirma{Leandro Chamorro}{Líder de Datos}
+\filafirma{Tomás Pérez}{Líder de Desarrollo}
+\filafirma{Maximiliano Miño}{Líder de Calidad}
+\filafirma{Guillermo Castillo}{Líder de Operación / SRE}
+\filafirma{Patricio Henríquez}{Líder de Implantación y Gestión del Cambio}
+\end{tabularx}
+
+\end{document}
