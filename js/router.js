@@ -46,6 +46,14 @@
     current: null,
     resolve() {
       const { route, params, query, path } = parse();
+      // Direct link with a demo profile (e.g. #/flujo?perfil=evaluador): opens the screen already signed in
+      // with that profile and skips the welcome tour. Only profiles without a second factor, so 2FA stays demonstrable.
+      const linked = query.perfil && L.profile(query.perfil);
+      if (route.layout === 'app' && linked && !linked.mfa && L.session()?.profile !== linked.id) {
+        L.signIn(linked.id);
+        L.setSession({ ...L.session(), first: false });
+        L.store.set('seen.' + linked.id, true);
+      }
       const s = L.session();
       if (route.layout === 'app' && !s) {
         L.store.set('next', path);
