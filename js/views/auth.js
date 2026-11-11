@@ -121,7 +121,7 @@
           if (!/^\d{4,6}$/.test(pin)) { err.innerHTML = L.alert('warning', 'PIN incompleto', 'Ingrese su PIN personal de 4 a 6 dígitos.'); $('#ot-p', fo).focus(); return; }
           L.busy($('[type=submit]', fo), () => {
             if (rut !== '154823379' || pin !== '4821') { err.innerHTML = L.alert('danger', 'RUT o PIN incorrecto', 'Revise los datos. Si no recuerda su PIN, pida al jefe de flota un nuevo alta con código.'); $('#ot-p', fo).focus(); return; }
-            const asg = (L.store.get('asignaciones', {}) || {})['R-09'];
+            const asg = ((L.store.get('asignaciones', {}) || {}) || {})['R-09'];
             if (asg && asg.estado !== 'Aprobada') { err.innerHTML = L.alert('warning', 'Asignación pendiente de despacho', 'Su asignación conductor–vehículo–turno aún no está aprobada. Despacho debe aprobarla antes de la salida.'); return; }
             err.innerHTML = ''; L.toast('Asignación vigente', 'Vence 30 min después del fin de la ruta, sin superar 16 h. No se renueva sin conexión.', 'success'); finish('conductor-ext');
           }, 800);

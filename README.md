@@ -53,7 +53,7 @@ El sitio es estático, por lo que puede publicarse en GitHub Pages desde la rama
 
 ## Funciones de demostración (Prioridad 3)
 
-- En **Perfil**, un cliente puede probar el cierre tras 15 minutos de inactividad adelantando el reloj de prueba. El temporizador también funciona sin ese botón.
+- En **Perfil**, un perfil de portal o de consola puede probar el cierre por inactividad (30 minutos; 15 en la sesión administrativa de TI) adelantando el reloj de prueba. El temporizador también funciona sin ese botón.
 - En **Estado de cuenta → Firmar acuerdo**, se simulan firma simple y avanzada, certificados vigentes/vencidos/revocados y evidencia descargable. Sin validez legal.
 - Todas las tablas ofrecen **Exportar JSON**. Las tablas con filtros incluyen todos los registros filtrados y ordenados, no solo la página.
 - **Guardar borrador** o `g s` en Flujo de pedido y Portal de pedidos. Los borradores duran la pestaña y están separados por perfil; no envían el pedido.

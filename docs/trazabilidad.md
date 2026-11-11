@@ -75,6 +75,7 @@ Matriz de cada pantalla del prototipo con el bloque del numeral 25.2, el módulo
 | Mis entregas | `/portal/entregas` | Gestión de terceros | Portal de clientes · M6 · M9 | RF-12.16, RF-06.11, RF-09.04 | Clientes |
 | Estado de cuenta | `/portal/cuenta` | Gestión de terceros | Portal de clientes · M7 | RF-07.07, RF-12.17, RF-12.18, RF-18.01, RF-12.30 | Clientes |
 | Portal de transportistas | `/portal/transportista` | Gestión de terceros | Portal de transportistas (canal M11) · M4 · M6 · M12 | RF-12.19, RF-12.20, RF-12.21, RF-06.08, RF-14.05 | Empresa transportista |
+| Asignaciones de turno | `/despacho/asignaciones` | Gestión de terceros | M4 Rutas · M6 Reparto · función de despacho (Etapa 1) | RF-06.08, RF-14.05, RF-12.21 | Gerente de Operaciones |
 | Portal de proveedores | `/portal/proveedor` | Gestión de terceros | Portal de proveedores (canal M11) · M1 | RF-12.22, RF-12.23, RF-12.24, RF-01.01 | Proveedor |
 | Canal moderno EDI | `/canal-moderno` | Gestión de terceros | M11 Canal moderno | RF-12.01, RF-12.02, RF-12.03, RF-12.04, RF-12.05, RF-12.06, RF-12.07, RF-12.09, RF-12.10, RF-12.11, RF-12.12, RF-12.13, RNG-11, RNF-12.02 | Cliente del canal moderno, Gerente Comercial |
 | Tablero analítico | `/analitica` | Tablero analítico | M10 Analítica | RF-11.01, RF-11.02, RF-11.03, RF-11.04, RF-11.05, RF-11.06, RF-16.02, RNG-09 | Gerente Comercial, Gerente de Finanzas, Gerente de Operaciones, Jefa de Calidad |
@@ -98,7 +99,7 @@ Matriz de cada pantalla del prototipo con el bloque del numeral 25.2, el módulo
 
 ## Cierre de Prioridad 3 (03-11-2026)
 
-- RF-12.29: temporizador global para ambos perfiles de cliente; 15 min según el parámetro de demostración. «Mi perfil» permite adelantar el reloj de prueba. No se simula un token de servidor.
+- RF-12.29 y SD4 Capa 7: temporizador de inactividad de 15 min para la sesión administrativa (TI) y 30 min para portales y demás consolas, según los parámetros `inact-admin` e `inact`. Reparto y bodega se rigen por su asignación o turno. «Mi perfil» permite adelantar el reloj de prueba. No se simula un token de servidor.
 - RF-18.01: «Estado de cuenta → Firmar acuerdo». Modos simple y avanzado simulados; certificado vencido/revocado bloquea, vigente genera evidencia JSON y sello de tiempo local. No tiene validez legal.
 - RF-17.12: cada dataTable exporta todos los registros filtrados y ordenados a JSON, no solo la página. Las tablas manuales exportan sus filas actuales; no tienen paginación oculta.
 - Borradores: botón y atajo `g s` en Flujo de pedido y Portal de pedidos; por perfil y pestaña. El atajo se desactiva en Perfil y no opera al escribir ni sobre un diálogo.
@@ -107,3 +108,18 @@ Matriz de cada pantalla del prototipo con el bloque del numeral 25.2, el módulo
 La planilla tiene 292 filas: 186 RF/RNG con ruta, 10 RT con la evaluación preexistente, 6 RF documentales (RF-13.01 a RF-13.04, RF-16.01 y RF-16.04) y los 90 RNF de SD3 (18 demostrables con ruta, 21 no demostrables en simulación y 51 documentales). Las capas 2–8 se clasifican «No aplica» al prototipo estático. «Ruta identificada» señala una ubicación en la demo; no certifica producción ni validación automática de cada criterio. La evidencia reproducible de este corte está en verificacion_2026-11-07.md.
 
 Para regenerar: `node revision/update_trace.cjs` y `node revision/update_workbook.mjs` con el runtime de `@oai/artifact-tool`. Ver `revision/verificacion_prioridad3.md` para pruebas y límites.
+
+## Ajuste de accesos por perfil (11-11-2026)
+
+Cada cambio sigue a los subdocumentos; donde una observación contradecía un subdocumento, se mantuvo el subdocumento.
+
+- **Geocercas**: las gestionan el Gerente de Operaciones (SD3 RF-14.06) y el Planificador de Rutas (SD4, M12).
+- **Asignación conductor–vehículo–turno**: la confirma la empresa transportista (RF-12.21, Etapa 2) o la registra despacho (Etapa 1), y la aprueba el Gerente de Operaciones en `/despacho/asignaciones` (RF-06.08; SD4, conductores externos). El jefe de flota sigue solicitando el OTP (RF-06.08).
+- **Conductor externo**: OTP solo en el alta, con conexión; luego PIN personal. La asignación vence 30 min tras el fin de la ruta, sin superar 16 h y sin renovación offline (SD4 Capa 7). Las 14 h sin señal siguen siendo el mínimo contractual de operación.
+- **Segundo factor**: portales con TOTP o clave de acceso (RF-15.03; SD4 Capa 7); TI con FIDO2.
+- **Registro**: el autorregistro es del canal moderno (RF-12.25). El cliente tradicional activa su cuenta, si la desea, en la visita del preventista con un código SMS (SD4 Capa 1).
+- **Ventanas del cliente**: solo el Planificador (RF-04.07). **Nota de crédito y facturación**: las emite el ERP; el prototipo solo solicita la nota (Finanzas).
+- **Calidad**: puerta local sin conexión y reglas de excursión que solo Calidad propone y aprueba (SD4 Capa 4).
+- **Ámbito**: cartera del preventista, ruta y turno del conductor, y sitio y turno de bodega, visibles como indicadores en cabecera.
+- **Gerente de Operaciones**: sin acceso a rendición, clientes, recepción ni app de terreno; devoluciones en solo consulta (RF-08.06).
+- **Pendiente en el SD4**: nombrar el perfil que aprueba los cambios de rol (SD4 Capa 7 solo dice «perfiles autorizados»), y declarar en el Anexo 4-N crear/editar cliente, anular pedido y solicitud de nota de crédito.

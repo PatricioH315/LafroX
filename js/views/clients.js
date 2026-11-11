@@ -361,7 +361,7 @@
     mount: (root) => {
       L.tabs($('.tabs', root));
       // La confirmación del portal (Etapa 2) queda en el almacén compartido y despacho la aprueba (RF-06.08; SD4 conductores externos)
-      const saved = () => L.store.get('asignaciones', {});
+      const saved = () => (L.store.get('asignaciones', {}) || {});
       const rows = D.rutas.filter((r) => r.externo).map((r, i) => {
         const a = saved()[r.id];
         return { ...r, fecha: 'Sáb 14-11', confirmada: !!a || i === 0, conductorAsig: a?.conductor || (i === 0 ? DRIVERS[0] : ''), camionAsig: a?.camion || (i === 0 ? r.camion : ''), aprob: a?.estado || (i === 0 ? 'Pendiente' : '') };
@@ -399,10 +399,10 @@
     mount: (root) => {
       const rutas = D.rutas.filter((r) => r.externo);
       const get = () => {
-        const st = L.store.get('asignaciones', {});
+        const st = (L.store.get('asignaciones', {}) || {});
         return rutas.map((r, i) => { const a = st[r.id] || (i === 0 ? { conductor: DRIVERS[0], camion: r.camion, estado: 'Pendiente', origen: 'Portal del transportista' } : null); return a && { id: r.id, empresa: 'Transportes Maule Ltda.', ...a }; }).filter(Boolean);
       };
-      const set = (id, patch) => { const st = L.store.get('asignaciones', {}); const cur = get().find((x) => x.id === id) || {}; const { id: _i, empresa: _e, ...rest } = cur; L.store.set('asignaciones', { ...st, [id]: { ...rest, ...patch } }); };
+      const set = (id, patch) => { const st = (L.store.get('asignaciones', {}) || {}); const cur = get().find((x) => x.id === id) || {}; const { id: _i, empresa: _e, ...rest } = cur; L.store.set('asignaciones', { ...st, [id]: { ...rest, ...patch } }); };
       const draw = () => {
         const list = get();
         $('#as-body', root).innerHTML = list.length ? list.map((a) => `<tr><td class="mono">${a.id}</td><td>${esc(a.empresa)}</td><td>${esc(a.conductor)}</td><td class="mono">${esc(a.camion)}</td><td>${esc(a.origen)}</td><td>${L.badge(a.estado === 'Aprobada' ? 'Aprobada' : a.estado === 'Rechazada' ? 'Rechazada' : 'Pendiente de aprobación', a.estado === 'Aprobada' ? 'success' : a.estado === 'Rechazada' ? 'danger' : 'warning')}</td><td class="right">${a.estado === 'Pendiente' && L.can('asignacion.aprobar') ? `<button type="button" class="btn btn-primary btn-sm" data-ap="${a.id}">Aprobar<span class="sr-only"> ${a.id}</span></button> <button type="button" class="btn btn-tertiary btn-sm" data-rc="${a.id}">Rechazar<span class="sr-only"> ${a.id}</span></button>` : ''}</td></tr>`).join('') : '<tr><td colspan="7" class="muted">Sin asignaciones por revisar.</td></tr>';
