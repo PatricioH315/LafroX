@@ -351,32 +351,69 @@
   L.route('/portal/transportista', {
     title: 'Portal de transportistas', parent: '/inicio', block: 'Gestión de terceros', module: 'Portal de transportistas (canal M11) · M4 · M6 · M12', rf: ['RF-12.19', 'RF-12.20', 'RF-12.21', 'RF-06.08', 'RF-14.05'], actors: ['Empresa transportista'],
     render: () => `<div class="page-head"><div class="titles"><span class="page-kicker">Transportes Maule Ltda.</span><h1>Portal de transportistas</h1><p class="muted" style="margin:0">Rutas asignadas para mañana, documentación de despacho y asignación de conductor y vehículo.</p></div></div>
-      ${L.alert('warning', 'Confirme antes de las 18:00', 'Si no confirma, se mantiene la asignación planificada como supuesto no verificado y despacho la revisa antes de la salida.')}
+      ${L.alert('warning', 'Confirme antes de las 18:00', 'Si no confirma, se mantiene la asignación planificada como supuesto no verificado. Despacho aprueba cada asignación antes de la salida.')}
       <div style="height:16px"></div>
       ${L.tabsHtml('tp', [{ id: 'rutas', label: 'Rutas de mañana' }, { id: 'docs', label: 'Documentación' }, { id: 'cond', label: 'Conductores' }], 'rutas')}
       <div ${L.panelAttrs('tp', 'rutas', 'rutas')}><div class="card card-flush"><div class="table-wrap"><table class="table"><caption class="sr-only">Rutas asignadas a la empresa</caption><thead><tr><th>Ruta</th><th>Zona</th><th>Fecha</th><th class="right">Entregas</th><th>Frío</th><th>Conductor</th><th>Vehículo</th><th>Estado</th><th><span class="sr-only">Acción</span></th></tr></thead><tbody id="tp-body"></tbody></table></div></div></div>
       <div ${L.panelAttrs('tp', 'docs', 'rutas')}><div class="card"><ul class="list">${D.rutas.filter((r) => r.externo).map((r) => `<li>${icon('file')}<span class="grow">Hoja de ruta y guías de ${r.id} · ${esc(r.zona)}<span class="small muted" style="display:block">TXT de ejemplo · ${r.paradas} entregas</span></span><button type="button" class="btn btn-tertiary btn-sm" data-dl="${r.id}">${icon('download', 'icon-sm')}Descargar</button></li>`).join('')}</ul></div></div>
-      <div ${L.panelAttrs('tp', 'cond', 'rutas')}><div class="card"><ul class="list">${DRIVERS.map((n, i) => `<li><span class="avatar">${L.initials(n)}</span><span class="grow"><strong>${n}</strong><span class="small muted" style="display:block">Licencia A5 · ${i === 3 ? 'vence en 12 días' : 'vigente'}</span></span>${i === 3 ? L.badge('Licencia por vencer', 'warning') : L.badge('Habilitado', 'success')}<button type="button" class="btn btn-secondary btn-sm" data-otp="${esc(n)}">${icon('key', 'icon-sm')}Solicitar código de turno</button></li>`).join('')}</ul></div></div>`,
+      <div ${L.panelAttrs('tp', 'cond', 'rutas')}><div class="card"><ul class="list">${DRIVERS.map((n, i) => `<li><span class="avatar">${L.initials(n)}</span><span class="grow"><strong>${n}</strong><span class="small muted" style="display:block">Licencia A5 · ${i === 3 ? 'vence en 12 días' : 'vigente'}</span></span>${i === 3 ? L.badge('Licencia por vencer', 'warning') : L.badge('Habilitado', 'success')}<button type="button" class="btn btn-secondary btn-sm" data-otp="${esc(n)}">${icon('key', 'icon-sm')}Solicitar alta con OTP</button></li>`).join('')}</ul></div></div>`,
     mount: (root) => {
       L.tabs($('.tabs', root));
-      const rows = D.rutas.filter((r) => r.externo).map((r, i) => ({ ...r, fecha: 'Sáb 14-11', confirmada: i === 0, conductorAsig: i === 0 ? DRIVERS[0] : '', camionAsig: i === 0 ? r.camion : '' }));
+      // La confirmación del portal (Etapa 2) queda en el almacén compartido y despacho la aprueba (RF-06.08; SD4 conductores externos)
+      const saved = () => L.store.get('asignaciones', {});
+      const rows = D.rutas.filter((r) => r.externo).map((r, i) => {
+        const a = saved()[r.id];
+        return { ...r, fecha: 'Sáb 14-11', confirmada: !!a || i === 0, conductorAsig: a?.conductor || (i === 0 ? DRIVERS[0] : ''), camionAsig: a?.camion || (i === 0 ? r.camion : ''), aprob: a?.estado || (i === 0 ? 'Pendiente' : '') };
+      });
       const draw = () => {
-        $('#tp-body', root).innerHTML = rows.map((r) => `<tr><td class="mono">${r.id}</td><td>${esc(r.zona)}</td><td>${r.fecha}</td><td class="num right">${r.paradas}</td><td>${r.frio ? L.badge('Sí', 'info') : '—'}</td><td>${r.confirmada ? esc(r.conductorAsig) : `${esc(r.conductor)}<div class="small muted">Planificado, sin verificar</div>`}</td><td class="mono">${esc(r.confirmada ? r.camionAsig : r.camion)}</td><td>${L.badge(r.confirmada ? 'Confirmada' : 'Supuesto no verificado', r.confirmada ? 'success' : 'warning')}</td><td class="right"><button type="button" class="btn ${r.confirmada ? 'btn-tertiary' : 'btn-primary'} btn-sm" data-asg="${r.id}">${r.confirmada ? 'Cambiar' : 'Asignar'}<span class="sr-only"> conductor y vehículo de ${r.id}</span></button></td></tr>`).join('');
+        $('#tp-body', root).innerHTML = rows.map((r) => `<tr><td class="mono">${r.id}</td><td>${esc(r.zona)}</td><td>${r.fecha}</td><td class="num right">${r.paradas}</td><td>${r.frio ? L.badge('Sí', 'info') : '—'}</td><td>${r.confirmada ? esc(r.conductorAsig) : `${esc(r.conductor)}<div class="small muted">Planificado, sin verificar</div>`}</td><td class="mono">${esc(r.confirmada ? r.camionAsig : r.camion)}</td><td>${L.badge(!r.confirmada ? 'Supuesto no verificado' : r.aprob === 'Aprobada' ? 'Aprobada por despacho' : r.aprob === 'Rechazada' ? 'Rechazada por despacho' : 'Confirmada · pendiente de despacho', !r.confirmada ? 'warning' : r.aprob === 'Aprobada' ? 'success' : r.aprob === 'Rechazada' ? 'danger' : 'info')}</td><td class="right"><button type="button" class="btn ${r.confirmada ? 'btn-tertiary' : 'btn-primary'} btn-sm" data-asg="${r.id}">${r.confirmada ? 'Cambiar' : 'Asignar'}<span class="sr-only"> conductor y vehículo de ${r.id}</span></button></td></tr>`).join('');
         $$('[data-asg]', root).forEach((b) => (b.onclick = () => assign(rows.find((x) => x.id === b.dataset.asg))));
       };
       const assign = (r) => L.modal({
         title: `Asignar conductor y vehículo · ${r.id}`,
         body: `<div class="form-grid"><div class="field"><label for="as-c">Conductor <span class="req" aria-hidden="true">*</span></label><select id="as-c" class="select"><option value="">Seleccione…</option>${DRIVERS.map((n) => `<option>${n}</option>`).join('')}</select></div>
           <div class="field"><label for="as-v">Vehículo <span class="req" aria-hidden="true">*</span></label><select id="as-v" class="select"><option value="">Seleccione…</option><option value="PFGD-41">PFGD-41 · con equipo de frío</option><option value="RTKC-77">RTKC-77 · con equipo de frío</option><option value="JZWS-18">JZWS-18 · seco</option></select></div></div>
-          <p class="hint">La asignación personal empresa–vehículo–turno habilita la credencial del conductor externo.</p>`,
+          <p class="hint">La asignación conductor–vehículo–turno la aprueba el responsable de despacho; solo entonces habilita la credencial del conductor externo.</p>`,
         onOpen: (d) => {
           L.bindField($('#as-c', d), ['required', (v) => (v === DRIVERS[3] ? 'Su licencia vence antes del término del turno: elija otro conductor.' : '')]);
           L.bindField($('#as-v', d), ['required', (v) => (r.frio && v === 'JZWS-18' ? 'Esta ruta lleva carga refrigerada: el vehículo debe tener equipo de frío.' : '')]);
         },
-        actions: [{ label: 'Cancelar' }, { label: 'Confirmar asignación', cls: 'btn-primary', onClick: (api) => { if (!L.validateAll(api.el)) return false; r.conductorAsig = $('#as-c', api.el).value; r.camionAsig = $('#as-v', api.el).value; r.confirmada = true; draw(); L.toast('Asignación confirmada', `${r.id}: ${r.conductorAsig} · ${r.camionAsig}`, 'success'); } }]
+        actions: [{ label: 'Cancelar' }, { label: 'Confirmar asignación', cls: 'btn-primary', onClick: (api) => { if (!L.validateAll(api.el)) return false; r.conductorAsig = $('#as-c', api.el).value; r.camionAsig = $('#as-v', api.el).value; r.confirmada = true; r.aprob = 'Pendiente'; L.store.set('asignaciones', { ...saved(), [r.id]: { conductor: r.conductorAsig, camion: r.camionAsig, estado: 'Pendiente', origen: 'Portal del transportista' } }); draw(); L.toast('Asignación confirmada', `${r.id}: ${r.conductorAsig} · ${r.camionAsig}. Queda pendiente de la aprobación de despacho.`, 'success'); } }]
       });
       $$('[data-dl]', root).forEach((b) => (b.onclick = () => { const r = D.rutas.find((x) => x.externo && x.id === b.dataset.dl); if (r) L.downloadDemoText(r.id, 'Hoja de ruta', { Zona: r.zona, Entregas: r.paradas, Estado: r.estado }); }));
-      $$('[data-otp]', root).forEach((b) => (b.onclick = () => L.busy(b, () => L.toast('Código de turno solicitado', `Despacho debe aprobarlo para ${b.dataset.otp}.`, 'info'), 700)));
+      $$('[data-otp]', root).forEach((b) => (b.onclick = () => L.busy(b, () => L.toast('Alta solicitada', `El jefe de flota pide el OTP de ${b.dataset.otp} a la autoridad de identidad; despacho aprueba la asignación y el alta exige conexión.`, 'info'), 700)));
+      draw();
+    }
+  });
+
+  /* ---------- Aprobación de asignaciones conductor–vehículo–turno (Etapa 1: despacho; RF-06.08, RF-14.05) ---------- */
+  L.route('/despacho/asignaciones', {
+    title: 'Asignaciones de turno', parent: '/inicio', block: 'Gestión de terceros', module: 'M4 Rutas · M6 Reparto · función de despacho (Etapa 1)', rf: ['RF-06.08', 'RF-14.05', 'RF-12.21'], actors: ['Gerente de Operaciones'], permission: 'asignacion.aprobar',
+    render: () => `<div class="page-head"><div class="titles"><span class="page-kicker">Despacho · Etapa 1</span><h1>Asignaciones conductor–vehículo–turno</h1><p class="muted" style="margin:0">En la Etapa 1 despacho registra la asignación nominada; desde la Etapa 2 la empresa la confirma en su portal. En ambos casos, el responsable de despacho la aprueba.</p></div></div>
+      ${L.alert('info', 'Qué habilita la aprobación', 'La asignación firmada se emite dentro de la hora anterior a la salida y vence 30 minutos después del fin de la ruta, sin superar 16 horas. No se renueva sin conexión.')}
+      <div style="height:16px"></div>
+      <div class="card card-flush"><div class="table-wrap"><table class="table"><caption class="sr-only">Asignaciones de las rutas de mañana</caption><thead><tr><th>Ruta</th><th>Empresa</th><th>Conductor</th><th>Vehículo</th><th>Origen</th><th>Estado</th><th><span class="sr-only">Acciones</span></th></tr></thead><tbody id="as-body"></tbody></table></div></div>
+      <div style="height:16px"></div>
+      <div class="card"><h2 class="h3">Registrar asignación (Etapa 1)</h2><div class="form-grid"><div class="field"><label for="ra-r">Ruta</label><select id="ra-r" class="select">${D.rutas.filter((r) => r.externo).map((r) => `<option value="${r.id}">${r.id} · ${esc(r.zona)}</option>`).join('')}</select></div><div class="field"><label for="ra-c">Conductor</label><select id="ra-c" class="select">${DRIVERS.slice(0, 3).map((n) => `<option>${n}</option>`).join('')}</select></div><div class="field"><label for="ra-v">Vehículo</label><select id="ra-v" class="select"><option>PFGD-41</option><option>RTKC-77</option><option>JZWS-18</option></select></div></div><button type="button" class="btn btn-secondary" id="ra-ok">Registrar y dejar pendiente de aprobación</button></div>`,
+    mount: (root) => {
+      const rutas = D.rutas.filter((r) => r.externo);
+      const get = () => {
+        const st = L.store.get('asignaciones', {});
+        return rutas.map((r, i) => { const a = st[r.id] || (i === 0 ? { conductor: DRIVERS[0], camion: r.camion, estado: 'Pendiente', origen: 'Portal del transportista' } : null); return a && { id: r.id, empresa: 'Transportes Maule Ltda.', ...a }; }).filter(Boolean);
+      };
+      const set = (id, patch) => { const st = L.store.get('asignaciones', {}); const cur = get().find((x) => x.id === id) || {}; const { id: _i, empresa: _e, ...rest } = cur; L.store.set('asignaciones', { ...st, [id]: { ...rest, ...patch } }); };
+      const draw = () => {
+        const list = get();
+        $('#as-body', root).innerHTML = list.length ? list.map((a) => `<tr><td class="mono">${a.id}</td><td>${esc(a.empresa)}</td><td>${esc(a.conductor)}</td><td class="mono">${esc(a.camion)}</td><td>${esc(a.origen)}</td><td>${L.badge(a.estado === 'Aprobada' ? 'Aprobada' : a.estado === 'Rechazada' ? 'Rechazada' : 'Pendiente de aprobación', a.estado === 'Aprobada' ? 'success' : a.estado === 'Rechazada' ? 'danger' : 'warning')}</td><td class="right">${a.estado === 'Pendiente' && L.can('asignacion.aprobar') ? `<button type="button" class="btn btn-primary btn-sm" data-ap="${a.id}">Aprobar<span class="sr-only"> ${a.id}</span></button> <button type="button" class="btn btn-tertiary btn-sm" data-rc="${a.id}">Rechazar<span class="sr-only"> ${a.id}</span></button>` : ''}</td></tr>`).join('') : '<tr><td colspan="7" class="muted">Sin asignaciones por revisar.</td></tr>';
+        $$('[data-ap]', root).forEach((b) => (b.onclick = () => { set(b.dataset.ap, { estado: 'Aprobada' }); L.logAudit('Aprobación', 'Asignación', `Asignación de ${b.dataset.ap} aprobada por despacho`, 'Consola web'); draw(); L.toast('Asignación aprobada', `${b.dataset.ap}: habilita la credencial del conductor externo.`, 'success'); }));
+        $$('[data-rc]', root).forEach((b) => (b.onclick = () => { set(b.dataset.rc, { estado: 'Rechazada' }); L.logAudit('Aprobación', 'Asignación', `Asignación de ${b.dataset.rc} rechazada por despacho`, 'Consola web'); draw(); L.toast('Asignación rechazada', `${b.dataset.rc}: la empresa debe confirmar otra.`, 'warning'); }));
+      };
+      $('#ra-ok', root).onclick = () => {
+        const id = $('#ra-r', root).value; const r = rutas.find((x) => x.id === id); const v = $('#ra-v', root).value;
+        if (r.frio && v === 'JZWS-18') return L.toast('Vehículo no válido', 'La ruta lleva carga refrigerada: el vehículo debe tener equipo de frío.', 'warning');
+        set(id, { conductor: $('#ra-c', root).value, camion: v, estado: 'Pendiente', origen: 'Registro de despacho' });
+        draw(); L.toast('Asignación registrada', `${id} queda pendiente de aprobación.`, 'success');
+      };
       draw();
     }
   });
