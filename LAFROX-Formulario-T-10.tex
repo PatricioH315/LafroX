@@ -11,7 +11,7 @@
 
 
 % Formato de portada común, basado en el Subdocumento 1.
-\configurarportadalafrox{Formulario T-10 \textemdash{} Metodología para el desarrollo de software}{Subdocumento 06}{Formulario T-10}{LAFROX-Formulario-T-10.pdf}{logo/firma_representante.png}
+\configurarportadalafrox{Formulario T-10 \textemdash{} Metodología para el desarrollo de software}{Subdocumento 06}{Formulario T-10}{}{logo/firma_representante.png}
 \begin{document}
 
 \portadalafrox
@@ -23,25 +23,44 @@
 
 \chapter{Metodología de desarrollo de software}
 
-La metodología de desarrollo se coordina con la gestión del proyecto y con sus entregas incrementales. Se utiliza \textbf{Rational Unified Process (RUP)}, un proceso iterativo e incremental que organiza el desarrollo en cuatro fases y permite gestionar requisitos, arquitectura, implementación y pruebas de manera progresiva. Su elección se basa en que el proyecto tiene requisitos regulatorios y de continuidad que exigen una arquitectura validada temprano, documentación trazable y entregas formales por etapa, sin renunciar a iteraciones cortas que reduzcan el tiempo hasta disponer de software verificable.
+Este formulario desarrolla la metodología de la sección 6.2 del Subdocumento 6. El cuerpo explica por qué se eligió el enfoque y cómo conversa con la planificación; este formulario detalla cómo se ejecuta: fases y sus productos, gestión de requerimientos, deuda técnica, ambientes y su promoción, ceremonias, artefactos y las pruebas de las condiciones propias del caso.
 
-RUP se organiza en las siguientes fases:
+Se utiliza \textbf{Rational Unified Process (RUP)}, un proceso iterativo e incremental que organiza el desarrollo en cuatro fases y permite gestionar requisitos, arquitectura, implementación y pruebas de manera progresiva. Se eligió frente a la cascada, a Scrum y a SAFe (Subdocumento 6, Tabla 6.2) porque el proyecto exige una arquitectura validada antes de construir y aceptación formal por etapa, sin renunciar a iteraciones cortas que reduzcan el tiempo hasta disponer de software verificable. RUP se recorre una vez en cada etapa:
 \begin{enumerate}
-    \item \textbf{Inicio}: se delimitan el alcance y los objetivos de la solución, se identifican los principales interesados y requisitos y se elaboran las estimaciones iniciales. También se reconocen los riesgos principales y se establece una visión inicial del producto.
-    \item \textbf{Elaboración}: se profundizan los requisitos, incluidos los casos de uso, y se define la arquitectura de la solución. Se analizan los riesgos prioritarios y se prepara el plan de desarrollo, de modo que las decisiones de diseño más relevantes se validen antes de construir. Los prototipos con usuarios terminan antes de construir cada módulo.
-    \item \textbf{Construcción}: se desarrollan las capacidades priorizadas mediante iteraciones. En cada iteración se analizan los requisitos correspondientes, se diseña e implementa la solución y se realizan pruebas. Los resultados se revisan con los interesados pertinentes y se ajustan cuando corresponde.
-    \item \textbf{Transición}: se prepara la solución para su uso: pruebas de aceptación, resolución de observaciones, preparación de usuarios, marcha blanca y despliegue conforme a los hitos aprobados.
+    \item \textbf{Inicio}: se delimitan el alcance y los objetivos, se identifican los interesados y requisitos y se elaboran las estimaciones. Productos: acta de constitución (1.1.1), especificación de requerimientos y línea base de alcance (1.2.1 y 1.2.5), reglas de ruteo capturadas (1.2.2) e interfaces sin documentar levantadas (1.2.3). Cierra en H1 (Etapa 1) y H8 (Etapa 2).
+    \item \textbf{Elaboración}: se profundizan los requisitos en casos de uso, se define y valida la arquitectura y se prueban los prototipos con usuarios antes de construir cada módulo. Productos: arquitectura lógica y física, modelo de datos y diseño de M11 (2.1.1 a 2.1.4), plan de seguridad (2.2.1) y prototipos de usabilidad (2.6.2). Cierra con la aprobación de la arquitectura (H2; 2.4.1 y 2.4.2).
+    \item \textbf{Construcción}: se desarrollan los módulos en iteraciones de dos semanas, cada una con análisis, diseño, implementación y pruebas de su incremento. Productos: módulos M1 a M12 e integraciones (paquetes 3.4 a 3.7), con las pruebas ampliadas de cada etapa (3.8 y 3.9). Cierra con la certificación (H5 y H10).
+    \item \textbf{Transición}: pruebas de aceptación, preparación de usuarios, marcha blanca y paso a producción. Productos: plan de olas y reversión (4.1.1 a 4.1.3), marcha blanca y estabilización (4.2 y 4.3) y capacitación (7.1). Cierra con el acta de la marcha blanca (H7 y H12).
 \end{enumerate}
 
-Las iteraciones producen resultados verificables, pero no implican una puesta en producción o una marcha blanca. La marcha blanca y la aceptación formal se realizan en los momentos definidos para cada etapa contractual. Los casos de uso expresan y siguen los requisitos funcionales, y la matriz del Formulario T-12 los vincula con su prueba.
+Las iteraciones producen resultados verificables, pero no implican una puesta en producción o una marcha blanca. La marcha blanca y la aceptación formal se realizan en los momentos definidos para cada etapa contractual: marcha blanca de la Etapa 1 entre los meses 13 y 15 y paso a producción en el mes 16; marcha blanca de la Etapa 2 en los meses 19 y 20 y paso a producción en el mes 21.
 
-La secuencia de iteraciones se coordina con las dos etapas contractuales: en la Etapa 1, preventa, recepción, bodega, preparación y cross-docking; trazabilidad de lotes y de la cadena de frío; planificación de rutas; confirmación de recepción por los conductores; y manejo de efectivo y retiros. En la Etapa 2, los portales y el intercambio electrónico con los clientes y, luego, el costo de servir. La transición sigue el cronograma: marcha blanca de la Etapa 1 entre los meses 13 y 15 y paso a producción en el mes 16; marcha blanca de la Etapa 2 en los meses 19 y 20 y paso a producción en el mes 21.
+\section{Gestión de requerimientos}
+
+Los requisitos provienen del catálogo del Subdocumento 3 y del Formulario T-12 y quedan en línea base por etapa (H1 y H8). Se gestionan así:
+\begin{itemize}
+  \item \textbf{Expresión.} Cada requisito funcional se expresa en un caso de uso con su actor, precondición, flujo, resultado esperado y criterio de aceptación verificable.
+  \item \textbf{Refinamiento.} En la planificación de cada iteración se refinan los casos de uso del módulo con la persona del CLIENTE que conoce la regla (Anexo 6.A): la Jefa de Calidad para la regla térmica, la Jefa de Bodega para la ubicación y el planificador para las rutas.
+  \item \textbf{Trazabilidad.} La matriz del Formulario T-13 vincula cada requisito con su origen, componente, paquete, prueba y criterio; el cambio de código y el despliegue se vinculan al requisito en la solicitud de fusión (RT-04.04).
+  \item \textbf{Cambios.} Una precisión que no altera la línea base se registra en el caso de uso; un requisito nuevo o modificado sigue el control de cambios del Formulario T-9, sección 1.4.
+\end{itemize}
 
 \section{Arquitectura evolutiva, refactorización y deuda técnica}
 
 La arquitectura se establece durante Elaboración y se aprueba en el H2; se valida progresivamente en las iteraciones de Construcción. Cuando los nuevos requisitos o los resultados de las pruebas justifican cambios, la arquitectura se ajusta mediante una nueva versión de la decisión en el registro de decisiones de arquitectura del SD4, con su fecha, estado y acta del Comité de Arquitectura.
 
-Durante la construcción, el equipo refactoriza el software para mejorar su estructura interna y facilitar su mantenimiento, preservando su comportamiento funcional; las pruebas automatizadas comprueban que el comportamiento no cambió. Las limitaciones o compromisos técnicos que puedan dificultar cambios futuros se registran como deuda técnica, con su impacto y prioridad. Una deuda clasificada como bloqueante por el análisis estático impide el despliegue; las demás se planifican en las iteraciones y se revisan en el Comité de Arquitectura.
+Durante la construcción, el equipo refactoriza el software que modifica para mejorar su estructura interna, preservando su comportamiento; las pruebas automatizadas comprueban que el comportamiento no cambió. Las limitaciones o compromisos técnicos que puedan dificultar cambios futuros se registran como deuda técnica. La Tabla~\ref{tab:t10-deuda} fija su tratamiento.
+
+\begin{tablalafrox}{Tratamiento de la deuda técnica. Fuente: elaboración propia a partir de (Bases Administrativas, art. 71, p. 37), (Bases Técnicas Transversales, RT-04.05) y (Subdocumento 9, Tabla 9.4).}{tab:t10-deuda}%
+  {F{0.16} Y F{0.30}}%
+  {\cab{Clase} & \cab{Criterio} & \cab{Tratamiento}}%
+  Bloqueante & Umbral del análisis estático incumplido, o hallazgo de seguridad crítico o alto & Impide la promoción; no se acepta registrarla como deuda \\
+  Alta & Afecta un límite de módulo, un contrato o una regla de continuidad & Se programa en las dos iteraciones siguientes \\
+  Media & Dificulta el mantenimiento sin afectar contratos ni continuidad & Se revisa mensualmente en el Comité de Arquitectura \\
+  Baja & Mejora de legibilidad o estilo & Se atiende al modificar el código afectado \\
+\end{tablalafrox}
+
+La deuda alta no puede acumularse: si al cierre de una iteración un módulo tiene más de tres deudas altas abiertas, la siguiente iteración se dedica primero a reducirlas. Durante la operación, el registro continúa en el paquete 8.2.4.
 
 \section{DevSecOps, integración y entrega continuas, infraestructura como código y pruebas automatizadas}
 
@@ -57,18 +76,57 @@ Las compuertas son bloqueantes, no opcionales. El pipeline detiene la promoción
     \item una deuda técnica bloqueante o una prueba en falla.
 \end{itemize}
 
-La imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila. La infraestructura de los cinco ambientes se describe como código: Terraform administra los recursos con estados separados por ambiente y Ansible configura los hosts; cada recurso tiene un único propietario de código. Las migraciones de base de datos siguen la estrategia de expandir y contraer y declaran su reversión.
+La imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila. La infraestructura de los ambientes se describe como código: Terraform administra los recursos con estados separados por ambiente y Ansible configura los hosts; cada recurso tiene un único propietario de código. Las migraciones de base de datos siguen la estrategia de expandir y contraer y declaran su reversión.
+
+\paragraph{Ambientes y promoción}
+La Tabla~\ref{tab:t10-ambientes} indica, para cada uno de los cinco ambientes del RT-04.01 descritos en el Subdocumento 4 (secciones 4.1.9 y 4.2.4.1), qué se despliega, qué puerta del Subdocumento 9 controla la llegada y quién la aprueba.
+
+\begin{tablalafrox}{Ambientes, promoción y aprobación. Fuente: elaboración propia a partir de (Subdocumento 4, secciones 4.1.9 y 4.2.4.1) y (Subdocumento 9, Tabla 9.7).}{tab:t10-ambientes}%
+  {F{0.15} Y F{0.15} F{0.20}}%
+  {\cab{Ambiente} & \cab{Qué se despliega y para qué} & \cab{Puerta de entrada} & \cab{Quién aprueba}}%
+  Desarrollo (DEV) & Ramas de trabajo con datos sintéticos; pruebas unitarias sin el ERP real & G0--G1 & Revisión por pares \\
+  QA & Imagen firmada de cada iteración con M1 a M12 y adaptadores simulados; integración, regresión, fallas de enlace y espacio de capacitación & G2--G3 & Automática; ninguna persona levanta un bloqueo \\
+  Preproducción (PREPROD) & La misma imagen con topología equivalente a producción y volumen de septiembre; carga, desconexión, reversión y certificación & G4 & Líder de Calidad \\
+  Producción (PROD) & La imagen certificada, desde la marcha blanca (H6 y H11), dentro de las ventanas del caso & G5--G6 & Contraparte Técnica, con acta de certificación (H5 o H10) \\
+  Recuperación (DR) & La versión compatible de producción; conmutación y retorno al menos dos veces al año & Réplica & Líder de Operación / SRE \\
+\end{tablalafrox}
+
+El orden es estricto: ninguna imagen llega a un ambiente sin haber pasado por el anterior, y los cinco ambientes deben estar operativos en el H3.
 
 La entrega continua mantiene versiones verificadas y listas para su despliegue en cada ambiente. El paso a Producción se ejecuta sólo dentro de las ventanas permitidas por el caso y, durante el desarrollo, sólo en los hitos aprobados: ningún cambio se despliega entre el 1 y el 25 de septiembre, en diciembre ni en los tres primeros días hábiles de un mes. La ventana de despacho de 05:30 a 07:00 se mantiene sin indisponibilidad (Caso, RT-10.05). La prohibición rige también para las correcciones: un defecto detectado en esas fechas se contiene sin intervenir los sistemas y su corrección se promueve en la primera fecha permitida. El plan no presume excepciones; solo una instrucción escrita del CLIENTE, tramitada por el control integrado de cambios, puede ordenar una intervención en esas fechas.
 
 \section{Ceremonias, cadencias y decisiones del desarrollo}
 
-El trabajo del equipo de desarrollo se organiza en iteraciones de Construcción de dos semanas. Al inicio de cada iteración se revisan los requisitos y prioridades, se seleccionan las tareas que caben en la capacidad registrada y se aclaran sus criterios de aceptación. Durante la iteración, el equipo sigue el avance en el tablero Kanban, con bloqueos, responsables y dependencias.
+El trabajo del equipo de desarrollo se organiza en iteraciones de Construcción de dos semanas (catorce días calendario). El Formulario T-15 fija las fechas de cada iteración de cada módulo en su calendario de iteraciones. La Tabla~\ref{tab:t10-ceremonias} detalla las ceremonias.
 
-Al cierre de cada iteración se demuestra el incremento verificable y se contrasta con sus criterios de aceptación; cuando es pertinente, se presenta a los interesados para recoger observaciones. El equipo revisa además las dificultades y aprendizajes de la iteración y registra las acciones de mejora con su responsable. Ninguna demostración constituye por sí misma una entrega formal o una puesta en producción.
+\begin{tablalafrox}{Ceremonias del desarrollo. Fuente: elaboración propia a partir de (Kruchten, 2004) y (Formulario T-15, calendario de iteraciones).}{tab:t10-ceremonias}%
+  {F{0.18} F{0.15} Y F{0.21}}%
+  {\cab{Ceremonia} & \cab{Momento} & \cab{Propósito y participantes} & \cab{Artefacto}}%
+  Planificación de iteración & Día 1 & Equipo del módulo y referente del CLIENTE: refinan los casos de uso y seleccionan lo que cabe en la capacidad registrada & Lista de la iteración con criterios de aceptación \\
+  Seguimiento diario & Diario, 15 minutos & Equipo del módulo frente al tablero Kanban: avance, bloqueos y dependencias & Tablero actualizado \\
+  Revisión técnica & Semanal & Arquitecto de Solución con los líderes de módulo: contratos, límites de módulo y deuda & Registro de decisiones y deuda \\
+  Demostración & Último día & Equipo, Líder de Calidad y usuarios pertinentes: incremento en QA contra sus criterios & Informe de pruebas de la iteración \\
+  Retrospectiva & Último día & Equipo del módulo: dificultades y mejoras, con responsable & Acciones de mejora \\
+  Revisión de etapa & Fin de cada fase RUP & Comité de Proyecto: producto de la fase y paso a la siguiente & Acta del comité \\
+\end{tablalafrox}
 
-Los artefactos del desarrollo son los casos de uso, la matriz de trazabilidad del Formulario T-12, el registro de decisiones de arquitectura, los contratos de interfaz, el registro de deuda técnica y los informes de pruebas de cada iteración.
+Ninguna demostración constituye por sí misma una entrega formal o una puesta en producción. Las pruebas siguen el ritmo de la iteración: cada una cierra con las pruebas unitarias, de contrato e integración de su incremento en QA, y las pruebas ampliadas de la etapa (paquetes 3.8 y 3.9) verifican el conjunto ya integrado.
 
-Las decisiones técnicas necesarias para implementar los requisitos se toman dentro del equipo responsable y se documentan cuando afectan la arquitectura, las integraciones, la seguridad o la operación; las que cambian la arquitectura pasan por el Comité de Arquitectura. Si una decisión modifica el alcance, el plazo, los costos o los criterios de aceptación aprobados, se gestiona como una solicitud de cambio según la sección 6.1.4.
+Los artefactos del desarrollo son los casos de uso, la matriz de trazabilidad del Formulario T-13, el registro de decisiones de arquitectura, los contratos de interfaz, el registro de deuda técnica, el tablero Kanban y los informes de pruebas de cada iteración.
+
+Las decisiones técnicas necesarias para implementar los requisitos se toman dentro del equipo responsable y se documentan cuando afectan la arquitectura, las integraciones, la seguridad o la operación; las que cambian la arquitectura pasan por el Comité de Arquitectura. Si una decisión modifica el alcance, el plazo, los costos o los criterios de aceptación aprobados, se gestiona como una solicitud de cambio según la sección 6.1.4 del Subdocumento 6.
+
+\section{Desarrollo y prueba de las condiciones del caso}
+
+El proceso incorpora en cada iteración las condiciones de Puelche, para que no se descubran en la marcha blanca:
+\begin{itemize}
+  \item \textbf{Operación sin enlace.} Cada módulo de terreno incluye casos sin conexión en QA, con cortes de enlace simulados. Antes de cada marcha blanca, Preproducción ejecuta el corte de 24 horas del centro de distribución y la jornada de 14 horas sin señal en ruta (AL-OFF-01), además de la emisión, relevo y expiración del manifiesto de identidad sin enlace (AL-ID-01).
+  \item \textbf{Frío y condiciones físicas.} Los prototipos de bodega se prueban con guantes a −22 °C y el terminal real antes de construir (2.6.2); las pruebas en terreno incluyen lluvia, sol directo y uso con una mano (T-13, sección 7).
+  \item \textbf{ERP e interfaces sin documentar.} Las interfaces se levantan en los meses 1 a 4 (1.2.3); los módulos se construyen contra simuladores con pruebas de contrato, y la prueba con el ERP real se adelanta a la primera integración. El ERP sigue siendo el único emisor de la guía de despacho.
+  \item \textbf{Intercambio con las cadenas.} Cada cadena tiene su propia certificación, con mesa técnica y pruebas aprobadas (3.6.5 y 3.6.6).
+  \item \textbf{Conocimiento del planificador.} Sus reglas se capturan en los meses 1 a 3 (1.2.2); en cada iteración de M4 valida las rutas propuestas con casos reales, y la marcha blanca compara dos semanas de planificación sin él con dos semanas previas (R18-16 del T-17).
+  \item \textbf{Turno de noche y rotación.} Las pruebas de usabilidad de bodega se hacen en el turno nocturno con personal de menos de un mes, con aprendizaje de dos horas como máximo (7.1.2).
+  \item \textbf{Transferencia a un área de TI de cuatro personas.} El Jefe de TI participa en el Comité de Arquitectura desde el mes 1; los procedimientos de operación se ensayan con su equipo antes del traspaso (7.1.4), y la mentoría se extiende seis meses después del mes 21 (8.5.2).
+\end{itemize}
 
 \end{document}

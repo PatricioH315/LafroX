@@ -13,7 +13,7 @@
 
 
 % Formato de portada común, basado en el Subdocumento 1.
-\configurarportadalafrox{Formulario T-9 \textemdash{} Metodología de gestión de proyecto}{Subdocumento 06}{Formulario T-9}{LAFROX-Formulario-T-9.pdf}{logo/firma_representante.png}
+\configurarportadalafrox{Formulario T-9 \textemdash{} Metodología de gestión de proyecto}{Subdocumento 06}{Formulario T-9}{}{logo/firma_representante.png}
 \begin{document}
 
 \portadalafrox
@@ -27,88 +27,147 @@
 
 \chapter{Gestión de proyecto}
 
-Este formulario desarrolla la metodología de gestión de proyectos correspondiente a la sección 6.1 del Subdocumento 6. La propuesta adapta la Guía del PMBOK, sexta edición, a las etapas del proyecto, la continuidad operacional y las necesidades de planificación y control.
+Este formulario desarrolla la metodología de gestión de proyectos de la sección 6.1 del Subdocumento 6. El cuerpo del capítulo explica la adaptación del PMBOK y sus reglas; este formulario agrega el detalle operativo que necesita quien la aplica: cómo se adapta cada proceso, los procedimientos con sus plazos, los umbrales y sus consecuencias, las matrices y el contenido mínimo de los registros y actas.
 
 \section{Metodología de gestión de proyecto}
 
-La gestión del proyecto aplica la Guía del PMBOK, sexta edición (PMI, 2017), adaptada a un proyecto de 56 meses con dos etapas, solapamiento entre ellas y una operación que no puede detenerse; se usan los procesos de integración, alcance, cronograma, calidad, recursos, comunicaciones, riesgos, adquisiciones e interesados, con la profundidad que exige cada uno. El alcance y el cronograma tienen líneas base formales, porque los hitos del Formulario E-25 son fechas fijas y se aceptan por acta. El avance se mide con valor ganado y no con porcentajes declarados (RT-19.07). El flujo diario del equipo se gestiona con un tablero Kanban, que no reemplaza la línea base ni la aceptación formal de los entregables.
+La gestión del proyecto aplica la Guía del PMBOK, sexta edición (PMI, 2017), adaptada a un proyecto de 56 meses con dos etapas, solapamiento entre ellas y una operación que no puede detenerse. El alcance y el cronograma tienen líneas base formales, porque los hitos del Formulario E-25 son fechas fijas y se aceptan por acta. El avance se mide con valor ganado y no con porcentajes declarados (RT-19.07). El flujo diario del equipo se gestiona con un tablero Kanban, que no reemplaza la línea base ni la aceptación formal de los entregables.
 
-La planificación define los entregables, sus responsables, los recursos, los plazos y las dependencias entre actividades, considerando las restricciones de la operación. La línea base de alcance (paquete 1.2.1, H1) y la de cronograma (1.3.3) sirven para medir el avance y evaluar las desviaciones.
+La planificación respeta el cronograma contractual: desarrollo de la Etapa 1 entre los meses 1 y 12, marcha blanca entre los meses 13 y 15 y paso a producción en el mes 16. El desarrollo de la Etapa 2 ocupa los meses 13 a 18, la marcha blanca los meses 19 y 20 y el paso a producción el mes 21. En la Etapa 1 se implementan preventa, recepción, bodega, preparación y cross-docking; la trazabilidad de los lotes y de la cadena de frío; la planificación de rutas basada en el conocimiento del planificador; y el manejo de efectivo y los retiros. En la Etapa 2 se implementan los portales y el intercambio electrónico con los clientes y, por último, el costo de servir.
 
-El proyecto se ejecuta mediante entregas incrementales dentro de las dos etapas contractuales. La distribución propuesta prioriza primero la calidad y disponibilidad de la información operacional, y luego las capacidades que dependen de esos datos para optimizar y analizar la operación. En la Etapa 1 se implementan las capacidades de preventa, recepción, bodega, preparación y cross-docking; la trazabilidad de los lotes y de la cadena de frío; la planificación de rutas basada en el conocimiento del planificador, con el acuse de recibo de los conductores; y el manejo de efectivo y los retiros de los pedidos. En la Etapa 2 se implementan los portales y el intercambio electrónico con los clientes y, por último, el costo de servir.
+\paragraph{Adaptación de los procesos}
+La Tabla~\ref{tab:t9-adaptacion} indica cómo se aplica cada área de conocimiento del PMBOK en este proyecto: qué se refuerza, qué se aligera y con qué paquete del Formulario T-14 se ejecuta.
 
-La planificación respeta el cronograma contractual: desarrollo de la Etapa 1 entre los meses 1 y 12, marcha blanca entre los meses 13 y 15 y paso a producción en el mes 16. El desarrollo de la Etapa 2 ocupa los meses 13 a 18, la marcha blanca los meses 19 y 20 y el paso a producción el mes 21. El trabajo de la Etapa 2 se coordina con la marcha blanca y la estabilización de la Etapa 1, resguardando la continuidad operacional y la integridad de los datos compartidos.
+\begin{tablalafrox}{Adaptación de las áreas de conocimiento del PMBOK. Fuente: elaboración propia a partir de (PMI, 2017) y (Formulario T-14).}{tab:t9-adaptacion}%
+  {F{0.17} F{0.13} Y F{0.15}}%
+  {\cab{Área} & \cab{Intensidad} & \cab{Adaptación al proyecto} & \cab{Paquetes}}%
+  Integración & Reforzada & Control de cambios con las reglas del Art. 72° y plazos propios (sección 1.4) & 1.3.1, 1.4.3 \\
+  Alcance & Normal & Línea base por etapa; la matriz del T-12 y del T-13 controla cada requisito hasta su prueba & 1.2.1, 1.2.4, 1.2.5 \\
+  Cronograma & Normal & Hitos fijos; planificación gradual del detalle antes de cada fase; iteraciones de dos semanas & 1.3.3, 1.3.4 \\
+  Costos & Aligerada & Control en horas hombre mediante valor ganado; la Oferta Técnica no contiene montos & 1.8.6 \\
+  Calidad & Normal & Plan de calidad y puertas del Subdocumento 9 & 1.5.1, 1.5.2 \\
+  Recursos & Reforzada & Nivelación por grupo de origen en los solapamientos 13--15 y 19--20 & 1.3.4 \\
+  Comunicaciones & Reforzada & Canales de terreno, turno de noche y conductores externos (Tabla~\ref{tab:tabla-comunicaciones}) & 1.4.2 \\
+  Riesgos & Reforzada & Plan y registro del Subdocumento 8, revisados en cada Comité de Proyecto & 1.6.1, 1.6.2 \\
+  Adquisiciones & Reforzada & El CLIENTE compra el hardware de terreno; LafroX controla las fechas de las que depende & 5.1.1 a 5.1.4 \\
+  Interesados & Reforzada & 19 actores con estrategia por celda de la matriz de influencia e interés & 1.4.1 \\
+\end{tablalafrox}
 
-El tablero Kanban muestra el trabajo pendiente, en ejecución, en revisión y terminado, con responsables y bloqueos, y fija límites de trabajo en curso. Cada tarea tiene una definición de terminado y, cuando corresponde, evidencia asociada a los criterios de aceptación del entregable al que contribuye. La gestión del proyecto se complementa con los procesos de los apartados siguientes.
+Seis de las diez áreas se refuerzan porque el caso concentra en ellas su dificultad: decisiones que dependen de personas con conocimiento no escrito, compras que hace el CLIENTE y usuarios que trabajan fuera de la oficina. Costos se aligera porque se controla en horas, y el resto se aplica con su profundidad habitual.
+
+\paragraph{Planificación gradual}
+La EDT del Formulario T-14 y la red del Formulario T-15 fijan todos los paquetes y sus ventanas. Las actividades de 8 a 80 HH se detallan en la línea base para los paquetes que terminan antes del H2; las de cada fase siguiente se detallan en el Comité de Proyecto anterior al inicio de esa fase, dentro de las ventanas aprobadas y sin mover los hitos.
+
+\paragraph{Tablero Kanban}
+El tablero muestra el trabajo pendiente, en ejecución, en revisión y terminado, con responsables y bloqueos, y fija límites de trabajo en curso. Cada tarea tiene una definición de terminado y, cuando corresponde, evidencia asociada a los criterios de aceptación del entregable al que contribuye. Una tarea bloqueada más de cinco días hábiles activa el escalamiento de la sección 1.6.
 
 \subsection{Gestión de interesados}
 
-La gestión de interesados identifica a las personas, grupos y organizaciones que pueden influir en el proyecto o verse afectados por sus resultados. Para cada interesado se registran sus necesidades, expectativas, nivel de influencia, impacto potencial y disposición frente a los cambios. El análisis distingue quiénes participan en decisiones, quiénes aportan conocimiento operacional, quiénes validan entregables y quiénes son afectados o ejercen supervisión externa.
+La gestión de interesados identifica a las personas, grupos y organizaciones que pueden influir en el proyecto o verse afectados por sus resultados. El registro (paquete 1.4.1) usa los 19 actores del Subdocumento 2 y la estrategia de apoyo del Subdocumento 3; se presenta en el Subdocumento 6, Anexo 6.A, Tabla 6.A.1.
 
-El jefe de proyecto mantiene actualizado el registro de interesados (paquete 1.4.1) y planifica su involucramiento de acuerdo con el alcance de cada entrega. La participación puede incluir levantamiento de necesidades, revisión de procesos, validación de criterios, pruebas y retroalimentación. Las inquietudes, resistencias, acuerdos y compromisos relevantes se registran con su responsable y seguimiento; los conflictos que no puedan resolverse en la instancia de trabajo se elevan a la autoridad correspondiente.
-
-El registro de interesados se presenta en el Subdocumento 6, Anexo 6.A, Tabla 6.A.1.
-
-La tabla resume los principales grupos y roles identificados, sus intereses y la contribución esperada. La participación concreta se acuerda según las responsabilidades de cada interesado y las actividades de cada entrega; la inclusión en la tabla no implica que todos participen en todas las decisiones ni que tengan atribuciones de aprobación.
+Para cada actor el registro contiene: nombre o grupo, cargo, nivel de influencia y de interés, estrategia (decidir, co-diseñar, consultar y capacitar, o informar y acordar), momentos de participación, responsable de LafroX, canal, compromisos pendientes y disposición frente al cambio (favorable, neutral o resistente). El Jefe de Proyecto lo actualiza en cada Comité de Proyecto; un actor que pasa a «resistente» recibe la respuesta prevista en el Anexo 3.I del Subdocumento 3 y, si en dos semanas no cambia, se lleva al Comité de Proyecto. La inclusión en el registro no implica que todos participen en todas las decisiones ni que tengan atribuciones de aprobación.
 
 \subsection{Gestión de comunicaciones}
 
-La gestión de las comunicaciones mantiene informados a los responsables de Puelche y a los demás interesados sobre los avances de las entregas que les competen, sostiene una comprensión común del estado del proyecto, facilita la toma de decisiones y comunica oportunamente las situaciones que puedan afectar los compromisos acordados.
+La gestión de las comunicaciones mantiene informados a los responsables de Puelche y a los demás interesados sobre los avances de las entregas que les competen, facilita la toma de decisiones y comunica oportunamente las situaciones que puedan afectar los compromisos acordados. Las actas de los comités se levantan dentro de los dos días hábiles siguientes (RT-19.09). La documentación vigente, los entregables, las actas y los registros de riesgos y de cambios se mantienen en el espacio colaborativo accesible al CLIENTE (RT-19.05; paquete 1.8.8).
 
-Las reuniones convocan a las personas necesarias para analizar y resolver sus asuntos. Los acuerdos se registran en actas que identifican las decisiones, las actividades pendientes, sus responsables y los plazos; las actas de los comités se levantan dentro de los dos días hábiles siguientes (RT-19.09). La documentación vigente, los entregables, las actas y los registros de riesgos y de cambios se mantienen en el espacio colaborativo accesible al CLIENTE (RT-19.05).
-
-Antes de cada entrega incremental se informa a los interesados pertinentes sobre los cambios previstos, las actividades de validación y el apoyo necesario para la puesta en funcionamiento. Las observaciones se registran y reciben respuesta, distinguiendo las que pueden atenderse dentro de lo acordado de las que requieren una solicitud de cambio.
+La Tabla~\ref{tab:tabla-comunicaciones} es el plan de comunicaciones (paquete 1.4.2). Distingue los canales de oficina, que se registran en el espacio colaborativo, de los canales de terreno: reunión de inicio de jornada en el andén, reunión de cambio de turno en bodega, instrucción al conductor externo al asignarse y aviso en el terminal, que se lee sin señal.
 
 \parte{subdocumento_6/tablas/comunicaciones}
+
+Toda comunicación de terreno deja registro: lista de asistencia firmada en las reuniones de andén y de cambio de turno, y confirmación de lectura en el terminal. El Líder de Implantación revisa semanalmente, durante las olas, la proporción de personas informadas por turno y ruta; una ola no avanza si su personal no fue informado (Subdocumento 7, criterio de avance de ola).
 
 \subsection{Gestión de adquisiciones}
 
 La gestión de adquisiciones planifica, contrata y controla los bienes y servicios que requiere la solución: contratos, órdenes de compra, acuerdos con terceros y acuerdos de nivel de servicio. Cada adquisición tiene un responsable, una fecha de necesidad derivada del cronograma, una dependencia con los paquetes que la usan y una evidencia de recepción.
 
-El CLIENTE compra el equipamiento de terreno conforme a la especificación de cantidades y características que prepara LafroX (Caso 02, capítulo 11; SD3 E-09; paquetes 5.1.1 y 5.1.4), incluidos los sensores de cámara y los kits de los camiones con frío; LafroX los instala, integra y mantiene. Para el equipamiento de la sala técnica, incluidos racks, servidores y equipos de borde (paquete 5.1.2), T-14 asigna a LafroX la orden de compra en el mes 2 y la instalación en el mes 3. La recepción técnica de los equipos se acredita con su evidencia de recepción; su fecha no se confunde con la recepción de la sala, que T-15 ubica en el mes 4. El commissioning o puesta en servicio no tiene aquí una fecha afirmada. La asignación de la compra no traslada al CLIENTE la habilitación e instalación: La obra civil de separación del recinto es de cargo del CLIENTE; LafroX la especifica y coordina, provee el piso técnico e instala y configura los equipos (RT-06.06; Formulario T-14, paquete 6.1.1). La instalación se programa en el mes 3 y la recepción de la sala en el mes 4; la recepción técnica de equipos se acredita por separado. LafroX contrata los servicios que le corresponden. Las licencias de terceros se constituyen a nombre del CLIENTE (5.2.3).
+El CLIENTE compra el equipamiento de terreno conforme a la especificación de cantidades y características que prepara LafroX (Caso 02, capítulo 11; SD3 E-09; paquetes 5.1.1 y 5.1.4), incluidos los sensores de cámara y los kits de los camiones con frío; LafroX los instala, integra y mantiene. Para el equipamiento de la sala técnica, incluidos racks, servidores y equipos de borde (paquete 5.1.2), T-14 asigna a LafroX la orden de compra en el mes 2 y la instalación en el mes 3. La recepción técnica de los equipos se acredita con su evidencia de recepción; su fecha no se confunde con la recepción de la sala, que T-15 ubica en el mes 4. La obra civil de separación del recinto es de cargo del CLIENTE; LafroX la especifica y coordina, provee el piso técnico e instala y configura los equipos (RT-06.06; Formulario T-14, paquete 6.1.1). LafroX contrata los servicios que le corresponden. Las licencias de terceros se constituyen a nombre del CLIENTE (5.2.3).
 
-El registro de adquisiciones se presenta en el Subdocumento 6, Anexo 6.B, Tabla 6.B.1.
+El registro de adquisiciones se presenta en el Subdocumento 6, Anexo 6.B, Tabla 6.B.1. Cada fila tiene su estado, su proveedor y su fecha comprometida. Para las compras del CLIENTE, LafroX entrega la especificación diez días hábiles antes de la fecha en que el CLIENTE debe emitir la orden y verifica su avance en cada Comité de Proyecto. Un atraso que amenace el H3 o una ola se escala al Comité Ejecutivo con su análisis de impacto. El refuerzo de evaluadores externos de certificación se dimensiona en el Formulario T-13, sección 8.3.
 
+\subsection{Gestión de integración y control de cambios}
 
-El refuerzo de certificación se obtiene mediante subcontratación de evaluadores bajo la dirección del Líder de Calidad: hasta 16 evaluadores externos por día, adicionales a la plantilla corporativa y sin presumir que sus diez especialistas estén íntegramente asignados a este contrato. Se prevé en las campañas de los meses 9 a 12 y 16 a 18; no se contrata ni imputa automáticamente cada día de esos meses. El Jefe de Proyecto confirma proveedor, competencias, confidencialidad, disponibilidad nominal y orden de contratación antes de cada sesión. Este refuerzo no sustituye al SOC propio.
+La gestión de integración mantiene alineados los componentes del proyecto para que las decisiones sobre alcance, cronograma, costos, recursos, calidad, riesgos y adquisiciones se analicen de manera coordinada. El Jefe de Proyecto consolida estos elementos en el plan para la dirección del proyecto (paquete 1.3.1), lo comunica a los responsables y lo actualiza cuando se aprueban cambios. Las decisiones, acuerdos, riesgos transversales y asuntos que requieran escalamiento quedan registrados con su responsable, resolución y fecha de seguimiento.
 
-Para estimar capacidad se usa una jornada nominal de planificación de 8 horas por persona y día, con disponibilidad programable del 80\%: 6,4 HH netas por evaluador y día, hasta 102,4 HH netas con 16 evaluadores. Es una hipótesis de dimensionamiento, no una jornada laboral contractual ni evidencia de contratación. CAL registra los días efectivos de sesión, personas y horas asignadas; descuenta ausencias, coordinación, soporte y otras campañas sin volver a descontar el mismo concepto. El Jefe de Proyecto verifica con ese registro la capacidad diaria y los paquetes del T-15, sin sumar el techo externo a la plantilla corporativa ni a la reserva como si fueran capacidad adicional ya acreditada. Una sesión no se autoriza mientras sus personas y horas netas no cubran el esfuerzo requerido. Con los paquetes del T-15, la concurrencia diaria máxima de calidad es de 82,9 HH en la Etapa 1 y 64,0 HH en la Etapa 2 (13 y 10 evaluadores-día), dentro del techo de 102,4 HH netas; el Formulario T-13, sección 8.3, detalla el cálculo.
+\paragraph{Procedimiento de control de cambios}
+El procedimiento aplica el Art. 72° de las Bases Administrativas. La Tabla~\ref{tab:t9-cambios} indica sus pasos, responsables y plazos.
 
-Cada fila tiene en el registro de adquisiciones su estado, su proveedor y su fecha comprometida. Un atraso que amenace el H3 o una ola se escala al Comité Ejecutivo con su análisis de impacto.
+\begin{tablalafrox}{Procedimiento de control de cambios. Fuente: elaboración propia a partir de (Bases Administrativas, art. 72, p. 38).}{tab:t9-cambios}%
+  {F{0.05} Y F{0.20} F{0.22}}%
+  {\cab{Paso} & \cab{Actividad} & \cab{Responsable} & \cab{Plazo}}%
+  1 & Registro de la solicitud con su origen, motivo y requisito afectado (paquete 1.4.3) & Quien la origina, a través del Jefe de Proyecto & El día hábil en que se detecta \\
+  2 & Análisis de impacto en alcance, plazo, esfuerzo, riesgo y niveles de servicio, con la holgura y la reserva disponibles & Jefe de Proyecto con los líderes de frente & 5 días hábiles; 10 si requiere el Comité de Arquitectura \\
+  3 & Revisión técnica y recomendación & Comité de Proyecto & Sesión siguiente al análisis \\
+  4 & Aprobación o rechazo por escrito & Comité Ejecutivo & Sesión mensual, o extraordinaria si afecta un hito \\
+  5 & Actualización de líneas base, registro acumulado y comunicación a los afectados & Jefe de Proyecto & 2 días hábiles desde el acta \\
+\end{tablalafrox}
 
-\subsection{Gestión de integración}
+El procedimiento asegura que ningún cambio se ejecute antes de su aprobación escrita: la ejecución sin ella es de cargo y riesgo de LafroX (Art. 72.5). El tiempo total, desde el registro hasta la decisión, no excede un mes en el caso ordinario.
 
-La gestión de integración mantiene alineados los componentes del proyecto para que las decisiones sobre alcance, cronograma, costos, recursos, calidad, riesgos y adquisiciones se analicen de manera coordinada. El jefe de proyecto consolida estos elementos en el plan para la dirección del proyecto, lo comunica a los responsables y lo actualiza cuando se aprueban cambios.
+\paragraph{Reglas del control de cambios}
+\begin{itemize}
+  \item \textbf{Tope acumulado.} El registro acumula el porcentaje de cada cambio aprobado sobre el valor original del contrato. Sobre el 15~\% el informe mensual lo advierte; ninguna solicitud que lleve el acumulado sobre el 20~\% se presenta a aprobación (Art. 72.2).
+  \item \textbf{Lo que no se modifica.} El objeto, la naturaleza del contrato, las garantías mínimas y el cronograma del Art. 17° (Art. 72.3).
+  \item \textbf{Cambios en una etapa con fecha fija.} Si el cambio cabe en la holgura del paquete o en la reserva protegida, se incorpora a la etapa en curso; si no cabe, se programa en la etapa siguiente o, en la operación, en la bolsa de mantenimiento evolutivo (paquete 8.2.1). Ningún cambio se despliega en un período de congelamiento.
+  \item \textbf{Acciones correctivas.} Las que mantienen los compromisos aprobados se registran y supervisan sin solicitud de cambio; si los modifican, se tramitan como cambio.
+\end{itemize}
 
-Durante la ejecución, el jefe de proyecto coordina las actividades y sus dependencias, revisa el avance de los entregables y gestiona los impedimentos que afectan a más de un equipo o área. Las decisiones, acuerdos, riesgos transversales y asuntos que requieran escalamiento quedan registrados con su responsable, resolución y fecha de seguimiento.
-
-Toda solicitud de cambio que pueda afectar el alcance, los plazos, los costos o los criterios de aceptación se documenta y evalúa antes de implementarla. El análisis considera sus efectos en el plan, los entregables relacionados, los riesgos y la operación. El jefe de proyecto eleva la solicitud a la autoridad correspondiente de Puelche y comunica la decisión a las personas afectadas. Solo los cambios aprobados se incorporan a la planificación vigente. Las acciones correctivas destinadas a cumplir los compromisos aprobados se registran y supervisan; si modifican esos compromisos, se tramitan además como solicitudes de cambio.
+La solicitud de cambio contiene, como mínimo: identificador, fecha, solicitante, descripción, motivo, requisitos y paquetes afectados, impacto en alcance, plazo, horas hombre, riesgo y niveles de servicio, alternativas evaluadas, recomendación del Comité de Proyecto, porcentaje acumulado resultante y decisión del Comité Ejecutivo con su fecha.
 
 Al finalizar cada entrega se comprueba que sus resultados satisfagan los criterios de aceptación y cuenten con la evidencia requerida. Las observaciones pendientes se registran con responsable y tratamiento acordado, y se documentan las lecciones aprendidas.
 
 \subsection{Control del alcance, del cronograma y del valor ganado}
 
-El alcance se controla contra la línea base y la matriz de trazabilidad del Formulario T-12: un requerimiento sólo se da por cumplido cuando pasa la prueba asignada en el paquete que lo construye. El cronograma se controla contra la red del Formulario T-15, sección 5, que incluye los diez días hábiles de revisión del CLIENTE antes de cada hito (Art. 18.3).
+El alcance se controla contra la línea base y la matriz de trazabilidad del Formulario T-12 y del Formulario T-13: un requerimiento sólo se da por cumplido cuando pasa la prueba asignada en el paquete que lo construye. El cronograma se controla contra la red del Formulario T-15, sección 5, que incluye los diez días hábiles de revisión del CLIENTE antes de cada hito (Art. 18.3).
 
-El avance se mide con valor ganado (RT-19.07). El valor planificado de cada mes es la suma de las horas hombre programadas de los paquetes en curso según el Formulario T-15; el valor ganado acredita las horas de un paquete sólo en hitos de avance definidos de antemano (inicio, revisión interna y aceptación) y no por porcentaje declarado; el costo real son las horas registradas. Con ellos se calculan el índice de desempeño del cronograma (SPI) y el del costo (CPI). Un SPI o un CPI bajo 0,90, o una desviación mayor al 10 %, obligan a presentar un plan de recuperación dentro de cinco días hábiles (paquete 1.8.6).
+El avance se mide con valor ganado (RT-19.07). El valor planificado de cada mes es la suma de las horas hombre programadas de los paquetes en curso según el Formulario T-15; el valor ganado acredita las horas de un paquete sólo en hitos de avance definidos de antemano (20~\% al inicio, 50~\% en la revisión interna y 30~\% en la aceptación) y no por porcentaje declarado; el costo real son las horas registradas. Con ellos se calculan el índice de desempeño del cronograma (SPI) y el del costo (CPI). La Tabla~\ref{tab:t9-umbrales} fija los umbrales y sus consecuencias.
 
-Las reservas se controlan por separado: la capacidad protegida de la Etapa 1 y las necesidades de contingencia del SD8 sólo se usan con autorización registrada, y su consumo se informa en el mismo informe mensual.
+\begin{tablalafrox}{Umbrales de valor ganado y acciones. Fuente: elaboración propia a partir de (PMI, 2017, pp. 261--267) y (Bases Técnicas Transversales, RT-19.07).}{tab:t9-umbrales}%
+  {F{0.20} Y F{0.20} F{0.17}}%
+  {\cab{Condición} & \cab{Acción} & \cab{Responsable} & \cab{Plazo}}%
+  SPI y CPI mayores o iguales a 0,95 & Seguimiento normal en el informe mensual & Jefe de Proyecto & Mensual \\
+  SPI o CPI entre 0,90 y 0,95 & Análisis de causa y acción correctiva dentro del frente & Líder del frente & 5 días hábiles \\
+  SPI o CPI bajo 0,90, o desviación de más de 10~\% en un paquete de la ruta crítica & Plan de recuperación con fechas, personas y uso de holgura o reserva; aprobación del Comité de Proyecto (paquete 1.8.6) & Líder del frente y Jefe de Proyecto & 5 días hábiles \\
+  Plan de recuperación que requiere reserva de gestión o amenaza un hito & Escalamiento al Comité Ejecutivo & Jefe de Proyecto & Sesión extraordinaria en 5 días hábiles \\
+\end{tablalafrox}
+
+Los umbrales se aplican por frente y para el proyecto completo. Un índice que permanece entre 0,90 y 0,95 durante dos meses seguidos se trata como si estuviera bajo 0,90.
+
+\paragraph{Nivelación en los solapamientos}
+En los meses 13 a 15 y 19 a 20, la reunión semanal compara las horas asignadas por persona con la curva de plazas por grupo de origen del Formulario T-15 y el documento de nivelación (paquete 1.3.4). Si un grupo supera su planta dos semanas seguidas, el Jefe de Proyecto reasigna dentro del grupo o activa la reserva protegida; si ninguna alcanza, lo registra como desviación en el Comité de Proyecto.
+
+Las reservas se controlan por separado: la reserva protegida del Formulario T-15 y la contingencia del Subdocumento 8 sólo se usan con autorización registrada, y su consumo se informa en el mismo informe mensual.
 
 \subsection{Mecanismos de decisión y cadencias de gobierno}
 
 Los comités del Art. 71° de las Bases Administrativas se organizan así:
 \begin{itemize}
-    \item Reunión de seguimiento semanal (paquete 1.3.5), con el jefe de proyecto y líderes de frente: revisa avance, bloqueos y datos para los comités; no reemplaza a ningún comité.
-    \item Comité de Proyecto quincenal (paquete 1.8.3), con jefe de proyecto, líderes y Contraparte Técnica: revisa avance de entregables y el registro vivo de riesgos (RT-19.04).
-    \item Comité Ejecutivo mensual (paquete 1.8.2), con gerencias del CLIENTE y dirección de LafroX: resuelve escalamientos, cambios de alcance o plazo y uso de reservas.
-    \item Comité de Arquitectura mensual (paquete 1.8.4), con Arquitecto de Solución, Seguridad y TI del CLIENTE: decide asuntos de arquitectura y mantiene su registro.
+    \item Reunión de seguimiento semanal (paquete 1.3.5), con el Jefe de Proyecto, los líderes de frente y los equipos del CLIENTE: revisa avance, bloqueos y datos para los comités; no reemplaza a ningún comité.
+    \item Comité de Proyecto quincenal (paquete 1.8.3), con Jefe de Proyecto, líderes y Contraparte Técnica: revisa avance de entregables, desviaciones y el registro vivo de riesgos (RT-19.04).
+    \item Comité Ejecutivo mensual (paquete 1.8.2), con la Gerenta General del CLIENTE, el Administrador del Contrato y la dirección de LafroX: resuelve escalamientos, cambios de alcance o plazo y uso de reservas.
+    \item Comité de Arquitectura mensual (paquete 1.8.4), con Arquitecto de Solución, Encargado de Seguridad y TI del CLIENTE: decide asuntos de arquitectura, revisa la deuda técnica y mantiene su registro.
     \item Comité de Operación mensual desde el mes 13 hasta el mes 56 (paquete 1.8.5), con Líder de Operación / SRE, mesa de servicio, Operaciones y TI del CLIENTE: revisa niveles de servicio, incidentes y problemas, capacidad de la mesa, pruebas de continuidad y plan de mejoras.
 \end{itemize}
 
-El Comité de Operación empieza con la primera marcha blanca, porque desde entonces la solución atiende operaciones reales. Revisa cada mes la disponibilidad de los servicios críticos, los incidentes críticos y altos y sus causas, la atención de la mesa (respuesta antes de 20 segundos, abandono y resolución al primer contacto), las pruebas de restauración y de continuidad y los cambios programados. Sus actas registran acuerdos, responsables y plazos (RT-19.09).
+El Comité de Operación empieza con la primera marcha blanca, porque desde entonces la solución atiende operaciones reales. Revisa cada mes la disponibilidad de los servicios críticos, los incidentes críticos y altos y sus causas, la atención de la mesa (respuesta antes de 20 segundos, abandono y resolución al primer contacto), las pruebas de restauración y de continuidad y los cambios programados.
 
+\paragraph{Escalamiento}
+La Tabla~\ref{tab:t9-escalamiento} fija los disparadores, destinatarios y plazos. Son los mismos que aplica el Subdocumento 8 a las solicitudes que dependen del CLIENTE.
 
+\begin{tablalafrox}{Disparadores y plazos de escalamiento. Fuente: elaboración propia a partir de (Bases Administrativas, art. 71, pp. 37--38) y (Subdocumento 8, Anexo 8.A).}{tab:t9-escalamiento}%
+  {Y F{0.22} F{0.27}}%
+  {\cab{Disparador} & \cab{Destinatario} & \cab{Plazo}}%
+  Tarea bloqueada más de cinco días hábiles; solicitud al CLIENTE vencida; SPI o CPI bajo 0,90 & Nivel 1: Jefe de Proyecto y Contraparte Técnica & El mismo día hábil \\
+  Asunto del nivel 1 sin resolución; riesgo que pasa a zona alta; plan de recuperación & Nivel 2: Comité de Proyecto & A los 2 días hábiles; sesión extraordinaria si no hay ordinaria en 5 días \\
+  Asunto que excede al Comité de Proyecto o sin resolución; cambio de alcance; uso de reserva de gestión; holgura de un hito bajo diez días hábiles & Nivel 3: Comité Ejecutivo & A los 5 días hábiles; sesión extraordinaria si no hay ordinaria en ese plazo \\
+  Amenaza a la seguridad de la información, a la continuidad de la operación o a un hito & Comité Ejecutivo y Encargado de Seguridad cuando corresponda & Inmediato \\
+\end{tablalafrox}
 
-El Comité de Calidad y Procesos es una instancia interna de LafroX, descrita en el Subdocumento 1, secciones 1.2 y 1.3.1, y no un comité adicional atribuido al Art. 71. Lo preside el Jefe de Aseguramiento de Calidad con los líderes de proyecto; revisa mensualmente procedimientos, defectos y acciones correctivas. El Líder de Calidad aplica los controles bloqueantes de promoción; los desacuerdos se revisan internamente y se escalan a la Gerencia General de LafroX. Ninguna instancia interna puede dispensar un umbral contractual ni sustituir el acta de aceptación del CLIENTE; los cambios de compromisos siguen el control de cambios.
+Durante la operación, los incidentes siguen además los tiempos de respuesta del Art. 78° y el aviso de incidentes de seguridad al CLIENTE en dos horas (paquete 2.2.3).
+
+\paragraph{Contenido mínimo de las actas}
+Toda acta de comité registra: instancia, fecha, asistentes y ausentes, temas tratados, decisiones con su fundamento, acciones con responsable y fecha, riesgos y cambios revisados, asuntos escalados y estado de las acciones de la sesión anterior. Se emite dentro de dos días hábiles (RT-19.09) y se publica en el espacio colaborativo (paquete 1.8.8).
+
+El Comité de Calidad y Procesos es una instancia interna de LafroX, descrita en el Subdocumento 1, secciones 1.2 y 1.3.1, y no un comité adicional atribuido al Art. 71. Ninguna instancia interna puede dispensar un umbral contractual ni sustituir el acta de aceptación del CLIENTE; los cambios de compromisos siguen el control de cambios.
 
 \end{document}
