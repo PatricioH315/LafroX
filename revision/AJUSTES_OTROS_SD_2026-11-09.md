@@ -16,7 +16,7 @@ Rama del SD7: `LafroX-Subdoc7-LateX-CORRIGIENDO`. La línea base pasa de 220.023
 | Subdocumento | Ajuste |
 |---|---|
 | SD9 / T-17 (`origin/LafroX-Subdoc9-LateX-corrigiendo`, `SD9_v_nueva/T17/contenido.tex`, líneas 177 y 179) | Cambiar «paso a producción del 5 de mayo de 2028» por 17 de mayo y «5 de octubre de 2028» por 18 de octubre. |
-| SD8 / T-16 | Confirmar que la reserva de gestión de 1.600 HH se libera con aprobación del Comité Ejecutivo, como dice ahora el T-15. Si el SD8 define otra instancia, avisar para alinear el T-15. |
+| SD8 / T-16 | Confirmar que la reserva de gestión de 1.600 HH se libera con aprobación del Comité Ejecutivo, como dice ahora el T-15. Si el SD8 define otra instancia, avisar para alinear el T-15. **Resuelto 12-11:** el SD8 fija la reserva de gestión en 160 HH (4 ciclos de 40) con autorización del Comité Ejecutivo; el T-15 se corrigió de 1.600 a 160 HH. |
 | Oferta Económica / flujo de caja | Si usan la curva mensual del T-15: 616 HH pasan del mes 22 al mes 21 (4.3.2). El total no cambia. |
 | Oferta Económica / flujo de caja | Recategorizar perfiles de implantación según el T-15, sección 6.3: 5 jefes de frente como Analista / Diseñador Senior (4.006,96 HH) y 18 asistentes de terreno como TIC (14.425,04 HH), en lugar de 22 Analista / Diseñador Junior. Plazas de desarrollo: 36 (antes 17). Nuevo perfil 29, Técnico de Redes e Instalaciones (TIC, origen NOC/Infraestructura, 5 plazas, 2.240 HH) que ejecuta 6.1, 6.2, 6.3, 6.6.2 y 6.6.3; los DevOps senior y junior bajan a 3.282,13 y 1.641,07 HH y suben a 7 y 4 plazas. Total de perfiles: 37 y 136 plazas. Las HH totales no cambian. |
 | SD1 (`LafroX-Subdoc1-LateX-CORRIGIENDO`, commit local ab798379, sin push) | Área de Implantación y Gestión del Cambio con 9 personas; dotación 133. Pendiente: agregar la caja de la nueva división al organigrama (Figura 1.1, `figuras/organigrama-corporativo.tex`). |
@@ -33,4 +33,4 @@ Las figuras no se modificaron (decisión del 09-11-2026). Quedan desalineadas co
 |---|---|
 | SD9 | El costo de la calidad (12.016 HH) pasa a ser el 5,47 % de 219.727,83 HH; redondeado sigue en 5,5 %. Cambiar la base citada de 220.023 a 219.727,83 HH. |
 | Oferta Económica | Total de HH 219.727,83 (−295,17). Por rol: DES −111,33; DAT −326,50; ARQ +100,00; SRE +21,33; IMP +21,33. Perfiles de la sección 6.3 del T-15 ya actualizados. |
-| SD8 | Si cita las 220.023 HH como base de reservas, cambiar a 219.727,83. |
+| SD8 | Si cita las 220.023 HH como base de reservas, cambiar a 219.727,83. **Resuelto 12-11** en el Anexo 8.H (rama `Lafrox_Subdocumento_8_Latex_Revision`). |
