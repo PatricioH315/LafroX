@@ -2,25 +2,52 @@
 \section{Estructura de mantención y soporte}
 \label{sec:e2-mantencion}
 
-El modelo de soporte distingue las coberturas dedicadas de las intervenciones de especialistas imputadas a los paquetes de mantención (LafroX, 2026c, T-14, cuentas 8.1 y 8.2, y T-15).
+Esta sección presenta el modelo de costeo del soporte, la separación entre recursos dedicados y compartidos, la mantención preventiva, la provisión para mantención correctiva, el presupuesto de mejora continua y los costos de actualización tecnológica, como pide el apartado 2.6 del Formulario E-21 (Distribuidora Puelche S.A., 2026a, Formulario E-21, p.~71). Las horas provienen de las cuentas 8.1 y 8.2 del T-14 y del T-15 (LafroX, 2026c), y los montos, de la hoja \texttt{COSTOS} del modelo financiero (LafroX, 2026f). Todos los costos de esta sección forman parte del costo de la Operación de la sección~\ref{sec:e2-costos-operacionales} y no se suman a él.
 
-\subsection{Cobertura y asignación de recursos}
+\subsection{Modelo de costeo}
+\label{sec:e2-mant-modelo}
 
-El gerente de servicio tiene dedicación completa durante la Operación y responde por los niveles de servicio, la atención de incidentes y el plan de mejora continua. La mesa N1 recibe y clasifica las solicitudes de 04:00 a 22:00, con cobertura 24×7 en septiembre y diciembre durante la Operación (8.1.1). El NOC mantiene cobertura 24×7 durante la Operación y el SOC presta servicio 24×7 desde el mes 13 hasta el mes 56, según los paquetes 8.1.1 y 8.1.5. Para el escalamiento técnico, SRE atiende infraestructura y terreno desde el paquete 8.2.3, Desarrollo atiende la aplicación desde 8.2.1 y LafroX coordina el soporte de fabricante de nivel 4. Los puestos de mesa, NOC y SOC conservan su cobertura durante los escalamientos.
+El soporte se costea de dos formas. La cobertura de mesa, NOC y SOC se costea por puesto y ventana de atención, porque debe estar disponible aunque no haya incidentes. La intervención de especialistas de infraestructura, aplicación y seguridad se costea por las horas que asigna el T-15 al paquete de mantención que la ejecuta. En ambos casos, cada hora se valoriza con el costo en UF/HH de su perfil, según el Formulario E-26 (Distribuidora Puelche S.A., 2026a, Formulario E-26, p.~76).
 
-El SOC es propio de LafroX, opera desde su Centro de Operaciones de Valparaíso y requiere que sus analistas estén contratados antes del mes 13 (LafroX, 2026b, SD6 y Anexo 6.B).
+El registro de cada ticket vincula el diagnóstico, la actuación, el responsable y el resultado, y el informe mensual de niveles de servicio liquida las horas ejecutadas. Las intervenciones en terreno incluyen el traslado del especialista, cuyo costo forma parte de la oferta (Distribuidora Puelche S.A., 2026b, cap.~21, RT-21.16, p.~37).
 
-El costo de la cobertura se asigna por puesto y ventana de atención. La intervención de especialistas de infraestructura y aplicación se imputa por horas al paquete de mantención que la ejecuta. El registro del ticket vincula diagnóstico, actuación, responsable y resultado. Las intervenciones en terreno incorporan los recursos de traslado que correspondan y el equipo en espera conserva la capacidad de recuperación remota. El costo de los traslados requeridos se incluye en la oferta (Distribuidora Puelche S.A., 2026b, cap.~21, RT-21.16, p.~37).
+\subsection{Recursos dedicados y compartidos}
+\label{sec:e2-mant-recursos}
 
-\subsection{Prevención, correctivos y evolución}
+Los recursos dedicados son los puestos de mesa N1, NOC y SOC. La mesa N1 atiende de 04:00 a 22:00 y amplía a 24×7 en septiembre y diciembre, el NOC mantiene cobertura 24×7 y el SOC, propio de LafroX y operado desde su Centro de Operaciones de Valparaíso, presta servicio 24×7 desde el mes 13 (LafroX, 2026b, Anexo 6.B; 2026c, T-14, paquetes 8.1.1 y 8.1.5). Los recursos compartidos son los especialistas que atienden los niveles 2 y 3 y la mantención: el equipo SRE y DevOps para infraestructura y terreno, el equipo de Desarrollo para la aplicación y los especialistas de ciberseguridad. El Líder de Operación / SRE es el gerente de servicio, representa a LafroX en el Comité de Operación y coordina el soporte de nivel 4 de los fabricantes; el modelo le asigna 651,85 HH en la Operación, por 684,44 UF, dentro del grupo SRE y DevOps. Los puestos de mesa, NOC y SOC mantienen su cobertura durante los escalamientos. La Tabla~\ref{tab:e2-mant-recursos} presenta el costo de cada grupo en los meses 21 a 56.
 
-La Tabla~\ref{tab:e2-mantencion} vincula el programa preventivo y evolutivo con sus unidades de costeo (LafroX, 2026c, T-14, cuentas 8.1 y 8.2). La mantención preventiva sigue un calendario anual acordado con el CLIENTE e incluye auditorías técnicas al menos trimestrales con informe (Distribuidora Puelche S.A., 2026b, sección 21.4, pp.~37--38).
-
-\begin{tablalafrox}{Actividades de mantención y criterio de costeo. Fuente: T-14, cuentas 8.1, 8.2 y 8.5, y Bases Técnicas Transversales, sección 21.4.}{tab:e2-mantencion}{F{0.24} F{0.43} F{0.33}}{\textbf{Actividad} & \textbf{Programación o capacidad} & \textbf{Base de costeo}}
-Prevención & Restauración mensual, mantención programada y revisión eléctrica semestral & Intervenciones, HH y materiales \\
-Correctivos & 768 HH de Desarrollo por año estimadas (8.2.1) & HH imputadas a defectos \\
-Mejora continua & 768 HH de Desarrollo por año en la bolsa evolutiva (8.2.1) & HH por cambio aprobado \\
-Actualización tecnológica & Plan anual con ventana aprobada y reversión ensayada (8.2.5) & HH de preparación y despliegue, licencias o equipos \\
+\begin{tablalafrox}{Recursos dedicados y compartidos del soporte, meses 21 a 56. Las sumas pueden diferir en la última cifra por redondeo. Fuente: modelo financiero, hoja COSTOS.}{tab:e2-mant-recursos}{Y R{1.9cm} R{1.9cm} R{2.8cm} R{2.1cm}}
+  {\cab{Grupo} & \cab{HH} & \cab{UF} & \cab{CLP} & \cab{USD}}
+  Dedicados: mesa N1, NOC y SOC & 106.799,00 & 82.811,20 & 3.312.448.000 & 3.680.498 \\
+  Desarrollo & 6.970,08 & 4.732,69 & 189.307.600 & 210.342 \\
+  SRE y DevOps & 5.850,33 & 4.843,23 & 193.729.060 & 215.255 \\
+  Ciberseguridad & 1.155,20 & 902,22 & 36.088.800 & 40.099 \\
+  Gestión, calidad, datos e implantación & 7.512,24 & 5.981,74 & 239.269.580 & 265.855 \\
+  \midrule
+  \textbf{Total} & \textbf{128.286,85} & \textbf{99.271,08} & \textbf{3.970.843.040} & \textbf{4.412.048} \\
 \end{tablalafrox}
 
-La capacidad correctiva es una estimación para costeo. LafroX absorbe la corrección de defectos y la mantención normativa conforme a las Bases. La bolsa evolutiva acumula el saldo de un año al siguiente. El CLIENTE registra la solicitud, Desarrollo estima alcance y HH, el Comité de Operación aprueba el cambio y el informe mensual liquida las horas ejecutadas. El paquete 8.2.4 asigna 2.304 HH de Desarrollo a la reducción de deuda técnica durante los 36 meses de Operación, equivalentes a 64 HH mensuales ($2.304 \div 36$), con seguimiento trimestral (LafroX, 2026c, T-14, cuenta 8.2).
+Los puestos dedicados concentran el 83,25\,\% de las horas y el 83,42\,\% del costo de personas de la Operación, porque deben cubrir las ventanas de atención completas. Los recursos compartidos suman 16.459,88 UF y se programan según las actividades del T-15, sin suponer un puesto completo por perfil.
+
+\subsection{Mantención preventiva, correctiva, mejora continua y actualización}
+\label{sec:e2-mant-programa}
+
+La Tabla~\ref{tab:e2-mantencion} valoriza cada componente del programa de mantención con las horas de sus paquetes. Las horas de Desarrollo se valorizan a 0,68 UF/HH y las de SRE y DevOps a 0,83 UF/HH, que son los costos medios de esos grupos en la Operación según la Tabla~\ref{tab:e2-mant-recursos}.
+
+\begin{tablalafrox}{Programa de mantención y su costo en los 36 meses de Operación. Fuente: T-14, cuentas 8.1 y 8.2; T-15; modelo financiero, hojas COSTOS y ADQUISICIONES OPERACION.}{tab:e2-mantencion}{Y R{1.5cm} R{1.9cm} R{2.6cm} R{1.9cm}}
+  {\cab{Componente y paquetes} & \cab{HH} & \cab{UF} & \cab{CLP} & \cab{USD}}
+  Preventiva: 8.1.3, 8.1.6, 8.2.3 y 8.2.6 & 2.576 & 2.132,56 & 85.302.254 & 94.780 \\
+  Correctiva: 8.2.1 & 2.304 & 1.564,42 & 62.576.715 & 69.530 \\
+  Mejora continua: bolsa evolutiva de 8.2.1 & 2.304 & 1.564,42 & 62.576.715 & 69.530 \\
+  Reducción de deuda técnica: 8.2.4 & 2.304 & 1.564,42 & 62.576.715 & 69.530 \\
+  Actualización tecnológica: 8.2.5 y 8.2.7 & 1.152 & 953,69 & 38.147.592 & 42.386 \\
+  Reposición de equipos del mes 21 & --- & 671,66 & 26.866.393 & 29.852 \\
+\end{tablalafrox}
+
+La mantención preventiva sigue un calendario anual acordado con el CLIENTE e incluye auditorías técnicas al menos trimestrales con su informe (Distribuidora Puelche S.A., 2026b, sección~21.4, pp.~37--38). Sus 2.576 HH comprenden las pruebas semestrales de recuperación ante desastres (8.1.3, 560 HH), las pruebas mensuales de restauración de respaldos (8.1.6, 576 HH), el mantenimiento del hardware de la sala técnica, los racks, los gabinetes de borde y el equipamiento de terreno (8.2.3, 1.152 HH) y las revisiones semestrales de las instalaciones eléctricas de la sala (8.2.6, 288 HH).
+
+La provisión para mantención correctiva es de 768 HH de Desarrollo por año, 2.304 HH en total. Es una estimación para costeo y no un tope: la corrección de defectos no tiene costo adicional para el CLIENTE, y LafroX absorbe las horas que excedan la estimación. A esta provisión se suman las reservas de riesgo de la Operación, por 314,21 UF, para las contingencias del plan de riesgos (LafroX, 2026e, Anexo 8.H).
+
+El presupuesto de mejora continua tiene dos partes. La bolsa evolutiva de 768 HH de Desarrollo por año se reserva para las mejoras funcionales, nuevas características y optimizaciones que solicite el CLIENTE, y el saldo no usado de un año pasa al siguiente. El CLIENTE registra la solicitud, Desarrollo estima su alcance y sus horas, el Comité de Operación aprueba el cambio y el informe mensual liquida las horas ejecutadas. Además, el paquete 8.2.4 destina 2.304 HH, 64 HH mensuales, a reducir la deuda técnica, con seguimiento trimestral (LafroX, 2026c, T-14, cuenta 8.2).
+
+La actualización tecnológica comprende el plan anual de actualización de los componentes de base, con ventana aprobada y reversión ensayada (8.2.5, 288 HH), y el plan de ciclo de vida del equipamiento, con su reposición y disposición final (8.2.7, 864 HH). La reposición de equipos de red y de seguridad del mes 21 cuesta 671,66 UF, y la renovación de las licencias de terceros ya está incluida en sus cuotas mensuales de la sección~\ref{sec:e2-op-licencias}.

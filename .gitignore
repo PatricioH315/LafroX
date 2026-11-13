@@ -19,3 +19,12 @@
 *.vrb
 /main.pdf
 /main-*.pdf
+
+# Temporales locales y resultados intermedios de compilación.
+/tmp/
+/entrega/_build/
+
+# Dependencias y cachés regenerables de herramientas auxiliares.
+node_modules/
+__pycache__/
+*.pyc

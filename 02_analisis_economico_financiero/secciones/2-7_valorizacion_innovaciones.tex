@@ -2,196 +2,117 @@
 \section{Valorización de las cinco innovaciones}
 \label{sec:e2-innovaciones}
 
-Esta sección valoriza las cinco innovaciones de la Oferta Técnica según el apartado 2.7 del Formulario E-21: inversión, costo operacional incremental y beneficio esperado de cada una. Los resultados económicos de esta sección corresponden a la hoja \texttt{INNOVACIONES AGRUPADAS} del Modelo Financiero (Entregable 3), que agrupa las horas y los costos por innovación y por clase (inversión u operación). El Formulario T-15 respalda las partidas y el esfuerzo (LafroX, 2026c, sección 6.3). El Formulario T-19 define los indicadores de beneficio (LafroX, 2026d, fichas 1 a 5) y el Anexo 4-W aporta el dimensionamiento de nube (LafroX, 2026a, tablas 4-W.I1 y 4-W.I2).
+Esta sección valoriza las cinco innovaciones de la Oferta Técnica con la inversión, el costo operacional incremental y el beneficio esperado de cada una, y muestra cómo se reflejan en el flujo de caja, como pide el apartado 2.7 del Formulario E-21 (Distribuidora Puelche S.A., 2026a, Formulario E-21, p.~71). Las cifras provienen de la hoja \texttt{INNOVACIONES} del modelo financiero (LafroX, 2026f). El Formulario T-15 respalda las partidas y el esfuerzo de cada innovación (LafroX, 2026c, sección 6.3), el Formulario T-19 define sus indicadores de beneficio (LafroX, 2026d, fichas 1 a 5) y el Anexo 4-W aporta el dimensionamiento de nube (LafroX, 2026a, tablas 4-W.I1 y 4-W.I2). Los montos se expresan en UF.
 
-Los montos se expresan en UF. Los totales por innovación y por período se presentan, además, en CLP y USD, con los valores de la hoja \texttt{PARAMETROS}: UF de \$40.000 y dólar de \$900 (Distribuidora Puelche S.A., 2026a, Formulario E-24).
-
-\begin{tablalafrox}{Innovaciones valorizadas}{tab:e2-inn-lista}{L{1.6cm} Y}
-  {\cab{Código} & \cab{Innovación}}
-  INN-01 & Seguimiento de vencimiento posentrega en el local \\
-  INN-02 & Reproducción de incidentes de terreno \\
-  INN-03 & Vida útil remanente por historia térmica del lote \\
-  INN-04 & Tramo variable de la Operación ligado al costo de servir \\
-  INN-05 & Hoja de negocio del almacenero \\
-\end{tablalafrox}
-
-% ---------------------------------------------------------------------------
 \subsection{Criterio de valorización}
 \label{sec:e2-inn-criterio}
 
-La valorización contiene tres conceptos con su tratamiento correspondiente:
+El modelo separa tres conceptos, porque cada uno entra de forma distinta a la evaluación del proyecto:
 
 \begin{itemize}
-  \item \textbf{Costo de LafroX.} Corresponde a las HH del equipo y a los servicios de nube que cada innovación requiere. Se divide en inversión, ejecutada durante la implementación, y costo operacional incremental, durante la Operación.
-  \item \textbf{Beneficio para el cliente.} Es el beneficio estimado para Puelche o el almacenero según el indicador. Se presenta por separado del flujo de LafroX.
-  \item \textbf{Ingreso variable de LafroX.} Solo INN-04 genera un ingreso para el proponente: el tramo variable de la Operación ligado al costo de servir.
+  \item \textbf{Costo de LafroX.} Son las horas del equipo y los servicios de nube que requiere cada innovación. La inversión se ejecuta durante la implementación y el costo operacional incremental durante la Operación.
+  \item \textbf{Beneficio para el CLIENTE.} Es el ahorro estimado para Puelche o para el almacenero según el indicador de cada innovación. No es un ingreso de LafroX y se informa fuera del flujo de caja.
+  \item \textbf{Ingreso variable de LafroX.} Solo INN-04 lo genera, mediante el tramo variable de la Operación ligado al costo de servir.
 \end{itemize}
 
+\subsection{Inversión y costo operacional}
+\label{sec:e2-inn-costos}
 
-% ---------------------------------------------------------------------------
-\subsection{Datos de entrada y supuestos}
-\label{sec:e2-inn-datos}
+La Tabla~\ref{tab:e2-inn-resumen} resume el costo de cada innovación y el beneficio que se espera para el CLIENTE.
 
-La sección A de la hoja proporciona los datos que alimentan el cálculo de la hoja de innovaciones.
-
-\begin{tablalafrox}{Datos de entrada del cálculo de innovaciones}{tab:e2-inn-datos}{L{1.2cm} Y R{2.6cm} L{2.6cm} L{2.2cm}}
-  {\cab{Ref.} & \cab{Dato} & \cab{Valor} & \cab{Unidad} & \cab{Tipo}}
-  D-01 & Unidades despachadas al mes & 2.400.000 & unidades/mes & Documento \\
-  D-02 & Pedidos al mes & 31.000 & pedidos/mes & Documento \\
-  D-03 & Visitas de preventa al mes & 62.000 & visitas/mes & Documento \\
-  D-04 & Recepciones de proveedor al mes & 1.150 & recepciones/mes & Documento \\
-  D-05 & Ventas anuales & 148.000.000.000 & CLP/año & Documento \\
-  D-06 & Clientes del canal tradicional & 11.600 & locales & Documento \\
-  D-07 & Clientes activos & 14.200 & clientes & Documento \\
-  D-08 & SKU refrigerados o congelados & 1.100 & SKU & Documento \\
-  D-09 & SKU activos & 8.400 & SKU & Documento \\
-  D-10 & INN-02: incidentes por semana & 1 & incidentes/semana & Supuesto \\
-  D-11 & INN-02: personas detenidas por incidente & 2 & personas & Supuesto \\
-  D-12 & Valor del minuto-persona de reparto & 0,002 & UF/min & Supuesto \\
-  D-13 & Valor del minuto del almacenero & 0,001 & UF/min & Supuesto \\
-  D-14 & INN-04: tramo variable máximo mensual & 10 & UF/mes & Supuesto \\
-  D-15 & INN-04: primer mes con pago del tramo & 24 & mes & Documento \\
-\end{tablalafrox}
-
-% ---------------------------------------------------------------------------
-\subsection{Inversión y costo operacional en horas hombre}
-\label{sec:e2-inn-hh}
-
-La sección B de la hoja asigna las HH de cada innovación y clase a un perfil que las valoriza, con su costo por HH. Cada fila tiene un solo perfil y un tramo de meses, con las HH repartidas en partes iguales entre esos meses.
-
-\begin{tablalafrox}{HH de innovación por innovación y clase}{tab:e2-inn-hh}{L{1.4cm} L{1.7cm} R{1.1cm} R{1.3cm} L{1.5cm} Y R{1.5cm}}
-  {\cab{Innov.} & \cab{Clase} & \cab{Filas} & \cab{HH} & \cab{Meses} & \cab{Perfil que valoriza} & \cab{UF}}
-  INN-01 & Inversión & 1 & 960,0 & 7–12 & Ingeniero de Datos y Bases Senior & 768,0 \\
-  INN-02 & Inversión & 1 & 960,0 & 9–10 & Analista QA Senior & 480,0 \\
-  INN-02 & Operación & 22 & 576,0 & 22–55 & Analista QA Senior, Analista QA Junior y Líder de Calidad y Pruebas & 272,2 \\
-  INN-03 & Inversión & 1 & 960,0 & 7–12 & Ingeniero de Datos y Bases Senior & 768,0 \\
-  INN-03 & Operación & 11 & 288,0 & 24–54 & Ingeniero de Datos y Bases Senior y Junior, y Líder de Datos & 230,4 \\
-  INN-04 & Inversión & 1 & 160,0 & 17–23 & Jefe de Proyecto & 232,0 \\
-  INN-04 & Operación & 1 & 528,0 & 24–56 & Jefe de Proyecto & 765,6 \\
-  INN-05 & Inversión & 2 & 1.120,0 & 13–23 & Coordinador de Implantación & 672,0 \\
+\begin{tablalafrox}{Inversión, costo operacional y beneficio por innovación, en UF. Fuente: modelo financiero, hoja INNOVACIONES, sección F.}{tab:e2-inn-resumen}{Y R{2.0cm} R{2.0cm} R{2.0cm} R{2.4cm}}
+  {\cab{Innovación} & \cab{Inversión} & \cab{Costo operacional} & \cab{Egreso total} & \cab{Beneficio para el CLIENTE}}
+  INN-01 Seguimiento de vencimiento posentrega en el local & 768,00 & 9,57 & 777,57 & 31.604,17 \\
+  INN-02 Reproducción de incidentes de terreno & 480,00 & 272,61 & 752,61 & 27,46 \\
+  INN-03 Vida útil remanente por historia térmica del lote & 768,00 & 263,50 & 1.031,50 & 16.554,56 \\
+  INN-04 Tramo variable de la Operación ligado al costo de servir & 232,00 & 765,60 & 997,60 & 2.046,00 \\
+  INN-05 Hoja de negocio del almacenero & 672,00 & 1,16 & 673,16 & 3.646,65 \\
   \midrule
-  \textbf{Total} & & \textbf{40} & \textbf{5.552,0} & & & \textbf{4.188,2} \\
+  \textbf{Total} & \textbf{2.920,00} & \textbf{1.312,43} & \textbf{4.232,43} & \textbf{53.878,83} \\
 \end{tablalafrox}
 
-Las 5.552 HH equivalen al 2,5\,\% de las HH del proyecto. La operación de INN-02 e INN-03 ocupa varias filas porque los perfiles de calidad y de datos solo tienen HH en algunos meses de la Operación: cada fila corresponde a un mes con dotación disponible.
+Las cinco innovaciones requieren 2.920,00 UF de inversión y 1.312,43 UF de costo operacional. Toda la inversión corresponde a horas del equipo: 960 HH del Ingeniero de Datos y Bases Senior en los meses 7 a 12 para INN-01 y otras 960 HH del mismo perfil y en los mismos meses para INN-03, 960 HH del Analista QA Senior en los meses 9 y 10 para INN-02, 160 HH del Jefe de Proyecto en los meses 17 a 23 para INN-04, y 893,4 HH del Coordinador de Implantación en los meses 13 a 17 más 226,6 HH en los meses 18 a 23 para INN-05. INN-04 es la innovación con mayor costo operacional, 765,60 UF, porque el Jefe de Proyecto le dedica 528 HH entre los meses 24 y 56. Le siguen INN-02 e INN-03, con 272,61 y 263,50 UF, por las horas de los analistas de calidad y de los ingenieros de datos durante la Operación y por su consumo de nube.
 
-% ---------------------------------------------------------------------------
-\subsection{Costos sin horas hombre: nube y otros}
-\label{sec:e2-inn-nube}
+En total, las innovaciones ocupan 5.552 HH, el 2,54\,\% de las HH del proyecto. Cada hora se asigna a un perfil del Formulario T-15 en un mes en que ese perfil tiene horas programadas, de modo que el esfuerzo de innovación forma parte de la dotación del proyecto. Del costo operacional, 1.268,18 UF son horas del equipo y 44,26 UF son servicios de nube, que la Tabla~\ref{tab:e2-inn-nube} detalla.
 
-La sección C de la hoja estima el consumo de servicios de nube de cada innovación, a partir del dimensionamiento de nube del SD4 para la región de São Paulo.
-
-\begin{tablalafrox}{Costos sin HH de las innovaciones}{tab:e2-inn-nube}{L{1.1cm} Y L{1.3cm} L{1.5cm} R{1.3cm} R{1.4cm} L{2.3cm}}
-  {\cab{Ref.} & \cab{Rubro} & \cab{Innov.} & \cab{Meses} & \cab{UF/mes} & \cab{Total UF} & \cab{Estado}}
-  C-01 & Cálculo nocturno y almacenamiento N-10 & INN-01 & 16–56 & 0,23 & 9,57 & Estimación base \\
-  C-02 & Cómputo efímero para reproducción en QA y Preproducción & INN-02 & 5–56 & 0,01 & 0,43 & Estimación base \\
-  C-03 & Cómputo y resultados en N-10 & INN-03 & 16–56 & 0,81 & 33,10 & Estimación base \\
-  C-04 & Hardware de borde & INN-03 & 16–56 & 0,00 & 0,00 & Hardware ofertado \\
-  C-05 & Laboratorio externo para validar lotes & INN-03 & 11–15 & 0,00 & 0,00 & Sin contratación \\
-  C-06 & Cálculo y almacenamiento N-10 (ciclo mensual) & INN-05 & 21–56 & 0,03 & 1,16 & Estimación base \\
+\begin{tablalafrox}{Costos de nube y otros costos sin horas de las innovaciones, en UF. Fuente: modelo financiero, hoja INNOVACIONES, sección C.}{tab:e2-inn-nube}{L{1.1cm} Y L{1.6cm} L{1.5cm} R{1.9cm}}
+  {\cab{Ref.} & \cab{Rubro} & \cab{Innovación} & \cab{Meses} & \cab{Total UF}}
+  C-01 & Cálculo nocturno y almacenamiento & INN-01 & 16 a 56 & 9,57 \\
+  C-02 & Cómputo efímero para reproducir incidentes & INN-02 & 5 a 56 & 0,43 \\
+  C-03 & Cómputo y resultados de vida útil & INN-03 & 16 a 56 & 33,10 \\
+  C-04 & Hardware de borde adicional & INN-03 & 16 a 56 & 0,00 \\
+  C-05 & Laboratorio externo para validar lotes & INN-03 & 11 a 15 & 0,00 \\
+  C-06 & Cálculo y almacenamiento del ciclo mensual & INN-05 & 21 a 56 & 1,16 \\
   \midrule
-  \textbf{Total} & & & & & \textbf{44,26} & \\
+  \textbf{Total} & & & & \textbf{44,26} \\
 \end{tablalafrox}
 
-El hardware de borde de INN-03 ya figura en el Formulario T-11, por lo que no tiene compra adicional. El laboratorio externo solo se contrataría si el área de Calidad lo pide, y en el escenario base no se contrata.
-% ---------------------------------------------------------------------------
-\subsection{Beneficio esperado para el cliente}
+La nube de las innovaciones se valoriza con las mismas tarifas de la región de São Paulo que usa la hoja \texttt{ADQUISICIONES OPERACION}: 0,69 USD por DPU-hora de AWS Glue, 0,5976 USD por RPU-hora de Redshift Serverless y 0,0405 USD por GB-mes de almacenamiento S3. INN-03 concentra el mayor consumo, por el cómputo mensual del modelo de vida útil. El hardware de borde de INN-03 ya figura en el Formulario T-11, por lo que no agrega compras. El laboratorio externo solo se contrata si el área de Calidad lo solicita, y el escenario base no lo considera.
+
+\subsection{Beneficio esperado para el CLIENTE}
 \label{sec:e2-inn-beneficio}
 
-La sección D de la hoja calcula el beneficio mensual de cada innovación como volumen por mes $\times$ tasa base $\times$ reducción $\times$ valor unitario.
-\begin{tablalafrox}{Beneficio esperado para el cliente}{tab:e2-inn-beneficio}{L{1.0cm} Y R{1.6cm} R{1.2cm} R{1.1cm} R{1.4cm} R{1.3cm} R{1.6cm}}
-  {\cab{Ref.} & \cab{Indicador} & \cab{Volumen/mes} & \cab{Tasa base} & \cab{Reduc.} & \cab{Valor unit. UF} & \cab{Meses} & \cab{Total UF}}
-  B-01 & INN-01: unidades vencidas evitadas & 2.400.000 & 1\,\% & 25\,\% & 0,1285 & 16–56 & 31.604,2 \\
-  B-02 & INN-02: minutos de interrupción evitados & 4,3 & 120 min & 30\,\% & 0,004 & 13–56 & 27,5 \\
-  B-03 & INN-03: lotes descartados evitados & 150,6 & 5\,\% & 20\,\% & 268,1159 & 16–56 & 16.554,6 \\
-  B-04 & INN-04: minutos-persona de servir evitados & 31.000 & 20 min & 5\,\% & 0,002 & 24–56 & 2.046,0 \\
-  B-05 & INN-05: minutos de reposición ahorrados & 50.647,9 & 10 min & 20\,\% & 0,001 & 21–56 & 3.646,6 \\
+El modelo calcula el beneficio mensual de cada innovación como el volumen del mes, por la tasa base del problema, por la reducción esperada y por el valor unitario de lo evitado. La Tabla~\ref{tab:e2-inn-beneficio} presenta el resultado de cada indicador desde el mes en que la innovación entra en servicio hasta el mes 56.
+
+\begin{tablalafrox}{Beneficio esperado para el CLIENTE por indicador. Fuente: modelo financiero, hoja INNOVACIONES, sección D.}{tab:e2-inn-beneficio}{Y R{1.9cm} R{1.6cm} R{1.3cm} R{2.1cm}}
+  {\cab{Indicador} & \cab{UF por mes} & \cab{Desde el mes} & \cab{Meses} & \cab{Total UF}}
+  B-01 Unidades vencidas en el local evitadas (INN-01) & 770,83 & 16 & 41 & 31.604,17 \\
+  B-02 Minutos de interrupción evitados (INN-02) & 0,62 & 13 & 44 & 27,46 \\
+  B-03 Lotes descartados por vencimiento evitados (INN-03) & 403,77 & 16 & 41 & 16.554,56 \\
+  B-04 Minutos-persona de costo de servir evitados (INN-04) & 62,00 & 24 & 33 & 2.046,00 \\
+  B-05 Minutos ahorrados en la decisión de reposición (INN-05) & 101,30 & 21 & 36 & 3.646,65 \\
   \midrule
-  \textbf{Total} & & & & & & & \textbf{53.878,8} \\
+  \textbf{Total} & & & & \textbf{53.878,83} \\
 \end{tablalafrox}
 
-Cada indicador se construye así:
+INN-01 e INN-03 aportan la mayor parte del beneficio, con 31.604,17 y 16.554,56 UF, porque evitan producto vencido que el modelo valoriza a precio de venta. Cada indicador se construye con los datos de la hoja:
 
 \begin{itemize}
-  \item \textbf{B-01.} El volumen corresponde a las unidades despachadas (D-01). El valor unitario es el precio de venta medio por unidad: ventas anuales divididas por las unidades del año (D-05 / (D-01 $\times$ 12)), expresado en UF. Es una cota superior y bruta, porque los canjes no están cuantificados.
-  \item \textbf{B-02.} El volumen son los incidentes por mes (D-10 llevado a base mensual). El valor es el minuto-persona de reparto por las personas detenidas en cada incidente (D-12 $\times$ D-11).
-  \item \textbf{B-03.} El volumen son las recepciones con SKU refrigerados o congelados (D-04 $\times$ D-08 / D-09), con la convención de un lote por recepción, para estimar el volumen de lotes. El valor es la venta media por recepción (D-05 / (D-04 $\times$ 12)), en UF. También es una cota superior.
-  \item \textbf{B-04.} El volumen son todas las entregas (D-02), como cota superior. El valor es el minuto-persona de reparto (D-12).
-  \item \textbf{B-05.} El volumen son las visitas de preventa al canal tradicional (D-03 $\times$ D-06 / D-07). El valor es el minuto del almacenero (D-13).
+  \item \textbf{B-01.} Las 2.400.000 unidades despachadas al mes, con una tasa base de 1\,\% y una reducción de 25\,\%. El valor de cada unidad es la venta anual de \$148.000.000.000 dividida por las unidades del año, es decir, 0,1285 UF.
+  \item \textbf{B-02.} 4,33 incidentes al mes, con 120 minutos de interrupción por incidente y una reducción de 30\,\%. Cada minuto vale 0,004 UF, porque detiene a dos personas de reparto.
+  \item \textbf{B-03.} 150,60 lotes refrigerados o congelados al mes, que resultan de las 1.150 recepciones mensuales ponderadas por los 1.100 SKU de frío sobre los 8.400 SKU activos. La tasa base de descarte es 5\,\%, la reducción 20\,\% y cada lote vale 268,1159 UF, que es la venta media por recepción.
+  \item \textbf{B-04.} Los 31.000 pedidos del mes, con 20 minutos-persona de servicio por pedido, una reducción de 5\,\% y un valor de 0,002 UF por minuto-persona.
+  \item \textbf{B-05.} 50.647,89 visitas de preventa al canal tradicional, con 10 minutos por decisión de reposición, una reducción de 20\,\% y un valor de 0,001 UF por minuto del almacenero.
 \end{itemize}
 
+B-01, B-03 y B-04 son cotas superiores. B-01 y B-03 valorizan lo evitado a precio de venta, y B-04 aplica la reducción a todos los pedidos. Los volúmenes, las ventas y los SKU provienen de los datos del caso. La frecuencia de incidentes, las personas detenidas por incidente, el valor de los minutos y el monto del tramo variable de INN-04 son supuestos del modelo, al igual que las tasas base y las reducciones del escenario base.
 
-% ---------------------------------------------------------------------------
-\subsection{Ingreso variable de LafroX (INN-04)}
+\subsection{Ingreso variable de LafroX}
 \label{sec:e2-inn-ingreso}
 
-La sección E de la hoja calcula el tramo variable máximo de la Operación asociado a INN-04: 10 UF por mes (D-14), desde el mes 24 (D-15) hasta el mes 56, es decir, 33 meses y 330 UF en total.
+INN-04 liga un tramo variable del pago de la Operación a la reducción del costo de servir que mide el indicador B-04. El modelo considera un máximo de 10 UF por mes desde el mes 24 hasta el mes 56, es decir, 33 meses y 330,00 UF en total. Este ingreso no forma parte del precio de la sección~\ref{sec:e2-costos-precio} ni del flujo de caja que evalúa la sección~\ref{sec:e2-evaluacion}. Así, la evaluación del proyecto no depende del tramo variable, que se cobra según la reducción que mida el indicador.
 
-% ---------------------------------------------------------------------------
-\subsection{Resumen por innovación}
-\label{sec:e2-inn-resumen}
+\subsection{Reflejo en el flujo de caja}
+\label{sec:e2-inn-flujo}
 
-La sección F de la hoja consolida, para cada innovación, la inversión, el costo operacional incremental y el beneficio esperado que exige el apartado 2.7 del E-21.
+La Figura~\ref{fig:e2-inn-mensual} muestra el egreso mensual de las innovaciones y el ingreso variable de INN-04 a lo largo de los 56 meses del contrato.
 
-\begin{tablalafrox}{Resumen de la valorización por innovación (UF)}{tab:e2-inn-resumen}{L{1.3cm} R{1.6cm} R{1.6cm} R{1.5cm} R{1.6cm} >{\RaggedLeft\arraybackslash}X R{1.4cm}}
-  {\cab{Innov.} & \cab{Inversión} & \cab{Costo op. HH} & \cab{Costo op. nube} & \cab{Egreso total} & \cab{Beneficio cliente} & \cab{Ingreso LafroX}}
-  INN-01 & 768,0 & 0,0 & 9,6 & 777,6 & 31.604,2 & 0,0 \\
-  INN-02 & 480,0 & 272,2 & 0,4 & 752,6 & 27,5 & 0,0 \\
-  INN-03 & 768,0 & 230,4 & 33,1 & 1.031,5 & 16.554,6 & 0,0 \\
-  INN-04 & 232,0 & 765,6 & 0,0 & 997,6 & 2.046,0 & 330,0 \\
-  INN-05 & 672,0 & 0,0 & 1,2 & 673,2 & 3.646,6 & 0,0 \\
-  \midrule
-  \textbf{Total} & \textbf{2.920,0} & \textbf{1.268,2} & \textbf{44,3} & \textbf{4.232,4} & \textbf{53.878,8} & \textbf{330,0} \\
-\end{tablalafrox}
-\newpage
-\begin{tablalafrox}{Egreso total y beneficio por innovación en tres monedas}{tab:e2-inn-monedas}{L{1.3cm} R{1.5cm} R{1.9cm} R{1.8cm} R{1.7cm} >{\RaggedLeft\arraybackslash}X R{1.9cm}}
-  {\cab{Innov.} & \cab{Egreso UF} & \cab{Egreso MM\$} & \cab{Egreso USD} & \cab{Benef. UF} & \cab{Benef. MM\$} & \cab{Benef. USD}}
-  INN-01 & 777,6 & 31,1 & 34.559 & 31.604,2 & 1.264,2 & 1.404.630 \\
-  INN-02 & 752,6 & 30,1 & 33.449 & 27,5 & 1,1 & 1.220 \\
-  INN-03 & 1.031,5 & 41,3 & 45.844 & 16.554,6 & 662,2 & 735.758 \\
-  INN-04 & 997,6 & 39,9 & 44.338 & 2.046,0 & 81,8 & 90.933 \\
-  INN-05 & 673,2 & 26,9 & 29.918 & 3.646,6 & 145,9 & 162.073 \\
-  \midrule
-  \textbf{Total} & \textbf{4.232,4} & \textbf{169,3} & \textbf{188.108} & \textbf{53.878,8} & \textbf{2.155,2} & \textbf{2.394.615} \\
-\end{tablalafrox}
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=\textwidth, height=0.42\textwidth,
+  font=\fontsize{9pt}{11pt}\selectfont,
+  xmin=0, xmax=57, ymin=0, ymax=540,
+  xtick={1,4,8,12,16,20,24,28,32,36,40,44,48,52,56},
+  ytick={0,100,200,300,400,500},
+  xlabel={Mes del contrato}, ylabel={UF},
+  axis lines*=left, tick align=outside,
+  tick label style={/pgf/number format/use comma,/pgf/number format/1000 sep={.}},
+  ymajorgrids, grid style={lafroxTenue},
+  legend style={at={(0.5,-0.24)},anchor=north,draw=none,legend columns=2,
+    /tikz/every even column/.append style={column sep=10pt}},
+  legend cell align=left,
+]
+\addplot[ybar, area legend, bar width=4pt, fill=lafroxFuerte, draw=none] table[x=mes, y=total] {02_analisis_economico_financiero/figuras/innovaciones_mensual.dat};
+\addlegendentry{Egreso de las innovaciones}
+\addplot[lafroxNaranja, thick, const plot, mark=none] table[x=mes, y=ingreso] {02_analisis_economico_financiero/figuras/innovaciones_mensual.dat};
+\addlegendentry{Ingreso variable máximo de INN-04}
+\end{axis}
+\end{tikzpicture}
+\caption{Egreso mensual de las innovaciones e ingreso variable de INN-04, en UF. Fuente: modelo financiero, hoja INNOVACIONES, sección G.}
+\label{fig:e2-inn-mensual}
+\end{figure}
 
-En total, las cinco innovaciones requieren 2.920,0 UF de inversión (\$116.800.000; USD 129.778) y 1.312,4 UF de costo operacional incremental (\$52.497.249; USD 58.330). El beneficio esperado para el cliente suma 53.878,8 UF (\$2.155.153.362; USD 2.394.615). En el escenario de pago máximo, el ingreso variable de INN-04 alcanza 330,0 UF (\$13.200.000; USD 14.667).
+La inversión se concentra entre los meses 7 y 12, con un máximo de 496,01 UF en los meses 9 y 10, cuando coinciden los desarrollos de INN-01, INN-02 e INN-03 antes de la puesta en producción de la Etapa 1. Entre los meses 13 y 23 continúan INN-04 e INN-05, y desde el mes 24 el egreso baja a las horas de operación de INN-02, INN-03 e INN-04 y al consumo de nube.
 
-% ---------------------------------------------------------------------------
-\subsection{Egreso e ingreso mensual de las innovaciones}
-\label{sec:e2-inn-mensual}
-
-La sección G de la hoja reparte los egresos y el ingreso de las innovaciones en los 56 meses del contrato. Para cada mes, suma las filas de las secciones B y C cuyo tramo incluye ese mes. Sus controles verifican que la suma mensual coincide con el resumen por innovación, tanto en el egreso como en el ingreso.
-
-\begin{tablalafrox}{Egreso e ingreso de las innovaciones por período (UF)}{tab:e2-inn-periodos}{Y R{2.1cm} R{2.1cm} R{2.1cm} R{2.1cm}}
-  {\cab{Concepto} & \cab{Meses 1–16} & \cab{Meses 17–20} & \cab{Meses 21–56} & \cab{Total}}
-  Egreso HH de innovación & 2.444,8 & 307,8 & 1.435,6 & 4.188,2 \\
-  Egreso de nube y otros & 1,1 & 4,2 & 38,9 & 44,3 \\
-  \textbf{Egreso total de innovaciones} & \textbf{2.446,0} & \textbf{312,0} & \textbf{1.474,5} & \textbf{4.232,4} \\
-  Ingreso variable INN-04 & 0,0 & 0,0 & 330,0 & 330,0 \\
-\end{tablalafrox}
-\newpage
-\begin{tablalafrox}{Egreso total de las innovaciones por período en tres monedas}{tab:e2-inn-periodos-monedas}{Y R{2.3cm} R{2.6cm} R{2.1cm}}
-  {\cab{Período} & \cab{UF} & \cab{CLP} & \cab{USD}}
-  Meses 1–16 & 2.446,0 & 97.838.882 & 108.710 \\
-  Meses 17–20 & 312,0 & 12.478.218 & 13.865 \\
-  Meses 21–56 & 1.474,5 & 58.980.148 & 65.533 \\
-  \midrule
-  \textbf{Total} & \textbf{4.232,4} & \textbf{169.297.249} & \textbf{188.108} \\
-\end{tablalafrox}
-
-El 58\,\% del egreso de las innovaciones se concentra en los meses 1 a 16, donde ocurre la mayor parte de la inversión. En los meses 21 a 56, el egreso corresponde, sobre todo, al costo operacional en HH de INN-04 (765,6 UF), INN-02 (272,2 UF) e INN-03 (230,4 UF).
-
-% ---------------------------------------------------------------------------
-\subsection{Supuestos y limitaciones}
-\label{sec:e2-inn-supuestos}
-
-La lectura de los resultados depende de los supuestos de asignación y del escenario de beneficio.
-
-\begin{itemize}
-  \item \textbf{Perfil que valoriza.} El T-15 asigna HH por partida y perfil. La hoja económica utiliza su propia agrupación por perfil y mes. Para la conciliación se contrastan las filas de la hoja con la asignación del T-15 y sus ventanas.
-  \item \textbf{Ubicación en el tiempo.} Los meses de las tablas corresponden a la imputación de la hoja económica. Se contrastan con las ventanas técnicas del T-15 y el T-19 antes de trasladar los montos al flujo consolidado.
-  \item \textbf{Beneficios como cota superior.} B-01, B-03 y B-04 usan el volumen o el valor máximo usado en el escenario, por lo que representan el beneficio máximo esperado.
-  \item \textbf{Nube por conciliar.} Los costos de la sección C son una estimación bruta con tarifas públicas, pendiente de conciliar con el consumo ya cubierto en Adquisiciones.
-  \item \textbf{Ingreso máximo.} El ingreso de INN-04 se calcula con el tramo variable máximo mensual (D-14), en el escenario con pago.
-\end{itemize}
+Estos egresos ya están en el flujo de caja del proyecto. Las horas de innovación forman parte de la dotación que la hoja \texttt{COSTOS} valoriza como recursos humanos, y los 44,26 UF de nube se suman mes a mes a los servicios de proveedores en la fila de innovaciones de esa hoja. Por eso las innovaciones no agregan costo fuera del Resumen de la sección~\ref{sec:e2-costos-precio}. Frente a un egreso total de 4.232,43 UF, el beneficio esperado para el CLIENTE es de 53.878,83 UF.

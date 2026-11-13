@@ -1,3 +1,72 @@
 % !TEX root = ../../LAFROX_AnalisisFinanciero_2.tex
 \section{Curva S}
 \label{sec:e2-curva-s}
+
+Esta sección presenta los costos y los ingresos acumulados del proyecto y analiza su flujo de caja mensual durante los 56 meses del contrato, como pide el apartado 2.3 del Formulario E-21 (Distribuidora Puelche S.A., 2026a, Formulario E-21, p.~71). Las cifras provienen de las hojas \texttt{FLUJO CAJA NETO}, \texttt{FINANCIAMIENTO} y \texttt{CURVA S} del modelo financiero (LafroX, 2026f). Los montos son netos, sin IVA y antes de impuestos.
+
+La Curva S se construye con el flujo de caja financiado, es decir, con todo el dinero que entra y sale de la cuenta del proyecto, y tiene dos curvas:
+\begin{itemize}
+  \item \textbf{Cobros acumulados:} el capital inicial del mes 1, los doce hitos de implementación del Formulario E-25 y las 36 mensualidades de la Operación.
+  \item \textbf{Pagos acumulados:} los costos del proyecto de la sección~\ref{sec:e2-costos-precio}, los intereses del crédito y la devolución de su principal.
+\end{itemize}
+
+La distancia vertical entre ambas curvas es el saldo de caja, es decir, el dinero disponible al cierre de cada mes.
+
+El VAN y la TIR de la sección~\ref{sec:e2-evaluacion} se calculan sobre el flujo del proyecto, sin financiamiento. El flujo financiado de esta sección responde a otra pregunta: si la caja alcanza para pagar cada mes.
+
+\subsection{Capital inicial y financiamiento}
+\label{sec:e2-curva-financiamiento}
+
+El modelo considera un capital inicial de 18.000 UF, recibido en el mes 1: 14.400 UF de crédito bancario y 3.600 UF de aporte de los socios. La estructura corresponde al 80\,\% y al 20\,\% del Formulario E-24, con interés bancario de 0,9\,\% mensual (Distribuidora Puelche S.A., 2026a, Formulario E-24, p.~73). La Tabla~\ref{tab:e2-financiamiento} resume las condiciones.
+
+\begin{tablalafrox}{Capital inicial y financiamiento del proyecto en UF, CLP y USD. Fuente: modelo financiero, hojas PARAMETROS y FINANCIAMIENTO.}{tab:e2-financiamiento}{Y R{2.3cm} R{3.0cm} R{2.4cm}}
+  {\cab{Concepto} & \cab{UF} & \cab{CLP} & \cab{USD}}
+  Crédito bancario (80\,\%) & 14.400,00 & 576.000.000 & 640.000 \\
+  Aporte de los socios (20\,\%) & 3.600,00 & 144.000.000 & 160.000 \\
+  \textbf{Capital inicial} & \textbf{18.000,00} & \textbf{720.000.000} & \textbf{800.000} \\
+  \midrule
+  Interés mensual, meses 2 a 15 & 129,60 & 5.184.000 & 5.760 \\
+  Cuota mensual, meses 16 a 39 & 669,82 & 26.792.662 & 29.770 \\
+  \textbf{Total de intereses} & \textbf{3.490,00} & \textbf{139.599.883} & \textbf{155.111} \\
+\end{tablalafrox}
+
+Entre los meses 2 y 15 se pagan solo los intereses, 129,60 UF mensuales. Desde el mes 16, cuando se cobra H7, el crédito se devuelve en 24 cuotas iguales de 669,82 UF, hasta el mes 39. Los intereses totales son 3.490,00 UF y el principal devuelto suma 14.400 UF.
+
+El monto del capital sigue el criterio de financiar lo mínimo necesario. El flujo del proyecto sin financiamiento alcanza su mayor déficit acumulado en el mes 9, con 16.548,80 UF. Los 18.000 UF iniciales cubren ese déficit y los intereses pagados hasta ese mes, y dejan en la caja un saldo mínimo de 414,40 UF, equivalentes a \$16.575.858 o USD~18.418, como margen de seguridad. Como el saldo de caja es positivo en los 56 meses, el proyecto no necesita usar la línea de crédito del Formulario E-24, al 3\,\% mensual y con tope de 1.250 UF (\$50.000.000), que queda disponible ante un atraso en el cobro de un hito (Distribuidora Puelche S.A., 2026a, Formulario E-24, p.~73).
+
+\subsection{Costos e ingresos acumulados}
+\label{sec:e2-curva-acumulados}
+
+La Figura~\ref{fig:e2-curva-s} muestra los cobros y los pagos acumulados de cada mes; el saldo de caja es la distancia entre ambas curvas. La línea vertical señala el inicio de la Operación en el mes 21, que coincide con H12, la aceptación final de la implementación.
+
+\begin{figure}[htbp]\centering
+  \input{figuras/curva_s.tex}
+  \caption{Curva S del proyecto: cobros y pagos acumulados, en miles de UF. Fuente: modelo financiero, hoja CURVA S.}
+  \label{fig:e2-curva-s}
+\end{figure}
+
+Los cobros crecen en escalones durante la implementación, con cada hito, y de forma regular durante los 36 meses de Operación. Los pagos crecen desde el inicio, con un salto en el mes 2 por la compra del equipamiento. La Tabla~\ref{tab:e2-curva-hitos} presenta los valores de los meses en que cambia el comportamiento de las curvas.
+
+{\renewcommand{\LFXfiletefila}{\noalign{{\color{lafroxLinea}\hrule height 0.3pt}\nobreak}}%
+\begin{tablalafrox}{Cobros y pagos acumulados y saldo de caja en meses seleccionados, en UF. Fuente: modelo financiero, hoja CURVA S.}{tab:e2-curva-hitos}{Y R{2.8cm} R{2.8cm} R{2.8cm}}
+  {\cab{Mes} & \cab{Cobros} & \cab{Pagos} & \cab{Saldo de caja}}
+  1, capital inicial & 18.000,00 & 2.020,66 & 15.979,34 \\
+  2, compra del equipamiento & 26.210,41 & 17.925,38 & 8.285,03 \\
+  9, saldo mínimo & 43.657,52 & 43.243,12 & 414,40 \\
+  10, hito H4 & 53.920,52 & 45.637,11 & 8.283,42 \\
+  16, primera cuota del crédito & 84.709,55 & 70.049,46 & 14.660,09 \\
+  21, H12 e inicio de la Operación & 125.013,39 & 97.722,09 & 27.291,30 \\
+  39, última cuota del crédito & 203.913,15 & 176.245,72 & 27.667,42 \\
+  56, fin del contrato & 278.429,58 & 238.765,90 & 39.663,68 \\
+\end{tablalafrox}}
+
+Al mes 56, los cobros acumulados suman 278.429,58 UF: 260.429,58 UF de hitos y mensualidades y 18.000 UF de capital inicial. Los pagos acumulados suman 238.765,90 UF: 220.875,90 UF de costos del proyecto, 3.490,00 UF de intereses y 14.400 UF de devolución del crédito. Sin los movimientos de capital, los ingresos acumulados del contrato son 260.429,58 UF y los costos acumulados con intereses son 224.365,90 UF. La curva de cobros se mantiene sobre la de pagos en todos los meses, con su menor distancia en el mes 9.
+
+\subsection{Análisis del flujo de caja mensual}
+\label{sec:e2-curva-flujo-mensual}
+
+Durante los meses 1 a 20, el flujo del proyecto es negativo en 11 meses: 1, 2, 3, 5, 7, 8, 9, 11, 15, 19 y 20. El mes 2 concentra la compra de la infraestructura y el equipamiento, por 12.975,08 UF, y el hito H1 de 8.210,41 UF cubre solo una parte; el resto se paga con el capital inicial. El punto más bajo de la caja es el mes 9, antes de H4, con 414,40 UF, y el cobro de H4 en el mes 10 lo eleva a 8.283,42 UF. El flujo acumulado del proyecto sin financiamiento es positivo desde el mes 17.
+
+En la Operación ingresa una mensualidad de 4.383,32 UF, frente a un costo promedio de 3.723,37 UF por mes, y el mes 21 suma además el cobro de H12, por 10.263,01 UF. Los 36 flujos mensuales del proyecto son positivos. Hasta el mes 39, la cuota del crédito deja negativo el flujo financiado de los meses 22, 25, 32, 35 y 37, porque en los meses 25 y 37 se pagan las renovaciones anuales de garantías y seguros, y en los meses 22, 32 y 35 hay más horas programadas. El saldo acumulado se mantiene positivo en todos ellos. Desde el mes 40, sin cuotas del crédito, el excedente de la Operación se acumula en la caja.
+
+El saldo final de 39.663,68 UF equivale al margen del proyecto, 39.553,68 UF, más los 3.600 UF aportados por los socios y menos los 3.490,00 UF de intereses del crédito.

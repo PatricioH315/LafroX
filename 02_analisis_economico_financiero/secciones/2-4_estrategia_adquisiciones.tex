@@ -2,35 +2,66 @@
 \section{Estrategia de adquisiciones}
 \label{sec:e2-adquisiciones}
 
-La estrategia vincula la recepción de los suministros con la secuencia de instalación y las olas de implantación del Formulario T-14.
+Esta sección presenta las adquisiciones principales, su calendario de compra, la negociación de los contratos críticos, las importaciones y la decisión de hacer o comprar, como pide el apartado 2.4 del Formulario E-21 (Distribuidora Puelche S.A., 2026a, Formulario E-21, p.~71). Los montos provienen de las hojas \texttt{ADQUISICIONES IMPLEMENTACIÓN}, \texttt{ADQUISICIONES OPERACION} y \texttt{PROVEEDORES} del modelo financiero (LafroX, 2026f). La estrategia vincula la recepción de los suministros con la secuencia de instalación y las olas de implantación del Formulario T-14 (LafroX, 2026c, T-14, cuentas 5.1 a 5.4).
 
-\subsection{Matriz y cronograma de adquisiciones}
+\subsection{Matriz de adquisiciones principales}
+\label{sec:e2-adq-matriz}
 
-La Tabla~\ref{tab:e2-adquisiciones} reúne las compras que condicionan los ambientes y las olas de terreno (LafroX, 2026a, Formulario T-11; LafroX, 2026b, Anexo 6.B; LafroX, 2026c, T-14, cuentas 5.1 a 5.4). LafroX provee la infraestructura en sitio y especifica el hardware de terreno, con marca, modelo, cantidad, características y costo unitario estimado (Distribuidora Puelche S.A., 2026a, art.~14.2, p.~10; 2026b, cap.~8, RT-08.10, p.~19). La separación civil de la sala corresponde al CLIENTE y LafroX la especifica y coordina (Distribuidora Puelche S.A., 2026b, cap.~6, RT-06.06, p.~15). LafroX provee el piso técnico e instala su infraestructura (LafroX, 2026b, sección 6.1).
+LafroX provee la infraestructura de la solución en los sitios del CLIENTE y especifica el hardware de terreno con marca, modelo, cantidad, características y costo estimado (Distribuidora Puelche S.A., 2026a, art.~14.2, p.~10; 2026b, cap.~8, RT-08.10, p.~19). La Tabla~\ref{tab:e2-adq-equipos} agrupa el equipamiento que compra LafroX por categoría y por mes de pago.
 
-\begin{tablalafrox}{Adquisiciones principales y fechas de necesidad. Fuente: SD4 y T-11, SD6 y Anexo 6.B, T-14 cuentas 5.1 a 5.4 y T-15.}{tab:e2-adquisiciones}{F{0.25} F{0.31} F{0.44}}{\textbf{Adquisición} & \textbf{Responsable y referencia técnica} & \textbf{Ventana y condición de aceptación}}
-Sala, servidores, almacenamiento, racks y gabinetes & LafroX. Infraestructura de Talca, Concepción y plataformas de cross-docking según T-11. & Orden en el mes 2, instalación inicial en el 3 y recepción de sala en el 4. \\
-Terminales, impresoras, terminales de pago y balanzas & El CLIENTE compra los equipos de uso. LafroX especifica, verifica e integra. & Especificación en el mes 2 (5.1.1), entrega antes de la ola respectiva y acta de recepción técnica (5.1.3). \\
-Cadena de frío & El CLIENTE compra B-01 y los componentes B-03 a B-14. LafroX provee los gateways B-02 y adquiere el prototipo (5.1.4). & Validar el prototipo antes de la compra masiva. Disponer de cuatro kits para el piloto y de 28 kits instalados y recibidos antes de la ola de reparto. \\
-Nube & LafroX. AWS para ambientes, datos, seguridad, observabilidad y recuperación. & Habilitar cuentas y servicios antes del mes 4 y antes de configurar los ambientes (5.2.1). H3 exige infraestructura híbrida y ambientes habilitados. \\
-MDM, protección de endpoints y licencias de terceros & LafroX tramita las suscripciones y el registro de licencias. Las licencias de terceros se constituyen a nombre del CLIENTE. & Activar la cobertura antes del enrolamiento y las demás licencias antes de su primer uso (5.2.2 y 5.2.3). \\
-Enlaces de comunicaciones & LafroX. Dos enlaces de fibra, ocho planes LTE y cinco enlaces Starlink. T-11 identifica a Telsur, Entel y Claro como referencias de red fija y móvil. & Contratar antes de H3 (5.3.1 a 5.3.3). Verificar factibilidad y capacidad por sitio y comprobar la conmutación antes de aceptar cada camino. \\
+\begin{tablalafrox}{Adquisiciones de equipamiento de LafroX por categoría. Fuente: modelo financiero, hojas ADQUISICIONES IMPLEMENTACIÓN, ADQUISICIONES OPERACION y RESUMEN.}{tab:e2-adq-equipos}{Y R{1.0cm} R{2.0cm} R{2.7cm} R{2.0cm}}
+  {\cab{Categoría} & \cab{Mes} & \cab{UF} & \cab{CLP} & \cab{USD}}
+  Equipos de red y oficina & 2 & 6.411,51 & 256.460.392 & 284.956 \\
+  Seguridad & 2 & 2.065,86 & 82.634.542 & 91.816 \\
+  Servidores y equipos de borde & 2 & 1.424,97 & 56.998.650 & 63.332 \\
+  Obras civiles, energía y montaje & 2 & 3.072,75 & 122.909.806 & 136.566 \\
+  \textbf{Total de la implementación} & & \textbf{12.975,08} & \textbf{519.003.390} & \textbf{576.670} \\
+  \midrule
+  Reposición de equipos de red & 21 & 382,33 & 15.293.111 & 16.992 \\
+  Reposición de seguridad & 21 & 257,33 & 10.293.282 & 11.437 \\
+  Adecuación eléctrica y puntos de red & 21 & 32,00 & 1.280.000 & 1.422 \\
 \end{tablalafrox}
 
-La sala y los servicios de nube y conectividad tienen prioridad porque habilitan los ambientes de H3. El montaje de racks y gabinetes sigue el calendario por sitio del T-14, con los gabinetes de cross-docking en el mes 9. Los equipos de uso adquiridos por el CLIENTE se registran en el inventario informativo y se imputan al flujo de LafroX las actividades de instalación, configuración e integración a su cargo.
+La red de bodega es la compra de mayor valor. Los 72 puntos de acceso Wi-Fi 6E industriales suman 4.933,55 UF de los 6.411,51 UF de la categoría, junto con los switches Cisco de núcleo y de acceso y los switches industriales Moxa. En seguridad destacan los cinco firewalls FortiGate 100F de los centros, con 915,52 UF, y los siete FortiGate Rugged 60F de los sitios industriales, con 519,59 UF. La categoría de obras civiles incluye la climatización de precisión de la sala técnica, con 1.288,59 UF, la UPS de la sala, el generador y los gabinetes de borde de Concepción y de las plataformas de cross-docking. Los servidores HPE, los siete PC industriales Advantech, la NAS de respaldo, los cinco terminales Starlink y los cuatro gateways Moxa de la cadena de frío completan el equipamiento de borde.
 
-La conectividad de los camiones con frío queda disponible en el mes 2, antes del banco de pruebas (5.3.4). LafroX gestiona 62 SIM M2M de Entel y Claro y contrata el servicio Iridium SBD con Globalsat Chile. SRE verifica los contratos. La custodia de fuentes se contrata antes de H4 (5.4.4). El jefe de proyecto verifica el contrato y el primer depósito, y el paquete 8.4.4 programa las actualizaciones semestrales durante la Operación (LafroX, 2026b, Anexo 6.B; LafroX, 2026c, T-14; Distribuidora Puelche S.A., 2026a, art.~84.6).
+Al inicio de la Operación, en el mes 21, el modelo repone equipos de red y de seguridad y amplía la red y la instalación eléctrica, por 671,66 UF en total. La separación civil de la sala corresponde al CLIENTE, y LafroX la especifica y coordina (Distribuidora Puelche S.A., 2026b, cap.~6, RT-06.06, p.~15). Los equipos de uso en terreno y el monitoreo de frío de cámaras y camiones los compra el CLIENTE, por lo que no forman parte del costo ni del flujo de caja. Su especificación y su costo estimado se informan en la hoja \texttt{HARDWARE DEL CLIENTE} del modelo. En la cadena de frío, LafroX provee los gateways B-02 y el CLIENTE compra el resto de los componentes, de B-01 a B-14 (LafroX, 2026a, Formulario T-11).
 
-Para las compras a cargo del CLIENTE, LafroX entrega la especificación diez días hábiles antes de la fecha prevista para emitir la orden y revisa el avance en cada Comité de Proyecto. Si un atraso amenaza H3 o una ola, el Comité Ejecutivo recibe el análisis de impacto. Los proveedores ejecutan las instalaciones de energía, climatización y extinción de incendios de los paquetes 6.1.2 a 6.1.4. El personal de redes de LafroX ejecuta el montaje y cableado de su alcance y apoya la instalación de equipos de terreno (LafroX, 2026b, SD6 y T-9; LafroX, 2026c, T-15, sección 6.3).
+Además del equipamiento, LafroX contrata servicios recurrentes. La Tabla~\ref{tab:e2-adq-servicios} muestra el costo mensual de cada servicio durante la Operación y su proveedor de referencia.
 
-Los acuerdos con los transportistas y el acta relativa al uso de terminales, GPS y cámaras se gestionan antes de H6 (5.4.1 y 5.4.2). Son dependencias de la salida a ruta y se controlan junto con la disponibilidad del equipamiento.
+\begin{tablalafrox}{Servicios recurrentes contratados por LafroX durante la Operación, por mes. Fuente: modelo financiero, hojas ADQUISICIONES OPERACION y PROVEEDORES.}{tab:e2-adq-servicios}{Y L{3.3cm} R{1.5cm} R{2.2cm} R{1.5cm}}
+  {\cab{Servicio} & \cab{Proveedor} & \cab{UF} & \cab{CLP} & \cab{USD}}
+  Nube & AWS & 368,92 & 14.756.635 & 16.396 \\
+  Fibra empresarial & Entel & 13,60 & 544.000 & 604 \\
+  Enlaces LTE, Starlink y SIM & Virgin Empresas, Entel y Starlink & 41,85 & 1.674.031 & 1.860 \\
+  Satélite Iridium SBD de los camiones con frío & Globalsat Chile & 129,55 & 5.181.972 & 5.758 \\
+  Protección de endpoints & CrowdStrike & 97,60 & 3.904.047 & 4.338 \\
+  Gestión de dispositivos & Microsoft Intune, con Claro Cloud Chile & 29,05 & 1.162.044 & 1.291 \\
+  Custodia de respaldos & Servicio externo & 4,96 & 198.413 & 220 \\
+  Mapas, mensajería y pagos & Google Maps Platform, Twilio y Mercado Pago & 25,16 & 1.006.460 & 1.118 \\
+\end{tablalafrox}
+
+Los servicios de la Operación suman 710,69 UF al mes, y la nube representa 368,92 UF de ese monto. La protección de endpoints cubre 217 servidores y estaciones, la gestión de dispositivos cubre los 382 equipos Android del parque, los enlaces incluyen ocho planes LTE de sitio, cinco enlaces Starlink y hasta 198 SIM de terreno al año 3, y el servicio Iridium SBD cubre los 28 camiones con equipo de frío. Durante la implementación, el modelo considera desde el mes 2 una nube de pruebas de 32,03 UF mensuales y desde el mes 4 los enlaces y los servicios externos de los ambientes, por 94,76 y 132,20 UF al mes. Los enlaces de implementación comprenden 13,60 UF de fibra, 7,25 UF de LTE y satélite de los sitios y 73,91 UF del servicio Iridium SBD de la cadena de frío en camiones, que la hoja \texttt{ADQUISICIONES IMPLEMENTACIÓN} valoriza en 3.284,99 USD mensuales.
+
+\subsection{Cronograma de compras}
+\label{sec:e2-adq-cronograma}
+
+El calendario de compras sigue la ruta crítica de la implementación. Todo el equipamiento se paga en el mes 2, con 12.975,08 UF, porque la sala, los servidores, el almacenamiento, los racks y los gabinetes se ordenan en ese mes, se instalan en el mes 3 y la sala se recibe en el mes 4. Así quedan habilitados los ambientes que exige el hito H3 en el mes 6 (Distribuidora Puelche S.A., 2026a, Formulario E-25, pp.~74--75). Las cuentas de nube y sus servicios se habilitan antes de configurar los ambientes, y los enlaces de comunicaciones se contratan antes de H3, con la factibilidad y la conmutación de cada sitio verificadas antes de aceptarlo (LafroX, 2026c, T-14, paquetes 5.2.1 y 5.3.1 a 5.3.3). El montaje de racks y gabinetes sigue el calendario por sitio del T-14, con los gabinetes de cross-docking en el mes 9.
+
+Las compras de terreno a cargo del CLIENTE siguen las olas de implantación. LafroX entrega la especificación en el mes 2 y, para cada orden, diez días hábiles antes de la fecha prevista para emitirla. El acta de recepción técnica cierra cada entrega (paquetes 5.1.1 y 5.1.3). En la cadena de frío, el prototipo se valida antes de la compra masiva, con cuatro kits para el piloto y 28 kits instalados y recibidos antes de la ola de reparto (paquete 5.1.4). La custodia de fuentes se contrata antes de H4, con el primer depósito en el mes 10 (paquete 5.4.4). Si un atraso amenaza H3 o una ola, el Comité Ejecutivo recibe el análisis de impacto.
 
 \subsection{Negociación y contratos críticos}
+\label{sec:e2-adq-negociacion}
 
-Para los equipos de sala y borde, la comparación de ofertas considera conformidad con el T-11, plazo hasta la recepción, garantía, disponibilidad de repuestos y soporte. La conformidad técnica y el acta de recepción sirven de base para aceptar cada suministro. En comunicaciones, la evaluación combina factibilidad por dirección, capacidad sostenida y diversidad efectiva de operadores. El T-11 prevé recurrir a otro operador de red fija distinto de Entel si Telsur carece de factibilidad.
+Para los equipos de sala y de borde, la comparación de ofertas considera la conformidad con el T-11, el plazo hasta la recepción, la garantía, la disponibilidad de repuestos y el soporte. La hoja \texttt{PROVEEDORES} registra más de una cotización en las partidas de mayor valor o de abastecimiento más incierto, como los firewalls de los centros, la climatización, las UPS y las obras, lo que permite negociar precio y plazo con alternativas reales. En comunicaciones, la evaluación combina factibilidad por dirección, capacidad sostenida y diversidad de operadores, y el T-11 prevé recurrir a otro operador de red fija si Telsur carece de factibilidad.
 
-Los contratos de nube, conectividad y licencias son críticos para la disponibilidad de los ambientes y la continuidad del servicio. La comparación de sus condiciones considera unidad de cobro, vigencia, renovación, cobertura, soporte y continuidad al término del servicio. Para la cadena de frío, la evaluación técnica vincula la compra masiva con la homologación y la aceptación del prototipo.
+Los contratos de nube, conectividad y licencias son críticos, porque de ellos dependen los ambientes y la continuidad del servicio. Su comparación considera la unidad de cobro, la vigencia, la renovación, la cobertura, el soporte y la continuidad al término del contrato. Las licencias de terceros se constituyen a nombre del CLIENTE y su costo de renovación queda explícito en la oferta económica (Distribuidora Puelche S.A., 2026a, art.~84.3, p.~43), como muestran las cuotas mensuales de protección de endpoints y de gestión de dispositivos de la Tabla~\ref{tab:e2-adq-servicios}. Para la nube, el modelo incluye el soporte de AWS y una reserva de consumo de 55,05 UF al mes. La custodia de fuentes ante un tercero independiente, con actualización semestral, cumple el artículo 84.6 de las Bases (Distribuidora Puelche S.A., 2026a, art.~84.6, p.~43).
+
+\subsection{Plan de importaciones}
+\label{sec:e2-adq-importaciones}
+
+La hoja \texttt{PROVEEDORES} registra cotizaciones de distribuidores del extranjero para los firewalls FortiGate, con CDW, para la NAS Synology y sus discos, con Walmart Business y Tech-America, y para la climatización de precisión, con Barcode Giant e Insight. El modelo valoriza estas compras en dólares con el tipo de cambio del Formulario E-24 (Distribuidora Puelche S.A., 2026a, Formulario E-24, p.~73) y las paga en el mes 2 junto con el resto del equipamiento. Por eso sus órdenes se emiten primero dentro de ese mes. Para los FortiGate 100F existe además una cotización local con Firewalls Chile, que LafroX usa si el plazo de importación pone en riesgo la recepción de la sala.
 
 \subsection{Decisión de hacer o comprar}
+\label{sec:e2-adq-hacer-comprar}
 
-LafroX conserva el desarrollo de la aplicación, la integración con sistemas y dispositivos, las pruebas de aceptación y la coordinación de la operación. Compra la infraestructura comercial y contrata servicios de nube, comunicaciones, protección de endpoints y gestión de dispositivos. El soporte del fabricante se incorpora como escalamiento especializado bajo la coordinación de LafroX. LafroX instala, integra y mantiene el equipamiento de frío. El T-11 y el Anexo 6.B prevén cotización escrita de un proveedor domiciliado en Chile (LafroX, 2026a, T-11, B-01 a B-15; LafroX, 2026b, Anexo 6.B; LafroX, 2026c, T-14, paquete 5.1.4).
+LafroX conserva el desarrollo de la aplicación, la integración con sistemas y dispositivos, las pruebas de aceptación y la coordinación de la operación, porque son el núcleo de su servicio. Compra la infraestructura comercial y contrata los servicios de nube, comunicaciones, protección de endpoints y gestión de dispositivos, que los proveedores de la Tabla~\ref{tab:e2-adq-servicios} ofrecen como servicio estándar. El soporte del fabricante se incorpora como escalamiento especializado bajo la coordinación de LafroX. LafroX instala, integra y mantiene el equipamiento de frío, aunque el CLIENTE compre la mayor parte de sus componentes (LafroX, 2026a, T-11, B-01 a B-15; LafroX, 2026b, Anexo 6.B; LafroX, 2026c, T-14, paquete 5.1.4). Los proveedores ejecutan las instalaciones de energía, climatización y extinción de incendios de los paquetes 6.1.2 a 6.1.4, y el personal de redes de LafroX ejecuta el montaje y cableado de su alcance (LafroX, 2026b, Formulario T-9).

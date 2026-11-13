@@ -1,3 +1,95 @@
 % !TEX root = ../../LAFROX_AnalisisFinanciero_2.tex
 \section{Análisis comparativo de costos frente a precio}
 \label{sec:e2-costos-precio}
+
+Esta sección compara el costo de la solución con su precio de venta. Primero presenta el cuadro maestro de costos por categoría y luego el precio de venta con el margen aplicado a cada componente, como pide el apartado 2.1 del Formulario E-21 (Distribuidora Puelche S.A., 2026a, Formulario E-21, p.~71). Todas las cifras provienen del modelo financiero (LafroX, 2026f), porque los tres entregables de la oferta económica deben presentar valores idénticos (Distribuidora Puelche S.A., 2026a, art.~51.4, p.~30).
+
+Los montos son netos, sin IVA, y se expresan en UF, CLP y USD con los valores del Formulario E-24: la UF a \$40.000 y el dólar a \$900, por lo que una UF equivale a 44,44 dólares (Distribuidora Puelche S.A., 2026a, Formulario E-24, p.~73). Los montos en CLP y USD se redondean a la unidad.
+
+\subsection{Cuadro maestro de costos}
+\label{sec:e2-cuadro-costos}
+
+El costo total del proyecto es de 220.875,90 UF en los 56 meses del contrato. El modelo imputa a la implementación los costos de los meses 1 a 20 y a la operación los de los meses 21 a 56, que son los 36 meses de servicio del artículo 17 (Distribuidora Puelche S.A., 2026a, art.~17, pp.~12--13). La Tabla~\ref{tab:e2-costos-maestro} separa, en cada fase, los costos directos de los costos indirectos y de estructura.
+
+% En esta tabla los filetes no admiten corte de página: solo se puede partir antes de un grupo.
+{\renewcommand{\LFXfiletefila}{\noalign{{\color{lafroxLinea}\hrule height 0.3pt}\nobreak}}%
+\begin{tablalafrox}{Cuadro maestro de costos por fase y categoría, en UF. Las sumas pueden diferir en la última cifra por redondeo. Fuente: modelo financiero, hojas COSTOS y RESUMEN.}{tab:e2-costos-maestro}{Y R{3.0cm} R{3.0cm}}
+  {\cab{Categoría} & \cab{Implementación} & \cab{Operación}}
+  \textbf{Costos directos} & & \\
+  Recursos humanos & 63.685,07 & 99.271,08 \\
+  Capacitación, mentoría y certificación & 1.387,35 & 1.933,53 \\
+  Infraestructura y equipamiento & 12.975,08 & 671,66 \\
+  Servicios de proveedores & 4.472,14 & 25.623,76 \\
+  \noalign{\penalty0}\textbf{Costos indirectos y overhead} & & \\
+  Gastos administrativos & 3.592,47 & 6.226,97 \\
+  Reservas de riesgo & 722,58 & 314,21 \\
+  \midrule
+  \textbf{Total} & \textbf{86.834,70} & \textbf{134.041,20} \\
+\end{tablalafrox}}
+
+Los recursos humanos son la mayor partida en las dos fases. Las 218.403,03 HH de los perfiles del Formulario T-15 (LafroX, 2026c, T-15) cuestan 166.277,02 UF. De ese monto, 3.320,88 UF corresponden a las horas de capacitación, mentoría y certificación, que el modelo informa en una categoría propia. Cada hora se valoriza con el costo de su perfil, dentro del rango del Formulario E-26 para su categoría (Distribuidora Puelche S.A., 2026a, Formulario E-26, p.~76).
+
+La operación cuesta 134.041,20 UF, más que la implementación. Además del personal de mesa de ayuda, NOC y SOC durante 36 meses, incluye 25.623,76 UF de servicios de proveedores: la nube, los enlaces de comunicaciones, el servicio satelital de los camiones con frío, las licencias y los servicios externos de mapas y mensajería. En la implementación, la partida de infraestructura y equipamiento (12.975,08 UF) reúne los equipos de red, de seguridad y de borde y las obras civiles y de montaje de la sala técnica, que provee LafroX (Distribuidora Puelche S.A., 2026a, art.~14.2, p.~10). Los equipos de terreno que compra el CLIENTE no forman parte del costo ni del flujo de caja. Su especificación y su costo estimado se informan en la hoja \texttt{HARDWARE DEL CLIENTE} del modelo.
+
+Los costos indirectos reúnen los gastos administrativos, que suman 9.819,44 UF, y las reservas de riesgo, que suman 1.036,79 UF. Las reservas valorizan las horas de prevención, de contingencia específica y de la reserva de gestión del plan de riesgos (LafroX, 2026e, Anexo 8.H). La Tabla~\ref{tab:e2-gastos-adm} desglosa los gastos administrativos.
+
+\begin{tablalafrox}{Composición de los gastos administrativos en UF, CLP y USD. Fuente: modelo financiero, hoja GASTOS ADMINISTRATIVOS.}{tab:e2-gastos-adm}{Y R{2.3cm} R{3.0cm} R{2.4cm}}
+  {\cab{Gasto} & \cab{UF} & \cab{CLP} & \cab{USD}}
+  Overhead de la empresa & 6.048,00 & 241.920.000 & 268.800 \\
+  Garantías & 1.423,86 & 56.954.518 & 63.283 \\
+  Seguros & 2.179,33 & 87.173.129 & 96.859 \\
+  Gastos notariales y de contratación & 5,30 & 212.000 & 236 \\
+  Custodia de fuentes ante terceros & 162,95 & 6.517.875 & 7.242 \\
+  \midrule
+  \textbf{Total} & \textbf{9.819,44} & \textbf{392.777.522} & \textbf{436.419} \\
+\end{tablalafrox}
+
+El modelo asigna 3.592,47 UF de estos gastos a la implementación y 6.226,97 UF a la operación, según el mes en que se paga cada uno. El overhead es la mayor partida, con 108 UF mensuales durante los 56 meses: el 25\,\% de la gerencia general, la administración y finanzas completa, el 50\,\% del servicio externo de contabilidad y el 30\,\% de la asesoría legal. Las garantías corresponden al costo financiero de las boletas de seriedad de la oferta, de fiel cumplimiento y de correcto funcionamiento, y los seguros cubren la responsabilidad civil, el ciberriesgo y los equipos instalados en los sitios del CLIENTE (Distribuidora Puelche S.A., 2026a, arts.~35 a 38, pp.~23--24). Los gastos notariales corresponden a la firma del contrato en la notaría que designa el CLIENTE, que es de cargo del adjudicatario (Distribuidora Puelche S.A., 2026a, art.~68, p.~36), y la custodia de fuentes cubre el depósito ante un tercero independiente que exige el artículo 84.6 (Distribuidora Puelche S.A., 2026a, art.~84.6, p.~43). Los intereses del financiamiento no se incluyen aquí, porque se registran en el financiamiento y en el flujo de caja financiado de la sección~\ref{sec:e2-curva-s}.
+
+El Resumen del modelo agrupa estas categorías en seis líneas. Los recursos humanos de implementación incluyen sus reservas de riesgo, y los de soporte incluyen sus reservas y la capacitación de la operación. Las líneas de servicios incluyen los gastos administrativos de cada fase, y la de soporte suma además la infraestructura de la operación. La Tabla~\ref{tab:e2-costos-monedas} presenta el costo de cada línea en las tres monedas.
+
+\begin{tablalafrox}{Costo por línea del Resumen en UF, CLP y USD. Las sumas pueden diferir en la última cifra por redondeo. Fuente: modelo financiero, hoja RESUMEN.}{tab:e2-costos-monedas}{Y R{2.3cm} R{3.0cm} R{2.4cm}}
+  {\cab{Línea} & \cab{UF} & \cab{CLP} & \cab{USD}}
+  Implementación recursos humanos & 64.407,65 & 2.576.306.000 & 2.862.562 \\
+  Implementación adquisiciones & 12.975,08 & 519.003.390 & 576.670 \\
+  Implementación capacitaciones & 1.387,35 & 55.494.180 & 61.660 \\
+  Implementación servicios & 8.064,61 & 322.584.506 & 358.427 \\
+  \textbf{Total implementación} & \textbf{86.834,70} & \textbf{3.473.388.077} & \textbf{3.859.320} \\
+  Soporte recursos humanos & 101.518,81 & 4.060.752.460 & 4.511.947 \\
+  Soporte servicios & 32.522,39 & 1.300.895.581 & 1.445.440 \\
+  \textbf{Total soporte} & \textbf{134.041,20} & \textbf{5.361.648.041} & \textbf{5.957.387} \\
+  \midrule
+  \textbf{Total del proyecto} & \textbf{220.875,90} & \textbf{8.835.036.118} & \textbf{9.816.707} \\
+\end{tablalafrox}
+
+\subsection{Precio de venta y márgenes por componente}
+\label{sec:e2-precio-margenes}
+
+El precio se forma aplicando un recargo sobre el costo de cada componente. Las horas de los perfiles se venden a una tarifa igual a su costo por hora multiplicado por 1,20. Cuando ese resultado queda bajo la tarifa mínima del Formulario E-26 para la categoría del perfil, se cobra la tarifa mínima (Distribuidora Puelche S.A., 2026a, Formulario E-26, p.~76). Así ocurre con siete perfiles: el Líder de Datos, el Líder de Calidad y Pruebas, el Encargado de Seguridad de la Información y los ingenieros senior y junior de Datos y Bases y de DevOps y Plataforma. Las horas de capacitación, mentoría y certificación se venden a la misma tarifa de su perfil. Las adquisiciones, los servicios de proveedores y los gastos administrativos llevan un recargo de 10\,\%, porque son compras a terceros y costos de estructura, no trabajo propio de LafroX. Las reservas de riesgo se trasladan al precio a costo, sin recargo. La Tabla~\ref{tab:e2-precio-monedas} presenta el precio de cada línea del Resumen, comparable línea a línea con la Tabla~\ref{tab:e2-costos-monedas}.
+
+\begin{tablalafrox}{Precio de venta por línea del Resumen en UF, CLP y USD. Las sumas pueden diferir en la última cifra por redondeo. Fuente: modelo financiero, hojas INGRESOS y RESUMEN.}{tab:e2-precio-monedas}{Y R{2.3cm} R{3.0cm} R{2.4cm}}
+  {\cab{Línea} & \cab{UF} & \cab{CLP} & \cab{USD}}
+  Implementación recursos humanos & 77.821,58 & 3.112.863.084 & 3.458.737 \\
+  Implementación adquisiciones & 14.272,59 & 570.903.729 & 634.337 \\
+  Implementación capacitaciones & 1.664,83 & 66.593.016 & 73.992 \\
+  Implementación servicios & 8.871,07 & 354.842.957 & 394.270 \\
+  \textbf{Total implementación} & \textbf{102.630,07} & \textbf{4.105.202.786} & \textbf{4.561.336} \\
+  Soporte recursos humanos & 122.024,88 & 4.880.995.328 & 5.423.328 \\
+  Soporte servicios & 35.774,63 & 1.430.985.139 & 1.589.983 \\
+  \textbf{Total soporte} & \textbf{157.799,51} & \textbf{6.311.980.467} & \textbf{7.013.312} \\
+  \midrule
+  \textbf{Precio neto del proyecto} & \textbf{260.429,58} & \textbf{10.417.183.253} & \textbf{11.574.648} \\
+\end{tablalafrox}
+
+El precio neto del proyecto es de 260.429,58 UF, equivalentes a \$10.417.183.253 o USD~11.574.648. El precio de implementación es la base de los doce hitos de pago del Formulario E-25, y el precio de operación se factura en 36 cuotas mensuales de 4.383,32 UF (Distribuidora Puelche S.A., 2026a, Formulario E-25, pp.~74--75). La Tabla~\ref{tab:e2-margen} muestra el margen que deja cada fase.
+
+\begin{tablalafrox}{Margen y rentabilidad del proyecto en UF, CLP y USD. Fuente: modelo financiero, hoja RESUMEN.}{tab:e2-margen}{Y R{2.3cm} R{3.0cm} R{2.4cm}}
+  {\cab{Concepto} & \cab{UF} & \cab{CLP} & \cab{USD}}
+  Margen de implementación & 15.795,37 & 631.814.710 & 702.016 \\
+  Margen de soporte & 23.758,31 & 950.332.426 & 1.055.925 \\
+  \textbf{Margen del proyecto} & \textbf{39.553,68} & \textbf{1.582.147.136} & \textbf{1.757.941} \\
+  \midrule
+  Rentabilidad sobre el precio & 15,19\,\% & 15,19\,\% & 15,19\,\% \\
+\end{tablalafrox}
+
+Las dos fases cubren sus propios costos y dejan margen. El margen total es de 39.553,68 UF. Medido como EBITDA sobre los ingresos netos, la rentabilidad del proyecto es de 15,19\,\%, bajo el máximo de 20\,\% del Formulario E-24 (Distribuidora Puelche S.A., 2026a, Formulario E-24, p.~73). Sobre estos precios netos se aplica el IVA de 19\,\% del mismo formulario al facturar cada hito y cada cuota. La sección~\ref{sec:e2-evaluacion} evalúa el flujo de caja que generan estos ingresos.

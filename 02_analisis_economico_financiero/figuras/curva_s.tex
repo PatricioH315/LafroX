@@ -1,0 +1,26 @@
+% !TEX root = ../../LAFROX_AnalisisFinanciero_2.tex
+% Curva S del modelo financiero: cobros y pagos acumulados, en miles de UF, meses 1 a 56.
+\begin{tikzpicture}
+\begin{axis}[
+  width=\textwidth, height=0.52\textwidth,
+  font=\fontsize{9pt}{11pt}\selectfont,
+  xmin=0, xmax=57, ymin=0, ymax=295,
+  xtick={1,4,8,12,16,20,24,28,32,36,40,44,48,52,56},
+  ytick={0,50,100,150,200,250},
+  xlabel={Mes del contrato}, ylabel={Miles de UF},
+  axis lines*=left, tick align=outside,
+  tick label style={/pgf/number format/use comma,/pgf/number format/1000 sep={.}},
+  ymajorgrids, grid style={lafroxTenue},
+  legend style={at={(0.5,-0.22)},anchor=north,draw=none,legend columns=2,
+    /tikz/every even column/.append style={column sep=10pt}},
+  legend cell align=left,
+]
+\draw[lafroxGris,dashed,thin] (axis cs:20.5,0) -- (axis cs:20.5,295);
+\node[anchor=north east,lafroxGris,font=\fontsize{9pt}{11pt}\selectfont] at (axis cs:20.2,287) {Implementación};
+\node[anchor=north west,lafroxGris,font=\fontsize{9pt}{11pt}\selectfont] at (axis cs:20.8,287) {Operación};
+\addplot[lafroxNaranja,thick,mark=none] coordinates {(1,18.000) (2,26.210) (3,26.210) (4,33.395) (5,33.395) (6,43.658) (7,43.658) (8,43.658) (9,43.658) (10,53.921) (11,53.921) (12,64.184) (13,69.315) (14,74.447) (15,74.447) (16,84.710) (17,94.973) (18,105.236) (19,110.367) (20,110.367) (21,125.013) (22,129.397) (23,133.780) (24,138.163) (25,142.547) (26,146.930) (27,151.313) (28,155.697) (29,160.080) (30,164.463) (31,168.847) (32,173.230) (33,177.613) (34,181.997) (35,186.380) (36,190.763) (37,195.147) (38,199.530) (39,203.913) (40,208.296) (41,212.680) (42,217.063) (43,221.446) (44,225.830) (45,230.213) (46,234.596) (47,238.980) (48,243.363) (49,247.746) (50,252.130) (51,256.513) (52,260.896) (53,265.280) (54,269.663) (55,274.046) (56,278.430)};
+\addlegendentry{Cobros acumulados}
+\addplot[lafroxFuerte,thick,mark=none] coordinates {(1,2.021) (2,17.925) (3,20.471) (4,23.712) (5,29.309) (6,33.681) (7,37.925) (8,40.692) (9,43.243) (10,45.637) (11,47.809) (12,49.319) (13,54.218) (14,59.050) (15,63.926) (16,70.049) (17,75.402) (18,79.798) (19,85.853) (20,91.998) (21,97.722) (22,102.686) (23,106.850) (24,110.836) (25,115.548) (26,119.869) (27,124.090) (28,128.402) (29,132.640) (30,136.910) (31,141.208) (32,145.607) (33,149.969) (34,154.237) (35,158.719) (36,163.042) (37,167.723) (38,171.977) (39,176.246) (40,179.880) (41,183.403) (42,187.031) (43,190.677) (44,194.405) (45,198.047) (46,201.612) (47,205.433) (48,209.084) (49,213.361) (50,216.947) (51,220.509) (52,224.150) (53,227.645) (54,231.310) (55,234.926) (56,238.766)};
+\addlegendentry{Pagos acumulados}
+\end{axis}
+\end{tikzpicture}

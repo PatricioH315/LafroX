@@ -2,29 +2,111 @@
 \section{Modelo de costos operacionales}
 \label{sec:e2-costos-operacionales}
 
-La operación cubre los meses 21 a 56 (Distribuidora Puelche S.A., 2026a, art.~17). El costo se asigna según el consumo de cada servicio y el esfuerzo programado en la EDT.
+La Operación comprende los 36 meses del período 21 a 56 del contrato (Distribuidora Puelche S.A., 2026a, art.~17). Su costo es de 134.041,20 UF, equivalente a \$5.361.648.041 o USD~5.957.387, sin IVA. Esta sección explica cómo se forma ese costo y qué recursos lo originan, como pide el apartado 2.5 del Formulario E-21: personas, infraestructura y alojamiento, licencias, conectividad, energía e instalaciones, seguros y garantías, y optimizaciones durante el servicio (Distribuidora Puelche S.A., 2026a, Formulario E-21, p.~71).
 
-\subsection{Recursos y unidades de costeo}
+Las cifras corresponden a las hojas \texttt{COSTOS}, \texttt{ADQUISICIONES OPERACION}, \texttt{GASTOS ADMINISTRATIVOS} y \texttt{COSTOS HH - SUELDOS} del modelo financiero (LafroX, 2026f). Las cantidades y las ventanas de servicio provienen del T-11, de las cuentas 8.1, 8.2, 8.4 y 8.5 del T-14 y de los perfiles del T-15 (LafroX, 2026a, 2026c). El costo medio de la Operación es de 3.723,37 UF por mes, y la mensualidad que paga el CLIENTE es de 4.383,32 UF, según la formación de precio de la sección~\ref{sec:e2-costos-precio}.
 
-La Tabla~\ref{tab:e2-costos-operacionales} distingue el consumo medido, la cobertura contratada y las intervenciones que se valorizan por actividad (LafroX, 2026a, T-11; LafroX, 2026c, T-14, cuentas 8.1, 8.2 y 8.4, y T-15).
+\subsection{Composición del presupuesto y reglas de imputación}
+\label{sec:e2-op-presupuesto}
 
-\begin{tablalafrox}{Base técnica del costeo operacional. Fuente: SD4 y T-11, T-14 cuentas 8.1, 8.2, 8.4 y 8.5, y T-15.}{tab:e2-costos-operacionales}{F{0.25} F{0.38} F{0.37}}{\textbf{Rubro} & \textbf{Unidad de costeo} & \textbf{Registro de respaldo}}
-Recursos humanos & HH por perfil y puesto de cobertura & T-15 y ventanas de servicio \\
-Infraestructura y alojamiento & Consumo por ambiente e intervención en sitio & Medición de nube e inventario de infraestructura \\
-Licencias y suscripciones & Dispositivo o instancia por período & Inventario de dispositivos y registro de licencias \\
-Conectividad & Enlace activo por sitio y período & Contratos de fibra, LTE y satélite \\
-Energía e instalaciones & Energía consumida e intervención programada & Dimensionamiento eléctrico y registro de mantención \\
-Seguros y garantías & Prima por póliza y costo por garantía vigente & Pólizas e instrumentos de garantía \\
+La Tabla~\ref{tab:e2-op-presupuesto} concilia el presupuesto operacional con el total de soporte de la hoja \texttt{RESUMEN}. Incluye los desembolsos de los meses 21 a 56. Las compras pagadas durante la implementación no se vuelven a cargar a la Operación.
+
+\begin{tablalafrox}{Costo de Operación de los meses 21 a 56, neto de IVA. Fuente: modelo financiero, hojas COSTOS y RESUMEN.}{tab:e2-op-presupuesto}{Y R{2.2cm} R{3.0cm} R{2.4cm}}
+  {\cab{Categoría} & \cab{UF} & \cab{CLP} & \cab{USD}}
+  Recursos humanos & 99.271,08 & 3.970.843.040 & 4.412.048 \\
+  Capacitación, mentoría y certificación & 1.933,53 & 77.341.020 & 85.934 \\
+  Infraestructura y equipamiento & 671,66 & 26.866.393 & 29.852 \\
+  Servicios de proveedores & 25.623,76 & 1.024.950.443 & 1.138.834 \\
+  Gastos administrativos & 6.226,97 & 249.078.744 & 276.754 \\
+  Reservas de riesgo & 314,21 & 12.568.400 & 13.965 \\
+  \midrule
+  \textbf{Total de Operación} & \textbf{134.041,20} & \textbf{5.361.648.041} & \textbf{5.957.387} \\
 \end{tablalafrox}
 
-Los enlaces y suscripciones se imputan según su vigencia. Las reposiciones se asignan al mes de adquisición y la nube se costea por consumo medido. Las primas de seguro y el costo de constituir y mantener las garantías se identifican por separado (Distribuidora Puelche S.A., 2026a, arts.~35 a 38).
+El costo mensual no es uniforme. Las remuneraciones varían según las HH programadas, las reposiciones de equipos se pagan en el mes 21 y las garantías, los seguros y la custodia de fuentes tienen vencimientos anuales, como muestra el flujo mensual de la sección~\ref{sec:e2-curva-s}. Los intereses y la devolución del crédito se registran en el financiamiento y no forman parte de este costo.
 
-El T-15 asigna las HH por partida, perfil y ventana de ejecución. Por fase de valorización, la implementación comprende 90.048,83 HH de perfiles y 864 HH de servicios especializados, para un total de 90.912,83 HH. Operación y reversibilidad comprenden 128.354,20 HH de perfiles y 460,80 HH de servicios especializados, para un total de 128.815 HH. Los servicios especializados se valorizan por resultado. La distribución mensual toma las ventanas de las partidas y se concilia con el resumen por mes calendario del T-15, que mantiene el total de 219.727,83 HH (LafroX, 2026c, T-15, secciones 4.3 y 6.3).
+Cada costo se imputa una sola vez: las HH de capacitación se presentan separadas de las HH del servicio, el consumo de nube de las innovaciones forma parte de los servicios de proveedores y las garantías y los seguros forman parte de los gastos administrativos.
 
-\subsection{Seguimiento y optimización}
+\subsection{Recursos humanos y cobertura del servicio}
+\label{sec:e2-op-personas}
 
-La conectividad fija y móvil de los sitios se imputa por enlace o plan activo. En los camiones con frío, las SIM M2M y el servicio satelital se identifican como servicios de comunicación distintos de la compra de los dispositivos. La custodia contractual de fuentes se respalda con el contrato y las constancias de depósito. El almacenamiento y respaldo operativo se miden por el consumo de la plataforma (LafroX, 2026a, T-11; LafroX, 2026b, Anexo 6.B; LafroX, 2026c, T-14, paquete 8.4.4).
+El costo mensual de cada perfil es el producto de sus HH del mes por su costo en UF/HH, que corresponde a su categoría del Formulario E-26 (Distribuidora Puelche S.A., 2026a, Formulario E-26, p.~76). La hoja \texttt{COSTOS} expresa la dotación de cada mes en personas equivalentes y la convierte a HH con la base de 160 HH por mes de la hoja \texttt{PARAMETROS}. Los meses 21 a 56 reúnen 128.286,85 HH de perfiles, sin las HH de capacitación, por 99.271,08 UF. La Tabla~\ref{tab:e2-op-personas} separa la cobertura de mesa, NOC y SOC del resto del equipo.
 
-El T-11 dimensiona la red inalámbrica con 65 puntos de acceso activos, siete de reserva y dos controladores. Para Microsoft Intune, el parque previsto es de 382 equipos al inicio y 433 en el año 3, incluidas las reservas. El dimensionamiento del parque y la cobertura de la suscripción se contrastan con las condiciones de contratación para determinar el costo (LafroX, 2026a, T-11, D-02 y N-13).
+\begin{tablalafrox}{Esfuerzo y costo de los perfiles en los meses 21 a 56. Fuente: modelo financiero, hoja COSTOS.}{tab:e2-op-personas}{Y R{2.0cm} R{2.0cm} R{2.9cm} R{2.2cm}}
+  {\cab{Equipo} & \cab{HH} & \cab{UF} & \cab{CLP} & \cab{USD}}
+  Mesa N1 & 54.239,00 & 43.391,20 & 1.735.648.000 & 1.928.498 \\
+  NOC & 26.280,00 & 21.024,00 & 840.960.000 & 934.400 \\
+  SOC & 26.280,00 & 18.396,00 & 735.840.000 & 817.600 \\
+  Otros perfiles & 21.487,85 & 16.459,88 & 658.395.040 & 731.550 \\
+  \midrule
+  \textbf{Total sin capacitación} & \textbf{128.286,85} & \textbf{99.271,08} & \textbf{3.970.843.040} & \textbf{4.412.048} \\
+\end{tablalafrox}
 
-El informe mensual de consumo de nube (8.4.2) desglosa los servicios utilizados y explica desviaciones respecto del presupuesto. La proyección trimestral de capacidad (8.4.1) compara el consumo observado con la base contratada y estima el efecto de cambios en infraestructura, nube, licencias y enlaces. El CLIENTE decide sobre el redimensionamiento antes de ejecutarlo. El plan de ciclo de vida (8.2.7) programa las reposiciones y registra la disposición de los equipos retirados.
+Las personas representan el 74,06\,\% del costo de la Operación. Mesa N1, NOC y SOC concentran 82.811,20 UF, y el resto de los perfiles suma 16.459,88 UF para la coordinación, el mantenimiento, la integración, los datos, la calidad, la seguridad y el apoyo en terreno. Estas horas se imputan según la actividad programada en el T-15, sin suponer un puesto completo por perfil.
+
+La mesa N1 atiende de 04:00 a 22:00 y amplía a 24×7 en septiembre y diciembre, el NOC mantiene cobertura 24×7 y el SOC opera desde el mes 13. Esta sección incluye solo el esfuerzo de los meses 21 a 56; las horas anteriores del SOC forman parte de la implementación. La capacitación, mentoría y certificación agrega 1.933,53 UF en una línea propia, y las reservas de riesgo agregan 314,21 UF sin recargo (LafroX, 2026c, T-15; 2026e, Anexo 8.H).
+
+\subsection{Infraestructura, alojamiento y servicios recurrentes}
+\label{sec:e2-op-infraestructura}
+
+Los servicios de la plataforma se valorizan por consumo o por unidad contratada: la nube según la estimación mensual de la arquitectura, las licencias por equipo protegido o administrado y los enlaces por conexión o plan activo. La Tabla~\ref{tab:e2-op-servicios} muestra el costo mensual de cada servicio y su total en los 36 meses.
+
+\begin{tablalafrox}{Servicios recurrentes: costo mensual y total en los 36 meses de Operación. Fuente: modelo financiero, hojas ADQUISICIONES OPERACION, INNOVACIONES y COSTOS.}{tab:e2-op-servicios}{Y R{1.6cm} R{2.0cm} R{2.7cm} R{2.1cm}}
+  {\cab{Servicio} & \cab{UF/mes} & \cab{UF total} & \cab{CLP total} & \cab{USD total}}
+  Nube AWS & 368,92 & 13.280,97 & 531.238.855 & 590.265 \\
+  Fibra empresarial & 13,60 & 489,60 & 19.584.000 & 21.760 \\
+  LTE, Starlink y SIM & 41,85 & 1.506,63 & 60.265.107 & 66.961 \\
+  Satélite Iridium SBD & 129,55 & 4.663,77 & 186.550.983 & 207.279 \\
+  Protección de endpoints & 97,60 & 3.513,64 & 140.545.692 & 156.162 \\
+  Microsoft Intune & 29,05 & 1.045,84 & 41.833.584 & 46.482 \\
+  Custodia de respaldos & 4,96 & 178,57 & 7.142.857 & 7.937 \\
+  Mapas, mensajería y pagos & 25,16 & 905,81 & 36.232.560 & 40.258 \\
+  Nube de las innovaciones & Variable & 38,92 & 1.556.805 & 1.730 \\
+  \midrule
+  \textbf{Total proveedores} & \textbf{---} & \textbf{25.623,76} & \textbf{1.024.950.443} & \textbf{1.138.834} \\
+\end{tablalafrox}
+
+La nube AWS suma 13.280,97 UF durante la Operación. Comprende contenedores, Aurora y DMS, almacenamiento y respaldos, red y VPN, seguridad y observabilidad, datos e IoT, analítica, acceso, recuperación ante desastres y entrega continua. Las 368,92 UF mensuales incluyen 55,05 UF de soporte de AWS y de reserva de consumo. La nube de las innovaciones agrega 38,92 UF en este período, que la sección~\ref{sec:e2-inn-costos} detalla por innovación.
+
+La infraestructura y el equipamiento de la Operación suman 671,66 UF, equivalentes a \$26.866.393 o USD~29.852, y se pagan en el mes 21: 382,33 UF de reposición de equipos de red y oficina, 257,33 UF de seguridad y 32,00 UF de adecuación eléctrica y puntos de red. Los equipos de terreno que compra el CLIENTE se informan en la hoja \texttt{HARDWARE DEL CLIENTE}, fuera del flujo de LafroX. Su instalación, integración y mantención, que ejecuta LafroX, se costean con las horas de sus perfiles (Distribuidora Puelche S.A., 2026a, art.~14.2, p.~10).
+
+\subsection{Licencias, conectividad, energía e instalaciones}
+\label{sec:e2-op-licencias}
+
+La protección de endpoints se calcula sobre 217 servidores y estaciones a 19,99 USD por equipo y mes, equivalentes a 97,60 UF mensuales. La gestión de los equipos Android usa Microsoft Intune Plan 1 Device, con Claro Cloud Chile como proveedor de referencia: 382 equipos a 3,38 USD por equipo y mes, equivalentes a 29,05 UF mensuales. Ambas licencias se constituyen a nombre del CLIENTE y su renovación queda incluida en el costo mensual (Distribuidora Puelche S.A., 2026a, art.~84.3, p.~43).
+
+La conectividad considera dos enlaces de fibra, a 6,80 UF por enlace y mes, y un conjunto de ocho planes LTE de sitio, cinco enlaces Starlink y hasta 198 SIM de terreno al año 3, que cuesta 41,85 UF mensuales. El servicio satelital Iridium SBD de los 28 camiones con equipo de frío cuesta 129,55 UF mensuales y transmite temperaturas y alarmas en paralelo con la red móvil (LafroX, 2026a, Formulario T-11). Los terminales se compran por separado, de modo que estas cuotas corresponden solo al servicio. Mapas, mensajería y pagos agregan 25,16 UF mensuales, y la custodia externa de respaldos, 4,96 UF mensuales. Esta custodia es distinta del depósito de código fuente, que forma parte de los gastos administrativos.
+
+En energía e instalaciones, la oferta incluye la infraestructura eléctrica y de climatización que se compra en la implementación (UPS, generador, climatización de precisión y obras de la sala), los 32,00 UF de adecuación eléctrica y puntos de red del mes 21 y las horas de mantenimiento de los paquetes 8.2.3 y 8.2.6, que se costean como recursos humanos. El consumo eléctrico de la sala técnica y de los gabinetes de borde se abastece desde el empalme de cada recinto del CLIENTE, por lo que no forma parte del costo de LafroX. La carga eléctrica proyectada y el PUE que declara el Subdocumento 4 permiten al CLIENTE estimar ese consumo (LafroX, 2026a; Distribuidora Puelche S.A., 2026b, cap.~6, RT-06.11, p.~15).
+
+\subsection{Seguros, garantías y costos de estructura}
+\label{sec:e2-op-administrativos}
+
+Los gastos administrativos de la Operación suman 6.226,97 UF y se desglosan en la Tabla~\ref{tab:e2-op-administrativos}. Cada gasto se asigna al mes en que se paga, sin aplicar un porcentaje general sobre los costos directos.
+
+\begin{tablalafrox}{Gastos administrativos de la Operación, meses 21 a 56. Fuente: modelo financiero, hoja GASTOS ADMINISTRATIVOS.}{tab:e2-op-administrativos}{Y R{2.2cm} R{3.0cm} R{2.4cm}}
+  {\cab{Concepto} & \cab{UF} & \cab{CLP} & \cab{USD}}
+  Overhead & 3.888,00 & 155.520.000 & 172.800 \\
+  Garantías & 927,63 & 37.105.203 & 41.228 \\
+  Seguros & 1.306,67 & 52.266.667 & 58.074 \\
+  Custodia de fuentes & 104,67 & 4.186.875 & 4.652 \\
+  \midrule
+  \textbf{Total administrativo} & \textbf{6.226,97} & \textbf{249.078.744} & \textbf{276.754} \\
+\end{tablalafrox}
+
+El overhead es de 108 UF mensuales: 37,50 UF de gerencia general, 45,00 UF de administración y finanzas, 15,00 UF de contabilidad y 10,50 UF de asesoría legal. Los gastos notariales se pagan en el mes 1, por lo que no aparecen en este período.
+
+Las garantías de la Operación comprenden 825,00 UF de comisiones de la boleta de fiel cumplimiento y 102,63 UF de la de correcto funcionamiento. El modelo registra el costo financiero de cada boleta, con una comisión de 1\,\% anual, y no su monto garantizado. La garantía de correcto funcionamiento se calcula sobre el 5\,\% del precio de implementación, con dos años de vigencia (Distribuidora Puelche S.A., 2026a, arts.~35 a 37, pp.~23--24).
+
+Los seguros de la Operación suman 1.306,67 UF: 426,67 UF de responsabilidad civil general y profesional y 880,00 UF de ciberriesgo y responsabilidad por datos. Las primas se calculan sobre límites asegurados de 20.000 UF, con tasas anuales de 0,8\,\% y 1,2\,\%. El seguro de los equipos se paga durante la implementación y no agrega primas en este período (Distribuidora Puelche S.A., 2026a, art.~38, p.~24).
+
+La custodia de fuentes agrega 104,67 UF durante la Operación, por las cuotas anuales del depósito ante un tercero independiente (Distribuidora Puelche S.A., 2026a, art.~84.6, p.~43).
+
+\subsection{Seguimiento y optimizaciones durante la Operación}
+\label{sec:e2-op-optimizacion}
+
+El presupuesto es la línea base para controlar el consumo y la capacidad. El informe mensual de nube del paquete 8.4.2 compara el consumo real, las unidades facturadas y el presupuesto, y la proyección trimestral de capacidad del paquete 8.4.1 anticipa los cambios en infraestructura, licencias y enlaces. Los ajustes se someten al CLIENTE antes de ejecutarse (LafroX, 2026c, T-14, cuenta 8.4).
+
+En nube, se revisan el tamaño de los contenedores y de las bases de datos, el apagado programado de los ambientes no productivos, los períodos de retención y las tareas de cómputo por demanda, sin reducir los niveles de servicio, el respaldo ni la recuperación comprometidos. En licencias y conectividad, se concilian las altas y bajas con el inventario y se programan los aumentos de parque. En terreno, el mantenimiento preventivo y el plan de ciclo de vida del paquete 8.2.7 evitan reposiciones urgentes.
+
+El escenario base no descuenta ahorros por estas medidas: el modelo mantiene las tarifas y los consumos presupuestados, y cualquier ahorro se refleja solo cuando el CLIENTE aprueba el cambio que lo produce. La reducción de deuda técnica y la mejora continua se ejecutan con las horas ya programadas, cuyo costeo presenta la sección~\ref{sec:e2-mantencion}.
