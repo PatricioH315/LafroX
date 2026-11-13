@@ -2,32 +2,32 @@
 \section{Estructura de mantención y soporte}
 \label{sec:e2-mantencion}
 
-El soporte de la Operación cuesta 99.271,08 UF en personas, y el 83\,\% de ese monto corresponde a los puestos fijos de mesa, NOC y SOC. El resto paga a los especialistas que hacen la mantención preventiva, correctiva y evolutiva. Las horas vienen de las cuentas 8.1 y 8.2 del T-14 y del T-15 (LafroX, 2026c), y los montos de la hoja \texttt{COSTOS} (LafroX, 2026f). Estos costos ya están dentro del costo de Operación de la sección~\ref{sec:e2-costos-operacionales}.
+El soporte de la Operación cuesta 74.273,19 UF en personas, y el 78\,\% de ese monto corresponde a la mesa, el NOC y el SOC. El resto paga a los especialistas que hacen la mantención preventiva, correctiva y evolutiva. Las horas vienen de las cuentas 8.1 y 8.2 del T-14 y del T-15 (LafroX, 2026c), y los montos de la hoja \texttt{COSTOS} (LafroX, 2026f). Estos costos ya están dentro del costo de Operación de la sección~\ref{sec:e2-costos-operacionales}.
 
 \subsection{Modelo de costeo}
 \label{sec:e2-mant-modelo}
 
-Mesa, NOC y SOC se pagan por puesto y horario de atención, haya o no incidentes. Los especialistas de infraestructura, aplicación y seguridad se pagan por las horas que el T-15 asigna a cada paquete de mantención. En los dos casos la hora vale el costo de su perfil según el Formulario E-26.
+La mesa y el SOC se pagan por puesto y horario de atención, haya o no incidentes, y el NOC por la dedicación declarada de su puesto compartido. Los especialistas de infraestructura, aplicación y seguridad se pagan por las horas que el T-15 asigna a cada paquete de mantención. En los dos casos la hora vale el costo de su perfil según el Formulario E-26.
 
 Cada ticket registra el diagnóstico, lo que se hizo, el responsable y el resultado, y el informe mensual de niveles de servicio cierra las horas del mes. Cuando un especialista tiene que ir a terreno, su traslado ya está incluido en la oferta (Distribuidora Puelche S.A., 2026b, RT-21.16).
 
 \subsection{Recursos dedicados y compartidos}
 \label{sec:e2-mant-recursos}
 
-Los recursos dedicados son los puestos de mesa N1, NOC y SOC. La mesa N1 atiende de 04:00 a 22:00, y las 24 horas en septiembre y diciembre; el NOC funciona 24×7, y el SOC, que LafroX opera desde su centro de Valparaíso, también funciona 24×7 desde el mes 13 (LafroX, 2026b; 2026c, paquetes 8.1.1 y 8.1.5). Los compartidos son los especialistas de segundo y tercer nivel: SRE y DevOps para infraestructura y terreno, Desarrollo para la aplicación y los especialistas de ciberseguridad. El Líder de Operación / SRE es el gerente de servicio, representa a LafroX en el Comité de Operación y coordina el soporte de los fabricantes, con 651,85 HH en la Operación (684,44 UF). Mientras un caso se escala, los puestos de mesa, NOC y SOC siguen atendiendo. La Tabla~\ref{tab:e2-mant-recursos} muestra el costo de cada grupo.
+Los recursos dedicados son la mesa N1, el NOC y el SOC. La mesa N1 atiende con puestos propios de 04:00 a 20:00, el NOC cubre la franja de 20:00 a 22:00 y en septiembre y diciembre la atención es de 24 horas. El NOC funciona 24×7 desde la división multicliente de LafroX, con una dedicación declarada que baja de 100\,\% a 75\,\% y a 50\,\% en el segundo y el tercer año de operación, y el SOC, que LafroX opera desde su centro de Valparaíso, funciona 24×7 desde el mes 13 (LafroX, 2026a; 2026c, paquetes 8.1.1 y 8.1.5). Los compartidos son los especialistas de segundo y tercer nivel: SRE y DevOps para infraestructura y terreno, Desarrollo para la aplicación y los especialistas de ciberseguridad. El Líder de Operación / SRE es el gerente de servicio, representa a LafroX en el Comité de Operación y coordina el soporte de los fabricantes, con 651,85 HH en la Operación (684,44 UF). Mientras un caso se escala, los puestos de mesa, NOC y SOC siguen atendiendo. La Tabla~\ref{tab:e2-mant-recursos} muestra el costo de cada grupo.
 
 \begin{tablalafrox}{Recursos dedicados y compartidos del soporte, meses 21 a 56. Las sumas pueden diferir en la última cifra por redondeo. Fuente: modelo financiero, hoja COSTOS.}{tab:e2-mant-recursos}{Y R{1.9cm} R{1.9cm} R{2.8cm} R{2.1cm}}
   {\cab{Grupo} & \cab{HH} & \cab{UF} & \cab{CLP} & \cab{USD}}
-  Dedicados: mesa N1, NOC y SOC & 106.799,00 & 82.811,20 & 3.312.448.000 & 3.680.498 \\
+  Dedicados: mesa N1, NOC y SOC & 86.274,20 & 57.803,71 & 2.312.148.560 & 2.569.054 \\
   Desarrollo & 6.970,08 & 4.732,69 & 189.307.600 & 210.342 \\
   SRE y DevOps & 5.850,33 & 4.843,23 & 193.729.060 & 215.255 \\
   Ciberseguridad & 1.155,20 & 902,22 & 36.088.800 & 40.099 \\
-  Gestión, calidad, datos e implantación & 7.512,24 & 5.981,74 & 239.269.580 & 265.855 \\
+  Gestión, calidad, datos e implantación & 7.528,24 & 5.991,34 & 239.653.580 & 266.282 \\
   \midrule
-  \textbf{Total} & \textbf{128.286,85} & \textbf{99.271,08} & \textbf{3.970.843.040} & \textbf{4.412.048} \\
+  \textbf{Total} & \textbf{107.778,05} & \textbf{74.273,19} & \textbf{2.970.927.600} & \textbf{3.301.031} \\
 \end{tablalafrox}
 
-Los puestos dedicados se llevan el 83,25\,\% de las horas y el 83,42\,\% del costo, ya que cubren los horarios completos. Los compartidos suman 16.459,88 UF y trabajan según las actividades del T-15.
+Los puestos dedicados se llevan el 80,05\,\% de las horas y el 77,83\,\% del costo, ya que cubren los horarios de atención. Los compartidos suman 16.469,48 UF y trabajan según las actividades del T-15.
 
 \subsection{Mantención preventiva, correctiva, mejora continua y actualización}
 \label{sec:e2-mant-programa}
