@@ -1,10 +1,10 @@
 %% ============================================================================
-%%  LAFROX-Subdocumento1-Anexos.tex -- Anexo 1.A: Tabla de trazabilidad
+%%  LAFROX_AnalisisFinanciero_2_Anexos_20261113.tex -- Anexo A del Análisis económico-financiero: tabla de trazabilidad
 %%  observación–respuesta–sección modificada de las observaciones del Informe 2
 %%  (Art. 46 de las Bases Administrativas).
 %%
 %%  Las tablas se generan en partes/tablas.tex y partes/tablas_sintesis.tex.
-%%  Compilar:  latexmk LAFROX-Subdocumento1-Anexos.tex   (LuaLaTeX, ver latexmkrc)
+%%  Compilar:  latexmk LAFROX_AnalisisFinanciero_2_Anexos_20261113.tex   (LuaLaTeX, ver latexmkrc)
 %% ============================================================================
 \documentclass[carta,firma]{lafrox}
 \usepackage{needspace}
@@ -12,18 +12,20 @@
 
 \datoslafrox{
   caso         = {Caso --- Logística},
+  documento    = {Oferta Económica},
+  sobre        = {Sobre N.\textdegree{} 3 \textemdash{} Oferta Económica},
   fecha        = {13 de noviembre de 2026},
-  subtitulo    = {Subdocumento 01 --- Anexos},
-  alcance      = {Subdocumentos 1 a 9 y 13},
-  formulario   = {Anexo 1.A --- Tabla de trazabilidad (Art. 46)},
-  nomenclatura = {LAFROX-Subdocumento1-Anexos.pdf},
+  subtitulo    = {Análisis económico-financiero --- Anexos},
+  alcance      = {Entregable 2},
+  formulario   = {Anexo A --- Tabla de trazabilidad (Art. 46)},
+  nomenclatura = {LAFROX\_AnalisisFinanciero\_2\_Anexos\_20261113.pdf},
 }
 
-\configurarportadalafrox{Subdocumento 01 \textemdash{} Anexos}{Anexo 1.A \textemdash{} Trazabilidad de observaciones del Informe 2}{Art. 46}{}{FIRMA_Alex_Aravena_transparente.png}
+\configurarportadalafrox{Análisis económico-financiero \textemdash{} Anexos}{Anexo A \textemdash{} Trazabilidad de observaciones del Informe 2}{Art. 46}{}{FIRMA_Alex_Aravena_transparente.png}
 \makeatletter\def\LFXfecha{13 de noviembre de 2026}\makeatother
 
-\AtBeginDocument{\hypersetup{pdftitle={Anexo 1.A: Trazabilidad de observaciones del Informe 2},pdfauthor={LafroX SpA}}}
-\renewcommand{\thesection}{1.A.\arabic{section}}
+\AtBeginDocument{\hypersetup{pdftitle={Anexo A: Trazabilidad de observaciones del Informe 2},pdfauthor={LafroX SpA}}}
+\renewcommand{\thesection}{A.\arabic{section}}
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
 \renewcommand{\thetable}{\arabic{table}}
 \setcounter{tocdepth}{2}
@@ -67,10 +69,10 @@ La Tabla~\ref{tab:sintesis} resume el estado por subdocumento y las Tablas 2 a 1
 
 La Tabla~\ref{tab:declaracion_ia} identifica la herramienta y el alcance de la asistencia utilizada en este anexo.
 
-\begin{tablalafrox}{Uso de IA en el Anexo 1.A.}{tab:declaracion_ia}{L{1.6cm} L{2.0cm} Y L{1.2cm} L{1.6cm} L{3.4cm}}
+\begin{tablalafrox}{Uso de IA en el Anexo A.}{tab:declaracion_ia}{L{1.6cm} L{2.0cm} Y L{1.2cm} L{1.6cm} L{3.4cm}}
   {\cab{Sección} & \cab{Herramienta} & \cab{Finalidad del uso} & \cab{Nivel en texto} & \cab{Nivel en diagramas} & \cab{Revisión humana (quién y qué verificó)}}
-  1.A.1 & Claude Code & Redacción del alcance y de la síntesis & Alto & Ninguno & Leandro Chamorro: criterio de registro, conteo de estados y síntesis por subdocumento. \\
-  1.A.2 & Claude Code & Cotejo de cada observación con la versión corregida de los subdocumentos y redacción de las respuestas & Alto & Ninguno & Álvaro Catalán (Subdocumentos 1 a 5) y Tomás Pérez (Subdocumentos 6 a 9 y 13): estado y sección modificada de cada fila contra el subdocumento correspondiente. \\
+  A.1 & Claude Code & Redacción del alcance y de la síntesis & Alto & Ninguno & Leandro Chamorro: criterio de registro, conteo de estados y síntesis por subdocumento. \\
+  A.2 & Claude Code & Cotejo de cada observación con la versión corregida de los subdocumentos y redacción de las respuestas & Alto & Ninguno & Álvaro Catalán (Subdocumentos 1 a 5) y Tomás Pérez (Subdocumentos 6 a 9 y 13): estado y sección modificada de cada fila contra el subdocumento correspondiente. \\
 \end{tablalafrox}
 
 \end{document}

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Genera el cuerpo LaTeX del Anexo 1.A (Art. 46) para las observaciones del Informe 2."""
+"""Genera el cuerpo LaTeX del Anexo A (Art. 46) para las observaciones del Informe 2."""
 import sys
 from collections import Counter
 
@@ -10,7 +10,7 @@ GRUPOS = [
 ("Volumen excesivo: SD4 con 194 páginas de cuerpo y 117 de anexos; el subdocumento debe resumir y el anexo detallar.", P,
  "El SD4 traslada al Anexo 4-D los listados de M2, M3, M4 y M7, al 4-N los criterios de interacción y al 4-R la custodia. La reducción del cuerpo del SD4 y del SD7 continúa en la Propuesta Final.", "SD4, 4.1.5 y Anexos 4-D, 4-N, 4-R; SD7"),
 ("La tabla del Art. 46° llega en un archivo fuera de la nomenclatura de la sección 2 de la Aclaración N.° 2.", C,
- "La tabla se entrega como anexo del Subdocumento 1, con nombre conforme a la sección 2.", "Este anexo (LAFROX-Subdocumento1-Anexos)"),
+ "La tabla se entrega como Anexo A del Análisis económico-financiero (Entregable 2), en archivo propio con nombre conforme a la nomenclatura de la oferta.", "Este anexo"),
 ("Declaración de uso de IA con nivel «Alto» en todo y un único revisor; revisión humana de forma.", C,
  "Las Declaraciones de SD1, SD3, SD4, SD5, SD6 y SD8 asignan revisores distintos por sección, cada uno con el contenido que verificó; el SD13 agrega una pauta de revisión técnica.", "Declaraciones de IA de SD1, SD3, SD4, SD5, SD6 y SD8; Anexos SD13"),
 ("Foliación única y correlativa de toda la propuesta.", N,
