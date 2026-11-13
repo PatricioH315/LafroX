@@ -4,6 +4,19 @@
 
 La base de valorización proviene del Subdocumento 13 y de las fichas 1 a 5 del Formulario T-19 (LafroX, 2026d). Cada innovación se vincula con sus paquetes del T-14 y con los recursos correspondientes del T-15. La inversión se asigna a los meses de ejecución de las actividades. Los costos incrementales se imputan al período en que se utilizan los recursos, identificando las horas y servicios que ya forman parte del presupuesto base.
 
+\subsection{Consumo para la valorización}
+
+La Tabla~\ref{tab:e2-consumo-innovaciones} recoge los escenarios base y alto de dimensionamiento del SD4 para los recursos de nube atribuibles a las innovaciones. Las ventanas y unidades de consumo permiten asociar las tarifas y la sensibilidad al mes en que se ejecuta cada carga (LafroX, 2026a, Anexo 4-W, tablas 4-W.I1 y 4-W.I2).
+
+\begin{tablalafrox}{Escenarios de cómputo por innovación. Fuente: SD4, Anexo 4-W, tabla 4-W.I1.}{tab:e2-consumo-innovaciones}{F{0.29} G{0.15} H{0.28} H{0.28}}{\textbf{Innovación y servicio} & \textbf{Meses} & \textbf{Base por mes} & \textbf{Alto por mes}}
+INN-01, Glue & 16 a 56 & 15 DPU-h & 30 DPU-h \\
+INN-02, Fargate & 5 a 56 & 4,33 horas-tarea & 26 horas-tarea \\
+INN-03, Redshift Serverless & 16 a 56 & 60 RPU-h & 120 RPU-h \\
+INN-05, Glue & 21 a 56 & 2 DPU-h por ciclo & 4 DPU-h por ciclo \\
+\end{tablalafrox}
+
+Los volúmenes y las duraciones son supuestos de diseño que se verificarán durante la implementación. El almacenamiento se valoriza en GB-mes por región según la permanencia de los datos y las copias aplicables. Para Glue y Redshift se contrasta el consumo con el presupuesto de N-10, incluida la agregación de INN-04 cuando coincide, para estimar el consumo adicional facturable.
+
 \subsection{INN-01. Seguimiento de vencimiento posentrega en el local}
 
 La inversión comprende el catálogo de acciones, el estimador de saldo y reposición, su integración en preventa y el piloto de marcha blanca (3.10.1.1 a 3.10.1.4). Desde el mes 16, el costo operacional comprende el cálculo nocturno, el almacenamiento y la mantención de la regla y del catálogo. El beneficio se estima comparando las unidades vencidas evitadas en rutas con aviso frente a rutas de control, valorizadas a costo unitario y descontando canjes y descuentos asociados. Se identifica por separado de la merma del alcance base y de INN-03. El T-19 ilustra 25 unidades evitadas por cada 10.000 entregadas si la base del piloto es de 100 unidades vencidas por cada 10.000 y se alcanza la meta. La línea base se obtiene en las rutas de control de los meses 13 a 15. El indicador I-01B tiene una meta de reducción del 25\% y se mide en el mes 28.
