@@ -5808,15 +5808,15 @@ ciónporseveridadyseguimientodetodassusactuacionesyestadoshastaelcierreconforme,
 con el escalamiento L1–L3 previsto (BTT, cap. 21, RT-21.15, p. 37). El cierre de cada ticket
 requerirálaconfirmacióndelapersonausuariaregistradaenél;mientrasfalte,permanecerá
 pendientedecierreysujetoalseguimientodelamesa(RT-21.17).
-ElpuestoNOCde8.1.1locubreladivisióndeNOC24 ×7deLafroX,concincooperadores
-nominadosyunadedicacióndeclaradade100%enelprimerañodeoperación,75%enel
-segundoy50%eneltercero.LadedicaciónsolobajaconactadelComitédeOperaciónycon
-lostresmesesanterioresdentrodelosnivelesdelartículo78delasBasesAdministrativas(p.
-40);siunnivelnosecumple,vuelveal100%acargodeLafroX.De20:00a22:00,delunesa
-sábado,elNOCatiendetambiénlamesa,conochooperadoresformadosenlosprocesosde
-bodega,rutaypreventa.Lospuestosdemesade8.1.2atiendende04:00a20:00ysumanun
-terceragenteenlasfranjasdemenordemandaenseptiembreydiciembredesdeelmes25
-(Subdocumento4,Anexo4-W.7).
+ElpuestoNOCde8.1.1locubreladivisióndeNOC24 ×7deLafroX,conlosseisoperadores
+nominados del perfil NOC del Formulario T-15 y una dedicación declarada de 100% en el
+primer año de operación, 75% en el segundo y 50% en el tercero. La dedicación solo baja
+con acta del Comité de Operación y con los tres meses anteriores dentro de los niveles del
+artículo 78 de las Bases Administrativas (p. 40); si un nivel no se cumple, vuelve al 100% a
+cargo de LafroX. De 20:00 a 22:00, de lunes a sábado, el NOC atiende también la mesa, con
+ochooperadoresformadosenlosprocesosdebodega,rutaypreventa.Lospuestosdemesade
+8.1.2atiendende04:00a20:00ysumanunterceragenteenlasfranjasdemenordemandaen
+septiembreydiciembredesdeelmes25(Subdocumento4,Anexo4-W.7).
 Elservicioconservaráunregistrohistóricodetodaslasactividadesdesoporte,vinculadasa
 suticket,conclasificación,actuaciones,responsablesyresultado(BTT,cap.21,RT-21.09,p.36).
 Elinformemensualdenivelesdeserviciode8.1.2analizarálastendenciasdelosprincipales

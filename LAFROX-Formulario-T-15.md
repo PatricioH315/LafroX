@@ -456,21 +456,22 @@ Mediafirma: AlexAravena
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
 enlosmeses21a32,75%enlosmeses33a44y50%enlosmeses45a56.Ademásatiende
-lamesade20:00a22:00delunesasábadocon1,9horas-posiciónpordíayformaaocho
-operadores en los procesos de Puelche: 128 HH en el mes 21 y 64 HH en los meses 33 y
-45,más16HHdelinstructorenelmes21.Lamesa(8.1.2,primeralíneadeincidentesdel
-artículo78delasBasesAdministrativas(p.40))aplicalasposicionesdelmismoanexo:7
-en lahoracargaday 2 en lasotras15 horasde 04:00 a 20:00, o 37 horas-posiciónpor día
-delunesasábado.Enseptiembreydiciembredesdeelmes25sumaunterceragenteen
-esas15horas,52horas-posiciónpordía,conelqueladotacióncubrelostresnivelesde
-servicio hasta 2.391 contactos al mes. En septiembre y diciembre se suman, además, 6
-horas-posiciónde22:00a04:00delunesasábadoy24losdomingos.Así,unmesde26días
-delunesasábadoexige26 ×37=962HHdemesa,yseptiembrede2029exige25 ×(52+6)
-+5 ×24=1.570HH.ElSOCespropiodeLafroXyoperadesdesuCentrodeOperaciones
-enValparaíso (RT-11.17; SD4, Anexo 4-W.7); sus HH se imputan aquí. Las posiciones de
-lamesaprovienendeunErlangCconsupuestosdedemanda:noacreditanabandononi
-resolución al primer contacto, que se miden según la sección 5.6. La curva dimensiona
-relevoscon128HHefectivas.
+la mesa de 20:00 a 22:00 de lunes a sábado: sus 1,33 horas diarias de atención, con 70%
+deocupación,son1,33 ÷0,70 ≈1,9horas-posiciónpordía,ylasdosposicionesqueexige
+el Erlang C salen de las seis activas del NOC. También forma a ocho operadores en los
+procesos de Puelche: 128 HH en el mes 21 y 64 HH en los meses 33 y 45, más 16 HH del
+instructorenelmes21.Lamesa(8.1.2,primeralíneadeincidentesdelartículo78delas
+BasesAdministrativas(p.40))aplicalasposicionesdelmismoanexo:7enlahoracargada
+y 2 en las otras 15 horas de 04:00 a 20:00, o 37 horas-posición por día de lunes a sábado.
+En septiembre y diciembre desde el mes 25 suma un tercer agente en esas 15 horas, 52
+horas-posiciónpordía,conelqueladotacióncubrelostresnivelesdeserviciohasta2.391
+contactosalmes.Enseptiembreydiciembresesuman,además,6horas-posiciónde22:00a
+04:00delunesasábadoy24losdomingos.Así,unmesde26díasdelunesasábadoexige26
+×37=962HHdemesa,yseptiembrede2029exige25 ×(52+6)+5 ×24=1.570HH.ElSOC
+espropiodeLafroXyoperadesdesuCentrodeOperacionesenValparaíso(RT-11.17;SD4,
+Anexo4-W.7);susHHseimputanaquí.LasposicionesdelamesaprovienendeunErlangC
+consupuestosdedemanda:noacreditanabandononiresoluciónalprimercontacto,que
+semidensegúnlasección5.6.Lacurvadimensionarelevoscon128HHefectivas.
 • OyPtienenfundamentopropio:cadamódulosegúnsuficha,cadatipodepaquetesegúnlo
 quehacevariarsuesfuerzoylospaquetesconriesgoidentificadosegúneseriesgo(sección
 4.3). E = (O + 4M + P)/6. Para A/C, O = M = P: no se reduce cobertura por un escenario
@@ -495,7 +496,6 @@ asignaciónprevista.
 horas-posición por día de lunes a sábado, más la cobertura 24×7 de septiembre (1.851,
 1.786, 1.810, 1.851 y 2.038 HH; total 9.336 HH), imputado a 4.2.2 y financiado dentro de
 implementación.ElSOCoperadesdeelmes13por8.1.5,porquelamarchablancayatrata
-datosreales.Operacióncontractualempiezaenelmes21.
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
@@ -504,6 +504,7 @@ Mediafirma: AlexAravena
 ---
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
+datosreales.Operacióncontractualempiezaenelmes21.
 • Lasventanasdelasección4.2reservancapacidadpormes;nosonequivalentesalosdías
 efectivosdetodaslasactividadesdelasección6.1.Cuandoelpaqueteempiezaotermina
 dentrodeunaventanamásamplia,losmesessinejecuciónsonmargendeprogramación,
