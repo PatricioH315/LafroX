@@ -2,25 +2,25 @@
 \section{Evaluación financiera}
 \label{sec:e2-evaluacion}
 
-Esta sección evalúa si el proyecto crea valor para LafroX, como pide el apartado 2.2 del Formulario E-21: presenta la tasa de descuento y su justificación, el flujo de caja proyectado, el VAN, la TIR, el análisis de sensibilidad y el punto de equilibrio (Distribuidora Puelche S.A., 2026a, Formulario E-21, p.~71). Las cifras provienen de las hojas \texttt{PARAMETROS}, \texttt{INDICADORES} y \texttt{SENSIBILIDAD} del modelo financiero (LafroX, 2026f).
+Con una tasa de descuento de 0,998\,\% mensual, el proyecto tiene un VAN de 28.055,82 UF y una TIR de 7,79\,\% mensual, de modo que conviene ejecutarlo. Las cifras salen de las hojas \texttt{PARAMETROS}, \texttt{INDICADORES} y \texttt{SENSIBILIDAD} del modelo (LafroX, 2026f).
 
-La evaluación usa el flujo del proyecto: los cobros de los hitos y de las cuotas de operación menos los costos de la sección~\ref{sec:e2-costos-precio}. Este flujo no incluye el crédito, el aporte de los socios ni los intereses, porque la tasa de descuento ya incorpora el costo del financiamiento. Los montos son netos, sin IVA y antes de impuestos, y el horizonte es de 56 meses (Distribuidora Puelche S.A., 2026a, Formulario E-24, p.~73).
+Se evalúa el flujo del proyecto, que son los cobros de hitos y cuotas menos los costos de la sección~\ref{sec:e2-costos-precio}. El crédito, el aporte de los socios y los intereses quedan fuera, ya que su costo está dentro de la tasa de descuento. Los montos son netos, antes de impuestos, en un horizonte de 56 meses.
 
 \subsection{Tasa de descuento}
 \label{sec:e2-tasa-descuento}
 
-La tasa de descuento es el costo promedio del dinero con que se financia el proyecto, ponderado según la estructura del Formulario E-24 (Distribuidora Puelche S.A., 2026a, Formulario E-24, p.~73):
+La tasa de descuento es el costo promedio del dinero que financia el proyecto, con la proporción de 80\,\% de crédito y 20\,\% de capital propio del Formulario E-24 (Distribuidora Puelche S.A., 2026a):
 \begin{itemize}
-  \item El 80\,\% proviene del crédito bancario, con un costo de 0,9\,\% mensual, equivalente a 11,35\,\% anual.
-  \item El 20\,\% proviene de los socios, que exigen una rentabilidad de 18\,\% anual. Convertida a tasa mensual compuesta, es de 1,389\,\% mensual. Se fija sobre el costo del crédito, porque los socios asumen más riesgo que el banco, y bajo la rentabilidad máxima de 20\,\% del mismo formulario.
+  \item El crédito bancario cuesta 0,9\,\% mensual, equivalente a 11,35\,\% anual.
+  \item Los socios exigen 18\,\% anual, que en tasa mensual compuesta es 1,389\,\%. La exigencia supera el costo del banco porque los socios asumen más riesgo, y queda bajo el tope de 20\,\%.
 \end{itemize}
 
-La tasa ponderada es 0,8 × 0,9\,\% + 0,2 × 1,389\,\% = 0,998\,\% mensual, equivalente a 12,65\,\% anual. Como el flujo es mensual, el modelo descuenta cada mes con la tasa mensual.
+La tasa ponderada es 0,8 × 0,9\,\% + 0,2 × 1,389\,\% = 0,998\,\% mensual, equivalente a 12,65\,\% anual. El flujo es mensual, así que cada mes se descuenta con la tasa mensual.
 
 \subsection{Flujo de caja proyectado}
 \label{sec:e2-flujo-proyectado}
 
-La Tabla~\ref{tab:e2-flujo-anual} resume el flujo del proyecto por año de contrato. La Tabla~\ref{tab:e2-flujo-mensual} presenta el flujo completo mes a mes, y su versión con financiamiento se analiza en la sección~\ref{sec:e2-curva-s}.
+La Tabla~\ref{tab:e2-flujo-anual} resume el flujo del proyecto por año de contrato. El flujo con financiamiento se ve en la sección~\ref{sec:e2-curva-s}.
 
 {\renewcommand{\LFXfiletefila}{\noalign{{\color{lafroxLinea}\hrule height 0.3pt}\nobreak}}%
 \begin{tablalafrox}{Flujo del proyecto por año de contrato, en UF. Las sumas pueden diferir en la última cifra por redondeo. Fuente: modelo financiero, hoja INDICADORES.}{tab:e2-flujo-anual}{Y R{2.8cm} R{2.8cm} R{2.8cm}}
@@ -34,9 +34,9 @@ La Tabla~\ref{tab:e2-flujo-anual} resume el flujo del proyecto por año de contr
   \textbf{Total} & \textbf{260.429,58} & \textbf{220.875,90} & \textbf{39.553,68} \\
 \end{tablalafrox}}
 
-El primer año es el único con flujo negativo, porque concentra la compra de la infraestructura y el inicio de los equipos antes de los primeros hitos. El segundo año tiene el mayor flujo, porque reúne siete de los doce hitos y el inicio de la operación. Desde el año 3, el flujo depende de la cuota fija de operación y se mantiene estable.
+Solo el primer año cierra en negativo, ya que en él se compra la infraestructura y parten los equipos antes de los primeros hitos. El segundo año deja el mayor flujo, con siete de los doce hitos y el inicio de la operación. Desde el tercer año el flujo depende de la cuota fija y se mantiene estable.
 
-La Tabla~\ref{tab:e2-flujo-mensual} detalla los 56 meses. Entre los meses 2 y 19 ingresan los hitos H1 a H11 del Formulario E-25; el mes 21 suma el hito H12 y la primera cuota de operación, y los meses 22 a 56 reciben solo la cuota. El flujo acumulado llega a su mínimo en el mes 9 y es positivo desde el mes 17 hasta el final del contrato.
+La Tabla~\ref{tab:e2-flujo-mensual} muestra los 56 meses. Los hitos H1 a H11 entran entre los meses 2 y 19, el mes 21 recibe H12 y la primera cuota, y desde el mes 22 entra solo la cuota. El acumulado toca su mínimo en el mes 9 y es positivo desde el mes 17.
 
 \begin{tablalafrox}{Flujo de caja mensual del proyecto, en UF. Las sumas pueden diferir en la última cifra por redondeo. Fuente: modelo financiero, hoja INDICADORES.}{tab:e2-flujo-mensual}{Y R{2.6cm} R{2.6cm} R{2.6cm} R{2.6cm}}
   {\cab{Mes} & \cab{Ingresos} & \cab{Egresos} & \cab{Flujo del mes} & \cab{Acumulado}}
@@ -103,14 +103,14 @@ La Tabla~\ref{tab:e2-flujo-mensual} detalla los 56 meses. Entre los meses 2 y 19
 \subsection{VAN y TIR}
 \label{sec:e2-van-tir}
 
-Descontado al 0,998\,\% mensual, el flujo del proyecto tiene un VAN de 28.055,82 UF, equivalentes a \$1.122.232.930 o USD~1.246.925. El VAN es la diferencia entre el valor actual de los ingresos, 198.836,48 UF, y el de los egresos: 124.962,74 UF de sueldos y 45.817,92 UF de otros egresos. Como es positivo, el proyecto rinde más que el costo del dinero que lo financia y conviene ejecutarlo.
+El VAN es de 28.055,82 UF, o \$1.122.232.930 y USD~1.246.925. Resulta de restar al valor actual de los ingresos, 198.836,48 UF, el de los sueldos, 124.962,74 UF, y el de los otros egresos, 45.817,92 UF. Al ser positivo, el proyecto gana más de lo que cuesta el dinero que lo financia.
 
-La TIR del proyecto es de 7,79\,\% mensual, equivalente a 146,12\,\% anual con capitalización mensual. Es la única tasa que deja el VAN en cero en el horizonte de 56 meses. Es alta porque la inversión propia es pequeña y breve: el flujo acumulado llega a su mínimo en el mes 9, con un déficit de 16.548,80 UF, y vuelve a ser positivo en el mes 17, porque los hitos de pago financian la mayor parte de la implementación. Por eso la TIR se usa como complemento y el VAN es el criterio principal de decisión. La TIR tampoco mide la rentabilidad sobre los ingresos: el margen es de 15,19\,\% del precio, bajo el máximo de 20\,\% del Formulario E-24 (sección~\ref{sec:e2-precio-margenes}).
+La TIR es de 7,79\,\% mensual, o 146,12\,\% anual. Es alta porque la inversión propia dura poco: el acumulado cae hasta $-$16.548,80 UF en el mes 9 y ya es positivo en el mes 17, porque los hitos pagan casi toda la implementación. Por eso la decisión se basa en el VAN y la TIR es un dato complementario. La TIR tampoco es el margen, que es de 15,19\,\% del precio (sección~\ref{sec:e2-precio-margenes}).
 
 \subsection{Análisis de sensibilidad}
 \label{sec:e2-sensibilidad}
 
-El análisis cambia una variable por vez en $-20$\,\%, $-10$\,\%, $+10$\,\% y $+20$\,\%, y mantiene las demás en su valor base. La Tabla~\ref{tab:e2-sensibilidad} muestra el VAN resultante en cada caso.
+Se movió una variable a la vez en $-20$\,\%, $-10$\,\%, $+10$\,\% y $+20$\,\%, dejando las demás en su valor base. La Tabla~\ref{tab:e2-sensibilidad} muestra el VAN de cada caso.
 
 {\renewcommand{\LFXfiletefila}{\noalign{{\color{lafroxLinea}\hrule height 0.3pt}\nobreak}}%
 \begin{tablalafrox}{VAN del proyecto ante variaciones de cada variable, en UF. VAN base: 28.055,82 UF. Fuente: modelo financiero, hoja SENSIBILIDAD.}{tab:e2-sensibilidad}{Y R{2.1cm} R{2.1cm} R{2.1cm} R{2.1cm}}
@@ -121,14 +121,14 @@ El análisis cambia una variable por vez en $-20$\,\%, $-10$\,\%, $+10$\,\% y $+
   Tasa de descuento & 29.964,25 & 28.989,76 & 27.160,18 & 26.300,72 \\
 \end{tablalafrox}}
 
-Los ingresos son la variable más sensible: una baja de 10\,\% reduce el VAN en 71\,\%, y una baja de 20\,\% lo deja negativo. Le sigue el costo de las HH, que es la mayor partida del costo: con un alza de 20\,\% el VAN sigue positivo, pero cae a 3.063,28 UF. Los otros egresos y la tasa de descuento tienen menos efecto: con un alza de 20\,\% en cualquiera de ellos, el VAN se mantiene sobre 18.800 UF. Por eso los riesgos que más importan son los que retrasan la aprobación de los hitos o aumentan las horas, que el plan de riesgos trata en su reserva de gestión (LafroX, 2026e, Anexo 8.H).
+El VAN depende sobre todo de los ingresos. Si bajan 10\,\%, el VAN cae 71\,\%, y con una baja de 20\,\% queda negativo. Después viene el costo de las HH: con un alza de 20\,\% el VAN baja a 3.063,28 UF, pero sigue positivo. Los otros egresos y la tasa pesan menos, y con un alza de 20\,\% en cualquiera de ellos el VAN queda sobre 18.800 UF. Los riesgos más relevantes son, por lo tanto, los atrasos en la aprobación de hitos y el aumento de horas, que cubre la reserva de gestión del plan de riesgos (LafroX, 2026e).
 
 \subsection{Punto de equilibrio}
 \label{sec:e2-equilibrio}
 
-El punto de equilibrio se mide de tres formas:
+El punto de equilibrio se calculó en ingresos, en sueldos y en tiempo:
 \begin{itemize}
-  \item En ingresos, el VAN llega a cero con el 85,89\,\% de los ingresos proyectados. En valores nominales, los costos se cubren con el 84,81\,\% del precio, es decir, con 220.875,90 UF de ingresos.
-  \item En costo de las HH, el VAN llega a cero con un alza de 22,45\,\% en los sueldos.
-  \item En el tiempo, el flujo acumulado del proyecto pasa a positivo en el mes 17 y se mantiene positivo hasta el final del contrato. Desde ese mes, los cobros ya cubrieron todos los costos.
+  \item El VAN llega a cero con el 85,89\,\% de los ingresos proyectados. Sin descontar, los costos se cubren con el 84,81\,\% del precio, 220.875,90 UF.
+  \item El VAN llega a cero si los sueldos suben 22,45\,\%.
+  \item El flujo acumulado es positivo desde el mes 17 y no vuelve a ser negativo. Desde ese mes, lo cobrado supera todo lo gastado.
 \end{itemize}
