@@ -34,15 +34,18 @@ def add(role, m, v): H[role][m] += v
 
 for code, cl, role, mm, e in rows:
     a, b = map(int, mm.split('–'))
-    if code == '8.1.1':
-        for m in range(a, b + 1): add('NOC', m, days(m) * 24)
+    if code == '8.1.1':   # B+ (13-11-2026): dedicación declarada, franja 20-22 y formación
+        for m in range(a, b + 1):
+            k = 1.0 if m < 33 else 0.75 if m < 45 else 0.5
+            add('NOC', m, days(m) * 24 * k + 1.9 * monsat(m) + {21: 128, 33: 64, 45: 64}.get(m, 0))
+        add('IMP', 21, 16)
         continue
     if code == '8.1.5':
         for m in range(a, b + 1): add('SOC', m, days(m) * 24)
         continue
     if code == '8.1.2':
         for m in range(a, b + 1):
-            y, mo = ym(m); rate = 41 if m < 25 else 58
+            y, mo = ym(m); rate = 52 if m in (32, 35, 44, 47, 56) else 37   # B+ (13-11-2026)
             v = monsat(m) * rate
             if mo in (9, 12): v += monsat(m) * 6 + sundays(m) * 24
             add('MESA', m, v)

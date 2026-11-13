@@ -1781,20 +1781,20 @@ protegida
 HHprogramadas
 Etapa1·Desarro-
 llo
-1a12 41.111,14 0 41.111,14
+1a12 40.865,08 0 40.865,08
 Etapa1·Marcha
 blanca
-13a15 11.214,55 1.152 12.366,55
+13a15 11.335,12 1.152 12.487,12
 Etapa2·Desarro-
 llo
-13a18 10.560,37 0 10.560,37
+13a18 10.579,37 0 10.579,37
 Etapa2·Marcha
 blanca
-19y20 7.397,25 0 7.397,25
+19y20 7.452,03 0 7.452,03
 Etapa1·Produc-
 ciónyestabiliza-
 ción
-16a20 14.824,31 1.920 16.744,31
+16a20 14.816,04 1.920 16.736,04
 continúaenlapáginasiguiente
 LafroXSpA
 Subdocumento7
@@ -1813,27 +1813,28 @@ HHprogramadas
 Etapa2·Cierre
 yestabilización
 posterioralH12
-21y22 2.694,54 0 2.694,54
-Operación 21a56 128.853,67 0 128.853,67
-Total 216.655,83 3.072 219.727,83
-La operación concentra el 59% de las horas programadas (128.854 de 219.727,83 HH),
+21y22 2.690,22 0 2.690,22
+Operación 21a56 108.409,17 0 108.409,17
+Total 196.147,03 3.072 199.219,03
+La operación concentra el 54% de las horas programadas (108.409 de 199.219,03 HH),
 porquecubre36mesesdeserviciocontinuodelcentrodeoperaciones,lamesayelSOC(el
 SOCoperadesdelaprimeramarchablanca,enelmes13,ysushorasdelosmeses13a20se
-imputanalasmarchasblancasyalaproduccióndelaEtapa1);lamesaincluyedesdeelmes
-25, cuando la demanda proyectada se acerca a su límite, un tercer agente en las franjas de
-menordemanda,conelquecubresusnivelesdeserviciohasta2.391contactosalmes.Son
-puestosdeturno24 ×7ydemesa,nopersonasdedicadasaotrastareas.Laimplementaciónde
-losmeses1a 21,máslaestabilizaciónposterior alpasoaproducciónqueexigeelRT-20.06
-enlosmeses21y22,suma90.874,16HH.Sutramomásdensosonlosmeses13a15,cuando
-la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2 suman 16.649,43 HH (4.753,73 +
-6.147,26 + 5.748,44, según la curva del FormularioT-15, sección 4.4), con un máximo de 50
-plazasenelmes15.LaconstruccióndeloscuatromódulosdelaEtapa2sereparteentrelos
-meses14y15,concincopersonaspormódulocomomáximo,envezdeconcentrarseenabril.
-Elmesdemayordotacióndelproyectoesel5,con59plazas,durantelaconstruccióndelos
-módulosdelaEtapa1;enlossolapamientos,elmáximoesde57plazasenelmes16,cuando
-el paso a producción de la Etapa 1, su estabilización y el soporte puente coinciden con las
-pruebasdelaEtapa2.Las3.072HHdereservaseasignansóloalaEtapa1,demodoqueuna
-correcciónensumarchablancanosefinanciaconhorasdelaEtapa2.
+imputanalasmarchasblancasyalaproduccióndelaEtapa1).Lamesasumaunterceragente
+enlasfranjasdemenordemandaenseptiembreydiciembredesdeelmes25,conelquecubre
+susnivelesdeserviciohasta2.391contactosalmes;de20:00a22:00laatiendeelNOC,cuya
+dedicacióndeclaradabajade100%a75%ya50%enelsegundoyeltercerañodeoperación
+(Subdocumento4,Anexo4-W.7).Sonpuestosdeturno24 ×7ydemesa,nopersonasdedicadas
+aotrastareas.Laimplementacióndelosmeses1a21,máslaestabilizaciónposterioralpasoa
+producciónqueexigeelRT-20.06enlosmeses21y22,suma90.809,86HH.Sutramomásdenso
+sonlosmeses13a15,cuandolamarchablancadelaEtapa1yeldesarrollodelaEtapa2suman
+16.799,94HH(4.863,56+5.941,14+5.995,24,segúnlacurvadelFormularioT-15,sección4.4),
+conunmáximode50plazasenelmes15.LaconstruccióndeloscuatromódulosdelaEtapa2
+sereparteentrelosmeses14y15,concincopersonaspormódulocomomáximo,envezde
+concentrarseenabril.Elmesdemayordotacióndelproyectoesel5,con59plazas,durantela
+construccióndelosmódulosdelaEtapa1;enlossolapamientos,elmáximoesde57plazas
+enelmes16,cuandoelpasoaproduccióndelaEtapa1,suestabilizaciónyelsoportepuente
+coincidenconlaspruebasdelaEtapa2.Las3.072HHdereservaseasignansóloalaEtapa1,
+demodoqueunacorrecciónensumarchablancanosefinanciaconhorasdelaEtapa2.
 7.2.3 Frentesdetrabajoysincronización
 Eltrabajoseorganizaenochofrentes.Cadafrenteesunequipoconunresponsableque
 avanza en paralelo con los demás sobre un conjunto de cuentas de control. El frente de
@@ -2027,7 +2028,7 @@ pasadahaciaatrás,desdelosmesesfijosdelartículo17delasBasesAdministrativas(pp.1
 dalastardías;LS−ESeslaholguratotal;lalibresemidecontraelESdelossucesores.Como
 loshitosdelFormularioE-25sonfechasfijas,uncaminoquenollegaasuhitotieneholgura
 negativayobligaareplanificar.
-ElcálculodelT-15usa219.727,83HH,168paquetesconentregable,lasdependenciasdel
+ElcálculodelT-15usa199.219,03HH,168paquetesconentregable,lasdependenciasdel
 Anexo7.ByelplazoderevisióndelCLIENTE.LaFigura 7.22representalacadenaquecontrola
 loshitos.H7yH12secierranconunasolaactaporetapa(T-15,sección5.5):elexpedientecon
 lascuatrosemanasfinalesdeevidencia,yenH12lagarantía4.3.4,seentregaelprimerdía
@@ -5268,8 +5269,8 @@ conunrangopropioparacadauno;losdemáspaquetesporsuclase,conunrangofundado
 portipoyunopropioparalosquetienenunriesgoidentificado;yseparalascurvasmensuales
 de implementación, soporte puente de la Etapa 1 y Operación. La cobertura del centro de
 operaciones,lamesadeservicioyelSOCsiguelasposicionesdimensionadasenelCapítulo4,
-Anexo4-W.7(Subdocumento4,anexos).Conesabase,eltotalprogramadoesde219.727,83
-HH(207.319,83HHdepaquetesyrestauracionespreviasaOperación,9.336HHdesoporte
+Anexo4-W.7(Subdocumento4,anexos).Conesabase,eltotalprogramadoesde199.219,03
+HH(186.811,03HHdepaquetesyrestauracionespreviasaOperación,9.336HHdesoporte
 puentedelaEtapa1y3.072HHdereservadelfrentedeconstrucciónydecalidad)yelmáximo
 mensualesde59plazasenelmes5,durantelaconstruccióndelaEtapa1;enlossolapamientos
 llegaa57enelmes16,cuandoelpasoaproduccióndelaEtapa1coincideconlaspruebasde

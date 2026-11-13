@@ -99,15 +99,15 @@ LafroXSpA
 2.8 Fase8.Operaciónysoporte(36meses) 104
 2.8.1 Cuenta8.1—Serviciosdeoperación 104
 2.8.2 Cuenta8.2—Mantenimiento 107
-2.8.3 Cuenta8.3—Innovacionesenoperación 109
-2.8.4 Cuenta8.4—Informesyobligacionesperiódicas 111
-2.8.5 Cuenta8.5—Capacitaciónytransferenciaenoperación 112
-2.9 Fase9.Cierre 113
-2.9.1 Cuenta9.1—Cierredelaimplementación 113
-2.9.2 Cuenta9.2—Salidaaltérminodelcontrato 114
-3 CartaGantt 116
-4 Criteriosvigentesdeprogramaciónyrecursos 167
-Referencias 167
+2.8.3 Cuenta8.3—Innovacionesenoperación 110
+2.8.4 Cuenta8.4—Informesyobligacionesperiódicas 112
+2.8.5 Cuenta8.5—Capacitaciónytransferenciaenoperación 113
+2.9 Fase9.Cierre 114
+2.9.1 Cuenta9.1—Cierredelaimplementación 114
+2.9.2 Cuenta9.2—Salidaaltérminodelcontrato 115
+3 CartaGantt 117
+4 Criteriosvigentesdeprogramaciónyrecursos 168
+Referencias 168
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
@@ -172,11 +172,11 @@ Tabla44 Diccionariodelacuenta7.3. 104
 Tabla45 Diccionariodelacuenta8.1. 106
 Tabla46 Diccionariodelacuenta8.2. 108
 Tabla47 Diccionariodelacuenta8.3. 110
-Tabla48 Diccionariodelacuenta8.4. 112
-Tabla49 Diccionariodelacuenta8.5. 113
-Tabla50 Diccionariodelacuenta9.1. 114
-Tabla51 Diccionariodelacuenta9.2. 115
-Tabla52 Períodoscontractualesehitos. 117
+Tabla48 Diccionariodelacuenta8.4. 113
+Tabla49 Diccionariodelacuenta8.5. 114
+Tabla50 Diccionariodelacuenta9.1. 115
+Tabla51 Diccionariodelacuenta9.2. 116
+Tabla52 Períodoscontractualesehitos. 118
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
@@ -189,23 +189,23 @@ Listadefiguras
 Figura1 VistadetalladadelaEDTcompletadelproyecto.Paraconsultareldetallepor
 fase,véanselasláminasdelasección«Estructurageneral»delSubdocumento7. 19
 Figura2 CartaGanttdelos56mesesporperíodocontractual,coninicioenfebrerode
-2027. 118
+2027. 119
 Figura3 CartaGanttresumidadelasEtapas1y2condependenciasvisibles,parte1de7
-(filas1a23de155),coninicioenfebrerode2027. 125
+(filas1a23de155),coninicioenfebrerode2027. 126
 Figura4 CartaGanttresumidadelasEtapas1y2condependenciasvisibles,parte2de7
-(filas24a45de155),coninicioenfebrerode2027. 130
+(filas24a45de155),coninicioenfebrerode2027. 131
 Figura5 CartaGanttresumidadelasEtapas1y2condependenciasvisibles,parte3de7
-(filas46a67de155),coninicioenfebrerode2027. 135
+(filas46a67de155),coninicioenfebrerode2027. 136
 Figura6 CartaGanttresumidadelasEtapas1y2condependenciasvisibles,parte4de7
-(filas68a89de155),coninicioenfebrerode2027. 142
+(filas68a89de155),coninicioenfebrerode2027. 143
 Figura7 CartaGanttresumidadelasEtapas1y2condependenciasvisibles,parte5de7
-(filas90a111de155),coninicioenfebrerode2027. 148
+(filas90a111de155),coninicioenfebrerode2027. 149
 Figura8 CartaGanttresumidadelasEtapas1y2condependenciasvisibles,parte6de7
-(filas112a133de155),coninicioenfebrerode2027. 153
+(filas112a133de155),coninicioenfebrerode2027. 154
 Figura9 CartaGanttresumidadelasEtapas1y2condependenciasvisibles,parte7de7
-(filas134a155de155),coninicioenfebrerode2027. 158
+(filas134a155de155),coninicioenfebrerode2027. 159
 Figura10 VistacríticadelacartaGantt:paquetesdelarutacríticaysusdependencias
-hastaH6yH11. 164
+hastaH6yH11. 165
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
@@ -5808,6 +5808,15 @@ ciónporseveridadyseguimientodetodassusactuacionesyestadoshastaelcierreconforme,
 con el escalamiento L1–L3 previsto (BTT, cap. 21, RT-21.15, p. 37). El cierre de cada ticket
 requerirálaconfirmacióndelapersonausuariaregistradaenél;mientrasfalte,permanecerá
 pendientedecierreysujetoalseguimientodelamesa(RT-21.17).
+ElpuestoNOCde8.1.1locubreladivisióndeNOC24 ×7deLafroX,concincooperadores
+nominadosyunadedicacióndeclaradade100%enelprimerañodeoperación,75%enel
+segundoy50%eneltercero.LadedicaciónsolobajaconactadelComitédeOperaciónycon
+lostresmesesanterioresdentrodelosnivelesdelartículo78delasBasesAdministrativas(p.
+40);siunnivelnosecumple,vuelveal100%acargodeLafroX.De20:00a22:00,delunesa
+sábado,elNOCatiendetambiénlamesa,conochooperadoresformadosenlosprocesosde
+bodega,rutaypreventa.Lospuestosdemesade8.1.2atiendende04:00a20:00ysumanun
+terceragenteenlasfranjasdemenordemandaenseptiembreydiciembredesdeelmes25
+(Subdocumento4,Anexo4-W.7).
 Elservicioconservaráunregistrohistóricodetodaslasactividadesdesoporte,vinculadasa
 suticket,conclasificación,actuaciones,responsablesyresultado(BTT,cap.21,RT-21.09,p.36).
 Elinformemensualdenivelesdeserviciode8.1.2analizarálastendenciasdelosprincipales
@@ -5823,6 +5832,14 @@ Los niveles 2 y 3 de la mesa los cubren especialistasdistintos de los puestos de
 8.1.2ydelpuestoNOCde8.1.1:eninfraestructurayterreno,elequipoSREdemantenimiento
 delhardwarede8.2.3,queyaatiendesalatécnica,racks,gabinetesdebordeyequipamientode
 terreno;enaplicación,elequipoDESdemantencióncorrectivade8.2.1,conapoyodelLíder
+LafroXSpA
+FormularioT-14
+Mediafirma: AlexAravena
+105
+
+---
+
+LafroXSpA FormularioT-14:Plandetrabajo,EDTycartaGantt
 deOperación/SRE.Elnivel4eselsoportedelfabricante,queLafroXgestionasintrasladarsu
 responsabilidad(BTT,sección21.3,p.37).Cuandolaresolucióndeunincidentelorequiere,un
 especialistadenivel2o3setrasladaaCuricó,Chillán,LosÁngelesoalsitioquecorresponda
@@ -5832,14 +5849,6 @@ su atención normal. El traslado no reemplaza la recuperación remota: el restab
 dentrodelosplazosdelartículo78delasBasesAdministrativas(p.40)sigueacargodelequipo
 enespera,lagestiónremotayelresponsabledelsitio(Subdocumento4,sección4.2.4.3),yel
 trasladosedestinaalaresolucióndefinitiva.Eltiempodelespecialistaseimputaalpaquete
-LafroXSpA
-FormularioT-14
-Mediafirma: AlexAravena
-105
-
----
-
-LafroXSpA FormularioT-14:Plandetrabajo,EDTycartaGantt
 delqueproviene;silostrasladosexcedenesacapacidad,LafroXloscubresincostoadicional
 paraelCLIENTE.PasajesyviáticosseincluyenenlaOfertaEconómica,porqueelCLIENTEno
 reembolsaviajesnitraslados(BA,arts.11.2y51,pp.9y29;BTT,cap.21,RT-21.16,p.37).
@@ -5894,6 +5903,19 @@ SRE Meses21a56.
 Lasmultasse
 descuentandel
 hitomensual.
+continúaenlapáginasiguiente
+LafroXSpA
+FormularioT-14
+Mediafirma: AlexAravena
+106
+
+---
+
+LafroXSpA FormularioT-14:Plandetrabajo,EDTycartaGantt
+Tabla45—continuación
+Código Paquetedetrabajo Entregable Criteriodeacepta-
+ción
+Resp. Período
 8.1.3 Serviciodeconti-
 nuidadypruebas
 semestralesdere-
@@ -5921,19 +5943,6 @@ deseismeses.
 SRE Meses21,27,
 33,39,45,51y
 54.
-continúaenlapáginasiguiente
-LafroXSpA
-FormularioT-14
-Mediafirma: AlexAravena
-106
-
----
-
-LafroXSpA FormularioT-14:Plandetrabajo,EDTycartaGantt
-Tabla45—continuación
-Código Paquetedetrabajo Entregable Criteriodeacepta-
-ción
-Resp. Período
 8.1.4 Actualizaciones
 anualesdelPlande
 Reversibilidaddu-
@@ -5992,9 +6001,17 @@ ses21a56.
 Estacuentadecontrolreúneeltrabajoquemantienelasoluciónsanayactualizada,sepa-
 radoportipo:software,ciberseguridadyhardware.
 LafroXdestinarálas2.304HHDESde8.2.4areducirladeudatécnicadurantelos36meses
-deOperación,equivalentesal1,7881%delas128.853,67HHdeesaetapa:2.304 ÷128.853,67
-× 100 = 1,7881%. Esa capacidad equivale a 2.304÷ 36 = 64 HH mensuales y 64× 12 = 768
+deOperación,equivalentesal1,7872%delas128.917,97HHdeesaetapa:2.304 ÷128.917,97
+× 100 = 1,7872%. Esa capacidad equivale a 2.304÷ 36 = 64 HH mensuales y 64× 12 = 768
 HHanuales,conseguimientoenelregistrocuantificadoyelinformetrimestralexistentes;
+LafroXSpA
+FormularioT-14
+Mediafirma: AlexAravena
+107
+
+---
+
+LafroXSpA FormularioT-14:Plandetrabajo,EDTycartaGantt
 la fracción corresponde al total del período (BTT, cap. 21, RT-21.21, p. 38; FormularioT-15,
 secciones4.2,4.3y6.2).
 El paquete 8.2.1 reparte sus 4.608 HH DES, es decir 4.608÷ 3 = 1.536 HH por año de
@@ -6004,14 +6021,6 @@ desempeñoquesoliciteelCLIENTE;lamantencióncorrectivaylanormativanolaconsumen.
 Lasotras768HHanualessonlacapacidadestimadaparalamantencióncorrectiva,incluido
 el mantenimiento de la Innovación 1 (FormularioT-19), y no son un tope: la corrección de
 defectosnotienecostoadicionalylaqueexcedaesaestimaciónlaabsorbeLafroX(BTT,sección
-LafroXSpA
-FormularioT-14
-Mediafirma: AlexAravena
-107
-
----
-
-LafroXSpA FormularioT-14:Plandetrabajo,EDTycartaGantt
 21.4,pp.37–38).Labolsanoutilizadaenunañonosepierdeyseacumulaalañosiguiente;en
 elterceraño,elComitédeOperaciónprogramaelusodelsaldoacumuladodentrodelperíodo
 deOperación.Lashorasqueexcedanlabolsadisponibleseliquidanconlatarifadeclarada
@@ -6050,6 +6059,19 @@ prohibida,ycada
 cambiotienesu
 registrocompleto.
 DES Meses21a56.
+continúaenlapáginasiguiente
+LafroXSpA
+FormularioT-14
+Mediafirma: AlexAravena
+108
+
+---
+
+LafroXSpA FormularioT-14:Plandetrabajo,EDTycartaGantt
+Tabla46—continuación
+Código Paquetedetrabajo Entregable Criteriodeacepta-
+ción
+Resp. Período
 8.2.2 Mantenimiento
 deciberseguridad
 durantelos36me-
@@ -6081,19 +6103,6 @@ meses28,40y
 enmeses26,
 32,38,44,50y
 55.
-continúaenlapáginasiguiente
-LafroXSpA
-FormularioT-14
-Mediafirma: AlexAravena
-108
-
----
-
-LafroXSpA FormularioT-14:Plandetrabajo,EDTycartaGantt
-Tabla46—continuación
-Código Paquetedetrabajo Entregable Criteriodeacepta-
-ción
-Resp. Período
 8.2.3 Mantenimiento
 delhardwaredu-
 rantelos36meses
@@ -6159,6 +6168,19 @@ suinformeysus
 correcciones.
 SRE Semestral,
 meses21a56.
+continúaenlapáginasiguiente
+LafroXSpA
+FormularioT-14
+Mediafirma: AlexAravena
+109
+
+---
+
+LafroXSpA FormularioT-14:Plandetrabajo,EDTycartaGantt
+Tabla46—continuación
+Código Paquetedetrabajo Entregable Criteriodeacepta-
+ción
+Resp. Período
 8.2.7 Ciclodevidadel
 equipamientodu-
 rantelos36meses
@@ -6180,14 +6202,6 @@ SRE Meses21a56.
 Estacuentadecontrolreúnelapartedelasinnovacionesqueocurredespuésdelmes21.
 Lasmetassonpropuestasdediseño.
 LaTabla 47presentasuspaquetes.
-LafroXSpA
-FormularioT-14
-Mediafirma: AlexAravena
-109
-
----
-
-LafroXSpA FormularioT-14:Plandetrabajo,EDTycartaGantt
 Tabla47 Diccionariodelacuenta8.3.Fuente:(BasesAdministrativas,arts.17.2–17.6yFormularioT-14,p.63);
 (BasesTécnicasTransversales,secciones17.2–17.6,pp.32–34).
 Código Paquetedetrabajo Entregable Criteriodeacepta-
@@ -6206,6 +6220,19 @@ contienedatos
 personales.
 CAL Desdeelmes
 21.
+continúaenlapáginasiguiente
+LafroXSpA
+FormularioT-14
+Mediafirma: AlexAravena
+110
+
+---
+
+LafroXSpA FormularioT-14:Plandetrabajo,EDTycartaGantt
+Tabla47—continuación
+Código Paquetedetrabajo Entregable Criteriodeacepta-
+ción
+Resp. Período
 8.3.2 Innovación3:revi-
 siónsemestralde
 parámetrosdurante
@@ -6259,19 +6286,6 @@ respuestaregistra-
 da.
 JP Mensual,desde
 elmes24.
-continúaenlapáginasiguiente
-LafroXSpA
-FormularioT-14
-Mediafirma: AlexAravena
-110
-
----
-
-LafroXSpA FormularioT-14:Plandetrabajo,EDTycartaGantt
-Tabla47—continuación
-Código Paquetedetrabajo Entregable Criteriodeacepta-
-ción
-Resp. Período
 8.3.5 Innovación5:des-
 plieguegradualpor
 rutas(INN-05.P4,
@@ -6288,6 +6302,19 @@ lascopiaspedidas
 seentregadentro
 dedosvisitas.
 SRE Meses22a26.
+continúaenlapáginasiguiente
+LafroXSpA
+FormularioT-14
+Mediafirma: AlexAravena
+111
+
+---
+
+LafroXSpA FormularioT-14:Plandetrabajo,EDTycartaGantt
+Tabla47—continuación
+Código Paquetedetrabajo Entregable Criteriodeacepta-
+ción
+Resp. Período
 8.3.6 Innovación5:blo-
 que4condicionado
 (INN-05.P5)
@@ -6320,7 +6347,7 @@ LaTabla 48presentasuspaquetes.
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-111
+112
 
 ---
 
@@ -6399,7 +6426,7 @@ LaTabla 49presentasuspaquetes.
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-112
+113
 
 ---
 
@@ -6467,7 +6494,7 @@ LaTabla 50presentasuspaquetes.
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-113
+114
 
 ---
 
@@ -6513,7 +6540,7 @@ LaTabla 51presentasuspaquetes.
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-114
+115
 
 ---
 
@@ -6554,7 +6581,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-115
+116
 
 ---
 
@@ -6607,7 +6634,7 @@ paquetesdelasección2.
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-116
+117
 
 ---
 
@@ -6643,7 +6670,7 @@ laEtapa2,yloshitosH1aH12.
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-117
+118
 
 ---
 
@@ -6724,7 +6751,7 @@ GanttProjectyde(BasesAdministrativas,art.17,pp.12–13yFormularioE-25)ydelasFigu
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-118
+119
 
 ---
 
@@ -6801,7 +6828,7 @@ programaciónenGanttProjectyde(BasesAdministrativas,art.17,pp.12–13yFormulario
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-119
+120
 
 ---
 
@@ -6862,7 +6889,7 @@ programaciónenGanttProjectyde(BasesAdministrativas,art.17,pp.12–13yFormulario
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-120
+121
 
 ---
 
@@ -6910,7 +6937,7 @@ programaciónenGanttProjectyde(BasesAdministrativas,art.17,pp.12–13yFormulario
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-121
+122
 
 ---
 
@@ -6942,7 +6969,7 @@ programaciónenGanttProjectyde(BasesAdministrativas,art.17,pp.12–13yFormulario
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-122
+123
 
 ---
 
@@ -6963,7 +6990,7 @@ programaciónenGanttProjectyde(BasesAdministrativas,art.17,pp.12–13yFormulario
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-123
+124
 
 ---
 
@@ -6977,7 +7004,7 @@ crítica;PT/H,losdemáspaquetesyloshitos.
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-124
+125
 
 ---
 
@@ -7049,7 +7076,7 @@ gráficaapartirdelaprogramaciónenGanttProjectydelasección2deesteformulario.
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-125
+126
 
 ---
 
@@ -7120,7 +7147,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-126
+127
 
 ---
 
@@ -7190,7 +7217,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-127
+128
 
 ---
 
@@ -7254,7 +7281,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-128
+129
 
 ---
 
@@ -7277,7 +7304,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-129
+130
 
 ---
 
@@ -7343,7 +7370,7 @@ elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2deestefo
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-130
+131
 
 ---
 
@@ -7414,7 +7441,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-131
+132
 
 ---
 
@@ -7483,7 +7510,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-132
+133
 
 ---
 
@@ -7534,7 +7561,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-133
+134
 
 ---
 
@@ -7562,7 +7589,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-134
+135
 
 ---
 
@@ -7619,7 +7646,7 @@ elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2deestefo
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-135
+136
 
 ---
 
@@ -7675,7 +7702,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-136
+137
 
 ---
 
@@ -7732,7 +7759,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-137
+138
 
 ---
 
@@ -7777,7 +7804,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-138
+139
 
 ---
 
@@ -7831,7 +7858,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-139
+140
 
 ---
 
@@ -7885,7 +7912,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-140
+141
 
 ---
 
@@ -7936,7 +7963,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-141
+142
 
 ---
 
@@ -8008,7 +8035,7 @@ elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2deestefo
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-142
+143
 
 ---
 
@@ -8075,7 +8102,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-143
+144
 
 ---
 
@@ -8141,7 +8168,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-144
+145
 
 ---
 
@@ -8186,7 +8213,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-145
+146
 
 ---
 
@@ -8240,7 +8267,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-146
+147
 
 ---
 
@@ -8273,7 +8300,7 @@ Fuente:elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2d
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-147
+148
 
 ---
 
@@ -8337,7 +8364,7 @@ elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2deestefo
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-148
+149
 
 ---
 
@@ -8403,7 +8430,7 @@ Figura7(continuación2de5).CartaGanttresumidadelasEtapas1y2condependenciasvisibl
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-149
+150
 
 ---
 
@@ -8468,7 +8495,7 @@ Figura7(continuación3de5).CartaGanttresumidadelasEtapas1y2condependenciasvisibl
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-150
+151
 
 ---
 
@@ -8504,7 +8531,7 @@ Figura7(continuación4de5).CartaGanttresumidadelasEtapas1y2condependenciasvisibl
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-151
+152
 
 ---
 
@@ -8538,7 +8565,7 @@ Figura7(continuación5de5).CartaGanttresumidadelasEtapas1y2condependenciasvisibl
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-152
+153
 
 ---
 
@@ -8598,7 +8625,7 @@ elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2deestefo
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-153
+154
 
 ---
 
@@ -8660,7 +8687,7 @@ Figura8(continuación2de5).CartaGanttresumidadelasEtapas1y2condependenciasvisibl
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-154
+155
 
 ---
 
@@ -8721,7 +8748,7 @@ Figura8(continuación3de5).CartaGanttresumidadelasEtapas1y2condependenciasvisibl
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-155
+156
 
 ---
 
@@ -8765,7 +8792,7 @@ Figura8(continuación4de5).CartaGanttresumidadelasEtapas1y2condependenciasvisibl
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-156
+157
 
 ---
 
@@ -8798,7 +8825,7 @@ Figura8(continuación5de5).CartaGanttresumidadelasEtapas1y2condependenciasvisibl
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-157
+158
 
 ---
 
@@ -8857,7 +8884,7 @@ elaboracióngráficaapartirdelaprogramaciónenGanttProjectydelasección2deestefo
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-158
+159
 
 ---
 
@@ -8915,7 +8942,7 @@ Figura9(continuación2de5).CartaGanttresumidadelasEtapas1y2condependenciasvisibl
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-159
+160
 
 ---
 
@@ -8974,7 +9001,7 @@ Figura9(continuación3de5).CartaGanttresumidadelasEtapas1y2condependenciasvisibl
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-160
+161
 
 ---
 
@@ -9014,7 +9041,7 @@ Figura9(continuación4de5).CartaGanttresumidadelasEtapas1y2condependenciasvisibl
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-161
+162
 
 ---
 
@@ -9052,7 +9079,7 @@ Figura9(continuación5de5).CartaGanttresumidadelasEtapas1y2condependenciasvisibl
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-162
+163
 
 ---
 
@@ -9073,7 +9100,7 @@ lasmarchasblancas,H6yH11,cuyasfechassonfijas.
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-163
+164
 
 ---
 
@@ -9145,7 +9172,7 @@ enGanttProjectydelasección2deesteformulario.
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-164
+165
 
 ---
 
@@ -9213,7 +9240,7 @@ delaprogramaciónenGanttProjectydelasección2deesteformulario.
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-165
+166
 
 ---
 
@@ -9239,7 +9266,7 @@ delaprogramaciónenGanttProjectydelasección2deesteformulario.
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-166
+167
 
 ---
 
@@ -9271,4 +9298,4 @@ citaneneltextoconsudocumentoyelartículo,capítulo,secciónocódigodelrequisito.
 LafroXSpA
 FormularioT-14
 Mediafirma: AlexAravena
-167
+168
