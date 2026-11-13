@@ -6001,8 +6001,8 @@ ses21a56.
 Estacuentadecontrolreúneeltrabajoquemantienelasoluciónsanayactualizada,sepa-
 radoportipo:software,ciberseguridadyhardware.
 LafroXdestinarálas2.304HHDESde8.2.4areducirladeudatécnicadurantelos36meses
-deOperación,equivalentesal1,7872%delas128.917,97HHdeesaetapa:2.304 ÷128.917,97
-× 100 = 1,7872%. Esa capacidad equivale a 2.304÷ 36 = 64 HH mensuales y 64× 12 = 768
+deOperación,equivalentesal2,1253%delas108.409,17HHdeesaetapa:2.304 ÷108.409,17
+× 100 = 2,1253%. Esa capacidad equivale a 2.304÷ 36 = 64 HH mensuales y 64× 12 = 768
 HHanuales,conseguimientoenelregistrocuantificadoyelinformetrimestralexistentes;
 LafroXSpA
 FormularioT-14
