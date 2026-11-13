@@ -20,7 +20,7 @@ La tasa ponderada es 0,8 × 0,9\,\% + 0,2 × 1,389\,\% = 0,998\,\% mensual, equi
 \subsection{Flujo de caja proyectado}
 \label{sec:e2-flujo-proyectado}
 
-La Tabla~\ref{tab:e2-flujo-anual} resume el flujo del proyecto por año de contrato. El detalle mes a mes está en la hoja \texttt{FLUJO CAJA NETO} del modelo, y su versión con financiamiento se analiza en la sección~\ref{sec:e2-curva-s}.
+La Tabla~\ref{tab:e2-flujo-anual} resume el flujo del proyecto por año de contrato. La Tabla~\ref{tab:e2-flujo-mensual} presenta el flujo completo mes a mes, y su versión con financiamiento se analiza en la sección~\ref{sec:e2-curva-s}.
 
 {\renewcommand{\LFXfiletefila}{\noalign{{\color{lafroxLinea}\hrule height 0.3pt}\nobreak}}%
 \begin{tablalafrox}{Flujo del proyecto por año de contrato, en UF. Las sumas pueden diferir en la última cifra por redondeo. Fuente: modelo financiero, hoja INDICADORES.}{tab:e2-flujo-anual}{Y R{2.8cm} R{2.8cm} R{2.8cm}}
@@ -35,6 +35,70 @@ La Tabla~\ref{tab:e2-flujo-anual} resume el flujo del proyecto por año de contr
 \end{tablalafrox}}
 
 El primer año es el único con flujo negativo, porque concentra la compra de la infraestructura y el inicio de los equipos antes de los primeros hitos. El segundo año tiene el mayor flujo, porque reúne siete de los doce hitos y el inicio de la operación. Desde el año 3, el flujo depende de la cuota fija de operación y se mantiene estable.
+
+La Tabla~\ref{tab:e2-flujo-mensual} detalla los 56 meses. Entre los meses 2 y 19 ingresan los hitos H1 a H11 del Formulario E-25; el mes 21 suma el hito H12 y la primera cuota de operación, y los meses 22 a 56 reciben solo la cuota. El flujo acumulado llega a su mínimo en el mes 9 y es positivo desde el mes 17 hasta el final del contrato.
+
+\begin{tablalafrox}{Flujo de caja mensual del proyecto, en UF. Las sumas pueden diferir en la última cifra por redondeo. Fuente: modelo financiero, hoja INDICADORES.}{tab:e2-flujo-mensual}{Y R{2.6cm} R{2.6cm} R{2.6cm} R{2.6cm}}
+  {\cab{Mes} & \cab{Ingresos} & \cab{Egresos} & \cab{Flujo del mes} & \cab{Acumulado}}
+  1 & 0,00 & 2.020,66 & $-$2.020,66 & $-$2.020,66 \\
+  2 & 8.210,41 & 15.775,12 & $-$7.564,71 & $-$9.585,37 \\
+  3 & 0,00 & 2.416,43 & $-$2.416,43 & $-$12.001,80 \\
+  4 & 7.184,10 & 3.111,02 & 4.073,09 & $-$7.928,72 \\
+  5 & 0,00 & 5.467,84 & $-$5.467,84 & $-$13.396,56 \\
+  6 & 10.263,01 & 4.241,92 & 6.021,09 & $-$7.375,48 \\
+  7 & 0,00 & 4.114,60 & $-$4.114,60 & $-$11.490,08 \\
+  8 & 0,00 & 2.637,29 & $-$2.637,29 & $-$14.127,37 \\
+  9 & 0,00 & 2.421,43 & $-$2.421,43 & $-$16.548,80 \\
+  10 & 10.263,01 & 2.264,38 & 7.998,62 & $-$8.550,18 \\
+  11 & 0,00 & 2.042,63 & $-$2.042,63 & $-$10.592,81 \\
+  12 & 10.263,01 & 1.379,79 & 8.883,21 & $-$1.709,59 \\
+  13 & 5.131,50 & 4.770,01 & 361,50 & $-$1.348,10 \\
+  14 & 5.131,50 & 4.702,31 & 429,19 & $-$918,91 \\
+  15 & 0,00 & 4.745,80 & $-$4.745,80 & $-$5.664,71 \\
+  16 & 10.263,01 & 5.453,99 & 4.809,01 & $-$855,70 \\
+  17 & 10.263,01 & 4.682,66 & 5.580,35 & 4.724,65 \\
+  18 & 10.263,01 & 3.726,11 & 6.536,89 & 11.261,55 \\
+  19 & 5.131,50 & 5.385,58 & $-$254,08 & 11.007,47 \\
+  20 & 0,00 & 5.475,11 & $-$5.475,11 & 5.532,36 \\
+  21 & 14.646,33 & 5.054,09 & 9.592,24 & 15.124,60 \\
+  22 & 4.383,32 & 4.294,30 & 89,02 & 15.213,61 \\
+  23 & 4.383,32 & 3.494,09 & 889,23 & 16.102,84 \\
+  24 & 4.383,32 & 3.316,26 & 1.067,06 & 17.169,90 \\
+  25 & 4.383,32 & 4.042,31 & 341,01 & 17.510,90 \\
+  26 & 4.383,32 & 3.651,07 & 732,25 & 18.243,16 \\
+  27 & 4.383,32 & 3.550,62 & 832,70 & 19.075,86 \\
+  28 & 4.383,32 & 3.642,70 & 740,62 & 19.816,48 \\
+  29 & 4.383,32 & 3.567,71 & 815,61 & 20.632,09 \\
+  30 & 4.383,32 & 3.600,11 & 783,21 & 21.415,30 \\
+  31 & 4.383,32 & 3.628,37 & 754,95 & 22.170,24 \\
+  32 & 4.383,32 & 3.728,91 & 654,41 & 22.824,66 \\
+  33 & 4.383,32 & 3.692,60 & 690,72 & 23.515,38 \\
+  34 & 4.383,32 & 3.597,76 & 785,56 & 24.300,94 \\
+  35 & 4.383,32 & 3.813,10 & 570,22 & 24.871,17 \\
+  36 & 4.383,32 & 3.652,59 & 730,73 & 25.601,90 \\
+  37 & 4.383,32 & 4.011,83 & 371,49 & 25.973,39 \\
+  38 & 4.383,32 & 3.583,86 & 799,46 & 26.772,85 \\
+  39 & 4.383,32 & 3.598,75 & 784,57 & 27.557,42 \\
+  40 & 4.383,32 & 3.634,03 & 749,29 & 28.306,71 \\
+  41 & 4.383,32 & 3.522,94 & 860,38 & 29.167,09 \\
+  42 & 4.383,32 & 3.627,99 & 755,33 & 29.922,43 \\
+  43 & 4.383,32 & 3.646,00 & 737,32 & 30.659,74 \\
+  44 & 4.383,32 & 3.728,48 & 654,84 & 31.314,59 \\
+  45 & 4.383,32 & 3.641,70 & 741,62 & 32.056,21 \\
+  46 & 4.383,32 & 3.565,38 & 817,94 & 32.874,14 \\
+  47 & 4.383,32 & 3.820,44 & 562,88 & 33.437,03 \\
+  48 & 4.383,32 & 3.651,68 & 731,64 & 34.168,67 \\
+  49 & 4.383,32 & 4.277,13 & 106,18 & 34.274,85 \\
+  50 & 4.383,32 & 3.585,86 & 797,46 & 35.072,31 \\
+  51 & 4.383,32 & 3.562,13 & 821,19 & 35.893,51 \\
+  52 & 4.383,32 & 3.640,41 & 742,91 & 36.636,42 \\
+  53 & 4.383,32 & 3.494,65 & 888,67 & 37.525,10 \\
+  54 & 4.383,32 & 3.665,27 & 718,05 & 38.243,15 \\
+  55 & 4.383,32 & 3.616,41 & 766,91 & 39.010,06 \\
+  56 & 4.383,32 & 3.839,70 & 543,62 & 39.553,68 \\
+  \midrule
+  \textbf{Total} & \textbf{260.429,58} & \textbf{220.875,90} & \textbf{39.553,68} & \\
+\end{tablalafrox}
 
 \subsection{VAN y TIR}
 \label{sec:e2-van-tir}
