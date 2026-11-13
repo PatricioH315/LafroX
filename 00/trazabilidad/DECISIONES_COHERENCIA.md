@@ -164,6 +164,6 @@ Suma ≈ 1 h 45 min más la decisión, dentro de RTO 4 h. No hay conmutación au
 - Decisión del usuario para bajar el costo de la Operación. Solo cambia el Anexo 4-W.7 (tabla de síntesis, dimensiones 15 y 16, y sección «Dimensiones 15–16»).
 - La mesa mantiene dos agentes en las franjas valle toda la operación. El tercer agente queda solo en septiembre y diciembre desde el mes 25 (meses 32, 35, 44, 47 y 56). En otros meses rige la regla del T-15, sección 5.6.
 - La franja de 20:00 a 22:00 de lunes a sábado la atiende el NOC de LafroX, con formación de ocho operadores (16 h y repasos de 8 h). La mesa con puestos propios atiende de 04:00 a 20:00. La hora cargada queda fuera de 20:00–22:00.
-- La posición NOC la cubre la división multicliente del SD1, con cinco operadores nominados y una dedicación declarada de 100/75/50 % por año de operación. Baja solo con acta del Comité de Operación y tres meses dentro de los niveles del artículo 78; si no, vuelve al 100 % a cargo de LafroX.
+- La posición NOC la cubre la división multicliente del SD1, con los seis operadores nominados del perfil NOC del T-15 y una dedicación declarada de 100/75/50 % por año de operación. Baja solo con acta del Comité de Operación y tres meses dentro de los niveles del artículo 78; si no, vuelve al 100 % a cargo de LafroX.
 - Dotación: 17 personas en operación normal (mesa 7 + NOC/SOC 10), 19 en peak hasta el mes 24 y 20 desde el mes 25.
 - Arrastre pendiente, fuera del SD4: T-14 y T-15 (paquetes 8.1.1 y 8.1.2, perfiles 17, 30 y 31O a 0,667/0,80 UF/HH), modelo financiero y Entregable 2.
