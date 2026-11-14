@@ -76,20 +76,23 @@ if __name__ == '__main__':
     print('mesa total', round(sum(H['MESA'].values()), 2), 'NOC', round(sum(H['NOC'].values()), 2), 'SOC', round(sum(H['SOC'].values()), 2))
 
 
-GROUPS = ['Desarrollo', 'Arq', 'NOC', 'SRE', 'Calidad', 'Seguridad', 'Implantacion']
+GROUPS = ['Desarrollo', 'Arq', 'NOC', 'SRE', 'Calidad', 'Seguridad', 'Implantacion', 'Mesa', 'SOC']
+PUENTE_MESA = 5664 / 9336   # 4.2.2: puente N1 5.664 HH y puente NOC 3.672 HH (tab_T15_asignacion_partidas)
 def group_hours():
-    """HH por grupo y mes según la regla de reparto del T-15 (sección 4.1) y las
+    """HH por grupo de origen y mes (14-11-2026: mesa y SOC como orígenes propios) según la regla de reparto del T-15 (sección 4.1) y las
     ventanas de tab_T15_2. La suma de los 56 meses coincide con las 220.023 HH."""
     G = {g: {} for g in GROUPS}
     for m in range(1, 57):
         raw = {
             'Desarrollo': H['JP'][m] + H['DES'][m],
             'Arq': H['ARQ'][m] + H['DAT'][m],
-            'NOC': H['NOC'][m] + H['MESA'][m] + H['PUENTE'][m] + H['RED'][m] + H['SOC'][m] * 2 / 6,
+            'NOC': H['NOC'][m] + H['PUENTE'][m] * (1 - PUENTE_MESA) + H['RED'][m],
             'SRE': H['SRE'][m],
             'Calidad': H['CAL'][m],
-            'Seguridad': H['SEG'][m] + H['SOC'][m] * 4 / 6,
+            'Seguridad': H['SEG'][m],
             'Implantacion': H['IMP'][m],
+            'Mesa': H['MESA'][m] + H['PUENTE'][m] * PUENTE_MESA,   # agentes de la mesa de servicios, fuera de la planta técnica (SD1)
+            'SOC': H['SOC'][m],                                    # analistas del SOC, dotación adicional (SD1, sección 1.5)
         }
         for g in GROUPS: G[g][m] = raw[g]
     return G
