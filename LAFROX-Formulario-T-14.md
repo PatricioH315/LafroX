@@ -5827,7 +5827,7 @@ Guillermo Castillo, Líder de Operación / SRE, es el gerente de servicio dedica
 Operación:con100%dededicaciónenlosmeses21a56,eslacontrapartepermanentedel
 CLIENTE,representaaLafroXenelComitédeOperaciónmensualyrespondeporlosniveles
 deservicio,losincidentesyelplandemejoracontinua(BA,art.71,p.37;BTT,cap.21,RT-21.02,
-p.36;Subdocumento1,Tabla1.6).
+p.36;FormularioT-15,sección5.7).
 Los niveles 2 y 3 de la mesa los cubren especialistasdistintos de los puestos de mesa de
 8.1.2ydelpuestoNOCde8.1.1:eninfraestructurayterreno,elequipoSREdemantenimiento
 delhardwarede8.2.3,queyaatiendesalatécnica,racks,gabinetesdebordeyequipamientode

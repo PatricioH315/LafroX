@@ -2048,10 +2048,13 @@ LafroXSpA FormularioT-15:Nivelaciónderecursos
 Paraelcontraste,sedistribuyenlas202.108,62HHporperfilyventanadecadapartida.Se
 aplicaelcalendariodecoberturaaMesaN1,NOCySOC,elrepartoprevistoalacompañamiento
 y los días de ejecución a las pruebas de certificación que cruzan meses. Cuando no hay un
-repartomensualespecíficoporperfil,seusaelpromediodesuventana.Así,encadameslas
-plazaspor128HHcubrenlasHHdelaTabla 11.Lasección5.7identifica,grupoporgrupo,los
-perfilesquecubrencadamáximo.LareservadecorreccionesdeEtapa1semantieneexclusiva,
-ylacoberturadiariaseasignaporpersona,dedicaciónyturno.
+repartomensualespecíficoporperfil,seusaelpromediodesuventana.LasHHdelJefede
+Proyecto, el Líder de Desarrollo y el Líder Funcional en la implementación, y las del Líder
+deOperación/SREenlaOperación,seprogramanmesamesdentrodelaventanadecada
+partida, de modo que cada uno tenga al menos 128 HH en cada mes (sección 5.7). Así, en
+cadameslasplazaspor128HHcubrenlasHHdelaTabla 11.Lasección5.7identifica,grupo
+por grupo, los perfiles que cubren cada máximo. La reserva de correcciones de Etapa 1 se
+mantieneexclusiva,ylacoberturadiariaseasignaporpersona,dedicaciónyturno.
 4.5 Reservasdecontingenciaydegestión
 Las 202.108,62 HH de la sección 4.3 son la línea base programada e incluyen 3.072 HH
 protegidasparacorreccionesdelaEtapa1.Esacapacidadseusasoloparaesascorrecciones.
@@ -2077,8 +2080,6 @@ tempranas,tardíasyholguras.
 • Calendario.Elmes1correspondealsupuestodefebrerode2027.Eldesarrolloylarevisión
 administrativausanelcalendariointernodelunesaviernesyferiadosprevistos;entresus
 exclusionesestánel21dejuniode2027,el20dejuniode2028,el27deoctubreyel1de
-noviembrede2028.EstecalendariorequiereconfirmaciónconelCLIENTEantesdeaprobar
-la línea base; cualquier diferencia obliga a recalcular. NOC, mesa y acompañamiento
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
@@ -2087,6 +2088,8 @@ Mediafirma: AlexAravena
 ---
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
+noviembrede2028.EstecalendariorequiereconfirmaciónconelCLIENTEantesdeaprobar
+la línea base; cualquier diferencia obliga a recalcular. NOC, mesa y acompañamiento
 conservan sus calendarios de servicio de la sección 4.1; no se transforman en trabajo
 administrativodelunesaviernes.
 • Duración. La duración de cada paquete es⌈𝐻𝐻/(6,4 𝑛máx)⌉ días hábiles, con el equipo
