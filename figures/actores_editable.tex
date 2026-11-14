@@ -1,0 +1,8 @@
+% Figura editable: actores de la Tabla 3.A.12a y su acceso al sistema.
+\begin{tikzpicture}[font=\sffamily\footnotesize,>=Stealth]
+\foreach \nombre [count=\i] in {Preventista,Conductor propio,Conductor externo,Preparador,Cliente tradicional,Cliente moderno,Empresa transportista,Proveedor,Jefa de Calidad,Gerente Comercial,Gerente de Finanzas,Planificador de Rutas,Jefe de TI,Gerente de Operaciones,Jefa de Bodega} {
+  \node[draw=blue!55!black,rounded corners=2pt,fill=blue!7,minimum width=4cm,minimum height=0.40cm,inner sep=1pt,anchor=east] (a\i) at (0,-\i*0.53) {\nombre};
+  \draw[->,blue!55!black,thin] (a\i.east) -- (0.7,-\i*0.53) -- (0.7,-4.24) -- (1.1,-4.24);
+}
+\node[draw,rounded corners,fill=gray!8,align=center,minimum width=3.1cm,minimum height=1.6cm,anchor=west] at (1.1,-4.24) {Sistema Integral de\\Gestión Logística\\Puelche};
+\end{tikzpicture}

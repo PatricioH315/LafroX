@@ -57,6 +57,80 @@ Innovaciones ausentes en el SD3 (síntesis del informe). &
 Se incorporaron las cinco innovaciones en las secciones 3.1 y 3.4, con remisión al Subdocumento 13 y al Formulario T-19. Se distinguió el modelo de vida útil ofertado de su uso operativo por lote sin conexión. Los paquetes y fechas se mantienen en sus documentos de planificación. \\
 \end{longtable}
 
+\section*{Verificación de cinco observaciones — 14 de noviembre de 2026}
+
+El contraste se realizó con las ramas remotas terminadas en \texttt{-corrigiendo}: SD4 en \texttt{82ef4a20}, SD9 en \texttt{7483619d} y SD13 en \texttt{dd509aa1}. La consulta de ramas de GitHub no encontró una rama corregida de SD10. Los resultados siguientes no acreditan la ejecución de pruebas ni sustituyen la revisión humana de la oferta.
+
+\begin{longtable}{@{}P{0.17\textwidth}P{\dimexpr0.83\textwidth-2\tabcolsep\relax}@{}}
+\hline
+\textbf{Observación} & \textbf{Resultado y evidencia} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Observación} & \textbf{Resultado y evidencia} \\
+\hline
+\endhead
+\hline
+\endfoot
+SD3-14 & Las cinco innovaciones coinciden en alcance con SD13, tabla 13.1 y secciones 13.1--13.5, y con las fichas T-19. El modelo cinético corresponde al RT-05.30; el aporte adicional integra cálculo sin enlace y uso por lote. Se precisa en la introducción de 3.4 que el borde acumula carga en cámara y la plataforma central reconstruye la historia, incluida la serie del viaje. \\
+SD3-11 & El alta conectada con OTP, aprobación de Despacho, permisos de ruta y sustitución concuerdan con SD4, 4.1.18. Se añade el compromiso de mantener suplentes enrolados y se precisa que AL-ID-01 está en el Anexo 4-M. La ejecución de la prueba es posterior. \\
+SD3-10 & Sin cambios: cuerpo 3.2.5, Anexo 3.J y T-17, R18-04, coinciden en 90 \% en el mes 15, 93 \% en el mes 19 y más de 95 \% sin redondeo en el mes 32. T-17 ejemplifica que 95,00 \% no cumple. \\
+SD3-09 & Los doce nombres del cuerpo y de la Tabla 3.4 coinciden con SD4, Anexo 4-D, incluidos M10 Analítica y M11 Canal moderno. Las figuras 3.4 y 3.7 usan algunas etiquetas abreviadas; su revisión y unificación visual queda vinculada al rediseño pendiente de SD3-01 y SD3-02. \\
+SD3-12 & Pendiente de contraste con SD10: no existe una rama remota de SD10 terminada en \texttt{-corrigiendo}. El SD3 mantiene la remisión futura y no se afirma que la dotación de mesa y NOC esté cerrada. La rama corregida de SD4 no sustituye el contraste solicitado con SD10. \\
+\end{longtable}
+
+\section*{Cambios acotados — 14 de noviembre de 2026}
+
+\begin{longtable}{@{}P{0.17\textwidth}P{\dimexpr0.83\textwidth-2\tabcolsep\relax}@{}}
+\hline
+\textbf{Observación} & \textbf{Trabajo y límites} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Observación} & \textbf{Trabajo y límites} \\
+\hline
+\endhead
+\hline
+\endfoot
+SD3-02 & Las figuras 3.5 y 3.7 se reconstruyen en fuentes TikZ editables, con actores y relaciones contrastados con la Tabla 3.A.12a y SD4, Anexo 4-D. La figura 3.4 conserva la vista original y una capa editable corrige visualmente el rótulo; el texto del PDF de origen conserva la errata y su rediseño sigue pendiente en SD3-01. \\
+SD3-13 & El nivel de uso de IA en las figuras de 3.4 queda «Por confirmar», sin atribuir una revisión no acreditada. La pauta de \texttt{PAUTA\_REVISION\_HUMANA\_SD3.md} asigna comprobaciones a los responsables ya identificados; su ejecución y confirmación siguen pendientes. \\
+SD3-08 & Se amplían los fundamentos de D-02, D-04, D-07, D-08, D-11 y D-12, conservando decisiones y fuentes. D-01, D-03, D-05, D-06, D-09 y D-10 mantienen su explicación y referencias existentes. \\
+SD3-07 & La sección 3.4.2 desarrolla integración, escalado, desempeño y seguridad con límites y verificaciones, en correspondencia con SD4, Anexos 4-D, 4-E y 4-M y sección 4.2.6. No se declara ejecutada una prueba. \\
+SD3-03 & La Tabla 3.A.1 contiene 134 filas con origen no vacío. Se corrigieron el localizador de RF-09.09 y la referencia de RT-10.05 ajena a la ventana de entrega de RF-12.10, contrastados con el Caso de la rama corregida de SD4. Se ajustan anchos para los resultados extensos. La revisión humana semántica completa de las fuentes y del catálogo relacionado permanece pendiente de confirmación. \\
+\end{longtable}
+
+\section*{Trabajo amplio — 14 de noviembre de 2026}
+
+El detalle, las versiones y los límites de la revisión se conservan en \texttt{REVISION\_AMPLIA\_SD3\_2026-11-14.md}.
+\begin{longtable}{@{}P{0.17\textwidth}P{\dimexpr0.83\textwidth-2\tabcolsep\relax}@{}}
+\hline
+\textbf{Observación} & \textbf{Resultado y pendientes} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Observación} & \textbf{Resultado y pendientes} \\
+\hline
+\endhead
+\hline
+\endfoot
+SD3-05 & El recuento conserva 58 críticos, 157 altos y 55 medios sobre 270. El cotejo de familias no muestra prioridad superior a todos los techos asociados; las siete relaciones múltiples fueron examinadas. El contraste mecánico con T-13 no detectó prioridades distintas. No se rebajaron valores para cumplir una proporción artificial. \\
+SD3-01 & Las Figuras 3.2 y 3.4 se reconstruyen en TikZ y la Figura 3.9 muestra el emplazamiento por dominio, de acuerdo con SD4, 4.2.2 y Anexo 4-N. Las vistas son síntesis y precisan que las relaciones no confieren permisos. La revisión humana de diagramas permanece pendiente. \\
+SD3-06 & Se reducen cinco patrones de pila repetida en 40 filas funcionales del T-12 y se remite el inventario técnico a SD4 y T-11. Queda pendiente la revisión semántica de la columna completa, incluidas las condiciones de los requisitos transversales. \\
+SD3-04 & El cotejo mecánico encuentra 644 fichas y nueve alias para las 653 filas de T-12, sin diferencia de estado o paquete en las fichas comparadas. Se agregan en T-12 los cinco enlaces absorbentes RF-19.01--RF-19.05. La matriz de SD9 conserva una instantánea anterior y debe conciliarse. La suficiencia individual de origen, paquete, prueba y criterio no queda acreditada por este recuento y requiere revisión semántica y pruebas previstas. \\
+\end{longtable}
+
+\section*{Cotejo adicional de requisitos}
+
+Se generó \texttt{auditoria\_pendientes\_sd3.csv} con las 653 filas, los orígenes y criterios disponibles, el nombre de las tareas del T-14 y la comparación con el T-13. La correspondencia textual no reemplaza el examen semántico individual. Los 270 criterios del catálogo coinciden con la instantánea T-13 al normalizar formato y puntuación; siete estados y dos orígenes requieren actualización en SD9. La lista individual está en \texttt{DEPENDENCIAS\_SD9\_T13.md}. Las cuentas 3.10 y 8.3 deben bajarse a paquetes hoja cuando corresponda.
+
+Se reconocen siete cumplimientos parciales adicionales: RF-18.03 y RT-16.23 por apertura de SMS; RNF-23.02 y RT-08.12 por prestaciones de equipos no acreditadas; RT-03.18 y RT-08.14 por gestión remota incompleta; RT-11.04 por remediación durante congelamientos. La distribución actual es 602 «Cumple», 29 «Cumple parcialmente» y 22 «No cumple». Las fuentes y el detalle permanecen en cada fila del T-12. El cotejo semántico individual de todos los requisitos, los protocolos y los catálogos relacionados sigue pendiente; este inventario no lo certifica. El SD10 desarrollará posteriormente sus servicios de acuerdo con el SD3.
+
+\section*{Cotejo focalizado de cadena y componentes}
+
+El contraste con SD4 \texttt{82ef4a20}, SD7 y T-13 de SD9 \texttt{7483619d} precisó en T-12 la intervención de Inventario en RF-01.11 y RF-03.03, Analítica en RF-04.08, Preventa y Canal moderno en RF-12.04, la ventana de entrega en RF-12.16 y la redacción de RF-19.05. RF-03.03 incorpora el paquete 3.4.2; RT-03.10 explicita el turno de 14 horas en reparto y agrega el paquete 3.4.8. En el inventario se distinguen los requisitos RT que también incorporan el Caso, capítulo 15. Los cambios deben conciliarse posteriormente con T-13; su presencia no acredita pruebas ejecutadas.
+
+La descripción de los paquetes 3.3.5 y 3.6.4 del T-14 no cubre por sí sola todas las funciones de reglas, gestión y generación documental que aparecen asignadas a ellos en RF-17.02, RF-17.08, RF-17.09 y RT-16.14. Los límites y dependencias constan en \texttt{DEPENDENCIAS\_SD9\_T13.md}. No se ha concluido el cotejo semántico individual de las 653 cadenas ni de toda la columna de componentes; el inventario conserva esa condición sin atribuir revisión humana.
+
 \section*{Cambios asociados registrados en la rama}
 
 \begin{longtable}{@{}P{0.33\textwidth}P{\dimexpr0.67\textwidth-2\tabcolsep\relax}@{}}

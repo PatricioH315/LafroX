@@ -240,7 +240,7 @@ La Figura 3.2 distingue el recorrido del lote de la información que se conserva
 \renewcommand{\thefigure}{3.2}
 \noindent\begin{minipage}{\linewidth}
 \centering
-\includegraphics[width=0.68\linewidth,trim=0 207 0 0,clip]{figures/figura 3.2.pdf}
+\resizebox{0.97\linewidth}{!}{\input{figures/trazabilidad_editable.tex}}
 \captionof{figure}[Información para trazabilidad y cadena de frío.]{Información para trazabilidad y cadena de frío. Fuente: (Bases Técnicas del caso, secciones 4.1 y 4.9, pp. 7 y 9) y del Anexo 3.A.}
 \label{fig:lote}
 \end{minipage}
@@ -276,7 +276,7 @@ La plataforma conserva una cola local durable e idempotente: cada transacción l
 
 La solución se interpreta a través de la jornada de Puelche y de los actores identificados en el Subdocumento 2. Su valor depende de que la información se capture donde ocurre la operación y pueda seguirse hasta los resultados del CLIENTE.
 
-El seguimiento de vencimientos y la hoja de negocio se integran al terminal de preventa; la reproducción de incidentes usa la evidencia de los terminales y se valida en ambientes de prueba; la vida útil estimada combina la historia térmica del lote con cálculo local y reconstrucción central; y el tramo variable utiliza los datos de entregas y costos operativos sin modificar los niveles de servicio. Los componentes y controles de cada innovación se detallan en el Subdocumento 13.
+El seguimiento de vencimientos y la hoja de negocio se integran al terminal de preventa; la reproducción de incidentes usa la evidencia de los terminales y se valida en ambientes de prueba. Para la vida útil estimada, el borde acumula la carga térmica en cámara sin enlace y la plataforma central reconstruye la historia del lote, incluida la serie del viaje, para apoyar la decisión de Calidad. El tramo variable utiliza los datos de entregas y costos operativos sin modificar los niveles de servicio. Los componentes y controles de cada innovación se detallan en el Subdocumento 13.
 
 \subsection{Aplicación en la jornada operacional}
 
@@ -316,7 +316,7 @@ La vista se lee de arriba hacia abajo y tiene cuatro capas. Arriba están los qu
 {\fontsize{8pt}{10pt}\selectfont LafroX SpA\hfill Introducci\'on al Alcance de la Soluci\'on}\par
 \vspace{2pt}\hrule\vspace{4pt}
 \centering
-\includegraphics[width=0.97\linewidth,trim=0 395 0 0,clip]{figures/Diagrama de la solución.pdf}
+\resizebox{0.96\linewidth}{!}{\input{figures/vista_general_editable.tex}}
 \captionsetup{skip=4pt}
 \captionof{figure}[Vista general de la solución.]{Vista general de la solución. Fuente: elaboración a partir del Anexo 3.A, del Formulario T-12 y de (Bases Técnicas del caso, cap. 5, p. 10).}
 \label{fig:arquitectura-general}
@@ -326,20 +326,20 @@ La vista se lee de arriba hacia abajo y tiene cuatro capas. Arriba están los qu
 \end{landscape}
 \clearpage
 
-\textbf{Emplazamiento de la solución.} Los centros de distribución ejecutan localmente recepción, inventario, preparación y despacho. Las plataformas de \textit{cross-docking} registran los movimientos de inventario del sitio y los sincronizan con el consolidado. En los camiones, el terminal de reparto captura la evidencia de entrega y el equipo local registra la información térmica. En la nube se ejecuta el motor de optimización de rutas y se consolidan los datos de operación y los indicadores. El Anexo 4-N del Subdocumento 4 relaciona estas capacidades con sus componentes y su ubicación.
+\textbf{Emplazamiento de la solución.} Los centros de distribución ejecutan localmente recepción, inventario, preparación y despacho. Las plataformas de \textit{cross-docking} registran los movimientos de inventario del sitio y los sincronizan con el consolidado. En los camiones, el terminal de reparto captura la evidencia de entrega y el equipo local registra la información térmica. En la nube se ejecuta el motor de optimización de rutas y se consolidan los datos de operación y los indicadores. La Figura 3.9 resume la ubicación; el Anexo 4-N del Subdocumento 4 relaciona estas capacidades con sus componentes y su ubicación.
 
 La Figura 3.5 presenta la primera parte: los actores que interactúan con la solución.
 
 \renewcommand{\thefigure}{3.5}
 \noindent\begin{minipage}{\linewidth}
 \centering
-\includegraphics[height=0.64\textheight,trim=3 7 50 3,clip]{figures/DIAGRAMA-ACTORES.pdf}
+\resizebox{!}{0.57\textheight}{\input{figures/actores_editable.tex}}
 \captionof{figure}[Actores que interactúan con la solución.]{Actores que interactúan con la solución. Fuente: elaboración a partir del Anexo 3.A y de la sección «Actores y Grupos de Interés» del Subdocumento 2.}
 \label{fig:arquitectura-actores}
 \end{minipage}
 \par\medskip
 
-La figura muestra a los usuarios de terreno, clientes, proveedores, transportistas y responsables de gestión que participan en la solución. Cada color identifica un actor y permite seguir sus relaciones en las vistas siguientes.
+La figura muestra a los usuarios de terreno, clientes, proveedores, transportistas y responsables de gestión que participan en la solución. Las relaciones funcionales y sus límites se detallan en las vistas y la tabla siguientes.
 
 Los quince actores son Preventista, Conductor propio, Conductor externo, Preparador, Cliente del canal tradicional, Cliente del canal moderno, Empresa transportista, Proveedor, Jefa de Calidad, Gerente Comercial, Gerente de Finanzas, Planificador de Rutas, Jefe de TI, Gerente de Operaciones y Jefa de Bodega. Son distintos de los diecinueve interesados en el proyecto del Subdocumento 2: participar en el gobierno, formular una necesidad o recibir un informe no confiere acceso a una aplicación. El Anexo 3.I, Tabla 3.A.12a, relaciona cada actor de la figura con su interfaz, interacción, módulo y etapa.
 
@@ -373,7 +373,7 @@ La Figura 3.7 presenta la tercera parte: la relación entre las interfaces y los
 \renewcommand{\thefigure}{3.7}
 \noindent\begin{minipage}{\linewidth}
 \centering
-\includegraphics[trim=0 390 0 0,clip,angle=90,height=0.885\textheight]{figures/DIAGRAMA- MODULOS.pdf}
+\resizebox{0.94\linewidth}{!}{\input{figures/modulos_editable.tex}}
 \captionof{figure}[Relación entre interfaces y módulos de negocio.]{Relación entre interfaces y módulos de negocio. Fuente: elaboración a partir del Anexo 3.A y del Formulario T-12.}
 \label{fig:arquitectura-modulos}
 \end{minipage}
@@ -393,6 +393,16 @@ La Figura 3.8 presenta la cuarta parte: las relaciones con los sistemas externos
 \par\medskip
 
 La figura muestra las relaciones con el ERP, Transbank y el sistema de geolocalización. El ERP conserva el registro contable y la emisión tributaria; Transbank representa los pagos, y la geolocalización aporta mapas y posición para rutas y telemetría.
+
+\clearpage
+\renewcommand{\thefigure}{3.9}
+\noindent\begin{minipage}{\linewidth}
+\centering
+\resizebox{0.95\linewidth}{!}{\input{figures/emplazamiento_editable.tex}}
+\captionof{figure}[Emplazamiento de la solución.]{Emplazamiento de la solución. Fuente: Subdocumento 4, sección 4.2.2 y Anexo 4-N.}
+\label{fig:emplazamiento-sd3}
+\end{minipage}
+\par\medskip
 
 \Needspace{18\baselineskip}
 La Tabla 3.4 resume cómo las capacidades del alcance se distribuyen entre los módulos que presenta la Figura 3.7. No sustituye las relaciones de acceso, interfaces e integraciones de las Figuras 3.4 a 3.8.
@@ -416,10 +426,10 @@ El \textit{cross-docking} se controla mediante inventario, preparación, rutas y
 Las figuras muestran qué hace la solución. Cómo se comporta bajo la operación de Puelche depende de cuatro atributos transversales, comprometidos en el catálogo no funcional del Anexo 3.B:
 
 \begin{itemize}
-  \item \textbf{Interoperabilidad.} El ERP sigue siendo el registro contable y el único emisor tributario. La solución se integra con él, con Transbank, con el sistema de geolocalización y, en la Etapa 2, con las cadenas del canal moderno (Figura 3.8). La cola durable e idempotente de la sección 3.3.3 asegura que ninguna integración pierda ni duplique transacciones tras un corte.
-  \item \textbf{Escalabilidad.} En septiembre las entregas diarias pasan de cerca de 1.400 a cerca de 2.600. Las capas de aplicación e integración escalan horizontalmente de forma automática, con umbrales y techo declarados (RNF-19.02). La capacidad se calcula con usuarios concurrentes y transacciones por segundo (RNF-19.01) y se prueba en PREPROD con 1,5 veces el peak y con estrés hasta el punto de quiebre (RNF-19.04). Un sitio nuevo se incorpora por parametrización, sin rediseño (Formulario T-12, RT-02.12).
-  \item \textbf{Desempeño.} Los tiempos se fijan en el puesto de trabajo: 1 segundo para confirmar una línea de picking (RNF-05.01), 1,5 segundos para registrar una línea de pedido (RNF-03.01) y 2 segundos para consultar stock y crédito (RNF-03.02). La analítica se procesa separada del motor transaccional, de modo que un informe no frena la operación (RNF-11.02). El primer cuello de botella previsto no es la plataforma, sino la emisión de guías del ERP en la madrugada; escalar la solución no acelera ese emisor, por lo que se mide y se controla con umbrales y degradación controlada.
-  \item \textbf{Seguridad.} Los datos viajan cifrados con TLS 1.3 y se guardan cifrados con claves gestionadas (RNF-14.01 y RNF-14.02). Las sesiones son breves y revocables (RNF-15.01 y RNF-15.02). Los eventos de seguridad se correlacionan en una plataforma SIEM (RNF-14.04). La cadena de integración bloquea el despliegue ante hallazgos críticos en el código, sus dependencias o sus contenedores (RNF-14.07), y un tercero independiente ejecuta pruebas de intrusión cada año y antes de cada paso a producción (RNF-14.06). Los representantes externos solo ven los datos de su organización.
+  \item \textbf{Interoperabilidad.} El ERP conserva el registro contable y es el único emisor tributario. La solución intercambia información con él mediante la capa de integración, con Transbank para pagos y con geolocalización para rutas; en la Etapa 2 incorpora las cadenas del canal moderno (Figura 3.8). Cada transacción pendiente conserva su identificador y se reintenta y concilia al restablecer la conexión, según RNG-12. Una cola no reemplaza la emisión de una guía: si no existe una guía válida, se requiere su emisión o reemisión autorizada por el ERP. La verificación comprende corte, reintento y conciliación, y comprueba que no haya pérdida ni efectos duplicados (SD4, Anexos 4-E y 4-M).
+  \item \textbf{Escalabilidad.} En septiembre las entregas diarias pasan de cerca de 1.400 a cerca de 2.600. Aplicación e integración escalan horizontalmente dentro de los umbrales y techo de RNF-19.02; el dimensionamiento considera concurrencia y transacciones por segundo (RNF-19.01). En PREPROD se ensaya 1,5 veces el peak y se aplica estrés hasta identificar el punto de quiebre (RNF-19.04). La parametrización permite incorporar un sitio sin rediseñar la solución, pero su capacidad y conectividad deben verificarse (T-12, RT-02.12; SD4, 4.2.6).
+  \item \textbf{Desempeño.} Se comprometen 1 segundo para confirmar una línea de picking (RNF-05.01), 1,5 segundos para registrar una línea de pedido (RNF-03.01) y 2 segundos para consultar stock y crédito (RNF-03.02). Las pruebas miden cada operación en su contexto de uso y bajo la carga prevista. La analítica se separa del procesamiento transaccional (RNF-11.02); esa separación no elimina los límites del ERP. La emisión de guías se mide y controla como dependencia en la madrugada, con el tratamiento de degradación definido en SD4, 4.2.6.
+  \item \textbf{Seguridad.} El transporte usa TLS 1.3 y los datos almacenados se cifran con claves gestionadas (RNF-14.01 y RNF-14.02). Los permisos se restringen por actor y ámbito; los representantes externos acceden solo a su organización. Las sesiones son revocables, con los límites de la operación aislada descritos en SD4, 4.1.18. El SIEM correlaciona eventos (RNF-14.04), la integración continua bloquea hallazgos críticos (RNF-14.07) y un tercero independiente ejecuta pruebas de intrusión al menos anualmente y antes de cada paso a producción (RNF-14.06). La verificación incluye configuración, registros, pruebas de acceso y resultados de intrusión; no basta una prueba de rendimiento.
 \end{itemize}
 
 El Subdocumento 4 detalla el dimensionamiento, el cuello de botella y la degradación controlada (sección 4.2.6), y los controles de seguridad (sección 4.1.3.7).
@@ -465,7 +475,7 @@ Después de cada paso a producción, la estabilización incluye presencia en bod
 
 Antes de asignar una ruta, la transportista declara la identidad del conductor y su vínculo con ella. En la Etapa 1, Despacho registra la declaración. Desde la Etapa 2, el representante de la empresa puede confirmarla en el portal de transportistas. El alta inicial requiere conexión para verificar un código de un solo uso. Despacho aprueba la asignación al vehículo y al turno. El conductor opera con su propia identidad y con permisos limitados a su ruta. Cada entrega conserva los identificadores del conductor y de la transportista.
 
-Durante un corte de enlace, Operaciones reasigna el turno a un suplente previamente habilitado e incluido en el manifiesto firmado vigente, y registra la excepción. Si no hay suplente habilitado, reasigna la ruta a otro camión con conductor habilitado o la reprograma. El procedimiento se detalla en la sección de identidad y ciclo de vida de conductores externos del Subdocumento 4 y en su Anexo 4-M.
+Durante un corte de enlace, Operaciones reasigna el turno a un suplente previamente habilitado e incluido en el manifiesto firmado vigente, y registra la excepción. El acuerdo operacional exige a cada transportista mantener enrolados antes de cada turno suplentes suficientes para las rutas del día siguiente. Si no hay suplente habilitado, reasigna la ruta a otro camión con conductor habilitado o la reprograma. El procedimiento se detalla en el Subdocumento 4, sección 4.1.18; su Anexo 4-M incluye la prueba de identidad local AL-ID-01.
 
 La adopción se mide por perfil y por ola con los indicadores del Anexo 3.I. La meta es que el 100 \% de los usuarios de la ola esté certificado en su perfil y que el 100 \% de las transacciones de la ola se registre en la solución al retirar el papel. Si una ola no alcanza esa meta, no avanza y se extiende el acompañamiento. El plan distingue dos grupos:
 
@@ -583,7 +593,7 @@ La Tabla 3.6 declara el uso de herramientas de inteligencia artificial por secci
   3.1 & Codex; Claude Code & Contraste con las Bases y redacción. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Patricio Henríquez. Pendiente de confirmación. Cotejar los tres problemas del caso con el Subdocumento 2 y los hitos de ambas etapas con el T-18. \\
   3.2 & Codex; Claude Code & Contraste con las Bases y los Subdocumentos 1 y 2; redacción; propuestas para las reglas RNG-04 y RNG-15. Incorporación de la cadena de frío en ruta. Coherencia del alcance con el Formulario T-12. & Alto & Ninguno & Patricio Henríquez. Pendiente de confirmación. Contrastar exclusiones y restricciones con el Caso Logística y cotejar los plazos y el corte de las 14:00 con S-21 y RNG-15. \\
   3.3 & Codex; Claude Code & Descripción estructurada de las figuras; revisión de la continuidad. Incorporación de la cadena de frío en ruta. & Alto & Alto & Patricio Henríquez. Pendiente de confirmación. Cotejar el recorrido del lote, la decisión de Calidad y la continuidad durante un corte con el Anexo 3.G y el Subdocumento 4. \\
-  3.4 & Codex; Claude Code & Redacción del desarrollo, despliegue y operación; revisión de reversión, actores, módulos y referencias. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Patricio Henríquez. Pendiente de confirmación. Cotejar los módulos y su emplazamiento con los anexos 4-D y 4-N, el alta y reemplazo de conductores con el Subdocumento 4 y la remisión de la dotación al Subdocumento 10. \\
+  3.4 & Codex; Claude Code & Redacción del desarrollo, despliegue y operación; revisión de reversión, actores, módulos y referencias. Incorporación de la cadena de frío en ruta. & Alto & Por confirmar & Patricio Henríquez. Pendiente de confirmación. Cotejar módulos y emplazamiento con los anexos 4-D y 4-N, el alta y reemplazo de conductores con el Subdocumento 4 y la remisión de la dotación al Subdocumento 10. Confirmar el uso real de IA en las figuras. \\
   Anexo 3.A & Codex; Claude Code & Conversión del catálogo funcional. Incorporación de la cadena de frío en ruta. Revisión de resultados y precondiciones del catálogo. & Alto & Ninguno & Guillermo Castillo. Pendiente de confirmación. Cotejar la columna Origen con los apartados que respaldan los requerimientos funcionales. \\
   Anexo 3.B & Codex; Claude Code & Conversión del catálogo no funcional. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Guillermo Castillo. Pendiente de confirmación. Cotejar los umbrales con sus fuentes y comprobar los métodos de verificación. \\
   Anexo 3.C & Codex; Claude Code & Redacción de supuestos. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Guillermo Castillo. Pendiente de confirmación. Comprobar antecedente, impacto y validación de los supuestos y cotejar S-21 con D-03 y RNG-15. \\

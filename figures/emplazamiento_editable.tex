@@ -1,0 +1,13 @@
+% Síntesis por dominio; Anexo 4-N y SD4 4.2.2 conservan el inventario completo.
+\begin{tikzpicture}[font=\sffamily\fontsize{10}{12}\selectfont,>=Stealth,
+ sitio/.style={draw=black!55,rounded corners,fill=blue!5,align=left,text width=6.1cm,minimum height=2.5cm,inner sep=6pt,anchor=north west}]
+\node[sitio] (cd) at (0,0) {\textbf{Centros de distribución}\\Talca y Concepción: WMS y datos locales para recepción, inventario, preparación y despacho; cámaras y control de frío.};
+\node[sitio] (plataformas) at (7.3,0) {\textbf{Plataformas}\\Curicó, Chillán y Los Ángeles: WMS, datos e identidad local en gabinete de borde; registro de movimientos.};
+\node[sitio] (camion) at (0,-3.4) {\textbf{Camiones y terreno}\\Terminales de preventa y reparto; registro local de entregas. Los camiones de frío incorporan sensores y evaluación local.};
+\node[sitio] (nube) at (7.3,-3.4) {\textbf{Nube}\\Portales, servicios compartidos, optimización de rutas, consolidación, analítica y observabilidad.};
+\draw[<->,black!65,line width=0.6pt] (cd.east) -- (plataformas.west);
+\draw[<->,black!65,line width=0.6pt] (camion.east) -- (nube.west);
+\draw[<->,black!65,line width=0.6pt] (plataformas.south) -- (nube.north);
+\draw[<->,black!65,line width=0.6pt] (cd.south) -- (camion.north);
+\node[align=left,text width=13.5cm,font=\sffamily\fontsize{9}{11}\selectfont,anchor=north west] at (0,-6.4) {Las conexiones pueden interrumpirse. Las operaciones locales siguen sus límites y sincronizan al recuperar enlace; el ERP es el único emisor tributario y una guía nueva exige su disponibilidad. La casa matriz utiliza la nube.};
+\end{tikzpicture}

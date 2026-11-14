@@ -1,0 +1,19 @@
+% Relaciones de acceso tomadas de la Tabla 3.A.12a y el Anexo 4-D.
+\begin{tikzpicture}[font=\sffamily\footnotesize,>=Stealth]
+\node[font=\sffamily\bfseries] at (0,0.45) {Interfaz};
+\node[font=\sffamily\bfseries] at (7.2,0.45) {Módulos y servicios utilizados};
+\foreach \interfaz/\modulos [count=\i] in {
+  {App de preventa}/{M3 Preventa; consultas a M2 y M7},
+  {App de reparto}/{M6 Reparto; M7 Cobranza; M8 Devoluciones},
+  {App de bodega}/{M5 Preparación; operaciones autorizadas de M1 y M2},
+  {Portal de clientes}/{M11 Canal moderno; M3, M6 y M7},
+  {Portal de transportistas}/{M11; M4 Rutas, M6 y vínculo con M12},
+  {Portal de proveedores}/{M11; consulta a M1 Recepción},
+  {Consolas de gestión}/{M1--M12 según funciones autorizadas; base compartida}
+} {
+  \node[draw=blue!55!black,fill=blue!7,rounded corners,align=center,text width=3cm,minimum height=0.7cm] (i\i) at (0,-\i*1.05) {\interfaz};
+  \node[draw=black!50,fill=gray!7,rounded corners,align=center,text width=8.4cm,minimum height=0.7cm] (m\i) at (7.2,-\i*1.05) {\modulos};
+  \draw[->,blue!55!black] (i\i.east) -- (m\i.west);
+}
+\node[align=center,text width=12.6cm,font=\sffamily\scriptsize,anchor=north] at (3.6,-8.8) {M1 Recepción; M2 Inventario; M3 Preventa; M4 Rutas; M5 Preparación; M6 Reparto; M7 Cobranza y rendición; M8 Devoluciones y envases; M9 Calidad y trazabilidad; M10 Analítica; M11 Canal moderno; M12 Telemetría. Las conexiones no conceden permisos generales.};
+\end{tikzpicture}

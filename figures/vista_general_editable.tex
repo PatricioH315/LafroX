@@ -1,0 +1,13 @@
+% Vista general conceptual; detalle funcional en las Figuras 3.5--3.8.
+\begin{tikzpicture}[>=Stealth,font=\sffamily\fontsize{10}{12}\selectfont,
+ bloque/.style={draw=black!55,rounded corners,fill=blue!5,align=center,text width=21cm,minimum height=1.25cm,inner sep=6pt},
+ flujo/.style={->,line width=0.7pt,black!65}]
+\node[bloque] (actores) at (0,0) {\textbf{Personas y organizaciones}\\Preventistas, conductores, preparadores, clientes, transportistas, proveedores y responsables de gestión};
+\node[bloque,below=0.6cm of actores] (interfaces) {\textbf{Interfaces}\\Aplicaciones de preventa, reparto y bodega; portales de clientes, transportistas y proveedores; consolas};
+\node[bloque,below=0.6cm of interfaces] (modulos) {\textbf{Módulos de negocio}\\M1 Recepción · M2 Inventario · M3 Preventa · M4 Rutas · M5 Preparación · M6 Reparto\\M7 Cobranza y rendición · M8 Devoluciones y envases · M9 Calidad y trazabilidad\\M10 Analítica · M11 Canal moderno · M12 Telemetría};
+\node[bloque,below=0.6cm of modulos] (externos) {\textbf{Sistemas externos}\\ERP: registro contable y único emisor tributario · Transbank: pagos · Geolocalización: mapas y flota};
+\draw[flujo] (actores) -- (interfaces);
+\draw[flujo] (interfaces) -- (modulos);
+\draw[flujo] (modulos) -- (externos);
+\node[align=center,font=\sffamily\fontsize{9}{11}\selectfont,below=0.20cm of externos] {Las flechas expresan relaciones funcionales; no otorgan permisos ni indican que todos los módulos se conecten a cada sistema externo.};
+\end{tikzpicture}

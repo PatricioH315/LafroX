@@ -1,0 +1,12 @@
+% Recorrido de trazabilidad por lote y unidad logística.
+\begin{tikzpicture}[font=\sffamily\fontsize{9.5}{11}\selectfont,>=Stealth,
+ paso/.style={draw=black!55,rounded corners,fill=blue!5,align=center,text width=3cm,minimum height=1.65cm,inner sep=4pt},
+ dato/.style={draw=black!45,rounded corners,fill=gray!8,align=center,text width=12.3cm,minimum height=1.2cm,inner sep=5pt}]
+\node[paso] (a) at (0,0) {\textbf{Recepción}\\Proveedor, lote, vencimiento y SSCC};
+\node[paso] (b) at (3.65,0) {\textbf{Bodega y preparación}\\Ubicación, cantidades, FEFO y movimientos};
+\node[paso] (c) at (7.3,0) {\textbf{Transporte}\\SSCC, compartimento y exposición térmica};
+\node[paso] (d) at (10.95,0) {\textbf{Entrega}\\Cliente, guía, fecha y cantidad};
+\draw[->] (a) -- (b); \draw[->] (b) -- (c); \draw[->] (c) -- (d);
+\node[dato] (e) at (5.475,-3) {\textbf{Información y consulta de trazabilidad}\\Reconstrucción del origen y los destinos por lote; consulta de movimientos y evidencia térmica por SSCC. Calidad decide la disposición.};
+\foreach \n in {a,b,c,d} \draw[->,dashed,black!65] (\n.south) -- (\n.south |- e.north);
+\end{tikzpicture}
