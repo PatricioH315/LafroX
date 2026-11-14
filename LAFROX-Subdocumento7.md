@@ -1781,20 +1781,20 @@ protegida
 HHprogramadas
 Etapa1·Desarro-
 llo
-1a12 40.865,08 0 40.865,08
+1a12 42.293,98 0 42.293,98
 Etapa1·Marcha
 blanca
-13a15 11.335,12 1.152 12.487,12
+13a15 11.338,69 1.152 12.490,69
 Etapa2·Desarro-
 llo
 13a18 10.579,37 0 10.579,37
 Etapa2·Marcha
 blanca
-19y20 7.452,03 0 7.452,03
+19y20 7.486,16 0 7.486,16
 Etapa1·Produc-
 ciónyestabiliza-
 ción
-16a20 14.816,04 1.920 16.736,04
+16a20 14.856,88 1.920 16.776,88
 continúaenlapáginasiguiente
 LafroXSpA
 Subdocumento7
@@ -1814,9 +1814,9 @@ Etapa2·Cierre
 yestabilización
 posterioralH12
 21y22 2.690,22 0 2.690,22
-Operación 21a56 108.409,17 0 108.409,17
-Total 196.147,03 3.072 199.219,03
-La operación concentra el 54% de las horas programadas (108.409 de 199.219,03 HH),
+Operación 21a56 109.791,32 0 109.791,32
+Total 199.036,62 3.072 202.108,62
+La operación concentra el 54% de las horas programadas (109.791 de 202.108,62 HH),
 porquecubre36mesesdeserviciocontinuodelcentrodeoperaciones,lamesayelSOC(el
 SOCoperadesdelaprimeramarchablanca,enelmes13,ysushorasdelosmeses13a20se
 imputanalasmarchasblancasyalaproduccióndelaEtapa1).Lamesasumaunterceragente
@@ -1825,16 +1825,16 @@ susnivelesdeserviciohasta2.391contactosalmes;de20:00a22:00laatiendeelNOC,cuya
 dedicacióndeclaradabajade100%a75%ya50%enelsegundoyeltercerañodeoperación
 (Subdocumento4,Anexo4-W.7).Sonpuestosdeturno24 ×7ydemesa,nopersonasdedicadas
 aotrastareas.Laimplementacióndelosmeses1a21,máslaestabilizaciónposterioralpasoa
-producciónqueexigeelRT-20.06enlosmeses21y22,suma90.809,86HH.Sutramomásdenso
+producciónqueexigeelRT-20.06enlosmeses21y22,suma92.317,30HH.Sutramomásdenso
 sonlosmeses13a15,cuandolamarchablancadelaEtapa1yeldesarrollodelaEtapa2suman
-16.799,94HH(4.863,56+5.941,14+5.995,24,segúnlacurvadelFormularioT-15,sección4.4),
-conunmáximode50plazasenelmes15.LaconstruccióndeloscuatromódulosdelaEtapa2
+16.803,51HH(4.867,13+5.941,14+5.995,24,segúnlacurvadelFormularioT-15,sección4.4),
+conunmáximode51plazasenelmes15.LaconstruccióndeloscuatromódulosdelaEtapa2
 sereparteentrelosmeses14y15,concincopersonaspormódulocomomáximo,envezde
-concentrarseenabril.Elmesdemayordotacióndelproyectoesel5,con59plazas,durantela
-construccióndelosmódulosdelaEtapa1;enlossolapamientos,elmáximoesde57plazas
-enelmes16,cuandoelpasoaproduccióndelaEtapa1,suestabilizaciónyelsoportepuente
-coincidenconlaspruebasdelaEtapa2.Las3.072HHdereservaseasignansóloalaEtapa1,
-demodoqueunacorrecciónensumarchablancanosefinanciaconhorasdelaEtapa2.
+concentrarseenabril.Elmesdemayordotacióndelproyectoesel5,con60plazas,durantela
+construccióndelosmódulosdelaEtapa1;enlossolapamientos,elmáximoesde58plazasen
+elmes20,cuandolamarchablancadelaEtapa2coincideconlaestabilizaciónyelsoporte
+puentedelaEtapa1.Las3.072HHdereservaseasignansóloalaEtapa1,demodoqueuna
+correcciónensumarchablancanosefinanciaconhorasdelaEtapa2.
 7.2.3 Frentesdetrabajoysincronización
 Eltrabajoseorganizaenochofrentes.Cadafrenteesunequipoconunresponsableque
 avanza en paralelo con los demás sobre un conjunto de cuentas de control. El frente de
@@ -2028,7 +2028,7 @@ pasadahaciaatrás,desdelosmesesfijosdelartículo17delasBasesAdministrativas(pp.1
 dalastardías;LS−ESeslaholguratotal;lalibresemidecontraelESdelossucesores.Como
 loshitosdelFormularioE-25sonfechasfijas,uncaminoquenollegaasuhitotieneholgura
 negativayobligaareplanificar.
-ElcálculodelT-15usa199.219,03HH,168paquetesconentregable,lasdependenciasdel
+ElcálculodelT-15usa202.108,62HH,168paquetesconentregable,lasdependenciasdel
 Anexo7.ByelplazoderevisióndelCLIENTE.LaFigura 7.22representalacadenaquecontrola
 loshitos.H7yH12secierranconunasolaactaporetapa(T-15,sección5.5):elexpedientecon
 lascuatrosemanasfinalesdeevidencia,yenH12lagarantía4.3.4,seentregaelprimerdía
@@ -5269,15 +5269,16 @@ conunrangopropioparacadauno;losdemáspaquetesporsuclase,conunrangofundado
 portipoyunopropioparalosquetienenunriesgoidentificado;yseparalascurvasmensuales
 de implementación, soporte puente de la Etapa 1 y Operación. La cobertura del centro de
 operaciones,lamesadeservicioyelSOCsiguelasposicionesdimensionadasenelCapítulo4,
-Anexo4-W.7(Subdocumento4,anexos).Conesabase,eltotalprogramadoesde199.219,03
+Anexo4-W.7(Subdocumento4,anexos).Conesabase,eltotalprogramadoesde202.108,62
 HH(186.811,03HHdepaquetesyrestauracionespreviasaOperación,9.336HHdesoporte
-puentedelaEtapa1y3.072HHdereservadelfrentedeconstrucciónydecalidad)yelmáximo
-mensualesde59plazasenelmes5,durantelaconstruccióndelaEtapa1;enlossolapamientos
-llegaa57enelmes16,cuandoelpasoaproduccióndelaEtapa1coincideconlaspruebasde
-la Etapa 2. La sección 5 del mismo formulario calcula la red y el PERTsobre esa línea base,
-conferiadosyrevisionesdelCLIENTE;laasignaciónnominaldepersonasseconfirmaantes
-delH1,ylacurvaexpresademanda,nodisponibilidadacreditada.Lascapacidadesprotegidas
-delaEtapa1noseprestanaldesarrollodelaEtapa2.
+puentedelaEtapa1,3.072HHdereservadelfrentedeconstrucciónydecalidady2.889,59
+HH de dedicación de los roles mínimos) y el máximo mensual es de 60 plazas en el mes 5,
+durantelaconstruccióndelaEtapa1;enlossolapamientosllegaa57enelmes16,cuandoel
+pasoaproduccióndelaEtapa1coincideconlaspruebasdelaEtapa2.Lasección5delmismo
+formulariocalculalaredyelPERTsobreesalíneabase,conferiadosyrevisionesdelCLIENTE;
+laasignaciónnominaldepersonasseconfirmaantesdelH1,ylacurvaexpresademanda,no
+disponibilidadacreditada.LascapacidadesprotegidasdelaEtapa1noseprestanaldesarrollo
+delaEtapa2.
 La gestión del plan sigue el Capítulo 6: la sección 6.1 fija el PMBOK adaptado, el tablero
 Kanban,elvalorganadoyelcontroldecambios,ylasección6.2fijaelprocesoRUPiterativocon
 DevSecOps.LaConstrucciónavanzaeniteracionesdedossemanasconformealFormulario
@@ -5285,7 +5286,6 @@ T-10,conrevisiónsemanaldeavanceybloqueosyunademostracióndeincrementoverificabl
 al cierre de cada iteración; una demostración no implica un paso a producción. El Jefe de
 Proyectoregistralacapacidadyloscriteriosdeterminadoantesdeseleccionareltrabajode
 cadaiteración,yloscambiosseapruebansegúnlasección6.1.4.
-El cronograma rector usa meses contractuales 1 a 56. El Anexo 7.A traduce esos meses
 LafroXSpA
 Subdocumento7
 Mediafirma: AlexAravena
@@ -5294,6 +5294,7 @@ Mediafirma: AlexAravena
 ---
 
 LafroXSpA IntroducciónalPlandetrabajo
+El cronograma rector usa meses contractuales 1 a 56. El Anexo 7.A traduce esos meses
 a fechas con un inicio supuesto en febrero de 2027; cuando el CLIENTE confirme la fecha
 de inicio (consultaV-12), se recalculan los meses calendario y los congelamientos antes de
 aprobarcadacorte.LarevisióndeparámetrosdelaInnovación3(paquete8.3.2)seejecutaen

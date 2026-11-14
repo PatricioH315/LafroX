@@ -61,6 +61,10 @@ for code, cl, role, mm, e in rows:
 for m, v in zip(range(16, 21), (1851, 1786, 1810, 1851, 2038)): add('PUENTE', m, v)
 for m in range(13, 21): add('DES', m, 256); add('CAL', m, 128)
 for m in range(13, 21): add('SRE', m, 16)
+# Roles mínimos de BTT 19.2 (14-11-2026): HH que no reemplazan trabajo de otro perfil
+_FAM = {'01': 'JP', '04': 'DES', '05': 'ARQ', '24': 'SRE', '23': 'DAT', '16': 'CAL'}
+for _q, _m, _v in json.loads((ROOT / 'revision/roles_minimos_20261114.json').read_text(encoding='utf-8'))['newm']:
+    add(_FAM[_q], _m, _v)
 
 ref = {}
 for l in (T / 'tab_T15_4.tex').read_text(encoding='utf-8').splitlines():

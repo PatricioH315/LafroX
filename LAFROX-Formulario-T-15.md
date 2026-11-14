@@ -47,20 +47,20 @@ FormularioT-15:Nivelaciónderecursos 5
 4.2 Horasporlos227paquetes 14
 4.3 ResumenT-15 29
 4.4 Curvasmensuales:horasporetapayplazaspororigen 46
-4.5 Reservasdecontingenciaydegestión 56
-5 Redagregada,restriccionesyescenariosdecalendario 56
-5.1 Cálculoreproducible 56
-5.2 Lecturadelassecuenciasylasrestricciones 69
-5.3 Holgurasdeloshitosycapacidad 69
-5.4 Gobierno 71
-5.5 PresentacióndeentregablesyrevisióndelCLIENTE 71
-5.6 Medicióndelosnivelesdeatención 72
-5.7 Dotaciónrequerida,rolesmínimosydotacióndeclarada 73
-6 Listadeactividades:regladel8/80ydelperíododereporte 75
-6.1 Paquetesconentregableyplanificacióngradual 75
-6.2 Paquetesdeesfuerzocontinuo 106
-6.3 Perfilesyesfuerzoparalavalorización 114
-Referencias 138
+4.5 Reservasdecontingenciaydegestión 57
+5 Redagregada,restriccionesyescenariosdecalendario 57
+5.1 Cálculoreproducible 57
+5.2 Lecturadelassecuenciasylasrestricciones 70
+5.3 Holgurasdeloshitosycapacidad 70
+5.4 Gobierno 72
+5.5 PresentacióndeentregablesyrevisióndelCLIENTE 72
+5.6 Medicióndelosnivelesdeatención 73
+5.7 Dotaciónrequerida,rolesmínimosydotacióndeclarada 74
+6 Listadeactividades:regladel8/80ydelperíododereporte 76
+6.1 Paquetesconentregableyplanificacióngradual 77
+6.2 Paquetesdeesfuerzocontinuo 107
+6.3 Perfilesyesfuerzoparalavalorización 115
+Referencias 139
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
@@ -80,20 +80,20 @@ Tabla7 Elementosdealcancedecadamódulo. 35
 Tabla8 RangosdelPERTportipodepaquete. 44
 Tabla9 Paquetesconrangopropioporriesgoidentificado. 44
 Tabla10 ConciliacióndelasHHquecambian. 45
-Tabla11 Curvamensualdehorasporetapa. 47
-Tabla12 Demandamensualdeplazasporgrupodeorigen. 52
-Tabla13 Fechastempranas,tardíasyholgurasdelos168paquetesconentregable. 58
+Tabla11 Curvamensualdehorasporetapa. 48
+Tabla12 Demandamensualdeplazasporgrupodeorigen. 53
+Tabla13 Fechastempranas,tardíasyholgurasdelos168paquetesconentregable. 59
 Tabla14 Fechasyholgurasdeloshitoscalculadasporduracionesyprecedencias,conla
-líneabasede199.219,03HH. 70
-Tabla15 SecuenciadelactaintegradadeH7yH12.Calendariosinobservaciones. 72
-Tabla16 Plazasprevistasydemandamáximamensualpororigen. 73
-Tabla17 Programacióndelospaquetesconentregable. 79
-Tabla18 ActividadesdelospaquetesqueterminanhastaelH2. 90
-Tabla19 ActividadesdelospaquetesqueterminanhastaelH2. 96
-Tabla20 Iteracionesdeconstruccióndelosmódulossegúnlacarta(día/mes). 105
-Tabla21 Actividadesdelospaquetesdeesfuerzocontinuo. 108
-Tabla22 Perfiles,plazaspropuestasyjornadasequivalentesporfase. 115
-Tabla23 AsignacióndeHHporpartidayperfil. 119
+líneabasede202.108,62HH. 71
+Tabla15 SecuenciadelactaintegradadeH7yH12.Calendariosinobservaciones. 73
+Tabla16 Plazasprevistasydemandamáximamensualpororigen. 74
+Tabla17 Programacióndelospaquetesconentregable. 80
+Tabla18 ActividadesdelospaquetesqueterminanhastaelH2. 91
+Tabla19 ActividadesdelospaquetesqueterminanhastaelH2. 97
+Tabla20 Iteracionesdeconstruccióndelosmódulossegúnlacarta(día/mes). 106
+Tabla21 Actividadesdelospaquetesdeesfuerzocontinuo. 109
+Tabla22 Perfiles,plazaspropuestasyjornadasequivalentesporfase. 116
+Tabla23 AsignacióndeHHporpartidayperfil. 120
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
@@ -106,7 +106,7 @@ Listadefiguras
 Figura1 CaminoquecontrolaelH12ysuholguracontractual. 7
 Figura2 Frentesdetrabajodelosmeses1a21ysolapamientosdelartículo17.2delas
 BasesAdministrativas(p.13). 9
-Figura3 Planificacióngradualdelcronograma. 77
+Figura3 Planificacióngradualdelcronograma. 78
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
@@ -171,7 +171,7 @@ desdelosmesesfijosdelartículo17delasBasesAdministrativas(pp.12–13),daelinicio
 fintardíos;ladiferenciaLS−ESeslaholguratotal;laholguralibresecalcularespectodelES
 desussucesores.LoshitosdelFormularioE-25sonrestriccionesdefechafija:uncaminoque
 nollegaasuhitotieneholguranegativayobligaareplanificar.
-Lasección5calculalaredconlalíneabasede199.219,03HHylosplazosderevisióndel
+Lasección5calculalaredconlalíneabasede202.108,62HHylosplazosderevisióndel
 CLIENTE,ylasección5.5presentalasecuenciadecierre,actaypasoaproduccióndeH7y
 H12.
 2 Rutacríticayholguras
@@ -424,9 +424,10 @@ conelequipoalestablecerlalíneabaseyqueelCapítulo8usaparacuantificarlosriesgos.
 productividadyladotaciónsecontrastanconelavancerealencadaComitédeProyecto.
 4.1 Supuestosycálculo
 Lossupuestosyelcálculodelmodeloderecursossonlossiguientes.
-• Capacidad nominal asumida: 160 HH/persona-mes; disponibilidad programable 80%;
-capacidad efectiva 128 HH. El 20% cubre ausencias y coordinación no imputada. No es
-unajornadacontractualniuncálculodecumplimientolaboral.
+• Capacidad nominal de 160 HH por persona y mes y capacidad programable de 128 HH
+(80%),descontadosferiados,vacaciones,licenciasycapacitacióninterna.Unadedicación
+de100%equivalea128HHprogramadasenelmes.Noesunajornadacontractualniun
+cálculodecumplimientolaboral.
 • Esfuerzo por clase: G gestión/acta 80 HH; E diseño/configuración/innovación 240 HH; I
 integración/migración480HH;Vprueba320HH(integraciónycierresdecertificación:160
 HH);Tinstalación/capacitación160HH.LasclasessefundanenlascantidadesdelT-11y
@@ -446,7 +447,6 @@ jornada,corresponden1.129,33y1.334,67HH.
 • Cidentificacoberturaporhoras-posicióndelcalendarioreal,conelmes1enfebrerode
 2027(Anexo7.A).ElSOC(8.1.5)mantieneunpuesto24 ×7:díasdelmes ×24,queson744
 HHenunmesde31días,720enunode30y672enfebrero.ElNOC(8.1.1)cubretambién
-unpuesto24 ×7,conladedicacióndeclaradadelSD4(Subdocumento4),Anexo4-W.7:100%
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
@@ -455,6 +455,7 @@ Mediafirma: AlexAravena
 ---
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
+unpuesto24 ×7,conladedicacióndeclaradadelSD4(Subdocumento4),Anexo4-W.7:100%
 enlosmeses21a32,75%enlosmeses33a44y50%enlosmeses45a56.Ademásatiende
 la mesa de 20:00 a 22:00 de lunes a sábado: sus 1,33 horas diarias de atención, con 70%
 deocupación,son1,33 ÷0,70 ≈1,9horas-posiciónpordía,ylasdosposicionesqueexige
@@ -482,20 +483,19 @@ minar,salvolaspruebasdecertificaciónreprogramadas3.9.2–3.9.7yelacompañamient
 den abarcar meses de reserva sin trabajo continuo: la Tabla17 fija el inicio y fin de los
 paquetesconentregableyeldiccionarioT-14mantienelasrestriccionesdeaceptación.Las
 precedenciasdentrodeunmessecompruebanenlareddiariadelasección5.
-• La demanda mensual de plazas se calcula por grupo de origen del SD1: las HH del mes
-detodoslosrolesdelgruposedividenpor128yseredondeanhaciaarribaunasolavez,
-demodoqueunafraccióndemesdecadaperfilnosecuentacomounaplazacompleta.
-Las HH de cada rol siguen el reparto de este apartado y las ventanas de la Tabla3. La
-mesaN1,elNOCyelSOCconservansushorasdecoberturaporcalendario.Losservicios
-especializados contratados por resultado se incluyen en las HH del plan sin imputarles
-unnúmerodepersonas.Lasección5.7comparalademandaconlaplantadeclaradayla
-asignaciónprevista.
+• La demanda mensual de plazas se calcula por grupo de origen del SD1, con la Mesa de
+ServiciosyelSOCcomoorígenespropios:lasHHdelmesdetodoslosrolesdelgrupose
+dividenpor128yseredondeanhaciaarribaunasolavez,demodoqueunafraccióndemes
+decadaperfilnosecuentacomounaplazacompleta.LasHHdecadarolsiguenelreparto
+deesteapartadoylasventanasdelaTabla 3.LamesaN1,elNOCyelSOCconservansus
+horasdecoberturaporcalendario.Losserviciosespecializadoscontratadosporresultado
+se incluyen en las HH del plan sin imputarles un número de personas. La sección 5.7
+comparalademandaconlaplantadeclaradaylaasignaciónprevista.
 • ReservaprotegidaE1enmeses13–20:dosdesarrolladoresyunQA,256HHdedesarrolloy
 128HHdepruebaspormes;noseprestaaE2niseduplicacomotrabajobase.
 • Soporte puente E1 meses 16–20: puesto NOC completo y mesa de 04:00 a 22:00 con 41
 horas-posición por día de lunes a sábado, más la cobertura 24×7 de septiembre (1.851,
 1.786, 1.810, 1.851 y 2.038 HH; total 9.336 HH), imputado a 4.2.2 y financiado dentro de
-implementación.ElSOCoperadesdeelmes13por8.1.5,porquelamarchablancayatrata
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
@@ -504,6 +504,7 @@ Mediafirma: AlexAravena
 ---
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
+implementación.ElSOCoperadesdeelmes13por8.1.5,porquelamarchablancayatrata
 datosreales.Operacióncontractualempiezaenelmes21.
 • Lasventanasdelasección4.2reservancapacidadpormes;nosonequivalentesalosdías
 efectivosdetodaslasactividadesdelasección6.1.Cuandoelpaqueteempiezaotermina
@@ -540,6 +541,17 @@ aincidentesdesegu-
 ridad:análisis,elabo-
 raciónyrevisióncon
 cuatroespecialistas
+continúaenlapáginasiguiente
+LafroXSpA
+FormularioT-15
+Mediafirma: AlexAravena
+13
+
+---
+
+LafroXSpA FormularioT-15:Nivelaciónderecursos
+Tabla2—continuación
+Clase Quécontiene Esfuerzo Ejemployrazón
 D Módulofuncionalcon
 susrequerimientosdel
 T-12,contratosdein-
@@ -556,17 +568,6 @@ delturnoydosdispo-
 sitivos;3.5.3Portalde
 transportistas(280HH)
 tienetresflujossimples
-continúaenlapáginasiguiente
-LafroXSpA
-FormularioT-15
-Mediafirma: AlexAravena
-13
-
----
-
-LafroXSpA FormularioT-15:Nivelaciónderecursos
-Tabla2—continuación
-Clase Quécontiene Esfuerzo Ejemployrazón
 I Interfazomigración
 conanálisisdemues-
 trasreales,contrato,
@@ -1002,8 +1003,8 @@ porcampaña,560HHentotal.LaspruebasdeintrusiónE1yE2seestimanen320y160HH
 respectivamente;lareducciónenE2exigequeelinventarioylosprocedimientosdeE1sean
 reutilizables. Se confirmarán horas, alcance y disponibilidad con el tercero independiente
 antes de ejecutar. Las 128 HH de restauraciones se suman a las 186.683,03 HH de los 227
-paquetesparaformarlas186.811,03HHdebase;elsoportepuenteylareservaprotegidase
-agreganporseparadoenlascurvassiguientes.
+paquetesparaformarlas186.811,03HHdebase;elsoportepuente,lareservaprotegidayla
+dedicacióndelosrolesmínimos(sección5.7)seagreganporseparadoenlascurvassiguientes.
 4.3 ResumenT-15
 LaTabla 4resumelasHHprogramadasporetapayelmáximodeplazasestimadasensus
 meses,segúnlacurvaconjuntadelaTabla 12.Lasetapascompartenperíodos:susmáximos
@@ -1020,17 +1021,17 @@ LafroXSpA FormularioT-15:Nivelaciónderecursos
 Tabla4 ResumenT-15.Fuente:elaboraciónapartirdelassecs.4.1–4.4deesteformularioyde(FormularioT-14,EDT).
 Etapa HHbaseycobertura HHreservaprotegida HHprogramadas Frentes Meses N.°personas
 (peak)*
-E1Desarrollo 40865.08 0 40865.08 F1,F2,F3,F5,F6,F7 1–12 59
-E1Marchablanca 11335.12 1152 12487.12 F1,F2,F3,F5,F6,F7 13–15 50
+E1Desarrollo 42293.98 0 42293.98 F1,F2,F3,F5,F6,F7 1–12 60
+E1Marchablanca 11338.69 1152 12490.69 F1,F2,F3,F5,F6,F7 13–15 51
 E2Desarrollo 10579.37 0 10579.37 F1,F2,F4,F5,F6,F7 13–18 57
-E2Marchablanca 7452.03 0 7452.03 F1,F2,F4,F6,F7 19–20 56
+E2Marchablanca 7486.16 0 7486.16 F1,F2,F4,F6,F7 19–20 58
 E1Producciónyestabili-
 zación
-14816.04 1920 16736.04 F3,F5,F6,F7 16–20 57
-Operación 108409.17 0 108409.17 F1,F8 21–56 41
+14856.88 1920 16776.88 F3,F5,F6,F7 16–20 58
+Operación 109791.32 0 109791.32 F1,F8 21–56 42
 E2Cierreyestabiliza-
 ciónposterioralH12
-2690.22 0 2690.22 F1,F2,F4,F6,F7 21–22 41
+2690.22 0 2690.22 F1,F2,F4,F6,F7 21–22 42
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
@@ -1039,14 +1040,15 @@ Mediafirma: AlexAravena
 ---
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
-Lalíneabasesuma199.219,03HH:186.683,03delos227paquetes,128derestauraciones
-previasaOperación,9.336desoportepuentey3.072dereservaprotegida.Lacurvapororigen
-alcanza 59 plazas en el mes 5, durante la construcción de los módulos de la Etapa 1. En el
-solapamientodelosmeses13a15elmáximoesde50plazasenelmes15,yeneldelosmeses
-19y20,de56.Lasplazasprovienendelcontrastemensualdelasección4.4.SegúnelAnexo
-4-W.7delSD4,lamesadeayudasumaunterceragenteenlasfranjasdemenordemandasolo
-en septiembre y diciembre desde el mes 25, el NOC atiende su franja de 20:00 a 22:00 y la
-dedicacióndeclaradadelNOCbajaencadaañodeoperación.
+Lalíneabasesuma202.108,62HH:186.683,03delos227paquetes,128derestauraciones
+previasaOperación,9.336desoportepuente,3.072dereservaprotegiday2.889,59dededi-
+cación de los roles mínimos. La curva por origen alcanza 60 plazas en el mes 5, durante la
+construccióndelosmódulosdelaEtapa1.Enelsolapamientodelosmeses13a15elmáximoes
+de51plazasenelmes15,yeneldelosmeses19y20,de58enelmes20.Lasplazasprovienen
+delcontrastemensualdelasección4.4.SegúnelAnexo4-W.7delSD4,lamesadeayudasuma
+unterceragenteenlasfranjasdemenordemandasoloenseptiembreydiciembredesdeel
+mes25,elNOCatiendesufranjade20:00a22:00yladedicacióndeclaradadelNOCbajaen
+cadaañodeoperación.
 Estimaciónportamañodelosmódulos. Los 15 módulos de software (3.4.1 a 3.4.11 y 3.5.1 a
 3.5.4)seestimandesdesucontenido.ParacadamóduloseleenlosrequisitosdelFormulario
 T-12quelocitanensucolumna«PaqueteEDT»yseidentificansuselementosdealcance:flujos
@@ -1693,9 +1695,10 @@ Paquete O/M P/M Fundamento
 2.4.3 0,90 1,50 Bancodefrío:homologacióndesensoresyrepeticióndeensayosde
 excursión.
 4.1.4 0,90 1,50 Pilotodefríoencuatrocamionesconcoberturavariableenruta.
-Conciliaciónconlalíneabaseanterior. LaTabla 10muestralos26paquetescuyasHHcambian.
-Lalíneabasepasade220.023a199.219,03HH.Lascurvasmensuales,lareddelasección5y
-ladotacióndelasección5.7secalcularonconlasHHvigentes.
+Conciliaciónconlalíneabaseanterior. LaTabla 10muestralos26paquetescuyasHHcambian
+yladedicaciónagregadadelosrolesmínimos.Lalíneabasepasade220.023a202.108,62HH.
+Lascurvasmensuales,lareddelasección5yladotacióndelasección5.7secalcularoncon
+lasHHvigentes.
 Tabla10 ConciliacióndelasHHquecambian.Fuente:Tabladehorasporpaqueteanterioryvigente.
 Paquete HHan-
 teriores
@@ -1713,7 +1716,6 @@ HHvigentes Diferencia Explicación
 3.4.9 960 588 -372 Estimaciónportamaño
 3.4.10 960 1.248,33 288,33 Estimaciónportamaño
 3.4.11 960 836,50 -123,50 Estimaciónportamaño
-3.5.1 960 973 13 Estimaciónportamaño
 continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
@@ -1727,6 +1729,7 @@ Tabla10—continuación
 Paquete HHan-
 teriores
 HHvigentes Diferencia Explicación
+3.5.1 960 973 13 Estimaciónportamaño
 3.5.2 960 1.033,17 73,17 Estimaciónportamaño
 3.5.3 960 280 -680 Estimaciónportamaño
 3.5.4 960 653 -307 Estimaciónportamaño
@@ -1739,23 +1742,33 @@ HHvigentes Diferencia Explicación
 4.1.4 320 341,33 21,33 Rangoporriesgoidentificado
 8.1.1 26.280 21.764,20 -4.515,80 DotacióndeoperacióndelSD4,Anexo4-W.7
 8.1.2 54.239 38.246 -15.993 DotacióndeoperacióndelSD4,Anexo4-W.7
-Total 99.879 79.075,03 -20.803,97 Lalíneabasepasade220.023a199.219,03HH
+— 0 2.889,59 2.889,59 DedicacióndelosrolesmínimosdeBTT19.2
+(sección5.7)
+Total 99.879 81.964,62 -17.914,38 Lalíneabasepasade220.023a202.108,62HH
 Paravalidarlastasasseregistranencadaiteraciónelelementoterminado,lasHHefectivas
 ylasHHdereproceso,separandoesperasexternas.Larevisiónquincenalcomparaelementos
 de igual tipo y complejidad, y contrasta el tiempo observado con la tasa usada. Dirección
 actualiza las estimaciones de los módulos siguientes y verifica su efecto en precedencias,
 capacidadycosteoantesdeaprobaruncambiodelíneabase.
 4.4 Curvasmensuales:horasporetapayplazaspororigen
-AmbascurvasusanelmismorepartomensualdelasHH:ladehorasloagrupaporetapa
-yladeplazascontrastalademandadecadarolylaagrupapororigendeladotacióntécnica
-del SD1. La sección 6.3 asigna cada perfil a uno de los siete grupos del SD1 o, en el caso de
-losasistentesdeterreno,alacontrataciónporobraofaena;lacolumnaImplantaciónreúne
-ambos.
-LaTabla 11presentacurvamensualdehorasporetapa.
+AmbascurvasusanelmismorepartomensualdelasHH:ladehorasloagrupaporetapay
+ladeplazascontrastalademandadecadarolylaagrupapororigendeladotacióntécnicadel
+SD1.Lasección6.3asignacadaperfilaunodelossietegruposdelSD1,alaMesadeServicios,
+alSOCo,enelcasodelosasistentesdeterreno,alacontrataciónporobraofaena;lacolumna
+Implantaciónreúnelaplantadeimplantaciónylosasistentes.
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
 46
+
+---
+
+LafroXSpA FormularioT-15:Nivelaciónderecursos
+LaTabla 11presentacurvamensualdehorasporetapa.
+LafroXSpA
+FormularioT-15
+Mediafirma: AlexAravena
+47
 
 ---
 
@@ -1769,54 +1782,21 @@ estabilización
 posterioral
 H12
 TotalHH
-1 1258.67 0.00 0.00 0.00 0.00 0.00 0.00 1258.67
-2 3258.67 0.00 0.00 0.00 0.00 0.00 0.00 3258.67
-3 2790.00 0.00 0.00 0.00 0.00 0.00 0.00 2790.00
-4 3351.41 0.00 0.00 0.00 0.00 0.00 0.00 3351.41
-5 7120.16 0.00 0.00 0.00 0.00 0.00 0.00 7120.16
-6 5610.83 0.00 0.00 0.00 0.00 0.00 0.00 5610.83
-7 5331.50 0.00 0.00 0.00 0.00 0.00 0.00 5331.50
-8 3112.29 0.00 0.00 0.00 0.00 0.00 0.00 3112.29
-9 2926.21 0.00 0.00 0.00 0.00 0.00 0.00 2926.21
-10 2649.78 0.00 0.00 0.00 0.00 0.00 0.00 2649.78
-11 2183.78 0.00 0.00 0.00 0.00 0.00 0.00 2183.78
-12 1271.78 0.00 0.00 0.00 0.00 0.00 0.00 1271.78
-13 0.00 4050.64 812.92 0.00 0.00 0.00 0.00 4863.56
+1 1457.34 0.00 0.00 0.00 0.00 0.00 0.00 1457.34
+2 3261.44 0.00 0.00 0.00 0.00 0.00 0.00 3261.44
+3 2852.67 0.00 0.00 0.00 0.00 0.00 0.00 2852.67
+4 3392.75 0.00 0.00 0.00 0.00 0.00 0.00 3392.75
+5 7252.82 0.00 0.00 0.00 0.00 0.00 0.00 7252.82
+6 5746.83 0.00 0.00 0.00 0.00 0.00 0.00 5746.83
+7 5472.06 0.00 0.00 0.00 0.00 0.00 0.00 5472.06
+8 3242.95 0.00 0.00 0.00 0.00 0.00 0.00 3242.95
+9 2929.61 0.00 0.00 0.00 0.00 0.00 0.00 2929.61
+10 2777.78 0.00 0.00 0.00 0.00 0.00 0.00 2777.78
+11 2379.96 0.00 0.00 0.00 0.00 0.00 0.00 2379.96
+12 1527.78 0.00 0.00 0.00 0.00 0.00 0.00 1527.78
+13 0.00 4054.21 812.92 0.00 0.00 0.00 0.00 4867.13
 14 0.00 4194.72 1746.42 0.00 0.00 0.00 0.00 5941.14
 15 0.00 4241.76 1753.48 0.00 0.00 0.00 0.00 5995.24
-continúaenlapáginasiguiente
-LafroXSpA
-FormularioT-15
-Mediafirma: AlexAravena
-47
-
----
-
-LafroXSpA FormularioT-15:Nivelaciónderecursos
-Tabla11—continuación
-Mes E1desarrollo E1MB E2desarrollo E2MB E1producción
-yestabiliza-
-ción
-Operación E2cierrey
-estabilización
-posterioral
-H12
-TotalHH
-16 0.00 0.00 2357.72 0.00 4498.93 0.00 0.00 6856.65
-17 0.00 0.00 2307.52 0.00 3634.61 0.00 0.00 5942.13
-18 0.00 0.00 1601.31 0.00 2800.82 0.00 0.00 4402.13
-19 0.00 0.00 0.00 3793.80 2796.22 0.00 0.00 6590.02
-20 0.00 0.00 0.00 3658.23 3005.46 0.00 0.00 6663.69
-21 0.00 0.00 0.00 0.00 0.00 3341.50 1342.09 4683.59
-22 0.00 0.00 0.00 0.00 0.00 3115.59 1348.13 4463.72
-23 0.00 0.00 0.00 0.00 0.00 3413.05 0.00 3413.05
-24 0.00 0.00 0.00 0.00 0.00 3185.28 0.00 3185.28
-25 0.00 0.00 0.00 0.00 0.00 2924.58 0.00 2924.58
-26 0.00 0.00 0.00 0.00 0.00 3185.28 0.00 3185.28
-27 0.00 0.00 0.00 0.00 0.00 3043.48 0.00 3043.48
-28 0.00 0.00 0.00 0.00 0.00 3137.86 0.00 3137.86
-29 0.00 0.00 0.00 0.00 0.00 3050.96 0.00 3050.96
-30 0.00 0.00 0.00 0.00 0.00 3098.96 0.00 3098.96
 continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
@@ -1835,21 +1815,21 @@ estabilización
 posterioral
 H12
 TotalHH
-31 0.00 0.00 0.00 0.00 0.00 3137.86 0.00 3137.86
-32 0.00 0.00 0.00 0.00 0.00 3657.06 0.00 3657.06
-33 0.00 0.00 0.00 0.00 0.00 3015.86 0.00 3015.86
-34 0.00 0.00 0.00 0.00 0.00 2870.96 0.00 2870.96
-35 0.00 0.00 0.00 0.00 0.00 3578.96 0.00 3578.96
-36 0.00 0.00 0.00 0.00 0.00 2951.86 0.00 2951.86
-37 0.00 0.00 0.00 0.00 0.00 2709.16 0.00 2709.16
-38 0.00 0.00 0.00 0.00 0.00 2912.96 0.00 2912.96
-39 0.00 0.00 0.00 0.00 0.00 2870.96 0.00 2870.96
-40 0.00 0.00 0.00 0.00 0.00 2951.86 0.00 2951.86
-41 0.00 0.00 0.00 0.00 0.00 2832.06 0.00 2832.06
-42 0.00 0.00 0.00 0.00 0.00 2951.86 0.00 2951.86
-43 0.00 0.00 0.00 0.00 0.00 2951.86 0.00 2951.86
-44 0.00 0.00 0.00 0.00 0.00 3477.06 0.00 3477.06
-45 0.00 0.00 0.00 0.00 0.00 2829.86 0.00 2829.86
+16 0.00 0.00 2357.72 0.00 4508.01 0.00 0.00 6865.73
+17 0.00 0.00 2307.52 0.00 3651.47 0.00 0.00 5958.99
+18 0.00 0.00 1601.31 0.00 2815.72 0.00 0.00 4417.03
+19 0.00 0.00 0.00 3813.50 2796.22 0.00 0.00 6609.72
+20 0.00 0.00 0.00 3672.66 3005.46 0.00 0.00 6678.12
+21 0.00 0.00 0.00 0.00 0.00 3377.85 1342.09 4719.94
+22 0.00 0.00 0.00 0.00 0.00 3171.99 1348.13 4520.12
+23 0.00 0.00 0.00 0.00 0.00 3445.27 0.00 3445.27
+24 0.00 0.00 0.00 0.00 0.00 3219.28 0.00 3219.28
+25 0.00 0.00 0.00 0.00 0.00 2956.39 0.00 2956.39
+26 0.00 0.00 0.00 0.00 0.00 3241.68 0.00 3241.68
+27 0.00 0.00 0.00 0.00 0.00 3081.10 0.00 3081.10
+28 0.00 0.00 0.00 0.00 0.00 3166.04 0.00 3166.04
+29 0.00 0.00 0.00 0.00 0.00 3082.96 0.00 3082.96
+30 0.00 0.00 0.00 0.00 0.00 3155.36 0.00 3155.36
 continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
@@ -1868,17 +1848,22 @@ estabilización
 posterioral
 H12
 TotalHH
-46 0.00 0.00 0.00 0.00 0.00 2690.96 0.00 2690.96
-47 0.00 0.00 0.00 0.00 0.00 3392.96 0.00 3392.96
-48 0.00 0.00 0.00 0.00 0.00 2765.86 0.00 2765.86
-49 0.00 0.00 0.00 0.00 0.00 2541.16 0.00 2541.16
-50 0.00 0.00 0.00 0.00 0.00 2726.96 0.00 2726.96
-51 0.00 0.00 0.00 0.00 0.00 2690.96 0.00 2690.96
-52 0.00 0.00 0.00 0.00 0.00 2765.86 0.00 2765.86
-53 0.00 0.00 0.00 0.00 0.00 2652.06 0.00 2652.06
-54 0.00 0.00 0.00 0.00 0.00 2792.52 0.00 2792.52
-55 0.00 0.00 0.00 0.00 0.00 2753.62 0.00 2753.62
-56 0.00 0.00 0.00 0.00 0.00 3439.51 0.00 3439.51
+31 0.00 0.00 0.00 0.00 0.00 3172.76 0.00 3172.76
+32 0.00 0.00 0.00 0.00 0.00 3686.50 0.00 3686.50
+33 0.00 0.00 0.00 0.00 0.00 3045.32 0.00 3045.32
+34 0.00 0.00 0.00 0.00 0.00 2927.36 0.00 2927.36
+35 0.00 0.00 0.00 0.00 0.00 3612.87 0.00 3612.87
+36 0.00 0.00 0.00 0.00 0.00 2983.92 0.00 2983.92
+37 0.00 0.00 0.00 0.00 0.00 2740.87 0.00 2740.87
+38 0.00 0.00 0.00 0.00 0.00 2969.36 0.00 2969.36
+39 0.00 0.00 0.00 0.00 0.00 2909.27 0.00 2909.27
+40 0.00 0.00 0.00 0.00 0.00 2983.57 0.00 2983.57
+41 0.00 0.00 0.00 0.00 0.00 2863.03 0.00 2863.03
+42 0.00 0.00 0.00 0.00 0.00 3008.26 0.00 3008.26
+43 0.00 0.00 0.00 0.00 0.00 2983.91 0.00 2983.91
+44 0.00 0.00 0.00 0.00 0.00 3506.53 0.00 3506.53
+45 0.00 0.00 0.00 0.00 0.00 2859.31 0.00 2859.31
+continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
@@ -1887,7 +1872,26 @@ Mediafirma: AlexAravena
 ---
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
-LaTabla 12presentalasplazasmensualesestimadasporgrupodeorigen.
+Tabla11—continuación
+Mes E1desarrollo E1MB E2desarrollo E2MB E1producción
+yestabiliza-
+ción
+Operación E2cierrey
+estabilización
+posterioral
+H12
+TotalHH
+46 0.00 0.00 0.00 0.00 0.00 2747.36 0.00 2747.36
+47 0.00 0.00 0.00 0.00 0.00 3425.00 0.00 3425.00
+48 0.00 0.00 0.00 0.00 0.00 2799.95 0.00 2799.95
+49 0.00 0.00 0.00 0.00 0.00 2569.35 0.00 2569.35
+50 0.00 0.00 0.00 0.00 0.00 2783.36 0.00 2783.36
+51 0.00 0.00 0.00 0.00 0.00 2726.36 0.00 2726.36
+52 0.00 0.00 0.00 0.00 0.00 2797.68 0.00 2797.68
+53 0.00 0.00 0.00 0.00 0.00 2684.00 0.00 2684.00
+54 0.00 0.00 0.00 0.00 0.00 2850.12 0.00 2850.12
+55 0.00 0.00 0.00 0.00 0.00 2786.74 0.00 2786.74
+56 0.00 0.00 0.00 0.00 0.00 3470.64 0.00 3470.64
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
@@ -1896,28 +1900,7 @@ Mediafirma: AlexAravena
 ---
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
-Tabla12 Demandamensualdeplazasporgrupodeorigen.Fuente:elaboraciónapartirdelaEDTdelT-14,lasHHdeesteformularioyladotacióndelSD1,
-Tabla1.3.
-Mes Desarrollo Arq.eintegra-
-ción
-NOCyredes SREynube Calidad Seguridad Implantación Plazastotales
-1 5 2 0 2 0 2 1 12
-2 4 9 0 5 3 5 3 29
-3 2 3 5 7 2 3 3 25
-4 2 4 5 12 1 3 3 30
-5 26 10 4 12 1 5 1 59
-6 32 9 2 0 1 3 1 48
-7 32 7 2 0 1 2 0 44
-8 13 11 0 1 1 1 1 28
-9 4 8 2 3 7 2 1 27
-10 2 5 0 4 6 2 4 23
-11 2 9 0 3 2 1 4 21
-12 2 5 0 3 1 1 2 14
-13 4 6 2 1 2 4 22 41
-14 13 4 2 1 2 4 23 49
-15 14 4 2 1 2 4 23 50
-16 5 1 17 1 5 6 22 57
-continúaenlapáginasiguiente
+LaTabla 12presentalasplazasmensualesestimadasporgrupodeorigen.
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
@@ -1926,27 +1909,34 @@ Mediafirma: AlexAravena
 ---
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
-Tabla12—continuación
-Mes Desarrollo Arq.eintegra-
+Tabla12 Demandamensualdeplazasporgrupodeorigen.Fuente:elaboraciónapartirdelaEDTdelT-14,lasHHdeesteformularioyladotacióndelSD1,
+Tabla1.3ysecciones1.1y1.5.
+Mes Desarrollo Arq.einte-
+gración
+NOCyre-
+des
+SREynube Calidad Seguridad Implanta-
 ción
-NOCyredes SREynube Calidad Seguridad Implantación Plazastotales
-17 6 1 16 1 8 4 14 50
-18 6 1 17 1 2 4 8 39
-19 5 1 17 1 2 4 26 56
-20 4 1 18 1 2 4 26 56
-21 4 1 17 2 1 5 11 41
-22 3 1 16 2 1 5 12 40
-23 3 1 18 2 1 5 1 31
-24 3 1 16 2 1 5 2 30
-25 3 1 15 2 1 4 2 28
-26 3 1 16 2 1 5 2 30
-27 3 1 16 2 1 5 1 29
-28 3 1 16 2 1 5 1 29
-29 3 1 16 2 1 5 1 29
-30 3 1 16 2 1 5 1 29
-31 3 1 16 2 1 5 1 29
-32 3 1 21 2 1 5 1 34
-33 3 1 16 2 1 5 1 29
+Mesade
+servicios
+SOC Plazas
+totales
+1 6 3 0 2 1 2 1 0 0 15
+2 4 9 0 5 3 5 3 0 0 29
+3 3 3 5 7 2 3 3 0 0 26
+4 2 4 5 12 1 3 3 0 0 30
+5 26 11 4 12 1 5 1 0 0 60
+6 32 10 2 1 1 3 1 0 0 50
+7 32 8 2 1 1 2 0 0 0 46
+8 13 12 0 1 1 1 1 0 0 29
+9 4 8 2 3 7 2 1 0 0 27
+10 3 5 0 4 6 2 4 0 0 24
+11 3 10 0 3 2 1 4 0 0 23
+12 3 6 0 3 1 1 2 0 0 16
+13 4 6 0 1 2 1 22 0 6 42
+14 13 4 0 1 2 1 23 0 6 50
+15 14 4 0 1 2 1 23 0 6 51
+16 5 1 6 1 5 2 22 9 6 57
 continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
@@ -1957,26 +1947,33 @@ Mediafirma: AlexAravena
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
 Tabla12—continuación
-Mes Desarrollo Arq.eintegra-
+Mes Desarrollo Arq.einte-
+gración
+NOCyre-
+des
+SREynube Calidad Seguridad Implanta-
 ción
-NOCyredes SREynube Calidad Seguridad Implantación Plazastotales
-34 3 1 14 2 1 5 1 27
-35 3 1 20 2 1 5 1 33
-36 3 1 15 2 1 5 1 28
-37 3 1 13 2 1 4 1 25
-38 3 1 15 2 1 5 1 28
-39 3 1 14 2 1 5 1 27
-40 3 1 15 2 1 5 1 28
-41 3 1 14 2 1 5 1 27
-42 3 1 15 2 1 5 1 28
-43 3 1 15 2 1 5 1 28
-44 3 1 19 2 1 5 1 32
-45 3 1 14 2 1 5 1 27
-46 3 1 13 2 1 5 1 26
-47 3 1 18 2 1 5 1 31
-48 3 1 14 2 1 5 1 27
-49 3 1 12 2 1 4 1 24
-50 3 1 13 2 1 5 1 26
+Mesade
+servicios
+SOC Plazas
+totales
+17 6 1 6 1 8 1 14 9 6 52
+18 6 1 6 1 2 1 8 9 6 40
+19 5 1 6 1 2 1 26 9 6 57
+20 4 1 7 1 2 1 26 10 6 58
+21 4 1 8 2 1 1 11 8 6 42
+22 3 1 7 2 1 1 12 8 6 41
+23 3 1 7 2 1 1 1 10 6 32
+24 3 1 7 2 1 1 2 8 6 31
+25 3 1 6 2 1 1 2 7 6 29
+26 3 1 7 2 1 1 2 8 6 31
+27 3 1 6 2 1 1 1 8 6 29
+28 3 1 7 2 1 1 1 8 6 30
+29 3 1 7 2 1 1 1 8 6 30
+30 3 1 7 2 1 1 1 8 6 30
+31 3 1 7 2 1 1 1 8 6 30
+32 3 1 6 2 1 1 1 13 6 34
+33 3 1 6 2 1 1 1 8 6 29
 continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
@@ -1987,15 +1984,34 @@ Mediafirma: AlexAravena
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
 Tabla12—continuación
-Mes Desarrollo Arq.eintegra-
+Mes Desarrollo Arq.einte-
+gración
+NOCyre-
+des
+SREynube Calidad Seguridad Implanta-
 ción
-NOCyredes SREynube Calidad Seguridad Implantación Plazastotales
-51 3 1 13 2 1 5 1 26
-52 3 1 14 2 1 5 1 27
-53 3 1 13 2 1 5 1 26
-54 3 1 14 2 1 5 1 27
-55 3 1 13 2 1 5 1 26
-56 3 1 18 2 1 5 1 31
+Mesade
+servicios
+SOC Plazas
+totales
+34 3 1 5 2 1 1 1 8 6 28
+35 3 1 5 2 1 1 1 13 6 33
+36 3 1 5 2 1 1 1 8 6 28
+37 3 1 5 2 1 1 1 7 6 27
+38 3 1 5 2 1 1 1 8 6 28
+39 3 1 5 2 1 1 1 8 6 28
+40 3 1 5 2 1 1 1 8 6 28
+41 3 1 5 2 1 1 1 8 6 28
+42 3 1 5 2 1 1 1 8 6 28
+43 3 1 5 2 1 1 1 8 6 28
+44 3 1 5 2 1 1 1 13 6 33
+45 3 1 4 2 1 1 1 8 6 27
+46 3 1 4 2 1 1 1 8 6 27
+47 3 1 4 2 1 1 1 13 6 32
+48 3 1 4 2 1 1 1 8 6 27
+49 3 1 3 2 1 1 1 7 6 25
+50 3 1 4 2 1 1 1 8 6 27
+continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
@@ -2004,7 +2020,32 @@ Mediafirma: AlexAravena
 ---
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
-Paraelcontraste,sedistribuyenlas199.219,03HHporperfilyventanadecadapartida.Se
+Tabla12—continuación
+Mes Desarrollo Arq.einte-
+gración
+NOCyre-
+des
+SREynube Calidad Seguridad Implanta-
+ción
+Mesade
+servicios
+SOC Plazas
+totales
+51 3 1 4 2 1 1 1 8 6 27
+52 3 1 4 2 1 1 1 8 6 27
+53 3 1 4 2 1 1 1 8 6 27
+54 3 1 4 2 1 1 1 8 6 27
+55 3 1 4 2 1 1 1 8 6 27
+56 3 1 4 2 1 1 1 13 6 32
+LafroXSpA
+FormularioT-15
+Mediafirma: AlexAravena
+56
+
+---
+
+LafroXSpA FormularioT-15:Nivelaciónderecursos
+Paraelcontraste,sedistribuyenlas202.108,62HHporperfilyventanadecadapartida.Se
 aplicaelcalendariodecoberturaaMesaN1,NOCySOC,elrepartoprevistoalacompañamiento
 y los días de ejecución a las pruebas de certificación que cruzan meses. Cuando no hay un
 repartomensualespecíficoporperfil,seusaelpromediodesuventana.Así,encadameslas
@@ -2012,7 +2053,7 @@ plazaspor128HHcubrenlasHHdelaTabla 11.Lasección5.7identifica,grupoporgrupo,los
 perfilesquecubrencadamáximo.LareservadecorreccionesdeEtapa1semantieneexclusiva,
 ylacoberturadiariaseasignaporpersona,dedicaciónyturno.
 4.5 Reservasdecontingenciaydegestión
-Las 199.219,03 HH de la sección 4.3 son la línea base programada e incluyen 3.072 HH
+Las 202.108,62 HH de la sección 4.3 son la línea base programada e incluyen 3.072 HH
 protegidasparacorreccionesdelaEtapa1.Esacapacidadseusasoloparaesascorrecciones.
 Las reservas de riesgos del SD8 (Subdocumento 8) se administran por separado de la línea
 base.LaholguracontractualdecadahitosecalculaenlaTabla 14conlasHH,elcalendarioy
@@ -2023,10 +2064,10 @@ elperíodoylaautorizacióndelSD8.Lareservadegestiónde160HHdelSD8quedafueradel
 total programado y de la dotación, y se libera con la aprobación del Comité Ejecutivo. HH,
 dineroydíasdeholgurasonmagnitudesdiferentesynosesumanentresí.
 5 Redagregada,restriccionesyescenariosdecalendario
-ElCPMcalculalasfechasapartirdelasduracionesdetrabajodelassecciones4.2–4.4y
-delaspredecesorasdelasección6.1,conlos227paquetesylas199.219,03HH:168paquetes
-tienen entregable y 59 son de esfuerzo continuo. La carta de la sección 6.1 programa cada
-paquetedentrodesuventanatempranaytardía.
+ElCPMcalculalasfechasapartirdelasduracionesdetrabajodelassecciones4.2–4.4yde
+laspredecesorasdelasección6.1,conlos227paquetesdelalíneabasede202.108,62HH:168
+paquetestienenentregabley59sondeesfuerzocontinuo.Lacartadelasección6.1programa
+cadapaquetedentrodesuventanatempranaytardía.
 5.1 Cálculoreproducible
 Laredagregadamodela401eventosy625relaciones.Cadapaqueteconentregabletiene
 inicioyfin;lasrevisionesdeaceptacióndelCLIENTE,lascondicionesdemarchablancaydel
@@ -2041,7 +2082,7 @@ la línea base; cualquier diferencia obliga a recalcular. NOC, mesa y acompañam
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-56
+57
 
 ---
 
@@ -2087,7 +2128,7 @@ ble.
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-57
+58
 
 ---
 
@@ -2122,7 +2163,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-58
+59
 
 ---
 
@@ -2157,7 +2198,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-59
+60
 
 ---
 
@@ -2192,7 +2233,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-60
+61
 
 ---
 
@@ -2227,7 +2268,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-61
+62
 
 ---
 
@@ -2262,7 +2303,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-62
+63
 
 ---
 
@@ -2297,7 +2338,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-63
+64
 
 ---
 
@@ -2332,7 +2373,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-64
+65
 
 ---
 
@@ -2367,7 +2408,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-65
+66
 
 ---
 
@@ -2402,7 +2443,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-66
+67
 
 ---
 
@@ -2437,7 +2478,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-67
+68
 
 ---
 
@@ -2463,7 +2504,7 @@ HH
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-68
+69
 
 ---
 
@@ -2491,12 +2532,12 @@ ydepruebasenlospaquetesconentregable;soloelH10pierdeundíadeholgura.
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-69
+70
 
 ---
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
-Tabla14 Fechasyholgurasdeloshitoscalculadasporduracionesyprecedencias,conlalíneabasede199.219,03HH.Fuente:elaboraciónapartirdelas
+Tabla14 Fechasyholgurasdeloshitoscalculadasporduracionesyprecedencias,conlalíneabasede202.108,62HH.Fuente:elaboraciónapartirdelas
 secciones4.2,5.1y6.1,ydelAnexo7.B.
 Hito Entrega Acta Pasoapro-
 ducción
@@ -2524,7 +2565,7 @@ H12 02-10-2028 17-10-2028 18-10-2028 31-10-2028 8 8 4.3.1y4.3.3
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-70
+71
 
 ---
 
@@ -2540,7 +2581,7 @@ mensual por grupo de origen con las plazas previstas. Para la asignación diaria
 primerolosrolesdelosentregablesconvencimientomáspróximoysereservanporseparado
 losturnosdelosservicioscontinuosyelacompañamiento.
 5.4 Gobierno
-Semantienenlas199.219,03HHylasfechasprogramadas.Todadesviaciónqueconsuma
+Semantienenlas202.108,62HHylasfechasprogramadas.Todadesviaciónqueconsuma
 la holgura de un paquete se presenta al Comité de Proyecto con su plan de recuperación;
 cualquierreprogramaciónobligaarepetirlaspasadasyelpresupuestomensual.Lascuatro
 semanasfinalesdemarchablancaylosdiezdíasderevisióndelCLIENTEnosonreservade
@@ -2569,7 +2610,7 @@ siguiente,fueradelaventanadedespacho,yseregistraenelmismoexpediente.LaTabla 15
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-71
+72
 
 ---
 
@@ -2607,20 +2648,24 @@ mesesseguidos,seaumentaladotacióndelafranjaafectadasinesperarlarevisiónanual.
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-72
+73
 
 ---
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
 5.7 Dotaciónrequerida,rolesmínimosydotacióndeclarada
 LaTabla 16comparalasplazasprevistasparaelproyectoylademandamáximamensual
-con los siete grupos técnicos declarados en el SD1, Tabla 1.3. La sección 6.3 propone 136
-plazas:109desdelosgrupostécnicosdeplanta,incluidasMesaN1,SOCyrefuerzosdepruebas
-e integración, 9 del área de Implantación y Gestión del Cambio y 18 asistentes de terreno
-contratadosporobraofaena.Elregistrodeasignaciónidentificatitular,dedicaciónyturnode
-cadaplazaantesdeaprobarlalíneabase.
-Tabla16 Plazasprevistasydemandamáximamensualpororigen.Fuente:elaboraciónapartirdelSD1,Tabla1.3,
-ydelasección4.4deesteformulario.
+conlossietegrupostécnicosdeclaradosenelSD1,Tabla1.3.Lasección6.3propone137plazas:
+91desdelosgrupostécnicosdeplanta,incluidoslosrefuerzosdepruebaseintegración,9del
+áreadeImplantaciónyGestióndelCambio,13agentesdelaMesadeServicios,6analistasdel
+SOCy18asistentesdeterrenocontratadosporobraofaena.Losagentesdemesaylosanalistas
+delSOCnoformanpartedelos133especialistasdeplanta(SD1,secciones1.1y1.5).Lasplazas
+se calculan con 128 HH efectivas por persona y mes, por lo que superan a las personas por
+posicióndelSubdocumento4,Anexo4-W.7,queusajornadasde40a42horassemanalessin
+el20%deausenciasycoordinación.Elregistrodeasignaciónidentificatitular,dedicacióny
+turnodecadaplazaantesdeaprobarlalíneabase.
+Tabla16 Plazasprevistasydemandamáximamensualpororigen.Fuente:elaboraciónapartirdelSD1,Tabla1.3
+ysecciones1.1y1.5,ydelasección4.4deesteformulario.
 Grupodeorigen Planta
 SD1
 Plazas
@@ -2630,61 +2675,67 @@ máxima
 Mesde
 máximo
 Desarrollodesoftware 48 36 32 6y7
-Arquitecturaeintegración 15 15 11 8
-NOC24×7yredesdeInfraestructura 32 29 21 32
+Arquitecturaeintegración 15 15 12 8
+NOC24×7yredesdeInfraestructura 32 13 8 21
 SREynube 12 12 12 4y5
 Calidad 10 10 8 17
-Seguridad 7 7 6 16
+Seguridad 7 5 5 2y5
 Implantaciónygestióndelcambio(9deplantay18
 porobraofaena)
 9 27 26 19y20
-Todoslosgruposquedandentrodesuplanta.ArquitecturaeIntegraciónllegaa11plazas
-enelmes8,frentea15.Dentrodelgrupo,lacargadedatossuperaasusseisingenierosenlos
-meses8,9y11(10,7,7,1y8,6plazas),cuandocoincidenelmódulo3.4.11,laintegración3.6.1
-y las migraciones 3.7; la diferencia la cubren los dos ingenieros de integración senior y los
-tresarquitectosdesolución,cuyacargapropiaenesosmesesesinferioraunaplaza.SREy
-nubellegaa12enlosmeses4y5,igualasuplanta,porquelasinstalacionesfísicasdelasala
-técnica,elcableado,losracks,losgabinetesdebordeylosenlaces(6.1,6.2,6.3,6.6.2y6.6.3)
-lasejecutapersonalderedesyoperacióndeladivisiónInfraestructura,queenlosmeses3a9
-notienecargaenesteproyectoporqueelNOCdePuelchecomienzaenelmes13;elLíderde
-Operación/SREsiguecomoresponsabledeesospaquetes.LademandadeSeguridadincluye
-elSOC,cubiertoconcuatroespecialistasdelgrupoydosoperadoresdelNOC.Antesdelmes
-13,cuandoelSOCaúnnotieneturnos,lademandadeseguridadllegaa4,4plazasenelmes
-2ya4,6enelmes5:elEncargadodeSeguridadylosdosespecialistasdeciberseguridadla
-cubrencondosdeesoscuatroanalistas.Cadapersonasecuentaunasolavezaunquecubra
-variosroles.
+Mesadeservicios(fueradelaplanta) – 13 13 32,35,44,
+47y56
+SOC(adicionalalaplanta) – 6 6 13a56
+Lossietegrupostécnicosquedandentrodesuplanta.ArquitecturaeIntegraciónllegaa12
+plazasenelmes8,frentea15,conelLíderFuncionalajornadacompleta.Dentrodelgrupo,
+la carga de datos supera a sus seis ingenieros en los meses 8, 9 y 11 (10,7, 7,1 y 8,6 plazas),
+cuandocoincidenelmódulo3.4.11,laintegración3.6.1ylasmigraciones3.7;ladiferenciala
+cubrenlosdosingenierosdeintegraciónseniorylostresarquitectosdesolución,cuyacarga
+propiaenesosmesesesinferioraunaplaza.SREynubellegaa12enlosmeses4y5,igualasu
+planta,porquelasinstalacionesfísicasdelasalatécnica,elcableado,losracks,losgabinetes
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-73
+74
 
 ---
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
+debordeylosenlaces(6.1,6.2,6.3,6.6.2y6.6.3)lasejecutapersonalderedesyoperacióndela
+divisiónInfraestructura,queenlosmeses3a9notienecargaenesteproyectoporqueelNOC
+dePuelchecomienzaenelmes16;elLíderdeOperación/SREsiguecomoresponsabledeesos
+paquetes.LademandadelgrupodeSeguridadllegaa4,4plazasenelmes2ya4,6enelmes
+5,ylacubrenelEncargadodeSeguridadycuatroespecialistasdeciberseguridad,dentrode
+lossietedelgrupo.ElSOCsedotaconseisanalistaspropioscontratadosantesdelmes13:su
+puesto24 ×7suma744HHenunmesde31días,5,8plazas.ElNOCdePuelchellegaa7,2plazas
+enelmes21,cuandoformaasusochooperadoresparalafranjademesa,yquedadentrode
+los32profesionalesdeladivisión.Lamesallegaa13plazasenseptiembreydiciembredesde
+elmes32,conelterceragenteylacobertura24 ×7.Cadapersonasecuentaunasolavezaunque
+cubravariosroles.
 Laobracivildeseparaciónde6.1.1correspondealCLIENTE(RT-06.06);LafroXespecificay
 coordina,yproveeelpisotécnicoylasinstalacionesdesualcance.Elmes3esunanecesidad
 delaprogramación,nounafechadeentregayaconfirmadaporelCLIENTE.Elactadedispo-
 nibilidaddelrecintodebeprecederalostrabajosquedependandeella;6.1.5recibetambién
 laobrade6.1.1,ademásdeenergía,climatizacióneincendio.Unretrasoseanalizafrentea
 H3antesdeiniciarmontaje.
-LaasignaciónyhabilitacióndeanalistasinternosdelSOCdebecompletarseantesdelmes
-13bajoelEncargadodeSeguridad.Lacobertura24 ×7ylosrelevosseincluyenen8.1.5;eltotal
-desieteespecialistasdeclaradosnodemuestraporsísolodisponibilidadsimultáneaparaSOC
-ylasdemástareasdeseguridad.Seconfirmasuasignaciónporturnoysecontrastaelpersonal
-dearquitectura,integraciónydatosconlas15plazasdelgrupodeorigen.
+La contratación y habilitación de los analistas del SOC debe completarse antes del mes
+13 bajo el Encargado de Seguridad. La cobertura 24×7 y los relevos se incluyen en 8.1.5, y
+suasignaciónporturnoseconfirmaantesdeaprobarlalíneabase.Secontrastatambiénel
+personaldearquitectura,integraciónydatosconlas15plazasdelgrupodeorigen.
 Laimplantacióntieneunequipopropio,separadodeDesarrollo.EláreadeImplantacióny
 GestióndelCambiodelSD1aportanuevepersonasdeplanta:elLíderdeImplantación,dos
 coordinadores,uninstructorycincojefesdefrente(bodegadeTalca,bodegadeConcepción,
-plataformas,rutadeTalcayrutadeConcepción).Losjefesdefrentesonconsultoresfunciona-
-les:decidenenterrenosielusuariooperacorrectamente,siseaplicalacontingenciaycuándo
-seescala.Aellossesuman18asistentesdeimplantaciónenterreno,contratadosdirectamente
-por LafroX por obra o faena entre los meses 11 y 22, con experiencia en bodega, reparto o
-soporteausuariosyreclutadosenTalcayConcepción.Acompañanapreparadores,operadores
-de plataforma, conductores y preventistas, resuelven dudas de uso y registran incidencias,
-siempreacargodeunjefedefrente;secapacitanenlosmeses11y12,secertificanantesdel
-H6ysuscontratosterminanenformaescalonadasegúnlacurvadeadopción(RT-20.05).El
-máximodelafamiliaesde26plazasenelmes19,cubiertoporlas9deplantaylos18asistentes.
-Ningúndesarrolladorseasignaaacompañamientoenterreno.
+plataformas, ruta de Talca y ruta de Concepción). Los jefes de frente son consultores fun-
+cionales:decidenenterrenosielusuariooperacorrectamente,siseaplicalacontingencia
+ycuándoseescala.Aellossesuman18asistentesdeimplantaciónenterreno,contratados
+directamenteporLafroXporobraofaenaentrelosmeses13y22,conexperienciaenbodega,
+repartoosoporteausuariosyreclutadosenTalcayConcepción.Acompañanapreparadores,
+operadores de plataforma, conductores y preventistas, resuelven dudas de uso y registran
+incidencias, siempre a cargo de un jefe de frente; se forman en el puesto junto a su jefe de
+frentedurantelasprimerasjornadasdeacompañamientoysuscontratosterminanenforma
+escalonadasegúnlacurvadeadopción(RT-20.05).Elmáximodelafamiliaesde26plazasen
+el mes 19, cubierto por las 9 de planta y los 18 asistentes. Ningún desarrollador se asigna a
+acompañamientoenterreno.
 LademandadeDesarrollollegaa32plazasenlosmeses6y7,durantelaconstrucciónde
 losmódulosdelaEtapa1:unadedireccióny31deconstrucción.Laconstrucciónlacubren
 33 personas del grupo: el Líder de Desarrollo, los 27 desarrolladores móviles, front-end y
@@ -2692,6 +2743,14 @@ back-end,losdosingenierosdeintegraciónjuniorylostresanalistasQAjunior,queenesos
 meses participan en la construcción y en las pruebas unitarias de los módulos. Con el Jefe
 deProyectoylosdosanalistasPMO,losperfilesdelgruposuman36plazas,dentrodelos48
 desarrolladoresdeplanta.Enlosmeses1y2,lospaquetesdeinicioylosplanesdegestión
+LafroXSpA
+FormularioT-15
+Mediafirma: AlexAravena
+75
+
+---
+
+LafroXSpA FormularioT-15:Nivelaciónderecursos
 demandan4,7y3,5plazasdedirección:elJefedeProyectoylosdosanalistasPMOlospreparan
 conelLíderdeDesarrolloyundesarrolladorsenior,quenotienencargadeconstrucciónantes
 delmes5.Laasignacióndiariaseregistraporpersona,competenciayturno,separadadelos
@@ -2703,20 +2762,22 @@ paraesetramo:aportan249,60HHyelevanlacapacidadteóricaa1.081,60HH.Antesdeiniciar
 laspruebas,Calidaddebeacreditarlosrefuerzosycomprobarladisponibilidaddiariapara
 pruebasyserviciossimultáneos.Sinopuedecubrirlos,senivelaelcalendarioysevuelvena
 comprobarH5ylasventanasdeaceptación.
-LafroXSpA
-FormularioT-15
-Mediafirma: AlexAravena
-74
-
----
-
-LafroXSpA FormularioT-15:Nivelaciónderecursos
-Losrolesmínimosdelnumeral19.2delasBasesTécnicasTransversales(p.34)conservan
-susdedicaciones.ElJefedeProyectodirigelaimplementación;elLíderdeDesarrolloparticipa
-en el diseño y los prototipos de los primeros meses y después en la construcción; el Líder
-Funcional cubre levantamiento, aceptación y olas; y el Líder de Integración mantiene la
-responsabilidaddelospaquetesdeinterfaces.ElSD1,sección1.5,identificaalostitulares.Las
-HHsecontabilizanunasolavezenlospaquetesdondeintervienecadarol.
+Encadamesdelaimplementación,elJefedeProyecto,elLíderdeDesarrolloyelLíder
+Funcionaltienen128HHprogramadas,lacapacidadcompletadeunapersona(sección4.1).
+ElJefedeProyectodirigelaimplementaciónytoma,enlaspartidasdedirección,partedel
+trabajodelAnalistaPMO.ElLíderdeDesarrolloparticipaconelArquitectodeSoluciónen
+el diseño de los meses 1 a 4, sigue la construcción y dirige la corrección de defectos de la
+certificacióndelaEtapa1enlosmeses10a12.ElLíderFuncionalcubreellevantamiento,la
+validaciónfuncionaldecadaiteración,laaceptaciónylasolas;enlaspruebasdeaceptacióny
+enlasmarchasblancastomapartedeltrabajodelosanalistasdepruebas,losjefesdefrente
+y los coordinadores. En la Operación, el Líder de Operación / SRE tiene 128 HH cada mes
+como gerente de servicio dedicado y toma la mitad del trabajo DevOps de las partidas SRE.
+LosdemásrolesmínimostienenHHtodoslosmesesdesuperíodo:elArquitectodeSolución,
+el Encargado de Seguridad, el Líder de Calidad y Pruebas y el Líder de Integración por sus
+partidascontinuas,elLíderdeDatosdurantelaimplementaciónyelLíderdeImplantación
+desdeelmes8.LasHHquereemplazantrabajodeotroperfilsetraspasandentrodelamisma
+partidaylas2.889,59HHrestantesseagregancomolíneasexplícitasdelaTabla 23.CadaHH
+secuentaunasolavez.
 6 Listadeactividades:regladel8/80ydelperíododereporte
 LaEDTdelFormularioT-14llegahastaelpaquetedetrabajo;fueradeella,cadapaquetese
 descomponeenlasactividadesquepermitenprogramarlo,asignarloycontrolarlo(PMI,2017,
@@ -2728,6 +2789,14 @@ efectivasporpersonay día, una actividadde80 HH con dospersonasdura ⌈80 ÷12,8
 7díashábiles;sisuventanaesmáscorta,seleasignanmáspersonas.Todaactividadde
 niveldeesfuerzosedivideenrelevosde64HHcomomáximo.
 La descomposición no cambia las HH de la sección 4: la suma de las actividades de cada
+LafroXSpA
+FormularioT-15
+Mediafirma: AlexAravena
+76
+
+---
+
+LafroXSpA FormularioT-15:Nivelaciónderecursos
 paqueteesigualasuesfuerzoesperadoE.Lasactividadesheredanelresponsableylaventana
 delpaquete.LaTabla 17dalasfechasdecadapaqueteylaTabla 18lasactividadeshastaelH2.
 Porplanificacióngradual(PMI,2017,p.185),antesdecadafasesedetallanlasactividadesde
@@ -2747,14 +2816,6 @@ H2antesdecadafase.
 Cadapaquetesedescomponeenactividadesde8a80HHquecabenenunaquincena,con
 unaplantillaporclase:unmódulo(D,conlasHHdesuestimaciónportamaño)seconstruye
 en iteraciones de dos semanas con análisis, diseño de contratos, incrementos, pruebas de
-LafroXSpA
-FormularioT-15
-Mediafirma: AlexAravena
-75
-
----
-
-LafroXSpA FormularioT-15:Nivelaciónderecursos
 contrato, integración en QA y entrega; una integración (I, 480 HH), en seis actividades; un
 diseño(E,240HH),entres;unainstalaciónocapacitación(T,160HH),endos,yunaprueba
 ampliada(V,320HH),encuatro.LaTabla 18detallalas119actividadesdelos60paquetesque
@@ -2768,7 +2829,7 @@ detallaelresto.
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-76
+77
 
 ---
 
@@ -2843,7 +2904,7 @@ oct
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-77
+78
 
 ---
 
@@ -2856,7 +2917,7 @@ ocurriráunañodespués.
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-78
+79
 
 ---
 
@@ -2886,7 +2947,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-79
+80
 
 ---
 
@@ -2916,7 +2977,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-80
+81
 
 ---
 
@@ -2946,7 +3007,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-81
+82
 
 ---
 
@@ -2976,7 +3037,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-82
+83
 
 ---
 
@@ -3006,7 +3067,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-83
+84
 
 ---
 
@@ -3036,7 +3097,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-84
+85
 
 ---
 
@@ -3066,7 +3127,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-85
+86
 
 ---
 
@@ -3096,7 +3157,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-86
+87
 
 ---
 
@@ -3126,7 +3187,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-87
+88
 
 ---
 
@@ -3156,7 +3217,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-88
+89
 
 ---
 
@@ -3172,7 +3233,7 @@ móvil
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-89
+90
 
 ---
 
@@ -3217,7 +3278,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-90
+91
 
 ---
 
@@ -3262,7 +3323,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-91
+92
 
 ---
 
@@ -3304,7 +3365,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-92
+93
 
 ---
 
@@ -3346,7 +3407,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-93
+94
 
 ---
 
@@ -3387,7 +3448,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-94
+95
 
 ---
 
@@ -3431,7 +3492,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-95
+96
 
 ---
 
@@ -3469,7 +3530,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-96
+97
 
 ---
 
@@ -3510,7 +3571,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-97
+98
 
 ---
 
@@ -3552,7 +3613,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-98
+99
 
 ---
 
@@ -3594,7 +3655,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-99
+100
 
 ---
 
@@ -3637,7 +3698,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-100
+101
 
 ---
 
@@ -3679,7 +3740,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-101
+102
 
 ---
 
@@ -3723,7 +3784,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-102
+103
 
 ---
 
@@ -3764,7 +3825,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-103
+104
 
 ---
 
@@ -3799,7 +3860,7 @@ SRE 2 80 01-03-2027 09-03-2027 7 5.1.4.A01(especificación)
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-104
+105
 
 ---
 
@@ -3841,7 +3902,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-105
+106
 
 ---
 
@@ -3880,7 +3941,7 @@ noconvienefusionarlasconotraactividad.
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-106
+107
 
 ---
 
@@ -3892,13 +3953,14 @@ duranteelcontratoyelesfuerzomáximodecadauno.
 Laconciliacióndelinventariodepaquetessepara139.538,20HHdelos59paquetescon-
 tinuos y 47.144,83 HH de los 168 con entregable. No hay códigos duplicados entre ambos
 grupos;juntosreproducenlas186.683,03HHdelos227paquetes.Aestasseañaden128HHde
-restauraciones,9.336HHdesoportepuentey3.072HHdereservaprotegida,parauntotalde
-199.219,03HH.Estecrucevalidaelesfuerzo,mientrasquelacoberturadiariaseverificaconel
-registrodepersonasyturnosdescritoenlasección5.7.
+restauraciones,9.336HHdesoportepuente,3.072HHdereservaprotegiday2.889,59HHde
+dedicacióndelosrolesmínimos,parauntotalde202.108,62HH.Estecrucevalidaelesfuerzo,
+mientrasquelacoberturadiariaseverificaconelregistrodepersonasyturnosdescritoenla
+sección5.7.
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-107
+108
 
 ---
 
@@ -3939,7 +4001,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-108
+109
 
 ---
 
@@ -3982,7 +4044,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-109
+110
 
 ---
 
@@ -4026,7 +4088,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-110
+111
 
 ---
 
@@ -4070,7 +4132,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-111
+112
 
 ---
 
@@ -4109,7 +4171,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-112
+113
 
 ---
 
@@ -4150,7 +4212,7 @@ periódica
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-113
+114
 
 ---
 
@@ -4166,9 +4228,11 @@ ganadodelSD6,sección6.1.5.
 La Tabla22 desglosa 37 perfiles, contando Senior y Junior por separado, e identifica su
 categoría E-26, el esfuerzo por fase y las plazas propuestas. Las diez funciones mínimas de
 BTT19.2permanecenidentificadas.LoscódigosdeorigenING,ARQ,NOC,SRE,CAL,SEGe
-IMPremitenalossietegrupostécnicosdelSD1,incluidaeláreadeImplantaciónyGestión
-del Cambio; OF identifica a los asistentes de terreno contratados por obra o faena para la
-implantación;lacapacidadylascondicionesdeasignaciónsecontrastanen5.7.
+IMPremitenalossietegrupostécnicosdelSD1,incluidaeláreadeImplantaciónyGestióndel
+Cambio.MESAidentificaalosagentesdelaMesadeServiciosdeLafroXySOCalosanalistas
+desuSOC,queelSD1cuentaapartedelos133especialistasdeplanta(secciones1.1y1.5).OF
+identificaa los asistentes de terrenocontratados por obrao faena paralaimplantación.La
+capacidadylascondicionesdeasignaciónsecontrastanen5.7.
 Horas y jornadas.Las HH son el esfuerzo acumulado del equipo de cada perfil, no de una
 solapersona.Lasjornadasequivalentesdeochohorassecalculancomo 𝐷𝑒𝑞 = 𝐻𝐻/8.Sonuna
 unidaddeesfuerzoparalavalorización:nosondíastranscurridos,díaslaborablesconsecutivos
@@ -4182,7 +4246,7 @@ efectivasporpersonaymesde4.1.
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-114
+115
 
 ---
 
@@ -4201,79 +4265,30 @@ implem.
 HH/8
 HHoper. Jornadas
 oper.HH/8
-01 ING JefedeProyecto JefedeProyecto 1 1.377,2 172,15 996,8 124,6
+01 ING JefedeProyecto JefedeProyecto 1 2.582,1 322,7625 1.012,87 126,6088
 20 ING AnalistaPMO,documentaciónycom-
 pras
 Analista/Diseña-
 dorSenior
-2 3.714 464,25 2.244,8 280,6
+2 2.509,1 313,6375 2.228,73 278,5913
 02 ARQ LíderdeIntegración JefedeTIC 1 947,93 118,4914 57,6 7,2
 03S ARQ ArquitectodeSoluciónSenior ArquitectoSenior 2 1.984,02 248,0025 153,6 19,2
-03J ARQ ArquitectodeSoluciónJunior ArquitectoJunior 1 991,98 123,9975 76,8 9,6
+03J ARQ ArquitectodeSoluciónJunior ArquitectoJunior 1 676,09 84,5113 76,8 9,6
 05 ARQ LíderFuncional JefedeAnálisisy
 Diseño
-1 144 18 0 0
+1 2.560 320 0 0
 06S ARQ AnalistaFuncionalyUXSenior Analista/Diseña-
 dorSenior
-1 557,34 69,6675 0 0
+1 282,67 35,3338 0 0
 06J ARQ AnalistaFuncionalyUXJunior Analista/Diseña-
 dorJunior
 1 278,66 34,8325 0 0
 12S ARQ IngenierodeIntegraciónSenior IngenieroSenior 2 2.538,72 317,3399 0 0
 12J ING IngenierodeIntegraciónJunior IngenieroJunior 2 1.269,35 158,6687 0 0
-04 ING LíderdeDesarrollo JefedeDesarrollo 1 1.616 202 691,2 86,4
+04 ING LíderdeDesarrollo JefedeDesarrollo 1 2.565,82 320,7275 691,2 86,4
 07S ING DesarrolladorMóvilSenior IngenieroSenior 4 1.979,97 247,4959 460,8 57,6
 07J ING DesarrolladorMóvilJunior IngenieroJunior 2 989,98 123,7473 230,4 28,8
 08S ING DesarrolladorFront-endSenior IngenieroSenior 3 1.322,31 165,289 691,2 86,4
-continúaenlapáginasiguiente
-LafroXSpA
-FormularioT-15
-Mediafirma: AlexAravena
-115
-
----
-
-LafroXSpA FormularioT-15:Nivelaciónderecursos
-Tabla22—continuación
-Cód. Origen
-pro-
-puesto
-Perfil CategoríaE-26 Plazas
-pro-
-pues-
-tas
-HHimplem. Jornadas
-implem.
-HH/8
-HHoper. Jornadas
-oper.HH/8
-08J ING DesarrolladorFront-endJunior IngenieroJunior 3 1.322,31 165,289 691,2 86,4
-09S ING DesarrolladorBack-endSenior IngenieroSenior 9 4.743,66 592,9576 2.488,32 311,04
-09J ING DesarrolladorBack-endJunior IngenieroJunior 6 3.162,44 395,305 1.658,88 207,36
-23 ARQ LíderdeDatos IngenieroExperto 1 1.326,7 165,8375 57,6 7,2
-10S ARQ IngenierodeDatosyBasesSenior IngenierodeDatos 3 3.537,87 442,2333 153,6 19,2
-10J ARQ IngenierodeDatosyBasesJunior IngenierodeDatos 2 1.768,93 221,1167 76,8 9,6
-16 CAL LíderdeCalidadyPruebas AnalistaQAExper-
-to
-1 414 51,75 43,2 5,4
-19S CAL AnalistaQASenior AnalistaQASenior 9 3.523,82 440,4775 399,27 49,90875
-19J ING AnalistaQAJunior AnalistaQAJunior 3 1.166,18 145,7725 133,53 16,69125
-21 IMP LíderdeImplantaciónyGestióndel
-Cambio
-JefedeAnálisisy
-Diseño
-1 1.314,05 164,2563 220,8 27,6
-32 IMP CoordinadordeImplantación Analista/Diseña-
-dorSenior
-2 2.628,08 328,51 441,6 55,2
-22 IMP InstructordeCapacitación Analista/Diseña-
-dorSenior
-1 1.352 169 2.656 332
-26 IMP JefedeFrentedeImplantación(bodega,
-plataformasyruta)
-Analista/Diseña-
-dorSenior
-5 4.006,96 500,87 0 0
 continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
@@ -4296,29 +4311,34 @@ implem.
 HH/8
 HHoper. Jornadas
 oper.HH/8
-28 OF AsistentedeImplantaciónenTerreno TIC 18 14.425,04 1.803,13 0 0
-24 SRE LíderdeOperación/SRE JefedeTIC 1 812,8 101,6 646,4 80,8
-14S SRE IngenieroDevOpsyPlataformaSenior IngenieroDevOps/
-SRE
-7 3.296,35 412,0437 3.436,8 429,6
-14J SRE IngenieroDevOpsyPlataformaJunior IngenieroDevOps/
-SRE
-4 1.648,18 206,0225 1.718,4 214,8
-29 NOC TécnicodeRedeseInstalaciones(sala
-técnica,cableado,racksyenlaces)
-TIC 5 2.240 280 0 0
-17 NOC OperadordeMesaN1 TIC 16 5.664 708 38.246 4.780,75
-30 NOC OperadorNOC TIC 6 3.672 459 21.748,2 2.718,525
-13 SEG EncargadodeSeguridaddelaInforma-
-ción
-Encargadode
-SeguridadTI
-1 1.016 127 232 29
-31E SEG EspecialistadeCiberseguridadSenior IngenieroSenior 2 1.464 183 913,6 114,2
-31O SEG/
-NOC
-AnalistaSOC IngenieroSenior 6 5.832 729 26.280 3.285
-Totaldeperfiles 136 90.048,83 11.256,10 107.845,40 13.480,675
+08J ING DesarrolladorFront-endJunior IngenieroJunior 3 1.322,31 165,289 691,2 86,4
+09S ING DesarrolladorBack-endSenior IngenieroSenior 9 4.743,66 592,9576 2.488,32 311,04
+09J ING DesarrolladorBack-endJunior IngenieroJunior 6 3.162,44 395,305 1.658,88 207,36
+23 ARQ LíderdeDatos IngenieroExperto 1 1.374,7 171,8375 57,6 7,2
+10S ARQ IngenierodeDatosyBasesSenior IngenierodeDatos 3 3.537,87 442,2333 153,6 19,2
+10J ARQ IngenierodeDatosyBasesJunior IngenierodeDatos 2 1.768,93 221,1167 76,8 9,6
+16 CAL LíderdeCalidadyPruebas AnalistaQAExper-
+to
+1 428 53,5 49,2 6,15
+19S CAL AnalistaQASenior AnalistaQASenior 9 3.168 396 396,87 49,6088
+19J ING AnalistaQAJunior AnalistaQAJunior 3 1.132 141,5 133,53 16,6913
+21 IMP LíderdeImplantaciónyGestióndel
+Cambio
+JefedeAnálisisy
+Diseño
+1 1.314,05 164,2563 220,8 27,6
+32 IMP CoordinadordeImplantación Analista/Diseña-
+dorSenior
+2 2.545,11 318,1388 441,6 55,2
+22 IMP InstructordeCapacitación Analista/Diseña-
+dorSenior
+1 1.352 169 2.656 332
+26 IMP JefedeFrentedeImplantación(bodega,
+plataformasyruta)
+Analista/Diseña-
+dorSenior
+5 3.134,11 391,7638 0 0
+continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
@@ -4327,39 +4347,40 @@ Mediafirma: AlexAravena
 ---
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
-Lasplazassonlapropuestadeprocedenciade5.7,nounanóminaconfirmadanilaapro-
-bacióndesuconcurrencia.EnSOCseproponencuatropersonasdeSEGydosdeNOC;cada
-personasecuentaunasolavez.LasHHdelosjefesdefrenteydelosasistentesdeterrenose
-repartenenproporciónasusplazas.Lasinstalacionesfísicasdelasalatécnica,elcableado,
-losracks,losgabinetesdebordeylosenlaces(6.1,6.2,6.3,6.6.2y6.6.3)lasejecutapersonalde
-redesyoperacióndeladivisiónInfraestructura(perfil29),bajolaresponsabilidaddelLíderde
-Operación/SRE;losproveedoresinstalanlaenergía,laclimatizaciónylaextincióndeincen-
-dios(6.1.2a6.1.4).Elperfil29apoyaademáslainstalacióndesensores,kitsdefrío,impresoras
-ybalanzas(6.5.3a6.5.6).Sus2.240HHsedescuentandelosperfilesDevOpsenproporción
-a sus horas. La selección de categoría económica no acredita por sí sola competencia para
-desempeñarelrol.
-Conciliaciónporfase. Losperfilesaportan90.048,83HHdeimplementacióny107.845,40HHde
-operaciónyreversibilidad.Losserviciosespecializadosporresultadoseañadenporseparado,
-sinasignarlesplazas:864HHdeimplementacióny460,80deoperación.Portanto:
-𝐻𝐻𝑖𝑚𝑝𝑙𝑒𝑚. = 90,048,83 + 864 = 90 ,912,83,
-𝐻𝐻𝑜𝑝𝑒𝑟. = 107,845,40 + 460,80 = 108 ,306,20,
-𝐻𝐻𝑝𝑟𝑜𝑦𝑒𝑐𝑡𝑜 = 90,912,83 + 108,306,20 = 199 ,219,03.
-Esta separación sigue la fase de valorización de cada paquete; el resumen por etapa de la
-sección4.3sigueelmescalendariodeejecución.Poresolaimplementaciónylaoperación
-difierenen102,97HHentreambastablas(90.809,86y108.409,17HHenelresumenporetapa),
-conelmismototalde199.219,03HH.
-En jornadas equivalentes son 11.364,10 de implementación y 13.538,275 de operación:
-24.902,38entotal.Estascantidadesnosesumancomoduracióndelproyecto.
-Asignaciónporpartida. LaTabla 23asignalasHHdecadapartidaalosperfilesdelaTabla 22.
-Lacolumna«PerfilyHH»indicaelcódigodelperfily,entreparéntesis,susHHenlapartida;
-elcódigo00identificalosserviciosespecializadosporresultado.CadafilasumalasHHdela
-partidaycadaperfilsumalasHHdeimplementaciónydeoperacióndelaTabla 22:197.894,23
-HHdelosperfilesy1.324,80HHdeserviciosespecializados,parauntotalde199.219,03HH.
-Lasfases8y9.2secuentanenoperación;laspartidasrecurrentesdelasfases1a7quesiguen
-despuésdelmes20sedividenenproporciónasusmeses,yelSOCsegúnsucalendario.
-Porejemplo,las5.168HHdecapacitaciónycertificación(7.1,7.3y8.5.1)serepartenentre
-elInstructordeCapacitación(3.480HH),loscoordinadoresdeimplantación(732,8HH),el
-AnalistaPMO,documentaciónycompras(588,8HH)yelLíderdeImplantación(366,4HH).
+Tabla22—continuación
+Cód. Origen
+pro-
+puesto
+Perfil CategoríaE-26 Plazas
+pro-
+pues-
+tas
+HHimplem. Jornadas
+implem.
+HH/8
+HHoper. Jornadas
+oper.HH/8
+28 OF AsistentedeImplantaciónenTerreno TIC 18 14.425,04 1.803,13 0 0
+24 SRE LíderdeOperación/SRE JefedeTIC 1 835,35 104,4188 4.596 574,5
+14S SRE IngenieroDevOpsyPlataformaSenior IngenieroDevOps/
+SRE
+7 3.291,99 411,4987 1.722,76 215,345
+14J SRE IngenieroDevOpsyPlataformaJunior IngenieroDevOps/
+SRE
+4 1.646 205,75 861,38 107,6725
+29 NOC TécnicodeRedeseInstalaciones(sala
+técnica,cableado,racksyenlaces)
+TIC 5 2.240 280 0 0
+17 MESA OperadordeMesaN1 TIC 13 5.664 708 38.246 4.780,75
+30 NOC OperadorNOC TIC 8 3.672 459 21.748,2 2.718,525
+13 SEG EncargadodeSeguridaddelaInforma-
+ción
+Encargadode
+SeguridadTI
+1 1.016 127 232 29
+31E SEG EspecialistadeCiberseguridadSenior IngenieroSenior 4 1.464 183 913,6 114,2
+31O SOC AnalistaSOC IngenieroSenior 6 5.832 729 26.280 3.285
+Totaldeperfiles 137 91.556,28 11.444,53 109.227,54 13.653,442
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
@@ -4368,11 +4389,54 @@ Mediafirma: AlexAravena
 ---
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
+Lasplazassonlapropuestadeprocedenciade5.7,nounanóminaconfirmadanilaapro-
+bación de su concurrencia. Los agentes de mesa y los analistas SOC dedican a Puelche las
+HH de esta tabla y el resto de su jornada a otros servicios de LafroX, como el NOC con su
+dedicacióndeclarada;seformanen losprocesosdePuelcheduranteelsoportepuenteyla
+primera marcha blanca, dentro de sus horas de servicio. Cada persona se cuenta una sola
+vez.LasHHdelosjefesdefrenteydelosasistentesdeterrenoserepartenenproporcióna
+susplazas.Lasinstalacionesfísicasdelasalatécnica,elcableado,losracks,losgabinetesde
+bordeylosenlaces(6.1,6.2,6.3,6.6.2y6.6.3)lasejecutapersonalderedesyoperacióndela
+divisiónInfraestructura(perfil29),bajolaresponsabilidaddelLíderdeOperación/SRE;los
+proveedoresinstalanlaenergía,laclimatizaciónylaextincióndeincendios(6.1.2a6.1.4).El
+perfil29apoyaademáslainstalacióndesensores,kitsdefrío,impresorasybalanzas(6.5.3
+a 6.5.6). Sus 2.240 HH se descuentan de los perfiles DevOps en proporción a sus horas. La
+seleccióndecategoríaeconómicanoacreditaporsísolacompetenciaparadesempeñarelrol.
+Conciliaciónporfase. Losperfilesaportan91.556,28HHdeimplementacióny109.227,54HHde
+operaciónyreversibilidad.Losserviciosespecializadosporresultadoseañadenporseparado,
+sinasignarlesplazas:864HHdeimplementacióny460,80deoperación.Portanto:
+𝐻𝐻𝑖𝑚𝑝𝑙𝑒𝑚. = 91,556,28 + 864 = 92 ,420,28,
+𝐻𝐻𝑜𝑝𝑒𝑟. = 109,227,54 + 460,80 = 109 ,688,34,
+𝐻𝐻𝑝𝑟𝑜𝑦𝑒𝑐𝑡𝑜 = 92,420,28 + 109,688,34 = 202 ,108,62.
+Esta separación sigue la fase de valorización de cada paquete; el resumen por etapa de la
+sección4.3sigueelmescalendariodeejecución.Poresolaimplementaciónylaoperación
+difierenen102,97HHentreambastablas(92.317,30y109.791,32HHenelresumenporetapa),
+conelmismototalde202.108,62HH.
+En jornadas equivalentes son 11.552,53 de implementación y 13.711,042 de operación:
+25.263,58entotal.Estascantidadesnosesumancomoduracióndelproyecto.
+Asignaciónporpartida. LaTabla 23asignalasHHdecadapartidaalosperfilesdelaTabla 22.
+Lacolumna«PerfilyHH»indicaelcódigodelperfily,entreparéntesis,susHHenlapartida;
+elcódigo00identificalosserviciosespecializadosporresultado.CadafilasumalasHHdela
+partidaycadaperfilsumalasHHdeimplementaciónydeoperacióndelaTabla 22:200.783,82
+HHdelosperfilesy1.324,80HHdeserviciosespecializados,parauntotalde202.108,62HH.
+Lasfases8y9.2secuentanenoperación;laspartidasrecurrentesdelasfases1a7quesiguen
+despuésdelmes20sedividenenproporciónasusmeses,yelSOCsegúnsucalendario.
+Porejemplo,las5.168HHdecapacitaciónycertificación(7.1,7.3y8.5.1)serepartenentre
+elInstructordeCapacitación(3.480HH),loscoordinadoresdeimplantación(732,8HH),el
+AnalistaPMO,documentaciónycompras(588,8HH)yelLíderdeImplantación(366,4HH).
+LafroXSpA
+FormularioT-15
+Mediafirma: AlexAravena
+119
+
+---
+
+LafroXSpA FormularioT-15:Nivelaciónderecursos
 Tabla23 AsignacióndeHHporpartidayperfil.Fuente:elaboraciónapartirdelaEDTdelFormularioT-14,lasHHdelaTabla 3ylosperfilesdelaTabla 22.
 EDT Partida Familia Meses HH PerfilyHH
 1.1.1 Actadeconstitucióndelproyecto,firmadaconlaContrapar-
 teTécnica
-JP 1–1 80 20(52),01(28)
+JP 1–1 80 01(44,3),20(35,7)
 1.1.2 DocumentodevalidaciónconelCLIENTEdelosproblemas
 ymetasdelproyecto
 JP 1–1 80 20(52),01(28)
@@ -4382,17 +4446,16 @@ pasoaproducciónyelacusetributario
 JP 1–1 80 20(52),01(28)
 1.2.1 Documentodeespecificaciónderequerimientosylínea
 basedealcancedelaEtapa1(H1)
-ARQ 1–1 80 06S(26,67),05(24),06J(13,33),03S
-(10,67),03J(5,33)
+ARQ 1–1 80 05(50,67),06J(13,33),03S(10,67),
+04(5,33)
 1.2.2 Documentodereglasderuteocapturadasalplanificadorde
 rutas
-IMP 1–3 80 05(24),06S(24),32(13,33),06J(12),
-21(6,67)
+IMP 1–3 80 05(48),32(13,33),06J(12),21(6,67)
 1.2.3 Documentodeespecificacióndelasinterfacessindocu-
 mentacióndelERP,delWMSde2013ydelatelemetríadel
 tercero,yperfildeintercambioconlascadenas
 ARQ 1–4 80 12S(31,57),02(16,66),12J(15,77),
-03S(10,67),03J(5,33)
+03S(10,67),04(5,33)
 1.2.4 Matrizdetrazabilidad:requerimiento,módulo,paquetey
 prueba(H1)
 CAL 2–2 80 19S(47,27),16(24),19J(8,73)
@@ -4404,51 +4467,10 @@ ARQ 13–13 80 06S(26,67),05(24),06J(13,33),03S
 decongelamientosdeseptiembre,diciembreyelcierre
 mensual
 JP 1–1 80 20(52),01(28)
-1.3.2 EDTydiccionariodelaEDT(líneabasedelalcance) JP 2–2 80 20(52),01(28)
+1.3.2 EDTydiccionariodelaEDT(líneabasedelalcance) JP 2–2 80 20(48,75),01(31,25)
 1.3.3 CartaGanttde56mesesconloshitosH1aH12ylaruta
 crítica
 JP 2–2 80 20(52),01(28)
-continúaenlapáginasiguiente
-LafroXSpA
-FormularioT-15
-Mediafirma: AlexAravena
-119
-
----
-
-LafroXSpA FormularioT-15:Nivelaciónderecursos
-Tabla23—continuación
-EDT Partida Familia Meses HH PerfilyHH
-1.3.4 Documentodenivelaciónderecursosyfrentesdelsolapa-
-mientodelosmeses13a15y19a20
-JP 2–2 80 20(52),01(28)
-1.3.5 Reuniónsemanaldeseguimientoconsuinformesemanal JP 1–20 480 20(312),01(168)
-1.4.1 Registrodeinteresadosconsuinfluencia,interésyestrate-
-gia
-JP 1–1 80 20(52),01(28)
-1.4.2 Plandecomunicacionesconcalendarioycanalesporgrupo
-deinterés
-JP 1–1 80 20(52),01(28)
-1.4.3 Registrodesolicitudesdecambioconanálisisdeimpacto JP 1–56 896 20(582,4),01(313,6)
-1.5.1 Plandecalidadyplandepruebas CAL 2–2 80 19S(47,27),16(24),19J(8,73)
-1.5.2 Puertasdecalidadautomáticas:coberturadelógicade
-negociodel70%,globaldel80%ydelcódigomodificado
-del80%
-CAL 6–20 80 19S(55,45),19J(18,55),16(6)
-1.6.1 PlanderiesgosyregistroinicialderiesgossegúnISO31000 JP 2–2 80 20(52),01(28)
-1.6.2 RegistroderiesgosrevisadoencadaComitédeProyecto JP 1–20 160 20(104),01(56)
-1.7.1 PlandeReversibilidadinicial(primeros90días) JP 3–3 80 20(52),01(28)
-1.7.2 PrimeraactualizaciónanualdelPlandeReversibilidad
-durantelaimplementación
-JP 15–15 80 20(52),01(28)
-1.8.1 Oficinadegestióndelproyectoconmetodologíabasadaen
-elPMBOK
-JP 1–20 320 20(208),01(112)
-1.8.2 ActasdelComitéEjecutivomensual,conlaaprobaciónde
-loscambiosdealcance
-JP 1–56 448 20(291,2),01(156,8)
-1.8.3 ActasdelComitédeProyectoquincenal JP 1–20 240 20(156),01(84)
-1.8.4 ActasdelComitédeArquitecturamensual ARQ 1–56 448 03S(238,93),03J(119,47),02(89,6)
 continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
@@ -4460,8 +4482,49 @@ Mediafirma: AlexAravena
 LafroXSpA FormularioT-15:Nivelaciónderecursos
 Tabla23—continuación
 EDT Partida Familia Meses HH PerfilyHH
-1.8.5 ActasdelComitédeOperaciónmensual,desdeelmes13 SRE 13–56 352 24(264),14S(58,67),14J(29,33)
-1.8.6 Informemensualdeavanceconvalorganado JP 1–20 480 20(312),01(168)
+1.3.4 Documentodenivelaciónderecursosyfrentesdelsolapa-
+mientodelosmeses13a15y19a20
+JP 2–2 80 20(52),01(28)
+1.3.5 Reuniónsemanaldeseguimientoconsuinformesemanal JP 1–20 480 01(448,8),20(31,2)
+1.4.1 Registrodeinteresadosconsuinfluencia,interésyestrate-
+gia
+JP 1–1 80 20(52),01(28)
+1.4.2 Plandecomunicacionesconcalendarioycanalesporgrupo
+deinterés
+JP 1–1 80 20(52),01(28)
+1.4.3 Registrodesolicitudesdecambioconanálisisdeimpacto JP 1–56 896 20(557,41),01(338,59)
+1.5.1 Plandecalidadyplandepruebas CAL 2–2 80 19S(47,27),16(24),19J(8,73)
+1.5.2 Puertasdecalidadautomáticas:coberturadelógicade
+negociodel70%,globaldel80%ydelcódigomodificado
+del80%
+CAL 6–20 80 19S(55,45),19J(18,55),16(6)
+1.6.1 PlanderiesgosyregistroinicialderiesgossegúnISO31000 JP 2–2 80 20(52),01(28)
+1.6.2 RegistroderiesgosrevisadoencadaComitédeProyecto JP 1–20 160 01(149,56),20(10,44)
+1.7.1 PlandeReversibilidadinicial(primeros90días) JP 3–3 80 01(71,49),20(8,51)
+1.7.2 PrimeraactualizaciónanualdelPlandeReversibilidad
+durantelaimplementación
+JP 15–15 80 01(64,27),20(15,73)
+1.8.1 Oficinadegestióndelproyectoconmetodologíabasadaen
+elPMBOK
+JP 1–20 320 01(268),20(52)
+1.8.2 ActasdelComitéEjecutivomensual,conlaaprobaciónde
+loscambiosdealcance
+JP 1–56 448 20(291,2),01(156,8)
+1.8.3 ActasdelComitédeProyectoquincenal JP 1–20 240 01(201),20(39)
+1.8.4 ActasdelComitédeArquitecturamensual ARQ 1–56 448 03S(238,93),03J(119,47),02(89,6)
+continúaenlapáginasiguiente
+LafroXSpA
+FormularioT-15
+Mediafirma: AlexAravena
+121
+
+---
+
+LafroXSpA FormularioT-15:Nivelaciónderecursos
+Tabla23—continuación
+EDT Partida Familia Meses HH PerfilyHH
+1.8.5 ActasdelComitédeOperaciónmensual,desdeelmes13 SRE 13–56 352 24(300),14S(34,67),14J(17,33)
+1.8.6 Informemensualdeavanceconvalorganado JP 1–20 480 01(383,44),20(96,56)
 1.8.7 TablerodeestadodelproyectodisponibleparaelCLIENTE JP 2–56 440 20(286),01(154)
 1.8.8 Espaciocolaborativoconladocumentación,losentregables,
 lasactas,losriesgosyloscambios
@@ -4484,10 +4547,10 @@ JP 1–56 224 20(145,6),01(78,4)
 2.1.1 Documentodearquitecturalógica:capas,módulosM1a
 M12einterfaces
 ARQ 2–2 240 12S(94,68),02(49,98),12J(47,34),
-03S(32),03J(16)
+03S(32),04(16)
 2.1.2 Documentodearquitecturafísicahíbrida:nube,centrosde
 distribuciónyplataformasdecross-docking
-ARQ 2–2 240 03S(128),03J(64),02(48)
+ARQ 2–2 240 03S(128),04(64),02(48)
 2.1.3 Modelodedatosydiccionariodedatos,conlatrazabilidad
 porlote
 DAT 2–2 240 10S(128),10J(64),23(48)
@@ -4498,7 +4561,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-121
+122
 
 ---
 
@@ -4526,10 +4589,10 @@ plataformasdecross-docking
 SRE 2–2 240 14S(144),14J(72),24(24)
 2.4.1 Actadeaprobacióndelaarquitectura,elplandeseguridad
 yelmodelodedatos(H2)
-ARQ 3–3 240 03S(128),03J(64),02(48)
+ARQ 3–3 240 03S(128),04(64),02(48)
 2.4.2 ActadeaprobacióndeldiseñodetalladodelaEtapa2(H8) ARQ 13–13 240 03S(128),03J(64),02(48)
 2.4.3 Validacióndeldiseñodelkitenbancodepruebas SRE 3–3 341,33 14S(206,22),14J(103,11),24(32)
-2.4.4 Mapeotérmicoportipodecarrocería ARQ 4–4 240 03S(128),03J(64),02(48)
+2.4.4 Mapeotérmicoportipodecarrocería ARQ 4–4 240 03S(128),04(64),02(48)
 2.5.1 PlandecontinuidaddelnegociosegúnISO22301,con
 análisisdeimpactoyprocedimientosmanuales
 SRE 3–3 240 14S(144),14J(72),24(24)
@@ -4540,7 +4603,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-122
+123
 
 ---
 
@@ -4549,14 +4612,16 @@ Tabla23—continuación
 EDT Partida Familia Meses HH PerfilyHH
 2.6.1 Investigaciónconpreparadores,preventistas,conductoresy
 almaceneros
-IMP 2–2 240 05(72),06S(72),32(40),06J(36),21
-(20)
+IMP 2–2 240 05(131,27),32(40),06J(36),21(20),
+06S(12,73)
 2.6.2 Prototiposypruebasdeusabilidadconparticipantesdel
 CLIENTE
-IMP 3–3 240 06S(136),06J(68),32(24),21(12)
+IMP 3–3 240 05(80),06J(68),06S(56),32(24),21
+(12)
 2.6.3 Indicadoresdeusabilidadcomprometidosportransacción
 crítica
-IMP 4–4 240 06S(136),06J(68),32(24),21(12)
+IMP 4–4 240 05(84,73),06J(68),06S(51,27),32
+(24),21(12)
 3.1.1 AmbientesdeDesarrolloyQAenlanube(H3) SRE 5–5 240 14S(144),14J(72),24(24)
 3.1.2 AmbientesdePreproducciónyProducciónenlanube(H3) SRE 5–5 240 14S(144),14J(72),24(24)
 3.1.3 Ambientederecuperaciónantedesastresenlaregión
@@ -4584,7 +4649,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-123
+124
 
 ---
 
@@ -4635,7 +4700,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-124
+125
 
 ---
 
@@ -4686,7 +4751,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-125
+126
 
 ---
 
@@ -4719,7 +4784,7 @@ DAT 12–12 480 10S(256),10J(128),23(96)
 CAL 9–9 160 19S(110,91),19J(37,09),16(12)
 3.8.2 Pruebasdeaceptaciónydeaccesibilidadconpreventistas,
 conductoresybodega
-CAL 9–10 320 19S(221,82),19J(74,18),16(24)
+CAL 9–10 320 05(256),19J(40),16(24)
 3.8.3 Cincocondicionesfísicas:−22°Cconguantes,lluvia,calor
 superiora34°C,soldirectoyusoconunamano;descone-
 xiónseparadade14horas
@@ -4729,7 +4794,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-126
+127
 
 ---
 
@@ -4751,7 +4816,8 @@ producción(H9)
 CAL 16–16 160 19S(110,91),19J(37,09),16(12)
 3.9.2 Pruebasdeaceptaciónydeaccesibilidadconcadenas,
 transportistas,ComercialyFinanzas
-CAL 17–17 320 19S(221,82),19J(74,18),16(24)
+CAL 17–17 320 05(128),19S(93,82),19J(74,18),16
+(24)
 3.9.3 Pruebasdecargaconambasetapasactivasyderesiliencia CAL 16–17 320 19S(221,82),19J(74,18),16(24)
 3.9.4 Pruebaderecuperaciónantedesastresconambasetapas CAL 16–17 320 19S(221,82),19J(74,18),16(24)
 3.9.5 PruebadeseguridadofensivadelaEtapa2,poruntercero
@@ -4773,7 +4839,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-127
+128
 
 ---
 
@@ -4791,7 +4857,7 @@ evidencia(INN-02.P1)
 CAL 2–3 240 19S(166,36),19J(55,64),16(18)
 3.10.2.2 Innovación2:circuitomínimodereproducciónenla
 preventa(INN-02.P2)
-CAL 3–5 240 19S(166,36),19J(55,64),16(18)
+CAL 3–5 240 19S(160,36),19J(55,64),16(24)
 3.10.2.3 Innovación2:capturadeevidenciaenlasaplicacionesde
 preventa,preparaciónyreparto(INN-02.P3)
 CAL 5–10 240 19S(166,36),19J(55,64),16(18)
@@ -4815,12 +4881,13 @@ sión(INN-05.P1)
 IMP 13–14 240 06S(136),06J(68),32(24),21(12)
 3.10.4.2 Innovación5:evaluacióndeprivacidadydiseñodela
 impresiónencabina(INN-05.P2)
-IMP 14–15 240 32(96),20(48),21(48),22(48)
+IMP 14–15 240 32(96),21(48),22(48),01(24),20
+(24)
 continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-128
+129
 
 ---
 
@@ -4829,7 +4896,8 @@ Tabla23—continuación
 EDT Partida Familia Meses HH PerfilyHH
 3.10.4.3 Innovación5:cálculoybloques1a3delahojadenegocio
 (INN-05.P3)
-IMP 15–17 240 32(96),20(48),21(48),22(48)
+IMP 15–17 240 32(96),21(48),22(48),20(33,8),01
+(14,2)
 3.10.4.4 Innovación5:hojacertificada,enmarchablancayen
 producción(INN-05.P4,primeraparte)
 IMP 18–21 240 32(96),20(48),21(48),22(48)
@@ -4852,63 +4920,18 @@ DES 6–20 80 09S(29,05),09J(19,37),08S(11,79),
 08J(11,79),04(8)
 4.1.1 PlandeolasdelaEtapa1porsitioyzona:Talca,Concep-
 ciónyplataformasdecross-docking
-IMP 10–10 80 32(32),20(16),21(16),22(16)
+IMP 10–10 80 32(32),01(16),21(16),22(16)
 4.1.2 ProcedimientodereversióndelaEtapa1antesdelas05:30,
 conversiónoperativalocalyDTEemitidosporelERP
-IMP 11–11 80 32(32),20(16),21(16),22(16)
+IMP 11–11 80 20(16),05(16),21(16),32(16),22
+(16)
 4.1.3 PlandeimplantaciónyreversióndelaEtapa2fueradela
 ventanade05:30a07:00
 IMP 17–17 80 32(32),20(16),21(16),22(16)
-4.1.4 Pilotodecadenadefríoencuatrocamiones IMP 10–11 341,33 32(142,22),21(71,11),20(64),22
-(64)
-4.2.1 MarchablancadelaEtapa1conconciliacióndiaria(H6) IMP 13–15 7.392 28(5.409,39),26(1.502,61),32(320),
-21(160)
-continúaenlapáginasiguiente
-LafroXSpA
-FormularioT-15
-Mediafirma: AlexAravena
-129
-
----
-
-LafroXSpA FormularioT-15:Nivelaciónderecursos
-Tabla23—continuación
-EDT Partida Familia Meses HH PerfilyHH
-4.2.2 EstabilizacióndelaEtapa1,acompañamientoenrutay
-restauracionesdesoportepuente
-IMP 16–20 5.408 28(3.606,26),26(1.001,74),32
-(533,33),21(266,67)
-4.2.3 ExpedientedeH7 JP 16–16 80 20(52),01(28)
-4.3.1 MarchablancadelaEtapa2enconvivenciaconlaEtapa1y
-fuenteúnicadedatos(H11)
-IMP 19–20 4.928 28(3.606,26),26(1.001,74),32
-(213,33),21(106,67)
-4.3.2 EstabilizacióndelaEtapa2conComercial,Finanzas,cade-
-nasytransportistas
-IMP 21–22 2.464 28(1.803,13),26(500,87),32
-(106,67),21(53,33)
-4.3.3 ExpedientedeH12 JP 21–21 80 20(52),01(28)
-4.3.4 Garantíadecorrectofuncionamientoconstituida,condición
-delaaceptaciónfinal(H12)
-JP 20–20 80 20(52),01(28)
-5.1.1 EspecificacióndecompradeequiposdeusoparaelCLIEN-
-TE
-ARQ 2–2 80 03S(42,67),03J(21,33),02(16)
-5.1.2 Especificaciónycompradelasalatécnica,losracks,los
-servidoresylosgabinetesdeborde
-ARQ 2–2 80 03S(42,67),03J(21,33),02(16)
-5.1.3 Actasderecepcióntécnicadelequipamientodeterreno
-compradoporelCLIENTEydelainfraestructuraprovista
-porLafroX
-SRE 5–5 80 20(56),14S(16),14J(8)
-5.1.4 Especificaciónycompradelsistemadecadenadefrío ARQ 1–2 240 03S(128),03J(64),02(48)
-5.2.1 ContratodelosserviciosdeAWS SRE 2–2 80 20(56),14S(16),14J(8)
-5.2.2 Suscripcióndelserviciodegestióndedispositivosyde
-detecciónenendpoints
-SRE 4–4 80 20(56),14S(16),14J(8)
-5.2.3 Licenciasdesoftwaredetercerosconstituidasanombredel
-CLIENTE
-ARQ 4–4 80 03S(42,67),03J(21,33),02(16)
+4.1.4 Pilotodecadenadefríoencuatrocamiones IMP 10–11 341,33 32(106,66),21(71,11),22(64),20
+(60,41),05(35,56),01(3,59)
+4.2.1 MarchablancadelaEtapa1conconciliacióndiaria(H6) IMP 13–15 7.392 28(5.409,39),26(1.118,61),05(384),
+32(320),21(160)
 continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
@@ -4920,6 +4943,54 @@ Mediafirma: AlexAravena
 LafroXSpA FormularioT-15:Nivelaciónderecursos
 Tabla23—continuación
 EDT Partida Familia Meses HH PerfilyHH
+4.2.2 EstabilizacióndelaEtapa1,acompañamientoenrutay
+restauracionesdesoportepuente
+IMP 16–20 5.408 28(3.606,26),26(512,89),05(512),
+32(510,18),21(266,67)
+4.2.3 ExpedientedeH7 JP 16–16 80 20(47,77),01(32,23)
+4.3.1 MarchablancadelaEtapa2enconvivenciaconlaEtapa1y
+fuenteúnicadedatos(H11)
+IMP 19–20 4.928 28(3.606,26),26(1.001,74),32
+(213,33),21(106,67)
+4.3.2 EstabilizacióndelaEtapa2conComercial,Finanzas,cade-
+nasytransportistas
+IMP 21–22 2.464 28(1.803,13),26(500,87),32
+(106,67),21(53,33)
+4.3.3 ExpedientedeH12 JP 21–21 80 20(52),01(28)
+4.3.4 Garantíadecorrectofuncionamientoconstituida,condición
+delaaceptaciónfinal(H12)
+JP 20–20 80 20(51,23),01(28,77)
+5.1.1 EspecificacióndecompradeequiposdeusoparaelCLIEN-
+TE
+ARQ 2–2 80 03S(42,67),04(21,33),02(16)
+5.1.2 Especificaciónycompradelasalatécnica,losracks,los
+servidoresylosgabinetesdeborde
+ARQ 2–2 80 03S(42,67),04(21,33),02(16)
+5.1.3 Actasderecepcióntécnicadelequipamientodeterreno
+compradoporelCLIENTEydelainfraestructuraprovista
+porLafroX
+SRE 5–5 80 20(48,96),14S(16),14J(8),01(7,04)
+5.1.4 Especificaciónycompradelsistemadecadenadefrío ARQ 1–2 240 03S(128),02(48),04(33,24),03J
+(30,76)
+5.2.1 ContratodelosserviciosdeAWS SRE 2–2 80 20(56),14S(16),14J(8)
+5.2.2 Suscripcióndelserviciodegestióndedispositivosyde
+detecciónenendpoints
+SRE 4–4 80 20(29,72),01(26,28),14S(16),14J
+(8)
+continúaenlapáginasiguiente
+LafroXSpA
+FormularioT-15
+Mediafirma: AlexAravena
+131
+
+---
+
+LafroXSpA FormularioT-15:Nivelaciónderecursos
+Tabla23—continuación
+EDT Partida Familia Meses HH PerfilyHH
+5.2.3 Licenciasdesoftwaredetercerosconstituidasanombredel
+CLIENTE
+ARQ 4–4 80 03S(42,67),04(21,33),02(16)
 5.3.1 ContratodefibraópticadelosCDdeTalcayConcepción SRE 4–4 80 20(56),14S(16),14J(8)
 5.3.2 ContratodeplanesLTEcondosproveedores(ochoplanes) SRE 4–4 80 20(56),14S(16),14J(8)
 5.3.3 ContratodeStarlinkparaloscincositios:Talca,Concepción
@@ -4928,13 +4999,13 @@ SRE 4–4 80 20(56),14S(16),14J(8)
 5.3.4 ContratodeSIMM2Myserviciosatelitaldeloscamiones
 confrío
 SRE 2–2 80 20(56),14S(16),14J(8)
-5.4.1 Acuerdosoperacionalesfirmadosconlosdieztransportistas IMP 9–12 80 32(32),20(16),21(16),22(16)
+5.4.1 Acuerdosoperacionalesfirmadosconlosdieztransportistas IMP 9–12 80 32(32),21(16),22(16),01(8),20(8)
 5.4.2 Actadeacuerdoconelsindicatosobreterminales,GPSy
 cámaras
-IMP 9–12 80 32(32),20(16),21(16),22(16)
+IMP 9–12 80 32(32),21(16),22(16),01(8),20(8)
 5.4.3 Fórmulaaprobadadeltramovariable:reglasdeatribución,
 canastaeíndices(INN-04.P1)
-JP 17–20 80 20(52),01(28)
+JP 17–20 80 01(67),20(13)
 5.4.4 Contratodecustodiadefuentesconunterceroindepen-
 diente
 JP 7–7 80 20(72),01(8)
@@ -4949,18 +5020,18 @@ RED 3–3 160 00(128),29(32)
 6.1.4 Hardwarededeteccióntempranadeincendioyextinción
 poragentelimpioinstalado
 RED 3–3 160 00(128),29(32)
-6.1.5 Actaderecepcióntécnicadelasala RED 4–4 160 29(144),24(16)
 continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-131
+132
 
 ---
 
 LafroXSpA FormularioT-15:Nivelaciónderecursos
 Tabla23—continuación
 EDT Partida Familia Meses HH PerfilyHH
+6.1.5 Actaderecepcióntécnicadelasala RED 4–4 160 29(144),24(16)
 6.2.1 CableadodecobreCat6AyfibraOM4tendido,condos
 ductosdeingresoindependientes
 RED 4–4 160 29(144),24(16)
@@ -4995,7 +5066,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-132
+133
 
 ---
 
@@ -5025,23 +5096,27 @@ RED 5–5 160 29(144),24(16)
 RED 5–5 160 29(144),24(16)
 7.1.1 Plandecapacitaciónporperfil:usuariosfinales,avanzados,
 administradores,equipotécnicoysoporte
-IMP 10–12 160 22(120),20(16),32(16),21(8)
+IMP 10–12 160 22(120),32(16),20(10,67),21(8),
+01(5,33)
 7.1.2 Programadecapacitacióncontinuadelturnodenochepor
 larotacióndel38%
 IMP 13–56 2.816 22(2.112),20(281,6),32(281,6),21
 (140,8)
 7.1.3 Incorporacióndeconductoresdetransportistas,escaneosy
 lecturadelrojo
-IMP 11–20 240 32(96),20(48),21(48),22(48)
-7.1.4 TraspasoalequipodeTIdecuatropersonasdelCLIENTE IMP 15–20 160 32(64),20(32),21(32),22(32)
+IMP 11–20 240 32(96),21(48),22(48),20(24,33),
+01(23,67)
+7.1.4 TraspasoalequipodeTIdecuatropersonasdelCLIENTE IMP 15–20 160 32(64),21(32),22(32),20(21,33),
+01(10,67)
 7.1.5 Materialesdecapacitación:manualesporperfil,guías
 rápidas,preguntasfrecuentesyvideostutoriales
-IMP 10–18 160 22(120),20(16),32(16),21(8)
+IMP 10–18 160 22(120),32(16),20(10,67),21(8),
+01(5,33)
 continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-133
+134
 
 ---
 
@@ -5050,21 +5125,26 @@ Tabla23—continuación
 EDT Partida Familia Meses HH PerfilyHH
 7.1.6 Plataformadeautoformaciónenlíneaconregistrode
 avance
-IMP 10–12 160 22(120),20(16),32(16),21(8)
+IMP 10–12 160 22(120),32(16),20(10,67),21(8),
+01(5,33)
 7.2.1 Acompañamientodelpersonalcon20o30añosenla
 compañía
-IMP 10–16 160 32(64),20(32),21(32),22(32)
-7.2.2 Gestióndelcambioconlascadenasylostransportistas IMP 16–18 160 32(64),20(32),21(32),22(32)
+IMP 10–16 160 32(59,43),21(32),22(32),20(26,54),
+01(5,46),05(4,57)
+7.2.2 Gestióndelcambioconlascadenasylostransportistas IMP 16–18 160 32(64),21(32),22(32),20(30,47),
+01(1,53)
 7.2.3 Diagnósticodelimpactoorganizacionalporáreayperfil,
 conagentesdecambio
 IMP 2–6 160 32(64),20(32),21(32),22(32)
 7.2.4 Procedimientosoperativosrediseñados,contingenciade
 fríoyrupturaconfirmada
-IMP 8–20 240 32(96),20(48),21(48),22(48)
+IMP 8–20 240 32(92,31),21(48),22(48),20(33,23),
+01(14,77),05(3,69)
 7.2.5 Medicióndelaadopciónyplandeaccióncorrectiva IMP 13–21 160 32(64),20(32),21(32),22(32)
 7.3.1 Certificacióndepreventistas,conductoresypreparadores
 (Etapa1)
-IMP 13–15 160 32(64),20(32),21(32),22(32)
+IMP 13–15 160 32(64),21(32),22(32),20(21,33),
+01(10,67)
 7.3.2 CertificacióndeComercialyFinanzasencostodeservir
 (Etapa2)
 IMP 18–18 160 32(64),20(32),21(32),22(32)
@@ -5077,7 +5157,7 @@ serviciodelArt.78°durantelos36mesesdeoperación
 SRE 21–56 38.246 17(38.246)
 8.1.3 Serviciodecontinuidadypruebassemestralesderecupera-
 ciónantedesastresdurantelos36mesesdeoperación
-SRE 21–56 560 14S(336),14J(168),24(56)
+SRE 21–56 560 24(308),14S(168),14J(84)
 8.1.4 ActualizacionesanualesdelPlandeReversibilidaddurante
 los36mesesdeoperación
 JP 21–56 288 20(187,2),01(100,8)
@@ -5085,7 +5165,7 @@ continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-134
+135
 
 ---
 
@@ -5098,7 +5178,7 @@ SIEMdesdelaprimeramarchablanca(mes13)hastaelmes
 SEG 13–56 32.112 31O(32.112)
 8.1.6 Pruebasmensualesderestauraciónderespaldosdurante
 los36mesesdeoperación
-SRE 21–56 576 14S(345,6),14J(172,8),24(57,6)
+SRE 21–56 576 24(316,8),14S(172,8),14J(86,4)
 8.2.1 Mantenimientocorrectivoyevolutivodelsoftwaredurante
 los36mesesdeoperación,conbolsaanualdehorasyfuera
 delasventanasdecongelamiento
@@ -5112,28 +5192,29 @@ SEG 21–56 1.152 31E(806,4),00(230,4),13(115,2)
 8.2.3 Mantenimientodelhardwaredurantelos36mesesdeopera-
 ción:salatécnica,racks,gabinetesdebordeyequipamiento
 deterreno
-SRE 21–56 1.152 14S(768),14J(384)
+SRE 21–56 1.152 24(576),14S(384),14J(192)
 8.2.4 Registroyreduccióndeladeudatécnicadurantelos36
 mesesdeoperación
 DES 21–56 2.304 09S(829,44),09J(552,96),08S
 (345,6),08J(345,6),04(230,4)
 8.2.5 Actualizacionesanualesdeloscomponentesdebaseduran-
 telos36mesesdeoperación
-SRE 21–56 288 14S(172,8),14J(86,4),24(28,8)
+SRE 21–56 288 24(158,4),14S(86,4),14J(43,2)
 8.2.6 Revisionessemestralesdelasinstalacioneseléctricasdela
 saladurantelos36mesesdeoperación
-SRE 21–56 288 00(230,4),14S(38,4),14J(19,2)
+SRE 21–56 288 00(230,4),24(28,8),14S(19,2),14J
+(9,6)
 8.2.7 Ciclodevidadelequipamientodurantelos36mesesde
 operación:reposiciónydisposiciónfinal
-SRE 21–56 864 14S(518,4),14J(259,2),24(86,4)
+SRE 21–56 864 24(475,2),14S(259,2),14J(129,6)
 8.3.1 Innovación2:mantenimientodeescenariosderegresión
 (INN-02.P4,segundaparte)
-CAL 21–56 576 19S(399,27),19J(133,53),16(43,2)
+CAL 21–56 576 19S(396,87),19J(133,53),16(45,6)
 continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-135
+136
 
 ---
 
@@ -5155,13 +5236,13 @@ IMP 22–26 80 32(32),20(16),21(16),22(16)
 8.3.6 Innovación5:bloque4condicionado(INN-05.P5) IMP 24–27 80 32(32),20(16),21(16),22(16)
 8.4.1 Gestióndelacapacidadconproyeccióntrimestraldurante
 los36mesesdeoperación
-SRE 21–56 576 14S(345,6),14J(172,8),24(57,6)
+SRE 21–56 576 24(316,8),14S(172,8),14J(86,4)
 8.4.2 Informesmensualesdeconsumodenube(FinOps)durante
 los36mesesdeoperación
-SRE 21–56 576 14S(345,6),14J(172,8),24(57,6)
+SRE 21–56 576 24(316,8),14S(172,8),14J(86,4)
 8.4.3 Estimacionesanualesdelahuelladecarbonodelaopera-
 ción
-SRE 21–56 288 14S(172,8),14J(86,4),24(28,8)
+SRE 21–56 288 24(158,4),14S(86,4),14J(43,2)
 8.4.4 Actualizacionessemestralesdeldepósitodecustodiade
 fuentesdurantelos36mesesdeoperación
 JP 21–56 288 20(187,2),01(100,8)
@@ -5174,12 +5255,12 @@ mesesposterioresalmes21
 IMP 21–27 80 32(32),20(16),21(16),22(16)
 8.5.3 Mantenimientodelabasedeconocimientodurantelos36
 mesesdeoperación,conmétricasdeuso
-SRE 21–56 576 14S(345,6),14J(172,8),24(57,6)
+SRE 21–56 576 24(316,8),14S(172,8),14J(86,4)
 continúaenlapáginasiguiente
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-136
+137
 
 ---
 
@@ -5206,10 +5287,17 @@ JP 54–56 80 20(52),01(28)
 (337,36),08S(307,95),08J(307,95),
 07J(196,23)
 — ReservaprotegidaCAL CAL 13–20 1.024 19S(744,73),19J(279,27)
+— DedicacióncompletadelLíderdeDesarrollo DES 1–20 633,93 04(633,93)
+— DedicacióncompletadelLíderFuncional ARQ 1–12 801,51 05(801,51)
+— GerenciadelservicioypermanenciadelLíderdeOperación
+/SRE
+SRE 6–56 1.394,55 24(1.394,55)
+— PermanenciadelLíderdeDatos DAT 1–20 48 23(48)
+— PermanenciadelLíderdeCalidadyPruebas CAL 1–56 11,6 16(11,6)
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-137
+138
 
 ---
 
@@ -5229,4 +5317,4 @@ forresearchanddevelopmentprogramevaluation. Operations Research, 7(5),646–669.
 LafroXSpA
 FormularioT-15
 Mediafirma: AlexAravena
-138
+139

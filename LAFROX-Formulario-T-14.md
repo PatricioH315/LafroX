@@ -5808,7 +5808,7 @@ ciónporseveridadyseguimientodetodassusactuacionesyestadoshastaelcierreconforme,
 con el escalamiento L1–L3 previsto (BTT, cap. 21, RT-21.15, p. 37). El cierre de cada ticket
 requerirálaconfirmacióndelapersonausuariaregistradaenél;mientrasfalte,permanecerá
 pendientedecierreysujetoalseguimientodelamesa(RT-21.17).
-ElpuestoNOCde8.1.1locubreladivisióndeNOC24 ×7deLafroX,conlosseisoperadores
+ElpuestoNOCde8.1.1locubreladivisióndeNOC24 ×7deLafroX,conlosochooperadores
 nominados del perfil NOC del Formulario T-15 y una dedicación declarada de 100% en el
 primer año de operación, 75% en el segundo y 50% en el tercero. La dedicación solo baja
 con acta del Comité de Operación y con los tres meses anteriores dentro de los niveles del
@@ -6001,8 +6001,8 @@ ses21a56.
 Estacuentadecontrolreúneeltrabajoquemantienelasoluciónsanayactualizada,sepa-
 radoportipo:software,ciberseguridadyhardware.
 LafroXdestinarálas2.304HHDESde8.2.4areducirladeudatécnicadurantelos36meses
-deOperación,equivalentesal2,1253%delas108.409,17HHdeesaetapa:2.304 ÷108.409,17
-× 100 = 2,1253%. Esa capacidad equivale a 2.304÷ 36 = 64 HH mensuales y 64× 12 = 768
+deOperación,equivalentesal2,0985%delas109.791,32HHdeesaetapa:2.304 ÷109.791,32
+× 100 = 2,0985%. Esa capacidad equivale a 2.304÷ 36 = 64 HH mensuales y 64× 12 = 768
 HHanuales,conseguimientoenelregistrocuantificadoyelinformetrimestralexistentes;
 LafroXSpA
 FormularioT-14
@@ -6333,9 +6333,9 @@ agrupación.
 SRE Meses24a27.
 Desdeelmes22,laresponsabilidadderespuestadelospaquetes8.3.2,8.3.5y8.3.6pasaal
 frentedeOperación,bajoelLíderdeOperación/SRE,unavezqueconcluyenlasdedicaciones
-delLíderdeDatosydelLíderdeImplantación(SD1,Tabla1.6).Estatransferencianocambia
-lasfamiliasdeesfuerzodelT-15:DATpara8.3.2eIMPpara8.3.5y8.3.6.Cadapaqueteconserva
-elperíodoindicadoensufila.
+delLíderdeDatosydelLíderdeImplantación(FormularioT-15,sección5.7).Estatransferencia
+nocambialasfamiliasdeesfuerzodelT-15:DATpara8.3.2eIMPpara8.3.5y8.3.6.Cadapaquete
+conservaelperíodoindicadoensufila.
 2.8.4 Cuenta8.4—Informesyobligacionesperiódicas
 EstacuentadecontrolreúnelosinformesylastareasquelasBasesfijanconunaperiodici-
 daddurantelaOperaciónyquenoformanpartedelosserviciosdiarios.
