@@ -1,6 +1,14 @@
 {
   "source_ref": "3d0eeea70c16ea3a6c5dfb3f539d8892fb865005",
   "source_commit": "3d0eeea70c16ea3a6c5dfb3f539d8892fb865005",
+  "rt_update_commit": "0ef1bf867a8b666f0d54cc2664d2518f2b07d75e",
+  "rt_update_ids": [
+    "RT-05.30",
+    "RT-18.08",
+    "RT-20.02",
+    "RT-21.21",
+    "RT-26.04"
+  ],
   "test_count": 1328,
   "counts": {
     "t12_rows": 653,
@@ -6163,7 +6171,7 @@
     {
       "id": "RT-05.30",
       "state": "Cumple",
-      "component": "La solución estima la vida útil remanente mediante un modelo cinético determinista por familia, aplicado a la historia térmica del lote. El SD13 documenta el modelo, sus variables, la métrica I-03B y la recalibración semestral o extraordinaria. INN-03 desarrolla su incorporación distribuida al proceso operacional; no atribuye novedad al modelo cinético ni incorpora modelos aprendidos.",
+      "component": "La solución estima la vida útil remanente mediante un modelo cinético determinista por familia, aplicado a la historia térmica del lote. El SD13 documenta el modelo, sus variables, la métrica I-03B y la revisión periódica de parámetros (meses 24, 27, 30, 36, 39, 42, 48, 51 y 54) o extraordinaria. INN-03 desarrolla su incorporación distribuida al proceso operacional; no atribuye novedad al modelo cinético ni incorpora modelos aprendidos.",
       "edt": "3.10.3.1, 3.10.3.2, 3.10.3.3, 8.3.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9265,7 +9273,7 @@
     {
       "id": "RT-18.08",
       "state": "Cumple",
-      "component": "Modelo cinético determinista de INN-03 con variables de entrada, métrica I-03B, línea base, recalibración semestral y umbral de detección de deriva.",
+      "component": "Modelo cinético determinista de INN-03 con variables de entrada, métrica I-03B, línea base, una revisión periódica de parámetros (meses 24, 27, 30, 36, 39, 42, 48, 51 y 54) o extraordinaria y umbral de detección de deriva.",
       "edt": "3.10.3.1, 8.3.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9473,7 +9481,7 @@
     {
       "id": "RT-20.02",
       "state": "Cumple",
-      "component": "Paso a producción gradual por olas, con criterio de avance y procedimiento técnico y operacional de reversión con tiempo declarado.",
+      "component": "Despliegue gradual por olas, desde la marcha blanca en Producción (H6 y H11; G5) hasta el paso a producción (meses 16 y 21), con criterio de avance y procedimiento técnico y operacional de reversión con tiempo declarado.",
       "edt": "4.1.1, 4.1.2, 4.1.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9876,7 +9884,7 @@
     {
       "id": "RT-21.21",
       "state": "Cumple",
-      "component": "Registro cuantificado e informe trimestral de deuda técnica; 2.304 HH DES de 8.2.4, equivalentes al 1,7881 \\% de las 128.853,67 HH de Operación de T-15. Distribución: 64 HH mensuales y 768 HH anuales.",
+      "component": "Registro cuantificado e informe trimestral de deuda técnica; 2.304 HH DES de 8.2.4, equivalentes al 2,0985 \\% de las 109.791,32 HH de Operación de T-15. Distribución: 64 HH mensuales y 768 HH anuales.",
       "edt": "8.2.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -10442,7 +10450,7 @@
     {
       "id": "RT-26.04",
       "state": "Cumple",
-      "component": "Riesgos de adopción de INN-01 a INN-05 con probabilidad, impacto, mitigación y contingencia declarados en cada ficha.",
+      "component": "INN-01, INN-02, INN-03 e INN-05 se gestionan mediante los controles internos CT-08 a CT-13, sin puntuación de probabilidad por impacto. INN-04 corresponde al riesgo contractual R-027, con probabilidad, impacto y respuesta registrados en el T-16.",
       "edt": "1.6.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",

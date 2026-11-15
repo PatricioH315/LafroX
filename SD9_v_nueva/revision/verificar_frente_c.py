@@ -82,8 +82,8 @@ def main():
     assert r"\subsection{" not in t10
     # Campaigns are run by the in-house quality team (SD9, 9.3); no external evaluators.
     assert "6,4 HH netas" in body9 and "83,2 HH netas" in body9
-    assert "equipo de calidad de planta" in body6 and "equipo de calidad de planta" in t9
-    assert "equipo de calidad de planta" in body9
+    staffing = "13 personas del equipo de calidad: 10 de planta y 3 refuerzos de pruebas (T-15, sección 5.7)"
+    assert all(staffing in text for text in (body6, t9, body9))
     for text in (body6, t9, body9):
         assert "refuerzo de evaluadores" not in text and "16 evaluadores" not in text
         assert "102,4 HH" not in text

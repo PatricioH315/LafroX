@@ -39,7 +39,7 @@ Organizacional & Política de pruebas de LafroX, dentro del sistema de gestión 
 Gestión de pruebas & Este plan (T-13) y su seguimiento por campaña & Líder de Calidad y Pruebas, Maximiliano Miño & En cada hito y ante cada cambio aprobado de alcance \\
 Pruebas dinámicas & Diseño, preparación del ambiente, ejecución e informe de cada caso & Equipo de pruebas (rol CAL) y especialistas (SEG, SRE, DAT, IMP) & En cada ejecución \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de ISO, IEC \& IEEE (2021a, procesos de prueba); (Subdocumento 1, secciones 1.3.1 y 1.5); (Subdocumento 6, organización del desarrollo).}
+\fuentesd{Fuente: elaboración a partir de ISO, IEC \& IEEE (2021a, procesos de prueba); (Subdocumento 1, secciones 1.3.1 y 1.5); (SD6, sección 6.2; sección 6.2.3 para las ceremonias).}
 
 La intensidad de la prueba sigue el riesgo del producto, como dispone ISO/IEC/IEEE 29119-1 (ISO, IEC \& IEEE, 2022). La prioridad de cada requisito en el catálogo del SD3 (crítica, alta o media) fija cuántos casos se diseñan para él (sección 8). La documentación de pruebas sigue la estructura de ISO/IEC/IEEE 29119-3 (ISO, IEC \& IEEE, 2021c): especificación de casos, procedimientos, registro de ejecución, registro de incidencias e informe de finalización.
 
@@ -78,7 +78,7 @@ Aceptación de usuario & Preproducción & Casos del SD3 ejecutados por personas 
 Perfil operacional de terreno & Terreno, cámara de congelado y Preproducción & Dispositivos reales, Espresso para los flujos repetibles & Parcial & 3.8.3; 3.9.1; 3.9.2 & RT-03.10; RT-03.13; RT-13.08 \\
 Carga y estrés & Preproducción & k6 & Total & 3.8.4; 3.9.3 & Art. 24; RT-09.06 a RT-09.08 (BA, p. 17; BTT, pp. 21--22) \\
 Resiliencia & Preproducción & AWS Fault Injection Service; desconexiones controladas del sitio emulado; corte de gateways de frío y de enlaces & Total en la inyección; manual en la observación & 3.8.4; 3.9.3; 8.2.2 & RT-10.07 (BTT, p. 22) \\
-Continuidad de la arquitectura híbrida & Preproducción y sitio emulado & Diez protocolos del SD4, Anexos 4-V y 4-M (sección 7.5) & Parcial & 3.8.1; 3.8.3 a 3.8.5; 3.9.1; 3.9.3; 3.9.4 & RT-03.10; RT-07.04 (BTT, p. 17) \\
+Continuidad de la arquitectura híbrida & Preproducción y sitio emulado & 13 protocolos del Anexo 4-V del SD4 (sección 7.5) & Parcial & 3.8.1 a 3.8.5; 3.9.1 a 3.9.4 & RT-03.10; RT-07.04 (BTT, p. 17) \\
 Recuperación ante desastres & Recuperación ante Desastres (us-east-1) & Conmutación regional real y recuperación del WMS de Talca en la nube (AL-DR-01) & Procedimiento automatizado con verificación manual & 3.8.5; 3.9.4; 8.1.3 & RT-07.07 (BTT, p. 17) \\
 Restauración de respaldos & Producción y Recuperación; excepción en sección 9.3 & Restauración de una muestra representativa & Procedimiento automatizado & 4.2.1; 4.2.2; 4.3.1; 8.1.6 & RT-07.12 (BTT, p. 18) \\
 Seguridad ofensiva & Preproducción con versión congelada & Tercero independiente & Manual & 3.8.6; 3.9.5; 8.2.2 & RT-11.20 (BTT, p. 24) \\
@@ -270,10 +270,10 @@ Los dieciséis resultados se aceptan con el protocolo del Formulario T-17, en el
 \subsection*{7.5 Protocolos de aceptación de la arquitectura híbrida}
 \addcontentsline{toc}{subsection}{7.5 Protocolos de aceptación de la arquitectura híbrida}
 
-Se ejecutan diez protocolos en Preproducción antes de la ola aplicable para verificar la continuidad de la arquitectura en la nube y en los cinco sitios con servicio local. Se incluyen los nueve protocolos del SD4, Anexo 4-V, y el protocolo de identidad AL-ID-01 del Anexo 4-M.
+Se ejecutan los 13 protocolos del Anexo 4-V del SD4 en Preproducción antes de la ola aplicable para verificar la arquitectura en la nube y en los cinco sitios con servicio local. El Anexo 4-M desarrolla el protocolo de identidad AL-ID-01, que forma parte de esos 13.
 
 \begin{tablasimple}{Y Y Y}
-  {\cab{Protocolo} & \cab{Qué verifica (SD4, Anexos 4-V y 4-M)} & \cab{Campaña de este plan}}
+  {\cab{Protocolo} & \cab{Qué verifica (SD4, Anexo 4-V)} & \cab{Campaña de este plan}}
 AL-DTE-01 & 96 guías por las rutas de Talca y de los demás sitios, con fallas y cambio de carga; emisión por fibra, LTE o Starlink & Resiliencia (3.8.4; 3.9.3) \\
 AL-POD-01 & Entrega total, parcial y con receptor sustituto sin señal & Perfil operacional (3.8.3) \\
 AL-SLA-01 & Ventanas y cuotas del ERP, del SII y de las contrapartes & Integración (3.8.1; 3.9.1) \\
@@ -284,8 +284,11 @@ AL-DR-01 & Corte de los caminos y recuperación del WMS de Talca en la nube & Re
 AL-PERF-01 & Carga de 3× con mamparos por perfil & Carga y estrés (3.8.4; 3.9.3) \\
 AL-STOCK-01 & Última unidad con cortes y acuses perdidos: preventa en E1; preventa, portal y EDI en E2 & 3.8.1 para E1; 3.9.1 para el escenario completo de E2 \\
 AL-ACT-01 & Cada actor con una operación permitida y una denegada, solo sobre las capacidades habilitadas en su etapa & 3.8.1 para actores/capacidades E1; 3.9.1 amplía a portales y EDI E2 \\
+AL-MOD-01 & Fronteras de los módulos, reinicio del consumidor y repetición del UUID: un solo efecto durable, sin confirmaciones ficticias & Integración y regresión en Preproducción: E1 (3.8.1; H5) y E2 (3.9.1; H10) \\
+AL-FRIO-01 & Excursión y reenvío con pérdida de enlace: la retención se mantiene hasta que Calidad autoriza la liberación con evidencia válida & Resiliencia: E1 (3.8.4; H5) y E2 (3.9.3; H10) \\
+AL-UI-01 & Accesibilidad WCAG 2.2 AA y exportación completa de los registros de auditoría autorizados para cada perfil & Aceptación y accesibilidad: E1 (3.8.2; H5) y E2 (3.9.2; H10), según los perfiles habilitados \\
 \end{tablasimple}
-\fuentesd{Fuente: (Subdocumento 4, anexos 4-V y 4-M, incluido AL-ID-01); (Formulario T-14, paquetes indicados en cada fila).}
+\fuentesd{Fuente: (SD4, Anexo 4-V, sus 13 protocolos; Anexo 4-M, desarrollo de AL-ID-01); (Formulario T-14, paquetes indicados en cada fila).}
 
 Cada protocolo deja su acta con la carga, la falla inyectada, el resultado observado y los responsables, dentro del expediente H5 o H10 según su etapa (T-17, sección 3.1). La asignación sigue las capacidades y paquetes del Anexo 7.E: H4/H5 no exigen un portal instalado ni EDI todavía no construidos; los contratos futuros pueden ensayarse con simuladores, pero eso no acredita aceptación del producto de E2. AL-CLI-01 se ejecuta con el portal real en E2 y AL-STOCK-01/AL-ACT-01 amplían allí su cobertura, sin omitir ninguna de las quince interfaces finales.
 
@@ -354,7 +357,7 @@ Contratos de integración & 15 & 7 & 105 \\
 
 Los 270 RF y RNF con prioridad propia son los del catálogo del SD3: 58 críticos, 157 altos y 55 medios. Las nueve filas RF y RNF restantes del T-12 (279 en total) se verifican con la fila que las contiene y no suman casos. Los 22 RT en estado «No cumple» no tienen casos; quedan en la matriz de trazabilidad como brecha visible.
 
-La matriz siguiente reúne en una fila el requisito, su origen, el componente y paquete de la EDT declarados en el T-12, los casos previstos y el criterio verificable con su fuente. Se genera desde el catálogo publicado del Subdocumento 3 (versión 3d0eeea7) sin crear obligaciones nuevas. El criterio reproduce el resultado esperado del requisito funcional, el umbral del no funcional o el requisito transversal y su alcance ofertado. Cada identificador /Pnn lleva el ID de su fila como prefijo. Para los requisitos funcionales y no funcionales se indica el hito que recibe la evidencia (H5 en E1; H10 en E2); para los transversales rige el paquete del T-12. No son pruebas ejecutadas ni aprobadas: la ficha del H1 debe completar datos, pasos, ambiente, resultado observado y acta. Los criterios de aceptación contractual de los hitos se mantienen en el T-17.
+La matriz siguiente reúne en una fila el requisito, su origen, el componente y paquete de la EDT declarados en el T-12, los casos previstos y el criterio verificable con su fuente. Se genera desde el catálogo publicado del Subdocumento 3 (versión 3d0eeea7), con RT-05.30, RT-18.08, RT-20.02, RT-21.21 y RT-26.04 actualizados desde la corrección del T-12 (versión 0ef1bf86), sin crear obligaciones nuevas. El criterio reproduce el resultado esperado del requisito funcional, el umbral del no funcional o el requisito transversal y su alcance ofertado. Cada identificador /Pnn lleva el ID de su fila como prefijo. Para los requisitos funcionales y no funcionales se indica el hito que recibe la evidencia (H5 en E1; H10 en E2); para los transversales rige el paquete del T-12. No son pruebas ejecutadas ni aprobadas: la ficha del H1 debe completar datos, pasos, ambiente, resultado observado y acta. Los criterios de aceptación contractual de los hitos se mantienen en el T-17.
 
 Para los RF/RNF, /P01 verifica el flujo o valor conforme y /P02 una entrada o condición no conforme; /P03 cubre el límite o transición cuando la prioridad es alta o crítica; /P04 y /P05 cubren falla/reintento e integridad del resultado en los críticos. Se usan las técnicas de la sección 2.1 y las precondiciones de cada fila fuente; cuando una condición no aplica, el líder documenta un escenario equivalente que compruebe el mismo criterio antes de ejecutar. El caso RT /P01 reúne la evidencia requerida por su naturaleza: ensayo funcional, de carga, desconexión o recuperación cuando corresponde, y revisión del entregable o certificado en los requisitos documentales. Las 18 respuestas parciales conservan su alcance parcial; los 22 RT no cumplidos permanecen como brecha sin casos. Las nueve filas absorbidas o alias no duplican casos.
 
@@ -371,7 +374,7 @@ El dimensionamiento usa 80 \% de automatización, 30 segundos por caso automáti
 
 «Regresión completa» comprende ambas partes y no equivale a la ejecución automática nocturna. G4 y el expediente del T-17 exigen evidencia vigente de todos los casos aplicables a la etapa; en E1 no se exige una capacidad que el Anexo 7.E sitúa en E2. Las promociones ordinarias y las correcciones de marcha blanca mantienen esa exigencia: no se declara aprobada una regresión de 1.328 casos solo porque terminó el trabajo de los ejecutores.
 
-Las dos partes pueden ejecutarse en paralelo únicamente en instancias compatibles, con datos y versión controlados. Antes de reservar la ventana, CAL registra las personas y su capacidad neta, dentro de las 13 personas de calidad de planta. Aun con las 13 personas dedicadas, 266 casos indivisibles de quince minutos requieren al menos 21 tandas, 5,25 horas transcurridas, además de coordinación e incidencias; no se promete un cierre nocturno integral sin ese cuadrante. Con la hipótesis de 6,4 HH netas por evaluador y día (Subdocumento 6, sección 6.1.3), el esfuerzo manual de 66,5 HH requiere al menos 11 evaluadores-día, antes de coordinación e incidencias; la simultaneidad y la duración de cada sesión se verifican por separado. Las horas de ejecutor no se suman como HH humanas ni crean una reserva adicional a la línea base.
+Las dos partes pueden ejecutarse en paralelo únicamente en instancias compatibles, con datos y versión controlados. Antes de reservar la ventana, CAL registra las personas y su capacidad neta, entre las 13 personas del equipo de calidad: 10 de planta y 3 refuerzos de pruebas (T-15, sección 5.7). Aun con las 13 personas dedicadas, 266 casos indivisibles de quince minutos requieren al menos 21 tandas, 5,25 horas transcurridas, además de coordinación e incidencias; no se promete un cierre nocturno integral sin ese cuadrante. Con la hipótesis de 6,4 HH netas por evaluador y día (Formulario T-15, secciones 5.1 y 6), el esfuerzo manual de 66,5 HH requiere al menos 11 evaluadores-día, antes de coordinación e incidencias; la simultaneidad y la duración de cada sesión se verifican por separado. Las horas de ejecutor no se suman como HH humanas ni crean una reserva adicional a la línea base.
 
 La tabla siguiente comprueba la concurrencia diaria de cada campaña con los paquetes del T-15: las HH de cada paquete CAL se reparten en sus días hábiles (feriado del 1 de noviembre de 2027 incluido) y se suman los paquetes activos el mismo día. La jornada neta de 6,4 HH ya descuenta el 20 \% de ausencias y coordinación.
 
@@ -380,9 +383,9 @@ La tabla siguiente comprueba la concurrencia diaria de cada campaña con los paq
 E1 & 25-10 a 11-11-2027 (13 días hábiles) & 3.8.2 y 3.8.3 (320 HH en 19 días); 3.8.4 y 3.8.5 (320 HH en 13 días) & 82,9 & 13, frente a 14 personas simultáneas del T-15 \\
 E2 & 19-05 a 01-06-2028 (10 días hábiles) & 3.9.3 y 3.9.4 (320 HH en 10 días cada uno) & 64,0 & 10, frente a 10 personas simultáneas del T-15 \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir del Formulario T-15, programación de los paquetes con entregable y fechas tempranas del CPM; Subdocumento 6, sección 6.1.3.}
+\fuentesd{Fuente: elaboración a partir del Formulario T-15, programación de los paquetes con entregable y fechas tempranas del CPM; Formulario T-15, secciones 5.1 y 6.}
 
-Ambas campañas caben en la capacidad del equipo de calidad de planta: 13 personas, 83,2 HH netas por día, sin evaluadores externos ni la reserva protegida E1. Las pruebas de seguridad (3.8.6 y 3.9.5) y de recuperación (3.8.8 y 3.9.7) las ejecutan SEG y SRE y no consumen ese techo. Los paquetes CAL 3.10.2.3 y 3.10.2.4 terminan el 8 de octubre y empiezan el 1 de diciembre de 2027, fuera del peak de E1. La comprobación supone carga uniforme dentro de cada paquete: un día con mayor concentración se verifica con el registro diario de CAL antes de reservar la sesión, y la cifra no acredita contratación ni asignación nominal.
+Ambas campañas caben en la capacidad de las 13 personas del equipo de calidad: 10 de planta y 3 refuerzos de pruebas (T-15, sección 5.7). En conjunto aportan 83,2 HH netas por día, sin evaluadores externos ni la reserva protegida E1. Las pruebas de seguridad (3.8.6 y 3.9.5) y de recuperación (3.8.8 y 3.9.7) las ejecutan SEG y SRE y no consumen ese techo. Los paquetes CAL 3.10.2.3 y 3.10.2.4 terminan el 8 de octubre y empiezan el 1 de diciembre de 2027, fuera del peak de E1. La comprobación supone carga uniforme dentro de cada paquete: un día con mayor concentración se verifica con el registro diario de CAL antes de reservar la sesión, y la cifra no acredita contratación ni asignación nominal.
 
 \section*{9. Calendario}
 \addcontentsline{toc}{section}{9. Calendario}
@@ -466,7 +469,7 @@ Intrusión por tercero independiente & Anual (RT-11.20) (BTT, p. 24) & 28, 40, 5
 Restauración de respaldos & Al menos mensual (RT-07.12) (BTT, p. 18) & 21 a 56 & Mensual & 36 & 8.1.6 \\
 Regresión de INN-02 & Escenarios reproducidos de incidentes & 21 a 56 & Trimestral (informe) & 12 & 8.3.1 \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Técnicas Transversales, RT-07.07, RT-07.12, RT-10.07 y RT-11.20, pp. 17--18, 22, 24); (Bases Técnicas del caso, cap. 15, RT-10.05, p. 27); (Formulario T-14, cuenta 8); (Formulario T-15, sección 6.1).}
+\fuentesd{Fuente: (Bases Técnicas Transversales, RT-07.07, RT-07.12, RT-10.07 y RT-11.20, pp. 17--18, 22, 24); (Bases Técnicas del caso, cap. 15, RT-10.05, p. 27); (Formulario T-14, cuenta 8); (Formulario T-15, sección 6.2).}
 
 \textbf{Restauración mensual en septiembre y diciembre.} Desde el mes 13, en ambos meses se usa una instancia aislada de Preproducción, sin intervenir Producción ni el sitio de Recuperación ni realizar una conmutación. Se restaura una muestra representativa de un respaldo de prueba generado con datos sintéticos, con la misma estructura y un volumen representativo. SRE ejecuta el mismo procedimiento automatizado y registra el resultado y el tiempo efectivo de restauración (RT-07.12; BTT, p. 18). No se usan datos productivos ni se acredita la integridad de un respaldo de Producción.
 
@@ -503,7 +506,7 @@ Datos (DAT) & Líder de Datos, Leandro Chamorro & Ensayos de migración y concil
 Líder Funcional & Profesional de LafroX con experiencia en distribución de consumo masivo & Coordina la aceptación con las personas del CLIENTE \\
 Contraparte Técnica del CLIENTE & Designada por Distribuidora Puelche & Firma los casos de aceptación y las actas (T-17) \\
 \end{tablasimple}
-\fuentesd{Fuente: (Subdocumento 1, sección 1.5); (Subdocumento 6, organización de especialistas); (Formulario T-15, asignación de recursos).}
+\fuentesd{Fuente: (Subdocumento 1, sección 1.5); (SD6, sección 6.2); (Formulario T-15, asignación de recursos).}
 
 \section*{12. Informes de prueba}
 \addcontentsline{toc}{section}{12. Informes de prueba}

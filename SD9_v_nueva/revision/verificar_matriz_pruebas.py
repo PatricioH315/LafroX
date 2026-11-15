@@ -29,6 +29,23 @@ for line in source.splitlines():
         cells = [c.strip() for c in line.strip().removesuffix(r"\\").split(" & ")]
         source_states[cells[0]] = cells[2]
         source_rows[cells[0]] = cells
+updates = subprocess.check_output(
+    ["git", "show", data["rt_update_commit"] + ":LAFROX-Formulario-T-12.tex"], cwd=ROOT
+).decode("utf-8")
+update_ids = set(data["rt_update_ids"])
+assert update_ids == {"RT-05.30", "RT-18.08", "RT-20.02", "RT-21.21", "RT-26.04"}
+verified = set()
+for line in updates.splitlines():
+    if not re.match(r"\s*RT-\d", line):
+        continue
+    cells = [c.strip() for c in line.strip().removesuffix(r"\\").split(" & ")]
+    identifier = cells[0]
+    if identifier in update_ids:
+        old = source_rows[identifier]
+        assert len(cells) == 7 and cells[:3] == old[:3] and cells[5] == old[4], identifier
+        source_rows[identifier] = [*cells[:4], *cells[5:]]
+        verified.add(identifier)
+assert verified == update_ids
 assert set(ids) == set(source_states)
 assert all(x["state"] == source_states[x["id"]] for x in requirements)
 own = [x for x in requirements if not x["id"].startswith("RT-")]
@@ -112,6 +129,7 @@ published = {
         f"Los {rt_state['No cumple']} RT en estado «No cumple»",
         f"Las {rt_state['Cumple parcialmente']} respuestas parciales",
         data["source_commit"][:8],
+        data["rt_update_commit"][:8],
     ]),
 }
 for where, (text, phrases) in published.items():
@@ -152,7 +170,7 @@ for text in (body, t13):
     assert distribution in text and hours_one in text and hours_two in text
     assert f"{manual_hours} HH por ciclo" in text
 assert f"{manual_cases} casos indivisibles" in t13
-assert f"{ceil(manual_cases / 16)} tandas" in t13
+assert f"{ceil(manual_cases / 13)} tandas" in t13
 assert f"{ceil(manual / Decimal('6.4'))} evaluadores-día" in t13
 for phrase in (
     f"{manual_cases} casos a 15 minutos", f"{manual_hours} HH",
