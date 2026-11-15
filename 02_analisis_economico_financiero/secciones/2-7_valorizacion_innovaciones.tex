@@ -34,15 +34,16 @@ La Tabla~\ref{tab:e2-inn-resumen} muestra el costo de cada innovación y el bene
 
 La inversión es de 2.920,00 UF y son solo horas del equipo:
 \begin{itemize}
-  \item INN-01 e INN-03: 960 HH cada una del Ingeniero de Datos y Bases Senior, entre los meses 7 y 12.
-  \item INN-02: 960 HH del Analista QA Senior en los meses 9 y 10.
+  \item INN-01: 960 HH del Ingeniero de Datos y Bases Senior, entre los meses 7 y 15.
+  \item INN-02: 960 HH del Analista QA Senior, entre los meses 2 y 15.
+  \item INN-03: 960 HH del Ingeniero de Datos y Bases Senior, entre los meses 3 y 15.
   \item INN-04: 160 HH del Jefe de Proyecto entre los meses 17 y 23.
-  \item INN-05: 893,4 HH del Coordinador de Implantación entre los meses 13 y 17, y 226,6 HH entre los meses 18 y 23.
+  \item INN-05: 893,4 HH del Coordinador de Implantación entre los meses 13 y 21, y 226,6 HH entre los meses 22 y 27.
 \end{itemize}
 
 El costo operacional suma 1.312,43 UF. El más alto es el de INN-04, 765,60 UF, por las 528 HH que el Jefe de Proyecto le dedica entre los meses 24 y 56. Luego vienen INN-02, con 272,61 UF, e INN-03, con 263,50 UF, por las horas de calidad y de datos en la Operación y por su uso de nube.
 
-En total las innovaciones usan 5.552 HH, el 2,77\,\% de las HH del proyecto. Cada hora está asignada a un perfil del T-15 en un mes en que ese perfil ya trabaja en el proyecto. Del costo operacional, 1.268,18 UF son horas y 44,26 UF son nube, detallada en la Tabla~\ref{tab:e2-inn-nube}. Los meses de la inversión son los de la valorización en la hoja \texttt{INNOVACIONES}. El T-14 y el T-15 programan las mismas horas en ventanas más amplias: 3.10.1 en los meses 7 a 14, 3.10.2 en 2 a 14, 3.10.3 en 3 a 14, 3.10.4 en 13 a 20, y 8.3.5 y 8.3.6 hasta el mes 27 (LafroX, 2026c). El total de horas por innovación es el mismo, y el reparto mensual no altera el flujo de caja, al que solo entra la nube.
+En total las innovaciones usan 5.552 HH, el 2,77\,\% de las HH del proyecto. Las horas son las de los paquetes de innovación del T-15, en sus mismas ventanas, valorizadas con el costo del perfil indicado; el total por innovación coincide con el del T-15. Del costo operacional, 1.268,18 UF son horas y 44,26 UF son nube, detallada en la Tabla~\ref{tab:e2-inn-nube}. Los meses de la inversión siguen las ventanas de los paquetes 3.10, 5.4.3, 8.3.3, 8.3.5 y 8.3.6 del T-14 y el T-15 (LafroX, 2026c).
 
 \begin{tablalafrox}{Costos de nube y otros costos sin horas de las innovaciones, en UF. Fuente: modelo financiero, hoja INNOVACIONES, sección C.}{tab:e2-inn-nube}{L{1.1cm} Y L{1.6cm} L{1.5cm} R{1.9cm}}
   {\cab{Ref.} & \cab{Rubro} & \cab{Innovación} & \cab{Meses} & \cab{Total UF}}
@@ -101,9 +102,9 @@ La Figura~\ref{fig:e2-inn-mensual} muestra el gasto mensual en innovaciones y el
 \begin{axis}[
   width=\textwidth, height=0.42\textwidth,
   font=\fontsize{9pt}{11pt}\selectfont,
-  xmin=0, xmax=57, ymin=0, ymax=540,
+  xmin=0, xmax=57, ymin=0, ymax=270,
   xtick={1,4,8,12,16,20,24,28,32,36,40,44,48,52,56},
-  ytick={0,100,200,300,400,500},
+  ytick={0,50,100,150,200,250},
   xlabel={Mes del contrato}, ylabel={UF},
   axis lines*=left, tick align=outside,
   tick label style={/pgf/number format/use comma,/pgf/number format/1000 sep={.}},
@@ -122,7 +123,7 @@ La Figura~\ref{fig:e2-inn-mensual} muestra el gasto mensual en innovaciones y el
 \label{fig:e2-inn-mensual}
 \end{figure}
 
-El gasto se concentra entre los meses 7 y 12 y llega a 496,01 UF en los meses 9 y 10, cuando se desarrollan a la vez INN-01, INN-02 e INN-03, antes de la puesta en producción de la Etapa 1. Entre los meses 13 y 23 siguen INN-04 e INN-05, y desde el mes 24 quedan las horas de operación de INN-02, INN-03 e INN-04 y la nube.
+El gasto se concentra entre los meses 7 y 15 y llega a 238,26 UF en los meses 13 a 15, cuando coinciden la validación de INN-01, INN-02 e INN-03 en la marcha blanca de la Etapa 1 y el inicio de INN-05. Entre los meses 16 y 27 siguen INN-05 e INN-04, y desde el mes 24 quedan las horas de operación de INN-02, INN-03 e INN-04 y la nube.
 
 El egreso de 4.232,43 UF se compone de 4.188,18 UF de horas de trabajo y 44,26 UF de nube, con una diferencia de redondeo al mostrar cada componente. La valorización identifica las horas dentro de la dotación presupuestada. En cada uno de los 56 meses, la partida «Innovaciones (Nube)» de \texttt{COSTOS}, fila 70, recoge el importe de \texttt{INNOVACIONES}, fila 102. La fila 72 de \texttt{COSTOS} integra ese importe en el total de proveedores que se lleva a \texttt{FLUJO CAJA NETO}, fila 68. El costo de nube figura una sola vez en el flujo base.
 
