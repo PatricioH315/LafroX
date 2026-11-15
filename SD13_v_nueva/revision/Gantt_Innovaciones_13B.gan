@@ -51,8 +51,8 @@
             <notes>Ventana publicada (ambos extremos incluidos): 2027-10-01–2027-11-19. Precedencia publicada: 3.10.1.1 (protocolo inicial).</notes>
             <depend id="3" type="2" difference="11" hardness="Rubber" />
         </task>
-        <task id="3" name="3.10.1.4 · DAT" color="#2864a3" meeting="false" start="2027-12-01" duration="111" complete="0" expand="true">
-            <notes>Ventana publicada (ambos extremos incluidos): 2027-12-01–2028-03-20. Precedencia publicada: 3.10.1.2 y 3.10.1.3. El fin de la barra no acredita la evidencia del piloto del mes 15.</notes>
+        <task id="3" name="3.10.1.4 · DAT" color="#2864a3" meeting="false" start="2027-12-01" duration="150" complete="0" expand="true">
+            <notes>Ventana publicada (ambos extremos incluidos): 2027-12-01–2028-04-28. Precedencia publicada: 3.10.1.2 y 3.10.1.3. Incluye la sesión de evidencia del mes 15 (Anexo 13.B.1).</notes>
         </task>
         <task id="4" name="3.10.2.1 · CAL" color="#2864a3" meeting="false" start="2027-03-01" duration="51" complete="0" expand="true">
             <notes>Ventana publicada (ambos extremos incluidos): 2027-03-01–2027-04-20. Precedencia publicada: —.</notes>
@@ -64,8 +64,8 @@
             <notes>Ventana publicada (ambos extremos incluidos): 2027-06-01–2027-10-08. Precedencia publicada: 3.10.2.2 (circuito mínimo).</notes>
             <depend id="7" type="2" difference="53" hardness="Rubber" />
         </task>
-        <task id="7" name="3.10.2.4 · CAL" color="#2864a3" meeting="false" start="2027-12-01" duration="111" complete="0" expand="true">
-            <notes>Ventana publicada (ambos extremos incluidos): 2027-12-01–2028-03-20. Precedencia publicada: 3.10.2.3. El fin de la barra no acredita la evidencia del piloto del mes 15.</notes>
+        <task id="7" name="3.10.2.4 · CAL" color="#2864a3" meeting="false" start="2027-12-01" duration="150" complete="0" expand="true">
+            <notes>Ventana publicada (ambos extremos incluidos): 2027-12-01–2028-04-28. Precedencia publicada: 3.10.2.3. Incluye la sesión de evidencia del mes 15 (Anexo 13.B.1).</notes>
         </task>
         <task id="8" name="3.10.3.1 · DAT" color="#2864a3" meeting="false" start="2027-04-01" duration="70" complete="0" expand="true">
             <notes>Ventana publicada (ambos extremos incluidos): 2027-04-01–2027-06-09. Precedencia publicada: —.</notes>
@@ -78,8 +78,8 @@
             <notes>Ventana publicada (ambos extremos incluidos): 2027-10-01–2027-11-19. Precedencia publicada: 3.10.3.2.</notes>
             <depend id="11" type="2" difference="11" hardness="Rubber" />
         </task>
-        <task id="11" name="3.10.3.4 · DAT" color="#2864a3" meeting="false" start="2027-12-01" duration="111" complete="0" expand="true">
-            <notes>Ventana publicada (ambos extremos incluidos): 2027-12-01–2028-03-20. Precedencia publicada: 3.10.3.3. El fin de la barra no acredita la evidencia del piloto del mes 15.</notes>
+        <task id="11" name="3.10.3.4 · DAT" color="#2864a3" meeting="false" start="2027-12-01" duration="150" complete="0" expand="true">
+            <notes>Ventana publicada (ambos extremos incluidos): 2027-12-01–2028-04-28. Precedencia publicada: 3.10.3.3. Incluye la sesión de evidencia del mes 15 (Anexo 13.B.1).</notes>
         </task>
         <task id="12" name="3.10.4.1 · IMP" color="#2864a3" meeting="false" start="2028-02-01" duration="50" complete="0" expand="true">
             <notes>Ventana publicada (ambos extremos incluidos): 2028-02-01–2028-03-21. Precedencia publicada: —.</notes>

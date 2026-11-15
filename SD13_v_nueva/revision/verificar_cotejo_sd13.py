@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 HERE = Path(__file__).resolve().parent
 WIN_GIT = Path(r"C:\Program Files\Git\cmd\git.exe")
 GIT = str(WIN_GIT) if WIN_GIT.is_file() else shutil.which("git")
-SD7 = "68669befd04babce61e9fb4d8f5e6b29d28f46aa"
+SD7 = "c088f82cc96b3f25d947858a4b0f055b9e0a3b9c"
 CASE = "1a8340ebf525b455ee38225294edbf8a20357df4"
 T15 = "formulario-t15/tablas/"
 
@@ -70,7 +70,7 @@ def dates_and_links():
     for i in range(1, 4):
         code = f"3.10.{i}.4"
         assert (rows[code][5], cpm[code][3], cpm[code][5]) == (
-            "20-03-2028", "28-12-2027", "28-04-2028")
+            "28-04-2028", "28-12-2027", "28-04-2028")
     assert [(h, milestones[h][1], rows[milestones[h][-1]][5])
             for h in ("H4", "H5", "H10")] == [
                 ("H4", "20-10-2027", "22-10-2027"),
