@@ -26,6 +26,11 @@ def source(ref, path):
     return subprocess.check_output([GIT, "show", f"{ref}:{path}"], cwd=HERE).decode("utf-8")
 
 
+def relief(day):
+    """Backup role by month, per Anexo 9.E (roles with hours valued that month)."""
+    return "Líder de Calidad y Pruebas" if (day.year, day.month) in {(2027, 8), (2027, 9), (2027, 10)} else "Analista QA Junior"
+
+
 def windows(text):
     def as_date(s, y):
         d, m = map(int, s.split("/"))
@@ -87,10 +92,10 @@ def generate(ref):
             })
             ET.SubElement(task, "notes").text = (
                 f"Ventana de QA (ambos extremos incluidos): {start} a {end}. "
-                "No reserva día no hábil ni asigna personas. El Líder de Calidad registra "
+                f"Titular: Analista QA Senior; relevo: {relief(start)}; turno diurno hábil "
+                "09:00-18:00 en QA (Anexo 9.E). El Líder de Calidad registra "
                 "versión, casos, resultados y defectos; el Líder Funcional valida el "
-                "incremento. Confirmar titular, relevo, dependencias y turno antes "
-                "de comprometer la sesión. No sustituye la certificación integral."
+                "incremento. No sustituye la certificación integral."
             )
             count += 1
     assert seen == SPLITS and count == 83

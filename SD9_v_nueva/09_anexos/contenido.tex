@@ -164,7 +164,7 @@ G1 & Solicitud de fusión & Falta la aprobación de un par; secreto detectado; e
 G2 & Integración continua & 9A-30 a 9A-35 incumplidos; hallazgo crítico o alto de SAST o SCA; contrato roto (9A-14); prueba en falla & PHPStan con Larastan, PHPMD, PHPCPD, PhpMetrics, deptrac · detekt, Kover, jscpd · ESLint, Jest; SAST de GitLab; \texttt{composer audit}; Pact; Spectral & Nadie \\
 G3 & Promoción a QA & Imagen con vulnerabilidad crítica o alta; regresión de desempeño: p95, errores o colas de la carga de regresión peores que en la última versión aceptada, bajo la misma carga y configuración (SD4, sección 4.2.4.1.1) & Amazon Inspector; k6 & Nadie; se corrige \\
 G4 & Promoción a Preproducción & Regresión con fallas; alerta alta de DAST o MobSF; incumplimiento de WCAG 2.2 AA; defecto crítico o alto abierto & Playwright; Espresso; OWASP ZAP; MobSF; axe-core & Nadie \\
-G5 & Entrada de cada etapa a Producción (H6 y H11) & Una prueba del T-13 que habilita la entrada no está aprobada; defecto crítico o alto abierto; falta el acta de certificación de la etapa (H5 o H10) & Expediente del T-17 & Nadie. El acta es una condición adicional y no levanta una prueba fallida \\
+G5 & Inicio de la marcha blanca de cada etapa en el ambiente de Producción (H6 y H11) & Una prueba del T-13 que habilita la marcha blanca no está aprobada; defecto crítico o alto abierto; falta el acta de certificación de la etapa (H5 o H10) & Expediente del T-17 & Nadie. El acta es una condición adicional y no levanta una prueba fallida \\
 G6 & Producción desde H6/H11 y Operación & Canario con p95 sobre su umbral o con más errores que la versión estable; presupuesto de error crítico del mes agotado & Cadena de entrega del SD4; observabilidad & Nadie. La reversión del canario es automática; se suspenden los despliegues no correctivos hasta el mes siguiente \\
 \end{tablasimple}
 \fuentesd{Fuente: (Bases Técnicas Transversales, RT-04.05 y RT-04.11, pp. 10--11); (Subdocumento 4, sección 4.2.4.1); (Formulario T-10, apartado DevSecOps); (Formulario T-13, sección 6); (Formulario T-17, sección 4.3).}
@@ -314,9 +314,17 @@ Las seis ventanas de origen superiores a 14 días corridos se dividen en un bloq
 \end{tablasimple}
 \fuentesd{Fuente: subdivisión interna de las ventanas publicadas del T-15, sección 6.1; extremos inclusivos.}
 
-En la vista «Resumen de dependencias» del SD7, los paquetes 3.4.1, 3.4.2, 3.4.3, 3.4.4, 3.4.5 y 3.4.6 corresponden, respectivamente, a los identificadores 59, 60, 63, 64, 65 y 66. Los paquetes 3.4.7, 3.4.8, 3.4.9, 3.4.10 y 3.4.11 corresponden, en el mismo orden, a los identificadores 67, 68, 69, 61 y 83. El identificador 125 agrupa los paquetes 3.5.1 a 3.5.4 en una tarea resumen. Estos identificadores permiten localizar los paquetes en la carta, pero no identifican sesiones ni acreditan turnos, titulares o relevos.
+En la vista «Resumen de dependencias» del SD7, los paquetes 3.4.1, 3.4.2, 3.4.3, 3.4.4, 3.4.5 y 3.4.6 corresponden, respectivamente, a los identificadores 59, 60, 63, 64, 65 y 66. Los paquetes 3.4.7, 3.4.8, 3.4.9, 3.4.10 y 3.4.11 corresponden, en el mismo orden, a los identificadores 67, 68, 69, 61 y 83. El identificador 125 agrupa los paquetes 3.5.1 a 3.5.4 en una tarea resumen. Con esos identificadores, cada ventana queda vinculada a su paquete en la carta oficial. La tabla siguiente asigna a cada grupo de ventanas el titular, el relevo, el turno y el ambiente.
 
-El Líder de Calidad completa el registro \texttt{registro\_qa\_9e.csv} del SD7 y lo presenta al Jefe de Proyecto. Para considerar cubierta una ventana, consigna las referencias a todas las sesiones previstas, que deben identificar la fecha y el turno, el titular y el relevo disponibles, el ambiente, la versión, los casos, las dependencias y el enlace a la evidencia. Planificación verifica que las asignaciones simultáneas sean compatibles y que las sesiones queden dentro de la ventana. Si falta cobertura, mantiene la ventana por confirmar, ajusta la programación dentro de sus límites o eleva la brecha al Comité de Proyecto. La aprobación comunicada se limita al uso de la vista vinculada como complemento de la carta oficial, sin modificar el modelo financiero. La validación de la dotación por el Comité sigue pendiente. El registro no crea partidas ni traslada HH entre paquetes, meses o perfiles.
+\begin{tablasimple}{L{2.3cm} L{2.6cm} Y Y}
+  {\cab{Ventanas} & \cab{Titular} & \cab{Relevo} & \cab{Turno y ambiente}}
+3.4.1 a 3.4.11, junio y julio de 2027 & Analista QA Senior & Analista QA Junior & Diurno hábil, 09:00--18:00; QA \\
+3.4.1 a 3.4.11, agosto a octubre de 2027 & Analista QA Senior & Líder de Calidad y Pruebas & Diurno hábil, 09:00--18:00; QA, sin intervenir Producción en septiembre \\
+3.5.1 a 3.5.4, marzo y abril de 2028 & Analista QA Senior & Analista QA Junior & Diurno hábil, 09:00--18:00; QA \\
+\end{tablasimple}
+\fuentesd{Fuente: ventanas del T-15, sección 6.1; perfiles con horas valorizadas en cada mes según el modelo financiero de la Oferta Económica (horas por rol y mes).}
+
+Los perfiles asignados tienen horas valorizadas en cada uno de esos meses, dentro de los paquetes 3.4 y 3.5; las sesiones de QA no crean partidas ni trasladan HH entre paquetes, meses o perfiles. El Líder de Calidad registra cada sesión en \texttt{registro\_qa\_9e.csv} del SD7, con fecha, titular, relevo, ambiente, versión, casos, dependencias y enlace a la evidencia, y Planificación verifica que las asignaciones simultáneas sean compatibles y queden dentro de la ventana.
 
 \section*{Referencias}
 \addcontentsline{toc}{section}{Referencias}

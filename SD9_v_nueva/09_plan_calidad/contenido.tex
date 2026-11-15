@@ -153,7 +153,7 @@ Una puerta de calidad es un punto del recorrido de un cambio donde un criterio o
 
 \figuralafrox{0.951}{diagramas/Fig_9-3_Puertas_Calidad.pdf}{Puertas de calidad en la cadena de entrega. Fuente: (Subdocumento 4, sección 4.2.4.1); (Formulario T-10, apartado DevSecOps); (Subdocumento 9, anexo 9.B); (Formulario T-17, sección 4.3).}{fig:sd9-3}
 
-G5 habilita la marcha blanca de cada etapa (H6 y H11) en el ambiente de Producción, con datos y pedidos reales de Puelche. Exige el H5 o el H10 aceptado, las pruebas aplicables del T-13 aprobadas, la reversión ensayada, la conciliación sin diferencias no explicadas y los usuarios de la ola capacitados (T-17, sección 4.3). La marcha blanca abarca los meses 13 a 15 en la Etapa 1 y 19 a 20 en la Etapa 2. El acta de cierre, firmada tras cumplir las seis condiciones copulativas del Art. 17.3, habilita el paso formal a producción de la etapa en los meses 16 y 21, respectivamente. H7 y H12 son hitos de aceptación contractual, no puertas técnicas; el escenario nominal del T-15 integra en cada acta el cierre y la aceptación antes del corte, sujeto a confirmación (BA, p. 13; T-18).
+G5 habilita la marcha blanca de cada etapa (H6 y H11) en el ambiente de Producción, con datos y pedidos reales de Puelche. Exige el H5 o el H10 aceptado, las pruebas aplicables del T-13 aprobadas, la reversión ensayada, la conciliación sin diferencias no explicadas y los usuarios de la ola capacitados (T-17, sección 4.3). La marcha blanca abarca los meses 13 a 15 en la Etapa 1 y 19 a 20 en la Etapa 2. El acta de cierre, firmada tras cumplir las seis condiciones copulativas del Art. 17.3, habilita el paso a producción de la etapa en los meses 16 y 21, respectivamente. H7 y H12 son hitos de aceptación contractual, no puertas técnicas; el acta integrada por etapa del T-17, sección 2.3, reúne el cierre de la marcha blanca y la aceptación del hito antes del corte (BA, p. 13; T-18).
 
 Las puertas están ordenadas por costo: el control es más barato cuanto antes ocurre. G0 a G2 se ejecutan en minutos sobre cada cambio; G5 se ejecuta dos veces en el contrato y exige semanas de prueba. La Tabla~\ref{tab:sd9-7} resume qué bloquea cada puerta y quién puede levantarla; el Anexo 9.B detalla las reglas y herramientas.
 
@@ -189,9 +189,9 @@ La figura sigue la regla de los ambientes del SD4: el software se prueba en un a
 
 Las campañas de certificación con estados incompatibles no pueden compartir la misma instancia al mismo tiempo: la resiliencia necesita carga sostenida, la intrusión exige una versión congelada y la aceptación necesita datos estables. Migración, intrusión y aceptación usan instancias separadas; carga, resiliencia y despliegue comparten PRE-C en sesiones sucesivas con restitución entre ellas (T-13, sección 4.1). Todas se reconstruyen desde el mismo código y siguen siendo Preproducción, no un sexto ambiente.
 
-\textbf{Pruebas aplicables por etapa y antes de cada entrada a Producción.} La BTT, sección 20.1, fija diez tipos de prueba con su momento y su criterio de salida. La Tabla~\ref{tab:sd9-8} presenta los diez tipos y dos pruebas adicionales, con alcance en ambas etapas; el T-13, secciones 6 y 7, los especifica con sus criterios de entrada y salida (BTT, pp. 34--35).
+\textbf{Pruebas aplicables por etapa y antes de cada marcha blanca en Producción.} La BTT, sección 20.1, fija diez tipos de prueba con su momento y su criterio de salida. La Tabla~\ref{tab:sd9-8} presenta los diez tipos y dos pruebas adicionales, con alcance en ambas etapas; el T-13, secciones 6 y 7, los especifica con sus criterios de entrada y salida (BTT, pp. 34--35).
 
-\begin{tablalafrox}{Pruebas aplicables por etapa y antes de cada entrada a Producción. Fuente: (Bases Administrativas, art. 24, p. 17); (Bases Técnicas Transversales, sección 20.1, pp. 34--35); (Bases Técnicas del caso, cap. 15, pp. 26--27); (Formulario T-13, secciones 3, 6 y 7).}{tab:sd9-8}{>{\hsize=0.66\hsize\linewidth=\hsize}Y >{\hsize=0.662\hsize\linewidth=\hsize}Y >{\hsize=1.346\hsize\linewidth=\hsize}Y >{\hsize=1.332\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Pruebas aplicables por etapa y antes de cada marcha blanca en Producción. Fuente: (Bases Administrativas, art. 24, p. 17); (Bases Técnicas Transversales, sección 20.1, pp. 34--35); (Bases Técnicas del caso, cap. 15, pp. 26--27); (Formulario T-13, secciones 3, 6 y 7).}{tab:sd9-8}{>{\hsize=0.66\hsize\linewidth=\hsize}Y >{\hsize=0.662\hsize\linewidth=\hsize}Y >{\hsize=1.346\hsize\linewidth=\hsize}Y >{\hsize=1.332\hsize\linewidth=\hsize}Y}
   {\cab{Prueba} & \cab{Ambiente} & \cab{Carga o escenario} & \cab{Criterio de salida}}
 Unitarias y de componente & Desarrollo/CI & Lógica de negocio y componentes, ambas etapas & Cobertura ≥ 70 \% negocio y ≥ 80 \% global; 0 pruebas fallidas \\
 Integración & QA & Interfaces de E1; en E2, las 15 y regresión E1 & 0 flujos con error \\
@@ -296,7 +296,7 @@ La tabla suma las mismas 12.016 HH de conformidad del costo de la calidad (9.1.6
 
 \subsection{Calidad en el cronograma y en los hitos}
 
-\textbf{Pruebas por quincena.} Según el calendario de iteraciones del T-15, sección 6.1, cada ventana de construcción de hasta catorce días cierra con evidencia en QA. En la primera quincena, Desarrollo y Calidad revisan contratos y criterios y preparan las pruebas del incremento; en las intermedias, prueban el incremento y ejecutan la regresión aplicable antes de demostrarlo; en la última, comprueban la versión integrada. Si una dependencia aún no está disponible, se permite probar con datos controlados o simuladores, sin acreditar integración real. Por quincena se registra módulo, versión, casos y resultado, defectos y evidencia de la demostración. Se mantiene el seguimiento del paquete 1.5.2 y las campañas ampliadas de certificación del T-13: la evidencia temprana no sustituye carga, resiliencia ni aceptación. La tabla de iteraciones del T-15 es la referencia por módulo; no sustituye la comprobación de la dotación ni acredita que la carta gráfica esté sincronizada. El Anexo 9.E.1 y la carta auxiliar no reservan jornadas; Planificación y Calidad deben vincular las 83 ventanas con los ID de la Gantt oficial, las sesiones y sus responsables y relevos.
+\textbf{Pruebas por quincena.} Según el calendario de iteraciones del T-15, sección 6.1, cada ventana de construcción de hasta catorce días cierra con evidencia en QA. En la primera quincena, Desarrollo y Calidad revisan contratos y criterios y preparan las pruebas del incremento; en las intermedias, prueban el incremento y ejecutan la regresión aplicable antes de demostrarlo; en la última, comprueban la versión integrada. Si una dependencia aún no está disponible, se permite probar con datos controlados o simuladores, sin acreditar integración real. Por quincena se registra módulo, versión, casos y resultado, defectos y evidencia de la demostración. Se mantiene el seguimiento del paquete 1.5.2 y las campañas ampliadas de certificación del T-13: la evidencia temprana no sustituye carga, resiliencia ni aceptación. La tabla de iteraciones del T-15 es la referencia por módulo. El Anexo 9.E vincula las 83 ventanas de QA con los identificadores de la carta oficial del SD7 y les asigna titular, relevo, turno y ambiente; sus horas son las ya valorizadas para esos perfiles en cada mes.
 
 La Figura~\ref{fig:sd9-9} presenta la vista general de los 56 meses del contrato: las fases de cada etapa, las certificaciones, los doce hitos del Formulario E-25 y cada prueba periódica de la Operación en el mes en que se ejecuta, sobre las bandas de congelamiento del Caso.
 
@@ -309,7 +309,7 @@ En E1, INN-02 es continua desde el mes 2, las puertas automáticas desde el mes 
 \begin{tablalafrox}{Actividades de calidad mes a mes en la Etapa 1, meses 1 a 12. Fuente: (Bases Administrativas, Formulario E-25, pp. 74--75); (Bases Técnicas del caso, cap. 15, RT-10.05, p. 27); (Formulario T-14, cuentas 1 a 4); (Formulario T-15, sección 6.1); (Formulario T-13, sección 9.1); (Formulario T-17, sección 4).}{tab:sd9-mes1}{>{\hsize=0.66\hsize\linewidth=\hsize}Y >{\hsize=2.04\hsize\linewidth=\hsize}Y >{\hsize=0.3\hsize\linewidth=\hsize}Y}
   {\cab{Mes} & \cab{Actividades de calidad que empiezan o se entregan (paquete EDT)} & \cab{Hito}}
 1 · feb 2027 & — &  \\
-2 · mar 2027 & Matriz de trazabilidad (1.2.4); plan de calidad y de pruebas (1.5.1); investigación con usuarios (2.6.1) & \textbf{H1} \\
+2 · mar 2027 & Plan de calidad y de pruebas (1.5.1), entregado el día 4; matriz de trazabilidad (1.2.4), el día 9; investigación con usuarios (2.6.1) & \textbf{H1} \\
 3 · abr 2027 & Prototipos y usabilidad (2.6.2); banco de frío (2.4.3) &  \\
 4 · may 2027 & Indicadores de usabilidad (2.6.3); mapeo de frío por carrocería (2.4.4) & \textbf{H2} \\
 5 · jun 2027 & — &  \\
@@ -328,12 +328,12 @@ En los meses 13 a 15 se mantienen los indicadores diarios y la restauración men
   {\cab{Mes} & \cab{Actividades de calidad que empiezan o se entregan (paquete EDT)} & \cab{Hito}}
 13 · feb 2028 & Puerta G5: habilitación de la marcha blanca de la Etapa 1 (4.2.1) & \textbf{H6} \\
 14 · mar 2028 & Revisión y acta H8 del alcance y diseño E2, entregados en febrero (1.2.5; 2.4.2) & \textbf{H8} \\
-15 · abr 2028 & Cierre de INN-02 en la implementación (3.10.2.4); primer tramo del OTIF (R18-04) &  \\
+15 · abr 2028 & Incremento de evidencia de la marcha blanca E1, meses 13 y 14, el día 5 (4.2.1); cierre de INN-02 en la implementación (3.10.2.4); primer tramo del OTIF (R18-04) &  \\
 16 · may 2028 & Acta de aceptación de la Etapa 1 (4.2.3); integración y regresión E2 (3.9.1), entregable del H9; certificación E2 (3.9.2 a 3.9.7), con el perfil operacional del alcance cambiado & \textbf{H7} \\
 17 · jun 2028 & Revisión del H9 por el CLIENTE; acta de certificación E2 (3.9.6), entregable del H10 & \textbf{H9} \\
 18 · jul 2028 & Revisión del H10 por el CLIENTE & \textbf{H10} \\
 19 · ago 2028 & Puerta G5: habilitación de la marcha blanca de la Etapa 2 en convivencia con la Etapa 1 (4.3.1); segundo tramo del OTIF & \textbf{H11} \\
-20 · sep 2028, congelado & Marcha blanca con el peak de septiembre &  \\
+20 · sep 2028, congelado & Marcha blanca con el peak de septiembre; incremento documental de evidencia del mes 19, el día 5 (4.3.1) &  \\
 21 · oct 2028 & Acta de aceptación final (4.3.3); primera conmutación periódica de Operación (8.1.3); restauración mensual (8.1.6) & \textbf{H12} \\
 \end{tablalafrox}
 
@@ -341,23 +341,23 @@ Las dos tablas distinguen ejecución de pruebas, entrega documental y acta: las 
 
 El cierre documental de una certificación no equivale a intervenir sistemas en Producción. La ventana total de 3.8.5 incluye preparación/análisis; su intervención real se ejecuta del 26 al 29 de octubre de 2027, fuera del feriado del 1 de noviembre y de los primeros tres hábiles (2, 3 y 4). Las pruebas de la Etapa 1 terminan en noviembre de 2027, antes de diciembre; los ensayos de migración que coinciden con diciembre corren en Preproducción y no tocan Producción. La marcha blanca de la Etapa 2 coincide con el peak de septiembre de 2028 y con su congelamiento: es la exigencia más dura sobre la solución, porque se mide con el mayor volumen del año (Caso, cap. B, sección B.2). Durante ese congelamiento rige el procedimiento de correcciones de la sección 9.3.2.
 
-\textbf{Hitos y holgura.} Cada hito se acepta con el protocolo del T-17: el entregable se presenta con su evidencia y su trazabilidad (BA, Art. 18.2, p. 13), el CLIENTE tiene 10 días hábiles para revisarlo y LafroX tiene otros 10 para subsanar observaciones (BA, Art. 18.3, p. 13). La Tabla~\ref{tab:sd9-11} expresa en días hábiles dos escenarios: holgura nominal sin observaciones y margen tras descontar diez días de subsanación, antes de una eventual segunda revisión.
+\textbf{Hitos y holgura.} Cada hito se acepta con el protocolo del T-17: el entregable se presenta con su evidencia y su trazabilidad (BA, Art. 18.2, p. 13), el CLIENTE tiene 10 días hábiles para revisarlo y LafroX tiene otros 10 para subsanar observaciones (BA, Art. 18.3, p. 13). La Tabla~\ref{tab:sd9-11} expresa en días hábiles la holgura nominal sin observaciones, el margen tras diez días de subsanación y, en H1, H7 y H12, el margen con la entrega por incrementos del T-17, sección 2.3.
 
-\begin{tablalafrox}{Reserva y holgura de los hitos ante una subsanación. Fuente: (Bases Administrativas, art. 18.3, p. 13); (Formulario T-17, secciones 2.3 y 4.1); (Formulario T-15, secciones 5.2 y 5.5).}{tab:sd9-11}{>{\hsize=0.451\hsize\linewidth=\hsize}Y >{\hsize=2.094\hsize\linewidth=\hsize}Y >{\hsize=0.451\hsize\linewidth=\hsize}Y >{\hsize=1.004\hsize\linewidth=\hsize}Y}
-  {\cab{Hito (mes)} & \cab{Entregable que lo habilita} & \cab{Nominal} & \cab{Tras subsanación}}
-H1 (2) & Matriz de trazabilidad y plan de calidad & 5 & 5 \ensuremath{-} 10 = -5 \\
-H2 (4) & Arquitectura, seguridad y datos & 14 & 14 \ensuremath{-} 10 = 4 \\
-H3 (6) & Ambientes y puertas activas & 18 & 18 \ensuremath{-} 10 = 8 \\
-H4 (10) & Integración y regresión E1 & 18 & 18 \ensuremath{-} 10 = 8 \\
-H5 (12) & Certificación E1 & 20 & 20 \ensuremath{-} 10 = 10 \\
-H8 (14) & Alcance y diseño E2 & 16 & 16 \ensuremath{-} 10 = 6 \\
-H7 (16) & Aceptación de marcha blanca E1 & 10 & 10 \ensuremath{-} 10 = 0 \\
-H9 (17) & Integración y regresión E2 & 19 & 19 \ensuremath{-} 10 = 9 \\
-H10 (18) & Certificación E2 & 14 & 14 \ensuremath{-} 10 = 4 \\
-H12 (21) & Aceptación final E2 y garantía & 8 & 8 \ensuremath{-} 10 = -2 \\
+\begin{tablalafrox}{Reserva y holgura de los hitos ante una subsanación. Fuente: (Bases Administrativas, art. 18.3, p. 13); (Formulario T-17, secciones 2.3 y 4.1); (Formulario T-15, secciones 5.2 y 5.5).}{tab:sd9-11}{>{\hsize=0.42\hsize\linewidth=\hsize}Y >{\hsize=1.66\hsize\linewidth=\hsize}Y >{\hsize=0.42\hsize\linewidth=\hsize}Y >{\hsize=0.75\hsize\linewidth=\hsize}Y >{\hsize=0.75\hsize\linewidth=\hsize}Y}
+  {\cab{Hito (mes)} & \cab{Entregable que lo habilita} & \cab{Nominal} & \cab{Tras subsanación} & \cab{Con incrementos}}
+H1 (2) & Plan de calidad (4 de marzo) y matriz de trazabilidad (9 de marzo) & 5 & 5 \ensuremath{-} 10 = -5 & 5 \ensuremath{-} 5 = 0 \\
+H2 (4) & Arquitectura, seguridad y datos & 14 & 14 \ensuremath{-} 10 = 4 & — \\
+H3 (6) & Ambientes y puertas activas & 18 & 18 \ensuremath{-} 10 = 8 & — \\
+H4 (10) & Integración y regresión E1 & 18 & 18 \ensuremath{-} 10 = 8 & — \\
+H5 (12) & Certificación E1 & 20 & 20 \ensuremath{-} 10 = 10 & — \\
+H8 (14) & Alcance y diseño E2 & 16 & 16 \ensuremath{-} 10 = 6 & — \\
+H7 (16) & Aceptación de marcha blanca E1; evidencia de M13--14 el 5 de abril & 10 & 10 \ensuremath{-} 10 = 0 & 10 \ensuremath{-} 5 = 5 \\
+H9 (17) & Integración y regresión E2 & 19 & 19 \ensuremath{-} 10 = 9 & — \\
+H10 (18) & Certificación E2 & 14 & 14 \ensuremath{-} 10 = 4 & — \\
+H12 (21) & Aceptación final E2 y garantía; evidencia de M19 el 5 de septiembre & 8 & 8 \ensuremath{-} 10 = -2 & 8 \ensuremath{-} 5 = 3 \\
 \end{tablalafrox}
 
-La tabla usa el escenario nominal del T-15 y descuenta diez días de subsanación, sin sumar una eventual segunda revisión. H1, H7 y H12 quedarían en −5, 0 y −2 días hábiles. El expediente integrado no elimina esas restricciones ni acredita aprobación: se requiere confirmación escrita de la Contraparte, una secuencia viable si hay observaciones y el acta previa al corte. Las cuatro semanas finales de evidencia no se recortan. La holgura transcurre después de la revisión formal y no acredita dotación. Planificación verifica en la red oficial la entrega completa, revisión, subsanación, eventual segunda revisión, firma y corte; si una fecha no cabe, registra la brecha y escala al JP y a la Contraparte. No se imputan reservas del SD8 como holgura, dotación o financiamiento. La cobertura operativa de ambos alcances comienza el primer día del mes 21 y no acredita firma ni corte.
+La tabla usa las fechas nominales del T-15. Con la entrega completa en la fecha nominal y diez días de subsanación, H1, H7 y H12 quedarían en −5, 0 y −2 días hábiles. El plan ajusta esos tres hitos sin mover sus fechas nominales ni sus meses. Los incrementos tempranos se revisan y subsanan antes de la entrega final, y el incremento final se subsana en cinco días hábiles, con el Líder de Calidad y un Analista QA Senior asignados. El saldo queda en 0, +5 y +3 días hábiles. Las cuatro semanas finales de evidencia del Art. 17.3 no se recortan: forman el incremento final de H7 y H12. El calendario de revisión de los incrementos y la ventana de corte posterior a la firma forman parte del acta de inicio 1.1.3. No se imputan reservas del SD8 como holgura, dotación o financiamiento. La cobertura operativa de ambos alcances comienza el primer día del mes 21 y no acredita firma ni corte.
 
 \textbf{Repetición de una prueba tras una corrección.} Si una corrección durante la marcha blanca modifica un componente que cubrió una prueba de certificación, el Líder de Calidad repite esa prueba sobre la versión corregida antes de promoverla. Su alcance, HH por especialidad y ventana se estiman a partir del defecto y se autorizan por control de cambios. Primero se verifica que el paquete disponga de capacidad sin comprometer la cobertura de servicio ni la reserva protegida de otra etapa. Si no basta, se acuerdan los recursos y las medidas correctivas por control de cambios, sin asignar de antemano una reserva de riesgo.
 

@@ -11,7 +11,7 @@
 \contentsline {section}{6. Criterios de entrada y de salida}{12}{table.8.8}%
 \contentsline {subsection}{6.1 Por nivel de prueba}{12}{table.8.8}%
 \contentsline {subsection}{6.2 Suspensión y reanudación}{14}{table.8.9}%
-\contentsline {section}{7. Especificación de las pruebas que habilitan cada entrada a Producción}{14}{table.8.9}%
+\contentsline {section}{7. Especificación de las pruebas que habilitan cada marcha blanca en Producción}{14}{table.8.9}%
 \contentsline {subsection}{7.1 Carga y estrés}{15}{table.8.9}%
 \contentsline {subsection}{7.2 Resiliencia}{15}{table.8.10}%
 \contentsline {subsection}{7.3 Perfil operacional de terreno}{16}{table.8.11}%
