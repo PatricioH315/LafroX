@@ -10,13 +10,17 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-REF = sys.argv[1] if len(sys.argv) > 1 else "93a5e884"
+REF = sys.argv[1] if len(sys.argv) > 1 else "68669befd04babce61e9fb4d8f5e6b29d28f46aa"
 
 
 def source(path):
     return subprocess.check_output(
         ["git", "show", f"{REF}:{path}"], cwd=ROOT
     ).decode("utf-8")
+
+
+def num(text):
+    return Decimal(text.replace(".", "").replace(",", "."))
 
 
 def rows(text):
@@ -44,7 +48,7 @@ for r in rows(t13):
         expected = packages[r[1]]
         assert r[3:5] == expected[4:6], (r[1], r[3:5], expected[4:6])
         if r[5].isdigit():
-            assert Decimal(r[5]) == Decimal(expected[3]), r[1]
+            assert num(r[5]) == num(expected[3]), (r[1], r[5], expected[3])
         campaigns += 1
 assert campaigns == 25, campaigns
 
@@ -52,12 +56,13 @@ acts = 0
 for r in rows(t17):
     if len(r) == 5 and re.fullmatch(r"H\d+ \(\d+\)", r[0]):
         h = r[0].split()[0]
-        assert r[1:] == milestones[h][1:5], (h, r[1:], milestones[h][1:5])
+        m = milestones[h]
+        assert r[1:] == [m[1], m[2], m[4], m[5]], (h, r[1:], m[1:6])
         acts += 1
 assert acts == 10, acts
 
 # Las 880 HH ya están dentro de T-15, no se agregan a 220.023.
-cold = sum(Decimal(packages[p][3]) for p in ("2.4.3", "2.4.4", "4.1.4"))
+cold = sum(num(packages[p][3]) for p in ("2.4.3", "2.4.4", "4.1.4"))
 assert cold == 880
 conformity = annex[annex.index("Prevención & 1.2.4"):annex.index(r"\subsection*{9.C.2")]
 totals = {"Prevención": Decimal(0), "Evaluación": Decimal(0)}
