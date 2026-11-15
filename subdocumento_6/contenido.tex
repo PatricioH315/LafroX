@@ -79,7 +79,7 @@ Buena parte de los usuarios no está frente a un computador: los preventistas y 
 
 La gestión de adquisiciones planifica y controla las compras y contrataciones según las necesidades, dependencias y cronograma. Conforme al Capítulo 11 del caso, el CLIENTE compra el hardware de terreno según la especificación de LafroX: los equipos de uso (terminales, impresoras, terminales de pago y balanzas), conforme a la especificación 5.1.1, y los sensores de cámara y los kits de los 28 camiones con frío, conforme a la especificación 5.1.4. LafroX los instala, integra y mantiene, y provee los gateways de cámara como parte de la infraestructura on-premise. El T-14 programa la especificación y cotización local de componentes para 31 kits, con homologación y certificación Subtel aplicable antes del banco de pruebas; la compra masiva queda condicionada a la aceptación del prototipo. El T-15 programa la compra del prototipo a fines de marzo de 2027 y su banco de pruebas en abril; exige cuatro kits recibidos antes del piloto de seis semanas y los 28 kits instalados y recibidos antes de la ola de reparto. Para los equipos de la sala técnica, incluidos racks, servidores y equipos de borde, T-14 asigna a LafroX la orden de compra en el mes 2 y la instalación en el mes 3. La recepción técnica de los equipos y la recepción de la sala son hitos distintos: T-15 sitúa la recepción de la sala en el mes 4, sin que ello establezca aquí una fecha de recepción técnica ni de puesta en servicio. El SOC 24×7 es propio de LafroX y opera desde su Centro de Operaciones de Valparaíso (Av. Brasil 2241), con analistas contratados como personal antes del mes 13 bajo la dirección del Encargado de Seguridad; su ubicación y habilitación se declaran en el Subdocumento 1, sección 1.5, y su cobertura 24×7 en el paquete 8.1.5 del Formulario T-15 (Bases Técnicas Transversales, cap. 11, RT-11.17, p. 24). Los agentes de la Mesa de Servicios también son personal de LafroX, aparte de su planta técnica, y los 18 asistentes de terreno se contratan por obra o faena para la implantación (Formulario T-15, secciones 5.7 y 6.3). La obra civil de separación es de cargo del CLIENTE; LafroX la especifica y coordina, provee el piso técnico e instala y configura el equipamiento (RT-06.06; Formulario T-14, paquete 6.1.1). Para consultar el detalle de las adquisiciones, sus necesidades asociadas, responsables, fechas, paquetes y evidencias, véase el Anexo 6.B --- Adquisiciones asociadas al proyecto.
 
-Las campañas de certificación las ejecuta el equipo de calidad de planta, bajo la dirección del Líder de Calidad, y no se contratan evaluadores para ellas. Su dimensionamiento pertenece al plan de calidad y se presenta en el Subdocumento 9 y en el Formulario T-13, sección 8.3.
+Las campañas de certificación las ejecuta las 13 personas del equipo de calidad: 10 de planta y 3 refuerzos de pruebas (T-15, sección 5.7), bajo la dirección del Líder de Calidad y Pruebas y sin evaluadores externos. Las 13 plazas forman parte de las 137 valorizadas. Su dimensionamiento pertenece al plan de calidad y se presenta en el Subdocumento 9 y en el Formulario T-13, sección 8.3.
 
 \subsection{Gestión de integración}
 
@@ -202,11 +202,11 @@ La Figura~\ref{fig:sd6-cadena} muestra el recorrido de un cambio por los cinco a
 \draw[->,thick] (qa) -- (pre);
 \draw[->,thick] (pre) -- (pro);
 \draw[->,thick,dashed] (pro) -- (dr);
-\node[pu] at (1.65,-1.3) {\textbf{G0--G2}\\automáticas};
-\node[pu] at (4.95,-1.3) {\textbf{G3--G4}\\Líder de Calidad};
-\node[pu] at (8.25,-1.3) {\textbf{G5--G6}\\Contraparte Técnica};
+\node[pu] at (1.65,-1.3) {\textbf{G0--G3}\\DEV a QA\\G1: revisión de pares};
+\node[pu] at (4.95,-1.3) {\textbf{G4}\\QA a Preproducción};
+\node[pu] at (8.25,-1.3) {\textbf{G5--G6}\\Marcha blanca y Producción};
 \node[pu] at (11.55,-1.3) {réplica\\continua};
-\node[text width=13cm,align=center,font=\footnotesize] at (6.6,-2.5) {Una sola imagen firmada, promovida por su \textit{digest}; sin despliegues del 1 al 25 de septiembre, en diciembre, en los tres primeros días hábiles del mes ni en la ventana de 05:30 a 07:00.};
+\node[text width=13cm,align=center,font=\footnotesize] at (6.6,-2.5) {Nadie levanta un bloqueo. Una sola imagen firmada, promovida por su \textit{digest}; sin despliegues del 1 al 25 de septiembre, en diciembre, en los tres primeros días hábiles del mes ni en la ventana de 05:30 a 07:00.};
 \end{tikzpicture}
 \caption{Cadena de entrega, ambientes y puertas de calidad. Fuente: elaboración propia a partir de (Subdocumento 4, sección 4.1.9 y 4.2.4.1) y (Subdocumento 9, Tabla 9.7).}
 \label{fig:sd6-cadena}
@@ -232,7 +232,7 @@ La metodología se ajusta a seis condiciones del caso que un proceso genérico n
   ERP e interfaces sin documentar & Las interfaces se levantan en los meses 1 a 4, cada una con su contrato y una prueba de conexión en Desarrollo antes del H2; los módulos se construyen contra simuladores con pruebas de contrato. & 1.2.3; 3.3.2 \\
   Intercambio con las cadenas & Una certificación por cadena, con su mesa técnica, en lugar de una tarea única de integración. & 3.6.5 y 3.6.6 \\
   Conocimiento del planificador & Sus reglas se capturan en los meses 1 a 3; en cada iteración de M4 valida las rutas propuestas con sus casos reales, y la marcha blanca compara dos semanas sin él con dos semanas previas. & 1.2.2; R18-16 (T-17) \\
-  Turno de noche y rotación del 38 \% & Prueba de usabilidad de bodega en el turno nocturno con personal de menos de un mes; aprendizaje de dos horas como máximo y capacitación continua del turno. & SD9, 9.1; 7.1.2 \\
+  Turno de noche y rotación del 38 \% & Prueba de usabilidad de bodega en el turno nocturno con personal de menos de un mes; aprendizaje de dos horas como máximo y capacitación continua del turno. & SD9, 9.1.3; T-13, 7.3; paquete 7.1.2 \\
 \end{tablalafrox}
 
 La tabla muestra que cada condición tiene su prueba antes de la marcha blanca, y no se descubre en ella. La última condición del caso, un área de TI de cuatro personas, se atiende desde el desarrollo: el Jefe de TI participa en el Comité de Arquitectura desde el mes 1, recibe la documentación y los procedimientos ensayados en el traspaso (paquete 7.1.4) y cuenta con mentoría durante los seis meses posteriores al mes 21 (paquete 8.5.2).
