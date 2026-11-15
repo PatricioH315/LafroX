@@ -1,7 +1,7 @@
 {
   "source_ref": "3d0eeea70c16ea3a6c5dfb3f539d8892fb865005",
   "source_commit": "3d0eeea70c16ea3a6c5dfb3f539d8892fb865005",
-  "rt_update_commit": "0ef1bf867a8b666f0d54cc2664d2518f2b07d75e",
+  "rt_update_commit": "887ab84c9a78f6885f1c1724d24e026a1789f671",
   "rt_update_ids": [
     "RT-05.30",
     "RT-18.08",
@@ -21,7 +21,6 @@
     "RT-16.18",
     "RT-16.23"
   ],
-  "c26_partial_id": "RT-26.04",
   "test_count": 1328,
   "counts": {
     "t12_rows": 653,
@@ -37,8 +36,8 @@
       "Media": 55
     },
     "rt_state": {
-      "Cumple": 326,
-      "Cumple parcialmente": 26,
+      "Cumple": 327,
+      "Cumple parcialmente": 25,
       "No cumple": 22
     },
     "rt_without_case": 22,
@@ -10462,8 +10461,8 @@
     },
     {
       "id": "RT-26.04",
-      "state": "Cumple parcialmente",
-      "component": "INN-01, INN-02, INN-03 e INN-05 se gestionan mediante los controles internos CT-08 a CT-13, sin puntuación de probabilidad por impacto. INN-04 corresponde al riesgo contractual R-027, con probabilidad, impacto y respuesta registrados en el T-16.",
+      "state": "Cumple",
+      "component": "Cada innovación declara su riesgo de adopción con probabilidad, impacto y exposición en las escalas del SD8: INN-01 nivel 2 × 2 (0,03), INN-02 2 × 2 (0,03), INN-03 3 × 3 (0,10), INN-04 R-027 2 × 3 (0,06) en el T-16 e INN-05 3 × 2 (0,05). Mitigación y contingencia en 13.x.7; controles CT-08 a CT-13 del Anexo 8.E.",
       "edt": "1.6.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",

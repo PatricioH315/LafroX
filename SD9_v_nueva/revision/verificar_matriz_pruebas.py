@@ -36,7 +36,6 @@ update_ids = set(data["rt_update_ids"])
 assert update_ids == {"RT-05.30", "RT-18.08", "RT-20.02", "RT-21.21", "RT-26.04"}
 c24_ids = set(data["c24_update_ids"])
 assert c24_ids == {"RF-18.03", "RNF-20.06", "RNF-23.02", "RT-03.18", "RT-07.04", "RT-08.12", "RT-08.14", "RT-11.04", "RT-16.18", "RT-16.23"}
-assert data["c26_partial_id"] == "RT-26.04"
 verified = set()
 for line in updates.splitlines():
     if not re.match(r"\s*(?:RF|RNF|RT)-\d", line):
@@ -55,8 +54,7 @@ for line in updates.splitlines():
         source_states[identifier] = cells[2]
         verified.add(identifier)
 assert verified == update_ids | c24_ids
-assert source_states[data["c26_partial_id"]] == "Cumple"
-source_states[data["c26_partial_id"]] = "Cumple parcialmente"
+assert source_states["RT-26.04"] == "Cumple"
 assert set(ids) == set(source_states)
 assert all(x["state"] == source_states[x["id"]] for x in requirements)
 own = [x for x in requirements if not x["id"].startswith("RT-")]

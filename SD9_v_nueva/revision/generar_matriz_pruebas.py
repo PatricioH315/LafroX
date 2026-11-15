@@ -18,12 +18,11 @@ ROOT = Path(__file__).resolve().parents[1]
 REF = sys.argv[1] if len(sys.argv) > 1 else "3d0eeea70c16ea3a6c5dfb3f539d8892fb865005"
 # Se conserva el catálogo base; estas cinco filas reflejan la corrección
 # puntual de referencias cruzadas del T-12 sin incorporar otros cambios de SD3.
-RT_UPDATE_REF = "0ef1bf867a8b666f0d54cc2664d2518f2b07d75e"
+RT_UPDATE_REF = "887ab84c9a78f6885f1c1724d24e026a1789f671"
 RT_UPDATE_IDS = {"RT-05.30", "RT-18.08", "RT-20.02", "RT-21.21", "RT-26.04"}
 # C24: estado, descripción del alcance y EDT del T-12 revisado.
 C24_IDS = {"RF-18.03", "RNF-20.06", "RNF-23.02", "RT-03.18", "RT-07.04", "RT-08.12", "RT-08.14", "RT-11.04", "RT-16.18", "RT-16.23"}
-# C26: la corrección documental de RT-26.04 pasa a Parcial sin cambiar su caso previsto.
-C26_ID = "RT-26.04"
+# C26: RT-26.04 toma del T-12 revisado su estado Cumple y la evaluación de riesgo por innovación.
 BLOCK = 25
 CASES_BY_PRIORITY = {"Crítica": 5, "Alta": 3, "Media": 2}
 CONTRACTS, CASES_BY_CONTRACT = 15, 7
@@ -107,9 +106,6 @@ for c in t12:
         update = c24_updates[identifier]
         c = [*c[:2], update[2], update[3], update[5], *c[5:]]
     state, component, work = c[2], c[3], c[4]
-    if identifier == C26_ID:
-        assert state == "Cumple" and "sin puntuación" in component
-        state = "Cumple parcialmente"
     if identifier in catalogue:
         item = catalogue[identifier]
         count = CASES_BY_PRIORITY[item["priority"]]
@@ -190,7 +186,6 @@ payload = {"source_ref": REF, "source_commit": subprocess.check_output(
         ["git", "rev-parse", RT_UPDATE_REF], cwd=ROOT, text=True).strip(),
     "rt_update_ids": sorted(RT_UPDATE_IDS),
     "c24_update_ids": sorted(C24_IDS),
-    "c26_partial_id": C26_ID,
     "test_count": len(all_cases), "counts": counts,
     "requirements": data, "aliases": aliases, "contracts": contracts}
 (ROOT / "revision/matriz_pruebas.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
