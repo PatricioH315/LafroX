@@ -42,7 +42,7 @@ La inversión es de 2.920,00 UF y son solo horas del equipo:
 
 El costo operacional suma 1.312,43 UF. El más alto es el de INN-04, 765,60 UF, por las 528 HH que el Jefe de Proyecto le dedica entre los meses 24 y 56. Luego vienen INN-02, con 272,61 UF, e INN-03, con 263,50 UF, por las horas de calidad y de datos en la Operación y por su uso de nube.
 
-En total las innovaciones usan 5.552 HH, el 2,77\,\% de las HH del proyecto. Cada hora está asignada a un perfil del T-15 en un mes en que ese perfil ya trabaja en el proyecto. Del costo operacional, 1.268,18 UF son horas y 44,26 UF son nube, detallada en la Tabla~\ref{tab:e2-inn-nube}.
+En total las innovaciones usan 5.552 HH, el 2,77\,\% de las HH del proyecto. Cada hora está asignada a un perfil del T-15 en un mes en que ese perfil ya trabaja en el proyecto. Del costo operacional, 1.268,18 UF son horas y 44,26 UF son nube, detallada en la Tabla~\ref{tab:e2-inn-nube}. Los meses de la inversión son los de la valorización en la hoja \texttt{INNOVACIONES}. El T-14 y el T-15 programan las mismas horas en ventanas más amplias: 3.10.1 en los meses 7 a 14, 3.10.2 en 2 a 14, 3.10.3 en 3 a 14, 3.10.4 en 13 a 20, y 8.3.5 y 8.3.6 hasta el mes 27 (LafroX, 2026c). El total de horas por innovación es el mismo, y el reparto mensual no altera el flujo de caja, al que solo entra la nube.
 
 \begin{tablalafrox}{Costos de nube y otros costos sin horas de las innovaciones, en UF. Fuente: modelo financiero, hoja INNOVACIONES, sección C.}{tab:e2-inn-nube}{L{1.1cm} Y L{1.6cm} L{1.5cm} R{1.9cm}}
   {\cab{Ref.} & \cab{Rubro} & \cab{Innovación} & \cab{Meses} & \cab{Total UF}}
@@ -56,7 +56,7 @@ En total las innovaciones usan 5.552 HH, el 2,77\,\% de las HH del proyecto. Cad
   \textbf{Total} & & & & \textbf{44,26} \\
 \end{tablalafrox}
 
-La nube se costea con las tarifas de la región de São Paulo de la hoja \texttt{ADQUISICIONES OPERACION}: 0,69 USD por DPU-hora de AWS Glue, 0,5976 USD por RPU-hora de Redshift Serverless y 0,0405 USD por GB-mes en S3. INN-03 es la que más consume, por el cálculo mensual del modelo de vida útil. Su hardware de borde ya está en el T-11 y no suma compras. El laboratorio externo se contrata solo si Calidad lo pide, y no está en el escenario base.
+La nube se costea con las tarifas de la región de São Paulo de la hoja \texttt{ADQUISICIONES OPERACION}: 0,69 USD por DPU-hora de AWS Glue, 0,5976 USD por RPU-hora de Redshift Serverless y 0,0405 USD por GB-mes en S3. INN-03 es la que más consume, por el cálculo mensual del modelo de vida útil. Su hardware de borde ya está en el T-11 y no suma compras. La validación con lotes reales usa los registros térmicos y las decisiones de Calidad, sin laboratorio externo.
 
 \subsection{Beneficio esperado para el CLIENTE}
 \label{sec:e2-inn-beneficio}
