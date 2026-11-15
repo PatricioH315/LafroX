@@ -274,6 +274,48 @@ R18-16 Operación sin el planificador & Generación automática de rutas (R18-07
 \end{tablasimple}
 \fuentesd{Fuente: (Bases Técnicas del caso, cap. 18, pp. 34--35); (Formulario T-13, sección 7.4); (Formulario T-14, cuentas 3 y 4); (Formulario T-17, secciones 4 y 5).}
 
+\section*{Anexo 9.E — Pruebas por iteración de construcción}
+\addcontentsline{toc}{section}{Anexo 9.E — Pruebas por iteración de construcción}
+
+La tabla localiza los cierres de QA por paquete y quincena, según el T-15, sección 6.1. La primera iteración revisa el contrato y los criterios; las intermedias documentan la demostración y la regresión aplicable; la última verifica y entrega la versión integrada. Cuando solo hay dos iteraciones, la segunda es la entrega integrada. Calidad registra el paquete, la versión, los casos, los resultados y los defectos; el Líder Funcional valida el incremento. Si falta una dependencia, se registra la prueba con datos controlados sin acreditar una integración real.
+
+\begin{tablasimple}{L{1.35cm} C{1.05cm} Y}
+  {\cab{Paquete} & \cab{Año} & \cab{Ventanas publicadas (día/mes)}}
+3.4.1 & 2027 & 10/06--23/06, 24/06--07/07, 08/07--21/07, 22/07--04/08, 05/08--10/08 \\
+3.4.2 & 2027 & 10/06--23/06, 24/06--07/07, 08/07--21/07, 22/07--04/08, 05/08--11/08 \\
+3.4.3 & 2027 & 14/06--27/06, 28/06--11/07, 12/07--25/07, 26/07--08/08, 09/08--18/08 \\
+3.4.4 & 2027 & 14/06--27/06, 28/06--11/07, 12/07--25/07, 26/07--08/08, 09/08--22/08, 23/08--05/09, 06/09--19/09, 20/09--29/09 \\
+3.4.5 & 2027 & 14/06--27/06, 28/06--11/07, 12/07--25/07, 26/07--08/08, 09/08--22/08, 23/08--30/08 \\
+3.4.6 & 2027 & 16/06--29/06, 30/06--13/07, 14/07--27/07, 28/07--10/08, 11/08--17/08 \\
+3.4.7 & 2027 & 16/06--29/06, 30/06--13/07, 14/07--27/07, 28/07--10/08, 11/08--24/08, 25/08--08/09 \\
+3.4.8 & 2027 & 16/06--29/06, 30/06--13/07, 14/07--27/07, 28/07--10/08, 11/08--24/08, 25/08--09/09 \\
+3.4.9 & 2027 & 18/06--01/07, 02/07--15/07, 16/07--29/07, 30/07--12/08, 13/08--26/08, 27/08--09/09, 10/09--23/09, 24/09--30/09 \\
+3.4.10 & 2027 & 10/06--23/06, 24/06--07/07, 08/07--21/07, 22/07--04/08, 05/08--18/08, 19/08--01/09, 02/09--15/09, 16/09--29/09, 30/09--04/10 \\
+3.4.11 & 2027 & 02/09--15/09, 16/09--27/09 \\
+3.5.1 & 2028 & 15/03--28/03, 29/03--11/04, 12/04--28/04 \\
+3.5.2 & 2028 & 15/03--28/03, 29/03--11/04, 12/04--28/04 \\
+3.5.3 & 2028 & 15/03--28/03, 29/03--11/04, 12/04--28/04 \\
+3.5.4 & 2028 & 15/03--28/03, 29/03--11/04, 12/04--28/04 \\
+\end{tablasimple}
+\fuentesd{Fuente: (Formulario T-15, sección 6.1, calendario de iteraciones de los módulos); (Subdocumento 9, sección 9.3).}
+
+Las ventanas de septiembre se usan para pruebas sin intervenir Producción. Las demostraciones en QA no autorizan un despliegue ni reemplazan la certificación integral de 3.8 y 3.9 del T-13.
+
+\subsection*{9.E.1 Cierres de QA en las ventanas extendidas}
+\addcontentsline{toc}{subsection}{9.E.1 Cierres de QA en las ventanas extendidas}
+
+Las seis ventanas de origen superiores a 14 días corridos se dividen en un bloque de demostración y regresión y otro de entrega integrada. La división conserva los extremos publicados y deja 83 ventanas de QA en los 15 paquetes, todas de hasta 14 días corridos. Las ventanas no ordenan trabajar en días no hábiles; la sesión se fija dentro del bloque según calendario y disponibilidad.
+
+\begin{tablasimple}{L{1.65cm} C{1.0cm} Y Y}
+  {\cab{Paquete} & \cab{Año} & \cab{Demostración y regresión} & \cab{Entrega integrada en QA}}
+3.4.7 & 2027 & 25/08--31/08 & 01/09--08/09 \\
+3.4.8 & 2027 & 25/08--01/09 & 02/09--09/09 \\
+3.5.1 a 3.5.4 & 2028 & 12/04--19/04 & 20/04--28/04 \\
+\end{tablasimple}
+\fuentesd{Fuente: subdivisión interna de las ventanas publicadas del T-15, sección 6.1; extremos inclusivos.}
+
+Antes de aprobar una iteración, el Líder de Calidad entrega al Jefe de Proyecto el registro con código EDT, ID de tarea en la Gantt oficial, versión, casos, fecha y turno de la sesión, titular y relevo disponibles, ambiente, dependencias y enlace a la evidencia, y cruza las asignaciones simultáneas. Sin cobertura confirmada no se declara programada la sesión: Planificación debe nivelarla dentro de la ventana o escalar el impacto. La carta editable de Calidad acompaña este anexo; su incorporación a la Gantt oficial y la validación de dotación corresponden al Comité de Proyecto. Si falta un titular o relevo, se registra el turno sin cobertura. El cruce no crea partidas ni traslada HH entre paquetes, meses o perfiles.
+
 \section*{Referencias}
 \addcontentsline{toc}{section}{Referencias}
 
