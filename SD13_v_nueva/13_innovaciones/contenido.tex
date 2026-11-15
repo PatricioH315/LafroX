@@ -116,7 +116,7 @@ La innovación no requiere hardware ni licencias: usa la aplicación de preventa
 Horas de datos, desarrollo móvil y diseño del catálogo & Inversión / recursos humanos & 7 a 15 \\
 Acompañamiento del piloto en terreno & Inversión / recursos humanos & 13 a 15 \\
 Cálculo nocturno y almacenamiento en nube & Costo operacional & 16 a 56 \\
-Mantención de la regla y del catálogo & Costo operacional / recursos humanos & 16 a 56 \\
+Mantención de la regla y del catálogo, dentro de la atención correctiva de la Operación (8.2.1), sin horas propias de la innovación & Costo operacional del servicio base & 21 a 56 \\
 Unidades vencidas evitadas en el local; canjes y descuentos se consideran al valorizar & Beneficio & Desde el mes 16; primera medición en el mes 28 \\
 \end{tablalafrox}
 
@@ -327,7 +327,7 @@ El contrato de datos de la historia térmica del lote se especifica en el Anexo 
 
 \textbf{Métrica de desempeño.} I-03B mide la proporción de lotes cuya estimación difiere de la evaluación de Calidad en no más del 15 \% de la vida nominal. La habilitación se decide por familia con la muestra y el umbral definidos en la sección 13.3.6; no se confunde esta precisión con el ahorro posterior de I-03D.
 
-\textbf{Recalibración.} Al no ser un modelo aprendido, se revisan los parámetros y no se reentrena un algoritmo de aprendizaje. El paquete 8.3.2 ejecuta la revisión semestral con los lotes evaluados del período, en los meses 26, 32, 38, 44, 50 y 56. Estos meses siguen la numeración del proyecto que usa todo el cronograma, y no un conteo desde el inicio de la Operación: caen dentro de la fase de Operación, que va del mes 21 al mes 56 (Bases Administrativas, Art. 17°, pp. 12–13), y dentro de la ventana del paquete 8.3.2 en el Formulario T-15 (meses 21 a 56). A efectos del seguimiento operacional, se considera señal de deriva del desempeño que I-03B sea inferior al 80 \% en dos cortes consecutivos para una misma familia. Este umbral activa la recalibración extraordinaria de sus parámetros; no constituye por sí solo un diagnóstico de la causa de la degradación.
+\textbf{Recalibración.} Al no ser un modelo aprendido, se revisan los parámetros y no se reentrena un algoritmo de aprendizaje. El paquete 8.3.2 ejecuta la revisión periódica con los lotes evaluados del período, en los meses 24, 27, 30, 36, 39, 42, 48, 51 y 54. Estos meses siguen la numeración del proyecto que usa todo el cronograma, y no un conteo desde el inicio de la Operación: caen dentro de la fase de Operación, que va del mes 21 al mes 56 (Bases Administrativas, Art. 17°, pp. 12–13), y dentro de la ventana del paquete 8.3.2 en el Formulario T-15 (meses 21 a 56). A efectos del seguimiento operacional, se considera señal de deriva del desempeño que I-03B sea inferior al 80 \% en dos cortes consecutivos para una misma familia. Este umbral activa la recalibración extraordinaria de sus parámetros; no constituye por sí solo un diagnóstico de la causa de la degradación.
 
 Al no ser un modelo aprendido, no se le aplica el Capítulo 18 de las Bases Técnicas (RT-26.06). Aun así declara línea base, métrica de desempeño y detección de deriva, como pediría el RT-18.08 a un modelo predictivo.
 
@@ -357,12 +357,12 @@ INN-03.P1 & 3.10.3.1 & 3 a 5 & Familias priorizadas, parámetros aprobados por M
 INN-03.P2 & 3.10.3.2 & 5 a 9 & Asociación lote–sensor en el borde y en el camión, por eventos EPCIS \\
 INN-03.P3 & 3.10.3.3 & 9 y 10 & Vista en M9, publicación en N-10 y orden sugerido a M2 y M5 \\
 INN-03.P4 & 3.10.3.4 & 11 a 15 & Certificación del H5 y validación en marcha blanca contra la evaluación de Calidad \\
-INN-03.P5 & 8.3.2 & 26, 32, 38, 44, 50 y 56 & Revisión semestral de parámetros y extensión a nuevas familias \\
+INN-03.P5 & 8.3.2 & 24, 27, 30, 36, 39, 42, 48, 51 y 54 & Revisión periódica de parámetros y extensión a nuevas familias \\
 \end{tablalafrox}
 
 El paquete 3.10.3.3 se ejecuta del 01-10-2027 al 19-11-2027 (Formulario T-15). No forma parte de la entrega técnica del H4 (20-10-2027) ni de su acta (04-11-2027): cierra el 19-11-2027, antes del límite contractual del H4 (30-11-2027), sin que dicho límite sea la fecha programada ni la holgura CPM del paquete. Véase el cotejo de entregas nominales y fines de paquete en el Anexo 13.B.1.
 
-Los lácteos son la primera familia priorizada, por la relación con su proveedor descrita en la sección 13.3.1. La innovación se materializa en el mes 16, como apoyo a la decisión de Calidad; el orden de salida sugerido se activa por familia cuando esa familia cumple el indicador I-03B. Los responsables son el Líder de Datos, Leandro Chamorro, y el Arquitecto de Solución, Bastián Trejo, con la validación del Líder de Calidad y Pruebas, Maximiliano Miño, y de la jefa de Calidad del CLIENTE. Desde el mes 22, las revisiones semestrales del paquete 8.3.2 se ejecutan en el frente de Operación que dirige Guillermo Castillo, y Maximiliano Miño y Calidad del CLIENTE aprueban sus parámetros, porque la dedicación del Líder de Datos termina en el mes 21 (Capítulo 1, Tabla 1.6). Las horas del paquete se mantienen en la familia de esfuerzo DAT del Formulario T-15, ejecutadas por el equipo de Operación. Con el inicio supuesto en febrero de 2027 (Anexo 7.A), las revisiones de los meses 32, 44 y 56 caen en septiembre. En esos meses la recalibración se analiza sin intervenir producción, y los parámetros aprobados se activan después del día 25. En todas las revisiones, la activación evita además los tres primeros días hábiles del mes, por el cierre comercial y contable; ambas ventanas forman parte del congelamiento operacional (Bases Técnicas del caso, cap. 10, restricción 8, p. 20).
+Los lácteos son la primera familia priorizada, por la relación con su proveedor descrita en la sección 13.3.1. La innovación se materializa en el mes 16, como apoyo a la decisión de Calidad; el orden de salida sugerido se activa por familia cuando esa familia cumple el indicador I-03B. Los responsables son el Líder de Datos, Leandro Chamorro, y el Arquitecto de Solución, Bastián Trejo, con la validación del Líder de Calidad y Pruebas, Maximiliano Miño, y de la jefa de Calidad del CLIENTE. Desde el mes 22, las revisiones periódicas del paquete 8.3.2 se ejecutan en el frente de Operación que dirige Guillermo Castillo, y Maximiliano Miño y Calidad del CLIENTE aprueban sus parámetros, porque la dedicación del Líder de Datos termina en el mes 21 (Capítulo 1, Tabla 1.6). Las horas del paquete se mantienen en la familia de esfuerzo DAT del Formulario T-15, ejecutadas por el equipo de Operación. Con el inicio supuesto en febrero de 2027 (Anexo 7.A), ninguna de esas revisiones cae en septiembre ni en diciembre. En todas, la activación evita los tres primeros días hábiles del mes, por el cierre comercial y contable; ambas ventanas forman parte del congelamiento operacional (Bases Técnicas del caso, cap. 10, restricción 8, p. 20).
 
 \subsection{Impacto económico}
 
@@ -374,7 +374,7 @@ Familias, parámetros y protocolo (datos y Calidad) & Inversión / recursos huma
 Cálculo en el borde, eventos y vista en M9 & Inversión / recursos humanos & 5 a 10 \\
 Validación con lotes reales en la marcha blanca (horas de datos y Calidad, paquete 3.10.3.4) & Inversión / recursos humanos & 11 a 15 \\
 Cómputo en el borde y en N-10 & Costo operacional & 16 a 56 \\
-Recalibración semestral de parámetros & Costo operacional / recursos humanos & 26 a 56, cada seis meses \\
+Revisión periódica de parámetros (8.3.2) & Costo operacional / recursos humanos & 24, 27, 30, 36, 39, 42, 48, 51 y 54 \\
 Retenciones, descartes y rechazos por fecha próxima evitados & Beneficio & Desde el mes 16; primera medición en el mes 28 \\
 \end{tablalafrox}
 
@@ -500,8 +500,7 @@ Al ser una innovación de contratación, su impacto se separa en lo que es costo
   {\cab{Rubro} & \cab{Clase} & \cab{Meses}}
 Diseño de la atribución, la canasta y los índices & Inversión / recursos humanos & 17 a 20 \\
 Ensayo en sombra & Inversión / recursos humanos & 21 a 23 \\
-Acompañamiento comercial (restricción 9) & Costo operacional / recursos humanos & 21 a 56 \\
-Conciliación mensual con Finanzas & Costo operacional / gasto administrativo & 24 a 56 \\
+Liquidación mensual, conciliación con Finanzas y acompañamiento comercial (restricción 9), horas del Jefe de Proyecto en 8.3.4 & Costo operacional / recursos humanos & 24 a 56 \\
 Pago fijo de la Operación & Ingreso & 21 a 56 \\
 Tramo variable & Ingreso contingente; vale cero en los meses 21 a 23 & 24 a 56, a mes vencido \\
 Reducción del costo por entrega de Puelche & Beneficio & Desde el mes 24; meta en el mes 36 \\
@@ -616,9 +615,9 @@ Investigación con usuarios y prueba de comprensión & Inversión / recursos hum
 Privacidad, cálculo, precarga e impresión en cabina & Inversión / recursos humanos & 14 a 18 \\
 Certificación del H10 y marcha blanca (paquete 3.10.4.4) & Inversión / recursos humanos & 18 a 21 \\
 Despliegue gradual por rutas (paquete 8.3.5) & Inversión / recursos humanos & 22 a 26 \\
-Revisión legal del bloque 4 & Inversión / proveedores & 24 a 27 \\
-Cálculo mensual y papel térmico de las copias pedidas & Costo operacional & 21 a 56 \\
-Minutos de explicación en la visita & Costo operacional (tiempo de preventa) & 21 a 56 \\
+Revisión legal del bloque 4 (paquete 8.3.6, horas de Implantación) & Inversión / recursos humanos & 24 a 27 \\
+Cálculo y almacenamiento del ciclo mensual en N-10 & Costo operacional & 21 a 56 \\
+Minutos de explicación en la visita & Tiempo de la preventa de Puelche, fuera del flujo de LafroX & 21 a 56 \\
 Minutos del almacenero evitados en la decisión de reposición & Beneficio & Desde el mes 21 \\
 Efecto en la frecuencia y el tamaño del pedido, si se demuestra & Beneficio & Desde el mes 33 \\
 \end{tablalafrox}
