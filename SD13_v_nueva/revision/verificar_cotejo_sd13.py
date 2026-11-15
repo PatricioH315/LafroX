@@ -1,4 +1,4 @@
-"""Verificación documental de SD13; no mide beneficios ni sustituye revisión humana."""
+"""Verificación documental de SD13: fechas, red, sesiones del mes 15 y estimaciones base."""
 from datetime import datetime, timedelta
 from math import ceil
 from pathlib import Path
@@ -41,7 +41,8 @@ def dates_and_links():
     assert len({task.get("id") for task in all_tasks}) == len(all_tasks)
     assert {task.get("name").split(" · ")[1] for task in markers} == {
         f"3.10.{i}.4" for i in range(1, 4)}
-    assert all((m.get("start"), m.get("duration")) == ("2028-04-28", "0")
+    assert all((m.get("start"), m.get("duration")) == ("2028-04-03", "26")
+               and m.get("name").startswith("EV-15-0")
                and not m.findall("depend") for m in markers)
     budget = table("tab_T15_2.tex")
     t15 = read(SD7, "formulario-t15/contenido.tex")
@@ -76,30 +77,33 @@ def dates_and_links():
                 ("H5", "24-11-2027", "01-12-2027"),
                 ("H10", "27-06-2028", "28-06-2028"),
             ]
-    print("17 paquetes, 7 enlaces y 3 marcadores sin duración; mes 15 y fechas H4/H5/H10 cotejados.")
+    print("17 paquetes, 7 enlaces y 3 sesiones del mes 15 (3 al 28 de abril de 2028); fechas H4/H5/H10 cotejadas.")
 
 
 def physical_examples():
     case = read(CASE, "Bases/Caso_02_Logistica.md")
     assert re.search(r"Unidades despachadas al mes.*2,4 millones", case)
-    assert "2.600 visitas diarias" in case
-    assert re.search(r"1\.400 a ≈2\.600 entregas", case)
-    # Volúmenes del Caso; las tasas y los tiempos son supuestos, no observaciones.
-    avoided = 100 * 25 // 100
-    assert (avoided, avoided * (2_400_000 // 100) // 10_000) == (25, 60)
-    minutes = 120 * 30 // 100
-    assert (minutes, (minutes * 10) // 60) == (36, 6)
-    assert (50 * (100 - 20) // 100, 50 - 40) == (40, 10)
-    time_delta = 20 - 19
-    assert divmod(time_delta * 1_000, 60) == (16, 40)
-    assert (time_delta * 1_400 // 10, time_delta * 2_600 // 10) == (140, 260)
-    assert (10 - 8) * (2_600 // 100) == 52
+    for fig in ("31.000", "≈ 62.000", "14.200", "11.600"):
+        assert fig in case, fig
+    # Estimaciones base: volúmenes del Caso y supuestos del modelo financiero.
+    assert 2_400_000 * 1 * 25 // (100 * 100) == 6_000
+    assert 6_000 * (56 - 16 + 1) == 246_000
+    assert 120 * 30 // 100 == 36
+    per_month = 52 / 12
+    assert round(per_month * 36) == 156 and round(per_month * 36 * 2) == 312
+    lots = 1_150 * 1_100 / 8_400
+    assert round(lots, 1) == 150.6 and round(lots * 0.05 * 0.20, 1) == 1.5
+    assert round(lots * 0.05 * 0.20 * 41) == 62
+    assert 31_000 * 20 * 5 // 100 == 31_000 and round(31_000 / 60) == 517
+    assert divmod(1 * 1_000, 60) == (16, 40)
+    decisions = 62_000 * 11_600 / 14_200
+    assert round(decisions) == 50_648 and round(decisions * 10 * 0.20) == 101_296
     assert (ceil(80 * 24 / 100), ceil(80 * 60 / 100)) == (20, 48)
     annex = (HERE.parent / "13_anexos/contenido.tex").read_text(encoding="utf-8")
-    assert all(s in annex for s in ("25 unidades", "60 unidades", "36 minutos",
-        "10 lotes", "16 horas y 40 minutos-persona", "140 minutos-persona",
-        "260 en peak", "52 minutos", "20 de 24"))
-    print("Cinco escenarios, extrapolaciones aritméticas y umbrales de muestra verificados.")
+    assert all(s in annex for s in ("6.000 unidades", "156 minutos", "312 minutos-persona",
+        "150,6 lotes", "1,5 lotes", "31.000 minutos-persona", "16 horas y 40 minutos",
+        "101.296 minutos", "50.648 decisiones", "20 de 24"))
+    print("Cinco estimaciones base y umbrales de muestra verificados.")
 
 
 if __name__ == "__main__":

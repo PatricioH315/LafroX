@@ -1,4 +1,4 @@
-PWD C:\Users\henri\OneDrive\Documentos\Universidad 2026S2\FEP\Repositorios\Principal\LafroX\SD13_v_nueva
+PWD C:\Users\henri\OneDrive\Documentos\Universidad 2026S2\FEP\Repositorios\Principal\LafroX-worktrees\sd13-corrigiendo\SD13_v_nueva
 INPUT .\LAFROX-Subdocumento13.tex
 OUTPUT LAFROX-Subdocumento13.log
 OUTPUT LAFROX-Subdocumento13.log
@@ -750,6 +750,16 @@ INPUT .\logo\firma_representante.png
 INPUT .\logo\firma_representante.png
 INPUT .\logo\firma_representante.png
 INPUT .\logo\firma_representante.png
+INPUT .\logo\lafrox_isotipo_negro.pdf
+INPUT .\logo\lafrox_isotipo_negro.pdf
+INPUT .\logo\lafrox_isotipo_negro.pdf
+INPUT .\logo\lafrox_isotipo_negro.pdf
+INPUT .\logo\lafrox_isotipo_negro.pdf
+INPUT .\logo\lafrox_isotipo_negro.pdf
+INPUT .\logo\firma_representante.png
+INPUT .\logo\firma_representante.png
+INPUT .\logo\firma_representante.png
+INPUT .\logo\firma_representante.png
 INPUT .\13_innovaciones\diagramas\Fig_13-4_Recorrido_INN03.pdf
 INPUT .\13_innovaciones\diagramas\Fig_13-4_Recorrido_INN03.pdf
 INPUT .\13_innovaciones\diagramas\Fig_13-4_Recorrido_INN03.pdf
@@ -825,11 +835,6 @@ INPUT .\logo\firma_representante.png
 INPUT .\logo\firma_representante.png
 INPUT .\logo\firma_representante.png
 INPUT .\logo\firma_representante.png
-INPUT .\13_innovaciones\diagramas\Fig_13-5_Recorrido_INN04.pdf
-INPUT .\13_innovaciones\diagramas\Fig_13-5_Recorrido_INN04.pdf
-INPUT .\13_innovaciones\diagramas\Fig_13-5_Recorrido_INN04.pdf
-INPUT .\13_innovaciones\diagramas\Fig_13-5_Recorrido_INN04.pdf
-INPUT .\13_innovaciones\diagramas\Fig_13-5_Recorrido_INN04.pdf
 INPUT .\logo\lafrox_isotipo_negro.pdf
 INPUT .\logo\lafrox_isotipo_negro.pdf
 INPUT .\logo\lafrox_isotipo_negro.pdf
@@ -840,6 +845,21 @@ INPUT .\logo\firma_representante.png
 INPUT .\logo\firma_representante.png
 INPUT .\logo\firma_representante.png
 INPUT .\logo\firma_representante.png
+INPUT .\logo\lafrox_isotipo_negro.pdf
+INPUT .\logo\lafrox_isotipo_negro.pdf
+INPUT .\logo\lafrox_isotipo_negro.pdf
+INPUT .\logo\lafrox_isotipo_negro.pdf
+INPUT .\logo\lafrox_isotipo_negro.pdf
+INPUT .\logo\lafrox_isotipo_negro.pdf
+INPUT .\logo\firma_representante.png
+INPUT .\logo\firma_representante.png
+INPUT .\logo\firma_representante.png
+INPUT .\logo\firma_representante.png
+INPUT .\13_innovaciones\diagramas\Fig_13-5_Recorrido_INN04.pdf
+INPUT .\13_innovaciones\diagramas\Fig_13-5_Recorrido_INN04.pdf
+INPUT .\13_innovaciones\diagramas\Fig_13-5_Recorrido_INN04.pdf
+INPUT .\13_innovaciones\diagramas\Fig_13-5_Recorrido_INN04.pdf
+INPUT .\13_innovaciones\diagramas\Fig_13-5_Recorrido_INN04.pdf
 INPUT .\logo\lafrox_isotipo_negro.pdf
 INPUT .\logo\lafrox_isotipo_negro.pdf
 INPUT .\logo\lafrox_isotipo_negro.pdf

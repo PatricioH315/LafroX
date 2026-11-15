@@ -98,14 +98,14 @@
         <task id="16" name="5.4.3 · JP" color="#2864a3" meeting="false" start="2028-06-01" duration="9" complete="0" expand="true">
             <notes>Ventana publicada (ambos extremos incluidos): 2028-06-01–2028-06-09. Precedencia publicada: —. Aprobar las reglas y completar tres liquidaciones en sombra (8.3.3) habilita 8.3.4. Condición del Anexo 13.B; no se programa como enlace diario.</notes>
         </task>
-        <task id="17" name="Ref. mes 15 · 3.10.1.4 · I-01A (por confirmar)" color="#6b7280" meeting="true" start="2028-04-28" duration="0" complete="0" expand="true">
-            <notes>Fecha de referencia del fin tardío CPM, no fecha comprometida ni actividad nueva. T-15 presupuesta el paquete en meses 11 a 15, pero la tabla diaria termina el 20-03-2028. Planificación debe conciliar el término, confirmar dependencias, fechas efectivas y responsables dentro de la imputación publicada, sin duplicar trabajo ni cambiar la línea base.</notes>
+        <task id="17" name="EV-15-01 · 3.10.1.4 · I-01A" color="#6b7280" meeting="true" start="2028-04-03" duration="26" complete="0" expand="true">
+            <notes>Sesión de evidencia del piloto del mes 15: Ingeniero de Datos Senior, 48 HH ya valorizadas en 3.10.1.4. Ventana 2028-04-03–2028-04-28, dentro del fin tardío CPM. Predecesoras 3.10.1.2 y 3.10.1.3. Cierra con el registro I-01A (Anexo 13.B.1).</notes>
         </task>
-        <task id="18" name="Ref. mes 15 · 3.10.2.4 · I-02A e I-02B (por confirmar)" color="#6b7280" meeting="true" start="2028-04-28" duration="0" complete="0" expand="true">
-            <notes>Fecha de referencia del fin tardío CPM, no fecha comprometida ni actividad nueva. T-15 presupuesta el paquete en meses 11 a 15, pero la tabla diaria termina el 20-03-2028. Planificación debe conciliar el término, confirmar dependencias, fechas efectivas y responsables dentro de la imputación publicada, sin duplicar trabajo ni cambiar la línea base.</notes>
+        <task id="18" name="EV-15-02 · 3.10.2.4 · I-02A e I-02B" color="#6b7280" meeting="true" start="2028-04-03" duration="26" complete="0" expand="true">
+            <notes>Sesión de evidencia del mes 15: Analista QA Senior, 48 HH ya valorizadas en 3.10.2.4. Ventana 2028-04-03–2028-04-28, dentro del fin tardío CPM. Predecesora 3.10.2.3. Cierra con los registros I-02A e I-02B (Anexo 13.B.1).</notes>
         </task>
-        <task id="19" name="Ref. mes 15 · 3.10.3.4 · I-03A e I-03B (por confirmar)" color="#6b7280" meeting="true" start="2028-04-28" duration="0" complete="0" expand="true">
-            <notes>Fecha de referencia del fin tardío CPM, no fecha comprometida ni actividad nueva. T-15 presupuesta el paquete en meses 11 a 15, pero la tabla diaria termina el 20-03-2028. Planificación debe conciliar el término, confirmar dependencias, fechas efectivas y responsables dentro de la imputación publicada, sin duplicar trabajo ni cambiar la línea base.</notes>
+        <task id="19" name="EV-15-03 · 3.10.3.4 · I-03A e I-03B" color="#6b7280" meeting="true" start="2028-04-03" duration="26" complete="0" expand="true">
+            <notes>Sesión de evidencia del mes 15: Ingeniero de Datos Senior, 48 HH ya valorizadas en 3.10.3.4. Ventana 2028-04-03–2028-04-28, dentro del fin tardío CPM. Predecesora 3.10.3.3. Cierra con los registros I-03A e I-03B (Anexo 13.B.1).</notes>
         </task>
     </tasks>
     <resources />
