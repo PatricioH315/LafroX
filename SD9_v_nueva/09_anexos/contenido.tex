@@ -314,7 +314,7 @@ Las seis ventanas de origen superiores a 14 días corridos se dividen en un bloq
 \end{tablasimple}
 \fuentesd{Fuente: subdivisión interna de las ventanas publicadas del T-15, sección 6.1; extremos inclusivos.}
 
-En la vista «Resumen de dependencias» del SD7, los paquetes 3.4.1, 3.4.2, 3.4.3, 3.4.4, 3.4.5 y 3.4.6 corresponden, respectivamente, a los identificadores 59, 60, 63, 64, 65 y 66. Los paquetes 3.4.7, 3.4.8, 3.4.9, 3.4.10 y 3.4.11 corresponden, en el mismo orden, a los identificadores 67, 68, 69, 61 y 83. El identificador 125 agrupa los paquetes 3.5.1 a 3.5.4 en una tarea resumen. Con esos identificadores, cada ventana queda vinculada a su paquete en la carta oficial. La tabla siguiente asigna a cada grupo de ventanas el titular, el relevo, el turno y el ambiente.
+En la vista «Resumen de dependencias» del SD7, los paquetes 3.4.1, 3.4.2, 3.4.3, 3.4.4, 3.4.5 y 3.4.6 corresponden, respectivamente, a los identificadores 59, 60, 63, 64, 65 y 66. Los paquetes 3.4.7, 3.4.8, 3.4.9, 3.4.10 y 3.4.11 corresponden, en el mismo orden, a los identificadores 67, 68, 69, 61 y 83. El identificador 125 agrupa los paquetes 3.5.1 a 3.5.4 en una tarea resumen. Con esos identificadores, cada ventana queda vinculada a su paquete en la carta oficial. La tabla siguiente propone para cada grupo de ventanas el perfil titular, el de relevo, el turno y el ambiente; no acredita una asignación individual.
 
 \begin{tablasimple}{L{2.3cm} L{2.6cm} Y Y}
   {\cab{Ventanas} & \cab{Titular} & \cab{Relevo} & \cab{Turno y ambiente}}
@@ -322,9 +322,9 @@ En la vista «Resumen de dependencias» del SD7, los paquetes 3.4.1, 3.4.2, 3.4.
 3.4.1 a 3.4.11, agosto a octubre de 2027 & Analista QA Senior & Líder de Calidad y Pruebas & Diurno hábil, 09:00--18:00; QA, sin intervenir Producción en septiembre \\
 3.5.1 a 3.5.4, marzo y abril de 2028 & Analista QA Senior & Analista QA Junior & Diurno hábil, 09:00--18:00; QA \\
 \end{tablasimple}
-\fuentesd{Fuente: ventanas del T-15, sección 6.1; perfiles con horas valorizadas en cada mes según el modelo financiero de la Oferta Económica (horas por rol y mes).}
+\fuentesd{Fuente: ventanas del T-15, sección 6.1; propuesta de cobertura funcional de Calidad. El modelo financiero presenta HH por rol y mes, no por sesión.}
 
-Los perfiles asignados tienen horas valorizadas en cada uno de esos meses, dentro de los paquetes 3.4 y 3.5; las sesiones de QA no crean partidas ni trasladan HH entre paquetes, meses o perfiles. El Líder de Calidad registra cada sesión en \texttt{registro\_qa\_9e.csv} del SD7, con fecha, titular, relevo, ambiente, versión, casos, dependencias y enlace a la evidencia, y Planificación verifica que las asignaciones simultáneas sean compatibles y queden dentro de la ventana.
+Los paquetes 3.4 y 3.5 identifican el trabajo sometido a prueba, no la imputación de las HH de Calidad: el desglose del T-15 no asigna a esos paquetes los perfiles QA Senior, QA Junior ni Líder de Calidad. Antes de confirmar cada sesión, el Líder de Calidad identifica en \texttt{registro\_qa\_9e.csv} del SD7 la fecha, las personas y perfiles titular y de relevo, sus HH, la partida del T-15 que las financia, el ambiente, la versión, los casos, las dependencias y el enlace a la evidencia. Planificación comprueba el saldo de esa partida y la disponibilidad diaria junto con las demás sesiones. En el registro vigente, las 83 ventanas figuran por confirmar, sin sesiones ni titulares consignados. El paquete 1.5.2 cubre puertas automáticas y los grupos 3.8 y 3.9 cubren certificaciones; citar esos códigos no demuestra que financien las sesiones de las iteraciones. Sin partida, saldo y responsables identificados, la cobertura sigue pendiente; este anexo no agrega ni reasigna HH.
 
 \section*{Referencias}
 \addcontentsline{toc}{section}{Referencias}

@@ -1,5 +1,5 @@
 # Fdb version 4
-["lualatex"] 1794761588.49848 "LAFROX-Formulario-T-13.tex" "LAFROX-Formulario-T-13.pdf" "LAFROX-Formulario-T-13" 1794761770.73417 0
+["lualatex"] 1794776940.66754 "LAFROX-Formulario-T-13.tex" "LAFROX-Formulario-T-13.pdf" "LAFROX-Formulario-T-13" 1794777114.13921 0
   "C:/Users/henri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1791761150.69996 943208 89da4836ee0e92c381435be35a3241b0 ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-bold.luc" 1789666459.45516 133158 3cabc9a0ec29d2e894f16f3e21ded02d ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-bolditalic.luc" 1789666460.03828 131896 3bea80aaf6b71ba227486b9064fa9b24 ""
@@ -258,11 +258,11 @@
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload-unicode.lua" 1740607740 7918 4272855a25780b80472f3b58edd95e33 ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload.lua" 1740607740 13566 16df94dd2de231b2bca0aaa0190941fe ""
   "C:/Users/henri/AppData/Roaming/MiKTeX/tex/generic/config/language.dat" 1786480571.72539 2269 983cd649586da7942508216422e6c810 ""
-  "LAFROX-Formulario-T-13.aux" 1794761761.75706 35175 581864f35e6bd9605c26f131face2bc9 "lualatex"
+  "LAFROX-Formulario-T-13.aux" 1794777104.60099 35331 21a26dd8e00c0dcb453b4c4b0124c570 "lualatex"
   "LAFROX-Formulario-T-13.tex" 1794723105.75279 815 1347e191f871f09235db85955b691c7d ""
-  "LAFROX-Formulario-T-13.toc" 1794761761.84869 2350 dbb6ace13063643df1898a3e6b30aa52 "lualatex"
-  "T13/contenido.tex" 1794761398.78186 68811 1e5867b89bac7752364ed5a7bb12f6a0 ""
-  "T13/matriz_requisitos.tex" 1794723105.81679 386878 95ea341aaf98f67b9f08ccd05c7c84f8 ""
+  "LAFROX-Formulario-T-13.toc" 1794777104.65926 2350 4d63266acd21e7778f3659ad200941ff "lualatex"
+  "T13/contenido.tex" 1794773292.22404 69877 43e48e05b711cb3062ee92ae8049a129 ""
+  "T13/matriz_requisitos.tex" 1794773368.53469 387758 b227e9479bd18116e820208ec49c2c21 ""
   "T13/resumen_modulos.tex" 1794723105.81778 1088 cf4c14986325ed3f426055dff1c4d170 ""
   "c:/users/henri/appdata/local/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf" 1777831523 336848 e7d038378399e1c26443887c39d891d8 ""
   "lafrox-portada.tex" 1794723105.82078 16566 f88ff70ce0f93a5b47003058b46c05e3 ""

@@ -17,17 +17,17 @@
 \contentsline {subsection}{7.3 Perfil operacional de terreno}{16}{table.8.11}%
 \contentsline {subsection}{7.4 Pruebas de los resultados del caso}{17}{table.8.12}%
 \contentsline {subsection}{7.5 Protocolos de aceptación de la arquitectura híbrida}{18}{table.8.13}%
-\contentsline {subsection}{7.6 Recuperación ante desastres: demostración y evidencia}{20}{table.8.14}%
+\contentsline {subsection}{7.6 Recuperación ante desastres: demostración y evidencia}{21}{table.8.14}%
 \contentsline {section}{8. Automatización}{22}{table.8.15}%
 \contentsline {subsection}{8.1 Criterio}{22}{table.8.15}%
-\contentsline {subsection}{8.2 Tamaño estimado del catálogo}{22}{table.8.15}%
-\contentsline {subsection}{8.3 Duración de la regresión}{254}{table.8.45}%
-\contentsline {section}{9. Calendario}{255}{table.8.46}%
-\contentsline {subsection}{9.1 Implementación}{255}{table.8.46}%
-\contentsline {subsection}{9.2 Marchas blancas y soporte puente}{258}{table.8.47}%
-\contentsline {subsection}{9.3 Operación (meses 21 a 56)}{258}{table.8.48}%
-\contentsline {section}{10. Defectos}{259}{table.8.49}%
-\contentsline {section}{11. Roles}{260}{table.8.50}%
-\contentsline {section}{12. Informes de prueba}{261}{table.8.51}%
-\contentsline {section}{Referencias}{262}{table.8.52}%
+\contentsline {subsection}{8.2 Tamaño estimado del catálogo}{23}{table.8.15}%
+\contentsline {subsection}{8.3 Duración de la regresión}{258}{table.8.45}%
+\contentsline {section}{9. Calendario}{259}{table.8.46}%
+\contentsline {subsection}{9.1 Implementación}{259}{table.8.46}%
+\contentsline {subsection}{9.2 Marchas blancas y soporte puente}{262}{table.8.47}%
+\contentsline {subsection}{9.3 Operación (meses 21 a 56)}{262}{table.8.48}%
+\contentsline {section}{10. Defectos}{263}{table.8.49}%
+\contentsline {section}{11. Roles}{264}{table.8.50}%
+\contentsline {section}{12. Informes de prueba}{265}{table.8.51}%
+\contentsline {section}{Referencias}{266}{table.8.52}%
 \contentsfinish 

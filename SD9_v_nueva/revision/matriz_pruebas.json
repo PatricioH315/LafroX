@@ -9,6 +9,19 @@
     "RT-21.21",
     "RT-26.04"
   ],
+  "c24_update_ids": [
+    "RF-18.03",
+    "RNF-20.06",
+    "RNF-23.02",
+    "RT-03.18",
+    "RT-07.04",
+    "RT-08.12",
+    "RT-08.14",
+    "RT-11.04",
+    "RT-16.18",
+    "RT-16.23"
+  ],
+  "c26_partial_id": "RT-26.04",
   "test_count": 1328,
   "counts": {
     "t12_rows": 653,
@@ -24,8 +37,8 @@
       "Media": 55
     },
     "rt_state": {
-      "Cumple": 334,
-      "Cumple parcialmente": 18,
+      "Cumple": 326,
+      "Cumple parcialmente": 26,
       "No cumple": 22
     },
     "rt_without_case": 22,
@@ -3259,8 +3272,8 @@
     },
     {
       "id": "RF-18.03",
-      "state": "Cumple",
-      "component": "INT-11 envía asíncronamente, reintenta y deduplica, y registra entrega y error. La apertura se registra cuando el proveedor o el portal la informa; en SMS, con la primera apertura del enlace corto al aviso en el portal, y sin ella queda NO\\_SOPORTADA.",
+      "state": "Cumple parcialmente",
+      "component": "INT-11 envía asíncronamente, reintenta y deduplica, y registra entrega y error. La apertura se registra cuando el proveedor o el portal la informa; en SMS, con la primera apertura del enlace corto al aviso en el portal, y sin ella queda NO\\_SOPORTADA. La apertura no se acredita para cada SMS cuando el proveedor no la informa.",
       "edt": "3.6.4",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -4571,8 +4584,8 @@
     },
     {
       "id": "RNF-20.06",
-      "state": "Cumple",
-      "component": "Sitio secundario en us-east-1 con RTO de hasta cuatro horas y RPO de hasta quince minutos para los escenarios de diseño, sostenido por la extracción continua por fibra, LTE y Starlink, con dos ensayos regionales por año.",
+      "state": "Cumple parcialmente",
+      "component": "Sitio secundario en us-east-1 con RTO de hasta cuatro horas y RPO de hasta quince minutos para los escenarios de diseño, sostenido por la extracción continua por fibra, LTE y Starlink, con dos ensayos regionales por año. Si el sitio pierde los tres enlaces y luego se destruye antes de replicar, el RPO de 15 minutos no queda garantizado para los eventos no replicados; AL-DR-01 comprueba y registra esa brecha.",
       "edt": "3.1.3, 2.5.2",
       "priority": "Crítica",
       "stage": "E1 y E2",
@@ -4902,8 +4915,8 @@
     },
     {
       "id": "RNF-23.02",
-      "state": "Cumple",
-      "component": "T-11 declara grado IP y caída por modelo: TC58e de preventa y de reparto IP65/68 y 1,8 m; MC9400 estándar IP65/68 y 2,4 m; MC9400 Cold Storage Freezer IP65/68 y 2,1 m; ZQ620 Plus IP54, con caída mínima de 1,5 m exigida en la compra; termógrafo EYE SENSOR EN12830 IP67 de montaje fijo; balanza Dibal fija con IP65 mínimo exigido en la compra; impresora ZT411 fija de interior; PAX A920 Pro sin grado IP del fabricante, usado bajo el resguardo de la cabina o del local del cliente. El CLIENTE compra los equipos de uso según 5.1.1, y B-01 y B-03 a B-14 según 5.1.4 (\\textit{Caso: Logística}, 2026, cap. 11, p. 20); LafroX los instala y mantiene, provee B-02 como infraestructura on-premise y contrata las SIM B-15 en 5.3.4. El kit se valida con V1/V3/V4/V5; cotización local, certificación Subtel aplicable y rango/EN 12830 del registrador son condiciones de compra y recepción. El kit es de montaje fijo: B-03, B-08 y B-09 son IP67; B-04 (IP30) y B-05 van en un gabinete IP54 de cabina, y B-06, B-10 y B-11 se compran con IP67 como mínimo.",
+      "state": "Cumple parcialmente",
+      "component": "T-11 especifica IP y resistencia a caídas por modelo para TC58e, MC9400 y ZQ620 Plus, además de las condiciones de los equipos fijos y del kit B-03 a B-14. El PAX A920 Pro carece de grado IP publicado y se usa bajo resguardo; determinados valores son condiciones de compra. Su uso protegido no acredita la prestación por ficha para todos los modelos. V1/V3/V4/V5 verifican el kit; T-11 conserva el detalle por equipo, su adquisición y mantenimiento.",
       "edt": "5.1.1, 5.1.4, 2.4.3",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -4917,7 +4930,7 @@
         "RNF-23.02/P02",
         "RNF-23.02/P03"
       ],
-      "component_display": "TC58e, MC9400 estándar y Cold Storage Freezer, ZQ620 Plus, termógrafo EYE SENSOR, balanza Dibal, ZT411, PAX A920 Pro y kit de frío B-03 a B-11.\\newline \\emph{T-12, fila RNF-\\allowbreak{}23.02}"
+      "component_display": "T-11 detalla IP y resistencia a caídas por modelo (TC58e, MC9400, ZQ620 Plus y kit). PAX A920 Pro carece de grado IP publicado: se usa bajo resguardo. Algunos valores de compra aún deben verificarse.\\newline \\emph{T-12, fila RNF-\\allowbreak{}23.02}"
     },
     {
       "id": "RNF-23.03",
@@ -5422,8 +5435,8 @@
     },
     {
       "id": "RT-03.18",
-      "state": "Cumple",
-      "component": "Android Enterprise/Zebra DNA cubren inventario, configuración, actualización, bloqueo y borrado remoto de 382 terminales al inicio y 433 en el año 3. Greengrass V2 despliega los gateways. Registradores y sensores se inventarían y mantienen con herramientas de fabricante/TC58e. Sensores y balanzas no tienen sistema operativo administrable: se registran en el inventario y su firmware se actualiza en la mantención; como no guardan datos ni credenciales, su bloqueo es la baja de su registro desde la consola central y no requieren borrado.",
+      "state": "Cumple parcialmente",
+      "component": "Android Enterprise/Zebra DNA cubren inventario, configuración, actualización, bloqueo y borrado remoto de 382 terminales al inicio y 433 en el año 3. Greengrass V2 despliega los gateways. Registradores y sensores se inventarían y mantienen con herramientas de fabricante/TC58e. Sensores y balanzas no tienen sistema operativo administrable: se registran en el inventario y su firmware se actualiza en la mantención; como no guardan datos ni credenciales, su bloqueo es la baja de su registro desde la consola central y no requieren borrado. La actualización remota de firmware y las demás funciones no se acreditan para todos los dispositivos de borde.",
       "edt": "3.2.6, 3.4.5, 8.2.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -6740,8 +6753,8 @@
     },
     {
       "id": "RT-07.04",
-      "state": "Cumple",
-      "component": "Sitio secundario en us-east-1 con RTO de hasta cuatro horas y RPO de hasta quince minutos para los escenarios de diseño, sostenido por la extracción continua por fibra, LTE y Starlink, con dos ensayos regionales por año.",
+      "state": "Cumple parcialmente",
+      "component": "Sitio secundario en us-east-1 con RTO de hasta cuatro horas y RPO de hasta quince minutos para los escenarios de diseño, sostenido por la extracción continua por fibra, LTE y Starlink, con dos ensayos regionales por año. Si el sitio pierde los tres enlaces y luego se destruye antes de replicar, el RPO de 15 minutos no queda garantizado para los eventos no replicados; AL-DR-01 comprueba y registra esa brecha.",
       "edt": "3.1.3, 2.5.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7071,8 +7084,8 @@
     },
     {
       "id": "RT-08.12",
-      "state": "Cumple",
-      "component": "T-11 declara grado IP y caída por modelo: TC58e de preventa y de reparto IP65/68 y 1,8 m; MC9400 estándar IP65/68 y 2,4 m; MC9400 Cold Storage Freezer IP65/68 y 2,1 m; ZQ620 Plus IP54, con caída mínima de 1,5 m exigida en la compra; termógrafo EYE SENSOR EN12830 IP67 de montaje fijo; balanza Dibal fija con IP65 mínimo exigido en la compra; impresora ZT411 fija de interior; PAX A920 Pro sin grado IP del fabricante, usado bajo el resguardo de la cabina o del local del cliente. El kit es de montaje fijo: B-03, B-08 y B-09 son IP67; B-04 (IP30) y B-05 van en un gabinete IP54 de cabina, y B-06, B-10 y B-11 se compran con IP67 como mínimo.",
+      "state": "Cumple parcialmente",
+      "component": "T-11 detalla por modelo el grado IP y resistencia a caídas de TC58e, MC9400, ZQ620 Plus y accesorios del kit. PAX A920 Pro carece de grado IP publicado y se usa bajo resguardo; algunos valores de compra aún deben verificarse. V1/V3/V4/V5 verifican el kit.",
       "edt": "5.1.1, 5.1.4, 2.4.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7101,8 +7114,8 @@
     },
     {
       "id": "RT-08.14",
-      "state": "Cumple",
-      "component": "Inventario común con Android Enterprise/Zebra DNA para terminales, Printer Profile Manager para impresoras, PAXSTORE para POS, Greengrass V2 para gateways y herramientas Teltonika/TC58e para registradores. Sensores y balanzas se actualizan en mantenimiento y se bloquean con la baja de su registro desde la consola central.",
+      "state": "Cumple parcialmente",
+      "component": "Android Enterprise/Zebra DNA gestionan terminales; Printer Profile Manager, impresoras; PAXSTORE, POS; Greengrass V2, gateways; herramientas Teltonika/TC58e, registradores. Sensores y balanzas se actualizan en mantenimiento y se bloquean dando de baja su registro. No todos los dispositivos acreditan las funciones remotas de RT-03.18.",
       "edt": "3.2.6",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7521,8 +7534,8 @@
     },
     {
       "id": "RT-11.04",
-      "state": "Cumple",
-      "component": "Escaneo continuo con metas de remediación de 7/15/30 días corridos. Si hay congelamiento se solicita cambio de emergencia; sin autorización del CLIENTE se contiene y remedia en la primera fecha habilitada. El plazo excedido por esa decisión queda registrado como decisión del CLIENTE.",
+      "state": "Cumple parcialmente",
+      "component": "Escaneo continuo con metas de remediación de 7/15/30 días corridos. Si hay congelamiento se solicita cambio de emergencia; sin autorización del CLIENTE se contiene y remedia en la primera fecha habilitada. El plazo excedido por esa decisión queda registrado como decisión del CLIENTE. Si no se autoriza el cambio de emergencia, esta excepción no garantiza los plazos máximos de remediación.",
       "edt": "8.2.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8794,8 +8807,8 @@
     },
     {
       "id": "RT-16.18",
-      "state": "Cumple",
-      "component": "Guía electrónica firmada por el ERP; XML firmado, acuse SII y POD con hash, marca de tiempo del registro como sello de tiempo y cadena de verificación disponible en S3 Object Lock por seis años, para verificar tras vencer el certificado.",
+      "state": "Cumple parcialmente",
+      "component": "Guía electrónica firmada por el ERP; XML firmado, acuse SII y POD con hash, marca de tiempo del registro y cadena de verificación disponibles en S3 Object Lock por seis años. Falta acreditar que el mecanismo de sello de tiempo y la evidencia conservada permiten verificar el documento después del vencimiento del certificado.",
       "edt": "3.3.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8869,8 +8882,8 @@
     },
     {
       "id": "RT-16.23",
-      "state": "Cumple",
-      "component": "INT-11 envía asíncronamente, reintenta y deduplica, y registra entrega y error. La apertura se registra cuando el proveedor o el portal la informa; en SMS, con la primera apertura del enlace corto al aviso en el portal, y sin ella queda NO\\_SOPORTADA.",
+      "state": "Cumple parcialmente",
+      "component": "INT-11 envía asíncronamente, reintenta y deduplica, y registra entrega y error. La apertura se registra cuando el proveedor o el portal la informa; en SMS, con la primera apertura del enlace corto al aviso en el portal, y sin ella queda NO\\_SOPORTADA. La apertura no se acredita para cada SMS cuando el proveedor no la informa.",
       "edt": "3.6.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -10449,7 +10462,7 @@
     },
     {
       "id": "RT-26.04",
-      "state": "Cumple",
+      "state": "Cumple parcialmente",
       "component": "INN-01, INN-02, INN-03 e INN-05 se gestionan mediante los controles internos CT-08 a CT-13, sin puntuación de probabilidad por impacto. INN-04 corresponde al riesgo contractual R-027, con probabilidad, impacto y respuesta registrados en el T-16.",
       "edt": "1.6.1",
       "priority": "RT",

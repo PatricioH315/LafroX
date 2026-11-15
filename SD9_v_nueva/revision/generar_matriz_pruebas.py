@@ -20,6 +20,10 @@ REF = sys.argv[1] if len(sys.argv) > 1 else "3d0eeea70c16ea3a6c5dfb3f539d8892fb8
 # puntual de referencias cruzadas del T-12 sin incorporar otros cambios de SD3.
 RT_UPDATE_REF = "0ef1bf867a8b666f0d54cc2664d2518f2b07d75e"
 RT_UPDATE_IDS = {"RT-05.30", "RT-18.08", "RT-20.02", "RT-21.21", "RT-26.04"}
+# C24: estado, descripción del alcance y EDT del T-12 revisado.
+C24_IDS = {"RF-18.03", "RNF-20.06", "RNF-23.02", "RT-03.18", "RT-07.04", "RT-08.12", "RT-08.14", "RT-11.04", "RT-16.18", "RT-16.23"}
+# C26: la corrección documental de RT-26.04 pasa a Parcial sin cambiar su caso previsto.
+C26_ID = "RT-26.04"
 BLOCK = 25
 CASES_BY_PRIORITY = {"Crítica": 5, "Alta": 3, "Media": 2}
 CONTRACTS, CASES_BY_CONTRACT = 15, 7
@@ -50,7 +54,7 @@ def break_id(value):
 # Se conserva el texto íntegro del T-12 en el JSON y se cita la fila en el PDF.
 COMPONENT_SUMMARIES = {
     "RNF-23.01": "Equipos de terreno y operación (T-11): B-01, B-02, kit B-03 a B-14 y SIM B-15; incluye accesorios y consumibles.",
-    "RNF-23.02": "TC58e, MC9400 estándar y Cold Storage Freezer, ZQ620 Plus, termógrafo EYE SENSOR, balanza Dibal, ZT411, PAX A920 Pro y kit de frío B-03 a B-11.",
+    "RNF-23.02": "T-11 detalla IP y resistencia a caídas por modelo (TC58e, MC9400, ZQ620 Plus y kit). PAX A920 Pro carece de grado IP publicado: se usa bajo resguardo. Algunos valores de compra aún deben verificarse.",
     "RT-08.11": "MC9400 estándar y Cold Storage Freezer, TC58e de reparto y preventa, ZQ620 Plus, PAX A920 Pro, baterías y cargadores, UPS B-13 y protección B-14.",
 }
 
@@ -83,6 +87,10 @@ t12 = list(rows(source("LAFROX-Formulario-T-12.tex")))
 rt_updates = {c[0]: c for c in rows(source("LAFROX-Formulario-T-12.tex", RT_UPDATE_REF))
               if c[0] in RT_UPDATE_IDS}
 assert set(rt_updates) == RT_UPDATE_IDS
+c24_updates = {c[0]: c for c in rows(source("LAFROX-Formulario-T-12.tex", RT_UPDATE_REF))
+               if c[0] in C24_IDS}
+assert set(c24_updates) == C24_IDS
+assert all(len(c) == 7 and c[2] == "Cumple parcialmente" for c in c24_updates.values())
 t12_ids = {c[0] for c in t12}
 assert len(t12) == len(t12_ids), "filas T-12 duplicadas"
 assert set(catalogue) <= t12_ids, sorted(set(catalogue) - t12_ids)
@@ -95,7 +103,13 @@ for c in t12:
         # La revisión de SD3 intercaló una columna de criterios antes de EDT.
         assert len(update) == 7 and update[:3] == c[:3] and update[5] == c[4], identifier
         c = [*update[:4], *update[5:]]
+    if identifier in c24_updates:
+        update = c24_updates[identifier]
+        c = [*c[:2], update[2], update[3], update[5], *c[5:]]
     state, component, work = c[2], c[3], c[4]
+    if identifier == C26_ID:
+        assert state == "Cumple" and "sin puntuación" in component
+        state = "Cumple parcialmente"
     if identifier in catalogue:
         item = catalogue[identifier]
         count = CASES_BY_PRIORITY[item["priority"]]
@@ -175,6 +189,8 @@ payload = {"source_ref": REF, "source_commit": subprocess.check_output(
     "rt_update_commit": subprocess.check_output(
         ["git", "rev-parse", RT_UPDATE_REF], cwd=ROOT, text=True).strip(),
     "rt_update_ids": sorted(RT_UPDATE_IDS),
+    "c24_update_ids": sorted(C24_IDS),
+    "c26_partial_id": C26_ID,
     "test_count": len(all_cases), "counts": counts,
     "requirements": data, "aliases": aliases, "contracts": contracts}
 (ROOT / "revision/matriz_pruebas.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")

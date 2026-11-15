@@ -34,9 +34,12 @@ updates = subprocess.check_output(
 ).decode("utf-8")
 update_ids = set(data["rt_update_ids"])
 assert update_ids == {"RT-05.30", "RT-18.08", "RT-20.02", "RT-21.21", "RT-26.04"}
+c24_ids = set(data["c24_update_ids"])
+assert c24_ids == {"RF-18.03", "RNF-20.06", "RNF-23.02", "RT-03.18", "RT-07.04", "RT-08.12", "RT-08.14", "RT-11.04", "RT-16.18", "RT-16.23"}
+assert data["c26_partial_id"] == "RT-26.04"
 verified = set()
 for line in updates.splitlines():
-    if not re.match(r"\s*RT-\d", line):
+    if not re.match(r"\s*(?:RF|RNF|RT)-\d", line):
         continue
     cells = [c.strip() for c in line.strip().removesuffix(r"\\").split(" & ")]
     identifier = cells[0]
@@ -45,7 +48,15 @@ for line in updates.splitlines():
         assert len(cells) == 7 and cells[:3] == old[:3] and cells[5] == old[4], identifier
         source_rows[identifier] = [*cells[:4], *cells[5:]]
         verified.add(identifier)
-assert verified == update_ids
+    if identifier in c24_ids:
+        assert len(cells) == 7 and cells[2] == "Cumple parcialmente", identifier
+        old = source_rows[identifier]
+        source_rows[identifier] = [*old[:2], cells[2], cells[3], cells[5], *old[5:]]
+        source_states[identifier] = cells[2]
+        verified.add(identifier)
+assert verified == update_ids | c24_ids
+assert source_states[data["c26_partial_id"]] == "Cumple"
+source_states[data["c26_partial_id"]] = "Cumple parcialmente"
 assert set(ids) == set(source_states)
 assert all(x["state"] == source_states[x["id"]] for x in requirements)
 own = [x for x in requirements if not x["id"].startswith("RT-")]
@@ -196,6 +207,10 @@ for row, item in zip(matrix_rows, requirements, strict=True):
         assert rf'\emph{{T-12, fila {identifier}}}' in display, item['id']
     assert rf"{display}\newline \textbf{{EDT:}} {item['edt']} & " in row, item["id"]
     assert rf" & {item['criterion']}\newline \emph{{" in row, item["id"]
+    state_label = "Parcial" if item["state"] == "Cumple parcialmente" else item["state"]
+    state_cell = row.split(" & ")[2]
+    if item["cases"]:
+        assert rf"\newline {state_label};" in state_cell, item["id"]
     if not item["id"].startswith("RT-"):
         assert re.search(r"; H(?:5|10|5 y H10) & ", row), item["id"]
 assert rf"hsize={num(counts['cases'])}" not in t13  # La cifra de casos no es un ancho de columna.
