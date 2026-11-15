@@ -76,3 +76,10 @@ D47 declaró la superficie (≈ 31 m² en cinco recintos, Tabla 26 del 4.3.1.4).
 | Explicitar y justificar la selección del backend respecto del Informe 1. | El Informe 1 proponía Django/Python. El Informe 2 selecciona Laravel 13/PHP 8.5 para integrar APIs, políticas, migraciones, trabajos y planificación en el núcleo HTTP/CLI. El diseño mantiene el monolito modular y los contratos de los módulos M1–M12. | SD4, apartado 4.1.7.1, «Cambio respecto del Informe 1», y Anexo 4-O, ADR-23. |
 
 La fila queda preparada para incorporar en la tabla compartida. La revisión y la incorporación siguen pendientes.
+
+## Referencias de SD4 corrigiendo — 14 de noviembre de 2026
+
+- Corregidas las 24 remisiones manuales de página al T-12, contrastadas con SD3 corrigiendo `40d415db`; sustituido el enlace Zebra HTTP 404 y completada la entrada de Tailwind en la bibliografía de anexos.
+- Tres entregables recompilados, conservando 192/139/51 páginas. Verificados 404 ref/pageref/hyperref, 491 enlaces internos, 18 entre PDF y 196 citas autor-fecha reconocidas, sin errores. El verificador reutilizable exige el T-12 vigente y no modifica documentos.
+- Se comprobaron 101 de 102 destinos web; Opensignal continúa sin confirmación por HTTP 403. No se presenta como referencia rota ni se reemplaza por otra edición.
+- Alcance, evidencia, control reproducible y límites en [la revisión de referencias](../../04/revision/REVISION_REFERENCIAS_SD4_2026-11-14.md). Este cierre no acredita ensayos técnicos ni sustituye los pendientes contractuales anteriores.

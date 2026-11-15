@@ -1,0 +1,16 @@
+{
+  "counts": {
+    "pages": {
+      "LAFROX-Subdocumento4.pdf": 192,
+      "LAFROX-Subdocumento4-Anexos.pdf": 139,
+      "LAFROX-Formulario-T-11.pdf": 51
+    },
+    "internal_links": 491,
+    "cross_pdf_links": 18,
+    "t12_page_citations": 24,
+    "bibliography_citations": 196,
+    "source_references": 404
+  },
+  "errors": [],
+  "passed": true
+}
