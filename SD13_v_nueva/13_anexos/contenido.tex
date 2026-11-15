@@ -42,16 +42,34 @@ La Tabla~\ref{tab:sd13-B1} traza cada innovación con la arquitectura (RT-26.01)
 
 La matriz muestra que las cinco innovaciones tienen al menos un paquete de la EDT, un mes de materialización, una referencia a su control interno o riesgo contractual y un rubro en cada clase del flujo de caja. Las cuentas y los períodos operativos se cotejaron con el T-14, el Anexo 7.D y el T-15, secciones 4 y 6.1. Las relaciones de la tabla siguiente corresponden al T-15 publicado; las fechas y holguras provienen del T-15, Tablas 8 y 14.
 
+El Anexo 4-W del SD4 separa el consumo base del incremental y compara dos escenarios de capacidad por ventana. En el escenario base y el alto, respectivamente, estima 15 y 30 DPU-h mensuales para vencimientos; 1 y 3 horas-tarea por corrida para la reproducción de incidentes en QA o Preproducción; 60 y 120 RPU-h mensuales para reconstruir la vida útil; y 2 y 4 DPU-h por ciclo mensual para generar la hoja del almacenero. Para el tramo variable se verifica el consumo de la agregación en la ventana compartida, sin separar un presupuesto de cómputo no demostrado. Los ensayos contrastan capacidad, no el beneficio de Puelche que mide el Anexo 13.C; no son consumos ya medidos ni montos de la oferta.
+
 \begin{tablalafrox}{Dependencias de la cartera y condición de cierre. Fuente: Formularios T-14 y T-15, secciones 5.2 y 6.1; Subdocumento 7, Anexo 7.D; Subdocumento 8, Anexo 8.E.}{tab:sd13-B-calendario}{>{\hsize=0.60\hsize\linewidth=\hsize}Y >{\hsize=1.24\hsize\linewidth=\hsize}Y >{\hsize=1.16\hsize\linewidth=\hsize}Y}
  {\cab{Innovación} & \cab{Secuencia documentada} & \cab{Ventana y verificación}}
-Seguimiento de vencimientos & El protocolo inicial habilita el estudio y la construcción en paralelo. La validación espera ambos entregables. & Certificación en meses 11--12 y piloto real en 13--15 (Anexo 8.E). Término temprano el 20-03-2028 y tardío el 28-04-2028 (mes 15): el piloto del mes 15 cabe en la holgura de 28 días. \\
-Reproducción de incidentes & El contrato de evidencia habilita el circuito mínimo; este habilita el catálogo de escenarios. La validación espera el catálogo. & Validación en meses 11--15 y mantenimiento en 21--56. Término temprano el 20-03-2028 y tardío el 28-04-2028 (mes 15), con 28 días de holgura. \\
-Vida útil por lote & Los parámetros aprobados habilitan el cálculo; la integración espera ese cálculo y la validación espera la integración. & Validación en meses 11--15 y revisiones semestrales en Operación. Término temprano el 20-03-2028 y tardío el 28-04-2028 (mes 15), con 28 días de holgura. \\
-Tramo variable & Reglas aprobadas y tres liquidaciones en sombra reproducibles antes de activar el tramo. Son condiciones de habilitación, no una predecesora diaria confirmada. & Sombra en meses 21--23 y liquidación en 24--56. Se mantienen aprobación de reglas y control contractual del T-16. \\
-Hoja del almacenero & El prototipo inicial habilita la prueba de comprensión. La construcción espera diseño y prueba; la validación espera la construcción. & Despliegue por rutas en meses 22--26 y bloque comparativo en 24--27, condicionado a dictamen legal y prueba de privacidad. \\
+Seguimiento de vencimientos & El protocolo inicial de 3.10.1.1 habilita en paralelo 3.10.1.2 y 3.10.1.3; ambos preceden a la validación 3.10.1.4. & Ventana del paquete M11--15: certificación en meses 11--12 y piloto real en 13--15 (control interno del Anexo 8.E, distinto del registro de riesgos del T-16). Fin programado 20-03-2028 y fin tardío CPM 28-04-2028. La evidencia del piloto del mes 15 debe quedar programada. \\
+Reproducción de incidentes & El contrato de evidencia de 3.10.2.1 habilita 3.10.2.2. El circuito mínimo de este habilita 3.10.2.3, que precede a 3.10.2.4. & Validación en meses 11--15 y mantenimiento en 21--56. Fin programado 20-03-2028 y fin tardío CPM 28-04-2028 (mes 15). \\
+Vida útil por lote & Los parámetros aprobados en 3.10.3.1 habilitan 3.10.3.2. Este precede a 3.10.3.3, y este último precede a la validación 3.10.3.4. & Validación en meses 11--15 y revisiones semestrales en Operación. Fin programado 20-03-2028 y fin tardío CPM 28-04-2028 (mes 15). \\
+Tramo variable & La aprobación de reglas (5.4.3) y tres liquidaciones en sombra reproducibles (8.3.3) habilitan el tramo (8.3.4). Son condiciones de habilitación, no una predecesora diaria confirmada. & Sombra en meses 21--23 y liquidación en 24--56. Se mantienen aprobación de reglas y control contractual del T-16. \\
+Hoja del almacenero & El prototipo inicial de 3.10.4.1 habilita 3.10.4.2. La construcción 3.10.4.3 espera el prototipo y el diseño validado; precede a la validación 3.10.4.4. & Despliegue por rutas en meses 22--26 y bloque comparativo en 24--27, condicionado a dictamen legal y prueba de privacidad. \\
 \end{tablalafrox}
 
-Para las tres primeras innovaciones, la programación del T-15 (sección 6.1, Tabla 14) fija el término temprano de la validación el 20 de marzo de 2028 (mes 14). El cálculo de la red (Tabla 8) fija su término tardío el 28 de abril de 2028, que es el límite de la ventana de meses 11 a 15 del Anexo 7.D, con 28 días de holgura. Ningún paquete ni hito depende de estas tres validaciones, de modo que la evidencia del mes 15 cabe dentro de la ventana sin desplazar otros paquetes ni hitos; si la validación se extiende hasta esa fecha, consume su holgura. Por eso el piloto y los indicadores se miden al mes 15, y la inversión de las innovaciones 1 a 3 termina en ese mes. Las precedencias parciales (protocolo, contrato, circuito o prototipo) no se interpretan como fin total de su paquete. Los dieciséis paquetes de la cuenta 3.10 tienen holguras de entre 7 y 35 días y no forman parte de la ruta crítica; los paquetes 8.3.x son de esfuerzo continuo y siguen su calendario de servicio.
+Para las tres primeras innovaciones (3.10.1.4, 3.10.2.4 y 3.10.3.4), el T-15 distingue el fin programado (20-03-2028) del fin temprano CPM (28-12-2027) y el fin tardío CPM (28-04-2028). La diferencia entre el fin programado y el tardío no es la holgura CPM. La medición del mes 15 se mantiene como condición de evidencia: el fin tardío por sí solo no demuestra que esa actividad se haya programado o nivelado. Las precedencias por protocolo, contrato, circuito o prototipo habilitan la fase siguiente sin exigir siempre el cierre completo del paquete. La carta editable de Innovaciones que acompaña este anexo muestra 17 paquetes y siete enlaces fin--inicio del T-15. Las entregas parciales habilitantes se anotan sin convertirlas en dependencias de fin de paquete y las liquidaciones en sombra conservan las condiciones de aprobación del T-14. Esta vista no modifica la carta oficial ni recalcula el CPM.
+
+\subsection*{13.B.1 Evidencia que falta programar}
+\addcontentsline{toc}{subsection}{13.B.1 Evidencia que falta programar}
+
+Los tres paquetes son de clase E. El T-15, sección 4 y cuadro de asignación de partidas, incluye el mes 15 (abril de 2028) en su presupuesto preliminar de los meses 11 a 15; la regla de reparto uniforme incluye abril en los perfiles ya previstos (Datos y Calidad). En el Excel actualizado, hoja Innovaciones, no se identifica una imputación de abril para estas tres validaciones. Las cinco sobreasignaciones de la revisión C05 corresponden a otros meses y no acreditan exceso ni capacidad disponible en abril. La tabla diaria, en cambio, fija el fin programado de los tres paquetes en el 20 de marzo. La carta editable conserva esa fecha y añade tres marcadores de evidencia en el 28 de abril, solo como referencia del fin tardío CPM; no asignan trabajo ni cambian precedencias.
+
+Para programar la ejecución, Planificación debe conciliar ambas tablas e registrar ID, inicio, fin, responsable y perfil, disponibilidad, predecesora y entrega por paquete. El desglose solo se incorpora si utiliza el esfuerzo ya imputado al mismo paquete, mes y perfil, sin duplicar actividades ni mover horas. El presupuesto preliminar no acredita por sí solo disponibilidad diaria ni ejecución del piloto.
+
+\begin{tablalafrox}{Evidencia del mes 15 que se debe vincular a la programación. Fuente: T-15, sección 6.1; SD13, secciones 13.1 a 13.3.}{tab:sd13-B-piloto}{L{2.6cm} Y}
+ {\cab{Paquete} & \cab{Evidencia para el cierre}}
+3.10.1.4 (Datos) & Registro I-01A del piloto real: al menos 100 avisos evaluables y 70 \% de acierto antes de ampliar a otras rutas. \\
+3.10.2.4 (Calidad) & Registro de validación I-02A e I-02B, con al menos 20 pares para I-02A; se registra la reproducción observada por separado de los minutos de interrupción de Puelche. \\
+3.10.3.4 (Datos) & Registros I-03A e I-03B, con versión de parámetros y al menos 60 lotes evaluados por familia para I-03B; sin historia térmica completa no se infiere vida útil. \\
+\end{tablalafrox}
+
+La comparación de las tablas 8 y 14 del T-15 deja tres diferencias por confirmar: H4 (20 frente a 22 de octubre de 2027), H5 (24 de noviembre frente al 1 de diciembre de 2027) y H10 (27 frente al 28 de junio de 2028). En cada par, la primera fecha es la entrega nominal y la segunda el fin programado del paquete. Para H4, el T-15, sección 5.5, admite presentación por incrementos: Planificación debe identificar las pruebas y el informe que se entregan el día 20, y qué falta hasta el día 22. Para H5 y H10 se distingue la entrega del expediente y la firma del acta: solo se sostiene la fecha nominal si todas las pruebas y la demostración obligatorias están incorporadas y lo restante no afecta la conformidad del expediente. El T-14 exige la firma para certificar; un avance no la sustituye. Planificación registra por hito el paquete, entregable, evidencia, aceptación y trabajo restante. Si no hay entregable admisible a la fecha nominal, registra la discrepancia y escala la decisión sin mover fechas. En particular, no se desplaza H4: la revisión C14 no acredita cobertura de un retraso de su cobro.
 
 La Tabla~\ref{tab:sd13-B2} delimita el alcance de cada innovación: lo que entrega, lo que deliberadamente no hace y la investigación adicional que requiere, con el paquete de la EDT donde esa investigación se resuelve.
 
@@ -70,10 +88,10 @@ La tabla muestra que toda la investigación adicional queda dentro de la EDT: ca
 \addcontentsline{toc}{section}{Anexo 13.C — Indicadores, controles y riesgo contractual}
 \setcounter{table}{0}\renewcommand{\thetable}{13.C.\arabic{table}}
 
-La Tabla~\ref{tab:sd13-C1} reúne los indicadores de las cinco innovaciones, ordenados por el mes en que se miden por primera vez.
+La Tabla~\ref{tab:sd13-C1} reúne los indicadores de las cinco innovaciones y distingue la línea base de la verificación de la meta.
 
 \begin{tablalafrox}{Indicadores de verificación de la cartera. Fuente: elaboración a partir de las líneas base, metas y reglas de medición ofertadas (Subdocumento 13, secciones 13.1.6 a 13.5.6).}{tab:sd13-C1}{>{\hsize=0.633\hsize\linewidth=\hsize}Y >{\hsize=1.497\hsize\linewidth=\hsize}Y >{\hsize=1.284\hsize\linewidth=\hsize}Y >{\hsize=1.165\hsize\linewidth=\hsize}Y >{\hsize=0.421\hsize\linewidth=\hsize}Y}
-  {\cab{Id} & \cab{Línea base} & \cab{Meta} & \cab{Primera medición} & \cab{Antes del mes 16}}
+  {\cab{Id} & \cab{Línea base} & \cab{Meta} & \cab{Verificación de la meta} & \cab{Antes del mes 16}}
 I-05B & Sin medición (la hoja no existe) & ≥ 80 \%: al menos 20 de 24 participantes & Mes 14 & Sí \\
 I-01A & Sin medición & ≥ 70 \% con ≥ 100 avisos & Mes 15 & Sí \\
 I-02A & Incidentes de prueba en QA, meses 5 a 10, sin paquete & \ensuremath{-}30 \% con ≥ 20 pares & Mes 15 & Sí \\
@@ -96,17 +114,33 @@ I-04A & Canasta de los meses 21 a 23 & ≥ 5 \% con OTIF ≥ 95 \% & Mensual des
 
 La validación inicial de los meses 11 a 15 documentará el valor observado de I-03B por familia, con al menos 60 lotes evaluados, el período de evaluación y la versión de parámetros utilizada. Ese resultado constituirá la referencia inicial para el seguimiento posterior; el 80 \% es el umbral de aceptación, no la línea base.
 
-Los indicadores tempranos de INN-01, INN-03 e INN-05 comprueban condiciones de habilitación: los de INN-01 e INN-03, durante la marcha blanca de la Etapa 1, y I-05B, en la prueba de comprensión de los meses 13 y 14. I-02A mide la reducción del tiempo de diagnóstico del proveedor. El beneficio para Puelche se mide aparte, en minutos del aviso a la reanudación de la tarea confirmada por el actor de terreno, comparando incidentes operativos equivalentes con y sin el circuito. Con I-02A LafroX oferta el RT-26.08 (Bases Técnicas Transversales, RT-26.08, cap. 26, p. 45). Las metas de ahorro (I-01B, I-01C, I-03D, I-04A e I-05C) se evalúan después de al menos doce meses de producción, para que la comparación incluya un ciclo anual completo con el peak de septiembre.
+Los indicadores tempranos de INN-01, INN-03 e INN-05 comprueban condiciones de habilitación: los de INN-01 e INN-03, durante la marcha blanca de la Etapa 1, y I-05B, en la prueba de comprensión de los meses 13 y 14. I-02A mide la reducción del tiempo de diagnóstico del proveedor. El beneficio para Puelche se mide aparte, en minutos del aviso a la reanudación de la tarea confirmada por el actor de terreno, comparando incidentes operativos equivalentes con y sin el circuito. Con I-02A LafroX oferta el RT-26.08 (Bases Técnicas Transversales, RT-26.08, cap. 26, p. 45).
 
-La Tabla~\ref{tab:sd13-C-beneficios} reúne los cinco dimensionamientos en unidades físicas. Las bases son supuestos ilustrativos que se reemplazan al medir; no son ahorros observados y no se suman entre sí.
+Los efectos se contrastan en los plazos de cada indicador, no en un corte anual común: I-01B, I-01C e I-03D en el mes 28; I-04A se sigue mensualmente desde el mes 24 y su meta se evalúa en el mes 36; I-05C estima el efecto comercial durante el despliegue (meses 22 a 26) y lo contrasta de nuevo en el mes 33. Los primeros cortes no equivalen necesariamente a comparar un ciclo estacional completo.
 
-\begin{tablalafrox}{Dimensionamiento del beneficio para Puelche. Fuente: Subdocumento 13, secciones 13.1 a 13.5 y Formulario T-19, campo 12.}{tab:sd13-C-beneficios}{>{\hsize=0.57\hsize\linewidth=\hsize}Y >{\hsize=1.43\hsize\linewidth=\hsize}Y}
+La Tabla~\ref{tab:sd13-C-beneficios} reúne los cinco dimensionamientos en unidades físicas. Los volúmenes de referencia provienen del Caso (sección 14.1 y Anexo B.1); las tasas, coberturas y tiempos de los ejemplos son supuestos o escalas, no mediciones. Cada estimación se actualiza con su unidad elegible y su comparación observada; los efectos no se suman entre sí.
+
+\begin{tablalafrox}{Dimensionamiento físico del beneficio por innovación y beneficiario. Fuente: Subdocumento 13, secciones 13.1 a 13.5 y Formulario T-19, campo 12.}{tab:sd13-C-beneficios}{>{\hsize=0.57\hsize\linewidth=\hsize}Y >{\hsize=1.43\hsize\linewidth=\hsize}Y}
  {\cab{Innovación} & \cab{Beneficio físico estimado y supuesto}}
-Seguimiento de vencimientos & 25 unidades vencidas menos por cada 10.000 entregadas, si se parte de 100 unidades vencidas y se logra reducirlas en 25 \%. \\
-Reproducción de incidentes & 36 minutos menos de interrupción por incidente, si un tiempo de reanudación de 120 minutos se reduce un 30 \%. \\
-Vida útil por lote & 10 lotes menos retenidos o descartados por vencimiento por cada 1.000 recibidos: 50 (5 \% supuesto) en consulta central frente a 40 (4 \%) con uso distribuido. \\
-Tramo variable & 16 horas y 40 minutos-persona menos por cada 1.000 entregas comparables, si se pasa de 20 a 19 minutos-persona por entrega sin degradar el servicio. \\
-Hoja del almacenero & 2 minutos menos para decidir la reposición por visita, si una tarea de 10 minutos baja a 8 con la hoja. \\
+Seguimiento de vencimientos & 25 unidades vencidas menos por cada 10.000 entregadas, si se parte de 100 vencidas y se logra reducirlas en 25 \%. Por cada 1 \% del volumen mensual del Caso entregado y cubierto, serían 60 unidades. \\
+Reproducción de incidentes & 36 minutos menos de interrupción por incidente, si 120 minutos bajan un 30 \%. Diez incidentes comparables a ese diferencial darían seis horas; no hay frecuencia observada. \\
+Vida útil por lote & 10 lotes menos retenidos o descartados por vencimiento por cada 1.000 recibidos: 50 (5 \% supuesto) en consulta central frente a 40 (4 \%) con uso distribuido. No se extrapola desde las recepciones de proveedor: hace falta contar lotes. \\
+Tramo variable & 16 horas y 40 minutos-persona menos por cada 1.000 entregas comparables, si se pasa de 20 a 19 minutos-persona por entrega sin degradar el servicio. Por cada 10 \% de entregas comparables del Caso: 140 minutos-persona en día normal o 260 en peak. \\
+Hoja del almacenero & 2 minutos menos para decidir la reposición por visita, si una tarea de 10 minutos baja a 8. Por cada 1 \% de las visitas diarias del Caso con decisión elegible y uso de la hoja: 52 minutos. \\
+\end{tablalafrox}
+
+\subsection*{13.C.1 Datos para validar los cinco beneficios}
+\addcontentsline{toc}{subsection}{13.C.1 Datos para validar los cinco beneficios}
+
+Registro operativo de comparación: no disponible en el Caso simulado para INN-01, INN-02, INN-03, INN-04 e INN-05. Esta condición se refiere a los registros de comparación, no a los volúmenes de referencia publicados. Los ejemplos anteriores se pueden recalcular con las unidades del Caso; no son beneficios observados. Para sustituirlos por una estimación de Puelche, se conserva la fuente, período, cobertura, exclusiones y datos faltantes de cada comparación. Fuera de la población elegible no se extrapola; si falta una referencia comparable, se deja el resultado sin estimar.
+
+\begin{tablalafrox}{Registro mínimo para contrastar el beneficio físico. Fuente: SD13, apartados 13.1.5 a 13.5.5, y Formulario T-19, campo 12.}{tab:sd13-C-datos}{L{1.4cm} Y Y}
+ {\cab{Innovación} & \cab{Registro de Puelche} & \cab{Comparación}}
+INN-01 & Unidades entregadas y vencidas de la misma cohorte, identificadas por ruta, local, lote y período. & Tasas con y sin aviso en rutas comparables; aplicar la diferencia a las unidades cubiertas. No usar valor de inventario como denominador. \\
+INN-02 & Incidente y tarea únicos, módulo, tipo de falla, aviso y confirmación de reanudación por el actor de terreno. & Comparar minutos entre incidentes operativos equivalentes con y sin circuito; excluir pares sin marcas completas. No usar I-02A como sustituto. \\
+INN-03 & Lotes únicos recibidos y afectados por vencimiento, familia, versión de parámetros y decisión de Calidad. & Comparar cálculo central y uso distribuido con el mismo modelo y criterio. No contar recepciones como lotes ni rebajar retenciones obligatorias. \\
+INN-04 & Entregas comparables, minutos-persona por actividad, condición normal o peak y evidencia de nivel de servicio. & Comparar minutos-persona por entrega en cada condición; sin degradar el servicio ni convertir el ejemplo en ahorro monetario. \\
+INN-05 & Visita elegible, uso efectivo de la hoja y minutos hasta la decisión de reposición. Una decisión por visita. & Contrastar decisiones comparables con y sin hoja. Separar este tiempo del indicador comercial del mes 33. \\
 \end{tablalafrox}
 
 La Tabla~\ref{tab:sd13-C2} distingue las verificaciones internas del riesgo contractual. Los controles se aprueban con evidencia de prueba, no con una puntuación de probabilidad e impacto.
@@ -124,18 +158,18 @@ La estimación de vida útil puede acortarla, pero nunca alargarla más allá de
 
 \subsection*{Pauta de revisión técnica de Innovaciones}
 
-Para cerrar la Declaración de uso de IA, la persona que revise identifica la versión y registra, por innovación, su nombre, fecha, lo que contrastó, la evidencia y el resultado. Si detecta una observación, se conserva la corrección y su comprobación posterior. La pauta no sustituye la revisión ni implica aprobación.
+Los responsables de diseño revisan cinco fichas de innovación y una ficha de la Figura 13.1, con las versiones exactas del SD13 y del T-19 que se entregarán. Cada ficha registra: innovación o figura, revisor, fecha, commit, cálculo/umbral/figura revisados, evidencia y resultado (conforme o cambio requerido). Si detecta una observación, se conserva la corrección y su comprobación posterior. La pauta no sustituye la revisión ni implica aprobación.
 
 \begin{tablalafrox}{Puntos mínimos de revisión técnica. Fuente: Subdocumento 13, secciones 13.1 a 13.5 y Formulario T-19.}{tab:sd13-C3}{>{\hsize=0.76\hsize\linewidth=\hsize}Y >{\hsize=1.42\hsize\linewidth=\hsize}Y >{\hsize=0.82\hsize\linewidth=\hsize}Y}
  {\cab{Innovación} & \cab{Qué contrastar en la versión final} & \cab{Evidencia esperada}}
 Seguimiento de vencimientos & Supuestos de reposición, cálculo de unidades evitadas, umbral de acierto y recorrido sin señal de la Figura 13.2. & Ejemplo recalculado, fuente de insumos y figura anotada. \\
 Reproducción de incidentes & Separación entre diagnóstico interno y reanudación de Puelche, medición de tiempos, sanitización y flujo de la Figura 13.3. & Ejemplo de medición, criterio de privacidad y figura anotada. \\
-Vida útil por lote & Parámetros por familia, error y recalibración, regla térmica, cálculo incremental de lotes y recorrido de la Figura 13.4. & Reproducción de un cálculo con sus supuestos, escenarios de bloqueo y figura anotada. \\
+Vida útil por lote & Parámetros por familia, error y recalibración, regla térmica, separación del RT-05.30, cálculo incremental de lotes y recorrido de la Figura 13.4. & Reproducción de un cálculo con sus supuestos, escenarios de bloqueo y figura anotada. \\
 Tramo variable & Canasta comparable, ajustes, cálculo por entrega, protección del OTIF y flujo de la Figura 13.5. & Reproducción de un ejemplo de liquidación sin montos de oferta y figura anotada. \\
-Hoja del almacenero & Medición del beneficio, comprensión, umbral de agregación, supresión y recorrido de la Figura 13.6. & Ejemplo comprobado, escenario de inferencia y figura anotada. \\
+Hoja del almacenero & Medición por decisión, beneficiario directo, comprensión, umbral de agregación, supresión y recorrido de la Figura 13.6. & Ejemplo comprobado, escenario de inferencia y figura anotada. \\
 \end{tablalafrox}
 
-La Figura 13.1 se contrasta con los cinco recorridos: el mapa debe representar los componentes que intervienen sin confundir el alcance obligatorio con el aporte innovador. Los ejemplos de revisión no acreditan resultados del piloto.
+La sexta ficha contrasta la Figura 13.1 con los cinco recorridos: el mapa debe representar componentes y capas sin confundir el alcance obligatorio con el aporte innovador. Si la revisión fue solo editorial, se registra como tal. El cotejo reproducible comprueba la aritmética de los ejemplos y la correspondencia de la carta con el T-15. No acredita parámetros calibrados, resultados del piloto ni revisión humana de las figuras; la Declaración de uso de IA se actualiza solo después de registrar esa revisión.
 
 \section*{Referencias}
 \addcontentsline{toc}{section}{Referencias}
