@@ -80,9 +80,13 @@ def main():
     assert r"\renewcommand{\thesection}{\arabic{section}}" in t9
     assert r"\renewcommand{\thesection}{\arabic{section}}" in t10
     assert r"\subsection{" not in t10
+    # Campaigns are run by the in-house quality team (SD9, 9.3); no external evaluators.
+    assert "6,4 HH netas" in body9 and "83,2 HH netas" in body9
+    assert "equipo de calidad de planta" in body6 and "equipo de calidad de planta" in t9
+    assert "equipo de calidad de planta" in body9
     for text in (body6, t9, body9):
-        assert "6,4 HH netas" in text and "102,4 HH" in text
-    assert "16 evaluadores externos por día" in body6
+        assert "refuerzo de evaluadores" not in text and "16 evaluadores" not in text
+        assert "102,4 HH" not in text
     assert "instancia interna de LafroX" in body6 and "Art. 71" in t9
     assert body6.index(r"\ref{fig:sd6-control}") < body6.index(r"\label{fig:sd6-control}")
     for path in [sd6 / "anexos.tex", *(sd6 / "subdocumento_6/tablas").glob("*.tex")]:
@@ -101,7 +105,7 @@ def main():
 
     proposal = read(ROOT / "revision/PROPUESTA_METRICAS_K3_2026-10-27.md")
     assert "propuesta, no política aprobada" in proposal
-    assert 16 * 8 * 0.8 == 102.4
+    assert 13 * 8 * 0.8 == 83.2
     assert 270 * 15 / 60 == 67.5
     result = {"documentary_checks": "passed", "tables": {
         "SD6": audit_tables(sd6 / "subdocumento_6/contenido.tex"),
