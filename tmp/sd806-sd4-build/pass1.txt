@@ -1,0 +1,1044 @@
+This is LuaHBTeX, Version 1.24.0 (MiKTeX 25.12)
+ restricted system commands enabled.
+(./anexos_logica.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+ (../00/plantilla/formato-base/lafrox.cls
+
+LaTeX Warning: You have requested document class `../00/plantilla/formato-base/
+lafrox',
+               but the document class provides `lafrox'.
+
+Document Class: lafrox 2026/09/17 v2.2 Clase corporativa LafroX, tema minimalis
+ta
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/base/report.cls
+Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/base/size11.clo))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg))
+ (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/color.cfg)
+
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics-def/luatex.def
+)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics/mathcolor.ltx)
+) (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/colortbl/colortbl.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics/dvipsnam.def)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/xparse/xpars
+e.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/l3kernel/expl3.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-lua
+tex.def)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec-luate
+x.sty (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/base/fontenc.sty)
+ (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.cfg)
+)) (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/plex/plex-mono.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifxetex.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifluatex.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkeyval.tex
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkvutils.tex)
+)) (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/base/textcomp.sty))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th-luatex.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/l3keys2e/l3k
+eys2e.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/base/fix-cm.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1enc.def))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amstext.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsgen.sty))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsbsy.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsopn.sty))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/lualatex/lualatex-math/lualat
+ex-math.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/etoolbox/etoolbox.sty))
+
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th-table.tex)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/was/icomma.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype.sty
+
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype-lua
+tex.def)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype.cfg
+)) (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def)
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/arabi/bblopts.cfg)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/babel/locale/es/babel
+-spanish.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/babel-spanish/spanish.l
+df
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/hyph-utf8/loadhyph/lo
+adhyph-es.tex UTF-8 Spanish hyphenation patterns
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/hyph-utf8/patterns/te
+x/hyph-es.tex))))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.def)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.cfg))
+ (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphicx.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphics.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/graphics.c
+fg)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/frontendlayer/tikz.
+sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgf.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfrcs.st
+y
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-common.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-latex.def)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfrcs.
+code.tex
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/pgf.revision.tex)
+))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgfcore.
+sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/systemlayer/pgfsys.
+sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s.code.tex
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+.code.tex
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+libraryfiltered.code.tex))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgf.c
+fg)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s-luatex.def
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s-common-pdf.def)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+ssoftpath.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+sprotocol.code.tex))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+e.code.tex
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathutil.
+code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathparse
+r.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.basic.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.trigonometric.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.random.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.comparison.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.base.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.round.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.misc.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.integerarithmetics.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathcalc.
+code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfloat
+.code.tex))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfint.code.
+tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epoints.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathconstruct.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathusage.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+escopes.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+egraphicstate.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+etransformations.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+equick.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eobjects.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathprocessing.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+earrows.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eshade.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eimage.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eexternal.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+elayers.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+etransparency.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epatterns.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+erdf.code.tex)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+shapes.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+plot.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+mp-version-0-65.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+mp-version-1-18.sty))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgffor.st
+y
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfkeys.s
+ty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+.code.tex))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/math/pgfmath.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgffor.
+code.tex))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/tikz.code.tex
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryplothandlers.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+matrix.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarytopaths.code.tex)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarycalc.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarypositioning.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/booktabs/booktabs.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/tools/tabularx.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/tools/longtable.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/xltabular/xltabular.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/ltablex/ltablex.sty))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/multirow/multirow.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/makecell/makecell.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/enumitem/enumitem.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titlesec.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titletoc.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/fancyhdr/fancyhdr.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption3.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/caption/ltcaption.sty))
+
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pdflscape/pdflscape.sty
+
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pdflscape/pdflscape-nom
+etadata.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics/lscape.sty)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/eso-pic/eso-pic.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/ragged2e/ragged2e.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage2e.sty
+
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpagemodern
+.sty) 
+)) (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/import/import.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hyperref.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/kvsetkeys/kvsetkeys.sty
+)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/kvdefinekeys/kvdefine
+keys.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pdfescape/pdfescape.s
+ty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/ltxcmds/ltxcmds.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pdftexcmds/pdftexcmds
+.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/infwarerr/infwarerr.s
+ty)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/hycolor/hycolor.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/nameref.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/refcount/refcount.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/gettitlestring/gettit
+lestring.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/kvoptions/kvoptions.sty
+)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/stringenc/stringenc.s
+ty) (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/pd1enc.def
+) (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/intcalc/intcalc.sty
+) (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/puenc.def)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/bitset/bitset.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/bigintcalc/bigintcalc
+.sty)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hluatex.def
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfil
+echeck.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/uniquecounter/uniquec
+ounter.sty)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bookmark.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bkm-luatex.def
+)) (../00/plantilla/formato-base/lafrox-portada.tex))
+No file LAFROX-Subdocumento4-Anexos.aux.
+*geometry* driver: auto-detecting
+*geometry* detected driver: luatex
+
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
+ase.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/00miktex/epstopdf-sys.c
+fg)) (./anexos/logica/contenido.tex
+(./anexos/logica/partes/01_apertura_anexos.tex [1{C:/Users/maxco/AppData/Local/
+MiKTeX/fonts/map/pdftex/pdftex.map}<./../00/plantilla/formato-base/logo/lafrox_
+isotipo_naranja.pdf><./../00/plantilla/formato-base/logo/FIRMA_Alex_Aravena_tra
+nsparente.png>]
+No file LAFROX-Subdocumento4-Anexos.toc.
+[2<./../00/plantilla/formato-base/logo/lafrox_isotipo_negro.pdf>]
+No file LAFROX-Subdocumento4-Anexos.lot.
+[3]) (./anexos/logica/partes/00_catalogo_anexos.tex [4]
+
+LaTeX Warning: Hyper reference `anx:A' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:A' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:B' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:B' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:C' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:C' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:D' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:D' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:E' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:E' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:F' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:F' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:G' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:G' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:H' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:H' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:I' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:I' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:J' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:J' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:K' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:K' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:L' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:L' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:M' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:M' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:N' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:N' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:O' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:O' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:P' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:P' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:Q' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:Q' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:R' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:R' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:S' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:S' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:T' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:T' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:U' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:U' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:V' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:V' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Hyper reference `anx:42A' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `anx:42A' on page 5 undefined on input line 31.
+
+./anexos/logica/partes/00_catalogo_anexos.tex:31: Infinite glue shrinkage found
+ in box being split [5]
+
+LaTeX Warning: Reference `fuente-00-catalogo-anexos' on page 6 undefined on inp
+ut line 33.
+
+
+LaTeX Warning: Reference `fuente-00-catalogo-anexos-fin' on page 6 undefined on
+ input line 33.
+
+[6]) (./anexos/logica/partes/02_anexo_4_1_a_catalogo_de_eventos_canonicos.tex
+./anexos/logica/partes/02_anexo_4_1_a_catalogo_de_eventos_canonicos.tex:28: Inf
+inite glue shrinkage found in box being split [7]
+
+LaTeX Warning: Reference `fuente-02-anexo-4-1-a-catalogo-de-eventos-canonicos' 
+on page 8 undefined on input line 30.
+
+
+LaTeX Warning: Reference `fuente-02-anexo-4-1-a-catalogo-de-eventos-canonicos-f
+in' on page 8 undefined on input line 30.
+
+) (./anexos/logica/partes/03_anexo_4_1_b_gobierno_de_la_integracion.tex
+[8]
+
+LaTeX Warning: Reference `fuente-03-anexo-4-1-b-gobierno-de-la-integracion' on 
+page 9 undefined on input line 18.
+
+
+LaTeX Warning: Reference `fuente-03-anexo-4-1-b-gobierno-de-la-integracion-fin'
+ on page 9 undefined on input line 18.
+
+) (./anexos/logica/partes/04_anexo_4_1_c_escenarios_de_carga_masiva.tex
+[9]
+
+LaTeX Warning: Reference `fuente-04-anexo-4-1-c-escenarios-de-carga-masiva' on 
+page 10 undefined on input line 15.
+
+
+LaTeX Warning: Reference `fuente-04-anexo-4-1-c-escenarios-de-carga-masiva-fin'
+ on page 10 undefined on input line 15.
+
+) (./anexos/logica/partes/05_anexo_4_1_d_matriz_de_los_doce_modulos.tex
+./anexos/logica/partes/05_anexo_4_1_d_matriz_de_los_doce_modulos.tex:21: Infini
+te glue shrinkage found in box being split [10]
+./anexos/logica/partes/05_anexo_4_1_d_matriz_de_los_doce_modulos.tex:21: Infini
+te glue shrinkage found in box being split [11]
+
+LaTeX Warning: Reference `fuente-05-anexo-4-1-d-matriz-de-los-doce-modulos' on 
+page 12 undefined on input line 23.
+
+
+LaTeX Warning: Reference `fuente-05-anexo-4-1-d-matriz-de-los-doce-modulos-fin'
+ on page 12 undefined on input line 23.
+
+[12] [13] [14])
+(./anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex
+./anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex:33: Infinite g
+lue shrinkage found in box being split [15]
+
+LaTeX Warning: Reference `tab:modulos-funcionales' on page 16 undefined on inpu
+t line 35.
+
+
+LaTeX Warning: Reference `fuente-06-anexo-4-1-e-trazabilidad-funcional' on page
+ 16 undefined on input line 35.
+
+
+LaTeX Warning: Reference `fuente-06-anexo-4-1-e-trazabilidad-funcional-fin' on 
+page 16 undefined on input line 35.
+
+[16]
+./anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex:65: Infinite g
+lue shrinkage found in box being split [17]
+./anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex:65: Infinite g
+lue shrinkage found in box being split [18])
+(./anexos/logica/partes/07_anexo_4_1_f_mapa_de_limites_de_contexto.tex [19]
+./anexos/logica/partes/07_anexo_4_1_f_mapa_de_limites_de_contexto.tex:21: Infin
+ite glue shrinkage found in box being split [20]
+
+LaTeX Warning: Reference `fuente-07-anexo-4-1-f-mapa-de-limites-de-contexto' on
+ page 21 undefined on input line 23.
+
+
+LaTeX Warning: Reference `fuente-07-anexo-4-1-f-mapa-de-limites-de-contexto-fin
+' on page 21 undefined on input line 23.
+
+) (./anexos/logica/partes/08_anexo_4_1_g_catalogo_de_interfaces_internas.tex
+./anexos/logica/partes/08_anexo_4_1_g_catalogo_de_interfaces_internas.tex:17: I
+nfinite glue shrinkage found in box being split [21]
+
+LaTeX Warning: Reference `fuente-08-anexo-4-1-g-catalogo-de-interfaces-internas
+' on page 22 undefined on input line 19.
+
+
+LaTeX Warning: Reference `fuente-08-anexo-4-1-g-catalogo-de-interfaces-internas
+-fin' on page 22 undefined on input line 19.
+
+[22]
+Underfull \hbox (badness 1158) in paragraph at lines 38--39
+[] []\TU/SourceSans3(2)/m/n/10.95 INT-04. De-ta-lle de cross-docking a la nu-be
+ — M2.[]\TU/SourceSerif4(0)/m/n/10.95 Mo-do asín-crono. Vo-lu-men de di-se-
+ño:
+[23]
+
+LaTeX Warning: Reference `fuente-08-anexo-4-1-g-catalogo-de-interfaces-internas
+' on page 24 undefined on input line 57.
+
+
+LaTeX Warning: Reference `fuente-08-anexo-4-1-g-catalogo-de-interfaces-internas
+-fin' on page 24 undefined on input line 57.
+
+) (./anexos/logica/partes/09_anexo_4_1_h_catalogo_de_interfaces_externas.tex
+[24]
+
+LaTeX Warning: Reference `fuente-09-anexo-4-1-h-catalogo-de-interfaces-externas
+' on page 25 undefined on input line 18.
+
+
+LaTeX Warning: Reference `fuente-09-anexo-4-1-h-catalogo-de-interfaces-externas
+-fin' on page 25 undefined on input line 18.
+
+[25] [26]
+
+LaTeX Warning: Reference `tab:volumen-mensajes' on page 27 undefined on input l
+ine 42.
+
+[27]
+
+LaTeX Warning: Reference `fuente-09-anexo-4-1-h-catalogo-de-interfaces-externas
+' on page 28 undefined on input line 53.
+
+
+LaTeX Warning: Reference `fuente-09-anexo-4-1-h-catalogo-de-interfaces-externas
+-fin' on page 28 undefined on input line 53.
+
+) (./anexos/logica/partes/10_anexo_4_1_i_volumen_de_mensajes.tex
+./anexos/logica/partes/10_anexo_4_1_i_volumen_de_mensajes.tex:26: Infinite glue
+ shrinkage found in box being split [28]
+
+LaTeX Warning: Reference `fuente-10-anexo-4-1-i-volumen-de-mensajes' on page 29
+ undefined on input line 28.
+
+
+LaTeX Warning: Reference `fuente-10-anexo-4-1-i-volumen-de-mensajes-fin' on pag
+e 29 undefined on input line 28.
+
+) (./anexos/logica/partes/11_anexo_4_1_j_funciones_sin_conexion.tex [29]
+./anexos/logica/partes/11_anexo_4_1_j_funciones_sin_conexion.tex:22: Infinite g
+lue shrinkage found in box being split [30]
+
+LaTeX Warning: Reference `fuente-11-anexo-4-1-j-funciones-sin-conexion' on page
+ 31 undefined on input line 24.
+
+
+LaTeX Warning: Reference `fuente-11-anexo-4-1-j-funciones-sin-conexion-fin' on 
+page 31 undefined on input line 24.
+
+) (./anexos/logica/partes/12_anexo_4_1_k_reglas_de_reconciliacion.tex [31]
+./anexos/logica/partes/12_anexo_4_1_k_reglas_de_reconciliacion.tex:17: Infinite
+ glue shrinkage found in box being split [32]
+
+LaTeX Warning: Reference `fuente-12-anexo-4-1-k-reglas-de-reconciliacion' on pa
+ge 33 undefined on input line 19.
+
+
+LaTeX Warning: Reference `fuente-12-anexo-4-1-k-reglas-de-reconciliacion-fin' o
+n page 33 undefined on input line 19.
+
+) (./anexos/logica/partes/13_anexo_4_1_l_decisiones_del_numeral_16_1.tex
+[33]
+./anexos/logica/partes/13_anexo_4_1_l_decisiones_del_numeral_16_1.tex:25: Infin
+ite glue shrinkage found in box being split [34]
+
+LaTeX Warning: Reference `fuente-13-anexo-4-1-l-decisiones-del-numeral-16-1' on
+ page 35 undefined on input line 27.
+
+
+LaTeX Warning: Reference `fuente-13-anexo-4-1-l-decisiones-del-numeral-16-1-fin
+' on page 35 undefined on input line 27.
+
+) (./anexos/logica/partes/14_anexo_4_1_m_verificacion_de_continuidad_logica.tex
+[35] [36] [37] [38])
+(./anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.t
+ex [39]
+./anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.te
+x:35: Infinite glue shrinkage found in box being split [40]
+
+LaTeX Warning: Reference `fuente-15-anexo-4-1-n-correspondencia-de-componentes-
+logicos' on page 41 undefined on input line 37.
+
+
+LaTeX Warning: Reference `fuente-15-anexo-4-1-n-correspondencia-de-componentes-
+logicos-fin' on page 41 undefined on input line 37.
+
+[41]
+
+LaTeX Warning: Reference `fuente-15-anexo-4-1-n-correspondencia-de-componentes-
+logicos' on page 42 undefined on input line 53.
+
+
+LaTeX Warning: Reference `fuente-15-anexo-4-1-n-correspondencia-de-componentes-
+logicos-fin' on page 42 undefined on input line 53.
+
+
+LaTeX Warning: Reference `tab:mapeo-logica' on page 42 undefined on input line 
+55.
+
+[42] [43]
+
+LaTeX Warning: Reference `tab:mapeo-logica' on page 44 undefined on input line 
+71.
+
+./anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.te
+x:110: Infinite glue shrinkage found in box being split [44]
+./anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.te
+x:110: Infinite glue shrinkage found in box being split [45]
+./anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.te
+x:110: Infinite glue shrinkage found in box being split [46]
+
+LaTeX Warning: Reference `fuente-15-anexo-4-1-n-correspondencia-de-componentes-
+logicos' on page 47 undefined on input line 112.
+
+
+LaTeX Warning: Reference `fuente-15-anexo-4-1-n-correspondencia-de-componentes-
+logicos-fin' on page 47 undefined on input line 112.
+
+
+LaTeX Warning: Reference `tab:actores-permisos' on page 47 undefined on input l
+ine 114.
+
+./anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.te
+x:132: Infinite glue shrinkage found in box being split [47]
+./anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.te
+x:132: Infinite glue shrinkage found in box being split [48]
+
+LaTeX Warning: Reference `fuente-15-anexo-4-1-n-correspondencia-de-componentes-
+logicos' on page 49 undefined on input line 133.
+
+
+LaTeX Warning: Reference `fuente-15-anexo-4-1-n-correspondencia-de-componentes-
+logicos-fin' on page 49 undefined on input line 133.
+
+[49] [50]) (./anexos/logica/partes/18_anexo_4_1_o_decisiones_logicas.tex
+[51]
+./anexos/logica/partes/18_anexo_4_1_o_decisiones_logicas.tex:35: Infinite glue 
+shrinkage found in box being split [52]
+
+LaTeX Warning: Reference `fuente-18-anexo-4-1-o-decisiones-logicas' on page 53 
+undefined on input line 37.
+
+
+LaTeX Warning: Reference `fuente-18-anexo-4-1-o-decisiones-logicas-fin' on page
+ 53 undefined on input line 37.
+
+[53]
+
+LaTeX Warning: Reference `tab:adr-estado' on page 54 undefined on input line 39
+.
+
+./anexos/logica/partes/18_anexo_4_1_o_decisiones_logicas.tex:66: Infinite glue 
+shrinkage found in box being split [54]
+
+LaTeX Warning: Reference `fuente-18-anexo-4-1-o-decisiones-logicas' on page 55 
+undefined on input line 68.
+
+
+LaTeX Warning: Reference `fuente-18-anexo-4-1-o-decisiones-logicas-fin' on page
+ 55 undefined on input line 68.
+
+[55] [56] [57] [58]
+
+LaTeX Warning: Reference `tab:anexo-4b-vm' on page 59 undefined on input line 2
+08.
+
+[59] [60] [61] [62] [63] [64])
+(./anexos/logica/partes/19_anexo_4_1_p_tecnologias_soporte.tex [65]
+
+LaTeX Warning: Reference `tab:soporte-logico' on page 66 undefined on input lin
+e 12.
+
+[66] [67] [68]
+./anexos/logica/partes/19_anexo_4_1_p_tecnologias_soporte.tex:84: Infinite glue
+ shrinkage found in box being split [69]
+
+LaTeX Warning: Reference `tab:inventario-software' on page 70 undefined on inpu
+t line 89.
+
+[70]
+./anexos/logica/partes/19_anexo_4_1_p_tecnologias_soporte.tex:114: Infinite glu
+e shrinkage found in box being split [71]
+./anexos/logica/partes/19_anexo_4_1_p_tecnologias_soporte.tex:114: Infinite glu
+e shrinkage found in box being split [72]
+
+LaTeX Warning: Reference `fuente-19-anexo-4-1-p-tecnologias-soporte' on page 73
+ undefined on input line 115.
+
+
+LaTeX Warning: Reference `fuente-19-anexo-4-1-p-tecnologias-soporte-fin' on pag
+e 73 undefined on input line 115.
+
+[73]
+
+LaTeX Warning: Reference `tab:inventario-software' on page 74 undefined on inpu
+t line 119.
+
+[74]) (./anexos/logica/partes/20_anexo_4_1_q_modelado_amenazas.tex [75]
+./anexos/logica/partes/20_anexo_4_1_q_modelado_amenazas.tex:22: Infinite glue s
+hrinkage found in box being split [76]
+
+LaTeX Warning: Reference `fuente-20-anexo-4-1-q-modelado-amenazas' on page 77 u
+ndefined on input line 23.
+
+
+LaTeX Warning: Reference `fuente-20-anexo-4-1-q-modelado-amenazas-fin' on page 
+77 undefined on input line 23.
+
+./anexos/logica/partes/20_anexo_4_1_q_modelado_amenazas.tex:41: Infinite glue s
+hrinkage found in box being split [77]
+
+LaTeX Warning: Reference `fuente-20-anexo-4-1-q-modelado-amenazas' on page 78 u
+ndefined on input line 42.
+
+
+LaTeX Warning: Reference `fuente-20-anexo-4-1-q-modelado-amenazas-fin' on page 
+78 undefined on input line 42.
+
+[78]) (./anexos/logica/partes/21_anexo_4_1_r_controles_seguridad.tex [79]
+./anexos/logica/partes/21_anexo_4_1_r_controles_seguridad.tex:30: Infinite glue
+ shrinkage found in box being split [80]
+
+LaTeX Warning: Reference `fuente-21-anexo-4-1-r-controles-seguridad' on page 81
+ undefined on input line 31.
+
+
+LaTeX Warning: Reference `fuente-21-anexo-4-1-r-controles-seguridad-fin' on pag
+e 81 undefined on input line 31.
+
+[81] [82]) (./anexos/logica/partes/22_anexo_4_1_s_puntos_de_vista.tex [83]
+[84]
+
+LaTeX Warning: Reference `fuente-22-anexo-4-1-s-puntos-de-vista' on page 85 und
+efined on input line 16.
+
+
+LaTeX Warning: Reference `fuente-22-anexo-4-1-s-puntos-de-vista-fin' on page 85
+ undefined on input line 16.
+
+
+LaTeX Warning: Reference `tab:mapeo-logica' on page 85 undefined on input line 
+20.
+
+[85]) (./anexos/logica/partes/23_anexo_4_1_t_desempeno.tex [86]
+
+LaTeX Warning: Reference `fuente-23-anexo-4-1-t-desempeno' on page 87 undefined
+ on input line 20.
+
+
+LaTeX Warning: Reference `fuente-23-anexo-4-1-t-desempeno-fin' on page 87 undef
+ined on input line 20.
+
+[87]) (./anexos/logica/partes/24_anexo_4_1_u_evidencia_documental.tex [88]
+./anexos/logica/partes/24_anexo_4_1_u_evidencia_documental.tex:22: Infinite glu
+e shrinkage found in box being split [89]
+
+LaTeX Warning: Reference `fuente-24-anexo-4-1-u-evidencia-documental' on page 9
+0 undefined on input line 23.
+
+
+LaTeX Warning: Reference `fuente-24-anexo-4-1-u-evidencia-documental-fin' on pa
+ge 90 undefined on input line 23.
+
+) (./anexos/logica/partes/25_anexo_4_1_v_aceptacion_y_dependencias.tex [90]
+
+LaTeX Warning: Reference `tab:condiciones-aceptacion' on page 91 undefined on i
+nput line 7.
+
+./anexos/logica/partes/25_anexo_4_1_v_aceptacion_y_dependencias.tex:23: Infinit
+e glue shrinkage found in box being split [91] [92] [93] [94])
+(./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex [95]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:35: Infinite glue shr
+inkage found in box being split [96]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:35: Infinite glue shr
+inkage found in box being split [97]
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo' on page 98 undefi
+ned on input line 37.
+
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo-fin' on page 98 un
+defined on input line 37.
+
+
+LaTeX Warning: Reference `tab:anexo-4b-hechos' on page 98 undefined on input li
+ne 49.
+
+[98]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:59: Infinite glue shr
+inkage found in box being split [99]
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo' on page 100 undef
+ined on input line 61.
+
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo-fin' on page 100 u
+ndefined on input line 61.
+
+
+LaTeX Warning: Reference `tab:anexo-4b-parametros' on page 100 undefined on inp
+ut line 63.
+
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:78: Infinite glue shr
+inkage found in box being split [100]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:78: Infinite glue shr
+inkage found in box being split [101]
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo' on page 102 undef
+ined on input line 80.
+
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo-fin' on page 102 u
+ndefined on input line 80.
+
+
+LaTeX Warning: Reference `tab:anexo-4b-supuestos' on page 102 undefined on inpu
+t line 82.
+
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:92: Infinite glue shr
+inkage found in box being split [102]
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo' on page 103 undef
+ined on input line 94.
+
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo-fin' on page 103 u
+ndefined on input line 94.
+
+
+LaTeX Warning: Reference `tab:anexo-4b-horario' on page 103 undefined on input 
+line 101.
+
+[103]
+
+LaTeX Warning: Reference `tab:anexo-4b-horario' on page 104 undefined on input 
+line 107.
+
+[104] [105]
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo' on page 106 undef
+ined on input line 137.
+
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo-fin' on page 106 u
+ndefined on input line 137.
+
+[106] [107]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:191: Infinite glue sh
+rinkage found in box being split [108]
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo' on page 109 undef
+ined on input line 193.
+
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo-fin' on page 109 u
+ndefined on input line 193.
+
+[109]
+
+LaTeX Warning: Reference `tab:anexo-4b-integraciones' on page 110 undefined on 
+input line 217.
+
+[110] [111]
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo' on page 112 undef
+ined on input line 240.
+
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo-fin' on page 112 u
+ndefined on input line 240.
+
+[112]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:260: Infinite glue sh
+rinkage found in box being split [113]
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo' on page 114 undef
+ined on input line 262.
+
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo-fin' on page 114 u
+ndefined on input line 262.
+
+
+LaTeX Warning: Reference `tab:anexo-4b-enlaces' on page 114 undefined on input 
+line 264.
+
+[114] [115] [116] [117]
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo' on page 118 undef
+ined on input line 313.
+
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo-fin' on page 118 u
+ndefined on input line 313.
+
+[118]
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo' on page 119 undef
+ined on input line 328.
+
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo-fin' on page 119 u
+ndefined on input line 328.
+
+[119] [120]
+
+LaTeX Warning: Reference `tab:anexo-4b-enlaces' on page 121 undefined on input 
+line 365.
+
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:365: Infinite glue sh
+rinkage found in box being split [121]
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo' on page 122 undef
+ined on input line 367.
+
+
+LaTeX Warning: Reference `fuente-16-anexo-4b-memoria-calculo-fin' on page 122 u
+ndefined on input line 367.
+
+[122] [123]
+
+LaTeX Warning: Reference `sec:anexo-4b-dimensiones-7-10' on page 124 undefined 
+on input line 411.
+
+[124]
+
+LaTeX Warning: Reference `sec:anexo-4b-dimensiones-7-10' on page 125 undefined 
+on input line 429.
+
+[125]
+
+LaTeX Warning: Reference `tab:4w-innovaciones-computo' on page 126 undefined on
+ input line 434.
+
+
+LaTeX Warning: Reference `tab:4w-innovaciones-almacenamiento' on page 126 undef
+ined on input line 434.
+
+
+LaTeX Warning: Reference `sec:anexo-4b-pruebas' on page 126 undefined on input 
+line 436.
+
+[126]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:471: Infinite glue sh
+rinkage found in box being split [127] [128]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:494: Infinite glue sh
+rinkage found in box being split [129] [130]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:534: Infinite glue sh
+rinkage found in box being split [131] [132]
+
+LaTeX Warning: Reference `tab:anexo-4b-cobertura-fallas' on page 133 undefined 
+on input line 551.
+
+) (./anexos/logica/partes/16_referencias.tex [133] [134] [135] [136] [137]
+[138])) 
+enddocument/afterlastpage (AED): lastpage setting LastPage.
+
+("C:/Users/maxco/Desktop/latex FEP/OTRA PUTA CARPETA DE FEP/LafroX/tmp/sd806-sd
+4-build/LAFROX-Subdocumento4-Anexos.aux")
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package lastpage Warning: Rerun to get the references right on input line 34.
+
+)
+(see the transcript file for additional information)
+ 1076 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 1 local_par, 7 glue, 5 kern, 1 penalty, 3 glyph, 7
+6 attribute, 79 glue_spec, 40 attribute_list, 3 write, 27 pdf_action nodes
+   avail lists: 1:6,2:7557,3:1610,4:532,5:3995,6:559,7:21061,8:135,9:4886,10:35
+,11:2481
+<C:/Users/maxco/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/
+SourceSerif4-RegularIt.otf><C:/Users/maxco/AppData/Local/Programs/MiKTeX/fonts/
+opentype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/Users/maxco/AppData/Local
+/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSerif4-Regular.otf><C:/
+Users/maxco/AppData/Local/Programs/MiKTeX/fonts/opentype/public/stix2-otf/STIXT
+woMath-Regular.otf><C:/Users/maxco/AppData/Local/Programs/MiKTeX/fonts/opentype
+/adobe/sourceserif/SourceSerif4-Semibold.otf><C:/Users/maxco/AppData/Local/Prog
+rams/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSerif4-Regular.otf><C:/Users
+/maxco/AppData/Local/Programs/MiKTeX/fonts/opentype/ibm/plex/IBMPlexMono-Regula
+r.otf><C:/Users/maxco/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/source
+sans/SourceSans3-Regular.otf><C:/Users/maxco/AppData/Local/Programs/MiKTeX/font
+s/opentype/adobe/sourcesans/SourceSans3-Medium.otf><C:/Users/maxco/AppData/Loca
+l/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Semibold.otf>
+Output written on LAFROX-Subdocumento4-Anexos.pdf (138 pages, 671609 bytes).
+Transcript written on LAFROX-Subdocumento4-Anexos.log.

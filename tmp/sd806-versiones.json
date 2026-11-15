@@ -1,0 +1,35 @@
+{
+  "fecha": "2026-11-15",
+  "estado": "documentación sincronizada; implementación, ensayos y aceptación pendientes",
+  "sd4": {
+    "rama": "LafroX-Subdoc4-LateX-corrigiendo",
+    "commit": "c8f8eb57e61d351866c7f950516d476f6592939d"
+  },
+  "sd9": {
+    "rama": "LafroX-Subdoc9-LateX-corrigiendo",
+    "commit": "d0b01c7cad55017aa189302567c16a452305143d"
+  },
+  "sd8": {
+    "rama": "Lafrox_Subdocumento_8_Latex_Revision",
+    "base": "20289fe0",
+    "estado": "cambios locales de SD8-04/05/06 sin commit"
+  },
+  "pdfs": {
+    "LAFROX-Subdocumento8.pdf": "95fbaaaa7be525726cba04d1cfefada1cc76651274e1f3a5d1112e52aa934c83",
+    "LAFROX-Subdocumento8-Anexos.pdf": "30f522d25197d362ce1f7a246f3f22dc9fd8e40009356c7a215830d72202cc7f",
+    "LAFROX-Formulario-T-16.pdf": "4ccc551231cdf36b01f0ba29abd65cca38dfafe7a309d4176ac87a2f474931db",
+    "tmp/sd806-sd4-build/LAFROX-Subdocumento4-Anexos.pdf": "5faa5d090594cc770d0f636e66e2acde4166141dd1733a0644d2216fbefd9c3d",
+    "tmp/sd806-sd9-build/LAFROX-Formulario-T-13.pdf": "23a46e6b8b8182a689b44d2f386271fb8aba586b32137faf58ed06ebdac49f60",
+    "tmp/sd806-sd9-build/LAFROX-Formulario-T-17.pdf": "868c902344bab473dcdc66e457eec90842c5c8a9a5f1adbf83f6f9418082f80a"
+  },
+  "validacion": {
+    "tipo": "compilación y revisión documental/visual; no ensayo de producto",
+    "riesgos": 36,
+    "controles": 15,
+    "valoraciones_y_reservas": "conservadas",
+    "implementacion": "sin evidencia aportada",
+    "ensayos_operacionales": "no ejecutados en esta tarea",
+    "aceptacion": "sin actas aportadas",
+    "t13": "avisos preexistentes de maquetación en matriz de requisitos; páginas modificadas verificadas"
+  }
+}

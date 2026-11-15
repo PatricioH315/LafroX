@@ -1,0 +1,256 @@
+\setcounter{chapter}{7}
+\chapter{Introducción a los Riesgos}
+
+Este plan establece cómo LafroX identificará, valorará y tratará los riesgos de ejecución y operación de la solución para Distribuidora Puelche S.A. durante los 56 meses contractuales. Considera la integridad de los antecedentes sanitarios y comerciales, las dependencias de servicios e infraestructura, la participación de las contrapartes y la preparación de los usuarios. Su propósito es proteger la trazabilidad sanitaria, la continuidad del servicio y los hitos de aceptación mediante decisiones oportunas, responsables definidos y evidencia verificable.
+
+La sección 8.1 define el ciclo de gestión, las responsabilidades y las escalas; la sección 8.2 presenta la RBS, la priorización y el esfuerzo esperado; y la sección 8.3 establece respuestas, reservas y condiciones de aceptación. Los anexos desarrollan las respuestas y dependencias operativas, el fundamento de las estimaciones, los controles técnicos, el análisis FMEA y la evaluación residual. La matriz 8.D.2 coteja los diez temas de SD8-05 y distingue cobertura documental de eficacia pendiente. T-16 contiene el registro de los 36 riesgos. Las respuestas y sus efectos posteriores son propuestas de planificación: su eficacia y aceptación requieren la evidencia indicada para cada caso.
+
+\section{Plan de riesgos}
+
+Esta sección define cómo se gestionan los riesgos durante los 56 meses: el ciclo y sus instancias, los roles y su autoridad, las escalas con que se analizan y las reglas de registro y cierre.
+
+\subsection{Enfoque y ciclo}
+
+El registro vivo sigue identificación, análisis, respuesta y seguimiento conforme a la norma ISO 31000 (International Organization for Standardization [ISO], 2018), que exige el RT-19.04 de las Bases Técnicas Transversales (Bases Técnicas Transversales, cap. 19, RT-19.04, p. 33). Cada entrada distingue causa, evento incierto y consecuencia, sin convertir una inconsistencia observada en riesgo futuro. Los problemas y dependencias actuales se distinguen de los riesgos futuros y se registran como asuntos de seguimiento.
+
+JP mantiene el registro único. Los líderes identifican riesgos al revisar interfaces, pruebas, capacidad y despliegues; verifican disparadores semanalmente y ante cada cambio. El Comité de Proyecto quincenal revisa todos los riesgos abiertos, responsables, plazos y evidencia. Los comités Ejecutivo y de Arquitectura mensuales deciden escalamiento y cambios de sus ámbitos, y desde el mes 13 el Comité de Operación mensual revisa los riesgos de servicio: niveles de atención, incidentes, capacidad y continuidad (Subdocumento 6, sección 6.1.6). Una amenaza a continuidad, seguridad o hito se escala inmediatamente. Marcha blanca exige seguimiento diario; operación mantiene vigilancia diaria de incidentes y colas y revisión en comités. En cada comité se compara la reserva restante con el riesgo remanente (análisis de reserva), y al cierre de cada etapa, en el H5 y el H10, una auditoría de riesgos comprueba que el proceso funciona (Project Management Institute [PMI], 2017, §11.7, pp. 456–457). El Comité Ejecutivo recibe cada mes un extracto con los diez riesgos de mayor exposición; el registro completo queda en el repositorio del proyecto.
+
+\subsection{Roles y autoridad}
+
+La Tabla 8.1 distingue al responsable del riesgo, la familia de esfuerzo y su vigencia. Los responsables dirigen equipos; no ejecutan solos las HH. Las familias del T-15 se conservan al relevar liderazgo.
+
+\begingroup
+\renewcommand{\thetable}{8.1}
+\begin{tablalafrox}{Responsabilidad y vigencia por familia. Fuente: (Formulario T-14, Tabla 2), (Subdocumento 13) y Bases Administrativas (Bases Administrativas, Formulario T-16, p. 63).}{tab:sd8-cuerpo-1}{>{\hsize=0.48404\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.00760\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.28064\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.22771\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{Familia} & \cab{Hasta mes 21} & \cab{Meses 22\textendash{}56} & \cab{Autoridad/aprobación}}
+JP & Alex Aravena & Alex Aravena, dirección de contrato & Registro/escalamiento \\
+ARQ & Bastián Trejo & Trejo, Comité Arquitectura & Diseño/frontera DR \\
+SEG & Álvaro Catalán & Álvaro Catalán & Seguridad/privacidad \\
+DAT & Leandro Chamorro & Guillermo Castillo; equipo DAT & Miño/Calidad: parámetros \\
+DES & Tomás Pérez & Guillermo Castillo; equipo DES & CAL: verifica cambios \\
+CAL & Maximiliano Miño & Maximiliano Miño & Evidencia/eficacia \\
+SRE & Guillermo Castillo & Guillermo Castillo & Capacidad/continuidad \\
+IMP & Patricio Henríquez & Guillermo Castillo; equipo IMP & CAL: usuarios; SEG: privacidad \\
+\end{tablalafrox}
+\endgroup
+
+Las responsabilidades de DAT e IMP se transfieren al frente F8 de Operación, como establece el Subdocumento 13. Para que no dependan de una sola persona, desde el mes 22 Bastián Trejo, que sigue en el Comité de Arquitectura, es suplente de Guillermo Castillo en DAT y DES, y Maximiliano Miño lo es en IMP; ambos continúan hasta el mes 56 (Formulario T-14, Tabla 2 y cuenta 8.3; Subdocumento 13, transferencia desde el mes 22). Las decisiones sanitarias requieren aprobación de Calidad y las de privacidad, de Seguridad. La Contraparte Técnica acepta con acta; Operaciones autoriza cortes y Calidad del CLIENTE decide sobre los aspectos sanitarios. La agenda de decisiones se fija en mes 1 y se sigue en el registro. Los cambios físicos siguen el gobierno de arquitectura.
+
+\paragraph{Dependencias y decisiones del CLIENTE}
+Para los 29 riesgos que requieren un insumo o decisión del CLIENTE, la Tabla 8.A.2 identifica la contraparte funcional, la solicitud con evidencia, el plazo y la contingencia por falta de respuesta. El dueño LafroX conserva la gestión del riesgo; la contraparte entrega o decide dentro de su autoridad. La Contraparte Técnica (CT) recibe y encauza solicitudes y acepta entregables con acta; no sustituye la decisión sanitaria de Calidad ni la autorización del propietario de un vehículo. El Jefe de Proyecto registra en mes 1 el titular designado y suplente de cada cargo del CLIENTE, conforme a la designación formal del CLIENTE.
+
+Los meses son relativos al inicio contractual. En la matriz, D es la fecha de la actividad o ventana indicada de la línea base vigente; D-10 y D-5 son diez y cinco días hábiles antes de D. LafroX cursa solicitudes completas a D-10 y pide respuesta a D-5, salvo plazo específico más temprano. Para compromisos de mes 1, las cursa en los primeros cinco días hábiles. Cada solicitud incluye ID, antecedentes, decisión o evidencia requerida, destinatario, fecha límite y actividad bloqueada. Las fechas D se registran al programar cada ola o actividad, sin cambiar el calendario contractual. Estos objetivos de coordinación se proponen para acordarlos en el arranque; no acreditan aceptación previa del CLIENTE ni sustituyen los diez días hábiles de revisión y diez de subsanación del art. 18.3 para recepción formal de entregables.
+
+Al vencer una solicitud, el dueño informa a JP y CT el mismo día hábil con la evidencia faltante y efecto en la tarea. JP solicita a CT encauzar la decisión en un día hábil; si sigue sin resolución a los dos días hábiles del vencimiento, pide una instancia extraordinaria al Comité Ejecutivo con la gerencia competente. Una amenaza a seguridad, continuidad o hito se escala inmediatamente, sin esperar ese plazo ni la sesión mensual (S6, 6.1.6; T-9, 1.6). En urgencias rige además el plazo específico de R-020. La promoción regional sigue la excepción de S4, 4.3.2.5: si el titular no responde en 15 min decide el suplente dentro del máximo de 30 min; R-016 recoge este plazo y R-019 conserva la aprobación previa de residencia de datos. El silencio activa la contingencia, conserva la tarea dependiente bloqueada y permite continuar sólo trabajo independiente; no aprueba datos, cambios, transferencia, aceptación o desplazamiento de hitos. Resolver la dependencia exige evidencia recibida y validación por la autoridad competente, registradas por JP.
+
+\subsection{Escalas previas al análisis}
+
+La probabilidad inicial $p_0$ estima la ocurrencia de al menos un episodio en la ventana de exposición de cada riesgo, tanto para el análisis cualitativo como para el cuantitativo. El nivel P se obtiene de esa misma estimación con las bandas de la Tabla 8.2. Su factor $q_P$ representa la categoría para priorizar; no constituye una segunda probabilidad del evento. Por ejemplo, R-002 tiene $p_0=60\%$, nivel 4 y factor 0,70; R-014 tiene $p_0=20\%$, nivel 2 y factor 0,30. Para calcular las HH esperadas se utiliza $p_0$, conservando la misma ventana y el supuesto de episodios del Anexo 8.B.
+
+\begin{tablalafrox}{Escala cualitativa de probabilidad -- Fuente: elaboración propia; escala contextualizada al proyecto}{tab:tabla-probabilidad}%
+{G{0.08} F{0.27} Y G{0.15}}
+{\cab{Nivel P} & \cab{Banda de $p_0$} & \cab{Descripción} & \cab{Factor $q_P$}}
+1 & $0\%\leq p_0\leq10\%$ & Muy baja & 0,10 \\
+2 & $10\%<p_0\leq30\%$ & Baja & 0,30 \\
+3 & $30\%<p_0\leq50\%$ & Media & 0,50 \\
+4 & $50\%<p_0\leq70\%$ & Alta & 0,70 \\
+5 & $70\%<p_0\leq100\%$ & Muy alta & 0,90 \\
+\end{tablalafrox}
+
+\begin{tablalafrox}{Escala de impacto -- Fuente: elaboración propia; escala contextualizada al proyecto}{tab:tabla-impacto}%
+{G{0.07} G{0.12} F{0.19} Y}
+{\cab{Nivel I} & \cab{Factor $q_I$} & \cab{PERT condicional (HH)} & \cab{Plazo, alcance, calidad o contrato}}
+1 & 0,05 & $H\leq24$ & Corrección localizada dentro de la tarea, sin afectar aceptación. \\
+2 & 0,10 & $24<H\leq80$ & Repetición o ajuste dentro del paquete, sin desplazar hitos. \\
+3 & 0,20 & $80<H\leq160$ & Reprogramación interna o reproceso de entregable, conservando requisitos e hitos contractuales. \\
+4 & 0,40 & $160<H\leq320$ & Amenaza a un hito contractual, aceptación o nivel de servicio; exige decisión y recuperación coordinadas. \\
+5 & 0,80 & $H>320$ & Consecuencia sanitaria grave, pérdida irrecuperable de trazabilidad o incumplimiento que compromete el alcance obligatorio o la continuidad contractual. \\
+\end{tablalafrox}
+
+El impacto I representa la afectación que tendría el evento si se materializa, antes de descontar la eficacia de las respuestas propuestas. Se evalúan por separado esfuerzo, plazo, alcance, calidad sanitaria y consecuencias contractuales; se adopta el mayor nivel aplicable, sin promediar dimensiones. Las HH se clasifican por el PERT condicional acumulado del Anexo 8.B, no por su valor esperado. La Tabla 8.3 define los criterios propios de planificación; el Anexo 8.C documenta su aplicación a los 36 riesgos. Una amenaza a aceptación o servicio es nivel 4; el nivel 5 requiere la consecuencia grave indicada, no una aprobación simplemente pendiente.
+
+Las condiciones de aceptación de los arts. 17.3 y 18.1--18.3, y los compromisos de continuidad descritos en 8.3.3, permiten reconocer amenazas contractuales. La gravedad se valora por la consecuencia del evento documentado, sin presumir multas concretas, terminación contractual ni daños no descritos. Las HH no se convierten directamente en días; el efecto calendario depende de secuencia, perfiles y holguras.
+
+La exposición es $E=q_P\times q_I$. Las bandas, factores y umbrales son definiciones propias del proyecto, no valores prescritos por Project Management Institute (PMI, 2017, cap. 11, §11.3, Tabla 11-1, p. 407). El producto es un índice de priorización; no representa una probabilidad, un importe ni HH esperadas.
+
+\begin{tablalafrox}{Escala de exposición -- Fuente: elaboración propia; criterio definido para el proyecto}{tab:tabla-exposicion}%
+{F{0.40} F{0.20}}
+{\cab{Exposición decimal} & \cab{Zona de prioridad}}
+$E<0.08$ & Baja \\
+$0.08\leq E<0.20$ & Media \\
+$0.20\leq E<0.40$ & Alta \\
+$E\geq0.40$ & Crítica \\
+\end{tablalafrox}
+
+La zona se calcula obligatoriamente con estos umbrales: los límites 0,08, 0,20 y 0,40 pertenecen, respectivamente, a Media, Alta y Crítica. Se conservan nivel y factor para hacer trazable el cálculo. La Tabla 8.5 y la RBS reflejan las zonas calculadas del T-16.
+
+\subsection{Registro y cierre}
+
+El responsable actualiza fuente, estado, disparador, tratamiento, consumo de HH y evidencia. Estados: identificado, en tratamiento, control verificado o materializado. Materializar el evento abre un problema y conserva su ID. CAL verifica cierre técnico; JP registra la decisión; la aceptación contractual corresponde al CLIENTE. La puntuación residual efectiva exige eficacia comprobada; verificar un control no libera reserva automáticamente. Ninguna aceptación de riesgo exime requisitos obligatorios.
+
+\section{Identificación y Análisis de Riesgos}
+
+Esta sección identifica los riesgos con una RBS y los analiza cualitativamente mediante la exposición decimal ($q_P\times q_I$), junto con los niveles ordinales de P e I y la zona registrada para cada riesgo, y cuantitativamente mediante el valor esperado de cada riesgo en horas-hombre.
+
+\subsection{RBS y análisis separados}
+
+La estructura de desglose de riesgos (EDR o RBS) organiza los \textbf{36 riesgos de T-16} de la Figura~\ref{fig:sd8-rbs}. Las seis ramas identifican la fuente predominante, no la prioridad: \textbf{Solución y tecnología} (3), \textbf{Integración y legado} (6), \textbf{Operación del cliente} (13), \textbf{Personas y adopción} (8), \textbf{Contrato y licitación} (3) y \textbf{Regulatorio y externo} (2).
+
+\parte{figuras/rbs}
+
+\textbf{Solución y tecnología} comprende la historia sanitaria de origen que el CLIENTE debe aportar (R-002), el cambio excepcional externo de soporte/compatibilidad (R-032) y la restricción efectiva de salida o sustitución del proveedor tecnológico (R-033). La elección, el mantenimiento ordinario y la portabilidad del diseño siguen a cargo de LafroX. R-032/R-033 no cubren tecnología elegida sin soporte ni falta de un plan de salida obligatorio.
+
+\textbf{Integración y legado} reúne certificación externa de cadenas (R-001), historia de ventas (R-003), deuda vigente adicional (R-007), respuesta del SII (R-008), interfaces legadas no documentadas (R-030) y disponibilidad del ERP del CLIENTE para emitir nuevas guías (R-034). La idempotencia del POS y la continuidad del servicio de mapas elegido se verifican mediante los controles CT-01 y CT-02 del Anexo 8.E.
+
+\textbf{Operación del cliente} agrupa R-004, R-005, R-006, R-009, R-010, R-012, R-016, R-017, R-018, R-020 y R-021, R-022, R-023: conciliaciones y datos de aceptación, matriz térmica, equipamiento y permisos, decisiones, enlaces y energía externos y eventos de transporte. R-036 añade la divergencia del perfil real de carga respecto del validado. Son catorce riesgos; cada episodio se imputa una sola vez a su causa principal.
+
+\textbf{Personas y adopción} reúne ocho riesgos: firma del transportista (R-011), adopción del proceso (R-013), transferencia del conocimiento del planificador (R-014), asistencia a capacitación (R-015), sustitutos no habilitados (R-024), acuerdo de telemetría (R-028), rotación nocturna (R-029) y rechazo individual de conductores externos (R-035). El 38\% es rotación anual, no $p_0$.
+
+\textbf{Contrato y licitación} comprende cambios de alcance (R-025), liquidación variable de INN-04 (R-027) y coordinación del cierre bajo peak/congelamiento (R-031). \textbf{Regulatorio y externo} comprende residencia/transferencia aprobada (R-019) y cambios normativos aplicables (R-026).
+
+Los controles técnicos del Anexo 8.E establecen medidas de diseño, pruebas habilitantes, responsables y evidencia de cierre. Una prueba prevista no acredita que el control esté implementado ni que su eficacia haya sido demostrada.
+
+Cada CT expresa un requisito u obligación técnica de diseño y una condición de verificación y aceptación; un riesgo describe un evento incierto, sus causas y efectos sobre los objetivos, con exposición y respuesta. Esta distinción no debe ocultar una incertidumbre genuina: el fallo de un control no genera automáticamente un riesgo nuevo si el evento ya está representado en T-16. Antes de proponer otra entrada se contrastan causas, evento y consecuencias con el registro, evitando duplicar el episodio o sus HH.
+
+Así, CT-14 exige demostrar capacidad técnica, mientras R-036 trata diferencias por confirmar de concentración temporal y mezcla respecto del perfil validado, R-030 trata la incertidumbre de verificar a tiempo las interfaces legadas y R-031 la de resolver incidentes o validaciones dentro de las ventanas de cierre bajo peak. CT-15 exige consistencia y autoridad única de escritura del stock, mientras R-004 trata diferencias del inventario inicial sin resolver antes del corte y R-017 la interrupción de conectividad externa. Estos riesgos no cubren por sí mismos el fallo de los controles: sólo corresponde evaluar un riesgo nuevo si éste origina un evento incierto distinto, no representado, que afecte materialmente los objetivos.
+
+Con la evidencia disponible, los dueños de los riesgos de T-16 y JP deben decidir si la incertidumbre residual corresponde a una entrada existente o requiere una nueva evaluación, documentando el fundamento sin presumir cobertura completa ni cumplimiento demostrado. Una falla ya observada se gestiona como asunto y se corrige conforme a la condición de cierre del CT; cualquier incertidumbre futura distinta se analiza por separado. R-036 se incorpora por esa incertidumbre distinta; las valoraciones de R-001--R-035 se conservan. CT-14 no traslada al CLIENTE fallos de diseño ni el peak conocido.
+
+\subsection{Análisis cualitativo de riesgos}
+
+El análisis cualitativo asigna a probabilidad e impacto niveles ordinales de 1 a 5 y sus ponderaciones decimales ($q_P$ y $q_I$). La exposición se calcula como $q_P\times q_I$ y sirve para priorizar; no es un porcentaje de probabilidad ni una estimación de pérdida. El nivel de probabilidad y su factor se derivan de la misma estimación $p_0$ utilizada en el análisis cuantitativo, conforme a la Tabla 8.2. La Tabla 8.5 presenta los diez riesgos de mayor exposición entre los 36, ordenados de mayor a menor producto y, en caso de empate, por ID ascendente. La zona se calcula con los umbrales de la Tabla 8.4; no se utiliza como sustituto del producto ni se confunde con el impacto en HH.
+
+\begingroup
+\renewcommand{\thetable}{8.5}
+\begin{tablalafrox}{Diez riesgos de mayor exposición cualitativa. Fuente: análisis cualitativo de los 36 riesgos; criterios del procedimiento de análisis.}{tab:sd8-cuerpo-4}{>{\hsize=0.8\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.05\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.4\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{ID} & \cab{$q_P$} & \cab{$q_I$} & \cab{Exposición ($q_P\times q_I$)} & \cab{Zona registrada}}
+R-002 & 0,70 & 0,80 & 0,56 & Crítica \\
+R-004 & 0,70 & 0,40 & 0,28 & Alta \\
+R-006 & 0,70 & 0,40 & 0,28 & Alta \\
+R-013 & 0,70 & 0,40 & 0,28 & Alta \\
+R-029 & 0,70 & 0,40 & 0,28 & Alta \\
+R-001 & 0,50 & 0,40 & 0,20 & Alta \\
+R-005 & 0,50 & 0,40 & 0,20 & Alta \\
+R-009 & 0,50 & 0,40 & 0,20 & Alta \\
+R-011 & 0,50 & 0,40 & 0,20 & Alta \\
+R-016 & 0,50 & 0,40 & 0,20 & Alta \\
+\end{tablalafrox}
+\endgroup
+
+El registro contiene 1 riesgo crítico, 14 altos, 16 medios y 5 bajos. R-002 tiene E=0,56 y zona Crítica. La Tabla 8.5 selecciona diez por producto y desempata por ID, sin sustituir el conjunto de riesgos altos. La valoración posterior proyectada y el plan adicional se presentan en 8.F; el análisis FMEA de los 15 riesgos altos y críticos iniciales se desarrolla en 8.G.
+
+\subsection{Análisis cuantitativo}
+
+El análisis estima las horas-hombre (HH) adicionales atribuibles a cada riesgo, separando el trabajo extraordinario del trabajo ordinario del proyecto. Para cada perfil y riesgo se estimaron tres valores por episodio: optimista ($O$), más probable ($M$) y pesimista ($P$). Las horas de los dos perfiles se suman dentro de cada escenario; cuando el modelo supone episodios repetidos, se multiplica por el número de episodios condicionado a que ocurra al menos uno. Así se obtienen las HH condicionales acumuladas $O_i$, $M_i$ y $P_i$.
+
+El valor central condicional se calcula con PERT: $H_i^{\mathrm{cond}}=(O_i+4M_i+P_i)/6$. El escenario más probable recibe cuatro veces el peso de cada extremo. Luego se calcula el valor esperado de esfuerzo $VE_i=p_{0,i}\times H_i^{\mathrm{cond}}$, donde $p_0$ es la probabilidad estimada de al menos un episodio en toda la ventana del riesgo. La Tabla 8.6 ordena por $VE$ descendente los diez riesgos de mayor esfuerzo esperado entre los 36 riesgos; la columna PERT muestra el esfuerzo condicional, no la probabilidad. Los valores O/M/P detallados se presentan en el Anexo 8.B. Se desempata por ID ascendente. Las estimaciones son supuestos de planificación, no frecuencias históricas, compromisos de horas ni resultados de simulación.
+
+\begingroup
+\renewcommand{\thetable}{8.6}
+\begin{tablalafrox}{Diez mayores valores esperados de esfuerzo. Fuente: Tabla de análisis cuantitativo; estimación de tres valores según el procedimiento.}{tab:sd8-cuantitativo}{>{\hsize=0.35\hsize\linewidth=\hsize\centering\arraybackslash}X >{\hsize=2.2\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.65\hsize\linewidth=\hsize\centering\arraybackslash}X >{\hsize=0.9\hsize\linewidth=\hsize\centering\arraybackslash}X >{\hsize=0.9\hsize\linewidth=\hsize\centering\arraybackslash}X}{\cab{ID} & \cab{Riesgo (síntesis)} & \cab{$p_0$} & \cab{PERT (HH)} & \cab{$VE$ (HH)}}
+R-002 & Historia sanitaria de origen no reconstruible & 60\% & 194,67 & 116,80 \\
+R-029 & Rotación nocturna supera inducción disponible & 55\% & 208,00 & 114,40 \\
+R-013 & Usuarios mantienen el proceso anterior & 55\% & 128,00 & 70,40 \\
+R-030 & Interfaces ERP/WMS no verificables a tiempo & 50\% & 140,00 & 70,00 \\
+R-003 & Historial de ventas inutilizable para carga y reposición & 50\% & 128,00 & 64,00 \\
+R-004 & Diferencias de inventario sin resolver antes del corte & 55\% & 110,67 & 60,87 \\
+R-006 & Historia de origen insuficiente para líneas base de aceptación & 55\% & 101,33 & 55,73 \\
+R-005 & Saldo inicial de envases no conciliable (carga M8) & 50\% & 96,00 & 48,00 \\
+R-001 & Cadena no completa a tiempo su certificación EDI & 45\% & 104,00 & 46,80 \\
+R-032 & Cambio de soporte exige adecuación extraordinaria & 40\% & 106,67 & 42,67 \\
+\end{tablalafrox}
+\endgroup
+
+Los diez riesgos aportan aproximadamente \textbf{689,67 HH de valor esperado}, el 57,5\% de las 1.199,52 HH esperadas para los 36 riesgos, bajo las mismas probabilidades y supuestos. El valor central PERT de cada riesgo representa esfuerzo condicional si ocurre; $VE$ pondera ese esfuerzo por su probabilidad y no equivale a una asignación cierta de trabajo. Las HH no se convierten directamente en días de atraso: el efecto calendario depende de secuencia, concurrencia, disponibilidad de perfiles y holguras.
+
+\paragraph{Análisis de modos de falla} El Anexo 8.G aplica FMEA a los 15 riesgos de zona Alta o Crítica inicial. Para cada modo se documentan efecto, disparador, severidad S, ocurrencia O, dificultad de detección D, NPR=S por O por D, control, acción y evaluación posterior proyectada. S sigue el impacto, O las bandas de p0/p1 y D una escala específica de detectabilidad antes del efecto. NPR no equivale a exposición ni a HH; un modo de severidad sanitaria 5 exige acción aun con NPR bajo. CAL verifica evidencias y conserva pruebas/defectos. La evaluación posterior se verifica mediante las pruebas y evidencias exigidas.
+
+\section{Plan de Acción a Riesgos}
+
+Este plan establece respuestas propuestas para los 36 riesgos del registro, relaciona su prioridad con los resultados de 8.2 y fija cómo gobernar la reserva de esfuerzo y verificar la factibilidad. La Tabla 8.A.1 presenta las respuestas y la Tabla 8.A.2 concreta la coordinación de 29 riesgos con el CLIENTE: contraparte, solicitud, plazo y contingencia. Las respuestas se activan según el evento y sus disparadores; los responsables deben ejecutar los controles y comprobar su eficacia con la evidencia indicada. Los responsables son los dueños propuestos del riesgo y coordinan a las áreas pertinentes; no se presume que ejecuten individualmente todo el esfuerzo.
+
+\subsection{Respuestas y costo-beneficio técnico}
+Las 36 fichas de la Tabla 8.F.1 concretan acción preventiva, disparador de 8.A, dueño/apoyo, esfuerzo A/C, plazo preventivo y contingencia temporizada. Las dependencias del CLIENTE se detallan en la Tabla 8.A.2. Los controles ordinarios de diseño, formación y soporte conservan su presupuesto en S7; A sólo estima coordinación extraordinaria y cierre de excepción, y C particiona el PERT inicial, sin sumarlo otra vez.
+
+La Tabla 8.F.3 calcula costo-beneficio en HH de las 15 respuestas altas/críticas: B=p0H0-p1(H0-C), T=A+p1C y B/T. El saldo neto B-T evita duplicación entre atención del evento y respuesta. Se muestra el escenario sin mejora p1=p0, umbral de equilibrio y justificación de cada tratamiento; las obligaciones sanitarias, de aceptación o continuidad no se descartan por retorno HH menor que uno. La comparación utiliza exclusivamente esfuerzo en HH.
+
+La Tabla 8.F.2 asigna a los 36 riesgos p1, I1, E1, zona y evidencia requerida. El impacto residual mantiene la gravedad de las consecuencias sanitarias y contractuales, incluso con una mejor detección. La valoración posterior está condicionada a ejecutar la acción y verificar su eficacia. Si no se acredita la hipótesis, permanece la valoración inicial y se escala antes del hito.
+
+La proyección contiene 1 riesgo crítico, 4 altos, 20 medios y 11 bajos. R-002, R-006, R-029, R-030, R-031 mantienen zona alta/crítica aun en la proyección del tratamiento completo, incluido el plan adicional de 8.F.1; no se atribuye a éste una segunda reducción de probabilidad. La justificación posterior a la Tabla 8.F.2 distingue referencia inicial, evidencia de eficacia por obtener, bloqueos y tratamiento si persiste la prioridad. Sólo puede continuar trabajo independiente o expresamente autorizado, sin acreditar el alcance pendiente. CAL verifica, JP escala y la autoridad del CLIENTE decide sus dependencias; escalar no resuelve el riesgo ni dispensa requisitos obligatorios.
+
+La matriz 8.F.2a concreta para esos cinco riesgos la prueba, evidencia, verificador,
+plazo y condición de habilitación. Distingue resultado satisfactorio, insuficiente
+y fallido; sólo el primero permite proponer una reevaluación con las escalas de
+8.1.3 y las aprobaciones exigidas. Hasta entonces rige la valoración inicial para
+decidir. El objetivo de seguimiento es E menor que 0,20, condicionado a evidencia
+de toda la ventana y conservando la gravedad sanitaria y contractual; las
+proyecciones actuales todavía no lo alcanzan. La suficiencia de HH para ejecutar
+y repetir las verificaciones se concilia antes de programarlas, según 8.F.
+SD8-04 permanece parcial: se completa el protocolo propuesto, con eficacia y
+nivel manejable aún pendientes de acreditación.
+
+\subsection{Reservas y cronograma}
+La exposición inicial es de 1.199,52 HH. Las fichas proponen 180,00 HH preventivas planificadas y 837,53 HH de contingencia específica p1H0; dentro de esta última, 142,00 HH son respuesta p1C y 695,53 HH remanente p1L. La suma posterior A+p1H0 es 1.017,53 HH, no se añade a las 1.199,52 HH iniciales. Los cálculos se realizan sin redondear; los totales impresos se redondean a dos decimales.
+
+La reserva de gestión propuesta es de 160 HH: cuatro ciclos extraordinarios de 40 HH, cada uno con JP 8, ARQ 16, CAL 8 y SRE 8 HH. El Anexo 8.H explicita sus supuestos, límites y sensibilidad, y distingue esta capacidad de decisión de la contingencia específica y de las 3.072 HH protegidas para E1. Su utilización requiere autorización del Comité Ejecutivo; no representa trabajo consumido ni financiamiento aprobado.
+
+Las Tablas 8.H.2--3 distribuyen prevención y contingencia por mes y perfil. La gestión se reserva como capacidad de decisión en los bloques 1--12, 13--20, 21--38 y 39--56. El crédito demostrado contra las 3.072 HH es inicialmente cero hasta verificar la coincidencia de paquete, perfil y mes; esa protección no se suma nuevamente ni se utiliza en E2. La programación requiere nivelación de capacidad y autorización de la línea base, manteniendo la misma distribución mensual para su valoración económica. Las HH no se convierten directamente en días y se preservan las cuatro semanas finales de evidencia.
+
+\subsection{Factibilidad y aceptación}
+
+La factibilidad de la respuesta depende de recursos y decisiones compartidas. Antes de comprometer cada acción se debe confirmar productividad/dotación, calendario y secuencia diaria, responsable con autoridad, dependencia externa, esfuerzo de implementación y evidencia de eficacia. El T-15 deberá nivelar los frentes que coinciden entre los meses 13--15 y 19--20, proteger la operación de Etapa 1 durante la salida de Etapa 2 y cubrir ambos alcances desde el inicio de operación (Bases Administrativas, art. 17.2, p. 13). La aprobación de la reserva requiere verificar su cobertura con la capacidad disponible y cuantificar cualquier refuerzo o efecto sobre el calendario.
+
+La aceptación no se basa sólo en completar tareas: cada hito se cumple con acta de la Contraparte Técnica; cada entregable incluye artefacto, evidencia objetiva de verificación, trazabilidad a requisitos y registro de observaciones resueltas (Bases Administrativas, arts. 18.1--18.2, p. 13). El CLIENTE dispone de diez días hábiles para revisar y LafroX de diez días hábiles para subsanar; una segunda presentación observada por la misma naturaleza se considera atraso imputable (art. 18.3). La aceptación no libera responsabilidad por defectos posteriores (art. 18.4). En cada marcha blanca, las seis condiciones del artículo 17.3 son acumulativas: no tener incidentes críticos/altos atribuibles abiertos; alcanzar el volumen real comprometido durante las cuatro últimas semanas; sostener disponibilidad y tiempos de respuesta comprometidos; no tener diferencias de conciliación inexplicadas; contar con personal del CLIENTE capacitado y certificado; y obtener el acta de aceptación. Si no se cumplen al cierre, la marcha blanca debe extenderse a costo del adjudicatario, sin cargo adicional al CLIENTE ni desplazamiento de fases posteriores, sin perjuicio de las multas contractuales. RT-20.04 exige definir indicadores diarios y umbrales de avance, y RT-20.02 exige una salida gradual y reversible (Bases Técnicas Transversales, cap. 20, §20.2, RT-20.02 y RT-20.04).
+
+En continuidad se mantienen los objetivos RTO de 4 horas y RPO de 15 minutos para servicios críticos (Bases Técnicas Transversales, cap. 7, RT-07.04, p. 17). S4, 4.3.2.4--4.3.2.7 (pp. 181--184), distingue extracción multicanal, recuperación del WMS, restitución de accesos y recuperación del ERP del CLIENTE. Las alarmas a los 5 y 15 minutos y AL-DR-01 verifican brecha y punto recuperable; se ensayan antes de H5/H10 y semestralmente durante Operación. AL-DTE-01 comprueba las 96 salidas con guía válida, preemisión, cambio de carga y nueva emisión del ERP. Estas evidencias se complementan: aprobar una no demuestra las otras. La pérdida de la sala de Talca detiene nuevas guías hasta restituir el ERP; recuperar el WMS en nube no resuelve esa dependencia ni permite exceptuar el RTO requerido. La dependencia se registra en R-034; la prueba habilitante y su plan contingente se registran en 8.F.1--2. La habilitación requiere aprobar estos ensayos. Para el retiro sanitario durante pérdida regional, S4, 4.3.2.5 (p. 184), plantea hasta 15 min de habilitación y 60 de consulta y verificación: 75 min frente al máximo de dos horas, sujetos a prueba y cobertura de evidencia.
+
+La autenticación, el mínimo privilegio, la revocación y la auditoría de identidad se verifican mediante CT-03. El control de stock, antes identificado como CT-16, se renumeró CT-15. R-017 y los controles de continuidad, ERP, stock y seguridad conservan sus respectivas condiciones de evidencia; el diseño de conectividad no sustituye las pruebas de sus alcances.
+
+La suspensión del proveedor de lácteos entre marzo y septiembre de 2026 es un antecedente ocurrido y se gestiona como dependencia/asunto, no como riesgo futuro. Corresponde obtener con el CLIENTE y el proveedor evidencia de restitución de la trazabilidad antes de depender de ella para aceptar la etapa correspondiente; la fecha y evidencia de restitución no se presumen. En general, cada condición pendiente debe tener responsable, hito, evidencia requerida y decisión documentada. Hasta que existan pruebas satisfactorias y actas exigidas, se mantiene como pendiente la factibilidad de las respuestas afectadas y no se declara aceptado el hito.
+
+\newpage
+
+\section*{Referencias}
+\addcontentsline{toc}{section}{Referencias}
+
+\begingroup
+\small\setlength{\parindent}{-0.5in}\setlength{\leftskip}{0.5in}\setlength{\parskip}{3pt}
+Distribuidora Puelche S.A. (2026). \emph{Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación}.
+
+Distribuidora Puelche S.A. (2026). \emph{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026}.
+
+Distribuidora Puelche S.A. (2026). \emph{Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.}
+
+International Organization for Standardization. (2018). \emph{ISO 31000:2018 Risk management \textemdash{} Guidelines}. https://www.iso.org/standard/65694.html
+
+
+
+
+
+
+
+
+Project Management Institute. (2017). \emph{La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK®)} (6.ª ed.).
+\endgroup
+
+\section*{Declaración de uso de IA}
+\addcontentsline{toc}{section}{Declaración de uso de IA}
+
+La declaración de uso de IA responde al artículo 13.5 de las Bases Administrativas. La Tabla~\ref{tab:sd8-cuerpo-7} indica, para cada sección, la herramienta utilizada, su finalidad y el alcance de la revisión humana.
+
+\begingroup
+\renewcommand{\thetable}{8.IA.1}
+\begin{tablalafrox}{Declaración de uso de IA}{tab:sd8-cuerpo-7}{>{\hsize=0.98597\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.04345\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.51284\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.56762\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.71876\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.17136\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{Sección} & \cab{Herramienta} & \cab{Finalidad del uso} & \cab{Nivel en texto} & \cab{Nivel en diagramas} & \cab{Revisión humana (quién y qué verificó)}}
+Introducción & Gentle-Shell y ChatGPT & Conexión con operación, alcance y formularios & Alto & Ninguno & Maximiliano Miño: revisión del alcance de la introducción y de su correspondencia con la operación y los entregables. \\
+8.1 Plan de riesgos & Gentle-Shell y ChatGPT & Roles, escalas, ciclo y cierre & Alto & Ninguno & Guillermo Castillo: roles, escalas de probabilidad e impacto, ciclo y cierre frente al SD6 y el T-16. \\
+8.2 Identificación y Análisis de Riesgos & Gentle-Shell y ChatGPT & RBS, exposición cualitativa y valor esperado en HH & Alto & Medio & Maximiliano Miño: enunciado de los riesgos, RBS y valoración de probabilidad, impacto y exposición; Patricio Henríquez: estimación de tres valores. \\
+8.3 Plan de Acción a Riesgos & Gentle-Shell y ChatGPT & Respuestas, contingencia y gestión & Alto & Ninguno & Alex Aravena: correspondencia entre la valoración, las respuestas, las contingencias y las reservas frente al SD7. \\
+Anexo 8.A & Gentle-Shell y ChatGPT & Proponer respuestas y estrategias para los riesgos, junto con un responsable para cada uno & Alto & Ninguno & Maximiliano Miño: revisión de la pertinencia de las estrategias, respuestas y responsables de cada riesgo. \\
+Anexo 8.B & Gentle-Shell y ChatGPT & Proponer y validar los cálculos relacionados con la estimación de tres valores & Alto & Ninguno & Patricio Henríquez: estimaciones de esfuerzo, cálculos PERT y valores esperados por riesgo. \\
+Anexo 8.C & Gentle-Shell y ChatGPT & Fundamentar la valoración inicial de impacto y su relación con el PERT y las dimensiones no monetarias & Alto & Ninguno & Guillermo Castillo: revisión de escalas y consistencia de los criterios de impacto. \\
+Anexo 8.D & Gentle-Shell y ChatGPT & Organizar dependencias operativas, responsables, continuidad y evidencias habilitantes & Alto & Ninguno & Maximiliano Miño: revisión de riesgos, dependencias y correspondencia con la operación y los entregables. \\
+Anexo 8.E & Gentle-Shell y ChatGPT & Definir controles técnicos, responsables, pruebas y condiciones de cierre & Alto & Ninguno & Alex Aravena: revisión de la correspondencia entre controles, respuestas y evidencia de cierre. \\
+Anexo 8.F & Gentle-Shell y ChatGPT & Desarrollar respuestas, estimaciones de esfuerzo y proyección del riesgo residual & Alto & Ninguno & Alex Aravena: revisión de respuestas, contingencias y reservas; Patricio Henríquez: revisión de estimaciones y cálculos. \\
+Anexo 8.G & Gentle-Shell y ChatGPT & Analizar modos de falla, efectos, prioridades y controles posteriores & Alto & Ninguno & Patricio Henríquez: revisión de estimaciones y cálculos; Guillermo Castillo: revisión de criterios de priorización. \\
+Anexo 8.H & Gentle-Shell y ChatGPT & Distribuir reservas, perfiles y esfuerzo en el tiempo, y explicitar supuestos y sensibilidad & Alto & Ninguno & Alex Aravena: revisión de la correspondencia entre reservas y esfuerzo frente al SD7. \\
+Formulario T-16 & Gentle-Shell y ChatGPT & Mejorar la redacción de las descripciones de riesgos y proponer valores de probabilidad e impacto, y estrategias o respuestas & Alto & Ninguno & Maximiliano Miño: enunciados, valoraciones de probabilidad e impacto y estrategias de respuesta; Tomás Pérez: contingencias y responsables. \\
+\end{tablalafrox}
+\endgroup

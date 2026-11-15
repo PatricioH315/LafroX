@@ -24,13 +24,13 @@ Este documento reúne los anexos del plan de riesgos de LafroX.
 
 \section{Anexo 8.A: Matriz de respuestas propuestas}
 
-La Tabla 8.A.1 presenta una respuesta propuesta para cada uno de los 35 riesgos, con sus disparadores y responsables. La Tabla 8.A.2 especifica para los 28 riesgos con coordinación del CLIENTE la contraparte, solicitud, evidencia, plazo y contingencia por falta de respuesta. Sus objetivos de coordinación se proponen para acuerdo en el arranque; no acreditan una aceptación previa ni la eficacia de las respuestas. La estimación de esfuerzo por perfil, los plazos completos y la valoración residual proyectada están en 8.F.1--2; el costo-beneficio de las respuestas altas/críticas, en 8.F.3. La subcontratación no transfiere la obligación contractual final de LafroX.
+La Tabla 8.A.1 presenta una respuesta propuesta para cada uno de los 36 riesgos, con sus disparadores y responsables. La Tabla 8.A.2 especifica para los 29 riesgos con coordinación del CLIENTE la contraparte, solicitud, evidencia, plazo y contingencia por falta de respuesta. Sus objetivos de coordinación se proponen para acuerdo en el arranque; no acreditan una aceptación previa ni la eficacia de las respuestas. La estimación de esfuerzo por perfil, los plazos completos y la valoración residual proyectada están en 8.F.1--2; el costo-beneficio de las respuestas altas/críticas, en 8.F.3. La subcontratación no transfiere la obligación contractual final de LafroX.
 
 \begingroup
 \renewcommand{\thetable}{8.A.1}
 \begin{landscape}
 \setlength{\textwidth}{\linewidth}
-\begin{tablalafrox}{Matriz de respuestas propuestas para los 35 riesgos vigentes. Fuente: riesgos, disparadores y responsables propuestos en el Formulario T-16; respuestas propuestas en este plan.}{tab:sd8-anexo-a-respuestas}{G{0.06} F{0.22} Y F{0.18}}{\cab{ID} & \cab{Disparador observable} & \cab{Respuesta propuesta y actuación ante el disparador} & \cab{Responsable propuesto en T-16}}
+\begin{tablalafrox}{Matriz de respuestas propuestas para los 36 riesgos vigentes. Fuente: riesgos, disparadores y responsables propuestos en el Formulario T-16; respuestas propuestas en este plan.}{tab:sd8-anexo-a-respuestas}{G{0.06} F{0.22} Y F{0.18}}{\cab{ID} & \cab{Disparador observable} & \cab{Respuesta propuesta y actuación ante el disparador} & \cab{Responsable propuesto en T-16}}
 R-001 & Cadena del alcance sin certificación antes del límite de 28 días & Solicitar al Gerente Comercial, con TI y cada cadena, agenda EDI en mes 13, confirmada en mes 14, y certificación a D-5 del inicio de las cuatro semanas finales de evidencia de E2. Ante falta de respuesta, JP escala por CT; continuar pruebas independientes sin acreditar la cadena pendiente ni sustituir EDI por carga manual. & Arquitecto de Solución \\
 R-002 & Lotes o vínculos históricos sin evidencia de origen al perfilar la carga & Solicitar a la Jefa de Calidad, con TI y Bodega, evidencia de origen y decisión sobre lotes no reconstruibles; política V-07 al cierre del mes 2 y excepciones a D-5 de validar cada carga. Si no responde, JP escala por CT, se aísla el conjunto y queda pendiente su aceptación; no se inventa historia sanitaria. & Líder de Datos \\
 R-003 & V-09 no acredita tres años utilizables o revela períodos incompletos & Solicitar al Jefe de Abastecimiento y a TI el historial de tres años y validación de V-09 al cierre del mes 3; corregir extractos a D-5 de validar la carga. Ante silencio, escalar por CT, separar períodos incompletos y continuar el perfilado disponible sin reducir la historia exigida. & Líder de Datos \\
@@ -66,6 +66,7 @@ R-032 & Aviso de soporte/compatibilidad que deja una versión necesaria fuera de
 R-033 & Ensayo de exportación/restauración incompleto, acceso o clave no disponible para el CLIENTE, o cambio de condiciones que impide cumplir el plan de salida. & Mitigar. ARQ verifica con TI propiedad de cuentas, acceso a datos, claves, exportaciones e infraestructura como código en la recepción inicial y en cada actualización anual del plan 8.1.4. Probar una restauración utilizable, no sólo descargar archivos. Ante restricción, documentar brecha, mantener continuidad autorizada y escalar por CT alternativas y decisión contractual; no declarar reversibilidad completa ni cambiar de proveedor sin prueba y aprobación. & Arquitecto de Solución \\
 R-034 & Carga sin guía vigente que requiere nueva emisión mientras el ERP está indisponible; pérdida de sala con ERP aún no restituido. & Mitigar y escalar. ARQ/SRE acuerdan con TI y Finanzas restitución del ERP y ensayan AL-DTE-01/AL-DR-01 antes de H5/H10, incluida pérdida de sala. Mantener sólo salidas con guía preemitida aún válida y bloquear las que requieren nueva guía. Recuperar WMS en nube no restaura el ERP ni exceptúa el RTO requerido; registrar y escalar por CT cualquier incumplimiento, sin segundo emisor ni aprobación tributaria por silencio. & Arquitecto de Solución \\
 R-035 & Conductor asignado y habilitado rechaza el flujo digital o entrega sin la evidencia requerida, sin que la causa sea firma pendiente o reemplazo sin aviso. & Mitigar y escalar. IMP coordina con Operaciones, transportista y conductor demostración y acompañamiento antes de su salida, dentro de 7.1.3. Confirmar disponibilidad a D-5 de la ola y aceptación práctica en andén. Ante rechazo, solicitar a la empresa conductor certificado y dispuesto, mantener acompañamiento y elevar por CT la cobertura pendiente; no atribuir a LafroX facultades laborales ni declarar completa la evidencia faltante. & Líder de Implantación y Gestión del Cambio \\
+R-036 & Mediciones de concentración temporal o mezcla de transacciones distintas del perfil validado, o perfil sin confirmar al cierre del mes 1. & Mitigar. ARQ solicita el perfil a Operaciones/TI en los primeros cinco días hábiles del mes 1 y lo valida al cierre de ese mes; revalida antes de H5/H10, preparación del peak y cambios del perfil. SRE asume gestión operativa desde mes 22, familia ARQ. Ante divergencia, conservar mediciones, ejecutar CT-14, bloquear promoción afectada y elevar recuperación por CT antes del hito. El peak conocido, crecimiento comprometido y corrección del diseño dentro del alcance siguen a cargo de LafroX. & Arquitecto de Solución \\
 \end{tablalafrox}
 \end{landscape}
 \endgroup
@@ -73,7 +74,7 @@ R-035 & Conductor asignado y habilitado rechaza el flujo digital o entrega sin l
 \subsection*{Dependencias del CLIENTE: compromisos y contingencias}
 \addcontentsline{toc}{subsection}{Dependencias del CLIENTE: compromisos y contingencias}
 
-Esta matriz establece los compromisos de coordinación de los 28 riesgos que requieren insumos o decisiones del CLIENTE. La contraparte aporta antecedentes y decide dentro de su autoridad; LafroX conserva la responsabilidad de diseño, capacidad, seguridad y mantenimiento. La gestión de servicios externos, suministros, siniestros y cambios normativos se realiza mediante las respuestas específicas de la Tabla 8.A.1. Los plazos de coordinación se proponen para acuerdo en el arranque; no acreditan respuestas recibidas ni modifican las obligaciones contractuales.
+Esta matriz establece los compromisos de coordinación de los 29 riesgos que requieren insumos o decisiones del CLIENTE. La contraparte aporta antecedentes y decide dentro de su autoridad; LafroX conserva la responsabilidad de diseño, capacidad, seguridad y mantenimiento. La gestión de servicios externos, suministros, siniestros y cambios normativos se realiza mediante las respuestas específicas de la Tabla 8.A.1. Los plazos de coordinación se proponen para acuerdo en el arranque; no acreditan respuestas recibidas ni modifican las obligaciones contractuales.
 
 CT es la Contraparte Técnica. En ``ID / dueño'', JP, ARQ, DAT, CAL, IMP y SEG corresponden a las familias y responsables de la Tabla 8.1; desde mes 22 se aplica el relevo allí definido. D identifica la actividad o ventana indicada de la línea base; D-10 y D-5 son días hábiles anteriores. Salvo indicación específica, el dueño envía expediente completo a D-10 y solicita respuesta a D-5; si existe un plazo de mes más temprano, rige ese plazo. Para mes 1 solicita en sus primeros cinco días hábiles. Los plazos formales del art. 18.3 se conservan.
 
@@ -83,7 +84,7 @@ Si falta respuesta, el dueño informa a JP y CT el mismo día hábil del vencimi
 \renewcommand{\thetable}{8.A.2}
 \begin{landscape}
 \setlength{\textwidth}{\linewidth}
-\begin{tablalafrox}{Contrapartes, solicitudes, plazos y contingencias de los 28 riesgos con coordinación del CLIENTE. Fuente: asignaciones de S2/S3/S6/S13 y objetivos de coordinación propuestos en S8, 8.1.2.}{tab:sd8-dependencias-cliente}{G{0.07} F{0.17} Y F{0.21} F{0.23}}{\cab{ID / dueño} & \cab{Contraparte del CLIENTE / apoyo} & \cab{Solicitud y evidencia de resolución} & \cab{Plazo de solicitud y respuesta} & \cab{Escalamiento y contingencia por falta de respuesta}}
+\begin{tablalafrox}{Contrapartes, solicitudes, plazos y contingencias de los 29 riesgos con coordinación del CLIENTE. Fuente: asignaciones de S2/S3/S6/S13 y objetivos de coordinación propuestos en S8, 8.1.2.}{tab:sd8-dependencias-cliente}{G{0.07} F{0.17} Y F{0.21} F{0.23}}{\cab{ID / dueño} & \cab{Contraparte del CLIENTE / apoyo} & \cab{Solicitud y evidencia de resolución} & \cab{Plazo de solicitud y respuesta} & \cab{Escalamiento y contingencia por falta de respuesta}}
 R-001 / ARQ & Gerente Comercial; coordinación de TI con el responsable EDI de cada cadena. & Confirmar cadenas del alcance, contacto técnico, agenda y ambiente de certificación; entregar resultado firmado de intercambio de pedidos y avisos por cadena. & Solicitar agenda en mes 13 y confirmarla al cierre del mes 14. Certificación a D-5 de la ventana final de 28 días de evidencia de E2; D es el inicio de esa ventana. & Escalar al Gerente Comercial por CT. Reordenar pruebas independientes; conservar pendiente la cobertura EDI de la cadena. La carga manual no acredita E2 ni permite excluirla. \\
 R-002 / DAT & Jefa de Calidad; Jefe de TI y Jefa de Bodega aportan fuentes ERP/WMS y antecedentes de lotes. & Entregar extractos y evidencia de origen de los vínculos sanitarios; Calidad debe decidir por escrito la disposición de conjuntos cuya historia no pueda reconstruirse y la política ante lote desconocido (V-07). & Solicitar fuentes en mes 1; política y resolución inicial al cierre del mes 2. Para cada carga, resolver las excepciones a D-5 de su validación; nunca después del corte. & Escalar a CT con los lotes y evidencia faltante; aislar el conjunto y trabajar sobre datos verificables. Mantener la aceptación pendiente; no inventar lotes ni reconstruir historia sin fuente. \\
 R-003 / DAT & Jefe de Abastecimiento; Jefe de TI entrega y explica los extractos del ERP. & Entregar tres años de ventas y pedidos, diccionario y cobertura temporal; validar el informe de perfilado V-09 y las excepciones identificadas. & Solicitar en mes 2; validación de V-09 al cierre del mes 3 y correcciones de cada extracto a D-5 de validar su carga. & Escalar por CT a Abastecimiento y TI; separar períodos incompletos y continuar perfilado de fuentes disponibles. No reducir unilateralmente los tres años exigidos ni dar por aceptado el historial faltante. \\
@@ -112,6 +113,7 @@ R-032 / ARQ & Jefe de TI y Contraparte Técnica; Operaciones para ventanas de ac
 R-033 / ARQ & Jefe de TI y Contraparte Técnica; autoridad contractual del CLIENTE para condiciones de salida y acceso. & Accesos y titularidad de cuentas/claves, evidencia de exportación y restauración y decisión sobre restricciones contractuales de sustitución. & Verificar en recepción inicial y actualización anual de 8.1.4; resolver cada restricción antes del ensayo o transición de salida que dependa de ella. & ARQ eleva por CT la restricción al Comité Ejecutivo y prepara salida gradual comprobable; conservar acceso y continuidad bajo condiciones autorizadas sin presumir equivalencia entre proveedores. \\
 R-034 / ARQ & Jefe de TI y Gerente de Finanzas; Operaciones coordina cargas y salidas afectadas. & Procedimiento de restitución del ERP, responsables y evidencias de emisión/anulación, con resultado de ensayo de pérdida de sala y cambio de carga. & Acordar procedimiento antes del ensayo AL-DTE-01/AL-DR-01 de H5/H10. En incidente, comunicar de inmediato a TI/Finanzas y decidir cada salida antes de despachar. & ARQ/SRE escalan por CT a TI/Finanzas; bloquear salida sin guía válida y conservar la carga original sólo si conserva guía vigente. Medir restitución completa frente al RTO exigido. \\
 R-035 / IMP & Gerente de Operaciones y representante de cada empresa transportista; conductor como participante de la validación práctica. & Disponibilidad de conductores y demostración de uso en andén, evidencia de inducción y compromiso operativo del transportista ante rechazo individual. & Confirmar participantes a D-5 de la ola de reparto y demostrar uso antes de la primera salida del conductor; actuar en andén ante cada rechazo. & IMP escala por CT a Operaciones y al transportista; solicitar conductor certificado y dispuesto y acompañar. Registrar entregas/evidencias pendientes sin dar cobertura por cumplida. \\
+R-036 / ARQ & Gerente de Operaciones y Jefe de TI; SRE gestiona desde mes 22, familia ARQ. & Entregar y validar perfil por ventana, concentración temporal y mezcla de transacciones, incluyendo peak y crecimiento comprometidos; conservar mediciones y aprobación de cada versión. & Solicitar en los primeros cinco días hábiles del mes 1; validar al cierre del mes 1 y revalidar antes de H5/H10, preparación del peak y cambios del perfil. & ARQ, y SRE desde mes 22, registra divergencia y avisa a JP/CT el mismo día hábil; presenta recuperación en dos días hábiles y siempre antes del hito. Conservar bloqueo, corregir y repetir CT-14 en ventana autorizada antes de habilitar. Si la divergencia pertenece al alcance comprometido, LafroX corrige como trabajo ordinario; no presume ampliación contractual. \\
 \end{tablalafrox}
 \end{landscape}
 \endgroup
@@ -119,7 +121,7 @@ R-035 / IMP & Gerente de Operaciones y representante de cada empresa transportis
 \clearpage
 \section{Anexo 8.B: Contingencia de esfuerzo por riesgo}
 
-Este anexo estima la exposición de esfuerzo de los 35 riesgos de T-16. Para cada riesgo se presentan la probabilidad de ocurrencia $p_0$, los episodios condicionales previstos $n$ y los impactos acumulados optimista (O), más probable (M) y pesimista (P), en HH. Cada escenario suma las estimaciones de los dos perfiles para un episodio y las multiplica por $n$. La estimación PERT acumulada es $\mathrm{PERT}=(O+4M+P)/6$ y el valor esperado es $\mathrm{VE}=p_0\times\mathrm{PERT}$. Son estimaciones de planificación, no frecuencias históricas ni compromisos de esfuerzo asignado; deben validarse con los responsables. La suma de VE se presenta como exposición inicial de esfuerzo conciliada con la proyección y reservas propuestas de 8.H, no como resultado de una simulación ni como distribución temporal o por perfil. Las respuestas no modifican la estimación inicial $p_0$ de esta tabla; la proyección posterior se calcula por separado en 8.F.
+Este anexo estima la exposición de esfuerzo de los 36 riesgos de T-16. Para cada riesgo se presentan la probabilidad de ocurrencia $p_0$, los episodios condicionales previstos $n$ y los impactos acumulados optimista (O), más probable (M) y pesimista (P), en HH. Cada escenario suma las estimaciones de los dos perfiles para un episodio y las multiplica por $n$. La estimación PERT acumulada es $\mathrm{PERT}=(O+4M+P)/6$ y el valor esperado es $\mathrm{VE}=p_0\times\mathrm{PERT}$. Son estimaciones de planificación, no frecuencias históricas ni compromisos de esfuerzo asignado; deben validarse con los responsables. La suma de VE se presenta como exposición inicial de esfuerzo conciliada con la proyección y reservas propuestas de 8.H, no como resultado de una simulación ni como distribución temporal o por perfil. Las respuestas no modifican la estimación inicial $p_0$ de esta tabla; la proyección posterior se calcula por separado en 8.F.
 
 \begingroup
 \renewcommand{\thetable}{8.B.1}
@@ -162,7 +164,8 @@ R-032 & 40\% & 2 & 32,00 & 96,00 & 224,00 & 106,67 & 42,67\\
 R-033 & 25\% & 1 & 40,00 & 120,00 & 280,00 & 133,33 & 33,33\\
 R-034 & 30\% & 2 & 32,00 & 96,00 & 240,00 & 109,33 & 32,80\\
 R-035 & 40\% & 2 & 24,00 & 64,00 & 160,00 & 73,33 & 29,33\\
-\multicolumn{6}{r}{Total VE} & & 1183,12\\
+R-036 & 30\% & 1 & 16,00 & 48,00 & 120,00 & 54,67 & 16,40 \\
+\multicolumn{6}{r}{Total VE} & & 1199,52\\
 \end{tablalafrox}
 \end{landscape}
 
@@ -175,7 +178,7 @@ R-035 & 40\% & 2 & 24,00 & 64,00 & 160,00 & 73,33 & 29,33\\
 \subsection*{Hipótesis de ocurrencia y esfuerzo}
 \addcontentsline{toc}{subsection}{Hipótesis de ocurrencia y esfuerzo}
 
-Las probabilidades y HH de los riesgos R-028--R-035 son juicios explícitos de planificación basados en las condiciones citadas, no frecuencias observadas ni compromisos aceptados. $p_0$ significa al menos un episodio del evento durante la ventana indicada; $n$ estima episodios condicionados a que el evento ocurra. Los escenarios O/M/P de 8.B.1 son acumulados: se suman los dos perfiles por episodio y se multiplican por $n$ una sola vez, antes de aplicar PERT y $p_0$. El 38\% de rotación anual y las 2.600 entregas del peak no se usan como probabilidades.
+Las probabilidades y HH de los riesgos R-028--R-036 son juicios explícitos de planificación basados en las condiciones citadas, no frecuencias observadas ni compromisos aceptados. $p_0$ significa al menos un episodio del evento durante la ventana indicada; $n$ estima episodios condicionados a que el evento ocurra. Los escenarios O/M/P de 8.B.1 son acumulados: se suman los dos perfiles por episodio y se multiplican por $n$ una sola vez, antes de aplicar PERT y $p_0$. El 38\% de rotación anual y las 2.600 entregas del peak no se usan como probabilidades.
 
 Las HH representan trabajo extraordinario de LafroX por encima del alcance ordinario; no valorizan pérdidas de mercadería, reconstrucción del ERP del CLIENTE, tareas ordinarias de capacitación ni aumentos de demanda ya incluidos en el dimensionamiento. R-031 recoge sólo coordinación y recuperación de programación; la verificación y remediación de capacidad corresponde al control técnico de escalabilidad CT-14. Un incidente recibe un ID causal principal y sus HH se imputan una sola vez; los efectos en otros riesgos quedan vinculados sin repetir el esfuerzo. R-017 no duplica el mismo corte WAN como caída de ERP, SII, POS o stock central; R-034 cuantifica la dependencia del ERP del CLIENTE; CT-15 establece la corrección y verificación de la consolidación a cargo de LafroX. R-032 y R-033 cubren cambios excepcionales externos de soporte o restricciones efectivas de salida. El mantenimiento, la portabilidad y las actualizaciones ordinarias son obligaciones de LafroX; no se presupuestan otra vez como contingencia. Los controles técnicos se realizan dentro del trabajo ordinario y no se presupuestan nuevamente como contingencia.
 
@@ -185,7 +188,7 @@ R-017 adopta $p_0=25\%$ por la exposición inicial de Concepción con un enlace 
 \renewcommand{\thetable}{8.B.2}
 \begin{landscape}
 \setlength{\textwidth}{\linewidth}
-\begin{tablalafrox}{Hipótesis de ocurrencia, ventana y esfuerzo extraordinario de R-028--R-035. Fuente: condiciones citadas y estimación de planificación de LafroX.}{tab:sd8-ampliacion-hipotesis}{G{0.07} F{0.19} Y F{0.28} F{0.18}}{\cab{ID / $p_0$ / $n$} & \cab{Ventana de exposición} & \cab{Fundamento del juicio de probabilidad} & \cab{Base O/M/P y exclusiones} & \cab{Fuente de la condición}}
+\begin{tablalafrox}{Hipótesis de ocurrencia, ventana y esfuerzo extraordinario de R-028--R-036. Fuente: condiciones citadas y estimación de planificación de LafroX.}{tab:sd8-ampliacion-hipotesis}{G{0.07} F{0.19} Y F{0.28} F{0.18}}{\cab{ID / $p_0$ / $n$} & \cab{Ventana de exposición} & \cab{Fundamento del juicio de probabilidad} & \cab{Base O/M/P y exclusiones} & \cab{Fuente de la condición}}
 R-028 / 45\% / 1 & Desde levantamiento de finalidades hasta incorporación de cada ola de reparto, meses 1--20. & La objeción ya existe, pero el evento incierto es el desacuerdo sobre el uso propuesto. Se adopta 45\% para una ronda extraordinaria de coordinación previa a la ola; no se supone rechazo seguro. & JP y IMP: cada perfil 12/32/64 HH por episodio; un episodio. Sólo negociación y reprogramación extraordinarias, fuera del levantamiento y acuerdo ordinarios. & Caso, caps. 10 (restricción 10), 16.1 y 19; S3, S-13; S7, acuerdo 5.4.2. \\
 R-029 / 55\% / 6 & Meses 13--56; desde primera marcha blanca y durante la operación nocturna. & El 38\% es rotación anual, no p0. Se propone 55\% de al menos un desborde de inducción durante 44 meses y, condicionado a ello, seis cohortes con atención extraordinaria; son hipótesis de exposición recurrente. & IMP y CAL: cada perfil 8/16/32 HH por cohorte; seis cohortes. Excluir las 2.816 HH ordinarias de 7.1.2 y el trabajo autónomo del preparador. & Caso, caps. 7.2, 10 (restricción 11) y 19; S7, pp. 21--22 y 32; T-14, 7.1.2; T-15, meses 13--56. \\
 R-030 / 50\% / 1 & Levantamiento del mes 1 hasta integración y migraciones de ambas etapas, antes de H5/H10. & Se adopta 50\% ante ausencia documental confirmada y capacidad de acceso aún por verificar, para un bloqueo conjunto de descubrimiento; no se confunde documentación ausente con interfaz inexistente. & ARQ y DAT: cada perfil 24/64/140 HH; un episodio de descubrimiento y reproceso extraordinarios. Excluir levantamiento y adaptadores ordinarios. & Caso, cap. 5 y cap. 19; S3, S-18, S-14 y V-16; S7, 1.2.3 y 3.3.2. \\
@@ -194,6 +197,7 @@ R-032 / 40\% / 2 & Meses 1--56; ciclos de soporte y compatibilidad efectivamente
 R-033 / 25\% / 1 & Meses 1--56 y preparación de la salida contractual; no se asume que la salida extraordinaria ocurrirá. & Se propone 25\% para una restricción extraordinaria de salida o sustitución en el contrato; el uso de AWS por sí solo no demuestra bloqueo. & ARQ y SRE: cada perfil 20/60/140 HH; un episodio. Sólo resolución excepcional de restricciones; excluir actualización anual del plan y salida ordinaria contratada. & S4, servicios gestionados; S7, 8.1.4 y fase 9. \\
 R-034 / 30\% / 2 & Desde pruebas de emisión y primer despacho hasta mes 56; dos episodios excepcionales condicionados. & Se propone 30\% de al menos un bloqueo de nueva emisión por ERP indisponible en el horizonte; no se deriva de la respuesta del SII ni se duplica pérdida de sala como otro evento. & ARQ y SRE: cada perfil 8/24/60 HH por episodio; dos episodios. Sólo coordinación, recuperación y validación extraordinarias de la integración; no incluye reconstruir el ERP del CLIENTE. & Caso, cap. 10, restricciones 1 y 4; S4, pp. 78, 84 y 183. \\
 R-035 / 40\% / 2 & Incorporación de empresas y conductores, y reemplazos durante operación hasta mes 56. & Se propone 40\% de al menos un rechazo individual en incorporación y operación; dos episodios condicionados. El hecho de trabajar para un tercero no demuestra rechazo. & IMP y CAL: cada perfil 6/16/40 HH por episodio; dos episodios. Sólo atención extraordinaria del rechazo; excluir inducción ordinaria de 7.1.3, firma de R-011 y habilitación de R-024. & Caso, caps. 10 (restricción 6), 15, RT-22.04 y 19; S7, 5.4.1 y 7.1.3. \\
+R-036 / 30\% / 1 & Meses 1--56; un episodio acumulado en toda la ventana. & Hipótesis no observada de divergencia de concentración temporal o mezcla respecto del perfil validado; el peak conocido no es incierto. p0=p1=30\%, sin descuento por eficacia futura. & ARQ/CAL: 60/40 de O/M/P=16/48/120 HH acumuladas; PERT=54,67 HH. Sólo coordinación y recuperación extraordinarias. CT-14 y correcciones del alcance son ordinarias; A=0 y C=16 HH contenidas en PERT. & Aclaración 2, 8.2; Caso, caps. 17.5 y 19; perfil por confirmar con Operaciones/TI; CT-14. \\
 \end{tablalafrox}
 \end{landscape}
 \endgroup
@@ -201,12 +205,12 @@ R-035 / 40\% / 2 & Incorporación de empresas y conductores, y reemplazos durant
 \clearpage
 \section{Anexo 8.C: Respaldo de la valoración inicial}
 
-Se aplican las escalas de 8.1.3 a los 35 eventos del T-16. $I_{HH}$ es el nivel de esfuerzo del PERT condicional acumulado del Anexo 8.B; $I_D$ es el mayor nivel de las dimensiones no HH identificadas en la justificación; $I=\max(I_{HH},I_D)$. La justificación señala la dimensión determinante y distingue una amenaza a aceptación (nivel 4) de una consecuencia grave (nivel 5). Son juicios iniciales de planificación sobre el evento declarado, sin descuento por eficacia futura ni cálculo de riesgo residual. La probabilidad se deriva de $p_0$ del Anexo 8.B; el fundamento de la estimación se explicita en 8.B.2. Las referencias contractuales corresponden a las disposiciones ya descritas en 8.3.3; no se estiman multas ni importes.
+Se aplican las escalas de 8.1.3 a los 36 eventos del T-16. $I_{HH}$ es el nivel de esfuerzo del PERT condicional acumulado del Anexo 8.B; $I_D$ es el mayor nivel de las dimensiones no HH identificadas en la justificación; $I=\max(I_{HH},I_D)$. La justificación señala la dimensión determinante y distingue una amenaza a aceptación (nivel 4) de una consecuencia grave (nivel 5). Son juicios iniciales de planificación sobre el evento declarado, sin descuento por eficacia futura ni cálculo de riesgo residual. La probabilidad se deriva de $p_0$ del Anexo 8.B; el fundamento de la estimación se explicita en 8.B.2. Las referencias contractuales corresponden a las disposiciones ya descritas en 8.3.3; no se estiman multas ni importes.
 
 \begingroup
 \renewcommand{\thetable}{8.C.1}
 \renewcommand{\arraystretch}{1.10}
-\begin{tablalafrox}{Fundamento del impacto inicial de los 35 riesgos. Fuente: eventos del T-16, PERT del Anexo 8.B y escalas de 8.1.3.}{tab:sd8-impactos-respaldo}{G{0.08} G{0.17} G{0.12} G{0.12} Y}{\cab{ID} & \cab{PERT HH / $I_{HH}$} & \cab{$I_D$ / I} & \cab{$q_I$} & \cab{Dimensión y fundamento}}
+\begin{tablalafrox}{Fundamento del impacto inicial de los 36 riesgos. Fuente: eventos del T-16, PERT del Anexo 8.B y escalas de 8.1.3.}{tab:sd8-impactos-respaldo}{G{0.08} G{0.17} G{0.12} G{0.12} Y}{\cab{ID} & \cab{PERT HH / $I_{HH}$} & \cab{$I_D$ / I} & \cab{$q_I$} & \cab{Dimensión y fundamento}}
 R-001 & 104,00 / 3 & 4 / 4 & 0,40 & Aceptación: La certificación EDI incompleta amenaza la evidencia de E2 y sus cuatro semanas finales; la carga manual no acredita ese alcance. \\
 R-002 & 194,67 / 4 & 5 / 5 & 0,80 & Calidad sanitaria: Los vínculos sanitarios sin evidencia de origen pueden ser irrecuperables; el saneamiento no reconstruye una historia que no existe. \\
 R-003 & 128,00 / 3 & 3 / 3 & 0,20 & Alcance: El historial incompleto exige reproceso de la carga y excepciones de reposición; el evento declarado no demuestra pérdida definitiva del alcance. \\
@@ -242,13 +246,14 @@ R-032 & 106,67 / 3 & 4 / 4 & 0,40 & Seguridad y servicio: una incompatibilidad q
 R-033 & 133,33 / 3 & 4 / 4 & 0,40 & Contrato y continuidad: una restricción no resuelta impide una transición comprobable del servicio o la entrega utilizable de datos. \\
 R-034 & 109,33 / 3 & 4 / 4 & 0,40 & Servicio y contrato: impedir una guía nueva bloquea despachos y amenaza la ventana crítica, aun cuando el WMS esté recuperado. \\
 R-035 & 73,33 / 2 & 4 / 4 & 0,40 & Aceptación y adopción: un conductor que no usa el flujo deja evidencia y cobertura pendientes, aun con firma de empresa y certificación previa. \\
+R-036 & 54,67 / 2 & 4 / 4 & 0,40 & Aceptación y servicio: la divergencia exige revalidar capacidad antes de habilitar el alcance; puede amenazar aceptación o servicio. Se conserva I=4 aunque el esfuerzo sea nivel 2; no se presupone daño sanitario ni cambio de alcance. \\
 \end{tablalafrox}
 \endgroup
 
 
 \clearpage
 \section{Anexo 8.D: Dependencias operativas y continuidad}
-Las condiciones siguientes delimitan la operación, las decisiones y las pruebas habilitantes. Los responsables deben verificar la ejecución y eficacia de los controles antes de autorizar el alcance afectado. Los meses se cuentan desde el inicio contractual. Las referencias R identifican riesgos; CT-01--CT-15 identifican los 15 controles técnicos vigentes; tras retirar el antiguo CT-15 de identidad, el control de stock pasa de CT-16 a CT-15, sin cambiar CT-01--CT-14. CT sin número designa la Contraparte Técnica.
+Las condiciones siguientes delimitan la operación, las decisiones y las pruebas habilitantes. Los responsables deben verificar la ejecución y eficacia de los controles antes de autorizar el alcance afectado. Los meses se cuentan desde el inicio contractual. Las referencias R identifican riesgos; CT-01--CT-15 identifican los 15 controles técnicos vigentes; CT-15 conserva stock, antes CT-16, e identidad conectada/local se integra en CT-03; no se renumeran los 15 controles vigentes. CT sin número designa la Contraparte Técnica.
 
 \begingroup
 \renewcommand{\thetable}{8.D.1}
@@ -257,9 +262,9 @@ Las condiciones siguientes delimitan la operación, las decisiones y las pruebas
 \renewcommand{\arraystretch}{1.08}
 \begin{tablalafrox}{Dependencias operativas, decisiones y condiciones de continuidad. Fuente: requisitos de operación del Caso 02; arquitectura, procedimientos de continuidad y programa de implantación.}{tab:sd8-dependencias-operativas}{F{0.14} Y F{0.19} F{0.31}}{\cab{Ámbito} & \cab{Condición operativa} & \cab{Responsable y contraparte} & \cab{Momento, evidencia y decisión}}
 Piloto INN-01 / CT-08 & Validar catálogo con Comercial/Calidad en meses 7--9. El paquete abarca 11--15; H5 corresponde a 11--12 y el piloto real a 13--15. & DAT dirige; IMP coordina; CAL verifica. & I-01A en mes 15: al menos 70\% de aciertos sobre al menos 100 avisos evaluables. Sin cumplimiento, no ampliar a otras rutas; mantener avisos informativos y alcance obligatorio. \\
-Identidad / CT-03 & Aplicar autenticación y sesiones en línea, mínimo privilegio, revocación y auditoría de identidad; no autorizar permisos inválidos. & SEG responde; DES/SRE ejecutan; CAL verifica. & Antes de G5, ensayar autenticación, uso indebido, expiración y revocación en línea con auditoría verificable; corregir hallazgos críticos/altos antes de promover. \\
+Identidad / CT-03 & Autenticación conectada y local con manifiesto, permisos, turno y dispositivo válidos; expiración y baja sin ampliar vigencia. & SEG responde; ARQ diseña; DES/SRE ejecutan; CAL verifica con TI/Operaciones. & AL-ID-01 y AL-OFF-01 antes de H5/H10: 26 h, corte una hora después, relevos a las 8/16 h y ruta de 14,5 h acotada a 16 h. Denegaciones, cola y conciliación conforme a 8.E y matriz 8.D.3; seguridad conserva G5. \\
 Emisión ERP / R-034 & El ERP del CLIENTE es el único emisor y no se modifica. La pérdida de Talca bloquea nuevas guías hasta recuperar el ERP; sólo se usan guías válidas ya emitidas. R-008 trata la confirmación externa del SII. & ARQ coordina; SRE ejecuta con TI y Operaciones. & AL-DTE-01 y AL-DR-01 antes de H5/H10: demostrar frontera de emisión y recuperación; RTO de 4 h y RPO de 15 min. No simular disponibilidad del ERP mediante otro emisor. \\
-Stock / CT-15 & Conciliar UUID/sitio y excluir al escritor anterior antes de promover otra autoridad. Mantener capturas pendientes sin confirmar stock global con una copia vencida. & DAT hasta mes 21; SRE desde 22; ARQ diseña; CAL verifica. & AL-STOCK-01/AL-DR-01 antes de H5/H10: pérdida central, promoción, retorno y conciliación sin doble reserva. R-004 corresponde al inventario inicial y R-017 a la conectividad externa. \\
+Stock / CT-15 & Reserva central confirmada sólo con retención local durable; autoridad única por ámbito, exclusión del escritor anterior y conciliación de UUID, sitio y época. & DAT hasta mes 21; SRE desde 22; ARQ diseña; CAL verifica. & AL-STOCK-01: última unidad, pérdida de acuse y reintento sin doble reserva; preventa E1 y portal/EDI reales E2. AL-DR-01: pérdida, promoción, retorno y conciliación. R-004 trata inventario inicial y R-017 conectividad; no duplicar contingencia. \\
 Pagos y servicios externos / CT-01--02 & Consultar estado antes de reintentar pagos y conciliar con clave idempotente. Ante caída de mapas, usar sólo rutas autorizadas disponibles y mantener nuevas consultas pendientes. & ARQ diseña; DES/SRE ejecutan; CAL verifica. & Pruebas de timeout antes y después del cargo, reenvío, caída y recuperación antes de H5/H10. Imputar un mismo corte WAN una sola vez a su causa principal. \\
 Conocimiento de rutas / R-014 & Transferir conocimiento en meses 1--3 y verificar fecha V-14 de retiro. La prueba debe prescindir de la intervención del planificador. & IMP con Operaciones y planificador; CAL verifica. & Prueba de planificación en meses 13--15 sin el planificador. Conservar evidencia del resultado R18-16 y escalar conocimiento no transferido antes de habilitar autonomía. \\
 Enlaces / R-017 & Verificar respaldo recibido en Concepción antes de aceptar la ola. Talca/Concepción: fibra y LTE, Starlink en espera caliente. Cross-docking: Starlink y LTE Entel/Claro; conmutación menor a 30 s. & SRE con TI/Operaciones; CAL verifica recepción. & Recepción antes de H3 y aceptación ampliada antes de H5. Ensayar pérdida del último camino Starlink de madrugada en Los Ángeles. El diseño conectado no garantiza disponibilidad del enlace. Se conserva el tratamiento del corte conforme a R-017. \\
@@ -274,6 +279,87 @@ Telemetría / R-028 & Acordar finalidades, acceso y controles con Operaciones, T
 \end{tablalafrox}
 \end{landscape}
 \endgroup
+
+
+\clearpage
+\subsection*{Cobertura de omisiones de SD8-05}
+\addcontentsline{toc}{subsection}{Cobertura de omisiones de SD8-05}
+La Tabla 8.D.2 coteja la primera revisión del Informe 2, apartado 8 y prioridades
+de corrección, con el Caso 02 y la Aclaración 2, 8.2. Los IDs son los vigentes:
+las menciones históricas de la revisión no sustituyen la numeración actual.
+La cobertura documental se completa en S8 con diez temas trazados; no acredita
+implementación ni eficacia. Las referencias a S4/S9/S13 siguen sujetas a su
+integración y verificación en las ramas correspondientes.
+
+\begingroup
+\renewcommand{\thetable}{8.D.2}
+\begin{landscape}
+\setlength{\textwidth}{\linewidth}
+\renewcommand{\arraystretch}{1.08}
+\begin{tablalafrox}{Cobertura documental de SD8-05 y evidencia pendiente. Fuente: Caso 02, Aclaración 2 y primera revisión del Informe 2.}{tab:sd805-cobertura}{F{0.15} F{0.16} F{0.24} F{0.14} Y}{\cab{Tema / referencia vigente} & \cab{Fuente de la condición} & \cab{Evento y respuesta} & \cab{Responsable} & \cab{Evidencia y estado}}
+Conocimiento del planificador / R-014 & Caso, cap. 19; retiro y efecto OTIF en T-16. & Transferencia incompleta antes del retiro; recuperar y validar reglas/excepciones. & IMP; CAL verifica. & V-14 y prueba sin planificador en piloto; conservar evidencia del efecto de 6--9 puntos OTIF. Estado: cobertura documentada; eficacia pendiente. \\
+Objeción sindical / R-028 & Caso, caps. 10, 16.1 y 19. & Desacuerdo sobre finalidades/controles antes de la ola; acuerdo 5.4.2, sin vigilancia excluida. & JP/IMP; Operaciones, TI y sindicato. & Acta de finalidades, accesos y controles antes de la ola; cobertura pendiente ante desacuerdo. Estado: cobertura documentada; eficacia pendiente. \\
+Conductores externos / R-035 & Caso, caps. 10, 15 y 19; RT-22.04. & Rechazo individual pese a acuerdo e incorporación; demostración en andén y conductor certificado/dispuesto. & IMP; Operaciones y transportista. & Uso práctico antes de salida y evidencia de adopción; distinto de firma R-011 y reemplazo R-024. Estado: cobertura documentada; eficacia pendiente. \\
+Rotación nocturna / R-029 & Caso, caps. 7.2, 10 y 19. & Altas superan tutoría o llegan sin competencia; inducción y cobertura por turno. & IMP; SRE desde 22; Bodega/Operaciones. & Evaluación previa a autonomía y aprendizaje máximo dos horas; matriz 8.F.2a. El 38\% no es p0. Estado: cobertura documentada; eficacia pendiente. \\
+Interfaces legadas / R-030 & Caso, caps. 5 y 19. & Contrato/extracción no verificables a tiempo; ensayo temprano ERP/WMS sin modificar ERP. & ARQ/DAT; TI; CAL verifica. & Entradas/salidas, tiempos y conciliación contra origen; matriz 8.F.2a. Distinto de calidad de historia. Estado: cobertura documentada; eficacia pendiente. \\
+Enlace de Concepción / R-017 & Caso, caps. 6 y 19. & Interrupción antes de validar respaldos o pérdida del último camino; ensayo y restitución. & SRE; TI y operadores de enlace. & Conmutación y recuperación probadas antes de aceptar la ola; respaldo ofertado no equivale a disponible. Estado: cobertura documentada; eficacia pendiente. \\
+Peak y cierre / R-031 & Caso, caps. 10, 17.5 y 19. & Condición de cierre incumplida bajo peak/congelamiento; continuidad y recuperación autorizadas. & JP; CAL y Operaciones. & Seis condiciones acumulativas y cuatro semanas finales; matriz 8.F.2a. No duplica capacidad CT-14. Estado: cobertura documentada; eficacia pendiente. \\
+Obsolescencia / R-032 & Aclaración 2, 8.2; plataforma declarada. & Cambio excepcional de soporte/compatibilidad que excede mantenimiento ordinario; transición probada. & ARQ; DES/SRE. & Inventario y revisión trimestral de soporte, regresión y reversión; actualización ordinaria excluida de contingencia. Estado: cobertura documentada; eficacia pendiente. \\
+Bloqueo por proveedor / R-033 & Aclaración 2, 8.2; servicios gestionados. & Restricción efectiva de exportación o sustitución; probar restauración y transición utilizable. & ARQ/SRE; TI. & Credenciales, exportaciones e infraestructura como código; prueba de restauración. Elegir AWS no acredita bloqueo. Estado: cobertura documentada; eficacia pendiente. \\
+Escalabilidad / R-036 y CT-14 & Aclaración 2, 8.2; Caso, caps. 17.5 y 19; perfil por confirmar. & Divergencia de concentración/mezcla frente al perfil validado; confirmar, comparar y repetir CT-14. & ARQ/CAL; Operaciones/TI; SRE desde 22. & Perfil versionado e informe de carga/estrés: ERP, colas, errores, p95 y recuperación; habilitar sólo alcance probado. Estado: cobertura documentada; eficacia pendiente. \\
+\end{tablalafrox}
+\end{landscape}
+\endgroup
+
+\paragraph{Decisión ante el perfil de carga}
+Si el perfil es conforme, CAL verifica CT-14 y la autoridad competente habilita
+sólo el alcance probado; R-036 conserva su hipótesis de exposición en la ventana.
+Si existe variación pendiente de confirmar, ARQ conserva perfil y mediciones,
+solicita validación a Operaciones/TI, aplica la respuesta de R-036 y mantiene
+la promoción afectada pendiente hasta revalidar capacidad.
+Si hay saturación dentro de la carga comprometida, LafroX registra un problema,
+corrige el diseño y repite CT-14 con cargo al trabajo ordinario. La concentración
+o mezcla no detalladas no convierten por sí solas esa carga en ampliación de
+alcance: JP contrasta requisitos y acuerdos antes de cualquier decisión contractual.
+Una misma causa recibe un único ID principal; R-030 atiende la interfaz,
+R-031 la coordinación del cierre y R-036 la divergencia del perfil, vinculando
+efectos sin duplicar HH. El peak conocido y el crecimiento contratado permanecen
+en el dimensionamiento obligatorio de CT-14.
+
+
+\clearpage
+\subsection*{Correspondencia de continuidad y evidencia de SD8-06}
+\addcontentsline{toc}{subsection}{Correspondencia de continuidad y evidencia de SD8-06}
+La matriz 8.D.3 enlaza diseño, riesgo/control y pruebas de S4/S9. Se consultan
+las ramas corregidas: S4, \texttt{c8f8eb57e61d}, y S9, \texttt{d0b01c7cad55}.
+Los commits identifican versiones documentales, no implementaciones probadas.
+No se dispone aquí de configuraciones de producto, trazas, mediciones ni actas
+de ejecución o aceptación de los tres alcances; se registran como evidencia por obtener.
+
+\begingroup
+\renewcommand{\thetable}{8.D.3}
+\begin{landscape}
+\setlength{\textwidth}{\linewidth}
+\renewcommand{\arraystretch}{1.08}
+\begin{tablalafrox}{Correspondencia SD8-06: diseño, prueba y evidencia requerida. Fuente: S4, anexos 4-M/4-V y 4.3.2; S9, T-13/T-17.}{tab:sd806-correspondencia}{F{0.11} F{0.18} F{0.19} F{0.15} Y}{\cab{Tema / S8} & \cab{Referencia exacta S4} & \cab{Protocolo y campaña S9} & \cab{Responsable} & \cab{Evidencia requerida y estado}}
+ERP / R-034 & Anexo 4-M, AL-DTE-01 y AL-DR-01; 4.3.2, recuperación de Talca y ERP; Anexo 4-V, correspondencia de aceptación. & T-13, 7.5: AL-DTE-01 en resiliencia 3.8.4/3.9.3; AL-DR-01 en recuperación 3.8.5/3.9.4, antes de H5/H10. T-17, 3.1. & ARQ/SRE; TI, Finanzas y Operaciones; CAL verifica y JP registra. & Versión de carga, folio, guía/anulación, acuse y tiempos de 96 salidas, con ERP disponible, indisponible y cambio de carga. RTO de 4 h y RPO de 15 min medidos. Bloquear sin guía válida; recuperar WMS no recupera ERP. Estado: sincronizado documentalmente; implementación, ensayos y acta pendientes. \\
+Stock / CT-15 & Anexo 4-V, AL-STOCK-01; Anexo 4-M, AL-DR-01; 4.3.2, conmutación y retorno. & T-13, 7.5: AL-STOCK-01 en integración 3.8.1 (E1) y 3.9.1 (E2); AL-DR-01 en 3.8.5/3.9.4. T-17, 3.1. & DAT hasta 21, SRE desde 22; ARQ diseña; CAL verifica; JP registra. & Estado central/local con retención durable, última unidad, UUID/época, acuses perdidos, exclusión del escritor previo, retorno y conciliación. Preventa real E1; preventa, portal y EDI reales E2. Sin doble reserva ni stock negativo; simulador no acredita E2. Estado: sincronizado documentalmente; implementación, ensayos y acta pendientes. \\
+Identidad / CT-03 & Anexo 4-M, AL-ID-01 y AL-OFF-01; Anexo 4-R, controles de identidad; Anexo 4-V, correspondencia. & T-13, 7.5: AL-ID-01 y AL-OFF-01 en resiliencia 3.8.4/3.9.3 antes de H5/H10. T-17, 3.1; seguridad conserva puerta G5. & SEG responde; ARQ diseña; DES/SRE ejecutan con TI/Operaciones; CAL verifica. & Manifiesto de 26 h, corte a una hora, relevos 8/16 h; ruta de 14,5 h y máximo 16 h. Probar expiración, firma, turno, permisos, reinicio/reloj y baja local/central aislada; cero accesos indebidos, cola conservada y conciliación única. Sin PIN ni secretos en expediente. Estado: sincronizado documentalmente; implementación, ensayos y acta pendientes. \\
+\end{tablalafrox}
+\end{landscape}
+\endgroup
+
+\paragraph{Decisión por alcance y etapa}
+CAL comprueba versión, configuración, entradas, resultado esperado y observado,
+incidencias y repetición tras corrección; JP registra fecha y próxima revisión.
+Un protocolo previsto o un PDF compilado no sustituyen una ejecución.
+Resultado insuficiente o fallido mantiene el bloqueo y exige corregir y repetir.
+Sólo evidencia satisfactoria y aprobación competente habilitan el alcance
+concreto; T-17, 3.1, integra el expediente H5/H10 y la Contraparte Técnica acepta
+con acta. Un bloqueo correcto de salida sin guía no demuestra continuidad de las
+96 salidas. Los controles son obligaciones ordinarias del proveedor, sin nuevas
+HH de contingencia. SD8-06 permanece parcial hasta acreditar implementación y
+ejecución satisfactoria con las actas exigidas; las valoraciones de T-16 se conservan.
 
 \input{08_plan_riesgos/anexo-e-controles.tex}
 \input{08_plan_riesgos/anexo-f-respuestas.tex}

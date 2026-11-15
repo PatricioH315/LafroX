@@ -1,0 +1,16 @@
+\clearpage
+% La RBS es apaisada; se recorta únicamente el espacio blanco inferior del PDF
+% fuente para aprovechar la página sin reducir la tipografía del diagrama.
+\newgeometry{top=0.7cm,bottom=2.0cm,left=1.0cm,right=1.0cm,
+             headheight=27pt,headsep=0pt,footskip=24pt}
+\begin{landscape}
+\thispagestyle{plain}
+\begin{center}
+  \includegraphics[width=0.98\linewidth,height=0.95\textheight,
+    trim=0 340 0 0,clip,keepaspectratio]{figuras/LafroX_RBS_36_riesgos_S8_v4.pdf}
+  \captionof{figure}{Estructura de desglose de riesgos (RBS) del proyecto LafroX. Fuente: elaboración propia.}
+  \label{fig:sd8-rbs}
+\end{center}
+\end{landscape}
+\restoregeometry
+\clearpage

@@ -1,0 +1,453 @@
+This is LuaHBTeX, Version 1.24.0 (MiKTeX 25.12)
+ restricted system commands enabled.
+(./anexos_logica.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+ (../00/plantilla/formato-base/lafrox.cls
+
+LaTeX Warning: You have requested document class `../00/plantilla/formato-base/
+lafrox',
+               but the document class provides `lafrox'.
+
+Document Class: lafrox 2026/09/17 v2.2 Clase corporativa LafroX, tema minimalis
+ta
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/base/report.cls
+Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/base/size11.clo))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg))
+ (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/color.cfg)
+
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics-def/luatex.def
+)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics/mathcolor.ltx)
+) (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/colortbl/colortbl.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics/dvipsnam.def)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/xparse/xpars
+e.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/l3kernel/expl3.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-lua
+tex.def)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec-luate
+x.sty (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/base/fontenc.sty)
+ (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.cfg)
+)) (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/plex/plex-mono.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifxetex.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifluatex.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkeyval.tex
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkvutils.tex)
+)) (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/base/textcomp.sty))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th-luatex.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/l3keys2e/l3k
+eys2e.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/base/fix-cm.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1enc.def))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amstext.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsgen.sty))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsbsy.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsopn.sty))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/lualatex/lualatex-math/lualat
+ex-math.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/etoolbox/etoolbox.sty))
+
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
+th-table.tex)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/was/icomma.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype.sty
+
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype-lua
+tex.def)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/microtype/microtype.cfg
+)) (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def)
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/arabi/bblopts.cfg)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/babel/locale/es/babel
+-spanish.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/babel-spanish/spanish.l
+df
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/hyph-utf8/loadhyph/lo
+adhyph-es.tex UTF-8 Spanish hyphenation patterns
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/hyph-utf8/patterns/te
+x/hyph-es.tex))))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.def)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.cfg))
+ (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphicx.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphics.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/graphics.c
+fg)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/frontendlayer/tikz.
+sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgf.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfrcs.st
+y
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-common.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-latex.def)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfrcs.
+code.tex
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/pgf.revision.tex)
+))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgfcore.
+sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/systemlayer/pgfsys.
+sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s.code.tex
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+.code.tex
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+libraryfiltered.code.tex))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgf.c
+fg)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s-luatex.def
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s-common-pdf.def)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+ssoftpath.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+sprotocol.code.tex))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+e.code.tex
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathutil.
+code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathparse
+r.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.basic.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.trigonometric.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.random.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.comparison.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.base.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.round.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.misc.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.integerarithmetics.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathcalc.
+code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfloat
+.code.tex))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfint.code.
+tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epoints.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathconstruct.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathusage.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+escopes.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+egraphicstate.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+etransformations.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+equick.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eobjects.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathprocessing.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+earrows.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eshade.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eimage.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eexternal.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+elayers.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+etransparency.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epatterns.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+erdf.code.tex)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+shapes.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+plot.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+mp-version-0-65.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+mp-version-1-18.sty))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgffor.st
+y
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfkeys.s
+ty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+.code.tex))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pgf/math/pgfmath.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgffor.
+code.tex))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/tikz.code.tex
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryplothandlers.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+matrix.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarytopaths.code.tex)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarycalc.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarypositioning.code.tex)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/booktabs/booktabs.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/tools/tabularx.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/tools/longtable.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/xltabular/xltabular.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/ltablex/ltablex.sty))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/multirow/multirow.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/makecell/makecell.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/enumitem/enumitem.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titlesec.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titletoc.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/fancyhdr/fancyhdr.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption3.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/caption/ltcaption.sty))
+
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pdflscape/pdflscape.sty
+
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/pdflscape/pdflscape-nom
+etadata.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/graphics/lscape.sty)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/eso-pic/eso-pic.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/ragged2e/ragged2e.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage2e.sty
+
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpagemodern
+.sty) 
+)) (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/import/import.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hyperref.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/kvsetkeys/kvsetkeys.sty
+)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/kvdefinekeys/kvdefine
+keys.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pdfescape/pdfescape.s
+ty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/ltxcmds/ltxcmds.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/pdftexcmds/pdftexcmds
+.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/infwarerr/infwarerr.s
+ty)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/hycolor/hycolor.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/nameref.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/refcount/refcount.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/gettitlestring/gettit
+lestring.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/kvoptions/kvoptions.sty
+)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/stringenc/stringenc.s
+ty) (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/pd1enc.def
+) (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/intcalc/intcalc.sty
+) (C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/puenc.def)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/bitset/bitset.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/bigintcalc/bigintcalc
+.sty)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hluatex.def
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfil
+echeck.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/generic/uniquecounter/uniquec
+ounter.sty)))
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bookmark.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bkm-luatex.def
+)) (../00/plantilla/formato-base/lafrox-portada.tex))
+("C:/Users/maxco/Desktop/latex FEP/OTRA PUTA CARPETA DE FEP/LafroX/tmp/sd806-sd
+4-build/LAFROX-Subdocumento4-Anexos.aux")
+*geometry* driver: auto-detecting
+*geometry* detected driver: luatex
+
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
+ase.sty
+(C:/Users/maxco/AppData/Local/Programs/MiKTeX/tex/latex/00miktex/epstopdf-sys.c
+fg)) (./anexos/logica/contenido.tex
+(./anexos/logica/partes/01_apertura_anexos.tex [1{C:/Users/maxco/AppData/Local/
+MiKTeX/fonts/map/pdftex/pdftex.map}<./../00/plantilla/formato-base/logo/lafrox_
+isotipo_naranja.pdf><./../00/plantilla/formato-base/logo/FIRMA_Alex_Aravena_tra
+nsparente.png>]
+("C:/Users/maxco/Desktop/latex FEP/OTRA PUTA CARPETA DE FEP/LafroX/tmp/sd806-sd
+4-build/./LAFROX-Subdocumento4-Anexos.toc" [2<./../00/plantilla/formato-base/lo
+go/lafrox_isotipo_negro.pdf>]) [3]
+("C:/Users/maxco/Desktop/latex FEP/OTRA PUTA CARPETA DE FEP/LafroX/tmp/sd806-sd
+4-build/./LAFROX-Subdocumento4-Anexos.lot" [4]) [5])
+(./anexos/logica/partes/00_catalogo_anexos.tex [6]
+./anexos/logica/partes/00_catalogo_anexos.tex:31: Infinite glue shrinkage found
+ in box being split [7] [8])
+(./anexos/logica/partes/02_anexo_4_1_a_catalogo_de_eventos_canonicos.tex
+./anexos/logica/partes/02_anexo_4_1_a_catalogo_de_eventos_canonicos.tex:28: Inf
+inite glue shrinkage found in box being split [9])
+(./anexos/logica/partes/03_anexo_4_1_b_gobierno_de_la_integracion.tex [10])
+(./anexos/logica/partes/04_anexo_4_1_c_escenarios_de_carga_masiva.tex [11])
+(./anexos/logica/partes/05_anexo_4_1_d_matriz_de_los_doce_modulos.tex
+./anexos/logica/partes/05_anexo_4_1_d_matriz_de_los_doce_modulos.tex:21: Infini
+te glue shrinkage found in box being split [12]
+./anexos/logica/partes/05_anexo_4_1_d_matriz_de_los_doce_modulos.tex:21: Infini
+te glue shrinkage found in box being split [13] [14] [15] [16])
+(./anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex
+./anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex:33: Infinite g
+lue shrinkage found in box being split [17] [18]
+./anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex:65: Infinite g
+lue shrinkage found in box being split [19]
+./anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex:65: Infinite g
+lue shrinkage found in box being split [20])
+(./anexos/logica/partes/07_anexo_4_1_f_mapa_de_limites_de_contexto.tex [21]
+./anexos/logica/partes/07_anexo_4_1_f_mapa_de_limites_de_contexto.tex:21: Infin
+ite glue shrinkage found in box being split [22])
+(./anexos/logica/partes/08_anexo_4_1_g_catalogo_de_interfaces_internas.tex
+./anexos/logica/partes/08_anexo_4_1_g_catalogo_de_interfaces_internas.tex:17: I
+nfinite glue shrinkage found in box being split [23] [24]
+Underfull \hbox (badness 1158) in paragraph at lines 38--39
+[] []\TU/SourceSans3(2)/m/n/10.95 INT-04. De-ta-lle de cross-docking a la nu-be
+ — M2.[]\TU/SourceSerif4(0)/m/n/10.95 Mo-do asín-crono. Vo-lu-men de di-se-
+ño:
+[25])
+(./anexos/logica/partes/09_anexo_4_1_h_catalogo_de_interfaces_externas.tex
+[26] [27] [28] [29])
+(./anexos/logica/partes/10_anexo_4_1_i_volumen_de_mensajes.tex
+./anexos/logica/partes/10_anexo_4_1_i_volumen_de_mensajes.tex:26: Infinite glue
+ shrinkage found in box being split [30])
+(./anexos/logica/partes/11_anexo_4_1_j_funciones_sin_conexion.tex [31]
+./anexos/logica/partes/11_anexo_4_1_j_funciones_sin_conexion.tex:22: Infinite g
+lue shrinkage found in box being split [32])
+(./anexos/logica/partes/12_anexo_4_1_k_reglas_de_reconciliacion.tex [33]
+./anexos/logica/partes/12_anexo_4_1_k_reglas_de_reconciliacion.tex:17: Infinite
+ glue shrinkage found in box being split [34])
+(./anexos/logica/partes/13_anexo_4_1_l_decisiones_del_numeral_16_1.tex [35]
+./anexos/logica/partes/13_anexo_4_1_l_decisiones_del_numeral_16_1.tex:25: Infin
+ite glue shrinkage found in box being split [36])
+(./anexos/logica/partes/14_anexo_4_1_m_verificacion_de_continuidad_logica.tex
+[37] [38] [39] [40])
+(./anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.t
+ex [41]
+./anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.te
+x:35: Infinite glue shrinkage found in box being split [42] [43] [44] [45]
+./anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.te
+x:110: Infinite glue shrinkage found in box being split [46]
+./anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.te
+x:110: Infinite glue shrinkage found in box being split [47]
+./anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.te
+x:110: Infinite glue shrinkage found in box being split [48]
+./anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.te
+x:132: Infinite glue shrinkage found in box being split [49]
+./anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.te
+x:132: Infinite glue shrinkage found in box being split [50] [51] [52])
+(./anexos/logica/partes/18_anexo_4_1_o_decisiones_logicas.tex [53]
+./anexos/logica/partes/18_anexo_4_1_o_decisiones_logicas.tex:35: Infinite glue 
+shrinkage found in box being split [54] [55]
+./anexos/logica/partes/18_anexo_4_1_o_decisiones_logicas.tex:66: Infinite glue 
+shrinkage found in box being split [56] [57] [58] [59] [60] [61] [62] [63]
+[64] [65] [66]) (./anexos/logica/partes/19_anexo_4_1_p_tecnologias_soporte.tex
+[67] [68] [69] [70]
+./anexos/logica/partes/19_anexo_4_1_p_tecnologias_soporte.tex:84: Infinite glue
+ shrinkage found in box being split [71] [72]
+./anexos/logica/partes/19_anexo_4_1_p_tecnologias_soporte.tex:114: Infinite glu
+e shrinkage found in box being split [73]
+./anexos/logica/partes/19_anexo_4_1_p_tecnologias_soporte.tex:114: Infinite glu
+e shrinkage found in box being split [74] [75] [76])
+(./anexos/logica/partes/20_anexo_4_1_q_modelado_amenazas.tex [77]
+./anexos/logica/partes/20_anexo_4_1_q_modelado_amenazas.tex:22: Infinite glue s
+hrinkage found in box being split [78]
+./anexos/logica/partes/20_anexo_4_1_q_modelado_amenazas.tex:41: Infinite glue s
+hrinkage found in box being split [79] [80])
+(./anexos/logica/partes/21_anexo_4_1_r_controles_seguridad.tex [81]
+./anexos/logica/partes/21_anexo_4_1_r_controles_seguridad.tex:30: Infinite glue
+ shrinkage found in box being split [82] [83] [84])
+(./anexos/logica/partes/22_anexo_4_1_s_puntos_de_vista.tex [85] [86] [87])
+(./anexos/logica/partes/23_anexo_4_1_t_desempeno.tex [88] [89])
+(./anexos/logica/partes/24_anexo_4_1_u_evidencia_documental.tex [90]
+./anexos/logica/partes/24_anexo_4_1_u_evidencia_documental.tex:22: Infinite glu
+e shrinkage found in box being split [91])
+(./anexos/logica/partes/25_anexo_4_1_v_aceptacion_y_dependencias.tex [92]
+./anexos/logica/partes/25_anexo_4_1_v_aceptacion_y_dependencias.tex:23: Infinit
+e glue shrinkage found in box being split [93] [94] [95] [96])
+(./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex [97]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:35: Infinite glue shr
+inkage found in box being split [98]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:35: Infinite glue shr
+inkage found in box being split [99] [100]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:59: Infinite glue shr
+inkage found in box being split [101]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:78: Infinite glue shr
+inkage found in box being split [102]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:78: Infinite glue shr
+inkage found in box being split [103]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:92: Infinite glue shr
+inkage found in box being split [104] [105] [106] [107] [108] [109]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:191: Infinite glue sh
+rinkage found in box being split [110] [111] [112] [113] [114]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:260: Infinite glue sh
+rinkage found in box being split [115] [116] [117] [118] [119] [120] [121]
+[122]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:365: Infinite glue sh
+rinkage found in box being split [123] [124] [125] [126] [127] [128]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:471: Infinite glue sh
+rinkage found in box being split [129] [130]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:494: Infinite glue sh
+rinkage found in box being split [131] [132]
+./anexos/logica/../fisica/16_anexo_4b_memoria_calculo.tex:534: Infinite glue sh
+rinkage found in box being split [133] [134])
+(./anexos/logica/partes/16_referencias.tex [135] [136] [137] [138] [139]
+[140])) 
+enddocument/afterlastpage (AED): lastpage setting LastPage.
+
+("C:/Users/maxco/Desktop/latex FEP/OTRA PUTA CARPETA DE FEP/LafroX/tmp/sd806-sd
+4-build/LAFROX-Subdocumento4-Anexos.aux"))
+(see the transcript file for additional information)
+ 1088 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 1 local_par, 7 glue, 5 kern, 1 penalty, 3 glyph, 7
+8 attribute, 79 glue_spec, 41 attribute_list, 3 write, 28 pdf_action nodes
+   avail lists: 1:7,2:7557,3:1611,4:570,5:3995,6:560,7:21065,8:135,9:4887,10:35
+,11:2481
+<C:/Users/maxco/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/
+SourceSerif4-RegularIt.otf><C:/Users/maxco/AppData/Local/Programs/MiKTeX/fonts/
+opentype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/Users/maxco/AppData/Local
+/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSerif4-Semibold.otf><C:
+/Users/maxco/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/Sou
+rceSerif4-Regular.otf><C:/Users/maxco/AppData/Local/Programs/MiKTeX/fonts/opent
+ype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/Users/maxco/AppData/Local/Prog
+rams/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSerif4-Regular.otf><C:/Users
+/maxco/AppData/Local/Programs/MiKTeX/fonts/opentype/ibm/plex/IBMPlexMono-Regula
+r.otf><C:/Users/maxco/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/source
+sans/SourceSans3-Regular.otf><C:/Users/maxco/AppData/Local/Programs/MiKTeX/font
+s/opentype/adobe/sourcesans/SourceSans3-Medium.otf><C:/Users/maxco/AppData/Loca
+l/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Semibold.otf>
+Output written on LAFROX-Subdocumento4-Anexos.pdf (140 pages, 711527 bytes).
+Transcript written on LAFROX-Subdocumento4-Anexos.log.
