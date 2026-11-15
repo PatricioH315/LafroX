@@ -130,7 +130,13 @@ manual = Decimal(manual_cases) * 15 / 60
 internal = manual + 8 + 16 + 4
 external = manual + 8 + 24 + 8 + 4
 event_sum = internal + external
-baseline = 12016
+baseline = Decimal("12058.66")  # conformidad programada (SD9, 9.C.1)
+
+def hh(value):
+    """Format HH with thousands dot and two decimals (12.058,66)."""
+    whole, frac = f"{value.quantize(Decimal('0.01')):.2f}".split(".")
+    return f"{int(whole):,}".replace(",", ".") + "," + frac
+
 
 def decimal_es(value, places=1):
     rounded = value.quantize(Decimal(1).scaleb(-places), rounding=ROUND_HALF_UP)
@@ -153,7 +159,7 @@ for phrase in (
     f"Calidad (CAL) & {cal_hours} & {cal_hours}",
     f"{internal_hours} × nI + {external_hours} × nE",
     f"representa {num(int(event_sum))} HH",
-    f"{num(baseline)} + {num(int(event_sum))} = {num(int(baseline + event_sum))} HH",
+    f"{hh(baseline)} + {num(int(event_sum))} = {hh(baseline + event_sum)} HH",
 ):
     assert phrase in annex, phrase
 assert f"{internal_hours} HH por falla interna y {external_hours} HH por falla externa" in body

@@ -61,24 +61,24 @@ for r in rows(t17):
         acts += 1
 assert acts == 10, acts
 
-# Las 880 HH ya están dentro de T-15, no se agregan a 220.023.
+# Las 922,66 HH ya están dentro de las 202.108,62 HH del T-15; no se agregan.
 cold = sum(num(packages[p][3]) for p in ("2.4.3", "2.4.4", "4.1.4"))
-assert cold == 880
+assert cold == Decimal("922.66")
 conformity = annex[annex.index("Prevención & 1.2.4"):annex.index(r"\subsection*{9.C.2")]
 totals = {"Prevención": Decimal(0), "Evaluación": Decimal(0)}
 for r in rows(conformity):
     if r[0] in totals:
         totals[r[0]] += Decimal(r[-1].replace(".", "").replace(",", "."))
-assert totals == {"Prevención": Decimal(4224), "Evaluación": Decimal(7792)}, totals
-assert sum(totals.values()) == 12016
-assert round(Decimal(12016) / Decimal(220023) * 100, 1) == Decimal("5.5")
+assert totals == {"Prevención": Decimal(4224), "Evaluación": Decimal("7834.66")}, totals
+assert sum(totals.values()) == Decimal("12058.66")
+assert round(Decimal("12058.66") / Decimal("202108.62") * 100, 1) == Decimal("6.0")
 for text in (body, annex, t13, t17):
     assert "217.543" not in text
     assert "11.136" not in text
     # C15 eliminó el prefijo de capítulo: las secciones 4/5/6 son válidas.
     assert not re.search(r"T-15, secci(?:ón|ones) 7\.[456](?:\.|\b)", text)
-assert "35,2" in body and "64,8" in body
-assert "fechas y holguras del T-15" in t17
+assert "35,0" in body and "65,0" in body
+assert "fechas y holguras del escenario nominal del T-15" in t17
 assert "reproduce las fechas del SD7" in t17
-print(f"OK: {campaigns} campañas, {acts} hitos; 12.016 HH = 4.224 + 7.792; referencia {REF}.")
+print(f"OK: {campaigns} campañas, {acts} hitos; 12.058,66 HH = 4.224 + 7.834,66; referencia {REF}.")
 print("La comprobación acredita sincronización documental, no nivelación ni aceptación del CLIENTE.")

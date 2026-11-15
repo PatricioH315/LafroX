@@ -181,7 +181,7 @@ El costo de la calidad se expresa en horas-hombre y no en dinero, porque la Ofer
 \subsection*{9.C.1 Costos de conformidad (programados en la línea base)}
 \addcontentsline{toc}{subsection}{9.C.1 Costos de conformidad (programados en la línea base)}
 
-El subtotal reúne los paquetes de prevención y evaluación identificables en la línea base. Cada paquete se cuenta una sola vez. Banco 2.4.3, mapeo 2.4.4 y piloto 4.1.4 se clasifican como evaluación porque producen evidencia de conformidad física y aceptación de la cadena de frío: 320 + 240 + 320 = 880 HH. La clase de estimación E del mapeo no determina su categoría de costo de calidad. Estas horas ya pertenecen a las 202.108,62 HH del T-15; no son un incremento de esa línea base ni se vuelven a contar en las pruebas de integración.
+El subtotal reúne los paquetes de prevención y evaluación identificables en la línea base. Cada paquete se cuenta una sola vez. Banco 2.4.3, mapeo 2.4.4 y piloto 4.1.4 se clasifican como evaluación porque producen evidencia de conformidad física y aceptación de la cadena de frío: 341,33 + 240 + 341,33 = 922,66 HH. La clase de estimación E del mapeo no determina su categoría de costo de calidad. Estas horas ya pertenecen a las 202.108,62 HH del T-15; no son un incremento de esa línea base ni se vuelven a contar en las pruebas de integración.
 
 \begin{tablasimple}{>{\hsize=0.729\hsize\linewidth=\hsize}Y >{\hsize=0.664\hsize\linewidth=\hsize}Y >{\hsize=1.943\hsize\linewidth=\hsize}Y >{\hsize=0.664\hsize\linewidth=\hsize}Y}
   {\cab{Categoría} & \cab{Paquete T-14} & \cab{Contenido} & \cab{HH (T-15)}}
@@ -192,7 +192,7 @@ Prevención & 2.6.1 a 2.6.3 & Investigación con usuarios, prototipos e indicado
 Prevención & 3.10.2.1 a 3.10.2.4 & INN-02: reproducción de incidentes de terreno & 960 \\
 Prevención & 8.2.4 & Registro y reducción de la deuda técnica en la Operación & 2.304 \\
 \textbf{Subtotal prevención} &  &  & \textbf{4.224} \\
-Evaluación & 2.4.3; 2.4.4; 4.1.4 & Banco (320), mapeo validado por Calidad (240) y piloto de frío (320) & 880 \\
+Evaluación & 2.4.3; 2.4.4; 4.1.4 & Banco (341,33), mapeo validado por Calidad (240) y piloto de frío (341,33) & 922,66 \\
 Evaluación & 3.8.1 a 3.8.8 & Pruebas y certificación de la Etapa 1 & 2.240 \\
 Evaluación & 3.9.1 a 3.9.7 & Pruebas y certificación de la Etapa 2 & 1.600 \\
 Evaluación & 4.1.2 & Ensayo del procedimiento de reversión & 80 \\
@@ -201,12 +201,12 @@ Evaluación & 8.1.6 & Restauraciones mensuales en la Operación & 576 \\
 Evaluación & 8.2.2 & Vulnerabilidades, intrusión anual e inyección de fallas & 1.152 \\
 Evaluación & 8.3.1 & Regresión de INN-02 en la Operación & 576 \\
 Evaluación & 4.2.1; 4.2.2; 4.3.1 & Ocho restauraciones previas a Operación, componentes SRE adicionales & 128 \\
-\textbf{Subtotal evaluación} &  &  & \textbf{7.792} \\
-\textbf{Total de conformidad} &  &  & \textbf{12.016} \\
+\textbf{Subtotal evaluación} &  &  & \textbf{7.834,66} \\
+\textbf{Total de conformidad} &  &  & \textbf{12.058,66} \\
 \end{tablasimple}
 \fuentesd{Fuente: (Formulario T-14, paquetes indicados en cada fila); (Formulario T-15, estimación por paquete y rol).}
 
-Las 12.016 HH equivalen al 5,9 \% de las 202.108,62 HH de la línea base (12.016 / 202.108,62 = 0,0595).
+Las 12.058,66 HH equivalen al 6,0 \% de las 202.108,62 HH de la línea base (12.058,66 / 202.108,62 = 0,0597).
 
 \textbf{Partidas excluidas.} No se cuentan la migración de datos (cuenta 3.7), cuyos ensayos forman parte del trabajo de migración y no se pueden separar de él, ni la certificación de los usuarios del CLIENTE (7.3.1 y 7.3.2), que verifica personas y no el producto.
 
@@ -227,7 +227,7 @@ Implantación y coordinación (IMP) & 0 & 4 & Comunicación y coordinación con 
 \end{tablasimple}
 \fuentesd{Fuente: (Formulario T-13, secciones 8.2 y 8.3); (Formulario T-15, estimación por rol); los supuestos de esfuerzo por evento explicitados en esta sección 9.C.2.}
 
-Para nI fallas internas y nE externas de este alcance, el esfuerzo de referencia es 94,5 × nI + 110,5 × nE. Un evento de cada tipo representa 205 HH. El costo de calidad del escenario sería 12.016 + 205 = 12.221 HH únicamente si esas horas fueran adicionales y no estuvieran ya incluidas en los paquetes de la línea base. No se adopta ese escenario como pronóstico del contrato: las cantidades nI y nE se revisan con los defectos observados desde las primeras campañas.
+Para nI fallas internas y nE externas de este alcance, el esfuerzo de referencia es 94,5 × nI + 110,5 × nE. Un evento de cada tipo representa 205 HH. El costo de calidad del escenario sería 12.058,66 + 205 = 12.263,66 HH únicamente si esas horas fueran adicionales y no estuvieran ya incluidas en los paquetes de la línea base. No se adopta ese escenario como pronóstico del contrato: las cantidades nI y nE se revisan con los defectos observados desde las primeras campañas.
 
 Cada evento registra su requisito, severidad, etapa, causa, versión, HH previstas y reales por rol, pruebas repetidas y paquete de imputación. Se diferencia la repetición causada por el defecto de las pruebas planificadas que ya pertenecen a evaluación. Antes de agregar esfuerzo a la línea base se descuentan las HH ya incluidas y asignadas al mismo trabajo; no se vuelve a sumar la capacidad protegida del T-15 ni la atención correctiva incluida en 8.2.1. El Líder de Calidad informa mensualmente costos internos y externos consumidos y el Jefe de Proyecto autoriza los recursos por control de cambios tras verificar capacidad, sin consumir cobertura de servicio ni reservas protegidas de otro frente.
 
@@ -238,13 +238,13 @@ Las proporciones siguientes comparan prevención y evaluación dentro del subtot
 
 \begin{tablasimple}{>{\hsize=1.052\hsize\linewidth=\hsize}Y >{\hsize=0.974\hsize\linewidth=\hsize}Y >{\hsize=0.974\hsize\linewidth=\hsize}Y}
   {\cab{Categoría} & \cab{HH} & \cab{Proporción}}
-Prevención & 4.224 & 35,2 \% \\
-Evaluación & 7.792 & 64,8 \% \\
-\textbf{Total programado} & \textbf{12.016} & \textbf{100,0 \%} \\
+Prevención & 4.224 & 35,0 \% \\
+Evaluación & 7.834,66 & 65,0 \% \\
+\textbf{Total programado} & \textbf{12.058,66} & \textbf{100,0 \%} \\
 \end{tablasimple}
 \fuentesd{Fuente: (Formulario T-14, paquetes de prevención y evaluación); (Formulario T-15, estimación por paquete y rol); el desglose de la sección 9.C.1.}
 
-Proporciones: 4.224 / 12.016 = 0,3515; 7.792 / 12.016 = 0,6485. El T-15 desglosa campañas por actividad y rol: recuperación inicial 320 HH; siete conmutaciones operacionales de 80 HH (560); intrusión E1/E2 de 320/160 HH. Son estimaciones de planificación, no resultados ejecutados ni valores derivados sólo de la proporción de alcance.
+Proporciones: 4.224 / 12.058,66 = 0,3503; 7.834,66 / 12.058,66 = 0,6497. El T-15 desglosa campañas por actividad y rol: recuperación inicial 320 HH; siete conmutaciones operacionales de 80 HH (560); intrusión E1/E2 de 320/160 HH. Son estimaciones de planificación, no resultados ejecutados ni valores derivados sólo de la proporción de alcance.
 
 \section*{Anexo 9.D — Trazabilidad de los resultados del caso}
 \addcontentsline{toc}{section}{Anexo 9.D — Trazabilidad de los resultados del caso}

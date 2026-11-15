@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  15 NOV 2026 13:11
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  15 NOV 2026 13:30
  system commands enabled.
 **LAFROX-Subdocumento9.tex
 (./LAFROX-Subdocumento9.tex
@@ -2550,11 +2550,11 @@ Here is how much of LuaTeX's memory you used:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 5 kern, 1 penalty, 1 margin_ke
 rn, 4 glyph, 24 attribute, 79 glue_spec, 13 attribute_list, 2 write, 2 pdf_actio
 n nodes
-   avail lists: 1:3,2:3776,3:751,4:305,5:2326,6:192,7:13272,8:2,9:1723,10:28,11:
+   avail lists: 1:3,2:3776,3:755,4:305,5:2326,6:192,7:13290,8:3,9:1723,10:28,11:
 1652
  58522 multiletter control sequences out of 65536+600000
  120 fonts using 47022783 bytes
- 107i,24n,128p,1803b,3519s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 107i,24n,128p,1806b,3525s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-Regular.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/open
 type/public/stix2-otf/STIXTwoMath-Regular.otf><C:/Users/henri/AppData/Local/Prog
@@ -2567,7 +2567,7 @@ ocal/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Regular.otf><c:
 /users/henri/appdata/local/programs/miktex/fonts/opentype/adobe/sourcesans/sourc
 esans3-medium.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/a
 dobe/sourcesans/SourceSans3-Semibold.otf>
-Output written on LAFROX-Subdocumento9.pdf (37 pages, 656358 bytes).
+Output written on LAFROX-Subdocumento9.pdf (37 pages, 656360 bytes).
 
 PDF statistics: 636 PDF objects out of 1000 (max. 8388607)
  84 named destinations out of 1000 (max. 1048576)
