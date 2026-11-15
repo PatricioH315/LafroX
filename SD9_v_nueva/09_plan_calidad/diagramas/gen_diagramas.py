@@ -391,7 +391,7 @@ def fig10():
         ("3.7.2–3.7.5 Migración y corte", [(9, 12)]),
         ("3.8.1 Integración E1", [(9, 9)]),
         ("3.8.2–3.8.8 Pruebas y acta E1", [(9, 11)]),
-        ("Evaluadores subcontratados", [(9, 12), (16, 18)]),
+        ("Campañas del equipo de calidad (13 personas)", [(9, 11), (16, 18)]),
         ("4.1.2 Ensayo de reversión", [(11, 11)]),
         ("4.2.1 Marcha blanca E1", [(13, 15)]),
         ("3.9.1 Integración E2", [(16, 16)]),
