@@ -16,6 +16,8 @@
 
 La matriz cruza las observaciones de la primera revisión del Informe 2 con los cambios del cuerpo, los anexos y el Formulario T-12. Las remisiones a otros subdocumentos identifican dependencias de cierre. Se distinguen las correcciones aplicadas de las tareas pendientes y de los puntos que la revisión ya daba por corregidos.
 
+\input{trazabilidad/matriz_observaciones_sd3.tex}
+
 \begin{longtable}{@{}P{0.33\textwidth}P{\dimexpr0.67\textwidth-2\tabcolsep\relax}@{}}
 \hline
 \textbf{Punto de la revisión} & \textbf{Cómo se corrigió o qué queda pendiente} \\
@@ -121,15 +123,47 @@ SD3-04 & El cotejo mecánico encuentra 644 fichas y nueve alias para las 653 fil
 
 \section*{Cotejo adicional de requisitos}
 
-Se generó \texttt{auditoria\_pendientes\_sd3.csv} con las 653 filas, los orígenes y criterios disponibles, el nombre de las tareas del T-14 y la comparación con el T-13. La correspondencia textual no reemplaza el examen semántico individual. Los 270 criterios del catálogo coinciden con la instantánea T-13 al normalizar formato y puntuación; siete estados y dos orígenes requieren actualización en SD9. La lista individual está en \texttt{DEPENDENCIAS\_SD9\_T13.md}. Las cuentas 3.10 y 8.3 deben bajarse a paquetes hoja cuando corresponda.
+Se generó \texttt{auditoria\_pendientes\_sd3.csv} con las 653 filas, los orígenes y criterios disponibles, el nombre de las tareas del T-14 y la comparación con el T-13. La correspondencia textual no reemplaza el examen semántico individual. En ese corte coincidían los criterios del catálogo al normalizar formato y puntuación; las modificaciones posteriores y las diferencias vigentes se indican en la sección final y en \texttt{DEPENDENCIAS\_SD9\_T13.md}.
 
-Se reconocen siete cumplimientos parciales adicionales: RF-18.03 y RT-16.23 por apertura de SMS; RNF-23.02 y RT-08.12 por prestaciones de equipos no acreditadas; RT-03.18 y RT-08.14 por gestión remota incompleta; RT-11.04 por remediación durante congelamientos. La distribución actual es 602 «Cumple», 29 «Cumple parcialmente» y 22 «No cumple». Las fuentes y el detalle permanecen en cada fila del T-12. El cotejo semántico individual de todos los requisitos, los protocolos y los catálogos relacionados sigue pendiente; este inventario no lo certifica. El SD10 desarrollará posteriormente sus servicios de acuerdo con el SD3.
+En ese corte se reconocieron siete cumplimientos parciales adicionales: RF-18.03 y RT-16.23 por apertura de SMS; RNF-23.02 y RT-08.12 por prestaciones de equipos no acreditadas; RT-03.18 y RT-08.14 por gestión remota incompleta; RT-11.04 por remediación durante congelamientos. Las fuentes y el detalle permanecen en cada fila del T-12. El SD10 desarrollará posteriormente sus servicios de acuerdo con el SD3.
 
 \section*{Cotejo focalizado de cadena y componentes}
 
 El contraste con SD4 \texttt{82ef4a20}, SD7 y T-13 de SD9 \texttt{7483619d} precisó en T-12 la intervención de Inventario en RF-01.11 y RF-03.03, Analítica en RF-04.08, Preventa y Canal moderno en RF-12.04, la ventana de entrega en RF-12.16 y la redacción de RF-19.05. RF-03.03 incorpora el paquete 3.4.2; RT-03.10 explicita el turno de 14 horas en reparto y agrega el paquete 3.4.8. En el inventario se distinguen los requisitos RT que también incorporan el Caso, capítulo 15. Los cambios deben conciliarse posteriormente con T-13; su presencia no acredita pruebas ejecutadas.
 
 La descripción de los paquetes 3.3.5 y 3.6.4 del T-14 no cubre por sí sola todas las funciones de reglas, gestión y generación documental que aparecen asignadas a ellos en RF-17.02, RF-17.08, RF-17.09 y RT-16.14. Los límites y dependencias constan en \texttt{DEPENDENCIAS\_SD9\_T13.md}. No se ha concluido el cotejo semántico individual de las 653 cadenas ni de toda la columna de componentes; el inventario conserva esa condición sin atribuir revisión humana.
+
+\section*{Revisión adicional de SD3-04 y SD3-06}
+
+El inventario se regeneró con SD4 \texttt{2d508f46}, SD7 \texttt{68669bef} y SD9 \texttt{24e243d4}. Conserva las 653 filas, 644 fichas y nueve alias, e incorpora huellas de fila y versiones de fuentes para identificar revisiones desactualizadas. Se documentó un cotejo focalizado de 22 componentes; no constituye la revisión completa de las 653 cadenas.
+
+Se precisaron M2 y M1 en RF-01.05, el paso de M11 a M3 y la planificación de M4 en RF-12.05, y las alternativas de evidencia en RF-12.12. Se sintetizó la pila repetida en cuatro filas de M5 y once de portales, conservando la función; RF-12.14 y RF-12.17 detallan el contenido exigido. Se corrigieron los nombres PHPStan y PHPUnit y se explicó el linaje no ofertado de RT-05.10. T-13 debe conciliar esas modificaciones.
+
+Siguen pendientes el cotejo individual de las filas restantes, la suficiencia de origen y prueba de las filas focalizadas, y la conciliación con T-13 y T-14 descrita en \texttt{DEPENDENCIAS\_SD9\_T13.md}. El registro no declara ejecutadas las pruebas ni confirmada la revisión humana.
+
+\section*{Continuación del cotejo de SD3-04 y SD3-06}
+
+Se efectuó una lectura preliminar de los componentes de las 653 filas y se conservaron observaciones por identificador. Se cotejaron los textos de 374 requisitos transversales y 26 complementos del Caso con las Bases en SD4: tras corregir RT-07.09 a 3-2-1-1-0 no quedan diferencias de texto normalizado. Tres descripciones no idénticas entre catálogo y T-12 se examinaron por separado: RNF-04.01, RNF-14.06 y RNF-23.04. La comparación no demuestra por sí sola que el componente, paquete y prueba cubran la exigencia. La comparación final utiliza T-13 \texttt{0c57a4bb}; en RT-21.21 incorpora el cambio remoto del SD3 \texttt{40d415db} y el total de operación del T-15.
+
+Se ampliaron 62 criterios funcionales del Anexo 3.A con condiciones de verificación omitidas. El T-13 contrastado mantiene los criterios anteriores y requiere conciliación; también debe corregir el texto de RT-07.09. RT-26.02 desglosa 23 paquetes hoja existentes de las cinco innovaciones; RT-26.01 y RT-26.03 conservan la referencia a la cuenta 3.10 por falta de un paquete específico comprobado para el propósito documental.
+
+RNF-20.06 y RT-07.04 se clasifican como «Cumple parcialmente»: SD4 reconoce que, si los tres enlaces se aíslan y el sitio se destruye antes de replicar, el RPO de 15 minutos no queda garantizado para los eventos no replicados. La distribución de T-12 es 600 «Cumple», 31 «Cumple parcialmente» y 22 «No cumple». Se precisó también la diferencia entre ocho operadores NOC nominados y el mínimo necesario para cubrir el puesto en turnos. Las nueve diferencias de estado y los demás pendientes constan en \texttt{DEPENDENCIAS\_SD9\_T13.md}.
+
+La lectura preliminar de la columna no sustituye el cotejo individual de la suficiencia del paquete, la fuente y la prueba, que sigue pendiente en las filas indicadas en el inventario. La matriz T-13 nombra pruebas previstas; sus datos, pasos, ambientes y evidencias se completan en H1. No se declara ejecutada una prueba ni confirmada una revisión humana.
+
+\section*{Confirmaciones y contraste de nombres — 15 de noviembre de 2026}
+
+El usuario confirmó la realización de la revisión humana correspondiente a SD3-01, SD3-02 y SD3-13. Esta declaración actualiza los estados pendientes que aparecen en los cortes anteriores; no identifica a la persona que realizó cada comprobación ni acredita por sí sola la ejecución de pruebas. El nivel de uso de IA en las figuras de 3.4 sigue sin determinarse.
+
+En SD3-09 se contrastaron nuevamente los doce nombres de la Tabla 3.4 y de las fuentes editables de las Figuras 3.4 y 3.7 con el Anexo 4-D del SD4, rama corregida en \texttt{69c9a879}. Los nombres coinciden, incluidos M10 Analítica y M11 Canal moderno. Las menciones abreviadas por código en la Figura 3.7 se complementan con la leyenda de los doce nombres. La confirmación anterior del usuario comprende la revisión visual de los diagramas.
+
+En SD3-03 la existencia de un origen por fila no demuestra que el apartado citado sustente toda la exigencia; esa correspondencia y los catálogos relacionados requieren cotejo individual. La revisión general confirmada no sustituye el cotejo específico de SD3-03, SD3-04 y SD3-06.
+
+Para SD3-04 y SD3-06 se actualizó el inventario al SD4 \texttt{69c9a879}; sus cambios respecto de \texttt{2d508f46} conciernen a referencias y foliación, por lo que se preservan los límites de la lectura anterior. En RF-01.09 se distinguió el evento de recepción para M2 de la solicitud al ERP, que se encola y procesa mediante INT-06 y la ACL con reintento automático. Quedan pendientes el alcance del paquete de integración, la suficiencia de las pruebas previstas y el cotejo individual restante; la corrección debe conciliarse con T-13.
+
+\section*{Localización de orígenes — 15 de noviembre de 2026}
+
+Se generó un inventario de las 134 filas de la Tabla 3.A.1, con los apartados y códigos del Caso, las Bases Transversales y el SD2 que reconoce el script de localización. Los localizadores reconocidos se encontraron en las versiones de las ramas registradas en el inventario. Esta comprobación es estructural: no demuestra que cada pasaje respalde todas las condiciones de la fila. El análisis individual de RF-01.01 y los aspectos por sustentar se registran en el cotejo de orígenes; la revisión semántica restante continúa abierta.
 
 \section*{Cambios asociados registrados en la rama}
 
