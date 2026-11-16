@@ -2,7 +2,7 @@
 \section{Estrategia de adquisiciones}
 \label{sec:e2-adquisiciones}
 
-LafroX compra 12.975,08 UF en equipos durante la implementación, todos pagados en el mes 2, y contrata 710,69 UF mensuales de servicios durante la Operación. Las compras se ordenan según la secuencia de instalación y las olas de implantación del T-14 (LafroX, 2026c, cuentas 5.1 a 5.4). Los montos salen de las hojas \texttt{ADQUISICIONES IMPLEMENTACIÓN}, \texttt{ADQUISICIONES OPERACION} y \texttt{PROVEEDORES} del modelo (LafroX, 2026f).
+LafroX compra 13.614,93 UF en equipos durante la implementación, todos pagados en el mes 2, y contrata 27.081,96 UF de servicios durante los 36 meses de la Operación, 752,28 UF al mes en promedio. Las compras se ordenan según la secuencia de instalación y las olas de implantación del T-14 (LafroX, 2026c, cuentas 5.1 a 5.4). Los montos salen de las hojas \texttt{ADQUISICIONES IMPLEMENTACIÓN}, \texttt{ADQUISICIONES OPERACION} y \texttt{PROVEEDORES} del modelo (LafroX, 2026f).
 
 \subsection{Matriz de adquisiciones principales}
 \label{sec:e2-adq-matriz}
@@ -11,18 +11,18 @@ LafroX pone la infraestructura de la solución en los sitios del CLIENTE y espec
 
 \begin{tablalafrox}{Adquisiciones de equipamiento de LafroX por categoría. Fuente: modelo financiero, hojas ADQUISICIONES IMPLEMENTACIÓN, ADQUISICIONES OPERACION y RESUMEN.}{tab:e2-adq-equipos}{Y R{1.0cm} R{2.0cm} R{2.7cm} R{2.0cm}}
   {\cab{Categoría} & \cab{Mes} & \cab{UF} & \cab{CLP} & \cab{USD}}
-  Equipos de red y oficina & 2 & 6.411,51 & 256.460.392 & 284.956 \\
+  Equipos de red y oficina & 2 & 7.006,28 & 280.251.361 & 311.390 \\
   Seguridad & 2 & 2.065,86 & 82.634.542 & 91.816 \\
-  Servidores y equipos de borde & 2 & 1.424,97 & 56.998.650 & 63.332 \\
+  Servidores y equipos de borde & 2 & 1.470,03 & 58.801.341 & 65.335 \\
   Obras civiles, energía y montaje & 2 & 3.072,75 & 122.909.806 & 136.566 \\
-  \textbf{Total de la implementación} & & \textbf{12.975,08} & \textbf{519.003.390} & \textbf{576.670} \\
+  \textbf{Total de la implementación} &  & \textbf{13.614,93} & \textbf{544.597.050} & \textbf{605.108} \\
   \midrule
   Reposición de equipos de red & 21 & 382,33 & 15.293.111 & 16.992 \\
   Reposición de seguridad & 21 & 257,33 & 10.293.282 & 11.437 \\
   Adecuación eléctrica y puntos de red & 21 & 32,00 & 1.280.000 & 1.422 \\
 \end{tablalafrox}
 
-La compra más grande es la red de bodega. Los 72 puntos de acceso Wi-Fi 6E industriales cuestan 4.933,55 UF de los 6.411,51 UF de la categoría, que se completa con los switches Cisco y Moxa. En seguridad pesan los cinco FortiGate 100F de los centros, con 915,52 UF, y los siete FortiGate Rugged 60F de los sitios industriales, con 519,59 UF. Las obras incluyen la climatización de precisión de la sala, de 1.288,59 UF, la UPS, el generador y los gabinetes de borde de Concepción y de cross-docking. En borde van los servidores HPE, siete PC industriales Advantech, la NAS de respaldo, cinco terminales Starlink y cuatro gateways Moxa de la cadena de frío.
+La compra más grande es la red de bodega. Los 72 puntos de acceso Wi-Fi 6E industriales cuestan 4.933,55 UF de los 7.006,28 UF de la categoría, que se completa con los switches Cisco y Moxa y con la controladora inalámbrica Cisco CW9800L, con su fuente redundante y su bandeja de rack, por 594,77 UF. En seguridad pesan los cinco FortiGate 100F de los centros, con 915,52 UF, y los siete FortiGate Rugged 60F de los sitios industriales, con 519,59 UF. Las obras incluyen la climatización de precisión de la sala, de 1.288,59 UF, la UPS, el generador y los gabinetes de borde de Concepción y de cross-docking. En borde van los servidores HPE con un disco y una fuente de repuesto (34,87 UF), siete PC industriales Advantech, la NAS de respaldo, cinco terminales Starlink y cuatro gateways Moxa de la cadena de frío.
 
 En el mes 21 se reponen equipos de red y seguridad y se amplían la red y la instalación eléctrica, por 671,66 UF. La separación civil de la sala la hace el CLIENTE, con especificación y coordinación de LafroX (Distribuidora Puelche S.A., 2026b, RT-06.06). El CLIENTE compra también los equipos de terreno y el monitoreo de frío de cámaras y camiones, salvo los gateways B-02 que pone LafroX (LafroX, 2026a). Esos equipos no entran al costo ni al flujo, y su costo estimado está en la hoja \texttt{HARDWARE DEL CLIENTE}.
 
@@ -30,17 +30,18 @@ La Tabla~\ref{tab:e2-adq-servicios} muestra los servicios que LafroX contrata pa
 
 \begin{tablalafrox}{Servicios recurrentes contratados por LafroX durante la Operación, por mes. Fuente: modelo financiero, hojas ADQUISICIONES OPERACION y PROVEEDORES.}{tab:e2-adq-servicios}{Y L{3.3cm} R{1.5cm} R{2.2cm} R{1.5cm}}
   {\cab{Servicio} & \cab{Proveedor} & \cab{UF} & \cab{CLP} & \cab{USD}}
-  Nube & AWS & 368,92 & 14.756.635 & 16.396 \\
+  Nube de producción & AWS & 368,92 & 14.756.635 & 16.396 \\
+  Nube de desarrollo, QA y preproducción, promedio & AWS & 37,06 & 1.482.313 & 1.647 \\
   Fibra empresarial & Entel & 13,60 & 544.000 & 604 \\
   Enlaces LTE, Starlink y SIM & Virgin Empresas, Entel y Starlink & 41,85 & 1.674.031 & 1.860 \\
   Satélite Iridium SBD de los camiones con frío & Globalsat Chile & 129,55 & 5.181.972 & 5.758 \\
   Protección de endpoints & CrowdStrike & 97,60 & 3.904.047 & 4.338 \\
-  Gestión de dispositivos & Microsoft Intune, con Claro Cloud Chile & 29,05 & 1.162.044 & 1.291 \\
+  Gestión de dispositivos, desde el mes 25 & Microsoft Intune, con Claro Cloud Chile & 32,93 & 1.317.186 & 1.464 \\
   Custodia de respaldos & Servicio externo & 4,96 & 198.413 & 220 \\
   Mapas, mensajería y pagos & Google Maps Platform, Twilio y Mercado Pago & 25,16 & 1.006.460 & 1.118 \\
 \end{tablalafrox}
 
-De las 710,69 UF mensuales, 368,92 UF son nube. CrowdStrike protege 217 servidores y estaciones, Intune administra los 382 equipos Android del parque inicial, los enlaces suman ocho planes LTE, cinco Starlink y hasta 198 SIM al año 3, e Iridium SBD conecta los 28 camiones con frío. En la implementación se paga desde el mes 2 una nube de pruebas de 32,03 UF al mes, y desde el mes 4 enlaces por 94,76 UF y servicios externos por 132,20 UF mensuales. Esos enlaces son 13,60 UF de fibra, 7,25 UF de LTE y satélite de los sitios y 73,91 UF (3.284,99 USD) del Iridium de los camiones.
+La nube de producción cuesta 368,92 UF al mes. Los ambientes de desarrollo, QA y preproducción se encienden 12 horas por día hábil y suman 1.334,08 UF en los 36 meses, por lo que su costo mensual varía con los días hábiles. CrowdStrike protege 217 servidores y estaciones, Intune administra 382 equipos Android hasta el mes 24 (29,05 UF al mes) y 433 desde el mes 25, cuando el parque llega al tamaño del año 3, los enlaces suman ocho planes LTE, cinco Starlink y hasta 198 SIM al año 3, e Iridium SBD conecta los 28 camiones con frío. En la implementación, la nube cuesta 4.693,57 UF. Los ambientes de prueba se pagan desde el mes 2, y la nube de producción y de recuperación desde el mes 6, por 3.867,55 UF, ya que ambas deben estar operativas en el hito H3 (LafroX, 2026c, paquetes 3.1.2 y 3.1.3). Desde el mes 4 se pagan además enlaces por 94,76 UF y servicios externos por 132,20 UF mensuales. Esos enlaces son 13,60 UF de fibra, 7,25 UF de LTE y satélite de los sitios y 73,91 UF (3.284,99 USD) del Iridium de los camiones.
 
 \subsection{Cronograma de compras}
 \label{sec:e2-adq-cronograma}
