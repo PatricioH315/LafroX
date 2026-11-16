@@ -4,14 +4,13 @@
 
 La caja del proyecto se mantiene positiva los 56 meses, con un mínimo de 1.018,50 UF en el mes 9, y cierra el contrato con 36.025,09 UF. Las cifras salen de las hojas \texttt{FLUJO CAJA NETO}, \texttt{FINANCIAMIENTO} y \texttt{CURVA S} del modelo (LafroX, 2026f), en valores netos y antes de impuestos.
 
-La Figura~\ref{fig:e2-curva-s} presenta tres series acumuladas para los 56 meses:
+La Figura~\ref{fig:e2-curva-s} presenta dos series acumuladas para los 56 meses, las mismas de la hoja \texttt{CURVA S}:
 \begin{itemize}
-  \item \textbf{Ingresos del contrato:} cobros de los hitos del E-25 y mensualidades de Operación.
-  \item \textbf{Costos e intereses:} egresos del proyecto más intereses del crédito. El escenario base no utiliza la línea de crédito.
-  \item \textbf{Saldo de caja financiado:} saldo al cierre del mes, incluidos el desembolso bancario, el aporte de socios y la amortización del principal.
+  \item \textbf{Ingresos acumulados:} el capital inicial que entra en el mes 1, los cobros de los hitos del E-25 y las mensualidades de Operación.
+  \item \textbf{Egresos acumulados:} los costos del proyecto, los intereses del crédito y la devolución del principal. El escenario base no utiliza la línea de crédito.
 \end{itemize}
 
-El saldo financiado se obtiene al sumar el capital recibido a los ingresos acumulados y restar los costos, intereses y amortizaciones acumulados. El VAN y la TIR de la sección~\ref{sec:e2-evaluacion} se calculan sobre el flujo del proyecto antes del financiamiento.
+La distancia vertical entre las dos curvas es el saldo de caja de cada mes. Los ingresos acumulados se mantienen sobre los egresos en los 56 meses, y la menor distancia es de 1.018,50 UF en el mes 9. El VAN y la TIR de la sección~\ref{sec:e2-evaluacion} se calculan sobre el flujo del proyecto antes del financiamiento.
 
 \subsection{Capital inicial y financiamiento}
 \label{sec:e2-curva-financiamiento}
@@ -33,32 +32,33 @@ Hasta el mes 15 se pagan solo intereses, 144,00 UF al mes. Desde el mes 16, cuan
 
 El capital cubre el déficit más alto del proyecto y los intereses pagados hasta ese mes, con un margen de seguridad. Sin financiamiento, el déficit acumulado más alto es de 17.829,50 UF en el mes 9. Con los 20.000 UF se cubren ese déficit y los 1.152,00 UF de intereses pagados hasta entonces, y quedan 1.018,50 UF (\$40.739.817 o USD~45.266) de margen. Con 19.000 UF, el mes 9 quedaría con 76,10 UF, menos que un mes de intereses. Así el proyecto no usa la línea de crédito de 1.250 UF al 3\,\% mensual, que queda como respaldo si se atrasa el cobro de un hito.
 
-\subsection{Costos e ingresos acumulados}
+\subsection{Ingresos y egresos acumulados}
 \label{sec:e2-curva-acumulados}
 
 La línea vertical de la Figura~\ref{fig:e2-curva-s} separa la implementación de la Operación, que comienza en el mes 21 con el cobro de H12.
 
 \begin{figure}[htbp]\centering
   \input{figuras/curva_s.tex}
-  \caption{Curva S. Ingresos del contrato, costos con intereses y saldo de caja financiado, en miles de UF acumuladas. Fuente: modelo financiero, hojas INDICADORES y FLUJO CAJA NETO.}
+  \caption{Curva S. Ingresos acumulados, con el capital inicial, y egresos acumulados, con los intereses y la devolución del crédito, en UF. La distancia entre las curvas es el saldo de caja. Fuente: modelo financiero, hoja CURVA S.}
   \label{fig:e2-curva-s}
 \end{figure}
 
-La Tabla~\ref{tab:e2-curva-hitos} muestra las tres series y el movimiento de caja del mes en los principales puntos del contrato.
+\Needspace{14\baselineskip}
+La Tabla~\ref{tab:e2-curva-hitos} muestra las dos series, el flujo del mes y el saldo de caja en los principales puntos del contrato.
 
-\begin{tablalafrox}{Curva S y flujo financiado en meses seleccionados, en UF. Fuente: hojas INDICADORES y FLUJO CAJA NETO.}{tab:e2-curva-hitos}{Y R{2.05cm} R{2.1cm} R{2.05cm} R{2.1cm}}
-  {\cab{Mes} & \cab{Ingresos acum.} & \cab{Costos e intereses acum.} & \cab{Flujo del mes} & \cab{Saldo acum.}}
-  1, capital inicial & 0,00 & 2.258,03 & 17.741,97 & 17.741,97 \\
-  2, compra de equipos & 8.824,01 & 18.884,21 & $-$7.802,17 & 9.939,80 \\
-  9, saldo mínimo & 27.575,02 & 46.556,53 & $-$2.956,20 & 1.018,50 \\
-  10, hito H4 & 38.605,03 & 49.446,66 & 8.139,88 & 9.158,37 \\
-  16, primera cuota & 71.695,06 & 75.845,68 & 4.685,69 & 15.249,15 \\
-  21, inicio de Operación & 113.962,16 & 101.385,84 & 8.978,76 & 28.892,87 \\
-  39, última cuota & 179.879,33 & 159.759,28 & 28,01 & 24.120,05 \\
-  56, cierre del contrato & 242.134,43 & 210.109,33 & 373,80 & 36.025,09 \\
+\begin{tablalafrox}{Curva S y flujo financiado en meses seleccionados, en UF. Fuente: modelo financiero, hoja CURVA S.}{tab:e2-curva-hitos}{Y R{2.05cm} R{2.1cm} R{2.05cm} R{2.1cm}}
+  {\cab{Mes} & \cab{Ingresos acum.} & \cab{Egresos acum.} & \cab{Flujo del mes} & \cab{Saldo acum.}}
+  1, capital inicial & 20.000,00 & 2.258,03 & 17.741,97 & 17.741,97 \\
+  2, compra de equipos & 28.824,01 & 18.884,21 & $-$7.802,17 & 9.939,80 \\
+  9, saldo mínimo & 47.575,02 & 46.556,53 & $-$2.956,20 & 1.018,50 \\
+  10, hito H4 & 58.605,03 & 49.446,66 & 8.139,88 & 9.158,37 \\
+  16, primera cuota & 91.695,06 & 76.445,92 & 4.685,69 & 15.249,15 \\
+  21, inicio de Operación & 133.962,16 & 105.069,29 & 8.978,76 & 28.892,87 \\
+  39, última cuota & 199.879,33 & 175.759,28 & 28,01 & 24.120,05 \\
+  56, cierre del contrato & 262.134,43 & 226.109,33 & 373,80 & 36.025,09 \\
 \end{tablalafrox}
 
-Al mes 56, los ingresos del contrato suman 242.134,43 UF y los costos con intereses alcanzan 210.109,33 UF. El saldo de caja llega a 36.025,09 UF al incorporar las 20.000,00 UF de capital inicial y la devolución de las 16.000,00 UF del principal.
+Al mes 56, los ingresos acumulados suman 262.134,43 UF: 242.134,43 UF del contrato y 20.000,00 UF de capital inicial. Los egresos acumulados llegan a 226.109,33 UF: 206.231,56 UF de costos del proyecto, 3.877,77 UF de intereses y 16.000,00 UF de devolución del crédito. La diferencia, 36.025,09 UF, es el saldo de caja al cierre del contrato.
 
 \subsection{Análisis del flujo de caja mensual}
 \label{sec:e2-curva-flujo-mensual}
