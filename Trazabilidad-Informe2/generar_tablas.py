@@ -277,8 +277,8 @@ GRUPOS = [
  "La fila del T-16 describe asistencia de redacción y propuesta de valores. La declaración distribuye la revisión entre cinco responsables y amplía su alcance a 8.C–8.H. Se cotejó documentalmente esa declaración; falta confirmar la revisión humana de esta actualización, sin atribuirle aceptación técnica.", "SD8, Declaración de IA, cuerpo, Anexos 8.C–8.H y T-16"),
 ("Estilo defensivo («no certifican», «no se presume», «no se afirma»).", P,
  "Se reducen esas expresiones de 13 a 10 en el cuerpo y el T-16.", "SD8; T-16"),
-("Cuerpo de unas 14 páginas de contenido para un ítem del 10 %.", N,
- "El cuerpo mantiene su extensión; el desarrollo nuevo (controles, respuestas, FMEA y reservas) va en los Anexos 8.E a 8.H.", "SD8; SD8-Anexos, 8.E a 8.H"),
+("Cuerpo de unas 14 páginas de contenido para un ítem del 10 %.", C,
+ "El contenido principal se amplía de 14 a 19 páginas con cinco cuadros de FMEA aplicado, respuestas prioritarias, costo-beneficio, reservas y condiciones de habilitación. Se explican las decisiones en el cuerpo y se conserva el detalle en anexos, sin alterar riesgos ni cálculos.", "SD8, 8.2.3 y 8.3.1–8.3.3; Tablas 8.2.3-A, 8.3.1-A/B, 8.3.2-A y 8.3.3-A"),
 ]),
 ("Subdocumento 9: Plan de calidad (T-13 y T-17)", "SD9", [
 ("“Falta una prueba explícita del manifiesto de identidad durante un corte (credenciales y relevos sin enlace), que el S4 declara como la solución de la identidad sin conexión; no aparece en el S9, en sus anexos ni en el T-13. AL-OFF-01 menciona «relevos» sin criterio de salida sobre la autenticación.” (p. 40)", C,
