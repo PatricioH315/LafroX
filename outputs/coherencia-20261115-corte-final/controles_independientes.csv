@@ -1,0 +1,17 @@
+﻿control,calculado,referencia,diferencia,concilia
+Ingresos contractuales vs Resumen,239329.211544,239329.2116,-5.600001895800233e-05,True
+Costos vs Resumen,203680.0419238,203680.0419,2.379997749812901e-05,True
+VAN independiente,24976.685990753962,24976.68601,-1.9246039300924167e-05,True
+HH perfiles vs T15,200783.82,200783.82,0.0,True
+HH mensuales + capacitación,200783.82,200783.82,0.0,True
+HH con servicios externos,202108.62,202108.62,0.0,True
+HH innovaciones T15,5552.0,5552,0.0,True
+Porcentajes hitos,1.0,1,0.0,True
+SOC HH operación,26280.0,26280,0.0,True
+Mesa HH operación,38246.0,38246,0.0,True
+NOC HH operación,21748.2,21748.2,0.0,True
+Nube innovación sin duplicación,44.25621274225,44.25621274,2.2499975216305756e-09,True
+Caja final financiada,35765.283825788,35765.28383,-4.212000931147486e-06,True
+239 filas T15 con desgloses y ajustes vs línea base,202108.62,202108.62,0.0,True
+Servicios externos código00 todas las filas T15,1324.8000000000002,1324.8,2.2737367544323206e-13,True
+Perfiles internos todas las filas T15,200783.82,200783.82,0.0,True

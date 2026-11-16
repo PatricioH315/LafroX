@@ -1,0 +1,26 @@
+﻿id,prioridad,hallazgo
+C01,Alta,E2 no reproduce el Excel vigente
+C02,Media,E2 mantiene un parque Intune y servicios de implementación de otra versión
+C03,Alta,Las innovaciones se valorizan con perfiles distintos a los asignados en T-15
+C04,Alta,El calendario de costo de innovaciones no es el del T-15/T-19
+C05,Alta,Cinco asignaciones de innovaciones exceden el presupuesto perfil/mes
+C06,Alta,Se suman beneficios que T-19 ordena no acumular sin conciliación
+C07,Media,Beneficios con población no conciliada e INN-05 anticipada doce meses
+C08,Alta,"La cobertura de nube anterior a M21 está parcialmente incorporada, no completamente demostrada"
+C09,Alta,Dos controladores inalámbricos y ciertos repuestos no tienen cobertura económica identificable
+C10,Alta,Servicios especializados del T-15 sin conciliación económica explícita
+C11,Media,La tabla de mantención usa promedios que no reproducen sus paquetes
+C12,Media,Proveedores y canales económicos distintos a los de la arquitectura
+C13,Media,"INN-05 compromete papel y explicación, pero su costo incremental queda en nube"
+C14,Alta,La línea de respaldo no cubre un atraso de H4 de un mes
+C15,Media,El Resumen muestra dos nociones de «total del proyecto» sin puente de alcance
+C16,Baja,Encabezados de HH conservan totales manuales de otra versión
+C17,Media,La copia XLSX no acredita controles de entrada/protección exigidos por E-21
+C18,Media,"SD8 incorpora R-036, pero su contingencia sigue fuera del Excel"
+C19,Alta,El escenario horario de nube no productiva no llega al flujo y faltan entradas
+C20,Alta,La evidencia de innovaciones en M15 no tiene sesiones ni imputación acreditadas
+C21,Media,La vista QA aprobada no acredita dotación diaria ni una reserva adicional
+C22,Media,Los PDF T-15/T-18 no reflejan las condiciones nuevas de sus fuentes
+C23,Alta,Los cobros nominales dependen de entregas/actas aún no acreditadas por la programación
+C24,Media,T-13 declara «Cumple» donde T-12 vigente conserva diez cumplimientos parciales
+C25,Media,La existencia de un código EDT no demuestra cobertura funcional ni económica

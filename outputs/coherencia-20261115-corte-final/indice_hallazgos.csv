@@ -1,0 +1,28 @@
+﻿id,prioridad,hallazgo
+C01,Alta,E2 no reproduce el modelo financiero vigente
+C02,Media,El catálogo de operación e implementación de E2 sigue siendo de otra versión
+C03,Alta,Las innovaciones usan perfiles y costos distintos a las partidas del T-15
+C04,Alta,Las ventanas macro de innovaciones no reproducen su reparto por paquete
+C05,Alta,Trece combinaciones perfil/mes exceden el presupuesto disponible
+C06,Alta,El beneficio total suma efectos que SD13 prohíbe acumular sin conciliación
+C07,Media,Los beneficios usan población y adopción completas sin conciliarlas con el despliegue
+C08,Alta,"La cobertura productiva previa a M21 mejoró, pero siguen previsiones sin aplicar y componentes sin puente"
+C09,Media,"Los equipos antes omitidos ya están presupuestados; licencias, soporte y entrega siguen pendientes"
+C10,Alta,Los servicios especializados del T-15 no tienen conciliación económica explícita
+C11,Media,El costo de mantención usa promedios que no reproducen sus paquetes
+C12,Media,"El proveedor, canal y volumen económico no son los del diseño técnico"
+C13,Media,INN-05 conserva impresión física sin cobertura del consumible ni criterio de pagador
+C14,Alta,La línea de respaldo no cubre una demora de un mes de H4
+C15,Media,El Resumen llama total del proyecto a dos estimaciones de alcances no conciliados
+C16,Baja,La columna de total HH contiene valores manuales antiguos
+C17,Media,La exportación XLSX no acredita los controles de entrada y protección de E-21
+C18,Media,La contingencia de SD8 incluye R-036 y la del Excel todavía no
+C19,Alta,El escenario de nube no productiva de operación está desconectado o sin entradas
+C20,Alta,Las sesiones M15 nuevas contradicen fechas y perfiles del T-15
+C21,Media,La asignación QA de SD9 no corresponde a los perfiles de sus paquetes T-15
+C22,Media,Los PDF versionados T-15 y T-18 no representan sus fuentes actuales
+C23,Alta,H4 y los cobros nominales conservan condiciones de aceptación sin conciliar
+C24,Media,T-13 declara Cumple en diez requisitos que T-12 declara parciales
+C25,Media,Los códigos EDT citados no acreditan toda la cobertura funcional y económica
+C26,Media,El estado Cumple de RT-26.04 contradice la propia descripción de riesgos de innovación
+C27,Baja,La previsión LCU suma dimensiones donde corresponde la dimensión máxima
