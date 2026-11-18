@@ -107,7 +107,7 @@ Después de cada paso a producción hay cuatro semanas de estabilización por ol
 
 \parte{tablas/tab_T18_dotacion}
 
-Si la ola cubre solo una zona, la dotación de calle se reduce en proporción a sus rutas, y la dotación decrece según la curva de adopción, como exige el RT-20.05. Los puestos los cubre el equipo de implantación del Formulario T-15, sección 5.7. Cada frente está a cargo de un jefe de frente del área de Implantación y Gestión del Cambio (bodega de Talca, bodega de Concepción, plataformas, ruta de Talca y ruta de Concepción), que decide en terreno la contingencia y el escalamiento. Los puestos de bodega, plataformas y calle los ocupan asistentes de implantación contratados por LafroX por obra o faena, con experiencia en bodega, reparto o soporte a usuarios y certificados en el sistema antes del H6. Ningún desarrollador se asigna a estos puestos.
+En una ola de una sola zona se cubren sus rutas, no las de toda la red. Los asistentes se retiran de forma gradual cuando los equipos de reparto completan su trabajo sin apoyo (RT-20.05). Los puestos los cubre el equipo de implantación del Formulario T-15, sección 5.7. Cada frente está a cargo de un jefe de frente del área de Implantación y Gestión del Cambio (bodega de Talca, bodega de Concepción, plataformas, ruta de Talca y ruta de Concepción), que decide en terreno la contingencia y el escalamiento. Los puestos de bodega, plataformas y calle los ocupan asistentes de implantación contratados por LafroX por obra o faena, con experiencia en bodega, reparto o soporte a usuarios y certificados en el sistema antes del H6. Ningún desarrollador se asigna a estos puestos.
 
 \subsection{Capacitación y certificación}
 
@@ -161,7 +161,7 @@ Los dos últimos indicadores protegen a la Etapa 1 durante la convivencia. R18-1
 
 \subsection{Reversión}
 
-La reversión de la Etapa 2 no toca la Etapa 1. Desactiva mediante un indicador de funcionalidad la capacidad de la Etapa 2 que falla, y la operación vuelve al procedimiento anterior de esa capacidad: carga manual controlada de los pedidos de la cadena, atención asistida a clientes y transportistas, o el cálculo vigente de costos. Estos procedimientos sostienen contingencia auxiliar y no acreditan R18-13 ni habilitan cierre mientras una capacidad requerida esté desactivada. Ningún despliegue ni reversión ocurre en la ventana de 05:30 a 07:00 ni en fechas prohibidas (paquete 9.1.3).
+La reversión de la Etapa 2 no toca la Etapa 1. Desactiva mediante un indicador de funcionalidad la capacidad de la Etapa 2 que falla, y la operación vuelve al procedimiento anterior de esa capacidad: carga manual controlada de los pedidos de la cadena, atención asistida a clientes y transportistas, o el cálculo vigente de costos. Estos procedimientos son contingencia auxiliar: R18-13 y el cierre de la marcha blanca exigen que todas las capacidades requeridas estén activas. Ningún despliegue ni reversión ocurre en la ventana de 05:30 a 07:00 ni en fechas prohibidas (paquete 9.1.3).
 
 \subsection{Estabilización, capacitación y certificación}
 

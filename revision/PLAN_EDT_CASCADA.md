@@ -1,119 +1,67 @@
-# Propuesta: EDT por entregables y corrección de los paquetes de trabajo (SD7, T-14, T-15, T-18)
+# Plan vigente: EDT por productos y desarrollo en cascada (SD6, SD7, T-9, T-10, T-14, T-15, T-18)
 
-Fecha: 17-11-2026. Base: rama `LafroX-Subdoc7-LateX-CORRIGIENDO` (commit 5e78b998), revisión del Informe 2 y tabla de trazabilidad Informe 2 → 3.
+Versión del plan: 18-11-2026. Reemplaza la propuesta del 17-11-2026. Rama principal de trabajo: `LafroX-Subdoc7-LateX-CORRIGIENDO`, en una sola carpeta (`LafroX/`), cambiando de rama; sin worktrees.
 
-## 1. Qué resuelve y qué no cambia
+## 1. Decisiones vigentes
 
-Resuelve las observaciones del SD7 que nacen de cómo están armados los paquetes de trabajo: SD7-01, 02, 06, 08, 09, 10 (matiz), 11, 12, 14, 17, 25 y 26, más tres problemas que la revisión no nombró pero que salen de la misma raíz (P11 a P13).
-
-Restricciones que la propuesta respeta:
-
-- **No cambia el alcance ni el esfuerzo.** Siguen los 227 paquetes, con sus mismos entregables, criterios de aceptación, responsables y HH (202.108,62 HH en total). Ningún paquete se crea ni se elimina: sólo se reagrupan, cambian de código y algunos cambian de fecha.
-- **No cambian los hitos ni los meses contractuales.** H1 a H12, marchas blancas (H6 01-02-2028 y H11 01-08-2028), producción el 17-05-2028 y el 18-10-2028, congelamientos.
-- **Las figuras de la EDT y de la Gantt se rehacen al final**, una vez fijada la estructura.
-
-Lo que sí cambia y hay que revisar aguas abajo: la distribución mensual de HH en junio–septiembre de 2027 (sección 6) y, por eso, el flujo del E2/Excel en esos meses.
-
-## 2. Problemas y soluciones
-
-| N.º | Problema (observación) | Evidencia hoy | Solución propuesta |
-|---|---|---|---|
-| P1 | Primer nivel de la EDT por fases RUP y no por entregables (SD7-01) | Fases 1 Inicio, 2 Elaboración, 3 Construcción, 4 Transición…; el índice por productos del T-14 es sólo una lectura encima | Nuevo nivel 1 de **10 productos** (sección 3). Las fases RUP pasan a ser lo que son: el ciclo de ejecución, descrito en el SD6 y visible en la Gantt, no la estructura del alcance |
-| P2 | Etapa 1 y Etapa 2 como ramas (SD7-02) | Cuentas 3.4/3.5 «Módulos de la Etapa N», 3.8/3.9 «Pruebas de la Etapa N», 4.2/4.3 «Marcha blanca de la Etapa N» | Cada cuenta es un producto y contiene los incrementos de ambas etapas. La etapa queda como **atributo** del paquete (columna «Etapa» en el diccionario). Ejemplo: «6.3 Pruebas de carga y resiliencia» contiene 6.3.1 (E1) y 6.3.2 (E2) |
-| P3 | Mismo producto partido por calendario | M10 Analítica en 3.4.11 (E1) y 3.5.4 (E2); carga 3.8.4/3.9.3; DR 3.8.5/3.9.4; seguridad ofensiva 3.8.6/3.9.5; despliegue 3.8.8/3.9.7; marcha blanca 4.2.1/4.3.1; estabilización 4.2.2/4.3.2; certificación de usuarios 7.3.1/7.3.2 | Cada par queda bajo una sola cuenta de producto (Anexo A). Los paquetes siguen separados porque tienen fechas, actas e hitos distintos (H5/H10, H7/H12), pero ya no en ramas distintas |
-| P4 | Once módulos de la Etapa 1 parten la misma semana (SD7-08) | 3.4.1 a 3.4.10 empiezan entre el 10 y el 18-06-2027 | Construcción en **tres olas** según las dependencias que el propio SD7 describe (sección 4). Mismo fin que hoy (01-10-2027) |
-| P5 | Máximo de 12 personas por módulo; 10 módulos en paralelo suman 120 (SD7-06) | Tabla de programación del T-15: «12,0 / 12», «10,3 / 12»… y el CPM calcula la duración con ese máximo | Equipos de 3 a 6 personas por módulo. Máximo simultáneo de **30**, dentro de las 31 plazas de construcción del T-15 sección 5.7. El CPM usa ese equipo real |
-| P6 | Red incompleta: 77 de 168 paquetes con entregable sin predecesora (SD7-09) | Incluye 3.3.3–3.3.6, 3.10.x.1, casi toda la fase 5 y 6, 7.1.1, 9.1.1… | Predecesora para los 77 (Anexo B). Sólo el primer paquete depende de la firma del contrato. Regla: ningún paquete con entregable sin predecesora |
-| P7 | CPM restringido por ventanas publicadas (matiz de SD7-10) | T-15 sección 5.1: «Cada paquete inicia cuando se cumplen sus precedencias, sin adelantarse al comienzo de su ventana» | Las fechas salen de duraciones y predecesoras. Sólo se mantienen como restricciones fijas: H6, H11, congelamientos, plazos del proveedor (8 semanas de homologación, 6 de piloto) y la obra civil del CLIENTE |
-| P8 | Dos rutas críticas distintas (SD7-25) | La vista crítica de la Gantt (GanttProject, prefijo RC) muestra 3.2.x, 3.4.9, 3.5.x, migración; la Tabla 7 del T-15 dice que controlan 3.1.5, 3.8.1, 3.8.7, 3.9.1, 3.9.6 | Una sola fuente: el CPM del T-15 marca la ruta crítica y la Gantt toma de ahí la marca RC. La figura de ruta crítica muestra la cadena completa de la Etapa 1 (diseño → plataforma → módulos → certificación → H5 → marcha blanca → H7) y la de la Etapa 2 |
-| P9 | Iteraciones de dos semanas invisibles en la Gantt (SD7-11) y pruebas concentradas al final (SD7-12) | La Gantt de construcción está a nivel de paquete; las 83 ventanas de QA viven en el SD9 y en una tabla del T-15 | En la Gantt, la barra de cada módulo se divide en sus iteraciones de 14 días con un rombo de demostración al cierre, sin agregar filas. Cada iteración incluye su actividad de pruebas del incremento (plantilla D del T-15). Las cuentas 6.x quedan como certificación final |
-| P10 | Filas agrupadas que mezclan cuentas distintas (SD7-14) | «2 elementos: 3.11.3, 3.11.4» en la Figura 7.26 | Una fila por paquete, agrupadas bajo la barra resumen de su producto (nivel 1) y su cuenta |
-| P11 | La EDI con la principal cadena parte en el mes 13, sin margen ante agosto de 2028 (SD7-17) | 3.6.5: 01-02-2028 → 04-07-2028; 3.6.6: 01-06-2028 → 23-08-2028 (termina después de H11) | Separar la habilitación de la cadena del desarrollo de M11 (sección 5): la principal cadena parte el 01-10-2027 y cierra el 31-05-2028; las demás, del 02-05 al 14-07-2028. Margen: dos meses y medio la principal; dos semanas y media las demás antes de H11 |
-| P12 | Actividades detalladas sólo hasta el H2 (SD7-26) | 119 actividades de 60 paquetes; el resto «por planificación gradual» | Detallar en el T-15 todos los paquetes hasta el H5 (construcción completa de la Etapa 1, donde está la ruta crítica), en formato compacto: una fila por paquete con sus actividades, HH y quincena, generadas desde las plantillas por clase. La planificación gradual queda para la Etapa 2 y la Operación |
-| P13 | Numeración de innovaciones desalineada | 3.10.4.x es INN-05; INN-04 está repartida en 5.4.3, 8.3.3 y 8.3.4; INN-02, 03 y 05 tienen parte en la cuenta 8.3 | Una cuenta por innovación, con el mismo número: 7.1 INN-01 … 7.5 INN-05, cada una con sus paquetes de implementación y de operación. Desaparece el cuarto nivel de la EDT |
-| P14 | Paquetes de gestión y de operación sueltos de su producto | 8.1.4 (actualizaciones del Plan de Reversibilidad) separado de 1.7.x; 9.1.1 (entrega del código) separado de 3.11.5 y 5.4.4 (custodia) | Se agrupan con su producto: Plan de Reversibilidad (1.6); Documentación técnica, código y custodia (6.8) |
-
-## 3. Nueva estructura: nivel 1 por entregables
-
-| Nivel 1 | Producto que se acepta | Cuentas | Paquetes | Proviene de |
-|---|---|---|---|---|
-| 1 | Gestión del proyecto | 8 | 32 | 1.1, 1.3–1.9; 8.1.4; 9.1.2 |
-| 2 | Requisitos y diseño aprobados | 8 | 26 | 1.2; 2.x; 4.1.4 |
-| 3 | Plataforma base | 3 | 14 | 3.1, 3.2, 3.3 (identidad, registro auditable, sin conexión) |
-| 4 | Software operativo | 5 | 15 | 3.4, 3.5 |
-| 5 | Integraciones y datos migrados | 4 | 14 | 3.3 (ERP, WMS, flota), 3.6, 3.7 |
-| 6 | Solución certificada y documentada | 8 | 22 | 3.8, 3.9, 3.11, 9.1.1, 5.4.4 |
-| 7 | Innovaciones verificadas | 5 | 23 | 3.10; 5.4.3; 8.3 |
-| 8 | Infraestructura, equipamiento y servicios habilitados | 7 | 35 | 5.1–5.3; 6.x |
-| 9 | Implantación y usuarios habilitados | 7 | 25 | 4.1–4.3; 7.x; 5.4.1–5.4.2 |
-| 10 | Servicio de operación y salida | 5 | 21 | 8.1, 8.2, 8.4, 8.5; 9.2 |
-| | **Total** | **60** | **227** | |
-
-Por qué esta agrupación (texto para el 7.1 del SD7):
-
-- Cada elemento de nivel 1 termina en algo que la Contraparte recibe y acepta. Requisitos y diseños con acta (H1, H2, H8), una plataforma en servicio (H3), módulos aceptados en QA, integraciones probadas, una solución certificada (H5, H10), usuarios habilitados (H6, H7, H11, H12) y un servicio operando. El control del alcance se hace contra esos productos.
-- La etapa no es una rama: cada paquete declara si habilita la Etapa 1, la Etapa 2, ambas o la Operación. Así, un mismo producto se controla de punta a punta (por ejemplo, la analítica M10 o las pruebas de carga) aunque se entregue en dos incrementos.
-- El ciclo RUP (Inicio, Elaboración, Construcción, Transición) sigue gobernando cuándo se hace cada cosa. Se ve en la Gantt y en el SD6, y deja de condicionar cómo se agrupa el alcance.
-- Se mantiene la regla del 100 %: los 227 paquetes del T-14 vigente aparecen una sola vez (Anexo A).
-
-## 4. Construcción de los módulos de la Etapa 1 en tres olas
-
-Orden de dependencias que ya describe el SD7 (sección 7.2.1): base compartida → recepción e inventario → preparación, frío y preventa → rutas y reparto → rendición. Inicio de cada ola: al quedar aprobados los contratos A01/A02 (diez días hábiles) del módulo del que depende, o al terminar ese módulo.
-
-| Ola | Módulo (código nuevo / actual) | Personas | Días hábiles | Inicio | Fin | Depende de |
-|---|---|---|---|---|---|---|
-| A | M1 Recepción (4.1.1 / 3.4.1) | 4 | 35 | 10-06-2027 | 02-08-2027 | Plataforma (3.x) |
-| A | M2 Inventario (4.1.2 / 3.4.2) | 5 | 32 | 10-06-2027 | 28-07-2027 | Plataforma |
-| A | M3 Preventa (4.3.1 / 3.4.6) | 6 | 35 | 10-06-2027 | 02-08-2027 | Plataforma |
-| B | M5 Preparación (4.1.3 / 3.4.3) | 5 | 31 | 25-06-2027 | 10-08-2027 | Contratos de M2 |
-| B | M9 Cadena de frío (4.2.1 / 3.4.4) | 6 | 42 | 25-06-2027 | 25-08-2027 | Contratos de M2; banco y mapeo térmico |
-| B | Ingesta M9/M12 (4.2.2 / 3.4.5) | 4 | 36 | 25-06-2027 | 17-08-2027 | Contratos de M2; nube IoT |
-| C | M8 Devoluciones (4.3.4 / 3.4.9) | 3 | 31 | 29-07-2027 | 09-09-2027 | Fin de M2 |
-| C | M4 Rutas (4.3.2 / 3.4.7) | 4 | 37 | 03-08-2027 | 23-09-2027 | Fin de M1; reglas de ruteo |
-| C | M6 Reparto (4.3.3 / 3.4.8) | 6 | 42 | 03-08-2027 | 30-09-2027 | Fin de M3 |
-| C | M7 Cobranza (4.3.5 / 3.4.10) | 6 | 33 | 17-08-2027 | 01-10-2027 | Contratos de M6 |
-| C | M10 Analítica E1 (4.5.1 / 3.4.11) | 6 | 22 | 26-08-2027 | 27-09-2027 | Fin de M9 |
-
-- Máximo simultáneo: **30 personas** (25-06-2027), frente a las 31 plazas de construcción del T-15 sección 5.7. Hoy la tabla del T-15 permite hasta 120.
-- Último módulo: 01-10-2027. Hoy es el 04-10-2027 (3.4.10). La integración 3.8.1 (H4) conserva su inicio del 05-10-2027.
-- Duración = ⌈HH / (6,4 × personas)⌉ días hábiles, la misma fórmula del T-15. Feriados considerados: 21-06, 28-06, 16-07 y 17-09-2027.
-- Efecto mensual (HH de los once módulos, repartidas en sus días): hoy junio 2.188, julio 4.291, agosto 3.312, septiembre 2.057; con las olas, junio 1.508, julio 3.942, agosto 3.580, septiembre 2.810. Unas 1.030 HH pasan de junio–julio a agosto–septiembre. El total no cambia.
-
-## 5. Intercambio electrónico con las cadenas
-
-- **5.3.1 (actual 3.6.5), principal cadena: 01-10-2027 → 31-05-2028.** Primero la habilitación con la cadena: perfil de intercambio (de 1.2.3), registro como proveedor, conectividad AS2 de prueba y certificación de mensajes con datos de prueba. Después, la prueba de punta a punta con M11 cuando 4.4.1 (actual 3.5.1) esté en QA (28-04-2028). Predecesoras: 2.1.5 (actual 1.2.3), ambiente de Producción 3.1.2 (CC), y 4.4.1 para la prueba final. Mismas 516 HH, repartidas en más meses (menos de una plaza adicional de Arquitectura e Integración por mes).
-- **5.3.2 (actual 3.6.6), demás cadenas: 02-05-2028 → 14-07-2028.** Predecesora: 5.3.1. Termina antes de H11 (01-08-2028); hoy termina el 23-08-2028, ya dentro de la marcha blanca.
-- **Margen:** la principal queda lista dos meses antes de agosto de 2028. Si una cadena tarda en certificar, hay hasta el 31-07-2028 sin tocar H11.
-
-## 6. Efectos que hay que absorber
-
-| Efecto | Dónde | Qué hacer |
+| N.º | Decisión | Fecha |
 |---|---|---|
-| Fechas de casi todos los paquetes con entregable cambian al recalcular el CPM sin ventanas fijas (P6, P7) | T-15 (programación, CPM, holguras, Tabla 7), T-14 (períodos del diccionario), SD7 (7.3), T-18 | Recalcular con el script de CPM ya existente (`revision/recalcular_cpm_*.py`) y revisar la holgura de cada hito. Ojo con H1: hoy tiene 5 días y las nuevas predecesoras de 1.1.x/1.2.x la pueden reducir |
-| Distribución mensual de HH en junio–septiembre de 2027 y meses 9–12 (EDI) | T-15 secciones 4.4 y 5.7 (curva de plazas), E2/Excel (costos mensuales y Curva S) | Regenerar la curva desde la programación nueva. El total sigue en 202.108,62 HH. Avisar al equipo del Excel para mover las HH entre meses |
-| Ventanas de QA del SD9 | SD9, Anexo 9.E.1 (83 ventanas) y registro de control de QA del T-15 | Regenerar las ventanas desde las iteraciones nuevas de cada módulo |
-| Cambio de códigos | Citas de paquetes: SD7 y formularios (~1.020), T-12 en la rama del SD3 (columna «Paquete EDT» de 279 filas), SD9 (~700), SD4 (~180), SD13 (~130), SD8 (~40), SD5 y SD6 (~20 cada uno) | Reemplazo con script desde una sola tabla de equivalencias (`mapa.json`). Se reemplaza sólo en contexto de paquete (columnas de paquete, «paquete X», «(X)»), nunca en números de sección propios de cada subdocumento (por ejemplo, la sección 3.4.4 del SD3). Después del reemplazo, un control automático: ningún código actual queda vivo y cada código nuevo existe en el T-14 |
-| Figuras | EDT (7.1–7.18), cobertura (7.19), red (7.20), ruta crítica, Gantt (7.24–7.31) | Al final, cuando la estructura y el CPM estén cerrados |
-| Tabla de trazabilidad Informe 2 → 3 | Rama de anexos | SD7-01, 02, 06, 08, 09, 11, 14, 17, 25 y 26 pasan a Corregida; SD7-12 según cómo quede el SD9 |
+| D1 | La EDT se organiza en 10 productos y 60 cuentas, con los mismos 227 paquetes; la etapa es un atributo del paquete (primera parte de la columna «Período» del diccionario: E1, E2, Ambas u Operación). Equivalencia única en `revision/edt_equivalencias_20261117.json` (Anexo A). | 17-11 |
+| D2 | El desarrollo es **en cascada por etapa contractual**: requisitos y diseño aprobados, construcción por frentes en paralelo, integración y certificación, implantación; cada fase con condición de salida. Se mantienen la integración continua y las pruebas de código y contratos durante la construcción. No hay iteraciones, sprints ni Kanban. | 17-11 (con GPT) |
+| D3 | Los módulos de la Etapa 1 se construyen en tres **olas** (frentes en paralelo), con equipos de 3 a 7 personas y un máximo de 31 simultáneos; todos terminan el 30-09-2027. | 17-11 |
+| D4 | Red por paquetes completa (todo paquete con entregable tiene predecesora, salvo 1.1.1 y 2.4.1, que parten con el inicio del contrato), CPM con nivelación por urgencia (topes de 33 en Desarrollo y 13 en Calidad). Las holguras de los hitos no cambian. | 17-11 |
+| D5 | **No se publica la red completa de actividades** en el T-15: se mantienen la red por paquetes y las actividades compactas hasta el H5. El escenario de 59 actividades de GPT (`revision/cronograma_d16_actividades.py`) sólo se usa para comprobar que las fechas son factibles. | 18-11 |
+| D6 | **Las figuras no se modifican** (EDT, Gantt, red, ruta crítica, frentes, planificación gradual, SD6). Sólo se cambian si el usuario lo pide. | 18-11 |
+| D7 | Sin columna de iteraciones en la estimación de módulos: las HH de la columna «Iterac.» de `tab_T15_tamano` se suman a la de integración, que pasa a llamarse «Integración y validación en QA». Las HH por módulo y el total (202.108,62 HH) no cambian. | 18-11 |
+| D8 | Intercambio con la principal cadena (5.3.1) del 01-10-2027 al 31-05-2028; demás cadenas (5.3.2) del 02-05 al 14-07-2028; mapas (5.2.3) del 16-08 al 10-09-2027; avisos (5.2.4) del 20-07 al 16-08-2027. | 17-11 |
 
-## 7. Orden de trabajo propuesto
+## 2. Estado
 
-1. Fijar la tabla de equivalencias (Anexo A) y las predecesoras (Anexo B). Es la única decisión de fondo; lo demás se deriva.
-2. T-14: nueva estructura (nivel 1, 60 cuentas, columna Etapa), diccionario con los códigos nuevos, textos de cada cuenta. Se elimina el párrafo «Estructura de alcance por productos», porque la EDT ya es por productos.
-3. T-15: programación con olas, equipos reales y predecesoras completas; CPM sin ventanas fijas; actividades hasta H5; curva mensual; ventanas de iteración.
-4. SD7: 7.1 (criterio de descomposición, tabla de fases → tabla de productos, cobertura), 7.2 (secuenciamiento, frentes, olas) y 7.3 (ruta crítica única, hitos, Gantt).
-5. T-18 y anexos del SD7 (Anexo 7.B de dependencias con los códigos nuevos).
-6. Otros subdocumentos: reemplazo de códigos con script en SD3/T-12, SD4, SD5, SD6, SD8, SD9 y SD13, rama por rama, con control de que no quede ningún código viejo.
-7. SD9: ventanas de QA regeneradas.
-8. Avisar del cambio mensual de HH para el E2/Excel.
-9. Figuras de EDT, red y Gantt.
-10. Tabla de trazabilidad y recompilación de todos los PDF.
+| Parte | Contenido | Estado | Dónde |
+|---|---|---|---|
+| T-14 | EDT por productos, diccionario, periodos alineados a las olas | Hecho y subido | 1baee9c9, 49088af0 |
+| T-15 | Olas, 77 predecesoras, CPM nivelado, curvas por días hábiles, Desarrollo 34 plazas en el mes 7, actividades hasta el H5, frentes por cuenta nueva, totales por etapa | Hecho y subido; **falta adaptar a la cascada** (fase B) | 49088af0 |
+| SD7, anexos, T-18 | Códigos traducidos y rangos corregidos | Subido (b8bededf) | — |
+| SD7, anexos, T-18 | 7.1 reescrita por productos, cifras de plazas, subtotal de los meses 13 a 15, referencias antiguas (trabajo de GPT) | Sin commit, en la carpeta principal | Fase A1 |
+| SD6, T-9, T-10 | Cascada por etapa (trabajo de GPT) | Sin commit, en worktree de Codex | Fase A2 |
+| SD4, SD8, trazabilidad | Referencias y códigos nuevos; 15 observaciones actualizadas (trabajo de GPT) | Sin commit, en worktrees de Codex | Fase A2 |
+| SD3/T-12, SD9, SD13 | 489 filas del T-12 recodificadas; Anexo 9.E.1 por despliegues en QA; referencias (trabajo de GPT) | Sin commit; origin tiene 2 commits nuevos en los mismos archivos | Fase A3 |
+| SD5 | Coincidencias eran números de sección | Sin cambios | — |
 
-## 8. Decisiones que necesito de ti
+## 3. Plan restante
 
-1. ¿Apruebas los 10 elementos de nivel 1 y la agrupación del Anexo A? En particular: el piloto de frío (actual 4.1.4) dentro de «Sistema de cadena de frío validado» en Diseño, y los acuerdos con transportistas y el sindicato dentro de Implantación.
-2. ¿Aceptas mover unas 1.030 HH de junio–julio a agosto–septiembre de 2027 (y el reparto nuevo de la EDI), con el E2/Excel ajustándose a eso? La alternativa es fijar las HH por mes y ajustar los equipos, pero entonces el escalonamiento queda más débil.
-3. ¿Hago yo el reemplazo de códigos en las ramas de los otros subdocumentos (SD3, SD4, SD5, SD6, SD8, SD9, SD13), o lo coordinas con cada responsable usando la tabla de equivalencias?
+### Fase A. Consolidar en git el trabajo de GPT
+- [ ] A1. SD7, anexos y T-18 (carpeta principal): revisar el diff, controles (`edt_revisar_texto.py`, `edt_revisar_rangos.py`), compilar, commit y push.
+- [ ] A2. Sin choques: SD6/T-9/T-10, SD8, SD4 y trazabilidad. Para cada uno: exportar el diff del worktree, cambiar de rama en la carpeta principal, aplicar, revisar, compilar, commit y push.
+- [ ] A3. Con commits nuevos en origin: SD3/T-12, SD9 y SD13. Aplicar el diff sobre origin con combinación de 3 vías; resolver choques conservando lo de origin y lo de GPT; revisar, compilar, commit y push.
+- [ ] A4. Con OK del usuario: borrar los siete worktrees de `C:\Users\alexa\.codex\worktrees\`.
+
+### Fase B. Adaptar a la cascada lo que suponía iteraciones
+- [ ] B1. T-15: quitar el calendario de 62 ventanas (`tab:T15-iteraciones-escenario`) y la secuencia quincenal de Recepción; describir cada módulo por fases (análisis y contratos, construcción, pruebas de contrato, integración y validación en QA); plantilla D de `tab_T15_9h5` sin iteraciones; aplicar D7 en `tab_T15_tamano` y su texto.
+- [ ] B2. T-15: revisar las menciones a iteraciones, incrementos de H4 por iteración, Kanban y RUP; dejar «incremento» sólo con el sentido de etapa (E1/E2).
+- [ ] B3. SD7, T-14, T-18 y anexos: mismas menciones; la Gantt se describe por fases de la cascada y frentes.
+- [ ] B4. Coherencia con SD6/T-9/T-10 (fases, condiciones de salida, frentes) y con SD9 (despliegues en QA, sin ventanas).
+- [ ] B5. Trazabilidad: respuestas de SD7-11, SD7-12, SD6-13 y SD6-16 según la cascada; SD7-08, 09, 10, 17, 25 y 26 según lo hecho.
+
+### Fase C. Cierre
+- [ ] C1. Comprobar con el escenario de GPT (D5) que las fechas de Recepción, Inventario y Preparación son factibles con la capacidad de los frentes.
+- [ ] C2. Control cruzado de todas las ramas: ningún código anterior de la EDT, ningún rango partido, cifras de plazas y HH iguales en SD1, SD6, SD7, T-15 y SD8.
+- [ ] C3. Recompilar PDFs y revisar la Declaración de IA de cada documento tocado.
+- [ ] C4. Avisar al responsable del Excel/E2: cambian las HH mensuales de los meses 5 a 19 (total igual) y los totales por etapa (Tabla 3 del T-15).
+
+## 4. Herramientas (carpeta `revision/`)
+
+| Script | Uso |
+|---|---|
+| `edt_recodificar.py`, `edt_recodificar_carpetas.py` | Traduce códigos viejos a nuevos (protege números de sección) |
+| `edt_informe_traduccion.py` | Informe sin escribir de lo que traduciría |
+| `edt_revisar_texto.py`, `edt_revisar_rangos.py` | Códigos inexistentes, palabras prohibidas, rangos partidos |
+| `edt_reprogramar_t15.py`, `edt_cpm_20261117.py`, `edt_curvas_20261117.py`, `horas_por_rol_20261109.py` | Reprogramación, CPM y curvas. **Trabajan con códigos anteriores**: para recalcular, partir de una copia del T-15 en códigos anteriores y volver a traducir con `edt_recodificar_t15.py` |
+| `edt_actividades_h5.py` | Tabla compacta de actividades hasta el H5 |
+
+## 5. Referencia: problemas y soluciones de la propuesta del 17-11
+
+Siguen valiendo los problemas P1 a P14 y la estructura de 10 productos (Anexo A), con dos cambios: P9 (iteraciones en la Gantt) se resuelve con la cascada (D2) y no con iteraciones; P12 (actividades hasta el H5) ya está aplicado en formato compacto.
 
 ## Anexo A. Equivalencias: código nuevo ↔ código actual
 
