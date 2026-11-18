@@ -41,7 +41,7 @@ Pruebas dinámicas & Diseño, preparación del ambiente, ejecución e informe de
 \end{tablasimple}
 \fuentesd{Fuente: elaboración a partir de ISO, IEC \& IEEE (2021a, procesos de prueba); (Subdocumento 1, secciones 1.3.1 y 1.5); (SD6, sección 6.2; sección 6.2.3 para las ceremonias).}
 
-La intensidad de la prueba sigue el riesgo del producto, como dispone ISO/IEC/IEEE 29119-1 (ISO, IEC \& IEEE, 2022). La prioridad de cada requisito en el catálogo del SD3 (crítica, alta o media) fija cuántos casos se diseñan para él (sección 8). La documentación de pruebas sigue la estructura de ISO/IEC/IEEE 29119-3 (ISO, IEC \& IEEE, 2021c): especificación de casos, procedimientos, registro de ejecución, registro de incidencias e informe de finalización.
+El riesgo del producto determina la intensidad de las pruebas (ISO, IEC \& IEEE, 2022, ISO/IEC/IEEE 29119-1). La prioridad de cada requisito en el catálogo del SD3 (crítica, alta o media) fija cuántos casos se diseñan para él (sección 8). La documentación de pruebas sigue la estructura de ISO/IEC/IEEE 29119-3 (ISO, IEC \& IEEE, 2021c): especificación de casos, procedimientos, registro de ejecución, registro de incidencias e informe de finalización.
 
 \subsection*{2.1 Técnicas de diseño (ISO/IEC/IEEE 29119-4)}
 \addcontentsline{toc}{subsection}{2.1 Técnicas de diseño (ISO/IEC/IEEE 29119-4)}
@@ -129,7 +129,7 @@ E2: 6.3.2 y 6.6.2 & 19 y 22 mayo 2028; el 21 no se programa trabajo humano ordin
 \end{tablasimple}
 \fuentesd{Fuente: (Formulario T-15, sección 6.1, paquetes 6.3.1, 6.6.1, 6.3.2 y 6.6.2); la separación de sesiones y restitución definida en esta sección 4.1.}
 
-La prueba continua de aislamiento de 24 horas requiere una ventana y un turno explícitos; si cruza un día no laborable, se autoriza el turno de observación antes de empezar. La fecha de sesión no implica dotación disponible. CAL y SRE confirman personas nominales y capacidad neta, descontando recuperación, soporte y otros frentes, antes de aprobar la campaña. Las 320/320 HH de E1 y 320/160 HH de E2 son esfuerzo total por paquete, no duración de las sesiones invasivas ni cuatro campañas que puedan ocupar simultáneamente PRE-C. Si la dotación vigente no alcanza, el Jefe de Proyecto debe asignar recursos y aprobar la nivelación antes de G5; no se presume disponibilidad nominal por la sola curva del T-15.
+La prueba continua de aislamiento de 24 horas requiere una ventana y un turno explícitos; si cruza un día no laborable, se autoriza el turno de observación antes de empezar. Antes de aprobar la campaña, CAL y SRE confirman la asignación nominal y la capacidad neta tras descontar recuperación, soporte y otros frentes. Las 320/320 HH de E1 y 320/160 HH de E2 corresponden al esfuerzo total por paquete. El calendario de sesiones fija por separado su duración y la ocupación de PRE-C. Si la dotación resulta insuficiente, el Jefe de Proyecto asigna recursos y aprueba la nivelación antes de G5. El registro diario de asignación consigna la disponibilidad de cada persona (T-15, sección 5.7).
 
 Sólo una sesión puede reservar PRE-C a la vez. Su salida deja un informe con el digest, estado de datos, colas y controles; la siguiente sesión no inicia sin restitución aprobada y carga basal dentro de umbral. PRE-M, PRE-S y PRE-A permanecen aisladas. El Arquitecto confirma capacidad, cuotas y equivalencia del conjunto de instancias antes de la primera campaña; los resultados se registran en el plan del H1 y se vuelven a comprobar al preparar H5/H10.
 
@@ -152,7 +152,7 @@ Incidentes reproducidos & Evidencia de terreno capturada por INN-02, sin datos p
 \section*{6. Criterios de entrada y de salida}
 \addcontentsline{toc}{section}{6. Criterios de entrada y de salida}
 
-La campaña comienza sólo cuando cumple sus condiciones de entrada y termina con evidencia de los criterios de salida; la suspensión no equivale a aprobación.
+La campaña comienza al cumplir las condiciones de entrada. La aprobación requiere evidencia de todos los criterios de salida.
 
 \subsection*{6.1 Por nivel de prueba}
 \addcontentsline{toc}{subsection}{6.1 Por nivel de prueba}
@@ -192,7 +192,7 @@ Las pruebas siguientes comprueban carga, fallas, operación de terreno y continu
 \subsection*{7.1 Carga y estrés}
 \addcontentsline{toc}{subsection}{7.1 Carga y estrés}
 
-La carga se deriva del dimensionamiento del SD4, sección 4.2.6, y no se elige:
+El dimensionamiento del SD4, sección 4.2.6, fija la carga de prueba:
 
 \begin{tablasimple}{>{\hsize=1.899\hsize\linewidth=\hsize}Y >{\hsize=0.7\hsize\linewidth=\hsize}Y >{\hsize=0.7\hsize\linewidth=\hsize}Y >{\hsize=0.701\hsize\linewidth=\hsize}Y}
   {\cab{Magnitud} & \cab{Peak declarado (SD4)} & \cab{Factor} & \cab{Carga de prueba}}
@@ -214,7 +214,7 @@ Escalón de quiebre & 14,66 TPS & 4 & 58,64 TPS \\
 \subsection*{7.2 Resiliencia}
 \addcontentsline{toc}{subsection}{7.2 Resiliencia}
 
-La inyección reproduce fallas de nube, enlace y equipamiento local. El resultado se compara con la continuidad y los tiempos comprometidos, sin sustituir una falla por una excepción.
+La inyección reproduce fallas de nube, enlace y equipamiento local. Cada falla se evalúa frente a los criterios de continuidad y tiempos comprometidos.
 
 \begin{tablasimple}{>{\hsize=0.808\hsize\linewidth=\hsize}Y >{\hsize=0.771\hsize\linewidth=\hsize}Y >{\hsize=1.421\hsize\linewidth=\hsize}Y}
   {\cab{Escenario (RT-10.07)} (BTT, p. 22) & \cab{Forma de inyección} & \cab{Resultado esperado}}
@@ -234,7 +234,7 @@ Los dos últimos escenarios prueban la parte on-premise de la arquitectura híbr
 \subsection*{7.3 Perfil operacional de terreno}
 \addcontentsline{toc}{subsection}{7.3 Perfil operacional de terreno}
 
-Las pruebas usan dispositivos reales y personas del perfil correspondiente. Una prueba de laboratorio no reemplaza las condiciones físicas del turno y la descarga.
+Las pruebas de aceptación usan dispositivos reales y personas del perfil correspondiente en las condiciones físicas del turno y la descarga.
 
 \begin{tablasimple}{>{\hsize=0.637\hsize\linewidth=\hsize}Y >{\hsize=1.071\hsize\linewidth=\hsize}Y >{\hsize=1.292\hsize\linewidth=\hsize}Y}
   {\cab{Condición (Caso, cap. 15)} & \cab{Prueba} & \cab{Criterio de salida}}
@@ -259,7 +259,7 @@ Las pruebas técnicas no aceptan por sí solas los resultados del Caso, cap. 18.
 \begin{tablasimple}{>{\hsize=1.055\hsize\linewidth=\hsize}Y >{\hsize=1.378\hsize\linewidth=\hsize}Y >{\hsize=0.567\hsize\linewidth=\hsize}Y}
   {\cab{Resultado} & \cab{Ensayo previo} & \cab{Cuándo}}
 R18-01: clientes afectados por un lote en menos de 2 h & Simulacro de retiro sanitario sobre datos sintéticos con lotes trazados & Aceptación de la Etapa 1 (6.2.1) \\
-R18-03: registro continuo de temperatura & Banco, mapeo y piloto físico; series con excursiones, desconexión, retención por SSCC y decisión de Calidad, conforme a V1–V21 del Anexo 4-W & 2.7.1; 2.7.2; 2.7.3; integración (6.1.1) y aceptación (6.2.1) \\
+R18-03: registro continuo de temperatura & Banco, mapeo y piloto físico; series con excursiones, desconexión, retención por SSCC y decisión de Calidad, con los casos V1–V21 del Anexo 4-W & 2.7.1; 2.7.2; 2.7.3; integración (6.1.1) y aceptación (6.2.1) \\
 R18-06: ningún pedido perdido ni duplicado por falta de señal & Jornada de 14 h sin señal (sección 7.3) & Perfil operacional (6.2.2) \\
 R18-07: ruta del día siguiente en menos de 20 minutos & Generación de la ruta con el volumen de un día de peak; corrección manual, registro del cambio y recálculo de la ruta & Carga (6.3.1) \\
 \end{tablasimple}
@@ -290,9 +290,9 @@ AL-UI-01 & Accesibilidad WCAG 2.2 AA y exportación completa de los registros de
 \end{tablasimple}
 \fuentesd{Fuente: (SD4, Anexo 4-V, sus 13 protocolos; Anexo 4-M, desarrollo de AL-ID-01); (Formulario T-14, paquetes indicados en cada fila).}
 
-Cada protocolo deja su acta con la carga, la falla inyectada, el resultado observado y los responsables, dentro del expediente H5 o H10 según su etapa (T-17, sección 3.1). La asignación sigue las capacidades y paquetes del Anexo 7.E: H4/H5 no exigen un portal instalado ni EDI todavía no construidos; los contratos futuros pueden ensayarse con simuladores, pero eso no acredita aceptación del producto de E2. AL-CLI-01 se ejecuta con el portal real en E2 y AL-STOCK-01/AL-ACT-01 amplían allí su cobertura, sin omitir ninguna de las quince interfaces finales.
+Cada protocolo deja su acta con la carga, la falla inyectada, el resultado observado y los responsables, dentro del expediente H5 o H10 según su etapa (T-17, sección 3.1). La asignación sigue las capacidades y paquetes del Anexo 7.E: H4 y H5 cubren el alcance E1. Los simuladores permiten ensayar los contratos de portales y EDI; la aceptación de E2 se verifica sobre el producto integrado. AL-CLI-01 se ejecuta con el portal real en E2 y AL-STOCK-01/AL-ACT-01 amplían allí su cobertura, sin omitir ninguna de las quince interfaces finales.
 
-AL-DTE-01 incluye la carga que conserva su guía preemitida y la carga modificada que exige invalidarla y obtener una nueva. Se inyectan pérdida de enlace e indisponibilidad del ERP: se verifica el bloqueo de salida sin guía válida, la conservación de la solicitud idempotente y la recuperación sin doble emisión. El ERP sigue siendo el único emisor; una guía preemitida no acredita una modificación posterior de carga ni autoriza emisión por otro sistema. La evidencia distingue bloqueo correcto de continuidad de las 96 salidas: si esta última no se sostiene, se registra la brecha para arquitectura, riesgos y programación, sin declarar el requisito satisfecho (Subdocumento 4, capas de la arquitectura, integración tributaria INT-07 y sitio secundario; Formulario T-17, sección 3.1).
+AL-DTE-01 incluye la carga que conserva su guía preemitida y la carga modificada que exige invalidarla y obtener una nueva. Se inyectan pérdida de enlace e indisponibilidad del ERP: se verifica el bloqueo de salida sin guía válida, la conservación de la solicitud idempotente y la recuperación sin doble emisión. El ERP es el único emisor y debe emitir una nueva guía para amparar la carga modificada. La evidencia registra por separado el bloqueo correcto y la continuidad de las 96 salidas. La aceptación de este último criterio requiere comprobar la continuidad; cualquier brecha se registra para arquitectura, riesgos y programación (Subdocumento 4, capas de la arquitectura, integración tributaria INT-07 y sitio secundario; Formulario T-17, sección 3.1).
 
 \textbf{AL-ID-01. Identidad local durante el corte.} Se ejecuta en Preproducción según el SD4, Anexo 4-M, con un terminal enrolado, identidades y claves de prueba y registro de bajas con hora del servidor. Con enlace se valida el acceso federado y la denegación de nuevos accesos tras una baja conocida. Se emite y verifica la firma de un manifiesto de bodega de 26 h y se aísla el sitio una hora después de la emisión. Se comprueban dos relevos válidos, a las 8 y 16 h del corte, mediante PIN y turno vigentes. Al expirar la caché descriptiva, solo se usan atributos del manifiesto vigente. Se deniegan y auditan las variantes con firma, clave, emisor, sitio, dispositivo o permisos inválidos, los turnos o manifiestos vencidos, el PIN incorrecto y las cuentas sin preinscripción. Un reinicio, la actividad o el retroceso del reloj no amplían la vigencia. Si no se puede demostrar la continuidad de la hora confiable, se deniega una sesión nueva.
 
@@ -305,7 +305,7 @@ El criterio de salida exige los dos relevos válidos, la cobertura de la ruta de
 \subsection*{7.6 Recuperación ante desastres: demostración y evidencia}
 \addcontentsline{toc}{subsection}{7.6 Recuperación ante desastres: demostración y evidencia}
 
-El programa distingue las certificaciones iniciales de las pruebas periódicas. AL-DR-01 se demuestra con conmutación real antes de H5 y de H10, dentro de 6.4.1 y 6.4.2, respectivamente; no se sustituye por una simulación de escritorio ni se difiere su primera ejecución hasta el mes 21. Las ventanas publicadas en la sección 9.1 incluyen preparación e informe y no autorizan por sí solas una intervención. La periodicidad de Operación de la sección 9.3 se concilia con el Formulario T-15 para mantener la continuidad del programa.
+El programa distingue las certificaciones iniciales de las pruebas periódicas. AL-DR-01 se demuestra con conmutación real antes de H5 y de H10, dentro de 6.4.1 y 6.4.2, respectivamente. Las ventanas de la sección 9.1 incluyen la preparación y el informe. Cada intervención requiere autorización específica. La periodicidad de Operación de la sección 9.3 se concilia con el Formulario T-15 para mantener la continuidad del programa.
 
 \begin{tablasimple}{Y Y Y Y Y}
   {\cab{Conmutación real} & \cab{Mes} & \cab{Fecha o ventana} & \cab{Meses desde la anterior} & \cab{Propósito}}
@@ -317,13 +317,13 @@ El programa distingue las certificaciones iniciales de las pruebas periódicas. 
 \end{tablasimple}
 \fuentesd{Fuente: (Formulario T-15, paquetes 6.4.1, 6.4.2 y 10.1.3); (Formulario T-14, paquete 10.1.3); (Bases Administrativas, Art. 20); (Bases Técnicas Transversales, RT-07.07, p. 17).}
 
-El intervalo de siete meses entre 6.4.1 y 6.4.2 ocurre antes de la Operación, cuando aún no rige la exigencia semestral de las Bases Administrativas (Art. 20), que se refiere a la fase de Operación. Desde el inicio de la marcha blanca de la Etapa 1, en el mes 13, con datos productivos, ningún período supera seis meses sin conmutación real: 6.4.2 llega en el mes 16 y la primera periódica en el mes 21. Cada año contractual de Operación tiene al menos dos (meses 21 y 27; 33 y 39; 45, 51 y 54), como exige el RT-07.07. Ninguna cae en septiembre ni en diciembre. El día de intervención se fija en el plan 1.2.1 fuera de los tres primeros días hábiles y de la ventana de 05:30 a 07:00, con el aviso previo de diez días hábiles del RT-10.05 de las Bases Técnicas Transversales; la conmutación del mes 21 se programa después del paso a producción efectivo de la Etapa 2, conforme a la ventana del T-15 y al T-18. G5 habilita la marcha blanca en el ambiente de Producción con datos y pedidos reales en los meses 13 a 15 de E1 y 19 a 20 de E2. El paso a producción corresponde a los meses 16 y 21, respectivamente, después del acta que lo habilita (T-17, sección 4.3; T-18). Las restauraciones mensuales comienzan en el mes 13, al iniciarse el uso de datos productivos.
+El intervalo de siete meses entre 6.4.1 y 6.4.2 ocurre antes de la Operación, cuando aún no rige la exigencia semestral de las Bases Administrativas (Art. 20), que se refiere a la fase de Operación. Desde el inicio de la marcha blanca de la Etapa 1, en el mes 13, con datos productivos, ningún período supera seis meses sin conmutación real: 6.4.2 llega en el mes 16 y la primera periódica en el mes 21. Cada año contractual de Operación tiene al menos dos (meses 21 y 27; 33 y 39; 45, 51 y 54; RT-07.07). Ninguna cae en septiembre ni en diciembre. El día de intervención se fija en el plan 1.2.1 fuera de los tres primeros días hábiles y de la ventana de 05:30 a 07:00, con el aviso previo de diez días hábiles del RT-10.05 de las Bases Técnicas Transversales; la conmutación del mes 21 se programa en Operación, después del paso a producción efectivo de la Etapa 2 (T-15 y T-18). G5 habilita la marcha blanca en el ambiente de Producción con datos y pedidos reales en los meses 13 a 15 de E1 y 19 a 20 de E2. El paso a producción corresponde a los meses 16 y 21, respectivamente, después del acta que lo habilita (T-17, sección 4.3; T-18). Las restauraciones mensuales comienzan en el mes 13, al iniciarse el uso de datos productivos.
 
 \textbf{Prerrequisitos y ambiente.} SRE verifica los tres caminos independientes de cada CD, las alarmas de retraso de replicación a 5 y 15 minutos, los respaldos, la capacidad del sitio de recuperación y el procedimiento versionado de conmutación y retorno. CAL identifica la versión, los datos controlados y las transacciones críticas que validará. La autorización de la sesión registra personal, horarios, reversión y criterios de interrupción; no permite intervenir Producción o Recuperación en congelamiento ni causar indisponibilidad de 05:30 a 07:00.
 
-\textbf{Ejecución prevista.} Se demuestra la conmutación regional y la recuperación efectiva del WMS de Talca en la nube conforme a AL-DR-01, con el alcance de E1 antes de H5 y el conjunto integrado de ambas etapas antes de H10. Se registran el incidente inyectado, la última transacción confirmada en origen, la última recuperada y la hora de restablecimiento verificable de los servicios críticos, con relojes sincronizados. El RTO mide desde la interrupción hasta la recuperación validada del servicio; el RPO se calcula con la diferencia temporal entre las últimas transacciones confirmada y recuperada, verificando además la integridad de los datos. Los tiempos del informe no se reemplazan por estimaciones de arquitectura.
+\textbf{Ejecución prevista.} Se demuestra la conmutación regional y la recuperación efectiva del WMS de Talca en la nube en el ensayo AL-DR-01, con el alcance de E1 antes de H5 y el conjunto integrado de ambas etapas antes de H10. Se registran el incidente inyectado, la última transacción confirmada en origen, la última recuperada y la hora de restablecimiento verificable de los servicios críticos, con relojes sincronizados. El RTO mide desde la interrupción hasta la recuperación validada del servicio; el RPO se calcula con la diferencia temporal entre las últimas transacciones confirmada y recuperada, verificando además la integridad de los datos. El informe consigna los tiempos medidos durante el ensayo.
 
-\textbf{Salida y expediente.} La demostración requiere RTO ≤ 4 h y RPO ≤ 15 min para servicios críticos, integridad y operación recuperadas y retorno controlado. El informe conserva marcas de tiempo, transacciones, carga, bitácoras, fallas inyectadas, resultado por criterio y responsables de ejecución y revisión. Una brecha abre corrección y repetición antes de certificar; el riesgo residual y el esfuerzo de repetición se comunican a riesgos y cronograma sin consumir dos veces la reserva. Este programa describe pruebas previstas: no acredita que hayan sido ejecutadas ni aprobadas (Bases Técnicas Transversales, RT-07.04 y RT-07.07, p. 17; Subdocumento 4, protocolo AL-DR-01; Formulario T-17, sección 3.1).
+\textbf{Salida y expediente.} La demostración requiere RTO ≤ 4 h y RPO ≤ 15 min para servicios críticos, integridad y operación recuperadas y retorno controlado. El informe conserva marcas de tiempo, transacciones, carga, bitácoras, fallas inyectadas, resultado por criterio y responsables de ejecución y revisión. Una brecha abre corrección y repetición antes de certificar; el riesgo residual y el esfuerzo de repetición se comunican a riesgos y cronograma sin consumir dos veces la reserva. El programa describe las pruebas previstas; el expediente registra su ejecución y el pronunciamiento sobre sus resultados (Bases Técnicas Transversales, RT-07.04 y RT-07.07, p. 17; Subdocumento 4, protocolo AL-DR-01; Formulario T-17, sección 3.1).
 
 \section*{8. Automatización}
 \addcontentsline{toc}{section}{8. Automatización}
@@ -363,7 +363,7 @@ Para los RF/RNF, /P01 verifica el flujo o valor conforme y /P02 una entrada o co
 
 Para RF-09.06, la serie V1–V21 del Anexo 4-W y el ensayo de la sección 7.4 respaldan la comprobación de la retención por SSCC, el aviso al conductor y a Calidad, y el registro de la decisión exclusiva de Calidad. Para RF-04.02, el ensayo de R18-07 incluye la corrección manual, el registro del cambio y el recálculo de la ruta. En los RF de costo de servir de la Etapa 2 (RF-04.08, RF-08.07 y RF-14.04), los casos conformes y no conformes comprueban el costo por entrega y cliente, la imputación de devoluciones y mermas y la imputación de kilómetros y tiempo. Estas comprobaciones aportan evidencia a R18-11 en el T-17.
 
-Los siete casos de cada contrato son éxito, ausencia de respuesta, error, lentitud, duplicado, orden y versión, conforme a la sección 2.1. INT-08 corresponde a E2; los demás contratos se prueban en E1 según el Anexo 7.E y se incluyen en la regresión E2. Este catálogo cuenta identificadores únicos, no el número de ejecuciones repetidas durante el contrato.
+Los siete casos de cada contrato son éxito, ausencia de respuesta, error, lentitud, duplicado, orden y versión (sección 2.1). INT-08 corresponde a E2; los demás contratos se prueban en E1 según el Anexo 7.E y se incluyen en la regresión E2. Este catálogo cuenta identificadores únicos, no el número de ejecuciones repetidas durante el contrato.
 
 \input{T13/matriz_requisitos.tex}
 
@@ -372,20 +372,20 @@ Los siete casos de cada contrato son éxito, ausencia de respuesta, error, lenti
 
 El dimensionamiento usa 80 \% de automatización, 30 segundos por caso automático y 15 minutos por caso manual. Aplicado a 1.328 casos: 1.062 automáticos y 266 manuales, conservando la suma exacta. La parte automática requiere 1.062 × 30 / 3.600 = 8,85 horas con un ejecutor; con dos ejecutores independientes, 4,43 horas redondeadas a dos decimales. La parte manual requiere 266 × 15 / 60 = 66,5 HH por ciclo.
 
-«Regresión completa» comprende ambas partes y no equivale a la ejecución automática nocturna. G4 y el expediente del T-17 exigen evidencia vigente de todos los casos aplicables a la etapa; en E1 no se exige una capacidad que el Anexo 7.E sitúa en E2. Las promociones ordinarias y las correcciones de marcha blanca mantienen esa exigencia: no se declara aprobada una regresión de 1.328 casos solo porque terminó el trabajo de los ejecutores.
+La regresión completa incluye las partes automática y manual. Para las promociones ordinarias y las correcciones de marcha blanca, G4 y el expediente del T-17 requieren evidencia vigente de todos los casos aplicables a la etapa. El Anexo 7.E distingue el alcance de E1 del incorporado en E2. La aprobación depende de los resultados de los casos, incluidos los manuales.
 
-Las dos partes pueden ejecutarse en paralelo únicamente en instancias compatibles, con datos y versión controlados. Antes de reservar la ventana, CAL registra las personas y su capacidad neta, entre las 13 personas del equipo de calidad: 10 de planta y 3 refuerzos de pruebas (T-15, sección 5.7). Aun con las 13 personas dedicadas, 266 casos indivisibles de quince minutos requieren al menos 21 tandas, 5,25 horas transcurridas, además de coordinación e incidencias; no se promete un cierre nocturno integral sin ese cuadrante. Con la hipótesis de 6,4 HH netas por evaluador y día (Formulario T-15, secciones 5.1 y 6), el esfuerzo manual de 66,5 HH requiere al menos 11 evaluadores-día, antes de coordinación e incidencias; la simultaneidad y la duración de cada sesión se verifican por separado. Las horas de ejecutor no se suman como HH humanas ni crean una reserva adicional a la línea base.
+Las dos partes pueden ejecutarse en paralelo únicamente en instancias compatibles, con datos y versión controlados. Antes de reservar la ventana, CAL registra las personas y su capacidad neta, entre las 13 personas del equipo de calidad: 10 de planta y 3 refuerzos de pruebas (T-15, sección 5.7). Aun con las 13 personas dedicadas, 266 casos indivisibles de quince minutos requieren al menos 21 tandas, 5,25 horas transcurridas, además de coordinación e incidencias. El cierre nocturno integral requiere confirmar esa dotación en el registro de turnos. Con la hipótesis de 6,4 HH netas por evaluador y día (Formulario T-15, secciones 5.1 y 6), el esfuerzo manual de 66,5 HH requiere al menos 11 evaluadores-día, antes de coordinación e incidencias; la simultaneidad y la duración de cada sesión se verifican por separado. Las horas de ejecutor no se suman como HH humanas ni crean una reserva adicional a la línea base.
 
-La tabla siguiente comprueba la concurrencia diaria de cada campaña con los paquetes del T-15: las HH de cada paquete CAL se reparten en sus días hábiles (feriado del 1 de noviembre de 2027 incluido) y se suman los paquetes activos el mismo día. La jornada neta de 6,4 HH ya descuenta el 20 \% de ausencias y coordinación.
+La tabla siguiente estima la demanda diaria de cada campaña con los paquetes del T-15: las HH de cada paquete CAL se reparten en sus días hábiles (excluido el feriado del 1 de noviembre de 2027) y se suman los paquetes activos el mismo día. La jornada neta de 6,4 HH ya descuenta el 20 \% de ausencias y coordinación.
 
 \begin{tablasimple}{Y Y Y Y Y}
   {\cab{Campaña} & \cab{Días de máxima concurrencia} & \cab{Paquetes CAL activos} & \cab{HH CAL por día} & \cab{Evaluadores-día (6,4 HH)}}
-E1 & 25-10 a 11-11-2027 (13 días hábiles) & 6.2.1 y 6.2.2 (320 HH en 19 días); 6.3.1 y 6.4.1 (320 HH en 13 días) & 82,9 & 13, frente a 14 personas simultáneas del T-15 \\
-E2 & 19-05 a 01-06-2028 (10 días hábiles) & 6.3.2 y 6.4.2 (320 HH en 10 días cada uno) & 64,0 & 10, frente a 10 personas simultáneas del T-15 \\
+E1 & 25-10 a 11-11-2027 (13 días hábiles) & 6.2.1 y 6.2.2 (320 HH en 19 días); 6.3.1 y 6.4.1 (320 HH en 13 días) & 82,9 & 13 \\
+E2 & 19-05 a 01-06-2028 (10 días hábiles) & 6.3.2 y 6.4.2 (320 HH en 10 días cada uno) & 64,0 & 10 \\
 \end{tablasimple}
 \fuentesd{Fuente: elaboración a partir del Formulario T-15, programación de los paquetes con entregable y fechas tempranas del CPM; Formulario T-15, secciones 5.1 y 6.}
 
-Ambas campañas caben en la capacidad de las 13 personas del equipo de calidad: 10 de planta y 3 refuerzos de pruebas (T-15, sección 5.7). En conjunto aportan 83,2 HH netas por día, sin evaluadores externos ni la reserva protegida E1. Las pruebas de seguridad (6.5.1 y 6.5.2) y de recuperación (6.6.1 y 6.6.2) las ejecutan SEG y SRE y no consumen ese techo. Los paquetes CAL 7.2.3 y 7.2.4 terminan el 8 de octubre y empiezan el 1 de diciembre de 2027, fuera del peak de E1. La comprobación supone carga uniforme dentro de cada paquete: un día con mayor concentración se verifica con el registro diario de CAL antes de reservar la sesión, y la cifra no acredita contratación ni asignación nominal.
+En E1, 14 es la suma de los máximos individuales de los cuatro paquetes CAL del T-15 (3 + 3 + 4 + 4). Los 13 evaluadores-día de la tabla son la demanda diaria estimada al repartir uniformemente las HH. La capacidad planificada de 10 personas de planta y 3 refuerzos de pruebas es de 83,2 HH netas por día, excluidos los evaluadores externos y la reserva protegida de E1. Antes de reservar cada sesión, CAL confirma los refuerzos, las personas asignadas y su disponibilidad diaria neta para pruebas y servicios simultáneos. Si la capacidad resulta insuficiente, se nivela el calendario y se vuelven a comprobar H5 y las ventanas de aceptación (T-15, secciones 5.3 y 5.7). Las pruebas de seguridad (6.5.1 y 6.5.2) y las demostraciones de despliegue (6.6.1 y 6.6.2) corresponden a SEG y SRE, respectivamente. Los paquetes CAL 7.2.3 y 7.2.4 terminan el 8 de octubre y empiezan el 1 de diciembre de 2027, fuera del peak de E1.
 
 \section*{9. Calendario}
 \addcontentsline{toc}{section}{9. Calendario}
@@ -397,7 +397,7 @@ El calendario vincula las campañas con los hitos y distingue implementación, m
 
 Las fechas delimitan el trabajo de cada paquete, incluida su preparación e informe; no significan que todas las intervenciones sean simultáneas.
 
-Las fechas y horas de esta sección reproducen el T-15, con 202.108,62 HH y 227 paquetes, con las condiciones de asignación y nivelación que ese formulario declara. Los hitos y ventanas se toman del SD7, sin un calendario alternativo propio del SD9. La correspondencia de fechas no sustituye la asignación nominal ni el acta del CLIENTE.
+Las fechas y horas de esta sección reproducen el T-15, con 202.108,62 HH y 227 paquetes, con las condiciones de asignación y nivelación que ese formulario declara. Los hitos y ventanas se toman del SD7, sin un calendario alternativo propio del SD9. La asignación de personas se confirma en el registro diario y el CLIENTE formaliza la aceptación mediante el acta del hito.
 
 \begin{tablasimple}{>{\hsize=2.052\hsize\linewidth=\hsize}Y >{\hsize=0.79\hsize\linewidth=\hsize}Y >{\hsize=0.79\hsize\linewidth=\hsize}Y >{\hsize=0.79\hsize\linewidth=\hsize}Y >{\hsize=0.79\hsize\linewidth=\hsize}Y >{\hsize=0.788\hsize\linewidth=\hsize}Y}
   {\cab{Campaña} & \cab{Paquete} & \cab{Instancia o ambiente} & \cab{Inicio} & \cab{Término} & \cab{HH (T-15)}}
@@ -450,7 +450,7 @@ Meses 13 a 15 (E1) y 19 a 20 (E2) & Indicadores diarios del Art. 17.3 (SD7, Tabl
 Meses 13 a 20 & Restauración de respaldos sobre una muestra representativa, con tiempo medido (RT-07.12), por SRE: 9.2.1 (13–15), 9.3.1 (16–18) y 9.2.2 (19–20); ocho informes distintos de los 36 de 10.1.5 (BTT, p. 18) & Mensual \\
 Cada corrección & Puertas G0 a G4 y G6, regresión completa, DAST y carga de regresión; repetición de la prueba de certificación afectada & Por corrección \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Administrativas, art. 17.3, p. 13); (Subdocumento 7, Tabla 7.9); (Formulario T-14, cuenta 4).}
+\fuentesd{Fuente: (Bases Administrativas, art. 17.3, p. 13); (Subdocumento 7, Tabla 7.9); (Formulario T-14, paquetes 9.2.1, 9.3.1, 9.2.2 y 10.1.5).}
 
 A las restauraciones de los meses 13 a 20 se les aplica la misma excepción de ambiente para septiembre y diciembre que a las de Operación (sección 9.3).
 
@@ -469,7 +469,7 @@ Intrusión por tercero independiente & Anual (RT-11.20) (BTT, p. 24) & 28, 40, 5
 Restauración de respaldos & Al menos mensual (RT-07.12) (BTT, p. 18) & 21 a 56 & Mensual & 36 & 10.1.5 \\
 Regresión de INN-02 & Escenarios reproducidos de incidentes & 21 a 56 & Trimestral (informe) & 12 & 7.2.5 \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Técnicas Transversales, RT-07.07, RT-07.12, RT-10.07 y RT-11.20, pp. 17--18, 22, 24); (Bases Técnicas del caso, cap. 15, RT-10.05, p. 27); (Formulario T-14, cuenta 8); (Formulario T-15, sección 6.2).}
+\fuentesd{Fuente: (Bases Técnicas Transversales, RT-07.07, RT-07.12, RT-10.07 y RT-11.20, pp. 17--18, 22, 24); (Bases Técnicas del caso, cap. 15, RT-10.05, p. 27); (Formulario T-14, cuentas 10.1 y 10.2); (Formulario T-15, sección 6.2).}
 
 \textbf{Restauración mensual en septiembre y diciembre.} Desde el mes 13, en ambos meses se usa una instancia aislada de Preproducción, sin intervenir Producción ni el sitio de Recuperación ni realizar una conmutación. Se restaura una muestra representativa de un respaldo de prueba generado con datos sintéticos, con la misma estructura y un volumen representativo. SRE ejecuta el mismo procedimiento automatizado y registra el resultado y el tiempo efectivo de restauración (RT-07.12; BTT, p. 18). No se usan datos productivos ni se acredita la integridad de un respaldo de Producción.
 
