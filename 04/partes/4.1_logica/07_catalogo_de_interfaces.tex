@@ -27,7 +27,7 @@ Desde la consola Angular, el CLIENTE administra el cuerpo y la versión de las p
 
 La consulta documental permite buscar por texto y metadatos en los documentos autorizados, con índices en PostgreSQL. Angular los muestra en una vista previa dentro de la aplicación, sin obligar a descargarlos, y respeta versión, permisos, auditoría, cifrado y verificación de integridad del repositorio en S3 (RT-16.15, Bases Técnicas Transversales, cap. 16, p. 30).
 
-El comprobante generado desde la plantilla puede guardarse en PDF con la función de impresión del navegador, desde la misma vista del documento (RF-17.09, Subdocumento 3, Anexo 3.A).
+El servicio de plantillas genera el comprobante en PDF, DOCX y XLSX con los datos autorizados de la transacción y la plantilla administrada por el CLIENTE (RF-17.09, Subdocumento 3, Anexo 3.A).
 
 Cada usuario configura el canal y la frecuencia de sus notificaciones, que se guardan como atributos de su identidad en Keycloak. El trabajador de notificaciones aplica esas preferencias antes de cada envío. Los avisos que el CLIENTE defina como obligatorios usan siempre su canal establecido, y una preferencia personal nunca reactiva comunicaciones comerciales de las que el cliente se dio de baja (RT-16.22, Bases Técnicas Transversales, cap. 16, p. 30).
 
