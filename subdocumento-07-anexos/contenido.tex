@@ -14,7 +14,7 @@ El caso fija las ventanas del año: congelamiento total del 1 al 25 de septiembr
 
 La tabla lleva a tres conclusiones. Primero, ningún inicio admisible deja las dos marchas blancas completas fuera de septiembre y diciembre: siempre hay al menos un mes de marcha blanca dentro de una ventana de congelamiento. Segundo, solo los inicios de diciembre de 2026, febrero de 2027 y marzo de 2027 ponen en producción la Etapa 2 antes de enero de 2029, fecha desde la que rigen las condiciones de la principal cadena de supermercados (Caso, sección 13.2, p. 22; Capítulo 3, sección 3.1.2).
 
-Tercero, entre esos tres inicios, febrero de 2027 es el único en que el congelamiento afecta solo el último mes de una marcha blanca (el mes 20, de la Etapa 2) y no un inicio de marcha blanca. Con diciembre de 2026, el H6 caería en diciembre; con marzo de 2027, el H11 caería en septiembre. Con febrero de 2027, las cuatro semanas de cierre de la marcha blanca de la Etapa 2 coinciden con el peak de Fiestas Patrias; por eso toda habilitación de la Etapa 2 ocurre en agosto de 2028 y el cierre se mide con el volumen del peak (Formulario T-18, sección 3.1). LafroX adopta febrero de 2027 como supuesto de calendario de la carta Gantt.
+Tercero, entre esos tres inicios, febrero de 2027 es el único en que el congelamiento afecta solo el último mes de una marcha blanca (el mes 20, de la Etapa 2) y no un inicio de marcha blanca. Con diciembre de 2026, el H6 caería en diciembre; con marzo de 2027, el H11 caería en septiembre. Con febrero de 2027, las cuatro semanas de cierre de la marcha blanca de la Etapa 2 coinciden con el peak de Fiestas Patrias; por eso toda habilitación de la Etapa 2 debe quedar completada al 31 de agosto de 2028 y el cierre se mide con el volumen del peak (Formulario T-18, sección 3.1). LafroX adopta febrero de 2027 como supuesto de calendario de la carta Gantt.
 
 Durante las fechas efectivamente congeladas no se inicia ninguna ola ni se despliega ningún cambio; se distingue el congelamiento total del 1 al 25 de septiembre de la prohibición de paso a producción durante todo septiembre y diciembre. La política adicional de despliegue de SD4 se aplica como se describe en T-18, sección 1. La marcha blanca continúa en convivencia con la forma actual de trabajar, se siguen midiendo los indicadores diarios y el volumen real de septiembre sirve como prueba de carga en operación. La fecha efectiva de inicio se confirma con la consulta V-12 (Capítulo 3, Anexo 3.H).
 
@@ -24,7 +24,7 @@ La Tabla \ref{tab:7B1} lista las dependencias que estructuran la red del cronogr
 
 \parte{tablas/tab_7B1}
 
-En el cálculo del Formulario T-15, sección 5, D-14 a D-23 forman la cadena de la Etapa 1 hasta el H5: la integración de cobranza tras reparto (D-19), la integración 6.1.1 (D-20) y las pruebas de certificación (D-21 a D-23). D-29 y D-30 forman la cadena de la Etapa 2, porque los módulos 3.5 se construyen entre el H8 y el H9 sin holgura propia. D-33 es el camino que controla el H12, con ocho días hábiles de holgura. D-07 a D-13 convergen en el H3, y D-32 a D-34 enlazan la certificación de la Etapa 2 con su marcha blanca, su aceptación y el cierre.
+En el cálculo del Formulario T-15, sección 5, D-14 a D-23 forman la cadena de la Etapa 1 hasta el H5: la integración de cobranza tras reparto (D-19), la integración 6.1.1 (D-20) y las pruebas de certificación (D-21 a D-23). D-29 y D-30 enlazan el diseño aprobado en H8 con la construcción de los paquetes 4.4.1, 4.4.2, 4.4.3 y 4.5.2 y su integración para H9. Esos paquetes tienen 3, 1, 24 y 13 días hábiles de holgura, respectivamente, frente a los 19 días hábiles de holgura contractual de H9. D-33 es el camino que controla el H12, con ocho días hábiles de holgura. D-07 a D-13 convergen en el H3, y D-32 a D-34 enlazan la certificación de la Etapa 2 con su marcha blanca, su aceptación y el cierre.
 
 \section{Anexo 7.C — Momento de los resultados de aceptación del caso}
 
@@ -48,7 +48,7 @@ La EDT contiene la arquitectura cuando cada módulo y cada interfaz del Capítul
 
 \parte{tablas/tab_7E1}
 
-Once de los doce módulos se construyen en la cuenta 3.4 y se prueban en la 3.8; M10 Analítica es el único módulo con trabajo en ambas etapas, porque sus indicadores operacionales entran en la Etapa 1 y el costo de servir en la Etapa 2.
+La Etapa 1 abarca once de los doce módulos, distribuidos en las cuentas 4.1 a 4.3 y en el paquete 4.5.1. Se verifican con las pruebas de la Etapa 1 del producto 6. M10 Analítica es el único módulo con trabajo en ambas etapas, porque sus indicadores operacionales entran en la Etapa 1 y el costo de servir en la Etapa 2.
 
 La Tabla \ref{tab:7E2} presenta interfaces de la arquitectura y paquetes de la EDT.
 
