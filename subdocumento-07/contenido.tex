@@ -285,7 +285,7 @@ Todos los paquetes tienen un responsable único, de modo que son asignables. La 
 
 El plan de trabajo aplica las metodologías del Capítulo 6. La gestión del proyecto se basa en el PMBOK: los alcances aprobados (H1 y H8) y el cronograma son las líneas base contra las que se mide el avance; el avance se mide con valor ganado en el informe mensual (RT-19.06 y RT-19.07); y todo cambio de alcance, plazo o criterio de aceptación se aprueba antes de incorporarse al plan, conforme al artículo 72 de las Bases Administrativas (p. 38) (paquete 1.3.3).
 
-Cada etapa contractual pasa por requisitos y diseño, construcción, integración y certificación e implantación. Durante la construcción se abren frentes en paralelo cuando tienen sus insumos disponibles. Las pruebas del código y de sus interfaces se ejecutan durante el trabajo, sin esperar la certificación. Solo las actas y las fechas del artículo 17 de las Bases Administrativas autorizan la marcha blanca y el paso a producción.
+El desarrollo sigue una cascada por etapa contractual. Cada etapa pasa por requisitos y diseño, construcción por frentes en paralelo, integración y certificación, e implantación. Los equipos inician cada actividad cuando disponen de sus insumos y aprobaciones. Las pruebas unitarias y de contrato se ejecutan con cada cambio durante la construcción, y cada versión desplegada a QA conserva su evidencia de integración. El Anexo 9.E.1 del Subdocumento 9 vincula cada tipo de prueba con la actividad que lo habilita.
 
 \subsection{Secuenciamiento y dependencias}
 
@@ -334,7 +334,7 @@ El trabajo se organiza en ocho frentes. Cada frente es un equipo con un responsa
   {Frentes de trabajo de los meses 1 a 21. Fuente: (Formulario T-14) y (Formulario T-15).}
   {fig:7-frentes}
 
-La figura muestra que en ningún mes trabaja un solo frente: entre los meses 1 y 15 avanzan a la vez la dirección, la arquitectura, la construcción de la Etapa 1, la plataforma y la calidad. La gestión del cambio empieza con el diagnóstico organizacional de los meses 2 a 6, y la implantación se intensifica desde el mes 8. Los frentes se sincronizan en tres instancias. La primera son los hitos del Formulario E-25, porque cada hito exige que varios frentes entreguen a la vez. La segunda son los comités del artículo 71 de las Bases Administrativas (p. 37): el de Proyecto es quincenal y los de Arquitectura y Operación son mensuales, y sus actas registran los acuerdos entre frentes en dos días hábiles (RT-19.09). La tercera son las ventanas de calendario, que son comunes a todos los frentes.
+La figura muestra que en ningún mes trabaja un solo frente: entre los meses 1 y 15 avanzan a la vez la dirección, la arquitectura, la construcción de la Etapa 1, la plataforma y la calidad. La gestión del cambio empieza con el diagnóstico organizacional de los meses 2 a 6, y la implantación se intensifica desde el mes 8. Los frentes se sincronizan en tres instancias. La primera son los hitos del Formulario E-25, porque cada hito exige que varios frentes entreguen a la vez. La segunda son los comités del artículo 71 de las Bases Administrativas (p. 37): el de Proyecto es quincenal y los de Arquitectura y Operación son mensuales, y sus actas registran los acuerdos entre frentes en dos días hábiles (RT-19.09). La tercera son las restricciones de calendario, que se aplican a todos los frentes.
 
 \subsection{Solapamientos de los meses 13 a 15 y 19 a 20}
 
@@ -372,7 +372,7 @@ La Figura \ref{fig:7-gantt-critica} complementa la Figura \ref{fig:7-ruta}: mues
 
 \subsection{Carta Gantt y calendario}
 
-La carta Gantt del Formulario T-14 muestra las marchas blancas, los pasos a producción y el inicio de la Operación, sobre la estructura contractual de los 56 meses. La Tabla \ref{tab:7-hitos} ubica los doce hitos del Formulario E-25 con el paquete que entrega cada uno.
+La carta Gantt del Formulario T-14 sitúa las cuatro fases de cada etapa en el calendario contractual de 56 meses. \textbf{Requisitos y diseño} concluye con la aprobación del alcance y la arquitectura en H1 y H2 para la Etapa 1, y del alcance y el diseño en H8 para la Etapa 2. En \textbf{construcción}, los frentes de módulos e integraciones trabajan en paralelo y entregan versiones en QA con evidencia de integración continua. En \textbf{integración y certificación}, la integración se entrega en H4 o H9 y el acta de certificación se firma en H5 o H10. La \textbf{implantación} incluye la preparación del corte y la reversión, la capacitación y la marcha blanca. Esta se inicia en H6 o H11 y su cierre y el paso a producción quedan documentados en H7 o H12. La carta identifica también el inicio de la Operación. La Tabla \ref{tab:7-hitos} ubica los doce hitos del Formulario E-25 con el paquete que entrega cada uno.
 
 \parte{tablas/tab_SD7_4}
 

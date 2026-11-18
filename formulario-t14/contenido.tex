@@ -63,7 +63,7 @@ En este formulario, BA, BTT y Caso designan las Bases Administrativas, las Bases
 
 \section{Estructura de descomposición del trabajo}
 
-La EDT descompone el 100 \% del alcance de la Etapa 1, la Etapa 2 y la Operación (BA, art. 15, p. 11) en 10 productos, 60 cuentas de control y 227 paquetes de trabajo. El alcance se agrupa por el producto que la Contraparte recibe y acepta; la etapa que habilita cada paquete es un atributo de este. La regla del 100 \% comprende todo el alcance y cada paquete pertenece a una sola rama, tiene un responsable y produce un entregable verificable. Las fases RUP del Capítulo 6 ordenan la ejecución en el tiempo y se representan en la carta Gantt. La descomposición de los paquetes en actividades de 8 a 80 horas hombre se presenta fuera de la EDT, en el Formulario T-15, sección 6.
+La EDT descompone el 100 \% del alcance de la Etapa 1, la Etapa 2 y la Operación (BA, art. 15, p. 11) en 10 productos, 60 cuentas de control y 227 paquetes de trabajo. El alcance se agrupa por el producto que la Contraparte recibe y acepta; la etapa que habilita cada paquete es un atributo de este. La regla del 100 \% comprende todo el alcance y cada paquete pertenece a una sola rama, tiene un responsable y produce un entregable verificable. La carta Gantt programa el trabajo de cada etapa en las cuatro fases de la cascada descrita en el Capítulo 6: requisitos y diseño, construcción por frentes en paralelo, integración y certificación, e implantación. La descomposición de los paquetes en actividades de 8 a 80 horas hombre se presenta fuera de la EDT, en el Formulario T-15, sección 6.
 
 \parte{tablas/tab_T14_1}
 
@@ -848,7 +848,7 @@ La Tabla \ref{tab:T14-dic-3-3} presenta sus paquetes.
 
 \subsection{Producto 4. Software operativo}
 
-La Contraparte recibe los módulos operativos y los incrementos de analítica de las dos etapas. Los once módulos de la Etapa 1 se construyen por iteraciones RUP, entran al H4 del mes 10 con QA superado y se ponen en producción en el mes 16; los incrementos de la Etapa 2 se construyen entre los meses 13 y 18 durante la marcha blanca de la Etapa 1, entran al H9 del mes 17 con QA superado y se ponen en producción en el mes 21.
+La Contraparte recibe los módulos operativos y las capacidades de analítica de cada etapa. Los once módulos de la Etapa 1 se construyen por frentes en paralelo, se validan en QA antes de la integración en H4 (mes 10) y se ponen en producción en el mes 16. El desarrollo de la Etapa 2 se programa entre los meses 13 y 18 y se solapa con la marcha blanca de la Etapa 1. Los módulos de la Etapa 2 se validan en QA antes de la integración en H9 (mes 17) y se ponen en producción en el mes 21.
 El producto 4 reúne 5 cuentas de control y 15 paquetes de trabajo.
 
 \subsubsection{Cuenta 4.1 — Bodega: recepción, inventario y preparación}
@@ -885,7 +885,7 @@ La Tabla \ref{tab:T14-dic-4-4} presenta sus paquetes.
 
 \subsubsection{Cuenta 4.5 — Analítica (M10)}
 
-Esta cuenta reúne los dos incrementos de analítica M10: indicadores operacionales y OTIF diario para la Etapa 1, y costo de servir por cliente y por entrega para la Etapa 2.
+Esta cuenta reúne las capacidades de analítica M10 de las dos etapas: indicadores operacionales y OTIF diario para la Etapa 1, y costo de servir por cliente y por entrega para la Etapa 2.
 
 La Tabla \ref{tab:T14-dic-4-5} presenta sus paquetes.
 
@@ -983,7 +983,7 @@ La Tabla \ref{tab:T14-dic-6-6} presenta sus paquetes.
 
 \subsubsection{Cuenta 6.7 — Actas de certificación}
 
-Esta cuenta reúne las actas y la evidencia de certificación de cada incremento: H5 para la Etapa 1 y H10 para la Etapa 2, cuyo cierre incluye el desarrollo.
+Esta cuenta reúne las actas y la evidencia de certificación de cada etapa: H5 para la Etapa 1 y H10 para la Etapa 2, cuyo cierre incluye el desarrollo.
 
 La Tabla \ref{tab:T14-dic-6-7} presenta sus paquetes.
 
@@ -1242,6 +1242,8 @@ La carta Gantt muestra las ventanas de marcha blanca, los pasos a producción y 
 \parte{tablas/tab_T14_52}
 
 Se distingue el congelamiento total del 1 al 25 de septiembre, todo diciembre y los primeros tres días hábiles del mes de la prohibición de paso a producción durante todo septiembre y diciembre (Caso, secciones 13.2 y 13.3 y RT-10.05). La política de arquitectura también excluye despliegues durante todo septiembre; su alcance se precisa en T-18, sección 1. Los trámites documentales sin intervención no equivalen a despliegues. La correspondencia entre meses contractuales y meses calendario depende de la fecha de inicio del contrato; se analiza en la sección 7.3.2 del Subdocumento 7 y en su Anexo 7.A, que adoptan como supuesto un inicio en febrero de 2027.
+
+La programación de cada etapa marca cuatro salidas. En \textbf{requisitos y diseño} se aprueban el alcance y la arquitectura en H1 y H2, y el alcance y el diseño de la Etapa 2 en H8. En \textbf{construcción}, los frentes de módulos e integraciones trabajan en paralelo y entregan sus versiones en QA con evidencia de integración continua; las pruebas unitarias y de contrato se ejecutan con cada cambio. En \textbf{integración y certificación}, H4 y H9 registran la integración y H5 y H10 formalizan la certificación por acta. En \textbf{implantación}, H6 y H11 marcan el inicio de la marcha blanca y H7 y H12 documentan su cierre y el paso a producción. El Formulario T-15 detalla las actividades y los frentes.
 
 El paso a producción de cada etapa ocurre el día hábil siguiente a la firma del acta que cierra la marcha blanca y acepta el hito, tras diez días hábiles de revisión (T-15, sección 5.5). La Figura \ref{fig:T14-56} presenta la carta de los 56 meses del contrato, basada en la programación en GanttProject: los períodos del artículo 17, las ventanas de marcha blanca, los pasos a producción del 17 de mayo y del 18 de octubre de 2028, el inicio de la Operación, simultáneo con el paso a producción de la Etapa 2, y los hitos H1 a H12.
 

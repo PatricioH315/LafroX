@@ -47,8 +47,11 @@ for l in leer('tab_T15_paquetes.tex').splitlines():
     if cod in ya or b > date(2028, 1, 31): continue
     k = cls[cod]; n = max(1, math.ceil(hh / 80))
     if k == 'D':
-        iters = (b - a).days // 14 + 1
-        sec = 'A01–A02: análisis y contratos de interfaz; A03–A%02d: construcción en %d iteraciones de 14 días con pruebas del incremento y demostración; A%02d–A%02d: pruebas de contrato, integración en QA y entrega' % (n - 2, iters, n - 1, n)
+        sec = (
+            'A01–A02: análisis y contratos de interfaz; '
+            f'A03–A{n - 2:02d}: construcción con pruebas unitarias y de contrato; '
+            f'A{n - 1:02d}–A{n:02d}: integración y validación en QA y entrega'
+        )
     else:
         base = PLANT[k]
         if n <= len(base):

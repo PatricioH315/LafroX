@@ -2,11 +2,13 @@
 \addcontentsline{toc}{chapter}{Formulario T-18: Propuesta de implantación y puesta en marcha controlada}
 \markboth{Formulario T-18: Propuesta de implantación y puesta en marcha controlada}{}
 
-Este formulario presenta la propuesta de implantación y puesta en marcha controlada que exige el Formulario T-18 de las Bases Administrativas (Anexo B, p. 64). Cubre por separado la Etapa 1 (marcha blanca de los meses 13 a 15 y producción desde el mes 16) y la Etapa 2 (marcha blanca de los meses 19 y 20 y producción desde el mes 21), el plan de convivencia entre ambas y el procedimiento de reversión. El Subdocumento 7, sección 7.3, resume y analiza esta propuesta.
+Este formulario presenta la propuesta de implantación y puesta en marcha controlada. Cubre por separado la Etapa 1 (marcha blanca de los meses 13 a 15 y producción desde el mes 16) y la Etapa 2 (marcha blanca de los meses 19 y 20 y producción desde el mes 21), el plan de convivencia entre ambas y el procedimiento de reversión. El Subdocumento 7, sección 7.3, resume y analiza esta propuesta.
+
+La implantación es la cuarta fase de la cascada de cada etapa contractual. Las versiones validadas en QA aportan evidencia a la fase de integración y certificación. El acta H5 o H10 cierra esa fase y habilita la marcha blanca en H6 o H11, respectivamente. La salida de implantación queda documentada en H7 o H12, con el cierre de la marcha blanca y el paso a producción.
 
 En este formulario, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas Transversales y las Bases Técnicas del caso. SD seguido de un número identifica el Subdocumento correspondiente. EDT significa estructura de descomposición del trabajo; PT, paquete de trabajo; HH, horas hombre; y E1/E2, Etapas 1 y 2. En las cartas Gantt, RC identifica los elementos marcados como ruta crítica en la fuente de programación y PT/H identifica los demás paquetes e hitos. H1–H12 son los hitos del Formulario E-25 y F1–F8, los frentes de trabajo. QA designa el ambiente de calidad; SRE, el equipo de operación e ingeniería de fiabilidad; NOC, el centro de operaciones; SOC, el centro de operaciones de seguridad; y DTE, los documentos tributarios electrónicos.
 
-La propuesta aplica las siete condiciones que el Caso logística impone a toda estrategia de puesta en producción (sección 13.3, p. 23), responde los nueve puntos de la sección 17.6 (p. 33) y cumple los requisitos RT-20.01 a RT-20.08 de las Bases Técnicas Transversales (cap. 20, p. 35). La secuencia de olas, el criterio de avance, la dotación de estabilización y la medición de la adopción son los declarados en el Capítulo 3, sección 3.4.4. La estrategia técnica de despliegue es la del Capítulo 4, apartado 4.2.4.1.2 «Liberación y reversión», con único escritor y olas conforme al apartado 4.1.8, y los paquetes de trabajo citados son los de la EDT del Formulario T-14.
+La secuencia de olas, el criterio de avance, la dotación de estabilización y la medición de la adopción son los declarados en el Capítulo 3, sección 3.4.4. La estrategia técnica de despliegue es la del Capítulo 4, apartado 4.2.4.1.2 «Liberación y reversión», con único escritor y olas conforme al apartado 4.1.8, y los paquetes de trabajo citados son los de la EDT del Formulario T-14.
 
 \section{Reglas comunes de implantación}
 
@@ -53,7 +55,7 @@ La figura presenta el despliegue territorial de la ola 3 y el período final de 
 
 \subsection{Pruebas previas a la marcha blanca y al paso a producción}
 
-Antes de cada paso a producción se aprueban las pruebas del numeral 20.1 de las Bases Técnicas Transversales (p. 35), y su cumplimiento forma parte de la certificación de la Etapa 1 (H5, mes 12; paquete 6.7.1). La Tabla \ref{tab:T18-pruebas} presenta cada prueba con su criterio de éxito.
+Las pruebas del numeral 20.1 de las Bases Técnicas Transversales (p. 35) se aprueban en la fase de integración y certificación, antes de la marcha blanca y del paso a producción. Su evidencia integra el acta de certificación de la Etapa 1 (H5, mes 12; paquete 6.7.1). La Tabla \ref{tab:T18-pruebas} presenta cada prueba con su criterio de éxito.
 
 \parte{tablas/tab_T18_pruebas}
 
@@ -143,13 +145,13 @@ El despliegue avanza por cadena y por grupo de usuarios. Cada cadena se incorpor
 
 La marcha blanca E2 ocupa meses 19–20. Todo el alcance requerido de cadenas, portales y costo de servir debe activarse antes de F − 28 días; una cadena todavía no certificada no se excluye del denominador de aceptación. La operación registra el 100 \% de sus pedidos y entregas reales, con los perfiles certificados y la conciliación requerida. La conversión promedio de dos meses a 8,7 semanas no determina una fecha límite contractual.
 
-En el escenario ilustrativo de inicio en febrero de 2027 (Anexo 7.A del Subdocumento 7), el mes 19 cae en agosto de 2028 y el mes 20 en septiembre, lo que tiene tres consecuencias. La primera es que toda habilitación de la Etapa 2 ocurre en agosto, porque el congelamiento total va del 1 al 25 de septiembre (Caso, cap. 15, RT-10.05, p. 27), además de respetar F − 28 días y los primeros tres días hábiles de agosto. La segunda es que la evidencia de cierre atraviesa septiembre: incluye el volumen real de cada día y el peak cuando ocurre, con pruebas previas a 1,5 veces la carga peak. Este sería el primer septiembre de E1 en producción, por lo que la preparación de continuidad de ambas etapas es crítica. La tercera es que entre el 1 y el 25 de septiembre no se despliega ningún cambio sobre ninguna de las dos etapas: ante un defecto de la Etapa 2, se aplica la contingencia aprobada conforme a la sección 6.4, sin presumir que un cambio de configuración está exento del congelamiento.
+En el escenario ilustrativo de inicio en febrero de 2027 (Anexo 7.A del Subdocumento 7), el mes 19 cae en agosto de 2028 y el mes 20 en septiembre, lo que tiene tres consecuencias. La primera es que toda habilitación de la Etapa 2 ocurre en agosto, porque el congelamiento total va del 1 al 25 de septiembre (Caso, cap. 15, RT-10.05, p. 27), además de respetar F − 28 días y los primeros tres días hábiles de agosto. La segunda es que la evidencia de cierre atraviesa septiembre: incluye el volumen real de cada día y el peak cuando ocurre, con pruebas previas a 1,5 veces la carga peak. Este sería el primer septiembre de E1 en producción, por lo que la preparación de continuidad de ambas etapas es crítica. La tercera es que entre el 1 y el 25 de septiembre no se despliega ningún cambio sobre ninguna de las dos etapas: ante un defecto de la Etapa 2, se aplica la contingencia aprobada de la sección 6.4. El congelamiento incluye los cambios de configuración.
 
 La capacidad para ese peak se demuestra antes del H11 con las pruebas de carga a 1,5 veces el peak, con ambas etapas activas (paquete 6.3.2). El caso advierte que septiembre es «el período de mayor exigencia sobre cualquier componente nuevo» (sección 13.2).
 
 \subsection{Pruebas previas}
 
-Antes del paso a producción del mes 21 se aprueban las mismas pruebas de la sección 2.2, aplicadas a la Etapa 2 (paquetes 6.1.2, 6.2.3, 6.3.2, 6.4.2, 6.5.2, 6.6.2 y 6.7.2). Se agrega una exigencia: demostrar que la Etapa 1, ya en producción, no se degrada. Las pruebas de carga se ejecutan con ambas etapas activas (6.3.2), y la recuperación ante desastres, con ambas etapas (6.4.2).
+La fase de integración y certificación de la Etapa 2 aplica las pruebas de la sección 2.2 a su alcance (paquetes 6.1.2, 6.2.3, 6.3.2, 6.4.2, 6.5.2, 6.6.2 y 6.7.2) y las aprueba en H10, antes de la marcha blanca y del paso a producción del mes 21. La evidencia verifica que la Etapa 1 mantiene la disponibilidad, el desempeño y la integridad de sus datos en producción. Las pruebas de carga se ejecutan con ambas etapas activas (6.3.2), y la recuperación ante desastres, con ambas etapas (6.4.2).
 
 \subsection{Indicadores diarios y umbrales de cierre}
 
