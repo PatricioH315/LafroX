@@ -161,6 +161,42 @@ for name in FILES:
         if re.search(r"\b(Informe [123]|TODO|FIXME|profesor|curso)\b|pendiente de revisión", line):
             fail(f"{name}:{n} texto de proceso interno o ajeno a la licitación")
 
+# 8. Restos de la numeración antigua y texto de proceso que no debe entregarse
+FORBIDDEN = [
+    (r"fase 5 de la EDT", "INN-04 ya no está en la fase 5"),
+    (r"cuentas? 3\.8\b|3\.8\.[17]\b|3\.9\.6\b", "paquete controlante antiguo de un hito"),
+    (r"carta editable|Pauta de revisión|versión final|se entregarán|que sigue pendiente", "texto de proceso interno"),
+    (r"13\.x\b|13\.N\.7", "marcador sin resolver"),
+    (r"desde el mes 22, frente de Operación|y desde el mes 22 el mantenimiento", "traspaso a Operación fuera del mes 21"),
+    (r"Sandra Riffo, p\. 14|Katherine Ñanco, p\. 16", "página de entrevista del Caso incorrecta"),
+    (r"precio máximo", "término no definido en las Bases"),
+    (r"(?<![\w\\])\d+" + re.escape(BS) + "%", "porcentaje sin espacio antes de \\%"),
+]
+for name in FILES:
+    for n, line in enumerate(lines(name), 1):
+        for pat, label in FORBIDDEN:
+            if re.search(pat, line):
+                fail(f"{name}:{n} {label}")
+
+# 9. Paquetes controlantes de H4, H5 y H10 en el Anexo 13.B (T-15, tab_T15_7)
+for code in ("6.1.1", "6.7.1", "6.7.2"):
+    if code not in text("anexos"):
+        fail(f"anexos: falta el paquete controlante {code}")
+
+# 10. Aritmética de los escenarios físicos y su presencia en el Anexo 13.B
+assert 2_400_000 * 1 * 25 // (100 * 100) == 6_000 and 6_000 * (56 - 16 + 1) == 246_000
+assert round(52 / 12 * 36) == 156 and round(52 / 12 * 36 * 2) == 312
+lots = 1_150 * 1_100 / 8_400
+assert round(lots, 1) == 150.6 and round(lots * 0.05 * 0.20, 1) == 1.5 and round(lots * 0.05 * 0.20 * 41) == 62
+assert 420_000 * 5 // 100 == 21_000
+assert round(62_000 * 11_600 / 14_200) == 50_648 and round(62_000 * 11_600 / 14_200 * 10 * 0.20) == 101_296
+assert 2_400_000 * 15 // 10_000 * 25 // 100 == 900
+assert (20 / 24, 19 / 24) == (0.8333333333333334, 0.7916666666666666)
+for frag in ("6.000 unidades", "156 minutos", "312 minutos-persona", "150,6 recepciones", "1,5 lotes",
+             "21.000 kilómetros", "101.296 minutos", "50.648 decisiones", "20 de 24"):
+    if frag not in text("anexos"):
+        fail(f"anexos: falta la cifra «{frag}» de los escenarios físicos")
+
 print("Coherencia SD13:", "OK" if not problems else f"{len(problems)} problema(s)")
 for p in problems:
     print(" -", p)
