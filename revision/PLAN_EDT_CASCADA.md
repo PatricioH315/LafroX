@@ -13,6 +13,7 @@ Versión del plan: 18-11-2026. Reemplaza la propuesta del 17-11-2026. Rama princ
 | D5 | **No se publica la red completa de actividades** en el T-15: se mantienen la red por paquetes y las actividades compactas hasta el H5. El escenario de 59 actividades de GPT (`revision/cronograma_d16_actividades.py`) sólo se usa para comprobar que las fechas son factibles. | 18-11 |
 | D6 | **Las figuras no se modifican** (EDT, Gantt, red, ruta crítica, frentes, planificación gradual, SD6). Sólo se cambian si el usuario lo pide. | 18-11 |
 | D7 | Sin columna de iteraciones en la estimación de módulos: las HH de la columna «Iterac.» de `tab_T15_tamano` se suman a la de integración, que pasa a llamarse «Integración y validación en QA». Las HH por módulo y el total (202.108,62 HH) no cambian. | 18-11 |
+| D9 | Las láminas de detalle de la EDT por fase (17) y la vista de nivel 2 se retiraron del SD7 (GPT) porque mostraban la estructura por fases. **Pendiente de confirmación del usuario** (D6 dice no tocar figuras). | 18-11 |
 | D8 | Intercambio con la principal cadena (5.3.1) del 01-10-2027 al 31-05-2028; demás cadenas (5.3.2) del 02-05 al 14-07-2028; mapas (5.2.3) del 16-08 al 10-09-2027; avisos (5.2.4) del 20-07 al 16-08-2027. | 17-11 |
 
 ## 2. Estado
@@ -22,26 +23,31 @@ Versión del plan: 18-11-2026. Reemplaza la propuesta del 17-11-2026. Rama princ
 | T-14 | EDT por productos, diccionario, periodos alineados a las olas | Hecho y subido | 1baee9c9, 49088af0 |
 | T-15 | Olas, 77 predecesoras, CPM nivelado, curvas por días hábiles, Desarrollo 34 plazas en el mes 7, actividades hasta el H5, frentes por cuenta nueva, totales por etapa | Hecho y subido; **falta adaptar a la cascada** (fase B) | 49088af0 |
 | SD7, anexos, T-18 | Códigos traducidos y rangos corregidos | Subido (b8bededf) | — |
-| SD7, anexos, T-18 | 7.1 reescrita por productos, cifras de plazas, subtotal de los meses 13 a 15, referencias antiguas (trabajo de GPT) | Sin commit, en la carpeta principal | Fase A1 |
-| SD6, T-9, T-10 | Cascada por etapa (trabajo de GPT) | Sin commit, en worktree de Codex | Fase A2 |
-| SD4, SD8, trazabilidad | Referencias y códigos nuevos; 15 observaciones actualizadas (trabajo de GPT) | Sin commit, en worktrees de Codex | Fase A2 |
-| SD3/T-12, SD9, SD13 | 489 filas del T-12 recodificadas; Anexo 9.E.1 por despliegues en QA; referencias (trabajo de GPT) | Sin commit; origin tiene 2 commits nuevos en los mismos archivos | Fase A3 |
+| SD7, anexos, T-18 | 7.1 reescrita por productos, cifras de plazas, subtotales, referencias antiguas (GPT) | Hecho y subido; sin las láminas de detalle de la EDT por fase (ver D9) | f45a174d |
+| SD6, T-9, T-10 | Cascada por etapa (GPT) | Hecho y subido | 1cde2a8b |
+| SD4, SD8, trazabilidad | Códigos nuevos (GPT + 6 citas en SD4 y 20 en SD8 completadas); 15 observaciones actualizadas | Hecho y subido; respuestas de trazabilidad pendientes de B5 | cd9c0800, 3985aefd, 6789e04b, 8bff873b |
+| SD3/T-12, SD9, SD13 | T-12 verificado fila por fila; SD9 cascada + 222 códigos completados; SD13 + 50 códigos; choques con origin resueltos | Hecho y subido | d6aeb035, 1c6067cc, 7a9cc1bd, 367f4d56, e8a1e940 |
 | SD5 | Coincidencias eran números de sección | Sin cambios | — |
 
 ## 3. Plan restante
 
 ### Fase A. Consolidar en git el trabajo de GPT
-- [ ] A1. SD7, anexos y T-18 (carpeta principal): revisar el diff, controles (`edt_revisar_texto.py`, `edt_revisar_rangos.py`), compilar, commit y push.
-- [ ] A2. Sin choques: SD6/T-9/T-10, SD8, SD4 y trazabilidad. Para cada uno: exportar el diff del worktree, cambiar de rama en la carpeta principal, aplicar, revisar, compilar, commit y push.
-- [ ] A3. Con commits nuevos en origin: SD3/T-12, SD9 y SD13. Aplicar el diff sobre origin con combinación de 3 vías; resolver choques conservando lo de origin y lo de GPT; revisar, compilar, commit y push.
+- [x] A1. SD7, anexos y T-18 integrados (f45a174d).
+- [x] A2. SD6/T-9/T-10, SD8, SD4 y trazabilidad integrados.
+- [x] A3. SD3/T-12, SD9 y SD13 integrados con combinación de 3 vías.
 - [ ] A4. Con OK del usuario: borrar los siete worktrees de `C:\Users\alexa\.codex\worktrees\`.
+
+### Lecciones de la integración (18-11)
+- GPT dejó códigos sin traducir en todas las ramas (6 en SD4, 20 en SD8, 222 en SD9, 50 en SD13, 1 en T-12). Control obligatorio: comparar cada archivo con `traducir(versión de origin)` y revisar los tramos que sólo difieren en códigos.
+- El traductor no distingue números de sección propios de cada documento cuando coinciden con códigos viejos (SD8 8.x.x, SD9 9.x.x, SD4 4.x.x) ni los elementos de una lista «secciones X, Y y Z» después del primero. En esas ramas, corregir sólo con lista blanca de pares y revisar el contexto.
+- Pendientes detectados para la fase C: frases defensivas preexistentes en el SD9 («no acredita», «como exige», «no se presume»); el archivo interno `trazabilidad/Trazabilidad-SD3.tex` del SD3 conserva códigos antiguos (no se compila).
 
 ### Fase B. Adaptar a la cascada lo que suponía iteraciones
 - [ ] B1. T-15: quitar el calendario de 62 ventanas (`tab:T15-iteraciones-escenario`) y la secuencia quincenal de Recepción; describir cada módulo por fases (análisis y contratos, construcción, pruebas de contrato, integración y validación en QA); plantilla D de `tab_T15_9h5` sin iteraciones; aplicar D7 en `tab_T15_tamano` y su texto.
 - [ ] B2. T-15: revisar las menciones a iteraciones, incrementos de H4 por iteración, Kanban y RUP; dejar «incremento» sólo con el sentido de etapa (E1/E2).
 - [ ] B3. SD7, T-14, T-18 y anexos: mismas menciones; la Gantt se describe por fases de la cascada y frentes.
 - [ ] B4. Coherencia con SD6/T-9/T-10 (fases, condiciones de salida, frentes) y con SD9 (despliegues en QA, sin ventanas).
-- [ ] B5. Trazabilidad: respuestas de SD7-11, SD7-12, SD6-13 y SD6-16 según la cascada; SD7-08, 09, 10, 17, 25 y 26 según lo hecho.
+- [ ] B5. Trazabilidad: rehacer las respuestas que GPT dejó dependiendo de «la red detallada de actividades» (contradicen D5): SD7-06, 08, 09, 12, 25 y 26 pasan a corregidas por la red de paquetes y las actividades hasta H5; SD7-01, 11, 14 y 25 quedan parciales sólo por las figuras (D6); SD6-13 y SD9-08 según la cascada.
 
 ### Fase C. Cierre
 - [ ] C1. Comprobar con el escenario de GPT (D5) que las fechas de Recepción, Inventario y Preparación son factibles con la capacidad de los frentes.
