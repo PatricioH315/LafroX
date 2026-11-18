@@ -108,7 +108,7 @@ def fig1():
     c_txt = ["C-02 App de reparto e impresora de cabina<br>(INN-02, INN-03, INN-05)",
              "C-01 App de preventa<br>(INN-01, INN-02, INN-05)",
              "C-03 Terminales de bodega<br>(INN-02)"]
-    b_txt = ["B-03 Termógrafos de camión<br>(INN-03)",
+    b_txt = ["Kit de camión B-03, B-04 y B-08<br>(INN-03)",
              "B-01 Sensores de temperatura<br>(INN-03)",
              "B-02 Gateway IoT<br>(INN-03)"]
     rh = max(alto(t, 320) for t in c_txt + b_txt)
