@@ -29,6 +29,17 @@ for l in (T / 'tab_T15_2.tex').read_text(encoding='utf-8').splitlines():
         c = [x.strip() for x in l.strip().replace(chr(92) * 2, '').split('&')]
         rows.append((c[0], c[1], c[2], c[3], float(c[7])))
 
+# EDT por productos (17-11-2026): los módulos de la Etapa 1 y las integraciones reprogramadas
+# reparten sus HH por los días hábiles (lunes a viernes) entre su inicio y su fin publicados.
+from datetime import timedelta
+POR_DIAS = {}
+for l in (T / 'tab_T15_paquetes.tex').read_text(encoding='utf-8').splitlines():
+    if re.match(r'\s*\d+(\.\d+)+\s*&', l):
+        c = [x.strip() for x in l.strip().replace(chr(92) * 2, '').split(' & ')]
+        if c[0].startswith('3.4.') or c[0] in ('3.6.4', '3.6.5', '3.6.6'):
+            d0 = date(*map(int, c[4].split('-')[::-1])); d1 = date(*map(int, c[5].split('-')[::-1]))
+            POR_DIAS[c[0]] = [d0 + timedelta(n) for n in range((d1 - d0).days + 1) if (d0 + timedelta(n)).weekday() < 5]
+
 H = defaultdict(lambda: defaultdict(float))   # H[rol][mes]
 def add(role, m, v): H[role][m] += v
 
@@ -55,6 +66,10 @@ for code, cl, role, mm, e in rows:
         continue
     if code == '4.3.2':
         add(role, 21, 2464 * 11 / 24); add(role, 22, 2464 * 13 / 24)
+        continue
+    if code in POR_DIAS:   # EDT por productos (17-11-2026): reparto por días hábiles de la programación
+        dd = POR_DIAS[code]
+        for d in dd: add(role, (d.year - 2027) * 12 + d.month - 1, e / len(dd))
         continue
     for m in range(a, b + 1): add(role, m, e / (b - a + 1))
 
