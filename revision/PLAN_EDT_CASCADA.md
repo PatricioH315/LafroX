@@ -69,6 +69,25 @@ Versión del plan: 18-11-2026. Reemplaza la propuesta del 17-11-2026. Rama princ
 
 Siguen valiendo los problemas P1 a P14 y la estructura de 10 productos (Anexo A), con dos cambios: P9 (iteraciones en la Gantt) se resuelve con la cascada (D2) y no con iteraciones; P12 (actividades hasta el H5) ya está aplicado en formato compacto.
 
+## 6. Decisión D10 (18-11): tres paquetes nuevos para requisitos sin cobertura
+
+El usuario eligió la solución más limpia: crear paquetes, ampliando alcance y HH si hace falta, **respetando todos los plazos** (hitos H1 a H12 y sus holguras sin cambio).
+
+| Código | Paquete | Requisitos | Clase / rol | HH (O/M/P/E) | Personas | Inicio – fin | Predecesoras | Etapa |
+|---|---|---|---|---|---|---|---|---|
+| 3.3.4 | Parametrización y motor de reglas versionados | RF-17.02, RT-16.14 | I / DES | 384 / 480 / 576 / 480 | 4 | 01-09-2027 – 30-09-2027 | 2.8.1, 3.3.2 | E1 |
+| 3.3.5 | Gestión documental: versionado, búsqueda y vista previa | RF-17.08 | I / DES | 384 / 480 / 576 / 480 | 4 | 01-09-2027 – 30-09-2027 | 2.8.1, 3.3.1 | E1 |
+| 3.3.6 | Generación de documentos con plantillas administrables | RF-17.09 | I / DES | 384 / 480 / 576 / 480 | 4 | 01-09-2027 – 30-09-2027 | 2.8.1, 3.3.5 CC | E1 |
+
+Por qué septiembre de 2027 (mes 8): Desarrollo tiene 20 plazas ese mes frente a 33 de construcción; 1.440 HH son 11,25 plazas (llega a 32). Terminan antes de la integración 6.1.1 (05-10-2027), que pasa a tenerlos como predecesores.
+
+Efectos: 230 paquetes (171 con entregable, 59 continuos), producto 3 con 17 paquetes, 60 cuentas sin cambio. Línea base **203.548,62 HH** (+1.440, todas en el mes 8, período E1 desarrollo: 43.991,98 HH). Actividades hasta H5: 76 paquetes y 385 actividades. Sube el costo: avisar en la nota para Excel/E2.
+
+Pasos:
+1. Rama SD7: T-14 (lista EDT, tab_T14_1, dic_3_3 y texto de la cuenta 3.3), T-15 (tab_T15_2, paquetes, cpm_detalle, 3, 4, 4_personas, 8, asignacion_partidas, perfiles_internos, conciliacion, tab_T15_9h5 y textos), SD7 (tab_SD7_1, tab_SD7_2, tab_SD7_3, tab_SD7_13 y textos), nota Excel/E2. Verificar que tab_T15_7 no cambie.
+2. T-12 y T-13: RF-17.02 y RT-16.14 → 3.3.4; RF-17.08 → 3.3.5; RF-17.09 → 3.3.6, quitando «alcance por precisar».
+3. Las demás ramas y la trazabilidad: actualizar 227→230, 168→171, 202.108,62→203.548,62 y cifras derivadas sólo donde se refieran a este proyecto.
+
 ## Anexo A. Equivalencias: código nuevo ↔ código actual
 
 La etapa se calcula desde las fechas del T-15 y el nombre del paquete. «Transversal» = gestión o documentación de ambas etapas.
