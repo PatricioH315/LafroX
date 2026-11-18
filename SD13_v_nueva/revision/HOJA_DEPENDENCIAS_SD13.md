@@ -36,7 +36,6 @@ Regla de trabajo: **solo se edita el SD13**. Cuando otro subdocumento cambie, se
 ## Pendientes abiertos del SD13
 
 - **Revisión técnica humana (SD13-12):** registrar revisor, fecha, versión, evidencia y resultado en la declaración de IA. Después se elimina la «Pauta de revisión técnica» del Anexo 13.C y el texto «pendiente» de la declaración.
-- **Portada de la propuesta final:** subtítulo y fecha en las tres raíces `.tex` (hoy dicen «Informe 2» y 12 de octubre de 2026).
 - **Cadencia de INN-03:** el T-15 lista revisiones en los meses 24, 27, 30, 36, 39, 42, 48, 51 y 54, y el indicador I-03B dice «trimestral». Aclarar con el dueño del SD7.
 - **Carta editable `Gantt_Innovaciones_13B.gan`:** sigue con los códigos antiguos y el script `verificar_cotejo_sd13.py` está fijado a commits viejos. Decidir si se actualiza o se archiva.
 
