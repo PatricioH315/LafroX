@@ -5,6 +5,6 @@
 \contentsline {section}{Anexo 13.B — Matriz de trazabilidad}{5}{table.sd13.13.A.1}%
 \contentsline {subsection}{13.B.1 Evidencia programada del mes 15}{9}{table.sd13.13.B.2}%
 \contentsline {section}{Anexo 13.C — Indicadores, controles y riesgo contractual}{12}{table.sd13.13.B.4}%
-\contentsline {subsection}{13.C.1 Datos para validar los cinco beneficios}{14}{table.sd13.13.C.2}%
-\contentsline {section}{Referencias}{18}{table.sd13.13.C.6}%
+\contentsline {subsection}{13.C.1 Datos para validar los cinco beneficios}{15}{table.sd13.13.C.2}%
+\contentsline {section}{Referencias}{17}{table.sd13.13.C.5}%
 \contentsfinish 

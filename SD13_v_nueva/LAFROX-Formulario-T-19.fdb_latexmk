@@ -1,5 +1,5 @@
 # Fdb version 4
-["lualatex"] 1794968132.76268 "LAFROX-Formulario-T-19.tex" "LAFROX-Formulario-T-19.pdf" "LAFROX-Formulario-T-19" 1794968150.59787 0
+["lualatex"] 1795027033.58237 "LAFROX-Formulario-T-19.tex" "LAFROX-Formulario-T-19.pdf" "LAFROX-Formulario-T-19" 1795027054.92447 0
   "C:/Users/henri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1791761150.69996 943208 89da4836ee0e92c381435be35a3241b0 ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-bold.luc" 1789666459.45516 133158 3cabc9a0ec29d2e894f16f3e21ded02d ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-bolditalic.luc" 1789666460.03828 131896 3bea80aaf6b71ba227486b9064fa9b24 ""
@@ -260,10 +260,10 @@
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload-unicode.lua" 1740607740 7918 4272855a25780b80472f3b58edd95e33 ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload.lua" 1740607740 13566 16df94dd2de231b2bca0aaa0190941fe ""
   "C:/Users/henri/AppData/Roaming/MiKTeX/tex/generic/config/language.dat" 1786480571.72539 2269 983cd649586da7942508216422e6c810 ""
-  "LAFROX-Formulario-T-19.aux" 1794968147.73493 5489 a3f4a25aa8da07bd733a92e39e2a0214 "lualatex"
+  "LAFROX-Formulario-T-19.aux" 1795027051.63399 5489 bce4046ac1590ac15ecadaddcdbb16b1 "lualatex"
   "LAFROX-Formulario-T-19.tex" 1794967997.50863 783 b277fe480e4383308484634e7ad82f85 ""
-  "LAFROX-Formulario-T-19.toc" 1794968147.74799 602 078041080e781b74781dc598e3372c4f "lualatex"
-  "T19/contenido.tex" 1794966819.69025 34309 4fe8ae1044e59f3e35c7d8992b13764e ""
+  "LAFROX-Formulario-T-19.toc" 1795027051.64554 602 fd595e6fbe276dd33fb8ac96175a7f0a "lualatex"
+  "T19/contenido.tex" 1795026910.10556 36303 32702be06689dd72dd450fcc9219f006 ""
   "c:/users/henri/appdata/local/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf" 1777831523 336848 e7d038378399e1c26443887c39d891d8 ""
   "lafrox-portada.tex" 1794968088.64341 16185 f1e0786deecff05516462bd77cd07363 ""
   "lafrox.cls" 1794180611.2862 43048 c8d67e37a00316898dded7422041d1a3 ""
