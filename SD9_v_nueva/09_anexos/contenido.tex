@@ -9,7 +9,7 @@ Estos anexos contienen el detalle que el cuerpo del Subdocumento 9 (SD9) resume.
 \begin{tablasimple}{>{\hsize=0.41\hsize\linewidth=\hsize}Y >{\hsize=2.18\hsize\linewidth=\hsize}Y >{\hsize=0.41\hsize\linewidth=\hsize}Y}
   {\cab{Anexo} & \cab{Contenido} & \cab{Sección del SD9 que lo cita}}
 9.A & Métricas de calidad del producto por característica de ISO/IEC 25010 y de calidad de datos según ISO/IEC 25012 & 9.1.3 \\
-9.B & Puertas de calidad, reglas de bloqueo y herramientas por lenguaje & 9.1.5 y 9.2.1 \\
+9.B & Puertas de calidad, reglas de bloqueo y herramientas por lenguaje & 9.1.5 y 10.5.1 \\
 9.C & Cálculo del costo de la calidad en horas-hombre & 9.1.6 y 9.3.1 \\
 9.D & Trazabilidad de los resultados del caso hasta su prueba y su hito & 9.2.5 \\
 \end{tablasimple}
@@ -27,9 +27,9 @@ La funcionalidad se verifica contra los requisitos ofertados y los casos que ace
 
 \begin{tablasimple}{>{\hsize=0.626\hsize\linewidth=\hsize}Y >{\hsize=0.626\hsize\linewidth=\hsize}Y >{\hsize=2.221\hsize\linewidth=\hsize}Y >{\hsize=0.626\hsize\linewidth=\hsize}Y >{\hsize=0.626\hsize\linewidth=\hsize}Y >{\hsize=1.652\hsize\linewidth=\hsize}Y >{\hsize=0.623\hsize\linewidth=\hsize}Y}
   {\cab{ID} & \cab{Subcaracterística} & \cab{Métrica} & \cab{Umbral} & \cab{Origen} & \cab{Verificación} & \cab{Paquete}}
-9A-01 & Completitud & Requisitos ofertados del T-12 con prueba aprobada & 100 \% & Caso, 17.1 & Matriz de trazabilidad generada desde la cadena de integración & 3.8.1; 3.9.1 \\
-9A-02 & Corrección & Defectos críticos o altos abiertos al certificar & 0 & Art. 17.3 (BA, p. 13) & Registro de defectos & 3.8.7; 3.9.6 \\
-9A-03 & Pertinencia & Casos de aceptación firmados por la Contraparte Técnica & 100 \% de los casos de la etapa & BTT 20.1 (BTT, pp. 34--35) & Aceptación en Preproducción & 3.8.2; 3.9.2 \\
+9A-01 & Completitud & Requisitos ofertados del T-12 con prueba aprobada & 100 \% & Caso, 17.1 & Matriz de trazabilidad generada desde la cadena de integración & 6.1.1; 6.1.2 \\
+9A-02 & Corrección & Defectos críticos o altos abiertos al certificar & 0 & Art. 17.3 (BA, p. 13) & Registro de defectos & 6.7.1; 6.7.2 \\
+9A-03 & Pertinencia & Casos de aceptación firmados por la Contraparte Técnica & 100 \% de los casos de la etapa & BTT 20.1 (BTT, pp. 34--35) & Aceptación en Preproducción & 6.2.1; 6.2.3 \\
 \end{tablasimple}
 \fuentesd{Fuente: (Bases Administrativas, arts. 17.3 y 24, pp. 13, 17); (Bases Técnicas Transversales, sección 20.1, pp. 34--35); (Bases Técnicas del caso, sección 17.1, pp. 31--32); (Formulario T-13, sección 6); (Formulario T-14, cuentas 3 y 4).}
 
@@ -40,15 +40,15 @@ El desempeño se mide en percentil 95 con la carga de peak y la concurrencia de 
 
 \begin{tablasimple}{>{\hsize=0.575\hsize\linewidth=\hsize}Y >{\hsize=0.843\hsize\linewidth=\hsize}Y >{\hsize=1.717\hsize\linewidth=\hsize}Y >{\hsize=1.583\hsize\linewidth=\hsize}Y >{\hsize=0.851\hsize\linewidth=\hsize}Y >{\hsize=0.843\hsize\linewidth=\hsize}Y >{\hsize=0.588\hsize\linewidth=\hsize}Y}
   {\cab{ID} & \cab{Subcaracterística} & \cab{Métrica} & \cab{Umbral} & \cab{Origen} & \cab{Verificación} & \cab{Paquete}}
-9A-04 & Comportamiento temporal & p95 de confirmación de línea de preparación & ≤ 1 s & Caso, RT-09.01 & Carga a 21,99 TPS & 3.8.4; 3.9.3 \\
-9A-05 & Comportamiento temporal & p95 de registro de entrega & ≤ 2 s & Caso, RT-09.01 & Carga a 21,99 TPS & 3.8.4; 3.9.3 \\
-9A-06 & Comportamiento temporal & p95 de línea de preventa & ≤ 1,5 s & Caso, RT-09.01 & Carga a 21,99 TPS & 3.8.4; 3.9.3 \\
-9A-07 & Comportamiento temporal & p95 de consulta de stock y crédito & ≤ 2 s & Caso, RT-09.01 & Carga a 21,99 TPS & 3.8.4; 3.9.3 \\
-9A-08 & Comportamiento temporal & p95 de transacción crítica de terreno, portal, navegación, API, búsqueda e informe & ≤ 3 s; ≤ 2 s; ≤ 1 s; consulta ≤ 500 ms; escritura ≤ 800 ms; búsqueda compuesta ≤ 3 s y global ≤ 2 s; informe estándar ≤ 30 s & BTT, cap. 9; SD4, sección 4.2.6.11 (BTT, pp. 21--22) & Carga a 21,99 TPS & 3.8.4; 3.9.3 \\
-9A-09 & Capacidad & Carga sostenida sin violar 9A-04 a 9A-08 & 21,99 TPS; 1.163 personas usuarias; 237 dispositivos & Art. 24; RT-09.06; SD4, sección 4.2.6 (BA, p. 17; BTT, p. 21) & Carga en PRE-C & 3.8.4; 3.9.3 \\
-9A-10 & Capacidad & Ventana de despacho a 1,5 × su peak & 10,41 TPS durante 90 minutos, 0 minutos de indisponibilidad & Caso, RT-10.05; SD4, sección 4.2.6 & Carga en PRE-C & 3.8.4; 3.9.3 \\
-9A-11 & Capacidad & Crecimiento sin rediseño & 43,98 TPS (3 × el peak) sin cambio de arquitectura & RT-09.03 (BTT, p. 21) & Escalón de estrés & 3.8.4; 3.9.3 \\
-9A-12 & Capacidad & Degradación al superar la capacidad & 0 transacciones perdidas; encolamiento y mensaje explícito & RT-09.08 (BTT, p. 22) & Escalón de quiebre (4 ×) & 3.8.4; 3.9.3 \\
+9A-04 & Comportamiento temporal & p95 de confirmación de línea de preparación & ≤ 1 s & Caso, RT-09.01 & Carga a 21,99 TPS & 6.3.1; 6.3.2 \\
+9A-05 & Comportamiento temporal & p95 de registro de entrega & ≤ 2 s & Caso, RT-09.01 & Carga a 21,99 TPS & 6.3.1; 6.3.2 \\
+9A-06 & Comportamiento temporal & p95 de línea de preventa & ≤ 1,5 s & Caso, RT-09.01 & Carga a 21,99 TPS & 6.3.1; 6.3.2 \\
+9A-07 & Comportamiento temporal & p95 de consulta de stock y crédito & ≤ 2 s & Caso, RT-09.01 & Carga a 21,99 TPS & 6.3.1; 6.3.2 \\
+9A-08 & Comportamiento temporal & p95 de transacción crítica de terreno, portal, navegación, API, búsqueda e informe & ≤ 3 s; ≤ 2 s; ≤ 1 s; consulta ≤ 500 ms; escritura ≤ 800 ms; búsqueda compuesta ≤ 3 s y global ≤ 2 s; informe estándar ≤ 30 s & BTT, cap. 9; SD4, sección 4.2.6.11 (BTT, pp. 21--22) & Carga a 21,99 TPS & 6.3.1; 6.3.2 \\
+9A-09 & Capacidad & Carga sostenida sin violar 9A-04 a 9A-08 & 21,99 TPS; 1.163 personas usuarias; 237 dispositivos & Art. 24; RT-09.06; SD4, sección 4.2.6 (BA, p. 17; BTT, p. 21) & Carga en PRE-C & 6.3.1; 6.3.2 \\
+9A-10 & Capacidad & Ventana de despacho a 1,5 × su peak & 10,41 TPS durante 90 minutos, 0 minutos de indisponibilidad & Caso, RT-10.05; SD4, sección 4.2.6 & Carga en PRE-C & 6.3.1; 6.3.2 \\
+9A-11 & Capacidad & Crecimiento sin rediseño & 43,98 TPS (3 × el peak) sin cambio de arquitectura & RT-09.03 (BTT, p. 21) & Escalón de estrés & 6.3.1; 6.3.2 \\
+9A-12 & Capacidad & Degradación al superar la capacidad & 0 transacciones perdidas; encolamiento y mensaje explícito & RT-09.08 (BTT, p. 22) & Escalón de quiebre (4 ×) & 6.3.1; 6.3.2 \\
 \end{tablasimple}
 \fuentesd{Fuente: (Bases Administrativas, art. 24, p. 17); (Bases Técnicas Transversales, cap. 9, pp. 21--22); (Bases Técnicas del caso, cap. 15, RT-09.01 y RT-10.05, pp. 26--27); (Subdocumento 4, secciones 4.2.6.3 y 4.2.6.4); (Formulario T-13, sección 7.1); (Formulario T-14, cuenta 3).}
 
@@ -59,9 +59,9 @@ La compatibilidad se verifica sobre los quince flujos y sus contratos, incluida 
 
 \begin{tablasimple}{>{\hsize=0.654\hsize\linewidth=\hsize}Y >{\hsize=0.835\hsize\linewidth=\hsize}Y >{\hsize=2.038\hsize\linewidth=\hsize}Y >{\hsize=0.654\hsize\linewidth=\hsize}Y >{\hsize=1.242\hsize\linewidth=\hsize}Y >{\hsize=0.924\hsize\linewidth=\hsize}Y >{\hsize=0.653\hsize\linewidth=\hsize}Y}
   {\cab{ID} & \cab{Subcaracterística} & \cab{Métrica} & \cab{Umbral} & \cab{Origen} & \cab{Verificación} & \cab{Paquete}}
-9A-13 & Interoperabilidad & Flujos de integración ejecutados sin error por etapa & 100 \% de E1; 15 de 15 al cierre de E2 & BTT 20.1; SD4, sección 4.1 (BTT, pp. 34--35) & Integración en QA & 3.8.1; 3.9.1 \\
-9A-14 & Interoperabilidad & Contratos rotos en la cadena de integración & 0 & Art. 4.3 (OpenAPI 3.1, AsyncAPI 2.6) (BA, pp. 5--6) & Pact y Spectral & 1.5.2 \\
-9A-15 & Coexistencia & Regresiones de la Etapa 1 al integrar la Etapa 2 & 0 & Art. 17.2, regla 3 (BA, p. 13) & Regresión de la Etapa 1 & 3.9.1 \\
+9A-13 & Interoperabilidad & Flujos de integración ejecutados sin error por etapa & 100 \% de E1; 15 de 15 al cierre de E2 & BTT 20.1; SD4, sección 4.1 (BTT, pp. 34--35) & Integración en QA & 6.1.1; 6.1.2 \\
+9A-14 & Interoperabilidad & Contratos rotos en la cadena de integración & 0 & Art. 4.3 (OpenAPI 3.1, AsyncAPI 2.6) (BA, pp. 5--6) & Pact y Spectral & 1.4.2 \\
+9A-15 & Coexistencia & Regresiones de la Etapa 1 al integrar la Etapa 2 & 0 & Art. 17.2, regla 3 (BA, p. 13) & Regresión de la Etapa 1 & 6.1.2 \\
 \end{tablasimple}
 \fuentesd{Fuente: (Bases Técnicas Transversales, sección 20.1 y RT-10.08, pp. 22, 34--35); (Subdocumento 4, sección 4.1); (Formulario T-13, sección 3); (Formulario T-14, cuentas 1 y 3).}
 
@@ -72,10 +72,10 @@ La usabilidad combina accesibilidad y resultados medidos por perfil en los dispo
 
 \begin{tablasimple}{>{\hsize=0.514\hsize\linewidth=\hsize}Y >{\hsize=0.88\hsize\linewidth=\hsize}Y >{\hsize=2.319\hsize\linewidth=\hsize}Y >{\hsize=1.136\hsize\linewidth=\hsize}Y >{\hsize=0.514\hsize\linewidth=\hsize}Y >{\hsize=1.123\hsize\linewidth=\hsize}Y >{\hsize=0.514\hsize\linewidth=\hsize}Y}
   {\cab{ID} & \cab{Subcaracterística} & \cab{Métrica} & \cab{Umbral} & \cab{Origen} & \cab{Verificación} & \cab{Paquete}}
-9A-16 & Accesibilidad & Incumplimientos de WCAG 2.2 A y AA & 0, con informe de conformidad & RT-13.01; Art. 4.3 (BA, pp. 5--6; BTT, p. 26) & axe-core y revisión manual & 3.8.2; 3.9.2 \\
-9A-17 & Operabilidad & Condiciones de terreno superadas: guantes a \ensuremath{-}22 °C, lluvia, sobre 34 °C, sol directo, una mano & 5 de 5 & Caso, RT-13.08 & Prueba de las cinco condiciones físicas, separada de 9A-25; regresión del alcance cambiado E2 & 3.8.3; 3.9.1; 3.9.2 \\
-9A-18 & Eficiencia de uso y aprendizaje & Tiempo, pasos, tasa de error y tiempo de aprendizaje por perfil & Preparador ≤ 1 s, 3 pasos, error ≤ 5 \%, aprendizaje ≤ 2 h; recepción ≤ 2 s, 3 pasos, ≤ 5 \%, ≤ 2 h; preventista ≤ 1,5 s, 3 pasos, ≤ 5 \%, ≤ 4 h; conductor ≤ 2 s, 3 o 4 pasos, ≤ 5 \%, ≤ 30 min & RT-13.04; SD3, Tabla 3.A.4a (BTT, p. 26) & Pruebas moderadas por perfil & 2.6.3; 3.8.2 \\
-9A-19 & Adaptabilidad de la interfaz & Funciones completas en escritorio, tableta y teléfono & 100 \% de las vistas de portales y consolas & RT-13.02 (BTT, p. 26) & Regresión visual con Playwright & 3.8.1; 3.9.1 \\
+9A-16 & Accesibilidad & Incumplimientos de WCAG 2.2 A y AA & 0, con informe de conformidad & RT-13.01; Art. 4.3 (BA, pp. 5--6; BTT, p. 26) & axe-core y revisión manual & 6.2.1; 6.2.3 \\
+9A-17 & Operabilidad & Condiciones de terreno superadas: guantes a \ensuremath{-}22 °C, lluvia, sobre 34 °C, sol directo, una mano & 5 de 5 & Caso, RT-13.08 & Prueba de las cinco condiciones físicas, separada de 9A-25; regresión del alcance cambiado E2 & 6.2.2; 6.1.2; 6.2.3 \\
+9A-18 & Eficiencia de uso y aprendizaje & Tiempo, pasos, tasa de error y tiempo de aprendizaje por perfil & Preparador ≤ 1 s, 3 pasos, error ≤ 5 \%, aprendizaje ≤ 2 h; recepción ≤ 2 s, 3 pasos, ≤ 5 \%, ≤ 2 h; preventista ≤ 1,5 s, 3 pasos, ≤ 5 \%, ≤ 4 h; conductor ≤ 2 s, 3 o 4 pasos, ≤ 5 \%, ≤ 30 min & RT-13.04; SD3, Tabla 3.A.4a (BTT, p. 26) & Pruebas moderadas por perfil & 2.6.3; 6.2.1 \\
+9A-19 & Adaptabilidad de la interfaz & Funciones completas en escritorio, tableta y teléfono & 100 \% de las vistas de portales y consolas & RT-13.02 (BTT, p. 26) & Regresión visual con Playwright & 6.1.1; 6.1.2 \\
 \end{tablasimple}
 \fuentesd{Fuente: (Bases Administrativas, art. 4.3, pp. 5--6); (Bases Técnicas Transversales, RT-13.01 a RT-13.04, p. 26); (Bases Técnicas del caso, cap. 15, RT-13.08, p. 27); (Subdocumento 3, Tabla 3.A.4a); (Formulario T-13, secciones 6 y 7.3); (Formulario T-14, cuentas 2 y 3).}
 
@@ -86,12 +86,12 @@ La fiabilidad se verifica mediante disponibilidad, recuperación e inyección de
 
 \begin{tablasimple}{>{\hsize=0.498\hsize\linewidth=\hsize}Y >{\hsize=0.706\hsize\linewidth=\hsize}Y >{\hsize=1.942\hsize\linewidth=\hsize}Y >{\hsize=1.304\hsize\linewidth=\hsize}Y >{\hsize=0.651\hsize\linewidth=\hsize}Y >{\hsize=1.192\hsize\linewidth=\hsize}Y >{\hsize=0.707\hsize\linewidth=\hsize}Y}
   {\cab{ID} & \cab{Subcaracterística} & \cab{Métrica} & \cab{Umbral} & \cab{Origen} & \cab{Verificación} & \cab{Paquete}}
-9A-20 & Disponibilidad & Disponibilidad mensual por nivel de servicio y de la infraestructura & Crítico ≥ 99,9 \%; alto ≥ 99,5 \%; medio ≥ 99,0 \%; bajo ≥ 98,0 \%; infraestructura (energía, climatización, red, cómputo, base de datos y portal) ≥ 99,95 \% & Art. 78.2; BTT 7.2; SD4, sección 4.2.4.3 (BA, p. 40; BTT, pp. 17--18) & Observabilidad en marcha blanca y Operación & 4.2.1; 4.3.1; Operación \\
-9A-21 & Disponibilidad & Indisponibilidad entre 05:30 y 07:00, lunes a sábado & 0 minutos & Caso, RT-10.05 & Indicador diario de la marcha blanca & 4.2.1; 4.3.1 \\
-9A-22 & Tolerancia a fallos & Escenarios de inyección superados sin intervención & 8 de 8 (T-13, sección 7.2) & RT-10.07; SD4, Anexo 4-V (BTT, p. 22) & AWS FIS, sitio emulado y gateways de frío & 3.8.4; 3.9.3; 8.2.2 \\
-9A-23 & Recuperabilidad & RTO y RPO en conmutación real & RTO ≤ 4 h; RPO ≤ 15 min & RT-07.04; RT-07.07 (BTT, p. 17) & Conmutación regional y recuperación del WMS de Talca en la nube (AL-DR-01) & 3.8.5; 3.9.4; 8.1.3 \\
-9A-24 & Recuperabilidad & Restauraciones mensuales exitosas, con tiempo medido & 100 \% & RT-07.12 (BTT, p. 18) & Restauración de muestra & 4.2.1; 4.2.2; 4.3.1; 8.1.6 \\
-9A-25 & Operación desconectada & Registros perdidos o duplicados tras 14 h sin señal y 24 h sin enlace & 0; sincronización ≤ 10 min (dispositivo) y ≤ 2 h (centro de distribución) & Caso, RT-03.10 y RT-03.13 & Perfil operacional y resiliencia; regresión del alcance cambiado E2 & 3.8.3; 3.8.4; 3.9.1; 3.9.2 \\
+9A-20 & Disponibilidad & Disponibilidad mensual por nivel de servicio y de la infraestructura & Crítico ≥ 99,9 \%; alto ≥ 99,5 \%; medio ≥ 99,0 \%; bajo ≥ 98,0 \%; infraestructura (energía, climatización, red, cómputo, base de datos y portal) ≥ 99,95 \% & Art. 78.2; BTT 7.2; SD4, sección 4.2.4.3 (BA, p. 40; BTT, pp. 17--18) & Observabilidad en marcha blanca y Operación & 9.2.1; 9.2.2; Operación \\
+9A-21 & Disponibilidad & Indisponibilidad entre 05:30 y 07:00, lunes a sábado & 0 minutos & Caso, RT-10.05 & Indicador diario de la marcha blanca & 9.2.1; 9.2.2 \\
+9A-22 & Tolerancia a fallos & Escenarios de inyección superados sin intervención & 8 de 8 (T-13, sección 7.2) & RT-10.07; SD4, Anexo 4-V (BTT, p. 22) & AWS FIS, sitio emulado y gateways de frío & 6.3.1; 6.3.2; 10.2.2 \\
+9A-23 & Recuperabilidad & RTO y RPO en conmutación real & RTO ≤ 4 h; RPO ≤ 15 min & RT-07.04; RT-07.07 (BTT, p. 17) & Conmutación regional y recuperación del WMS de Talca en la nube (AL-DR-01) & 6.4.1; 6.4.2; 10.1.3 \\
+9A-24 & Recuperabilidad & Restauraciones mensuales exitosas, con tiempo medido & 100 \% & RT-07.12 (BTT, p. 18) & Restauración de muestra & 9.2.1; 9.3.1; 9.2.2; 10.1.5 \\
+9A-25 & Operación desconectada & Registros perdidos o duplicados tras 14 h sin señal y 24 h sin enlace & 0; sincronización ≤ 10 min (dispositivo) y ≤ 2 h (centro de distribución) & Caso, RT-03.10 y RT-03.13 & Perfil operacional y resiliencia; regresión del alcance cambiado E2 & 6.2.2; 6.3.1; 6.1.2; 6.2.3 \\
 \end{tablasimple}
 \fuentesd{Fuente: (Bases Administrativas, art. 78.2, p. 40); (Bases Técnicas Transversales, sección 7.2, RT-07.07 y RT-10.07, pp. 17--18, 22); (Bases Técnicas del caso, cap. 15, RT-10.05, p. 27); (Formulario T-13, secciones 7.2 y 9); (Formulario T-14, cuentas 3 y 8).}
 
@@ -102,10 +102,10 @@ La seguridad se evalúa por hallazgos abiertos y por la aplicación efectiva de 
 
 \begin{tablasimple}{>{\hsize=0.546\hsize\linewidth=\hsize}Y >{\hsize=0.637\hsize\linewidth=\hsize}Y >{\hsize=2.047\hsize\linewidth=\hsize}Y >{\hsize=0.77\hsize\linewidth=\hsize}Y >{\hsize=0.959\hsize\linewidth=\hsize}Y >{\hsize=1.462\hsize\linewidth=\hsize}Y >{\hsize=0.579\hsize\linewidth=\hsize}Y}
   {\cab{ID} & \cab{Subcaracterística} & \cab{Métrica} & \cab{Umbral} & \cab{Origen} & \cab{Verificación} & \cab{Paquete}}
-9A-26 & Resistencia & Hallazgos críticos o altos abiertos (SAST, SCA, DAST, imágenes, intrusión) & 0 & RT-04.05; RT-11.20 (BTT, pp. 10, 24) & Cadena de integración; tercero independiente & 1.5.2; 3.8.6; 3.9.5; 8.2.2 \\
-9A-27 & Resistencia & Plazo de corrección de hallazgos & Crítico 7 días corridos; alto 15; medio 30 & BA, Art. 21.1; SD4, sección 4.2.4.1.4 (BA, p. 15) & Registro de vulnerabilidades & 8.2.2 \\
+9A-26 & Resistencia & Hallazgos críticos o altos abiertos (SAST, SCA, DAST, imágenes, intrusión) & 0 & RT-04.05; RT-11.20 (BTT, pp. 10, 24) & Cadena de integración; tercero independiente & 1.4.2; 6.5.1; 6.5.2; 10.2.2 \\
+9A-27 & Resistencia & Plazo de corrección de hallazgos & Crítico 7 días corridos; alto 15; medio 30 & BA, Art. 21.1; SD4, sección 4.2.4.1.4 (BA, p. 15) & Registro de vulnerabilidades & 10.2.2 \\
 9A-28 & Confidencialidad & Datos productivos sin anonimizar fuera de Producción & 0; 0 hallazgos de Amazon Macie & Ley N.º 21.719; Caso, RT-11.10 & Verificación previa a la liberación de cada juego & Todas las campañas \\
-9A-29 & Confidencialidad & Secretos en código, imágenes o configuración & 0 & RT-04.09 (BTT, p. 11) & Escaneo de secretos & 1.5.2 \\
+9A-29 & Confidencialidad & Secretos en código, imágenes o configuración & 0 & RT-04.09 (BTT, p. 11) & Escaneo de secretos & 1.4.2 \\
 \end{tablasimple}
 \fuentesd{Fuente: (Bases Técnicas Transversales, RT-04.05 y RT-11.20, pp. 10, 24); (Bases Técnicas del caso, cap. 15, pp. 26--27); (SD4, sección 4.2.4.1; Anexo 4-R); (Formulario T-13, secciones 3 y 6); (Formulario T-14, cuentas 1 y 3).}
 
@@ -116,12 +116,12 @@ La mantenibilidad se controla antes de fusionar código. Cada métrica debe prod
 
 \begin{tablasimple}{>{\hsize=0.694\hsize\linewidth=\hsize}Y >{\hsize=0.822\hsize\linewidth=\hsize}Y >{\hsize=1.76\hsize\linewidth=\hsize}Y >{\hsize=0.694\hsize\linewidth=\hsize}Y >{\hsize=1.187\hsize\linewidth=\hsize}Y >{\hsize=1.147\hsize\linewidth=\hsize}Y >{\hsize=0.696\hsize\linewidth=\hsize}Y}
   {\cab{ID} & \cab{Subcaracterística} & \cab{Métrica} & \cab{Umbral} & \cab{Origen} & \cab{Verificación} & \cab{Paquete}}
-9A-30 & Testeabilidad & Cobertura de la lógica de negocio & ≥ 70 \% & Art. 24; RT-04.11 (BA, p. 17; BTT, p. 11) & PHPUnit con PCOV; Kover; Jest & 1.5.2 \\
-9A-31 & Testeabilidad & Cobertura unitaria global y de líneas modificadas, medidas por separado & ≥ 80 \% en cada denominador & Política de LafroX (SD1, 1.3.1); T-10, DevSecOps & PHPUnit con PCOV; Kover; Jest, con dos informes separados & 1.5.2 \\
-9A-32 & Analizabilidad & Complejidad ciclomática por método & ≤ 10 & McCabe (1976) & PHPMD; detekt; ESLint & 1.5.2 \\
-9A-33 & Modularidad & Dependencias prohibidas entre módulos; acoplamiento eferente por clase & 0; ≤ 20 clases & Art. 19 (acoplamiento débil); regla de LafroX (BA, p. 14) & deptrac; PhpMetrics; detekt; ESLint & 1.5.2 \\
-9A-34 & Modificabilidad & Duplicación de código & ≤ 3 \% de las líneas & SD4, sección 4.2.4.1 & PHPCPD; jscpd & 1.5.2 \\
-9A-35 & Modificabilidad & Deuda técnica clasificada como bloqueante & 0 & Art. 24; Formulario T-10 (BA, p. 17) & PhpMetrics y registro de deuda & 1.5.2; 8.2.4 \\
+9A-30 & Testeabilidad & Cobertura de la lógica de negocio & ≥ 70 \% & Art. 24; RT-04.11 (BA, p. 17; BTT, p. 11) & PHPUnit con PCOV; Kover; Jest & 1.4.2 \\
+9A-31 & Testeabilidad & Cobertura unitaria global y de líneas modificadas, medidas por separado & ≥ 80 \% en cada denominador & Política de LafroX (SD1, 1.3.1); T-10, DevSecOps & PHPUnit con PCOV; Kover; Jest, con dos informes separados & 1.4.2 \\
+9A-32 & Analizabilidad & Complejidad ciclomática por método & ≤ 10 & McCabe (1976) & PHPMD; detekt; ESLint & 1.4.2 \\
+9A-33 & Modularidad & Dependencias prohibidas entre módulos; acoplamiento eferente por clase & 0; ≤ 20 clases & Art. 19 (acoplamiento débil); regla de LafroX (BA, p. 14) & deptrac; PhpMetrics; detekt; ESLint & 1.4.2 \\
+9A-34 & Modificabilidad & Duplicación de código & ≤ 3 \% de las líneas & SD4, sección 4.2.4.1 & PHPCPD; jscpd & 1.4.2 \\
+9A-35 & Modificabilidad & Deuda técnica clasificada como bloqueante & 0 & Art. 24; Formulario T-10 (BA, p. 17) & PhpMetrics y registro de deuda & 1.4.2; 10.2.4 \\
 \end{tablasimple}
 \fuentesd{Fuente: (Bases Administrativas, arts. 19 y 24, pp. 14, 17); (Bases Técnicas Transversales, RT-04.11, p. 11); (Subdocumento 1, sección 1.3.1); (Formulario T-10, apartado DevSecOps); McCabe (1976, sección III); (Formulario T-14, cuentas 1 y 8).}
 
@@ -132,9 +132,9 @@ La portabilidad se comprueba promoviendo el mismo artefacto y reconstruyendo el 
 
 \begin{tablasimple}{>{\hsize=0.598\hsize\linewidth=\hsize}Y >{\hsize=0.723\hsize\linewidth=\hsize}Y >{\hsize=1.891\hsize\linewidth=\hsize}Y >{\hsize=0.783\hsize\linewidth=\hsize}Y >{\hsize=0.598\hsize\linewidth=\hsize}Y >{\hsize=1.81\hsize\linewidth=\hsize}Y >{\hsize=0.597\hsize\linewidth=\hsize}Y}
   {\cab{ID} & \cab{Subcaracterística} & \cab{Métrica} & \cab{Umbral} & \cab{Origen} & \cab{Verificación} & \cab{Paquete}}
-9A-36 & Instalabilidad & Despliegues que promueven el mismo artefacto sin recompilar & 100 \% & RT-04.08 (BTT, p. 11) & Digest de la imagen en cada ambiente & 3.8.8; 3.9.7 \\
+9A-36 & Instalabilidad & Despliegues que promueven el mismo artefacto sin recompilar & 100 \% & RT-04.08 (BTT, p. 11) & Digest de la imagen en cada ambiente & 6.6.1; 6.6.2 \\
 9A-37 & Adaptabilidad & Ambientes reconstruibles desde código & 5 de 5 & BTT 4.1 (BTT, p. 10) & Inventario y código de los cinco ambientes; reconstrucción aislada de cada configuración con datos sintéticos y evidencia de equivalencia. Producción/Recuperación se validan sin destruir instancias activas & 3.1 \\
-9A-38 & Reemplazabilidad & Despliegue y reversión sin interrupción & 0 interrupciones; 0 intervenciones manuales & RT-04.06; RT-04.07 (BTT, p. 11) & Demostración en Preproducción & 3.8.8; 3.9.7 \\
+9A-38 & Reemplazabilidad & Despliegue y reversión sin interrupción & 0 interrupciones; 0 intervenciones manuales & RT-04.06; RT-04.07 (BTT, p. 11) & Demostración en Preproducción & 6.6.1; 6.6.2 \\
 \end{tablasimple}
 \fuentesd{Fuente: (Bases Técnicas Transversales, RT-04.06 a RT-04.08 y sección 4.1, pp. 10--11); (Subdocumento 4, sección 4.2.4.1); (Formulario T-13, secciones 4 y 6); (Formulario T-14, cuentas 3 y 4).}
 
@@ -145,10 +145,10 @@ La calidad de datos se mide sobre registros del negocio. Se distinguen completit
 
 \begin{tablasimple}{>{\hsize=0.588\hsize\linewidth=\hsize}Y >{\hsize=0.588\hsize\linewidth=\hsize}Y >{\hsize=2.524\hsize\linewidth=\hsize}Y >{\hsize=0.588\hsize\linewidth=\hsize}Y >{\hsize=0.958\hsize\linewidth=\hsize}Y >{\hsize=1.167\hsize\linewidth=\hsize}Y >{\hsize=0.587\hsize\linewidth=\hsize}Y}
   {\cab{ID} & \cab{Dimensión} & \cab{Métrica} & \cab{Umbral} & \cab{Origen} & \cab{Verificación} & \cab{Paquete}}
-9A-39 & Completitud & Recepciones con lote registrado, en productos que lo requieren & 100 \% & Caso, cap. 18, resultado 2 & Indicador de la marcha blanca & 4.2.1 \\
-9A-40 & Exactitud & Diferencias no explicadas en la conciliación de la migración & 0 & BTT 20.1; SD5, 5.3.5 (BTT, pp. 34--35) & Dos ensayos y corte & 3.7.2 a 3.7.5 \\
-9A-41 & Consistencia & Definiciones del indicador de entregas completas y a tiempo & 1 sola & Caso, cap. 18, resultado 4 & Revisión del modelo analítico & 4.2.1 \\
-9A-42 & Actualidad & Latencia de los indicadores de la operación del día & ≤ 5 min & Caso, RT-05.29 & Medición en marcha blanca & 4.2.1 \\
+9A-39 & Completitud & Recepciones con lote registrado, en productos que lo requieren & 100 \% & Caso, cap. 18, resultado 2 & Indicador de la marcha blanca & 9.2.1 \\
+9A-40 & Exactitud & Diferencias no explicadas en la conciliación de la migración & 0 & BTT 20.1; SD5, 5.3.5 (BTT, pp. 34--35) & Dos ensayos y corte & 5.4.2 a 5.4.5 \\
+9A-41 & Consistencia & Definiciones del indicador de entregas completas y a tiempo & 1 sola & Caso, cap. 18, resultado 4 & Revisión del modelo analítico & 9.2.1 \\
+9A-42 & Actualidad & Latencia de los indicadores de la operación del día & ≤ 5 min & Caso, RT-05.29 & Medición en marcha blanca & 9.2.1 \\
 \end{tablasimple}
 \fuentesd{Fuente: (Bases Técnicas del caso, cap. 18, pp. 34--35); (Bases Técnicas Transversales, RT-04.04 y sección 20.1, pp. 10, 34--35); (Subdocumento 5, sección 5.3.5); (Formulario T-13, secciones 4 y 7.4); (Formulario T-14, cuentas 3 y 4).}
 
@@ -181,26 +181,26 @@ El costo de la calidad se expresa en horas-hombre y no en dinero, porque la Ofer
 \subsection*{9.C.1 Costos de conformidad (programados en la línea base)}
 \addcontentsline{toc}{subsection}{9.C.1 Costos de conformidad (programados en la línea base)}
 
-El subtotal reúne los paquetes de prevención y evaluación identificables en la línea base. Cada paquete se cuenta una sola vez. Banco 2.4.3, mapeo 2.4.4 y piloto 4.1.4 se clasifican como evaluación porque producen evidencia de conformidad física y aceptación de la cadena de frío: 341,33 + 240 + 341,33 = 922,66 HH. La clase de estimación E del mapeo no determina su categoría de costo de calidad. Estas horas ya pertenecen a las 202.108,62 HH del T-15; no son un incremento de esa línea base ni se vuelven a contar en las pruebas de integración.
+El subtotal reúne los paquetes de prevención y evaluación identificables en la línea base. Cada paquete se cuenta una sola vez. Banco 2.7.1, mapeo 2.7.2 y piloto 2.7.3 se clasifican como evaluación porque producen evidencia de conformidad física y aceptación de la cadena de frío: 341,33 + 240 + 341,33 = 922,66 HH. La clase de estimación E del mapeo no determina su categoría de costo de calidad. Estas horas ya pertenecen a las 202.108,62 HH del T-15; no son un incremento de esa línea base ni se vuelven a contar en las pruebas de integración.
 
 \begin{tablasimple}{>{\hsize=0.729\hsize\linewidth=\hsize}Y >{\hsize=0.664\hsize\linewidth=\hsize}Y >{\hsize=1.943\hsize\linewidth=\hsize}Y >{\hsize=0.664\hsize\linewidth=\hsize}Y}
   {\cab{Categoría} & \cab{Paquete T-14} & \cab{Contenido} & \cab{HH (T-15)}}
-Prevención & 1.2.4 & Matriz de trazabilidad & 80 \\
-Prevención & 1.5.1 & Plan de calidad y de pruebas & 80 \\
-Prevención & 1.5.2 & Puertas de calidad automáticas & 80 \\
+Prevención & 2.1.3 & Matriz de trazabilidad & 80 \\
+Prevención & 1.4.1 & Plan de calidad y de pruebas & 80 \\
+Prevención & 1.4.2 & Puertas de calidad automáticas & 80 \\
 Prevención & 2.6.1 a 2.6.3 & Investigación con usuarios, prototipos e indicadores de usabilidad & 720 \\
-Prevención & 3.10.2.1 a 3.10.2.4 & INN-02: reproducción de incidentes de terreno & 960 \\
-Prevención & 8.2.4 & Registro y reducción de la deuda técnica en la Operación & 2.304 \\
+Prevención & 7.2.1 a 7.2.4 & INN-02: reproducción de incidentes de terreno & 960 \\
+Prevención & 10.2.4 & Registro y reducción de la deuda técnica en la Operación & 2.304 \\
 \textbf{Subtotal prevención} &  &  & \textbf{4.224} \\
-Evaluación & 2.4.3; 2.4.4; 4.1.4 & Banco (341,33), mapeo validado por Calidad (240) y piloto de frío (341,33) & 922,66 \\
-Evaluación & 3.8.1 a 3.8.8 & Pruebas y certificación de la Etapa 1 & 2.240 \\
-Evaluación & 3.9.1 a 3.9.7 & Pruebas y certificación de la Etapa 2 & 1.600 \\
-Evaluación & 4.1.2 & Ensayo del procedimiento de reversión & 80 \\
-Evaluación & 8.1.3 & Pruebas de recuperación ante desastres en la Operación & 560 \\
-Evaluación & 8.1.6 & Restauraciones mensuales en la Operación & 576 \\
-Evaluación & 8.2.2 & Vulnerabilidades, intrusión anual e inyección de fallas & 1.152 \\
-Evaluación & 8.3.1 & Regresión de INN-02 en la Operación & 576 \\
-Evaluación & 4.2.1; 4.2.2; 4.3.1 & Ocho restauraciones previas a Operación, componentes SRE adicionales & 128 \\
+Evaluación & 2.7.1; 2.7.2; 2.7.3 & Banco (341,33), mapeo validado por Calidad (240) y piloto de frío (341,33) & 922,66 \\
+Evaluación & cuentas 6.1 a 6.6 (E1) & Pruebas y certificación de la Etapa 1 & 2.240 \\
+Evaluación & cuentas 6.1 a 6.6 (E2) & Pruebas y certificación de la Etapa 2 & 1.600 \\
+Evaluación & 9.1.2 & Ensayo del procedimiento de reversión & 80 \\
+Evaluación & 10.1.3 & Pruebas de recuperación ante desastres en la Operación & 560 \\
+Evaluación & 10.1.5 & Restauraciones mensuales en la Operación & 576 \\
+Evaluación & 10.2.2 & Vulnerabilidades, intrusión anual e inyección de fallas & 1.152 \\
+Evaluación & 7.2.5 & Regresión de INN-02 en la Operación & 576 \\
+Evaluación & 9.2.1; 9.3.1; 9.2.2 & Ocho restauraciones previas a Operación, componentes SRE adicionales & 128 \\
 \textbf{Subtotal evaluación} &  &  & \textbf{7.834,66} \\
 \textbf{Total de conformidad} &  &  & \textbf{12.058,66} \\
 \end{tablasimple}
@@ -208,7 +208,7 @@ Evaluación & 4.2.1; 4.2.2; 4.3.1 & Ocho restauraciones previas a Operación, co
 
 Las 12.058,66 HH equivalen al 6,0 \% de las 202.108,62 HH de la línea base (12.058,66 / 202.108,62 = 0,0597).
 
-\textbf{Partidas excluidas.} No se cuentan la migración de datos (cuenta 3.7), cuyos ensayos forman parte del trabajo de migración y no se pueden separar de él, ni la certificación de los usuarios del CLIENTE (7.3.1 y 7.3.2), que verifica personas y no el producto.
+\textbf{Partidas excluidas.} No se cuentan la migración de datos (cuenta 5.4), cuyos ensayos forman parte del trabajo de migración y no se pueden separar de él, ni la certificación de los usuarios del CLIENTE (9.5.7 y 9.5.8), que verifica personas y no el producto.
 
 \subsection*{9.C.2 Fallas y autorización de recursos}
 \addcontentsline{toc}{subsection}{9.C.2 Fallas y autorización de recursos}
@@ -229,7 +229,7 @@ Implantación y coordinación (IMP) & 0 & 4 & Comunicación y coordinación con 
 
 Para nI fallas internas y nE externas de este alcance, el esfuerzo de referencia es 94,5 × nI + 110,5 × nE. Un evento de cada tipo representa 205 HH. El costo de calidad del escenario sería 12.058,66 + 205 = 12.263,66 HH únicamente si esas horas fueran adicionales y no estuvieran ya incluidas en los paquetes de la línea base. No se adopta ese escenario como pronóstico del contrato: las cantidades nI y nE se revisan con los defectos observados desde las primeras campañas.
 
-Cada evento registra su requisito, severidad, etapa, causa, versión, HH previstas y reales por rol, pruebas repetidas y paquete de imputación. Se diferencia la repetición causada por el defecto de las pruebas planificadas que ya pertenecen a evaluación. Antes de agregar esfuerzo a la línea base se descuentan las HH ya incluidas y asignadas al mismo trabajo; no se vuelve a sumar la capacidad protegida del T-15 ni la atención correctiva incluida en 8.2.1. El Líder de Calidad informa mensualmente costos internos y externos consumidos y el Jefe de Proyecto autoriza los recursos por control de cambios tras verificar capacidad, sin consumir cobertura de servicio ni reservas protegidas de otro frente.
+Cada evento registra su requisito, severidad, etapa, causa, versión, HH previstas y reales por rol, pruebas repetidas y paquete de imputación. Se diferencia la repetición causada por el defecto de las pruebas planificadas que ya pertenecen a evaluación. Antes de agregar esfuerzo a la línea base se descuentan las HH ya incluidas y asignadas al mismo trabajo; no se vuelve a sumar la capacidad protegida del T-15 ni la atención correctiva incluida en 10.2.1. El Líder de Calidad informa mensualmente costos internos y externos consumidos y el Jefe de Proyecto autoriza los recursos por control de cambios tras verificar capacidad, sin consumir cobertura de servicio ni reservas protegidas de otro frente.
 
 \subsection*{9.C.3 Distribución del esfuerzo programado}
 \addcontentsline{toc}{subsection}{9.C.3 Distribución del esfuerzo programado}
@@ -249,82 +249,50 @@ Proporciones: 4.224 / 12.058,66 = 0,3503; 7.834,66 / 12.058,66 = 0,6497. El T-15
 \section*{Anexo 9.D — Trazabilidad de los resultados del caso}
 \addcontentsline{toc}{section}{Anexo 9.D — Trazabilidad de los resultados del caso}
 
-La matriz prevista individual está publicada en T-13, sección 8.2, y se indexa en SD9, sección 9.2.5. El entregable 1.2.4 (H1) la completa con las fichas ejecutables y con el registro de evidencias al ejecutar; no parte de un conteo agregado sin identificadores. Su actualización se genera desde el repositorio: cada caso de prueba lleva el identificador de su requisito, cada solicitud de fusión cita el requisito o la incidencia que atiende y cada despliegue registra el digest de su imagen (RT-04.04). En la oferta, la correspondencia entre requisito, componente y sección está en el Formulario T-12.
+La matriz prevista individual está publicada en T-13, sección 8.2, y se indexa en SD9, sección 9.2.5. El entregable 2.1.3 (H1) la completa con las fichas ejecutables y con el registro de evidencias al ejecutar; no parte de un conteo agregado sin identificadores. Su actualización se genera desde el repositorio: cada caso de prueba lleva el identificador de su requisito, cada solicitud de fusión cita el requisito o la incidencia que atiende y cada despliegue registra el digest de su imagen (RT-04.04). En la oferta, la correspondencia entre requisito, componente y sección está en el Formulario T-12.
 
 Este anexo muestra el tramo final de la cadena del Caso, 17.1, para los dieciséis resultados de aceptación: de cada resultado a la prueba que lo ensaya antes de la marcha blanca, al paquete donde se mide y al hito que lo acepta.
 
 \begin{tablasimple}{>{\hsize=1.461\hsize\linewidth=\hsize}Y >{\hsize=1.55\hsize\linewidth=\hsize}Y >{\hsize=0.495\hsize\linewidth=\hsize}Y >{\hsize=0.494\hsize\linewidth=\hsize}Y}
   {\cab{Resultado} & \cab{Prueba previa (T-13)} & \cab{Paquete de medición} & \cab{Hito de aceptación}}
-R18-01 Retiro sanitario en < 2 h & Simulacro sobre datos sintéticos (sección 7.4) & 4.2.1 & H7 \\
-R18-02 100 \% de recepciones con lote & Casos de recepción; 9A-39 & 4.2.1 & H7 \\
-R18-03 Registro continuo de temperatura & Banco 2.4.3, mapeo 2.4.4 y piloto 4.1.4; V1–V21 del Anexo 4-W, excursiones y retención por SSCC (T-13, sección 7.4) & 4.2.1 & H7 \\
-R18-04 OTIF medido de una forma & Revisión del modelo analítico; 9A-41 & 4.2.1, 4.3.1 y Operación & Por tramo (meses 15, 19 y 32) \\
-R18-05 Stock y crédito en la preventa & 9A-07 & 4.2.1 & H7 \\
-R18-06 Ningún pedido perdido sin señal & Jornada de 14 h sin señal (sección 7.3); 9A-25 & 4.2.1 & H7 \\
-R18-07 Ruta en < 20 min & Generación con volumen de peak (sección 7.4) & 4.2.1 & H7 \\
-R18-08 Prueba de entrega digital el mismo día & Casos de entrega en aceptación & 4.2.1 & H7 \\
-R18-09 Cero guías extraviadas o ilegibles & Casos de emisión y consulta de guías & 4.2.1 & H7 \\
-R18-10 Rendición cuadrada el mismo día & Casos de cierre por camión & 4.2.1 & H7 \\
-R18-11 Costo de servir por cliente & Casos de la Etapa 2 en aceptación & 4.3.1 & H12 \\
-R18-12 Control de envases & Casos de saldo por cliente y transportista & 4.2.1 y Operación & H7 (provisional); tras 12 meses de operación, mes 32 (final) \\
-R18-13 Pedidos EDI de cadenas & Contratos de integración EDI; 9A-13 & 4.3.1 & H12 \\
-R18-14 Ocupación mínima por camión & Casos de planificación de carga & 4.2.1 & H7 \\
-R18-15 Causa de cada faltante & Casos de faltante sin conexión & 4.2.1 & H7 \\
-R18-16 Operación sin el planificador & Generación automática de rutas (R18-07) & 4.2.1 & H7 \\
+R18-01 Retiro sanitario en < 2 h & Simulacro sobre datos sintéticos (sección 7.4) & 9.2.1 & H7 \\
+R18-02 100 \% de recepciones con lote & Casos de recepción; 9A-39 & 9.2.1 & H7 \\
+R18-03 Registro continuo de temperatura & Banco 2.7.1, mapeo 2.7.2 y piloto 2.7.3; V1–V21 del Anexo 4-W, excursiones y retención por SSCC (T-13, sección 7.4) & 9.2.1 & H7 \\
+R18-04 OTIF medido de una forma & Revisión del modelo analítico; 9A-41 & 9.2.1, 9.2.2 y Operación & Por tramo (meses 15, 19 y 32) \\
+R18-05 Stock y crédito en la preventa & 9A-07 & 9.2.1 & H7 \\
+R18-06 Ningún pedido perdido sin señal & Jornada de 14 h sin señal (sección 7.3); 9A-25 & 9.2.1 & H7 \\
+R18-07 Ruta en < 20 min & Generación con volumen de peak (sección 7.4) & 9.2.1 & H7 \\
+R18-08 Prueba de entrega digital el mismo día & Casos de entrega en aceptación & 9.2.1 & H7 \\
+R18-09 Cero guías extraviadas o ilegibles & Casos de emisión y consulta de guías & 9.2.1 & H7 \\
+R18-10 Rendición cuadrada el mismo día & Casos de cierre por camión & 9.2.1 & H7 \\
+R18-11 Costo de servir por cliente & Casos de la Etapa 2 en aceptación & 9.2.2 & H12 \\
+R18-12 Control de envases & Casos de saldo por cliente y transportista & 9.2.1 y Operación & H7 (provisional); tras 12 meses de operación, mes 32 (final) \\
+R18-13 Pedidos EDI de cadenas & Contratos de integración EDI; 9A-13 & 9.2.2 & H12 \\
+R18-14 Ocupación mínima por camión & Casos de planificación de carga & 9.2.1 & H7 \\
+R18-15 Causa de cada faltante & Casos de faltante sin conexión & 9.2.1 & H7 \\
+R18-16 Operación sin el planificador & Generación automática de rutas (R18-07) & 9.2.1 & H7 \\
 \end{tablasimple}
 \fuentesd{Fuente: (Bases Técnicas del caso, cap. 18, pp. 34--35); (Formulario T-13, sección 7.4); (Formulario T-14, cuentas 3 y 4); (Formulario T-17, secciones 4 y 5).}
 
-\section*{Anexo 9.E — Pruebas por iteración de construcción}
-\addcontentsline{toc}{section}{Anexo 9.E — Pruebas por iteración de construcción}
+\section*{Anexo 9.E — Pruebas de construcción e integración}
+\addcontentsline{toc}{section}{Anexo 9.E — Pruebas de construcción e integración}
 
-La tabla localiza los cierres de QA por paquete y quincena, según el T-15, sección 6.1. La primera iteración revisa el contrato y los criterios; las intermedias documentan la demostración y la regresión aplicable; la última verifica y entrega la versión integrada. Cuando solo hay dos iteraciones, la segunda es la entrega integrada. Calidad registra el paquete, la versión, los casos, los resultados y los defectos; el Líder Funcional valida el incremento. Si falta una dependencia, se registra la prueba con datos controlados sin acreditar una integración real.
+Las pruebas se programan con la actividad que las habilita. Un despliegue a QA obliga a ejecutar las pruebas de integración aplicables; la promoción a Preproducción exige la regresión del sistema. El Líder de Calidad comprueba los resultados antes de la promoción. Las pruebas con simuladores sirven para revisar un contrato, pero no acreditan la integración con la versión real de otro módulo.
 
-\begin{tablasimple}{L{1.35cm} C{1.05cm} Y}
-  {\cab{Paquete} & \cab{Año} & \cab{Ventanas publicadas (día/mes)}}
-3.4.1 & 2027 & 10/06--23/06, 24/06--07/07, 08/07--21/07, 22/07--04/08, 05/08--10/08 \\
-3.4.2 & 2027 & 10/06--23/06, 24/06--07/07, 08/07--21/07, 22/07--04/08, 05/08--11/08 \\
-3.4.3 & 2027 & 14/06--27/06, 28/06--11/07, 12/07--25/07, 26/07--08/08, 09/08--18/08 \\
-3.4.4 & 2027 & 14/06--27/06, 28/06--11/07, 12/07--25/07, 26/07--08/08, 09/08--22/08, 23/08--05/09, 06/09--19/09, 20/09--29/09 \\
-3.4.5 & 2027 & 14/06--27/06, 28/06--11/07, 12/07--25/07, 26/07--08/08, 09/08--22/08, 23/08--30/08 \\
-3.4.6 & 2027 & 16/06--29/06, 30/06--13/07, 14/07--27/07, 28/07--10/08, 11/08--17/08 \\
-3.4.7 & 2027 & 16/06--29/06, 30/06--13/07, 14/07--27/07, 28/07--10/08, 11/08--24/08, 25/08--08/09 \\
-3.4.8 & 2027 & 16/06--29/06, 30/06--13/07, 14/07--27/07, 28/07--10/08, 11/08--24/08, 25/08--09/09 \\
-3.4.9 & 2027 & 18/06--01/07, 02/07--15/07, 16/07--29/07, 30/07--12/08, 13/08--26/08, 27/08--09/09, 10/09--23/09, 24/09--30/09 \\
-3.4.10 & 2027 & 10/06--23/06, 24/06--07/07, 08/07--21/07, 22/07--04/08, 05/08--18/08, 19/08--01/09, 02/09--15/09, 16/09--29/09, 30/09--04/10 \\
-3.4.11 & 2027 & 02/09--15/09, 16/09--27/09 \\
-3.5.1 & 2028 & 15/03--28/03, 29/03--11/04, 12/04--28/04 \\
-3.5.2 & 2028 & 15/03--28/03, 29/03--11/04, 12/04--28/04 \\
-3.5.3 & 2028 & 15/03--28/03, 29/03--11/04, 12/04--28/04 \\
-3.5.4 & 2028 & 15/03--28/03, 29/03--11/04, 12/04--28/04 \\
+\subsection*{9.E.1 Programación y registro de pruebas}
+\addcontentsline{toc}{subsection}{9.E.1 Programación y registro de pruebas}
+
+\begin{tablasimple}{L{3.15cm} Y Y}
+  {\cab{Cuándo} & \cab{Trabajo y alcance} & \cab{Evidencia}}
+  Antes de iniciar la actividad dependiente & Desarrollo y el referente validan reglas, datos y contratos de interfaz. En D-16, Preparación (4.1.3) puede avanzar con datos de prueba una vez conformes los contratos de Recepción (4.1.1) e Inventario (4.1.2). & Contrato, versión y casos aprobados. \\
+  Con cada cambio & El flujo de integración ejecuta pruebas unitarias, de componente y de contrato. Un fallo bloquea la promoción. & Resultado del pipeline, cobertura y defecto vinculado al cambio. \\
+  Tras desplegar en QA & Calidad ejecuta la integración aplicable. La integración real de Preparación espera la entrega en QA de Recepción e Inventario. & Paquete, actividad, versión desplegada, resultados y fecha. \\
+  Antes de promover a Preproducción & Calidad verifica la regresión del sistema y revisa los defectos que bloquean el paso. & Informe de regresión y registro de la promoción. \\
+  Antes de certificar H5 y H10 & Se completan las pruebas de la solución integrada y se adjunta la evidencia de los paquetes de las cuentas 6.1 a 6.6. Las actas corresponden a 6.7.1 y 6.7.2. & Evidencia del T-13 y acta del hito. \\
 \end{tablasimple}
-\fuentesd{Fuente: (Formulario T-15, sección 6.1, calendario de iteraciones de los módulos); (Subdocumento 9, sección 9.3).}
+\fuentesd{Fuente: Bases Técnicas Transversales, numeral 20.1; Formularios T-13, T-14 y T-15; Subdocumento 7, Anexo 7.B.}
 
-Las ventanas de septiembre se usan para pruebas sin intervenir Producción. Las demostraciones en QA no autorizan un despliegue ni reemplazan la certificación integral de 3.8 y 3.9 del T-13.
-
-\subsection*{9.E.1 Cierres de QA en las ventanas extendidas}
-\addcontentsline{toc}{subsection}{9.E.1 Cierres de QA en las ventanas extendidas}
-
-Las seis ventanas de origen superiores a 14 días corridos se dividen en un bloque de demostración y regresión y otro de entrega integrada. La división conserva los extremos publicados y deja 83 ventanas de QA en los 15 paquetes, todas de hasta 14 días corridos. Las ventanas no ordenan trabajar en días no hábiles; la sesión se fija dentro del bloque según calendario y disponibilidad.
-
-\begin{tablasimple}{L{1.65cm} C{1.0cm} Y Y}
-  {\cab{Paquete} & \cab{Año} & \cab{Demostración y regresión} & \cab{Entrega integrada en QA}}
-3.4.7 & 2027 & 25/08--31/08 & 01/09--08/09 \\
-3.4.8 & 2027 & 25/08--01/09 & 02/09--09/09 \\
-3.5.1 a 3.5.4 & 2028 & 12/04--19/04 & 20/04--28/04 \\
-\end{tablasimple}
-\fuentesd{Fuente: subdivisión interna de las ventanas publicadas del T-15, sección 6.1; extremos inclusivos.}
-
-En la vista «Resumen de dependencias» del SD7, los paquetes 3.4.1, 3.4.2, 3.4.3, 3.4.4, 3.4.5 y 3.4.6 corresponden, respectivamente, a los identificadores 59, 60, 63, 64, 65 y 66. Los paquetes 3.4.7, 3.4.8, 3.4.9, 3.4.10 y 3.4.11 corresponden, en el mismo orden, a los identificadores 67, 68, 69, 61 y 83. El identificador 125 agrupa los paquetes 3.5.1 a 3.5.4 en una tarea resumen. Con esos identificadores, cada ventana queda vinculada a su paquete en la carta oficial. La tabla siguiente propone para cada grupo de ventanas el perfil titular, el de relevo, el turno y el ambiente; no acredita una asignación individual.
-
-\begin{tablasimple}{L{2.3cm} L{2.6cm} Y Y}
-  {\cab{Ventanas} & \cab{Titular} & \cab{Relevo} & \cab{Turno y ambiente}}
-3.4.1 a 3.4.11, junio y julio de 2027 & Analista QA Senior & Analista QA Junior & Diurno hábil, 09:00--18:00; QA \\
-3.4.1 a 3.4.11, agosto a octubre de 2027 & Analista QA Senior & Líder de Calidad y Pruebas & Diurno hábil, 09:00--18:00; QA, sin intervenir Producción en septiembre \\
-3.5.1 a 3.5.4, marzo y abril de 2028 & Analista QA Senior & Analista QA Junior & Diurno hábil, 09:00--18:00; QA \\
-\end{tablasimple}
-\fuentesd{Fuente: ventanas del T-15, sección 6.1; propuesta de cobertura funcional de Calidad. El modelo financiero presenta HH por rol y mes, no por sesión.}
-
-Los paquetes 3.4 y 3.5 identifican el trabajo sometido a prueba, no la imputación de las HH de Calidad: el desglose del T-15 no asigna a esos paquetes los perfiles QA Senior, QA Junior ni Líder de Calidad. Antes de confirmar cada sesión, el Líder de Calidad identifica en \texttt{registro\_qa\_9e.csv} del SD7 la fecha, las personas y perfiles titular y de relevo, sus HH, la partida del T-15 que las financia, el ambiente, la versión, los casos, las dependencias y el enlace a la evidencia. Planificación comprueba el saldo de esa partida y la disponibilidad diaria junto con las demás sesiones. En el registro vigente, las 83 ventanas figuran por confirmar, sin sesiones ni titulares consignados. El paquete 1.5.2 cubre puertas automáticas y los grupos 3.8 y 3.9 cubren certificaciones; citar esos códigos no demuestra que financien las sesiones de las iteraciones. Sin partida, saldo y responsables identificados, la cobertura sigue pendiente; este anexo no agrega ni reasigna HH.
+Planificación toma del T-15 las fechas de las actividades de integración y certificación, en lugar de fijar un segundo calendario. El Líder de Calidad registra para cada sesión la actividad y el paquete, el ambiente, la versión, los casos, el resultado, los defectos y el enlace a la evidencia. Las pruebas en QA durante los períodos de congelamiento no autorizan intervenciones en Producción.
 
 \section*{Referencias}
 \addcontentsline{toc}{section}{Referencias}
