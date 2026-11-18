@@ -25,7 +25,7 @@ for viejo, nuevo in MAPA.items():
         CUENTAS.setdefault('.'.join(viejo.split('.')[:3]), set()).add('.'.join(nuevo.split('.')[:2]))
 CUENTA_UNICA = {k: next(iter(v)) for k, v in CUENTAS.items() if len(v) == 1}
 
-GUARDA = re.compile(r'(secci[oó]n(es)?|Secci[oó]n(es)?|[Tt]abla|[Ff]igura|art[s]?\.|[Aa]rt[ií]culo|cap\.|[Cc]ap[ií]tulo|RT-|RF-|RNF-|numeral(es)?|apartado(s)?|Anexo|p\.|pp\.|versi[oó]n|ISO|ISO/IEC|v|PHP|TLS|Android|Kotlin|PostgreSQL|Laravel|CU|INT-|subsecci[oó]n|secs?\.|SD\d+,|Subdocumento\s+\d+,|T-\d+,|BTT,|BA,|Caso,)\s*~?$')
+GUARDA = re.compile(r'(secci[oó]n(es)?|Secci[oó]n(es)?|[Tt]abla|[Ff]igura|art[s]?\.|[Aa]rt[ií]culo|cap\.|[Cc]ap[ií]tulo|RT-|RF-|RNF-|numeral(es)?|apartado(s)?|Anexo|p\.|pp\.|versi[oó]n|ISO|ISO/IEC|v|PHP|TLS|Android|Kotlin|PostgreSQL|Laravel|CU|INT-|subsecci[oó]n|secs?\.|SD\d+,?|Subdocumento\s+\d+,?|Cap[ií]tulo\s+\d+,?|T-\d+,|BTT,|BA,|Caso,)\s*~?$')
 PAQ = re.compile(r'(?<![\d.])(\d{1,2}\.\d{1,2}\.\d{1,2}(?:\.\d{1,2})?)(?![\d]|\.\d)')
 
 def traducir(texto, reporte=None, permitir_cuentas=True):
