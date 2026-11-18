@@ -59,38 +59,20 @@
 
 Este formulario detalla lo que el Subdocumento 7 resume en sus secciones 7.1 y 7.3, conforme al Formulario T-14 de las Bases Administrativas. Contiene la estructura de descomposición del trabajo (EDT) completa; su diccionario, con el entregable, el criterio de aceptación, el responsable y el período de cada paquete; y la carta Gantt de los 56 meses del contrato, con el detalle de las Etapas 1 y 2. El método de estimación y programación, la ruta crítica y los frentes de trabajo se detallan en el Formulario T-15, y la implantación de cada etapa, en el Formulario T-18. La EDT termina en el paquete de trabajo; la descomposición de cada paquete en actividades de 8 a 80 horas hombre que caben en una quincena, con sus fechas, está en el Formulario T-15, sección 6.
 
-En este formulario, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas Transversales y las Bases Técnicas del caso. SD seguido de un número identifica el Subdocumento correspondiente. EDT significa estructura de descomposición del trabajo; PT, paquete de trabajo; HH, horas hombre; y E1/E2, Etapas 1 y 2. En las cartas Gantt, RC identifica los elementos marcados como ruta crítica en la fuente de programación y PT/H identifica los demás paquetes e hitos. H1–H12 son los hitos del Formulario E-25 y F1–F8, los frentes de trabajo. QA designa el ambiente de calidad; SRE, el equipo de operación e ingeniería de fiabilidad; NOC, el centro de operaciones; SOC, el centro de operaciones de seguridad; y DTE, los documentos tributarios electrónicos.
+En este formulario, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas Transversales y las Bases Técnicas del caso. SD seguido de un número identifica el Subdocumento correspondiente. EDT significa estructura de descomposición del trabajo; PT, paquete de trabajo; HH, horas hombre; y E1/E2, Etapas 1 y 2; al inicio de la columna Período indican la etapa que habilita el paquete. En las cartas Gantt, RC identifica los elementos marcados como ruta crítica en la fuente de programación y PT/H identifica los demás paquetes e hitos. H1–H12 son los hitos del Formulario E-25 y F1–F8, los frentes de trabajo. QA designa el ambiente de calidad; SRE, el equipo de operación e ingeniería de fiabilidad; NOC, el centro de operaciones; SOC, el centro de operaciones de seguridad; y DTE, los documentos tributarios electrónicos.
 
 \section{Estructura de descomposición del trabajo}
 
-\paragraph{Estructura de alcance por productos}
-La EDT de alcance se lee por producto verificable. Los códigos de cuenta y paquete se mantienen como identificadores de control para el diccionario, T-12, T-15 y T-18. La etapa es un atributo de habilitación del paquete: el mismo producto reúne sus incrementos de ambas etapas y la etapa no es una rama de esta vista.
-
-\begin{itemize}
-\item Gobierno y diseño aprobados: cuentas 1 y 2.
-\item Plataforma base y servicios comunes: cuentas 3.1 a 3.3.
-\item Software operativo y analítica: cuentas 3.4 y 3.5.
-\item Integraciones y datos migrados: cuentas 3.6 y 3.7.
-\item Evidencia de certificación y documentación técnica: cuentas 3.8, 3.9 y 3.11.
-\item Innovaciones verificadas: cuenta 3.10.
-\item Equipamiento, servicios y sitios habilitados: cuentas 5 y 6.
-\item Implantación y usuarios habilitados: cuentas 4 y 7.
-\item Servicios de operación y entregables de cierre: cuentas 8 y 9.
-\end{itemize}
-Cada cuenta del índice de control pertenece a una sola agrupación; las agrupaciones se definen por el resultado que se acepta y no por el mes en que se ejecuta. El diccionario conserva sus 227 paquetes. Los códigos de control en las láminas permiten localizar sus paquetes en el índice siguiente.
-
-\paragraph{Índice por códigos de control}
-
-La EDT descompone el 100 \% del alcance de la Etapa 1, la Etapa 2 y la Operación (BA, art. 15, p. 11) en nueve fases, 49 cuentas de control y 227 paquetes de trabajo. Las fases 1 a 4 son las del proceso de desarrollo declarado en el Capítulo 6 (Inicio, Elaboración, Construcción y Transición) y se recorren una vez por etapa. Las fases 5 a 9 agrupan el trabajo que no es desarrollo de software. Cada paquete es la hoja de su rama, tiene un único responsable y produce un entregable verificable. En la cuenta 3.10, cada innovación agrupa sus paquetes en un cuarto nivel. La Tabla \ref{tab:T14-1} resume el tamaño de cada fase.
+La EDT descompone el 100 \% del alcance de la Etapa 1, la Etapa 2 y la Operación (BA, art. 15, p. 11) en 10 productos, 60 cuentas de control y 227 paquetes de trabajo. El alcance se agrupa por el producto que la Contraparte recibe y acepta; la etapa que habilita cada paquete es un atributo de este. La regla del 100 \% comprende todo el alcance y cada paquete pertenece a una sola rama, tiene un responsable y produce un entregable verificable. Las fases RUP del Capítulo 6 ordenan la ejecución en el tiempo y se representan en la carta Gantt. La descomposición de los paquetes en actividades de 8 a 80 horas hombre se presenta fuera de la EDT, en el Formulario T-15, sección 6.
 
 \parte{tablas/tab_T14_1}
 
-La construcción concentra 79 de los 227 paquetes, y las fases que no son software (5 a 7) suman 52. Ninguna cuenta de control tiene un solo paquete. La estructura completa es la siguiente, con la raíz «Plataforma logística de Distribuidora Puelche» y sus nueve fases en el primer nivel.
+La Tabla \ref{tab:T14-1} muestra que Infraestructura, equipamiento y servicios habilitados concentra 35 paquetes, y Gestión del proyecto, 32. La estructura tiene como raíz «Plataforma logística de Distribuidora Puelche» y comprende los siguientes diez productos en su primer nivel.
 
 \begin{itemize}
-\item \textbf{1. Inicio}
+\item \textbf{1. Gestión del proyecto}
 
-\item 1.1 Definición inicial del proyecto
+\item 1.1 Constitución y confirmaciones contractuales
 
 \item 1.1.1 Acta de constitución del proyecto, firmada con la Contraparte Técnica
 
@@ -98,125 +80,119 @@ La construcción concentra 79 de los 227 paquetes, y las fases que no son softwa
 
 \item 1.1.3 Acta de confirmación con el CLIENTE de la fecha de inicio, la evidencia para el proveedor de lácteos, las ventanas de paso a producción y el acuse tributario
 
-\item 1.2 Alcance del proyecto
+\item 1.2 Planificación y líneas base
 
-\item 1.2.1 Documento de especificación de requerimientos y línea base de alcance de la Etapa 1 (H1)
+\item 1.2.1 Plan para la dirección del proyecto, con el calendario de congelamientos de septiembre, diciembre y el cierre mensual
 
-\item 1.2.2 Documento de reglas de ruteo capturadas al planificador de rutas
+\item 1.2.2 EDT y diccionario de la EDT (línea base del alcance)
 
-\item 1.2.3 Documento de especificación de las interfaces sin documentación del ERP, del WMS de 2013 y de la telemetría del tercero
+\item 1.2.3 Carta Gantt de 56 meses con los hitos H1 a H12 y la ruta crítica
 
-\item 1.2.4 Matriz de trazabilidad: requerimiento, módulo, paquete y prueba (H1)
+\item 1.2.4 Documento de nivelación de recursos y frentes del solapamiento de los meses 13 a 15 y 19 a 20
 
-\item 1.2.5 Documento de línea base de alcance de la Etapa 2: canal moderno y costo de servir (H8)
+\item 1.2.5 Reunión semanal de seguimiento con su informe semanal
 
-\item 1.3 Planificación del proyecto
+\item 1.3 Interesados y comunicaciones
 
-\item 1.3.1 Plan para la dirección del proyecto, con el calendario de congelamientos de septiembre, diciembre y el cierre mensual
+\item 1.3.1 Registro de interesados con su influencia, interés y estrategia
 
-\item 1.3.2 EDT y diccionario de la EDT (línea base del alcance)
+\item 1.3.2 Plan de comunicaciones con calendario y canales por grupo de interés
 
-\item 1.3.3 Carta Gantt de 56 meses con los hitos H1 a H12 y la ruta crítica
+\item 1.3.3 Registro de solicitudes de cambio con análisis de impacto
 
-\item 1.3.4 Documento de nivelación de recursos y frentes del solapamiento de los meses 13 a 15 y 19 a 20
+\item 1.4 Gestión de la calidad
 
-\item 1.3.5 Reunión semanal de seguimiento con su informe semanal
+\item 1.4.1 Plan de calidad y plan de pruebas
 
-\item 1.4 Gestión de interesados y comunicaciones
+\item 1.4.2 Puertas de calidad automáticas: cobertura de lógica de negocio del 70 \%, global del 80 \% y del código modificado del 80 \%
 
-\item 1.4.1 Registro de interesados con su influencia, interés y estrategia
+\item 1.5 Gestión de riesgos
 
-\item 1.4.2 Plan de comunicaciones con calendario y canales por grupo de interés
+\item 1.5.1 Plan de riesgos y registro inicial de riesgos según ISO 31000
 
-\item 1.4.3 Registro de solicitudes de cambio con análisis de impacto
+\item 1.5.2 Registro de riesgos revisado en cada Comité de Proyecto
 
-\item 1.5 Gestión de calidad
+\item 1.6 Plan de Reversibilidad
 
-\item 1.5.1 Plan de calidad y plan de pruebas
+\item 1.6.1 Plan de Reversibilidad inicial (primeros 90 días)
 
-\item 1.5.2 Puertas de calidad automáticas en la cadena de integración (cobertura mínima del 80 \%)
+\item 1.6.2 Primera actualización anual del Plan de Reversibilidad durante la implementación
 
-\item 1.6 Gestión de riesgos
+\item 1.6.3 Actualizaciones anuales del Plan de Reversibilidad durante los 36 meses de operación
 
-\item 1.6.1 Plan de riesgos y registro inicial de riesgos según ISO 31000
+\item 1.7 Gobierno, control y cierre
 
-\item 1.6.2 Registro de riesgos revisado en cada Comité de Proyecto
+\item 1.7.1 Oficina de gestión del proyecto con metodología basada en el PMBOK
 
-\item 1.7 Plan de Reversibilidad
+\item 1.7.2 Actas del Comité Ejecutivo mensual, con la aprobación de los cambios de alcance
 
-\item 1.7.1 Plan de Reversibilidad inicial (primeros 90 días)
+\item 1.7.3 Actas del Comité de Proyecto quincenal
 
-\item 1.7.2 Primera actualización anual del Plan de Reversibilidad durante la implementación
+\item 1.7.4 Actas del Comité de Arquitectura mensual
 
-\item 1.8 Gobierno y control del proyecto
+\item 1.7.5 Actas del Comité de Operación mensual, desde el mes 13
 
-\item 1.8.1 Oficina de gestión del proyecto con metodología basada en el PMBOK
+\item 1.7.6 Informe mensual de avance con valor ganado
 
-\item 1.8.2 Actas del Comité Ejecutivo mensual, con la aprobación de los cambios de alcance
+\item 1.7.7 Tablero de estado del proyecto disponible para el CLIENTE
 
-\item 1.8.3 Actas del Comité de Proyecto quincenal
+\item 1.7.8 Espacio colaborativo con la documentación, los entregables, las actas, los riesgos y los cambios
 
-\item 1.8.4 Actas del Comité de Arquitectura mensual
+\item 1.7.9 Informe de lecciones aprendidas y archivo de la implementación
 
-\item 1.8.5 Actas del Comité de Operación mensual, desde el mes 13
+\item 1.8 Cumplimiento normativo y contractual
 
-\item 1.8.6 Informe mensual de avance con valor ganado
+\item 1.8.1 Matriz de cumplimiento normativo por obligación legal, con su control y su evidencia
 
-\item 1.8.7 Tablero de estado del proyecto disponible para el CLIENTE
+\item 1.8.2 Acuerdo de tratamiento de datos personales con el CLIENTE
 
-\item 1.8.8 Espacio colaborativo con la documentación, los entregables, las actas, los riesgos y los cambios
+\item 1.8.3 Registro de actividades de tratamiento y evaluación de impacto en protección de datos
 
-\item 1.9 Cumplimiento normativo y contractual
+\item 1.8.4 Certificación ISO/IEC 27001 vigente y entrega anual de los informes de certificación
 
-\item 1.9.1 Matriz de cumplimiento normativo por obligación legal, con su control y su evidencia
+\item 1.8.5 Garantía de fiel cumplimiento, seguros y certificados laborales vigentes durante el contrato
 
-\item 1.9.2 Acuerdo de tratamiento de datos personales con el CLIENTE
+\item \textbf{2. Requisitos y diseño aprobados}
 
-\item 1.9.3 Registro de actividades de tratamiento y evaluación de impacto en protección de datos
+\item 2.1 Requisitos y líneas base de alcance
 
-\item 1.9.4 Certificación ISO/IEC 27001 vigente y entrega anual de los informes de certificación
+\item 2.1.1 Documento de especificación de requerimientos y línea base de alcance de la Etapa 1 (H1)
 
-\item 1.9.5 Garantía de fiel cumplimiento, seguros y certificados laborales vigentes durante el contrato
+\item 2.1.2 Documento de línea base de alcance de la Etapa 2: canal moderno y costo de servir (H8)
 
-\item \textbf{2. Elaboración}
+\item 2.1.3 Matriz de trazabilidad: requerimiento, módulo, paquete y prueba (H1)
 
-\item 2.1 Arquitectura de la solución
+\item 2.1.4 Documento de reglas de ruteo capturadas al planificador de rutas
 
-\item 2.1.1 Documento de arquitectura lógica: capas, módulos M1 a M12 e interfaces
+\item 2.1.5 Documento de especificación de las interfaces sin documentación del ERP, del WMS de 2013 y de la telemetría del tercero, y perfil de intercambio con las cadenas
 
-\item 2.1.2 Documento de arquitectura física híbrida: nube, centros de distribución y plataformas de cross-docking
+\item 2.2 Arquitectura de la solución
 
-\item 2.1.3 Modelo de datos y diccionario de datos, con la trazabilidad por lote
+\item 2.2.1 Documento de arquitectura lógica: capas, módulos M1 a M12 e interfaces
 
-\item 2.1.4 Documento de diseño detallado de M11 y del intercambio con las cadenas
+\item 2.2.2 Documento de arquitectura física híbrida: nube, centros de distribución y plataformas de cross-docking
 
-\item 2.2 Diseño de la seguridad
+\item 2.2.3 Modelo de datos y diccionario de datos, con la trazabilidad por lote
 
-\item 2.2.1 Plan de seguridad de la información
+\item 2.2.4 Documento de diseño detallado de M11 y del intercambio con las cadenas
 
-\item 2.2.2 Modelado de amenazas por componente y por integración externa, actualizado ante cada cambio
+\item 2.3 Diseño de la seguridad
 
-\item 2.2.3 Plan de respuesta a incidentes de seguridad, con aviso al CLIENTE en dos horas
+\item 2.3.1 Plan de seguridad de la información
 
-\item 2.2.4 Matriz de clasificación de la información y matriz de controles
+\item 2.3.2 Modelado de amenazas por componente y por integración externa, actualizado ante cada cambio
 
-\item 2.3 Diseño de la sala técnica y de los racks
+\item 2.3.3 Plan de respuesta a incidentes de seguridad, con aviso al CLIENTE en dos horas
 
-\item 2.3.1 Plano de la sala técnica de Talca, con su cálculo eléctrico y térmico
+\item 2.3.4 Matriz de clasificación de la información y matriz de controles
 
-\item 2.3.2 Plano de distribución de los racks R01 de servidores y R02 de comunicaciones
+\item 2.4 Diseño de la sala técnica y de los sitios
 
-\item 2.3.3 Plano de los gabinetes de borde de Concepción y de las plataformas de cross-docking
+\item 2.4.1 Plano de la sala técnica de Talca, con su cálculo eléctrico y térmico
 
-\item 2.4 Validación de diseños
+\item 2.4.2 Plano de distribución de los racks R01 de servidores y R02 de comunicaciones
 
-\item 2.4.1 Acta de aprobación de la arquitectura, el plan de seguridad y el modelo de datos (H2)
-
-\item 2.4.2 Acta de aprobación del diseño detallado de la Etapa 2 (H8)
-
-\item 2.4.3 Validación del diseño del kit en banco de pruebas
-
-\item 2.4.4 Mapeo térmico por tipo de carrocería
+\item 2.4.3 Plano de los gabinetes de borde de Concepción y de las plataformas de cross-docking
 
 \item 2.5 Continuidad del negocio
 
@@ -232,9 +208,23 @@ La construcción concentra 79 de los 227 paquetes, y las fases que no son softwa
 
 \item 2.6.3 Indicadores de usabilidad comprometidos por transacción crítica
 
-\item \textbf{3. Construcción}
+\item 2.7 Sistema de cadena de frío validado
 
-\item 3.1 Ambientes y cadena de desarrollo
+\item 2.7.1 Validación del diseño del kit en banco de pruebas
+
+\item 2.7.2 Mapeo térmico por tipo de carrocería
+
+\item 2.7.3 Piloto de cadena de frío en cuatro camiones
+
+\item 2.8 Aprobación de los diseños
+
+\item 2.8.1 Acta de aprobación de la arquitectura, el plan de seguridad y el modelo de datos (H2)
+
+\item 2.8.2 Acta de aprobación del diseño detallado de la Etapa 2 (H8)
+
+\item \textbf{3. Plataforma base}
+
+\item 3.1 Ambientes y entrega continua
 
 \item 3.1.1 Ambientes de Desarrollo y QA en la nube (H3)
 
@@ -260,418 +250,424 @@ La construcción concentra 79 de los 227 paquetes, y las fases que no son softwa
 
 \item 3.2.6 Servicio de gestión de dispositivos móviles
 
-\item 3.3 Base compartida
+\item 3.3 Servicios comunes
 
 \item 3.3.1 Identidad y control de acceso, incluidos los conductores externos que rotan sin aviso
 
-\item 3.3.2 Integración con el ERP como único emisor de la guía de despacho (INT-06 e INT-07)
+\item 3.3.2 Registro auditable de stock, lotes y cobros
 
-\item 3.3.3 Convivencia con el WMS de 2013 durante el reemplazo
+\item 3.3.3 Operación sin conexión: 14 horas en terreno y 24 horas en el CD
 
-\item 3.3.4 Integración con la telemetría de los 42 camiones propios (INT-15)
+\item \textbf{4. Software operativo}
 
-\item 3.3.5 Registro auditable de stock, lotes y cobros
+\item 4.1 Bodega: recepción, inventario y preparación
 
-\item 3.3.6 Operación sin conexión: 14 horas en terreno y 24 horas en el CD
+\item 4.1.1 Recepción de mercadería con captura de lote y vencimiento (M1 Recepción)
 
-\item 3.4 Módulos de la Etapa 1
+\item 4.1.2 Inventario por ubicación y lote, con FEFO y conteo cíclico (M2 Inventario)
 
-\item 3.4.1 Recepción de mercadería con captura de lote y vencimiento (M1 Recepción)
+\item 4.1.3 Preparación de pedidos en el turno de noche y en la cámara de congelado (M5 Preparación)
 
-\item 3.4.2 Inventario por ubicación y lote, con FEFO y conteo cíclico (M2 Inventario)
+\item 4.2 Calidad y cadena de frío
 
-\item 3.4.3 Preparación de pedidos en el turno de noche y en la cámara de congelado (M5 Preparación)
+\item 4.2.1 Cadena de frío, retención por SSCC y retiro sanitario (M9 Calidad y trazabilidad)
 
-\item 3.4.4 Cadena de frío, retención por SSCC y retiro sanitario (M9 Calidad y trazabilidad)
+\item 4.2.2 Ingesta de temperatura (M9) y posición de flota (M12)
 
-\item 3.4.5 Ingesta de temperatura (M9) y posición de flota (M12)
+\item 4.3 Venta y reparto
 
-\item 3.4.6 Aplicación móvil de preventa sin conexión, con stock y crédito (M3 Preventa)
+\item 4.3.1 Aplicación móvil de preventa sin conexión, con stock y crédito (M3 Preventa)
 
-\item 3.4.7 Planificación de rutas corregible por el planificador (M4 Rutas)
+\item 4.3.2 Planificación de rutas corregible por el planificador (M4 Rutas)
 
-\item 3.4.8 Aplicación móvil de reparto con prueba de entrega digital (M6 Reparto)
+\item 4.3.3 Aplicación móvil de reparto con prueba de entrega digital (M6 Reparto)
 
-\item 3.4.9 Devoluciones en terreno y control de envases (M8 Devoluciones y envases)
+\item 4.3.4 Devoluciones en terreno y control de envases (M8 Devoluciones y envases)
 
-\item 3.4.10 Cobro en ruta, rendición y conciliación (M7 Cobranza y rendición)
+\item 4.3.5 Cobro en ruta, rendición y conciliación (M7 Cobranza y rendición)
 
-\item 3.4.11 Indicadores operacionales y OTIF diario (M10 Analítica)
+\item 4.4 Canal moderno y portales
 
-\item 3.5 Módulos de la Etapa 2
+\item 4.4.1 Pedido electrónico y aviso de despacho para las cadenas, y portal de proveedores (M11 Canal moderno)
 
-\item 3.5.1 Pedido electrónico y aviso de despacho para las cadenas, y portal de proveedores (M11 Canal moderno)
+\item 4.4.2 Portal web de clientes: cuenta, saldo, entregas y documentos
 
-\item 3.5.2 Portal web de clientes: cuenta, saldo, entregas y documentos
+\item 4.4.3 Portal web de transportistas: rutas asignadas del día siguiente
 
-\item 3.5.3 Portal web de transportistas: rutas asignadas del día siguiente
+\item 4.5 Analítica (M10)
 
-\item 3.5.4 Costo de servir por cliente y por entrega (M10 Analítica)
+\item 4.5.1 Indicadores operacionales y OTIF diario (M10 Analítica)
 
-\item 3.6 Integraciones externas
+\item 4.5.2 Costo de servir por cliente y por entrega (M10 Analítica)
 
-\item 3.6.1 Intercambio de lote y trazabilidad con los proveedores
+\item \textbf{5. Integraciones y datos migrados}
 
-\item 3.6.2 Integración con la pasarela de pago para el cobro con tarjeta (INT-09)
+\item 5.1 Integraciones con el ERP, el WMS y la flota
 
-\item 3.6.3 Integración con el servicio de mapas y geocodificación (INT-10)
+\item 5.1.1 Integración con el ERP como único emisor de la guía de despacho (INT-06 e INT-07)
 
-\item 3.6.4 Integración con el servicio de avisos al cliente (INT-11)
+\item 5.1.2 Convivencia con el WMS de 2013 durante el reemplazo
 
-\item 3.6.5 Intercambio electrónico con la principal cadena, con sus pruebas aprobadas (INT-08)
+\item 5.1.3 Integración con la telemetría de los 42 camiones propios (INT-15)
 
-\item 3.6.6 Incorporación de las demás cadenas al intercambio electrónico (INT-08)
+\item 5.2 Integraciones con servicios externos
 
-\item 3.7 Migración de datos
+\item 5.2.1 Intercambio de lote y trazabilidad con los proveedores
 
-\item 3.7.1 Informe de perfilamiento y datos saneados
+\item 5.2.2 Integración con la pasarela de pago para el cobro con tarjeta (INT-09)
 
-\item 3.7.2 Datos maestros cargados: 8.400 SKU, clientes e instalaciones
+\item 5.2.3 Integración con el servicio de mapas y geocodificación (INT-10)
 
-\item 3.7.3 Saldos migrados desde el WMS de Talca
+\item 5.2.4 Integración con el servicio de avisos al cliente (INT-11)
 
-\item 3.7.4 Saldos cargados en Concepción desde el conteo físico
+\item 5.3 Intercambio electrónico con las cadenas
 
-\item 3.7.5 Acta de conciliación y corte fuera de las ventanas de congelamiento
+\item 5.3.1 Intercambio electrónico con la principal cadena, con sus pruebas aprobadas (INT-08)
 
-\item 3.8 Pruebas de la Etapa 1
+\item 5.3.2 Incorporación de las demás cadenas al intercambio electrónico (INT-08)
 
-\item 3.8.1 Pruebas de integración, regresión e idempotencia en QA (H4)
+\item 5.4 Migración de datos
 
-\item 3.8.2 Pruebas de aceptación y de accesibilidad con preventistas, conductores y bodega
+\item 5.4.1 Informe de perfilamiento y datos saneados
 
-\item 3.8.3 Pruebas del perfil operacional: cinco condiciones físicas y desconexión de 14 horas
+\item 5.4.2 Datos maestros cargados: 8.400 SKU, clientes e instalaciones
 
-\item 3.8.4 Pruebas de carga con el peak de septiembre y de resiliencia
+\item 5.4.3 Saldos migrados desde el WMS de Talca
 
-\item 3.8.5 Prueba de recuperación ante desastres con conmutación real
+\item 5.4.4 Saldos cargados en Concepción desde el conteo físico
 
-\item 3.8.6 Prueba de seguridad ofensiva de la Etapa 1, por un tercero independiente
+\item 5.4.5 Acta de conciliación y corte fuera de las ventanas de congelamiento
 
-\item 3.8.7 Acta de certificación de la Etapa 1 (H5)
+\item \textbf{6. Solución certificada y documentada}
 
-\item 3.8.8 Demostración en Preproducción del despliegue sin interrupción de la Etapa 1
+\item 6.1 Pruebas de integración y regresión
 
-\item 3.9 Pruebas de la Etapa 2
+\item 6.1.1 Pruebas de integración, regresión e idempotencia en QA (H4)
 
-\item 3.9.1 Pruebas de integración y regresión sin afectar la Etapa 1 en producción (H9)
+\item 6.1.2 Pruebas de integración y regresión sin afectar la Etapa 1 en producción (H9)
 
-\item 3.9.2 Pruebas de aceptación y de accesibilidad con cadenas, transportistas, Comercial y Finanzas
+\item 6.2 Pruebas de aceptación, accesibilidad y condiciones físicas
 
-\item 3.9.3 Pruebas de carga con ambas etapas activas y de resiliencia
+\item 6.2.1 Pruebas de aceptación y de accesibilidad con preventistas, conductores y bodega
 
-\item 3.9.4 Prueba de recuperación ante desastres con ambas etapas
+\item 6.2.2 Cinco condiciones físicas: −22 °C con guantes, lluvia, calor superior a 34 °C, sol directo y uso con una mano; desconexión separada de 14 horas
 
-\item 3.9.5 Prueba de seguridad ofensiva de la Etapa 2, por un tercero independiente
+\item 6.2.3 Pruebas de aceptación y de accesibilidad con cadenas, transportistas, Comercial y Finanzas
 
-\item 3.9.6 Acta de certificación de la Etapa 2 y cierre del desarrollo (H10)
+\item 6.3 Pruebas de carga y resiliencia
 
-\item 3.9.7 Demostración en Preproducción del despliegue sin interrupción de la Etapa 2
+\item 6.3.1 Pruebas de carga con el peak de septiembre y de resiliencia
 
-\item 3.10 Innovaciones
+\item 6.3.2 Pruebas de carga con ambas etapas activas y de resiliencia
 
-\item 3.10.1 Innovación 1: seguimiento de vencimiento posentrega en el local
+\item 6.4 Pruebas de recuperación ante desastres
 
-\item 3.10.1.1 Documento de catálogo de acciones y protocolo del piloto (INN-01.P1)
+\item 6.4.1 Prueba de recuperación ante desastres con conmutación real
 
-\item 3.10.1.2 Estimador de saldo y ritmo de reposición (INN-01.P2)
+\item 6.4.2 Prueba de recuperación ante desastres con ambas etapas
 
-\item 3.10.1.3 Función de lista sin conexión en la aplicación de preventa (INN-01.P3)
+\item 6.5 Pruebas de seguridad ofensiva
 
-\item 3.10.1.4 Informe del piloto en marcha blanca y habilitación (INN-01.P4)
+\item 6.5.1 Prueba de seguridad ofensiva de la Etapa 1, por un tercero independiente
 
-\item 3.10.2 Innovación 2: reproducción de incidentes de terreno
+\item 6.5.2 Prueba de seguridad ofensiva de la Etapa 2, por un tercero independiente
 
-\item 3.10.2.1 Informe de medición inicial y contrato de evidencia (INN-02.P1)
+\item 6.6 Despliegue sin interrupción demostrado
 
-\item 3.10.2.2 Circuito mínimo de reproducción en la preventa (INN-02.P2)
+\item 6.6.1 Demostración en Preproducción del despliegue sin interrupción de la Etapa 1
 
-\item 3.10.2.3 Captura de evidencia en las aplicaciones de preventa, preparación y reparto (INN-02.P3)
+\item 6.6.2 Demostración en Preproducción del despliegue sin interrupción de la Etapa 2
 
-\item 3.10.2.4 Informe de validación comparada durante la implementación (INN-02.P4, primera parte)
+\item 6.7 Actas de certificación
 
-\item 3.10.3 Innovación 3: vida útil remanente por historia térmica del lote
+\item 6.7.1 Acta de certificación de la Etapa 1 (H5)
 
-\item 3.10.3.1 Documento de familias priorizadas y parámetros aprobados (INN-03.P1)
+\item 6.7.2 Acta de certificación de la Etapa 2 y cierre del desarrollo (H10)
 
-\item 3.10.3.2 Asociación lote–sensor en el borde y en el camión (INN-03.P2)
+\item 6.8 Documentación técnica, código y custodia
 
-\item 3.10.3.3 Vista en M9 y orden de salida sugerido (INN-03.P3)
+\item 6.8.1 Documentación técnica, funcional, de arquitectura, de operación y de seguridad
 
-\item 3.10.3.4 Informe de validación en marcha blanca con Calidad (INN-03.P4)
+\item 6.8.2 Base de conocimiento de incidentes y decisiones de diseño
 
-\item 3.10.4 Innovación 5: hoja de negocio del almacenero
+\item 6.8.3 Estándares de codificación y documentación de interfaces en OpenAPI y AsyncAPI
 
-\item 3.10.4.1 Prototipo e informe de la prueba de comprensión (INN-05.P1)
+\item 6.8.4 Inventario de componentes (SBOM) con sus licencias de código abierto
 
-\item 3.10.4.2 Evaluación de privacidad y diseño de la impresión en cabina (INN-05.P2)
+\item 6.8.5 Depósito del código fuente en el repositorio del CLIENTE en cada liberación
 
-\item 3.10.4.3 Cálculo y bloques 1 a 3 de la hoja de negocio (INN-05.P3)
+\item 6.8.6 Entrega del código fuente, la infraestructura como código y los procedimientos de despliegue
 
-\item 3.10.4.4 Hoja certificada, en marcha blanca y en producción (INN-05.P4, primera parte)
+\item 6.8.7 Contrato de custodia de fuentes con un tercero independiente
 
-\item 3.11 Documentación técnica
+\item \textbf{7. Innovaciones verificadas}
 
-\item 3.11.1 Documentación técnica, funcional, de arquitectura, de operación y de seguridad
+\item 7.1 Innovación 1: seguimiento de vencimiento posentrega en el local
 
-\item 3.11.2 Base de conocimiento de incidentes y decisiones de diseño
+\item 7.1.1 Innovación 1: documento de catálogo de acciones y protocolo del piloto (INN-01.P1)
 
-\item 3.11.3 Estándares de codificación y documentación de interfaces en OpenAPI y AsyncAPI
+\item 7.1.2 Innovación 1: estimador de saldo y ritmo de reposición (INN-01.P2)
 
-\item 3.11.4 Inventario de componentes (SBOM) con sus licencias de código abierto
+\item 7.1.3 Innovación 1: función de lista sin conexión en la aplicación de preventa (INN-01.P3)
 
-\item 3.11.5 Depósito del código fuente en el repositorio del CLIENTE en cada liberación
+\item 7.1.4 Innovación 1: informe del piloto en marcha blanca y habilitación (INN-01.P4)
 
-\item \textbf{4. Transición}
+\item 7.2 Innovación 2: reproducción de incidentes de terreno
 
-\item 4.1 Plan de implantación
+\item 7.2.1 Innovación 2: informe de medición inicial y contrato de evidencia (INN-02.P1)
 
-\item 4.1.1 Plan de olas de la Etapa 1 por sitio y zona: Talca, Concepción y plataformas de cross-docking
+\item 7.2.2 Innovación 2: circuito mínimo de reproducción en la preventa (INN-02.P2)
 
-\item 4.1.2 Procedimiento de reversión de la Etapa 1 antes de las 05:30, con versión operativa local y DTE emitidos por el ERP
+\item 7.2.3 Innovación 2: captura de evidencia en las aplicaciones de preventa, preparación y reparto (INN-02.P3)
 
-\item 4.1.3 Plan de implantación y reversión de la Etapa 2 fuera de la ventana de 05:30 a 07:00
+\item 7.2.4 Innovación 2: informe de validación comparada durante la implementación (INN-02.P4, primera parte)
 
-\item 4.1.4 Piloto de cadena de frío en cuatro camiones
+\item 7.2.5 Innovación 2: mantenimiento de escenarios de regresión (INN-02.P4, segunda parte)
 
-\item 4.2 Marcha blanca y producción de la Etapa 1
+\item 7.3 Innovación 3: vida útil remanente por historia térmica del lote
 
-\item 4.2.1 Marcha blanca de la Etapa 1 con conciliación diaria (H6)
+\item 7.3.1 Innovación 3: documento de familias priorizadas y parámetros aprobados (INN-03.P1)
 
-\item 4.2.2 Estabilización de la Etapa 1 en el turno de noche y acompañamiento en ruta
+\item 7.3.2 Innovación 3: asociación lote–sensor en el borde y en el camión (INN-03.P2)
 
-\item 4.2.3 Acta de aceptación de la Etapa 1 (H7)
+\item 7.3.3 Innovación 3: vista en M9 y orden de salida sugerido (INN-03.P3)
 
-\item 4.3 Marcha blanca y producción de la Etapa 2
+\item 7.3.4 Innovación 3: informe de validación en marcha blanca con Calidad (INN-03.P4)
 
-\item 4.3.1 Marcha blanca de la Etapa 2 en convivencia con la Etapa 1 y fuente única de datos (H11)
+\item 7.3.5 Innovación 3: revisión periódica de parámetros durante la Operación (INN-03.P5)
 
-\item 4.3.2 Estabilización de la Etapa 2 con Comercial, Finanzas, cadenas y transportistas
+\item 7.4 Innovación 4: tramo variable vinculado a resultados
 
-\item 4.3.3 Acta de aceptación final de la implementación (H12)
+\item 7.4.1 Fórmula aprobada del tramo variable: reglas de atribución, canasta e índices (INN-04.P1)
 
-\item 4.3.4 Garantía de correcto funcionamiento constituida, condición de la aceptación final (H12)
+\item 7.4.2 Innovación 4: línea base y liquidaciones en sombra (INN-04.P2)
 
-\item \textbf{5. Adquisiciones y contrataciones}
+\item 7.4.3 Innovación 4: liquidación mensual del tramo variable, meses 24 a 56 (INN-04.P3)
 
-\item 5.1 Hardware e infraestructura
+\item 7.5 Innovación 5: hoja de negocio del almacenero
 
-\item 5.1.1 Especificación de compra de equipos de uso para el CLIENTE
+\item 7.5.1 Innovación 5: prototipo e informe de la prueba de comprensión (INN-05.P1)
 
-\item 5.1.2 Especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de borde
+\item 7.5.2 Innovación 5: evaluación de privacidad y diseño de la impresión en cabina (INN-05.P2)
 
-\item 5.1.3 Actas de recepción técnica del equipamiento de terreno comprado por el CLIENTE y de la infraestructura provista por LafroX
+\item 7.5.3 Innovación 5: cálculo y bloques 1 a 3 de la hoja de negocio (INN-05.P3)
 
-\item 5.1.4 Especificación y compra del sistema de cadena de frío
+\item 7.5.4 Innovación 5: hoja certificada, en marcha blanca y en producción (INN-05.P4, primera parte)
 
-\item 5.2 Servicios de nube y licencias
+\item 7.5.5 Innovación 5: despliegue gradual por rutas (INN-05.P4, segunda parte)
 
-\item 5.2.1 Contrato de los servicios de AWS
+\item 7.5.6 Innovación 5: bloque 4 condicionado (INN-05.P5)
 
-\item 5.2.2 Suscripción del servicio de gestión de dispositivos y de detección en endpoints
+\item \textbf{8. Infraestructura, equipamiento y servicios habilitados}
 
-\item 5.2.3 Licencias de software de terceros constituidas a nombre del CLIENTE
+\item 8.1 Compras de hardware y especificaciones
 
-\item 5.3 Enlaces de comunicaciones
+\item 8.1.1 Especificación de compra de equipos de uso para el CLIENTE
 
-\item 5.3.1 Contrato de fibra óptica de los CD de Talca y Concepción
+\item 8.1.2 Especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de borde
 
-\item 5.3.2 Contrato de planes LTE con dos proveedores (ocho planes)
+\item 8.1.3 Actas de recepción técnica del equipamiento de terreno comprado por el CLIENTE y de la infraestructura provista por LafroX
 
-\item 5.3.3 Contrato de Starlink para los cinco sitios: Talca, Concepción y las tres plataformas de cross-docking
+\item 8.1.4 Especificación y compra del sistema de cadena de frío
 
-\item 5.3.4 Contrato de SIM M2M y servicio satelital de los camiones con frío
+\item 8.2 Servicios de nube, licencias y enlaces contratados
 
-\item 5.4 Acuerdos con terceros
+\item 8.2.1 Contrato de los servicios de AWS
 
-\item 5.4.1 Acuerdos operacionales firmados con los diez transportistas
+\item 8.2.2 Suscripción del servicio de gestión de dispositivos y de detección en endpoints
 
-\item 5.4.2 Acta de acuerdo con el sindicato sobre terminales, GPS y cámaras
+\item 8.2.3 Licencias de software de terceros constituidas a nombre del CLIENTE
 
-\item 5.4.3 Fórmula aprobada del tramo variable: reglas de atribución, canasta e índices (INN-04.P1)
+\item 8.2.4 Contrato de fibra óptica de los CD de Talca y Concepción
 
-\item 5.4.4 Contrato de custodia de fuentes con un tercero independiente
+\item 8.2.5 Contrato de planes LTE con dos proveedores (ocho planes)
 
-\item \textbf{6. Infraestructura física y sitios}
+\item 8.2.6 Contrato de Starlink para los cinco sitios: Talca, Concepción y las tres plataformas de cross-docking
 
-\item 6.1 Adecuación de la sala técnica de Talca
+\item 8.2.7 Contrato de SIM M2M y servicio satelital de los camiones con frío
 
-\item 6.1.1 Coordinación de la obra civil de separación, a cargo del CLIENTE (RT-06.06), y piso técnico de la sala
+\item 8.3 Sala técnica de Talca habilitada
 
-\item 6.1.2 Hardware de energía instalado: UPS modular N+1, generador con 24 horas de autonomía, transferencia automática y PDU A/B
+\item 8.3.1 Coordinación de la obra civil de separación, a cargo del CLIENTE (RT-06.06), y piso técnico de la sala
 
-\item 6.1.3 Hardware de climatización de precisión N+1 instalado
+\item 8.3.2 Hardware de energía instalado: UPS modular N+1, generador con 24 horas de autonomía, transferencia automática y PDU A/B
 
-\item 6.1.4 Hardware de detección temprana de incendio y extinción por agente limpio instalado
+\item 8.3.3 Hardware de climatización de precisión N+1 instalado
 
-\item 6.1.5 Acta de recepción técnica de la sala
+\item 8.3.4 Hardware de detección temprana de incendio y extinción por agente limpio instalado
 
-\item 6.2 Cableado estructurado
+\item 8.3.5 Acta de recepción técnica de la sala
 
-\item 6.2.1 Cableado de cobre Cat6A y fibra OM4 tendido, con dos ductos de ingreso independientes
+\item 8.4 Cableado, racks y gabinetes
 
-\item 6.2.2 Certificación de enlaces, etiquetado y planos as-built
+\item 8.4.1 Cableado de cobre Cat6A y fibra OM4 tendido, con dos ductos de ingreso independientes
 
-\item 6.2.3 Gabinetes de piso y switches de acceso instalados en las bodegas de Talca y Concepción
+\item 8.4.2 Certificación de enlaces, etiquetado y planos as-built
 
-\item 6.3 Montaje de racks y gabinetes
+\item 8.4.3 Gabinetes de piso y switches de acceso instalados en las bodegas de Talca y Concepción
 
-\item 6.3.1 Rack R01 de servidores montado: clúster de tres nodos, respaldo local, consola KVM y traslado del servidor del ERP del CLIENTE a U25–U26, con respaldo completo verificado, en ventana dominical después del H3 y antes de la marcha blanca de Talca, sin cambios de software
+\item 8.4.4 Rack R01 de servidores montado: clúster de tres nodos, respaldo local, consola KVM y traslado del servidor del ERP del CLIENTE
 
-\item 6.3.2 Rack R02 de comunicaciones montado: firewalls, switches de núcleo y de gestión, y distribución de fibra
+\item 8.4.5 Rack R02 de comunicaciones montado: firewalls, switches de núcleo y de gestión, y distribución de fibra
 
-\item 6.3.3 Gabinete de borde de Concepción montado: servidores activo y en espera, firewalls, switches, UPS, climatización y monitoreo, con toma del servicio por el de espera si falla el activo
+\item 8.4.6 Gabinete de borde de Concepción montado: servidores activo y en espera, firewalls, switches, UPS, climatización y monitoreo
 
-\item 6.3.4 Gabinetes de borde montados en Curicó, Chillán y Los Ángeles, con dos mini-PC (activo y en espera) por plataforma
+\item 8.4.7 Gabinetes de borde montados en Curicó, Chillán y Los Ángeles, con dos mini-PC (activo y en espera) por plataforma
 
-\item 6.4 Sistemas de seguridad física
+\item 8.5 Seguridad física
 
-\item 6.4.1 Hardware de control de acceso biométrico y esclusa instalado
+\item 8.5.1 Hardware de control de acceso biométrico y esclusa instalado
 
-\item 6.4.2 Hardware de videovigilancia instalado
+\item 8.5.2 Hardware de videovigilancia instalado
 
-\item 6.4.3 Recinto de custodia de respaldos habilitado
+\item 8.5.3 Recinto de custodia de respaldos habilitado
 
-\item 6.5 Equipamiento de campo
+\item 8.6 Equipamiento de campo
 
-\item 6.5.1 Terminales de preventa, reparto y bodega configurados y enrolados
+\item 8.6.1 Terminales de preventa, reparto y bodega configurados y enrolados
 
-\item 6.5.2 Terminales de pago configurados, uno por camión
+\item 8.6.2 Terminales de pago configurados, uno por camión
 
-\item 6.5.3 Sensores de cámara y gateways IoT instalados en Talca y Concepción
+\item 8.6.3 Sensores de cámara y gateways IoT instalados en Talca y Concepción
 
-\item 6.5.4 Kit de cadena de frío instalado y recibido en los 28 camiones con frío
+\item 8.6.4 Kit de cadena de frío instalado y recibido en los 28 camiones con frío
 
-\item 6.5.5 Impresoras de cabina instaladas
+\item 8.6.5 Impresoras de cabina instaladas
 
-\item 6.5.6 Impresoras de andén y balanzas de recepción instaladas
+\item 8.6.6 Impresoras de andén y balanzas de recepción instaladas
 
-\item 6.6 Configuración de la infraestructura de los sitios
+\item 8.7 Configuración de los sitios
 
-\item 6.6.1 Software de base instalado en los sitios: virtualización, contenedores, PostgreSQL, RabbitMQ y Keycloak
+\item 8.7.1 Software de base instalado en los sitios: virtualización, contenedores, PostgreSQL, RabbitMQ y Keycloak
 
-\item 6.6.2 Enlaces de fibra, LTE y Starlink habilitados, con conmutación al respaldo
+\item 8.7.2 Enlaces de fibra, LTE y Starlink habilitados, con conmutación al respaldo
 
-\item 6.6.3 Borde de los CD en servicio, con la prueba de autonomía de 24 horas aprobada
+\item 8.7.3 Borde de los CD en servicio, con la prueba de autonomía de 24 horas aprobada
 
-\item \textbf{7. Capacitación y gestión del cambio}
+\item \textbf{9. Implantación y usuarios habilitados}
 
-\item 7.1 Capacitación por roles
+\item 9.1 Planes de implantación y reversión
 
-\item 7.1.1 Plan de capacitación por perfil: usuarios finales, avanzados, administradores, equipo técnico y soporte
+\item 9.1.1 Plan de olas de la Etapa 1 por sitio y zona: Talca, Concepción y plataformas de cross-docking
 
-\item 7.1.2 Programa de capacitación continua del turno de noche por la rotación del 38 \%
+\item 9.1.2 Procedimiento de reversión de la Etapa 1 antes de las 05:30, con versión operativa local y DTE emitidos por el ERP
 
-\item 7.1.3 Incorporación de conductores de transportistas, escaneos y lectura del rojo
+\item 9.1.3 Plan de implantación y reversión de la Etapa 2 fuera de la ventana de 05:30 a 07:00
 
-\item 7.1.4 Traspaso al equipo de TI de cuatro personas del CLIENTE
+\item 9.2 Marcha blanca
 
-\item 7.1.5 Materiales de capacitación: manuales por perfil, guías rápidas, preguntas frecuentes y videos tutoriales
+\item 9.2.1 Marcha blanca de la Etapa 1 con conciliación diaria (H6)
 
-\item 7.1.6 Plataforma de autoformación en línea con registro de avance
+\item 9.2.2 Marcha blanca de la Etapa 2 en convivencia con la Etapa 1 y fuente única de datos (H11)
 
-\item 7.2 Gestión del cambio
+\item 9.3 Estabilización
 
-\item 7.2.1 Acompañamiento del personal con 20 o 30 años en la compañía
+\item 9.3.1 Estabilización de la Etapa 1, acompañamiento en ruta y restauraciones de soporte puente
 
-\item 7.2.2 Gestión del cambio con las cadenas y los transportistas
+\item 9.3.2 Estabilización de la Etapa 2 con Comercial, Finanzas, cadenas y transportistas
 
-\item 7.2.3 Diagnóstico del impacto organizacional por área y perfil, con agentes de cambio
+\item 9.4 Aceptación y paso a producción
 
-\item 7.2.4 Procedimientos operativos rediseñados, contingencia de frío y ruptura confirmada
+\item 9.4.1 Expediente de H7
 
-\item 7.2.5 Medición de la adopción y plan de acción correctiva
+\item 9.4.2 Expediente de H12
 
-\item 7.3 Evaluaciones y certificaciones
+\item 9.4.3 Garantía de correcto funcionamiento constituida, condición de la aceptación final (H12)
 
-\item 7.3.1 Certificación de preventistas, conductores y preparadores (Etapa 1)
+\item 9.5 Capacitación y certificación de usuarios
 
-\item 7.3.2 Certificación de Comercial y Finanzas en costo de servir (Etapa 2)
+\item 9.5.1 Plan de capacitación por perfil: usuarios finales, avanzados, administradores, equipo técnico y soporte
 
-\item \textbf{8. Operación y soporte (36 meses)}
+\item 9.5.2 Programa de capacitación continua del turno de noche por la rotación del 38 \%
 
-\item 8.1 Servicios de operación
+\item 9.5.3 Incorporación de conductores de transportistas, escaneos y lectura del rojo
 
-\item 8.1.1 Servicio de centro de operaciones 24\ensuremath{\times}7 y mesa de servicio durante los 36 meses de operación (04:00 a 22:00; 24\ensuremath{\times}7 en septiembre y diciembre)
+\item 9.5.4 Traspaso al equipo de TI de cuatro personas del CLIENTE
 
-\item 8.1.2 Servicio de gestión de incidentes, problemas y niveles de servicio del artículo 78 de las Bases Administrativas (p. 40) durante los 36 meses de operación
+\item 9.5.5 Materiales de capacitación: manuales por perfil, guías rápidas, preguntas frecuentes y videos tutoriales
 
-\item 8.1.3 Servicio de continuidad y pruebas semestrales de recuperación ante desastres durante los 36 meses de operación
+\item 9.5.6 Plataforma de autoformación en línea con registro de avance
 
-\item 8.1.4 Actualizaciones anuales del Plan de Reversibilidad durante los 36 meses de operación
+\item 9.5.7 Certificación de preventistas, conductores y preparadores (Etapa 1)
 
-\item 8.1.5 Servicio de centro de operaciones de seguridad 24\ensuremath{\times}7 con SIEM desde la primera marcha blanca (mes 13) hasta el mes 56
+\item 9.5.8 Certificación de Comercial y Finanzas en costo de servir (Etapa 2)
 
-\item 8.1.6 Pruebas mensuales de restauración de respaldos durante los 36 meses de operación
+\item 9.6 Gestión del cambio
 
-\item 8.2 Mantenimiento
+\item 9.6.1 Acompañamiento del personal con 20 o 30 años en la compañía
 
-\item 8.2.1 Mantenimiento correctivo y evolutivo del software durante los 36 meses de operación, con bolsa anual de horas y fuera de las ventanas de congelamiento
+\item 9.6.2 Gestión del cambio con las cadenas y los transportistas
 
-\item 8.2.2 Mantenimiento de ciberseguridad durante los 36 meses de operación: vulnerabilidades, intrusión anual e inyección de fallas
+\item 9.6.3 Diagnóstico del impacto organizacional por área y perfil, con agentes de cambio
 
-\item 8.2.3 Mantenimiento del hardware durante los 36 meses de operación: sala técnica, racks, gabinetes de borde y equipamiento de terreno
+\item 9.6.4 Procedimientos operativos rediseñados, contingencia de frío y ruptura confirmada
 
-\item 8.2.4 Registro y reducción de la deuda técnica durante los 36 meses de operación
+\item 9.6.5 Medición de la adopción y plan de acción correctiva
 
-\item 8.2.5 Actualizaciones anuales de los componentes de base durante los 36 meses de operación
+\item 9.7 Acuerdos con terceros
 
-\item 8.2.6 Revisiones semestrales de las instalaciones eléctricas de la sala durante los 36 meses de operación
+\item 9.7.1 Acuerdos operacionales firmados con los diez transportistas
 
-\item 8.2.7 Ciclo de vida del equipamiento durante los 36 meses de operación: reposición y disposición final
+\item 9.7.2 Acta de acuerdo con el sindicato sobre terminales, GPS y cámaras
 
-\item 8.3 Innovaciones en operación
+\item \textbf{10. Servicio de operación y salida}
 
-\item 8.3.1 Innovación 2: mantenimiento de escenarios de regresión (INN-02.P4, segunda parte)
+\item 10.1 Servicios de operación
 
-\item 8.3.2 Innovación 3: revisión periódica de parámetros en los meses 24, 27, 30, 36, 39, 42, 48, 51 y 54 (INN-03.P5)
+\item 10.1.1 Servicio de centro de operaciones 24\ensuremath{\times}7 y mesa de servicio durante los 36 meses de operación (04:00 a 22:00; 24\ensuremath{\times}7 en septiembre y diciembre)
 
-\item 8.3.3 Innovación 4: línea base y liquidaciones en sombra (INN-04.P2)
+\item 10.1.2 Servicio de gestión de incidentes, problemas y niveles de servicio del Art. 78° durante los 36 meses de operación
 
-\item 8.3.4 Innovación 4: liquidación mensual del tramo variable, meses 24 a 56 (INN-04.P3)
+\item 10.1.3 Servicio de continuidad y pruebas semestrales de recuperación ante desastres durante los 36 meses de operación
 
-\item 8.3.5 Innovación 5: despliegue gradual por rutas (INN-05.P4, segunda parte)
+\item 10.1.4 Servicio de centro de operaciones de seguridad 24\ensuremath{\times}7 con SIEM desde la primera marcha blanca (mes 13) hasta el mes 56
 
-\item 8.3.6 Innovación 5: bloque 4 condicionado (INN-05.P5)
+\item 10.1.5 Pruebas mensuales de restauración de respaldos durante los 36 meses de operación
 
-\item 8.4 Informes y obligaciones periódicas
+\item 10.2 Mantenimiento
 
-\item 8.4.1 Gestión de la capacidad con proyección trimestral durante los 36 meses de operación
+\item 10.2.1 Mantenimiento correctivo y evolutivo del software durante los 36 meses de operación, con bolsa anual de horas y fuera de las ventanas de congelamiento
 
-\item 8.4.2 Informes mensuales de consumo de nube (FinOps) durante los 36 meses de operación
+\item 10.2.2 Mantenimiento de ciberseguridad durante los 36 meses de operación: vulnerabilidades, intrusión anual e inyección de fallas
 
-\item 8.4.3 Estimaciones anuales de la huella de carbono de la operación
+\item 10.2.3 Mantenimiento del hardware durante los 36 meses de operación: sala técnica, racks, gabinetes de borde y equipamiento de terreno
 
-\item 8.4.4 Actualizaciones semestrales del depósito de custodia de fuentes durante los 36 meses de operación
+\item 10.2.4 Registro y reducción de la deuda técnica durante los 36 meses de operación
 
-\item 8.5 Capacitación y transferencia en operación
+\item 10.2.5 Actualizaciones anuales de los componentes de base durante los 36 meses de operación
 
-\item 8.5.1 Dos jornadas anuales de actualización y capacitación del personal nuevo durante los 36 meses de operación
+\item 10.2.6 Revisiones semestrales de las instalaciones eléctricas de la sala durante los 36 meses de operación
 
-\item 8.5.2 Mentoría al equipo técnico del CLIENTE durante los seis meses posteriores al mes 21
+\item 10.2.7 Ciclo de vida del equipamiento durante los 36 meses de operación: reposición y disposición final
 
-\item 8.5.3 Mantenimiento de la base de conocimiento durante los 36 meses de operación, con métricas de uso
+\item 10.3 Informes y obligaciones periódicas
 
-\item \textbf{9. Cierre}
+\item 10.3.1 Gestión de la capacidad con proyección trimestral durante los 36 meses de operación
 
-\item 9.1 Cierre de la implementación
+\item 10.3.2 Informes mensuales de consumo de nube (FinOps) durante los 36 meses de operación
 
-\item 9.1.1 Entrega del código fuente, la infraestructura como código y los procedimientos de despliegue
+\item 10.3.3 Estimaciones anuales de la huella de carbono de la operación
 
-\item 9.1.2 Informe de lecciones aprendidas y archivo de la implementación
+\item 10.3.4 Actualizaciones semestrales del depósito de custodia de fuentes durante los 36 meses de operación
 
-\item 9.2 Salida al término del contrato
+\item 10.4 Capacitación y transferencia en operación
 
-\item 9.2.1 Ejecución del Plan de Reversibilidad y acompañamiento de 90 días
+\item 10.4.1 Dos jornadas anuales de actualización y capacitación del personal nuevo durante los 36 meses de operación
 
-\item 9.2.2 Certificado de devolución o eliminación de datos personales
+\item 10.4.2 Mentoría al equipo técnico del CLIENTE durante los seis meses posteriores al mes 21
+
+\item 10.4.3 Mantenimiento de la base de conocimiento durante los 36 meses de operación, con métricas de uso
+
+\item 10.5 Salida al término del contrato
+
+\item 10.5.1 Ejecución del Plan de Reversibilidad y acompañamiento de 90 días
+
+\item 10.5.2 Certificado de devolución o eliminación de datos personales
 
 \end{itemize}
-La Figura \ref{fig:T14-edt-completa} presenta la EDT completa en láminas consecutivas por fase, con sus cuentas de control y paquetes legibles a tamaño impreso. La jerarquía y los códigos son los de la estructura anterior; el Subdocumento 7 organiza sus figuras de detalle por fase.
+La Figura \ref{fig:T14-edt-completa} presenta la EDT completa por productos, con sus cuentas de control y paquetes de trabajo.
 
-\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-completa}{28}{Vista detallada de la EDT completa del proyecto. Para consultar el detalle por fase, véanse las láminas de la sección «Estructura general» del Subdocumento 7. Fuente: estructura de descomposición del trabajo presentada en la sección 1 de este formulario.}{fig:T14-edt-completa}
-
-La vista reúne las nueve fases, sus 49 cuentas de control y los 227 paquetes de trabajo en una sola estructura. Las secciones siguientes desarrollan el diccionario y la programación asociados a esa descomposición.
+\figuraEDTLocal{imagenes/Diagramas que faltaban/Revision-local/EDT-completa}{28}{Vista detallada de la EDT completa del proyecto. Fuente: estructura de descomposición del trabajo presentada en la sección 1 de este formulario.}{fig:T14-edt-completa}
 
 \section{Diccionario de la EDT}
 
@@ -681,469 +677,567 @@ Los responsables son los roles de la estructura para el proyecto del Capítulo 1
 
 \parte{tablas/tab_T14_2}
 
-Los paquetes de la fase 8 son paquetes de esfuerzo continuo. Cada uno cubre un servicio durante los 36 meses de operación y se controla con entregables mensuales o anuales, como el informe de servicio, el informe de pruebas o la actualización de un plan; esos entregables son sus puntos de verificación.
+Los paquetes de operación y los recurrentes de gestión comprenden esfuerzos continuos, controlados mediante entregables periódicos que constituyen sus puntos de verificación. Los servicios de operación cubren 36 meses y se controlan con entregables mensuales o anuales, como informes de servicio, informes de pruebas o actualizaciones de planes. La columna Período comienza con E1, E2, Ambas u Operación para identificar la etapa que habilita el paquete o su período de operación.
 
-\subsection{Fase 1. Inicio}
+\subsection{Producto 1. Gestión del proyecto}
 
-La fase 1 reúne 9 cuentas de control y 35 paquetes de trabajo.
+La Contraparte recibe los planes, registros, actas y controles de gobierno y cierre del proyecto.
+El producto 1 reúne 8 cuentas de control y 32 paquetes de trabajo.
 
-\subsubsection{Cuenta 1.1 — Definición inicial del proyecto}
+\subsubsection{Cuenta 1.1 — Constitución y confirmaciones contractuales}
 
 Esta cuenta de control reúne los tres documentos con que el proyecto arranca formalmente.
 
-La Tabla \ref{tab:T-14-3} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-1-1} presenta sus paquetes.
 
-\parte{tablas/tab_T14_3}
+\parte{tablas/dic_1_1}
 
-\subsubsection{Cuenta 1.2 — Alcance del proyecto}
-
-Esta cuenta de control fija qué se construye y deja todo listo para diseñar. Incluye la captura del conocimiento del planificador y el levantamiento de las interfaces, porque ambos son insumos del alcance.
-
-La Tabla \ref{tab:T-14-4} presenta sus paquetes.
-
-\parte{tablas/tab_T14_4}
-
-\subsubsection{Cuenta 1.3 — Planificación del proyecto}
+\subsubsection{Cuenta 1.2 — Planificación y líneas base}
 
 Esta cuenta de control reúne los documentos que dicen cómo y cuándo se hará el trabajo, y los informes que muestran si se cumple.
 
-La Tabla \ref{tab:T-14-5} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-1-2} presenta sus paquetes.
 
-\parte{tablas/tab_T14_5}
+\parte{tablas/dic_1_2}
 
-\subsubsection{Cuenta 1.4 — Gestión de interesados y comunicaciones}
+\subsubsection{Cuenta 1.3 — Interesados y comunicaciones}
 
 Esta cuenta de control reúne el trabajo con las personas que pueden apoyar o frenar el proyecto, y el lugar donde se toman las decisiones.
 
-La Tabla \ref{tab:T-14-6} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-1-3} presenta sus paquetes.
 
-\parte{tablas/tab_T14_6}
+\parte{tablas/dic_1_3}
 
-\subsubsection{Cuenta 1.5 — Gestión de calidad}
+\subsubsection{Cuenta 1.4 — Gestión de la calidad}
 
 Esta cuenta de control reúne las reglas que impiden que algo defectuoso llegue a los usuarios.
 
-La Tabla \ref{tab:T-14-7} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-1-4} presenta sus paquetes.
 
-\parte{tablas/tab_T14_7}
+\parte{tablas/dic_1_4}
 
-\subsubsection{Cuenta 1.6 — Gestión de riesgos}
+\subsubsection{Cuenta 1.5 — Gestión de riesgos}
 
 Esta cuenta de control mantiene vivo el registro de riesgos y verifica que cada respuesta se ejecute.
 
-La Tabla \ref{tab:T-14-8} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-1-5} presenta sus paquetes.
 
-\parte{tablas/tab_T14_8}
+\parte{tablas/dic_1_5}
 
-\subsubsection{Cuenta 1.7 — Plan de Reversibilidad}
+\subsubsection{Cuenta 1.6 — Plan de Reversibilidad}
 
-Esta cuenta de control asegura que Puelche pueda cambiar de proveedor o asumir la operación sin interrumpir el servicio. Lo exige el artículo 77 de las Bases Administrativas (p. 39).
+Esta cuenta reúne el Plan de Reversibilidad y su actualización anual para que Puelche pueda cambiar de proveedor o asumir la operación sin interrumpir el servicio (BA, art. 77, p. 39).
 
-La Tabla \ref{tab:T-14-9} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-1-6} presenta sus paquetes.
 
-\parte{tablas/tab_T14_9}
+\parte{tablas/dic_1_6}
 
-\subsubsection{Cuenta 1.8 — Gobierno y control del proyecto}
+\subsubsection{Cuenta 1.7 — Gobierno, control y cierre}
 
-Esta cuenta de control reúne las instancias de gobierno que el artículo 71 de las Bases Administrativas (p. 37) hace obligatorias para ambas partes, y los mecanismos de control y reporte del capítulo 19 de las Bases Técnicas Transversales. Las actas de todos los comités se levantan dentro de los dos días hábiles siguientes, con acuerdos, responsables y plazos (RT-19.09).
+Esta cuenta reúne las instancias de gobierno obligatorias para ambas partes (BA, art. 71, p. 37), los mecanismos de control y reporte (BTT, cap. 19) y el cierre de la implementación. Las actas de todos los comités se levantan dentro de los dos días hábiles siguientes, con acuerdos, responsables y plazos (RT-19.09).
 
-La Tabla \ref{tab:T-14-10} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-1-7} presenta sus paquetes.
 
-\parte{tablas/tab_T14_10}
+\parte{tablas/dic_1_7}
 
-\subsubsection{Cuenta 1.9 — Cumplimiento normativo y contractual}
+\subsubsection{Cuenta 1.8 — Cumplimiento normativo y contractual}
 
-Esta cuenta de control reúne las obligaciones legales y contractuales que no producen software, pero que el contrato exige mantener y acreditar: cumplimiento normativo, datos personales, certificación de seguridad, garantías, seguros y obligaciones laborales.
+Esta cuenta de control reúne las obligaciones legales y contractuales que no producen software, pero que deben mantenerse y acreditarse: cumplimiento normativo, datos personales, certificación de seguridad, garantías, seguros y obligaciones laborales.
 
-La Tabla \ref{tab:T-14-11} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-1-8} presenta sus paquetes.
 
-\parte{tablas/tab_T14_11}
+\parte{tablas/dic_1_8}
 
-\subsection{Fase 2. Elaboración}
+\subsection{Producto 2. Requisitos y diseño aprobados}
 
-La fase 2 reúne 6 cuentas de control y 20 paquetes de trabajo.
+La Contraparte recibe los requisitos, diseños y validaciones que sustentan la solución, junto con las actas de aprobación de cada etapa. El producto incluye la línea base del H1 y las actas de los hitos H2 y H8.
+El producto 2 reúne 8 cuentas de control y 26 paquetes de trabajo.
 
-\subsubsection{Cuenta 2.1 — Arquitectura de la solución}
+\subsubsection{Cuenta 2.1 — Requisitos y líneas base de alcance}
 
-Esta cuenta de control reúne los planos técnicos del software y de su emplazamiento.
+Esta cuenta reúne los requisitos y las líneas base de alcance, incluida la captura del conocimiento del planificador y el levantamiento de interfaces. La línea base de la Etapa 1 se aprueba en el H1; la de la Etapa 2 incorpora canal moderno y costo de servir y se aprueba en el H8.
 
-La Tabla \ref{tab:T-14-12} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-2-1} presenta sus paquetes.
 
-\parte{tablas/tab_T14_12}
+\parte{tablas/dic_2_1}
 
-\subsubsection{Cuenta 2.2 — Diseño de la seguridad}
+\subsubsection{Cuenta 2.2 — Arquitectura de la solución}
+
+Esta cuenta reúne los planos técnicos del software y de su emplazamiento. La Etapa 1 comprende las arquitecturas lógica y física y el modelo de datos; la Etapa 2 añade el diseño detallado de M11 y del intercambio con las cadenas.
+
+La Tabla \ref{tab:T14-dic-2-2} presenta sus paquetes.
+
+\parte{tablas/dic_2_2}
+
+\subsubsection{Cuenta 2.3 — Diseño de la seguridad}
 
 Esta cuenta de control define cómo se protegen los datos y los accesos.
 
-La Tabla \ref{tab:T-14-13} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-2-3} presenta sus paquetes.
 
-\parte{tablas/tab_T14_13}
+\parte{tablas/dic_2_3}
 
-\subsubsection{Cuenta 2.3 — Diseño de la sala técnica y de los racks}
+\subsubsection{Cuenta 2.4 — Diseño de la sala técnica y de los sitios}
 
-Esta cuenta de control reúne los planos de la infraestructura física que se instala en la fase 6. La sala actual de Talca tiene 25 m², un aire acondicionado de pared y una UPS que dura 10 minutos, y no cumple el estándar exigido (Caso, cap. 5 y 16).
+Esta cuenta reúne los planos de la infraestructura física de la sala técnica y los sitios. La sala actual de Talca tiene 25 m², un aire acondicionado de pared y una UPS que dura 10 minutos, y no cumple el estándar exigido (Caso, cap. 5 y 16).
 
-La Tabla \ref{tab:T-14-14} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-2-4} presenta sus paquetes.
 
-\parte{tablas/tab_T14_14}
-
-\subsubsection{Cuenta 2.4 — Validación de diseños}
-
-Esta cuenta de control reúne las dos actas que cierran las fases de Elaboración y dan acceso a los hitos de pago.
-
-La Tabla \ref{tab:T-14-15} presenta sus paquetes.
-
-\parte{tablas/tab_T14_15}
+\parte{tablas/dic_2_4}
 
 \subsubsection{Cuenta 2.5 — Continuidad del negocio}
 
 Esta cuenta de control reúne los planes que dicen cómo sigue operando Puelche si la solución, un sitio o un proveedor fallan. Va más allá de la recuperación técnica (3.1.3): incluye contingencias auxiliares manuales cuando el proceso las admite. El despacho de 96 camiones entre 05:30 y 07:00 requiere continuidad tecnológica probada, sin sustitución manual ni interrupción.
 
-La Tabla \ref{tab:T-14-16} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-2-5} presenta sus paquetes.
 
-\parte{tablas/tab_T14_16}
+\parte{tablas/dic_2_5}
 
 \subsubsection{Cuenta 2.6 — Experiencia de usuario}
 
-Esta cuenta de control reúne el trabajo de diseñar la solución con las personas que la van a usar, \textbf{antes} de construirla. Lo exige el artículo 26 de las Bases Administrativas (p. 18). En Puelche es decisivo: preparadores con guantes a −22 °C, preventistas sin señal, conductores externos que se incorporan en minutos y almaceneros sin internet.
+Esta cuenta reúne el diseño de la solución con sus usuarios en preparación de la construcción (BA, art. 26, p. 18). Considera a los preparadores con guantes a −22 °C, preventistas sin señal, conductores externos que se incorporan en minutos y almaceneros sin internet.
 
-La Tabla \ref{tab:T-14-17} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-2-6} presenta sus paquetes.
 
-\parte{tablas/tab_T14_17}
+\parte{tablas/dic_2_6}
 
-\subsection{Fase 3. Construcción}
+\subsubsection{Cuenta 2.7 — Sistema de cadena de frío validado}
 
-La fase 3 reúne 11 cuentas de control y 79 paquetes de trabajo.
+Esta cuenta reúne la validación del kit de cadena de frío, el mapeo térmico y el piloto en camiones.
 
-\subsubsection{Cuenta 3.1 — Ambientes y cadena de desarrollo}
+La Tabla \ref{tab:T14-dic-2-7} presenta sus paquetes.
 
-Esta cuenta de control reúne los lugares donde el software se construye, se prueba y se ejecuta, y las herramientas que lo mueven entre ellos. Las Bases exigen cinco ambientes: Desarrollo, QA, Preproducción, Producción y Recuperación ante desastres.
+\parte{tablas/dic_2_7}
 
-La Tabla \ref{tab:T-14-18} presenta sus paquetes.
+\subsubsection{Cuenta 2.8 — Aprobación de los diseños}
 
-\parte{tablas/tab_T14_18}
+Esta cuenta reúne las actas de aprobación de los diseños. El H2 aprueba la arquitectura, el plan de seguridad y el modelo de datos; el H8 aprueba el diseño detallado de la Etapa 2.
+
+La Tabla \ref{tab:T14-dic-2-8} presenta sus paquetes.
+
+\parte{tablas/dic_2_8}
+
+\subsection{Producto 3. Plataforma base}
+
+La Contraparte recibe los ambientes, servicios de nube y servicios comunes que forman la base de la plataforma.
+El producto 3 reúne 3 cuentas de control y 14 paquetes de trabajo.
+
+\subsubsection{Cuenta 3.1 — Ambientes y entrega continua}
+
+Esta cuenta de control reúne los lugares donde el software se construye, se prueba y se ejecuta, y las herramientas que lo mueven entre ellos. Comprende cinco ambientes: Desarrollo, QA, Preproducción, Producción y Recuperación ante desastres.
+
+La Tabla \ref{tab:T14-dic-3-1} presenta sus paquetes.
+
+\parte{tablas/dic_3_1}
 
 \subsubsection{Cuenta 3.2 — Servicios de nube de la plataforma}
 
-Esta cuenta de control reúne la puesta en marcha de cada servicio de nube del T-11, antes de que el software lo use. Contratar el servicio no basta: hay que configurarlo según el plan de seguridad y conectarlo a la observabilidad.
+Esta cuenta reúne la puesta en marcha de los servicios de nube del T-11, su configuración según el plan de seguridad y su conexión con la observabilidad para uso del software.
 
-La Tabla \ref{tab:T-14-19} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-3-2} presenta sus paquetes.
 
-\parte{tablas/tab_T14_19}
+\parte{tablas/dic_3_2}
 
-\subsubsection{Cuenta 3.3 — Base compartida}
+\subsubsection{Cuenta 3.3 — Servicios comunes}
 
 Esta cuenta de control reúne los servicios de software que usan los doce módulos. Se construyen primero porque, si fallan, fallan todos los módulos a la vez.
 
-La Tabla \ref{tab:T-14-20} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-3-3} presenta sus paquetes.
 
-\parte{tablas/tab_T14_20}
+\parte{tablas/dic_3_3}
 
-\subsubsection{Cuenta 3.4 — Módulos de la Etapa 1}
+\subsection{Producto 4. Software operativo}
 
-Esta cuenta de control reúne los once programas que la Etapa 1 pone en producción en el mes 16. Cada uno es un paquete. Se construye por iteraciones de RUP y entra al H4 (mes 10) con QA superado.
+La Contraparte recibe los módulos operativos y los incrementos de analítica de las dos etapas. Los once módulos de la Etapa 1 se construyen por iteraciones RUP, entran al H4 del mes 10 con QA superado y se ponen en producción en el mes 16; los incrementos de la Etapa 2 se construyen entre los meses 13 y 18 durante la marcha blanca de la Etapa 1, entran al H9 del mes 17 con QA superado y se ponen en producción en el mes 21.
+El producto 4 reúne 5 cuentas de control y 15 paquetes de trabajo.
 
-La Tabla \ref{tab:T-14-21} presenta sus paquetes.
+\subsubsection{Cuenta 4.1 — Bodega: recepción, inventario y preparación}
 
-\parte{tablas/tab_T14_21}
+Esta cuenta reúne los módulos de recepción, inventario y preparación de bodega de la Etapa 1.
 
-\subsubsection{Cuenta 3.5 — Módulos de la Etapa 2}
+La Tabla \ref{tab:T14-dic-4-1} presenta sus paquetes.
 
-Esta cuenta de control reúne lo que la Etapa 2 pone en producción en el mes 21. Se construye entre los meses 13 y 18, mientras la Etapa 1 está en marcha blanca. Entra al H9 (mes 17) con QA superado.
+\parte{tablas/dic_4_1}
 
-La Tabla \ref{tab:T-14-22} presenta sus paquetes.
+\subsubsection{Cuenta 4.2 — Calidad y cadena de frío}
 
-\parte{tablas/tab_T14_22}
+Esta cuenta reúne los módulos de calidad y cadena de frío de la Etapa 1.
 
-\subsubsection{Cuenta 3.6 — Integraciones externas}
+La Tabla \ref{tab:T14-dic-4-2} presenta sus paquetes.
 
-Esta cuenta de control reúne las conexiones con terceros que no están en la base compartida. Llevan el código de interfaz de la arquitectura del Capítulo 4 (Subdocumento 4). Cada integración tiene una conducta definida para cuando el tercero falla, para que una caída externa no detenga la operación.
+\parte{tablas/dic_4_2}
 
-La Tabla \ref{tab:T-14-23} presenta sus paquetes.
+\subsubsection{Cuenta 4.3 — Venta y reparto}
 
-\parte{tablas/tab_T14_23}
+Esta cuenta reúne los módulos de venta y reparto de la Etapa 1.
 
-\subsubsection{Cuenta 3.7 — Migración de datos}
+La Tabla \ref{tab:T14-dic-4-3} presenta sus paquetes.
 
-Esta cuenta de control reúne el traslado de los datos actuales a la nueva solución. Las Bases exigen dos ensayos antes de la migración definitiva y una conciliación sin diferencias no explicadas (BTT, num. 20.1, p. 35).
+\parte{tablas/dic_4_3}
 
-La Tabla \ref{tab:T-14-24} presenta sus paquetes.
+\subsubsection{Cuenta 4.4 — Canal moderno y portales}
 
-\parte{tablas/tab_T14_24}
+Esta cuenta reúne el software de canal moderno y los portales que la Etapa 2 pone en producción en el mes 21. Se construye entre los meses 13 y 18, durante la marcha blanca de la Etapa 1, y entra al H9 (mes 17) con QA superado.
 
-\subsubsection{Cuenta 3.8 — Pruebas de la Etapa 1}
+La Tabla \ref{tab:T14-dic-4-4} presenta sus paquetes.
 
-Esta cuenta de control reúne las pruebas que exigen las Bases antes del paso a producción de la Etapa 1, y el acta que las certifica. Cada prueba tiene su criterio de salida en las Bases Técnicas Transversales, núm. 20.1, p. 35.
+\parte{tablas/dic_4_4}
 
-La Tabla \ref{tab:T-14-25} presenta sus paquetes.
+\subsubsection{Cuenta 4.5 — Analítica (M10)}
 
-\parte{tablas/tab_T14_25}
+Esta cuenta reúne los dos incrementos de analítica M10: indicadores operacionales y OTIF diario para la Etapa 1, y costo de servir por cliente y por entrega para la Etapa 2.
 
-\subsubsection{Cuenta 3.9 — Pruebas de la Etapa 2}
+La Tabla \ref{tab:T14-dic-4-5} presenta sus paquetes.
 
-Esta cuenta de control reúne las mismas pruebas para la Etapa 2, con una exigencia adicional: demostrar que la Etapa 1, ya en producción, no se degrada.
+\parte{tablas/dic_4_5}
 
-La Tabla \ref{tab:T-14-26} presenta sus paquetes.
+\subsection{Producto 5. Integraciones y datos migrados}
 
-\parte{tablas/tab_T14_26}
+La Contraparte recibe las integraciones con sistemas y servicios externos y los datos migrados y conciliados.
+El producto 5 reúne 4 cuentas de control y 14 paquetes de trabajo.
 
-\subsubsection{Cuenta 3.10 — Innovaciones}
+\subsubsection{Cuenta 5.1 — Integraciones con el ERP, el WMS y la flota}
 
-Esta cuenta de control reúne los paquetes de construcción de las innovaciones 1, 2, 3 y 5. La parte de la innovación 4 que se hace antes de la Operación está en la fase 5 (5.4.3), porque es un diseño contractual. Las partes que ocurren durante la Operación están en la fase 8. Las metas son propuestas de diseño.
+Esta cuenta reúne las integraciones con el ERP, el WMS y la flota, como servicios compartidos por los módulos.
 
-La Tabla \ref{tab:T-14-27} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-5-1} presenta sus paquetes.
 
-\parte{tablas/tab_T14_27}
+\parte{tablas/dic_5_1}
 
-\subsubsection{Cuenta 3.11 — Documentación técnica}
+\subsubsection{Cuenta 5.2 — Integraciones con servicios externos}
 
-Esta cuenta de control reúne lo que permite entender, mantener y traspasar la solución. Lo exige el artículo 77 de las Bases Administrativas (p. 39).
+Esta cuenta reúne las conexiones con servicios externos identificadas con los códigos de interfaz de la arquitectura del Capítulo 4 (Subdocumento 4). Cada integración define su conducta ante fallas del tercero para mantener la operación.
 
-Cada versión liberada se entregará al CLIENTE junto con su SBOM de 3.11.4 en formato CycloneDX o SPDX, identificando los componentes, sus versiones y licencias (BTT, cap. 11, RT-11.23, p. 24).
+La Tabla \ref{tab:T14-dic-5-2} presenta sus paquetes.
 
-La Tabla \ref{tab:T-14-28} presenta sus paquetes.
+\parte{tablas/dic_5_2}
 
-\parte{tablas/tab_T14_28}
+\subsubsection{Cuenta 5.3 — Intercambio electrónico con las cadenas}
 
-\subsection{Fase 4. Transición}
+Esta cuenta reúne el intercambio electrónico con las cadenas, identificado con los códigos de interfaz de la arquitectura del Capítulo 4 (Subdocumento 4). Las conexiones con las cadenas tienen una conducta definida frente a fallas del tercero para mantener la operación.
 
-La fase 4 reúne 3 cuentas de control y 11 paquetes de trabajo.
+La Tabla \ref{tab:T14-dic-5-3} presenta sus paquetes.
 
-\subsubsection{Cuenta 4.1 — Plan de implantación}
+\parte{tablas/dic_5_3}
 
-Esta cuenta de control reúne los planes que dicen cómo entra la solución y cómo se vuelve atrás si algo falla.
+\subsubsection{Cuenta 5.4 — Migración de datos}
 
-La Tabla \ref{tab:T-14-29} presenta sus paquetes.
+Esta cuenta reúne la migración de los datos actuales a la solución. Comprende dos ensayos previos a la migración definitiva y una conciliación sin diferencias no explicadas (BTT, núm. 20.1, p. 35).
 
-\parte{tablas/tab_T14_29}
+La Tabla \ref{tab:T14-dic-5-4} presenta sus paquetes.
 
-\subsubsection{Cuenta 4.2 — Marcha blanca y producción de la Etapa 1}
+\parte{tablas/dic_5_4}
 
-Esta cuenta de control reúne la operación supervisada de la Etapa 1, el acompañamiento posterior y el acta que la convierte en el registro oficial.
+\subsection{Producto 6. Solución certificada y documentada}
 
-La Tabla \ref{tab:T-14-30} presenta sus paquetes.
+La Contraparte recibe las pruebas, actas de certificación, documentación y código de la solución. Los criterios de salida de las pruebas figuran en las Bases Técnicas Transversales (núm. 20.1, p. 35), y las actas de certificación corresponden a los hitos H5 y H10.
+El producto 6 reúne 8 cuentas de control y 22 paquetes de trabajo.
 
-\parte{tablas/tab_T14_30}
+\subsubsection{Cuenta 6.1 — Pruebas de integración y regresión}
 
-\subsubsection{Cuenta 4.3 — Marcha blanca y producción de la Etapa 2}
+Esta cuenta reúne las pruebas de integración, regresión e idempotencia en QA de la Etapa 1 para el H4. En la Etapa 2, las pruebas para el H9 verifican la integración y que la Etapa 1 en producción no se degrade.
 
-Esta cuenta de control es igual a la 4.2, aplicada a la Etapa 2. Agrega una condición: convivir con la Etapa 1 ya en producción, con una sola fuente de verdad para los datos compartidos.
+La Tabla \ref{tab:T14-dic-6-1} presenta sus paquetes.
 
-La Tabla \ref{tab:T-14-31} presenta sus paquetes.
+\parte{tablas/dic_6_1}
 
-\parte{tablas/tab_T14_31}
+\subsubsection{Cuenta 6.2 — Pruebas de aceptación, accesibilidad y condiciones físicas}
 
-\subsection{Fase 5. Adquisiciones y contrataciones}
+Esta cuenta reúne las pruebas de aceptación y accesibilidad. En la Etapa 1 participan preventistas, conductores y personal de bodega; se verifican cinco condiciones físicas y una desconexión de 14 horas. En la Etapa 2 participan cadenas, transportistas, Comercial y Finanzas, con accesibilidad WCAG 2.2 AA en los portales.
 
-La fase 5 reúne 4 cuentas de control y 15 paquetes de trabajo.
+La Tabla \ref{tab:T14-dic-6-2} presenta sus paquetes.
 
-\subsubsection{Cuenta 5.1 — Hardware e infraestructura}
+\parte{tablas/dic_6_2}
+
+\subsubsection{Cuenta 6.3 — Pruebas de carga y resiliencia}
+
+Esta cuenta reúne las pruebas de carga y resiliencia. En la Etapa 1 se verifican los tiempos a 1,5 veces el peak de septiembre y la recuperación sin intervención; en la Etapa 2 se prueba la carga con ambas etapas activas.
+
+La Tabla \ref{tab:T14-dic-6-3} presenta sus paquetes.
+
+\parte{tablas/dic_6_3}
+
+\subsubsection{Cuenta 6.4 — Pruebas de recuperación ante desastres}
+
+Esta cuenta reúne las pruebas de recuperación ante desastres mediante conmutación real. La Etapa 1 mide RTO de hasta cuatro horas y RPO de hasta 15 minutos y verifica enlaces, alarmas y conciliación de retorno; la Etapa 2 repite la prueba con ambas etapas activas.
+
+La Tabla \ref{tab:T14-dic-6-4} presenta sus paquetes.
+
+\parte{tablas/dic_6_4}
+
+\subsubsection{Cuenta 6.5 — Pruebas de seguridad ofensiva}
+
+Esta cuenta reúne las pruebas de seguridad ofensiva realizadas por un tercero independiente para cada etapa. Se entregan los informes y la evidencia de corrección, sin hallazgos críticos ni altos abiertos.
+
+La Tabla \ref{tab:T14-dic-6-5} presenta sus paquetes.
+
+\parte{tablas/dic_6_5}
+
+\subsubsection{Cuenta 6.6 — Despliegue sin interrupción demostrado}
+
+Esta cuenta reúne las demostraciones de despliegue y reversión en Preproducción. La primera verifica la Etapa 1 sin interrupción ni intervención manual; la segunda demuestra el procedimiento sin interrumpir ninguna de las dos etapas.
+
+La Tabla \ref{tab:T14-dic-6-6} presenta sus paquetes.
+
+\parte{tablas/dic_6_6}
+
+\subsubsection{Cuenta 6.7 — Actas de certificación}
+
+Esta cuenta reúne las actas y la evidencia de certificación de cada incremento: H5 para la Etapa 1 y H10 para la Etapa 2, cuyo cierre incluye el desarrollo.
+
+La Tabla \ref{tab:T14-dic-6-7} presenta sus paquetes.
+
+\parte{tablas/dic_6_7}
+
+\subsubsection{Cuenta 6.8 — Documentación técnica, código y custodia}
+
+Esta cuenta reúne la documentación, el código fuente, la custodia y los elementos necesarios para entender, mantener y traspasar la solución (BA, art. 77, p. 39). Cada entrega liberada se acompañará al CLIENTE con su SBOM de 6.8.4 en formato CycloneDX o SPDX, identificando los componentes, sus identificadores de edición y licencias (BTT, cap. 11, RT-11.23, p. 24).
+
+La Tabla \ref{tab:T14-dic-6-8} presenta sus paquetes.
+
+\parte{tablas/dic_6_8}
+
+\subsection{Producto 7. Innovaciones verificadas}
+
+La Contraparte recibe las innovaciones verificadas y la evidencia de su seguimiento. Sus metas son propuestas de diseño.
+El producto 7 reúne 5 cuentas de control y 23 paquetes de trabajo.
+
+\subsubsection{Cuenta 7.1 — Innovación 1: seguimiento de vencimiento posentrega en el local}
+
+Esta cuenta reúne el catálogo de acciones, el estimador de saldo y ritmo de reposición, la lista sin conexión y el piloto para el seguimiento del vencimiento posentrega. Sus cuatro paquetes se ejecutan en la Etapa 1, incluida la marcha blanca.
+
+La Tabla \ref{tab:T14-dic-7-1} presenta sus paquetes.
+
+\parte{tablas/dic_7_1}
+
+\subsubsection{Cuenta 7.2 — Innovación 2: reproducción de incidentes de terreno}
+
+Esta cuenta reúne la captura y reproducción de evidencia de incidentes de terreno y su validación comparada durante la implementación. En Operación se mantienen los escenarios de regresión mediante informes trimestrales, desde el mes 21.
+
+La Tabla \ref{tab:T14-dic-7-2} presenta sus paquetes.
+
+\parte{tablas/dic_7_2}
+
+\subsubsection{Cuenta 7.3 — Innovación 3: vida útil remanente por historia térmica del lote}
+
+Esta cuenta reúne los parámetros, la asociación lote--sensor, la vista de vida útil remanente y su validación con Calidad en marcha blanca. Durante la Operación se revisan periódicamente los parámetros con aprobación del Líder de Calidad de LafroX y de Calidad del CLIENTE.
+
+La Tabla \ref{tab:T14-dic-7-3} presenta sus paquetes.
+
+\parte{tablas/dic_7_3}
+
+\subsubsection{Cuenta 7.4 — Innovación 4: tramo variable vinculado a resultados}
+
+Esta cuenta reúne la fórmula contractual del tramo variable vinculado a resultados durante la Etapa 2. La Operación comprende la línea base, tres liquidaciones en sombra y las 33 liquidaciones mensuales de los meses 24 a 56.
+
+La Tabla \ref{tab:T14-dic-7-4} presenta sus paquetes.
+
+\parte{tablas/dic_7_4}
+
+\subsubsection{Cuenta 7.5 — Innovación 5: hoja de negocio del almacenero}
+
+Esta cuenta reúne el prototipo, la evaluación de privacidad, el cálculo y la certificación de la hoja de negocio del almacenero durante la Etapa 2. En Operación considera su despliegue gradual por rutas y el bloque 4 condicionado al dictamen legal.
+
+La Tabla \ref{tab:T14-dic-7-5} presenta sus paquetes.
+
+\parte{tablas/dic_7_5}
+
+\subsection{Producto 8. Infraestructura, equipamiento y servicios habilitados}
+
+La Contraparte recibe la infraestructura, el equipamiento y los servicios habilitados para el funcionamiento de la plataforma.
+El producto 8 reúne 7 cuentas de control y 35 paquetes de trabajo.
+
+\subsubsection{Cuenta 8.1 — Compras de hardware y especificaciones}
 
 Esta cuenta de control reúne la especificación del equipamiento de terreno que compra el CLIENTE, la especificación y compra de la infraestructura que provee LafroX y su recepción técnica. LafroX provee, instala, integra y mantiene la infraestructura dentro del precio contratado (BA, art. 14.2, p. 10); su valorización corresponde a la Oferta Económica conforme al artículo 51 de las mismas Bases (p. 29).
 
-La Tabla \ref{tab:T-14-32} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-8-1} presenta sus paquetes.
 
-\parte{tablas/tab_T14_32}
+\parte{tablas/dic_8_1}
 
-\subsubsection{Cuenta 5.2 — Servicios de nube y licencias}
+\subsubsection{Cuenta 8.2 — Servicios de nube, licencias y enlaces contratados}
 
-Esta cuenta de control reúne los servicios de software que LafroX contrata.
+Esta cuenta reúne los contratos de servicios de nube, licencias y enlaces de los sitios que suscribe LafroX. El caso identifica la dependencia de un solo enlace en Concepción como un riesgo, y Los Ángeles tiene señal intermitente en su ventana de madrugada. Cada CD tiene fibra como enlace principal, LTE de respaldo y Starlink como tercer camino en espera caliente. Cada plataforma de cross-docking tiene Starlink como enlace principal y LTE de dos proveedores como respaldo.
 
-La Tabla \ref{tab:T-14-33} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-8-2} presenta sus paquetes.
 
-\parte{tablas/tab_T14_33}
+\parte{tablas/dic_8_2}
 
-\subsubsection{Cuenta 5.3 — Enlaces de comunicaciones}
-
-Esta cuenta de control reúne los contratos de conexión de los sitios que contrata LafroX. El caso nombra la dependencia de un solo enlace en Concepción como un riesgo, y Los Ángeles tiene señal intermitente justo en su ventana de madrugada. Cada CD tiene fibra como enlace principal, LTE de respaldo y Starlink como tercer camino en espera caliente. Cada plataforma de cross-docking tiene Starlink como enlace principal y LTE de dos proveedores como respaldo.
-
-La Tabla \ref{tab:T-14-34} presenta sus paquetes.
-
-\parte{tablas/tab_T14_34}
-
-\subsubsection{Cuenta 5.4 — Acuerdos con terceros}
-
-Esta cuenta de control reúne los acuerdos sin los cuales la solución no puede salir a la ruta, y la fórmula contractual de la innovación 4.
-
-La Tabla \ref{tab:T-14-35} presenta sus paquetes.
-
-\parte{tablas/tab_T14_35}
-
-\subsection{Fase 6. Infraestructura física y sitios}
-
-La fase 6 reúne 6 cuentas de control y 24 paquetes de trabajo.
-
-\subsubsection{Cuenta 6.1 — Adecuación de la sala técnica de Talca}
+\subsubsection{Cuenta 8.3 — Sala técnica de Talca habilitada}
 
 Esta cuenta de control reúne el trabajo de convertir la sala de Talca en una sala técnica que cumpla las Bases (BTT, capítulo 6). Termina con un acta que habilita el montaje de los racks.
 
-La Tabla \ref{tab:T-14-36} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-8-3} presenta sus paquetes.
 
-\parte{tablas/tab_T14_36}
+\parte{tablas/dic_8_3}
 
-\subsubsection{Cuenta 6.2 — Cableado estructurado}
+\subsubsection{Cuenta 8.4 — Cableado, racks y gabinetes}
 
-Esta cuenta de control reúne la red física de cables que conecta los equipos de la sala y de las bodegas.
+Esta cuenta reúne la red física de cables de la sala y las bodegas y el montaje de los equipos de cómputo y comunicaciones en cada uno de los cinco sitios.
 
-La Tabla \ref{tab:T-14-37} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-8-4} presenta sus paquetes.
 
-\parte{tablas/tab_T14_37}
+\parte{tablas/dic_8_4}
 
-\subsubsection{Cuenta 6.3 — Montaje de racks y gabinetes}
-
-Esta cuenta de control reúne el montaje de los equipos de cómputo y comunicaciones en cada uno de los cinco sitios.
-
-La Tabla \ref{tab:T-14-38} presenta sus paquetes.
-
-\parte{tablas/tab_T14_38}
-
-\subsubsection{Cuenta 6.4 — Sistemas de seguridad física}
+\subsubsection{Cuenta 8.5 — Seguridad física}
 
 Esta cuenta de control reúne lo que protege físicamente a la sala y a sus respaldos.
 
-La Tabla \ref{tab:T-14-39} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-8-5} presenta sus paquetes.
 
-\parte{tablas/tab_T14_39}
+\parte{tablas/dic_8_5}
 
-\subsubsection{Cuenta 6.5 — Equipamiento de campo}
+\subsubsection{Cuenta 8.6 — Equipamiento de campo}
 
-Esta cuenta de control reúne la puesta en marcha de los equipos que usan las personas en la bodega y en la ruta. Se instalan por olas, antes de que cada ola empiece.
+Esta cuenta reúne la puesta en marcha, por olas, de los equipos utilizados en bodega y ruta, con instalación previa al comienzo de cada ola.
 
-La Tabla \ref{tab:T-14-40} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-8-6} presenta sus paquetes.
 
-\parte{tablas/tab_T14_40}
+\parte{tablas/dic_8_6}
 
-\subsubsection{Cuenta 6.6 — Configuración de la infraestructura de los sitios}
+\subsubsection{Cuenta 8.7 — Configuración de los sitios}
 
 Esta cuenta de control reúne lo necesario para que el hardware instalado funcione como plataforma: el software de base, los enlaces y la prueba de autonomía.
 
-La Tabla \ref{tab:T-14-41} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-8-7} presenta sus paquetes.
 
-\parte{tablas/tab_T14_41}
+\parte{tablas/dic_8_7}
 
-\subsection{Fase 7. Capacitación y gestión del cambio}
+\subsection{Producto 9. Implantación y usuarios habilitados}
 
-La fase 7 reúne 3 cuentas de control y 13 paquetes de trabajo.
+La Contraparte recibe los planes de implantación, la evidencia de marcha blanca y aceptación, y los usuarios capacitados. Las marchas blancas comienzan con H6 y H11; los expedientes de aceptación corresponden a H7 y H12.
+El producto 9 reúne 7 cuentas de control y 25 paquetes de trabajo.
 
-\subsubsection{Cuenta 7.1 — Capacitación por roles}
+\subsubsection{Cuenta 9.1 — Planes de implantación y reversión}
 
-Esta cuenta de control reúne la capacitación de cada grupo según su rol y su situación.
+Esta cuenta reúne los planes de implantación y reversión. La Etapa 1 comprende las olas por sitio y el procedimiento de reversión; la Etapa 2 cuenta con su propio plan fuera de la ventana de 05:30 a 07:00.
 
-Todo el material de capacitación de 7.1.5, incluidos manuales por perfil, guías rápidas, preguntas frecuentes y videos tutoriales, y la base de conocimiento consultable de 3.11.2 y 8.5.3 se entregarán en español, en formato editable y serán de propiedad del CLIENTE (BTT, cap. 22, RT-22.03, p. 38).
+La Tabla \ref{tab:T14-dic-9-1} presenta sus paquetes.
 
-El plan de 7.1.1 acordará con el CLIENTE un calendario para todos los perfiles, por turno y horario, sin afectar la preparación nocturna, el despacho de 05:30 a 07:00 ni las labores en calle de lunes a sábado, y considerando los peaks de septiembre y diciembre. La capacitación de conductores externos se acordará con cada transportista mediante 5.4.1, y la inducción continua de preparadores de 7.1.2 atenderá la rotación anual del 38 \% sin detener la operación (BTT, cap. 22, RT-22.04, p. 38; Caso, cap. 15, pp. 26--27).
+\parte{tablas/dic_9_1}
 
-La Tabla \ref{tab:T-14-42} presenta sus paquetes.
+\subsubsection{Cuenta 9.2 — Marcha blanca}
 
-\parte{tablas/tab_T14_42}
+Esta cuenta reúne la operación supervisada de las dos marchas blancas: la de la Etapa 1 comienza con H6 y la de la Etapa 2 con H11. La segunda convive con la Etapa 1 en producción, con una sola fuente de verdad para los datos compartidos.
 
-\subsubsection{Cuenta 7.2 — Gestión del cambio}
+La Tabla \ref{tab:T14-dic-9-2} presenta sus paquetes.
 
-Esta cuenta de control reúne el acompañamiento de quienes no basta con capacitar.
+\parte{tablas/dic_9_2}
 
-La Tabla \ref{tab:T-14-43} presenta sus paquetes.
+\subsubsection{Cuenta 9.3 — Estabilización}
 
-\parte{tablas/tab_T14_43}
+Esta cuenta reúne la estabilización posterior al paso a producción. La Etapa 1 incluye acompañamiento en ruta y restauraciones de soporte puente; la Etapa 2 contempla apoyo a Comercial, Finanzas, cadenas y transportistas.
 
-\subsubsection{Cuenta 7.3 — Evaluaciones y certificaciones}
+La Tabla \ref{tab:T14-dic-9-3} presenta sus paquetes.
 
-Esta cuenta de control reúne las pruebas con que se demuestra que cada persona sabe usar la solución. Es una de las seis condiciones del artículo 17.3 de las Bases Administrativas (p. 13).
+\parte{tablas/dic_9_3}
 
-La Tabla \ref{tab:T-14-44} presenta sus paquetes.
+\subsubsection{Cuenta 9.4 — Aceptación y paso a producción}
 
-\parte{tablas/tab_T14_44}
+Esta cuenta reúne los expedientes de aceptación H7 y H12, con la evidencia de marcha blanca y el registro de producción de cada etapa. La garantía de correcto funcionamiento integra las condiciones de aceptación final del H12.
 
-\subsection{Fase 8. Operación y soporte (36 meses)}
+La Tabla \ref{tab:T14-dic-9-4} presenta sus paquetes.
 
-La fase 8 reúne 5 cuentas de control y 26 paquetes de trabajo.
+\parte{tablas/dic_9_4}
 
-\subsubsection{Cuenta 8.1 — Servicios de operación}
+\subsubsection{Cuenta 9.5 — Capacitación y certificación de usuarios}
 
-Esta cuenta de control reúne los servicios que mantienen la solución funcionando cada día y la actualización anual del Plan de Reversibilidad, que exige el artículo 77 de las Bases Administrativas (p. 39).
+Esta cuenta reúne la capacitación de cada grupo según su rol y situación, junto con las pruebas de certificación de usuarios, una de las seis condiciones del artículo 17.3 de las Bases Administrativas (p. 13).
 
-El SOC de 8.1.5 notificará al CLIENTE toda brecha de seguridad o de datos personales dentro de las 24 horas de su detección, adjuntando un informe preliminar, y entregará su análisis de causa raíz dentro de los cinco días hábiles siguientes a la detección (BTT, cap. 11, RT-11.19, p. 24). Durante Operación realizará al menos un ejercicio de simulación de incidente por año con participación del CLIENTE, conservando el escenario, la bitácora y las acciones de mejora (RT-11.21).
+Todo el material de capacitación de 9.5.5, incluidos manuales por perfil, guías rápidas, preguntas frecuentes y videos tutoriales, y la base de conocimiento consultable de 6.8.2 y 10.4.3 se entregarán en español, en formato editable y serán de propiedad del CLIENTE (BTT, cap. 22, RT-22.03, p. 38).
 
-En 8.1.2, cada incidente crítico tendrá un análisis de causa raíz obligatorio entregado al CLIENTE dentro de cinco días hábiles desde el incidente, con acciones correctivas, responsables y plazos; SRE seguirá cada acción hasta su cierre verificado en la gestión de problemas (BTT, cap. 14, RT-14.06, p. 27). La documentación operativa reunirá el libro de operación y una guía de resolución para cada escenario de falla previsible, incluidos los de los contratos de integración y el plan de continuidad; el servicio mantendrá estos procedimientos y automatizará progresivamente las tareas repetitivas con las herramientas de operación previstas (RT-14.05).
+El plan de 9.5.1 acordará con el CLIENTE un calendario para todos los perfiles, por turno y horario, sin afectar la preparación nocturna, el despacho de 05:30 a 07:00 ni las labores en calle de lunes a sábado, y considerando los peaks de septiembre y diciembre. La capacitación de conductores externos se acordará con cada transportista mediante 9.7.1, y la inducción continua de preparadores de 9.5.2 atenderá la rotación anual del 38 \% sin detener la operación (BTT, cap. 22, RT-22.04, p. 38; Caso, cap. 15, pp. 26--27). La certificación de la Etapa 1 comprende preventistas, conductores y preparadores; en la Etapa 2 se certifica a Comercial y Finanzas en costo de servir.
 
-El canal único de la mesa registrará incidentes y solicitudes con número de ticket, clasificación por severidad y seguimiento de todas sus actuaciones y estados hasta el cierre conforme, con el escalamiento L1–L3 previsto (BTT, cap. 21, RT-21.15, p. 37). El cierre de cada ticket requerirá la confirmación de la persona usuaria registrada en él; mientras falte, permanecerá pendiente de cierre y sujeto al seguimiento de la mesa (RT-21.17).
+La Tabla \ref{tab:T14-dic-9-5} presenta sus paquetes.
 
-El puesto NOC de 8.1.1 lo cubre la división de NOC 24\ensuremath{\times}7 de LafroX, con los ocho operadores nominados del perfil NOC del Formulario T-15 y una dedicación declarada de 100 \% en el primer año de operación, 75 \% en el segundo y 50 \% en el tercero. La dedicación solo baja con acta del Comité de Operación y con los tres meses anteriores dentro de los niveles del artículo 78 de las Bases Administrativas (p. 40); si un nivel no se cumple, vuelve al 100 \% a cargo de LafroX. De 20:00 a 22:00, de lunes a sábado, el NOC atiende también la mesa, con ocho operadores formados en los procesos de bodega, ruta y preventa. Los puestos de mesa de 8.1.2 atienden de 04:00 a 20:00 y suman un tercer agente en las franjas de menor demanda en septiembre y diciembre desde el mes 25 (Subdocumento 4, Anexo 4-W.7).
+\parte{tablas/dic_9_5}
 
-El servicio conservará un registro histórico de todas las actividades de soporte, vinculadas a su ticket, con clasificación, actuaciones, responsables y resultado (BTT, cap. 21, RT-21.09, p. 36). El informe mensual de niveles de servicio de 8.1.2 analizará las tendencias de los principales requerimientos, detallará el cumplimiento por severidad y analizará cada incumplimiento, indicando causa, impacto y acción correctiva con responsable y plazo; sus resultados se revisarán en el Comité de Operación (RT-21.09 y RT-21.18).
+\subsubsection{Cuenta 9.6 — Gestión del cambio}
+
+Esta cuenta de control reúne el acompañamiento de quienes no basta con capacitar. El diagnóstico y los agentes de cambio apoyan la Etapa 1; la Etapa 2 incorpora la comunicación con cadenas y transportistas, mientras la adopción se mide por ola.
+
+La Tabla \ref{tab:T14-dic-9-6} presenta sus paquetes.
+
+\parte{tablas/dic_9_6}
+
+\subsubsection{Cuenta 9.7 — Acuerdos con terceros}
+
+Esta cuenta reúne los acuerdos con terceros necesarios para la salida de la solución a la ruta.
+
+La Tabla \ref{tab:T14-dic-9-7} presenta sus paquetes.
+
+\parte{tablas/dic_9_7}
+
+\subsection{Producto 10. Servicio de operación y salida}
+
+La Contraparte recibe los servicios de operación y mantenimiento, sus informes y la ejecución de la salida contractual.
+El producto 10 reúne 5 cuentas de control y 21 paquetes de trabajo.
+
+\subsubsection{Cuenta 10.1 — Servicios de operación}
+
+Esta cuenta reúne los servicios que mantienen la solución funcionando cada día.
+
+El SOC de 10.1.4 notificará al CLIENTE toda brecha de seguridad o de datos personales dentro de las 24 horas de su detección, adjuntando un informe preliminar, y entregará su análisis de causa raíz dentro de los cinco días hábiles siguientes a la detección (BTT, cap. 11, RT-11.19, p. 24). Durante Operación realizará al menos un ejercicio de simulación de incidente por año con participación del CLIENTE, conservando el escenario, la bitácora y las acciones de mejora (RT-11.21).
+
+En 10.1.2, cada incidente crítico tendrá un análisis de causa raíz obligatorio entregado al CLIENTE dentro de cinco días hábiles desde el incidente, con acciones correctivas, responsables y plazos; SRE seguirá cada acción hasta su cierre verificado en la gestión de problemas (BTT, cap. 14, RT-14.06, p. 27). La documentación operativa reunirá el libro de operación y una guía de resolución para cada escenario de falla previsible, incluidos los de los contratos de integración y el plan de continuidad; el servicio mantendrá estos procedimientos y automatizará progresivamente las tareas repetitivas con las herramientas de operación previstas (RT-14.05).
+
+El canal único de la mesa registrará incidentes y solicitudes con número de ticket, clasificación por severidad y seguimiento de todas sus actuaciones y estados hasta el cierre conforme, con el escalamiento L1–L3 previsto (BTT, cap. 21, RT-21.15, p. 37). El cierre de cada ticket requerirá la confirmación de la persona usuaria registrada en él; mientras falte, permanecerá abierto y sujeto al seguimiento de la mesa (RT-21.17).
+
+El puesto NOC de 10.1.1 lo cubre la división de NOC 24\ensuremath{\times}7 de LafroX, con los ocho operadores nominados del perfil NOC del Formulario T-15 y una dedicación declarada de 100 \% en el primer año de operación, 75 \% en el segundo y 50 \% en el tercero. La dedicación solo baja con acta del Comité de Operación y con los tres meses precedentes dentro de los niveles del artículo 78 de las Bases Administrativas (p. 40); si un nivel no se cumple, vuelve al 100 \% a cargo de LafroX. De 20:00 a 22:00, de lunes a sábado, el NOC atiende también la mesa, con ocho operadores formados en los procesos de bodega, ruta y preventa. Los puestos de mesa de 10.1.2 atienden de 04:00 a 20:00 y suman un tercer agente en las franjas de menor demanda en septiembre y diciembre desde el mes 25 (Subdocumento 4, Anexo 4-W.7).
+
+El servicio conservará un registro histórico de todas las actividades de soporte, vinculadas a su ticket, con clasificación, actuaciones, responsables y resultado (BTT, cap. 21, RT-21.09, p. 36). El informe mensual de niveles de servicio de 10.1.2 analizará las tendencias de los principales requerimientos, detallará el cumplimiento por severidad y analizará cada incumplimiento, indicando causa, impacto y acción correctiva con responsable y plazo; sus resultados se revisarán en el Comité de Operación (RT-21.09 y RT-21.18).
 
 Guillermo Castillo, Líder de Operación / SRE, es el gerente de servicio dedicado de la Operación: con 100 \% de dedicación en los meses 21 a 56, es la contraparte permanente del CLIENTE, representa a LafroX en el Comité de Operación mensual y responde por los niveles de servicio, los incidentes y el plan de mejora continua (BA, art. 71, p. 37; BTT, cap. 21, RT-21.02, p. 36; Formulario T-15, sección 5.7).
 
-Los niveles 2 y 3 de la mesa los cubren especialistas distintos de los puestos de mesa de 8.1.2 y del puesto NOC de 8.1.1: en infraestructura y terreno, el equipo SRE de mantenimiento del hardware de 8.2.3, que ya atiende sala técnica, racks, gabinetes de borde y equipamiento de terreno; en aplicación, el equipo DES de mantención correctiva de 8.2.1, con apoyo del Líder de Operación / SRE. El nivel 4 es el soporte del fabricante, que LafroX gestiona sin trasladar su responsabilidad (BTT, sección 21.3, p. 37). Cuando la resolución de un incidente lo requiere, un especialista de nivel 2 o 3 se traslada a Curicó, Chillán, Los Ángeles o al sitio que corresponda por el medio más rápido disponible y permanece en el sitio hasta resolverlo. Como proviene de 8.2.1 o de 8.2.3, los puestos de mesa, NOC y SOC siguen cubiertos y los demás sitios conservan su atención normal. El traslado no reemplaza la recuperación remota: el restablecimiento dentro de los plazos del artículo 78 de las Bases Administrativas (p. 40) sigue a cargo del equipo en espera, la gestión remota y el responsable del sitio (Subdocumento 4, sección 4.2.4.3), y el traslado se destina a la resolución definitiva. El tiempo del especialista se imputa al paquete del que proviene; si los traslados exceden esa capacidad, LafroX los cubre sin costo adicional para el CLIENTE. Pasajes y viáticos se incluyen en la Oferta Económica, porque el CLIENTE no reembolsa viajes ni traslados (BA, arts. 11.2 y 51, pp. 9 y 29; BTT, cap. 21, RT-21.16, p. 37).
+Los niveles 2 y 3 de la mesa los cubren especialistas distintos de los puestos de mesa de 10.1.2 y del puesto NOC de 10.1.1: en infraestructura y terreno, el equipo SRE de mantenimiento del hardware de 10.2.3, que ya atiende sala técnica, racks, gabinetes de borde y equipamiento de terreno; en aplicación, el equipo DES de mantención correctiva de 10.2.1, con apoyo del Líder de Operación / SRE. El nivel 4 es el soporte del fabricante, que LafroX gestiona sin trasladar su responsabilidad (BTT, sección 21.3, p. 37). Cuando la resolución de un incidente lo requiere, un especialista de nivel 2 o 3 se traslada a Curicó, Chillán, Los Ángeles o al sitio que corresponda por el medio más rápido disponible y permanece en el sitio hasta resolverlo. Como proviene de 10.2.1 o de 10.2.3, los puestos de mesa, NOC y SOC siguen cubiertos y los demás sitios conservan su atención normal. El traslado no reemplaza la recuperación remota: el restablecimiento dentro de los plazos del artículo 78 de las Bases Administrativas (p. 40) sigue a cargo del equipo en espera, la gestión remota y el responsable del sitio (Subdocumento 4, sección 4.2.4.3), y el traslado se destina a la resolución definitiva. El tiempo del especialista se imputa al paquete del que proviene; si los traslados exceden esa capacidad, LafroX los cubre sin costo adicional para el CLIENTE. Pasajes y viáticos se incluyen en la Oferta Económica, porque el CLIENTE no reembolsa viajes ni traslados (BA, arts. 11.2 y 51, pp. 9 y 29; BTT, cap. 21, RT-21.16, p. 37).
 
-La Tabla \ref{tab:T-14-45} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-10-1} presenta sus paquetes.
 
-\parte{tablas/tab_T14_45}
+\parte{tablas/dic_10_1}
 
-\subsubsection{Cuenta 8.2 — Mantenimiento}
+\subsubsection{Cuenta 10.2 — Mantenimiento}
 
 Esta cuenta de control reúne el trabajo que mantiene la solución sana y actualizada, separado por tipo: software, ciberseguridad y hardware.
 
-LafroX destinará las 2.304 HH DES de 8.2.4 a reducir la deuda técnica durante los 36 meses de Operación, equivalentes al 2,0985 \% de las 109.791,32 HH de esa etapa: 2.304 \ensuremath{\div} 109.791,32 \ensuremath{\times} 100 = 2,0985 \%. Esa capacidad equivale a 2.304 \ensuremath{\div} 36 = 64 HH mensuales y 64 \ensuremath{\times} 12 = 768 HH anuales, con seguimiento en el registro cuantificado y el informe trimestral existentes; la fracción corresponde al total del período (BTT, cap. 21, RT-21.21, p. 38; Formulario T-15, secciones 4.2, 4.3 y 6.2).
+LafroX destinará las 2.304 HH DES de 10.2.4 a reducir la deuda técnica durante los 36 meses de Operación, equivalentes al 2,0985 \% de las 109.791,32 HH de esa etapa: 2.304 \ensuremath{\div} 109.791,32 \ensuremath{\times} 100 = 2,0985 \%. Esa capacidad equivale a 2.304 \ensuremath{\div} 36 = 64 HH mensuales y 64 \ensuremath{\times} 12 = 768 HH anuales, con seguimiento en el registro cuantificado y el informe trimestral existentes; la fracción corresponde al total del período (BTT, cap. 21, RT-21.21, p. 38; Formulario T-15, secciones 4.2, 4.3 y 6.2).
 
-El paquete 8.2.1 reparte sus 4.608 HH DES, es decir 4.608 \ensuremath{\div} 3 = 1.536 HH por año de Operación, en dos partes. La bolsa anual de mantención evolutiva es de 768 HH DES por año y se reserva para las mejoras funcionales, nuevas características y optimizaciones del desempeño que solicite el CLIENTE; la mantención correctiva y la normativa no la consumen. Las otras 768 HH anuales son la capacidad estimada para la mantención correctiva, incluido el mantenimiento de la Innovación 1 (Formulario T-19), y no son un tope: la corrección de defectos no tiene costo adicional y la que exceda esa estimación la absorbe LafroX (BTT, sección 21.4, pp. 37--38). La bolsa no utilizada en un año no se pierde y se acumula al año siguiente; en el tercer año, el Comité de Operación programa el uso del saldo acumulado dentro del período de Operación. Las horas que excedan la bolsa disponible se liquidan con la tarifa declarada en la Oferta Económica (BA, art. 51, p. 29). La bolsa se compone del perfil DES, el mismo que desarrolla la solución, y cada cambio pasa por el pipeline, las pruebas y las puertas de calidad del desarrollo original (BTT, cap. 21, RT-21.20, p. 38). El procedimiento tiene cuatro pasos. Solicitud: la Contraparte Técnica registra el cambio en el canal único de la mesa, con su ticket. Estimación: DES entrega en cinco días hábiles las HH, el alcance y el impacto estimados. Aprobación: el CLIENTE aprueba por escrito en el Comité de Operación antes de iniciar el trabajo. Liquidación: el informe mensual de 8.1.1 descuenta las HH reales de cada cambio desplegado e informa el saldo del año y el saldo acumulado (BTT, cap. 21, RT-21.19, p. 37).
+El paquete 10.2.1 reparte sus 4.608 HH DES, es decir 4.608 \ensuremath{\div} 3 = 1.536 HH por año de Operación, en dos partes. La bolsa anual de mantención evolutiva es de 768 HH DES por año y se reserva para las mejoras funcionales, nuevas características y optimizaciones del desempeño que solicite el CLIENTE; la mantención correctiva y la normativa no la consumen. Las otras 768 HH anuales son la capacidad estimada para la mantención correctiva, incluido el mantenimiento de la Innovación 1 (Formulario T-19), y no son un tope: la corrección de defectos no tiene costo adicional y la que exceda esa estimación la absorbe LafroX (BTT, sección 21.4, pp. 37--38). La bolsa no utilizada en un año no se pierde y se acumula al año siguiente; en el tercer año, el Comité de Operación programa el uso del saldo acumulado dentro del período de Operación. Las horas que excedan la bolsa disponible se liquidan con la tarifa declarada en la Oferta Económica (BA, art. 51, p. 29). La bolsa se compone del perfil DES, el mismo que desarrolla la solución, y cada cambio pasa por el pipeline, las pruebas y las puertas de calidad del desarrollo original (BTT, cap. 21, RT-21.20, p. 38). El procedimiento tiene cuatro pasos. Solicitud: la Contraparte Técnica registra el cambio en el canal único de la mesa, con su ticket. Estimación: DES entrega en cinco días hábiles las HH, el alcance y el impacto estimados. Aprobación: el CLIENTE aprueba por escrito en el Comité de Operación con antelación al inicio del trabajo. Liquidación: el informe mensual de 10.1.1 descuenta las HH reales de cada cambio desplegado e informa el saldo del año y el saldo acumulado (BTT, cap. 21, RT-21.19, p. 37).
 
-La Tabla \ref{tab:T-14-46} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-10-2} presenta sus paquetes.
 
-\parte{tablas/tab_T14_46}
+\parte{tablas/dic_10_2}
 
-\subsubsection{Cuenta 8.3 — Innovaciones en operación}
-
-Esta cuenta de control reúne la parte de las innovaciones que ocurre después del mes 21. Las metas son propuestas de diseño.
-
-La Tabla \ref{tab:T-14-47} presenta sus paquetes.
-
-\parte{tablas/tab_T14_47}
-
-Desde el mes 22, la responsabilidad de respuesta de los paquetes 8.3.2, 8.3.5 y 8.3.6 pasa al frente de Operación, bajo el Líder de Operación / SRE, una vez que concluyen las dedicaciones del Líder de Datos y del Líder de Implantación (Formulario T-15, sección 5.7). Esta transferencia no cambia las familias de esfuerzo del T-15: DAT para 8.3.2 e IMP para 8.3.5 y 8.3.6. Cada paquete conserva el período indicado en su fila.
-
-\subsubsection{Cuenta 8.4 — Informes y obligaciones periódicas}
+\subsubsection{Cuenta 10.3 — Informes y obligaciones periódicas}
 
 Esta cuenta de control reúne los informes y las tareas que las Bases fijan con una periodicidad durante la Operación y que no forman parte de los servicios diarios.
 
-Cada propuesta trimestral de ajuste de dimensionamiento de 8.4.1 incluirá su efecto en el costo de infraestructura, nube, licencias y enlaces respecto de la base contratada, para decisión del CLIENTE antes de ejecutarla. La comparación empleará los consumos observados y las condiciones económicas vigentes (BTT, cap. 9, RT-09.09, p. 22).
+Cada propuesta trimestral de ajuste de dimensionamiento de 10.3.1 incluirá su efecto en el costo de infraestructura, nube, licencias y enlaces respecto de la base contratada, para decisión del CLIENTE con antelación a su ejecución. La comparación empleará los consumos observados y las condiciones económicas vigentes (BTT, cap. 9, RT-09.09, p. 22).
 
-La Tabla \ref{tab:T-14-48} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-10-3} presenta sus paquetes.
 
-\parte{tablas/tab_T14_48}
+\parte{tablas/dic_10_3}
 
-\subsubsection{Cuenta 8.5 — Capacitación y transferencia en operación}
+\subsubsection{Cuenta 10.4 — Capacitación y transferencia en operación}
 
 Esta cuenta de control reúne la capacitación y el traspaso de conocimiento que las Bases exigen después de la implementación.
 
-El centro de soporte revisará los tickets y la retroalimentación de las personas usuarias para identificar necesidades recurrentes y complejidades de la operación. Incorporará las soluciones y lecciones validadas en la base de conocimiento de 8.5.3 y revisará trimestralmente su uso y utilidad para ajustar los procedimientos de atención (BTT, cap. 21, RT-21.10, p. 36).
+El centro de soporte revisará los tickets y la retroalimentación de las personas usuarias para identificar necesidades recurrentes y complejidades de la operación. Incorporará las soluciones y lecciones validadas en la base de conocimiento de 10.4.3 y revisará trimestralmente su uso y utilidad para ajustar los procedimientos de atención (BTT, cap. 21, RT-21.10, p. 36).
 
-La Tabla \ref{tab:T-14-49} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-10-4} presenta sus paquetes.
 
-\parte{tablas/tab_T14_49}
+\parte{tablas/dic_10_4}
 
-\subsection{Fase 9. Cierre}
-
-La fase 9 reúne 2 cuentas de control y 4 paquetes de trabajo.
-
-\subsubsection{Cuenta 9.1 — Cierre de la implementación}
-
-Esta cuenta de control reúne lo que se entrega cuando termina la implementación.
-
-La Tabla \ref{tab:T-14-50} presenta sus paquetes.
-
-\parte{tablas/tab_T14_50}
-
-\subsubsection{Cuenta 9.2 — Salida al término del contrato}
+\subsubsection{Cuenta 10.5 — Salida al término del contrato}
 
 Esta cuenta de control reúne el traspaso final y la eliminación de los datos personales.
 
-La Tabla \ref{tab:T-14-51} presenta sus paquetes.
+La Tabla \ref{tab:T14-dic-10-5} presenta sus paquetes.
 
-\parte{tablas/tab_T14_51}
+\parte{tablas/dic_10_5}
 
 \section{Carta Gantt}
 
-La carta Gantt muestra las ventanas de marcha blanca, los pasos a producción y el inicio de la fase de Operación, como exige el Formulario T-14. Su estructura contractual la fija el artículo 17 de las Bases Administrativas (pp. 12--13), y los hitos y sus meses, el Formulario E-25. La Tabla \ref{tab:T14-gantt} presenta esa estructura fija de los 56 meses, sobre la cual se programan los paquetes de la sección 2.
+La carta Gantt muestra las ventanas de marcha blanca, los pasos a producción y el inicio de la fase de Operación. Su estructura contractual la fija el artículo 17 de las Bases Administrativas (pp. 12--13), y los hitos y sus meses, el Formulario E-25. La Tabla \ref{tab:T14-gantt} presenta esa estructura fija de los 56 meses, sobre la cual se programan los paquetes de la sección 2.
 
 \parte{tablas/tab_T14_52}
 
@@ -1185,7 +1279,7 @@ Las Figuras \ref{fig:T14-gantt} a \ref{fig:T14-gantt-7} detallan, en siete parte
   {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 7 de 7 (filas 134 a 155 de 155), con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de la sección 2 de este formulario.}
   {fig:T14-gantt-7}
 
-La carta confirma que los períodos fijos del artículo 17 de las Bases Administrativas (pp. 12--13) se cumplen mes a mes y que ningún paso a producción cae en un período de congelamiento. La sala técnica y el borde de los sitios se instalan entre los meses 3 y 5, la base compartida y los módulos de la Etapa 1 se construyen entre los meses 4 y 8, y las pruebas de integración y certificación de la Etapa 1 ocupan los meses 9 y 10, antes del H5 del mes 12. Las cuentas de la Etapa 2 (3.5, 3.9, 4.3 y la segunda parte de 5.4) se ubican entre los meses 13 y 22, con los módulos en los meses 14 y 15 y la integración y certificación en los meses 16 y 17. Las cuentas de capacitación y de gestión del cambio se intensifican desde el mes 10, en preparación de cada marcha blanca. Las fechas diarias de los paquetes con entregable están en el Formulario T-15, sección 6.1, y la red con revisiones del CLIENTE y el cálculo de la ruta crítica, en su sección 5.
+La carta confirma que los períodos fijos del artículo 17 de las Bases Administrativas (pp. 12--13) se cumplen mes a mes y que ningún paso a producción cae en un período de congelamiento. La sala técnica y el borde de los sitios se instalan entre los meses 3 y 5, la base compartida y los módulos de la Etapa 1 se construyen entre los meses 4 y 8, y las pruebas de integración y certificación de la Etapa 1 ocupan los meses 9 y 10, con anterioridad al H5 del mes 12. Los trabajos de la Etapa 2 de software, certificación, implantación y capacitación se ubican entre los meses 13 y 22, con los módulos en los meses 14 y 15 y la integración y certificación en los meses 16 y 17. Las cuentas de capacitación y de gestión del cambio se intensifican desde el mes 10, en preparación de cada marcha blanca. Las fechas diarias de los paquetes con entregable están en el Formulario T-15, sección 6.1, y la red con revisiones del CLIENTE y el cálculo de la ruta crítica, en su sección 5.
 
 La Figura \ref{fig:T14-gantt-critica} aísla los elementos de la ruta crítica y sus dependencias hasta los inicios de las marchas blancas, H6 y H11, cuyas fechas son fijas.
 
@@ -1195,9 +1289,9 @@ La Figura \ref{fig:T14-gantt-critica} aísla los elementos de la ruta crítica y
 
 \section{Criterios vigentes de programación y recursos}
 
-Las ventanas mensuales de asignación y las HH por paquete están en el T-15, sección 4. La preparación del H3 sigue esta secuencia: planos 2.3.1/\allowbreak{}2.3.2 en el mes 1, especificación y orden de compra de LafroX 5.1.2 en el mes 2, instalación 6.1.1–6.1.4 en el mes 3 y recepción 6.1.5 en el mes 4. Los racks R01/\allowbreak{}R02 se montan en los meses 4 y 5, el gabinete de Concepción en el mes 4 y el borde de los CD entra en servicio mediante 6.6.3 en el mes 5. Los gabinetes de cross-docking se montan en el mes 9. El CLIENTE compra el equipamiento de terreno antes de cada ola.
+Las ventanas mensuales de asignación y las HH por paquete están en el T-15, sección 4. La preparación del H3 sigue esta secuencia: planos 2.4.1/\allowbreak{}2.4.2 en el mes 1, especificación y orden de compra de LafroX 8.1.2 en el mes 2, instalación 8.3.1–8.3.4 en el mes 3 y recepción 8.3.5 en el mes 4. Los racks R01/\allowbreak{}R02 se montan en los meses 4 y 5, el gabinete de Concepción en el mes 4 y el borde de los CD entra en servicio mediante 8.7.3 en el mes 5. Los gabinetes de cross-docking se montan en el mes 9. El CLIENTE compra el equipamiento de terreno con anterioridad a cada ola.
 
-4.2.2 incorpora estabilización y soporte puente E1 en los meses 16–20, desde el paso a producción previo a H7. La fase contractual de Operación comienza en el mes 21. 4.3.2 abarca desde el paso a producción de la Etapa 2 hasta el cierre del mes 22, con cuatro semanas reforzadas posteriores al H12, imputadas a los meses 21 y 22. El T-18, sección 6, declara la dotación y la regla de decremento. 8.3.2 realiza la revisión INN-03.P5 en los meses 24, 27, 30, 36, 39, 42, 48, 51 y 54 del proyecto. El T-15 distribuye 288 HH en nueve revisiones de 32 HH. La coordinación de reserva y retención (SD4, apartado 4.1.4.4) y las pruebas AL-STOCK-01/\allowbreak{}AL-ACT-01 se incorporan a los paquetes existentes conforme al T-18, sección 6.5. AL-STOCK-01 mide la proporción de líneas con más de una retención y las pruebas de carga 3.8.4/\allowbreak{}3.9.3 verifican el drenaje.
+9.3.1 incorpora estabilización y soporte puente E1 en los meses 16–20, desde el paso a producción previo a H7. La fase contractual de Operación comienza en el mes 21. 9.3.2 abarca desde el paso a producción de la Etapa 2 hasta el cierre del mes 22, con cuatro semanas reforzadas posteriores al H12, imputadas a los meses 21 y 22. El T-18, sección 6, declara la dotación y la regla de decremento. 7.3.5 realiza la revisión INN-03.P5 en los meses 24, 27, 30, 36, 39, 42, 48, 51 y 54 del proyecto. El T-15 distribuye 288 HH en nueve revisiones de 32 HH. La coordinación de reserva y retención (SD4, apartado 4.1.4.4) y las pruebas AL-STOCK-01/\allowbreak{}AL-ACT-01 se incorporan a los paquetes existentes conforme al T-18, sección 6.5. AL-STOCK-01 mide la proporción de líneas con más de una retención y las pruebas de carga 6.3.1/\allowbreak{}6.3.2 verifican el drenaje.
 
 \section*{Referencias}
 \phantomsection
