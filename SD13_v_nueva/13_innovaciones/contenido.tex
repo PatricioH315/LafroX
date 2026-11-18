@@ -339,15 +339,13 @@ EPCIS 2.0 es un estándar publicado (GS1 AISBL, 2022). Los modelos cinéticos de
 
 \subsection{Diseño de la incorporación}
 
+La innovación usa componentes que la arquitectura ya contiene. Los sensores B-01 y el kit de camión B-03 a B-15 son la fuente de las series; el gateway B-02 acumula la carga térmica de cámara sin enlace y el gateway B-04 la del camión. N-08 Ingesta de IoT y N-06 Telemetría cruda reciben las series y reutilizan los 30.548 mensajes y 127.848 lecturas diarias ya dimensionados para INT-05 (Capítulo 4, sección 4.2), sin agregar ingesta. La capa 5 transporta los eventos EPCIS con datos de sensor. M9 Calidad y trazabilidad muestra la historia y la estimación, y en ella Calidad del CLIENTE dispone y, junto con Maximiliano Miño, aprueba los parámetros. M2 Inventario y M5 Preparación reciben el orden de salida sugerido, habilitado por familia. M10 Analítica, sobre N-10, ejecuta el modelo, recalcula y publica, y conserva las series cinco años. La capa 7 versiona y aprueba el modelo y sus parámetros.
 
+La vigilancia del camión ocurre durante la ruta en B-04 y C-02, sin esperar la descarga al retorno. En cámara, B-02 acumula carga térmica sin enlace. Después, la asociación temporal y el modelo versionado producen una estimación que Calidad contrasta antes de habilitar su uso por familia. La sugerencia no sustituye el FEFO ni autoriza alargar la fecha impresa.
 
 La Figura~\ref{fig:sd13-4} distingue la captura en cámara y en ruta, la asociación al lote y el uso posterior de la estimación.
 
 \recorridolafrox{0.98}{diagramas/Fig_13-4_Recorrido_INN03.pdf}{Historia térmica: del sensor a la decisión de Calidad. Fuente: elaboración a partir del diseño, calendario y controles de INN-03 y sus contratos de datos (Subdocumento 13, Anexo 13.A).}{fig:sd13-4}
-
-La innovación usa componentes que la arquitectura ya contiene. Los sensores B-01 y el kit de camión B-03 a B-15 son la fuente de las series; el gateway B-02 acumula la carga térmica de cámara sin enlace y el gateway B-04 la del camión. N-08 Ingesta de IoT y N-06 Telemetría cruda reciben las series y reutilizan los 30.548 mensajes y 127.848 lecturas diarias ya dimensionados para INT-05 (Capítulo 4, sección 4.2), sin agregar ingesta. La capa 5 transporta los eventos EPCIS con datos de sensor. M9 Calidad y trazabilidad muestra la historia y la estimación, y en ella Calidad del CLIENTE dispone y, junto con Maximiliano Miño, aprueba los parámetros. M2 Inventario y M5 Preparación reciben el orden de salida sugerido, habilitado por familia. M10 Analítica, sobre N-10, ejecuta el modelo, recalcula y publica, y conserva las series cinco años. La capa 7 versiona y aprueba el modelo y sus parámetros.
-
-La vigilancia del camión ocurre durante la ruta en B-04 y C-02, sin esperar la descarga al retorno. En cámara, B-02 acumula carga térmica sin enlace. Después, la asociación temporal y el modelo versionado producen una estimación que Calidad contrasta antes de habilitar su uso por familia. La sugerencia no sustituye el FEFO ni autoriza alargar la fecha impresa.
 
 La Tabla~\ref{tab:sd13-14} presenta los paquetes de la EDT.
 
@@ -500,7 +498,7 @@ Al ser una innovación de contratación, su impacto se separa en lo que es costo
   {\cab{Rubro} & \cab{Clase} & \cab{Meses}}
 Diseño de la atribución, la canasta y los índices & Inversión / recursos humanos & 17 a 20 \\
 Ensayo en sombra & Inversión / recursos humanos & 21 a 23 \\
-Liquidación mensual, conciliación con Finanzas y acompañamiento comercial (restricción 9), horas del Jefe de Proyecto en 7.4.3 & Costo operacional / recursos humanos & 24 a 56 \\
+Liquidación mensual, conciliación con Finanzas y acompañamiento comercial (restricción 9), horas del Jefe de Proyecto y del Analista PMO en 7.4.3 & Costo operacional / recursos humanos & 24 a 56 \\
 Pago fijo de la Operación & Ingreso & 21 a 56 \\
 Tramo variable & Ingreso contingente; vale cero en los meses 21 a 23 & 24 a 56, a mes vencido \\
 Reducción del costo por entrega de Puelche & Beneficio & Desde el mes 24; meta en el mes 36 \\
