@@ -1,0 +1,79 @@
+{
+  "model": "Reproduccion de Erlang C de SD4 Anexo 4-W.7",
+  "monthly_equivalent_days": 22.14,
+  "average_handling_minutes": 10,
+  "busy_fraction": 0.25,
+  "service_seconds": 20,
+  "scenarios": [
+    {
+      "contacts": 2000,
+      "peak": 22.58355916892502,
+      "valley": 3.9853339709867686,
+      "sl7": 0.9061418709060344,
+      "sl2": 0.8416131522881732,
+      "sl3": 0.9702027087144608,
+      "need_peak": 7,
+      "need_valley": 2
+    },
+    {
+      "contacts": 2258.064516129032,
+      "peak": 25.497566803625023,
+      "valley": 4.499570612404416,
+      "sl7": 0.8420910851043076,
+      "sl2": 0.8038349599392165,
+      "sl3": 0.959080269027716,
+      "need_peak": 7,
+      "need_valley": 2
+    },
+    {
+      "contacts": 2283,
+      "peak": 25.779132791327914,
+      "valley": 4.549258727881396,
+      "sl7": 0.8347110540761821,
+      "sl2": 0.8000254522488266,
+      "sl3": 0.9578987947452211,
+      "need_peak": 7,
+      "need_valley": 2
+    },
+    {
+      "contacts": 2391,
+      "peak": 26.998644986449865,
+      "valley": 4.764466762314682,
+      "sl7": 0.8001878037998607,
+      "sl2": 0.7832145667704516,
+      "sl3": 0.9525621815363126,
+      "need_peak": 7,
+      "need_valley": 3
+    },
+    {
+      "contacts": 6000,
+      "peak": 67.75067750677506,
+      "valley": 11.956001912960305,
+      "sl7": 0.0,
+      "sl2": 0.005739454493577045,
+      "sl3": 0.5735526117239966,
+      "need_peak": 15,
+      "need_valley": 4
+    }
+  ],
+  "dr_sequence_minutes": [
+    5,
+    30,
+    20,
+    30,
+    15,
+    15,
+    15,
+    5
+  ],
+  "dr_total_minutes": 135,
+  "dr_margin_minutes": 105,
+  "nonproduction_weekly_hours": 60,
+  "continuous_weekly_hours": 168,
+  "theoretical_reduction_percent": 64.28571428571428,
+  "ordinary_desk_hours_example": 962,
+  "peak_desk_hours_september_2029": 1570,
+  "critical_downtime_budget_30days_minutes": 43.2,
+  "availability_four_hours_outage_30days_percent": 99.44444444444444,
+  "technical_debt_effort_percent": 2.098526550186299
+}

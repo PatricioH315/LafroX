@@ -1,0 +1,1832 @@
+{
+  "proyecto": "LafroX",
+  "fecha": "2026-11-17",
+  "fuentes_git": [
+    {
+      "id": "SD1",
+      "branch": "LafroX-Subdoc1-LateX-CORRIGIENDO",
+      "commit": "278a4c413e87aeeb247f071bd37e1f5c041c6d08",
+      "url": "https://github.com/PatricioH315/LafroX/tree/278a4c413e87aeeb247f071bd37e1f5c041c6d08",
+      "latex_files": [
+        {
+          "path": "contenido.tex",
+          "sha256": "1c190ad55b82ac26dfaae90d0c48ebed61b22d15283a314bf1bd0bcab8a3b045"
+        },
+        {
+          "path": "figuras/organigrama-corporativo.tex",
+          "sha256": "70fc39455d2dca57200170300ede233f41ea111141925ce42f59beb7d36d4d1e"
+        },
+        {
+          "path": "LAFROX-Formulario-T-6.tex",
+          "sha256": "0d6379af775a656531571a63f6a4a3ae5dc7a2f7033882d14d629e07958ea4ce"
+        },
+        {
+          "path": "lafrox-portada.tex",
+          "sha256": "d24641ae895bf660851fa055508414c3b3e1d1ac59096a17799b75b7de00bc4c"
+        },
+        {
+          "path": "LAFROX-Subdocumento1.tex",
+          "sha256": "1f1b72735ea25d155d83e3c1e9d00a21e71b008f955bf53dbfb7d4f93f19fb79"
+        }
+      ],
+      "pdfs": [
+        {
+          "path": "LAFROX-Formulario-T-6.pdf",
+          "sha256": "8b2c8967a804cf01156551c43b315268c6870b7e44b55aac236b6aa5c344931e",
+          "pages": 8
+        },
+        {
+          "path": "LAFROX-Subdocumento1.pdf",
+          "sha256": "66298751deeee0b795d508163fa3a65e0107bcfe8ce27fc98ba3481785446241",
+          "pages": 23
+        }
+      ]
+    },
+    {
+      "id": "SD2",
+      "branch": "LafroX-Subdoc2-LateX-CORRIGIENDO",
+      "commit": "a72407bc374a9880dfc362e9554b21b7ba29cef3",
+      "url": "https://github.com/PatricioH315/LafroX/tree/a72407bc374a9880dfc362e9554b21b7ba29cef3",
+      "latex_files": [
+        {
+          "path": "anexos.tex",
+          "sha256": "d7f4fd9247586c86722b4ec3105ea410405310691982ccd5479904f8d21bf6c0"
+        },
+        {
+          "path": "contenido.tex",
+          "sha256": "88e131df3ad204fb3960d4d8632658c45571453ee4f6a58a872a95bd642b13b1"
+        },
+        {
+          "path": "lafrox-portada.tex",
+          "sha256": "d24641ae895bf660851fa055508414c3b3e1d1ac59096a17799b75b7de00bc4c"
+        },
+        {
+          "path": "LAFROX-Subdocumento2-Anexos.tex",
+          "sha256": "7bd33925b5c19cf4bb998f54ff6432f812035a9b0fd8a15c6157bc3fceccf335"
+        },
+        {
+          "path": "LAFROX-Subdocumento2.tex",
+          "sha256": "47258f1102d5ba73d4451137d2274b472f32ee9c05c5af51b9dfe03e3cb244cb"
+        },
+        {
+          "path": "trazabilidad/Cambios-Subdocumento2.tex",
+          "sha256": "eaf167fcb126a76722452075ea44b3679baa990fb3446f2aa13650b5aa6609fb"
+        },
+        {
+          "path": "trazabilidad/verificacion.tex",
+          "sha256": "22b61c9d1366c89a5ada46f915d19c0ac005dae0d1333a9f2fd5d0ed46ac5d7b"
+        }
+      ],
+      "pdfs": [
+        {
+          "path": "LAFROX-Subdocumento2-Anexos.pdf",
+          "sha256": "2fb0dc014fc6512db98d1656d2fc9f06d4afc75060a5ee7e3499500d079e3349",
+          "pages": 21
+        },
+        {
+          "path": "LAFROX-Subdocumento2.pdf",
+          "sha256": "7c5c6caa3a8cfbfc8827b6fa35b31adeb1748088b9967db8ae678b4bda459a61",
+          "pages": 30
+        }
+      ]
+    },
+    {
+      "id": "SD3",
+      "branch": "LafroX-Subdoc3-LateX-CORRIGIENDO",
+      "commit": "887ab84c9a78f6885f1c1724d24e026a1789f671",
+      "url": "https://github.com/PatricioH315/LafroX/tree/887ab84c9a78f6885f1c1724d24e026a1789f671",
+      "latex_files": [
+        {
+          "path": "ajustes-maquetacion-local.tex",
+          "sha256": "c66845c01d1129d6547f38e1c145919aadd1182f6f47cc8fff8c1542d71235a3"
+        },
+        {
+          "path": "anexos.tex",
+          "sha256": "60b80687e897d4fe9f7508a0b35e44490fbb4efa4beb221f7c1c2cda5fbe51eb"
+        },
+        {
+          "path": "contenido.tex",
+          "sha256": "5004c88ae0079fa4df7430f8e84bc4cf21333c2ac031692203c7cacf47f1b192"
+        },
+        {
+          "path": "figures/actores_editable.tex",
+          "sha256": "b5d8eea4bce87f6c2e0d34f27e75dee977e8ed8b45cdc7c78b93c8ed2d4f05c1"
+        },
+        {
+          "path": "figures/emplazamiento_editable.tex",
+          "sha256": "9a21c04ccb960a8be100b9cb6a770a9048070bea69c7b611cdf3fc297c66ef3b"
+        },
+        {
+          "path": "figures/modulos_editable.tex",
+          "sha256": "5edc2a73698b44fe28ba76d91fb798ba421cf766621f53fb85294c4a4d1e107a"
+        },
+        {
+          "path": "figures/trazabilidad_editable.tex",
+          "sha256": "d07a4e1b89d51184c5e48d030e2f1796cd1646943083c8420661b5614aa2f21c"
+        },
+        {
+          "path": "figures/vista_general_editable.tex",
+          "sha256": "b079d18f8eb119d7f9438390128523e2aa09fb9b9019573cb715340c1357ff7b"
+        },
+        {
+          "path": "LAFROX-Formulario-T-12.tex",
+          "sha256": "57e945639ec5f5b12fe92b5f928134984807a81e0b8f77db8ba04161fff71d55"
+        },
+        {
+          "path": "lafrox-portada.tex",
+          "sha256": "d24641ae895bf660851fa055508414c3b3e1d1ac59096a17799b75b7de00bc4c"
+        },
+        {
+          "path": "LAFROX-Subdocumento3-Anexos.tex",
+          "sha256": "b570f3c5fc642d3e0839dc933725463b10325d1eee01ed5061a35e099f7f0c97"
+        },
+        {
+          "path": "LAFROX-Subdocumento3.tex",
+          "sha256": "0f1415d57613396795092a53361e667078dfd6a9741989ac865384892abcd321"
+        },
+        {
+          "path": "tablas/anx_correspondencia.tex",
+          "sha256": "003de915cb509e28d22faaf090b589ca413cc260d8f201ef8da8d29879b9ede2"
+        },
+        {
+          "path": "tablas/anx_decisiones.tex",
+          "sha256": "0dec8dc5fa3553ace92ad960628a9ee5594ba769c40d68282e7e635beaeb862d"
+        },
+        {
+          "path": "tablas/anx_exclusiones.tex",
+          "sha256": "2b2af6f16e5810ed6f4a60f2fac2eb595f132f89ff16a7f56de94d6317704bd3"
+        },
+        {
+          "path": "tablas/anx_glosario.tex",
+          "sha256": "04df8ec26d1802784d33169037fffbdbea23db7bb8404455b42124e8a1c40903"
+        },
+        {
+          "path": "tablas/anx_grupos.tex",
+          "sha256": "02f1f49934f77e718d87b65798ca4980750f056c57927e1c5fb74fddbb261104"
+        },
+        {
+          "path": "tablas/anx_r18.tex",
+          "sha256": "771939f06a154ae9b6c7f810d97433ec07ddd5ef579530fe1dcdb556136dbade"
+        },
+        {
+          "path": "tablas/anx_reglas.tex",
+          "sha256": "916470b5d7a77f3c3d34258f828cf321b8bf9c06afac47c60bcf39a0222d6f1a"
+        },
+        {
+          "path": "tablas/anx_restricciones.tex",
+          "sha256": "dcc5cbc097bdc06dc29457cebbbfc757f70e8be34bcc34476035802ab5889743"
+        },
+        {
+          "path": "tablas/anx_rf.tex",
+          "sha256": "b4d02766e3b3621df6bdec41e787f3cbea633604e3eec183d1377656b8640e72"
+        },
+        {
+          "path": "tablas/anx_rf_vacios.tex",
+          "sha256": "3c103d06cd20788c13bb6eb686cd54a0c39d1e973995c2ed7a12112ff217fe82"
+        },
+        {
+          "path": "tablas/anx_rnf.tex",
+          "sha256": "368a64553db5282b7722686753e45693d34c417d003d4b652c2543783a71a140"
+        },
+        {
+          "path": "tablas/anx_rnf_vacios.tex",
+          "sha256": "a255ef4b8da6587b064e5baace5e69fb9e958f9189a7e269794ee143b80a6aa5"
+        },
+        {
+          "path": "tablas/anx_supuestos.tex",
+          "sha256": "c38283a0714df28ed92a73ae7f155ca1f6d91af1e0ab083053a5e9fb2fd43314"
+        },
+        {
+          "path": "tablas/anx_vacios.tex",
+          "sha256": "eb6e00ab7f50fe6955b7776e45b4a68285af9937e5549f22f06a6dcb2a8e4dd9"
+        },
+        {
+          "path": "tablas/capas.tex",
+          "sha256": "a8b721c303f3d06f9a2402a429d90197c52458e7b5d08fb657e577f4c384ccea"
+        },
+        {
+          "path": "tablas/declaracion_ia.tex",
+          "sha256": "409f65f48291904eb898d4c2d51d3a747644d1163249d9d21636025749687f14"
+        },
+        {
+          "path": "tablas/declaracion_ia_anexos.tex",
+          "sha256": "1154f67037eb97e21ad3522505b6f2b5c5bfd08033368d099c10a8ffcf89dfcd"
+        },
+        {
+          "path": "tablas/declaracion_ia_t12.tex",
+          "sha256": "4f6e4b3576c6302c1f07dbe60d5255bf3d5aeb31c55d9d775ee6288e8c1efda9"
+        },
+        {
+          "path": "tablas/emplazamiento.tex",
+          "sha256": "df8c7edc2414704af2b88210737f9b0510b6c15250bcf153bc5ba34ec30ca675"
+        },
+        {
+          "path": "tablas/estrategia.tex",
+          "sha256": "b7307422a1c9671ed199a58e6b20da55b863b75e3b110ba5e8a3e92fdbd8ed37"
+        },
+        {
+          "path": "tablas/hitos.tex",
+          "sha256": "eec8f558c0d10e8b1c02dcb23c9619e879a9311f22c02216f8ace7ac41bd490d"
+        },
+        {
+          "path": "tablas/reglas_negocio.tex",
+          "sha256": "5ba600db98207482edf4f684fcf916d20b0c2dea31bfc72ec74c0bd266cfd088"
+        },
+        {
+          "path": "tablas/resultados_cap18.tex",
+          "sha256": "772a87abba87904674d7b38b74ecbc233bdef178780985776b5917886a294edc"
+        },
+        {
+          "path": "tablas/t12_caso.tex",
+          "sha256": "e74256d63a09f3541a82c9edb431a92a584fb679a9449a21bbd6739d2aa5f061"
+        },
+        {
+          "path": "tablas/t12_rt.tex",
+          "sha256": "ba1f877ee1919d68ccf66092dc94641cc504c4cc91da81bd999ee828811f9a6b"
+        },
+        {
+          "path": "tablas/vacios.tex",
+          "sha256": "ef72db57c950dcdb03d064817baee580108b6f7a783c13402655671453a3ef64"
+        },
+        {
+          "path": "tablas_anexo/actores_sistema.tex",
+          "sha256": "f12c31c865a57f4a181a91e26f02fa31ea9b07652250303f4971695726b188e4"
+        },
+        {
+          "path": "tablas_anexo/condiciones_rectoras_rnf.tex",
+          "sha256": "c4eace69a0bd493b88cfe0825c1fb83add7b9cba081e3c529f4c031b33cc8fde"
+        },
+        {
+          "path": "tablas_anexo/correspondencia_familias.tex",
+          "sha256": "386becf7b9fc8c26698dde7b64317d7cc4780f758fcc5f316ebf04093938bfc8"
+        },
+        {
+          "path": "tablas_anexo/criterios_aceptacion.tex",
+          "sha256": "feb7e6d34933b6e469e00df46419ea3f11b305f50240aec468a3c0e6a55b17d5"
+        },
+        {
+          "path": "tablas_anexo/decisiones.tex",
+          "sha256": "36e462a5cd6203447c2c99067bcef5f4838dd1076235c6155a0fe4f10dc4c72b"
+        },
+        {
+          "path": "tablas_anexo/declaracion_ia.tex",
+          "sha256": "59e169c840aa95869410e4fa9d340993a0d3f7e9a3d4f73257117387edf6bc1f"
+        },
+        {
+          "path": "tablas_anexo/exclusiones.tex",
+          "sha256": "39e1b36d77406af4a12946657b7a74512c05efef2157f3c942e8382f26f90188"
+        },
+        {
+          "path": "tablas_anexo/glosario.tex",
+          "sha256": "4a522f1d38f15e22ea63b9eea1fc90f19698d059cbd6278f57f80a39f56bdbee"
+        },
+        {
+          "path": "tablas_anexo/materias_funcionales_complementarias.tex",
+          "sha256": "b07cc8b03d40dee274942d05019c496a109793a0df7d9fe4e1348d9bc8835296"
+        },
+        {
+          "path": "tablas_anexo/participacion_actores.tex",
+          "sha256": "c935c149de90e08969bf3a927ac8ffa34a5e2ae188e733abfd63e1e9348d4348"
+        },
+        {
+          "path": "tablas_anexo/reglas_negocio.tex",
+          "sha256": "b0f5ba4a12043ce3e334787cbaf1c6a911600a3c9dc7dd117ed39649c9572e47"
+        },
+        {
+          "path": "tablas_anexo/restricciones.tex",
+          "sha256": "3b266da4cd488ee751c6ffacd7af3f2362b2c2f67ab6c83d983c10f748ebf0bc"
+        },
+        {
+          "path": "tablas_anexo/rf_btt.tex",
+          "sha256": "0bfdb431336460aec58f724f9b3168db48637ac2806b35c6df3d5541edc3d620"
+        },
+        {
+          "path": "tablas_anexo/rf_caso.tex",
+          "sha256": "f19fc504758b6249231991ff9e7f80acde9599956218ab9d271a0a6b3105156a"
+        },
+        {
+          "path": "tablas_anexo/rf_propios.tex",
+          "sha256": "bd48c6ad9058e742ecaffa636622d9bd2c639ec8066e9a0db57f42b9034ca355"
+        },
+        {
+          "path": "tablas_anexo/rnf_btt.tex",
+          "sha256": "072972e630f6612503cfd85c673f206bb36d089dd6eaf4426c3724891e1e4ed1"
+        },
+        {
+          "path": "tablas_anexo/rnf_caso.tex",
+          "sha256": "a4f9a7c60ed39cde90280a46230fac7fea97ea7339d3f62d13c404e7c22a7adb"
+        },
+        {
+          "path": "tablas_anexo/rnf_propios.tex",
+          "sha256": "3926bfaf4c539f6ba450fdc927348df094873222df518e89aac75813626a5009"
+        },
+        {
+          "path": "tablas_anexo/supuestos.tex",
+          "sha256": "e8c26d49417183eb38b5330ebcf8ae30e13e4fbbe7aedfdf44c4d4710ffd3591"
+        },
+        {
+          "path": "tablas_anexo/vacios.tex",
+          "sha256": "bc123ec7d082c63422c8e8e18e39d838d548a932085ebf3d9625af22dfe77df6"
+        },
+        {
+          "path": "trazabilidad/matriz_observaciones_sd3.tex",
+          "sha256": "27b790577b00b13f01dc45530373ef41144665b3c5c89a3bf7195c5566365205"
+        },
+        {
+          "path": "trazabilidad/Trazabilidad-SD3.tex",
+          "sha256": "9a92abd2225084e470b4c90604f74c66563c55b14c13f27d9bd780649c24343b"
+        }
+      ],
+      "pdfs": [
+        {
+          "path": "LAFROX-Formulario-T-12.pdf",
+          "sha256": "f406d9cf532bb040b16c5d5e1ab2a91d4359fc45bde509229020b7bc2d2e5723",
+          "pages": 372
+        },
+        {
+          "path": "LAFROX-Subdocumento3-Anexos.pdf",
+          "sha256": "2dcad9d4e02122cda62a6f822d46499b3884a7fdac3084fe9c54c63f1a9ebf81",
+          "pages": 201
+        },
+        {
+          "path": "LAFROX-Subdocumento3.pdf",
+          "sha256": "8bd50d657b004f51b00647bb9facda7d67977d6c1c6b792a62eaa8e5e4095ce4",
+          "pages": 40
+        }
+      ]
+    },
+    {
+      "id": "SD4",
+      "branch": "LafroX-Subdoc4-LateX-corrigiendo",
+      "commit": "5485aaf9a250647af9b7b94c7b1df2389bba4e26",
+      "url": "https://github.com/PatricioH315/LafroX/tree/5485aaf9a250647af9b7b94c7b1df2389bba4e26",
+      "latex_files": [
+        {
+          "path": "00/plantilla/fisica/lafrox-portada.tex",
+          "sha256": "a2dfba297d311c4bf01557f0bdc9b296d37998eec74bb7b4c007da3980a12dab"
+        },
+        {
+          "path": "00/plantilla/formato-base/lafrox-portada.tex",
+          "sha256": "1444f4c5ad9177d73fa4f88e8acc82c0b1904f857d657844f1bd26b30efe6605"
+        },
+        {
+          "path": "00/plantilla/logica/lafrox-portada.tex",
+          "sha256": "a2dfba297d311c4bf01557f0bdc9b296d37998eec74bb7b4c007da3980a12dab"
+        },
+        {
+          "path": "04/anexos/fisica/16_anexo_4b_memoria_calculo.tex",
+          "sha256": "0e3a594dd75525fb4a38b65eb850a0bada2a88ba0290ec0d846d3670f6c19cfb"
+        },
+        {
+          "path": "04/anexos/logica/contenido.tex",
+          "sha256": "4a311450d7a2425759633c3fcd99d839cb8d957887690cce9d91f661f2ca9493"
+        },
+        {
+          "path": "04/anexos/logica/partes/00_catalogo_anexos.tex",
+          "sha256": "fcb412434dfa7104846ff631972dd95f6bc710cd6b9639948b7b86ab3a4a43a6"
+        },
+        {
+          "path": "04/anexos/logica/partes/01_apertura_anexos.tex",
+          "sha256": "bd690d44678eeef38324d57054cc19840c5c5d1650ed07be941748af8a62121a"
+        },
+        {
+          "path": "04/anexos/logica/partes/02_anexo_4_1_a_catalogo_de_eventos_canonicos.tex",
+          "sha256": "c37d26d83f9ce8d851a735ca9b05ade294be3c58e7ebca74a8814acaf3272d2d"
+        },
+        {
+          "path": "04/anexos/logica/partes/03_anexo_4_1_b_gobierno_de_la_integracion.tex",
+          "sha256": "c420d01921bf681316a571219cc53a82f9e29d65e8907a8a142df1145841d64c"
+        },
+        {
+          "path": "04/anexos/logica/partes/04_anexo_4_1_c_escenarios_de_carga_masiva.tex",
+          "sha256": "8f17b1c13781d8c02517b21539893e1feaa3d13a60a42ac51e53f35c568da571"
+        },
+        {
+          "path": "04/anexos/logica/partes/05_anexo_4_1_d_matriz_de_los_doce_modulos.tex",
+          "sha256": "fd93fffc1d734eeea191ec35dd839596f64d483f346f45bf5455a778279be51e"
+        },
+        {
+          "path": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+          "sha256": "47e45c62160ea3f9ad14457df64e76e928ad9b42809813ac0dd0ed758526a218"
+        },
+        {
+          "path": "04/anexos/logica/partes/07_anexo_4_1_f_mapa_de_limites_de_contexto.tex",
+          "sha256": "e975b60f3908689a53ef3c9777ad08f73130de3657161b35789f393d6e4b8208"
+        },
+        {
+          "path": "04/anexos/logica/partes/08_anexo_4_1_g_catalogo_de_interfaces_internas.tex",
+          "sha256": "a8f7da2e11c446355f4b3b4dfe37624d5902e67c32ec13016d27efbaaf5a1b37"
+        },
+        {
+          "path": "04/anexos/logica/partes/09_anexo_4_1_h_catalogo_de_interfaces_externas.tex",
+          "sha256": "d141832e2734fe1038b19380ae259193cc7a916f6bf3a8b7e813bb4deb757e42"
+        },
+        {
+          "path": "04/anexos/logica/partes/10_anexo_4_1_i_volumen_de_mensajes.tex",
+          "sha256": "7346aa90df71d7c2efcf5fb3bb34c4a105fe391222fc145661cad24f7d5d0289"
+        },
+        {
+          "path": "04/anexos/logica/partes/11_anexo_4_1_j_funciones_sin_conexion.tex",
+          "sha256": "236dae3b9cd2bc429f2af4fbfb0a5e46718419b1e99d18701ca5242f7c288b6e"
+        },
+        {
+          "path": "04/anexos/logica/partes/12_anexo_4_1_k_reglas_de_reconciliacion.tex",
+          "sha256": "519f9f75119533eafe3054bb6e5eb421120e29217ce5ec6a782d4b16371d13da"
+        },
+        {
+          "path": "04/anexos/logica/partes/13_anexo_4_1_l_decisiones_del_numeral_16_1.tex",
+          "sha256": "8cce33e0a057233aba327921fb9d28262f8c315078541bb4f1aaab77f462f577"
+        },
+        {
+          "path": "04/anexos/logica/partes/14_anexo_4_1_m_verificacion_de_continuidad_logica.tex",
+          "sha256": "f3711bdf93b14910a45908c5b5b78452ac58ae8145f2f6a6f59e2f27ece73481"
+        },
+        {
+          "path": "04/anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.tex",
+          "sha256": "6122965cbb93ef924b280639805f5a8dc0bb272307cbae0f7f693e117c3c0284"
+        },
+        {
+          "path": "04/anexos/logica/partes/16_referencias.tex",
+          "sha256": "037781f0d748e96eb0c030ec2e312ed41f925c0261a6474887abad98a4e16115"
+        },
+        {
+          "path": "04/anexos/logica/partes/17_declaracion_de_uso_de_ia.tex",
+          "sha256": "fa59effd02cb4102eafce8e06857701fc6c0227ab97085f8e84ee14f2069201b"
+        },
+        {
+          "path": "04/anexos/logica/partes/18_anexo_4_1_o_decisiones_logicas.tex",
+          "sha256": "e7582638e7c1e4b3112a3ad9d1bcd64ecea6172d8c2569b871f26acec2e1ae17"
+        },
+        {
+          "path": "04/anexos/logica/partes/19_anexo_4_1_p_tecnologias_soporte.tex",
+          "sha256": "613afb0d3bf4bfc132a6d06d3ffc8787b2cb2c1c4ec78e84ef69ce8f25d7eb4d"
+        },
+        {
+          "path": "04/anexos/logica/partes/20_anexo_4_1_q_modelado_amenazas.tex",
+          "sha256": "82fe622b279614f2651fa2adecf8969af3016877215986a8f659c45389a957f4"
+        },
+        {
+          "path": "04/anexos/logica/partes/21_anexo_4_1_r_controles_seguridad.tex",
+          "sha256": "66cbe629d94a0eee39c600e7887526be7a858e7801555df3c5b1de84835013e0"
+        },
+        {
+          "path": "04/anexos/logica/partes/22_anexo_4_1_s_puntos_de_vista.tex",
+          "sha256": "e6f06db3f691ca8e51fa541a3fb709617d1fe06a7f800dd24db2222fef2dc0f3"
+        },
+        {
+          "path": "04/anexos/logica/partes/23_anexo_4_1_t_desempeno.tex",
+          "sha256": "11734801375bae29ce429ac72764b46d982b9b697c636224276620469b594b97"
+        },
+        {
+          "path": "04/anexos/logica/partes/24_anexo_4_1_u_evidencia_documental.tex",
+          "sha256": "deb83002300be8310f8edbc82d8f1284c18f3010a33117b9be89e8da06c92b68"
+        },
+        {
+          "path": "04/anexos/logica/partes/25_anexo_4_1_v_aceptacion_y_dependencias.tex",
+          "sha256": "8732c976a24f544cb9fa52f8c8f3207a181bb25669226f0af99bccad1a27fc5c"
+        },
+        {
+          "path": "04/anexos_logica.tex",
+          "sha256": "71e7e19494580565f242197c1b3b3be2b34984da4425e5112c103390cd936ef1"
+        },
+        {
+          "path": "04/formulario_T11.tex",
+          "sha256": "b587dfc93c26943c4355abfaab7d82f0eb4fb83af551c1bbce86ddf427c8a4da"
+        },
+        {
+          "path": "04/formularios/T11/15_anexo_t11.tex",
+          "sha256": "b610c4a5dab231d289199f9e6d1a6a50aeb7a70f1f1cbbc9b0f9b9d15213a04a"
+        },
+        {
+          "path": "04/partes/4.1_logica/01_introduccion.tex",
+          "sha256": "a5eb0e43853e22472818ac64ee2074178a94cabed7f4912d41cca426f6794c4e"
+        },
+        {
+          "path": "04/partes/4.1_logica/02_especificaciones_tecnologias_de_software_a_utilizar.tex",
+          "sha256": "09a32c5b2de22bf50480e7fde17ef030d51d3ac6b31bc49cad0ed278bc72a16d"
+        },
+        {
+          "path": "04/partes/4.1_logica/03_principios_de_integracion.tex",
+          "sha256": "6018aedbb56840cc1243f3516ce29880d9ac24f6c38b8da2161ebde335aaae3f"
+        },
+        {
+          "path": "04/partes/4.1_logica/04_capas_de_la_arquitectura.tex",
+          "sha256": "3d6755cc54fa162433ffa5f4382385218e7fe14cbc8ee707e8b147bf379862bb"
+        },
+        {
+          "path": "04/partes/4.1_logica/05_modulos_funcionales_y_limites_de_contexto.tex",
+          "sha256": "b8aca55ccadb5aaaa393b35696cba2cc11867eedb122767108ab72c763f515ee"
+        },
+        {
+          "path": "04/partes/4.1_logica/06_modelo_de_datos_conceptual.tex",
+          "sha256": "ce01ffd5f2eadcb5b37f31e50258a5b344e98bb781e7913fb98e90a28353ca61"
+        },
+        {
+          "path": "04/partes/4.1_logica/07_catalogo_de_interfaces.tex",
+          "sha256": "a7324e29bad149b35a33d2b455ca27b644b3f40942bc7cad1c175c0df41ae989"
+        },
+        {
+          "path": "04/partes/4.1_logica/08_detalle_de_tecnologias_seleccionadas.tex",
+          "sha256": "853e0c01ec41d8f42ef51629f4b563e2bfbd290d58504cf18f3036ade6f00c06"
+        },
+        {
+          "path": "04/partes/4.1_logica/09_implantacion_progresiva_del_backend_laravel.tex",
+          "sha256": "c33672fd8e64330db0e40f6934183f5d4d990b1f35c4b4be1fb18cff28e9158c"
+        },
+        {
+          "path": "04/partes/4.1_logica/10_ambientes_del_ciclo_de_vida_y_promocion_de_componentes.tex",
+          "sha256": "3090639c5f80dd92a11c0e1ae12f87aaaece3678332d9992cf14463911054e4a"
+        },
+        {
+          "path": "04/partes/4.1_logica/11_patrones_de_diseno_y_continuidad.tex",
+          "sha256": "a4fa8608b64dd92eff20845ad4e10341ddcde07e9d329161c6350e4cf08357f7"
+        },
+        {
+          "path": "04/partes/4.1_logica/12_registro_de_decisiones_de_arquitectura.tex",
+          "sha256": "b649b8516ebeae01bbbec97627c0505bab327f9b8e996ee648e4b5115974ce84"
+        },
+        {
+          "path": "04/partes/4.1_logica/13_puntos_unicos_de_falla_y_riesgos_residuales.tex",
+          "sha256": "fff9be017d4c85eb59181d15a3e63d2f46626b4e0347b9b9f609d7fa9a1e9ffb"
+        },
+        {
+          "path": "04/partes/4.1_logica/14_comparacion_de_alternativas_arquitectonicas.tex",
+          "sha256": "1d3db8520fb6f06b40590ad5a21a4d5640039f043b2ff477bb6e8153c3ba9386"
+        },
+        {
+          "path": "04/partes/4.1_logica/15_relacion_entre_las_vistas_de_arquitectura.tex",
+          "sha256": "9a33d16ee930c4ef29aa3a8684b1d0d050514c7885d7a84b6aca1044dd01f9c3"
+        },
+        {
+          "path": "04/partes/4.1_logica/16_funciones_disponibles_y_no_disponibles_sin_conexion.tex",
+          "sha256": "a2e3d9f26df3900f8a3569e2fd445d1bb1b396f69d52e0063a64da09a9ba2109"
+        },
+        {
+          "path": "04/partes/4.1_logica/17_reglas_de_reconciliacion.tex",
+          "sha256": "99fbb98c2edd84e8e573f0e9ad7eb5e07a0f00fe8be2d308967692a047a9db8d"
+        },
+        {
+          "path": "04/partes/4.1_logica/18_articulacion_entre_prueba_de_entrega_dte_y_acuse.tex",
+          "sha256": "7f0782e205dfbc7c49b13bdd2c224ffb845652fdaf0a4f809c281dcd36407177"
+        },
+        {
+          "path": "04/partes/4.1_logica/19_identidad_y_ciclo_de_vida_de_conductores_externos.tex",
+          "sha256": "87cbe804e1b7fe4c06b9d93869c26486d03ec6b5091fa854b36afbb0d6ffbac7"
+        },
+        {
+          "path": "04/partes/4.1_logica/20_primer_cuello_de_botella_bajo_la_carga_de_septiembre.tex",
+          "sha256": "44551ca1449469c9563abb90425e5a3482af63a153e77a4137ca940790862719"
+        },
+        {
+          "path": "04/partes/4.1_logica/21_decisiones_del_numeral_16_1_del_caso.tex",
+          "sha256": "a5c2ce549acd5c6aff5cf2019174bc9c9b808b95b8effd3217dd7a0eec899d80"
+        },
+        {
+          "path": "04/partes/4.1_logica/22_condiciones_y_supuestos_de_diseno.tex",
+          "sha256": "0026fc9232ca58df2fbd304d462e431470ac3775d5722513170f73cbf3260e2c"
+        },
+        {
+          "path": "04/partes/4.1_logica/contenido.tex",
+          "sha256": "fdcf51ab7363b7b61dc872d362cd14d3cc2f0c3c79938b80adfa6bbc54f4d687"
+        },
+        {
+          "path": "04/partes/4.2_fisica/02_0_arquitectura_fisica.tex",
+          "sha256": "97bb044c7713a255fcc162e1bd0450fb6e1e096917a5e2f5ddb3352a58259dbf"
+        },
+        {
+          "path": "04/partes/4.2_fisica/02_a_emplazamiento.tex",
+          "sha256": "5df28ee53ef695cf6806158faa87dda6ddb7b23a55de7d4e687e82a961a8a0f9"
+        },
+        {
+          "path": "04/partes/4.2_fisica/02_b_servicios_nube.tex",
+          "sha256": "e85853762c2d118cf6ca681ffb46ce9238458306016f445d4f0a112ec8650b45"
+        },
+        {
+          "path": "04/partes/4.2_fisica/02_c_conexiones.tex",
+          "sha256": "d72f4ade9aca98fe573a714c3d15f50af37b9fbfae9fb6b4b2eec9e8b0fbf559"
+        },
+        {
+          "path": "04/partes/4.2_fisica/04_c_implementos.tex",
+          "sha256": "206093b9076e5d940b0913a21b2c594919e27794e451eca9b27e93a14f020950"
+        },
+        {
+          "path": "04/partes/4.2_fisica/11_j_despliegue.tex",
+          "sha256": "c0f81c0024d23ae4576e390c5575bd9b67d7c4ed4f870a631bf0ed538e04bbdf"
+        },
+        {
+          "path": "04/partes/4.2_fisica/12_k_dimensionamiento.tex",
+          "sha256": "e32d6c8cc67dfdd9b015e7b895a0b12b32d27f7cdc22403bf9d665a20ca8bb24"
+        },
+        {
+          "path": "04/partes/4.2_fisica/contenido.tex",
+          "sha256": "7d745c3b55b0cf313194567a3324c6f730948e3a6ee83b3050a9c37aec0df1b7"
+        },
+        {
+          "path": "04/partes/4.3_centros_de_datos/05_d_sitio_principal.tex",
+          "sha256": "1f9f92be0d476408144f95992b33cc443f6a6e21caa3d4018c0030303db98ba9"
+        },
+        {
+          "path": "04/partes/4.3_centros_de_datos/06_e_sitio_secundario.tex",
+          "sha256": "1a474109bc66cbc3cf2dcc7f8fc4e48b6dcf169f5b29c85edc2d727ca03357d7"
+        },
+        {
+          "path": "04/partes/cierre/declaracion_de_uso_de_ia.tex",
+          "sha256": "1ca15448557f5468d9971e4a67be90b021b7ed86cc4b0cf147bd5d083e8b41bf"
+        },
+        {
+          "path": "04/partes/cierre/referencias.tex",
+          "sha256": "1e5b6be00fcb08e3d45522dc9cd8f8aa6435b3d56745409a2352b76595425d26"
+        },
+        {
+          "path": "contenido.tex",
+          "sha256": "c65bc8babd7fbac05b3250bd12a4eb4651da818a0da89edeaebc25db0ad52299"
+        },
+        {
+          "path": "main.tex",
+          "sha256": "b6156a99778b4018697e3c29d0c73ee28bc765acf52204aa6cb6de1cfe0e6b50"
+        }
+      ],
+      "pdfs": [
+        {
+          "path": "entrega/LAFROX-Formulario-T-11.pdf",
+          "sha256": "8d1ab9a70c5fa6e15178dd4094bc22a39c378914b17a33e3ca5a0f21299c2791",
+          "pages": 51
+        },
+        {
+          "path": "entrega/LAFROX-Subdocumento4-Anexos.pdf",
+          "sha256": "b17d99830a8c9a22172a9448fe7a3be55ae046ce3f0d5a3945b3d37cf627c524",
+          "pages": 139
+        },
+        {
+          "path": "entrega/LAFROX-Subdocumento4.pdf",
+          "sha256": "59febaa19c2e41c2e90c73853e4854eac1919b0c817129bbb05ad41d7283a5c2",
+          "pages": 192
+        }
+      ]
+    },
+    {
+      "id": "SD5",
+      "branch": "LafroX-Subdoc5-LateX-CORRIGIENDO",
+      "commit": "daec165725462c96cdd2e7ef87db19dbd450417a",
+      "url": "https://github.com/PatricioH315/LafroX/tree/daec165725462c96cdd2e7ef87db19dbd450417a",
+      "latex_files": [
+        {
+          "path": "05_modelo_datos/anexos/contenido.tex",
+          "sha256": "22a5e9c224de6e41ffd11ed3a43ebacab9a6bde39521fb2c0b22977c4708ab72"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_1.tex",
+          "sha256": "332b2d4995141d3800cecacf7f54f3c69883ecbf09f386ae6031a4a77974166c"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_10.tex",
+          "sha256": "4cd29f4d8285571d55cf38101726388edce95a295ea790970bb52f4f3a178c4c"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_11.tex",
+          "sha256": "e7bdba7af81ec12324bdc1b45efc1fdb16783db4cbc4c7d9e00d27d6983e27cc"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_12.tex",
+          "sha256": "3b99d321da1e63f0425235a1e2017f17048cc929220480dbe04abd247a4d3534"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_13.tex",
+          "sha256": "e6aaf65335fd9a3dbab4152108a6b3f6f4740866f3d1d2d5ba4701faa4353540"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_14.tex",
+          "sha256": "c5dda201385f7c30fe751e6eaf553e2dce63f6b58a070491e255f597b8c02a5a"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_15.tex",
+          "sha256": "0446a1c6af299b7b5c6efa7e1232165e076a7df147b698ea3d56edb0364d8323"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_16.tex",
+          "sha256": "a8f8543bce58a41907bf9c8f02b64421c3f224bdefe11a019a39572c4036d42e"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_17.tex",
+          "sha256": "4b23cdbf0e1f6c281d7251255708c89842e4e1b981d5b9d4584312e9936a0a24"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_18.tex",
+          "sha256": "6b3a763f1afd4624b7e0d6410fc6fe53206a43dee0088fccb2e9bdd481d94256"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_19.tex",
+          "sha256": "81d7de9ca7c64b944b942e1758491fda89fda079feb4d915cd4a4dc5cd18eae7"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_2.tex",
+          "sha256": "cbd0fb9a83d85f34c36cd4b939104e57828cf920f00f894bd9955c6f4256329c"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_20.tex",
+          "sha256": "b3670e450e74bcef8957af186332dfd67095fdab7ec149d1e66de4937465c1ae"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_21.tex",
+          "sha256": "784305b8a864e456b93a275d3578b9619a8f4e20efe2b7979c09aed0c907581a"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_22.tex",
+          "sha256": "e8339f8ba42fb08c87d178ecb9d62f19d83898e6bc127aa070bd25639c8081e6"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_23.tex",
+          "sha256": "78fa182e1411bf0c3915f9e0d5e78677dd28f1848cd80e53fd7b4f547c5260ee"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_24.tex",
+          "sha256": "4954e867a425b81fe2b13360799ec82b93a81b0084437c47b3639c8b1d10e195"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_25.tex",
+          "sha256": "ea41b3edac963f593f2e6cbcc431f1e51bc58cb19b0b5de590cc691b94c6a8d9"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_26.tex",
+          "sha256": "ff64b80646931aa2a682d659e42a4d4e4dfbadb9348fe22a9828944d505c46bd"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_3.tex",
+          "sha256": "d665fc61bcb4ff587c53e9ba73c76abe1adba2b884d091f4db7329f4978ddb5b"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_4.tex",
+          "sha256": "c7029b0ac2b0838d9e8e68bad1845ec575eee6fcf3f3993d369632836fd8a371"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_5.tex",
+          "sha256": "9a0df753d6b3057cc1e90b5ad886d90292c34ee6980fc26def1bba59cb1bb106"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_6.tex",
+          "sha256": "dad399934bd1e033b585c38faaa547378e32bf7e549b16ea8a7c602ae2a908fb"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_7.tex",
+          "sha256": "c56542ac4a2a5a882a297170ae95801e41e2411b31f1cde1e7bd25d3280da8c0"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_8.tex",
+          "sha256": "c7b754fe5c1d2a734ed653f0c46566fcbe3e8cba00d7cdbe54652da95873adff"
+        },
+        {
+          "path": "05_modelo_datos/anexos/tablas/A_9.tex",
+          "sha256": "aabfde5a37a5dda817c45fbad3bc97f90734b92adaf86996362df1671c10d895"
+        },
+        {
+          "path": "05_modelo_datos/contenido.tex",
+          "sha256": "0c475c5990671b04384fcb00bfef3fbe5f5c488fff8dfdebd30ac05635351a53"
+        },
+        {
+          "path": "05_modelo_datos/partes/5_1_modelo.tex",
+          "sha256": "9e4f160c070362cda3aad395256d9718f19b7334f4684253fd263b3488ab688c"
+        },
+        {
+          "path": "05_modelo_datos/partes/5_2_gestion.tex",
+          "sha256": "9f5c1991c37c1421cd6fab099ef50a3126dbf93683d1e7e8354fe2aa92d49c27"
+        },
+        {
+          "path": "05_modelo_datos/partes/5_3_migracion.tex",
+          "sha256": "e62042482ad3a74841329931f75ee914c1a309e181a06495c8ca46099520e40b"
+        },
+        {
+          "path": "05_modelo_datos/partes/5_4_desempeno.tex",
+          "sha256": "249e4d8b5e6564c409f7a72997b7a70cb9b7b4fc068d632b5bd2be592643a367"
+        },
+        {
+          "path": "05_modelo_datos/partes/referencias_ia.tex",
+          "sha256": "b158e599fcc13dcabf5f3e46fdc43838b2a6f77212d40b24a84529bc28305684"
+        },
+        {
+          "path": "05_modelo_datos/tablas/escenarios_carga.tex",
+          "sha256": "6863287ccc6f6c32d69d8f56de978bebf6cca98ae72791e5bf6fc6471b523ee2"
+        },
+        {
+          "path": "05_modelo_datos/tablas/limites_offline.tex",
+          "sha256": "0d5049c53a4ee4011b093948fd39a8572966de90f72ead371b1de6d966a1118e"
+        },
+        {
+          "path": "05_modelo_datos/tablas/uso_ia.tex",
+          "sha256": "628ae4ad22c9a90a1e2e2169979ec7777adc12b36ec370cd32555544da3671c0"
+        },
+        {
+          "path": "05_modelo_datos/tablas/volumen_migracion.tex",
+          "sha256": "a9121c5b298ff0d94ba0f6ac99213cb381fb8518f1561b2653abca1a2dccd484"
+        },
+        {
+          "path": "ajustes-maquetacion-local.tex",
+          "sha256": "c66845c01d1129d6547f38e1c145919aadd1182f6f47cc8fff8c1542d71235a3"
+        },
+        {
+          "path": "lafrox-portada.tex",
+          "sha256": "d24641ae895bf660851fa055508414c3b3e1d1ac59096a17799b75b7de00bc4c"
+        },
+        {
+          "path": "LAFROX-Subdocumento5-Anexos.tex",
+          "sha256": "185b172c4142ce6769c1856fea143e09894845aded8d9ac9592469c4b1a69cd4"
+        },
+        {
+          "path": "LAFROX-Subdocumento5.tex",
+          "sha256": "950846ca2aee950a900cd840bef1e204fd61cddfa0479f59c8a7b392ce0d53e9"
+        }
+      ],
+      "pdfs": [
+        {
+          "path": "LAFROX-Subdocumento5-Anexos.pdf",
+          "sha256": "4cee28effb3bf753b944ff727f497c69946c6e4b52cdcfd6a76158588dd2dd1c",
+          "pages": 227
+        },
+        {
+          "path": "LAFROX-Subdocumento5.pdf",
+          "sha256": "d2d8ebc9dcb4fcf6067d05480534d1eded07340b73597d21cf9c1545983fa112",
+          "pages": 49
+        }
+      ]
+    },
+    {
+      "id": "SD6",
+      "branch": "LafroX-Subdoc6-LateX-corrigiendo",
+      "commit": "68a9f14f716d4234468de7d61ddce7475994907b",
+      "url": "https://github.com/PatricioH315/LafroX/tree/68a9f14f716d4234468de7d61ddce7475994907b",
+      "latex_files": [
+        {
+          "path": "anexos.tex",
+          "sha256": "eb43b74f2fd092bd8c178433c53adb8b7e6efdace6f020b1b0cbd266a80121cf"
+        },
+        {
+          "path": "firma-pie.tex",
+          "sha256": "f8b60e226abeaea7677f6499572ab5c18f48f647670c4d1b912d1a4857cb801a"
+        },
+        {
+          "path": "LAFROX-Formulario-T-10.tex",
+          "sha256": "8ec71255cf4dd0a6750b37cf0f5780dbdb1a63146bad8175182c79d55b6c808a"
+        },
+        {
+          "path": "LAFROX-Formulario-T-9.tex",
+          "sha256": "a0f59891e1069e80cdebae1fc5d14949ee620e1478967b9052e53514995e6896"
+        },
+        {
+          "path": "lafrox-portada.tex",
+          "sha256": "2af3be9f3159ff63d61be8764220dacebb6823c131b473e1eaaa05cde2083902"
+        },
+        {
+          "path": "LAFROX-Subdocumento6-Anexos.tex",
+          "sha256": "b0229bb3aee01a81e799fe4773ed8d5be0e5d312bb82403c7baa5eeb6bbfa3db"
+        },
+        {
+          "path": "LAFROX-Subdocumento6.tex",
+          "sha256": "5e207c79730ecffcf2aa8c6e729e1ffeb42cbefc9610f94a13b79e200bf1bc71"
+        },
+        {
+          "path": "subdocumento_6/contenido.tex",
+          "sha256": "b73b78cd4b39ea54b1da575519c6c5f0c64a5e7705cca5c2f87980669b2a2817"
+        },
+        {
+          "path": "subdocumento_6/tablas/adquisiciones.tex",
+          "sha256": "e060e765d7d4b41ec40d94bf0ab36b6aeade381c854ec863f8f9b9d6f71b3e6c"
+        },
+        {
+          "path": "subdocumento_6/tablas/comunicaciones.tex",
+          "sha256": "cd818defc428e0985cbb1c28f2e34400260bc63d95e9bf0dcabfe1f86acf6a26"
+        },
+        {
+          "path": "subdocumento_6/tablas/ejemplo_tabla.tex",
+          "sha256": "d9f2f6ec8e6a649c18163337b8299d20ec3c66fb83c162abfb6ef4583c1b82e3"
+        },
+        {
+          "path": "subdocumento_6/tablas/interesados.tex",
+          "sha256": "e393d0bb7b7b8ea9ebde256046c4aa0c2dfc83fe966fb8d0a8f47352d30ecd74"
+        }
+      ],
+      "pdfs": [
+        {
+          "path": "LAFROX-Formulario-T-10.pdf",
+          "sha256": "6765b7fb117f9bf8c516e300ea4285b12f66315e4feeeed04f9bef6c8b798d66",
+          "pages": 9
+        },
+        {
+          "path": "LAFROX-Formulario-T-9.pdf",
+          "sha256": "c1c367a0797f3a83035c2bb4d45d2744284076abb77142578b82bfd6ae250746",
+          "pages": 13
+        },
+        {
+          "path": "LAFROX-Subdocumento6-Anexos.pdf",
+          "sha256": "aacdf9faae5b0128b635c11012691aa52ce789b4911d52b7f06620cd2acc8f6c",
+          "pages": 11
+        },
+        {
+          "path": "LAFROX-Subdocumento6.pdf",
+          "sha256": "b088be9133579dcf6acf370c15478eeb79fd8bd6de32ce8ae684d0c072d976bb",
+          "pages": 19
+        }
+      ]
+    },
+    {
+      "id": "SD7",
+      "branch": "LafroX-Subdoc7-LateX-CORRIGIENDO",
+      "commit": "5e78b998f305c7caaff7bbfab342d2447cec72f1",
+      "url": "https://github.com/PatricioH315/LafroX/tree/5e78b998f305c7caaff7bbfab342d2447cec72f1",
+      "latex_files": [
+        {
+          "path": "formulario-t14/contenido.tex",
+          "sha256": "3a9442b05e0ce49276f66052d4c03683679208c00bcf80acedff7ecd57817b71"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_1.tex",
+          "sha256": "f0ec311bdaf69255aad1b1546bd7cc52cbc4e6e59ed8bc260259a99cf61c22fe"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_10.tex",
+          "sha256": "767a2bc8039ccc2394981e1a39cf0a369b876a66f42684d0d15b762de22c635b"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_11.tex",
+          "sha256": "b0f6af08f20df56e0e2dedcc8f4270d0ab6f97c91e04a85bb527253c5fce10cd"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_12.tex",
+          "sha256": "10b81a68f8b75be66887ffcb1063838c46c962b43d5ab9991eedd1d447267269"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_13.tex",
+          "sha256": "d16779e6a4b33799cbe94dc4df5a8cb4df5090af91b05ad0ffa811b884afb8cc"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_14.tex",
+          "sha256": "517a2fde543b747ddc727fd4521b5605a8e961d0a71ee00eac86fc98c48aec40"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_15.tex",
+          "sha256": "e3a95902ba24db0cf864d3f28cbae0613c90d5d97bca2e56c288f4373e76587b"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_16.tex",
+          "sha256": "0940b253140abfa8a0fa665cc6e2aaee607f2853bfbc608f8f05ecc3a1a74f3c"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_17.tex",
+          "sha256": "f955a41cc5bd62c7df22bf71e849ab34d41526b9ae7e08e1b0a1d0b63537fb6f"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_18.tex",
+          "sha256": "4b19a0320f8ed97f1dcb7a5479e2baa60bf0c452f1e339e2428561e889df6f75"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_19.tex",
+          "sha256": "9e19e2c0fb4b93c86b24d8420458c5b1731babaaf42c531446d7b9bb72b16329"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_2.tex",
+          "sha256": "fe49fba56cff5a8684ef4346705cd5ab755d7e845a2f8e6e9c753b44bc335751"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_20.tex",
+          "sha256": "79a43a5f9fc6020cf7b41ce81a9dc147fab7ca6041b88f50e94703241ac68028"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_21.tex",
+          "sha256": "7d588bc1ce3d609c11f878a4f61470c4b3a10dbbb1b3618a6807dd51c887a574"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_22.tex",
+          "sha256": "52b3a15a17e2505b239ac07566903dc0094f902d9b2ab146e751c0faf5a9ab63"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_23.tex",
+          "sha256": "56f4736a222cd71f14575236707f81d91d88ccdf67d1e3c84679db249690b666"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_24.tex",
+          "sha256": "d5e241f1cb2587348236e3e518a117f3a0093a60ed4caea8cf54f982a5808989"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_25.tex",
+          "sha256": "6c3299051f72325ad7a94085f0f5a5aa0b79ae6462abe3b231f22ff5fbabc84b"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_26.tex",
+          "sha256": "08f5e27987b708553e6854e4b94843c57b7be5145013f9139af5a9940702c79b"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_27.tex",
+          "sha256": "d8adbc19c34a3f52b8b1560e3c19ccbfa6c8853a79477e7b6c44473b713df292"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_28.tex",
+          "sha256": "9bd8dc984bcac8ed0c7c57585e8485e5b4766e9489931d59c54698f62760bffc"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_29.tex",
+          "sha256": "3e03d16d8b6b021616c5bcb6713eeb2f42330e0152f87c80601030d422b22293"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_3.tex",
+          "sha256": "0531ac5372c0cab95244a39036eb5b870a96be6350544ad484c968d793d7fd1b"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_30.tex",
+          "sha256": "aa550deea6ab8a7433a73b9d61c4e89fca5eefcaa98d32dc4365145087e5bba1"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_31.tex",
+          "sha256": "f668927157a1d77922eb91183eacc3c9b259e80efa1d67e7cc5488a410b1375e"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_32.tex",
+          "sha256": "07f113ac17237cbaa2a2d97123e93f73a50b71836f96479f733f17fad7bc2bbc"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_33.tex",
+          "sha256": "df3b71c896f5be6d2ce13f39ae4e11065bd60cad19e0ff70d44e36769a244115"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_34.tex",
+          "sha256": "832a88c371bad2e7beb05eb2bb95591473c6e04523f2ece956aeca4cf4cb0998"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_35.tex",
+          "sha256": "a1d6791200eea13620498a04efa664bc0030781946ab903cceca1e8c262cd14d"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_36.tex",
+          "sha256": "68a9974c009f5522f1ce8d1540003cb8f6fa78a3de19a160a51218a0d60b9a34"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_37.tex",
+          "sha256": "3462d45ae98ff9acbb85bd78dec0508bb8d62003c2416914f9b798e4108b3735"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_38.tex",
+          "sha256": "8bb8bf4d33fc95528af3760161a22dfcdf062f65ac92a1148974f4aa254f851b"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_39.tex",
+          "sha256": "b686f3626222287c9aea836d9ba93c0acc742810ff25c507dc61092b2d75b355"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_4.tex",
+          "sha256": "46c93cb9cfbf399b6e6a53c9e589696aa856b454caea6d231e88abd075c6203f"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_40.tex",
+          "sha256": "579a1f344110450358c87ecd57081afcb3c5d8f143fd692cf4544020937a2e2a"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_41.tex",
+          "sha256": "44d451bf31572471d55dcecb97e0c5c7bb04159ea0dacd38d58d57d6804a51c3"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_42.tex",
+          "sha256": "6a6b3a441fee18a61bb5eab45e76c5c6bc6bc98c39e1ced3f0c4eed5e9638be1"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_43.tex",
+          "sha256": "23cf4f265cd0ab66c404f4cf7ad9358e5909144b578319311f92b08c0464e918"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_44.tex",
+          "sha256": "19bf4aa1c4ef2b353ad8e5a20efeb7d4084da9e76666e80ce228f7d1292aa678"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_45.tex",
+          "sha256": "558ea9bebf39f0755f272b204465762f50bf9748b11606f5d0fe8bfd4ed1038c"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_46.tex",
+          "sha256": "e965d8d7a9e59cb59dbb10c861bcacf8d01f37791f63693738ed1cdd867f17a7"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_47.tex",
+          "sha256": "5fd66f6131ab510f00b038c9d1fd1a9f8937e10502be4e60a882644bf7c80b07"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_48.tex",
+          "sha256": "3cadab424291e5e0d8607c3f1ad5f5f4f8069f43ceac663ee9fdd761355f2cef"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_49.tex",
+          "sha256": "370ce8d91e142a5fe6d928fe1ca975b11e3352236fc0c8424bac9b81df01b04e"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_5.tex",
+          "sha256": "184f5af4f6ad516ed1ba9eae030529de9a01a6e8a4ca4a4603b3392c9e95b421"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_50.tex",
+          "sha256": "49ef92c365c1d28d2fbca64158ba6ef331e760db26426a74533eb67ac7322427"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_51.tex",
+          "sha256": "f1b48381cb6a97b840dbad42b08a8fc3f065ca8a633feb27d1c469a09bfcc14e"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_52.tex",
+          "sha256": "1d6b306dce66d1ae3c58c9d5196a1af62f1ea0f00ed6bcf4d9655a68ad2b3bef"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_53.tex",
+          "sha256": "50cf3bcc11fd862bdb8ecef5037cd8a47cb25403c4481c9e1706cceee20a5c0e"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_6.tex",
+          "sha256": "d21f1ea1b1d342e1a808c953e13d950888ae47268d92dcc832c01abe863dcf47"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_7.tex",
+          "sha256": "5f8030f24a0aa5c4205becd01d051bbe380a01b2f389d225a494cf41e9507dc1"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_8.tex",
+          "sha256": "edb4acd062f903375c74725407cd700bf46f9a8e0b06e11e41dcb1ea63a8c103"
+        },
+        {
+          "path": "formulario-t14/tablas/tab_T14_9.tex",
+          "sha256": "2aa1613fc55cec34dabe178fe79cc82d20dfdf8e3eb73a18ffb8c5a683211845"
+        },
+        {
+          "path": "formulario-t15/contenido.tex",
+          "sha256": "4ee30d6c65e28ef2d55965013066db66e68b3807694b739f25511cd1033a6f57"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_1.tex",
+          "sha256": "78a2476975de90d12acbc68e2f762220f08c994de790d07bc888e610a241313c"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_10.tex",
+          "sha256": "ea1e055fb3b6f2eacc475384168a11e483ec407c11c7452217fd03ad86ba76f8"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_11.tex",
+          "sha256": "9aed426c0f82b2c01a03bd330b99c00ff68b554211357aefec18794ad6c69ed1"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_2.tex",
+          "sha256": "07cf056c442e7280bb5f55b0892b65da17310f3687f1ab698064c7ab2625ad93"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_3.tex",
+          "sha256": "42d9e90da687963a4b25e9b536d16898d700edbbd0a08b830d80a08f725fd471"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_4.tex",
+          "sha256": "a2579c0e98b1aa5a6f7f6478eb25dea69fd3929375558d4b77be685bd672e031"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_4_personas.tex",
+          "sha256": "a4b8179c407f0464c740132497853ce734c4b098fcac111b2888565d6f6c84d1"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_5.tex",
+          "sha256": "c04b4e9fd681d80ad68c35d1ede33886ec33b62de39916768a1784d5b17e8fed"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_7.tex",
+          "sha256": "12673d0578d09011eaf0e9fc1a99d90c4ba63b6e36031ebbd69909b5a94adbe8"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_8.tex",
+          "sha256": "ee42467f531746f375dec2b5580d34aa8e352c4adc0a3cd79ef20bf2ea97d86c"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_9.tex",
+          "sha256": "3e2da441ff42266546cc1390a12582ed515c5e99c62e2c74b8800c9d45e183ff"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_9_bloque_1.tex",
+          "sha256": "d49fa797998dc220301a3d24751ba21340ed3f4d07059614098fc8afebead81c"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_9_bloque_2.tex",
+          "sha256": "97382aaaa76e36c9740de72a28843ef122ae746dfcbe4949cf2ebee334078f37"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_asignacion_partidas.tex",
+          "sha256": "893725f51411879aba57c9e487deb8090c9ff198e584b4908deb91825d3c1d45"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_clases.tex",
+          "sha256": "c59107ef75a4be72e5b22d6fd417531a5f4783d88f9259a3c01817eb08772a34"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_conciliacion.tex",
+          "sha256": "35f5acb5dc604e4d2d5c4b5db03ebd82bdd01e84c01778667aa6d95140b44456"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_contingencia.tex",
+          "sha256": "2d252cf718d9204f880ed125c95d4e4308ce15fb3cd1901208a4fe0c9801123e"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_cpm_detalle.tex",
+          "sha256": "1050c728435d87c11665b31cdfbe38872075feb83e3ffaa09fda5728279c7041"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_paquetes.tex",
+          "sha256": "a8f3160758b854f8c9c2c12c8e762b7892af51564afbb8521d4041a187bd7c6c"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_perfiles_internos.tex",
+          "sha256": "df27422cc26dfe8e1e2258ffeadedefd51be2c901d0bad8bd3188846d7420c8b"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_pert_riesgo.tex",
+          "sha256": "d0dad29d062670d36671e7c2516db1b59ab10683e91feb35336c3922691eccee"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_pert_tipo.tex",
+          "sha256": "408e69b1ab1a5ce1bf518af4fa2db80821ff56491ce6e20afb51ffdab448bf67"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_tamano.tex",
+          "sha256": "30bc7c629aed4cf15405d7f633e85dac272bdf28948c6c712bf2530b71456895"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_tamano_detalle.tex",
+          "sha256": "22e00f1e3e6659e5447d2db6b786065dd48d07921dc1efbcf25e35c5ee5a70d7"
+        },
+        {
+          "path": "formulario-t15/tablas/tab_T15_tamano_motivos.tex",
+          "sha256": "ad3fdc116d718ef4047a5eb5954e8ffcf6ad26259324ca5b32df0f31df761b74"
+        },
+        {
+          "path": "formulario-t18/contenido.tex",
+          "sha256": "06bacba5844f98f1b399f6228db5ad74cfb1ddce71db60cb0af7578c45555079"
+        },
+        {
+          "path": "formulario-t18/tablas/tab_T18_dotacion.tex",
+          "sha256": "9007d67f80ee675afeae03e1b923d096cefc287a8798b6cfc76425588815fc6a"
+        },
+        {
+          "path": "formulario-t18/tablas/tab_T18_IA.tex",
+          "sha256": "4df0c92174b25b4fdcdebc82387ad3d742139e05f227660bc0eb67a548b54e5c"
+        },
+        {
+          "path": "formulario-t18/tablas/tab_T18_ind2.tex",
+          "sha256": "f2d674e5fd1bc9b23ba7d1f396e592c49b080a963afe9560164b353b688bbd9a"
+        },
+        {
+          "path": "formulario-t18/tablas/tab_T18_indicadores.tex",
+          "sha256": "b61da97138292b996044c36cdea985dfeea5d7b6826afc73e3cbe4f125d6f7cd"
+        },
+        {
+          "path": "formulario-t18/tablas/tab_T18_olas.tex",
+          "sha256": "e2ba81500eed3bec49027ef22f3379b5904ef734d67d2db0e1deb7c2455ff235"
+        },
+        {
+          "path": "formulario-t18/tablas/tab_T18_olas_alcance.tex",
+          "sha256": "1cc91a5dff33d1c7a7f3aeb84fd763e8c1853f26c975f61b08fb40387295abda"
+        },
+        {
+          "path": "formulario-t18/tablas/tab_T18_perfiles.tex",
+          "sha256": "20fa6cad20d4b1b43d22a9afa5c499a27f6e7489593981a6e770d89bdd6b025c"
+        },
+        {
+          "path": "formulario-t18/tablas/tab_T18_prevision.tex",
+          "sha256": "f6474b98a068773d8a27102c95f30c134089f4e33cbb8d0e027fc040c48e351e"
+        },
+        {
+          "path": "formulario-t18/tablas/tab_T18_pruebas.tex",
+          "sha256": "70d9941b600fe57759173ff6c2111276631d8151b99214b915531a930bc70a0c"
+        },
+        {
+          "path": "formulario-t18/tablas/tab_T18_volumen.tex",
+          "sha256": "8ada149b776b4bcfed73b03e1ad7bbeeebf41926135c0a56b93432bca8503b88"
+        },
+        {
+          "path": "LAFROX-Formulario-T-14.tex",
+          "sha256": "329493326ac02ff5eb02b3b58670e99144abb11c113f33b06b63c89ebf4235d4"
+        },
+        {
+          "path": "LAFROX-Formulario-T-15.tex",
+          "sha256": "65740f6c9e6194274f20795a3a71fa61b057651610b24c35a0551d99840507c3"
+        },
+        {
+          "path": "LAFROX-Formulario-T-18.tex",
+          "sha256": "7bcac00a5589aa7d5fef1c6b4fb8cb6f4bd42c167eff63e7f5c86f9d00d3b1ac"
+        },
+        {
+          "path": "lafrox-portada.tex",
+          "sha256": "d24641ae895bf660851fa055508414c3b3e1d1ac59096a17799b75b7de00bc4c"
+        },
+        {
+          "path": "LAFROX-Subdocumento7-Anexos.tex",
+          "sha256": "d07dfc659120b5b83693aedae8f37d8418805789cefff86a87742b535c8d70fc"
+        },
+        {
+          "path": "LAFROX-Subdocumento7.tex",
+          "sha256": "646bb384e2dfb3f968e00bc2320639bb9c38ac795154ed62d3ba2fdc105be4d3"
+        },
+        {
+          "path": "main.tex",
+          "sha256": "26b7e93a9ba0521b40e2e320bb4dd5f09e71ad4e5b1549b3c9bac6581af4f031"
+        },
+        {
+          "path": "sd7-firma.tex",
+          "sha256": "6671d1aea46cf96ac82f91314e672c8247df1a96daf019a43c37b34619c27bf4"
+        },
+        {
+          "path": "subdocumento-07/contenido.tex",
+          "sha256": "d4a3d0fb5157dc99d5836785d951051061de694c09b8edb15e61611c4b8b7f82"
+        },
+        {
+          "path": "subdocumento-07/tablas/tab_SD7_1.tex",
+          "sha256": "b47b349f2db4fa8bcf059097b14c4197ea0de6e504dc2a673f88aab903ff47f5"
+        },
+        {
+          "path": "subdocumento-07/tablas/tab_SD7_10.tex",
+          "sha256": "252ec91946da9c9a8719fbcd4f684120b964e06ba1febf838ae9fe39c87845f4"
+        },
+        {
+          "path": "subdocumento-07/tablas/tab_SD7_11.tex",
+          "sha256": "d2c075e0c172c399200375efe2e046d929ce0856dc2eeae70d9dcb0779887ff7"
+        },
+        {
+          "path": "subdocumento-07/tablas/tab_SD7_12.tex",
+          "sha256": "023960c7bbd4f12bde859b0280139dc1d25c623b41b7420d2b7680ad01c32fde"
+        },
+        {
+          "path": "subdocumento-07/tablas/tab_SD7_13.tex",
+          "sha256": "a645f21968eb71ef57468a06d685ea524fa80004b990f62fbfefeee7405186f1"
+        },
+        {
+          "path": "subdocumento-07/tablas/tab_SD7_2.tex",
+          "sha256": "7da6476275b7dd71331e6bf0208203ca2c96be571b99848f052f8330d59f6b4c"
+        },
+        {
+          "path": "subdocumento-07/tablas/tab_SD7_3.tex",
+          "sha256": "6e4df156fe7d93bf61481a6b338c299d7f2a3aaef3ebbfa3c99a69ba417ee7e1"
+        },
+        {
+          "path": "subdocumento-07/tablas/tab_SD7_4.tex",
+          "sha256": "d4e28665add101a2252b9d2f6956485bf73372b327267cafb7f24e94815d4159"
+        },
+        {
+          "path": "subdocumento-07/tablas/tab_SD7_5.tex",
+          "sha256": "da7bd81d59543e9c030997d365f00f43b3d70c13d3280379412fc2fdac7e71df"
+        },
+        {
+          "path": "subdocumento-07/tablas/tab_SD7_6.tex",
+          "sha256": "3b8109b09664955300449fdb4db9a7f7d1a605a9518de906febda63f6aef1d9d"
+        },
+        {
+          "path": "subdocumento-07/tablas/tab_SD7_7.tex",
+          "sha256": "2e8c3a4caf7a33f4d6a4dc6674451211c6c2051d207012a8d00375da3218203a"
+        },
+        {
+          "path": "subdocumento-07/tablas/tab_SD7_8.tex",
+          "sha256": "8ba97bd184a40495e930c773eaca3e229d1707a73619157576aff0c83db3846f"
+        },
+        {
+          "path": "subdocumento-07/tablas/tab_SD7_9.tex",
+          "sha256": "def616adc15438d96d931a686dfff22849b7e34ee67f41cf9014926342ebdee1"
+        },
+        {
+          "path": "subdocumento-07-anexos/contenido.tex",
+          "sha256": "b91c7e3e0eb48032bcc56aafa70eec91cd00903fff4c38dc065f990c78152329"
+        },
+        {
+          "path": "subdocumento-07-anexos/tablas/tab_7A1.tex",
+          "sha256": "ec37ac58400a7f4043d67dc75edfb1a75db27e691900e6d6d323e335343ed9e4"
+        },
+        {
+          "path": "subdocumento-07-anexos/tablas/tab_7B1.tex",
+          "sha256": "1cca131f6dbc537f52430127d46ad704a6e235b905ac5de9d525b482e5a6a73d"
+        },
+        {
+          "path": "subdocumento-07-anexos/tablas/tab_7C1.tex",
+          "sha256": "6e2ff7f2a0ce6464ae7db40306549fc9ee9daca06305c706bf8af726566a5145"
+        },
+        {
+          "path": "subdocumento-07-anexos/tablas/tab_7D1.tex",
+          "sha256": "37caa35417735239fe6a01cf6d7a9df489b4582f1022444038c28a42276646f3"
+        },
+        {
+          "path": "subdocumento-07-anexos/tablas/tab_7E1.tex",
+          "sha256": "76bf77283080daaaab9db73ecb0d9fd2ace64650a2e10c772ea0c70bcff7275f"
+        },
+        {
+          "path": "subdocumento-07-anexos/tablas/tab_7E2.tex",
+          "sha256": "e337b905bad59bb1fbac596a116ae61613cf4af410c325d7b13c6b033e416689"
+        },
+        {
+          "path": "subdocumento-07-anexos/tablas/tab_7F1.tex",
+          "sha256": "5ee77316884782de6a7e7c58ca628f54a972a93da995169b15298b96d4c172df"
+        },
+        {
+          "path": "subdocumento-07-anexos/tablas/tab_IA.tex",
+          "sha256": "8c0f878b3d282f5f5669fd8aee5f55ad17a9f92de3886b0e01a86c75618716d1"
+        },
+        {
+          "path": "trazabilidad revisión/trazabilidad_revision.tex",
+          "sha256": "eca5685770cdb530bbae7f50491658c99b2ddec0c2517e5da047b727a4d0015f"
+        }
+      ],
+      "pdfs": [
+        {
+          "path": "LAFROX-Formulario-T-14.pdf",
+          "sha256": "510cffcb64cf8409e575ea049aebc28c577664ac41c550bf4c53e5ab8fdaf0fa",
+          "pages": 168
+        },
+        {
+          "path": "LAFROX-Formulario-T-15.pdf",
+          "sha256": "390be7e6e39857b9264ff8c8c2694032b7b7a3ce16374b3f75f3ae4f4d19ff96",
+          "pages": 140
+        },
+        {
+          "path": "LAFROX-Formulario-T-18.pdf",
+          "sha256": "8bc64ed5ec16b9067236e0b0d0648f76e6dcb0b573cc79d283cb7618b143777d",
+          "pages": 25
+        },
+        {
+          "path": "LAFROX-Subdocumento7-Anexos.pdf",
+          "sha256": "2abe45200b7953881acec0b1b675b5d7c9ba1f6b6471136144c78fe1cc63cb2f",
+          "pages": 28
+        },
+        {
+          "path": "LAFROX-Subdocumento7.pdf",
+          "sha256": "36332217cfd06ed80db79b62199241c2c5ce4283a1522fc2aac01c52402e7a28",
+          "pages": 117
+        }
+      ]
+    },
+    {
+      "id": "SD8",
+      "branch": "Lafrox_Subdocumento_8_Latex_Revision",
+      "commit": "1f2d739ebc97e34eb65e15bd1163bd51d2948820",
+      "url": "https://github.com/PatricioH315/LafroX/tree/1f2d739ebc97e34eb65e15bd1163bd51d2948820",
+      "latex_files": [
+        {
+          "path": "08_plan_riesgos/anexo-e-controles.tex",
+          "sha256": "2f1303a2180738803f1ac125b0ef065123aa295525a90e1edcb3b0b016bb43ea"
+        },
+        {
+          "path": "08_plan_riesgos/anexo-f-respuestas.tex",
+          "sha256": "8bb2ee86895b6c8cbf867fd7379d03d8face7d2605f0dbd4ec63a9b6f58ca964"
+        },
+        {
+          "path": "08_plan_riesgos/anexo-g-fmea.tex",
+          "sha256": "5ea0d4f5463ade5037849f9919d11a1c917afc903542189644e4cfcfc256ed4a"
+        },
+        {
+          "path": "08_plan_riesgos/anexo-h-reservas.tex",
+          "sha256": "61829593cd1379058afa575c993eb925f89e8caaf764d71ab71b1a4789c1faa2"
+        },
+        {
+          "path": "08_plan_riesgos/contenido.tex",
+          "sha256": "3a7bb3d241e9785cd17b5245559f98b01aac3941296b96a99424c09b3a6df3a0"
+        },
+        {
+          "path": "08_plan_riesgos/figuras/rbs.tex",
+          "sha256": "038997a89ceea12f4e9415881bf230eb1067b90e853b3f032e1ef5750249a851"
+        },
+        {
+          "path": "08_plan_riesgos/tablas/ejemplo_tabla.tex",
+          "sha256": "d9f2f6ec8e6a649c18163337b8299d20ec3c66fb83c162abfb6ef4583c1b82e3"
+        },
+        {
+          "path": "08_plan_riesgos/tablas/Tablas_Subdocumento/Tabla_Probabilidad.tex",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "LAFROX-Formulario-T-16.tex",
+          "sha256": "38d01e719ebcaa390593f8bc3e4b04635a47d68e9205864e9301809f67815e64"
+        },
+        {
+          "path": "lafrox-portada.tex",
+          "sha256": "23d75421da2f48c8a3ffd9723296c6a8bf171073a61748d29d8093c5049be6e7"
+        },
+        {
+          "path": "LAFROX-Subdocumento8-Anexos.tex",
+          "sha256": "cc2ae1401f122f36e22d22496768aa82f7d04c82496af090616ddd0fef875b99"
+        },
+        {
+          "path": "LAFROX-Subdocumento8.tex",
+          "sha256": "3342f464cab015fdb79d114bb1b4dd9cad173a1aea6dce5a2fc60d83857b465b"
+        },
+        {
+          "path": "odd/tasks/interno-s8/trazabilidad-y-equivalencias.tex",
+          "sha256": "8a995ac46721e0e1a846e1a9eab1fd3f673b15b512879806c13ad19ab5a2c37e"
+        },
+        {
+          "path": "sd8-comun.tex",
+          "sha256": "f58c3b300f68dcd74b656fb696d258c35a3d5c526215783cd690e294f7467f79"
+        },
+        {
+          "path": "soporte.tex",
+          "sha256": "6a0292328ce34c61258e370b8ead48b8ac1c5f0ecd6c38a2274d6b9145918fec"
+        }
+      ],
+      "pdfs": [
+        {
+          "path": "LAFROX-Formulario-T-16.pdf",
+          "sha256": "4ccc551231cdf36b01f0ba29abd65cca38dfafe7a309d4176ac87a2f474931db",
+          "pages": 20
+        },
+        {
+          "path": "LAFROX-Subdocumento8-Anexos.pdf",
+          "sha256": "30f522d25197d362ce1f7a246f3f22dc9fd8e40009356c7a215830d72202cc7f",
+          "pages": 122
+        },
+        {
+          "path": "LAFROX-Subdocumento8.pdf",
+          "sha256": "6edeecc3cd79b63f2b065b33b69b456e4809ada5d33dc92f921edc759c282d8d",
+          "pages": 27
+        }
+      ]
+    },
+    {
+      "id": "SD9",
+      "branch": "LafroX-Subdoc9-LateX-corrigiendo",
+      "commit": "fd88261e959c3492cb4e7fd801622bb7901bc5f2",
+      "url": "https://github.com/PatricioH315/LafroX/tree/fd88261e959c3492cb4e7fd801622bb7901bc5f2",
+      "latex_files": [
+        {
+          "path": "SD9_v_nueva/09_anexos/contenido.tex",
+          "sha256": "9287dd8775bbf6a01f2945cad22f49ca221382f8cc884fc972de630d168edaa1"
+        },
+        {
+          "path": "SD9_v_nueva/09_plan_calidad/contenido.tex",
+          "sha256": "2e1953be930fc9a7da88772b6789afab7d43f579564e1d01cd48cc1ab59d3368"
+        },
+        {
+          "path": "SD9_v_nueva/LAFROX-Formulario-T-13.tex",
+          "sha256": "f9449bf505a53168680fa0115378b133227d9f933c16886abedffd4dd541a61c"
+        },
+        {
+          "path": "SD9_v_nueva/LAFROX-Formulario-T-17.tex",
+          "sha256": "9234815215817e2e548c8332ffd3381fffa6b86612ee3caa2eec1aa4b2b11ede"
+        },
+        {
+          "path": "SD9_v_nueva/lafrox-portada.tex",
+          "sha256": "d24641ae895bf660851fa055508414c3b3e1d1ac59096a17799b75b7de00bc4c"
+        },
+        {
+          "path": "SD9_v_nueva/LAFROX-Subdocumento9-Anexos.tex",
+          "sha256": "6b856abcf85b8cc45a7be121a83edfc92342259d19d829d8fd020ce71eee9d97"
+        },
+        {
+          "path": "SD9_v_nueva/LAFROX-Subdocumento9.tex",
+          "sha256": "c84f150acd879296f2ce07a5d187c22a811ffb3936a1ebbfb15755bbd46ebda1"
+        },
+        {
+          "path": "SD9_v_nueva/sd9-comun.tex",
+          "sha256": "3fb12ba1c178090d1f58c969fef4f94801ec0a652fde7defcd9f8d72162eecd9"
+        },
+        {
+          "path": "SD9_v_nueva/T13/contenido.tex",
+          "sha256": "cd35f8b6e3ca44214af410f5846160e0ae0c540ba69fbbf7ce1a4dc4d093c7cd"
+        },
+        {
+          "path": "SD9_v_nueva/T13/matriz_requisitos.tex",
+          "sha256": "ba091d19eae175bd8ffb5425fb3b875376f69f6a76a5db8c0c6652d86c7091ab"
+        },
+        {
+          "path": "SD9_v_nueva/T13/resumen_modulos.tex",
+          "sha256": "6f008cf2a5b5cad81fae68828281bb6c6460bc4eae39a607c273d86464a4eafa"
+        },
+        {
+          "path": "SD9_v_nueva/T17/contenido.tex",
+          "sha256": "134cff9ceb6538cc5d2255632111c68929cf5cca5de129473c15fa3e9cc6c59e"
+        }
+      ],
+      "pdfs": [
+        {
+          "path": "SD9_v_nueva/LAFROX-Formulario-T-13.pdf",
+          "sha256": "e0e8a65a9da5c2de485af3b69a37501d75787835b10b2d8ae944b8e7d219f8a2",
+          "pages": 266
+        },
+        {
+          "path": "SD9_v_nueva/LAFROX-Formulario-T-17.pdf",
+          "sha256": "7bd79c99ace06e6fed0266b67550c71f7ea4b3f4264d1342236f029b04a8f82c",
+          "pages": 17
+        },
+        {
+          "path": "SD9_v_nueva/LAFROX-Subdocumento9-Anexos.pdf",
+          "sha256": "e1d64e3e7516dd57ec87709a55c1e66b4826991d5f7dbecee7f8ab7b2ace6003",
+          "pages": 23
+        },
+        {
+          "path": "SD9_v_nueva/LAFROX-Subdocumento9.pdf",
+          "sha256": "26d20ac4771f2c0a549e7a11e7d6ed4f109d570e368d088c6fb4b7a0ca809d36",
+          "pages": 37
+        }
+      ]
+    },
+    {
+      "id": "SD10",
+      "branch": "LafroX-Subdoc10-LateX",
+      "commit": "3faaec7ac6ab05a2bb7c0b7187584ad59b0b81e4",
+      "url": "https://github.com/PatricioH315/LafroX/tree/3faaec7ac6ab05a2bb7c0b7187584ad59b0b81e4",
+      "latex_files": [
+        {
+          "path": "lafrox-portada.tex",
+          "sha256": "53f1c2371d5f5528ae5dd91708f482686bcda06d7c2eb96ed2918417ce437153"
+        },
+        {
+          "path": "main.tex",
+          "sha256": "3c2a03ed11607e4cf5f936eec1e6c6d07d103bbd8be1d0215c54ff19a8d55d13"
+        },
+        {
+          "path": "subdocumento-ejemplo/contenido.tex",
+          "sha256": "b21572bc431252030926933d1f95375428f014d8890bf7dfb3088b0d5ebbaa46"
+        },
+        {
+          "path": "subdocumento-ejemplo/tablas/ejemplo_tabla.tex",
+          "sha256": "d9f2f6ec8e6a649c18163337b8299d20ec3c66fb83c162abfb6ef4583c1b82e3"
+        }
+      ],
+      "pdfs": []
+    },
+    {
+      "id": "SD11",
+      "branch": "LafroX-Subdoc11-LateX",
+      "commit": "3faaec7ac6ab05a2bb7c0b7187584ad59b0b81e4",
+      "url": "https://github.com/PatricioH315/LafroX/tree/3faaec7ac6ab05a2bb7c0b7187584ad59b0b81e4",
+      "latex_files": [
+        {
+          "path": "lafrox-portada.tex",
+          "sha256": "53f1c2371d5f5528ae5dd91708f482686bcda06d7c2eb96ed2918417ce437153"
+        },
+        {
+          "path": "main.tex",
+          "sha256": "3c2a03ed11607e4cf5f936eec1e6c6d07d103bbd8be1d0215c54ff19a8d55d13"
+        },
+        {
+          "path": "subdocumento-ejemplo/contenido.tex",
+          "sha256": "b21572bc431252030926933d1f95375428f014d8890bf7dfb3088b0d5ebbaa46"
+        },
+        {
+          "path": "subdocumento-ejemplo/tablas/ejemplo_tabla.tex",
+          "sha256": "d9f2f6ec8e6a649c18163337b8299d20ec3c66fb83c162abfb6ef4583c1b82e3"
+        }
+      ],
+      "pdfs": []
+    },
+    {
+      "id": "SD12",
+      "branch": "LafroX-Subdoc12-LateX",
+      "commit": "3faaec7ac6ab05a2bb7c0b7187584ad59b0b81e4",
+      "url": "https://github.com/PatricioH315/LafroX/tree/3faaec7ac6ab05a2bb7c0b7187584ad59b0b81e4",
+      "latex_files": [
+        {
+          "path": "lafrox-portada.tex",
+          "sha256": "53f1c2371d5f5528ae5dd91708f482686bcda06d7c2eb96ed2918417ce437153"
+        },
+        {
+          "path": "main.tex",
+          "sha256": "3c2a03ed11607e4cf5f936eec1e6c6d07d103bbd8be1d0215c54ff19a8d55d13"
+        },
+        {
+          "path": "subdocumento-ejemplo/contenido.tex",
+          "sha256": "b21572bc431252030926933d1f95375428f014d8890bf7dfb3088b0d5ebbaa46"
+        },
+        {
+          "path": "subdocumento-ejemplo/tablas/ejemplo_tabla.tex",
+          "sha256": "d9f2f6ec8e6a649c18163337b8299d20ec3c66fb83c162abfb6ef4583c1b82e3"
+        }
+      ],
+      "pdfs": []
+    },
+    {
+      "id": "SD13",
+      "branch": "LafroX-Subdoc13-LateX-corrigiendo",
+      "commit": "f6b57fa643b47aca24ef8c2f27d0dc393a214c30",
+      "url": "https://github.com/PatricioH315/LafroX/tree/f6b57fa643b47aca24ef8c2f27d0dc393a214c30",
+      "latex_files": [
+        {
+          "path": "SD13_v_nueva/13_anexos/contenido.tex",
+          "sha256": "58f57ca63b44e04ed23d02522cdfa3b6e8f354059c43b84dca9fc9e136f81ba8"
+        },
+        {
+          "path": "SD13_v_nueva/13_innovaciones/contenido.tex",
+          "sha256": "1516a8268f111924ff101388130853a29b6f86336a8924055e4b72fe9f42c0f0"
+        },
+        {
+          "path": "SD13_v_nueva/LAFROX-Formulario-T-19.tex",
+          "sha256": "2c820b4222343a4bbf600e96eb59305e65aae48cd514f56b722687bdb242ede2"
+        },
+        {
+          "path": "SD13_v_nueva/lafrox-portada.tex",
+          "sha256": "d24641ae895bf660851fa055508414c3b3e1d1ac59096a17799b75b7de00bc4c"
+        },
+        {
+          "path": "SD13_v_nueva/LAFROX-Subdocumento13-Anexos.tex",
+          "sha256": "8fb4812c2508d338e06f6879702fe561a48b544c1e763ce5c5d7a5209c877487"
+        },
+        {
+          "path": "SD13_v_nueva/LAFROX-Subdocumento13.tex",
+          "sha256": "7c613401a56659de19e421a62d4b3124b4b2bae7a7c25a45a85491bb7307271a"
+        },
+        {
+          "path": "SD13_v_nueva/sd13-comun.tex",
+          "sha256": "bd6833c7ee27b4231aba465a66891fd4ecdc34bcd785ea6822d009b7fc07f3cf"
+        },
+        {
+          "path": "SD13_v_nueva/T19/contenido.tex",
+          "sha256": "5a312d167bccacc667b334b3f964d756b38b1ddd6b257c86c7e108043ce7d34d"
+        }
+      ],
+      "pdfs": [
+        {
+          "path": "SD13_v_nueva/LAFROX-Formulario-T-19.pdf",
+          "sha256": "c07979897db1e26cdbe95aca875e8e44d4208ef902a72d80aedcd35233a0f739",
+          "pages": 15
+        },
+        {
+          "path": "SD13_v_nueva/LAFROX-Subdocumento13-Anexos.pdf",
+          "sha256": "18479933c2fff354b9514a9b3e1f4e57f00b2fcf63a07ca2f12abe679a65a9c5",
+          "pages": 18
+        },
+        {
+          "path": "SD13_v_nueva/LAFROX-Subdocumento13.pdf",
+          "sha256": "f2e7f1a6c44598c32b61478f2061ab6b0b21e075fa78af5c606eca8fedc892bc",
+          "pages": 55
+        }
+      ]
+    },
+    {
+      "id": "E2",
+      "branch": "LafroX-OfertaEconomica-2-Latex",
+      "commit": "2b04aaa7eaa4a56a4166e4f7e8868c40561c35f1",
+      "url": "https://github.com/PatricioH315/LafroX/tree/2b04aaa7eaa4a56a4166e4f7e8868c40561c35f1",
+      "latex_files": [
+        {
+          "path": "02_analisis_economico_financiero/contenido.tex",
+          "sha256": "f0bc448066e5b1e8d94a8b347d00c210ae7c83395ff66408f127e51c1df69f17"
+        },
+        {
+          "path": "02_analisis_economico_financiero/figuras/curva_s.tex",
+          "sha256": "c20388cea9f0150349dd946818d11bba48f0ca71b73b499b7eea4b41914224e0"
+        },
+        {
+          "path": "02_analisis_economico_financiero/secciones/2-1_costos_frente_a_precio.tex",
+          "sha256": "8fcdc1997c614ded958423da73a64caa9c7bb86025ced8c858539ef4b240344a"
+        },
+        {
+          "path": "02_analisis_economico_financiero/secciones/2-2_evaluacion_financiera.tex",
+          "sha256": "bed779c783da678c2a72bc45dbea9eb3884a1e4da9edd9f43bf41807261a1215"
+        },
+        {
+          "path": "02_analisis_economico_financiero/secciones/2-3_curva_s.tex",
+          "sha256": "cbc03d722f0d7f8e70cd2b848a29e5187016648dfe0b4de79c1cd12e05a2b6df"
+        },
+        {
+          "path": "02_analisis_economico_financiero/secciones/2-4_estrategia_adquisiciones.tex",
+          "sha256": "98784a21672c8de9596869e2d625133ef205c01eaa1255a33c0521bde4da244a"
+        },
+        {
+          "path": "02_analisis_economico_financiero/secciones/2-5_costos_operacionales.tex",
+          "sha256": "8378b4044232ae298140d01908c1441a807776db9c8aa430f765fd31d6db961e"
+        },
+        {
+          "path": "02_analisis_economico_financiero/secciones/2-6_mantencion_soporte.tex",
+          "sha256": "b881571091665bd121076259a19e606f42d1c4a2492cb1253c273bec8753a7d7"
+        },
+        {
+          "path": "02_analisis_economico_financiero/secciones/2-7_valorizacion_innovaciones.tex",
+          "sha256": "419741d17ef3d3156f3011f31925dbc9ecaf20dbef192764a33ea0af9b169e56"
+        },
+        {
+          "path": "lafrox-portada.tex",
+          "sha256": "c5dc1dc08a08931efa915f4672b47f3dd82e51fdfb3340bb3011ef76fa28afc7"
+        },
+        {
+          "path": "LAFROX_AnalisisFinanciero_2_20261113.tex",
+          "sha256": "dfcd5a634e5915e42d0cc3030d5243467b7c06e3540b66861d6d383814c0cf92"
+        }
+      ],
+      "pdfs": []
+    }
+  ],
+  "bases_aclaraciones": [
+    {
+      "id": "BA",
+      "path": "Bases MarkDown/Bases Administrativas.md",
+      "sha256": "a1f36d3e1917b7fde42107209554ac844082a95c21ae6b43e8ae02558f33ff7f"
+    },
+    {
+      "id": "BTT",
+      "path": "Bases MarkDown/Bases_Tecnicas_Transversales.md",
+      "sha256": "bf7ff0d25089ed491ff479c9485fa6639e455b78ddd107bdd83e7e7613f326c2"
+    },
+    {
+      "id": "Caso",
+      "path": "Bases MarkDown/Caso_02_Logistica.md",
+      "sha256": "9550b1703e1e0b37c19079bca08d5e068261e5086b76104d36d4fc76d0383d47"
+    },
+    {
+      "id": "Aclaraciones",
+      "path": "tmp/sd4-corrigiendo-integracion/Bases/aclaraciones-licitacion.md",
+      "sha256": "d8c9f7f20129ce1deb6a703508e17bec0cb3201bfad36850bbd67f178404ac97"
+    },
+    {
+      "id": "Informe3",
+      "path": "tmp/sd4-corrigiendo-integracion/aclaraciones_informe_3.md",
+      "sha256": "620800f4693226a3e166dbc90f9f76142b0557c37d5b3f3ec88268576965b3e0"
+    }
+  ]
+}

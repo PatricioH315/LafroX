@@ -1,0 +1,65 @@
+\subsection{Clasificación y objetivos}
+\label{sub:sd10-sla}
+
+La clase del servicio orienta su objetivo de disponibilidad. La severidad de cada incidente depende del impacto observado según el artículo 78.1. Un proceso crítico interrumpido sin alternativa o un compromiso de datos activa severidad crítica aunque el componente que origine el incidente también preste funciones de otra clase. El seguimiento relaciona la severidad con el proceso afectado (Distribuidora Puelche S.A., 2026a, art. 78.1, p. 40).
+
+La Tabla~\ref{tab:sd10-sla} reúne los umbrales contractuales. La respuesta, la resolución y la disponibilidad se verifican como indicadores independientes. La restitución funcional se prueba mediante el resultado del servicio y la corrección definitiva continúa en gestión de problemas cuando corresponda.
+
+\begin{tablalafrox}{Umbrales del artículo 78.2}{tab:sd10-sla}{Y H{0.22} H{0.20} H{0.22}}{\cab{Severidad} & \cab{Disponibilidad} & \cab{Respuesta} & \cab{Resolución}}
+Crítica & 99,9\,\% & 15 min & 4 h \\
+Alta & 99,5\,\% & 1 h & 8 h \\
+Media & 99,0\,\% & 4 h & 24 h \\
+Baja & 98,0\,\% & 8 h & 48 h \\
+\end{tablalafrox}
+\fuentesdiez{Bases Administrativas, art. 78.2, p. 40. SD4, clasificación por servicio, apartado 4.2.4.3.}
+
+SD4 clasifica críticos la preparación y el despacho con guía nueva por cambio de carga en su ventana, el bloqueo térmico y la identidad de bodega que los habilitan. Son altos la toma de pedido, stock y crédito, entrega y evidencia, planificación de rutas, integración con ERP, cobranza, rendición y registro de temperatura. EDI, notificaciones, analítica, portales, geolocalización y consulta de registros de auditoría y seguridad son medios. Los informes a pedido son bajos. Un incidente con compromiso de datos recibe la severidad crítica que fijan las Bases (LafroX, 2026d, apartado 4.2.4.3; Distribuidora Puelche S.A., 2026a, art. 78.1).
+
+Los incidentes críticos y altos reciben cobertura continua. Las clases media y baja tienen atención en horario hábil extendido y hábil, respectivamente, dentro de la cobertura ampliada del caso. Falta una regla contractual completa sobre el descuento de horas fuera de cobertura de sus relojes de resolución. B-06 exige formalizarla. Se conservarán las marcas de tiempo corridas y la cobertura para poder verificar el cálculo, sin atribuir pausas aprobadas (Distribuidora Puelche S.A., 2026a, arts. 78--79; 2026c, RT-21.06).
+
+\subsection{Indicadores y medición}
+\label{sub:sd10-medicion}
+
+La disponibilidad crítica se mide sobre la transacción de negocio de extremo a extremo. El piso de infraestructura de 99,95\,\% por componente de BTT 7.2 se sigue por separado del 99,9\,\% del servicio crítico. SD4 sostiene la preparación con cómputo y datos locales y la identidad con redundancia de nube y verificación local. El equipo informa la pérdida de función efectiva, aunque los recursos individuales respondan (Distribuidora Puelche S.A., 2026b, RT-10.01, RT-14.03 y sección 7.2; LafroX, 2026d, apartado 4.2.4.3).
+
+Para un tiempo elegible mensual $T$ y una indisponibilidad imputable $I$ en la misma unidad, se calcula
+\[
+ D=100\left(1-\frac{I}{T}\right).
+\]
+El artículo 79.4 excluye únicamente ventanas programadas y aprobadas. Las no aprobadas y los excesos computan. El catálogo debe delimitar la transacción y su ventana de servicio y la observabilidad debe conservar la evidencia de su interrupción. La exigencia de indisponibilidad cero en despacho se verifica además del porcentaje mensual (Distribuidora Puelche S.A., 2026a, arts. 78--79; 2026c, RT-10.05).
+
+En un mes continuo de 30 días, $T=43.200$ minutos. El complemento de 99,9\,\% es 43,2 minutos. Una interrupción de cuatro horas consumiría 240 minutos y daría 99,444\,\%, aunque una restitución dentro de cuatro horas cumpla ese plazo específico. Este cálculo muestra por qué ambos indicadores se siguen por separado. SD4 suspende despliegues no correctivos al agotar el presupuesto de error, respetando los congelamientos (LafroX, 2026d, apartado 4.2.4.1).
+
+Los objetivos del caso se miden en percentil 95 desde la experiencia real. Confirmar una línea de preparación exige hasta un segundo, registrar una entrega hasta dos, registrar una línea de preventa hasta 1,5 y consultar stock y crédito hasta dos segundos. La captura desconectada y la reconciliación tienen contratos propios. Una confirmación local debe conservar su estado de sincronización para que el soporte distinga una operación recibida de una integración pendiente (Distribuidora Puelche S.A., 2026a, art. 78.3; 2026c, RT-09.01; LafroX, 2026d, apartados 4.1.4 y 4.2.4).
+
+La mesa verifica 80\,\% de atención antes de veinte segundos, resolución al primer contacto de al menos 70\,\% y abandono hasta 5\,\%. El artículo 78.3 añade satisfacción de al menos 4,0 sobre cinco, MTTR crítico hasta cuatro horas, cambios fallidos hasta 5\,\%, reincidencia de una causa hasta un evento trimestral y cumplimiento de RTO/RPO del 100\,\% en cada prueba semestral. El Anexo 10.B relaciona metas, evidencia y requisitos.
+
+La detección proactiva parte de las señales y del historial de incidentes de SD4. Las alarmas se correlacionan, agrupan y escalan conforme a su impacto. El borrador conserva el requisito de medir esa capacidad y no aporta resultados observados ni tasas de anticipación ausentes de las fuentes (Distribuidora Puelche S.A., 2026b, RT-14.04 y RT-14.09).
+
+Las vulnerabilidades mantienen los plazos máximos de siete días corridos para críticas, quince para altas y treinta para medias. El indicador del artículo 78.3 exige cero vulnerabilidades críticas abiertas fuera del plazo. SD4 distingue contención y remediación y registra el conflicto con los congelamientos, que permanece como B-05 (Distribuidora Puelche S.A., 2026a, art. 21.1, p. 15; LafroX, 2026d, apartado 4.2.4.1).
+
+\subsection{Recuperación y dependencias del servicio}
+\label{sub:sd10-continuidad}
+
+Los servicios críticos conservan RTO hasta cuatro horas y RPO hasta quince minutos. SD4 propone réplica caliente reducida en us-east-1 para núcleo de aplicación y datos. Presupuesta hasta treinta minutos al escalado y hasta 135 minutos a la secuencia completa de recuperación. Esta incluye detección, autorización del CLIENTE, promoción, restitución de canales y validación. El Anexo 10.C reproduce pasos y responsables (LafroX, 2026d, apartado 4.3.2.5; Distribuidora Puelche S.A., 2026b, RT-07.04--RT-07.07).
+
+El CLIENTE designa titular y suplente para autorizar la promoción. SD4 reserva hasta treinta minutos y activa al suplente si el titular no responde en quince. El retorno automático permanece deshabilitado. La restitución verifica un único escritor, consistencia y conservación de UUID y outbox. Las conmutaciones con escrituras se ensayan dos veces al año y las restauraciones se verifican mensualmente (LafroX, 2026d, apartados 4.2.4.6 y 4.3.2.5).
+
+Las guías nuevas dependen del ERP de 2017 del CLIENTE. Ante la pérdida de su sala, SD4 permite salir con guías válidas preemitidas y la emisión nueva espera la restitución del ERP por el CLIENTE. B-07 exige conciliar esa dependencia con el servicio crítico y su medición. La atribución de causa necesita evidencia. El borrador conserva la dependencia publicada sin declarar una exención contractual adicional (LafroX, 2026d, apartados 4.2.4.3 y 4.3.2.5; Distribuidora Puelche S.A., 2026a, art. 79).
+
+La mesa distingue fallas de fibra, LTE y Starlink de la pérdida del cómputo local o de una región. El WMS conserva al menos 24 horas de actividad local ante pérdida de enlace y el outbox permite reenviar hechos. La consulta sanitaria de M9 exige identificar clientes afectados con evidencia en menos de dos horas desde la solicitud, también ante pérdida regional. SD4 presupuesta quince minutos de acceso y sesenta de consulta y comprobación, con 45 de margen. Las posiciones de flota permanecen en sa-east-1 según el diseño de datos (LafroX, 2026d, apartado 4.3.2).
+
+El histórico completo de temperatura, evidencia de entrega y documentos tributarios puede restaurarse en ocho horas según SD4, mientras la recuperación funcional crítica mantiene cuatro horas y su RPO. SD5 conserva las políticas y responsabilidades de datos. La aceptación debe verificar dependencias y contenido recuperable, además de la puesta en marcha de los componentes (LafroX, 2026d, apartado 4.2.4.5; 2026e, secciones 5.2 y 5.3; 2026i, T-13 y T-17).
+
+Los catálogos de interfaces de SD4 fijan comportamientos ante fallas de ERP, SII, pagos, telemetría y cadenas. El MDN de AS2 es acuse de transporte y la respuesta comercial se controla por separado. Un pago incierto exige consulta por la misma clave antes de reintentar y no se declara autorizado por ausencia de respuesta. Esas reglas de contingencia alimentan las guías de la mesa (LafroX, 2026d, anexos 4-G y 4-H).
+
+\subsection{Acuerdos operacionales, reporte y mejora}
+\label{sub:sd10-acuerdos}
+
+Los acuerdos de nivel operacional articulan mesa, NOC, SOC, SRE y Desarrollo bajo el gerente de servicio. T-14 distribuye recepción, diagnóstico, trabajo experto, desplazamiento y cierre. Esa asignación sustenta la coordinación. Los tiempos internos por equipo, directorios y cuadrantes requieren formalización para que las actuaciones acumuladas permitan cumplir los plazos externos. B-03 registra los acuerdos operacionales y contratos de apoyo aún sin evidencia de suscripción (Distribuidora Puelche S.A., 2026b, sección 21.3; 2026d, apartado 10.2; LafroX, 2026g, cuentas 8.1 y 8.2).
+
+El soporte del fabricante constituye N4 y lo gestiona LafroX. Una referencia comercial acredita el origen de una previsión, mientras el contrato de apoyo debe acreditar cobertura y escalamiento compatibles con los objetivos. Las fuentes consultadas no acreditan la contratación completa para AWS, enlaces, servidores y dispositivos. La responsabilidad de coordinación frente al CLIENTE se mantiene en LafroX (Distribuidora Puelche S.A., 2026b, sección 21.3; LafroX, 2026l, sección 2.6).
+
+El informe de servicio se entrega dentro de los cinco primeros días hábiles de cada mes. Incluye indicadores, incidentes, causas raíz y acciones, con tendencias y detalle por severidad. El CLIENTE dispone de medición en tiempo real y exportable. Ante discrepancia prevalece su medición salvo acreditación de error metodológico. El Comité de Operación sigue las acciones hasta el cierre y refleja las lecciones en la base de conocimiento y la capacidad de atención (Distribuidora Puelche S.A., 2026a, art. 79; 2026b, RT-21.09, RT-21.10 y RT-21.18; LafroX, 2026g, cuentas 8.1.2 y 8.5.3).
+
+El Anexo 10.D identifica las brechas abiertas y el Anexo 10.E relaciona el desarrollo con los requisitos aplicables. El cierre del borrador exige evidencia y revisión del CLIENTE donde corresponda. La capacidad declarada se verifica sobre los contratos, turnos y ensayos que la sostienen.

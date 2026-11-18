@@ -1,0 +1,119 @@
+\subsection{Alcance, continuidad y gobierno}
+\label{sub:sd10-alcance}
+
+La operación atiende los módulos M1 a M12, su infraestructura y las integraciones provistas por LafroX. El inventario de referencia comprende Talca, Concepción y las plataformas de Curicó, Chillán y Los Ángeles, con la nube principal en sa-east-1 y recuperación en us-east-1. Los nombres de componentes y contratos conservan SD3, SD4 y T-11. El WMS local permite preparar y despachar durante una pérdida de WAN y exige que el soporte diagnostique tanto nube como borde (LafroX, 2026c; 2026d, apartados 4.1.4, 4.2 y 4.3).
+
+El Líder de Operación / SRE, Guillermo Castillo, es el gerente de servicio dedicado y contraparte permanente del CLIENTE en M21--M56. T-14 lo identifica al 100\,\% y T-15 programa 128 HH por mes dentro de su capacidad efectiva. Coordina el Comité de Operación mensual, los niveles de servicio y la mejora. El NOC supervisa infraestructura, el SOC atiende seguridad y la mesa recibe contactos de usuarios. La Contraparte Técnica del CLIENTE valida las decisiones que le competen, incluida la aceptación de entregables (LafroX, 2026a, secciones 1.1 y 1.5; 2026g, T-14, cuenta 8.1, y T-15, sección 5.7; 2026i, T-17).
+
+El NOC y el SOC operan desde el Centro de Operaciones de LafroX en Valparaíso, Av. Brasil 2241. SD4 declara continuidad de sus turnos mediante trabajo remoto con Verified Access si el centro queda indisponible. El NOC corporativo tiene 32 profesionales y seis posiciones activas compartidas. Las ocho personas del perfil NOC propuestas en T-15 para Puelche forman parte de esa capacidad. El SOC se prepara con seis analistas propios antes de M13 bajo el Encargado de Seguridad. La disponibilidad física de puestos y la planificación de plazas se deben convertir en un registro de personas, turnos y relevos antes de aprobar la línea base (LafroX, 2026a, sección 1.1; 2026d, Anexo 4-W.7; 2026g, T-15, secciones 4.1 y 5.7).
+
+\brechasdiez{El caso cita seis instalaciones en RT-21.16 y desarrolla cinco emplazamientos. SD4 y T-11 describen cinco sitios. Se usa el inventario técnico explícito y se registra B-01 en el Anexo 10.D. Falta confirmar el sexto emplazamiento, si corresponde, antes de declarar cobertura y desplazamientos completos.}
+
+\subsection{Horarios y transición entre etapas}
+\label{sub:sd10-horarios}
+
+La atención cubre la preparación nocturna, la salida de camiones y los peaks de septiembre y diciembre. La mesa del caso funciona de 04:00 a 22:00 de lunes a sábado, y 24$\times$7 en esos dos meses. Los incidentes críticos y altos tienen atención 24$\times$7$\times$365 conforme al artículo 78.2. La Tabla~\ref{tab:sd10-cobertura} muestra la distribución de cobertura publicada (Distribuidora Puelche S.A., 2026a, art. 78.2, p. 40; 2026c, cap. 15, RT-21.06, p. 27).
+
+\Needspace{0.43\textheight}
+\begin{tablalafrox}{Cobertura de atención de Operación}{tab:sd10-cobertura}{Y F{0.31} F{0.28}}{\cab{Función} & \cab{Ventana} & \cab{Asignación de referencia}}
+Mesa N1 ordinaria & 04:00--20:00, lunes a sábado & Puestos propios de mesa \\
+Mesa atendida por NOC & 20:00--22:00, lunes a sábado & Dos posiciones del NOC compartido \\
+Mesa durante peak & 24 h, septiembre y diciembre & Refuerzos de T-15 \\
+Supervisión NOC y SOC & 24$\times$7$\times$365 & Una posición por función \\
+Incidentes críticos y altos & 24$\times$7$\times$365 & Especialistas L2/L3 \\
+\end{tablalafrox}
+\fuentesdiez{BA, art. 78.2. Caso, RT-21.06. SD4, Anexo 4-W.7. SD7, T-14, cuentas 8.1.1--8.1.5, y T-15, sección 4.1.}
+
+La supervisión continua conserva su cobertura mientras se atienden consultas. En la franja 20:00--22:00, SD4 estima 7,96 contactos diarios y 1,33 horas de atención y asigna dos de las seis posiciones activas del NOC. Esta asignación exige la formación prevista para ocho operadores, de 16 horas iniciales y repasos de ocho horas al comenzar los años segundo y tercero. La cobertura de especialistas permite escalar las incidencias críticas y altas fuera del horario general. La nómina y el cuadrante de guardias constituyen la brecha B-02 hasta su formalización (LafroX, 2026d, Anexo 4-W.7; 2026g, T-15, secciones 4.1 y 5.7).
+
+La dedicación imputada del NOC es 100\,\% en M21--M32, 75\,\% en M33--M44 y 50\,\% en M45--M56. La reducción requiere acta del Comité de Operación y tres meses previos dentro de los niveles de servicio. Ante incumplimiento vuelve al 100\,\% a cargo de LafroX. La cobertura continua del puesto sigue siendo compromiso del servicio compartido (LafroX, 2026g, T-14, cuenta 8.1.1).
+
+El puente de Etapa 1 opera en M16--M20 por el paquete 4.2.2. T-15 identifica 9.336 HH de NOC y mesa, mientras el SOC cubre desde M13 la marcha blanca con datos reales. En M21 la atención se transfiere a 8.1.1 y 8.1.2, conservando responsables, historial y seguimiento. Las HH puente y de Operación tienen ventanas e imputaciones propias (LafroX, 2026g, T-15, sección 4.1; T-18, soporte puente).
+
+Desarrollo, QA y Preproducción se usan de lunes a viernes de 08:00 a 20:00. Fuera de esa ventana se reducen o apagan sus recursos elegibles, con las excepciones publicadas para pruebas del CLIENTE y correcciones críticas. SD4 compromete reducir al menos 60\,\% sus horas de cómputo frente a la continuidad: una semana ordinaria usa 60 de 168 horas, reducción teórica de 64,3\,\%. La evidencia mensual de nube verifica el resultado real, incluidas las excepciones. Producción y Recuperación conservan sus requisitos de continuidad y las tareas de preparación nocturna siguen disponibles. La disminución de horas se valoriza en la Oferta Económica por recurso y tarifa; no implica reducir por igual los cargos fijos ni toda la factura de nube (LafroX, 2026d, apartados 4.2.3.4 y 4.2.4.1; 2026g, paquete 8.4.3).
+
+\subsection{Dimensionamiento y capacidad verificable}
+\label{sub:sd10-capacidad}
+
+El escenario de SD4, Anexo 4-W.7, parte de 640 personas propias y 160 externas, con 2,5 contactos por persona y mes. El resultado es 2.000 contactos mensuales. Con 22,14 días equivalentes y 25\,\% en una hora cargada por día, se obtienen 22,58 contactos/hora en esa franja y 3,99 en cada una de las otras 17 horas. La atención media de diez minutos equivale a seis contactos por agente y hora. Estas entradas son supuestos publicados y deben contrastarse con los contactos observados (LafroX, 2026d, Anexo 4-W, SV-06 y sección 4-W.7).
+
+Erlang C determina agentes simultáneos para que al menos el 80\,\% responda antes de veinte segundos. La Tabla~\ref{tab:sd10-erlang} reproduce el cálculo. El Anexo 10.A detalla la fórmula, las entradas y el margen del escenario.
+
+\begin{tablalafrox}{Espera de la mesa en el escenario base}{tab:sd10-erlang}{Y H{0.23} H{0.20} H{0.24}}{\cab{Franja} & \cab{Contactos/h} & \cab{Agentes} & \cab{Respuesta en 20 s}}
+Hora cargada & 22,58 & 7 & 90,6\,\% \\
+Otras 17 horas & 3,99 & 2 & 84,2\,\% \\
+\end{tablalafrox}
+\fuentesdiez{Reproducción del escenario de SD4, Anexo 4-W.7. Llegadas y atención son hipótesis del modelo.}
+
+La espera calculada supera la meta en ambas franjas. Erlang C supone paciencia infinita y no verifica abandono ni resolución al primer contacto. T-15 exige registrar llegada, respuesta, abandono y resolución sin escalar desde la marcha blanca. Con al menos cuatro semanas de registros se calibra Erlang A con paciencia observada y se recalcula la dotación antes de M21. Si un indicador falla durante dos meses consecutivos, se refuerza la franja afectada sin esperar la revisión anual (LafroX, 2026g, T-15, sección 5.6).
+
+El año 3 aplica el factor 350/310 de SD4 y obtiene unos 2.258 contactos/mes. La franja valle con dos agentes alcanza su límite aproximado en 2.283 contactos/mes. Desde M25, septiembre y diciembre incorporan un tercer agente en valle y el límite pasa a unos 2.391 contactos/mes, fijado por la hora cargada. El peak del negocio no proporciona un volumen medido de llamadas. La demanda observada y el escenario 3$\times$ exigen recalcular dotación (LafroX, 2026d, Anexo 4-W.7 y crecimiento).
+
+Las siete posiciones simultáneas en hora cargada y las horas-posición semanales de SD4 describen cobertura. Las 13 plazas de mesa y seis de SOC de T-15 planifican relevos con 128 HH efectivas por persona-mes. Un puesto continuo de 744 HH en un mes de 31 días requiere $\lceil744/128\rceil=6$ plazas. La cuenta de personas por posición de SD4 usa jornadas semanales de 40--42 horas y arroja otra dotación. El cuadrante debe comprobarse sobre el calendario de T-15 y conservar relevos, formación y descansos. La cuenta agregada no acredita una asignación nominal aprobada (LafroX, 2026g, T-15, secciones 4.1 y 5.7).
+
+\subsection{Registro, atención y escalamiento}
+\label{sub:sd10-incidentes}
+
+La mesa registra incidentes y solicitudes en un canal único con número de ticket y seguimiento hasta el cierre conforme. N1 recibe y clasifica, N2 diagnostica y configura, N3 investiga y resuelve a nivel experto y N4 corresponde al fabricante. LafroX gestiona N4 conservando su responsabilidad ante el CLIENTE. Los incidentes de procedimientos propios o aplicaciones ajenas a la provisión de LafroX se coordinan con el CLIENTE según la responsabilidad de cada dominio (Distribuidora Puelche S.A., 2026b, sección 21.3, p. 37).
+
+La Figura~\ref{fig:sd10-incidente} relaciona el contacto con la evidencia de restauración. Representa las actuaciones de T-14, T-15 y T-19 como procedimiento del servicio.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance=4mm,every node/.style={font=\fontsize{9.5pt}{12pt}\selectfont},etapa/.style={draw=lafroxLinea,rounded corners=2pt,align=center,text width=10.2cm,inner sep=5pt},>=Latex]
+\node[etapa] (a) {Persona usuaria o alerta de observabilidad\\N1 registra ticket, servicio afectado y severidad};
+\node[etapa,below=of a] (b) {N1 resuelve con la guía disponible o escala\\L2/L3 diagnostican y LafroX coordina al fabricante L4};
+\node[etapa,below=of b] (c) {Recuperación y validación funcional\\Evidencia de la transacción y control del riesgo};
+\node[etapa,below=of c] (d) {Confirmación de la persona usuaria y cierre\\Causa raíz y acciones según severidad};
+\draw[->] (a)--(b);\draw[->] (b)--(c);\draw[->] (c)--(d);
+\end{tikzpicture}
+\caption{Atención y escalamiento de un incidente de Puelche}
+\label{fig:sd10-incidente}
+\fuentesdiez{Elaboración a partir de BTT 21.3, SD7 T-14, cuenta 8.1.2, y SD13, INN-02.}
+\end{figure}
+
+T-14 elige la confirmación de la persona usuaria como condición de cierre. El historial permite analizar tendencias y reiteraciones. Un crítico requiere análisis de causa raíz dentro de cinco días hábiles, con acciones, responsables, plazos y comprobación de cierre. Los incidentes altos tienen informe en diez días hábiles conforme al artículo 78.2 (LafroX, 2026g, T-14, cuenta 8.1.2; Distribuidora Puelche S.A., 2026a, art. 78.2; 2026b, RT-14.06).
+
+INN-02 añade reproducción de incidentes de terreno con captura seudonimizada y recursos efímeros de QA o Preproducción. La corrección debe pasar esa reproducción y la persona afectada confirma que puede continuar. Su evidencia alimenta el análisis de causa raíz del mismo caso. Los recursos siguen dentro de los cinco ambientes y su cómputo se atribuye a la innovación según SD13. El pipeline mantiene la metodología y las puertas de SD6 y SD9 (LafroX, 2026f, Formulario T-10; 2026i, T-13; 2026k, sección 13.2).
+
+Cuando se necesita desplazamiento, el especialista procede de mantención de aplicación o infraestructura y los puestos de mesa, NOC y SOC siguen cubiertos. La recuperación remota y el equipo en espera sostienen el plazo, mientras el desplazamiento busca la resolución definitiva. T-14 incluye traslado por el medio más rápido disponible y la dedicación en el paquete de origen (LafroX, 2026g, cuentas 8.2.1 y 8.2.3; Distribuidora Puelche S.A., 2026b, RT-21.16).
+
+\brechasdiez{Las fuentes consultadas no acreditan un producto ITSM, teléfono de soporte, correo operativo, directorio completo de guardias ni contratos de fabricante suscritos. Se registran N/A en B-02 y B-03. El canal único y los plazos documentados deben materializarse antes de habilitar el servicio.}
+
+\subsection{Seguridad y observabilidad de extremo a extremo}
+\label{sub:sd10-observabilidad}
+
+OpenTelemetry y \texttt{transaction\_id} correlacionan la experiencia de usuario, los procesos de nube y los sitios. SD4 transporta el identificador en HTTP, RabbitMQ, SQS y la capa de integración con el ERP. La Figura~\ref{fig:sd10-evidencia} presenta el recorrido de la evidencia. Las alertas reflejan el impacto de negocio, la antigüedad de datos y la transacción afectada (LafroX, 2026d, apartado 4.2.4.6; Distribuidora Puelche S.A., 2026b, RT-14.01--RT-14.04, p. 27).
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance=4mm,every node/.style={font=\fontsize{9.5pt}{12pt}\selectfont},etapa/.style={draw=lafroxLinea,rounded corners=2pt,align=center,text width=10.2cm,inner sep=5pt},>=Latex]
+\node[etapa] (a) {M5 preparación, M6 entrega o M9 cadena de frío\\Hecho local o de nube con identidad y correlación};
+\node[etapa,below=of a] (b) {OpenTelemetry, registros y métricas\\Seguimiento por transaction\_id y antigüedad de información};
+\node[etapa,below=of b] (c) {NOC, SOC y responsables de aplicación\\Alerta de negocio, ticket y guía de resolución};
+\node[etapa,below=of c] (d) {Tablero accesible al CLIENTE e informe mensual\\Disponibilidad, tiempos, causa y acción verificable};
+\draw[->] (a)--(b);\draw[->] (b)--(c);\draw[->] (c)--(d);
+\end{tikzpicture}
+\caption{Correlación de evidencia operativa de la solución}
+\label{fig:sd10-evidencia}
+\fuentesdiez{Elaboración a partir de SD4, apartados 4.1.3 y 4.2.4.6, y BTT RT-14.01--RT-14.07.}
+\end{figure}
+
+Las señales incluyen colas, mensaje más antiguo, fallidos, latencia de integración y base de datos. El CLIENTE dispone de acceso propio a tableros con datos en tiempo real y exportación. Las pruebas sintéticas complementan el diagnóstico y los indicadores contractuales parten de la experiencia real. Los registros excluyen credenciales y datos sensibles y sus accesos quedan auditados. SD4 declara siete años para seguridad y auditoría. Falta individualizar retenciones de métricas y trazas y su separación entre línea y archivo, registrada como B-04 (LafroX, 2026d, apartado 4.2.4.5; Distribuidora Puelche S.A., 2026b, RT-14.02--RT-14.08).
+
+El SOC atiende 24$\times$7. Ante un crítico de seguridad comunica al CLIENTE dentro de dos horas de la detección. Toda brecha exige informe preliminar dentro de 24 horas y causa raíz dentro de cinco días hábiles. La respuesta inicial de quince minutos de un incidente crítico se mide además de esas comunicaciones. T-14 compromete un ejercicio anual de seguridad con el CLIENTE (Distribuidora Puelche S.A., 2026a, art. 78.2; 2026b, RT-11.17--RT-11.21; LafroX, 2026g, cuenta 8.1.5).
+
+\subsection{Libros de operación, cambios y conocimiento}
+\label{sub:sd10-procedimientos}
+
+Los procedimientos de referencia son las guías de SD4, la transferencia de T-18 y el seguimiento de T-14. Recuperar una región exige promover datos, restituir canales y validar transacciones. La pérdida del WMS de Talca requiere excluir al escritor anterior antes de habilitar su copia. En Concepción y cross-docking, una alarma de pérdida de contacto no autoriza por sí sola una promoción. Los procedimientos conservan un único escritor y la deduplicación por UUID (LafroX, 2026d, apartados 4.2.4.3 y 4.3.2.5).
+
+Los cambios usan el pipeline de SD6 y las puertas de SD9. SD4 protege 05:30--07:00 de lunes a sábado, impide paso a producción en septiembre y diciembre y recoge los congelamientos del caso. Las indisponibilidades excepcionales requieren autorización y aviso de diez días hábiles. La emergencia conserva reversión y evidencia. Las fuentes plantean una tensión entre prohibiciones y autorización excepcional, registrada en B-05 para su aclaración contractual (LafroX, 2026d, apartado 4.2.4.1; 2026f, T-10; 2026i, T-13 y T-17).
+
+La base de conocimiento reúne soluciones y lecciones verificadas. T-14 prevé revisar trimestralmente su uso. SD7 incluye autoformación con avance registrado, formación por turnos y mentoría de seis meses después de la producción de Etapa 2. La automatización usa las herramientas publicadas de despliegue y operación y registra sus ejecuciones. El servicio integra el circuito de INN-02 con la gestión de incidentes (LafroX, 2026g, cuentas 8.5 y paquete 3.11; 2026k, sección 13.2).
+
+La mantención conserva responsabilidades y capacidades de T-14 y el tratamiento de E2. La bolsa evolutiva publicada es de 768 HH DES anuales acumulables. Las correcciones y adecuaciones normativas se distinguen de esa bolsa. Los planes de SD11 y la nominación integral de SD12 siguen abiertos. Este borrador usa T-14 y T-15 como respaldo disponible (LafroX, 2026g, cuenta 8.2; 2026l, sección 2.6).
+
+El CLIENTE solicita una evolución por ticket; DES estima alcance, impacto y HH en cinco días hábiles. El CLIENTE aprueba por escrito en el Comité de Operación antes de comenzar. El informe mensual descuenta las HH reales del cambio desplegado y presenta saldo anual y acumulado. T-14 destina otras 2.304 HH DES a deuda técnica durante los 36 meses, equivalentes a 64 HH mensuales y al 2,0985\,\% del esfuerzo de Operación de ese formulario. El registro cuantificado y el informe trimestral siguen su reducción. Las versiones de componentes de base se planifican anualmente con ventana acordada y reversión según BTT RT-21.22 (LafroX, 2026g, cuenta 8.2; Distribuidora Puelche S.A., 2026b, RT-21.19--RT-21.22).
+
+Los riesgos de servicio mantienen el registro vivo de SD8 y la revisión mensual del Comité de Operación desde M13. Una amenaza a continuidad o seguridad se escala inmediatamente; el incidente observado se atiende y el riesgo remanente se conserva con responsable y evidencia. Las decisiones sanitarias siguen en Calidad del CLIENTE y las de privacidad en Seguridad. El silencio de una contraparte no acredita aprobación (LafroX, 2026h, apartados 8.1.1 y 8.1.2).

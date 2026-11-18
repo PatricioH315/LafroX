@@ -1,0 +1,62 @@
+\section*{Anexo 10.E — Matriz de requisitos y localización}
+\addcontentsline{toc}{section}{Anexo 10.E — Matriz de requisitos y localización}
+\label{anx:sd10-matriz}
+
+La matriz localiza el desarrollo del borrador y distingue el respaldo documental de la evidencia de puesta en servicio. «Desarrollado» significa contenido redactado desde una fuente identificada; no acredita cumplimiento ejecutado ni aceptación contractual. Las brechas B-01 a B-10 conservan el dato faltante. La trazabilidad separada registra ramas, commits y líneas de origen.
+
+La Tabla~\ref{tab:sd10-matriz-soporte} cubre organización, cobertura y atención. La cobertura especial del caso amplía el mínimo transversal.
+
+\Needspace{0.8\textheight}
+\begin{tablalafrox}{Contraste de organización y soporte}{tab:sd10-matriz-soporte}{F{0.25} Y F{0.28}}{\cab{Requisito} & \cab{Desarrollo del SD10} & \cab{Estado documental}}
+RT-21.01--21.03 & 10.1: centro NOC, gerente y especialistas; 10.A: plazas & Desarrollado; guardias B-02 \\
+RT-21.04 & 10.1 y 10.C: transferencia y guías ejecutables & Guías de diseño; validar ejecución \\
+RT-21.05--21.07; Caso RT-21.06 & 10.1: mesa, cobertura y Erlang; 10.A: sensibilidad & Desarrollo cuantitativo; B-02 y B-08 \\
+RT-21.08--21.10 & 10.1: orientación N1--N4, historial y conocimiento & Desarrollado desde T-14 \\
+RT-21.11 & 10.1: autoformación y registro de avance & Desarrollado desde T-14 \\
+RT-21.12 & Comunidad de personas usuarias & Deseable; N/A para compromiso específico publicado \\
+RT-21.13 & 10.1 y 10.2: acceso a tableros y autorización & Requisito incorporado; habilitar accesos \\
+RT-21.14 & 10.1 y 10.A: Erlang C y dotación & Reproducido; calibración B-08 \\
+RT-21.15; RT-21.17 & 10.1: ticket único y confirmación de cierre & Desarrollado; herramienta B-02 \\
+RT-21.16; Caso RT-21.16 & 10.1: traslado de especialistas sin desatender & Desarrollado; sitios B-01 \\
+RT-21.18 & 10.2 y 10.B: informe por severidad & Desarrollado desde BA 79 y T-14 \\
+\end{tablalafrox}
+\fuentesdiez{BTT, cap. 21. Caso, cap. 15. SD4, Anexo 4-W. SD7, T-14 y T-15.}
+
+La Tabla~\ref{tab:sd10-matriz-observabilidad} conserva la conexión entre atención y evidencia. Los plazos de seguridad son adicionales a los relojes de respuesta del incidente.
+
+\Needspace{0.78\textheight}
+\begin{tablalafrox}{Contraste de observabilidad y seguridad}{tab:sd10-matriz-observabilidad}{F{0.25} Y F{0.28}}{\cab{Requisito} & \cab{Desarrollo del SD10} & \cab{Estado documental}}
+RT-14.01 & 10.1: OpenTelemetry y correlación & Desarrollado desde SD4 \\
+RT-14.02--14.03 & 10.1, 10.2 y 10.B: tableros y experiencia real & Desarrollado; pruebas en SD9 \\
+RT-14.04 & 10.1: alerta de negocio, agrupación y escalamiento & Desarrollado; guardias B-02 \\
+RT-14.05 & 10.1 y 10.C: libro y guías de resolución & Escenarios respaldados; validar ejecución \\
+RT-14.06 & 10.1 y 10.B: causa raíz crítica en cinco días & Desarrollado desde BA y T-14 \\
+RT-14.07 & 10.1: exclusión de credenciales y datos sensibles & Desarrollado; acceso auditado \\
+RT-14.08 & 10.1: retención de seguridad y auditoría & Parcial; desglose B-04 \\
+RT-14.09 & 10.1 y 10.2: detección proactiva & Deseable; sin resultados observados \\
+RT-11.17--11.19; RT-11.21 & 10.1: SOC, comunicaciones y ejercicio anual & Desarrollado; habilitación B-02 \\
+BA 21.1 y 78.3 & 10.2 y 10.B: remediación y críticos vencidos & Desarrollado; congelamientos B-05 \\
+\end{tablalafrox}
+\fuentesdiez{BTT, capítulos 11 y 14. BA, arts. 21 y 78. SD4, seguridad y observabilidad. SD7, cuenta 8.1.5.}
+
+La Tabla~\ref{tab:sd10-matriz-sla} relaciona niveles externos, recuperación y mantención. Los planes operacionales detallados y la nómina completa pertenecen también a SD11 y SD12, aún en plantilla.
+
+\Needspace{0.8\textheight}
+\begin{tablalafrox}{Contraste de niveles de servicio y continuidad}{tab:sd10-matriz-sla}{F{0.25} Y F{0.28}}{\cab{Requisito} & \cab{Desarrollo del SD10} & \cab{Estado documental}}
+BA 78.1--78.2 & 10.2: clasificación y cuatro niveles & Desarrollado; relojes B-06 \\
+BA 78.3 y 79 & 10.2 y 10.B: indicadores e informe & Desarrollado; medición real pendiente \\
+RT-10.01--10.02; BTT 7.2 & 10.2: disponibilidad funcional y de componente & Desarrollado; ERP B-07 \\
+RT-07.04--07.07 & 10.2 y 10.C: RTO/RPO y conmutación & Presupuesto reproducido; sujeto a ensayo \\
+Caso RT-09.01; RT-10.05 & 10.2 y 10.B: p95 y ventana de despacho & Desarrollado; cambios B-05 \\
+SD4 S-43; RT-15.06 & 10.1: horario de ambientes y reducción de horas & Compromiso y medición; valoración en E2 \\
+RT-21.19--21.20 & 10.1: bolsa, solicitud, aprobación y calidad & Desarrollado desde T-14; B-09 \\
+RT-21.21 & 10.1: capacidad y registro de deuda técnica & Desarrollado desde T-14; B-10 \\
+RT-21.22 & 10.1: planificación anual y reversión & Requisito; detalle en SD11, B-09 \\
+Aclaraciones 10.1--10.2 & Cuerpo 10.1/10.2 y anexos 10.A--10.E & Borrador desarrollado; revisión pendiente \\
+\end{tablalafrox}
+\fuentesdiez{BA, arts. 78--79. BTT y Caso, requisitos indicados. SD4, SD7 y aclaraciones de la licitación.}
+
+La revisión final debe mantener la capacidad y los niveles externos al cerrar las brechas. No se declaran contratos suscritos, resultados de pruebas ni aceptaciones que no consten en las fuentes.
+
+\input{comunes/referencias.tex}
+\input{comunes/uso_ia.tex}
