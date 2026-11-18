@@ -83,6 +83,8 @@ Por qué septiembre de 2027 (mes 8): Desarrollo tiene 20 plazas ese mes frente a
 
 Efectos: 230 paquetes (171 con entregable, 59 continuos), producto 3 con 17 paquetes, 60 cuentas sin cambio. Línea base **203.548,62 HH** (+1.440, todas en el mes 8, período E1 desarrollo: 43.991,98 HH). Actividades hasta H5: 76 paquetes y 385 actividades. Sube el costo: avisar en la nota para Excel/E2.
 
+Dependencia a ajustar: los once módulos que citan `3.3 (CC)` pasan a citar `3.3.1–3.3.3 (CC)`, para que no esperen los paquetes de septiembre; sus fechas no cambian.
+
 Pasos:
 1. Rama SD7: T-14 (lista EDT, tab_T14_1, dic_3_3 y texto de la cuenta 3.3), T-15 (tab_T15_2, paquetes, cpm_detalle, 3, 4, 4_personas, 8, asignacion_partidas, perfiles_internos, conciliacion, tab_T15_9h5 y textos), SD7 (tab_SD7_1, tab_SD7_2, tab_SD7_3, tab_SD7_13 y textos), nota Excel/E2. Verificar que tab_T15_7 no cambie.
 2. T-12 y T-13: RF-17.02 y RT-16.14 → 3.3.4; RF-17.08 → 3.3.5; RF-17.09 → 3.3.6, quitando «alcance por precisar».
