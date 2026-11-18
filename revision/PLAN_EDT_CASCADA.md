@@ -52,7 +52,7 @@ Versión del plan: 18-11-2026. Reemplaza la propuesta del 17-11-2026. Rama princ
 ### Fase C. Cierre
 - [x] C1. Escenario D-16 comprobado: Recepción 02-08, Inventario 28-07, Preparación integra 03 a 05-08-2027, dentro de las fechas publicadas.
 - [x] C2. Control cruzado aplicado en las 8 ramas (222 hallazgos; quedan 4 filas de asignación RF-17.02, RF-17.08, RF-17.09 y RT-16.14 por decidir).
-- [ ] C3. Recompilar PDFs y revisar la Declaración de IA de cada documento tocado.
+- [x] C3. PDFs recompilados por rama; referencias obsoletas de las Declaraciones de IA corregidas. Por confirmar con el equipo: filas faltantes (introducciones de SD1 y SD3, catálogo de anexos de SD4, sección 4 del T-14, Anexo 9.E del SD9).
 - [x] C4. Nota en revision/NOTA_EXCEL_E2_HH_MENSUALES.md.
 
 ## 4. Herramientas (carpeta `revision/`)
