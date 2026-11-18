@@ -32,7 +32,7 @@ flows = [
 '3. Ingesta y asociación<br>N-08 y N-06 reciben series; capa 5 enlaza eventos EPCIS y datos del sensor con el lote',
 '4. Estimación versionada<br>M10 sobre N-10 integra el modelo cinético por familia; parámetros aprobados por Calidad',
 '5. Disposición y consumo<br>M9 presenta la evidencia a Calidad; M2 y M5 reciben sugerencia por familia; innovación 1 usa la estimación',
-'6. Validación y recalibración<br>I-03B: contraste con Calidad en el piloto; paquete 8.3.2: revisión semestral'],
+'6. Validación y recalibración<br>I-03B: contraste con Calidad en el piloto; paquete 7.3.5: revisión semestral'],
 'Control: no se rellenan tramos sin datos ni se alarga la fecha impresa. La estimación no sustituye la regla graduada, el bloqueo ni el FEFO obligatorio.'),
 ('INN04', 'Liquidación por costo de servir', [
 '1. Hechos de la operación<br>M6 Reparto, M7 Cobranza y rendición y M8 Devoluciones y envases aportan entregas y retornos',
