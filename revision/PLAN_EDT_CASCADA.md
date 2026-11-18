@@ -85,6 +85,8 @@ Efectos: 230 paquetes (171 con entregable, 59 continuos), producto 3 con 17 paqu
 
 Dependencia a ajustar: los once módulos que citan `3.3 (CC)` pasan a citar `3.3.1–3.3.3 (CC)`, para que no esperen los paquetes de septiembre; sus fechas no cambian.
 
+**Estado (18-11): aplicada y subida en SD3, SD4, SD6, SD7, SD8, SD9 y Anexos.** Resultado: 31 plazas de Desarrollo y 46 en total en el mes 8; 3,6 / 4 personas por paquete; red de 408 eventos y 747 relaciones; RF-17.09 pasa a «Cumple» (T-12: 600 / 31 / 22); conformidad SD9 5,9 %. Falta valorizar las 1.440 HH en el Excel y el E2, y actualizar las figuras con conteos antiguos.
+
 Pasos:
 1. Rama SD7: T-14 (lista EDT, tab_T14_1, dic_3_3 y texto de la cuenta 3.3), T-15 (tab_T15_2, paquetes, cpm_detalle, 3, 4, 4_personas, 8, asignacion_partidas, perfiles_internos, conciliacion, tab_T15_9h5 y textos), SD7 (tab_SD7_1, tab_SD7_2, tab_SD7_3, tab_SD7_13 y textos), nota Excel/E2. Verificar que tab_T15_7 no cambie.
 2. T-12 y T-13: RF-17.02 y RT-16.14 → 3.3.4; RF-17.08 → 3.3.5; RF-17.09 → 3.3.6, quitando «alcance por precisar».
