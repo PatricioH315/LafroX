@@ -5,13 +5,13 @@
 \markboth{Anexos del Subdocumento 13: Innovaciones}{}
 \label{cap:sd13-13_anexos}
 
-Estos anexos detallan lo que el Capítulo 13 resume. El Anexo 13.A define los contratos de datos que cada innovación consume o expone. El Anexo 13.B traza cada innovación con la arquitectura, la EDT, los controles internos, el riesgo contractual y el flujo de caja, y delimita su alcance con la investigación adicional que requiere. El Anexo 13.C reúne en una vista los indicadores y las verificaciones de la cartera. Las fichas formales del Artículo 29° están en el Formulario T-19 (Bases Administrativas, pp. 19–20 y 64).
+Estos anexos detallan lo que el Capítulo 13 resume. El Anexo 13.A define los contratos de datos que cada innovación consume o expone. El Anexo 13.B traza cada innovación con la arquitectura, la EDT, los controles internos, el riesgo contractual y el flujo de caja, y delimita su alcance con la investigación adicional que requiere. El Anexo 13.C reúne en una vista los indicadores y las verificaciones de la cartera. Las fichas formales del Artículo 29° están en el Formulario T-19 (Distribuidora Puelche S.A., 2026a, pp. 19–20 y 64).
 
 \section*{Anexo 13.A — Contratos de datos de las innovaciones}
 \addcontentsline{toc}{section}{Anexo 13.A — Contratos de datos de las innovaciones}
 \setcounter{table}{0}\renewcommand{\thetable}{13.A.\arabic{table}}
 
-El RT-26.01 pide declarar qué interfaces consume o expone cada innovación (Bases Técnicas Transversales, RT-26.01, cap. 26, p. 44). Ninguna innovación abre una interfaz externa nueva: todas viajan por las interfaces del Capítulo 4, sección 4.1.6, y por la cola de sincronización de los terminales. Lo que cada una agrega es un contrato de datos versionado, que se presenta en la Tabla~\ref{tab:sd13-A1}. Cada contrato se identifica con la innovación que lo origina, el objeto que transporta y su versión mayor; por ejemplo, \LFXcontrato{inn03.\allowbreak{}historia-\allowbreak{}termica-\allowbreak{}lote.\allowbreak{}v1} es la versión 1 del contrato de historia térmica del lote de la innovación 3.
+El RT-26.01 pide declarar qué interfaces consume o expone cada innovación (Distribuidora Puelche S.A., 2026b, RT-26.01, cap. 26, p. 44). Ninguna innovación abre una interfaz externa nueva: todas viajan por las interfaces del Capítulo 4, sección 4.1.6, y por la cola de sincronización de los terminales. Lo que cada una agrega es un contrato de datos versionado, que se presenta en la Tabla~\ref{tab:sd13-A1}. Cada contrato se identifica con la innovación que lo origina, el objeto que transporta y su versión mayor; por ejemplo, \LFXcontrato{inn03.\allowbreak{}historia-\allowbreak{}termica-\allowbreak{}lote.\allowbreak{}v1} es la versión 1 del contrato de historia térmica del lote de la innovación 3.
 
 \begin{tablalafrox}{Contratos de datos de las innovaciones. Fuente: elaboración a partir de la arquitectura y el modelo de datos (Subdocumento 4, secciones 4.1 y 4.2; Subdocumento 5, secciones 5.1 y 5.2) y los contratos propuestos para las innovaciones (Subdocumento 13, secciones 13.1.4 a 13.5.4).}{tab:sd13-A1}{>{\hsize=1.014\hsize\linewidth=\hsize}Y >{\hsize=0.914\hsize\linewidth=\hsize}Y >{\hsize=0.982\hsize\linewidth=\hsize}Y >{\hsize=1.168\hsize\linewidth=\hsize}Y >{\hsize=0.922\hsize\linewidth=\hsize}Y}
   {\cab{Contrato} & \cab{Productor \ensuremath{\rightarrow} consumidor} & \cab{Transporte y capa} & \cab{Campos principales} & \cab{Exclusiones y retención}}
@@ -23,13 +23,13 @@ El RT-26.01 pide declarar qué interfaces consume o expone cada innovación (Bas
 \LFXcontrato{inn05.\allowbreak{}hoja-\allowbreak{}negocio.\allowbreak{}v1} & M10 \ensuremath{\rightarrow} M3 (aplicación de preventa C-01) y M6 (impresora de cabina) & Cola de sincronización de los terminales (capa 5) y precarga cifrada en el terminal; capa 7 limita la hoja al receptor & Local, bloques 1 a 3, bloque 4 si está activo, estado de la copia (pedida, entregada, en espera) & Bloque 4 con umbral mínimo de locales por grupo y supresión de celdas; registro de actividades de tratamiento \\
 \end{tablalafrox}
 
-Cada contrato tiene una versión explícita en su nombre. Un cambio de campos produce una versión nueva y convive con la anterior durante la transición, como el resto de los contratos del Capítulo 4. Los contratos de las innovaciones 2 y 5 tratan datos que pasan por la capa de seguridad; por eso el Encargado de Seguridad de la Información los aprueba con su modelado de amenazas (Bases Técnicas Transversales, cap. 26, RT-26.07, p. 45).
+Cada contrato tiene una versión explícita en su nombre. Un cambio de campos produce una versión nueva y convive con la anterior durante la transición, como el resto de los contratos del Capítulo 4. Los contratos de las innovaciones 2 y 5 tratan datos que pasan por la capa de seguridad; por eso el Encargado de Seguridad de la Información los aprueba con su modelado de amenazas (Distribuidora Puelche S.A., 2026b, cap. 26, RT-26.07, p. 45).
 
 \section*{Anexo 13.B — Matriz de trazabilidad}
 \addcontentsline{toc}{section}{Anexo 13.B — Matriz de trazabilidad}
 \setcounter{table}{0}\renewcommand{\thetable}{13.B.\arabic{table}}
 
-La Tabla~\ref{tab:sd13-B1} traza cada innovación con la arquitectura (RT-26.01), con la EDT y el cronograma (Bases Técnicas Transversales, cap. 26, RT-26.02, p. 44), con su control interno o riesgo contractual (Bases Técnicas Transversales, cap. 26, RT-26.04, p. 44) y con su ubicación en el flujo de caja (Bases Administrativas, Art. 28.2, p. 19).
+La Tabla~\ref{tab:sd13-B1} traza cada innovación con la arquitectura (RT-26.01), con la EDT y el cronograma (Distribuidora Puelche S.A., 2026b, cap. 26, RT-26.02, p. 44), con su control interno o riesgo contractual (Distribuidora Puelche S.A., 2026b, cap. 26, RT-26.04, p. 44) y con su ubicación en el flujo de caja (Distribuidora Puelche S.A., 2026a, Art. 28.2, p. 19).
 
 \begin{tablalafrox}{Trazabilidad de las innovaciones. Fuente: elaboración a partir de la arquitectura y alcance (Subdocumento 3, cap. 3; Subdocumento 4, cap. 4), los paquetes y meses (Formulario T-14; Subdocumento 7, Anexo 7.D), los controles y el riesgo contractual (Subdocumento 8, Anexo 8.E; Formulario T-16) y las definiciones económicas (Subdocumento 13, secciones 13.1.5 a 13.5.5).}{tab:sd13-B1}{>{\hsize=0.856\hsize\linewidth=\hsize}Y >{\hsize=1.071\hsize\linewidth=\hsize}Y >{\hsize=1.367\hsize\linewidth=\hsize}Y >{\hsize=0.650\hsize\linewidth=\hsize}Y >{\hsize=1.056\hsize\linewidth=\hsize}Y}
   {\cab{Innovación} & \cab{Capas, componentes y módulos} & \cab{Paquetes de la EDT y mes de materialización} & \cab{Control o riesgo} & \cab{Flujo de caja (sin montos)}}
@@ -118,11 +118,11 @@ I-04A & Canasta de los meses 21 a 23 & ≥ 5 \% con OTIF ≥ 95 \% & Mensual des
 
 Para I-03B, la referencia inicial es el valor observado por familia en la validación de los meses 11 a 15, y el 80 \% es el umbral de aceptación, no la línea base; el detalle de la medición está en la sección 13.3.6.
 
-Los indicadores tempranos de INN-01, INN-03 e INN-05 comprueban condiciones de habilitación: los de INN-01 e INN-03, durante la marcha blanca de la Etapa 1, y I-05B, en la prueba de comprensión de los meses 13 y 14. I-02A mide la reducción del tiempo de diagnóstico del proveedor. El beneficio para Puelche se mide aparte, en minutos del aviso a la reanudación de la tarea confirmada por el actor de terreno, comparando incidentes operativos equivalentes con y sin el circuito. Con I-02A LafroX oferta el RT-26.08 (Bases Técnicas Transversales, RT-26.08, cap. 26, p. 45).
+Los indicadores tempranos de INN-01, INN-03 e INN-05 comprueban condiciones de habilitación: los de INN-01 e INN-03, durante la marcha blanca de la Etapa 1, y I-05B, en la prueba de comprensión de los meses 13 y 14. I-02A mide la reducción del tiempo de diagnóstico del proveedor. El beneficio para Puelche se mide aparte, en minutos del aviso a la reanudación de la tarea confirmada por el actor de terreno, comparando incidentes operativos equivalentes con y sin el circuito. Con I-02A LafroX oferta el RT-26.08 (Distribuidora Puelche S.A., 2026b, RT-26.08, cap. 26, p. 45).
 
 Los efectos se contrastan en los plazos de cada indicador, no en un corte anual común: I-01B, I-01C e I-03D en el mes 28; I-04A se sigue mensualmente desde el mes 24 y su meta se evalúa en el mes 36; I-05C estima el efecto comercial durante el despliegue (meses 22 a 26) y lo contrasta de nuevo en el mes 33. Los primeros cortes no equivalen necesariamente a comparar un ciclo estacional completo.
 
-La Tabla~\ref{tab:sd13-C-beneficios} presenta cinco escenarios exploratorios en unidades físicas. Los volúmenes del Caso (secciones 2.2 y 14.1) son referencias, no población elegible ni adopción medida; las tasas, reducciones y tiempos son supuestos de diseño. En cada corte se sustituyen por el volumen elegible, la cobertura y el uso observados según el registro de la sección 13.C.1. Los efectos no se suman entre sí.
+La Tabla~\ref{tab:sd13-C-beneficios} presenta cinco escenarios exploratorios en unidades físicas. Los volúmenes del Caso (Distribuidora Puelche S.A., 2026c, secciones 2.2 y 14.1) son referencias, no población elegible ni adopción medida; las tasas, reducciones y tiempos son supuestos de diseño. En cada corte se sustituyen por el volumen elegible, la cobertura y el uso observados según el registro de la sección 13.C.1. Los efectos no se suman entre sí.
 
 \begin{tablalafrox}{Dimensionamiento físico del beneficio por innovación y beneficiario. Fuente: Subdocumento 13, secciones 13.1 a 13.5 y Formulario T-19, campo 12.}{tab:sd13-C-beneficios}{>{\hsize=0.57\hsize\linewidth=\hsize}Y >{\hsize=1.43\hsize\linewidth=\hsize}Y}
  {\cab{Innovación} & \cab{Beneficio físico estimado y supuesto}}
@@ -189,12 +189,10 @@ La sexta ficha contrasta la Figura 13.1 con los cinco recorridos: el mapa debe r
 \section*{Referencias}
 \addcontentsline{toc}{section}{Referencias}
 
-Las citas a las Bases Administrativas y a las Bases Técnicas Transversales identifican el artículo o capítulo y la página impresa del PDF original, además del código RT cuando corresponde. Las referencias al caso se localizan por capítulo, sección o entrevista, sin exigir paginación. Las Aclaraciones se identifican por sección en la fuente disponible.
+Las citas a las Bases Administrativas y a las Bases Técnicas Transversales indican, después del autor y el año, el artículo o capítulo, el código RT cuando corresponde y la página impresa del PDF original; las citas al caso se localizan por capítulo, sección o entrevista.
 
 \begin{itemize}
-  \item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación}, artículos 28 y 30, pp. 19–20, y artículo 46, p. 28.
-  \item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026}, capítulo 26, RT-26.01 (p. 44), RT-26.07 y RT-26.08 (p. 45).
-  \item Distribuidora Puelche S.A. (2026d). \emph{Aclaraciones de la Licitación N.º TFEP-01/2026}, secciones 7.2 y 8.
-  \item European Commission. (2016). Technology readiness levels (TRL). En \emph{Horizon 2020 work programme 2016–2017: General annexes} (Anexo G). \url{https://ec.europa.eu/research/participants/data/ref/h2020/other/wp/2016_2017/annexes/h2020-wp1617-annex-g-trl_en.pdf}
-  \item GS1 AISBL. (2022). \emph{EPC Information Services (EPCIS) standard} (versión 2.0). \url{https://ref.gs1.org/standards/epcis/2.0.0/}
+  \item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación} [Documento de licitación].
+  \item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026} [Documento de licitación].
+  \item Distribuidora Puelche S.A. (2026c). \emph{Caso: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.} [Documento de licitación].
 \end{itemize}
