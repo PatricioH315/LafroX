@@ -1,5 +1,7 @@
 # Nota para el Excel y el E2: HH mensuales tras la reprogramación del T-15
 
+## Reprogramación de olas y cadenas
+
 El total no cambia (202.108,63 HH). Cambia el reparto de los meses 5 a 19 porque los módulos de la Etapa 1 se construyen en tres olas y el intercambio con las cadenas parte en el mes 9. Fuente: `formulario-t15/tablas/tab_T15_4.tex`.
 
 ## HH por mes
@@ -40,3 +42,11 @@ El total no cambia (202.108,63 HH). Cambia el reparto de los meses 5 a 19 porque
 - Costos mensuales de RR.HH. y Curva S en los meses 5 a 19.
 - Las HH por paquete y por perfil no cambian; cambian los meses en que se ejecutan los módulos 4.1.1 a 4.3.5 y 4.5.1, y las integraciones 5.2.3, 5.2.4, 5.3.1 y 5.3.2 (`tab_T15_2.tex` y `tab_T15_asignacion_partidas.tex`).
 - Códigos de paquete: usar la equivalencia `revision/edt_equivalencias_20261117.json` si el Excel cita códigos de la EDT.
+
+## D10: servicios comunes de la Etapa 1
+
+| Mes | Rol | Paquetes | HH por paquete | HH de D10 | HH mensuales del proyecto |
+|---:|---|---|---:|---:|---:|
+| 8 | DES | 3.3.4, 3.3.5 y 3.3.6 | 480 | +1.440 | 5.473,55 |
+
+La línea base del proyecto suma 203.548,62 HH y la suma de la curva mensual es 203.548,63 HH por redondeo. E1 Desarrollo suma 43.991,98 HH en la línea base y 43.991,99 HH en la curva mensual. Para valorizar D10, imputar al mes 8 las 581,10 HH del perfil 09S, 387,39 HH del 09J, 235,76 HH del 08S y 235,75 HH del 08J.

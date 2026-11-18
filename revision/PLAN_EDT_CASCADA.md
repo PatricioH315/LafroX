@@ -79,7 +79,7 @@ El usuario eligió la solución más limpia: crear paquetes, ampliando alcance y
 | 3.3.5 | Gestión documental: versionado, búsqueda y vista previa | RF-17.08 | I / DES | 384 / 480 / 576 / 480 | 4 | 01-09-2027 – 30-09-2027 | 2.8.1, 3.3.1 | E1 |
 | 3.3.6 | Generación de documentos con plantillas administrables | RF-17.09 | I / DES | 384 / 480 / 576 / 480 | 4 | 01-09-2027 – 30-09-2027 | 2.8.1, 3.3.5 CC | E1 |
 
-Por qué septiembre de 2027 (mes 8): Desarrollo tiene 20 plazas ese mes frente a 33 de construcción; 1.440 HH son 11,25 plazas (llega a 32). Terminan antes de la integración 6.1.1 (05-10-2027), que pasa a tenerlos como predecesores.
+Por qué septiembre de 2027 (mes 8): Desarrollo tiene 20 plazas ese mes frente a 33 de construcción; 1.440 HH son 11,25 plazas (llega a 31 con las HH sin redondear). Terminan antes de la integración 6.1.1 (05-10-2027), que pasa a tenerlos como predecesores.
 
 Efectos: 230 paquetes (171 con entregable, 59 continuos), producto 3 con 17 paquetes, 60 cuentas sin cambio. Línea base **203.548,62 HH** (+1.440, todas en el mes 8, período E1 desarrollo: 43.991,98 HH). Actividades hasta H5: 76 paquetes y 385 actividades. Sube el costo: avisar en la nota para Excel/E2.
 

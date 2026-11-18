@@ -63,7 +63,7 @@ En este formulario, BA, BTT y Caso designan las Bases Administrativas, las Bases
 
 \section{Estructura de descomposición del trabajo}
 
-La EDT descompone el 100 \% del alcance de la Etapa 1, la Etapa 2 y la Operación (BA, art. 15, p. 11) en 10 productos, 60 cuentas de control y 227 paquetes de trabajo. El alcance se agrupa por el producto que la Contraparte recibe y acepta; la etapa que habilita cada paquete es un atributo de este. La regla del 100 \% comprende todo el alcance y cada paquete pertenece a una sola rama, tiene un responsable y produce un entregable verificable. La carta Gantt programa el trabajo de cada etapa en las cuatro fases de la cascada descrita en el Capítulo 6: requisitos y diseño, construcción por frentes en paralelo, integración y certificación, e implantación. La descomposición de los paquetes en actividades de 8 a 80 horas hombre se presenta fuera de la EDT, en el Formulario T-15, sección 6.
+La EDT descompone el 100 \% del alcance de la Etapa 1, la Etapa 2 y la Operación (BA, art. 15, p. 11) en 10 productos, 60 cuentas de control y 230 paquetes de trabajo. El alcance se agrupa por el producto que la Contraparte recibe y acepta; la etapa que habilita cada paquete es un atributo de este. La regla del 100 \% comprende todo el alcance y cada paquete pertenece a una sola rama, tiene un responsable y produce un entregable verificable. La carta Gantt programa el trabajo de cada etapa en las cuatro fases de la cascada descrita en el Capítulo 6: requisitos y diseño, construcción por frentes en paralelo, integración y certificación, e implantación. La descomposición de los paquetes en actividades de 8 a 80 horas hombre se presenta fuera de la EDT, en el Formulario T-15, sección 6.
 
 \parte{tablas/tab_T14_1}
 
@@ -257,6 +257,9 @@ La Tabla \ref{tab:T14-1} muestra que Infraestructura, equipamiento y servicios h
 \item 3.3.2 Registro auditable de stock, lotes y cobros
 
 \item 3.3.3 Operación sin conexión: 14 horas en terreno y 24 horas en el CD
+\item 3.3.4 Parametrización y motor de reglas versionados
+\item 3.3.5 Gestión documental con versionado, búsqueda y vista previa
+\item 3.3.6 Generación de documentos con plantillas administrables
 
 \item \textbf{4. Software operativo}
 
@@ -820,7 +823,7 @@ La Tabla \ref{tab:T14-dic-2-8} presenta sus paquetes.
 \subsection{Producto 3. Plataforma base}
 
 La Contraparte recibe los ambientes, servicios de nube y servicios comunes que forman la base de la plataforma.
-El producto 3 reúne 3 cuentas de control y 14 paquetes de trabajo.
+El producto 3 reúne 3 cuentas de control y 17 paquetes de trabajo.
 
 \subsubsection{Cuenta 3.1 — Ambientes y entrega continua}
 
@@ -840,7 +843,7 @@ La Tabla \ref{tab:T14-dic-3-2} presenta sus paquetes.
 
 \subsubsection{Cuenta 3.3 — Servicios comunes}
 
-Esta cuenta de control reúne los servicios de software que usan los doce módulos. Se construyen primero porque, si fallan, fallan todos los módulos a la vez.
+Esta cuenta reúne los servicios comunes de la plataforma. La identidad, el registro auditable y la operación sin conexión (3.3.1–3.3.3) habilitan el comienzo de la construcción de los módulos de la Etapa 1. El motor de reglas, el repositorio documental y la generación mediante plantillas (3.3.4–3.3.6) se entregan en QA para la integración de la Etapa 1 (6.1.1).
 
 La Tabla \ref{tab:T14-dic-3-3} presenta sus paquetes.
 
