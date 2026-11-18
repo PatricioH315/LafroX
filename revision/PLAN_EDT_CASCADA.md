@@ -50,10 +50,10 @@ Versión del plan: 18-11-2026. Reemplaza la propuesta del 17-11-2026. Rama princ
 - [x] B5. Trazabilidad: total 136/10/6 (cb4375a8).
 
 ### Fase C. Cierre
-- [ ] C1. Comprobar con el escenario de GPT (D5) que las fechas de Recepción, Inventario y Preparación son factibles con la capacidad de los frentes.
-- [ ] C2. Control cruzado de todas las ramas: ningún código anterior de la EDT, ningún rango partido, cifras de plazas y HH iguales en SD1, SD6, SD7, T-15 y SD8.
+- [x] C1. Escenario D-16 comprobado: Recepción 02-08, Inventario 28-07, Preparación integra 03 a 05-08-2027, dentro de las fechas publicadas.
+- [x] C2. Control cruzado aplicado en las 8 ramas (222 hallazgos; quedan 4 filas de asignación RF-17.02, RF-17.08, RF-17.09 y RT-16.14 por decidir).
 - [ ] C3. Recompilar PDFs y revisar la Declaración de IA de cada documento tocado.
-- [ ] C4. Avisar al responsable del Excel/E2: cambian las HH mensuales de los meses 5 a 19 (total igual) y los totales por etapa (Tabla 3 del T-15).
+- [x] C4. Nota en revision/NOTA_EXCEL_E2_HH_MENSUALES.md.
 
 ## 4. Herramientas (carpeta `revision/`)
 
