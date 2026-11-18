@@ -1828,5 +1828,61 @@
       "path": "tmp/sd4-corrigiendo-integracion/aclaraciones_informe_3.md",
       "sha256": "620800f4693226a3e166dbc90f9f76142b0557c37d5b3f3ec88268576965b3e0"
     }
-  ]
+  ],
+  "cotejo_visual_bases_pdf_v02": [
+    {
+      "path": "tmp/sd4-corrigiendo-integracion/Bases/Pdfs/Bases Administrativas.pdf",
+      "sha256": "7837dc76bd0454f7bc212a64699976f7c111ea9513b2627bd1c1d82a80f0377c",
+      "folios_impresos": [
+        5,
+        6,
+        7
+      ],
+      "nota": "PDF de imagen: verificacion visual; posicion de archivo = folio impreso + 1"
+    },
+    {
+      "path": "tmp/sd4-corrigiendo-integracion/Bases/Pdfs/Bases Técnicas Transversales.pdf",
+      "sha256": "ca500672fb2882ee55b76bb7b7b90d30e4c45216c725811ec2f242164ee47e1e",
+      "folios_impresos": [
+        18,
+        19
+      ],
+      "nota": "PDF de imagen: verificacion visual; posicion de archivo = folio impreso + 1"
+    },
+    {
+      "path": "tmp/sd4-corrigiendo-integracion/Bases/Pdfs/Caso 02 - Logística.pdf",
+      "sha256": "3394651e5730f89b5ace672b29365268d3d974b823624d0e33f1650219345b0f",
+      "folios_impresos": [
+        26,
+        27
+      ],
+      "nota": "PDF de imagen: verificacion visual; posicion de archivo = folio impreso + 1"
+    }
+  ],
+  "cotejo_texto_retencion_v02": {
+    "LAFROX-Subdocumento4.pdf": {
+      "13 meses": [
+        13,
+        48,
+        49
+      ],
+      "30 días de retención": [
+        49
+      ],
+      "24 meses adicionales": [
+        47
+      ],
+      "aws/spans": [
+        49
+      ]
+    },
+    "LAFROX-Subdocumento5.pdf": {
+      "doce meses disponibles": [
+        35
+      ],
+      "veinticuatro meses adicionales": [
+        35
+      ]
+    }
+  }
 }

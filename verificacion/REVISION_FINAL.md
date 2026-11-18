@@ -1,47 +1,42 @@
-# LafroX — Revisión final del borrador SD10
+# LafroX — Revisión final del SD10, versión 0.2
 
-Fecha: 17 de noviembre de 2026. Versión: 0.1. Revisión automática y visual asistida por Codex; no acredita revisión humana ni aceptación del CLIENTE.
+Fecha: 17 de noviembre de 2026. Estado: borrador revisado. La revisión automática y visual asistida por Codex no acredita revisión humana ni aceptación del CLIENTE.
 
-## Contenido y procedencia
+## Cambios verificados frente al contraste
 
-- La rama hija parte de SD10 LaTeX en 3faaec7ac6ab05a2bb7c0b7187584ad59b0b81e4 y sustituye la plantilla por el capítulo 10.1/10.2.
-- Se revisaron fuentes LaTeX y PDF correspondientes de SD1–SD9 y SD13, las plantillas de SD10–SD12, E2 en LaTeX, bases y aclaraciones. Las versiones y huellas se conservan en trazabilidad/fuentes_sd10.json.
-- Se documentaron 28 decisiones y diez brechas. N/A identifica el dato específico sin respaldo; no representa cero ni una aprobación.
-- El cuerpo desarrolla niveles de atención, horarios, capacidad, conocimiento, observabilidad, seguridad, indicadores, recuperación y coordinación de soporte. Los anexos A–E contienen cálculos, indicadores, guías, brechas y matriz de requisitos.
-- Se conservan la clase, portada, logotipos y formato corporativos. El ajuste del título largo se aplica sólo a la portada del SD10 desde main.tex.
-- Se excluyen importes económicos nuevos, firmas, contactos operativos inventados, contratos no acreditados y resultados reales de ensayos no realizados. El modelo financiero y las otras ramas no fueron modificados.
+| Punto | Resultado documental |
+|---|---|
+| Índice obligatorio | Capítulo «Introducción a los Servicios», con 10.1 y 10.2 conservados. |
+| Declaración de IA | Tabla de seis columnas y siete filas: secciones 10.1/10.2 y anexos 10.A–10.E. No se atribuye revisión humana. |
+| Redacción y fuentes | Retirada la frase «El usuario autorizó…» y la referencia técnica a la plantilla. Citas de bases con páginas; notas de preparación sustituidas por condiciones del servicio. |
+| Atención y escalamiento | Recepción telefónica y alertas vinculadas al ticket; clasificación, transferencia, primera atención, restitución, confirmación de cierre y relevo definidos. |
+| Acuerdos operacionales | Funciones, disparadores, evidencia y coordinación desarrollados. La derivación no reinicia relojes ni suma tiempo al máximo externo. Presupuestos numéricos internos y formalización siguen sin acreditarse. |
+| Hardware | Mínimos BTT 8.4 incorporados: crítico 24×7/4h, no crítico 24 h, reemplazo crítico 4 h desde diagnóstico, fabricante y reserva mínima 10 %. No se añaden compras ni precios. |
+| Retención | Política técnica incorporada desde SD4/SD5: registros 12 meses en línea + 24 meses de archivo, métricas 13 meses, trazas 30 días sin archivo adicional, auditoría/seguridad 7 años; ADOT 24 h temporal. |
+| Procedimientos | Nueve guías GU-01–GU-09 con responsables, acciones, escalamiento, precauciones y comprobación. Recuperación regional y retorno controlado desarrollados. |
+| Indicadores | Causa raíz media a solicitud y baja no exigida; fórmulas operacionales y tratamiento de denominador cero. Se distinguen contacto, ticket, restauración y cierre. |
+| Calendario | Ventanas y congelamientos explícitos; prohibición de paso en septiembre completo de SD4 conservada sin presumir excepciones. |
+| Detección proactiva | Mecanismo determinista de comparación histórica y prueba de degradación gradual recogido desde SD4. |
+| Matriz y trazabilidad | Estados diferenciados entre diseño documentado, formalización, ensayo y conciliación económica; doce cambios V02-01–V02-12 trazados. |
 
-## Verificación cuantitativa
+## Comprobaciones realizadas
 
-El script comprobar_calculos.py reproduce diez controles con las entradas sin redondear de SD4/T-15:
+Se conserva el conjunto de fuentes congelado para la versión 0.1. Las incorporaciones se cotejan con fuentes LaTeX y sus PDF, sin espejos Markdown de subdocumentos. Bases y aclaraciones se consultan en sus archivos de origen.
 
-- Erlang C: 90,6 % y 84,2 % de respuesta en veinte segundos con siete y dos agentes. Los límites enteros 2.283 y 2.391 contactos se contrastan con el entero siguiente.
-- Sensibilidad de 6.000 contactos: mínimo de quince/cuatro agentes bajo las mismas hipótesis. No se añade contratación ni se presenta como demanda observada.
-- Recuperación regional: 135 minutos secuenciales, con 105 minutos de margen respecto de cuatro horas.
-- Horario no productivo: 60/168 horas semanales, reducción teórica de 64,3 %. El ahorro monetario requiere valorización por recurso; no equivale a reducir toda la factura por ese porcentaje.
-- Capacidad mensual: 962/1.570 horas-posición; cotas agregadas de ocho/trece plazas a 128 HH efectivas. SOC continuo: seis plazas en meses de 31 días.
-- Deuda técnica: 2.304 HH sobre 109.791,32 HH dan 2,0985 %. Se conserva abierta la conciliación de alcance con E2.
+El desglose de retención sí estaba en SD4, fuente lógica líneas 582 y 623–625, y en SD5, gestión línea 85. Se corrige la omisión del contraste previo. En los PDF del mismo commit se localizan los pasajes de SD4 en páginas de archivo 47–49 y el de SD5 en página 35. La política de archivo adicional de métricas no se inventa ni se generaliza desde los registros técnicos.
 
-## Contraste con PDF de fuente
+Se cotejan visualmente los folios impresos 6 de BA (artículo 5),19 de BTT (soporte de hardware) y 26–27 del Caso (p95 y ventanas). En esos PDF de imagen, la posición de archivo es el folio+1. Las huellas se añaden al manifiesto de fuentes.
 
-Se comprobó la presencia de cifras y pasajes relevantes en los PDF del mismo commit:
+El script comprobar_calculos.py reproduce diez controles: Erlang C 90,6%/84,2%; límites enteros de contactos; sensibilidad 6.000; DR 135 min; reducción teórica de horas 64,3%; plazas 8/13 y fracción de deuda técnica 2,0985%. No acredita abandono real, demanda observada ni ensayo ejecutado.
 
-| Fuente | Páginas del archivo PDF | Evidencia contrastada |
-|---|---|---|
-| SD4, cuerpo | 71, 110, 128, 151 y 181–182 | Horarios, reducción de cómputo y recuperación |
-| SD4, anexos | 99, 103–105 y 112–117 | Erlang, días equivalentes y límites de contactos |
-| T-14 | 105, 107 y 108 | Responsable, deuda técnica y bolsa evolutiva |
-| T-15 | 12, 13 y 75 | HH por calendario, soporte puente y calibración Erlang A |
-| SD13, cuerpo | 17–23 | INN-02 y captura seudonimizada |
+El script comprobar_entrega.py verifica PDF legible y sin páginas vacías, título, declaración de IA completa en una página, nueve guías, retención, causa raíz media, ausencia de notas del usuario, referencias resueltas, ausencia de glifos faltantes, desbordes horizontales y tablas partidas. Conserva páginas y SHA-256 en resultado_entrega.json.
 
-Las páginas son posiciones de archivo. El cotejo de texto normaliza espacios tipográficos; no acredita que el compromiso ya se haya ejecutado.
+Se renderizan todas las páginas de ambos PDF para inspeccionar portada, índices, folios, contenido, tablas y diagramas. Se ajusta el ancho de la declaración de IA y se evita la separación automática de palabras en tablas, conservando tipografía y clase corporativas.
 
-## Compilación y presentación
+## Dependencias conservadas y límites
 
-Se compilan por separado main.tex y anexos.tex mediante LuaLaTeX/latexmk, hasta estabilizar índices y referencias. Se comprueban errores, referencias sin resolver, glifos ausentes y desbordes horizontales. Las advertencias de cajas poco llenas en celdas numéricas se revisan visualmente.
+La versión desarrolla lo respaldado, sin asignar nombres, contactos, productos, contratos, mediciones, firmas o aprobaciones inexistentes. B-04 ya no identifica ausencia de política técnica; mantiene la comprobación del costo asociado en E2 fuera de este alcance. Las condiciones B-01–B-10 conservan las dependencias de sitio adicional, habilitación, acuerdos específicos, relojes, ERP, cuadrante/calibración, SD11/12 y conciliación técnica-económica.
 
-Se renderizan todas las páginas con Poppler y se inspeccionan portada, índices, folios, texto, dos diagramas y once tablas. Se ajustan el título largo de portada, la fuente de la tabla de cobertura, los cortes de tablas de anexos y el bloque final de declaración de IA. Los PDF se identifican como borradores y los espacios de firma permanecen vacíos.
+No se requiere fingir contratos ya suscritos para declarar cobertura propuesta. Sí se requiere formalizar y habilitar el servicio, y someter sus procedimientos a las pruebas indicadas. Los nuevos campos de registro y las fórmulas se identifican como elaboración procedimental y metodológica, no como citas literales ni decisiones aprobadas.
 
-## Límites de cierre
-
-No se marca cumplimiento ejecutado. Permanecen B-01 a B-10, detalladas en el Anexo 10.D y en la trazabilidad: sitios, habilitación de canales/guardias, OLAs y contratos, retención, congelamientos, relojes SLA, ERP, calibración/cuadrante, planes de SD11/12 y conciliación técnica-económica. Su cierre necesita evidencia o decisión de quien corresponda; no se sustituye por una suposición.
+Sólo se modifica la rama de corrección de SD10. El Excel, E2 y los demás subdocumentos no se editan. El resultado continúa siendo borrador hasta contar con revisión humana real.

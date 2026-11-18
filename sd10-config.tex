@@ -1,4 +1,6 @@
 % Ajustes exclusivos de SD10. Se conserva el formato corporativo.
 \RequirePackage{needspace}
+\RequirePackage{etoolbox}
+\AtBeginEnvironment{tablalafrox}{\hyphenpenalty=10000}
 \newcommand{\fuentesdiez}[1]{\par{\fontsize{9pt}{11.5pt}\selectfont\raggedright Fuente de la tabla o figura. #1\par}\medskip}
 \newcommand{\brechasdiez}[1]{\par\noindent\textbf{Brecha del borrador.} #1\par}

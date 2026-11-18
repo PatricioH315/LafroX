@@ -1,6 +1,6 @@
-# LafroX — Subdocumento 10 (borrador)
+# LafroX — Subdocumento 10 (borrador revisado)
 
-Servicios de operación y niveles de servicio, versión 0.1 del 17 de noviembre de 2026. Rama hija `LafroX-Subdoc10-LateX-corrigiendo`, creada desde `origin/LafroX-Subdoc10-LateX` en `3faaec7ac6ab05a2bb7c0b7187584ad59b0b81e4`.
+Servicios de operación y niveles de servicio, versión 0.2 del 17 de noviembre de 2026. Rama hija `LafroX-Subdoc10-LateX-corrigiendo`, creada desde `origin/LafroX-Subdoc10-LateX` en `3faaec7ac6ab05a2bb7c0b7187584ad59b0b81e4`.
 
 ## Entregables
 
@@ -12,6 +12,8 @@ Servicios de operación y niveles de servicio, versión 0.1 del 17 de noviembre 
 
 ## Compilación y verificación
 
+La revisión 0.2 incorpora título obligatorio, declaración de IA tabulada, nueve guías, coordinación operacional, hardware y retención. No acredita revisión humana ni prestación ejecutada.
+
 Se usa la clase corporativa heredada, sin modificaciones, y LuaLaTeX con sus fuentes y paquetes. Desde esta carpeta:
 
 ```powershell
@@ -19,6 +21,8 @@ python verificacion/comprobar_calculos.py
 latexmk -lualatex -interaction=nonstopmode -halt-on-error -jobname=LAFROX-Subdocumento10 main.tex
 latexmk -lualatex -interaction=nonstopmode -halt-on-error -jobname=LAFROX-Subdocumento10-Anexos anexos.tex
 ```
+
+Después de compilar, ejecutar python verificacion/comprobar_entrega.py (requiere pypdf).
 
 Revisar log, referencias, índices, folios, tablas y diagramas, y renderizar todas las páginas antes de publicar. Las bases y aclaraciones pueden consultarse en Markdown; las fuentes de subdocumentos y formularios usadas son LaTeX y sus PDF correspondientes.
 

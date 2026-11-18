@@ -1,6 +1,6 @@
 # LafroX — Trazabilidad del borrador SD10
 
-Versión 0.1 · 17-11-2026 · Sin revisión humana acreditada.
+Versión 0.2 · 17-11-2026 · Sin revisión humana acreditada.
 
 ## Procedencia
 
@@ -236,10 +236,10 @@ N/A se aplica al dato específico que no está acreditado. El Anexo 10.D desarro
 |---|---|---|
 | B-01 | Caso RT-21.16:6 sitios; diseño: 5. N/A para el sexto. | Inventario explícito y aclaración pendiente. |
 | B-02 | N/A para ITSM/contactos, cuadrante nominal y guardias efectivas. | Capacidad propuesta, no contratación acreditada. |
-| B-03 | N/A para OLAs suscritos y contratos de apoyo completos. | Roles y plazos externos conservados. |
-| B-04 | N/A para retención íntegra de métricas/trazas y línea/archivo. | Siete años sólo seguridad/auditoría; RT-14.08 abierto. |
+| B-03 | N/A para OLAs suscritos, presupuestos internos numéricos y contratos de apoyo completos. | Circuito y transferencias desarrollados; soporte BTT 8.4 incorporado; formalización pendiente. |
+| B-04 | Política técnica localizada en SD4 y SD5. N/A para enlace económico de RT-14.08 ya comprobado. | Registros12+24meses, métricas 13 meses, trazas 30 días y seguridad/auditoría7años incorporados. Ver V02-06. |
 | B-05 | Prohibiciones del caso y autorizaciones excepcionales de SD4. N/A para excepción contractual aprobada. | Se conserva tensión, contención y obligaciones. |
-| B-06 | N/A para relojes media/baja, pausas por terceros y respuesta detallada. | Marcas originales, sin exclusiones inventadas. |
+| B-06 | N/A para acuerdo contractual específico de relojes media/baja y pausas. | Definiciones instrumentales propuestas; marcas originales y ausencia de exclusiones automáticas. |
 | B-07 | ERP del CLIENTE condiciona guía nueva. N/A para acuerdo que cierre responsabilidad/medición. | Conservar dependencia, no crear exención. |
 | B-08 | N/A para demanda/paciencia/FCR observados y cuadrante validado. | Calibración T-15, no presentar Erlang C como prueba real. |
 | B-09 | SD11/12 en plantilla. N/A para planes y nómina completos. | Usar T-14/T-15 como respaldo disponible. |
@@ -254,3 +254,39 @@ N/A se aplica al dato específico que no está acreditado. El Anexo 10.D desarro
 ## Verificación y límites
 
 El script verificacion/comprobar_calculos.py reproduce Erlang C, las sumas y las entradas conservadas en calculos_sd10.json. La matriz 10.E distingue desarrollo documental de cumplimiento ejecutado. El control de entrega queda en verificacion/REVISION_FINAL.md después de compilar y revisar los PDF. No se añaden firmas, precios, resultados reales, aprobaciones ni revisión humana no acreditados.
+
+## Cambios de mejora — versión 0.2
+
+Fecha: 17 de noviembre de 2026. Base de modificación: commit 1360fde8af24a19113529f9fa7416c7262b0b099. Se mantiene el mismo conjunto de fuentes congeladas; no se cambiaron sus decisiones arquitectónicas ni se modificó el modelo financiero.
+
+| ID | Antes | Después y ubicación | Respaldo y límite |
+|---|---|---|---|
+| V02-01 | Título del capítulo igual al nombre del subdocumento. | Capítulo «Introducción a los Servicios»; 10.1 y 10.2 conservados. | Aclaraciones, líneas 23 y 334–344. El nombre oficial del archivo y la identificación del SD10 se conservan. |
+| V02-02 | Declaración de IA sólo narrativa. | Tabla de seis columnas con 10.1, 10.2 y 10.A–10.E; niveles y revisión diferenciados. | Aclaraciones 7.2, líneas 135–155. N/A para revisión humana ya realizada; no se asignan nombres ni firmas. |
+| V02-03 | Flujo de soporte resumido y canal sin desarrollar. | Recepción telefónica y alertas, ticket, asignación, escalamiento, primera atención, restauración y cierre; relevo entre funciones. | BTT 21.2–21.3, pp. 36–37; T-14, líneas 1068–1076. Elaboración de procedimiento: N/A para formulación literal de todos los campos y para producto/contactos habilitados. No se introducen plazos adicionales. |
+| V02-04 | Acuerdos internos descritos sólo por responsabilidades generales. | Circuito operacional y matriz de transferencias por función y resultado; conservación de tiempos originales. | Aclaraciones 10.2; BTT 21.3, p. 37; T-14 8.1–8.2. N/A para presupuestos numéricos por equipo y acuerdos suscritos. El circuito no acredita esos compromisos como formalizados. |
+| V02-05 | Mínimos de hardware sin individualizar en SD10. | Cobertura 24×7 y resolución crítica 4 h; no crítica 24 h; reemplazo crítico 4 h desde diagnóstico; soporte de fabricante y stock mínimo del 10 %. | BTT 8.4, pp. 19–20; SD4 4.2.1 y T-11. No se añaden compras ni importes ni se atribuyen SLA a contratos no acreditados. |
+| V02-06 | Desglose de retención identificado como ausente. | Registros técnicos 12 meses en línea y 24 adicionales de archivo; métricas 13 meses; trazas 30 días en línea sin archivo adicional; auditoría/seguridad 7 años protegidos; ADOT local 24 h. | SD4, 4.1.3.7–4.1.3.8, fuente lógica líneas 582, 623, 625 y 639; SD5 5.2.7, línea 85. Se corrige una omisión del contraste previo: el respaldo sí existía. N/A para archivo adicional de métricas expresamente comprometido y para conciliación económica ya verificada. |
+| V02-07 | Objetivos de indicador sin definición operacional suficiente; RCA sólo crítica/alta. | Definiciones de espera, abandono, primer contacto, MTTR, cambios, satisfacción, RTO/RPO; sin base cuando denominador cero; causa raíz media a solicitud y baja no exigida. | BA 78–79, p. 40; BTT RT-21.06, p. 36; T-15 5.6. Las fórmulas son elaboración metodológica declarada: N/A para su texto literal o aprobación contractual específica. No se modifican umbrales ni se crean pausas. |
+| V02-08 | Tabla de siete escenarios, con una regla por escenario. | Nueve guías GU-01–GU-09: enlace, Talca, partición, pago, EDI, térmico, terreno, ERP y reemplazo; pasos, responsables, escalamiento y comprobación. | SD4 4.2.4.3, 4.2.4.6, 4.3.2.5, Anexo 4-H; SD5 5.3; SD13 13.2; T-14 8.2.3; BTT RT-14.05/RT-21.04. Es desarrollo procedimental; N/A para ensayo real ya ejecutado y para aprobación de cada guía. |
+| V02-09 | Congelamientos remitidos de forma general al caso. | Fechas y ventanas explícitas: despacho05:30–07:00 L–S, preparación22–06, recepción08–18, septiembre1–25, diciembre y primeros3días hábiles; prohibición de paso en septiembre completo de SD4. | Caso RT-10.05, p. 27; SD4 4.2.4.1, líneas 282–295; BA 5, p. 6. No se presume autorización excepcional ni excepción aprobada. |
+| V02-10 | Detección proactiva mencionada sin explicar el mecanismo publicado. | Comparación histórica por franja/día, reglas estadísticas deterministas, supresión y escalamiento; ensayo de degradación gradual. | SD4 4.1.3.8, líneas 635–641; BTT RT-14.04 y RT-14.09, p. 27. N/A para resultados observados de aceptación. |
+| V02-11 | Nota «El usuario autorizó…», dependencia de plantillas en prosa y varias citas sin página. | Redacción de condiciones de habilitación, retiro de la nota y páginas en citas a bases; referencias depuradas. | Aclaraciones 2, 6 y 7.1. Se conservan en esta trazabilidad las ausencias y el estado de fuentes, sin esconder obligaciones. |
+| V02-12 | Matriz con estados amplios de «desarrollado». | Estados diferenciados entre contenido técnico incorporado, formalización pendiente, ensayo pendiente y valorización fuera del SD10; nueva fila BTT 8.4. | Cruce con requisitos y contenido de versión 0.2. N/A para cumplimiento ejecutado de un servicio no acreditado. |
+
+### Fuentes precisas de las incorporaciones
+
+- [SD4, capas de seguridad y observabilidad](https://github.com/PatricioH315/LafroX/blob/5485aaf9a250647af9b7b94c7b1df2389bba4e26/04/partes/4.1_logica/04_capas_de_la_arquitectura.tex#L582): líneas 582, 623–625 y 635–641.
+- [SD5, conservación por clase](https://github.com/PatricioH315/LafroX/blob/daec165725462c96cdd2e7ef87db19dbd450417a/05_modelo_datos/partes/5_2_gestion.tex#L85): línea 85.
+- [SD4, conmutación y retorno](https://github.com/PatricioH315/LafroX/blob/5485aaf9a250647af9b7b94c7b1df2389bba4e26/04/partes/4.3_centros_de_datos/06_e_sitio_secundario.tex#L77): líneas77–116.
+- [SD4, interfaces externas](https://github.com/PatricioH315/LafroX/blob/5485aaf9a250647af9b7b94c7b1df2389bba4e26/04/anexos/logica/partes/09_anexo_4_1_h_catalogo_de_interfaces_externas.tex#L24): INT-06, INT-07, INT-08 e INT-09.
+- [T-14, cierre, escalamiento y mantenimiento](https://github.com/PatricioH315/LafroX/blob/5e78b998f305c7caaff7bbfab342d2447cec72f1/formulario-t14/contenido.tex#L1068): líneas1068–1088.
+- Bases locales: BTT 8.4, líneas487–496; RT-14.01–14.09, líneas673–681; cap.21, líneas925–977; BA78–79, líneas1158–1188; Caso RT-10.05, línea741; Aclaraciones7.2, líneas135–155. Huellas en fuentes_sd10.json.
+
+### Resultado documental de B-04
+
+La política técnica de retención ya no se considera ausente. Su incorporación al SD10 queda respaldada en SD4 y SD5. Se mantiene separada la comprobación del costo asociado en la Oferta Económica: no se declara cerrado ese enlace sin revisarlo y no se modifica el Excel en esta tarea.
+
+### Límites conservados
+
+No se inventan sexto sitio, guardias nominales, teléfonos, productos ITSM, contratos firmados, datos reales de llamadas, ensayos, revisiones humanas ni aprobaciones del CLIENTE. Los plazos de Bases y los presupuestos publicados de SD4 se conservan. El circuito y las definiciones operacionales nuevos se identifican como elaboración procedimental y metodológica, con respaldo de sus requisitos y N/A para aprobación específica.

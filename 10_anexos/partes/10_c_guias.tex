@@ -1,0 +1,60 @@
+\subsection*{Coordinación y transferencia entre funciones}
+El circuito aplica las responsabilidades de T-14 y los niveles de BTT 21.3. Cada transferencia conserva ticket, severidad, función afectada, actuación recibida, responsable y evidencia. La Tabla~\ref{tab:sd10-ola} organiza el trabajo por resultado sin crear nuevos máximos internos que no consten en las fuentes.
+
+\Needspace{0.66\textheight}
+\begin{tablalafrox}{Coordinación operacional y evidencia de transferencia}{tab:sd10-ola}{F{0.22} F{0.30} Y}{\cab{Función} & \cab{Trabajo recibido} & \cab{Resultado y siguiente responsable}}
+Mesa N1 & Contacto o alerta que requiere atención & Ticket clasificado; solución por guía o derivación registrada a especialidad \\
+NOC & Pérdida de salud, cola o integración degradada & Correlación, estado y seguimiento; transferencia a SRE o DES según dominio \\
+SOC / Seguridad & Evento que afecta seguridad o datos & Contención, comunicaciones y evidencia; coordinación con SRE/DES y CLIENTE \\
+SRE / N2 & Incidente de infraestructura o equipo & Recuperación, reemplazo o activación de continuidad; validación funcional con Operación \\
+DES / N3 & Defecto de aplicación o integración & Diagnóstico, corrección y regresión; versión y evidencia al circuito de cambio \\
+Gerente de servicio & Dependencia o riesgo para el objetivo externo & Coordinación transversal y decisión escalada a la autoridad competente \\
+Fabricante N4 & Caso de soporte gestionado por LafroX & Seguimiento de atención/reposición; resultado enlazado al ticket de LafroX \\
+\end{tablalafrox}
+\fuentesdiez{BTT, sección 21.3, p. 37; Aclaraciones, apartado 10.2; SD7, T-14, cuentas 8.1--8.2.}
+
+La asignación a un equipo no suma tiempo al máximo de resolución ni reinicia recepción. El titular del ticket conserva el seguimiento mientras otra función actúa y en el relevo se registra el responsable entrante. Los presupuestos numéricos por equipo, el directorio y los acuerdos de apoyo específicos requieren formalización; la cobertura externa permanece como límite del circuito.
+
+\subsection*{Guías de resolución por escenario}
+Las guías siguientes desarrollan los escenarios de SD4 y SD13 con sus restricciones de seguridad y consistencia. Los responsables son funciones del servicio, no personas adicionales ni contratos ya suscritos. Cada ejecución conserva diagnóstico, decisión, pasos realizados, resultado y aprobación cuando corresponda. El acceso al entorno y los contactos habilitados son condiciones previas de ejecución.
+
+\Needspace{0.19\textheight}
+\paragraph*{GU-01. Pérdida de enlace de un sitio}
+Ante una alarma WAN, NOC distingue caída del enlace de pérdida del WMS y registra qué sitio y canales están afectados. SRE comprueba los enlaces de contingencia y la salud del cómputo local. Se mantiene la operación local autorizada y el outbox; no se promueve otro escritor por la sola falta de contacto. Al volver la comunicación, se reconecta el transporte, se reenvían hechos con sus UUID y se comprueba conciliación y antigüedad de pendientes. Si se repite el corte, se conserva el modo desconectado y se escala sin borrar la cola. La recuperación exige transacciones verificadas y pendientes controlados (SD4, 4.2.4.3, 4.2.4.6 y Anexo 4-G).
+
+\Needspace{0.19\textheight}
+\paragraph*{GU-02. Pérdida de cómputo de Talca}
+SRE confirma la pérdida de la sala y coordina la autoridad con Operación. Antes de promover excluye al escritor anterior, detiene DMS y transfiere la autoridad de M2. Inicia la imagen \texttt{wms\_only} en Fargate sobre Aurora; si también falta la región primaria, ejecuta primero la conmutación regional. Reconecta los terminales de Talca y verifica lectura, escritura única, identidad, bloqueo térmico y documentos de la carga. Concepción continúa con su propia bodega. Si no puede demostrarse exclusión o consistencia, no habilita un segundo escritor. El retorno reconstruye el local como réplica, concilia, detiene confirmaciones y transfiere autoridad fuera de las ventanas protegidas (SD4, 4.3.2.5).
+
+\Needspace{0.19\textheight}
+\paragraph*{GU-03. Partición activo/espera}
+NOC registra pérdida de contacto con ambos equipos y SRE comprueba acceso al almacenamiento y estado de exclusión. Una pérdida de red por sí sola no permite promoción. Solo el nodo que conserva la autoridad y exclusión puede escribir; se verifica el bloqueo del otro extremo antes de habilitarlo. Si el requisito no se demuestra, se conserva la escritura suspendida y se escala. La aceptación intenta escribir por ambos extremos y comprueba UUID y outbox, tanto en partición como al volver el antiguo activo (SD4, 4.2.4.3 y 4.2.4.6).
+
+\Needspace{0.19\textheight}
+\paragraph*{GU-04. Pago de resultado incierto}
+N1 registra la operación y su clave, sin volver a cobrar. El equipo de aplicación de M7 consulta a la pasarela usando la misma clave y separa ausencia de respuesta de rechazo o autorización. Sin resultado confirmado no registra autorización; ofrece únicamente efectivo o crédito previamente aprobado por la política del CLIENTE. Conserva el pendiente para conciliación y verifica el resultado tardío antes de cerrar. Si la contraparte sigue indisponible, mantiene el estado incierto y escala la integración. La prueba exige ausencia de doble cobro y trazabilidad de la decisión (SD4, Anexo 4-H, INT-09).
+
+\Needspace{0.19\textheight}
+\paragraph*{GU-05. EDI sin acuse o respuesta comercial}
+NOC correlaciona identificador, transmisión y cadena. El equipo de aplicación de M11 verifica por separado el MDN de transporte, validación funcional y respuesta comercial, preservando la hora de corte de la contraparte. Reprocesa con las mismas reglas de deduplicación y deriva rechazos a la bandeja; la entrega técnica no confirma el pedido. El umbral inicial de alerta de MDN de SD4 es una propuesta de 15 minutos, no un SLA contratado de la cadena. Si persiste, se aplica el procedimiento de aviso acordado sin presumir aceptación ni exceder la ventana. La prueba verifica el estado final y ausencia de pedidos duplicados (SD4, Anexo 4-H, INT-08).
+
+\Needspace{0.19\textheight}
+\paragraph*{GU-06. Excursión térmica}
+El responsable de M9 conserva lectura, secuencia, familia y ventana de asociación del SSCC; SOC interviene si existe afectación de seguridad. La regla térmica retiene las unidades expuestas y se comunica a Calidad del CLIENTE. La recuperación de temperatura, un dato tardío o el cierre técnico del ticket no liberan la retención. Calidad decide la disposición y se registra su autoridad y evidencia. Si faltan lecturas o decisión, se mantiene la retención y se escala; si el producto ya se entregó, se evalúa el retiro. La comprobación sigue SSCC afectados y el lote sanitario, sin extender automáticamente el incidente a unidades no expuestas (SD4, M9 y AL-FRIO-01; SD5, 5.1 y 5.2).
+
+\Needspace{0.19\textheight}
+\paragraph*{GU-07. Incidente de aplicación de terreno}
+N1 relaciona persona, terminal, ticket y operación; DES y QA reproducen el caso mediante INN-02. La captura se sanitiza y se controla el acceso antes de usar los recursos efímeros de QA o Preproducción. Se conserva el orden causal de la sincronización y se verifica que la reproducción explique el incidente. La corrección pasa regresión y puertas de calidad; si la reproducción no es válida se mantiene diagnóstico y regresión base con evidencia protegida. La persona afectada confirma continuidad antes del cierre. Se conserva el consumo de recursos dentro del tratamiento de INN-02 (SD13, 13.2; SD6, T-10; SD9, T-13).
+
+\Needspace{0.19\textheight}
+\paragraph*{GU-08. ERP o emisión de guía indisponibles}
+NOC identifica si falla el enlace, la capa anticorrupción o el emisor del CLIENTE. M5 conserva la carga y consulta la solicitud documental por su identidad antes de reintentar. Solo sale la carga cubierta por una guía válida preemitida; un cambio de carga requiere anulación y reemisión por el ERP antes de liberarlo. Sin comunicación o sin guía vigente se bloquea la salida afectada y se coordina la restitución del dominio del CLIENTE. Al recuperar, se concilian solicitudes, guía y carga sin duplicar documentos. Se registra el efecto real sobre despacho para el SLA; esta dependencia no crea una exención automática (SD4, Anexo 4-H, INT-06/INT-07; SD5, 5.3 y AL-DTE-01).
+
+\Needspace{0.19\textheight}
+\paragraph*{GU-09. Reemplazo de equipo fallado}
+SRE registra diagnóstico confirmado, criticidad, serial y ubicación de la reserva. Comprueba compatibilidad y configuración precargada, sustituye el componente y verifica servicio, datos e identidad antes de habilitarlo. Conserva el instante del reemplazo para el máximo de cuatro horas del componente crítico y sigue también el SLA de resolución. LafroX gestiona fabricante y desplazamiento sin desatender los otros sitios. El equipo retirado sigue custodia y sanitización cuando corresponda y se repone la reserva consumida. Si la redundancia restituye la función, el ticket conserva pendiente la reposición del elemento y su evidencia (BTT 8.4, pp. 19--20; SD4, 4.2.1 y T-11; T-14, 8.2.3).
+
+\subsection*{Verificación regional y retorno controlado}
+La secuencia regional de la Tabla~\ref{tab:sd10-dr} incluye la autorización del CLIENTE. Antes del cambio de tráfico, SRE y Operación verifican cada canal, imágenes, permisos, claves, colas e ingesta. La base de datos disponible no prueba recuperación de toda la aplicación. La consulta sanitaria tiene una ruta privada de solo lectura en us-east-1 que no espera la promoción general, conserva su presupuesto de 75 minutos y exige cobertura de clientes y documentos; una copia incompleta no acredita el resultado.
+
+El retorno exige resincronizar y conciliar las transacciones de contingencia. En Talca se reconstruye VM-02 como réplica, se detienen nuevas confirmaciones, se excluye al escritor de contingencia y se transfiere autoridad antes de volver al local. El cambio regional verifica consultas y escrituras y registra tiempos reales. Ante inconsistencia, no se reactiva automáticamente el escritor anterior. El ensayo semestral incluye pérdida regional, pérdida de sala y retorno; la restauración mensual conserva su evidencia propia (SD4, 4.3.2.5).
