@@ -13,7 +13,7 @@ Versión del plan: 18-11-2026. Reemplaza la propuesta del 17-11-2026. Rama princ
 | D5 | **No se publica la red completa de actividades** en el T-15: se mantienen la red por paquetes y las actividades compactas hasta el H5. El escenario de 59 actividades de GPT (`revision/cronograma_d16_actividades.py`) sólo se usa para comprobar que las fechas son factibles. | 18-11 |
 | D6 | **Las figuras no se modifican** (EDT, Gantt, red, ruta crítica, frentes, planificación gradual, SD6). Sólo se cambian si el usuario lo pide. | 18-11 |
 | D7 | Sin columna de iteraciones en la estimación de módulos: las HH de la columna «Iterac.» de `tab_T15_tamano` se suman a la de integración, que pasa a llamarse «Integración y validación en QA». Las HH por módulo y el total (202.108,62 HH) no cambian. | 18-11 |
-| D9 | Las láminas de detalle de la EDT por fase (17) y la vista de nivel 2 se retiraron del SD7 (GPT) porque mostraban la estructura por fases. **Pendiente de confirmación del usuario** (D6 dice no tocar figuras). | 18-11 |
+| D9 | Las 18 láminas de la EDT por fase se mantienen en el SD7 (repuestas en 271f6324) hasta rehacer las figuras. | 18-11 |
 | D8 | Intercambio con la principal cadena (5.3.1) del 01-10-2027 al 31-05-2028; demás cadenas (5.3.2) del 02-05 al 14-07-2028; mapas (5.2.3) del 16-08 al 10-09-2027; avisos (5.2.4) del 20-07 al 16-08-2027. | 17-11 |
 
 ## 2. Estado
@@ -35,7 +35,7 @@ Versión del plan: 18-11-2026. Reemplaza la propuesta del 17-11-2026. Rama princ
 - [x] A1. SD7, anexos y T-18 integrados (f45a174d).
 - [x] A2. SD6/T-9/T-10, SD8, SD4 y trazabilidad integrados.
 - [x] A3. SD3/T-12, SD9 y SD13 integrados con combinación de 3 vías.
-- [ ] A4. Con OK del usuario: borrar los siete worktrees de `C:\Users\alexa\.codex\worktrees\`.
+- [x] A4. Worktrees de Codex borrados (18-11).
 
 ### Lecciones de la integración (18-11)
 - GPT dejó códigos sin traducir en todas las ramas (6 en SD4, 20 en SD8, 222 en SD9, 50 en SD13, 1 en T-12). Control obligatorio: comparar cada archivo con `traducir(versión de origin)` y revisar los tramos que sólo difieren en códigos.
