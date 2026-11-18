@@ -43,11 +43,11 @@ Versión del plan: 18-11-2026. Reemplaza la propuesta del 17-11-2026. Rama princ
 - Pendientes detectados para la fase C: frases defensivas preexistentes en el SD9 («no acredita», «como exige», «no se presume»); el archivo interno `trazabilidad/Trazabilidad-SD3.tex` del SD3 conserva códigos antiguos (no se compila).
 
 ### Fase B. Adaptar a la cascada lo que suponía iteraciones
-- [ ] B1. T-15: quitar el calendario de 62 ventanas (`tab:T15-iteraciones-escenario`) y la secuencia quincenal de Recepción; describir cada módulo por fases (análisis y contratos, construcción, pruebas de contrato, integración y validación en QA); plantilla D de `tab_T15_9h5` sin iteraciones; aplicar D7 en `tab_T15_tamano` y su texto.
-- [ ] B2. T-15: revisar las menciones a iteraciones, incrementos de H4 por iteración, Kanban y RUP; dejar «incremento» sólo con el sentido de etapa (E1/E2).
-- [ ] B3. SD7, T-14, T-18 y anexos: mismas menciones; la Gantt se describe por fases de la cascada y frentes.
-- [ ] B4. Coherencia con SD6/T-9/T-10 (fases, condiciones de salida, frentes) y con SD9 (despliegues en QA, sin ventanas).
-- [ ] B5. Trazabilidad: rehacer las respuestas que GPT dejó dependiendo de «la red detallada de actividades» (contradicen D5): SD7-06, 08, 09, 12, 25 y 26 pasan a corregidas por la red de paquetes y las actividades hasta H5; SD7-01, 11, 14 y 25 quedan parciales sólo por las figuras (D6); SD6-13 y SD9-08 según la cascada.
+- [x] B1. T-15 sin iteraciones (65588ea0).
+- [x] B2. Texto del T-15 (65588ea0).
+- [x] B3. SD7, T-14, T-18 y anexos (65588ea0).
+- [x] B4. Coherencia con SD6/T-10 y SD9 (65588ea0).
+- [x] B5. Trazabilidad: total 136/10/6 (cb4375a8).
 
 ### Fase C. Cierre
 - [ ] C1. Comprobar con el escenario de GPT (D5) que las fechas de Recepción, Inventario y Preparación son factibles con la capacidad de los frentes.
