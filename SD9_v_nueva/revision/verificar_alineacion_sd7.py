@@ -10,7 +10,7 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-REF = sys.argv[1] if len(sys.argv) > 1 else "68669befd04babce61e9fb4d8f5e6b29d28f46aa"
+REF = sys.argv[1] if len(sys.argv) > 1 else "061ee980839451287ed5b485a478da3406f327a9"
 
 
 def source(path):
@@ -61,17 +61,38 @@ for r in rows(t17):
         acts += 1
 assert acts == 10, acts
 
-# Las 922,66 HH ya están dentro de las 202.108,62 HH del T-15; no se agregan.
-cold = sum(num(packages[p][3]) for p in ("2.4.3", "2.4.4", "4.1.4"))
+# El esfuerzo de frío (922,66 HH) forma parte de la línea base del T-15.
+cold = sum(num(packages[p][3]) for p in ("2.7.1", "2.7.2", "2.7.3"))
 assert cold == Decimal("922.66")
-conformity = annex[annex.index("Prevención & 1.2.4"):annex.index(r"\subsection*{9.C.2")]
+conformity = annex[annex.index(r"\subsection*{9.C.1 "):annex.index(r"\subsection*{9.C.2")]
 totals = {"Prevención": Decimal(0), "Evaluación": Decimal(0)}
 for r in rows(conformity):
     if r[0] in totals:
         totals[r[0]] += Decimal(r[-1].replace(".", "").replace(",", "."))
 assert totals == {"Prevención": Decimal(4224), "Evaluación": Decimal("7834.66")}, totals
 assert sum(totals.values()) == Decimal("12058.66")
-assert round(Decimal("12058.66") / Decimal("202108.62") * 100, 1) == Decimal("6.0")
+linea_base = Decimal("203548.62")
+proporcion = sum(totals.values()) / linea_base
+assert round(proporcion, 4) == Decimal("0.0592")
+assert round(proporcion * 100, 1) == Decimal("5.9")
+assert len(packages) == 171
+for documento in (body, annex):
+    assert r"5,9 \%" in documento and "203.548,62" in documento
+assert "203.548,62 HH y 230 paquetes" in t13
+matriz = (ROOT / "T13/matriz_requisitos.tex").read_text(encoding="utf-8")
+asignaciones = {
+    "RF-17.02": "3.3.4",
+    "RT-16.14": "3.3.4",
+    "RF-17.08": "3.3.5",
+    "RF-17.09": "3.3.6",
+}
+for identificador, paquete in asignaciones.items():
+    assert paquete in packages
+    marca = r"\textbf{" + identificador.replace("-", r"-\allowbreak{}") + "}"
+    (fila,) = (linea for linea in matriz.splitlines() if linea.startswith(marca))
+    assert rf"\textbf{{EDT:}} {paquete} & " in fila
+    if identificador == "RF-17.09":
+        assert "PDF, DOCX y XLSX" in fila and r"\newline Cumple; " in fila
 for text in (body, annex, t13, t17):
     assert "217.543" not in text
     assert "11.136" not in text
