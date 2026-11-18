@@ -1,5 +1,5 @@
 # Fdb version 4
-["lualatex"] 1795027078.11312 "LAFROX-Subdocumento13.tex" "LAFROX-Subdocumento13.pdf" "LAFROX-Subdocumento13" 1795027104.90716 0
+["lualatex"] 1795028576.47573 "LAFROX-Subdocumento13.tex" "LAFROX-Subdocumento13.pdf" "LAFROX-Subdocumento13" 1795028602.19797 0
   "13_innovaciones/contenido.tex" 1795026900.36987 117862 d0cebb2a8b469b0406dde51509ed548f ""
   "13_innovaciones/diagramas/Fig_13-1_Mapa_Innovaciones.pdf" 1795027076.34141 61339 21b21ff653cec13de2aa3203e8f8906a ""
   "13_innovaciones/diagramas/Fig_13-2_Recorrido_INN01.pdf" 1794180611.16033 33545 4306f72ddc5f086709fe056d709111f5 ""
@@ -268,18 +268,18 @@
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload-unicode.lua" 1740607740 7918 4272855a25780b80472f3b58edd95e33 ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload.lua" 1740607740 13566 16df94dd2de231b2bca0aaa0190941fe ""
   "C:/Users/henri/AppData/Roaming/MiKTeX/tex/generic/config/language.dat" 1786480571.72539 2269 983cd649586da7942508216422e6c810 ""
-  "LAFROX-Subdocumento13.aux" 1795027101.42879 46947 6c967d47f07203832000800fd6d1573f "lualatex"
-  "LAFROX-Subdocumento13.lof" 1795027101.50785 939 35e7f32906778789819b88dc71e26567 "lualatex"
-  "LAFROX-Subdocumento13.lot" 1795027101.50785 3841 7b8a8b3250cc74acaebba96fd84c7b10 "lualatex"
+  "LAFROX-Subdocumento13.aux" 1795028598.91398 46947 1b8eb4787bb6d8177fdffaa6e0f070ef "lualatex"
+  "LAFROX-Subdocumento13.lof" 1795028598.99307 939 59e4832252b65dc2c432ba67e7f9eb52 "lualatex"
+  "LAFROX-Subdocumento13.lot" 1795028598.99307 3841 72a6b28519ad8290ea8fb86edc9ddea5 "lualatex"
   "LAFROX-Subdocumento13.tex" 1794967997.47808 830 ecbe42a49cbdccf92dc085400e111c07 ""
-  "LAFROX-Subdocumento13.toc" 1795027101.50785 4238 2a6a535947d389431227f6682d62ae10 "lualatex"
+  "LAFROX-Subdocumento13.toc" 1795028598.99307 4238 be154a5e821507b36202381ffc02f6a6 "lualatex"
   "c:/users/henri/appdata/local/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf" 1777831523 336848 e7d038378399e1c26443887c39d891d8 ""
   "lafrox-portada.tex" 1794968088.64341 16185 f1e0786deecff05516462bd77cd07363 ""
   "lafrox.cls" 1794180611.2862 43048 c8d67e37a00316898dded7422041d1a3 ""
   "logo/firma_representante.png" 1794180611.2912 3752 c4e7165d55a0fa953adea93e245ea9c6 ""
   "logo/lafrox_isotipo_naranja.pdf" 1794180611.29272 3551 53a815340c8c86d6be9cfdb584630a55 ""
   "logo/lafrox_isotipo_negro.pdf" 1794180611.29674 3533 402261340b0015f729460532cd94959a ""
-  "sd13-comun.tex" 1794967997.56939 6802 efb1ab5985e4d3aafa78187cef340a88 ""
+  "sd13-comun.tex" 1795028515.6162 7927 0c5b35856d580741b74b02a3c259c294 ""
   (generated)
   "LAFROX-Subdocumento13.aux"
   "LAFROX-Subdocumento13.lof"

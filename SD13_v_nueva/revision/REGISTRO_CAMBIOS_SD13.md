@@ -127,3 +127,14 @@ Pendiente (no hecho): M4 frases que introducen o cierran tablas (13.20, 13.25, 1
 | A3-02 | C tabla 13.7 | RT-04.14 rotulado «requisito deseable ofertado como alcance base» | No es obligatorio | BTT p. 11 | fe589880 | hecho; **aviso al SD3: T-12:391 no debe atribuir RT-04.14 a INN-02; T-12:713 debe citar I-02E para RT-26.08** |
 | A5-01 | C 13.4.7 y 13.4.8; T ficha 4 campo 17; Fig. 13.5 | Se elimina «el contrato vuelve a la estructura de las Bases» y «no se activa el tramo»; ahora el pago sigue la estructura de valor mensual fijo más variables de servicio de E-25 y E-21 1.2 | Riesgo de oferta condicionada (Art. 53) | BA E-25 p. 74, E-21 1.2 p. 70 | fe589880 | hecho; coordinar con la Oferta Económica |
 | A7-01 | Figuras 13.1, 13.3, 13.4, 13.5, 13.6 | 13.1 y 13.4: B-04 en el camión con B-03 y B-08 de respaldo; 13.3: «Calidad y Pruebas»; 13.6: «I-05B en el mes 14»; 13.5: texto de contingencia | Contradecían el texto | `gen_diagramas.py`, `gen_recorridos.py`, drawio | 2a90d102 | hecho; **revisar a ojo la figura 13.1 (caja más larga)** |
+
+## Formato (18-11-2026)
+
+| ID | Dónde | Cambio | Motivo | Evidencia | Commit | Estado |
+|---|---|---|---|---|---|---|
+| A6-01 | `sd13-comun.tex` (`\LFXpiefolioen`) | La portada de los tres documentos lleva media firma en el extremo inferior derecho, además de la firma completa | Art. 40.2: media firma en cada página y firma completa en la carátula | BA Art. 40.2 (línea 664) | ver `git log` | hecho |
+| FM-01 | `sd13-comun.tex` (`\normalsize`) | Cuerpo a 11,1 pt de TeX (11,06 pt de Word) | Art. 40.4: no inferior a 11 pt; la opción 11pt compone a 10,91 pt | BA Art. 40.4 | ver `git log` | hecho; el cuerpo pasó de 60 a 61 páginas |
+| FM-02 | `sd13-comun.tex` (`\LFXcuerpofigura`) | Cuerpo de figura a 9,2 pt de TeX | 9 pt de TeX son 8,97 pt de Word | BA Art. 40.4 | ver `git log` | hecho |
+| FM-03 | `sd13-comun.tex` (`\hypersetup`) | Título del PDF «Propuesta Técnica — Subdocumento 13 — Innovaciones — Propuesta final» | Decía «Informe 2» | metadatos del PDF | ver `git log` | hecho |
+
+Pendiente de formato (menor): el asunto de los metadatos sigue diciendo «Caso 02 — Logística» (la portada dice «Caso — Logística»); los subíndices de p₀ se componen a 6,6-7,6 pt por ser subíndices; las cabeceras y pies están a 7,5 pt (no son cuerpo ni tabla).

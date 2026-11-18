@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  18 NOV 2026 15:37
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  18 NOV 2026 16:05
  system commands enabled.
 **LAFROX-Formulario-T-19.tex
 (./LAFROX-Formulario-T-19.tex
@@ -1926,6 +1926,7 @@ language=dflt;letterspace=12;+tlig;"
 
 Inserting `luaotfload.letterspace' in `pre_linebreak_filter'.
 Inserting `luaotfload.letterspace' in `hpack_filter'.
+LaTeX Font Info:    Calculating math sizes for size <11.1> on input line 18.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `STIXTwoMath-Regular.otf' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
@@ -1961,13 +1962,17 @@ Package fontspec Info:
 atn;language=dflt;"
 
 LaTeX Font Info:    Font shape `TU/IBMPlexMono-Regular.otf(0)/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 18.
+(Font)              scaled to size 10.21198pt on input line 18.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `IBMPlexMono-Regular.otf' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `TU/IBMPlexMono-Regular.otf(0)/m/n' will be
 (Font)              scaled to size 7.35999pt on input line 18.
+File: logo/firma_representante.png Graphic file (type png)
+<use logo/firma_representante.png>
+Package luatex.def Info: logo/firma_representante.png  used on input line 18.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [1
 
 {C:/Users/henri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}<./logo/lafrox_
@@ -1979,7 +1984,7 @@ LaTeX Info: Redefining \% on input line 1.
 \tf@toc=\write4
 
 \openout4 = LAFROX-Formulario-T-19.toc
-<logo/lafrox_isotipo_negro.pdf, id=39, 433.62pt x 433.62pt>
+<logo/lafrox_isotipo_negro.pdf, id=40, 433.62pt x 433.62pt>
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 19.
@@ -2129,7 +2134,7 @@ Package luatex.def Info: logo/firma_representante.png  used on input line 148.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [14]
 LaTeX Font Info:    Font shape `TU/IBMPlexMono(0)/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 161.
+(Font)              scaled to size 10.21198pt on input line 161.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `IBMPlexMono' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
@@ -2170,16 +2175,16 @@ L3 programming layer <2026-07-20>
 )
 
 Here is how much of LuaTeX's memory you used:
- 37030 strings out of 475695
- 244175,3417909 words of node,token memory allocated
- 835 words of node memory still in use:
+ 37051 strings out of 475695
+ 244179,3417909 words of node,token memory allocated
+ 847 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 5 kern, 1 penalty, 1 margin_ke
-rn, 4 glyph, 34 attribute, 79 glue_spec, 18 attribute_list, 2 write, 8 pdf_actio
+rn, 4 glyph, 36 attribute, 79 glue_spec, 19 attribute_list, 2 write, 9 pdf_actio
 n nodes
-   avail lists: 1:6,2:2752,3:754,4:280,5:4324,6:122,7:23420,8:116,9:1443,10:41,1
+   avail lists: 1:7,2:2749,3:763,4:278,5:4325,6:121,7:23418,8:116,9:1443,10:41,1
 1:2964
- 58438 multiletter control sequences out of 65536+600000
- 117 fonts using 46094855 bytes
+ 58456 multiletter control sequences out of 65536+600000
+ 136 fonts using 57506455 bytes
  107i,24n,128p,1503b,6561s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/op
@@ -2192,9 +2197,9 @@ s/opentype/adobe/sourcesans/SourceSans3-Regular.otf><c:/users/henri/appdata/loca
 l/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf><C:/Use
 rs/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSan
 s3-Semibold.otf>
-Output written on LAFROX-Formulario-T-19.pdf (16 pages, 127604 bytes).
+Output written on LAFROX-Formulario-T-19.pdf (16 pages, 128421 bytes).
 
-PDF statistics: 218 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 219 PDF objects out of 1000 (max. 8388607)
  24 named destinations out of 1000 (max. 1048576)
  80 words of extra memory for PDF output out of 10000 (max. 100000000)
 
