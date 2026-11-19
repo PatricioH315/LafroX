@@ -7,14 +7,20 @@ La propuesta de contingencia específica es la suma p1 H0 de los 36 eventos: inc
 
 La reserva protegida de S7, Tabla 7.4, pp. 45--46, es 3.072 HH: 1.152 en marcha blanca E1 (13--15) y 1.920 en producción/estabilización E1 (16--20). Ya integra 203.548,62 HH programadas sobre 200.476,62 HH base/cobertura. No se suma nuevamente a esos totales ni se presta a E2. El crédito inicial contra la contingencia específica es cero y sólo podrá reconocerse tras verificar la coincidencia de capacidades, perfiles, causas y períodos. JP podrá reconocer solapamiento sólo con la triple correspondencia riesgo--paquete--perfil/mes y acta de capacidad; al hacerlo, se resta exactamente una vez de la propuesta adicional, conservando la protección E1. Las fichas preventivas también se descuentan si ya están incluidas en paquetes.
 
-La reserva de gestión propuesta es de 160 HH, sujeta a autorización del Comité Ejecutivo: cuatro ciclos extraordinarios por causas todavía no identificadas, uno por bloque 1--12, 13--20, 21--38 y 39--56. Cada ciclo reúne JP 8, ARQ 16, CAL 8 y SRE 8 HH: 4 por 40=160 HH. Son tolerancias de revisión, diagnóstico, coordinación y replanificación de un asunto emergente; no incluyen remediación de un riesgo conocido, controles técnicos ordinarios, cambios normativos ya registrados, correcciones ordinarias ni los 36 eventos. Si el asunto se identifica como un riesgo de T-16 se reclasifica, se anula su doble imputación y se usa su contingencia específica. Si excede el sobre de 40 HH, el Comité Ejecutivo decide capacidad/cambio antes de comprometer más trabajo. Sensibilidad de tolerancia: dos ciclos por bloque exigirían 320 HH, sin adoptar ese importe ni asegurar cobertura de eventos desconocidos.
+La Propuesta Final aprueba 160 HH de reserva de gestión para revisar, diagnosticar, coordinar y replanificar asuntos emergentes. Se asignan cuatro ciclos de 40 HH, uno por bloque, en los meses 12, 18, 24 y 40. Si el asunto corresponde a un riesgo del T-16, se imputa a la contingencia específica. JP replanifica cualquier esfuerzo que exceda el cupo del ciclo. Dos ciclos por bloque representarían 320 HH en el análisis de sensibilidad.
 
-\paragraph{Contraste de capacidad con el T-15.}
-Para los bloques 1--12, 13--20, 21--38 y 39--56 se proponen, respectivamente, los meses 12, 18, 24 y 40. Cada ventana requiere 8 HH de JP, 16 de ARQ, 8 de CAL y 8 de SRE. El contraste usa las secciones 4.4, 4.5 y 5.7 del T-15. Frente a las plazas previstas de Desarrollo (36), Arquitectura e Integración (15), Calidad (10) y SRE y nube (12), las diferencias entre plazas previstas y demanda redondeada son, en ese orden, 33/9/9/9 en el mes 12, 31/14/8/11 en el 18, 33/14/9/10 en el 24 y 33/14/9/10 en el 40. En los cuatro meses hay margen a escala de grupo incluso si cada incremento se redondea a una plaza de 128 HH. La capacidad debe confirmarse por titular y turno.
+\paragraph{Asignación por titular y turno.}
+En cada mes indicado, los turnos son diurnos, de ocho HH, en los primeros dos días hábiles del mes. La asignación se repite en los cuatro ciclos.
 
-JP alcanza sus 128 HH programables en implementación: los meses 12 y 18 requieren liberar 8 HH del titular mediante reasignación de trabajo elegible o definir un relevo facultado. En operación, el Líder de Operación / SRE también tiene 128 HH programadas: los meses 24 y 40 requieren asignar las 8 HH a un SRE habilitado con disponibilidad o liberar capacidad del titular. Para cada ventana, JP debe confirmar también las 16 HH de ARQ y 8 HH de CAL y, cuando corresponda, las HH de JP en operación y de SRE en implementación.
+\begin{tablalafrox}{Capacidad de gestión asignada por ciclo.}{tab:gestion-turnos}{Y C{0.22\linewidth} G{0.16}}{\cab{Titular y rol} & \cab{Turno diurno} & \cab{HH por ciclo}}
+Alex Aravena (JP) & Día hábil 1 & 8 \\
+Bastián Trejo (ARQ) & Días hábiles 1 y 2 & 16 \\
+Maximiliano Miño (CAL) & Día hábil 1 & 8 \\
+Guillermo Castillo (SRE) & Día hábil 1 & 8 \\
+\textbf{Total} & & \textbf{40} \\
+\end{tablalafrox}
 
-Las ventanas son candidatas. El efecto sobre los hitos queda por verificar con las actividades, responsables y turnos asignados; si se desplaza trabajo de línea base, JP debe recalcular carga, precedencias y holguras antes de comprometerlo. Estado en la versión consultada del T-15: contraste mensual por grupo realizado, nivelación por titular pendiente y autorización del Comité Ejecutivo pendiente. La liberación se registra con el acta, la versión del T-15 y los perfiles y períodos autorizados.
+En los meses 12 y 18, PMO cubre 8 HH de trabajo delegable de JP en el primer turno. En los meses 24 y 40, un profesional DevOps habilitado cubre 8 HH operativas de SRE en ese turno. Para los demás titulares y turnos, la programación reserva primero el cupo indicado y distribuye la carga ordinaria dentro del saldo mensual. El tope de 128 HH programables deja hasta 112 HH ordinarias a ARQ y hasta 120 HH ordinarias a cada uno de los otros titulares en el mes del ciclo. Las coberturas reasignan trabajo de la línea base dentro de sus ventanas y las 160 HH se contabilizan como reserva de gestión.
 
 La tabla mensual distribuye p1H0 uniformemente entre los meses de atención propuestos de cada ficha, 60\% al dueño y 40\% al apoyo (CAL, o ARQ si CAL es dueño). No predice fechas de ocurrencia ni cambia la ventana probabilística. Las cantidades de cálculo conservan precisión; el redondeo de impresión a 0,01 HH puede crear diferencias de centésimas al sumar celdas; los totales se calculan sobre los valores sin redondear. Prevención y gestión tienen sus propios calendarios y no están incluidas en esa tabla. La reserva distribuida es exposición esperada, no dotación comprometida: JP debe recalcular la ruta crítica y nivelar perfiles antes de solicitar su aprobación. No se convierten HH directamente a días.
 
@@ -30,7 +36,7 @@ Contingencia específica propuesta p1H0 & 837,53 & Incluye C y L; condición: ev
 Dentro de contingencia: p1C & 142,00 & Subconjunto; no reserva adicional. \\
 Dentro de contingencia: p1L & 695,53 & Subconjunto de contingencia, no sumar otra vez. \\
 Esfuerzo esperado posterior A+p1H0 & 1017,53 & Prevención más contingencia específica; sin gestión ni protección S7. \\
-Gestión propuesta & 160,00 & Cuatro ciclos extraordinarios de 40 HH, con perfiles y bloques definidos. \\
+Gestión aprobada & 160,00 & Cuatro ciclos de 40 HH asignados por titular y turno. \\
 Protección ya programada en S7 & 3.072,00 & Sólo E1; 1.152+1.920. Crédito demostrado inicialmente cero. \\
 \end{tablalafrox}
 \end{landscape}
