@@ -72,15 +72,15 @@ La sección 5 calcula la red con la línea base de 203.548,62 HH y los plazos de
 
 \section{Ruta crítica y holguras}
 
-El camino de aceptación de H12 pasa por el cierre de la marcha blanca, la revisión del expediente y el corte autorizado. La garantía 9.4.3 se tramita en paralelo y debe estar constituida al presentar el expediente. La sección 5.5 detalla el acta integrada de H7 y H12.
+El camino de aceptación de H12 pasa por el cierre de la marcha blanca, la revisión del expediente y el corte autorizado. La garantía 9.4.3 se tramita en paralelo y debe estar constituida al presentar el expediente. La sección 5.5 detalla el acta integrada de H7 y H12. La Figura \ref{fig:T15-ruta} esquematiza esta secuencia y su holgura contractual.
 
 % Mantener el diagrama y su explicación juntos, sin flotación.
 \par\addvspace{\intextsep}
 \noindent\begin{minipage}{\linewidth}
 {\centering
-\includegraphics[width=0.72\linewidth]{imagenes/Diagramas que faltaban/Fig_Camino_H12.pdf}
+\includegraphics[width=\linewidth]{imagenes/Diagramas que faltaban/productos/Fig_Ruta_H12.pdf}
 \captionsetup{hypcap=false}
-\captionof{figure}{Camino que controla el H12 y su holgura contractual. Fuente: elaboración a partir del T-15, secciones 5.1--5.3 y 6.1.}\label{fig:T15-ruta}\par}
+\captionof{figure}{Camino que controla la aceptación del hito H12, trámite paralelo de la garantía y holgura contractual. Fuente: elaboración propia a partir del Formulario T-15, secciones 5.1--5.3, 5.5 y 6.1.}\label{fig:T15-ruta}\par}
 
 \medskip
 \noindent La figura muestra la cadena que controla H12; las demás ramas se calculan en la Tabla \ref{tab_T15_cpm_detalle}. H7 y H12 tienen holguras contractuales de diez y ocho días hábiles, y H8, de dieciséis. Los ciclos de marcha blanca mantienen sus ventanas completas, sin utilizar sus cuatro semanas finales como reserva.
@@ -322,11 +322,16 @@ Cada paquete se descompone en actividades de 8 a 80 HH que caben en una quincena
 
 La Figura \ref{fig:T15-gradual} ilustra el principio de planificación gradual.
 
-\figuraDiagramaHorizontal[549pt]{imagenes/Diagramas que faltaban/Fig_T15-3_Planificacion_Gradual.pdf}
-  {Planificación gradual del cronograma. Fuente: elaboración a partir de las Tablas \ref{tab_T15_paquetes} y \ref{tab_T15_9}.}
-  {fig:T15-gradual}
+\par\addvspace{\intextsep}
+\noindent\begin{minipage}{\linewidth}
+  \centering
+  \includegraphics[width=\linewidth]{imagenes/Diagramas que faltaban/productos/Fig_Planificacion_Gradual.pdf}\par
+  \captionsetup{hypcap=false}
+  \captionof{figure}{Planificación gradual del cronograma por horizontes de detalle y paquetes de esfuerzo continuo. Fuente: elaboración propia a partir de las Tablas \ref{tab_T15_cpm_detalle}, \ref{tab_T15_paquetes}, \ref{tab_T15_9}, \ref{tab_T15_9_2}, \ref{tab_T15_9h5} y \ref{tab_T15_10}.}\label{fig:T15-gradual}
+\end{minipage}
+\par\addvspace{\intextsep}
 
-Los paquetes que terminan hasta el H5, en el mes 12, se presentan descompuestos en actividades. Los paquetes posteriores se detallan por planificación gradual antes de su ejecución, con sus fechas y dependencias como base de programación.
+Los tres horizontes de la Figura \ref{fig:T15-gradual} cubren los 171 paquetes con entregable: 60 paquetes descompuestos en 119 actividades hasta H2 (Tablas \ref{tab_T15_9} y \ref{tab_T15_9_2}), 76 paquetes descompuestos en 385 actividades entre H2 y H5 (Tabla \ref{tab_T15_9h5}) y 35 paquetes posteriores a H5 que se detallan en actividades antes de su ejecución mediante planificación gradual; a ellos se suman los 59 paquetes de esfuerzo continuo programados por relevo u ocurrencia (Tabla \ref{tab_T15_10}).
 
 \parte{tablas/tab_T15_paquetes}
 
