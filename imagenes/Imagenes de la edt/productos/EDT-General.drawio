@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron">
+  <diagram id="general" name="EDT General">
+    <mxGraphModel grid="0" page="0" pageScale="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="e_trunk" style="endArrow=none;html=1;rounded=0;strokeColor=#555555;strokeWidth=1.500;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="292.00" y="58.00" as="sourcePoint" />
+            <mxPoint x="292.00" y="459.00" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_row_0" style="endArrow=none;html=1;rounded=0;strokeColor=#555555;strokeWidth=1.500;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="278.00" y="115.00" as="sourcePoint" />
+            <mxPoint x="306.00" y="115.00" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_row_1" style="endArrow=none;html=1;rounded=0;strokeColor=#555555;strokeWidth=1.500;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="278.00" y="201.00" as="sourcePoint" />
+            <mxPoint x="306.00" y="201.00" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_row_2" style="endArrow=none;html=1;rounded=0;strokeColor=#555555;strokeWidth=1.500;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="278.00" y="287.00" as="sourcePoint" />
+            <mxPoint x="306.00" y="287.00" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_row_3" style="endArrow=none;html=1;rounded=0;strokeColor=#555555;strokeWidth=1.500;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="278.00" y="373.00" as="sourcePoint" />
+            <mxPoint x="306.00" y="373.00" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_row_4" style="endArrow=none;html=1;rounded=0;strokeColor=#555555;strokeWidth=1.500;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="278.00" y="459.00" as="sourcePoint" />
+            <mxPoint x="306.00" y="459.00" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="root_box" value="&lt;b&gt;Plataforma Digital de Misión Crítica — Distribuidora Puelche&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12.5px;&quot;&gt;10 productos · 60 cuentas de control · 230 paquetes de trabajo&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#262626;strokeColor=#262626;strokeWidth=1.2;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=10;fontSize=13.5;fontColor=#FFFFFF;fontStyle=0;align=center;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=5;spacingBottom=5;" vertex="1" parent="1">
+          <mxGeometry x="32.00" y="2.00" width="520.00" height="56.00" as="geometry" />
+        </mxCell>
+        <mxCell id="prod_1" value="&lt;b&gt;1. Gestión del proyecto&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12.5px;&quot;&gt;8 cuentas · 32 paquetes&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F4E79;strokeColor=#1F4E79;strokeWidth=1.2;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=13;fontColor=#FFFFFF;fontStyle=0;align=center;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=5;spacingBottom=5;" vertex="1" parent="1">
+          <mxGeometry x="0.00" y="80.00" width="278.00" height="70.00" as="geometry" />
+        </mxCell>
+        <mxCell id="prod_2" value="&lt;b&gt;2. Requisitos y diseño aprobados&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12.5px;&quot;&gt;8 cuentas · 26 paquetes&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2E86C1;strokeColor=#2E86C1;strokeWidth=1.2;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=13;fontColor=#FFFFFF;fontStyle=0;align=center;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=5;spacingBottom=5;" vertex="1" parent="1">
+          <mxGeometry x="306.00" y="80.00" width="278.00" height="70.00" as="geometry" />
+        </mxCell>
+        <mxCell id="prod_3" value="&lt;b&gt;3. Plataforma base&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12.5px;&quot;&gt;3 cuentas · 17 paquetes&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E8449;strokeColor=#1E8449;strokeWidth=1.2;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=13;fontColor=#FFFFFF;fontStyle=0;align=center;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=5;spacingBottom=5;" vertex="1" parent="1">
+          <mxGeometry x="0.00" y="166.00" width="278.00" height="70.00" as="geometry" />
+        </mxCell>
+        <mxCell id="prod_4" value="&lt;b&gt;4. Software operativo&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12.5px;&quot;&gt;5 cuentas · 15 paquetes&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C0601A;strokeColor=#C0601A;strokeWidth=1.2;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=13;fontColor=#FFFFFF;fontStyle=0;align=center;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=5;spacingBottom=5;" vertex="1" parent="1">
+          <mxGeometry x="306.00" y="166.00" width="278.00" height="70.00" as="geometry" />
+        </mxCell>
+        <mxCell id="prod_5" value="&lt;b&gt;5. Integraciones y datos migrados&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12.5px;&quot;&gt;4 cuentas · 14 paquetes&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7D3C98;strokeColor=#7D3C98;strokeWidth=1.2;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=13;fontColor=#FFFFFF;fontStyle=0;align=center;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=5;spacingBottom=5;" vertex="1" parent="1">
+          <mxGeometry x="0.00" y="252.00" width="278.00" height="70.00" as="geometry" />
+        </mxCell>
+        <mxCell id="prod_6" value="&lt;b&gt;6. Solución certificada y documentada&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12.5px;&quot;&gt;8 cuentas · 22 paquetes&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8D5524;strokeColor=#8D5524;strokeWidth=1.2;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=13;fontColor=#FFFFFF;fontStyle=0;align=center;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=5;spacingBottom=5;" vertex="1" parent="1">
+          <mxGeometry x="306.00" y="252.00" width="278.00" height="70.00" as="geometry" />
+        </mxCell>
+        <mxCell id="prod_7" value="&lt;b&gt;7. Innovaciones verificadas&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12.5px;&quot;&gt;5 cuentas · 23 paquetes&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#148F77;strokeColor=#148F77;strokeWidth=1.2;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=13;fontColor=#FFFFFF;fontStyle=0;align=center;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=5;spacingBottom=5;" vertex="1" parent="1">
+          <mxGeometry x="0.00" y="338.00" width="278.00" height="70.00" as="geometry" />
+        </mxCell>
+        <mxCell id="prod_8" value="&lt;b&gt;8. Infraestructura, equipamiento y servicios habilitados&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12.5px;&quot;&gt;7 cuentas · 35 paquetes&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4D5656;strokeColor=#4D5656;strokeWidth=1.2;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=13;fontColor=#FFFFFF;fontStyle=0;align=center;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=5;spacingBottom=5;" vertex="1" parent="1">
+          <mxGeometry x="306.00" y="338.00" width="278.00" height="70.00" as="geometry" />
+        </mxCell>
+        <mxCell id="prod_9" value="&lt;b&gt;9. Implantación y usuarios habilitados&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12.5px;&quot;&gt;7 cuentas · 25 paquetes&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8B2635;strokeColor=#8B2635;strokeWidth=1.2;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=13;fontColor=#FFFFFF;fontStyle=0;align=center;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=5;spacingBottom=5;" vertex="1" parent="1">
+          <mxGeometry x="0.00" y="424.00" width="278.00" height="70.00" as="geometry" />
+        </mxCell>
+        <mxCell id="prod_10" value="&lt;b&gt;10. Servicio de operación y salida&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12.5px;&quot;&gt;5 cuentas · 21 paquetes&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4F5D2F;strokeColor=#4F5D2F;strokeWidth=1.2;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=13;fontColor=#FFFFFF;fontStyle=0;align=center;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=5;spacingBottom=5;" vertex="1" parent="1">
+          <mxGeometry x="306.00" y="424.00" width="278.00" height="70.00" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
