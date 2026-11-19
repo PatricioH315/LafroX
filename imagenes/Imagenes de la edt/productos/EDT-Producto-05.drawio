@@ -8,209 +8,209 @@
         <mxCell id="e1_1" style="endArrow=none;html=1;rounded=0;strokeColor=#555555;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="292.00" y="46.00" as="sourcePoint" />
-            <mxPoint x="292.00" y="287.50" as="targetPoint" />
+            <mxPoint x="292.00" y="273.50" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_2" style="endArrow=none;html=1;rounded=0;strokeColor=#555555;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="140.50" y="56.00" as="sourcePoint" />
-            <mxPoint x="443.50" y="56.00" as="targetPoint" />
+            <mxPoint x="140.50" y="54.00" as="sourcePoint" />
+            <mxPoint x="443.50" y="54.00" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_3" style="endArrow=none;html=1;rounded=0;strokeColor=#555555;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="140.50" y="56.00" as="sourcePoint" />
-            <mxPoint x="140.50" y="66.00" as="targetPoint" />
+            <mxPoint x="140.50" y="54.00" as="sourcePoint" />
+            <mxPoint x="140.50" y="62.00" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_4" style="endArrow=none;html=1;rounded=0;strokeColor=#555555;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="443.50" y="56.00" as="sourcePoint" />
-            <mxPoint x="443.50" y="66.00" as="targetPoint" />
+            <mxPoint x="443.50" y="54.00" as="sourcePoint" />
+            <mxPoint x="443.50" y="62.00" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_5" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="6.50" y="105.00" as="sourcePoint" />
-            <mxPoint x="6.50" y="231.00" as="targetPoint" />
+            <mxPoint x="6.50" y="100.00" as="sourcePoint" />
+            <mxPoint x="6.50" y="221.50" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_6" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="6.50" y="138.50" as="sourcePoint" />
-            <mxPoint x="13.00" y="138.50" as="targetPoint" />
+            <mxPoint x="6.50" y="133.00" as="sourcePoint" />
+            <mxPoint x="13.00" y="133.00" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_7" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="6.50" y="188.50" as="sourcePoint" />
-            <mxPoint x="13.00" y="188.50" as="targetPoint" />
+            <mxPoint x="6.50" y="181.00" as="sourcePoint" />
+            <mxPoint x="13.00" y="181.00" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_8" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="6.50" y="231.00" as="sourcePoint" />
-            <mxPoint x="13.00" y="231.00" as="targetPoint" />
+            <mxPoint x="6.50" y="221.50" as="sourcePoint" />
+            <mxPoint x="13.00" y="221.50" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_9" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="309.50" y="105.00" as="sourcePoint" />
-            <mxPoint x="309.50" y="258.50" as="targetPoint" />
+            <mxPoint x="309.50" y="100.00" as="sourcePoint" />
+            <mxPoint x="309.50" y="247.00" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_10" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="309.50" y="131.00" as="sourcePoint" />
-            <mxPoint x="316.00" y="131.00" as="targetPoint" />
+            <mxPoint x="309.50" y="125.50" as="sourcePoint" />
+            <mxPoint x="316.00" y="125.50" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_11" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="309.50" y="173.50" as="sourcePoint" />
-            <mxPoint x="316.00" y="173.50" as="targetPoint" />
+            <mxPoint x="309.50" y="166.00" as="sourcePoint" />
+            <mxPoint x="316.00" y="166.00" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_12" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="309.50" y="216.00" as="sourcePoint" />
-            <mxPoint x="316.00" y="216.00" as="targetPoint" />
+            <mxPoint x="309.50" y="206.50" as="sourcePoint" />
+            <mxPoint x="316.00" y="206.50" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_13" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="309.50" y="258.50" as="sourcePoint" />
-            <mxPoint x="316.00" y="258.50" as="targetPoint" />
+            <mxPoint x="309.50" y="247.00" as="sourcePoint" />
+            <mxPoint x="316.00" y="247.00" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_14" style="endArrow=none;html=1;rounded=0;strokeColor=#555555;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="140.50" y="287.50" as="sourcePoint" />
-            <mxPoint x="443.50" y="287.50" as="targetPoint" />
+            <mxPoint x="140.50" y="273.50" as="sourcePoint" />
+            <mxPoint x="443.50" y="273.50" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_15" style="endArrow=none;html=1;rounded=0;strokeColor=#555555;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="140.50" y="287.50" as="sourcePoint" />
-            <mxPoint x="140.50" y="297.50" as="targetPoint" />
+            <mxPoint x="140.50" y="273.50" as="sourcePoint" />
+            <mxPoint x="140.50" y="281.50" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_16" style="endArrow=none;html=1;rounded=0;strokeColor=#555555;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="443.50" y="287.50" as="sourcePoint" />
-            <mxPoint x="443.50" y="297.50" as="targetPoint" />
+            <mxPoint x="443.50" y="273.50" as="sourcePoint" />
+            <mxPoint x="443.50" y="281.50" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_17" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="6.50" y="336.50" as="sourcePoint" />
-            <mxPoint x="6.50" y="405.00" as="targetPoint" />
+            <mxPoint x="6.50" y="319.50" as="sourcePoint" />
+            <mxPoint x="6.50" y="385.50" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_18" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="6.50" y="362.50" as="sourcePoint" />
-            <mxPoint x="13.00" y="362.50" as="targetPoint" />
+            <mxPoint x="6.50" y="345.00" as="sourcePoint" />
+            <mxPoint x="13.00" y="345.00" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_19" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="6.50" y="405.00" as="sourcePoint" />
-            <mxPoint x="13.00" y="405.00" as="targetPoint" />
+            <mxPoint x="6.50" y="385.50" as="sourcePoint" />
+            <mxPoint x="13.00" y="385.50" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_20" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="309.50" y="336.50" as="sourcePoint" />
-            <mxPoint x="309.50" y="532.50" as="targetPoint" />
+            <mxPoint x="309.50" y="319.50" as="sourcePoint" />
+            <mxPoint x="309.50" y="507.00" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_21" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="309.50" y="362.50" as="sourcePoint" />
-            <mxPoint x="316.00" y="362.50" as="targetPoint" />
+            <mxPoint x="309.50" y="345.00" as="sourcePoint" />
+            <mxPoint x="316.00" y="345.00" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_22" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="309.50" y="405.00" as="sourcePoint" />
-            <mxPoint x="316.00" y="405.00" as="targetPoint" />
+            <mxPoint x="309.50" y="385.50" as="sourcePoint" />
+            <mxPoint x="316.00" y="385.50" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_23" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="309.50" y="447.50" as="sourcePoint" />
-            <mxPoint x="316.00" y="447.50" as="targetPoint" />
+            <mxPoint x="309.50" y="426.00" as="sourcePoint" />
+            <mxPoint x="316.00" y="426.00" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_24" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="309.50" y="490.00" as="sourcePoint" />
-            <mxPoint x="316.00" y="490.00" as="targetPoint" />
+            <mxPoint x="309.50" y="466.50" as="sourcePoint" />
+            <mxPoint x="316.00" y="466.50" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="e1_25" style="endArrow=none;html=1;rounded=0;strokeColor=#7D3C98;strokeWidth=1.333;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="309.50" y="532.50" as="sourcePoint" />
-            <mxPoint x="316.00" y="532.50" as="targetPoint" />
+            <mxPoint x="309.50" y="507.00" as="sourcePoint" />
+            <mxPoint x="316.00" y="507.00" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="n1_1" value="&lt;b&gt;5. Integraciones y datos migrados&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7D3C98;strokeColor=#7D3C98;strokeWidth=1.2;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=10;fontSize=14.0;fontColor=#FFFFFF;fontStyle=0;align=center;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=4;spacingBottom=4;" vertex="1" parent="1">
           <mxGeometry x="58.00" y="2.00" width="468.00" height="44.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_2" value="&lt;b&gt;5.1 Integraciones con el ERP, el WMS y la flota&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBDDF1;strokeColor=#7D3C98;strokeWidth=1.6;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=12.5;fontColor=#111111;fontStyle=0;align=center;verticalAlign=middle;spacingLeft=6;spacingRight=6;spacingTop=4;spacingBottom=4;" vertex="1" parent="1">
-          <mxGeometry x="0.00" y="66.00" width="281.00" height="39.00" as="geometry" />
+          <mxGeometry x="0.00" y="62.00" width="281.00" height="38.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_3" value="&lt;b&gt;5.1.1&lt;/b&gt; Integración con el ERP como único emisor de la guía de despacho (INT-06 e INT-07)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7D3C98;strokeWidth=1.1;spacing=0;fontFamily=Arial;fontSize=12.5;fontColor=#111111;fontStyle=0;align=left;verticalAlign=middle;spacingLeft=7;spacingRight=6;spacingTop=3;spacingBottom=3;" vertex="1" parent="1">
-          <mxGeometry x="13.00" y="112.00" width="268.00" height="53.00" as="geometry" />
+          <mxGeometry x="13.00" y="107.00" width="268.00" height="52.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_4" value="&lt;b&gt;5.1.2&lt;/b&gt; Mecanismo de convivencia con el WMS de 2013" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7D3C98;strokeWidth=1.1;spacing=0;fontFamily=Arial;fontSize=12.5;fontColor=#111111;fontStyle=0;align=left;verticalAlign=middle;spacingLeft=7;spacingRight=6;spacingTop=3;spacingBottom=3;" vertex="1" parent="1">
-          <mxGeometry x="13.00" y="169.50" width="268.00" height="38.00" as="geometry" />
+          <mxGeometry x="13.00" y="162.50" width="268.00" height="37.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_5" value="&lt;b&gt;5.1.3&lt;/b&gt; Integración con la telemetría de los 42 camiones propios (INT-15)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7D3C98;strokeWidth=1.1;spacing=0;fontFamily=Arial;fontSize=12.5;fontColor=#111111;fontStyle=0;align=left;verticalAlign=middle;spacingLeft=7;spacingRight=6;spacingTop=3;spacingBottom=3;" vertex="1" parent="1">
-          <mxGeometry x="13.00" y="212.00" width="268.00" height="38.00" as="geometry" />
+          <mxGeometry x="13.00" y="203.00" width="268.00" height="37.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_6" value="&lt;b&gt;5.2 Integraciones con servicios externos&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBDDF1;strokeColor=#7D3C98;strokeWidth=1.6;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=12.5;fontColor=#111111;fontStyle=0;align=center;verticalAlign=middle;spacingLeft=6;spacingRight=6;spacingTop=4;spacingBottom=4;" vertex="1" parent="1">
-          <mxGeometry x="303.00" y="66.00" width="281.00" height="39.00" as="geometry" />
+          <mxGeometry x="303.00" y="62.00" width="281.00" height="38.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_7" value="&lt;b&gt;5.2.1&lt;/b&gt; Intercambio de lote y trazabilidad con los proveedores" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7D3C98;strokeWidth=1.1;spacing=0;fontFamily=Arial;fontSize=12.5;fontColor=#111111;fontStyle=0;align=left;verticalAlign=middle;spacingLeft=7;spacingRight=6;spacingTop=3;spacingBottom=3;" vertex="1" parent="1">
-          <mxGeometry x="316.00" y="112.00" width="268.00" height="38.00" as="geometry" />
+          <mxGeometry x="316.00" y="107.00" width="268.00" height="37.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_8" value="&lt;b&gt;5.2.2&lt;/b&gt; Integración con la pasarela de pago para el cobro con tarjeta (INT-09)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7D3C98;strokeWidth=1.1;spacing=0;fontFamily=Arial;fontSize=12.5;fontColor=#111111;fontStyle=0;align=left;verticalAlign=middle;spacingLeft=7;spacingRight=6;spacingTop=3;spacingBottom=3;" vertex="1" parent="1">
-          <mxGeometry x="316.00" y="154.50" width="268.00" height="38.00" as="geometry" />
+          <mxGeometry x="316.00" y="147.50" width="268.00" height="37.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_9" value="&lt;b&gt;5.2.3&lt;/b&gt; Integración con el servicio de mapas y geocodificación (INT-10)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7D3C98;strokeWidth=1.1;spacing=0;fontFamily=Arial;fontSize=12.5;fontColor=#111111;fontStyle=0;align=left;verticalAlign=middle;spacingLeft=7;spacingRight=6;spacingTop=3;spacingBottom=3;" vertex="1" parent="1">
-          <mxGeometry x="316.00" y="197.00" width="268.00" height="38.00" as="geometry" />
+          <mxGeometry x="316.00" y="188.00" width="268.00" height="37.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_10" value="&lt;b&gt;5.2.4&lt;/b&gt; Integración con el servicio de avisos al cliente (INT-11)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7D3C98;strokeWidth=1.1;spacing=0;fontFamily=Arial;fontSize=12.5;fontColor=#111111;fontStyle=0;align=left;verticalAlign=middle;spacingLeft=7;spacingRight=6;spacingTop=3;spacingBottom=3;" vertex="1" parent="1">
-          <mxGeometry x="316.00" y="239.50" width="268.00" height="38.00" as="geometry" />
+          <mxGeometry x="316.00" y="228.50" width="268.00" height="37.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_11" value="&lt;b&gt;5.3 Intercambio electrónico con las cadenas&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBDDF1;strokeColor=#7D3C98;strokeWidth=1.6;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=12.5;fontColor=#111111;fontStyle=0;align=center;verticalAlign=middle;spacingLeft=6;spacingRight=6;spacingTop=4;spacingBottom=4;" vertex="1" parent="1">
-          <mxGeometry x="0.00" y="297.50" width="281.00" height="39.00" as="geometry" />
+          <mxGeometry x="0.00" y="281.50" width="281.00" height="38.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_12" value="&lt;b&gt;5.3.1&lt;/b&gt; Intercambio electrónico certificado con la cadena principal (INT-08)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7D3C98;strokeWidth=1.1;spacing=0;fontFamily=Arial;fontSize=12.5;fontColor=#111111;fontStyle=0;align=left;verticalAlign=middle;spacingLeft=7;spacingRight=6;spacingTop=3;spacingBottom=3;" vertex="1" parent="1">
-          <mxGeometry x="13.00" y="343.50" width="268.00" height="38.00" as="geometry" />
+          <mxGeometry x="13.00" y="326.50" width="268.00" height="37.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_13" value="&lt;b&gt;5.3.2&lt;/b&gt; Intercambio electrónico con las demás cadenas (INT-08)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7D3C98;strokeWidth=1.1;spacing=0;fontFamily=Arial;fontSize=12.5;fontColor=#111111;fontStyle=0;align=left;verticalAlign=middle;spacingLeft=7;spacingRight=6;spacingTop=3;spacingBottom=3;" vertex="1" parent="1">
-          <mxGeometry x="13.00" y="386.00" width="268.00" height="38.00" as="geometry" />
+          <mxGeometry x="13.00" y="367.00" width="268.00" height="37.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_14" value="&lt;b&gt;5.4 Migración de datos&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBDDF1;strokeColor=#7D3C98;strokeWidth=1.6;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=12.5;fontColor=#111111;fontStyle=0;align=center;verticalAlign=middle;spacingLeft=6;spacingRight=6;spacingTop=4;spacingBottom=4;" vertex="1" parent="1">
-          <mxGeometry x="303.00" y="297.50" width="281.00" height="39.00" as="geometry" />
+          <mxGeometry x="303.00" y="281.50" width="281.00" height="38.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_15" value="&lt;b&gt;5.4.1&lt;/b&gt; Informe de perfilamiento y datos saneados" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7D3C98;strokeWidth=1.1;spacing=0;fontFamily=Arial;fontSize=12.5;fontColor=#111111;fontStyle=0;align=left;verticalAlign=middle;spacingLeft=7;spacingRight=6;spacingTop=3;spacingBottom=3;" vertex="1" parent="1">
-          <mxGeometry x="316.00" y="343.50" width="268.00" height="38.00" as="geometry" />
+          <mxGeometry x="316.00" y="326.50" width="268.00" height="37.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_16" value="&lt;b&gt;5.4.2&lt;/b&gt; Datos maestros cargados: 8.400 SKU, clientes e instalaciones" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7D3C98;strokeWidth=1.1;spacing=0;fontFamily=Arial;fontSize=12.5;fontColor=#111111;fontStyle=0;align=left;verticalAlign=middle;spacingLeft=7;spacingRight=6;spacingTop=3;spacingBottom=3;" vertex="1" parent="1">
-          <mxGeometry x="316.00" y="386.00" width="268.00" height="38.00" as="geometry" />
+          <mxGeometry x="316.00" y="367.00" width="268.00" height="37.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_17" value="&lt;b&gt;5.4.3&lt;/b&gt; Saldos migrados desde el WMS de Talca" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7D3C98;strokeWidth=1.1;spacing=0;fontFamily=Arial;fontSize=12.5;fontColor=#111111;fontStyle=0;align=left;verticalAlign=middle;spacingLeft=7;spacingRight=6;spacingTop=3;spacingBottom=3;" vertex="1" parent="1">
-          <mxGeometry x="316.00" y="428.50" width="268.00" height="38.00" as="geometry" />
+          <mxGeometry x="316.00" y="407.50" width="268.00" height="37.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_18" value="&lt;b&gt;5.4.4&lt;/b&gt; Saldos cargados en Concepción desde el conteo físico" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7D3C98;strokeWidth=1.1;spacing=0;fontFamily=Arial;fontSize=12.5;fontColor=#111111;fontStyle=0;align=left;verticalAlign=middle;spacingLeft=7;spacingRight=6;spacingTop=3;spacingBottom=3;" vertex="1" parent="1">
-          <mxGeometry x="316.00" y="471.00" width="268.00" height="38.00" as="geometry" />
+          <mxGeometry x="316.00" y="448.00" width="268.00" height="37.00" as="geometry" />
         </mxCell>
         <mxCell id="n1_19" value="&lt;b&gt;5.4.5&lt;/b&gt; Acta de conciliación y corte fuera de las ventanas de congelamiento" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7D3C98;strokeWidth=1.1;spacing=0;fontFamily=Arial;fontSize=12.5;fontColor=#111111;fontStyle=0;align=left;verticalAlign=middle;spacingLeft=7;spacingRight=6;spacingTop=3;spacingBottom=3;" vertex="1" parent="1">
-          <mxGeometry x="316.00" y="513.50" width="268.00" height="38.00" as="geometry" />
+          <mxGeometry x="316.00" y="488.50" width="268.00" height="37.00" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

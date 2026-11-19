@@ -26,15 +26,15 @@ ARIAL_R = pymupdf.Font(fontfile="C:/Windows/Fonts/arial.ttf")
 ARIAL_B = pymupdf.Font(fontfile="C:/Windows/Fonts/arialbd.ttf")
 
 # Paleta por producto: (color fuerte de cabecera/borde, color claro de cuenta).
-# Productos 1 a 8 tomados de los diagramas por fase; 9 y 10 en tonos sobrios coherentes.
+# Todos los colores fuertes cumplen contraste WCAG 2.1 AA >= 4,5:1 sobre blanco (#FFFFFF).
 PALETTE: dict[int, tuple[str, str]] = {
     1: ("#1F4E79", "#DCE6F1"),
-    2: ("#2E86C1", "#DDEEF8"),
+    2: ("#21699B", "#DDEEF8"),
     3: ("#1E8449", "#DDF0E3"),
-    4: ("#C0601A", "#FBE7D6"),
+    4: ("#A85012", "#FBE7D6"),
     5: ("#7D3C98", "#EBDDF1"),
     6: ("#8D5524", "#EFE3D8"),
-    7: ("#148F77", "#D8F0EB"),
+    7: ("#0F7460", "#D8F0EB"),
     8: ("#4D5656", "#E3E6E6"),
     9: ("#8B2635", "#F5DFE2"),
     10: ("#4F5D2F", "#E8EDDC"),
@@ -43,9 +43,9 @@ PALETTE: dict[int, tuple[str, str]] = {
 ROOT_COLOR = "#262626"
 TRUNK_COLOR = "#555555"
 
-# Geometría para carta vertical (A.3: ancho <= 590, alto <= 775, fuente >= 12).
+# Geometría para carta vertical (A.3: ancho <= 590, alto <= 768, fuente >= 12).
 W_CANVAS = 584.0
-H_MAX = 736.0
+H_MAX = 768.0
 
 
 def bind_nbsp_percent(text: str) -> str:
@@ -404,11 +404,11 @@ def build_product_diagram(prod: Product) -> Path:
     fs_hdr = 14.0
     fs_cta = 12.5
     fs_pkg = 12.5
-    pad_cta = 9.0
-    pad_pkg = 7.5
-    pkg_gap = 4.5
-    row_gap = 20.0
-    top_gap = 20.0
+    pad_cta = 8.0
+    pad_pkg = 6.5
+    pkg_gap = 3.5
+    row_gap = 16.0
+    top_gap = 16.0
 
     # Medir cabecera de producto (con espacio para sufijo « (1 de 2)»)
     hdr_w = 468.0
