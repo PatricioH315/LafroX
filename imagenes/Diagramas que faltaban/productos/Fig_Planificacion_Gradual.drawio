@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron">
+  <diagram id="gradual" name="Planificación gradual">
+    <mxGraphModel grid="0" page="0" pageScale="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t1_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCE6F1;strokeColor=#1F4E79;strokeWidth=1.6;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="0.00" y="64.00" width="584.00" height="144.00" as="geometry" />
+        </mxCell>
+        <mxCell id="t2_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DDEEF8;strokeColor=#2E86C1;strokeWidth=1.6;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="0.00" y="230.00" width="584.00" height="144.00" as="geometry" />
+        </mxCell>
+        <mxCell id="t3_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D8F0EB;strokeColor=#148F77;strokeWidth=1.6;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="0.00" y="396.00" width="584.00" height="154.00" as="geometry" />
+        </mxCell>
+        <mxCell id="et12" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=5;strokeColor=#1F4E79;strokeWidth=2.00;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="292.00" y="208.00" as="sourcePoint" />
+            <mxPoint x="292.00" y="230.00" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="et23" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=5;strokeColor=#2E86C1;strokeWidth=2.00;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="292.00" y="374.00" as="sourcePoint" />
+            <mxPoint x="292.00" y="396.00" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hdr" value="&lt;b&gt;Planificación gradual del cronograma (regla 8/80 HH y quincena)&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12.2px;&quot;&gt;230 paquetes EDT: 171 con entregable y 59 de esfuerzo continuo&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#262626;strokeColor=#262626;strokeWidth=1.2;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=10;fontSize=13.5;fontColor=#FFFFFF;align=center;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=4;spacingBottom=4;" vertex="1" parent="1">
+          <mxGeometry x="0.00" y="2.00" width="584.00" height="48.00" as="geometry" />
+        </mxCell>
+        <mxCell id="t1_t" value="&lt;b&gt;Horizonte 1 · Meses 1 a 4 (hasta el H2)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F4E79;strokeColor=#1F4E79;strokeWidth=1.0;fontFamily=Arial;fontSize=12.6;fontColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="10.00" y="74.00" width="326.00" height="32.00" as="geometry" />
+        </mxCell>
+        <mxCell id="t1_b" value="&lt;b&gt;60 paquetes · 119 actividades&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1F4E79;strokeWidth=1.3;fontFamily=Arial;fontSize=12.2;fontColor=#1F4E79;align=center;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="344.00" y="74.00" width="230.00" height="32.00" as="geometry" />
+        </mxCell>
+        <mxCell id="t1_d" value="&lt;b&gt;Detalle inmediato en actividades (Tablas 18 y 19):&lt;/b&gt; paquetes de inicio, alcance, diseño y compras tempranas descompuestos en actividades de 8 a 80 HH dentro de una quincena (máximo 10 días hábiles)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D5D8DC;strokeWidth=1.0;fontFamily=Arial;fontSize=12.2;fontColor=#111111;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;" vertex="1" parent="1">
+          <mxGeometry x="10.00" y="112.00" width="564.00" height="54.00" as="geometry" />
+        </mxCell>
+        <mxCell id="t1_h" value="&lt;b&gt;Hitos de control en el tramo: H1 (mes 2 · alcance E1) y H2 (mes 4 · arquitectura y diseño E1).&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=12.2;fontColor=#1F4E79;align=left;verticalAlign=middle;spacingLeft=4;" vertex="1" parent="1">
+          <mxGeometry x="10.00" y="172.00" width="564.00" height="28.00" as="geometry" />
+        </mxCell>
+        <mxCell id="t2_t" value="&lt;b&gt;Horizonte 2 · Meses 5 a 12 (entre H2 y H5)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2E86C1;strokeColor=#2E86C1;strokeWidth=1.0;fontFamily=Arial;fontSize=12.6;fontColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="10.00" y="240.00" width="326.00" height="32.00" as="geometry" />
+        </mxCell>
+        <mxCell id="t2_b" value="&lt;b&gt;76 paquetes · 385 actividades&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2E86C1;strokeWidth=1.3;fontFamily=Arial;fontSize=12.2;fontColor=#2E86C1;align=center;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="344.00" y="240.00" width="230.00" height="32.00" as="geometry" />
+        </mxCell>
+        <mxCell id="t2_d" value="&lt;b&gt;Detalle por plantilla de clase (Tabla 20):&lt;/b&gt; módulos D, integraciones I, diseños E, instalaciones/capacitaciones T y pruebas ampliadas V detallados antes de construir (8 a 80 HH, quincena)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D5D8DC;strokeWidth=1.0;fontFamily=Arial;fontSize=12.2;fontColor=#111111;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;" vertex="1" parent="1">
+          <mxGeometry x="10.00" y="278.00" width="564.00" height="54.00" as="geometry" />
+        </mxCell>
+        <mxCell id="t2_h" value="&lt;b&gt;Hitos de control en el tramo: H3 (mes 6 · infraestructura/nube), H4 (mes 10 · QA E1) y H5 (mes 12 · certificación E1).&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=12.2;fontColor=#2E86C1;align=left;verticalAlign=middle;spacingLeft=4;" vertex="1" parent="1">
+          <mxGeometry x="10.00" y="338.00" width="564.00" height="28.00" as="geometry" />
+        </mxCell>
+        <mxCell id="t3_t" value="&lt;b&gt;Horizonte 3 · Meses 13 a 21 (posteriores al H5)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#148F77;strokeColor=#148F77;strokeWidth=1.0;fontFamily=Arial;fontSize=12.6;fontColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="10.00" y="406.00" width="326.00" height="32.00" as="geometry" />
+        </mxCell>
+        <mxCell id="t3_b" value="&lt;b&gt;35 paquetes · gradual&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#148F77;strokeWidth=1.3;fontFamily=Arial;fontSize=12.2;fontColor=#148F77;align=center;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="344.00" y="406.00" width="230.00" height="32.00" as="geometry" />
+        </mxCell>
+        <mxCell id="t3_d" value="&lt;b&gt;Paquete de planificación gradual:&lt;/b&gt; fechas, holguras y dependencias fijadas en línea base (Tablas 13 y 17). El líder de frente detalla las actividades de 8 a 80 HH antes de ejecutar, con aprobación del Comité de Proyecto y sin mover hitos." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D5D8DC;strokeWidth=1.0;fontFamily=Arial;fontSize=12.2;fontColor=#111111;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;" vertex="1" parent="1">
+          <mxGeometry x="10.00" y="444.00" width="564.00" height="64.00" as="geometry" />
+        </mxCell>
+        <mxCell id="t3_h" value="&lt;b&gt;Hitos de control: H6 (m13), H8 (m14), H7 (m16), H9 (m17), H10 (m18), H11 (m19) y H12 (m21).&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontFamily=Arial;fontSize=12.2;fontColor=#148F77;align=left;verticalAlign=middle;spacingLeft=4;" vertex="1" parent="1">
+          <mxGeometry x="10.00" y="514.00" width="564.00" height="28.00" as="geometry" />
+        </mxCell>
+        <mxCell id="t_cont" value="&lt;b&gt;Paquetes de esfuerzo continuo (59 paquetes · meses 1 a 56, Tabla 21)&lt;/b&gt;&lt;br&gt;Gobierno, marchas blancas (9.2.1–9.2.2), estabilización (9.3.1–9.3.2) y 36 meses de Operación (Producto 10): programados por quincena en relevos de hasta 64 HH máximas por puesto." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3E6E6;strokeColor=#4D5656;strokeWidth=1.5;fontFamily=Arial;arcSize=8;fontSize=12.2;fontColor=#111111;align=left;verticalAlign=middle;spacingLeft=12;spacingRight=10;" vertex="1" parent="1">
+          <mxGeometry x="0.00" y="568.00" width="584.00" height="74.00" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

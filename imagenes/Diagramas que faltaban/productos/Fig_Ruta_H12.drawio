@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron">
+  <diagram id="ruta_h12" name="Ruta de H12">
+    <mxGraphModel grid="0" page="0" pageScale="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="er1" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=5;strokeColor=#8B2635;strokeWidth=2.00;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="177.00" y="142.00" as="sourcePoint" />
+            <mxPoint x="177.00" y="168.00" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="er2" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=5;strokeColor=#1F4E79;strokeWidth=2.00;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="177.00" y="242.00" as="sourcePoint" />
+            <mxPoint x="177.00" y="268.00" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="er3" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=5;strokeColor=#4F5D2F;strokeWidth=2.00;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="177.00" y="344.00" as="sourcePoint" />
+            <mxPoint x="177.00" y="370.00" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="egar" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=5;strokeColor=#8B2635;strokeWidth=1.80;dashed=1;dashPattern=5 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="376.00" y="205.00" as="sourcePoint" />
+            <mxPoint x="354.00" y="205.00" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ehol" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=5;strokeColor=#1E8449;strokeWidth=2.00;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="292.00" y="440.00" as="sourcePoint" />
+            <mxPoint x="292.00" y="460.00" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hdr" value="&lt;b&gt;Ruta de aceptación del hito H12 y holgura contractual&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12.2px;&quot;&gt;Secuencia de acta integrada para el cierre de la Etapa 2 (mes 21)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#262626;strokeColor=#262626;strokeWidth=1.2;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=10;fontSize=13.5;fontColor=#FFFFFF;align=center;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=4;spacingBottom=4;" vertex="1" parent="1">
+          <mxGeometry x="0.00" y="2.00" width="584.00" height="48.00" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" value="&lt;b&gt;1. Cierre de marcha blanca E2 (paquete 9.2.2 · H11)&lt;/b&gt;&lt;br&gt;Meses 19 y 20 · 4.928 HH (esfuerzo continuo)&lt;br&gt;Cierre de las 4 semanas finales de evidencia: &lt;b&gt;30-09-2028&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5DFE2;strokeColor=#8B2635;strokeWidth=1.6;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=12.4;fontColor=#111111;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=4;spacingBottom=4;" vertex="1" parent="1">
+          <mxGeometry x="0.00" y="68.00" width="354.00" height="74.00" as="geometry" />
+        </mxCell>
+        <mxCell id="s_gar" value="&lt;b&gt;Trámite paralelo · 9.4.3&lt;/b&gt;&lt;br&gt;&lt;b&gt;Garantía de correcto funcionamiento&lt;/b&gt;&lt;br&gt;13-09 al 25-09-2028 · 80 HH&lt;br&gt;Holgura CPM: 12 días hábiles&lt;br&gt;Condición previa (D‑33)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8B2635;strokeWidth=1.6;dashed=1;dashPattern=5 4;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=12.4;fontColor=#111111;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=4;spacingBottom=4;" vertex="1" parent="1">
+          <mxGeometry x="376.00" y="94.00" width="208.00" height="142.00" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" value="&lt;b&gt;2. Entrega de expediente H12 (paquete 9.4.2)&lt;/b&gt;&lt;br&gt;&lt;b&gt;02-10-2028&lt;/b&gt; (primer día hábil tras el cierre)&lt;br&gt;80 HH · incluye 9.2.2, 9.4.3, 9.5.4 y 9.5.8 (D-33)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5DFE2;strokeColor=#8B2635;strokeWidth=1.6;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=12.4;fontColor=#111111;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=4;spacingBottom=4;" vertex="1" parent="1">
+          <mxGeometry x="0.00" y="168.00" width="354.00" height="74.00" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="&lt;b&gt;3. Revisión de Contraparte y acta H12 (Arts. 17.3 y 18.1)&lt;/b&gt;&lt;br&gt;10 días hábiles de revisión: 03-10 al 17-10-2028&lt;br&gt;Firma del acta integrada H12: &lt;b&gt;17-10-2028&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCE6F1;strokeColor=#1F4E79;strokeWidth=1.6;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=12.4;fontColor=#111111;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=4;spacingBottom=4;" vertex="1" parent="1">
+          <mxGeometry x="0.00" y="268.00" width="354.00" height="76.00" as="geometry" />
+        </mxCell>
+        <mxCell id="s_note" value="&lt;b&gt;Control contractual&lt;/b&gt;&lt;br&gt;Expediente revisado antes de entrega; sin usar las 4 semanas de marcha blanca como reserva." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9F9;strokeColor=#BDC3C7;strokeWidth=1.6;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=12.4;fontColor=#111111;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=4;spacingBottom=4;" vertex="1" parent="1">
+          <mxGeometry x="376.00" y="268.00" width="208.00" height="76.00" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" value="&lt;b&gt;4. Paso a producción de la Etapa 2 e inicio de la Operación (Producto 10)&lt;/b&gt;&lt;br&gt;&lt;b&gt;18-10-2028&lt;/b&gt; (día hábil siguiente al acta H12; habilita el cierre formal 1.7.9, D-34)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EDDC;strokeColor=#4F5D2F;strokeWidth=1.6;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=12.4;fontColor=#111111;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=4;spacingBottom=4;" vertex="1" parent="1">
+          <mxGeometry x="0.00" y="370.00" width="584.00" height="70.00" as="geometry" />
+        </mxCell>
+        <mxCell id="s5" value="&lt;b&gt;Holgura contractual disponible: 8 días hábiles (D-33 · T-15, secs. 5.3 y 5.5)&lt;/b&gt;&lt;br&gt;Margen entre el paso a producción (&lt;b&gt;18-10-2028&lt;/b&gt;) y el límite contractual del mes 21 (&lt;b&gt;31-10-2028&lt;/b&gt;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DDF0E3;strokeColor=#1E8449;strokeWidth=1.6;spacing=0;fontFamily=Arial;absoluteArcSize=1;arcSize=8;fontSize=12.4;fontColor=#111111;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacingTop=4;spacingBottom=4;" vertex="1" parent="1">
+          <mxGeometry x="0.00" y="460.00" width="584.00" height="62.00" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
