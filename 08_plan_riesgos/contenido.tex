@@ -11,13 +11,13 @@ Esta sección define cómo se gestionan los riesgos durante los 56 meses: el cic
 
 \subsection{Enfoque y ciclo}
 
-El registro vivo sigue identificación, análisis, respuesta y seguimiento conforme a la norma ISO 31000 (International Organization for Standardization [ISO], 2018), que exige el RT-19.04 de las Bases Técnicas Transversales (Bases Técnicas Transversales, cap. 19, RT-19.04, p. 33). Cada entrada distingue causa, evento incierto y consecuencia, sin convertir una inconsistencia observada en riesgo futuro. Los problemas y dependencias actuales se distinguen de los riesgos futuros y se registran como asuntos de seguimiento.
+El registro vivo sigue identificación, análisis, respuesta y seguimiento conforme a la norma ISO 31000 (International Organization for Standardization [ISO], 2018), que exige el RT-19.04 de las Bases Técnicas Transversales (Bases Técnicas Transversales, cap. 19, RT-19.04, p. 33). Cada riesgo registra su causa, evento incierto y consecuencia. Los problemas y dependencias actuales se registran como asuntos de seguimiento.
 
 JP mantiene el registro único. Los líderes identifican riesgos al revisar interfaces, pruebas, capacidad y despliegues; verifican disparadores semanalmente y ante cada cambio. El Comité de Proyecto quincenal revisa todos los riesgos abiertos, responsables, plazos y evidencia. Los comités Ejecutivo y de Arquitectura mensuales deciden escalamiento y cambios de sus ámbitos, y desde el mes 13 el Comité de Operación mensual revisa los riesgos de servicio: niveles de atención, incidentes, capacidad y continuidad (Subdocumento 6, sección 6.1.6). Una amenaza a continuidad, seguridad o hito se escala inmediatamente. Marcha blanca exige seguimiento diario; operación mantiene vigilancia diaria de incidentes y colas y revisión en comités. En cada comité se compara la reserva restante con el riesgo remanente (análisis de reserva), y al cierre de cada etapa, en el H5 y el H10, una auditoría de riesgos comprueba que el proceso funciona (Project Management Institute [PMI], 2017, §11.7, pp. 456–457). El Comité Ejecutivo recibe cada mes un extracto con los diez riesgos de mayor exposición; el registro completo queda en el repositorio del proyecto.
 
 \subsection{Roles y autoridad}
 
-La Tabla 8.1 distingue al responsable del riesgo, la familia de esfuerzo y su vigencia. Los responsables dirigen equipos; no ejecutan solos las HH. Las familias del T-15 se conservan al relevar liderazgo.
+La Tabla 8.1 distingue al responsable del riesgo, la familia de esfuerzo y su vigencia. Los responsables coordinan la ejecución con sus equipos. Las familias del T-15 se conservan al relevar liderazgo.
 
 \begingroup
 \renewcommand{\thetable}{8.1}
@@ -44,7 +44,7 @@ Al vencer una solicitud, el dueño informa a JP y CT el mismo día hábil con la
 
 \subsection{Escalas previas al análisis}
 
-La probabilidad inicial $p_0$ estima la ocurrencia de al menos un episodio en la ventana de exposición de cada riesgo, tanto para el análisis cualitativo como para el cuantitativo. El nivel P se obtiene de esa misma estimación con las bandas de la Tabla 8.2. Su factor $q_P$ representa la categoría para priorizar; no constituye una segunda probabilidad del evento. Por ejemplo, R-002 tiene $p_0=60\%$, nivel 4 y factor 0,70; R-014 tiene $p_0=20\%$, nivel 2 y factor 0,30. Para calcular las HH esperadas se utiliza $p_0$, conservando la misma ventana y el supuesto de episodios del Anexo 8.B.
+La probabilidad inicial $p_0$ estima la ocurrencia de al menos un episodio en la ventana de exposición de cada riesgo, tanto para el análisis cualitativo como para el cuantitativo. El nivel P se obtiene de esa misma estimación con las bandas de la Tabla 8.2. El factor $q_P$ pondera esa categoría en la matriz de priorización. Por ejemplo, R-002 tiene $p_0=60\%$, nivel 4 y factor 0,70; R-014 tiene $p_0=20\%$, nivel 2 y factor 0,30. Para calcular las HH esperadas se utiliza $p_0$, conservando la misma ventana y el supuesto de episodios del Anexo 8.B.
 
 \begin{tablalafrox}{Escala cualitativa de probabilidad -- Fuente: elaboración propia; escala contextualizada al proyecto}{tab:tabla-probabilidad}%
 {G{0.08} F{0.27} Y G{0.15}}
@@ -70,7 +70,7 @@ El impacto I representa la afectación que tendría el evento si se materializa,
 
 Las condiciones de aceptación de los arts. 17.3 y 18.1--18.3, y los compromisos de continuidad descritos en 8.3.3, permiten reconocer amenazas contractuales. La gravedad se valora por la consecuencia del evento documentado, sin presumir multas concretas, terminación contractual ni daños no descritos. Las HH no se convierten directamente en días; el efecto calendario depende de secuencia, perfiles y holguras.
 
-La exposición es $E=q_P\times q_I$. Las bandas, factores y umbrales son definiciones propias del proyecto, no valores prescritos por Project Management Institute (PMI, 2017, cap. 11, §11.3, Tabla 11-1, p. 407). El producto es un índice de priorización; no representa una probabilidad, un importe ni HH esperadas.
+La exposición es $E=q_P\times q_I$. Las bandas, factores y umbrales son definiciones propias del proyecto, no valores prescritos por Project Management Institute (PMI, 2017, cap. 11, §11.3, Tabla 11-1, p. 407). El producto determina la prioridad en la matriz.
 
 \begin{tablalafrox}{Escala de exposición -- Fuente: elaboración propia; criterio definido para el proyecto}{tab:tabla-exposicion}%
 {F{0.40} F{0.20}}
@@ -93,7 +93,7 @@ Esta sección identifica los riesgos con una RBS y los analiza cualitativamente 
 
 \subsection{RBS y análisis separados}
 
-La estructura de desglose de riesgos (EDR o RBS) organiza los \textbf{36 riesgos de T-16} de la Figura~\ref{fig:sd8-rbs}. Las seis ramas identifican la fuente predominante, no la prioridad: \textbf{Solución y tecnología} (3), \textbf{Integración y legado} (6), \textbf{Operación del cliente} (14), \textbf{Personas y adopción} (8), \textbf{Contrato y licitación} (3) y \textbf{Regulatorio y externo} (2).
+La estructura de desglose de riesgos (EDR o RBS) organiza los \textbf{36 riesgos de T-16} de la Figura~\ref{fig:sd8-rbs}. La estructura agrupa los riesgos por fuente predominante: \textbf{Solución y tecnología} (3), \textbf{Integración y legado} (6), \textbf{Operación del cliente} (14), \textbf{Personas y adopción} (8), \textbf{Contrato y licitación} (3) y \textbf{Regulatorio y externo} (2).
 
 \parte{figuras/rbs}
 
@@ -101,13 +101,13 @@ La estructura de desglose de riesgos (EDR o RBS) organiza los \textbf{36 riesgos
 
 \textbf{Integración y legado} reúne certificación externa de cadenas (R-001), historia de ventas (R-003), deuda vigente adicional (R-007), respuesta del SII (R-008), interfaces legadas no documentadas (R-030) y disponibilidad del ERP del CLIENTE para emitir nuevas guías (R-034). La idempotencia del POS y la continuidad del servicio de mapas elegido se verifican mediante los controles CT-01 y CT-02 del Anexo 8.E.
 
-\textbf{Operación del cliente} agrupa R-004, R-005, R-006, R-009, R-010, R-012, R-016, R-017, R-018, R-020 y R-021, R-022, R-023: conciliaciones y datos de aceptación, matriz térmica, equipamiento y permisos, decisiones, enlaces y energía externos y eventos de transporte. R-036 añade la divergencia del perfil real de carga respecto del validado. Son catorce riesgos; cada episodio se imputa una sola vez a su causa principal.
+\textbf{Operación del cliente} agrupa R-004, R-005, R-006, R-009, R-010, R-012, R-016, R-017, R-018, R-020 y R-021, R-022, R-023: conciliaciones y datos de aceptación, matriz térmica, equipamiento y permisos, decisiones, enlaces y energía externos e interrupciones del reparto durante las pruebas de implantación. En R-021 a R-023, el CLIENTE y el transportista atienden el incidente y habilitan el recorrido. LafroX registra la interrupción, conserva la evidencia disponible y completa los casos TI pendientes en un recorrido autorizado. R-036 añade la divergencia del perfil real de carga respecto del validado. Son catorce riesgos; cada episodio se imputa una sola vez a su causa principal.
 
 \textbf{Personas y adopción} reúne ocho riesgos: firma del transportista (R-011), adopción del proceso (R-013), transferencia del conocimiento del planificador (R-014), asistencia a capacitación (R-015), sustitutos no habilitados (R-024), acuerdo de telemetría (R-028), rotación nocturna (R-029) y rechazo individual de conductores externos (R-035). El 38\% es rotación anual, no $p_0$.
 
 \textbf{Contrato y licitación} comprende cambios de alcance (R-025), liquidación variable de INN-04 (R-027) y coordinación del cierre bajo peak/congelamiento (R-031). \textbf{Regulatorio y externo} comprende residencia/transferencia aprobada (R-019) y cambios normativos aplicables (R-026).
 
-Los controles técnicos del Anexo 8.E establecen medidas de diseño, pruebas habilitantes, responsables y evidencia de cierre. Una prueba prevista no acredita que el control esté implementado ni que su eficacia haya sido demostrada.
+Los controles técnicos del Anexo 8.E establecen medidas de diseño, pruebas habilitantes, responsables y evidencia de cierre. CAL verifica la implementación y eficacia con los resultados de las pruebas habilitantes.
 
 Cada CT expresa un requisito u obligación técnica de diseño y una condición de verificación y aceptación; un riesgo describe un evento incierto, sus causas y efectos sobre los objetivos, con exposición y respuesta. Esta distinción no debe ocultar una incertidumbre genuina: el fallo de un control no genera automáticamente un riesgo nuevo si el evento ya está representado en T-16. Antes de proponer otra entrada se contrastan causas, evento y consecuencias con el registro, evitando duplicar el episodio o sus HH.
 
@@ -141,7 +141,7 @@ El registro contiene 1 riesgo crítico, 14 altos, 16 medios y 5 bajos. R-002 tie
 
 El análisis estima las horas-hombre (HH) adicionales atribuibles a cada riesgo, separando el trabajo extraordinario del trabajo ordinario del proyecto. Para cada perfil y riesgo se estimaron tres valores por episodio: optimista ($O$), más probable ($M$) y pesimista ($P$). Las horas de los dos perfiles se suman dentro de cada escenario; cuando el modelo supone episodios repetidos, se multiplica por el número de episodios condicionado a que ocurra al menos uno. Así se obtienen las HH condicionales acumuladas $O_i$, $M_i$ y $P_i$.
 
-El valor central condicional se calcula con PERT: $H_i^{\mathrm{cond}}=(O_i+4M_i+P_i)/6$. El escenario más probable recibe cuatro veces el peso de cada extremo. Luego se calcula el valor esperado de esfuerzo $VE_i=p_{0,i}\times H_i^{\mathrm{cond}}$, donde $p_0$ es la probabilidad estimada de al menos un episodio en toda la ventana del riesgo. La Tabla 8.6 ordena por $VE$ descendente los diez riesgos de mayor esfuerzo esperado entre los 36 riesgos; la columna PERT muestra el esfuerzo condicional, no la probabilidad. Los valores O/M/P detallados se presentan en el Anexo 8.B. Se desempata por ID ascendente. Las estimaciones son supuestos de planificación, no frecuencias históricas, compromisos de horas ni resultados de simulación.
+El valor central condicional se calcula con PERT: $H_i^{\mathrm{cond}}=(O_i+4M_i+P_i)/6$. El escenario más probable recibe cuatro veces el peso de cada extremo. Luego se calcula el valor esperado de esfuerzo $VE_i=p_{0,i}\times H_i^{\mathrm{cond}}$, donde $p_0$ es la probabilidad estimada de al menos un episodio en toda la ventana del riesgo. La Tabla 8.6 ordena por $VE$ descendente los diez riesgos de mayor esfuerzo esperado entre los 36 riesgos; la columna PERT muestra el esfuerzo condicional, no la probabilidad. Los valores O/M/P detallados se presentan en el Anexo 8.B. Se desempata por ID ascendente. Las estimaciones se usan como supuestos de planificación.
 
 \begingroup
 \renewcommand{\thetable}{8.6}
@@ -159,7 +159,7 @@ R-032 & Cambio de soporte exige adecuación extraordinaria & 40\% & 106,67 & 42,
 \end{tablalafrox}
 \endgroup
 
-Los diez riesgos aportan aproximadamente \textbf{689,67 HH de valor esperado}, el 57,5\% de las 1.199,52 HH esperadas para los 36 riesgos, bajo las mismas probabilidades y supuestos. El valor central PERT de cada riesgo representa esfuerzo condicional si ocurre; $VE$ pondera ese esfuerzo por su probabilidad y no equivale a una asignación cierta de trabajo. Las HH no se convierten directamente en días de atraso: el efecto calendario depende de secuencia, concurrencia, disponibilidad de perfiles y holguras.
+Los diez riesgos aportan aproximadamente \textbf{689,67 HH de valor esperado}, el 57,5\% de las 1.199,52 HH esperadas para los 36 riesgos, bajo las mismas probabilidades y supuestos. El $VE$ pondera las HH condicionales de PERT por la probabilidad del evento. Para estimar el atraso se revisan la secuencia, la concurrencia, la disponibilidad de perfiles y las holguras.
 
 \paragraph{Análisis de modos de falla y decisión de tratamiento}
 El FMEA del Anexo 8.G comprende los 15 riesgos inicialmente Altos o Crítico.
@@ -197,7 +197,7 @@ modos y sus fundamentos permanece en 8.G.1.
 
 \section{Plan de Acción a Riesgos}
 
-Este plan establece respuestas propuestas para los 36 riesgos del registro, relaciona su prioridad con los resultados de 8.2 y fija cómo gobernar la reserva de esfuerzo y verificar la factibilidad. La Tabla 8.A.1 presenta las respuestas y la Tabla 8.A.2 concreta la coordinación de 29 riesgos con el CLIENTE: contraparte, solicitud, plazo y contingencia. Las respuestas se activan según el evento y sus disparadores; los responsables deben ejecutar los controles y comprobar su eficacia con la evidencia indicada. Los responsables son los dueños propuestos del riesgo y coordinan a las áreas pertinentes; no se presume que ejecuten individualmente todo el esfuerzo.
+Este plan establece respuestas propuestas para los 36 riesgos del registro, relaciona su prioridad con los resultados de 8.2 y fija cómo gobernar la reserva de esfuerzo y verificar la factibilidad. La Tabla 8.A.1 presenta las respuestas y la Tabla 8.A.2 concreta la coordinación de 29 riesgos con el CLIENTE: contraparte, solicitud, plazo y contingencia. Las respuestas se activan según el evento y sus disparadores; los responsables deben ejecutar los controles y comprobar su eficacia con la evidencia indicada. Cada dueño coordina la respuesta con las áreas que la ejecutan.
 
 \subsection{Respuestas y costo-beneficio técnico}
 Las 36 fichas de la Tabla 8.F.1 concretan acción preventiva, disparador de 8.A, dueño/apoyo, esfuerzo A/C, plazo preventivo y contingencia temporizada. Las dependencias del CLIENTE se detallan en la Tabla 8.A.2. Los controles ordinarios de diseño, formación y soporte conservan su presupuesto en S7; A sólo estima coordinación extraordinaria y cierre de excepción, y C particiona el PERT inicial, sin sumarlo otra vez.
@@ -258,7 +258,7 @@ decimales; el cálculo conserva la precisión original.
 \renewcommand{\theHtable}{sd821-retorno}
 \begin{tablalafrox}{Tratamientos que se mantienen aun con retorno HH menor que uno. Fuente: Anexo 8.F.3.}{tab:sd821-retorno}{F{0.12} F{0.36} F{0.27} Y}{\cab{Riesgo} & \cab{Entradas del modelo} & \cab{Resultado en HH} & \cab{Decisión}}
 R-002 & H0=194,67; p0=p1=60\%; A=12; C=24. & B=14,40; T=26,40; B/T=0,55; neto=-12,00. & Conservar tratamiento sanitario obligatorio. Aislar limita exposición operativa, pero no reduce la ocurrencia de historia irrecuperable. \\
-R-031 & H0=73,33; p0=45\%; p1=35\%; A=8; C=16. & B=12,93; T=13,60; B/T=0,95; neto=-0,67. & Conservar continuidad y condiciones contractuales del cierre. Corregir capacidad o programación no equivale a aceptar un hito sin evidencia. \\
+R-031 & H0=73,33; p0=45\%; p1=35\%; A=8; C=16. & B=12,93; T=13,60; B/T=0,95; neto=-0,67. & Conservar continuidad y condiciones contractuales del cierre. Verificar la evidencia exigida antes de aceptar el hito. \\
 \end{tablalafrox}
 \setcounter{table}{\sdTablaAnterior}
 \endgroup
@@ -346,7 +346,7 @@ prueba prevista, una implementación verificada y una aceptación contractual.
 Los ensayos detallados y su trazabilidad por etapa permanecen en 8.D.3 y 8.E,
 sin agregar contingencia por controles ordinarios ni declarar pruebas ejecutadas.
 
-La suspensión del proveedor de lácteos entre marzo y septiembre de 2026 es un antecedente ocurrido y se gestiona como dependencia/asunto, no como riesgo futuro. Corresponde obtener con el CLIENTE y el proveedor evidencia de restitución de la trazabilidad antes de depender de ella para aceptar la etapa correspondiente; la fecha y evidencia de restitución no se presumen. En general, cada condición pendiente debe tener responsable, hito, evidencia requerida y decisión documentada. Hasta que existan pruebas satisfactorias y actas exigidas, se mantiene como pendiente la factibilidad de las respuestas afectadas y no se declara aceptado el hito.
+La suspensión del proveedor de lácteos entre marzo y septiembre de 2026 se registra como asunto de seguimiento. Para aceptar la etapa que depende de esta fuente, solicitar al CLIENTE y al proveedor la fecha y la evidencia de restitución de la trazabilidad. En general, cada condición pendiente debe tener responsable, hito, evidencia requerida y decisión documentada. Hasta que existan pruebas satisfactorias y actas exigidas, se mantiene como pendiente la factibilidad de las respuestas afectadas y no se declara aceptado el hito.
 
 \newpage
 
