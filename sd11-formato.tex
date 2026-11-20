@@ -1,0 +1,35 @@
+% Alcance: presentación del SD11; no incorpora decisiones técnicas.
+% Art. 40.2: reservar espacio de firma sin reproducir una firma ajena.
+\renewcommand{\LFXpiederecho}{%
+  \begingroup\LFXpiebase
+  \begin{tabular}[b]{@{}r@{}}
+    \rule{0pt}{7mm}{\color{lafroxGris}\rule{3.4cm}{0.4pt}}\\[-1pt]
+    {\LFXchico Media firma: \LFXrepresentante}\\
+    {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}\LFXfoliotexto}
+  \end{tabular}%
+  \endgroup}
+% Portada incluida: foliación y zona de media firma en cada página.
+\fancypagestyle{lfxportada}{%
+  \fancyhf{}
+  \fancyfoot[R]{\global\LFXfranjafalse\LFXpiederecho}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\headrule}{}}
+% El destino se crea en la página del título, después del salto.
+\renewcommand{\indicelafrox}{%
+  \clearpage\phantomsection\addcontentsline{toc}{chapter}{Índice general}%
+  \LFXtitulopreliminar{Índice general}%
+  \csname @starttoc\endcsname{toc}%
+  \clearpage}
+\newcommand{\cierresdonce}[1]{%
+  \chapter*{#1}
+  \addcontentsline{toc}{chapter}{#1}
+  \markboth{#1}{#1}}
+% Reservar encabezados unidos al párrafo siguiente; evitar viudas y huérfanas.
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% Evitar que titlesec deje el destino de un título en el folio anterior.
+\RequirePackage{needspace}
+\AddToHook{cmd/section/before}{\Needspace{9\baselineskip}}
+\AddToHook{cmd/subsection/before}{\Needspace{6\baselineskip}}

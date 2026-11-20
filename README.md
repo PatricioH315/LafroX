@@ -1,124 +1,58 @@
-# LafroX — plantilla común de subdocumentos LaTeX
+# LafroX — formato del Subdocumento 11
 
-La rama `rama-formato-Latex-base` contiene el formato compartido. Cada rama hija debe llamarse exactamente `LafroX-Subdoc<N>-LateX`, por ejemplo `LafroX-Subdoc4-LateX`. Conservar las mayúsculas y minúsculas indicadas.
+Rama: `LafroX-Subdoc11-LateX-CORRIGIENDO`, creada desde `LafroX-Subdoc11-LateX`, commit `3faaec7ac6ab05a2bb7c0b7187584ad59b0b81e4`.
 
-## Estructura
+## Alcance
 
-```text
-main.tex                         Metadatos y montaje del documento
-lafrox.cls                       Clase y formato corporativo
-lafrox-portada.tex               Diseño de portada
-latexmkrc                        Compilación con LuaLaTeX
-logo/                           Isotipos de portada y encabezado
-subdocumento-ejemplo/
-    contenido.tex               Capítulo autocontenido de muestra
-    tablas/ejemplo_tabla.tex     Ejemplo de tabla
-README.md
-.gitignore
-```
+Plantilla de presentación del SD11. Incluye portada, índice enlazado, jerarquía, foliación, zonas de firma, referencias y declaración de IA. Los textos breves delimitan el tema de cada apartado; no constituyen los planes técnicos ni acreditan cumplimiento. No contiene dimensionamientos, mediciones, presupuestos de capacidad ni compromisos inventados. No está lista para entrega.
 
-## Crear una rama hija
+Se revisó la rama SD12 CORRIGIENDO `a33dea8` solo como referencia visual. No se incorporan su contenido, organigrama, dotación, T-8 ni anexos. La rama original de SD11 solo contenía el formato genérico y el ejemplo; se conserva ese ejemplo fuera de la compilación para no eliminar material heredado.
 
-Si aún no tienes una copia del repositorio:
+## Índice específico
 
-```bash
-git clone --single-branch --branch rama-formato-Latex-base https://github.com/PatricioH315/LafroX.git LafroX-Subdoc4-LateX
-cd LafroX-Subdoc4-LateX
-```
+- 11 Introducción a los Planes en operación.
+- 11.1 Plan Mantención Preventiva / Evolutiva.
+  - 11.1.1 Plan de mantención y presupuesto de capacidad.
+  - 11.1.2 Actualización de dependencias, deuda técnica y obsolescencia.
+- 11.2 Plan Servicios de Operación.
+  - 11.2.1 Ingeniería de confiabilidad.
+  - 11.2.2 Gestión de capacidad y prácticas FinOps.
+  - 11.2.3 Pruebas de recuperación ante desastres y resiliencia.
+- Referencias.
+- Declaración de uso de IA.
 
-Si ya tienes una copia, guarda o registra tu trabajo pendiente antes de cambiar de rama. Dentro del repositorio, cambia `4` por el número correspondiente:
+Son **dos apartados obligatorios** y **cinco subtítulos de menor nivel elegidos para ordenar el desarrollo**. Las aclaraciones no fijan la cantidad de subtítulos adicionales. No existe un 11.3. SD11 no tiene formulario anexo obligatorio asignado en el índice comunicado. Si se necesitan anexos, se desarrollan en un archivo separado; no se crean archivos vacíos de anexos o formularios. Las listas de figuras y tablas se incorporarán cuando existan objetos de contenido técnico reales; no se generan listas vacías para imitar SD12.
 
-```bash
-git fetch origin rama-formato-Latex-base:refs/remotes/origin/rama-formato-Latex-base
-git switch --no-track -c LafroX-Subdoc4-LateX origin/rama-formato-Latex-base
-git push -u origin LafroX-Subdoc4-LateX
-```
+## Presentación
 
-Si tu clon descarga ramas limitadas, agrega tu rama hija a la configuración para recibir sus actualizaciones:
-
-```bash
-git remote set-branches --add origin LafroX-Subdoc4-LateX
-git fetch origin
-git branch --set-upstream-to=origin/LafroX-Subdoc4-LateX LafroX-Subdoc4-LateX
-```
-
-## Adaptar el subdocumento
-
-1. Renombra `subdocumento-ejemplo/` con el número y tema, por ejemplo `04_arquitectura/`.
-2. Conserva `contenido.tex` como entrada de la carpeta. Debe empezar con `\chapter{Título obligatorio del subdocumento}`. Sustituye el texto, etiquetas y tabla de muestra por tu contenido.
-3. Organiza dentro de la carpeta `partes/`, `tablas/`, `figuras/`, `anexos/` y `formularios/` según necesidad. Git conserva carpetas cuando contienen archivos.
-4. En `main.tex`, cambia la llamada a `\subdocumento{04_arquitectura}`. Si compilas el Subdocumento 4 por separado, añade `\setcounter{chapter}{3}` inmediatamente antes. Para N utiliza N−1. Al consolidar el informe, coordina el contador desde el documento raíz y monta los capítulos en orden.
-5. Actualiza en `\datoslafrox` el documento, subtítulo/informe, alcance, formulario aplicable, fecha, versión y nomenclatura. La nomenclatura de muestra no es válida para entregar; verifica la oficial en las Bases. Los valores con comas deben ir entre llaves y los guiones bajos se escriben `\_`.
-6. Revisa los datos institucionales heredados de la clase. Los valores confirmados se pueden sobrescribir mediante `\datoslafrox` en `main.tex`, sin editar la clase. No dar por acreditados los valores predeterminados.
-7. Incorpora las secciones obligatorias, referencias, anexos, formularios y declaración de uso de IA según las Bases y aclaraciones vigentes. La plantilla controla presentación y no acredita cumplimiento del contenido.
-
-La rama base conserva el ejemplo; cada rama hija lo sustituye por su capítulo real.
-
-### Fragmentos, figuras y tablas
-
-Monta fragmentos con `\parte{partes/nombre}` o `\parte{tablas/nombre}`, sin `.tex`. Las rutas se resuelven dentro de la carpeta del subdocumento: evita rutas absolutas o `../`.
-
-Inserta figuras con `\figuralafrox{0.9}{figuras/diagrama.pdf}{Descripción}{fig:sd4-diagrama}`. Prefija las etiquetas por capítulo (`cap:sd4`, `fig:sd4-...`, `tab:sd4-...`) para evitar colisiones al consolidar.
-
-Las tablas utilizan `tablalafrox` con cuatro argumentos: título, etiqueta, columnas y encabezado. Consulta `tablas/ejemplo_tabla.tex`. Conserva la legibilidad de figuras y tablas; no reduzcas la tipografía para ocultar problemas de espacio.
-
-## Qué cambiar y qué conservar
-
-| Adaptar en cada rama | Conservar como formato compartido |
-|---|---|
-| Contenido, título y número del capítulo | `lafrox.cls` y sus comandos |
-| Metadatos y montaje de `main.tex` | Diseño de `lafrox-portada.tex` |
-| Tablas, figuras, anexos y formularios | Logotipos, fuentes y paleta |
-| Etiquetas y bibliografía | Márgenes, encabezados, pies y foliación |
-| Opciones acordadas para la entrega | Configuración común de LuaLaTeX |
-
-La clase admite `carta`, `oficio`, `borrador`, `final`, `firma`, `sinfirma`, `apa` y `sinnotas`. Usa `borrador` durante la redacción y `final` para la entrega revisada. El tamaño de papel y las firmas deben corresponder a lo acordado para la entrega.
-
-Coordina las mejoras de diseño desde `rama-formato-Latex-base` para que todos reciban el mismo formato. Configura el visor PDF y las rutas personales en el editor o equipo de cada integrante.
+- Carta vertical; cuerpo 11 pt, tablas 9,5 pt y figuras mínimo 9 pt.
+- Márgenes corporativos heredados: superior 2,9 cm; inferior 3 cm; izquierdo 3,1 cm; derecho 2,7 cm. Son decisiones de plantilla, no cifras impuestas por las Bases.
+- Source Serif 4 en cuerpo; Source Sans 3 en títulos; interlineado 1,10.
+- Portada identificada como propuesta técnica, SD11, TFEP-01/2026, Caso 02 — Logística, Sobre 2 y LafroX.
+- Foliación arábiga correlativa desde la portada (1), abajo a la derecha, sin reinicio en el capítulo.
+- Zona de firma completa en portada y zona de media firma abajo a la derecha en todas las páginas, incluida portada. Se reservan espacios; no se copia ni fabrica una firma.
+- Se conservan los datos corporativos heredados de la plantilla, sin certificarlos ni investigar su veracidad. Deben ser confirmados antes de la entrega.
+- Fecha de emisión de la plantilla: 20 de noviembre de 2026; no se fija fecha de entrega ni nomenclatura ZIP con una fecha no confirmada.
+- Nombre del PDF: `LAFROX-Subdocumento11.pdf`.
+- Cierre con Referencias y Declaración de uso de IA, sin numeración, en ese orden.
+- Revisión humana: `[[REVISIÓN HUMANA]]`; no se atribuye revisión a integrantes.
 
 ## Compilar
 
-Se requiere una distribución TeX con LuaLaTeX, `latexmk` y los paquetes declarados en `lafrox.cls`. `latexmk` requiere Perl, que en Windows puede necesitar instalación separada. La clase utiliza Source Serif 4, Source Sans 3, IBM Plex Mono (`plex-mono`) y STIX Two Math. Con la opción `apa` también se requieren `biblatex-apa` y Biber.
+Desde este checkout, ejecutar LuaLaTeX sobre `LAFROX-Subdocumento11.tex` hasta estabilizar el índice (normalmente tres pasadas):
 
-Desde la raíz:
-
-```bash
-latexmk main.tex
+```powershell
+lualatex --interaction=nonstopmode --halt-on-error LAFROX-Subdocumento11.tex
 ```
 
-Se genera `main.pdf` en la raíz. Para recompilar automáticamente, utiliza `latexmk -pvc main.tex`.
+`main.tex` es solo una entrada compatible con la plantilla; para generar el PDF con la nomenclatura oficial se usa la raíz nominada. Las notas de desarrollo están en comentarios TeX y en este README, fuera del texto de la oferta.
 
-Si no tienes `latexmk` o Perl, ejecuta LuaLaTeX hasta estabilizar índices y referencias:
+## Fuentes de forma y contenido futuro
 
-```bash
-lualatex --interaction=nonstopmode --synctex=1 main.tex
-lualatex --interaction=nonstopmode --synctex=1 main.tex
-lualatex --interaction=nonstopmode --synctex=1 main.tex
-```
+Bases Administrativas, art. 40 y T-7/SD11; Bases Técnicas Transversales, capítulos 3, 7, 10 y 21; comunicado aportado sobre índice obligatorio, secciones 1–7, 9 y capítulo 11. El comunicado del Informe 3 regula la Oferta Económica y no añade títulos a SD11. No se trasladan montos ni estructura económica al capítulo técnico.
 
-Con bibliografía Biber, ejecuta `biber main` después de la primera pasada y vuelve a compilar. El editor y visor son opcionales. El ejemplo no necesita `--shell-escape`.
+Antes de entregar deben desarrollarse los planes con evidencia de la solución, completar las referencias con las páginas de las fuentes entregables, confirmar identidad, incorporar firmas efectivas y registrar la revisión humana real.
 
-Revisa errores de compilación y comprueba portada, número de capítulo, folios, índices, figuras, tablas y referencias en el PDF. La existencia del PDF no demuestra por sí sola una compilación correcta. `.gitignore` conserva los PDF de figuras y logotipos y excluye el PDF principal y auxiliares.
+## Verificación de la plantilla
 
-## Registrar y publicar
-
-```bash
-git status
-git add main.tex 04_arquitectura
-git commit -m "Actualiza Subdocumento 4"
-git push
-```
-
-Adapta la carpeta y el mensaje a tu capítulo. Revisa los archivos incluidos antes de registrar.
-
-## Recibir mejoras de la base
-
-Las ramas hijas conservan la plantilla de la que partieron; no se actualizan automáticamente. Guarda o registra tu trabajo y ejecuta:
-
-```bash
-git switch LafroX-Subdoc4-LateX
-git fetch origin rama-formato-Latex-base:refs/remotes/origin/rama-formato-Latex-base
-git merge origin/rama-formato-Latex-base
-```
-
-Resuelve los conflictos conservando el contenido y los metadatos de tu capítulo e incorporando las mejoras comunes. Revisa `main.tex` y recompila antes del push. Integrar capítulos de distintas ramas requiere una consolidación acordada porque cada uno adapta su documento raíz.
+PDF de seis páginas revisado visualmente en todas sus páginas. Verificados papel carta, folios 1–6, once enlaces de índice y sus marcadores, correspondencia del 11.2 con el folio 4, ausencia de errores y avisos de compilación, y zonas de firma en cada página. La plantilla no acredita cumplimiento técnico ni aprobación humana.
