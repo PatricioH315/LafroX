@@ -1,0 +1,144 @@
+\chapter{Anexos del Subdocumento 12}
+
+Los 230 paquetes de la EDT tienen responsable en el Formulario T-14. El Anexo 12.A cruza esos paquetes con las horas propias de los titulares del Formulario T-15; los Anexos 12.B y 12.C identifican a cada persona y su dedicación; el Anexo 12.D vincula la nominación del Formulario T-8 con las cartas individuales. Los meses se cuentan desde el inicio contractual, no desde el ingreso de cada integrante.
+
+\section{Anexo 12.A — Matriz de asignación de responsabilidades}
+
+La Tabla~\ref{tab:12A-matriz} se lee por producto. A indica que el rol responde por al menos un paquete del T-14; E, que ejecuta trabajo con horas propias del T-15, sin responder por paquetes de ese producto. Si concurren ambas condiciones, prevalece A. Una celda vacía indica que no existe ninguna de las dos asignaciones.
+
+Las columnas siguen el orden del T-8: JP, Jefe de Proyecto; ARQ, Arquitecto de Solución; SEG, Encargado de Seguridad de la Información; DAT, Líder de Datos; DES, Líder de Desarrollo; CAL, Líder de Calidad y Pruebas; SRE, Líder de Operación / SRE; IMP, Líder de Implantación y Gestión del Cambio; LF, Líder Funcional, y LINT, Líder de Integración.
+
+\begin{anexohorizontal}
+\setlength{\textwidth}{\linewidth}
+\parte{tablas/tab_12A_matriz}
+
+La última fila cuenta paquetes, no marcas A. Un producto puede tener varios responsables porque agrupa varios paquetes; cada paquete conserva un único responsable. Los totales suman 230. Las marcas E del Líder Funcional y del Líder de Integración identifican trabajo efectivo sin duplicar esa cuenta.
+\end{anexohorizontal}
+
+\section{Anexo 12.B — Currículos del equipo}
+
+Los ocho primeros currículos corresponden al equipo clave y los dos últimos a los otros roles mínimos (Bases Técnicas Transversales, sección 19.2, pp.~33--34). La experiencia se vincula con las referencias del Formulario T-6: el sistema híbrido de reparto de LogiNacional S.A., la plataforma de telemetría y cadena de frío de FarmaRed S.A. y el sistema móvil de preventa y ruteo de Comercializadora Lácteos del Sur S.A. Los años de obtención y las vigencias se indican por credencial; no representan fechas de ingreso al proyecto.
+
+\subsection{Alex Aravena — Jefe de Proyecto}
+
+Ingeniero Civil en Informática, con 15 años de experiencia. Dirigió el Sistema Híbrido de Reparto y Gestión Logística de LogiNacional S.A. (2021--2022), con 420 camiones, operación continua y un SLA de 99,5~\%. También dirigió el Sistema Móvil de Preventa y Ruteo Desconectado de Comercializadora Lácteos del Sur S.A. (2023--2024). Su especialidad es la dirección de contratos con hitos de pago y control por valor ganado.
+
+\textbf{Acreditación.} Project Management Professional (PMP) (PMI): 2019, renovada en 2025. Hasta 2028; ciclo de 3 años con 60 PDU. Certified ScrumMaster (CSM) (Scrum Alliance): 2021, renovada en 2025. Hasta 2027; renovación cada 2 años.
+
+\textbf{Asignación.} Jefe de Proyecto; meses 1--56. Dedicación media: 100~\% en implementación y 22~\% en Operación. Conduce la implementación con dedicación exclusiva y representa a LafroX ante el CLIENTE; en Operación mantiene la dirección contractual.
+
+\subsection{Bastián Trejo — Arquitecto de Solución}
+
+Ingeniero Civil en Informática, con 12 años de experiencia. Diseñó la arquitectura híbrida de LogiNacional S.A., con servicios AWS y procesamiento local en 14 centros de distribución. Fue arquitecto de la Plataforma de Telemetría y Cadena de Frío IoT de FarmaRed S.A. Su especialidad es el diseño de sistemas híbridos y su evaluación mediante revisiones Well-Architected.
+
+\textbf{Acreditación.} AWS Certified Solutions Architect -- Professional (Amazon Web Services): marzo de 2025. Hasta marzo de 2028; 3 años.
+
+\textbf{Asignación.} Arquitecto de Solución; meses 1--56. Dedicación media: 39~\% en implementación y 2~\% en Operación. Concentra su trabajo de diseño en los meses 1 a 7 y participa durante todo el contrato en el Comité de Arquitectura mensual. Los porcentajes son promedios individuales del perfil 03S, compartido entre dos arquitectos senior.
+
+\subsection{Álvaro Catalán — Encargado de Seguridad de la Información}
+
+Ingeniero en Computación, con 12 años de experiencia. Tuvo a cargo la seguridad de la plataforma de FarmaRed S.A., con datos regulados y un SLA de 99,9~\%. Participa en la administración del sistema de gestión de seguridad de la información de LafroX, certificado en ISO/IEC 27001. Su práctica combina respuesta a incidentes y continuidad del servicio.
+
+\textbf{Acreditación.} CISSP (ISC2): 2018, ciclo vigente desde 2024. Hasta 2027; ciclo de 3 años con 120 CPE.
+
+\textbf{Asignación.} Encargado de Seguridad de la Información; meses 1--56. Dedicación media: 40~\% en implementación y 5~\% en Operación. Mantiene la supervisión de seguridad durante ambas fases y responde por la aceptación de las pruebas independientes.
+
+\subsection{Leandro Chamorro — Líder de Datos}
+
+Ingeniero Civil Informático, con 10 años de experiencia. Modeló y migró el historial de temperatura y lotes de FarmaRed S.A. y los maestros de clientes, productos y rutas de Comercializadora Lácteos del Sur S.A. Su especialidad es la conciliación de migraciones: comprueba que los datos de destino conserven la información de origen.
+
+\textbf{Acreditación.} AWS Certified Data Engineer -- Associate (Amazon Web Services): abril de 2026. Hasta abril de 2029; 3 años.
+
+\textbf{Asignación.} Líder de Datos; meses 1--20 y apoyo puntual en los meses 21--56. Dedicación media: 54~\% en implementación y 1~\% en Operación. Mantiene participación durante toda la implementación y presta apoyo puntual en Operación.
+
+\subsection{Tomás Pérez — Líder de Desarrollo}
+
+Ingeniero Civil en Informática, con 10 años de experiencia. Lideró el desarrollo móvil en Kotlin para la preventa y el ruteo sin conexión de Comercializadora Lácteos del Sur S.A., y el desarrollo de servicios NestJS y aplicaciones Angular en LogiNacional S.A. Su especialidad es la integración y entrega continua de aplicaciones.
+
+\textbf{Acreditación.} AWS Certified Developer -- Associate (Amazon Web Services): septiembre de 2025. Hasta septiembre de 2028; 3 años.
+
+\textbf{Asignación.} Líder de Desarrollo; meses 1--56. Dedicación media: 100~\% en implementación y 15~\% en Operación. Dirige la construcción durante toda la implementación y entrega a Operación los antecedentes para desplegar y recuperar el servicio.
+
+\subsection{Maximiliano Miño — Líder de Calidad y Pruebas}
+
+Ingeniero en Informática, con 9 años de experiencia. Lideró el trabajo de calidad en LogiNacional S.A. y Comercializadora Lácteos del Sur S.A. Su experiencia comprende automatización de pruebas, pruebas de carga y aceptación con usuarios operacionales.
+
+\textbf{Acreditación.} ISTQB Certified Tester Foundation Level v4.0 (ISTQB): 2023. Sin vencimiento. ISTQB Certified Tester Advanced Level Test Management (ISTQB): 2025. Sin vencimiento.
+
+\textbf{Asignación.} Líder de Calidad y Pruebas; meses 1--56. Dedicación media: 17~\% en implementación y 1~\% en Operación. Mantiene participación en ambas fases para dirigir las pruebas y respaldar la aceptación con evidencia.
+
+\subsection{Guillermo Castillo — Líder de Operación / SRE}
+
+Ingeniero Civil en Informática, con 10 años de experiencia. Participó en la operación continua de LogiNacional S.A. y FarmaRed S.A., con SLA de 99,5~\% y 99,9~\%, respectivamente. Su especialidad es la confiabilidad de plataformas AWS y la gestión de incidentes, problemas y cambios bajo ISO/IEC 20000-1.
+
+\textbf{Acreditación.} ITIL 4 Foundation e ITIL 4 Specialist: Create, Deliver and Support (PeopleCert): junio de 2025. Hasta junio de 2028; renovación cada 3 años.
+
+\textbf{Asignación.} Líder de Operación / SRE; meses 1--56. Dedicación media: 33~\% en implementación y 100~\% en Operación. Participa desde el inicio y actúa como gerente de servicio dedicado durante los meses 21 a 56.
+
+\subsection{Patricio Henríquez — Líder de Implantación y Gestión del Cambio}
+
+Ingeniero Civil Industrial, con 11 años de experiencia. Condujo la implantación en bodegas y rutas de LogiNacional S.A., con 420 camiones en tres regiones, y la implantación de preventa en Comercializadora Lácteos del Sur S.A. Ha capacitado a conductores, preventistas y operadores, y ha trabajado en gestión del cambio con sindicatos.
+
+\textbf{Acreditación.} Prosci Certified Change Practitioner (Prosci): 2022. Sin renovación periódica.
+
+\textbf{Asignación.} Líder de Implantación y Gestión del Cambio; meses 1--56. Dedicación media: 51~\% en implementación y 5~\% en Operación. Concentra el acompañamiento a usuarios en las marchas blancas y el cierre de los meses 13 a 22.
+
+\subsection{Carolina Fuentes — Líder Funcional}
+
+Ingeniera Civil Industrial, con 14 años de experiencia. Trabajó en distribución mayorista y consumo masivo. Fue jefa de operaciones de un centro de distribución durante seis años y consultora funcional en LogiNacional S.A., en procesos de cruce de andén y facturación en ruta. Su especialidad es traducir la operación de bodega y reparto en requisitos funcionales.
+
+\textbf{Acreditación.} Certified Supply Chain Professional (CSCP) (ASCM): 2020. Mantenimiento cada 5 años, vigente hasta 2030 (renovada en 2025).
+
+\textbf{Asignación.} Líder Funcional; meses 1--20. Dedicación media: 100~\% en implementación, sin asignación en Operación. Pertenece al grupo de Arquitectura e integración de planta y cubre el análisis funcional durante toda la implementación; no tiene horas asignadas en Operación.
+
+\subsection{Rodrigo Valdés — Líder de Integración}
+
+Ingeniero Civil en Informática, con 11 años de experiencia. Integró el ERP, los documentos tributarios electrónicos y los intercambios EDI y AS2 con cadenas de comercio minorista en LogiNacional S.A. En FarmaRed S.A. integró sensores y sistemas heredados. Su especialidad son las interfaces entre plataformas de distinta generación.
+
+\textbf{Acreditación.} El perfil se acredita por experiencia en EDI, AS2 y ERP heredados; no exige certificación.
+
+\textbf{Asignación.} Líder de Integración; meses 1--20 y apoyo puntual en los meses 21--56. Dedicación media: 37~\% en implementación y 1~\% en Operación. Pertenece al grupo de Arquitectura e integración de planta; cubre la implementación completa y apoya en forma puntual la Operación.
+
+\section{Anexo 12.C — Dedicación por rol y fase}
+
+Una jornada completa equivale a 128 HH programadas por mes (Formulario T-15, sección 4.1). Para un titular, la fracción media de jornada es \(d_{\mathrm{impl}} = \mathrm{HH}_{\mathrm{impl}}/(20\times128)\) en implementación y \(d_{\mathrm{oper}} = \mathrm{HH}_{\mathrm{oper}}/(36\times128)\) en Operación. Para 03S, cada numerador se divide primero por dos: las horas de la tabla corresponden al perfil completo, pero la dedicación se declara por arquitecto.
+
+La Tabla~\ref{tab:12C-dedicacion} conserva las HH del Formulario T-15 y muestra los porcentajes redondeados. El 100~\% representa jornada completa; el guion indica una fase sin asignación.
+
+\begin{anexohorizontal}
+\setlength{\textwidth}{\linewidth}
+\parte{tablas/tab_12C_dedicacion}
+
+La dedicación media no sustituye el control mensual: los perfiles 01, 04 y 05 tienen jornada completa en cada mes de implementación y el perfil 24 la tiene en cada mes de Operación. El apoyo puntual de Datos e Integración en Operación no extiende a esa fase su dedicación de implementación.
+\end{anexohorizontal}
+
+\section{Anexo 12.D — Compromiso de los integrantes}
+
+Cada integrante suscribe individualmente el compromiso que sigue, asociado al rol, la dedicación y el período de su nominación. La carta acompaña al currículo como antecedente de capacidad del equipo (Bases Administrativas, art.~34, p.~22).
+
+\begin{quote}
+Me comprometo a desempeñar el rol que consta junto a mi nombre, con la dedicación y durante los meses allí indicados. Resguardaré la confidencialidad de la información del CLIENTE y mantendré disponibles para el equipo autorizado los antecedentes necesarios para continuar mi trabajo. Mi participación no se dará por sustituida sin autorización previa y escrita del CLIENTE. Si se autoriza mi reemplazo, efectuaré el traspaso a una persona de perfil igual o superior, con al menos 15 días hábiles de traslape, sin costo para el CLIENTE.
+\end{quote}
+
+La Tabla~\ref{tab:12D-compromisos} identifica a quienes suscriben las cartas. Para el Arquitecto de Solución, el promedio individual incluye la concentración en diseño y la participación permanente en el Comité de Arquitectura. Las condiciones de sustitución se rigen por las Bases Administrativas (arts.~76.1 y 76.2, p.~39).
+
+\parte{tablas/tab_12D_compromisos}
+
+El compromiso abarca tanto a los ocho integrantes clave como a los dos titulares adicionales, sin alterar la base de cálculo de rotación del equipo clave. Las cartas firmadas y los acuerdos de confidencialidad individuales se entregan en el Sobre N.°~1.
+
+\section*{Referencias}
+\phantomsection
+\addcontentsline{toc}{section}{Referencias}
+
+Las condiciones contractuales y los requisitos técnicos citados corresponden a los siguientes documentos de la licitación:
+
+\begin{itemize}
+\item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas}.
+\item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales}.
+\end{itemize}
+
+\section*{Declaración de uso de IA}
+\phantomsection
+\addcontentsline{toc}{section}{Declaración de uso de IA}
+
+La declaración consolidada al final del Subdocumento 12 identifica, para los Anexos 12.A a 12.D, las herramientas utilizadas, la finalidad de su uso y el alcance de la revisión humana.
