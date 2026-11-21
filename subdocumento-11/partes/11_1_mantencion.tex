@@ -1,4 +1,92 @@
 \section{Plan Mantención Preventiva / Evolutiva}
 \label{sec:sd11-mantencion}
 
-El plan de mantención reúne la prevención de fallas, la corrección de defectos y las mejoras evolutivas. Su organización comprende la priorización y la capacidad, la ejecución de cambios y la vigencia de los componentes (Bases Administrativas, Formulario T-7, Subdocumento 11; Bases Técnicas Transversales, apartado 21.4).
+La mantención preserva la preparación, el despacho, la trazabilidad y la integración con el ERP mientras incorpora mejoras autorizadas. El Líder de Operación / SRE, Guillermo Castillo, coordina el plan; el Líder de Desarrollo, Tomás Pérez, conduce los cambios de aplicación; el Encargado de Seguridad, Álvaro Catalán, controla el riesgo de seguridad, y el Líder de Calidad y Pruebas, Maximiliano Miño, verifica la evidencia de regresión. La Contraparte Técnica del CLIENTE aprueba las evoluciones y las ventanas que le competen. Estas responsabilidades se apoyan en la asignación del Subdocumento 12 y no crean plazas adicionales (LafroX, 2026f, SD12, sec.~12.1, pp.~5--10).
+
+\subsection{Modalidades y priorización de la mantención}
+\label{subsec:sd11-modalidades}
+
+La mantención preventiva comprende la revisión de salud, capacidad y configuración, el estado de respaldos y réplicas, certificados, repuestos, energía y climatización. El calendario anual se acuerda con el CLIENTE y las auditorías técnicas se realizan al menos trimestralmente. La correctiva corrige defectos y restituye la función afectada sin costo adicional. La evolutiva atiende mejoras solicitadas y aprobadas con cargo a su bolsa. La normativa adecua la solución a las disposiciones aplicables dentro de su plazo de entrada en vigor, sin descontar horas de la bolsa ni trasladar un cargo adicional al CLIENTE (Distribuidora Puelche S.A., 2026b, sec.~21.4, pp.~37--38).
+
+Cada intervención se identifica por ticket, servicio, componente, sitio y paquete EDT. La preparación de M2, el bloqueo térmico de M9 y la identidad que habilita la bodega reciben el tratamiento de criticidad del Subdocumento 4. Una consulta comercial o una mejora de interfaz no desplaza una corrección que comprometa ese despacho. El mantenimiento de aplicaciones del CLIENTE no provistas por LafroX, como el ERP, conserva su responsable de dominio; LafroX atiende sus adaptadores, conserva las evidencias y coordina la dependencia sin atribuirse permisos para modificar el sistema ajeno.
+
+La priorización comienza por el impacto real sobre el negocio. Las interrupciones críticas y altas activan la atención continua y los máximos de respuesta y resolución de 15 minutos/4 horas y 1 hora/8 horas, respectivamente. Las medias conservan 4/24 horas y las bajas 8/48 horas, según la cobertura del Subdocumento 10. Dentro de una misma severidad se atiende primero el vencimiento contractual o de seguridad más próximo, después la recurrencia y el alcance de la afectación. El NOC o la mesa puede elevar la severidad cuando cambia el impacto; la derivación a DES, SRE, SOC o fabricante conserva la hora original de recepción. La asignación de ticket por sí sola no acredita respuesta ni resolución (Distribuidora Puelche S.A., 2026a, arts.~78--79, pp.~40--41).
+
+\subsection{Capacidad, bolsa evolutiva y liquidación}
+\label{subsec:sd11-capacidad}
+
+La capacidad comprometida se muestra en la Tabla~\ref{tab:sd11-capacidad}. Son horas de los equipos, no personas a jornada completa durante todos los meses. La cuenta 10.2 concentra 10.656 HH en los 36 meses: la suma de sus siete paquetes es $4.608+1.152+1.152+2.304+288+288+864$. La media de $10.656/36=296$ HH mensuales sirve para comprobar el esfuerzo total; el calendario de cada campaña y la programación por perfil del T-15 determinan cuándo se ejecuta, sin sustituirse por ese promedio.
+
+\Needspace{0.55\textheight}
+\begin{tablalafrox}{LafroX — Capacidad de mantención comprometida}{tab:sd11-capacidad}
+{F{0.16} Y J{0.17} J{0.20}}
+{\cab{Paquete} & \cab{Ámbito} & \cab{HH en 36 meses} & \cab{Equivalencia}}
+10.2.1 & Software correctivo y evolutivo & 4.608 & 128 HH/mes \\
+10.2.2 & Ciberseguridad y resiliencia & 1.152 & 32 HH/mes \\
+10.2.3 & Hardware preventivo y correctivo & 1.152 & 32 HH/mes \\
+10.2.4 & Reducción de deuda técnica & 2.304 & 64 HH/mes \\
+10.2.5 & Actualización de componentes de base & 288 & 96 HH/año \\
+10.2.6 & Revisión eléctrica & 288 & 48 HH/semestre \\
+10.2.7 & Ciclo de vida del equipamiento & 864 & 24 HH/mes \\
+\textbf{Total} & \textbf{Cuenta 10.2} & \textbf{10.656} & \textbf{296 HH/mes} \\
+\end{tablalafrox}
+\fuentesdonce{Elaboración y divisiones a partir de T-14, cuenta 10.2, y T-15, Tabla 23, p.~130 (LafroX, 2026c). Las equivalencias no redistribuyen las campañas.}
+
+La tabla separa las 2.304 HH de deuda de las 4.608 HH de software, e impide descontar una misma actuación de ambas partidas. La capacidad correctiva es una estimación de esfuerzo y no un límite a la obligación de corregir defectos. Los refuerzos necesarios para cumplir el servicio se atienden conforme a las condiciones del T-14; no se retiran los puestos de mesa, NOC o SOC para completar una intervención en terreno. El especialista se imputa a su paquete de origen, conserva el relevo y permite que la atención de los otros sitios continúe (LafroX, 2026c, T-14, condiciones de la cuenta 10.2, p.~85).
+
+El T-14 divide 10.2.1 en 768 HH evolutivas y 768 HH correctivas estimadas por cada año de Operación: $4.608/3=1.536$ HH/año y $1.536/2=768$ HH por cada uso. Los años operacionales son M21--M32, M33--M44 y M45--M56. La Tabla~\ref{tab:sd11-perfiles} explicita la composición de la bolsa: aplica a cada perfil de 10.2.1 la misma división entre los tres años y las dos mitades. Es un criterio de programación de esta capacidad, con los mismos perfiles y totales del T-15.
+
+\Needspace{0.55\textheight}
+\begin{tablalafrox}{LafroX — Composición anual de software y deuda técnica}{tab:sd11-perfiles}
+{Y J{0.19} J{0.19} J{0.19}}
+{\cab{Perfil T-15} & \cab{Evolutiva HH/año} & \cab{Correctiva HH/año} & \cab{Deuda HH/año}}
+04 Líder de Desarrollo & 76,80 & 76,80 & 76,80 \\
+07S Móvil Senior & 76,80 & 76,80 & 0,00 \\
+07J Móvil Junior & 38,40 & 38,40 & 0,00 \\
+08S Front-end Senior & 57,60 & 57,60 & 115,20 \\
+08J Front-end Junior & 57,60 & 57,60 & 115,20 \\
+09S Back-end Senior & 276,48 & 276,48 & 276,48 \\
+09J Back-end Junior & 184,32 & 184,32 & 184,32 \\
+\textbf{Total} & \textbf{768,00} & \textbf{768,00} & \textbf{768,00} \\
+\end{tablalafrox}
+\fuentesdonce{Cálculo sobre los perfiles de 10.2.1 y 10.2.4 del T-15, Tabla 23, p.~130; política de bolsa del T-14, p.~85 (LafroX, 2026c). Evolutiva y correctiva: HH del perfil/6; deuda: HH del perfil/3.}
+
+El reparto concentra la mantención en Back-end, donde se sostienen las reglas, las integraciones y la conciliación de hechos. No crea una nómina distinta ni una bolsa comercial para defectos. Los saldos de perfiles se programan según el componente del cambio y la capacidad mensual; cualquier reasignación se registra y no puede hacer que el total aprobado exceda el saldo ni que un perfil supere su disponibilidad del T-15. Las tareas de las innovaciones conservan su imputación: la corrección de INN-01 ya está comprendida en la mitad correctiva de 10.2.1, y el trabajo adicional de otras innovaciones no se cuenta como una segunda bolsa (LafroX, 2026c, T-14, p.~85).
+
+La solicitud evolutiva entra por el canal único de la mesa. La Contraparte Técnica identifica el resultado esperado y los criterios de aceptación; DES estima en cinco días hábiles alcance, perfiles, HH, dependencias, pruebas, riesgo y ventana. El CLIENTE aprueba por escrito en el Comité de Operación antes de iniciar el trabajo. La autorización identifica el saldo que reserva y la condición de aceptación; una petición sin aprobación no se considera trabajo consumido. Las correcciones y adecuaciones normativas siguen su obligación propia y no se convierten en evoluciones por su complejidad.
+
+El informe mensual liquida las HH reales de cada cambio desplegado y aceptado, enlazadas al registro de trabajo y a su evidencia. Se muestra saldo inicial, incorporaciones, reservas, liquidaciones y saldo disponible; las diferencias frente a la estimación se explican y aprueban antes de superar la reserva. Con $S_0=0$ al inicio de Operación y $S_{y-1}$ como remanente del año anterior, la capacidad acumulada del nuevo año es $A_y=768+S_{y-1}$ y su saldo es $S_y=A_y-H_y$, con $0\leq H_y\leq A_y$. Para autorizar un nuevo trabajo se calcula además el saldo libre $L=A_y-H_{\mathrm{acum}}-R$, donde $R$ son las HH aprobadas aún reservadas. El saldo libre no puede ser negativo. Al liquidar un cambio, sus horas reales pasan a consumo y se libera su reserva; no se descuentan ambos conceptos como si fueran dos trabajos. Las reservas que cruzan el cierre anual permanecen identificadas dentro del saldo trasladado. Las horas no utilizadas se acumulan; el Comité programa su uso dentro del tercer año. Un exceso sobre el saldo requiere aprobación específica y se valoriza exclusivamente con las condiciones de la Oferta Económica (Distribuidora Puelche S.A., 2026a, art.~50.2, p.~29).
+
+\subsection{Intervenciones, ventanas y control del cambio}
+\label{subsec:sd11-intervenciones}
+
+La Figura~\ref{fig:sd11-cambio} muestra cómo una evolución de M2 o M9 pasa de la solicitud al registro operacional, y cómo una validación fallida impide su promoción.
+
+\begin{figure}[H]
+\centering
+\input{subdocumento-11/figuras/circuito-cambio.tex}
+\caption{LafroX — Circuito de un cambio sobre preparación y trazabilidad}
+\label{fig:sd11-cambio}
+\fuentesdonce{Elaboración propia a partir del ciclo de entrega de SD4 y las puertas de calidad de SD9, sec.~9.2 (LafroX, 2026a, sec.~4.2.4; 2026d, sec.~9.2).}
+\end{figure}
+
+El circuito exige que la evidencia del requisito, la prueba y el despliegue pertenezca al mismo cambio. El artefacto promovido es el validado en QA y Preproducción; no se recompila para Producción. La regresión verifica UUID, outbox e idempotencia, reserva y confirmación de stock, integración de guías y la consulta sanitaria, según lo que afecta el cambio. En los sitios se despliega la misma imagen \texttt{wms\_only} ensayada en nube, sitio por sitio, y se comprueba la captura sin WAN y la reconciliación posterior. Una falla mantiene la versión anterior o activa la reversión ensayada; no se declara aceptación porque el contenedor arrancó (LafroX, 2026d, SD9, sec.~9.2).
+
+El calendario anual reúne las intervenciones preventivas, actualizaciones y pruebas; el Comité confirma cada ventana antes de ejecutarla. Todo mantenimiento programado se comunica al CLIENTE con un preaviso mínimo de diez días hábiles, identificando función afectada, alcance, responsable, horario, validación y reversión. El despliegue sin interrupción es la regla; una indisponibilidad programada es excepcional y exige justificación y aprobación para ese caso, sin levantar una prohibición del calendario (Distribuidora Puelche S.A., 2026a, art.~20, p.~15; 2026b, RT-10.05--RT-10.06, p.~22). No se interviene en la salida de 05:30 a 07:00 de lunes a sábado, ni se invade la preparación de 22:00 a 06:00, la recepción de 08:00 a 18:00 o la sincronización de retorno de 17:00 a 20:00. Los domingos son la ventana amplia de referencia, pero solo se utilizan fuera de los congelamientos y tras comprobar que no existe actividad extraordinaria. El congelamiento del 1 al 25 de septiembre, todo diciembre y los tres primeros días hábiles de cada mes prevalece sobre una autorización ordinaria de horario. El plan de despliegue mantiene además la restricción publicada de pasos a producción en septiembre y diciembre (Distribuidora Puelche S.A., 2026c, cap.~15 y anexo B, pp.~27 y 38).
+
+El calendario identifica, para cada tarea, componente y sitio del T-11, paquete de cargo, responsable y suplente, frecuencia, duración estimada, condición previa, comprobación funcional y reversión. La revisión de salud y réplicas se integra en la vigilancia del NOC; las auditorías técnicas trimestrales consolidan configuración, actualizaciones, respaldo y hallazgos dentro de las tareas preventivas de 10.2.2 y 10.2.3. Las actualizaciones de base son anuales; las revisiones eléctricas, semestrales; la calibración de frío sigue su ciclo anual. El informe mensual diferencia tarea programada, ejecutada y reprogramada, e identifica el riesgo de todo vencimiento. Una auditoría de registros puede realizarse sin intervención productiva durante un congelamiento; cualquier prueba intrusiva o cambio conserva sus prohibiciones y su ventana autorizada (Distribuidora Puelche S.A., 2026b, sec.~21.4, pp.~37--38).
+
+Las vulnerabilidades críticas, altas y medias conservan máximos de remediación de 7, 15 y 30 días corridos desde publicación o detección. El SOC registra el componente, la exposición, el plazo y el control transitorio; DES o SRE corrige por el mismo circuito de pruebas. La contención se distingue de la remediación y no detiene automáticamente el plazo. Si una actuación necesaria coincide con una intervención prohibida, se eleva al CLIENTE con el riesgo, el vencimiento y la recuperación disponible; no se presume levantada la prohibición ni se declara una exención de penalidades. Ante un incidente de seguridad, SOC mantiene el aviso al CLIENTE dentro de dos horas de detectado un incidente crítico y la notificación de una brecha dentro de veinticuatro horas desde su detección, sin sustituir la respuesta y restitución del servicio. La gestión conserva la decisión escrita y todas las marcas de tiempo (Distribuidora Puelche S.A., 2026a, art.~21.1, p.~15; 2026c, RT-10.05, p.~27).
+
+La prevención física se ejecuta por redundancia y por sitio, sin retirar simultáneamente ambos caminos de energía, red o cómputo. SRE revisa alarmas, baterías y autonomía de UPS, generador, climatización, conectores, discos, reservas y respaldo de configuración; la revisión eléctrica semestral produce su informe propio. En Concepción y en cada cross-docking verifica activo/espera y capacidad de recuperación antes de retirar un equipo. La reserva y los plazos de reposición conservan las cantidades y condiciones del T-11. El acceso de un fabricante requiere autorización, acompañamiento y registro, y el cierre conserva serial retirado e instalado, versión de configuración y prueba funcional (Distribuidora Puelche S.A., 2026b, cap.~6, pp.~14--16, y cap.~8, pp.~18--20).
+
+En la cadena de frío se conservan calibración anual, estado de baterías y glicol, lectura del registrador, latido del gateway, alarma local y comunicación de subida y bajada. Ninguna actualización del kit de camión se realiza durante una entrega activa. Se comprueba que una falla de enlace no desactive el bloqueo local, que los eventos pendientes persistan y que su reenvío no duplique los efectos en M9. Se registran por separado la protección local y el aviso remoto: verificar una no demuestra la otra.
+
+\subsection{Actualización, obsolescencia y deuda técnica}
+\label{subsec:sd11-vigencia}
+
+Las dependencias y componentes de base se mantienen en un inventario versionado: producto, versión instalada, componente M/N/VM, sitio, propietario, soporte del fabricante, fecha de fin de soporte, compatibilidades, certificado o licencia y versión de retorno. El escaneo de componentes y la SBOM de cada artefacto alimentan ese registro. SRE propone el plan anual de actualización de 10.2.5, DES evalúa el impacto en Laravel, los clientes móviles y sus contratos, y Seguridad verifica exposición y procedencia. El plan utiliza la última ventana habilitada anterior al fin de soporte o al vencimiento aplicable; no espera al cese del soporte para iniciar la sustitución. Cada actualización debe superar las mismas puertas y ensayar la vuelta con sus migraciones de datos compatibles (Distribuidora Puelche S.A., 2026b, RT-21.20--RT-21.22, p.~38).
+
+La deuda técnica se registra por componente y causa, con evidencia, riesgo, HH estimadas, responsable y criterio de cierre verificable. El Líder de Desarrollo reserva las 2.304 HH de 10.2.4: $2.304/36=64$ HH mensuales y $64\times12=768$ HH anuales. Sobre las 109.791,32 HH de Operación del T-14, la fracción es $100\times2.304/109.791,32=2,0985$\,\%. Esta base y la fracción corresponden a ese formulario y período; no se convierten en un porcentaje de la nómina ni se suman a las HH ya presupuestadas (LafroX, 2026c, T-14, p.~85; 2026c, T-15, p.~113).
+
+Las acciones se ordenan por riesgo de incumplimiento, recurrencia e impacto operacional y después por esfuerzo y capacidad de evitar trabajo manual. El informe trimestral compara saldo inicial y final en HH estimadas, altas nuevas, HH ejecutadas y acciones cerradas con su prueba; una deuda no desaparece porque se consumió su estimación. Cambiar la cifra exige justificar la reestimación. La corrección de una vulnerabilidad vencida o de un defecto contractual no se posterga hasta la siguiente reserva de deuda ni se descuenta también de la bolsa evolutiva. El registro se enlaza con los incidentes y con la revisión anual de obsolescencia para evitar que versiones sin soporte y problemas repetidos se traten como trabajos aislados.

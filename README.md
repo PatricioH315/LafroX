@@ -1,38 +1,59 @@
-# LafroX — formato del Subdocumento 11
+# LafroX — Subdocumento 11: Planes en operación
 
-Rama local: `LafroX-Subdoc11-LateX-CORRIGIENDO`. La plantilla conserva el formato corporativo y únicamente los títulos obligatorios del comunicado, por instrucción del usuario. No se adelantan subtítulos de tercer nivel ni se deja un esquema provisional de ellos.
+La revisión técnica y editorial se realiza en `LafroX-Subdoc11-LateX-CORRIGIENDO`. El usuario autorizó subdividir el contenido ya desarrollado según criterio técnico, preservando los títulos obligatorios del correo.
 
-## Índice del capítulo
+## Índice vigente
 
 - 11 Introducción a los Planes en operación.
 - 11.1 Plan Mantención Preventiva / Evolutiva.
+  - 11.1.1 Modalidades y priorización de la mantención.
+  - 11.1.2 Capacidad, bolsa evolutiva y liquidación.
+  - 11.1.3 Intervenciones, ventanas y control del cambio.
+  - 11.1.4 Actualización, obsolescencia y deuda técnica.
 - 11.2 Plan Servicios de Operación.
-- Referencias (sin numerar).
-- Declaración de uso de IA (sin numerar).
+  - 11.2.1 Control del servicio y presupuesto de error.
+  - 11.2.2 Automatización y aprendizaje de incidentes.
+  - 11.2.3 Capacidad y optimización del consumo en nube.
+  - 11.2.4 Continuidad, recuperación y resiliencia.
+  - 11.2.5 Reporte y transferencia del servicio.
+- Referencias.
+- Declaración de uso de IA.
 
-El índice general y la lista de tablas se actualizan automáticamente. La tabla de IA contiene solo las filas 11, 11.1 y 11.2, con revisión humana sin atribuir. No hay anexos ni formularios adicionales asignados a SD11 en el correo.
+Los nueve subtítulos ordenan bloques sustantivos; no son transcripciones de las viñetas del correo ni un requisito contractual de cantidad. No hay cuarto nivel ni 11.3. Cada título tiene texto de caída. Los cierres no se numeran. La declaración se consolida en dos filas, 11.1 y 11.2, incluyendo las subsecciones y la introducción transversal. Ambos niveles, texto y diagramas, se declaran Alto.
 
-## Archivos de desarrollo
+## Alcance y conservación
 
-- `LAFROX-Subdocumento11.tex`: raíz y metadatos.
-- `sd11-formato.tex`: firmas, pies, índices y cierres.
-- `subdocumento-11/contenido.tex`: introducción y montaje.
-- `subdocumento-11/partes/11_1_mantencion.tex`: desarrollo de 11.1.
-- `subdocumento-11/partes/11_2_operacion.tex`: desarrollo de 11.2.
-- `subdocumento-11/partes/referencias.tex`: fuentes.
-- `subdocumento-11/partes/declaracion-ia.tex`: declaración.
-- `subdocumento-11/tablas/declaracion-ia.tex`: tabla de IA.
+Se desarrollan mantención, capacidad por perfil, bolsa y reservas, actualización/obsolescencia, deuda, confiabilidad, automatización, retrospectivas, capacidad, FinOps y continuidad. Las HH y los calendarios proceden del producto 10 del T-14/T-15 y del T-13, sin sumar capacidad nueva ni modificar los demás SD o el Excel.
 
-Se mantienen los textos de caída de los apartados obligatorios. El contenido técnico aún debe desarrollarse a partir de las Bases y de la solución; no se han inventado capacidades, SLA, mediciones ni aprobaciones.
+Cuerpo con dos figuras vectoriales y cuatro tablas técnicas, más la declaración. Papel carta, cuerpo explícito 11,2 puntos y tablas/figuras por encima de 9 puntos. Se mantienen tipografías, márgenes y títulos corporativos. Firma completa en portada, solo folio en su pie derecho y medias firmas interiores.
 
-## Presentación
+## Cierre documental y ejecución
 
-Portada común de los capítulos corregidos, adaptada a SD11 y Caso 02. Firma completa en portada; únicamente el folio en su extremo inferior derecho. Las páginas interiores conservan media firma y folio. Papel carta vertical, cuerpo 11 pt y tabla 9,5 pt, con tipografías y márgenes corporativos. Referencias y Declaración de uso de IA son secciones sin numerar.
+La auditoría del SD11 distingue la suficiencia del plan ofertado de la evidencia de su futura ejecución. Las pruebas y métricas no se presentan como ya realizadas.
 
-La imagen de firma es el activo existente de SD12, incorporado por petición del usuario; su presencia no acredita una aprobación nueva. Las notas de revisión no forman parte del PDF.
+RT-07.12 exige una muestra representativa mensual; no exige literalmente datos productivos. SD11 precisa el manifiesto, estructura, escala, cifrado, procedimiento, verificaciones y aceptación de la muestra del T-13 durante congelamientos. No acredita la integridad de una copia productiva mediante una muestra sintética ni modifica el T-13. La evidencia de cada ensayo se producirá al ejecutarlo.
 
-## Compilación
+Las dependencias del ERP y de la conectividad local permanecen explícitas dentro de los escenarios de recuperación; no se promete que el arranque del cómputo sustituya esas funciones. Los códigos heredados de SD10 no se copian a SD11.
 
-Ejecutar LuaLaTeX sobre `LAFROX-Subdocumento11.tex` hasta estabilizar índices y referencias. PDF canónico: `LAFROX-Subdocumento11.pdf`.
+El usuario confirmó la revisión integral del SD11 por Bastian Trejo y Guillermo Castillo. Ambos figuran en las dos filas de la declaración, con revisión de contenido, cálculos y figuras.
 
-El ejemplo genérico heredado está fuera de la compilación.
+## Archivos
+
+Raíz canónica: `LAFROX-Subdocumento11.tex`. Planes: `subdocumento-11/partes/11_1_mantencion.tex` y `11_2_operacion.tex`. Diagramas: `subdocumento-11/figuras/`. Referencias y declaración están en partes separadas.
+
+Compilar con LuaLaTeX hasta estabilizar índices y referencias. Resultado: `LAFROX-Subdocumento11.pdf`. Las notas de auditoría están en Markdown fuera del PDF.
+
+
+## Portada y referencias solicitadas
+
+Fecha de emisión: 12 de octubre de 2026. Línea de caso: Caso — Logística. Bibliografía reducida a Bases Administrativas (2026a) y Bases Técnicas Transversales (2026b), con los títulos indicados por el usuario. Las remisiones internas se conservan solo para evidencias concretas, sin bibliografía de todos los SD. Los requisitos particulares del Caso 02 conservan su identificación explícita en el texto.
+
+
+## Referencias justificadas y caso
+
+La petición posterior restituye una bibliografía completa de las fuentes efectivamente citadas: Bases Administrativas, Bases Técnicas Transversales, Caso Logística, comunicado y SD4/5/7/9/10/12/13. Cada SD sustenta una decisión, dato o procedimiento concreto; SD13 respalda específicamente la reproducción de incidentes de INN-02; no se añaden SD1/2/3/6 por una relación genérica. Fecha de emisión conservada en 12 de octubre de 2026; portada con Caso Logística. Esta instrucción supera la reducción anterior a dos entradas.
+
+
+## Retiro del comunicado de la bibliografía
+
+Por instrucción posterior se retira la entrada del comunicado y sus dos citas autor/año. Se conservan las reglas de las Aclaraciones aplicadas en estructura y declaración IA. Bibliografía vigente: tres Bases y siete SD con uso concreto. Esta instrucción supera la inclusión bibliográfica anterior del comunicado.

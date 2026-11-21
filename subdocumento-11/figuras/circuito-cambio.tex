@@ -1,0 +1,12 @@
+\begin{tikzpicture}[
+  every node/.style={font=\fontsize{9.5pt}{12pt}\selectfont},
+  paso/.style={draw=lafroxLinea,rounded corners=2pt,align=center,text width=11.5cm,inner sep=6pt},
+  node distance=5mm,>=Latex]
+\node[paso] (a) {CLIENTE solicita cambio de M2/M9 por ticket\\DES estima HH, riesgo y pruebas; CLIENTE aprueba y reserva saldo};
+\node[paso,below=of a] (b) {DES construye y controla dependencias\\Mismo artefacto versionado, SBOM y evidencia de seguridad};
+\node[paso,below=of b] (c) {QA y Preproducción verifican la función afectada\\Preparación, bloqueo térmico, UUID/outbox, ERP y captura sin WAN};
+\node[paso,below=of c] (d) {Operación confirma ventana habilitada y reversión\\Promoción a nube y \texttt{wms\_only}, sitio por sitio};
+\node[paso,below=of d] (e) {CLIENTE valida el resultado; SRE registra versión y operación\\DES liquida HH reales y saldo; se actualiza la base de conocimiento};
+\draw[->] (a)--(b);\draw[->] (b)--(c);\draw[->] (c)--node[right,font=\fontsize{9pt}{11pt}\selectfont]{conforme}(d);\draw[->] (d)--(e);
+\draw[->] (c.west)--++(-5mm,0)|-node[pos=.24,left,align=right,font=\fontsize{9pt}{11pt}\selectfont]{no\\conforme}(b.west);
+\end{tikzpicture}

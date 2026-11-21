@@ -1,4 +1,111 @@
 \section{Plan Servicios de Operación}
 \label{sec:sd11-operacion}
 
-El plan de operación reúne las prácticas de confiabilidad, la gestión de capacidad y del consumo en nube, y la verificación periódica de la recuperación y la resiliencia. Estos ámbitos corresponden al apartado 11.2 del índice obligatorio (Aclaraciones de la licitación, capítulo 11).
+El Líder de Operación / SRE actúa como gerente de servicio dedicado durante M21--M56, con 128 HH efectivas por mes según el T-15. El NOC conserva vigilancia de infraestructura y colas; el SOC atiende seguridad; la mesa comunica y escala; SRE y DES restituyen sus dominios. El relevo registra incidentes abiertos, estado de réplicas, colas pendientes, intervenciones autorizadas y siguiente responsable. El Comité de Operación mensual sigue disponibilidad, capacidad, consumo y acciones; las decisiones que modifican alcance, recursos o compromisos se elevan al gobierno del proyecto (LafroX, 2026c, T-15, sec.~5.7; 2026f, SD12, sec.~12.1).
+
+\subsection{Control del servicio y presupuesto de error}
+\label{subsec:sd11-confiabilidad}
+
+La mesa cubre de 04:00 a 22:00 de lunes a sábado y pasa a cobertura continua en septiembre y diciembre; los incidentes críticos y altos y la supervisión NOC/SOC conservan 24$\times$7$\times$365. La transición del soporte puente en M16--M20 a 10.1.1/10.1.2 en M21 mantiene tickets, conocimiento y estado del servicio. No se asignan tareas preventivas al puesto continuo si con ello queda sin vigilancia ni se interrumpe la preparación nocturna para atender una mejora (Distribuidora Puelche S.A., 2026a, art.~78.2, p.~40; 2026c, RT-21.06, p.~27; LafroX, 2026e, sec.~10.1, pp.~5--12).
+
+La observabilidad sigue la transacción de negocio, no solo la salud de cada servidor. En M2 comprueba confirmación de preparación, reserva y despacho; en M9, registro térmico, bloqueo y consulta de retiro; en la integración tributaria, guía válida y acuse del ERP. OpenTelemetry conserva el \texttt{transaction\_id} entre API, RabbitMQ, SQS y adaptador; el NOC correlaciona el síntoma con el sitio, el mensaje y la versión. Los registros de seguridad y el acceso a información de personas mantienen las restricciones de SD4/SD5. El tablero del CLIENTE y sus exportaciones permiten contrastar el indicador y el incidente (Distribuidora Puelche S.A., 2026a, art.~79, pp.~40--41).
+
+El presupuesto de error se administra por servicio y mes. Si $T$ son minutos elegibles e $I$ la indisponibilidad imputable en la misma ventana, la disponibilidad es $D=100(1-I/T)$ y el presupuesto para un servicio crítico es $B=(1-0,999)T=0,001T$. Se informa el consumo $100I/B$ y el remanente $B-I$, que puede ser negativo; no se trunca un exceso para ocultar el incumplimiento. Se excluyen únicamente las ventanas programadas y aprobadas conforme al artículo 79.4. Las fallas concurrentes de un mismo servicio se unen temporalmente para no sumar dos veces el mismo minuto, pero no se compensan entre servicios.
+
+La Tabla~\ref{tab:sd11-error} muestra el efecto de la longitud del mes en un servicio continuo, sin ventanas excluidas. El cálculo no asigna al despacho un permiso para detenerse: su indisponibilidad cero se verifica además del porcentaje mensual.
+
+\Needspace{0.35\textheight}
+\begin{tablalafrox}{LafroX — Presupuesto mensual de un servicio crítico continuo}{tab:sd11-error}
+{J{0.23} J{0.33} Y}
+{\cab{Días del mes} & \cab{Tiempo $T$ (min)} & \cab{Presupuesto $0,001T$ (min)}}
+28 & 40.320 & 40,32 \\
+29 & 41.760 & 41,76 \\
+30 & 43.200 & 43,20 \\
+31 & 44.640 & 44,64 \\
+\end{tablalafrox}
+\fuentesdonce{Cálculo $T=\text{días}\times24\times60$, a partir del 99,9\,\% del art.~78.2 (Distribuidora Puelche S.A., 2026a, p.~40). Política del servicio: SD4, p.~129 (LafroX, 2026a).}
+
+En un mes de 30 días, una indisponibilidad de 20 minutos deja $43,2-20=23,2$ minutos de presupuesto. Una interrupción de cuatro horas consume 240 minutos, produce $100(1-240/43.200)=99,444$\,\% y agota el presupuesto, aunque el restablecimiento haya ocurrido dentro de cuatro horas. Son ejemplos calculados, no incidentes observados. El tiempo de resolución, el porcentaje mensual y la protección del despacho deben cumplirse por separado. Si el servicio crítico agota su presupuesto se suspenden los despliegues no correctivos hasta el mes siguiente, tal como fija SD4, sin levantar los congelamientos. La recuperación, la corrección y la seguridad conservan su circuito de autorización. La priorización por presupuesto responde al equilibrio entre entrega y confiabilidad; no sustituye los niveles contractuales (LafroX, 2026a, SD4, p.~129).
+
+La Figura~\ref{fig:sd11-operacion} relaciona las señales de la operación con la decisión de mantener, recuperar o mejorar M2/M9. La misma evidencia vuelve al registro del servicio y al plan de cambios.
+
+\begin{figure}[H]
+\centering
+\input{subdocumento-11/figuras/circuito-operacion.tex}
+\caption{LafroX — Control de operación sobre nube, WMS local y trazabilidad}
+\label{fig:sd11-operacion}
+\fuentesdonce{Elaboración propia a partir de la observabilidad y recuperación de SD4, secs.~4.2.4 y 4.3.2 (LafroX, 2026a).}
+\end{figure}
+
+La figura evita que una alarma cierre únicamente por recuperación de un componente. La restauración debe completar la transacción y conservar la evidencia de stock, entrega, bloqueo térmico o documento que corresponda. Si la función depende del ERP, de un operador de enlaces o del fabricante, el ticket enlaza esa dependencia y la actuación recibida. No se atribuye una pausa automática al reloj ni se considera que un caso N4 transfiera la responsabilidad de LafroX.
+
+\subsection{Automatización y aprendizaje de incidentes}
+\label{subsec:sd11-mejora}
+
+El trabajo manual repetitivo se mide con los registros de tareas y tickets: actividad, servicio, frecuencia, HH, causa y posibilidad de automatización. El gerente revisa mensualmente el esfuerzo manual frente al esfuerzo efectivo registrado, con $P_\mathrm{manual}=100\,HH_\mathrm{manuales}/HH_\mathrm{efectivas}$. La capacidad de guardia sin actividad registrada no se presenta como tarea eliminada y las HH de una actuación se imputan una sola vez a su paquete. El primer período medido establece la base de comparación; no se atribuye a la oferta una reducción ya alcanzada.
+
+Se priorizan automatizaciones que eliminen recurrencia o reduzcan riesgo sin perder control: comprobación de respaldos y réplicas, comparación de configuración, verificación de certificados, generación de evidencias y reproducción controlada de fallas mediante INN-02 (LafroX, 2026g, sec.~13.2.4, pp.~21--23). El reenvío de eventos no se ejecuta como reparación ciega: comprueba UUID, persistencia y resultado, y conserva el control humano de promociones, liberación de lotes y decisiones de negocio. El ahorro se calcula como diferencia de HH para la misma tarea y volumen, descontando el mantenimiento de su automatización; no se suma como ahorro la mera transferencia del trabajo de N1 a SRE. Los resultados se revisan en el informe trimestral de conocimiento de 10.4.3 y en el registro de deuda, sin crear una bolsa adicional.
+
+Todo incidente crítico produce informe de causa raíz en cinco días hábiles y uno alto en diez. Se incluyen impacto en personas y operación, cronología con fuentes de tiempo, detección, decisiones, causas y condiciones contribuyentes, actuación de recuperación y evidencia de integridad. El análisis reconstruye la información disponible en cada momento y revisa barreras y procedimientos; no convierte la identificación de una persona en explicación de la falla. Cada acción tiene responsable, fecha, prueba de eficacia y vínculo con cambio, capacitación o deuda técnica. El cierre del ticket de restitución y el cierre de las acciones son registros distintos (Distribuidora Puelche S.A., 2026a, art.~78.2, p.~40).
+
+El Comité revisa las acciones abiertas y la reincidencia: el máximo contractual es un evento trimestral con la misma causa raíz. La repetición reabre el problema y obliga a revisar la eficacia del control; no se presenta como un incidente nuevo sin relación. La solución validada pasa a la base de conocimiento de 10.4.3, con pasos ejecutables por el equipo del CLIENTE y restricciones de acceso. Los casos de terreno reproducibles alimentan INN-02 y regresión; una corrección no se declara eficaz solo por publicarse el informe (Distribuidora Puelche S.A., 2026a, art.~78.3, p.~40).
+
+\subsection{Capacidad y optimización del consumo en nube}
+\label{subsec:sd11-consumo}
+
+La gestión de capacidad utiliza el perfil horario del Anexo 4-W y conserva las diferencias entre media, peak y prueba. Los 14,66 TPS totales de diseño originan una prueba de $1,5\times14,66=21,99$ TPS; el despacho utiliza $1,5\times6,94=10,41$ TPS durante 90 minutos y exige cero indisponibilidad. El corte de enlace se verifica durante 24 horas y su drenaje en dos horas; la peor ruta debe sincronizarse en diez minutos. Estos son criterios de diseño y aceptación, no rendimientos medidos (LafroX, 2026a, SD4, Anexo 4-W; 2026d, T-13).
+
+El NOC sigue CPU, memoria, almacenamiento, IOPS, edad y profundidad de colas, retraso de réplica, latencia del ERP y percentil 95 de las transacciones. La confirmación de una línea de preparación conserva hasta un segundo; la entrega, dos segundos; la línea de preventa, 1,5 segundos, y la consulta de stock y crédito, dos segundos. La serie temporal incluye ventana nocturna, salida y retorno de flota. Una cola que crece puede indicar una dependencia lenta aunque CPU permanezca baja; por eso la decisión de ampliar se basa en la transacción y su cuello de botella, no en un único porcentaje (Distribuidora Puelche S.A., 2026c, RT-09.01, p.~26).
+
+El informe trimestral de 10.3.1 proyecta demanda, reserva en N+1, utilización y crecimiento por sitio y servicio. Contrasta el escenario 3$\times$, el del portal y la carga incremental de las innovaciones con los recursos del T-11. La proyección se adelanta a septiembre y diciembre para disponer de capacidad y repuestos antes del congelamiento. SRE eleva al CLIENTE el ajuste, su causa y su efecto sobre infraestructura, nube, licencias y enlaces antes de ejecutarlo. Una prueba fuera del umbral impide declarar capacidad suficiente y origina una acción con responsable; el capítulo no aumenta por su cuenta la cantidad de recursos de la arquitectura.
+
+FinOps utiliza la misma relación entre carga, recurso y responsable. Cada recurso se identifica por ambiente, módulo y centro de costo; los compartidos conservan una regla de distribución documentada y los consumos no asignados se concilian, en lugar de ocultarlos en un total. El informe mensual de 10.3.2 compara consumo observado, presupuesto y proyección de cierre por servicio. Toda desviación sobre el presupuesto activa su alerta y explicación: cambio de volumen, configuración, recurso huérfano, respaldo, egreso o ejecución extraordinaria. SRE analiza la causa y el CLIENTE decide las variaciones de compromiso; las condiciones monetarias se mantienen en la Oferta Económica (Distribuidora Puelche S.A., 2026b, RT-03.06, p.~8).
+
+La optimización conserva el horario publicado de Desarrollo, QA y Preproducción, de lunes a viernes de 08:00 a 20:00. Una semana ordinaria habilita $5\times12=60$ horas frente a 168 continuas: $100(1-60/168)=64,29$\,\% de reducción teórica de horas de cómputo elegibles. Se verifica la meta de al menos 60\,\% de SD4 con las horas efectivas y sus excepciones, sin atribuir ese porcentaje a toda la factura. Producción, recuperación y observabilidad mantienen sus condiciones de continuidad; no se apaga una réplica o un registro retenido para alcanzar un ahorro. El ajuste de tamaño, la eliminación de recursos sin uso y la programación de campañas se aprueban con su efecto en disponibilidad, recuperación y calidad (LafroX, 2026a, SD4, secs.~4.2.3--4.2.4).
+
+\subsection{Continuidad, recuperación y resiliencia}
+\label{subsec:sd11-continuidad}
+
+La revisión del plan de continuidad mantiene un análisis de impacto por proceso: preparación y salida de camiones, control de frío, recepción, entrega y conciliación tributaria. Registra dependencias, responsables, tiempo tolerable de interrupción y criterio de activación. El despacho carece de una alternativa manual que sustituya su ventana crítica; los mapas precargados y la captura local sostienen otras funciones solo dentro de los límites de su diseño. Ese análisis de negocio se articula con los procedimientos TIC de conmutación, restauración y retorno, conforme a ISO 22301 e ISO/IEC 27031 exigidas por las Bases. Los ejercicios y las acciones correctivas actualizan el análisis cuando cambia un componente, una integración o el impacto, sin presentar la sola mención de una norma como evidencia de cumplimiento (Distribuidora Puelche S.A., 2026b, RT-10.03--RT-10.04, p.~22; 2026c, cap.~8, pp.~13--17, y cap.~15, pp.~26--28).
+
+La continuidad diferencia corte de enlace, falla de equipo activo, pérdida de la sala de Talca y pérdida de la región sa-east-1. La operación local conserva \texttt{wms\_only}, UUID y outbox; un corte de WAN no autoriza promover un segundo escritor. La pérdida regional utiliza us-east-1 para el núcleo preparado y sus datos replicados; no presupone una segunda plataforma completa para todos los servicios. La recuperación de Talca en nube requiere excluir al escritor local y verificar los accesos de los terminales. Si se pierde también la LAN o los firewalls de la sala, deben restituirse antes de afirmar que la operación de piso volvió a funcionar (LafroX, 2026a, SD4, sec.~4.3.2, pp.~179--184).
+
+El plan periódico conserva las campañas de la Tabla~\ref{tab:sd11-campanas}. Las siete conmutaciones incluyen una inicial y las siguientes verificaciones del período; las seis resiliencias son campañas distintas. No se suman de nuevo a la capacidad de mantención ni se presentan como pruebas ya realizadas.
+
+\Needspace{0.42\textheight}
+\begin{tablalafrox}{LafroX — Campañas de continuidad y seguridad en Operación}{tab:sd11-campanas}
+{Y J{0.10} F{0.35} F{0.16}}
+{\cab{Campaña} & \cab{N.º} & \cab{Meses del contrato} & \cab{Paquete}}
+Conmutación real y retorno & 7 & 21, 27, 33, 39, 45, 51, 54 & 10.1.3 \\
+Resiliencia por inyección de fallas & 6 & 26, 32, 38, 44, 50, 55 & 10.2.2 \\
+Intrusión independiente & 3 & 28, 40, 52 & 10.2.2 \\
+Restauración de respaldos & 36 & Cada mes, del 21 al 56 & 10.1.5 \\
+\end{tablalafrox}
+\fuentesdonce{T-14, cuentas 10.1 y 10.2; T-15, 6.2, y T-13, 9.3 (LafroX, 2026c, 2026d). Frecuencias: RT-07.07, RT-07.12, RT-10.07 y RT-11.20 (Distribuidora Puelche S.A., 2026b, pp.~17--18, 22 y 24).}
+
+La conmutación tiene 560 HH SRE: $7\times80=560$. Las 36 restauraciones de 10.1.5 tienen 576 HH, equivalentes a 16 por prueba; la ciberseguridad y resiliencia conservan sus 1.152 HH compartidas en 10.2.2. Cada campaña prepara escenario, datos de contraste, responsables, autorización y retorno; mide desde la falla provocada, no desde que empieza la última acción técnica. El resultado exige RTO crítico hasta cuatro horas y RPO hasta quince minutos en el 100\,\% de los ensayos (Distribuidora Puelche S.A., 2026a, art.~78.3, p.~40).
+
+Para una pérdida regional se sigue la secuencia de SD4: detección, declaración y autorización, promoción de Aurora, escalado y restitución del núcleo, identidad y canales, reconexión, validación y cambio del tráfico. El presupuesto secuencial es
+\[
+5+30+20+30+15+15+15+5=135\ \text{min}.
+\]
+La diferencia frente a cuatro horas es $240-135=105$ minutos. Es margen de diseño sujeto a prueba, no un RTO medido. El titular del CLIENTE autoriza la promoción; si no responde dentro de quince minutos actúa el suplente dentro de los treinta previstos. Se restituye identidad, claves y certificados, rutas de consola, AS2 e ingesta IoT; cada canal se prueba antes de cambiar el tráfico. Un arranque de Aurora sin esos accesos no acredita la recuperación completa (LafroX, 2026a, SD4, sec.~4.3.2.5, p.~182).
+
+El ensayo provoca escrituras controladas y sincronización, comprueba exclusión del escritor anterior y conserva los UUID de mensajes confirmados y pendientes. Se compara el último hecho confirmado en origen con el último recuperado y su marca temporal para medir el RPO, con trazas de retención y reenvío del outbox. El retorno resincroniza y concilia primero; solo después transfiere la autoridad de escritura y el tráfico. El retorno automático permanece deshabilitado y una partición con ambos equipos encendidos debe demostrar que no pueden confirmar dos escritores (LafroX, 2026a, SD4, secs.~4.2.4.6 y 4.3.2).
+
+La aceptación funcional verifica preparación y stock, guía y evidencia de entrega, consulta sanitaria y eventos de temperatura. La consulta de emergencia de M9 en us-east-1 es de solo lectura y conserva el presupuesto de $15+60=75$ minutos desde la solicitud, con $120-75=45$ de margen frente a dos horas. No habilita liberar lotes ni emitir guías. Las posiciones de flota permanecen en sa-east-1 según SD4 y no se presentan como parte de su réplica regional. Si el ERP del CLIENTE no está disponible, se distingue la salida con guías válidas preemitidas de la emisión nueva dependiente de su restitución; la causa y el impacto se registran sin declarar una recuperación que aún no existe. El histórico completo de evidencias, temperatura y documentos puede continuar su restauración hasta ocho horas mientras la función crítica conserva su objetivo propio (LafroX, 2026a, SD4, secs.~4.2.4.5 y 4.3.2.5; 2026b, SD5).
+
+Las restauraciones verifican legibilidad, integridad y disponibilidad de claves, contenido y relaciones del conjunto recuperado; una réplica en servicio no sustituye una copia protegida frente a borrado o corrupción. Se conservan fecha y punto de recuperación, origen, manifiesto de objetos, comprobaciones y tiempo efectivo. El plan aplica la separación de ambientes del T-13: en septiembre y diciembre se ensaya el procedimiento con una muestra sintética representativa en Preproducción aislada, sin conmutar ni intervenir Producción o Recuperación. Ese resultado prueba el procedimiento sobre la muestra; no acredita la integridad de una copia productiva. Los informes distinguen expresamente ambos alcances y no usan la prueba sintética para declarar una restauración productiva ejecutada (Distribuidora Puelche S.A., 2026b, RT-07.12, p.~18; LafroX, 2026d, T-13, sec.~9.3).
+
+La representatividad de la muestra se documenta antes del ensayo mediante un manifiesto que la relaciona con los dominios de SD5 y con el perfil de capacidad de SD4. Incluye las estructuras relacionales y sus relaciones, lecturas térmicas y objetos de evidencia y documentos, con sus referencias de identificación. El conjunto sintético reproduce esquemas, formatos, distribución de tamaños y volumen de trabajo del escenario que representa; el informe identifica ese escenario y justifica su escala respecto de la proyección del período. No basta con recuperar un archivo pequeño y atribuirle el comportamiento del conjunto.
+
+SRE ejecuta la misma cadena de generación, custodia y restauración prevista para la muestra, con las versiones, cifrado y acceso a claves propios del ambiente autorizado. Conserva el identificador de la copia, su manifiesto, los recuentos y verificaciones de integridad antes y después, las relaciones entre registros y objetos, y los instantes de inicio y recuperación funcional. Calidad contrasta esos resultados con el conjunto esperado. Solo se acepta cuando se recupera todo lo incluido en el manifiesto sin errores ni referencias huérfanas y se mide el tiempo efectivo; una muestra incompleta o cuya escala no esté justificada produce una acción y repetición del ensayo, no una declaración de conformidad. Este protocolo precisa la muestra representativa de RT-07.12 dentro del ambiente y calendario del T-13, sin usar datos productivos en Preproducción ni agregar una conmutación durante el congelamiento (Distribuidora Puelche S.A., 2026b, RT-07.09--RT-07.12, p.~18).
+
+La resiliencia inyecta falla de instancia o zona, partición y relevo del activo local, corte de una dependencia, latencia y saturación. Los escenarios ensayan pérdida de réplica, retorno del antiguo primario y comportamiento de UUID/outbox, además de apagar un equipo. En los meses 32 y 44 se ejecuta en Preproducción por el congelamiento de septiembre, como establece T-13. El ensayo de frío comprueba que persisten la alarma local y el bloqueo, que la falta de dato no habilita una entrega, y que la pérdida regional tras la confirmación de recepción A2 conserva el evento y la obligación de aviso. El informe compara el resultado con el criterio, identifica las funciones que siguieron indisponibles y asigna corrección y repetición de la prueba; una observación abierta no se transforma en un aprobado (LafroX, 2026a, SD4, Anexo 4-W; 2026d, T-13).
+
+\subsection{Reporte y transferencia del servicio}
+\label{subsec:sd11-reporte}
+
+El informe de servicio se entrega dentro de los cinco primeros días hábiles de cada mes. Integra disponibilidad y presupuesto por servicio, incidentes y tiempos, cambios fallidos frente al máximo de 5\,\%, vulnerabilidades fuera de plazo, capacidad, consumo de nube, resultados de campañas, saldo evolutivo y acciones de mejora. Distingue datos medidos, estimaciones y objetivos; conserva el acceso del CLIENTE a la observabilidad y las evidencias exportables. Una discrepancia se atiende con sus marcas de tiempo y el método de cálculo; prevalece la medición del CLIENTE salvo error metodológico acreditado (Distribuidora Puelche S.A., 2026a, arts.~78--79, pp.~40--41).
+
+La transferencia mantiene los procedimientos ejecutables por el equipo del CLIENTE, el inventario, los respaldos y las credenciales bajo control. Las actualizaciones semestrales del depósito de fuentes de 10.3.4 reflejan la versión productiva. El acompañamiento de salida de 10.5.1 comienza al menos noventa días antes del término y mantiene la atención mientras el receptor asume sus funciones. Se documenta qué datos se devuelven, qué copias se eliminan y qué objetos con retención inmutable se transfieren en custodia hasta su vencimiento, de acuerdo con SD5. La firma de un acta no elimina tickets abiertos ni obligaciones de retención (Distribuidora Puelche S.A., 2026a, art.~77, p.~39, y art.~82, p.~42; LafroX, 2026b, sec.~5.2.7, pp.~35--36).

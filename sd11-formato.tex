@@ -1,4 +1,4 @@
-% Alcance: presentación del SD11; no incorpora decisiones técnicas.
+% Formato corporativo y ayudas de composición del SD11.
 % Art. 40.2: firma gráfica existente en SD12, incorporada por petición del usuario.
 %% Media firma del representante legal en el pie de página,
 %% siguiendo el formato usado por el Subdocumento 9.
@@ -63,3 +63,14 @@
   \LFXsdoncelista{lot}{\listatablaslafrox}
   \LFXsdoncelista{lof}{\listafiguraslafrox}}
 \makeatother
+\usetikzlibrary{arrows.meta}
+\newcommand{\fuentesdonce}[1]{\par\begingroup\fontsize{9pt}{11.5pt}\selectfont\raggedright Fuente: #1\par\endgroup\medskip}
+
+\newcolumntype{J}[1]{>{\raggedleft\arraybackslash}p{\LFXcolw{#1}}}
+
+\RequirePackage{float}
+
+% Cuerpo explícito por encima del mínimo de 11 puntos, sin cambiar títulos.
+\let\LFXsdonceNormalOriginal\normalsize
+\renewcommand{\normalsize}{\LFXsdonceNormalOriginal\fontsize{11.2pt}{13.6pt}\selectfont}
+\AtBeginDocument{\normalsize}

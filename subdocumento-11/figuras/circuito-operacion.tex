@@ -1,0 +1,12 @@
+\begin{tikzpicture}[
+  every node/.style={font=\fontsize{9.5pt}{12pt}\selectfont},
+  paso/.style={draw=lafroxLinea,rounded corners=2pt,align=center,text width=11.5cm,inner sep=6pt},
+  node distance=5mm,>=Latex]
+\node[paso] (a) {M2 preparación/stock; M9 frío y retiro; guía/acuse ERP\\Nube sa-east-1, WMS de cada sitio y captura móvil desconectada};
+\node[paso,below=of a] (b) {NOC y SOC correlacionan señales y eventos\\Transacción, sitio, versión, colas, réplica y riesgo de seguridad};
+\node[paso,below=of b] (c) {Gerente de servicio decide con la contraparte del CLIENTE\\Incidente y recuperación; ajuste de capacidad; cambio de mantención};
+\node[paso,below=of c] (d) {SRE/DES ejecutan el procedimiento autorizado\\Redundancia local o recuperación us-east-1; pruebas y único escritor};
+\node[paso,below=of d] (e) {Evidencia funcional y reporte del servicio\\Presupuesto de error, HH, consumo, causa y acción verificada};
+\draw[->] (a)--(b);\draw[->] (b)--(c);\draw[->] (c)--(d);\draw[->] (d)--(e);
+\draw[->] (e.east)--++(5mm,0)|-(b.east);
+\end{tikzpicture}
