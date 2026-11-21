@@ -237,8 +237,8 @@ GRUPOS = [
  'Hasta H2 se detallan 119 actividades de 60 paquetes. Entre H2 y H5 se programan 385 actividades de 76 paquetes, por plantilla y quincena. Los 35 paquetes posteriores a H5 quedan en planificación gradual, con sus horizontes en la Figura 3.', 'T-15, 6.1, Figura 3'),
 ]),
 ("Subdocumento 8: Plan de riesgos (T-16)", "SD8", [
-("13 riesgos internos del proveedor declarados al CLIENTE.", P,
- 'El T-16 reúne 36 riesgos y 8.E.1 define 15 controles CT-01 a CT-15, con responsables y evidencia de cierre. CT-03 integra identidad conectada/local y CT-15 conserva stock. ERP, stock e identidad se sincronizan documentalmente con SD4/SD9; faltan implementación, eficacia y las restantes dependencias de diseño/prueba de SD4, SD9 y SD13.', 'SD8, 8.2.1; SD8-Anexos, 8.D.3 y 8.E.1; T-16'),
+("13 riesgos internos del proveedor declarados al CLIENTE.", C,
+ 'Se conserva el registro de 36 riesgos del T-16 y se completa la trazabilidad documental de los 15 controles internos. El Anexo 8.E vincula cada control con el diseño de SD4, los protocolos y campañas de SD9 o los indicadores de SD13, e identifica el responsable y la evidencia de cierre. La implementación y la eficacia se verifican con resultados de ejecución.', 'SD8, 8.2.1; SD8-Anexos, 8.D.3 y 8.E; T-16'),
 ("Riesgos del CLIENTE sin contraparte, pedido ni fecha.", C,
  "Cada riesgo nombra la contraparte, qué se pide, el plazo y la contingencia si no responde.", "SD8-Anexos, 8.A.2 y 8.F.1; T-16"),
 ("No hay riesgo residual.", C,
