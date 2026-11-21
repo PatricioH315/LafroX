@@ -1,0 +1,783 @@
+               LafroX SpA
+
+
+
+
+LICITACIÓN PÚBLICA
+
+
+Licitación N.° TFEP-01/2026
+Proyecto de Plataforma Digital de Misión Crítica
+Caso — Logística
+
+
+
+  Sobre N.° 2 — Oferta Técnica
+
+
+
+
+Propuesta Técnica
+Formulario T-16 — Plan de riesgos
+Subdocumento 08 · Formulario T-16
+
+
+
+MANDANTE                                      REPRESENTANTE LEGAL
+
+Distribuidora Puelche S.A.                    Alex Aravena
+                                              Jefe de Proyecto y Apoderado
+PROPONENTE                                    contacto@lafrox.cl
+LafroX SpA                                    +56 32 250 4100
+RUT 77.418.902-K
+Av. Brasil 2241, Valparaíso
+
+
+
+FECHA DE EMISIÓN
+
+
+27 de Octubre de 2026
+
+
+FIRMA DEL REPRESENTANTE LEGAL
+
+
+
+
+Alex Aravena
+Jefe de Proyecto y Apoderado · LafroX SpA
+LAFROX-Formulario-T-16.pdf                                                   1
+    LafroX SpA
+
+
+
+
+Índice general
+
+Índice general                     2
+
+Lista de tablas                    3
+
+Lista de figuras                   4
+    Referencias                    20
+
+
+
+
+LafroX SpA
+Formulario T-16: Plan de riesgos    2
+    LafroX SpA
+
+
+
+
+Lista de tablas
+Tabla T-16.1 Registro cualitativo de riesgos; Fuente: análisis de riesgos de la solución y
+requisitos de licitación                                                                     6
+Tabla T-16.2 Valoración posterior proyectada. Fuente: Anexo 8.F.2, hipótesis condiciona-
+das a evidencia.                                                                             18
+
+
+
+
+LafroX SpA
+Formulario T-16: Plan de riesgos                                                              3
+    LafroX SpA
+
+
+
+
+Lista de figuras
+
+
+
+
+LafroX SpA
+Formulario T-16: Plan de riesgos   4
+    LafroX SpA
+
+
+
+
+    El registro contiene los 36 riesgos de la propuesta y sigue el Formulario T-16 de las Bases
+Administrativas (p. 63), ISO 31000 (ISO, 2018) y RT-19.04 de las Bases Técnicas Transversales
+(cap. 19, p. 33). Las condiciones de origen corresponden al Caso 02, capítulos 10 y 19; R-036
+explicita además la incertidumbre del perfil de carga para el análisis de escalabilidad de la
+Aclaración 2, 8.2. La matriz 8.D.2 presenta la cobertura de SD8-05, con implementación y
+eficacia pendientes de verificar. Prob. presenta el nivel y factor derivados de 𝑝0 del Anexo 8.B
+mediante las bandas de la Tabla 8.2. Impacto presenta el mayor nivel por esfuerzo condicional,
+plazo, alcance, calidad sanitaria o consecuencias contractuales, justificado por ID en el Anexo
+8.C. Exposición es 𝑞𝑃 × 𝑞𝐼 ; la zona se obtiene de los umbrales de la Tabla 8.4. Los valores se
+usan para priorizar el tratamiento.
+    La Tabla 8.A.1 detalla los disparadores; la Tabla 8.A.2 establece contraparte, solicitud,
+evidencia, plazo y contingencia para las 29 dependencias del CLIENTE. CT significa Contraparte
+Técnica; D es la fecha de la actividad indicada y D-10/D-5 son días hábiles anteriores. La
+recepción formal sigue los plazos contractuales. Cada responsable dirige su equipo. SRE asume
+el trabajo operativo de INN-03 desde el mes 21 y dirige el despliegue por rutas de INN-05 desde
+el mes 22, con imputación a DAT e IMP, respectivamente (Tabla 8.1). Las fichas ejecutables,
+sus plazos, esfuerzo, contingencias y condiciones de habilitación están en 8.F.1; la evidencia
+de la valoración posterior proyectada, en 8.F.2, resumida en T-16.2. El Anexo 8.H presenta la
+propuesta de reservas y sus condiciones de programación y autorización. La eficacia requiere
+verificación y la capacidad y el financiamiento están sujetos a aprobación.
+    El Anexo 8.E vincula los 15 controles internos con su diseño, prueba o indicador, y con la
+evidencia requerida para el cierre. La matriz 8.D.3 traza R-034 (ERP), CT-15 (stock) y CT-03
+(identidad conectada/local) a S4 y T-13/T-17 de S9. Se conserva ERP como único emisor, stock
+con retención local durable e identidad local conforme a AL-ID-01. Para cerrar SD8-06 se
+requieren evidencia de implementación, resultados de ejecución y actas de aceptación.
+
+
+
+
+LafroX SpA
+Formulario T-16: Plan de riesgos                                                              5
+                                                Tabla T-16.1 Registro cualitativo de riesgos; Fuente: análisis de riesgos de la solución y requisitos de licitación
+Formulario T-16: Plan de riesgos
+                                   LafroX SpA
+
+
+
+
+                                                                                                                                                                                                                                LafroX SpA
+                                                   ID    Riesgo                                    Categoría                  Prob.       Impacto    Expos. Mitigación                                   Responsable
+
+                                                 R-001   Dado que la habilitación EDI de cada      Integración y legado      3 / 0,50     4 / 0,40     0,20    Acordar y registrar con Comercial, TI      Arquitecto de Solu-
+                                                         cadena depende de su participación y cer-                                                    (Alta)   y cada cadena el perfil de mensajes,       ción
+                                                         tificación externa, entonces puede que                                                                el acceso a pruebas y la agenda de
+                                                         una cadena del alcance no complete las                                                                certificación en el levantamiento 2.1.5,
+                                                         pruebas o la certificación en su ventana,                                                             previo al inicio de 5.3.1. Ventanas de
+                                                         teniendo como consecuencia una demora                                                                 certificación: cadena principal (5.3.1),
+                                                         en su habilitación y la reprogramación de                                                             del 01-10-2027 al 31-05-2028; demás
+                                                         pruebas y coordinación para completar la                                                              cadenas (5.3.2), del 02-05-2028 al 14-07-
+                                                         evidencia de E2.                                                                                      2028. Reconfirmar la agenda en los meses
+                                                                                                                                                               13–14 si se requiere. JP escala por CT
+                                                                                                                                                               ante falta de respuesta o de certificación
+                                                                                                                                                               a D-5 del inicio de las cuatro semanas
+                                                                                                                                                               finales de evidencia de E2. Continúan las
+                                                                                                                                                               pruebas independientes; la carga manual
+                                                                                                                                                               controlada mantiene la continuidad y la
+                                                                                                                                                               activación EDI requiere certificación.
+                                                 R-002   Dado que la migración sanitaria utiliza Solución y tecnología       4 / 0,70     5 / 0,80     0,56 Solicitar a la Jefa de Calidad, con TI y      Líder de Datos
+                                                         antecedentes del ERP, WMS y planillas y                                                     (Crítica) Bodega, evidencia de origen y decisión
+                                                         requiere vínculos históricos verificables                                                             sobre lotes no reconstruibles; política
+                                                         con evidencia de origen, entonces                                                                     V-07 al cierre del mes 2 y excepciones a
+                                                         puede que los datos recibidos contengan                                                               D-5 de validar cada carga. Si no responde,
+                                                         faltantes de lote o vínculos históricos que                                                           JP escala por CT, se aísla el conjunto y
+                                                         no puedan resolverse con esa evidencia,                                                               queda pendiente su aceptación; no se
+                                                         teniendo como consecuencia que la carga                                                               inventa historia sanitaria.
+                                                         sanitaria afectada quede pendiente de
+                                                         conciliación y decisión documentada, y
+                                                         aumente el trabajo de saneamiento.
+                                                 R-003   Dado que la migración y la reposición       Integración y legado    3 / 0,50     3 / 0,20     0,10 Solicitar al Jefe de Abastecimiento y a      Líder de Datos
+                                                         dependen de la extensión y calidad efec-                                                    (Media) TI el historial de tres años y validación
+                                                         tiva del historial de ventas disponible en                                                          de V-09 al cierre del mes 3; corregir
+                                                         el ERP, entonces puede que el historial                                                             extractos a D-5 de validar la carga. Ante
+                                                         extraído tenga períodos incompletos o                                                               silencio, escalar por CT, separar períodos
+                                                         datos que no puedan utilizarse directa-                                                             incompletos y continuar el perfilado
+                                                         mente, teniendo como consecuencia                                                                   disponible sin reducir la historia exigida.
+                                                         que deban ampliarse la preparación y
+                                                         conciliación de la carga y el tratamiento
+                                                         de excepciones de reposición.
+
+                                                continúa en la página siguiente
+6
+                                                Tabla T-16.1 — continuación
+Formulario T-16: Plan de riesgos
+                                   LafroX SpA
+
+
+
+
+                                                                                                                                                                                                                         LafroX SpA
+                                                   ID    Riesgo                                    Categoría                Prob.      Impacto    Expos. Mitigación                                   Responsable
+
+                                                 R-004   Dado que la aceptación del inventario      Operación del cliente   4 / 0,70   4 / 0,40    0,28    Solicitar a Bodega, con Operaciones y      Líder de Datos
+                                                         migrado requiere conciliar los saldos                                                    (Alta)   Finanzas, protocolo de conciliación en
+                                                         legados con el conteo físico y aprobar                                                            mes 2, validado en mes 3. Confirmar
+                                                         las explicaciones y ajustes antes del                                                             conteo a D-5 del corte y cerrar acta y
+                                                         corte, entonces puede que se detecten                                                             ajustes antes de D. Si no hay respuesta,
+                                                         diferencias sin explicación y ajuste                                                              escalar por CT, repetir conciliación y
+                                                         aprobados a tiempo, teniendo como                                                                 bloquear el corte afectado hasta contar
+                                                         consecuencia que deban repetirse el                                                               con evidencia aprobada.
+                                                         saneamiento y la validación, y la carga
+                                                         afectada no pueda ser aceptada hasta
+                                                         resolverlas.
+                                                 R-005   Dado que la carga inicial de M8 requiere Operación del cliente     3 / 0,50   4 / 0,40    0,20    Solicitar al Gerente de Operaciones y a Líder de Datos
+                                                         saldos de envases por cliente y trans-                                                   (Alta)   Finanzas respaldos y conciliación V-08 de
+                                                         portista sustentados en antecedentes                                                              saldos por cliente y transportista; política
+                                                         conciliables del cliente, entonces puede                                                          en mes 2 y respuesta a D-5 de validar
+                                                         que los antecedentes entregados no                                                                la carga M8 de cada ola. Ante silencio,
+                                                         permitan determinar un saldo conciliado                                                           escalar por CT y mantener M8 pendiente
+                                                         por cliente y transportista, teniendo                                                             para esos saldos; no presumir saldo cero.
+                                                         como consecuencia que deban repetirse
+                                                         la preparación y validación de la carga
+                                                         y no pueda demostrarse M8 con saldos
+                                                         iniciales aceptados.
+                                                 R-006   Dado que las comparaciones históricas Operación del cliente        4 / 0,70   4 / 0,40    0,28    Solicitar a Comercial y Operaciones las Líder de Implanta-
+                                                         de aceptación dependen de horas veri-                                                    (Alta)   horas históricas y a Finanzas los montos ción y Gestión del
+                                                         ficables de entrega y montos esperados                                                            de rendición, con validación de V-10        Cambio
+                                                         de rendición que la captura futura no                                                             al cierre del mes 1. Si no responden,
+                                                         reconstruye, entonces puede que falten                                                            escalar por CT y mantener pendiente
+                                                         horas verificables de entrega o montos es-                                                        la referencia de aceptación; la captura
+                                                         perados de rendición en los antecedentes                                                          futura no reconstruye la historia anterior.
+                                                         históricos, teniendo como consecuencia
+                                                         que no puedan respaldarse con esos
+                                                         registros las comparaciones de OTIF o
+                                                         cuadratura y deba repetirse la validación
+                                                         del período de referencia.
+
+                                                continúa en la página siguiente
+7
+                                                Tabla T-16.1 — continuación
+Formulario T-16: Plan de riesgos
+                                   LafroX SpA
+
+
+
+
+                                                                                                                                                                                                                            LafroX SpA
+                                                   ID    Riesgo                                   Categoría                Prob.      Impacto    Expos. Mitigación                                   Responsable
+
+                                                 R-007   Dado que el volumen histórico utilizado Integración y legado      3 / 0,50   3 / 0,20     0,10 Solicitar a Finanzas y TI el universo de Líder de Datos
+                                                         para estimar la carga de cartera no acre-                                               (Media) deuda vigente, con respuesta inicial al
+                                                         dita que incluya todos los documentos de                                                        cierre del mes 3 y conciliación a D-5
+                                                         deuda todavía vigente, entonces puede                                                           de validar la migración. Ante silencio,
+                                                         que se identifiquen documentos de deuda                                                         escalar por CT y mantener la cartera
+                                                         vigente fuera del volumen histórico consi-                                                      incompleta pendiente; preparar extrac-
+                                                         derado, teniendo como consecuencia que                                                          ción complementaria sin omitir deuda
+                                                         deban extraerse, transformarse y conci-                                                         obligatoria.
+                                                         liarse datos adicionales, aumentando el
+                                                         trabajo y el volumen de transferencia de
+                                                         la migración de cartera.
+                                                 R-008   Dado que los trámites tributarios se       Integración y legado   1 / 0,10   3 / 0,20    0,02     Aceptar pasivamente. Mantener la          Líder de Operación /
+                                                         envían por el sistema de gestión actual                                                 (Baja)    observación de pendientes y los controles SRE
+                                                         del cliente y requieren respuesta del                                                             ya previstos para consultar y conciliar
+                                                         Servicio de Impuestos Internos (SII)                                                              el resultado tributario. No proponer
+                                                         para conocer su resultado, entonces                                                               inversión preventiva adicional con esta
+                                                         puede que el SII no responda mientras                                                             valoración. La ausencia de respuesta no
+                                                         se tramita un documento, teniendo                                                                 autoriza aprobar el trámite ni cerrar el
+                                                         como consecuencia que el trámite quede                                                            proceso.
+                                                         sin confirmación y se retrase su cierre
+                                                         mientras se gestiona y comprueba la
+                                                         respuesta, sin que el silencio equivalga a
+                                                         aprobación.
+                                                 R-009   Dado que la certificación de la parame- Operación del cliente     3 / 0,50   4 / 0,40     0,20    Solicitar a la Jefa de Calidad la matriz   Líder de Calidad
+                                                         trización térmica requiere una matriz                                                    (Alta)   térmica versionada V-11 durante mes 1 y
+                                                         de umbrales y duraciones por producto                                                             su aprobación al cierre del mes 2, antes
+                                                         aprobada por Calidad del cliente, enton-                                                          de certificar. Si no responde, escalar por
+                                                         ces puede que Calidad no apruebe esa                                                              CT y mantener el tratamiento preventivo
+                                                         matriz antes del cierre de las pruebas                                                            de lecturas fuera de ficha; no cerrar
+                                                         y la marcha blanca de los productos                                                               marcha blanca ni aprobar parámetros
+                                                         afectados, teniendo como consecuencia                                                             por el CLIENTE.
+                                                         que no pueda completarse la evidencia
+                                                         de parametrización y aceptación del
+                                                         alcance térmico y deban reprogramarse
+                                                         validaciones.
+
+                                                continúa en la página siguiente
+8
+                                                Tabla T-16.1 — continuación
+Formulario T-16: Plan de riesgos
+                                   LafroX SpA
+
+
+
+
+                                                                                                                                                                                                                          LafroX SpA
+                                                   ID    Riesgo                                   Categoría                Prob.      Impacto    Expos. Mitigación                                   Responsable
+
+                                                 R-010   Dado que el cliente compra el equi-       Operación del cliente   2 / 0,30   4 / 0,40     0,12 Solicitar al Jefe de TI, con Operaciones, Líder de Implanta-
+                                                         pamiento de terreno conforme a la                                                       (Media) calendario de equipos en mes 1, entrega ción y Gestión del
+                                                         especificación de LafroX y debe disponer                                                        confirmada a D-5 y recepción técnica        Cambio
+                                                         de él antes de cada ola, entonces puede                                                         antes de la instalación o prueba D. Ante
+                                                         que el cliente o su proveedor no entregue                                                       silencio o faltante, escalar por CT, conti-
+                                                         el equipamiento antes de la ola progra-                                                         nuar trabajo independiente y bloquear las
+                                                         mada, teniendo como consecuencia que                                                            actividades sin equipo.
+                                                         no puedan ejecutarse con esos equipos
+                                                         la instalación y las pruebas previstas
+                                                         y deban reprogramarse despliegue y
+                                                         acompañamiento.
+                                                 R-011   Dado que la incorporación de cada         Personas y adopción     3 / 0,50   4 / 0,40     0,20    Solicitar al Gerente de Operaciones y     Líder de Implanta-
+                                                         empresa transportista al reparto requiere                                                (Alta)   al representante de cada transportista    ción y Gestión del
+                                                         que su acuerdo operativo esté firmado                                                             el acuerdo y la nómina desde mes 2,       Cambio
+                                                         antes de la ola correspondiente, entonces                                                         firmados a D-5 de su incorporación a la
+                                                         puede que una empresa transportista                                                               ola. Ante silencio, escalar por CT y no
+                                                         no firme el acuerdo a tiempo, teniendo                                                            habilitar a esa empresa; conservar su
+                                                         como consecuencia que sus conductores                                                             cobertura pendiente sin retirarla del
+                                                         no puedan incorporarse ni completar las                                                           alcance.
+                                                         pruebas de esa ola y quede pendiente
+                                                         demostrar la cobertura del transportista.
+                                                 R-012   Dado que la instalación de termógrafos Operación del cliente      2 / 0,30   4 / 0,40     0,12 Solicitar a Operaciones y al propietario Líder de Implanta-
+                                                         en camiones refrigerados de terceros                                                    (Media) permiso de instalación por vehículo con ción y Gestión del
+                                                         requiere acceso al vehículo y autoriza-                                                         D-10 de la visita y obtenerlo a D-5. Ante Cambio
+                                                         ción de su propietario, entonces puede                                                          silencio, escalar por CT, suspender la
+                                                         que el propietario niegue el acceso o                                                           intervención y proponer otra visita o
+                                                         la autorización para instalar el equipo,                                                        vehículo autorizado; mantener pendiente
+                                                         teniendo como consecuencia que no                                                               la evidencia térmica.
+                                                         pueda instalarse ni integrarse el termó-
+                                                         grafo antes de incorporar la ruta y quede
+                                                         pendiente la evidencia de temperatura.
+
+                                                continúa en la página siguiente
+9
+                                                Tabla T-16.1 — continuación
+Formulario T-16: Plan de riesgos
+                                   LafroX SpA
+
+
+
+
+                                                                                                                                                                                                                           LafroX SpA
+                                                   ID    Riesgo                                   Categoría               Prob.      Impacto    Expos. Mitigación                                   Responsable
+
+                                                 R-013   Dado que la implantación exige que los Personas y adopción       4 / 0,70   4 / 0,40     0,28    Solicitar a Comercial y Operaciones,        Líder de Implanta-
+                                                         usuarios incorporen sus transacciones al                                                (Alta)   con Bodega por turno, responsables          ción y Gestión del
+                                                         registro oficial de la solución, entonces                                                        y agenda de acompañamiento a D-5            Cambio
+                                                         puede que parte de los usuarios conti-                                                           del inicio de cada ola, convocando a
+                                                         núe registrando exclusivamente en el                                                             D-10. Si no responden o persiste el
+                                                         procedimiento anterior durante una                                                               registro externo, escalar por CT, focalizar
+                                                         ola, teniendo como consecuencia que                                                              acompañamiento y mantener pendiente
+                                                         no pueda acreditarse la cobertura de                                                             la evidencia de adopción.
+                                                         adopción requerida para cerrar esa ola
+                                                         y deba extenderse la intervención de
+                                                         implantación.
+                                                 R-014   Dado que el planificador del CLIENTE       Personas y adopción   2 / 0,30   4 / 0,40     0,12 Solicitar al Gerente de Operaciones y          Líder de Implanta-
+                                                         se jubilará dentro de dos años, sin fecha                                              (Media) al planificador confirmación de retiro        ción y Gestión del
+                                                         calendario especificada, y su ausencia                                                         y disponibilidad V-14 al cierre del mes       Cambio
+                                                         reduce el cumplimiento de entrega entre                                                        1; transferir y validar reglas con el
+                                                         6 y 9 puntos porcentuales según el caso,                                                       ayudante en meses 1–3. Probar las rutas
+                                                         entonces puede que llegue su retiro o                                                          y excepciones sin el planificador en la
+                                                         indisponibilidad antes de transferir y                                                         marcha blanca de meses 13–15 (S7, 9.6.1).
+                                                         probar las reglas y excepciones de rutas,                                                      Si falta respuesta o se retira antes, escalar
+                                                         teniendo como consecuencia pérdida de                                                          por CT y reconstruir con ayudante e
+                                                         conocimiento operativo, reconstrucción                                                         historia verificable, sin dar por validadas
+                                                         extraordinaria y riesgo de no acreditar el                                                     reglas pendientes.
+                                                         resultado R18-16.
+                                                 R-015   Dado que la capacitación y certificación Personas y adopción     2 / 0,30   4 / 0,40     0,12 Solicitar a Operaciones, Bodega, Co-        Líder de Implanta-
+                                                         deben realizarse sin detener pedidos,                                                  (Media) mercial y TI, según perfil, nómina y       ción y Gestión del
+                                                         ventas ni reparto, y el cliente debe dis-                                                      liberación horaria a D-5 de cada sesión Cambio
+                                                         poner de los usuarios en los horarios                                                          convocada a D-10. Ante silencio o au-
+                                                         acordados, entonces puede que las nece-                                                        sencia, escalar por CT y reprogramar
+                                                         sidades operativas impidan que algunos                                                         evaluación; usar sólo suplentes certifica-
+                                                         usuarios asistan a formación y evalua-                                                         dos y no acreditar preparación ni cierre
+                                                         ción antes del cierre de su ola, teniendo                                                      de ola sin evidencia.
+                                                         como consecuencia que deban repro-
+                                                         gramarse sesiones y acompañamiento y
+                                                         no pueda acreditarse que esos usuarios
+                                                         están preparados hasta que completen la
+                                                         evaluación.
+
+                                                continúa en la página siguiente
+10
+                                                Tabla T-16.1 — continuación
+Formulario T-16: Plan de riesgos
+                                   LafroX SpA
+
+
+
+
+                                                                                                                                                                                                                           LafroX SpA
+                                                   ID    Riesgo                                   Categoría                Prob.      Impacto    Expos. Mitigación                                 Responsable
+
+                                                 R-016   Dado que los diseños, pruebas y acepta- Operación del cliente     3 / 0,50   4 / 0,40     0,20  Solicitar a CT área decisora y suplente, Jefe de Proyecto
+                                                         ciones incluyen actividades que depen-                                                   (Alta) con agenda al cierre del mes 1; cursar in-
+                                                         den de validaciones o decisiones de áreas                                                       sumos a D-10 y pedir respuesta a D-5. Las
+                                                         del cliente, entonces puede que el área                                                         aceptaciones formales conservan diez
+                                                         requerida no entregue una validación o                                                          días hábiles. Para promover la región de
+                                                         decisión en la fecha acordada, teniendo                                                         contingencia, avisar al suplente a los 15
+                                                         como consecuencia que se detengan o                                                             min sin respuesta del titular y obtener
+                                                         repitan tareas dependientes, se consuma                                                         decisión dentro de 30 min (S4, 4.3.2.5);
+                                                         holgura y deban reprogramarse recursos.                                                         no esperar el plazo ordinario. Mantener
+                                                                                                                                                         bloqueada la acción sin autorización; el
+                                                                                                                                                         silencio no permite cambios.
+                                                 R-017   Dado que Concepción parte con fibra       Operación del cliente   2 / 0,30   4 / 0,40     0,12 Mitigar. Verificar respaldos antes de       Líder de Operación /
+                                                         de un solo proveedor sin respaldo y                                                     (Media) aceptar la ola de Concepción; no consi- SRE
+                                                         los demás sitios también dependen de                                                            derar disponible un enlace sólo por estar
+                                                         enlaces externos, entonces puede que se                                                         ofertado. Mantener y ensayar los enlaces
+                                                         interrumpa el camino disponible antes                                                           ya ofertados: en Talca y Concepción, fibra
+                                                         de verificar los respaldos propuestos o                                                         y LTE con Starlink en espera caliente;
+                                                         falle el último camino utilizable durante                                                       en cross-docking, Starlink con LTE En-
+                                                         operación, teniendo como consecuencia                                                           tel/Claro y conmutación menor a 30 s.
+                                                         aislamiento de servicios centrales,                                                             En Los Ángeles de madrugada, probar
+                                                         acumulación de sincronización y gestión                                                         pérdida del camino Starlink restante y
+                                                         de restitución y conciliación.                                                                  continuidad local de su ventana de 3 h.
+                                                                                                                                                         Coordinar restitución y conciliación sin
+                                                                                                                                                         duplicar el mismo corte como falla de SII,
+                                                                                                                                                         POS o mapas. Referencia: S4, 4.2.5.3.
+                                                 R-018   Dado que algunos equipos de infraestruc- Operación del cliente    1 / 0,10   4 / 0,40     0,04 Aceptar pasivamente. Observar suminis- Líder de Operación /
+                                                         tura dependen del suministro eléctrico y                                                 (Baja) tro y autonomía del respaldo existente. Si SRE
+                                                         tienen respaldo de autonomía limitada,                                                          se supera, atender solo los componentes
+                                                         entonces puede que un corte de electri-                                                         mantenidos por LafroX y verificar su
+                                                         cidad supere la autonomía del respaldo                                                          restitución. Conservar la zona baja sin
+                                                         aplicable en un sitio atendido por La-                                                          añadir capacidad eléctrica ni atribuir
+                                                         froX, teniendo como consecuencia que                                                            pérdidas operacionales del cliente al
+                                                         los equipos afectados dejen de prestar                                                          impacto del proyecto.
+                                                         servicio hasta restablecer la energía o
+                                                         recuperar la infraestructura.
+
+                                                continúa en la página siguiente
+11
+                                                Tabla T-16.1 — continuación
+Formulario T-16: Plan de riesgos
+                                   LafroX SpA
+
+
+
+
+                                                                                                                                                                                                                             LafroX SpA
+                                                   ID    Riesgo                                   Categoría                Prob.      Impacto    Expos. Mitigación                                   Responsable
+
+                                                 R-019   Dado que la solución propone operar       Regulatorio y externo   2 / 0,30   4 / 0,40     0,12 Solicitar por CT, con TI y la autoridad      Arquitecto de Solu-
+                                                         y recuperarse en regiones de nube de                                                    (Media) del CLIENTE encauzada por Gerencia          ción
+                                                         Brasil y Estados Unidos, y el tratamiento                                                       General, aprobación escrita de residencia
+                                                         y transferencia internacional requieren                                                         y transferencia en mes 1, resuelta al
+                                                         aprobación del cliente, entonces puede                                                          cierre del mes 2 o antes de habilitar
+                                                         que el cliente no otorgue la aprobación                                                         datos, lo que ocurra primero. Ante
+                                                         necesaria sobre residencia y transferen-                                                        silencio, escalar y preparar alternativa de
+                                                         cia de datos al habilitar esos entornos,                                                        arquitectura; mantener deshabilitada la
+                                                         teniendo como consecuencia que no                                                               transferencia no aprobada.
+                                                         pueda completarse la habilitación o la
+                                                         evidencia de recuperación afectada hasta
+                                                         resolver formalmente la condición.
+                                                 R-020   Dado que una intervención para re-        Operación del cliente   2 / 0,30   4 / 0,40     0,12 Solicitar a CT, Operaciones y TI flujo y su- Encargado de Segu-
+                                                         mediar un incidente o vulnerabilidad                                                    (Media) plentes al cierre del mes 1; ante incidente, ridad de la Informa-
+                                                         durante un período congelado requiere                                                           pedir autorización escrita antes del cam- ción
+                                                         autorización del cliente, entonces puede                                                        bio. Sin respuesta, escalar en una hora
+                                                         que el cliente no autorice el cambio de                                                         o antes si lo exige el plazo de atención,
+                                                         emergencia solicitado, teniendo como                                                            manteniendo contención autorizada y
+                                                         consecuencia que deba sostenerse la                                                             estado seguro. El silencio no permite
+                                                         contención y gestionarse el conflicto                                                           intervenir durante congelamiento.
+                                                         entre la fecha habilitada y el plazo de
+                                                         remediación, sin que ello implique una
+                                                         exención contractual.
+                                                 R-021   Una falla mecánica interrumpe el reco- Operación del cliente      2 / 0,30   2 / 0,10    0,03    Aceptar pasivamente. Registrar los casos Líder de Implanta-
+                                                         rrido de reparto durante una prueba de                                                  (Baja)   TI pendientes y conservar la evidencia ción y Gestión del
+                                                         implantación. Quedan casos TI pendien-                                                           disponible. Coordinar con Operaciones Cambio
+                                                         tes y se puede retrasar la obtención de                                                          del CLIENTE la repetición de los casos
+                                                         evidencia de aceptación.                                                                         afectados cuando el transportista habilite
+                                                                                                                                                          otro recorrido.
+                                                 R-022   Un accidente de tránsito interrumpe      Operación del cliente    1 / 0,10   2 / 0,10    0,01    Aceptar pasivamente. Suspender la prue- Líder de Implanta-
+                                                         el recorrido de reparto durante una                                                     (Baja)   ba TI y registrar los casos interrumpidos. ción y Gestión del
+                                                         prueba de implantación. Quedan casos                                                             Con el recorrido alternativo autorizado Cambio
+                                                         TI pendientes y puede requerirse otra                                                            por Operaciones del CLIENTE y el trans-
+                                                         ventana de validación.                                                                           portista, completar los casos pendientes.
+                                                 R-023   Un asalto, robo o incendio interrumpe Operación del cliente       1 / 0,10   2 / 0,10    0,01    Aceptar pasivamente. Preservar la          Líder de Implanta-
+                                                         el recorrido de reparto durante una                                                     (Baja)   evidencia TI disponible e identificar      ción y Gestión del
+                                                         prueba de implantación. Puede quedar                                                             los casos que requieren repetición.        Cambio
+                                                         incompleta la evidencia TI prevista para                                                         Reanudar la validación en una ventana
+                                                         la aceptación.                                                                                   habilitada por Operaciones del CLIENTE
+                                                                                                                                                          y el transportista.
+
+                                                continúa en la página siguiente
+12
+                                                Tabla T-16.1 — continuación
+Formulario T-16: Plan de riesgos
+                                   LafroX SpA
+
+
+
+
+                                                                                                                                                                                                                          LafroX SpA
+                                                   ID    Riesgo                                     Categoría                Prob.      Impacto    Expos. Mitigación                                  Responsable
+
+                                                 R-024   Dado que los conductores externos           Personas y adopción     3 / 0,50   3 / 0,20     0,10 Solicitar a Operaciones y al transportista Líder de Implanta-
+                                                         requieren comunicación, autorización                                                      (Media) nómina y suplentes a D-5 de incorporar ción y Gestión del
+                                                         y capacitación para utilizar la solución,                                                         la empresa y confirmar conductor,         Cambio
+                                                         entonces puede que un transportista                                                               vehículo y viaje antes de cada salida.
+                                                         presente sin aviso a un reemplazo que                                                             Si falta respuesta o llega un sustituto,
+                                                         aún no esté autorizado o capacitado,                                                              escalar, verificar en andén y solicitar
+                                                         teniendo como consecuencia que deban                                                              conductor certificado; no habilitar uso
+                                                         atenderse su habilitación y formación y                                                           no autorizado ni acreditar cobertura
+                                                         verificarse las entregas afectadas antes de                                                       incompleta.
+                                                         cerrar la evidencia de la ola.
+                                                 R-025   Dado que la solución tiene un alcance       Contrato y licitación   3 / 0,50   3 / 0,20     0,10 Solicitar por CT a la gerencia peticionaria Jefe de Proyecto
+                                                         delimitado por requisitos, exclusiones                                                    (Media) solicitud escrita y decisión del cambio
+                                                         y decisiones aprobadas, contra el cual                                                            antes de su primera actividad dependien-
+                                                         deben evaluarse las solicitudes posterio-                                                         te; registrar y remitir el mismo día hábil.
+                                                         res, entonces puede que la contraparte                                                            Ante silencio, mantener línea base y con-
+                                                         solicite una función, integración o modifi-                                                       tinuar trabajo independiente; si amenaza
+                                                         cación que exceda el alcance y requiera                                                           un hito, escalar al Comité Ejecutivo sin
+                                                         trabajo adicional, teniendo como conse-                                                           iniciar desarrollo no aprobado.
+                                                         cuencia que deba evaluarse y tramitarse
+                                                         el cambio y, si se aprueba, ajustarse
+                                                         esfuerzo, costo o programación según el
+                                                         impacto acordado.
+                                                 R-026   Dado que la solución trata y conserva do- Regulatorio y externo     2 / 0,30   4 / 0,40     0,12 Escalar. La interpretación normativa y la Arquitecto de Solu-
+                                                         cumentos, ubicación y evidencia durante                                                   (Media) decisión sobre obligaciones y cambios ción
+                                                         una vigencia contractual de varios años                                                           contractuales requieren autoridad del
+                                                         sujeta a exigencias normativas, entonces                                                          cliente y asesoría competente. Elevar el
+                                                         puede que una modificación normativa o                                                            cambio aplicable para definir alcance y fi-
+                                                         nueva interpretación aplicable exija ajus-                                                        nanciación, y luego planificar adecuación
+                                                         tar controles, conservación o eliminación                                                         técnica. No inventar reformas, multas ni
+                                                         de datos, teniendo como consecuencia                                                              cobertura contractual.
+                                                         que deban adaptarse y validarse compo-
+                                                         nentes y procedimientos afectados, con
+                                                         trabajo adicional y posibles ajustes de
+                                                         programación sujetos al contrato.
+
+                                                continúa en la página siguiente
+13
+                                                Tabla T-16.1 — continuación
+Formulario T-16: Plan de riesgos
+                                   LafroX SpA
+
+
+
+
+                                                                                                                                                                                                                            LafroX SpA
+                                                   ID    Riesgo                                    Categoría               Prob.      Impacto    Expos. Mitigación                                   Responsable
+
+                                                 R-027   Dado que el tramo variable de la Opera- Contrato y licitación     3 / 0,50   3 / 0,20     0,10 Solicitar a Finanzas, con Comercial y CT, Jefe de Proyecto
+                                                         ción de la innovación 4 se liga al costo                                                (Media) reglas de 7.4.1 aprobadas al cierre del
+                                                         de servir, entonces puede que ese costo                                                         mes 20 y tres liquidaciones en sombra
+                                                         varíe por causas externas, como el com-                                                         reproducidas en meses 21–23 antes del
+                                                         bustible, un cambio de malla o el peak                                                          pago variable del mes 24. Ante silencio,
+                                                         de septiembre, o que se intente bajarlo                                                         no activar el tramo; una disputa se escala
+                                                         degradando el servicio o excluyendo                                                             y suspende sólo el devengo correspon-
+                                                         clientes, teniendo como consecuencia                                                            diente según contrato, manteniendo el
+                                                         disputas en la liquidación del tramo                                                            servicio.
+                                                         variable.
+                                                 R-028   Dado que existe objeción sindical a cá- Personas y adopción       3 / 0,50   4 / 0,40     0,20    Mitigar y escalar. JP coordina con Ope- Jefe de Proyecto
+                                                         maras en cabina y al control de jornada                                                  (Alta)   raciones, TI y sindicato el acuerdo 9.7.2
+                                                         por GPS, aunque la propuesta excluye                                                              antes de la ola: convocar a D-10 y resolver
+                                                         cámaras en cabina y separa la telemetría                                                          a D-5. Explicar finalidades, acceso y con-
+                                                         operacional, entonces puede que no se                                                             troles; mantener excluidas las cámaras
+                                                         acuerden o comprendan las finalidades                                                             en cabina y no usar GPS para jornada sin
+                                                         y controles del uso propuesto antes de                                                            acuerdo previo. Ante desacuerdo, escalar
+                                                         la ola de reparto, teniendo como conse-                                                           por CT, mantener sólo el uso operacional
+                                                         cuencia resistencia a la incorporación y                                                          autorizado y registrar la cobertura de la
+                                                         pruebas o aceptaciones pendientes.                                                                ola pendiente.
+                                                 R-029   Dado que preparación nocturna tiene         Personas y adopción   4 / 0,70   4 / 0,40     0,28    Mitigar. Mantener 9.5.2 en meses 13–56, Líder de Implanta-
+                                                         rotación anual del 38 % y requiere capaci-                                               (Alta)   turno 22:00–06:00, tutor y evaluación       ción y Gestión del
+                                                         tación continua, entonces puede que las                                                           antes del trabajo autónomo, con apren- Cambio
+                                                         incorporaciones superen la capacidad de                                                           dizaje máximo de dos horas. Bodega y
+                                                         tutoría y evaluación o lleguen al flujo sin                                                       Operaciones entregan altas por turno
+                                                         competencias verificadas, teniendo como                                                           antes de asignarlas. IMP conduce hasta
+                                                         consecuencia errores de preparación,                                                              mes 21 y SRE desde 22, familia IMP. Ante
+                                                         refuerzo extraordinario y certificación de                                                        sobrecarga, usar personal certificado,
+                                                         la ola pendiente.                                                                                 reforzar la inducción y escalar por CT; no
+                                                                                                                                                           duplicar las HH ordinarias de 9.5.2.
+
+                                                continúa en la página siguiente
+14
+                                                Tabla T-16.1 — continuación
+Formulario T-16: Plan de riesgos
+                                   LafroX SpA
+
+
+
+
+                                                                                                                                                                                                                            LafroX SpA
+                                                   ID    Riesgo                                   Categoría               Prob.      Impacto    Expos. Mitigación                                   Responsable
+
+                                                 R-030   Dado que el CLIENTE no tiene documen- Integración y legado       3 / 0,50   4 / 0,40    0,20    Mitigar y escalar. ARQ solicita a TI         Arquitecto de Solu-
+                                                         tación técnica de las interfaces del ERP                                               (Alta)   acceso, diccionario y condiciones de         ción
+                                                         ni del WMS de 2013, que se reemplaza                                                            extracción en mes 1 (2.1.5, 5.1.1 y V-
+                                                         progresivamente, entonces puede que                                                             16); DAT verifica la migración del WMS.
+                                                         el levantamiento no permita verificar                                                           Probar temprano sin modificar el ERP. Si
+                                                         a tiempo contratos de intercambio y                                                             falta una interfaz, evaluar intercambio de
+                                                         extracción del legado, teniendo como                                                            archivos controlado, sujeto a demostrar
+                                                         consecuencia reproceso de adaptado-                                                             los requisitos; elevar por CT el bloqueo y
+                                                         res o cargas y bloqueo de pruebas de                                                            sus impactos. La alternativa no acredita
+                                                         integración o migración.                                                                        por sí sola latencia, integridad ni emisión
+                                                                                                                                                         tributaria.
+                                                 R-031   Dado que el peak de septiembre casi      Contrato y licitación   3 / 0,50   4 / 0,40    0,20    Mitigar y escalar. JP acuerda con Opera- Jefe de Proyecto
+                                                         duplica entregas durante tres semanas                                                  (Alta)   ciones y CT disponibilidad y continuidad
+                                                         y coincide con el cierre de la marcha                                                           antes de septiembre; cerrar habilitacio-
+                                                         blanca E2 en el calendario supuesto de                                                          nes en agosto según S7. En meses 19–20
+                                                         S7, entonces puede que un incidente,                                                            mantener evidencia diaria de las seis con-
+                                                         una validación pendiente o la falta de                                                          diciones de marcha blanca. Un defecto
+                                                         disponibilidad de usuarios no pueda                                                             durante 1–25 de septiembre no autoriza
+                                                         resolverse dentro de las ventanas auto-                                                         despliegue: activar continuidad aprobada
+                                                         rizadas, teniendo como consecuencia                                                             y R-020 si requiere autorización. Si persis-
+                                                         incumplimiento de condiciones de cie-                                                           te una condición incumplida, no declarar
+                                                         rre y necesidad de recuperación de la                                                           cierre; elevar plan de recuperación sin
+                                                         programación.                                                                                   mover hitos por cuenta propia.
+                                                 R-032   Dado que la propuesta opera durante 56 Solución y tecnología     3 / 0,50   4 / 0,40    0,20    Mitigar. ARQ mantiene inventario de ver- Arquitecto de Solu-
+                                                         meses con componentes como Laravel 13,                                                 (Alta)   siones y revisa soporte y compatibilidad ción
+                                                         PHP 8.5 y Proxmox, entonces puede que                                                           trimestralmente desde mes 1, con DES y
+                                                         cambien su soporte o compatibilidad de                                                          SRE. Preparar y probar adecuación antes
+                                                         forma que las actualizaciones ordinarias                                                        del límite verificado de soporte, dentro de
+                                                         no basten, teniendo como consecuen-                                                             ventanas autorizadas. Si el cambio excede
+                                                         cia una adecuación extraordinaria y                                                             la actualización ordinaria 10.2.5, regis-
+                                                         revalidación para mantener seguridad y                                                          trar el esfuerzo extraordinario y elevar
+                                                         continuidad.                                                                                    impactos por CT; usar reversión ensayada
+                                                                                                                                                         y soporte permitido, sin sostener una
+                                                                                                                                                         versión insegura por conveniencia.
+
+                                                continúa en la página siguiente
+15
+                                                Tabla T-16.1 — continuación
+Formulario T-16: Plan de riesgos
+                                   LafroX SpA
+
+
+
+
+                                                                                                                                                                                                                          LafroX SpA
+                                                   ID    Riesgo                                    Categoría               Prob.      Impacto    Expos. Mitigación                                 Responsable
+
+                                                 R-033   Dado que la arquitectura utiliza servi-   Solución y tecnología   2 / 0,30   4 / 0,40     0,12 Mitigar. ARQ verifica con TI propiedad Arquitecto de Solu-
+                                                         cios gestionados de AWS y capacidades                                                   (Media) de cuentas, acceso a datos, claves, expor- ción
+                                                         específicas de su plataforma, entonces                                                          taciones e infraestructura como código
+                                                         puede que un cambio de condiciones o                                                            en la recepción inicial y en cada actuali-
+                                                         una necesidad de salida encuentre res-                                                          zación anual del plan 1.6.3. Probar una
+                                                         tricciones de exportación, credenciales                                                         restauración utilizable, no sólo descargar
+                                                         o equivalencia funcional no resueltas,                                                          archivos. Ante restricción, documentar
+                                                         teniendo como consecuencia trabajo                                                              brecha, mantener continuidad autorizada
+                                                         extraordinario y demora para sustituir el                                                       y escalar por CT alternativas y decisión
+                                                         servicio o ejecutar reversibilidad.                                                             contractual; no declarar reversibilidad
+                                                                                                                                                         completa ni cambiar de proveedor sin
+                                                                                                                                                         prueba y aprobación.
+                                                 R-034   Dado que el ERP del CLIENTE es el          Integración y legado   2 / 0,30   4 / 0,40     0,12 Mitigar y escalar. ARQ/SRE acuerdan         Arquitecto de Solu-
+                                                         único emisor tributario y reside en Talca,                                              (Media) con TI y Finanzas restitución del ERP y ción
+                                                         entonces puede que su indisponibilidad,                                                         ensayan AL-DTE-01/AL-DR-01 antes de
+                                                         incluida la pérdida de la sala, impida                                                          H5/H10, incluida pérdida de sala. Man-
+                                                         emitir la nueva guía requerida por                                                              tener sólo salidas con guía preemitida
+                                                         un cambio de carga o una anulación,                                                             aún válida y bloquear las que requieren
+                                                         teniendo como consecuencia bloqueo de                                                           nueva guía. Recuperar WMS en nube no
+                                                         la salida hasta restituir el ERP.                                                               restaura el ERP ni exceptúa el RTO reque-
+                                                                                                                                                         rido; registrar y escalar por CT cualquier
+                                                                                                                                                         incumplimiento, sin segundo emisor ni
+                                                                                                                                                         aprobación tributaria por silencio.
+                                                 R-035   Dado que los conductores de terceros no Personas y adopción       3 / 0,50   4 / 0,40     0,20 Mitigar y escalar. IMP coordina con         Líder de Implanta-
+                                                         son trabajadores de Puelche y requieren                                                  (Alta) Operaciones, transportista y conduc-       ción y Gestión del
+                                                         incorporación acordada con su transpor-                                                         tor demostración y acompañamiento          Cambio
+                                                         tista, entonces puede que un conductor                                                          antes de su salida, dentro de 9.5.3. Con-
+                                                         autorizado y convocado rechace utilizar                                                         firmar disponibilidad a D-5 de la ola
+                                                         el terminal o el flujo digital aun existien-                                                    y aceptación práctica en andén. Ante
+                                                         do acuerdo de la empresa, teniendo como                                                         rechazo, solicitar a la empresa conductor
+                                                         consecuencia entregas sin evidencia                                                             certificado y dispuesto, mantener acom-
+                                                         digital completa y cobertura de adopción                                                        pañamiento y elevar por CT la cobertura
+                                                         de la ola pendiente.                                                                            pendiente; no atribuir a LafroX facul-
+                                                                                                                                                         tades laborales ni declarar completa la
+                                                                                                                                                         evidencia faltante.
+
+                                                continúa en la página siguiente
+16
+                                                Tabla T-16.1 — continuación
+Formulario T-16: Plan de riesgos
+                                   LafroX SpA
+
+
+
+
+                                                                                                                                                                                                                          LafroX SpA
+                                                  ID     Riesgo                                   Categoría                Prob.      Impacto    Expos. Mitigación                                 Responsable
+
+                                                 R-036   Dado que el perfil real de carga requiere Operación del cliente   2 / 0,30   4 / 0,40     0,12 Mitigar. ARQ solicita el perfil a Operacio- Arquitecto de Solu-
+                                                         confirmar su concentración temporal y                                                   (Media) nes/TI en los primeros cinco días hábiles ción
+                                                         mezcla de transacciones con Operaciones                                                         del mes 1 y lo valida al cierre de ese mes;
+                                                         y TI, entonces puede que esas caracterís-                                                       revalida antes de H5/H10, preparación
+                                                         ticas difieran del perfil validado durante                                                      del peak y cambios del perfil. SRE asume
+                                                         la ejecución u operación, teniendo como                                                         gestión operativa desde mes 22, fami-
+                                                         consecuencia revalidación de capacidad                                                          lia ARQ. Ante divergencia, conservar
+                                                         y recuperación coordinada antes de                                                              mediciones, ejecutar CT-14, bloquear pro-
+                                                         habilitar el alcance afectado.                                                                  moción afectada y elevar recuperación
+                                                                                                                                                         por CT antes del hito. El peak conocido,
+                                                                                                                                                         crecimiento comprometido y corrección
+                                                                                                                                                         del diseño dentro del alcance siguen a
+                                                                                                                                                         cargo de LafroX.
+17
+                                                   La proyección incorpora una vez el efecto de los planes adicionales de 8.F.1. R-002 permanece en zona Crítica. R-006, R-029,
+Formulario T-16: Plan de riesgos
+                                   LafroX SpA
+
+
+
+
+                                                R-030 y R-031 permanecen en zona Alta. La justificación posterior a la Tabla 8.F.2 indica la evidencia y las validaciones necesarias
+
+
+
+
+                                                                                                                                                                                          LafroX SpA
+                                                para levantar cada bloqueo.
+                                                   La matriz 8.F.2a completa las cinco fichas con prueba, verificador, plazo y criterio de habilitación. Las cifras siguientes son
+                                                objetivos condicionados del tratamiento propuesto; mientras falte evidencia satisfactoria se decide con la valoración inicial de
+                                                T-16.1. Evidencia insuficiente o prueba fallida mantienen el bloqueo, exigen corrección y repetición. Una prueba satisfactoria
+                                                permite proponer reevaluación por las escalas de 8.1.3, con aprobación competente; no acredita por sí sola E menor que 0,20 en
+                                                toda la ventana. Se conserva I=5 en R-002 e I=4 en los otros cuatro mientras persistan sus consecuencias. La suficiencia de HH queda
+                                                sujeta al contraste de actividades y capacidad de 8.F, sin duplicar esfuerzo ordinario. SD8-04 sigue parcial hasta acreditar eficacia y
+                                                nivel manejable.
+
+                                                Tabla T-16.2 Valoración posterior proyectada. Fuente: Anexo 8.F.2, hipótesis condicionadas a evidencia.
+
+
+
+                                                        ID                   p1                     I1 / factor                         E1 / zona         Dueño
+
+                                                      R-001               25,00 %                    4 / 0,40                         0,12 / Media        ARQ
+                                                      R-002               60,00 %                    5 / 0,80                         0,56 / Crítica      DAT
+                                                      R-003               30,00 %                    3 / 0,20                          0,06 / Baja        DAT
+                                                      R-004               30,00 %                    4 / 0,40                         0,12 / Media        DAT
+                                                      R-005               30,00 %                    4 / 0,40                         0,12 / Media        DAT
+                                                      R-006               35,00 %                    4 / 0,40                          0,20 / Alta        IMP
+                                                      R-007               25,00 %                    3 / 0,20                          0,06 / Baja        DAT
+                                                      R-008               10,00 %                    3 / 0,20                          0,02 / Baja        SRE
+                                                      R-009               20,00 %                    4 / 0,40                         0,12 / Media        CAL
+                                                      R-010               20,00 %                    4 / 0,40                         0,12 / Media        IMP
+                                                      R-011               25,00 %                    4 / 0,40                         0,12 / Media        IMP
+                                                      R-012               15,00 %                    4 / 0,40                         0,12 / Media        IMP
+                                                      R-013               30,00 %                    4 / 0,40                         0,12 / Media        IMP
+
+                                                continúa en la página siguiente
+18
+Formulario T-16: Plan de riesgos
+                                   LafroX SpA
+
+
+
+
+                                                Tabla T-16.2 — continuación
+
+
+
+
+                                                                                                                                         LafroX SpA
+                                                       ID                     p1   I1 / factor    E1 / zona     Dueño
+
+                                                      R-014              20,00 %    4 / 0,40     0,12 / Media   IMP
+                                                      R-015              20,00 %    4 / 0,40     0,12 / Media   IMP
+                                                      R-016              25,00 %    4 / 0,40     0,12 / Media   JP
+                                                      R-017              20,00 %    4 / 0,40     0,12 / Media   SRE
+                                                      R-018               5,00 %    4 / 0,40     0,04 / Baja    SRE
+                                                      R-019              20,00 %    4 / 0,40     0,12 / Media   ARQ
+                                                      R-020              10,00 %    4 / 0,40     0,04 / Baja    SEG
+                                                      R-021              15,00 %    2 / 0,10     0,03 / Baja    IMP
+                                                      R-022              10,00 %    2 / 0,10     0,01 / Baja    IMP
+                                                      R-023              10,00 %    2 / 0,10     0,01 / Baja    IMP
+                                                      R-024              30,00 %    3 / 0,20     0,06 / Baja    IMP
+                                                      R-025              30,00 %    3 / 0,20     0,06 / Baja    JP
+                                                      R-026              20,00 %    4 / 0,40     0,12 / Media   ARQ
+                                                      R-027              25,00 %    3 / 0,20     0,06 / Baja    JP
+                                                      R-028              25,00 %    4 / 0,40     0,12 / Media   JP
+                                                      R-029              35,00 %    4 / 0,40      0,20 / Alta   IMP
+                                                      R-030              35,00 %    4 / 0,40      0,20 / Alta   ARQ
+                                                      R-031              35,00 %    4 / 0,40      0,20 / Alta   JP
+                                                      R-032              25,00 %    4 / 0,40     0,12 / Media   ARQ
+                                                      R-033              20,00 %    4 / 0,40     0,12 / Media   ARQ
+                                                      R-034              25,00 %    4 / 0,40     0,12 / Media   ARQ
+                                                      R-035              25,00 %    4 / 0,40     0,12 / Media   IMP
+                                                      R-036              30,00 %    4 / 0,40     0,12 / Media   ARQ (SRE desde mes 22)
+19
+    LafroX SpA
+
+
+
+
+Referencias
+Distribuidora Puelche S.A. (2026a). Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de
+        Solución Integral de Software y Servicios de Operación.
+Distribuidora Puelche S.A. (2026b). Bases Técnicas Transversales de Licitación N.º TFEP-01/2026.
+Distribuidora Puelche S.A. (2026c). Caso 02: Logística. Especificaciones del problema y operación de Distri-
+        buidora Puelche S.A.
+International Organization for Standardization. (2018). ISO 31000:2018 Risk management — Guidelines.
+        https://www.iso.org/standard/65694.html
+
+
+
+
+LafroX SpA
+Formulario T-16: Plan de riesgos                                                                         20
+

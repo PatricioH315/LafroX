@@ -1,0 +1,1388 @@
+               LafroX SpA
+
+
+
+
+LICITACIÓN PÚBLICA
+
+
+Licitación N.° TFEP-01/2026
+Proyecto de Plataforma Digital de Misión Crítica
+Caso — Logística
+
+
+
+  Sobre N.° 2 — Oferta Técnica
+
+
+
+
+Propuesta Técnica
+Subdocumento 08 — Plan de riesgos
+Subdocumento 08 · Formulario T-16
+
+
+
+MANDANTE                                      REPRESENTANTE LEGAL
+
+Distribuidora Puelche S.A.                    Alex Aravena
+                                              Jefe de Proyecto y Apoderado
+PROPONENTE                                    contacto@lafrox.cl
+LafroX SpA                                    +56 32 250 4100
+RUT 77.418.902-K
+Av. Brasil 2241, Valparaíso
+
+
+
+FECHA DE EMISIÓN
+
+
+27 de Octubre de 2026
+
+
+FIRMA DEL REPRESENTANTE LEGAL
+
+
+
+
+Alex Aravena
+Jefe de Proyecto y Apoderado · LafroX SpA
+LAFROX-Subdocumento8.pdf                                                     1
+    LafroX SpA
+
+
+
+
+Índice general
+
+Índice general                                         2
+
+Lista de tablas                                        3
+
+Lista de figuras                                       4
+
+8 Introducción a los Riesgos                           5
+    8.1 Plan de riesgos                                5
+          8.1.1 Enfoque y ciclo                         5
+          8.1.2 Roles y autoridad                       6
+          8.1.3 Escalas previas al análisis             7
+          8.1.4 Registro y cierre                       9
+    8.2 Identificación y Análisis de Riesgos           9
+          8.2.1 RBS y análisis separados               10
+          8.2.2 Análisis cualitativo de riesgos        13
+          8.2.3 Análisis cuantitativo                  14
+    8.3 Plan de Acción a Riesgos                       16
+          8.3.1 Respuestas y costo-beneficio técnico   17
+          8.3.2 Reservas y cronograma                  20
+          8.3.3 Factibilidad y aceptación              21
+    Referencias                                        24
+    Declaración de uso de IA                           24
+
+
+
+
+LafroX SpA
+Propuesta técnica                                       2
+    LafroX SpA
+
+
+
+
+Lista de tablas
+Tabla 8.1 Responsabilidad y vigencia por familia. Fuente: (T-14, cuentas 7.3 y 7.5; T-15,
+asignación de partidas; Subdocumento 13; Bases Administrativas, Formulario T-16, p. 63).     6
+Tabla 8.2 Escala cualitativa de probabilidad – Fuente: elaboración propia; escala contex-
+tualizada al proyecto                                                                        8
+Tabla 8.3 Escala de impacto – Fuente: elaboración propia; escala contextualizada al
+proyecto                                                                                     8
+Tabla 8.4 Escala de exposición – Fuente: elaboración propia; criterio definido para el
+proyecto                                                                                     9
+Tabla 8.5 Diez riesgos de mayor exposición cualitativa. Fuente: análisis cualitativo de
+los 36 riesgos; criterios del procedimiento de análisis.                                     13
+Tabla 8.6 Diez mayores valores esperados de esfuerzo. Fuente: Tabla de análisis cuanti-
+tativo; estimación de tres valores según el procedimiento.                                   14
+Tabla 8.2.3-A FMEA aplicado a los cinco riesgos prioritarios. Fuente: Anexo 8.G.1; valores
+posteriores proyectados, sujetos a evidencia.                                                16
+Tabla 8.3.1-A Respuestas prioritarias y puertas de decisión. Fuente: Anexos 8.A.2, 8.F.1,
+8.F.2 y 8.F.2a.                                                                              18
+Tabla 8.3.1-B Tratamientos que se mantienen aun con retorno HH menor que uno.
+Fuente: Anexo 8.F.3.                                                                         19
+Tabla 8.3.2-A Lectura ejecutiva de exposición, tratamiento y reservas. Fuente: Anexos
+8.B.1 y 8.H.1–3.                                                                             20
+Tabla 8.3.3-A Condiciones ejecutivas de habilitación por alcance. Fuente: Anexos 8.D.3 y
+8.E.1; R-034/R-036 de T-16.                                                                  22
+Tabla 8.IA.1 Declaración de uso de IA                                                        24
+
+
+
+
+LafroX SpA
+Propuesta técnica                                                                             3
+    LafroX SpA
+
+
+
+
+Lista de figuras
+
+Figura 8.1 Estructura de desglose de riesgos (RBS) del proyecto LafroX. Fuente: elabora-
+ción propia.                                                                               11
+
+
+
+
+LafroX SpA
+Propuesta técnica                                                                           4
+CAPÍTULO 8
+
+
+
+
+Introducción a los Riesgos
+    Este plan establece cómo LafroX identificará, valorará y tratará los riesgos de ejecución y
+operación de la solución para Distribuidora Puelche S.A. durante los 56 meses contractuales.
+Considera la integridad de los antecedentes sanitarios y comerciales, las dependencias de
+servicios e infraestructura, la participación de las contrapartes y la preparación de los usuarios.
+Su propósito es proteger la trazabilidad sanitaria, la continuidad del servicio y los hitos de
+aceptación mediante decisiones oportunas, responsables definidos y evidencia verificable.
+    La sección 8.1 define el ciclo de gestión, las responsabilidades y las escalas; la sección
+8.2 presenta la RBS, la priorización y el esfuerzo esperado; y la sección 8.3 establece respues-
+tas, reservas y condiciones de aceptación. El cuerpo presenta FMEA aplicado, decisiones de
+respuesta, costo-beneficio en HH, reservas y puertas de habilitación. Los anexos conservan
+las fichas exhaustivas, dependencias, fundamentos de estimación, controles y evaluaciones
+completas para verificar y ejecutar esas decisiones. La matriz 8.D.2 coteja los diez temas de
+SD8-05 y distingue cobertura documental de eficacia pendiente. T-16 contiene el registro de los
+36 riesgos. Las respuestas y sus efectos posteriores son propuestas de planificación: su eficacia
+y aceptación requieren la evidencia indicada para cada caso.
+
+
+
+8.1 Plan de riesgos
+   Esta sección define cómo se gestionan los riesgos durante los 56 meses: el ciclo y sus
+instancias, los roles y su autoridad, las escalas con que se analizan y las reglas de registro y
+cierre.
+
+
+8.1.1 Enfoque y ciclo
+    El registro vivo sigue identificación, análisis, respuesta y seguimiento conforme a la norma
+ISO 31000 (International Organization for Standardization [ISO], 2018), que exige el RT-19.04
+de las Bases Técnicas Transversales (Bases Técnicas Transversales, cap. 19, RT-19.04, p. 33).
+Cada riesgo registra su causa, evento incierto y consecuencia. Los problemas y dependencias
+actuales se registran como asuntos de seguimiento.
+    JP mantiene el registro único. Los líderes identifican riesgos al revisar interfaces, pruebas,
+capacidad y despliegues; verifican disparadores semanalmente y ante cada cambio. El Comité
+de Proyecto quincenal revisa todos los riesgos abiertos, responsables, plazos y evidencia. Los
+comités Ejecutivo y de Arquitectura mensuales deciden escalamiento y cambios de sus ámbitos,
+y desde el mes 13 el Comité de Operación mensual revisa los riesgos de servicio: niveles de
+atención, incidentes, capacidad y continuidad (Subdocumento 6, sección 6.1.6). Una amenaza
+a continuidad, seguridad o hito se escala inmediatamente. Marcha blanca exige seguimiento
+
+
+LafroX SpA
+Propuesta técnica                                                                                5
+      LafroX SpA                                                                           Introducción a los Riesgos
+
+
+
+
+diario; operación mantiene vigilancia diaria de incidentes y colas y revisión en comités. En
+cada comité se compara la reserva restante con el riesgo remanente (análisis de reserva), y al
+cierre de cada etapa, en el H5 y el H10, una auditoría de riesgos comprueba que el proceso
+funciona (Project Management Institute [PMI], 2017, §11.7, pp. 456–457). El Comité Ejecutivo
+recibe cada mes un extracto con los diez riesgos de mayor exposición; el registro completo
+queda en el repositorio del proyecto.
+
+
+8.1.2 Roles y autoridad
+    La Tabla 8.1 distingue al responsable del riesgo, la familia de esfuerzo y su vigencia. Los
+responsables coordinan la ejecución con sus equipos. Las familias del T-15 se conservan al
+relevar liderazgo.
+
+Tabla 8.1 Responsabilidad y vigencia por familia. Fuente: (T-14, cuentas 7.3 y 7.5; T-15, asignación de partidas;
+Subdocumento 13; Bases Administrativas, Formulario T-16, p. 63).
+
+
+
+ Familia            Meses 1--21              Meses 22–56                         Autoridad/aprobación
+
+
+ JP                 Alex Aravena             Alex Aravena, dirección de          Registro/escalamiento
+                                             contrato
+
+ ARQ                Bastián Trejo            Trejo, Comité Arquitectura          Diseño/frontera DR
+
+ SEG                Álvaro Catalán           Álvaro Catalán                      Seguridad/privacidad
+
+ DAT                Leandro Chamorro         Guillermo Castillo (SRE); fami-     Miño/Calidad: parámetros
+                    (meses 1–20); SRE en     lia DAT
+                    mes 21 para INN-03
+
+ DES                Tomás Pérez              Guillermo Castillo; equipo DES      CAL: verifica cambios
+
+ CAL                Maximiliano Miño         Maximiliano Miño                    Evidencia/eficacia
+
+ SRE                Guillermo Castillo       Guillermo Castillo                  Capacidad/continuidad
+
+ IMP                Patricio Henríquez       Guillermo Castillo; equipo          CAL: usuarios; SEG: privaci-
+                                             IMP                                 dad
+
+
+
+    La permanencia de Leandro Chamorro como Líder de Datos abarca los meses 1 a 20. Desde
+el mes 21, Guillermo Castillo dirige en el frente F8 de Operación el trabajo de INN-03 (7.3.5),
+que conserva su imputación a DAT. El despliegue gradual por rutas de INN-05 (7.5.5) comienza
+en el mes 22 bajo SRE y conserva su imputación a IMP. Por separado, la suplencia rige desde el
+mes 22 hasta el 56: Bastián Trejo, integrante del Comité de Arquitectura, suple a Castillo en
+DAT y DES; Maximiliano Miño lo suple en IMP (T-14, cuentas 7.3 y 7.5; T-15; Subdocumento 13).
+Las decisiones sanitarias requieren aprobación de Calidad y las de privacidad, de Seguridad.
+
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                                  6
+    LafroX SpA                                                                Introducción a los Riesgos
+
+
+
+
+La Contraparte Técnica acepta con acta; Operaciones autoriza cortes y Calidad del CLIENTE
+decide sobre los aspectos sanitarios. La agenda de decisiones se fija en mes 1 y se sigue en el
+registro. Los cambios físicos siguen el gobierno de arquitectura.
+
+Dependencias y decisiones del CLIENTE. Para los 29 riesgos que requieren un insumo o decisión
+del CLIENTE, la Tabla 8.A.2 identifica la contraparte funcional, la solicitud con evidencia, el
+plazo y la contingencia por falta de respuesta. El dueño LafroX conserva la gestión del riesgo;
+la contraparte entrega o decide dentro de su autoridad. La Contraparte Técnica (CT) recibe y
+encauza solicitudes y acepta entregables con acta; no sustituye la decisión sanitaria de Calidad
+ni la autorización del propietario de un vehículo. El Jefe de Proyecto registra en mes 1 el
+titular designado y suplente de cada cargo del CLIENTE, conforme a la designación formal del
+CLIENTE.
+    Los meses son relativos al inicio contractual. En la matriz, D es la fecha de la actividad o
+ventana indicada de la línea base vigente; D-10 y D-5 son diez y cinco días hábiles antes de D.
+LafroX cursa solicitudes completas a D-10 y pide respuesta a D-5, salvo plazo específico más
+temprano. Para compromisos de mes 1, las cursa en los primeros cinco días hábiles. Cada
+solicitud incluye ID, antecedentes, decisión o evidencia requerida, destinatario, fecha límite y
+actividad bloqueada. Las fechas D se registran al programar cada ola o actividad, sin cambiar
+el calendario contractual. Estos objetivos de coordinación se proponen para acordarlos en el
+arranque; no acreditan aceptación previa del CLIENTE ni sustituyen los diez días hábiles de
+revisión y diez de subsanación del art. 18.3 para recepción formal de entregables.
+    Al vencer una solicitud, el dueño informa a JP y CT el mismo día hábil con la evidencia
+faltante y efecto en la tarea. JP solicita a CT encauzar la decisión en un día hábil; si sigue
+sin resolución a los dos días hábiles del vencimiento, pide una instancia extraordinaria al
+Comité Ejecutivo con la gerencia competente. Una amenaza a seguridad, continuidad o hito
+se escala inmediatamente, sin esperar ese plazo ni la sesión mensual (S6, 6.1.6; T-9, 1.6). En
+urgencias rige además el plazo específico de R-020. La promoción regional sigue la excepción
+de S4, 4.3.2.5: si el titular no responde en 15 min decide el suplente dentro del máximo de 30
+min; R-016 recoge este plazo y R-019 conserva la aprobación previa de residencia de datos. El
+silencio activa la contingencia, conserva la tarea dependiente bloqueada y permite continuar
+sólo trabajo independiente; no aprueba datos, cambios, transferencia, aceptación o desplaza-
+miento de hitos. Resolver la dependencia exige evidencia recibida y validación por la autoridad
+competente, registradas por JP.
+
+
+8.1.3 Escalas previas al análisis
+   La probabilidad inicial 𝑝0 estima la ocurrencia de al menos un episodio en la ventana de
+exposición de cada riesgo, tanto para el análisis cualitativo como para el cuantitativo. El nivel
+P se obtiene de esa misma estimación con las bandas de la Tabla 8.2. El factor 𝑞𝑃 pondera
+esa categoría en la matriz de priorización. Por ejemplo, R-002 tiene 𝑝0 = 60 %, nivel 4 y factor
+0,70; R-014 tiene 𝑝0 = 20 %, nivel 2 y factor 0,30. Para calcular las HH esperadas se utiliza 𝑝0 ,
+conservando la misma ventana y el supuesto de episodios del Anexo 8.B.
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                     7
+    LafroX SpA                                                                               Introducción a los Riesgos
+
+
+
+
+Tabla 8.2     Escala cualitativa de probabilidad – Fuente: elaboración propia; escala contextualizada al proyecto
+
+
+
+  Nivel      Banda de 𝑝0                   Descripción                                                 Factor 𝑞𝑃
+    P
+
+
+    1        0 % ≤ 𝑝0 ≤ 10 %               Muy baja                                                       0,10
+
+    2        10 % < 𝑝0 ≤ 30 %              Baja                                                           0,30
+
+    3        30 % < 𝑝0 ≤ 50 %              Media                                                          0,50
+
+    4        50 % < 𝑝0 ≤ 70 %              Alta                                                           0,70
+
+    5        70 % < 𝑝0 ≤ 100 %             Muy alta                                                       0,90
+
+
+
+
+Tabla 8.3     Escala de impacto – Fuente: elaboración propia; escala contextualizada al proyecto
+
+
+
+  Ni-        Factor 𝑞𝐼   PERT condicional      Plazo, alcance, calidad o contrato
+  vel                    (HH)
+   I
+
+
+   1           0,05        𝐻 ≤ 24              Corrección localizada dentro de la tarea, sin afectar aceptación.
+
+   2           0,10        24 < 𝐻 ≤ 80         Repetición o ajuste dentro del paquete, sin desplazar hitos.
+
+   3           0,20        80 < 𝐻 ≤ 160        Reprogramación interna o reproceso de entregable, conservan-
+                                               do requisitos e hitos contractuales.
+
+   4           0,40        160 < 𝐻 ≤ 320       Amenaza a un hito contractual, aceptación o nivel de servicio;
+                                               exige decisión y recuperación coordinadas.
+
+   5           0,80        𝐻 > 320             Consecuencia sanitaria grave, pérdida irrecuperable de trazabi-
+                                               lidad o incumplimiento que compromete el alcance obligatorio
+                                               o la continuidad contractual.
+
+
+
+    El impacto I representa la afectación que tendría el evento si se materializa, antes de
+descontar la eficacia de las respuestas propuestas. Se evalúan por separado esfuerzo, plazo,
+alcance, calidad sanitaria y consecuencias contractuales; se adopta el mayor nivel aplicable,
+sin promediar dimensiones. Las HH se clasifican por el PERT condicional acumulado del
+Anexo 8.B, no por su valor esperado. La Tabla 8.3 define los criterios propios de planificación;
+el Anexo 8.C documenta su aplicación a los 36 riesgos. Una amenaza a aceptación o servicio es
+nivel 4; el nivel 5 requiere la consecuencia grave indicada, no una aprobación simplemente
+pendiente.
+
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                                    8
+    LafroX SpA                                                                               Introducción a los Riesgos
+
+
+
+
+   Las condiciones de aceptación de los arts. 17.3 y 18.1–18.3, y los compromisos de conti-
+nuidad descritos en 8.3.3, permiten reconocer amenazas contractuales. La gravedad se valora
+por la consecuencia del evento documentado, sin presumir multas concretas, terminación
+contractual ni daños no descritos. Las HH no se convierten directamente en días; el efecto
+calendario depende de secuencia, perfiles y holguras.
+   La exposición es 𝐸 = 𝑞𝑃 × 𝑞𝐼 . Las bandas, factores y umbrales son definiciones propias del
+proyecto, no valores prescritos por Project Management Institute (PMI, 2017, cap. 11, §11.3,
+Tabla 11-1, p. 407). El producto determina la prioridad en la matriz.
+
+Tabla 8.4    Escala de exposición – Fuente: elaboración propia; criterio definido para el proyecto
+
+
+
+                         Exposición decimal                            Zona de prioridad
+
+
+                         𝐸 < 0,08                                      Baja
+
+                         0,08 ≤ 𝐸 < 0,20                               Media
+
+                         0,20 ≤ 𝐸 < 0,40                               Alta
+
+                         𝐸 ≥ 0,40                                      Crítica
+
+
+
+    La zona se calcula obligatoriamente con estos umbrales: los límites 0,08, 0,20 y 0,40 perte-
+necen, respectivamente, a Media, Alta y Crítica. Se conservan nivel y factor para hacer trazable
+el cálculo. La Tabla 8.5 y la RBS reflejan las zonas calculadas del T-16.
+
+
+8.1.4 Registro y cierre
+    El responsable actualiza fuente, estado, disparador, tratamiento, consumo de HH y eviden-
+cia. Estados: identificado, en tratamiento, control verificado o materializado. Materializar el
+evento abre un problema y conserva su ID. CAL verifica cierre técnico; JP registra la decisión; la
+aceptación contractual corresponde al CLIENTE. La puntuación residual efectiva exige eficacia
+comprobada; verificar un control no libera reserva automáticamente. Ninguna aceptación de
+riesgo exime requisitos obligatorios.
+
+
+
+8.2 Identificación y Análisis de Riesgos
+   Esta sección identifica los riesgos con una RBS y los analiza cualitativamente mediante la
+exposición decimal (𝑞𝑃 × 𝑞𝐼 ), junto con los niveles ordinales de P e I y la zona registrada para
+cada riesgo, y cuantitativamente mediante el valor esperado de cada riesgo en horas-hombre.
+
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                                    9
+    LafroX SpA                                                             Introducción a los Riesgos
+
+
+
+
+8.2.1 RBS y análisis separados
+    La estructura de desglose de riesgos (EDR o RBS) organiza los 36 riesgos de T-16 de la
+Figura 8.1. La estructura agrupa los riesgos por fuente predominante: Solución y tecnología
+(3), Integración y legado (6), Operación del cliente (14), Personas y adopción (8), Contrato y
+licitación (3) y Regulatorio y externo (2).
+
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                 10
+Propuesta técnica
+                    LafroX SpA
+                                                                                                                          Riesgos del proyecto LafroX
+                                                                                                                     36 riesgos · 1 crítico · 14 altos · 16 medios · 5 bajos
+
+
+
+                                               1 · Solución y            2 · Integración y                                                                        4 · Personas y           5 · Contrato y           6 · Regulatorio y
+                                                                                                   3 · Operación del cliente
+                                               tecnología                legado                                                                                   adopción                 licitación               externo
+                                                                                                   14 riesgos
+                                               3 riesgos                 6 riesgos                                                                                8 riesgos                3 riesgos                2 riesgos
+
+
+
+                                                  1.1 Historia                                        3.1 Diferencias de               3.8 Proveedor de              4.1 Transportista        5.1 Solicitudes que      6.1 Falta
+                                                                            2.1 Cadena no
+                                                  sanitaria de origen                                 inventario sin                   conectividad                  no firma a tiempo        amplían el alcance       aprobación del
+                                                                            completa a tiempo
+                                                  no reconstruible                                    resolver antes del               interrumpe el                 el acuerdo de            R-025 · Media            cliente para datos
+                                                                            su certificación EDI
+                                                  R-002 · Crítica                                     corte                            enlace de un sitio            incorporación                                     en regiones de
+                                                                            R-001 · Alta
+                                                                                                      R-004 · Alta                     R-017 · Media                 R-011 · Alta             5.2 Disputa en la        nube
+                                                  1.2 Cambio de                                                                                                                               liquidación del          R-019 · Media
+                                                  soporte exige             2.2 Historial de          3.2 Saldo inicial de             3.9 Corte eléctrico           4.2 Usuarios             tramo variable
+                                                  adecuación                ventas inutilizable       envases no                       supera el tiempo              mantienen el             R-027 · Media            6.2 Cambios
+                                                  extraordinaria            para carga y              conciliable (carga               de respaldo                   proceso anterior                                  normativos
+                                                  R-032 · Alta              reposición                M8)                              R-018 · Baja                  R-013 · Alta             5.3 Peak y               R-026 · Media
+                                                                            R-003 · Media             R-005 · Alta                                                                            congelamiento
+                                                  1.3 Dependencia                                                                      3.10 Cliente no               4.3 Planificador no      impiden cierre de
+                                                  de proveedor limita       2.3 Deuda viva            3.3 Historia de                  autoriza                      disponible antes de      fase
+                                                  salida o sustitución      adicional a la            origen insuficiente              intervención                  validar                  R-031 · Alta
+                                                  R-033 · Media             cartera de la             para líneas base                 urgente en                    excepciones
+                                                                            volumetría                de aceptación                    congelamiento                 R-014 · Media
+                                                                            R-007 · Media             R-006 · Alta                     R-020 · Media
+                                                                                                                                                                     4.4 Usuarios no
+                                                                            2.4 SII no                3.4 Calidad no                   3.11 Fallas                   asisten a la
+                                                                            responde y deja un        entrega la matriz                mecánicas del                 capacitación antes
+                                                                            trámite tributario        térmica aprobada                 camión                        de la ola
+                                                                            pendiente                 R-009 · Alta                     R-021 · Baja                  R-015 · Media
+                                                                            R-008 · Baja
+                                                                                                      3.5 Equipos del                  3.12 Camión                   4.5 Reemplazos de
+                                                                            2.5 Interfaces            cliente no llegan                involucrado en un             conductores
+                                                                            ERP/WMS no                antes de la ola                  siniestro                     externos sin aviso
+                                                                            verificables a            R-010 · Media                    R-022 · Baja                  R-024 · Media
+                                                                            tiempo
+                                                                            R-030 · Alta              3.6 Transportista                3.13 Asalto a                 4.6 Desacuerdo
+                                                                                                      no permite instalar              camión                        sobre telemetría
+                                                                            2.6 ERP                   el termógrafo                    R-023 · Baja                  impide
+                                                                            indisponible impide       R-012 · Media                                                  incorporación
+                                                                            nueva guía válida                                          3.14 Perfil real de           R-028 · Alta
+                                                                            R-034 · Media                                              carga difiere del
+                                                                                                      3.7 Contraparte no
+                                                                                                                                       validado                      4.7 Rotación
+                                                                                                      entrega validación
+                                                                                                                                       R-036 · Media                 nocturna supera
+                                                                                                      en la fecha prevista
+                                                                                                                                                                     inducción
+                                                                                                      R-016 · Alta
+                                                                                                                                                                     disponible
+11
+
+
+
+
+                                                                                                                                                                     R-029 · Alta
+
+                                                                                                                                                                     4.8 Conductor
+                                                                                                                                                                     externo rechaza
+                                                                                                                                                                     uso de la solución
+                                                                                                                                                                     R-035 · Alta
+
+
+
+
+                                 Figura 8.1   Estructura de desglose de riesgos (RBS) del proyecto LafroX. Fuente: elaboración propia.
+    LafroX SpA                                                                 Introducción a los Riesgos
+
+
+
+
+    Solución y tecnología comprende la historia sanitaria de origen que el CLIENTE debe apor-
+tar (R-002), el cambio excepcional externo de soporte/compatibilidad (R-032) y la restricción
+efectiva de salida o sustitución del proveedor tecnológico (R-033). La elección, el manteni-
+miento ordinario y la portabilidad del diseño siguen a cargo de LafroX. R-032/R-033 no cubren
+tecnología elegida sin soporte ni falta de un plan de salida obligatorio.
+    Integración y legado reúne certificación externa de cadenas (R-001), historia de ventas
+(R-003), deuda vigente adicional (R-007), respuesta del SII (R-008), interfaces legadas no docu-
+mentadas (R-030) y disponibilidad del ERP del CLIENTE para emitir nuevas guías (R-034). La
+idempotencia del POS y la continuidad del servicio de mapas elegido se verifican mediante los
+controles CT-01 y CT-02 del Anexo 8.E.
+    Operación del cliente agrupa R-004, R-005, R-006, R-009, R-010, R-012, R-016, R-017, R-018,
+R-020 y R-021, R-022, R-023: conciliaciones y datos de aceptación, matriz térmica, equipamiento
+y permisos, decisiones, enlaces y energía externos e interrupciones del reparto durante las
+pruebas de implantación. En R-021 a R-023, el CLIENTE y el transportista atienden el incidente
+y habilitan el recorrido. LafroX registra la interrupción, conserva la evidencia disponible y
+completa los casos TI pendientes en un recorrido autorizado. R-036 añade la divergencia del
+perfil real de carga respecto del validado. Son catorce riesgos; cada episodio se imputa una
+sola vez a su causa principal.
+    Personas y adopción reúne ocho riesgos: firma del transportista (R-011), adopción del pro-
+ceso (R-013), transferencia del conocimiento del planificador (R-014), asistencia a capacitación
+(R-015), sustitutos no habilitados (R-024), acuerdo de telemetría (R-028), rotación nocturna
+(R-029) y rechazo individual de conductores externos (R-035). El 38 % es rotación anual, no 𝑝0 .
+    Contrato y licitación comprende cambios de alcance (R-025), liquidación variable de INN-
+04 (R-027) y coordinación del cierre bajo peak/congelamiento (R-031). Regulatorio y externo
+comprende residencia/transferencia aprobada (R-019) y cambios normativos aplicables (R-026).
+    Los controles técnicos del Anexo 8.E establecen medidas de diseño, pruebas habilitantes,
+responsables y evidencia de cierre. El Anexo 8.E vincula cada uno de los 15 controles con el
+diseño de SD4, las campañas y expedientes de SD9 o los indicadores de SD13, según corres-
+ponda. CAL comprueba implementación y eficacia con los resultados de la versión ensayada y
+documenta el cierre en el expediente aplicable.
+    Cada CT expresa un requisito u obligación técnica de diseño y una condición de verificación
+y aceptación; un riesgo describe un evento incierto, sus causas y efectos sobre los objetivos,
+con exposición y respuesta. Esta distinción no debe ocultar una incertidumbre genuina: el fallo
+de un control no genera automáticamente un riesgo nuevo si el evento ya está representado
+en T-16. Antes de proponer otra entrada se contrastan causas, evento y consecuencias con el
+registro, evitando duplicar el episodio o sus HH.
+    Así, CT-14 exige demostrar capacidad técnica, mientras R-036 trata diferencias por confir-
+mar de concentración temporal y mezcla respecto del perfil validado, R-030 trata la incertidum-
+bre de verificar a tiempo las interfaces legadas y R-031 la de resolver incidentes o validaciones
+dentro de las ventanas de cierre bajo peak. CT-15 exige consistencia y autoridad única de
+escritura del stock, mientras R-004 trata diferencias del inventario inicial sin resolver antes del
+corte y R-017 la interrupción de conectividad externa. Estos riesgos no cubren por sí mismos
+
+
+LafroX SpA
+Propuesta técnica                                                                                     12
+    LafroX SpA                                                                                Introducción a los Riesgos
+
+
+
+
+el fallo de los controles: sólo corresponde evaluar un riesgo nuevo si éste origina un evento
+incierto distinto, no representado, que afecte materialmente los objetivos.
+    Con la evidencia disponible, los dueños de los riesgos de T-16 y JP deben decidir si la
+incertidumbre residual corresponde a una entrada existente o requiere una nueva evaluación,
+documentando el fundamento sin presumir cobertura completa ni cumplimiento demostrado.
+Una falla ya observada se gestiona como asunto y se corrige conforme a la condición de cierre
+del CT; cualquier incertidumbre futura distinta se analiza por separado. R-036 se incorpora por
+esa incertidumbre distinta; las valoraciones de R-001–R-035 se conservan. CT-14 no traslada al
+CLIENTE fallos de diseño ni el peak conocido.
+
+
+8.2.2 Análisis cualitativo de riesgos
+    El análisis cualitativo asigna a probabilidad e impacto niveles ordinales de 1 a 5 y sus
+ponderaciones decimales (𝑞𝑃 y 𝑞𝐼 ). La exposición se calcula como 𝑞𝑃 × 𝑞𝐼 y sirve para priorizar;
+no es un porcentaje de probabilidad ni una estimación de pérdida. El nivel de probabilidad y
+su factor se derivan de la misma estimación 𝑝0 utilizada en el análisis cuantitativo, conforme a
+la Tabla 8.2. La Tabla 8.5 presenta los diez riesgos de mayor exposición entre los 36, ordenados
+de mayor a menor producto y, en caso de empate, por ID ascendente. La zona se calcula con
+los umbrales de la Tabla 8.4; no se utiliza como sustituto del producto ni se confunde con el
+impacto en HH.
+
+Tabla 8.5 Diez riesgos de mayor exposición cualitativa. Fuente: análisis cualitativo de los 36 riesgos; criterios del
+procedimiento de análisis.
+
+
+
+                         ID         𝑞𝑃            𝑞𝐼           Expo-         Zona regis-
+                                                               sición        trada
+                                                               (𝑞𝑃 × 𝑞𝐼 )
+
+
+                         R-002      0,70          0,80         0,56          Crítica
+
+                         R-004      0,70          0,40         0,28          Alta
+
+                         R-006      0,70          0,40         0,28          Alta
+
+                         R-013      0,70          0,40         0,28          Alta
+
+                         R-029      0,70          0,40         0,28          Alta
+
+                         R-001      0,50          0,40         0,20          Alta
+
+                         R-005      0,50          0,40         0,20          Alta
+
+                         R-009      0,50          0,40         0,20          Alta
+
+                         R-011      0,50          0,40         0,20          Alta
+
+
+                        continúa en la página siguiente
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                                    13
+    LafroX SpA                                                                            Introducción a los Riesgos
+
+
+
+
+                         Tabla 8.5 — continuación
+
+
+
+                          ID        𝑞𝑃              𝑞𝐼       Expo-        Zona regis-
+                                                             sición       trada
+                                                             (𝑞𝑃 × 𝑞𝐼 )
+
+
+                          R-016     0,50            0,40     0,20         Alta
+
+
+
+    El registro contiene 1 riesgo crítico, 14 altos, 16 medios y 5 bajos. R-002 tiene E=0,56 y zona
+Crítica. La Tabla 8.5 selecciona diez por producto y desempata por ID, sin sustituir el conjunto
+de riesgos altos. La valoración posterior proyectada y el plan adicional se presentan en 8.F; el
+análisis FMEA de los 15 riesgos altos y críticos iniciales se desarrolla en 8.G.
+
+
+8.2.3 Análisis cuantitativo
+    El análisis estima las horas-hombre (HH) adicionales atribuibles a cada riesgo, separando el
+trabajo extraordinario del trabajo ordinario del proyecto. Para cada perfil y riesgo se estimaron
+tres valores por episodio: optimista (𝑂), más probable (𝑀) y pesimista (𝑃). Las horas de los dos
+perfiles se suman dentro de cada escenario; cuando el modelo supone episodios repetidos,
+se multiplica por el número de episodios condicionado a que ocurra al menos uno. Así se
+obtienen las HH condicionales acumuladas 𝑂 𝑖 , 𝑀𝑖 y 𝑃𝑖 .
+    El valor central condicional se calcula con PERT: 𝐻𝑖cond = (𝑂 𝑖 + 4𝑀𝑖 + 𝑃𝑖 )/6. El escenario más
+probable recibe cuatro veces el peso de cada extremo. Luego se calcula el valor esperado de
+esfuerzo 𝑉 𝐸𝑖 = 𝑝0,𝑖 × 𝐻𝑖cond , donde 𝑝0 es la probabilidad estimada de al menos un episodio en
+toda la ventana del riesgo. La Tabla 8.6 ordena por 𝑉 𝐸 descendente los diez riesgos de mayor
+esfuerzo esperado entre los 36 riesgos; la columna PERT muestra el esfuerzo condicional, no
+la probabilidad. Los valores O/M/P detallados se presentan en el Anexo 8.B. Se desempata por
+ID ascendente. Las estimaciones se usan como supuestos de planificación.
+
+Tabla 8.6 Diez mayores valores esperados de esfuerzo. Fuente: Tabla de análisis cuantitativo; estimación de tres
+valores según el procedimiento.
+
+
+
+    ID       Riesgo (síntesis)                                𝑝0            PERT (HH)             𝑉 𝐸 (HH)
+
+
+  R-002      Historia sanitaria de origen no recons-        60 %              194,67               116,80
+             truible
+
+  R-029      Rotación nocturna supera inducción             55 %              208,00               114,40
+             disponible
+
+
+continúa en la página siguiente
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                                14
+    LafroX SpA                                                             Introducción a los Riesgos
+
+
+
+
+Tabla 8.6 — continuación
+
+
+
+    ID       Riesgo (síntesis)                          𝑝0     PERT (HH)           𝑉 𝐸 (HH)
+
+
+  R-013      Usuarios mantienen el proceso anterior    55 %      128,00              70,40
+
+  R-030      Interfaces ERP/WMS no verificables a      50 %      140,00              70,00
+             tiempo
+
+  R-003      Historial de ventas inutilizable para     50 %      128,00              64,00
+             carga y reposición
+
+  R-004      Diferencias de inventario sin resolver    55 %      110,67              60,87
+             antes del corte
+
+  R-006      Historia de origen insuficiente para      55 %      101,33              55,73
+             líneas base de aceptación
+
+  R-005      Saldo inicial de envases no conciliable   50 %      96,00               48,00
+             (carga M8)
+
+  R-001      Cadena no completa a tiempo su certifi-   45 %      104,00              46,80
+             cación EDI
+
+  R-032      Cambio de soporte exige adecuación        40 %      106,67              42,67
+             extraordinaria
+
+
+
+    Los diez riesgos aportan aproximadamente 689,67 HH de valor esperado, el 57,5 % de las
+1.199,52 HH esperadas para los 36 riesgos, bajo las mismas probabilidades y supuestos. El 𝑉 𝐸
+pondera las HH condicionales de PERT por la probabilidad del evento. Para estimar el atraso
+se revisan la secuencia, la concurrencia, la disponibilidad de perfiles y las holguras.
+
+Análisis de modos de falla y decisión de tratamiento. El FMEA del Anexo 8.G comprende los
+15 riesgos inicialmente Altos o Crítico. La Tabla 8.2.3-A muestra los cinco que siguen en esas
+zonas aun con el tratamiento proyectado. La severidad 𝑆 sigue el impacto global; la ocurrencia
+𝑂 es la banda ordinal de la probabilidad del evento en su ventana, y 𝐷 expresa dificultad de
+detección antes del efecto. El número de prioridad es 𝑁𝑃𝑅 = 𝑆 × 𝑂 × 𝐷, en una escala de 1 a
+125. El índice organiza la atención de los modos de falla, mientras 𝐸 = 𝑞𝑃 × 𝑞𝐼 determina su
+zona: no son magnitudes intercambiables ni porcentajes de eficacia.
+
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                 15
+    LafroX SpA                                                                            Introducción a los Riesgos
+
+
+
+
+Tabla 8.2.3-A FMEA aplicado a los cinco riesgos prioritarios. Fuente: Anexo 8.G.1; valores posteriores
+proyectados, sujetos a evidencia.
+
+
+
+ Riesgo             S/O/D; NPR inicial   S1/O1/D1; NPR1    Lectura para decidir
+
+
+ R-002              5/4/5; 100           5/4/3; 60         La conciliación detecta faltantes, pero no recons-
+                                                           truye historia sanitaria inexistente. Conservar
+                                                           gravedad 5 y bloqueo del lote sin trazabilidad.
+
+ R-006              4/4/5; 80            4/3/3; 36         El cotejo temprano puede recuperar fuentes;
+                                                           la cobertura histórica puede seguir incomple-
+                                                           ta. Mantener pendiente la comparación sin
+                                                           referencia reproducible.
+
+ R-029              4/4/4; 64            4/3/2; 24         La mejora requiere tutor y evaluación de cada
+                                                           alta, con cobertura certificada del turno. Una
+                                                           capacitación aislada no demuestra capacidad
+                                                           sostenida.
+
+ R-030              4/3/5; 60            4/3/2; 24         El ensayo debe verificar la interfaz y extracción
+                                                           reales. Un contrato escrito o archivo leído sin
+                                                           conciliación no habilita integración.
+
+ R-031              4/3/4; 48            4/3/2; 24         La revisión diaria mejora detección del incumpli-
+                                                           miento, pero no elimina la amenaza al cierre ni
+                                                           crea ventanas de cambio en septiembre.
+
+
+
+   R-002 mantiene prioridad obligatoria por severidad 5, aunque su NPR proyectado baje de
+100 a 60. En los otros cuatro casos, la reducción de NPR procede de hipótesis de ocurrencia
+y detección; la severidad permanece en 4. Por tanto, un NPR menor no autoriza a declarar
+manejable el riesgo ni a reducir su impacto. CAL debe contrastar el ensayo o acta con el alcance
+y período expuestos; sin esa evidencia se retienen las puntuaciones iniciales para decidir. La
+respuesta ejecutiva y sus condiciones se sintetizan en 8.3.1; el detalle de los quince modos y
+sus fundamentos permanece en 8.G.1.
+
+
+
+8.3 Plan de Acción a Riesgos
+    Este plan establece respuestas propuestas para los 36 riesgos del registro, relaciona su
+prioridad con los resultados de 8.2 y fija cómo gobernar la reserva de esfuerzo y verificar la
+factibilidad. La Tabla 8.A.1 presenta las respuestas y la Tabla 8.A.2 concreta la coordinación
+de 29 riesgos con el CLIENTE: contraparte, solicitud, plazo y contingencia. Las respuestas se
+activan según el evento y sus disparadores; los responsables deben ejecutar los controles y
+comprobar su eficacia con la evidencia indicada. Cada dueño coordina la respuesta con las
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                                16
+    LafroX SpA                                                                Introducción a los Riesgos
+
+
+
+
+áreas que la ejecutan.
+
+
+8.3.1 Respuestas y costo-beneficio técnico
+    Las 36 fichas de la Tabla 8.F.1 concretan acción preventiva, disparador de 8.A, dueño/apoyo,
+esfuerzo A/C, plazo preventivo y contingencia temporizada. Las dependencias del CLIENTE se
+detallan en la Tabla 8.A.2. Los controles ordinarios de diseño, formación y soporte conservan
+su presupuesto en S7; A sólo estima coordinación extraordinaria y cierre de excepción, y C
+particiona el PERT inicial, sin sumarlo otra vez.
+    La Tabla 8.F.3 calcula costo-beneficio en HH de las 15 respuestas altas/críticas: B=p0H0-
+p1(H0-C), T=A+p1C y B/T. El saldo neto B-T evita duplicación entre atención del evento y
+respuesta. Se muestra el escenario sin mejora p1=p0, umbral de equilibrio y justificación de
+cada tratamiento; las obligaciones sanitarias, de aceptación o continuidad no se descartan por
+retorno HH menor que uno. La comparación utiliza exclusivamente esfuerzo en HH.
+    La Tabla 8.F.2 asigna a los 36 riesgos p1, I1, E1, zona y evidencia requerida. El impacto
+residual mantiene la gravedad de las consecuencias sanitarias y contractuales, incluso con
+una mejor detección. La valoración posterior está condicionada a ejecutar la acción y verificar
+su eficacia. Si no se acredita la hipótesis, permanece la valoración inicial y se escala antes del
+hito.
+    La proyección contiene 1 riesgo crítico, 4 altos, 20 medios y 11 bajos. R-002, R-006, R-
+029, R-030, R-031 mantienen zona alta/crítica aun en la proyección del tratamiento completo,
+incluido el plan adicional de 8.F.1; no se atribuye a éste una segunda reducción de probabilidad.
+La justificación posterior a la Tabla 8.F.2 distingue referencia inicial, evidencia de eficacia
+por obtener, bloqueos y tratamiento si persiste la prioridad. Sólo puede continuar trabajo
+independiente o expresamente autorizado, sin acreditar el alcance pendiente. CAL verifica, JP
+escala y la autoridad del CLIENTE decide sus dependencias; escalar no resuelve el riesgo ni
+dispensa requisitos obligatorios.
+
+Tratamiento ejecutivo de los riesgos que conservan prioridad. La Tabla 8.3.1-A concentra qué se
+hace, quién actúa y qué permite continuar. E0 es la valoración inicial y E1 la proyección del
+tratamiento completo; A/C son HH preventivas adicionales y HH de respuesta contenidas en el
+esfuerzo condicional. C no se suma otra vez a H0. Las fechas de coordinación mantienen los
+plazos y restricciones de 8.A.2 y 8.F.1.
+
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                    17
+    LafroX SpA                                                                              Introducción a los Riesgos
+
+
+
+
+Tabla 8.3.1-A Respuestas prioritarias y puertas de decisión. Fuente: Anexos 8.A.2, 8.F.1, 8.F.2 y 8.F.2a.
+
+
+
+ ID / E0--E1        Medida y responsable      Disparador y plazo       A/C      Evidencia y bloqueo
+                                                                       (HH)
+
+
+ R-002 /            DAT concilia vínculos     Faltante al perfilar:    12/24    Origen verificable y prueba de
+ 0,56–0,56;         por lote y aísla excep-   aislar el mismo día.              exclusión de carga/despacho.
+ Crítica            ciones; Calidad del       Política en mes 2;                Sin vínculos exigidos, lote blo-
+                    CLIENTE decide V-07.      excepciones a D-5                 queado incluso con resolución
+                                              y decisión antes del              firmada.
+                                              corte.
+
+ R-006 /            IMP/CAL reproducen        Referencia al cierre     8/16     Fuentes, período y cálculo
+ 0,28–0,20;         OTIF y cuadratura;        del mes 1. Ante blo-              reproducibles. Sin historia
+ Alta               Comercial, Opera-         queo, JP reúne áreas              verificable, comparación y
+                    ciones y Finanzas         en dos días hábiles               aceptación afectadas bloquea-
+                    validan fuentes V-10.     y exige evidencia o               das; las mediciones futuras no
+                                              eleva en cinco.                   la sustituyen.
+
+ R-029 /            IMP hasta mes 21,         Antes del turno y de     12/32    Tutor disponible, aprendi-
+ 0,28–0,20;         SRE desde 22: veri-       cada alta autónoma,               zaje máximo dos horas y
+ Alta               ficar altas, tutoría y    meses 13–56. Revisar              evaluación aprobada antes
+                    cobertura certificada     a diario; proponer                de autonomía. Si falla o des-
+                    con Bodega/Operacio-      refuerzo en dos días              borda capacidad, impedir
+                    nes.                      hábiles.                          trabajo autónomo y revalidar
+                                                                                refuerzo.
+
+ R-030 /            ARQ/DAT ensayan           Brecha: elevar al fi-    12/24    Entradas/salidas, tiempos y
+ 0,20–0,20;         con TI intercambio y      nalizar semana 2 del              conciliación contra origen;
+ Alta               extracción ERP/WMS;       mes 1. Contrato ini-              integridad, latencia y emisión
+                    CAL verifica.             cial al cierre del mes            por ERP. Bloquear integración
+                                              1; ensayo aprobado                dependiente si falla; corregir y
+                                              antes de integración.             repetir.
+
+ R-031 /            JP/CAL verifican          Antes de congela-        8/16     Ensayo previo y período com-
+ 0,20–0,20;         habilitaciones, con-      miento; control dia-              pleto de evidencia, incluidas
+ Alta               tinuidad y las seis       rio en meses 19–20.               cuatro semanas finales y acta.
+                    condiciones acumu-        Escalar incumpli-                 Una condición incumplida
+                    lativas de cierre con     miento el mismo día               mantiene cierre pendiente;
+                    Operaciones.              y acordar recupe-                 respetar ventanas y R-020.
+                                              ración en dos días
+                                              hábiles.
+
+
+
+    CAL distingue resultado satisfactorio, insuficiente y fallido conforme a 8.F.2a. Sólo el
+satisfactorio permite proponer levantar el bloqueo concreto y reevaluar con las escalas de 8.1.3
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                                  18
+    LafroX SpA                                                                            Introducción a los Riesgos
+
+
+
+
+y la aprobación competente. Los otros dos exigen corrección y nueva verificación, conservando
+la valoración inicial para decidir. El objetivo de seguimiento es 𝐸 < 0,20 en la misma ventana
+de exposición; las proyecciones de estos cinco riesgos todavía no lo alcanzan. Tampoco basta
+una habilitación puntual para rebajar toda la ventana del riesgo.
+    Las A/C de la tabla son las hipótesis vigentes de esfuerzo, no dotación comprometida.
+Antes de programar conciliaciones y ensayos completos, cada dueño contrasta preparación,
+ejecución, corrección y repetición con volumen y capacidad. JP identifica lo ya cubierto por
+la EDT y somete cualquier diferencia a nivelación y autorización. El trabajo ordinario de
+capacitación, pruebas y corrección del diseño conserva su presupuesto; se evita cargarlo
+también como contingencia.
+
+Decisión ante un retorno de esfuerzo menor que uno. El costo-beneficio de 8.F.3 compara ex-
+clusivamente HH. El beneficio bruto es 𝐵 = 𝑝0 𝐻0 − 𝑝1 (𝐻0 − 𝐶) y el trabajo de tratamiento es
+𝑇 = 𝐴 + 𝑝1 𝐶; el saldo 𝐵 − 𝑇 = (𝑝0 − 𝑝1 )𝐻0 − 𝐴 descuenta prevención y evita contar dos veces la
+respuesta. La Tabla 8.3.1-B expone dos tratamientos obligatorios cuyo retorno estimado no
+cubre el trabajo invertido. Los valores se presentan con dos decimales; el cálculo conserva la
+precisión original.
+
+Tabla 8.3.1-B       Tratamientos que se mantienen aun con retorno HH menor que uno. Fuente: Anexo 8.F.3.
+
+
+
+ Riesgo             Entradas del modelo                  Resultado en HH              Decisión
+
+
+ R-002              H0=194,67; p0=p1=60 %; A=12;         B=14,40; T=26,40;           Conservar tratamiento
+                    C=24.                                B/T=0,55; neto=-12,00.      sanitario obligatorio.
+                                                                                     Aislar limita exposición
+                                                                                     operativa, pero no
+                                                                                     reduce la ocurrencia de
+                                                                                     historia irrecuperable.
+
+ R-031              H0=73,33; p0=45 %; p1=35 %; A=8;     B=12,93; T=13,60;           Conservar continuidad
+                    C=16.                                B/T=0,95; neto=-0,67.       y condiciones con-
+                                                                                     tractuales del cierre.
+                                                                                     Verificar la evidencia
+                                                                                     exigida antes de aceptar
+                                                                                     el hito.
+
+
+
+    En R-002, p0=p1 deja el saldo en menos 12 HH: la respuesta atiende el evento, pero no recu-
+pera el trabajo preventivo ni restituye información inexistente. Por eso la inversión se justifica
+por protección sanitaria y trazabilidad, no por ahorro neto en HH. En R-031, la reducción
+de ocurrencia propuesta todavía deja un saldo negativo de 0,67 HH; el equilibrio requeriría
+justificar p1 no mayor que 34,09 %, frente al 35 % proyectado. Se mantiene el tratamiento
+para proteger el cierre, sin atribuirle esa mejora adicional. Ningún indicador HH valoriza
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                                19
+    LafroX SpA                                                                           Introducción a los Riesgos
+
+
+
+
+mercadería, multas o seguridad ni sustituye un criterio de aceptación.
+
+
+8.3.2 Reservas y cronograma
+   La Tabla 8.3.2-A distingue la exposición de esfuerzo de los fondos de capacidad que se
+proponen o ya están programados. Esta separación permite que JP presente una necesidad
+adicional identificable, sin sumar un subconjunto como si fuera otra reserva. Los importes
+son HH, no dinero ni días.
+
+Tabla 8.3.2-A Lectura ejecutiva de exposición, tratamiento y reservas. Fuente: Anexos 8.B.1 y 8.H.1–3.
+
+
+
+ Concepto                            HH                Uso y regla de no duplicación
+
+
+ Exposición inicial p0H0             1.199,52          Referencia previa al tratamiento; no se agrega al total
+                                                       posterior.
+
+ Prevención adicional A              180,00            Trabajo planificado por aprobar y contrastar con
+                                                       paquetes ordinarios.
+
+ Contingencia específica p1H0        837,53            Incluye respuesta y remanente. Se nivela por
+                                                       mes/perfil y depende de la evidencia que susten-
+                                                       ta p1.
+
+ Respuesta p1C, dentro de con-       142,00            Subconjunto de 837,53 HH; no sumar como reserva
+ tingencia                                             independiente.
+
+ Remanente p1L, dentro de            695,53            L=H0-C; completa la contingencia junto con p1C.
+ contingencia
+
+ Total posterior A+p1H0              1.017,53          Prevención más contingencia; excluye gestión y
+                                                       protección del SD7.
+
+ Gestión aprobada                    160,00            Cuatro ciclos de 40 HH reservados por titular y turno
+                                                       en los meses 12, 18, 24 y 40.
+
+ Protección programada de E1         3.072,00          Ya incluida en SD7; crédito inicial cero contra la
+                                                       propuesta de contingencia. No se presta a E2.
+
+
+
+    La igualdad 142,00 + 695,53 = 837,53 muestra que respuesta y remanente particionan la
+contingencia; 180,00 + 837,53 = 1,017,53 integra el esfuerzo posterior. Estas sumas impresas
+resumen el modelo calculado sin redondeo intermedio. Las 3.072 HH ya forman parte de
+203.548,62 HH programadas sobre 200.476,62 HH base/cobertura; añadirlas de nuevo duplicaría
+capacidad. Sus componentes, 1.152 HH en meses 13–15 y 1.920 HH en 16–20, conservan
+protección exclusiva E1.
+    La Propuesta Final aprueba 160 HH de reserva de gestión para asuntos emergentes. Cada
+ciclo reserva 8 HH de JP, 16 de ARQ, 8 de CAL y 8 de SRE. El Anexo 8.H identifica titulares, turnos
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                               20
+    LafroX SpA                                                                  Introducción a los Riesgos
+
+
+
+
+y relevos. Estas horas se registran como capacidad reservada fuera del esfuerzo programado
+de la línea base.
+    Las Tablas 8.H.2–3 distribuyen prevención y contingencia por mes y perfil. La gestión
+se reserva como capacidad de decisión en los bloques 1–12, 13–20, 21–38 y 39–56. El crédito
+demostrado contra las 3.072 HH es inicialmente cero hasta verificar la coincidencia de paquete,
+perfil y mes; esa protección no se suma nuevamente ni se utiliza en E2. La programación
+requiere nivelación de capacidad y autorización de la línea base, manteniendo la misma
+distribución mensual para su valoración económica. Las HH no se convierten directamente
+en días y se preservan las cuatro semanas finales de evidencia.
+
+
+8.3.3 Factibilidad y aceptación
+    La factibilidad de la respuesta depende de recursos y decisiones compartidas. Antes de
+comprometer cada acción se debe confirmar productividad/dotación, calendario y secuencia
+diaria, responsable con autoridad, dependencia externa, esfuerzo de implementación y eviden-
+cia de eficacia. El T-15 deberá nivelar los frentes que coinciden entre los meses 13–15 y 19–20,
+proteger la operación de Etapa 1 durante la salida de Etapa 2 y cubrir ambos alcances desde
+el inicio de operación (Bases Administrativas, art. 17.2, p. 13). La aprobación de la reserva
+requiere verificar su cobertura con la capacidad disponible y cuantificar cualquier refuerzo o
+efecto sobre el calendario.
+    La aceptación no se basa sólo en completar tareas: cada hito se cumple con acta de la Contra-
+parte Técnica; cada entregable incluye artefacto, evidencia objetiva de verificación, trazabilidad
+a requisitos y registro de observaciones resueltas (Bases Administrativas, arts. 18.1–18.2, p.
+13). El CLIENTE dispone de diez días hábiles para revisar y LafroX de diez días hábiles para
+subsanar; una segunda presentación observada por la misma naturaleza se considera atraso
+imputable (art. 18.3). La aceptación no libera responsabilidad por defectos posteriores (art.
+18.4). En cada marcha blanca, las seis condiciones del artículo 17.3 son acumulativas: no tener
+incidentes críticos/altos atribuibles abiertos; alcanzar el volumen real comprometido durante
+las cuatro últimas semanas; sostener disponibilidad y tiempos de respuesta comprometidos;
+no tener diferencias de conciliación inexplicadas; contar con personal del CLIENTE capacitado
+y certificado; y obtener el acta de aceptación. Si no se cumplen al cierre, la marcha blanca debe
+extenderse a costo del adjudicatario, sin cargo adicional al CLIENTE ni desplazamiento de
+fases posteriores, sin perjuicio de las multas contractuales. RT-20.04 exige definir indicadores
+diarios y umbrales de avance, y RT-20.02 exige una salida gradual y reversible (Bases Técnicas
+Transversales, cap. 20, §20.2, RT-20.02 y RT-20.04).
+    En continuidad se mantienen los objetivos RTO de 4 horas y RPO de 15 minutos para
+servicios críticos (Bases Técnicas Transversales, cap. 7, RT-07.04, p. 17). S4, 4.3.2.4–4.3.2.7 (pp.
+181–184), distingue extracción multicanal, recuperación del WMS, restitución de accesos y
+recuperación del ERP del CLIENTE. Las alarmas a los 5 y 15 minutos y AL-DR-01 verifican
+brecha y punto recuperable; se ensayan antes de H5/H10 y semestralmente durante Operación.
+AL-DTE-01 comprueba las 96 salidas con guía válida, preemisión, cambio de carga y nueva
+emisión del ERP. Estas evidencias se complementan: aprobar una no demuestra las otras. La
+
+
+LafroX SpA
+Propuesta técnica                                                                                      21
+    LafroX SpA                                                                            Introducción a los Riesgos
+
+
+
+
+pérdida de la sala de Talca detiene nuevas guías hasta restituir el ERP; recuperar el WMS en
+nube no resuelve esa dependencia ni permite exceptuar el RTO requerido. La dependencia
+se registra en R-034; la prueba habilitante y su plan contingente se registran en 8.F.1–2. La
+habilitación requiere aprobar estos ensayos. Para el retiro sanitario durante pérdida regional,
+S4, 4.3.2.5 (p. 184), plantea hasta 15 min de habilitación y 60 de consulta y verificación: 75 min
+frente al máximo de dos horas, sujetos a prueba y cobertura de evidencia.
+    La autenticación conectada y local, el mínimo privilegio, la revocación y la auditoría se
+verifican mediante CT-03 y AL-ID-01/AL-OFF-01. Se conserva el manifiesto de bodega de 26 h,
+corte una hora después, dos relevos a las 8/16 h y reparto de 14,5 h con autorización máxima de
+16 h; la baja local conocida se distingue de la baja central durante aislamiento. CT-15 conserva
+stock con retención local durable y autoridad única; CT-16 histórico de stock equivale al CT-15
+vigente. La matriz 8.D.3 relaciona R-034, CT-15 y CT-03 con diseño, campañas, responsables y
+evidencia de S4/S9. La sincronización documental no acredita implementación ni aceptación:
+SD8-06 permanece parcial hasta contar con resultados y actas. R-017 conserva la conectividad
+externa; estos controles no añaden riesgos ni HH de contingencia.
+
+Pruebas que habilitan continuidad y capacidad. El cuadro siguiente permite decidir por alcance,
+sin confundir riesgo externo con obligación de diseño. R-034 conserva la dependencia del ERP;
+CT-15, CT-03 y CT-14 son controles ordinarios. R-036 registra la incertidumbre del perfil real,
+no traslada al CLIENTE un dimensionamiento insuficiente del peak conocido.
+
+Tabla 8.3.3-A Condiciones ejecutivas de habilitación por alcance. Fuente: Anexos 8.D.3 y 8.E.1; R-034/R-036 de
+T-16.
+
+
+
+ Alcance            Decisión de diseño           Prueba y evidencia exigida                Responsable y
+                                                                                           puerta
+
+
+ ERP / R-034        ERP único emisor. Recu-      AL-DTE-01: 96 salidas, guía vigente y     ARQ/SRE con
+                    perar WMS no recupera        cambio de carga. AL-DR-01: pérdida        TI, Finanzas y
+                    ERP; sin guía válida se      de sala, restitución y tiempos frente     Operaciones; CAL
+                    bloquea la salida.           a RTO 4 h/RPO 15 min. Bloqueo             verifica antes de
+                                                 correcto no demuestra continuidad         H5/H10.
+                                                 de las 96 salidas.
+
+ Stock / CT-15      Confirmar reserva central    AL-STOCK-01: última unidad,               Equipo DAT hasta
+                    sólo con retención local     UUID/época, acuse perdido y re-           mes 21; SRE desde
+                    durable y autoridad única    intento sin doble reserva ni stock        mes 22; ARQ dise-
+                    por ámbito.                  negativo. AL-DR-01: exclusión de          ña y CAL verifica.
+                                                 escritor, promoción, retorno y conci-     No aceptar E2 me-
+                                                 liación. E1: preventa real; E2: portal    diante simulador.
+                                                 y EDI reales.
+
+
+continúa en la página siguiente
+
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                                22
+    LafroX SpA                                                                             Introducción a los Riesgos
+
+
+
+
+Tabla 8.3.3-A — continuación
+
+
+
+ Alcance            Decisión de diseño           Prueba y evidencia exigida                 Responsable y
+                                                                                            puerta
+
+
+ Identidad /        Identidad conectada/local,   AL-ID-01/AL-OFF-01: manifiesto 26          SEG responde;
+ CT-03              mínimo privilegio y vigen-   h, corte una hora después, relevos         ARQ diseña;
+                    cia que no se amplía por     8/16 h; ruta 14,5 h y máximo 16 h.         DES/SRE ejecu-
+                    reinicio o reloj.            Cero accesos indebidos; baja local         tan; CAL verifica
+                                                 y central aislada diferenciadas, cola      antes de H5/H10.
+                                                 conservada y conciliación única.           Seguridad conser-
+                                                                                            va G5.
+
+ Capacidad /        Soportar peak y creci-       Comparar perfil validado/observado;        SRE/ARQ, DES y
+ CT-14 y R-036      miento comprometidos;        carga y estrés por ventana, ERP,           CAL con Operacio-
+                    confirmar concentración      colas, errores, p95 y recuperación         nes/TI. Perfil en
+                    temporal y mezcla del        frente a requisitos vigentes. Si satura    mes 1; revalidar
+                    perfil real.                 dentro del alcance, LafroX corrige y       antes de H5/H10,
+                                                 repite como trabajo ordinario.             peak y cambios.
+
+
+
+    En los cuatro alcances, el expediente identifica versión, configuración, datos de entrada,
+resultado esperado y observado, incidencias y repetición tras corrección. Evidencia insuficiente
+o prueba fallida mantiene la promoción afectada pendiente. Sólo evidencia satisfactoria y
+aprobación competente habilitan ese alcance; el hito requiere además el acta. Así se distingue
+una prueba prevista, una implementación verificada y una aceptación contractual. Los ensayos
+detallados y su trazabilidad por etapa permanecen en 8.D.3 y 8.E, sin agregar contingencia por
+controles ordinarios ni declarar pruebas ejecutadas.
+    La suspensión del proveedor de lácteos entre marzo y septiembre de 2026 se registra como
+asunto de seguimiento. Para aceptar la etapa que depende de esta fuente, solicitar al CLIENTE y
+al proveedor la fecha y la evidencia de restitución de la trazabilidad. En general, cada condición
+pendiente debe tener responsable, hito, evidencia requerida y decisión documentada. Hasta
+que existan pruebas satisfactorias y actas exigidas, se mantiene como pendiente la factibilidad
+de las respuestas afectadas y no se declara aceptado el hito.
+
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                                 23
+            LafroX SpA                                                                           Introducción a los Riesgos
+
+
+
+
+        Referencias
+        Distribuidora Puelche S.A. (2026). Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de
+                Solución Integral de Software y Servicios de Operación.
+        Distribuidora Puelche S.A. (2026). Bases Técnicas Transversales de Licitación N.º TFEP-01/2026.
+        Distribuidora Puelche S.A. (2026). Caso 02: Logística. Especificaciones del problema y operación de Distribui-
+                dora Puelche S.A.
+        International Organization for Standardization. (2018). ISO 31000:2018 Risk management — Guidelines.
+                https://www.iso.org/standard/65694.html
+Project Management Institute. (2017). La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK®)
+        (6.ª ed.).
+
+
+
+        Declaración de uso de IA
+           La declaración de uso de IA responde al artículo 13.5 de las Bases Administrativas. La
+        Tabla 8.IA.1 indica, para cada sección, la herramienta utilizada, su finalidad y el alcance de la
+        revisión humana.
+
+        Tabla 8.IA.1 Declaración de uso de IA
+
+
+
+         Sección            Herramienta         Finalidad del uso         Nivel en   Nivel en      Revisión huma-
+                                                                          texto      diagramas     na (quién y qué
+                                                                                                   verificó)
+
+
+         Introducción       Gentle-Shell y      Conexión con opera-       Alto       Ninguno       Maximiliano
+                            ChatGPT             ción, alcance y formu-                             Miño: revisión
+                                                larios                                             del alcance de
+                                                                                                   la introducción
+                                                                                                   y de su corres-
+                                                                                                   pondencia con la
+                                                                                                   operación y los
+                                                                                                   entregables.
+
+         8.1 Plan de        Gentle-Shell y      Roles, escalas, ciclo y   Alto       Ninguno       Guillermo Casti-
+         riesgos            ChatGPT             cierre                                             llo: roles, escalas
+                                                                                                   de probabilidad
+                                                                                                   e impacto, ciclo
+                                                                                                   y cierre frente al
+                                                                                                   SD6 y el T-16.
+
+
+        continúa en la página siguiente
+
+
+
+
+        LafroX SpA
+        Propuesta técnica                                                                                               24
+    LafroX SpA                                                                        Introducción a los Riesgos
+
+
+
+
+Tabla 8.IA.1 — continuación
+
+
+
+ Sección            Herramienta      Finalidad del uso         Nivel en   Nivel en      Revisión huma-
+                                                               texto      diagramas     na (quién y qué
+                                                                                        verificó)
+
+
+ 8.2 Identifica-    Gentle-Shell y   RBS, exposición cuali-    Alto       Medio         Maximiliano Mi-
+ ción y Análisis    ChatGPT          tativa y valor esperado                            ño: enunciado
+ de Riesgos                          en HH                                              de los riesgos,
+                                                                                        RBS y valoración
+                                                                                        de probabilidad,
+                                                                                        impacto y expo-
+                                                                                        sición; Patricio
+                                                                                        Henríquez: esti-
+                                                                                        mación de tres
+                                                                                        valores.
+
+ 8.3 Plan de Ac-    Gentle-Shell y   Respuestas, contingen-    Alto       Ninguno       Alex Aravena:
+ ción a Riesgos     ChatGPT          cia y gestión                                      corresponden-
+                                                                                        cia entre la va-
+                                                                                        loración, las
+                                                                                        respuestas, las
+                                                                                        contingencias
+                                                                                        y las reservas
+                                                                                        frente al SD7.
+
+ Anexo 8.A          Gentle-Shell y   Proponer respuestas       Alto       Ninguno       Maximiliano
+                    ChatGPT          y estrategias para los                             Miño: revisión
+                                     riesgos, junto con un                              de la pertinencia
+                                     responsable para cada                              de las estrategias,
+                                     uno                                                respuestas y
+                                                                                        responsables de
+                                                                                        cada riesgo.
+
+ Anexo 8.B          Gentle-Shell y   Proponer y validar los    Alto       Ninguno       Patricio Henrí-
+                    ChatGPT          cálculos relacionados                              quez: estimacio-
+                                     con la estimación de                               nes de esfuerzo,
+                                     tres valores                                       cálculos PERT y
+                                                                                        valores espera-
+                                                                                        dos por riesgo.
+
+
+continúa en la página siguiente
+
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                            25
+    LafroX SpA                                                                       Introducción a los Riesgos
+
+
+
+
+Tabla 8.IA.1 — continuación
+
+
+
+ Sección            Herramienta      Finalidad del uso        Nivel en   Nivel en      Revisión huma-
+                                                              texto      diagramas     na (quién y qué
+                                                                                       verificó)
+
+
+ Anexo 8.C          Gentle-Shell y   Fundamentar la va-       Alto       Ninguno       Guillermo Casti-
+                    ChatGPT          loración inicial de                               llo: revisión de
+                                     impacto y su rela-                                escalas y con-
+                                     ción con el PERT y                                sistencia de los
+                                     las dimensiones no                                criterios de im-
+                                     monetarias                                        pacto.
+
+ Anexo 8.D          Gentle-Shell y   Organizar depen-         Alto       Ninguno       Maximiliano
+                    ChatGPT          dencias operativas,                               Miño: revisión
+                                     responsables, conti-                              de riesgos, de-
+                                     nuidad y evidencias                               pendencias y
+                                     habilitantes                                      correspondencia
+                                                                                       con la operación
+                                                                                       y los entregables.
+
+ Anexo 8.E          Gentle-Shell y   Definir controles téc-   Alto       Ninguno       Alex Aravena:
+                    ChatGPT          nicos, responsables,                              revisión de la
+                                     pruebas y condiciones                             correspondencia
+                                     de cierre                                         entre controles,
+                                                                                       respuestas y
+                                                                                       evidencia de
+                                                                                       cierre.
+
+ Anexo 8.F          Gentle-Shell y   Desarrollar respues-     Alto       Ninguno       Alex Aravena: re-
+                    ChatGPT          tas, estimaciones de                              visión de respues-
+                                     esfuerzo y proyección                             tas, contingen-
+                                     del riesgo residual                               cias y reservas;
+                                                                                       Patricio Henrí-
+                                                                                       quez: revisión de
+                                                                                       estimaciones y
+                                                                                       cálculos.
+
+
+continúa en la página siguiente
+
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                           26
+    LafroX SpA                                                                        Introducción a los Riesgos
+
+
+
+
+Tabla 8.IA.1 — continuación
+
+
+
+ Sección            Herramienta      Finalidad del uso         Nivel en   Nivel en      Revisión huma-
+                                                               texto      diagramas     na (quién y qué
+                                                                                        verificó)
+
+
+ Anexo 8.G          Gentle-Shell y   Analizar modos de         Alto       Ninguno       Patricio Henrí-
+                    ChatGPT          falla, efectos, prio-                              quez: revisión
+                                     ridades y controles                                de estimacio-
+                                     posteriores                                        nes y cálculos;
+                                                                                        Guillermo Cas-
+                                                                                        tillo: revisión
+                                                                                        de criterios de
+                                                                                        priorización.
+
+ Anexo 8.H          Gentle-Shell y   Distribuir reservas,      Alto       Ninguno       Alex Aravena:
+                    ChatGPT          perfiles y esfuerzo en                             revisión de la
+                                     el tiempo, y explicitar                            correspondencia
+                                     supuestos y sensibili-                             entre reservas y
+                                     dad                                                esfuerzo frente al
+                                                                                        SD7.
+
+ Formulario         Gentle-Shell y   Mejorar la redacción      Alto       Ninguno       Maximiliano Mi-
+ T-16               ChatGPT          de las descripciones                               ño: enunciados,
+                                     de riesgos y proponer                              valoraciones de
+                                     valores de probabi-                                probabilidad e
+                                     lidad e impacto, y                                 impacto y estrate-
+                                     estrategias o respues-                             gias de respuesta;
+                                     tas                                                Tomás Pérez:
+                                                                                        contingencias y
+                                                                                        responsables.
+
+
+
+
+LafroX SpA
+Propuesta técnica                                                                                            27
+
