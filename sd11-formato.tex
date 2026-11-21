@@ -1,17 +1,24 @@
 % Alcance: presentación del SD11; no incorpora decisiones técnicas.
-% Art. 40.2: reservar espacio de firma sin reproducir una firma ajena.
+% Art. 40.2: firma gráfica existente en SD12, incorporada por petición del usuario.
+%% Media firma del representante legal en el pie de página,
+%% siguiendo el formato usado por el Subdocumento 9.
 \renewcommand{\LFXpiederecho}{%
   \begingroup\LFXpiebase
   \begin{tabular}[b]{@{}r@{}}
-    \rule{0pt}{7mm}{\color{lafroxGris}\rule{3.4cm}{0.4pt}}\\[-1pt]
+    {\color{lafroxGris}\rule{3.4cm}{0.4pt}%
+     \begin{tikzpicture}[remember picture,overlay]
+       \node[anchor=south east,inner sep=0pt] at (0,1mm)
+         {\includegraphics[height=7mm]{logo/FIRMA_Alex_Aravena_transparente.png}};
+     \end{tikzpicture}}\\[-1pt]
     {\LFXchico Media firma: \LFXrepresentante}\\
     {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}\LFXfoliotexto}
   \end{tabular}%
   \endgroup}
-% Portada incluida: foliación y zona de media firma en cada página.
+
+% Portada: solo folio en el pie derecho, por petición expresa del usuario.
 \fancypagestyle{lfxportada}{%
   \fancyhf{}
-  \fancyfoot[R]{\global\LFXfranjafalse\LFXpiederecho}
+  \fancyfoot[R]{\global\LFXfranjafalse\LFXpiefolioen{lafroxTinta}}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\headrule}{}}
 % El destino se crea en la página del título, después del salto.
@@ -21,8 +28,9 @@
   \csname @starttoc\endcsname{toc}%
   \clearpage}
 \newcommand{\cierresdonce}[1]{%
-  \chapter*{#1}
-  \addcontentsline{toc}{chapter}{#1}
+  \clearpage\phantomsection
+  \section*{#1}
+  \addcontentsline{toc}{section}{#1}
   \markboth{#1}{#1}}
 % Reservar encabezados unidos al párrafo siguiente; evitar viudas y huérfanas.
 \clubpenalty=10000
@@ -33,3 +41,25 @@
 \RequirePackage{needspace}
 \AddToHook{cmd/section/before}{\Needspace{9\baselineskip}}
 \AddToHook{cmd/subsection/before}{\Needspace{6\baselineskip}}
+
+% Índices corporativos automáticos: no publicar páginas de listas vacías.
+\makeatletter
+\newif\ifLFX@sdonceentrada
+\newcommand{\LFX@sdoncebusca}[4]{\global\LFX@sdonceentradatrue}
+\newcommand{\LFXsdoncelista}[2]{%
+  \global\LFX@sdonceentradafalse
+  \begingroup
+    \let\contentsline\LFX@sdoncebusca
+    \let\addvspace\@gobble
+    \let\babel@toc\@gobbletwo
+    \let\contentsfinish\relax
+    \makeatletter\InputIfFileExists{\jobname.#1}{}{}\makeatother%
+  \endgroup
+  \ifLFX@sdonceentrada #2\else
+    \begingroup\let\contentsline\@gobblefour\@starttoc{#1}\endgroup
+  \fi}
+\renewcommand{\preliminareslafrox}{%
+  \indicelafrox
+  \LFXsdoncelista{lot}{\listatablaslafrox}
+  \LFXsdoncelista{lof}{\listafiguraslafrox}}
+\makeatother
