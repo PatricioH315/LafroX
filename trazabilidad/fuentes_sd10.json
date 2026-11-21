@@ -1884,5 +1884,69 @@
         35
       ]
     }
+  },
+  "corte_auditoria_sd10_v03": {
+    "fecha": "2026-11-21",
+    "sd10_base": "d803d7b8659580bb1801a533cd5c75a132f480b4",
+    "sd4_commit": "0dc50b3d19990513daeae37fdb3c9d7a9595d334",
+    "sd4_branch": "LafroX-Subdoc4-LateX-corrigiendo",
+    "archivos_clave": [
+      {
+        "path": "04/partes/4.1_logica/04_capas_de_la_arquitectura.tex",
+        "sha256": "3d6755cc54fa162433ffa5f4382385218e7fe14cbc8ee707e8b147bf379862bb"
+      },
+      {
+        "path": "04/partes/4.2_fisica/02_b_servicios_nube.tex",
+        "sha256": "588752c3f0338169ebe5698ec8282cbadc6dd2e10a28692684125575311d43d6"
+      },
+      {
+        "path": "04/partes/4.2_fisica/04_c_implementos.tex",
+        "sha256": "60a12b10ab8e03d870ddd2e7bfaff052c3c22acd57d14592b4d583c1003e4157"
+      },
+      {
+        "path": "04/partes/4.2_fisica/11_j_despliegue.tex",
+        "sha256": "c0f81c0024d23ae4576e390c5575bd9b67d7c4ed4f870a631bf0ed538e04bbdf"
+      },
+      {
+        "path": "04/partes/4.3_centros_de_datos/06_e_sitio_secundario.tex",
+        "sha256": "a96743144b93ce9990899f6ea6316c2b34af0a1c4fbdcf77bfb29ff39d7715cf"
+      },
+      {
+        "path": "04/anexos/fisica/16_anexo_4b_memoria_calculo.tex",
+        "sha256": "49508d1795cc074551fcfc5d1040b034f0d5584babf5fb899972a7cd69227776"
+      },
+      {
+        "path": "04/formularios/T11/15_anexo_t11.tex",
+        "sha256": "91821607ea9afd88d1b89d6c868f408988ad8366e67d7cab689b783908642e19"
+      },
+      {
+        "path": "entrega/LAFROX-Subdocumento4.pdf",
+        "sha256": "38680849135f51a1084b35ff804e27ed0001c402205a9d078c114f61f6a6dcb8"
+      },
+      {
+        "path": "entrega/LAFROX-Subdocumento4-Anexos.pdf",
+        "sha256": "b17d99830a8c9a22172a9448fe7a3be55ae046ce3f0d5a3945b3d37cf627c524"
+      },
+      {
+        "path": "entrega/LAFROX-Formulario-T-11.pdf",
+        "sha256": "8d1ab9a70c5fa6e15178dd4094bc22a39c378914b17a33e3ca5a0f21299c2791"
+      },
+      {
+        "path": "Bases/Bases Administrativas.md",
+        "sha256": "a1f36d3e1917b7fde42107209554ac844082a95c21ae6b43e8ae02558f33ff7f"
+      },
+      {
+        "path": "Bases/Bases_Tecnicas_Transversales.md",
+        "sha256": "951ec9de37b4601d22a5b4e0d97889abf0762549a5ede80414f256afe2d448a0"
+      },
+      {
+        "path": "Bases/Caso_02_Logistica.md",
+        "sha256": "2a1ed88f764873d200b75e05bb4eed72f7e145bf46f4a545ee0619b1c7b76b88"
+      },
+      {
+        "path": "Bases/aclaraciones-licitacion.md",
+        "sha256": "d8c9f7f20129ce1deb6a703508e17bec0cb3201bfad36850bbd67f178404ac97"
+      }
+    ]
   }
 }

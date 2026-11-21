@@ -13,8 +13,10 @@ def erlang(lam,c,t=20):
     tail=term*a/c*c/(c-a)
     wait=tail/(subtotal+tail)
     return 1-wait*math.exp(-(c*mu-lam)*t/3600)
+MONTHLY_EQUIVALENT_DAYS = 31_000 / 1_400
+
 def demand(n):
-    return n*.25/22.14,n*.75/22.14/17
+    return n*.25/MONTHLY_EQUIVALENT_DAYS,n*.75/MONTHLY_EQUIVALENT_DAYS/17
 calc=[]
 for n in (2000,2000*350/310,2283,2391,6000):
     peak,valley=demand(n)
@@ -25,8 +27,9 @@ for n in (2000,2000*350/310,2283,2391,6000):
                      need_peak=agents(peak),need_valley=agents(valley)))
 assert round(calc[0]["sl7"]*100,1)==90.6
 assert round(calc[0]["sl2"]*100,1)==84.2
-assert erlang(demand(2284)[1],2)<.8
-assert erlang(demand(2392)[0],7)<.8
+assert calc[2]["sl2"] >= .8 > erlang(demand(2284)[1], 2)
+assert calc[3]["sl2"] < .8 <= calc[3]["sl3"]
+assert calc[3]["sl7"] >= .8 > erlang(demand(2392)[0], 7)
 assert (calc[-1]["need_peak"],calc[-1]["need_valley"])==(15,4)
 dr=[5,30,20,30,15,15,15,5]
 assert sum(dr)==135
@@ -36,7 +39,7 @@ assert math.ceil((25*(52+6)+5*24)/128)==13
 assert round(2304/109791.32*100,4)==2.0985
 result={
     "model":"Reproduccion de Erlang C de SD4 Anexo 4-W.7",
-    "monthly_equivalent_days":22.14,
+    "monthly_equivalent_days":MONTHLY_EQUIVALENT_DAYS,
     "average_handling_minutes":10,
     "busy_fraction":.25,
     "service_seconds":20,
@@ -56,4 +59,4 @@ result={
 trace=out/"trazabilidad"
 trace.mkdir(exist_ok=True)
 (trace/"calculos_sd10.json").write_text(json.dumps(result,indent=2),encoding="utf-8")
-print("LafroX SD10: 10 controles correctos; Erlang C 90,6%/84,2%; DR135min; reduccion teorica64,3%.")
+print("LafroX SD10: 11 controles correctos; Erlang C 90,6%/84,2%; DR135min; reduccion teorica64,3%.")

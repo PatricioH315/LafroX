@@ -1,4 +1,24 @@
-# LafroX — Revisión final del SD10, versión 0.2
+# LafroX — Verificación del SD10
+
+## Versión 0.3 · 21 de noviembre de 2026
+
+**Estado:** Borrador revisado. La revisión asistida comprende el contraste técnico con el SD4 `0dc50b3d19990513daeae37fdb3c9d7a9595d334`, sus anexos y T-11, más las bases y aclaraciones. Los 32 hallazgos y conformidades tienen un registro en `trazabilidad/SD10_fuentes_y_brechas.md`. El manifiesto identifica y conserva las huellas del corte.
+
+| Escenario cotejado | Criterio comprobado en la redacción | Evidencia fuera del borrador |
+|---|---|---|
+| Jornada ordinaria y nocturna | M6 habilita los cinco ambientes. El horario reducido aplica a los tres no productivos. Producción y Recuperación conservan sus compromisos, igual que la guardia para críticos y altos. | Calendario de servicio por canal y turno y detalle de costo por recurso. |
+| Peak | La extensión nocturna y dominical queda bajo 60 horas-posición de diseño. El límite de 2.391 contactos requiere tres en el valle modelado o demanda compatible con el NOC de dos puestos. | Cuadrante nominal y registros para calibración. |
+| Congelamiento | Se conserva el despacho protegido, el aviso planificado con diez días hábiles y el registro de contención y decisión escrita ante urgencia. | Autorización específica y acuerdos de reporte y medición. |
+| Pérdida de WAN y ERP | GU-01 comprueba resincronización por tipo de operación. GU-08 libera la carga intacta ya amparada y retiene cambios o cargas sin guía aplicable. | Actas y coordinación del ERP. |
+| Pérdida de cómputo, sala o región | GU-02, GU-03 y GU-06 separan la validación funcional, escritor único, ruta sanitaria y aviso remoto. El aislamiento total con posterior pérdida de sitio conserva su propio ensayo de RPO. | Actas de conmutación, retorno, V17 y falla combinada. |
+
+Los dos PDF se recompilaron con LuaLaTeX. El cuerpo tiene 20 páginas y los anexos 24. Se renderizaron las 44 páginas y se comprobaron portadas, índices, folios, tablas, diagramas, referencias y declaración de IA. El verificador confirma formato carta, foliación correlativa, texto seleccionable, tablas completas y referencias resueltas. El resultado con la huella SHA-256 de cada PDF queda en `verificacion/resultado_entrega.json`.
+
+La reproducción de capacidad pasó 11 controles. La mesa conserva 90,6 % en hora cargada y 84,2 % en valle para 2.000 contactos. Se comprobaron los límites 2.283 con dos agentes en valle y 2.391 cuando el valle deja de limitar. Se verifican además 135 min para la secuencia regional y 64,3 % de reducción teórica de horas de cómputo de ambientes no productivos.
+
+La sexta instalación, las dotaciones y acuerdos, la conciliación económica, los ensayos y la revisión humana, A-6 y firma quedan sujetos a evidencia. La regeneración de los PDF de SD4 y T-11 se registra como dependencia del equipo responsable de esa fuente. Los cambios del SD10 se limitan al checkout de su rama de corrección.
+
+## Registro histórico · versión 0.2
 
 Fecha: 17 de noviembre de 2026. Estado: borrador revisado. La revisión automática y visual asistida por Codex no acredita revisión humana ni aceptación del CLIENTE.
 

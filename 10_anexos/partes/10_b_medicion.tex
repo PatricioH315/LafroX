@@ -3,11 +3,27 @@ Los umbrales anteriores conservan las Bases. Las definiciones siguientes instrum
 
 La espera de un contacto es la diferencia entre recepción y primera atención. El indicador de respuesta de mesa divide contactos atendidos antes de veinte segundos por contactos recibidos y multiplica por cien; el abandono divide abandonos por contactos recibidos. La resolución al primer contacto divide primeros contactos resueltos sin escalamiento por primeros contactos atendidos. Una nueva llamada sobre un caso conserva el ticket y constituye otro contacto cuando efectivamente vuelve a ingresar a la cola. El registro permite auditar esa distinción y la calibración con abandono de T-15.
 
-La respuesta al incidente mide desde recepción hasta primera actuación de atención registrada; el acuse automático del ticket se conserva como evento distinto. La restauración se registra cuando vuelve la función y se verifica la transacción. El cierre conforme registra la confirmación de la persona usuaria. El MTTR crítico es la suma de tiempos de restauración de incidentes críticos del mes dividida por su cantidad. No se sustituye por el tiempo hasta el cierre administrativo.
+La respuesta al incidente mide desde recepción hasta primera actuación de atención registrada; el acuse automático del ticket se conserva como evento distinto. La restauración se registra cuando vuelve la función y se verifica la transacción. El cierre conforme registra la confirmación de la persona usuaria. Escalamiento, relevo, espera de tercero y espera fuera de cobertura conservan sus marcas y la hora de recepción original. Se informa el tiempo corrido de respuesta y restauración y se identifica la franja de atención. La regla contractual detallada para media y baja se formaliza con el CLIENTE (B-06).
+
+El MTTR crítico es la suma de tiempos de restauración de incidentes críticos del mes dividida por su cantidad. No se sustituye por el tiempo hasta el cierre administrativo.
 
 La tasa de cambios fallidos divide despliegues fallidos por despliegues de Producción del mes, con el fallo enlazado al cambio. La satisfacción es el promedio de respuestas válidas en la escala de uno a cinco y muestra cuántas respuestas la sustentan. Si un denominador es cero se informa «sin base de cálculo» con el conteo, sin asignar un 100\,\% ficticio. Los eventos con igual causa raíz se vinculan al mismo problema y conservan su fecha para verificar el máximo trimestral.
 
 El RTO se mide desde la interrupción hasta la recuperación funcional verificada; el RPO compara el punto consistente recuperado con el inicio del incidente. Los ensayos conservan canal, último dato recuperable y evidencia de escrituras y consultas. El indicador semestral exige el 100\,\% de los objetivos, no el promedio de resultados que oculte un canal incumplido (Distribuidora Puelche S.A., 2026a, art. 78.3, p. 40; LafroX, 2026d, apartado 4.3.2.5).
+
+\subsection*{Recorridos y ventana de observación}
+Cada recorrido conserva el identificador de la transacción, canal, sitio, instante, resultado y correlación con el incidente. El siguiente catálogo define la comprobación inicial de los recorridos críticos y los p95 del caso. Su calendario por servicio y sitio se registra con el CLIENTE, incluidos los días y turnos en que el proceso está comprometido.
+
+\Needspace{0.48\textheight}
+\begin{tablalafrox}{Comprobación de recorridos de negocio}{tab:sd10-recorridos}{F{0.28} F{0.30} Y}{\cab{Recorrido} & \cab{Ventana de referencia} & \cab{Resultado verificable}}
+Preparación e identidad en bodega & Preparación 22:00--06:00 & Sesión autorizada y línea confirmada con persistencia local y marca de sincronización \\
+Despacho y bloqueo térmico & Despacho 05:30--07:00, lunes a sábado & Validación térmica y documental de la carga. Si cambia, guía nueva del ERP antes de liberarla \\
+Preventa, stock y crédito & Jornada del proceso registrada por canal & Línea aceptada y consulta de stock/crédito respondida; estado local y de integración identificables \\
+Entrega & Jornada de ruta registrada por canal & Entrega registrada con su evidencia y estado de sincronización \\
+\end{tablalafrox}
+\fuentesdiez{BA, arts. 78--79, p. 40. Caso, RT-09.01 y RT-10.05, pp. 26--27. SD4, apartados 4.2.4.3 y 4.3.2.5.}
+
+Para cada recorrido y mes, $T$ es el tiempo de su calendario aplicable tras retirar la intersección con mantenimientos programados y aprobados. $I$ es la duración de la unión de los intervalos sin resultado válido dentro de ese $T$. Se conserva el impacto parcial por recorrido, sede o canal: una alternativa que cumple todas sus condiciones se registra como tal y la pérdida en otro recorrido se mantiene visible. Los excesos de mantenimiento computan. Con $T=0$ se informa el motivo y el conteo. Los p95 se calculan sobre tiempos observados por operación; se reportan aparte los fallos y las observaciones excluidas con su causa.
 
 \subsection*{Conservación de evidencia de observabilidad}
 La Tabla~\ref{tab:sd10-retencion} reúne los plazos declarados por SD4. Son clases distintas: una traza técnica no sustituye un registro de auditoría ni un documento sanitario o tributario. SD5 mantiene la retención por dominio y los controles de eliminación.

@@ -30,16 +30,16 @@ RT-14.01 & 10.1: OpenTelemetry y correlación & Desarrollado desde SD4 \\
 RT-14.02--14.03 & 10.1, 10.2 y 10.B: tableros y experiencia real & Desarrollado; pruebas en SD9 \\
 RT-14.04 & 10.1: alerta, supresión y escalamiento; cobertura & Diseño documentado; guardias B-02 \\
 RT-14.05 & 10.1 y 10.C: pasos, responsables y verificación & Guías documentadas; ensayo pendiente \\
-RT-14.06 & 10.1 y 10.B: causa raíz crítica en cinco días & Desarrollado desde BA y T-14 \\
-RT-14.07 & 10.1: exclusión de credenciales y datos sensibles & Desarrollado; acceso auditado \\
-RT-14.08 & 10.1 y 10.B: métricas, registros, trazas y archivo & Política técnica incorporada; costo en E2, B-04 \\
+RT-14.06 & 10.1 y 10.B: causa raíz crítica en cinco días hábiles & Desarrollado desde BA y T-14 \\
+RT-14.07 & 10.1: exclusión de credenciales y datos sensibles & Diseño de control y auditoría de acceso \\
+RT-14.08 & 10.1 y 10.B: métricas, registros, trazas y archivo & Política técnica incorporada; conciliación económica B-04 \\
 RT-14.09 & 10.1 y 10.2: comparación histórica y ensayo & Diseño deseable documentado; sin resultados reales \\
-RT-11.17--11.19; RT-11.21 & 10.1: SOC, comunicaciones y ejercicio anual & Desarrollado; habilitación B-02 \\
+RT-11.17--RT-11.21 & 10.1 y 10.C: avisos, ejercicio anual y pruebas independientes & Habilitación y evidencia de ejecución \\
 BA 21.1 y 78.3 & 10.2 y 10.B: remediación y críticos vencidos & Desarrollado; congelamientos B-05 \\
 \end{tablalafrox}
 \fuentesdiez{BTT, cap. 11, p. 24, y cap. 14, p. 27. BA, art. 21, p. 15, y art. 78, p. 40. SD4, seguridad y observabilidad. SD7, cuenta 8.1.5.}
 
-La Tabla~\ref{tab:sd10-matriz-sla} relaciona niveles externos, recuperación y mantención. Los planes operacionales detallados y la nómina completa pertenecen también a SD11 y SD12, aún en plantilla.
+La Tabla~\ref{tab:sd10-matriz-sla} relaciona niveles externos, recuperación y mantención. El plan de mantención y la dotación se articulan con SD11 y SD12 según B-09.
 
 \Needspace{0.8\textheight}
 \begin{tablalafrox}{Contraste de niveles de servicio y continuidad}{tab:sd10-matriz-sla}{F{0.25} Y F{0.28}}{\cab{Requisito} & \cab{Desarrollo del SD10} & \cab{Estado documental}}
@@ -47,15 +47,17 @@ BA 78.1--78.2 & 10.2 y 10.B: cuatro niveles y causa raíz & Umbrales incorporado
 BA 78.3 y 79 & 10.2 y 10.B: indicadores e informe & Desarrollado; medición real pendiente \\
 RT-10.01--10.02; BTT 7.2 & 10.2: disponibilidad funcional y de componente & Desarrollado; ERP B-07 \\
 BTT 8.4 & 10.2 y GU-09: soporte, stock y reemplazo & Compromisos incorporados; cobertura contratada B-03 \\
-RT-07.04--07.07 & 10.2 y 10.C: RTO/RPO y conmutación & Presupuesto reproducido; sujeto a ensayo \\
+RT-07.04--07.07; RT-07.12 & 10.2 y 10.C: RTO/RPO, conmutación, retorno y restauración & Presupuesto reproducido; sujeto a ensayo \\
 Caso RT-09.01; RT-10.05 & 10.2 y 10.B: p95 y ventana de despacho & Desarrollado; cambios B-05 \\
-SD4 S-43; RT-15.06 & 10.1: horario de ambientes y reducción de horas & Compromiso y medición; valoración en E2 \\
+RT-04.13; RT-15.06 & 10.1: horario, reducción de horas e informe 10.3.3 & Compromiso ofertado; conciliación económica \\
 RT-21.19--21.20 & 10.1: bolsa, solicitud, aprobación y calidad & Desarrollado desde T-14; B-09 \\
 RT-21.21 & 10.1: capacidad y registro de deuda técnica & Desarrollado desde T-14; B-10 \\
 RT-21.22 & 10.1: planificación anual y reversión & Requisito; detalle en SD11, B-09 \\
+RT-10.03--10.08 & 10.1, 10.C y 10.D: cambios, continuidad y ensayos & Procedimientos y criterios; actas pendientes \\
+RT-22.06--22.08 & 10.1: formación, mentoría y métricas de uso & Frecuencia y registro definidos \\
 Aclaraciones 10.1--10.2 & Cuerpo 10.1/10.2 y anexos 10.A--10.E & Borrador desarrollado; revisión pendiente \\
 \end{tablalafrox}
-\fuentesdiez{BA, arts. 78--79, p. 40. BTT, caps. 7, 8, 10 y 21, pp. 17--20, 22 y 35--38. Caso, RT-09.01 y RT-10.05, pp. 26--27. SD4, SD7 y aclaraciones de la licitación.}
+\fuentesdiez{BA, arts. 78--79, p. 40. BTT, caps. 4, 7, 8, 10, 15, 21 y 22. Caso, RT-09.01 y RT-10.05, pp. 26--27. SD4, SD7 y aclaraciones de la licitación.}
 
 La revisión final debe mantener la capacidad y los niveles externos al cerrar las brechas. No se declaran contratos suscritos, resultados de pruebas ni aceptaciones que no consten en las fuentes.
 

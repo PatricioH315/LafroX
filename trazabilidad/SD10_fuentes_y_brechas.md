@@ -25,7 +25,7 @@ Rama hija LafroX-Subdoc10-LateX-corrigiendo desde origin/LafroX-Subdoc10-LateX, 
 | SD13 | LafroX-Subdoc13-LateX-corrigiendo | [f6b57fa643b4](https://github.com/PatricioH315/LafroX/tree/f6b57fa643b47aca24ef8c2f27d0dc393a214c30) |
 | E2 | LafroX-OfertaEconomica-2-Latex | [2b04aaa7eaa4](https://github.com/PatricioH315/LafroX/tree/2b04aaa7eaa4a56a4166e4f7e8868c40561c35f1) |
 
-SD11/12 conservan la plantilla común. N/A para sus planes completos. Las huellas de fuentes LaTeX y PDF están en fuentes_sd10.json. Se excluyen copias históricas tmp/ y Formato/ de SD13. E2 sólo aporta fuente LaTeX en la instantánea.
+En el corte histórico no se acreditaron los planes completos de SD11/12. En 0.3 se mantienen como dependencias sin reevaluar esas ramas. Las huellas de fuentes LaTeX y PDF están en fuentes_sd10.json. Se excluyen copias históricas tmp/ y Formato/ de SD13. E2 sólo aporta fuente LaTeX en la instantánea.
 
 ## Bases y aclaraciones locales
 
@@ -242,7 +242,7 @@ N/A se aplica al dato específico que no está acreditado. El Anexo 10.D desarro
 | B-06 | N/A para acuerdo contractual específico de relojes media/baja y pausas. | Definiciones instrumentales propuestas; marcas originales y ausencia de exclusiones automáticas. |
 | B-07 | ERP del CLIENTE condiciona guía nueva. N/A para acuerdo que cierre responsabilidad/medición. | Conservar dependencia, no crear exención. |
 | B-08 | N/A para demanda/paciencia/FCR observados y cuadrante validado. | Calibración T-15, no presentar Erlang C como prueba real. |
-| B-09 | SD11/12 en plantilla. N/A para planes y nómina completos. | Usar T-14/T-15 como respaldo disponible. |
+| B-09 | N/A en este corte para planes y nómina completos de SD11/12. | Usar T-14/T-15 como respaldo disponible. |
 | B-10 | T-14: 109.791,32 HH; E2: 109.160,20 HH. N/A para puente de igual alcance. | Conservar capacidad técnica sin forzar igualdad. |
 
 ### Localizaciones adicionales
@@ -290,3 +290,51 @@ La política técnica de retención ya no se considera ausente. Su incorporació
 ### Límites conservados
 
 No se inventan sexto sitio, guardias nominales, teléfonos, productos ITSM, contratos firmados, datos reales de llamadas, ensayos, revisiones humanas ni aprobaciones del CLIENTE. Los plazos de Bases y los presupuestos publicados de SD4 se conservan. El circuito y las definiciones operacionales nuevos se identifican como elaboración procedimental y metodológica, con respaldo de sus requisitos y N/A para aprobación específica.
+
+## Implementación de la auditoría — versión 0.3
+
+Fecha 21 de noviembre de 2026. Corte del SD10 anterior: `d803d7b8659580bb1801a533cd5c75a132f480b4`. El contraste técnico de esta versión se limita al [SD4 `0dc50b3d19990513daeae37fdb3c9d7a9595d334`](https://github.com/PatricioH315/LafroX/tree/0dc50b3d19990513daeae37fdb3c9d7a9595d334), su LaTeX, sus PDF, anexos y T-11. Las bases y las aclaraciones corresponden al mismo corte. El inventario anterior de fuentes y los registros D y V02 documentan el origen de las referencias heredadas. No constituyen una nueva revisión de esas ramas ni certifican su estado actual.
+
+**Evidencia fijada.** Las huellas SHA-256 de los PDF de SD4, anexos y T-11 son, respectivamente, `38680849135f51a1084b35ff804e27ed0001c402205a9d078c114f61f6a6dcb8`, `b17d99830a8c9a22172a9448fe7a3be55ae046ce3f0d5a3945b3d37cf627c524` y `8d1ab9a70c5fa6e15178dd4094bc22a39c378914b17a33e3ca5a0f21299c2791`. El [informe de auditoría inicial](D:/Usuario/Documents/Proyecto_Lafrox/output/LafroX-Auditoria-SD10-SD4-20261121.md) conserva los localizadores y las diferencias de material publicado. Las referencias C y L siguientes corresponden a sus 32 observaciones. N/A identifica evidencia específica que no está acreditada en el alcance.
+
+### Coherencia con SD4
+
+| ID | Estado documental | Cambio o conformidad en SD10 | Respaldo y evidencia requerida |
+|---|---|---|---|
+| C01 | Corregida | 10.1.2 refiere el reporte anual a 10.3.3 y Referencias fija `0dc50b3d`. | SD4 4.2.3.4, fuente 02_b_servicios_nube.tex l. 85 y PDF p. 110. |
+| C02 | Dependencia SD4 | El SD10 usa los apartados y la actividad respaldada. | T-11 PDF pp. 4/22 conserva 5.1.1, 5.1.4 y 5.3.4 frente a 8.1.1, 8.1.4 y 8.2.7 en fuente ll. 11/68. Anexos PDF pp. 67/134 conservan 5.3.4, 2.1.2, 6.2.3 y 6.3.4 frente a 8.2.7, 2.2.2, 8.4.3 y 8.4.7 en fuente. Conciliar por actividad y regenerar allí. |
+| C03 | Dependencia SD4 | GU-09 referencia el ciclo de vida y conserva custodia y sanitización. | SD4 4.2.1 l. 76/PDF p. 93 refiere disposición final a 10.2.7, T-11 l. 148 usa 8.2.7. Aclarar cuál registro corresponde y unificar la referencia en SD4/T-11. |
+| C04 | Conservada | 10.1.2 mantiene L–V 08:00–20:00, las excepciones, al menos 60 % de cómputo, 60/168 h y 64,3 % teórico. Se mide por ambiente. | SD4 4.2.3.4, PDF p. 110. N/A para valorización comprobada por recurso y mes. |
+| C05 | Corregida | 10.1.2 distingue habilitación H3/M6, marchas blancas M13–15/M19–20, Producción M16/M21 y Operación M21–56. | SD4 4.2.4.1, despliegue l. 40 y PDF p. 70, BA art. 17. N/A para inventario valorizado por etapa. |
+| C06 | Conservada | 10.1.2 conserva mesa 04–20 y NOC 20–22 L–S, peak continuo, guardia alta/crítica y dedicación NOC 100/75/50 % con acta, SLA y reversión. | SD4 4-W.7, PDF pp. 116–117. N/A para nómina y cuadrante. |
+| C07 | Corregida | 10.1.3 y 10.A usan 31.000/1.400 sin redondear y distinguen el límite 2.391, la franja NOC con dos agentes y las 60 horas-posición adicionales. | SD4 4-W, SV-06 y 4-W.7. N/A para demanda nocturna/dominical observada y refuerzo formalizado. |
+| C08 | Corregida | 10.2.3 y GU-08 permiten despachar la carga intacta con guía preemitida válida y retienen las demás hasta emitir la guía aplicable. | SD4 4.3.2.5, PDF p. 182, 4-H INT-07. N/A para acta del recorrido y acuerdo del ERP. |
+| C09 | Corregida | GU-02 separa cómputo, sala y región. Añade validación de piso, exclusión de escritor y retorno. Se conserva la secuencia estimada de 135 min. | SD4 4.3.2.5, ll. 98–106/PDF pp. 181–182. N/A para ensayo AL-DR-01. |
+| C10 | Corregida | GU-01 mide desde la restitución del enlace hasta 10 min para flota y 2 h para CD tras 24 h. Registra orden, UUID y conciliación. | SD4 despliegue ll. 369 y 410–411, Caso RT-03.13 y BTT RT-03.12. N/A para ensayo registrado. |
+| C11 | Corregida | GU-06 separa retención local, evento, réplica y aviso remoto verificado por V17. 10.2.3 y 10.C preservan la consulta sanitaria en 75 min. | SD4 4.3.2.8 ll. 104–121 y 4-W V17. N/A para ensayo registrado. |
+| C12 | Conservada | 10.1.5 y 10.B mantienen 12+24 meses de registros, 13 de métricas, 30 días de trazas, siete años de auditoría y 24 h ADOT. | SD4 4.1.3.7–8, PDF pp. 47–49. N/A para archivo adicional de métricas o conciliación de costos. |
+| C13 | Corregida | 10.2.4 y GU-09 distinguen stock del CLIENTE y de LafroX, gestión y reposición, y evidencian los dos relojes. | SD4 4.2.1, T-11 ll. 11 y 145–148 y BTT 8.4. N/A para actas de stock y contratos. |
+| C14 | Corregida | 10.C localiza GU-04/05, mantiene clave de pago y MDN separado, y registra qué comprueba DES ante falla de plantillas. | SD4 4-H INT-08/09 y catálogo de servicios 4.1.4, PDF p. 64. |
+| C15 | Dependencia documental | 10.E usa referencia neutral a SD11 y SD12. 10.1 y 10.D conservan como antecedentes las cifras de T-14/T-15/E2. | SD4 4-W.7 acredita sus propios datos. N/A para 9.336 HH conciliadas, 13 plazas nominales, puente 109.791,32/109.160,20 HH y planes/nómina vigentes. |
+| C16 | Verificación operativa pendiente | 10.C define qué medir al perder físicamente un sitio tras aislamiento total, incluidos horas, último punto externo y secuencias. | SD4 4.3.2.4 ll. 73–75; BTT RT-07.04/07. N/A para prueba o garantía de RPO en el escenario combinado. |
+
+### Bases y aclaraciones
+
+| ID | Estado documental | Cambio o conformidad en SD10 | Respaldo y evidencia requerida |
+|---|---|---|---|
+| L01 | Conservada | Título, 10.1/10.2, introducciones, referencias antes de IA y anexos separados. | Aclaraciones §§2 y 11, BA art. 40. El índice del sobre exige comprobación al ensamblarlo. |
+| L02 | Revisión humana y firma pendientes | Versión 0.3 como borrador, declaración por sección y anexo. | Aclaraciones §§7.1–7.2 y BA arts. 13.5 y 40.2. N/A para revisión humana, formulario A-6 consolidado y firma/media firma. |
+| L03 | Corregida | 10.2.1 conserva los cuatro niveles y completa los disparadores. 10.B y 10.E explicitan cinco días hábiles para causa raíz crítica. | BA 78.1–78.3, p. 40 y BTT RT-14.06, p. 27. |
+| L04 | Corregida | 10.2.2 y 10.B conservan metas y p95 y añaden catálogo de recorridos, ventana, intervalos solapados, evidencia y denominadores. | BA arts. 78–79, BTT 7.2/10.01/14.03 y Caso RT-09.01/10.05. N/A para calendario formal por canal y servicio. |
+| L05 | Formalización pendiente | 10.B registra recepción, primera atención, restauración y cierre, relojes corridos, franja y transferencias. Sólo se descuenta del SLA de disponibilidad la intersección de mantenimiento programado y aprobado. | BA 78.2 y 79.4. N/A para reglas de reporte de media/baja formalizadas con el CLIENTE. |
+| L06 | Corregida | 10.1.6 incorpora diez días hábiles de aviso, calendario, justificación de indisponibilidad, aprobación y reversión. | BTT RT-10.05/06, Caso caps. 10, 13 y 15, BA arts. 5 y 79.4; SD4 4.2.4.1. |
+| L07 | Habilitación pendiente | 10.1 y B-02 explicitan guardia continua, escalamiento fuera de horario y registro de dotación por turno, competencia, dedicación y suplencia. | BTT RT-21.01–07 y Caso RT-21.06. N/A para asignaciones nominales, contactos y evidencia de alta. |
+| L08 | Conservada | 10.1.3 y 10.B mantienen metas 80 %/20 s, ≥70 % y ≤5 %, medición, ticket y confirmación. | BTT RT-21.06/14/15/17/18 y SD4 4-W.7. N/A para medición real y calibración. |
+| L09 | Formalización pendiente | 10.2.4 y 10.C indican resultado, cobertura, tiempo restante, alternativa, escalamiento y evidencia. | Aclaraciones 10.2 y BTT 8.4/21.3. N/A para acuerdos y soporte de terceros formalizados, con tiempos compatibles. |
+| L10 | Diseño completado; ensayo pendiente | 10.C indexa guías, entrega y ejecución por el CLIENTE, resiliencia, conmutación, restauración y fallas externas. | Aclaraciones 10.1, BTT RT-07.05–07/12, RT-10.03–04/07–08, RT-14.05 y RT-21.04. N/A para plan aprobado, guías transferidas, actas y resultados. |
+| L11 | Corregida; evidencia pendiente | 10.1, 10.C y B-05 mantienen plazos, añaden circuito de aviso el mismo día, contención, decisión escrita y control de ensayo independiente. | BA art. 21 y BTT RT-11.17–21. N/A para decisión contractual sobre excepción/plazos durante congelamiento e informe del tercero. |
+| L12 | Conciliación económica pendiente | 10.E y B-04 distinguen política técnica de costo verificado y 10.1.2 identifica el reporte de cómputo. | BTT RT-04.13, 14.01–09 y 15.06, BA art. 50.2. N/A para enlace a costos por clase de retención y valorización de reducción. |
+| L13 | Aclaración pendiente | 10.1 y B-01 mantienen obligación de seis y enumeran los cinco sitios identificados. | Caso RT-21.16 frente a cap. 4/5 y RT-06.01, SD4/T-11; BA 5.3–5.4. N/A para identidad, acceso, cobertura y reserva del sexto. |
+| L14 | Corregida | 10.1.6 establece jornadas, capacitación de personal nuevo, mentoría, métricas de conocimiento, calidad y reversión. | BTT RT-21.08–12/19–22 y RT-22.06–08. N/A para calendario ejecutado y conciliación de HH. |
+| L15 | Corregida | Se completan localizadores de BA/BTT/Caso y se actualiza la versión de SD4 en Referencias. | Aclaraciones §6 y BA 40.4. |
+| L16 | Corregida | Fig. 10.1 termina en confirmación/cierre. El texto fija el plazo propio de RCA, que corre independientemente. Se conserva Fig. 10.2. | Aclaraciones §§3–5, BA 78.2 y BTT RT-14.06. |

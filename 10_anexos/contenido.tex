@@ -9,11 +9,11 @@ Estos anexos detallan el dimensionamiento, los indicadores, la recuperación y e
 \addcontentsline{toc}{section}{Anexo 10.A — Memoria de capacidad}
 \label{anx:sd10-capacidad}
 
-La reproducción usa los supuestos de SD4, Anexo 4-W.7, y el calendario de T-15. La demanda base es $(640+160)\times2,5=2.000$ contactos/mes. Una hora cargada concentra el 25\,\% y cada una de las otras 17 horas recibe una fracción igual del 75\,\%. Para $N$ contactos mensuales se calculan las tasas
+La reproducción usa los supuestos de SD4, Anexo 4-W.7, y el calendario de T-15. La demanda base es $(640+160)\times2{,}5=2\,000$ contactos/mes. Una hora cargada concentra el 25\,\% y cada una de las otras 17 horas recibe una fracción igual del 75\,\%. Para $N$ contactos mensuales, $d=31\,000/1\,400$ días equivalentes. Se calculan las tasas sin redondear $d$
 \[
- \lambda_{\mathrm{cargada}}=\frac{0,25N}{22,14},
+ \lambda_{\mathrm{cargada}}=\frac{0,25N}{d},
  \qquad
- \lambda_{\mathrm{valle}}=\frac{0,75N}{22,14\times17}.
+ \lambda_{\mathrm{valle}}=\frac{0,75N}{d\times17}.
 \]
 La atención media de diez minutos da $\mu=6$ contactos por hora. Para $c$ agentes, $a=\lambda/\mu$ y $c>a$, la probabilidad de espera es
 \[
@@ -32,20 +32,20 @@ La Tabla~\ref{tab:sd10-escenarios} muestra los escenarios que explican los lími
 
 \Needspace{0.32\textheight}
 \begin{tablalafrox}{Reproducción de escenarios de contactos}{tab:sd10-escenarios}{Y H{0.18} H{0.18} H{0.20} H{0.20}}{\cab{Contactos/mes} & \cab{Hora cargada} & \cab{Valle} & \cab{SL con 7} & \cab{SL con 2}}
-2.000 & 22,58/h & 3,99/h & 90,61\,\% & 84,16\,\% \\
-2.258,06 & 25,50/h & 4,50/h & 84,21\,\% & 80,38\,\% \\
-2.283 & 25,78/h & 4,55/h & 83,47\,\% & 80,00\,\% \\
-2.391 & 27,00/h & 4,76/h & 80,02\,\% & 78,32\,\% \\
+2.000 & 22,58/h & 3,98/h & 90,62\,\% & 84,16\,\% \\
+2.258,06 & 25,49/h & 4,50/h & 84,22\,\% & 80,39\,\% \\
+2.283 & 25,78/h & 4,55/h & 83,48\,\% & 80,01\,\% \\
+2.391 & 27,00/h & 4,76/h & 80,03\,\% & 78,33\,\% \\
 \end{tablalafrox}
 \fuentesdiez{Cálculo reproducido de SD4, Anexo 4-W.7, con entradas sin redondear.}
 
-En el escenario de 2.391 contactos, tres agentes de valle dan 95,26\,\% y permiten que el límite pase a la hora cargada. La proyección 3$\times$ de 6.000 contactos exige, bajo las mismas hipótesis, al menos quince agentes en hora cargada y cuatro en valle para alcanzar 80\,\% en veinte segundos. Es una sensibilidad matemática y no una contratación adicional ni la previsión de llamadas para septiembre. La recalibración con registros reales y Erlang A antes de M21 conserva el compromiso de T-15 (LafroX, 2026g, sección 5.6).
+En el escenario de 2.391 contactos, tres agentes de valle dan 95,26\,\% y permiten que el límite pase a la hora cargada si se cubre todo el valle modelado. Con dos agentes en 20:00--22:00 y llegadas uniformes en valle, esa franja queda en 78,33\,\%. Para sostener 2.391 se comprueba una demanda menor en esa franja o se formaliza un refuerzo. La proyección 3$\times$ de 6.000 contactos exige, bajo las mismas hipótesis, al menos quince agentes en hora cargada y cuatro en valle para alcanzar 80\,\% en veinte segundos. Es una sensibilidad matemática y no una contratación adicional ni la previsión de llamadas para septiembre. La recalibración con registros reales y Erlang A antes de M21 conserva el compromiso de T-15 (LafroX, 2026g, sección 5.6).
 
-La cobertura propia de mesa de 04:00 a 20:00 produce $(7+15\times2)\times6=222$ horas-posición por semana. Con tercer agente de valle produce $(7+15\times3)\times6=312$. La extensión de peak aporta además $6\times6+24=60$ horas-posición semanales para las horas 22:00--04:00 y los domingos. El NOC cubre separadamente 20:00--22:00.
+La cobertura propia de mesa de 04:00 a 20:00 produce $(7+15\times2)\times6=222$ horas-posición por semana. Con tercer agente de valle produce $(7+15\times3)\times6=312$. La extensión de peak aporta además $6\times6+24=60$ horas-posición semanales para las horas 22:00--04:00 y los domingos. El NOC cubre separadamente 20:00--22:00 con dos posiciones. Las 60 horas-posición acreditan extensión del horario diseñado, cuya capacidad se verifica por separado con registros nocturnos y dominicales.
 
 Para convertir cobertura a plazas se usa el calendario efectivo de T-15. Un mes de 26 días de lunes a sábado requiere $26\times37=962$ HH de mesa ordinaria y $\lceil962/128\rceil=8$ plazas como cota agregada. Septiembre de 2029 requiere $25\times(52+6)+5\times24=1.570$ HH y $\lceil1.570/128\rceil=13$ plazas. Son cuentas de horas-posición y plazas efectivas distintas de las siete personas simultáneas mínimas en hora cargada y de los totales teóricos de personas por posición de SD4. La distribución diaria, la concurrencia y los relevos requieren el cuadrante nominal B-02 (LafroX, 2026g, T-15, secciones 4.1 y 5.7).
 
-El modelo no verifica abandono ni resolución al primer contacto. Deben medirse con marcas de llegada, respuesta, abandono, escalamiento y cierre. T-15 exige al menos cuatro semanas de datos para calibrar paciencia, ajustar dotación y mantener el refuerzo cuando los indicadores fallen dos meses consecutivos. Los 22,14 días son la convención de demanda de SD4 y no sustituyen el calendario real usado para las HH.
+El modelo no verifica abandono ni resolución al primer contacto. Deben medirse con marcas de llegada, respuesta, abandono, escalamiento y cierre. T-15 exige al menos cuatro semanas de datos para calibrar paciencia, ajustar dotación y mantener el refuerzo cuando los indicadores fallen dos meses consecutivos. Los 22,14 días son el valor redondeado de la convención de demanda de SD4 y no sustituyen el calendario real usado para las HH.
 
 \section*{Anexo 10.B — Catálogo de indicadores}
 \addcontentsline{toc}{section}{Anexo 10.B — Catálogo de indicadores}
@@ -68,7 +68,7 @@ Reincidencia de causa raíz & Hasta un evento por trimestre & Incidentes correla
 Vulnerabilidad crítica vencida & Cero & Publicación o detección, remediación y cierre. BA 21.1 y 78.3 \\
 RTO y RPO en ensayo & 100\,\% de objetivos & Evidencia semestral de conmutación. BA 78.3 \\
 Entrega de informe & Primeros cinco días hábiles & Recepción del reporte mensual. BA 79.2 \\
-Causa raíz por severidad & Crítica: cinco días; alta: diez días hábiles; media: a solicitud; baja: no aplica & Informe y acciones verificables. BA 78.2 \\
+Causa raíz por severidad & Crítica: cinco días hábiles; alta: diez días hábiles; media: a solicitud; baja: no aplica & Informe y acciones verificables. BA 78.2 y RT-14.06 \\
 \end{tablalafrox}
 \fuentesdiez{BA, art. 21, p. 15, y arts. 78--79, p. 40. BTT, cap. 14, p. 27, y cap. 21, pp. 35--38. SD7, T-14 y T-15.}
 
@@ -114,17 +114,19 @@ Las guías requeridas por BTT RT-14.05 recogen los escenarios ya desarrollados. 
 
 \Needspace{0.62\textheight}
 \begin{tablalafrox}{Escenarios que deben cubrir las guías del servicio}{tab:sd10-guias}{F{0.25} Y F{0.25}}{\cab{Escenario} & \cab{Regla de operación respaldada} & \cab{Fuente}}
-Caída de WAN de un sitio & Conservar operación local y outbox, reenviar por UUID al reconectar & SD4, 4.2 y anexos 4-G/4-H \\
-Pérdida de cómputo en Talca & Excluir escritor anterior, detener DMS y transferir autoridad antes de promover & SD4, 4.3.2.5 \\
-Partición activo/espera & Comprobar exclusión antes de habilitar escritura & SD4, 4.2.4.3 \\
-Pago incierto & Consultar por la misma clave antes de reintentar & SD4, Anexo 4-H, INT-09 \\
-AS2 sin respuesta & Separar MDN y respuesta comercial y seguir ventana de cadena & SD4, Anexo 4-H, INT-08 \\
-Excursión térmica & Retener SSCC, avisar a Calidad y validar la disposición autorizada & SD4, M9 y AL-FRIO-01 \\
-Incidente de terreno & Captura seudonimizada, reproducción y confirmación de usuario & SD13, INN-02 \\
-ERP o guía indisponibles & Liberar sólo carga amparada; conciliar solicitud, guía y carga & SD4, INT-06/INT-07 \\
-Equipo fallado & Sustituir desde reserva compatible y comprobar la función & BTT 8.4; SD4, T-11 \\
+GU-01. Caída de WAN de un sitio & Conservar operación local y outbox, reenviar por UUID al reconectar & SD4, 4.2 y anexos 4-G/4-H \\
+GU-02. Cómputo o sala de Talca & Excluir escritor anterior, detener DMS y transferir autoridad antes de promover & SD4, 4.3.2.5 \\
+GU-03. Partición activo/espera & Comprobar exclusión antes de habilitar escritura & SD4, 4.2.4.3 \\
+GU-04. Pago incierto & Consultar por la misma clave antes de reintentar & SD4, Anexo 4-H, INT-09 \\
+GU-05. AS2 sin respuesta & Separar MDN y respuesta comercial y seguir ventana de cadena & SD4, Anexo 4-H, INT-08 \\
+GU-06. Excursión térmica & Retener SSCC, avisar a Calidad y validar la disposición autorizada & SD4, M9 y AL-FRIO-01 \\
+GU-07. Incidente de terreno & Captura seudonimizada, reproducción y confirmación de usuario & SD13, INN-02 \\
+GU-08. ERP o guía indisponibles & Liberar sólo carga amparada; conciliar solicitud, guía y carga & SD4, INT-06/INT-07 \\
+GU-09. Equipo fallado & Sustituir desde reserva compatible y comprobar la función & BTT 8.4; SD4, T-11 \\
 \end{tablalafrox}
 \fuentesdiez{SD4, contratos de integración, continuidad y gobierno. SD13, sección 13.2. BTT, sección 8.4, pp. 19--20.}
+
+Ante una falla del servicio de plantillas, DES identifica el formato de entrega y verifica generación y descarga de los comprobantes del catálogo, incluidos HTML, PDF, DOCX y XLSX. La validez tributaria de la guía de despacho se verifica en GU-08 (SD4, apartado 4.1.4, p. 64, y Anexo 4-H, INT-07).
 
 Las guías desarrolladas a continuación identifican diagnóstico, responsable, pasos y comprobación de recuperación, conforme al Anexo 4-B. Su ejecución requiere accesos habilitados, artefacto e inventario desplegados y transferencia de conocimiento. Los ensayos de SD9 verifican que el personal del CLIENTE pueda ejecutar lo transferido conforme a RT-21.04 (Distribuidora Puelche S.A., 2026b, pp. 35--36).
 
@@ -138,28 +140,28 @@ Cada condición identifica la decisión, dato o evidencia necesarios para habili
 
 \begin{description}[style=nextline,leftmargin=0pt,labelwidth=0pt,labelsep=0pt,font=\normalfont\intersemibold]
 \item[B-01. Número de instalaciones.]
-Caso RT-21.16 cita seis instalaciones y su descripción, SD4 y T-11 desarrollan Talca, Concepción, Curicó, Chillán y Los Ángeles. Se conservan esos cinco nombres y la obligación de aclarar el sexto, si corresponde. No se acreditan identidad y capacidad del sitio adicional. Su confirmación afecta desplazamientos y cobertura.
+Caso RT-21.16 cita seis instalaciones y su descripción, SD4 y T-11 desarrollan Talca, Concepción, Curicó, Chillán y Los Ángeles. Se conservan esos cinco nombres y la obligación de aclarar el sexto. No se acreditan identidad y capacidad del sitio adicional. Su confirmación afecta desplazamientos y cobertura.
 
 \item[B-02. Habilitación y guardias.]
-SD1, SD4 y T-15 publican capacidades y plazas propuestas. No se acreditan el cuadrante nominal, la asignación efectiva, el teléfono, el correo operativo ni la herramienta ITSM seleccionada. Se necesita el registro de turnos, titulares y suplentes y los canales habilitados antes del inicio del servicio. Las 13 plazas de mesa y seis del SOC se conservan como previsión del T-15.
+SD1, SD4 y T-15 publican capacidades y plazas propuestas. No se acreditan el cuadrante nominal, la asignación efectiva, el teléfono, el correo operativo ni la herramienta ITSM seleccionada. Se necesita el registro de competencias, dedicación, turnos, titulares, suplentes y canales habilitados antes del inicio del servicio. Las 13 plazas de mesa y seis del SOC se conservan como previsión del T-15.
 
 \item[B-03. Acuerdos operacionales y contratos de apoyo.]
-10.2 y 10.C desarrollan responsabilidades, disparadores, transferencia, evidencia y límites externos. Se incorporan los mínimos de hardware de BTT 8.4. No se acreditan contratos de apoyo suscritos, directorio de emergencia ni presupuestos numéricos internos por equipo. Esos elementos requieren formalización previa a la habilitación. Los compromisos de cobertura deben quedar recogidos en la contratación de apoyo antes de la habilitación; el catálogo comercial no acredita por sí solo un tiempo contratado.
+10.2 y 10.C desarrollan responsabilidades, coberturas, transferencia, alternativas, evidencia y límites externos. Se incorporan los mínimos de hardware de BTT 8.4. No se acreditan contratos de apoyo suscritos, directorio de emergencia ni presupuestos numéricos internos por equipo. Esos elementos requieren formalización previa a la habilitación. Los compromisos de cobertura deben quedar recogidos en la contratación de apoyo antes de la habilitación; el catálogo comercial no acredita por sí solo un tiempo contratado.
 
 \item[B-04. Retención de métricas y trazas.]
 La política técnica queda individualizada en 10.B: registros técnicos 12 meses en línea y 24 en archivo; métricas 13 meses; trazas 30 días en línea sin archivo adicional; seguridad y auditoría siete años protegidos. El respaldo es SD4, 4.1.3.7--4.1.3.8, y SD5, 5.2.7. La conciliación del costo asociado de RT-14.08 pertenece a la Oferta Económica y debe comprobarse por clase; este documento no acredita su cierre económico.
 
 \item[B-05. Cambios de emergencia y congelamientos.]
-Caso RT-10.05 fija prohibiciones y SD4 contempla solicitud de autorización escrita ante conflicto con recuperación o remediación. No se acredita una autorización contractual ya emitida que modifique la prohibición. La revisión debe delimitar alcance, autoridad y medición. Se conservan los plazos de seguridad y el registro de contención y decisión.
+El mantenimiento previsto sigue las ventanas y el aviso de 10.1. Si una recuperación o remediación urgente coincide con un congelamiento, NOC o SOC avisa al CLIENTE el mismo día, registra impacto y contención y solicita una decisión escrita con alcance, ventana, validación y reversión. Sin autorización aplicable se conserva la contención posible y se programa en la primera ventana habilitada; con autorización se cumple su alcance y se registra la intervención. El reloj original y las obligaciones de aviso y remediación se mantienen. Una excepción contractual requiere formalización conforme a BA art. 5 y 79.4, Caso RT-10.05 y BTT RT-10.05--RT-10.06.
 
 \item[B-06. Definiciones de medición.]
-BA 78.2 establece cobertura y máximos de atención. No se acreditan reglas completas de relojes fuera de cobertura de media y baja, momento contractual detallado de respuesta, pausas por terceros y exclusiones adicionales. Se deben acordar sin reducir las obligaciones de BA 79.4 y conservando marcas de tiempo originales y medición del CLIENTE.
+BA 78.2 establece cobertura y máximos de atención. No se acreditan reglas completas de relojes fuera de cobertura de media y baja, ni acuerdo para suspender relojes por terceros. El Anexo 10.B conserva el reloj corrido, los eventos y la franja observada. La regla de reporte debe formalizarse con el CLIENTE dentro de BA 78 y 79.
 
 \item[B-07. ERP y guía crítica.]
 SD4 condiciona emisión de guía nueva a la disponibilidad del ERP del CLIENTE, que debe restituirlo ante pérdida de sala. La guía preemitida sostiene las cargas ya amparadas. No se acredita un acuerdo específico que cierre la responsabilidad y la medición del recorrido crítico con emisión nueva durante esa pérdida. El criterio debe conciliarse con el artículo 78 y probarse.
 
 \item[B-08. Cuadrante y calibración de la mesa.]
-La memoria de SD4 usa demanda supuesta y personas por posición. T-15 usa 128 HH efectivas y calendario. No se acreditan asignación diaria validada, abandonos y paciencia observados, resolución real al primer contacto y demanda de peak medida. Se conserva la recalibración de T-15 con cuatro semanas de datos antes de M21.
+La memoria de SD4 usa demanda supuesta y personas por posición. T-15 usa 128 HH efectivas y calendario. No se acreditan asignación diaria validada, abandonos y paciencia observados, resolución real al primer contacto y demanda de peak medida. Se conserva la recalibración de T-15 con cuatro semanas de datos antes de M21. El cuadrante documenta quién cubre la franja nocturna y el domingo durante peak.
 
 \item[B-09. Dependencias documentales SD11 y SD12.]
 La habilitación requiere articular el plan completo de operación y mantención de SD11 y la nominación de SD12 con las capacidades de T-14 y T-15. No se acredita en las fuentes consultadas ese desarrollo integral; se conserva la dependencia documental y el contraste de perfiles, dedicaciones y turnos.
@@ -168,6 +170,6 @@ La habilitación requiere articular el plan completo de operación y mantención
 T-15 y E2 tienen agrupaciones de HH de operación que requieren conciliación por perfil, paquete y mes. No se acredita un puente completo que demuestre la igualdad de alcance entre ambos agregados. El SD10 conserva la capacidad técnica de T-15 y omite importes económicos. Se requiere conciliar antes de la oferta final.
 \end{description}
 
-La habilitación conserva las condiciones y evidencias indicadas. La trazabilidad separada registra fuentes, localizaciones y cambios, distinguiendo desarrollo documental de servicio ejecutado.
+La habilitación también verifica el alcance y el resultado de resiliencia, aislamiento combinado con pérdida de sitio, conmutación, restauración y seguridad independiente mediante las actas de 10.C. Las pruebas conservan quién ejecutó, quién revisó y qué recorridos se comprobaron. La trazabilidad separada registra fuentes, localizaciones y cambios, distinguiendo desarrollo documental de servicio ejecutado.
 
 \parte{partes/10_e_matriz}
