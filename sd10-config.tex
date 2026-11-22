@@ -2,5 +2,26 @@
 \RequirePackage{needspace}
 \RequirePackage{etoolbox}
 \AtBeginEnvironment{tablalafrox}{\hyphenpenalty=10000}
-\newcommand{\fuentesdiez}[1]{\par{\fontsize{9pt}{11.5pt}\selectfont\raggedright Fuente de la tabla o figura. #1\par}\medskip}
-\newcommand{\brechasdiez}[1]{\par\noindent\textbf{Brecha del borrador.} #1\par}
+\newcommand{\fuentesdiez}[1]{\par{\fontsize{9pt}{11.5pt}\selectfont\raggedright Fuente: #1\par}\medskip}
+\newcommand{\brechasdiez}[1]{\par #1\par}
+
+% Pie con media firma del representante legal y portada sin cabecera, como en los demás subdocumentos.
+\renewcommand{\LFXpiederecho}{%
+  \begingroup\LFXpiebase
+  \begin{tabular}[b]{@{}r@{}}
+    {\color{lafroxGris}\rule{3.4cm}{0.4pt}%
+     \begin{tikzpicture}[remember picture,overlay]
+       \node[anchor=south east,inner sep=0pt] at (0,1mm)
+         {\includegraphics[height=7mm]{logo/FIRMA_Alex_Aravena_transparente.png}};
+     \end{tikzpicture}}\\[-1pt]
+    {\LFXchico Media firma: \LFXrepresentante}\\
+    {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}\LFXfoliotexto}
+  \end{tabular}%
+  \endgroup}
+
+% Portada: solo folio en el pie derecho, por petición expresa del usuario.
+\fancypagestyle{lfxportada}{%
+  \fancyhf{}
+  \fancyfoot[R]{\global\LFXfranjafalse\LFXpiefolioen{lafroxTinta}}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\headrule}{}}

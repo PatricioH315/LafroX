@@ -3,7 +3,7 @@
 \setcounter{chapter}{10}
 \label{cap:sd10-anexos}
 
-Estos anexos detallan el dimensionamiento, los indicadores, la recuperación y el contraste que sustentan el borrador de Servicios de operación y niveles de servicio. Las fuentes corresponden a los commits de la sección Referencias. Los resultados de cálculo reproducen hipótesis publicadas y las brechas permanecen abiertas hasta disponer de evidencia. El texto principal se entrega como \textit{LAFROX-Subdocumento10.pdf}.
+Estos anexos detallan el dimensionamiento, los indicadores, la recuperación y las condiciones de habilitación de los Servicios de operación y niveles de servicio. Los cálculos reproducen las hipótesis publicadas en SD4 y T-15. El texto principal se entrega como \textit{LAFROX-Subdocumento10.pdf}.
 
 \section*{Anexo 10.A — Memoria de capacidad}
 \addcontentsline{toc}{section}{Anexo 10.A — Memoria de capacidad}
@@ -26,7 +26,7 @@ El nivel de respuesta antes de $t=20$ segundos es
 \[
  SL(t)=1-P_{\mathrm{espera}}e^{-(c\mu-\lambda)t/3600}.
 \]
-Si $c\leq a$ el sistema no tiene equilibrio estable y la dotación debe recalcularse. El script \texttt{verificacion/comprobar\_calculos.py} reproduce los escenarios y conserva sus entradas en \texttt{trazabilidad/calculos\_sd10.json}. El método es el de la memoria de SD4 y no incorpora observaciones de llamadas reales (LafroX, 2026d, Anexo 4-W.7).
+Si $c\leq a$ el sistema no tiene equilibrio estable y la dotación debe recalcularse. El método es el de la memoria de SD4 y no incorpora observaciones de llamadas reales (LafroX, 2026d, Anexo 4-W.7).
 
 La Tabla~\ref{tab:sd10-escenarios} muestra los escenarios que explican los límites de la dotación propuesta. Las columnas de respuesta corresponden a siete agentes en hora cargada y dos en valle.
 
@@ -43,7 +43,7 @@ En el escenario de 2.391 contactos, tres agentes de valle dan 95,26\,\% y permit
 
 La cobertura propia de mesa de 04:00 a 20:00 produce $(7+15\times2)\times6=222$ horas-posición por semana. Con tercer agente de valle produce $(7+15\times3)\times6=312$. La extensión de peak aporta además $6\times6+24=60$ horas-posición semanales para las horas 22:00--04:00 y los domingos. El NOC cubre separadamente 20:00--22:00 con dos posiciones. Las 60 horas-posición acreditan extensión del horario diseñado, cuya capacidad se verifica por separado con registros nocturnos y dominicales.
 
-Para convertir cobertura a plazas se usa el calendario efectivo de T-15. Un mes de 26 días de lunes a sábado requiere $26\times37=962$ HH de mesa ordinaria y $\lceil962/128\rceil=8$ plazas como cota agregada. Septiembre de 2029 requiere $25\times(52+6)+5\times24=1.570$ HH y $\lceil1.570/128\rceil=13$ plazas. Son cuentas de horas-posición y plazas efectivas distintas de las siete personas simultáneas mínimas en hora cargada y de los totales teóricos de personas por posición de SD4. La distribución diaria, la concurrencia y los relevos requieren el cuadrante nominal B-02 (LafroX, 2026g, T-15, secciones 4.1 y 5.7).
+Para convertir cobertura a plazas se usa el calendario efectivo de T-15. Un mes de 26 días de lunes a sábado requiere $26\times37=962$ HH de mesa ordinaria y $\lceil962/128\rceil=8$ plazas como cota agregada. Septiembre de 2029 requiere $25\times(52+6)+5\times24=\text{1.570}$ HH y $\lceil\text{1.570}/128\rceil=13$ plazas. Son cuentas de horas-posición y plazas efectivas distintas de las siete personas simultáneas mínimas en hora cargada y de los totales teóricos de personas por posición de SD4. La distribución diaria, la concurrencia y los relevos requieren el cuadrante nominal B-02 (LafroX, 2026g, T-15, secciones 4.1 y 5.7).
 
 El modelo no verifica abandono ni resolución al primer contacto. Deben medirse con marcas de llegada, respuesta, abandono, escalamiento y cierre. T-15 exige al menos cuatro semanas de datos para calibrar paciencia, ajustar dotación y mantener el refuerzo cuando los indicadores fallen dos meses consecutivos. Los 22,14 días son el valor redondeado de la convención de demanda de SD4 y no sustituyen el calendario real usado para las HH.
 
@@ -136,40 +136,40 @@ Las guías desarrolladas a continuación identifican diagnóstico, responsable, 
 \addcontentsline{toc}{section}{Anexo 10.D — Condiciones de habilitación y dependencias}
 \label{anx:sd10-brechas}
 
-Cada condición identifica la decisión, dato o evidencia necesarios para habilitar el servicio. Se distingue diseño documentado, formalización previa al servicio y prueba de ejecución. La trazabilidad separada conserva el respaldo y registra N/A cuando no existe una fuente específica; ese registro no acredita cumplimiento.
+Cada condición identifica lo que se formaliza antes de habilitar el servicio en M21, quién lo hace y con qué evidencia. Se distingue el diseño comprometido, su formalización previa al servicio y la prueba de ejecución.
 
 \begin{description}[style=nextline,leftmargin=0pt,labelwidth=0pt,labelsep=0pt,font=\normalfont\intersemibold]
-\item[B-01. Número de instalaciones.]
-Caso RT-21.16 cita seis instalaciones y su descripción, SD4 y T-11 desarrollan Talca, Concepción, Curicó, Chillán y Los Ángeles. Se conservan esos cinco nombres y la obligación de aclarar el sexto. No se acreditan identidad y capacidad del sitio adicional. Su confirmación afecta desplazamientos y cobertura.
+\item[B-01. Instalaciones atendidas.]
+Las seis instalaciones de RT-21.16 son los centros de distribución de Talca y Concepción, las plataformas de cross-docking de Curicó, Chillán y Los Ángeles y la casa matriz de Talca, que sólo aloja oficinas y trabaja contra la nube (LafroX, 2026d, apartado 4.2.2). Antes de M21 se registran sus accesos, los tiempos de desplazamiento y la reserva de equipos de cada sitio.
 
 \item[B-02. Habilitación y guardias.]
-SD1, SD4 y T-15 publican capacidades y plazas propuestas. No se acreditan el cuadrante nominal, la asignación efectiva, el teléfono, el correo operativo ni la herramienta ITSM seleccionada. Se necesita el registro de competencias, dedicación, turnos, titulares, suplentes y canales habilitados antes del inicio del servicio. Las 13 plazas de mesa y seis del SOC se conservan como previsión del T-15.
+SD1, SD4 y T-15 fijan capacidades y plazas: 13 plazas de mesa, ocho operadores NOC y seis analistas SOC. Antes de M21 se publican el cuadrante nominal, los titulares y suplentes de cada turno, el portal de la mesa, el teléfono y el correo operativo, y se registran las competencias de cada persona (LafroX, 2026g, T-15, secciones 4.1 y 5.7).
 
 \item[B-03. Acuerdos operacionales y contratos de apoyo.]
-10.2 y 10.C desarrollan responsabilidades, coberturas, transferencia, alternativas, evidencia y límites externos. Se incorporan los mínimos de hardware de BTT 8.4. No se acreditan contratos de apoyo suscritos, directorio de emergencia ni presupuestos numéricos internos por equipo. Esos elementos requieren formalización previa a la habilitación. Los compromisos de cobertura deben quedar recogidos en la contratación de apoyo antes de la habilitación; el catálogo comercial no acredita por sí solo un tiempo contratado.
+10.2 y 10.C fijan responsabilidades, coberturas, transferencia, alternativas, evidencia y límites externos, con los mínimos de hardware de BTT 8.4. Los contratos de apoyo con AWS, operadores de enlaces y fabricantes, el directorio de emergencia y los plazos internos por equipo se suscriben antes de habilitar el servicio, con coberturas compatibles con los objetivos de 10.2.
 
 \item[B-04. Retención de métricas y trazas.]
-La política técnica queda individualizada en 10.B: registros técnicos 12 meses en línea y 24 en archivo; métricas 13 meses; trazas 30 días en línea sin archivo adicional; seguridad y auditoría siete años protegidos. El respaldo es SD4, 4.1.3.7--4.1.3.8, y SD5, 5.2.7. La conciliación del costo asociado de RT-14.08 pertenece a la Oferta Económica y debe comprobarse por clase; este documento no acredita su cierre económico.
+La política técnica queda individualizada en 10.B: registros técnicos 12 meses en línea y 24 en archivo; métricas 13 meses; trazas 30 días en línea sin archivo adicional; seguridad y auditoría siete años protegidos. El respaldo es SD4, 4.1.3.7--4.1.3.8, y SD5, 5.2.7.
 
 \item[B-05. Cambios de emergencia y congelamientos.]
-El mantenimiento previsto sigue las ventanas y el aviso de 10.1. Si una recuperación o remediación urgente coincide con un congelamiento, NOC o SOC avisa al CLIENTE el mismo día, registra impacto y contención y solicita una decisión escrita con alcance, ventana, validación y reversión. Sin autorización aplicable se conserva la contención posible y se programa en la primera ventana habilitada; con autorización se cumple su alcance y se registra la intervención. El reloj original y las obligaciones de aviso y remediación se mantienen. Una excepción contractual requiere formalización conforme a BA art. 5 y 79.4, Caso RT-10.05 y BTT RT-10.05--RT-10.06.
+El mantenimiento previsto sigue las ventanas y el aviso de 10.1. Si una recuperación o remediación urgente coincide con un congelamiento, NOC o SOC avisa al CLIENTE el mismo día, registra impacto y contención y solicita una decisión escrita con alcance, ventana, validación y reversión. Sin autorización aplicable se conserva la contención posible y se programa en la primera ventana habilitada; con autorización se cumple su alcance y se registra la intervención.
 
 \item[B-06. Definiciones de medición.]
-BA 78.2 establece cobertura y máximos de atención. No se acreditan reglas completas de relojes fuera de cobertura de media y baja, ni acuerdo para suspender relojes por terceros. El Anexo 10.B conserva el reloj corrido, los eventos y la franja observada. La regla de reporte debe formalizarse con el CLIENTE dentro de BA 78 y 79.
+BA 78.2 establece cobertura y máximos de atención. La regla de relojes fuera de cobertura para las clases media y baja, y la suspensión de relojes por terceros, se acuerdan con el CLIENTE en el Comité de Operación antes de M21, dentro de BA 78 y 79. Mientras tanto, el Anexo 10.B conserva el reloj corrido, los eventos y la franja observada.
 
 \item[B-07. ERP y guía crítica.]
-SD4 condiciona emisión de guía nueva a la disponibilidad del ERP del CLIENTE, que debe restituirlo ante pérdida de sala. La guía preemitida sostiene las cargas ya amparadas. No se acredita un acuerdo específico que cierre la responsabilidad y la medición del recorrido crítico con emisión nueva durante esa pérdida. El criterio debe conciliarse con el artículo 78 y probarse.
+SD4 condiciona la emisión de guías nuevas a la disponibilidad del ERP del CLIENTE, que lo restituye ante pérdida de sala; la guía preemitida sostiene las cargas ya amparadas. La medición del recorrido crítico durante esa pérdida se acuerda con el CLIENTE dentro del artículo 78 y se prueba en la marcha blanca.
 
 \item[B-08. Cuadrante y calibración de la mesa.]
-La memoria de SD4 usa demanda supuesta y personas por posición. T-15 usa 128 HH efectivas y calendario. No se acreditan asignación diaria validada, abandonos y paciencia observados, resolución real al primer contacto y demanda de peak medida. Se conserva la recalibración de T-15 con cuatro semanas de datos antes de M21. El cuadrante documenta quién cubre la franja nocturna y el domingo durante peak.
+La memoria de SD4 usa demanda supuesta y personas por posición, y T-15 la convierte en plazas con 128 HH efectivas. Con cuatro semanas de datos de la marcha blanca se recalibran la demanda de peak, el abandono y la resolución al primer contacto antes de M21. El cuadrante identifica quién cubre la franja nocturna y el domingo durante el peak.
 
-\item[B-09. Dependencias documentales SD11 y SD12.]
-La habilitación requiere articular el plan completo de operación y mantención de SD11 y la nominación de SD12 con las capacidades de T-14 y T-15. No se acredita en las fuentes consultadas ese desarrollo integral; se conserva la dependencia documental y el contraste de perfiles, dedicaciones y turnos.
+\item[B-09. Articulación con SD11 y SD12.]
+SD11 desarrolla los planes de mantención y de servicios de operación, y SD12 nomina al equipo. La habilitación verifica que perfiles, dedicaciones y turnos coincidan con las capacidades de T-14 y T-15.
 
-\item[B-10. Conciliación de capacidad técnica y económica.]
-T-15 y E2 tienen agrupaciones de HH de operación que requieren conciliación por perfil, paquete y mes. No se acredita un puente completo que demuestre la igualdad de alcance entre ambos agregados. El SD10 conserva la capacidad técnica de T-15 y omite importes económicos. Se requiere conciliar antes de la oferta final.
+\item[B-10. Capacidad de operación.]
+La capacidad de operación es la del T-15: 109.791,32 HH entre los meses 21 y 56. SD10 no agrega horas a esa capacidad ni incluye importes económicos.
 \end{description}
 
-La habilitación también verifica el alcance y el resultado de resiliencia, aislamiento combinado con pérdida de sitio, conmutación, restauración y seguridad independiente mediante las actas de 10.C. Las pruebas conservan quién ejecutó, quién revisó y qué recorridos se comprobaron. La trazabilidad separada registra fuentes, localizaciones y cambios, distinguiendo desarrollo documental de servicio ejecutado.
+La habilitación también verifica la resiliencia, el aislamiento combinado con pérdida de sitio, la conmutación, la restauración y la seguridad independiente mediante las actas de 10.C. Las actas registran quién ejecutó, quién revisó y qué recorridos se comprobaron.
 
 \parte{partes/10_e_matriz}
