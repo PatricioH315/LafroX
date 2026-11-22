@@ -14,12 +14,12 @@ Regla de trabajo: **solo se edita el SD13**. Cuando otro subdocumento cambie, se
 
 | Fuente | Commit revisado | Estado respecto de origin |
 |---|---|---|
-| SD13 `sd13-corrigiendo` | `51d750cf` | al día (incluye INN-04: fórmula en 7.4.1, calibración en 7.4.2; entrega del H4) |
-| SD3 `sd3-corrigiendo` | `3ee615a9` | al día |
-| SD4 `sd4-corrigiendo` | `0dc50b3d` | al día |
-| SD7 `sd7-corrigiendo` (T-14 y T-15) | `0624f701` (origin) | carta nivelada: la tabla CPM de la cuenta 7 iguala la de paquetes (7.1.4, 7.2.4 y 7.3.4 con holgura 0); 6.1.1, 6.7.1 y 6.7.2 terminan el 22-10-2027, 01-12-2027 y 28-06-2028; H3 al 22-06/07-07-2027; H4, H5, H10 y H12 sin cambios. Anexo 13.B corregido (RV-04) |
-| SD8 `sd8-revision` (T-16, Anexo 8.E) | `b9861aeb` (origin) | CT-08 a CT-13 citan SD13 y T-19; umbrales cotejados, coinciden |
-| SD9 `sd9-corrigiendo` (T-13, T-17) | `74916460` (origin) | hitos del T-17 al día con el T-15; sin efecto en el SD13 |
+| SD13 `sd13-corrigiendo` | `e03909f9` | al día (incluye INN-04: fórmula en 7.4.1, calibración en 7.4.2; entrega del H4; Anexo 13.B con la carta nivelada). Fecha de emisión 25 de noviembre de 2026 y sin «§», igual que los demás subdocumentos |
+| SD3 `sd3-corrigiendo` | `f7ff197d` (origin) | unifica fecha y quita «§»; el T-12 (RT-26.04) pasa R-027 a 3 × 3 (0,10), igual que el SD13; RT-04.14, RT-05.30 y RT-18.08 sin cambios (diferencia abierta) |
+| SD4 `sd4-corrigiendo` | `77dca497` (origin) | unifica fecha y redacta la selección del backend; sin efecto en el SD13 |
+| SD7 `sd7-corrigiendo` (T-14 y T-15) | `8e71a160` (origin) | 22-11: unifica fecha; en `tab_T15_perfiles_internos.tex` solo cambia el formato de las fórmulas (mismas HH). Antes, `0624f701`, carta nivelada: la tabla CPM de la cuenta 7 iguala la de paquetes (7.1.4, 7.2.4 y 7.3.4 con holgura 0); 6.1.1, 6.7.1 y 6.7.2 terminan el 22-10-2027, 01-12-2027 y 28-06-2028; H3 al 22-06/07-07-2027; H4, H5, H10 y H12 sin cambios. Anexo 13.B corregido (RV-04) |
+| SD8 `sd8-revision` (T-16, Anexo 8.E) | `90868f52` (origin) | unifica fecha, quita «§» y ajusta redacción; R-027 sigue 3 / 0,50 × 3 / 0,20 = 0,10 Media y residual 25 % / 0,06 Baja (T-16:64 y 125), igual que el SD13. CT-08 a CT-13 citan SD13 y T-19; umbrales cotejados, coinciden |
+| SD9 `sd9-corrigiendo` (T-13, T-17) | `3ec8689e` (origin) | unifica fecha y quita «§» del T-13; la matriz (RT-26.04) pasa R-027 a 3 × 3 (0,10), igual que el SD13; hitos del T-17 al día con el T-15 |
 | Modelo financiero | `LafroX_ModeloFinanciero_3_20261113.xlsx` | del 15-11-2026 |
 | PDF oficial del Caso, de las Bases Administrativas y de las Técnicas | `trazabilidad-informe2/Bases/pdf/` | páginas impresas «n / N» |
 
@@ -52,15 +52,18 @@ Regla de trabajo: **solo se edita el SD13**. Cuando otro subdocumento cambie, se
 
 ## Pendientes abiertos del SD13
 
-- **P-01 Revisión técnica humana (SD13-12):** registrar revisor, fecha, versión, evidencia y resultado en la declaración de IA.
-- **P-02 Títulos de las referencias 2026a y 2026c:** compararlos con la portada de cada PDF oficial.
-- **P-03 Multas (cuerpo 13.4.2):** citar el artículo de las Bases Administrativas con su página.
-- **P-04 Carta `Gantt_Innovaciones_13B.gan` y `verificar_cotejo_sd13.py`:** siguen con los códigos antiguos y commits fijados; el verificador de coherencia los reemplaza. Decidir si se archivan.
-- **P-05 Páginas 24 y 38 del Caso:** confirmar a ojo en el PDF oficial.
+- **P-04 Carta `Gantt_Innovaciones_13B.gan` y `verificar_cotejo_sd13.py`:** siguen con los códigos antiguos y commits fijados; el verificador de coherencia los reemplaza (el de cotejo falla en `physical_examples`). Decidir si se archivan.
+
+Cerrados (22-11-2026):
+
+- **P-01 Revisión técnica humana:** la Tabla 13.29 (declaración de IA) indica, por sección, anexo y formulario, quién revisó y qué verificó.
+- **P-02 Títulos de las referencias 2026a y 2026c:** la portada de los PDF es genérica («Bases Administrativas / Técnicas para la preparación de la propuesta»); el SD13 usa el mismo título que el SD3 y el SD8, así que se mantiene por coherencia del grupo.
+- **P-03 Multas (cuerpo 13.4.2):** citadas como Bases Administrativas, Formulario E-25, p. 74.
+- **P-05 Páginas 24 y 38 del Caso:** verificadas en «Caso 02 - Logística.pdf» (página impresa = índice del PDF − 1). P. 24, sección 14.1: 2,4 millones de unidades despachadas y ≈ 62.000 visitas de preventa al mes; p. 38, B.1: 62 personas, unas 2.600 visitas diarias.
 
 ## Diferencias detectadas en otros documentos (para avisar a sus dueños; no se editan desde el SD13)
 
-Abiertas (revisadas el 22-11-2026):
+Abiertas (revisadas el 22-11-2026 contra SD3 `f7ff197d`, SD7 `8e71a160`, SD8 `90868f52` y SD9 `3ec8689e`; ninguna se cerró con esos commits):
 
 - **E2 2.7** (F1-01): usa los códigos antiguos de paquetes (líneas 5 y 46) y no menciona el ingreso contingente de INN-04. Sin commits nuevos en origin.
 - **Modelo financiero:** perfil de INN-04 (todo a Jefe de Proyecto; el T-15 reparte con el Analista PMO), reparto de horas de INN-05 (893,4 + 226,6 contra 960 + 160 del T-15) y meses de operación de INN-02 (22-55 contra 21-56 del T-15).
