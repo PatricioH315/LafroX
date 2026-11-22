@@ -1,38 +1,52 @@
-\documentclass[carta,final]{lafrox}
-\usepackage{simulacion}
+\documentclass[11pt]{article}
+\usepackage[serif]{sim-oficial}
 \input{datos-proponente}
-\usepackage{needspace}% keep headings with their content
-\let\SIMoldsection\section
-\renewcommand{\section}{\needspace{9\baselineskip}\SIMoldsection}
+\renewcommand{\arraystretch}{1.25}
 \begin{document}
-\SIMtitulo{Individualización de socios}{Composición societaria y participación del Proponente}
+\noindent{\SIMsans\bfseries\Large LAFROX SpA}\\
+{\SIMsans\small RUT \LFXrut\ \textbullet\ \LFXdomicilio\ \textbullet\ \LFXtelefono\ \textbullet\ \LFXcorreo}\\[-2pt]
+\rule{\linewidth}{0.6pt}
 
-\noindent En cumplimiento del Art.~39°, numeral~1, de las Bases Administrativas de la \LFXlicitacion, \LFXempresa, RUT \LFXrut, individualiza a continuación a la totalidad de sus accionistas y su participación en el capital social. Los datos coinciden con el Formulario A-1, la escritura de constitución y sus modificaciones, y el certificado de vigencia.
+\vspace{6pt}
+\hfill\SIMfecha
 
-\section*{Accionistas}
-\begin{tablalafrox}{Accionistas de \LFXempresa{} (capital \SIMcapital, \SIMaccionestotal{} acciones).}{tab:soc1}{L{3.5cm} L{2.4cm} L{2.0cm} Y R{1.3cm} R{1.9cm}}
-  {\cab{Nombre} & \cab{RUN} & \cab{Nacionalidad} & \cab{Domicilio} & \cab{\%} & \cab{Acciones}}
-  \SIMsocioAnombre & \SIMsocioArun & chilena & \SIMsocioAdom & \SIMsocioApct & \SIMsocioAacc \\
-  \SIMsocioBnombre & \SIMsocioBrun & chilena & \SIMsocioBdom & \SIMsocioBpct & \SIMsocioBacc \\
-  \SIMsocioCnombre & \SIMsocioCrun & chilena & \SIMsocioCdom & \SIMsocioCpct & \SIMsocioCacc \\
-  \SIMsocioDnombre & \SIMsocioDrun & chilena & \SIMsocioDdom & \SIMsocioDpct & \SIMsocioDacc \\
-  \midrule
-  \textbf{Total} & & & & \textbf{100} & \textbf{\SIMaccionestotal} \\
-\end{tablalafrox}
+\vspace{8pt}
+\textbf{Señores}\\Distribuidora Puelche S.A.\\\LFXlicitacion\\\textbf{Presente}
 
-\noindent Todos los accionistas son personas naturales. Ningún accionista, directa o indirectamente, es dueño de acciones de otras sociedades participantes en esta licitación, y no existen pactos de accionistas ni usufructos o prendas inscritos sobre las acciones.
+\vspace{6pt}
+\textbf{Ref.: Certificado de accionistas e individualización de socios (Bases Administrativas, Art.~39\textdegree, numeral 1)}
 
-\section*{Administración}
-\begin{tablalafrox}{Administración y representación.}{tab:soc2}{Y L{3.2cm} L{5cm}}
-  {\cab{Nombre} & \cab{RUN} & \cab{Cargo y facultades}}
-  \SIMgerente & \SIMgerenterun & Gerente General y representante legal; poder amplio para licitar, firmar ofertas, constituir garantías y contratar \\
-  \SIMpresidenta & \SIMpresidentarun & Presidenta del Directorio (no ejerce la representación legal) \\
-\end{tablalafrox}
+\vspace{4pt}
+\begin{center}\textbf{CERTIFICADO DE ACCIONISTAS}\end{center}
 
-\section*{Declaración de participación individual}
-\noindent \LFXempresa{} declara que participa en la \LFXlicitacion{} de manera \textbf{individual}, es decir, \textbf{no como consorcio ni unión temporal}, y que no ha convenido con terceros la presentación conjunta de una oferta. Por consiguiente, no corresponde informar integrantes ni porcentajes de participación distintos de los de su propia composición societaria indicada arriba.
+El Gerente General de \textbf{LAFROX SpA}, RUT \LFXrut, que suscribe, certifica que, según consta en el Registro de Accionistas de la sociedad, su capital de \SIMcapital{} se encuentra dividido en \SIMaccionestotal{} acciones nominativas, de una misma serie y sin valor nominal, de propiedad de las siguientes personas:
 
-\SIMfirma{\SIMfecha}
+\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}l l X r r@{}}
+\hline
+\textbf{Accionista} & \textbf{RUN} & \textbf{Domicilio} & \textbf{\%} & \textbf{Acciones}\\\hline
+\SIMsocioAnombre & \SIMsocioArun & \small\SIMsocioAdom & \SIMsocioApct & \SIMsocioAacc\\
+\SIMsocioBnombre & \SIMsocioBrun & \small\SIMsocioBdom & \SIMsocioBpct & \SIMsocioBacc\\
+\SIMsocioCnombre & \SIMsocioCrun & \small\SIMsocioCdom & \SIMsocioCpct & \SIMsocioCacc\\
+\SIMsocioDnombre & \SIMsocioDrun & \small\SIMsocioDdom & \SIMsocioDpct & \SIMsocioDacc\\\hline
+\textbf{Total} & & & \textbf{100} & \textbf{\SIMaccionestotal}\\\hline
+\end{tabularx}
 
-\noindent\small\textit{Documento simulado con datos ficticios para un ejercicio académico.}
+\vspace{6pt}
+Todos los accionistas son personas naturales de nacionalidad chilena. Ningún accionista, directa o indirectamente, es dueño de acciones de otras sociedades participantes en esta licitación, y no existen pactos de accionistas ni usufructos o prendas inscritos sobre las acciones.
+
+\textbf{Administración.} Gerente General y representante legal: \SIMgerente, RUN \SIMgerenterun, con poder amplio para licitar, firmar ofertas, constituir garantías y contratar. Presidenta del Directorio: \SIMpresidenta, RUN \SIMpresidentarun{} (no ejerce la representación legal).
+
+\textbf{Participación.} LafroX SpA participa en la \LFXlicitacion{} de manera \textbf{individual}, no como consorcio ni unión temporal, y no ha convenido con terceros la presentación conjunta de una oferta.
+
+Los datos coinciden con el Formulario A-1, la escritura de constitución y sus modificaciones, y el certificado de vigencia de la sociedad. Se extiende el presente certificado para ser presentado en la licitación individualizada.
+
+\vspace{26pt}
+\begin{center}
+\rule{6cm}{0.5pt}\\
+\SIMgerente\\Gerente General\\LAFROX SpA --- RUT \LFXrut
+\end{center}
+
+\vspace{4pt}
+{\SIMsans\small\color{SIMgris}Carta simulada, con datos ficticios, para un ejercicio académico.}
 \end{document}

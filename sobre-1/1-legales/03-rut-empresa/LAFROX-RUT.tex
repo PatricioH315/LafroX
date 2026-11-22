@@ -1,51 +1,66 @@
-\documentclass[carta,final]{lafrox}
-\usepackage{simulacion}
+\documentclass[11pt]{article}
+\usepackage[sans]{sim-oficial}
 \input{datos-proponente}
-\usepackage{needspace}% keep headings with their content
-\let\SIMoldsection\section
-\renewcommand{\section}{\needspace{14\baselineskip}\SIMoldsection}
+\newcommand{\kv}[2]{\textbf{#1} & #2\\}
+\newcommand{\barra}[1]{\par\vspace{3pt}\noindent\colorbox{SIMclaro}{\parbox{\dimexpr\linewidth-2\fboxsep}{\SIMsans\bfseries\small #1}}\par\vspace{3pt}}
+\renewcommand{\arraystretch}{1.05}
 \begin{document}
-\SIMemisor{Servicio de Impuestos Internos (emisor simulado)}{Certificado de Inscripción en el Rol Único Tributario (e-RUT)}{SIM-RUT-2026-000001}
-
-\noindent Emitido electrónicamente el \SIMfechacorta{} para ser presentado por el contribuyente individualizado a continuación, en cumplimiento del Art.~39°, numeral~1, de las Bases Administrativas de la \LFXlicitacion.
-
-\section*{Identificación del contribuyente}
-\begin{tablalafrox}{Datos de inscripción en el Rol Único Tributario.}{tab:rut1}{L{5.4cm} Y}
-  {\cab{Dato} & \cab{Contenido}}
-  \textbf{Rol Único Tributario} & \LFXrut \\
-  \textbf{Razón social} & LafroX SpA \\
-  \textbf{Nombre de fantasía} & LafroX \\
-  \textbf{Tipo de contribuyente} & Persona jurídica --- sociedad por acciones \\
-  \textbf{Fecha de inicio de actividades} & 28 de marzo de 2012 \\
-  \textbf{Capital inicial (inicio de actividades)} & \SIMcapitalinicial \\
-  \textbf{Estado} & Con inicio de actividades vigente, sin término de giro \\
-  \textbf{Régimen tributario} & Régimen general de primera categoría (Art.~14 letra A LIR) --- dato ficticio \\
-  \textbf{Moneda de contabilidad} & Pesos chilenos \\
-\end{tablalafrox}
-
-\section*{Domicilio y contacto}
-\begin{tablalafrox}{Domicilios registrados.}{tab:rut2}{L{5.4cm} Y}
-  {\cab{Tipo} & \cab{Dirección}}
-  \textbf{Domicilio postal y casa matriz} & Av. Brasil 2241, comuna de Valparaíso, Región de Valparaíso \\
-  \textbf{Sucursal (sede central)} & Santiago, Región Metropolitana --- dirección ficticia \\
-  \textbf{Correo electrónico} & \LFXcorreo \\
-  \textbf{Teléfono} & \LFXtelefono \\
-\end{tablalafrox}
-
-\section*{Actividades económicas (giros)}
-\begin{tablalafrox}{Actividades económicas registradas.}{tab:rut3}{L{2.6cm} Y L{3cm} L{2.2cm}}
-  {\cab{Código} & \cab{Actividad} & \cab{Categoría tributaria} & \cab{Afecta a IVA}}
-  620100 & Actividades de programación informática & Primera categoría & Sí \\
-  620200 & Actividades de consultoría de informática y de gestión de instalaciones informáticas & Primera categoría & Sí \\
-  631100 & Procesamiento de datos, hospedaje y actividades conexas & Primera categoría & Sí \\
-\end{tablalafrox}
-
-\section*{Representantes legales}
-\begin{tablalafrox}{Representantes legales inscritos.}{tab:rut4}{Y L{3cm} L{4.2cm}}
-  {\cab{Nombre} & \cab{RUN} & \cab{Calidad}}
-  \SIMgerente & \SIMgerenterun & Gerente General y representante legal \\
-\end{tablalafrox}
+\noindent\begin{tabularx}{\linewidth}{@{}c X c@{}}
+\SIMhueco{2.2cm}{2.2cm}{Emblema (omitido)} & \centering{\SIMsans\bfseries\Large Servicio de Impuestos Internos (simulado)}\\[2pt]{\SIMsans\large Situación tributaria --- Cédula RUT / e-RUT\par} &
+\SIMhueco{2.2cm}{2.2cm}{Código de verificación (omitido)}\\
+\end{tabularx}
 
 \vspace{6pt}
-\noindent\small Documento recreado con fines académicos. No reemplaza al certificado oficial que emite el Servicio de Impuestos Internos. No contiene códigos de verificación, timbres ni elementos de seguridad reales.
+\noindent{\small Documento N\textdegree{} SIM-RUT-2026-000001 \hfill Fecha de emisión: \SIMfechacorta}
+
+\barra{1. IDENTIFICACIÓN DEL CONTRIBUYENTE}
+\noindent\begin{tabularx}{\linewidth}{@{}l X@{}}
+\kv{RUT}{\LFXrut}
+\kv{Nombre o razón social}{LAFROX SpA}
+\kv{Nombre de fantasía}{LAFROX}
+\kv{Tipo de contribuyente}{Persona jurídica --- sociedad por acciones}
+\kv{Fecha de inicio de actividades}{28-03-2012}
+\kv{Capital inicial}{\SIMcapitalinicial}
+\kv{Estado}{Con inicio de actividades vigente; sin término de giro}
+\kv{Régimen tributario}{Régimen general, primera categoría (dato ficticio)}
+\kv{Moneda de contabilidad}{Pesos chilenos}
+\end{tabularx}
+
+\barra{2. DOMICILIOS}
+\noindent\begin{tabularx}{\linewidth}{@{}l X@{}}
+\kv{Domicilio postal / casa matriz}{Av. Brasil 2241, Valparaíso, Región de Valparaíso}
+\kv{Sucursal (sede central)}{Santiago, Región Metropolitana (dirección ficticia)}
+\kv{Correo electrónico}{\LFXcorreo}
+\kv{Teléfono}{\LFXtelefono}
+\end{tabularx}
+
+\barra{3. ACTIVIDADES ECONÓMICAS}
+\noindent\begin{tabularx}{\linewidth}{@{}l X l l l@{}}
+\toprule
+\textbf{Código} & \textbf{Actividad} & \textbf{Categoría} & \textbf{Afecta IVA} & \textbf{Inicio}\\
+\midrule
+620100 & Actividades de programación informática & Primera & Sí & 28-03-2012\\
+620200 & Consultoría de informática y de gestión de instalaciones informáticas & Primera & Sí & 28-03-2012\\
+631100 & Procesamiento de datos, hospedaje y actividades conexas & Primera & Sí & 28-03-2012\\
+\bottomrule
+\end{tabularx}
+
+\barra{4. REPRESENTANTES LEGALES}
+\noindent\begin{tabularx}{\linewidth}{@{}X l X@{}}
+\toprule\textbf{Nombre} & \textbf{RUN} & \textbf{Calidad}\\\midrule
+\SIMgerente & \SIMgerenterun & Gerente General y representante legal\\
+\bottomrule
+\end{tabularx}
+
+\barra{5. DOCUMENTOS TIMBRADOS Y OBLIGACIONES}
+\noindent\begin{tabularx}{\linewidth}{@{}X l@{}}
+Facturas electrónicas, notas de crédito y débito, guías de despacho & Autorizado (SIM)\\
+Boletas electrónicas de ventas y servicios & Autorizado (SIM)\\
+Libros contables electrónicos & Al día\\
+\end{tabularx}
+
+\vspace{4pt}
+{\footnotesize Este documento se emite para ser presentado por el contribuyente (Bases Administrativas, Art.~39\textdegree, numeral 1, \LFXlicitacion).}
+
+\SIMnooficial{el Servicio de Impuestos Internos}
 \end{document}

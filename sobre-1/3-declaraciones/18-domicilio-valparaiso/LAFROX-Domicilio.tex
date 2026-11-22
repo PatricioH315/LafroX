@@ -1,11 +1,17 @@
-\documentclass[carta,final]{lafrox}
-\usepackage{simulacion}
+\documentclass[11pt]{article}
+\usepackage[serif]{sim-oficial}
 \input{datos-proponente}
+\setlength{\parskip}{6pt}
 \begin{document}
-\SIMtitulo{Declaración jurada}{Constitución de domicilio en la ciudad de Valparaíso}
+\begin{center}
+  {\Large\bfseries DECLARACIÓN JURADA}\\[6pt]
+  {\bfseries Constitución de domicilio en la ciudad de Valparaíso}\\[4pt]
+  {\small Art.~39\textdegree{} (sección 3) y Art.~88\textdegree{} de las Bases Administrativas --- \LFXlicitacion}
+\end{center}
 
-\noindent En Valparaíso, a 23 de noviembre de 2026, don \LFXrepresentante, \SIMnacionalidad, \SIMprofesion, cédula de identidad N°~\SIMrunrepresentante, en su calidad de representante legal de \LFXempresa, RUT~\LFXrut{} (sede central en \SIMsedecentral), declara bajo juramento, conforme al Artículo 39° (sección 3) y al Artículo 88° de las Bases Administrativas de la \LFXlicitacion:
-\begin{enumerate}
+\noindent En Valparaíso, República de Chile, a veintitrés de noviembre de dos mil veintiséis, comparece don \textbf{\LFXrepresentante}, \SIMnacionalidad, \SIMprofesion, cédula nacional de identidad N.\textdegree~\SIMrunrepresentante, quien lo hace en su calidad de representante legal de \textbf{\LFXempresa}, Rol Único Tributario N.\textdegree~\LFXrut{} (sede central en \SIMsedecentral), y \textbf{declara bajo juramento}:
+
+\begin{enumerate}[label=\arabic*.,leftmargin=2em,itemsep=2pt]
   \item Que constituye domicilio especial, para todos los efectos del proceso de licitación y del Contrato que eventualmente se suscriba, en la ciudad de Valparaíso, República de Chile, específicamente en \textbf{\LFXdomicilio}, centro de operaciones de la empresa.
   \item Que en dicho domicilio se tendrán por válidamente practicadas todas las notificaciones, comunicaciones y requerimientos del CLIENTE, sin perjuicio de las comunicaciones electrónicas dirigidas a \LFXcorreo.
   \item Que la legislación aplicable es la chilena.
@@ -13,7 +19,24 @@
   \item Que este domicilio subsistirá mientras no designe otro en la misma ciudad mediante comunicación escrita al CLIENTE.
 \end{enumerate}
 
-\SIMfirmaformulario{\SIMfechacorta}
+\noindent Para constancia, firma la presente declaración.
 
-\SIMnotario{Certifico que la firma que antecede corresponde a don \LFXrepresentante, cédula de identidad N°~\SIMrunrepresentante, representante legal de \LFXempresa, quien constituyó el domicilio señalado y se sometió a los tribunales de Valparaíso, y firmó en mi presencia. Valparaíso, 23 de noviembre de 2026. Repertorio simulado N°~SIM-2026-0145.}
+\vspace{12pt}
+\begin{center}
+  \rule{7cm}{0.5pt}\\
+  \textbf{\LFXrepresentante}\\
+  C.I. N.\textdegree~\SIMrunrepresentante\\
+  p.p. \LFXempresa{} --- RUT \LFXrut
+\end{center}
+
+\vspace{8pt}
+\noindent\rule{\linewidth}{0.4pt}\par\smallskip
+\noindent\begin{minipage}[t]{0.68\linewidth}\small
+  \textbf{AUTORIZACIÓN NOTARIAL.} Autorizo la firma de don \textbf{\LFXrepresentante}, cédula de identidad N.\textdegree~\SIMrunrepresentante, en representación de \LFXempresa, quien constituyó el domicilio señalado, se sometió a los tribunales de Valparaíso y firmó en mi presencia. Valparaíso, 23 de noviembre de 2026. Repertorio N.\textdegree{} SIM-2026-0145.
+
+  \vspace{14pt}
+  \rule{6cm}{0.4pt}\\
+  \SIMnotarioTitular\\ Notario Público (ficticio) --- \SIMnotaria\\ \SIMnotariaDir
+\end{minipage}\hfill
+\begin{minipage}[t]{2.8cm}\raggedleft\SIMhueco{2.6cm}{2.6cm}{Espacio timbre notarial (omitido)}\end{minipage}
 \end{document}

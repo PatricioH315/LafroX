@@ -1,52 +1,42 @@
-\documentclass[carta,final]{lafrox}
-\usepackage{simulacion}
+\documentclass[11pt]{article}
+\usepackage[sans]{sim-oficial}
 \input{datos-proponente}
-% Local card helper: one labelled field of the mock ID card (labels 9 pt, values 11 pt).
-\newcommand{\campo}[2]{{\fontsize{9pt}{10pt}\selectfont\color{lafroxGris}\MakeUppercase{#1}}\\[1pt]{\fontsize{11pt}{12pt}\selectfont\intermedium #2}}
+\newcommand{\campo}[2]{\begin{tabular}[t]{@{}l@{}}{\SIMsans\fontsize{7.5pt}{9pt}\selectfont\color{SIMgris}\MakeUppercase{#1}}\\[1pt]{\fontsize{11pt}{13pt}\selectfont\bfseries #2}\end{tabular}}
 \begin{document}
-\SIMtitulo{Fotocopia legalizada de cédula de identidad}{Representante legal --- Art. 39°, numeral 1}
-
-\noindent Se acompaña fotocopia de ambas caras de la cédula de identidad del representante legal de \LFXempresa, \LFXrepresentante, \LFXcargo, para su legalización ante notario. Las imágenes son una \emph{maqueta} sin elementos de seguridad reales.
-
-\subsection*{Anverso}
 \begin{center}
-\begin{tikzpicture}[x=1cm,y=1cm]
-  \draw[rounded corners=8pt, fill=lafroxFuerte!6, draw=lafroxGris, line width=0.8pt] (0,0) rectangle (15.4,9.6);
-  \node[anchor=west] at (0.5,9.0) {\intersemibold REPÚBLICA DE CHILE};
-  \node[anchor=east] at (14.9,9.0) {\intersemibold CÉDULA DE IDENTIDAD};
-  \node[anchor=west] at (0.5,8.4) {\fontsize{9pt}{10pt}\selectfont\color{lafroxGris} Maqueta académica --- no es un documento oficial};
-  \draw[dashed, draw=lafroxGris] (0.5,1.5) rectangle (4.3,7.6);
-  \node[align=center] at (2.4,4.55) {\color{lafroxGris} Fotografía\\[1pt]\fontsize{9pt}{10pt}\selectfont(no incluida)};
-  \node[anchor=north west, align=left, text width=5cm] at (4.8,7.8) {\campo{Apellidos}{ARAVENA}};
-  \node[anchor=north west, align=left, text width=5cm] at (10.2,7.8) {\campo{Nombres}{ALEX}};
-  \node[anchor=north west, align=left, text width=5cm] at (4.8,6.4) {\campo{Nacionalidad}{CHILENA}};
-  \node[anchor=north west, align=left, text width=4cm] at (10.2,6.4) {\campo{Sexo}{M}};
-  \node[anchor=north west, align=left, text width=5cm] at (4.8,5.0) {\campo{Fecha de nacimiento}{15 JUN 1988}};
-  \node[anchor=north west, align=left, text width=5cm] at (10.2,5.0) {\campo{N.\textdegree{} de documento}{\SIMrunrepresentante}};
-  \node[anchor=north west, align=left, text width=5cm] at (4.8,3.6) {\campo{Fecha de emisión}{02 FEB 2022}};
-  \node[anchor=north west, align=left, text width=5cm] at (10.2,3.6) {\campo{Fecha de vencimiento}{02 FEB 2032}};
-  \node[anchor=west] at (4.8,1.2) {\fontsize{9pt}{10pt}\selectfont\color{lafroxGris} Firma del titular:};
-  \draw (7.9,1.1) -- (14.9,1.1);
-  \node[anchor=west] at (8.3,1.55) {\itshape\large Alex Aravena};
-\end{tikzpicture}
+{\SIMsans\bfseries\large FOTOCOPIA LEGALIZADA DE CÉDULA DE IDENTIDAD}\\[3pt]
+{\small Representante legal --- Bases Administrativas, Art.~39\textdegree, numeral 1}
 \end{center}
 
-\subsection*{Reverso}
-\begin{center}
-\begin{tikzpicture}[x=1cm,y=1cm]
-  \draw[rounded corners=8pt, fill=lafroxFuerte!6, draw=lafroxGris, line width=0.8pt] (0,0) rectangle (15.4,9.6);
-  \node[anchor=north west, align=left, text width=6.5cm] at (0.5,9.0) {\campo{Lugar de nacimiento}{VALPARAÍSO}};
-  \node[anchor=north west, align=left, text width=7cm] at (8,9.0) {\campo{Profesión}{INGENIERO CIVIL INFORMÁTICO}};
-  \node[anchor=north west, align=left, text width=6.5cm] at (0.5,7.4) {\campo{N.\textdegree{} de serie}{SIM-000000000}};
-  \node[anchor=north west, align=left, text width=6.5cm] at (8,7.4) {\campo{Estado civil}{SOLTERO}};
-  \draw[dashed, draw=lafroxGris] (0.5,1.5) rectangle (14.9,5.6);
-  \node[align=center, text width=13cm] at (7.7,3.55) {\color{lafroxGris} Zona de lectura mecánica no incluida.\\ Todos los datos de esta maqueta son ficticios.};
-  \node[anchor=west] at (0.5,0.8) {\fontsize{9pt}{10pt}\selectfont\color{lafroxGris} SIM-CEDULA-REPRESENTANTE --- sin chip, sin código de barras, sin sello};
-\end{tikzpicture}
-\end{center}
+Se acompaña fotocopia de ambas caras de la cédula de identidad de don \LFXrepresentante, RUN \SIMrunrepresentante, \LFXcargo{} de \LFXempresa, con los datos que en ella constan. Las imágenes originales (fotografía, huella y zona de lectura) no se reproducen en esta recreación.
 
-\SIMnotario{Certifico que la presente fotocopia, que consta de dos caras, es copia fiel de su original, que he tenido a la vista, correspondiente a la cédula de identidad de \LFXrepresentante, RUN \SIMrunrepresentante. \SIMfecha. Repertorio N.\textdegree{} SIM-2026-0412. Legalización simulada con fines académicos.}
+\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{%
+{\SIMsans\bfseries\small ANVERSO (datos)}\par\vspace{4pt}
+\begin{tabular}{@{}c@{\hspace{14pt}}l@{\hspace{24pt}}l@{}}
+\SIMhueco{3.4cm}{4cm}{Fotografía del titular (omitida)} &
+\begin{tabular}[t]{@{}l@{}}\campo{Apellidos}{ARAVENA}\\[7pt]\campo{Nacionalidad}{CHILENA}\\[7pt]\campo{Fecha de nacimiento}{15 JUN 1988}\\[7pt]\campo{Fecha de emisión}{02 FEB 2022}\end{tabular} &
+\begin{tabular}[t]{@{}l@{}}\campo{Nombres}{ALEX}\\[7pt]\campo{Sexo}{M}\\[7pt]\campo{RUN}{\SIMrunrepresentante}\\[7pt]\campo{Fecha de vencimiento}{02 FEB 2032}\end{tabular}\\
+\end{tabular}\par\vspace{6pt}
+{\small Firma del titular: \underline{\hspace{5cm}}\ \textit{Alex Aravena}}
+}}
 
 \vspace{8pt}
-\noindent\small Documento recreado con fines académicos. No reemplaza a la cédula de identidad oficial ni a la copia legalizada que otorga un notario. Todos los datos son ficticios.
+\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{%
+{\SIMsans\bfseries\small REVERSO (datos)}\par\vspace{4pt}
+\begin{tabular}{@{}l@{\hspace{40pt}}l@{}}
+\campo{Lugar de nacimiento}{VALPARAÍSO} & \campo{Profesión}{INGENIERO CIVIL INFORMÁTICO}\\[7pt]
+\campo{Número de documento}{SIM-000000000} & \campo{Estado civil}{SOLTERO}\\
+\end{tabular}\par\vspace{6pt}
+\SIMhueco{12.4cm}{1.6cm}{Zona de lectura mecánica y huella (omitidas)}
+}}
+
+\vspace{4pt}
+{\SIMserif\small
+\textbf{CERTIFICO:} que la presente fotocopia, que consta de dos caras, es testimonio fiel de su original, que he tenido a la vista, correspondiente a la cédula de identidad de don \LFXrepresentante, RUN \SIMrunrepresentante. \SIMfecha. Repertorio N\textdegree{} SIM-2026-0412.\par}
+
+\vspace{6pt}
+\noindent\begin{minipage}[b]{0.4\linewidth}\SIMhueco{2.4cm}{2.4cm}{Espacio timbre notarial (omitido)}\end{minipage}\hfill
+\begin{minipage}[b]{0.5\linewidth}\centering\rule{6cm}{0.5pt}\\\SIMnotarioTitular\\Notario Público --- \SIMnotaria\\{\small\SIMnotariaDir}\end{minipage}
+
+\SIMnooficial{el Servicio de Registro Civil e Identificación (simulado)}
 \end{document}

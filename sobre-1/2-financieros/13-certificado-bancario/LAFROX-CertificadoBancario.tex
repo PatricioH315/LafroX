@@ -1,19 +1,20 @@
-\documentclass[carta,final]{lafrox}
-\usepackage{simulacion}
+\documentclass[11pt]{article}
+\usepackage[sans]{sim-oficial}
 \input{datos-proponente}
-\usepackage{needspace}% keep headings with their content
-\let\SIMoldsection\section
-\renewcommand{\section}{\needspace{9\baselineskip}\SIMoldsection}
+\renewcommand{\arraystretch}{1.05}\setlength{\parskip}{3pt}
 \begin{document}
-\SIMemisor{\SIMbancogarante{} --- Sucursal Valparaíso (emisor simulado)}{Certificado de capacidad de emisión de garantías}{SIM-BSP-GAR-2026-000001}
+% Plain text letterhead of the fictitious bank.
+\noindent{\Large\bfseries\color{black!80} BANCO SIMULADO DEL PACÍFICO S.A.}\\[2pt]
+{\small Banca Empresas --- Sucursal Valparaíso\\ Av. Pedro Montt 0000, Valparaíso, Chile \quad|\quad empresas.valparaiso@bancosimulado.example}\\[2pt]
+\rule{\linewidth}{1.2pt}
 
-\noindent\SIMfecha.
+\vspace{6pt}
+\noindent Valparaíso, 23 de noviembre de 2026\hfill Carta N.\textdegree{} SIM-BSP-GAR-2026-000001
 
-\noindent Señores\\
-\textbf{\LFXcliente}\\
-Comisión de la \LFXlicitacion\\
-Presente
+\medskip
+\noindent Señores\\\textbf{\LFXcliente}\\Comisión de la \LFXlicitacion\\Presente
 
+\medskip
 \noindent\textbf{Ref.: Certificado de capacidad de emisión de garantías --- \LFXempresa, RUT \LFXrut.}
 
 \medskip
@@ -21,25 +22,26 @@ Presente
 
 \noindent Por la presente, \SIMbancogarante, banco comercial con oficinas en Valparaíso, certifica que \LFXempresa{} es cliente de esta institución desde el año 2013, que mantiene cuenta corriente y operaciones vigentes con comportamiento satisfactorio, y que cuenta con una \textbf{línea de garantías aprobada por hasta USD 1.500.000}, con disponibilidad suficiente para emitir los instrumentos exigidos en el Capítulo~7 de las Bases Administrativas de la licitación de la referencia (Arts.~34, 35 y 36), según el siguiente detalle:
 
-\begin{tablalafrox}{Garantías que el Banco puede emitir a solicitud de LafroX SpA.}{tab:ban1}{L{3.1cm} L{2.6cm} Y}
-  {\cab{Garantía} & \cab{Monto} & \cab{Condiciones y glosa}}
-  Seriedad de la oferta (Art.~35) & USD 500.000 & Boleta de garantía a la vista, irrevocable, no endosable y a la orden de \LFXcliente; vigencia mínima de 150 días corridos desde la entrega de la propuesta. Glosa: «Boleta de Garantía de Seriedad de la Oferta para la Licitación Internacional N° TFEP-01/2026». \\
-  Fiel cumplimiento del contrato (Art.~36) & USD 1.000.000 & Boleta a la vista, irrevocable y a la orden de \LFXcliente; vigencia desde la firma del Contrato hasta doce meses posteriores al término de la fase de Operación; entrega dentro de diez días hábiles desde la notificación de adjudicación. Glosa: «Garantía de Fiel Cumplimiento del Contrato — Proyecto TFEP-01/2026». \\
-\end{tablalafrox}
+\medskip
+\noindent\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{3.1cm} p{2.4cm} X@{}}\toprule
+  \textbf{Garantía} & \textbf{Monto} & \textbf{Condiciones y glosa}\\\midrule
+  Seriedad de la oferta (Art.~35) & USD 500.000 & Boleta de garantía a la vista, irrevocable, no endosable y a la orden de \LFXcliente; vigencia mínima de 150 días corridos desde la entrega de la propuesta. Glosa: «Boleta de Garantía de Seriedad de la Oferta para la Licitación Internacional N° TFEP-01/2026».\\[4pt]
+  Fiel cumplimiento del contrato (Art.~36) & USD 1.000.000 & Boleta a la vista, irrevocable y a la orden de \LFXcliente; vigencia desde la firma del Contrato hasta doce meses posteriores al término de la fase de Operación; entrega dentro de diez días hábiles desde la notificación de adjudicación. Glosa: «Garantía de Fiel Cumplimiento del Contrato — Proyecto TFEP-01/2026».\\\bottomrule
+\end{tabularx}
 
+\medskip
 \noindent Ambas garantías pueden emitirse en Dólares de los Estados Unidos de América y serán tomadas en una oficina de este Banco ubicada en Valparaíso, Chile. La emisión efectiva queda sujeta a la solicitud formal del cliente, a la firma de la documentación de rigor y a las condiciones crediticias vigentes a la fecha de emisión. El presente certificado \textbf{no constituye garantía ni compromiso irrevocable de emisión}, y se otorga a petición del interesado para acreditar su solvencia ante el CLIENTE (Art.~34, requisito «Solvencia financiera»).
 
 \noindent Este certificado tiene una vigencia de sesenta días corridos desde su fecha.
 
 \noindent Saluda atentamente a ustedes,
 
-\vspace{26pt}
-\noindent\begin{tabularx}{\linewidth}{@{}Y Y@{}}
-  \rule{5.6cm}{0.5pt} & \rule{5.6cm}{0.5pt} \\
-  Ejecutivo de Empresas Ficticio Juan Muestra Ejemplo & Gerente de Sucursal Ficticia Ana Ejemplo Prueba \\
-  \small \SIMbancogarante, Sucursal Valparaíso & \small \SIMbancogarante, Sucursal Valparaíso \\
+\vspace{12pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X X@{}}
+  \rule{5.6cm}{0.5pt} & \rule{5.6cm}{0.5pt}\\
+  Juan Muestra Ejemplo\newline Ejecutivo de Empresas & Ana Ejemplo Prueba\newline Gerente de Sucursal\\
+  \small \SIMbancogarante & \small \SIMbancogarante\\
+  \small Apoderado (ficticio; carta simulada) & \small Apoderada (ficticia; carta simulada)\\
 \end{tabularx}
 
-\vspace{10pt}
-\noindent\small Documento recreado con fines académicos. No reemplaza al certificado oficial que emite la institución bancaria. Banco, funcionarios y cifras son ficticios; sin logos, firmas ni timbres reales.
 \end{document}

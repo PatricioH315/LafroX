@@ -1,50 +1,57 @@
-\documentclass[carta,final]{lafrox}
-\usepackage{simulacion}
+\documentclass[11pt]{article}
+\usepackage[sans]{sim-oficial}
 \input{datos-proponente}
-\usepackage{needspace}% keep headings with their content
-\let\SIMoldsection\section
-\renewcommand{\section}{\needspace{9\baselineskip}\SIMoldsection}
+\renewcommand{\arraystretch}{1.1}\setlength{\parskip}{2pt}
+\newcommand{\campo}[2]{\textbf{#1} & #2\\}
+\newcommand{\banda}[1]{\par\medskip\noindent\colorbox{SIMclaro}{\parbox{\dimexpr\linewidth-2\fboxsep}{\bfseries\small #1}}\par\smallskip}
 \begin{document}
-\SIMemisor{Buró de Información Comercial Simulado S.A. (emisor simulado)}{Informe de antecedentes comerciales}{SIM-BIC-2026-000001}
+\noindent\begin{minipage}[c]{0.62\linewidth}
+  {\Large\bfseries BURÓ DE INFORMACIÓN COMERCIAL}\\[1pt]
+  {\bfseries (simulado)}\\[2pt]
+  {\small Informe comercial de persona jurídica}
+\end{minipage}\hfill
+\begin{minipage}[c]{3.2cm}\raggedleft\SIMhueco{3cm}{1.6cm}{Logo del buró (omitido)}\end{minipage}
 
-\noindent Informe emitido el \SIMfechacorta{} para acreditar los antecedentes comerciales de la persona jurídica individualizada (Art.~39°, numeral~2, de las Bases Administrativas). La información proviene de una base de datos \emph{ficticia} creada para este ejercicio académico.
+\vspace{2pt}\noindent\rule{\linewidth}{1pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X X@{}}
+  \small Folio: SIM-BIC-2026-000001 & \small\raggedleft Fecha de emisión: \SIMfechacorta{} \\
+\end{tabularx}
 
-\section*{Individualización}
-\begin{tablalafrox}{Datos de la empresa consultada.}{tab:com1}{L{5.4cm} Y}
-  {\cab{Dato} & \cab{Contenido}}
-  \textbf{Razón social} & LafroX SpA \\
-  \textbf{RUT} & \LFXrut \\
-  \textbf{Giro} & \SIMgiro \\
-  \textbf{Domicilio comercial} & \LFXdomicilio \\
-  \textbf{Representante legal} & \LFXrepresentante \\
-  \textbf{Antigüedad en el sistema} & Desde 2012 \\
-\end{tablalafrox}
+\noindent{\small Informe emitido para acreditar los antecedentes comerciales de la persona jurídica individualizada (Art.~39\textdegree, numeral~2, de las Bases Administrativas). La información proviene de una base de datos \emph{ficticia} creada para este ejercicio académico.}
 
-\section*{Resumen de antecedentes comerciales}
-\begin{tablalafrox}{Resultado de la consulta a la fecha de emisión.}{tab:com2}{Y L{3.4cm} R{2.2cm}}
-  {\cab{Tipo de registro} & \cab{Período consultado} & \cab{Registros}}
-  Protestos de cheques y letras de cambio & Últimos 5 años & 0 \\
-  Morosidades en el sistema financiero & Vigentes & 0 \\
-  Morosidades en el comercio y proveedores & Vigentes & 0 \\
-  Cobranzas judiciales y juicios ejecutivos & Últimos 5 años & 0 \\
-  Infracciones laborales y previsionales publicadas & Últimos 2 años & 0 \\
-  Infracciones tributarias publicadas & Últimos 2 años & 0 \\
-  Quiebras, liquidaciones y reorganizaciones & Vigentes e históricas & 0 \\
-  \midrule
-  \textbf{Total de registros negativos} & & \textbf{0} \\
-\end{tablalafrox}
+\banda{1. IDENTIFICACIÓN}
+\noindent\begin{tabularx}{\linewidth}{@{}l X@{}}
+  \campo{Razón social}{LAFROX SpA}
+  \campo{RUT}{\LFXrut}
+  \campo{Giro}{\SIMgiro}
+  \campo{Domicilio comercial}{\LFXdomicilio}
+  \campo{Representante legal}{\LFXrepresentante}
+  \campo{Antigüedad en el sistema}{Desde 2012}
+\end{tabularx}
 
-\section*{Comportamiento de pago}
-\begin{tablalafrox}{Indicadores comerciales (valores ficticios).}{tab:com3}{Y L{4.6cm}}
-  {\cab{Indicador} & \cab{Valor}}
-  Clasificación de riesgo comercial & Bajo (A) \\
-  Plazo medio de pago a proveedores & 38 días \\
-  Consultas de terceros en los últimos 12 meses & 14 \\
-  Última actualización de la ficha & 22 de noviembre de 2026 \\
-\end{tablalafrox}
+\banda{2. RESUMEN DE ANTECEDENTES COMERCIALES}
+\noindent\begin{tabularx}{\linewidth}{@{}X l r@{}}\toprule
+  \textbf{Tipo de registro} & \textbf{Período consultado} & \textbf{N.\textdegree{} registros}\\\midrule
+  Protestos de cheques y letras de cambio & Últimos 5 años & 0\\
+  Morosidades en el sistema financiero & Vigentes & 0\\
+  Morosidades en el comercio y proveedores & Vigentes & 0\\
+  Cobranzas judiciales y juicios ejecutivos & Últimos 5 años & 0\\
+  Infracciones laborales y previsionales publicadas & Últimos 2 años & 0\\
+  Infracciones tributarias publicadas & Últimos 2 años & 0\\
+  Quiebras, liquidaciones y reorganizaciones & Vigentes e históricas & 0\\\midrule
+  \textbf{Total de registros negativos} & & \textbf{0}\\\bottomrule
+\end{tabularx}
 
-\noindent \textbf{Conclusión.} La empresa individualizada \textbf{no registra protestos, morosidades ni infracciones} en las bases consultadas, a la fecha de emisión del presente informe.
+\banda{3. COMPORTAMIENTO DE PAGO Y CLASIFICACIÓN DE RIESGO (valores ficticios)}
+\noindent\begin{tabularx}{\linewidth}{@{}X l@{}}
+  \campo{Clasificación de riesgo comercial (score)}{Banda baja (A) --- riesgo bajo}
+  \campo{Plazo medio de pago a proveedores}{38 días}
+  \campo{Consultas de terceros en los últimos 12 meses}{14}
+  \campo{Última actualización de la ficha}{22-11-2026}
+\end{tabularx}
 
-\vspace{6pt}
-\noindent\small Documento recreado con fines académicos. No reemplaza al informe oficial que emite una entidad de información comercial. Datos y clasificaciones ficticios.
+\banda{4. CONCLUSIÓN}
+\noindent La empresa individualizada \textbf{no registra protestos, morosidades ni infracciones} en las bases consultadas, a la fecha de emisión del presente informe.
+
+\SIMnooficial{una entidad de información comercial (Buró de Información Comercial simulado)}
 \end{document}

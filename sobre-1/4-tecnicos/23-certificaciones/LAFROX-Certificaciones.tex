@@ -1,83 +1,111 @@
-\documentclass[carta,final]{lafrox}
-\usepackage{simulacion}
+\documentclass[11pt]{article}
+\usepackage[sans]{sim-oficial}
 \input{datos-proponente}
-\hfuzz=20pt % issuer box overshoots by 16 pt only in the dashed frame
-% Local macro: one simulated certificate page.
-%  #1 certifier  #2 title  #3 SIM ref  #4 standard/program  #5 scope
-%  #6 issued  #7 valid until  #8 status note
-\newcommand{\certpag}[8]{%
+% One simulated certificate page in the typical certifier layout.
+%  #1 certifier  #2 kind of certificate (ES)  #3 SIM number  #4 standard/program
+%  #5 scope  #6 issued  #7 valid until  #8 status  #9 English title line
+\newcommand{\certpag}[9]{%
   \clearpage
-  \SIMemisor{#1 (certificado simulado)}{#2}{#3}\par\nointerlineskip
-  \noindent Se deja constancia de que la organización
-  \begin{center}{\intersemibold\large \LFXempresa{} --- RUT \LFXrut}\\
-  {\small \LFXdomicilio}\end{center}
-  cumple los requisitos de \textbf{#4}.\par\medskip
-  \begin{tabularx}{\linewidth}{@{}>{\bfseries}l X@{}}
-    Alcance: & #5 \\[3pt]
-    Fecha de emisión: & #6 \\[3pt]
-    Vigente hasta: & #7 \\[3pt]
-    Estado: & #8 \\
-  \end{tabularx}\par\vspace{16pt}
-  \noindent{\small Certificado simulado; el número de referencia y las fechas son ficticios.
-  Documento recreado con fines académicos. No reemplaza al certificado oficial que emite
-  el organismo certificador o el fabricante nombrado.}\par}
+  \noindent\begin{minipage}[c]{3.4cm}\SIMhueco{3.2cm}{1.6cm}{Logo del certificador (omitido)}\end{minipage}\hfill
+  \begin{minipage}[c]{0.55\linewidth}\raggedleft{\large\bfseries #1}\\{\small (certificado simulado)}\end{minipage}
+
+  \vspace{4pt}\noindent\rule{\linewidth}{1pt}
+  \vspace{18pt}
+  \begin{center}
+    {\Huge\bfseries CERTIFICATE}\\[3pt]{\large\bfseries CERTIFICADO}\\[6pt]
+    {\small #2}\\[14pt]
+    {\small Certificate No. / N.\textdegree{} de certificado: \textbf{#3}}
+  \end{center}
+  \vspace{10pt}
+  \begin{center}
+    This is to certify that\\\small(Por el presente se certifica que)\normalsize\\[10pt]
+    {\Large\bfseries \LFXempresa}\\[2pt]
+    RUT \LFXrut\\ \LFXdomicilio\\[12pt]
+    #9\\[4pt]
+    {\large\bfseries #4}
+  \end{center}
+  \vspace{8pt}
+  \noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries}p{4.8cm} X@{}}
+    Scope / Alcance: & #5\\[6pt]
+    Issue date / Emisión: & #6\\[6pt]
+    Valid until / Vigente hasta: & #7\\[6pt]
+    Status / Estado: & #8\\
+  \end{tabularx}
+  \vfill
+  \noindent\begin{minipage}[b]{4.2cm}\SIMhueco{3.8cm}{2cm}{Marca de acreditación (omitida)}\end{minipage}\hfill
+  \begin{minipage}[b]{0.5\linewidth}\raggedleft
+    \rule{5cm}{0.5pt}\\{\small Firma autorizada --- #1 (simulado)}\end{minipage}
+  \par\vspace{8pt}
+  {\footnotesize\color{SIMgris} Certificado simulado: número de referencia y fechas ficticios. No reemplaza al certificado que emite el organismo certificador o el fabricante nombrado; sin logos, sellos ni códigos de verificación reales.\par}}
 \begin{document}
-\SIMtitulo{Certificaciones institucionales y de fabricante}{Resumen de certificaciones vigentes}
+\renewcommand{\arraystretch}{1.2}
+\noindent{\Large\bfseries CERTIFICACIONES INSTITUCIONALES Y DE FABRICANTE}\\[2pt]
+{\small Resumen de certificaciones vigentes --- \LFXempresa, RUT \LFXrut}\par\smallskip
 
 \noindent Conforme al Artículo 39° (sección 4) y al Artículo 34.1 de las Bases, \LFXempresa{} presenta sus certificaciones institucionales y las membresías de fabricante. Los números de certificado son referencias simuladas (prefijo SIM-). La certificación ISO/IEC 27001 es la exigida por el Artículo 34.1 y se encuentra vigente. El certificado CMMI-DEV Nivel 3 vence en noviembre de 2026 y se encuentra en proceso de reevaluación.
 
-\begin{tablalafrox}{Resumen de certificaciones}{tab:certs}{L{3.2cm} L{2.6cm} L{2.6cm} L{2.0cm} Y}
-  {\cab{Certificación} & \cab{Emisor (simulado)} & \cab{Referencia} & \cab{Vigencia} & \cab{Estado}}
-  ISO 9001:2015 & Bureau Veritas & SIM-CERT-9001-0001 & nov. 2028 & Vigente \\
-  ISO/IEC 27001:2022 & AENOR & SIM-CERT-27001-0002 & ene. 2027 & Vigente; renovación antes del inicio contractual \\
-  CMMI-DEV Nivel 3 & Evaluador acreditado & SIM-CERT-CMMI-0003 & nov. 2026 & \textbf{No habilitante --- en renovación (vencimiento nov. 2026)}; el Art. 34.1 exige ISO/IEC 27001 \\
-  ISO/IEC 20000-1:2018 & SGS & SIM-CERT-20000-0004 & may. 2027 & Vigente \\
-  AWS Partner (Advanced) & Amazon Web Services & SIM-PART-AWS-0005 & mar. 2027 & Vigente \\
-  Zebra Premier Partner & Zebra Technologies & SIM-PART-ZEBRA-0006 & jun. 2027 & Vigente \\
-  Fortinet / Cisco Select & Fortinet / Cisco & SIM-PART-FORTICISCO-0007 & sep. 2027 & Vigente \\
-  Starlink Business Reseller & Starlink Business & SIM-PART-STARLINK-0008 & dic. 2027 & Vigente \\
-\end{tablalafrox}
+\medskip\small
+\noindent\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.7cm} >{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{3.1cm} p{1.5cm} X@{}}\toprule
+  \textbf{Certificación} & \textbf{Emisor (simulado)} & \textbf{Referencia} & \textbf{Vigencia} & \textbf{Estado}\\\midrule
+  ISO 9001:2015 & Bureau Veritas & SIM-CERT-9001-0001 & nov. 2028 & Vigente\\
+  ISO/IEC 27001:2022 & AENOR & SIM-CERT-27001-0002 & ene. 2027 & Vigente; renovación antes del inicio contractual\\
+  CMMI-DEV Nivel 3 & Evaluador acreditado & SIM-CERT-CMMI-0003 & nov. 2026 & \textbf{No habilitante --- en renovación (vencimiento nov. 2026)}; el Art. 34.1 exige ISO/IEC 27001\\
+  ISO/IEC 20000-1:2018 & SGS & SIM-CERT-20000-0004 & may. 2027 & Vigente\\
+  AWS Partner (Advanced) & Amazon Web Services & SIM-PART-AWS-0005 & mar. 2027 & Vigente\\
+  Zebra Premier Partner & Zebra Technologies & SIM-PART-ZEBRA-0006 & jun. 2027 & Vigente\\
+  Fortinet / Cisco Select & Fortinet / Cisco & SIM-PART-FORTICISCO-0007 & sep. 2027 & Vigente\\
+  Starlink Business Reseller & Starlink Business & SIM-PART-STARLINK-0008 & dic. 2027 & Vigente\\\bottomrule
+\end{tabularx}
+\normalsize
 
-Cada certificado se presenta a continuación en una página, recreado con datos ficticios.
+\noindent Cada certificado se presenta a continuación en una página, recreado con datos ficticios.
 
 \certpag{Bureau Veritas Certification}{Certificado de sistema de gestión de la calidad}{SIM-CERT-9001-0001}%
   {ISO 9001:2015 (Sistema de Gestión de la Calidad)}%
   {Diseño, desarrollo, implementación, integración y soporte de sistemas de software logístico y transaccional.}%
-  {noviembre de 2025 (renovación)}{noviembre de 2028}{Vigente.}
+  {noviembre de 2025 (renovación)}{noviembre de 2028}{Vigente.}%
+  {has been assessed and found to conform to the requirements of}
 
 \certpag{AENOR}{Certificado de sistema de gestión de seguridad de la información}{SIM-CERT-27001-0002}%
   {ISO/IEC 27001:2022 (Sistema de Gestión de Seguridad de la Información)}%
   {Operación de servicios cloud, centros de datos on-premise y procesos de ingeniería de software de misión crítica.}%
-  {enero de 2023}{enero de 2027}{Vigente a la fecha de presentación (23-11-2026); renovación programada antes del inicio contractual.}
+  {enero de 2023}{enero de 2027}{Vigente a la fecha de presentación (23-11-2026); renovación programada antes del inicio contractual.}%
+  {has been assessed and found to conform to the requirements of}
 
 \certpag{Evaluador acreditado ante el CMMI Institute}{Constancia de evaluación de madurez}{SIM-CERT-CMMI-0003}%
   {CMMI-DEV Nivel 3 (Modelo de Madurez de Capacidades para Desarrollo)}%
   {Procesos organizacionales del ciclo de vida de desarrollo de software.}%
-  {noviembre de 2023}{noviembre de 2026}{No habilitante --- en renovación (vencimiento nov. 2026): la validez de tres años concluye en noviembre de 2026 y la reevaluación se encuentra en curso.}
+  {noviembre de 2023}{noviembre de 2026}{\textbf{No habilitante --- en renovación (vencimiento nov. 2026)}: la validez de tres años concluye en noviembre de 2026 y la reevaluación se encuentra en curso.}%
+  {has been appraised as operating at maturity level}
 
 \certpag{SGS}{Certificado de sistema de gestión de servicios de TI}{SIM-CERT-20000-0004}%
   {ISO/IEC 20000-1:2018 (Sistema de Gestión de Servicios de TI)}%
   {Provisión de servicios de TI, gestión de incidentes y mesa de ayuda 24$\times$7 para infraestructuras logísticas críticas.}%
-  {mayo de 2024}{mayo de 2027}{Vigente.}
+  {mayo de 2024}{mayo de 2027}{Vigente.}%
+  {has been assessed and found to conform to the requirements of}
 
 \certpag{Amazon Web Services}{Certificado de membresía de socio tecnológico}{SIM-PART-AWS-0005}%
   {AWS Partner Network, nivel Advanced (competencias DevOps y Migración)}%
   {Servicios de nube: diseño, migración y operación sobre infraestructura pública.}%
-  {marzo de 2025}{marzo de 2027}{Vigente; renovación iniciada con 60 días de anticipación.}
+  {marzo de 2025}{marzo de 2027}{Vigente; renovación iniciada con 60 días de anticipación.}%
+  {is recognized as a member of the program}
 
 \certpag{Zebra Technologies}{Certificado de socio de soluciones}{SIM-PART-ZEBRA-0006}%
   {Programa de socios de Zebra Technologies, nivel Premier Solution Partner}%
   {Suministro, soporte y mantenimiento de terminales móviles industriales, lectores e impresoras térmicas.}%
-  {junio de 2025}{junio de 2027}{Vigente.}
+  {junio de 2025}{junio de 2027}{Vigente.}%
+  {is recognized as a member of the program}
 
 \certpag{Fortinet / Cisco}{Certificado de socio Select}{SIM-PART-FORTICISCO-0007}%
   {Programa de socios de Fortinet y Cisco, nivel Select Partner}%
   {Conectividad de borde, switches industriales y firewalls SD-WAN.}%
-  {septiembre de 2025}{septiembre de 2027}{Vigente.}
+  {septiembre de 2025}{septiembre de 2027}{Vigente.}%
+  {is recognized as a member of the program}
 
 \certpag{Starlink Business}{Certificado de revendedor empresarial autorizado}{SIM-PART-STARLINK-0008}%
   {Convenio de revendedor empresarial autorizado}%
   {Provisión e integración de terminales satelitales de baja órbita con prioridad de tráfico corporativo.}%
-  {diciembre de 2025}{diciembre de 2027}{Vigente.}
+  {diciembre de 2025}{diciembre de 2027}{Vigente.}%
+  {is recognized as an authorized business reseller under}
 
 \end{document}

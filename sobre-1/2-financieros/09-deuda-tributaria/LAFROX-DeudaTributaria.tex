@@ -1,47 +1,56 @@
-\documentclass[carta,final]{lafrox}
-\usepackage{simulacion}
+\documentclass[11pt]{article}
+\usepackage[sans]{sim-oficial}
 \input{datos-proponente}
-\usepackage{needspace}% keep headings with their content
-\let\SIMoldsection\section
-\renewcommand{\section}{\needspace{9\baselineskip}\SIMoldsection}
+\renewcommand{\arraystretch}{1.1}\setlength{\parskip}{3pt}
+\newcommand{\campo}[2]{\textbf{#1} & #2\\}
 \begin{document}
-\SIMemisor{Tesorería General de la República (emisor simulado)}{Certificado de deuda tributaria}{SIM-TGR-DEUDA-2026-000001}
+\noindent\begin{minipage}[c]{2.2cm}\SIMhueco{2cm}{2cm}{Emblema institucional (omitido)}\end{minipage}\hfill
+\begin{minipage}[c]{0.5\linewidth}\centering
+  {\large\bfseries TESORERÍA GENERAL DE LA REPÚBLICA (simulado)}\par\smallskip
+  {\small Servicio de Tesorerías --- Cobranza de impuestos fiscales}
+\end{minipage}\hfill
+\begin{minipage}[c]{2.8cm}\raggedleft\SIMhueco{2.6cm}{2cm}{Código de verificación y QR (omitidos)}\end{minipage}
 
-\noindent Se certifica, para ser presentado en la \LFXlicitacion{} (Art.~39°, numeral~2, de las Bases Administrativas), la situación de deudas tributarias del contribuyente que se individualiza, a la fecha de emisión.
+\vspace{4pt}\noindent\rule{\linewidth}{1pt}
 
-\section*{Contribuyente}
-\begin{tablalafrox}{Individualización del contribuyente.}{tab:deu1}{L{5.4cm} Y}
-  {\cab{Dato} & \cab{Contenido}}
-  \textbf{Rol Único Tributario} & \LFXrut \\
-  \textbf{Razón social} & LafroX SpA \\
-  \textbf{Domicilio} & \LFXdomicilio \\
-  \textbf{Fecha de emisión} & \SIMfecha \\
-  \textbf{Fecha de corte de la información} & 22 de noviembre de 2026 \\
-\end{tablalafrox}
+\begin{center}{\Large\bfseries CERTIFICADO DE DEUDA}\\[3pt]
+  {\small N.\textdegree{} de documento: SIM-TGR-DEUDA-2026-000001}\end{center}
 
-\section*{Resultado de la consulta}
-\noindent A la fecha de corte, el contribuyente \textbf{no registra deudas tributarias morosas}, giros pendientes de pago vencidos ni convenios de pago incumplidos, de aquellos cuya cobranza corresponde a la Tesorería General.
+\noindent La Tesorería General de la República (simulado) certifica la situación de deuda fiscal del contribuyente que se indica, según los registros a la fecha de corte.
 
-\begin{tablalafrox}{Detalle de formularios y giros revisados.}{tab:deu2}{L{3.2cm} Y L{3.4cm} R{2.6cm}}
-  {\cab{Formulario} & \cab{Concepto} & \cab{Períodos revisados} & \cab{Deuda morosa (CLP)}}
+\medskip
+\noindent\textbf{DATOS DEL CONTRIBUYENTE}\par\nopagebreak
+\noindent\begin{tabularx}{\linewidth}{@{}l X@{}}\toprule
+  \campo{RUT}{\LFXrut}
+  \campo{Nombre o razón social}{LAFROX SpA}
+  \campo{Domicilio}{\LFXdomicilio}
+  \campo{Fecha y hora de emisión}{23-11-2026, 09:12 hrs.}
+  \campo{Fecha de corte de la información}{22-11-2026}
+  \bottomrule
+\end{tabularx}
+
+\bigskip
+\noindent\textbf{SITUACIÓN DE DEUDA}\par\nopagebreak\smallskip
+\noindent A la fecha de corte, el contribuyente \textbf{NO REGISTRA DEUDAS} morosas, giros vencidos pendientes de pago ni convenios de pago incumplidos, cuya cobranza corresponda a esta Tesorería.
+
+\medskip
+\noindent\begin{tabularx}{\linewidth}{@{}l X l r@{}}\toprule
+  \textbf{Formulario} & \textbf{Concepto} & \textbf{Períodos} & \textbf{Deuda (CLP)} \\\midrule
   F29 & Declaración mensual y pago simultáneo de IVA y PPM & 11-2021 a 10-2026 & 0 \\
   F50 & Retenciones de impuestos de segunda categoría y adicionales & 11-2021 a 10-2026 & 0 \\
   F22 & Declaración anual de impuesto a la renta & AT 2022 a AT 2026 & 0 \\
   Giros & Giros de impuestos y reajustes pendientes & Todos & 0 \\
   Convenios & Convenios de pago vigentes & Todos & Sin convenios \\
-  Contribuciones & Contribuciones de bienes raíces del propietario & Vigentes & Sin deuda \\
-  \midrule
-  \textbf{Total} & & & \textbf{0} \\
-\end{tablalafrox}
+  Contribuciones & Contribuciones de bienes raíces del propietario & Vigentes & Sin deuda \\\midrule
+  \textbf{Total} & & & \textbf{0} \\\bottomrule
+\end{tabularx}
 
-\noindent El presente certificado se emite a solicitud del interesado, quien lo presenta para acreditar su situación tributaria ante el CLIENTE. Su vigencia queda limitada a la fecha de emisión.
+\bigskip
+\noindent El presente certificado se emite a solicitud del interesado para ser presentado en la \LFXlicitacion{} (Art.~39\textdegree, numeral~2, de las Bases Administrativas). Su vigencia queda limitada a la fecha y hora de emisión.
 
-\vspace{24pt}
-\begin{center}
-  \rule{6.4cm}{0.5pt}\\[2pt]
-  Tesorería General de la República (firma simulada)\\
-  {\small\textit{Sin firma electrónica avanzada, sin timbre y sin código de verificación reales}}
-\end{center}
+\vspace{18pt}
+\noindent\begin{minipage}[c]{4.5cm}\SIMhueco{4.2cm}{1.8cm}{Firma electrónica avanzada (omitida)}\end{minipage}\hfill
+\begin{minipage}[c]{0.6\linewidth}\raggedleft\small Certificado emitido por medios electrónicos. La validez se verifica en el sitio institucional con el código de verificación (omitido en esta simulación).\end{minipage}
 
-\noindent\small Documento recreado con fines académicos. No reemplaza al certificado oficial que emite la Tesorería General de la República.
+\SIMnooficial{la Tesorería General de la República}
 \end{document}

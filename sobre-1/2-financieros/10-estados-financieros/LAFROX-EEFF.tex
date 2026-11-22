@@ -1,125 +1,230 @@
-\documentclass[carta,final]{lafrox}
-\usepackage{simulacion}
+\documentclass[11pt]{article}
+\usepackage[sans]{sim-oficial}
 \input{datos-proponente}
-\usepackage{needspace}% keep headings with their content
-\let\SIMoldsection\section
-\renewcommand{\section}{\needspace{18\baselineskip}\SIMoldsection}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}p{2.1cm}}
+\renewcommand{\arraystretch}{1.18}
+% Statement heading: #1 title, #2 period line
+\newcommand{\eeffhead}[2]{%
+  \begin{center}
+    {\large\bfseries LAFROX SpA}\\[3pt]
+    {\bfseries #1}\\[2pt]
+    #2\\[2pt]
+    {\small (Cifras en millones de pesos chilenos --- MM\$)}
+  \end{center}\vspace{2pt}}
+\newcommand{\seccion}[1]{\multicolumn{4}{@{}l}{\textbf{#1}}\\}
+\newcommand{\fil}[4]{\hspace{1em}#1 & #2 & #3 & #4\\}
+\newcommand{\tot}[4]{\textbf{#1} & \textbf{#2} & \textbf{#3} & \textbf{#4}\\}
+\newcommand{\cabeera}{\toprule & \textbf{2025} & \textbf{2024} & \textbf{2023}\\\midrule}
+\newcommand{\nota}[2]{\par\medskip\noindent\textbf{#1}\ #2}
 \begin{document}
-\SIMtitulo{Estados financieros auditados}{LafroX SpA --- ejercicios 2023, 2024 y 2025}
+\pagestyle{fancy}
 
-\noindent\small\textit{Estados financieros simulados con fines académicos (Art.~34 y Art.~39°, numeral~2, de las Bases Administrativas). Cifras y auditor ficticios; sin valor contable ni legal. Cifras en millones de pesos chilenos (CLP MM), al 31 de diciembre de cada año.}\normalsize
+%--------------------------------------------------------------- portada
+\thispagestyle{fancy}
+\vspace*{3.5cm}
+\begin{center}
+  {\Huge\bfseries LAFROX SpA}\\[26pt]
+  {\Large\bfseries ESTADOS FINANCIEROS}\\[8pt]
+  {\large Al 31 de diciembre de 2025, 2024 y 2023}\\[8pt]
+  {\large con Informe de los Auditores Independientes}\\[30pt]
+  {\small (Cifras en millones de pesos chilenos --- MM\$)}
+\end{center}
+\vfill
+\noindent\textbf{CONTENIDO}\par\smallskip
+\noindent\begin{tabularx}{\linewidth}{@{}X r@{}}
+  Informe de los Auditores Independientes & 2\\
+  Estados de Situación Financiera & 3--4\\
+  Estados de Resultados Integrales por Función & 5\\
+  Estados de Flujos de Efectivo & 6\\
+  Estados de Cambios en el Patrimonio & 7\\
+  Notas a los Estados Financieros & 8\\
+  Indicadores financieros & 9\\
+\end{tabularx}
+\par\medskip\noindent{\footnotesize NIIF: Normas Internacionales de Información Financiera. Estados financieros simulados con fines académicos (Art.~34 y Art.~39\textdegree, numeral~2, de las Bases Administrativas). Cifras y auditor ficticios.}
+\clearpage
 
-\section*{Informe del auditor independiente}
-\noindent A los señores accionistas de \LFXempresa:
+%--------------------------------------------------------------- informe auditor
+\begin{center}{\large\bfseries INFORME DE LOS AUDITORES INDEPENDIENTES}\end{center}
+\noindent Señores\\Accionistas y Directores\\\LFXempresa
 
-\noindent \textbf{Opinión.} Hemos auditado los estados financieros de \LFXempresa, que comprenden los estados de situación financiera al 31 de diciembre de 2025, 2024 y 2023 y los correspondientes estados de resultados integrales y de flujos de efectivo por los años terminados en esas fechas, y las notas a los estados financieros. En nuestra opinión, los estados financieros presentan razonablemente, en todos sus aspectos significativos, la situación financiera de la Sociedad y los resultados de sus operaciones y flujos de efectivo, de acuerdo con las Normas Internacionales de Información Financiera. \textbf{Nuestra opinión es sin salvedades.}
+\smallskip
+\noindent\textbf{Opinión}
 
-\noindent \textbf{Fundamento de la opinión.} Efectuamos nuestras auditorías de acuerdo con las normas de auditoría generalmente aceptadas en Chile. Somos independientes de la Sociedad y hemos cumplido las demás responsabilidades éticas pertinentes. Consideramos que la evidencia de auditoría obtenida es suficiente y apropiada para fundamentar nuestra opinión.
+\noindent Hemos auditado los estados financieros de \LFXempresa{} (la ``Sociedad''), que comprenden los estados de situación financiera al 31 de diciembre de 2025, 2024 y 2023 y los correspondientes estados de resultados integrales, de cambios en el patrimonio y de flujos de efectivo por los años terminados en esas fechas, y las notas a los estados financieros.
 
-\noindent \textbf{Responsabilidad de la administración.} La administración es responsable de la preparación y presentación razonable de los estados financieros, del control interno necesario para ello y de evaluar la capacidad de la Sociedad para continuar como empresa en marcha.
+En nuestra opinión, los estados financieros adjuntos presentan razonablemente, en todos sus aspectos significativos, la situación financiera de \LFXempresa{} al 31 de diciembre de 2025, 2024 y 2023, y los resultados de sus operaciones y sus flujos de efectivo por los años terminados en esas fechas, de acuerdo con las Normas Internacionales de Información Financiera (NIIF). \textbf{Nuestra opinión es sin salvedades.}
 
-\vspace{6pt}
+\noindent\textbf{Base para la opinión}
+
+\noindent Efectuamos nuestras auditorías de acuerdo con las normas de auditoría generalmente aceptadas en Chile. Nuestras responsabilidades de acuerdo con tales normas se describen más adelante en la sección ``Responsabilidades del auditor''. Somos independientes de la Sociedad y hemos cumplido las demás responsabilidades éticas pertinentes. Consideramos que la evidencia de auditoría obtenida es suficiente y apropiada para proporcionar una base para nuestra opinión.
+
+\noindent\textbf{Responsabilidad de la administración por los estados financieros}
+
+\noindent La administración es responsable de la preparación y presentación razonable de estos estados financieros de acuerdo con las NIIF; esto incluye el diseño, implementación y mantención del control interno pertinente para la preparación y presentación razonable de estados financieros que estén exentos de representaciones incorrectas significativas, ya sea debido a fraude o error, y de evaluar la capacidad de la Sociedad para continuar como empresa en marcha.
+
+\noindent\textbf{Responsabilidades del auditor}
+
+\noindent Nuestro objetivo es obtener una seguridad razonable de que los estados financieros en su conjunto están exentos de representaciones incorrectas significativas, ya sea debido a fraude o error, y emitir un informe que contenga nuestra opinión. Una auditoría incluye examinar, sobre la base de pruebas, la evidencia que respalda los montos e informaciones revelados en los estados financieros, evaluar las políticas contables utilizadas y la razonabilidad de las estimaciones significativas efectuadas por la administración, así como la presentación general de los estados financieros.
+
+\vspace{10pt}
 \noindent Santiago, 27 de febrero de 2026
 
-\vspace{24pt}
-\begin{center}
-  \rule{6.4cm}{0.5pt}\\[2pt]
-  Auditora Ficticia María Muestra Ejemplo, Socia\\
-  \SIMauditora\\
-  {\small\textit{Firma, timbre y registro de auditor simulados}}
-\end{center}
-
+\vspace{28pt}
+\noindent\rule{6.4cm}{0.5pt}\\
+María Muestra Ejemplo (auditora ficticia)\\
+Socia\\
+\SIMauditora\\[4pt]
+{\small Firma, timbre y registro de auditor simulados.}
 \clearpage
-\section*{Estado de situación financiera}
-\begin{tablalafrox}{Estado de situación financiera (CLP MM).}{tab:ef1}{Y R{2.0cm} R{2.0cm} R{2.0cm}}
-  {\cab{Concepto} & \cab{2025} & \cab{2024} & \cab{2023}}
-  \textbf{Activos corrientes} & & & \\
-  Efectivo y equivalentes al efectivo & 820 & 640 & 520 \\
-  Deudores comerciales y otras cuentas por cobrar & 1.900 & 1.640 & 1.400 \\
-  Otros activos corrientes & 430 & 360 & 330 \\
-  \textbf{Total activos corrientes} & \textbf{3.150} & \textbf{2.640} & \textbf{2.250} \\
-  \midrule
-  \textbf{Activos no corrientes} & & & \\
-  Propiedades, planta y equipos & 1.250 & 1.150 & 1.060 \\
-  Activos intangibles (desarrollo de software) & 350 & 330 & 290 \\
-  Otros activos no corrientes & 200 & 170 & 150 \\
-  \textbf{Total activos no corrientes} & \textbf{1.800} & \textbf{1.650} & \textbf{1.500} \\
-  \midrule
-  \textbf{Total activos} & \textbf{4.950} & \textbf{4.290} & \textbf{3.750} \\
-\end{tablalafrox}
 
-\needspace{26\baselineskip}
-\begin{tablalafrox}{Pasivos y patrimonio (CLP MM).}{tab:ef2}{Y R{2.0cm} R{2.0cm} R{2.0cm}}
-  {\cab{Concepto} & \cab{2025} & \cab{2024} & \cab{2023}}
-  \textbf{Pasivos corrientes} & & & \\
-  Proveedores y otras cuentas por pagar & 780 & 690 & 640 \\
-  Obligaciones laborales y previsionales & 640 & 560 & 500 \\
-  Obligaciones financieras corrientes & 330 & 300 & 260 \\
-  \textbf{Total pasivos corrientes} & \textbf{1.750} & \textbf{1.550} & \textbf{1.400} \\
+%--------------------------------------------------------------- ESF activos
+\eeffhead{ESTADOS DE SITUACIÓN FINANCIERA}{Al 31 de diciembre de 2025, 2024 y 2023}
+\noindent\begin{tabularx}{\linewidth}{@{}X R R R@{}}
+  \cabeera
+  \seccion{ACTIVOS}
+  \seccion{Activos corrientes}
+  \fil{Efectivo y equivalentes al efectivo}{820}{640}{520}
+  \fil{Deudores comerciales y otras cuentas por cobrar}{1.900}{1.640}{1.400}
+  \fil{Otros activos corrientes}{430}{360}{330}
+  \tot{Total activos corrientes}{3.150}{2.640}{2.250}
   \midrule
-  \textbf{Pasivos no corrientes} & & & \\
-  Obligaciones financieras no corrientes & 900 & 750 & 680 \\
-  Otros pasivos no corrientes & 100 & 90 & 70 \\
-  \textbf{Total pasivos no corrientes} & \textbf{1.000} & \textbf{840} & \textbf{750} \\
+  \seccion{Activos no corrientes}
+  \fil{Propiedades, planta y equipos}{1.250}{1.150}{1.060}
+  \fil{Activos intangibles (desarrollo de software)}{350}{330}{290}
+  \fil{Otros activos no corrientes}{200}{170}{150}
+  \tot{Total activos no corrientes}{1.800}{1.650}{1.500}
   \midrule
-  \textbf{Patrimonio} & & & \\
-  Capital emitido & 1.000 & 1.000 & 1.000 \\
-  Resultados acumulados & 755 & 480 & 242 \\
-  Resultado del ejercicio & 445 & 420 & 358 \\
-  \textbf{Total patrimonio} & \textbf{2.200} & \textbf{1.900} & \textbf{1.600} \\
+  \tot{TOTAL ACTIVOS}{4.950}{4.290}{3.750}
+  \bottomrule
+\end{tabularx}
+
+\vspace{10pt}
+\noindent{\small Las notas adjuntas forman parte integral de estos estados financieros.}
+\clearpage
+
+%--------------------------------------------------------------- ESF pasivos
+\eeffhead{ESTADOS DE SITUACIÓN FINANCIERA}{Al 31 de diciembre de 2025, 2024 y 2023 (continuación)}
+\noindent\begin{tabularx}{\linewidth}{@{}X R R R@{}}
+  \cabeera
+  \seccion{PASIVOS Y PATRIMONIO}
+  \seccion{Pasivos corrientes}
+  \fil{Proveedores y otras cuentas por pagar}{780}{690}{640}
+  \fil{Obligaciones laborales y previsionales}{640}{560}{500}
+  \fil{Obligaciones financieras corrientes}{330}{300}{260}
+  \tot{Total pasivos corrientes}{1.750}{1.550}{1.400}
   \midrule
-  \textbf{Total pasivos y patrimonio} & \textbf{4.950} & \textbf{4.290} & \textbf{3.750} \\
-\end{tablalafrox}
-
-\section*{Estado de resultados integrales}
-\begin{tablalafrox}{Estado de resultados por función (CLP MM).}{tab:ef3}{Y R{2.0cm} R{2.0cm} R{2.0cm}}
-  {\cab{Concepto} & \cab{2025} & \cab{2024} & \cab{2023}}
-  Ingresos de actividades ordinarias & 6.800 & 5.900 & 5.200 \\
-  Costo de ventas & (4.700) & (4.130) & (3.640) \\
-  \textbf{Margen bruto} & \textbf{2.100} & \textbf{1.770} & \textbf{1.560} \\
-  Gastos de administración y ventas & (1.400) & (1.115) & (1.000) \\
-  \textbf{Resultado operacional} & \textbf{700} & \textbf{655} & \textbf{560} \\
-  Resultado financiero neto & (90) & (80) & (70) \\
-  Resultado antes de impuestos & 610 & 575 & 490 \\
-  Impuesto a las ganancias (27 \%) & (165) & (155) & (132) \\
-  \textbf{Utilidad del ejercicio} & \textbf{445} & \textbf{420} & \textbf{358} \\
-\end{tablalafrox}
-
-\section*{Estado de flujos de efectivo (resumen)}
-\begin{tablalafrox}{Flujos de efectivo por actividad (CLP MM).}{tab:ef4}{Y R{2.0cm} R{2.0cm} R{2.0cm}}
-  {\cab{Concepto} & \cab{2025} & \cab{2024} & \cab{2023}}
-  Flujo de actividades de la operación & 720 & 610 & 540 \\
-  Flujo de actividades de inversión & (380) & (340) & (310) \\
-  Flujo de actividades de financiación & (160) & (150) & (140) \\
+  \seccion{Pasivos no corrientes}
+  \fil{Obligaciones financieras no corrientes}{900}{750}{680}
+  \fil{Otros pasivos no corrientes}{100}{90}{70}
+  \tot{Total pasivos no corrientes}{1.000}{840}{750}
   \midrule
-  \textbf{Incremento neto de efectivo} & \textbf{180} & \textbf{120} & \textbf{90} \\
-  Efectivo al inicio del año & 640 & 520 & 430 \\
-  \textbf{Efectivo al final del año} & \textbf{820} & \textbf{640} & \textbf{520} \\
-\end{tablalafrox}
+  \seccion{Patrimonio}
+  \fil{Capital emitido}{1.000}{1.000}{1.000}
+  \fil{Resultados acumulados}{755}{480}{242}
+  \fil{Resultado del ejercicio}{445}{420}{358}
+  \tot{Total patrimonio}{2.200}{1.900}{1.600}
+  \midrule
+  \tot{TOTAL PASIVOS Y PATRIMONIO}{4.950}{4.290}{3.750}
+  \bottomrule
+\end{tabularx}
 
-\section*{Notas a los estados financieros (resumen)}
-\begin{description}
-  \item[Nota 1. Entidad.] \LFXempresa{} es una sociedad por acciones constituida en 2012, con casa matriz en Valparaíso y sede central en Santiago. Su actividad es el desarrollo, integración y operación de sistemas de software y servicios de tecnologías de la información.
-  \item[Nota 2. Bases de preparación.] Los estados financieros se preparan de acuerdo con las NIIF, bajo el criterio de devengado y en pesos chilenos, redondeados a millones.
-  \item[Nota 3. Reconocimiento de ingresos.] Los ingresos por desarrollo se reconocen según el avance de los hitos contractuales; los de operación y soporte, mensualmente conforme al servicio prestado.
-  \item[Nota 4. Propiedades, planta y equipos e intangibles.] Se valoran al costo menos depreciación y amortización acumuladas. El desarrollo de software capitalizable se amortiza en cuatro años.
-  \item[Nota 5. Obligaciones financieras.] Corresponden a créditos bancarios en pesos y UF, sin cláusulas de aceleración incumplidas al cierre.
-  \item[Nota 6. Dividendos.] En 2024 y 2025 se pagaron dividendos por 120 y 145 millones, respectivamente, con cargo a las utilidades de los ejercicios anteriores.
-  \item[Nota 7. Hechos posteriores.] No existen hechos posteriores al cierre que afecten significativamente los estados financieros.
-\end{description}
+\vspace{10pt}
+\noindent{\small Las notas adjuntas forman parte integral de estos estados financieros.}
+\clearpage
 
-\section*{Indicadores financieros}
-\begin{tablalafrox}{Indicadores derivados de los estados financieros.}{tab:ef5}{Y R{2.0cm} R{2.0cm} R{2.0cm}}
-  {\cab{Indicador} & \cab{2025} & \cab{2024} & \cab{2023}}
-  Liquidez corriente (activo corriente / pasivo corriente) & 1,80 & 1,70 & 1,61 \\
-  Endeudamiento (pasivo total / patrimonio) & 1,25 & 1,26 & 1,34 \\
-  Patrimonio (CLP MM) & 2.200 & 1.900 & 1.600 \\
-  Ventas anuales (CLP MM) & 6.800 & 5.900 & 5.200 \\
-  Margen operacional (\%) & 10,3 & 11,1 & 10,8 \\
-  Rentabilidad sobre patrimonio (\%) & 20,2 & 22,1 & 22,4 \\
-\end{tablalafrox}
+%--------------------------------------------------------------- ERI
+\eeffhead{ESTADOS DE RESULTADOS INTEGRALES POR FUNCIÓN}{Por los años terminados al 31 de diciembre de 2025, 2024 y 2023}
+\noindent\begin{tabularx}{\linewidth}{@{}X R R R@{}}
+  \cabeera
+  Ingresos de actividades ordinarias & 6.800 & 5.900 & 5.200\\
+  Costo de ventas & (4.700) & (4.130) & (3.640)\\
+  \tot{Margen bruto}{2.100}{1.770}{1.560}
+  Gastos de administración y ventas & (1.400) & (1.115) & (1.000)\\
+  \tot{Resultado operacional}{700}{655}{560}
+  Resultado financiero neto & (90) & (80) & (70)\\
+  Resultado antes de impuestos & 610 & 575 & 490\\
+  Impuesto a las ganancias (27\,\%) & (165) & (155) & (132)\\
+  \midrule
+  \tot{UTILIDAD DEL EJERCICIO}{445}{420}{358}
+  \bottomrule
+\end{tabularx}
 
+\vspace{10pt}
+\noindent{\small Las notas adjuntas forman parte integral de estos estados financieros.}
+\clearpage
+
+%--------------------------------------------------------------- EFE
+\eeffhead{ESTADOS DE FLUJOS DE EFECTIVO}{Por los años terminados al 31 de diciembre de 2025, 2024 y 2023}
+\noindent\begin{tabularx}{\linewidth}{@{}X R R R@{}}
+  \cabeera
+  Flujo de actividades de la operación & 720 & 610 & 540\\
+  Flujo de actividades de inversión & (380) & (340) & (310)\\
+  Flujo de actividades de financiación & (160) & (150) & (140)\\
+  \midrule
+  \tot{Incremento neto de efectivo y equivalentes}{180}{120}{90}
+  Efectivo y equivalentes al inicio del año & 640 & 520 & 430\\
+  \midrule
+  \tot{EFECTIVO Y EQUIVALENTES AL FINAL DEL AÑO}{820}{640}{520}
+  \bottomrule
+\end{tabularx}
+
+\vspace{10pt}
+\noindent{\small Las notas adjuntas forman parte integral de estos estados financieros.}
+\clearpage
+
+%--------------------------------------------------------------- ECP
+\eeffhead{ESTADOS DE CAMBIOS EN EL PATRIMONIO}{Por los años terminados al 31 de diciembre de 2025 y 2024}
+\noindent\begin{tabularx}{\linewidth}{@{}X R R R R@{}}
+  \toprule
+  & \textbf{Capital emitido} & \textbf{Result. acumulados} & \textbf{Result. del ejercicio} & \textbf{Total patrimonio}\\\midrule
+  \multicolumn{5}{@{}l}{\textbf{Año 2025}}\\
+  \hspace{1em}Saldo inicial al 01-01-2025 & 1.000 & 480 & 420 & 1.900\\
+  \hspace{1em}Traspaso del resultado anterior & --- & 420 & (420) & ---\\
+  \hspace{1em}Dividendos pagados & --- & (145) & --- & (145)\\
+  \hspace{1em}Resultado del ejercicio & --- & --- & 445 & 445\\
+  \textbf{Saldo final al 31-12-2025} & \textbf{1.000} & \textbf{755} & \textbf{445} & \textbf{2.200}\\\midrule
+  \multicolumn{5}{@{}l}{\textbf{Año 2024}}\\
+  \hspace{1em}Saldo inicial al 01-01-2024 & 1.000 & 242 & 358 & 1.600\\
+  \hspace{1em}Traspaso del resultado anterior & --- & 358 & (358) & ---\\
+  \hspace{1em}Dividendos pagados & --- & (120) & --- & (120)\\
+  \hspace{1em}Resultado del ejercicio & --- & --- & 420 & 420\\
+  \textbf{Saldo final al 31-12-2024} & \textbf{1.000} & \textbf{480} & \textbf{420} & \textbf{1.900}\\
+  \bottomrule
+\end{tabularx}
+
+\vspace{10pt}
+\noindent{\small Las notas adjuntas forman parte integral de estos estados financieros.}
+\clearpage
+
+%--------------------------------------------------------------- Notas
+\begin{center}{\large\bfseries NOTAS A LOS ESTADOS FINANCIEROS}\\[2pt]Al 31 de diciembre de 2025, 2024 y 2023 (resumen)\end{center}
+\nota{Nota 1. Entidad.}{\LFXempresa{} es una sociedad por acciones constituida en 2012, con casa matriz en Valparaíso y sede central en Santiago. Su actividad es el desarrollo, integración y operación de sistemas de software y servicios de tecnologías de la información.}
+\nota{Nota 2. Bases de preparación.}{Los estados financieros se preparan de acuerdo con las NIIF, bajo el criterio de devengado y en pesos chilenos, redondeados a millones.}
+\nota{Nota 3. Reconocimiento de ingresos.}{Los ingresos por desarrollo se reconocen según el avance de los hitos contractuales; los de operación y soporte, mensualmente conforme al servicio prestado.}
+\nota{Nota 4. Propiedades, planta y equipos e intangibles.}{Se valoran al costo menos depreciación y amortización acumuladas. El desarrollo de software capitalizable se amortiza en cuatro años.}
+\nota{Nota 5. Obligaciones financieras.}{Corresponden a créditos bancarios en pesos y UF, sin cláusulas de aceleración incumplidas al cierre.}
+\nota{Nota 6. Dividendos.}{En 2024 y 2025 se pagaron dividendos por 120 y 145 millones, respectivamente, con cargo a las utilidades de los ejercicios anteriores.}
+\nota{Nota 7. Hechos posteriores.}{No existen hechos posteriores al cierre que afecten significativamente los estados financieros.}
+\clearpage
+
+%--------------------------------------------------------------- Indicadores
+\begin{center}{\large\bfseries INDICADORES FINANCIEROS}\\[2pt]Derivados de los estados financieros\end{center}
+\noindent\begin{tabularx}{\linewidth}{@{}X R R R@{}}
+  \toprule \textbf{Indicador} & \textbf{2025} & \textbf{2024} & \textbf{2023}\\\midrule
+  Liquidez corriente (activo corriente / pasivo corriente) & 1,80 & 1,70 & 1,61\\
+  Endeudamiento (pasivo total / patrimonio) & 1,25 & 1,26 & 1,34\\
+  Patrimonio (MM\$) & 2.200 & 1.900 & 1.600\\
+  Ventas anuales (MM\$) & 6.800 & 5.900 & 5.200\\
+  Margen operacional (\%) & 10,3 & 11,1 & 10,8\\
+  Rentabilidad sobre patrimonio (\%) & 20,2 & 22,1 & 22,4\\
+  \bottomrule
+\end{tabularx}
+
+\medskip
 \noindent El patrimonio es positivo en los tres ejercicios, conforme al requisito de solvencia financiera del Art.~34.1 de las Bases Administrativas.
 
-\SIMfirma{\SIMfecha}
+\vspace{30pt}
+\noindent\SIMfecha\par\vspace{26pt}
+\noindent\rule{6cm}{0.5pt}\\
+\LFXrepresentante, Gerente General\\\LFXempresa
 \end{document}

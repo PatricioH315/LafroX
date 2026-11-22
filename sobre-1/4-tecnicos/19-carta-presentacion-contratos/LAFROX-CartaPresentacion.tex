@@ -1,68 +1,74 @@
-\documentclass[carta,final]{lafrox}
-\usepackage{simulacion}
+\documentclass[11pt]{article}
+\usepackage[serif]{sim-oficial}
 \input{datos-proponente}
-\usepackage{needspace}
-% Local macro: one simulated reference letter from a client (mandante).
-% #1 company  #2 ref code  #3 signatory  #4 position  #5 body
-\newcommand{\cartaref}[5]{%
+\setlength{\parskip}{7pt}
+% Simple text letterhead: #1 name, #2 line under it
+\newcommand{\membrete}[2]{%
+  \noindent{\SIMsans\Large\bfseries #1}\\[1pt]{\SIMsans\small #2}\\[1pt]\rule{\linewidth}{0.8pt}\par\vspace{4pt}}
+% One simulated reference letter from a client (mandante).
+% #1 company  #2 address line  #3 ref code  #4 signatory  #5 position  #6 body
+\newcommand{\cartaref}[6]{%
   \clearpage
-  \SIMemisor{#1 (carta simulada)}{Carta de referencia del mandante}{#2}
-  \noindent Santiago, 20 de noviembre de 2026\par\medskip
-  \noindent Señores\\\textbf{\LFXcliente}\\Comisión Evaluadora de la \LFXlicitacion\\Presente\par\medskip
-  \noindent\textbf{Ref.:} Referencia de contrato --- \LFXempresa, RUT~\LFXrut.\par\medskip
-  De nuestra consideración:\par\smallskip
-  #5\par\medskip
-  Se extiende la presente a solicitud de \LFXempresa{} para ser presentada en la \LFXlicitacion, en el marco de los Artículos~34.1 y 34.2 de las Bases Administrativas. El CLIENTE puede verificar esta información directamente con el suscrito.\par\medskip
-  Saluda atentamente,
-  \vspace{28pt}
-  \begin{center}\rule{6.4cm}{0.5pt}\\[2pt]#3\\{\small #4, #1 (ficticio)}\end{center}
-  \vfill
-  \noindent\small Documento recreado con fines académicos. Carta simulada: empresa, firmante y contenido son ficticios; no reemplaza una carta de referencia oficial del mandante.}
+  \membrete{#1}{#2 \quad(carta simulada)}
+  \noindent Santiago, 20 de noviembre de 2026\hfill Ref. interna: #3\par
+  \noindent Señores\\\textbf{\LFXcliente}\\Comisión Evaluadora de la \LFXlicitacion\\Presente\par
+  \noindent\textbf{Ref.:} Referencia de contrato --- \LFXempresa, RUT~\LFXrut.\par
+  \noindent De nuestra consideración:\par
+  #6\par
+  Se extiende la presente a solicitud de \LFXempresa{} para ser presentada en la \LFXlicitacion, en el marco de los Artículos~34.1 y 34.2 de las Bases Administrativas. El CLIENTE puede verificar esta información directamente con el suscrito.\par
+  \noindent Saluda atentamente,
+  \vspace{30pt}
+  \begin{center}\rule{6.4cm}{0.5pt}\\[2pt]\textbf{#4}\\#5\\#1 (ficticia)\end{center}}
 \begin{document}
-\SIMtitulo{Carta de presentación}{Proponente y nómina de contratos por servicios similares}
+\membrete{LAFROX SpA}{RUT \LFXrut \ \textbullet\ \LFXdomicilio \ \textbullet\ \LFXtelefono \ \textbullet\ \LFXcorreo}
 
-\noindent\SIMfecha\par\medskip
-\noindent Señores\\
-\textbf{\LFXcliente}\\
-Presente\par\medskip
-\noindent\textbf{Ref.:} \LFXlicitacion{} --- \LFXobjeto{} (\LFXcaso).\par\medskip
+\noindent\SIMfecha\par
+\noindent Señores\\\textbf{\LFXcliente}\\Presente\par
+\noindent\textbf{Ref.:} \LFXlicitacion{} --- \LFXobjeto{} (\LFXcaso). Carta de presentación del proponente.\par
 
-De mi consideración:\par\smallskip
+\noindent De mi consideración:\par
 
 \LFXempresa, RUT~\LFXrut, sociedad constituida el \SIMconstitucion{} con sede central en \SIMsedecentral{} y centro de operaciones en \LFXdomicilio, presenta su propuesta en la modalidad individual (sin consorcio ni unión temporal) y se identifica ante el CLIENTE como proveedor de software de misión crítica con 133 profesionales dedicados a desarrollo, calidad, seguridad, operación y soporte. Su giro es: \SIMgiro.
 
 En cumplimiento del Artículo 39° (sección 4) y del Artículo 34.1 de las Bases Administrativas, se adjunta la nómina de contratos suscritos por servicios similares, finalizados y en operación en los últimos cinco años, con los campos del Formulario T-6. Entre ellos, el Proyecto~1 acredita arquitectura híbrida (nube más on-premise) y operación bajo un acuerdo de nivel de servicio de disponibilidad de 99,5\,\%, y el Proyecto~2 un nivel de 99,9\,\%. El CLIENTE podrá verificar la información directamente con las contrapartes indicadas (Artículo 34.2).
 
-La nómina de contratos se presenta en la página siguiente (Tabla~\ref{tab:t6}). Se adjuntan, a continuación de ella, las cartas de referencia de los tres mandantes.
+La nómina de contratos se presenta en la página siguiente. Se adjuntan, a continuación de ella, las cartas de referencia de los tres mandantes.
 
 Sin otro particular, saluda atentamente al CLIENTE,
 
-\SIMfirma{\SIMfecha}
+\vspace{34pt}
+\begin{center}
+  \rule{6.4cm}{0.5pt}\\[2pt]
+  \textbf{\LFXrepresentante}\\\LFXcargo\\\LFXempresa\\ RUT \LFXrut
+\end{center}
 
 \clearpage
-\begin{tablalafrox}{Nómina de contratos similares (campos del Formulario T-6)}{tab:t6}{L{2.6cm} Y Y Y}
-  {\cab{Campo} & \cab{Proyecto 1} & \cab{Proyecto 2} & \cab{Proyecto 3}}
-  \textbf{Nombre del proyecto} & Sistema Híbrido de Reparto y Gestión Logística & Plataforma de Telemetría y Cadena de Frío IoT & Sistema Móvil de Preventa y Ruteo Desconectado \\
-  \textbf{Cliente / mandante} & LogiNacional S.A. & FarmaRed S.A. & Comercializadora Lácteos del Sur S.A. \\
-  \textbf{Industria} & Logística y distribución de carga & Distribución farmacéutica, cadena de frío & Consumo masivo, preventa en terreno \\
-  \textbf{Año de inicio y de término} & 2021--2022 & 2022--2023 & 2023--2024 \\
-  \textbf{Monto del contrato (rango)} & CLP 1.500 a 2.500 millones & CLP 800 a 1.500 millones & CLP 500 a 1.000 millones \\
-  \textbf{Alcance ejecutado} & Núcleo logístico modular, ERP y facturación electrónica en 14 centros de distribución & Monitoreo de doce cámaras de congelación y de flota con temperatura controlada & Aplicación móvil de preventa con sincronización en diferido y políticas de crédito locales \\
-  \textbf{Arquitectura} & Híbrida: nube pública y servidores de borde & Nube & Nube con operación móvil desconectada \\
-  \textbf{Nivel de servicio comprometido} & Disponibilidad 99,5\,\% & Disponibilidad 99,9\,\% & Según contrato (sin SLA de disponibilidad) \\
-  \textbf{Volumen de operación} & 420 camiones; 22.000 entregas diarias & 12 millones de mediciones mensuales & 280 preventistas; 18.000 transacciones diarias \\
-  \textbf{Rol de la empresa} & Principal & Principal & Principal \\
-  \textbf{Contraparte de referencia} & Marcela Soto Ejemplo, Gerencia de TI; contacto simulado: msoto@loginacional.example; +56 2 2000 0001 & Rodrigo Pérez Muestra, Subgerencia de Operaciones; contacto simulado: rperez@farmared.example; +56 2 2000 0002 & Carolina Díaz Ficticia, Jefatura de Sistemas; contacto simulado: cdiaz@lacteosdelsur.example; +56 2 2000 0003 \\
-\end{tablalafrox}
+\noindent{\SIMsans\bfseries NÓMINA DE CONTRATOS POR SERVICIOS SIMILARES (Formulario T-6)}\par\smallskip
+\small\renewcommand{\arraystretch}{1.15}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\raggedright\arraybackslash}p{2.3cm} X X X@{}}\toprule
+  Campo & \textbf{Proyecto 1} & \textbf{Proyecto 2} & \textbf{Proyecto 3}\\\midrule
+  Nombre del proyecto & Sistema Híbrido de Reparto y Gestión Logística & Plataforma de Telemetría y Cadena de Frío IoT & Sistema Móvil de Preventa y Ruteo Desconectado\\
+  Cliente / mandante & LogiNacional S.A. & FarmaRed S.A. & Comercializadora Lácteos del Sur S.A.\\
+  Industria & Logística y distribución de carga & Distribución farmacéutica, cadena de frío & Consumo masivo, preventa en terreno\\
+  Año de inicio y de término & 2021--2022 & 2022--2023 & 2023--2024\\
+  Monto del contrato (rango) & CLP 1.500 a 2.500 millones & CLP 800 a 1.500 millones & CLP 500 a 1.000 millones\\
+  Alcance ejecutado & Núcleo logístico modular, ERP y facturación electrónica en 14 centros de distribución & Monitoreo de doce cámaras de congelación y de flota con temperatura controlada & Aplicación móvil de preventa con sincronización en diferido y políticas de crédito locales\\
+  Arquitectura & Híbrida: nube pública y servidores de borde & Nube & Nube con operación móvil desconectada\\
+  Nivel de servicio comprometido & Disponibilidad 99,5\,\% & Disponibilidad 99,9\,\% & Según contrato (sin SLA de disponibilidad)\\
+  Volumen de operación & 420 camiones; 22.000 entregas diarias & 12 millones de mediciones mensuales & 280 preventistas; 18.000 transacciones diarias\\
+  Rol de la empresa & Principal & Principal & Principal\\
+  Contraparte de referencia & Marcela Soto Ejemplo, Gerencia de TI; contacto simulado: msoto@loginacional.example; +56 2 2000 0001 & Rodrigo Pérez Muestra, Subgerencia de Operaciones; contacto simulado: rperez@farmared.example; +56 2 2000 0002 & Carolina Díaz Ficticia, Jefatura de Sistemas; contacto simulado: cdiaz@lacteosdelsur.example; +56 2 2000 0003\\\bottomrule
+\end{tabularx}
+\normalsize
 
-Los datos de contraparte son ficticios y se declaran únicamente para este ejercicio académico.
+\noindent{\small Los datos de contraparte son ficticios y se declaran únicamente para este ejercicio académico.}
 
-\cartaref{LogiNacional S.A.}{SIM-REF-LOGI-2026-0101}{Marcela Soto Ejemplo}{Gerente de Tecnologías de la Información}{%
+\cartaref{LogiNacional S.A.}{Av. Ejemplo 1000, Santiago}{SIM-REF-LOGI-2026-0101}{Marcela Soto Ejemplo}{Gerente de Tecnologías de la Información}{%
 Certificamos que \LFXempresa{} ejecutó para nuestra empresa el proyecto «Sistema Híbrido de Reparto y Gestión Logística», entre 2021 y 2022, y que a la fecha se encuentra finalizado y en operación. La solución tiene \textbf{arquitectura híbrida} (nube pública más servidores de borde on-premise en 14 centros de distribución) y soporta una flota de 420 camiones y 22.000 entregas diarias. Su operación se rige por un \textbf{acuerdo de nivel de servicio de disponibilidad de 99,5\,\%}, que ha sido cumplido en los períodos de medición. El monto del contrato se situó en el rango de CLP 1.500 a 2.500 millones. Calificamos el desempeño del proveedor como satisfactorio.}
 
-\cartaref{FarmaRed S.A.}{SIM-REF-FARM-2026-0102}{Rodrigo Pérez Muestra}{Subgerente de Operaciones}{%
+\cartaref{FarmaRed S.A.}{Calle Muestra 2000, Santiago}{SIM-REF-FARM-2026-0102}{Rodrigo Pérez Muestra}{Subgerente de Operaciones}{%
 Certificamos que \LFXempresa{} ejecutó para nuestra empresa la «Plataforma de Telemetría y Cadena de Frío IoT», entre 2022 y 2023, hoy finalizada y en operación continua. La plataforma monitorea doce cámaras de congelación y una flota de transporte con temperatura controlada, procesando 12 millones de mediciones mensuales, y opera bajo un \textbf{acuerdo de nivel de servicio de disponibilidad de 99,9\,\%}, superior al mínimo de 99,5\,\% exigido en las Bases. La arquitectura se aloja en nube con integración a sensores en nuestras instalaciones. El monto del contrato se situó en el rango de CLP 800 a 1.500 millones. Recomendamos al proveedor para proyectos de misión crítica.}
 
-\cartaref{Comercializadora Lácteos del Sur S.A.}{SIM-REF-LACT-2026-0103}{Carolina Díaz Ficticia}{Jefa de Sistemas}{%
+\cartaref{Comercializadora Lácteos del Sur S.A.}{Camino Simulado 3000, Osorno}{SIM-REF-LACT-2026-0103}{Carolina Díaz Ficticia}{Jefa de Sistemas}{%
 Certificamos que \LFXempresa{} ejecutó para nuestra empresa el «Sistema Móvil de Preventa y Ruteo Desconectado», entre 2023 y 2024, finalizado y en operación. La aplicación móvil, con sincronización en diferido y políticas de crédito locales, es usada por 280 preventistas y procesa 18.000 transacciones diarias, con operación desconectada en zonas de cobertura intermitente. El monto del contrato se situó en el rango de CLP 500 a 1.000 millones. Confirmamos el cumplimiento de los plazos y de las condiciones contractuales.}
 \end{document}
