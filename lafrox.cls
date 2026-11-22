@@ -402,7 +402,7 @@
   subtitulo     = {Informe 2},
   alcance       = {Subdocumentos 1--9 y 13},
   formulario    = {Formulario T-22},
-  fecha         = {05 de octubre de 2026},
+  fecha         = {25 de noviembre de 2026},
   version       = {1.0},
   logo          = {},
   objeto        = {Proyecto de Plataforma Digital de Misión Crítica},
