@@ -1,0 +1,45 @@
+\documentclass[carta,final]{lafrox}
+\usepackage{simulacion}
+\input{datos-proponente}
+\usepackage{needspace}% keep headings with their content
+\let\SIMoldsection\section
+\renewcommand{\section}{\needspace{14\baselineskip}\SIMoldsection}
+\begin{document}
+\SIMemisor{Municipalidad de Valparaíso, Dirección de Rentas y Patentes (emisor simulado)}{Patente comercial municipal}{SIM-PAT-2026-S2-000001}
+
+\noindent Se acompaña fotocopia de la patente comercial al día (Art.~39°, numeral~1, de las Bases Administrativas), con su legalización notarial simulada.
+
+\section*{Datos de la patente}
+\begin{tablalafrox}{Patente municipal de la actividad comercial.}{tab:pat1}{L{5.4cm} Y}
+  {\cab{Dato} & \cab{Contenido}}
+  \textbf{Tipo de patente} & Comercial (oficinas de servicios profesionales y tecnología) \\
+  \textbf{Rol de patente} & SIM-4-000127 \\
+  \textbf{N.\textdegree{} de patente} & SIM-2026-00127 \\
+  \textbf{Período de pago} & Segundo semestre de 2026 (1 de julio al 31 de diciembre de 2026) \\
+  \textbf{Estado} & Pagada --- patente al día \\
+  \textbf{Fecha de pago} & 28 de julio de 2026 \\
+  \textbf{Razón social} & LafroX SpA \\
+  \textbf{RUT} & \LFXrut \\
+  \textbf{Representante legal} & \LFXrepresentante, RUN \SIMrunrepresentante \\
+  \textbf{Dirección del local} & Av. Brasil 2241, Valparaíso \\
+  \textbf{Giro autorizado} & \SIMgiro \\
+  \textbf{Superficie del local} & 640 m\textsuperscript{2} \\
+  \textbf{Capital suscrito y pagado} & \SIMcapital \\
+\end{tablalafrox}
+
+\section*{Liquidación del semestre}
+\begin{tablalafrox}{Monto de la patente.}{tab:pat2}{Y R{4cm}}
+  {\cab{Concepto} & \cab{Monto (CLP)}}
+  Patente semestral & 3.120.000 \\
+  Aseo domiciliario (derecho semestral) & 480.000 \\
+  \midrule
+  \textbf{Total pagado} & \textbf{3.600.000} \\
+\end{tablalafrox}
+
+\noindent La patente autoriza el ejercicio de la actividad señalada en el local individualizado, sujeta a las condiciones sanitarias y de funcionamiento que establezca la ley y el Decreto Ley N.\textdegree{} 3.063 sobre Rentas Municipales.
+
+\SIMnotario{Certifico que la presente fotocopia es copia fiel de su original, que he tenido a la vista, correspondiente a la patente comercial de LafroX SpA, RUT \LFXrut, del segundo semestre de 2026. \SIMfecha. Repertorio N.\textdegree{} SIM-2026-0413. Legalización simulada con fines académicos.}
+
+\vspace{6pt}
+\noindent\small Documento recreado con fines académicos. No reemplaza al certificado oficial que emite la Municipalidad de Valparaíso.
+\end{document}

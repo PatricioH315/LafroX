@@ -1,0 +1,51 @@
+\documentclass[carta,final]{lafrox}
+\usepackage{simulacion}
+\input{datos-proponente}
+\usepackage{needspace}% keep headings with their content
+\let\SIMoldsection\section
+\renewcommand{\section}{\needspace{14\baselineskip}\SIMoldsection}
+\begin{document}
+\SIMemisor{Servicio de Impuestos Internos (emisor simulado)}{Certificado de Inscripción en el Rol Único Tributario (e-RUT)}{SIM-RUT-2026-000001}
+
+\noindent Emitido electrónicamente el \SIMfechacorta{} para ser presentado por el contribuyente individualizado a continuación, en cumplimiento del Art.~39°, numeral~1, de las Bases Administrativas de la \LFXlicitacion.
+
+\section*{Identificación del contribuyente}
+\begin{tablalafrox}{Datos de inscripción en el Rol Único Tributario.}{tab:rut1}{L{5.4cm} Y}
+  {\cab{Dato} & \cab{Contenido}}
+  \textbf{Rol Único Tributario} & \LFXrut \\
+  \textbf{Razón social} & LafroX SpA \\
+  \textbf{Nombre de fantasía} & LafroX \\
+  \textbf{Tipo de contribuyente} & Persona jurídica --- sociedad por acciones \\
+  \textbf{Fecha de inicio de actividades} & 28 de marzo de 2012 \\
+  \textbf{Capital inicial (inicio de actividades)} & \SIMcapitalinicial \\
+  \textbf{Estado} & Con inicio de actividades vigente, sin término de giro \\
+  \textbf{Régimen tributario} & Régimen general de primera categoría (Art.~14 letra A LIR) --- dato ficticio \\
+  \textbf{Moneda de contabilidad} & Pesos chilenos \\
+\end{tablalafrox}
+
+\section*{Domicilio y contacto}
+\begin{tablalafrox}{Domicilios registrados.}{tab:rut2}{L{5.4cm} Y}
+  {\cab{Tipo} & \cab{Dirección}}
+  \textbf{Domicilio postal y casa matriz} & Av. Brasil 2241, comuna de Valparaíso, Región de Valparaíso \\
+  \textbf{Sucursal (sede central)} & Santiago, Región Metropolitana --- dirección ficticia \\
+  \textbf{Correo electrónico} & \LFXcorreo \\
+  \textbf{Teléfono} & \LFXtelefono \\
+\end{tablalafrox}
+
+\section*{Actividades económicas (giros)}
+\begin{tablalafrox}{Actividades económicas registradas.}{tab:rut3}{L{2.6cm} Y L{3cm} L{2.2cm}}
+  {\cab{Código} & \cab{Actividad} & \cab{Categoría tributaria} & \cab{Afecta a IVA}}
+  620100 & Actividades de programación informática & Primera categoría & Sí \\
+  620200 & Actividades de consultoría de informática y de gestión de instalaciones informáticas & Primera categoría & Sí \\
+  631100 & Procesamiento de datos, hospedaje y actividades conexas & Primera categoría & Sí \\
+\end{tablalafrox}
+
+\section*{Representantes legales}
+\begin{tablalafrox}{Representantes legales inscritos.}{tab:rut4}{Y L{3cm} L{4.2cm}}
+  {\cab{Nombre} & \cab{RUN} & \cab{Calidad}}
+  \SIMgerente & \SIMgerenterun & Gerente General y representante legal \\
+\end{tablalafrox}
+
+\vspace{6pt}
+\noindent\small Documento recreado con fines académicos. No reemplaza al certificado oficial que emite el Servicio de Impuestos Internos. No contiene códigos de verificación, timbres ni elementos de seguridad reales.
+\end{document}

@@ -1,0 +1,38 @@
+\documentclass[carta,final]{lafrox}
+\usepackage{simulacion}
+\input{datos-proponente}
+\usepackage{needspace}% keep headings with their content
+\let\SIMoldsection\section
+\renewcommand{\section}{\needspace{9\baselineskip}\SIMoldsection}
+\begin{document}
+\SIMtitulo{Individualización de socios}{Composición societaria y participación del Proponente}
+
+\noindent En cumplimiento del Art.~39°, numeral~1, de las Bases Administrativas de la \LFXlicitacion, \LFXempresa, RUT \LFXrut, individualiza a continuación a la totalidad de sus accionistas y su participación en el capital social. Los datos coinciden con el Formulario A-1, la escritura de constitución y sus modificaciones, y el certificado de vigencia.
+
+\section*{Accionistas}
+\begin{tablalafrox}{Accionistas de \LFXempresa{} (capital \SIMcapital, \SIMaccionestotal{} acciones).}{tab:soc1}{L{3.5cm} L{2.4cm} L{2.0cm} Y R{1.3cm} R{1.9cm}}
+  {\cab{Nombre} & \cab{RUN} & \cab{Nacionalidad} & \cab{Domicilio} & \cab{\%} & \cab{Acciones}}
+  \SIMsocioAnombre & \SIMsocioArun & chilena & \SIMsocioAdom & \SIMsocioApct & \SIMsocioAacc \\
+  \SIMsocioBnombre & \SIMsocioBrun & chilena & \SIMsocioBdom & \SIMsocioBpct & \SIMsocioBacc \\
+  \SIMsocioCnombre & \SIMsocioCrun & chilena & \SIMsocioCdom & \SIMsocioCpct & \SIMsocioCacc \\
+  \SIMsocioDnombre & \SIMsocioDrun & chilena & \SIMsocioDdom & \SIMsocioDpct & \SIMsocioDacc \\
+  \midrule
+  \textbf{Total} & & & & \textbf{100} & \textbf{\SIMaccionestotal} \\
+\end{tablalafrox}
+
+\noindent Todos los accionistas son personas naturales. Ningún accionista, directa o indirectamente, es dueño de acciones de otras sociedades participantes en esta licitación, y no existen pactos de accionistas ni usufructos o prendas inscritos sobre las acciones.
+
+\section*{Administración}
+\begin{tablalafrox}{Administración y representación.}{tab:soc2}{Y L{3.2cm} L{5cm}}
+  {\cab{Nombre} & \cab{RUN} & \cab{Cargo y facultades}}
+  \SIMgerente & \SIMgerenterun & Gerente General y representante legal; poder amplio para licitar, firmar ofertas, constituir garantías y contratar \\
+  \SIMpresidenta & \SIMpresidentarun & Presidenta del Directorio (no ejerce la representación legal) \\
+\end{tablalafrox}
+
+\section*{Declaración de participación individual}
+\noindent \LFXempresa{} declara que participa en la \LFXlicitacion{} de manera \textbf{individual}, es decir, \textbf{no como consorcio ni unión temporal}, y que no ha convenido con terceros la presentación conjunta de una oferta. Por consiguiente, no corresponde informar integrantes ni porcentajes de participación distintos de los de su propia composición societaria indicada arriba.
+
+\SIMfirma{\SIMfecha}
+
+\noindent\small\textit{Documento simulado con datos ficticios para un ejercicio académico.}
+\end{document}

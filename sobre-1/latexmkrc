@@ -1,0 +1,14 @@
+# latexmkrc for the Sobre N. 1 documents (LuaLaTeX required by lafrox.cls).
+# Makes lafrox.cls, lafrox-portada.tex, logo/ (repo root) and simulacion.sty,
+# datos-proponente.tex (sobre-1/) visible from every document folder.
+# Uses MiKTeX's --include-directory (TEXINPUTS is not reliable on Windows).
+use Cwd 'getcwd';
+use File::Basename 'dirname';
+my $sobre = getcwd();
+while (! -e "$sobre/simulacion.sty" && dirname($sobre) ne $sobre) { $sobre = dirname($sobre); }
+my $root = dirname($sobre);
+for ($sobre, $root) { s{^/([a-zA-Z])/}{$1:/}; }
+$pdf_mode = 4;
+$lualatex = "lualatex --interaction=nonstopmode --halt-on-error --synctex=1"
+          . " \"--include-directory=$sobre\" \"--include-directory=$root\" %O %S";
+$clean_ext = 'synctex.gz run.xml bbl bcf loc lol nav snm vrb';

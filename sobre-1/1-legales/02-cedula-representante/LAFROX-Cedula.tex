@@ -1,0 +1,52 @@
+\documentclass[carta,final]{lafrox}
+\usepackage{simulacion}
+\input{datos-proponente}
+% Local card helper: one labelled field of the mock ID card (labels 9 pt, values 11 pt).
+\newcommand{\campo}[2]{{\fontsize{9pt}{10pt}\selectfont\color{lafroxGris}\MakeUppercase{#1}}\\[1pt]{\fontsize{11pt}{12pt}\selectfont\intermedium #2}}
+\begin{document}
+\SIMtitulo{Fotocopia legalizada de cédula de identidad}{Representante legal --- Art. 39°, numeral 1}
+
+\noindent Se acompaña fotocopia de ambas caras de la cédula de identidad del representante legal de \LFXempresa, \LFXrepresentante, \LFXcargo, para su legalización ante notario. Las imágenes son una \emph{maqueta} sin elementos de seguridad reales.
+
+\subsection*{Anverso}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \draw[rounded corners=8pt, fill=lafroxFuerte!6, draw=lafroxGris, line width=0.8pt] (0,0) rectangle (15.4,9.6);
+  \node[anchor=west] at (0.5,9.0) {\intersemibold REPÚBLICA DE CHILE};
+  \node[anchor=east] at (14.9,9.0) {\intersemibold CÉDULA DE IDENTIDAD};
+  \node[anchor=west] at (0.5,8.4) {\fontsize{9pt}{10pt}\selectfont\color{lafroxGris} Maqueta académica --- no es un documento oficial};
+  \draw[dashed, draw=lafroxGris] (0.5,1.5) rectangle (4.3,7.6);
+  \node[align=center] at (2.4,4.55) {\color{lafroxGris} Fotografía\\[1pt]\fontsize{9pt}{10pt}\selectfont(no incluida)};
+  \node[anchor=north west, align=left, text width=5cm] at (4.8,7.8) {\campo{Apellidos}{ARAVENA}};
+  \node[anchor=north west, align=left, text width=5cm] at (10.2,7.8) {\campo{Nombres}{ALEX}};
+  \node[anchor=north west, align=left, text width=5cm] at (4.8,6.4) {\campo{Nacionalidad}{CHILENA}};
+  \node[anchor=north west, align=left, text width=4cm] at (10.2,6.4) {\campo{Sexo}{M}};
+  \node[anchor=north west, align=left, text width=5cm] at (4.8,5.0) {\campo{Fecha de nacimiento}{15 JUN 1988}};
+  \node[anchor=north west, align=left, text width=5cm] at (10.2,5.0) {\campo{N.\textdegree{} de documento}{\SIMrunrepresentante}};
+  \node[anchor=north west, align=left, text width=5cm] at (4.8,3.6) {\campo{Fecha de emisión}{02 FEB 2022}};
+  \node[anchor=north west, align=left, text width=5cm] at (10.2,3.6) {\campo{Fecha de vencimiento}{02 FEB 2032}};
+  \node[anchor=west] at (4.8,1.2) {\fontsize{9pt}{10pt}\selectfont\color{lafroxGris} Firma del titular:};
+  \draw (7.9,1.1) -- (14.9,1.1);
+  \node[anchor=west] at (8.3,1.55) {\itshape\large Alex Aravena};
+\end{tikzpicture}
+\end{center}
+
+\subsection*{Reverso}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \draw[rounded corners=8pt, fill=lafroxFuerte!6, draw=lafroxGris, line width=0.8pt] (0,0) rectangle (15.4,9.6);
+  \node[anchor=north west, align=left, text width=6.5cm] at (0.5,9.0) {\campo{Lugar de nacimiento}{VALPARAÍSO}};
+  \node[anchor=north west, align=left, text width=7cm] at (8,9.0) {\campo{Profesión}{INGENIERO CIVIL INFORMÁTICO}};
+  \node[anchor=north west, align=left, text width=6.5cm] at (0.5,7.4) {\campo{N.\textdegree{} de serie}{SIM-000000000}};
+  \node[anchor=north west, align=left, text width=6.5cm] at (8,7.4) {\campo{Estado civil}{SOLTERO}};
+  \draw[dashed, draw=lafroxGris] (0.5,1.5) rectangle (14.9,5.6);
+  \node[align=center, text width=13cm] at (7.7,3.55) {\color{lafroxGris} Zona de lectura mecánica no incluida.\\ Todos los datos de esta maqueta son ficticios.};
+  \node[anchor=west] at (0.5,0.8) {\fontsize{9pt}{10pt}\selectfont\color{lafroxGris} SIM-CEDULA-REPRESENTANTE --- sin chip, sin código de barras, sin sello};
+\end{tikzpicture}
+\end{center}
+
+\SIMnotario{Certifico que la presente fotocopia, que consta de dos caras, es copia fiel de su original, que he tenido a la vista, correspondiente a la cédula de identidad de \LFXrepresentante, RUN \SIMrunrepresentante. \SIMfecha. Repertorio N.\textdegree{} SIM-2026-0412. Legalización simulada con fines académicos.}
+
+\vspace{8pt}
+\noindent\small Documento recreado con fines académicos. No reemplaza a la cédula de identidad oficial ni a la copia legalizada que otorga un notario. Todos los datos son ficticios.
+\end{document}

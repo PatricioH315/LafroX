@@ -1,0 +1,48 @@
+\documentclass[carta,final]{lafrox}
+\usepackage{simulacion}
+\input{datos-proponente}
+\usepackage{needspace}% keep headings with their content
+\let\SIMoldsection\section
+\renewcommand{\section}{\needspace{9\baselineskip}\SIMoldsection}
+\begin{document}
+\SIMemisor{Conservador de Bienes Raíces de Valparaíso (emisor simulado)}{Certificado de vigencia de sociedad}{SIM-CBR-VIG-2026-000001}
+
+\noindent El Conservador de Bienes Raíces y Comercio de Valparaíso (emisor simulado), a petición del interesado, certifica lo siguiente respecto de la sociedad que se individualiza.
+
+\section*{Individualización de la sociedad}
+\begin{tablalafrox}{Datos de la sociedad.}{tab:vig1}{L{5.4cm} Y}
+  {\cab{Dato} & \cab{Contenido}}
+  \textbf{Razón social} & LafroX SpA \\
+  \textbf{Rol Único Tributario} & \LFXrut \\
+  \textbf{Tipo social} & Sociedad por acciones (SpA) \\
+  \textbf{Domicilio social} & Comuna de Valparaíso \\
+  \textbf{Capital} & \SIMcapital, dividido en \SIMaccionestotal{} acciones nominativas, de una misma serie y sin valor nominal \\
+  \textbf{Duración} & Indefinida \\
+  \textbf{Administración} & Gerente General y representante legal: \SIMgerente, RUN \SIMgerenterun \\
+\end{tablalafrox}
+
+\section*{Inscripción de constitución}
+\noindent La sociedad se encuentra inscrita en el Registro de Comercio de Valparaíso a fojas \SIMcbrfojas{} número \SIMcbrnumero{} del año \SIMcbranio. Su escritura de constitución fue otorgada el \SIMconstitucion{} en la Notaría Simulada N.\textdegree{} 0 de Valparaíso, y su extracto fue publicado conforme a la ley.
+
+\section*{Anotaciones marginales}
+\begin{tablalafrox}{Modificaciones inscritas al margen de la inscripción matriz.}{tab:vig2}{L{2.2cm} Y L{3.6cm}}
+  {\cab{Año} & \cab{Acto} & \cab{Inscripción}}
+  2018 & Aumento de capital a \SIMcapital{} y división de acciones 1:10 (100.000 a \SIMaccionestotal{} acciones) & Fojas 3.502 N.\textdegree{} 1.644 \\
+  2019 & Cambio de domicilio de operaciones a Av.~Brasil 2241, Valparaíso & Fojas 5.117 N.\textdegree{} 2.286 \\
+\end{tablalafrox}
+
+\section*{Certificación}
+\noindent Se certifica que la sociedad individualizada \textbf{se encuentra vigente} a esta fecha, que no registra anotaciones marginales de disolución, fusión, división ni transformación, y que no consta en este Registro la inscripción de embargos ni prohibiciones sobre sus acciones. El presente certificado tiene una antigüedad de emisión que no excede de treinta días, conforme al Art.~39°, numeral~1, de las Bases Administrativas.
+
+\vspace{6pt}
+\noindent Valparaíso, \SIMfechacorta.
+
+\vspace{28pt}
+\begin{center}
+  \rule{6.4cm}{0.5pt}\\[2pt]
+  Conservador de Bienes Raíces de Valparaíso (firma simulada)\\
+  {\small\textit{Sin firma electrónica avanzada, sin timbre y sin código de verificación reales}}
+\end{center}
+
+\noindent\small Documento recreado con fines académicos. No reemplaza al certificado oficial que emite el Conservador de Bienes Raíces de Valparaíso.
+\end{document}

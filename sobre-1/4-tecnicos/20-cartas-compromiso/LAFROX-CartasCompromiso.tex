@@ -1,0 +1,56 @@
+\documentclass[carta,final]{lafrox}
+\usepackage{simulacion}
+\input{datos-proponente}
+% Local macro: one commitment letter per page.
+%  #1 issuer (text only)  #2 ref key  #3 fictitious signatory and role
+%  #4 subject  #5 body
+\newcommand{\cartacomp}[5]{%
+  \SIMemisor{#1 (carta simulada)}{Carta de compromiso}{SIM-CC-#2}%
+  \noindent Valparaíso, 23 de noviembre de 2026\par\medskip
+  \noindent Señores\\\textbf{\LFXcliente}\\Presente\par\medskip
+  \noindent\textbf{Ref.:} \LFXlicitacion{} --- \LFXobjeto{}. #4\par\medskip
+  De mi consideración:\par\smallskip
+  #5\par
+  \vspace{22pt}
+  \begin{center}
+    \rule{6.4cm}{0.5pt}\\[2pt]
+    {\intermedium #3}\\
+    {\small #1 (carta simulada)}
+  \end{center}
+  {\footnotesize\color{lafroxGris}Carta recreada con fines académicos. Firmante, empresa y
+  referencias ficticios; no corresponde a un compromiso real del fabricante o proveedor
+  nombrado ni utiliza su papel membretado.\par}%
+  \clearpage}
+\begin{document}
+
+\cartacomp{Amazon Web Services --- relación de socio tecnológico}{AWS-2026-0141}%
+  {Camila Ejemplo Rojas, Gerente de Alianzas (ficticia)}%
+  {Compromiso del proveedor de nube (Artículo 34.1).}%
+  {Por la presente se deja constancia de que \LFXempresa, RUT~\LFXrut, mantiene la condición de socio tecnológico de nivel Advanced en el AWS Partner Network, con competencias en DevOps y Migración, vigente hasta marzo de 2027. Nos comprometemos a participar en el proyecto, en caso de adjudicación, mediante soporte empresarial, pruebas de concepto y revisiones arquitectónicas bajo el marco Well-Architected, durante toda la fase de implementación, y a confirmar formalmente la renovación de la membresía antes de su vencimiento.}
+
+\cartacomp{Zebra Technologies --- relación de socio de soluciones}{ZEBRA-2026-0142}%
+  {Tomás Muestra Bravo, Director de Canal (ficticio)}%
+  {Compromiso de suministro y soporte de terminales móviles.}%
+  {Declaramos que \LFXempresa{} es socio de soluciones de nivel Premier, vigente hasta junio de 2027. En caso de adjudicación nos comprometemos a suministrar terminales móviles industriales, lectores de códigos de barras e impresoras térmicas portátiles aptos para ambientes hostiles y cámaras de congelación hasta $-25\,^{\circ}\mathrm{C}$, con soporte de fábrica y mantenimiento durante la ejecución del Contrato, y a disponer de equipos de reemplazo en los plazos acordados.}
+
+\cartacomp{Fortinet / Cisco --- relación de socio Select}{FORTICISCO-2026-0143}%
+  {Paula Ficticia Núñez, Gerente de Alianzas Regionales (ficticia)}%
+  {Compromiso de conectividad de borde y seguridad de red.}%
+  {Certificamos que \LFXempresa{} es socio de nivel Select, vigente hasta septiembre de 2027. Nos comprometemos, en caso de adjudicación, a proveer equipamiento de conectividad de borde, switches industriales y firewalls SD-WAN para enlazar de forma segura los centros de distribución y las salas técnicas on-premise, junto con licenciamiento, soporte y reposición de equipos durante el Contrato.}
+
+\cartacomp{Starlink Business --- revendedor empresarial autorizado}{STARLINK-2026-0144}%
+  {Jorge Simulado Contreras, Ejecutivo Empresas (ficticio)}%
+  {Compromiso de enlace satelital de contingencia.}%
+  {Declaramos que \LFXempresa{} es revendedor empresarial autorizado bajo un convenio vigente hasta diciembre de 2027. En caso de adjudicación nos comprometemos a proveer e integrar terminales satelitales de baja órbita con prioridad de tráfico corporativo, como medio alternativo de comunicación ante caídas de enlace en centros de distribución, cross-dockings y almacenes remotos.}
+
+\cartacomp{Servicios de Campo Andino SpA}{CAMPOANDINO-2026-0145}%
+  {Ignacio Ejemplo Valdés, Gerente General (ficticio)}%
+  {Compromiso de subcontratista de instalación y soporte en terreno.}%
+  {Servicios de Campo Andino SpA, empresa ficticia de instalación y soporte técnico en terreno con cobertura en la Región de Valparaíso, se compromete a participar como subcontratista de \LFXempresa{} en la instalación de equipamiento, cableado estructurado y mantenimiento correctivo en las sedes del CLIENTE, con tiempos de respuesta de cuatro horas en horario hábil, cumpliendo las obligaciones laborales y previsionales respecto de su personal.}
+
+\cartacomp{Centro de Datos Pacífico S.A.}{CDPACIFICO-2026-0146}%
+  {Verónica Muestra Salinas, Gerente Comercial (ficticia)}%
+  {Compromiso de proveedor clave de infraestructura de respaldo.}%
+  {Centro de Datos Pacífico S.A., empresa ficticia de alojamiento de infraestructura (colocation), se compromete a proveer a \LFXempresa{} espacio, energía respaldada, climatización y conectividad redundante para los equipos de respaldo del proyecto, con una disponibilidad de infraestructura de al menos 99,95\,\%, desde el inicio del Contrato y durante la fase de operación.}
+
+\end{document}
