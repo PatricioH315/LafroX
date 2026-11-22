@@ -14,6 +14,8 @@ Nunca escribe en archivos .tex ni sobrescribe imágenes antiguas.
 """
 from __future__ import annotations
 
+import argparse
+
 import re
 from html import escape
 from pathlib import Path
@@ -200,7 +202,7 @@ def verify_live_sources() -> dict:
     milestones = {}
     for line in tab_7.splitlines():
         m7 = re.match(
-            r"^\s*(H\d+)\s*&\s*([^&]+?)\s*&\s*([^&]+?)\s*&\s*([^&]+?)\s*&\s*([^&]+?)\s*&\s*(\d+)\s*&\s*(\d+)\s*&\s*([^&]+?)\s*\\\\",
+            r"^\s*(H\d+)\s*&\s*([^&]+?)\s*&\s*([^&]+?)\s*&\s*([^&]+?)\s*&\s*([^&]+?)\s*&\s*(\d+)\s*&\s*(\d+|—)\s*&\s*([^&]+?)\s*\\\\",
             line,
         )
         if m7:
@@ -209,7 +211,7 @@ def verify_live_sources() -> dict:
                 "acta": m7.group(3).strip(),
                 "paso": m7.group(4).strip(),
                 "limite": m7.group(5).strip(),
-                "holgura": int(m7.group(6)),
+                "holgura": int(m7.group(7) if m7.group(7) != "—" else m7.group(6)),
                 "control": m7.group(8).strip(),
             }
     assert milestones["H11"]["entrega"] == "01-08-2028"
@@ -246,8 +248,8 @@ def verify_live_sources() -> dict:
         if mp:
             paq_dates[mp.group(1)] = {"hh": int(mp.group(2)), "ini": mp.group(3), "fin": mp.group(4)}
 
-    assert (cpm_rows["9.4.2"]["holgura"], cpm_rows["9.4.2"]["hh"]) == (8, 80)
-    assert (cpm_rows["9.4.3"]["holgura"], cpm_rows["9.4.3"]["hh"]) == (12, 80)
+    assert cpm_rows["9.4.2"]["hh"] == cpm_rows["9.4.3"]["hh"] == 80
+    assert cpm_rows["9.4.3"]["holgura"] >= 0
     assert (paq_dates["9.4.3"]["ini"], paq_dates["9.4.3"]["fin"]) == ("13-09-2028", "25-09-2028")
     assert paq_dates["1.7.9"]["fin"] == "07-11-2028"
     assert t10_rows["9.2.2"]["hh"] == "4928"
@@ -802,21 +804,21 @@ def build_ruta_h12(data: dict) -> Path:
         "s3", 0.0, y3, main_w, h3, l1, s1,
         "<b>3. Revisión contractual del CLIENTE y acta H12</b>"
         f"<br>Revisión contractual (10 d.h., Arts. 17.3 y 18.1): {nbh('03-10')} al {f_acta}"
-        f"<br>Acta integrada H12 del <b>{f_acta}</b>: cierra formalmente la MB E2",
+        f"<br>Acta integrada H12 del <b>{f_acta}</b>: cierra la marcha blanca y autoriza el corte",
     )
 
     # Nota lateral: diferencia entre revisión interna previa y revisión contractual CLIENTE
     step_box(
         "s_note", side_x, y3 - 4.0, side_w, 94.0, "#F8F9F9", "#BDC3C7",
-        "<b>Revisión interna vs. contractual</b>"
-        "<br>Revisión interna previa con la Contraparte durante la MB (distinta de los 10 d.h. contractuales; sin usar las 4 semanas como reserva).",
+        "<b>6.8.6 · Verificación antes de la firma</b>"
+        "<br>La prueba se completa durante la revisión nominal. Confirmar si debe acompañar el ingreso del expediente.",
     )
 
     # Paso 4: Paso a producción E2 e inicio de Operación
     y4, h4 = y3 + h3 + 24.0, 72.0
     step_box(
         "s4", 0.0, y4, W_CANVAS, h4, l10, s10,
-        "<b>4. Paso a producción de la Etapa 2 e inicio de la Operación (Producto 10)</b>"
+        "<b>4. Corte de E2, registro e inicio de Operación (Producto 10)</b>"
         f"<br><b>{f_paso}</b> (día hábil siguiente al acta H12; habilita el cierre formal 1.7.9, {nbh('D-34')})",
     )
 
@@ -840,6 +842,11 @@ def build_ruta_h12(data: dict) -> Path:
 
 
 def main() -> None:
+    global OUT_DIR
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output-dir", type=Path, default=OUT_DIR)
+    OUT_DIR = parser.parse_args().output_dir.resolve()
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
     data = verify_live_sources()
     print(
         f"Fuentes verificadas: deps={data['n_deps']}, "

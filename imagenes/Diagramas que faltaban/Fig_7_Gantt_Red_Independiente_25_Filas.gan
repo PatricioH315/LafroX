@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<project name="LafroX — Red independiente 2 — 25 filas" company="LafroX" webLink="" view-date="2028-02-01" view-index="0" gantt-divider-location="760" resource-divider-location="300" version="3.3.3316" locale="en">
-    <description>Vista editable. Solo se fusionan paquetes o hitos con igual inicio, duración, criticidad y exactamente las mismas relaciones entrantes y salientes, tipos y desfases. Las demás tareas permanecen separadas para conservar las dependencias visibles y las fechas originales. Criticidad conservada del archivo original.</description>
+<project name="Histórica · LafroX — Red independiente 2 — 25 filas" company="LafroX" webLink="" view-date="2028-02-01" view-index="0" gantt-divider-location="760" resource-divider-location="300" version="3.3.3316" locale="en">
+    <description>Vista histórica de la EDT por fases. Consultar las tres vistas activas del SD7 para la línea base vigente. Vista editable. Solo se fusionan paquetes o hitos con igual inicio, duración, criticidad y exactamente las mismas relaciones entrantes y salientes, tipos y desfases. Las demás tareas permanecen separadas para conservar las dependencias visibles y las fechas originales. Criticidad conservada del archivo original.</description>
     <view zooming-state="default:11" id="gantt-chart">
         <option id="filter.completedTasks" value="false" />
         <option id="filter.dueTodayTasks" value="false" />

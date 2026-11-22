@@ -110,7 +110,7 @@ La sección 7.1 descompone el 100 \% del alcance en una estructura de descomposi
 
 El capítulo se apoya en otros tres capítulos de la oferta: el Capítulo 3 (Subdocumento 3) fija el alcance de cada etapa y los criterios de olas y estabilización; el Capítulo 4 (Subdocumento 4) define los módulos M1 a M12 y las interfaces que la EDT construye; y el Capítulo 6 (Subdocumento 6) describe el método de desarrollo y los controles con que se programa el trabajo. El detalle va en tres formularios y un archivo de anexos: el Formulario T-14 contiene la EDT completa, su diccionario y la carta Gantt; el Formulario T-15, el método de estimación y programación, la ruta crítica y los frentes de trabajo; el Formulario T-18, la implantación y la puesta en marcha controlada, con una propuesta de calendario, dotación y decisiones en su sección 6; y los Anexos 7.A a 7.F, los listados de apoyo y la preparación de riesgos.
 
-En este capítulo, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas Transversales y las Bases Técnicas del caso. SD seguido de un número identifica el Subdocumento correspondiente. EDT significa estructura de descomposición del trabajo; PT, paquete de trabajo; HH, horas hombre; y E1/E2, Etapas 1 y 2. En las cartas Gantt, RC identifica los elementos marcados como ruta crítica en la fuente de programación y PT/H identifica los demás paquetes e hitos. H1–H12 son los hitos del Formulario E-25 y F1–F8, los frentes de trabajo. QA designa el ambiente de calidad; SRE, el equipo de operación e ingeniería de fiabilidad; NOC, el centro de operaciones; SOC, el centro de operaciones de seguridad; y DTE, los documentos tributarios electrónicos.
+En este capítulo, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas Transversales y las Bases Técnicas del caso. SD seguido de un número identifica el Subdocumento correspondiente. EDT significa estructura de descomposición del trabajo; PT, paquete de trabajo; HH, horas hombre; y E1/E2, Etapas 1 y 2. En las cartas Gantt, el rojo distingue las tareas de holgura cero y las puertas críticas. H1–H12 son los hitos del Formulario E-25 y F1–F8, los frentes de trabajo. QA designa el ambiente de calidad; SRE, el equipo de operación e ingeniería de fiabilidad; NOC, el centro de operaciones; SOC, el centro de operaciones de seguridad; y DTE, los documentos tributarios electrónicos.
 
 \section{EDT}
 
@@ -287,7 +287,7 @@ El cronograma aplica el artículo 17 de las Bases Administrativas (pp. 12--13) m
 
 La ruta crítica se calcula con el método de la ruta crítica sobre la red del Anexo 7.B (PMI, 2017, pp. 210–211). Una pasada hacia adelante da las fechas tempranas de cada paquete; una pasada hacia atrás, desde los meses fijos del artículo 17 de las Bases Administrativas (pp. 12--13), da las tardías; LS − ES es la holgura total; la libre se mide contra el ES de los sucesores. Como los hitos del Formulario E-25 son fechas fijas, un camino que no llega a su hito tiene holgura negativa y obliga a replanificar.
 
-El cálculo del T-15 usa 203.548,62 HH, 171 paquetes con entregable, las dependencias del Anexo 7.B y el plazo de revisión del CLIENTE. La Figura \ref{fig:7-ruta} representa la cadena que controla los hitos. H7 y H12 se cierran con una sola acta por etapa (T-15, sección 5.5): el expediente con las cuatro semanas finales de evidencia, y en H12 la garantía 9.4.3, se entrega el primer día hábil siguiente; la Contraparte lo revisa durante diez días hábiles y firma el acta que cierra la marcha blanca y acepta el hito (BA, arts. 17.3 y 18.1). El paso a producción ocurre el 17 de mayo y el 18 de octubre de 2028, dentro de los meses 16 y 21. El procedimiento se confirma con el CLIENTE en el acta de inicio 1.1.3.
+El cálculo del T-15 usa 203.548,62 HH, 171 paquetes con entregable, las dependencias del Anexo 7.B y el plazo de revisión del CLIENTE. La Figura \ref{fig:7-ruta} representa la cadena que controla los hitos. El escenario nominal prevé una sola acta por etapa para H7 y H12 (T-15, sección 5.5): el expediente con las cuatro semanas finales de evidencia, y en H12 la garantía 9.4.3, se entrega el primer día hábil siguiente; la Contraparte lo revisa durante diez días hábiles y firma el acta que cierra la marcha blanca y autoriza el corte (BA, arts. 17.3 y 18.1). El paso a producción ocurre el 17 de mayo y el 18 de octubre de 2028, dentro de los meses 16 y 21. El expediente incorpora la constancia de producción. La confirmación escrita del procedimiento se registra en el acta de inicio 1.1.3.
 
 \par\addvspace{\intextsep}
 \noindent\begin{minipage}{\linewidth}
@@ -298,17 +298,17 @@ El cálculo del T-15 usa 203.548,62 HH, 171 paquetes con entregable, las depende
 \end{minipage}
 \par\addvspace{\intextsep}
 
-La Figura \ref{fig:7-ruta} distingue la entrega técnica del acta posterior a la revisión. Las holguras contractuales menores son las de H1, H12 y H7, de cinco, ocho y diez días hábiles; H2, H10 y H8 disponen de catorce, catorce y dieciséis. Las fechas fijas de inicio de las marchas blancas, H6 y H11, no son reservas utilizables. Las holguras se calculan por duraciones y precedencias en el T-15, sección 5.
+La Figura \ref{fig:7-ruta} distingue entrega, firma y corte. Los márgenes después del corte de H7 y H12 son de diez y ocho días hábiles, respectivamente. H6 y H11 son inicios contractuales de marcha blanca. El T-15 registra por separado los márgenes hasta la firma y el corte.
 
 La holgura se gestiona en la reunión semanal y el Comité de Proyecto quincenal (paquetes 1.2.5 y 1.7.3). La holgura de H7 iguala el plazo de subsanación de diez días hábiles y la de H12 es menor. Los expedientes se revisan con la Contraparte Técnica durante las semanas finales de cada marcha blanca, antes de la entrega formal. Toda amenaza a esos hitos se escala al Comité Ejecutivo. Una holgura positiva tampoco autoriza consumir las cuatro semanas finales de marcha blanca. El informe mensual de valor ganado comunica toda desviación mayor al 10 \% y su plan dentro de cinco días hábiles (1.7.6).
 
-La Figura \ref{fig:7-gantt-critica} complementa la Figura \ref{fig:7-ruta}: muestra en la carta Gantt los paquetes de la ruta crítica y sus dependencias hasta los inicios de las marchas blancas, H6 y H11, cuyas fechas son fijas.
+La Figura \ref{fig:7-gantt-critica} complementa la Figura \ref{fig:7-ruta}: muestra en la carta Gantt las tareas de holgura cero y las puertas de cortes e inicios de las marchas blancas, H6 y H11, cuyas fechas son fijas.
 
-\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-vista-critica}{3}
-  {Vista crítica de la carta Gantt: paquetes de la ruta crítica y sus dependencias hasta H6 y H11. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-vista-critica}{7}
+  {Vista crítica de la carta Gantt: tareas de holgura cero y puertas críticas de las marchas blancas y los cortes. Fuente: elaboración gráfica a partir de la red del T-15 exportada para GanttProject y de (Formulario T-14).}
   {fig:7-gantt-critica}
 
-En cuanto a la construcción de la Etapa 1, el cálculo CPM del Formulario T-15 (sección 5) muestra que ningún paquete de construcción presenta holgura cero, por lo que su control recae en caminos casi críticos. Entre los módulos, la cadena más ajustada parte en 4.3.1 (7 días hábiles de holgura de paquete), que precede a 4.3.3 (3 días hábiles); esta habilita por interfaz y en comienzo a comienzo a 4.3.5 (3 días hábiles), y el tramo converge en la integración 6.1.1 (7 días hábiles). Los paquetes 2.6.3, 3.1.4, 3.2.1 a 3.2.6, 8.3.5, 8.4.4, 8.4.5, 8.7.1 y 8.7.2 tienen 1 día hábil de holgura respecto de su ventana propia. El inicio de 2.6.3 sigue al término de 2.6.2, y los seis paquetes de 3.2 siguen al término de 8.2.1. Para 3.1.4, el vínculo con 2.8.1 es de fin a comienzo y el vínculo con 3.2.1 es de comienzo a comienzo. El paquete 8.3.5 precede a 8.4.4 y 8.4.5. Los paquetes 8.7.1 y 8.7.2 parten cuando terminan 8.4.4, 8.4.5 y 8.4.6; este último tiene 7 días hábiles de holgura. El hito H3 tiene 18 días hábiles de holgura contractual y su paquete controlante, 3.1.1, tiene 7 días hábiles de holgura de paquete.
+En la Etapa 1, la Tabla \ref{tab:7-hitos} muestra los meses contractuales y el T-15 detalla las fechas y holguras por paquete. Para H3, los ambientes, la observabilidad y la autonomía aportan evidencia al cierre del 18 de junio de 2027. La entrega se programa el 22 de junio y la firma el 7 de julio. El rack R01 está montado antes de H3 y el traslado del ERP se programa para el domingo 11 de julio, con constancia el día hábil siguiente.
 
 \subsection{Carta Gantt y calendario}
 
@@ -324,40 +324,40 @@ Los meses contractuales caen en meses calendario distintos según la fecha de in
 
 Ningún inicio admisible deja las dos marchas blancas completas fuera de septiembre y diciembre; el Anexo 7.A extiende el análisis a los ocho meses de inicio admisibles. Con un inicio en diciembre de 2026, el inicio de la marcha blanca de la Etapa 1 cae en diciembre; con uno en marzo de 2027, el inicio de la marcha blanca de la Etapa 2 cae en septiembre. Con febrero de 2027, en cambio, el congelamiento afecta solo el segundo mes de la marcha blanca de la Etapa 2 y no un inicio, por lo que LafroX lo adopta como supuesto de calendario del cronograma. Su costo es que las semanas de cierre de esa marcha blanca coinciden con el peak de septiembre, que la sección 7.3.5 trata. Dentro de un mes de congelamiento no se inicia ninguna ola ni se despliega ningún cambio, y la marcha blanca continúa en convivencia, con medición diaria.
 
-La Figura \ref{fig:7-gantt-56} presenta la carta de los 56 meses con ese supuesto de inicio, basada en la programación en GanttProject: los períodos contractuales, las ventanas de marcha blanca, los pasos a producción del 17 de mayo y del 18 de octubre de 2028, el inicio de la Operación y los hitos H1 a H12.
+La Figura \ref{fig:7-gantt-56} presenta la carta de los 56 meses con ese supuesto de inicio, basada en la red del T-15 exportada para GanttProject: los períodos contractuales, las ventanas de marcha blanca, los pasos a producción del 17 de mayo y del 18 de octubre de 2028, el inicio de la Operación y los hitos H1 a H12.
 
-\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-56-meses}{6}
-  {Carta Gantt de los 56 meses por período contractual, con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Bases Administrativas, art. 17, pp. 12--13 y Formulario E-25) y (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-56-meses}{7}
+  {Carta Gantt de los 56 meses por período contractual, con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la red del T-15 exportada para GanttProject y de (Bases Administrativas, art. 17, pp. 12--13 y Formulario E-25) y (Formulario T-14).}
   {fig:7-gantt-56}
 
-Las Figuras \ref{fig:7-gantt} a \ref{fig:7-gantt-7} detallan, en siete partes, la implementación de las Etapas 1 y 2: 155 filas ordenadas por fecha de inicio, desde febrero de 2027 hasta la estabilización de la Etapa 2, con las dependencias entre paquetes visibles. Cada fila es un paquete con entregable, un grupo de paquetes que comparten fechas o un hito, separado en la entrega del expediente y el acta del CLIENTE; el prefijo RC marca la ruta crítica. Ambas cartas están también en el Formulario T-14, sección 3.
+Las Figuras \ref{fig:7-gantt} a \ref{fig:7-gantt-7} detallan, en siete partes, la implementación de las Etapas 1 y 2. Las vistas incluyen los 171 paquetes con entregable, las barras de fase y los eventos de entrega, revisión, firma y corte. Las filas se ordenan por fecha de inicio y sus ID permiten seguir las dependencias entre láminas. El rojo señala las tareas de holgura cero y las puertas críticas.
 
-\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-1}{5}
-  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 1 de 7 (filas 1 a 23 de 155), con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-1}{9}
+  {Detalle nivelado de las Etapas 1 y 2 con dependencias, tramo 1 de 7, con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la red del T-15 exportada para GanttProject y de (Formulario T-14).}
   {fig:7-gantt}
 
-\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-2}{5}
-  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 2 de 7 (filas 24 a 45 de 155), con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-2}{8}
+  {Detalle nivelado de las Etapas 1 y 2 con dependencias, tramo 2 de 7, con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la red del T-15 exportada para GanttProject y de (Formulario T-14).}
   {fig:7-gantt-2}
 
-\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-3}{7}
-  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 3 de 7 (filas 46 a 67 de 155), con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-3}{10}
+  {Detalle nivelado de las Etapas 1 y 2 con dependencias, tramo 3 de 7, con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la red del T-15 exportada para GanttProject y de (Formulario T-14).}
   {fig:7-gantt-3}
 
-\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-4}{6}
-  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 4 de 7 (filas 68 a 89 de 155), con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-4}{10}
+  {Detalle nivelado de las Etapas 1 y 2 con dependencias, tramo 4 de 7, con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la red del T-15 exportada para GanttProject y de (Formulario T-14).}
   {fig:7-gantt-4}
 
-\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-5}{5}
-  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 5 de 7 (filas 90 a 111 de 155), con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-5}{9}
+  {Detalle nivelado de las Etapas 1 y 2 con dependencias, tramo 5 de 7, con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la red del T-15 exportada para GanttProject y de (Formulario T-14).}
   {fig:7-gantt-5}
 
-\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-6}{5}
-  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 6 de 7 (filas 112 a 133 de 155), con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-6}{8}
+  {Detalle nivelado de las Etapas 1 y 2 con dependencias, tramo 6 de 7, con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la red del T-15 exportada para GanttProject y de (Formulario T-14).}
   {fig:7-gantt-6}
 
-\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-7}{5}
-  {Carta Gantt resumida de las Etapas 1 y 2 con dependencias visibles, parte 7 de 7 (filas 134 a 155 de 155), con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la programación en GanttProject y de (Formulario T-14).}
+\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Gantt-detalle-7}{8}
+  {Detalle nivelado de las Etapas 1 y 2 con dependencias, tramo 7 de 7, con inicio en febrero de 2027. Fuente: elaboración gráfica a partir de la red del T-15 exportada para GanttProject y de (Formulario T-14).}
   {fig:7-gantt-7}
 
 La carta muestra los periodos fijos del artículo 17 de las Bases Administrativas (pp. 12--13) mes a mes: el mes 16 es mayo de 2028 y el mes 21, octubre de 2028. La marcha blanca de la Etapa 1 (9.2.1) comienza con el H6 el 1 de febrero de 2028, y la de la Etapa 2 (9.2.2), con el H11 el 1 de agosto de 2028; como anticipa la Tabla \ref{tab:7-inicio}, esta última ocupa septiembre. El paso a producción se ejecuta el día hábil siguiente a la firma del acta, una vez completada la revisión del expediente conforme al T-15, sección 5.5: el 17 de mayo y el 18 de octubre de 2028. H7 y H12 integran la aceptación y el registro del paso a producción según el E-25. La estabilización de la Etapa 2 y sus cuatro semanas reforzadas comienzan con la producción; el archivo final 1.7.9 sigue a la firma de H12. La operación supervisada de la Etapa 2 con datos y usuarios reales durante la marcha blanca no sustituye el paso oficial a producción ni el acta H12.
@@ -415,7 +415,7 @@ La marcha blanca de la Etapa 1 son tres meses de operación supervisada con dato
 
 Los indicadores reproducen las condiciones del artículo 17.3 de las Bases Administrativas (p. 13) con umbrales que se pueden medir cada día, de modo que el cierre no depende de un juicio al final del período. El volumen comprometido es la operación real completa de cada proceso y no una muestra; con las cifras del caso (Caso, sección 14.1, p. 24), son cerca de 1.150 recepciones de proveedor y 260.000 líneas de preparación al mes, unos 31.000 pedidos al mes y alrededor de 1.400 entregas por día hábil, o 2.600 si las semanas de cierre coinciden con el peak de septiembre. El detalle por proceso está en el Formulario T-18, tabla de volúmenes reales de la sección 2.4.
 
-La sexta condición del artículo 17.3 de las Bases Administrativas (p. 13) es el acta de la Contraparte Técnica. En la Etapa 1 es el acta de cierre de la marcha blanca, que la Contraparte firma tras completar y revisar la evidencia del mes 15 y que habilita el paso a producción del mes 16 (paquete 9.2.1); el cumplimiento de H7 se registra cuando constan la firma y el paso efectivo a producción. Si una condición no se cumple al término del mes 15, la marcha blanca se extiende a costo de LafroX, sin mover las fechas siguientes (BA, art. 17.3, p. 13). La Figura \ref{fig:7-ciclo} resume el ciclo diario de control; las condiciones de cierre se enumeran debajo.
+La sexta condición del artículo 17.3 es el acta de cierre de la marcha blanca. En la Etapa 1, la Contraparte la firma después de revisar la evidencia consolidada del mes 15. El acta autoriza el corte del mes 16 y el expediente H7 incorpora después la constancia del paso efectivo a producción. Si una condición falta al término del mes 15, LafroX extiende la marcha blanca a su costo, sin mover las fechas siguientes (BA, art. 17.3). La Figura \ref{fig:7-ciclo} resume el ciclo diario de control.
 
 \clearpage
 \begin{figure}[htbp]
@@ -435,7 +435,7 @@ El cierre exige cumplir simultáneamente las seis condiciones del artículo 17.3
   \item Sin indisponibilidad en despacho; disponibilidad y respuesta dentro de umbral.
   \item Sin diferencias inexplicadas ni pedidos perdidos o duplicados.
   \item 100\,\% de usuarios capacitados y certificados.
-  \item Acta de cierre de la marcha blanca firmada por la Contraparte Técnica (9.2.1), previa a producción. La firma acepta H7. El registro del paso efectivo se incorpora al expediente después del corte (T-15, sección 5.5).
+  \item Acta de cierre de la marcha blanca firmada por la Contraparte Técnica (9.2.1), previa a producción. La firma autoriza el corte de H7. El registro del paso efectivo se incorpora al expediente después del corte (T-15, sección 5.5).
 \end{enumerate}
 
 Ninguna de estas condiciones compensa a otra.
@@ -460,7 +460,7 @@ A los indicadores de la Tabla \ref{tab:7-indicadores} se suman los propios del a
   \label{fig:7-convivencia}
 \end{figure}
 
-Se mantiene una sola fuente de verdad y un escritor autorizado por dato. La Etapa 2 no duplica datos ni modifica las funciones estabilizadas de la Etapa 1. Lee el registro único y lo extiende con sus propios datos, de modo que no existe una doble digitación que conciliar. El ERP se mantiene como registro contable y único emisor de la guía de despacho para ambas etapas. La firma del acta H12 acepta la implementación el 17 de octubre de 2028. El día hábil siguiente, 18 de octubre, la Etapa 2 pasa a producción y comienza la Operación con ambos alcances (BA, art. 17.2, punto 4, p. 13).
+Se mantiene una sola fuente de verdad y un escritor autorizado por dato. La Etapa 2 no duplica datos ni modifica las funciones estabilizadas de la Etapa 1. Lee el registro único y lo extiende con sus propios datos, de modo que no existe una doble digitación que conciliar. El ERP se mantiene como registro contable y único emisor de la guía de despacho para ambas etapas. El acta H12 autoriza el corte el 17 de octubre de 2028. El día hábil siguiente, 18 de octubre, la Etapa 2 pasa a producción y comienza la Operación con ambos alcances (BA, art. 17.2, punto 4). Desde el primer día del mes 21 hasta el corte, el Líder de Operación / SRE coordina al NOC, a la mesa y al SOC, que mantienen la atención y el registro de niveles de servicio durante la transición. El T-18 detalla su imputación.
 
 \subsection{Estabilización y transferencia}
 
