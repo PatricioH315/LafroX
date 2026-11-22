@@ -1,6 +1,6 @@
 {
   "proyecto": "LafroX",
-  "version": "0.3",
+  "version": "0.5",
   "estado": "borrador",
   "fecha": "2026-11-21",
   "pdfs": [
@@ -9,7 +9,7 @@
       "paginas": 20,
       "formato": "carta",
       "foliacion_correlativa": true,
-      "sha256": "7c732d1a99d460a85e4491aa708005be7c4a1df44eff2e3bb38a510d5ad81de8",
+      "sha256": "ab2936f75db0c90f6196ab031c438283dfaddb6adf8de207b05f860897ef0b79",
       "errores_compilacion": 0,
       "referencias_sin_resolver": 0,
       "desbordes_horizontales": 0,
@@ -17,10 +17,10 @@
     },
     {
       "archivo": "LAFROX-Subdocumento10-Anexos.pdf",
-      "paginas": 24,
+      "paginas": 30,
       "formato": "carta",
       "foliacion_correlativa": true,
-      "sha256": "6a51cc150d01324c91c6ea1746988999d171c8fc0a06b0269341535c3b8b6795",
+      "sha256": "287d79801b2c67b0bc4e7452472118c4349c5fc7e0eb1c6174dd2bde91751c44",
       "errores_compilacion": 0,
       "referencias_sin_resolver": 0,
       "desbordes_horizontales": 0,
@@ -28,8 +28,10 @@
     }
   ],
   "puntos_auditoria_trazados": 32,
+  "puntos_oferta_v04_trazados": 13,
+  "puntos_v05_trazados": 16,
   "cambios_mejora_v02_trazados": 12,
-  "dependencias_documentadas": 10,
+  "dependencias_documentadas": 11,
   "guias_desarrolladas": 9,
   "revision_humana_acreditada": false,
   "pruebas_reales_acreditadas": false

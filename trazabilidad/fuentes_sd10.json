@@ -1948,5 +1948,77 @@
         "sha256": "d8c9f7f20129ce1deb6a703508e17bec0cb3201bfad36850bbd67f178404ac97"
       }
     ]
+  },
+  "corte_oferta_tecnica_sd10_v04": {
+    "fecha": "2026-11-21",
+    "sd10_base": "7f8aaddad160b6236f121da199bf0d2f0639cba6",
+    "sd4_commit": "0dc50b3d19990513daeae37fdb3c9d7a9595d334",
+    "respaldos_puntuales": [
+      {
+        "commit": "315e89b5a32d6f6a195b5b8f04ec0bfb04bf1257",
+        "pdfs": [
+          {
+            "path": "LAFROX-Formulario-T-14.pdf",
+            "sha256": "cc2b7e3a904acb82ccf728e2405800ada4e00a668d2809e77abb3c611d04ba88"
+          },
+          {
+            "path": "LAFROX-Formulario-T-15.pdf",
+            "sha256": "756084d234eebf2d950500d80fcb1cd6189922e74c16c691b4edb216050b5dce"
+          },
+          {
+            "path": "LAFROX-Formulario-T-18.pdf",
+            "sha256": "05b2768ffb1b2dffd0465dd4133092af6052ca4c54a9567d85fa1e5e0edb91d1"
+          }
+        ]
+      },
+      {
+        "commit": "2b04aaa7eaa4a56a4166e4f7e8868c40561c35f1",
+        "pdfs": [
+          {
+            "path": "LAFROX_AnalisisFinanciero_2_20261113.pdf",
+            "sha256": "62889df3cdcbc675aa1435db462cbe670e91da2a5a4e752477dc80bf1412544c"
+          }
+        ]
+      },
+      {
+        "commit": "a33dea8e9caeb0dd11d5d6cd573a7fe3686a027b",
+        "pdfs": [
+          {
+            "path": "LAFROX-Formulario-T-8.pdf",
+            "sha256": "0fb8cdf0165f67f8842c18af10aa55b368723f518d6ef93b76d066d9d586f0b4"
+          }
+        ]
+      }
+    ]
+  },
+  "corte_coherencia_sd10_v05": {
+    "fecha": "2026-11-21",
+    "sd10_checkout_header": "7f8aaddad160b6236f121da199bf0d2f0639cba6",
+    "sd10_version_local_previa": "0.4",
+    "sd4_commit": "0dc50b3d19990513daeae37fdb3c9d7a9595d334",
+    "respaldos_puntuales": [
+      {
+        "commit": "f92a6a9949996496d84e245b0637bdf9497cd783",
+        "pdfs": [
+          {
+            "path": "LAFROX-Subdocumento11.pdf",
+            "sha256": "e5984c1803815c58074b028aa60b0046c31c6a27ef2f7265c2be37badc3157d3"
+          }
+        ]
+      },
+      {
+        "commit": "a33dea8e9caeb0dd11d5d6cd573a7fe3686a027b",
+        "pdfs": [
+          {
+            "path": "LAFROX-Subdocumento12.pdf",
+            "sha256": "5f2d5b5f2a53ac3236660991dc0d5eed67457dca8cff0386363f6f7f53aa3634"
+          },
+          {
+            "path": "LAFROX-Subdocumento12-Anexos.pdf",
+            "sha256": "3b6e4ee73bc023f62ad5dc73d5263844943dd75b84a1c4f679cef2912d3bfdbd"
+          }
+        ]
+      }
+    ]
   }
 }

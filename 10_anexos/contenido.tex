@@ -47,6 +47,32 @@ Para convertir cobertura a plazas se usa el calendario efectivo de T-15. Un mes 
 
 El modelo no verifica abandono ni resolución al primer contacto. Deben medirse con marcas de llegada, respuesta, abandono, escalamiento y cierre. T-15 exige al menos cuatro semanas de datos para calibrar paciencia, ajustar dotación y mantener el refuerzo cuando los indicadores fallen dos meses consecutivos. Los 22,14 días son el valor redondeado de la convención de demanda de SD4 y no sustituyen el calendario real usado para las HH.
 
+\subsection*{Demanda por perfil y capacidad de peak}
+El escenario base de 2.000 contactos conserva las 640 personas propias y las 160 externas del Anexo 4-W.7. La Tabla~\ref{tab:sd10-perfiles-demanda} añade poblaciones por cuenta, una vez excluidas las personas incluidas en la base, en particular los conductores de terceros. Se ensayan tasas mensuales de 1 por 100 cuentas de cliente para consultas de pedido y entrega, 1 por 4 cuentas de proveedor para incidencias de órdenes o recepción y 1 por 2 representantes adicionales de otras contrapartes para integraciones. El escenario supone una cuenta por empresa o representante, sin superposición. Es una sensibilidad antes de disponer de registros. Todos los contactos adicionales se imputan a la misma cola asistida por teléfono o registro autenticado; la autoatención resuelve consultas simples, pero su efecto se aplica sólo tras medir resolución sin traslado a N1.
+
+\Needspace{0.34\textheight}
+\begin{tablalafrox}{Contactos adicionales mensuales por perfil}{tab:sd10-perfiles-demanda}{Y H{0.20} H{0.23} H{0.18}}{\cab{Perfil} & \cab{Base} & \cab{Tasa por cuenta} & \cab{Contactos}}
+Clientes activos & 14.200 & 0,01 & 142 \\
+Proveedores & 180 & 0,25 & 45 \\
+Representantes adicionales & 20 & 0,50 & 10 \\
+\textbf{Total adicional} & & & \textbf{197} \\
+\end{tablalafrox}
+\fuentesdiez{Caso 02, caps. 2 y 14, RT-12.12 y RT-16.30; SD4, Anexo 4-W.7. Las tasas y los 20 representantes son supuestos de dimensionamiento por canal, cuya duplicación y validez se comprueban con contactos reales.}
+
+Con esos supuestos se obtienen 2.197 contactos y atención antes de veinte segundos de 85,93\,\% con siete agentes en hora cargada y 81,31\,\% con dos en valle. Al duplicar sólo los contactos adicionales se obtienen 2.394. El objetivo exige ocho en hora cargada y tres en valle, con 90,71\,\% y 95,24\,\%, respectivamente. El gerente contrasta el volumen efectivo por perfil, canal y franja antes de reservar la dotación.
+
+Durante septiembre y diciembre, se evalúa por separado el tramo nocturno de lunes a sábado (00:00--04:00 y 22:00--24:00 por fecha de servicio) y el domingo completo. Así se evita contar dos veces la madrugada del domingo. El escenario usa 25\,\% y 40\,\% de la llegada valle de 2.391 contactos, respectivamente, y diez minutos de atención media. Estas fracciones ensayan menor concurrencia fuera del horario ordinario y un domingo más cargado; no se suman a los 2.391 como pronóstico mensual. La Tabla~\ref{tab:sd10-peak-franjas} muestra qué puestos exige cada hipótesis. Para el relevo 20:00--22:00 se conserva la llegada valle completa.
+
+\Needspace{0.37\textheight}
+\begin{tablalafrox}{Respuesta por franja de peak en el escenario de sensibilidad}{tab:sd10-peak-franjas}{Y H{0.19} H{0.25} H{0.25}}{\cab{Franja} & \cab{Contactos/h} & \cab{Cobertura base y respuesta} & \cab{Propuesta y respuesta}}
+Nocturna lunes a sábado & 1,19 & 1 / 80,67\,\% & 1 / 80,67\,\% \\
+Domingo & 1,91 & 1 / 68,96\,\% & 2 / 95,89\,\% \\
+Relevo NOC lunes a sábado & 4,76 & 2 / 78,33\,\% & 3 / 95,26\,\% \\
+\end{tablalafrox}
+\fuentesdiez{Erlang C con los supuestos de esta sección y la cobertura declarada de SD4, Anexo 4-W.7, y T-15, secciones 4.1 y 5.7.}
+
+La alternativa de refuerzo agrega 24 horas-posición por domingo al bloque de 60 semanales y 12 horas-posición por semana al relevo NOC. Con el calendario de septiembre de 2029, la mesa pasa de 1.570 a 1.690 HH y su cota por carga sube de 13 a 14 plazas. NOC agrega 50 horas-posición a su relevo en ese mes. Si se mantienen dos puestos NOC, la demanda de la franja debe quedar como máximo alrededor de 4,55 contactos/hora para sostener el objetivo bajo el modelo. El cuadrante registra horario, titular, suplente, competencia y concurrencia con otros clientes. El gerente reserva un suplente cuando el especialista se desplaza a sitio, sin descontarlo de los puestos comprometidos de mesa, NOC o SOC. La alternativa de refuerzo requiere respaldo de cobertura y conciliación por perfil y mes en B-02, B-08 y B-10 (SD4, Anexo 4-W.7; T-8, p. 4; T-15, secciones 4.1 y 5.7).
+
 \section*{Anexo 10.B — Catálogo de indicadores}
 \addcontentsline{toc}{section}{Anexo 10.B — Catálogo de indicadores}
 \label{anx:sd10-indicadores}
@@ -102,8 +128,8 @@ La secuencia de SD4 para pérdida de región presupone imágenes, colas, datos y
 3 & Promoción de Aurora & Systems Manager Automation & 15--20 \\
 4 & Escalado de núcleo y tareas & Systems Manager Automation & $\leq30$ \\
 5 & Restitución de identidad, APIs e ingesta & Systems Manager Automation & $<15$ \\
-6 & Reconexión de túneles y colas & Systems Manager Automation & $<15$ \\
-7 & Validación funcional y de permisos & Operación & $<15$ \\
+6 & Reconexión de túneles y colas y reenvío de pendientes & Systems Manager Automation & $<15$ \\
+7 & Validación funcional, de permisos y de aplicación única & Operación & $<15$ \\
 8 & Cambio de tráfico regional & Systems Manager Automation & $<5$ \\
 \end{tablalafrox}
 \fuentesdiez{SD4, apartado 4.3.2.5 y listado de conmutación regional.}
@@ -139,37 +165,39 @@ Las guías desarrolladas a continuación identifican diagnóstico, responsable, 
 Cada condición identifica lo que se formaliza antes de habilitar el servicio en M21, quién lo hace y con qué evidencia. Se distingue el diseño comprometido, su formalización previa al servicio y la prueba de ejecución.
 
 \begin{description}[style=nextline,leftmargin=0pt,labelwidth=0pt,labelsep=0pt,font=\normalfont\intersemibold]
-\item[B-01. Instalaciones atendidas.]
-Las seis instalaciones de RT-21.16 son los centros de distribución de Talca y Concepción, las plataformas de cross-docking de Curicó, Chillán y Los Ángeles y la casa matriz de Talca, que sólo aloja oficinas y trabaja contra la nube (LafroX, 2026d, apartado 4.2.2). Antes de M21 se registran sus accesos, los tiempos de desplazamiento y la reserva de equipos de cada sitio.
+\item[B-01. Número de instalaciones.]
+El diseño de SD4 comprende cinco sitios logísticos y la casa matriz de Talca como sexta instalación, de oficinas y sin cómputo propio. La mesa cubre a sus usuarios y, ante intervención presencial, el gerente desplaza al especialista de guardia con suplente para los demás sitios. En M1 el CLIENTE confirma la ubicación, accesos, traslado y reserva aplicable. Si se confirma otro sitio operativo, se revisan los requisitos de la tipología Concepción según SD4 (BA, art. 5; Caso RT-21.16; SD4, 4.1.21 y 4.2.2.1).
 
 \item[B-02. Habilitación y guardias.]
-SD1, SD4 y T-15 fijan capacidades y plazas: 13 plazas de mesa, ocho operadores NOC y seis analistas SOC. Antes de M21 se publican el cuadrante nominal, los titulares y suplentes de cada turno, el portal de la mesa, el teléfono y el correo operativo, y se registran las competencias de cada persona (LafroX, 2026g, T-15, secciones 4.1 y 5.7).
+T-8 nomina a Guillermo Castillo como Líder de Operación / SRE, a Álvaro Catalán como Encargado de Seguridad y a Tomás Pérez como Líder de Desarrollo. Su experiencia, dedicaciones y períodos se conservan en T-8. Las 13 plazas de mesa, ocho del NOC y seis del SOC de T-15 son capacidad prevista. Para acreditar cobertura por tecnología y turno se necesita el registro de competencias, dedicación, titulares, suplentes y canales de atención. El responsable de operación comprueba disponibilidad y concurrencia en jornada normal y peaks (LafroX, 2026m, p. 4; 2026g, T-15, sección 5.7; BTT RT-21.01--RT-21.03).
 
 \item[B-03. Acuerdos operacionales y contratos de apoyo.]
-10.2 y 10.C fijan responsabilidades, coberturas, transferencia, alternativas, evidencia y límites externos, con los mínimos de hardware de BTT 8.4. Los contratos de apoyo con AWS, operadores de enlaces y fabricantes, el directorio de emergencia y los plazos internos por equipo se suscriben antes de habilitar el servicio, con coberturas compatibles con los objetivos de 10.2.
+El Anexo 10.C propone objetivos internos que caben en los máximos de BA 78.2. Operación verifica la cobertura de cada transferencia, el directorio y el respaldo de fabricante o contraparte, incluida atención presencial, reemplazo y continuidad del software de base. Se conserva la evidencia de alcance y vigencia antes de dar por formalizado cada acuerdo. La dotación, los contratos y los plazos aceptados requieren respaldo específico (Aclaraciones 10.2; BTT 8.4 y 21.3).
 
 \item[B-04. Retención de métricas y trazas.]
-La política técnica queda individualizada en 10.B: registros técnicos 12 meses en línea y 24 en archivo; métricas 13 meses; trazas 30 días en línea sin archivo adicional; seguridad y auditoría siete años protegidos. El respaldo es SD4, 4.1.3.7--4.1.3.8, y SD5, 5.2.7.
+La política técnica queda individualizada en 10.B. E2 presenta la observabilidad dentro de agregados AWS y valoriza en conjunto los tres ambientes de horario reducido. La conciliación por clase de retención y por recurso de cómputo se acredita en la Oferta Económica. Para retención se distingue línea y archivo por volumen y plazo; para cómputo se separan horas de referencia, horas programadas y cargos fijos (BTT RT-14.08 y RT-04.13; BA, art. 50.2).
 
 \item[B-05. Cambios de emergencia y congelamientos.]
 El mantenimiento previsto sigue las ventanas y el aviso de 10.1. Si una recuperación o remediación urgente coincide con un congelamiento, NOC o SOC avisa al CLIENTE el mismo día, registra impacto y contención y solicita una decisión escrita con alcance, ventana, validación y reversión. Sin autorización aplicable se conserva la contención posible y se programa en la primera ventana habilitada; con autorización se cumple su alcance y se registra la intervención.
 
 \item[B-06. Definiciones de medición.]
-BA 78.2 establece cobertura y máximos de atención. La regla de relojes fuera de cobertura para las clases media y baja, y la suspensión de relojes por terceros, se acuerdan con el CLIENTE en el Comité de Operación antes de M21, dentro de BA 78 y 79. Mientras tanto, el Anexo 10.B conserva el reloj corrido, los eventos y la franja observada.
+BA 78.2 establece cobertura y máximos de atención. El Anexo 10.B define las marcas y los datos del calendario necesarios para reproducir el resultado y conserva el reloj corrido. El gerente y la contraparte formalizan el calendario hábil por sitio y canal, la cobertura de media y baja y el método de reporte de BA 78 y 79.
 
 \item[B-07. ERP y guía crítica.]
-SD4 condiciona la emisión de guías nuevas a la disponibilidad del ERP del CLIENTE, que lo restituye ante pérdida de sala; la guía preemitida sostiene las cargas ya amparadas. La medición del recorrido crítico durante esa pérdida se acuerda con el CLIENTE dentro del artículo 78 y se prueba en la marcha blanca.
+SD4 condiciona una guía nueva a la recuperación del emisor del CLIENTE ante pérdida de sala. GU-08 conserva la ruta de cargas intactas amparadas. Para la carga modificada se debe acreditar, antes de cerrar la oferta, la alternativa de continuidad del emisor y su compatibilidad con el despacho sin indisponibilidad de 05:30 a 07:00. La validación incluye emisión, conciliación del folio y prueba de salida (BA 78--79 y Caso RT-10.05).
 
 \item[B-08. Cuadrante y calibración de la mesa.]
-La memoria de SD4 usa demanda supuesta y personas por posición, y T-15 la convierte en plazas con 128 HH efectivas. Con cuatro semanas de datos de la marcha blanca se recalibran la demanda de peak, el abandono y la resolución al primer contacto antes de M21. El cuadrante identifica quién cubre la franja nocturna y el domingo durante el peak.
+El Anexo 10.A distingue el escenario base, los contactos externos adicionales, el relevo NOC y el peak nocturno y dominical. T-15 aporta el calendario y 128 HH efectivas, y T-8 aporta las nominaciones clave. Con cuatro semanas de registros se calibra atención, llegadas y abandono por perfil, canal y hora; se actualizan los puestos y los turnos nominales antes de M21. El gerente verifica también primer contacto, relevo, formación y continuidad en los demás sitios ante desplazamiento.
 
-\item[B-09. Articulación con SD11 y SD12.]
-SD11 desarrolla los planes de mantención y de servicios de operación, y SD12 nomina al equipo. La habilitación verifica que perfiles, dedicaciones y turnos coincidan con las capacidades de T-14 y T-15.
+\item[B-09. Dependencias documentales SD11 y SD12.]
+El plan de SD11 desarrolla mantención, control del servicio, automatización y pruebas. SD12 y T-8 sustentan roles clave, dedicaciones y participación de terceros. El gerente concilia esos antecedentes con los paquetes T-14, la programación T-15 y el cuadrante de B-02 y B-08. El respaldo de cobertura y tiempos de terceros queda en B-03 (LafroX, 2026n, secciones 11.1--11.2; 2026o, secciones 12.1--12.3).
 
-\item[B-10. Capacidad de operación.]
-La capacidad de operación es la del T-15: 109.791,32 HH entre los meses 21 y 56. SD10 no agrega horas a esa capacidad ni incluye importes económicos.
+\item[B-10. Conciliación de capacidad técnica y económica.]
+T-15 confirma las horas del soporte puente por mes y T-14 identifica la bolsa evolutiva y la capacidad de deuda técnica por partida. La coincidencia de Mesa N1, NOC y SOC entre T-15 y E2 confirma el agregado dedicado. La programación mensual del gerente debe cuadrar con su fila de perfiles. Las cifras totales de Operación de T-14 y E2 usan alcances de presentación distintos. El responsable de oferta coteja las HH por perfil, paquete y mes y registra las exclusiones antes de dar por conciliada la capacidad. La comprobación económica queda en su sobre.
+\item[B-11. RPO con aislamiento y pérdida del sitio.]
+AL-DR-01 identifica la pérdida física posterior al aislamiento total como una brecha de RPO. El cierre requiere respaldar persistencia externa de los datos críticos en el plazo de RT-07.04, o una aclaración formal aplicable. La conmutación con un enlace activo y la autonomía local de 24 horas se verifican por separado.
 \end{description}
 
-La habilitación también verifica la resiliencia, el aislamiento combinado con pérdida de sitio, la conmutación, la restauración y la seguridad independiente mediante las actas de 10.C. Las actas registran quién ejecutó, quién revisó y qué recorridos se comprobaron.
+La habilitación comprueba el canal de atención con una llamada, un caso autenticado y una alerta correlacionada, además del acceso a conocimiento y autoformación. También verifica el alcance y el resultado de resiliencia, aislamiento combinado con pérdida de sitio, conmutación, restauración y seguridad independiente mediante las actas de 10.C. Las pruebas conservan quién ejecutó, quién revisó y qué recorridos se comprobaron. La trazabilidad separada registra fuentes, localizaciones y cambios, distinguiendo desarrollo documental de servicio ejecutado.
 
 \parte{partes/10_e_matriz}

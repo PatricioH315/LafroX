@@ -1,5 +1,41 @@
 # LafroX — Verificación del SD10
 
+## Versión 0.5 · 21 de noviembre de 2026
+
+La revisión conserva el SD4 `0dc50b3d` como corte técnico y coteja responsabilidades y mantención con T-8, T-14, T-15, T-18, SD11 `f92a6a99` y SD12 `a33dea8e`. Se registran 16 observaciones con fuente y estado en la trazabilidad.
+
+| Comprobación | Resultado |
+|---|---|
+| Inventario y citas | Cinco sitios logísticos con cómputo local y casa matriz de Talca en nube, sujeta a confirmación en M1. Despliegue y plantillas cotejados en pp. 113 y 64 del SD4. |
+| Escenario por perfil | Los 197 contactos adicionales de la sensibilidad se reproducen desde población y tasa. El escenario SD4 de 2.000 se conserva. Se verifica el porcentaje antes de 20 s con la dotación de cada escenario. |
+| Peak y relevo | El verificador recalcula las filas nocturna, dominical y NOC. Septiembre de 2029 tiene cinco domingos. La alternativa suma 1.690 HH de mesa, 14 plazas por carga y 50 HH adicionales de NOC. La planilla de turnos y los datos de demanda siguen por acreditar. |
+| Acuerdos internos | Las cuatro filas LaTeX se comparan con sus tramos calculados. Primera actuación y resolución quedan dentro de BA 78.2 en el diseño propuesto. |
+| Continuidad y métricas | GU-02/03/08 conserva el emisor ERP; 10.B separa escenarios RPO y añade mediciones analíticas, de aviso remoto y de latido. Se conservan ambos denominadores de disponibilidad para la conciliación. |
+| Conciliación | SD11 confirma bolsa, asignación por perfiles y control de tareas manuales. SD12 respalda titulares y procedencia de apoyos. El total de Operación frente a E2 y la fila del gerente conservan sus diferencias documentadas. |
+
+Se compilaron y renderizaron 50 páginas, 20 de cuerpo y 30 de anexos. Se revisaron visualmente índices, portadas, tablas, figuras y páginas modificadas. Ambos PDF pasaron la validación de formato, foliación, texto seleccionable, referencias, tabla de IA y exclusión de importes. El verificador numérico pasó y comprobó la correspondencia con tres tablas LaTeX.
+
+La entrega se mantiene como borrador revisado. Siguen abiertas la validación de sitio, dotación, apoyos, continuidad del emisor, RPO combinado, calendario y conciliación económica, además de la revisión humana, el A-6 y las firmas.
+
+
+## Versión 0.4 · 21 de noviembre de 2026
+
+Estado de entrega: borrador revisado para el Sobre 2. Se conserva la verificación histórica de 0.3. El registro de 0.4 incorpora trece hallazgos y cruces puntuales, con decisión, fuente y responsable del respaldo pendiente.
+
+| Verificación documental | Resultado |
+|---|---|
+| Reconexión escalonada | Dos dispositivos que vuelven en momentos distintos tienen relojes independientes de diez minutos. El centro de distribución usa su propio plazo de dos horas tras un corte de 24 horas. GU-01 exige conciliar stock y verificar aplicación única por UUID. |
+| Mantenimiento aprobado y exceso | En el ejemplo de 24 horas, dos caídas solapadas cubren 100 minutos y la ventana aprobada cubre 60. Computan 40 minutos de indisponibilidad. Ambos resultados se reproducen con 1.440 y 1.380 minutos de tiempo de referencia. |
+| Carga modificada con ERP caído | GU-08 retiene el despacho hasta tener guía aplicable. La ruta para una carga intacta con guía válida está descrita. B-07 conserva como requisito previo a oferta respaldar continuidad del emisor para cumplir la ventana protegida. |
+| Conmutación con pendientes | La tabla y el texto de 10.C sitúan el reenvío en el paso 6 y la verificación por UUID en el paso 7, antes de mover tráfico. El caso de aislamiento total seguido de pérdida física se registra en B-11. |
+| Peak y capacidad | Los cálculos mantienen 2.283 contactos con dos puestos en valle. Con 2.391, dos puestos consiguen 78,33 % y tres 95,26 %. El escenario condicionado permanece explícito y se exige cuadrante o perfil de demanda que lo sustente. |
+| Respaldo puntual | Se cotejaron T-8, T-14, T-15, T-18 y E2. Se verifican 9.336 HH de soporte puente y la coincidencia de 86.274,20 HH dedicadas. Se registran la diferencia total de 631,12 HH y las 12 HH del gerente para conciliación. |
+
+Compilaron el cuerpo de 20 páginas y los anexos de 26. Se renderizaron las 46 páginas y se inspeccionaron las secciones modificadas, las tablas, los índices y la declaración de IA. Pasaron 17 controles de cálculo, el verificador de entrega y la revisión de diferencias de Git. El verificador conserva huellas SHA-256, texto seleccionable, formato carta, foliación, enlaces de índice, referencias resueltas y comprobación de ausencia de cifras monetarias en ambos PDF. Los casos de la tabla son ejercicios documentales de aceptación.
+
+Antes de liberar el Sobre 2 se requieren los respaldos de ERP, RPO, cobertura de la sexta instalación, dotación por turno, acuerdos de apoyo y conciliación económica, según su alcance. La revisión humana, el A-6 y las firmas deben constar en los documentos de entrega. Las pruebas de habilitación se mantienen en la fase contractual correspondiente.
+
+
 ## Versión 0.3 · 21 de noviembre de 2026
 
 **Estado:** Borrador revisado. La revisión asistida comprende el contraste técnico con el SD4 `0dc50b3d19990513daeae37fdb3c9d7a9595d334`, sus anexos y T-11, más las bases y aclaraciones. Los 32 hallazgos y conformidades tienen un registro en `trazabilidad/SD10_fuentes_y_brechas.md`. El manifiesto identifica y conserva las huellas del corte.

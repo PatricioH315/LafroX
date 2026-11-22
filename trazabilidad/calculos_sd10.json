@@ -75,5 +75,121 @@
   "peak_desk_hours_september_2029": 1570,
   "critical_downtime_budget_30days_minutes": 43.2,
   "availability_four_hours_outage_30days_percent": 99.44444444444444,
-  "technical_debt_effort_percent": 2.098526550186299
+  "technical_debt_effort_percent": 2.098526550186299,
+  "approved_maintenance_example": {
+    "calendar_minutes": 1440,
+    "approved_minutes": 60,
+    "unavailable_minutes": 40,
+    "adjusted_denominator": 1380,
+    "availability_adjusted_percent": 97.10144927536231,
+    "availability_unadjusted_percent": 97.22222222222221
+  },
+  "additional_contacts_sensitivity": [
+    {
+      "contacts": 2197,
+      "agents_busy": 7,
+      "agents_valley": 2,
+      "sl_busy": 0.8593276999572526,
+      "sl_valley": 0.8130903651199013
+    },
+    {
+      "contacts": 2394,
+      "agents_busy": 8,
+      "agents_valley": 3,
+      "sl_busy": 0.9070726294860672,
+      "sl_valley": 0.9524246405232868
+    }
+  ],
+  "peak_shift_sensitivity": [
+    {
+      "shift": "Nocturna lunes a s\u00e1bado",
+      "valley_fraction": 0.25,
+      "arrivals_per_hour": 1.1909629981024668,
+      "base_agents": 1,
+      "proposed_agents": 1,
+      "base_service_level": 0.8067390864739273,
+      "proposed_service_level": 0.8067390864739273
+    },
+    {
+      "shift": "Domingo",
+      "valley_fraction": 0.4,
+      "arrivals_per_hour": 1.9055407969639468,
+      "base_agents": 1,
+      "proposed_agents": 2,
+      "base_service_level": 0.6895525433254406,
+      "proposed_service_level": 0.9588526385787572
+    },
+    {
+      "shift": "Relevo NOC lunes a s\u00e1bado",
+      "valley_fraction": 1.0,
+      "arrivals_per_hour": 4.763851992409867,
+      "base_agents": 2,
+      "proposed_agents": 3,
+      "base_service_level": 0.7832633000497842,
+      "proposed_service_level": 0.952577935474701
+    }
+  ],
+  "peak_desk_reinforced_september_2029": 1690,
+  "peak_desk_reinforced_places": 14,
+  "peak_noc_added_hours": 50,
+  "proposed_internal_response_budgets": [
+    {
+      "severity": "Cr\u00edtica",
+      "unit": "min",
+      "response": 10,
+      "stages": [
+        20,
+        10,
+        150,
+        30
+      ],
+      "resolution": 210,
+      "margin": 30
+    },
+    {
+      "severity": "Alta",
+      "unit": "min",
+      "response": 30,
+      "stages": [
+        45,
+        15,
+        300,
+        60
+      ],
+      "resolution": 420,
+      "margin": 60
+    },
+    {
+      "severity": "Media",
+      "unit": "h",
+      "response": 2,
+      "stages": [
+        1,
+        1,
+        16,
+        4
+      ],
+      "resolution": 22,
+      "margin": 2
+    },
+    {
+      "severity": "Baja",
+      "unit": "h",
+      "response": 4,
+      "stages": [
+        2,
+        2,
+        32,
+        8
+      ],
+      "resolution": 44,
+      "margin": 4
+    }
+  ],
+  "staffing_cross_check": {
+    "bridge_hours": 9336,
+    "dedicated_operation_hours": 86274.2,
+    "operation_calendar_vs_e2_difference_hours": 631.12,
+    "service_manager_difference_hours": 12
+  }
 }
