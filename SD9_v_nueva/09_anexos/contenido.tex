@@ -12,6 +12,7 @@ Estos anexos contienen el detalle que el cuerpo del Subdocumento 9 (SD9) resume.
 9.B & Puertas de calidad, reglas de bloqueo y herramientas por lenguaje & 9.1.5 y 9.2.1 \\
 9.C & Cálculo del costo de la calidad en horas-hombre & 9.1.6 y 9.3.1 \\
 9.D & Trazabilidad de los resultados del caso hasta su prueba y su hito & 9.2.5 \\
+9.E & Pruebas de construcción e integración & 9.3.2 \\
 \end{tablasimple}
 \fuentesd{Fuente: (Subdocumento 9, secciones 9.1 a 9.3).}
 
@@ -229,7 +230,7 @@ Implantación y coordinación (IMP) & 0 & 4 & Comunicación y coordinación con 
 
 Para nI fallas internas y nE externas de este alcance, el esfuerzo de referencia es 94,5 × nI + 110,5 × nE. Un evento de cada tipo representa 205 HH. El costo de calidad del escenario sería 12.058,66 + 205 = 12.263,66 HH únicamente si esas horas fueran adicionales y no estuvieran ya incluidas en los paquetes de la línea base. Las cantidades nI y nE se actualizan con los defectos observados desde las primeras campañas.
 
-Cada evento registra su requisito, severidad, etapa, causa, versión, HH previstas y reales por rol, pruebas repetidas y paquete de imputación. Se diferencia la repetición causada por el defecto de las pruebas planificadas que ya pertenecen a evaluación. El esfuerzo adicional de la línea base se calcula descontando las HH ya asignadas al mismo trabajo, incluida la capacidad protegida cuando corresponde a correcciones de E1 y la atención correctiva incluida en 10.2.1. El Líder de Calidad informa mensualmente costos internos y externos consumidos y el Jefe de Proyecto autoriza los recursos por control de cambios tras verificar capacidad, preservando la cobertura de servicio y el destino exclusivo de la reserva protegida a las correcciones de E1.
+Cada evento registra su requisito, severidad, etapa, causa, versión, HH previstas y reales por rol, pruebas repetidas y paquete de imputación. Se diferencia la repetición causada por el defecto de las pruebas planificadas que ya pertenecen a evaluación. El esfuerzo adicional de la línea base se calcula descontando las HH ya asignadas al mismo trabajo, incluida la capacidad protegida cuando corresponde a correcciones de E1 y la atención correctiva incluida en 10.2.1. El Líder de Calidad y Pruebas informa mensualmente costos internos y externos consumidos y el Jefe de Proyecto autoriza los recursos por control de cambios tras verificar capacidad, preservando la cobertura de servicio y el destino exclusivo de la reserva protegida a las correcciones de E1.
 
 \subsection*{9.C.3 Distribución del esfuerzo programado}
 \addcontentsline{toc}{subsection}{9.C.3 Distribución del esfuerzo programado}
@@ -277,7 +278,7 @@ R18-16 Operación sin el planificador & Generación automática de rutas (R18-07
 \section*{Anexo 9.E — Pruebas de construcción e integración}
 \addcontentsline{toc}{section}{Anexo 9.E — Pruebas de construcción e integración}
 
-Las pruebas se programan con la actividad que las habilita. Un despliegue a QA obliga a ejecutar las pruebas de integración aplicables; la promoción a Preproducción exige la regresión del sistema. El Líder de Calidad comprueba los resultados antes de la promoción. Los simuladores permiten revisar el contrato de interfaz. La integración se verifica con la versión real del otro módulo.
+Las pruebas se programan con la actividad que las habilita. Un despliegue a QA obliga a ejecutar las pruebas de integración aplicables; la promoción a Preproducción exige la regresión del sistema. El Líder de Calidad y Pruebas comprueba los resultados antes de la promoción. Los simuladores permiten revisar el contrato de interfaz. La integración se verifica con la versión real del otro módulo.
 
 \subsection*{9.E.1 Programación y registro de pruebas}
 \addcontentsline{toc}{subsection}{9.E.1 Programación y registro de pruebas}
@@ -292,7 +293,7 @@ Las pruebas se programan con la actividad que las habilita. Un despliegue a QA o
 \end{tablasimple}
 \fuentesd{Fuente: Bases Técnicas Transversales, numeral 20.1; Formularios T-13, T-14 y T-15; Subdocumento 7, Anexo 7.B.}
 
-Planificación toma del T-15 las fechas de las actividades de integración y certificación, en lugar de fijar un segundo calendario. El Líder de Calidad registra para cada sesión la actividad y el paquete, el ambiente, la versión, los casos, el resultado, los defectos y el enlace a la evidencia. Durante el congelamiento, esas pruebas se limitan al ambiente de QA.
+Planificación toma del T-15 las fechas de las actividades de integración y certificación, en lugar de fijar un segundo calendario. El Líder de Calidad y Pruebas registra para cada sesión la actividad y el paquete, el ambiente, la versión, los casos, el resultado, los defectos y el enlace a la evidencia. Durante el congelamiento, esas pruebas se limitan al ambiente de QA.
 
 \section*{Referencias}
 \addcontentsline{toc}{section}{Referencias}

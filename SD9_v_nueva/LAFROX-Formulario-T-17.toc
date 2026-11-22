@@ -12,7 +12,7 @@
 \contentsline {subsection}{3.2 Definición de terminado (RT-20.07)}{7}{table.8.4}%
 \contentsline {subsection}{3.3 Lista de verificación antes de la entrega}{8}{table.8.5}%
 \contentsline {section}{4. Protocolo por hito}{8}{table.8.6}%
-\contentsline {subsection}{4.1 Fechas de entrega}{8}{table.8.6}%
+\contentsline {subsection}{4.1 Fechas de entrega}{9}{table.8.6}%
 \contentsline {subsection}{4.2 Hitos de entregables (H1 a H5 y H8 a H10)}{9}{table.8.7}%
 \contentsline {subsection}{4.3 Hitos de operación supervisada (H6, H7, H11 y H12)}{11}{table.8.8}%
 \contentsline {section}{5. Aceptación de los resultados del caso (producto final)}{13}{table.8.10}%

@@ -10,7 +10,7 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-REF = sys.argv[1] if len(sys.argv) > 1 else "061ee980839451287ed5b485a478da3406f327a9"
+REF = sys.argv[1] if len(sys.argv) > 1 else "d496da939ffd2b4a6e88d6281a7e35dd08c19f01"
 
 
 def source(path):
@@ -57,7 +57,9 @@ for r in rows(t17):
     if len(r) == 5 and re.fullmatch(r"H\d+ \(\d+\)", r[0]):
         h = r[0].split()[0]
         m = milestones[h]
-        assert r[1:] == [m[1], m[2], m[4], m[5]], (h, r[1:], m[1:6])
+        # Columnas T-15: entrega, acta, paso a producción, límite, margen de firma, margen de corte.
+        margen = m[5] if m[6] == "—" else f"{m[5]} firma / {m[6]} corte"
+        assert r[1:] == [m[1], m[2], m[4], margen], (h, r[1:], m[1:7])
         acts += 1
 assert acts == 10, acts
 

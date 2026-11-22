@@ -1,6 +1,6 @@
 # Fdb version 4
-["lualatex"] 1794777116.26986 "LAFROX-Formulario-T-17.tex" "LAFROX-Formulario-T-17.pdf" "LAFROX-Formulario-T-17" 1794777137.64478 0
-  "C:/Users/henri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1791761150.69996 943208 89da4836ee0e92c381435be35a3241b0 ""
+["lualatex"] 1795390426.48729 "LAFROX-Formulario-T-17.tex" "LAFROX-Formulario-T-17.pdf" "LAFROX-Formulario-T-17" 1795390453.57113 0
+  "C:/Users/henri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1795382509.95538 943208 89da4836ee0e92c381435be35a3241b0 ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-bold.luc" 1789666459.45516 133158 3cabc9a0ec29d2e894f16f3e21ded02d ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-bolditalic.luc" 1789666460.03828 131896 3bea80aaf6b71ba227486b9064fa9b24 ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-italic.luc" 1789666459.80774 131980 fe7a86e7bfeed24fe51535e92c657c38 ""
@@ -258,17 +258,17 @@
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload-unicode.lua" 1740607740 7918 4272855a25780b80472f3b58edd95e33 ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload.lua" 1740607740 13566 16df94dd2de231b2bca0aaa0190941fe ""
   "C:/Users/henri/AppData/Roaming/MiKTeX/tex/generic/config/language.dat" 1786480571.72539 2269 983cd649586da7942508216422e6c810 ""
-  "LAFROX-Formulario-T-17.aux" 1794777133.70139 14145 0a1d7b1bfe29e3f438ee2d175eb5b093 "lualatex"
+  "LAFROX-Formulario-T-17.aux" 1795390449.18328 14145 6ff31bc9d520a62e576d7129620b81b0 "lualatex"
   "LAFROX-Formulario-T-17.tex" 1794723105.76678 810 de8bd2f4c2064e3eac832dc29290cb54 ""
-  "LAFROX-Formulario-T-17.toc" 1794777133.74566 1524 a1fc6b79de121a5a97f6fdcce1b8e7dc "lualatex"
-  "T17/contenido.tex" 1794776603.86091 31189 4d2001cd7404c5f9f0cde0f2076519a8 ""
+  "LAFROX-Formulario-T-17.toc" 1795390449.24273 1524 cd45f436d800894476ee98e86440c035 "lualatex"
+  "T17/contenido.tex" 1795390091.09149 31777 da81736df43ad8802f58323e2de49fe2 ""
   "c:/users/henri/appdata/local/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf" 1777831523 336848 e7d038378399e1c26443887c39d891d8 ""
-  "lafrox-portada.tex" 1794723105.82078 16566 f88ff70ce0f93a5b47003058b46c05e3 ""
-  "lafrox.cls" 1794723105.82278 43031 159b375b81415d0a8461b8ad358b87d9 ""
+  "lafrox-portada.tex" 1795382543.52601 16568 d5aea00d9b86b8b15866e1ad4217e1d6 ""
+  "lafrox.cls" 1795382543.52801 43033 53daaf7c0355d2857bc707e30ecf8a48 ""
   "logo/FIRMA_Alex_Aravena_transparente.png" 1794723105.82478 3752 c4e7165d55a0fa953adea93e245ea9c6 ""
   "logo/lafrox_isotipo_naranja.pdf" 1794723105.82578 3551 53a815340c8c86d6be9cfdb584630a55 ""
   "logo/lafrox_isotipo_negro.pdf" 1794723105.82778 3533 402261340b0015f729460532cd94959a ""
-  "sd9-comun.tex" 1794723105.85478 4643 2a82f3f014bee865e5c170a761248072 ""
+  "sd9-comun.tex" 1795382543.53 4645 1faf0e430d2703e31ffd89c42a699a08 ""
   (generated)
   "LAFROX-Formulario-T-17.aux"
   "LAFROX-Formulario-T-17.log"

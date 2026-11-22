@@ -245,7 +245,7 @@ def fig7():
         ("Origen", "Caso cap. 18, resultado 1: retiro sanitario en menos de 2 h"),
         ("Requisito", "RF-09.01 trazabilidad hacia adelante (T-12)"),
         ("Componente", "M9 Calidad y trazabilidad (SD4)"),
-        ("Paquete EDT", "3.4.4 Cadena de frío, retención de lotes y retiro sanitario (T-14)"),
+        ("Paquete EDT", "4.2.1 Cadena de frío, retención por SSCC y retiro sanitario (T-14)"),
         ("Caso de prueba", "Simulacro de retiro (T-13, sección 7.4)"),
         ("Cambio de código", "Solicitud de fusión con el ID del requisito"),
         ("Despliegue", "Digest de la imagen firmada"),
@@ -345,13 +345,13 @@ def fig9():
     y = fila(4, "Hitos H1 a H12")
     for m in (2, 4, 6, 10, 12, 13, 14, 16, 17, 18, 19, 21):
         d.box("", mx(m), y + 5, PX, 12, DIAM % C_PUNTO)
-    y = fila(5, "Recuperación (8.1.3)")
+    y = fila(5, "Recuperación (10.1.3)")
     for m in (21, 27, 33, 39, 45, 51, 54):
         d.box("", mx(m) - 2, y + 4, PX + 4, 14, DIAM % C_PUNTO)
-    y = fila(6, "Resiliencia (8.2.2)")
+    y = fila(6, "Resiliencia (10.2.2)")
     for m in (26, 32, 38, 44, 50, 55):
         d.box("", mx(m) - 2, y + 4, PX + 4, 14, DIAM % C_PUNTO)
-    y = fila(7, "Intrusión (8.2.2)")
+    y = fila(7, "Intrusión (10.2.2)")
     for m in (28, 40, 52):
         d.box("", mx(m) - 2, y + 4, PX + 4, 14, DIAM % C_PUNTO)
     y = fila(8, "Restauración mensual")
@@ -361,7 +361,7 @@ def fig9():
 
     y = fila(10, "Banco y mapeo de frío")
     d.box("", mx(3), y + 4, 2 * PX, 14, BAR % C_CERT)
-    y = fila(11, "Piloto de frío (4.1.4)")
+    y = fila(11, "Piloto de frío (2.7.3)")
     d.box("", mx(10), y + 4, 2 * PX, 14, BAR % C_CERT)
 
     leyenda(d, yA + alto + 10, [
@@ -382,21 +382,21 @@ def fig10():
         return X0 + (m - 1) * PX
 
     filas = [
-        ("1.2.4 · 1.5.1 Matriz y plan", [(2, 2)]),
+        ("2.1.3 · 1.4.1 Matriz y plan", [(2, 2)]),
         ("2.6.1–2.6.3 Usabilidad", [(2, 4)]),
-        ("2.4.3–2.4.4 Banco y mapeo frío", [(3, 4)]),
-        ("4.1.4 Piloto de frío", [(10, 11)]),
-        ("3.10.2 INN-02", [(2, 15)]),
-        ("1.5.2 Puertas automáticas", [(6, 20)]),
-        ("3.7.2–3.7.5 Migración y corte", [(9, 12)]),
-        ("3.8.1 Integración E1", [(9, 9)]),
-        ("3.8.2–3.8.8 Pruebas y acta E1", [(9, 11)]),
+        ("2.7.1–2.7.2 Banco y mapeo frío", [(3, 4)]),
+        ("2.7.3 Piloto de frío", [(10, 11)]),
+        ("7.2.1–7.2.4 INN-02", [(2, 15)]),
+        ("1.4.2 Puertas automáticas", [(6, 20)]),
+        ("5.4.2–5.4.5 Migración y corte", [(9, 12)]),
+        ("6.1.1 Integración E1", [(9, 9)]),
+        ("6.2.1–6.7.1 Pruebas y acta E1", [(9, 11)]),
         ("Campañas del equipo de calidad (13 personas)", [(9, 11), (16, 18)]),
-        ("4.1.2 Ensayo de reversión", [(11, 11)]),
-        ("4.2.1 Marcha blanca E1", [(13, 15)]),
-        ("3.9.1 Integración E2", [(16, 16)]),
-        ("3.9.2–3.9.7 Certificación E2", [(16, 17)]),
-        ("4.3.1 Marcha blanca E2", [(19, 20)]),
+        ("9.1.2 Ensayo de reversión", [(11, 11)]),
+        ("9.2.1 Marcha blanca E1", [(13, 15)]),
+        ("6.1.2 Integración E2", [(16, 16)]),
+        ("6.2.3–6.7.2 Certificación E2", [(16, 17)]),
+        ("9.2.2 Marcha blanca E2", [(19, 20)]),
     ]
     yA = 66
     n = len(filas) + 2                         # + restauracion + hitos
@@ -460,26 +460,26 @@ def fig10v():
             19: "E2 · marcha blanca", 20: "E2 · marcha blanca", 21: "Operación"}
     act = {
         1: "—",
-        2: "Matriz de trazabilidad (1.2.4) · plan de calidad y de pruebas (1.5.1) · investigación con usuarios (2.6.1) · inicio de INN-02 (3.10.2)",
-        3: "Prototipos y usabilidad (2.6.2) · banco de frío (2.4.3) · INN-02",
-        4: "Indicadores de usabilidad (2.6.3) · mapeo de frío (2.4.4) · INN-02",
+        2: "Matriz de trazabilidad (2.1.3) · plan de calidad y de pruebas (1.4.1) · investigación con usuarios (2.6.1) · inicio de INN-02 (7.2.1)",
+        3: "Prototipos y usabilidad (2.6.2) · banco de frío (2.7.1) · INN-02",
+        4: "Indicadores de usabilidad (2.6.3) · mapeo de frío (2.7.2) · INN-02",
         5: "INN-02",
-        6: "Puertas automáticas activas (1.5.2) · INN-02",
+        6: "Puertas automáticas activas (1.4.2) · INN-02",
         7: "Puertas automáticas · INN-02",
         8: "Puertas automáticas · INN-02",
-        9: "Integración y regresión E1 (3.8.1) · inicio de la certificación E1 (3.8.2–3.8.8) · ensayo de migración 1 (3.7.2) · equipo de calidad",
-        10: "Cierre de pruebas E1 · entrega del expediente H5 el 24 (3.8.7) · piloto de frío (4.1.4) · equipo de calidad",
-        11: "Cierre de 3.8.7 y preparación del acta H5 · piloto sin cambios productivos · reversión y migración en Preproducción",
-        12: "Acta de conciliación y corte (3.7.5)",
-        13: "Marcha blanca E1 con indicadores diarios (4.2.1) · restauración mensual",
+        9: "Integración y regresión E1 (6.1.1) · inicio de la certificación E1 (6.2.1–6.7.1) · ensayo de migración 1 (5.4.2) · equipo de calidad",
+        10: "Cierre de pruebas E1 · entrega del expediente H5 el 24 (6.7.1) · piloto de frío (2.7.3) · equipo de calidad",
+        11: "Cierre de 6.7.1 y preparación del acta H5 · piloto sin cambios productivos · reversión y migración en Preproducción",
+        12: "Acta de conciliación y corte (5.4.5)",
+        13: "Marcha blanca E1 con indicadores diarios (9.2.1) · restauración mensual",
         14: "Acta H8 del diseño entregado en febrero · marcha blanca E1 · restauración mensual",
-        15: "Marcha blanca E1 · restauración mensual · cierre de INN-02 (3.10.2.4)",
-        16: "Integración y regresión E2 (3.9.1) · certificación E2 (3.9.2–3.9.7) · restauración mensual · equipo de calidad",
-        17: "Acta de certificación E2 (3.9.6) · restauración mensual · equipo de calidad",
+        15: "Marcha blanca E1 · restauración mensual · cierre de INN-02 (7.2.4)",
+        16: "Integración y regresión E2 (6.1.2) · certificación E2 (6.2.3–6.7.2) · restauración mensual · equipo de calidad",
+        17: "Acta de certificación E2 (6.7.2) · restauración mensual · equipo de calidad",
         18: "Restauración mensual",
-        19: "Marcha blanca E2 en convivencia (4.3.1) · restauración mensual",
+        19: "Marcha blanca E2 en convivencia (9.2.2) · restauración mensual",
         20: "Marcha blanca E2 con el peak de septiembre · restauración mensual",
-        21: "Inicio de la Operación · primera recuperación con conmutación real (8.1.3) · restauración (8.1.6)",
+        21: "Inicio de la Operación · primera recuperación con conmutación real (10.1.3) · restauración (10.1.5)",
     }
     hito = {2: "H1", 4: "H2", 6: "H3", 10: "H4", 12: "H5", 13: "H6", 14: "H8", 16: "H7",
             17: "H9", 18: "H10", 19: "H11", 21: "H12"}

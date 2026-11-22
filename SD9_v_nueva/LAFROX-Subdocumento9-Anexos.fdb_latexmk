@@ -1,7 +1,7 @@
 # Fdb version 4
-["lualatex"] 1794776722.26701 "LAFROX-Subdocumento9-Anexos.tex" "LAFROX-Subdocumento9-Anexos.pdf" "LAFROX-Subdocumento9-Anexos" 1794776749.19255 0
-  "09_anexos/contenido.tex" 1794774576.28269 40808 3a3316330b5da8386bab46280404c174 ""
-  "C:/Users/henri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1791761150.69996 943208 89da4836ee0e92c381435be35a3241b0 ""
+["lualatex"] 1795390656.90746 "LAFROX-Subdocumento9-Anexos.tex" "LAFROX-Subdocumento9-Anexos.pdf" "LAFROX-Subdocumento9-Anexos" 1795390679.91775 0
+  "09_anexos/contenido.tex" 1795383509.01884 37689 ce6d40017c62787a3325b701aa8be214 ""
+  "C:/Users/henri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1795382509.95538 943208 89da4836ee0e92c381435be35a3241b0 ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-bold.luc" 1789666459.45516 133158 3cabc9a0ec29d2e894f16f3e21ded02d ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-bolditalic.luc" 1789666460.03828 131896 3bea80aaf6b71ba227486b9064fa9b24 ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-italic.luc" 1789666459.80774 131980 fe7a86e7bfeed24fe51535e92c657c38 ""
@@ -259,16 +259,16 @@
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload-unicode.lua" 1740607740 7918 4272855a25780b80472f3b58edd95e33 ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload.lua" 1740607740 13566 16df94dd2de231b2bca0aaa0190941fe ""
   "C:/Users/henri/AppData/Roaming/MiKTeX/tex/generic/config/language.dat" 1786480571.72539 2269 983cd649586da7942508216422e6c810 ""
-  "LAFROX-Subdocumento9-Anexos.aux" 1794776745.40328 17347 d358f42bd30609296076661b1ac075ce "lualatex"
-  "LAFROX-Subdocumento9-Anexos.tex" 1794723105.78279 819 9e2488d0b23e5f67d592c4c2c7c5720e ""
-  "LAFROX-Subdocumento9-Anexos.toc" 1794776745.4476 1658 485615ce4ddc08318ed6dd8cca49b36d "lualatex"
+  "LAFROX-Subdocumento9-Anexos.aux" 1795390676.65601 16958 4841b943bbf2cfbb83bf24800176d878 "lualatex"
+  "LAFROX-Subdocumento9-Anexos.tex" 1795383450.50168 819 40f121fc1eb0207a7feb2edbe8fe11e2 ""
+  "LAFROX-Subdocumento9-Anexos.toc" 1795390676.71942 1653 52e674a8e19a5cffc45301e537a826e0 "lualatex"
   "c:/users/henri/appdata/local/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf" 1777831523 336848 e7d038378399e1c26443887c39d891d8 ""
-  "lafrox-portada.tex" 1794723105.82078 16566 f88ff70ce0f93a5b47003058b46c05e3 ""
-  "lafrox.cls" 1794723105.82278 43031 159b375b81415d0a8461b8ad358b87d9 ""
+  "lafrox-portada.tex" 1795382543.52601 16568 d5aea00d9b86b8b15866e1ad4217e1d6 ""
+  "lafrox.cls" 1795382543.52801 43033 53daaf7c0355d2857bc707e30ecf8a48 ""
   "logo/FIRMA_Alex_Aravena_transparente.png" 1794723105.82478 3752 c4e7165d55a0fa953adea93e245ea9c6 ""
   "logo/lafrox_isotipo_naranja.pdf" 1794723105.82578 3551 53a815340c8c86d6be9cfdb584630a55 ""
   "logo/lafrox_isotipo_negro.pdf" 1794723105.82778 3533 402261340b0015f729460532cd94959a ""
-  "sd9-comun.tex" 1794723105.85478 4643 2a82f3f014bee865e5c170a761248072 ""
+  "sd9-comun.tex" 1795382543.53 4645 1faf0e430d2703e31ffd89c42a699a08 ""
   (generated)
   "LAFROX-Subdocumento9-Anexos.aux"
   "LAFROX-Subdocumento9-Anexos.log"
