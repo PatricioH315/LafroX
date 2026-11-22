@@ -456,9 +456,6 @@ def main():
                 path.unlink()
         copyfile(root / 'GANTT_VECTOR.json', ROOT/'revision/local-20261105/GANTT_VECTOR.json')
         integrate(manifest)
-        from gantt_resumen_sd7 import generate_summary
-
-        generate_summary()
     print(json.dumps(log['laminas'], ensure_ascii=False))
 
 

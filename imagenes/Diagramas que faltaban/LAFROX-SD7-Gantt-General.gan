@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project name="SD7 · Carta Gantt general · 56 meses" company="LafroX" webLink="" view-date="2027-02-01" view-index="0" gantt-divider-location="350" resource-divider-location="300" version="3.3.3316" locale="es">
+  <description>Vista general del SD7. Escenario nominal desde febrero de 2027. Etapa 1: desarrollo meses 1–12 y marcha blanca 13–15. Etapa 2: desarrollo meses 13–18 y marcha blanca 19–20. Operación desde el paso a producción de la Etapa 2, mes 21. Detalle de actividades y dependencias: Formulario T-14, sección 3.</description>
+  <view zooming-state="default:11" id="gantt-chart">
+    <option id="filter.completedTasks" value="false" />
+    <option id="filter.dueTodayTasks" value="false" />
+    <option id="filter.overdueTasks" value="false" />
+    <option id="filter.inProgressTodayTasks" value="false" />
+    <field id="tpd3" name="Actividad / hito" width="230" order="0" />
+    <field id="tpd4" name="Inicio" width="84" order="1" />
+    <field id="tpd5" name="Fin" width="84" order="2" />
+  </view>
+  <view id="resource-table">
+    <field id="0" name="Nombre" width="210" order="0" />
+    <field id="1" name="Función" width="86" order="1" />
+  </view>
+  <calendars>
+    <day-types>
+      <day-type id="0" />
+      <day-type id="1" />
+      <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1" />
+      <only-show-weekends value="false" />
+      <overriden-day-types />
+      <days />
+    </day-types>
+    <date year="2027" month="1" date="1" type="HOLIDAY" />
+    <date year="2027" month="3" date="26" type="HOLIDAY" />
+    <date year="2027" month="3" date="27" type="HOLIDAY" />
+    <date year="2027" month="5" date="1" type="HOLIDAY" />
+    <date year="2027" month="5" date="21" type="HOLIDAY" />
+    <date year="2027" month="6" date="21" type="HOLIDAY" />
+    <date year="2027" month="6" date="28" type="HOLIDAY" />
+    <date year="2027" month="7" date="16" type="HOLIDAY" />
+    <date year="2027" month="8" date="15" type="HOLIDAY" />
+    <date year="2027" month="9" date="17" type="HOLIDAY" />
+    <date year="2027" month="9" date="18" type="HOLIDAY" />
+    <date year="2027" month="9" date="19" type="HOLIDAY" />
+    <date year="2027" month="10" date="11" type="HOLIDAY" />
+    <date year="2027" month="10" date="31" type="HOLIDAY" />
+    <date year="2027" month="11" date="1" type="HOLIDAY" />
+    <date year="2027" month="12" date="8" type="HOLIDAY" />
+    <date year="2027" month="12" date="25" type="HOLIDAY" />
+    <date year="2028" month="1" date="1" type="HOLIDAY" />
+    <date year="2028" month="4" date="14" type="HOLIDAY" />
+    <date year="2028" month="4" date="15" type="HOLIDAY" />
+    <date year="2028" month="5" date="1" type="HOLIDAY" />
+    <date year="2028" month="5" date="21" type="HOLIDAY" />
+    <date year="2028" month="6" date="20" type="HOLIDAY" />
+    <date year="2028" month="6" date="26" type="HOLIDAY" />
+    <date year="2028" month="7" date="16" type="HOLIDAY" />
+    <date year="2028" month="8" date="15" type="HOLIDAY" />
+    <date year="2028" month="9" date="18" type="HOLIDAY" />
+    <date year="2028" month="9" date="19" type="HOLIDAY" />
+    <date year="2028" month="10" date="9" type="HOLIDAY" />
+    <date year="2028" month="10" date="27" type="HOLIDAY" />
+    <date year="2028" month="11" date="1" type="HOLIDAY" />
+    <date year="2028" month="12" date="8" type="HOLIDAY" />
+    <date year="2028" month="12" date="25" type="HOLIDAY" />
+    <date year="2029" month="1" date="1" type="HOLIDAY" />
+    <date year="2029" month="3" date="30" type="HOLIDAY" />
+    <date year="2029" month="3" date="31" type="HOLIDAY" />
+    <date year="2029" month="5" date="1" type="HOLIDAY" />
+    <date year="2029" month="5" date="21" type="HOLIDAY" />
+    <date year="2029" month="6" date="20" type="HOLIDAY" />
+    <date year="2029" month="7" date="2" type="HOLIDAY" />
+    <date year="2029" month="7" date="16" type="HOLIDAY" />
+    <date year="2029" month="8" date="15" type="HOLIDAY" />
+    <date year="2029" month="9" date="17" type="HOLIDAY" />
+    <date year="2029" month="9" date="18" type="HOLIDAY" />
+    <date year="2029" month="9" date="19" type="HOLIDAY" />
+    <date year="2029" month="10" date="15" type="HOLIDAY" />
+    <date year="2029" month="11" date="1" type="HOLIDAY" />
+    <date year="2029" month="11" date="2" type="HOLIDAY" />
+    <date year="2029" month="12" date="8" type="HOLIDAY" />
+    <date year="2029" month="12" date="25" type="HOLIDAY" />
+    <date year="2030" month="1" date="1" type="HOLIDAY" />
+    <date year="2030" month="4" date="19" type="HOLIDAY" />
+    <date year="2030" month="4" date="20" type="HOLIDAY" />
+    <date year="2030" month="5" date="1" type="HOLIDAY" />
+    <date year="2030" month="5" date="21" type="HOLIDAY" />
+    <date year="2030" month="6" date="21" type="HOLIDAY" />
+    <date year="2030" month="6" date="29" type="HOLIDAY" />
+    <date year="2030" month="7" date="16" type="HOLIDAY" />
+    <date year="2030" month="8" date="15" type="HOLIDAY" />
+    <date year="2030" month="9" date="18" type="HOLIDAY" />
+    <date year="2030" month="9" date="19" type="HOLIDAY" />
+    <date year="2030" month="9" date="20" type="HOLIDAY" />
+    <date year="2030" month="10" date="12" type="HOLIDAY" />
+    <date year="2030" month="10" date="31" type="HOLIDAY" />
+    <date year="2030" month="11" date="1" type="HOLIDAY" />
+    <date year="2030" month="12" date="8" type="HOLIDAY" />
+    <date year="2030" month="12" date="25" type="HOLIDAY" />
+    <date year="2031" month="1" date="1" type="HOLIDAY" />
+    <date year="2031" month="4" date="11" type="HOLIDAY" />
+    <date year="2031" month="4" date="12" type="HOLIDAY" />
+    <date year="2031" month="5" date="1" type="HOLIDAY" />
+    <date year="2031" month="5" date="21" type="HOLIDAY" />
+    <date year="2031" month="6" date="21" type="HOLIDAY" />
+    <date year="2031" month="6" date="29" type="HOLIDAY" />
+    <date year="2031" month="7" date="16" type="HOLIDAY" />
+    <date year="2031" month="8" date="15" type="HOLIDAY" />
+    <date year="2031" month="9" date="18" type="HOLIDAY" />
+    <date year="2031" month="9" date="19" type="HOLIDAY" />
+    <date year="2031" month="10" date="12" type="HOLIDAY" />
+    <date year="2031" month="10" date="31" type="HOLIDAY" />
+    <date year="2031" month="11" date="1" type="HOLIDAY" />
+    <date year="2031" month="12" date="8" type="HOLIDAY" />
+    <date year="2031" month="12" date="25" type="HOLIDAY" />
+    <date year="2032" month="1" date="1" type="HOLIDAY" />
+    <date year="2032" month="3" date="26" type="HOLIDAY" />
+    <date year="2032" month="3" date="27" type="HOLIDAY" />
+    <date year="2032" month="5" date="1" type="HOLIDAY" />
+    <date year="2032" month="5" date="21" type="HOLIDAY" />
+    <date year="2032" month="6" date="20" type="HOLIDAY" />
+    <date year="2032" month="6" date="28" type="HOLIDAY" />
+    <date year="2032" month="7" date="16" type="HOLIDAY" />
+    <date year="2032" month="8" date="15" type="HOLIDAY" />
+    <date year="2032" month="9" date="17" type="HOLIDAY" />
+    <date year="2032" month="9" date="18" type="HOLIDAY" />
+    <date year="2032" month="9" date="19" type="HOLIDAY" />
+    <date year="2032" month="10" date="11" type="HOLIDAY" />
+    <date year="2032" month="10" date="31" type="HOLIDAY" />
+    <date year="2032" month="11" date="1" type="HOLIDAY" />
+    <date year="2032" month="12" date="8" type="HOLIDAY" />
+    <date year="2032" month="12" date="25" type="HOLIDAY" />
+    <date year="2027" month="7" date="11" type="WORKING_DAY" />
+    <date year="2028" month="4" date="1" type="WORKING_DAY" />
+    <date year="2028" month="4" date="30" type="WORKING_DAY" />
+    <date year="2028" month="9" date="30" type="WORKING_DAY" />
+    <date year="2028" month="10" date="1" type="WORKING_DAY" />
+  </calendars>
+  <tasks empty-milestones="true">
+    <taskproperties>
+      <taskproperty id="tpd0" name="type" type="default" valuetype="icon" />
+      <taskproperty id="tpd1" name="priority" type="default" valuetype="icon" />
+      <taskproperty id="tpd2" name="info" type="default" valuetype="icon" />
+      <taskproperty id="tpd3" name="name" type="default" valuetype="text" />
+      <taskproperty id="tpd4" name="begindate" type="default" valuetype="date" />
+      <taskproperty id="tpd5" name="enddate" type="default" valuetype="date" />
+      <taskproperty id="tpd6" name="duration" type="default" valuetype="int" />
+      <taskproperty id="tpd7" name="completion" type="default" valuetype="int" />
+      <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text" />
+      <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text" />
+      <taskproperty id="tpc0" name="Holgura (días hábiles)" type="custom" valuetype="int" />
+      <taskproperty id="tpc1" name="Crítica" type="custom" valuetype="text" defaultvalue="" />
+      <taskproperty id="tpc2" name="Días hábiles T-15" type="custom" valuetype="int" />
+    </taskproperties>
+    <task id="14" name="E1 · Desarrollo" color="#315f8c" meeting="false" start="2027-02-01" duration="253" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="252" />
+    </task>
+    <task id="38" name="H1 · Alcance aprobado" color="#223344" meeting="true" start="2027-03-23" duration="0" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="0" />
+    </task>
+    <task id="71" name="H2 · Arquitectura aprobada" color="#223344" meeting="true" start="2027-05-10" duration="0" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="0" />
+    </task>
+    <task id="120" name="H3 · Infraestructura y ambientes" color="#223344" meeting="true" start="2027-07-07" duration="0" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="0" />
+    </task>
+    <task id="199" name="H4 · Software para QA" color="#223344" meeting="true" start="2027-11-04" duration="0" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="0" />
+    </task>
+    <task id="213" name="H5 · Certificación E1" color="#223344" meeting="true" start="2028-01-03" duration="0" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="0" />
+      <depend id="219" type="2" difference="21" hardness="Rubber" />
+    </task>
+    <task id="218" name="E1 · Marcha blanca" color="#c38639" meeting="false" start="2028-02-01" duration="65" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="63" />
+    </task>
+    <task id="219" name="H6 · Inicio marcha blanca E1" color="#223344" meeting="true" start="2028-02-01" duration="0" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="0" />
+      <depend id="218" type="1" difference="0" hardness="Rubber" />
+    </task>
+    <task id="246" name="H7 · Producción E1" color="#223344" meeting="true" start="2028-05-17" duration="0" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="0" />
+      <depend id="245" type="1" difference="0" hardness="Rubber" />
+    </task>
+    <task id="245" name="E1 · Estabilización y soporte" color="#69729a" meeting="false" start="2028-05-17" duration="94" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="93" />
+    </task>
+    <task id="220" name="E2 · Desarrollo" color="#25766f" meeting="false" start="2028-02-01" duration="128" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="126" />
+    </task>
+    <task id="229" name="H8 · Alcance y diseño E2" color="#223344" meeting="true" start="2028-03-09" duration="0" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="0" />
+    </task>
+    <task id="257" name="H9 · Software para QA" color="#223344" meeting="true" start="2028-06-01" duration="0" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="0" />
+    </task>
+    <task id="266" name="H10 · Certificación E2" color="#223344" meeting="true" start="2028-07-11" duration="0" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="0" />
+      <depend id="268" type="2" difference="15" hardness="Rubber" />
+    </task>
+    <task id="267" name="E2 · Marcha blanca" color="#c38639" meeting="false" start="2028-08-01" duration="42" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="41" />
+    </task>
+    <task id="268" name="H11 · Inicio marcha blanca E2" color="#223344" meeting="true" start="2028-08-01" duration="0" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="0" />
+      <depend id="267" type="1" difference="0" hardness="Rubber" />
+    </task>
+    <task id="280" name="H12 · Producción E2" color="#223344" meeting="true" start="2028-10-18" duration="0" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="0" />
+      <depend id="279" type="1" difference="0" hardness="Rubber" />
+      <depend id="282" type="1" difference="0" hardness="Rubber" />
+    </task>
+    <task id="279" name="E2 · Estabilización" color="#69729a" meeting="false" start="2028-10-18" duration="30" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="30" />
+    </task>
+    <task id="282" name="Operación · ambas etapas" color="#286357" meeting="false" start="2028-10-18" duration="730" complete="0" expand="true">
+      <notes />
+      <customproperty taskproperty-id="tpc2" value="730" />
+    </task>
+  </tasks>
+  <resources />
+  <allocations />
+  <vacations />
+  <previous />
+  <roles roleset-name="Default" />
+</project>
