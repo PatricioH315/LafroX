@@ -22,6 +22,7 @@ assert len(set(ids)) == len(ids) == counts["t12_rows"]
 source = subprocess.check_output(
     ["git", "show", data["source_commit"] + ":LAFROX-Formulario-T-12.tex"], cwd=ROOT
 ).decode("utf-8")
+assert "§" not in source, "el T-12 fuente no debe usar «§»"
 source_states = {}
 source_rows = {}
 for line in source.splitlines():
@@ -29,31 +30,6 @@ for line in source.splitlines():
         cells = [c.strip() for c in line.strip().removesuffix(r"\\").split(" & ")]
         source_states[cells[0]] = cells[2]
         source_rows[cells[0]] = cells
-updates = subprocess.check_output(
-    ["git", "show", data["rt_update_commit"] + ":LAFROX-Formulario-T-12.tex"], cwd=ROOT
-).decode("utf-8")
-update_ids = set(data["rt_update_ids"])
-assert update_ids == {"RT-05.30", "RT-18.08", "RT-20.02", "RT-21.21", "RT-26.04"}
-c24_ids = set(data["c24_update_ids"])
-assert c24_ids == {"RF-18.03", "RNF-20.06", "RNF-23.02", "RT-03.18", "RT-07.04", "RT-08.12", "RT-08.14", "RT-11.04", "RT-16.18", "RT-16.23"}
-verified = set()
-for line in updates.splitlines():
-    if not re.match(r"\s*(?:RF|RNF|RT)-\d", line):
-        continue
-    cells = [c.strip() for c in line.strip().removesuffix(r"\\").split(" & ")]
-    identifier = cells[0]
-    if identifier in update_ids:
-        old = source_rows[identifier]
-        assert len(cells) == 7 and cells[:3] == old[:3] and cells[5] == old[4], identifier
-        source_rows[identifier] = [*cells[:4], *cells[5:]]
-        verified.add(identifier)
-    if identifier in c24_ids:
-        assert len(cells) == 7 and cells[2] == "Cumple parcialmente", identifier
-        old = source_rows[identifier]
-        source_rows[identifier] = [*old[:2], cells[2], cells[3], cells[5], *old[5:]]
-        source_states[identifier] = cells[2]
-        verified.add(identifier)
-assert verified == update_ids | c24_ids
 assert source_states["RT-26.04"] == "Cumple"
 assert set(ids) == set(source_states)
 assert all(x["state"] == source_states[x["id"]] for x in requirements)
@@ -80,7 +56,7 @@ assert set(expected_catalogue) == {item["id"] for item in own}
 for item in requirements:
     identifier = item["id"]
     t12 = source_rows[identifier]
-    assert (item["component"], item["edt"]) == (t12[3], t12[4]), identifier
+    assert (item["component"], item["edt"]) == (t12[3], t12[5]), identifier
     expected = expected_catalogue.get(identifier, (f"Bases Técnicas Transversales, {identifier}", t12[1]))
     assert item["origin"] and item["criterion"] and (item["origin"], item["criterion"]) == expected, identifier
 priority = Counter(x["priority"] for x in own)
@@ -126,6 +102,11 @@ def num(value):
     return f"{value:,}".replace(",", ".")
 
 
+def sin_paragrafo(text):
+    """El T-13 publica «sección(es)» donde el catálogo fuente usa «§» (commit 3ec8689e)."""
+    return text.replace("§§ ", "secciones ").replace("§ ", "sección ")
+
+
 published = {
     "SD9 9.2.4": (body, [
         f"{num(counts['own'])} RF/RNF: {priority['Crítica']} críticos, {priority['Alta']} altos y {priority['Media']} medios",
@@ -138,7 +119,6 @@ published = {
         f"Los {rt_state['No cumple']} RT en estado «No cumple»",
         f"Las {rt_state['Cumple parcialmente']} respuestas parciales",
         data["source_commit"][:8],
-        data["rt_update_commit"][:8],
     ]),
 }
 for where, (text, phrases) in published.items():
@@ -146,7 +126,7 @@ for where, (text, phrases) in published.items():
         assert phrase in text, f"{where}: falta «{phrase}»"
 assert "líneas modificadas" in body and "líneas modificadas" in annex
 assert "ninguna persona ni comité levanta una puerta fallida" in body
-assert "AL-CLI-01" in t13 and "Integración E2 (3.9.1)" in t13
+assert "AL-CLI-01" in t13 and "Integración E2 (6.1.2)" in t13
 assert "15 de 15 interfaces sin error con el alcance de E2 integrado" in t17
 assert "Benchmark" in body
 # Dimensionamiento de la regresión y escenarios de falla a partir de la matriz.
@@ -199,7 +179,7 @@ matrix_rows = [line for line in matrix.splitlines() if line.startswith(r"\textbf
 assert len(matrix_rows) == counts["requirements"]
 for row, item in zip(matrix_rows, requirements, strict=True):
     identifier = item["id"].replace("-", r"-\allowbreak{}")
-    assert row.startswith(rf"\textbf{{{identifier}}}\newline {item['origin']} & "), item["id"]
+    assert row.startswith(rf"\textbf{{{identifier}}}\newline {sin_paragrafo(item['origin'])} & "), item["id"]
     display = item.get('component_display', item['component'])
     if 'component_display' in item:
         assert rf'\emph{{T-12, fila {identifier}}}' in display, item['id']
