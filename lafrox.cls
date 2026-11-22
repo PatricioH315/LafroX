@@ -338,9 +338,9 @@
   cargo         = {Jefe de Proyecto y Apoderado},
   cliente       = {Distribuidora Puelche S.A.},
   licitacion    = {Licitación N.\textdegree{} TFEP-01/2026},
-  caso          = {Caso 02 --- Logística},
+  caso          = {Caso --- Logística},
   documento     = {Propuesta Técnica},
-  subtitulo     = {Informe 2},
+  subtitulo     = {},
   alcance       = {Subdocumentos 1--9 y 13},
   formulario    = {Formulario T-22},
   fecha         = {25 de noviembre de 2026},
@@ -349,8 +349,7 @@
   objeto        = {Proyecto de Plataforma Digital de Misión Crítica},
   sobre         = {Sobre N.\textdegree{} 2 --- Oferta Técnica},
   %  El domicilio se constituye en Valparaíso por exigencia del Art. 39.
-  %  PROVISIONAL: confirmar con la identidad definitiva del PROPONENTE.
-  domicilio     = {Av. Brasil 2241, Valparaíso},
+  domicilio     = {Valparaíso, Chile},
   correo        = {contacto@lafrox.cl},
   telefono      = {+56 32 250 4100},
 }
