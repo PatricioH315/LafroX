@@ -194,7 +194,7 @@ MACRO=r'''
 '''
 
 def integrate(manifest):
-    for folder in ['subdocumento-07','formulario-t14','formulario-t15']:
+    for folder in ['formulario-t14', 'formulario-t15']:
         p=ROOT/folder/'contenido.tex';text=p.read_text(encoding='utf-8')
         if '\\newcommand{\\figuraGanttLocal}' not in text:
             pos=text.index('\\newcommand{\\figuraDiagramaHorizontal}')
@@ -456,6 +456,9 @@ def main():
                 path.unlink()
         copyfile(root / 'GANTT_VECTOR.json', ROOT/'revision/local-20261105/GANTT_VECTOR.json')
         integrate(manifest)
+        from gantt_resumen_sd7 import generate_summary
+
+        generate_summary()
     print(json.dumps(log['laminas'], ensure_ascii=False))
 
 

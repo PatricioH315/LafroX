@@ -84,7 +84,7 @@ for n1, t1, cuentas in EDT:
 assert vistos == set(filas), set(filas) - vistos
 
 # ---- tabla de productos (reemplaza tab_T14_1) ----
-L = [BS + 'begin{tablalafrox}{Productos de la EDT, cuentas de control y paquetes de trabajo. Fuente: (Bases Administrativas, arts. 17.2–17.6 y Formulario T-14, p. 63); (Bases Técnicas Transversales, secciones 17.2–17.6, pp. 32–34).}{tab:T14-1}',
+L = [BS + 'begin{tablalafrox}{Productos de la EDT, cuentas de control y paquetes de trabajo. Fuente: (Bases Administrativas, art. 17, pp. 12–13, y Formulario T-14, p. 63); (Bases Técnicas del caso, secciones 17.2–17.6, pp. 32–34).}{tab:T14-1}',
      '  {L{0.8cm} Y C{2.2cm} C{2.2cm}}',
      '  {' + BS + 'cab{N.º} & ' + BS + 'cab{Producto} & ' + BS + 'cab{Cuentas de control} & ' + BS + 'cab{Paquetes de trabajo}}']
 tc = tp = 0
