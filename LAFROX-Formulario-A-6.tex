@@ -1,0 +1,45 @@
+%% ============================================================================
+%%  Formulario A-6 --- Declaración de uso de inteligencia artificial generativa
+%%
+%%  formulario-a6/filas.tex reúne, sin cambios de contenido, las filas de la
+%%  declaración de uso de IA de cada subdocumento y de la Oferta Económica.
+%%  Se regenera con herramientas/consolidar_a6.py.
+%% ============================================================================
+
+\documentclass[carta,firma]{lafrox}
+\usepackage{catchfile}
+\input{sobre1-comun}
+\CatchFileDef{\filasAseis}{formulario-a6/filas.tex}{}
+
+\datoslafrox{
+  subtitulo    = {Formulario A-6 --- Declaración de uso de IA generativa},
+  alcance      = {Sobre N.\textdegree{} 1},
+  formulario   = {Formulario A-6},
+  nomenclatura = {LAFROX-Formulario-A-6.pdf},
+}
+\configurarportadalafrox{Formulario A-6 \textemdash{} Declaración de uso de IA generativa}{Sobre N.\textdegree{} 1}{Formulario A-6}{LAFROX-Formulario-A-6.pdf}{FIRMA_Alex_Aravena_transparente.png}
+
+\begin{document}
+
+\portadalafrox
+\indicelafrox
+\listatablaslafrox
+
+\aperturaformulario{A-6}{Declaración de uso de inteligencia artificial generativa}
+
+Conforme al Artículo 13.5 de las Bases Administrativas, \LFXempresa{} declara el uso de herramientas de inteligencia artificial generativa en la preparación de su propuesta. La Tabla~\ref{tab:a6-uso-ia} reúne, documento por documento, las secciones, anexos y formularios en que se utilizaron, la herramienta, la finalidad y la revisión humana aplicada, con el mismo contenido que la declaración de uso de IA que cierra cada subdocumento y el Entregable 2 de la Oferta Económica.
+
+\tablaconcuerpo{Uso de inteligencia artificial generativa en la propuesta. Fuente: declaraciones de uso de IA de los documentos de la propuesta.}{tab:a6-uso-ia}{F{0.13} F{0.19} F{0.27} Y}
+  {\cab{Sección de la propuesta} & \cab{Herramienta utilizada} & \cab{Finalidad del uso} & \cab{Revisión humana aplicada}}
+  {\filasAseis
+  \midrule
+  \multicolumn{4}{@{}l}{\intersemibold Sobre N.\textdegree{} 1 \textemdash{} Antecedentes del Oferente} \\
+  Formularios A-1 a A-6 & Claude Code & Transcripción de los formularios, llenado con los antecedentes corporativos de la propuesta y consolidación de las declaraciones de uso de IA de cada documento & Alex Aravena: datos de identificación de la empresa y de su representante, folios del índice y correspondencia de cada fila con la declaración del documento de origen. \\}
+
+La tabla abarca los Subdocumentos 1 a 13 de la Oferta Técnica, con sus anexos y formularios, el Entregable 2 de la Oferta Económica y los formularios de este sobre. En todos ellos la herramienta apoyó la redacción, la síntesis, el cálculo o la preparación de figuras, y un integrante del equipo nominado en el Formulario T-8 verificó el contenido indicado en la última columna.
+
+El Proponente declara que asume la responsabilidad íntegra sobre el contenido, la exactitud, la originalidad y la coherencia técnica de su propuesta, con independencia de las herramientas empleadas en su preparación, y que no ha incorporado datos confidenciales del CLIENTE en servicios de terceros sin autorización.
+
+\bloquefirma
+
+\end{document}

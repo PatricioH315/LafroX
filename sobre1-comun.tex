@@ -1,0 +1,71 @@
+%% ============================================================================
+%%  sobre1-comun.tex -- Datos y utilidades comunes del Sobre N.° 1
+%%
+%%  Lo cargan todos los documentos del sobre después de \documentclass.
+%%  Los datos de la empresa (razón social, RUT, domicilio, representante,
+%%  cargo, correo y teléfono) vienen de lafrox.cls, sección 6, iguales a los
+%%  de todas las portadas de la propuesta.
+%% ============================================================================
+
+\datoslafrox{
+  caso       = {Caso --- Logística},
+  fecha      = {25 de noviembre de 2026},
+  documento  = {Antecedentes del Oferente},
+  sobre      = {Sobre N.\textdegree{} 1 \textemdash{} Antecedentes del Oferente},
+}
+
+% El Sobre N.° 1 se entrega físico y foliado: el número se rotula como folio.
+\renewcommand{\LFXfolio}{Folio}
+
+% ---- Antecedentes del Formulario A-1 que no están en lafrox.cls -------------
+\newcommand{\LFXnombrefantasia}{LafroX}
+\newcommand{\LFXgiro}{Desarrollo, integración y operación de sistemas para logística, distribución de consumo masivo y transporte de carga}
+\newcommand{\LFXsitioweb}{\url{https://lafrox.github.io/}}
+\newcommand{\LFXciudad}{Valparaíso, Región de Valparaíso}
+\newcommand{\LFXindustria}{empresa distribuidora de consumo masivo, mandante Distribuidora Puelche S.A.}
+\newcommand{\LFXcedularepresentante}{21.529.759-4}
+\newcommand{\LFXcontraparte}{Alex Aravena, Jefe de Proyecto}
+\newcommand{\LFXcorreocontraparte}{a.aravena@lafrox.cl}
+\newcommand{\LFXtelefonocontraparte}{+56 32 250 4100}
+
+% ---- Foliación correlativa del sobre ---------------------------------------
+%  folios.tex lo escribe compilar_sobre1.py: define el folio de inicio y de
+%  término de cada documento y las filas del índice del Formulario A-5.
+\makeatletter
+\newcommand{\definirfolio}[3]{%
+  \expandafter\gdef\csname LFXfi@#1\endcsname{#2}%
+  \expandafter\gdef\csname LFXft@#1\endcsname{#3}}
+\newcommand{\filasindicesobre}{}
+\InputIfFileExists{folios.tex}{}{}
+\edef\LFXfolioinicial{\ifcsname LFXfi@\jobname\endcsname
+  \csname LFXfi@\jobname\endcsname\else 1\fi}
+
+% ---- Tabla cuyas filas vienen en una macro ---------------------------------
+%  tablalafrox lee su cuerpo como argumento y le agrega los filetes de fila;
+%  para que vea filas reales, la macro de filas se expande una vez antes.
+%  \tablaconcuerpo{caption}{label}{columnas}{cabecera}{\macrodefilas ...}
+\newcommand{\tablaconcuerpo}[5]{%
+  \expandafter\LFX@tablaconcuerpo\expandafter{#5}{#1}{#2}{#3}{#4}}
+\newcommand{\LFX@tablaconcuerpo}[5]{%
+  \begin{tablalafrox}{#2}{#3}{#4}{#5}#1\end{tablalafrox}}
+\makeatother
+
+% ---- Apertura del formulario -----------------------------------------------
+%  \aperturaformulario{A-1}{Identificación del Proponente}
+\newcommand{\aperturaformulario}[2]{%
+  \renewcommand{\thetable}{#1.\arabic{table}}%
+  \chapter*{Formulario #1: #2}%
+  \addcontentsline{toc}{chapter}{Formulario #1: #2}%
+  \markboth{Formulario #1}{}}
+
+% ---- Firma del representante legal -----------------------------------------
+%  Nombre, firma y fecha, como cierran los formularios A-2 a A-6.
+\newcommand{\bloquefirma}{%
+  \par\addvspace{20pt}%
+  \noindent\begin{minipage}{\textwidth}
+    \begin{tabular}{@{}l@{\hspace{8pt}}l@{}}
+      Nombre: & {\intersemibold\LFXrepresentante}, \LFXcargo, \LFXempresa\\[10pt]
+      Firma: & \raisebox{-0.45\height}{\includegraphics[width=3.4cm]{\LFXfirmaimagen}}\\[6pt]
+      Fecha: & \LFXfecha
+    \end{tabular}
+  \end{minipage}\par}

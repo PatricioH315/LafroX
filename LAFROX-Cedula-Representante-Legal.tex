@@ -1,0 +1,23 @@
+%% ============================================================================
+%%  Copia de la cédula de identidad del representante legal
+%%
+%%  Toma el escaneo documentos-adjuntos/cedula-representante-legal.pdf y le
+%%  agrega el folio correlativo del sobre y la media firma en cada página.
+%%  compilar_sobre1.py lo compila solo si ese archivo existe.
+%% ============================================================================
+
+\documentclass[carta,firma]{lafrox}
+\usepackage{pdfpages}
+\input{sobre1-comun}
+
+\datoslafrox{
+  subtitulo    = {Cédula de identidad del representante legal},
+  alcance      = {Sobre N.\textdegree{} 1},
+  formulario   = {Artículo 39°},
+  nomenclatura = {LAFROX-Cedula-Representante-Legal.pdf},
+}
+
+\begin{document}
+\setcounter{page}{\LFXfolioinicial}
+\includepdf[pages=-,scale=0.86,offset=0 12mm,pagecommand={\thispagestyle{plain}}]{documentos-adjuntos/cedula-representante-legal.pdf}
+\end{document}

@@ -1,0 +1,35 @@
+%% ============================================================================
+%%  Formulario A-5 --- Presentación e índice de antecedentes
+%%
+%%  Las filas del índice y los folios salen de folios.tex, que escribe
+%%  compilar_sobre1.py a partir de los PDF compilados.
+%% ============================================================================
+
+\documentclass[carta,firma]{lafrox}
+\input{sobre1-comun}
+
+\datoslafrox{
+  subtitulo    = {Formulario A-5 --- Presentación e índice de antecedentes},
+  alcance      = {Sobre N.\textdegree{} 1},
+  formulario   = {Formulario A-5},
+  nomenclatura = {LAFROX-Formulario-A-5.pdf},
+}
+\configurarportadalafrox{Formulario A-5 \textemdash{} Presentación e índice de antecedentes}{Sobre N.\textdegree{} 1}{Formulario A-5}{LAFROX-Formulario-A-5.pdf}{FIRMA_Alex_Aravena_transparente.png}
+
+\begin{document}
+
+\portadalafrox
+\indicelafrox
+\listatablaslafrox
+
+\aperturaformulario{A-5}{Presentación e índice de antecedentes}
+
+\LFXempresa{} presenta en el Sobre N.\textdegree{} 1 de la \LFXlicitacion{} los documentos que se indexan en la Tabla~\ref{tab:a5-indice}. La foliación es correlativa en todo el sobre, comienza en este formulario y cada documento indica en su pie el folio y la media firma del representante legal.
+
+\tablaconcuerpo{Índice de antecedentes del Sobre N.\textdegree{} 1. Fuente: foliación de los documentos del sobre.}{tab:a5-indice}{R{0.8cm} Y R{1.4cm} R{1.5cm} L{4.9cm}}
+  {\cab{N.\textdegree} & \cab{Documento} & \cab{Folio inicio} & \cab{Folio término} & \cab{Observación}}
+  {\filasindicesobre}
+
+\bloquefirma
+
+\end{document}
