@@ -1,0 +1,57 @@
+\documentclass[11pt]{article}
+\usepackage[sans]{sim-oficial}
+\input{datos-proponente}
+\renewcommand{\arraystretch}{1.1}\setlength{\parskip}{2pt}
+\newcommand{\campo}[2]{\textbf{#1} & #2\\}
+\newcommand{\banda}[1]{\par\medskip\noindent\colorbox{SIMclaro}{\parbox{\dimexpr\linewidth-2\fboxsep}{\bfseries\small #1}}\par\smallskip}
+\begin{document}
+\noindent\begin{minipage}[c]{0.62\linewidth}
+  {\Large\bfseries BURÓ DE INFORMACIÓN COMERCIAL}\\[1pt]
+  {\bfseries (simulado)}\\[2pt]
+  {\small Informe comercial de persona jurídica}
+\end{minipage}\hfill
+\begin{minipage}[c]{3.2cm}\raggedleft\SIMhueco{3cm}{1.6cm}{Logo del buró (omitido)}\end{minipage}
+
+\vspace{2pt}\noindent\rule{\linewidth}{1pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X X@{}}
+  \small Folio: SIM-BIC-2026-000001 & \small\raggedleft Fecha de emisión: \SIMfechacorta{} \\
+\end{tabularx}
+
+\noindent{\small Informe emitido para acreditar los antecedentes comerciales de la persona jurídica individualizada (Art.~39\textdegree, numeral~2, de las Bases Administrativas). La información proviene de una base de datos \emph{ficticia} creada para este ejercicio académico.}
+
+\banda{1. IDENTIFICACIÓN}
+\noindent\begin{tabularx}{\linewidth}{@{}l X@{}}
+  \campo{Razón social}{LAFROX SpA}
+  \campo{RUT}{\LFXrut}
+  \campo{Giro}{\SIMgiro}
+  \campo{Domicilio comercial}{\LFXdomicilio}
+  \campo{Representante legal}{\LFXrepresentante}
+  \campo{Antigüedad en el sistema}{Desde 2012}
+\end{tabularx}
+
+\banda{2. RESUMEN DE ANTECEDENTES COMERCIALES}
+\noindent\begin{tabularx}{\linewidth}{@{}X l r@{}}\toprule
+  \textbf{Tipo de registro} & \textbf{Período consultado} & \textbf{N.\textdegree{} registros}\\\midrule
+  Protestos de cheques y letras de cambio & Últimos 5 años & 0\\
+  Morosidades en el sistema financiero & Vigentes & 0\\
+  Morosidades en el comercio y proveedores & Vigentes & 0\\
+  Cobranzas judiciales y juicios ejecutivos & Últimos 5 años & 0\\
+  Infracciones laborales y previsionales publicadas & Últimos 2 años & 0\\
+  Infracciones tributarias publicadas & Últimos 2 años & 0\\
+  Quiebras, liquidaciones y reorganizaciones & Vigentes e históricas & 0\\\midrule
+  \textbf{Total de registros negativos} & & \textbf{0}\\\bottomrule
+\end{tabularx}
+
+\banda{3. COMPORTAMIENTO DE PAGO Y CLASIFICACIÓN DE RIESGO (valores ficticios)}
+\noindent\begin{tabularx}{\linewidth}{@{}X l@{}}
+  \campo{Clasificación de riesgo comercial (score)}{Banda baja (A) --- riesgo bajo}
+  \campo{Plazo medio de pago a proveedores}{38 días}
+  \campo{Consultas de terceros en los últimos 12 meses}{14}
+  \campo{Última actualización de la ficha}{22-11-2026}
+\end{tabularx}
+
+\banda{4. CONCLUSIÓN}
+\noindent La empresa individualizada \textbf{no registra protestos, morosidades ni infracciones} en las bases consultadas, a la fecha de emisión del presente informe.
+
+\SIMnooficial{una entidad de información comercial (Buró de Información Comercial simulado)}
+\end{document}

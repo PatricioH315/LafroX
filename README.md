@@ -31,6 +31,32 @@ Compila los documentos en el orden del sobre con LuaLaTeX (latexmk), lee el últ
 
 Dejar el escaneo en `documentos-adjuntos/cedula-representante-legal.pdf` y compilar. El script agrega `LAFROX-Cedula-Representante-Legal.pdf` después del A-1 (orden del Art. 39), le pone folio y media firma en cada página y actualiza el índice del A-5.
 
+## Antecedentes simulados del Art. 39 (`antecedentes/`)
+
+Recreaciones con formato de documento chileno real, datos ficticios y marca de agua «SIMULACIÓN ACADÉMICA» en cada página. Los documentos privados imitan su formato real; los certificados estatales copian solo la estructura, sin emblemas, sellos ni códigos de verificación. El notario es ficticio (`\SIMtimbrenotarial`).
+
+| Art. 39 | Carpeta | Documento |
+|---|---|---|
+| 1 | `1-legales/02-cedula-representante` | Fotocopia legalizada de la cédula (`-v2`: hoja de datos simulada; la versión con escaneo real es `LAFROX-Cedula-Representante-Legal.tex`) |
+| 1 | `1-legales/03-rut-empresa` | Rol Único Tributario |
+| 1 | `1-legales/04-certificado-vigencia` | Certificado de vigencia de la sociedad |
+| 1 | `1-legales/05-patente-comercial` | Patente comercial legalizada |
+| 1 | `1-legales/06-escritura-constitucion` | Escritura de constitución y modificaciones |
+| 1 | `1-legales/07-poderes-representante` | Poderes vigentes del representante legal |
+| 1 | `1-legales/08-individualizacion-socios` | Individualización de los socios |
+| 2 | `2-financieros/09-deuda-tributaria` | Certificado de deudas tributarias |
+| 2 | `2-financieros/10-estados-financieros` | Estados financieros auditados 2023–2025 |
+| 2 | `2-financieros/11-antecedentes-comerciales` | Certificado de antecedentes comerciales |
+| 2 | `2-financieros/12-boletin-laboral` | Boletín Laboral y Previsional (DT) |
+| 2 | `2-financieros/13-certificado-bancario` | Certificado bancario de capacidad de garantías |
+| 3 | `3-declaraciones/15-dj-no-quiebra` | DJ de no encontrarse en quiebra ni reorganización |
+| 3 | `3-declaraciones/18-domicilio-valparaiso` | Constitución de domicilio en Valparaíso |
+| 4 | `4-tecnicos/19-carta-presentacion-contratos` | Carta de presentación, nómina de contratos y cartas de referencia |
+| 4 | `4-tecnicos/20-cartas-compromiso` | Cartas compromiso de socios y proveedores |
+| 4 | `4-tecnicos/23-certificaciones` | Certificaciones institucionales y de fabricante |
+
+Datos comunes en `antecedentes/datos-proponente.tex`; base visual en `antecedentes/sim-oficial.sty`; modelos públicos consultados en `antecedentes/referencias/` (`FUENTES.md`). Compilar con `bash antecedentes/compilar.sh`. Aún no entran en la foliación de `compilar_sobre1.py` ni en el índice A-5.
+
 ## Pendiente para completar el sobre (Art. 39)
 
-Antecedentes legales y financieros, declaración de no encontrarse en quiebra, constitución de domicilio, carta de presentación con la nómina de contratos, cartas compromiso de socios y proveedores, certificaciones y la Boleta de Garantía de Seriedad (Art. 35). Dos subdocumentos ya anuncian documentos para este sobre: el Subdocumento 1 (sección 1.4: certificados y cartas de referencia del Art. 34) y el Subdocumento 12 (Anexo 12.D: cartas de compromiso firmadas del equipo). Los Formularios A-2, A-3 y A-4 van firmados ante notario. Si se agrega el Subdocumento 14, su declaración de uso de IA se suma al A-6 con `herramientas/consolidar_a6.py`.
+Integrar los antecedentes simulados a la foliación y al índice A-5, y la Boleta de Garantía de Seriedad (Art. 35). Dos subdocumentos ya anuncian documentos para este sobre: el Subdocumento 1 (sección 1.4: certificados y cartas de referencia del Art. 34) y el Subdocumento 12 (Anexo 12.D: cartas de compromiso firmadas del equipo). Los Formularios A-2, A-3 y A-4 van firmados ante notario. Si se agrega el Subdocumento 14, su declaración de uso de IA se suma al A-6 con `herramientas/consolidar_a6.py`.

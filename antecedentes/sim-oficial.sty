@@ -1,0 +1,133 @@
+% sim-oficial.sty --- Base for Sobre N. 1 documents that imitate the LAYOUT of
+%  real Chilean documents (no LafroX template). Load on top of `article`.
+%  Academic exercise (PUCV ICI-5444). Safety rules:
+%   - private documents (deeds, powers, sworn statements, letters, financial
+%     statements) may look like the real thing;
+%   - state certificates (SII, TGR, DT, CBR, Registro Civil, municipalities)
+%     copy STRUCTURE only: no emblems, seals, QR codes, barcodes or real
+%     verification codes; issuer text carries "(simulado)".
+%  Fonts: system Arial / Times New Roman / Courier New (as real documents).
+%  Options: sans (Arial, default for certificates), serif (Times-like,
+%  notarial and letters), mono (Courier, typewritten notarial copies).
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sim-oficial}[2026/11/22 Sobre 1 official-look base]
+
+\newif\ifSIM@serif \newif\ifSIM@mono
+\DeclareOption{sans}{\SIM@seriffalse\SIM@monofalse}
+\DeclareOption{serif}{\SIM@seriftrue}
+\DeclareOption{mono}{\SIM@monotrue}
+\ProcessOptions\relax
+
+\RequirePackage{iftex}
+\RequireLuaTeX
+\RequirePackage{fontspec}
+\RequirePackage[spanish,es-tabla,es-noquoting,es-nolists]{babel}
+\RequirePackage[letterpaper,top=2.2cm,bottom=2.4cm,left=2.5cm,right=2.2cm]{geometry}
+\RequirePackage{xcolor,graphicx,eso-pic,tikz,array,tabularx,booktabs,
+  multirow,enumitem,fancyhdr,lastpage,ragged2e,needspace,pgfkeys,calc}
+
+\setmainfont{Arial}
+\setmonofont{Courier New}
+\ifSIM@serif \setmainfont{Times New Roman}\fi
+\ifSIM@mono  \setmainfont{Courier New}\fi
+\newfontfamily\SIMsans{Arial}
+\newfontfamily\SIMserif{Times New Roman}
+\newfontfamily\SIMtype{Courier New}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\definecolor{SIMgris}{gray}{0.45}
+\definecolor{SIMclaro}{gray}{0.88}
+
+% ---------------------------------------------------------------------------
+%  Data: same keys as lafrox.cls so antecedentes/datos-proponente.tex is reused.
+% ---------------------------------------------------------------------------
+\pgfkeys{/lafrox/.is family, /lafrox,
+  empresa/.store in=\LFXempresa, rut/.store in=\LFXrut,
+  representante/.store in=\LFXrepresentante, cargo/.store in=\LFXcargo,
+  cliente/.store in=\LFXcliente, licitacion/.store in=\LFXlicitacion,
+  caso/.store in=\LFXcaso, objeto/.store in=\LFXobjeto, sobre/.store in=\LFXsobre,
+  documento/.store in=\LFXdocumento, subtitulo/.store in=\LFXsubtitulo,
+  alcance/.store in=\LFXalcance, formulario/.store in=\LFXformulario,
+  fecha/.store in=\LFXfecha, version/.store in=\LFXversion, logo/.store in=\LFXlogo,
+  domicilio/.store in=\LFXdomicilio, correo/.store in=\LFXcorreo,
+  telefono/.store in=\LFXtelefono, nomenclatura/.store in=\LFXnomenclatura}
+\newcommand{\datoslafrox}[1]{\pgfkeys{/lafrox/.cd,#1}}
+
+% ---------------------------------------------------------------------------
+%  Watermark + small disclaimer on every page (cannot be turned off).
+% ---------------------------------------------------------------------------
+\AddToShipoutPictureBG{%
+  \put(\LenToUnit{0.5\paperwidth},\LenToUnit{0.5\paperheight}){%
+    \makebox(0,0){\rotatebox{52}{\SIMsans\bfseries\fontsize{40pt}{40pt}\selectfont
+      \color{black!9}SIMULACIÓN ACADÉMICA}}}%
+  \put(\LenToUnit{0.5\paperwidth},\LenToUnit{0.9cm}){%
+    \makebox(0,0){\SIMsans\fontsize{6.5pt}{8pt}\selectfont\color{SIMgris}%
+      Documento simulado --- ejercicio académico PUCV ICI-5444, Licitación
+      TFEP-01/2026. Datos ficticios. Sin validez legal.}}%
+}
+
+% Default page style: page "N de M" bottom right (Art. 40.1), nothing else.
+\pagestyle{fancy}\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[R]{\SIMsans\fontsize{8pt}{10pt}\selectfont Página \thepage\ de \pageref*{LastPage}}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[R]{\SIMsans\fontsize{8pt}{10pt}\selectfont Página \thepage\ de \pageref*{LastPage}}}
+\providecommand{\pageref*}{\pageref}
+
+% Mandatory closing line for simulated state/third-party certificates.
+%  \SIMnooficial{Institution name}
+\newcommand{\SIMnooficial}[1]{%
+  \par\vspace{8pt}{\SIMsans\fontsize{8.5pt}{10pt}\selectfont\color{SIMgris}
+  Documento recreado con fines académicos a partir de la estructura pública del
+  certificado. No reemplaza al documento oficial que emite #1 y no contiene
+  sus emblemas, sellos ni códigos de verificación.\par}}
+
+% Placeholder where the real document has an emblem/seal/QR.
+%  \SIMhueco{width}{height}{label}
+\newcommand{\SIMhueco}[3]{%
+  \begin{tikzpicture}\draw[SIMgris,dashed,line width=0.5pt] (0,0) rectangle (#1,#2);
+  \node[align=center,text width=#1-4pt,font=\SIMsans\fontsize{7pt}{8pt}\selectfont,
+        text=SIMgris] at (#1/2,#2/2) {#3};\end{tikzpicture}}
+
+% Fictitious notary used by every notarial document.
+\newcommand{\SIMnotarioTitular}{Pedro Ejemplo Muestra}
+\newcommand{\SIMnotaria}{Notaría Simulada de Valparaíso}
+\newcommand{\SIMnotariaDir}{Calle Prat 000, Valparaíso}
+
+% ---------------------------------------------------------------------------
+%  Fictitious notary seal + handwritten-style signature (TikZ only).
+%   \SIMtimbrenotarial[diameter]   default 3cm
+%  Belongs to the FICTITIOUS notary above; carries "SIMULACIÓN" in the ring.
+%  Never replace it with an image of a real notary's seal or signature.
+% ---------------------------------------------------------------------------
+\usetikzlibrary{decorations.text}
+\definecolor{SIMsello}{RGB}{196,40,110}
+\definecolor{SIMtinta}{RGB}{28,60,190}
+\newcommand{\SIMtimbrenotarial}[1][3cm]{%
+  \begin{tikzpicture}[x=#1/3, y=#1/3, line cap=round, line join=round]
+    % seal
+    \begin{scope}[SIMsello, opacity=0.85, rotate=-8]
+      \draw[line width=1.1pt] (0,0) circle (1.5);
+      \draw[line width=0.5pt] (0,0) circle (1.08);
+      \path[decorate, decoration={text along path, text align=center,
+            text={|\SIMsans\bfseries\fontsize{6.4pt}{6.4pt}\selectfont\color{SIMsello}|PEDRO EJEMPLO MUESTRA}}]
+        (-1.24,0) arc (180:0:1.24);
+      \path[decorate, decoration={text along path, text align=center,
+            text={|\SIMsans\bfseries\fontsize{5.6pt}{5.6pt}\selectfont\color{SIMsello}|SIMULACIÓN * VALPARAÍSO}}]
+        (-1.34,0) arc (-180:0:1.34);
+      \node[align=center, font=\SIMsans\bfseries\fontsize{5.2pt}{6pt}\selectfont, text=SIMsello]
+        at (0,0) {NOTARIO\\NOTARÍA\\SIMULADA\\DE VALPARAÍSO\\--- FICTICIO ---};
+    \end{scope}
+    % signature: cursive-like strokes crossing the seal
+    \begin{scope}[SIMtinta, line width=0.85pt, opacity=0.9]
+      \draw plot[smooth, tension=0.6] coordinates {
+        (-1.7,-0.55) (-1.45,1.15) (-1.15,0.55) (-1.5,0.25) (-1.1,0.05)
+        (-0.85,0.5) (-0.95,0.05) (-0.6,0.12) (-0.3,0.95) (-0.38,-0.3)
+        (-0.1,0.2) (0.2,0.6) (0.12,-0.05) (0.45,0.1) (0.78,1.1)
+        (0.68,-0.85) (0.55,-0.35) (1.0,0.05) (1.3,0.42) (1.65,0.22)};
+      \draw plot[smooth, tension=0.7] coordinates {
+        (-1.6,-0.72) (-0.4,-0.5) (0.8,-0.62) (1.7,-0.3)};
+    \end{scope}
+    \useasboundingbox (-1.75,-1.55) rectangle (1.75,1.55);
+  \end{tikzpicture}}
+\endinput
