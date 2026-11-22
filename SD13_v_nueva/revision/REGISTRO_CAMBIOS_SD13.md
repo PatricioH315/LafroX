@@ -138,3 +138,19 @@ Pendiente (no hecho): M4 frases que introducen o cierran tablas (13.20, 13.25, 1
 | FM-03 | `sd13-comun.tex` (`\hypersetup`) | Título del PDF «Propuesta Técnica — Subdocumento 13 — Innovaciones — Propuesta final» | Decía «Informe 2» | metadatos del PDF | ver `git log` | hecho |
 
 Pendiente de formato (menor): el asunto de los metadatos sigue diciendo «Caso 02 — Logística» (la portada dice «Caso — Logística»); los subíndices de p₀ se componen a 6,6-7,6 pt por ser subíndices; las cabeceras y pies están a 7,5 pt (no son cuerpo ni tabla).
+
+## Revisión de ramas actualizadas (19-11-2026)
+
+| ID | Dónde | Cambio | Motivo | Evidencia | Commit | Estado |
+|---|---|---|---|---|---|---|
+| RV-01 | C, A y T | Sin cambios de contenido. Se revisan los commits nuevos de SD3 (`3ee615a9`), SD4 (`0dc50b3d`), SD7 (`315e89b5`), SD8 (`530d5224`) y SD9 (`84c12443`) | EDT por productos, cascada y recodificación de citas en los otros subdocumentos | `verificar_coherencia_sd13.py`: OK; fechas de hitos, CPM de 6.1.1 y de la cuenta 7, perfiles y Tabla 23 del T-15 sin cambios; el T-14 de 7.4.1 coincide con el SD13 | — | hecho |
+| RV-02 | PDF y auxiliares de las tres piezas | Se recompilan con LuaLaTeX; el índice y la lista de tablas del cuerpo corrigen páginas desde 13.4.5 | El commit `51d750cf` dejó el índice de una pasada anterior | `LAFROX-Subdocumento13.toc` | — | hecho |
+| RV-03 | Hoja de dependencias | Commits al 19-11-2026, SD9 agregado, diferencias resueltas separadas de las abiertas y nueva diferencia del SD8 en R-027 (mes 20 contra mes 17) | Mantener la hoja al día | `HOJA_DEPENDENCIAS_SD13.md` | — | hecho |
+
+## Revisión de ramas actualizadas (22-11-2026)
+
+| ID | Dónde | Cambio | Motivo | Evidencia | Commit | Estado |
+|---|---|---|---|---|---|---|
+| RV-04 | A, sección previa a 13.B.1 | 7.1.4, 7.2.4 y 7.3.4: se reemplaza «fin temprano CPM 28-12-2027» por la carta nivelada del T-15 (01-12-2027 a 28-04-2028, fin igual al tardío, holgura cero) | El T-15 de SD7 `0624f701` publica fechas niveladas; el 28-12-2027 ya no figura | `tab_T15_cpm_detalle.tex` y `tab_T15_paquetes.tex` en origin; `verificar_coherencia_sd13.py` marcaba anexos:56 | — | hecho |
+| RV-05 | A 13.B.1 | Se reemplaza «las entregas de H4, H5 y H10 coinciden con el fin temprano de sus paquetes de control» por «preceden el fin de 6.1.1 (22-10-2027), 6.7.1 (01-12-2027) y 6.7.2 (28-06-2028)» | La carta nivelada mueve esos fines; la frase contradecía los párrafos siguientes del anexo | `tab_T15_cpm_detalle.tex` y `tab_T15_7.tex` en origin | — | hecho |
+| RV-06 | Hoja de dependencias | Commits de SD7, SD8 y SD9 al 22-11-2026; alineación de CT-08 a CT-13 del SD8 como resuelta; nueva diferencia menor en el texto CPM del T-15 | Mantener la hoja al día | `HOJA_DEPENDENCIAS_SD13.md`; verificador OK con las fuentes de origin; Anexos recompilados con LuaLaTeX sin errores | — | hecho |

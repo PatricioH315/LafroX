@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  18 NOV 2026 17:59
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  19 NOV 2026 16:48
  system commands enabled.
 **LAFROX-Subdocumento13.tex
 (./LAFROX-Subdocumento13.tex
@@ -44,8 +44,7 @@ Document Class: lafrox 2026/09/17 v2.2 Clase corporativa LafroX, tema minimalis
 ta
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/base/report.cls
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/base/report.cls
 Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/base/size11.clo
 File: size11.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
@@ -63,15 +62,12 @@ iKTeX/luatex-cache/generic/names/luaotfload-names.luc.gz)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen149
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty
 Package: geometry 2026/03/07 v6.0 Page Geometry
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty
 Package: keyval 2026-05-17 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
 \Gm@cnth=\count283
@@ -86,10 +82,8 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layouthoffset=\dimen156
 \Gm@layoutvoffset=\dimen157
 \Gm@dimlist=\toks18
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg)) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
@@ -97,8 +91,8 @@ Package xcolor Info: Driver file: luatex.def on input line 274.
 
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics-def/luatex.def
 File: luatex.def 2025/09/29 v1.2f Graphics/color driver for luatex
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics/mathcolor.ltx)
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics/mathcolor.lt
+x)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
@@ -128,8 +122,8 @@ File: dvipsnam.def 2026-05-17 v3.0m Driver-dependent file (DPC,SPQR)
 ) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.sty
 
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/xparse/xpars
-e.sty
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/l3kernel/expl3.sty
+e.sty (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/l3kernel/expl3.st
+y
 Package: expl3 2026-07-20 L3 programming layer (loader) 
 
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-lua
@@ -159,7 +153,7 @@ eX
 \l__fontspec_tmpa_dim=\dimen160
 \l__fontspec_tmpb_dim=\dimen161
 \l__fontspec_tmpc_dim=\dimen162
- (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/base/fontenc.sty
+(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/base/fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
 ) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.cfg
 )))
@@ -261,20 +255,15 @@ guage=dflt;+smcp;"
 (fontspec)             <->"[SourceSans3-SemiboldIt.otf]:mode=node;script=latn;l
 anguage=dflt;"
 
- (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/plex/plex-mono.sty
+(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/plex/plex-mono.sty
 Package: plex-mono 2025/12/04 (Bob Tennent) Style file for IBMPlexMono fonts
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifxetex.sty
 Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifluatex.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifluatex.sty
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
-
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkeyval.tex
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkvutils.tex
+(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkeyval.tex (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks20
 \XKV@tempa@toks=\toks21
 )
@@ -387,10 +376,8 @@ aTeX
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/l3keys2e/l3k
 eys2e.sty
 Package: l3keys2e 2025-10-09 LaTeX2e option processing using LaTeX3 keys
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/base/fix-cm.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/base/fix-cm.sty
 Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
@@ -648,25 +635,20 @@ LaTeX Encoding Info:    Redeclaring text symbol \texttimes (encoding TS1) on in
 put line 193.
 LaTeX Encoding Info:    Redeclaring text symbol \textdiv (encoding TS1) on inpu
 t line 194.
-))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsmath.sty
+)) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2025/07/09 v2.17z AMS math features
 \@mathmargin=\skip54
-
 For additional information on amsmath, use the `?' option.
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amstext.sty
 Package: amstext 2024/11/17 v2.01 AMS text
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks22
 \ex@=\dimen163
-))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsbsy.sty
+)) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen164
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsopn.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count300
@@ -721,7 +703,6 @@ LaTeX Info: Redefining \] on input line 2951.
 ex-math.sty
 Package: lualatex-math 2022/01/01 v1.12 Patches for mathematics typesetting wit
 h LuaLaTeX
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count312
@@ -874,7 +855,6 @@ Regular.otf(0)/m/n on input line 143.
 LaTeX Font Info:    Overwriting symbol font `__um_fam1' in version `bold'
 (Font)                  TU/SourceSerif4-Regular.otf(0)/m/n --> TU/SourceSerif4-
 Regular.otf(0)/b/n on input line 143.
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/was/icomma.sty
 Package: icomma 2002/03/10 v2.0 (WaS)
 )
@@ -912,7 +892,6 @@ LaTeX Info: Redefining \microtypesetup on input line 3065.
 ) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty
 Package: babel 2026/08/08 v26.10 The multilingual framework for LuaLaTeX, pdfLa
 TeX and XeLaTeX
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def
 \bbl@readstream=\read2
 \l@afrikaans=\language2
@@ -1013,14 +992,12 @@ LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?)
 on input line 2138.
 \U@D=\dimen173
 \l@unhyphenated=\language79
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def
 \bbl@attr@locale=\attribute4
 )
 Package babel Info: Configuration files are deprecated, as
 (babel)             they can break document portability.
 (babel)             Reported on input line 4298.
-
 *************************************
 * Local config file bblopts.cfg used
 *
@@ -1049,7 +1026,6 @@ LaTeX Encoding Info:    Redeclaring text command \guillemotleft (encoding OT1)
 on input line 154.
 LaTeX Encoding Info:    Redeclaring text command \guillemotright (encoding OT1)
  on input line 154.
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.sty
 Package: csquotes 2026-05-19 v5.2p context-sensitive quotations (JAW)
 \csq@reset=\count320
@@ -1059,22 +1035,18 @@ Package: csquotes 2026-05-19 v5.2p context-sensitive quotations (JAW)
 \csq@maxlvl=\count324
 \csq@tshold=\count325
 \csq@ltx@everypar=\toks30
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.def
 File: csquotes.def 2026-05-19 v5.2p csquotes generic definitions (JAW)
 )
 Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
 Package csquotes Info: ... configuration file loaded successfully.
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/csquotes/csquotes.cfg
 File: csquotes.cfg 
 )) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphicx.st
 y
 Package: graphicx 2026-05-17 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphics.sty
 Package: graphics 2026-05-17 v1.4h Standard LaTeX Graphics (DPC,SPQR)
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 )
@@ -1088,8 +1060,8 @@ Package graphics Info: Driver file: luatex.def on input line 106.
 \Gin@req@width=\dimen175
 )
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/frontendlayer/tikz.
+sty (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgf.
 sty
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgf.sty
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfrcs.st
 y
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
@@ -1103,8 +1075,8 @@ y
 \pgfutil@abb=\box58
 )
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfrcs.
-code.tex
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/pgf.revision.tex)
+code.tex (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/pgf.revi
+sion.tex)
 Package: pgfrcs 2026-08-01 v3.1.12 (3.1.12)
 ))
 Package: pgf 2026-08-01 v3.1.12 (3.1.12)
@@ -1337,8 +1309,8 @@ y
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfkeys.s
 ty
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
-.code.tex))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/math/pgfmath.sty
+.code.tex)) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/pgf/math/pg
+fmath.sty
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
 .tex))
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgffor.
@@ -1396,8 +1368,7 @@ File: tikzlibrarycalc.code.tex 2026-08-01 v3.1.12 (3.1.12)
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
 z/libraries/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2026-08-01 v3.1.12 (3.1.12)
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/booktabs/booktabs.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen282
 \lightrulewidth=\dimen283
@@ -1416,8 +1387,7 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count349
 \@lastruleclass=\count350
 \@thisrulewidth=\dimen294
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/tools/tabularx.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/tools/tabularx.sty
 Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 \TX@col@width=\dimen295
 \TX@old@table=\dimen296
@@ -1426,8 +1396,7 @@ Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 \TX@delta=\dimen299
 \TX@cols=\count351
 \TX@ftn=\toks43
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/tools/longtable.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/tools/longtable.sty
 Package: longtable 2026-01-28 v4.27 Multi-page Table package (DPC)
 \LTleft=\skip58
 \LTright=\skip59
@@ -1450,21 +1419,19 @@ Package: longtable 2026-01-28 v4.27 Multi-page Table package (DPC)
 Package: xltabular 2025/02/28 v0.2i `xltabular' package (hv,RN)
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/ltablex/ltablex.sty
 Package: ltablex 2014/08/13 v1.1 Modified tabularx
-))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/multirow/multirow.sty
+)) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/multirow/multirow.st
+y
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip62
 \multirow@cntb=\count357
 \multirow@dima=\skip63
 \bigstrutjot=\dimen301
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/makecell/makecell.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/makecell/makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \rotheadsize=\dimen302
 \c@nlinenum=\count358
 \TeXr@lab=\toks45
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/enumitem/enumitem.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
 \labelindent=\skip64
 \enit@outerparindent=\dimen303
@@ -1472,8 +1439,7 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 \enit@inbox=\box74
 \enit@count@id=\count359
 \enitdp@description=\count360
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titlesec.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box75
 \beforetitleunit=\skip65
@@ -1484,12 +1450,10 @@ Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \titlewidth=\dimen306
 \titlewidthlast=\dimen307
 \titlewidthfirst=\dimen308
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titletoc.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titletoc.sty
 Package: titletoc 2025/01/04 v2.17 TOC entries
 \ttl@leftsep=\dimen309
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/fancyhdr/fancyhdr.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 
 \f@nch@headwidth=\skip67
@@ -1507,10 +1471,8 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthC=\skip79
 \f@nch@widthR=\skip80
 \@temptokenb=\toks48
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@tempdima=\dimen310
@@ -1526,7 +1488,6 @@ Package caption Info: Standard document class detected.
 \c@caption@flags=\count361
 \c@continuedfloat=\count362
 Package caption Info: longtable package is loaded.
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/caption/ltcaption.sty
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 ))
@@ -1537,18 +1498,15 @@ Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
 etadata.sty
 Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PD
 F (HO)
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/graphics/lscape.sty
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
-))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/eso-pic/eso-pic.sty
+)) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2026/05/31 v3.0e eso-pic (RN)
 \ESO@tempdima=\dimen318
 \ESO@tempdimb=\dimen319
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/ragged2e/ragged2e.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/ragged2e/ragged2e.sty
 Package: ragged2e 2023/06/22 v3.6 ragged2e Package
 \CenteringLeftskip=\skip81
 \RaggedLeftLeftskip=\skip82
@@ -1564,8 +1522,7 @@ Package: ragged2e 2023/06/22 v3.6 ragged2e Package
 \RaggedLeftParindent=\skip92
 \RaggedRightParindent=\skip93
 \JustifyingParindent=\skip94
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage.sty
 Package: lastpage 2025/08/14 v2.1h lastpage: 2.09 or 2e? (HMM)
 
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/lastpage/lastpage2e.sty
@@ -1580,11 +1537,10 @@ Package: lastpagemodern 2025-08-14 v2.1h Refers to last page's name (HMM; JPG)
 ))
 \LFXmonolado=\skip95
 \LFXmonofont=\skip96
- (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/import/import.sty
+(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/import/import.sty
 Package: import 2020/04/01  v 6.2
 )
 \c@LFXresumen=\count364
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2026-06-17 v7.01r Hypertext links for LaTeX
 
@@ -1598,7 +1554,6 @@ Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/pdfescape/pdfescape.s
 ty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 )
@@ -1615,13 +1570,10 @@ Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 \pdftexcmds@toks=\toks49
-))
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/hycolor/hycolor.sty
+)) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/nameref.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/nameref.sty
 Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
@@ -1642,13 +1594,13 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 \@linkdim=\dimen320
 \Hy@linkcounter=\count366
 \Hy@pagecounter=\count367
- (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/pd1enc.def
+(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2026-06-17 v7.01r Hyperref: PDFDocEncoding definition (HO)
 ) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count368
- (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/puenc.def
+(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/puenc.def
 File: puenc.def 2026-06-17 v7.01r Hyperref: PDF Unicode definition (HO)
 )
 Package hyperref Info: Option `final' set `true' on input line 4070.
@@ -1662,14 +1614,12 @@ Package hyperref Info: Backreferencing OFF on input line 4219.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4466.
 \c@Hy@tempcnt=\count369
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty
 \Urlmuskip=\muskip19
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4805.
 \XeTeXLinkMargin=\dimen321
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
@@ -1693,7 +1643,6 @@ Package hyperref Info: PDF/A mode OFF on input line 6121.
 \c@Hfootnote=\count373
 )
 Package hyperref Info: Driver (autodetected): hluatex.
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/hyperref/hluatex.def
 File: hluatex.def 2026-06-17 v7.01r Hyperref driver for luaTeX
 \Fld@listcount=\count374
@@ -1713,7 +1662,6 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 \Hy@SectionHShift=\skip97
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 972.
-
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2026-05-21 v1.32 PDF bookmarks (HO)
 
@@ -1722,32 +1670,28 @@ File: bkm-luatex.def 2026-05-21 v1.32 bookmark driver for luaTeX (HO)
 \BKM@id=\count376
 )) (./lafrox-portada.tex
 \LFXcajasubtituloportada=\box76
-)) (./sd13-comun.tex
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/base/flafter.sty
+)) (./sd13-comun.tex (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/ba
+se/flafter.sty
 Package: flafter 2025/08/22 v1.4z Standard LaTeX floats after reference (FMi)
 Applying: [2025/06/01] float order in 2-column on input line 49.
 Already applied: [2015/01/01] float order in 2-column on input line 152.
 Already applied: [0000/00/00] float order in 2-column on input line 254.
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/placeins/placeins.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/float/float.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count377
 \float@exts=\toks50
 \float@box=\box77
 \@float@everytoks=\toks51
 \@floatcapt=\box78
-)
-(C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/xurl/xurl.sty
+) (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/xurl/xurl.sty
 Package: xurl 2022/01/09 v 0.10 modify URL breaks
 ))
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'spanish'.
-
 (./LAFROX-Subdocumento13.aux
 LaTeX Info: Redefining \. on input line 9.
 LaTeX Info: Redefining \% on input line 9.
@@ -1776,7 +1720,6 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
 *geometry* verbose mode - [ preamble ] result:
@@ -1973,11 +1916,11 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 19.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [1
+[1
 
 {C:/Users/henri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}<./logo/lafrox_
-isotipo_naranja.pdf><./logo/firma_representante.png>]
-(./LAFROX-Subdocumento13.toc
+isotipo_naranja.pdf><./logo/firma_representante.png>] (./LAFROX-Subdocumento13.
+toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 <logo/lafrox_isotipo_negro.pdf, id=99, 433.62pt x 433.62pt>
@@ -1989,7 +1932,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 39.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [2
+[2
 
 <./logo/lafrox_isotipo_negro.pdf>])
 \tf@toc=\write4
@@ -2003,8 +1946,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 20.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [3]
-(./LAFROX-Subdocumento13.lot
+[3] (./LAFROX-Subdocumento13.lot
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 )
@@ -2019,7 +1961,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 20.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [4
+[4
 
 ] (./LAFROX-Subdocumento13.lof
 LaTeX Info: Redefining \. on input line 1.
@@ -2036,10 +1978,9 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 20.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [5
+[5
 
-]
-(./13_innovaciones/contenido.tex
+] (./13_innovaciones/contenido.tex
 Capítulo 13.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
@@ -2061,7 +2002,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 32.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [7]
+[7]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 32.
@@ -2072,7 +2013,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 32.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [8]
+[8]
 <13_innovaciones/diagramas/Fig_13-1_Mapa_Innovaciones.pdf, id=310, 461.80528pt 
 x 586.10968pt>
 File: 13_innovaciones/diagramas/Fig_13-1_Mapa_Innovaciones.pdf Graphic file (ty
@@ -2091,7 +2032,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 40.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [9<./13_innovaciones/diagramas/Fig_13-1_Mapa_Innovaciones.pdf>]
+[9<./13_innovaciones/diagramas/Fig_13-1_Mapa_Innovaciones.pdf>]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 66.
@@ -2102,7 +2043,6 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 66.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
-
 [10]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2114,7 +2054,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 81.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [11]
+[11]
 <13_innovaciones/diagramas/Fig_13-2_Recorrido_INN01.pdf, id=340, 435.54718pt x 
 395.55779pt>
 File: 13_innovaciones/diagramas/Fig_13-2_Recorrido_INN01.pdf Graphic file (type
@@ -2133,7 +2073,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 96.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [12]
+[12]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 107.
@@ -2145,7 +2085,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 107.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [13<./13_innovaciones/diagramas/Fig_13-2_Recorrido_INN01.pdf>]
+[13<./13_innovaciones/diagramas/Fig_13-2_Recorrido_INN01.pdf>]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 124.
@@ -2157,7 +2097,6 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 124.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
-
 [14]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2170,7 +2109,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 131.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [15]
+[15]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 146.
@@ -2182,7 +2121,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 146.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [16]
+[16]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 164.
@@ -2194,7 +2133,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 164.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [17]
+[17]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 181.
@@ -2206,7 +2145,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 181.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [18]
+[18]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 181.
@@ -2218,7 +2157,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 181.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [19]
+[19]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 206.
@@ -2230,7 +2169,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 206.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [20]
+[20]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 229.
@@ -2242,7 +2181,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 229.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [21]
+[21]
 <13_innovaciones/diagramas/Fig_13-3_Recorrido_INN02.pdf, id=410, 435.54718pt x 
 395.55779pt>
 File: 13_innovaciones/diagramas/Fig_13-3_Recorrido_INN02.pdf Graphic file (type
@@ -2262,7 +2201,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 236.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [22]
+[22]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 247.
@@ -2274,7 +2213,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 247.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [23<./13_innovaciones/diagramas/Fig_13-3_Recorrido_INN02.pdf>]
+[23<./13_innovaciones/diagramas/Fig_13-3_Recorrido_INN02.pdf>]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 263.
@@ -2286,7 +2225,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 263.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [24]
+[24]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 263.
@@ -2298,7 +2237,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 263.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [25]
+[25]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 280.
@@ -2310,7 +2249,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 280.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [26]
+[26]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 280.
@@ -2322,7 +2261,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 280.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [27]
+[27]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 293.
@@ -2334,7 +2273,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 293.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [28]
+[28]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 307.
@@ -2346,7 +2285,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 307.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [29]
+[29]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 325.
@@ -2358,7 +2297,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 325.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [30]
+[30]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 325.
@@ -2370,7 +2309,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 325.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [31]
+[31]
 LaTeX Font Info:    Font shape `TU/IBMPlexMono(0)/m/n' will be
 (Font)              scaled to size 10.21198pt on input line 332.
 Package microtype Info: Loading generic protrusion settings for font family
@@ -2388,7 +2327,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 341.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [32]
+[32]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 357.
@@ -2400,7 +2339,6 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 357.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
-
 [33]
 <13_innovaciones/diagramas/Fig_13-4_Recorrido_INN03.pdf, id=485, 435.54718pt x 
 395.55779pt>
@@ -2421,7 +2359,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 369.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [34]
+[34]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 379.
@@ -2433,7 +2371,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 379.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [35<./13_innovaciones/diagramas/Fig_13-4_Recorrido_INN03.pdf>]
+[35<./13_innovaciones/diagramas/Fig_13-4_Recorrido_INN03.pdf>]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 388.
@@ -2445,7 +2383,6 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 388.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
-
 [36]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2458,7 +2395,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 404.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [37]
+[37]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 419.
@@ -2470,7 +2407,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 419.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [38]
+[38]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 419.
@@ -2482,7 +2419,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 419.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [39]
+[39]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 440.
@@ -2494,7 +2431,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 440.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [40]
+[40]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 461.
@@ -2506,7 +2443,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 461.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [41]
+[41]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 474.
@@ -2518,19 +2455,19 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 474.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [42]
+[42]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 493.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 494.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 493.
-LaTeX Info: Redefining \% on input line 493.
+LaTeX Info: Redefining \. on input line 494.
+LaTeX Info: Redefining \% on input line 494.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 493.
+Package luatex.def Info: logo/firma_representante.png  used on input line 494.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [43]
+[43]
 <13_innovaciones/diagramas/Fig_13-5_Recorrido_INN04.pdf, id=550, 435.54718pt x 
 395.55779pt>
 File: 13_innovaciones/diagramas/Fig_13-5_Recorrido_INN04.pdf Graphic file (type
@@ -2541,28 +2478,16 @@ Package luatex.def Info: 13_innovaciones/diagramas/Fig_13-5_Recorrido_INN04.pdf
 (luatex.def)             Requested size: 440.28165pt x 399.8663pt.
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 501.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 503.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 501.
-LaTeX Info: Redefining \% on input line 501.
+LaTeX Info: Redefining \. on input line 503.
+LaTeX Info: Redefining \% on input line 503.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 501.
+Package luatex.def Info: logo/firma_representante.png  used on input line 503.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [44]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 509.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 509.
-LaTeX Info: Redefining \% on input line 509.
-File: logo/firma_representante.png Graphic file (type png)
-<use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 509.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [45<./13_innovaciones/diagramas/Fig_13-5_Recorrido_INN04.pdf>]
+[44<./13_innovaciones/diagramas/Fig_13-5_Recorrido_INN04.pdf>]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 525.
@@ -2574,7 +2499,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 525.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [46]
+[45]
 Overfull \hbox (3.53429pt too wide) in paragraph at lines 540--540
 \TU/SourceSerif4(0)/m/n/9.5 eva-lua-ción 
  []
@@ -2590,7 +2515,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 540.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
-[47]
+[46]
 Overfull \hbox (13.39287pt too wide) in paragraph at lines 552--552
 \TU/SourceSans3(2)/m/n/9.5 (Sub-do-cu-men-to 
  []
@@ -2606,7 +2531,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 552.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
-[48]
+[47]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 565.
@@ -2618,7 +2543,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 565.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [49]
+[48]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 594.
@@ -2630,8 +2555,8 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 594.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [50]
-<13_innovaciones/diagramas/Fig_13-6_Recorrido_INN05.pdf, id=602, 435.54718pt x 
+[49]
+<13_innovaciones/diagramas/Fig_13-6_Recorrido_INN05.pdf, id=598, 435.54718pt x 
 395.55779pt>
 File: 13_innovaciones/diagramas/Fig_13-6_Recorrido_INN05.pdf Graphic file (type
  pdf)
@@ -2650,7 +2575,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 612.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [51]
+[50]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 622.
@@ -2662,7 +2587,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 622.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [52<./13_innovaciones/diagramas/Fig_13-6_Recorrido_INN05.pdf>]
+[51<./13_innovaciones/diagramas/Fig_13-6_Recorrido_INN05.pdf>]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 633.
@@ -2674,19 +2599,19 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 633.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [53]
+[52]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 652.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 640.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 652.
-LaTeX Info: Redefining \% on input line 652.
+LaTeX Info: Redefining \. on input line 640.
+LaTeX Info: Redefining \% on input line 640.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 652.
+Package luatex.def Info: logo/firma_representante.png  used on input line 640.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [54]
+[53]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 655.
@@ -2698,7 +2623,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 655.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [55]
+[54]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 672.
@@ -2710,43 +2635,31 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 672.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [56]
+[55]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 694.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 693.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 694.
-LaTeX Info: Redefining \% on input line 694.
+LaTeX Info: Redefining \. on input line 693.
+LaTeX Info: Redefining \% on input line 693.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 694.
+Package luatex.def Info: logo/firma_representante.png  used on input line 693.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [57]
+[56]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 705.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 704.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 705.
-LaTeX Info: Redefining \% on input line 705.
+LaTeX Info: Redefining \. on input line 704.
+LaTeX Info: Redefining \% on input line 704.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 705.
+Package luatex.def Info: logo/firma_representante.png  used on input line 704.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [58]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 724.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 724.
-LaTeX Info: Redefining \% on input line 724.
-File: logo/firma_representante.png Graphic file (type png)
-<use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 724.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [59]
+[57]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 724.
@@ -2758,7 +2671,19 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 724.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [60])
+[58]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 724.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 724.
+LaTeX Info: Redefining \% on input line 724.
+File: logo/firma_representante.png Graphic file (type png)
+<use logo/firma_representante.png>
+Package luatex.def Info: logo/firma_representante.png  used on input line 724.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+[59])
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 23.
@@ -2769,8 +2694,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 23.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [61]
-
+[60] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (./LAFROX-Subdocumento13.aux
 LaTeX Info: Redefining \. on input line 9.
@@ -2783,16 +2707,16 @@ L3 programming layer <2026-07-20>
 )
 
 Here is how much of LuaTeX's memory you used:
- 39348 strings out of 475695
+ 39303 strings out of 475695
  156265,1977958 words of node,token memory allocated
  853 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 5 kern, 1 penalty, 1 margin_ke
 rn, 4 glyph, 38 attribute, 79 glue_spec, 20 attribute_list, 2 write, 9 pdf_actio
 n nodes
-   avail lists: 1:3,2:3603,3:796,4:537,5:2045,6:227,7:10725,8:116,9:2056,10:29,1
-1:1294
- 58718 multiletter control sequences out of 65536+600000
- 140 fonts using 58776023 bytes
+   avail lists: 1:4,2:3642,3:799,4:537,5:2045,6:229,7:10941,8:116,9:2061,10:29,1
+1:1306
+ 58716 multiletter control sequences out of 65536+600000
+ 140 fonts using 58776247 bytes
  107i,24n,128p,1768b,2907s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/op
@@ -2806,9 +2730,9 @@ ocal/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Regular.otf><c:
 /users/henri/appdata/local/programs/miktex/fonts/opentype/adobe/sourcesans/sourc
 esans3-medium.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/a
 dobe/sourcesans/SourceSans3-Semibold.otf>
-Output written on LAFROX-Subdocumento13.pdf (61 pages, 577172 bytes).
+Output written on LAFROX-Subdocumento13.pdf (60 pages, 575344 bytes).
 
-PDF statistics: 913 PDF objects out of 1000 (max. 8388607)
- 155 named destinations out of 1000 (max. 1048576)
+PDF statistics: 908 PDF objects out of 1000 (max. 8388607)
+ 154 named destinations out of 1000 (max. 1048576)
  384 words of extra memory for PDF output out of 10000 (max. 100000000)
 

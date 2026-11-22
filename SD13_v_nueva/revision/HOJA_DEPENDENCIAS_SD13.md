@@ -4,20 +4,22 @@ Regla de trabajo: **solo se edita el SD13**. Cuando otro subdocumento cambie, se
 
 ## Cómo revisar después de cualquier cambio externo
 
-1. `git -C ../sd7-corrigiendo log -1`, `../sd8-revision`, `../sd4-corrigiendo`, `../sd3-corrigiendo` y `../../LafroX`: comparar con los commits de la tabla «Estado de las fuentes» de abajo.
+1. `git -C ../sd7-corrigiendo log -1`, `../sd8-revision`, `../sd4-corrigiendo`, `../sd3-corrigiendo`, `../sd9-corrigiendo` y `../../LafroX`: comparar con los commits de la tabla «Estado de las fuentes» de abajo.
 2. Si cambió alguno: `python revision/verificar_coherencia_sd13.py` (códigos EDT, paquetes y meses, fechas, R-027, montos, referencias, texto de proceso, páginas del Caso, cifras de los escenarios).
 3. Revisar a mano lo que el script no cubre (columna «A mano»).
 4. Compilar las tres piezas: `latexmk LAFROX-Subdocumento13.tex`, `LAFROX-Subdocumento13-Anexos.tex`, `LAFROX-Formulario-T-19.tex`.
 5. Registrar el cambio en `REGISTRO_CAMBIOS_SD13.md` y actualizar esta hoja.
 
-## Estado de las fuentes (última revisión: 18-11-2026)
+## Estado de las fuentes (última revisión: 22-11-2026)
 
 | Fuente | Commit revisado | Estado respecto de origin |
 |---|---|---|
-| SD3 `sd3-corrigiendo` | `887ab84c` | al día |
-| SD4 `sd4-corrigiendo` | `5485aaf9` | al día |
-| SD7 `sd7-corrigiendo` (T-14 y T-15) | `b8bededf` | al día |
-| SD8 `sd8-revision` (T-16, Anexo 8.E) | `1f2d739e` | al día |
+| SD13 `sd13-corrigiendo` | `51d750cf` | al día (incluye INN-04: fórmula en 7.4.1, calibración en 7.4.2; entrega del H4) |
+| SD3 `sd3-corrigiendo` | `3ee615a9` | al día |
+| SD4 `sd4-corrigiendo` | `0dc50b3d` | al día |
+| SD7 `sd7-corrigiendo` (T-14 y T-15) | `0624f701` (origin) | carta nivelada: la tabla CPM de la cuenta 7 iguala la de paquetes (7.1.4, 7.2.4 y 7.3.4 con holgura 0); 6.1.1, 6.7.1 y 6.7.2 terminan el 22-10-2027, 01-12-2027 y 28-06-2028; H3 al 22-06/07-07-2027; H4, H5, H10 y H12 sin cambios. Anexo 13.B corregido (RV-04) |
+| SD8 `sd8-revision` (T-16, Anexo 8.E) | `b9861aeb` (origin) | CT-08 a CT-13 citan SD13 y T-19; umbrales cotejados, coinciden |
+| SD9 `sd9-corrigiendo` (T-13, T-17) | `74916460` (origin) | hitos del T-17 al día con el T-15; sin efecto en el SD13 |
 | Modelo financiero | `LafroX_ModeloFinanciero_3_20261113.xlsx` | del 15-11-2026 |
 | PDF oficial del Caso, de las Bases Administrativas y de las Técnicas | `trazabilidad-informe2/Bases/pdf/` | páginas impresas «n / N» |
 
@@ -58,11 +60,20 @@ Regla de trabajo: **solo se edita el SD13**. Cuando otro subdocumento cambie, se
 
 ## Diferencias detectadas en otros documentos (para avisar a sus dueños; no se editan desde el SD13)
 
-- **E2 2.7** (F1-01): usa los códigos antiguos de paquetes (líneas 5 y 46) y no menciona el ingreso contingente de INN-04.
+Abiertas (revisadas el 22-11-2026):
+
+- **E2 2.7** (F1-01): usa los códigos antiguos de paquetes (líneas 5 y 46) y no menciona el ingreso contingente de INN-04. Sin commits nuevos en origin.
 - **Modelo financiero:** perfil de INN-04 (todo a Jefe de Proyecto; el T-15 reparte con el Analista PMO), reparto de horas de INN-05 (893,4 + 226,6 contra 960 + 160 del T-15) y meses de operación de INN-02 (22-55 contra 21-56 del T-15).
-- **SD8** (F2-01, F2-02): Tabla 8.1 pone Datos e Implantación en Operación desde el mes 22 (el T-15 dice 21); «5.4.3» en el T-16 y en el Anexo F; R-029 «programa 7.1.2» y R-035 «dentro de 7.1.3» chocan con INN-01.P2 y P3.
-- **SD3 y T-12** (A2-04): retirar el «Cumple» de RT-05.30 por INN-03 (`LAFROX-Formulario-T-12.tex:421`) y revisar RT-18.08 (`:628`); el SD13 ya no presenta INN-03 como respuesta al RT-05.30.
-- **SD3 y T-12** (F2-02, F4-02): R-027 aparece como «2 × 3 (0,06)» junto a valores iniciales; RT-04.14 se justifica «por INN-02» (alcance obligatorio, Art. 30); RT-26.01 y RT-26.02 con los códigos antiguos.
-- **SD9** (F2-02): códigos antiguos 3.10.x, 8.3.x y 5.4.3; «2 × 3 (0,06)» para R-027; `CANON_LAFROX.md:8` dice que los riesgos de innovación parten en R-034.
-- **SD7** (F2-09, F3-03, F3-06): el T-14 y el T-15 asignan distinto frente a 7.1, 7.2, 7.3 y 7.5 (F3 contra F4, F8); 7.5.4 termina el 29-09-2028 pero su rótulo dice meses 18 a 21 y se acepta en el acta del H12; la ventana de 7.3.5 es 21-56 en la tabla de asignación y 24-54 en `tab_T15_10.tex`; 7.3.2 termina en el mes 8 y figura «5 a 9»; la lista de revisiones de 7.3.5 omite los meses 33 y 45.
+- **SD8 R-027** (nueva): el Anexo F (`anexo-f-respuestas.tex:48`) y los Anexos del SD8 piden «reglas de 7.4.1 aprobadas al cierre del mes 20»; el T-14 (`dic_7_4.tex`) y el SD13 dicen que Finanzas aprueba la fórmula inicial al cierre de 7.4.1 (1 al 9 de junio de 2028, mes 17) y que la calibración es de 7.4.2 (meses 21 a 23). No es contradicción (el mes 20 sirve de plazo máximo), pero conviene alinear la redacción.
+- **SD3 y T-12** (A2-04, A3-02): `LAFROX-Formulario-T-12.tex:421` mantiene RT-05.30 «Cumple» por el modelo cinético de INN-03; `:628` (RT-18.08) sigue apoyado en INN-03; `:391` sigue atribuyendo RT-04.14 a INN-02.
+- **SD9** (F2-02): `CANON_LAFROX.md:8` dice que los riesgos de innovación parten en R-034 (el SD13 usa R-027 y siguientes del SD8).
+- **SD7** (F2-09, F3-03, F3-06): 7.5.4 sigue con meses 18 a 21 y «incluida en el acta del H12»; la ventana de 7.3.5 es 21-56 en la tabla de asignación y 24-54 en `tab_T15_10.tex`; 7.3.2 termina en el mes 8 y figura «5 a 9». Menor: el T-15 llama a 7.2.4 «parte 1» y el T-14 y el SD13 «primera parte». Nueva (22-11): el texto del T-15 (`formulario-t15/contenido.tex:69`) describe el CPM con «inicio y fin tempranos», mientras la tabla CPM ahora presenta fechas niveladas.
 - **SD4** (F3-01): el Anexo 4-N no incluye la capa 5 (cola de sincronización) para INN-05.
+
+Resueltas en origin (19-11-2026 y 22-11-2026):
+
+- **SD8** (22-11): el Anexo 8.E vincula CT-08 a CT-13 con las secciones 13.N.6–13.N.7, el Anexo 13.B y las fichas del T-19, con los mismos umbrales del SD13.
+
+- **SD8** (F2-01, F2-02): «5.4.3» pasó a 7.4.1 en el T-16, el Anexo F y los Anexos; R-029 y R-035 citan 9.5.2 y 9.5.3, ya no 7.1.2 y 7.1.3; la Tabla 8.1 y el Anexo 8.E ponen a SRE desde el mes 21 para INN-03 y desde el 22 para el despliegue por rutas de INN-05, igual que el SD13.
+- **SD3 y T-12** (F2-02, F4-02): RT-26.01 y RT-26.02 con los códigos 7.x; ya no aparece «2 × 3 (0,06)» para R-027.
+- **SD9** (F2-02): 3.10.x, 8.3.x y 5.4.3 de INN-02 pasaron a 7.2.1 a 7.2.5; ya no aparece «2 × 3 (0,06)».
