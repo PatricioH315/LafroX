@@ -8,31 +8,21 @@
 \phantomsection\label{fuente-12-k-dimensionamiento}
 \label{sec:dimensionamiento}
 
-El dimensionamiento traduce la volumetría del caso en capacidad para la operación normal, la ventana protegida de despacho y el peak de septiembre. Las citas nombran las Bases Técnicas del caso y las Bases Técnicas Transversales con su capítulo y página. La cadena es: hechos y requisitos, supuestos mínimos, dieciséis dimensiones del numeral 14.2 de las Bases Técnicas del caso (p. 25), capacidad por lugar de proceso y equipamiento. El Anexo 4-W conserva las sustituciones, el perfil horario, las sensibilidades y los umbrales. Esta sección presenta la decisión de arquitectura y su consecuencia operativa.
+El dimensionamiento deriva las dieciséis dimensiones del numeral 14.2 del caso (p. 25) para operación normal, despacho y septiembre. El Anexo 4-W conserva entradas, sustituciones, perfil horario, sensibilidades y umbrales. Aquí se analizan los resultados y la selección de capacidad.
 
 El alcance de capacidad incorpora también las cinco innovaciones del Subdocumento 13: procesamiento analítico, almacenamiento de resultados, consultas operacionales, precarga y sincronización, y recursos temporales de reproducción de incidentes. El equipamiento y los servicios existentes son su punto de realización, no una demostración de suficiencia. La carga incremental se cuantifica por ventana y lugar de proceso según el Anexo 4-W y se contrasta en las pruebas de esta sección antes de aceptar la capacidad.
 
 \subsubsection{Método, fuentes y supuestos}
 \label{sec:dimensionamiento-metodo}
 
-Un hecho del caso se cita y no se registra como supuesto. Un requisito proviene de las Bases o del Capítulo 15. Un parámetro de diseño es una decisión que imponemos a la solución. Un supuesto completa una cifra que el caso calla y declara fundamento, impacto y validación. Un cálculo se deriva de las entradas anteriores. Los parámetros de plataforma son 50 ms de CPU por solicitud, 64 MB de memoria por proceso y 150 ms de permanencia del proceso en Fargate. Son parámetros de diseño que se perfilan y se verifican en las pruebas de RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21). Los tiempos de respuesta se evalúan en el percentil 95 conforme al numeral 9.1 de las Bases Técnicas Transversales (cap. 9, p. 21).
+El Anexo 4-W.1 distingue hechos, requisitos, parámetros y supuestos con fundamento, impacto y validación. Los parámetros de plataforma son 50 ms de CPU por solicitud, 64 MB por proceso y 150 ms de permanencia en Fargate, sujetos a perfilado y prueba. La respuesta se mide en percentil 95 (RT-09.06 y numeral 9.1, Bases Técnicas Transversales, cap. 9, p. 21).
 
 SV-04 duplica la tasa media en la hora cargada de cada ventana sin reducir las demás horas. Es un margen de carga del perfil de diseño, no una redistribución del mismo volumen diario ni una medición del CLIENTE.
 
 \subsubsection{Perfil de carga y regímenes de diseño}
 \label{sec:dimensionamiento-regimenes}
 
-Las Bases Técnicas del caso (anexo B, p. 38) distribuyen la operación en estas ventanas:
-
-\begin{itemize}
-  \item Preparación de 22:00 a 06:00.
-  \item Cross-docking de 03:00 a 06:00.
-  \item Despacho de 05:30 a 07:00.
-  \item Reparto de 07:00 a 19:00.
-  \item Recepción de proveedores de 08:00 a 18:00.
-  \item Preventa de 09:00 a 18:00.
-  \item Sincronización de 17:00 a 20:00.
-\end{itemize}
+El perfil del Anexo 4-W.2 distingue preparación 22:00--06:00, cross-docking 03:00--06:00, despacho 05:30--07:00, reparto 07:00--19:00, recepción 08:00--18:00, preventa 09:00--18:00 y sincronización 17:00--20:00 (Bases Técnicas del caso, anexo B, p. 38).
 
 En el perfil modelado, el bloque de 12:00 a 13:00 reúne los máximos agregados de 12,34 TPS en régimen normal y 14,66 TPS en septiembre. El modelo hace coincidir allí la carga alta de preventa, reparto y portal. El portal aporta 9,63 TPS y la nube, sin el portal, 2,71 TPS en régimen normal y 5,03 TPS en septiembre. Los máximos locales de los WMS y del conjunto de las tres plataformas de cross-docking ocurren de madrugada. El Anexo 4-W.2 conserva el perfil de 24 horas.
 
@@ -72,17 +62,9 @@ Portal & 9,63 & 0,00 & 0,00 & 9,63 \\
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25, y anexo~B, p.~38), para la volumetría y las ventanas de operación, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
 \paragraph*{Derivación por lugar de proceso}
-La distribución de las cargas de procesamiento por nodo y servicio se fundamenta en los siguientes criterios de derivación:
-\begin{itemize}
-\item \textbf{WMS de Talca.} preparación y despacho según perfil horario y SV-03.
-\item \textbf{WMS de Concepción.} 2/3 y 1/3 de preparación y despacho, SV-03.
-\item \textbf{Conjunto de los tres cross-docking.} Tres operaciones de llegada y una de despacho sobre el volumen agregado.
-\item \textbf{Nube, sin portal.} Preventa, reparto, recepción, trazabilidad, guías, sincronización y el escenario EDI.
-\item \textbf{Portal.} 2.600 ÷ 9 × 2 por SV-04 × 60 ÷ 3.600.
-\end{itemize}
+El Anexo 4-W.2 y el \href{LAFROX-Subdocumento4-Anexos.pdf#anx:X-calculos}{Anexo 4-X.4} conservan la derivación por sitio y portal: reparto SV-03, operaciones por flujo y concentración SV-04.
 
-
-El despacho se reparte entre ambos centros conforme a SV-03, en la misma proporción que la preparación. Los aproximadamente 2.852 documentos/día de septiembre son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías. Considerarlos todos como guías que deben emitirse antes de la salida es una cota conservadora. Las 2.600 sesiones diarias del portal son un parámetro de diseño: una por cada cliente de food service y de cadenas, 2.100 + 500 (Bases Técnicas del caso, cap. 2, p. 4), y no son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, anexo B, p. 38). Los objetivos de prueba de septiembre y de despacho se distinguen en la Tabla~\ref{tab:t86}.
+El modelo distingue DTE totales de guías y sesiones del portal de visitas de preventa. Los aproximadamente 2.852 DTE/día de septiembre se usan como cota conservadora de guías; las 2.600 sesiones diarias son un supuesto de diseño para food service y cadenas. Las bases, fórmulas y fuentes se conservan en el \href{LAFROX-Subdocumento4-Anexos.pdf#anx:X-calculos}{Anexo 4-X.4}. Despacho y septiembre mantienen ensayos distintos (Tabla~\ref{tab:t86}).
 
 \subsubsection{Personas usuarias, concurrencia y dispositivos: dimensiones 4–6}
 \label{sec:dimensionamiento-usuarios}
@@ -115,7 +97,7 @@ Cada cantidad incluye la reserva del 10 \% del parque, redondeada hacia arriba, 
 \subsubsection{Almacenamiento, retención y migración: dimensiones 7–10}
 \label{sec:dimensionamiento-almacenamiento}
 
-La dimensión 7, «Volumen anual de almacenamiento transaccional», la dimensión 8, «Volumen anual de almacenamiento de evidencia de entrega, firmas y fotografías», la dimensión 9, «Volumen anual de almacenamiento de series de temperatura y de posicionamiento», y la dimensión 10, «Volumen total de datos históricos a migrar», se resumen en la Tabla~\ref{tab:dimensionamiento-almacenamiento}.
+La Tabla~\ref{tab:dimensionamiento-almacenamiento} resume las dimensiones 7--10, almacenamiento transaccional, evidencias, temperatura/posición y migración. Las derivaciones por registro y byte están en el Anexo 4-W.4.
 
 \Needspace{0.48\textheight}
 \begin{tablalafrox}{Volumen, retención y destino de los datos}{tab:dimensionamiento-almacenamiento}{F{0.25} G{0.18} F{0.20} G{0.18} Y}{\cab{Dominio} & \cab{Volumen anual} & \cab{Retención} & \cab{Acumulado} & \cab{Destino}}
@@ -146,7 +128,7 @@ La dimensión 11, «Número de integraciones y volumen de mensajes por integraci
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para los volúmenes de integración, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
-El EDI actual es cero. Desde enero de 2029 opera todos los días, y se dimensiona con la misma hipótesis en régimen y en peak: 11\,\% de los pedidos, que corresponde a la cadena principal y su 11\,\% de la venta (SV-05), con cuatro mensajes por pedido. Son 1.400 × 11\,\% × 4 = 616 mensajes en régimen y 2.600 × 11\,\% × 4 = 1.144 en peak. La pasarela de pago se acota con un pago electrónico por entrega como máximo y dos mensajes por pago, solicitud y respuesta: 2.800 en régimen y 5.200 en peak. Los 11.800 cobros mensuales del caso son en efectivo y no miden pagos con tarjeta. La Tabla~\ref{tab:t81} compara el peor caso del camino principal y el drenaje de los caminos de respaldo.
+El EDI actual es cero y se dimensiona desde enero de 2029 con SV-05. La estimación distingue pagos electrónicos de cobros en efectivo; los cálculos por mensaje y sus supuestos se conservan en el \href{LAFROX-Subdocumento4-Anexos.pdf#anx:X-calculos}{Anexo 4-X.4}. La Tabla~\ref{tab:t81} compara caminos y drenaje.
 
 \Needspace{0.62\textheight}
 \begin{tablalafrox}{Ancho de banda por sitio y camino}{tab:t81}{Y G{0.16} G{0.22} G{0.22}}{\cab{Sitio} & \cab{Camino} & \cab{Subida de diseño} & \cab{Utilización}}
@@ -202,7 +184,7 @@ La capacidad propuesta conserva maestros, stock, lotes presentes y movimientos d
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para la capacidad por sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
-Ceph entrega 1,92 TB útiles con seis NVMe de 960 GB, tres réplicas y sin RAID. Con un nodo caído, Talca conserva 64 vCPU y 128 GB RAM, y Ceph sigue sirviendo los datos con dos réplicas hasta que el nodo vuelve. El umbral de llenado al 80\,\% es 1,54 TB, superior a los 221 GB requeridos a 3×. Su utilización actual es 40,62\,\% de CPU, 46,09\,\% de RAM y 10,94\,\% de disco. A 3× es 40,62\,\%, 47,66\,\% y 11,51\,\%, respectivamente. Cada servidor de Concepción dispone de 16 hilos, 32 GB RAM y 3,84 TB útiles en RAID 10 y aloja el conjunto completo, activo o en espera. Utiliza 75,00\,\% de CPU, 53,12\,\% de RAM y 3,65\,\% de disco actualmente, y 75,00\,\%, 56,25\,\% y 3,65\,\% a 3×. En Talca la redundancia es N+1 dentro del clúster, y sus nodos ofertados de 32 hilos y 64 GB ya cubren 3×. En Concepción y en cada cross-docking la redundancia es un segundo equipo idéntico en espera, de modo que la utilización por equipo no cambia.
+La capacidad ofertada conserva N+1 y tres réplicas en Talca y un segundo equipo completo en Concepción y cada cross-docking. El umbral de llenado de Ceph es 80~\%. Las capacidades útiles, márgenes y porcentajes actuales y a 3× se conservan en el Anexo 4-W.8 y el \href{LAFROX-Subdocumento4-Anexos.pdf#anx:X-calculos}{Anexo 4-X.4}; la Tabla~\ref{tab:t79} mantiene los mínimos por sitio.
 
 \subsubsection{Capacidad en nube}
 \label{sec:dimensionamiento-nube}
@@ -223,7 +205,7 @@ Cota extrema más canal tradicional & 111,70 solicitudes/s (91,70 + cuota de 20)
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para la capacidad de procesamiento en nube, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
-El portal en régimen usa 9,63 solicitudes/s y 96,30 sesiones concurrentes. Su cota extrema usa 43,33 solicitudes/s y 433,33 sesiones concurrentes. Con 120 solicitudes por sesión, manteniendo las sesiones repartidas en la hora, el portal alcanza 19,26 solicitudes/s en régimen y 86,67 en la cota extrema. Al sumar la nube resultan 21,97 y 91,70 solicitudes/s, que requieren 2 y 7 tareas. Con la cuota agregada de 20 solicitudes/s del canal tradicional, la cota completa alcanza 111,70 solicitudes/s y requiere las ocho tareas. No conserva capacidad para aumentar esa cuota. La prueba de carga verifica esta mezcla, la base dimensionada en el Anexo 4-W.9 y el tiempo de escalado, además del escenario de siete tareas.
+La Tabla~\ref{tab:dimensionamiento-nube} conserva los escenarios y tareas requeridas. La cota completa de 111,70 solicitudes/s ocupa las ocho tareas y no admite ampliar la cuota tradicional sin aumentar capacidad. El ensayo verifica mezcla, latencia, base y escalado; el cálculo de sesiones y sensibilidades se conserva en el Anexo 4-W.9 y el \href{LAFROX-Subdocumento4-Anexos.pdf#anx:X-calculos}{Anexo 4-X.4}.
 
 \subsubsection{Plan de capacidad}
 \label{sec:dimensionamiento-plan}
@@ -295,13 +277,7 @@ Informe estándar & 30 s \\
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~9, pp.~21--22), para los umbrales de desempeño y capacidad, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
 \paragraph*{Origen de los umbrales}
-La trazabilidad normativa y procedencia de cada umbral de tiempo de respuesta se detalla a continuación:
-\begin{itemize}
-\item \textbf{Confirmación de línea de preparación, Registro de entrega, Línea de preventa, Consulta de stock y crédito.} Bases Técnicas del caso, cap. 15, p. 26.
-\item \textbf{Transacción crítica de terreno, Carga inicial del portal, Navegación, API de consulta, API de escritura, Informe estándar.} Bases Técnicas Transversales, cap. 9, p. 21.
-\item \textbf{Búsqueda compuesta.} Bases Técnicas Transversales, cap. 9, p. 21; (Subdocumento 3, anexos), Anexo 3.A.
-\end{itemize}
-
+Los cuatro primeros umbrales de la Tabla~\ref{tab:t84} provienen del caso (cap. 15, p. 26). Los restantes se trazan a las Bases Técnicas Transversales (cap. 9, p. 21), y la búsqueda global al RF-17.11 del Anexo 3.A. El Anexo 4-W conserva las derivaciones y las condiciones de ensayo.
 
 Los otros candidatos son la base WMS, los IOPS, la Wi-Fi y el drenaje. Se detectan con percentil 95, longitud de colas, errores, retransmisiones y tiempo de sincronización. Si se supera una cota, se encola con clave idempotente, se limita la tasa y se muestra un mensaje explícito. No se pierden ni duplican pedidos.
 

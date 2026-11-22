@@ -1,7 +1,7 @@
 param([string]$Motor = 'lualatex', [switch]$SoloMain)
 # Compila los tres entregables del Subdocumento 4 (aclaraciones, sección 1) en la carpeta entrega/:
 #   LAFROX-Subdocumento4.pdf          cuerpo 4.1, 4.2 y 4.3
-#   LAFROX-Subdocumento4-Anexos.pdf   anexos 4-A a 4-W
+#   LAFROX-Subdocumento4-Anexos.pdf   anexos 4-A a 4-X
 #   LAFROX-Formulario-T-11.pdf        formulario propio
 $ErrorActionPreference = 'Continue'
 $motorDisponible = Get-Command $Motor -ErrorAction SilentlyContinue

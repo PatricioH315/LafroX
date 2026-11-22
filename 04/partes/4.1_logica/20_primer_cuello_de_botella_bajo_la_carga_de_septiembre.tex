@@ -2,7 +2,7 @@
 \phantomsection\label{fuente-20-primer-cuello-de-botella-bajo-la-carga-de-septiembre}
 \label{sec:cuello-botella-septiembre}
 
-Septiembre eleva las entregas diarias de aproximadamente 1.400 a 2.600 durante tres semanas. Las 2.600 entregas ocurren a lo largo de la jornada. La ventana 05:30--07:00 concentra la salida de 96 camiones, no todas las firmas de entrega. En esa ventana, el primer cuello de botella probable es la confirmación de guías del ERP mediante la ACL: es una dependencia singular y aumentar réplicas Laravel no acelera al emisor legado. La base transaccional de Talca, la WAN al reconectar y la transferencia de evidencias son candidatos adicionales, no recursos cuya saturación ya se haya medido. La Tabla~\ref{tab:cuello-botella} muestra cómo contrastar la hipótesis. RT-09.05 exige sustentar el primer límite con una prueba reproducible.
+Septiembre eleva las entregas de 1.400 a 2.600 diarias. La ventana 05:30--07:00 concentra 96 salidas y el primer límite probable es la confirmación de guías del ERP por ACL. Replicar Laravel no acelera al emisor legado. La base de Talca, WAN y evidencias son candidatos adicionales por medir (RT-09.05). La Tabla~\ref{tab:cuello-botella} vincula señales, respuesta y prueba.
 
 \Needspace{0.48\textheight}
 \begin{tablalafrox}{Detección del primer cuello de botella}{tab:cuello-botella}{F{0.23} F{0.26} F{0.27} Y}{\cab{Recurso} & \cab{Señal de saturación} & \cab{Respuesta lógica} & \cab{Prueba}}
@@ -14,12 +14,6 @@ M2 en bodega & Crecen espera de reserva y bloqueos de stock. & Serializar por SK
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de las Bases Técnicas del caso (cap.~14, p.~24, y anexo B, p.~38). Diseño propuesto: (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-20-primer-cuello-de-botella-bajo-la-carga-de-septiembre}--\pageref*{fuente-20-primer-cuello-de-botella-bajo-la-carga-de-septiembre-fin}).\par}
 
-La emisión de guías debe medirse antes de atribuir el límite al cómputo escalable.
-
-Al cerrar la carga nocturna, el servicio de integración con el ERP en VM-04 solicita la guía al ERP mediante la ACL local. El ERP dispone de fibra, LTE y satélite para comunicarse con el SII. Cualquier cambio de carga invalida la guía y exige otra antes de liberar. Se mide el número de guías sin confirmar antes de cada salida y se alerta al responsable de despacho. El camión afectado no se marca como liberado mientras falte el documento o una contingencia autorizada. La prueba de carga debe confirmar si el ERP es efectivamente el primer límite y ajustar esta hipótesis con medición, como exige RT-09.05.
-
-El Anexo 4-T especifica percentiles, ventanas de ensayo, carga de 1,5 veces el peak y escenario de crecimiento de tres veces, con colas y procesos aislados. Los resultados se deben medir. Los cálculos de escenario no son evidencia de capacidad ejecutada.
-
-
+La preemisión, invalidación por cambio de carga y bloqueo de salida se desarrollan en 4.1.17. Operaciones recibe la alerta de guías pendientes. El levantamiento del ERP debe medir su latencia y confirmar o corregir la hipótesis. Los tiempos por guía y la degradación se cuantifican en 4.2.6.11. El Anexo 4-T define pruebas a 1,5 veces el peak y crecimiento de tres veces con colas y procesos aislados.
 
 \label{fuente-20-primer-cuello-de-botella-bajo-la-carga-de-septiembre-fin}

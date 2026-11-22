@@ -9,9 +9,7 @@ El Data Center Secundario cubre dos dominios de recuperación. La región AWS us
 
 \subsubsection{Modalidad del sitio secundario}
 
-La modalidad del dominio de nube es activo-pasiva en caliente para el núcleo de aplicación y los datos replicados. La región us-east-1 mantiene ese núcleo con capacidad reducida. Ante la declaración del incidente se promueve Aurora y se escala la aplicación. Los canales y dependencias que requieren restitución se distinguen en 4.3.2.5 y T-11. No se presume una réplica caliente de todos los servicios del catálogo. El dominio de Talca conserva en Aurora una copia continua de su WMS y la misma imagen \texttt{wms\_only} lista para ejecutarse en ECS Fargate. ADR-09 (Anexo 4-O) registra la selección frente a activo-activo y a la restauración en frío. La primera alternativa exigiría coordinar escrituras simultáneas entre regiones. La segunda agrega la reconstrucción de la plataforma al tiempo de recuperación.
-
-Frente a un esquema activo-activo, la réplica caliente reducida evita pagar de forma permanente dos plataformas a plena carga. Frente a una restauración en frío, mantiene suficiente capacidad en espera para cumplir el RTO sin reconstruir la plataforma. Ese equilibrio entre costo, RTO y complejidad justifica la elección (RT-07.01, Bases Técnicas Transversales, cap. 7, p. 17).
+El núcleo de nube y sus datos mantienen una réplica activo-pasiva en caliente y de capacidad reducida en us-east-1. Al declarar el incidente se promueve Aurora y escala la aplicación; 4.3.2.5 y T-11 distinguen los canales y dependencias que deben restituirse. Para Talca se prepara su copia continua en Aurora y la imagen \texttt{wms\_only} en Fargate. ADR-09 (Anexo 4-O) elige esta modalidad: evita coordinar escrituras y pagar dos plataformas completas como activo-activo, y evita reconstruir la plataforma como una restauración en frío (RT-07.01, Bases Técnicas Transversales, cap. 7, p. 17).
 
 \subsubsection{Región o sitio de recuperación}
 

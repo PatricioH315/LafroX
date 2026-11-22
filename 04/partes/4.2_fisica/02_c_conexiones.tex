@@ -9,7 +9,7 @@
 \phantomsection\label{fuente-02-c-conexiones}
 \label{sec:conexiones}
 
-Esta sección describe cómo se conectan los sitios, el terreno y la nube, identifica cada punto donde esa conexión o su infraestructura puede fallar, y declara cómo se resuelve cada falla o, cuando no se resuelve de forma automática, cuál es la contingencia. Su punto de partida es el caso: la conectividad actual de Puelche se corta con frecuencia y en algunos lugares no existe, por lo que la solución no puede suponer un enlace disponible y debe decir, para cada conexión, qué pasa cuando no lo está.
+Esta sección fija conexiones, puntos de falla, resolución y contingencias para una operación con enlaces intermitentes o inexistentes.
 
 \subsubsection{Conexiones entre sitios, terreno y nube}
 
@@ -53,7 +53,7 @@ La Tabla~\ref{tab:conexiones} resume cada conexión con su medio, su camino alte
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~3, pp.~9--10), para la conectividad y los caminos alternativos, y (Bases Técnicas del caso, cap.~6, pp.~10--11), para las condiciones de cada sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-02-c-conexiones}--\pageref*{fuente-02-c-conexiones-fin}).\par}
 
-Los cinco sitios tienen caminos alternativos hacia la nube. Los sitios mantienen las funciones locales de 4.1.15. Una nueva guía sigue dependiendo del ERP de Talca y de su comunicación tributaria. El terreno conserva la captura autorizada sin señal y los termógrafos mantienen su registro interno. Los portales requieren conexión, salvo el Portal de Clientes instalado, que conserva el catálogo descargado y el pedido armado hasta recuperar señal.
+Los cinco sitios conservan las funciones locales de 4.1.15; nuevas guías requieren ERP y comunicación tributaria. El terreno captura con autorización vigente y los termógrafos mantienen su registro. Solo el Portal de Clientes instalado conserva catálogo y pedido sin conexión; los otros portales la requieren.
 
 \subsubsection{Superficie de exposición}
 \label{sub:superficie}
@@ -101,8 +101,7 @@ Cada conexión se apoya en equipos del sitio que también pueden fallar. El list
 \item \textbf{Climatización de la sala de Talca.} \textbf{Resolución:} Segunda unidad de precisión en N+1, \textbf{Contingencia:} Alerta del monitoreo de los sensores ambientales.
 \end{itemize}
 
-
-En Concepción, el RAID 10 tolera la falla de un disco y las fuentes redundantes sostienen cada servidor ante la pérdida de un circuito. Si falla el servidor activo, el de espera toma su lugar con la base al día, y solo la pérdida de ambos obliga a reconstruirla desde el estado central alimentado por sus eventos. En Talca, el tablero respaldado por generador mantiene el registro de frío, y en Concepción la UPS del gabinete permite el apagado ordenado. El listado muestra además que los firewalls van en par en los cinco sitios conforme a RT-08.03 (Bases Técnicas Transversales, cap. 8, p. 18). Concepción y cada cross-docking tienen su cómputo en un par de equipos activo y en espera (RT-03.14, Bases Técnicas Transversales, cap. 3, p. 9). Cada cross-docking tiene además dos switches industriales, y cada equipo, alimentación redundante y discos en RAID 1. El bloqueo sanitario permanece local y el despacho con guía preemitida puede continuar cuando la carga conserva su autorización sanitaria. Una nueva liberación corresponde solo a Calidad, conforme a 4.1.3.5 y 4.1.3.7. La consola central requiere conexión y el perfil Kotlin autorizado usa la puerta local de A-01 con evaluación y auditoría persistentes. Si el expediente local está incompleto o el permiso no está vigente, el lote permanece bloqueado. En la ventana de Talca, VM-02 se reinicia en otro nodo y otra impresora emite la etiqueta si falla la del andén. Los mecanismos de alta disponibilidad se detallan en la sección \hyperref[sub:3-alta-disponibilidad]{4.2.4.3}.
+Los mecanismos del listado se detallan en \hyperref[sub:3-alta-disponibilidad]{4.2.4.3}: firewalls en par (RT-08.03, Bases Técnicas Transversales, cap. 8, p. 18), cómputo activo/espera en Concepción y cross-docking (RT-03.14, cap. 3, p. 9), RAID 10 y fuentes redundantes en Concepción, y dos switches, fuentes redundantes y RAID 1 en cada cross-docking. El generador de Talca sostiene el frío; la UPS de Concepción permite apagado ordenado. El bloqueo sanitario permanece local: despachar exige carga autorizada y guía válida. Solo Calidad puede disponer lotes desde su perfil Kotlin por A-01, con permiso y expediente suficientes (4.1.3.5 y 4.1.3.7); la consola central requiere conexión.
 
 \subsubsection{Puntos de falla en la nube, el terreno y las integraciones}
 

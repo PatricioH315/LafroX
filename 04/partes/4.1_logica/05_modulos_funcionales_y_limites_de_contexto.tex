@@ -92,11 +92,11 @@ Para incorporar un nuevo sitio se parametrizan en los maestros su identificador,
 \subsubsection{Módulo M3 Preventa}
 \label{subsec:modulo-m3}
 
-Para los 62 preventistas, tomar un pedido debe seguir siendo posible aun cuando la ruta no tenga cobertura. El módulo reemplaza una aplicación que no consulta stock ni crédito y presenta caídas y duplicación de pedidos. La nueva interacción distingue lo capturado de lo confirmado.
+M3 mantiene la captura sin cobertura para los 62 preventistas y distingue el pedido capturado del confirmado.
 
 M3 distingue captura local y confirmación central: el UUID identifica el mismo pedido durante reintentos y la copia cifrada conserva la jornada. La confirmación requiere validar stock con M2 y crédito con M7; un dato descargado no autoriza sobreventa ni crédito nuevo. El precio y la regla comercial del pedido se mantienen trazables. El canal de autoatención reutiliza estos contratos y no crea otro dueño del pedido. El Anexo 4-D detalla consultas, controles y sincronización; AL-MOD-01 y AL-STOCK-01 comprueban el recorrido.
 
-La prueba de aceptación de terreno considera un turno de 14 horas sin cobertura. El caso exige que un dispositivo de reparto sincronice esa jornada en un máximo de 10 minutos. Para el CD, fija hasta 2 horas tras un corte de 24 horas (RT-03.13 del caso, Bases Técnicas del caso, cap.~15, p.~26). Estos límites se verifican con la volumetría correspondiente y reconciliación determinista (RT-03.12, Bases Técnicas Transversales, cap. 3, p. 9), sin extender automáticamente el umbral del repartidor a cualquier carga de preventa.
+La autonomía de terreno es de 14 horas. Reparto debe sincronizar en $\leq$ 10 min y un CD, en $\leq$ 2 h tras 24 horas de corte. AL-OFF-01 verifica carga y reconciliación sin extender el umbral de reparto a toda preventa (RT-03.13 del caso, cap. 15, p. 26; RT-03.12 de las Transversales, cap. 3, p. 9).
 
 \paragraph{Reserva comercial y retención física por sitio}
 
@@ -125,46 +125,40 @@ La coordinación usa colas e identidades por sitio, separadas de las del ERP, de
 
 \subsubsection{Módulo M4 Rutas}
 
-El módulo de planificación de rutas automatiza un proceso que actualmente depende de una sola persona (21 años de conocimiento concentrado, con retiro programado en 2 años) que administra una planilla de 11 hojas. Su responsabilidad lógica se delimita a continuación.
+M4 concentra la planificación hoy dependiente de una persona, con 21 años de experiencia, una planilla de 11 hojas y retiro previsto en dos años.
 
 M4 conserva restricciones versionadas de capacidad y ventanas, y permite al planificador revisar la secuencia obtenida en menos de 20 minutos. PostgreSQL/PostGIS aporta datos espaciales y la alternativa de rutas se evalúa contra restricciones, no solo distancia. La decisión de negocio y sus excepciones quedan trazadas para transferir el conocimiento del planificador. La ejecución de la ruta pertenece a M6 y el costo comparable a M10. El Anexo 4-D concentra las capacidades de secuenciación, GIS y costo.
 
-La propuesta automática no convierte las excepciones del planificador en reglas opacas: M4 conserva restricción, motivo de ajuste y autor de la ruta aprobada para transferir conocimiento y comprobar el criterio de aceptación.
+Cada ajuste conserva restricción, motivo y autor de la ruta aprobada.
 
 Al confirmar la ruta, M4 envía por INT-11 un aviso al contacto del cliente, al teléfono registrado en su ficha, con la hora estimada de llegada y una ventana de 30 minutos. El aviso sale antes de que parta el camión. La aceptación comprueba que fue recibido antes de la partida, el estado «enviado» no basta (RF-04.06, Subdocumento 3, Anexo 3.A).
 
 El planificador autorizado mantiene las franjas de recepción de cada cliente activo en su ficha maestra, como parámetros versionados de tipo intervalo asociados al cliente. M4 las aplica al crear o recalcular las paradas y no asigna una hora estimada fuera de una franja vigente (RF-04.07, Subdocumento 3, Anexo 3.A).
 
-El planificador puede modificar la secuencia y reasignar pedidos entre vehículos. M4 recalcula de inmediato la carga y las horas estimadas (RF-04.02). M4 asigna los pedidos refrigerados o congelados solo a vehículos con equipo de frío y rechaza su asignación a un camión seco (RF-04.05). En el canal moderno, M4 planifica la llegada dentro de la ventana de 30 minutos comprometida y M6 registra si la entrega la cumplió, separado del control de la ventana de despacho de 05:30 a 07:00 (RF-12.10 y RF-12.11, Subdocumento 3, Anexo 3.A).
+Cambiar secuencia o vehículo recalcula carga y ETA. Los pedidos de frío solo se asignan a camiones equipados. En canal moderno M4 planifica y M6 verifica la ventana comprometida de 30 min (RF-04.02/05 y RF-12.10/11, Subdocumento 3, Anexo 3.A).
 
 \subsubsection{Módulo M7 Cobranza y rendición}
 
-El módulo de rendición y cobro permite investigar las causas de las diferencias de rendición que hoy quedan sin explicación. Sus límites de autorización son los siguientes.
+M7 mantiene la rendición individual y sus límites de autorización.
 
 M7 calcula lo esperado para cada camión y turno y exige una causal para cada diferencia antes del cierre. Separa registrar, conciliar y aprobar: el autor de un cobro no aprueba su propio descuadre. Un pago electrónico incierto se consulta por la misma clave y no se vuelve a cobrar ni se declara autorizado por silencio. El ERP conserva la emisión tributaria y la ACL el intercambio. El Anexo 4-D mantiene el detalle de rendición, pagos informados y costo de servir; AL-ACT-01 verifica segregación.
 
 \subsubsection{Módulo M10 Analítica}
 
-El módulo de inteligencia de negocio consolida la información operativa en tableros gerenciales de autoservicio (RT-05.27, Bases Técnicas Transversales, cap. 5, p. 13) con modelo semántico en el mismo lenguaje del negocio: OTIF, fill rate, costo por entrega, ocupación de flota y segmentación por canal/cliente.
+M10 consolida OTIF, fill rate, costo por entrega, ocupación y segmentación en Redshift Serverless. Su modelo dimensional reúne hechos de ventas, entregas, stock y costo y dimensiones de cliente, SKU, tiempo, ruta y canal, con detalle hasta línea y lote. Las latencias son $\leq$ 5 minutos para la operación del día, $\leq$ 2 horas para cierre comercial y $\leq$ 4 horas para gestión (RT-05.27/29, Bases Técnicas Transversales, cap. 5, p. 13).
 
-Los tableros se alimentan del almacén analítico (Redshift Serverless) con latencias comprometidas: operación del día $\leq$ 5 minutos, cierre comercial $\leq$ 2 horas, gestión $\leq$ 4 horas (RT-05.29, Bases Técnicas Transversales, cap. 5, p. 13). El modelo dimensional se estructura en hechos (ventas, entregas, stock, costo de servir) y dimensiones (cliente, SKU, tiempo, ruta, canal), con consulta detallada hasta línea de pedido y lote para trazabilidad sanitaria completa.
+El almacén analítico recibe eventos y sirve consultas históricas de solo lectura. Los indicadores actuales que 4.2 y T-11 obtienen por API conservan los contratos del módulo dueño. Comercial y Finanzas consultan el mismo modelo semántico. Tesorería conserva la aprobación de diferencias y M10 carece de permiso para modificar cobros. La captura de lote se prioriza ante el 41\,\% de recepciones sin lote informado en el retiro del caso.
 
-Los informes históricos y gerenciales de M10 son de solo lectura sobre el almacén analítico, sin consultas BI directas al transaccional en vivo. Los indicadores operativos actuales que 4.2 y T-11 obtienen por la API de negocio conservan la autorización y los contratos de sus módulos. No constituyen acceso directo de M10 a la base ni sustituyen el modelo analítico. Los informes se programan (diarios, semanales, mensuales) y se exportan de forma asíncrona con firma y suma de comprobación (RT-05.28, Bases Técnicas Transversales, cap. 5, p. 13).
+Los informes diarios, semanales y mensuales y las exportaciones de gran volumen se generan como trabajos asíncronos, con firma y suma de comprobación. INT-11 avisa al terminar mediante enlace autenticado, con permisos y vencimiento (RT-05.28, Bases Técnicas Transversales, cap. 5, p. 13; RNF-17.02, Subdocumento 3, Anexo 3.B).
 
-El módulo prioriza la calidad de la captura y la disponibilidad de indicadores verificables, dado que el caso informa que el 41\,\% de las recepciones del producto retirado no registraba lote.
-
-Comercial y Finanzas consultan indicadores sobre el mismo modelo semántico, pero solo Tesorería, del área de Finanzas, aprueba las diferencias de rendición. M10 no recibe permiso para modificar cobros.
-
-Las exportaciones de gran volumen se ejecutan como trabajos asíncronos, de modo que el usuario puede seguir trabajando. Al terminar, INT-11 envía un aviso con un enlace de descarga autenticado, sujeto a los permisos y al plazo de vencimiento del archivo (RNF-17.02, Subdocumento 3, Anexo 3.B).
-
-Desde la Etapa 2, M10 envía por correo los informes ejecutivos en PDF y XLSX, cada lunes a las 06:00 y el día 2 de cada mes, con OTIF, fill rate, merma por vencimiento y costo de servir por zona y canal (RF-11.01). El costo de servir de cada entrega y cliente suma los costos directos de transporte (combustible según el kilometraje GPS, peajes de la ruta y tiempos de conducción y de descarga) y prorratea los costos indirectos de bodega y administración (RF-11.02). Con ese costo y el margen comercial, M10 clasifica cada mes a los clientes en rentables, no rentables y estratégicos, y sugiere ajustes de frecuencia de visita o de compra mínima (RF-11.08). El fill rate y el índice de pedido perfecto se calculan contra el pedido original con las entregas confirmadas en el terminal de reparto, desglosados por causa (RF-11.04, Subdocumento 3, Anexo 3.A).
+Desde la Etapa 2, los informes PDF/XLSX se envían cada lunes a las 06:00 y el día 2 de cada mes, con OTIF, fill rate, merma y costo de servir por zona y canal. El costo combina combustible por GPS, peajes y tiempos de conducción y descarga con bodega y administración prorrateadas. M10 cruza costo y margen para clasificar mensualmente clientes rentables, no rentables y estratégicos y sugerir frecuencia o compra mínima. Fill rate y pedido perfecto comparan la entrega física con el pedido original y sus causas (RF-11.01/02/04/08, Subdocumento 3, Anexo 3.A).
 
 \subsubsection{Recepción, preparación, reparto y servicios asociados}
 \label{subsec:modulos-operativos}
 
 \textbf{M1 Recepción} compara lo recibido con la orden de compra, identifica GTIN, lote, vencimiento y SSCC, y registra cuarentena cuando falta evidencia o hay una diferencia. Publica \texttt{RecepcionConfirmada} para que M2 ubique el stock. No lo reserva para venta. La información del ERP entra y sale exclusivamente por la capa anticorrupción.
 
-M1 emite una alerta por cada discrepancia de SKU o cantidad frente a la orden de compra, sin impedir el cierre de la recepción, y deja el comparativo disponible para Calidad (RF-01.01). El lote se lee del AI 10 o se digita y, si falta en un producto con trazabilidad obligatoria, la línea no avanza. La fecha de vencimiento se captura y se muestra en formato DD/MM/AAAA (RF-01.02 y RF-01.03). Si el código GS1 es inválido o el producto no está registrado, M1 lo informa y habilita el ingreso manual, que queda auditado (RF-01.06). El registro de cada ítem responde en no más de 2 segundos desde la confirmación del escaneo (RNF-01.01). Una no conformidad se registra con su tipo, elegido de una lista parametrizada por el CLIENTE, el SKU, el lote, la cantidad afectada y al menos una fotografía capturada con el terminal. Al confirmarla, M2 pasa a cuarentena esa cantidad, que queda bloqueada para la preparación, y M1 alerta en la aplicación al perfil de Calidad dentro de cinco minutos (RF-01.04 y RF-01.05, Subdocumento 3, Anexos 3.A y 3.B).
+Las discrepancias de SKU o cantidad alertan sin impedir cerrar la recepción. Un código GS1 inválido o un producto no registrado habilita el ingreso manual auditado. Lote obligatorio vacío bloquea la línea y el vencimiento se registra como DD/MM/AAAA. Cada no conformidad conserva tipo parametrizado, SKU, lote, cantidad y fotografía. M2 cuarentena esa cantidad y M1 avisa a Calidad en cinco minutos. El escaneo responde en $\leq$ 2 s (RF-01.01, RF-01.02, RF-01.03, RF-01.04, RF-01.05, RF-01.06 y RNF-01.01, Subdocumento 3, Anexos 3.A/3.B).
 
 El proveedor consulta el estado de su orden y de la recepción, no accede a las reglas internas de inventario ni confirma unilateralmente un lote.
 
@@ -172,7 +166,7 @@ El proveedor consulta el estado de su orden y de la recepción, no accede a las 
 
 Si la cantidad recogida es menor que la solicitada, M5 exige elegir una causa de una lista parametrizada por el CLIENTE y no permite confirmar la línea hasta hacerlo. La causa se guarda con la lectura local y en la auditoría de la confirmación (RF-05.03, Subdocumento 3, Anexo 3.A).
 
-La jefatura de bodega genera las misiones manualmente o deja programada su generación al cierre de pedidos del turno, agrupadas por pedido o por ruta (RF-05.01). Cada línea se confirma escaneando el código GS1, que valida el SKU y captura el lote tomado. El ingreso manual del código se admite solo como contingencia registrada en la auditoría (RF-05.02). Si se escanea un lote de vencimiento posterior estando disponible el lote FEFO, la confirmación se bloquea, y tomar otro lote exige registrar el motivo (RF-05.05). La carga sigue el orden inverso de la ruta: el cargador escanea el SSCC de cada bulto, la aplicación alerta si sale de secuencia y no confirma la carga completa mientras falte un bulto asignado, caso en que avisa a la jefatura de bodega (RF-05.07, Subdocumento 3, Anexo 3.A).
+Bodega genera misiones por pedido o ruta, manualmente o al cierre programado. La lectura GS1 valida SKU y lote exacto, con contingencia manual auditada. Un lote con vencimiento posterior al FEFO bloquea la confirmación hasta registrar el motivo. La carga sigue el orden inverso de ruta, valida SSCC y alerta ante secuencia incorrecta o bulto faltante, que impide confirmar la carga completa (RF-05.01, RF-05.02, RF-05.05 y RF-05.07, Subdocumento 3, Anexo 3.A).
 
 El preparador confirma cada lectura en el servicio local, la pérdida del enlace externo no borra la misión ni convierte una carga preparada en una salida autorizada.
 
@@ -184,7 +178,7 @@ El conductor propio y el externo utilizan el mismo contrato de entrega con ident
 
 Al registrar la entrega, el conductor captura en M8 la cantidad, el tipo y el estado físico de los canastillos y pallets devueltos. El estado declarado queda en la evidencia del movimiento de envases, junto con la cantidad y el tipo (RF-06.09, Subdocumento 3, Anexo 3.A).
 
-El conductor registra la devolución con SKU, cantidad y motivo (daño, vencimiento, producto no pedido o error) aun sin señal (RF-08.01). En el andén se elige su destino final (reingreso a stock, venta con descuento, devolución al proveedor o destrucción), con usuario y fecha, y la transacción se envía al ERP por la ACL. El registro de cada ítem, con su escaneo y destino, toma no más de 30 segundos (RF-08.02 y RNF-08.01). M8 alerta al preventista dentro de las 24 horas siguientes a que el saldo de envases de un cliente supere el umbral que fija el administrador (RF-08.04), y M10 informa a diario la pérdida de envases por cliente, tipo y zona (RF-08.06, Subdocumento 3, Anexos 3.A y 3.B).
+M8 captura sin señal SKU, cantidad y causal de devolución (daño, vencimiento, producto no pedido o error). En andén registra el destino (reingreso, venta con descuento, proveedor o destrucción), usuario y fecha y envía la transacción al ERP por ACL. El ítem se registra en $\leq$ 30 s. Un saldo de envases sobre el umbral alerta al preventista dentro de 24 h y M10 informa diariamente pérdidas por cliente, tipo y zona (RF-08.01/02/04/06 y RNF-08.01, Subdocumento 3, Anexos 3.A/3.B).
 
 \textbf{M11 Canal moderno} recibe pedidos mediante contratos EDI configurados por cadena, traduce códigos a un vocabulario común y envía el pedido normalizado a M3. Las diferencias de formato y equivalencias van a una bandeja de excepciones. M11 no se convierte en un segundo dueño del pedido ni del inventario. M11 responde a la cadena con la confirmación o el rechazo del pedido, con la causa cuando no pueda aceptarse completo, y conserva el historial de estados de cada pedido electrónico: recepción, validación, confirmación, preparación, despacho, ASN y prueba de entrega (RF-12.07 y RF-12.08, Subdocumento 3, Anexo 3.A).
 

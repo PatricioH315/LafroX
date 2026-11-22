@@ -1,21 +1,10 @@
 \subsection{Implantación progresiva por olas}
 \label{sec:transicion-laravel}
 
-La implantación progresiva de Laravel/PHP conserva los identificadores M1--M12, sus dueños de datos, los contratos públicos y sus versiones, los eventos JSON, la identidad Keycloak y las reglas sin conexión. Se separan los consumidores de integración de los trabajos internos y se prueban identidad, trazas y reversión antes de habilitar cada ola. El Anexo 4-P detalla las tecnologías que realizan estas capacidades. PostgreSQL/PostGIS, RabbitMQ, SQS y los clientes mantienen sus contratos durante el despliegue.
+La implantación por olas conserva M1--M12, sus dueños de datos, contratos versionados, eventos JSON e identidad Keycloak. PostgreSQL/PostGIS, RabbitMQ, SQS y los clientes mantienen contratos compatibles. La realización tecnológica está en el Anexo 4-P y la secuencia física, en 4.2.4.1.
 
+Talca parte de un extracto conciliado del WMS de 2013 y Concepción, de un conteo físico. El modelo de datos define el esquema PostgreSQL de destino. M1/M2/M5 se habilitan primero en un piloto, con migraciones aditivas legibles por la entrega previa. Cada operación conserva un único escritor autorizado. El WMS anterior deja de escribir por capacidad migrada y se retira al cerrar la marcha blanca de Talca.
 
-La implantación comienza por fijar contratos, dueños de datos y un extracto conciliado del WMS de 2013 en Talca.
+La reversión vuelve a la entrega compatible anterior del nuevo servicio, con estado conciliado. Se decide antes de 05:30--07:00 y con autorización del CLIENTE. La contingencia manual del Subdocumento 3 conserva picking y evidencia, pero los 96 despachos requieren guías válidas del ERP.
 
-\begin{itemize}
-  \item Concepción inicia sus saldos con un conteo físico, porque hoy controla su stock por planilla.
-  El esquema PostgreSQL de destino lo define el modelo de datos de la solución, sin suponer el motor del sistema antiguo.
-  \item Las migraciones Laravel son aditivas y compatibles con los lectores de la ola previa.
-  \item M1/M2/M5 se ensayan primero en un sitio piloto y después se habilitan los demás sitios, módulos y trabajadores.
-  El WMS antiguo deja de escribir en cuanto se habilita cada ola y se retira al cerrar la marcha blanca de Talca, con sus datos ya migrados y conciliados.
-  \item En coexistencia, cada operación tiene un único escritor autorizado y no hay doble escritura de stock, cobros o DTE.
-  Una reversión de software vuelve a la versión compatible anterior del nuevo servicio, con el mismo estado y el mismo escritor. No reactiva el WMS antiguo como escritor de stock.
-  \item La contingencia manual del Subdocumento 3 conserva el picking y la evidencia, pero no permite ejecutar a mano los 96 despachos de 05:30 a 07:00.
-  Por eso la decisión de revertir se toma antes de esa ventana, con guías válidas emitidas por el ERP, conciliación previa y autorización del CLIENTE.
-  \item Todo evento entre versiones usa JSON versionado.
-  Cada ola se acepta con pruebas de autonomía mínima de 14 horas y ruta de 14,5 horas según AL-ID-01 en terreno, 24 horas por sitio con dos relevos, guía previa al despacho, 96 salidas en la ventana crítica y reconciliación sin pedidos duplicados.
-\end{itemize}
+Cada ola verifica identidad, trazas, reversión, contratos entre versiones y ausencia de duplicados. Se ensayan 14 horas de autonomía mínima y ruta de 14,5 horas según AL-ID-01, 24 horas por sitio con dos relevos y las 96 salidas con guía válida. El drenaje y la transformación de sobres incompatibles se detallan en 4.2.4.1.

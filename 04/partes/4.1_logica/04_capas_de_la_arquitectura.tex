@@ -247,26 +247,11 @@ La Figura~\ref{fig:arql-capa-4} presenta las responsabilidades de esta capa.
 La figura reúne los doce módulos de negocio y sus funciones principales, junto con las tecnologías del backend y los sistemas externos con los que se relacionan. Los límites e intercambios de cada contexto se desarrollan en los apartados siguientes.
 
 
-La capa de servicios de negocio reúne M1--M12 en un monolito modular Laravel. Cada contexto separa dominio, aplicación, infraestructura y acceso HTTP bajo un espacio de nombres PSR-4.
+M1--M12 comparten el artefacto Laravel y separan dominio, aplicación, infraestructura y acceso HTTP mediante espacios PSR-4. Controladores validan solicitudes, servicios de aplicación coordinan casos de uso, el dominio decide y los adaptadores traducen persistencia e integraciones. Cada módulo accede a otro mediante contratos públicos o eventos versionados. El contenedor registra las interfaces y las pruebas de dependencias impiden acceder a tablas o modelos privados de otro contexto (RT-02.02, Bases Técnicas Transversales, cap. 2, p. 6).
 
-\begin{itemize}
-  \item Los controladores reciben y validan solicitudes.
-  \item los servicios de aplicación coordinan casos de uso,
-  \item el dominio decide reservas, bloqueos y rendiciones,
-  \item los adaptadores traducen persistencia e integraciones. Los módulos se llaman mediante interfaces públicas o eventos versionados: no acceden a las tablas privadas de otro contexto ni importan sus modelos de persistencia. Los proveedores de servicios registran esas interfaces en el contenedor y una prueba de dependencias impide invertir las fronteras. Así, compartir proceso no confunde la propiedad de cada decisión (RT-02.02, Bases Técnicas Transversales, cap. 2, p. 6).
-\end{itemize}
+El artefacto ejecuta perfiles con colas, concurrencia, permisos y métricas propios. El WMS local incluye M1/M2/M5, recepción de retornos de M8 y bloqueo y disposición sanitaria de M9. API, integración con ERP y ACL, shipper, reconciliación, rutas, AS2 y consolas admiten despliegue y reversión independientes. OpenAS2 valida transporte, certificados, firma, cifrado y MDN antes de entregar a M11, que conserva las reglas comerciales. El planificador mantiene una autoridad por ambiente.
 
-La misma versión del artefacto Laravel ejecuta perfiles separados: API central, WMS local limitado a M1/M2/M5, recepción física de retornos de M8 y bloqueo y disposición sanitaria autorizada de M9, consumidores de SQS, adaptador AMQP y reglas comerciales EDI de M11.
-
-\begin{itemize}
-  \item El transporte OpenAS2 es un componente independiente: verifica certificados, firma, cifrado y acuses MDN antes de entregar el mensaje a M11. No ejecuta reglas comerciales ni escribe en el ERP.
-  \item Cada perfil dispone de cola, concurrencia, permisos y métricas propios.
-  \item El planificador de tareas tiene una sola autoridad por ambiente.
-  \item Esta separación permite escalar y reiniciar sincronización, EDI y telemetría sin multiplicar el monolito completo.
-  \item Los componentes críticos se despliegan y revierten de forma independiente (RT-02.02, Bases Técnicas Transversales, cap. 2, p. 6): el perfil local de bodega se actualiza sitio por sitio sin tocar la API central, el servicio de integración con el ERP y la ACL, el agente de transferencia de cada sitio, el consumidor de reconciliación, el motor de rutas, el transporte AS2 y las consolas tienen su propio servicio, su versión desplegada y su reversión. Un sitio puede operar con la entrega previa mientras la nube ya opera la nueva, porque los contratos aceptan la edición vigente y la anterior. Además, cada capacidad se habilita por sitio con indicadores de funcionalidad.
-\end{itemize}
-
-Los módulos evitan estado durable en memoria y pueden crecer por réplicas o por trabajadores independientes, según la demanda. Los umbrales, límites de capacidad, emplazamiento y costos se especifican en 4.2 y en la oferta económica.
+La separación permite escalar consumidores y reiniciar componentes sin ampliar todo el núcleo ni conservar estado durable en memoria. Un sitio puede usar la entrega previa mientras la nube usa la nueva mediante contratos compatibles con ambas ediciones y capacidades habilitadas por sitio. El catálogo de perfiles, ubicaciones, recursos y escalamiento se desarrolla en 4.2.4.1 y 4.2.6.
 
 Son parametrizables por el CLIENTE desde la consola Angular los valores de umbrales, plazos, montos y tolerancias de las reglas implementadas, los catálogos y listas de valores, los textos de notificación y los identificadores de sitio. Laravel valida cada cambio y conserva versión, vigencia, autor y fecha mediante el registro versionado de parámetros (Subdocumento 5, Anexo 5-A). En M9 se administran los umbrales y duraciones por producto de 4.1.4.2, y en M11 las equivalencias GTIN y perfiles de cadenas para los formatos y transportes ya implementados. Requieren desarrollo los algoritmos, los nuevos puntos de decisión, estados y transiciones, cambios de estructura de datos o contratos y nuevos formatos o transportes de integración. Almacenarlos como valores no los convierte en parámetros (RT-16.04, Bases Técnicas Transversales, cap. 16, p. 29).
 
@@ -452,10 +437,7 @@ La Figura~\ref{fig:arql-capa-6} presenta las responsabilidades de esta capa.
 \end{landscape}
 \restoregeometry
 
-El sitio conserva la autoridad de bodega y el dispositivo mantiene sus capturas hasta recibir confirmación durable. Los servicios centrales separan transacciones, caché, documentos y analítica. Ninguna consulta de BI debe competir con el despacho.
-
-
-La capa de datos distingue quién conserva la información operativa, quién la consolida y quién la consulta para análisis. Esta separación permite que la bodega siga trabajando sin enlace externo y que las consultas gerenciales no compitan con el despacho. Los dominios de información asumen las siguientes responsabilidades:
+La capa separa autoridad local, consolidación central y analítica. El sitio conserva la operación de bodega y el dispositivo, sus capturas hasta el acuse durable. Esta distribución mantiene la autonomía y evita que las consultas gerenciales compitan con el despacho.
 
 En la operación local:
 \begin{itemize}
@@ -482,11 +464,11 @@ No se incorpora Valkey local.
   \item Reemplazar la copia de lectura nunca debe borrar pedidos, cobros ni evidencias aún no confirmados por el servidor.
 \end{itemize}
 
-La vigencia de los datos de lectura es independiente de la identidad. Las credenciales de bodega duran hasta 8 horas; las de reparto cubren el fin programado de la ruta con el límite absoluto de 16 horas y el margen de 30 minutos definidos en la capa de seguridad. La caché local de identidad es de solo lectura y tiene TTL de 24 horas en VM-05 (Talca), VM-C03 (Concepción) y E-01 de cada cross-docking. Una copia reciente de precios no renueva la sesión y una sesión válida no convierte el stock descargado en una reserva confirmada. El relevo de turno sin IdP lo habilita el verificador local del mismo nodo, conforme a la capa de seguridad de este apartado.
+La actualización de precios o stock no renueva identidad ni confirma reservas. La caché descriptiva de 24 horas reside en VM-05, VM-C03 y E-01. El verificador local habilita los relevos con los permisos firmados y los límites de bodega y reparto de 4.1.3.7.
 
 La separación transaccional/analítica es estricta: la analítica no lee del transaccional para evitar degradar la ventana crítica de despacho. Las latencias comprometidas son: operación del día $\leq$ 5 minutos, cierre comercial $\leq$ 2 horas, gestión $\leq$ 4 horas.
 
-Cada evento conserva identidad, estado y resultado hasta recibir confirmación durable. DMS replica el WMS de Talca hacia un esquema de lectura. No escribe en las tablas de negocio centrales. Los consumidores de eventos actualizan estas últimas con deduplicación transaccional por sitio y UUID. Concepción y los cross-docking sincronizan sus eventos sin presumir un flujo DMS propio. Durante un corte cada sitio retiene sus cambios dentro de una capacidad comprobada para 24 horas. La extracción continua de DMS/WAL de Talca y de la bandeja transaccional de salida por fibra, LTE y satélite sostiene RPO $\leq$ 15 minutos. AL-DR-01 del Anexo 4-M verifica la protección externa y 4.3.2 detalla la replicación por tres caminos independientes que asegura el RPO. El esquema 3-2-1-1-0, los medios de respaldo y la restauración se desarrollan en 4.2.
+DMS replica el WMS de Talca a un esquema de lectura. Los consumidores actualizan el estado central por eventos, con deduplicación transaccional por sitio y UUID, también para Concepción y cross-docking. Cada sitio conserva 24 horas de cambios. La extracción de DMS/WAL y outbox, la replicación por tres caminos, el RPO y los respaldos se detallan en 4.3.2 y AL-DR-01 del Anexo 4-M.
 
 
 \subsubsection{Capa de seguridad transversal (Capa 7)}
@@ -613,10 +595,7 @@ La Figura~\ref{fig:arql-capa-8} presenta las responsabilidades de esta capa.
 \end{landscape}
 \restoregeometry
 
-La correlación permite seguir una operación entre APIs, módulos y consumidores. Durante el corte, el sitio conserva telemetría y mantiene sus alarmas. CloudWatch reúne registros, métricas y trazas para los tableros y la atención de incidentes.
-
-
-La observabilidad debe ayudar al equipo a responder preguntas operativas: qué pedido quedó sin confirmar, dónde se interrumpió una integración y qué entregas pueden verse afectadas. Para ello reúne métricas, registros y trazas de nube y sitios locales en una misma plataforma (RT-03.16, Bases Técnicas Transversales, cap. 3, p. 9; Bases Administrativas, art. 16.4, p. 12).
+La observabilidad correlaciona pedidos, integraciones y entregas mediante métricas, registros y trazas de nube y sitios. Las alarmas y la captura local se mantienen durante el corte. Amazon CloudWatch reúne esa evidencia para los tableros y la atención de incidentes (RT-03.16, Bases Técnicas Transversales, cap. 3, p. 9; Bases Administrativas, art. 16.4, p. 12).
 
 La instrumentación utiliza OpenTelemetry para PHP/Laravel y las aplicaciones Kotlin, junto con los registros y métricas disponibles de API Gateway, RabbitMQ, SQS y Greengrass. El identificador de correlación acompaña las solicitudes y los mensajes. Los trabajadores extraen el contexto de traza del sobre de evento para correlacionar la operación de negocio, incluidos los procesos asíncronos.
 

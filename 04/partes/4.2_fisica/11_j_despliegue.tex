@@ -15,14 +15,14 @@
 \phantomsection\label{fuente-11-j-despliegue}
 \label{sec:despliegue}
 
-La arquitectura física describe qué componentes existen, dónde viven y cómo se conectan. Esta sección describe cómo esa solución se pone en marcha y se mantiene en operación durante los 56 meses del contrato: por qué ambientes pasa un cambio antes de llegar a las bodegas y a la calle, sobre qué red se despliega, cómo sigue operando cuando algo falla y cómo se recupera cuando se pierde un sitio completo o se daña un dato. Los puntos de falla de cada conexión y de cada equipo, con su resolución inmediata, se declaran en la sección de conexiones y contingencia (listados \hyperref[tab:fallas-sitios]{de fallas en los sitios y enlaces} y~\hyperref[tab:fallas-nube]{de fallas en nube, terreno e integraciones}). Aquí se describen los mecanismos que sostienen esa continuidad y cómo se verifican.
+Esta sección explica la promoción de cambios, la red, la alta disponibilidad y los respaldos durante los 56 meses. Los listados \hyperref[tab:fallas-sitios]{de fallas en sitios y enlaces} y \hyperref[tab:fallas-nube]{de nube, terreno e integraciones} detallan la respuesta por componente. La recuperación completa se desarrolla en 4.3.2.
 
-Esos mecanismos son tres y no se sustituyen entre sí. La alta disponibilidad responde a la falla de un componente sin que la operación lo note. La recuperación ante desastres responde a la pérdida de un sitio o de una región completa. El respaldo responde al daño del dato, sea un borrado accidental, una corrupción o un cifrado malicioso, frente a los cuales las réplicas no protegen, porque replican el daño con la misma fidelidad que una escritura legítima.
+La alta disponibilidad atiende la falla de un componente. La recuperación responde a la pérdida de sitio o región. El respaldo permite restaurar datos borrados, corruptos o cifrados maliciosamente, daños que una réplica también propaga.
 
 \subsubsection{Ambientes y ciclo de entrega}
 \label{sub:1-ambientes-de-despliegue-rt-04-01}
 
-Un cambio recorre tres ambientes antes de llegar a Producción: Desarrollo, QA y Preproducción. Se construye y se prueba de forma unitaria en Desarrollo, se valida en QA con pruebas funcionales, de integración y de regresión automatizadas, y se ensaya en Preproducción, donde ocurren las pruebas de aceptación, de carga y de resiliencia y el ensayo del paso a producción. Solo entonces se promueve a Producción, sin recompilar, de modo que el artefacto que llega a producción es el mismo que se probó. La marcha blanca de cada etapa ocurre ya en Producción, porque es operación supervisada con datos y usuarios reales en paralelo con la operación vigente. Un quinto ambiente, de Recuperación ante Desastres, sostiene la continuidad: reside en la región us-east-1 para el dominio de nube, mientras que el WMS de Talca se recupera en la plataforma de nube, como se describe en la recuperación ante desastres de esta sección. La Tabla~\ref{tab:t62} muestra cada ambiente con su bloque de direccionamiento, su región y su función.
+El mismo artefacto pasa por Desarrollo, QA y Preproducción antes de promoverse a Producción. La marcha blanca utiliza datos y usuarios reales en Producción. Recuperación ante Desastres reside en us-east-1 para la nube y habilita el WMS de Talca en la región activa. La Tabla~\ref{tab:t62} fija función, región y direccionamiento de los cinco ambientes.
 
 \Needspace{0.48\textheight}
 \begin{tablalafrox}{Ambientes de despliegue}{tab:t62}%
@@ -39,18 +39,9 @@ Un cambio recorre tres ambientes antes de llegar a Producción: Desarrollo, QA y
 
 Cada ambiente reside en una cuenta AWS propia, bajo una organización de AWS Control Tower cuyas políticas de control de servicio impiden que un error o un acceso indebido en un ambiente alcance a otro. La organización incorpora además sus cuentas de gestión, de archivo de registros y de auditoría. Los bloques de direccionamiento no se solapan entre sí ni con los de los sitios on-premise, y solo el ambiente de recuperación reside fuera de la región primaria. Los cinco ambientes quedan habilitados y operativos en el hito H3 del Formulario E-25, en el mes 6 del contrato, antes de la primera marcha blanca (RT-04.01, Bases Técnicas Transversales, cap. 4, p. 10).
 
-En la nube, en los cinco ambientes, la imagen de la aplicación corre en ECS Fargate, que es el cómputo de la plataforma de aplicación N-04 (catálogo \hyperref[tab:servicios-nube]{de servicios de nube por función}). Cada ambiente despliega la imagen en su propia cuenta, desde el mismo Elastic Container Registry de sa-east-1, que replica cada imagen en us-east-1 para que la región de recuperación no dependa de la primaria. Los ambientes se diferencian en su escala y en su conectividad, no en el servicio donde corre el código:
+La imagen corre en ECS Fargate (N-04) en cada cuenta. Producción opera en dos zonas y Preproducción reproduce su topología. Desarrollo, QA y Preproducción se reducen o apagan fuera de uso, con el ahorro reflejado en costos. Desarrollo usa datos sintéticos o anonimizados y QA, un conjunto controlado y versionado que se restituye antes de cada ciclo. Los datos productivos requieren anonimización o seudonimización verificable (RT-04.13, Bases Técnicas Transversales, cap. 4, p. 11).
 
-\begin{itemize}
-  \item Producción opera en dos zonas.
-  \item Preproducción replica esa topología.
-  \item Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso.
-  \item Recuperación ante Desastres mantiene la réplica reducida de us-east-1.
-\end{itemize}
-
-Desarrollo y QA son aislados y se reconstruyen desde código. Desarrollo trabaja con datos sintéticos o anonimizados, y QA con un juego de datos de prueba controlado y versionado que se restituye a un estado conocido antes de cada ciclo de pruebas. Ningún ambiente no productivo recibe datos productivos sin anonimización o seudonimización verificable. Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso, con el ahorro reflejado en la estructura de costos (RT-04.13, Bases Técnicas Transversales, cap. 4, p. 11).
-
-Las bodegas no tienen ambientes propios de prueba, y no los necesitan. El on-premise es producción: la imagen wms\_only que corre en los centros de distribución y en los cross-docking es la misma que recorrió Desarrollo, QA y Preproducción en la nube, y la infraestructura de cada sitio se declara como código versionado. Lo que se ensayó en la nube es, por lo tanto, lo que se instala en Talca, en Concepción y en cada cross-docking, sitio por sitio. QA y Preproducción ensayan esa imagen con el verificador local de identidad y la puerta de API local del WMS, con adaptadores simulados del ERP, y reproducen el corte de enlace y el relevo de turno antes de cada paso a producción.
+Los sitios on-premise ejecutan Producción sobre infraestructura versionada. QA y Preproducción ensayan la misma imagen \texttt{wms\_only}, broker y verificador local con ERP simulado, cortes y relevos antes de instalarla sitio por sitio. ECR replica el artefacto de sa-east-1 a us-east-1 para independizar la recuperación del registro primario.
 
 Preproducción es equivalente a Producción en versiones, configuración, dimensionamiento y topología de nube (RT-04.02, Bases Técnicas Transversales, cap. 4, p. 10). Subsisten tres diferencias justificadas:
 
@@ -64,133 +55,25 @@ Durante las campañas de certificación coinciden pruebas que alteran el estado 
 
 La emulación reproduce la topología del sitio y no su hardware. Por eso, la primera instalación de cada entrega en los centros de distribución y los cross-docking avanza sitio por sitio, como se describe en la liberación. Durante las pruebas de carga y estrés de la Tabla~\ref{tab:t86} opera con el dimensionamiento completo de Producción.
 
-Las figuras siguientes muestran cada uno de los cinco ambientes. Desarrollo, QA y Preproducción residen solo en la nube. Producción abarca la nube y los sitios on-premise. Recuperación ante Desastres cubre la pérdida de la región primaria mediante us-east-1 y la pérdida de la sala de Talca mediante el WMS levantado en la plataforma de nube (numeral 4.1 de las Bases Técnicas Transversales; Bases Técnicas Transversales, cap. 4, p. 10). Concepción opera su propia bodega en Producción.
+El Anexo 4-X.1 conserva las cinco vistas detalladas de ambientes y sus secuencias de despliegue. Desarrollo, QA y Preproducción residen solo en la nube. Producción abarca la nube y los sitios on-premise. Recuperación ante Desastres cubre la pérdida de la región primaria mediante us-east-1 y la pérdida de la sala de Talca mediante el WMS levantado en la plataforma de nube (numeral 4.1 de las Bases Técnicas Transversales; Bases Técnicas Transversales, cap. 4, p. 10). Concepción opera su propia bodega en Producción.
 
-\minititulo{Desarrollo}
+La secuencia común es construir una vez, firmar la imagen y promoverla por su digest: Desarrollo construye, QA verifica, Preproducción ensaya migración, carga y reversión y Producción aplica la entrega a nube y sitios. Los controles, umbrales de cobertura y restricciones de acceso que siguen son obligatorios en cada promoción.
 
-La Figura~\ref{fig:amb-desarrollo} muestra cómo llega una entrega a Desarrollo. Sus pasos numerados se leen de izquierda a derecha.
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_desarrollo.png}
-  \caption{Ambiente de Desarrollo}\label{fig:amb-desarrollo}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~4, pp.~10--11), para los ambientes obligatorios, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
-\end{figure}
-\FloatBarrier
-
-Los pasos de la figura son los siguientes:
-
-\begin{enumerate}
-  \item GitLab CI toma el cambio aprobado en la rama protegida y ejecuta los controles del pipeline, que se detallan más adelante en esta sección.
-  \item AWS CodeBuild construye la imagen de la aplicación una sola vez, de forma hermética y con procedencia SLSA nivel 3.
-  \item Elastic Container Registry (ECR) guarda la imagen firmada. Desde aquí se promueve por su digest a los demás ambientes, sin recompilar.
-  \item ECS Fargate despliega la imagen en la VPC 10.104.0.0/16 de la cuenta de Desarrollo, con la configuración de SSM Parameter Store y los secretos de AWS Secrets Manager propios del ambiente.
-  \item El pipeline publica los portales Angular de clientes, transportistas y proveedores (N-01 a N-03) en un bucket S3 privado, que CloudFront sirve.
-\end{enumerate}
-
-Desarrollo no tiene enlace con los sitios.
-
-\minititulo{QA}
-
-QA repite la secuencia de Desarrollo en su propia cuenta y su propia VPC (Figura~\ref{fig:amb-qa}). No construye una imagen nueva: usa la misma que recorrió Desarrollo, de modo que una falla detectada aquí corresponde al artefacto y no a una recompilación.
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_qa.png}
-  \caption{Ambiente de QA}\label{fig:amb-qa}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~4, pp.~10--11), para los ambientes obligatorios, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
-\end{figure}
-\FloatBarrier
-
-Los pasos de la figura son los siguientes:
-
-\begin{enumerate}
-  \item GitLab CI promueve a QA la entrega que superó Desarrollo.
-  \item CodeBuild no vuelve a construir: la imagen es la que construyó para Desarrollo.
-  \item ECR entrega esa imagen firmada, identificada por su digest.
-  \item ECS Fargate la despliega en la VPC 10.103.0.0/16 de la cuenta de QA, donde corren las pruebas funcionales, de integración y de regresión.
-  \item Los portales se publican en el bucket S3 privado de QA, que CloudFront sirve.
-\end{enumerate}
-
-\minititulo{Preproducción}
-
-En Preproducción la secuencia se ensaya sobre la topología de Producción y sobre un sitio on-premise emulado (Figura~\ref{fig:amb-preproduccion}). Aquí se demuestran las migraciones y el despliegue azul-verde con canario antes de cada paso a producción (RT-04.07, Bases Técnicas Transversales, cap. 4, p. 11).
-
-\begin{figure}[htbp]\centering
-  \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_preproduccion.png}
-  \caption{Ambiente de Preproducción}\label{fig:amb-preproduccion}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~4, pp.~10--11), para los ambientes obligatorios, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
-\end{figure}
-\FloatBarrier
-
-Los pasos de la figura son los siguientes:
-
-\begin{enumerate}
-  \item GitLab CI promueve a Preproducción la entrega que superó QA.
-  \item CodeBuild no vuelve a construir: la imagen es la misma de Desarrollo y QA.
-  \item ECR entrega la imagen firmada por su digest.
-  \item Las migraciones aditivas se aplican sobre el escritor de Aurora PostgreSQL (N-05), como un paso único antes de cambiar el tráfico.
-  \item La entrega nueva se despliega al mismo tiempo en dos lugares, por lo que la figura asigna el número 5 a ambos:
-  \begin{itemize}
-    \item En la VPC 10.102.0.0/16 se ensaya el despliegue azul-verde con canario. La entrega vigente («azul») sigue atendiendo mientras ECS Fargate levanta la nueva («verde») a su lado. El balanceador privado, en dos zonas, le pasa primero a la nueva una parte pequeña del tráfico, llamada canario, y la aumenta por etapas mientras no aparezcan errores. Si aparecen, el tráfico vuelve completo a la entrega vigente.
-    \item En la VPC del sitio emulado, su base local recibe las mismas migraciones aditivas y la imagen \texttt{wms\_only} recibe la misma entrega mientras el sitio está desconectado. Al reconectarlo, se comprueba que la reconciliación acepta los sobres que dejó la entrega previa.
-  \end{itemize}
-  \item Los portales se publican en el bucket S3 privado de Preproducción, que CloudFront sirve.
-\end{enumerate}
-
-La VPC del sitio emulado no tiene túnel hacia las bodegas, de modo que ningún ensayo alcanza la operación real.
-
-\minititulo{Producción}
-
-En Producción la secuencia se ejecuta de forma automática y llega además a los sitios on-premise (Figura~\ref{fig:amb-produccion}).
-
-\begin{figure}[!htbp]\centering
-  \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_produccion.png}
-  \caption{Ambiente de Producción}\label{fig:amb-produccion}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~4, pp.~10--11), para los ambientes obligatorios, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
-\end{figure}
-
-\FloatBarrier
-
-Los pasos de la figura son los siguientes:
-
-\begin{enumerate}
-  \item GitLab CI inicia el paso a producción cuando la entrega superó los controles del pipeline y el ensayo en Preproducción, dentro de las ventanas de la Tabla~\ref{tab:jd02}.
-  \item CodeBuild no vuelve a construir: la imagen es la misma que se ensayó.
-  \item ECR entrega la imagen firmada por su digest.
-  \item Las migraciones aditivas se aplican sobre el escritor de Aurora PostgreSQL (N-05).
-  \item ECS Fargate aplica en la VPC 10.101.0.0/16, en dos zonas, el mismo despliegue azul-verde con canario que se ensayó en Preproducción: la entrega nueva recibe el tráfico por etapas y, si falla, el tráfico vuelve a la vigente.
-  \item Los portales se publican en el bucket S3 privado de Producción, que CloudFront sirve.
-  \item La entrega llega a los sitios mediante dos acciones que ocurren juntas, por lo que la figura asigna el número 7 a ambas:
-  \begin{itemize}
-    \item Los sitios descargan la misma imagen desde ECR por la VPN, la VPC Hub y los endpoints de interfaz de la VPC de Producción, en conexiones salientes y sin pasar por Internet.
-    \item Ansible (F-02), desde CD Talca, aplica sitio por sitio las migraciones aditivas a la base PostgreSQL activa: VM-02, VM-C02 y la del E-01 activo. En Concepción y los cross-docking, la réplica sincrónica las lleva al equipo en espera. Luego actualiza los contenedores: VM-01, VM-03 y VM-04 en Talca, VM-C01 y VM-C04 en los dos servidores de Concepción y los dos E-01 de cada cross-docking, primero el equipo en espera y luego el activo.
-  \end{itemize}
-\end{enumerate}
-
-El paso 7 distingue a Producción de los demás ambientes: es el único que llega a las bodegas.
-
-\minititulo{Recuperación ante Desastres}
-
-La Figura~\ref{fig:amb-recuperacion} muestra las dos rutas de recuperación: ante la pérdida de la región primaria y ante la pérdida de la sala de Talca.
-
-\begin{figure}[!ht]\centering
-  \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_recuperacion.png}
-  \caption{Ambiente de Recuperación ante Desastres}\label{fig:amb-recuperacion}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~4, pp.~10--11), para los ambientes obligatorios, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-11-j-despliegue}--\pageref*{fuente-11-j-despliegue-fin}).\par}
-\end{figure}
-
-Los pasos de la figura son los siguientes:
-
-\begin{enumerate}
-  \item GitLab CI libera la entrega en Producción.
-  \item CodeBuild no vuelve a construir: la imagen es la misma que se liberó en Producción.
-  \item ECR guarda la imagen firmada en sa-east-1.
-  \item ECR replica cada entrega liberada en Producción a us-east-1, y la réplica reducida de ECS Fargate la despliega en la VPC 10.201.0.0/16. Si se pierde la región primaria, esa réplica escala a carga completa en menos de 30 minutos.
-  \item Si se pierde la sala de Talca, el perfil \texttt{wms\_only} de Talca se levanta en ECS Fargate de la VPC de Producción, sobre la copia del WMS de Talca que AWS DMS mantiene en Aurora PostgreSQL (N-05). El WMS recuperado conserva la identidad de Talca y atiende a los terminales de la bodega por la VPN.
-\end{enumerate}
-
-Concepción no depende de esta recuperación: sigue operando su propia bodega.
-
-Las cinco figuras comparten la misma cadena de entrega y la misma imagen firmada, y difieren en la cuenta, el bloque de direccionamiento y el alcance hacia los sitios. Solo Producción llega a las bodegas por la VPC Hub, y Recuperación ante Desastres conserva preparada la réplica reducida de us-east-1 y la recuperación del WMS de Talca en la nube.
+Las cinco vistas y sus pasos completos se entregan en el \href{LAFROX-Subdocumento4-Anexos.pdf#anx:X-ambientes}{Anexo 4-X.1}, con sus identificadores originales, Figuras 19--23:
+\begin{itemize}
+  \item \hypertarget{fig:amb-desarrollo}{}\href{LAFROX-Subdocumento4-Anexos.pdf#fig:amb-desarrollo}{Figura 19, Desarrollo}: construcción hermética SLSA nivel 3 y publicación en ECR; sin enlace hacia los sitios.
+  \item \hypertarget{fig:amb-qa}{}\href{LAFROX-Subdocumento4-Anexos.pdf#fig:amb-qa}{Figura 20, QA}: misma imagen, pruebas funcionales, de integración y de regresión en cuenta aislada.
+  \item \hypertarget{fig:amb-preproduccion}{}\href{LAFROX-Subdocumento4-Anexos.pdf#fig:amb-preproduccion}{Figura 21, Preproducción}: topología equivalente, migraciones aditivas, canario y sitio emulado desconectado; reconciliación compatible al reconectar.
+  \item \hypertarget{fig:amb-produccion}{}\href{LAFROX-Subdocumento4-Anexos.pdf#fig:amb-produccion}{Figura 22, Producción}: promoción automática dentro de las ventanas autorizadas, despliegue gradual y actualización de sitios por VPN y Ansible; es el único ambiente que llega a las bodegas.
+  \item \hypertarget{fig:amb-recuperacion}{}\href{LAFROX-Subdocumento4-Anexos.pdf#fig:amb-recuperacion}{Figura 23, Recuperación ante Desastres}: imagen replicada a us-east-1 y escalado en menos de 30 min; recuperación del WMS de Talca sobre Aurora en la región activa. Concepción continúa su propia operación.
+\end{itemize}
+% Se mantienen los números de las figuras posteriores al traslado de 19--23.
+\addtocontents{lof}{\protect\noindent\protect\hyperlink{fig:amb-desarrollo}{Figura 19\protect\quad Ambiente de Desarrollo (Anexo 4-X.1)}\protect\par}
+\addtocontents{lof}{\protect\noindent\protect\hyperlink{fig:amb-qa}{Figura 20\protect\quad Ambiente de QA (Anexo 4-X.1)}\protect\par}
+\addtocontents{lof}{\protect\noindent\protect\hyperlink{fig:amb-preproduccion}{Figura 21\protect\quad Ambiente de Preproducción (Anexo 4-X.1)}\protect\par}
+\addtocontents{lof}{\protect\noindent\protect\hyperlink{fig:amb-produccion}{Figura 22\protect\quad Ambiente de Producción (Anexo 4-X.1)}\protect\par}
+\addtocontents{lof}{\protect\noindent\protect\hyperlink{fig:amb-recuperacion}{Figura 23\protect\quad Ambiente de Recuperación ante Desastres (Anexo 4-X.1)}\protect\par}
+\addtocounter{figure}{5}
 
 El paso de un ambiente a otro lo controla el pipeline de integración continua: GitLab CI lo orquesta y AWS CodeBuild construye cada imagen de forma hermética, con procedencia SLSA nivel 3. Cada cambio instala las dependencias exactamente como las fija \texttt{composer.lock} y pasa por estos controles (RT-04.05, Bases Técnicas Transversales, cap. 4, p. 10):
 
@@ -266,16 +149,9 @@ Cada promoción ensaya además la compatibilidad de los mensajes retenidos. Un s
 
 \paragraph{Implantación por olas en los sitios}
 
-La arquitectura lógica fija la implantación progresiva por olas (apartado 4.1.8). Su secuencia física es la siguiente:
+La secuencia de 4.1.8 se ejecuta fijando contratos OpenAPI/AsyncAPI, sobre JSON, esquema de destino y extracto conciliado de Talca. El piloto prueba colas y ACL ante corte, ERP caído y reenvíos. Al habilitar cada capacidad, el WMS de 2013 deja de escribirla.
 
-\begin{enumerate}
-  \item Se registran los contratos OpenAPI y AsyncAPI, el sobre JSON, el esquema PostgreSQL de destino definido por el modelo de datos de la solución, que es la línea base de las migraciones Laravel, y el extracto conciliado del WMS de 2013 de Talca.
-  \item Se construye el backend y se prueban las colas y la capa anticorrupción con fallas inducidas: corte de enlace, ERP caído, mensajes duplicados y fuera de orden.
-  \item Se habilita un sitio piloto, dimensionado por su capacidad real, y el WMS de 2013 deja de escribir cada capacidad que se migra. El tráfico se migra por olas con un único escritor autorizado para cada operación. Nunca escriben a la vez el WMS de 2013 y la solución sobre el stock, los cobros o los documentos tributarios.
-  \item Antes de cada corte se drenan o se transforman al sobre JSON vigente los mensajes de ediciones anteriores del propio sobre que el consumidor no admita.
-  \item Cada ola cierra verificando saldos de stock, cobros y folios contra el extracto del origen, y se revierte por sitio si falla un umbral acordado con el CLIENTE.
-  \item La reversión devuelve el tráfico a la entrega previa del nuevo servicio solo después de detener la nueva, conciliar los mensajes retenidos y comprobar que el esquema sigue legible por la entrega previa. No reactiva el WMS de 2013 como escritor.
-\end{enumerate}
+Antes del corte se drenan o transforman los sobres que el consumidor ya no admite. Cada ola concilia stock, cobros y folios contra el origen. Si falla un umbral acordado, se detiene la nueva entrega, se concilian pendientes y se verifica que el esquema sea legible por la anterior antes de devolverle el tráfico. La reversión conserva el nuevo servicio como escritor.
 
 \paragraph{Calendario y cadencia}
 
@@ -428,11 +304,11 @@ Estos tiempos corresponden a los que AWS declara como habituales para cada servi
 \subsubsection{Recuperación ante desastres}
 \label{sub:4-recuperacion-ante-desastres-ba-art-20-rt}
 
-La recuperación ante desastres es activo-pasiva en caliente: la región us-east-1 mantiene el núcleo de aplicación y los datos replicados con capacidad reducida. Su escalado tiene un presupuesto de hasta 30 minutos y se promueve ante pérdida de la región primaria. Los canales, accesos e ingesta se restituyen según 4.3.2.5. El escalado no representa el RTO completo. Los objetivos son un RTO de hasta 4 horas y un RPO de hasta 15 minutos para los servicios críticos (RT-07.04, Bases Técnicas Transversales, cap. 7, p. 17). Cada dominio de datos alcanza ese RPO con su propio mecanismo de replicación (listado \hyperref[tab:4-3-4]{de replicación y RPO por dominio}): Aurora Global Database mantiene en us-east-1 la réplica promovible de la base en nube, DynamoDB Global Tables los datos de temperatura (las posiciones de flota permanecen solo en sa-east-1), y la replicación de S3 entre regiones lleva la evidencia, los documentos y las copias de AWS Backup (N-11).
+El núcleo de us-east-1 mantiene capacidad reducida y escala en hasta 30 minutos. El objetivo completo para servicios críticos es RTO $\leq$ 4 horas y RPO $\leq$ 15 minutos (RT-07.04, Bases Técnicas Transversales, cap. 7, p. 17). La sección 4.3.2 detalla Aurora Global Database, DynamoDB Global Tables, S3, exclusiones de geolocalización, continuidad por fibra/LTE/Starlink y recuperación por dominio.
 
-Si Talca pierde fibra y LTE, Starlink D-06, mantenido en espera caliente con el túnel IPsec establecido y BGP de menor preferencia, sostiene la lectura continua de AWS DMS sobre VM-02 y el envío de eventos críticos. La operación local conserva al menos 24 horas de autonomía. El cumplimiento del RPO ante pérdida de enlaces o del sitio y sus mecanismos se exponen en 4.3.2, bajo «RPO y RTO». El registro retenido se acota con un tope de 5 GB por slot, frente a los unos 0,123 GB diarios de registro de escritura anticipada que estima el dimensionamiento para Talca: cubre con amplio margen un corte de 24 horas y ocupa como máximo la cuarta parte de los 20 GB actuales de VM-02, que crecen a 31 GB a 3$\times$, sin arriesgarlo (Anexo 4-W). El retraso de replicación y el tamaño del registro retenido se miden de forma continua y generan alarma a los 5 y a los 15 minutos de retraso.
+DMS lleva VM-02 de Talca a un esquema de lectura de Aurora. Los eventos de todos los sitios actualizan las tablas del estado central mediante deduplicación transaccional por sitio y UUID. Una restricción única evita duplicados aun fuera de la ventana de SQS. Los dos mecanismos conservan destinos separados.
 
-La réplica por DMS y la reconciliación por eventos cumplen funciones distintas y no se mezclan. DMS copia las tablas del WMS de Talca (VM-02) a un esquema de réplica de solo lectura en Aurora, que sirve a la continuidad y a las consultas. Concepción y los cross-docking no replican sus bases por DMS: publican sus eventos mediante los brokers y SQS FIFO. El consumidor de reconciliación aplica esos sobres JSON a las tablas de dominio del estado central (stock consolidado, trazabilidad de lotes, pedidos, entregas y cobros), y en la misma transacción registra la clave de origen del evento, formada por el sitio y el identificador único que el evento trae desde su captura. Una restricción de unicidad sobre esa clave impide aplicar dos veces el mismo evento, aunque SQS lo entregue de nuevo o llegue después de la ventana de deduplicación de la cola. Ninguna tabla de dominio se alimenta de la réplica DMS, y ningún evento escribe en el esquema de réplica.
+El registro WAL retenido se limita a 5 GB por slot frente a 0,123 GB/día estimados para Talca, con margen para 24 horas de corte. Ocupa hasta la cuarta parte de los 20 GB actuales de VM-02, que crecen a 31 GB a 3$\times$. El retraso genera alarmas a los 5 y 15 minutos y se vigila la ocupación (Anexo 4-W).
 
 \paragraph{Conmutación y retorno}
 
@@ -440,7 +316,7 @@ La conmutación de región y el retorno siguen el \hyperref[tab:4-3-6]{procedimi
 
 \paragraph{Operación durante una contingencia regional}
 
-Mientras la región primaria no está disponible, la bodega y el terreno siguen operando contra sus bases locales y sus dispositivos. Tras la autorización del CLIENTE, la plataforma se promueve en us-east-1 y recupera las transacciones en nube. La analítica se recupera después desde su copia diferida, y las consultas de geolocalización de personas, excluidas de us-east-1 por diseño (sección~\ref{sec:e-especificaciones-del-sitio-secundario-y-}), esperan el retorno. Ninguna es un servicio crítico.
+Durante la conmutación, bodega y terreno conservan la operación local. La analítica espera su copia diferida y la geolocalización, excluida de us-east-1, espera el retorno a sa-east-1. Los servicios críticos se restablecen conforme a 4.3.2.5.
 
 \subsubsection{Respaldos}
 \label{sub:5-respaldos-esquema-3-2-1-1-0-rnf-20-07}
