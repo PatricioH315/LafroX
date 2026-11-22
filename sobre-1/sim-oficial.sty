@@ -93,4 +93,41 @@
 \newcommand{\SIMnotarioTitular}{Pedro Ejemplo Muestra}
 \newcommand{\SIMnotaria}{Notaría Simulada de Valparaíso}
 \newcommand{\SIMnotariaDir}{Calle Prat 000, Valparaíso}
+
+% ---------------------------------------------------------------------------
+%  Fictitious notary seal + handwritten-style signature (TikZ only).
+%   \SIMtimbrenotarial[diameter]   default 3cm
+%  Belongs to the FICTITIOUS notary above; carries "SIMULACIÓN" in the ring.
+%  Never replace it with an image of a real notary's seal or signature.
+% ---------------------------------------------------------------------------
+\usetikzlibrary{decorations.text}
+\definecolor{SIMsello}{RGB}{196,40,110}
+\definecolor{SIMtinta}{RGB}{28,60,190}
+\newcommand{\SIMtimbrenotarial}[1][3cm]{%
+  \begin{tikzpicture}[x=#1/3, y=#1/3, line cap=round, line join=round]
+    % seal
+    \begin{scope}[SIMsello, opacity=0.85, rotate=-8]
+      \draw[line width=1.1pt] (0,0) circle (1.5);
+      \draw[line width=0.5pt] (0,0) circle (1.08);
+      \path[decorate, decoration={text along path, text align=center,
+            text={|\SIMsans\bfseries\fontsize{6.4pt}{6.4pt}\selectfont\color{SIMsello}|PEDRO EJEMPLO MUESTRA}}]
+        (-1.24,0) arc (180:0:1.24);
+      \path[decorate, decoration={text along path, text align=center,
+            text={|\SIMsans\bfseries\fontsize{5.6pt}{5.6pt}\selectfont\color{SIMsello}|SIMULACIÓN * VALPARAÍSO}}]
+        (-1.34,0) arc (-180:0:1.34);
+      \node[align=center, font=\SIMsans\bfseries\fontsize{5.2pt}{6pt}\selectfont, text=SIMsello]
+        at (0,0) {NOTARIO\\NOTARÍA\\SIMULADA\\DE VALPARAÍSO\\--- FICTICIO ---};
+    \end{scope}
+    % signature: cursive-like strokes crossing the seal
+    \begin{scope}[SIMtinta, line width=0.85pt, opacity=0.9]
+      \draw plot[smooth, tension=0.6] coordinates {
+        (-1.7,-0.55) (-1.45,1.15) (-1.15,0.55) (-1.5,0.25) (-1.1,0.05)
+        (-0.85,0.5) (-0.95,0.05) (-0.6,0.12) (-0.3,0.95) (-0.38,-0.3)
+        (-0.1,0.2) (0.2,0.6) (0.12,-0.05) (0.45,0.1) (0.78,1.1)
+        (0.68,-0.85) (0.55,-0.35) (1.0,0.05) (1.3,0.42) (1.65,0.22)};
+      \draw plot[smooth, tension=0.7] coordinates {
+        (-1.6,-0.72) (-0.4,-0.5) (0.8,-0.62) (1.7,-0.3)};
+    \end{scope}
+    \useasboundingbox (-1.75,-1.55) rectangle (1.75,1.55);
+  \end{tikzpicture}}
 \endinput
