@@ -8,6 +8,7 @@
 }
 
 \input{firma-pie.tex}
+\input{sd6-ajustes.tex}
 
 
 % Formato de portada común, basado en el Subdocumento 1.
@@ -23,7 +24,7 @@
 
 \chapter{Metodología de desarrollo de software}
 
-Este formulario describe el desarrollo en cascada por etapa contractual, con frentes en paralelo durante la construcción. El Subdocumento 6 explica la elección del método y el T-15 programa las actividades.
+Este formulario describe el desarrollo en cascada por etapa contractual, con frentes en paralelo durante la construcción. El Subdocumento 6 explica la elección del método y el T-15 programa las actividades (LafroX, 2026g).
 
 \begin{enumerate}
     \item \textbf{Requisitos y diseño.} El alcance se aprueba en H1 y H8 (2.1.1 y 2.1.2). Se documentan las reglas de ruteo (2.1.4), las interfaces sin documentación (2.1.5) y los criterios que se van a probar. El H2 aprueba la arquitectura (2.8.1); el H8 aprueba el diseño detallado de la Etapa 2 (2.8.2).
@@ -32,23 +33,25 @@ Este formulario describe el desarrollo en cascada por etapa contractual, con fre
     \item \textbf{Implantación.} Se aplican el plan de olas, el corte y la reversión del T-18. La marcha blanca de la Etapa 1 ocupa los meses 13 a 15 y el paso a producción, el mes 16. La de la Etapa 2 ocupa los meses 19 y 20 y el paso a producción, el mes 21. En cada etapa se cierra la evidencia, se entrega el expediente y la Contraparte Técnica lo revisa durante diez días hábiles antes de firmar el acta. En el calendario nominal del T-15, H7 se firma el 16-05-2028 y H12 el 17-10-2028; el paso a producción se ejecuta el día hábil siguiente, el 17-05-2028 y el 18-10-2028, respectivamente. Tras el corte se inician el soporte puente y la estabilización de la Etapa 1; en la Etapa 2 se inician la estabilización y la Operación.
 \end{enumerate}
 
+\Needspace{8\baselineskip}
 \section{Gestión de requerimientos}
 
-Los requisitos provienen del catálogo del Subdocumento 3 y del Formulario T-12 y quedan en línea base por etapa (H1 y H8). Se gestionan así:
+Los requisitos provienen del catálogo del Subdocumento 3 y del Formulario T-12 (LafroX, 2026d) y quedan en línea base por etapa (H1 y H8). Se gestionan así:
 \begin{itemize}
   \item \textbf{Expresión.} Cada requisito funcional se expresa en un caso de uso con su actor, precondición, flujo, resultado esperado y criterio de aceptación verificable.
   \item \textbf{Validación.} Antes de construir, se comprueban los casos de uso y sus criterios con la persona del CLIENTE que conoce la regla (Anexo 6.A): la Jefa de Calidad para la regla térmica, la Jefa de Bodega para la ubicación y el planificador para las rutas.
-  \item \textbf{Trazabilidad.} La matriz del Formulario T-13 vincula cada requisito con su origen, componente, paquete, prueba y criterio; el cambio de código y el despliegue se vinculan al requisito en la solicitud de fusión (RT-04.04).
+  \item \textbf{Trazabilidad.} La matriz del Formulario T-13 vincula cada requisito con su origen, componente, paquete, prueba y criterio; el cambio de código y el despliegue se vinculan al requisito en la solicitud de fusión (Distribuidora Puelche S.A., 2026b, Bases Técnicas Transversales, RT-04.04, p. 10).
   \item \textbf{Cambios.} Una precisión que no altera la línea base se registra en el caso de uso; un requisito nuevo o modificado sigue el control de cambios del Formulario T-9, sección 1.4.
 \end{itemize}
 
+\Needspace{8\baselineskip}
 \section{Arquitectura evolutiva, refactorización y deuda técnica}
 
 La arquitectura se diseña y aprueba en el H2. Durante la construcción, las pruebas de integración verifican que se respeten los límites y los contratos aprobados. Cuando los nuevos requisitos o los resultados de las pruebas justifican cambios, la arquitectura se ajusta mediante una nueva versión de la decisión en el registro de decisiones de arquitectura del SD4, con su fecha, estado y acta del Comité de Arquitectura.
 
 Durante la construcción, el equipo refactoriza el software que modifica para mejorar su estructura interna, preservando su comportamiento; las pruebas automatizadas comprueban que el comportamiento no cambió. Las limitaciones o compromisos técnicos que puedan dificultar cambios futuros se registran como deuda técnica. La Tabla~\ref{tab:t10-deuda} fija su tratamiento.
 
-\begin{tablalafrox}{Tratamiento de la deuda técnica. Fuente: elaboración propia a partir de (Bases Administrativas, art. 71, p. 37), (Bases Técnicas Transversales, RT-04.05) y (Subdocumento 9, Tabla 9.4).}{tab:t10-deuda}%
+\begin{tablalafrox}{Tratamiento de la deuda técnica. Fuente: elaboración propia a partir de (Distribuidora Puelche S.A., 2026a, Bases Administrativas, art. 71, p. 37), (Distribuidora Puelche S.A., 2026b, Bases Técnicas Transversales, RT-04.05, p. 10) y (Subdocumento 9, Tabla 9.4).}{tab:t10-deuda}%
   {F{0.16} Y F{0.30}}%
   {\cab{Clase} & \cab{Criterio} & \cab{Tratamiento}}%
   Bloqueante & Umbral del análisis estático incumplido, o hallazgo de seguridad crítico o alto & Impide la promoción; no se acepta registrarla como deuda \\
@@ -59,16 +62,17 @@ Durante la construcción, el equipo refactoriza el software que modifica para me
 
 El Líder de Desarrollo no autoriza el paso de fase con deuda alta sin que exista un responsable, plazo y decisión del Comité de Arquitectura. Una deuda bloqueante impide toda promoción. Durante la Operación, la reducción de deuda se registra en 10.2.4.
 
+\Needspace{8\baselineskip}
 \section{DevSecOps, integración y entrega continuas, infraestructura como código y pruebas automatizadas}
 
-Cada cambio pasa por el pipeline de integración continua que define el SD4, sección 4.2: GitLab CI orquesta y AWS CodeBuild construye cada imagen de forma hermética, con procedencia SLSA nivel 3. El pipeline ejecuta la auditoría de dependencias con \texttt{composer audit}, las pruebas PHPUnit, el análisis estático con PHPStan y Larastan, el formato con Laravel Pint, las pruebas de contrato contra OpenAPI 3.1 y AsyncAPI 2.6, el escaneo de secretos y de imágenes de contenedor y la medición de cobertura.
+Cada cambio pasa por el pipeline de integración continua que define el SD4, sección 4.2 (LafroX, 2026a): GitLab CI orquesta y AWS CodeBuild construye cada imagen de forma hermética, con procedencia SLSA nivel 3. El pipeline ejecuta la auditoría de dependencias con \texttt{composer audit}, las pruebas PHPUnit, el análisis estático con PHPStan y Larastan, el formato con Laravel Pint, las pruebas de contrato contra OpenAPI 3.1 y AsyncAPI 2.6, el escaneo de secretos y de imágenes de contenedor y la medición de cobertura.
 
 Las compuertas son bloqueantes, no opcionales. El pipeline detiene la promoción ante:
 \begin{itemize}
     \item un hallazgo de seguridad crítico o alto en dependencias, código, secretos o imagen;
     \item un contrato público roto sin una nueva edición de la interfaz;
-    \item una cobertura de la lógica de negocio inferior al 70\% (RT-04.11);
-    \item una cobertura unitaria global inferior al 80\%, política corporativa de LafroX (Subdocumento 1, sección 1.3; paquete 1.4.2);
+    \item una cobertura de la lógica de negocio inferior al 70\% (Distribuidora Puelche S.A., 2026b, Bases Técnicas Transversales, RT-04.11, p. 11);
+    \item una cobertura unitaria global inferior al 80\%, política corporativa de LafroX (LafroX, 2026i, Subdocumento 1, sección 1.3; paquete 1.4.2);
     \item una cobertura de líneas por pruebas unitarias del código modificado inferior al 80\%, política corporativa de LafroX (paquete 1.4.2);
     \item una deuda técnica bloqueante o una prueba en falla.
 \end{itemize}
@@ -76,23 +80,26 @@ Las compuertas son bloqueantes, no opcionales. El pipeline detiene la promoción
 La imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila. La infraestructura de los ambientes se describe como código: Terraform administra los recursos con estados separados por ambiente y Ansible configura los hosts; cada recurso tiene un único propietario de código. Las migraciones de base de datos siguen la estrategia de expandir y contraer y declaran su reversión.
 
 \paragraph{Ambientes y promoción}
-La Tabla~\ref{tab:t10-ambientes} indica, para cada uno de los cinco ambientes del RT-04.01 descritos en el Subdocumento 4 (secciones 4.1.9 y 4.2.4.1), qué se despliega, qué puerta del Subdocumento 9 controla la llegada y quién la aprueba.
+La Tabla~\ref{tab:t10-ambientes} indica, para cada uno de los cinco ambientes del RT-04.01 descritos en el Subdocumento 4 (secciones 4.1.9 y 4.2.4.1), qué se despliega, qué puerta del Subdocumento 9 (LafroX, 2026e) controla la llegada y quién la aprueba.
 
 \begin{tablalafrox}{Ambientes, promoción y aprobación. Fuente: elaboración propia a partir de (Subdocumento 4, secciones 4.1.9 y 4.2.4.1) y (Subdocumento 9, Tabla 9.7).}{tab:t10-ambientes}%
   {F{0.15} Y F{0.15} F{0.20}}%
   {\cab{Ambiente} & \cab{Qué se despliega y para qué} & \cab{Puerta de entrada} & \cab{Quién aprueba}}%
-  Desarrollo (DEV) & Ramas de trabajo con datos sintéticos; pruebas unitarias sin el ERP real & G0--G1 & Revisión por pares \\
+  Desarrollo (DEV) & Ramas de trabajo con datos sintéticos; pruebas unitarias que no requieren conexión al ERP & G0--G1 & Revisión por pares \\
   QA & Imagen firmada con los módulos que corresponden al despliegue; adaptadores simulados para interfaces que aún no se integran con el sistema real; integración, regresión, fallas de enlace y espacio de capacitación & G2--G3 & Automática; ninguna persona levanta un bloqueo \\
-  Preproducción (PREPROD) & La misma imagen con topología equivalente a producción y volumen de septiembre; carga, desconexión, reversión y certificación & G4 & Líder de Calidad \\
+  PREPROD & Preproducción: la misma imagen con topología equivalente a producción y volumen de septiembre; carga, desconexión, reversión y certificación & G4 & Líder de Calidad \\
   Producción (PROD) & La imagen certificada, desde la marcha blanca (H6 y H11), dentro de las ventanas del caso & G5--G6 & Contraparte Técnica: acta de certificación (H5 o H10) para marcha blanca y acta de cierre (H7 o H12) para el corte \\
-  Recuperación (DR) & La versión compatible de producción; conmutación y retorno al menos dos veces al año & Réplica & Líder de Operación / SRE \\
+  DR & Recuperación: la versión compatible de producción; conmutación y retorno al menos una vez por semestre & Réplica & Líder de Operación / SRE \\
 \end{tablalafrox}
 
 El orden es estricto: ninguna imagen llega a un ambiente sin haber pasado por el anterior, y los cinco ambientes deben estar operativos en el H3.
 
-La entrega continua mantiene versiones verificadas y listas para su despliegue en cada ambiente. El paso a Producción se ejecuta sólo dentro de las ventanas permitidas por el caso y, durante el desarrollo, sólo en los hitos aprobados: ningún cambio se despliega entre el 1 y el 25 de septiembre, en diciembre ni en los tres primeros días hábiles de un mes. La ventana de despacho de 05:30 a 07:00 se mantiene sin indisponibilidad (Caso, RT-10.05). La prohibición rige también para las correcciones: un defecto detectado en esas fechas se contiene sin intervenir los sistemas y su corrección se promueve en la primera fecha permitida. Toda intervención excepcional en esas fechas requiere una instrucción escrita del CLIENTE, tramitada por el control integrado de cambios.
+La entrega continua mantiene versiones verificadas y listas para su despliegue en cada ambiente. El inicio de la marcha blanca y el corte oficial se sujetan a H6/H11 y H7/H12, respectivamente. Las promociones ordinarias de versiones siguen la cadencia quincenal de SD4 4.2.4.1.4, con las puertas, autorizaciones y días habilitados que correspondan; no se realizan despliegues ordinarios durante todo septiembre, todo diciembre ni los tres primeros días hábiles de un mes, conforme a SD4 4.2.4.1.4 (LafroX, 2026a). El congelamiento total del caso del 1 al 25 de septiembre no habilita despliegues ordinarios del 26 al 30. La ventana de despacho de 05:30 a 07:00 se mantiene sin indisponibilidad (Distribuidora Puelche S.A., 2026c, Bases Técnicas del caso, RT-10.05, p. 26). La prohibición ordinaria rige también para las correcciones: se aplica contención y se promueve en la primera fecha permitida. Si recuperar o remediar exige una intervención prohibida, el NOC/SOC solicita inmediatamente autorización expresa y escrita del CLIENTE según SD4 4.2.4.1.4 y T-18 6.4; la aprobación interna no la sustituye. La intervención autorizada conserva pipeline, evidencia y reversión, fuera del despacho. Sin autorización, se mantiene la contención y se registra la decisión, sin declarar corregido el defecto (Distribuidora Puelche S.A., 2026c, Bases Técnicas del caso, cap. 10, pp. 19--20).
 
+\Needspace{8\baselineskip}
 \section{Revisiones, cadencias y decisiones del desarrollo}
+
+Las revisiones comprueban reglas, integración y evidencia en momentos distintos. La Tabla~\ref{tab:t10-revisiones} distingue el control, su momento, la decisión y el registro que permite verificarla.
 
 \begin{tablalafrox}{Revisiones y evidencias del desarrollo. Fuente: Formularios T-9, T-13 y T-15.}{tab:t10-revisiones}%
   {F{0.18} F{0.17} Y F{0.21}}%
@@ -105,6 +112,7 @@ La entrega continua mantiene versiones verificadas y listas para su despliegue e
 
 Los responsables de frente documentan las decisiones que afectan interfaces, seguridad u operación. El Comité de Arquitectura autoriza las modificaciones de diseño; si cambian alcance, fecha, costo o criterio de aceptación, se tramita la solicitud formal de la sección 6.1.4 del Subdocumento 6.
 
+\Needspace{8\baselineskip}
 \section{Desarrollo y prueba de las condiciones del caso}
 
 Las condiciones de Puelche se incorporan al diseño y a las pruebas antes de la marcha blanca:
@@ -117,5 +125,32 @@ Las condiciones de Puelche se incorporan al diseño y a las pruebas antes de la 
   \item \textbf{Turno de noche y rotación.} La prueba de usabilidad de bodega se hace en el turno nocturno con personal de menos de un mes, con aprendizaje de dos horas como máximo (SD9, 9.1.3; T-13, 7.3), y la capacitación continua del turno sigue el paquete 9.5.2.
   \item \textbf{Transferencia a un área de TI de cuatro personas.} El Jefe de TI participa en el Comité de Arquitectura desde el mes 1; los procedimientos de operación se ensayan con su equipo antes del traspaso (9.5.4), y la mentoría se extiende seis meses después del mes 21 (10.4.2).
 \end{itemize}
+
+\clearpage
+\phantomsection
+\section*{Referencias}
+\addcontentsline{toc}{section}{Referencias}
+
+Las referencias identifican las fuentes usadas para los requisitos, la metodología y las remisiones técnicas.
+
+\begin{list}{}{\setlength{\leftmargin}{1.27cm}\setlength{\itemindent}{-1.27cm}\setlength{\itemsep}{3pt}\setlength{\parsep}{0pt}}
+\interlinepenalty=10000
+
+  \item Distribuidora Puelche S.A. (2026a). \textit{Bases Administrativas de Licitación N.º TFEP-01/2026}.
+  \item Distribuidora Puelche S.A. (2026b). \textit{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026}.
+  \item Distribuidora Puelche S.A. (2026c). \textit{Caso Logística: Especificaciones del problema y operación de Distribuidora Puelche S.A.}.
+  \item LafroX. (2026a). \textit{Arquitectura lógica y física de la solución} [Subdocumento 4, anexos y Formulario T-11].
+  \item LafroX. (2026d). \textit{Esquema de solución y alcance} [Subdocumento 3, anexos y Formulario T-12].
+  \item LafroX. (2026e). \textit{Plan de calidad} [Subdocumento 9, anexos y Formularios T-13 y T-17].
+  \item LafroX. (2026g). \textit{Plan de trabajo, EDT, cronograma e implantación} [Subdocumento 7, anexos y Formularios T-14, T-15 y T-18].
+  \item LafroX. (2026i). \textit{Presentación de la empresa} [Subdocumento 1].
+\end{list}
+
+\Needspace{8\baselineskip}
+\phantomsection
+\section*{Declaración de uso de IA}
+\addcontentsline{toc}{section}{Declaración de uso de IA}
+
+La declaración de este formulario se presenta en la fila correspondiente de la tabla de uso de IA del Subdocumento 6, junto con su finalidad, niveles y revisión humana. Se consolida con la del capítulo en el Formulario A-6.
 
 \end{document}

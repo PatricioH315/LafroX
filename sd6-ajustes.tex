@@ -1,0 +1,17 @@
+% Ajustes de legibilidad y navegacion exclusivos del SD6.
+\usepackage{needspace}
+\usepackage{etoolbox}
+\usepackage{float}
+\newcommand{\LFXsinhifen}{\hyphenpenalty=10000\exhyphenpenalty=10000\emergencystretch=2em\relax}
+\AtBeginEnvironment{tablalafrox}{\LFXsinhifen}
+% Crear anclas dentro de la pagina nueva, antes de los titulos preliminares.
+\makeatletter
+\patchcmd{\indicelafrox}{\phantomsection}{\leavevmode\vspace{-\baselineskip}\phantomsection}{}{}
+\patchcmd{\listatablaslafrox}{\phantomsection}{\leavevmode\vspace{-\baselineskip}\phantomsection}{}{}
+\patchcmd{\listafiguraslafrox}{\phantomsection}{\leavevmode\vspace{-\baselineskip}\phantomsection}{}{}
+\makeatother
+
+\AtBeginDocument{\hypersetup{pdftitle={\LFXsubtitulo}}}
+
+\clubpenalty=10000
+\widowpenalty=10000
