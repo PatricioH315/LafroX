@@ -1,10 +1,11 @@
 % datos-proponente.tex --- Single source of truth for the Sobre N. 1 documents.
 %  All values are FICTITIOUS (academic exercise). Values with commas go in braces.
+\input{identidad-representante}
 \datoslafrox{
   empresa={LafroX SpA},
   rut={77.418.902-K},
   representante={Alex Aravena},
-  cargo={Gerente General y Representante Legal},
+  cargo={\LFXcargorepresentante},
   cliente={Distribuidora Puelche S.A.},
   licitacion={Licitación N.\textdegree{} TFEP-01/2026},
   caso={Caso 02 --- Logística},
@@ -25,7 +26,7 @@
 % Additional fictitious data shared across documents.
 \newcommand{\SIMfecha}{Valparaíso, 23 de noviembre de 2026}
 \newcommand{\SIMfechacorta}{23-11-2026}
-\newcommand{\SIMrunrepresentante}{12.345.678-5}   % fictitious RUN
+\newcommand{\SIMrunrepresentante}{\LFXcedularepresentante}   % fictitious RUN
 \newcommand{\SIMnacionalidad}{chilena}
 \newcommand{\SIMprofesion}{ingeniero civil informático}
 \newcommand{\SIMgiro}{Desarrollo de software, consultoría informática y servicios de tecnologías de la información}
@@ -39,7 +40,7 @@
 
 % batch A --- shareholders, administration and registry data (all fictitious).
 \newcommand{\SIMsocioAnombre}{Alex Aravena}
-\newcommand{\SIMsocioArun}{12.345.678-5}
+\newcommand{\SIMsocioArun}{\LFXcedularepresentante}
 \newcommand{\SIMsocioApct}{40}
 \newcommand{\SIMsocioAacc}{400.000}
 \newcommand{\SIMsocioBnombre}{Camila Fuentes Rojas}
@@ -55,8 +56,8 @@
 \newcommand{\SIMsocioDpct}{15}
 \newcommand{\SIMsocioDacc}{150.000}
 \newcommand{\SIMaccionestotal}{1.000.000}
-\newcommand{\SIMgerente}{Alex Aravena}
-\newcommand{\SIMgerenterun}{12.345.678-5}
+\newcommand{\SIMapoderado}{Alex Aravena}
+\newcommand{\SIMapoderadorun}{\LFXcedularepresentante}
 \newcommand{\SIMpresidenta}{Camila Fuentes Rojas}
 \newcommand{\SIMpresidentarun}{10.876.543-0}
 \newcommand{\SIMcapitalinicial}{\$ 100.000.000}

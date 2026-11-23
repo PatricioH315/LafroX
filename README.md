@@ -1,62 +1,64 @@
 # Sobre N.° 1 — Antecedentes del Oferente
 
-Documentos administrativos del Sobre N.° 1 (Bases Administrativas, Arts. 39, 48 y 49). Por ahora contiene los seis formularios del Anexo A, con foliación correlativa en todo el sobre.
+El Sobre N.° 1 reúne los 23 antecedentes de los cuatro grupos del artículo 39 de las Bases Administrativas. El Formulario A-5 abre el sobre; los demás documentos siguen el orden del artículo 39, sin repetir A-5 en el grupo técnico. La foliación es única para el conjunto.
 
-| Folios | Archivo | Contenido |
+## Documentos incluidos
+
+Las rutas siguientes identifican los PDF que integran el índice A-5. Los folios de inicio y término vigentes se generan en `folios.tex` y se imprimen en `LAFROX-Formulario-A-5.pdf`.
+
+| N.° | Documento | PDF |
 |---|---|---|
-| 1–4 | `LAFROX-Formulario-A-5.pdf` | Presentación e índice de antecedentes (abre el sobre, Art. 40.3) |
-| 5–9 | `LAFROX-Formulario-A-1.pdf` | Identificación del Proponente y de su Representante |
-| 10–12 | `LAFROX-Formulario-A-2.pdf` | Declaración jurada de no afectación por prohibiciones e inhabilidades |
-| 13–15 | `LAFROX-Formulario-A-3.pdf` | Declaración de aceptación íntegra de las Bases |
-| 16–19 | `LAFROX-Formulario-A-4.pdf` | Declaración de ausencia de conflictos de interés |
-| 20–43 | `LAFROX-Formulario-A-6.pdf` | Declaración de uso de IA generativa (SD1 a SD13 y Entregable 2 de la Oferta Económica) |
+| 1 | Formulario A-5: Presentación e índice de antecedentes | [LAFROX-Formulario-A-5.pdf](LAFROX-Formulario-A-5.pdf) |
+| 2 | Formulario A-1: Identificación del Proponente y de su Representante | [LAFROX-Formulario-A-1.pdf](LAFROX-Formulario-A-1.pdf) |
+| 3 | Cédula de identidad del representante legal | [LAFROX-Cedula-Representante-Legal-v2.pdf](antecedentes/1-legales/02-cedula-representante/LAFROX-Cedula-Representante-Legal-v2.pdf) |
+| 4 | Rol Único Tributario de la empresa | [LAFROX-RUT.pdf](antecedentes/1-legales/03-rut-empresa/LAFROX-RUT.pdf) |
+| 5 | Certificado de vigencia de la sociedad | [LAFROX-Vigencia.pdf](antecedentes/1-legales/04-certificado-vigencia/LAFROX-Vigencia.pdf) |
+| 6 | Patente comercial | [LAFROX-Patente.pdf](antecedentes/1-legales/05-patente-comercial/LAFROX-Patente.pdf) |
+| 7 | Escritura de constitución y modificaciones | [LAFROX-Escritura.pdf](antecedentes/1-legales/06-escritura-constitucion/LAFROX-Escritura.pdf) |
+| 8 | Poderes vigentes del representante | [LAFROX-Poderes.pdf](antecedentes/1-legales/07-poderes-representante/LAFROX-Poderes.pdf) |
+| 9 | Individualización de socios | [LAFROX-Socios.pdf](antecedentes/1-legales/08-individualizacion-socios/LAFROX-Socios.pdf) |
+| 10 | Certificado de deudas tributarias | [LAFROX-DeudaTributaria.pdf](antecedentes/2-financieros/09-deuda-tributaria/LAFROX-DeudaTributaria.pdf) |
+| 11 | Estados financieros auditados 2023–2025 | [LAFROX-EEFF.pdf](antecedentes/2-financieros/10-estados-financieros/LAFROX-EEFF.pdf) |
+| 12 | Certificado de antecedentes comerciales | [LAFROX-AntecedentesComerciales.pdf](antecedentes/2-financieros/11-antecedentes-comerciales/LAFROX-AntecedentesComerciales.pdf) |
+| 13 | Antecedentes laborales y previsionales | [LAFROX-BoletinLaboral.pdf](antecedentes/2-financieros/12-boletin-laboral/LAFROX-BoletinLaboral.pdf) |
+| 14 | Capacidad bancaria de emisión de garantías | [LAFROX-CertificadoBancario.pdf](antecedentes/2-financieros/13-certificado-bancario/LAFROX-CertificadoBancario.pdf) |
+| 15 | Formulario A-2: No afectación por prohibiciones e inhabilidades | [LAFROX-Formulario-A-2.pdf](LAFROX-Formulario-A-2.pdf) |
+| 16 | Declaración de no quiebra ni reorganización | [LAFROX-NoQuiebra.pdf](antecedentes/3-declaraciones/15-dj-no-quiebra/LAFROX-NoQuiebra.pdf) |
+| 17 | Formulario A-3: Aceptación íntegra de las Bases | [LAFROX-Formulario-A-3.pdf](LAFROX-Formulario-A-3.pdf) |
+| 18 | Formulario A-4: Ausencia de conflictos de interés | [LAFROX-Formulario-A-4.pdf](LAFROX-Formulario-A-4.pdf) |
+| 19 | Constitución de domicilio en Valparaíso | [LAFROX-Domicilio.pdf](antecedentes/3-declaraciones/18-domicilio-valparaiso/LAFROX-Domicilio.pdf) |
+| 20 | Carta de presentación y nómina de contratos similares | [LAFROX-CartaPresentacion.pdf](antecedentes/4-tecnicos/19-carta-presentacion-contratos/LAFROX-CartaPresentacion.pdf) |
+| 21 | Cartas compromiso de socios y proveedores | [LAFROX-CartasCompromiso.pdf](antecedentes/4-tecnicos/20-cartas-compromiso/LAFROX-CartasCompromiso.pdf) |
+| 22 | Formulario A-6: Declaración de uso de IA generativa | [LAFROX-Formulario-A-6.pdf](LAFROX-Formulario-A-6.pdf) |
+| 23 | Certificaciones institucionales y de fabricante | [LAFROX-Certificaciones.pdf](antecedentes/4-tecnicos/23-certificaciones/LAFROX-Certificaciones.pdf) |
 
-Los folios cambian si se agrega un documento; el índice A-5 y este cuadro se rigen por `folios.tex`.
+## Compilación y control de folios
 
-## Compilar
+Desde la raíz de este checkout:
 
-```
+```sh
 python compilar_sobre1.py
 ```
 
-Compila los documentos en el orden del sobre con LuaLaTeX (latexmk), lee el último folio de cada uno y reescribe `folios.tex` hasta que los folios no cambian. No compilar los formularios sueltos con otro `folios.tex`: el folio de inicio de cada documento depende del anterior.
+Requiere LuaLaTeX y PyMuPDF. El script estabiliza la extensión del A-5, compila los 23 documentos y recalcula la foliación hasta que sus longitudes no cambian. Al terminar comprueba que cada página de cada PDF tenga exactamente el folio esperado y que la secuencia no tenga saltos ni duplicados. No compilar los documentos sueltos con un `folios.tex` de otra versión.
 
-## Datos
+Los documentos conservan sus carpetas. El nombre base de cada PDF es único; A-5 lo identifica y este cuadro permite localizar su ruta completa. `antecedentes/compilar.sh` conserva el uso de compilación individual de complementarios, pero no sustituye la integración y validación mediante el script principal.
 
-- Empresa, RUT, domicilio, representante, cargo, correo y teléfono: `lafrox.cls`, sección 6, iguales a los de todas las portadas.
-- Cédula del representante, giro, sitio web, contraparte del proceso: `sobre1-comun.tex`.
-- Tabla del A-6: `formulario-a6/filas.tex`, generada por `herramientas/consolidar_a6.py` desde la declaración de uso de IA de cada rama vigente. Si cambia una declaración, se corre `git fetch origin`, luego el script y luego la compilación.
+## Datos comunes
 
-## Cédula de identidad del representante legal
+- La cédula y el cargo confirmados para Alex Aravena están en `identidad-representante.tex`: 21.529.759-4 y Jefe de Proyecto y Apoderado. Formularios y complementarios usan ese mismo archivo.
+- Los datos de empresa y portadas de los formularios se configuran en `lafrox.cls` y `sobre1-comun.tex`; los restantes datos simulados de complementarios, en `antecedentes/datos-proponente.tex`.
+- `antecedentes/sim-oficial.sty` aplica el folio correlativo a los complementarios. Conserva la identificación de documento simulado, datos ficticios y ausencia de validez legal. Reutiliza la firma gráfica ya existente de Alex en la media firma de cada página; no añade autorizaciones notariales.
+- Las declaraciones de uso de IA de los documentos de origen se reúnen en `formulario-a6/filas.tex`; `herramientas/consolidar_a6.py` permite regenerar esa consolidación. Regenerar requiere comprobar las revisiones humanas efectivamente declaradas.
 
-Dejar el escaneo en `documentos-adjuntos/cedula-representante-legal.pdf` y compilar. El script agrega `LAFROX-Cedula-Representante-Legal.pdf` después del A-1 (orden del Art. 39), le pone folio y media firma en cada página y actualiza el índice del A-5.
+## Cédula del representante
 
-## Antecedentes simulados del Art. 39 (`antecedentes/`)
+Mientras no exista `documentos-adjuntos/cedula-representante-legal.pdf`, el índice incorpora la recreación de datos `LAFROX-Cedula-Representante-Legal-v2.pdf`. Si se aporta el escaneo, el compilador lo reemplaza por el documento raíz `LAFROX-Cedula-Representante-Legal.pdf`, sin duplicar el antecedente, y vuelve a calcular los folios. La recreación no acredita una fotocopia auténtica legalizada.
 
-Recreaciones con formato de documento chileno real, datos ficticios y marca de agua «SIMULACIÓN ACADÉMICA» en cada página. Los documentos privados imitan su formato real; los certificados estatales copian solo la estructura, sin emblemas, sellos ni códigos de verificación. El notario es ficticio (`\SIMtimbrenotarial`).
+## Simulación notarial y respaldo de proveedores pendiente
 
-| Art. 39 | Carpeta | Documento |
-|---|---|---|
-| 1 | `1-legales/02-cedula-representante` | Fotocopia legalizada de la cédula (`-v2`: hoja de datos simulada; la versión con escaneo real es `LAFROX-Cedula-Representante-Legal.tex`) |
-| 1 | `1-legales/03-rut-empresa` | Rol Único Tributario |
-| 1 | `1-legales/04-certificado-vigencia` | Certificado de vigencia de la sociedad |
-| 1 | `1-legales/05-patente-comercial` | Patente comercial legalizada |
-| 1 | `1-legales/06-escritura-constitucion` | Escritura de constitución y modificaciones |
-| 1 | `1-legales/07-poderes-representante` | Poderes vigentes del representante legal |
-| 1 | `1-legales/08-individualizacion-socios` | Individualización de los socios |
-| 2 | `2-financieros/09-deuda-tributaria` | Certificado de deudas tributarias |
-| 2 | `2-financieros/10-estados-financieros` | Estados financieros auditados 2023–2025 |
-| 2 | `2-financieros/11-antecedentes-comerciales` | Certificado de antecedentes comerciales |
-| 2 | `2-financieros/12-boletin-laboral` | Boletín Laboral y Previsional (DT) |
-| 2 | `2-financieros/13-certificado-bancario` | Certificado bancario de capacidad de garantías |
-| 3 | `3-declaraciones/15-dj-no-quiebra` | DJ de no encontrarse en quiebra ni reorganización |
-| 3 | `3-declaraciones/18-domicilio-valparaiso` | Constitución de domicilio en Valparaíso |
-| 4 | `4-tecnicos/19-carta-presentacion-contratos` | Carta de presentación, nómina de contratos y cartas de referencia |
-| 4 | `4-tecnicos/20-cartas-compromiso` | Cartas compromiso de socios y proveedores |
-| 4 | `4-tecnicos/23-certificaciones` | Certificaciones institucionales y de fabricante |
+A-2, A-3 y A-4 incorporan la imagen ficticia aportada por el usuario, guardada sin alteraciones como `firma notario.jpeg`, junto a la leyenda «Constancia notarial simulada». Se conserva la firma de Alex como declarante. Esto completa su representación documental dentro de la simulación; no acredita una autorización notarial real. Por petición posterior del usuario, la firma gráfica existente de Alex Aravena se reutiliza en todas las medias firmas de los complementarios y en los bloques de firma de sus cinco documentos propios: socios, estados financieros, no quiebra, domicilio y carta de presentación. Las firmas de notarios, auditores, bancos y proveedores no se sustituyen por la del representante.
 
-Datos comunes en `antecedentes/datos-proponente.tex`; base visual en `antecedentes/sim-oficial.sty`; modelos públicos consultados en `antecedentes/referencias/` (`FUENTES.md`). Compilar con `bash antecedentes/compilar.sh`. Aún no entran en la foliación de `compilar_sobre1.py` ni en el índice A-5.
+Los antecedentes simulados no constituyen certificaciones, auditorías, actuaciones notariales ni compromisos reales. Se retiraron referencias al curso y a fines académicos del texto impreso, conservando explícitamente la simulación; las firmas de Alex reutilizan el recurso gráfico existente y la constancia notarial usa únicamente la imagen ficticia aportada por el usuario.
 
-## Pendiente para completar el sobre (Art. 39)
-
-Integrar los antecedentes simulados a la foliación y al índice A-5, y la Boleta de Garantía de Seriedad (Art. 35). Dos subdocumentos ya anuncian documentos para este sobre: el Subdocumento 1 (sección 1.4: certificados y cartas de referencia del Art. 34) y el Subdocumento 12 (Anexo 12.D: cartas de compromiso firmadas del equipo). Los Formularios A-2, A-3 y A-4 van firmados ante notario. Si se agrega el Subdocumento 14, su declaración de uso de IA se suma al A-6 con `herramientas/consolidar_a6.py`.
+La Boleta de Garantía de Seriedad de los artículos 35 y 49.2 no está incluida: es adicional a los 23 antecedentes del artículo 39 y no se sustituye por el certificado bancario. El documento laboral distingue F30 (antecedentes del Boletín Laboral y Previsional) de F30-1. La nómina de experiencia reproduce los once campos del T-6 vigente y sus cartas simuladas ya no contradicen esos montos, SLA y arquitectura; se retiraron remisiones a facturas ausentes. Las Bases no fijan antigüedad máxima para la individualización de socios. El usuario confirmó que Alex Aravena revisó las correcciones y su nombre quedó registrado en A-6. Las cuatro alianzas se ajustaron al alcance de SD12/T-8; las cartas incompatibles de montaje externo y colocation se conservaron sólo en el respaldo de revisión. Los siete servicios especializados por adjudicar están identificados, pero su matriz no sustituye cartas de proveedores clave aún no nominados. En la versión simulada, el pendiente de contenido identificado es nominar a los proveedores de esos servicios y completar sus cartas compromiso con respaldo coherente en SD12/T-8. No se fabrican adjudicatarios ni compromisos. Si se requirieran documentos auténticos fuera del ejercicio, las recreaciones y sellos simulados no sustituirían certificados ni actuaciones reales. El conjunto compilado conserva 23 PDF y 98 folios; carta y nómina en 55–60 y proveedores en 61–65.

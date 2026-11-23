@@ -1,6 +1,8 @@
 \documentclass[11pt]{article}
 \usepackage[serif]{sim-oficial}
 \input{datos-proponente}
+\usepackage{xltabular}
+\usepackage{xurl}
 \setlength{\parskip}{7pt}
 % Simple text letterhead: #1 name, #2 line under it
 \newcommand{\membrete}[2]{%
@@ -38,42 +40,62 @@ Sin otro particular, saluda atentamente al CLIENTE,
 
 \vspace{34pt}
 \begin{center}
-  \rule{6.4cm}{0.5pt}\\[2pt]
+  \SIMfirmalinea{6.4cm}{0.5pt}\\[2pt]
   \textbf{\LFXrepresentante}\\\LFXcargo\\\LFXempresa\\ RUT \LFXrut
 \end{center}
 
 \clearpage
-\noindent{\SIMsans\bfseries NÓMINA DE CONTRATOS POR SERVICIOS SIMILARES (Formulario T-6)}\par\smallskip
-\small\renewcommand{\arraystretch}{1.15}
-\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\raggedright\arraybackslash}p{2.3cm} X X X@{}}\toprule
-  Campo & \textbf{Proyecto 1} & \textbf{Proyecto 2} & \textbf{Proyecto 3}\\\midrule
-  Nombre del proyecto & Sistema Híbrido de Reparto y Gestión Logística & Plataforma de Telemetría y Cadena de Frío IoT & Sistema Móvil de Preventa y Ruteo Desconectado\\
-  Cliente / mandante & LogiNacional S.A. & FarmaRed S.A. & Comercializadora Lácteos del Sur S.A.\\
-  Industria & Logística y distribución de carga & Distribución farmacéutica, cadena de frío & Consumo masivo, preventa en terreno\\
-  Período (mes/año inicio -- mes/año término) & 03/2021 -- 06/2022 & 05/2022 -- 04/2023 & 06/2023 -- 05/2024\\
-  Duración (meses) & 16 & 12 & 12\\
-  Cantidad de usuarios & 85 & 40 & 310\\
-  N\textdegree{} orden de compra / contrato & SIM-OC-2021-0457 & SIM-CT-2022-0312 & SIM-OC-2023-0289\\
-  Medio de verificación & Factura y acta de recepción, archivo P1\_factura.pdf & Factura y acta de recepción, archivo P2\_factura.pdf & Factura y acta de recepción, archivo P3\_factura.pdf\\
-  Estado & Proyecto terminado; en operación por el mandante desde julio de 2022 & Proyecto terminado; en operación por el mandante desde mayo de 2023 & Proyecto terminado; en operación por el mandante desde junio de 2024\\
-  Monto del contrato (rango) & CLP 1.500 a 2.500 millones & CLP 800 a 1.500 millones & CLP 500 a 1.000 millones\\
-  Alcance ejecutado & Núcleo logístico modular, ERP y facturación electrónica en 14 centros de distribución & Monitoreo de doce cámaras de congelación y de flota con temperatura controlada & Aplicación móvil de preventa con sincronización en diferido y políticas de crédito locales\\
-  Arquitectura & Híbrida: nube pública y servidores de borde & Nube & Nube con operación móvil desconectada\\
-  Nivel de servicio comprometido & Disponibilidad 99,5\,\% & Disponibilidad 99,9\,\% & Según contrato (sin SLA de disponibilidad)\\
-  Volumen de operación & 420 camiones; 22.000 entregas diarias & 12 millones de mediciones mensuales & 280 preventistas; 18.000 transacciones diarias\\
-  Rol de la empresa & Principal & Principal & Principal\\
-  Contraparte de referencia & Marcela Soto Ejemplo, Gerencia de TI; contacto simulado: msoto@loginacional.example; +56 2 2000 0001 & Rodrigo Pérez Muestra, Subgerencia de Operaciones; contacto simulado: rperez@farmared.example; +56 2 2000 0002 & Carolina Díaz Ficticia, Jefatura de Sistemas; contacto simulado: cdiaz@lacteosdelsur.example; +56 2 2000 0003\\\bottomrule
-\end{tabularx}
-\normalsize
+\noindent{\SIMsans\bfseries NÓMINA DE CONTRATOS POR SERVICIOS SIMILARES}\par\smallskip
+La nómina reproduce los once campos del Formulario T-6. Las cartas de referencia simuladas de los tres mandantes se presentan a continuación.
+\begingroup
+\fontsize{9.5pt}{12pt}\selectfont\renewcommand{\arraystretch}{1.15}
+\begin{xltabular}{\linewidth}{@{}>{\bfseries\raggedright\arraybackslash}p{2.3cm} X X X@{}}
+\toprule Campo & Proyecto 1 & Proyecto 2 & Proyecto 3 \\
+\midrule\endfirsthead
+\toprule Campo & Proyecto 1 & Proyecto 2 & Proyecto 3 \\
+\midrule\endhead
+\bottomrule\endfoot
+\bottomrule\endlastfoot
+\textbf{Nombre del proyecto} & Sistema Híbrido de Reparto y Gestión Logística & Plataforma de Telemetría y Cadena de Frío IoT & Sistema Móvil de Preventa y Ruteo Desconectado \\
+\midrule
 
-\noindent{\small Los datos de contraparte son ficticios y se declaran únicamente para este ejercicio académico.}
+\textbf{Cliente / mandante} & LogiNacional S.A. & Red Distribución Farmacéutica (FarmaRed S.A.) & Comercializadora Lácteos del Sur S.A. \\
+\midrule
+
+\textbf{Industria} & Distribución mayorista y logística de consumo masivo & Distribución farmacéutica y de materiales de diagnóstico con conservación a temperatura controlada & Alimentos perecibles y consumo masivo \\
+\midrule
+
+\textbf{Año de inicio y de término} & Implementación: 2021 -- 2022; operación activa desde 2022 & Implementación: 2022 -- 2023; operación activa desde 2023 & Implementación: 2023 -- 2024; operación activa desde 2024 \\
+\midrule
+
+\textbf{Monto del contrato (rango)} & 25.000 a 35.000 UF & 18.000 a 25.000 UF & 12.000 a 18.000 UF \\
+\midrule
+
+\textbf{Alcance ejecutado} & Diseño, desarrollo, despliegue híbrido y soporte 24$\times$7 del software central de logística, cross-docking y facturación en ruta. & Implementación de una plataforma IoT para monitorear temperaturas en almacenamiento y transporte, registrar desviaciones y generar alertas. Incluye doce cámaras con consigna de $-22\,^{\circ}\mathrm{C}$ para una línea de reactivos y materiales de diagnóstico que requiere conservación congelada. Los parámetros se configuran según las condiciones de conservación de cada producto. & Desarrollo de aplicación móvil off-line first, motor de sincronización asíncrona bidireccional y módulo de crédito comercial. \\
+\midrule
+
+\textbf{Arquitectura (nube / on-premise / híbrida)} & Híbrida: Cargas transaccionales en nube pública AWS y servidores locales de borde en 14 centros de distribución. & Híbrida: Procesamiento central en AWS e integración de sensores de telemetría y gateways industriales on-premise. & Nube pública central con operación desconectada: persistencia local SQLite cifrada en terminales móviles robustos Android, sin componentes on-premise. \\
+\midrule
+
+\textbf{Nivel de servicio comprometido} & 99,5\% anual de disponibilidad (SLA) bajo contrato de operación 24$\times$7. & 99,9\% anual de disponibilidad (SLA) para telemetría crítica y reportes regulatorios. & 99,5\% mensual de disponibilidad del servicio central de conciliación y pedidos. \\
+\midrule
+
+\textbf{Volumen de operación soportado} & 420 camiones de flota activa, 22.000 puntos de entrega diarios en 3 regiones. & 12 cámaras de la línea congelada con consigna de $-22\,^{\circ}\mathrm{C}$; plataforma total: 180 vehículos refrigerados y 12 millones de registros/mes. La consigna de las cámaras no se atribuye a toda la flota. & 280 preventistas en terreno, 18.000 transacciones comerciales procesadas al día. \\
+\midrule
+
+\textbf{Rol de la empresa (principal / socio)} & Contratista Principal (responsable único de ingeniería, infraestructura y soporte). & Contratista Principal (integración de hardware, desarrollo de software y soporte especializado). & Contratista Principal (desarrollo de software aplicativo, QA y gestión del cambio). \\
+\midrule
+
+\textbf{Contraparte de referencia y contacto} & Roberto Morales Valenzuela\newline Gerente de Operaciones y TI\newline \url{r.morales@loginacional.cl}\newline +56 9 8451 2290 & Dra. Cecilia Valenzuela Gómez\newline Directora de Calidad y Logística\newline \url{c.valenzuela@farmared.cl}\newline +56 9 7320 4418 & Andrés Sepúlveda Miranda\newline Subgerente de TI y Distribución\newline \url{asepulveda@lacteosdelsur.cl}\newline +56 9 9124 5531 \\
+\end{xltabular}
+\endgroup
 
 \cartaref{LogiNacional S.A.}{Av. Ejemplo 1000, Santiago}{SIM-REF-LOGI-2026-0101}{Marcela Soto Ejemplo}{Gerente de Tecnologías de la Información}{%
-Certificamos que \LFXempresa{} ejecutó para nuestra empresa el proyecto «Sistema Híbrido de Reparto y Gestión Logística», entre 2021 y 2022, y que a la fecha se encuentra terminado y en operación por nuestra empresa desde julio de 2022. La solución tiene \textbf{arquitectura híbrida} (nube pública más servidores de borde on-premise en 14 centros de distribución) y soporta una flota de 420 camiones y 22.000 entregas diarias. Su operación se rige por un \textbf{acuerdo de nivel de servicio de disponibilidad de 99,5\,\%}, que ha sido cumplido en los períodos de medición. El monto del contrato se situó en el rango de CLP 1.500 a 2.500 millones. Calificamos el desempeño del proveedor como satisfactorio.}
+Certificamos que \LFXempresa{} ejecutó para nuestra empresa el proyecto «Sistema Híbrido de Reparto y Gestión Logística», entre 2021 y 2022, y que a la fecha se encuentra terminado y en operación por nuestra empresa desde julio de 2022. La solución tiene \textbf{arquitectura híbrida} (nube pública más servidores de borde on-premise en 14 centros de distribución) y soporta una flota de 420 camiones y 22.000 entregas diarias. Su operación se rige por un \textbf{acuerdo de nivel de servicio de disponibilidad de 99,5\,\%}. El monto del contrato se situó en el rango de 25.000 a 35.000 UF. Calificamos el desempeño del proveedor como satisfactorio.}
 
 \cartaref{FarmaRed S.A.}{Calle Muestra 2000, Santiago}{SIM-REF-FARM-2026-0102}{Rodrigo Pérez Muestra}{Subgerente de Operaciones}{%
-Certificamos que \LFXempresa{} ejecutó para nuestra empresa la «Plataforma de Telemetría y Cadena de Frío IoT», entre 2022 y 2023. Proyecto terminado; en operación por nuestra empresa desde mayo de 2023. La plataforma monitorea doce cámaras de congelación y una flota de transporte con temperatura controlada, procesando 12 millones de mediciones mensuales, y opera bajo un \textbf{acuerdo de nivel de servicio de disponibilidad de 99,9\,\%}, superior al mínimo de 99,5\,\% exigido en las Bases. La arquitectura se aloja en nube con integración a sensores en nuestras instalaciones. El monto del contrato se situó en el rango de CLP 800 a 1.500 millones. Recomendamos al proveedor para proyectos de misión crítica.}
+Certificamos que \LFXempresa{} ejecutó para nuestra empresa la «Plataforma de Telemetría y Cadena de Frío IoT», entre 2022 y 2023. Proyecto terminado; en operación por nuestra empresa desde mayo de 2023. La plataforma monitorea doce cámaras de congelación y una flota de transporte con temperatura controlada, procesando 12 millones de mediciones mensuales, y opera bajo un \textbf{acuerdo de nivel de servicio de disponibilidad de 99,9\,\%}, superior al mínimo de 99,5\,\% exigido en las Bases. La arquitectura es híbrida, con procesamiento central en AWS y sensores y gateways industriales on-premise. Las doce cámaras de la línea congelada tienen consigna de $-22\,^{\circ}\mathrm{C}$ para reactivos y materiales de diagnóstico; esa consigna no se atribuye a toda la flota. La plataforma total abarca 180 vehículos refrigerados. El monto del contrato se situó en el rango de 18.000 a 25.000 UF. Recomendamos al proveedor para proyectos de misión crítica.}
 
 \cartaref{Comercializadora Lácteos del Sur S.A.}{Camino Simulado 3000, Osorno}{SIM-REF-LACT-2026-0103}{Carolina Díaz Ficticia}{Jefa de Sistemas}{%
-Certificamos que \LFXempresa{} ejecutó para nuestra empresa el «Sistema Móvil de Preventa y Ruteo Desconectado», entre 2023 y 2024. Proyecto terminado; en operación por nuestra empresa desde junio de 2024. La aplicación móvil, con sincronización en diferido y políticas de crédito locales, es usada por 280 preventistas y procesa 18.000 transacciones diarias, con operación desconectada en zonas de cobertura intermitente. El monto del contrato se situó en el rango de CLP 500 a 1.000 millones. Confirmamos el cumplimiento de los plazos y de las condiciones contractuales.}
+Certificamos que \LFXempresa{} ejecutó para nuestra empresa el «Sistema Móvil de Preventa y Ruteo Desconectado», entre 2023 y 2024. Proyecto terminado; en operación por nuestra empresa desde junio de 2024. El servicio central de conciliación y pedidos tiene un SLA mensual de disponibilidad de 99,5\,\%. La aplicación móvil, con sincronización en diferido y políticas de crédito locales, es usada por 280 preventistas y procesa 18.000 transacciones diarias, con operación desconectada en zonas de cobertura intermitente. El monto del contrato se situó en el rango de 12.000 a 18.000 UF. Confirmamos el cumplimiento de los plazos y de las condiciones contractuales.}
 \end{document}
