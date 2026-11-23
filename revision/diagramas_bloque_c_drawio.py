@@ -811,7 +811,7 @@ def build_ruta_h12(data: dict) -> Path:
     step_box(
         "s_note", side_x, y3 - 4.0, side_w, 94.0, "#F8F9F9", "#BDC3C7",
         "<b>6.8.6 · Verificación antes de la firma</b>"
-        "<br>La prueba se completa durante la revisión nominal. Confirmar si debe acompañar el ingreso del expediente.",
+        "<br>La prueba se completa durante la revisión nominal. El acta 1.1.3 fija si acompaña el ingreso del expediente.",
     )
 
     # Paso 4: Paso a producción E2 e inicio de Operación
