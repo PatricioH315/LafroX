@@ -800,7 +800,7 @@
         <task id="86" name="7.2.3 Innovación 2: captura de evidencia en las aplicaciones de preventa, preparación y reparto (INN-02.P3)" color="#4472c4" meeting="false" start="2027-06-01" duration="91" complete="0" expand="true">
             <notes>240 HH · responsable CAL · ejecución CAL · 7.2.2 (circuito mínimo)</notes>
             <customproperty taskproperty-id="tpc2" value="90" />
-            <depend id="208" type="2" difference="35" hardness="Rubber" />
+            <depend id="205" type="2" difference="35" hardness="Rubber" />
         </task>
         <task id="87" name="8.1.3 Actas de recepción técnica de equipamiento de terreno e infraestructura" color="#4472c4" meeting="false" start="2027-06-01" duration="7" complete="0" expand="true">
             <notes>80 HH · responsable SRE · ejecución SRE · 8.1.1, 8.1.2</notes>
@@ -1321,17 +1321,17 @@
         <task id="173" name="7.1.2 Innovación 1: estimador de saldo y ritmo de reposición (INN-01.P2)" color="#4472c4" meeting="false" start="2027-10-01" duration="34" complete="0" expand="true">
             <notes>240 HH · responsable DAT · ejecución DAT · 7.1.1 (protocolo inicial)</notes>
             <customproperty taskproperty-id="tpc2" value="34" />
-            <depend id="207" type="2" difference="7" hardness="Rubber" />
+            <depend id="204" type="2" difference="7" hardness="Rubber" />
         </task>
         <task id="174" name="7.1.3 Innovación 1: función de lista sin conexión en la aplicación de preventa (INN-01.P3)" color="#4472c4" meeting="false" start="2027-10-01" duration="34" complete="0" expand="true">
             <notes>240 HH · responsable DAT · ejecución DAT · 7.1.1 (protocolo inicial)</notes>
             <customproperty taskproperty-id="tpc2" value="34" />
-            <depend id="207" type="2" difference="7" hardness="Rubber" />
+            <depend id="204" type="2" difference="7" hardness="Rubber" />
         </task>
         <task id="175" name="7.3.3 Innovación 3: vista en M9 y orden de salida sugerido (INN-03.P3)" color="#4472c4" meeting="false" start="2027-10-01" duration="34" complete="0" expand="true">
             <notes>240 HH · responsable DAT · ejecución DAT · 7.3.2</notes>
             <customproperty taskproperty-id="tpc2" value="34" />
-            <depend id="209" type="2" difference="7" hardness="Rubber" />
+            <depend id="206" type="2" difference="7" hardness="Rubber" />
         </task>
         <task id="176" name="8.4.7 Gabinetes de borde de plataformas de cross-docking montados" color="#4472c4" meeting="false" start="2027-10-01" duration="13" complete="0" expand="true">
             <notes>160 HH · responsable SRE · ejecución RED · 8.4.6</notes>
@@ -1350,10 +1350,10 @@
         <task id="179" name="5.4.2 Datos maestros cargados: 8.400 SKU, clientes e instalaciones" color="#4472c4" meeting="false" start="2027-10-04" duration="21" complete="0" expand="true">
             <notes>504 HH · responsable DAT · ejecución DAT · 5.4.1</notes>
             <customproperty taskproperty-id="tpc2" value="21" />
-            <depend id="205" type="2" difference="19" hardness="Rubber" />
-            <depend id="206" type="2" difference="19" hardness="Rubber" />
+            <depend id="202" type="2" difference="19" hardness="Rubber" />
+            <depend id="203" type="2" difference="19" hardness="Rubber" />
             <depend id="212" type="2" difference="41" hardness="Rubber" />
-            <depend id="210" type="2" difference="19" hardness="Rubber" />
+            <depend id="207" type="2" difference="19" hardness="Rubber" />
         </task>
         <task id="180" name="6.1.1 Pruebas de integración, regresión e idempotencia en QA (H4)" color="#4472c4" meeting="false" start="2027-10-05" duration="13" complete="0" expand="true">
             <notes>160 HH · responsable CAL · ejecución CAL · 3.3.4–3.3.6, 4.1.1–4.1.3, 4.2.1–4.2.2, 4.3.1–4.3.5, 4.5.1, 5.2.1–5.2.4 (D-20)</notes>
@@ -1410,45 +1410,45 @@
         <task id="188" name="6.2.1 Pruebas de aceptación y de accesibilidad con preventistas, conductores y bodega" color="#4472c4" meeting="false" start="2027-10-25" duration="19" complete="0" expand="true">
             <notes>320 HH · responsable CAL · ejecución CAL · 6.1.1</notes>
             <customproperty taskproperty-id="tpc2" value="19" />
-            <depend id="203" type="2" difference="2" hardness="Rubber" />
+            <depend id="209" type="2" difference="7" hardness="Rubber" />
             <depend id="201" type="2" difference="0" hardness="Rubber" />
-            <depend id="210" type="2" difference="7" hardness="Rubber" />
+            <depend id="207" type="2" difference="7" hardness="Rubber" />
         </task>
         <task id="189" name="6.2.2 Pruebas de operación en condiciones físicas extremas y sin conexión" color="#4472c4" meeting="false" start="2027-10-25" duration="19" complete="0" expand="true">
             <notes>320 HH · responsable CAL · ejecución CAL · 6.1.1</notes>
             <customproperty taskproperty-id="tpc2" value="19" />
-            <depend id="203" type="2" difference="2" hardness="Rubber" />
+            <depend id="209" type="2" difference="7" hardness="Rubber" />
             <depend id="201" type="2" difference="0" hardness="Rubber" />
         </task>
         <task id="190" name="6.3.1 Pruebas de carga con el peak de septiembre y de resiliencia" color="#4472c4" meeting="false" start="2027-10-25" duration="13" complete="0" expand="true">
             <notes>320 HH · responsable CAL · ejecución CAL · 6.1.1</notes>
             <customproperty taskproperty-id="tpc2" value="13" />
-            <depend id="203" type="2" difference="8" hardness="Rubber" />
+            <depend id="209" type="2" difference="13" hardness="Rubber" />
             <depend id="201" type="2" difference="6" hardness="Rubber" />
         </task>
         <task id="191" name="6.4.1 Prueba de recuperación ante desastres con conmutación real" color="#4472c4" meeting="false" start="2027-10-25" duration="13" complete="0" expand="true">
             <notes>320 HH · responsable CAL · ejecución CAL · 6.1.1</notes>
             <customproperty taskproperty-id="tpc2" value="13" />
-            <depend id="203" type="2" difference="8" hardness="Rubber" />
+            <depend id="209" type="2" difference="13" hardness="Rubber" />
             <depend id="201" type="2" difference="6" hardness="Rubber" />
         </task>
         <task id="192" name="6.5.1 Prueba de seguridad ofensiva de la Etapa 1, por un tercero independiente" color="#4472c4" meeting="false" start="2027-10-25" duration="13" complete="0" expand="true">
             <notes>320 HH · responsable SEG · ejecución SEG · 6.1.1</notes>
             <customproperty taskproperty-id="tpc2" value="13" />
-            <depend id="203" type="2" difference="8" hardness="Rubber" />
+            <depend id="209" type="2" difference="13" hardness="Rubber" />
             <depend id="201" type="2" difference="6" hardness="Rubber" />
         </task>
         <task id="193" name="6.6.1 Demostración en Preproducción del despliegue sin interrupción de la Etapa 1" color="#4472c4" meeting="false" start="2027-10-25" duration="13" complete="0" expand="true">
             <notes>320 HH · responsable SRE · ejecución SRE · 6.1.1</notes>
             <customproperty taskproperty-id="tpc2" value="13" />
-            <depend id="203" type="2" difference="8" hardness="Rubber" />
+            <depend id="209" type="2" difference="13" hardness="Rubber" />
             <depend id="201" type="2" difference="6" hardness="Rubber" />
         </task>
         <task id="194" name="9.1.1 Plan de olas de la Etapa 1 por sitio y zona" color="#4472c4" meeting="false" start="2027-11-02" duration="7" complete="0" expand="true">
             <notes>80 HH · responsable IMP · ejecución IMP · 6.1.1 (D-48)</notes>
             <customproperty taskproperty-id="tpc2" value="7" />
             <depend id="219" type="2" difference="57" hardness="Rubber" />
-            <depend id="210" type="2" difference="14" hardness="Rubber" />
+            <depend id="207" type="2" difference="14" hardness="Rubber" />
             <depend id="195" type="1" difference="0" hardness="Rubber" />
         </task>
         <task id="195" name="9.5.1 Plan de capacitación por perfil" color="#4472c4" meeting="false" start="2027-11-02" duration="38" complete="0" expand="true">
@@ -1482,56 +1482,56 @@
         <task id="201" name="6.7.1 Acta de certificación de la Etapa 1 (H5)" color="#4472c4" meeting="false" start="2027-11-22" duration="8" complete="0" expand="true">
             <notes>160 HH · responsable CAL · ejecución CAL · 6.2.1, 6.2.2, 6.3.1, 6.4.1, 6.5.1, 6.6.1</notes>
             <customproperty taskproperty-id="tpc2" value="8" />
-            <depend id="203" type="1" difference="2" hardness="Rubber" />
-            <depend id="211" type="2" difference="-1" hardness="Rubber" />
+            <depend id="209" type="1" difference="7" hardness="Rubber" />
+            <depend id="210" type="2" difference="-1" hardness="Rubber" />
         </task>
-        <task id="202" name="H5 · Entrega de expediente" color="#404040" meeting="true" start="2027-11-24" duration="0" complete="0" expand="true">
-            <notes />
-            <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="204" type="2" difference="1" hardness="Rubber" />
-        </task>
-        <task id="203" name="H5 · Evidencia disponible (6.7.1)" color="#404040" meeting="true" start="2027-11-24" duration="0" complete="0" expand="true">
-            <notes>Pruebas aprobadas de las cuentas 6.2 a 6.6; cierre documental posterior</notes>
-            <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="211" type="1" difference="5" hardness="Rubber" />
-            <depend id="202" type="1" difference="0" hardness="Rubber" />
-        </task>
-        <task id="204" name="H5 · Revisión de la Contraparte (10 días hábiles)" color="#4472c4" meeting="false" start="2027-11-25" duration="10" complete="0" expand="true">
-            <notes />
-            <customproperty taskproperty-id="tpc2" value="10" />
-            <depend id="213" type="2" difference="16" hardness="Rubber" />
-        </task>
-        <task id="205" name="5.4.3 Saldos migrados desde el WMS de Talca" color="#c00000" meeting="false" start="2027-12-01" duration="22" complete="0" expand="true">
+        <task id="202" name="5.4.3 Saldos migrados desde el WMS de Talca" color="#c00000" meeting="false" start="2027-12-01" duration="22" complete="0" expand="true">
             <notes>504 HH · responsable DAT · ejecución DAT · 5.4.2</notes>
             <customproperty taskproperty-id="tpc2" value="22" />
             <depend id="212" type="2" difference="0" hardness="Rubber" />
         </task>
-        <task id="206" name="5.4.4 Saldos cargados en Concepción desde el conteo físico" color="#c00000" meeting="false" start="2027-12-01" duration="22" complete="0" expand="true">
+        <task id="203" name="5.4.4 Saldos cargados en Concepción desde el conteo físico" color="#c00000" meeting="false" start="2027-12-01" duration="22" complete="0" expand="true">
             <notes>504 HH · responsable DAT · ejecución DAT · 5.4.2</notes>
             <customproperty taskproperty-id="tpc2" value="22" />
             <depend id="212" type="2" difference="0" hardness="Rubber" />
         </task>
-        <task id="207" name="7.1.4 Innovación 1: informe del piloto en marcha blanca y habilitación (INN-01.P4)" color="#c00000" meeting="false" start="2027-12-01" duration="107" complete="0" expand="true">
+        <task id="204" name="7.1.4 Innovación 1: informe del piloto en marcha blanca y habilitación (INN-01.P4)" color="#c00000" meeting="false" start="2027-12-01" duration="107" complete="0" expand="true">
             <notes>240 HH · responsable DAT · ejecución DAT · 7.1.2 y 7.1.3</notes>
             <customproperty taskproperty-id="tpc2" value="106" />
         </task>
-        <task id="208" name="7.2.4 Innovación 2: informe de validación comparada (INN-02.P4, parte 1)" color="#c00000" meeting="false" start="2027-12-01" duration="107" complete="0" expand="true">
+        <task id="205" name="7.2.4 Innovación 2: informe de validación comparada (INN-02.P4, parte 1)" color="#c00000" meeting="false" start="2027-12-01" duration="107" complete="0" expand="true">
             <notes>240 HH · responsable CAL · ejecución CAL · 7.2.3</notes>
             <customproperty taskproperty-id="tpc2" value="106" />
         </task>
-        <task id="209" name="7.3.4 Innovación 3: informe de validación en marcha blanca con Calidad (INN-03.P4)" color="#c00000" meeting="false" start="2027-12-01" duration="107" complete="0" expand="true">
+        <task id="206" name="7.3.4 Innovación 3: informe de validación en marcha blanca con Calidad (INN-03.P4)" color="#c00000" meeting="false" start="2027-12-01" duration="107" complete="0" expand="true">
             <notes>240 HH · responsable DAT · ejecución DAT · 7.3.3</notes>
             <customproperty taskproperty-id="tpc2" value="106" />
         </task>
-        <task id="210" name="9.1.2 Procedimiento y ensayo de reversión de la Etapa 1" color="#4472c4" meeting="false" start="2027-12-01" duration="7" complete="0" expand="true">
+        <task id="207" name="9.1.2 Procedimiento y ensayo de reversión de la Etapa 1" color="#4472c4" meeting="false" start="2027-12-01" duration="7" complete="0" expand="true">
             <notes>80 HH · responsable IMP · ejecución IMP · 9.1.1, 5.4.2, 6.2.1 (D-49)</notes>
             <customproperty taskproperty-id="tpc2" value="7" />
             <depend id="219" type="2" difference="36" hardness="Rubber" />
             <depend id="256" type="2" difference="123" hardness="Rubber" />
         </task>
-        <task id="211" name="6.7.1 · Cierre del paquete" color="#404040" meeting="true" start="2027-12-01" duration="0" complete="0" expand="true">
+        <task id="208" name="H5 · Entrega de expediente" color="#404040" meeting="true" start="2027-12-01" duration="0" complete="0" expand="true">
+            <notes />
+            <customproperty taskproperty-id="tpc2" value="0" />
+            <depend id="211" type="2" difference="1" hardness="Rubber" />
+        </task>
+        <task id="209" name="H5 · Evidencia disponible (6.7.1)" color="#404040" meeting="true" start="2027-12-01" duration="0" complete="0" expand="true">
+            <notes>Pruebas aprobadas de las cuentas 6.2 a 6.6; cierre documental posterior</notes>
+            <customproperty taskproperty-id="tpc2" value="0" />
+            <depend id="210" type="1" difference="0" hardness="Rubber" />
+            <depend id="208" type="1" difference="0" hardness="Rubber" />
+        </task>
+        <task id="210" name="6.7.1 · Cierre del paquete" color="#404040" meeting="true" start="2027-12-01" duration="0" complete="0" expand="true">
             <notes>160 HH · responsable CAL · ejecución CAL · 6.2.1, 6.2.2, 6.3.1, 6.4.1, 6.5.1, 6.6.1</notes>
             <customproperty taskproperty-id="tpc2" value="0" />
+        </task>
+        <task id="211" name="H5 · Revisión de la Contraparte (10 días hábiles)" color="#4472c4" meeting="false" start="2027-12-02" duration="10" complete="0" expand="true">
+            <notes />
+            <customproperty taskproperty-id="tpc2" value="10" />
+            <depend id="213" type="2" difference="11" hardness="Rubber" />
         </task>
         <task id="212" name="5.4.5 Acta de conciliación y corte fuera de las ventanas de congelamiento" color="#4472c4" meeting="false" start="2028-01-03" duration="19" complete="0" expand="true">
             <notes>480 HH · responsable DAT · ejecución DAT · 5.4.1, 5.4.2, 5.4.3, 5.4.4</notes>

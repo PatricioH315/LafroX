@@ -247,7 +247,7 @@ def build():
     internal = {
         'H2': ('2027-04-26', 'Expediente de arquitectura, seguridad y datos; cierre administrativo posterior'),
         'H4': ('2027-10-20', 'Versiones integradas en QA, informes y pruebas'),
-        'H5': ('2027-11-24', 'Pruebas aprobadas de las cuentas 6.2 a 6.6; cierre documental posterior'),
+        'H5': ('2027-12-01', 'Pruebas aprobadas de las cuentas 6.2 a 6.6 e informe de certificación 6.7.1'),
         'H8': ('2028-02-24', 'Línea base y diseño detallado; cierre administrativo posterior'),
         'H10': ('2028-06-27', 'Integración y pruebas aprobadas; cierre documental posterior'),
     }
