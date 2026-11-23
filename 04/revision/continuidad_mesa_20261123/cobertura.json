@@ -1,0 +1,386 @@
+{
+  "proyecto": "LafroX",
+  "nature": "Calculo de diseno; sin registros ni cuadrante nominal acreditados",
+  "effective_monthly_hours": 128,
+  "handling_minutes": 10,
+  "target_fraction": 0.8,
+  "answer_seconds": 20,
+  "exact_hourly_capacity": {
+    "1": 1.2322099680397711,
+    "2": 4.549589515343955,
+    "3": 8.550641797334558,
+    "7": 27.004894768201424,
+    "8": 31.925177305215577
+  },
+  "conservative_hourly_capacity": {
+    "1": 1.23,
+    "2": 4.54,
+    "3": 8.55,
+    "7": 27.0,
+    "8": 31.92
+  },
+  "months": [
+    {
+      "contract_month": 21,
+      "year": 2028,
+      "month": 10,
+      "ordinary_days": 26,
+      "sundays": 5,
+      "base_hours": 962,
+      "base_places": 8
+    },
+    {
+      "contract_month": 22,
+      "year": 2028,
+      "month": 11,
+      "ordinary_days": 26,
+      "sundays": 4,
+      "base_hours": 962,
+      "base_places": 8
+    },
+    {
+      "contract_month": 23,
+      "year": 2028,
+      "month": 12,
+      "ordinary_days": 26,
+      "sundays": 5,
+      "base_hours": 1238,
+      "base_places": 10,
+      "selective_hours": 1748,
+      "selective_places": 14,
+      "extended_hours": 1904,
+      "extended_places": 15,
+      "extra_noc_hours": 52
+    },
+    {
+      "contract_month": 24,
+      "year": 2029,
+      "month": 1,
+      "ordinary_days": 27,
+      "sundays": 4,
+      "base_hours": 999,
+      "base_places": 8
+    },
+    {
+      "contract_month": 25,
+      "year": 2029,
+      "month": 2,
+      "ordinary_days": 24,
+      "sundays": 4,
+      "base_hours": 888,
+      "base_places": 7
+    },
+    {
+      "contract_month": 26,
+      "year": 2029,
+      "month": 3,
+      "ordinary_days": 27,
+      "sundays": 4,
+      "base_hours": 999,
+      "base_places": 8
+    },
+    {
+      "contract_month": 27,
+      "year": 2029,
+      "month": 4,
+      "ordinary_days": 25,
+      "sundays": 5,
+      "base_hours": 925,
+      "base_places": 8
+    },
+    {
+      "contract_month": 28,
+      "year": 2029,
+      "month": 5,
+      "ordinary_days": 27,
+      "sundays": 4,
+      "base_hours": 999,
+      "base_places": 8
+    },
+    {
+      "contract_month": 29,
+      "year": 2029,
+      "month": 6,
+      "ordinary_days": 26,
+      "sundays": 4,
+      "base_hours": 962,
+      "base_places": 8
+    },
+    {
+      "contract_month": 30,
+      "year": 2029,
+      "month": 7,
+      "ordinary_days": 26,
+      "sundays": 5,
+      "base_hours": 962,
+      "base_places": 8
+    },
+    {
+      "contract_month": 31,
+      "year": 2029,
+      "month": 8,
+      "ordinary_days": 27,
+      "sundays": 4,
+      "base_hours": 999,
+      "base_places": 8
+    },
+    {
+      "contract_month": 32,
+      "year": 2029,
+      "month": 9,
+      "ordinary_days": 25,
+      "sundays": 5,
+      "base_hours": 1570,
+      "base_places": 13,
+      "selective_hours": 1690,
+      "selective_places": 14,
+      "extended_hours": 1840,
+      "extended_places": 15,
+      "extra_noc_hours": 50
+    },
+    {
+      "contract_month": 33,
+      "year": 2029,
+      "month": 10,
+      "ordinary_days": 27,
+      "sundays": 4,
+      "base_hours": 999,
+      "base_places": 8
+    },
+    {
+      "contract_month": 34,
+      "year": 2029,
+      "month": 11,
+      "ordinary_days": 26,
+      "sundays": 4,
+      "base_hours": 962,
+      "base_places": 8
+    },
+    {
+      "contract_month": 35,
+      "year": 2029,
+      "month": 12,
+      "ordinary_days": 26,
+      "sundays": 5,
+      "base_hours": 1628,
+      "base_places": 13,
+      "selective_hours": 1748,
+      "selective_places": 14,
+      "extended_hours": 1904,
+      "extended_places": 15,
+      "extra_noc_hours": 52
+    },
+    {
+      "contract_month": 36,
+      "year": 2030,
+      "month": 1,
+      "ordinary_days": 27,
+      "sundays": 4,
+      "base_hours": 999,
+      "base_places": 8
+    },
+    {
+      "contract_month": 37,
+      "year": 2030,
+      "month": 2,
+      "ordinary_days": 24,
+      "sundays": 4,
+      "base_hours": 888,
+      "base_places": 7
+    },
+    {
+      "contract_month": 38,
+      "year": 2030,
+      "month": 3,
+      "ordinary_days": 26,
+      "sundays": 5,
+      "base_hours": 962,
+      "base_places": 8
+    },
+    {
+      "contract_month": 39,
+      "year": 2030,
+      "month": 4,
+      "ordinary_days": 26,
+      "sundays": 4,
+      "base_hours": 962,
+      "base_places": 8
+    },
+    {
+      "contract_month": 40,
+      "year": 2030,
+      "month": 5,
+      "ordinary_days": 27,
+      "sundays": 4,
+      "base_hours": 999,
+      "base_places": 8
+    },
+    {
+      "contract_month": 41,
+      "year": 2030,
+      "month": 6,
+      "ordinary_days": 25,
+      "sundays": 5,
+      "base_hours": 925,
+      "base_places": 8
+    },
+    {
+      "contract_month": 42,
+      "year": 2030,
+      "month": 7,
+      "ordinary_days": 27,
+      "sundays": 4,
+      "base_hours": 999,
+      "base_places": 8
+    },
+    {
+      "contract_month": 43,
+      "year": 2030,
+      "month": 8,
+      "ordinary_days": 27,
+      "sundays": 4,
+      "base_hours": 999,
+      "base_places": 8
+    },
+    {
+      "contract_month": 44,
+      "year": 2030,
+      "month": 9,
+      "ordinary_days": 25,
+      "sundays": 5,
+      "base_hours": 1570,
+      "base_places": 13,
+      "selective_hours": 1690,
+      "selective_places": 14,
+      "extended_hours": 1840,
+      "extended_places": 15,
+      "extra_noc_hours": 50
+    },
+    {
+      "contract_month": 45,
+      "year": 2030,
+      "month": 10,
+      "ordinary_days": 27,
+      "sundays": 4,
+      "base_hours": 999,
+      "base_places": 8
+    },
+    {
+      "contract_month": 46,
+      "year": 2030,
+      "month": 11,
+      "ordinary_days": 26,
+      "sundays": 4,
+      "base_hours": 962,
+      "base_places": 8
+    },
+    {
+      "contract_month": 47,
+      "year": 2030,
+      "month": 12,
+      "ordinary_days": 26,
+      "sundays": 5,
+      "base_hours": 1628,
+      "base_places": 13,
+      "selective_hours": 1748,
+      "selective_places": 14,
+      "extended_hours": 1904,
+      "extended_places": 15,
+      "extra_noc_hours": 52
+    },
+    {
+      "contract_month": 48,
+      "year": 2031,
+      "month": 1,
+      "ordinary_days": 27,
+      "sundays": 4,
+      "base_hours": 999,
+      "base_places": 8
+    },
+    {
+      "contract_month": 49,
+      "year": 2031,
+      "month": 2,
+      "ordinary_days": 24,
+      "sundays": 4,
+      "base_hours": 888,
+      "base_places": 7
+    },
+    {
+      "contract_month": 50,
+      "year": 2031,
+      "month": 3,
+      "ordinary_days": 26,
+      "sundays": 5,
+      "base_hours": 962,
+      "base_places": 8
+    },
+    {
+      "contract_month": 51,
+      "year": 2031,
+      "month": 4,
+      "ordinary_days": 26,
+      "sundays": 4,
+      "base_hours": 962,
+      "base_places": 8
+    },
+    {
+      "contract_month": 52,
+      "year": 2031,
+      "month": 5,
+      "ordinary_days": 27,
+      "sundays": 4,
+      "base_hours": 999,
+      "base_places": 8
+    },
+    {
+      "contract_month": 53,
+      "year": 2031,
+      "month": 6,
+      "ordinary_days": 25,
+      "sundays": 5,
+      "base_hours": 925,
+      "base_places": 8
+    },
+    {
+      "contract_month": 54,
+      "year": 2031,
+      "month": 7,
+      "ordinary_days": 27,
+      "sundays": 4,
+      "base_hours": 999,
+      "base_places": 8
+    },
+    {
+      "contract_month": 55,
+      "year": 2031,
+      "month": 8,
+      "ordinary_days": 26,
+      "sundays": 5,
+      "base_hours": 962,
+      "base_places": 8
+    },
+    {
+      "contract_month": 56,
+      "year": 2031,
+      "month": 9,
+      "ordinary_days": 26,
+      "sundays": 4,
+      "base_hours": 1604,
+      "base_places": 13,
+      "selective_hours": 1700,
+      "selective_places": 14,
+      "extended_hours": 1856,
+      "extended_places": 15,
+      "extra_noc_hours": 52
+    }
+  ],
+  "critical_error_budgets_continuous_minutes": {
+    "28": 40.32,
+    "29": 41.76,
+    "30": 43.2,
+    "31": 44.64
+  },
+  "alternatives_approved": false,
+  "other_documents_modified": false
+}

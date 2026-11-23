@@ -107,3 +107,24 @@ La fila queda preparada para incorporar en la tabla compartida. La revisión y l
 - Depurado el Anexo 4-X: el inventario completo de servicios se conserva en T-11 y los cálculos en 4-W; 4-X.3 y 4-X.4 mantienen sus localizadores y remiten a esas fuentes. El cuerpo enlaza directamente a los apartados de cálculo. Se preservaron en 4-W las precisiones sobre las tres operaciones de llegada y una de despacho de cross-docking y sobre los cobros en efectivo frente a los pagos electrónicos. No se modificaron cifras de las tablas, requisitos ni figuras.
 - Los PDF quedan en 172 páginas de cuerpo, 152 de anexos (dos menos que antes de esta depuración) y 51 de T-11. Verificados 495 enlaces internos, 47 entre PDF, 396 referencias a etiquetas, 196 citas bibliográficas y 24 folios al T-12, sin errores. Se conservaron los títulos del índice y se inspeccionaron páginas renderizadas de las matrices y de los bloques modificados.
 - Por instrucción expresa del usuario se excluyó el punto de revisión humana. Su declaración y el PDF del T-11 se conservan sin cambios. Este cierre resuelve los folios antes pendientes y la duplicación documental señalada; no acredita nuevas revisiones humanas ni ensayos técnicos ejecutados.
+
+## Contraste SD4–SD10 del 23-11-2026
+
+Base SD4: 24817291d271fa39f7d9e59335646e778d60c563. Base SD10: bd433c249e0720f388d61fd059726f304cc1ecce. Se consultó el Formulario T-15 LaTeX de 8e71a160233951d15116207cf58bd9a3cb383396, 4.1, 5.6 y 5.7, como respaldo de cálculo.
+
+- 4-W.7 distingue simultaneidad y plazas con 128 HH efectivas. Los ejemplos de T-15 son 8 plazas en mes ordinario de 26 días de lunes a sábado y 13 en septiembre de 2029. N/A para turnos nominales, demanda nocturna y dominical observada y confirmación del refuerzo en 20:00 a 22:00. BTT RT-21.06 y RT-21.14, Caso RT-21.06.
+- 4.2.4 y 4.3.2.4–4.3.2.5 distinguen recuperación de piso, ERP y emisión nueva. AL-DR-01 consigna la brecha de RPO ante aislamiento total y pérdida física. N/A para resultados de los ensayos y para un plazo acreditado de restitución del ERP por el CLIENTE. BTT RT-07.04–07.07, BA 78.3 y Caso RT-10.05.
+- 4.2.4.1.4 mantiene contención, escalamiento y plazos corridos durante el congelamiento. N/A para un acuerdo de atribución al CLIENTE. BA 21.1 y 78–79.
+- 4.2.3.4 cita el apagado de RT-15.02. La meta de 60 % corresponde al diseño y el ahorro económico se respalda en la Oferta Económica, conforme a RT-04.13. 4.2.3 remite al T-11 y a 4.3.2.5 desde el Anexo 4-X.3.
+
+
+## Corrección de continuidad, medición y mesa — 23-11-2026
+
+- ADR-18 remite al alcance y riesgo residual de 4.3.2.4. AL-DR-01 y AL-DTE-01 distinguen autonomía, pérdida de sitio, ERP y las 96 salidas de 05:30 a 07:00; una recuperación en cuatro horas no acredita esa ventana. Las actas reales y la corrección de una eventual brecha no se dan por ejecutadas.
+- El presupuesto crítico se expresa como B=0,001T según calendario. El mantenimiento aprobado se excluye de la indisponibilidad; el ajuste del denominador es metodología propuesta por formalizar, con ambos datos conservados.
+- El Anexo 4-W.7 distingue cobertura de horario y capacidad de cola. Un puesto sostiene hasta 1,23 contactos/h; dos, 4,54; tres, 8,55, cotas truncadas bajo Erlang C con diez minutos de atención media. Se comparan base de 13 plazas, refuerzo dominical de 14 y refuerzo nocturno/dominical de 15, sin incorporar compras ni contrataciones.
+- La verificación de 36 meses reproduce 38.246 HH de mesa de T-15. B/C adelantan el tercer agente diurno si se evalúan antes de M25. Las alternativas adicionales requieren conciliación de HH, turnos y costos en sus documentos responsables; las cantidades existentes no se alteraron.
+- Evidencia reproducible: Dimensionamiento/dimensionamiento/verificar_cobertura_mesa.py y 04/revision/continuidad_mesa_20261123/cobertura.json. La calibración con contactos reales, el cuadrante nominal y la aceptación de continuidad siguen sujetos a evidencia operativa.
+- Se preservó el punto de revisión humana/IA fuera del alcance de esta tarea. Se editaron únicamente los checkouts LaTeX de SD4 y SD10; las referencias derivadas en T-12/T-13 se registran para sincronización por sus responsables, sin alterar otros subdocumentos.
+
+- El T-12 actualizado en el pull renumeró 20 referencias citadas en SD4: se corrigieron contra la fila del requisito vigente, sin cambiar el T-12. La tabla nueva de capacidad usa numeración propia 4-W.7-A para conservar A.39 y siguientes y sus referencias externas.
