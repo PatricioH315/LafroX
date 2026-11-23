@@ -6,6 +6,7 @@ from html import escape
 import argparse
 import hashlib,json,re,subprocess,sys,xml.etree.ElementTree as ET
 from edt_cpm_20261117 import endpoints, rank, topological, workdays
+from controles_construccion_sd7 import DEMO, DELIVERY, REVIEW, controls
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
@@ -16,7 +17,7 @@ from reportlab.platypus import Paragraph
 ROOT=Path(__file__).resolve().parents[1]
 SRC=ROOT/'imagenes/Diagramas que faltaban'
 OUT=SRC/'Revision-local'
-W,H=624,344
+W,H=624,384
 PX,PW=334,284
 FONT=10
 pdfmetrics.registerFont(TTFont('ArialLocal','C:/Windows/Fonts/arial.ttf'))
@@ -69,7 +70,7 @@ def heading(c,title,subtitle):
     c.setStrokeColor(HexColor('#de6b20'));c.setLineWidth(1.2);c.line(5,H-40,W-5,H-40)
 
 def footer(c):
-    label(c,5,16,'Rojo: tareas con holgura cero y puertas críticas de la carta.',size=9.5)
+    label(c,5,16,'Rojo: holgura CPM cero. Ámbar: margen nivelado cero. Violeta: puerta contractual.',size=9.5)
     label(c,5,3,'Barras: fechas fuente. Conectores fuera de lámina: consultar relaciones por ID.',size=9.5)
 
 def paginate(tasks):
@@ -77,7 +78,7 @@ def paginate(tasks):
     for t in tasks:
         p=Paragraph(escape(t['name']),STYLE);_,h=p.wrap(200,1000)
         row={**t,'paragraph':p,'height':max(24,h+8)}
-        if page and height+row['height']>232:pages.append(page);page=[];height=0
+        if page and height+row['height']>H-112:pages.append(page);page=[];height=0
         page.append(row);height+=row['height']
     if page:pages.append(page)
     return pages
@@ -143,15 +144,18 @@ def chart(path,title,rows,edges,a,b,index,total):
     c.save()
 
 def relation_pages(stem,title,edges,start_index):
-    chunks=[edges[i:i+40] for i in range(0,len(edges),40)]
+    columns = 3
+    rows_per_column = (H - 100) // 12
+    per_page = columns * rows_per_column
+    chunks=[edges[i:i+per_page] for i in range(0,len(edges),per_page)]
     for k,chunk in enumerate(chunks):
         path=OUT/f'{stem}-{start_index+k}.pdf';c=canvas.Canvas(str(path),pagesize=(W,H))
         heading(c,title,'Dependencias · ID de origen → ID de destino; tipo y desfase')
         label(c,5,H-57,'CC: comienzo-comienzo; FC: fin-comienzo; FF: fin-fin; CF: comienzo-fin.',size=9.5)
         for i,e in enumerate(chunk):
-            col=i//20;row=i%20
+            col, row = divmod(i, rows_per_column)
             text=f'{e["source"]} → {e["target"]}   {TYPES[e["type"]]}   desfase {e["difference"]}'
-            label(c,12+col*310,H-78-row*12,text,size=10)
+            label(c,12+col*(W-24)/columns,H-78-row*12,text,size=10)
         label(c,5,15,'Los ID permiten seguir los vínculos. Desfases en días del calendario del editable.',size=9.5)
         c.save()
     return len(chunks)
@@ -196,7 +200,7 @@ MACRO=r'''
 def integrate(manifest):
     for folder in ['formulario-t14', 'formulario-t15']:
         p=ROOT/folder/'contenido.tex';text=p.read_text(encoding='utf-8')
-        if '\\newcommand{\\figuraGanttLocal}' not in text:
+        if '\\newcommand{\\figuraGanttLocal}' not in text and any(old in text for old in manifest):
             pos=text.index('\\newcommand{\\figuraDiagramaHorizontal}')
             text=text[:pos]+MACRO+'\n'+text[pos:]
         # Sustituir sólo las llamadas existentes; conservar títulos y etiquetas.
@@ -217,11 +221,36 @@ HISTORICAL = ('Fig_7_Gantt_Red_Independiente_25_Filas.gan', 'Fig_7_Gantt_Red_Ind
 XML_TYPE = {name: code for code, name in TYPES.items()}
 
 
-def generate_views(model, target):
+def generate_views(model, logical, target):
     tasks = {key: {**row, 'start': date.fromisoformat(row['start']), 'finish': date.fromisoformat(row['finish'])}
              for key, row in model['tareas'].items()}
     holidays = {date.fromisoformat(value) for value in model['feriados']}
     links = [dict(item) for item in model['relaciones']]
+    if logical.keys() != model['detalle'].keys():
+        raise ValueError('El CPM lógico y la carta deben cubrir los mismos paquetes.')
+    for code, row in logical.items():
+        if (row['inicio_nivelado'], row['fin_nivelado']) != (model['detalle'][code]['inicio'], model['detalle'][code]['fin']):
+            raise ValueError(f'Fechas niveladas incompatibles con el CPM: {code}')
+    checkpoints = list(controls({key: row for key, row in tasks.items() if row['kind'] == 'package'}))
+    control_tasks = set()
+
+    def checkpoint(key, title, day, note):
+        tasks[key] = dict(name=title, start=day, finish=day, milestone=True, kind='event', note=note)
+        control_tasks.add(key)
+
+    for stage, day, active, ready in checkpoints:
+        checkpoint(f'QA-REV:{stage}:{day}', f'{REVIEW} {stage} · {day:%d/%m/%Y}', day,
+                   f'Líder de Desarrollo: estado, horas, pruebas y bloqueos. EDT: {", ".join(active)}.')
+        if ready:
+            demo = f'QA-DEMO:{stage}:{day}'
+            checkpoint(demo, f'{DEMO} {stage} · {day:%d/%m/%Y}', day,
+                       f'Líder Funcional y Calidad: versión y observaciones. EDT: {", ".join(ready)}.')
+            for code in ready:
+                delivery = f'QA-ENT:{code}'
+                checkpoint(delivery, f'{DELIVERY} · {code}', tasks[code]['finish'],
+                           'Líder de Desarrollo y Calidad: versión desplegada e integración registrada.')
+                links.append(dict(source=code, target=delivery, kind='FC', lag=0, reason='Entrega del módulo'))
+                links.append(dict(source=delivery, target=demo, kind='CC', lag=0, reason='Versión disponible para demostración'))
     for link in links:
         a, b = endpoints(link, tasks)
         origin, target_day = tasks[a[0]][a[1]], tasks[b[0]][b[1]]
@@ -248,7 +277,7 @@ def generate_views(model, target):
                 edge['kind'] = 'CC' if edge['kind'] == 'FC' else 'CF'
         links.append(dict(source=key, target=marker, kind='FC', lag=0, reason='Fin de la barra de seguimiento'))
     keys = sorted(tasks, key=lambda key: (tasks[key]['start'], tasks[key]['kind'] != 'package', key))
-    ids = {key: str(i + 1) for i, key in enumerate(keys)}
+    ids = {key: str(i + 1) for i, key in enumerate(sorted(keys, key=lambda key: key in control_tasks))}
     # GanttProject admite un vínculo por par de tareas. Cuando se controlan
     # ambos extremos, se conserva CC y se hace pasar FF por un hito de cierre.
     by_pair = defaultdict(list)
@@ -274,8 +303,12 @@ def generate_views(model, target):
     keys = sorted(tasks, key=lambda key: (tasks[key]['start'], tasks[key]['kind'] != 'package', key))
     relations = [(e['source'], e['target'], e['lag']) for e in links]
     topological(tasks, relations)
-    critical = {key for key, row in model['detalle'].items() if row['holgura'] == 0}
-    critical |= {f'ACT:{h}' for h in ('H6', 'H11')} | {'CUT:H7', 'CUT:H12'}
+    logical_critical = {key for key, row in logical.items() if row['holgura'] == 0}
+    leveled_critical = {key for key, row in model['detalle'].items() if row['holgura'] == 0}
+    gates = {'ACT:H6', 'ACT:H11', 'CUT:H7', 'CUT:H12'}
+    colors = dict.fromkeys(leveled_critical, '#946100')
+    colors.update(dict.fromkeys(logical_critical, '#c00000'))
+    colors.update(dict.fromkeys(gates, '#65418a'))
     windows = {'H7', 'H12'}
     # Las vistas comparten calendario para conservar las fechas civiles de la
     # red. La duración contractual se guarda aparte de la duración del motor.
@@ -331,7 +364,7 @@ def generate_views(model, target):
             start, end = row['start'], row['finish']
             duration_t15 = 0 if row['milestone'] else workdays(start, end)
             duration = 0 if row['milestone'] else work_before(end + timedelta(days=1)) - work_before(start)
-            style = '#c00000' if key in critical else '#404040' if row['milestone'] else '#4472c4'
+            style = colors.get(key, '#404040' if row['milestone'] else '#4472c4')
             nodes[key] = ET.SubElement(parent, 'task', id=ids[key], name=row['name'], color=style,
                                        meeting=str(row['milestone']).lower(), start=start.isoformat(),
                                        duration=str(duration), complete='0', expand='true')
@@ -372,7 +405,7 @@ def generate_views(model, target):
         ACTIVE[0]: write_view(ACTIVE[0], 'Detalle nivelado de implementación y precedencias del SD7', set(keys)),
         ACTIVE[1]: write_view(ACTIVE[1], 'Carta de 56 meses del SD7', {key for key in keys if overview(key, tasks[key])}),
         ACTIVE[2]: write_view(ACTIVE[2], 'Vista de ruta crítica y puertas de aceptación del SD7',
-                              critical | {key for key in keys if key.rsplit(':', 1)[-1] in windows and tasks[key]['kind'] == 'event'}),
+                              colors.keys() | {key for key in keys if key.rsplit(':', 1)[-1] in windows and tasks[key]['kind'] == 'event'}),
     }
 
 
@@ -380,18 +413,20 @@ def main():
     global OUT
     parser = argparse.ArgumentParser(description='Genera PDF y editables de GanttProject desde la red validada.')
     parser.add_argument('--schedule', type=Path, required=True)
+    parser.add_argument('--logical-cpm', type=Path, required=True)
     parser.add_argument('--output-dir', type=Path, required=True)
     parser.add_argument('--publish', action='store_true')
     args = parser.parse_args()
     guard()
     model = json.loads(args.schedule.read_text(encoding='utf-8'))
+    logical = json.loads(args.logical_cpm.read_text(encoding='utf-8'))['base']
     root = args.output_dir.resolve()
     destination = SRC / 'Revision-local'
     if root == SRC.resolve() or destination.resolve() in (root, *root.parents):
         raise ValueError('Genere en una carpeta temporal distinta de la carpeta de figuras publicadas.')
     OUT = root / 'Revision-local'
     OUT.mkdir(parents=True, exist_ok=True)
-    views = generate_views(model, root)
+    views = generate_views(model, logical, root)
     manifest = {}; log = {'fuentes': {}, 'laminas': {}, 'vistas_historicas': HISTORICAL}
     tasks, edges = views[ACTIVE[0]]
     sizes = [len(tasks) // 7 + (i < len(tasks) % 7) for i in range(7)]

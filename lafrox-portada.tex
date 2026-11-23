@@ -144,7 +144,11 @@
     \let\LFXformulario\LFXformularioportada
     \let\LFXnomenclatura\LFXnomenclaturaportada
   \fi
-  \setcounter{page}{1}%
+  \ifdefined\LFXprimerfolio
+    \setcounter{page}{\LFXprimerfolio}%
+  \else
+    \setcounter{page}{1}%
+  \fi
   \thispagestyle{lfxportada}%
   \LFXcalcularmargenes
   \null

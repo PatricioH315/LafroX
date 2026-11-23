@@ -160,7 +160,7 @@ def capacity(packages, role, cap):
             'pico_personas_equivalentes': max(daily.values(), default=0) / 6.4, 'hh_diarias': daily}
 
 
-def build():
+def build(*, package_windows=None):
     dictionary = current_dictionary()
     estimate = {r[0]: r for r in rows(TABLES / 'tab_T15_2.tex')}
     packages = {}
@@ -169,6 +169,8 @@ def build():
             raise ValueError(f'Fila duplicada: {code}')
         packages[code] = dict(role=role, peak=int(people.split('/')[-1].strip()), hh=spanish_hh(hh),
                               start=parse(start), finish=parse(finish), predicates=clean(preds))
+    for code, (start, finish) in (package_windows or {}).items():
+        packages[code].update(start=start, finish=finish)
     assert len(dictionary) == len(estimate) == 230 and dictionary.keys() == estimate.keys()
     assert len({code.rsplit('.', 1)[0] for code in dictionary}) == 60 and len(packages) == 171
     assert set(dictionary) == set(packages) | {r[0] for r in rows(TABLES / 'tab_T15_10.tex')}

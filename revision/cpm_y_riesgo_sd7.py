@@ -9,8 +9,8 @@ import random
 import statistics
 
 from edt_cpm_20261117 import (
-    CAL, END, MONTHS, ORDER, START, after, allowed_cut, build, endpoints,
-    period, rank, schedule, topological,
+    CAL, CAPS, END, MONTHS, ORDER, ROOT, START, TABLES, after, allowed_cut, build, capacity,
+    endpoints, period, rank, references, rows, schedule, topological,
 )
 
 
@@ -183,6 +183,73 @@ def export_tex(directory, result):
           ('Hito', 'Nominal', 'Con subsanación', 'Límite contractual', 'Margen hábil', 'Último ingreso viable'), records)
 
 
+def minimum_family_capacity(packages, role):
+    max_peak = sum(package['peak'] for package in packages.values() if package['role'] == role)
+    for cap in range(1, max_peak + 1):
+        try:
+            capacity(packages, role, cap)
+        except ValueError:
+            continue
+        return cap
+    raise ValueError(f'No se pudo distribuir el esfuerzo de {role} en las ventanas declaradas.')
+
+
+def recovery_options(tasks, current_packages, milestones, scenarios):
+    # Alternativa de cálculo. Su activación exige redistribuir las HH de marzo a
+    # febrero y aprobar la disponibilidad de Jefatura/PMO y Calidad.
+    h1_finish = scenarios['H1']['ultimo_ingreso_con_subsanacion']
+    affected = ('1.2.2', '1.2.3', '1.2.4', '2.1.3')
+    duration = max(tasks[code]['work'] for code in affected)
+    h1_start = CAL[rank(h1_finish) - duration + 1]
+    candidate = build(package_windows=dict.fromkeys(affected, (h1_start, h1_finish)))
+    new_tasks, edges, fixed, packages, new_milestones, estimates, _ = candidate
+    schedule(new_tasks, edges, fixed, packages, new_milestones, estimates)
+    capacity(packages, 'CAL', CAPS['CAL'])
+    h1_act = new_milestones['H1']['acta']
+    corrected = after(h1_act, 10)
+    assert corrected <= milestones['H1']['limite']
+
+    h12_last = scenarios['H12']['ultimo_ingreso_con_subsanacion']
+    h12_close = h12_last - timedelta(days=1)
+    h12_act = after(h12_last, 10)
+    h12_cut_after_correction = allowed_cut(after(h12_act, 10))
+    return {
+        'H1': {'paquetes': affected, 'inicio': h1_start, 'entrega': h1_finish,
+               'acta': h1_act, 'acta_con_subsanacion': corrected,
+               'margen_habil': rank(milestones['H1']['limite']) - rank(corrected),
+               'minimo_agregado_jp_carta_actual': minimum_family_capacity(current_packages, 'JP'),
+               'minimo_agregado_jp_alternativa': minimum_family_capacity(packages, 'JP'),
+               'hh_de_paquetes_afectados_por_familia': {
+                   role: sum(float(packages[code]['hh']) for code in affected if packages[code]['role'] == role)
+                   for role in ('JP', 'CAL')}},
+        'H7': {'entrega': milestones['H7']['entrega'], 'margen_habil': scenarios['H7']['margen']},
+        'H12': {'ultimo_ingreso': h12_last, 'inicio_evidencia_continua': h12_close - timedelta(days=27),
+                'ultimo_cierre_de_evidencia': h12_close,
+                'cierres_publicados': {key: tasks[key]['finish'] for key in ('EVID:H12', '9.5.4', '6.8.6')},
+                'acta_nominal_condicionada': h12_act,
+                'corte_con_subsanacion_condicionado': h12_cut_after_correction,
+                'margen_habil_condicionado': rank(milestones['H12']['limite']) - rank(h12_cut_after_correction),
+                'traspaso_termina_antes_del_ingreso': tasks['9.5.4']['finish'] <= h12_close,
+                '686_disponible_al_ingreso': tasks['6.8.6']['finish'] < h12_last,
+                '686_disponible_antes_de_firmar': tasks['6.8.6']['finish'] < h12_act},
+    }
+
+
+def pert_basis(packages, estimates):
+    modules = {cells[0] for cells in rows(TABLES / 'tab_T15_tamano.tex')}
+    risks = (ROOT / TABLES / 'tab_T15_pert_riesgo.tex').read_text(encoding='utf-8')
+    specific = modules | {
+        code for line in risks.splitlines() if line.lstrip()[:1].isdigit()
+        for code in references(line.split('&', 1)[0].strip().replace(' a ', '–'))
+    }
+    if specific - packages.keys():
+        raise ValueError('Los fundamentos PERT citan paquetes ausentes de la carta.')
+    fixed = {code for code in packages if estimates[code][-4] == estimates[code][-2]}
+    return {'con_fundamento_especifico': sorted(specific),
+            'sin_variacion_de_esfuerzo_en_la_base': sorted(fixed - specific),
+            'pendientes_de_fundamento_individual': sorted(packages.keys() - specific - fixed)}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output-dir', required=True, type=Path)
@@ -249,6 +316,8 @@ def main():
         'base': details, 'subsanacion': scenarios, 'muestras': args.samples, 'semilla': 7,
         'pert_logico_sin_nivelacion': simulate(sensitivity_network, packages, estimates, milestones, args.samples, 7),
         'sensibilidad_dias': impacts,
+        'alternativas_subsanacion': recovery_options(tasks, packages, milestones, scenarios),
+        'fundamento_pert': pert_basis(packages, estimates),
     }
     assert len(details) == 171 and len(estimates) - len(details) == 59
     args.output_dir.mkdir(parents=True, exist_ok=True)

@@ -69,15 +69,21 @@ observación sigue abierta o el cumplimiento es parcial.
 {Se agruparon los módulos por dominio y las pruebas por propósito. El diccionario registra la etapa en el período del paquete.}
 {SD7, §7.1.2. T-14, §§1--2.}
 \observacion{03}{28}
-{El paquete 1.2.1 indica «Mes 1 (H1)», aunque H1 corresponde al mes 2.}{}{}
+{El paquete 1.2.1 indica «Mes 1 (H1)», aunque H1 corresponde al mes 2.}
+{El diccionario distingue el inicio del paquete en el mes 1 y el hito en el mes 2.}
+{T-14, §2, paquete 1.2.1.}
 \observacion{04}{30, 33, 54}
 {Agregar las precedencias faltantes de migración, integraciones con cadenas e innovaciones.}
 {Se enlazó la migración con el modelo de datos y las interfaces, el intercambio con las cadenas con el levantamiento y la habilitación técnica, y las innovaciones con sus entregables previos.}
-{T-15, §6.1, pp. 75--76. Anexo 7.B.}
+{T-15, §6.1, programación de paquetes. Anexo 7.B.}
 \observacion{05}{30, 33, 54}
-{Completar la red para que cada paquete con entregable tenga un vínculo trazable o un arranque justificado.}{}{}
+{Completar la red para que cada paquete con entregable tenga un vínculo trazable o un arranque justificado.}
+{La red da entrada a los 171 paquetes con entregable. Dos enlazan al inicio contractual y 8.1.4 a una especificación externa de arranque.}
+{T-15, §§5.1 y 6.1.}
 \observacion{06}{27, 30, 33, 54}
-{Derivar las fechas tempranas, tardías y holguras del CPM desde duraciones y precedencias.}{}{}
+{Derivar las fechas tempranas, tardías y holguras del CPM desde duraciones y precedencias.}
+{La pasada lógica se calcula desde esfuerzo, equipo máximo, duración y desfases. La tabla distingue sus fechas de las niveladas.}
+{T-15, §5.1, tabla de los 171 paquetes.}
 \end{matriz}
 
 \newpage
@@ -88,11 +94,11 @@ observación sigue abierta o el cumplimiento es parcial.
 \observacion{08}{27, 29--30}
 {El desglose de actividades se detiene en H2 y la construcción queda descrita principalmente por paquetes.}
 {Se amplió el desglose hasta H5. Entre H2 y H5 se documentaron 385 actividades de 76 paquetes, con horizontes de trabajo y una secuencia detallada para Recepción.}
-{T-15, §6.1, pp. 69--70 y Tabla 20.}
+{T-15, §6.1, desglose de actividades entre H2 y H5.}
 \observacion{09}{25, 29--30, 41, 54}
 {Las pruebas se concentran después de la construcción. Se pide que la programación identifique las verificaciones durante el desarrollo.}
 {Se programaron pruebas unitarias y de contrato durante la construcción y se exige registrar evidencia por versión desplegada a QA. El detalle de Recepción identifica esas pruebas en A03--A10.}
-{SD7, §7.2. T-15, §6.1, Tabla 20 y ejemplo 4.1.1.}
+{SD7, §7.2. T-15, §6.1, ejemplo 4.1.1.}
 \observacion{10}{30}
 {El cuerpo remite a una duración de iteración que el SD6 no fija en la sección citada.}
 {Se eliminó esa remisión y se alinearon el SD7 y el T-15 con la cascada por etapa descrita en el SD6 corregido. La quincena corresponde al seguimiento del plan.}
@@ -100,7 +106,7 @@ observación sigue abierta o el cumplimiento es parcial.
 \observacion{11}{28, 33, 53}
 {Estimar cada módulo con una medida de tamaño derivada del T-12, en lugar de asignar 960 HH a todos.}
 {Se estimaron los 15 módulos desde sus requisitos, flujos, interfaces, dispositivos y necesidades especiales. Se documentaron los elementos, tasas y esfuerzo de cada módulo.}
-{T-15, §4.3, pp. 29--38.}
+{T-15, §4.3, tamaño y esfuerzo de los módulos.}
 \observacion{12}{29, 33, 53}
 {Sustituir los multiplicadores uniformes del PERT por escenarios optimista y pesimista propios de cada paquete.}{}{}
 \observacion{13}{29, 53}
@@ -119,7 +125,7 @@ observación sigue abierta o el cumplimiento es parcial.
 \observacion{16}{29--30, 33}
 {Identificar el área y la fuente de personal para la demanda de Implantación.}
 {Se definieron 9 personas de planta y 18 asistentes contratados por obra o faena para una demanda máxima de 26 plazas. Los jefes de frente supervisan el trabajo.}
-{T-15, §5.7, pp. 66--68. SD7, §7.3.6.}
+{T-15, §5.7. SD7, §7.3.6.}
 \observacion{17}{24, 28}
 {Explicar cómo se nivela y controla la capacidad de los frentes en los meses 13--15 y 19--20.}
 {Se programaron frentes separados en ambos solapamientos. El T-15 contrasta las plazas requeridas con la dotación y el SD6 fija el control semanal de horas por persona y el escalamiento.}
@@ -129,7 +135,7 @@ observación sigue abierta o el cumplimiento es parcial.
 \observacion{19}{29, 32--33, 54}
 {Reservar los diez días hábiles de revisión del expediente antes del corte de cada etapa.}
 {Se programaron entrega, revisión, firma y corte como eventos separados. En el escenario nominal los cortes quedan el 17 de mayo y el 18 de octubre de 2028, en los meses 16 y 21.}
-{T-15, §5.5, p. 65. SD7, §§7.3.1--7.3.2.}
+{T-15, §5.5. SD7, §§7.3.1--7.3.2.}
 \observacion{20}{29, 32--33, 54}
 {Presentar un cronograma cerrado para H7 y H12, con el procedimiento confirmado por la Contraparte Técnica y una respuesta al escenario de subsanación.}{}{}
 \observacion{21}{41}
@@ -146,7 +152,9 @@ observación sigue abierta o el cumplimiento es parcial.
 {Se definieron contención, escalamiento, pruebas en Preproducción y corrección autorizada desde el 26 de septiembre. Un incidente crítico o alto abierto impide firmar el cierre.}
 {SD7, §7.3.5, p. 36. T-18, §6, p. 24.}
 \observacion{24}{33}
-{Justificar la exclusión general de despliegues entre el 26 y el 30 de septiembre además del congelamiento total del 1 al 25.}{}{}
+{Justificar la exclusión general de despliegues entre el 26 y el 30 de septiembre además del congelamiento total del 1 al 25.}
+{La ventana protege la evidencia comparable a volumen real y la estabilidad de la Etapa 1. Admite correcciones de emergencia con autorización expresa.}
+{T-18, §§1 y 6.4.}
 \observacion{25}{31}
 {Explicar en el cuerpo cómo se relacionan los objetivos de reversión de 10 y 40 minutos.}
 {Se precisó que los 10 minutos de reversión técnica transcurren en paralelo con los 30 de preparación operacional. Se agregan hasta 10 minutos de verificación y autorización, para un total de 40.}
@@ -175,11 +183,11 @@ observación sigue abierta o el cumplimiento es parcial.
 \observacion{31}{30}
 {Separar los paquetes agrupados en una misma barra para identificar sus fechas y dependencias.}
 {El detalle del T-14 individualiza las filas por código y usa identificadores para seguir los vínculos entre láminas. La programación de los 171 paquetes se consulta en el T-15.}
-{T-14, §3, pp. 101--164. T-15, §6.1.}
+{T-14, §3, láminas de detalle. T-15, §6.1.}
 \observacion{32}{33}
 {Mostrar la ruta crítica de la construcción de la Etapa 1, además del tramo de aceptación final.}
-{La vista crítica muestra tareas de construcción de E1, como Cobro en ruta, rendición y conciliación. El SD7 remite a esa vista y presenta por separado el camino de H12.}
-{T-14, §3, pp. 165--171. SD7, §7.3.1.}
+{La vista distingue las tareas con holgura lógica cero, las tareas con margen nivelado cero y las puertas contractuales. En E1, 4.3.5 aparece en ámbar, correspondiente a su margen nivelado.}
+{T-14, §3, vista crítica. T-15, §5.1 y paquete 4.3.5.}
 \observacion{33}{29, 32}
 {Definir las siglas SD4, SD8, PT/H y RC en los documentos que las usan.}
 {Los formularios explican que SD seguido de un número identifica el subdocumento, y definen PT/H y RC. Las láminas generales del capítulo usan nombres de actividades e hitos.}
@@ -204,13 +212,17 @@ observación sigue abierta o el cumplimiento es parcial.
 \tema{Anexos y formato de la propuesta}
 \begin{matriz}
 \observacion{38}{33}
-{Separar los supuestos de planificación de los riesgos del proyecto en el Anexo 7.F y conciliarlos con el SD8.}{}{}
+{Separar los supuestos de planificación de los riesgos del proyecto en el Anexo 7.F y conciliarlos con el SD8.}
+{El anexo presenta una tabla de supuestos y otra de riesgos y controles que remite al T-16 y el Anexo 8.E.}
+{Anexo 7.F. SD8, Anexo 8.E.}
 \observacion{39}{32}
 {Reducir el volumen total del capítulo, sus anexos y sus formularios.}{}{}
 \observacion{40}{2, 32, 54}
 {Aplicar foliación correlativa a la oferta final consolidada.}{}{}
 \observacion{41}{26}
-{Unificar la fecha de emisión del SD6, el SD7 y sus formularios, o identificar las versiones en un registro de cambios.}{}{}
+{Unificar la fecha de emisión del SD6, el SD7 y sus formularios, o identificar las versiones en un registro de cambios.}
+{Los documentos del bloque usan el 25 de noviembre de 2026, como el SD6 y los formularios que dependen de su plantilla.}
+{Portadas del SD6 y SD7, anexos y formularios.}
 \observacion{42}{2, 54}
 {Acreditar una revisión humana técnica de las secciones del capítulo con uso declarado de IA.}{}{}
 \end{matriz}

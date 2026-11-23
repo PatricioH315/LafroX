@@ -156,160 +156,160 @@
             <notes />
             <customproperty taskproperty-id="tpc2" value="252" />
         </task>
-        <task id="38" name="H1 · Firma del acta" color="#404040" meeting="true" start="2027-03-23" duration="0" complete="0" expand="true">
+        <task id="40" name="H1 · Firma del acta" color="#404040" meeting="true" start="2027-03-23" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
         </task>
-        <task id="71" name="H2 · Firma del acta" color="#404040" meeting="true" start="2027-05-10" duration="0" complete="0" expand="true">
+        <task id="73" name="H2 · Firma del acta" color="#404040" meeting="true" start="2027-05-10" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
         </task>
-        <task id="120" name="H3 · Firma del acta" color="#404040" meeting="true" start="2027-07-07" duration="0" complete="0" expand="true">
+        <task id="122" name="H3 · Firma del acta" color="#404040" meeting="true" start="2027-07-07" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
         </task>
-        <task id="199" name="H4 · Firma del acta" color="#404040" meeting="true" start="2027-11-04" duration="0" complete="0" expand="true">
+        <task id="201" name="H4 · Firma del acta" color="#404040" meeting="true" start="2027-11-04" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
         </task>
-        <task id="213" name="H5 · Firma del acta" color="#404040" meeting="true" start="2028-01-03" duration="0" complete="0" expand="true">
+        <task id="215" name="H5 · Firma del acta" color="#404040" meeting="true" start="2028-01-03" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="219" type="2" difference="21" hardness="Rubber" />
+            <depend id="221" type="2" difference="21" hardness="Rubber" />
         </task>
-        <task id="218" name="9.2.1 Marcha blanca de la Etapa 1" color="#4472c4" meeting="false" start="2028-02-01" duration="65" complete="0" expand="true">
+        <task id="220" name="9.2.1 Marcha blanca de la Etapa 1" color="#4472c4" meeting="false" start="2028-02-01" duration="65" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="63" />
-            <depend id="237" type="2" difference="-1" hardness="Rubber" />
+            <depend id="239" type="2" difference="-1" hardness="Rubber" />
         </task>
-        <task id="219" name="H6 · Inicio contractual de marcha blanca" color="#c00000" meeting="true" start="2028-02-01" duration="0" complete="0" expand="true">
+        <task id="221" name="H6 · Inicio contractual de marcha blanca" color="#65418a" meeting="true" start="2028-02-01" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="218" type="1" difference="0" hardness="Rubber" />
+            <depend id="220" type="1" difference="0" hardness="Rubber" />
         </task>
-        <task id="220" name="Etapa 2 · Desarrollo (meses 13 a 18)" color="#4472c4" meeting="false" start="2028-02-01" duration="128" complete="0" expand="true">
+        <task id="222" name="Etapa 2 · Desarrollo (meses 13 a 18)" color="#4472c4" meeting="false" start="2028-02-01" duration="128" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="126" />
         </task>
-        <task id="229" name="H8 · Firma del acta" color="#404040" meeting="true" start="2028-03-09" duration="0" complete="0" expand="true">
+        <task id="231" name="H8 · Firma del acta" color="#404040" meeting="true" start="2028-03-09" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
         </task>
-        <task id="234" name="9.5.4 Traspaso al equipo de TI del CLIENTE" color="#4472c4" meeting="false" start="2028-04-01" duration="126" complete="0" expand="true">
+        <task id="236" name="9.5.4 Traspaso al equipo de TI del CLIENTE" color="#4472c4" meeting="false" start="2028-04-01" duration="126" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="123" />
-            <depend id="276" type="2" difference="1" hardness="Rubber" />
+            <depend id="278" type="2" difference="1" hardness="Rubber" />
         </task>
-        <task id="237" name="H7 · Cierre de cuatro semanas de evidencia" color="#404040" meeting="true" start="2028-04-30" duration="0" complete="0" expand="true">
+        <task id="239" name="H7 · Cierre de cuatro semanas de evidencia" color="#404040" meeting="true" start="2028-04-30" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="242" type="2" difference="1" hardness="Rubber" />
+            <depend id="244" type="2" difference="1" hardness="Rubber" />
         </task>
-        <task id="242" name="H7 · Entrega de expediente" color="#404040" meeting="true" start="2028-05-02" duration="0" complete="0" expand="true">
+        <task id="244" name="H7 · Entrega de expediente" color="#404040" meeting="true" start="2028-05-02" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="243" type="2" difference="1" hardness="Rubber" />
+            <depend id="245" type="2" difference="1" hardness="Rubber" />
         </task>
-        <task id="243" name="H7 · Revisión de la Contraparte (10 días hábiles)" color="#4472c4" meeting="false" start="2028-05-03" duration="10" complete="0" expand="true">
+        <task id="245" name="H7 · Revisión de la Contraparte (10 días hábiles)" color="#4472c4" meeting="false" start="2028-05-03" duration="10" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="10" />
-            <depend id="244" type="2" difference="-1" hardness="Rubber" />
+            <depend id="246" type="2" difference="-1" hardness="Rubber" />
         </task>
-        <task id="244" name="H7 · Firma del acta" color="#404040" meeting="true" start="2028-05-16" duration="0" complete="0" expand="true">
+        <task id="246" name="H7 · Firma del acta" color="#404040" meeting="true" start="2028-05-16" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="246" type="2" difference="1" hardness="Rubber" />
+            <depend id="248" type="2" difference="1" hardness="Rubber" />
         </task>
-        <task id="245" name="9.3.1 Estabilización y soporte puente E1" color="#4472c4" meeting="false" start="2028-05-17" duration="94" complete="0" expand="true">
+        <task id="247" name="9.3.1 Estabilización y soporte puente E1" color="#4472c4" meeting="false" start="2028-05-17" duration="94" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="93" />
         </task>
-        <task id="246" name="H7 · Paso a producción" color="#c00000" meeting="true" start="2028-05-17" duration="0" complete="0" expand="true">
+        <task id="248" name="H7 · Paso a producción" color="#65418a" meeting="true" start="2028-05-17" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="248" type="1" difference="0" hardness="Rubber" />
-            <depend id="245" type="1" difference="0" hardness="Rubber" />
+            <depend id="250" type="1" difference="0" hardness="Rubber" />
+            <depend id="247" type="1" difference="0" hardness="Rubber" />
         </task>
-        <task id="248" name="H7 · Registro de producción y cumplimiento" color="#404040" meeting="true" start="2028-05-17" duration="0" complete="0" expand="true">
-            <notes />
-            <customproperty taskproperty-id="tpc2" value="0" />
-        </task>
-        <task id="257" name="H9 · Firma del acta" color="#404040" meeting="true" start="2028-06-01" duration="0" complete="0" expand="true">
+        <task id="250" name="H7 · Registro de producción y cumplimiento" color="#404040" meeting="true" start="2028-05-17" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
         </task>
-        <task id="266" name="H10 · Firma del acta" color="#404040" meeting="true" start="2028-07-11" duration="0" complete="0" expand="true">
+        <task id="259" name="H9 · Firma del acta" color="#404040" meeting="true" start="2028-06-01" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="268" type="2" difference="15" hardness="Rubber" />
-            <depend id="274" type="2" difference="58" hardness="Rubber" />
-            <depend id="271" type="2" difference="45" hardness="Rubber" />
         </task>
-        <task id="267" name="9.2.2 Marcha blanca de la Etapa 2" color="#4472c4" meeting="false" start="2028-08-01" duration="42" complete="0" expand="true">
+        <task id="268" name="H10 · Firma del acta" color="#404040" meeting="true" start="2028-07-11" duration="0" complete="0" expand="true">
+            <notes />
+            <customproperty taskproperty-id="tpc2" value="0" />
+            <depend id="270" type="2" difference="15" hardness="Rubber" />
+            <depend id="276" type="2" difference="58" hardness="Rubber" />
+            <depend id="273" type="2" difference="45" hardness="Rubber" />
+        </task>
+        <task id="269" name="9.2.2 Marcha blanca de la Etapa 2" color="#4472c4" meeting="false" start="2028-08-01" duration="42" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="41" />
-            <depend id="272" type="2" difference="-1" hardness="Rubber" />
+            <depend id="274" type="2" difference="-1" hardness="Rubber" />
         </task>
-        <task id="268" name="H11 · Inicio contractual de marcha blanca" color="#c00000" meeting="true" start="2028-08-01" duration="0" complete="0" expand="true">
+        <task id="270" name="H11 · Inicio contractual de marcha blanca" color="#65418a" meeting="true" start="2028-08-01" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="267" type="1" difference="0" hardness="Rubber" />
+            <depend id="269" type="1" difference="0" hardness="Rubber" />
         </task>
-        <task id="271" name="9.4.3 Garantía de correcto funcionamiento constituida (H12)" color="#4472c4" meeting="false" start="2028-09-13" duration="7" complete="0" expand="true">
+        <task id="273" name="9.4.3 Garantía de correcto funcionamiento constituida (H12)" color="#4472c4" meeting="false" start="2028-09-13" duration="7" complete="0" expand="true">
             <notes>80 HH · responsable JP · ejecución JP · 6.7.2</notes>
             <customproperty taskproperty-id="tpc2" value="7" />
-            <depend id="276" type="2" difference="6" hardness="Rubber" />
+            <depend id="278" type="2" difference="6" hardness="Rubber" />
         </task>
-        <task id="272" name="H12 · Cierre de cuatro semanas de evidencia" color="#404040" meeting="true" start="2028-09-30" duration="0" complete="0" expand="true">
+        <task id="274" name="H12 · Cierre de cuatro semanas de evidencia" color="#404040" meeting="true" start="2028-09-30" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="276" type="2" difference="2" hardness="Rubber" />
+            <depend id="278" type="2" difference="2" hardness="Rubber" />
         </task>
-        <task id="273" name="Mes 21 · Cobertura de transición previa al corte E2" color="#4472c4" meeting="false" start="2028-10-01" duration="12" complete="0" expand="true">
+        <task id="275" name="Mes 21 · Cobertura de transición previa al corte E2" color="#4472c4" meeting="false" start="2028-10-01" duration="12" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="11" />
-            <depend id="282" type="2" difference="0" hardness="Rubber" />
+            <depend id="284" type="2" difference="0" hardness="Rubber" />
         </task>
-        <task id="274" name="6.8.6 Entrega del código fuente, la infraestructura como código y los procedimientos de despliegue" color="#4472c4" meeting="false" start="2028-10-02" duration="7" complete="0" expand="true">
+        <task id="276" name="6.8.6 Entrega del código fuente, la infraestructura como código y los procedimientos de despliegue" color="#4472c4" meeting="false" start="2028-10-02" duration="7" complete="0" expand="true">
             <notes>80 HH · responsable DES · ejecución DES · 6.7.2</notes>
             <customproperty taskproperty-id="tpc2" value="7" />
-            <depend id="278" type="2" difference="3" hardness="Rubber" />
+            <depend id="280" type="2" difference="3" hardness="Rubber" />
         </task>
-        <task id="276" name="H12 · Entrega de expediente" color="#404040" meeting="true" start="2028-10-02" duration="0" complete="0" expand="true">
+        <task id="278" name="H12 · Entrega de expediente" color="#404040" meeting="true" start="2028-10-02" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="277" type="2" difference="1" hardness="Rubber" />
+            <depend id="279" type="2" difference="1" hardness="Rubber" />
         </task>
-        <task id="277" name="H12 · Revisión de la Contraparte (10 días hábiles)" color="#4472c4" meeting="false" start="2028-10-03" duration="10" complete="0" expand="true">
+        <task id="279" name="H12 · Revisión de la Contraparte (10 días hábiles)" color="#4472c4" meeting="false" start="2028-10-03" duration="10" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="10" />
-            <depend id="278" type="2" difference="-1" hardness="Rubber" />
+            <depend id="280" type="2" difference="-1" hardness="Rubber" />
         </task>
-        <task id="278" name="H12 · Firma del acta" color="#404040" meeting="true" start="2028-10-17" duration="0" complete="0" expand="true">
+        <task id="280" name="H12 · Firma del acta" color="#404040" meeting="true" start="2028-10-17" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="280" type="2" difference="1" hardness="Rubber" />
+            <depend id="282" type="2" difference="1" hardness="Rubber" />
         </task>
-        <task id="279" name="9.3.2 Estabilización de la Etapa 2" color="#4472c4" meeting="false" start="2028-10-18" duration="30" complete="0" expand="true">
+        <task id="281" name="9.3.2 Estabilización de la Etapa 2" color="#4472c4" meeting="false" start="2028-10-18" duration="30" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="30" />
         </task>
-        <task id="280" name="H12 · Paso a producción" color="#c00000" meeting="true" start="2028-10-18" duration="0" complete="0" expand="true">
+        <task id="282" name="H12 · Paso a producción" color="#65418a" meeting="true" start="2028-10-18" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="283" type="1" difference="0" hardness="Rubber" />
-            <depend id="279" type="1" difference="0" hardness="Rubber" />
-            <depend id="282" type="1" difference="0" hardness="Rubber" />
+            <depend id="285" type="1" difference="0" hardness="Rubber" />
+            <depend id="281" type="1" difference="0" hardness="Rubber" />
+            <depend id="284" type="1" difference="0" hardness="Rubber" />
         </task>
-        <task id="282" name="Producto 10 · Operación con ambos alcances (meses 21 a 56)" color="#4472c4" meeting="false" start="2028-10-18" duration="730" complete="0" expand="true">
+        <task id="284" name="Producto 10 · Operación con ambos alcances (meses 21 a 56)" color="#4472c4" meeting="false" start="2028-10-18" duration="730" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="730" />
         </task>
-        <task id="283" name="H12 · Registro de producción y cumplimiento" color="#404040" meeting="true" start="2028-10-18" duration="0" complete="0" expand="true">
+        <task id="285" name="H12 · Registro de producción y cumplimiento" color="#404040" meeting="true" start="2028-10-18" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
         </task>
-        <task id="285" name="10.5.1 Traspaso de reversibilidad y acompañamiento de salida" color="#4472c4" meeting="false" start="2031-08-01" duration="40" complete="0" expand="true">
+        <task id="287" name="10.5.1 Traspaso de reversibilidad y acompañamiento de salida" color="#4472c4" meeting="false" start="2031-08-01" duration="40" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="40" />
         </task>

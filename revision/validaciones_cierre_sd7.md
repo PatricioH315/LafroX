@@ -31,7 +31,7 @@ Por actividad se registra qué cambia entre O, M y P (por ejemplo, reprocesos, d
 ## Regeneración y comprobación de la carta vigente
 
 1. Ejecutar `python revision/edt_cpm_20261117.py --output-dir tmp/sd7-correcciones` para obtener las tablas y el JSON de la red. El JSON registra los márgenes separados de firma y corte, el escenario de diez días y el contraste diario de Desarrollo y Calidad.
-2. Copiar las tablas verificadas a `formulario-t15/tablas`. Con ReportLab disponible, ejecutar `python revision/gantt_local_vector.py --schedule tmp/sd7-correcciones/cronograma_sd7.json --output-dir tmp/sd7-correcciones/gantt`. Añadir `--publish` para instalar las vistas y láminas verificadas y actualizar las llamadas LaTeX.
+2. Generar el CPM lógico con `python -B revision/cpm_y_riesgo_sd7.py --output-dir tmp/sd7-correcciones/cpm` y cotejar sus tablas con las publicadas. Con ReportLab disponible, ejecutar `python revision/gantt_local_vector.py --schedule tmp/sd7-correcciones/cronograma_sd7.json --logical-cpm tmp/sd7-correcciones/cpm/cpm-pert-sd7.json --output-dir tmp/sd7-correcciones/gantt`. Añadir `--publish` para instalar las vistas y láminas verificadas y actualizar las llamadas LaTeX.
 3. **Validación nominal en GanttProject.** Comparar fechas, ambas duraciones y dependencias. Se verificó la carga y el recálculo del motor por línea de comandos. El guardado y la reapertura por interfaz siguen pendientes.
 4. Ejecutar `revision/compilar_local_sd7.ps1` y revisar los PDF y sus referencias antes de instalar los resultados en la raíz.
 
@@ -90,6 +90,9 @@ como el siguiente. El resultado local habitual conserva su numeración propia.
 Compilar el envoltorio con LuaLaTeX hasta estabilizar sus índices. El integrador
 asigna a cada archivo el siguiente folio disponible según su orden en la oferta
 y valida las páginas impresas, el índice maestro y los enlaces del consolidado.
+El mismo procedimiento se puede ejecutar con `revision/compilar_local_sd7.ps1 -FirstFolio 137`.
+El 137 es un ejemplo. Usar el primer folio efectivo que entregue el integrador.
+La prueba con Anexos y T-18 verificó los folios impresos 137–163 y 164–188, respectivamente.
 
 ### Evidencia necesaria para actualizar la matriz
 
@@ -108,3 +111,19 @@ y valida las páginas impresas, el índice maestro y los enlaces del consolidado
 - El alcance de la cascada con controles quincenales se presenta al evaluador
   para su aceptación. Los responsables de cada materia registran la revisión
   humana técnica cuando la ejecuten, con fecha, comprobaciones y evidencia.
+
+### Escenarios de recuperación y decisiones pendientes
+
+| Observación | Evidencia de cierre | Responsable propuesto |
+| --- | --- | --- |
+| 20–21 · H1 | Aprobar la ventana del 22-02 al 02-03-2027 para 1.2.2, 1.2.3, 1.2.4 y 2.1.3. El modelo conserva las precedencias y supera el contraste diario de Calidad. El acta con subsanación cae el 31-03. Antes de cambiar la base, conciliar febrero y marzo, confirmar la capacidad de JP/PMO y acreditar los cuatro entregables. | JP, PMO y Calidad |
+| 20–21 · H7/H12 | Registrar en 1.1.3 la respuesta escrita sobre expediente integrado, plazo, firma, corte y evidencia de 6.8.6. H7 conserva ingreso el 02-05 y corte el 31-05 con subsanación. Para H12, el ingreso el 28-09 requiere cerrar cuatro semanas el 27-09, adelantar 9.5.4 y confirmar si 6.8.6 se admite antes de firmar. Si esa ventana no es viable, obtener un procedimiento compatible con el límite de octubre y volver a simular. | JP y Contraparte Técnica |
+| 15 y 18 · Dotación | Aprobar el registro con titular, suplente, perfil, fecha, turno, HH disponibles, HH en otros servicios y paquete. Calidad verifica el mínimo de 1.049,60 HH y la cobertura de cada día. Dirección cruza asignación y dedicación con SD1, SD12 y T-8. | Calidad y Dirección |
+| 22 y 27 · Reservas y mesa | Aprobar titular, suplente e imputación del tramo 22:00–04:00. Nivelar por paquete, perfil y mes, y conciliar el costo con SD8 antes de activar la cobertura. | Mesa, JP y Dirección |
+| 26 · Reversión | Conservar horas de decisión y restauración, hora del último despacho listo, guías ERP, conciliación y conformidad. Repetir antes del corte si los 96 no están listos a las 05:25. | Operaciones y Calidad |
+| 07 y 12 · Método y PERT | Registrar la aceptación de los controles quincenales o programar el alcance, prueba y demo de cada incremento solicitado. Para cada paquete que usa un rango genérico, registrar las cantidades, los escenarios O/M/P y su fuente, con responsable de estimación. Recalcular la red tras aprobar los cambios. | Evaluador y líderes de frente |
+| 40 y 42 · Oferta final | Aplicar folios consecutivos con el orden de la oferta completa, validar índice y enlaces, y archivar por sección revisor, fecha, comprobación y evidencia de la revisión técnica. | Integrador y líderes técnicos |
+
+El cálculo de H1 obtiene el mismo mínimo agregado, nueve equivalentes de la familia JP, al contrastar las ventanas de la carta actual y de la alternativa. La verificación de flujo por familia se limita a los paquetes con entregable. El registro nominal debe conciliar la capacidad por perfil y el trabajo continuo antes de autorizar el traslado.
+
+El JSON del CPM identifica los 24 paquetes con fundamento PERT específico y los 147 que requieren documentar escenarios propios. Priorizar los que condicionan H1, H7, H12 y la certificación previa al H5. Conservar el inventario regenerado junto con los insumos de estimación.

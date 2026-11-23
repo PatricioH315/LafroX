@@ -148,185 +148,185 @@
             <taskproperty id="tpc1" name="Crítica" type="custom" valuetype="text" defaultvalue="" />
             <taskproperty id="tpc2" name="Días hábiles T-15" type="custom" valuetype="int" />
         </taskproperties>
-        <task id="12" name="8.1.4 Especificación y compra del sistema de cadena de frío" color="#c00000" meeting="false" start="2027-02-01" duration="42" complete="0" expand="true">
-            <notes>240 HH · responsable ARQ · ejecución ARQ · Especificación SD4; ocho semanas de homologación móvil</notes>
+        <task id="12" name="8.1.4 Especificación y compra del sistema de cadena de frío" color="#946100" meeting="false" start="2027-02-01" duration="42" complete="0" expand="true">
+            <notes>240 HH · responsable ARQ · ejecución ARQ · Disponibilidad de la especificación del SD4 al inicio (ARQ); ocho semanas de homologación móvil</notes>
             <customproperty taskproperty-id="tpc2" value="42" />
-            <depend id="44" type="2" difference="0" hardness="Rubber" />
+            <depend id="46" type="2" difference="0" hardness="Rubber" />
         </task>
-        <task id="44" name="2.7.1 Informe de validación del kit de cadena de frío en banco de pruebas" color="#c00000" meeting="false" start="2027-04-01" duration="22" complete="0" expand="true">
+        <task id="46" name="2.7.1 Informe de validación del kit de cadena de frío en banco de pruebas" color="#946100" meeting="false" start="2027-04-01" duration="22" complete="0" expand="true">
             <notes>341.33 HH · responsable SRE · ejecución SRE · 8.1.4, 8.2.7; prototipo Greengrass y TC58e</notes>
             <customproperty taskproperty-id="tpc2" value="22" />
         </task>
-        <task id="56" name="2.6.3 Indicadores de usabilidad comprometidos por transacción crítica" color="#c00000" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
+        <task id="58" name="2.6.3 Indicadores de usabilidad comprometidos por transacción crítica" color="#946100" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
             <notes>240 HH · responsable IMP · ejecución IMP · 2.6.2</notes>
             <customproperty taskproperty-id="tpc2" value="20" />
         </task>
-        <task id="58" name="3.1.4 Cadena de integración y entrega continua, e infraestructura como código" color="#c00000" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
+        <task id="60" name="3.1.4 Cadena de integración y entrega continua, e infraestructura como código" color="#946100" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
             <notes>240 HH · responsable SRE · ejecución SRE · 3.2.1 CC; habilitación para QA tras el acta H2</notes>
             <customproperty taskproperty-id="tpc2" value="20" />
         </task>
-        <task id="59" name="3.2.1 Servicio de nube para la aplicación y los portales" color="#c00000" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
+        <task id="61" name="3.2.1 Servicio de nube para la aplicación y los portales" color="#946100" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
             <notes>240 HH · responsable SRE · ejecución SRE · 8.2.1 (D-07)</notes>
             <customproperty taskproperty-id="tpc2" value="20" />
-            <depend id="58" type="1" difference="0" hardness="Rubber" />
+            <depend id="60" type="1" difference="0" hardness="Rubber" />
         </task>
-        <task id="60" name="3.2.2 Servicio de nube de base de datos, caché y mensajería" color="#c00000" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
-            <notes>240 HH · responsable SRE · ejecución SRE · 8.2.1 (D-07)</notes>
-            <customproperty taskproperty-id="tpc2" value="20" />
-        </task>
-        <task id="61" name="3.2.3 Servicio de nube de ingesta de IoT, telemetría cruda y plataforma analítica" color="#c00000" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
+        <task id="62" name="3.2.2 Servicio de nube de base de datos, caché y mensajería" color="#946100" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
             <notes>240 HH · responsable SRE · ejecución SRE · 8.2.1 (D-07)</notes>
             <customproperty taskproperty-id="tpc2" value="20" />
         </task>
-        <task id="62" name="3.2.4 Servicio de nube de respaldo inmutable y réplica entre regiones" color="#c00000" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
+        <task id="63" name="3.2.3 Servicio de nube de ingesta de IoT, telemetría cruda y plataforma analítica" color="#946100" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
             <notes>240 HH · responsable SRE · ejecución SRE · 8.2.1 (D-07)</notes>
             <customproperty taskproperty-id="tpc2" value="20" />
         </task>
-        <task id="63" name="3.2.5 Servicio de nube de seguridad y gobierno, y detección en endpoints" color="#c00000" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
+        <task id="64" name="3.2.4 Servicio de nube de respaldo inmutable y réplica entre regiones" color="#946100" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
+            <notes>240 HH · responsable SRE · ejecución SRE · 8.2.1 (D-07)</notes>
+            <customproperty taskproperty-id="tpc2" value="20" />
+        </task>
+        <task id="65" name="3.2.5 Servicio de nube de seguridad y gobierno, y detección en endpoints" color="#946100" meeting="false" start="2027-05-03" duration="20" complete="0" expand="true">
             <notes>240 HH · responsable SEG · ejecución SEG · 8.2.1 (D-07)</notes>
             <customproperty taskproperty-id="tpc2" value="20" />
         </task>
-        <task id="68" name="8.3.5 Acta de recepción técnica de la sala" color="#c00000" meeting="false" start="2027-05-03" duration="14" complete="0" expand="true">
+        <task id="70" name="8.3.5 Acta de recepción técnica de la sala" color="#946100" meeting="false" start="2027-05-03" duration="14" complete="0" expand="true">
             <notes>160 HH · responsable SRE · ejecución RED · 8.1.2, 8.3.1–8.3.4 (recepción)</notes>
             <customproperty taskproperty-id="tpc2" value="14" />
-            <depend id="75" type="2" difference="0" hardness="Rubber" />
+            <depend id="77" type="2" difference="0" hardness="Rubber" />
         </task>
-        <task id="75" name="8.4.5 Rack R02 de comunicaciones montado" color="#c00000" meeting="false" start="2027-05-24" duration="13" complete="0" expand="true">
+        <task id="77" name="8.4.5 Rack R02 de comunicaciones montado" color="#946100" meeting="false" start="2027-05-24" duration="13" complete="0" expand="true">
             <notes>160 HH · responsable SRE · ejecución RED · 8.3.5 (D-11)</notes>
             <customproperty taskproperty-id="tpc2" value="13" />
-            <depend id="97" type="2" difference="0" hardness="Rubber" />
-            <depend id="98" type="2" difference="0" hardness="Rubber" />
+            <depend id="99" type="2" difference="0" hardness="Rubber" />
+            <depend id="100" type="2" difference="0" hardness="Rubber" />
         </task>
-        <task id="97" name="8.7.1 Software de base instalado en los cinco sitios" color="#c00000" meeting="false" start="2027-06-10" duration="13" complete="0" expand="true">
+        <task id="99" name="8.7.1 Software de base instalado en los cinco sitios" color="#c00000" meeting="false" start="2027-06-10" duration="13" complete="0" expand="true">
             <notes>160 HH · responsable SRE · ejecución SRE · Montaje 8.4.4, 8.4.5 y 8.4.6 (D-12)</notes>
             <customproperty taskproperty-id="tpc2" value="13" />
         </task>
-        <task id="98" name="8.7.2 Enlaces de fibra, LTE y Starlink habilitados, con conmutación al respaldo" color="#c00000" meeting="false" start="2027-06-10" duration="13" complete="0" expand="true">
+        <task id="100" name="8.7.2 Enlaces de fibra, LTE y Starlink habilitados, con conmutación al respaldo" color="#c00000" meeting="false" start="2027-06-10" duration="13" complete="0" expand="true">
             <notes>160 HH · responsable SRE · ejecución RED · Montaje 8.4.4, 8.4.5 y 8.4.6 (D-12)</notes>
             <customproperty taskproperty-id="tpc2" value="13" />
         </task>
-        <task id="147" name="4.3.5 Cobro en ruta, rendición y conciliación (M7 Cobranza y rendición)" color="#c00000" meeting="false" start="2027-08-11" duration="36" complete="0" expand="true">
+        <task id="149" name="4.3.5 Cobro en ruta, rendición y conciliación (M7 Cobranza y rendición)" color="#946100" meeting="false" start="2027-08-11" duration="36" complete="0" expand="true">
             <notes>1248.33 HH · responsable DES · ejecución DES · 2.8.1, 2.6.2, 3.1 (QA), 3.3.1–3.3.3 (CC), 5.1 (CC), 4.3.3 (interfaz), 4.3.3 CC</notes>
             <customproperty taskproperty-id="tpc2" value="36" />
         </task>
-        <task id="158" name="3.3.4 Parametrización y motor de reglas versionados" color="#c00000" meeting="false" start="2027-09-01" duration="21" complete="0" expand="true">
+        <task id="160" name="3.3.4 Parametrización y motor de reglas versionados" color="#946100" meeting="false" start="2027-09-01" duration="21" complete="0" expand="true">
             <notes>480 HH · responsable DES · ejecución DES · 2.8.1, 3.3.2</notes>
             <customproperty taskproperty-id="tpc2" value="21" />
         </task>
-        <task id="159" name="3.3.5 Gestión documental con versionado, búsqueda y vista previa" color="#c00000" meeting="false" start="2027-09-01" duration="21" complete="0" expand="true">
+        <task id="161" name="3.3.5 Gestión documental con versionado, búsqueda y vista previa" color="#946100" meeting="false" start="2027-09-01" duration="21" complete="0" expand="true">
             <notes>480 HH · responsable DES · ejecución DES · 2.8.1, 3.3.1</notes>
             <customproperty taskproperty-id="tpc2" value="21" />
-            <depend id="160" type="1" difference="0" hardness="Rubber" />
+            <depend id="162" type="1" difference="0" hardness="Rubber" />
         </task>
-        <task id="160" name="3.3.6 Generación de documentos con plantillas administrables" color="#c00000" meeting="false" start="2027-09-01" duration="21" complete="0" expand="true">
+        <task id="162" name="3.3.6 Generación de documentos con plantillas administrables" color="#946100" meeting="false" start="2027-09-01" duration="21" complete="0" expand="true">
             <notes>480 HH · responsable DES · ejecución DES · 2.8.1, 3.3.5 CC</notes>
             <customproperty taskproperty-id="tpc2" value="21" />
         </task>
-        <task id="172" name="5.3.1 Intercambio electrónico certificado con la cadena principal (INT-08)" color="#c00000" meeting="false" start="2027-10-01" duration="171" complete="0" expand="true">
+        <task id="174" name="5.3.1 Intercambio electrónico certificado con la cadena principal (INT-08)" color="#946100" meeting="false" start="2027-10-01" duration="171" complete="0" expand="true">
             <notes>516 HH · responsable DES · ejecución DES · 2.1.5 (perfil de intercambio), 3.1.2 CC, 4.4.1 (QA)</notes>
             <customproperty taskproperty-id="tpc2" value="169" />
-            <depend id="268" type="2" difference="41" hardness="Rubber" />
+            <depend id="270" type="2" difference="41" hardness="Rubber" />
         </task>
-        <task id="202" name="5.4.3 Saldos migrados desde el WMS de Talca" color="#c00000" meeting="false" start="2027-12-01" duration="22" complete="0" expand="true">
+        <task id="204" name="5.4.3 Saldos migrados desde el WMS de Talca" color="#946100" meeting="false" start="2027-12-01" duration="22" complete="0" expand="true">
             <notes>504 HH · responsable DAT · ejecución DAT · 5.4.2</notes>
             <customproperty taskproperty-id="tpc2" value="22" />
         </task>
-        <task id="203" name="5.4.4 Saldos cargados en Concepción desde el conteo físico" color="#c00000" meeting="false" start="2027-12-01" duration="22" complete="0" expand="true">
+        <task id="205" name="5.4.4 Saldos cargados en Concepción desde el conteo físico" color="#946100" meeting="false" start="2027-12-01" duration="22" complete="0" expand="true">
             <notes>504 HH · responsable DAT · ejecución DAT · 5.4.2</notes>
             <customproperty taskproperty-id="tpc2" value="22" />
         </task>
-        <task id="204" name="7.1.4 Innovación 1: informe del piloto en marcha blanca y habilitación (INN-01.P4)" color="#c00000" meeting="false" start="2027-12-01" duration="107" complete="0" expand="true">
+        <task id="206" name="7.1.4 Innovación 1: informe del piloto en marcha blanca y habilitación (INN-01.P4)" color="#946100" meeting="false" start="2027-12-01" duration="107" complete="0" expand="true">
             <notes>240 HH · responsable DAT · ejecución DAT · 7.1.2 y 7.1.3</notes>
             <customproperty taskproperty-id="tpc2" value="106" />
         </task>
-        <task id="205" name="7.2.4 Innovación 2: informe de validación comparada (INN-02.P4, parte 1)" color="#c00000" meeting="false" start="2027-12-01" duration="107" complete="0" expand="true">
+        <task id="207" name="7.2.4 Innovación 2: informe de validación comparada (INN-02.P4, parte 1)" color="#946100" meeting="false" start="2027-12-01" duration="107" complete="0" expand="true">
             <notes>240 HH · responsable CAL · ejecución CAL · 7.2.3</notes>
             <customproperty taskproperty-id="tpc2" value="106" />
         </task>
-        <task id="206" name="7.3.4 Innovación 3: informe de validación en marcha blanca con Calidad (INN-03.P4)" color="#c00000" meeting="false" start="2027-12-01" duration="107" complete="0" expand="true">
+        <task id="208" name="7.3.4 Innovación 3: informe de validación en marcha blanca con Calidad (INN-03.P4)" color="#946100" meeting="false" start="2027-12-01" duration="107" complete="0" expand="true">
             <notes>240 HH · responsable DAT · ejecución DAT · 7.3.3</notes>
             <customproperty taskproperty-id="tpc2" value="106" />
         </task>
-        <task id="219" name="H6 · Inicio contractual de marcha blanca" color="#c00000" meeting="true" start="2028-02-01" duration="0" complete="0" expand="true">
+        <task id="221" name="H6 · Inicio contractual de marcha blanca" color="#65418a" meeting="true" start="2028-02-01" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
         </task>
-        <task id="230" name="4.4.2 Portal web de clientes: cuenta, saldo, entregas y documentos" color="#c00000" meeting="false" start="2028-03-13" duration="35" complete="0" expand="true">
+        <task id="232" name="4.4.2 Portal web de clientes: cuenta, saldo, entregas y documentos" color="#946100" meeting="false" start="2028-03-13" duration="35" complete="0" expand="true">
             <notes>1033.17 HH · responsable DES · ejecución DES · 2.1.2, 2.8.2 (D-29)</notes>
             <customproperty taskproperty-id="tpc2" value="34" />
         </task>
-        <task id="231" name="4.4.1 Canal moderno y portal de proveedores (M11)" color="#c00000" meeting="false" start="2028-03-15" duration="33" complete="0" expand="true">
+        <task id="233" name="4.4.1 Canal moderno y portal de proveedores (M11)" color="#946100" meeting="false" start="2028-03-15" duration="33" complete="0" expand="true">
             <notes>973 HH · responsable DES · ejecución DES · 2.1.2, 2.8.2 (D-29)</notes>
             <customproperty taskproperty-id="tpc2" value="32" />
-            <depend id="172" type="3" difference="23" hardness="Rubber" />
+            <depend id="174" type="3" difference="23" hardness="Rubber" />
         </task>
-        <task id="232" name="4.4.3 Portal web de transportistas: rutas asignadas del día siguiente" color="#c00000" meeting="false" start="2028-03-15" duration="33" complete="0" expand="true">
+        <task id="234" name="4.4.3 Portal web de transportistas: rutas asignadas del día siguiente" color="#946100" meeting="false" start="2028-03-15" duration="33" complete="0" expand="true">
             <notes>280 HH · responsable DES · ejecución DES · 2.1.2, 2.8.2 (D-29)</notes>
             <customproperty taskproperty-id="tpc2" value="32" />
         </task>
-        <task id="233" name="4.5.2 Costo de servir por cliente y por entrega (M10 Analítica)" color="#c00000" meeting="false" start="2028-03-15" duration="33" complete="0" expand="true">
+        <task id="235" name="4.5.2 Costo de servir por cliente y por entrega (M10 Analítica)" color="#946100" meeting="false" start="2028-03-15" duration="33" complete="0" expand="true">
             <notes>653 HH · responsable DAT · ejecución DAT · 2.1.2, 2.8.2 (D-29)</notes>
             <customproperty taskproperty-id="tpc2" value="32" />
         </task>
-        <task id="237" name="H7 · Cierre de cuatro semanas de evidencia" color="#404040" meeting="true" start="2028-04-30" duration="0" complete="0" expand="true">
+        <task id="239" name="H7 · Cierre de cuatro semanas de evidencia" color="#404040" meeting="true" start="2028-04-30" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="242" type="2" difference="1" hardness="Rubber" />
+            <depend id="244" type="2" difference="1" hardness="Rubber" />
         </task>
-        <task id="242" name="H7 · Entrega de expediente" color="#404040" meeting="true" start="2028-05-02" duration="0" complete="0" expand="true">
+        <task id="244" name="H7 · Entrega de expediente" color="#404040" meeting="true" start="2028-05-02" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="243" type="2" difference="1" hardness="Rubber" />
+            <depend id="245" type="2" difference="1" hardness="Rubber" />
         </task>
-        <task id="243" name="H7 · Revisión de la Contraparte (10 días hábiles)" color="#4472c4" meeting="false" start="2028-05-03" duration="10" complete="0" expand="true">
+        <task id="245" name="H7 · Revisión de la Contraparte (10 días hábiles)" color="#4472c4" meeting="false" start="2028-05-03" duration="10" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="10" />
-            <depend id="244" type="2" difference="-1" hardness="Rubber" />
+            <depend id="246" type="2" difference="-1" hardness="Rubber" />
         </task>
-        <task id="244" name="H7 · Firma del acta" color="#404040" meeting="true" start="2028-05-16" duration="0" complete="0" expand="true">
+        <task id="246" name="H7 · Firma del acta" color="#404040" meeting="true" start="2028-05-16" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="246" type="2" difference="1" hardness="Rubber" />
+            <depend id="248" type="2" difference="1" hardness="Rubber" />
         </task>
-        <task id="246" name="H7 · Paso a producción" color="#c00000" meeting="true" start="2028-05-17" duration="0" complete="0" expand="true">
+        <task id="248" name="H7 · Paso a producción" color="#65418a" meeting="true" start="2028-05-17" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="248" type="1" difference="0" hardness="Rubber" />
+            <depend id="250" type="1" difference="0" hardness="Rubber" />
         </task>
-        <task id="248" name="H7 · Registro de producción y cumplimiento" color="#404040" meeting="true" start="2028-05-17" duration="0" complete="0" expand="true">
-            <notes />
-            <customproperty taskproperty-id="tpc2" value="0" />
-        </task>
-        <task id="268" name="H11 · Inicio contractual de marcha blanca" color="#c00000" meeting="true" start="2028-08-01" duration="0" complete="0" expand="true">
+        <task id="250" name="H7 · Registro de producción y cumplimiento" color="#404040" meeting="true" start="2028-05-17" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
         </task>
-        <task id="272" name="H12 · Cierre de cuatro semanas de evidencia" color="#404040" meeting="true" start="2028-09-30" duration="0" complete="0" expand="true">
+        <task id="270" name="H11 · Inicio contractual de marcha blanca" color="#65418a" meeting="true" start="2028-08-01" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="276" type="2" difference="2" hardness="Rubber" />
         </task>
-        <task id="276" name="H12 · Entrega de expediente" color="#404040" meeting="true" start="2028-10-02" duration="0" complete="0" expand="true">
+        <task id="274" name="H12 · Cierre de cuatro semanas de evidencia" color="#404040" meeting="true" start="2028-09-30" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="277" type="2" difference="1" hardness="Rubber" />
+            <depend id="278" type="2" difference="2" hardness="Rubber" />
         </task>
-        <task id="277" name="H12 · Revisión de la Contraparte (10 días hábiles)" color="#4472c4" meeting="false" start="2028-10-03" duration="10" complete="0" expand="true">
+        <task id="278" name="H12 · Entrega de expediente" color="#404040" meeting="true" start="2028-10-02" duration="0" complete="0" expand="true">
+            <notes />
+            <customproperty taskproperty-id="tpc2" value="0" />
+            <depend id="279" type="2" difference="1" hardness="Rubber" />
+        </task>
+        <task id="279" name="H12 · Revisión de la Contraparte (10 días hábiles)" color="#4472c4" meeting="false" start="2028-10-03" duration="10" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="10" />
-            <depend id="278" type="2" difference="-1" hardness="Rubber" />
+            <depend id="280" type="2" difference="-1" hardness="Rubber" />
         </task>
-        <task id="278" name="H12 · Firma del acta" color="#404040" meeting="true" start="2028-10-17" duration="0" complete="0" expand="true">
+        <task id="280" name="H12 · Firma del acta" color="#404040" meeting="true" start="2028-10-17" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="280" type="2" difference="1" hardness="Rubber" />
+            <depend id="282" type="2" difference="1" hardness="Rubber" />
         </task>
-        <task id="280" name="H12 · Paso a producción" color="#c00000" meeting="true" start="2028-10-18" duration="0" complete="0" expand="true">
+        <task id="282" name="H12 · Paso a producción" color="#65418a" meeting="true" start="2028-10-18" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
-            <depend id="283" type="1" difference="0" hardness="Rubber" />
+            <depend id="285" type="1" difference="0" hardness="Rubber" />
         </task>
-        <task id="283" name="H12 · Registro de producción y cumplimiento" color="#404040" meeting="true" start="2028-10-18" duration="0" complete="0" expand="true">
+        <task id="285" name="H12 · Registro de producción y cumplimiento" color="#404040" meeting="true" start="2028-10-18" duration="0" complete="0" expand="true">
             <notes />
             <customproperty taskproperty-id="tpc2" value="0" />
         </task>
