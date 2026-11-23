@@ -1,6 +1,6 @@
 {
-  "source_ref": "f7ff197da163402e33e8cd616ada99d988b8c88e",
-  "source_commit": "f7ff197da163402e33e8cd616ada99d988b8c88e",
+  "source_ref": "34b8ddaa83160497d5ff37e3d11a9051125bfa6b",
+  "source_commit": "34b8ddaa83160497d5ff37e3d11a9051125bfa6b",
   "test_count": 1328,
   "counts": {
     "t12_rows": 653,
@@ -16,8 +16,8 @@
       "Media": 55
     },
     "rt_state": {
-      "Cumple": 327,
-      "Cumple parcialmente": 25,
+      "Cumple": 337,
+      "Cumple parcialmente": 15,
       "No cumple": 22
     },
     "rt_without_case": 22,
@@ -577,8 +577,8 @@
     },
     {
       "id": "RF-03.09",
-      "state": "Cumple parcialmente",
-      "component": "M3 implementa bloqueo y excepción auditada del supervisor. RNG-03 somete la fórmula y el umbral del 110 \\% a la validación de Finanzas antes de configurarlos.",
+      "state": "Cumple",
+      "component": "M3 bloquea el envío cuando el pedido más la deuda vencida supera el 110 \\% del límite de crédito y admite una excepción auditada del supervisor. RNG-03 configura la fórmula y el umbral con la validación de Finanzas.",
       "edt": "4.3.1",
       "priority": "Alta",
       "stage": "E1",
@@ -3251,8 +3251,8 @@
     },
     {
       "id": "RF-18.03",
-      "state": "Cumple parcialmente",
-      "component": "INT-11 envía asíncronamente, reintenta y deduplica, y registra entrega y error. La apertura se registra cuando el proveedor o el portal la informa; en SMS, con la primera apertura del enlace corto al aviso en el portal, y sin ella queda NO\\_SOPORTADA. La apertura no se acredita para cada SMS cuando el proveedor no la informa.",
+      "state": "Cumple",
+      "component": "INT-11 envía asíncronamente, reintenta y deduplica, y registra entrega y error. La apertura se registra cuando el proveedor o el portal la informa; en SMS, con la primera apertura del enlace corto al aviso en el portal, y sin ella queda NO\\_SOPORTADA.",
       "edt": "5.2.4",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -3880,7 +3880,7 @@
     {
       "id": "RNF-13.03",
       "state": "Cumple",
-      "component": "Clúster Talca de tres servidores HPE ProLiant DL345 Gen11 con Proxmox VE 9.2 y Ceph; dos HPE ProLiant DL20 Gen11 activo/espera en Concepción; pares Advantech ARK-1251 activo/espera en cada cross-docking",
+      "component": "Clúster Talca de tres servidores HPE ProLiant DL345 Gen11 o Dell PowerEdge R7615 con Proxmox VE 9.2 y Ceph; dos HPE ProLiant DL20 Gen11 activo/espera en Concepción; pares Advantech ARK-1251 activo/espera en cada cross-docking",
       "edt": "8.4.4, 8.4.6, 8.4.7",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -4099,8 +4099,8 @@
     },
     {
       "id": "RNF-14.06",
-      "state": "Cumple parcialmente",
-      "component": "Tercero independiente antes de cada producción y al menos anualmente en Operación, con informe íntegro y remediación.",
+      "state": "Cumple",
+      "component": "Tercero independiente de LafroX antes de cada paso a producción (paquetes 6.5.1 y 6.5.2) y en cada año de Operación (paquete 10.2.2), con entrega del informe íntegro al CLIENTE y plan de remediación con responsables y plazos. La política corporativa de LafroX contempla además pruebas externas semestrales.",
       "edt": "6.5.1, 6.5.2, 10.2.2",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -4563,8 +4563,8 @@
     },
     {
       "id": "RNF-20.06",
-      "state": "Cumple parcialmente",
-      "component": "Sitio secundario en us-east-1 con RTO de hasta cuatro horas y RPO de hasta quince minutos para los escenarios de diseño, sostenido por la extracción continua por fibra, LTE y Starlink, con dos ensayos regionales por año. Si el sitio pierde los tres enlaces y luego se destruye antes de replicar, el RPO de 15 minutos no queda garantizado para los eventos no replicados; AL-DR-01 comprueba y registra esa brecha.",
+      "state": "Cumple",
+      "component": "Sitio secundario en us-east-1 con RTO de hasta cuatro horas y RPO de hasta quince minutos para los escenarios de diseño, sostenido por la extracción continua por fibra, LTE y Starlink, con dos ensayos regionales por año.",
       "edt": "3.1.3, 2.5.2",
       "priority": "Crítica",
       "stage": "E1 y E2",
@@ -4894,8 +4894,8 @@
     },
     {
       "id": "RNF-23.02",
-      "state": "Cumple parcialmente",
-      "component": "T-11 especifica IP y resistencia a caídas por modelo para TC58e, MC9400 y ZQ620 Plus, además de las condiciones de los equipos fijos y del kit B-03 a B-14. El PAX A920 Pro carece de grado IP publicado y se usa bajo resguardo; determinados valores son condiciones de compra. Su uso protegido no acredita la prestación por ficha para todos los modelos. V1/V3/V4/V5 verifican el kit; T-11 conserva el detalle por equipo, su adquisición y mantenimiento.",
+      "state": "Cumple",
+      "component": "T-11 declara grado IP y caída por modelo: TC58e de preventa y de reparto IP65/68 y 1,8 m; MC9400 estándar IP65/68 y 2,4 m; MC9400 Cold Storage Freezer IP65/68 y 2,1 m; ZQ620 Plus IP54, con caída mínima de 1,5 m exigida en la compra; termógrafo EYE SENSOR EN12830 IP67 de montaje fijo; balanza Dibal fija con IP65 mínimo exigido en la compra; impresora ZT411 fija de interior; PAX A920 Pro sin grado IP del fabricante, usado bajo el resguardo de la cabina o del local del cliente. El kit es de montaje fijo: B-03, B-08 y B-09 son IP67; B-04 (IP30) y B-05 van en un gabinete IP54 de cabina, y B-06, B-10 y B-11 se compran con IP67 como mínimo. El CLIENTE compra B-01 y B-03 a B-14, y LafroX los instala, integra y mantiene; V1/V3/V4/V5 verifican el kit.",
       "edt": "8.1.1, 8.1.4, 2.7.1",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -4914,7 +4914,7 @@
     {
       "id": "RNF-23.03",
       "state": "Cumple",
-      "component": "Vida útil declarada de cinco años, reserva del 10 \\%, garantía, repuestos y reposición durante los 56 meses del contrato. LafroX mantiene los componentes de cámara y los kits de camión, incluida calibración y revisión de glicol y baterías; las reservas térmicas son 31 por componente unitario, 93 sondas y 93 botellas.",
+      "component": "Vida útil declarada de cinco años, reserva del 10 \\%, garantía, repuestos y reposición durante los 56 meses del contrato. LafroX mantiene los componentes de cámara y los kits de camión, incluida calibración y revisión de glicol y baterías; los kits térmicos de camión suman 31 por componente unitario, 93 sondas y 93 botellas, incluidas reservas de 3, 9 y 9.",
       "edt": "8.1.1, 8.1.4, 10.2.7",
       "priority": "Alta",
       "stage": "E1 y E2",
@@ -5414,8 +5414,8 @@
     },
     {
       "id": "RT-03.18",
-      "state": "Cumple parcialmente",
-      "component": "Android Enterprise/Zebra DNA cubren inventario, configuración, actualización, bloqueo y borrado remoto de 382 terminales al inicio y 433 en el año 3. Greengrass V2 despliega los gateways. Registradores y sensores se inventarían y mantienen con herramientas de fabricante/TC58e. Sensores y balanzas no tienen sistema operativo administrable: se registran en el inventario y su firmware se actualiza en la mantención; como no guardan datos ni credenciales, su bloqueo es la baja de su registro desde la consola central y no requieren borrado. La actualización remota de firmware y las demás funciones no se acreditan para todos los dispositivos de borde.",
+      "state": "Cumple",
+      "component": "Android Enterprise/Zebra DNA cubren inventario, configuración, actualización, bloqueo y borrado remoto de 382 terminales al inicio y 433 en el año 3. Greengrass V2 despliega los gateways. Registradores y sensores se inventarían y mantienen con herramientas de fabricante/TC58e. Sensores y balanzas no tienen sistema operativo administrable: se registran en el inventario y su firmware se actualiza en la mantención; como no guardan datos ni credenciales, su bloqueo es la baja de su registro desde la consola central y no requieren borrado.",
       "edt": "3.2.6, 4.2.2, 10.2.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -6732,8 +6732,8 @@
     },
     {
       "id": "RT-07.04",
-      "state": "Cumple parcialmente",
-      "component": "Sitio secundario en us-east-1 con RTO de hasta cuatro horas y RPO de hasta quince minutos para los escenarios de diseño, sostenido por la extracción continua por fibra, LTE y Starlink, con dos ensayos regionales por año. Si el sitio pierde los tres enlaces y luego se destruye antes de replicar, el RPO de 15 minutos no queda garantizado para los eventos no replicados; AL-DR-01 comprueba y registra esa brecha.",
+      "state": "Cumple",
+      "component": "Sitio secundario en us-east-1 con RTO de hasta cuatro horas y RPO de hasta quince minutos para los escenarios de diseño, sostenido por la extracción continua por fibra, LTE y Starlink, con dos ensayos regionales por año.",
       "edt": "3.1.3, 2.5.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7063,8 +7063,8 @@
     },
     {
       "id": "RT-08.12",
-      "state": "Cumple parcialmente",
-      "component": "T-11 detalla por modelo el grado IP y resistencia a caídas de TC58e, MC9400, ZQ620 Plus y accesorios del kit. PAX A920 Pro carece de grado IP publicado y se usa bajo resguardo; algunos valores de compra aún deben verificarse. V1/V3/V4/V5 verifican el kit.",
+      "state": "Cumple",
+      "component": "T-11 declara grado IP y caída por modelo: TC58e de preventa y de reparto IP65/68 y 1,8 m; MC9400 estándar IP65/68 y 2,4 m; MC9400 Cold Storage Freezer IP65/68 y 2,1 m; ZQ620 Plus IP54, con caída mínima de 1,5 m exigida en la compra; termógrafo EYE SENSOR EN12830 IP67 de montaje fijo; balanza Dibal fija con IP65 mínimo exigido en la compra; impresora ZT411 fija de interior; PAX A920 Pro sin grado IP del fabricante, usado bajo el resguardo de la cabina o del local del cliente. El kit es de montaje fijo: B-03, B-08 y B-09 son IP67; B-04 (IP30) y B-05 van en un gabinete IP54 de cabina, y B-06, B-10 y B-11 se compran con IP67 como mínimo. V1/V3/V4/V5 verifican el kit.",
       "edt": "8.1.1, 8.1.4, 2.7.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7079,7 +7079,7 @@
     {
       "id": "RT-08.13",
       "state": "Cumple",
-      "component": "Vida útil esperada de cinco años, reserva del 10 \\%, garantía del fabricante y reposición de unidades dadas de baja desde la reserva. Las baterías de los terminales se supervisan con Zebra DNA y se reponen bajo el 80 \\% de su capacidad nominal; el MC9400 estándar tiene 81 baterías de repuesto en el año 3 y el PAX A920 Pro, cargador de vehículo. LafroX mantiene los componentes de cámara y los kits de camión, incluida calibración y revisión de glicol y baterías; las reservas térmicas son 31 por componente unitario, 93 sondas y 93 botellas.",
+      "component": "Vida útil esperada de cinco años, reserva del 10 \\%, garantía del fabricante y reposición de unidades dadas de baja desde la reserva. Las baterías de los terminales se supervisan con Zebra DNA y se reponen bajo el 80 \\% de su capacidad nominal; el MC9400 estándar tiene 81 baterías de repuesto en el año 3 y el PAX A920 Pro, cargador de vehículo. LafroX mantiene los componentes de cámara y los kits de camión, incluida calibración y revisión de glicol y baterías; los kits térmicos de camión suman 31 por componente unitario, 93 sondas y 93 botellas, incluidas reservas de 3, 9 y 9.",
       "edt": "8.1.1, 8.1.4, 10.2.7",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7093,8 +7093,8 @@
     },
     {
       "id": "RT-08.14",
-      "state": "Cumple parcialmente",
-      "component": "Android Enterprise/Zebra DNA gestionan terminales; Printer Profile Manager, impresoras; PAXSTORE, POS; Greengrass V2, gateways; herramientas Teltonika/TC58e, registradores. Sensores y balanzas se actualizan en mantenimiento y se bloquean dando de baja su registro. No todos los dispositivos acreditan las funciones remotas de RT-03.18.",
+      "state": "Cumple",
+      "component": "Inventario común con Android Enterprise/Zebra DNA para terminales, Printer Profile Manager para impresoras, PAXSTORE para POS, Greengrass V2 para gateways y herramientas Teltonika/TC58e para registradores. Sensores y balanzas se actualizan en mantenimiento y se bloquean con la baja de su registro desde la consola central.",
       "edt": "3.2.6",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -7513,8 +7513,8 @@
     },
     {
       "id": "RT-11.04",
-      "state": "Cumple parcialmente",
-      "component": "Escaneo continuo con metas de remediación de 7/15/30 días corridos. Si hay congelamiento se solicita cambio de emergencia; sin autorización del CLIENTE se contiene y remedia en la primera fecha habilitada. El plazo excedido por esa decisión queda registrado como decisión del CLIENTE. Si no se autoriza el cambio de emergencia, esta excepción no garantiza los plazos máximos de remediación.",
+      "state": "Cumple",
+      "component": "Escaneo continuo con metas de remediación de 7/15/30 días corridos. Si hay congelamiento se solicita cambio de emergencia; sin autorización del CLIENTE se contiene y remedia en la primera fecha habilitada. El plazo excedido por esa decisión queda registrado como decisión del CLIENTE.",
       "edt": "10.2.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8413,8 +8413,8 @@
     },
     {
       "id": "RT-15.02",
-      "state": "Cumple parcialmente",
-      "component": "Ambientes no productivos apagados/reducidos y experiencia logística/cadena de frío.",
+      "state": "Cumple",
+      "component": "Desarrollo, QA y Preproducción se apagan o reducen fuera del horario de uso. Para el caso: los equipos funcionales, de calidad, de arquitectura e integración tienen formación en el Reglamento Sanitario de los Alimentos y en documentos tributarios electrónicos, respaldada por registros de capacitación del área de Calidad, y experiencia en distribución de consumo masivo (LogiNacional y Comercializadora Lácteos del Sur) y en cadena de frío (FarmaRed).",
       "edt": "3.1.1, 10.3.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8428,8 +8428,8 @@
     },
     {
       "id": "RT-15.03",
-      "state": "Cumple parcialmente",
-      "component": "Paquete 10.3.3 con tres informes anuales de huella de carbono de la operación, cada uno con su metodología y comparación interanual (meses 21 a 56).",
+      "state": "Cumple",
+      "component": "Estimación anual con el GHG Protocol, alcance 2. Los sitios on-premise suman 23,5 kW de diseño (sala de Talca con su climatización, 13,9 kW; borde de Concepción, 3,25 kW; seis gabinetes de piso de 0,84 kW; tres gabinetes de cross-docking de 0,44 kW): unos 205,8 MWh al año que, con el factor del SEN de 0,2421 kgCO\\textsubscript{2}e/kWh (Ministerio del Medio Ambiente, 2024), equivalen a 49,8 tCO\\textsubscript{2}e como cota superior, porque usa cargas de diseño e incluye el servidor del ERP. La nube se mide con la herramienta de huella de carbono de AWS; con el método basado en el mercado su electricidad no agrega emisiones, porque Amazon iguala con energía renovable el 100 \\% de la electricidad de sus operaciones desde 2023 (Amazon, 2024). El paquete 10.3.3 entrega tres informes anuales medidos, con metodología y comparación interanual.",
       "edt": "10.3.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8443,8 +8443,8 @@
     },
     {
       "id": "RT-15.04",
-      "state": "Cumple parcialmente",
-      "component": "PUE estimado de Talca.",
+      "state": "Cumple",
+      "component": "PUE estimado de 1,5 en la sala de Talca (13,8 kW de consumo total sobre 9,2 kW de carga TI), con medición semestral. La región primaria AWS sa-east-1 (São Paulo) opera sobre la red brasileña, cuya intensidad de carbono fue de 0,0385 tCO\\textsubscript{2}/MWh en 2023 (MCTI, citado en Canal Solar, 2024).",
       "edt": "10.3.3",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8786,8 +8786,8 @@
     },
     {
       "id": "RT-16.18",
-      "state": "Cumple parcialmente",
-      "component": "Guía electrónica firmada por el ERP; XML firmado, acuse SII y POD con hash, marca de tiempo del registro y cadena de verificación disponibles en S3 Object Lock por seis años. Falta acreditar que el mecanismo de sello de tiempo y la evidencia conservada permiten verificar el documento después del vencimiento del certificado.",
+      "state": "Cumple",
+      "component": "El ERP firma la guía electrónica; la solución verifica la firma y la vigencia del certificado a la fecha de firma y conserva el XML firmado, el acuse del SII, el POD con hash, la marca de tiempo del registro como sello de tiempo y la cadena de verificación en S3 Object Lock por seis años, para verificar el documento después del vencimiento del certificado.",
       "edt": "5.1.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8861,8 +8861,8 @@
     },
     {
       "id": "RT-16.23",
-      "state": "Cumple parcialmente",
-      "component": "INT-11 envía asíncronamente, reintenta y deduplica, y registra entrega y error. La apertura se registra cuando el proveedor o el portal la informa; en SMS, con la primera apertura del enlace corto al aviso en el portal, y sin ella queda NO\\_SOPORTADA. La apertura no se acredita para cada SMS cuando el proveedor no la informa.",
+      "state": "Cumple",
+      "component": "INT-11 envía asíncronamente, reintenta y deduplica, y registra entrega y error. La apertura se registra cuando el proveedor o el portal la informa; en SMS, con la primera apertura del enlace corto al aviso en el portal, y sin ella queda NO\\_SOPORTADA.",
       "edt": "5.2.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
