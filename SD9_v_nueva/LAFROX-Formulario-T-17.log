@@ -1,5 +1,5 @@
-This is LuaHBTeX, Version 1.24.0 (MiKTeX 25.12) (format=lualatex 2026.10.6)  22 NOV 2026 21:19
- restricted system commands enabled.
+This is LuaHBTeX, Version 1.24.0 (MiKTeX 25.12) (format=lualatex 2026.10.6)  23 NOV 2026 20:06
+ system commands enabled.
 **LAFROX-Formulario-T-17.tex
 (./LAFROX-Formulario-T-17.tex
 LaTeX2e <2025-11-01>
@@ -2203,7 +2203,7 @@ rn, 4 glyph, 16 attribute, 79 glue_spec, 10 attribute_list, 2 write nodes
    avail lists: 1:4,2:4086,3:765,4:353,5:2265,6:236,7:14147,8:56,9:2151,10:33,11
 :1584
  57747 multiletter control sequences out of 65536+600000
- 119 fonts using 46729659 bytes
+ 119 fonts using 46729507 bytes
  101i,25n,128p,1503b,3262s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-RegularIt.otf><C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/op
@@ -2216,7 +2216,7 @@ ts/opentype/adobe/sourcesans/SourceSans3-Regular.otf><C:/Users/alexa/AppData/Loc
 al/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Medium.otf><C:/Us
 ers/alexa/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSa
 ns3-Semibold.otf>
-Output written on LAFROX-Formulario-T-17.pdf (17 pages, 129031 bytes).
+Output written on LAFROX-Formulario-T-17.pdf (17 pages, 129150 bytes).
 
 PDF statistics: 276 PDF objects out of 1000 (max. 8388607)
  33 named destinations out of 1000 (max. 1048576)
