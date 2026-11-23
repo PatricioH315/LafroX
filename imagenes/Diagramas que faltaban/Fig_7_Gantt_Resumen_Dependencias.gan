@@ -456,7 +456,7 @@
             <depend id="90" type="1" difference="46" hardness="Rubber" />
             <depend id="290" type="2" difference="-1" hardness="Rubber" />
         </task>
-        <task id="47" name="8.3.1 Piso técnico de la sala y recepción de obra civil de separación (RT-06.06)" color="#4472c4" meeting="false" start="2027-04-01" duration="14" complete="0" expand="true">
+        <task id="47" name="8.3.1 Piso técnico de la sala y recepción de obra civil de separación (BTT, cap. 6, RT-06.06, p. 15)" color="#4472c4" meeting="false" start="2027-04-01" duration="14" complete="0" expand="true">
             <notes>160 HH · responsable SRE · ejecución RED · 8.1.2 (D-10)</notes>
             <customproperty taskproperty-id="tpc2" value="14" />
             <depend id="68" type="2" difference="8" hardness="Rubber" />
