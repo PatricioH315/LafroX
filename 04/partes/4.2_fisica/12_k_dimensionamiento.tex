@@ -62,9 +62,9 @@ Portal & 9,63 & 0,00 & 0,00 & 9,63 \\
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25, y anexo~B, p.~38), para la volumetría y las ventanas de operación, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
 \paragraph*{Derivación por lugar de proceso}
-El Anexo 4-W.2 y el \href{LAFROX-Subdocumento4-Anexos.pdf#anx:X-calculos}{Anexo 4-X.4} conservan la derivación por sitio y portal: reparto SV-03, operaciones por flujo y concentración SV-04.
+El \href{LAFROX-Subdocumento4-Anexos.pdf#sec:anexo-4b-dimensiones-1-3}{Anexo 4-W.2} conserva la derivación por sitio y portal: reparto SV-03, operaciones por flujo y concentración SV-04.
 
-El modelo distingue DTE totales de guías y sesiones del portal de visitas de preventa. Los aproximadamente 2.852 DTE/día de septiembre se usan como cota conservadora de guías; las 2.600 sesiones diarias son un supuesto de diseño para food service y cadenas. Las bases, fórmulas y fuentes se conservan en el \href{LAFROX-Subdocumento4-Anexos.pdf#anx:X-calculos}{Anexo 4-X.4}. Despacho y septiembre mantienen ensayos distintos (Tabla~\ref{tab:t86}).
+El modelo distingue DTE totales de guías y sesiones del portal de visitas de preventa. Los aproximadamente 2.852 DTE/día de septiembre se usan como cota conservadora de guías; las 2.600 sesiones diarias son un supuesto de diseño para food service y cadenas. Las bases, fórmulas y fuentes se conservan en el \href{LAFROX-Subdocumento4-Anexos.pdf#sec:anexo-4b-dimensiones-1-3}{Anexo 4-W.2}. Despacho y septiembre mantienen ensayos distintos (Tabla~\ref{tab:t86}).
 
 \subsubsection{Personas usuarias, concurrencia y dispositivos: dimensiones 4–6}
 \label{sec:dimensionamiento-usuarios}
@@ -128,7 +128,7 @@ La dimensión 11, «Número de integraciones y volumen de mensajes por integraci
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para los volúmenes de integración, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
-El EDI actual es cero y se dimensiona desde enero de 2029 con SV-05. La estimación distingue pagos electrónicos de cobros en efectivo; los cálculos por mensaje y sus supuestos se conservan en el \href{LAFROX-Subdocumento4-Anexos.pdf#anx:X-calculos}{Anexo 4-X.4}. La Tabla~\ref{tab:t81} compara caminos y drenaje.
+El EDI actual es cero y se dimensiona desde enero de 2029 con SV-05. La estimación distingue pagos electrónicos de cobros en efectivo; los cálculos por mensaje y sus supuestos se conservan en el \href{LAFROX-Subdocumento4-Anexos.pdf#sec:anexo-4b-dimensiones-11-12}{Anexo 4-W.5}. La Tabla~\ref{tab:t81} compara caminos y drenaje.
 
 \Needspace{0.62\textheight}
 \begin{tablalafrox}{Ancho de banda por sitio y camino}{tab:t81}{Y G{0.16} G{0.22} G{0.22}}{\cab{Sitio} & \cab{Camino} & \cab{Subida de diseño} & \cab{Utilización}}
@@ -184,7 +184,7 @@ La capacidad propuesta conserva maestros, stock, lotes presentes y movimientos d
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para la capacidad por sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
-La capacidad ofertada conserva N+1 y tres réplicas en Talca y un segundo equipo completo en Concepción y cada cross-docking. El umbral de llenado de Ceph es 80~\%. Las capacidades útiles, márgenes y porcentajes actuales y a 3× se conservan en el Anexo 4-W.8 y el \href{LAFROX-Subdocumento4-Anexos.pdf#anx:X-calculos}{Anexo 4-X.4}; la Tabla~\ref{tab:t79} mantiene los mínimos por sitio.
+La capacidad ofertada conserva N+1 y tres réplicas en Talca y un segundo equipo completo en Concepción y cada cross-docking. El umbral de llenado de Ceph es 80~\%. Las capacidades útiles, márgenes y porcentajes actuales y a 3× se conservan en el \href{LAFROX-Subdocumento4-Anexos.pdf#sec:anexo-4b-onpremise}{Anexo 4-W.8}; la Tabla~\ref{tab:t79} mantiene los mínimos por sitio.
 
 \subsubsection{Capacidad en nube}
 \label{sec:dimensionamiento-nube}
@@ -205,7 +205,7 @@ Cota extrema más canal tradicional & 111,70 solicitudes/s (91,70 + cuota de 20)
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para la capacidad de procesamiento en nube, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
 
-La Tabla~\ref{tab:dimensionamiento-nube} conserva los escenarios y tareas requeridas. La cota completa de 111,70 solicitudes/s ocupa las ocho tareas y no admite ampliar la cuota tradicional sin aumentar capacidad. El ensayo verifica mezcla, latencia, base y escalado; el cálculo de sesiones y sensibilidades se conserva en el Anexo 4-W.9 y el \href{LAFROX-Subdocumento4-Anexos.pdf#anx:X-calculos}{Anexo 4-X.4}.
+La Tabla~\ref{tab:dimensionamiento-nube} conserva los escenarios y tareas requeridas. La cota completa de 111,70 solicitudes/s ocupa las ocho tareas y no admite ampliar la cuota tradicional sin aumentar capacidad. El ensayo verifica mezcla, latencia, base y escalado; el cálculo de sesiones y sensibilidades se conserva en el \href{LAFROX-Subdocumento4-Anexos.pdf#sec:anexo-4b-nube}{Anexo 4-W.9}.
 
 \subsubsection{Plan de capacidad}
 \label{sec:dimensionamiento-plan}

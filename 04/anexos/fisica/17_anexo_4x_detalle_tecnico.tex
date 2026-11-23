@@ -3,7 +3,7 @@
 \phantomsection\label{anx:X}
 \markboth{Anexo 4-X — Detalle técnico}{Anexo 4-X — Detalle técnico}
 \addcontentsline{toc}{chapter}{Anexo 4-X — Detalle de implantación y catálogos técnicos}
-Este anexo conserva el detalle de ambientes, emplazamiento, servicios y derivaciones trasladado desde 4.2. El cuerpo mantiene las decisiones, los resultados y las condiciones de aceptación. Los identificadores de componentes y de las Figuras 19--23 se conservan. El traslado no altera la solución ni acredita nuevas pruebas.
+Este anexo conserva el detalle de ambientes y emplazamiento trasladado desde 4.2 y remite al inventario del T-11 y a la memoria de cálculo de 4-W. El cuerpo mantiene las decisiones, los resultados y las condiciones de aceptación. Los identificadores de componentes y de las Figuras 19--23 se conservan. El traslado no altera la solución ni acredita nuevas pruebas.
 
 \begingroup
 \renewcommand{\thesection}{4-X.\arabic{section}}
@@ -198,42 +198,20 @@ Se conservan los 36 componentes: trece de nube, once locales y doce híbridos. L
 
 \section{Servicios contratados por función}
 \label{anx:X-servicios}
-La selección, residencia, contratación y topología permanecen en \href{LAFROX-Subdocumento4.pdf#fuente-02-b-servicios-nube}{4.2.3 del cuerpo}. La relación detallada es:
-\begin{itemize}
-\item \textbf{Entrada pública.} \textbf{Servicios contratados:} Route 53, CloudFront, AWS WAF, Shield Advanced, API Gateway pública. \textbf{Componentes:} N-01 a N-03, N-12, \textbf{Región:} Global y sa-east-1.
-\item \textbf{Acceso interno.} \textbf{Servicios contratados:} Verified Access, API Gateway privada y endpoint execute-api. \textbf{Componentes:} N-04, N-12, \textbf{Región:} sa-east-1 y us-east-1.
-\item \textbf{Cómputo de aplicación.} \textbf{Servicios contratados:} ECS Fargate, Application Load Balancer privado, Lambda autorizadora. \textbf{Componentes:} N-04, A-05, \textbf{Región:} sa-east-1 y us-east-1.
-\item \textbf{Datos operacionales.} \textbf{Servicios contratados:} Aurora PostgreSQL, Database Migration Service, DynamoDB, ElastiCache. \textbf{Componentes:} N-05, A-02, N-06, N-07, \textbf{Región:} sa-east-1 y us-east-1 para las réplicas declaradas. ElastiCache se reconstruye durante la recuperación.
-\item \textbf{Mensajería.} \textbf{Servicios contratados:} SQS FIFO para la reconciliación, para las solicitudes al ERP y sus respuestas, y para la coordinación de reservas por sitio, SQS para los trabajos de Laravel y SNS, con equivalentes vacíos creados por infraestructura como código en us-east-1. \textbf{Componentes:} N-09, A-03, \textbf{Región:} sa-east-1 y us-east-1.
-\item \textbf{Notificaciones.} \textbf{Servicios contratados:} Amazon SES, Amazon SNS para SMS y AWS End User Messaging Social. \textbf{Componentes:} N-04 (INT-11). \textbf{Región:} sa-east-1.
-\item \textbf{Integración B2B.} \textbf{Servicios contratados:} CloudFront con AWS WAF y Shield Advanced, Application Load Balancer interno y OpenAS2 en Fargate, \textbf{Componentes:} N-04 (M11), \textbf{Región:} sa-east-1.
-\item \textbf{Internet de las cosas.} \textbf{Servicios:} IoT Core, Greengrass V2, Iridium CloudConnect y colas SQS de subida, bajada, confirmación y error. \textbf{Componentes:} N-08, B-02, B-03 y gateway del camión. \textbf{Región:} sa-east-1 y borde, segundo destino en us-east-1. CloudConnect se contrata con Globalsat Chile en el paquete 8.2.7 del T-14. Si ese servicio no está disponible, la ingesta usa SBD directo hacia un receptor en ECS, con el mismo contrato de ingesta.
-\item \textbf{Analítica.} \textbf{Servicios contratados:} S3, Glue, Redshift Serverless, QuickSight embebido, \textbf{Componentes:} N-10, \textbf{Región:} sa-east-1.
-\item \textbf{Respaldo y recuperación.} \textbf{Servicios contratados:} AWS Backup, S3 Object Lock, replicación de S3 entre regiones. \textbf{Componentes:} N-11, D-05, \textbf{Región:} sa-east-1 y us-east-1.
-\item \textbf{Red y conectividad.} \textbf{Servicios contratados:} VPC, Transit Gateway, Site-to-Site VPN, NAT Gateway, VPC Endpoints, \textbf{Componentes:} D-01, \textbf{Región:} sa-east-1 y us-east-1.
-\item \textbf{Identidad, claves y secretos.} \textbf{Servicios contratados:} KMS, Secrets Manager, Parameter Store, IAM Identity Center, AWS Certificate Manager, AWS Private CA para los certificados privados de mTLS y de la red inalámbrica. \textbf{Componentes:} A-05, N-12, \textbf{Región:} sa-east-1 y us-east-1.
-\item \textbf{Detección y cumplimiento.} \textbf{Servicios contratados:} GuardDuty Runtime Monitoring para tareas ECS Fargate, Security Lake, Security Hub, Inspector, Macie, CloudTrail y Config. \textbf{Componentes:} N-12, F-03, \textbf{Región:} sa-east-1 y us-east-1.
-\item \textbf{Operación y gobierno.} \textbf{Servicios contratados:} CloudWatch, Systems Manager, AWS Fault Injection Service, Control Tower, Organizations, Cost Explorer, Budgets. \textbf{Componentes:} F-01, F-02, N-12, \textbf{Región:} sa-east-1.
-\item \textbf{Construcción y registro de imágenes.} \textbf{Servicios contratados:} CodeBuild y Elastic Container Registry con replicación de imágenes entre regiones, \textbf{Componentes:} N-04, A-01, \textbf{Región:} sa-east-1 y us-east-1.
-\item \textbf{Servicios de terceros en nube.} \textbf{Servicios contratados:} Microsoft Intune con Android Enterprise y Zebra DNA, consola del EDR, \textbf{Componentes:} N-13, F-03, \textbf{Región:} Servicio gestionado.
-\end{itemize}
+La relación completa de productos, ubicaciones, cantidades y justificaciones se mantiene en la \href{LAFROX-Formulario-T-11.pdf#tab:t11}{tabla del Formulario T-11}, en las familias «Plataforma de nube» y «Software de base y licenciamiento». Se consulta por el mismo identificador de componente: N-01--N-13 para nube; A-01--A-05 para WMS, datos, mensajería, ERP e identidad; D-01 para conectividad; F-01--F-03 para observabilidad, parches y detección. Ese inventario no se reproduce aquí.
+
+La selección y la topología se analizan en \href{LAFROX-Subdocumento4.pdf#fuente-02-b-servicios-nube}{4.2.3 del cuerpo}; la restitución efectiva de cada canal y sus dependencias se verifica en \href{LAFROX-Subdocumento4.pdf#sub:conmutacion-regional}{4.3.2.5}. La relación por función no implica una réplica caliente de todo el catálogo.
+
+Para la ingesta satelital, CloudConnect se contrata con Globalsat Chile en el paquete 8.2.7 del T-14. Si no está disponible, se usa SBD directo hacia un receptor ECS con el mismo contrato de ingesta. Los recursos y los destinos de ese recorrido se conservan en N-08 y B-09 del T-11.
+
 \section{Derivaciones complementarias de capacidad}
 \label{anx:X-calculos}
-Los resultados y criterios de aceptación permanecen en \href{LAFROX-Subdocumento4.pdf#fuente-12-k-dimensionamiento}{4.2.6 del cuerpo}. La memoria completa se entrega en el Anexo 4-W. Se conservan aquí las explicaciones trasladadas del cuerpo para no perder sus supuestos y distinciones.
-
-\subsection*{Derivación por lugar}
-El Anexo 4-W.2 deriva el perfil por lugar. SV-03 reparte preparación y despacho entre Talca y Concepción en proporción 2/3 y 1/3. Las plataformas registran tres operaciones de llegada y una de despacho sobre su volumen agregado. La nube reúne preventa, reparto, recepción, trazabilidad, guías, sincronización y EDI. El portal aplica 2.600 ÷ 9 × 2 por SV-04 × 60 ÷ 3.600.
-
-\subsection*{Cotas de guías y sesiones}
-El despacho se reparte entre ambos centros conforme a SV-03, en la misma proporción que la preparación. Los aproximadamente 2.852 documentos/día de septiembre son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías. Considerarlos todos como guías que deben emitirse antes de la salida es una cota conservadora. Las 2.600 sesiones diarias del portal son un parámetro de diseño: una por cada cliente de food service y de cadenas, 2.100 + 500 (Bases Técnicas del caso, cap. 2, p. 4), y no son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, anexo B, p. 38). Los objetivos de prueba de septiembre y de despacho se distinguen en la Tabla~\href{LAFROX-Subdocumento4.pdf#tab:t86}{23}.
-
-\subsection*{EDI y pagos}
-El EDI actual es cero. Desde enero de 2029 opera todos los días, y se dimensiona con la misma hipótesis en régimen y en peak: 11\,\% de los pedidos, que corresponde a la cadena principal y su 11\,\% de la venta (SV-05), con cuatro mensajes por pedido. Son 1.400 × 11\,\% × 4 = 616 mensajes en régimen y 2.600 × 11\,\% × 4 = 1.144 en peak. La pasarela de pago se acota con un pago electrónico por entrega como máximo y dos mensajes por pago, solicitud y respuesta: 2.800 en régimen y 5.200 en peak. Los 11.800 cobros mensuales del caso son en efectivo y no miden pagos con tarjeta. La Tabla~\href{LAFROX-Subdocumento4.pdf#tab:t81}{18} compara el peor caso del camino principal y el drenaje de los caminos de respaldo.
-
-\subsection*{Capacidad útil y utilización local}
-Ceph entrega 1,92 TB útiles con seis NVMe de 960 GB, tres réplicas y sin RAID. Con un nodo caído, Talca conserva 64 vCPU y 128 GB RAM, y Ceph sigue sirviendo los datos con dos réplicas hasta que el nodo vuelve. El umbral de llenado al 80\,\% es 1,54 TB, superior a los 221 GB requeridos a 3×. Su utilización actual es 40,62\,\% de CPU, 46,09\,\% de RAM y 10,94\,\% de disco. A 3× es 40,62\,\%, 47,66\,\% y 11,51\,\%, respectivamente. Cada servidor de Concepción dispone de 16 hilos, 32 GB RAM y 3,84 TB útiles en RAID 10 y aloja el conjunto completo, activo o en espera. Utiliza 75,00\,\% de CPU, 53,12\,\% de RAM y 3,65\,\% de disco actualmente, y 75,00\,\%, 56,25\,\% y 3,65\,\% a 3×. En Talca la redundancia es N+1 dentro del clúster, y sus nodos ofertados de 32 hilos y 64 GB ya cubren 3×. En Concepción y en cada cross-docking la redundancia es un segundo equipo idéntico en espera, de modo que la utilización por equipo no cambia.
-
-\subsection*{Escenarios de API y portal}
-El portal en régimen usa 9,63 solicitudes/s y 96,30 sesiones concurrentes. Su cota extrema usa 43,33 solicitudes/s y 433,33 sesiones concurrentes. Con 120 solicitudes por sesión, manteniendo las sesiones repartidas en la hora, el portal alcanza 19,26 solicitudes/s en régimen y 86,67 en la cota extrema. Al sumar la nube resultan 21,97 y 91,70 solicitudes/s, que requieren 2 y 7 tareas. Con la cuota agregada de 20 solicitudes/s del canal tradicional, la cota completa alcanza 111,70 solicitudes/s y requiere las ocho tareas. No conserva capacidad para aumentar esa cuota. La prueba de carga verifica esta mezcla, la base dimensionada en el Anexo 4-W.9 y el tiempo de escalado, además del escenario de siete tareas.
+La memoria de cálculo se mantiene una sola vez en el Anexo 4-W. Los resultados y las condiciones de aceptación permanecen en \href{LAFROX-Subdocumento4.pdf#fuente-12-k-dimensionamiento}{4.2.6 del cuerpo}. Este índice conserva el localizador 4-X.4 y conduce al desarrollo correspondiente:
+\begin{itemize}
+  \item \hyperref[sec:anexo-4b-dimensiones-1-3]{4-W.2}: perfil por lugar, reparto SV-03, concentración SV-04, distinción entre DTE y guías y entre sesiones del portal y visitas de preventa.
+  \item \hyperref[sec:anexo-4b-dimensiones-11-12]{4-W.5}: mensajes EDI y de pagos, con las hipótesis de SV-05 y la distinción respecto de los cobros en efectivo.
+  \item \hyperref[sec:anexo-4b-onpremise]{4-W.8}: capacidad útil, redundancia y utilización local actual y a 3×.
+  \item \hyperref[sec:anexo-4b-nube]{4-W.9}: solicitudes equivalentes, escenarios del portal, tareas de API y cuota del canal tradicional.
+\end{itemize}
 
 \endgroup

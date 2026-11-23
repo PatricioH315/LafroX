@@ -1,0 +1,176 @@
+{
+  "t12_commit": "f7ff197d",
+  "t12_sha256": "e52fa853396f852dc6c791278ee25878061c1243fa57b5de56cf4c14afc8bfdb",
+  "t12_pages": 373,
+  "criterion": "Fila identificada en la columna ID del PDF; se excluyen menciones en otras columnas. Los folios coinciden con el número impreso.",
+  "references": [
+    {
+      "file": "04/partes/4.1_logica/05_modulos_funcionales_y_limites_de_contexto.tex",
+      "line": 22,
+      "code": "RT-02.06",
+      "old_page": 129,
+      "new_page": 186
+    },
+    {
+      "file": "04/partes/4.1_logica/05_modulos_funcionales_y_limites_de_contexto.tex",
+      "line": 23,
+      "code": "RT-03.10",
+      "old_page": 136,
+      "new_page": 196
+    },
+    {
+      "file": "04/partes/4.1_logica/05_modulos_funcionales_y_limites_de_contexto.tex",
+      "line": 24,
+      "code": "RT-12.05",
+      "old_page": 202,
+      "new_page": 286
+    },
+    {
+      "file": "04/partes/4.1_logica/05_modulos_funcionales_y_limites_de_contexto.tex",
+      "line": 25,
+      "code": "RT-12.07",
+      "old_page": 202,
+      "new_page": 287
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 45,
+      "code": "RT-02.01",
+      "old_page": 128,
+      "new_page": 184
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 46,
+      "code": "RT-02.04",
+      "old_page": 129,
+      "new_page": 185
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 47,
+      "code": "RT-02.06",
+      "old_page": 129,
+      "new_page": 186
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 48,
+      "code": "RT-02.11",
+      "old_page": 131,
+      "new_page": 188
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 49,
+      "code": "RT-02.13",
+      "old_page": 132,
+      "new_page": 190
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 50,
+      "code": "RT-03.10",
+      "old_page": 136,
+      "new_page": 196
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 51,
+      "code": "RT-03.12",
+      "old_page": 137,
+      "new_page": 197
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 52,
+      "code": "RT-03.13",
+      "old_page": 138,
+      "new_page": 198
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 53,
+      "code": "RT-03.13",
+      "old_page": 138,
+      "new_page": 198
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 54,
+      "code": "RT-11.01",
+      "old_page": 191,
+      "new_page": 270
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 55,
+      "code": "RT-11.02",
+      "old_page": 191,
+      "new_page": 271
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 56,
+      "code": "RT-12.01",
+      "old_page": 201,
+      "new_page": 284
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 57,
+      "code": "RT-12.05",
+      "old_page": 202,
+      "new_page": 286
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 58,
+      "code": "RT-12.07",
+      "old_page": 202,
+      "new_page": 287
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 59,
+      "code": "RT-13.01",
+      "old_page": 205,
+      "new_page": 291
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 60,
+      "code": "RT-16.08",
+      "old_page": 217,
+      "new_page": 310
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 61,
+      "code": "RF-03.16",
+      "old_page": 22,
+      "new_page": 31
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 62,
+      "code": "RF-05.02",
+      "old_page": 26,
+      "new_page": 36
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 63,
+      "code": "RF-07.03",
+      "old_page": 35,
+      "new_page": 50
+    },
+    {
+      "file": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "line": 64,
+      "code": "RF-09.06",
+      "old_page": 47,
+      "new_page": 64
+    }
+  ]
+}

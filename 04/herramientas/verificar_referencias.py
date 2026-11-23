@@ -55,9 +55,37 @@ def bibliography_errors(root: Path) -> tuple[int, list[str]]:
     return checked, errors
 
 
+def t12_row_pages(t12: PdfReader) -> dict[str, list[int]]:
+    """Read IDs in the table's first column, including IDs split across lines.
+
+    Restricting extraction to the column headed ID avoids accepting a code
+    that appears only in another requirement's description or test criterion.
+    Text coordinates are compared within the table's text space so this also
+    works when the wide table is scaled or rotated on the PDF page.
+    """
+    rows: dict[str, list[int]] = {}
+    for number, page in enumerate(t12.pages, 1):
+        runs = []
+
+        def collect(text, cm, tm, font, size):
+            runs.append((float(tm[4]), text))
+
+        page.extract_text(visitor_text=collect)
+        headers = [x for x, text in runs if re.match(r"ID(?:\s|$)", text.strip())]
+        if not headers:
+            continue
+        left = headers[0]
+        column = "".join(text for x, text in runs if abs(x - left) < 2)
+        codes = set(re.findall(r"\b(?:RT|RF)-\s*\d{2}\.\d{2}(?![\d.])", column))
+        for code in codes:
+            code = re.sub(r"\s+", "", code)
+            rows.setdefault(code, []).append(number)
+    return rows
+
+
 def t12_errors(root: Path, t12: PdfReader) -> tuple[int, list[str]]:
     """Require the cited page to contain the row, not merely mention its code."""
-    texts = [page.extract_text() or "" for page in t12.pages]
+    rows = t12_row_pages(t12)
     count = 0
     errors = []
     pattern = re.compile(r"((?:RT|RF)-\d{2}\.\d{2}).*?T-12 [AB], p\.~(\d+)")
@@ -70,8 +98,7 @@ def t12_errors(root: Path, t12: PdfReader) -> tuple[int, list[str]]:
                 continue
             count += 1
             code, cited = match[1], int(match[2])
-            row = re.compile(r"(?m)^" + re.escape(code) + r"(?![\d.])")
-            pages = [index + 1 for index, text in enumerate(texts) if row.search(text)]
+            pages = rows.get(code, [])
             if cited not in pages:
                 errors.append(f"{path.relative_to(root)}:{number}: {code}: p{cited}; row at {pages}")
     if count == 0:
