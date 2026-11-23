@@ -29,7 +29,7 @@ Regla de trabajo: **solo se edita el SD13**. Cuando otro subdocumento cambie, se
 |---|---|---|---|---|
 | Códigos, nombres y meses de los 23 paquetes de la cuenta 7 (7.1 a 7.5) | SD7 `tab_T15_asignacion_partidas.tex` (líneas 135-157) | Cuerpo 13.N.4; T-19 campos 8-9; Anexo 13.B | Sí | Texto narrativo que mencione paquetes |
 | Fechas de inicio y fin de paquetes; fin temprano y tardío CPM | SD7 `tab_T15_paquetes.tex`, `tab_T15_cpm_detalle.tex` | Cuerpo 13.1.4, 13.2.4, 13.3.4, 13.4.5; Anexo 13.B | Sí (toda fecha debe existir en el T-15) | Que la frase use la fecha correcta |
-| Fechas de H4, H5, H10 y H12 (entrega, acta, límite) | SD7 `tab_T15_7.tex` | Cuerpo 13.1, 13.3, 13.5; T-19 campos 9-10; Anexo 13.B | Sí (H4, H5, H10) | Que no se confunda entrega con acta; H12 para 7.5.4 |
+| Fechas de H4, H5, H10 y H12 (entrega, acta, corte y límite) | SD7 `tab_T15_7.tex`, `tab_T15_subsanacion.tex` (cotejo con `32bac7fc`) | Cuerpo 13.1, 13.3, 13.5; T-19 campos 9-10; Anexo 13.B | Sí: entregas H4/H5/H10, firma H5 y fechas nominales y de subsanación H12 | Confirmar la secuencia de 6.8.6 y la ventana; no tratar la salida del escenario con subsanación como reprogramación contractual. |
 | Paquetes que controlan los hitos (6.1.1, 6.7.1 y 6.7.2) | SD7 `tab_T15_7.tex`, `tab_T15_paquetes.tex:90,103,104` | Anexo 13.B | Sí | — |
 | Cuenta 7 «Innovaciones verificadas» y paquetes de pruebas (cuentas 6.1 a 6.6) | SD7 `formulario-t14/tablas/tab_T14_1.tex`, `dic_7_*.tex` | Cuerpo 13.2.5, 13.4.4; T-19 ficha 2 | Sí (no deben quedar «3.8» ni «fase 5») | Que 7.5.4 siga «incluida en el acta del H12» |
 | Mes 1 = febrero de 2027; Operación del mes 21 al 56; etapas | Bases Administrativas Art. 17 y SD7 Anexo 7.A | Todo el SD13 | Parcial (mes de los hitos y traspaso en el mes 21) | Que INN-05 despliegue por rutas siga en los meses 22 a 26 |
@@ -56,7 +56,7 @@ Regla de trabajo: **solo se edita el SD13**. Cuando otro subdocumento cambie, se
 
 Cerrados (22-11-2026):
 
-- **P-01 Revisión técnica humana:** la Tabla 13.29 (declaración de IA) indica, por sección, anexo y formulario, quién revisó y qué verificó.
+- **P-01 Declaración de revisión humana:** la Tabla 13.29 identifica quién revisó la redacción y la claridad por pieza. La revisión técnica efectiva de modelos, umbrales y cálculos no queda acreditada por esa tabla y debe registrarse por sus responsables antes de darla por cerrada.
 - **P-02 Títulos de las referencias 2026a y 2026c:** la portada de los PDF es genérica («Bases Administrativas / Técnicas para la preparación de la propuesta»); el SD13 usa el mismo título que el SD3 y el SD8, así que se mantiene por coherencia del grupo.
 - **P-03 Multas (cuerpo 13.4.2):** citadas como Bases Administrativas, Formulario E-25, p. 74.
 - **P-05 Páginas 24 y 38 del Caso:** verificadas en «Caso 02 - Logística.pdf» (página impresa = índice del PDF − 1). P. 24, sección 14.1: 2,4 millones de unidades despachadas y ≈ 62.000 visitas de preventa al mes; p. 38, B.1: 62 personas, unas 2.600 visitas diarias.
@@ -68,10 +68,14 @@ Abiertas (revisadas el 22-11-2026 contra SD3 `f7ff197d`, SD7 `8e71a160`, SD8 `90
 - **E2 2.7** (F1-01): usa los códigos antiguos de paquetes (líneas 5 y 46) y no menciona el ingreso contingente de INN-04. Sin commits nuevos en origin.
 - **Modelo financiero:** perfil de INN-04 (todo a Jefe de Proyecto; el T-15 reparte con el Analista PMO), reparto de horas de INN-05 (893,4 + 226,6 contra 960 + 160 del T-15) y meses de operación de INN-02 (22-55 contra 21-56 del T-15).
 - **SD8 R-027** (nueva): el Anexo F (`anexo-f-respuestas.tex:48`) y los Anexos del SD8 piden «reglas de 7.4.1 aprobadas al cierre del mes 20»; el T-14 (`dic_7_4.tex`) y el SD13 dicen que Finanzas aprueba la fórmula inicial al cierre de 7.4.1 (1 al 9 de junio de 2028, mes 17) y que la calibración es de 7.4.2 (meses 21 a 23). No es contradicción (el mes 20 sirve de plazo máximo), pero conviene alinear la redacción.
-- **SD3 y T-12** (A2-04, A3-02): `LAFROX-Formulario-T-12.tex:421` mantiene RT-05.30 «Cumple» por el modelo cinético de INN-03; `:628` (RT-18.08) sigue apoyado en INN-03; `:391` sigue atribuyendo RT-04.14 a INN-02.
 - **SD9** (F2-02): `CANON_LAFROX.md:8` dice que los riesgos de innovación parten en R-034 (el SD13 usa R-027 y siguientes del SD8).
-- **SD7** (F2-09, F3-03, F3-06): 7.5.4 sigue con meses 18 a 21 y «incluida en el acta del H12»; la ventana de 7.3.5 es 21-56 en la tabla de asignación y 24-54 en `tab_T15_10.tex`; 7.3.2 termina en el mes 8 y figura «5 a 9». Menor: el T-15 llama a 7.2.4 «parte 1» y el T-14 y el SD13 «primera parte». Nueva (22-11): el texto del T-15 (`formulario-t15/contenido.tex:69`) describe el CPM con «inicio y fin tempranos», mientras la tabla CPM ahora presenta fechas niveladas.
 - **SD4** (F3-01): el Anexo 4-N no incluye la capa 5 (cola de sincronización) para INN-05.
+
+Resueltas en el SD13 sin modificar las fuentes (23-11-2026):
+
+- **SD3/T-12 y SD9/T-13** (cotejo del 23-11): RT-05.30 y RT-18.08 remiten al modelo determinista; el SD13 ya no contradice esa respuesta y reconoce una sola capacidad predictiva. RT-04.14 se ejecuta en los paquetes de INN-02, pero los entornos efímeros no son su mérito diferencial. RT-26.08 conserva I-02A en ambos formularios; el SD13 separa de esa validación el beneficio de terreno I-02E.
+
+- **SD7** (F2-09, F3-03, F3-06; cotejo del 23-11): el SD13 conserva la ventana de 7.5.4 y remite el acta H12 a 9.4.2. Para 7.3.5, 21–56 es la ventana de asignación y 24–54 abarca las nueve revisiones programadas, no dos calendarios alternativos. Para 7.3.2, 5–9 es la asignación y 07-06 a 20-09-2027 la ejecución nivelada. El SD13 distingue estas capas sin alterar el T-15.
 
 Resueltas en origin (19-11-2026 y 22-11-2026):
 

@@ -1,6 +1,6 @@
-"""Verificación de coherencia del SD13 contra el T-15 (SD7) y el T-16 (SD8) vigentes.
+"""Verificación de coherencia del SD13 contra los formularios y subdocumentos vigentes.
 
-Lee los archivos de trabajo de los worktrees hermanos (sd7-corrigiendo, sd8-revision),
+Lee los archivos de trabajo de los worktrees hermanos en modo solo lectura,
 no commits fijados. Uso: python revision/verificar_coherencia_sd13.py
 Sale con código 1 si encuentra algún problema.
 """
@@ -13,8 +13,11 @@ import sys
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 WT = HERE.parents[2]
+SD3 = Path(os.environ.get("SD3_DIR", WT / "sd3-corrigiendo"))
+SD5 = Path(os.environ.get("SD5_DIR", WT / "sd5-corrigiendo"))
 SD7 = Path(os.environ.get("SD7_DIR", WT / "sd7-corrigiendo"))
 SD8 = Path(os.environ.get("SD8_DIR", WT / "sd8-revision"))
+SD9 = Path(os.environ.get("SD9_DIR", WT / "sd9-corrigiendo"))
 T15 = SD7 / "formulario-t15" / "tablas"
 FILES = {
     "cuerpo": ROOT / "13_innovaciones" / "contenido.tex",
@@ -94,7 +97,8 @@ for name in FILES:
 
 # 4. Fechas: toda fecha dd-mm-aaaa debe salir del T-15
 known = set()
-for f in ("tab_T15_paquetes.tex", "tab_T15_cpm_detalle.tex", "tab_T15_7.tex", "tab_T15_5.tex"):
+for f in ("tab_T15_paquetes.tex", "tab_T15_cpm_detalle.tex", "tab_T15_7.tex",
+          "tab_T15_5.tex", "tab_T15_subsanacion.tex"):
     known |= set(re.findall(r"\d{2}-\d{2}-\d{4}", (T15 / f).read_text(encoding="utf-8")))
 for name in FILES:
     for n, line in enumerate(lines(name), 1):
@@ -108,11 +112,29 @@ def month_of(d):  # mes 1 = febrero de 2027
     return (yy - 2027) * 12 + mm - 1
 
 
-for hito, d, esperado in (("H4", "20-10-2027", 9), ("H5", "24-11-2027", 10), ("H10", "27-06-2028", 17)):
-    if month_of(d) != esperado:
-        fail(f"{hito}: la entrega {d} cae en el mes {month_of(d)}, se esperaba {esperado}")
-    if d not in known:
-        fail(f"{hito}: fecha {d} ausente del T-15")
+hitos = t15_rows("tab_T15_7.tex")
+anexos = text("anexos")
+for hito, mes_entrega, paquete in (("H4", 9, "6.1.1"), ("H5", 11, "6.7.1"), ("H10", 17, "6.7.2")):
+    fila = hitos[hito]
+    entrega = fila[1]
+    if month_of(entrega) != mes_entrega or fila[-1] != paquete:
+        fail(f"{hito}: revisar mes de entrega o paquete controlante en la tabla de hitos del T-15")
+    fechas_anexo = re.findall(rf"\b{hito} el (\d{{2}}-\d{{2}}-\d{{4}})\b", anexos)
+    if fechas_anexo != [entrega]:
+        fail(f"anexos: entrega {hito} {fechas_anexo}; el T-15 indica {entrega}")
+
+acta_h5 = hitos["H5"][2]
+if f"la firma del acta es posterior, el {acta_h5}" not in anexos:
+    fail(f"anexos: la firma de H5 debe figurar por separado el {acta_h5}")
+
+# No confundir entrega, firma, corte ni ventana en caso de subsanación.
+_, acta_h12, corte_h12, limite_h12 = hitos["H12"][1:5]
+corte_subsanacion = t15_rows("tab_T15_subsanacion.tex")["H12"][2]
+for name in ("cuerpo", "t19"):
+    if acta_h12 not in text(name) or corte_h12 not in text(name):
+        fail(f"{name}: faltan el acta ({acta_h12}) o el corte ({corte_h12}) nominales de H12")
+if corte_subsanacion not in anexos or limite_h12 not in anexos:
+    fail("anexos: la ventana con subsanación o el límite de H12 no coinciden con el T-15")
 
 # 5. Riesgo R-027 contra el T-16
 t16 = (SD8 / "LAFROX-Formulario-T-16.tex").read_text(encoding="utf-8")
@@ -196,6 +218,44 @@ for frag in ("6.000 unidades", "156 minutos", "312 minutos-persona", "150,6 rece
              "21.000 kilómetros", "101.296 minutos", "50.648 decisiones", "20 de 24"):
     if frag not in text("anexos"):
         fail(f"anexos: falta la cifra «{frag}» de los escenarios físicos")
+
+# 11. No confundir evidencia de QA con ahorro en terreno ni contar dos veces RT-05.30.
+t12 = (SD3 / "LAFROX-Formulario-T-12.tex").read_text(encoding="utf-8")
+t13 = (SD9 / "SD9_v_nueva/T13/matriz_requisitos.tex").read_text(encoding="utf-8")
+t12_early = next((l for l in t12.splitlines() if l.strip().startswith("RT-26.08 &")), "")
+t13_early = next((l for l in t13.splitlines() if r"26.08}\newline" in l), "")
+if any(not all(x in row for x in ("I-02A", "7.2.4")) for row in (t12_early, t13_early)):
+    fail("RT-26.08: revisar el indicador temprano y su paquete contra T-12 y T-13")
+for name in FILES:
+    doc = text(name)
+    if not any("I-02A" in l and "RT-26.08" in l for l in doc.splitlines()):
+        fail(f"{name}: falta distinguir I-02A como evidencia temprana del RT-26.08")
+    if "20 pares operativos acumulados" not in doc or "corte inicial" not in doc.lower():
+        fail(f"{name}: no distingue el corte del mes 15 de la muestra acumulada de I-02E")
+    if re.search(r"no se presenta como respuesta al RT-05\.30", doc):
+        fail(f"{name}: contradice la respuesta ofertada en RT-05.30")
+
+t12_model = next((l for l in t12.splitlines() if l.strip().startswith("RT-05.30 &")), "")
+sd5_data = (SD5 / "05_modelo_datos/partes/5_1_modelo.tex").read_text(encoding="utf-8")
+if not all(x in t12_model for x in ("determinista", "I-03B")) or "RT-05.30 se oferta" not in sd5_data:
+    fail("RT-05.30: revisar el alcance del modelo determinista contra T-12 y SD5")
+if "Se declara una sola vez como capacidad analítica" not in text("cuerpo"):
+    fail("cuerpo: no separa el modelo RT-05.30 de su incorporación operacional")
+
+# 12. El hito nominal y la ventana de valorización no son la misma fecha.
+row_732 = t15_rows("tab_T15_paquetes.tex")["7.3.2"]
+inn_03_p2 = next((l for l in lines("cuerpo") if l.startswith("INN-03.P2 &")), "")
+if not all(d in inn_03_p2 for d in row_732[4:6]):
+    fail("cuerpo: 7.3.2 no distingue ventana de asignación y fechas de la carta nivelada")
+dic_75 = (SD7 / "formulario-t14/tablas/dic_7_5.tex").read_text(encoding="utf-8")
+for name in FILES:
+    rows = [l for l in lines(name) if "I-05A" in l and "dos visitas" in l]
+    if not rows or "dentro de dos visitas" not in dic_75:
+        fail(f"{name}: I-05A debe conservar las dos visitas del criterio 7.5.5")
+fichas = re.split(r"\\section\*\{Ficha \d — Innovación \d\}", text("t19"))[1:]
+if len(fichas) != 5 or any(re.findall(r"^(\d+)\. .+? &", f, flags=re.M) !=
+                           [str(i) for i in range(1, 18)] for f in fichas):
+    fail("t19: deben existir cinco fichas con los campos 1 a 17 en orden")
 
 print("Coherencia SD13:", "OK" if not problems else f"{len(problems)} problema(s)")
 for p in problems:

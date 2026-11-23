@@ -18,7 +18,7 @@ El RT-26.01 pide declarar qué interfaces consume o expone cada innovación (Dis
 \LFXcontrato{inn01.\allowbreak{}aviso-\allowbreak{}vencimiento-\allowbreak{}local.\allowbreak{}v1} & M10 \ensuremath{\rightarrow} M3 (aplicación de preventa C-01) & Precarga nocturna en la cola de sincronización de M3; capas 5 y 6 & Local, lote, GTIN, saldo estimado, ritmo de reposición, vida útil remanente y su origen (fecha impresa o innovación 3), confianza, acción del catálogo & Sin datos personales del almacenero; retención igual a la del historial de preventa \\
 \LFXcontrato{inn01.\allowbreak{}respuesta-\allowbreak{}visita.\allowbreak{}v1} & M3 (aplicación de preventa C-01) \ensuremath{\rightarrow} M10 & Cola de sincronización de M3, al recuperar señal; capa 5 & Aviso, saldo confirmado, acción aplicada, resultado, preventista seudonimizado & El saldo confirmado no entra al inventario oficial \\
 \LFXcontrato{inn02.\allowbreak{}paquete-\allowbreak{}reproduccion.\allowbreak{}v1} & C-01 App de preventa, C-02 App de reparto y C-03 Terminales de bodega \ensuremath{\rightarrow} QA y Preproducción & Envío con cupo de tamaño y frecuencia; trazas OpenTelemetry hacia la capa 8; acceso controlado por la capa 7 & Correlación seudonimizada, versión de la aplicación, transiciones de estado, cola local, reintentos, orden causal, estado de conectividad & Excluye nombres, credenciales, firmas, fotos y contenido comercial; se borra al cerrar el incidente, salvo el escenario de regresión sintetizado \\
-\LFXcontrato{inn03.\allowbreak{}historia-\allowbreak{}termica-\allowbreak{}lote.\allowbreak{}v1} & B-02, B-04, C-02 y N-10 \ensuremath{\rightarrow} M9, M2, M5 y M10 & Eventos EPCIS 2.0 con datos de sensor (capa 5); series en N-06 y N-10 (capa 6) & Lote, GTIN, familia, tramos (lugar, desde, hasta, sensor, resumen, sin dato), carga acumulada, vida remanente con intervalo, versión del modelo y de los parámetros & Los tramos sin dato nunca se rellenan; series retenidas cinco años \\
+\LFXcontrato{inn03.\allowbreak{}historia-\allowbreak{}termica-\allowbreak{}lote.\allowbreak{}v1} & B-02, B-04, C-02 y N-10 \ensuremath{\rightarrow} M9, M2, M5 y M10 & Eventos EPCIS 2.0 con datos de sensor (capa 5); series en N-06 y N-10 (capa 6) & Lote, GTIN, familia, tramos (lugar, desde, hasta, sensor, resumen, sin dato), carga acumulada, vida remanente estimada, versión del modelo y de los parámetros & Los tramos sin dato nunca se rellenan; series retenidas cinco años \\
 \LFXcontrato{inn04.\allowbreak{}liquidacion-\allowbreak{}tramo.\allowbreak{}v1} & M10 \ensuremath{\rightarrow} Finanzas del CLIENTE y ERP & Informe mensual auditado por la capa 7; base versionada en la capa 6 & Período, canasta, índices aplicados, costo comparable, OTIF del período, puntuación, recomendación y respuesta & El dato contable definitivo vive en el ERP; los montos se expresan solo en la Oferta Económica \\
 \LFXcontrato{inn05.\allowbreak{}hoja-\allowbreak{}negocio.\allowbreak{}v1} & M10 \ensuremath{\rightarrow} M3 (aplicación de preventa C-01) y M6 (impresora de cabina) & Cola de sincronización de los terminales (capa 5) y precarga cifrada en el terminal; capa 7 limita la hoja al receptor & Local, bloques 1 a 3, bloque 4 si está activo, estado de la copia (pedida, entregada, en espera) & Bloque 4 con umbral mínimo de locales por grupo y supresión de celdas; registro de actividades de tratamiento \\
 \end{tablalafrox}
@@ -67,19 +67,21 @@ La Tabla~\ref{tab:sd13-B-piloto} fija, para cada sesión, el identificador, la v
 \begin{tablalafrox}{Sesiones de evidencia del mes 15. Fuente: elaboración a partir del Formulario T-15, sección 4, Tabla 26 y sección 6.1; las horas son una quinta parte de las del paquete, derivada proporcionalmente de su ventana de cinco meses.}{tab:sd13-B-piloto}{L{2.2cm} L{4.0cm} Y}
  {\cab{Paquete} & \cab{Sesión, ventana y responsable} & \cab{Evidencia para el cierre}}
 7.1.4 (Datos) & EV-15-01, 03-04 a 28-04-2028; 25,6~HH de Ingeniero de Datos y Bases Senior, 12,8~HH de Ingeniero de Datos y Bases Junior y 9,6~HH del Líder de Datos (48~HH, una quinta parte del paquete); predecesoras 7.1.2 y 7.1.3 & Registro I-01A del piloto real: al menos 100 avisos evaluables y 70 \% de acierto antes de ampliar a otras rutas. \\
-7.2.4 (Calidad) & EV-15-02, 03-04 a 28-04-2028; 33,27~HH de Analista QA Senior, 11,13~HH de Junior y 3,6~HH del Líder de Calidad y Pruebas (48~HH, una quinta parte del paquete); predecesora 7.2.3 & Registro de validación I-02A e I-02B, con al menos 20 pares para I-02A; se registra la reproducción observada por separado de los minutos de interrupción de Puelche. \\
+7.2.4 (Calidad) & EV-15-02, 03-04 a 28-04-2028; 33,27~HH de Analista QA Senior, 11,13~HH de Junior y 3,6~HH del Líder de Calidad y Pruebas (48~HH, una quinta parte del paquete); predecesora 7.2.3 & I-02A: al menos 20 pares de pruebas del mismo caso; I-02B: evidencia del terreno. I-02E se informa aparte, con el número de pares operativos disponibles. \\
 7.3.4 (Datos) & EV-15-03, 03-04 a 28-04-2028; 25,6~HH de Ingeniero de Datos y Bases Senior, 12,8~HH de Ingeniero de Datos y Bases Junior y 9,6~HH del Líder de Datos (48~HH, una quinta parte del paquete); predecesora 7.3.3 & Registros I-03A e I-03B, con versión de parámetros y al menos 60 lotes evaluados por familia para I-03B; sin historia térmica completa no se infiere vida útil. \\
 \end{tablalafrox}
 
-La tabla de hitos del T-15 fija como entregas nominales el 20 de octubre de 2027 para H4, el 24 de noviembre de 2027 para H5 y el 27 de junio de 2028 para H10. Esas entregas preceden el fin de sus paquetes de control en la carta nivelada: 6.1.1 termina el 22 de octubre de 2027, 6.7.1 el 1 de diciembre de 2027 y 6.7.2 el 28 de junio de 2028. El calendario distingue la entrega del expediente completo para revisión del CLIENTE y el cierre interno de cada paquete.
+Según el Formulario T-15, Tabla 15, las entregas nominales de los expedientes completos al CLIENTE son: H4 el 20-10-2027, H5 el 01-12-2027 y H10 el 27-06-2028. En H4 y H10, la entrega precede al cierre interno de 6.1.1 (22-10-2027) y 6.7.2 (28-06-2028), respectivamente. En H5, la entrega y el cierre de 6.7.1 coinciden el 01-12-2027; la firma del acta es posterior, el 03-01-2028.
 
 En H4, el expediente completo se entrega el 20 de octubre de 2027 e incluye las versiones integradas en QA y los informes de pruebas de integración, regresión e idempotencia que sustentan el hito. El trabajo hasta el 22 de octubre corresponde al cierre interno del paquete 6.1.1. La Contraparte revisa la evidencia entregada el día 20 y firma el acta el 4 de noviembre de 2027.
 
-En H5 y H10, las pruebas y demostraciones terminan el 19 de noviembre de 2027 y el 15 de junio de 2028, respectivamente. Los expedientes de certificación se entregan completos en las fechas nominales. Calidad consolida el registro interno de evidencia y prepara el acta hasta el cierre de 6.7.1 el 1 de diciembre de 2027 y de 6.7.2 el 28 de junio de 2028, sin agregar contenido a los expedientes en revisión.
+En H5 y H10, las pruebas y demostraciones terminan el 19 de noviembre de 2027 y el 15 de junio de 2028, respectivamente. Para H5, Calidad consolida la evidencia antes de entregar el expediente el mismo día en que cierra 6.7.1. Para H10, el trabajo posterior a la entrega del expediente corresponde al cierre interno de 6.7.2; no añade contenido al expediente en revisión.
 
 \begin{samepage}
 Para H7 y H12, el calendario nominal del T-15 cierra la evidencia de la marcha blanca el 30 de abril y el 30 de septiembre de 2028, respectivamente. Los expedientes completos se entregan el 2 de mayo y el 2 de octubre. Tras diez días hábiles de revisión se firman las actas el 16 de mayo y el 17 de octubre. El paso a producción ocurre el día hábil siguiente, el 17 de mayo y el 18 de octubre. A partir de ese paso comienzan el soporte puente y la estabilización de la Etapa 1 (9.3.1), y, en la Etapa 2, la estabilización (9.3.2) y la Operación.\par
 \end{samepage}
+
+En H12, el acta de inicio debe recoger la confirmación de la Contraparte sobre el acta integrada, la ventana de corte y si la evidencia de 6.8.6 se exige al ingreso o puede completarse durante la revisión, siempre antes de firmar. El T-15, sección 5.5, y el T-17, sección 2.4, distinguen dos escenarios: si la subsanación ocupa los diez días hábiles de las Bases, la primera ventana admisible sería el 07-11-2028, después del límite del 31-10-2028; para reducir ese riesgo, LafroX revisa incrementos previos y prevé subsanar el incremento final en cinco días hábiles, sin recortar la revisión del CLIENTE ni las cuatro semanas de evidencia. La calibración de INN-04 con datos productivos y el despliegue por rutas de INN-05 dependen de la puesta en producción efectiva.
 
 La Tabla~\ref{tab:sd13-B2} delimita el alcance de cada innovación: lo que entrega, lo que deliberadamente no hace y la investigación adicional que requiere, con el paquete de la EDT donde esa investigación se resuelve.
 
@@ -104,10 +106,10 @@ La Tabla~\ref{tab:sd13-C1} reúne los indicadores de las cinco innovaciones y di
   {\cab{Id} & \cab{Línea base} & \cab{Meta} & \cab{Verificación de la meta} & \cab{Antes del mes 16}}
 I-05B & Sin medición (la hoja no existe) & ≥ 80 \%: al menos 20 de 24 participantes & Mes 14 & Sí \\
 I-01A & Sin medición & ≥ 70 \% con ≥ 100 avisos & Mes 15 & Sí \\
-I-02A & Incidentes de prueba en QA, meses 5 a 10, sin paquete & \ensuremath{-}30 \% con ≥ 20 pares & Mes 15 & Sí \\
+I-02A & Incidentes de prueba en QA, meses 5 a 10, sin paquete & \ensuremath{-}30 \% con ≥ 20 pares de pruebas & Mes 15 & Sí \\
 I-02B & Sin medición & ≥ 80 \% & Mes 15; trimestral después & Sí \\
 I-02D & Cero por diseño & 0 & Cada liberación & Sí \\
-I-02E & Mediana de los incidentes operativos sin circuito, meses 13 a 15 & \ensuremath{-}30 \% con ≥ 20 pares & Mes 15 & Sí \\
+I-02E & Incidentes operativos sin circuito: meses 13 a 15; completar con pares del mismo período & \ensuremath{-}30 \% con ≥ 20 pares operativos acumulados & Mes 15: corte inicial; seguimiento & Sí, corte inicial \\
 I-03A & 0 & ≥ 95 \% & Mes 15 y mensual & Sí \\
 I-03B & Exactitud de la fecha impresa (modelo nulo) en los mismos lotes; referencia inicial por familia en la validación de los meses 11 a 15 & ≥ 80 \% con ≥ 60 lotes por familia & Mes 15, por familia; luego, cada trimestre & Sí \\
 I-03C & 0 & 100 \% & Mensual desde el mes 16 & No \\
@@ -115,7 +117,7 @@ I-02C & Sin medición & 0 & Mensual desde el mes 21 & No \\
 I-04B & Sin modelo & 3 de 3 & Meses 21 a 23 & No \\
 I-04C & Sin registro & 100 \% & Mensual desde el mes 21 & No \\
 I-05C & Período previo por ruta & Estimar el efecto & Meses 22 a 26 y mes 33 & No \\
-I-05A & 0 & ≥ 90 \% y ≥ 85 \% & Mes 27 & No \\
+I-05A & 0 & ≥ 90 \% de hojas mostradas y ≥ 85 \% de copias entregadas en dos visitas & Mes 27 & No \\
 I-05D & No aplica antes de activar & 100 \% & Cada emisión & No \\
 I-01B & Rutas de control sin avisos, meses 13 a 15 & \ensuremath{-}25 \% relativo & Mes 28 & No \\
 I-01C & Rutas de control sin avisos, meses 13 a 15 & \ensuremath{-}20 \% relativo & Mes 28 & No \\
@@ -125,7 +127,7 @@ I-04A & Canasta de los meses 21 a 23 & ≥ 5 \% con OTIF en la meta vigente (má
 
 Para I-03B, la referencia inicial es el valor observado por familia en la validación de los meses 11 a 15, y el 80 \% es el umbral de aceptación, no la línea base; el detalle de la medición está en la sección 13.3.6.
 
-Los indicadores tempranos de INN-01, INN-03 e INN-05 comprueban condiciones de habilitación: los de INN-01 e INN-03, durante la marcha blanca de la Etapa 1, y I-05B, en la prueba de comprensión de los meses 13 y 14. I-02A mide la reducción del tiempo de diagnóstico del proveedor. El beneficio para Puelche se mide aparte, en minutos del aviso a la reanudación de la tarea confirmada por el actor de terreno, comparando incidentes operativos equivalentes con y sin el circuito. Con I-02E LafroX oferta el RT-26.08 (Distribuidora Puelche S.A., 2026b, RT-26.08, cap. 26, p. 45).
+Las condiciones tempranas de habilitación se distinguen del beneficio. I-02A verifica la reducción del diagnóstico del proveedor en el mes 15 (T-12 y T-13, RT-26.08; Distribuidora Puelche S.A., 2026b, cap. 26, p. 45). I-02E mide aparte la interrupción de Puelche. En el mes 15 se informa la muestra disponible y no se acredita una reducción si faltan pares comparables. I-05B se verifica en los meses 13 y 14.
 
 Los tamaños de muestra fijan la precisión mínima de cada meta. Con 100 avisos evaluables y una proporción de 70 \%, el intervalo de confianza de 95 \% es de unos ±9 puntos; con 60 lotes y una proporción de 80 \%, de unos ±10 puntos. En la prueba de comprensión, 20 de 24 participantes (83,33 \%) alcanzan el umbral del 80 \% y 19 (79,17 \%) no lo alcanzan.
 
@@ -136,7 +138,7 @@ La Tabla~\ref{tab:sd13-C-beneficios} presenta cinco escenarios exploratorios en 
 \begin{tablalafrox}{Dimensionamiento físico del beneficio por innovación y beneficiario. Fuente: Subdocumento 13, secciones 13.1 a 13.5 y Formulario T-19, campo 12.}{tab:sd13-C-beneficios}{>{\hsize=0.57\hsize\linewidth=\hsize}Y >{\hsize=1.43\hsize\linewidth=\hsize}Y}
  {\cab{Innovación} & \cab{Beneficio físico estimado y supuesto}}
 Seguimiento de vencimientos & 6.000 unidades vencidas evitadas al mes desde el mes 16: 2,4 millones de unidades al mes × 1 \% (supuesto) × 25 \% (supuesto). Se contrasta en el mes 28. \\
-Reproducción de incidentes & 156 minutos de interrupción evitados al mes (312 minutos-persona) desde el mes 13: 4,33 incidentes al mes (uno por semana) × 120 minutos × 30 \%, con dos personas detenidas; todos supuestos. Se contrasta desde el mes 15. \\
+Reproducción de incidentes & 156 minutos de interrupción evitados al mes (312 minutos-persona) desde el mes 13: 4,33 incidentes al mes (uno por semana) × 120 minutos × 30 \%, con dos personas detenidas; todos supuestos. El corte inicial del mes 15 no acredita ahorro si la muestra es insuficiente. \\
 Vida útil por lote & 1,5 lotes menos retenidos o descartados por vencimiento al mes desde el mes 16: 150,6 recepciones ponderadas estimadas por mes, equiparadas a lotes solo para el escenario y como tope (aproximación: 1.150 recepciones × 1.100/8.400 SKU) × 5 \% × 20 \% (supuestos), es decir, 10 por cada 1.000. Se contrasta en el mes 28. \\
 Tramo variable & 21.000 kilómetros menos al mes desde el mes 24: unos 420.000 kilómetros al mes del Caso × 5 \% (supuesto). \\
 Hoja del almacenero & 101.296 minutos del almacenero evitados al mes con el despliegue completo, desde el mes 27: 50.648 decisiones al mes (62.000 visitas × 11.600/14.200 clientes activos) × 10 minutos × 20 \% (supuestos). \\
@@ -145,12 +147,12 @@ Hoja del almacenero & 101.296 minutos del almacenero evitados al mes con el desp
 \subsection*{13.C.1 Datos para validar los cinco beneficios}
 \addcontentsline{toc}{subsection}{13.C.1 Datos para validar los cinco beneficios}
 
-Las estimaciones base de la tabla anterior se recalculan con los volúmenes del Caso y los supuestos declarados. Desde el mes de contraste de cada innovación, la comparación observada con el registro de la tabla siguiente reemplaza al escenario exploratorio; el registro conserva la fuente, el período, la cobertura y las exclusiones de cada comparación.
+Las estimaciones base de la tabla anterior se recalculan con los volúmenes del Caso y los supuestos declarados. La comparación observada reemplaza al escenario exploratorio solo cuando el registro siguiente permite contrastarlo con una muestra suficiente; el registro conserva la fuente, el período, la cobertura y las exclusiones de cada comparación.
 
 \begin{tablalafrox}{Registro mínimo para contrastar el beneficio físico. Fuente: Subdocumento 13, secciones 13.1.5 a 13.5.5, y Formulario T-19, campo 12.}{tab:sd13-C-datos}{L{1.4cm} Y Y}
  {\cab{Innovación} & \cab{Registro de Puelche} & \cab{Comparación}}
 INN-01 & Unidades entregadas y vencidas de la misma cohorte, identificadas por ruta, local, lote y período. & Tasas de los meses 25 a 27, con aviso, y de la base (meses 13 a 15, sin aviso), de la misma estación y en rutas comparables; aplicar la diferencia a las unidades cubiertas. No usar valor de inventario como denominador. \\
-INN-02 & Incidente y tarea únicos, módulo, tipo de falla, aviso y confirmación de reanudación por el actor de terreno. & Comparar minutos entre incidentes operativos equivalentes con y sin circuito; excluir pares sin marcas completas. No usar I-02A como sustituto. \\
+INN-02 & Incidente y tarea únicos, módulo, tipo de falla, aviso y confirmación de reanudación por el actor de terreno. & Comparar minutos entre casos con y sin circuito del mismo tipo, módulo, severidad y período; excluir pares sin marcas completas; acumular hasta 20 pares independientes. No usar I-02A como sustituto. \\
 INN-03 & Lotes únicos recibidos y afectados por vencimiento, familia, versión de parámetros y decisión de Calidad. & Comparar cálculo central y uso distribuido con el mismo modelo y criterio. No contar recepciones como lotes ni rebajar retenciones obligatorias. \\
 INN-04 & Entregas comparables, kilómetros y minutos por entrega por actividad, condición normal o peak y evidencia de nivel de servicio. & Comparar kilómetros y minutos por entrega en cada condición; sin degradar el servicio ni convertir el ejemplo en ahorro monetario. \\
 INN-05 & Visita elegible, uso efectivo de la hoja y minutos hasta la decisión de reposición. Una decisión por visita. & Contrastar decisiones comparables con y sin hoja. Separar este tiempo del indicador comercial del mes 33. \\
