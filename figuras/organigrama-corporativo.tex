@@ -9,7 +9,8 @@
 \node[box,text width=2.8cm] (ing) at (-5,-3.7) {Ingeniería\\Desarrollo\\Arquitectura e\\integración};
 \node[box,text width=2.8cm] (infra) at (-1.7,-3.7) {Infraestructura\\NOC, SRE y redes};
 \node[box,text width=2.8cm] (qa) at (1.7,-3.7) {Calidad\\Pruebas y procesos};
-\foreach \n in {ing,infra,qa} {\draw[edge] (ops.south) -- (-1.7,-2.6) -| (\n.north);}
+\node[box,text width=2.8cm] (imp) at (5,-3.7) {Implantación y\\Gestión del Cambio};
+\foreach \n in {ing,infra,qa,imp} {\draw[edge] (ops.south) -- (-1.7,-2.6) -| (\n.north);}
 \node[box,text width=6cm,dashed] (dc) at (-1.7,-5.7) {Infraestructura corporativa administrada\\Centro de datos primario: Santiago\\Centro de datos secundario: Valparaíso};
 \draw[edge,dashed] (infra.south) -- (dc.north);
 \end{tikzpicture}
