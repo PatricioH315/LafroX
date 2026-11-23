@@ -67,7 +67,6 @@ Abiertas (revisadas el 22-11-2026 contra SD3 `f7ff197d`, SD7 `8e71a160`, SD8 `90
 
 - **E2 2.7** (F1-01): usa los códigos antiguos de paquetes (líneas 5 y 46) y no menciona el ingreso contingente de INN-04. Sin commits nuevos en origin.
 - **Modelo financiero:** perfil de INN-04 (todo a Jefe de Proyecto; el T-15 reparte con el Analista PMO), reparto de horas de INN-05 (893,4 + 226,6 contra 960 + 160 del T-15) y meses de operación de INN-02 (22-55 contra 21-56 del T-15).
-- **SD8 R-027** (nueva): el Anexo F (`anexo-f-respuestas.tex:48`) y los Anexos del SD8 piden «reglas de 7.4.1 aprobadas al cierre del mes 20»; el T-14 (`dic_7_4.tex`) y el SD13 dicen que Finanzas aprueba la fórmula inicial al cierre de 7.4.1 (1 al 9 de junio de 2028, mes 17) y que la calibración es de 7.4.2 (meses 21 a 23). No es contradicción (el mes 20 sirve de plazo máximo), pero conviene alinear la redacción.
 - **SD9** (F2-02): `CANON_LAFROX.md:8` dice que los riesgos de innovación parten en R-034 (el SD13 usa R-027 y siguientes del SD8).
 - **SD4** (F3-01): el Anexo 4-N no incluye la capa 5 (cola de sincronización) para INN-05.
 
@@ -76,6 +75,8 @@ Resueltas en el SD13 sin modificar las fuentes (23-11-2026):
 - **SD3/T-12 y SD9/T-13** (cotejo del 23-11): RT-05.30 y RT-18.08 remiten al modelo determinista; el SD13 ya no contradice esa respuesta y reconoce una sola capacidad predictiva. RT-04.14 se ejecuta en los paquetes de INN-02, pero los entornos efímeros no son su mérito diferencial. RT-26.08 conserva I-02A en ambos formularios; el SD13 separa de esa validación el beneficio de terreno I-02E.
 
 - **SD7** (F2-09, F3-03, F3-06; cotejo del 23-11): el SD13 conserva la ventana de 7.5.4 y remite el acta H12 a 9.4.2. Para 7.3.5, 21–56 es la ventana de asignación y 24–54 abarca las nueve revisiones programadas, no dos calendarios alternativos. Para 7.3.2, 5–9 es la asignación y 07-06 a 20-09-2027 la ejecución nivelada. El SD13 distingue estas capas sin alterar el T-15.
+
+- **SD8 R-027** (23-11-2026): el SD8 (T-16, Anexos 8.A.2 y 8.F) pedía «reglas de 7.4.1 aprobadas al cierre del mes 20» y el SD13 y el T-19, la aprobación al cierre de 7.4.1 en el mes 17. Es una sola aprobación: el mes 17 es la fecha nominal y el cierre del mes 20 (29-09-2028) es el fin tardío CPM de 7.4.1, plazo máximo antes de 7.4.2. Los cuatro documentos lo declaran así; la fila de R-027 en 8.F.2 remite al comité de la fase (1.7.3 hasta el mes 20; 1.7.5 desde el 21).
 
 Resueltas en origin (19-11-2026 y 22-11-2026):
 
