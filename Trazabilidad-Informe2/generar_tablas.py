@@ -8,7 +8,7 @@ C, P, N = "Corregida", "Parcial", "Pendiente"
 GRUPOS = [
 ("General: formalidad y cumplimiento de instrucciones", "GEN", [
 ("Volumen excesivo: SD4 con 194 páginas de cuerpo y 117 de anexos; el subdocumento debe resumir y el anexo detallar.", P,
- "El SD4 traslada al Anexo 4-D los listados de M2, M3, M4 y M7, al 4-N los criterios de interacción y al 4-R la custodia; su cuerpo tiene 172 páginas y sus anexos 152. El cuerpo del SD7 tiene 44 páginas y remite el detalle a sus formularios y anexos.", "SD4, 4.1.5 y Anexos 4-D, 4-N, 4-R; SD7, T-14, T-15, T-18 y Anexos del SD7"),
+ "El SD4 traslada al Anexo 4-D los listados de M2, M3, M4 y M7, al 4-N los criterios de interacción y al 4-R la custodia; su cuerpo tiene 172 páginas y sus anexos 155. El cuerpo del SD7 tiene 44 páginas y remite el detalle a sus formularios y anexos.", "SD4, 4.1.5 y Anexos 4-D, 4-N, 4-R; SD7, T-14, T-15, T-18 y Anexos del SD7"),
 ("La tabla del Art. 46° llega en un archivo fuera de la nomenclatura de la sección 2 de la Aclaración N.° 2.", C,
  "La tabla se entrega como Anexo A del Análisis económico-financiero (Entregable 2), en archivo propio con nombre conforme a la nomenclatura de la oferta.", "Este anexo"),
 ("Declaración de uso de IA con nivel «Alto» en todo y un único revisor; revisión humana de forma.", P,
@@ -240,7 +240,7 @@ GRUPOS = [
 ("Siglas SD4, SD8, PT/H y RC sin definir; Figura 7.20 remite a un detalle inexistente.", C,
  "El SD7 define las siglas SD4 y SD8, y sus leyendas distinguen RC (ruta crítica) de PT/H (los demás paquetes e hitos). La Figura 7.3 presenta la red; el detalle de las dependencias está en el Anexo 7.B.", "SD7, introducción, 7.2.1, Figura 7.3 y Anexo 7.B"),
 ("Volumen: 66 páginas de cuerpo y 250 de formularios y anexos.", P,
- "El cuerpo del SD7 tiene 44 páginas. Los formularios y anexos suman 353: 166 del T-14, 135 del T-15, 25 del T-18 y 27 de los Anexos del SD7.", "SD7; T-14, T-15, T-18 y Anexos del SD7"),
+ "El cuerpo del SD7 tiene 44 páginas. Los formularios y anexos suman 344: 157 del T-14, 135 del T-15, 25 del T-18 y 27 de los Anexos del SD7.", "SD7; T-14, T-15, T-18 y Anexos del SD7"),
 ("Redacción defensiva («no acredita», «no demuestra», «no se presume»).", C,
  "Se retiraron las fórmulas defensivas del SD7, el T-14, el T-15 y el T-18. Se conservan sólo las negaciones que fijan una condición técnica.", "SD7; T-14; T-15; T-18"),
 ("Falta la ruta crítica de la construcción de la Etapa 1, no sólo la del tramo final.", P,
