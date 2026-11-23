@@ -1,0 +1,79 @@
+{
+  "proyecto": "LafroX",
+  "fecha": "2026-11-23",
+  "alcance": [
+    "SD4",
+    "SD10"
+  ],
+  "pruebas_operativas_ejecutadas": false,
+  "aceptacion_real_acreditada": false,
+  "publicado": false,
+  "rebase_sd10_integrado": true,
+  "declaracion_preexistente_preservada": true,
+  "pendientes_evidencia": [
+    "RPO en aislamiento total seguido de perdida fisica",
+    "Continuidad de las 96 salidas con ERP o sala indisponibles",
+    "Calendarios y denominador de disponibilidad formalizados",
+    "Calibracion por franja y cuadrante nominal de mesa",
+    "Conciliacion de HH y costos si se activan alternativas B/C"
+  ],
+  "fuentes": [
+    {
+      "checkout": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\tmp\\sd4-corrigiendo-integracion",
+      "head": "ac7b22a6f5159a78a78ac86fc2a40f7772aa5493",
+      "rama": "LafroX-Subdoc4-LateX-corrigiendo"
+    },
+    {
+      "checkout": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\LafroX-Subdoc10-LateX-corrigiendo",
+      "head": "739730fe280061c1b8f9bfb8121d5f7b1b00e6a6",
+      "rama": "LafroX-Subdoc10-LateX-corrigiendo"
+    }
+  ],
+  "entregables": [
+    {
+      "ruta": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\tmp\\sd4-corrigiendo-integracion\\entrega\\LAFROX-Subdocumento4.pdf",
+      "paginas": 172,
+      "sha256": "14479f46b0958e2775c1e17f62d569fd5118f464ac652646b168ba29ab208d6c"
+    },
+    {
+      "ruta": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\tmp\\sd4-corrigiendo-integracion\\entrega\\LAFROX-Subdocumento4-Anexos.pdf",
+      "paginas": 155,
+      "sha256": "dc8f758326e81ca3498f064c437d92ccd496ca667d575d6b56f66705ce9b878c"
+    },
+    {
+      "ruta": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\tmp\\sd4-corrigiendo-integracion\\entrega\\LAFROX-Formulario-T-11.pdf",
+      "paginas": 51,
+      "sha256": "36203b1b31632e47491ba1d92808fe2061c293780698adc265e9b643b8e0f85a"
+    },
+    {
+      "ruta": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\LafroX-Subdoc10-LateX-corrigiendo\\LAFROX-Subdocumento10.pdf",
+      "paginas": 21,
+      "sha256": "3a53de65f68246505c7adcddc584132e95450433e92dca4b9f899896299aebeb"
+    },
+    {
+      "ruta": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\LafroX-Subdoc10-LateX-corrigiendo\\LAFROX-Subdocumento10-Anexos.pdf",
+      "paginas": 31,
+      "sha256": "540bd4b297ab4e86e3027c54dd4446af8c8b1e1a31e3c0fda94e176d6c9307bb"
+    }
+  ],
+  "t11_texto_identico": true,
+  "figuras_fuente_sin_cambios": true,
+  "compilacion_sd4_sin_errores_referencias_ni_desbordes": true,
+  "referencias_sd4": {
+    "counts": {
+      "pages": {
+        "LAFROX-Subdocumento4.pdf": 172,
+        "LAFROX-Subdocumento4-Anexos.pdf": 155,
+        "LAFROX-Formulario-T-11.pdf": 51
+      },
+      "internal_links": 496,
+      "cross_pdf_links": 49,
+      "t12_page_citations": 24,
+      "bibliography_citations": 196,
+      "source_references": 396
+    },
+    "errors": [],
+    "passed": true
+  },
+  "calculo_cruzado": "passed"
+}

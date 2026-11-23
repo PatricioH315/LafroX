@@ -1,15 +1,15 @@
 {
   "proyecto": "LafroX",
-  "version": "0.5",
-  "estado": "borrador",
-  "fecha": "2026-11-21",
+  "version": "1.0",
+  "estado": "correccion local verificada",
+  "fecha": "2026-11-23",
   "pdfs": [
     {
       "archivo": "LAFROX-Subdocumento10.pdf",
-      "paginas": 20,
+      "paginas": 21,
       "formato": "carta",
       "foliacion_correlativa": true,
-      "sha256": "ab2936f75db0c90f6196ab031c438283dfaddb6adf8de207b05f860897ef0b79",
+      "sha256": "3a53de65f68246505c7adcddc584132e95450433e92dca4b9f899896299aebeb",
       "errores_compilacion": 0,
       "referencias_sin_resolver": 0,
       "desbordes_horizontales": 0,
@@ -17,10 +17,10 @@
     },
     {
       "archivo": "LAFROX-Subdocumento10-Anexos.pdf",
-      "paginas": 30,
+      "paginas": 31,
       "formato": "carta",
       "foliacion_correlativa": true,
-      "sha256": "287d79801b2c67b0bc4e7452472118c4349c5fc7e0eb1c6174dd2bde91751c44",
+      "sha256": "540bd4b297ab4e86e3027c54dd4446af8c8b1e1a31e3c0fda94e176d6c9307bb",
       "errores_compilacion": 0,
       "referencias_sin_resolver": 0,
       "desbordes_horizontales": 0,
@@ -33,6 +33,6 @@
   "cambios_mejora_v02_trazados": 12,
   "dependencias_documentadas": 11,
   "guias_desarrolladas": 9,
-  "revision_humana_acreditada": false,
+  "revision_humana_verificada_en_esta_tarea": false,
   "pruebas_reales_acreditadas": false
 }

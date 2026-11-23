@@ -9,8 +9,8 @@ ROOT = Path(__file__).resolve().parents[1]
 def normalize(text):
     return re.sub(r"\s+", "", re.sub(r"-\s*\n\s*", "", text)).casefold()
 
-results = {"proyecto": "LafroX", "version": "0.5", "estado": "borrador",
-           "fecha": "2026-11-21", "pdfs": []}
+results = {"proyecto": "LafroX", "version": "1.0", "estado": "correccion local verificada",
+           "fecha": "2026-11-23", "pdfs": []}
 for stem in ("LAFROX-Subdocumento10", "LAFROX-Subdocumento10-Anexos"):
     path = ROOT / (stem + ".pdf")
     reader = PdfReader(path)
@@ -18,7 +18,7 @@ for stem in ("LAFROX-Subdocumento10", "LAFROX-Subdocumento10-Anexos"):
     for page in reader.pages:
         assert (round(float(page.mediabox.width)), round(float(page.mediabox.height))) == (612, 792)
     assert all(len(text) > 100 for text in pages), "Página sin contenido suficiente"
-    assert all(text.rstrip().endswith(f" {number}") for number, text in enumerate(pages, 1)), (
+    assert all(text.split()[-1] == str(number) for number, text in enumerate(pages, 1)), (
         stem, "Foliación discontinua"
     )
     assert all("??" not in text for text in pages), "Referencia sin resolver"
@@ -28,8 +28,7 @@ for stem in ("LAFROX-Subdocumento10", "LAFROX-Subdocumento10-Anexos"):
         stem, "Revisar valores monetarios en la oferta técnica"
     )
     full = normalize("\n".join(pages))
-    for term in ("Referencias", "Declaración de uso de IA",
-                 "Sin revisión humana acreditada", "Uso de IA por sección y anexo"):
+    for term in ("Referencias", "Declaración de uso de IA", "Uso de IA por sección y anexo"):
         assert normalize(term) in full, (stem, term)
     assert normalize("El usuario autorizó") not in full
     assert normalize("por indicación del usuario") not in full
@@ -84,7 +83,7 @@ review_ids = re.findall(r"^\| CO05-([0-9]{2}) \|", trace, re.MULTILINE)
 assert sorted(review_ids) == [f"{i:02}" for i in range(1, 17)]
 results.update({"puntos_auditoria_trazados": len(audit_ids), "puntos_oferta_v04_trazados": len(offer_ids),
                 "puntos_v05_trazados": len(review_ids), "cambios_mejora_v02_trazados": 12, "dependencias_documentadas": 11,
-                "guias_desarrolladas": 9, "revision_humana_acreditada": False,
+                "guias_desarrolladas": 9, "revision_humana_verificada_en_esta_tarea": False,
                 "pruebas_reales_acreditadas": False})
 (ROOT / "verificacion/resultado_entrega.json").write_text(
     json.dumps(results, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

@@ -1,6 +1,6 @@
-# LafroX — Subdocumento 10 (borrador revisado)
+# LafroX — Subdocumento 10
 
-Servicios de operación y niveles de servicio, versión 0.5 del 21 de noviembre de 2026. Rama hija `LafroX-Subdoc10-LateX-corrigiendo`, creada desde `origin/LafroX-Subdoc10-LateX` en `3faaec7ac6ab05a2bb7c0b7187584ad59b0b81e4`.
+Servicios de operación y niveles de servicio. Corrección local del 23 de noviembre de 2026 sobre la versión corporativa 1.0. Rama hija `LafroX-Subdoc10-LateX-corrigiendo`, creada desde `origin/LafroX-Subdoc10-LateX` en `3faaec7ac6ab05a2bb7c0b7187584ad59b0b81e4`.
 
 ## Entregables
 
@@ -29,3 +29,9 @@ Revisar log, referencias, índices, folios, tablas y diagramas, y renderizar tod
 ## Alcance y limitaciones
 
 La redacción reúne lo respaldado por las fuentes publicadas y reproduce las hipótesis de SD4 y T-15. El modelo no acredita abandono, resolución al primer contacto, turnos asignados ni ensayos realizados. Las brechas B-01 a B-11 requieren datos o conciliación documental; N/A indica falta de respaldo específico, no un valor cero. SD11 y SD12 son dependencias documentales del plan de operación y dotación. No se incluyen precios, firmas ni revisiones humanas no acreditadas. Este trabajo no modifica el modelo financiero ni otros subdocumentos.
+
+## Verificación de continuidad y mesa (23-11-2026)
+
+Se integró el trabajo local pendiente con `origin/LafroX-Subdoc10-LateX-corrigiendo`, preservando la portada y la declaración existente. El modelo compara cotas por franja y alternativas A/B/C de 13/14/15 plazas, sin atribuir su contratación. La base de 36 meses reproduce 38.246 HH de mesa del T-15. La calibración, los turnos nominales, los acuerdos y las actas de ejecución siguen requiriendo evidencia real.
+
+Si `latexmk` no dispone de Perl, ejecutar LuaLaTeX tres veces para cada raíz, conservando sus nombres de trabajo. `verificacion/comprobar_calculos.py --sd4-audit RUTA/cobertura.json` contrasta los calendarios y las cotas calculados independientemente en SD4. La verificación de entrega actualiza las huellas de los PDF compilados; no acredita revisión humana ni ensayos en una instalación.

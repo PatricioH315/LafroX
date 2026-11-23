@@ -1,0 +1,19 @@
+{
+  "proyecto": "LafroX",
+  "fecha": "2026-11-23",
+  "pdfs": [
+    {
+      "file": "LAFROX-Subdocumento10.pdf",
+      "pages": 21,
+      "internal_links": 32,
+      "destination_errors": []
+    },
+    {
+      "file": "LAFROX-Subdocumento10-Anexos.pdf",
+      "pages": 31,
+      "internal_links": 44,
+      "destination_errors": []
+    }
+  ],
+  "contenido_declaracion_preexistente_preservado": true
+}

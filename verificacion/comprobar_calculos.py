@@ -1,4 +1,4 @@
-import math,json,pathlib
+import math,json,pathlib,argparse,calendar
 from decimal import Decimal
 from datetime import date
 out=pathlib.Path(__file__).resolve().parents[1]
@@ -136,6 +136,52 @@ peak_noc_added = regular_days * 2
 peak_desk_places = math.ceil(peak_desk_reinforced / 128)
 assert (peak_desk_reinforced, peak_noc_added, peak_desk_places) == (1690, 50, 14)
 
+# Invertir la cola, en vez de atribuir la capacidad diurna al único puesto nocturno.
+hourly_capacity = {}
+for staffing in (1, 2, 3, 7, 8):
+    left, right = 0.0, staffing * 6.0
+    for _ in range(80):
+        middle = (left + right) / 2
+        if erlang(middle, staffing) >= .8:
+            left = middle
+        else:
+            right = middle
+    hourly_capacity[str(staffing)] = left
+    assert erlang(left - .000001, staffing) >= .8 > erlang(left + .000001, staffing)
+safe_capacity = {c: math.floor(value * 100) / 100 for c, value in hourly_capacity.items()}
+assert [safe_capacity[str(c)] for c in (1, 2, 3)] == [1.23, 4.54, 8.55]
+assert erlang(demand(2000)[1], 1) < .8
+
+months = []
+for contract_month in range(21, 57):
+    calendar_index = 2027 * 12 + 1 + contract_month - 1
+    year, zero_month = divmod(calendar_index, 12)
+    month = zero_month + 1
+    day_count = calendar.monthrange(year, month)[1]
+    sundays_in_month = sum(date(year, month, d).weekday() == 6 for d in range(1, day_count + 1))
+    workdays = day_count - sundays_in_month
+    is_peak = month in (9, 12)
+    daytime_hours = 52 if is_peak and contract_month >= 25 else 37
+    base_hours = workdays * daytime_hours + (workdays * 6 + sundays_in_month * 24 if is_peak else 0)
+    row = dict(contract_month=contract_month, year=year, month=month,
+               ordinary_days=workdays, sundays=sundays_in_month, base_hours=base_hours,
+               base_places=math.ceil(base_hours / 128))
+    if is_peak:
+        selective = workdays * 58 + sundays_in_month * 48
+        extended = selective + workdays * 6
+        row.update(selective_hours=selective, selective_places=math.ceil(selective / 128),
+                   extended_hours=extended, extended_places=math.ceil(extended / 128),
+                   extra_noc_hours=workdays * 2)
+    months.append(row)
+assert sum(row['base_hours'] for row in months) == 38246
+assert [row['contract_month'] for row in months if row['month'] in (9, 12)] == [23, 32, 35, 44, 47, 56]
+assert [max(row.get(field, 0) for row in months) for field in ('base_places', 'selective_places', 'extended_places')] == [13, 14, 15]
+check_tex_table(annex, 'tab:sd10-alternativas-mesa', [
+    ('A. Base: uno nocturno y dominical; dos en relevo NOC', '1.570', '13', '0'),
+    ('B. Dos dominicales; uno nocturno; tres en relevo NOC', '1.690', '14', '50'),
+    ('C. Dos nocturnos y dominicales; tres en relevo NOC', '1.840', '15', '50'),
+])
+
 ola_profiles = [
     ("Crítica", "min", 10, (20, 10, 150, 30), 15, 240),
     ("Alta", "min", 30, (45, 15, 300, 60), 60, 480),
@@ -183,6 +229,11 @@ result={
     "peak_desk_reinforced_september_2029": peak_desk_reinforced,
     "peak_desk_reinforced_places": peak_desk_places,
     "peak_noc_added_hours": peak_noc_added,
+    "exact_hourly_capacity": hourly_capacity,
+    "conservative_hourly_capacity": safe_capacity,
+    "coverage_calendar_months": months,
+    "base_desk_hours_36months": sum(row['base_hours'] for row in months),
+    "alternatives_approved": False,
     "proposed_internal_response_budgets": ola_results,
     "staffing_cross_check": {
         "bridge_hours": 9336,
@@ -192,6 +243,16 @@ result={
     },
 }
 trace=out/"trazabilidad"
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--sd4-audit', type=pathlib.Path)
+args = parser.parse_args()
+if args.sd4_audit:
+    comparison = json.loads(args.sd4_audit.read_text(encoding='utf-8'))
+    assert comparison['months'] == months, 'Calendarios SD4/SD10 distintos'
+    assert comparison['conservative_hourly_capacity'] == safe_capacity, 'Cotas SD4/SD10 distintas'
+    for staffing, value in hourly_capacity.items():
+        assert abs(value - comparison['exact_hourly_capacity'][staffing]) < 1e-10
+    result['cross_document_numeric_check'] = 'passed'
 trace.mkdir(exist_ok=True)
 (trace/"calculos_sd10.json").write_text(json.dumps(result,indent=2),encoding="utf-8")
 print("LafroX SD10: controles y tablas de demanda, peak, SLA y acuerdos internos verificados.")
