@@ -91,7 +91,7 @@ Para una pérdida regional se sigue la secuencia de SD4: detección, declaració
 \[
 5+30+20+30+15+15+15+5=135\ \text{min}.
 \]
-La diferencia frente a cuatro horas es $240-135=105$ minutos. Es margen de diseño sujeto a prueba, no un RTO medido. El titular del CLIENTE autoriza la promoción; si no responde dentro de quince minutos actúa el suplente dentro de los treinta previstos. Se restituye identidad, claves y certificados, rutas de consola, AS2 e ingesta IoT; cada canal se prueba antes de cambiar el tráfico. Un arranque de Aurora sin esos accesos no acredita la recuperación completa (LafroX, 2026a, SD4, sec.~4.3.2.5, pp.~160--162).
+La diferencia frente a cuatro horas es $240-135=105$ minutos. Es margen de diseño sujeto a prueba, no un RTO medido. El titular del CLIENTE autoriza la promoción; si no responde dentro de quince minutos actúa el suplente dentro de los treinta previstos. Se restituye identidad, claves y certificados, rutas de consola, AS2 e ingesta IoT; cada canal se prueba antes de cambiar el tráfico. Un arranque de Aurora sin esos accesos no acredita la recuperación completa (LafroX, 2026a, SD4, sec.~4.3.2.5, pp.~160--163).
 
 El ensayo provoca escrituras controladas y sincronización, comprueba exclusión del escritor anterior y conserva los UUID de mensajes confirmados y pendientes. Se compara el último hecho confirmado en origen con el último recuperado y su marca temporal para medir el RPO, con trazas de retención y reenvío del outbox. El retorno resincroniza y concilia primero; solo después transfiere la autoridad de escritura y el tráfico. El retorno automático permanece deshabilitado y una partición con ambos equipos encendidos debe demostrar que no pueden confirmar dos escritores (LafroX, 2026a, SD4, secs.~4.2.4.6 y 4.3.2).
 
