@@ -6,37 +6,57 @@
 %  #5 scope  #6 issued  #7 valid until  #8 status  #9 English title line
 \newcommand{\certpag}[9]{%
   \clearpage
-  \noindent\begin{minipage}[c]{3.4cm}\SIMhueco{3.2cm}{1.6cm}{Logo del certificador (omitido)}\end{minipage}\hfill
+  \noindent\begin{minipage}[c]{3.4cm}\SIMhueco{3.2cm}{1.3cm}{Logo del certificador (omitido)}\end{minipage}\hfill
   \begin{minipage}[c]{0.55\linewidth}\raggedleft{\large\bfseries #1}\\{\small (certificado simulado)}\end{minipage}
 
   \vspace{4pt}\noindent\rule{\linewidth}{1pt}
-  \vspace{18pt}
+  \vspace{2pt}
   \begin{center}
-    {\Huge\bfseries CERTIFICATE}\\[3pt]{\large\bfseries CERTIFICADO}\\[6pt]
-    {\small #2}\\[14pt]
+    {\LARGE\bfseries CERTIFICATE}\\[1pt]{\large\bfseries CERTIFICADO}\\[6pt]
+    {\small #2}\\[4pt]
     {\small Certificate No. / N.\textdegree{} de certificado: \textbf{#3}}
   \end{center}
-  \vspace{10pt}
+  \vspace{2pt}
   \begin{center}
     This is to certify that\\\small(Por el presente se certifica que)\normalsize\\[10pt]
     {\Large\bfseries \LFXempresa}\\[2pt]
-    RUT \LFXrut\\ \LFXdomicilio\\[12pt]
+    RUT \LFXrut\\ \LFXdomicilio\\[4pt]
     #9\\[4pt]
     {\large\bfseries #4}
   \end{center}
-  \vspace{8pt}
+  \vspace{1pt}
   \noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries}p{4.8cm} X@{}}
-    Scope / Alcance: & #5\\[6pt]
-    Issue date / Emisión: & #6\\[6pt]
-    Valid until / Vigente hasta: & #7\\[6pt]
+    Scope / Alcance: & #5\\[2pt]
+    Issue date / Emisión: & #6\\[2pt]
+    Valid until / Vigente hasta: & #7\\[2pt]
     Status / Estado: & #8\\
   \end{tabularx}
+  \certextra\gdef\certextra{}
   \vfill
-  \noindent\begin{minipage}[b]{4.2cm}\SIMhueco{3.8cm}{2cm}{Marca de acreditación (omitida)}\end{minipage}\hfill
+  \noindent\begin{minipage}[b]{4.2cm}\SIMhueco{3.8cm}{1.4cm}{Marca de acreditación (omitida)}\end{minipage}\hfill
   \begin{minipage}[b]{0.5\linewidth}\raggedleft
     \rule{5cm}{0.5pt}\\{\small Firma autorizada --- #1 (simulado)}\end{minipage}
-  \par\vspace{8pt}
+  \par\vspace{1pt}
   {\footnotesize\color{SIMgris} Certificado simulado: número de referencia y fechas ficticios. No reemplaza al certificado que emite el organismo certificador o el fabricante nombrado; sin logos, sellos ni códigos de verificación reales.\par}}
+% Extra block for management-system certificates (set before each \certpag).
+%  #1 certificate version  #2 SoA line (may be empty)  #3 certifier office
+\newcommand{\certextra}{}
+\newcommand{\setcertextra}[3]{\gdef\certextra{%
+  \par\vspace{2pt}\footnotesize
+  \noindent\textbf{Versión del certificado / Certificate version:} #1\par
+  #2
+  \smallskip
+  \noindent\textbf{Sedes cubiertas por el alcance (certificación multisitio):}\par\smallskip
+  \noindent\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{4cm} >{\raggedright\arraybackslash}p{3cm} X@{}}\toprule
+    \textbf{Sede} & \textbf{Ciudad} & \textbf{Dirección}\\\midrule
+    Sede central & Santiago & Av. Ficticia 1500, oficina 1201 (dirección simulada)\\
+    Centro de operaciones & Valparaíso & Av. Brasil 2241\\\bottomrule
+  \end{tabularx}\par
+  \smallskip
+  \noindent Certificado multisitio: ambas sedes están incluidas en el alcance y se auditan en el mismo ciclo.\par
+  \noindent\textbf{Oficina del certificador:} #3 (simulado).\par
+  \noindent Este certificado se mantiene vigente \emph{sujeto al funcionamiento satisfactorio continuo del sistema de gestión}, verificado mediante auditorías de seguimiento anuales dentro del ciclo de tres años.\par
+  \normalsize}}
 \begin{document}
 \renewcommand{\arraystretch}{1.2}
 \noindent{\Large\bfseries CERTIFICACIONES INSTITUCIONALES Y DE FABRICANTE}\\[2pt]
@@ -48,7 +68,7 @@
 \noindent\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.7cm} >{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{3.1cm} p{1.5cm} X@{}}\toprule
   \textbf{Certificación} & \textbf{Emisor (simulado)} & \textbf{Referencia} & \textbf{Vigencia} & \textbf{Estado}\\\midrule
   ISO 9001:2015 & Bureau Veritas & SIM-CERT-9001-0001 & nov. 2028 & Vigente\\
-  ISO/IEC 27001:2022 & AENOR & SIM-CERT-27001-0002 & ene. 2027 & Vigente; renovación antes del inicio contractual\\
+  ISO/IEC 27001:2022 & AENOR & SIM-CERT-27001-0002 & 22-01-2027 & Vigente; ciclo trienal (inicial ene. 2021, recertificación ene. 2024); renovación antes del inicio contractual\\
   CMMI-DEV Nivel 3 & Evaluador acreditado & SIM-CERT-CMMI-0003 & nov. 2026 & \textbf{No habilitante --- en renovación (vencimiento nov. 2026)}; el Art. 34.1 exige ISO/IEC 27001\\
   ISO/IEC 20000-1:2018 & SGS & SIM-CERT-20000-0004 & may. 2027 & Vigente\\
   AWS Partner (Advanced) & Amazon Web Services & SIM-PART-AWS-0005 & mar. 2027 & Vigente\\
@@ -60,16 +80,18 @@
 
 \noindent Cada certificado se presenta a continuación en una página, recreado con datos ficticios.
 
+\setcertextra{Rev. 2, emitida en la renovación de noviembre de 2025}{}{Av. Ficticia 1200, piso 8, Santiago}
 \certpag{Bureau Veritas Certification}{Certificado de sistema de gestión de la calidad}{SIM-CERT-9001-0001}%
   {ISO 9001:2015 (Sistema de Gestión de la Calidad)}%
-  {Diseño, desarrollo, implementación, integración y soporte de sistemas de software logístico y transaccional.}%
+  {Planificación, diseño, desarrollo, implementación y operación de servicios de software y plataformas para clientes, en infraestructura on-premise y multinube.}%
   {noviembre de 2025 (renovación)}{noviembre de 2028}{Vigente.}%
   {has been assessed and found to conform to the requirements of}
 
+\setcertextra{Rev. 3, emitida en la recertificación de enero de 2024}{\noindent\textbf{Declaración de aplicabilidad (SoA):} versión 3.1, 15-12-2023.\par}{Calle Muestra 450, oficina 301, Santiago}
 \certpag{AENOR}{Certificado de sistema de gestión de seguridad de la información}{SIM-CERT-27001-0002}%
   {ISO/IEC 27001:2022 (Sistema de Gestión de Seguridad de la Información)}%
-  {Operación de servicios cloud, centros de datos on-premise y procesos de ingeniería de software de misión crítica.}%
-  {enero de 2023}{enero de 2027}{Vigente a la fecha de presentación (23-11-2026); renovación programada antes del inicio contractual.}%
+  {Planificación, diseño, desarrollo, implementación y operación de servicios de software y plataformas para clientes, en infraestructura on-premise y multinube.}%
+  {Certificación inicial enero de 2021; recertificación enero de 2024}{22-01-2027}{Vigente (ciclo de tres años); renovación programada antes del inicio contractual.}%
   {has been assessed and found to conform to the requirements of}
 
 \certpag{Evaluador acreditado ante el CMMI Institute}{Constancia de evaluación de madurez}{SIM-CERT-CMMI-0003}%
@@ -78,9 +100,10 @@
   {noviembre de 2023}{noviembre de 2026}{\textbf{No habilitante --- en renovación (vencimiento nov. 2026)}: la validez de tres años concluye en noviembre de 2026 y la reevaluación se encuentra en curso.}%
   {has been appraised as operating at maturity level}
 
+\setcertextra{Rev. 1, emitida en la certificación de mayo de 2024}{}{Av. Ejemplo 2300, Santiago}
 \certpag{SGS}{Certificado de sistema de gestión de servicios de TI}{SIM-CERT-20000-0004}%
   {ISO/IEC 20000-1:2018 (Sistema de Gestión de Servicios de TI)}%
-  {Provisión de servicios de TI, gestión de incidentes y mesa de ayuda 24$\times$7 para infraestructuras logísticas críticas.}%
+  {Planificación, diseño, desarrollo, implementación y operación de servicios de software y plataformas para clientes, en infraestructura on-premise y multinube, incluida la gestión de incidentes y la mesa de ayuda 24$\times$7.}%
   {mayo de 2024}{mayo de 2027}{Vigente.}%
   {has been assessed and found to conform to the requirements of}
 
