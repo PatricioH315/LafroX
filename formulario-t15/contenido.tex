@@ -4,27 +4,6 @@
 
 
 % Continuaciones de una misma figura: conserva números, etiquetas y lista de figuras.
-\newcounter{laminaGanttLocal}
-\newcommand{\figuraGanttLocal}[4]{%
-  \begingroup
-  \setcounter{laminaGanttLocal}{1}%
-  \loop
-    \clearpage
-    \begin{anexohorizontal}
-      \centering
-      \includegraphics[width=\linewidth]{#1-\arabic{laminaGanttLocal}.pdf}\par
-      \captionsetup{hypcap=false}
-      \ifnum\value{laminaGanttLocal}=1
-        \captionof{figure}{#3}\label{#4}%
-      \else
-        \captionof*{figure}{Figura \ref{#4} (continuación \arabic{laminaGanttLocal} de #2). #3}%
-      \fi
-    \end{anexohorizontal}
-    \stepcounter{laminaGanttLocal}%
-  \ifnum\value{laminaGanttLocal}<\numexpr#2+1\relax
-  \repeat
-  \endgroup\clearpage}
-
 \newcommand{\figuraDiagramaHorizontal}[4][0pt]{%
   \par\clearpage
   \begin{anexohorizontal}
@@ -99,9 +78,12 @@ Un frente de trabajo es un equipo con un responsable y un conjunto de cuentas de
 
 Los frentes se sincronizan en los hitos del Formulario E-25 y en los comités del artículo 71 de las Bases Administrativas (p. 37), cuyas actas registran los acuerdos entre frentes (paquetes 1.7.2 a 1.7.5). La Figura \ref{fig:T15-frentes} presenta su ventana de actividad entre los meses 1 y 21.
 
-\figuraGanttLocal{imagenes/Diagramas que faltaban/Revision-local/Frentes-trabajo}{2}
-  {Frentes de trabajo de los meses 1 a 21 y solapamientos del artículo 17.2 de las Bases Administrativas (p. 13). Fuente: elaboración a partir de la Tabla \ref{tab:T15-frentes} y (Formulario T-14).}
-  {fig:T15-frentes}
+\begin{anexohorizontal}
+  \centering
+  \includegraphics[width=\linewidth]{imagenes/Diagramas que faltaban/Revision-local/Gantt-SD7-frentes.pdf}\par
+  \captionsetup{hypcap=false}
+  \captionof{figure}{Frentes de trabajo de los meses 1 a 21 y solapamientos del artículo 17.2 de las Bases Administrativas (p. 13). Fuente: elaboración a partir de la Tabla \ref{tab:T15-frentes} y (Formulario T-14).}\label{fig:T15-frentes}
+\end{anexohorizontal}
 
 En los meses 13 a 15 trabajan a la vez F7, en la marcha blanca de la Etapa 1; F3, en las correcciones de esa marcha blanca; F4, en el desarrollo de la Etapa 2; F6, en las pruebas de ambas etapas; y F1 y F2. F3 y F4 dependen del mismo rol, el Líder de Desarrollo, y por eso son equipos distintos: el equipo que atiende la marcha blanca no puede ser el que desarrolla la Etapa 2 (artículo 17.2 de las Bases Administrativas (p. 13), punto 1). En los meses 19 y 20 trabajan F7, en la marcha blanca de la Etapa 2; F4, en sus correcciones; F6; y el soporte de la Etapa 1 en producción.
 
@@ -205,7 +187,7 @@ Para el contraste, se distribuyen las 203.548,62 HH por perfil y ventana de cada
 
 Las 203.548,62 HH de la sección 4.3 son la línea base programada e incluyen 3.072 HH protegidas para correcciones de la Etapa 1. Esa capacidad se usa solo para esas correcciones. La sobrecarga de un frente se resuelve mediante nivelación y, si persiste, se escala al Comité de Proyecto. Las reservas de riesgos del SD8 (Subdocumento 8) se administran por separado de la línea base. La holgura contractual de cada hito se calcula en la Tabla \ref{tab_T15_7} con las HH, el calendario y las precedencias vigentes. Es un margen de programación, distinto de una reserva de HH o monetaria.
 
-Cada uso de la contingencia por riesgo registra el riesgo, la respuesta, el paquete, el perfil, el período y la autorización del SD8. La reserva de gestión de 160 HH del SD8 queda fuera del total programado y de la dotación, y se libera con la aprobación del Comité Ejecutivo. HH, dinero y días de holgura son magnitudes diferentes y no se suman entre sí.
+Cada uso de la contingencia por riesgo registra el riesgo, la respuesta, el paquete, el perfil, el período y la autorización del SD8. La disponibilidad de gestión del Anexo 8.H se registra en los meses 12, 18, 24 y 40 con 40 HH por ciclo (8 de JP, 16 de Arquitectura, 8 de Calidad y 8 de SRE). El Comité Ejecutivo autoriza su consumo. La capacidad reservada se controla por perfil y mes, fuera del esfuerzo base programado. HH, dinero y días de holgura son magnitudes diferentes y no se suman entre sí.
 
 \section{Red agregada, restricciones y escenarios de calendario}
 
@@ -213,13 +195,13 @@ El CPM calcula las fechas a partir de las duraciones de trabajo de las secciones
 
 \subsection{Cálculo reproducible}
 
-La red modela los inicios y fines de los paquetes y, como eventos separados, la evidencia, la revisión, las actas, los cortes y los registros de producción. Una pasada verifica la factibilidad de la carta nivelada. La pasada inversa calcula las fechas tardías y las holguras dentro de las ventanas y los límites de aceptación (PMI, 2017, pp. 210--211).
+La red modela los inicios y fines de los paquetes y, como eventos separados, la evidencia, la revisión, las actas, los cortes y los registros de producción. La pasada hacia adelante propaga las duraciones mínimas por esfuerzo y los desfases de precedencia. La pasada inversa aplica los límites contractuales y las ventanas de paquete. Las fechas de la carta nivelada se conservan en columnas separadas y se contrastan con la red y la capacidad (PMI, 2017, pp. 210--211).
 
 \begin{itemize}
 \item \textbf{Calendario.} El mes 1 corresponde al supuesto de febrero de 2027. El desarrollo y la revisión administrativa usan el calendario interno de lunes a viernes y feriados previstos (Dirección del Trabajo, s. f.); entre sus exclusiones están el 21 de junio de 2027, el 20 de junio de 2028, el 27 de octubre y el 1 de noviembre de 2028. Este calendario requiere confirmación con el CLIENTE antes de aprobar la línea base; cualquier diferencia obliga a recalcular. NOC, mesa y acompañamiento conservan sus calendarios de servicio de la sección 4.1; no se transforman en trabajo administrativo de lunes a viernes.
 \item \textbf{Duración.} El mínimo por esfuerzo es $\lceil HH/(6,4\,n_{\max})\rceil$ días hábiles. La tabla CPM declara la ventana nivelada, que puede incluir esperas entre actividades, como en el rack R01. Las ocho semanas de homologación y las seis semanas de piloto se conservan en las ventanas publicadas.
 \item \textbf{Trabajo interno de los módulos.} Las puertas de contratos e integración usan sus HH efectivas y la construcción usa $\lceil(HH-240)/(6,4\,n_{\max})\rceil$. Así, una espera por interfaz no se cuenta como construcción. Las fechas de los 171 paquetes de la carta quedan entre el inicio temprano y el fin tardío de su paquete.
-\item \textbf{Precedencias.} Cada paquete con entregable tiene predecesora, salvo 1.1.1 y 2.4.1, que parten con el inicio del contrato. FC conecta el fin del predecesor con el inicio del sucesor; CC conecta sus inicios. La disponibilidad de QA condiciona la entrega del módulo, no su análisis en DEV. En las interfaces, la entrega precedente condiciona la integración del sucesor; se reserva al menos una actividad de 80 HH con su equipo máximo. En los módulos, el análisis y los contratos de interfaz (A01 y A02) y la integración final se representan como puntos de control: la construcción espera el contrato A02 precedente y la integración espera la entrega precedente. Las actividades de los paquetes posteriores al H5 se detallan por planificación gradual. Para el corte, los ensayos condicionan A06 y no el análisis preparatorio. No se elimina una dependencia por incumplir una fecha programada.
+\item \textbf{Precedencias.} Los paquetes 1.1.1 y 2.4.1 se vinculan al inicio contractual. Arquitectura verifica antes de dar inicio al 8.1.4 que la especificación de equipos de frío del SD4 esté disponible. Este insumo externo habilita el inicio nominal de la homologación en el mes 1. Los demás paquetes con entregable se vinculan a los insumos de la sección 6.1. FC conecta el fin del predecesor con el inicio del sucesor; CC conecta sus inicios. La disponibilidad de QA condiciona la entrega del módulo, no su análisis en DEV. En las interfaces, la entrega precedente condiciona la integración del sucesor; se reserva al menos una actividad de 80 HH con su equipo máximo. En los módulos, el análisis y los contratos de interfaz (A01 y A02) y la integración final se representan como puntos de control: la construcción espera el contrato A02 precedente y la integración espera la entrega precedente. Las actividades de los paquetes posteriores al H5 se detallan por planificación gradual. Para el corte, los ensayos condicionan A06 y no el análisis preparatorio. No se elimina una dependencia por incumplir una fecha programada.
 \item \textbf{Cadena de frío.} Se incluyen banco 2.7.1, mapeo 2.7.2, homologación y compra 8.1.4, contratos 8.2.7, módulos 4.2.1/4.2.2 y piloto 2.7.3. El contrato de banco depende del inicio de la especificación, CC. El piloto espera H4 y cuatro actas parciales de kits; la ola de reparto espera el piloto y las 28 actas. No se exige la instalación de los 28 kits para empezar el piloto de cuatro camiones.
 \item \textbf{CLIENTE.} El cierre de evidencia, la entrega, la revisión y la firma se representan por separado. Se reservan diez días hábiles para revisión (BA, art. 18.3, p. 13). H6 y H11 son comienzos de marcha blanca. Para H7 y H12, la firma autoriza el corte y el registro de producción acredita que el expediente incluye el paso efectivo exigido por el E-25.
 \item \textbf{Holguras.} La pasada inversa considera las restricciones y fechas contractuales. Una holgura negativa obligaría a replanificar sin desplazar el contrato. La holgura de un hito compara el acta y el paso a producción calculados con su límite; la de un paquete también considera su ventana propia y puede ser menor.
@@ -233,6 +215,11 @@ Durante el levantamiento 2.1.5 se acuerdan con la principal cadena el perfil de 
 La Tabla \ref{tab_T15_cpm_detalle} presenta las fechas niveladas, los límites tardíos y las holguras de los 171 paquetes con entregable.
 
 \parte{tablas/tab_T15_cpm_detalle}
+
+\paragraph{Sensibilidad de los hitos}
+La simulación usa distribuciones beta PERT para el esfuerzo de cada paquete con entregable, su equipo máximo y las mismas reglas de precedencia y calendario del CPM lógico. Se preservan las duraciones mínimas de homologación y piloto y se ajustan los cortes a ventanas permitidas. Las cifras se condicionan a los rangos vigentes, al acta integrada y a disponer de los equipos en la fecha de cada tarea. Las muestras usan los inicios nivelados y las disponibilidades de evidencia como fechas mínimas. El modelo propaga atrasos; no reasigna equipos, repite revisiones por subsanación ni modela la aceptación externa. Un resultado de 100 \% indica que todas las muestras cumplieron bajo estos supuestos. Los escenarios agrupados llevan simultáneamente al pesimista los paquetes de integraciones y migración, pruebas de certificación o infraestructura y frío. La Tabla \ref{tab:T15-pert-hitos} presenta sus efectos y los resultados reproducibles del modelo.
+
+\parte{tablas/tab_T15_pert_hitos}
 
 \subsection{Lectura de las secuencias y las restricciones}
 
@@ -277,11 +264,15 @@ Mes contractual & 16 & 21 \\
 
 Cada expediente de aceptación tiene 80 HH del Jefe de Proyecto y del analista PMO. Después de la firma se ejecuta el corte y se incorpora la constancia de producción efectiva al expediente. En H12 se verifica 6.8.6 antes de firmar. El acta de inicio 1.1.3 debe recoger la confirmación escrita de la Contraparte sobre el procedimiento de acta integrada, las ventanas de corte y si la evidencia de 6.8.6 se exige al ingresar H12. Mientras se confirma, las fechas son nominales. Con diez días hábiles adicionales, H7 corta el 31 de mayo sin margen. En H12 la demora supera el margen en dos días hábiles antes de aplicar el congelamiento de inicios de mes. La primera ventana admisible sería el 7 de noviembre, cuatro días hábiles después del límite.
 
+\parte{tablas/tab_T15_subsanacion}
+
+El Jefe de Proyecto prepara la revisión preliminar de la línea base H1 y de los componentes estables del expediente H12. Calidad mantiene la evidencia diaria de marcha blanca y completa su revisión al cierre del período exigido. La revisión preliminar ayuda a prevenir observaciones; el plazo formal se conserva. El acta 1.1.3 recoge la respuesta de la Contraparte sobre el expediente integrado y la posibilidad de completar 6.8.6 durante su revisión. Si la respuesta exige otro orden, Dirección presenta un nuevo calendario antes de aprobar la línea base.
+
 \subsection{Medición de los niveles de atención}
 
 Durante la atención de 04:00 a 22:00 de lunes a sábado y su cobertura 24\ensuremath{\times}7 en los peaks de septiembre y diciembre y ante incidentes críticos en la ventana de despacho, LafroX atenderá al menos el 80 \% de los contactos antes de 20 segundos, resolverá al menos el 70 \% en el primer contacto y mantendrá el abandono en un máximo del 5 \%. Estos resultados se medirán y reportarán mensualmente y activarán las medidas de recalibración y refuerzo previstas en esta sección (BTT, cap. 21, RT-21.06, p. 36; Caso, cap. 15, pp. 26--27).
 
-El Erlang C de la mesa (SD4, Anexo 4-W.7) dimensiona la espera con llegadas de Poisson, atención exponencial y paciencia infinita. Sirve para el 80 \% de respuestas antes de 20 segundos, pero no modela el abandono ni la resolución al primer contacto del RT-21.06 de las Bases Técnicas Transversales (p. 36). Para ambos se aplica medición: desde la marcha blanca de la Etapa 1, la mesa registra por contacto la hora de llegada, de respuesta o de abandono y si se resolvió sin escalar. Con al menos cuatro semanas de registros se calibra un modelo con abandono (Erlang A) usando la paciencia observada, y se recalcula la dotación de 10.1.2 antes del mes 21. La resolución al primer contacto se sostiene con la documentación de la solución y la capacitación de usuarios, y se informa mensualmente. Si un indicador no se cumple durante dos meses seguidos, se aumenta la dotación de la franja afectada sin esperar la revisión anual.
+El Erlang C de la mesa (SD4, Anexo 4-W.7) dimensiona la espera con llegadas de Poisson, atención exponencial y paciencia infinita. Sirve para el 80 \% de respuestas antes de 20 segundos, pero no modela el abandono ni la resolución al primer contacto del RT-21.06 de las Bases Técnicas Transversales (p. 36). Para ambos se aplica medición: desde la marcha blanca de la Etapa 1, la mesa registra por contacto la hora de llegada, de respuesta o de abandono y si se resolvió sin escalar. Con al menos cuatro semanas de registros se calibra un modelo con abandono (Erlang A) usando la paciencia observada, y se recalcula la dotación de 10.1.2 antes del mes 21. La resolución al primer contacto se sostiene con la documentación de la solución y la capacitación de usuarios, y se informa mensualmente. Para el refuerzo nocturno propuesto de 9.3.1 se dimensiona un puesto de primera línea con titular y suplente, seis horas por noche de lunes a sábado y sin superponer la cobertura 24 horas de septiembre. Con corte nominal el 17 de mayo, la propuesta agrega 78, 156, 156, 162 HH en los meses 16 a 19, respectivamente (552 HH en total), imputadas una sola vez a Mesa N1. Sistemas de soporte valida los turnos con SD12 y Dirección confirma la incorporación a línea base y al costo antes de activar el refuerzo. Si un indicador no se cumple durante dos meses seguidos, se aumenta la dotación de la franja afectada sin esperar la revisión anual.
 
 \subsection{Dotación requerida, roles mínimos y dotación declarada}
 
@@ -299,7 +290,7 @@ La implantación tiene un equipo propio, separado de Desarrollo. El área de Imp
 
 La demanda de Desarrollo llega a 33 plazas en el mes 6 y a 34 en el mes 7, durante la construcción de los módulos de la Etapa 1; en el mes 7 corresponde a una de dirección y 33 de construcción. La construcción la cubren 33 personas del grupo: el Líder de Desarrollo, los 27 desarrolladores móviles, front-end y back-end, los dos ingenieros de integración junior y los tres analistas QA junior, que en esos meses participan en la construcción y en las pruebas unitarias de los módulos. Con el Jefe de Proyecto y los dos analistas PMO, los perfiles del grupo suman 36 plazas, dentro de los 48 desarrolladores de planta. En los meses 1 y 2, los paquetes de inicio y los planes de gestión demandan 4,7 y 3,5 plazas de dirección: el Jefe de Proyecto y los dos analistas PMO los preparan con el Líder de Desarrollo y un desarrollador senior, que no tienen carga de construcción antes del mes 5. La asignación diaria se registra por persona, competencia y turno, separada de los servicios continuos.
 
-Entre el 25-10 y el 11-11-2027, los paquetes de pruebas 6.2.1, 6.2.2, 6.3.1 y 6.4.1 requieren al menos 1.049,60 HH dentro del intervalo. Con diez personas de planta durante trece días a 6,4 HH efectivas por día se cubren 832 HH. El plan reserva un mínimo de tres refuerzos de pruebas para ese tramo: aportan 249,60 HH y elevan la capacidad teórica a 1.081,60 HH. Antes de iniciar las pruebas, Calidad debe acreditar los refuerzos y comprobar la disponibilidad diaria para pruebas y servicios simultáneos. Si no puede cubrirlos, se nivela el calendario y se vuelven a comprobar H5 y las ventanas de aceptación.
+Entre el 25-10 y el 11-11-2027, los paquetes de pruebas 6.2.1, 6.2.2, 6.3.1 y 6.4.1 requieren al menos 1.049,60 HH dentro del intervalo. Con diez personas de planta durante trece días a 6,4 HH efectivas por día se cubren 832 HH. El plan reserva un mínimo de tres refuerzos de pruebas para ese tramo: aportan 249,60 HH y elevan la capacidad teórica a 1.081,60 HH. Antes de iniciar las pruebas, Calidad y Dirección validan en el registro de turnos los titulares y suplentes de las diez plazas de planta y de los tres refuerzos. Para cada fecha se registra el paquete, las horas de prueba y las horas comprometidas en otros servicios. La capacidad neta de la campaña debe cubrir 1.049,60 HH y cada jornada debe cubrir los casos asignados. El margen de 32 HH supone disponibilidad completa. Si no puede cubrirlos, se nivela el calendario y se vuelven a comprobar H5 y las ventanas de aceptación.
 
 En cada mes de la implementación, el Jefe de Proyecto, el Líder de Desarrollo y el Líder Funcional tienen 128 HH programadas, la capacidad completa de una persona (sección 4.1). El Jefe de Proyecto dirige la implementación y toma, en las partidas de dirección, parte del trabajo del Analista PMO. El Líder de Desarrollo participa con el Arquitecto de Solución en el diseño de los meses 1 a 4, sigue la construcción y dirige la corrección de defectos de la certificación de la Etapa 1 en los meses 10 a 12. El Líder Funcional cubre el levantamiento, la validación funcional de las versiones desplegadas en QA, la aceptación y las olas; en las pruebas de aceptación y en las marchas blancas toma parte del trabajo de los analistas de pruebas, los jefes de frente y los coordinadores. En la Operación, el Líder de Operación / SRE tiene 128 HH cada mes como gerente de servicio dedicado y toma la mitad del trabajo DevOps de las partidas SRE. Los demás roles mínimos tienen HH todos los meses de su período: el Arquitecto de Solución, el Encargado de Seguridad, el Líder de Calidad y Pruebas y el Líder de Integración por sus partidas continuas, el Líder de Datos durante la implementación y el Líder de Implantación desde el mes 8. Las HH que reemplazan trabajo de otro perfil se traspasan dentro de la misma partida y las 2.889,59 HH restantes se agregan como líneas explícitas de la Tabla \ref{tab:T15-asignacion-partidas}. Cada HH se cuenta una sola vez.
 
@@ -355,6 +346,11 @@ Preparación puede avanzar con datos de prueba una vez aprobados los contratos d
 Cada módulo pasa por análisis y contratos de interfaz, construcción con pruebas unitarias y de contrato, e integración y validación en QA dentro de las fechas de la Tabla \ref{tab_T15_paquetes}. Las pruebas del código y de los contratos se ejecutan con cada cambio durante la construcción. Cada versión desplegada a QA conserva su evidencia de integración. El Anexo 9.E.1 del Subdocumento 9 vincula cada tipo de prueba con la actividad que lo habilita.
 
 Calidad registra por despliegue a QA la versión, el código EDT, la actividad que habilita la prueba, la fecha de ejecución, los resultados, los defectos y la evidencia que se revisa antes de promover la versión. El registro se vincula con las fechas y dependencias del Formulario T-15.
+
+\paragraph{Controles de construcción y entregas a QA}
+El Líder de Desarrollo revisa por quincena las actividades, horas, resultados de pruebas y bloqueos de los paquetes activos. Calidad registra cada versión entregada a QA en la fecha de fin del paquete. Cuando hay entregas, el Líder Funcional y Calidad demuestran las capacidades disponibles en el siguiente control de la misma quincena. El acta identifica versión, paquete EDT y observaciones. La Tabla \ref{tab:T15-controles-qa} y el editable de detalle de GanttProject incluyen estas fechas. Los eventos forman parte del seguimiento y de la entrega ya asignados a cada paquete.
+
+\parte{tablas/tab_T15_controles_qa}
 
 \subsection{Paquetes de esfuerzo continuo}
 

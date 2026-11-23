@@ -221,6 +221,13 @@ def build():
         task(key, name, date_value, pin=pin, note=note)
         return key
 
+    event('INICIO', 'Inicio contractual (supuesto V-12)', START, pin=True)
+    event('ESP:8.1.4', 'Especificación de equipos de frío disponible', START, pin=True,
+          note='Insumo externo del SD4; Arquitectura confirma disponibilidad al inicio.')
+    for code in ('1.1.1', '2.4.1'):
+        link('INICIO', code, 'CC', reason='Arranque contractual')
+    link('ESP:8.1.4', '8.1.4', 'CC', reason='Insumo externo de homologación')
+
     def milestone(h, control, deliver, *, minimum_act=None, fixed_start=False):
         act = deliver if fixed_start else max(after(deliver, REVIEW), minimum_act or deliver)
         event(f'ENT:{h}', f'{h} · Entrega de expediente', deliver, pin=fixed_start)

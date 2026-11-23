@@ -1,0 +1,217 @@
+% !TeX program = lualatex
+\documentclass[11pt,letterpaper]{article}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Heros}
+\usepackage[margin=17mm,top=18mm,bottom=18mm]{geometry}
+\usepackage{array,booktabs,longtable,ragged2e}
+\usepackage[table]{xcolor}
+\usepackage{fancyhdr}
+\usepackage[hidelinks,pdftitle={Trazabilidad de la revisión final del Subdocumento 7}]{hyperref}
+
+\definecolor{tinta}{HTML}{20262C}
+\definecolor{acento}{HTML}{963B13}
+\definecolor{fondo}{HTML}{F8EEE6}
+\definecolor{regla}{HTML}{D6CBC3}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{acento}{\textbf{LafroX}}}
+\fancyhead[R]{\small Subdocumento 7}
+\fancyfoot[L]{\small Revisión final del Informe 2}
+\fancyfoot[R]{\small \thepage}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{15pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\tabcolsep}{5pt}
+\setlength{\LTpre}{5pt}
+\setlength{\LTpost}{0pt}
+\renewcommand{\arraystretch}{1.16}
+\color{tinta}
+
+\newcommand{\tema}[1]{\par{\Large\bfseries #1}\par}
+\newcommand{\cabecera}{\rowcolor{fondo}
+  \textbf{ID / folio} & \textbf{Observación} & \textbf{Solución aplicada} & \textbf{Evidencia}\\}
+\newenvironment{matriz}{%
+  \fontsize{10}{13}\selectfont
+  \begin{longtable}{@{}>{\RaggedRight\arraybackslash}p{.099\linewidth}
+                      >{\RaggedRight\arraybackslash}p{.360\linewidth}
+                      >{\RaggedRight\arraybackslash}p{.329\linewidth}
+                      >{\RaggedRight\arraybackslash}p{.152\linewidth}@{}}
+    \cabecera\endfirsthead
+    \cabecera\endhead
+}{\end{longtable}\normalsize}
+\newcommand{\observacion}[5]{%
+  \rule{0pt}{2.3ex}\textbf{#1}\newline {\footnotesize #2} &
+  #3 & #4 & #5 \\[2pt]\arrayrulecolor{regla}\midrule}
+
+\begin{document}
+{\LARGE\bfseries Trazabilidad de la revisión final\par}
+{\large Plan de trabajo, EDT, cronograma e implantación\par}
+
+Fuente de observaciones \emph{G02 - LAFROX - Revisión Final Informe 2.pdf}.
+La columna «ID / folio» remite al informe evaluador. La evidencia se cita
+con los folios de los entregables vigentes.
+
+Se incluyen las observaciones de corrección y seguimiento del Subdocumento 7 y
+los puntos transversales que afectan a su planificación. Las reiteraciones se
+consolidan. Las celdas de solución y evidencia se dejan en blanco cuando la
+observación sigue abierta o el cumplimiento es parcial.
+
+\tema{EDT y dependencias}
+\begin{matriz}
+\observacion{01}{27--28, 33, 53--54}
+{La EDT se organiza por fases del proceso. Se pide justificar una agrupación por los entregables que recibe el cliente.}
+{Se reorganizó en 10 productos, 60 cuentas de control y 230 paquetes. El criterio es el producto que recibe y acepta la Contraparte Técnica.}
+{SD7, §7.1, pp. 6--11. T-14, §1, pp. 6--9.}
+\observacion{02}{27--28, 33, 53--54}
+{Las etapas separan los módulos, las pruebas y la implantación en ramas de calendario. Se pide usarlas como atributo de los paquetes.}
+{Se agruparon los módulos por dominio y las pruebas por propósito. El diccionario registra la etapa en el período del paquete.}
+{SD7, §7.1.2. T-14, §§1--2.}
+\observacion{03}{28}
+{El paquete 1.2.1 indica «Mes 1 (H1)», aunque H1 corresponde al mes 2.}{}{}
+\observacion{04}{30, 33, 54}
+{Agregar las precedencias faltantes de migración, integraciones con cadenas e innovaciones.}
+{Se enlazó la migración con el modelo de datos y las interfaces, el intercambio con las cadenas con el levantamiento y la habilitación técnica, y las innovaciones con sus entregables previos.}
+{T-15, §6.1, pp. 75--76. Anexo 7.B.}
+\observacion{05}{30, 33, 54}
+{Completar la red para que cada paquete con entregable tenga un vínculo trazable o un arranque justificado.}{}{}
+\observacion{06}{27, 30, 33, 54}
+{Derivar las fechas tempranas, tardías y holguras del CPM desde duraciones y precedencias.}{}{}
+\end{matriz}
+
+\newpage
+\tema{Metodología y estimación}
+\begin{matriz}
+\observacion{07}{25, 27, 29--30, 33, 54}
+{Mostrar iteraciones de dos semanas, con revisiones y demostraciones programadas en la Gantt de construcción.}{}{}
+\observacion{08}{27, 29--30}
+{El desglose de actividades se detiene en H2 y la construcción queda descrita principalmente por paquetes.}
+{Se amplió el desglose hasta H5. Entre H2 y H5 se documentaron 385 actividades de 76 paquetes, con horizontes de trabajo y una secuencia detallada para Recepción.}
+{T-15, §6.1, pp. 69--70 y Tabla 20.}
+\observacion{09}{25, 29--30, 41, 54}
+{Las pruebas se concentran después de la construcción. Se pide que la programación identifique las verificaciones durante el desarrollo.}
+{Se programaron pruebas unitarias y de contrato durante la construcción y se exige registrar evidencia por versión desplegada a QA. El detalle de Recepción identifica esas pruebas en A03--A10.}
+{SD7, §7.2. T-15, §6.1, Tabla 20 y ejemplo 4.1.1.}
+\observacion{10}{30}
+{El cuerpo remite a una duración de iteración que el SD6 no fija en la sección citada.}
+{Se eliminó esa remisión y se alinearon el SD7 y el T-15 con la cascada por etapa descrita en el SD6 corregido. La quincena corresponde al seguimiento del plan.}
+{SD7, §§7.2 y 7.3.8. T-15, §§2 y 6.}
+\observacion{11}{28, 33, 53}
+{Estimar cada módulo con una medida de tamaño derivada del T-12, en lugar de asignar 960 HH a todos.}
+{Se estimaron los 15 módulos desde sus requisitos, flujos, interfaces, dispositivos y necesidades especiales. Se documentaron los elementos, tasas y esfuerzo de cada módulo.}
+{T-15, §4.3, pp. 29--38.}
+\observacion{12}{29, 33, 53}
+{Sustituir los multiplicadores uniformes del PERT por escenarios optimista y pesimista propios de cada paquete.}{}{}
+\observacion{13}{29, 53}
+{Fundamentar las probabilidades de cumplimiento de cada hito a partir de la incertidumbre de su ruta y la holgura disponible.}{}{}
+\end{matriz}
+
+\newpage
+\tema{Recursos y cierre del cronograma}
+\begin{matriz}
+\observacion{14}{29--30, 33, 54}
+{Secuenciar los módulos de la Etapa 1 según sus dependencias y limitar el paralelismo a la capacidad de Desarrollo.}
+{Se programaron tres olas. Los módulos posteriores esperan contratos de interfaz o entregas precedentes, según el caso. El máximo simultáneo en módulos es de 31 personas.}
+{T-15, §§5.1 y 6.1.}
+\observacion{15}{29--30, 33, 53}
+{Cerrar el déficit de 217,60 HH de Calidad y acreditar los refuerzos para la campaña de octubre y noviembre de 2027.}{}{}
+\observacion{16}{29--30, 33}
+{Identificar el área y la fuente de personal para la demanda de Implantación.}
+{Se definieron 9 personas de planta y 18 asistentes contratados por obra o faena para una demanda máxima de 26 plazas. Los jefes de frente supervisan el trabajo.}
+{T-15, §5.7, pp. 66--68. SD7, §7.3.6.}
+\observacion{17}{24, 28}
+{Explicar cómo se nivela y controla la capacidad de los frentes en los meses 13--15 y 19--20.}
+{Se programaron frentes separados en ambos solapamientos. El T-15 contrasta las plazas requeridas con la dotación y el SD6 fija el control semanal de horas por persona y el escalamiento.}
+{SD7, §§7.2.3--7.2.4. T-15, §§3 y 4.4. SD6, «Capacidad en los solapamientos».}
+\observacion{18}{29--30, 33}
+{Conciliar la dedicación de Dirección con la dotación declarada y acreditar una asignación nominal coherente con el SD1 y el Capítulo 12.}{}{}
+\observacion{19}{29, 32--33, 54}
+{Reservar los diez días hábiles de revisión del expediente antes del corte de cada etapa.}
+{Se programaron entrega, revisión, firma y corte como eventos separados. En el escenario nominal los cortes quedan el 17 de mayo y el 18 de octubre de 2028, en los meses 16 y 21.}
+{T-15, §5.5, p. 65. SD7, §§7.3.1--7.3.2.}
+\observacion{20}{29, 32--33, 54}
+{Presentar un cronograma cerrado para H7 y H12, con el procedimiento confirmado por la Contraparte Técnica y una respuesta al escenario de subsanación.}{}{}
+\observacion{21}{41}
+{Ajustar el cronograma para absorber los diez días de subsanación en H1, H7 y H12.}{}{}
+\observacion{22}{36--38, 53}
+{Conciliar la reserva protegida de 3.072 HH del SD7 con la contingencia y la reserva de gestión del SD8, y reflejar las reservas en el cronograma.}{}{}
+\end{matriz}
+
+\newpage
+\tema{Implantación y condiciones de Puelche}
+\begin{matriz}
+\observacion{23}{31, 33}
+{Definir qué ocurre ante un defecto crítico o alto durante el congelamiento de septiembre en la marcha blanca de la Etapa 2.}
+{Se definieron contención, escalamiento, pruebas en Preproducción y corrección autorizada desde el 26 de septiembre. Un incidente crítico o alto abierto impide firmar el cierre.}
+{SD7, §7.3.5, p. 36. T-18, §6, p. 24.}
+\observacion{24}{33}
+{Justificar la exclusión general de despliegues entre el 26 y el 30 de septiembre además del congelamiento total del 1 al 25.}{}{}
+\observacion{25}{31}
+{Explicar en el cuerpo cómo se relacionan los objetivos de reversión de 10 y 40 minutos.}
+{Se precisó que los 10 minutos de reversión técnica transcurren en paralelo con los 30 de preparación operacional. Se agregan hasta 10 minutos de verificación y autorización, para un total de 40.}
+{SD7, §7.3.3, p. 31. T-18, p. 24.}
+\observacion{26}{32}
+{Dar margen suficiente antes del despacho de las 05:30. El horario de decisión de 04:45 deja cinco minutos después de la restauración prevista.}{}{}
+\observacion{27}{33}
+{Cubrir con mesa de ayuda el tramo nocturno de preparación en bodega durante el soporte puente.}{}{}
+\observacion{28}{31}
+{Adelantar la integración de la cadena principal y dejar margen antes de la habilitación exigida para el cierre de la marcha blanca.}
+{El levantamiento fija el perfil de intercambio, el acceso a pruebas y la certificación. La cadena principal se programa desde octubre de 2027 y las demás terminan el 14 de julio de 2028, antes del límite del 31 de agosto.}
+{SD7, §7.2.1, p. 16. T-15, §§5.1 y 6.1.}
+\observacion{29}{32}
+{Precisar qué evidencia se entrega al proveedor de lácteos desde el inicio y antes de H5.}
+{Se establecieron un expediente inicial con registros disponibles, un simulacro de retiro en QA antes de H5 y una repetición con operación real durante la marcha blanca.}
+{SD7, §7.2.1, p. 16. T-14, paquete 1.1.3.}
+\end{matriz}
+
+\newpage
+\tema{Presentación y consistencia documental}
+\begin{matriz}
+\observacion{30}{29--30, 33}
+{Hacer legibles los rótulos, ejes y encabezados de la Gantt y de los frentes a tamaño impreso.}
+{Se publicaron una carta general de 56 meses y una lámina de ocho frentes en horizontal, con rótulos desde 9,7\,pt.}
+{SD7, Figuras 7.4 y 7.6, pp. 19 y 27.}
+\observacion{31}{30}
+{Separar los paquetes agrupados en una misma barra para identificar sus fechas y dependencias.}
+{El detalle del T-14 individualiza las filas por código y usa identificadores para seguir los vínculos entre láminas. La programación de los 171 paquetes se consulta en el T-15.}
+{T-14, §3, pp. 101--164. T-15, §6.1.}
+\observacion{32}{33}
+{Mostrar la ruta crítica de la construcción de la Etapa 1, además del tramo de aceptación final.}
+{La vista crítica muestra tareas de construcción de E1, como Cobro en ruta, rendición y conciliación. El SD7 remite a esa vista y presenta por separado el camino de H12.}
+{T-14, §3, pp. 165--171. SD7, §7.3.1.}
+\observacion{33}{29, 32}
+{Definir las siglas SD4, SD8, PT/H y RC en los documentos que las usan.}
+{Los formularios explican que SD seguido de un número identifica el subdocumento, y definen PT/H y RC. Las láminas generales del capítulo usan nombres de actividades e hitos.}
+{T-14, p. 6. T-15, introducción. T-18, p. 5.}
+\observacion{34}{32--33}
+{Quitar los párrafos de las tablas de cobertura y reversión del cuerpo.}
+{Se dejaron rótulos, criterios y plazos breves en las celdas. Las explicaciones se integraron en los párrafos próximos.}
+{SD7, Tablas 7.2 y 7.8, pp. 10 y 31.}
+\observacion{35}{32--33}
+{Retirar de §7.3.8 las reglas de precios, stock y recuperación que duplicaban contenido técnico.}
+{El apartado quedó dedicado a la línea base, al seguimiento y a los recursos. El T-18 conserva las verificaciones que corresponden a la implantación.}
+{SD7, §7.3.8, p. 40. T-18, p. 25.}
+\observacion{36}{32}
+{Integrar la redacción dispersa de respuesta a observaciones en SD7, T-15 y T-18.}{}{}
+\observacion{37}{32}
+{Eliminar la llamada de la antigua Figura 7.20 a un detalle de H12 que la lámina no contiene.}
+{La Figura 7.3 ordena las precedencias principales por etapa, conserva H1--H12 y remite al Anexo 7.B desde la llamada del texto.}
+{SD7, §7.2.1, pp. 14--15.}
+\end{matriz}
+
+\newpage
+\tema{Anexos y formato de la propuesta}
+\begin{matriz}
+\observacion{38}{33}
+{Separar los supuestos de planificación de los riesgos del proyecto en el Anexo 7.F y conciliarlos con el SD8.}{}{}
+\observacion{39}{32}
+{Reducir el volumen total del capítulo, sus anexos y sus formularios.}{}{}
+\observacion{40}{2, 32, 54}
+{Aplicar foliación correlativa a la oferta final consolidada.}{}{}
+\observacion{41}{26}
+{Unificar la fecha de emisión del SD6, el SD7 y sus formularios, o identificar las versiones en un registro de cambios.}{}{}
+\observacion{42}{2, 54}
+{Acreditar una revisión humana técnica de las secciones del capítulo con uso declarado de IA.}{}{}
+\end{matriz}
+\end{document}

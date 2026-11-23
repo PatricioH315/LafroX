@@ -669,6 +669,10 @@
 \pagestyle{lafrox}
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \pagenumbering{arabic}
+% Un envoltorio de compilación puede fijar el folio inicial de este bloque.
+\ifdefined\LFXprimerfolio
+  \AddToHook{begindocument/end}{\setcounter{page}{\LFXprimerfolio}}
+\fi
 
 % Marca de agua de borrador, al fondo y muy tenue.
 %  Se salta el folio 1. Mientras la portada fue una cuna oscura a sangre la

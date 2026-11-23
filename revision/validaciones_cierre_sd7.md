@@ -59,3 +59,52 @@ La evidencia local está en `tmp/sd7-cierre-ramas/doble-duracion`. Desde la raí
 - SD6 (85f83505), SD11 (65a89608) y SD12 (a33dea8e): el contraste de aceptación, restauraciones y asignación por rol resultó conforme. El diccionario T-14 y la tabla de asignación de SD12 coinciden en 63 paquetes para SRE, 33 para JP, 33 para Implantación, 27 para Desarrollo, 20 para Arquitectura, 19 para Calidad, 18 para Seguridad y 17 para Datos.
 - El control de Excel y E2 queda en la nota de HH mensuales. La curva contiene 56 filas y su acumulado es 203.548,63 HH. El presupuesto de la EDT conserva 203.548,62 HH.
 - Se repitió la generación de la red. Coincidieron sus archivos de datos, las tablas de hitos y CPM, las 171 ventanas por código y los archivos .gan nominales, con el mismo inventario de 230 paquetes y la misma línea base.
+
+## Cierre de observaciones de la revisión final
+
+### Emisión y fuentes de cálculo
+
+- Fecha de emisión de la oferta: 25 de noviembre de 2026. El SD6 de la referencia local
+  `origin/LafroX-Subdoc6-LateX-corrigiendo` (da5be2fb) fija esa fecha en su portada y en
+  la clase de la que heredan T-9 y T-10. SD7, Anexos, T-14, T-15 y T-18 la declaran
+  en sus archivos de portada. La revisión de SD7 parte de e977124f con los cambios
+  de cierre de esta revisión.
+- El CPM lógico y la simulación se reproducen con
+  `python -B revision/cpm_y_riesgo_sd7.py --output-dir tmp/sd7-implementar/cpm`.
+  Su JSON conserva las fechas tempranas, tardías y niveladas, las holguras, la semilla
+  PERT y los escenarios con subsanación. Los resultados dependen de las estimaciones
+  y disponibilidades vigentes. El recálculo no sustituye la carta nivelada.
+- Los controles quincenales se generan con
+  `python -B revision/controles_construccion_sd7.py --output-dir tmp/sd7-implementar/controles`.
+  La exportación CSV de GanttProject 3.3 confirmó las fechas y duraciones de las 292
+  filas originales y los 35 hitos añadidos. El detalle conserva sus ID anteriores.
+
+### Foliación para la integración de la oferta
+
+El compilador del bloque recibe el folio inicial mediante un envoltorio LaTeX
+como el siguiente. El resultado local habitual conserva su numeración propia.
+
+    \def\LFXprimerfolio{137}
+    \input{LAFROX-Subdocumento7.tex}
+
+Compilar el envoltorio con LuaLaTeX hasta estabilizar sus índices. El integrador
+asigna a cada archivo el siguiente folio disponible según su orden en la oferta
+y valida las páginas impresas, el índice maestro y los enlaces del consolidado.
+
+### Evidencia necesaria para actualizar la matriz
+
+- La consulta de la Contraparte sobre H7/H12 permanece preparada en este registro.
+  El escenario de diez días de subsanación lleva H1 al 07-04-2027 y H12 al
+  07-11-2028. H7 llega al 31-05-2028 sin margen. La tabla de T-15 fija además
+  la última fecha de ingreso compatible con ambos plazos, para evaluar alternativas.
+- Calidad requiere los turnos disponibles de sus titulares y refuerzos; Dirección
+  confirma sus dedicaciones con SD1, SD12 y T-8. La ampliación de mesa nocturna
+  suma 552 HH propuestas en los meses 16–19, separadas de la base de 9.336 HH.
+  Antes de activarla se confirma la asignación por turno y la imputación de las HH.
+- El ensayo de reversión debe dejar listos los 96 despachos a las 05:25 como
+  máximo. El tiempo registrado determina si la decisión provisional de las
+  04:30 es suficiente. Se conserva la evidencia del ensayo y la conformidad del
+  responsable de Operaciones.
+- El alcance de la cascada con controles quincenales se presenta al evaluador
+  para su aceptación. Los responsables de cada materia registran la revisión
+  humana técnica cuando la ejecuten, con fecha, comprobaciones y evidencia.
