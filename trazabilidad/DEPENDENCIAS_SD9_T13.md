@@ -2,6 +2,12 @@
 
 Esta lista identifica cambios para la rama `LafroX-Subdoc9-LateX-corrigiendo`. No modifica esa rama ni representa pruebas ejecutadas. El contraste usa la matriz T-13 del commit `0c57a4bb`, el T-14 del SD7 `68669bef`, el SD4 `69c9a879` y el T-12 de esta carpeta; antes de regenerar debe fijarse el commit definitivo del SD3. Los cambios de SD4 desde `2d508f46` afectan referencias, foliación y herramientas de comprobación; no convierten la lectura preliminar en un cotejo semántico completo. Se incorporó en RT-21.21 la actualización remota del SD3 `40d415db`, coincidente con la nueva matriz T-13 y el resumen de T-15.
 
+## Punto 4: seguridad, certificaciones y operación
+
+- RT-15.08 figura como «Cumple» en T-12 y T-13. La verificación prevista coteja cargo, credencial, dedicación por fase y meses de participación por persona entre T-8, sección 1, y los Anexos 12.B a 12.D.
+- RNF-14.01, RT-11.08, RT-15.07 y RT-21.03 figuran como parciales en ambos formularios. El T-13, sección 8.2, precisa las verificaciones previstas. Para el cierre se requiere confirmación de TLS por enlace, las constancias admitidas por el ejercicio y el cuadrante nominal del Anexo 10.D, B-02. RT-21.03 remite a 10.1.1, 10.1.2 y 10.1.4 del T-14.
+- La matriz T-13 del punto 4 se genera desde la revisión SD3 73e6b41d.
+
 ## Estados y alcances
 
 Actualizar de «Cumple» a «Cumple parcialmente» las fichas siguientes, conservando el detalle de la parte cubierta y de la brecha:
