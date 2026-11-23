@@ -21,13 +21,13 @@
 \contentsline {section}{8. Automatización}{22}{table.8.15}%
 \contentsline {subsection}{8.1 Criterio}{22}{table.8.15}%
 \contentsline {subsection}{8.2 Tamaño estimado del catálogo}{22}{table.8.15}%
-\contentsline {subsection}{8.3 Duración de la regresión}{250}{table.8.45}%
-\contentsline {section}{9. Calendario}{251}{table.8.46}%
-\contentsline {subsection}{9.1 Implementación}{251}{table.8.46}%
-\contentsline {subsection}{9.2 Marchas blancas y soporte puente}{254}{table.8.47}%
-\contentsline {subsection}{9.3 Operación (meses 21 a 56)}{254}{table.8.48}%
-\contentsline {section}{10. Defectos}{255}{table.8.49}%
-\contentsline {section}{11. Roles}{256}{table.8.50}%
-\contentsline {section}{12. Informes de prueba}{257}{table.8.51}%
-\contentsline {section}{Referencias}{258}{table.8.52}%
+\contentsline {subsection}{8.3 Duración de la regresión}{249}{table.8.45}%
+\contentsline {section}{9. Calendario}{250}{table.8.46}%
+\contentsline {subsection}{9.1 Implementación}{250}{table.8.46}%
+\contentsline {subsection}{9.2 Marchas blancas y soporte puente}{253}{table.8.47}%
+\contentsline {subsection}{9.3 Operación (meses 21 a 56)}{253}{table.8.48}%
+\contentsline {section}{10. Defectos}{254}{table.8.49}%
+\contentsline {section}{11. Roles}{255}{table.8.50}%
+\contentsline {section}{12. Informes de prueba}{256}{table.8.51}%
+\contentsline {section}{Referencias}{257}{table.8.52}%
 \contentsfinish 
