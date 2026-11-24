@@ -20,7 +20,7 @@ La matriz cruza las observaciones de la primera revisión del Informe 2 con los 
 
 \section*{Cotejo vigente de pruebas, criterios y paquetes}
 
-Al 23 de noviembre de 2026, el cotejo del T-12 \texttt{30f4b592} y del T-13 generado desde esa revisión confirma 653 identificadores, 644 fichas y nueve alias. El T-13 cuenta 1.223 casos por requisito y 105 por contrato de integración. Coinciden los estados y paquetes declarados. En el T-12 se reemplazaron 336 criterios genéricos y las 22 filas «No cumple» figuran sin prueba prevista. Este cotejo comprueba la trazabilidad documental de los casos previstos.
+Al 23 de noviembre de 2026, el cotejo del T-12 \texttt{1763cabf} y del T-13 generado desde esa revisión confirma 653 identificadores, 644 fichas y nueve alias. El T-13 cuenta 1.223 casos por requisito y 105 por contrato de integración. Coinciden los estados y paquetes declarados. En el T-12 se reemplazaron 336 criterios genéricos y las 22 filas «No cumple» figuran sin prueba prevista. Este cotejo comprueba la trazabilidad documental de los casos previstos.
 
 \begin{longtable}{@{}P{0.21\textwidth}P{\dimexpr0.79\textwidth-2\tabcolsep\relax}@{}}
 \hline
@@ -35,7 +35,7 @@ Al 23 de noviembre de 2026, el cotejo del T-12 \texttt{30f4b592} y del T-13 gene
 \endfoot
 RF-17.09 & El T-12 y T-14, paquete 3.3.6, exigen editar la plantilla con perfil administrador y comprobar los datos en PDF, DOCX y XLSX. El criterio de T-13 omite la edición. Incorporarla a la comprobación prevista. \\
 RF-18.03 & El T-12 exige registro de entrega, apertura y error; el criterio de T-13 resume registro y reintento. Precisar la comprobación por canal y la brecha de apertura de SMS cuando el proveedor no informa el evento. \\
-RNF-14.01 & El T-13 incorpora la aceptación del T-12 junto al criterio normativo. El Anexo 4-R inventaría los tramos con su respaldo pendiente. La API HTTPS de SES tiene compatibilidad documentada. AWS describe TLS 1.2 para tramos de Social. El equipo del proyecto informa compatibilidad del ERP con TLS 1.3. Falta incorporar el respaldo original, con su fecha y ambiente, y acreditar los extremos de terceros aplicables. \\
+RNF-14.01 & SD4, T-12 y T-13 exigen TLS 1.3 por tramo. Se incorpora la compatibilidad informada del ERP. En INT-11, Graph API admite TLS 1.3 para el envío directo a Meta. Quedan pendientes la compatibilidad del webhook, la conciliación de costos del canal y la acreditación de los demás tramos aplicables. \\
 RT-06.06, RT-11.25 y RT-18.09 & El criterio repite la descripción. Explicitar la evidencia que se cotejará para obra civil, tratamiento de datos de prueba y responsabilidad por resultados, respectivamente. \\
 RT-16.19 y RT-16.29 & El paquete 5.2.4 del T-14 verifica avisos y reintentos; el 3.3.2 verifica auditoría de stock, lotes y cobros. Cotejar la generación documental de RT-16.19 con 3.3.6 y la respuesta de RF-17.09. Identificar el paquete que cubre la exportación asíncrona sin bloqueo de sesión en RT-16.29. \\
 RT-16.14 & El paquete 3.3.4 cubre el motor de reglas. La misma fila exige vincular la prueba de entrega con la guía y su acuse. Contrastar también el alcance de 4.3.3 y 5.1.1 y separar ambas verificaciones dentro del caso previsto. \\

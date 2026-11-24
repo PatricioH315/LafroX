@@ -6,7 +6,7 @@ Este registro reúne las dependencias vigentes para la rama de corrección del S
 
 - RT-15.08 figura como «Cumple» en T-12 y T-13. El cotejo documental del T-8 y los Anexos 12.B a 12.D de SD12 (rama de corrección, `69a17f01`) vincula las nueve personas con credenciales a su cargo, perfil, dedicación declarada y período. El décimo integrante, Rodrigo Valdés, figura asignado a Integración sin certificación exigida. Se conserva RT-15.08/P01 como prueba prevista.
 - RNF-14.01, RT-11.08 y RT-21.03 figuran como parciales en ambos formularios. El T-13, sección 8.2, precisa las verificaciones previstas. Para cerrar RT-21.03 se requiere la validación del cuadrante nominal del Anexo 10.D, B-02, que ya distingue responsables de coordinación y puestos de guardia. RT-21.03 remite a 10.1.1, 10.1.2 y 10.1.4 del T-14.
-- La matriz T-13 vigente se genera desde la revisión SD3 `30f4b592`. RNF-14.01 publica en su ficha individual el criterio normativo del catálogo y la aceptación por tramo del T-12.
+- La matriz T-13 vigente se genera desde la revisión SD3 `1763cabf`. RNF-14.01 publica en su ficha individual el criterio normativo del catálogo y la aceptación por tramo del T-12.
 
 ### Solicitud de aclaración al evaluador
 
@@ -26,7 +26,7 @@ El Anexo 4-H del SD4 identifica las interfaces y el Anexo 4-R contiene la polít
 
 | Enlace | Respaldo disponible | Dato que debe confirmar el responsable |
 |---|---|---|
-| INT-06, ERP 2017–ACL de Talca | T-11 y Anexo 4-H identifican la ACL en VM-04. El ERP se conserva y sus interfaces requieren levantamiento. La salida ACL–SQS es otro tramo. AWS documenta TLS 1.2 como mínimo y recomienda 1.3. [Protección de datos de Amazon SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/data-protection.html) | El 23 de noviembre de 2026, Leandro informó que cuenta con la confirmación del equipo del ERP y que coincide con TLS 1.3 para ERP–ACL de Talca. Queda pendiente incorporar la referencia original, su fecha, el ambiente y la configuración habilitada si se conoce. La versión negociada se registra al ejecutar el ensayo previsto del T-13. |
+| INT-06, ERP 2017–ACL de Talca | T-11 y Anexo 4-H identifican la ACL en VM-04. El ERP se conserva y sus interfaces requieren levantamiento. La salida ACL–SQS es otro tramo. AWS documenta TLS 1.2 como mínimo y recomienda 1.3. [Protección de datos de Amazon SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/data-protection.html) | El 23 de noviembre de 2026, Leandro informó que cuenta con la confirmación del equipo del ERP y que coincide con TLS 1.3 para ERP–ACL de Talca. La oferta exige TLS 1.3. El ensayo previsto del T-13 registrará la configuración y versión negociada por ambiente, por separado para ERP–ACL y ACL–SQS. |
 | INT-07, DTE y estados | El ERP sigue siendo el emisor. El SII documenta ambientes de certificación y producción para consulta de estado de envío. [Manual del SII](https://www.sii.cl/factura_electronica/factura_mercado/estado_envio.pdf) | Integración: separar el tramo de la solución del tramo operado por el ERP, identificar a su dueño y confirmar el alcance del requisito en cada extremo. |
 | INT-08, EDI por cadena | El Anexo 4-R declara TLS 1.3 para la entrada AS2 de LafroX. | Integración y M11: confirmar por cadena y por dirección el extremo, el perfil AS2 y la versión admitida. |
 | INT-09, pasarela de pago | Anexo 4-H identifica M7 y T-11 enumera Transbank. Webpay publica los hosts de integración y producción. Falta identificar el producto de M7. [Ambientes de Transbank](https://transbankdevelopers.com/documentacion/como_empezar) | Integración y M7: confirmar producto, ambiente y extremo exacto con el proveedor. Registrar el respaldo para ese producto. |
@@ -36,6 +36,16 @@ El Anexo 4-H del SD4 identifica las interfaces y el Anexo 4-R contiene la polít
 | INT-11, AWS End User Messaging Social | AWS describe TLS 1.2 en las comunicaciones con aplicaciones y Meta. Para la API indica TLS 1.2 o posterior como requisito de cliente. | Arquitectura y Notificaciones: precisar ambos tramos. Si el tramo documentado con TLS 1.2 queda en alcance, confirmar si hay una modalidad compatible. Si no existe, registrar la brecha y evaluar una alternativa con TLS 1.3 que preserve la función de aviso y su trazabilidad. [Cifrado en tránsito de AWS End User Messaging Social](https://docs.aws.amazon.com/social-messaging/latest/userguide/data-protection.html#data-encryption-in-transit) |
 | INT-15, telemetría existente | El Anexo 4-H identifica una API de solo lectura para M12. | M12: confirmar proveedor, versión de la API y TLS del extremo existente. |
 | Otras dependencias y enlaces internos | T-11 identifica Intune/Zebra, Falcon y GuardDuty. Microsoft publica los extremos de Intune. El Anexo 4-R documenta el transporte de los enlaces internos. [Extremos de Microsoft Intune](https://learn.microsoft.com/en-us/intune/fundamentals/endpoints) | Arquitectura: completar el inventario de extremos, incluir MDM y EDR, y registrar el protocolo aplicable. Separar los túneles IPsec/IKE de las sesiones TLS que transporten. |
+
+### Evaluación de WhatsApp Cloud API directa
+
+| Tramo o comprobación | Resultado y condición para adoptar |
+|---|---|
+| Envío LafroX → Meta | Graph API admite TLS 1.3. Exigir TLS 1.3 desde el trabajador de notificaciones y conservar la prueba prevista de la versión negociada y del certificado válido. [Seguridad de Graph API](https://developers.facebook.com/docs/graph-api/guides/secure-requests/) |
+| Retorno Meta → LafroX | Meta documenta HTTPS, firma de eventos y reintentos. Falta una referencia explícita de TLS 1.3 para el retorno o un webhook real de prueba que llegue a una entrada configurada exclusivamente con TLS 1.3. Cotejar el identificador del mensaje, entrega, lectura cuando se informe y error, con deduplicación y verificación de firma. [Webhooks de Meta](https://developers.facebook.com/docs/graph-api/webhooks/getting-started/) |
+| Volumen y costo | La hoja PROVEEDORES, fila 108, conserva AWS End User Messaging Social y deja el precio según plantilla y destino. Los 2.800/5.200 avisos diarios de INT-11 agregan todos los canales. Para conciliar Meta directa, separar la cuota de WhatsApp, proyectar mensajes facturables entregados por mes y multiplicarlos por la tarifa de utilidad del mercado del destinatario y tramo de volumen correspondientes. Registrar proveedor, costo unitario y tratamiento variable en la Oferta Económica cuando proceda. [Tarifas oficiales de Meta](https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing/) |
+
+La evaluación se incorpora a 4-R. INT-11 conserva el proveedor ofertado mientras falten el respaldo del retorno y la conciliación económica. Su uso de TLS 1.2 se registra como brecha. Los dos requisitos permanecen parciales.
 
 ### Expediente de certificaciones del Sobre 1
 
@@ -86,7 +96,7 @@ El T-12 `0167f99d`, el T-13 `a85b1dac` y el diccionario del T-14 `b3113e46` son 
 |---|---|
 | RF-17.09 | Incorporar al criterio del T-13 la edición de plantillas por el administrador, ya exigida por T-12 y el paquete 3.3.6. Mantener la generación y verificación en los tres formatos. |
 | RF-18.03 | Incorporar al criterio del T-13 el registro de entrega, apertura y error. Verificar los estados según el canal y consignar la limitación de apertura de SMS. |
-| RNF-14.01 y SD3-15 | El criterio individual del T-13 ya muestra el alcance del T-12. Seguridad y Arquitectura deben acreditar los extremos del inventario 4-R, incluidas las versiones del ERP y los terceros. Si se mantiene una excepción, documentar el tramo y su transición antes de cerrar SD3-15. |
+| RNF-14.01 y SD3-15 | El criterio individual del T-13 ya muestra el alcance del T-12. Seguridad y Arquitectura deben acreditar los extremos del inventario 4-R, incluidas las versiones del ERP y los terceros. Cualquier tramo exigido sin compatibilidad respaldada queda como brecha. Registrar su resolución antes de cerrar SD3-15. |
 | RT-06.06, RT-11.25 y RT-18.09 | Describir en el criterio el documento o resultado que se comprobará. Ahora las tres filas reproducen su descripción. |
 | RT-16.19 | El T-12 cita 5.2.4, cuyo entregable es la integración de avisos. Contrastar el requisito de plantillas con 3.3.6 y conciliar el alcance de formatos con RF-17.09. |
 | RT-16.29 | El T-12 cita 3.3.2, cuyo entregable es auditoría de stock, lotes y cobros. Identificar el paquete que cubre la exportación asíncrona y su aviso sin bloquear la sesión. |
