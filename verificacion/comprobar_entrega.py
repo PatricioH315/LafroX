@@ -43,7 +43,7 @@ for stem in ("LAFROX-Subdocumento10", "LAFROX-Subdocumento10-Anexos"):
         assert normalize("Introducción a los Servicios") in full
         assert normalize("Hardware no crítico") in full
         assert normalize("resolución en 24 h") in full
-        for term in ("10.3.3", "H3/M6", "diez días hábiles", "carga intacta", "metodología propuesta", "casa matriz de Talca"):
+        for term in ("10.3.3", "H3/M6", "diez días hábiles", "carga intacta", "no reduce el denominador", "casa matriz de Talca"):
             assert normalize(term) in full, (stem, term)
     else:
         for number in range(1, 10):

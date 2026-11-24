@@ -1,0 +1,55 @@
+{
+  "proyecto": "LafroX",
+  "fecha": "2026-11-23",
+  "antecedente": "Decisiones de diseño adoptadas por LafroX por instrucción del usuario, sin comunicación con el CLIENTE. No acredita aprobación, contratación ni pruebas reales.",
+  "decisiones": [
+    {
+      "id": "CD-ERP",
+      "estado": "limite_residual",
+      "responsables": "ARQ/SRE/Integración",
+      "decision": "Preemisión al cierre de carga, verificación previa a 05:30, emisor único e idempotencia; no se presupone réplica ERP.",
+      "verificacion": "AL-DTE-01 separa retención segura de las 96 salidas; persiste limitación con emisor perdido y carga modificada.",
+      "evidencia_ejecucion": []
+    },
+    {
+      "id": "CD-RPO",
+      "estado": "limite_residual",
+      "responsables": "ARQ/SRE",
+      "decision": "Tres caminos, alarma de edad externa a 5/15 min, QoS de réplica, outbox y medición del punto externo.",
+      "verificacion": "AL-DR-01 verifica RPO sin dispensar el escenario de aislamiento total y destrucción ni reducir autonomía local.",
+      "evidencia_ejecucion": []
+    },
+    {
+      "id": "CD-TLS",
+      "estado": "criterio_adoptado",
+      "responsables": "SEG/Integración",
+      "decision": "TLS 1.3 obligatorio por tramo; eliminación de excepción TLS 1.2 y rechazo de negociación inferior.",
+      "verificacion": "Interoperabilidad por interfaz, rechazo de protocolo inferior y certificado inválido; compatibilidad ERP aún no ensayada.",
+      "evidencia_ejecucion": []
+    },
+    {
+      "id": "CD-SLA",
+      "estado": "criterio_adoptado",
+      "responsables": "Gerente de servicio",
+      "decision": "T=T0; mantenimiento aprobado solo se excluye de I; respuesta y restauración en tiempo corrido.",
+      "verificacion": "Casos de intervalos reproducibles en verificacion/casos_sla.json y ficha de 10.B.",
+      "evidencia_ejecucion": []
+    },
+    {
+      "id": "CD-MESA",
+      "estado": "criterio_adoptado",
+      "responsables": "Operación/responsable de oferta",
+      "decision": "Reserva C en seis peaks: 2010 HH mesa y 308 HH NOC sobre la base, responsabilidad LafroX sin cargo adicional.",
+      "verificacion": "Conciliación interna por perfil, mes y costo, cuadrante nominal, calibración 4 semanas y aceptación de tres indicadores.",
+      "evidencia_ejecucion": []
+    },
+    {
+      "id": "CD-UI",
+      "estado": "verificacion_por_etapa",
+      "responsables": "CAL/interfaces",
+      "decision": "Avance de prototipo en Informe 3 y completo en oferta final; actas de ejecución en su etapa, BTT 1.5.",
+      "verificacion": "AL-UI-01 verifica perfiles y flujos reales sin hallazgos A/AA abiertos; no se presume ensayo ejecutado.",
+      "evidencia_ejecucion": []
+    }
+  ]
+}

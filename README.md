@@ -35,3 +35,14 @@ La redacción reúne lo respaldado por las fuentes publicadas y reproduce las hi
 Se integró el trabajo local pendiente con `origin/LafroX-Subdoc10-LateX-corrigiendo`, preservando la portada y la declaración existente. El modelo compara cotas por franja y alternativas A/B/C de 13/14/15 plazas, sin atribuir su contratación. La base de 36 meses reproduce 38.246 HH de mesa del T-15. La calibración, los turnos nominales, los acuerdos y las actas de ejecución siguen requiriendo evidencia real.
 
 Si `latexmk` no dispone de Perl, ejecutar LuaLaTeX tres veces para cada raíz, conservando sus nombres de trabajo. `verificacion/comprobar_calculos.py --sd4-audit RUTA/cobertura.json` contrasta los calendarios y las cotas calculados independientemente en SD4. La verificación de entrega actualiza las huellas de los PDF compilados; no acredita revisión humana ni ensayos en una instalación.
+
+
+## Control de coherencia entre subdocumentos
+
+Ejecutar `python verificacion/verificar_coherencia_interdocumental.py --workspace RUTA_PROYECTO --output RUTA_RESULTADO.json` con los checkouts LaTeX vigentes de SD4 y SD5 disponibles. Comprueba el motor de la Figura 1 y su XML editable, la vigencia de reparto, las citas, el alcance de restauraciones y los casos de medición del SLA. El registro `trazabilidad/cierres_interdocumentales.json` distingue criterios adoptados, límites residuales y verificación por etapa; no exige consultas al CLIENTE para decidir el diseño. Se adopta calendario SLA íntegro y reloj corrido, TLS 1.3 sin excepción automática y reserva C de mesa en los seis peaks (2.010 HH mesa y 308 HH NOC adicionales, a cargo de LafroX). La compatibilidad real, el cuadrante, la conciliación económica y los ensayos requieren su evidencia; el registro no acredita contrataciones, aprobación humana ni pruebas ejecutadas. La limitación física de RPO y la dependencia del emisor tributario se conservan explícitas.
+
+
+El contraste posterior al pull de las trece ramas LaTeX está registrado en `trazabilidad/contraste_bases_subdocumentos_20261123.json`, con los commits, las bases aplicables y los efectos internos para T-12, T-15/SD12 y la oferta económica. Las decisiones se toman dentro de LafroX; no se iniciaron consultas al CLIENTE. Los PDF finales se verifican mediante los tres programas de `verificacion/`, sin atribuir pruebas en Producción ni revisión humana adicional.
+
+
+Pull previo a publicación (23 de noviembre de 2026): se integró 6a037715, conservando las tablas nuevas de coordinación/guardias y distinguiendo la base T-15 de la reserva C en el relevo NOC. Se regeneró el anexo desde las fuentes combinadas para resolver el conflicto del PDF.

@@ -1,0 +1,151 @@
+{
+  "proyecto": "LafroX",
+  "fecha": "2026-11-23",
+  "alcance": "Fetch general y pull de las 13 ramas LaTeX vigentes de subdocumentos; no se cambiaron ramas ni publicaron commits. Fuentes de subdocumentos LaTeX/PDF; bases y aclaraciones Markdown.",
+  "fuentes": [
+    {
+      "sd": 1,
+      "checkout": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\tmp\\lafrox-revision-sd4-20261114\\SD1",
+      "rama": "LafroX-Subdoc1-LateX-CORRIGIENDO",
+      "commit": "6f1ab539a654fc8906c39142fe44a9bf0fc30a3b",
+      "origin_integrado": true,
+      "conflictos": false,
+      "criterio_aplicable": "Capacidad corporativa y operación; sus centros propios no sustituyen los emplazamientos específicos AWS de SD4."
+    },
+    {
+      "sd": 2,
+      "checkout": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\tmp\\lafrox-revision-sd4-20261114\\SD2",
+      "rama": "LafroX-Subdoc2-LateX-CORRIGIENDO",
+      "commit": "fcf76ff5e5bd48934a4363aa021d5b62b4db07a0",
+      "origin_integrado": true,
+      "conflictos": false,
+      "criterio_aplicable": "ERP de 2017 excluido de reemplazo/modificación; RTO 4 h y RPO 15 min como objetivos de continuidad."
+    },
+    {
+      "sd": 3,
+      "checkout": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\tmp\\lafrox-revision-sd4-20261114\\SD3",
+      "rama": "LafroX-Subdoc3-LateX-CORRIGIENDO",
+      "commit": "985198677937642ee224802ccbfca74abfc01c60",
+      "origin_integrado": true,
+      "conflictos": false,
+      "criterio_aplicable": "T-12 actual incorpora pruebas por requisito y cambia folios; TLS figura parcial y conserva referencia a excepción ahora retirada en SD4."
+    },
+    {
+      "sd": 4,
+      "checkout": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\tmp\\sd4-corrigiendo-integracion",
+      "rama": "LafroX-Subdoc4-LateX-corrigiendo",
+      "commit": "86f4732b75f03a40d79b7c27b563f314b54de2f0",
+      "origin_integrado": true,
+      "conflictos": false,
+      "criterio_aplicable": "Tres caminos y autonomía local, preemisión y emisor único; escenario combinado y ERP sin réplica conservan límites explícitos.",
+      "nota_integracion": "Pull adicional previo al commit correcciones varias; incorporadas las fuentes nuevas sin descartar cambios locales."
+    },
+    {
+      "sd": 5,
+      "checkout": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\tmp\\lafrox-revision-sd4-20261114\\SD5",
+      "rama": "LafroX-Subdoc5-LateX-CORRIGIENDO",
+      "commit": "a889e47952206b19f504c611367873771969ff93",
+      "origin_integrado": true,
+      "conflictos": false,
+      "criterio_aplicable": "Propiedad y retención por dominio; identidad de reparto debe cubrir 14,5 h de ruta con cota de 16 h, sin cambiar mínimo offline de 14 h."
+    },
+    {
+      "sd": 6,
+      "checkout": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\tmp\\lafrox-revision-sd4-20261114\\SD6",
+      "rama": "LafroX-Subdoc6-LateX-corrigiendo",
+      "commit": "dbaf3fc49fa7bfe3453b89fa7717e4ab1702a755",
+      "origin_integrado": true,
+      "conflictos": false,
+      "criterio_aplicable": "Comité mensual y transferencia por evidencia efectivamente obtenida; no presumir acuerdos o reuniones ejecutadas."
+    },
+    {
+      "sd": 7,
+      "checkout": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\tmp\\lafrox-revision-sd4-20261114\\SD7",
+      "rama": "LafroX-Subdoc7-LateX-CORRIGIENDO",
+      "commit": "b3113e469ef66caa15094aea09541d91aaa973f1",
+      "origin_integrado": true,
+      "conflictos": false,
+      "criterio_aplicable": "T-14/T-15 aportan paquetes, base de 38.246 HH de mesa y 13 plazas máximas; reserva C es incremento separado, no contenido preexistente."
+    },
+    {
+      "sd": 8,
+      "checkout": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\tmp\\pull-subdocs-20261123\\SD8",
+      "rama": "Lafrox_Subdocumento_8_Latex_Revision",
+      "commit": "1c171d7b9fe1d20bd938aaa6a3c5f16c7b242236",
+      "origin_integrado": true,
+      "conflictos": false,
+      "criterio_aplicable": "R-034 distingue emisor ERP y seguridad documental; declarar riesgo no demuestra continuidad de 96 salidas."
+    },
+    {
+      "sd": 9,
+      "checkout": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\tmp\\lafrox-revision-sd4-20261114\\SD9",
+      "rama": "LafroX-Subdoc9-LateX-corrigiendo",
+      "commit": "c0d138cde246112e74c80ce5c4095ad0e20fb5af",
+      "origin_integrado": true,
+      "conflictos": false,
+      "criterio_aplicable": "Septiembre/diciembre: sin despliegue ordinario y restauración sintética aislada; ensayo no equivale a restauración de copia productiva."
+    },
+    {
+      "sd": 10,
+      "checkout": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\LafroX-Subdoc10-LateX-corrigiendo",
+      "rama": "LafroX-Subdoc10-LateX-corrigiendo",
+      "commit": "6a0377151909fd52c1fb8e437c7d3802a96fa147",
+      "origin_integrado": true,
+      "conflictos": false,
+      "criterio_aplicable": "Medir función completa; explicitar alcance de guías, reloj, exclusión, refuerzo por franja y evidencia por etapa.",
+      "nota_integracion": "Pull adicional previo al commit correcciones varias; incorporadas las fuentes nuevas sin descartar cambios locales."
+    },
+    {
+      "sd": 11,
+      "checkout": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\tmp\\pull-subdocs-20261123\\SD11",
+      "rama": "LafroX-Subdoc11-LateX-CORRIGIENDO",
+      "commit": "3c87f8bc532214ac12d51267a882d8c2ed3048bc",
+      "origin_integrado": true,
+      "conflictos": false,
+      "criterio_aplicable": "Reloj sin pausa automática por terceros; recuperación de transacción, simulacros semestrales y restauraciones mensuales con su alcance."
+    },
+    {
+      "sd": 12,
+      "checkout": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\tmp\\pull-subdocs-20261123\\SD12",
+      "rama": "LafroX-Subdoc12-LateX-CORRIGIENDO",
+      "commit": "69a17f01d3409696a7489bce8ce55139a286f006",
+      "origin_integrado": true,
+      "conflictos": false,
+      "criterio_aplicable": "Nominaciones, terceros y base de 7 a 13 plazas; no atribuir 15 plazas a T-8/T-15 sin registrar el refuerzo aparte."
+    },
+    {
+      "sd": 13,
+      "checkout": "D:\\Usuario\\Documents\\Proyecto_Lafrox\\tmp\\lafrox-revision-sd4-20261114\\SD13",
+      "rama": "LafroX-Subdoc13-LateX-corrigiendo",
+      "commit": "3aa2fc98e46d828aa5a7b4bc366b0ceb3b74f039",
+      "origin_integrado": true,
+      "conflictos": false,
+      "criterio_aplicable": "INN-02 apoya captura y reproducción de incidentes; no descontar contactos de N1 por una reducción de demanda aún no medida."
+    }
+  ],
+  "criterios_bases": [
+    "BTT 1.5: evidencia durante ejecución, sin simular ensayos hechos.",
+    "BA 53 y 94.2: no dispensas o reservas contractuales inventadas.",
+    "RT-07.04: RTO 4 h y RPO 15 min, con prueba por escenario.",
+    "Caso restricciones 1/4 y RT-10.05: 96 salidas 05:30--07:00, ERP único sin reemplazo/modificación.",
+    "RT-11.08: TLS 1.3; no excepción automática de TLS 1.2.",
+    "BA 79.4: excluir indisponibilidad en mantenimiento programado y aprobado.",
+    "RT-21.06/21.14: capacidad por franjas y tres indicadores de atención.",
+    "Aclaraciones Informe 3: prototipo avanzado, completo en oferta final; figuras legibles mínimo 9 puntos."
+  ],
+  "impactos_internos": [
+    "SD3/T-12: precisar descripción TLS quitando excepción retirada; el resultado parcial de interoperabilidad no cambia sin evidencia.",
+    "T-15/SD12 y oferta económica: reflejar por separado reserva C, 2010 HH mesa y 308 HH NOC, sin duplicar base, vigilancia ni bolsas DES. No se declara conciliación económica terminada."
+  ],
+  "limites": [
+    "Persistencia fuera del sitio durante aislamiento total más pérdida física no demostrada.",
+    "Guía nueva con emisor ERP perdido no demostrada; retención segura no prueba salida cumplida.",
+    "TLS 1.3 especificado, compatibilidad real del ERP aún no ensayada."
+  ],
+  "contacto_cliente": false,
+  "pruebas_reales_atribuidas": false,
+  "integracion_posterior": {
+    "SD4": "Inventario TLS por tramo conservado, compatible con la exigencia local sin excepción TLS 1.2.",
+    "SD10": "Cuadrante y coordinación nominada conservados; relevo NOC distingue dos puestos base y tres en reserva C de peak."
+  }
+}

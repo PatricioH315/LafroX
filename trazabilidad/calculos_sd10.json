@@ -106,9 +106,9 @@
       "valley_fraction": 0.25,
       "arrivals_per_hour": 1.1909629981024668,
       "base_agents": 1,
-      "proposed_agents": 1,
+      "proposed_agents": 2,
       "base_service_level": 0.8067390864739273,
-      "proposed_service_level": 0.8067390864739273
+      "proposed_service_level": 0.9831232307729943
     },
     {
       "shift": "Domingo",

@@ -1,0 +1,188 @@
+[
+  {
+    "id": "sin_mantenimiento",
+    "calendario": [
+      [
+        0,
+        43200
+      ]
+    ],
+    "aprobado": [],
+    "fallas": [
+      [
+        0,
+        30
+      ]
+    ],
+    "esperado": {
+      "T0": 43200,
+      "A": 0,
+      "T": 43200,
+      "I": 30
+    }
+  },
+  {
+    "id": "exceso_de_ventana",
+    "calendario": [
+      [
+        0,
+        43200
+      ]
+    ],
+    "aprobado": [
+      [
+        0,
+        60
+      ]
+    ],
+    "fallas": [
+      [
+        0,
+        90
+      ]
+    ],
+    "esperado": {
+      "T0": 43200,
+      "A": 60,
+      "T": 43200,
+      "I": 30
+    }
+  },
+  {
+    "id": "ventanas_y_fallas_superpuestas",
+    "calendario": [
+      [
+        0,
+        43200
+      ]
+    ],
+    "aprobado": [
+      [
+        0,
+        60
+      ],
+      [
+        30,
+        90
+      ]
+    ],
+    "fallas": [
+      [
+        45,
+        110
+      ],
+      [
+        60,
+        120
+      ]
+    ],
+    "esperado": {
+      "T0": 43200,
+      "A": 90,
+      "T": 43200,
+      "I": 30
+    }
+  },
+  {
+    "id": "interseccion_con_horario",
+    "calendario": [
+      [
+        0,
+        480
+      ],
+      [
+        1440,
+        1920
+      ]
+    ],
+    "aprobado": [
+      [
+        470,
+        1460
+      ]
+    ],
+    "fallas": [
+      [
+        450,
+        1480
+      ]
+    ],
+    "esperado": {
+      "T0": 960,
+      "A": 30,
+      "T": 960,
+      "I": 40
+    }
+  },
+  {
+    "id": "mantenimiento_cubre_calendario",
+    "calendario": [
+      [
+        0,
+        60
+      ]
+    ],
+    "aprobado": [
+      [
+        0,
+        60
+      ]
+    ],
+    "fallas": [
+      [
+        0,
+        60
+      ]
+    ],
+    "esperado": {
+      "T0": 60,
+      "A": 60,
+      "T": 60,
+      "I": 0
+    }
+  },
+  {
+    "id": "calendario_vacio",
+    "calendario": [],
+    "aprobado": [
+      [
+        0,
+        60
+      ]
+    ],
+    "fallas": [
+      [
+        0,
+        60
+      ]
+    ],
+    "esperado": {
+      "T0": 0,
+      "A": 0,
+      "T": 0,
+      "I": 0
+    }
+  },
+  {
+    "id": "mantenimiento_sin_aprobacion",
+    "calendario": [
+      [
+        0,
+        43200
+      ]
+    ],
+    "aprobado": [],
+    "fallas": [
+      [
+        0,
+        90
+      ]
+    ],
+    "esperado": {
+      "T0": 43200,
+      "A": 0,
+      "T": 43200,
+      "I": 90
+    }
+  }
+]

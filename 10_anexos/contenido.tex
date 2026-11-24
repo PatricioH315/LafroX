@@ -39,7 +39,7 @@ La Tabla~\ref{tab:sd10-escenarios} muestra los escenarios que explican los lími
 \end{tablalafrox}
 \fuentesdiez{Cálculo reproducido de SD4, Anexo 4-W.7, con entradas sin redondear.}
 
-En el escenario de 2.391 contactos, tres agentes de valle dan 95,26\,\% y permiten que el límite pase a la hora cargada si se cubre todo el valle modelado. Con dos agentes en 20:00--22:00 y llegadas uniformes en valle, esa franja queda en 78,33\,\%. Para sostener 2.391 se comprueba una demanda menor en esa franja o se formaliza un refuerzo. La proyección 3$\times$ de 6.000 contactos exige, bajo las mismas hipótesis, al menos quince agentes en hora cargada y cuatro en valle para alcanzar 80\,\% en veinte segundos. Es una sensibilidad matemática y no una contratación adicional ni la previsión de llamadas para septiembre. La recalibración con registros reales y Erlang A antes de M21 conserva el compromiso de T-15 (LafroX, 2026g, sección 5.6).
+En el escenario de 2.391 contactos, tres agentes de valle dan 95,26\,\% y permiten que el límite pase a la hora cargada si se cubre todo el valle modelado. Con dos agentes en 20:00--22:00 y llegadas uniformes en valle, esa franja queda en 78,33\,\%. Para sostener 2.391 LafroX asigna un tercer puesto en esa franja y preserva la vigilancia NOC. La proyección 3$\times$ de 6.000 contactos exige, bajo las mismas hipótesis, al menos quince agentes en hora cargada y cuatro en valle para alcanzar 80\,\% en veinte segundos. Es una sensibilidad matemática y no una contratación adicional ni la previsión de llamadas para septiembre. La recalibración con registros reales y Erlang A antes de M21 conserva el compromiso de T-15 (LafroX, 2026g, sección 5.6).
 
 La cobertura propia de mesa de 04:00 a 20:00 produce $(7+15\times2)\times6=222$ horas-posición por semana. Con tercer agente de valle produce $(7+15\times3)\times6=312$. La extensión de peak aporta además $6\times6+24=60$ horas-posición semanales para las horas 22:00--04:00 y los domingos. El NOC cubre separadamente 20:00--22:00 con dos posiciones. Las 60 horas-posición acreditan extensión del horario diseñado, cuya capacidad se verifica por separado con registros nocturnos y dominicales.
 
@@ -61,11 +61,11 @@ Representantes adicionales & 20 & 0,50 & 10 \\
 
 Con esos supuestos se obtienen 2.197 contactos y atención antes de veinte segundos de 85,93\,\% con siete agentes en hora cargada y 81,31\,\% con dos en valle. Al duplicar sólo los contactos adicionales se obtienen 2.394. El objetivo exige ocho en hora cargada y tres en valle, con 90,71\,\% y 95,24\,\%, respectivamente. El gerente contrasta el volumen efectivo por perfil, canal y franja antes de reservar la dotación.
 
-Durante septiembre y diciembre, se evalúa por separado el tramo nocturno de lunes a sábado (00:00--04:00 y 22:00--24:00 por fecha de servicio) y el domingo completo. Así se evita contar dos veces la madrugada del domingo. El escenario usa 25\,\% y 40\,\% de la llegada valle de 2.391 contactos, respectivamente, y diez minutos de atención media. Estas fracciones ensayan menor concurrencia fuera del horario ordinario y un domingo más cargado; no se suman a los 2.391 como pronóstico mensual. La Tabla~\ref{tab:sd10-peak-franjas} muestra qué puestos exige cada hipótesis. Para el relevo 20:00--22:00 se conserva la llegada valle completa.
+Durante septiembre y diciembre, se evalúa por separado el tramo nocturno de lunes a sábado (00:00--04:00 y 22:00--24:00 por fecha de servicio) y el domingo completo. Así se evita contar dos veces la madrugada del domingo. El escenario usa 25\,\% y 40\,\% de la llegada valle de 2.391 contactos, respectivamente, y diez minutos de atención media. Estas fracciones ensayan menor concurrencia fuera del horario ordinario y un domingo más cargado; no se suman a los 2.391 como pronóstico mensual. La Tabla~\ref{tab:sd10-peak-franjas} compara la base y la reserva C adoptada, que añade margen nocturno sobre el mínimo de esa hipótesis. Para el relevo 20:00--22:00 se conserva la llegada valle completa.
 
 \Needspace{0.37\textheight}
-\begin{tablalafrox}{Respuesta por franja de peak en el escenario de sensibilidad}{tab:sd10-peak-franjas}{Y H{0.19} H{0.25} H{0.25}}{\cab{Franja} & \cab{Contactos/h} & \cab{Cobertura base y respuesta} & \cab{Propuesta y respuesta}}
-Nocturna lunes a sábado & 1,19 & 1 / 80,67\,\% & 1 / 80,67\,\% \\
+\begin{tablalafrox}{Respuesta por franja de peak en el escenario de sensibilidad}{tab:sd10-peak-franjas}{Y H{0.19} H{0.25} H{0.25}}{\cab{Franja} & \cab{Contactos/h} & \cab{Cobertura base y respuesta} & \cab{Reserva C y respuesta}}
+Nocturna lunes a sábado & 1,19 & 1 / 80,67\,\% & 2 / 98,31\,\% \\
 Domingo & 1,91 & 1 / 68,96\,\% & 2 / 95,89\,\% \\
 Relevo NOC lunes a sábado & 4,76 & 2 / 78,33\,\% & 3 / 95,26\,\% \\
 \end{tablalafrox}
@@ -83,14 +83,16 @@ C. Dos nocturnos y dominicales; tres en relevo NOC & 1.840 & 15 & 50 \\
 
 A conserva las trece plazas de T-15/SD12; exige llegadas compatibles con un agente de noche y domingo y con dos en el relevo NOC. B atiende el domingo de 1,91 contactos/h de la sensibilidad, pero la noche sigue limitada a 1,23. C soporta hasta 4,54 contactos/h en noche y domingo, y el valle de 4,76 con tres puestos NOC. B y C requieren una o dos plazas adicionales respecto de la base y asignación NOC comprobada; no se cubren por afirmar que existen seis posiciones compartidas. En diciembre de 2029, A/B/C requieren 1.628/1.748/1.904 HH, respectivamente, con las mismas cotas de trece/catorce/quince plazas. La comprobación por calendario comprende los 36 meses y reproduce las 38.246 HH de mesa de T-15. Aplicar B/C antes de M25 implica adelantar también el tercer agente diurno; esas HH no se presumen incluidas en la base.
 
-Antes de cada peak, Operación contrasta llegadas, atención y paciencia por hora y canal, conserva los contactos externos y no descuenta autoatención sin evidencia de resolución. El cuadrante identifica titular, suplente, competencias, dedicación neta, concurrencia y relevo por puesto, y preserva la supervisión continua NOC/SOC. Si A resulta insuficiente, el gerente concilia B, C u otra configuración con T-15, SD12 y la Oferta Económica antes de habilitarla, sin presentar recursos adicionales como contratados. La cota de diseño no autoriza rechazar contactos. La aceptación comprueba además abandono y resolución al primer contacto; no compensa una franja insuficiente con el promedio mensual. B-02, B-08 y B-10 conservan el respaldo y su estado.
+LafroX adopta C como reserva de cobertura para los seis peaks de septiembre y diciembre comprendidos en M21--M56, incluido diciembre de M23: siete puestos en hora cargada, tres en las otras quince horas de mesa propia, dos de noche y domingo y tres en el relevo NOC 20:00--22:00. Frente a la programación base de 38.246 HH de mesa, la reserva requiere 2.010 HH adicionales de mesa y 308 HH adicionales de relevo NOC en los 36 meses. En septiembre de 2029 corresponde a 1.840 HH de mesa, quince plazas equivalentes y 50 HH adicionales NOC. Las plazas son cotas agregadas, no un cuadrante nominal ni personas contratadas.
+
+El refuerzo es responsabilidad de LafroX, sin cargo adicional ni reducción de la vigilancia NOC/SOC o de las bolsas DES. Se registra separado de la base T-15/SD12 para impedir doble conteo; no se atribuyen a esos documentos cantidades que no contienen. El responsable de oferta concilia internamente ese incremento por perfil, mes y costo antes de congelar la oferta económica, sin inventar precios ni contratos. Operación prepara titulares, suplentes, competencias, descansos y concurrencia por turno antes de habilitar el servicio. Con cuatro semanas de registros calibra llegadas, atención y paciencia por hora y canal. Tasas superiores a 26,99 contactos/h en hora cargada, a 4,54 de noche o domingo, o a 8,55 con tres puestos en valle, obligan a recalcular y aumentar cobertura antes de la franja afectada. No se rechazan contactos para sostener la cota ni se descuenta autoatención sin evidencia. Respuesta, abandono y primer contacto se aceptan por separado; el cálculo no acredita resultados reales (B-02, B-08 y B-10).
 
 \Needspace{0.82\textheight}
 \section*{Anexo 10.B — Catálogo de indicadores}
 \addcontentsline{toc}{section}{Anexo 10.B — Catálogo de indicadores}
 \label{anx:sd10-indicadores}
 
-El catálogo relaciona el objetivo exigido con su evidencia. Las definiciones y cobertura contractual pendientes se identifican en 10.D. La observabilidad preserva las marcas originales para permitir su contraste por el CLIENTE (Distribuidora Puelche S.A., 2026a, arts. 78--79, p. 40; 2026b, cap. 14, p. 27).
+El catálogo relaciona el objetivo exigido con su evidencia. Los criterios adoptados de medición se desarrollan en 10.B y sus comprobaciones de habilitación en 10.D. La observabilidad preserva las marcas originales para permitir su contraste por el CLIENTE (Distribuidora Puelche S.A., 2026a, arts. 78--79, p. 40; 2026b, cap. 14, p. 27).
 
 \begin{tablalafrox}{Indicadores de nivel de servicio y atención}{tab:sd10-indicadores}{F{0.25} F{0.24} Y}{\cab{Indicador} & \cab{Objetivo} & \cab{Evidencia y origen}}
 Disponibilidad de servicio & 99,9/99,5/99,0/98,0\,\% según clase & Transacción afectada, inicio y fin, ventana y exclusión aprobada. BA 78.2 y 79.4 \\
@@ -110,7 +112,7 @@ Causa raíz por severidad & Crítica: cinco días hábiles; alta: diez días há
 \end{tablalafrox}
 \fuentesdiez{BA, art. 21, p. 15, y arts. 78--79, p. 40. BTT, cap. 14, p. 27, y cap. 21, pp. 35--38. SD7, T-14 y T-15.}
 
-La clasificación de SD4 se conserva en el cuerpo. Un incidente puede afectar simultáneamente más de un servicio y sus evidencias deben mantener ese alcance. La medición de infraestructura por componente de BTT 7.2 complementa el seguimiento. Los contratos y tableros concretos deben precisar los criterios de respuesta y los relojes fuera de cobertura, registrados como B-06.
+La clasificación de SD4 se conserva en el cuerpo. Un incidente puede afectar simultáneamente más de un servicio y sus evidencias deben mantener ese alcance. La medición de infraestructura por componente de BTT 7.2 complementa el seguimiento. Los tableros aplican el reloj corrido y el calendario íntegro definidos en 10.B, sin pausa por espera de terceros o relevo (B-06).
 
 Los objetivos de desempeño del caso son percentiles 95 sobre la experiencia real. La Tabla~\ref{tab:sd10-transacciones} mantiene las cuatro transacciones de referencia.
 
@@ -183,8 +185,9 @@ El diseño de SD4 comprende cinco sitios logísticos y la casa matriz de Talca c
 \item[B-02. Habilitación y guardias.]
 El Líder de Operación/SRE consolida el cuadrante nominal antes de M21. Para los servicios que se activan durante marcha blanca o soporte puente, confirma la cobertura antes del primer turno aplicable. La Tabla~\ref{tab:sd10-b02-coordinacion} recoge la dedicación de los responsables que el T-8 ya nomina. Las guardias y suplencias se asignan por separado en la Tabla~\ref{tab:sd10-b02-cobertura}.
 
+\Needspace{0.92\textheight}
 \begin{tablalafrox}{Responsables nominados y dedicaciones en Operación}{tab:sd10-b02-coordinacion}
-  {F{0.25} Y F{0.12} F{0.11} F{0.17}}
+  {F{0.23} Y F{0.14} F{0.11} F{0.17}}
   {\cab{Persona y rol} & \cab{Ámbito de coordinación} & \cab{Dedicación T-8} & \cab{Perfil T-15} & \cab{Perfil suplente SD12}}
 Guillermo Castillo, Líder de Operación/SRE & Dirección de Operación, confiabilidad del servicio, NOC y Mesa. & 100~\% & 24 & DevOps Senior, 14S. \\
 Álvaro Catalán, Encargado de Seguridad & Coordinación de ciberseguridad y supervisión del SOC. & 5~\% & 13 & Ciberseguridad Senior, 31E. \\
@@ -197,16 +200,17 @@ Rodrigo Valdés, Líder de Integración & Apoyo puntual en EDI, AS2 y ERP. & 1~\
 
 El SD12 propone perfiles para suplir a los responsables de coordinación. Falta confirmar las personas y la dedicación. El perfil 12S tiene 0 HH en Operación en el T-15. Para utilizarlo como suplente de Integración en M21--M56, el responsable debe conciliar su dedicación con T-15 o confirmar otra asignación respaldada.
 
+\Needspace{0.92\textheight}
 \begin{tablalafrox}{Cuadrante B-02 por tecnología y cobertura}{tab:sd10-b02-cobertura}
   {F{0.21} F{0.24} F{0.19} F{0.18} Y}
   {\cab{Servicio y perfil T-15} & \cab{Ventana y período} & \cab{Titular y suplente} & \cab{Competencia a acreditar} & \cab{Dedicación individual}}
-Plataforma y nube, 14S/14J & M21--M56. Guardia L2/L3 fuera de horario para incidentes críticos y altos. & Ambos por confirmar. & AWS, plataforma local y recuperación. & HH por persona y ventana por confirmar. \\
-Redes/NOC, 30 & Supervisión continua desde M16. En Operación, dos posiciones de atención de Mesa de 20:00 a 22:00, lunes a sábado. & Ambos por turno por confirmar. & WAN, enlaces de sitio y monitoreo. & HH por puesto y relevo por confirmar. \\
-Seguridad/SOC, 31O/31E & SOC 24$\times$7 desde M13; escalamiento de incidentes críticos y altos. & Ambos por turno y guardia por confirmar. & SIEM, triaje y respuesta a incidentes. & HH por turno y guardia por confirmar. \\
-Aplicaciones, 04 & M21--M56. Escalamiento L2/L3 para incidentes críticos y altos. & Ambos por confirmar. & Diagnóstico y contingencia de aplicaciones. & HH fuera de coordinación por confirmar. \\
-Datos, 23 & Apoyo puntual M21--M56. Ventana concreta de escalamiento por confirmar. & Ambos por confirmar. & Persistencia, recuperación y conciliación. & HH de escalamiento por confirmar. \\
-Integraciones críticas, 02 & Apoyo puntual M21--M56. Validar ventanas y canal de ERP/DTE y demás contrapartes. & Ambos por integración por confirmar. & ERP, DTE, EDI, AS2 y conciliación. & HH de escalamiento por confirmar. \\
-Mesa N1, 17 & M21--M56; 04:00 a 20:00 de lunes a sábado y extensión nocturna y dominical en septiembre y diciembre. & Ambos por turno por confirmar. & Registro, primera atención y transferencia al NOC. & HH por agente y turno por confirmar. \\
+Plataforma y nube, 14S/14J & M21--M56; guardia L2/L3 fuera de horario, críticos y altos. & Ambos por confirmar. & AWS, plataforma local y recuperación. & HH por persona y ventana por confirmar. \\
+Redes/NOC, 30 & 24$\times$7 desde M16. M21--M56: Mesa 20:00--22:00, lunes a sábado; dos puestos base y tres en peak (10.A). & Ambos por turno por confirmar. & WAN, enlaces de sitio y monitoreo. & HH por puesto y relevo por confirmar. \\
+Seguridad/SOC, 31O/31E & 24$\times$7 desde M13; escalamiento crítico y alto. & Ambos por turno y guardia por confirmar. & SIEM, triaje y respuesta a incidentes. & HH por turno y guardia por confirmar. \\
+Aplicaciones, 04 & M21--M56; L2/L3 para críticos y altos. & Ambos por confirmar. & Diagnóstico y contingencia de aplicaciones. & HH fuera de coordinación por confirmar. \\
+Datos, 23 & M21--M56; apoyo puntual, ventana por confirmar. & Ambos por confirmar. & Persistencia, recuperación y conciliación. & HH de escalamiento por confirmar. \\
+Integraciones críticas, 02 & M21--M56; apoyo puntual. Validar ventanas y canal ERP/DTE y contrapartes. & Ambos por integración por confirmar. & ERP, DTE, EDI, AS2 y conciliación. & HH de escalamiento por confirmar. \\
+Mesa N1, 17 & M21--M56; lunes a sábado, 04:00--20:00. Noches y domingos en septiembre y diciembre. & Ambos por turno por confirmar. & Registro, primera atención y transferencia al NOC. & HH por agente y turno por confirmar. \\
 \end{tablalafrox}
 \fuentesdiez{SD10, sección 10.1 y Anexo 10.A; T-15, perfiles y secciones 4.1 y 5.7; T-14, paquetes 10.1.1, 10.1.2 y 10.1.4.}
 
@@ -214,7 +218,7 @@ Para formalizar cada fila, Operación registra nombre de titular y suplente, fec
 
 El contraste por calendario da 962 HH de Mesa en M21 ($26\times37=962$, capacidad agregada de ocho plazas de 128 HH) y 1.570 HH en M32 ($25\times(52+6)+5\times24=1.570$, capacidad agregada de trece plazas de 128 HH). Las 21.748,2 HH de ocho operadores NOC corresponden a M21--M56. Las 32.112 HH de seis analistas SOC cubren M13--M56, incluidas 26.280 HH de M21--M56; M13 requiere 696 HH de supervisión continua. El modelo financiero del 13 de noviembre de 2026 reproduce las plazas en «COSTOS HH - SUELDOS» (filas 40, 41 y 44) y los meses de contraste en «HH POR ROL Y MES» (W40 para M21, AH40 para M32 y O44 para M13). La fila 16 de esta última hoja asigna 0 HH al perfil 12S en M21--M56. Los compromisos individuales de 12.D respaldan las dedicaciones declaradas de la coordinación; las horas por persona y turno de guardia quedan pendientes en el cuadrante.
 
-La comprobación nominal contrasta, por persona, los turnos y horas del cuadrante con el T-15 y la dedicación del T-8. Verifica continuidad del NOC y SOC, relevos antes de abrir el servicio, atención de Mesa por el NOC de 20:00 a 22:00 y escalamiento crítico o alto por tecnología. En M21 y M32 comprueba simultaneidad y disponibilidad del suplente. Las horas agregadas de referencia sustentan el dimensionamiento; el resultado de esta comprobación por turno se registra con la nómina.
+La comprobación nominal contrasta, por persona, los turnos y horas del cuadrante con el T-15 y la dedicación del T-8. Verifica continuidad del NOC y SOC, relevos antes de abrir el servicio, atención de Mesa por el NOC de 20:00 a 22:00 y escalamiento crítico o alto por tecnología. En M21 y M32 comprueba simultaneidad y disponibilidad del suplente. Las horas agregadas de referencia sustentan la base T-15; se añade por separado la reserva C de 10.A y B-08, con 2.010 HH de Mesa y 308 HH NOC a cargo de LafroX, sin duplicar la base ni reducir vigilancia. El resultado de esta comprobación por turno se registra con la nómina.
 
 \item[B-03. Acuerdos operacionales y contratos de apoyo.]
 El Anexo 10.C propone objetivos internos que caben en los máximos de BA 78.2. Operación verifica la cobertura de cada transferencia, el directorio y el respaldo de fabricante o contraparte, incluida atención presencial, reemplazo y continuidad del software de base. Se conserva la evidencia de alcance y vigencia antes de dar por formalizado cada acuerdo. La dotación, los contratos y los plazos aceptados requieren respaldo específico (Aclaraciones 10.2; BTT 8.4 y 21.3).
@@ -226,22 +230,26 @@ La política técnica queda individualizada en 10.B. E2 presenta la observabilid
 El mantenimiento previsto sigue las ventanas y el aviso de 10.1. Si una recuperación o remediación urgente coincide con un congelamiento, NOC o SOC avisa al CLIENTE el mismo día, registra impacto y contención y solicita una decisión escrita con alcance, ventana, validación y reversión. Sin autorización aplicable se conserva la contención posible y se programa en la primera ventana habilitada; con autorización se cumple su alcance y se registra la intervención.
 
 \item[B-06. Definiciones de medición.]
-BA 78.2 establece cobertura y máximos de atención. El Anexo 10.B define las marcas y los datos del calendario necesarios para reproducir el resultado y conserva el reloj corrido. El gerente y la contraparte formalizan el calendario hábil por sitio y canal, la cobertura de media y baja y el método de reporte de BA 78 y 79.
+BA 78.2 establece coberturas y máximos. LafroX adopta el tiempo corrido para respuesta y restauración de todas las severidades; no pausa por tercero, relevo ni fuera de cobertura. La disponibilidad usa $T=T_0$, el calendario íntegro del recorrido, y solo excluye de $I$ el mantenimiento programado y aprobado que coincide con la falla. La ficha versionada y los casos de 10.B reproducen el método adoptado. Se conserva la prevalencia de su medición de BA 79.3 y cada autorización de mantenimiento exigida por BA 79.4.
 
 \item[B-07. ERP y guía crítica.]
-SD4 condiciona una guía nueva a la recuperación del emisor del CLIENTE ante pérdida de sala. GU-08 conserva la ruta de cargas intactas amparadas. Para la carga modificada se debe acreditar, antes de cerrar la oferta, la alternativa de continuidad del emisor y su compatibilidad con las 96 salidas documentadas, sin indisponibilidad de 05:30 a 07:00. Recuperar el WMS o el ERP dentro de cuatro horas no prueba esa continuidad de 90 minutos. La validación incluye emisión, conciliación del folio y prueba de salida (BA 78--79 y Caso RT-10.05).
+LafroX mantiene el ERP de 2017 como único emisor, sin sustituirlo ni atribuirle una réplica no acreditada. GU-08 exige preemitir al cerrar la carga, verificar la guía y conservarla localmente antes de despacho; una carga modificada necesita guía nueva antes de salir. La pérdida del emisor se registra separada de WMS, conectividad y control sanitario. Una retención segura no acredita una de las 96 salidas ni permite excluir la falla del indicador. El escenario de pérdida de sala con carga modificada conserva el límite de SD4, 4.3.2.5, y su prueba AL-DTE-01; la continuidad de ese escenario no se declara demostrada por el diseño actual.
 
 \item[B-08. Cuadrante y calibración de la mesa.]
-El Anexo 10.A distingue el escenario base, los contactos externos adicionales, el relevo NOC y el peak nocturno y dominical. T-15 aporta el calendario y 128 HH efectivas, y T-8 aporta las nominaciones clave. Con cuatro semanas de registros se calibra atención, llegadas y abandono por perfil, canal y hora; se actualizan los puestos y los turnos nominales antes de M21 y antes de cada peak. Las cotas y alternativas A/B/C del Anexo 10.A se contrastan por franja; una ampliación requiere conciliación explícita de recursos. El gerente verifica también primer contacto, relevo, formación y continuidad en los demás sitios ante desplazamiento.
+El Anexo 10.A adopta C como reserva de peak a cargo de LafroX, con 2.010 HH de mesa y 308 HH NOC adicionales a la base de 36 meses, sin descontarlas de otras funciones. La dotación de T-15/SD12 se conserva como base; el incremento queda individualizado para conciliación interna de oferta por perfil y mes. Operación prepara el cuadrante nominal con titulares, suplentes, competencias, descansos y relevo; calibra con cuatro semanas de registros antes de M21 y cada peak. Se verifica por franja respuesta en veinte segundos, abandono y primer contacto. Toda insuficiencia exige refuerzo antes de atenderla y no se compensa con el promedio mensual. Una decisión de diseño no se presenta como contratación ni ensayo ejecutado.
 
 \item[B-09. Dependencias documentales SD11 y SD12.]
 El plan de SD11 desarrolla mantención, control del servicio, automatización y pruebas. SD12 y T-8 sustentan roles clave, dedicaciones y participación de terceros. El gerente concilia esos antecedentes con los paquetes T-14, la programación T-15 y el cuadrante de B-02 y B-08. El respaldo de cobertura y tiempos de terceros queda en B-03 (LafroX, 2026n, secciones 11.1--11.2; 2026o, secciones 12.1--12.3).
 
 \item[B-10. Conciliación de capacidad técnica y económica.]
 T-15 confirma las horas del soporte puente por mes y T-14 identifica la bolsa evolutiva y la capacidad de deuda técnica por partida. La coincidencia de Mesa N1, NOC y SOC entre T-15 y E2 confirma el agregado dedicado. La programación mensual del gerente debe cuadrar con su fila de perfiles. Las cifras totales de Operación de T-14 y E2 usan alcances de presentación distintos. El responsable de oferta coteja las HH por perfil, paquete y mes y registra las exclusiones antes de dar por conciliada la capacidad. La comprobación económica queda en su sobre.
+\Needspace{0.18\textheight}
 \item[B-11. RPO con aislamiento y pérdida del sitio.]
-AL-DR-01 identifica la pérdida física posterior al aislamiento total como una brecha de RPO. El cierre requiere demostrar persistencia externa de los datos críticos en el plazo de RT-07.04 con el escenario combinado, o acreditar una modificación contractual formal aplicable; no existe una dispensa por la sola declaración del riesgo. Mientras falte evidencia favorable, no se declara aceptado ese escenario. La conmutación con un enlace activo y la autonomía local de 24 horas se verifican por separado.
+Se mantiene RT-07.04 sin dispensa. LafroX controla la edad del último punto consistente externo con alarmas a cinco y quince minutos, prioriza su transmisión en los tres caminos, conserva el outbox y mide la recuperación por recorrido. La imposibilidad de extraer datos durante aislamiento total y la pérdida física posterior no se resuelven por una declaración documental: se conserva el riesgo residual de SD4, 4.3.2.4, y la medición adversa AL-DR-01. Ese escenario no se declara aceptado sin evidencia favorable. Se verifican por separado autonomía local de 24 horas, restitución y conmutación con extracción activa; no se restringe la operación local para aparentar un RPO menor.
+
 \end{description}
+
+El control utiliza CD-ERP, CD-RPO y CD-TLS del SD4, Anexo 4-X.5. CD-SLA registra el método adoptado; CD-MESA, la reserva C y su conciliación interna; CD-UI, la evidencia del prototipo en la etapa exigida por BTT 1.5 y las aclaraciones del Informe 3. Cada registro distingue decisión de diseño, comprobación documental y prueba de ejecución; no atribuye aprobaciones, contratos ni ensayos inexistentes. Las autorizaciones de operación exigidas por las Bases se mantienen para su etapa.
 
 La habilitación comprueba el canal de atención con una llamada, un caso autenticado y una alerta correlacionada, además del acceso a conocimiento y autoformación. También verifica el alcance y el resultado de resiliencia, aislamiento combinado con pérdida de sitio, conmutación, restauración y seguridad independiente mediante las actas de 10.C. Las pruebas conservan quién ejecutó, quién revisó y qué recorridos se comprobaron. La trazabilidad separada registra fuentes, localizaciones y cambios, distinguiendo desarrollo documental de servicio ejecutado.
 

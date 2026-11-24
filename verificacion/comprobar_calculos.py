@@ -106,7 +106,7 @@ for scenario in expanded:
     assert percent(scenario["sl_valley"]) in source
 
 peak_profiles = [
-    ("Nocturna lunes a sábado", .25, 1, 1),
+    ("Nocturna lunes a sábado", .25, 1, 2),
     ("Domingo", .40, 1, 2),
     ("Relevo NOC lunes a sábado", 1.00, 2, 3),
 ]
@@ -116,7 +116,7 @@ for name, fraction, base_staff, proposed_staff in peak_profiles:
     base_sl = erlang(arrivals, base_staff)
     proposed_sl = erlang(arrivals, proposed_staff)
     assert proposed_sl >= .8
-    assert proposed_staff == base_staff or base_sl < .8
+    assert proposed_staff >= base_staff and proposed_sl >= base_sl
     peak_table.append((
         name, spanish(arrivals, 2),
         f"{base_staff} / {percent(base_sl)}",

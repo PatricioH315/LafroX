@@ -1,0 +1,77 @@
+{
+  "proyecto": "LafroX",
+  "estado": "Reserva de diseño adoptada por LafroX, adicional a la base T-15/SD12; no acredita contratación ni conciliación económica terminada.",
+  "supuesto": "Configuración C en seis peaks de M21--M56, incluido M23. Sin cargo adicional; preservar NOC/SOC y bolsas DES. Calibración y cuadrante antes de habilitar.",
+  "fuente": "SD4 Anexo 4-W.7 y memoria reproducible de 36 meses",
+  "HH_mesa_base_36_meses": 38246,
+  "incremento_total_HH_mesa_C": 2010,
+  "incremento_total_HH_NOC_C": 308,
+  "meses_peak": [
+    {
+      "mes_contractual": 23,
+      "anio": 2028,
+      "mes": 12,
+      "base_HH_mesa": 1238,
+      "propuesta_C_HH_mesa": 1904,
+      "incremento_HH_mesa": 666,
+      "base_plazas": 10,
+      "propuesta_C_plazas": 15,
+      "incremento_HH_NOC": 52
+    },
+    {
+      "mes_contractual": 32,
+      "anio": 2029,
+      "mes": 9,
+      "base_HH_mesa": 1570,
+      "propuesta_C_HH_mesa": 1840,
+      "incremento_HH_mesa": 270,
+      "base_plazas": 13,
+      "propuesta_C_plazas": 15,
+      "incremento_HH_NOC": 50
+    },
+    {
+      "mes_contractual": 35,
+      "anio": 2029,
+      "mes": 12,
+      "base_HH_mesa": 1628,
+      "propuesta_C_HH_mesa": 1904,
+      "incremento_HH_mesa": 276,
+      "base_plazas": 13,
+      "propuesta_C_plazas": 15,
+      "incremento_HH_NOC": 52
+    },
+    {
+      "mes_contractual": 44,
+      "anio": 2030,
+      "mes": 9,
+      "base_HH_mesa": 1570,
+      "propuesta_C_HH_mesa": 1840,
+      "incremento_HH_mesa": 270,
+      "base_plazas": 13,
+      "propuesta_C_plazas": 15,
+      "incremento_HH_NOC": 50
+    },
+    {
+      "mes_contractual": 47,
+      "anio": 2030,
+      "mes": 12,
+      "base_HH_mesa": 1628,
+      "propuesta_C_HH_mesa": 1904,
+      "incremento_HH_mesa": 276,
+      "base_plazas": 13,
+      "propuesta_C_plazas": 15,
+      "incremento_HH_NOC": 52
+    },
+    {
+      "mes_contractual": 56,
+      "anio": 2031,
+      "mes": 9,
+      "base_HH_mesa": 1604,
+      "propuesta_C_HH_mesa": 1856,
+      "incremento_HH_mesa": 252,
+      "base_plazas": 13,
+      "propuesta_C_plazas": 15,
+      "incremento_HH_NOC": 52
+    }
+  ]
+}
