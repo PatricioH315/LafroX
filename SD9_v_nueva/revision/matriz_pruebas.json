@@ -1,6 +1,6 @@
 {
-  "source_ref": "677113167adeb62b3313e726cc69839c82e2ce84",
-  "source_commit": "677113167adeb62b3313e726cc69839c82e2ce84",
+  "source_ref": "8aecdd93b47cce7a179ca6eca3c14a53ce69a45e",
+  "source_commit": "8aecdd93b47cce7a179ca6eca3c14a53ce69a45e",
   "test_count": 1339,
   "counts": {
     "t12_rows": 653,
@@ -16,8 +16,8 @@
       "Media": 55
     },
     "rt_state": {
-      "Cumple": 355,
-      "Cumple parcialmente": 8,
+      "Cumple": 356,
+      "Cumple parcialmente": 7,
       "No cumple": 11
     },
     "rt_without_case": 11,
@@ -10191,16 +10191,16 @@
     },
     {
       "id": "RT-21.03",
-      "state": "Cumple parcialmente",
-      "component": "SD10, B-02 registra seis responsables del T-8. Faltan titulares, suplentes y dedicaciones individuales validados para siete coberturas. El Anexo 10.A reserva 16 HH/mes al perfil 12S en M21--M56.",
+      "state": "Cumple",
+      "component": "B-02 nomina a los especialistas de siete servicios y declara su dedicación M21--M56. Guillermo Castillo asume plataforma, NOC y Mesa dentro de un único 100~\\%, con apoyo de Bastián Trejo en arquitectura (2~\\%).",
       "edt": "10.1.1, 10.1.2, 10.1.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-21.03",
-      "criterion": "B-02 identifica por tecnología titular, suplente, competencia, período, ventana y dedicación individual. Las HH son compatibles con T-8, T-15 y el complemento 10.A. El escalamiento crítico o alto tiene cobertura. Guillermo Castillo registra fecha y respaldo.",
+      "criterion": "Cada tecnología tiene un especialista identificado, una función técnica o de escalamiento y una dedicación individual concordante con el T-8. Las funciones compartidas se computan una vez por persona.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-21.03/\\allowbreak{}P01\\newline Evidencia prevista: cuadrante B-02 validado (SD10, Anexo 10.D).",
+      "evidence": "RT-21.03/\\allowbreak{}P01\\newline Nómina B-02 del Anexo 10.D y T-8, sección 1.",
       "cases": [
         "RT-21.03/P01"
       ]
