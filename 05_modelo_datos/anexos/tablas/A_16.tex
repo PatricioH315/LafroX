@@ -75,4 +75,4 @@
 \texttt{inv\_\allowbreak{}reubicacion\_\allowbreak{}propuesta} & \texttt{clave\_\allowbreak{}idempotencia} & Único & Sin partición & Reintentos de propuesta/instrucción sin duplicación \\
 \texttt{cal\_\allowbreak{}asociacion\_\allowbreak{}ventana} & \texttt{unidad\_\allowbreak{}logistica\_\allowbreak{}id}, \texttt{compartimento}, \texttt{desde}, \texttt{hasta} & No único, B-tree & Sin partición; intervalo semiabierto & Consulta térmica por SSCC resuelto, compartimento e intervalo; igualdad y solapamiento, verificar EXPLAIN \\
 \end{tablalafrox}
-\fuentetabla{elaboración a partir de los atributos reales del Anexo 5-A, de los accesos declarados en 5.1 y de PostgreSQL 16 como motor de referencia.}
+\fuentetabla{elaboración propia de los índices y su alcance de unicidad para PostgreSQL 16.}

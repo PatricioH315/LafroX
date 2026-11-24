@@ -129,7 +129,7 @@ La Tabla A.8 desarrolla los atributos de EDI, notificaciones y gobierno, con sus
 \texttt{gob\_\allowbreak{}excepcion\_\allowbreak{}sync} & \texttt{fecha} & Fecha de registro de la excepción & timestamp with time zone, UTC & Instante ISO 8601 en UTC, con zona horaria explícita & Obligatorio & Sin clave & \texttt{GOB} & \texttt{ME}, \texttt{P43} \\
 \texttt{gob\_\allowbreak{}excepcion\_\allowbreak{}sync} & \texttt{fecha\_\allowbreak{}cierre} & Instante de resolución de la excepción & timestamp with time zone, UTC & Instante ISO 8601 en UTC, con zona horaria explícita & Condicional: obligatoria cuando la excepción pasa a RESUELTA o RECHAZADA, porque en esos dos estados la decisión está tomada, nula mientras la excepción siga ABIERTA & Sin clave & \texttt{GOB} & \texttt{ME}, \texttt{P43} \\
 \end{tablalafrox}
-\fuentetabla{elaboración a partir del modelo lógico de la Figura 5.9 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales y de la matriz de retención del Anexo 5-D.}
+\fuentetabla{elaboración propia del diccionario de intercambio electrónico, notificaciones y acceso a partir de los atributos y propiedades exigidos por las Bases Técnicas Transversales, RT-05.01.}
 
 La validación aplica la condición de cada fila al hito indicado, NULL legítimo se distingue de dato obligatorio ausente.
 

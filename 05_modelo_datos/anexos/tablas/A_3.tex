@@ -129,7 +129,7 @@ La Tabla A.3 desarrolla los atributos de recepción e inventario, con sus condic
 \texttt{inv\_\allowbreak{}merma} & \texttt{actor\_\allowbreak{}id} & Actor id & uuid, 128 bits & UUID existente, validación según 5-B & Obligatorio & Referencia a \texttt{mae\_\allowbreak{}actor.\allowbreak{}actor\_\allowbreak{}id}, FK solo co-residente & \texttt{INV} & \texttt{AL}, \texttt{P30} \\
 \texttt{inv\_\allowbreak{}saldo} & \texttt{producto\_\allowbreak{}id} & Producto del saldo, aun cuando no requiere lote & uuid, 128 bits & UUID de mae\_producto, si existe lote, su producto\_id coincide & Obligatorio & Referencia a mae\_producto.producto\_id, integridad según 5-B & \texttt{INV} & \texttt{ME}, \texttt{P10} \\
 \end{tablalafrox}
-\fuentetabla{elaboración a partir del modelo lógico de las Figuras 5.2 del Subdocumento 5 y 5.8 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales y de la matriz de retención del Anexo 5-D.}
+\fuentetabla{elaboración propia del diccionario de recepción, inventario y unidades logísticas a partir de los atributos y propiedades exigidos por las Bases Técnicas Transversales, RT-05.01.}
 
 
 \end{landscape}
