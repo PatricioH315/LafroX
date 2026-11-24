@@ -165,3 +165,20 @@ Se corrigieron cuerpo y anexos para distinguir dos puestos NOC ordinarios de tre
 La asignación complementaria de SD10 identifica 2.010 HH Mesa, 308 HH NOC y 576 HH del perfil 12S (16 HH por mes M21--M56), por perfil/mes/paquete. La provisión de financiación se cotejó con los costos y tarifas del modelo financiero de referencia usado por SD7 y se absorbe en margen propio. No se modificó el libro económico de base ni se copiaron precios al sobre técnico. La asignación no acredita contratación; los turnos y personas se formalizan en la habilitación.
 
 CD-ERP y CD-RPO cierran su definición documental de alcance, mecanismo, mitigación, responsable y medición. Conservan los riesgos físicos y cualquier resultado no conforme: no se afirma emisión con el emisor perdido ni reconstrucción de datos cuyas copias se destruyeron. Tampoco se dispensa RT-10.05/RT-07.04 ni se suprime el efecto SLA. El perfil de corrección distingue riesgos ya declarados de omisiones documentales y prohíbe ocultar incumplimientos reales. La comprobación analítica de los límites y la conciliación monetaria interna quedan en tmp/cierre-sd4-sd10-20261124 del proyecto, fuera de los PDF técnicos.
+
+
+## Revisión humana de 4-X — 24 de noviembre de 2026
+
+Por indicación expresa del usuario, se sustituye el pendiente de la fila 4-X por «Álvaro Catalán: revisó el detalle de las figuras.». Cambio limitado a esa celda; no se atribuye revisión adicional. Fuente actualizada localmente sobre d1d45456; sin compilación, commit ni push en esta intervención.
+
+
+El usuario precisó adaptar la fórmula de 4-W a 4-X. La celda queda: «Álvaro Catalán: revisó la presentación de las figuras y su relación con los ambientes de despliegue.». Se refiere a las Figuras 19–23 de 4-X.1; no atribuye revisión de otros contenidos del anexo. Sólo fuente y registro locales; sin compilar ni publicar.
+
+
+El usuario autorizó posteriormente compilar y publicar este cambio. Compilado sólo el cuerpo con compilar.ps1 -SoloMain, tres pasadas LuaLaTeX:172 páginas, sin errores, referencias indefinidas ni desbordes. Sólo la página172 cambia en la comparación textual frente a d1d45456; celda4-X comprobada por extracción y vista completa, sin el pendiente. Persiste únicamente aviso del nombre de la clase. Se publican la declaración, este registro y el PDF del cuerpo; anexos/T-11 intactos.
+
+
+Durante el push, GitHub avanzó a5f569ee6 (leyendas de fuente específicas). Se integró mediante rebase, preservando sus44archivos y su nueva fuente «elaboración propia» en la declaración. El conflicto binario se resolvió tomando el PDF remoto como base para recompilarlo; nunca se usó force push. La verificación de172p y sólo p172 anterior corresponde al corte d1d45456; se repite después de compilar sobre5f569ee6.
+
+
+Verificación final sobre5f569ee6: tres pasadas completas,172p, sólo p172 distinta por extracción textual; revisión visual final conforme. Sin errores, indefinidos, rerun ni desbordes. Anexos y T-11 permanecen exactamente como los publicó5f569ee6.
