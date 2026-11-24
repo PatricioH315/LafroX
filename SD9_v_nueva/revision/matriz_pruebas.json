@@ -1,6 +1,6 @@
 {
-  "source_ref": "a0b4b35b9c104446a773bc9929df5a902eed9427",
-  "source_commit": "a0b4b35b9c104446a773bc9929df5a902eed9427",
+  "source_ref": "bfed54d5a7b3ebe5eb787bc648ab83b88977fbb9",
+  "source_commit": "bfed54d5a7b3ebe5eb787bc648ab83b88977fbb9",
   "test_count": 1345,
   "counts": {
     "t12_rows": 653,
@@ -16,8 +16,8 @@
       "Media": 55
     },
     "rt_state": {
-      "Cumple": 365,
-      "Cumple parcialmente": 4,
+      "Cumple": 366,
+      "Cumple parcialmente": 3,
       "No cumple": 5
     },
     "rt_without_case": 5,
@@ -3308,7 +3308,7 @@
       "table": "3.A.3",
       "source_id": "RF-17.09",
       "origin": "BTT, RT-16.19",
-      "criterion": "El usuario genera el documento en PDF, DOCX y XLSX y verifica los datos de la transacción en los tres formatos.",
+      "criterion": "El administrador del CLIENTE edita una plantilla y el usuario genera documentos en PDF, DOCX y XLSX. Los tres archivos reproducen los datos de la misma transacción.",
       "verification": "Precondición y resultado esperado",
       "evidence": "RF-17.09/\\allowbreak{}P01--\\allowbreak{}P02",
       "cases": [
@@ -3438,7 +3438,7 @@
       "table": "3.A.3",
       "source_id": "RF-18.03",
       "origin": "BTT, RT-16.23",
-      "criterion": "La notificación es enviada y registrada, si falla, se reintenta según política configurada.",
+      "criterion": "Se comprueban el envío asíncrono, el reintento sin duplicados y los estados de entrega, apertura y error por canal. En SMS, el clic acredita la apertura del aviso en el portal. La lectura del SMS queda sin evidencia si el proveedor no informa ese evento.",
       "verification": "Precondición y resultado esperado",
       "evidence": "RF-18.03/\\allowbreak{}P01--\\allowbreak{}P03\\newline Pendiente: El proveedor debe acreditar apertura de SMS si ese evento está disponible.",
       "cases": [
@@ -3854,7 +3854,7 @@
       "stage": "E1",
       "table": "3.A.5b",
       "source_id": "RNF-09.05",
-      "origin": "Propio LafroX. Fuente: RF-09.05.",
+      "origin": "Propio LafroX. Fuente: elaboración propia a partir del control de temperatura (Bases Técnicas del caso, sección 4.9).",
       "criterion": "Cada cámara y cada vehículo con frío registra temperatura con una frecuencia, parametrizable por tipo de producto, suficiente para detectar una desviación de 2\\,°C sostenida durante 15 minutos (RF-09.05). La serie no admite brechas: un intervalo sin lectura se registra como evento.",
       "verification": "Prueba en cámara y vehículo con registro térmico",
       "evidence": "RNF-09.05/\\allowbreak{}P01--\\allowbreak{}P05",
@@ -4037,7 +4037,7 @@
       "stage": "E2",
       "table": "3.A.5b",
       "source_id": "RNF-12.03",
-      "origin": "Propio LafroX. Fuente: Bases Técnicas del caso, sección 13.2; RF-12.13.",
+      "origin": "Propio LafroX. Fuente: elaboración propia a partir de la prueba de entrega digital (Bases Técnicas del caso, sección 9.9).",
       "criterion": "El acuse de recibo digital de cada entrega a una cadena se envía dentro de los 30 minutos posteriores a la descarga (RF-12.13), referido a la misma guía y al aviso de despacho enviado al cargar el camión (RF-12.09).",
       "verification": "Prueba de entrega a cadena con medición desde descarga hasta acuse comercial y verificación de que acuse y aviso de despacho refieren a la misma guía",
       "evidence": "RNF-12.03/\\allowbreak{}P01--\\allowbreak{}P03",
@@ -4426,7 +4426,7 @@
       "stage": "E1",
       "table": "3.A.5b",
       "source_id": "RNF-14.11",
-      "origin": "Propio LafroX. Fuente: Subdocumento 2, Anexo 2.2, S-13; Ley N° 21.719.",
+      "origin": "Propio LafroX. Fuente: elaboración propia a partir del tratamiento de geolocalización (Subdocumento 2, Anexo 2.2, S-13) y la Ley N.° 21.719.",
       "criterion": "Hasta el acuerdo con el sindicato, la posición se registra por vehículo y ruta, no por persona, y no se usa para controlar la jornada. El acceso a la geolocalización es por rol autorizado, queda auditado (RNF-09.03) y se cifra a nivel de campo (RNF-07.02).",
       "verification": "Revisión de configuración y prueba de seguridad",
       "evidence": "RNF-14.11/\\allowbreak{}P01--\\allowbreak{}P05",
@@ -4447,7 +4447,7 @@
       "stage": "E1",
       "table": "3.A.5b",
       "source_id": "RNF-14.12",
-      "origin": "Propio LafroX. Fuente: Ley N° 21.719; Bases Técnicas Transversales, capítulo 11.",
+      "origin": "Propio LafroX. Fuente: elaboración propia a partir de la clasificación de información (Bases Técnicas Transversales, capítulo 11, RT-11.03) y la Ley N.° 21.719.",
       "criterion": "El 100 \\% de los campos con datos personales capturados en terreno (receptor, conductor, preventista, cliente) tiene categoría asignada. Los de categoría sensible se cifran a nivel de campo (RNF-07.02) y su consulta queda auditada (RNF-09.03).",
       "verification": "Revisión de configuración y prueba de seguridad",
       "evidence": "RNF-14.12/\\allowbreak{}P01--\\allowbreak{}P03",
@@ -6617,7 +6617,7 @@
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-06.06",
-      "criterion": "La obra civil de separación de las instalaciones es de cargo del CLIENTE; su especificación técnica y su coordinación son de cargo del PROPONENTE.",
+      "criterion": "El expediente de obra contiene la especificación técnica de la separación y asigna la coordinación a LafroX y la ejecución al CLIENTE.",
       "verification": "Verificación del requisito y del alcance ofertado",
       "evidence": "RT-06.06/\\allowbreak{}P01",
       "cases": [
@@ -8298,7 +8298,7 @@
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-11.25",
-      "criterion": "Queda prohibido el uso de datos productivos reales en ambientes no productivos sin anonimización o seudonimización verificable.",
+      "criterion": "El inventario de datos de prueba identifica los conjuntos sintéticos y los datos con anonimización o seudonimización verificable. Se rechaza la carga de datos productivos sin dicho tratamiento en ambientes no productivos.",
       "verification": "Verificación del requisito y del alcance ofertado",
       "evidence": "RT-11.25/\\allowbreak{}P01",
       "cases": [
@@ -9332,13 +9332,13 @@
     {
       "id": "RT-16.19",
       "state": "Cumple",
-      "component": "CLIENTE administra plantillas versionadas de avisos y comprobantes en Angular 22; Laravel 13 combina datos autorizados de pedido/entrega y descarga HTML abierto, reutilizando not\\_plantilla/cuerpo\\_ref.",
-      "edt": "5.2.4",
+      "component": "El servicio de plantillas permite al administrador del CLIENTE editar y versionar una plantilla y generar documentos en PDF, DOCX y XLSX con datos de la transacción.",
+      "edt": "3.3.6",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-16.19",
-      "criterion": "La solución genera documentos a partir de plantillas administrables por el CLIENTE, con datos de la transacción y salida en formato abierto.",
+      "criterion": "El administrador del CLIENTE edita una plantilla y el usuario genera documentos en PDF, DOCX y XLSX. Los tres archivos reproducen los datos de la misma transacción.",
       "verification": "Verificación del requisito y del alcance ofertado",
       "evidence": "RT-16.19/\\allowbreak{}P01",
       "cases": [
@@ -9348,7 +9348,7 @@
     {
       "id": "RT-16.20",
       "state": "Cumple",
-      "component": "Trabajador Laravel 13 de notificaciones: correo por Amazon SES, SMS por Amazon SNS, WhatsApp por AWS End User Messaging Social y aviso en portal",
+      "component": "Trabajador Laravel 13 de notificaciones: correo por Amazon SES, SMS por Amazon SNS, WhatsApp por WhatsApp Cloud API de Meta y aviso en portal",
       "edt": "5.2.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9402,7 +9402,7 @@
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-16.23",
-      "criterion": "Se verifica envío asíncrono, reintento ante falla, control de duplicados y registro de entrega, apertura y error por mensaje. Para SMS queda pendiente acreditar apertura cuando el proveedor no informa dicho evento.",
+      "criterion": "Se comprueban el envío asíncrono, el reintento sin duplicados y los estados de entrega, apertura y error por canal. En SMS, el clic acredita la apertura del aviso en el portal. La lectura del SMS queda sin evidencia si el proveedor no informa ese evento.",
       "verification": "Verificación del requisito y del alcance ofertado",
       "evidence": "RT-16.23/\\allowbreak{}P01\\newline Pendiente: El proveedor debe acreditar apertura de SMS si ese evento está disponible.",
       "cases": [
@@ -9411,8 +9411,8 @@
     },
     {
       "id": "RT-16.24",
-      "state": "Cumple parcialmente",
-      "component": "Correo: Amazon SES; SMS: Amazon SNS; WhatsApp: WhatsApp Cloud API de Meta; portal: LafroX, Angular 22/Laravel 13 en ECS Fargate N-04. Volumen conjunto: 2.800/5.200 avisos diarios. Pendiente conciliar la tarifa y el volumen específico de WhatsApp con la Oferta Económica.",
+      "state": "Cumple",
+      "component": "Correo: Amazon SES; SMS: Amazon SNS; WhatsApp: WhatsApp Cloud API de Meta; aviso en portal: LafroX, Angular 22/Laravel 13 en ECS Fargate N-04. Volumen proyectado por canal en el Subdocumento 4, Anexo 4-I: WhatsApp, unos 50.641 avisos/mes para el canal tradicional; correo y portal, 513 avisos/día; SMS de respaldo, hasta 2.000 mensajes/mes. El costo unitario y el tratamiento del costo variable se declaran en la Oferta Económica.",
       "edt": "5.2.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9420,7 +9420,7 @@
       "origin": "Bases Técnicas Transversales, RT-16.24",
       "criterion": "La propuesta identifica el proveedor de cada canal, su costo unitario, su volumen proyectado y el tratamiento del costo variable en la Oferta Económica.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-16.24/\\allowbreak{}P01\\newline Respaldo: proveedores y volumetría conjunta (SD4 Anexos 4-H y 4-I)",
+      "evidence": "RT-16.24/\\allowbreak{}P01\\newline Respaldo: proveedores y volumen proyectado (SD4-Anexos 4-H y 4-I); costo unitario y tratamiento del costo variable (Oferta Económica)",
       "cases": [
         "RT-16.24/P01"
       ]
@@ -9491,14 +9491,14 @@
       "id": "RT-16.29",
       "state": "Cumple",
       "component": "Exportación de gran volumen como trabajo asíncrono, sesión disponible para otras operaciones autorizadas y aviso al completarse mediante el servicio de notificaciones existente; descarga bajo permisos del solicitante.",
-      "edt": "3.3.2",
+      "edt": "5.2.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-16.29",
-      "criterion": "Las exportaciones de gran volumen se procesan de forma asíncrona, con notificación al completarse y sin bloquear la sesión.",
+      "criterion": "Solicitar una exportación de gran volumen. La sesión permite otras operaciones mientras se procesa. Al concluir, llega el aviso y el solicitante autorizado puede descargar el archivo.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-16.29/\\allowbreak{}P01",
+      "evidence": "RT-16.29/\\allowbreak{}P01\\newline El paquete 5.2.4 cubre el aviso. Falta acreditar el paquete de procesamiento.",
       "cases": [
         "RT-16.29/P01"
       ]
@@ -9848,7 +9848,7 @@
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-18.09",
-      "criterion": "La responsabilidad por los resultados de los componentes de inteligencia artificial recae íntegramente en el ADJUDICATARIO, conforme al Artículo 86° de las Bases Administrativas.",
+      "criterion": "Cotejar el inventario de componentes y la decisión D-09 para verificar el alcance sin IA operativa. Si una modificación incorpora IA, su expediente asigna al ADJUDICATARIO la responsabilidad por los resultados.",
       "verification": "Verificación del requisito y del alcance ofertado",
       "evidence": "RT-18.09/\\allowbreak{}P01",
       "cases": [
