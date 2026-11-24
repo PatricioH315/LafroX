@@ -170,3 +170,14 @@ Pendiente de formato (menor): el asunto de los metadatos sigue diciendo «Caso 0
 - **INN-03:** RT-05.30 se responde con el modelo determinista del T-12 y SD5; el aporte de la innovación es su incorporación distribuida y uso operativo, según SD3. Se mantienen los controles de RT-18.08 sin equiparar recalibración con aprendizaje y se distingue tolerancia de validación de intervalo estadístico.
 - **EDT y otras fichas:** fechas niveladas y ventana de asignación de 7.3.2 separadas; H12 remite a 9.4.2 en cuerpo y T-19; I-05A conserva las dos visitas del T-14. INN-04 conserva el OTIF estricto de R18-04.
 - **Alcance del cierre:** los cinco beneficios ya están dimensionados en el Anexo 13.C con unidades físicas y supuestos, sin montos; SD3 vigente incorpora las cinco innovaciones en su alcance. El análisis financiero aún requiere reconciliación externa. La declaración de revisión humana no se amplió sin evidencia de validación técnica de los responsables.
+
+## INN-04 sin estructura de pago alternativa (24-11-2026)
+
+| ID | Dónde | Cambio | Motivo | Evidencia | Commit | Estado |
+|---|---|---|---|---|---|---|
+| A5-02 | C 13.4.7 (párrafo de R-027) | «Si no se aprueban las reglas, el componente variable se liquida solo con las métricas de servicio… y el tramo… no devenga» pasa a «mientras la canasta, los índices y la regla estacional no estén aprobados, la puntuación del tramo vale cero; la estructura de pago no cambia y el valor mensual nunca supera el ofertado» | La redacción anterior describía una segunda estructura de pago sujeta a una aprobación posterior del CLIENTE (riesgo de oferta condicionada, Art. 53), aunque A5-01 ya había quitado la versión explícita | BA Art. 53; E-21 1.2 p. 70 | ver `git log` | hecho |
+| A5-03 | C cierre de 13.4 | «Si el modelo no rinde, el pago sigue la estructura…» pasa a «la puntuación es cero…; la estructura de pago es la misma en todos los escenarios» | Mismo motivo que A5-02 | BA Art. 53; E-25 p. 74 | ver `git log` | hecho |
+| A5-04 | T ficha 4 campo 17 | Se agrega «Sin reglas aprobadas, la puntuación del tramo vale cero; la estructura de pago no cambia» | Coherencia cuerpo / T-19 | — | ver `git log` | hecho |
+| A5-05 | C 13.4.5 (beneficio del CLIENTE) | Los 21.000 km se rotulan «indicador físico ilustrativo, y no beneficio comprometido» | El 5 % → 5 % de kilómetros es un supuesto fuerte; el T-19 ya lo llama escenario exploratorio | Caso 2.2 p. 5 | ver `git log` | hecho |
+
+No se cambia «TRL 9 por juicio propio» de INN-04: el mismo criterio se usa en INN-02, INN-03 e INN-05; si se revisa, debe hacerse en las cinco a la vez.
