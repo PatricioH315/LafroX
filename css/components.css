@@ -414,11 +414,15 @@ fieldset > legend { margin-bottom: var(--sp-2); padding: 0; }
 .app-tabbar button { position: relative; }
 .tab-count { position: absolute; top: 6px; left: calc(50% + 8px); padding: 0 6px; }
 @media (max-width: 767px) {
-  .field-app { max-width: none; margin: calc(var(--sp-4) * -1) calc(var(--sp-4) * -1) 0; width: calc(100% + 2 * var(--sp-4)); border: 0; border-radius: 0; box-shadow: none; min-height: calc(100dvh - var(--topbar-h)); }
-  .field-app .app-bar { border-radius: 0; position: sticky; top: var(--topbar-h); }
+  /* the body scrolls between the app bar and the tab bar, so no target is ever hidden under them */
+  .field-app { max-width: none; margin: calc(var(--sp-4) * -1) calc(var(--sp-4) * -1) 0; width: calc(100% + 2 * var(--sp-4)); border: 0; border-radius: 0; box-shadow: none; height: calc(100dvh - var(--topbar-h)); min-height: 0; }
+  .field-app .app-body { overflow-y: auto; min-height: 0; }
+  .main:has(.field-app) { padding-bottom: 0; }
+  .view:has(.field-app) > .breadcrumb { display: none; }
+  .field-app .app-bar { border-radius: 0; position: static; }
   /* the floating action sits above the bottom tab bar, never on top of it */
   .field-app .fab { bottom: calc(60px + var(--sp-4)) !important; }
-  .field-app .app-tabbar { order: 5; position: sticky; bottom: 0; z-index: 5; border-top: 1px solid var(--c-line-soft); border-bottom: 0; margin-top: auto; }
+  .field-app .app-tabbar { order: 5; position: static; z-index: 5; border-top: 1px solid var(--c-line-soft); border-bottom: 0; }
 }
 .app-bar { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: var(--sp-2); padding: var(--sp-2) var(--sp-3); min-height: 56px; background: var(--c-surface); border-bottom: 1px solid var(--c-line-soft); }
 .app-bar h2 { margin: 0; font-size: var(--fs-lg); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

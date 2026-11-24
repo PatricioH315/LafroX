@@ -73,8 +73,8 @@ Detalle de los mínimos exigidos:
 |---|---|---|---|
 | RT-25.01 | Navegación intuitiva, máximo tres interacciones | Tabla de caminos por perfil, accesos principales en el inicio, búsqueda global y acciones rápidas. | `docs/arquitectura_informacion.md` |
 | RT-25.02 | Retroalimentación, carga y errores | Avisos, esqueletos, botones con carga, validación en línea y errores con instrucciones. | `docs/sistema_diseno.md` |
-| RT-25.03 | WCAG 2.2 AA | Pruebas dirigidas de teclado, orden de tabla y semántica de controles. Falta acreditar conformidad integral y probar con lector de pantalla. | [Verificación actual](../revision/verificacion_2026-11-07.md) |
-| RT-25.04 | Diseño responsivo | Puntos de quiebre 375 / 768 / 1024 / 1366 / 1920; menú desplegable bajo 1024 px, también en el sitio público; la portada se adapta al girar la pantalla sin recargar. | `docs/sistema_diseno.md` |
+| RT-25.03 | WCAG 2.2 AA | axe-core 4.10 (WCAG 2.2 AA) sin infracciones en 51 pantallas a 1366 y 375 px, en Chromium y Edge; teclado, foco visible y objetivos de 44 px. | [Verificación 24-11-2026](../revision/verificacion_2026-11-24.md) |
+| RT-25.04 | Diseño responsivo | Puntos de quiebre 375 / 768 / 1024 / 1366 / 1920; menú desplegable bajo 1024 px, también en el sitio público; la portada se adapta al girar la pantalla sin recargar. Sin desplazamiento horizontal en 51 pantallas a 1920, 1366, 1024, 768 y 375 px. | `docs/sistema_diseno.md`; [verificación 24-11-2026](../revision/verificacion_2026-11-24.md) |
 | RT-25.05 | Sistema de diseño documentado | 5 colores, 2 familias, iconografía, retícula de 8 px y componentes vivos. | `docs/sistema_diseno.md` |
 | RT-25.06 | Enlace navegable sin instalación | HTML, CSS y JavaScript estáticos, sin complementos ni compilación. | `#/` |
 | RT-25.07 | Acceso por seis meses | Publicación estática sin dependencias externas de ejecución (solo tipografías, con respaldo del sistema). LafroX mantiene el enlace al menos hasta el 25-05-2027, seis meses después de la Propuesta Final; responsable: Líder de Desarrollo. | `README.md`, sección Publicación |
@@ -95,7 +95,7 @@ Los resultados actuales se registran en [verificación del prototipo](../revisio
 
 ## Pendiente antes de la entrega
 
-- ✓ Enlace publicado (RT-25.06): https://patricioh315.github.io/LafroX/. Falta registrarlo en el Informe 3. Los seis meses de RT-25.07 no se pueden demostrar en la entrega: se acreditan con la publicación estable.
+- ✓ Enlace publicado (RT-25.06): https://patricioh315.github.io/LafroX/. Registrado en el Formulario T-12. RT-25.07 queda cubierto por el compromiso de publicación hasta el 25-05-2027.
 - ✓ Hecho el 04-11-2026: se corrigió en el prototipo todo lo que la revisión externa marcó como corregible: 8 requerimientos (RF-03.11, RF-03.12, RF-06.08, RF-07.08, RF-08.07, RF-14.06, RNF-05.02 y los botones de 38 px de RT-25.03) y 10 incoherencias de datos. Detalle en `revision/checklist_sd3_sd4.md`, sección 10.
 - Títulos de RF-02.09 y RF-12.30 en el catálogo de main: agregados en https://github.com/PatricioH315/LafroX/pull/1; falta fusionarlo.
 - No corregibles en el prototipo, por ser simulación: RNF-05.03, RNF-08.01, RNF-12.01, la revisión con lector de pantalla y la parte real (ERP, OTP, Transbank, GPS) de los requerimientos anteriores.
