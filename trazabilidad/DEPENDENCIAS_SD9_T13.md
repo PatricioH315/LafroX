@@ -26,7 +26,7 @@ El Anexo 4-H del SD4 identifica las interfaces y el Anexo 4-R contiene la polít
 
 | Enlace | Respaldo disponible | Dato que debe confirmar el responsable |
 |---|---|---|
-| INT-06, ERP 2017–ACL de Talca | T-11 y Anexo 4-H identifican la ACL en VM-04. El ERP se conserva y sus interfaces requieren levantamiento. | Dueño del ERP y Arquitectura: interfaz exacta, protocolo, versión admitida y evidencia de TLS 1.3 o alternativa viable. |
+| INT-06, ERP 2017–ACL de Talca | T-11 y Anexo 4-H identifican la ACL en VM-04. El ERP se conserva y sus interfaces requieren levantamiento. | Equipo del ERP: confirmación escrita para ERP–ACL de Talca con fecha, ambiente, versión admitida y configuración habilitada si se conoce. Arquitectura registra por separado la versión negociada en el ensayo del T-13. Confirmación pendiente de incorporación. |
 | INT-07, DTE y estados | El ERP sigue siendo el emisor. El diseño identifica ACL/M5 y el canal del ERP con SII. | Integración: separar el tramo de la solución del tramo operado por el ERP, identificar a su dueño y confirmar el alcance del requisito en cada extremo. |
 | INT-08, EDI por cadena | El Anexo 4-R declara TLS 1.3 para la entrada AS2 de LafroX. | Integración y M11: confirmar por cadena y por dirección el extremo, el perfil AS2 y la versión admitida. |
 | INT-09, pasarela de pago | El Anexo 4-H identifica la pasarela de M7 y el T-11 enumera Transbank. | Integración y M7: confirmar producto, ambiente y extremo exacto con el proveedor. Registrar el respaldo para ese producto. |
