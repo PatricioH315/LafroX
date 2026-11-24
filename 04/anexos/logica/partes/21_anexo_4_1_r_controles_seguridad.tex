@@ -28,7 +28,7 @@ Esta matriz vincula controles de ISO/\allowbreak IEC 27001:2022, Anexo A, y su g
 8.25/\allowbreak 8.28 & RT-11.22/\allowbreak 24 & SAST/\allowbreak SCA/\allowbreak DAST, firma y procedencia SLSA 3. & Pipeline bloqueado por hallazgo. \\
 8.29/\allowbreak 8.31/\allowbreak 8.32 & RT-04.02--04.05, RT-11.27 & Pruebas, ambientes segregados y promoción aprobada. & Commit, ensayo y despliegue correlacionados. \\
 \end{tablalafrox}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de ISO (2022b, 2022c, 2025a, 2026), RT de los capítulos 4, 5, 7, 10, 11, 12 y 16 (Bases Técnicas Transversales, caps.~4--16, pp.~10--29), y contratos lógicos. Seguridad verifica aplicabilidad con el responsable del sistema de gestión. Diseño propuesto: (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-21-anexo-4-1-r-controles-seguridad}--\pageref*{fuente-21-anexo-4-1-r-controles-seguridad-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de ISO (2022b, 2022c, 2025a, 2026), los requisitos de seguridad de las Bases Técnicas Transversales (secciones 4, 5, 7, 10, 11, 12 y 16) y los contratos lógicos del Anexo 4-G.\par}
 
 El registro de vulnerabilidades guarda la fecha que inicia el plazo, que es la primera entre la publicación y la detección para el componente afectado, y la evidencia de cierre. Los plazos máximos de 7 días corridos para críticas, 15 para altas y 30 para medias respetan los congelamientos y el escalamiento al CLIENTE descritos en 4.2.4.1.4 del Subdocumento 4. Contener una vulnerabilidad no equivale a remediarla (RT-11.04, Bases Técnicas Transversales, cap. 11, p. 23).
 
@@ -56,7 +56,9 @@ MDM y EDR & Dependencias de salida del T-11, incluidos agentes y servicios admin
 \addtocounter{table}{-1}
 \endgroup
 
-Fuentes del inventario: SD4, anexos 4-H y 4-R, secciones 4.1.3.7 y 4.2.5.2; T-11, A-04, N-09, F-03 y dependencias de salida; Bases Técnicas del caso, cap. 5. Si un tramo exigido solo admite TLS 1.2, registrar la brecha y resolver la integración bajo responsabilidad de LafroX, sin rebajar el requisito ni modificar el software del ERP. INT-11 especifica TLS 1.3 en el envío y retorno de WhatsApp.
+Fuente: elaboración propia a partir del inventario de interfaces del Anexo 4-H, los componentes A-04, N-09 y F-03 del Formulario T-11 y las integraciones de las Bases Técnicas del caso (sección 5).
+
+Si un tramo exigido solo admite TLS 1.2, registrar la brecha y resolver la integración bajo responsabilidad de LafroX, sin rebajar el requisito ni modificar el software del ERP. INT-11 especifica TLS 1.3 en el envío y retorno de WhatsApp.
 
 Documentación de contraparte: \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/data-protection.html}{Amazon SQS}, \href{https://docs.aws.amazon.com/ses/latest/dg/security-protocols.html}{Amazon SES}, \href{https://docs.aws.amazon.com/sns/latest/dg/infrastructure-security.html}{Amazon SNS}, \href{https://www.sii.cl/factura_electronica/factura_mercado/estado_envio.pdf}{SII, consulta de estado de envío}, \href{https://transbankdevelopers.com/documentacion/como_empezar}{Transbank, ambientes de Webpay} y \href{https://learn.microsoft.com/en-us/intune/fundamentals/endpoints}{Microsoft Intune, extremos de red}. El registro de la prueba recogerá la versión observada en el extremo y ambiente seleccionados.
 

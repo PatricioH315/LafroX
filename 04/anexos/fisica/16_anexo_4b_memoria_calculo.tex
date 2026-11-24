@@ -34,7 +34,7 @@ La síntesis siguiente reúne las dieciséis dimensiones del caso, sus valores p
   16 & Dotación de la mesa de ayuda y del equipo de operación & Mesa: 7 simultáneos en la hora cargada; ejemplo de 8 plazas según el calendario y las 128 HH efectivas de T-15. El NOC mantiene dedicaciones de 100, 75 y 50\,\% por año de Operación & Mesa: 13 plazas en el ejemplo de septiembre de 2029 de T-15. Se comprueban relevos, concurrencia y cobertura NOC de 20:00 a 22:00 & Anexo 4-W, sección 4-W.7 \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para las dieciséis dimensiones del 14.2, y (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio de las dieciséis dimensiones a partir de la volumetría de las Bases Técnicas del caso (secciones 14.1 y 14.2) y las horas efectivas del Formulario T-15.\par}
 
 \begingroup
 \renewcommand{\thesection}{4-W.\arabic{section}}
@@ -58,7 +58,7 @@ La Tabla~\ref{tab:anexo-4b-hechos} concentra los hechos que alimentan las fórmu
   Ruta y frío & 34 clientes en una ruta máximo actualmente, 18 camiones propios y 10 de terceros con equipo de frío, Talca a {$-$}22\,\textdegree{}C & Bases Técnicas del caso, cap. 8, p. 16, entrevista al conductor; Bases Técnicas del caso, cap. 2, p. 5 \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25, y anexo~B, p.~38), para la volumetría y el calendario, y (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de la dotación, flota, instalaciones, entrevistas, volumetría y calendario de las Bases Técnicas del caso (secciones 2, 8 y 14 y anexo B).\par}
 
 La Tabla~\ref{tab:anexo-4b-parametros} fija los valores que impone la propuesta. Un valor de diseño se confirma mediante perfilado, QA o prueba de carga, pero no se presenta como un hecho del CLIENTE.
 
@@ -77,7 +77,7 @@ La Tabla~\ref{tab:anexo-4b-parametros} fija los valores que impone la propuesta.
   Actualizaciones & App ≤100 MB, sistema operativo 2 GB & Tandas dominicales sin bodega ni reparto & Bases Técnicas del caso, anexo B.2, p. 38 \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para la volumetría de base, y (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia de los parámetros de diseño a partir de la volumetría y las ventanas operacionales de las Bases Técnicas del caso (sección 14 y anexo B.2).\par}
 
 La Tabla~\ref{tab:anexo-4b-supuestos} declara el fundamento, impacto y validación de cada supuesto. Ninguno reemplaza un dato literal del caso.
 
@@ -91,7 +91,7 @@ La Tabla~\ref{tab:anexo-4b-supuestos} declara el fundamento, impacto y validaci�
   SV-07 & La API de telemetría de los camiones propios continúa disponible. & Posición automática se degrada a ruta planificada. & Prueba contractual y técnica. \\
 \end{tablalarga}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para la volumetría, y supuestos y cálculos de (Subdocumento 4, anexo~4-W, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia de supuestos a partir de la volumetría de las Bases Técnicas del caso (sección 14).\par}
 
 \section{Dimensiones 1–3: transacciones por segundo}
 \label{sec:anexo-4b-dimensiones-1-3}
@@ -134,7 +134,7 @@ La Tabla~\ref{tab:anexo-4b-horario} conserva el perfil hora por hora que produce
  23:00 & 0,54 / 1,01 & 0,27 / 0,50 & 0,00 / 0,00 & 0,74 / 1,37 & 0,00 / 0,00 & 1,55 / 2,88 \\
 \end{tablalarga}
 \nopagebreak
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25, y anexo~B, p.~38), para la volumetría, y supuestos y cálculos de (Subdocumento 4, anexo~4-W, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio del perfil horario a partir de la volumetría y las ventanas de operación de las Bases Técnicas del caso (sección 14 y anexo B).\par}
 \end{anexohorizontal}
 
 Cada hora identifica el inicio de su bloque. Los totales por bloque se calculan antes de redondear, por lo que no siempre coinciden con la suma de las celdas impresas. El bloque de las 12:00 determina el máximo agregado porque el modelo hace coincidir la hora cargada de preventa, reparto y portal. Los máximos de los WMS ocurren en el bloque de las 05:00 y el máximo agregado de cross-docking en el de las 04:00.
@@ -190,7 +190,7 @@ El inventario siguiente conserva las unidades en operación por familia y sitio.
   SIM M2M de camión (B-15) & -- & -- & -- & 56 \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para la dotación y la flota, y (Bases Técnicas Transversales, cap.~8, pp.~18--19), para el equipamiento, y (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de la flota y dotación de las Bases Técnicas del caso (secciones 2 y 14) y el equipamiento del Formulario T-11.\par}
 
 \section{Dimensiones 7–10: almacenamiento, retención y migración}
 \label{sec:anexo-4b-dimensiones-7-10}
@@ -237,9 +237,11 @@ La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. I
   \textbf{Total} & \textbf{244.280} & \textbf{362.561} & \textbf{15 integraciones} \\
 \end{tablalarga}
 
-Los 11.800 cobros mensuales del caso son en efectivo y no miden pagos con tarjeta. La cota electrónica supone como máximo un pago por entrega y dos mensajes, solicitud y respuesta, como refleja INT-09.
 \nopagebreak
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para la volumetría, y supuestos y cálculos de (Subdocumento 4, anexo~4-W, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
+\par
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio de mensajes por integración a partir de la volumetría de las Bases Técnicas del caso (sección 14) y los supuestos de dimensionamiento.\par}
+\par
+Los 11.800 cobros mensuales del caso son en efectivo y no miden pagos con tarjeta. La cota electrónica supone como máximo un pago por entrega y dos mensajes, solicitud y respuesta, como refleja INT-09.
 \end{anexohorizontal}
 
 Para la dimensión 12, el drenaje se obtiene sumando los aportes acumulados en 24 horas y dividiendo por 2 horas:
@@ -261,7 +263,7 @@ Concepción & D-06 satélite & 6 Mbps mínimo de aceptación & 4,19 Mbps útiles
   Cada cross-docking & D-04 LTE & 2 Mbps & 0,35 Mbps, drenaje & 17,70\,\% \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para el ancho de banda, y (Bases Técnicas del caso, cap.~6, pp.~10--11), para la conectividad de cada sitio, y (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio de capacidad y utilización de enlaces a partir de la conectividad y volumetría de las Bases Técnicas del caso (secciones 6 y 14).\par}
 
 La coordinación de reserva no se suma al drenaje: durante un aislamiento la nube no confirma reservas remotas del sitio, por lo que sus solicitudes esperan en la cola de la nube y no en el sitio. Su tasa continua es de 87.228 × 1 KB ÷ 86.400 s, unos 0,008 Mbps sumando todos los sitios, y no cambia la utilización de la tabla. La tasa prioritaria suma WAL, broker y telemetría crítica a los mensajes de guía, respuesta del SII e identidad, con una cota de 1 KB por mensaje. Se divide el volumen diario por 86.400 segundos. Los 12.602/23.404 cambios diarios de INT-12 son una cota conservadora basada en movimientos de todos los sitios, aplicada al dimensionamiento de Talca y no un conteo medido allí. La utilización de respaldo incluye retorno simultáneo y drenaje con 15\,\% de margen, según la Tabla~\ref{tab:anexo-4b-enlaces}. En Talca y Concepción, D-06 permanece encendido en espera caliente, con túnel IPsec establecido y BGP de menor preferencia. Solo toma tráfico si fallan fibra y LTE, cuando prioriza DMS/WAL de Talca, salida del broker y outbox, guías hacia ERP y SII, identidad y telemetría crítica. La tarifa plana no agrega costo por mantenerlo encendido. En los cross-docking Starlink es el camino principal y LTE de Entel y Claro da respaldo. El tercer camino de los CD sostiene la salida continua de datos exigida por el RPO de 15 minutos. La oficina cede prioridad durante la recuperación.
 
@@ -305,7 +307,7 @@ C. Dos puestos nocturnos y dominicales; tres en relevo NOC & 1.840 & 15 & 50 \\
 \end{tablalafrox}
 \addtocounter{table}{-1}
 \endgroup
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo por calendario con 128 HH efectivas de T-15: A=$25\times58+5\times24$; B=A+$5\times24$; C=B+$25\times6$; NOC adicional=$25\times2$. A conserva la línea base T-15/SD12; B es sensibilidad y C es la reserva adicional adoptada por LafroX, distinta de una contratación acreditada.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio por calendario a partir de las horas efectivas del Formulario T-15 y la línea base del Subdocumento 12.\par}
 
 A cabe en las trece plazas por carga agregada si los turnos y las llegadas nocturnas/dominicales sostienen la cota de un agente; con dos en el relevo NOC, 2.391 contactos bajo el valle uniforme no se acreditan. B refuerza domingo y relevo, pero mantiene el límite nocturno de 1,23 contactos/h. C cubre hasta 4,54 contactos/h en noche y domingo, además del valle de 4,76 con tres en relevo NOC; tasas mayores exigen otro cálculo. El calendario de diciembre de 2029 produce 1.628, 1.748 y 1.904 HH, respectivamente: trece, catorce y quince plazas como cotas agregadas. Adelantar B/C a un peak anterior a M25 exige también el tercer agente diurno. Ninguna configuración demuestra por sí sola los relevos ni los otros indicadores de atención.
 
@@ -333,7 +335,7 @@ La base local contiene maestros, stock, lotes presentes y movimientos del horizo
   Mini-PC & 3 vCPU, 5 GB, 50 GB, 52 IOPS & 3 vCPU, 5 GB, 50 GB, 156 IOPS & Cada cross-docking \\
 \end{tablalarga}
 \nopagebreak
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), Advantech (2025, p.~1) para el equipo de cross-docking, y criterios de dimensionamiento de (Subdocumento 4, anexo~4-W, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio por máquina virtual a partir de la volumetría de las Bases Técnicas del caso (sección 14) y la ficha de Advantech (2025, p.~1).\par}
 \end{anexohorizontal}
 
 VM-04 incorpora dos procesos PHP CLI de \texttt{erp-sync} de 64 MB cada uno: la base de 2 GB sube a 3 GB tras redondear 2 + 2 × 64 ÷ 1.024. Las VMs de Talca suman 14 vCPU, 23 GB RAM, 210 GB y 136 IOPS actuales. A 3× suman 14 vCPU, 25 GB, 221 GB y 359 IOPS. El hipervisor agrega 15\,\% de vCPU y 2 GB RAM por nodo. Ceph agrega por nodo dos OSD de 1 vCPU y 4 GB cada uno y monitor/manager de 1 vCPU y 2 GB. El total de Talca es 26 vCPU, 59 GB RAM y 210 GB actuales. A 3×, 26 vCPU, 61 GB y 221 GB. Concepción requiere con hipervisor 12 vCPU, 17 GB RAM y 140 GB actuales. A 3×, 12 vCPU, 18 GB y 140 GB. El segundo servidor de Concepción aloja copias en espera de VM-C01 a VM-C04 con los mismos recursos, y cada cross-docking tiene un segundo mini-PC idéntico en espera: la utilización de cada equipo no cambia.
@@ -348,7 +350,8 @@ La energía de los gabinetes de borde y de piso se calcula con el método de la 
   Borde de cross-docking & 2 mini-PC × 59,44 W, 2 firewalls × 24 W, 2 switches × 18,96 W, 2 puntos de acceso PoE+ × 30 W, Starlink 100 W, total 365 W & 438 W, 0,46 kVA & 0,75 kVA, 61~\% \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de la especificación de LafroX, Advantech (2025, p.~1), Cisco (2026a, p.~10), Fortinet (s.~f., p.~22), Moxa (s.~f.-a y s.~f.-b, Power Parameters, sin paginación), Zebra Technologies (s.~f.-f, Power Specifications) y Starlink (s.~f., p.~3), con las condiciones y las hipótesis de carga explicadas debajo de la tabla. Diseño propuesto: (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
+\nopagebreak[4]
+\parbox{\linewidth}{{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio a partir del equipamiento del Formulario T-11 y las fichas de Advantech (2025), Cisco (2026a), Fortinet (s.~f.), Moxa (s.~f.-a, s.~f.-b), Zebra Technologies (s.~f.-f) y Starlink (s.~f.).\par}}
 
 Los 59,44 W del ARK-1251 corresponden al Core Ultra 5-125U en la ficha revisada el 19 de diciembre de 2025 (Advantech, 2025, Specifications, p.~1). Los 24 W corresponden al máximo del FGR-60F-3G4G (Fortinet, s.~f., Dimensions and Power, p.~22). Los 18,96 W del EDS-P506E excluyen los dispositivos PoE; los dos puntos de acceso se cuentan por separado y no se suma además el presupuesto PoE completo (Moxa, s.~f.-a, Power Parameters, sin paginación). La fuente de 600 W y los 370 W de PoE del C9200-24P se documentan en Cisco (2026a, tabla~4, p.~10), y los 10 W del gateway en Moxa (s.~f.-b, Power Parameters, sin paginación). Los 98 W de la ZT411 corresponden a potencia de impresión de referencia, no a una cota máxima garantizada (Zebra Technologies, s.~f.-f, Power Specifications). Para Starlink Standard 4, 75--100 W es consumo medio; los 100 W se conservan como hipótesis que debe validarse con picos y pérdidas de conversión del conjunto instalado (Starlink, s.~f., Standard, p.~3). La aceptación de la UPS exige medir esas cargas y comprobar autonomía antes de confirmar las cotas de la tabla.
 
@@ -387,7 +390,8 @@ Cota por cross-docking con carga agregada de las tres plataformas & 2,17 & 2,58 
   Mesa, contactos mensuales & 2.000 & 2.258 & 6.000 & Recalibrar Erlang C \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para la proyección a tres años, y (Bases Técnicas Transversales, cap.~9, pp.~21--22), para la capacidad y la escalabilidad, y (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-16-anexo-4b-memoria-calculo}--\pageref*{fuente-16-anexo-4b-memoria-calculo-fin}).\par}
+\nopagebreak[4]
+\parbox{\linewidth}{{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: proyección propia a partir del crecimiento de las Bases Técnicas del caso (sección 14) y los requisitos de capacidad de las Bases Técnicas Transversales (sección 9).\par}}
 
 El escenario global de 3× usa el máximo declarado de 14,66 TPS como base: 43,98 TPS. Las proyecciones del año 3 y las cotas por componente se calculan con los valores del modelo sin redondear. Las tareas, colas y almacenamiento en nube escalan por política. La reserva N+1, la Wi-Fi y los enlaces se amplían mediante revisión planificada.
 
@@ -422,6 +426,8 @@ Las cantidades siguientes son supuestos de dimensionamiento y resultados de cál
 \end{tablalafrox}
 \addtocounter{table}{-1}
 \endgroup
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio a partir del alcance y calendario del Subdocumento 13 y del Formulario T-19, y de los servicios del Formulario T-11.\par}
+
 {\fontsize{9pt}{11pt}\selectfont\raggedright El alcance y el calendario provienen del Subdocumento 13, apartados 13.1, 13.2, 13.3 y 13.5, y del T-19. Los servicios ofertados figuran en el T-11, N-04 y N-10. La configuración de referencia usa \href{https://docs.aws.amazon.com/glue/latest/dg/worker-types.html}{dos trabajadores Glue G.1X de 1 DPU}, \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-tasks-services.html}{tareas Fargate de 1 vCPU y 2 GiB} y \href{https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-capacity.html}{un perfil Redshift de 8 RPU}. Las duraciones, las frecuencias de reproducción y la asignación de motores a los trabajos son supuestos de LafroX para valorizar el diseño.\par}
 
 \paragraph{INN-01. Pares lote-local y precarga}
@@ -449,7 +455,9 @@ El ciclo de N-10 se valoriza una vez por mes desde el mes 21. Para cada mes se a
 \end{tablalafrox}
 \addtocounter{table}{-1}
 \endgroup
-{\fontsize{9pt}{11pt}\selectfont\raggedright Cálculos LafroX a partir de la volumetría de la sección~\ref{sec:anexo-4b-dimensiones-7-10}, los supuestos de tamaño y permanencia descritos y el T-19. El respaldo de trazabilidad se rige por 4.3.2 y la retención del histórico por el alcance de N-10 en el T-11.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio a partir de la volumetría de las Bases Técnicas del caso (sección 14), el calendario del Formulario T-19 y los servicios del Formulario T-11.\par}
+
+{\fontsize{9pt}{11pt}\selectfont\raggedright El respaldo de trazabilidad se rige por 4.3.2 y la retención del histórico por el alcance de N-10 en el T-11.\par}
 
 \paragraph{Traslado al presupuesto y comprobación}
 Para cada región y mes se suma el tamaño de las cohortes que permanecen dentro de su ventana de retención. Con producción uniforme, las capturas de INN-02 se aproximan por el volumen mensual multiplicado por los días promedio de permanencia y dividido por 30. Las permanencias de la tabla son escenarios de capacidad y se concilian con la política de retención aplicable antes de fijar el presupuesto. Si el resultado de INN-03 se incorpora al respaldo diferido de trazabilidad en \texttt{us-east-1}, se suma la ocupación de la copia desde que queda disponible y el tráfico de transferencia correspondiente. Para una copia completa con el mismo horizonte, el mes 56 alcanzaría aproximadamente \mbox{1,976 o 14,679 GB-mes} sumando ambas regiones. La copia se aplica por conjunto de datos. Las posiciones de flota permanecen en la región primaria según 4.3.2.
@@ -492,7 +500,7 @@ V19 & Orden de Calidad por satélite en una zona sin red móvil & Llega al TC58e
 V20 & Falla del equipo de frío en ruta, con carga de ensayo & Advertencia temprana con la puerta cerrada; minutos restantes por familia; retención solo de lo que supera su regla \\
 V21 & Ruptura confirmada de punta a punta: retención, entrega parcial, ajuste tributario, reposición, área de no aptos, disposición y expediente & Cada fase de protocolo de ruptura confirmada queda registrada y el pedido del cliente se repone \\
 \end{tablalafrox}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de RT-03.10 y RT-03.13 (Bases Técnicas Transversales, cap.~3, p.~9) y de ADR-24 (Anexo 4-O). Diseño propuesto: (Subdocumento 4, Anexo 4-W).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de RT-03.10 y RT-03.13 de las Bases Técnicas Transversales (sección 3), RT-03.13 de las Bases Técnicas del caso (sección 15) y ADR-24 del Anexo 4-O.\par}
 
 La meta móvil de aviso a Calidad es de no más de 2 min en al menos 99 \%; por satélite, no más de 5 min en al menos 95 \%, sujeto a V2/V18. Las condiciones de ruta y camino se miden por población; sin red móvil ni cielo, la alarma y retención local continúan y se registra la duración del corte de aviso. El tablero presenta antigüedad de la última curva; no se afirma latencia remota durante ausencia de ambos caminos.
 
@@ -516,7 +524,7 @@ La cantidad se calcula por zona, según cómo se propaga la señal en cada una. 
   \textbf{Total} & & & \textbf{65 en operación + 7 de reserva = 72} \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de las superficies del caso (Bases Técnicas del caso, cap. 2, p. 5), las cámaras sin señal (cap. 6, p. 10) y los supuestos S-36 y S-37 (Subdocumento 3). Diseño propuesto: (Subdocumento 4, Anexo 4-W).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia del diseño predictivo a partir de las superficies y zonas sin señal de las Bases Técnicas del caso (secciones 2 y 6) y los supuestos S-36 y S-37 del Subdocumento 3.\par}
 
 Talca suma 34 + 3 + 2 = 39 puntos de acceso, Concepción 18 + 2 = 20 y los cross-docking 6: 65 en operación. La reserva del 10 \% del numeral 8.4 de las Bases Técnicas Transversales (cap. 8, p. 19) da 6,5, redondeado a 7. Son las 72 unidades del Formulario T-11.
 
@@ -556,7 +564,7 @@ El servidor RADIUS es FreeRADIUS de la rama 3.2 (FreeRADIUS, 2026) y corre junto
   Un circuito eléctrico & Los switches de acceso tienen una fuente en la UPS del gabinete y otra en un circuito directo. Cada controlador tiene alimentación redundante desde los circuitos A y B (Cisco, 2026b, tabla~1). & Prueba de RT-08.04, desconectando un circuito a la vez. \\
 \end{tablalafrox}
 \nopagebreak
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Cisco (2024, 2025, 2026a, 2026b, s.~f.), FreeRADIUS (2026), Amazon Web Services (s.~f.-q), Microsoft (2026), RT-08.04 (Bases Técnicas Transversales, cap. 8, p. 18) y el Formulario T-11. Diseño propuesto: (Subdocumento 4, Anexo 4-W).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de la documentación de Cisco (2024, 2025, 2026a, 2026b, s.~f.), FreeRADIUS (2026), Amazon Web Services (s.~f.-q), Microsoft (2026), RT-08.04 de las Bases Técnicas Transversales y el equipamiento del Formulario T-11.\par}
 
 \subsection*{Fase 2: verificación en sitio}
 

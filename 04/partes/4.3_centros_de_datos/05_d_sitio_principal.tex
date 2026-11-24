@@ -62,7 +62,7 @@ La Figura~\ref{fig:cd-talca} muestra cómo se conecta el equipamiento de la sala
   \includegraphics[width=\linewidth]{figuras/centros_de_datos/Arquitectura_Fisica_CD_Talca.png}
   \caption{Arquitectura física del sitio on-premise del CD Talca}
   \label{fig:cd-talca}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~3, p.~9), para el componente on-premise, y (Bases Técnicas del caso, cap.~15, p.~26), para la tipología del sitio (RT-06.01), y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de RT-06.01 de las Bases Técnicas del caso (sección 15, p.~26) y los requisitos del componente local de las Bases Técnicas Transversales (sección 3).\par}
 \end{figure}
 \FloatBarrier
 
@@ -91,7 +91,7 @@ Para el cálculo de carga eléctrica se usa una cota conservadora por equipo, se
   \textbf{Carga TI de diseño} & & & \textbf{9.156 W $\approx$ 9,2 kW} \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~6, p.~15), para la energía (RT-06.07 a RT-06.11), y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio de carga eléctrica a partir del equipamiento del Formulario T-11 y los requisitos de energía de las Bases Técnicas Transversales (sección 6).\par}
 
 El cálculo eléctrico sigue estos pasos:
 
@@ -115,7 +115,7 @@ Para calcular la carga térmica, se considera que cada kW eléctrico consumido p
   \textbf{Carga térmica sensible de diseño} & \textbf{$\approx$ 9,2 kW} \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~6, p.~15), para la climatización (RT-06.13), y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio de climatización a partir del equipamiento del Formulario T-11 y los requisitos de climatización de las Bases Técnicas Transversales (sección 6).\par}
 
 Sobre esa carga se instalan dos unidades de climatización de precisión de 10 kW cada una, en configuración N+1. Una sola cubre los 9,2 kW de diseño. La temperatura y la humedad relativa se controlan dentro de los rangos del fabricante del equipamiento. La sala de UPS y baterías dispone de climatización de confort propia de 3,5 kW ($\approx$ 12.000 BTU/h), que mantiene 20--25\,\textdegree{}C, y de ventilación. Disipa las pérdidas del UPS ($\approx$ 0,8 kW) y el calor de carga de las baterías.
 
@@ -138,7 +138,7 @@ La Figura~\ref{fig:racks-talca} muestra cómo se reparte el equipamiento de cóm
   \includegraphics[width=\linewidth]{figuras/centros_de_datos/Racks_CD_Talca.png}
   \caption{Distribución de U y ocupación proyectada de los racks del CD Talca}
   \label{fig:racks-talca}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~6, p.~15), para los racks y su ocupación (RT-06.05), y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia de la ocupación de racks a partir del equipamiento del Formulario T-11 y los requisitos de racks de las Bases Técnicas Transversales (sección 6).\par}
 \end{figure}
 \FloatBarrier
 
@@ -165,7 +165,7 @@ Los equipos de energía y climatización y los controles de acceso descritos se 
   \includegraphics[width=\linewidth]{figuras/centros_de_datos/Recinto_CD_Talca_plano.pdf}
   \caption{Plano acotado del recinto técnico del CD Talca}
   \label{fig:recinto-talca}
-  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~6, pp.~14--17), para los recintos exigidos y su separación, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia del plano a partir de los requisitos de recintos de las Bases Técnicas Transversales (sección 6) y el equipamiento del Formulario T-11.\par}
 \end{figure}
 \FloatBarrier
 
@@ -182,7 +182,7 @@ La distribución ordena el recinto en profundidad progresiva. En el exterior que
   5. Sala de servidores y comunicaciones & 3,6 × 3,5 m & 12,6 m\textsuperscript{2} & Fila de 1,8 m (dos racks de 0,6 m y dos unidades de climatización de 0,3 m), con 1,0 m de paso lateral hacia la esclusa y 0,8 m al lado opuesto. Fondo: 1,2 m de pasillo frontal, 1,2 m de rack y 1,1 m de pasillo trasero, donde quedan el cilindro de FM-200 y la detección temprana. \\
   \textbf{Total útil} & & \textbf{$\approx$ 31 m\textsuperscript{2}} & 30,8 m\textsuperscript{2} sin muros ni blindaje. \\
 \end{tablalafrox}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~6, pp.~14--16), para los recintos exigidos, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia de los recintos a partir de los requisitos de las Bases Técnicas Transversales (sección 6) y el equipamiento del Formulario T-11.\par}
 
 La sala de UPS se mantiene separada de la de servidores por la carga térmica: sus pérdidas de $\approx$ 0,8 kW, sumadas a los 9,2 kW de diseño, llevarían la sala a $\approx$ 10,0 kW, el límite de una unidad de 10 kW, y la configuración N+1 perdería su margen. La separación también aleja las baterías del cómputo. La obra civil que habilita estos 31 m\textsuperscript{2} es de cargo del CLIENTE, y su especificación y coordinación, de LafroX (RT-06.06, Bases Técnicas Transversales, cap. 6, p. 15).
 

@@ -19,14 +19,14 @@ La siguiente síntesis identifica cuatro decisiones críticas y su ubicación en
 \renewcommand{\thetable}{4.1-A}
 \renewcommand{\theHtable}{resumencriticos41}
 \begin{tablalafrox}{Recorridos críticos de arquitectura lógica}{tab:criticos-logica-cuerpo}{F{0.22} F{0.25} F{0.20} Y}{\cab{Requisito y origen} & \cab{Módulo y capas} & \cab{Prueba} & \cab{Aceptación}}
-RT-02.06, Transversales\newline T-12 B, p.~156 & M2/M3/M6; 4--6. & AL-MOD-01 & UUID repetido: un solo efecto y respuesta durable. \\
-RT-03.10, caso\newline T-12 B, p.~165 & Servicio local; 1, 3--7. & AL-OFF-01 & 24 h con dos relevos, sin pérdida ni salida sin guía. \\
-RT-12.05, Transversales\newline T-12 B, p.~246 & M7/M9; 4 y 7. & AL-ACT-01 & Sin autoaprobación de diferencias ni liberación por rol ajeno. \\
-RT-12.07, Transversales\newline T-12 B, p.~246 & Identidad; 1, 3 y 7. & AL-ID-01 & Vencimiento respetado y ruta de 14,5 h cubierta según política firmada. \\
+RT-02.06, Transversales\newline T-12 B & M2/M3/M6; 4--6. & AL-MOD-01 & UUID repetido: un solo efecto y respuesta durable. \\
+RT-03.10, caso\newline T-12 B & Servicio local; 1, 3--7. & AL-OFF-01 & 24 h con dos relevos, sin pérdida ni salida sin guía. \\
+RT-12.05, Transversales\newline T-12 B & M7/M9; 4 y 7. & AL-ACT-01 & Sin autoaprobación de diferencias ni liberación por rol ajeno. \\
+RT-12.07, Transversales\newline T-12 B & Identidad; 1, 3 y 7. & AL-ID-01 & Vencimiento respetado y ruta de 14,5 h cubierta según política firmada. \\
 \end{tablalafrox}
 \addtocounter{table}{-1}
 \endgroup
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: requisitos individuales indicados; diseño de protocolos LafroX en anexos 4-E, 4-M y 4-V.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de RT-02.06, RT-12.05 y RT-12.07 de las Bases Técnicas Transversales, RT-03.10 de las Bases Técnicas del caso y los protocolos de los anexos 4-E, 4-M y 4-V.\par}
 
 M3 conserva el precio acordado por el preventista al tomar el pedido y la versión de condiciones comerciales aplicada, conforme a RNG-08 del Subdocumento 3. Un cambio posterior de la lista de precios no altera ese importe. Una propuesta offline fuera de las condiciones autorizadas queda en excepción y el precio no se sustituye en silencio. La condición aplicada viaja en el pedido y en el intercambio con el ERP, para comprobar que la facturación respeta el importe acordado.
 

@@ -82,7 +82,7 @@ PostgreSQL 16 & 14-09-2023. & PDO/SQL y PostGIS compatible; la versión de Auror
 RabbitMQ 4.3 & 23-04-2026. & Adaptador AMQP y Erlang según matriz de la rama y parche liberado. & Comunidad hasta 31-01-2027; actualización temprana. No se presupone soporte comercial. \\
 Keycloak 26 & 04-10-2024. & Integración OIDC y claves publicadas; probar servidor y adaptadores juntos. & Política de parches y actualización por rama; no se declara un EOL contractual no publicado. \\
 \end{tablalafrox}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Laravel (2026); PHP (2026); Angular (2026a, 2026b); Microsoft TypeScript (2026); JetBrains (s.~f.-c); PostgreSQL (2026); RabbitMQ (2026); Keycloak (2024). Historial y matriz oficial de cada producto, consultados el 5 de noviembre de 2026.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de los historiales y matrices oficiales de Laravel (2026), PHP (2026), Angular (2026a, 2026b), Microsoft TypeScript (2026), JetBrains (s.~f.-c), PostgreSQL (2026), RabbitMQ (2026) y Keycloak (2024).\par}
 
 Laravel, PHP, PostgreSQL y Angular tienen horizontes inferiores al contrato: el responsable de Desarrollo registra cada trimestre su soporte y planifica la sustitución antes de vencimiento. RabbitMQ requiere una actualización temprana antes del fin comunitario de la rama de referencia, aun durante desarrollo. No se atribuye al CLIENTE un contrato de soporte comercial no contratado.
 
@@ -112,7 +112,7 @@ Proxmox VE & 9.2 sobre Debian 13. & La rama 9 tiene soporte previsto hasta agost
 Symfony ExpressionLanguage & 7.4 LTS, fijado en las dependencias de Laravel. & Correcciones de seguridad hasta noviembre de 2029. \\
 MDM: Microsoft Intune con Android Enterprise & Servicio y plan compatibles con el parque. & Contrato de soporte y actualización de dispositivos durante todo el período. \\
 \end{tablalafrox}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de decisiones de arquitectura lógica y política de configuración de la propuesta, compatibilidad de navegadores según Angular (2026b), y versiones y soporte según JetBrains (s.~f.-c), Zebra Technologies (s.~f.-g), OpenAS2 (s.~f.), Amazon Web Services (s.~f.-o, s.~f.-p), HashiCorp (s.~f.), Ansible (s.~f.), Proxmox Server Solutions (s.~f.), Symfony (s.~f.) y FreeRADIUS (2026). Diseño propuesto: (Subdocumento 4, anexos, diseño de este apartado, pp.~\pageref*{fuente-19-anexo-4-1-p-tecnologias-soporte}--\pageref*{fuente-19-anexo-4-1-p-tecnologias-soporte-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de la compatibilidad de navegadores de Angular (2026b) y el soporte documentado por JetBrains (s.~f.-c), Zebra Technologies (s.~f.-g), OpenAS2 (s.~f.), Amazon Web Services (s.~f.-o, s.~f.-p), HashiCorp (s.~f.), Ansible (s.~f.), Proxmox Server Solutions (s.~f.), Symfony (s.~f.) y FreeRADIUS (2026).\par}
 
 La aplicación Android de terreno soporta la versión mayor vigente de Android y las dos anteriores. Antes de cada liberación se verifican los flujos y periféricos en la matriz por modelo. Cada paquete Kotlin se firma y se distribuye con la gestión de flota de Android Enterprise y Zebra DNA. Antes de instalar o actualizar, se verifican la firma y la huella contra el artefacto aprobado y se rechazan los paquetes alterados o de origen no autorizado. Las actualizaciones siguen las tandas por sitio y enlace de la ventana dominical descrita en el Anexo 4-W, sección 4-W.5, del Subdocumento 4, sin alterar los plazos de corrección de vulnerabilidades ni sus restricciones de calendario (RT-17.03 y RT-17.04, Bases Técnicas Transversales, cap. 17, p. 31).
 
@@ -133,6 +133,6 @@ Identidad y administración & Guard OIDC, políticas por recurso y portal Angula
 Contratos, pruebas y trazas & \texttt{swagger-php}, AsyncAPI, PHPUnit y OpenTelemetry PHP. & Contratos de API y eventos verificados, con correlación. \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: capacidades documentadas de Laravel 13 (s.~f.-a--d), contratos OIDC/AMQP y diseño de perfiles HTTP/CLI en ADR-23. La tabla define comprobaciones de integración, no resultados ejecutados.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de las capacidades de Laravel 13 (s.~f.-a--d) y los contratos OIDC/AMQP y perfiles HTTP/CLI del ADR-23 del Anexo 4-O.\par}
 
 \label{fuente-19-anexo-4-1-p-tecnologias-soporte-fin}

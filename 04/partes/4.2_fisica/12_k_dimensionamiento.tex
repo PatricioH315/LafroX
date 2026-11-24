@@ -36,7 +36,7 @@ La Tabla~\ref{tab:dimensionamiento-calendario} resume los factores de calendario
   Totales anuales & 12 × volumen mensual & Evita inventar días hábiles & Bases Técnicas del caso, cap. 14, p. 24 \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, p.~24, y anexo~B, p.~38), para la volumetría y el período peak de septiembre, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de la volumetría y el calendario de las Bases Técnicas del caso (sección 14, p.~24, y anexo B, p.~38).\par}
 
 Los 22,14 días son una equivalencia de cálculo, no una cantidad de días hábiles. El peak se obtiene por el cociente entre entregas de septiembre y entregas normales. Diciembre no agrega un factor porque el caso identifica septiembre como la mayor exigencia.
 
@@ -59,7 +59,7 @@ Portal & 9,63 & 0,00 & 0,00 & 9,63 \\
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Nota: las columnas de día completo muestran el máximo de cada lugar, aunque ocurra en horas distintas. El máximo agregado coincidente suma los aportes de cada bloque y elige la mayor de esas sumas, no suma los máximos por lugar. En despacho, las filas muestran los aportes del tramo 05:30--06:00, que determina el máximo en ambos regímenes. El modelo aplica a ese tramo la tasa del bloque 05:00--06:00, suponiéndola uniforme. Los totales se calculan antes de redondear. Véase el perfil horario del Anexo 4-W.2.\par}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25, y anexo~B, p.~38), para la volumetría y las ventanas de operación, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio de TPS por lugar de proceso a partir de la volumetría de las Bases Técnicas del caso (sección 14) y los supuestos del Anexo 4-W.\par}
 
 \paragraph*{Derivación por lugar de proceso}
 El \href{LAFROX-Subdocumento4-Anexos.pdf#sec:anexo-4b-dimensiones-1-3}{Anexo 4-W.2} conserva la derivación por sitio y portal: reparto SV-03, operaciones por flujo y concentración SV-04.
@@ -80,7 +80,7 @@ La dimensión 4, «Personas usuarias registradas, internas y externas», es 15.1
   Cota extrema del portal & 342 & 433,33 & 775,33 \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25, y anexo~B, p.~38), para los usuarios y dispositivos concurrentes por ventana, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio de concurrencia por ventana a partir de la volumetría de las Bases Técnicas del caso (sección 14.1) y los supuestos del Anexo 4-W.\par}
 
 La operación sin portal, que carga la Wi-Fi y los sitios, llega a 342 personas o equipos concurrentes durante el día. Los seis del cross-docking son personas con terminal inalámbrico, dos por plataforma (S-35). Los 96 equipos de reparto equivalen a 96 conductores en ruta. La dimensión 5 se expresa en personas o sesiones y no en camiones. La cota extrema del portal se conserva como prueba separada. La dimensión 6, «Dispositivos de terreno en operación simultánea», es 62 preventistas + 96 equipos de reparto = 158.
 
@@ -108,7 +108,7 @@ La Tabla~\ref{tab:dimensionamiento-almacenamiento} resume las dimensiones 7--10,
   Migración histórica & 32,11 GB & Maestros, 36/24/60/24 meses & 30,73--33,49 GB de sensibilidad & Nube después del perfilado \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para los volúmenes y la retención de datos, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio de almacenamiento a partir de la volumetría y los plazos de retención RT-05.10 de las Bases Técnicas del caso (secciones 14.1 y 15) y los supuestos del Anexo 4-W.\par}
 
 La migración no supone eventos históricos digitales de trazabilidad: el caso dice que no existe forma consultable y que el lote se anota en texto libre cuando se anota. Por eso la estimación usa 1.150 recepciones mensuales × 60 meses × 20 líneas por recepción, con sensibilidad de 10 a 30 líneas. El 41\,\% sin lote del retiro de marzo se usa sólo para saneamiento de calidad, conforme a Bases Técnicas del caso, cap. 7, p. 12.
 
@@ -126,7 +126,7 @@ La dimensión 11, «Número de integraciones y volumen de mensajes por integraci
   \textbf{Total} & \textbf{244.280/día} & \textbf{362.561/día} & \textbf{15 integraciones} \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para los volúmenes de integración, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio de mensajes de integración a partir de la volumetría de las Bases Técnicas del caso (sección 14.1) y los supuestos del Anexo 4-W.\par}
 
 El EDI actual es cero y se dimensiona desde enero de 2029 con SV-05. La estimación distingue pagos electrónicos de cobros en efectivo; los cálculos por mensaje y sus supuestos se conservan en el \href{LAFROX-Subdocumento4-Anexos.pdf#sec:anexo-4b-dimensiones-11-12}{Anexo 4-W.5}. La Tabla~\ref{tab:t81} compara caminos y drenaje.
 
@@ -142,7 +142,7 @@ Cada cross-docking & D-06 satélite & 2 Mbps & 20,65\,\% \\
 Cada cross-docking & D-04 LTE & 2 Mbps & 17,70\,\% \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25, y anexo~B, p.~38), para el ancho de banda por sitio y las ventanas de sincronización, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio del ancho de banda a partir de la volumetría de las Bases Técnicas del caso (sección 14.1) y los supuestos del Anexo 4-W.\par}
 
 \paragraph*{Escenarios de carga por enlace}
 Los requerimientos de ancho de banda calculados para cada emplazamiento y medio de conectividad se desglosan a continuación:
@@ -182,7 +182,7 @@ La capacidad propuesta conserva maestros, stock, lotes presentes y movimientos d
   Mínimo por nodo de Talca & -- & -- & 13 vCPU, 31 GB RAM y 221 GB OSD \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para la capacidad por sitio, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio de capacidad por sitio a partir de la volumetría de las Bases Técnicas del caso (sección 14.1) y el Anexo 4-W.\par}
 
 La capacidad ofertada conserva N+1 y tres réplicas en Talca y un segundo equipo completo en Concepción y cada cross-docking. El umbral de llenado de Ceph es 80~\%. Las capacidades útiles, márgenes y porcentajes actuales y a 3× se conservan en el \href{LAFROX-Subdocumento4-Anexos.pdf#sec:anexo-4b-onpremise}{Anexo 4-W.8}; la Tabla~\ref{tab:t79} mantiene los mínimos por sitio.
 
@@ -203,7 +203,7 @@ Cota extrema más canal tradicional & 111,70 solicitudes/s (91,70 + cuota de 20)
 
 \textbf{Techo común de los escenarios:} 8 tareas.
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para la capacidad de procesamiento en nube, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: cálculo propio de tareas Fargate a partir de las cargas y supuestos del Anexo 4-W.\par}
 
 La Tabla~\ref{tab:dimensionamiento-nube} conserva los escenarios y tareas requeridas. La cota completa de 111,70 solicitudes/s ocupa las ocho tareas y no admite ampliar la cuota tradicional sin aumentar capacidad. El ensayo verifica mezcla, latencia, base y escalado; el cálculo de sesiones y sensibilidades se conserva en el \href{LAFROX-Subdocumento4-Anexos.pdf#sec:anexo-4b-nube}{Anexo 4-W.9}.
 
@@ -225,7 +225,7 @@ Mesa de ayuda, contactos & 2.000/mes & 2.000 × (350 ÷ 310) = 2.258/mes & 6.000
 
 {\fontsize{9pt}{11pt}\selectfont\raggedright Nota: las proyecciones del año 3 usan los valores del modelo sin redondear. El escenario global de 3× usa el máximo declarado de 14,66 TPS como base. Las bases por componente se detallan en el Anexo 4-W.\par}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas del caso, cap.~14, pp.~24--25), para el crecimiento proyectado, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de la volumetría y crecimiento de las Bases Técnicas del caso (sección 14) y los cálculos del Anexo 4-W.\par}
 
 \paragraph*{Acciones de capacidad por componente}
 Las medidas operativas y planes de gestión de capacidad para absorber el crecimiento se establecen en el siguiente esquema:
@@ -274,7 +274,7 @@ Búsqueda compuesta & 3 s, búsqueda global (RF-17.11) $\leq$ 2 s \\
 Informe estándar & 30 s \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~9, pp.~21--22), para los umbrales de desempeño y capacidad, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de los umbrales de las Bases Técnicas del caso (sección 15), las Bases Técnicas Transversales (sección 9) y RF-17.11 del Anexo 3.A.\par}
 
 \paragraph*{Origen de los umbrales}
 Los cuatro primeros umbrales de la Tabla~\ref{tab:t84} provienen del caso (cap. 15, p. 26). Los restantes se trazan a las Bases Técnicas Transversales (cap. 9, p. 21), y la búsqueda global al RF-17.11 del Anexo 3.A. El Anexo 4-W conserva las derivaciones y las condiciones de ensayo.
@@ -298,7 +298,7 @@ La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) usa 1,5 × el 
   Carga mixta con el Subdocumento 13 & Base e incremento por ventana y etapa & Analítica, resultados, consultas, sincronización y recursos temporales & Límites y plazos conservados \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: (Bases Técnicas Transversales, cap.~9, pp.~21--22), para los umbrales de desempeño y capacidad, y (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-12-k-dimensionamiento}--\pageref*{fuente-12-k-dimensionamiento-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia de las pruebas a partir de los requisitos de desempeño de las Bases Técnicas Transversales (sección 9) y el dimensionamiento del Anexo 4-W.\par}
 
 La prueba de carga conserva tasas por lugar, percentil 95, utilización, colas, errores y comportamiento durante el drenaje. Incluye la concurrencia de oficina y trabajo remoto por Verified Access, la API privada, el inicio de sesión y los tableros. Los parámetros confirmados se actualizan en la revisión trimestral de capacidad.
 

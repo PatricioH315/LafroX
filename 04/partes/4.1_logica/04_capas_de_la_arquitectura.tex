@@ -62,7 +62,7 @@ La arquitectura se presenta primero mediante su vista general de responsabilidad
   \captionof{figure}{Vista general de responsabilidades de la arquitectura lógica}
   \label{fig:arql-general-completa}
 \end{center}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Bases Técnicas Transversales, RT-02.01 (ocho capas); caso, cap. 15, RT-03.10 (autonomía). Diseño LafroX: ADR-01/06/23 y contratos de anexos 4-D/4-F.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de las ocho capas de RT-02.01 de las Bases Técnicas Transversales, la autonomía de RT-03.10 de las Bases Técnicas del caso y los contratos de los anexos 4-D y 4-F.\par}
 \end{landscape}
 
 La vista general identifica las aplicaciones, portales y consolas, y ubica los módulos M1--M12 en la capa de negocio. El vínculo individual de actores y módulos se desarrolla en el Anexo 4-N y en las vistas por capa. Se lee desde las personas hacia las reglas de negocio, las integraciones y los datos, distinguiendo los componentes de nube y los del sitio. Las conexiones representan intercambios sujetos a autorización, no acceso directo a las bases de datos. Seguridad y observabilidad acompañan todo el recorrido. Sus controles y las condiciones de operación sin conexión se desarrollan en los apartados siguientes.
@@ -85,7 +85,7 @@ La Figura~\ref{fig:arql-resumen-logico} resume los recorridos central y local.
   \addtocounter{figure}{-1}
   \endgroup
 \end{center}
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: diseño LafroX. El apartado 4.1.3 define los recorridos central y local; el Anexo 4-D asigna responsabilidades a los módulos y el 4-N vincula actores con sus canales.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de las responsabilidades de los módulos del Anexo 4-D y los actores y canales del Anexo 4-N.\par}
 \end{landscape}
 
 \clearpage
@@ -100,7 +100,7 @@ La Figura~\ref{fig:arql-capa-1} presenta las responsabilidades de esta capa.
   \captionof{figure}{Presentación: aplicaciones y superficies de trabajo}
   \label{fig:arql-capa-1}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Bases Técnicas Transversales, caps. 13 y 17 (interfaces y movilidad); caso, RT-16.30 y RT-17.01 (autoatención). Asignación de actores y canales: Anexo 4-N.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de los requisitos de interfaces y movilidad de las Bases Técnicas Transversales (secciones 13 y 17), los requisitos de autoatención de las Bases Técnicas del caso (sección 15) y los actores del Anexo 4-N.\par}
   \end{minipage}
 \end{center}
 
@@ -156,7 +156,7 @@ La Figura~\ref{fig:arql-capa-2} presenta las responsabilidades de esta capa.
   \captionof{figure}{Borde: entradas públicas, privadas y locales}
   \label{fig:arql-capa-2}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Bases Técnicas Transversales, RT-11.07/11.13 (borde y segmentación). Superficies de acceso propuestas: ADR-16 y Anexo 4-R.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de RT-11.07 y RT-11.13 de las Bases Técnicas Transversales y los controles del Anexo 4-R.\par}
   \end{minipage}
 \end{center}
 \end{landscape}
@@ -192,7 +192,7 @@ La Figura~\ref{fig:arql-capa-3} presenta las responsabilidades de esta capa.
   \captionof{figure}{Puertas de servicio: recorrido central y local}
   \label{fig:arql-capa-3}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Caso, RT-03.10 (continuidad); Transversales, RT-12.05 (autorización). Contratos de entrada y perfiles: ADR-06/13 y Anexo 4-N.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de RT-03.10 de las Bases Técnicas del caso, RT-12.05 de las Bases Técnicas Transversales y los perfiles del Anexo 4-N.\par}
   \end{minipage}
 \end{center}
 \end{landscape}
@@ -222,7 +222,7 @@ La bodega dispone además de una puerta de API \emph{local} como función del mo
   \label{fig:arql-17}
 \end{center}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Caso, RT-03.10 y RT-03.13 (corte y sincronización); Transversales, RT-12.05/07 (permisos y sesiones). Diseño de acceso local: ADR-06 y protocolos AL-OFF-01/AL-ID-01 del Anexo 4-M.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de RT-03.10 y RT-03.13 de las Bases Técnicas del caso, RT-12.05 y RT-12.07 de las Bases Técnicas Transversales y los protocolos del Anexo 4-M.\par}
 \end{landscape}
 
 El acceso local valida el manifiesto de bodega firmado antes del corte y el PIN personal del terminal enrolado. Sus 26 horas de vigencia, renovación horaria y turnos preinscritos permiten los relevos dentro de las 24 horas de autonomía. El vencimiento de la caché descriptiva no renueva ni invalida por sí mismo el manifiesto. La capa de seguridad precisa la referencia temporal, la caducidad personal y la revocación; AL-OFF-01 y AL-ID-01 del Anexo 4-M verifican esos límites.
@@ -239,7 +239,7 @@ La Figura~\ref{fig:arql-capa-4} presenta las responsabilidades de esta capa.
   \captionof{figure}{Negocio: monolito modular Laravel y sus doce módulos}
   \label{fig:arql-capa-4}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Bases Técnicas Transversales, RT-02.02 (modularidad y límites de contexto). Los anexos 4-D y 4-F definen dueños y contratos de M1--M12; ADR-01 y ADR-23 sustentan el monolito modular y Laravel.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de RT-02.02 de las Bases Técnicas Transversales y las responsabilidades y contratos de los anexos 4-D y 4-F.\par}
   \end{minipage}
 \end{center}
 \end{landscape}
@@ -276,7 +276,7 @@ La Figura~\ref{fig:arql-capa-5} presenta las responsabilidades de esta capa.
   \captionof{figure}{Integración: continuidad local y contratos con terceros}
   \label{fig:arql-capa-5}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Transversales, RT-02.06 y RT-03.12 (idempotencia y conciliación); caso, cap. 11 (ERP conservado). Interfaces y ACL: anexos 4-G/4-H y ADR-05/17.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de RT-02.06 y RT-03.12 de las Bases Técnicas Transversales, el ERP de las Bases Técnicas del caso (sección 11) y las interfaces de los anexos 4-G y 4-H.\par}
   \end{minipage}
 \end{center}
 \end{landscape}
@@ -336,7 +336,7 @@ La disposición sanitaria local usa el perfil de Calidad de la aplicación Kotli
   \label{fig:arql-15}
 \end{center}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Bases Técnicas Transversales, RT-02.06 (escrituras idempotentes). INT-01 del Anexo 4-G define la entrada de M3; AL-STOCK-01 del Anexo 4-V describe la confirmación tras la retención durable de M2.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de RT-02.06 de las Bases Técnicas Transversales, INT-01 del Anexo 4-G y AL-STOCK-01 del Anexo 4-V.\par}
 \end{landscape}
 
 Con conexión, la aplicación envía el pedido por la entrada pública autorizada y M3 valida sus reglas de precio y crédito antes de solicitar la reserva a M2 central. El agente de transferencia del sitio recoge la solicitud mediante conexión saliente. M2 local valida existencia y Calidad y persiste retención, auditoría y bandeja transaccional de salida. Solo después del acuse durable M2 central confirma la reserva y M3 confirma el pedido. La publicación de \texttt{PedidoConfirmado} habilita a M5. M4 y M10 también consumen ese evento conforme a sus contratos. La línea del sitio agrupa M2, su agente de transferencia y el broker local para explicar el protocolo. Las flechas representan mensajes lógicos y no una conexión entrante de la nube al sitio. La secuencia se limita a la confirmación y habilitación de la preparación: la carga preparada sigue retenida si M9 informa un bloqueo o si el ERP no devuelve una guía válida para esa carga, según el apartado de POD, DTE y acuse. Un pedido confirmado no autoriza por sí mismo la salida física.
@@ -348,7 +348,7 @@ Con conexión, la aplicación envía el pedido por la entrada pública autorizad
   \label{fig:arql-16}
 \end{center}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Formulario T-12, Parte A, RF-03.16 (deduplicación de pedidos al sincronizar); Bases Técnicas Transversales, RT-03.12 (conciliación). INT-01 del Anexo 4-G describe la captura pendiente y el Anexo 4-K, el reenvío por UUID.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de RF-03.16 del Formulario T-12, RT-03.12 de las Bases Técnicas Transversales e INT-01 del Anexo 4-G y el reenvío del Anexo 4-K.\par}
 \end{landscape}
 
 Sin conexión, la aplicación conserva la intención de compra, no una reserva firme. Al recuperar cobertura envía el mismo UUID por el servicio de sincronización. M3 deduplica y solicita la reserva mediante el mismo protocolo de retención local y acuse durable mostrado en la secuencia conectada. M3 y M2 producen un resultado durable con la regla y la causal de excepción. Si se pierde el acuse de respuesta, el dispositivo conserva el evento y pregunta por ese UUID antes de eliminarlo. Sin acuse local durable, el pedido permanece pendiente. Solo un pedido confirmado alimenta M5, lo que permite explicar al cliente un faltante sin duplicar la venta.
@@ -383,7 +383,7 @@ Conteo cíclico & M2 & 2--3 \\
 
 \textbf{Estrategia y reversión comunes:} Azul-verde por sitio. Reversión a la entrega previa.
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Anexo 4-O, ADR-08, y las Bases Técnicas del caso (cap.~16, p.~29), decisión 14. Diseño propuesto: (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de la decisión 14 de las Bases Técnicas del caso (sección 16.1, p.~29) y ADR-08 del Anexo 4-O.\par}
 
 La sustitución por olas permite comprobar cada capacidad antes de retirar la precedente.
 
@@ -431,7 +431,7 @@ La Figura~\ref{fig:arql-capa-6} presenta las responsabilidades de esta capa.
   \captionof{figure}{Datos: propiedad y persistencia híbrida}
   \label{fig:arql-capa-6}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Transversales, caps. 2 y 5 (dominio y separación de datos); caso, RT-03.10 (autonomía). Dueños de escritura y almacenes: ADR-04 y Anexo 4-N.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de los requisitos de dominio y separación de datos de las Bases Técnicas Transversales (secciones 2 y 5), RT-03.10 de las Bases Técnicas del caso y el Anexo 4-N.\par}
   \end{minipage}
 \end{center}
 \end{landscape}
@@ -484,7 +484,7 @@ La Figura~\ref{fig:arql-capa-7} presenta las responsabilidades de esta capa.
   \captionof{figure}{Seguridad: identidad y autorización transversal}
   \label{fig:arql-capa-7}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Transversales, RT-11.01 y RT-12.01/05/07 (confianza cero, identidad y sesiones); NIST (2020). Controles propuestos: ADR-06 y Anexo 4-R.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de RT-11.01 y RT-12.01, RT-12.05 y RT-12.07 de las Bases Técnicas Transversales, NIST (2020) y los controles del Anexo 4-R.\par}
   \end{minipage}
 \end{center}
 \end{landscape}
@@ -546,7 +546,7 @@ Interno & Pedidos, movimientos y telemetría operativa. & Módulo dueño y perfi
 Público & Catálogo sin precios. & Lectura anónima controlada. & Integridad y protección antiabuso. \\
 \end{tablalafrox}
 
-{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de RT-11.03, RT-11.09 y RT-11.10 (Bases Técnicas Transversales, cap.~11, p.~23; Bases Técnicas del caso, cap.~15, p.~27). Diseño propuesto: (Subdocumento 4, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de los requisitos de clasificación y cifrado de las Bases Técnicas Transversales (sección 11) y los datos sensibles de las Bases Técnicas del caso (sección 15).\par}
 
 La clasificación acompaña al dato en API, evento, terminal y exportación. El cifrado por campo impide que administrar la base conceda acceso al texto sensible; las claves y sus permisos se separan del rol de almacenamiento. El Anexo 4-R detalla custodia, rotación, cifrado en tránsito y exclusiones de datos. La residencia y el despliegue mantienen lo declarado en las secciones físicas; esta vista define permisos y límites de uso, sin dar por aprobada una transferencia.
 
@@ -589,7 +589,7 @@ La Figura~\ref{fig:arql-capa-8} presenta las responsabilidades de esta capa.
   \captionof{figure}{Observabilidad: correlación de nube y sitios}
   \label{fig:arql-capa-8}
   \par\smallskip
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Transversales, RT-03.16 (observabilidad). Correlación, retención local y alarmas: ADR-14 y Anexo 4-N.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración propia a partir de RT-03.16 de las Bases Técnicas Transversales y las alarmas y correlación del Anexo 4-N.\par}
   \end{minipage}
 \end{center}
 \end{landscape}
