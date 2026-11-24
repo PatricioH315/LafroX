@@ -8,6 +8,6 @@ La Tabla 3.A.1 contiene 134 requisitos funcionales. El inventario `localizacion_
 
 | Requisito | Fuente examinada y hallazgo | Resultado |
 |---|---|---|
-| RF-01.01 | Caso §4.1 describe la recepción, el conteo contra la guía y el ingreso posterior; Caso §9.4 trata diferencias entre lo pedido, despachado y recibido en el contexto de la entrega al cliente. Los pasajes examinados no formulan literalmente la alerta por SKU ni la regla de no bloquear el cierre de la recepción del proveedor. | La necesidad de registrar la recepción tiene antecedente; la versión actual del Anexo 3.A atribuye la comparación con OC, las alertas por SKU y el cierre no bloqueante al diseño de la propuesta, con apoyo en SD4 y SD5. |
+| RF-01.01 | Caso §4.1 describe la recepción, el conteo contra la guía y el ingreso posterior; Caso §9.4 trata diferencias entre lo pedido, despachado y recibido en el contexto de la entrega al cliente. Los pasajes examinados no formulan literalmente la alerta por SKU ni la regla de no bloquear el cierre de la recepción del proveedor. | La necesidad de registrar la recepción tiene antecedente; queda identificar y señalar el origen de la comparación con OC, las alertas y el cierre no bloqueante, o distinguirlos como definición de la propuesta. No se da por verificada la fila completa. |
 
 El resultado anterior no anticipa el de las demás filas. Sus localizadores se enumeran en el inventario, pero el contraste semántico de las restantes está pendiente.

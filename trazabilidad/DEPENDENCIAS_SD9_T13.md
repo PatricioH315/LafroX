@@ -76,27 +76,7 @@ RT-21.03 y RT-21.03/P01 remiten al cuadrante B-02. Leandro comunicó el 24 de no
 
 Al recibir cada respuesta, guardar fecha, responsable, fuente y ubicación de la evidencia. Incorporarla en la rama de corrección del SD1, SD4 o SD10 según corresponda. Cambiar el estado en T-12 y T-13 únicamente cuando el respaldo cubra el criterio completo. Al regenerar el T-13, verificar las 653 filas y actualizar el recuento y los PDF. RT-15.08 ya figura como «Cumple» en los dos formularios.
 
-## Punto 5 — Conciliación vigente
-
-- RT-16.24 cumple con el cuadro de la Oferta Económica E2, sección «Conciliación económica de avisos por canal», y con el modelo actualizado. RT-16.24/P01 coteja las cuatro unidades, volúmenes, tarifas y el tratamiento del variable. La proyección es un escenario de oferta basado en la cartera del Caso.
-- RT-25.10 cumple con el ZIP interactivo incorporado en la rama del Sobre 2. La comprobación en Edge abrió el archivo local con la red bloqueada, cambió entre dos perfiles, completó los siete pasos del flujo y registró cero solicitudes HTTP y cero errores de JavaScript.
-- RT-21.12 permanece fuera de la oferta. T-14, 10.4.1, acredita seis jornadas de actualización y capacitación durante Operación; SD10 contempla conocimiento y mentoría. Esos compromisos no especifican intercambio entre entidades usuarias.
-- RT-05.10, RT-06.12 y RT-07.08 conservan su alcance parcial. El linaje documental de SD5 es distinto del linaje automatizado. El diseño eléctrico de SD4 respalda UPS N+1 y transferencia, y la conmutación regional conserva autorización del CLIENTE.
-- RT-05.24, RT-16.26 y RT-18.10 permanecen fuera del alcance ofertado. Corresponden a portal de desarrolladores, acciones conversacionales y automatización de back office con ahorro valorizado.
-
-| Cotejo | Resultado y próximo responsable |
-|---|---|
-| SD3-03 y RF-01.01 | El Caso 4.1 respalda la recepción física. El Anexo 3.A atribuye la comparación por SKU contra OC, las alertas y el cierre no bloqueante al diseño de la propuesta. |
-| SD3-04 y RF-17.09 / RT-16.19 | Se cotejó edición de plantillas y generación en PDF, DOCX y XLSX con 3.3.6 de T-14. |
-| RF-18.03 / RT-16.23 | Los dos estados quedan parciales. El clic del enlace SMS registra interacción con el portal. Falta evidencia de lectura del propio mensaje. Integración y Calidad verifican estados y deduplicación por canal según T-13. |
-| RT-06.06 / RT-11.25 / RT-18.09 | Se precisaron expediente de obra, tratamiento de datos en pruebas e inventario de IA y responsabilidad del adjudicatario. |
-| RT-16.14 / RT-16.29 | 3.3.4 cubre las reglas, 4.3.3 la prueba de entrega y 5.1.1 la guía. En RT-16.29, 5.2.4 cubre el aviso. Planificación debe identificar en T-14 el entregable de exportación asíncrona. |
-| RT-26.01 / RT-26.03 | Las fichas T-19 y el SD13 respaldan arquitectura y TRL. El T-14 vincula por cuenta de innovación; Planificación revisa el desglose si se exige un paquete documental por ficha. |
-| SD3-06 | Se cotejaron los componentes afectados por el punto 5. El inventario de alcance completo sigue como antecedente de revisión, con las versiones propias de ese corte. |
-
-Resumen vigente del T-12: **653 filas, 644 Cumple, cinco parciales y cuatro No cumple**. El T-13 conserva nueve alias, 15 contratos de integración y 1.346 casos previstos. El archivo `inventario_vigente_punto5.csv` registra la conciliación mecánica y el alcance del cotejo de contenido. Los cotejos que siguen son cortes históricos.
-
-## SD3-04 — Pruebas y criterios del T-12 (corte anterior)
+## SD3-04 — Pruebas y criterios del T-12
 
 Las dos partes del formulario incorporan «Prueba prevista o evidencia» antes del criterio. La columna identifica el caso o rango del T-13, el respaldo documental cuando corresponde y la remisión de los nueve alias. Las 22 filas «No cumple» figuran sin prueba prevista. La revisión reemplaza 336 frases genéricas por condiciones comprobables de las Bases y del caso, y explicita el alcance de las filas parciales. Los estados de la oferta se cotejan con la evidencia de ejecución.
 
@@ -110,7 +90,7 @@ Las dos partes del formulario incorporan «Prueba prevista o evidencia» antes d
 | RT-16.23 y RF-18.03 | Obtener del proveedor evidencia de apertura por SMS si ofrece ese evento. |
 | Punto 4 | Completar TLS por enlace, constancias del Sobre 1 y cuadrante B-02 según el registro anterior. |
 
-### Cotejo anterior con SD9 y SD7
+### Cotejo vigente con SD9 y SD7
 
 El T-12 `0167f99d`, el T-13 `a85b1dac` y el diccionario del T-14 `b3113e46` son las fuentes de este cotejo. El verificador confirma 653 IDs, 644 fichas, nueve alias, 1.223 casos por requisito y 105 por contrato. Los estados y códigos EDT coinciden entre formularios. La coincidencia del código EDT no acredita por sí sola que el paquete cubra todas las condiciones.
 
