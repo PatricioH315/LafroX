@@ -4,9 +4,9 @@ Este registro reúne las dependencias vigentes para la rama de corrección del S
 
 ## Punto 4: seguridad, certificaciones y operación
 
-- RT-15.08 figura como «Cumple» en T-12 y T-13. La verificación prevista coteja cargo, credencial, dedicación por fase y meses de participación por persona entre T-8, sección 1, y los Anexos 12.B a 12.D.
+- RT-15.08 figura como «Cumple» en T-12 y T-13. El cotejo documental del T-8 y los Anexos 12.B a 12.D de SD12 (rama de corrección, `69a17f01`) vincula las nueve personas con credenciales a su cargo, perfil, dedicación declarada y período. El décimo integrante, Rodrigo Valdés, figura asignado a Integración sin certificación exigida. Se conserva RT-15.08/P01 como prueba prevista.
 - RNF-14.01, RT-11.08, RT-15.07 y RT-21.03 figuran como parciales en ambos formularios. El T-13, sección 8.2, precisa las verificaciones previstas. Para cerrar RT-21.03 se requiere la validación del cuadrante nominal del Anexo 10.D, B-02, que ya distingue responsables de coordinación y puestos de guardia. RT-21.03 remite a 10.1.1, 10.1.2 y 10.1.4 del T-14.
-- La matriz T-13 vigente se genera desde la revisión SD3 `98519867`.
+- La matriz T-13 vigente se genera desde la revisión SD3 `4be2c1d1`. RNF-14.01 publica en su ficha individual el criterio normativo del catálogo y la aceptación por tramo del T-12.
 
 ### Solicitud de aclaración al evaluador
 
@@ -22,7 +22,7 @@ Fuentes de la consulta: Bases Administrativas, arts. 34.1 y 43 y Formulario T-20
 
 ### Inventario TLS para Arquitectura y Seguridad
 
-El Anexo 4-H del SD4 identifica las interfaces y el Anexo 4-R define la política. El T-11 identifica el adaptador ERP en VM-04 en Talca y las dependencias de salida. El Excel aporta el presupuesto de certificados, que sirve como respaldo de costos. Arquitectura debe registrar cada extremo, ambiente, versión admitida, configuración propuesta y fuente de la confirmación. La versión negociada y el resultado se completan cuando se ejecute una prueba autorizada.
+El Anexo 4-H del SD4 identifica las interfaces y el Anexo 4-R contiene la política y la matriz «Tramos de cifrado en tránsito y respaldo pendiente». El T-11 identifica el adaptador ERP en VM-04 en Talca y las dependencias de salida. El Excel aporta el presupuesto de certificados, que sirve como respaldo de costos. Arquitectura debe registrar cada extremo, ambiente, versión admitida, configuración propuesta y fuente de la confirmación. La versión negociada y el resultado se completan cuando se ejecute una prueba autorizada.
 
 | Enlace | Respaldo disponible | Dato que debe confirmar el responsable |
 |---|---|---|
@@ -42,15 +42,15 @@ El Anexo 4-H del SD4 identifica las interfaces y el Anexo 4-R define la polític
 | Constancia | Referencia del expediente | Acción pendiente |
 |---|---|---|
 | ISO 9001:2015 | `SIM-CERT-9001-0001`, Bureau Veritas, noviembre de 2028 | Confirmar admisibilidad de la copia del ejercicio y cotejar titular, alcance y vigencia. |
-| ISO/IEC 27001:2022 | `SIM-CERT-27001-0002`, AENOR, enero de 2027 | Obtener el respaldo de renovación previsto en SD1. Si el evaluador admite la alternativa del art. 34.1, preparar el plan formal firmado, con hitos verificables dentro de los primeros doce meses del contrato, y registrar su aceptación para efectos del requisito correspondiente. |
-| CMMI-DEV nivel 3 | `SIM-CERT-CMMI-0003`, evaluación registrada hasta noviembre de 2026 | Pedir el resultado de la reevaluación. Si sigue pendiente, conservarla como antecedente de trayectoria en SD1 y distinguirla de las acreditaciones vigentes en el Sobre 1. |
+| ISO/IEC 27001:2022 | `SIM-CERT-27001-0002`, AENOR, 22 de enero de 2027 | Obtener el respaldo de renovación previsto en SD1. Si el evaluador admite la alternativa del art. 34.1, preparar el plan formal firmado, con hitos verificables dentro de los primeros doce meses del contrato, y registrar su aceptación para efectos del requisito correspondiente. |
+| CMMI-DEV nivel 3 | `SIM-CERT-CMMI-0003`, evaluación registrada hasta noviembre de 2026 | Obtener el resultado de la reevaluación y su ADS, identificado en SD1, sección 1.4. Si sigue pendiente, conservarla como antecedente de trayectoria en SD1 y distinguirla de las acreditaciones vigentes en el Sobre 1. |
 | ISO/IEC 20000-1:2018 | `SIM-CERT-20000-0004`, SGS, mayo de 2027 | Confirmar admisibilidad de la copia del ejercicio y cotejar titular, alcance y vigencia. |
 
 El expediente debe registrar el código de verificación cuando lo emita el organismo o la constancia de que no corresponde. Las referencias `SIM-CERT` identifican las piezas del ejercicio. Fuentes: SD1, sección 1.4, y Sobre 1, Certificaciones del proponente.
 
 ### SD3-17 — Cuadrante B-02 de Operación
 
-El Anexo 10.D, B-02 del SD10 recoge las seis nominaciones y dedicaciones de T-8 y siete filas de cobertura por tecnología. El SD12, sección 12.1.5, aporta perfiles de suplencia. El T-15 asigna 0 HH de Operación al perfil 12S, suplente propuesto de Integración. Si se utiliza ese perfil en M21–M56, queda por conciliar su dedicación o designar otra suplencia respaldada. Las asignaciones individuales, la fecha de confirmación y su respaldo figuran pendientes.
+El Anexo 10.D, B-02 del SD10 recoge las seis nominaciones y dedicaciones de T-8 y siete filas de cobertura por tecnología. El SD12, sección 12.1.5, aporta perfiles de suplencia. El T-15 asigna 0 HH de Operación al perfil 12S, suplente propuesto de Integración. Si se utiliza ese perfil en M21–M56, queda por conciliar su dedicación o designar otra suplencia respaldada. Los compromisos de 12.D coinciden con las dedicaciones de coordinación del T-8. El Excel de referencia, hoja «HH POR ROL Y MES», confirma 0 HH en W16:BF16 para 12S, 962 HH en W40 para Mesa M21, 1.570 HH en AH40 para Mesa M32 y 696 HH en O44 para SOC M13. Las asignaciones individuales de guardia, la fecha de confirmación y su respaldo figuran pendientes.
 
 **Solicitud de datos para Guillermo Castillo**
 
@@ -84,7 +84,7 @@ El T-12 `0167f99d`, el T-13 `a85b1dac` y el diccionario del T-14 `b3113e46` son 
 |---|---|
 | RF-17.09 | Incorporar al criterio del T-13 la edición de plantillas por el administrador, ya exigida por T-12 y el paquete 3.3.6. Mantener la generación y verificación en los tres formatos. |
 | RF-18.03 | Incorporar al criterio del T-13 el registro de entrega, apertura y error. Verificar los estados según el canal y consignar la limitación de apertura de SMS. |
-| RNF-14.01 y SD3-15 | Explicitar la excepción condicionada del ERP y los terceros en el criterio individual del T-13. Completar la confirmación y, si corresponde, acordar la transición de los enlaces antes de cerrar SD3-15. |
+| RNF-14.01 y SD3-15 | El criterio individual del T-13 ya muestra el alcance del T-12. Seguridad y Arquitectura deben acreditar los extremos del inventario 4-R, incluidas las versiones del ERP y los terceros. Si se mantiene una excepción, documentar el tramo y su transición antes de cerrar SD3-15. |
 | RT-06.06, RT-11.25 y RT-18.09 | Describir en el criterio el documento o resultado que se comprobará. Ahora las tres filas reproducen su descripción. |
 | RT-16.19 | El T-12 cita 5.2.4, cuyo entregable es la integración de avisos. Contrastar el requisito de plantillas con 3.3.6 y conciliar el alcance de formatos con RF-17.09. |
 | RT-16.29 | El T-12 cita 3.3.2, cuyo entregable es auditoría de stock, lotes y cobros. Identificar el paquete que cubre la exportación asíncrona y su aviso sin bloquear la sesión. |
