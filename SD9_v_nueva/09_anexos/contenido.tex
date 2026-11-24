@@ -216,19 +216,19 @@ Las 12.058,66 HH equivalen al 5,9 \% de las 203.548,62 HH de la línea base (12.
 
 El costo de no conformidad se estima por evento y por especialidad, sin usar importes esperados de un registro de riesgos. Se distingue falla interna, detectada por LafroX antes de entregar, de falla externa, detectada en el uso del CLIENTE. LafroX usa dos escenarios de referencia para estimar el esfuerzo por evento de retrabajo.
 
-En ambos escenarios se supone una corrección acotada que exige un ciclo manual completo de 267 casos a 15 minutos: 267 × 15 / 60 = 66,75 HH. La parte automática de la regresión insume 8,90 horas de un ejecutor, contabilizadas como tiempo de máquina. Las HH de preparación, supervisión y análisis de ese ciclo están incluidas en SRE y CAL. Si una corrección modifica la arquitectura, los datos o la superficie de seguridad, se reestima también la campaña especializada afectada.
+En ambos escenarios se supone una corrección acotada que exige un ciclo manual completo de 268 casos a 15 minutos: 268 × 15 / 60 = 67 HH. La parte automática de la regresión insume 8,93 horas de un ejecutor, contabilizadas como tiempo de máquina. Las HH de preparación, supervisión y análisis de ese ciclo están incluidas en SRE y CAL. Si una corrección modifica la arquitectura, los datos o la superficie de seguridad, se reestima también la campaña especializada afectada.
 
 \begin{tablasimple}{Y Y Y Y}
   {\cab{Rol} & \cab{Falla interna, HH/evento} & \cab{Falla externa, HH/evento} & \cab{Desglose de referencia}}
 Desarrollo (DES) & 16 & 24 & Interna: 4 análisis + 8 corrección + 4 pruebas unitarias; externa: 8 + 12 + 4 \\
-Calidad (CAL) & 74,75 & 74,75 & 66,75 de ejecución manual + 4 de análisis + 4 de evidencia \\
+Calidad (CAL) & 75 & 75 & 67 de ejecución manual + 4 de análisis + 4 de evidencia \\
 Operación (SRE) & 4 & 8 & Interna: 2 de restitución + 2 de supervisión; externa: 4 de diagnóstico + 4 de promoción y verificación \\
 Implantación y coordinación (IMP) & 0 & 4 & Comunicación y coordinación con las personas afectadas por la falla externa \\
-\textbf{Total de referencia} & \textbf{94,75} & \textbf{110,75} & HH estimadas por evento \\
+\textbf{Total de referencia} & \textbf{95} & \textbf{111} & HH estimadas por evento \\
 \end{tablasimple}
 \fuentesd{Fuente: (Formulario T-13, secciones 8.2 y 8.3); (Formulario T-15, estimación por rol); los supuestos de esfuerzo por evento explicitados en esta sección 9.C.2.}
 
-Para nI fallas internas y nE externas de este alcance, el esfuerzo de referencia es 94,75 × nI + 110,75 × nE. Un evento de cada tipo representa 205,5 HH. El costo de calidad del escenario sería 12.058,66 + 205,5 = 12.264,16 HH únicamente si esas horas fueran adicionales y no estuvieran ya incluidas en los paquetes de la línea base. Las cantidades nI y nE se actualizan con los defectos observados desde las primeras campañas.
+Para nI fallas internas y nE externas de este alcance, el esfuerzo de referencia es 95 × nI + 111 × nE. Un evento de cada tipo representa 206 HH. El costo de calidad del escenario sería 12.058,66 + 206 = 12.264,66 HH únicamente si esas horas fueran adicionales y no estuvieran ya incluidas en los paquetes de la línea base. Las cantidades nI y nE se actualizan con los defectos observados desde las primeras campañas.
 
 Cada evento registra su requisito, severidad, etapa, causa, versión, HH previstas y reales por rol, pruebas repetidas y paquete de imputación. Se diferencia la repetición causada por el defecto de las pruebas planificadas que ya pertenecen a evaluación. El esfuerzo adicional de la línea base se calcula descontando las HH ya asignadas al mismo trabajo, incluida la capacidad protegida cuando corresponde a correcciones de E1 y la atención correctiva incluida en 10.2.1. El Líder de Calidad y Pruebas informa mensualmente costos internos y externos consumidos y el Jefe de Proyecto autoriza los recursos por control de cambios tras verificar capacidad, preservando la cobertura de servicio y el destino exclusivo de la reserva protegida a las correcciones de E1.
 

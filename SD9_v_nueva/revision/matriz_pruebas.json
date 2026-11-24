@@ -1,7 +1,7 @@
 {
-  "source_ref": "01a918b0118a19c6cf492b07606418e5e524e84f",
-  "source_commit": "01a918b0118a19c6cf492b07606418e5e524e84f",
-  "test_count": 1335,
+  "source_ref": "d81c0975553510bc4a3ce64e43ee5532e5adb91c",
+  "source_commit": "d81c0975553510bc4a3ce64e43ee5532e5adb91c",
+  "test_count": 1339,
   "counts": {
     "t12_rows": 653,
     "requirements": 644,
@@ -9,18 +9,18 @@
     "own": 270,
     "rt": 374,
     "contracts": 15,
-    "cases": 1335,
+    "cases": 1339,
     "priority": {
       "Alta": 157,
       "Crítica": 58,
       "Media": 55
     },
     "rt_state": {
-      "Cumple": 348,
-      "Cumple parcialmente": 11,
-      "No cumple": 15
+      "Cumple": 355,
+      "Cumple parcialmente": 8,
+      "No cumple": 11
     },
-    "rt_without_case": 15,
+    "rt_without_case": 11,
     "blocks": 26
   },
   "requirements": [
@@ -10669,32 +10669,32 @@
     },
     {
       "id": "RT-23.02",
-      "state": "Cumple parcialmente",
-      "component": "El sitio publica tres casos con años, métricas e industrias y ofrece contactos bajo solicitud.",
+      "state": "Cumple",
+      "component": "Tres casos con año, industria, métricas, volumen, rango en UF y testimonios autorizados.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-23.02",
-      "criterion": "El sitio muestra tres casos con años, métricas e industrias. Falta verificar fuentes de las métricas, volúmenes y respaldos de los testimonios exigidos.",
+      "criterion": "Los casos son de los últimos cinco años; se cotejan métricas y volúmenes con las referencias y las citas textuales con las cartas.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-23.02/\\allowbreak{}P01\\newline Respaldo: casos y referencias (SD1 1.4 y T-6)\\newline Alcance y brecha en el criterio.",
+      "evidence": "RT-23.02/\\allowbreak{}P01\\newline Respaldo: Casos de éxito; Sobre N.° 1 (cartas 0101--0103).",
       "cases": [
         "RT-23.02/P01"
       ]
     },
     {
       "id": "RT-23.03",
-      "state": "Cumple parcialmente",
-      "component": "Organigrama y equipo técnico clave con personas nominadas, roles, dedicaciones y certificaciones individuales de sus líderes, publicados también en el sitio web \\url{https://lafrox.github.io/}.",
+      "state": "Cumple",
+      "component": "Organigrama del Directorio a las áreas; perfiles de cuatro accionistas y la presidenta; ocho fichas clave y dos de roles mínimos; dotación por división (133 técnicos).",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-23.03",
-      "criterion": "El sitio muestra el organigrama, los roles y las certificaciones declaradas de sus líderes. Falta acreditar la cobertura de perfiles y antecedentes de equipo que exigen las Bases.",
+      "criterion": "Se cotejan jerarquía, participaciones y dotación; las diez fichas incluyen profesión, años de experiencia, CV resumido y vigencia de certificaciones.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-23.03/\\allowbreak{}P01\\newline Respaldo: organigrama, nómina y perfiles (SD1 1.5 y T-8)\\newline Alcance y brecha en el criterio.",
+      "evidence": "RT-23.03/\\allowbreak{}P01\\newline Respaldo: Organigrama, Equipo y Gobierno corporativo; SD1 1.5, T-8, SD12 Anexo 12.B y Sobre N.° 1.",
       "cases": [
         "RT-23.03/P01"
       ]
@@ -10717,16 +10717,16 @@
     },
     {
       "id": "RT-23.05",
-      "state": "Cumple parcialmente",
-      "component": "El sitio responde por HTTPS con certificado vigente, se adapta al tamaño de pantalla y declara el criterio WCAG 2.2 AA.",
+      "state": "Cumple",
+      "component": "Diseño responsivo, navegación por teclado con foco visible, pausa de la banda animada y HTTPS con TLS vigente.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-23.05",
-      "criterion": "Se verifica la adaptación a los tamaños de pantalla y la vigencia del certificado HTTPS. Falta acreditar conformidad WCAG 2.2 AA del sitio publicado.",
+      "criterion": "Revisión manual WCAG 2.2 AA y 0 infracciones de axe; foco visible, pausa, TLS vigente y sin desborde a 375, 768, 1024, 1366 y 1920 px.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-23.05/\\allowbreak{}P01\\newline Evidencia prevista: informe de accesibilidad del sitio institucional\\newline Alcance y brecha en el criterio.",
+      "evidence": "RT-23.05/\\allowbreak{}P01\\newline Respaldo: Accesibilidad; verificación axe-core 4.10 (375 y 1366 px).",
       "cases": [
         "RT-23.05/P01"
       ]
@@ -10749,59 +10749,67 @@
     },
     {
       "id": "RT-23.07",
-      "state": "No cumple",
-      "component": "No se oferta.",
+      "state": "Cumple",
+      "component": "Cuatro artículos: operación sin conexión, GS1/EPCIS 2.0, electrónica a $-22\\,^\\circ\\mathrm{C}$ y costo de servir por entrega.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-23.07",
-      "criterion": "Material educativo digital: seminarios en línea, artículos técnicos o centro de recursos y documentación.",
+      "criterion": "Los cuatro artículos se abren desde el centro de recursos.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "Sin prueba prevista",
-      "cases": []
+      "evidence": "RT-23.07/\\allowbreak{}P01\\newline Respaldo: Centro de recursos.",
+      "cases": [
+        "RT-23.07/P01"
+      ]
     },
     {
       "id": "RT-23.08",
-      "state": "No cumple",
-      "component": "No se oferta.",
+      "state": "Cumple",
+      "component": "Enlace a \\url{https://patricioh315.github.io/LafroX/} con recorrido sugerido.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-23.08",
-      "criterion": "Demostración en línea, recorrido virtual de la solución o portal de soporte para clientes.",
+      "criterion": "La demo abre desde el sitio y permite navegar el recorrido sugerido.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "Sin prueba prevista",
-      "cases": []
+      "evidence": "RT-23.08/\\allowbreak{}P01\\newline Respaldo: Demo en línea y prototipo LafroX.",
+      "cases": [
+        "RT-23.08/P01"
+      ]
     },
     {
       "id": "RT-23.09",
-      "state": "No cumple",
-      "component": "No se oferta.",
+      "state": "Cumple",
+      "component": "Disponibilidad y tiempo de respuesta del sitio y la demo, medidos en el navegador; SLA por contrato.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-23.09",
-      "criterion": "Métricas de disponibilidad y desempeño de los servicios del proponente publicadas en tiempo real.",
+      "criterion": "Ambas métricas se actualizan cada 30 s para el sitio y la demo; se muestran los niveles de SLA por contrato.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "Sin prueba prevista",
-      "cases": []
+      "evidence": "RT-23.09/\\allowbreak{}P01\\newline Respaldo: Estado de servicios.",
+      "cases": [
+        "RT-23.09/P01"
+      ]
     },
     {
       "id": "RT-23.10",
-      "state": "No cumple",
-      "component": "No se oferta.",
+      "state": "Cumple",
+      "component": "Estimador de reentregas evitadas, ahorro mensual y retorno neto.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-23.10",
-      "criterion": "Calculadora de retorno de la inversión o herramienta de estimación pertinente a la industria del caso.",
+      "criterion": "Admite 1.400 entregas, 4,2~\\% de reentregas y \\$~4,2 millones de diferencias; recalcula los tres resultados al variar las entradas.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "Sin prueba prevista",
-      "cases": []
+      "evidence": "RT-23.10/\\allowbreak{}P01\\newline Respaldo: Calculadora con los datos del caso.",
+      "cases": [
+        "RT-23.10/P01"
+      ]
     },
     {
       "id": "RT-24.01",
