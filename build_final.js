@@ -1,6 +1,7 @@
 /**
  * Generador de la presentacion final de LafroX: "LafroX - Presentación Final.pptx".
  * Uso:  python -I tools/extract_final_data.py   (genera data/final.json desde el modelo SD7)
+ *       python -I tools/extract_edt_rbs.py      (genera data/edt_rbs.json: EDT de SD7 y RBS de SD8)
  *       node build_final.js
  * Todas las cifras salen de data/final.json; no hay montos escritos a mano en las laminas.
  * Estructura: tema/layouts/helpers en lib/lafrox.js; una funcion por bloque en slides/*.js.
@@ -12,6 +13,7 @@ const { fmt, pct, uf } = require("./lib/format");
 
 const OUT = path.join(__dirname, "LafroX - Presentación Final.pptx");
 const D = JSON.parse(fs.readFileSync(path.join(__dirname, "data", "final.json"), "utf8"));
+D.edt_rbs = JSON.parse(fs.readFileSync(path.join(__dirname, "data", "edt_rbs.json"), "utf8"));
 
 const kit = createKit({
   title: "LafroX - Presentación Final",

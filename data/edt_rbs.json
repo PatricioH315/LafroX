@@ -1,0 +1,1211 @@
+{
+ "fuente": "EDT: SD7 (Formularios T-14 y T-15, 23-11-2026). RBS: SD8 (RBS v4 de 36 riesgos, T-16 y anexo 8.H). Generado por tools/extract_edt_rbs.py.",
+ "edt": {
+  "productos": [
+   {
+    "n": 1,
+    "nombre": "Gestión del proyecto",
+    "cc": 8,
+    "pt": 32,
+    "cuentas": [
+     {
+      "codigo": "1.1",
+      "nombre": "Constitución y confirmaciones contractuales",
+      "corto": "Constitución y confirmaciones contractuales",
+      "pt": 3,
+      "hh": 240.0
+     },
+     {
+      "codigo": "1.2",
+      "nombre": "Planificación y líneas base",
+      "corto": "Planificación y líneas base",
+      "pt": 5,
+      "hh": 800.0
+     },
+     {
+      "codigo": "1.3",
+      "nombre": "Interesados y comunicaciones",
+      "corto": "Interesados y comunicaciones",
+      "pt": 3,
+      "hh": 1056.0
+     },
+     {
+      "codigo": "1.4",
+      "nombre": "Gestión de la calidad",
+      "corto": "Gestión de la calidad",
+      "pt": 2,
+      "hh": 160.0
+     },
+     {
+      "codigo": "1.5",
+      "nombre": "Gestión de riesgos",
+      "corto": "Gestión de riesgos",
+      "pt": 2,
+      "hh": 240.0
+     },
+     {
+      "codigo": "1.6",
+      "nombre": "Plan de Reversibilidad",
+      "corto": "Plan de Reversibilidad",
+      "pt": 3,
+      "hh": 448.0
+     },
+     {
+      "codigo": "1.7",
+      "nombre": "Gobierno, control y cierre",
+      "corto": "Gobierno, control y cierre",
+      "pt": 9,
+      "hh": 3256.0
+     },
+     {
+      "codigo": "1.8",
+      "nombre": "Cumplimiento normativo y contractual",
+      "corto": "Cumplimiento normativo y contractual",
+      "pt": 5,
+      "hh": 688.0
+     }
+    ],
+    "hh": 6888.0,
+    "corto": "Gestión del proyecto"
+   },
+   {
+    "n": 2,
+    "nombre": "Requisitos y diseño aprobados",
+    "cc": 8,
+    "pt": 26,
+    "cuentas": [
+     {
+      "codigo": "2.1",
+      "nombre": "Requisitos y líneas base de alcance",
+      "corto": "Requisitos y líneas base de alcance",
+      "pt": 5,
+      "hh": 400.0
+     },
+     {
+      "codigo": "2.2",
+      "nombre": "Arquitectura de la solución",
+      "corto": "Arquitectura de la solución",
+      "pt": 4,
+      "hh": 960.0
+     },
+     {
+      "codigo": "2.3",
+      "nombre": "Diseño de la seguridad",
+      "corto": "Diseño de la seguridad",
+      "pt": 4,
+      "hh": 960.0
+     },
+     {
+      "codigo": "2.4",
+      "nombre": "Diseño de la sala técnica y de los sitios",
+      "corto": "Diseño de la sala técnica y de los sitios",
+      "pt": 3,
+      "hh": 720.0
+     },
+     {
+      "codigo": "2.5",
+      "nombre": "Continuidad del negocio",
+      "corto": "Continuidad del negocio",
+      "pt": 2,
+      "hh": 480.0
+     },
+     {
+      "codigo": "2.6",
+      "nombre": "Experiencia de usuario",
+      "corto": "Experiencia de usuario",
+      "pt": 3,
+      "hh": 720.0
+     },
+     {
+      "codigo": "2.7",
+      "nombre": "Sistema de cadena de frío validado",
+      "corto": "Sistema de cadena de frío validado",
+      "pt": 3,
+      "hh": 922.66
+     },
+     {
+      "codigo": "2.8",
+      "nombre": "Aprobación de los diseños",
+      "corto": "Aprobación de los diseños",
+      "pt": 2,
+      "hh": 480.0
+     }
+    ],
+    "hh": 5642.66,
+    "corto": "Requisitos y diseño"
+   },
+   {
+    "n": 3,
+    "nombre": "Plataforma base",
+    "cc": 3,
+    "pt": 17,
+    "cuentas": [
+     {
+      "codigo": "3.1",
+      "nombre": "Ambientes y entrega continua",
+      "corto": "Ambientes y entrega continua",
+      "pt": 5,
+      "hh": 1200.0
+     },
+     {
+      "codigo": "3.2",
+      "nombre": "Servicios de nube de la plataforma",
+      "corto": "Servicios de nube de la plataforma",
+      "pt": 6,
+      "hh": 1440.0
+     },
+     {
+      "codigo": "3.3",
+      "nombre": "Servicios comunes",
+      "corto": "Servicios comunes",
+      "pt": 6,
+      "hh": 2880.0
+     }
+    ],
+    "hh": 5520.0,
+    "corto": "Plataforma base"
+   },
+   {
+    "n": 4,
+    "nombre": "Software operativo",
+    "cc": 5,
+    "pt": 15,
+    "cuentas": [
+     {
+      "codigo": "4.1",
+      "nombre": "Bodega: recepción, inventario y preparación",
+      "corto": "Bodega: recepción, inventario y preparación",
+      "pt": 3,
+      "hh": 2860.83
+     },
+     {
+      "codigo": "4.2",
+      "nombre": "Calidad y cadena de frío",
+      "corto": "Calidad y cadena de frío",
+      "pt": 2,
+      "hh": 2506.83
+     },
+     {
+      "codigo": "4.3",
+      "nombre": "Venta y reparto",
+      "corto": "Venta y reparto",
+      "pt": 5,
+      "hh": 5674.84
+     },
+     {
+      "codigo": "4.4",
+      "nombre": "Canal moderno y portales",
+      "corto": "Canal moderno y portales",
+      "pt": 3,
+      "hh": 2286.17
+     },
+     {
+      "codigo": "4.5",
+      "nombre": "Analítica (M10)",
+      "corto": "Analítica (M10)",
+      "pt": 2,
+      "hh": 1489.5
+     }
+    ],
+    "hh": 14818.17,
+    "corto": "Software operativo"
+   },
+   {
+    "n": 5,
+    "nombre": "Integraciones y datos migrados",
+    "cc": 4,
+    "pt": 14,
+    "cuentas": [
+     {
+      "codigo": "5.1",
+      "nombre": "Integraciones con el ERP, el WMS y la flota",
+      "corto": "Integraciones con el ERP, el WMS y la flota",
+      "pt": 3,
+      "hh": 1476.0
+     },
+     {
+      "codigo": "5.2",
+      "nombre": "Integraciones con servicios externos",
+      "corto": "Integraciones con servicios externos",
+      "pt": 4,
+      "hh": 1920.0
+     },
+     {
+      "codigo": "5.3",
+      "nombre": "Intercambio electrónico con las cadenas",
+      "corto": "Intercambio electrónico con las cadenas",
+      "pt": 2,
+      "hh": 1024.0
+     },
+     {
+      "codigo": "5.4",
+      "nombre": "Migración de datos",
+      "corto": "Migración de datos",
+      "pt": 5,
+      "hh": 2504.0
+     }
+    ],
+    "hh": 6924.0,
+    "corto": "Integraciones y datos"
+   },
+   {
+    "n": 6,
+    "nombre": "Solución certificada y documentada",
+    "cc": 8,
+    "pt": 22,
+    "cuentas": [
+     {
+      "codigo": "6.1",
+      "nombre": "Pruebas de integración y regresión",
+      "corto": "Pruebas de integración y regresión",
+      "pt": 2,
+      "hh": 320.0
+     },
+     {
+      "codigo": "6.2",
+      "nombre": "Pruebas de aceptación, accesibilidad y condiciones físicas",
+      "corto": "Pruebas de aceptación y accesibilidad",
+      "pt": 3,
+      "hh": 960.0
+     },
+     {
+      "codigo": "6.3",
+      "nombre": "Pruebas de carga y resiliencia",
+      "corto": "Pruebas de carga y resiliencia",
+      "pt": 2,
+      "hh": 640.0
+     },
+     {
+      "codigo": "6.4",
+      "nombre": "Pruebas de recuperación ante desastres",
+      "corto": "Pruebas de recuperación ante desastres",
+      "pt": 2,
+      "hh": 640.0
+     },
+     {
+      "codigo": "6.5",
+      "nombre": "Pruebas de seguridad ofensiva",
+      "corto": "Pruebas de seguridad ofensiva",
+      "pt": 2,
+      "hh": 480.0
+     },
+     {
+      "codigo": "6.6",
+      "nombre": "Despliegue sin interrupción demostrado",
+      "corto": "Despliegue sin interrupción demostrado",
+      "pt": 2,
+      "hh": 480.0
+     },
+     {
+      "codigo": "6.7",
+      "nombre": "Actas de certificación",
+      "corto": "Actas de certificación",
+      "pt": 2,
+      "hh": 320.0
+     },
+     {
+      "codigo": "6.8",
+      "nombre": "Documentación técnica, código y custodia",
+      "corto": "Documentación técnica, código y custodia",
+      "pt": 7,
+      "hh": 560.0
+     }
+    ],
+    "hh": 4400.0,
+    "corto": "Solución certificada"
+   },
+   {
+    "n": 7,
+    "nombre": "Innovaciones verificadas",
+    "cc": 5,
+    "pt": 23,
+    "cuentas": [
+     {
+      "codigo": "7.1",
+      "nombre": "Innovación 1: seguimiento de vencimiento posentrega en el local",
+      "corto": "Innovación 1: seguimiento posentrega",
+      "pt": 4,
+      "hh": 960.0
+     },
+     {
+      "codigo": "7.2",
+      "nombre": "Innovación 2: reproducción de incidentes de terreno",
+      "corto": "Innovación 2: reproducción de incidentes",
+      "pt": 5,
+      "hh": 1536.0
+     },
+     {
+      "codigo": "7.3",
+      "nombre": "Innovación 3: vida útil remanente por historia térmica del lote",
+      "corto": "Innovación 3: vida útil por historia térmica",
+      "pt": 5,
+      "hh": 1248.0
+     },
+     {
+      "codigo": "7.4",
+      "nombre": "Innovación 4: tramo variable vinculado a resultados",
+      "corto": "Innovación 4: tramo variable",
+      "pt": 3,
+      "hh": 688.0
+     },
+     {
+      "codigo": "7.5",
+      "nombre": "Innovación 5: hoja de negocio del almacenero",
+      "corto": "Innovación 5: hoja del almacenero",
+      "pt": 6,
+      "hh": 1120.0
+     }
+    ],
+    "hh": 5552.0,
+    "corto": "Innovaciones"
+   },
+   {
+    "n": 8,
+    "nombre": "Infraestructura, equipamiento y servicios habilitados",
+    "cc": 7,
+    "pt": 35,
+    "cuentas": [
+     {
+      "codigo": "8.1",
+      "nombre": "Compras de hardware y especificaciones",
+      "corto": "Compras de hardware y especificaciones",
+      "pt": 4,
+      "hh": 480.0
+     },
+     {
+      "codigo": "8.2",
+      "nombre": "Servicios de nube, licencias y enlaces contratados",
+      "corto": "Nube, licencias y enlaces",
+      "pt": 7,
+      "hh": 560.0
+     },
+     {
+      "codigo": "8.3",
+      "nombre": "Sala técnica de Talca habilitada",
+      "corto": "Sala técnica de Talca habilitada",
+      "pt": 5,
+      "hh": 800.0
+     },
+     {
+      "codigo": "8.4",
+      "nombre": "Cableado, racks y gabinetes",
+      "corto": "Cableado, racks y gabinetes",
+      "pt": 7,
+      "hh": 1120.0
+     },
+     {
+      "codigo": "8.5",
+      "nombre": "Seguridad física",
+      "corto": "Seguridad física",
+      "pt": 3,
+      "hh": 480.0
+     },
+     {
+      "codigo": "8.6",
+      "nombre": "Equipamiento de campo",
+      "corto": "Equipamiento de campo",
+      "pt": 6,
+      "hh": 1120.0
+     },
+     {
+      "codigo": "8.7",
+      "nombre": "Configuración de los sitios",
+      "corto": "Configuración de los sitios",
+      "pt": 3,
+      "hh": 480.0
+     }
+    ],
+    "hh": 5040.0,
+    "corto": "Infraestructura y servicios"
+   },
+   {
+    "n": 9,
+    "nombre": "Implantación y usuarios habilitados",
+    "cc": 7,
+    "pt": 25,
+    "cuentas": [
+     {
+      "codigo": "9.1",
+      "nombre": "Planes de implantación y reversión",
+      "corto": "Planes de implantación y reversión",
+      "pt": 3,
+      "hh": 240.0
+     },
+     {
+      "codigo": "9.2",
+      "nombre": "Marcha blanca",
+      "corto": "Marcha blanca",
+      "pt": 2,
+      "hh": 12320.0
+     },
+     {
+      "codigo": "9.3",
+      "nombre": "Estabilización",
+      "corto": "Estabilización",
+      "pt": 2,
+      "hh": 7872.0
+     },
+     {
+      "codigo": "9.4",
+      "nombre": "Aceptación y paso a producción",
+      "corto": "Aceptación y paso a producción",
+      "pt": 3,
+      "hh": 240.0
+     },
+     {
+      "codigo": "9.5",
+      "nombre": "Capacitación y certificación de usuarios",
+      "corto": "Capacitación y certificación de usuarios",
+      "pt": 8,
+      "hh": 4016.0
+     },
+     {
+      "codigo": "9.6",
+      "nombre": "Gestión del cambio",
+      "corto": "Gestión del cambio",
+      "pt": 5,
+      "hh": 880.0
+     },
+     {
+      "codigo": "9.7",
+      "nombre": "Acuerdos con terceros",
+      "corto": "Acuerdos con terceros",
+      "pt": 2,
+      "hh": 160.0
+     }
+    ],
+    "hh": 25728.0,
+    "corto": "Implantación y usuarios"
+   },
+   {
+    "n": 10,
+    "nombre": "Servicio de operación y salida",
+    "cc": 5,
+    "pt": 21,
+    "cuentas": [
+     {
+      "codigo": "10.1",
+      "nombre": "Servicios de operación",
+      "corto": "Servicios de operación",
+      "pt": 5,
+      "hh": 93258.2
+     },
+     {
+      "codigo": "10.2",
+      "nombre": "Mantenimiento",
+      "corto": "Mantenimiento",
+      "pt": 7,
+      "hh": 10656.0
+     },
+     {
+      "codigo": "10.3",
+      "nombre": "Informes y obligaciones periódicas",
+      "corto": "Informes y obligaciones periódicas",
+      "pt": 4,
+      "hh": 1728.0
+     },
+     {
+      "codigo": "10.4",
+      "nombre": "Capacitación y transferencia en operación",
+      "corto": "Capacitación y transferencia en operación",
+      "pt": 3,
+      "hh": 1808.0
+     },
+     {
+      "codigo": "10.5",
+      "nombre": "Salida al término del contrato",
+      "corto": "Salida al término del contrato",
+      "pt": 2,
+      "hh": 160.0
+     }
+    ],
+    "hh": 107610.2,
+    "corto": "Operación y salida"
+   }
+  ],
+  "total": {
+   "productos": 10,
+   "cc": 60,
+   "pt": 230,
+   "hh_paquetes": 188123.03
+  },
+  "nota_hh": "HH = valor esperado PERT de los 230 paquetes (T-15, Tabla 4.2). La linea base de T-15 suma ademas 128 HH de restauraciones, 9.336 HH de soporte puente, 3.072 HH de reserva protegida y 2.889,59 HH de roles minimos (203.548,62 HH en total).",
+  "linea_base_t15_hh": 203548.62,
+  "diferencias_nombres_vs_estructura_1117": []
+ },
+ "rbs": {
+  "total": 36,
+  "ramas": [
+   {
+    "n": 1,
+    "nombre": "Solución y tecnología",
+    "riesgos": 3,
+    "ejemplos": "R-002 Historia sanitaria · R-032 Soporte",
+    "lista": [
+     {
+      "id": "R-002",
+      "zona": "Crítica",
+      "nombre_completo": "Historia sanitaria de origen no reconstruible",
+      "pos": "1.1",
+      "corto": "Historia sanitaria de origen",
+      "p": 0.7,
+      "i": 0.8,
+      "e": 0.56
+     },
+     {
+      "id": "R-032",
+      "zona": "Alta",
+      "nombre_completo": "Cambio de soporte exige adecuación extraordinaria",
+      "pos": "1.2",
+      "corto": "Cambio de soporte",
+      "p": 0.5,
+      "i": 0.4,
+      "e": 0.2
+     },
+     {
+      "id": "R-033",
+      "zona": "Media",
+      "nombre_completo": "Dependencia de proveedor limita salida o sustitución",
+      "pos": "1.3",
+      "corto": "Dependencia del proveedor",
+      "p": 0.3,
+      "i": 0.4,
+      "e": 0.12
+     }
+    ]
+   },
+   {
+    "n": 2,
+    "nombre": "Integración y legado",
+    "riesgos": 6,
+    "ejemplos": "R-001 Certificación EDI · R-030 Interfaces",
+    "lista": [
+     {
+      "id": "R-001",
+      "zona": "Alta",
+      "nombre_completo": "Cadena no completa a tiempo su certificación EDI",
+      "pos": "2.1",
+      "corto": "Certificación EDI",
+      "p": 0.5,
+      "i": 0.4,
+      "e": 0.2
+     },
+     {
+      "id": "R-003",
+      "zona": "Media",
+      "nombre_completo": "Historial de ventas inutilizable para carga y reposición",
+      "pos": "2.2",
+      "corto": "Historial de ventas",
+      "p": 0.5,
+      "i": 0.2,
+      "e": 0.1
+     },
+     {
+      "id": "R-007",
+      "zona": "Media",
+      "nombre_completo": "Deuda viva adicional a la cartera de la volumetría",
+      "pos": "2.3",
+      "corto": "Deuda viva adicional",
+      "p": 0.5,
+      "i": 0.2,
+      "e": 0.1
+     },
+     {
+      "id": "R-008",
+      "zona": "Baja",
+      "nombre_completo": "SII no responde y deja un trámite tributario pendiente",
+      "pos": "2.4",
+      "corto": "SII sin respuesta",
+      "p": 0.1,
+      "i": 0.2,
+      "e": 0.02
+     },
+     {
+      "id": "R-030",
+      "zona": "Alta",
+      "nombre_completo": "Interfaces ERP/WMS no verificables a tiempo",
+      "pos": "2.5",
+      "corto": "Interfaces ERP/WMS",
+      "p": 0.5,
+      "i": 0.4,
+      "e": 0.2
+     },
+     {
+      "id": "R-034",
+      "zona": "Media",
+      "nombre_completo": "ERP indisponible impide nueva guía válida",
+      "pos": "2.6",
+      "corto": "ERP indisponible",
+      "p": 0.3,
+      "i": 0.4,
+      "e": 0.12
+     }
+    ]
+   },
+   {
+    "n": 3,
+    "nombre": "Operación del cliente",
+    "riesgos": 14,
+    "ejemplos": "R-004 Inventario · R-006 Línea base",
+    "lista": [
+     {
+      "id": "R-004",
+      "zona": "Alta",
+      "nombre_completo": "Diferencias de inventario sin resolver antes del corte",
+      "pos": "3.1",
+      "corto": "Inventario sin conciliar",
+      "p": 0.7,
+      "i": 0.4,
+      "e": 0.28
+     },
+     {
+      "id": "R-005",
+      "zona": "Alta",
+      "nombre_completo": "Saldo inicial de envases no conciliable (carga M8)",
+      "pos": "3.2",
+      "corto": "Saldo de envases",
+      "p": 0.5,
+      "i": 0.4,
+      "e": 0.2
+     },
+     {
+      "id": "R-006",
+      "zona": "Alta",
+      "nombre_completo": "Historia de origen insuficiente para líneas base de aceptación",
+      "pos": "3.3",
+      "corto": "Línea base de aceptación",
+      "p": 0.7,
+      "i": 0.4,
+      "e": 0.28
+     },
+     {
+      "id": "R-009",
+      "zona": "Alta",
+      "nombre_completo": "Calidad no entrega la matriz térmica aprobada",
+      "pos": "3.4",
+      "corto": "Matriz térmica pendiente",
+      "p": 0.5,
+      "i": 0.4,
+      "e": 0.2
+     },
+     {
+      "id": "R-010",
+      "zona": "Media",
+      "nombre_completo": "Equipos del cliente no llegan antes de la ola",
+      "pos": "3.5",
+      "corto": "Equipos llegan tarde",
+      "p": 0.3,
+      "i": 0.4,
+      "e": 0.12
+     },
+     {
+      "id": "R-012",
+      "zona": "Media",
+      "nombre_completo": "Transportista no permite instalar el termógrafo",
+      "pos": "3.6",
+      "corto": "Termógrafo sin instalar",
+      "p": 0.3,
+      "i": 0.4,
+      "e": 0.12
+     },
+     {
+      "id": "R-016",
+      "zona": "Alta",
+      "nombre_completo": "Contraparte no entrega validación en la fecha prevista",
+      "pos": "3.7",
+      "corto": "Validación del cliente",
+      "p": 0.5,
+      "i": 0.4,
+      "e": 0.2
+     },
+     {
+      "id": "R-017",
+      "zona": "Media",
+      "nombre_completo": "Proveedor de conectividad interrumpe el enlace de un sitio",
+      "pos": "3.8",
+      "corto": "Enlace de sitio caído",
+      "p": 0.3,
+      "i": 0.4,
+      "e": 0.12
+     },
+     {
+      "id": "R-018",
+      "zona": "Baja",
+      "nombre_completo": "Corte eléctrico supera el tiempo de respaldo",
+      "pos": "3.9",
+      "corto": "Corte eléctrico largo",
+      "p": 0.1,
+      "i": 0.4,
+      "e": 0.04
+     },
+     {
+      "id": "R-020",
+      "zona": "Media",
+      "nombre_completo": "Cliente no autoriza intervención urgente en congelamiento",
+      "pos": "3.10",
+      "corto": "Permiso en congelamiento",
+      "p": 0.3,
+      "i": 0.4,
+      "e": 0.12
+     },
+     {
+      "id": "R-021",
+      "zona": "Baja",
+      "nombre_completo": "Fallas mecánicas del camión",
+      "pos": "3.11",
+      "corto": "Falla mecánica de camión",
+      "p": 0.3,
+      "i": 0.1,
+      "e": 0.03
+     },
+     {
+      "id": "R-022",
+      "zona": "Baja",
+      "nombre_completo": "Camión involucrado en un siniestro",
+      "pos": "3.12",
+      "corto": "Siniestro de camión",
+      "p": 0.1,
+      "i": 0.1,
+      "e": 0.01
+     },
+     {
+      "id": "R-023",
+      "zona": "Baja",
+      "nombre_completo": "Asalto a camión",
+      "pos": "3.13",
+      "corto": "Asalto a camión",
+      "p": 0.1,
+      "i": 0.1,
+      "e": 0.01
+     },
+     {
+      "id": "R-036",
+      "zona": "Media",
+      "nombre_completo": "Perfil real de carga difiere del validado",
+      "pos": "3.14",
+      "corto": "Perfil de carga distinto",
+      "p": 0.3,
+      "i": 0.4,
+      "e": 0.12
+     }
+    ]
+   },
+   {
+    "n": 4,
+    "nombre": "Personas y adopción",
+    "riesgos": 8,
+    "ejemplos": "R-013 Proceso anterior · R-029 Rotación",
+    "lista": [
+     {
+      "id": "R-011",
+      "zona": "Alta",
+      "nombre_completo": "Transportista no firma a tiempo el acuerdo de incorporación",
+      "pos": "4.1",
+      "corto": "Firma del transportista",
+      "p": 0.5,
+      "i": 0.4,
+      "e": 0.2
+     },
+     {
+      "id": "R-013",
+      "zona": "Alta",
+      "nombre_completo": "Usuarios mantienen el proceso anterior",
+      "pos": "4.2",
+      "corto": "Proceso anterior persiste",
+      "p": 0.7,
+      "i": 0.4,
+      "e": 0.28
+     },
+     {
+      "id": "R-014",
+      "zona": "Media",
+      "nombre_completo": "Planificador no disponible antes de validar excepciones",
+      "pos": "4.3",
+      "corto": "Planificador no disponible",
+      "p": 0.3,
+      "i": 0.4,
+      "e": 0.12
+     },
+     {
+      "id": "R-015",
+      "zona": "Media",
+      "nombre_completo": "Usuarios no asisten a la capacitación antes de la ola",
+      "pos": "4.4",
+      "corto": "Asistencia a capacitación",
+      "p": 0.3,
+      "i": 0.4,
+      "e": 0.12
+     },
+     {
+      "id": "R-024",
+      "zona": "Media",
+      "nombre_completo": "Reemplazos de conductores externos sin aviso",
+      "pos": "4.5",
+      "corto": "Reemplazos sin aviso",
+      "p": 0.5,
+      "i": 0.2,
+      "e": 0.1
+     },
+     {
+      "id": "R-028",
+      "zona": "Alta",
+      "nombre_completo": "Desacuerdo sobre telemetría impide incorporación",
+      "pos": "4.6",
+      "corto": "Acuerdo de telemetría",
+      "p": 0.5,
+      "i": 0.4,
+      "e": 0.2
+     },
+     {
+      "id": "R-029",
+      "zona": "Alta",
+      "nombre_completo": "Rotación nocturna supera inducción disponible",
+      "pos": "4.7",
+      "corto": "Rotación nocturna",
+      "p": 0.7,
+      "i": 0.4,
+      "e": 0.28
+     },
+     {
+      "id": "R-035",
+      "zona": "Alta",
+      "nombre_completo": "Conductor externo rechaza uso de la solución",
+      "pos": "4.8",
+      "corto": "Rechazo de conductores",
+      "p": 0.5,
+      "i": 0.4,
+      "e": 0.2
+     }
+    ]
+   },
+   {
+    "n": 5,
+    "nombre": "Contrato y licitación",
+    "riesgos": 3,
+    "ejemplos": "R-031 Cierre bajo peak · R-025 Alcance",
+    "lista": [
+     {
+      "id": "R-025",
+      "zona": "Media",
+      "nombre_completo": "Solicitudes que amplían el alcance",
+      "pos": "5.1",
+      "corto": "Cambios de alcance",
+      "p": 0.5,
+      "i": 0.2,
+      "e": 0.1
+     },
+     {
+      "id": "R-027",
+      "zona": "Media",
+      "nombre_completo": "Disputa en la liquidación del tramo variable",
+      "pos": "5.2",
+      "corto": "Liquidación variable",
+      "p": 0.5,
+      "i": 0.2,
+      "e": 0.1
+     },
+     {
+      "id": "R-031",
+      "zona": "Alta",
+      "nombre_completo": "Peak y congelamiento impiden cierre de fase",
+      "pos": "5.3",
+      "corto": "Cierre bajo peak",
+      "p": 0.5,
+      "i": 0.4,
+      "e": 0.2
+     }
+    ]
+   },
+   {
+    "n": 6,
+    "nombre": "Regulatorio y externo",
+    "riesgos": 2,
+    "ejemplos": "R-019 Datos en la nube · R-026 Normativa",
+    "lista": [
+     {
+      "id": "R-019",
+      "zona": "Media",
+      "nombre_completo": "Falta aprobación del cliente para datos en regiones de nube",
+      "pos": "6.1",
+      "corto": "Datos en la nube",
+      "p": 0.3,
+      "i": 0.4,
+      "e": 0.12
+     },
+     {
+      "id": "R-026",
+      "zona": "Media",
+      "nombre_completo": "Cambios normativos",
+      "pos": "6.2",
+      "corto": "Cambios normativos",
+      "p": 0.3,
+      "i": 0.4,
+      "e": 0.12
+     }
+    ]
+   }
+  ],
+  "zonas": {
+   "criticos": 1,
+   "altos": 14,
+   "medios": 16,
+   "bajos": 5
+  },
+  "reservas": {
+   "exposicion_inicial_hh": 1199.52,
+   "contingencia_hh": 837.53,
+   "gestion_hh": 160.0,
+   "preventivo_hh": 180.0
+  },
+  "reserva_hh": 837.53
+ },
+ "matriz": {
+  "prob": [
+   0.9,
+   0.7,
+   0.5,
+   0.3,
+   0.1
+  ],
+  "impacto": [
+   0.05,
+   0.1,
+   0.2,
+   0.4,
+   0.8
+  ],
+  "prob_nombre": [
+   "Muy alta",
+   "Alta",
+   "Media",
+   "Baja",
+   "Muy baja"
+  ],
+  "n": [
+   [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    4,
+    1
+   ],
+   [
+    0,
+    0,
+    5,
+    10,
+    0
+   ],
+   [
+    0,
+    1,
+    0,
+    11,
+    0
+   ],
+   [
+    0,
+    2,
+    1,
+    1,
+    0
+   ]
+  ],
+  "ids": [
+   [
+    [],
+    [],
+    [],
+    [],
+    []
+   ],
+   [
+    [],
+    [],
+    [],
+    [
+     "R-004",
+     "R-006",
+     "R-013",
+     "R-029"
+    ],
+    [
+     "R-002"
+    ]
+   ],
+   [
+    [],
+    [],
+    [
+     "R-003",
+     "R-007",
+     "R-024",
+     "R-025",
+     "R-027"
+    ],
+    [
+     "R-001",
+     "R-005",
+     "R-009",
+     "R-011",
+     "R-016",
+     "R-028",
+     "R-030",
+     "R-031",
+     "R-032",
+     "R-035"
+    ],
+    []
+   ],
+   [
+    [],
+    [
+     "R-021"
+    ],
+    [],
+    [
+     "R-010",
+     "R-012",
+     "R-014",
+     "R-015",
+     "R-017",
+     "R-019",
+     "R-020",
+     "R-026",
+     "R-033",
+     "R-034",
+     "R-036"
+    ],
+    []
+   ],
+   [
+    [],
+    [
+     "R-022",
+     "R-023"
+    ],
+    [
+     "R-008"
+    ],
+    [
+     "R-018"
+    ],
+    []
+   ]
+  ],
+  "cortes": {
+   "media": 0.08,
+   "alta": 0.2,
+   "critica": 0.4
+  }
+ },
+ "top_riesgos": [
+  {
+   "id": "R-002",
+   "nombre": "Historia sanitaria de origen",
+   "rama": 1,
+   "p": 0.7,
+   "i": 0.8,
+   "e": 0.56,
+   "zona": "Crítica",
+   "respuesta": "Evidencia de origen y decisión sobre lotes"
+  },
+  {
+   "id": "R-004",
+   "nombre": "Inventario sin conciliar",
+   "rama": 3,
+   "p": 0.7,
+   "i": 0.4,
+   "e": 0.28,
+   "zona": "Alta",
+   "respuesta": "Conciliación de inventario antes del corte"
+  },
+  {
+   "id": "R-006",
+   "nombre": "Línea base de aceptación",
+   "rama": 3,
+   "p": 0.7,
+   "i": 0.4,
+   "e": 0.28,
+   "zona": "Alta",
+   "respuesta": "Horas y montos históricos validados (V-10)"
+  },
+  {
+   "id": "R-013",
+   "nombre": "Proceso anterior persiste",
+   "rama": 4,
+   "p": 0.7,
+   "i": 0.4,
+   "e": 0.28,
+   "zona": "Alta",
+   "respuesta": "Acompañamiento a D-5 de cada ola"
+  },
+  {
+   "id": "R-029",
+   "nombre": "Rotación nocturna",
+   "rama": 4,
+   "p": 0.7,
+   "i": 0.4,
+   "e": 0.28,
+   "zona": "Alta",
+   "respuesta": "Tutor y evaluación antes de trabajar solo"
+  },
+  {
+   "id": "R-001",
+   "nombre": "Certificación EDI",
+   "rama": 2,
+   "p": 0.5,
+   "i": 0.4,
+   "e": 0.2,
+   "zona": "Alta",
+   "respuesta": "Agenda de certificación EDI por cadena"
+  },
+  {
+   "id": "R-005",
+   "nombre": "Saldo de envases",
+   "rama": 3,
+   "p": 0.5,
+   "i": 0.4,
+   "e": 0.2,
+   "zona": "Alta",
+   "respuesta": "Conciliación V-08 de saldos de envases"
+  },
+  {
+   "id": "R-009",
+   "nombre": "Matriz térmica pendiente",
+   "rama": 3,
+   "p": 0.5,
+   "i": 0.4,
+   "e": 0.2,
+   "zona": "Alta",
+   "respuesta": "Matriz térmica V-11 aprobada en el mes 2"
+  },
+  {
+   "id": "R-011",
+   "nombre": "Firma del transportista",
+   "rama": 4,
+   "p": 0.5,
+   "i": 0.4,
+   "e": 0.2,
+   "zona": "Alta",
+   "respuesta": "Acuerdo y nómina firmados a D-5"
+  },
+  {
+   "id": "R-016",
+   "nombre": "Validación del cliente",
+   "rama": 3,
+   "p": 0.5,
+   "i": 0.4,
+   "e": 0.2,
+   "zona": "Alta",
+   "respuesta": "Área decisora y suplente designados"
+  }
+ ]
+}

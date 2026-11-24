@@ -1,4 +1,4 @@
-// F. Cierre (39-41) y Anexo (A0-A5).
+// F. Cierre (53-55) y Anexo (A0-A4).
 module.exports = function cierre(ctx) {
   const { kit, D, fmt, pct, uf, OVERRIDES } = ctx;
   const { pres, C, H, B, X0, W, XR, Y0, YB, T, card, darkCard, deco, arc, RINGS, DECOR_RATIO, chartBase, th, td, tblBorder } = kit;
@@ -9,17 +9,17 @@ module.exports = function cierre(ctx) {
   // ------------------------------------------------------------ 39 Compromisos medibles
   {
     const s = ctx.add("CONTENIDO_OSCURO", "Cierre", ALEX, "14:35",
-      `Para cerrar, nuestros compromisos medibles. Llevar el OTIF de ${fmt(P.otif_actual_pct, 1)} % a un nivel igual o superior a ${P.otif_meta_pct} %. Pasar de ${P.retiro_dias} días a menos de ${cont.identificar_clientes_h} horas para identificar a los clientes afectados por un lote. Sostener una disponibilidad de la transacción crítica de al menos ${fmt(q.disponibilidad_pct, 1)} %, con una recuperación ante desastres en cuatro horas o menos. Cada uno se verifica en la marcha blanca y en la operación.`);
+      `Para cerrar, nuestros compromisos medibles. Llevar el OTIF de ${fmt(P.otif_actual_pct, 1)} % a un nivel sobre ${P.otif_meta_pct} %. Pasar de ${P.retiro_dias} días a menos de ${cont.identificar_clientes_h} horas para identificar a los clientes afectados por un lote. Sostener una disponibilidad mensual de la transacción crítica de al menos ${fmt(q.disponibilidad_pct, 1)} %, medida de extremo a extremo, con una recuperación ante desastres en cuatro horas o menos, probada con conmutación real al menos dos veces al año. Cada uno se verifica en la marcha blanca y en la operación.`);
     deco(s, "onda-naranjo", 1, { x: -11.3, y: 2.5, w: 12.67 });
     arc(s, "onda-naranjo-claro", 1, -11.3, 5.1);
     arc(s, "onda-naranjo", 2, 17.27, 1.93);
     deco(s, "onda-naranjo-claro", 2, { x: 17.24, y: -0.67, w: 12.67 });
     ctx.title(s, "Nuestros compromisos medibles");
     const k = [
-      ["OTIF", `hoy ${fmt(P.otif_actual_pct, 1)} %`, `≥ ${P.otif_meta_pct} %`, "Entregas a tiempo y completas"],
+      ["OTIF", `hoy ${fmt(P.otif_actual_pct, 1)} %`, `> ${P.otif_meta_pct} %`, "Entregas a tiempo y completas"],
       ["Retiro sanitario", `hoy ${P.retiro_dias} días`, `< ${cont.identificar_clientes_h} h`, "Identificar a los clientes afectados por un lote"],
-      ["Disponibilidad", "transacción crítica", `≥ ${fmt(q.disponibilidad_pct, 1)} %`, "Medida mensualmente en operación"],
-      ["Recuperación", `RPO ≤ ${q.rpo_min} min`, `RTO ≤ ${q.rto_h} h`, "Ante un desastre, con ensayo de desastre total"],
+      ["Disponibilidad", "transacción crítica", `≥ ${fmt(q.disponibilidad_pct, 1)} %`, "Disponibilidad mensual, medida sobre la transacción de negocio de extremo a extremo"],
+      ["Recuperación", `RPO ≤ ${q.rpo_min} min`, `RTO ≤ ${q.rto_h} h`, "Ante un desastre; la conmutación real se prueba al menos dos veces al año"],
     ];
     const kw = (W - 3 * 0.4) / 4, kh = 5.3;
     k.forEach((d, i) => {
@@ -76,7 +76,7 @@ module.exports = function cierre(ctx) {
   const AN = "Anexo";
   {
     const s = ctx.add("SECCION", AN, ALEX, null,
-      "Anexo de respaldo para la sesión de preguntas: supuestos del modelo financiero, principales proveedores, adquisiciones de implementación, flujo de caja mensual y los diez riesgos de mayor exposición.");
+      "Anexo de respaldo para la sesión de preguntas: supuestos del modelo financiero, principales proveedores, adquisiciones de implementación y flujo de caja mensual.");
     RINGS(s, 9.5, -3.2, 13, 1);
     arc(s, "onda-naranjo-claro", 1, -11.4, 5.1);
     deco(s, "onda-naranjo-claro", 2, { x: 17.24, y: -0.67, w: 12.67 });
@@ -124,15 +124,15 @@ module.exports = function cierre(ctx) {
   }
   // A3 Adquisiciones
   {
-    const s = ctx.add("COMPACTO", AN, "Leandro Chamorro", null, "Adquisiciones de implementación: los diez componentes de mayor costo. El total de adquisiciones de la fase de implementación se muestra al pie de la tabla.");
+    const s = ctx.add("COMPACTO", AN, "Leandro Chamorro", null, "Adquisiciones de implementación: los diez componentes de mayor costo. El total de la fase de implementación, al pie de la tabla, incluye además los componentes no listados.");
     decorA(s);
     ctx.title(s, "Anexo · Adquisiciones de implementación");
     const a = D.adquisiciones_implementacion;
     const rows = [[th("Categoría"), th("Componente"), th("Cant.", "right"), th("Total (UF)", "right")]];
     a.top.forEach((it, i) => rows.push([td(it.categoria, i), td(it.componente, i), td(fmt(it.cantidad), i, { align: "right" }), td(fmt(it.total_uf, 1), i, { align: "right" })]));
-    rows.push([td("Total de adquisiciones de implementación", 10, { bold: true, colspan: 3 }), td(fmt(a.total_uf, 1), 10, { bold: true, align: "right" })]);
+    rows.push([td("Total de adquisiciones de implementación (incluye componentes no listados)", 10, { bold: true, colspan: 3 }), td(fmt(a.total_uf, 1), 10, { bold: true, align: "right" })]);
     s.addTable(rows, { x: X0, y: 1.9, w: W, colW: [4.6, 7.0, 1.6, 3.6], rowH: 0.62, border: tblBorder(), margin: [0.03, 0.2, 0.03, 0.2], objectName: "Tabla de adquisiciones" });
-    ctx.src(s, "Costo total sin IVA, en UF. Fuente: modelo financiero SD7, hoja ADQUISICIONES IMPLEMENTACIÓN.", 9.95);
+    ctx.src(s, `Costo total sin IVA, en UF. Los 10 componentes mostrados suman ${fmt(a.top.reduce((t, it) => t + it.total_uf, 0), 1)} UF (derivado); el total incluye además el resto de las categorías. Fuente: hoja ADQUISICIONES IMPLEMENTACIÓN.`, 9.95);
   }
   // A4 Flujo mensual
   {
@@ -147,15 +147,5 @@ module.exports = function cierre(ctx) {
     ], { ...chartBase(), x: X0, y: 1.85, w: W, h: 6.9, showLegend: true, legendPos: "b", showValue: false, valAxisMinVal: -20000, valAxisMaxVal: 40000, valAxisMajorUnit: 10000, valAxisLabelFormatCode: "#,##0", catAxisLabelFrequency: 4, catAxisLabelPos: "low" });
     T(s, `Mínimo acumulado: ${fmt(F.minimo_acumulado_uf)} UF (mes ${F.minimo_acumulado_mes}) · Acumulado al mes ${prm.horizonte_meses}: ${fmt(F.flujo_acumulado[F.flujo_acumulado.length - 1])} UF · Caja mínima con financiamiento: ${fmt(CS.caja_minima_uf)} UF (mes ${CS.caja_minima_mes})`, X0, 8.95, W, 0.8, { fontSize: 18, color: C.text1 });
     ctx.src(s, "UF por mes, flujo del proyecto sin financiamiento ni impuestos. Fuente: modelo financiero SD7, hoja INDICADORES.", 9.95);
-  }
-  // A5 Top-10 riesgos
-  {
-    const s = ctx.add("COMPACTO", AN, ALEX, null, "Los diez riesgos de mayor exposición del registro. Los dos críticos son el retiro sin trazabilidad (R-012) y la recuperación fuera de RTO y RPO (R-015). Todos tienen respuesta de mitigación, responsable y una probabilidad objetivo.");
-    decorA(s);
-    ctx.title(s, "Anexo · Diez riesgos de mayor exposición");
-    const rows = [[th("ID"), th("Riesgo"), th("Rama"), th("Exposición P × I"), th("Zona"), th("Respuesta")]];
-    doc.top_riesgos.forEach((r, i) => rows.push([td(r[0], i, { bold: true }), td(r[1], i), td(r[2], i), td(r[3], i), td(r[4], i, { bold: r[4] === "Crítica", color: r[4] === "Crítica" ? C.accent1 : C.text1 }), td(r[5], i)]));
-    s.addTable(rows, { x: X0, y: 1.9, w: W, colW: [1.3, 4.1, 1.5, 3.0, 1.5, 5.4], rowH: 0.64, border: tblBorder(), margin: [0.03, 0.15, 0.03, 0.15], objectName: "Tabla de riesgos" });
-    ctx.src(s, `Respuesta: mitigar. Contingencia de ${fmt(doc.rbs.reserva_hh, 1)} HH. Fuente: Subdocumento 8 (registro de riesgos).`, 9.95);
   }
 };

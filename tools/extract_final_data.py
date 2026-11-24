@@ -4,8 +4,9 @@ Uso:  python -I tools/extract_final_data.py [ruta_al_xlsx]
 
 Las celdas se ubican POR ETIQUETA (texto de la fila / columna), no por direccion fija, salvo
 las series mensuales de CURVA S y FLUJO, que se ubican por la etiqueta de su fila.
-Las cifras que no provienen del modelo (EDT, RBS, riesgos, innovaciones: tipo y meta, criterios de
-calidad) se copian de los subdocumentos y quedan en el bloque "documentos" del JSON.
+Las cifras que no provienen del modelo (innovaciones: tipo y meta, criterios de calidad, problema, continuidad, equipo)
+se copian de los subdocumentos y quedan en el bloque "documentos" del JSON. La EDT y la RBS vigentes salen de
+tools/extract_edt_rbs.py (data/edt_rbs.json).
 """
 import json
 import sys
@@ -337,69 +338,34 @@ def main():
 
     # ---------------------------------------------------------------- documentos (SD / Informe 2)
     d["documentos"] = {
-        "edt": {"fases": [
-            {"n": 1, "nombre": "Inicio", "cc": 9, "pt": 35}, {"n": 2, "nombre": "Elaboración", "cc": 6, "pt": 18},
-            {"n": 3, "nombre": "Construcción", "cc": 11, "pt": 79}, {"n": 4, "nombre": "Transición", "cc": 3, "pt": 10},
-            {"n": 5, "nombre": "Adquisiciones", "cc": 4, "pt": 13}, {"n": 6, "nombre": "Infraestructura", "cc": 6, "pt": 24},
-            {"n": 7, "nombre": "Capacitación y cambio", "cc": 3, "pt": 13}, {"n": 8, "nombre": "Operación y soporte", "cc": 5, "pt": 26},
-            {"n": 9, "nombre": "Cierre", "cc": 2, "pt": 4}],
-            "cuentas": {"3": ["Ambientes y CI/CD", "Servicios de nube", "Base compartida", "Módulos Etapa 1", "Módulos Etapa 2",
-                              "Integraciones", "Migración de datos", "Pruebas Etapa 1", "Pruebas Etapa 2", "Innovaciones", "Documentación"],
-                        "8": ["Servicios de operación", "Mantenimiento", "Innovaciones", "Informes periódicos", "Transferencia"]}},
+        # La EDT vigente (10 productos, 60 cuentas, 230 paquetes), la RBS (36 riesgos), la matriz y el top-10 salen de
+        # data/edt_rbs.json (tools/extract_edt_rbs.py, SD7 y SD8).
+        # Fases de cada etapa contractual: SD7 (seccion "Carta Gantt y calendario") y SD1 ("cuatro fases en cascada"); sin cifras de paquetes.
+        "fases_cascada": [
+            {"nombre": "Requisitos y diseño", "detalle": "Concluye en H1 y H2 (Etapa 1) y en H8 (Etapa 2)"},
+            {"nombre": "Construcción", "detalle": "Frentes de módulos e integraciones en paralelo; versiones a QA"},
+            {"nombre": "Integración y certificación", "detalle": "Integración en H4 o H9; acta de certificación en H5 o H10"},
+            {"nombre": "Implantación", "detalle": "Marcha blanca desde H6 o H11; paso a producción en H7 o H12"}],
         "etapas": {"etapa1": [1, 16], "etapa2": [13, 21], "operacion": [21, 56], "h7_mes": 16, "h12_mes": 21},
-        "rup": {"inicio_hh": 6920, "elaboracion_hh": 4320, "construccion_hh": 33280, "transicion_hh": 20672},
-        "rbs": {"total": 45, "ramas": [
-            {"n": 1, "nombre": "Solución y tecnología", "riesgos": 14, "ejemplos": "R-012 Retiro · R-015 RTO/RPO"},
-            {"n": 2, "nombre": "Integración y legado", "riesgos": 7, "ejemplos": "R-001 Interfaces ERP · R-003 WMS"},
-            {"n": 3, "nombre": "Operación del cliente", "riesgos": 8, "ejemplos": "R-006 Enlaces · R-014 Sala y energía"},
-            {"n": 4, "nombre": "Personas y adopción", "riesgos": 7, "ejemplos": "R-017 Sindicato · R-021 Rutas"},
-            {"n": 5, "nombre": "Contrato y licitación", "riesgos": 4, "ejemplos": "R-026 Aceptación · R-027 Alcance"},
-            {"n": 6, "nombre": "Regulatorio y externo", "riesgos": 2, "ejemplos": "R-029 Evidencia · R-042 Normativa"},
-            {"n": 7, "nombre": "Empresa proveedora", "riesgos": 3, "ejemplos": "R-025 Dotación · R-034 Mesa y NOC"}],
-            "rama1": [["R-012", "Crítica", "Retiro sin trazabilidad"], ["R-015", "Crítica", "RTO/RPO excedidos"],
-                      ["R-004", "Alta", "Maestros e historia"], ["R-005", "Alta", "Duplicados tras reconexión"],
-                      ["R-011", "Alta", "Regla o sensor térmico"], ["R-013", "Alta", "Peak sin capacidad"],
-                      ["R-016", "Alta", "Uso indebido de privilegios"], ["R-038", "Alta", "INN-03 vida útil"],
-                      ["R-008", "Media", "Turno sin señal o batería"], ["R-009", "Media", "Relevo local en corte"],
-                      ["R-010", "Media", "Terminales a −22 °C"], ["R-032", "Media", "Bloqueo de nube o terceros"],
-                      ["R-033", "Media", "Fin de soporte"], ["R-037", "Media", "INN-02 no reproduce"]],
-            "zonas": {"criticos": 2, "altos": 23, "medios": 19, "bajos": 1},
-            "rama1_criticos": ["R-012 Retiro sin trazabilidad", "R-015 RTO/RPO excedidos"],
-            "reserva_hh": 2058.5},
-        "matriz_riesgos": {
-            "prob": ["Muy alta / 0,9", "Alta / 0,7", "Media / 0,5", "Baja / 0,3", "Muy baja / 0,1"],
-            "impacto": ["Muy bajo / 0,2", "Bajo / 0,4", "Medio / 0,6", "Alto / 0,8", "Muy alto / 1,0"],
-            "n": [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [10, 17, 0, 2, 0], [1, 9, 0, 6, 0], [0, 0, 0, 0, 0]],
-            "fill": [["FDEEE3", "FADBC6", "F7C3A0", "F7C3A0", "F7C3A0"], ["FDEEE3", "FADBC6", "F7C3A0", "F7C3A0", "F7C3A0"],
-                     ["FBD5BA", "F29A5E", "FADBC6", "E8641B", "F7C3A0"], ["FDEBDD", "FBD5BA", "FDEEE3", "F29A5E", "FADBC6"],
-                     ["FEF7F2", "FEF7F2", "FEF7F2", "FDEEE3", "FDEEE3"]]},
-        "top_riesgos": [
-            ["R-012", "Retiro sin trazabilidad", "Rama 1", "0,50 × 0,80 = 0,40", "Crítica", "Retiro simulado de punta a punta"],
-            ["R-015", "RTO/RPO excedidos", "Rama 1", "0,50 × 0,80 = 0,40", "Crítica", "Ensayo de desastre total"],
-            ["R-005", "Duplicados tras reconexión", "Rama 1", "0,30 × 0,80 = 0,24", "Alta", "Inyección de fallas"],
-            ["R-006", "Enlaces de Concepción", "Rama 3", "0,30 × 0,80 = 0,24", "Alta", "Simulacro de caída de enlaces"],
-            ["R-011", "Regla o sensor térmico", "Rama 1", "0,30 × 0,80 = 0,24", "Alta", "Validar rangos y sensor"],
-            ["R-013", "Peak sin capacidad", "Rama 1", "0,30 × 0,80 = 0,24", "Alta", "Prueba de carga en despacho"],
-            ["R-014", "Sala y energía", "Rama 3", "0,30 × 0,80 = 0,24", "Alta", "Recepcionar energía y clima"],
-            ["R-016", "Uso indebido de privilegios", "Rama 1", "0,30 × 0,80 = 0,24", "Alta", "Pentest y contención"],
-            ["R-001", "Interfaces del ERP", "Rama 2", "0,50 × 0,40 = 0,20", "Alta", "Contrato de interfaz probado"],
-            ["R-003", "Convivencia del WMS", "Rama 2", "0,50 × 0,40 = 0,20", "Alta", "Ensayo de delta y reversión"]],
         "innovaciones_info": [
             {"id": "INN-01", "tipo": "Producto", "nombre": "Seguimiento posentrega", "meta": "−25 % relativo en unidades vencidas en el local", "evaluacion": "Mes 28"},
             {"id": "INN-02", "tipo": "Proceso", "nombre": "Reproducción de incidentes", "meta": "−30 % relativo en horas hasta causa reproducida", "evaluacion": "Mes 15"},
             {"id": "INN-03", "tipo": "Tecnológica", "nombre": "Vida útil por historia térmica", "meta": "≥ 80 % de lotes dentro de ±15 % de la vida nominal", "evaluacion": "Mes 15"},
-            {"id": "INN-04", "tipo": "Modelo de negocio", "nombre": "Pago ligado al costo de servir", "meta": "Costo comparable −5 % con OTIF ≥ 95 %", "evaluacion": "Mes 36"},
-            {"id": "INN-05", "tipo": "Impacto social", "nombre": "Hoja del almacenero", "meta": "Medir cobertura, comprensión y uso", "evaluacion": "Con la operación"}],
-        "calidad": {"p95_preparacion_s": 1, "disponibilidad_pct": 99.9, "rto_h": 4, "rpo_min": 15, "casos": 1316, "gates": "G0–G6",
+            {"id": "INN-04", "tipo": "Modelo de negocio", "nombre": "Pago ligado al costo de servir", "meta": "Costo comparable −5 % con OTIF de más de 95 %", "evaluacion": "Mes 36"},
+            {"id": "INN-05", "tipo": "Impacto social", "nombre": "Hoja del almacenero", "meta": "Medir cobertura, comprensión y uso", "evaluacion": "Meses 14, 22–26, 27 y 33"}],
+        "calidad": {"p95_preparacion_s": 1, "disponibilidad_pct": 99.9, "rto_h": 4, "rpo_min": 15, "casos": 1328, "gates": "G0–G6",
                     "cobertura_negocio_pct": 70, "cobertura_global_pct": 80, "p95_entrega_s": 2, "p95_preventa_s": 1.5,
                     "p95_stock_credito_s": 2, "disponibilidad_infra_pct": 99.95},
         "problema": {"retiro_dias": 9, "otif_actual_pct": 82.4, "otif_meta_pct": 95, "costo_servir_anio": 2016, "kg": 4800,
                      "suspension_meses": 6, "ventas_riesgo_pct": 6},
         "continuidad": {"horas_sin_senal": 14, "horas_sin_enlace": 24, "sync_min": 10, "sync_horas": 2, "identificar_clientes_h": 2},
-        "equipo": [["AA", "Alex Aravena", "Jefe de Proyecto"], ["BT", "Bastián Trejo", "Arquitectura e Integración"],
-                   ["ÁC", "Álvaro Catalán", "Seguridad"], ["LC", "Leandro Chamorro", "Datos"], ["TP", "Tomás Pérez", "Desarrollo"],
-                   ["MM", "Maximiliano Miño", "Calidad y Pruebas"], ["GC", "Guillermo Castillo", "Operación / SRE"],
-                   ["PH", "Patricio Henríquez", "Funcional e Implantación"]],
+        # Equipo nominado: nombres y cargos tal como figuran en el Formulario T-8 (sd12-corrigiendo/formulario-t8/tablas/tab_T8_equipo.tex)
+        "equipo": [["AA", "Alex Aravena", "Jefe de Proyecto"], ["BT", "Bastián Trejo", "Arquitecto de Solución"],
+                   ["ÁC", "Álvaro Catalán", "Encargado de Seguridad de la Información"], ["LC", "Leandro Chamorro", "Líder de Datos"],
+                   ["TP", "Tomás Pérez", "Líder de Desarrollo"], ["MM", "Maximiliano Miño", "Líder de Calidad"],
+                   ["GC", "Guillermo Castillo", "Líder de Operación / SRE"],
+                   ["PH", "Patricio Henríquez", "Líder de Implantación y Gestión del Cambio"],
+                   ["CF", "Carolina Fuentes", "Líder Funcional"], ["RV", "Rodrigo Valdés", "Líder de Integración"]],
         "fuente": "Subdocumentos SD1–SD13 e Informe 2 (no provienen del modelo financiero).",
     }
 

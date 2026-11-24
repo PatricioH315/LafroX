@@ -37,8 +37,8 @@ module.exports = function apertura(ctx) {
 
   // ---- 2 Equipo (la foto se achica a un panel izquierdo)
   {
-    const s = ctx.add("BLANCO", "Apertura", ALEX, "0:50",
-      "Nos dirige Alex Aravena, Jefe de Proyecto e interlocutor único de la Comisión. Siete líderes cubren arquitectura e integración, seguridad, datos, desarrollo, calidad, operación e implantación: ocho personas responsables de los roles mínimos que exigen las bases. Cada uno de ellos presentará parte de esta oferta.");
+    const s = ctx.add("BLANCO", "Apertura", ALEX, "0:45",
+      "Nos dirige Alex Aravena, Jefe de Proyecto e interlocutor frente al cliente. Junto a él, nueve líderes de especialidad cubren arquitectura, seguridad, datos, desarrollo, calidad, operación, implantación, el frente funcional y la integración: diez personas nominadas para los diez roles mínimos que exigen las bases. Varios de ellos presentarán partes de esta oferta.");
     ctx.photo(s, 0, 0, 9.6, 11.25);
     deco(s, "onda-naranjo", 1, { x: -9.91, y: 2.5, w: 12.67, h: 6.33 });
     deco(s, "onda-naranjo-claro", 1, { x: -9.87, y: 5.1, w: 12.67, h: 6.33, rotate: 180, flipH: true });
@@ -49,23 +49,24 @@ module.exports = function apertura(ctx) {
     ctx.N(s, "!!title", "El Equipo", 3.0, 4.45, 6.3, 1.79, { fontSize: 54, bold: true, fontFace: H, color: C.background1, valign: "middle" });
     const x = 9.9, w = XR + 1.0 - x;
     const ppl = D.documentos.equipo;
-    darkCard(s, x, 1.0, w, 1.5, "!!tarjeta_1");
-    circle(s, ppl[0][0], x + 0.4, 1.0 + 0.3, 0.9);
-    T(s, ppl[0][1], x + 1.6, 1.0 + 0.3, w - 1.9, 0.5, { fontSize: 24, bold: true, fontFace: H, color: C.background1, objectName: "!!nombre_1" });
-    T(s, ppl[0][2] + " · interlocutor único", x + 1.6, 1.0 + 0.82, w - 1.9, 0.4, { fontSize: 16, color: C.accent6, objectName: "!!cargo_1" });
-    const cw = (w - 0.3) / 2, ch = 1.3;
+    darkCard(s, x, 0.8, w, 1.4, "!!tarjeta_1");
+    circle(s, ppl[0][0], x + 0.4, 0.8 + 0.25, 0.9);
+    T(s, ppl[0][1], x + 1.6, 0.8 + 0.25, w - 1.9, 0.5, { fontSize: 24, bold: true, fontFace: H, color: C.background1, objectName: "!!nombre_1" });
+    T(s, ppl[0][2] + " · interlocutor frente al cliente", x + 1.6, 0.8 + 0.77, w - 1.9, 0.4, { fontSize: 16, color: C.accent6, objectName: "!!cargo_1" });
+    // nueve tarjetas (3 x 3): nombres y cargos tal como figuran en el Formulario T-8
+    const cw = (w - 0.6) / 3, ch = 2.3;
     ppl.slice(1).forEach((p, i) => {
-      const cx = x + (i % 2) * (cw + 0.3), cy = 2.8 + Math.floor(i / 2) * (ch + 0.25);
+      const cx = x + (i % 3) * (cw + 0.3), cy = 2.45 + Math.floor(i / 3) * (ch + 0.2);
       card(s, cx, cy, cw, ch, { objectName: `!!tarjeta_${i + 2}` });
-      circle(s, p[0], cx + 0.3, cy + (ch - 0.8) / 2, 0.8);
-      T(s, p[1], cx + 1.3, cy + 0.27, cw - 1.45, 0.4, { fontSize: 20, bold: true, fontFace: H, objectName: `!!nombre_${i + 2}` });
-      T(s, p[2], cx + 1.3, cy + 0.72, cw - 1.45, 0.35, { fontSize: 16, color: C.accent3, objectName: `!!cargo_${i + 2}` });
+      circle(s, p[0], cx + 0.3, cy + 0.25, 0.7);
+      T(s, p[1], cx + 0.3, cy + 1.05, cw - 0.4, 0.4, { fontSize: 18, bold: true, fontFace: H, objectName: `!!nombre_${i + 2}` });
+      T(s, p[2], cx + 0.3, cy + 1.5, cw - 0.4, 0.7, { fontSize: 15, color: C.accent3, valign: "top", objectName: `!!cargo_${i + 2}` });
     });
   }
 
   // ---- 3 Agenda / protocolo (la foto pasa a un panel derecho)
   {
-    const s = ctx.add("BLANCO", "Apertura", ALEX, "1:20",
+    const s = ctx.add("BLANCO", "Apertura", ALEX, "1:10",
       "Este es el protocolo de la sesión: cinco actos, cada uno a cargo del responsable del área. Comenzamos con el entendimiento del problema, seguimos con la solución técnica, la ejecución y la calidad, la innovación y la oferta económica, y cerramos con nuestros compromisos medibles. Reservamos quince minutos para las preguntas de la Comisión.");
     ctx.photo(s, 11.6, 3.0, 6.8, 7.05);
     deco(s, "onda-naranjo", 1, { x: -9.91, y: 2.5, w: 12.67, h: 6.33 });
@@ -102,7 +103,7 @@ module.exports = function apertura(ctx) {
 
   // ---- 4 "9 dias" (la foto vuelve a pantalla completa)
   {
-    const s = ctx.add("HERO", "Apertura", ALEX, "1:50",
+    const s = ctx.add("HERO", "Apertura", ALEX, "1:40",
       `Marzo de 2026: un retiro sanitario. Distribuidora Puelche tardó ${P.retiro_dias} días en saber a qué clientes había llegado el producto. Fueron ${fmt(P.kg)} kilos retirados, y el proveedor de lácteos, que representa el ${P.ventas_riesgo_pct} % de las ventas, suspendió a Puelche por ${P.suspension_meses} meses. Les pedimos que recuerden esta cifra: nueve días.`);
     ctx.photo(s, 0, 0, 20, 11.25);
     deco(s, "onda-naranjo", 1, { x: -9.91, y: 2.5, w: 12.67, h: 6.33 });
@@ -113,7 +114,7 @@ module.exports = function apertura(ctx) {
     ctx.N(s, "!!kicker", "MARZO 2026 · RETIRO SANITARIO", 2.0, 1.95, 16, 0.5, { fontSize: 22, bold: true, color: C.accent4, align: "center", fontFace: H });
     ctx.N(s, "!!reloj", `${P.retiro_dias} días`, 2.0, 2.6, 16, 3.9, { fontSize: 230, bold: true, fontFace: H, color: C.background1, align: "center", valign: "middle" });
     ctx.N(s, "!!pie", "para identificar a los clientes afectados", 2.0, 6.55, 16, 0.6, { fontSize: 30, color: C.accent6, align: "center" });
-    const stats = [[`${fmt(P.kg)} kg`, "retirados"], [`${P.suspension_meses} meses`, "de suspensión del proveedor"], [`${P.ventas_riesgo_pct} %`, "de las ventas en riesgo"]];
+    const stats = [[`${fmt(P.kg)} kg`, "retirados"], [`${P.suspension_meses} meses`, "de suspensión del proveedor"], [`${P.ventas_riesgo_pct} %`, "de las ventas, el proveedor suspendido"]];
     stats.forEach((st, i) => {
       const x = 2.6 + i * 5.1;
       ctx.N(s, `!!dato_${i + 1}`, [
@@ -125,8 +126,8 @@ module.exports = function apertura(ctx) {
 
   // ---- 5 Problematica (el reloj se achica dentro de la primera tarjeta)
   {
-    const s = ctx.add("BLANCO", "Apertura", ALEX, "3:00",
-      `Tres problemas que parecen distintos y tienen una sola causa. Primero, una habilitación sanitaria en riesgo: ${P.retiro_dias} días para identificar clientes. Segundo, un servicio que pierde competitividad: el OTIF es de ${fmt(P.otif_actual_pct, 1)} %, frente a una meta de ${P.otif_meta_pct} %. Tercero, un costo de servir desconocido, calculado con un criterio de prorrateo de ${P.costo_servir_anio}. La causa común es que el dato no se registra donde ocurre el hecho; esa es la brecha que cierra nuestra solución.`);
+    const s = ctx.add("BLANCO", "Apertura", ALEX, "2:35",
+      `Tres problemas que parecen distintos y tienen una sola causa. Primero, una habilitación sanitaria y comercial comprometida: ${P.retiro_dias} días para identificar clientes. Segundo, un servicio que pierde competitividad: el OTIF es de ${fmt(P.otif_actual_pct, 1)} %, frente a una referencia sobre ${P.otif_meta_pct} %. Tercero, un costo de servir desconocido, calculado con un criterio de prorrateo de ${P.costo_servir_anio}. La causa común es que el dato no se registra donde ocurre el hecho; esa es la brecha que cierra nuestra solución.`);
     deco(s, "onda-naranjo", 1, { x: -5.92, y: 7.63, w: 12.15, h: 6.07 });
     RINGS(s, 10.29, 6.25, 11.2, 1);
     deco(s, "cuarto-circulo", 1, { x: 17.63, y: -3.06, w: 7.02, h: 7.02 });
@@ -138,18 +139,18 @@ module.exports = function apertura(ctx) {
     T(s, "El dato no se registra donde ocurre el hecho.", X0 + 0.45, 5.8, 6.5, 1.8, { fontSize: 28, bold: true, fontFace: H, color: C.background1 });
     const cx = 10.4, cw = 8.0, ch = 2.05;
     const items = [
-      ["01", "Habilitación sanitaria en riesgo", "Retiro de", "!!reloj", `${P.retiro_dias} días`],
-      ["02", "Servicio que pierde competitividad", "OTIF", "!!otif", `${fmt(P.otif_actual_pct, 1)} %`],
-      ["03", "Costo de servir desconocido", "Criterio de", "!!costo", String(P.costo_servir_anio)],
+      ["01", "Habilitación sanitaria y comercial comprometida", "Retiro de", "!!reloj", `${P.retiro_dias} días`],
+      ["02", "Pérdida de competitividad del servicio", "OTIF", "!!otif", `${fmt(P.otif_actual_pct, 1)} %`],
+      ["03", "Desconocimiento estructural del costo de servir", "Criterio de", "!!costo", String(P.costo_servir_anio)],
     ];
     items.forEach((it, i) => {
       const y = 2.9 + i * (ch + 0.3);
       card(s, cx, y, cw, ch, { objectName: `!!tarjeta_${i + 1}` });
       T(s, it[0], cx + 0.4, y + 0.35, 1.0, 0.35, { fontSize: 16, bold: true, fontFace: H, color: C.accent1 });
-      T(s, it[1], cx + 0.4, y + 0.8, 4.0, 1.0, { fontSize: 22, bold: true, fontFace: H });
+      T(s, it[1], cx + 0.4, y + 0.75, 4.2, 1.2, { fontSize: 20, bold: true, fontFace: H });
       T(s, it[2], cx + cw - 3.6, y + 0.3, 3.2, 0.4, { fontSize: 16, color: C.accent3, align: "right", objectName: `!!meta_${i + 1}` });
       ctx.N(s, it[3], it[4], cx + cw - 3.6, y + 0.85, 3.2, 0.9, { fontSize: 44, bold: true, fontFace: H, color: C.accent1, align: "right", valign: "middle" });
     });
-    ctx.src(s, "Fuente: Subdocumento 2 (diagnóstico del cliente).", 9.85);
+    ctx.src(s, "Fuente: Subdocumento 2, Comprensión del problema y de la necesidad.", 9.85);
   }
 };

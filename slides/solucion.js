@@ -13,8 +13,8 @@ module.exports = function solucion(ctx) {
 
   // ---- 6 Mapa de modulos (nativo)
   {
-    const s = ctx.add("COMPACTO", SEC, BT, "3:50",
-      "Este es el mapa del sistema: siete interfaces para los distintos actores, doce módulos agrupados por frente y tres sistemas externos, que son el ERP, Transbank y la geolocalización. El dato fluye desde la recepción hacia el inventario, la preparación y el reparto. El ERP sigue siendo el único emisor tributario y se accede mediante una capa anticorrupción; el único módulo que espera a la Etapa 2 es el canal moderno.");
+    const s = ctx.add("COMPACTO", SEC, BT, "3:15",
+      "Este es el mapa del sistema: siete interfaces para los distintos actores, doce módulos agrupados por frente y tres sistemas externos, que son el ERP, Transbank y la geolocalización. El dato fluye desde la recepción hacia el inventario, la preparación y el reparto. El ERP sigue siendo el único emisor tributario y se accede mediante una capa anticorrupción; dos capacidades esperan a la Etapa 2: el canal moderno, que incorpora M11, y el costo de servir, que entrega M10 (el OTIF de M10 llega en la Etapa 1).");
     decorB(s);
     ctx.title(s, "Mapa de módulos");
     // Interfaces
@@ -36,9 +36,9 @@ module.exports = function solucion(ctx) {
       });
     };
     group("Bodega y calidad", 5.7, 1.85, 6.4, 3.95, [["M1", "Recepción"], ["M2", "Inventario"], ["M5", "Preparación"], ["M9", "Calidad y trazabilidad"], ["M12", "Telemetría"]], 3);
-    group("Canal moderno", 12.3, 1.85, 3.3, 3.95, [["M11", "EDI"]], 1);
-    group("Preventa, rutas y reparto", 5.7, 6.0, 6.4, 3.95, [["M3", "Preventa"], ["M4", "Rutas + GIS"], ["M6", "Reparto"], ["M8", "Devoluciones y envases"]], 3);
-    group("Datos y rendición", 12.3, 6.0, 3.3, 3.95, [["M7", "Cobranza y rendición"], ["M10", "Analítica BI"]], 1);
+    group("Canal moderno", 12.3, 1.85, 3.3, 3.95, [["M11", "Canal moderno"]], 1);
+    group("Preventa, rutas y reparto", 5.7, 6.0, 6.4, 3.95, [["M3", "Preventa"], ["M4", "Rutas"], ["M6", "Reparto"], ["M8", "Devoluciones y envases"]], 3);
+    group("Datos y rendición", 12.3, 6.0, 3.3, 3.95, [["M7", "Cobranza y rendición"], ["M10", "Analítica"]], 1);
     // Sistemas externos
     T(s, "SISTEMAS EXTERNOS", 16.1, 1.85, 2.8, 0.35, { fontSize: 16, bold: true, fontFace: H, color: C.accent1 });
     ["ERP 2017", "Transbank", "Geolocalización"].forEach((t, i) =>
@@ -52,7 +52,7 @@ module.exports = function solucion(ctx) {
   const LAYERS = [
     ["Presentación", "captura y muestra la información", "Aplicaciones, portales y dispositivos de cada actor"],
     ["Borde y exposición", "protege la entrada", "Protección de las entradas públicas, privadas y locales"],
-    ["Enlace de servicios", "valida las solicitudes", "Validación de solicitudes y acceso local del WMS"],
+    ["Puerta de enlace de servicios", "valida las solicitudes", "Validación de solicitudes y acceso local del WMS"],
     ["Lógica de negocio", "aplica las reglas de M1 a M12 en Laravel", "Reglas de negocio de los doce módulos Laravel"],
     ["Integración y eventos", "conserva y distribuye eventos", "Intercambio de eventos y continuidad de los sitios"],
     ["Acceso a datos", "administra la persistencia", "Propiedad de los datos y persistencia híbrida"],
@@ -61,8 +61,8 @@ module.exports = function solucion(ctx) {
   ];
   const IMG_R = 2048 / 1884;
   {
-    const s = ctx.add("COMPACTO", SEC, BT, "4:15",
-      "La arquitectura lógica relaciona a cada actor con su aplicación, portal o consola y con los módulos M1 a M12. Se lee en ocho capas: presentación, borde, enlace de servicios, lógica de negocio, integración y eventos, y acceso a datos; la seguridad y la observabilidad atraviesan todas ellas. Las conexiones son intercambios autorizados, no acceso directo a las bases de datos, y la puerta local permite que la bodega siga operando sin enlace.");
+    const s = ctx.add("COMPACTO", SEC, BT, "3:40",
+      "La arquitectura lógica relaciona a cada actor con su aplicación, portal o consola y con los módulos M1 a M12. Se lee en ocho capas: presentación, borde, puerta de enlace de servicios, lógica de negocio, integración y eventos, y acceso a datos; la seguridad y la observabilidad atraviesan todas ellas. Las conexiones son intercambios autorizados, no acceso directo a las bases de datos, y la puerta local permite que la bodega siga operando sin enlace.");
     decorB(s);
     ctx.title(s, "Arquitectura lógica en ocho capas");
     LAYERS.forEach((l, i) => {
@@ -81,17 +81,17 @@ module.exports = function solucion(ctx) {
   // ---- 8-15 Capas
   const HL = [[2.61, 0.81], [3.34, 0.27], [3.53, 0.3], [3.75, 0.71], [4.38, 0.4], [4.69, 0.65], [5.26, 0.34], [5.51, 0.34]]; // v4 (y, h) sobre una miniatura de 3.15 in
   const ORDER = [
-    [BT, "4:27"], [TP, "4:39"], [BT, "4:51"], [TP, "5:03"], [BT, "5:15"], [BT, "5:27"], [TP, "5:39"], [TP, "5:51"],
+    [BT, "3:48"], [TP, "3:56"], [BT, "4:04"], [TP, "4:12"], [BT, "4:20"], [BT, "4:28"], [TP, "4:36"], [TP, "4:44"],
   ];
   const SCRIPT = [
-    "Capa 1, presentación. Aquí viven las aplicaciones móviles de preventa, reparto y bodega, los portales de clientes, transportistas y proveedores, y las consolas. Cada actor ve solo lo que necesita para su trabajo.",
-    "Capa 2, borde y exposición. Protege las entradas públicas, privadas y locales antes de que cualquier solicitud llegue a la lógica del sistema.",
-    "Capa 3, enlace de servicios. Valida cada solicitud y ofrece el acceso local del WMS, de modo que la bodega siga operando si se corta el enlace.",
-    "Capa 4, lógica de negocio. Aquí se aplican las reglas de los doce módulos, desarrollados en Laravel; es la capa donde se materializa el valor funcional.",
-    "Capa 5, integración y eventos. Conserva y distribuye los eventos entre sitios y con sistemas externos, y sostiene la continuidad cuando se pierde conectividad.",
-    "Capa 6, acceso a datos. Cada módulo es dueño de sus datos y la persistencia es híbrida; ningún sistema accede directamente a las bases de otro.",
-    "Capa 7, seguridad transversal. Identidad y autorización en todas las capas, con el principio de mínimo privilegio.",
-    "Capa 8, observabilidad transversal. Correlaciona y da seguimiento a cada operación, de punta a punta, para detectar y diagnosticar rápidamente.",
+    "Capa 1, presentación: las aplicaciones móviles, los portales y las consolas. Cada actor ve solo lo que necesita.",
+    "Capa 2, borde y exposición: protege las entradas públicas, privadas y locales antes de llegar a la lógica.",
+    "Capa 3, puerta de enlace de servicios: valida cada solicitud y da acceso local al WMS, para operar aunque se corte el enlace.",
+    "Capa 4, lógica de negocio: las reglas de los doce módulos, en Laravel. Aquí se materializa el valor funcional.",
+    "Capa 5, integración y eventos: distribuye los eventos entre sitios y sistemas, y sostiene la continuidad sin conexión.",
+    "Capa 6, acceso a datos: cada módulo es dueño de sus datos; la persistencia es híbrida y nadie accede a bases ajenas.",
+    "Capa 7, seguridad transversal: identidad y autorización en todas las capas, con mínimo privilegio.",
+    "Capa 8, observabilidad transversal: correlaciona cada operación de punta a punta para diagnosticar rápido.",
   ];
   const thumbX = X0, thumbY = 2.65, thumbH = 3.15, thumbW = thumbH * IMG_R;
   for (let k = 0; k < 8; k++) {
@@ -116,7 +116,7 @@ module.exports = function solucion(ctx) {
 
   // ---- 16 Trazabilidad y continuidad
   {
-    const s = ctx.add("COMPACTO", SEC, TP, "6:30",
+    const s = ctx.add("COMPACTO", SEC, TP, "5:14",
       `Cerramos la solución con dos garantías. Primera, la trazabilidad: ante un retiro, la lista de clientes afectados por un lote se obtiene en menos de ${cont.identificar_clientes_h} horas, no en nueve días. Segunda, la continuidad: preventa y reparto trabajan ${cont.horas_sin_senal} horas sin señal y el centro de distribución al menos ${cont.horas_sin_enlace} horas sin enlace; al volver la conexión, la sincronización tarda como máximo ${cont.sync_min} minutos y ${cont.sync_horas} horas, respectivamente.`);
     decorB(s);
     ctx.title(s, "Trazabilidad y continuidad");

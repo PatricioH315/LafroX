@@ -70,7 +70,7 @@ module.exports = function oferta(ctx) {
   // ------------------------------------------------------------ 33 Precio -> estructura de costo
   {
     const s = ctx.add("COMPACTO", "Oferta económica", LC, "12:05",
-      `El precio se descompone en un costo de ${fmt(K_.total.uf)} UF y un margen de ${fmt(M_.total.uf)} UF. Ese margen equivale a una rentabilidad nominal de ${pct(D.rentabilidad_nominal, 2)}, por debajo del tope de ${pct(P.rentabilidad_maxima, 0)} que fijan las bases. Más de dos tercios del costo son recursos humanos; el resto corresponde a servicios, adquisiciones de implementación y capacitaciones.`);
+      `El precio se descompone en un costo de ${fmt(K_.total.uf)} UF y un margen de ${fmt(M_.total.uf)} UF. Ese margen equivale a una rentabilidad nominal de ${pct(D.rentabilidad_nominal, 2)} sobre el precio (${pct(M_.total.uf / K_.total.uf, 1)} sobre el costo, cifra derivada), por debajo del tope de ${pct(P.rentabilidad_maxima, 0)} que fijan las bases. Más de dos tercios del costo son recursos humanos; el resto corresponde a servicios, adquisiciones de implementación y capacitaciones.`);
     decorE(s);
     ctx.title(s, "Del precio a la estructura de costo");
     darkCard(s, X0, 1.95, 6.3, 2.2, "!!precio_card");
@@ -85,7 +85,8 @@ module.exports = function oferta(ctx) {
     T(s, [
       { text: "Margen", options: { fontSize: 18, color: C.accent3, breakLine: true } },
       { text: `${fmt(M_.total.uf)} UF`, options: { fontSize: 44, bold: true, fontFace: H, color: C.accent1, breakLine: true } },
-      { text: `${pct(D.rentabilidad_nominal, 2)} ≤ ${pct(P.rentabilidad_maxima, 0)} (tope de las bases)`, options: { fontSize: 18 } },
+      { text: `${pct(D.rentabilidad_nominal, 2)} sobre el precio ≤ ${pct(P.rentabilidad_maxima, 0)} (tope de las bases)`, options: { fontSize: 18, breakLine: true } },
+      { text: `Derivado: ${pct(M_.total.uf / K_.total.uf, 1)} sobre el costo`, options: { fontSize: 16, color: C.accent3 } },
     ], X0 + 0.4, 6.85, 5.6, 2.75, { valign: "middle", objectName: "!!margen_t" });
     T(s, "Estructura del costo, UF (sin IVA)", 8.4, 1.95, 10, 0.4, { fontSize: 18, bold: true, fontFace: H, color: C.accent3 });
     const cats = [...D.estructura_costo].reverse();
@@ -188,12 +189,12 @@ module.exports = function oferta(ctx) {
   // ------------------------------------------------------------ 37 Rentabilidad (KPIs)
   {
     const s = ctx.add("COMPACTO", "Oferta económica", LC, "13:50",
-      `El proyecto es rentable. El valor actual neto, antes de impuestos, es de ${fmt(ind.van_sin_impuestos_uf)} UF, y de ${fmt(ind.van_sobre_impuestos_uf)} UF después de impuestos, con una tasa de descuento de ${fmt(P.tasa_descuento_mensual * 100, 3)} % mensual. La tasa interna de retorno es de ${fmt(ind.tir_sin_imp_mensual * 100, 2)} % mensual, equivalente a ${fmt(ind.tir_sin_imp_anual * 100, 1)} % anual, sin impuestos. La inversión se recupera en el mes ${CS.payback_mes} y la caja mínima es de ${fmt(CS.caja_minima_uf)} UF en el mes ${CS.caja_minima_mes}, con un capital inicial de ${fmt(P.capital_inicial_uf)} UF.`);
+      `El proyecto es rentable. El valor actual neto, antes de impuestos, es de ${fmt(ind.van_sin_impuestos_uf)} UF, y de ${fmt(ind.van_sobre_impuestos_uf)} UF después de impuestos, con una tasa de descuento de ${fmt(P.tasa_descuento_mensual * 100, 3)} % mensual. La tasa interna de retorno, sin impuestos, es de ${fmt(ind.tir_sin_imp_mensual * 100, 2)} % mensual, equivalente a ${fmt(ind.tir_sin_imp_anual * 100, 1)} % anual; después de impuestos es de ${fmt(ind.tir_post_imp_mensual * 100, 2)} % mensual, equivalente a ${fmt(ind.tir_post_imp_anual * 100, 1)} % anual. La inversión se recupera en el mes ${CS.payback_mes} y la caja mínima es de ${fmt(CS.caja_minima_uf)} UF en el mes ${CS.caja_minima_mes}, con un capital inicial de ${fmt(P.capital_inicial_uf)} UF.`);
     decorE(s);
     ctx.title(s, "Rentabilidad del proyecto");
     const kp = [
       ["VAN", `${fmt(ind.van_sin_impuestos_uf)} UF`, "Valor actual neto, sin impuestos", `Tasa de descuento ${fmt(P.tasa_descuento_mensual * 100, 3)} % mensual (${fmt(fin.tasa_descuento_anual * 100, 2)} % anual). Sobre impuestos: ${fmt(ind.van_sobre_impuestos_uf)} UF`],
-      ["TIR", `${fmt(ind.tir_sin_imp_mensual * 100, 2)} %`, "mensual, sin impuestos", `(${fmt(ind.tir_sin_imp_anual * 100, 1)} % anual equivalente). Después de impuestos: ${fmt(ind.tir_post_imp_mensual * 100, 2)} % mensual`],
+      ["TIR", `${fmt(ind.tir_sin_imp_mensual * 100, 2)} %`, "mensual, sin impuestos", `Equivale a ${fmt(ind.tir_sin_imp_anual * 100, 1)} % anual. Después de impuestos: ${fmt(ind.tir_post_imp_mensual * 100, 2)} % mensual, equivalente a ${fmt(ind.tir_post_imp_anual * 100, 1)} % anual`],
       ["Recuperación", `Mes ${CS.payback_mes}`, "de la inversión", "El ingreso comercial acumulado supera al egreso acumulado"],
       ["Caja mínima", `${fmt(CS.caja_minima_uf)} UF`, `en el mes ${CS.caja_minima_mes}`, `Con el financiamiento inicial de ${fmt(P.capital_inicial_uf)} UF`],
     ];
