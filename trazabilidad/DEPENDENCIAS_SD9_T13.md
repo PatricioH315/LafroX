@@ -5,7 +5,7 @@ Este registro reúne las dependencias vigentes para la rama de corrección del S
 ## Punto 4: seguridad, certificaciones y operación
 
 - RT-15.08 figura como «Cumple» en T-12 y T-13. El cotejo documental del T-8 y los Anexos 12.B a 12.D de SD12 (rama de corrección, `69a17f01`) vincula las nueve personas con credenciales a su cargo, perfil, dedicación declarada y período. El décimo integrante, Rodrigo Valdés, figura asignado a Integración sin certificación exigida. Se conserva RT-15.08/P01 como prueba prevista.
-- RNF-14.01, RT-11.08 y RT-21.03 figuran como parciales en ambos formularios. El T-13, sección 8.2, precisa las verificaciones previstas. Para cerrar RT-21.03 se requiere la validación del cuadrante nominal del Anexo 10.D, B-02, que ya distingue responsables de coordinación y puestos de guardia. RT-21.03 remite a 10.1.1, 10.1.2 y 10.1.4 del T-14.
+- RNF-14.01 y RT-11.08 siguen parciales. RT-21.03 cumple con la nómina B-02 y remite a 10.1.1, 10.1.2 y 10.1.4 del T-14.
 - La matriz T-13 vigente se genera desde la revisión SD3 `1763cabf`. RNF-14.01 publica en su ficha individual el criterio normativo del catálogo y la aceptación por tramo del T-12.
 
 ### Solicitud de aclaración al evaluador
@@ -64,11 +64,11 @@ El expediente debe registrar el código de verificación cuando lo emita el orga
 
 El Anexo 10.D, B-02 del SD10 recoge las seis nominaciones y dedicaciones de T-8 y siete filas de cobertura por tecnología. El SD12, sección 12.1.5, aporta perfiles de suplencia. El T-15 asigna 0 HH de Operación al perfil 12S, suplente propuesto de Integración. El Anexo 10.A añade 576 HH de suplencia 12S, a razón de 16 HH por mes en M21–M56. Falta identificar a la persona asignada. En M32 la reserva C eleva Mesa a 1.840 HH y suma 50 HH al NOC. Los compromisos de 12.D coinciden con las dedicaciones de coordinación del T-8. El Excel de referencia, hoja «HH POR ROL Y MES», confirma 0 HH en W16:BF16 para 12S, 962 HH en W40 para Mesa M21, 1.570 HH en AH40 para Mesa M32 y 696 HH en O44 para SOC M13. Las asignaciones individuales de guardia, la fecha de confirmación y su respaldo figuran pendientes.
 
-**Solicitud de datos para Guillermo Castillo**
+**Consulta previa a Guillermo Castillo (historial)**
 
 > Guillermo, estamos completando el Anexo 10.D, B-02 para cerrar SD3-17. ¿Puedes confirmar, para plataforma y nube, redes/NOC, seguridad/SOC, aplicaciones, datos, integraciones críticas y Mesa N1, quién será titular y suplente, qué competencia respalda cada asignación, en qué turno o ventana y período actuará, qué HH o porcentaje compromete y cuál será su canal de escalamiento? Necesitamos contrastar las asignaciones con T-8 y T-15, en especial el arranque del SOC en M13, el relevo de Mesa a NOC de 20:00 a 22:00 y los cuadrantes de M21 y M32. Por favor indica la fecha de validación y el respaldo de los responsables de cada área.
 
-RT-21.03 y RT-21.03/P01 remiten al cuadrante B-02. Registrar validación con fecha, responsable, cobertura verificada y ubicación del respaldo. Conservar «Cumple parcialmente» mientras falten las asignaciones o su confirmación.
+RT-21.03 y RT-21.03/P01 remiten al cuadrante B-02. Leandro comunicó el 24 de noviembre de 2026 la confirmación de Guillermo Castillo de las funciones técnicas y de escalamiento de B-02. Las seis dedicaciones del T-8 cubren siete servicios en M21–M56. El 100 % de Guillermo es compartido entre plataforma, NOC y Mesa. Los suplentes por turno y sus relevos se asignan antes de activar cada servicio. RT-21.03 figura como «Cumple».
 
 ### Registro de cierre
 
@@ -103,7 +103,7 @@ El T-12 `0167f99d`, el T-13 `a85b1dac` y el diccionario del T-14 `b3113e46` son 
 | RT-16.14 | Contrastar 3.3.4 para el motor de reglas y 4.3.3/5.1.1 para la relación entre prueba de entrega, guía y acuse. Separar las dos verificaciones en la ficha. |
 | RT-26.01 y RT-26.03 | Trazar arquitectura y madurez a entregables o paquetes hoja. La referencia vigente identifica las cuentas 7.1 a 7.5. |
 
-La matriz del SD3 incorpora las 17 observaciones del cuadro general del Informe 2 en `3201afc1`. SD3-16 está corregida en RT-15.04, que declara PUE e intensidad de carbono. SD3-17 sigue parcial hasta formalizar el cuadrante B-02. SD13-02 requiere alinear el texto de la matriz general con el T-12 y el SD13, que distinguen el modelo de RT-05.30 del aporte operacional de INN-03.
+La matriz del SD3 incorpora las 17 observaciones del cuadro general del Informe 2 en `3201afc1`. SD3-16 está corregida en RT-15.04, que declara PUE e intensidad de carbono. SD3-17 quedó corregida con la confirmación de las funciones técnicas de B-02. SD13-02 requiere alinear el texto de la matriz general con el T-12 y el SD13, que distinguen el modelo de RT-05.30 del aporte operacional de INN-03.
 
 ## Historial de cotejos anteriores
 
