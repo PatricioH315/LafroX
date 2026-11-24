@@ -1,6 +1,6 @@
 {
-  "source_ref": "30f4b59204175b8c2186339ab87389f3cba07d71",
-  "source_commit": "30f4b59204175b8c2186339ab87389f3cba07d71",
+  "source_ref": "1763cabf394c5e2ea57830cf2b39b0d012b4d1d3",
+  "source_commit": "1763cabf394c5e2ea57830cf2b39b0d012b4d1d3",
   "test_count": 1328,
   "counts": {
     "t12_rows": 653,
@@ -4225,7 +4225,7 @@
     {
       "id": "RNF-14.01",
       "state": "Cumple parcialmente",
-      "component": "TLS 1.3 en entradas HTTPS y entre componentes de la solución, con HSTS precargado y renovación y alertas de certificados. SD4 prevé TLS 1.2 como excepción condicionada para el enlace ERP--ACL de Talca o terceros incompatibles.",
+      "component": "La arquitectura exige TLS 1.3 por tramo, incluido ERP--ACL y terceros en alcance, sin negociar versiones inferiores. El Anexo 4-R registra compatibilidad informada del ERP y una brecha en mensajería instantánea.",
       "edt": "3.2.1, 3.2.5",
       "priority": "Crítica",
       "stage": "E1 y E2",
@@ -4234,8 +4234,8 @@
       "origin": "BTT, RT-11.08",
       "criterion": "Todo el tráfico en tránsito debe emplear TLS 1.3, con prohibición expresa de TLS 1.0 y 1.1, conjuntos de cifrado modernos, HSTS con precarga y gestión automatizada de certificados con rotación y alerta anticipada de vencimiento.",
       "verification": "Revisión de configuración TLS, cifrados, HSTS y certificados; prueba de rechazo de protocolos prohibidos",
-      "evidence": "RNF-14.01/\\allowbreak{}P01--\\allowbreak{}P05\\newline ERP--ACL: compatibilidad informada. Pendiente: respaldo de origen y verificación de los tramos de terceros (Anexo 4-R).",
-      "acceptance": "Verificar versión y cifrado por tramo según el inventario del Anexo 4-R, rechazo de TLS 1.0 y 1.1, HSTS precargado, rotación y alertas. Acreditar TLS 1.3 en cada tramo exigido, incluido ERP--ACL y terceros en alcance. Si un tramo requiere la excepción TLS 1.2, registrarlo como brecha.",
+      "evidence": "RNF-14.01/\\allowbreak{}P01--\\allowbreak{}P05\\newline Anexo 4-R, Tabla 4-R.1: respaldo por tramo. Pendiente: compatibilidad de terceros.",
+      "acceptance": "Verificar TLS 1.3 y cifrado por tramo exigido, rechazo de versiones inferiores y certificados inválidos. En entradas HTTPS aplicables, verificar HSTS precargado, rotación y alertas. Registrar los tramos sin respaldo.",
       "cases": [
         "RNF-14.01/P01",
         "RNF-14.01/P02",
@@ -8020,15 +8020,15 @@
     {
       "id": "RT-11.08",
       "state": "Cumple parcialmente",
-      "component": "TLS 1.3 en entradas HTTPS y entre componentes de la solución, con HSTS precargado y renovación y alertas de certificados. SD4 prevé TLS 1.2 como excepción condicionada para el enlace ERP--ACL de Talca o terceros incompatibles.",
+      "component": "La arquitectura exige TLS 1.3 por tramo, incluido ERP--ACL y terceros en alcance, sin negociar versiones inferiores. El Anexo 4-R registra compatibilidad informada del ERP y una brecha en mensajería instantánea.",
       "edt": "3.2.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-11.08",
-      "criterion": "Verificar versión y cifrado por tramo según el inventario del Anexo 4-R, rechazo de TLS 1.0 y 1.1, HSTS precargado, rotación y alertas. Acreditar TLS 1.3 en cada tramo exigido, incluido ERP--ACL y terceros en alcance. Si un tramo requiere la excepción TLS 1.2, registrarlo como brecha.",
+      "criterion": "Verificar TLS 1.3 y cifrado por tramo exigido, rechazo de versiones inferiores y certificados inválidos. En entradas HTTPS aplicables, verificar HSTS precargado, rotación y alertas. Registrar los tramos sin respaldo.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-11.08/\\allowbreak{}P01\\newline ERP--ACL: compatibilidad informada. Pendiente: respaldo de origen y verificación de los tramos de terceros (Anexo 4-R).",
+      "evidence": "RT-11.08/\\allowbreak{}P01\\newline Anexo 4-R, Tabla 4-R.1: respaldo por tramo. Pendiente: compatibilidad de terceros.",
       "cases": [
         "RT-11.08/P01"
       ]
