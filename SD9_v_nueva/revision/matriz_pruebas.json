@@ -1,6 +1,6 @@
 {
-  "source_ref": "2535c8eddac75ad1489ae1822f93e8caf179ee15",
-  "source_commit": "2535c8eddac75ad1489ae1822f93e8caf179ee15",
+  "source_ref": "30f4b59204175b8c2186339ab87389f3cba07d71",
+  "source_commit": "30f4b59204175b8c2186339ab87389f3cba07d71",
   "test_count": 1328,
   "counts": {
     "t12_rows": 653,
@@ -16,8 +16,8 @@
       "Media": 55
     },
     "rt_state": {
-      "Cumple": 338,
-      "Cumple parcialmente": 14,
+      "Cumple": 339,
+      "Cumple parcialmente": 13,
       "No cumple": 22
     },
     "rt_without_case": 22,
@@ -8993,16 +8993,16 @@
     },
     {
       "id": "RT-15.07",
-      "state": "Cumple parcialmente",
-      "component": "SD1 y el Sobre 1 identifican las constancias de ISO 9001:2015, ISO/IEC 27001:2022, CMMI-DEV nivel 3 e ISO/IEC 20000-1:2018 con las mismas referencias simuladas. CMMI-DEV está en reevaluación e ISO/IEC 27001 requiere renovación antes del contrato.",
+      "state": "Cumple",
+      "component": "El Sobre 1 presenta las constancias de ISO 9001:2015, ISO/IEC 27001:2022 e ISO/IEC 20000-1:2018 vigentes a la fecha de la oferta. CMMI-DEV nivel 3 se consigna como antecedente de trayectoria en reevaluación.",
       "edt": "1.8.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-15.07",
-      "criterion": "Cotejar cada certificación declarada vigente con copia admisible, titular, emisor, alcance, vigencia y código de verificación cuando exista. Confirmar el respaldo de renovación de ISO/IEC 27001 y el resultado de la reevaluación CMMI-DEV en el Sobre 1.",
+      "criterion": "Cotejar titular, emisor, alcance y vigencia de cada certificado declarado vigente al 25 de noviembre de 2026, con el código de verificación del emisor cuando exista.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-15.07/\\allowbreak{}P01\\newline Respaldo: constancias (Sobre 1, Certificaciones del proponente)\\newline Pendiente: Validar constancias y renovaciones del Sobre 1.",
+      "evidence": "RT-15.07/\\allowbreak{}P01\\newline Respaldo: certificados del Sobre 1, Certificaciones del proponente.",
       "cases": [
         "RT-15.07/P01"
       ]
