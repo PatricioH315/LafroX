@@ -535,6 +535,16 @@
 \AddToHook{shipout/foreground}[lafrox-firma-horizontal]{%
   \ifLFXfirmaHorizontal
     \put(0,0){\begin{tikzpicture}[remember picture,overlay]
+      % En el PDF girado, el eje Y original recorre el borde superior.
+      \node[rotate=90,anchor=base west,inner sep=0pt]
+        at ([xshift=0.78cm,yshift=1.2cm]current page.south west)
+        {\LFXisotipoencabezado{\LFXchico\LFXempresa}};
+      \node[rotate=90,anchor=base east,inner sep=0pt]
+        at ([xshift=0.78cm,yshift=-2.7cm]current page.north west)
+        {\LFXchico\leftmark};
+      \draw[lafroxTenue,line width=0.5pt]
+        ([xshift=1.03cm,yshift=1.2cm]current page.south west) --
+        ([xshift=1.03cm,yshift=-2.7cm]current page.north west);
       \node[rotate=90,anchor=base east,inner sep=0pt,
         font=\intermedium\fontsize{9pt}{11pt}\selectfont,
         text=lafroxTinta]
@@ -589,14 +599,14 @@
 
 \fancypagestyle{lafrox}{%
   \fancyhf{}
-  \fancyhead[L]{\LFXisotipoencabezado{\LFXchico\LFXempresa}}
-  \fancyhead[R]{{\LFXchico\nouppercase{\leftmark}}}
-  \fancyfoot[L]{\global\LFXfranjatrue\LFXpieizquierdo}
+  \fancyhead[L]{\ifLFXfirmaHorizontal\else\LFXisotipoencabezado{\LFXchico\LFXempresa}\fi}
+  \fancyhead[R]{\ifLFXfirmaHorizontal\else{\LFXchico\nouppercase{\leftmark}}\fi}
+  \fancyfoot[L]{\global\LFXfranjatrue\ifLFXfirmaHorizontal\else\LFXpieizquierdo\fi}
   \fancyfoot[R]{\LFXpiederecho}
   \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\headrule}{%
+  \renewcommand{\headrule}{\ifLFXfirmaHorizontal\else
     \vspace{3pt}%
-    \hbox to\headwidth{\color{lafroxTenue}\leaders\hrule height 0.5pt\hfill}}
+    \hbox to\headwidth{\color{lafroxTenue}\leaders\hrule height 0.5pt\hfill}\fi}
 }
 
 % Las aperturas de capitulo heredan foliacion y firma: sin excepciones (Art. 40.1).
@@ -605,7 +615,7 @@
 %  apertura quedaria con una linea suelta sobre el titulo.
 \fancypagestyle{plain}{%
   \fancyhf{}
-  \fancyfoot[L]{\global\LFXfranjatrue\LFXpieizquierdo}
+  \fancyfoot[L]{\global\LFXfranjatrue\ifLFXfirmaHorizontal\else\LFXpieizquierdo\fi}
   \fancyfoot[R]{\LFXpiederecho}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\headrule}{}
