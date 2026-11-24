@@ -1,6 +1,6 @@
 {
-  "source_ref": "78314aed21cc261023728b6e7bf4b1d67c94fdbb",
-  "source_commit": "78314aed21cc261023728b6e7bf4b1d67c94fdbb",
+  "source_ref": "a0b4b35b9c104446a773bc9929df5a902eed9427",
+  "source_commit": "a0b4b35b9c104446a773bc9929df5a902eed9427",
   "test_count": 1345,
   "counts": {
     "t12_rows": 653,
@@ -4224,8 +4224,8 @@
     },
     {
       "id": "RNF-14.01",
-      "state": "Cumple parcialmente",
-      "component": "La arquitectura exige TLS 1.3 por tramo en alcance. El Anexo 4-R incorpora los resultados informados para ERP--ACL, ACL--SQS y AS2. El recorrido ofertado de WhatsApp documenta TLS 1.2. Se evalúa Meta directa, con el retorno de estados pendiente de respaldo.",
+      "state": "Cumple",
+      "component": "El diseño exige TLS 1.3 en los tramos aplicables. WhatsApp integra Graph API y un receptor de estados con TLS 1.3 tanto en el borde como hasta el origen privado.",
       "edt": "3.2.1, 3.2.5",
       "priority": "Crítica",
       "stage": "E1 y E2",
@@ -4234,7 +4234,7 @@
       "origin": "BTT, RT-11.08",
       "criterion": "Todo el tráfico en tránsito debe emplear TLS 1.3, con prohibición expresa de TLS 1.0 y 1.1, conjuntos de cifrado modernos, HSTS con precarga y gestión automatizada de certificados con rotación y alerta anticipada de vencimiento.",
       "verification": "Revisión de configuración TLS, cifrados, HSTS y certificados; prueba de rechazo de protocolos prohibidos",
-      "evidence": "RNF-14.01/\\allowbreak{}P01--\\allowbreak{}P05\\newline Anexo 4-R, Tabla 4-R.1: respaldo por tramo. Brecha de diseño: WhatsApp. Detalle de pruebas en T-13, sección 8.2.",
+      "evidence": "RNF-14.01/\\allowbreak{}P01--\\allowbreak{}P05\\newline Anexo 4-R, Tabla 4-R.1: respaldo por tramo. Configuración ofertada por tramo. Prueba prevista en T-13, sección 8.2.",
       "acceptance": "Verificar TLS 1.3 y cifrado por tramo exigido, rechazo de versiones inferiores y certificados inválidos. En entradas HTTPS aplicables, verificar HSTS precargado, rotación y alertas. Registrar el resultado por tramo aplicable.",
       "cases": [
         "RNF-14.01/P01",
@@ -8019,8 +8019,8 @@
     },
     {
       "id": "RT-11.08",
-      "state": "Cumple parcialmente",
-      "component": "La arquitectura exige TLS 1.3 por tramo en alcance. El Anexo 4-R incorpora los resultados informados para ERP--ACL, ACL--SQS y AS2. El recorrido ofertado de WhatsApp documenta TLS 1.2. Se evalúa Meta directa, con el retorno de estados pendiente de respaldo.",
+      "state": "Cumple",
+      "component": "El diseño exige TLS 1.3 en los tramos aplicables. WhatsApp integra Graph API y un receptor de estados con TLS 1.3 tanto en el borde como hasta el origen privado.",
       "edt": "3.2.1",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -8028,7 +8028,7 @@
       "origin": "Bases Técnicas Transversales, RT-11.08",
       "criterion": "Verificar TLS 1.3 y cifrado por tramo exigido, rechazo de versiones inferiores y certificados inválidos. En entradas HTTPS aplicables, verificar HSTS precargado, rotación y alertas. Registrar el resultado por tramo aplicable.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-11.08/\\allowbreak{}P01\\newline Anexo 4-R, Tabla 4-R.1: respaldo por tramo. Brecha de diseño: WhatsApp. Detalle de pruebas en T-13, sección 8.2.",
+      "evidence": "RT-11.08/\\allowbreak{}P01\\newline Anexo 4-R, Tabla 4-R.1: respaldo por tramo. Configuración ofertada por tramo. Prueba prevista en T-13, sección 8.2.",
       "cases": [
         "RT-11.08/P01"
       ]
@@ -9411,8 +9411,8 @@
     },
     {
       "id": "RT-16.24",
-      "state": "Cumple",
-      "component": "Correo: Amazon SES; SMS: Amazon SNS; WhatsApp: AWS End User Messaging Social; portal: LafroX, Angular 22/Laravel 13 en ECS Fargate N-04. Volumen conjunto: 2.800/5.200 avisos diarios. Costo unitario por canal y tratamiento del costo variable en la Oferta Económica (Bases Administrativas, art. 50.2, p. 29).",
+      "state": "Cumple parcialmente",
+      "component": "Correo: Amazon SES; SMS: Amazon SNS; WhatsApp: WhatsApp Cloud API de Meta; portal: LafroX, Angular 22/Laravel 13 en ECS Fargate N-04. Volumen conjunto: 2.800/5.200 avisos diarios. Pendiente conciliar la tarifa y el volumen específico de WhatsApp con la Oferta Económica.",
       "edt": "5.2.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -9420,7 +9420,7 @@
       "origin": "Bases Técnicas Transversales, RT-16.24",
       "criterion": "La propuesta identifica el proveedor de cada canal, su costo unitario, su volumen proyectado y el tratamiento del costo variable en la Oferta Económica.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-16.24/\\allowbreak{}P01\\newline Respaldo: proveedores y costos de mensajería (SD4 Anexos 4-H y 4-I)",
+      "evidence": "RT-16.24/\\allowbreak{}P01\\newline Respaldo: proveedores y volumetría conjunta (SD4 Anexos 4-H y 4-I)",
       "cases": [
         "RT-16.24/P01"
       ]
