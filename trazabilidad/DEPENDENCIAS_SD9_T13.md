@@ -6,7 +6,84 @@ Esta lista identifica cambios para la rama `LafroX-Subdoc9-LateX-corrigiendo`. N
 
 - RT-15.08 figura como «Cumple» en T-12 y T-13. La verificación prevista coteja cargo, credencial, dedicación por fase y meses de participación por persona entre T-8, sección 1, y los Anexos 12.B a 12.D.
 - RNF-14.01, RT-11.08, RT-15.07 y RT-21.03 figuran como parciales en ambos formularios. El T-13, sección 8.2, precisa las verificaciones previstas. Para el cierre se requiere confirmación de TLS por enlace, las constancias admitidas por el ejercicio y el cuadrante nominal del Anexo 10.D, B-02. RT-21.03 remite a 10.1.1, 10.1.2 y 10.1.4 del T-14.
-- La matriz T-13 del punto 4 se genera desde la revisión SD3 73e6b41d.
+- La matriz T-13 vigente se genera desde la revisión SD3 0167f99d.
+
+### Solicitud de aclaración al evaluador
+
+Registro interno de coordinación. El T-20 fijó el período formal de consultas del 20 de agosto al 1 de septiembre de 2026 y la publicación del acta el 7 de septiembre. En las ramas consultadas se localizaron las aclaraciones generales y las del Informe 3. Las generales observan el uso de certificaciones sin respaldo obtenible. En esas fuentes no se encontró una autorización específica para cerrar estas filas con las constancias actuales. Si el equipo tiene el acta de respuestas, revisarla primero. La solicitud siguiente queda preparada para el canal académico y su respuesta debe quedar registrada con fecha, fuente y alcance.
+
+> Profesor, estamos cerrando la matriz T-12 de LafroX para el Caso 02, Logística, de la licitación TFEP-01/2026. Agradeceríamos su orientación sobre tres criterios de la entrega final.
+>
+> 1. Para RT-11.08 y RNF-14.01, el caso no documenta las interfaces del ERP de 2017. ¿Qué respaldo de diseño y prueba prevista admite para declarar TLS 1.3 cuando el enlace real no está disponible en el ejercicio? ¿Cómo debemos declarar un servicio de terceros cuya documentación contempla TLS 1.2?
+> 2. Para RT-15.07, las constancias del expediente académico están identificadas como simuladas. ¿Qué respaldo admite para la entrega final y cómo debemos declarar una certificación en reevaluación o con renovación previa al inicio contractual? Para ISO/IEC 27001, ¿cuándo corresponde documentar la alternativa de plan firmado con hitos verificables prevista en el artículo 34.1?
+> 3. Para RT-21.03, el T-8 nomina a los responsables principales y el T-15 respalda las plazas y horas. ¿La entrega final requiere titulares y suplentes nominados en cada turno o admite formalizar las guardias pendientes en un hito? Si admite lo segundo, ¿qué datos se deben acreditar en la entrega?
+
+Fuentes de la consulta: Bases Administrativas, arts. 34.1 y 43 y Formulario T-20, actividades 4 y 5. Bases Técnicas Transversales, RT-11.08, RT-15.07 y RT-21.03. Caso 02, cap. 5. Aclaraciones generales, versión histórica `3dfe43de`, y aclaraciones del Informe 3, `2b04aaa7`.
+
+### Inventario TLS para Arquitectura y Seguridad
+
+El Anexo 4-H del SD4 identifica las interfaces y el Anexo 4-R define la política. El T-11 identifica el adaptador ERP en VM-04 en Talca y las dependencias de salida. El Excel aporta el presupuesto de certificados, que sirve como respaldo de costos. Arquitectura debe registrar cada extremo, ambiente, versión admitida, configuración propuesta y fuente de la confirmación. La versión negociada y el resultado se completan cuando se ejecute una prueba autorizada.
+
+| Enlace | Respaldo disponible | Dato que debe confirmar el responsable |
+|---|---|---|
+| INT-06, ERP 2017–ACL de Talca | T-11 y Anexo 4-H identifican la ACL en VM-04. El ERP se conserva y sus interfaces requieren levantamiento. | Dueño del ERP y Arquitectura: interfaz exacta, protocolo, versión admitida y evidencia de TLS 1.3 o alternativa viable. |
+| INT-07, DTE y estados | El ERP sigue siendo el emisor. El diseño identifica ACL/M5 y el canal del ERP con SII. | Integración: separar el tramo de la solución del tramo operado por el ERP, identificar a su dueño y confirmar el alcance del requisito en cada extremo. |
+| INT-08, EDI por cadena | El Anexo 4-R declara TLS 1.3 para la entrada AS2 de LafroX. | Integración y M11: confirmar por cadena y por dirección el extremo, el perfil AS2 y la versión admitida. |
+| INT-09, pasarela de pago | El Anexo 4-H identifica la pasarela de M7 y el T-11 enumera Transbank. | Integración y M7: confirmar producto, ambiente y extremo exacto con el proveedor. Registrar el respaldo para ese producto. |
+| INT-10, mapas y geocodificación | El Anexo 4-H identifica a M4 como dueño interno. | M4: confirmar proveedor, API, ambiente y compatibilidad del extremo seleccionado. |
+| INT-11, Amazon SES | AWS documenta TLS 1.3 para la API HTTPS. AWS describe por separado el tramo de entrega al servidor de correo receptor. | Notificaciones: fijar el extremo y la configuración de la API. Confirmar si el tramo de entrega al receptor queda dentro del alcance y documentar su tratamiento. [Protocolos de Amazon SES](https://docs.aws.amazon.com/ses/latest/dg/security-protocols.html) |
+| INT-11, Amazon SNS | La documentación indica un mínimo de TLS 1.2 o posterior. | Notificaciones: verificar TLS 1.3 para el extremo que se utilizará, con su respaldo. [Seguridad de Amazon SNS](https://docs.aws.amazon.com/sns/latest/dg/infrastructure-security.html) |
+| INT-11, AWS End User Messaging Social | AWS describe TLS 1.2 en las comunicaciones con aplicaciones y Meta. Para la API indica TLS 1.2 o posterior como requisito de cliente. | Arquitectura y Notificaciones: precisar ambos tramos. Si el tramo exigido no se puede acreditar con TLS 1.3, proponer una alternativa o mantener explícita la brecha. [Cifrado en tránsito de AWS End User Messaging Social](https://docs.aws.amazon.com/social-messaging/latest/userguide/data-protection.html#data-encryption-in-transit) |
+| INT-15, telemetría existente | El Anexo 4-H identifica una API de solo lectura para M12. | M12: confirmar proveedor, versión de la API y TLS del extremo existente. |
+| Otras dependencias y enlaces internos | El T-11 incluye MDM y EDR. El Anexo 4-R describe HTTPS, AS2, mTLS e IPsec/IKE para los tramos de la solución. | Arquitectura: completar el inventario de extremos, incluir MDM y EDR, y registrar el protocolo aplicable. Separar los túneles IPsec/IKE de las sesiones TLS que transporten. |
+
+### Expediente de certificaciones para el responsable del Sobre 1
+
+| Constancia | Referencia del expediente | Acción pendiente |
+|---|---|---|
+| ISO 9001:2015 | `SIM-CERT-9001-0001`, Bureau Veritas, noviembre de 2028 | Confirmar admisibilidad de la copia del ejercicio y cotejar titular, alcance y vigencia. |
+| ISO/IEC 27001:2022 | `SIM-CERT-27001-0002`, AENOR, enero de 2027 | Obtener el respaldo de renovación previsto en SD1. Si el evaluador admite la alternativa del art. 34.1, preparar el plan formal firmado, con hitos verificables dentro de los primeros doce meses del contrato, y registrar su aceptación para efectos del requisito correspondiente. |
+| CMMI-DEV nivel 3 | `SIM-CERT-CMMI-0003`, evaluación registrada hasta noviembre de 2026 | Pedir el resultado de la reevaluación. Si sigue pendiente, conservarla como antecedente de trayectoria en SD1 y distinguirla de las acreditaciones vigentes en el Sobre 1. |
+| ISO/IEC 20000-1:2018 | `SIM-CERT-20000-0004`, SGS, mayo de 2027 | Confirmar admisibilidad de la copia del ejercicio y cotejar titular, alcance y vigencia. |
+
+El expediente debe registrar el código de verificación cuando lo emita el organismo o la constancia de que no corresponde. Las referencias `SIM-CERT` identifican las piezas del ejercicio. Fuentes: SD1, sección 1.4, y Sobre 1, Certificaciones del proponente.
+
+### Borrador del cuadrante B-02 para Operación
+
+Base de trabajo para el Líder de Operación/SRE. Las dedicaciones precargadas son las declaradas por fase en el T-8. Para cada persona asignada a guardia, consignar tecnología, puesto, fecha y horario, titular, suplente, competencia, dedicación imputada y canal de escalamiento.
+
+| Puesto o guardia | Cobertura a cargar | Responsables o plazas disponibles | Dato pendiente |
+|---|---|---|---|
+| Gestión de Operación y escalamiento SRE | M21–M56, con guardia L2/L3 para incidentes críticos y altos según SD10 | Guillermo Castillo, líder, 100 % en Operación. | Titulares y suplentes de guardia de plataforma, nube y borde por turno. |
+| NOC y redes | Supervisión continua y dos posiciones de atención de mesa de 20:00 a 22:00 de lunes a sábado | Ocho plazas previstas para el perfil NOC. | Nombres y relevos por puesto. Mantener la supervisión activa durante la atención de mesa. |
+| SOC y seguridad | Supervisión continua desde M13. Validar cobertura antes del primer turno. | Álvaro Catalán, responsable, 5 % en Operación. Seis plazas de analista SOC. | Titulares, suplentes y responsables de guardia por turno de SOC, con dedicación individual. |
+| Mesa N1 | 04:00–20:00 lunes a sábado. En septiembre y diciembre se agrega la atención nocturna y dominical del SD10. | Trece plazas en el modelo, sujetas al calendario de cada mes. | Titulares, suplentes y distribución de la hora cargada, valle y extensiones del período de mayor demanda. |
+| Aplicaciones e integraciones | Escalamiento L2/L3, incluida la ventana fuera de horario para incidentes críticos y altos | Tomás Pérez, líder de Desarrollo, 15 % en Operación. | Titulares y suplentes por aplicación o integración, incluidos ERP/DTE, con canal y dedicación confirmados. |
+
+| Comprobación de Mesa N1 | Horas-posición de mesa | Capacidad agregada | Comprobación por turno pendiente |
+|---|---:|---:|---|
+| Mes ordinario M21 | 26 días × (7 puestos en la hora cargada + 15 h × 2 en valle) = 962 HH | 8 × 128 = 1.024 HH | Cubrir hora cargada y valle y comprobar el traspaso a NOC a las 20:00. |
+| Septiembre de 2029, M32 | 25 días × (52 HH diurnas + 6 HH nocturnas) + 5 domingos × 24 HH = 1.570 HH | 13 × 128 = 1.664 HH | Cargar turno nocturno, domingos, grupo de valle y relevos. Si la dotación base no alcanza en una franja, aplicar el proceso de evaluación de refuerzo del SD10. |
+
+Los márgenes agregados de 62 y 94 HH, respectivamente, se comprueban contra descanso, capacitación, simultaneidad, dedicación individual y relevos. Las horas-posición de NOC y SOC se cotejan por separado. Fuentes: SD10, sección 10.1 y Anexos 10.A y 10.D, B-02. T-8, sección 1. T-15, secciones 4 y 5.7. Modelo financiero, hojas «COSTOS HH - SUELDOS» y «HH POR ROL Y MES».
+
+### Registro de cierre
+
+Al recibir cada respuesta, guardar fecha, responsable, fuente y ubicación de la evidencia. Incorporarla en la rama de corrección del SD1, SD4 o SD10 según corresponda. Cambiar el estado en T-12 y T-13 únicamente cuando el respaldo cubra el criterio completo. Al regenerar el T-13, verificar las 653 filas y actualizar el recuento y los PDF. RT-15.08 ya figura como «Cumple» en los dos formularios.
+
+## SD3-04 — Pruebas y criterios del T-12
+
+Las dos partes del formulario incorporan «Prueba prevista o evidencia» antes del criterio. La columna identifica el caso o rango del T-13, el respaldo documental cuando corresponde y la remisión de los nueve alias. Las 22 filas «No cumple» figuran sin prueba prevista. La revisión reemplaza 336 frases genéricas por condiciones comprobables de las Bases y del caso, y explicita el alcance de las filas parciales. Los estados de la oferta se cotejan con la evidencia de ejecución.
+
+| Fila o grupo | Comprobación específica pendiente |
+|---|---|
+| RT-03.24 | Contrastar la cobertura predictiva con la medición en las cámaras. |
+| RT-07.04 y RNF-20.06 | Registrar el resultado para el escenario residual AL-DR-01. |
+| RT-08.12 y RNF-23.02 | Completar las fichas de compra y verificar el resguardo del PAX A920 Pro. |
+| RT-11.04 | Acreditar el plazo de remediación si el cambio de emergencia queda sin autorización durante congelamiento. |
+| RT-16.18 | Comprobar la verificación de firma tras el vencimiento del certificado con el sello de tiempo previsto. |
+| RT-16.23 y RF-18.03 | Obtener del proveedor evidencia de apertura por SMS si ofrece ese evento. |
+| Punto 4 | Completar TLS por enlace, constancias del Sobre 1 y cuadrante B-02 según el registro anterior. |
 
 ## Estados y alcances
 
