@@ -5,8 +5,8 @@ Este registro reúne las dependencias vigentes para la rama de corrección del S
 ## Punto 4: seguridad, certificaciones y operación
 
 - RT-15.08 figura como «Cumple» en T-12 y T-13. El cotejo documental del T-8 y los Anexos 12.B a 12.D de SD12 (rama de corrección, `69a17f01`) vincula las nueve personas con credenciales a su cargo, perfil, dedicación declarada y período. El décimo integrante, Rodrigo Valdés, figura asignado a Integración sin certificación exigida. Se conserva RT-15.08/P01 como prueba prevista.
-- RNF-14.01, RT-11.08, RT-15.07 y RT-21.03 figuran como parciales en ambos formularios. El T-13, sección 8.2, precisa las verificaciones previstas. Para cerrar RT-21.03 se requiere la validación del cuadrante nominal del Anexo 10.D, B-02, que ya distingue responsables de coordinación y puestos de guardia. RT-21.03 remite a 10.1.1, 10.1.2 y 10.1.4 del T-14.
-- La matriz T-13 vigente se genera desde la revisión SD3 `2535c8ed`. RNF-14.01 publica en su ficha individual el criterio normativo del catálogo y la aceptación por tramo del T-12.
+- RNF-14.01, RT-11.08 y RT-21.03 figuran como parciales en ambos formularios. El T-13, sección 8.2, precisa las verificaciones previstas. Para cerrar RT-21.03 se requiere la validación del cuadrante nominal del Anexo 10.D, B-02, que ya distingue responsables de coordinación y puestos de guardia. RT-21.03 remite a 10.1.1, 10.1.2 y 10.1.4 del T-14.
+- La matriz T-13 vigente se genera desde la revisión SD3 `30f4b592`. RNF-14.01 publica en su ficha individual el criterio normativo del catálogo y la aceptación por tramo del T-12.
 
 ### Solicitud de aclaración al evaluador
 
@@ -15,7 +15,7 @@ Registro interno de coordinación. El T-20 fijó el período formal de consultas
 > Profesor, estamos cerrando la matriz T-12 de LafroX para el Caso 02, Logística, de la licitación TFEP-01/2026. Agradeceríamos su orientación sobre tres criterios de la entrega final.
 >
 > 1. Para RT-11.08 y RNF-14.01, el caso no documenta las interfaces del ERP de 2017. ¿Qué respaldo de diseño y prueba prevista admite para declarar TLS 1.3 cuando el enlace real no está disponible en el ejercicio? ¿Cómo debemos declarar un servicio de terceros cuya documentación contempla TLS 1.2?
-> 2. Para RT-15.07, las constancias del expediente académico están identificadas como simuladas. ¿Qué respaldo admite para la entrega final y cómo debemos declarar una certificación en reevaluación o con renovación previa al inicio contractual? Para ISO/IEC 27001, ¿cuándo corresponde documentar la alternativa de plan firmado con hitos verificables prevista en el artículo 34.1?
+> 2. Para el seguimiento de ISO/IEC 27001 al inicio contractual, ¿qué documento debe incorporarse si se recurre al plan firmado con hitos verificables del artículo 34.1?
 > 3. Para RT-21.03, el T-8 nomina a los responsables principales y el T-15 respalda las plazas y horas. ¿La entrega final requiere titulares y suplentes nominados en cada turno o admite formalizar las guardias pendientes en un hito? Si admite lo segundo, ¿qué datos se deben acreditar en la entrega?
 
 Fuentes de la consulta: Bases Administrativas, arts. 34.1 y 43 y Formulario T-20, actividades 4 y 5. Bases Técnicas Transversales, RT-11.08, RT-15.07 y RT-21.03. Caso 02, cap. 5. Aclaraciones generales, versión histórica `3dfe43de`, y aclaraciones del Informe 3, `2b04aaa7`.
@@ -37,14 +37,16 @@ El Anexo 4-H del SD4 identifica las interfaces y el Anexo 4-R contiene la polít
 | INT-15, telemetría existente | El Anexo 4-H identifica una API de solo lectura para M12. | M12: confirmar proveedor, versión de la API y TLS del extremo existente. |
 | Otras dependencias y enlaces internos | T-11 identifica Intune/Zebra, Falcon y GuardDuty. Microsoft publica los extremos de Intune. El Anexo 4-R documenta el transporte de los enlaces internos. [Extremos de Microsoft Intune](https://learn.microsoft.com/en-us/intune/fundamentals/endpoints) | Arquitectura: completar el inventario de extremos, incluir MDM y EDR, y registrar el protocolo aplicable. Separar los túneles IPsec/IKE de las sesiones TLS que transporten. |
 
-### Expediente de certificaciones para el responsable del Sobre 1
+### Expediente de certificaciones del Sobre 1
+
+RT-15.07 figura como «Cumple» con las constancias vigentes a la presentación de la oferta (25 de noviembre de 2026, T-20, actividad 12). El caso P01 conserva el cotejo documental previsto. La renovación de ISO/IEC 27001 se controla para el inicio del contrato en el seguimiento de RT-15.09.
 
 | Constancia | Referencia del expediente | Acción pendiente |
 |---|---|---|
-| ISO 9001:2015 | `SIM-CERT-9001-0001`, Bureau Veritas, noviembre de 2028 | Confirmar admisibilidad de la copia del ejercicio y cotejar titular, alcance y vigencia. |
+| ISO 9001:2015 | `SIM-CERT-9001-0001`, Bureau Veritas, noviembre de 2028 | Cotejar titular, alcance y vigencia a la fecha de la oferta. |
 | ISO/IEC 27001:2022 | `SIM-CERT-27001-0002`, AENOR, 22 de enero de 2027 | Obtener el respaldo de renovación previsto en SD1. Si el evaluador admite la alternativa del art. 34.1, preparar el plan formal firmado, con hitos verificables dentro de los primeros doce meses del contrato, y registrar su aceptación para efectos del requisito correspondiente. |
 | CMMI-DEV nivel 3 | `SIM-CERT-CMMI-0003`, evaluación registrada hasta noviembre de 2026 | Obtener el resultado de la reevaluación y su ADS, identificado en SD1, sección 1.4. Si sigue pendiente, conservarla como antecedente de trayectoria en SD1 y distinguirla de las acreditaciones vigentes en el Sobre 1. |
-| ISO/IEC 20000-1:2018 | `SIM-CERT-20000-0004`, SGS, mayo de 2027 | Confirmar admisibilidad de la copia del ejercicio y cotejar titular, alcance y vigencia. |
+| ISO/IEC 20000-1:2018 | `SIM-CERT-20000-0004`, SGS, mayo de 2027 | Cotejar titular, alcance y vigencia a la fecha de la oferta. |
 
 El expediente debe registrar el código de verificación cuando lo emita el organismo o la constancia de que no corresponde. Las referencias `SIM-CERT` identifican las piezas del ejercicio. Fuentes: SD1, sección 1.4, y Sobre 1, Certificaciones del proponente.
 
