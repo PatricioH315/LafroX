@@ -28,17 +28,22 @@ for stem in ("LAFROX-Subdocumento10", "LAFROX-Subdocumento10-Anexos"):
         stem, "Revisar valores monetarios en la oferta técnica"
     )
     full = normalize("\n".join(pages))
-    for term in ("Referencias", "Declaración de uso de IA", "Uso de IA por sección y anexo"):
-        assert normalize(term) in full, (stem, term)
+    assert normalize("Referencias") in full, (stem, "Referencias")
     assert normalize("El usuario autorizó") not in full
     assert normalize("por indicación del usuario") not in full
     assert normalize("aún en plantilla") not in full
     assert not re.search(r"tabla[\d.]+[—–-]?continuaci[oó]n", full), "Revisar tabla partida"
     ia = [p for p in pages if normalize("Uso de IA por sección y anexo") in normalize(p)
           and normalize("Herramienta") in normalize(p)]
-    assert len(ia) == 1, "La tabla de IA debe estar completa en una pagina"
-    for section in ("10.1", "10.2", "10.A", "10.B", "10.C", "10.D", "10.E"):
-        assert section in ia[0], section
+    if stem.endswith("Anexos"):
+        assert not ia, "La tabla de IA se incluye solo en el SD10 principal"
+        for term in ("Declaración de uso de IA", "Uso de IA por sección y anexo"):
+            assert normalize(term) not in full, (stem, term)
+    else:
+        assert normalize("Declaración de uso de IA") in full
+        assert len(ia) == 1, "La tabla de IA debe estar completa en una pagina"
+        for section in ("10.1", "10.2", "10.A", "10.B", "10.C", "10.D", "10.E"):
+            assert section in ia[0], section
     if not stem.endswith("Anexos"):
         assert normalize("Introducción a los Servicios") in full
         assert normalize("Hardware no crítico") in full
