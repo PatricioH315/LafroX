@@ -1,7 +1,7 @@
 {
-  "source_ref": "3f75cb946178b39743816e6e778a3614109bd341",
-  "source_commit": "3f75cb946178b39743816e6e778a3614109bd341",
-  "test_count": 1346,
+  "source_ref": "a0b4b35b9c104446a773bc9929df5a902eed9427",
+  "source_commit": "a0b4b35b9c104446a773bc9929df5a902eed9427",
+  "test_count": 1345,
   "counts": {
     "t12_rows": 653,
     "requirements": 644,
@@ -9,18 +9,18 @@
     "own": 270,
     "rt": 374,
     "contracts": 15,
-    "cases": 1346,
+    "cases": 1345,
     "priority": {
       "Alta": 157,
       "Crítica": 58,
       "Media": 55
     },
     "rt_state": {
-      "Cumple": 366,
+      "Cumple": 365,
       "Cumple parcialmente": 4,
-      "No cumple": 4
+      "No cumple": 5
     },
-    "rt_without_case": 4,
+    "rt_without_case": 5,
     "blocks": 26
   },
   "requirements": [
@@ -33,7 +33,7 @@
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-01.01",
-      "origin": "Caso, sección 4.1 (recepción física). Comparación con OC por SKU, alerta y cierre no bloqueante: definición de la propuesta en SD3, contrastada con SD4 4.1.4.8 y SD5 5.1.4.",
+      "origin": "Caso, secciones 4.1 y 9.4.",
       "criterion": "Por cada SKU se compara la cantidad recibida con la OC; cada discrepancia genera una alerta sin bloquear el cierre. El comparativo queda registrado y disponible en el módulo de calidad.",
       "verification": "Precondición y resultado esperado",
       "evidence": "RF-01.01/\\allowbreak{}P01--\\allowbreak{}P03",
@@ -3308,7 +3308,7 @@
       "table": "3.A.3",
       "source_id": "RF-17.09",
       "origin": "BTT, RT-16.19",
-      "criterion": "El administrador edita una plantilla y el usuario genera el documento en PDF, DOCX y XLSX. Los tres archivos reproducen los datos de la transacción.",
+      "criterion": "El usuario genera el documento en PDF, DOCX y XLSX y verifica los datos de la transacción en los tres formatos.",
       "verification": "Precondición y resultado esperado",
       "evidence": "RF-17.09/\\allowbreak{}P01--\\allowbreak{}P02",
       "cases": [
@@ -3430,7 +3430,7 @@
     },
     {
       "id": "RF-18.03",
-      "state": "Cumple parcialmente",
+      "state": "Cumple",
       "component": "INT-11 envía asíncronamente, reintenta y deduplica, y registra entrega y error. La apertura se registra cuando el proveedor o el portal la informa; en SMS, con la primera apertura del enlace corto al aviso en el portal, y sin ella queda NO\\_SOPORTADA.",
       "edt": "5.2.4",
       "priority": "Alta",
@@ -3438,9 +3438,9 @@
       "table": "3.A.3",
       "source_id": "RF-18.03",
       "origin": "BTT, RT-16.23",
-      "criterion": "El aviso se envía de forma asíncrona y se reintenta sin duplicados. Se registran entrega, apertura y error según el canal. En SMS se registra el clic del enlace y la lectura queda sin evidencia si el canal no la informa.",
+      "criterion": "La notificación es enviada y registrada, si falla, se reintenta según política configurada.",
       "verification": "Precondición y resultado esperado",
-      "evidence": "RF-18.03/\\allowbreak{}P01--\\allowbreak{}P03\\newline SMS: apertura del enlace al portal.",
+      "evidence": "RF-18.03/\\allowbreak{}P01--\\allowbreak{}P03\\newline Pendiente: El proveedor debe acreditar apertura de SMS si ese evento está disponible.",
       "cases": [
         "RF-18.03/P01",
         "RF-18.03/P02",
@@ -6617,7 +6617,7 @@
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-06.06",
-      "criterion": "El expediente de obra identifica la especificación técnica y coordinación de LafroX, y asigna la ejecución de la separación al CLIENTE.",
+      "criterion": "La obra civil de separación de las instalaciones es de cargo del CLIENTE; su especificación técnica y su coordinación son de cargo del PROPONENTE.",
       "verification": "Verificación del requisito y del alcance ofertado",
       "evidence": "RT-06.06/\\allowbreak{}P01",
       "cases": [
@@ -8298,7 +8298,7 @@
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-11.25",
-      "criterion": "El inventario de ambientes no productivos identifica conjuntos sintéticos o con tratamiento verificable. Se rechaza toda carga productiva sin el tratamiento exigido.",
+      "criterion": "Queda prohibido el uso de datos productivos reales en ambientes no productivos sin anonimización o seudonimización verificable.",
       "verification": "Verificación del requisito y del alcance ofertado",
       "evidence": "RT-11.25/\\allowbreak{}P01",
       "cases": [
@@ -9253,7 +9253,7 @@
       "id": "RT-16.14",
       "state": "Cumple",
       "component": "Motor de reglas del monolito Laravel 13 sobre Symfony ExpressionLanguage 7.4: las condiciones de los puntos de decisión implementados se guardan versionadas en el registro de parámetros, se aprueban por un segundo perfil y se evalúan en ejecución sin recompilar ni desplegar; la auditoría de cada transacción conserva regla, versión y resultado. Caso, cap. 15: POD articulado con la guía de despacho electrónica y el acuse del ERP para el receptor persona natural.",
-      "edt": "3.3.4, 4.3.3, 5.1.1",
+      "edt": "3.3.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
@@ -9332,13 +9332,13 @@
     {
       "id": "RT-16.19",
       "state": "Cumple",
-      "component": "El administrador del CLIENTE edita y versiona la plantilla. El servicio genera documentos con datos de la transacción en PDF, DOCX y XLSX.",
-      "edt": "3.3.6",
+      "component": "CLIENTE administra plantillas versionadas de avisos y comprobantes en Angular 22; Laravel 13 combina datos autorizados de pedido/entrega y descarga HTML abierto, reutilizando not\\_plantilla/cuerpo\\_ref.",
+      "edt": "5.2.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-16.19",
-      "criterion": "Editar una plantilla y generar el documento en PDF, DOCX y XLSX. Los tres archivos reproducen los datos de la misma transacción.",
+      "criterion": "La solución genera documentos a partir de plantillas administrables por el CLIENTE, con datos de la transacción y salida en formato abierto.",
       "verification": "Verificación del requisito y del alcance ofertado",
       "evidence": "RT-16.19/\\allowbreak{}P01",
       "cases": [
@@ -9395,32 +9395,32 @@
     },
     {
       "id": "RT-16.23",
-      "state": "Cumple parcialmente",
+      "state": "Cumple",
       "component": "INT-11 envía asíncronamente, reintenta y deduplica, y registra entrega y error. La apertura se registra cuando el proveedor o el portal la informa; en SMS, con la primera apertura del enlace corto al aviso en el portal, y sin ella queda NO\\_SOPORTADA.",
       "edt": "5.2.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-16.23",
-      "criterion": "Verificar envío asíncrono, reintento sin duplicados, entrega y error. Cotejar apertura informada por cada canal. En SMS, distinguir clic del enlace y ausencia de evidencia de lectura.",
+      "criterion": "Se verifica envío asíncrono, reintento ante falla, control de duplicados y registro de entrega, apertura y error por mensaje. Para SMS queda pendiente acreditar apertura cuando el proveedor no informa dicho evento.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-16.23/\\allowbreak{}P01\\newline SMS: apertura del enlace al portal.",
+      "evidence": "RT-16.23/\\allowbreak{}P01\\newline Pendiente: El proveedor debe acreditar apertura de SMS si ese evento está disponible.",
       "cases": [
         "RT-16.23/P01"
       ]
     },
     {
       "id": "RT-16.24",
-      "state": "Cumple",
-      "component": "Correo: Amazon SES; SMS: Amazon SNS; WhatsApp: Meta Cloud API; portal: LafroX. Oferta Económica E2 declara la proyección, la unidad de cobro y el tratamiento del variable por canal.",
+      "state": "Cumple parcialmente",
+      "component": "Correo: Amazon SES; SMS: Amazon SNS; WhatsApp: WhatsApp Cloud API de Meta; portal: LafroX, Angular 22/Laravel 13 en ECS Fargate N-04. Volumen conjunto: 2.800/5.200 avisos diarios. Pendiente conciliar la tarifa y el volumen específico de WhatsApp con la Oferta Económica.",
       "edt": "5.2.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-16.24",
-      "criterion": "Cotejar proveedor, volumen, unidad, costo unitario y tratamiento del variable de los cuatro canales con el cuadro de E2 y el cálculo mensual del modelo.",
+      "criterion": "La propuesta identifica el proveedor de cada canal, su costo unitario, su volumen proyectado y el tratamiento del costo variable en la Oferta Económica.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-16.24/\\allowbreak{}P01\\newline Oferta Económica E2, conciliación de avisos por canal.",
+      "evidence": "RT-16.24/\\allowbreak{}P01\\newline Respaldo: proveedores y volumetría conjunta (SD4 Anexos 4-H y 4-I)",
       "cases": [
         "RT-16.24/P01"
       ]
@@ -9491,14 +9491,14 @@
       "id": "RT-16.29",
       "state": "Cumple",
       "component": "Exportación de gran volumen como trabajo asíncrono, sesión disponible para otras operaciones autorizadas y aviso al completarse mediante el servicio de notificaciones existente; descarga bajo permisos del solicitante.",
-      "edt": "5.2.4",
+      "edt": "3.3.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-16.29",
-      "criterion": "Solicitar una exportación de gran volumen. La sesión permite otras operaciones mientras se procesa. Al concluir, se avisa al solicitante autorizado y este puede descargar el archivo.",
+      "criterion": "Las exportaciones de gran volumen se procesan de forma asíncrona, con notificación al completarse y sin bloquear la sesión.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-16.29/\\allowbreak{}P01\\newline EDT: 5.2.4 cubre el aviso. Falta el paquete de exportación asíncrona.",
+      "evidence": "RT-16.29/\\allowbreak{}P01",
       "cases": [
         "RT-16.29/P01"
       ]
@@ -9848,7 +9848,7 @@
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-18.09",
-      "criterion": "Cotejar D-09 y el inventario para verificar el alcance sin IA operativa. Cualquier modificación que incorpore IA debe conservar la responsabilidad del adjudicatario.",
+      "criterion": "La responsabilidad por los resultados de los componentes de inteligencia artificial recae íntegramente en el ADJUDICATARIO, conforme al Artículo 86° de las Bases Administrativas.",
       "verification": "Verificación del requisito y del alcance ofertado",
       "evidence": "RT-18.09/\\allowbreak{}P01",
       "cases": [
@@ -10336,7 +10336,7 @@
     {
       "id": "RT-21.12",
       "state": "No cumple",
-      "component": "SD10 ofrece jornadas de actualización y una base de conocimiento. El intercambio entre entidades y personas usuarias queda fuera del programa ofertado.",
+      "component": "No se oferta.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
@@ -11053,19 +11053,17 @@
     },
     {
       "id": "RT-25.10",
-      "state": "Cumple",
-      "component": "El Sobre 2 incluye un ZIP con el prototipo interactivo y recursos locales. En Edge se comprobó el recorrido completo sin red.",
-      "edt": "2.6.2",
+      "state": "No cumple",
+      "component": "No se oferta.",
+      "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-25.10",
-      "criterion": "Extraer el ZIP y abrir index.html en un navegador con la red bloqueada. Dos perfiles y los siete pasos se completan sin solicitudes HTTP ni errores de ejecución.",
+      "criterion": "Se valorará la posibilidad de exportar el prototipo a un documento interactivo para revisión sin conexión.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-25.10/\\allowbreak{}P01\\newline ZIP del Sobre 2; verificación de apertura local.",
-      "cases": [
-        "RT-25.10/P01"
-      ]
+      "evidence": "Sin prueba prevista",
+      "cases": []
     },
     {
       "id": "RT-26.01",
@@ -11076,7 +11074,7 @@
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-26.01",
-      "criterion": "Las cinco fichas del SD13 identifican capa, componente e interfaces. Cotejar con los entregables de cada cuenta de innovación.",
+      "criterion": "Cada innovación se ubica explícitamente en la arquitectura: qué capa la contiene, qué componentes la implementan y qué interfaces consume o expone.",
       "verification": "Verificación del requisito y del alcance ofertado",
       "evidence": "RT-26.01/\\allowbreak{}P01",
       "cases": [
@@ -11108,7 +11106,7 @@
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-26.03",
-      "criterion": "Cada innovación tecnológica identifica nivel, escala TRL y fuente APA 7 en su ficha T-19 y en el SD13.",
+      "criterion": "Las innovaciones de base tecnológica declaran el nivel de madurez de la tecnología con la escala utilizada y citan las fuentes en norma APA 7.ª edición.",
       "verification": "Verificación del requisito y del alcance ofertado",
       "evidence": "RT-26.03/\\allowbreak{}P01",
       "cases": [
