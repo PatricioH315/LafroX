@@ -182,3 +182,15 @@ Durante el push, GitHub avanzó a5f569ee6 (leyendas de fuente específicas). Se 
 
 
 Verificación final sobre5f569ee6: tres pasadas completas,172p, sólo p172 distinta por extracción textual; revisión visual final conforme. Sin errores, indefinidos, rerun ni desbordes. Anexos y T-11 permanecen exactamente como los publicó5f569ee6.
+
+
+## Declaración IA 4.3 — ajuste local del 24 de noviembre de 2026
+
+Por petición expresa del usuario se cambió únicamente el nivel en diagramas de 4.3 de Ninguno a Medio. Cuerpo recompilado con compilar.ps1 -SoloMain: 172 páginas, celda comprobada en página 169. No se cambiaron otras filas, niveles en texto ni revisiones humanas. Pendientes separados: incorporar la introducción a la declaración y conciliar la herramienta de asistencia del plano Figura 29 con su trazabilidad. No hay commit ni push de este ajuste.
+
+
+## Declaración IA — ampliación y rectificación autorizadas, 24 de noviembre de 2026
+
+La instrucción posterior del usuario sustituye Medio por Alto en diagramas de 4.3. Se incorpora Claude junto a OpenAI Codex y se precisa la asistencia en el plano. Añadida una fila para la introducción. El usuario confirmó a Alex Aravena como revisor real de la introducción y pidió adaptar la descripción; se consigna la revisión de la síntesis arquitectónica y su conexión con anexos y T-11. Se conservan las revisiones históricas y los niveles Ninguno de los anexos sin diagramas. Estos tres puntos de la tabla quedan corregidos localmente; la compilación y validación final se registran en el contexto de sesión. Sin commit ni push.
+
+Cierre de validación local: cuerpo final de 173 páginas, declaración IA en 169–173, columnas legibles, sin Overfull final ni referencias indefinidas; permanecen avisos de clase/ajuste vertical. Folios y destinos comprobados. Hash SHA-256: 24e1ab06df89c3963cb79ea9606cf7f8cac098e37b45bedc3864848fc477d528. No commit ni push.
