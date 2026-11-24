@@ -9,7 +9,7 @@ El presente documento recopila los listados detallados que sustentan el análisi
 A partir de la narrativa del caso, de las entrevistas a los actores clave (Bases Técnicas del caso, cap. 8, pp. 13--17) y de las Bases Técnicas Transversales, se identifican catorce familias funcionales prioritarias, presentadas en la Tabla~\ref{tab:2-A-1}, y cinco condiciones no funcionales rectoras. Los códigos \textbf{F-01 a F-14} identifican familias de síntesis de este anexo; el catálogo atómico y sus códigos RF/RNF se desarrollan en el Subdocumento 3 y en el Formulario T-12.
 
 \renewcommand{\thetable}{2.A.1}
-\begin{tablalafrox}{Catálogo consolidado de requerimientos funcionales del caso. Fuente: (Bases Técnicas del caso, caps. 9 y 18, pp. 18--19 y 34--35).}%
+\begin{tablalafrox}{Catálogo consolidado de requerimientos funcionales del caso. Fuente: elaboración propia de familias, prioridades y etapas a partir de las expectativas de negocio y los resultados de aceptación (Bases Técnicas del caso, capítulos 9 y 18, pp. 18--19 y 34--35).}%
   {tab:2-A-1}%
   {F{0.11} F{0.20} Y G{0.12} G{0.12}}%
   {\cab{Familia} & \cab{Nombre del Requerimiento} & \cab{Descripción Operativa y Criterio de Verificación} & \cab{Prioridad} & \cab{Etapa}}
@@ -32,7 +32,7 @@ A partir de la narrativa del caso, de las entrevistas a los actores clave (Bases
 La Tabla~\ref{tab:2-A-1} muestra cómo las catorce familias funcionales cubren de extremo a extremo el ciclo operacional y comercial de Distribuidora Puelche S.A.: captura de preventa en terreno, recepción con control de lotes y almacenamiento bajo FEFO, preparación nocturna por olas, transferencias en plataformas de cross-docking, monitoreo continuo de la cadena de frío, diagramación dinámica de rutas, entrega certificada con prueba electrónica, cuadratura de la recaudación en efectivo, trazabilidad sanitaria de retiro, autoatención de clientes, intercambio EDI con el canal moderno y modelación del costo de servir. Para garantizar la viabilidad de estas capacidades frente a las restricciones de conectividad e infraestructura descritas en el caso, la Tabla~\ref{tab:2-A-2} sintetiza los requerimientos no funcionales rectores que gobiernan la disponibilidad, sincronización, resiliencia desconectada, ciberseguridad y continuidad operativa del sistema.
 
 \renewcommand{\thetable}{2.A.2}
-\begin{tablalafrox}{Requerimientos no funcionales rectores del proyecto. Fuente: (Bases Administrativas, art. 78, p. 40; Bases Técnicas Transversales, caps. 3 y 7, pp. 8--9, 17--18; Bases Técnicas del caso, caps. 10 y 15, pp. 19--20, 26--27), ISO/IEC (2022) y Ley N.º 21.719 (2024), según se indica en cada fila.}%
+\begin{tablalafrox}{Requerimientos no funcionales rectores del proyecto. Fuente: elaboración propia a partir de los niveles de servicio (Bases Administrativas, art. 78, p. 40; Bases Técnicas Transversales, capítulo 7, pp. 17--18), la autonomía y sincronización (Bases Técnicas Transversales, capítulo 3, pp. 8--9; Bases Técnicas del caso, capítulos 10 y 15, pp. 19--20 y 26--27), y los criterios de seguridad y privacidad de ISO/IEC (2022) y la Ley N.º 21.719 (2024).}%
   {tab:2-A-2}%
   {F{0.13} F{0.16} Y F{0.27}}%
   {\cab{Código} & \cab{Dimensión de Calidad} & \cab{Criterio y Métrica de Aceptación} & \cab{Fuente}}
@@ -51,7 +51,7 @@ Los requerimientos no funcionales sintetizados en la Tabla~\ref{tab:2-A-2} fijan
 La Tabla 2.A.3 registra como supuestos de formulación las dieciséis decisiones que el numeral 16.1 del caso deja abiertas y que LafroX resuelve; el supuesto S-N responde a la decisión N (Bases Técnicas del caso, sección 16.1, pp. 28--29). Cada fila explicita la conducta adoptada, la consecuencia que asume el diseño, el efecto si el supuesto resulta falso y la instancia del CLIENTE que lo valida. La trazabilidad a requisitos detallados se desarrolla en el Subdocumento 3, Anexo 3.C.
 
 \renewcommand{\thetable}{2.A.3}
-\begin{tablalafrox}{Supuestos de formulación derivados de las decisiones abiertas del caso. Fuente: (Bases Técnicas del caso, sección 16.1, pp. 28--29).}%
+\begin{tablalafrox}{Supuestos de formulación derivados de las decisiones abiertas del caso. Fuente: elaboración propia de supuestos a partir de las decisiones abiertas (Bases Técnicas del caso, sección 16.1, pp. 28--29).}%
   {tab:2-A-3}%
   {F{0.08} Y F{0.27} F{0.18} F{0.16}}%
   {\cab{ID} & \cab{Supuesto adoptado} & \cab{Consecuencia asumida} & \cab{Si resulta falso} & \cab{Validación}}
@@ -76,7 +76,7 @@ La Tabla 2.A.3 registra como supuestos de formulación las dieciséis decisiones
 Además de las decisiones del caso, LafroX formula tres supuestos propios sobre el diagnóstico. Sostienen cifras e hipótesis del cuerpo de este subdocumento que el caso no permite confirmar.
 
 \renewcommand{\thetable}{2.A.4}
-\begin{tablalafrox}{Supuestos propios del diagnóstico. Fuente: (Bases Técnicas del caso, caps. 2, 4 y 7, pp. 4--12), según se indica en la columna Fundamento.}%
+\begin{tablalafrox}{Supuestos propios del diagnóstico. Fuente: elaboración propia de supuestos a partir de las cifras de entregas y reentregas, las condiciones de cross-docking y el registro de lotes (Bases Técnicas del caso, secciones 2.2, 2.3, 4.1 y 7.1 y capítulo 3).}%
   {tab:2-A-4}%
   {F{0.09} Y F{0.23} F{0.19} F{0.17}}%
   {\cab{ID} & \cab{Supuesto} & \cab{Fundamento} & \cab{Si resulta falso} & \cab{Validación}}
@@ -88,7 +88,7 @@ Además de las decisiones del caso, LafroX formula tres supuestos propios sobre 
 La Tabla 2.A.5 detalla las exclusiones explícitas de alcance que delimitan la responsabilidad contractual del proponente, garantizando la viabilidad del proyecto.
 
 \renewcommand{\thetable}{2.A.5}
-\begin{tablalafrox}{Exclusiones explícitas del alcance del proyecto. Fuente: (Bases Técnicas del caso, cap. 11, p. 20).}%
+\begin{tablalafrox}{Exclusiones explícitas del alcance del proyecto. Fuente: elaboración propia de las justificaciones y medidas de manejo a partir de las exclusiones (Bases Técnicas del caso, capítulo 11, p. 20).}%
   {tab:2-A-5}%
   {F{0.08} F{0.22} F{0.30} Y}%
   {\cab{N°} & \cab{Exclusión de Alcance} & \cab{Justificación Técnica y Contractual} & \cab{Manejo / Mitigación}}
@@ -106,7 +106,7 @@ La Tabla 2.A.5 detalla las exclusiones explícitas de alcance que delimitan la r
 La Tabla 2.A.6 reproduce las doce restricciones no negociables que condicionan la solución. No son supuestos ni exclusiones: su cumplimiento es obligatorio y debe demostrarse en arquitectura, plan de trabajo y pruebas.
 
 \renewcommand{\thetable}{2.A.6}
-\begin{tablalafrox}{Restricciones no negociables del caso. Fuente: (Bases Técnicas del caso, cap. 10, pp. 19--20).}%
+\begin{tablalafrox}{Restricciones no negociables del caso. Fuente: elaboración propia de las implicaciones para la propuesta a partir de las restricciones (Bases Técnicas del caso, capítulo 10, pp. 19--20).}%
   {tab:2-A-6}%
   {F{0.08} Y F{0.33}}%
   {\cab{N°} & \cab{Restricción} & \cab{Implicación para la propuesta}}
@@ -130,7 +130,7 @@ La Tabla 2.A.6 reproduce las doce restricciones no negociables que condicionan l
 La Tabla 2.A.7 presenta el catálogo nominal y extendido de los 19 actores que componen el ecosistema humano y operacional de Distribuidora Puelche S.A.
 
 \renewcommand{\thetable}{2.A.7}
-\begin{tablalafrox}{Catálogo nominal extendido de los 19 actores del ecosistema Puelche. Fuente: (Bases Técnicas del caso, caps. 2, 4, 8 y 13, pp. 4--9, 13--17 y 22--23).}%
+\begin{tablalafrox}{Catálogo nominal extendido de los 19 actores del ecosistema Puelche. Fuente: elaboración propia de la valoración y estrategia de participación a partir de los actores, procesos, entrevistas y prioridades (Bases Técnicas del caso, capítulos 2, 4, 8 y 13, pp. 4--9, 13--17 y 22--23).}%
   {tab:2-A-7}%
   {F{0.14} F{0.15} Y G{0.13} G{0.10} F{0.21}}%
   {\cab{Actor / Cargo} & \cab{Rol en el Ecosistema} & \cab{Ineficiencia que enfrenta en la situación actual} & \cab{Influencia} & \cab{Interés} & \cab{Estrategia de participación}}
@@ -158,7 +158,7 @@ La Tabla 2.A.7 presenta el catálogo nominal y extendido de los 19 actores que c
 La Tabla 2.A.8 resume los ocho sistemas y registros que operan actualmente en Distribuidora Puelche S.A., con el destino que el caso les asigna (Bases Técnicas del caso, cap. 5, p. 10).
 
 \renewcommand{\thetable}{2.A.8}
-\begin{tablalafrox}{Inventario de sistemas legados de Distribuidora Puelche S.A. Fuente: (Bases Técnicas del caso, cap. 5, p. 10).}%
+\begin{tablalafrox}{Inventario de sistemas legados de Distribuidora Puelche S.A. Fuente: elaboración propia a partir del inventario y destino de los sistemas existentes (Bases Técnicas del caso, capítulo 5, p. 10) y de la decisión abierta sobre el sistema de gestión de almacenes (Bases Técnicas del caso, sección 16.1).}%
   {tab:2-A-8}%
   {F{0.14} F{0.15} G{0.10} Y F{0.22}}%
   {\cab{Sistema / Aplicación} & \cab{Tipo} & \cab{Año de inicio} & \cab{Estado operacional y deficiencias} & \cab{Destino según el caso}}
