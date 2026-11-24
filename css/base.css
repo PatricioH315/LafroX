@@ -162,7 +162,7 @@ hr { border: 0; border-top: 1px solid var(--c-line-soft); margin: var(--sp-5) 0;
 
 /* ---------- Layout público ---------- */
 .public-top { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; gap: var(--sp-4); padding: var(--sp-3) var(--sp-6); background: color-mix(in srgb, var(--c-surface) 94%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--c-line-soft); }
-.public-top .brand { display: flex; align-items: center; gap: var(--sp-3); text-decoration: none; color: var(--c-ink); }
+.public-top .brand { display: flex; align-items: center; gap: var(--sp-3); text-decoration: none; color: var(--c-ink); min-height: 44px; }
 .public-top .brand-sub { color: var(--c-gray); }
 .public-top .menu-toggle { display: none; }
 .public-nav { display: flex; gap: var(--sp-1); margin-left: var(--sp-5); }

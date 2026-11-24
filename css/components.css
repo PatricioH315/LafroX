@@ -464,6 +464,8 @@ kbd { font-family: var(--font-mono); font-size: 12px; padding: 1px 6px; border: 
 .chart .clickable { cursor: pointer; }
 .chart .clickable:hover { opacity: 0.8; }
 .chart [tabindex]:focus-visible { outline: 3px solid var(--c-ink); outline-offset: 2px; }
+.table-link { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
+.chart .chart-hit { cursor: pointer; fill: transparent; pointer-events: all; }
 .chart .scatter-hit { cursor: pointer; fill: transparent; stroke: transparent; stroke-width: 44px; pointer-events: all; }
 .chart-tip { position: fixed; z-index: 120; pointer-events: none; padding: 6px 10px; border-radius: 6px; background: var(--c-ink); color: var(--c-surface); font-size: var(--fs-xs); box-shadow: var(--shadow-2); transform: translate(-50%, calc(-100% - 10px)); white-space: nowrap; }
 

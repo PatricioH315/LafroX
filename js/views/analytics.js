@@ -101,7 +101,7 @@
       { title: 'OTIF y fill rate por día', labels: ['Día', 'OTIF (%)', 'Fill rate (%)'],
         data: dates.map(([d], i) => [d, otif[i], fill[i]]),
         graphic: C.line(datesLabels, [{ name: 'OTIF', values: otif }, { name: 'Fill rate', values: fill }], { unit: '%', label: 'OTIF y fill rate por día' }) + C.legend([{ label: 'OTIF' }, { label: 'Fill rate' }]) },
-      { title: 'OTIF por ruta', labels: ['Ruta', 'OTIF (%)'], data: routeValues.map((r) => [r.label, r.value]),
+      { title: 'OTIF por ruta', labels: ['Ruta', 'OTIF (%)'], data: routeValues.map((r) => [r.label, r.value]), links: routeValues.map((r) => r.drill),
         graphic: C.bar(routeValues, { unit: '%', label: 'OTIF por ruta' }) },
       { title: 'Resultado del reparto', labels: ['Estado', 'Pedidos'], data: statusValues.map((r) => [r.label, r.value]),
         graphic: '<div class="row">' + C.donut(statusValues, { center: String(rows.length), centerSub: 'pedidos', label: 'Resultado del reparto' }) + C.legend(statusValues) + '</div>' },
@@ -179,7 +179,7 @@
         <p id="an-schedule-status" class="small muted" role="status"></p>
         <p id="an-summary" role="status" style="margin-top:var(--sp-4)">${rows.length} pedidos · ${span(f)}</p>
         ${rows.length ? `<section class="grid kpi-grid" aria-label="Indicadores principales" style="margin-bottom:var(--sp-5)">${kpis.map((k) => `<div class="kpi-with-help"><a class="card card-link kpi" href="${href('/analitica/' + k.id, f)}"><span class="label">${esc(k.label)}</span><span class="value">${valueText(k, metrics[k.id](rows))}</span><span class="meta">Ver detalle por ruta</span></a><div class="kpi-help">${L.tip(k.desc)}</div></div>`).join('')}</section>
-        <div class="grid grid-2">${charts.map((c) => `<section class="card"><h2>${esc(c.title)}</h2>${c.graphic}${L.accordionHtml('Ver datos en tabla', C.table(c.labels, c.data))}</section>`).join('')}</div>` : empty()}`;
+        <div class="grid grid-2">${charts.map((c) => `<section class="card"><h2>${esc(c.title)}</h2>${c.graphic}${L.accordionHtml('Ver datos en tabla', C.table(c.labels, c.data, c.links))}</section>`).join('')}</div>` : empty()}`;
     },
     mount: (root, _, q) => {
       const form = $('#an-filters', root), f = filters(q), rows = select(f);

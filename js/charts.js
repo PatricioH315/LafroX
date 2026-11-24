@@ -51,6 +51,7 @@
         const x = pad.l + i * bw + bw * 0.18;
         const bh = h - pad.b - y(d.value);
         const fill = d.color || (highlight != null ? (i === highlight ? C(0) : 'var(--chart-5)') : color || C(0));
+        if (d.drill) g += `<rect class="chart-hit" x="${pad.l + i * bw}" y="${pad.t}" width="${bw}" height="${h - pad.t - pad.b}" data-drill="${esc(d.drill)}" aria-hidden="true"/>`;
         g += `<rect x="${x}" y="${y(d.value)}" width="${bw * 0.64}" height="${Math.max(0, bh)}" rx="3" fill="${fill}" data-tip="${esc(d.label)}: ${fmtV(d.value, unit)}" ${focusable(d.drill, `${d.label}: ${fmtV(d.value, unit)}`)}><animate attributeName="height" from="0" to="${Math.max(0, bh)}" dur="0.5s" fill="freeze"/><animate attributeName="y" from="${h - pad.b}" to="${y(d.value)}" dur="0.5s" fill="freeze"/></rect>`;
         g += `<text x="${x + bw * 0.32}" y="${h - pad.b + 18}" text-anchor="middle">${esc(d.short || d.label)}</text>`;
       });
@@ -193,8 +194,9 @@
     },
 
     // Tabla accesible equivalente al gráfico
-    table(headers, rows) {
-      return `<div class="table-wrap"><table class="table"><thead><tr>${headers.map((h) => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    // links: destino opcional por fila; la primera celda enlaza al mismo detalle que el gráfico
+    table(headers, rows, links) {
+      return `<div class="table-wrap"><table class="table"><thead><tr>${headers.map((h) => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map((r, i) => `<tr>${r.map((c, j) => `<td>${j === 0 && links?.[i] ? `<a class="table-link" href="#${esc(links[i])}">${esc(c)}</a>` : esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
     }
   };
 
