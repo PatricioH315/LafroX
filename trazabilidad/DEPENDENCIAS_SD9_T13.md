@@ -1,12 +1,12 @@
 # Ajustes que debe incorporar el T-13 del SD9
 
-Esta lista identifica cambios para la rama `LafroX-Subdoc9-LateX-corrigiendo`. No modifica esa rama ni representa pruebas ejecutadas. El contraste usa la matriz T-13 del commit `0c57a4bb`, el T-14 del SD7 `68669bef`, el SD4 `69c9a879` y el T-12 de esta carpeta; antes de regenerar debe fijarse el commit definitivo del SD3. Los cambios de SD4 desde `2d508f46` afectan referencias, foliación y herramientas de comprobación; no convierten la lectura preliminar en un cotejo semántico completo. Se incorporó en RT-21.21 la actualización remota del SD3 `40d415db`, coincidente con la nueva matriz T-13 y el resumen de T-15.
+Este registro reúne las dependencias vigentes para la rama de corrección del SD9 y el historial de contrastes. El cotejo vigente identifica sus fuentes en la sección SD3-04. El primer corte comparó el T-13 `0c57a4bb`, el T-14 `68669bef` y el SD4 `69c9a879` con el T-12 de entonces. El registro documenta comprobaciones de trazabilidad y pruebas previstas.
 
 ## Punto 4: seguridad, certificaciones y operación
 
 - RT-15.08 figura como «Cumple» en T-12 y T-13. La verificación prevista coteja cargo, credencial, dedicación por fase y meses de participación por persona entre T-8, sección 1, y los Anexos 12.B a 12.D.
-- RNF-14.01, RT-11.08, RT-15.07 y RT-21.03 figuran como parciales en ambos formularios. El T-13, sección 8.2, precisa las verificaciones previstas. Para el cierre se requiere confirmación de TLS por enlace, las constancias admitidas por el ejercicio y el cuadrante nominal del Anexo 10.D, B-02. RT-21.03 remite a 10.1.1, 10.1.2 y 10.1.4 del T-14.
-- La matriz T-13 vigente se genera desde la revisión SD3 0167f99d.
+- RNF-14.01, RT-11.08, RT-15.07 y RT-21.03 figuran como parciales en ambos formularios. El T-13, sección 8.2, precisa las verificaciones previstas. Para cerrar RT-21.03 se requiere la validación del cuadrante nominal del Anexo 10.D, B-02, que ya distingue responsables de coordinación y puestos de guardia. RT-21.03 remite a 10.1.1, 10.1.2 y 10.1.4 del T-14.
+- La matriz T-13 vigente se genera desde la revisión SD3 `98519867`.
 
 ### Solicitud de aclaración al evaluador
 
@@ -48,24 +48,15 @@ El Anexo 4-H del SD4 identifica las interfaces y el Anexo 4-R define la polític
 
 El expediente debe registrar el código de verificación cuando lo emita el organismo o la constancia de que no corresponde. Las referencias `SIM-CERT` identifican las piezas del ejercicio. Fuentes: SD1, sección 1.4, y Sobre 1, Certificaciones del proponente.
 
-### Borrador del cuadrante B-02 para Operación
+### SD3-17 — Cuadrante B-02 de Operación
 
-Base de trabajo para el Líder de Operación/SRE. Las dedicaciones precargadas son las declaradas por fase en el T-8. Para cada persona asignada a guardia, consignar tecnología, puesto, fecha y horario, titular, suplente, competencia, dedicación imputada y canal de escalamiento.
+El Anexo 10.D, B-02 del SD10 recoge las seis nominaciones y dedicaciones de T-8 y siete filas de cobertura por tecnología. El SD12, sección 12.1.5, aporta perfiles de suplencia. El T-15 asigna 0 HH de Operación al perfil 12S, suplente propuesto de Integración. Si se utiliza ese perfil en M21–M56, queda por conciliar su dedicación o designar otra suplencia respaldada. Las asignaciones individuales, la fecha de confirmación y su respaldo figuran pendientes.
 
-| Puesto o guardia | Cobertura a cargar | Responsables o plazas disponibles | Dato pendiente |
-|---|---|---|---|
-| Gestión de Operación y escalamiento SRE | M21–M56, con guardia L2/L3 para incidentes críticos y altos según SD10 | Guillermo Castillo, líder, 100 % en Operación. | Titulares y suplentes de guardia de plataforma, nube y borde por turno. |
-| NOC y redes | Supervisión continua y dos posiciones de atención de mesa de 20:00 a 22:00 de lunes a sábado | Ocho plazas previstas para el perfil NOC. | Nombres y relevos por puesto. Mantener la supervisión activa durante la atención de mesa. |
-| SOC y seguridad | Supervisión continua desde M13. Validar cobertura antes del primer turno. | Álvaro Catalán, responsable, 5 % en Operación. Seis plazas de analista SOC. | Titulares, suplentes y responsables de guardia por turno de SOC, con dedicación individual. |
-| Mesa N1 | 04:00–20:00 lunes a sábado. En septiembre y diciembre se agrega la atención nocturna y dominical del SD10. | Trece plazas en el modelo, sujetas al calendario de cada mes. | Titulares, suplentes y distribución de la hora cargada, valle y extensiones del período de mayor demanda. |
-| Aplicaciones e integraciones | Escalamiento L2/L3, incluida la ventana fuera de horario para incidentes críticos y altos | Tomás Pérez, líder de Desarrollo, 15 % en Operación. | Titulares y suplentes por aplicación o integración, incluidos ERP/DTE, con canal y dedicación confirmados. |
+**Solicitud de datos para Guillermo Castillo**
 
-| Comprobación de Mesa N1 | Horas-posición de mesa | Capacidad agregada | Comprobación por turno pendiente |
-|---|---:|---:|---|
-| Mes ordinario M21 | 26 días × (7 puestos en la hora cargada + 15 h × 2 en valle) = 962 HH | 8 × 128 = 1.024 HH | Cubrir hora cargada y valle y comprobar el traspaso a NOC a las 20:00. |
-| Septiembre de 2029, M32 | 25 días × (52 HH diurnas + 6 HH nocturnas) + 5 domingos × 24 HH = 1.570 HH | 13 × 128 = 1.664 HH | Cargar turno nocturno, domingos, grupo de valle y relevos. Si la dotación base no alcanza en una franja, aplicar el proceso de evaluación de refuerzo del SD10. |
+> Guillermo, estamos completando el Anexo 10.D, B-02 para cerrar SD3-17. ¿Puedes confirmar, para plataforma y nube, redes/NOC, seguridad/SOC, aplicaciones, datos, integraciones críticas y Mesa N1, quién será titular y suplente, qué competencia respalda cada asignación, en qué turno o ventana y período actuará, qué HH o porcentaje compromete y cuál será su canal de escalamiento? Necesitamos contrastar las asignaciones con T-8 y T-15, en especial el arranque del SOC en M13, el relevo de Mesa a NOC de 20:00 a 22:00 y los cuadrantes de M21 y M32. Por favor indica la fecha de validación y el respaldo de los responsables de cada área.
 
-Los márgenes agregados de 62 y 94 HH, respectivamente, se comprueban contra descanso, capacitación, simultaneidad, dedicación individual y relevos. Las horas-posición de NOC y SOC se cotejan por separado. Fuentes: SD10, sección 10.1 y Anexos 10.A y 10.D, B-02. T-8, sección 1. T-15, secciones 4 y 5.7. Modelo financiero, hojas «COSTOS HH - SUELDOS» y «HH POR ROL Y MES».
+RT-21.03 y RT-21.03/P01 remiten al cuadrante B-02. Registrar validación con fecha, responsable, cobertura verificada y ubicación del respaldo. Conservar «Cumple parcialmente» mientras falten las asignaciones o su confirmación.
 
 ### Registro de cierre
 
@@ -85,7 +76,28 @@ Las dos partes del formulario incorporan «Prueba prevista o evidencia» antes d
 | RT-16.23 y RF-18.03 | Obtener del proveedor evidencia de apertura por SMS si ofrece ese evento. |
 | Punto 4 | Completar TLS por enlace, constancias del Sobre 1 y cuadrante B-02 según el registro anterior. |
 
-## Estados y alcances
+### Cotejo vigente con SD9 y SD7
+
+El T-12 `0167f99d`, el T-13 `a85b1dac` y el diccionario del T-14 `b3113e46` son las fuentes de este cotejo. El verificador confirma 653 IDs, 644 fichas, nueve alias, 1.223 casos por requisito y 105 por contrato. Los estados y códigos EDT coinciden entre formularios. La coincidencia del código EDT no acredita por sí sola que el paquete cubra todas las condiciones.
+
+| Elemento | Acción pendiente |
+|---|---|
+| RF-17.09 | Incorporar al criterio del T-13 la edición de plantillas por el administrador, ya exigida por T-12 y el paquete 3.3.6. Mantener la generación y verificación en los tres formatos. |
+| RF-18.03 | Incorporar al criterio del T-13 el registro de entrega, apertura y error. Verificar los estados según el canal y consignar la limitación de apertura de SMS. |
+| RNF-14.01 y SD3-15 | Explicitar la excepción condicionada del ERP y los terceros en el criterio individual del T-13. Completar la confirmación y, si corresponde, acordar la transición de los enlaces antes de cerrar SD3-15. |
+| RT-06.06, RT-11.25 y RT-18.09 | Describir en el criterio el documento o resultado que se comprobará. Ahora las tres filas reproducen su descripción. |
+| RT-16.19 | El T-12 cita 5.2.4, cuyo entregable es la integración de avisos. Contrastar el requisito de plantillas con 3.3.6 y conciliar el alcance de formatos con RF-17.09. |
+| RT-16.29 | El T-12 cita 3.3.2, cuyo entregable es auditoría de stock, lotes y cobros. Identificar el paquete que cubre la exportación asíncrona y su aviso sin bloquear la sesión. |
+| RT-16.14 | Contrastar 3.3.4 para el motor de reglas y 4.3.3/5.1.1 para la relación entre prueba de entrega, guía y acuse. Separar las dos verificaciones en la ficha. |
+| RT-26.01 y RT-26.03 | Trazar arquitectura y madurez a entregables o paquetes hoja. La referencia vigente identifica las cuentas 7.1 a 7.5. |
+
+La matriz del SD3 incorpora las 17 observaciones del cuadro general del Informe 2 en `3201afc1`. SD3-16 está corregida en RT-15.04, que declara PUE e intensidad de carbono. SD3-17 sigue parcial hasta formalizar el cuadrante B-02. SD13-02 requiere alinear el texto de la matriz general con el T-12 y el SD13, que distinguen el modelo de RT-05.30 del aporte operacional de INN-03.
+
+## Historial de cotejos anteriores
+
+Los resultados siguientes corresponden a las instantáneas indicadas en el encabezado del documento. Las diferencias vigentes se registran en el cotejo anterior.
+
+### Estados y alcances
 
 Actualizar de «Cumple» a «Cumple parcialmente» las fichas siguientes, conservando el detalle de la parte cubierta y de la brecha:
 
@@ -99,7 +111,7 @@ Actualizar de «Cumple» a «Cumple parcialmente» las fichas siguientes, conser
 
 En el T-13 contrastado las nueve fichas todavía declaran «Cumple». Su procedimiento de prueba debe verificar tanto lo ofrecido como la limitación, sin presentar el requisito íntegro como aprobado. La matriz T-13 contiene 22 fichas parciales mientras su texto introductorio indica 18; T-12 contiene 31 filas parciales.
 
-## Origen y alias
+### Origen y alias
 
 - Corregir en T-13 la transcripción de RT-07.09: las Bases y T-12 indican 3-2-1-1-0, no 3-2-1-0. Las 374 exigencias transversales y los 26 complementos del Caso coinciden en texto normalizado con las fuentes después de ese ajuste; la comparación textual no certifica la solución ni la prueba.
 - Actualizar el origen de RF-09.09: capítulo 12 del Caso, no sección 12.
@@ -107,7 +119,7 @@ En el T-13 contrastado las nueve fichas todavía declaran «Cumple». Su procedi
 - Declarar los requisitos absorbentes de RF-19.01 a RF-19.05: RT-11.03, RT-11.05, RT-11.13, RT-11.18 y RT-11.19, respectivamente. Mantener cero casos adicionales y seguir la prueba de la fila absorbente.
 - Mantener los otros cuatro alias y su destino conforme al Anexo 3.A.5a; distinguir el RT-03.13 del Caso de los códigos transversales.
 
-## Componentes, paquetes y pruebas
+### Componentes, paquetes y pruebas
 
 - Conciliar RF-01.09: T-12 distingue el evento `RecepcionConfirmada` que alimenta M2 de la solicitud al ERP encolada y procesada por INT-06/ACL con reintento automático. Verificar además que el paquete de integración y los casos previstos cubran el intercambio y la caída del ERP.
 - Actualizar los 62 criterios de los catálogos RF modificados en SD3. Sus identificadores individuales aparecen en `auditoria_pendientes_sd3.csv` con `criterio_coincide_catalogo=False`; no se consideran diferencias de contenido las de mera puntuación o formato. Incorporar los cambios de componentes y referencias del mismo inventario y regenerarlo desde el SD3 definitivo.
