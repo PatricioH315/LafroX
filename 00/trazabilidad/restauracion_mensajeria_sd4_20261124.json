@@ -1,0 +1,30 @@
+{
+  "proyecto": "LafroX",
+  "fecha": "2026-11-24",
+  "alcance": "Solo SD4",
+  "accion": "Deshacer únicamente la retirada de la integración de mensajería que el usuario confirmó vigente.",
+  "version_restaurada": "fa82fd1e6421028c61ef33ef6222d08e2ae80ce9",
+  "proveedor": "WhatsApp Cloud API de Meta",
+  "transporte_ofertado": "TLS 1.3 por tramo según el Anexo 4-R; validación de implementación prevista en T-13.",
+  "criterio_anterior_eliminar_menciones": "Revocado por el usuario.",
+  "fuentes_restauradas": [
+    "04/anexos/logica/partes/09_anexo_4_1_h_catalogo_de_interfaces_externas.tex",
+    "04/anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.tex",
+    "04/anexos/logica/partes/16_referencias.tex",
+    "04/anexos/logica/partes/19_anexo_4_1_p_tecnologias_soporte.tex",
+    "04/anexos/logica/partes/21_anexo_4_1_r_controles_seguridad.tex",
+    "04/partes/4.1_logica/02_especificaciones_tecnologias_de_software_a_utilizar.tex",
+    "04/partes/4.1_logica/04_capas_de_la_arquitectura.tex",
+    "04/partes/4.1_logica/05_modulos_funcionales_y_limites_de_contexto.tex",
+    "04/partes/4.1_logica/07_catalogo_de_interfaces.tex",
+    "04/partes/4.2_fisica/02_c_conexiones.tex",
+    "04/formularios/T11/15_anexo_t11.tex"
+  ],
+  "ajustes_de_margenes_conservados": true,
+  "SD10_modificado": false,
+  "ensayos_reales_atribuidos": false,
+  "control_historico_inaplicable": {
+    "ruta": "SD10/verificacion/verificar_canonicos_sd4_sd10.py",
+    "motivo": "La prohibición de menciones y la selección del proveedor AWS de ese control corresponden a la instrucción anterior, revocada para SD4."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "proyecto": "LafroX",
+  "passed": true,
+  "integracion_restaurada": "WhatsApp Cloud API de Meta",
+  "counts": {
+    "pages": {
+      "LAFROX-Subdocumento4.pdf": 172,
+      "LAFROX-Subdocumento4-Anexos.pdf": 158,
+      "LAFROX-Formulario-T-11.pdf": 51
+    },
+    "internal_links": 496,
+    "cross_pdf_links": 44,
+    "t12_page_citations": 0,
+    "bibliography_citations": 196,
+    "source_references": 235
+  },
+  "errors": [],
+  "ensayos_reales_atribuidos": false
+}

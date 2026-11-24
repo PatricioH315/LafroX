@@ -1,0 +1,31 @@
+{
+  "proyecto": "LafroX",
+  "fecha": "2026-11-24",
+  "alcance": [
+    "SD4",
+    "SD10"
+  ],
+  "canonicos": {
+    "T12_RT_16_20": "efd3af3e41c21925fab729a53878c4a8807ee4c6",
+    "T13_RT_16_20": "b481b9e5f4e7433e33f838c4883811c0ef5d20cb",
+    "T15_perfil_24": "b3113e469ef66caa15094aea09541d91aaa973f1",
+    "E2_seccion_2_6": "12de6ceb21faa5f0cb243ac1857c82e71a4dadb0"
+  },
+  "proveedor_mensajeria_instantanea": "AWS End User Messaging Social",
+  "gerente_HH_operacion": 4596,
+  "periodo_operacion_meses": [
+    21,
+    56
+  ],
+  "promedio_HH_mes": "127,67",
+  "referencias_SD10": {
+    "dotacion_NOC": "SD4, Anexo 4-W.7",
+    "guias": "SD10, Anexo 10.C",
+    "cambios_y_despliegues": "SD4, apartado 4.2.4.1.4"
+  },
+  "horas_adicionales_incorporadas": 0,
+  "otros_subdocumentos_modificados": false,
+  "compatibilidad_TLS": "No acreditada para todo el recorrido administrado. Se conserva CD-TLS y no se rebaja RT-11.08.",
+  "pruebas_reales_ejecutadas": false,
+  "estado_mensajeria_SD4": "Registro histórico: sustituido por restauracion_mensajeria_sd4_20261124.json tras la rectificación del usuario."
+}

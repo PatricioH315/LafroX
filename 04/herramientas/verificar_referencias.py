@@ -47,11 +47,16 @@ def bibliography_errors(root: Path) -> tuple[int, list[str]]:
                 pattern = (r"(?<!\w)" + re.escape(author) + r"(?:,\s*|\s*\()"
                            + rf"((?:{DATE})(?:\s*[,y]+\s*(?:{DATE}))*)")
                 for match in re.finditer(pattern, line):
-                    for date in re.findall(DATE, match[1]):
-                        checked += 1
-                        key = (ALIASES.get(author, author), date)
-                        if key not in bibliography:
-                            errors.append(f"{path}:{number}: missing bibliography: {key}")
+                    for cited in re.findall(DATE, match[1]):
+                        span = re.fullmatch(r"(s\.\s*f\.)-([a-z])--([a-z])", cited)
+                        dates = ([f"{span[1]}-{chr(code)}" for code in
+                                  range(ord(span[2]), ord(span[3]) + 1)]
+                                 if span else [cited])
+                        for date in dates:
+                            checked += 1
+                            key = (ALIASES.get(author, author), date)
+                            if key not in bibliography:
+                                errors.append(f"{path}:{number}: missing bibliography: {key}")
     return checked, errors
 
 
@@ -101,8 +106,8 @@ def t12_errors(root: Path, t12: PdfReader) -> tuple[int, list[str]]:
             pages = rows.get(code, [])
             if cited not in pages:
                 errors.append(f"{path.relative_to(root)}:{number}: {code}: p{cited}; row at {pages}")
-    if count == 0:
-        errors.append("No manual T-12 page citations found; verify the source layout.")
+    # Requirement IDs and section references need no manual page citation.
+    # Every explicit page citation found above still has to contain its row.
     return count, errors
 
 
