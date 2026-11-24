@@ -26,7 +26,7 @@ BTT, RT-07.07, RT-07.12, RT-10.07, RT-11.20 (BTT, pp. 17--18, 22, 24) & Pruebas 
 Caso Logística, cap. 15 & Umbrales de respuesta (RT-09.01), operación desconectada (RT-03.10, RT-03.13), ventana protegida y congelamientos (RT-10.05), interfaces de terreno (RT-13.08) \\
 Caso Logística, cap. 18 & Dieciséis resultados de aceptación del caso (R18-01 a R18-16) \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Administrativas, arts. 4.3 y 24, pp. 5--6, 17); (Bases Técnicas Transversales, caps. 4, 7, 9, 10, 11 y 20, pp. 10--11, 17--18, 21--24, 34--35); (Bases Técnicas del caso, caps. 15 y 18, pp. 26--27, 34--35).}
+\fuentesd{Fuente: elaboración propia a partir de las exigencias de pruebas y ambientes de las Bases Administrativas, artículos 4.3 y 24, de las Bases Técnicas Transversales, capítulos 4, 7, 9, 10, 11 y sección 20.1, y de los requisitos y resultados de aceptación de las Bases Técnicas del caso, capítulos 15 y 18.}
 
 \section*{2. Proceso de pruebas según ISO/IEC/IEEE 29119}
 \addcontentsline{toc}{section}{2. Proceso de pruebas según ISO/IEC/IEEE 29119}
@@ -39,7 +39,7 @@ Organizacional & Política de pruebas de LafroX, dentro del sistema de gestión 
 Gestión de pruebas & Este plan (T-13) y su seguimiento por campaña & Líder de Calidad y Pruebas, Maximiliano Miño & En cada hito y ante cada cambio aprobado de alcance \\
 Pruebas dinámicas & Diseño, preparación del ambiente, ejecución e informe de cada caso & Equipo de pruebas (rol CAL) y especialistas (SEG, SRE, DAT, IMP) & En cada ejecución \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de ISO, IEC \& IEEE (2021a, procesos de prueba); (Subdocumento 1, secciones 1.3.1 y 1.5); (SD6, sección 6.2; sección 6.2.3 para las ceremonias).}
+\fuentesd{Fuente: elaboración propia a partir de los procesos de prueba de ISO, IEC \& IEEE (2021a), la política y responsabilidades del Subdocumento 1, secciones 1.3.1 y 1.5, y la organización del Subdocumento 6, sección 6.2.}
 
 El riesgo del producto determina la intensidad de las pruebas (ISO, IEC \& IEEE, 2022, ISO/IEC/IEEE 29119-1). La prioridad de cada requisito en el catálogo del SD3 (crítica, alta o media) fija cuántos casos se diseñan para él (sección 8). La documentación de pruebas sigue la estructura de ISO/IEC/IEEE 29119-3 (ISO, IEC \& IEEE, 2021c): especificación de casos, procedimientos, registro de ejecución, registro de incidencias e informe de finalización.
 
@@ -57,7 +57,7 @@ Flujos de usuario & Casos de uso y escenarios & Flujos del SD3 por perfil: preve
 Integraciones & Pruebas de contrato & Siete casos por integración: éxito, sin respuesta, con error, con lentitud, duplicado, orden y versión (RT-10.08) (BTT, p. 22) \\
 Concurrencia y reconexión & Escenarios con conflicto & Dos dispositivos que reservan el mismo lote sin señal y sincronizan después \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir de ISO, IEC \& IEEE (2021b, técnicas de diseño); (Bases Técnicas del caso, caps. 13 y 15, pp. 22--23, 26--27); (Bases Técnicas Transversales, RT-10.08, p. 22).}
+\fuentesd{Fuente: elaboración propia a partir de las técnicas de diseño de ISO, IEC \& IEEE (2021b) y del comportamiento ante fallas de dependencias de las Bases Técnicas Transversales, RT-10.08, p. 22.}
 
 \section*{3. Niveles y tipos de prueba}
 \addcontentsline{toc}{section}{3. Niveles y tipos de prueba}
@@ -85,7 +85,7 @@ Seguridad ofensiva & Preproducción con versión congelada & Tercero independien
 Despliegue sin interrupción y reversión & Preproducción & Cadena de entrega del SD4 (canario con reversión automática) & Total & 6.6.1; 6.6.2 & Art. 24; RT-04.07 (BA, p. 17; BTT, p. 11) \\
 Migración de datos & Preproducción & Procedimiento de extracción, carga y conciliación del SD5 & Parcial & 5.4.1 a 5.4.5 & BTT 20.1; RT-05.11 (BTT, pp. 12, 34--35) \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Administrativas, arts. 4.3 y 24, pp. 5--6, 17); (Bases Técnicas Transversales, secciones 4.1 y 20.1, pp. 10--11, 34--35); (Bases Técnicas del caso, cap. 15, pp. 26--27); (Subdocumento 4, sección 4.2.4.1); (Formulario T-10, apartado DevSecOps); (Formulario T-14, paquetes indicados en cada fila).}
+\fuentesd{Fuente: elaboración propia a partir de la cadena de integración del Subdocumento 4, sección 4.2.4.1, los controles del Formulario T-10 y los paquetes de prueba del Formulario T-14.}
 
 Las herramientas son las declaradas en el Formulario T-10 (SD6) y en la cadena de entrega del SD4. Este plan no agrega herramientas nuevas.
 
@@ -102,7 +102,7 @@ Preproducción & Aceptación, carga y estrés, resiliencia, ensayo del paso a pr
 Producción & Verificación posterior al despliegue, indicadores diarios de la marcha blanca, restauración de respaldos fuera de septiembre y diciembre & Reales & No se prueba con datos ficticios \\
 Recuperación ante Desastres & Conmutación real & Réplica productiva protegida & No se usa como ambiente funcional de prueba \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Técnicas Transversales, sección 4.1, p. 10); (Subdocumento 4, sección 4.2.4.1); (Subdocumento 5, sección 5.3).}
+\fuentesd{Fuente: elaboración propia a partir de los ambientes del Subdocumento 4, sección 4.2.4.1, y los datos de migración del Subdocumento 5, sección 5.3.}
 
 En septiembre y diciembre, la restauración de prueba se aloja en una instancia aislada de Preproducción con datos sintéticos, según la sección 9.3.
 
@@ -118,7 +118,7 @@ PRE-C & Carga y estrés, luego resiliencia bajo carga, luego despliegue sin inte
 PRE-S & Seguridad ofensiva & Versión congelada; no admite inyección de fallas en paralelo \\
 PRE-A & Aceptación de usuario y accesibilidad & Las personas usuarias necesitan datos estables \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Técnicas Transversales, RT-04.02, p. 10); (Subdocumento 4, sección 4.2.4.1); (Subdocumento 5, sección 5.3); las condiciones de aislamiento de campañas descritas en esta sección 4.1.}
+\fuentesd{Fuente: elaboración propia a partir de la configuración de ambientes del Subdocumento 4, sección 4.2.4.1, y los datos de migración del Subdocumento 5, sección 5.3.}
 
 \textbf{Secuencia de sesiones en PRE-C.} Carga y resiliencia forman una campaña compatible; despliegue y reversión usan después el mismo entorno, no se ejecutan sobre él mientras se inyectan fallas. La preparación de scripts, revisión y elaboración de informes pueden correr en paralelo fuera de PRE-C. Las subventanas siguientes se incluyen en las fechas y HH de los paquetes existentes y no añaden esfuerzo a la línea base.
 
@@ -127,7 +127,7 @@ PRE-A & Aceptación de usuario y accesibilidad & Las personas usuarias necesitan
 E1: 6.3.1 y 6.6.1 & 25–28 octubre 2027 & 29 octubre; snapshot de datos y versión, reinicio de colas y comprobación de observabilidad & 5–9 noviembre; análisis e informes de ambos paquetes hasta 11 noviembre \\
 E2: 6.3.2 y 6.6.2 & 19 y 22 mayo 2028; el 21 no se programa trabajo humano ordinario & 23 mayo; mismo procedimiento de restitución & 24–26 mayo; análisis e informes hasta 1 de junio \\
 \end{tablasimple}
-\fuentesd{Fuente: (Formulario T-15, sección 6.1, paquetes 6.3.1, 6.6.1, 6.3.2 y 6.6.2); la separación de sesiones y restitución definida en esta sección 4.1.}
+\fuentesd{Fuente: elaboración propia a partir de la programación de carga y despliegue del Formulario T-15, sección 6.1, paquetes 6.3.1, 6.6.1, 6.3.2 y 6.6.2.}
 
 La prueba continua de aislamiento de 24 horas requiere una ventana y un turno explícitos; si cruza un día no laborable, se autoriza el turno de observación antes de empezar. Antes de aprobar la campaña, CAL y SRE confirman la asignación nominal y la capacidad neta tras descontar recuperación, soporte y otros frentes. Las 320/320 HH de E1 y 320/160 HH de E2 corresponden al esfuerzo total por paquete. El calendario de sesiones fija por separado su duración y la ocupación de PRE-C. Si la dotación resulta insuficiente, el Jefe de Proyecto asigna recursos y aprueba la nivelación antes de G5. El registro diario de asignación consigna la disponibilidad de cada persona (T-15, sección 5.7).
 
@@ -147,7 +147,7 @@ Lotes y temperatura & Generador sintético & Lotes con vencimiento; series de te
 Históricos para migración & Datos del ERP, del WMS de 2013 y de planillas del CLIENTE & 32,11 GB (SD4, sección 4.2.6, dimensión 10) & Solo PRE-M & Anonimización verificada con Amazon Macie (0 hallazgos) más una prueba de reidentificación sobre una muestra; se eliminan al cerrar el ensayo \\
 Incidentes reproducidos & Evidencia de terreno capturada por INN-02, sin datos personales & Según incidentes & Ambientes efímeros por incidencia en QA o Preproducción & Convertidos en casos de regresión permanentes (SD13, sección 13.2) \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Técnicas del caso, sección 14.1 y anexo B, pp. 24--25, 38); (Subdocumento 5, sección 5.3); (Subdocumento 4, secciones 4.2.6.3 a 4.2.6.5).}
+\fuentesd{Fuente: elaboración propia a partir de la volumetría y los datos del Anexo B de las Bases Técnicas del caso, sección 14.1 y Anexo B, pp. 24--25, 38, y de las cargas del Subdocumento 4, secciones 4.2.6.3 a 4.2.6.5.}
 
 \section*{6. Criterios de entrada y de salida}
 \addcontentsline{toc}{section}{6. Criterios de entrada y de salida}
@@ -177,7 +177,7 @@ Perfil operacional & Dispositivos de producción, uno de cada tipo; personas del
 Migración & Perfilado y saneamiento cerrados (5.4.1); mapeo del SD5, Anexo 5-K & Conciliación sin diferencias no explicadas en cada ensayo; tiempos medidos compatibles con la ventana y con la reversión (SD5, 5.3.5) \\
 Despliegue sin interrupción & Estrategia canario configurada & Despliegue y reversión sin interrupción del servicio y sin intervención manual (RT-04.06, RT-04.07) (BTT, p. 11) \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Administrativas, arts. 17.3 y 24, pp. 13, 17); (Bases Técnicas Transversales, sección 20.1, pp. 34--35); (Bases Técnicas del caso, cap. 15, pp. 26--27); (Subdocumento 9, anexos 9.A y 9.B); (Formulario T-17, sección 4).}
+\fuentesd{Fuente: elaboración propia a partir de las métricas y puertas del Anexo 9.A y Anexo 9.B y los hitos de aceptación del Formulario T-17, sección 4.}
 
 \subsection*{6.2 Suspensión y reanudación}
 \addcontentsline{toc}{subsection}{6.2 Suspensión y reanudación}
@@ -203,7 +203,7 @@ Dispositivos de terreno simultáneos & 158 & 1,5 & 237 \\
 Escalón de crecimiento (RT-09.03) (BTT, p. 21) & 14,66 TPS & 3 & 43,98 TPS \\
 Escalón de quiebre & 14,66 TPS & 4 & 58,64 TPS \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Administrativas, art. 24, p. 17); (Bases Técnicas Transversales, RT-09.03 y RT-09.06, p. 21); (Subdocumento 4, secciones 4.2.6.3, 4.2.6.4 y 4.2.6.7); (Subdocumento 4, secciones 4-W.2, 4-W.3 y 4-W.6).}
+\fuentesd{Fuente: cálculo propio a partir de los peaks y factores del Subdocumento 4, secciones 4.2.6.3, 4.2.6.4 y 4.2.6.7 y Anexo 4-W, secciones 4-W.2, 4-W.3 y 4-W.6.}
 
 \textbf{Umbrales de salida (p95, SD4, sección 4.2.6.11):} confirmación de línea de preparación ≤ 1 s; registro de entrega ≤ 2 s; línea de preventa ≤ 1,5 s; consulta de stock y crédito ≤ 2 s; transacción crítica de terreno ≤ 3 s; carga inicial del portal ≤ 2 s; navegación ≤ 1 s; API de consulta ≤ 500 ms; API de escritura ≤ 800 ms; búsqueda compuesta ≤ 3 s y búsqueda global ≤ 2 s; informe estándar ≤ 30 s.
 
@@ -227,7 +227,7 @@ Corte de enlace del centro de distribución por 24 h & Desconexión del sitio em
 Pérdida de fibra y LTE de un centro de distribución & Corte de ambos enlaces en el sitio emulado & Conmutación a Starlink en espera caliente; la emisión de guías por el ERP continúa (SD4, sección 4.1.3.2; AL-DTE-01) \\
 Caída de un gateway de frío de Talca & Detención de uno de los dos gateways con Greengrass & El otro gateway lee ambas cámaras; el bloqueo térmico local actúa en ≤ 5 s y la alerta llega a M9 (SD4, ADR-22) \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Técnicas Transversales, RT-10.07, p. 22); (Subdocumento 4, sección 4.2.4.3); (Subdocumento 4, anexo 4-V).}
+\fuentesd{Fuente: elaboración propia a partir de los escenarios de inyección del Subdocumento 4, Anexo 4-V, y sus niveles de servicio, sección 4.2.4.3.}
 
 Los dos últimos escenarios prueban la parte on-premise de la arquitectura híbrida, que el RT-10.07 no enumera pero que el SD4 declara crítica para el despacho y para la cadena de frío (BTT, p. 22).
 
@@ -245,7 +245,7 @@ Sobre 34 °C & Entrega a la intemperie con calor & Transacción completada; disp
 Sol directo & Lectura de la pantalla en la puerta del local & Lectura sin error de la persona usuaria \\
 Una sola mano durante la descarga & Registro de entrega & Transacción completada con una mano \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Técnicas del caso, cap. 15, pp. 26--27); (Bases Técnicas Transversales, RT-13.04, p. 26); (Subdocumento 4, sección 4.2.6.7); (Subdocumento 4, anexos, sección 4-W.6).}
+\fuentesd{Fuente: elaboración propia a partir de las condiciones de terreno de las Bases Técnicas del caso, capítulo 15, RT-13.08, p. 27, y los ensayos del Subdocumento 4, Anexo 4-W, sección 4-W.6.}
 
 Cada perfil mide los cuatro indicadores del RT-13.04 con los valores del SD3, Tabla 3.A.4a (métrica 9A-18): tasa de error ≤ 5 \% en todos los perfiles y aprendizaje ≤ 2 h en bodega, ≤ 4 h para el preventista y ≤ 30 min para el conductor (BTT, p. 26).
 
@@ -263,7 +263,7 @@ R18-03: registro continuo de temperatura & Banco, mapeo y piloto físico; series
 R18-06: ningún pedido perdido ni duplicado por falta de señal & Jornada de 14 h sin señal (sección 7.3) & Perfil operacional (6.2.2) \\
 R18-07: ruta del día siguiente en menos de 20 minutos & Generación de la ruta con el volumen de un día de peak; corrección manual, registro del cambio y recálculo de la ruta & Carga (6.3.1) \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Técnicas del caso, cap. 18, pp. 34--35); (Subdocumento 13, sección 13.2); (Formulario T-17, sección 5).}
+\fuentesd{Fuente: elaboración propia a partir de los resultados y momentos de aceptación del Formulario T-17, sección 5, y la innovación del Subdocumento 13, sección 13.2.}
 
 Los dieciséis resultados se aceptan con el protocolo del Formulario T-17, en el momento que fija el SD7, Tabla 7.11.
 
@@ -288,7 +288,7 @@ AL-MOD-01 & Fronteras de los módulos, reinicio del consumidor y repetición del
 AL-FRIO-01 & Excursión y reenvío con pérdida de enlace: la retención se mantiene hasta que Calidad autoriza la liberación con evidencia válida & Resiliencia: E1 (6.3.1; H5) y E2 (6.3.2; H10) \\
 AL-UI-01 & Accesibilidad WCAG 2.2 AA y exportación completa de los registros de auditoría autorizados para cada perfil & Aceptación y accesibilidad: E1 (6.2.1; H5) y E2 (6.2.3; H10), según los perfiles habilitados \\
 \end{tablasimple}
-\fuentesd{Fuente: (SD4, Anexo 4-V, sus 13 protocolos; Anexo 4-M, desarrollo de AL-ID-01); (Formulario T-14, paquetes indicados en cada fila).}
+\fuentesd{Fuente: elaboración propia a partir de los trece protocolos del Subdocumento 4, Anexo 4-V, y del protocolo AL-ID-01 de su Anexo 4-M.}
 
 Cada protocolo deja su acta con la carga, la falla inyectada, el resultado observado y los responsables, dentro del expediente H5 o H10 según su etapa (T-17, sección 3.1). La asignación sigue las capacidades y paquetes del Anexo 7.E: H4 y H5 cubren el alcance E1. Los simuladores permiten ensayar los contratos de portales y EDI; la aceptación de E2 se verifica sobre el producto integrado. AL-CLI-01 se ejecuta con el portal real en E2 y AL-STOCK-01/AL-ACT-01 amplían allí su cobertura, sin omitir ninguna de las quince interfaces finales.
 
@@ -315,7 +315,7 @@ El programa distingue las certificaciones iniciales de las pruebas periódicas. 
 10.1.3 (2.ª a 6.ª) & 27, 33, 39, 45, 51 & abr-29, oct-29, abr-30, oct-30, abr-31 & 6 & Periódica semestral \\
 10.1.3 (7.ª) & 54 & jul-2031 & 3 & Periódica semestral \\
 \end{tablasimple}
-\fuentesd{Fuente: (Formulario T-15, paquetes 6.4.1, 6.4.2 y 10.1.3); (Formulario T-14, paquete 10.1.3); (Bases Administrativas, Art. 20); (Bases Técnicas Transversales, RT-07.07, p. 17).}
+\fuentesd{Fuente: elaboración propia a partir de las fechas de conmutación del Formulario T-15, paquetes 6.4.1, 6.4.2 y 10.1.3, y la frecuencia de pruebas de las Bases Técnicas Transversales, RT-07.07, p. 17.}
 
 El intervalo de siete meses entre 6.4.1 y 6.4.2 ocurre antes de la Operación, cuando aún no rige la exigencia semestral de las Bases Administrativas (Art. 20), que se refiere a la fase de Operación. Desde el inicio de la marcha blanca de la Etapa 1, en el mes 13, con datos productivos, ningún período supera seis meses sin conmutación real: 6.4.2 llega en el mes 16 y la primera periódica en el mes 21. Cada año contractual de Operación tiene al menos dos (meses 21 y 27; 33 y 39; 45, 51 y 54; RT-07.07). Ninguna cae en septiembre ni en diciembre. El día de intervención se fija en el plan 1.2.1 fuera de los tres primeros días hábiles y de la ventana de 05:30 a 07:00, con el aviso previo de diez días hábiles del RT-10.05 de las Bases Técnicas Transversales; la conmutación del mes 21 se programa en Operación, después del paso a producción efectivo de la Etapa 2 (T-15 y T-18). G5 habilita la marcha blanca en el ambiente de Producción con datos y pedidos reales en los meses 13 a 15 de E1 y 19 a 20 de E2. El paso a producción corresponde a los meses 16 y 21, respectivamente, después del acta que lo habilita (T-17, sección 4.3; T-18). Las restauraciones mensuales comienzan en el mes 13, al iniciarse el uso de datos productivos.
 
@@ -353,7 +353,7 @@ RT en estado «Cumple» o «Cumple parcialmente» en el T-12 & 369 & 1 & 369 \\
 Contratos de integración & 15 & 7 & 105 \\
 \textbf{Total} &  &  & \textbf{1.345} \\
 \end{tablasimple}
-\fuentesd{Fuente: (Subdocumento 3, catálogo de RF y RNF); (Formulario T-12, catálogo de RT ofertados); (Subdocumento 4, sección 4.1); las reglas de dimensionamiento 5/3/2, un caso por RT y siete por integración de esta sección 8.2.}
+\fuentesd{Fuente: cálculo propio a partir de los requisitos del Subdocumento 3, los requisitos transversales ofertados del Formulario T-12 y los contratos del Subdocumento 4, sección 4.1.}
 
 Los 270 RF y RNF con prioridad propia son los del catálogo del SD3: 58 críticos, 157 altos y 55 medios. Las nueve filas RF y RNF restantes del T-12 (279 en total) se verifican con la fila que las contiene y no suman casos. Los 5 RT en estado «No cumple» no tienen casos; quedan en la matriz de trazabilidad como brecha visible.
 
@@ -389,7 +389,7 @@ La tabla siguiente estima la demanda diaria de cada campaña con los paquetes de
 E1 & 25-10 a 11-11-2027 (13 días hábiles) & 6.2.1 y 6.2.2 (320 HH en 19 días); 6.3.1 y 6.4.1 (320 HH en 13 días) & 82,9 & 13 \\
 E2 & 19-05 a 01-06-2028 (10 días hábiles) & 6.3.2 y 6.4.2 (320 HH en 10 días cada uno) & 64,0 & 10 \\
 \end{tablasimple}
-\fuentesd{Fuente: elaboración a partir del Formulario T-15, programación de los paquetes con entregable y fechas tempranas del CPM; Formulario T-15, secciones 5.1 y 6.}
+\fuentesd{Fuente: cálculo propio a partir de las fechas tempranas y horas por paquete del Formulario T-15, secciones 5.1 y 6.}
 
 En E1, 14 es la suma de los máximos individuales de los cuatro paquetes CAL del T-15 (3 + 3 + 4 + 4). Los 13 evaluadores-día de la tabla son la demanda diaria estimada al repartir uniformemente las HH. La capacidad planificada de 10 personas de planta y 3 refuerzos de pruebas es de 83,2 HH netas por día, excluidos los evaluadores externos y la reserva protegida de E1. Antes de reservar cada sesión, CAL confirma los refuerzos, las personas asignadas y su disponibilidad diaria neta para pruebas y servicios simultáneos. Si la capacidad resulta insuficiente, se nivela el calendario y se vuelven a comprobar H5 y las ventanas de aceptación (T-15, secciones 5.3 y 5.7). Las pruebas de seguridad (6.5.1 y 6.5.2) y las demostraciones de despliegue (6.6.1 y 6.6.2) corresponden a SEG y SRE, respectivamente. Los paquetes CAL 7.2.3 y 7.2.4 terminan el 8 de octubre y empiezan el 1 de diciembre de 2027, fuera del peak de E1.
 
@@ -435,7 +435,7 @@ Despliegue sin interrupción E2 & 6.6.2 & PRE-C & 19-05-2028 & 01-06-2028 & 160 
 Aceptación y accesibilidad E2 & 6.2.3 & PRE-A & 02-06-2028 & 15-06-2028 & 320 \\
 Acta de certificación E2 (H10) & 6.7.2 & — & 16-06-2028 & 28-06-2028 & 160 \\
 \end{tablasimple}
-\fuentesd{Fuente: (Formulario T-14, paquetes indicados en cada fila); (Formulario T-15, sección 6.1); (Formulario T-17, sección 4.1).}
+\fuentesd{Fuente: elaboración propia a partir de los paquetes del Formulario T-14, las fechas y horas del Formulario T-15, sección 6.1, y los hitos del Formulario T-17, sección 4.1.}
 
 En E2, 6.1.2/6.2.3 incluyen regresión de las cinco condiciones físicas y de desconexión sobre funciones/dispositivos modificados, con evidencia de cobertura para condiciones no modificadas; no se omite el perfil por ausencia de un paquete nuevo.
 
@@ -456,7 +456,7 @@ Meses 13 a 15 (E1) y 19 a 20 (E2) & Indicadores diarios del Art. 17.3 (SD7, Tabl
 Meses 13 a 20 & Restauración de respaldos sobre una muestra representativa, con tiempo medido (RT-07.12), por SRE: 9.2.1 (13–15), 9.3.1 (16–18) y 9.2.2 (19–20); ocho informes distintos de los 36 de 10.1.5 (BTT, p. 18) & Mensual \\
 Cada corrección & Puertas G0 a G4 y G6, regresión completa, DAST y carga de regresión; repetición de la prueba de certificación afectada & Por corrección \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Administrativas, art. 17.3, p. 13); (Subdocumento 7, Tabla 7.9); (Formulario T-14, paquetes 9.2.1, 9.3.1, 9.2.2 y 10.1.5).}
+\fuentesd{Fuente: elaboración propia a partir de los indicadores de marcha blanca del Subdocumento 7, Tabla 7.9, y los paquetes del Formulario T-14, 9.2.1, 9.3.1, 9.2.2 y 10.1.5.}
 
 A las restauraciones de los meses 13 a 20 se les aplica la misma excepción de ambiente para septiembre y diciembre que a las de Operación (sección 9.3).
 
@@ -475,7 +475,7 @@ Intrusión por tercero independiente & Anual (RT-11.20) (BTT, p. 24) & 28, 40, 5
 Restauración de respaldos & Al menos mensual (RT-07.12) (BTT, p. 18) & 21 a 56 & Mensual & 36 & 10.1.5 \\
 Regresión de INN-02 & Escenarios reproducidos de incidentes & 21 a 56 & Trimestral (informe) & 12 & 7.2.5 \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Técnicas Transversales, RT-07.07, RT-07.12, RT-10.07 y RT-11.20, pp. 17--18, 22, 24); (Bases Técnicas del caso, cap. 15, RT-10.05, p. 27); (Formulario T-14, cuentas 10.1 y 10.2); (Formulario T-15, sección 6.2).}
+\fuentesd{Fuente: elaboración propia a partir de las pruebas periódicas y fechas del Formulario T-15, sección 6.2, y los paquetes de Operación del Formulario T-14, cuentas 10.1 y 10.2.}
 
 \textbf{Restauración mensual en septiembre y diciembre.} Desde el mes 13, en ambos meses se usa una instancia aislada de Preproducción, sin intervenir Producción ni el sitio de Recuperación ni realizar una conmutación. Se restaura una muestra representativa de un respaldo de prueba generado con datos sintéticos, con la misma estructura y un volumen representativo. SRE ejecuta el mismo procedimiento automatizado y registra el resultado y el tiempo efectivo de restauración (RT-07.12; BTT, p. 18). No se usan datos productivos ni se acredita la integridad de un respaldo de Producción.
 
@@ -493,7 +493,7 @@ Alta & Afecta un servicio de nivel alto: preventa y consulta de stock y crédito
 Media & Afecta un servicio de nivel medio con alternativa operativa & Se registra y se planifica \\
 Baja & Afecta la reportería sin impedir operar & Se registra y se planifica \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Administrativas, art. 78.2, p. 40); (Subdocumento 4, niveles de servicio); los efectos sobre las campañas definidos en esta sección 10.}
+\fuentesd{Fuente: elaboración propia a partir de los niveles de servicio del Subdocumento 4, sección 4.2.4.3.}
 
 Cada defecto se registra en GitLab con el caso de prueba, el requisito, el ambiente, la versión y la evidencia. Se cierra solo cuando la prueba que lo detectó pasa y queda incorporada a la regresión. Los hallazgos de seguridad conservan su severidad propia y sus plazos de corrección de 7, 15 y 30 días corridos para severidad crítica, alta y media (BA, Art. 21.1, p. 15; SD4, sección 4.2.4.1.4).
 
@@ -512,7 +512,7 @@ Datos (DAT) & Líder de Datos, Leandro Chamorro & Ensayos de migración y concil
 Líder Funcional & Profesional de LafroX con experiencia en distribución de consumo masivo & Coordina la aceptación con las personas del CLIENTE \\
 Contraparte Técnica del CLIENTE & Designada por Distribuidora Puelche & Firma los casos de aceptación y las actas (T-17) \\
 \end{tablasimple}
-\fuentesd{Fuente: (Subdocumento 1, sección 1.5); (SD6, sección 6.2); (Formulario T-15, asignación de recursos).}
+\fuentesd{Fuente: elaboración propia a partir de las responsabilidades del Subdocumento 1, sección 1.5, la organización del Subdocumento 6, sección 6.2, y la asignación de recursos del Formulario T-15.}
 
 \section*{12. Informes de prueba}
 \addcontentsline{toc}{section}{12. Informes de prueba}
@@ -528,7 +528,7 @@ Informe de recuperación ante desastres & RTO y RPO medidos; brechas y su plan d
 Informe íntegro de intrusión & Hallazgos, severidad, plan de remediación con plazos (RT-11.20) (BTT, p. 24) & CLIENTE & Por prueba \\
 Informe mensual de calidad & Métricas de proceso, defectos escapados, estado de la matriz de trazabilidad & Comité de Calidad y Contraparte Técnica & Mensual \\
 \end{tablasimple}
-\fuentesd{Fuente: (Bases Técnicas Transversales, RT-09.07, RT-07.07 y RT-11.20, pp. 17, 21, 24); ISO, IEC \& IEEE (2021c, documentación de pruebas); (Formulario T-17, sección 3).}
+\fuentesd{Fuente: elaboración propia a partir de la documentación de pruebas de ISO, IEC \& IEEE (2021c) y los componentes del expediente del Formulario T-17, sección 3.}
 
 \section*{Referencias}
 \addcontentsline{toc}{section}{Referencias}
