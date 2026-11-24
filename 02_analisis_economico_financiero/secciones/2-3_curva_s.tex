@@ -2,7 +2,7 @@
 \section{Curva S}
 \label{sec:e2-curva-s}
 
-La caja del proyecto se mantiene positiva los 56 meses, con un mínimo de 1.018,50 UF en el mes 9, y cierra el contrato con 36.025,09 UF. Las cifras salen de las hojas \texttt{FLUJO CAJA NETO}, \texttt{FINANCIAMIENTO} y \texttt{CURVA S} del modelo (LafroX, 2026f), en valores netos y antes de impuestos.
+La caja financiada se mantiene positiva los 56 meses, con un mínimo de 1.113,54 UF en el mes 9, y cierra con 36.110,69 UF. Las cifras provienen de las hojas \texttt{FLUJO CAJA NETO}, \texttt{FINANCIAMIENTO} y \texttt{CURVA S}, en valores netos y antes de impuestos.
 
 La Figura~\ref{fig:e2-curva-s} presenta dos series acumuladas para los 56 meses, las mismas de la hoja \texttt{CURVA S}:
 \begin{itemize}
@@ -10,7 +10,7 @@ La Figura~\ref{fig:e2-curva-s} presenta dos series acumuladas para los 56 meses,
   \item \textbf{Egresos acumulados:} los costos del proyecto, los intereses del crédito y la devolución del principal. El escenario base no utiliza la línea de crédito.
 \end{itemize}
 
-La distancia vertical entre las dos curvas es el saldo de caja de cada mes. Los ingresos acumulados se mantienen sobre los egresos en los 56 meses, y la menor distancia es de 1.018,50 UF en el mes 9. El VAN y la TIR de la sección~\ref{sec:e2-evaluacion} se calculan sobre el flujo del proyecto antes del financiamiento.
+La distancia entre las curvas es el saldo financiado de cada mes. La menor distancia es de 1.113,54 UF en el mes 9. El VAN y la TIR se calculan antes de financiamiento (sección~\ref{sec:e2-evaluacion}).
 
 \subsection{Capital inicial y financiamiento}
 \label{sec:e2-curva-financiamiento}
@@ -30,7 +30,7 @@ El capital inicial es de 20.000 UF y entra en el mes 1, con 16.000 UF de crédit
 
 Hasta el mes 15 se pagan solo intereses, 144,00 UF al mes. Desde el mes 16, cuando se cobra H7, el crédito se paga en 24 cuotas de 744,24 UF hasta el mes 39. En total se pagan 3.877,77 UF de intereses.
 
-El capital cubre el déficit más alto del proyecto y los intereses pagados hasta ese mes, con un margen de seguridad. Sin financiamiento, el déficit acumulado más alto es de 17.829,50 UF en el mes 9. Con los 20.000 UF se cubren ese déficit y los 1.152,00 UF de intereses pagados hasta entonces, y quedan 1.018,50 UF (\$40.739.817 o USD~45.266) de margen. Con 19.000 UF, el mes 9 quedaría con 76,10 UF, menos que un mes de intereses. Así el proyecto no usa la línea de crédito de 1.250 UF al 3\,\% mensual, que queda como respaldo si se atrasa el cobro de un hito.
+El déficit acumulado máximo sin financiamiento es de 17.734,46 UF en el mes 9. En ese punto, los 20.000 UF iniciales cubren el déficit y 1.152,00 UF de intereses, dejando 1.113,54 UF de caja. El escenario base no utiliza la línea de respaldo de 1.250 UF al 3\,\% mensual.
 
 \subsection{Ingresos y egresos acumulados}
 \label{sec:e2-curva-acumulados}
@@ -48,23 +48,23 @@ La Tabla~\ref{tab:e2-curva-hitos} muestra las dos series, el flujo del mes y el 
 
 \begin{tablalafrox}{Curva S y flujo financiado en meses seleccionados, en UF. Fuente: modelo financiero, hoja CURVA S.}{tab:e2-curva-hitos}{Y R{2.05cm} R{2.1cm} R{2.05cm} R{2.1cm}}
   {\cab{Mes} & \cab{Ingresos acum.} & \cab{Egresos acum.} & \cab{Flujo del mes} & \cab{Saldo acum.}}
-  1, capital inicial & 20.000,00 & 2.258,03 & 17.741,97 & 17.741,97 \\
-  2, compra de equipos & 28.824,01 & 18.884,21 & $-$7.802,17 & 9.939,80 \\
-  9, saldo mínimo & 47.575,02 & 46.556,53 & $-$2.956,20 & 1.018,50 \\
-  10, hito H4 & 58.605,03 & 49.446,66 & 8.139,88 & 9.158,37 \\
-  16, primera cuota & 91.695,06 & 76.445,92 & 4.685,69 & 15.249,15 \\
-  21, inicio de Operación & 133.962,16 & 105.069,29 & 8.978,76 & 28.892,87 \\
-  39, última cuota & 199.879,33 & 175.759,28 & 28,01 & 24.120,05 \\
-  56, cierre del contrato & 262.134,43 & 226.109,33 & 373,80 & 36.025,09 \\
+  1, capital inicial & 20.000,00 & 2.231,30 & 17.768,70 & 17.768,70 \\
+  2, compra de equipos & 29.275,79 & 18.907,95 & $-$7.400,86 & 10.367,84 \\
+  9, saldo mínimo & 48.986,85 & 47.873,30 & $-$2.978,65 & 1.113,54 \\
+  10, hito H4 & 60.581,59 & 51.615,34 & 7.852,70 & 8.966,24 \\
+  16, primera cuota & 95.365,80 & 80.419,77 & 4.519,21 & 14.946,03 \\
+  21, inicio de Operación & 139.560,40 & 109.250,52 & 10.501,66 & 30.309,88 \\
+  39, última cuota & 204.594,52 & 178.942,14 & 6,24 & 25.652,38 \\
+  56, cierre del contrato & 266.015,64 & 229.904,95 & 270,06 & 36.110,69 \\
 \end{tablalafrox}
 
-Al mes 56, los ingresos acumulados suman 262.134,43 UF: 242.134,43 UF del contrato y 20.000,00 UF de capital inicial. Los egresos acumulados llegan a 226.109,33 UF: 206.231,56 UF de costos del proyecto, 3.877,77 UF de intereses y 16.000,00 UF de devolución del crédito. La diferencia, 36.025,09 UF, es el saldo de caja al cierre del contrato.
+Al mes 56 se acumulan 266.015,64 UF de cobros: 246.015,64 UF del contrato y 20.000 UF de capital inicial. Los egresos suman 229.904,95 UF: 210.027,18 UF de costos del proyecto, 3.877,77 UF de intereses y 16.000,00 UF de amortización. El saldo es 36.110,69 UF.
 
 \subsection{Análisis del flujo de caja mensual}
 \label{sec:e2-curva-flujo-mensual}
 
-Antes del financiamiento, 11 de los 20 primeros meses tienen flujo negativo: 1, 2, 3, 5, 7, 8, 9, 11, 15, 19 y 20. El peor es el mes 2, con la compra de equipos por 13.614,93 UF, de la que H1 paga 8.824,01 UF y el capital inicial el resto. La caja llega a 1.018,50 UF en el mes 9 y sube a 9.158,37 UF en el mes 10 con el cobro de H4. Sin financiamiento, el acumulado es positivo desde el mes 17.
+Antes del financiamiento, 11 de los primeros 20 meses tienen flujo negativo: 1, 2, 3, 5, 7, 8, 9, 11, 15, 19 y 20. El mayor déficit mensual ocurre en el mes 2. En el mes 3 se pagan las 384,00 UF de la provisión de instalación en Talca. En el mes 9 la caja financiada toca su mínimo; el mes 10 sube a 8.966,24 UF tras H4. Sin financiamiento, el acumulado es positivo desde el mes 17.
 
-En la Operación entra una cuota de 3.662,06 UF al mes contra un costo promedio de 3.128,13 UF, y el mes 21 suma H12, de 11.030,01 UF. Antes del crédito, 35 de los 36 meses dejan flujo positivo; el mes 22 queda en $-$468,81 UF porque todavía paga la estabilización posterior a H12. La cuota del crédito, de 744,24 UF, supera el margen medio de la Operación, de 533,93 UF al mes, de modo que el flujo financiado queda negativo en 17 de los 19 meses que van del 21 al 39, del 22 al 38. La caja acumulada sigue positiva en todos ellos, con un mínimo de 24.092,04 UF en el mes 38, y desde el mes 40, ya pagado el crédito, el excedente se acumula.
+La cuota mensual es de 3.613,01 UF y el costo medio es de 3.089,44 UF. En el mes 21 se cobra además H12, por 11.594,74 UF. Antes del crédito, los 36 meses de Operación dejan flujo positivo. Con el crédito, 17 de los primeros 19 meses de Operación tienen flujo mensual negativo: 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37 y 38. El saldo acumulado se mantiene positivo y desde el mes 40 ya no se pagan cuotas.
 
-El saldo final de 36.025,09 UF es el margen del proyecto, 35.902,87 UF, más los 4.000 UF de los socios y menos los 3.877,77 UF de intereses.
+El saldo final de 36.110,69 UF equivale a 35.988,47 UF de margen, más 4.000 UF de aporte de los socios y menos 3.877,77 UF de intereses.

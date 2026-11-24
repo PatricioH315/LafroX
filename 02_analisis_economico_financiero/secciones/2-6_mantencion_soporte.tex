@@ -2,7 +2,7 @@
 \section{Estructura de mantención y soporte}
 \label{sec:e2-mantencion}
 
-El soporte de la Operación cuesta 76.367,47 UF en personas, y el 76\,\% de ese monto corresponde a la mesa, el NOC y el SOC. El resto paga a los especialistas que hacen la mantención preventiva, correctiva y evolutiva. Las horas vienen de las cuentas 10.1 y 10.2 del T-14 y del T-15 (LafroX, 2026c), y los montos de la hoja \texttt{COSTOS} (LafroX, 2026f). Estos costos ya están dentro del costo de Operación de la sección~\ref{sec:e2-costos-operacionales}.
+El soporte de la Operación cuesta 73.774,34 UF en personas, y el 78,35\,\% corresponde a la mesa N1, el NOC y el SOC. Las HH se estructuran conforme a las cuentas 10.1 y 10.2 del T-14 y T-15. Los montos, de la hoja \texttt{COSTOS}, ya están incluidos en el presupuesto de Operación.
 
 \subsection{Modelo de costeo}
 \label{sec:e2-mant-modelo}
@@ -14,37 +14,39 @@ Cada ticket registra el diagnóstico, lo que se hizo, el responsable y el result
 \subsection{Recursos dedicados y compartidos}
 \label{sec:e2-mant-recursos}
 
-Los recursos dedicados son la mesa N1, el SOC y la parte del NOC que se carga al contrato. La mesa N1 atiende con puestos propios de 04:00 a 20:00, el NOC cubre la franja de 20:00 a 22:00 y en septiembre y diciembre la atención es de 24 horas. El NOC funciona 24×7 desde la división multicliente de LafroX, con una dedicación declarada que baja de 100\,\% a 75\,\% y a 50\,\% en el segundo y el tercer año de operación, y el SOC, que LafroX opera desde su centro de Valparaíso, funciona 24×7 desde el mes 13 (LafroX, 2026a; 2026c, paquetes 10.1.1, 10.1.2 y 10.1.4). Los compartidos son los especialistas de segundo y tercer nivel: SRE y DevOps para infraestructura y terreno, Desarrollo para la aplicación y los especialistas de ciberseguridad. El Líder de Operación / SRE es el gerente de servicio, representa a LafroX en el Comité de Operación y coordina el soporte de los fabricantes, con 4.608 HH en la Operación (4.838,40 UF), 128 HH cada mes como gerente de servicio dedicado. Mientras un caso se escala, los puestos de mesa, NOC y SOC siguen atendiendo. La Tabla~\ref{tab:e2-mant-recursos} muestra el costo de cada grupo.
+Los recursos dedicados son la mesa N1, el SOC y la parte del NOC que se carga al contrato. La mesa N1 atiende con puestos propios de 04:00 a 20:00, el NOC cubre la franja de 20:00 a 22:00 y en septiembre y diciembre la atención es de 24 horas. El NOC funciona 24×7 desde la división multicliente de LafroX, con una dedicación declarada que baja de 100\,\% a 75\,\% y a 50\,\% en el segundo y el tercer año de operación, y el SOC, que LafroX opera desde su centro de Valparaíso, funciona 24×7 desde el mes 13 (LafroX, 2026a; 2026c, paquetes 10.1.1, 10.1.2 y 10.1.4). Los compartidos son los especialistas de segundo y tercer nivel: SRE y DevOps para infraestructura y terreno, Desarrollo para la aplicación y los especialistas de ciberseguridad. El Líder de Operación / SRE es el gerente de servicio, representa a LafroX en el Comité de Operación y coordina el soporte de los fabricantes, con 4.596 HH en la Operación (4.825,80 UF), 127,67 HH al mes en promedio como gerente de servicio dedicado. Mientras un caso se escala, los puestos de mesa, NOC y SOC siguen atendiendo. La Tabla~\ref{tab:e2-mant-recursos} muestra el costo de cada grupo.
 
 \begin{tablalafrox}{Recursos dedicados y compartidos del soporte, meses 21 a 56. Las sumas pueden diferir en la última cifra por redondeo. Fuente: modelo financiero, hoja COSTOS.}{tab:e2-mant-recursos}{Y R{1.9cm} R{1.9cm} R{2.8cm} R{2.1cm}}
   {\cab{Grupo} & \cab{HH} & \cab{UF} & \cab{CLP} & \cab{USD}}
   Dedicados: mesa N1, NOC y SOC & 86.274,20 & 57.803,71 & 2.312.148.560 & 2.569.054 \\
-  Desarrollo & 6.970,08 & 4.732,69 & 189.307.600 & 210.342 \\
-  SRE y DevOps & 7.228,88 & 6.935,10 & 277.404.160 & 308.227 \\
-  Ciberseguridad & 1.155,20 & 902,22 & 36.088.800 & 40.099 \\
-  Gestión, calidad, datos e implantación & 7.531,84 & 5.993,74 & 239.749.580 & 266.388 \\
+  Desarrollo & 6.912,00 & 4.693,25 & 187.729.920 & 208.589 \\
+  SRE y DevOps & 7.180,14 & 6.893,11 & 275.724.480 & 306.361 \\
+  Ciberseguridad & 1.145,60 & 894,72 & 35.788.800 & 39.765 \\
+  Gestión, calidad, datos e implantación & 4.179,60 & 3.489,55 & 139.582.000 & 155.091 \\
   \midrule
-  \textbf{Total} & \textbf{109.160,20} & \textbf{76.367,47} & \textbf{3.054.698.700} & \textbf{3.394.110} \\
+  \textbf{Total} & \textbf{105.691,54} & \textbf{73.774,34} & \textbf{2.950.973.760} & \textbf{3.278.860} \\
 \end{tablalafrox}
 
-Los puestos dedicados se llevan el 79,03\,\% de las horas y el 75,69\,\% del costo, ya que cubren los horarios de atención. Los compartidos suman 18.563,75 UF y trabajan según las actividades del T-15.
+Los puestos dedicados concentran el 81,63\,\% de las horas y el 78,35\,\% del costo; los compartidos suman 15.970,63 UF.
 
 \subsection{Mantención preventiva, correctiva, mejora continua y actualización}
 \label{sec:e2-mant-programa}
 
-La Tabla~\ref{tab:e2-mantencion} costea cada parte del programa de mantención con las horas de sus paquetes. Las horas de Desarrollo valen 0,68 UF y las de SRE y DevOps 0,96 UF, el costo medio de cada grupo en la Tabla~\ref{tab:e2-mant-recursos}.
+La Tabla~\ref{tab:e2-mantencion} valoriza el programa por separado. Para las horas internas usa los costos medios de Desarrollo (0,68 UF/HH) y de SRE y DevOps (0,96 UF/HH). Los servicios de Rom Mayer y Netprovider se muestran a su costo por evento, ya incluido en proveedores.
 
 \begin{tablalafrox}{Programa de mantención y su costo en los 36 meses de Operación. Fuente: T-14, cuentas 10.1 y 10.2; T-15; modelo financiero, hojas COSTOS y ADQUISICIONES OPERACION.}{tab:e2-mantencion}{Y R{1.5cm} R{1.9cm} R{2.6cm} R{1.9cm}}
   {\cab{Componente y paquetes} & \cab{HH} & \cab{UF} & \cab{CLP} & \cab{USD}}
-  Preventiva: 10.1.3, 10.1.5, 10.2.3 y 10.2.6 & 2.576 & 2.471,31 & 98.852.535 & 109.836 \\
-  Correctiva: 10.2.1 & 2.304 & 1.564,42 & 62.576.715 & 69.530 \\
-  Mejora continua: bolsa evolutiva de 10.2.1 & 2.304 & 1.564,42 & 62.576.715 & 69.530 \\
-  Reducción de deuda técnica: 10.2.4 & 2.304 & 1.564,42 & 62.576.715 & 69.530 \\
-  Actualización tecnológica: 10.2.5 y 10.2.7 & 1.152 & 1.105,18 & 44.207.345 & 49.119 \\
+  Preventiva interna: 10.1.3, 10.1.5, 10.2.3 y 10.2.6 & 2.345,6 & 2.251,83 & 90.073.361 & 100.082 \\
+  Revisión eléctrica externa: 10.2.6 & 230,4 & 345,60 & 13.824.000 & 15.360 \\
+  Prueba anual de intrusión externa: 10.2.2 & 230,4 & 576,00 & 23.040.000 & 25.600 \\
+  Correctiva: 10.2.1 & 2.304 & 1.564,42 & 62.576.640 & 69.530 \\
+  Mejora continua: bolsa evolutiva de 10.2.1 & 2.304 & 1.564,42 & 62.576.640 & 69.530 \\
+  Reducción de deuda técnica: 10.2.4 & 2.304 & 1.564,42 & 62.576.640 & 69.530 \\
+  Actualización tecnológica: 10.2.5 y 10.2.7 & 1.152 & 1.105,95 & 44.237.940 & 49.153 \\
   Reposición de equipos del mes 21 & --- & 671,66 & 26.866.393 & 29.852 \\
 \end{tablalafrox}
 
-La mantención preventiva sigue un calendario anual acordado con el CLIENTE, con auditorías técnicas al menos cada tres meses (Distribuidora Puelche S.A., 2026b, sección~21.4). Sus 2.576 HH son las pruebas semestrales de recuperación ante desastres (10.1.3, 560 HH), las pruebas mensuales de restauración de respaldos (10.1.5, 576 HH), el mantenimiento del hardware de sala, racks, gabinetes y terreno (10.2.3, 1.152 HH) y la revisión eléctrica semestral de la sala (10.2.6, 288 HH).
+La mantención preventiva sigue un calendario anual acordado con el CLIENTE (Distribuidora Puelche S.A., 2026b, sección~21.4). Sus 2.576 HH programadas incluyen 288 HH de revisión eléctrica: 57,6 HH internas y 230,4 HH externas. Para no contar la revisión dos veces, la tabla separa las 230,4 HH externas a 345,60 UF; conserva 2.345,6 HH preventivas internas. Las tres pruebas de intrusión anuales suman otras 230,4 HH externas a 576,00 UF y no representan todo el paquete de mantenimiento y resiliencia de seguridad.
 
 Para la mantención correctiva se reservan 768 HH de Desarrollo por año, 2.304 HH en total. Es una estimación y no un límite: corregir defectos no tiene costo extra para el CLIENTE, y si se necesitan más horas las pone LafroX. Además, las reservas de riesgo de la Operación, 323,53 UF, cubren las contingencias del plan de riesgos (LafroX, 2026e).
 
