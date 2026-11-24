@@ -16,7 +16,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 # Un único commit del SD3 aporta el T-12 y el catálogo.
-REF = sys.argv[1] if len(sys.argv) > 1 else "8aecdd93b47cce7a179ca6eca3c14a53ce69a45e"
+REF = sys.argv[1] if len(sys.argv) > 1 else "d780746706b64dd2eba224adccb0d534679072f8"
 BLOCK = 25
 CASES_BY_PRIORITY = {"Crítica": 5, "Alta": 3, "Media": 2}
 CONTRACTS, CASES_BY_CONTRACT = 15, 7

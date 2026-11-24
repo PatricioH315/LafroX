@@ -1,7 +1,7 @@
 {
-  "source_ref": "8aecdd93b47cce7a179ca6eca3c14a53ce69a45e",
-  "source_commit": "8aecdd93b47cce7a179ca6eca3c14a53ce69a45e",
-  "test_count": 1339,
+  "source_ref": "d780746706b64dd2eba224adccb0d534679072f8",
+  "source_commit": "d780746706b64dd2eba224adccb0d534679072f8",
+  "test_count": 1345,
   "counts": {
     "t12_rows": 653,
     "requirements": 644,
@@ -9,18 +9,18 @@
     "own": 270,
     "rt": 374,
     "contracts": 15,
-    "cases": 1339,
+    "cases": 1345,
     "priority": {
       "Alta": 157,
       "Crítica": 58,
       "Media": 55
     },
     "rt_state": {
-      "Cumple": 356,
-      "Cumple parcialmente": 7,
-      "No cumple": 11
+      "Cumple": 365,
+      "Cumple parcialmente": 4,
+      "No cumple": 5
     },
-    "rt_without_case": 11,
+    "rt_without_case": 5,
     "blocks": 26
   },
   "requirements": [
@@ -10909,135 +10909,147 @@
     },
     {
       "id": "RT-25.01",
-      "state": "Cumple parcialmente",
-      "component": "Prototipos y pruebas de usabilidad por perfil para cada flujo crítico. El prototipo navegable se entrega con la Propuesta Final.",
+      "state": "Cumple",
+      "component": "Inicio por perfil con accesos directos a la función principal, búsqueda global y acciones rápidas.",
       "edt": "2.6.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-25.01",
-      "criterion": "Los recorridos de los flujos críticos tienen respaldo de usabilidad por perfil. Falta comprobar en el prototipo final que cada función principal se alcanza en hasta tres interacciones.",
+      "criterion": "Cada perfil alcanza su función principal desde el inicio en una a tres interacciones, sin manual.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-25.01/\\allowbreak{}P01\\newline Evidencia prevista: informe de usabilidad del prototipo por perfil\\newline Alcance y brecha en el criterio.",
+      "evidence": "RT-25.01/\\allowbreak{}P01\\newline Respaldo: arquitectura de información del prototipo, recorridos por perfil.",
       "cases": [
         "RT-25.01/P01"
       ]
     },
     {
       "id": "RT-25.02",
-      "state": "No cumple",
-      "component": "Se entrega con la Propuesta Final.",
-      "edt": "No aplica",
+      "state": "Cumple",
+      "component": "Aviso tras cada acción, esqueletos y botones con estado de carga, transiciones, validación en línea y errores con instrucción para corregir.",
+      "edt": "2.6.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-25.02",
-      "criterion": "Retroalimentación visual clara ante cada acción, estados de carga y transición fluidos, y manejo elegante de los errores.",
+      "criterion": "Cada acción recorrida muestra confirmación, carga o un error comprensible, sin mensajes técnicos.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "Sin prueba prevista",
-      "cases": []
+      "evidence": "RT-25.02/\\allowbreak{}P01\\newline Respaldo: sistema de diseño del prototipo, componentes de retroalimentación.",
+      "cases": [
+        "RT-25.02/P01"
+      ]
     },
     {
       "id": "RT-25.03",
-      "state": "Cumple parcialmente",
-      "component": "Criterio WCAG 2.2 AA y pruebas de accesibilidad para las interfaces de la solución. El prototipo navegable se entrega con la Propuesta Final.",
+      "state": "Cumple",
+      "component": "Contraste AA, foco visible, navegación completa por teclado, etiquetas y textos alternativos, y objetivos de al menos 44 $\\times$ 44 píxeles.",
       "edt": "2.6.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-25.03",
-      "criterion": "Los flujos críticos tienen criterios y pruebas previstas de accesibilidad. Falta acreditar WCAG 2.2 AA en el prototipo final.",
+      "criterion": "Sin infracciones WCAG 2.2 AA a 1366 y 375 px, y ningún objetivo menor de 44 $\\times$ 44 px sin equivalente en cinco tamaños.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-25.03/\\allowbreak{}P01\\newline Evidencia prevista: informe WCAG 2.2 AA del prototipo final\\newline Alcance y brecha en el criterio.",
+      "evidence": "RT-25.03/\\allowbreak{}P01\\newline Respaldo: verificación del 24-11-2026 con axe-core 4.10 en 52 pantallas.",
       "cases": [
         "RT-25.03/P01"
       ]
     },
     {
       "id": "RT-25.04",
-      "state": "No cumple",
-      "component": "Se entrega con la Propuesta Final.",
-      "edt": "No aplica",
+      "state": "Cumple",
+      "component": "Puntos de quiebre en 375, 768, 1024, 1366 y 1920 px; menú desplegable bajo 1024 px y portada que se adapta al girar la tableta.",
+      "edt": "2.6.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-25.04",
-      "criterion": "Diseño responsivo demostrado en escritorio (1920 $\\times$ 1080 y 1366 $\\times$ 768), tableta (768 $\\times$ 1024 en vertical y horizontal) y teléfono (375 $\\times$ 812), con puntos de quiebre coherentes.",
+      "criterion": "Las 52 pantallas abren sin desplazamiento horizontal a 1920 $\\times$ 1080, 1366 $\\times$ 768, 768 $\\times$ 1024 en ambas orientaciones y 375 $\\times$ 812.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "Sin prueba prevista",
-      "cases": []
+      "evidence": "RT-25.04/\\allowbreak{}P01\\newline Respaldo: verificación del 24-11-2026 en Chromium y Edge.",
+      "cases": [
+        "RT-25.04/P01"
+      ]
     },
     {
       "id": "RT-25.05",
-      "state": "No cumple",
-      "component": "Se entrega con la Propuesta Final.",
-      "edt": "No aplica",
+      "state": "Cumple",
+      "component": "Cinco colores principales, dos familias tipográficas jerarquizadas, 77 íconos de trazo único, retícula de 8 px y componentes reutilizables con sus estados.",
+      "edt": "2.6.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-25.05",
-      "criterion": "Sistema de diseño documentado: paleta de a lo más cinco colores principales, a lo más dos familias tipográficas jerarquizadas, iconografía coherente, retícula y espaciado consistentes, y componentes reutilizables.",
+      "criterion": "El documento declara paleta, tipografías, iconografía, retícula y componentes, y la interfaz usa esos tokens.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "Sin prueba prevista",
-      "cases": []
+      "evidence": "RT-25.05/\\allowbreak{}P01\\newline Respaldo: sistema de diseño del prototipo y sus tokens.",
+      "cases": [
+        "RT-25.05/P01"
+      ]
     },
     {
       "id": "RT-25.06",
-      "state": "No cumple",
-      "component": "Se entrega con la Propuesta Final.",
-      "edt": "No aplica",
+      "state": "Cumple",
+      "component": "Sitio estático en HTML, CSS y JavaScript, publicado en línea, sin instalación ni complementos.",
+      "edt": "2.6.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-25.06",
-      "criterion": "El prototipo se entregará como enlace navegable en línea, sin instalación ni complementos, compatible con los navegadores modernos vigentes.",
+      "criterion": "El enlace abre y recorre las 52 pantallas en navegadores vigentes sin instalar nada.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "Sin prueba prevista",
-      "cases": []
+      "evidence": "RT-25.06/\\allowbreak{}P01\\newline Respaldo: enlace publicado; verificación en Chromium y Edge.",
+      "cases": [
+        "RT-25.06/P01"
+      ]
     },
     {
       "id": "RT-25.07",
-      "state": "No cumple",
-      "component": "Se entrega con la Propuesta Final.",
-      "edt": "No aplica",
+      "state": "Cumple",
+      "component": "LafroX mantiene el enlace publicado al menos hasta el 25-05-2027, seis meses después de la Propuesta Final; responsable: Líder de Desarrollo.",
+      "edt": "2.6.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-25.07",
-      "criterion": "El acceso al prototipo estará garantizado por un mínimo de seis meses desde su entrega.",
+      "criterion": "El enlace responde durante los seis meses siguientes a la entrega.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "Sin prueba prevista",
-      "cases": []
+      "evidence": "RT-25.07/\\allowbreak{}P01\\newline Respaldo: README del prototipo, sección de publicación.",
+      "cases": [
+        "RT-25.07/P01"
+      ]
     },
     {
       "id": "RT-25.08",
-      "state": "Cumple parcialmente",
-      "component": "Prototipos de flujos críticos con pruebas de usabilidad por perfil. El prototipo navegable se entrega con la Propuesta Final.",
+      "state": "Cumple",
+      "component": "Navegación entre las 52 pantallas, ingreso y validación de datos simulados, transiciones, estados de posado y activo, carga de archivos y desplegables funcionales.",
       "edt": "2.6.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-25.08",
-      "criterion": "Los prototipos describen la navegación por flujos críticos. Falta acreditar en la versión final las simulaciones, validaciones y estados interactivos exigidos.",
+      "criterion": "El recorrido completa ingreso, validación, carga de archivo y despliegue de opciones en el prototipo publicado.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "RT-25.08/\\allowbreak{}P01\\newline Evidencia prevista: recorrido del prototipo final con sus estados interactivos\\newline Alcance y brecha en el criterio.",
+      "evidence": "RT-25.08/\\allowbreak{}P01\\newline Respaldo: flujo de pedido (\\texttt{\\#/flujo}) y matriz de cumplimiento del prototipo.",
       "cases": [
         "RT-25.08/P01"
       ]
     },
     {
       "id": "RT-25.09",
-      "state": "No cumple",
-      "component": "Se entrega con la Propuesta Final.",
-      "edt": "No aplica",
+      "state": "Cumple",
+      "component": "Mapa del sitio, diagrama de navegación, taxonomía y nomenclatura, menús por perfil y jerarquía de la información de las 53 pantallas.",
+      "edt": "2.6.2",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-25.09",
-      "criterion": "Se entregará la arquitectura de información del prototipo: mapa del sitio completo, diagrama de navegación, taxonomía y nomenclatura, estructura de menús y jerarquía de la información.",
+      "criterion": "El documento cubre las cinco piezas y coincide con el registro de rutas del prototipo.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "Sin prueba prevista",
-      "cases": []
+      "evidence": "RT-25.09/\\allowbreak{}P01\\newline Respaldo: arquitectura de información del prototipo.",
+      "cases": [
+        "RT-25.09/P01"
+      ]
     },
     {
       "id": "RT-25.10",
