@@ -1,0 +1,186 @@
+% =====================================================================
+% Subdocumento 14 — Ventajas, beneficios y consolidación
+% ---------------------------------------------------------------------
+% Índice obligatorio (aclaraciones de la licitación, sección 11):
+%   Capítulo 14 · Introducción a las Ventajas, beneficios y consolidación
+%   14.1 Ventajas
+%   14.2 Beneficios y consolidación
+% No se puede agregar un 14.3 ni renombrar los títulos. Bajo 14.2 se
+% admiten subtítulos 14.2.1 a 14.2.4, uno por cada exigencia del T-7.
+% Contenido exigido: Bases Administrativas, Formulario T-7,
+% Subdocumento 14, pp. 59--60. Pondera 3 % (Formulario T-21) y su
+% omisión excluye la oferta (art. 58, p. 32).
+%
+% Reglas a cuidar en este capítulo:
+%  - Sin precios ni montos de la oferta (art. 50.2, p. 29). El ahorro
+%    se expresa con cifras del CLIENTE, horas, % o tiempos.
+%  - Toda cifra debe coincidir con el subdocumento que la origina
+%    (SD3, SD4, SD7, SD9, SD10, SD11, SD13 y formularios).
+%  - Ningún título seguido de tabla, figura o lista sin frase previa.
+%  - Tablas del cuerpo: máximo 5 columnas, sin párrafos en celdas, con
+%    análisis después de la tabla.
+%  - Figuras propias, citadas antes, explicadas después, letra >= 9 pt.
+% =====================================================================
+
+\chapter{Introducción a las Ventajas, beneficios y consolidación}
+\label{cap:subdoc14}
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{4pt}
+
+% Introducción: resumir el capítulo y su conexión con los demás
+% subdocumentos, anexos y formularios (aclaraciones, sección 2).
+% Este subdocumento no tiene formulario ni anexos asociados.
+
+Este subdocumento reúne la propuesta de LafroX para Distribuidora Puelche S.A. y la examina como un todo. La sección 14.1 sintetiza la propuesta de valor desde una perspectiva de ingeniería integral. La sección 14.2 cuantifica los beneficios para el CLIENTE, muestra cómo la solución equilibra alcance, tiempo, costo y calidad, y verifica que la arquitectura, la EDT, el cronograma, los riesgos, la calidad y la operación responden a las mismas decisiones (Bases Administrativas, Formulario T-7, Subdocumento 14, pp.~59--60).
+
+% Párrafo de conexión: nombrar de dónde sale cada pieza que aquí se
+% consolida. Sugerencia de orden:
+%  - SD2 (problema y línea base) y SD3 (alcance, catálogo RF/RNF, T-12).
+%  - SD4 (arquitectura lógica y física, T-11) y SD5 (datos).
+%  - SD6, SD7 (EDT, T-14, T-15, T-18) y SD12 (equipo, T-8).
+%  - SD8 (riesgos, T-16) y SD9 (calidad, T-13, T-17).
+%  - SD10 y SD11 (operación, niveles de servicio, mantención).
+%  - SD13 (innovaciones, T-19).
+% La valorización económica de los beneficios no se repite aquí: va en
+% la Oferta Económica (Entregable 1, sección 1.3) por el art. 50.2.
+
+\section{Ventajas}
+
+% Síntesis de la propuesta de valor desde una perspectiva de ingeniería
+% integral (T-7, SD14, viñeta 1). No repetir el SD3: explicar por qué
+% el conjunto funciona para Puelche y no solo qué módulos tiene.
+%
+% Ideas que el Caso valora y que conviene argumentar con evidencia de
+% los otros subdocumentos:
+%  - Capturar el dato donde ocurre el hecho (andén, góndola, local,
+%    cabina) y que viaje sin transformarse a mano (Caso, cap. 7, p. 12).
+%  - Operación sin señal: turno completo offline, despacho durante un
+%    corte, captura a -22 °C (Caso, cap. 19, p. 35).
+%  - Modelo híbrido nube / on-premise del art. 16 y su justificación.
+%  - Cliente real: el almacenero sin internet y el personal con 20-30
+%    años; adopción que no se decreta (Caso, cap. 19, p. 35).
+%  - Captura del conocimiento del planificador antes de su jubilación
+%    (Caso, cap. 18, resultado 16, p. 35).
+%  - Cartera de cinco innovaciones (SD13) integrada a la EDT.
+%
+% Figura sugerida: mapa de propuesta de valor que una cada dolor del
+% Caso (cap. 7) con la decisión de diseño que lo resuelve y el
+% subdocumento donde se sustenta. Citarla antes y explicarla después.
+
+La propuesta de valor de LafroX se construye sobre una premisa del caso: los indicadores de Puelche no mejoran con la compra de módulos, sino capturando el dato donde ocurre el hecho y haciéndolo viajar sin transcripción manual (Bases Técnicas del caso, cap.~7, p.~12). Esta sección resume las decisiones de ingeniería que materializan esa premisa y el subdocumento donde se sustenta cada una.
+
+\section{Beneficios y consolidación}
+
+La consolidación se evalúa como coherencia interna de la propuesta: la arquitectura sostiene el alcance, la EDT contiene la arquitectura, el cronograma refleja la EDT y el costo deriva de todo lo anterior (Bases Técnicas del caso, cap.~19, p.~35). El CLIENTE verifica además esa coherencia de forma transversal en todos los ítems de la evaluación técnica (Bases Administrativas, art.~57.2, p.~32). Las subsecciones siguientes desarrollan, en ese orden, los beneficios cuantificados, el equilibrio de las cuatro restricciones del proyecto, la coherencia arquitectónica y la trazabilidad de extremo a extremo.
+
+\subsection{Beneficios cuantitativos para el CLIENTE}
+
+% Cuatro ejes exigidos (T-7, SD14, viñeta 2):
+%  a) Mejoras de desempeño: OTIF, fill rate, ruta < 20 min, retiro
+%     sanitario < 2 h, tiempo de respuesta p95 de la transacción
+%     crítica (BTT, cap. 10; valor del caso o 3 s).
+%  b) Reducción del tiempo de restauración: RTO <= 4 h, RPO <= 15 min
+%     (BA, art. 20, p. 15); MTTR crítico <= 4 h (BA, art. 78.3, p. 40);
+%     tiempo de restauración DORA declarado en RT-04.12.
+%  c) Aumento de disponibilidad: 99,9 % mensual sobre la transacción de
+%     negocio de extremo a extremo (BA, art. 78.2, p. 40; RT-10.01).
+%     Contrastar con la situación actual del caso (sin medición, cortes).
+%  d) Ahorro operacional: horas del planificador, diferencias de
+%     rendición, pérdida de envases, guías extraviadas, reentregas,
+%     merma. Usar cifras del CLIENTE (Caso, cap. 7), nunca montos de la
+%     oferta (art. 50.2, p. 29).
+% Cada meta debe ser la misma comprometida en SD3 (criterios de
+% aceptación), SD10 (SLA) y SD13 (indicadores de innovación), con el
+% mes del cronograma en que se mide (SD7 / T-14).
+%
+% Tabla de síntesis sugerida (máximo 5 columnas):
+%   Indicador | Situación 2025 | Meta comprometida | Mes de medición | Fuente
+% Mientras no estén confirmadas las metas y los meses de SD3/SD10/SD13,
+% se deja solo la línea base del Caso (Tabla 14.1).
+
+Los beneficios se miden contra la situación de 2025 que entrega el caso, porque sobre esos indicadores el proponente debe comprometer mejoras verificables (Bases Técnicas del caso, cap.~7, tablas 7.1 a 7.3, pp.~11--12). La Tabla~\ref{tab:14-linea-base} reúne los indicadores de partida que esta subsección utiliza.
+
+\parte{tablas/tab_SD14_linea_base}
+
+% Análisis posterior a la tabla: qué se concluye de ella. Agregar las
+% metas y el mes de medición cuando se confirmen contra SD3, SD10 y
+% SD13, y separar el texto en los cuatro ejes a) a d).
+
+Los indicadores de la tabla comparten un origen: el dato se registra tarde, a mano o no se registra. Las mejoras de desempeño y el ahorro operacional se miden contra esos valores. El caso no entrega una línea base de disponibilidad ni de tiempo de restauración; esos dos ejes se comparan con los umbrales contractuales de 99,9~\% de disponibilidad mensual sobre la transacción de negocio de extremo a extremo, RTO de 4 horas y RPO de 15 minutos (Bases Administrativas, art.~20, p.~15, y art.~78, p.~40).
+
+\subsection{Equilibrio entre alcance, tiempo, costo y calidad}
+
+% Demostración exigida (T-7, SD14, viñeta 3). Argumentar con datos
+% propios de la oferta, sin montos:
+%  - Alcance: 100 % en la EDT (230 paquetes, T-14) y reparto E1/E2.
+%  - Tiempo: cronograma contractual de 56 meses (art. 17), hitos E-25,
+%    ruta crítica y holguras del SD7; solapamientos meses 13-15 y 19-20.
+%  - Costo: HH del T-15 y dotación del SD12 (horas, no pesos);
+%    reservas de contingencia del SD8 expresadas en HH o días.
+%  - Calidad: puertas y umbrales bloqueantes del SD9 (T-13, T-17).
+%  - Decisiones de compromiso: qué se dejó en E2, qué se excluyó (SD3)
+%    y qué riesgo se aceptó (SD8), con su efecto en las otras tres.
+% Figura sugerida: diagrama de las cuatro restricciones con las
+% decisiones que las equilibran y el subdocumento de origen.
+
+La solución se planificó para que ninguna de las cuatro restricciones del proyecto se resuelva a costa de otra sin una decisión explícita. Esta subsección muestra esas decisiones y su efecto sobre el alcance comprometido, el cronograma contractual, el esfuerzo estimado y los umbrales de calidad.
+
+\subsection{Coherencia arquitectónica y tecnológica}
+
+% Exigido por T-7, SD14, viñeta 4, y verificado por el art. 57.2.
+% Mostrar que la misma decisión aparece igual en todos los
+% subdocumentos (tecnología, etapa, umbral, proveedor, región). Una
+% contradicción aquí es indicio de IA (aclaraciones, sección 7.1 c).
+% Puntos sensibles ya detectados en revisiones anteriores:
+%  - RTO 4 h / RPO 15 min y disponibilidad 99,9 % en SD4, SD10, SD11.
+%  - Autonomía offline de 24 h vs caché de identidad.
+%  - DTE emitido solo por el ERP.
+%  - Proveedores de conectividad y región de nube iguales en SD4, SD12
+%    y T-11.
+% Tabla de síntesis sugerida: Decisión | Valor | Subdocumentos donde
+% aparece | Evidencia (máximo 5 columnas, sin párrafos).
+
+La coherencia se verifica siguiendo cada decisión de diseño a través de los subdocumentos que la utilizan. Esta subsección identifica las decisiones que más secciones comparten y confirma que conservan el mismo valor en la arquitectura, los datos, el plan de trabajo, los riesgos, la calidad y la operación.
+
+\subsection{Trazabilidad de extremo a extremo}
+
+% Exigido por T-7, SD14, viñeta 5: requerimiento -> diseño ->
+% construcción -> prueba -> implantación -> operación.
+% Fuentes de cada eslabón:
+%  - Requerimiento: catálogo RF/RNF del SD3 y cumplimiento T-12.
+%  - Diseño: componentes del SD4 / T-11 y modelo de datos del SD5.
+%  - Construcción: paquetes de la EDT (T-14) y HH (T-15).
+%  - Prueba: casos y niveles del SD9 / T-17; trazabilidad del T-13.
+%  - Implantación: plan del SD7 / T-18 y criterios de cierre.
+%  - Operación: SLA del SD10 y planes del SD11.
+% Figura sugerida: cadena de trazabilidad con un ejemplo recorrido de
+% punta a punta (por ejemplo, el retiro sanitario en menos de 2 h:
+% criterio 1 del Caso, cap. 18, p. 34). Tabla de síntesis con algunos
+% requerimientos críticos, no el listado completo (va en T-12/T-13).
+
+La trazabilidad permite seguir un requerimiento del CLIENTE desde su origen hasta el indicador con que se controla en la operación. Esta subsección describe los seis eslabones de esa cadena, los documentos que registran cada uno y un recorrido completo sobre un requerimiento crítico del caso.
+
+\section*{Referencias}
+\phantomsection
+\addcontentsline{toc}{section}{Referencias}
+
+Las condiciones contractuales y los requisitos técnicos citados corresponden a los siguientes documentos de la licitación:
+
+\begin{itemize}
+\item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas}.
+\item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales}.
+\item Distribuidora Puelche S.A. (2026c). \emph{Bases Técnicas del caso: Caso 02, Logística}.
+\end{itemize}
+
+\begin{anexohorizontal}
+\setlength{\textwidth}{\linewidth}
+\section*{Declaración de uso de IA}
+\phantomsection
+\addcontentsline{toc}{section}{Declaración de uso de IA}
+
+La Tabla~\ref{tab:14-ia} identifica el uso de herramientas y el alcance de la revisión humana por sección del subdocumento.
+
+\parte{tablas/tab_SD14_IA}
+
+Este subdocumento no tiene anexos ni formularios asociados.
+\end{anexohorizontal}
