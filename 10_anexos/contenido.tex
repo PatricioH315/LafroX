@@ -181,9 +181,40 @@ Cada condición identifica lo que se formaliza antes de habilitar el servicio en
 El diseño de SD4 comprende cinco sitios logísticos y la casa matriz de Talca como sexta instalación, de oficinas y sin cómputo propio. La mesa cubre a sus usuarios y, ante intervención presencial, el gerente desplaza al especialista de guardia con suplente para los demás sitios. En M1 el CLIENTE confirma la ubicación, accesos, traslado y reserva aplicable. Si se confirma otro sitio operativo, se revisan los requisitos de la tipología Concepción según SD4 (BA, art. 5; Caso RT-21.16; SD4, 4.1.21 y 4.2.2.1).
 
 \item[B-02. Habilitación y guardias.]
-El T-8 nomina a Guillermo Castillo (Operación/SRE, 100~\% en Operación), Álvaro Catalán (Seguridad, 5~\%) y Tomás Pérez (Desarrollo, 15~\%). La nómina se completa por tecnología y turno con titular, suplente, competencia, dedicación, período y canal de escalamiento. Quedan por formalizar las asignaciones de guardia y sus suplencias para plataforma y nube, redes/NOC, seguridad/SOC, mesa y las aplicaciones e integraciones que requieren escalamiento. Para los servicios que se activan antes de Operación, se verifica su cobertura antes de la apertura del turno. El Líder de Operación/SRE consolida el cuadrante de Operación antes del mes 21 (T-8, sección 1; SD12, Anexos 12.B a 12.D; RT-21.03).
+El Líder de Operación/SRE consolida el cuadrante nominal antes de M21. Para los servicios que se activan durante marcha blanca o soporte puente, confirma la cobertura antes del primer turno aplicable. La Tabla~\ref{tab:sd10-b02-coordinacion} recoge la dedicación de los responsables que el T-8 ya nomina. Las guardias y suplencias se asignan por separado en la Tabla~\ref{tab:sd10-b02-cobertura}.
 
-Para conciliar el cuadrante, el T-15 prevé 13 plazas de Mesa N1 y 38.246 HH en los meses 21 a 56, ocho plazas de NOC y 21.748,2 HH del perfil en ese mismo período, y seis plazas de SOC y 32.112 HH en los meses 13 a 56. El modelo financiero, hojas «COSTOS HH - SUELDOS» y «HH POR ROL Y MES», reproduce esas cifras para los mismos perfiles y períodos. Operación verifica relevos, concurrencia y dedicación individual en un mes ordinario de mesa de 962 HH (mes 21) y en el peak de 1.570 HH de septiembre de 2029 (mes 32). Las horas agregadas se usan para dimensionar el cuadrante. La cobertura por turno se acredita con su nómina (T-15, secciones 4 y 5.7; T-14, paquetes 10.1.1, 10.1.2 y 10.1.4).
+\begin{tablalafrox}{Responsables nominados y dedicaciones en Operación}{tab:sd10-b02-coordinacion}
+  {F{0.25} Y F{0.12} F{0.11} F{0.17}}
+  {\cab{Persona y rol} & \cab{Ámbito de coordinación} & \cab{Dedicación T-8} & \cab{Perfil T-15} & \cab{Perfil suplente SD12}}
+Guillermo Castillo, Líder de Operación/SRE & Dirección de Operación, confiabilidad del servicio, NOC y Mesa. & 100~\% & 24 & DevOps Senior, 14S. \\
+Álvaro Catalán, Encargado de Seguridad & Coordinación de ciberseguridad y supervisión del SOC. & 5~\% & 13 & Ciberseguridad Senior, 31E. \\
+Tomás Pérez, Líder de Desarrollo & Escalamiento técnico de aplicaciones. & 15~\% & 04 & Back-end Senior, 09S. \\
+Bastián Trejo, Arquitecto de Solución & Consultas de arquitectura de nube e infraestructura híbrida. & 2~\% & 03S & Segundo Arquitecto Senior, 03S. \\
+Leandro Chamorro, Líder de Datos & Apoyo puntual en datos y conciliación. & 1~\% & 23 & Datos y Bases Senior, 10S. \\
+Rodrigo Valdés, Líder de Integración & Apoyo puntual en EDI, AS2 y ERP. & 1~\% & 02 & Integración Senior, 12S. \\
+\end{tablalafrox}
+\fuentesdiez{Formulario T-8, sección 1; SD12, sección 12.1.5 y Anexos 12.B a 12.D; T-15, tabla de perfiles y esfuerzo. Dedicaciones declaradas para Operación, M21--M56.}
+
+El SD12 propone perfiles para suplir a los responsables de coordinación. Falta confirmar las personas y la dedicación. El perfil 12S tiene 0 HH en Operación en el T-15. Para utilizarlo como suplente de Integración en M21--M56, el responsable debe conciliar su dedicación con T-15 o confirmar otra asignación respaldada.
+
+\begin{tablalafrox}{Cuadrante B-02 por tecnología y cobertura}{tab:sd10-b02-cobertura}
+  {F{0.21} F{0.24} F{0.19} F{0.18} Y}
+  {\cab{Servicio y perfil T-15} & \cab{Ventana y período} & \cab{Titular y suplente} & \cab{Competencia a acreditar} & \cab{Dedicación individual}}
+Plataforma y nube, 14S/14J & M21--M56. Guardia L2/L3 fuera de horario para incidentes críticos y altos. & Ambos por confirmar. & AWS, plataforma local y recuperación. & HH por persona y ventana por confirmar. \\
+Redes/NOC, 30 & Supervisión continua desde M16. En Operación, dos posiciones de atención de Mesa de 20:00 a 22:00, lunes a sábado. & Ambos por turno por confirmar. & WAN, enlaces de sitio y monitoreo. & HH por puesto y relevo por confirmar. \\
+Seguridad/SOC, 31O/31E & SOC 24$\times$7 desde M13; escalamiento de incidentes críticos y altos. & Ambos por turno y guardia por confirmar. & SIEM, triaje y respuesta a incidentes. & HH por turno y guardia por confirmar. \\
+Aplicaciones, 04 & M21--M56. Escalamiento L2/L3 para incidentes críticos y altos. & Ambos por confirmar. & Diagnóstico y contingencia de aplicaciones. & HH fuera de coordinación por confirmar. \\
+Datos, 23 & Apoyo puntual M21--M56. Ventana concreta de escalamiento por confirmar. & Ambos por confirmar. & Persistencia, recuperación y conciliación. & HH de escalamiento por confirmar. \\
+Integraciones críticas, 02 & Apoyo puntual M21--M56. Validar ventanas y canal de ERP/DTE y demás contrapartes. & Ambos por integración por confirmar. & ERP, DTE, EDI, AS2 y conciliación. & HH de escalamiento por confirmar. \\
+Mesa N1, 17 & M21--M56; 04:00 a 20:00 de lunes a sábado y extensión nocturna y dominical en septiembre y diciembre. & Ambos por turno por confirmar. & Registro, primera atención y transferencia al NOC. & HH por agente y turno por confirmar. \\
+\end{tablalafrox}
+\fuentesdiez{SD10, sección 10.1 y Anexo 10.A; T-15, perfiles y secciones 4.1 y 5.7; T-14, paquetes 10.1.1, 10.1.2 y 10.1.4.}
+
+Para formalizar cada fila, Operación registra nombre de titular y suplente, fecha y ventana de cobertura, evidencia de competencia, HH o porcentaje imputado y canal de escalamiento. El responsable de cada área respalda sus asignaciones. Guillermo Castillo registra fecha, respaldo y resultado de la validación del conjunto. Las guardias de la Tabla~\ref{tab:sd10-b02-cobertura} permanecen pendientes de esa confirmación.
+
+El contraste por calendario da 962 HH de Mesa en M21 ($26\times37=962$, capacidad agregada de ocho plazas de 128 HH) y 1.570 HH en M32 ($25\times(52+6)+5\times24=1.570$, capacidad agregada de trece plazas de 128 HH). Las 21.748,2 HH de ocho operadores NOC corresponden a M21--M56. Las 32.112 HH de seis analistas SOC cubren M13--M56, incluidas 26.280 HH de M21--M56; M13 requiere 696 HH de supervisión continua. Las hojas «COSTOS HH - SUELDOS» y «HH POR ROL Y MES» del modelo financiero reproducen las horas por perfil y período.
+
+La comprobación nominal contrasta, por persona, los turnos y horas del cuadrante con el T-15 y la dedicación del T-8. Verifica continuidad del NOC y SOC, relevos antes de abrir el servicio, atención de Mesa por el NOC de 20:00 a 22:00 y escalamiento crítico o alto por tecnología. En M21 y M32 comprueba simultaneidad y disponibilidad del suplente. Las horas agregadas de referencia sustentan el dimensionamiento; el resultado de esta comprobación por turno se registra con la nómina.
 
 \item[B-03. Acuerdos operacionales y contratos de apoyo.]
 El Anexo 10.C propone objetivos internos que caben en los máximos de BA 78.2. Operación verifica la cobertura de cada transferencia, el directorio y el respaldo de fabricante o contraparte, incluida atención presencial, reemplazo y continuidad del software de base. Se conserva la evidencia de alcance y vigencia antes de dar por formalizado cada acuerdo. La dotación, los contratos y los plazos aceptados requieren respaldo específico (Aclaraciones 10.2; BTT 8.4 y 21.3).
