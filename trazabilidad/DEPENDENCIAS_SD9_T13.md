@@ -94,7 +94,7 @@ Al recibir cada respuesta, guardar fecha, responsable, fuente y ubicación de la
 | RT-26.01 / RT-26.03 | Las fichas T-19 y el SD13 respaldan arquitectura y TRL. El T-14 vincula por cuenta de innovación; Planificación revisa el desglose si se exige un paquete documental por ficha. |
 | SD3-06 | Se cotejaron los componentes afectados por el punto 5. El inventario de alcance completo sigue como antecedente de revisión, con las versiones propias de ese corte. |
 
-Resumen vigente del T-12: **653 filas, 644 Cumple, cinco parciales y cuatro No cumple**. El T-13 conserva nueve alias y 15 contratos de integración. Los cotejos que siguen son cortes históricos.
+Resumen vigente del T-12: **653 filas, 644 Cumple, cinco parciales y cuatro No cumple**. El T-13 conserva nueve alias, 15 contratos de integración y 1.346 casos previstos. El archivo `inventario_vigente_punto5.csv` registra la conciliación mecánica y el alcance del cotejo de contenido. Los cotejos que siguen son cortes históricos.
 
 ## SD3-04 — Pruebas y criterios del T-12 (corte anterior)
 
