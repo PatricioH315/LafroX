@@ -35,7 +35,7 @@ SOBRE = [
  ("LAFROX-Formulario-A-4", "Formulario A-4: Ausencia de conflictos de interés"),
  (ANT+"3-declaraciones/18-domicilio-valparaiso/LAFROX-Domicilio", "Constitución de domicilio en Valparaíso"),
  (ANT+"4-tecnicos/19-carta-presentacion-contratos/LAFROX-CartaPresentacion", "Carta de presentación y nómina de contratos similares"),
- (ANT+"4-tecnicos/20-cartas-compromiso/LAFROX-CartasCompromiso", "Cartas compromiso de socios y proveedores"),
+ (ANT+"4-tecnicos/20-cartas-compromiso/LAFROX-CartasCompromiso", "Cartas compromiso de socios, subcontratistas y proveedores clave"),
  ("LAFROX-Formulario-A-6", "Formulario A-6: Declaración de uso de IA generativa"),
  (ANT+"4-tecnicos/23-certificaciones/LAFROX-Certificaciones", "Certificaciones institucionales y de fabricante"),
 ]
