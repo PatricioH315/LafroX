@@ -214,4 +214,21 @@ La memoria de cálculo se mantiene una sola vez en el Anexo 4-W. Los resultados 
   \item \hyperref[sec:anexo-4b-nube]{4-W.9}: solicitudes equivalentes, escenarios del portal, tareas de API y cuota del canal tradicional.
 \end{itemize}
 
+
+\section{Decisiones y evidencias de habilitación}
+\label{anx:X-cierre}
+LafroX adopta los criterios siguientes a partir de las Bases, sin consultas previas al CLIENTE ni aprobaciones presumidas. La decisión de diseño se distingue de la evidencia que se obtendrá durante ejecución conforme a BTT 1.5. SD10, Anexo 10.D, conserva los mismos identificadores y controles.
+
+\paragraph*{CD-ERP. Emisor tributario y despacho}
+Se mantiene el ERP de 2017 como único emisor, sin sustituirlo ni modificar su software. M5 solicita la guía al cerrar la carga nocturna, conserva folio y copia local y verifica antes de 05:30 la correspondencia entre carga, guía y ruta. Una modificación exige guía nueva, sin duplicar la emisión en un reintento. GU-08 del Anexo 10.C separa el enlace, la ACL y el ERP; no convierte una retención segura en salida cumplida. AL-DTE-01 registra las 96 salidas, la guía y su hora. La limitación del emisor ante pérdida de sala se mantiene en 4.3.2.5; una réplica de WMS no acredita continuidad del ERP ni se presupone otro emisor disponible.
+
+\paragraph*{CD-RPO. Protección y medición externa}
+Se mantiene RT-07.04 sin dispensa y la autonomía de 24 horas de RT-03.10. ARQ/SRE controlan el último punto consistente fuera del dominio afectado, alarman a cinco y quince minutos, priorizan la réplica en los tres caminos y conservan el outbox para conciliar por UUID. AL-DR-01 mide por separado pérdida regional, pérdida de sitio con extracción activa y el escenario combinado referenciado en 4.3.2.4. No se declara recuperable un dato por existir solo en el sitio ni se cambia la hora de inicio para mejorar el indicador. El riesgo residual no equivale a conformidad demostrada del escenario adverso.
+
+\paragraph*{CD-TLS. Transporte exigido y verificación}
+LafroX elimina la excepción TLS 1.2 para ERP y terceros: las conexiones TLS exigidas usan exclusivamente TLS 1.3, sin negociación descendente. SEG e Integración registran por interfaz los extremos, certificados, autenticación, puerto y negociación efectiva, y prueban conexión válida, rechazo de TLS 1.2 y certificado inválido. Una terminación frontal no basta si el siguiente tramo de red rebaja el protocolo. Las interfaces no documentadas del ERP se verifican en el levantamiento de INT-07 sin modificar su software; no se inventa su compatibilidad ni se habilita un protocolo inferior para aparentarla. Una incompatibilidad impide aceptar ese recorrido y obliga a resolver la integración bajo responsabilidad de LafroX, conservando la restricción sobre el ERP. El cambio documental no acredita una prueba de interoperabilidad ya ejecutada.
+
+\paragraph*{Control de cambios y evidencia por etapa}
+Todo cambio de enlace, réplica, identidad, contrato TLS o almacenamiento reabre las pruebas afectadas de los anexos 4-M y 4-V. CAL contrasta SD3/T-12, SD5, SD8, SD9/T-13 y SD10 antes de registrar su resultado. Las evidencias identifican versión, escenario, ejecutor y resultado real. AL-UI-01 se verifica sobre el prototipo de los perfiles y flujos aplicables: el Informe 3 presenta el avance y la oferta final el prototipo completo, según sus aclaraciones. Las actas de pruebas de ejecución se obtienen en su etapa, sin presentarlas como ya realizadas ni tratar su ausencia actual como un acuerdo faltante del CLIENTE.
+
 \endgroup

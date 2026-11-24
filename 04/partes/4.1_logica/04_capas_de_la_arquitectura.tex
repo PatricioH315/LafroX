@@ -53,19 +53,19 @@ Presentación reúne las superficies de trabajo. Borde protege su entrada. Puert
 
 Las capas 7 y 8 atraviesan las demás, no duplican reglas de negocio.
 
-La arquitectura se presenta primero mediante su vista general completa (Figura~\ref{fig:arql-general-completa}) y después mediante las vistas de sus ocho capas. La vista general relaciona los actores y las funciones de negocio con los componentes que las sostienen. Cada vista por capa desarrolla sus responsabilidades e intercambios.
+La arquitectura se presenta primero mediante su vista general de responsabilidades (Figura~\ref{fig:arql-general-completa}) y después mediante las vistas de sus ocho capas. La vista general sitúa canales, responsabilidades y componentes principales; el detalle de actores e intercambios se conserva en las ocho vistas siguientes y en los anexos 4-D y 4-N. Cada vista por capa desarrolla sus responsabilidades e intercambios.
 
 \clearpage
 \begin{landscape}
 \begin{center}
-  \includegraphics[width=\linewidth,height=0.86\textheight,keepaspectratio]{figuras/logica/capas/ARQL-01_General_definitivo.pdf}
-  \captionof{figure}{Vista general completa de la arquitectura lógica}
+  \includegraphics[width=\linewidth,height=0.86\textheight,keepaspectratio]{figuras/logica/capas/ARQL-01_General_legible.pdf}
+  \captionof{figure}{Vista general de responsabilidades de la arquitectura lógica}
   \label{fig:arql-general-completa}
 \end{center}
 {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: Bases Técnicas Transversales, RT-02.01 (ocho capas); caso, cap. 15, RT-03.10 (autonomía). Diseño LafroX: ADR-01/06/23 y contratos de anexos 4-D/4-F.\par}
 \end{landscape}
 
-La vista general muestra cómo cada actor accede a la solución desde su aplicación, portal o consola y se relaciona con los módulos M1--M12. Se lee desde las personas hacia las reglas de negocio, las integraciones y los datos, distinguiendo los componentes de nube y los del sitio. Las conexiones representan intercambios sujetos a autorización, no acceso directo a las bases de datos. Seguridad y observabilidad acompañan todo el recorrido. Sus controles y las condiciones de operación sin conexión se desarrollan en los apartados siguientes.
+La vista general identifica las aplicaciones, portales y consolas, y ubica los módulos M1--M12 en la capa de negocio. El vínculo individual de actores y módulos se desarrolla en el Anexo 4-N y en las vistas por capa. Se lee desde las personas hacia las reglas de negocio, las integraciones y los datos, distinguiendo los componentes de nube y los del sitio. Las conexiones representan intercambios sujetos a autorización, no acceso directo a las bases de datos. Seguridad y observabilidad acompañan todo el recorrido. Sus controles y las condiciones de operación sin conexión se desarrollan en los apartados siguientes.
 
 La lectura por capas destaca sus responsabilidades: presentación captura y muestra información. Borde protege la entrada. Las puertas de servicio validan las solicitudes, el negocio aplica las reglas en Laravel. Integración conserva y distribuye eventos. Y acceso a datos administra la persistencia. Seguridad y observabilidad son transversales, no pasos finales del procesamiento. La puerta local permite que la bodega siga operando sin WAN, mientras las colas conservan el trabajo sin confirmar para reconciliarlo al recuperar la conexión.
 

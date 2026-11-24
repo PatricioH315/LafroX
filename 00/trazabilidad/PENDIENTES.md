@@ -128,3 +128,31 @@ Base SD4: 24817291d271fa39f7d9e59335646e778d60c563. Base SD10: bd433c249e0720f38
 - Se preservó el punto de revisión humana/IA fuera del alcance de esta tarea. Se editaron únicamente los checkouts LaTeX de SD4 y SD10; las referencias derivadas en T-12/T-13 se registran para sincronización por sus responsables, sin alterar otros subdocumentos.
 
 - El T-12 actualizado en el pull renumeró 20 referencias citadas en SD4: se corrigieron contra la fila del requisito vigente, sin cambiar el T-12. La tabla nueva de capacidad usa numeración propia 4-W.7-A para conservar A.39 y siguientes y sus referencias externas.
+
+
+## Correcciones cruzadas y consultas de cierre — 23-11-2026
+
+- Figura 1: rótulo Valkey (Amazon ElastiCache · solo nube) corregido en el XML editable y en el PDF vectorial. El script 04/herramientas/corregir_rotulo_valkey.py conserva dimensiones, fuentes, imágenes y el resto del texto; repetirlo verifica su estado. REDIS_SESIONES_CACHE se identifica expresamente como nombre lógico.
+- El Anexo 4-X.5 reúne CD-ERP, CD-RPO y CD-TLS con antecedentes solicitados, responsables y criterios de cierre. El usuario confirmó que no existe respaldo ni acuerdo confirmado. No se atribuye continuidad del ERP, persistencia externa bajo aislamiento total, compatibilidad TLS ni modificación contractual ya aprobadas.
+- SD5 se alinea con la política vigente de reparto de SD4, SD8 y T-13. Se conserva el mínimo contractual de 14 h de autonomía y se aplica la asignación firmada hasta fin programado más 30 min, con máximo de 16 h desde emisión.
+- SD10 conserva las decisiones externas abiertas y exige evidencia antes de aceptarlas; integra la ficha de SLA y casos de conciliación, distingue las restauraciones sintéticas y vincula capacidad y accesibilidad a su prueba. No se incorporan personas, precios, contratos, firmas ni ensayos reales inexistentes.
+- La verificación cruzada reutilizable reside en SD10/verificacion/verificar_coherencia_interdocumental.py. Comprueba los cierres documentales y casos de intervalos SLA; informa las consultas abiertas separadas de los errores. No acredita aceptación contractual.
+
+
+## Criterios adoptados después de pull general — 23 de noviembre de 2026
+
+Se integraron las 13 ramas LaTeX vigentes mediante fetch y pull ff-only, preservando el trabajo local. Esta entrada sustituye el tratamiento anterior como consultas pendientes al CLIENTE: el usuario instruye resolver el diseño con criterio propio, sin comunicación con él. Se conservaron las autorizaciones contractuales previstas para la ejecución, sin atribuirlas como ya obtenidas.
+
+- Figura 1: vista vectorial legible con fuente mínima impresa de 10,57 puntos; original detallado, XML y ocho vistas conservados. Valkey es el motor y REDIS_SESIONES_CACHE el identificador lógico.
+- Se actualizaron las 24 citas al T-12 actualmente integrado (98519867); enlaces, destinos y bibliografía pasan la comprobación.
+- Se retiró la excepción automática TLS 1.2. TLS 1.3 se exige por tramo, sin presentar la interoperabilidad del ERP como probada.
+- SLA: calendario íntegro T=T0 y exclusión solo del tiempo de falla coincidente con mantenimiento aprobado; relojes corridos.
+- Mesa: reserva C en seis peaks, incluidos M23 y el adelanto de valle; 2.010 HH adicionales de mesa y 308 HH NOC respecto de la base. A cargo de LafroX, sin cargo adicional y sin descontar otras funciones; conciliación interna de oferta separada, no contratación acreditada.
+- ERP: preemisión y control previo a 05:30; retener una carga no demuestra salida dentro de plazo. No se inventa una réplica del emisor.
+- RPO: se mantienen objetivo, autonomía, alarmas, extracción priorizada y evidencia por dominio; el escenario sin comunicación y con destrucción conserva el límite físico de 4.3.2.4. No se dispensa el requisito ni se lo declara probado.
+- BTT 1.5 y aclaraciones: distinguir diseño, avance de prototipo, prototipo final y pruebas reales de ejecución. Sin nuevas atribuciones de revisión humana.
+
+PDF: cuerpo 172 páginas y anexos 156; T-11 sin cambios. El contraste de fuentes y commits está en trazabilidad/contraste_bases_subdocumentos_20261123.json del checkout SD10. No se modificaron otros subdocumentos para forzar una conformidad ni se publicaron commits. Los PDF de SD5 se regeneraron únicamente para resolver la integración de cambios previos con origin.
+
+
+Pull previo a publicación (23 de noviembre de 2026): se integró 86f4732b, conservando el nuevo inventario TLS por tramo y el criterio local TLS 1.3 sin excepción automática. Se regeneró el anexo desde las fuentes combinadas para resolver el conflicto del PDF.
