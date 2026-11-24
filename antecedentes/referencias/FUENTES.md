@@ -34,11 +34,13 @@ Las fichas de ChileAtiende describen el trámite (contenido, emisor, vigencia); 
 | 19 Carta de presentación | `19-sii-licitacion-anexo-experiencia.pdf` | https://www.sii.cl/transparencia/2025/1605-134-SE25.pdf | Informe de evaluación del SII que muestra los campos del anexo de experiencia en servicios similares (últimos 5 años) |
 | 19 Carta de presentación | `19-oei-anexo-iii-experiencia-software.docx` | https://oei.int/wp-content/uploads/2025/10/anexo-iii-experiencia-software.docx | Formulario de experiencia en proyectos de software |
 | 20 Cartas compromiso | `20-servicioproteccion-anexo5-carta-compromiso.docx` | https://www.servicioproteccion.gob.cl/601/articles-1878_recurso_5.docx | Solo estructura del anexo «Carta de compromiso» (el contenido es propio) |
+| 35 Boleta de seriedad | — (solo enlace) | https://sbif.cl/sbifweb/internet/archivos/norma_890_3.pdf | Norma 890 SBIF (RAN 8-11): menciones mínimas de la boleta y obligación caucionada explícita |
+| 35 Boleta de seriedad | — (solo enlace) | https://www.chilecompra.cl/apoyo-en-financiamiento-y-garantias/instrumentos-de-garantias/ | Carácter a la vista e irrevocable; monto, vigencia y moneda los fijan las bases (Art. 35) |
 | 23 Certificaciones | `23-kyndryl-chile-certificado-iso27001.pdf` | https://www.kyndryl.com/content/dam/kyndrylprogram/certifications/iso27001/kyndryl_chile_SpA_iso_27001_2022_22_jun_2028.pdf | Formato de certificado ISO/IEC 27001 (alcance, sitios, vigencia) |
 
 ## Sin muestra pública descargable
 
-No se encontró una muestra pública descargable de: comprobante de patente de Valparaíso, informe del Boletín Comercial/Equifax Chile, carta bancaria de capacidad de garantías, y escritura de mandato o de constitución de SpA completas. Esos documentos se armaron con la estructura de las fuentes anteriores y las Bases.
+No se encontró una muestra pública descargable de: comprobante de patente de Valparaíso, boleta de garantía bancaria, informe del Boletín Comercial/Equifax Chile, carta bancaria de capacidad de garantías, y escritura de mandato o de constitución de SpA completas. Esos documentos se armaron con la estructura de las fuentes anteriores y las Bases.
 
 ## Otros
 

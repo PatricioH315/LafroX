@@ -4,7 +4,7 @@
 set -u
 here="$(cd "$(dirname "$0")" && pwd)"
 fail=0
-for tex in "$here"/[1-4]-*/*/LAFROX-*.tex; do
+for tex in "$here"/[1-5]-*/*/LAFROX-*.tex; do
   case "$tex" in *"${1:-}"*) ;; *) continue ;; esac
   dir="$(dirname "$tex")"
   if (cd "$dir" && latexmk -r "$here/latexmkrc" -silent "$(basename "$tex")" >/dev/null 2>&1); then

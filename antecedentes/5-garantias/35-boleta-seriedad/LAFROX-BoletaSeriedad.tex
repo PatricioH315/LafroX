@@ -1,0 +1,55 @@
+\documentclass[11pt]{article}
+\usepackage[sans]{sim-oficial}
+\input{datos-proponente}
+\renewcommand{\arraystretch}{1.25}\setlength{\parskip}{4pt}
+\begin{document}
+% Bid bond issued by the fictitious bank of doc 13 (Art. 35 Bases Administrativas).
+%  Mandatory mentions follow SBIF Norma 890 / RAN 8-11: issuing bank and its
+%  signature, beneficiary, applicant with RUT, guaranteed obligation, amount,
+%  place and date.
+\noindent\begin{tabularx}{\linewidth}{@{}X r@{}}
+  {\Large\bfseries\color{black!80} BANCO SIMULADO DEL PACÍFICO S.A.} &
+  \multirow{3}{*}{\SIMhueco{2.6cm}{1.6cm}{Espacio del código de verificación del banco (omitido)}}\\
+  {\small Banca Empresas --- Sucursal Valparaíso} & \\
+  {\small Av. Pedro Montt 0000, Valparaíso, Chile} & \\
+\end{tabularx}\\[2pt]
+\rule{\linewidth}{1.2pt}
+
+\begin{center}
+  {\Large\bfseries BOLETA DE GARANTÍA}\\[2pt]
+  {\large\bfseries N.\textdegree{} \SIMboletanumero}\\[2pt]
+  {\small Pagadera a la vista --- Irrevocable --- No endosable}
+\end{center}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\raggedright\arraybackslash}p{4.6cm} X@{}}\toprule
+  Lugar y fecha de emisión & Valparaíso, \SIMboletaemision\\
+  Tomador & \LFXempresa, RUT \LFXrut\\
+  Domicilio del tomador & \LFXdomicilio\\
+  Beneficiario & \LFXcliente, o a su orden\\
+  Monto & \textbf{\SIMboletamonto} (\SIMboletamontoletras)\\
+  Moneda & Dólares de los Estados Unidos de América\\
+  Fecha de vencimiento & \textbf{\SIMboletavencimiento}\\
+  Oficina de pago & Sucursal Valparaíso de \SIMbancogarante\\\midrule
+  Glosa & «\SIMboletaglosa»\\\bottomrule
+\end{tabularx}
+
+\medskip
+\noindent\SIMbancogarante{} declara haber recibido de \textbf{\LFXempresa} la suma de \textbf{\SIMboletamonto} (\SIMboletamontoletras), que pagará a \textbf{\LFXcliente}, o a su orden, \textbf{a la vista}, a su sola presentación y requerimiento, sin necesidad de declaración judicial previa ni de expresión de causa, para garantizar la seriedad de la oferta presentada por el tomador en la \LFXlicitacion{} (Bases Administrativas, Art.~35).
+
+\noindent Esta boleta es \textbf{irrevocable}, \textbf{no endosable} y se extiende a la orden del beneficiario. Su vigencia cubre los ciento cincuenta días corridos exigidos desde la entrega de la propuesta (25 de noviembre de 2026) y vence el \SIMboletavencimiento. A solicitud del tomador podrá renovarse antes de su vencimiento por períodos no inferiores a treinta y cinco días corridos, hasta el décimo día hábil siguiente a la fecha de inicio del Contrato (Art.~35.3).
+
+\noindent El pago se efectuará en la oficina de pago indicada, contra la presentación del original de este documento, dentro del plazo de vigencia. Vencido este plazo sin requerimiento de cobro, la boleta caducará de pleno derecho.
+
+\vspace{18pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X X r@{}}
+  \rule{5cm}{0.5pt} & \rule{5cm}{0.5pt} &
+  \multirow{4}{*}{\SIMhueco{2.6cm}{2.2cm}{Espacio del timbre del banco (omitido)}}\\
+  Juan Muestra Ejemplo & Ana Ejemplo Prueba & \\
+  \small Apoderado (ficticio) & \small Apoderada (ficticia) & \\
+  \small \SIMbancogarante & \small \SIMbancogarante & \\
+\end{tabularx}
+
+\vfill
+\SIMnooficial{el banco emisor}
+
+\end{document}
