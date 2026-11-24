@@ -62,7 +62,7 @@ La nube se costea con la estimación mensual de la arquitectura, las licencias p
   Protección de endpoints & 97,60 & 3.513,64 & 140.545.692 & 156.162 \\
   Microsoft Intune & 29,05 y 32,93 & 1.169,95 & 46.798.128 & 51.998 \\
   Custodia de respaldos & 4,96 & 178,57 & 7.142.857 & 7.937 \\
-  Mapas, mensajería y pagos & 25,16 & 905,81 & 36.232.560 & 40.258 \\
+  Mapas, mensajería y pagos, modelo base & 25,16 & 905,81 & 36.232.560 & 40.258 \\
   Nube de las innovaciones & Variable & 38,92 & 1.556.805 & 1.730 \\
   Pruebas anuales de intrusión & Por evento & 576,00 & 23.040.000 & 25.600 \\
   Revisiones eléctricas semestrales & Por evento & 345,60 & 13.824.000 & 15.360 \\
@@ -74,12 +74,30 @@ AWS cuesta 14.615,05 UF en la Operación. La producción suma 13.280,97 UF, por 
 
 Los equipos de la Operación cuestan 671,66 UF (\$26.866.393 o USD~29.852) y se pagan en el mes 21: 382,33 UF para reponer red y oficina, 257,33 UF de seguridad y 32,00 UF de adecuación eléctrica y puntos de red. Los equipos de terreno del CLIENTE quedan fuera del flujo, en la hoja \texttt{HARDWARE DEL CLIENTE}, y su instalación y mantención se cobran como horas de los perfiles de LafroX.
 
+\subsection{Conciliación económica de avisos por canal}
+\label{sec:e2-avisos-rt1624}
+
+La proyección presupuestaria distribuye los dos avisos por entrega del Anexo 4-I usando como aproximación la cartera del Caso 02: 11.600 clientes tradicionales, 2.100 de \textit{food service} y 500 puntos de cadenas. En el escenario de oferta, la mitad del canal tradicional usa WhatsApp y la otra mitad SMS; \textit{food service} usa correo y cadenas, el portal. Se redondean entregas completas y el residuo diario se imputa al portal. Se presupuestan los días de lunes a viernes de M21--M56. Para dimensionar la reserva se aplica la demanda de punta a todo septiembre.
+
+\begin{tablalafrox}{Proyección y costo variable por canal, RT-16.24.}{tab:e2-avisos-canales}{Y R{1.7cm} R{1.7cm} R{2.1cm} Y}
+{\cab{Canal y proveedor} & \cab{Avisos/día régimen} & \cab{Avisos/día punta} & \cab{Avisos M21--M56} & \cab{Unidad y costo presupuestado}}
+WhatsApp, Meta Cloud API & 1.144 & 2.124 & 956.348 & USD 0,02000 por mensaje de utilidad entregado en Chile. \\
+SMS, Amazon SNS & 1.144 & 2.124 & 956.348 & USD 0,05178 por segmento en Chile. Se presupuesta un segmento por aviso y USD 21 al mes de identidad local. \\
+Correo, Amazon SES & 414 & 770 & 346.176 & USD 0,00010 por correo saliente sin adjuntos, modalidad por consumo. \\
+Portal, LafroX & 98 & 182 & 81.928 & USD 0 incremental por aviso; cómputo incluido en la plataforma. \\
+\textbf{Total} & \textbf{2.800} & \textbf{5.200} & \textbf{2.340.800} & 36 meses contractuales. \\
+\end{tablalafrox}
+
+Las tarifas de referencia al 24 de noviembre de 2026 se consultan en \href{https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing/}{Meta, lista USD de utilidad para Chile}, \href{https://aws.amazon.com/end-user-messaging/pricing/}{AWS, lista SMS Chile y número local}, y \href{https://aws.amazon.com/ses/pricing/}{AWS, SES por consumo}. Se presupuesta todo aviso de WhatsApp como facturable, sin descontar gratuidades ni descuentos. El modelo considera plantillas SMS en un segmento y remitente local. El presupuesto es USD~69.437,28 (1.562,34 UF) para M21--M56. Al mover diez puntos porcentuales de la cuota tradicional a SMS, el costo sube a USD~75.515,58. Al moverlos a WhatsApp, baja a USD~63.358,97.
+
+El costo variable lo absorbe LafroX dentro del precio ofertado. La hoja \texttt{AVISOS RT16.24} proyecta volúmenes y costos mensuales y los imputa en \texttt{COSTOS}, fila 70. Se reemplaza el término histórico de 2.000 mensajes por USD~0,0797 de \texttt{ADQUISICIONES OPERACION}, C62, conservando los cargos de mapas, la provisión común y la comisión de pagos una sola vez. El incremento neto de costo es 1.433,22 UF en los 36 meses. El precio se conserva con la base de ingresos de la oferta. El modelo actualizado \texttt{LafroX\_ModeloFinanciero\_Punto5.xlsx} contiene la proyección mensual y los indicadores recalculados. El costo actualizado del proyecto es 211.460,40 UF y el VAN antes de impuestos es 24.607,54 UF. La TIR mensual recalculada es 7,40\,\%. Las cifras que remiten al modelo de base corresponden al corte previo a este ajuste.
+
 \subsection{Licencias, conectividad, energía e instalaciones}
 \label{sec:e2-op-licencias}
 
 CrowdStrike cuesta 19,99 USD por equipo al mes sobre 217 servidores y estaciones, 97,60 UF mensuales. Intune Plan 1 Device, con Claro Cloud Chile como proveedor, cuesta 3,38 USD por equipo: 29,05 UF al mes por los 382 equipos Android del parque inicial y 32,93 UF desde el mes 25, cuando el parque llega a los 433 equipos del año 3. Las dos licencias quedan a nombre del CLIENTE y su renovación está dentro de la cuota (Distribuidora Puelche S.A., 2026a, art.~84.3).
 
-Los dos enlaces de fibra de Telsur cuestan 6,80 UF cada uno al mes. Los ocho planes LTE, los cinco Starlink y hasta 198 SIM de terreno al año 3 suman 41,85 UF mensuales. El Iridium SBD de los 28 camiones con frío cuesta 129,55 UF al mes y envía temperaturas y alarmas en paralelo con la red móvil (LafroX, 2026a). Estas cuotas son solo el servicio, ya que los terminales se compran aparte. Mapas, mensajería y pagos agregan 25,16 UF al mes, y la custodia externa de respaldos 4,96 UF, que es distinta del depósito de códigos fuente de los gastos administrativos.
+Los dos enlaces de fibra de Telsur cuestan 6,80 UF cada uno al mes. Los ocho planes LTE, los cinco Starlink y hasta 198 SIM de terreno al año 3 suman 41,85 UF mensuales. El Iridium SBD de los 28 camiones con frío cuesta 129,55 UF al mes y envía temperaturas y alarmas en paralelo con la red móvil (LafroX, 2026a). Estas cuotas son solo el servicio, ya que los terminales se compran aparte. El modelo base imputa 25,16 UF al mes a mapas, mensajería y pagos. La sección~\ref{sec:e2-avisos-rt1624} concilia el ajuste de avisos del modelo actualizado. La custodia externa de respaldos cuesta 4,96 UF al mes, que es distinta del depósito de códigos fuente de los gastos administrativos.
 
 LafroX compra los equipos de la sala en la implementación y presupuesta 32,00 UF en el mes 21 para adecuación eléctrica y puntos de red. La revisión eléctrica de 10.2.6 es distinta: se propone a Rom Mayer para seis revisiones, a 57,60 UF cada una, en los meses 26, 32, 38, 44, 50 y 56. Netprovider es el tercero propuesto para las pruebas anuales de 10.2.2: 192 UF por evento en los meses 28, 40 y 52. Ambas partidas están incluidas en el costo de proveedores. La mantención interna del equipamiento corresponde a 10.2.3. La electricidad se toma del empalme de cada recinto del CLIENTE.
 
