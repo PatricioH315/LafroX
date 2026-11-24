@@ -1,6 +1,6 @@
 {
-  "source_ref": "985198677937642ee224802ccbfca74abfc01c60",
-  "source_commit": "985198677937642ee224802ccbfca74abfc01c60",
+  "source_ref": "4be2c1d1f57c3c748c42b80fdbb8efdddbfdb688",
+  "source_commit": "4be2c1d1f57c3c748c42b80fdbb8efdddbfdb688",
   "test_count": 1328,
   "counts": {
     "t12_rows": 653,
@@ -4235,6 +4235,7 @@
       "criterion": "Todo el tráfico en tránsito debe emplear TLS 1.3, con prohibición expresa de TLS 1.0 y 1.1, conjuntos de cifrado modernos, HSTS con precarga y gestión automatizada de certificados con rotación y alerta anticipada de vencimiento.",
       "verification": "Revisión de configuración TLS, cifrados, HSTS y certificados; prueba de rechazo de protocolos prohibidos",
       "evidence": "RNF-14.01/\\allowbreak{}P01--\\allowbreak{}P05\\newline Pendiente: Confirmar TLS 1.3 en ERP y terceros.",
+      "acceptance": "Verificar versión y cifrado por tramo según el inventario del Anexo 4-R, rechazo de TLS 1.0 y 1.1, HSTS precargado, rotación y alertas. Acreditar TLS 1.3 en cada tramo exigido, incluido ERP--ACL y terceros en alcance. Si un tramo requiere la excepción TLS 1.2, registrarlo como brecha.",
       "cases": [
         "RNF-14.01/P01",
         "RNF-14.01/P02",
@@ -8025,7 +8026,7 @@
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-11.08",
-      "criterion": "Verificar protocolo y cifrado por enlace, rechazo de TLS 1.0 y 1.1, HSTS precargado, rotación y alertas. Para acreditar TLS 1.3 en todo el alcance, confirmar compatibilidad del ERP y de cada tercero y eliminar la excepción.",
+      "criterion": "Verificar versión y cifrado por tramo según el inventario del Anexo 4-R, rechazo de TLS 1.0 y 1.1, HSTS precargado, rotación y alertas. Acreditar TLS 1.3 en cada tramo exigido, incluido ERP--ACL y terceros en alcance. Si un tramo requiere la excepción TLS 1.2, registrarlo como brecha.",
       "verification": "Verificación del requisito y del alcance ofertado",
       "evidence": "RT-11.08/\\allowbreak{}P01\\newline Pendiente: Confirmar TLS 1.3 en ERP y terceros.",
       "cases": [
@@ -8999,7 +9000,7 @@
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-15.07",
-      "criterion": "Cotejar constancias con su titular, emisor, alcance, vigencia y código de verificación cuando exista. Confirmar el respaldo admitido en el ejercicio y las renovaciones pendientes en el Sobre 1.",
+      "criterion": "Cotejar cada certificación declarada vigente con copia admisible, titular, emisor, alcance, vigencia y código de verificación cuando exista. Confirmar el respaldo de renovación de ISO/IEC 27001 y el resultado de la reevaluación CMMI-DEV en el Sobre 1.",
       "verification": "Verificación del requisito y del alcance ofertado",
       "evidence": "RT-15.07/\\allowbreak{}P01\\newline Respaldo: constancias (Sobre 1, Certificaciones del proponente)\\newline Pendiente: Validar constancias y renovaciones del Sobre 1.",
       "cases": [
@@ -10195,7 +10196,7 @@
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-21.03",
-      "criterion": "Guillermo Castillo valida por tecnología y turno la nómina de titulares y suplentes, sus competencias y dedicaciones contra T-8 y T-15. Se comprueban el SOC desde M13, el relevo Mesa--NOC de 20:00 a 22:00 y la cobertura de Mesa en M21 y M32. Registrar fecha y respaldo.",
+      "criterion": "Guillermo Castillo valida por tecnología y turno titulares, suplentes, competencias y dedicaciones contra T-8, Anexos 12.B a 12.D y T-15. Comprobar escalamiento, simultaneidad, SOC desde M13, relevo Mesa--NOC de 20:00 a 22:00 y Mesa en M21 y M32. Registrar fecha y respaldo.",
       "verification": "Verificación del requisito y del alcance ofertado",
       "evidence": "RT-21.03/\\allowbreak{}P01\\newline Evidencia prevista: cuadrante B-02 validado (SD10, Anexo 10.D).",
       "cases": [

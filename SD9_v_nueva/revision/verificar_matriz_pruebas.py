@@ -61,6 +61,8 @@ for item in requirements:
     expected_rt = t12[-3] if len(t12) == 8 and t12[2] != "No cumple" else t12[1]
     expected = expected_catalogue.get(identifier, (f"Bases Técnicas Transversales, {identifier}", expected_rt))
     assert item["origin"] and item["criterion"] and (item["origin"], item["criterion"]) == expected, identifier
+    acceptance = t12[-3] if identifier == "RNF-14.01" and len(t12) == 8 else None
+    assert item.get("acceptance") == acceptance, identifier
 priority = Counter(x["priority"] for x in own)
 rt_state = Counter(x["state"] for x in rt)
 assert priority == counts["priority"] and rt_state == counts["rt_state"]
@@ -214,7 +216,15 @@ for row, item in zip(matrix_rows, requirements, strict=True):
     if 'component_display' in item:
         assert rf'\emph{{T-12, fila {identifier}}}' in display, item['id']
     assert rf"{display}\newline \textbf{{EDT:}} {item['edt']} & " in row, item["id"]
-    assert rf" & {item['criterion']}\newline \emph{{" in row, item["id"]
+    if not item["id"].startswith("RT-"):
+        source_id = item["source_id"].replace("-", r"-\allowbreak{}")
+        criterion_ref = f"SD3, Tabla {item['table']}, fila {source_id}"
+    else:
+        criterion_ref = f"T-12, Parte B, fila {identifier}"
+    criterion = rf"{item['criterion']}\newline \emph{{{criterion_ref}}}"
+    if "acceptance" in item:
+        criterion += rf"\newline {item['acceptance']}\newline \emph{{T-12, Parte A, fila {identifier}}}"
+    assert row.split(" & ")[3] == criterion + r" \\", item["id"]
     state_label = "Parcial" if item["state"] == "Cumple parcialmente" else item["state"]
     state_cell = row.split(" & ")[2]
     if item["cases"]:

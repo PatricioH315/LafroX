@@ -15,8 +15,8 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-# Un único commit del SD3 aporta T-12 (siete columnas, EDT por productos) y catálogo.
-REF = sys.argv[1] if len(sys.argv) > 1 else "985198677937642ee224802ccbfca74abfc01c60"
+# Un único commit del SD3 aporta el T-12 y el catálogo.
+REF = sys.argv[1] if len(sys.argv) > 1 else "4be2c1d1f57c3c748c42b80fdbb8efdddbfdb688"
 BLOCK = 25
 CASES_BY_PRIORITY = {"Crítica": 5, "Alta": 3, "Media": 2}
 CONTRACTS, CASES_BY_CONTRACT = 15, 7
@@ -100,6 +100,8 @@ for c in t12:
     if identifier in catalogue:
         item = catalogue[identifier]
         count = CASES_BY_PRIORITY[item["priority"]]
+        if identifier == "RNF-14.01" and evidence is not None:
+            trace["acceptance"] = acceptance
         data.append({"id": identifier, "state": state, "component": component, "edt": work,
                      **item, **trace, "cases": [f"{identifier}/P{i:02}" for i in range(1, count + 1)]})
     elif identifier.startswith("RT-"):
@@ -148,6 +150,9 @@ for index, item in enumerate(data):
         item["component_display"] = component
     criterion_ref = (f"SD3, Tabla {item['table']}, fila {break_id(item['source_id'])}"
                      if not identifier.startswith("RT-") else f"T-12, Parte B, fila {break_id(identifier)}")
+    criterion = rf"{item['criterion']}\newline \emph{{{criterion_ref}}}"
+    if "acceptance" in item:
+        criterion += rf"\newline {item['acceptance']}\newline \emph{{T-12, Parte A, fila {break_id(identifier)}}}"
     cases = f"/P01 a /P{len(item['cases']):02}" if len(item["cases"]) > 1 else "/P01" if item["cases"] else "0; brecha visible"
     state = {"Cumple parcialmente": "Parcial", "No cumple": "No cumple"}.get(item["state"], item["state"])
     timing = f"; {item['stage']}; {MILESTONE[item['stage']]}" if item["stage"] in MILESTONE else ""
@@ -155,7 +160,7 @@ for index, item in enumerate(data):
         rf"\textbf{{{break_id(identifier)}}}\newline {item['origin']}",
         rf"{component}\newline \textbf{{EDT:}} {item['edt']}",
         rf"{cases}\newline {state}; {item['priority']}{timing}",
-        rf"{item['criterion']}\newline \emph{{{criterion_ref}}}",
+        criterion,
     ]) + r" \\")
     if index % BLOCK == BLOCK - 1 or index == len(data) - 1:
         lines += [r"\end{tablasimple}", ""]
