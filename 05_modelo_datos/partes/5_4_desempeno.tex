@@ -8,16 +8,16 @@ Esta sección aplica los escenarios de carga de SD4 a índices, particiones, cac
 
 La Tabla 5.3 relaciona los escenarios de SD4 con su efecto sobre el modelo y la prueba prevista. RT-09.01–03 exige dimensionamiento, umbrales bajo carga y crecimiento 3\ensuremath{\times}; RT-09.06 exige carga a 1,5\ensuremath{\times}pico y estrés hasta saturación.
 
-\parte{tablas/escenarios_carga}
-
 El máximo global combina preventa, reparto y portal; despacho distingue total distribuido y WMS Talca. Se adoptan los resultados del Anexo 4-W, sección 4-W.10 (3,15/8,05), cuya base visible 2,68 está redondeada, sin recalcular desde ese redondeo. Los índices priorizan lote/unidad y filtros operativos.
+
+\parte{tablas/escenarios_carga}
 
 Los escenarios conservan identidades/restricciones, UUID internos y equivalencias de origen. Son cálculos de diseño, 5.4.6 define su ensayo en PREPROD.
 
 \subsection{Consultas críticas e índices}
 \label{sec:sd5-5-4-2}
 
-La consulta térmica parte del SSCC, resuelve su unidad logística y filtra \texttt{cal\_\allowbreak{}asociacion\_\allowbreak{}ventana} por unidad, compartimento e intervalo [desde,hasta); el índice compuesto comienza por unidad logística y compartimento, seguido de desde y hasta. La serie se consulta por sensor e instante. El Anexo 5-F conserva el plan de consulta y su verificación con EXPLAIN.
+La consulta térmica identifica la unidad logística a partir del SSCC. Después filtra \texttt{cal\_\allowbreak{}asociacion\_\allowbreak{}ventana} por unidad, compartimento e intervalo [desde,hasta); el índice compuesto comienza por unidad logística y compartimento, seguido de desde y hasta. La serie se consulta por sensor e instante. El Anexo 5-F conserva el plan de consulta y su verificación con EXPLAIN.
 
 Los índices se eligen a partir de las preguntas que debe resolver la operación. Para consultar disponibilidad se filtra por sitio, ubicación, lote y unidad logística. La tabla inv\_unidad\_contenido permite conocer los lotes de una unidad y localizar, en sentido inverso, todas las unidades que contienen un lote. Ese recorrido es necesario para un retiro sanitario.
 

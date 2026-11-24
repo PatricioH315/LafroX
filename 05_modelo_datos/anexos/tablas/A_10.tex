@@ -1,6 +1,12 @@
 \begin{landscape}\setlength{\textwidth}{\linewidth}
+
+La validación aplica la condición de cada fila al hito indicado, NULL legítimo se distingue de dato obligatorio ausente.
+
+
+La Tabla A.10 desarrolla los atributos de hechos y dimensiones analíticas, con sus condiciones y políticas de conservación.
+
 \begin{tablalafrox}{Diccionario de atributos: Modelo dimensional de explotación}{tab:sd5-a10}
-{F{0.107} F{0.124} F{0.082} F{0.082} Y F{0.114} F{0.095} F{0.082} F{0.082}}
+{F{0.107} F{0.124} F{0.082} F{0.082} Y F{0.114} F{0.100} F{0.082} F{0.082}}
 {\cab{Entidad} & \cab{Atributo} & \cab{Significado} & \cab{Tipo lógico, tamaño y precisión} & \cab{Dominio, formato, catálogo o rango} & \cab{Obligatoriedad y condición} & \cab{Clave, referencia y unicidad} & \cab{Propietario funcional} & \cab{Sensibilidad, retención y control}}
 \texttt{dim\_\allowbreak{}fecha} & \texttt{fecha\_\allowbreak{}key} & Fecha Key & date & Fecha ISO 8601 del calendario de negocio, admite días pasados, presentes y futuros & Obligatorio, clave primaria & Clave primaria & \texttt{ANA} & \texttt{ME}, \texttt{P53} \\
 \texttt{dim\_\allowbreak{}fecha} & \texttt{anio} & Anio & integer, 32 bits & Entero no negativo, cero admitido en un conteo, una cantidad o una secuencia & Obligatorio & Sin clave & \texttt{ANA} & \texttt{ME}, \texttt{P53} \\

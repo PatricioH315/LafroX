@@ -29,11 +29,11 @@ En la cadena de custodia, la cabecera registra el evento y el detalle identifica
 \subsection{Maestros compartidos e identidad única}
 \label{sec:sd5-5-1-3}
 
-La ficha de producto conserva tipo de almacenamiento, límites térmicos y referencia/versionado del documento de origen en \texttt{mae\_\allowbreak{}producto} (5-A). Los límites no se deducen de un promedio ni se inventan al importar. Su publicación a cada sitio y gateway conserva versión y acuse; una ficha incompleta mantiene retenido el lote hasta contar con parámetros verificables.
+La ficha de \texttt{mae\_\allowbreak{}producto} conserva almacenamiento, límites térmicos y referencia y versión del documento de origen (5-A). Los límites no se deducen de promedios ni se inventan. Cada sitio y gateway acusa la versión recibida. Una ficha incompleta mantiene el lote retenido hasta disponer de parámetros verificables.
 
 Un maestro tiene dueño funcional, UUID estable e historial; la integración traduce códigos externos mediante equivalencias versionadas y nunca crea identidades paralelas. Producto conserva un GTIN canónico único cuando aplica; otros GTIN/códigos se resuelven por equivalencia aprobada, sin compartir identidad sanitaria entre productos. Corregir descripción o vencimiento no cambia el identificador ni rompe historia.
 
-La Figura 5.8 dibuja maestros, puntos, instalaciones y conversiones de unidad. Un cliente puede tener varios puntos; sitio representa instalación operativa y no cada cliente. Comercial valida productos/clientes, Finanzas condiciones de crédito y Calidad reglas sanitarias; el módulo dueño publica la versión y las copias locales registran instante de actualización. Los conflictos de código se aíslan y concilian antes de publicar, conforme RT-05.09 y 5.2.4.
+La Figura 5.8 relaciona maestros, puntos, instalaciones y conversiones de unidad. Un cliente admite varios puntos y el sitio representa una instalación operativa. Comercial valida productos y clientes, Finanzas valida crédito y Calidad las reglas sanitarias. El dueño publica la versión y cada copia registra su actualización. Los conflictos se aíslan y concilian antes de publicar (RT-05.09 y 5.2.4).
 
 La ficha completa conserva formato, SKU interno único, familia, peso neto/bruto, dimensiones, volumen embalado derivado, control de vencimiento, clasificación sanitaria y proveedor/RUT, además de GTIN y parámetros térmicos. No se guarda ficha válida con campos obligatorios vacíos; cambios de GTIN/SKU quedan auditados. mae\_zona y mae\_ubicacion representan zona, pasillo, rack/columna, nivel y posición con coordenada única, capacidad y orden de recorrido; no se crea posición sin zona. La topología versionada se distribuye para consulta offline (RF-01.10 y RF-02.01 del Formulario T-12).
 
@@ -139,7 +139,9 @@ El vehículo declara capacidades nominales en kg y m³; el punto del cliente con
 \subsection{Trazabilidad sanitaria y cadena de custodia}
 \label{sec:sd5-5-1-7}
 
-La historia térmica por SSCC recorre cámara, andén y compartimento. \texttt{cal\_\allowbreak{}asociacion\_\allowbreak{}ventana} asocia cada unidad logística con el compartimento y el intervalo entre carga y bajada; los eventos SALIDA\_CAMARA y BAJADA\_CAMION delimitan la exposición fuera de frío y el fin de la curva a bordo. \texttt{cal\_\allowbreak{}bloqueo} retiene por SSCC e incidente según la familia, y \texttt{cal\_\allowbreak{}resolucion\_\allowbreak{}calidad} conserva la disposición de Calidad. Una recuperación de temperatura no libera una retención; sin decisión en plazo, el producto vuelve retenido al CD. Estos datos amplían atributos y catálogos de entidades existentes (Anexos 5-A y 5-C). El lote conserva la identidad sanitaria y el SSCC la identidad logística: sus relaciones registran producto, lote y cantidad por unidad y movimiento. La retención térmica se limita a los SSCC expuestos en su ventana; una orden de retiro por lote alcanza todas las unidades y destinos vinculados a ese lote, incluso fuera del incidente térmico (SD3, RNG-04).
+La historia térmica por SSCC recorre cámara, andén y compartimento.
+
+\texttt{cal\_\allowbreak{}asociacion\_\allowbreak{}ventana} asocia cada unidad logística con el compartimento y el intervalo entre carga y bajada; los eventos SALIDA\_CAMARA y BAJADA\_CAMION delimitan la exposición fuera de frío y el fin de la curva a bordo. \texttt{cal\_\allowbreak{}bloqueo} retiene por SSCC e incidente según la familia, y \texttt{cal\_\allowbreak{}resolucion\_\allowbreak{}calidad} conserva la disposición de Calidad. Una recuperación de temperatura no libera una retención; sin decisión en plazo, el producto vuelve retenido al CD. Estos datos amplían atributos y catálogos de entidades existentes (Anexos 5-A y 5-C). El lote conserva la identidad sanitaria y el SSCC la identidad logística: sus relaciones registran producto, lote y cantidad por unidad y movimiento. La retención térmica se limita a los SSCC expuestos en su ventana; una orden de retiro por lote alcanza todas las unidades y destinos vinculados a ese lote, incluso fuera del incidente térmico (SD3, RNG-04).
 
 Antes de la aprobación de Calidad, \texttt{cal\_\allowbreak{}regla\_\allowbreak{}termica} materializa el rango de ficha como \texttt{PREVENTIVA\_\allowbreak{}FICHA}, con severidad CRITICA y duración cero. No lleva aprobador ni permite liberar: la primera lectura válida fuera de rango retiene los SSCC expuestos y las cantidades de lote que contienen. Calidad crea después una versión APROBADA; la excursión conserva la regla y ficha efectivamente usadas, sin reinterpretación histórica (5-A, 5-B y 5-C; SD4, sección 4.1.4.2, M9 Calidad y trazabilidad).
 
@@ -213,7 +215,7 @@ En E2, el pago PORTAL queda EN\_REVISION con su comprobante y sin efecto financi
 
 RT-16.20 de las Bases Técnicas Transversales exige al menos tres canales: correo, notificación en la aplicación y mensajería instantánea o SMS. El modelo representa correo, aviso persistente en el portal, WhatsApp y SMS. RT-16.08 corresponde a consulta y exportación de auditoría, no a canales; sus filtros por persona, período, entidad y operación se conservan en el dominio de gobierno (RT-16.08 y RT-16.20).
 
-Plantillas, preferencias e intentos comparten CORREO, SMS, WHATSAPP y AVISO\_EN\_PORTAL. La preferencia vigente se identifica por cliente, finalidad, categoría y canal; la plantilla/versionado de referencia acredita la elección inicial, sin limitar la baja a esa edición. Antes de emitir o reintentar se comprueba la baja comercial, que persiste hasta nueva decisión expresa. Los avisos operacionales obligatorios se distinguen de los comerciales. Los atributos, nulabilidad y restricciones vigentes se especifican en 5-A–5-C; las vistas gráficas resumen sus relaciones.
+Plantillas, preferencias e intentos comparten CORREO, SMS, WHATSAPP y \texttt{AVISO\_\allowbreak{}EN\_\allowbreak{}PORTAL}. La preferencia vigente se identifica por cliente, finalidad, categoría y canal; la plantilla/versionado de referencia acredita la elección inicial, sin limitar la baja a esa edición. Antes de emitir o reintentar se comprueba la baja comercial, que persiste hasta nueva decisión expresa. Los avisos operacionales obligatorios se distinguen de los comerciales. Los atributos, nulabilidad y restricciones vigentes se especifican en 5-A–5-C; las vistas gráficas resumen sus relaciones.
 
 El envío usa una bandeja de salida transaccional y un proceso asíncrono que publica los avisos. Cada aviso y cada intento mantienen su identidad para impedir duplicados internos y aplicar una política de reintentos versionada (RF-18.03 y RT-16.23). La entidad not\_intento distingue la entrega técnica, la apertura y el error. La entidad not\_evento conserva la respuesta del proveedor y su identidad para reconocer notificaciones repetidas y reconstruir la historia.
 
@@ -237,6 +239,14 @@ GPS permanece en sa-east-1, raw treinta días y plazo personal total doce meses,
 
 La Figura 5.7 define hechos y dimensiones para analizar servicio, inventario, cobro y frío. El grano e identidad de origen evitan duplicados de carga: pedido para compromiso, entrega/intento para ejecución y línea/asignación para cantidades; la entrega por pedido no cuenta cada visita como pedido independiente.
 
+El modelo incluye dimensiones de fecha, cliente, producto, sitio, ruta y canal; cliente, producto, sitio y ruta conservan versiones y vigencias. El cálculo previo al grano del pedido evita multiplicar OTIF/importes al unir líneas; cada hecho conserva origen y controles monetarios/GPS. Redshift/QuickSight sirve analítica pesada y la API consultas operativas. 5-H fija fórmulas, audiencia, filtros, profundización y latencia; costo de servir inicia E2. RT-05.10/.24 deseables conservan su alcance no ofertado; RT-05.30 se oferta mediante la estimación determinista de vida útil remanente descrita en la sección 13.3.2 del SD13, sustentada en las series térmicas y la asociación sensor–lote de la sección 5.1.7. El cumplimiento de RT-05.30 se acredita mediante el modelo cinético, sus variables, su métrica de desempeño y la recalibración documentada. El aporte de INN-03 se evalúa por la incorporación operativa descrita en el SD13: el cálculo de la exposición en cámara sin enlace, la reconstrucción central por lote y el uso del resultado por Calidad, Inventario y Preparación. El modelo cinético se registra una vez como capacidad analítica.
+
+Se incorporan hech\_ocupacion\_diaria por sitio/zona/día, hech\_viaje por viaje despachado y hech\_cartera\_antiguedad por cliente/corte/tramo. Las medidas preservan topología, capacidades y fecha de negocio de origen. Costo de servir en E2 suma operación, manejo de devoluciones y merma valorizada al costo ERP, una vez por origen; incluye merma atribuible a cliente sin entrega. Si falta costo comprobado informa resultado incompleto. 5-H define fórmulas, casos sin base y exportación, sin inventar historia previa a captura.
+
+\subsection*{Vistas complementarias por dominio}
+
+Las Figuras 5.8, 5.9 y 5.10 desarrollan, respectivamente, maestros e identidades (5.1.3), EDI, notificaciones y gobierno (5.1.9), y telemetría, copias de consulta y objetos (5.1.10). Las reglas de integridad se precisan en los Anexos 5-A y 5-C.
+
 \clearpage
 \begingroup
 \setlength{\paperwidth}{13in}
@@ -258,33 +268,6 @@ La Figura 5.7 define hechos y dimensiones para analizar servicio, inventario, co
 \pageheight=\paperheight
 \restoregeometry
 \FloatBarrier
-
-El modelo incluye dimensiones de fecha, cliente, producto, sitio, ruta y canal; cliente, producto, sitio y ruta conservan versiones y vigencias. El cálculo previo al grano del pedido evita multiplicar OTIF/importes al unir líneas; cada hecho conserva origen y controles monetarios/GPS. Redshift/QuickSight sirve analítica pesada y la API consultas operativas. 5-H fija fórmulas, audiencia, filtros, profundización y latencia; costo de servir inicia E2. RT-05.10/.24 deseables conservan su alcance no ofertado; RT-05.30 se oferta mediante la estimación determinista de vida útil remanente descrita en la sección 13.3.2 del SD13, sustentada en las series térmicas y la asociación sensor–lote de la sección 5.1.7. El cumplimiento de RT-05.30 se acredita mediante el modelo cinético, sus variables, su métrica de desempeño y la recalibración documentada. El aporte de INN-03 se evalúa por la incorporación operativa descrita en el SD13: el cálculo de la exposición en cámara sin enlace, la reconstrucción central por lote y el uso del resultado por Calidad, Inventario y Preparación. El modelo cinético se registra una vez como capacidad analítica.
-
-Se incorporan hech\_ocupacion\_diaria por sitio/zona/día, hech\_viaje por viaje despachado y hech\_cartera\_antiguedad por cliente/corte/tramo. Las medidas preservan topología, capacidades y fecha de negocio de origen. Costo de servir en E2 suma operación, manejo de devoluciones y merma valorizada al costo ERP, una vez por origen; incluye merma atribuible a cliente sin entrega. Si falta costo comprobado informa resultado incompleto. 5-H define fórmulas, casos sin base y exportación, sin inventar historia previa a captura.
-
-\subsection{Reglas relacionales resueltas}
-\label{sec:sd5-5-1-12}
-
-Los extremos opcionales representan estados iniciales o excepciones, no omisión de controles: TERRENO exige preventista; producto con lote exigido exige lote; raíz causal es el único evento sin padre; un sensor fijo exige sitio y uno móvil vehículo. La unidad VACIA/ABIERTA puede no tener contenido; al cerrarse exige contenido y SSCC según el hito. Una misión puede no tener confirmación antes del picking, pero no cierra sin validar sus líneas. Pedido PENDIENTE no tiene promesa confirmada; al confirmarse mantiene exactamente una ORIGINAL y las revisiones autorizadas. Cada pedido admite cero o una entrega y varios intentos vinculados a esa entrega.
-
-El modelo relacional lógico se presenta por dominios en las Figuras 5.2–5.6, con atributos, claves y cardinalidades; la Figura 5.7 desarrolla el modelo dimensional analítico. Las Figuras 5.8–5.10 completan maestros, EDI/gobierno y telemetría, y 5-A contiene el diccionario exacto. Las FK físicas se limitan al mismo almacén; entre dominios, sedes, motores y objetos se validan identidad/versión y conciliación.
-
-Lote usa GTIN canónico+número, con vencimiento como atributo. Unidad usa UUID y SSCC exterior, composición de varios lotes y estados VACIA/ABIERTA permitidos. Saldo tiene grano sitio+ubicación+producto+lote+unidad; recepción conserva secuencia\_documento solo si el origen entrega ordinal. Reserva y asignación remiten a la línea de pedido concreta y permiten fragmentación por lote/unidad.
-
-Custodia separa cabecera y objetos; parent\_event\_id representa genealogía causal y admite NULL en raíz, mientras la agregación logística representa contenedor/contenido. ts\_evento y secuencia\_linea del detalle mantienen timestamp de cabecera y ordinal estable; las restricciones compuestas de 5-F hacen implementable la partición sin duplicar un reintento entre meses.
-
-Un pedido tiene una entrega con varios intentos; las líneas del intento distinguen asignación, lote/unidad y cantidades aceptadas/rechazadas. promesa ORIGINAL es inmutable y la fecha/ventana usa UTC; la entrega referencia promesa\_id, sin columna duplicada fecha\_promesa\_original. Las revisiones autorizadas no reemplazan la base de OTIF.
-
-Documento fiscal, POD, acuse técnico y recepción de mercadería conservan identidad propia. La clave fiscal incluye tipo/emisor/folio/versión; el hash verifica contenido. El ERP emite antes del traslado. Cobro y compensación se concilian con segregación de autorizador, nunca mediante una corrección silenciosa de importe.
-
-El Anexo 5-C define parámetros tipados, perfiles EPCIS/CBV separados, movimientos/reversiones y vigencias sin solapamiento; 5-F declara índices y unicidad global. Los casos de borde se comprobarán en PREPROD según 5-J, sin afirmar que el diseño documental ya equivale a restricciones ejecutadas.
-
-5-B/5-C precisan posición con zona, putaway compatible, slotting aprobado, picking con causa, capacidad no excedida, precio pactado protegido y cobro de preventa aplicado/rendido. inv\_merma identifica pérdidas por conteo, preparación, góndola o devolución; MERMA/DESTRUCCION no duplica costo ni movimiento. Referencias, sensibilidad, retención, índices, migración y pruebas se desarrollan en 5-A a 5-K.
-
-\subsection*{Vistas complementarias por dominio}
-
-La Figura 5.8 desarrolla maestros e identidades compartidas descritos en 5.1.3, con sus puntos, instalaciones y conversiones. Las reglas de integridad se precisan en los anexos 5-A y 5-C.
 
 \clearpage
 \begingroup
@@ -308,10 +291,6 @@ La Figura 5.8 desarrolla maestros e identidades compartidas descritos en 5.1.3, 
 \restoregeometry
 \FloatBarrier
 
-Las equivalencias traducen claves externas a UUID canónicos y no crean identidades paralelas. La vigencia conserva historia y la copia local mantiene versión/fecha de consulta.
-
-La Figura 5.9 desarrolla EDI, notificaciones y gobierno descritos en 5.1.9, con los mensajes, intentos y eventos asociados. Las reglas de integridad se precisan en los anexos 5-A y 5-C.
-
 \clearpage
 \begingroup
 \setlength{\paperwidth}{13in}
@@ -334,10 +313,6 @@ La Figura 5.9 desarrolla EDI, notificaciones y gobierno descritos en 5.1.9, con 
 \restoregeometry
 \FloatBarrier
 
-Mensaje y aviso conservan identidad/resultado, auditoría y excepción preservan actor, contexto y versión. El acuse de integración no sustituye aceptación fiscal ni recepción física.
-
-La Figura 5.10 desarrolla telemetría, copias de consulta y objetos descritos en 5.1.10. Distingue las referencias a los maestros y a la cadena de custodia, sin redefinir esas entidades.
-
 \clearpage
 \begingroup
 \setlength{\paperwidth}{13in}
@@ -359,4 +334,29 @@ La Figura 5.10 desarrolla telemetría, copias de consulta y objetos descritos en
 \restoregeometry
 \FloatBarrier
 
-Raw, detalle, agregado, GPS y evidencia tienen plazos y permisos distintos. Las proyecciones se reconstruyen desde su autoridad; la evidencia durable pendiente no se trata como caché descartable.
+La Figura 5.7 relaciona cada hecho con sus dimensiones y conserva su grano e identidad de origen para aplicar las fórmulas del Anexo 5-H.
+
+\subsection{Reglas relacionales resueltas}
+\label{sec:sd5-5-1-12}
+
+Los extremos opcionales representan estados iniciales o excepciones, no omisión de controles: TERRENO exige preventista; producto con lote exigido exige lote; raíz causal es el único evento sin padre; un sensor fijo exige sitio y uno móvil vehículo. La unidad VACIA/ABIERTA puede no tener contenido; al cerrarse exige contenido y SSCC según el hito. Una misión puede no tener confirmación antes del picking, pero no cierra sin validar sus líneas. Pedido PENDIENTE no tiene promesa confirmada; al confirmarse mantiene exactamente una ORIGINAL y las revisiones autorizadas. Cada pedido admite cero o una entrega y varios intentos vinculados a esa entrega.
+
+El modelo relacional lógico se presenta por dominios en las Figuras 5.2–5.6, con atributos, claves y cardinalidades; la Figura 5.7 desarrolla el modelo dimensional analítico. Las Figuras 5.8–5.10 completan maestros, EDI/gobierno y telemetría, y 5-A contiene el diccionario exacto. Las FK físicas se limitan al mismo almacén; entre dominios, sedes, motores y objetos se validan identidad/versión y conciliación.
+
+Lote usa GTIN canónico+número, con vencimiento como atributo. Unidad usa UUID y SSCC exterior, composición de varios lotes y estados VACIA/ABIERTA permitidos. Saldo tiene grano sitio+ubicación+producto+lote+unidad; recepción conserva secuencia\_documento solo si el origen entrega ordinal. Reserva y asignación remiten a la línea de pedido concreta y permiten fragmentación por lote/unidad.
+
+Custodia separa cabecera y objetos; parent\_event\_id representa genealogía causal y admite NULL en raíz, mientras la agregación logística representa contenedor/contenido. ts\_evento y secuencia\_linea del detalle mantienen timestamp de cabecera y ordinal estable; las restricciones compuestas de 5-F hacen implementable la partición sin duplicar un reintento entre meses.
+
+Un pedido tiene una entrega con varios intentos; las líneas del intento distinguen asignación, lote/unidad y cantidades aceptadas/rechazadas. promesa ORIGINAL es inmutable y la fecha/ventana usa UTC; la entrega referencia promesa\_id, sin columna duplicada fecha\_promesa\_original. Las revisiones autorizadas no reemplazan la base de OTIF.
+
+Documento fiscal, POD, acuse técnico y recepción de mercadería conservan identidad propia. La clave fiscal incluye tipo/emisor/folio/versión; el hash verifica contenido. El ERP emite antes del traslado. Cobro y compensación se concilian con segregación de autorizador, nunca mediante una corrección silenciosa de importe.
+
+El Anexo 5-C define parámetros tipados, perfiles EPCIS/CBV separados, movimientos/reversiones y vigencias sin solapamiento; 5-F declara índices y unicidad global. Los casos de borde se comprobarán en PREPROD según 5-J, sin afirmar que el diseño documental ya equivale a restricciones ejecutadas.
+
+5-B/5-C precisan posición con zona, putaway compatible, slotting aprobado, picking con causa, capacidad no excedida, precio pactado protegido y cobro de preventa aplicado/rendido. inv\_merma identifica pérdidas por conteo, preparación, góndola o devolución; MERMA/DESTRUCCION no duplica costo ni movimiento. Referencias, sensibilidad, retención, índices, migración y pruebas se desarrollan en 5-A a 5-K.
+
+En la Figura 5.8, las equivalencias traducen claves externas a UUID canónicos y no crean identidades paralelas. La vigencia conserva historia y la copia local mantiene versión/fecha de consulta.
+
+En la Figura 5.9, mensaje y aviso conservan identidad/resultado, auditoría y excepción preservan actor, contexto y versión. El acuse de integración no sustituye aceptación fiscal ni recepción física.
+
+En la Figura 5.10, raw, detalle, agregado, GPS y evidencia tienen plazos y permisos distintos. Las proyecciones se reconstruyen desde su autoridad; la evidencia durable pendiente no se trata como caché descartable.

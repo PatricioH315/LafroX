@@ -21,8 +21,8 @@
 
 % Tablas de anexo: cuerpo de 9 pt (mínimo del Art. 40.4), con interlineado y
 % relleno ajustados para que el diccionario de atributos mantenga una extensión razonable.
-\renewcommand{\LFXcuerpotabla}{\fontsize{9pt}{10.6pt}\selectfont}
-\renewcommand{\arraystretch}{1.1}
+\renewcommand{\LFXcuerpotabla}{\fontsize{9.1bp}{9.85bp}\selectfont}
+\renewcommand{\arraystretch}{1.05}
 \setlength{\tabcolsep}{3.5pt}
 
 \chapter{Anexos del Subdocumento 5}
@@ -256,8 +256,6 @@ La retención se determina por clase, no por estar en Amazon S3: documentos/POD 
 
 Un objeto bloqueado o bajo conservación legal no se destruye antes de vencimiento: se programa eliminación elegible, se comprueban versiones, réplicas y respaldos conforme SD4 y se registra resultado. No se promete eludir Object Lock ni borrar evidencia financiera como si fuera caché.
 
-La Tabla A.14 detalla inicio, ubicación y eliminación por dominio/atributo. Los doce meses de posición personal incluyen derivados y coordenadas recuperables de respaldos: retirar el identificador no basta para anonimizar. Los siete años de auditoría/seguridad son un compromiso de SD4, no un plazo impuesto por el caso.
-
 \parte{tablas/A_14}
 
 El respaldo y la salida de contrato se coordinan con SD4: la eliminación comprueba clase, versiones, réplicas y plazo. Un bloqueo de conservación activo no se elude; se elimina al hacerse elegible y se audita la excepción. La evidencia vigente no pierde su clave compartida y las copias personales deben quedar ilegibles según el procedimiento aprobado, sin afirmar que una clave global pueda destruirse selectivamente.
@@ -323,7 +321,7 @@ La Tabla A.18 define fórmula, grano, período, casos sin dato y linaje de cada 
 
 \parte{tablas/A_18}
 
-OTIF usa todos los pedidos comprometidos del período una vez, incluidos no entregados, y exige completar todas sus líneas dentro de la ventana ORIGINAL inmutable. La fila analítica se identifica por pedido\_id y conserva la ORIGINAL, entrega\_id y ruta\_sk pueden ser NULL hasta que existan sus hechos operativos. No se crean entregas ni rutas ficticias para cargar el denominador. Las duraciones sin instantes suficientes son NULL, no cero; la ausencia de entrega no retira al pedido comprometido del cálculo. No filtra por vigencia actual ni por existencia de entrega. La exactitud por cantidades homologa unidades y declara base cero; la desviación monetaria usa valor contado del sitio y el umbral \ensuremath{\leq}0,3 \%, sin confundir ambos indicadores.
+OTIF cuenta una vez cada pedido comprometido, incluidos los no entregados, y exige completar sus líneas dentro de la ventana ORIGINAL inmutable. La fila analítica se identifica por pedido\_id y conserva la ORIGINAL, entrega\_id y ruta\_sk pueden ser NULL hasta que existan sus hechos operativos. No se crean entregas ni rutas ficticias para cargar el denominador. Las duraciones sin instantes suficientes son NULL, no cero; la ausencia de entrega no retira al pedido comprometido del cálculo. No filtra por vigencia actual ni por existencia de entrega. La exactitud por cantidad homologa unidades y declara base cero. La desviación monetaria usa el valor contado del sitio y el umbral \ensuremath{\leq}0,3 \%.
 
 \parte{tablas/A_19}
 
@@ -407,8 +405,8 @@ Todos los modelos se presentan en la sección 5.1 del Subdocumento 5. La Figura 
 \item Distribuidora Puelche S.A. (2026c). \emph{Caso: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.}
 \item GS1. (2022a). \emph{Core Business Vocabulary Standard} (Release 2.0). \url{https://ref.gs1.org/standards/cbv/2.0.0/}
 \item GS1. (2022b). \emph{EPCIS Standard} (Release 2.0). \url{https://ref.gs1.org/standards/epcis/2.0.0/}
-\item International Organization for Standardization.  \emph{ISO/IEC 25012:2008: Software engineering — Software product Quality Requirements and Evaluation (SQuaRE) — Data quality model}. \url{https://www.iso.org/standard/35736.html}
-\item International Organization for Standardization.  \emph{ISO 8601-1:2019: Date and time — Representations for information interchange — Part 1: Basic rules}. \url{https://www.iso.org/standard/70907.html}
+\item International Organization for Standardization. (2008). \emph{ISO/IEC 25012:2008: Software engineering — Software product Quality Requirements and Evaluation (SQuaRE) — Data quality model}. \url{https://www.iso.org/standard/35736.html}
+\item International Organization for Standardization. (2019). \emph{ISO 8601-1:2019: Date and time — Representations for information interchange — Part 1: Basic rules}. \url{https://www.iso.org/standard/70907.html}
 \item  \emph{Arquitectura} [Subdocumento 4, anexos y Formulario T-11].
 \item  \emph{Esquema de solución y alcance} [Subdocumento 3, anexos y Formulario T-12].
 \item  \emph{Innovaciones} [Subdocumento 13].

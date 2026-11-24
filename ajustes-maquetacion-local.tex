@@ -2,6 +2,12 @@
 \makeatletter
 \patchcmd{\LT@output}{\copy\LT@foot\vss}{\copy\LT@foot\vskip0pt plus1fil minus4pt\relax}{}{\PackageInfo{lafrox-local}{longtable ya incluye el pie elastico (primer pie)}}
 \patchcmd{\LT@output}{\copy\LT@foot\vss}{\copy\LT@foot\vskip0pt plus1fil minus4pt\relax}{}{\PackageInfo{lafrox-local}{longtable ya incluye el pie elastico (segundo pie)}}
+% Minimos efectivos en el PDF; se conservan las familias de la plantilla.
+\renewcommand{\normalsize}{\@setfontsize\normalsize{11.15bp}{13.6bp}\let\@listi\@listI}
 \makeatother
+\normalsize
+\AtBeginDocument{\normalsize}
+\setmonofont{IBMPlexMono}[Extension=.otf,UprightFont=*-Regular,
+  ItalicFont=*-Italic,BoldFont=*-Bold,BoldItalicFont=*-BoldItalic,Scale=1.0]
 % Alineación izquierda flexible sin estirar el espacio entre palabras.
 \setlength{\RaggedRightRightskip}{0pt plus 1fil}

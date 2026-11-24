@@ -1,5 +1,5 @@
 \begin{tablalafrox}{Índices declarados, columnas, orden y ámbito de unicidad}{tab:sd5-a16}
-{F{0.161} F{0.173} F{0.137} F{0.155} Y}
+{F{0.161} F{0.179} F{0.137} F{0.155} Y}
 {\cab{Índice sobre} & \cab{Columnas en orden} & \cab{Tipo} & \cab{Ámbito de la unicidad} & \cab{Consulta o contrato que lo justifica}}
 \texttt{inv\_\allowbreak{}saldo} & \texttt{sitio\_\allowbreak{}id}, \texttt{ubicacion\_\allowbreak{}id}, \texttt{producto\_\allowbreak{}id}, \texttt{lote\_\allowbreak{}id}, \texttt{unidad\_\allowbreak{}id} & Único NULLS NOT DISTINCT & Sin partición, sitio en grano & Saldo disponible de un lote en una ubicación y en su unidad de medida: la unidad forma parte del grano porque un mismo lote puede estar almacenado en dos unidades y sus cantidades no son comparables sin conversión \\
 \texttt{inv\_\allowbreak{}lote} & \texttt{producto\_\allowbreak{}id}, \texttt{numero\_\allowbreak{}lote} & Único & Sin partición & Identidad sanitaria garantizada del lote: producto interno más número declarado. La unicidad es estructural porque \texttt{producto\_\allowbreak{}id} es clave primaria del maestro, y por eso esta es la clave que se controla en la captura \\

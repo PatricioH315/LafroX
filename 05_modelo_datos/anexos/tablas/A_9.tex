@@ -1,6 +1,9 @@
 \begin{landscape}\setlength{\textwidth}{\linewidth}
+
+La Tabla A.9 desarrolla los atributos de telemetría y copias de consulta, con sus condiciones y políticas de conservación.
+
 \begin{tablalafrox}{Diccionario de atributos: Telemetría, caché de lectura y objetos del dispositivo}{tab:sd5-a9}
-{F{0.115} F{0.124} F{0.082} F{0.098} Y F{0.089} F{0.115} F{0.082} F{0.082}}
+{F{0.117} F{0.126} F{0.082} F{0.098} Y F{0.089} F{0.117} F{0.082} F{0.082}}
 {\cab{Entidad} & \cab{Atributo} & \cab{Significado} & \cab{Tipo lógico, tamaño y precisión} & \cab{Dominio, formato, catálogo o rango} & \cab{Obligatoriedad y condición} & \cab{Clave, referencia y unicidad} & \cab{Propietario funcional} & \cab{Sensibilidad, retención y control}}
 \texttt{tel\_\allowbreak{}lectura\_\allowbreak{}cruda} & \texttt{sensor\_\allowbreak{}id} & Identificador de sensor & uuid, 128 bits & UUID del sensor registrado en \texttt{cal\_\allowbreak{}sensor}, debe existir y estar vigente al escribir la lectura & Obligatorio, clave primaria & Clave primaria, además referencia a \texttt{cal\_\allowbreak{}sensor.\allowbreak{}sensor\_\allowbreak{}id} (contrato entre almacenes) & \texttt{TEL} & \texttt{ME}, \texttt{P44} \\
 \texttt{tel\_\allowbreak{}lectura\_\allowbreak{}cruda} & \texttt{ts\_\allowbreak{}medicion} & Marca de tiempo de medicion & timestamp with time zone, UTC & Instante ISO 8601 en UTC, con zona horaria explícita & Obligatorio, clave primaria & Clave primaria & \texttt{TEL} & \texttt{ME}, \texttt{P44} \\
@@ -90,8 +93,6 @@
 \end{tablalafrox}
 \fuentetabla{elaboración a partir del modelo lógico de la Figura 5.10 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales y de la matriz de retención del Anexo 5-D.}
 
-La validación aplica la condición de cada fila al hito indicado, NULL legítimo se distingue de dato obligatorio ausente.
 
-La Tabla A.10 desarrolla los atributos de hechos y dimensiones analíticas, con sus condiciones y políticas de conservación.
 
 \end{landscape}
