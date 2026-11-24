@@ -1,6 +1,6 @@
 # Sobre N.° 1 — Antecedentes del Oferente
 
-El Sobre N.° 1 reúne los 23 antecedentes de los cuatro grupos del artículo 39 de las Bases Administrativas y la declaración jurada simple de veracidad del sitio web corporativo exigida en el capítulo 23.3 de las Bases Técnicas Transversales. El Formulario A-5 abre el sobre; los demás documentos siguen el orden del artículo 39, sin repetir A-5 en el grupo técnico. La foliación es única para el conjunto.
+El Sobre N.° 1 reúne los 23 antecedentes de los cuatro grupos del artículo 39 de las Bases Administrativas y la declaración jurada simple de veracidad del sitio web corporativo exigida en el capítulo 23.3 de las Bases Técnicas Transversales, y cierra con la Boleta de Garantía de Seriedad de la Oferta (Art. 35). El Formulario A-5 abre el sobre; los demás documentos siguen el orden del artículo 39, sin repetir A-5 en el grupo técnico. La foliación es única para el conjunto.
 
 ## Documentos incluidos
 
@@ -32,6 +32,7 @@ Las rutas siguientes identifican los PDF que integran el índice A-5. Los folios
 | 22 | Formulario A-6: Declaración de uso de IA generativa | [LAFROX-Formulario-A-6.pdf](LAFROX-Formulario-A-6.pdf) |
 | 23 | Certificaciones institucionales y de fabricante | [LAFROX-Certificaciones.pdf](antecedentes/4-tecnicos/23-certificaciones/LAFROX-Certificaciones.pdf) |
 | 24 | Declaración jurada simple de veracidad del sitio web corporativo | [LAFROX-DeclaracionWeb.pdf](antecedentes/4-tecnicos/24-dj-sitio-web/LAFROX-DeclaracionWeb.pdf) |
+| 25 | Boleta de Garantía de Seriedad de la Oferta (Art. 35) | [LAFROX-BoletaSeriedad.pdf](antecedentes/5-garantias/35-boleta-seriedad/LAFROX-BoletaSeriedad.pdf) |
 
 ## Compilación y control de folios
 
@@ -62,7 +63,7 @@ A-2, A-3 y A-4 incorporan la imagen ficticia aportada por el usuario, guardada s
 
 Los antecedentes simulados no constituyen certificaciones, auditorías, actuaciones notariales ni compromisos reales. Se retiraron referencias al curso y a fines académicos del texto impreso, conservando explícitamente la simulación; las firmas de Alex reutilizan el recurso gráfico existente y la constancia notarial usa únicamente la imagen ficticia aportada por el usuario.
 
-La Boleta de Garantía de Seriedad de los artículos 35 y 49.2 está en `antecedentes/5-garantias/35-boleta-seriedad/LAFROX-BoletaSeriedad.pdf` (USD 500.000, vence el 30-04-2027). Es adicional a los 23 antecedentes del artículo 39, no se sustituye por el certificado bancario y aún no entra en la foliación ni en el índice A-5; se entrega en original impreso (Art. 35.5). El documento laboral distingue F30 (antecedentes del Boletín Laboral y Previsional) de F30-1. La nómina de experiencia reproduce los once campos del T-6 vigente y sus cartas simuladas ya no contradicen esos montos, SLA y arquitectura; se retiraron remisiones a facturas ausentes. Las Bases no fijan antigüedad máxima para la individualización de socios. El usuario confirmó que Alex Aravena revisó las correcciones y su nombre quedó registrado en A-6. Las cuatro alianzas se ajustaron al alcance de SD12/T-8; las cartas incompatibles de montaje externo y colocation se conservaron sólo en el respaldo de revisión.
+La Boleta de Garantía de Seriedad de los artículos 35 y 49.2 está en `antecedentes/5-garantias/35-boleta-seriedad/LAFROX-BoletaSeriedad.pdf` (USD 500.000, vence el 30-04-2027). Es adicional a los 23 antecedentes del artículo 39 y no se sustituye por el certificado bancario. Cierra la foliación del sobre (N.° 25 del índice A-5, orden del Art. 49.2) y se entrega en original impreso (Art. 35.5). El documento laboral distingue F30 (antecedentes del Boletín Laboral y Previsional) de F30-1. La nómina de experiencia reproduce los once campos del T-6 vigente y sus cartas simuladas ya no contradicen esos montos, SLA y arquitectura; se retiraron remisiones a facturas ausentes. Las Bases no fijan antigüedad máxima para la individualización de socios. El usuario confirmó que Alex Aravena revisó las correcciones y su nombre quedó registrado en A-6. Las cuatro alianzas se ajustaron al alcance de SD12/T-8; las cartas incompatibles de montaje externo y colocation se conservaron sólo en el respaldo de revisión.
 
 El antecedente 21 incorpora tres cartas con el mismo formato de las cuatro alianzas: Rom Mayer para la instalación de Talca y la revisión eléctrica semestral, Netprovider para las pruebas independientes y Telsur como proveedor clave de fibra de Talca y Concepción. Las dos primeras corresponden a los siete servicios declarados en SD12 y T-8 y su contratación requiere autorización previa y escrita del CLIENTE. Las cartas son simuladas y no acreditan compromisos reales.
 

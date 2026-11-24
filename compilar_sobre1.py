@@ -1,4 +1,4 @@
-"""Compila e integra los 23 antecedentes del artículo 39 y la declaración del sitio web (BTT 23.3) en un solo índice.
+"""Compila e integra los 23 antecedentes del artículo 39 la declaración del sitio web (BTT 23.3) y la Boleta de Garantía de Seriedad (Art. 35) en un solo índice.
 
 Uso: python compilar_sobre1.py
 Requiere LuaLaTeX y PyMuPDF (python -m pip install pymupdf).
@@ -39,6 +39,7 @@ SOBRE = [
  ("LAFROX-Formulario-A-6", "Formulario A-6: Declaración de uso de IA generativa"),
  (ANT+"4-tecnicos/23-certificaciones/LAFROX-Certificaciones", "Certificaciones institucionales y de fabricante"),
  (ANT+"4-tecnicos/24-dj-sitio-web/LAFROX-DeclaracionWeb", "Declaración jurada simple de veracidad del sitio web corporativo"),
+ (ANT+"5-garantias/35-boleta-seriedad/LAFROX-BoletaSeriedad", "Boleta de Garantía de Seriedad de la Oferta (Art. 35)"),
 ]
 
 def documentos():
