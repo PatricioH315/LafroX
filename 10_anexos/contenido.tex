@@ -204,7 +204,7 @@ Cada condición identifica lo que se formaliza antes de habilitar el servicio en
 El diseño de SD4 comprende cinco sitios logísticos y la casa matriz de Talca como sexta instalación, de oficinas y sin cómputo propio. La mesa cubre a sus usuarios y, ante intervención presencial, el gerente desplaza al especialista de guardia con suplente para los demás sitios. En M1 el CLIENTE confirma la ubicación, accesos, traslado y reserva aplicable. Si se confirma otro sitio operativo, se revisan los requisitos de la tipología Concepción según SD4 (BA, art. 5; Caso RT-21.16; SD4, 4.1.21 y 4.2.2.1).
 
 \item[B-02. Habilitación y guardias.]
-El Líder de Operación/SRE consolida el cuadrante nominal antes de M21. Para los servicios que se activan durante marcha blanca o soporte puente, confirma la cobertura antes del primer turno aplicable. La Tabla~\ref{tab:sd10-b02-coordinacion} recoge la dedicación de los responsables que el T-8 ya nomina. Las guardias y suplencias se asignan por separado en la Tabla~\ref{tab:sd10-b02-cobertura}.
+El Líder de Operación/SRE consolida el cuadrante nominal antes de M21. Para los servicios que se activan durante marcha blanca o soporte puente, confirma la cobertura antes del primer turno aplicable. La Tabla~\ref{tab:sd10-b02-coordinacion} recoge la dedicación de los responsables que el T-8 ya nomina. La oferta identifica al especialista y su suplente por tecnología, con período, ventana de escalamiento y dedicación individual. El calendario de turnos y descansos se formaliza antes de la activación del servicio. Las guardias y suplencias se asignan por separado en la Tabla~\ref{tab:sd10-b02-cobertura}.
 
 \Needspace{0.92\textheight}
 \begin{tablalafrox}{Responsables nominados y dedicaciones en Operación}{tab:sd10-b02-coordinacion}
@@ -226,16 +226,18 @@ El SD12 propone perfiles para suplir a los responsables de coordinación. La asi
   {F{0.21} F{0.24} F{0.19} F{0.18} Y}
   {\cab{Servicio y perfil T-15} & \cab{Ventana y período} & \cab{Titular y suplente} & \cab{Competencia a acreditar} & \cab{Dedicación individual}}
 Plataforma y nube, 14S/14J & M21--M56; guardia L2/L3 fuera de horario, críticos y altos. & Ambos por confirmar. & AWS, plataforma local y recuperación. & HH por persona y ventana por confirmar. \\
-Redes/NOC, 30 & 24$\times$7 desde M16. M21--M56: Mesa 20:00--22:00, lunes a sábado; dos puestos base y tres en peak (10.A). & Ambos por turno por confirmar. & WAN, enlaces de sitio y monitoreo. & HH por puesto y relevo por confirmar. \\
+Redes/NOC, 30 & 24$\times$7 desde M16. M21--M56: Mesa 20:00--22:00, lunes a sábado; dos puestos base y tres en peak (10.A). & Ambos por turno por confirmar. & WAN, enlaces de sitio y monitoreo. & Perfil 30: ocho plazas. Distribución nominal del relevo pendiente. \\
 Seguridad/SOC, 31O/31E & 24$\times$7 desde M13; escalamiento crítico y alto. & Ambos por turno y guardia por confirmar. & SIEM, triaje y respuesta a incidentes. & HH por turno y guardia por confirmar. \\
-Aplicaciones, 04 & M21--M56; L2/L3 para críticos y altos. & Ambos por confirmar. & Diagnóstico y contingencia de aplicaciones. & HH fuera de coordinación por confirmar. \\
-Datos, 23 & M21--M56; apoyo puntual, ventana por confirmar. & Ambos por confirmar. & Persistencia, recuperación y conciliación. & HH de escalamiento por confirmar. \\
-Integraciones críticas, 02 & M21--M56; apoyo puntual. Validar ventanas y canal ERP/DTE y contrapartes. & Ambos por integración por confirmar. & ERP, DTE, EDI, AS2 y conciliación. & 12S: 16 HH/mes; coordinación según T-8. \\
+Aplicaciones, 04 & M21--M56; L2/L3 para críticos y altos. & Ambos por confirmar. & Diagnóstico y contingencia de aplicaciones. & Precisar la atención dentro del 15~\% de Tomás Pérez y las HH del suplente. \\
+Datos, 23 & M21--M56; apoyo puntual, ventana por confirmar. & Ambos por confirmar. & Persistencia, recuperación y conciliación. & Precisar la ventana dentro del 1~\% de Leandro Chamorro y las HH del suplente. \\
+Integraciones críticas, 02 & M21--M56; apoyo puntual. Validar ventanas y canal ERP/DTE y contrapartes. & Ambos por integración por confirmar. & ERP, DTE, EDI, AS2 y conciliación. & Rodrigo Valdés: 1~\% puntual. Suplencia 12S: 16 HH/mes; persona pendiente. \\
 Mesa N1, 17 & M21--M56; lunes a sábado, 04:00--20:00. Noches y domingos en septiembre y diciembre. & Ambos por turno por confirmar. & Registro, primera atención y transferencia al NOC. & HH por agente y turno por confirmar. \\
 \end{tablalafrox}
 \fuentesdiez{SD10, sección 10.1 y Anexo 10.A; T-15, perfiles y secciones 4.1 y 5.7; T-14, paquetes 10.1.1, 10.1.2 y 10.1.4.}
 
 Para formalizar cada fila, Operación registra nombre de titular y suplente, fecha y ventana de cobertura, evidencia de competencia, HH o porcentaje imputado y canal de escalamiento. El responsable de cada área respalda sus asignaciones. Guillermo Castillo registra fecha, respaldo y resultado de la validación del conjunto. Las guardias de la Tabla~\ref{tab:sd10-b02-cobertura} permanecen pendientes de esa confirmación.
+
+Para Redes/NOC, SD4 (Anexo 4-B) y T-14 (10.1.1) prevén ocho operadores del perfil 30 al 100, 75 y 50~\% en los tres años de Operación. La reducción exige acta del Comité y tres meses de cumplimiento. La tabla de perfiles internos del T-15 declara plazas propuestas; queda pendiente vincular los nombres con estas dedicaciones. En M32 la reserva adoptada eleva Mesa a 1.840 HH y añade 50 HH de relevo NOC.
 
 El contraste por calendario da 962 HH de Mesa en M21 ($26\times37=962$, capacidad agregada de ocho plazas de 128 HH) y 1.570 HH en M32 ($25\times(52+6)+5\times24=1.570$, capacidad agregada de trece plazas de 128 HH). Las 21.748,2 HH de ocho operadores NOC corresponden a M21--M56. Las 32.112 HH de seis analistas SOC cubren M13--M56, incluidas 26.280 HH de M21--M56; M13 requiere 696 HH de supervisión continua. El modelo financiero del 13 de noviembre de 2026 reproduce las plazas en «COSTOS HH - SUELDOS» (filas 40, 41 y 44) y los meses de contraste en «HH POR ROL Y MES» (W40 para M21, AH40 para M32 y O44 para M13). La fila 16 de esta última hoja asigna 0 HH al perfil 12S en M21--M56. Los compromisos individuales de 12.D respaldan las dedicaciones declaradas de la coordinación; las horas por persona y turno de guardia quedan pendientes en el cuadrante.
 
