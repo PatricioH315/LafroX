@@ -1,0 +1,143 @@
+%% ============================================================================
+%%  Carátula física del Sobre N.° 1 --- Antecedentes del Oferente
+%%  Conforme al Artículo 49.1 y al Artículo 40.2 de las Bases Administrativas.
+%%  Va adherida por fuera del sobre físico cerrado (sin folio correlativo).
+%% ============================================================================
+
+\documentclass[carta]{lafrox}
+\input{sobre1-comun}
+
+\datoslafrox{
+  caso         = {Caso 02 --- Logística},
+  documento    = {Antecedentes del Oferente},
+  subtitulo    = {Antecedentes administrativos y Garantía de Seriedad de la Oferta},
+  sobre        = {SOBRE N.\textdegree{} 1: ANTECEDENTES DEL OFERENTE},
+  alcance      = {Entrega física + respaldo digital},
+  formulario   = {Artículos 35\textdegree{}, 39\textdegree{} y 49\textdegree{}},
+  fecha        = {25-11-2026 (máximo 14:00 h)},
+  nomenclatura = {SOBRE1\_LAFROX\_ANTECEDENTES\_OFERENTE\_20261125.ZIP},
+}
+
+\begin{document}
+\thispagestyle{empty}
+\LFXcalcularmargenes
+\null
+\begin{tikzpicture}[remember picture,overlay]
+
+  % --- Banda superior y doble franja naranja (identidad LafroX) ---
+  \fill[lafroxBanda]
+    \LFXen{0}{0}              --
+    \LFXen{1}{0}              --
+    \LFXen{1}{\LFXbandaDerY}  --
+    \LFXen{0}{\LFXbandaIzqY}  -- cycle;
+
+  \fill[lafroxNaranja]
+    \LFXen{0}{\LFXbandaIzqY}        --
+    \LFXen{1}{\LFXbandaDerY}        --
+    \LFXen{1}{\LFXbandaDerY+0.013}  --
+    \LFXen{0}{\LFXbandaIzqY+0.013}  -- cycle;
+  \fill[lafroxNaranjaC]
+    \LFXen{0}{\LFXbandaIzqY+0.022}  --
+    \LFXen{1}{\LFXbandaDerY+0.022}  --
+    \LFXen{1}{\LFXbandaDerY+0.028}  --
+    \LFXen{0}{\LFXbandaIzqY+0.028}  -- cycle;
+
+  % --- Marca y etiqueta de sobre físico ---
+  \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.050}
+    {\LFXmarcaportada};
+  \node[anchor=north east,inner sep=0pt] at \LFXen{\LFXmd}{0.056}
+    {\color{lafroxSobre}\LFXrotulo{Carátula de sobre físico \textperiodcentered\ Art.~49.1}};
+
+  % --- 1-2. Licitación y Objeto + Caso (Art. 49.1, líneas 1 y 2) ---
+  \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.224}
+    {\color{lafroxGris}\LFXrotulo{Licitación Pública Internacional}};
+  \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.244}
+    {\sffamily\bfseries\fontsize{22pt}{26pt}\selectfont
+     \color{lafroxFuerte}LICITACIÓN N.\textdegree{} TFEP-01/2026};
+  \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.292}
+    {\sffamily\fontsize{12.5pt}{16pt}\selectfont
+     \color{lafroxTinta}Proyecto de Plataforma Digital de Misión Crítica \textemdash{} Caso 02: Logística};
+
+  \LFXfileteportada{0.340}
+
+  % --- 3. Identificación del Sobre N.° 1 (Art. 49.1, línea 3) ---
+  \node[anchor=north west,inner xsep=10pt,inner ysep=7pt,fill=lafroxBanda]
+    at \LFXen{\LFXmi}{0.362}
+    {\fontsize{9.5pt}{11pt}\selectfont
+     \addfontfeature{LetterSpace=10}\intersemibold
+     \color{white}\LFXsobre};
+
+  \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.422}
+    {\sffamily\bfseries\fontsize{28pt}{32pt}\selectfont
+     \color{lafroxFuerte}\LFXdocumento};
+  \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.474}
+    {\sffamily\fontsize{14pt}{18pt}\selectfont
+     \color{lafroxTinta}\LFXsubtitulo};
+  \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.506}
+    {\sffamily\fontsize{9.5pt}{13pt}\selectfont\color{lafroxGris}
+     \LFXalcance\ \textperiodcentered\ \LFXformulario};
+
+  \LFXfileteportada{0.542}
+
+  % --- 4-6. Mandante, Proponente, Representante Legal y Contacto (Art. 49.1, líneas 4 a 6) ---
+  \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.562}
+    {\begin{minipage}[t]{0.45\textwidth}
+       \sffamily\raggedright
+       {\color{lafroxGris}\LFXrotulo{Mandante}}\\[4pt]
+       {\fontsize{11pt}{14pt}\selectfont\intersemibold
+        \color{lafroxTinta}\LFXcliente}\\[14pt]
+       {\color{lafroxGris}\LFXrotulo{Nombre del Proponente}}\\[4pt]
+       {\fontsize{11.5pt}{14.5pt}\selectfont\intersemibold
+        \color{lafroxTinta}\LFXempresa}\\[2pt]
+       {\fontsize{9.5pt}{13.5pt}\selectfont\color{lafroxTinta}
+        RUT \LFXrut\\ \LFXdomicilio}
+     \end{minipage}};
+
+  \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi+0.395}{0.562}
+    {\begin{minipage}[t]{0.45\textwidth}
+       \sffamily\raggedright
+       {\color{lafroxGris}\LFXrotulo{Representante Legal}}\\[4pt]
+       {\fontsize{11.5pt}{14.5pt}\selectfont\intersemibold
+        \color{lafroxTinta}\LFXrepresentante}\\[2pt]
+       {\fontsize{9.5pt}{13.5pt}\selectfont\color{lafroxTinta}
+        \LFXcargo\\
+        C.I. N.\textdegree{} \LFXcedularepresentante}\\[14pt]
+       {\color{lafroxGris}\LFXrotulo{Contacto del Representante}}\\[4pt]
+       {\fontsize{9.5pt}{13.5pt}\selectfont\color{lafroxTinta}
+        \LFXcorreo\\ \LFXtelefono}
+     \end{minipage}};
+
+  \LFXfileteportada{0.716}
+
+  % --- Fecha de entrega y respaldo digital ---
+  \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.728}
+    {\begin{minipage}{\textwidth}
+       \sffamily
+       \LFXcampoportada{Fecha y hora límite de entrega}{\LFXfecha}\hfill
+       \LFXcampoportada{Respaldo digital (Art.~49.3)}{\texttt{\fontsize{8.5pt}{11pt}\selectfont\LFXnomenclatura}}
+     \end{minipage}};
+
+  \LFXfileteportada{0.794}
+
+  % --- Firma completa del representante legal (Art. 40.2) ---
+  \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.808}
+    {\begin{minipage}[t]{0.58\textwidth}
+       \sffamily\raggedright
+       {\color{lafroxGris}\LFXrotulo{Firma del representante legal (Art.~40.2)}}\par
+       \vspace{-1pt}
+       \includegraphics[width=3.4cm]{FIRMA_Alex_Aravena_transparente.png}\par
+       \vspace{-5pt}
+       {\color{lafroxTinta}\rule{6.4cm}{0.5pt}}\par
+       \vspace{4pt}
+       {\fontsize{9.5pt}{13pt}\selectfont\color{lafroxTinta}
+        \intersemibold\LFXrepresentante\\
+        \normalfont\sffamily\LFXcargo\ \textperiodcentered\ \LFXempresa}
+     \end{minipage}};
+
+  % --- Pie discreto sin folio (va adherida al exterior del sobre) ---
+  \node[anchor=south west,inner sep=0pt] at \LFXen{\LFXmi}{0.962}
+    {\ttfamily\fontsize{7.5pt}{10pt}\selectfont\color{lafroxGris}
+     LAFROX-Caratula-Sobre1.pdf \textemdash\ Carátula exterior (sin folio)};
+
+\end{tikzpicture}
+\end{document}
