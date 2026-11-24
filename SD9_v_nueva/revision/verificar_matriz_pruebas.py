@@ -28,6 +28,7 @@ source_rows = {}
 for line in source.splitlines():
     if re.match(r"\s*(?:RF|RNF|RT)-\d", line):
         cells = [c.strip() for c in line.strip().removesuffix(r"\\").split(" & ")]
+        assert len(cells) in (7, 8), cells[0]
         source_states[cells[0]] = cells[2]
         source_rows[cells[0]] = cells
 assert source_states["RT-26.04"] == "Cumple"
@@ -56,8 +57,9 @@ assert set(expected_catalogue) == {item["id"] for item in own}
 for item in requirements:
     identifier = item["id"]
     t12 = source_rows[identifier]
-    assert (item["component"], item["edt"]) == (t12[3], t12[5]), identifier
-    expected = expected_catalogue.get(identifier, (f"Bases Técnicas Transversales, {identifier}", t12[1]))
+    assert (item["component"], item["edt"]) == (t12[3], t12[-2]), identifier
+    expected_rt = t12[-3] if len(t12) == 8 and t12[2] != "No cumple" else t12[1]
+    expected = expected_catalogue.get(identifier, (f"Bases Técnicas Transversales, {identifier}", expected_rt))
     assert item["origin"] and item["criterion"] and (item["origin"], item["criterion"]) == expected, identifier
 priority = Counter(x["priority"] for x in own)
 rt_state = Counter(x["state"] for x in rt)
@@ -85,6 +87,34 @@ assert all(not x["cases"] for x in rt if x["state"] == "No cumple")
 cases = [case for x in requirements + contracts for case in x["cases"]]
 assert len(cases) == len(set(cases)) == data["test_count"] == counts["cases"]
 assert contracts[7]["id"] == "INT-08" and contracts[7]["stage"] == "E2"
+
+requirements_by_id = {item["id"]: item for item in requirements}
+for item in requirements + aliases:
+    identifier = item["id"]
+    cells = source_rows[identifier]
+    if len(cells) == 7:
+        assert "evidence" not in item, identifier
+        continue
+    evidence = cells[4]
+    assert item["evidence"] == evidence and evidence, identifier
+    case_label = evidence.replace(r"\allowbreak{}", "").split(r"\newline", 1)[0]
+    if identifier not in requirements_by_id:
+        parent = case_label.removeprefix("Ver ")
+        if identifier == "RNF-06.03":
+            assert parent == "AL-OFF-01 y SD4-Anexo 4-W.6", identifier
+        else:
+            parent_id = parent.split("/", 1)[0]
+            target = requirements_by_id[parent_id]
+            # El alias debe usar el caso existente de su requisito absorbente.
+            assert parent == target["cases"][0], identifier
+            assert parent_id in cells[3], identifier
+        continue
+    if not item["cases"]:
+        assert case_label == "Sin prueba prevista", identifier
+        continue
+    first_case, *remaining = item["cases"]
+    expected_label = first_case + ("--" + remaining[-1].rsplit("/", 1)[1] if remaining else "")
+    assert case_label == expected_label, (identifier, case_label, expected_label)
 
 body, annex, t13, t17 = [
     (ROOT / folder / "contenido.tex").read_text(encoding="utf-8")

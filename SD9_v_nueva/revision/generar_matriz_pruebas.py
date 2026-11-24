@@ -16,7 +16,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 # Un único commit del SD3 aporta T-12 (siete columnas, EDT por productos) y catálogo.
-REF = sys.argv[1] if len(sys.argv) > 1 else "73e6b41dfe167e2bc1698e2e69b1031f50c94aab"
+REF = sys.argv[1] if len(sys.argv) > 1 else "0167f99d4a30c6d68c3803c9b5437e2dac926cfb"
 BLOCK = 25
 CASES_BY_PRIORITY = {"Crítica": 5, "Alta": 3, "Media": 2}
 CONTRACTS, CASES_BY_CONTRACT = 15, 7
@@ -92,22 +92,26 @@ data = []
 aliases = []
 for c in t12:
     identifier = c[0]
-    assert len(c) == 7, identifier
-    state, component, work = c[2], c[3], c[5]
+    assert len(c) in (7, 8), identifier
+    evidence = c[4] if len(c) == 8 else None
+    acceptance = c[-3]
+    state, component, work = c[2], c[3], c[-2]
+    trace = {"evidence": evidence} if evidence is not None else {}
     if identifier in catalogue:
         item = catalogue[identifier]
         count = CASES_BY_PRIORITY[item["priority"]]
         data.append({"id": identifier, "state": state, "component": component, "edt": work,
-                     **item, "cases": [f"{identifier}/P{i:02}" for i in range(1, count + 1)]})
+                     **item, **trace, "cases": [f"{identifier}/P{i:02}" for i in range(1, count + 1)]})
     elif identifier.startswith("RT-"):
         count = 0 if state == "No cumple" else 1
         data.append({"id": identifier, "state": state, "component": component, "edt": work,
                      "priority": "RT", "stage": "Según T-12 y T-14", "table": "T12.2",
                      "origin": f"Bases Técnicas Transversales, {identifier}",
-                     "criterion": c[1], "verification": "Verificación del requisito y del alcance ofertado",
+                     "criterion": acceptance if evidence is not None and count else c[1],
+                     "verification": "Verificación del requisito y del alcance ofertado", **trace,
                      "cases": [f"{identifier}/P01"] if count else []})
     else:
-        aliases.append({"id": identifier, "component": component, "cases": []})
+        aliases.append({"id": identifier, "component": component, **trace, "cases": []})
 
 contracts = [{"id": f"INT-{i:02}", "stage": "E2" if i == 8 else "E1; regresión E2",
               "cases": [f"INT-{i:02}/P{n:02}" for n in range(1, CASES_BY_CONTRACT + 1)]}
