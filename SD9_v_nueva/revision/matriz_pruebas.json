@@ -1,7 +1,7 @@
 {
-  "source_ref": "3997d5f37a95ccdcd3a583ecd45679d36217927f",
-  "source_commit": "3997d5f37a95ccdcd3a583ecd45679d36217927f",
-  "test_count": 1329,
+  "source_ref": "01a918b0118a19c6cf492b07606418e5e524e84f",
+  "source_commit": "01a918b0118a19c6cf492b07606418e5e524e84f",
+  "test_count": 1335,
   "counts": {
     "t12_rows": 653,
     "requirements": 644,
@@ -9,18 +9,18 @@
     "own": 270,
     "rt": 374,
     "contracts": 15,
-    "cases": 1329,
+    "cases": 1335,
     "priority": {
       "Alta": 157,
       "Crítica": 58,
       "Media": 55
     },
     "rt_state": {
-      "Cumple": 342,
+      "Cumple": 348,
       "Cumple parcialmente": 11,
-      "No cumple": 21
+      "No cumple": 15
     },
-    "rt_without_case": 21,
+    "rt_without_case": 15,
     "blocks": 26
   },
   "requirements": [
@@ -10805,87 +10805,99 @@
     },
     {
       "id": "RT-24.01",
-      "state": "No cumple",
-      "component": "Se entrega con la Propuesta Final.",
+      "state": "Cumple",
+      "component": "Los ocho integrantes clave se presentan uno a uno en plano medio, mirando a cámara y con vestimenta formal o de negocio informal, al menos 10 s cada uno.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-24.01",
-      "criterion": "Todos los integrantes clave del equipo deberán aparecer individualmente presentándose, en toma de medio cuerpo, mirando directamente a la cámara, con vestimenta formal o de negocio informal, y con una duración mínima de aparición de 10 segundos por persona.",
+      "criterion": "Cada integrante clave aparece individualmente al menos 10 s, en plano medio y mirando a cámara.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "Sin prueba prevista",
-      "cases": []
+      "evidence": "RT-24.01/\\allowbreak{}P01\\newline Respaldo: video de presentación",
+      "cases": [
+        "RT-24.01/P01"
+      ]
     },
     {
       "id": "RT-24.02",
-      "state": "No cumple",
-      "component": "Se entrega con la Propuesta Final.",
+      "state": "Cumple",
+      "component": "Cada aparición muestra un rótulo con nombre completo, cargo, años de experiencia y especialización.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-24.02",
-      "criterion": "Cada vez que aparezca un integrante deberá mostrarse en pantalla su nombre completo, su cargo en el proyecto, sus años de experiencia y su especialización relevante.",
+      "criterion": "Cada rótulo coincide en nombre, cargo, experiencia y especialización con el T-8.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "Sin prueba prevista",
-      "cases": []
+      "evidence": "RT-24.02/\\allowbreak{}P01\\newline Respaldo: video de presentación",
+      "cases": [
+        "RT-24.02/P01"
+      ]
     },
     {
       "id": "RT-24.03",
-      "state": "No cumple",
-      "component": "Se entrega con la Propuesta Final.",
+      "state": "Cumple",
+      "component": "Los rótulos y el mosaico del equipo muestran las certificaciones principales de cada integrante.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-24.03",
-      "criterion": "Las certificaciones principales de cada integrante podrán mostrarse en pantalla.",
+      "criterion": "Las certificaciones en pantalla coinciden con el T-8.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "Sin prueba prevista",
-      "cases": []
+      "evidence": "RT-24.03/\\allowbreak{}P01\\newline Respaldo: video de presentación",
+      "cases": [
+        "RT-24.03/P01"
+      ]
     },
     {
       "id": "RT-24.04",
-      "state": "No cumple",
-      "component": "Se entrega con la Propuesta Final.",
+      "state": "Cumple",
+      "component": "Todas las tomas de personas usan el mismo fondo, la misma iluminación y un encuadre de plano medio.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-24.04",
-      "criterion": "El fondo será el mismo para todas las tomas de personas, con iluminación consistente y encuadre similar para todos los participantes.",
+      "criterion": "Fondo, iluminación y encuadre coinciden en las tomas de los ocho integrantes.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "Sin prueba prevista",
-      "cases": []
+      "evidence": "RT-24.04/\\allowbreak{}P01\\newline Respaldo: video de presentación",
+      "cases": [
+        "RT-24.04/P01"
+      ]
     },
     {
       "id": "RT-24.05",
-      "state": "No cumple",
-      "component": "Se entrega con la Propuesta Final.",
+      "state": "Cumple",
+      "component": "Paleta, tipografía y logotipo de LafroX en todas las escenas, con sitio, correo y teléfono en el pie.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-24.05",
-      "criterion": "La paleta de colores corporativa, la tipografía y el uso de la marca serán consistentes en todo el video, con logotipo visible en todas las escenas y datos de contacto en el encabezado o pie.",
+      "criterion": "Logotipo y datos de contacto visibles en cada escena, con paleta y tipografía constantes.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "Sin prueba prevista",
-      "cases": []
+      "evidence": "RT-24.05/\\allowbreak{}P01\\newline Respaldo: video de presentación",
+      "cases": [
+        "RT-24.05/P01"
+      ]
     },
     {
       "id": "RT-24.06",
-      "state": "No cumple",
-      "component": "Se entrega con la Propuesta Final.",
+      "state": "Cumple",
+      "component": "Audio normalizado: $-16$ LUFS integrados, rango de sonoridad de 2,6 LU y pico de $-4{,}4$ dBFS.",
       "edt": "No aplica",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-24.06",
-      "criterion": "Los niveles de volumen estarán normalizados, con la misma calidad de grabación y sin variaciones bruscas de sonido.",
+      "criterion": "La medición EBU R128 confirma el nivel integrado y el pico, sin saltos de volumen entre personas.",
       "verification": "Verificación del requisito y del alcance ofertado",
-      "evidence": "Sin prueba prevista",
-      "cases": []
+      "evidence": "RT-24.06/\\allowbreak{}P01\\newline Respaldo: video de presentación",
+      "cases": [
+        "RT-24.06/P01"
+      ]
     },
     {
       "id": "RT-25.01",

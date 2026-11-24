@@ -184,9 +184,14 @@ def decimal_es(value, places=1):
 distribution = f"{num(automatic)} automáticos y {num(manual_cases)} manuales"
 hours_one = decimal_es(automatic_hours, 2)
 hours_two = decimal_es(automatic_hours / 2, 2)
-manual_hours = decimal_es(manual)
-cal_hours = decimal_es(manual + 8)
-internal_hours, external_hours = decimal_es(internal), decimal_es(external)
+def exact_es(value):
+    """Cifra exacta: hasta dos decimales, sin ceros finales (66,5; 66,75; 205)."""
+    text = decimal_es(value, 2).rstrip("0")
+    return text[:-1] if text.endswith(",") else text
+
+manual_hours = exact_es(manual)
+cal_hours = exact_es(manual + 8)
+internal_hours, external_hours = exact_es(internal), exact_es(external)
 for text in (body, t13):
     assert distribution in text and hours_one in text and hours_two in text
     assert f"{manual_hours} HH por ciclo" in text
@@ -197,8 +202,8 @@ for phrase in (
     f"{manual_cases} casos a 15 minutos", f"{manual_hours} HH",
     f"Calidad (CAL) & {cal_hours} & {cal_hours}",
     f"{internal_hours} × nI + {external_hours} × nE",
-    f"representa {num(int(event_sum))} HH",
-    f"{hh(baseline)} + {num(int(event_sum))} = {hh(baseline + event_sum)} HH",
+    f"representa {exact_es(event_sum)} HH",
+    f"{hh(baseline)} + {exact_es(event_sum)} = {hh(baseline + event_sum)} HH",
 ):
     assert phrase in annex, phrase
 assert f"{internal_hours} HH por falla interna y {external_hours} HH por falla externa" in body
