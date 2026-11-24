@@ -14,6 +14,9 @@ const { applyTheme } = require(SKILL + "/scripts/apply_theme.js");
 const OUT = path.join(__dirname, "LafroX - Plantilla.pptx");
 const A = (f) => path.join(__dirname, "assets", f);
 
+// Transicion Morph: lista configurable. Se aplica a todas las laminas salvo las omitidas (portada = 1).
+const MORPH = { enabled: true, skip: [1], durMs: 1200 };
+
 // ---------------------------------------------------------------- Theme
 const THEME = {
   name: "LafroX",
@@ -192,8 +195,8 @@ const card = (s, x, y, w, h, o = {}) =>
     objectName: `Tarjeta ${++nameN}`, ...o,
   });
 
-const darkCard = (s, x, y, w, h) =>
-  card(s, x, y, w, h, { fill: { color: C.text1 }, line: { color: C.text1, width: 1 } });
+const darkCard = (s, x, y, w, h, name) =>
+  card(s, x, y, w, h, { fill: { color: C.text1 }, line: { color: C.text1, width: 1 }, ...(name ? { objectName: name } : {}) });
 
 const pill = (s, text, x, y, w, h, o = {}) =>
   s.addText(text, {
@@ -212,6 +215,35 @@ const source = (s, text, y = 9.85, dark = false) =>
   T(s, text, X0, y, 14, 0.3, { fontSize: 13, color: dark ? C.accent5 : C.accent3 });
 
 const caption = (s, text) => T(s, text, X0, Y0, W, 0.4, { fontSize: 16, color: C.accent3 });
+
+// Figuras decorativas (assets/decor). Se insertan como PNG de alta resolucion y, al final
+// del build, se les agrega la version SVG (nitida en PowerPoint; Google Slides usa el PNG).
+// Regla Morph: la misma figura conserva el mismo nombre "!!deco_<tipo>_<n>" en laminas consecutivas.
+const DECOR_KINDS = [
+  "onda-naranjo", "onda-naranjo-claro", "anillos", "cuarto-circulo", "hoja", "mosaico", "figura", "aros", "puntos",
+  "icono-web", "icono-telefono", "icono-ubicacion", "icono-correo",
+];
+const decorPng = (kind) => path.join(__dirname, "assets", "decor", "png", kind + ".png");
+const decorSvg = (kind) => path.join(__dirname, "assets", "decor", kind + ".svg");
+const pngRatio = (file) => {
+  const b = require("fs").readFileSync(file);
+  return b.readUInt32BE(16) / b.readUInt32BE(20);
+};
+const DECOR_RATIO = Object.fromEntries(DECOR_KINDS.map((k) => [k, pngRatio(decorPng(k))]));
+// o: { x, y, w, h?, rotate?, flipH?, transparency? }  (h se deduce de la proporcion si falta)
+const deco = (s, kind, n, o) => {
+  if (!DECOR_RATIO[kind]) throw new Error("Figura desconocida: " + kind);
+  const { h, ...rest } = o;
+  s.addImage({
+    path: decorPng(kind), ...rest, h: h ?? o.w / DECOR_RATIO[kind],
+    objectName: `!!deco_${kind}_${n}`, altText: "Figura decorativa",
+  });
+};
+// Arco en U invertido que entra desde el borde (rotado 180 y espejado, como en el original).
+const arc = (s, kind, n, x, y, w = 12.67, flip = true) =>
+  deco(s, kind, n, { x, y, w, ...(flip ? { rotate: 180, flipH: true } : {}) });
+const RINGS = (s, x, y, d = 11.2, n = 1) => deco(s, "anillos", n, { x, y, w: d, h: d, transparency: 95 });
+const QUARTER = (s, x = 18.2, y = -3.6, d = 6.0) => deco(s, "cuarto-circulo", 1, { x, y, w: d, h: d });
 
 const lineOpt = (color, w = 0.5) => ({ color, width: w });
 
@@ -243,6 +275,8 @@ const chartBase = () => ({
     "PORTADA", "Apertura",
     "Portada. Sirve para abrir cualquier presentación de LafroX: cambie el título (dos líneas: la primera en peso regular, la segunda en negrita), el subtítulo y la línea inferior. Se edita directamente en los marcadores de la lámina. Los datos de esta lámina son de Ejemplo."
   );
+  deco(s, "onda-naranjo-claro", 1, { x: 6.66, y: -7.43, w: 24.16, h: 12.08 });
+  deco(s, "onda-naranjo", 1, { x: 8.28, y: 0.98, w: 24.16, h: 12.08, rotate: 180, flipH: true });
   s.addText(
     [
       { text: "Propuesta", options: { bold: false, fontFace: B, breakLine: true } },
@@ -260,6 +294,9 @@ const chartBase = () => ({
     "CONTENIDO", "Apertura",
     "Agenda numerada en dos columnas, seis ítems. Úsela después de la portada para anticipar la estructura. Para cambiar la cantidad de ítems, duplique o elimine tarjetas y mantenga el ritmo de 0,3 in entre ellas. Los textos son de Ejemplo."
   );
+  RINGS(s, 10.29, 6.25);
+  QUARTER(s);
+  arc(s, "onda-naranjo", 1, -6.9, 8.6, 12.15);
   title(s, "Agenda");
   const items = [
     ["01", "Contexto y problema", "Qué ocurre hoy en la operación"],
@@ -273,7 +310,7 @@ const chartBase = () => ({
   items.forEach((it, i) => {
     const col = i < 3 ? 0 : 1, row = i % 3;
     const x = X0 + col * (cw + 0.3), y = Y0 + row * (ch + 0.3);
-    card(s, x, y, cw, ch);
+    card(s, x, y, cw, ch, { objectName: `!!tarjeta_${i + 1}` });
     T(s, it[0], x + 0.4, y, 1.0, ch, { fontSize: 32, bold: true, fontFace: H, color: C.accent1, valign: "middle" });
     T(s, it[1], x + 1.7, y + 0.42, cw - 2.0, 0.5, { fontSize: 24, bold: true, fontFace: H });
     T(s, it[2], x + 1.7, y + 1.0, cw - 2.0, 0.4, { fontSize: 16, color: C.accent3 });
@@ -286,6 +323,9 @@ const chartBase = () => ({
     "SECCION", "Apertura",
     "Divisor de sección sobre fondo naranjo. Complete el número (por ejemplo 02), el nombre de la sección y una frase de contexto. Úselo entre bloques temáticos de la presentación. Contenido de Ejemplo."
   );
+  RINGS(s, 9.5, -3.2, 13);
+  arc(s, "onda-naranjo-claro", 1, -11.4, 5.1);
+  deco(s, "onda-naranjo-claro", 2, { x: 17.24, y: -0.67, w: 12.67 });
   s.addText("02", { placeholder: "numero" });
   s.addText("Diagnóstico de calidad", { placeholder: "title" });
   s.addText("Qué ocurre hoy en la operación de Distribuidora Puelche", { placeholder: "subtitulo" });
@@ -297,9 +337,11 @@ const chartBase = () => ({
     "CONTENIDO", "Contenido",
     "Equipo de trabajo: tarjeta oscura de encabezado a la izquierda y cuadrícula de 2x3 tarjetas de persona con iniciales. Reemplace nombres, cargos e iniciales. Para más personas, agregue filas manteniendo el alto de tarjeta. Nombres de Ejemplo."
   );
+  RINGS(s, -5.5, 7.0);
+  deco(s, "mosaico", 1, { x: 17.2, y: -2.5, w: 4.5, h: 4.5 });
   title(s, "Equipo de trabajo");
   const gh = 7.0;
-  darkCard(s, X0, Y0, 5.4, gh);
+  darkCard(s, X0, Y0, 5.4, gh, "!!panel_oscuro");
   T(s, "EQUIPO", X0 + 0.5, Y0 + 0.5, 4.4, 0.35, { fontSize: 16, bold: true, fontFace: H, color: C.accent4 });
   T(s, "Seis roles, un solo objetivo", X0 + 0.5, Y0 + 1.1, 4.4, 2.4, { fontSize: 36, bold: true, fontFace: H, color: C.background1 });
   T(s, "Cada rol responde por una etapa del proceso y por sus indicadores de calidad.", X0 + 0.5, Y0 + 4.3, 4.4, 2.0, { fontSize: 18, color: C.accent6 });
@@ -314,7 +356,7 @@ const chartBase = () => ({
   const gx = X0 + 5.4 + 0.3, pw = (XR - gx - 0.3) / 2, ph = (gh - 0.6) / 3;
   ppl.forEach((p, i) => {
     const x = gx + (i % 2) * (pw + 0.3), y = Y0 + Math.floor(i / 2) * (ph + 0.3);
-    card(s, x, y, pw, ph);
+    card(s, x, y, pw, ph, { objectName: `!!tarjeta_${i + 1}` });
     circle(s, p[0], x + 0.4, y + (ph - 0.9) / 2);
     T(s, p[1], x + 1.6, y + ph / 2 - 0.45, pw - 1.8, 0.45, { fontSize: 20, bold: true, fontFace: H });
     T(s, p[2], x + 1.6, y + ph / 2 + 0.05, pw - 1.8, 0.4, { fontSize: 16, color: C.accent3 });
@@ -327,6 +369,10 @@ const chartBase = () => ({
     "CONTENIDO_OSCURO", "Contenido",
     "KPIs grandes sobre fondo oscuro: cuatro cifras con su etiqueta y un contexto. Cambie la cifra (naranjo), la unidad y la etiqueta. Use la tarjeta inferior para la meta o la conclusión. Todas las cifras son de Ejemplo."
   );
+  deco(s, "onda-naranjo", 1, { x: -11.3, y: 2.5, w: 12.67 });
+  arc(s, "onda-naranjo-claro", 1, -11.3, 5.1);
+  arc(s, "onda-naranjo", 2, 17.27, 1.93);
+  deco(s, "onda-naranjo-claro", 2, { x: 17.24, y: -0.67, w: 12.67 });
   title(s, "Situación actual en cuatro cifras");
   const k = [
     ["82,4", " %", "OTIF actual", "Entregas a tiempo y completas"],
@@ -337,7 +383,7 @@ const chartBase = () => ({
   const kw = (W - 3 * 0.5) / 4, kh = 4.5;
   k.forEach((d, i) => {
     const x = X0 + i * (kw + 0.5);
-    card(s, x, Y0, kw, kh, { fill: { color: C.text1 }, line: { color: C.accent2, width: 1 } });
+    card(s, x, Y0, kw, kh, { fill: { color: C.text1 }, line: { color: C.accent2, width: 1 }, objectName: `!!tarjeta_${i + 1}` });
     T(s, [
       { text: d[0], options: { fontSize: 56, bold: true, fontFace: H, color: C.accent1 } },
       { text: d[1], options: { fontSize: 26, bold: true, fontFace: H, color: C.accent1 } },
@@ -346,7 +392,7 @@ const chartBase = () => ({
     T(s, d[3], x + 0.4, Y0 + 3.0, kw - 0.6, 0.9, { fontSize: 16, color: C.accent5 });
   });
   const y2 = Y0 + kh + 0.3;
-  card(s, X0, y2, W, 1.5, { fill: { color: C.accent2 }, line: { color: C.accent2, width: 1 } });
+  card(s, X0, y2, W, 1.5, { fill: { color: C.accent2 }, line: { color: C.accent2, width: 1 }, objectName: "!!panel_oscuro" });
   T(s, "META DE LA LICITACIÓN", X0 + 0.5, y2 + 0.25, 8, 0.35, { fontSize: 16, bold: true, fontFace: H, color: C.accent4 });
   T(s, "OTIF mayor o igual a 95 % y reentregas menores o iguales a 2 %", X0 + 0.5, y2 + 0.72, W - 1.0, 0.5, { fontSize: 24, color: C.background1 });
   source(s, "Fuente: Ejemplo, datos ilustrativos Distribuidora Puelche, 2026.", 9.95, true);
@@ -358,6 +404,8 @@ const chartBase = () => ({
     "CONTENIDO", "Contenido",
     "Tres tarjetas de problema y una tarjeta oscura con la causa raíz. Úsela para pasar del síntoma al origen. Cambie numeración, títulos y descripciones; mantenga un máximo de cuatro líneas por tarjeta. Datos de Ejemplo."
   );
+  RINGS(s, 10.29, 6.25);
+  QUARTER(s);
   title(s, "Tres síntomas, una causa raíz");
   const p = [
     ["01", "Retiros demorados", "La carga espera 9 días en promedio, frente a los 3 días comprometidos en la licitación."],
@@ -367,13 +415,13 @@ const chartBase = () => ({
   const cw = (W - 0.6) / 3;
   p.forEach((d, i) => {
     const x = X0 + i * (cw + 0.3);
-    card(s, x, Y0, cw, 3.7);
+    card(s, x, Y0, cw, 3.7, { objectName: `!!tarjeta_${i + 1}` });
     T(s, d[0], x + 0.4, Y0 + 0.4, 1.5, 0.35, { fontSize: 18, bold: true, fontFace: H, color: C.accent1 });
     T(s, d[1], x + 0.4, Y0 + 1.0, cw - 0.8, 0.5, { fontSize: 24, bold: true, fontFace: H });
     T(s, d[2], x + 0.4, Y0 + 1.7, cw - 0.8, 2.3, { fontSize: 18, color: C.accent3 });
   });
   const y2 = Y0 + 3.7 + 0.3;
-  darkCard(s, X0, y2, W, 2.5);
+  darkCard(s, X0, y2, W, 2.5, "!!panel_oscuro");
   T(s, "CAUSA RAÍZ", X0 + 0.5, y2 + 0.4, 6, 0.35, { fontSize: 16, bold: true, fontFace: H, color: C.accent4 });
   T(s, "No existe un proceso único de preparación y verificación de pedidos: cada bodega lo resuelve a su manera.", X0 + 0.5, y2 + 1.0, W - 1.0, 1.2, { fontSize: 28, color: C.background1 });
 }
@@ -394,6 +442,8 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     "CONTENIDO", "Tablas",
     "Tabla estándar: encabezado naranjo, filas alternadas, columnas numéricas alineadas a la derecha, fila de total en negrita y nota de fuente debajo. Para más filas, agregue filas manteniendo el alto de 0,7 in. Datos de Ejemplo."
   );
+  RINGS(s, -5.17, -8.14);
+  QUARTER(s, 18.5, -3.9);
   title(s, "Costo mensual de no calidad por etapa");
   const rows = [
     ["Recepción", "Operaciones", "38", "620.000"],
@@ -422,6 +472,8 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     "CONTENIDO", "Tablas",
     "Tabla comparativa antes/después con marcas de estado en forma de píldora (✓ cumple, ✗ pendiente). Las píldoras son formas posicionadas sobre la columna Estado: si cambia el alto de las filas, muévalas con ellas. Datos de Ejemplo."
   );
+  RINGS(s, 14.17, 3.94);
+  QUARTER(s);
   title(s, "Antes y después de la propuesta");
   const rows = [
     ["OTIF mensual", "82,4 %", "96,0 %", true],
@@ -453,6 +505,8 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     "CONTENIDO", "Gráficos",
     "Gráfico de barras horizontal de una serie con una barra destacada en naranjo y un recuadro de comentario a la derecha. Edite los datos desde PowerPoint (Editar datos). Datos de Ejemplo."
   );
+  RINGS(s, 12.5, 6.5);
+  QUARTER(s, 18.3, -3.7);
   title(s, "Una causa explica un tercio de las reentregas");
   caption(s, "Reentregas por motivo, número de casos, enero a junio de 2026");
   const labels = ["Otros", "Error de documento", "Producto dañado", "Pedido incompleto", "Cliente ausente", "Dirección incompleta"];
@@ -463,7 +517,7 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     dataLabelPosition: "outEnd", dataLabelFormatCode: "0", valAxisHidden: true, valAxisMinVal: 0, valAxisMaxVal: 45,
   });
   const cx = 12.8, cw = XR - cx;
-  darkCard(s, cx, 3.6, cw, 6.1);
+  darkCard(s, cx, 3.6, cw, 6.1, "!!panel_oscuro");
   T(s, "LECTURA", cx + 0.45, 4.05, cw - 0.9, 0.35, { fontSize: 16, bold: true, fontFace: H, color: C.accent4 });
   T(s, "33,0 %", cx + 0.45, 4.6, cw - 0.9, 1.3, { fontSize: 66, bold: true, fontFace: H, color: C.accent1 });
   T(s, "de las reentregas se origina en direcciones incompletas.", cx + 0.45, 6.1, cw - 0.9, 1.3, { fontSize: 20, color: C.background1 });
@@ -477,6 +531,8 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     "CONTENIDO", "Gráficos",
     "Columnas apiladas: esfuerzo mensual por rol. La primera serie va en naranjo (la que se quiere destacar) y las demás en neutros. En gráficos apilados las etiquetas solo pueden ir al centro o dentro de la barra. Datos de Ejemplo."
   );
+  RINGS(s, -5.17, -8.14);
+  QUARTER(s, 18.5, -3.9);
   title(s, "Esfuerzo por mes y por rol");
   caption(s, "Horas de trabajo por mes, enero a junio de 2026");
   const labels = ["Ene", "Feb", "Mar", "Abr", "May", "Jun"];
@@ -499,6 +555,8 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     "CONTENIDO", "Gráficos",
     "Gráfico de líneas: indicador real frente a una meta, con recuadro de lectura a la derecha. La serie principal va en naranjo y la meta en gris oscuro. Edite los datos desde PowerPoint. Datos de Ejemplo."
   );
+  RINGS(s, 14.17, 3.94);
+  QUARTER(s);
   title(s, "OTIF mensual frente a la meta");
   caption(s, "OTIF mensual, porcentaje de entregas a tiempo y completas, 2026");
   const labels = ["Ene", "Feb", "Mar", "Abr", "May", "Jun"];
@@ -511,7 +569,7 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     valAxisMajorUnit: 10, valAxisLabelFormatCode: '0" %"', showLegend: true, legendPos: "b",
   });
   const cx = 13.3, cw = XR - cx;
-  darkCard(s, cx, 3.6, cw, 6.1);
+  darkCard(s, cx, 3.6, cw, 6.1, "!!panel_oscuro");
   T(s, "BRECHA A JUNIO", cx + 0.45, 4.05, cw - 0.9, 0.35, { fontSize: 16, bold: true, fontFace: H, color: C.accent4 });
   T(s, "12,6 pp", cx + 0.45, 4.6, cw - 0.9, 1.3, { fontSize: 66, bold: true, fontFace: H, color: C.accent1 });
   T(s, "entre el OTIF de 82,4 % y la meta de 95 %.", cx + 0.45, 6.1, cw - 0.9, 1.3, { fontSize: 20, color: C.background1 });
@@ -525,6 +583,8 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     "CONTENIDO", "Gráficos",
     "Dona con total en el centro y leyenda propia a la derecha. El texto central es un cuadro de texto aparte: actualícelo cuando cambie el total. Datos de Ejemplo."
   );
+  RINGS(s, -5.17, 5.5);
+  QUARTER(s, 18.3, -3.7);
   title(s, "Dónde se concentra el costo de no calidad");
   caption(s, "Distribución del costo mensual de no calidad, porcentaje del total");
   const cols = ["E8641B", "F29A5E", "9A9A9A", "C7C7C7"];
@@ -540,7 +600,7 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
   const lx = 10.3, lw = XR - lx, rh = 1.3;
   names.forEach((n, i) => {
     const y = 3.9 + i * (rh + 0.3);
-    card(s, lx, y, lw, rh);
+    card(s, lx, y, lw, rh, { objectName: `!!tarjeta_${i + 1}` });
     s.addShape(pres.shapes.OVAL, { x: lx + 0.4, y: y + rh / 2 - 0.2, w: 0.4, h: 0.4, fill: { color: cols[i] }, line: { color: "C7C7C7", width: 1 }, objectName: `Marca ${i + 1}` });
     T(s, n, lx + 1.2, y, 4.5, rh, { fontSize: 20, bold: true, fontFace: H, valign: "middle" });
     T(s, `${vals[i]} %`, lx + lw - 2.6, y, 2.2, rh, { fontSize: 28, bold: true, fontFace: H, align: "right", valign: "middle" });
@@ -554,6 +614,8 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     "CONTENIDO", "Gráficos",
     "Gráfico combinado de Pareto: columnas con la frecuencia y línea con el porcentaje acumulado en eje secundario. Las tres primeras causas (naranjo) concentran el 74,8 %. Datos de Ejemplo."
   );
+  RINGS(s, 10.29, 6.25);
+  QUARTER(s);
   title(s, "Tres causas concentran el 75 % de los casos");
   caption(s, "Reentregas por motivo (casos) y porcentaje acumulado");
   const labels = ["Dirección incompleta", "Cliente ausente", "Pedido incompleto", "Producto dañado", "Error de documento", "Otros"];
@@ -587,6 +649,9 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     "CONTENIDO", "Diagramas",
     "Línea de tiempo simplificada (Gantt) con barras por etapa e hitos en rombos. Mueva y estire las barras para ajustar fechas; cada columna es un mes. Etapas y fechas de Ejemplo."
   );
+  deco(s, "mosaico", 1, { x: 16.35, y: -1.74, w: 4.5, h: 4.5 });
+  deco(s, "mosaico", 2, { x: -3.2, y: -3.0, w: 4.5, h: 4.5 });
+  RINGS(s, 0, 9.58);
   title(s, "Plan de implementación en seis meses");
   const lw = 3.8, gx = X0 + lw, gw = XR - gx, cw = gw / 6;
   const months = ["Ene", "Feb", "Mar", "Abr", "May", "Jun"];
@@ -629,6 +694,9 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     "CONTENIDO", "Diagramas",
     "Proceso en cinco pasos con flechas. Cada paso tiene círculo numerado, título y descripción corta. Para cuatro o seis pasos, redistribuya el ancho manteniendo 0,5 in entre tarjetas. Contenido de Ejemplo."
   );
+  deco(s, "mosaico", 1, { x: 15.9, y: -2.2, w: 4.5, h: 4.5 });
+  deco(s, "mosaico", 2, { x: -3.6, y: -3.4, w: 4.5, h: 4.5 });
+  RINGS(s, 4, 9.9);
   title(s, "Proceso de despacho en cinco pasos");
   const steps = [
     ["Recepción", "Se registra la orden y se valida la información."],
@@ -640,7 +708,7 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
   const gap = 0.5, cw = (W - 4 * gap) / 5, ch = 4.2;
   steps.forEach((d, i) => {
     const x = X0 + i * (cw + gap);
-    card(s, x, Y0, cw, ch);
+    card(s, x, Y0, cw, ch, { objectName: `!!tarjeta_${i + 1}` });
     circle(s, String(i + 1).padStart(2, "0"), x + 0.4, Y0 + 0.45);
     T(s, d[0], x + 0.4, Y0 + 1.7, cw - 0.8, 0.5, { fontSize: 22, bold: true, fontFace: H });
     T(s, d[1], x + 0.4, Y0 + 2.4, cw - 0.8, 1.9, { fontSize: 16, color: C.accent3 });
@@ -649,7 +717,7 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     }
   });
   const y2 = Y0 + ch + 0.3;
-  darkCard(s, X0, y2, W, 1.9);
+  darkCard(s, X0, y2, W, 1.9, "!!panel_oscuro");
   T(s, "RESULTADO ESPERADO", X0 + 0.5, y2 + 0.4, 8, 0.35, { fontSize: 16, bold: true, fontFace: H, color: C.accent4 });
   T(s, "Retiro en 3 días y OTIF sobre 95 % en todas las bodegas.", X0 + 0.5, y2 + 0.95, W - 1.0, 0.6, { fontSize: 24, color: C.background1 });
 }
@@ -660,6 +728,8 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     "CONTENIDO", "Diagramas",
     "Dos columnas: texto a la izquierda y un recuadro gris para imagen o diagrama a la derecha. Borre el recuadro e inserte su imagen con el mismo tamaño y esquinas redondeadas. Texto de Ejemplo."
   );
+  deco(s, "mosaico", 1, { x: 16.35, y: -1.74, w: 4.5, h: 4.5 });
+  RINGS(s, 10.29, 6.25);
   title(s, "Propuesta para la bodega central");
   T(s, "Un flujo único de principio a fin", X0, Y0, 7.6, 1.2, { fontSize: 28, bold: true, fontFace: H });
   T(s, [
@@ -683,6 +753,9 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     "CONTENIDO", "Diagramas",
     "Matriz 2x2 de riesgos (probabilidad por impacto). Ubique cada riesgo como píldora dentro del cuadrante que corresponda; el cuadrante crítico va en tarjeta oscura. Riesgos de Ejemplo."
   );
+  deco(s, "mosaico", 1, { x: 16.9, y: -2.2, w: 4.5, h: 4.5 });
+  deco(s, "mosaico", 2, { x: -3.2, y: -3.0, w: 4.5, h: 4.5 });
+  RINGS(s, 0, 9.58);
   title(s, "Matriz de riesgos");
   const gx = 2.9, gy = Y0, qw = (XR - gx - 0.3) / 2, qh = 2.9;
   const quad = [
@@ -711,6 +784,10 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     "CONTENIDO", "Cierre",
     "Cita o mensaje clave a pantalla completa. Úsela para dejar una idea central antes del cierre: reemplace el texto y la atribución. Mensaje de Ejemplo."
   );
+  deco(s, "aros", 1, { x: 14.5, y: -2.5, w: 8.2, h: 6.56 });
+  deco(s, "hoja", 1, { x: 2.9, y: 10.0, w: 3.6, h: 3.6 });
+  deco(s, "cuarto-circulo", 2, { x: -0.7, y: 10.0, w: 3.6, h: 3.6 });
+  RINGS(s, 10.29, 6.25);
   title(s, "Mensaje clave");
   T(s, "“", X0, Y0 - 0.1, 3, 2.2, { fontSize: 200, bold: true, fontFace: H, color: C.accent1 });
   T(s, "La calidad del servicio se gana en cada entrega, no en cada informe.", X0, Y0 + 2.2, W, 3.6, { fontSize: 54, bold: true, fontFace: H });
@@ -723,10 +800,24 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     "CIERRE", "Cierre",
     "Lámina de cierre y preguntas sobre fondo oscuro. Cambie el mensaje grande (naranjo), el subtítulo y los datos de contacto, que aquí son de Ejemplo."
   );
+  deco(s, "onda-naranjo", 1, { x: -11.3, y: 2.5, w: 12.67 });
+  arc(s, "onda-naranjo-claro", 1, -11.3, 5.1);
+  arc(s, "onda-naranjo", 2, 17.27, 1.93);
+  deco(s, "onda-naranjo-claro", 2, { x: 17.24, y: -0.67, w: 12.67 });
+  deco(s, "puntos", 1, { x: 17.24, y: 1.12, w: 0.88, h: 0.22 });
+  deco(s, "puntos", 2, { x: 1.91, y: 10.0, w: 0.88, h: 0.22 });
   s.addText("¿Preguntas?", { placeholder: "mensaje" });
   s.addText("Gracias por su atención", { placeholder: "subtitulo" });
-  T(s, "contacto@lafrox.cl  ·  +56 9 1234 5678", X0, 8.0, W, 0.5, { fontSize: 20, color: C.background1, align: "center" });
-  T(s, "lafrox.cl  ·  Santiago, Chile", X0, 8.6, W, 0.5, { fontSize: 20, color: C.accent6, align: "center" });
+  const contact = [
+    ["icono-correo", "contacto@lafrox.cl"], ["icono-telefono", "+56 9 1234 5678"],
+    ["icono-web", "lafrox.cl"], ["icono-ubicacion", "Santiago, Chile"],
+  ];
+  const cell = W / contact.length, ih = 0.42;
+  contact.forEach(([kind, txt], i) => {
+    const x = X0 + i * cell + 0.3;
+    deco(s, kind, 1, { x, y: 8.1 + (0.5 - ih) / 2, w: ih * DECOR_RATIO[kind], h: ih });
+    T(s, txt, x + 0.75, 8.1, cell - 1.2, 0.5, { fontSize: 20, color: C.background1, valign: "middle" });
+  });
 }
 
 // 20 Guia de estilo
@@ -735,6 +826,8 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
     "CONTENIDO", "Guía",
     "Guía de estilo de la plantilla: paleta con códigos HEX, escala tipográfica y reglas de uso. Consúltela antes de crear láminas nuevas. Esta lámina es referencia, no se presenta."
   );
+  RINGS(s, 10.29, 6.25);
+  QUARTER(s);
   title(s, "Guía de estilo");
   const pal = [
     ["Negro", "111111"], ["Carbón", "141414"], ["Grafito", "3C3C3C"], ["Gris oscuro", "606060"], ["Gris", "9A9A9A"],
@@ -772,6 +865,35 @@ const tblBorder = () => ({ type: "solid", pt: 0.5, color: "C7C7C7" });
   ], rx + 0.4, ty + 0.85, rw - 0.8, 2.5, { fontSize: 16, paraSpaceAfter: 8 });
 }
 
+// 21 Biblioteca de figuras
+{
+  const s = slide(
+    "CONTENIDO", "Guía",
+    "Biblioteca de figuras decorativas (carpeta assets/decor). Copie la figura que necesite y péguela en su lámina; para que Morph la anime, use el mismo nombre en láminas consecutivas (Panel de selección). Las figuras claras se muestran sobre fondo oscuro."
+  );
+  title(s, "Biblioteca de figuras");
+  const lib = [
+    ["onda-naranjo", "Onda naranjo", false], ["onda-naranjo-claro", "Onda naranjo claro", true],
+    ["anillos", "Anillos (usar al 5 %)", false], ["cuarto-circulo", "Cuarto de círculo", false],
+    ["hoja", "Hoja", false], ["mosaico", "Mosaico", false], ["figura", "Figura", false], ["aros", "Aros", false],
+    ["puntos", "Puntos", false], ["icono-web", "Icono web", false], ["icono-telefono", "Icono teléfono", false],
+    ["icono-ubicacion", "Icono ubicación", false], ["icono-correo", "Icono correo", false],
+  ];
+  const cols = 5, gap = 0.3, cw = (W - (cols - 1) * gap) / cols, chh = (YB - Y0 - 2 * gap) / 3;
+  lib.forEach(([kind, label, onDark], i) => {
+    const x = X0 + (i % cols) * (cw + gap), y = Y0 + Math.floor(i / cols) * (chh + gap);
+    if (onDark) darkCard(s, x, y, cw, chh); else card(s, x, y, cw, chh);
+    const bw = cw - 0.8, bh = chh - 1.25, r = DECOR_RATIO[kind];
+    const w = Math.min(bw, bh * r), h = w / r;
+    s.addImage({
+      path: decorPng(kind), x: x + (cw - w) / 2, y: y + 0.3 + (bh - h) / 2, w, h,
+      objectName: `Figura ${kind}`, altText: "Figura decorativa: " + label,
+    });
+    T(s, label, x + 0.3, y + chh - 0.85, cw - 0.6, 0.35, { fontSize: 16, bold: true, fontFace: H, color: onDark ? C.background1 : C.text1 });
+    T(s, `!!deco_${kind}_n`, x + 0.3, y + chh - 0.48, cw - 0.6, 0.3, { fontSize: 13, color: onDark ? C.accent5 : C.accent3 });
+  });
+}
+
 // pptxgenjs writes a few chart faults in combo charts that PowerPoint rejects
 // (undeclared third axId, invertIfNegative / outEnd on line series). Patch them.
 async function patchCharts(file) {
@@ -794,9 +916,58 @@ async function patchCharts(file) {
   fs.writeFileSync(file, await zip.generateAsync({ type: "nodebuffer", compression: "DEFLATE" }));
 }
 
+// Agrega la version SVG a cada figura "!!deco_<tipo>_<n>" (el PNG queda como respaldo) y la
+// transicion Morph a las laminas indicadas en MORPH.
+const MORPH_XML =
+  '<mc:AlternateContent xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p159="http://schemas.microsoft.com/office/powerpoint/2015/09/main"><mc:Choice Requires="p159"><p:transition spd="slow" xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" p14:dur="' +
+  MORPH.durMs +
+  '"><p159:morph option="byObject"/></p:transition></mc:Choice><mc:Fallback><p:transition spd="slow"><p:fade/></p:transition></mc:Fallback></mc:AlternateContent>';
+
+async function patchSlides(file) {
+  const JSZip = require("jszip");
+  const fs = require("fs");
+  const zip = await JSZip.loadAsync(fs.readFileSync(file));
+  const usedSvg = new Set();
+  const slideFiles = Object.keys(zip.files).filter((n) => /^ppt\/slides\/slide\d+\.xml$/.test(n));
+  for (const name of slideFiles) {
+    const num = Number(name.match(/slide(\d+)\.xml$/)[1]);
+    const relsName = `ppt/slides/_rels/slide${num}.xml.rels`;
+    let x = await zip.file(name).async("string");
+    let rels = await zip.file(relsName).async("string");
+    // 1) SVG junto al PNG
+    x = x.replace(/<p:pic>[\s\S]*?<\/p:pic>/g, (pic) => {
+      const m = pic.match(/name="!!deco_([a-z-]+)_\d+"/);
+      if (!m) return pic;
+      usedSvg.add(m[1]);
+      const rid = `rIdSvg${m[1].replace(/-/g, "")}`;
+      if (!rels.includes(`Id="${rid}"`)) {
+        rels = rels.replace(
+          "</Relationships>",
+          `<Relationship Id="${rid}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="../media/decor-${m[1]}.svg"/></Relationships>`
+        );
+      }
+      const ext = `<a:extLst><a:ext uri="{96DAC541-7B7A-43D3-8B79-37D633B846F1}"><asvg:svgBlip xmlns:asvg="http://schemas.microsoft.com/office/drawing/2016/SVG/main" r:embed="${rid}"/></a:ext></a:extLst>`;
+      if (/<a:blip [^>]*\/>/.test(pic)) return pic.replace(/<a:blip ([^>]*?)\/>/, `<a:blip $1>${ext}</a:blip>`);
+      return pic.replace("</a:blip>", ext + "</a:blip>");
+    });
+    // 2) Morph
+    if (MORPH.enabled && !MORPH.skip.includes(num) && !x.includes("p159:morph")) {
+      x = x.replace("</p:clrMapOvr>", "</p:clrMapOvr>" + MORPH_XML);
+    }
+    zip.file(name, x);
+    zip.file(relsName, rels);
+  }
+  for (const kind of usedSvg) zip.file(`ppt/media/decor-${kind}.svg`, fs.readFileSync(decorSvg(kind)));
+  let ct = await zip.file("[Content_Types].xml").async("string");
+  if (!ct.includes('Extension="svg"')) ct = ct.replace("<Override", '<Default Extension="svg" ContentType="image/svg+xml"/><Override');
+  zip.file("[Content_Types].xml", ct);
+  fs.writeFileSync(file, await zip.generateAsync({ type: "nodebuffer", compression: "DEFLATE" }));
+}
+
 (async () => {
   await pres.writeFile({ fileName: OUT });
   await patchCharts(OUT);
+  await patchSlides(OUT);
   await applyTheme(OUT, THEME);
   console.log("OK", OUT);
 })();
