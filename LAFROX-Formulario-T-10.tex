@@ -51,7 +51,7 @@ La arquitectura se diseña y aprueba en el H2. Durante la construcción, las pru
 
 Durante la construcción, el equipo refactoriza el software que modifica para mejorar su estructura interna, preservando su comportamiento; las pruebas automatizadas comprueban que el comportamiento no cambió. Las limitaciones o compromisos técnicos que puedan dificultar cambios futuros se registran como deuda técnica. La Tabla~\ref{tab:t10-deuda} fija su tratamiento.
 
-\begin{tablalafrox}{Tratamiento de la deuda técnica. Fuente: elaboración propia a partir de (Distribuidora Puelche S.A., 2026a, Bases Administrativas, art. 71, p. 37), (Distribuidora Puelche S.A., 2026b, Bases Técnicas Transversales, RT-04.05, p. 10) y (Subdocumento 9, Tabla 9.4).}{tab:t10-deuda}%
+\begin{tablalafrox}{Tratamiento de la deuda técnica. Fuente: elaboración propia a partir de la revisión de deuda técnica del Comité de Arquitectura (Distribuidora Puelche S.A., 2026a, Bases Administrativas, art. 71, p. 37), los controles de integración continua (Distribuidora Puelche S.A., 2026b, Bases Técnicas Transversales, RT-04.05, p. 10) y los umbrales de calidad (Subdocumento 9, Tabla 9.4).}{tab:t10-deuda}%
   {F{0.16} Y F{0.30}}%
   {\cab{Clase} & \cab{Criterio} & \cab{Tratamiento}}%
   Bloqueante & Umbral del análisis estático incumplido, o hallazgo de seguridad crítico o alto & Impide la promoción; no se acepta registrarla como deuda \\
@@ -83,7 +83,7 @@ La imagen aprobada se firma, se publica en Elastic Container Registry y se promu
 \paragraph{Ambientes y promoción}
 La Tabla~\ref{tab:t10-ambientes} indica, para cada uno de los cinco ambientes del RT-04.01 descritos en el Subdocumento 4 (secciones 4.1.9 y 4.2.4.1), qué se despliega, qué puerta del Subdocumento 9 (LafroX, 2026e) controla la llegada y quién la aprueba.
 
-\begin{tablalafrox}{Ambientes, promoción y aprobación. Fuente: elaboración propia a partir de (Subdocumento 4, secciones 4.1.9 y 4.2.4.1) y (Subdocumento 9, Tabla 9.7).}{tab:t10-ambientes}%
+\begin{tablalafrox}{Ambientes, promoción y aprobación. Fuente: elaboración propia a partir de los usos de cada ambiente y la promoción de artefactos (Subdocumento 4, secciones 4.1.9 y 4.2.4.1) y de las puertas y responsables de aprobación (Subdocumento 9, Tabla 9.7).}{tab:t10-ambientes}%
   {F{0.15} Y F{0.15} F{0.20}}%
   {\cab{Ambiente} & \cab{Qué se despliega y para qué} & \cab{Puerta de entrada} & \cab{Quién aprueba}}%
   Desarrollo (DEV) & Ramas de trabajo con datos sintéticos; pruebas unitarias que no requieren conexión al ERP & G0--G1 & Revisión por pares \\
@@ -102,7 +102,7 @@ La entrega continua mantiene versiones verificadas y listas para su despliegue e
 
 Las revisiones comprueban reglas, integración y evidencia en momentos distintos. La Tabla~\ref{tab:t10-revisiones} distingue el control, su momento, la decisión y el registro que permite verificarla.
 
-\begin{tablalafrox}{Revisiones y evidencias del desarrollo. Fuente: Formularios T-9, T-13 y T-15.}{tab:t10-revisiones}%
+\begin{tablalafrox}{Revisiones y evidencias del desarrollo. Fuente: elaboración propia de los controles y evidencias de desarrollo a partir de las cadencias del Formulario T-9, las pruebas del Formulario T-13 y las actividades del Formulario T-15.}{tab:t10-revisiones}%
   {F{0.18} F{0.17} Y F{0.21}}%
   {\cab{Control} & \cab{Momento} & \cab{Responsable y decisión} & \cab{Evidencia}}%
   Revisión de diseño & Antes de construir & Líder Funcional, Arquitecto y referente del CLIENTE validan reglas, interfaces y casos de prueba. & Diseño y contrato verificados \\

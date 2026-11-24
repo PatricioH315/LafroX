@@ -18,7 +18,7 @@ Las dos etapas se gestionan con líneas base propias. El equipo que estabiliza l
 
 \paragraph{Qué se fija y qué se adapta} El PMBOK pide adaptar sus procesos al proyecto (PMI, 2017, pp. 28--29). La adaptación de LafroX parte de una frontera: lo que el contrato fija no se adapta. Son fijos los doce hitos del Formulario E-25 y los períodos del Art. 17° (desarrollo de la Etapa 1 en los meses 1 a 12, marcha blanca 13 a 15 y producción en el 16; desarrollo de la Etapa 2 en los meses 13 a 18, marcha blanca 19 y 20 y producción en el 21), las cinco instancias de gobierno del Art. 71° y los criterios de aceptación del Formulario T-17 (Distribuidora Puelche S.A., 2026a, Bases Administrativas, pp. 12--13 y 37--38; LafroX, 2026e). Dentro de esa frontera se adapta la forma de llegar: el orden del trabajo dentro de cada módulo, el detalle de las actividades y la manera de absorber variaciones sin mover un hito. La Tabla~\ref{tab:sd6-adaptacion} resume la frontera.
 
-\begin{tablalafrox}{Frontera entre lo que se fija y lo que se adapta. Fuente: elaboración propia a partir de (Distribuidora Puelche S.A., 2026a, Bases Administrativas, arts. 17, 71 y 72, pp. 12--13 y 37--38) y (Formularios T-14 y T-15).}{tab:sd6-adaptacion}%
+\begin{tablalafrox}{Frontera entre lo que se fija y lo que se adapta. Fuente: elaboración propia a partir del cronograma, el gobierno y el control de cambios (Distribuidora Puelche S.A., 2026a, Bases Administrativas, arts. 17, 71 y 72, pp. 12--13 y 37--38), y de los paquetes y actividades de los Formularios T-14 y T-15.}{tab:sd6-adaptacion}%
   {F{0.20} Y Y}%
   {\cab{Elemento} & \cab{Se fija (línea base o contrato)} & \cab{Se adapta dentro de la etapa}}%
   Alcance & Requisitos del T-12 por etapa, aprobados en H1 (2.1.1) y H8 (2.1.2) & Precedencia de las actividades dentro del alcance aprobado; cambios de alcance por solicitud formal \\
@@ -103,7 +103,7 @@ La gobernanza combina seguimiento diferenciado y comités formales para revisar 
 \node[font=\footnotesize,align=right,anchor=east] at (-3.5,-1.6) {seguridad,\\continuidad o hito:\\inmediato};
 \node[font=\footnotesize,align=right,anchor=east] at (-3.5,-3.9) {solicitud al\\CLIENTE vencida:\\solicitud a los\\2 días hábiles};
 \end{tikzpicture}
-\caption{Niveles y disparadores de escalamiento. Fuente: elaboración propia a partir de (Distribuidora Puelche S.A., 2026a, Bases Administrativas, art. 71, pp. 37--38) y de las reglas propias de este apartado; el contexto de riesgos procede de (LafroX, 2026f, sección 8.1.1).}
+\caption[Niveles y disparadores de escalamiento.]{Niveles y disparadores de escalamiento. Fuente: elaboración propia a partir de las atribuciones de los comités (Distribuidora Puelche S.A., 2026a, Bases Administrativas, art. 71, pp. 37--38) y del seguimiento y escalamiento de riesgos (LafroX, 2026f, Subdocumento 8, sección 8.1.1).}
 \label{fig:sd6-escalamiento}
 \end{figure}
 
@@ -129,7 +129,7 @@ La Figura~\ref{fig:sd6-control} muestra cómo el seguimiento se conecta con el c
 \draw[->,thick] (cambio) -- (decision);
 \draw[->,thick] (decision.south) -- ++(0,-0.5) -| (base.south);
 \end{tikzpicture}
-\caption{Control de entregas y cambios. Fuente: elaboración propia a partir de (Distribuidora Puelche S.A., 2026a, Bases Administrativas, arts. 18 y 72, pp. 13 y 38).}
+\caption[Control de entregas y cambios.]{Control de entregas y cambios. Fuente: elaboración propia a partir de los criterios de aceptación de entregables y la aprobación de cambios (Distribuidora Puelche S.A., 2026a, Bases Administrativas, arts. 18 y 72, pp. 13 y 38).}
 \label{fig:sd6-control}
 \end{figure}
 
@@ -142,7 +142,7 @@ Cada etapa sigue cuatro fases de desarrollo. El Formulario T-10 identifica sus r
 
 Durante requisitos y diseño se levantan las reglas de terreno, se acuerdan los contratos de interfaz y se prueban prototipos con los usuarios. La construcción programa módulos e integraciones por frente, con pruebas unitarias y de contrato en cada cambio. Integración y certificación verifican el sistema completo, la seguridad, la reversión y las condiciones de terreno. La implantación prepara el corte, capacita a los usuarios y opera en marcha blanca hasta cumplir sus criterios de cierre. La Tabla~\ref{tab:sd6-fases} relaciona cada resultado con el hito que lo controla.
 
-\begin{tablalafrox}{Resultados por fase e hitos de control. Fuente: (LafroX, 2026g, Formularios T-14 y T-15) y (LafroX, 2026e, Formularios T-13 y T-17).}{tab:sd6-fases}
+\begin{tablalafrox}{Resultados por fase e hitos de control. Fuente: elaboración propia de la relación entre fases, evidencias e hitos a partir de los paquetes y actividades (LafroX, 2026g, Formularios T-14 y T-15) y de las pruebas y criterios de aceptación (LafroX, 2026e, Formularios T-13 y T-17).}{tab:sd6-fases}
 {F{0.27} Y F{0.19}}
 {\cab{Fase} & \cab{Evidencia de salida} & \cab{Hito E1 / E2}}
 Requisitos y diseño & Alcance y arquitectura aprobados & H1--H2 / H8 \\
@@ -200,7 +200,7 @@ La Figura~\ref{fig:sd6-cadena} muestra el recorrido de un cambio por los cinco a
 \node[pu] at (8.25,-1.3) {\textbf{G5--G6}\\Marcha blanca y Producción};
 \node[pu] at (11.55,-1.3) {réplica\\continua};
 \end{tikzpicture}
-\caption{Cadena de entrega, ambientes y puertas de calidad. Fuente: elaboración propia a partir de (LafroX, 2026a, secciones 4.1.9 y 4.2.4.1) y (LafroX, 2026e, Tabla 9.7).}
+\caption[Cadena de entrega, ambientes y puertas de calidad.]{Cadena de entrega, ambientes y puertas de calidad. Fuente: elaboración propia a partir de los ambientes y la promoción de artefactos (LafroX, 2026a, Subdocumento 4, secciones 4.1.9 y 4.2.4.1) y de las puertas de calidad (LafroX, 2026e, Subdocumento 9, Tabla 9.7).}
 \label{fig:sd6-cadena}
 \end{figure}
 
@@ -256,7 +256,7 @@ Las referencias identifican las fuentes usadas para los requisitos, la metodolog
 
 La Tabla~\ref{tab:declaracion-uso-ia} declara el uso de herramientas de inteligencia artificial en este subdocumento y en sus formularios. La columna de revisión humana indica qué contenido verificó cada revisor.
 
-\begin{tablalafrox}{Declaración de uso de inteligencia artificial.}{tab:declaracion-uso-ia}{YYYYYY}
+\begin{tablalafrox}{Declaración de uso de inteligencia artificial. Fuente: elaboración propia.}{tab:declaracion-uso-ia}{YYYYYY}
     {\cab{Sección} & \cab{Herramienta} & \cab{Finalidad del uso} & \cab{Nivel en texto} & \cab{Nivel en diagramas} & \cab{Revisión humana (quién y qué verificó)}}
 Introducción & Chat GPT; Claude Code & Redacción de la introducción y conexión con SD2 a SD4 y SD7 a SD9 & Alto & Ninguno & Tomás Pérez: que cada remisión a otro subdocumento corresponda a su contenido vigente \\
   6.1 Metodología de Gestión de Proyectos & Chat GPT; Codex; Claude Code & Adaptación del PMBOK, control de cambios del Art. 72°, escalamiento, nivelación y Figuras 6.1 y 6.2 & Alto & Alto & Maximiliano Miño: frontera fijo/adaptable, plazos del control de cambios y disparadores de escalamiento frente al SD8; Guillermo Castillo: coherencia de los comités con el Art. 71° y el T-14 \\

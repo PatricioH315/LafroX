@@ -691,6 +691,11 @@
 %    Etapa 1 & ... & ... \\
 %  \end{tablalafrox}
 % ---------------------------------------------------------------------------
+% Titulo para el indice de tablas: el texto del pie anterior a " Fuente:".
+%  Si el pie no declara fuente, se usa completo.
+\def\LFX@antesfuente#1 Fuente:#2\@nil{#1}
+\newcommand{\LFXtitulocorto}[1]{\LFX@antesfuente#1 Fuente:\@nil}
+
 \NewDocumentEnvironment{tablalafrox}{m m m m O{} +b}{%
   \par
   \LFXfiletear{#6}%
@@ -700,7 +705,7 @@
   % macro: longtable necesita ver las filas en la entrada para cortar pagina.
   \LFXconcuerpo{%
   \begin{xltabular}{\textwidth}{#3}
-    \caption[\IfBlankTF{#5}{#1}{#5}]{#1}\label{#2}\\[2pt]
+    \caption[\IfBlankTF{#5}{\LFXtitulocorto{#1}}{#5}]{#1}\label{#2}\\[2pt]
     \LFXtopruleoriginal #4 \\ \midrule
     \endfirsthead
     % Los rotulos van en una caja de ancho cero: si midieran su texto real,
