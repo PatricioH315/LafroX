@@ -76,7 +76,22 @@ RT-21.03 y RT-21.03/P01 remiten al cuadrante B-02. Leandro comunicó el 24 de no
 
 Al recibir cada respuesta, guardar fecha, responsable, fuente y ubicación de la evidencia. Incorporarla en la rama de corrección del SD1, SD4 o SD10 según corresponda. Cambiar el estado en T-12 y T-13 únicamente cuando el respaldo cubra el criterio completo. Al regenerar el T-13, verificar las 653 filas y actualizar el recuento y los PDF. RT-15.08 ya figura como «Cumple» en los dos formularios.
 
-## SD3-04 — Pruebas y criterios del T-12
+## SD3-04 — Cotejo vigente de pruebas y criterios
+
+El T-12 contiene 653 filas y cinco figuran sin prueba prevista. El T-13 conserva 644 fichas, nueve alias y 1.345 casos previstos. Los casos siguientes mantienen sus identificadores. El cotejo documenta resultados esperados y referencias de la propuesta.
+
+| Fila y caso en T-13 | Criterio o evidencia revisada | Resultado documental |
+|---|---|---|
+| RF-17.09/P01–P02 | El administrador edita una plantilla y el usuario verifica los datos de la transacción en PDF, DOCX y XLSX. Anexo 3.A y T-14, 3.3.6. | Conciliado. |
+| RT-16.19/P01 | Edición y generación en los tres formatos. T-14, 3.3.6, y Anexo 3.A. | Referencia EDT corregida. |
+| RF-18.03/P01–P03 | Envío asíncrono, reintento sin duplicados, entrega, apertura y error. INT-11 y SD5, tabla A.12. | Criterio conciliado. El clic SMS acredita la apertura del aviso en el portal. La lectura del SMS sigue sin respaldo cuando el proveedor no la informa. |
+| RT-16.23/P01 | Mismos controles por canal. INT-11, SD5 y T-14, 5.2.4, para el envío y reintento. | Se registra la misma limitación de lectura SMS para Integración y Calidad. |
+| RT-16.29/P01 | La sesión sigue operativa y el solicitante recibe el aviso y descarga el archivo autorizado. SD5, 5.2.8. | T-14, 5.2.4, cubre el aviso. Planificación debe identificar el paquete de procesamiento de la exportación. |
+| RT-06.06/P01 | Expediente de separación, especificación y coordinación de LafroX, y ejecución del CLIENTE. SD6, 6.1.3 y Anexo 6.B. | Criterio precisado. |
+| RT-11.25/P01 | Inventario de datos de prueba y rechazo de cargas productivas sin tratamiento exigido. SD4, 4.1.9, 4.2.4.1 y Anexo 4-R. | Criterio precisado. |
+| RT-18.09/P01 | Inventario de componentes, alcance de IA operativa y responsabilidad ante una modificación. SD3, decisión D-09, y SD13. | Criterio precisado. |
+
+## SD3-04 — Pruebas y criterios del T-12 (corte anterior)
 
 Las dos partes del formulario incorporan «Prueba prevista o evidencia» antes del criterio. La columna identifica el caso o rango del T-13, el respaldo documental cuando corresponde y la remisión de los nueve alias. Las 22 filas «No cumple» figuran sin prueba prevista. La revisión reemplaza 336 frases genéricas por condiciones comprobables de las Bases y del caso, y explicita el alcance de las filas parciales. Los estados de la oferta se cotejan con la evidencia de ejecución.
 
@@ -90,7 +105,7 @@ Las dos partes del formulario incorporan «Prueba prevista o evidencia» antes d
 | RT-16.23 y RF-18.03 | Obtener del proveedor evidencia de apertura por SMS si ofrece ese evento. |
 | Punto 4 | Completar TLS por enlace, constancias del Sobre 1 y cuadrante B-02 según el registro anterior. |
 
-### Cotejo vigente con SD9 y SD7
+### Cotejo anterior con SD9 y SD7
 
 El T-12 `0167f99d`, el T-13 `a85b1dac` y el diccionario del T-14 `b3113e46` son las fuentes de este cotejo. El verificador confirma 653 IDs, 644 fichas, nueve alias, 1.223 casos por requisito y 105 por contrato. Los estados y códigos EDT coinciden entre formularios. La coincidencia del código EDT no acredita por sí sola que el paquete cubra todas las condiciones.
 
