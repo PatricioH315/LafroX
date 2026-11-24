@@ -5,7 +5,7 @@ Este registro reúne las dependencias vigentes para la rama de corrección del S
 ## Punto 4: seguridad, certificaciones y operación
 
 - RT-15.08 figura como «Cumple» en T-12 y T-13. El cotejo documental del T-8 y los Anexos 12.B a 12.D de SD12 (rama de corrección, `69a17f01`) vincula las nueve personas con credenciales a su cargo, perfil, dedicación declarada y período. El décimo integrante, Rodrigo Valdés, figura asignado a Integración sin certificación exigida. Se conserva RT-15.08/P01 como prueba prevista.
-- RNF-14.01 y RT-11.08 siguen parciales. RT-21.03 cumple con la nómina B-02 y remite a 10.1.1, 10.1.2 y 10.1.4 del T-14.
+- RNF-14.01 y RT-11.08 cumplen en el diseño ofertado con WhatsApp Cloud API directa. La conciliación comercial del canal queda en RT-16.24. RT-21.03 cumple con la nómina B-02.
 - La matriz T-13 vigente se genera desde la revisión SD3 `1763cabf`. RNF-14.01 publica en su ficha individual el criterio normativo del catálogo y la aceptación por tramo del T-12.
 
 ### Solicitud de aclaración al evaluador
@@ -33,21 +33,21 @@ El Anexo 4-H del SD4 identifica las interfaces y el Anexo 4-R contiene la polít
 | INT-10, mapas y geocodificación | El Anexo 4-H identifica a M4 como dueño interno. | M4 identifica el servicio de mapas y su respaldo de TLS. El extremo y ambiente se registran en la prueba prevista. |
 | INT-11, Amazon SES | AWS documenta TLS 1.3 para la API HTTPS. AWS describe por separado el tramo de entrega al servidor de correo receptor. | Notificaciones: fijar el extremo y la configuración de la API. Confirmar si el tramo de entrega al receptor queda dentro del alcance y documentar su tratamiento. [Protocolos de Amazon SES](https://docs.aws.amazon.com/ses/latest/dg/security-protocols.html) |
 | INT-11, Amazon SNS | La documentación indica un mínimo de TLS 1.2 o posterior. | Notificaciones: verificar TLS 1.3 para el extremo que se utilizará, con su respaldo. [Seguridad de Amazon SNS](https://docs.aws.amazon.com/sns/latest/dg/infrastructure-security.html) |
-| INT-11, AWS End User Messaging Social | AWS describe TLS 1.2 en las comunicaciones con aplicaciones y Meta. Para la API indica TLS 1.2 o posterior como requisito de cliente. | Arquitectura y Notificaciones: precisar ambos tramos. Si el tramo documentado con TLS 1.2 queda en alcance, confirmar si hay una modalidad compatible. Si no existe, registrar la brecha y evaluar una alternativa con TLS 1.3 que preserve la función de aviso y su trazabilidad. [Cifrado en tránsito de AWS End User Messaging Social](https://docs.aws.amazon.com/social-messaging/latest/userguide/data-protection.html#data-encryption-in-transit) |
+| INT-11, WhatsApp Cloud API de Meta | Graph API admite TLS 1.3 para el envío. El borde y el origen privado se configuran para recibir el webhook exclusivamente con TLS 1.3. | Ejecutar la prueba de envío y retorno antes de habilitar el canal. |
 | INT-15, telemetría existente | El Anexo 4-H identifica una API de solo lectura para M12. | M12 identifica el servicio de telemetría y su respaldo de TLS. La versión de la API y el extremo se registran al preparar la prueba. |
 | Otras dependencias y enlaces internos | T-11 identifica Intune/Zebra, Falcon y GuardDuty. Microsoft publica los extremos de Intune. El Anexo 4-R documenta el transporte de los enlaces internos. [Extremos de Microsoft Intune](https://learn.microsoft.com/en-us/intune/fundamentals/endpoints) | Arquitectura documenta el protocolo aplicable a MDM, EDR y los enlaces internos. Los túneles IPsec/IKE y las sesiones TLS que transportan se verifican según su función. |
 
-### Evaluación de WhatsApp Cloud API directa
+### Diseño de WhatsApp Cloud API directa
 
-El equipo confirmó la colaboración para evaluar WhatsApp Cloud API directa y autorizó la validación técnica. La documentación de Graph API respalda el envío en TLS 1.3. La guía de webhooks indica HTTPS y describe mTLS para WhatsApp, sin especificar la versión TLS del retorno. El Anexo 4-H y el T-11 identifican AWS End User Messaging Social como el recorrido ofertado. Sigue pendiente acreditar TLS 1.3 en el recorrido seleccionado, incluido el retorno de estados.
+La oferta técnica selecciona WhatsApp Cloud API de Meta. El Anexo 4-H, el T-11 y el Anexo 4-R especifican TLS 1.3 en el envío y la recepción de estados. La prueba de interoperabilidad queda programada en el T-13.
 
 | Tramo o comprobación | Resultado y condición para adoptar |
 |---|---|
 | Envío LafroX → Meta | Graph API admite TLS 1.3. Exigir TLS 1.3 desde el trabajador de notificaciones y conservar la prueba prevista de la versión negociada y del certificado válido. [Seguridad de Graph API](https://developers.facebook.com/docs/graph-api/guides/secure-requests/) |
-| Retorno Meta → LafroX | Meta documenta HTTPS, firma de eventos y reintentos. Falta una referencia explícita de TLS 1.3 para el retorno o un webhook real de prueba que llegue a una entrada configurada exclusivamente con TLS 1.3. Cotejar el identificador del mensaje, entrega, lectura cuando se informe y error, con deduplicación y verificación de firma. [Webhooks de Meta](https://developers.facebook.com/docs/graph-api/webhooks/getting-started/) |
+| Retorno Meta → LafroX | El receptor solo admite TLS 1.3. En el T-13 se prevé comprobar la entrega del estado del mismo mensaje, la firma y la deduplicación antes de habilitar el canal. [Webhooks de Meta](https://developers.facebook.com/docs/graph-api/webhooks/getting-started/) |
 | Volumen y costo | La hoja PROVEEDORES, fila 108, conserva AWS End User Messaging Social y deja el precio según plantilla y destino. Los 2.800/5.200 avisos diarios de INT-11 agregan todos los canales. Para conciliar Meta directa, separar la cuota de WhatsApp, proyectar mensajes facturables entregados por mes y multiplicarlos por la tarifa de utilidad del mercado del destinatario y tramo de volumen correspondientes. Registrar proveedor, costo unitario y tratamiento variable en la Oferta Económica cuando proceda. [Tarifas oficiales de Meta](https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing/) |
 
-La tabla 4-R.1 identifica la brecha actual de diseño: el recorrido AWS para WhatsApp documenta TLS 1.2. Meta directa queda seleccionada para evaluación. Su adopción requiere respaldar TLS 1.3 en el retorno y conciliar la oferta económica. Los casos del T-13 registran el resultado de las pruebas operativas de cada tramo aplicable. RNF-14.01 y RT-11.08 conservan el estado parcial mientras la brecha de diseño siga abierta.
+El diseño corrige SD3-15. RT-16.24 permanece parcial hasta conciliar la tarifa y el volumen de WhatsApp con la oferta económica. El modelo financiero de referencia aún registra el proveedor anterior y reporta la cuota como un dato por canal sin cantidad.
 
 ### Expediente de certificaciones del Sobre 1
 
