@@ -163,7 +163,7 @@ def check(root, output=None):
             'Guías conservan las pruebas de recuperación y su límite de aceptación')
     record = json.loads((sd10 / 'trazabilidad/cierres_interdocumentales.json').read_text(encoding='utf-8'))
     for item in record['decisiones']:
-        require(item['estado'] in ('criterio_adoptado', 'limite_residual', 'verificacion_por_etapa'),
+        require(item['estado'] in ('criterio_adoptado', 'limite_residual', 'riesgo_residual_documentado', 'verificacion_por_etapa'),
                 'Decisión de diseño sin aprobación supuesta: ' + item['id'])
         require('consulta' not in item and item['evidencia_ejecucion'] == [],
                 'No se simula consulta o prueba real: ' + item['id'])
@@ -182,14 +182,44 @@ def check(root, output=None):
     require(all(m['propuesta_C_HH_mesa'] - m['base_HH_mesa'] == m['incremento_HH_mesa']
                 and m['propuesta_C_HH_mesa'] <= m['propuesta_C_plazas']*128 for m in peaks),
             'Incrementos y capacidad de reserva por mes coherentes')
+    assignment = json.loads((sd10/'trazabilidad/asignacion_complementaria.json').read_text(encoding='utf-8'))
+    months = assignment['meses']
+    require([m['mes_contractual'] for m in months] == list(range(21,57)),
+            'Asignación complementaria cubre cada mes de Operación una vez')
+    keys = {'17':'perfil_17_mesa_HH', '30':'perfil_30_NOC_HH', '12S':'perfil_12S_integracion_HH'}
+    for profile, key in keys.items():
+        extra = sum(m[key] for m in months)
+        require(extra == assignment['complemento_HH'][profile], 'Total mensual del perfil ' + profile)
+        require(abs(assignment['base_HH'][profile]+extra-assignment['total_programado_HH'][profile]) < .00001,
+                'Conciliación base/complemento/total del perfil ' + profile)
+    require(all(m['perfil_12S_integracion_HH']==16 for m in months)
+            and sum(m['total_complementario_HH'] for m in months)==2894,
+            'Suplencia 12S con horas y complemento total sin duplicación')
+    for peak in peaks:
+        month = next(m for m in months if m['mes_contractual']==peak['mes_contractual'])
+        require(month['perfil_17_mesa_HH']==peak['incremento_HH_mesa']
+                and month['perfil_30_NOC_HH']==peak['incremento_HH_NOC'],
+                'Dotación adoptada coincide con calendario: M'+str(peak['mes_contractual']))
+    noc_row = next(line for line in service.splitlines() if line.startswith('Mesa atendida por NOC &'))
+    require('Dos puestos ordinarios; tres en peak' in noc_row and 'Refuerzos de T-15' not in service
+            and 'alternativas por conciliar' not in service,
+            'Cuerpo distingue base y reserva C adoptada')
+    require('TLS\\_CHACHA20\\_POLY1305\\_SHA256' in security
+            and 'solo admite TLS 1.3 con los conjuntos de cifrado AES-GCM' not in security,
+            'Descripción CloudFront incluye los tres cifrados de la política')
+    for item in record['decisiones']:
+        if item['id'] in ('CD-ERP','CD-RPO'):
+            require(item.get('riesgo_eliminado') is False and item.get('garantia_absoluta_demostrada') is False,
+                    'Cierre documental no oculta el límite físico de '+item['id'])
     result = {'proyecto': 'LafroX', 'passed': not errors, 'controles': len(checks),
               'errors': errors, 'sla': sla_results, 'fuente_minima_figura_1_pt': figure_font,
               'decisiones': record['decisiones'],
+              'garantias_ERP_RPO_en_escenario_extremo_demostradas': False,
               'limite': 'Verificación documental y aritmética; no acredita pruebas reales, contratación ni acuerdos del CLIENTE.'}
     if output:
         output.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
     print(json.dumps({'passed': result['passed'], 'controles': len(checks),
-                      'errors': errors, 'limites_residuales': [i['id'] for i in record['decisiones'] if i['estado']=='limite_residual']},
+                      'errors': errors, 'limites_residuales': [i['id'] for i in record['decisiones'] if i['estado'] in ('limite_residual','riesgo_residual_documentado')]},
                      ensure_ascii=False, indent=2))
     return 0 if result['passed'] else 1
 

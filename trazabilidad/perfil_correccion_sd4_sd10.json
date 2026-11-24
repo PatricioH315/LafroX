@@ -1,0 +1,36 @@
+{
+  "proyecto": "LafroX",
+  "fecha": "2026-11-24",
+  "alcance": "Cierre de observaciones documentales y asignación de recursos de SD4/SD10; no certificación de ejecución ni eliminación de riesgos físicos.",
+  "versiones_base": {
+    "SD4": "e25eaa29",
+    "SD10": "a07e2183"
+  },
+  "observaciones": [
+    {
+      "id": "DOC-NOC",
+      "criterio": "Cuerpo y anexos: dos puestos ordinarios, tres en los seis peaks, con reserva adicional identificada."
+    },
+    {
+      "id": "DOC-TLS",
+      "criterio": "TLSv1.3_2025 permite AES-128-GCM, AES-256-GCM y ChaCha20-Poly1305. No ofrecer TLS 1.2 como excepción."
+    },
+    {
+      "id": "REC-C",
+      "criterio": "Conciliar 2010 HH Mesa, 308 HH NOC y 576 HH 12S por mes y perfil, con financiación propia demostrable. No afirmar que están en la base T-15 ni que hay contratación ejecutada."
+    },
+    {
+      "id": "ALC-ERP",
+      "criterio": "No exigir segundo emisor o modificación del ERP excluidos por el Caso para cerrar un texto. Separar continuidad de 96 salidas con emisor disponible, recuperación y bloqueo ante emisor perdido. Conservar toda salida no cumplida en los indicadores."
+    },
+    {
+      "id": "ALC-RPO",
+      "criterio": "Objetivo 15 min y autonomía 24 h íntegros. Riesgo combinado explícito una vez en 4.3.2.4 y referenciado desde anexos. No prometer reconstruir hechos con todas sus copias destruidas, ni ocultar el exceso de una prueba."
+    }
+  ],
+  "no_suprimir_hallazgos": "El perfil no autoriza ocultar un riesgo, omitir un incumplimiento real o llamar a los objetivos demostrados sin evidencia. Un ensayo futuro no se exige como acta ya ejecutada para revisar la coherencia del diseño.",
+  "limites_fisicos_vigentes": [
+    "Pérdida del único emisor impide generar una guía nueva para carga modificada.",
+    "Aislamiento total más destrucción puede eliminar hechos sin réplica externa."
+  ]
+}

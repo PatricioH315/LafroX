@@ -10,7 +10,7 @@ def normalize(text):
     return re.sub(r"\s+", "", re.sub(r"-\s*\n\s*", "", text)).casefold()
 
 results = {"proyecto": "LafroX", "version": "1.0", "estado": "correccion local verificada",
-           "fecha": "2026-11-23", "pdfs": []}
+           "fecha": "2026-11-24", "pdfs": []}
 for stem in ("LAFROX-Subdocumento10", "LAFROX-Subdocumento10-Anexos"):
     path = ROOT / (stem + ".pdf")
     reader = PdfReader(path)

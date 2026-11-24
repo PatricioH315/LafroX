@@ -46,3 +46,12 @@ El contraste posterior al pull de las trece ramas LaTeX está registrado en `tra
 
 
 Pull previo a publicación (23 de noviembre de 2026): se integró 6a037715, conservando las tablas nuevas de coordinación/guardias y distinguiendo la base T-15 de la reserva C en el relevo NOC. Se regeneró el anexo desde las fuentes combinadas para resolver el conflicto del PDF.
+
+
+## Cierre del 24 de noviembre de 2026
+
+La reserva C queda aplicada en cuerpo y anexos (dos puestos NOC ordinarios, tres en peak). `trazabilidad/asignacion_complementaria.json` concilia los 36 meses, perfiles 17/30/12S y 2.894 HH adicionales: 2.010 Mesa, 308 NOC y 576 Integración Senior. La suplencia 12S tiene una reserva de 16 HH/mes y deja de presentarse sin horas. La financiación interna usa el margen propio y los costos/tarifas del modelo de referencia identificado por hash; no altera el libro base ni los precios al CLIENTE y se conserva fuera de la oferta técnica.
+
+`trazabilidad/perfil_correccion_sd4_sd10.json` establece los criterios para revisiones posteriores: volver a comprobar cantidades y compatibilidad, distinguir evidencia por etapa y no volver a llamar omisión documental a un riesgo ya definido. Los límites físicos ERP/RPO siguen visibles; su cierre documental no significa eliminación del riesgo, garantía absoluta, aceptación del CLIENTE ni prueba ya ejecutada. Un incumplimiento real debe seguir informándose.
+
+La financiación se reproduce con `python -B verificacion/verificar_financiacion.py --modelo RUTA_MODELO`: verifica la huella del libro de referencia, recalcula sus costos/tarifas por perfil, aplica la provisión a los 36 meses y contrasta margen y saldos acumulados, sin modificar el libro. Requiere openpyxl. Los importes se mantienen fuera de los PDF técnicos.

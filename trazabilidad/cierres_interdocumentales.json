@@ -5,25 +5,33 @@
   "decisiones": [
     {
       "id": "CD-ERP",
-      "estado": "limite_residual",
+      "estado": "riesgo_residual_documentado",
       "responsables": "ARQ/SRE/Integración",
       "decision": "Preemisión al cierre de carga, verificación previa a 05:30, emisor único e idempotencia; no se presupone réplica ERP.",
       "verificacion": "AL-DTE-01 separa retención segura de las 96 salidas; persiste limitación con emisor perdido y carga modificada.",
-      "evidencia_ejecucion": []
+      "evidencia_ejecucion": [],
+      "cierre_documental": true,
+      "riesgo_eliminado": false,
+      "garantia_absoluta_demostrada": false,
+      "regla_revision": "No presentar como omisión documental un riesgo cuyo alcance, mecanismo, mitigación, dueño y prueba ya están definidos. Informar el límite si se revisa cumplimiento o resiliencia; reabrir ante contradicción, exigencia explícita adicional, nueva evidencia o cambio de diseño. Un incumplimiento observado no se convierte en aceptación."
     },
     {
       "id": "CD-RPO",
-      "estado": "limite_residual",
+      "estado": "riesgo_residual_documentado",
       "responsables": "ARQ/SRE",
       "decision": "Tres caminos, alarma de edad externa a 5/15 min, QoS de réplica, outbox y medición del punto externo.",
       "verificacion": "AL-DR-01 verifica RPO sin dispensar el escenario de aislamiento total y destrucción ni reducir autonomía local.",
-      "evidencia_ejecucion": []
+      "evidencia_ejecucion": [],
+      "cierre_documental": true,
+      "riesgo_eliminado": false,
+      "garantia_absoluta_demostrada": false,
+      "regla_revision": "No presentar como omisión documental un riesgo cuyo alcance, mecanismo, mitigación, dueño y prueba ya están definidos. Informar el límite si se revisa cumplimiento o resiliencia; reabrir ante contradicción, exigencia explícita adicional, nueva evidencia o cambio de diseño. Un incumplimiento observado no se convierte en aceptación."
     },
     {
       "id": "CD-TLS",
       "estado": "criterio_adoptado",
       "responsables": "SEG/Integración",
-      "decision": "TLS 1.3 obligatorio por tramo; eliminación de excepción TLS 1.2 y rechazo de negociación inferior.",
+      "decision": "TLS 1.3 obligatorio por tramo; eliminación de excepción TLS 1.2 y rechazo de negociación inferior. CloudFront TLSv1.3_2025 permite los tres cifrados declarados por AWS, incluido ChaCha20-Poly1305.",
       "verificacion": "Interoperabilidad por interfaz, rechazo de protocolo inferior y certificado inválido; compatibilidad ERP aún no ensayada.",
       "evidencia_ejecucion": []
     },
@@ -39,8 +47,8 @@
       "id": "CD-MESA",
       "estado": "criterio_adoptado",
       "responsables": "Operación/responsable de oferta",
-      "decision": "Reserva C en seis peaks: 2010 HH mesa y 308 HH NOC sobre la base, responsabilidad LafroX sin cargo adicional.",
-      "verificacion": "Conciliación interna por perfil, mes y costo, cuadrante nominal, calibración 4 semanas y aceptación de tres indicadores.",
+      "decision": "Reserva C: 2010 HH Mesa y 308 HH NOC; complemento 12S de 16 HH/mes, 576 HH. Asignación por mes y perfil, sin cargo adicional, financiada con margen de LafroX.",
+      "verificacion": "Tabla tab:sd10-hh-complementarias y trazabilidad/asignacion_complementaria.json; coste/margen en respaldo interno separado. Cuadrante y contratación se acreditan en su etapa.",
       "evidencia_ejecucion": []
     },
     {

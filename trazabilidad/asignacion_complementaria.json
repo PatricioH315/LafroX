@@ -1,0 +1,460 @@
+{
+  "proyecto": "LafroX",
+  "fecha": "2026-11-24",
+  "estado": "Asignación complementaria de diseño cuantificada y financiada con margen propio; no acredita contratación.",
+  "base_HH": {
+    "17": 38246,
+    "30": 21748.2,
+    "12S": 0
+  },
+  "complemento_HH": {
+    "17": 2010,
+    "30": 308,
+    "12S": 576
+  },
+  "total_programado_HH": {
+    "17": 40256,
+    "30": 22056.2,
+    "12S": 576
+  },
+  "financiacion": "Margen propio de Operación, sin cargo adicional; coste y provisión contrastados con modelo financiero de referencia, sin alterar su archivo.",
+  "fuente_financiera_sha256": "7b841762b9499025ee378aa888a3ada49bec72b24fdbfdb8b2fd584dd18c1495",
+  "evidencia_interna_sha256": "cf2acf0d36eb499289b390a17bc163ae8fea15dc14b9906c84906fa5c5115e1a",
+  "control_margen_suficiente": true,
+  "control_saldo_operacion_positivo": true,
+  "meses": [
+    {
+      "mes_contractual": 21,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 22,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 23,
+      "perfil_17_mesa_HH": 666,
+      "perfil_30_NOC_HH": 52,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 734,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 24,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 25,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 26,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 27,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 28,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 29,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 30,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 31,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 32,
+      "perfil_17_mesa_HH": 270,
+      "perfil_30_NOC_HH": 50,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 336,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 33,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 34,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 35,
+      "perfil_17_mesa_HH": 276,
+      "perfil_30_NOC_HH": 52,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 344,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 36,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 37,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 38,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 39,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 40,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 41,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 42,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 43,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 44,
+      "perfil_17_mesa_HH": 270,
+      "perfil_30_NOC_HH": 50,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 336,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 45,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 46,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 47,
+      "perfil_17_mesa_HH": 276,
+      "perfil_30_NOC_HH": 52,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 344,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 48,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 49,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 50,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 51,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 52,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 53,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 54,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 55,
+      "perfil_17_mesa_HH": 0,
+      "perfil_30_NOC_HH": 0,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 16,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    },
+    {
+      "mes_contractual": 56,
+      "perfil_17_mesa_HH": 252,
+      "perfil_30_NOC_HH": 52,
+      "perfil_12S_integracion_HH": 16,
+      "total_complementario_HH": 320,
+      "paquetes": {
+        "17": "10.1.2",
+        "30": "10.1.1",
+        "12S": "10.1.2"
+      }
+    }
+  ],
+  "limite": "No se afirma actualización del modelo económico de base, contratación, aprobación humana o ensayo real."
+}

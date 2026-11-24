@@ -237,7 +237,9 @@ result={
     "proposed_internal_response_budgets": ola_results,
     "staffing_cross_check": {
         "bridge_hours": 9336,
-        "dedicated_operation_hours": 86274.20,
+        "dedicated_operation_base_hours": 86274.20,
+        "dedicated_operation_complement_hours": 2894,
+        "dedicated_operation_total_hours": 89168.20,
         "operation_calendar_vs_e2_difference_hours": 631.12,
         "service_manager_difference_hours": 12,
     },

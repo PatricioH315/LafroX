@@ -1,6 +1,6 @@
 {
   "proyecto": "LafroX",
-  "estado": "Reserva de diseño adoptada por LafroX, adicional a la base T-15/SD12; no acredita contratación ni conciliación económica terminada.",
+  "estado": "Reserva C de diseño conciliada por perfil/mes en asignacion_complementaria.json, financiada con margen propio. No acredita contratación.",
   "supuesto": "Configuración C en seis peaks de M21--M56, incluido M23. Sin cargo adicional; preservar NOC/SOC y bolsas DES. Calibración y cuadrante antes de habilitar.",
   "fuente": "SD4 Anexo 4-W.7 y memoria reproducible de 36 meses",
   "HH_mesa_base_36_meses": 38246,

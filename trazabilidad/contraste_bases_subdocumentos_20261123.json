@@ -147,5 +147,15 @@
   "integracion_posterior": {
     "SD4": "Inventario TLS por tramo conservado, compatible con la exigencia local sin excepción TLS 1.2.",
     "SD10": "Cuadrante y coordinación nominada conservados; relevo NOC distingue dos puestos base y tres en reserva C de peak."
+  },
+  "cierre_20261124": {
+    "correcciones": [
+      "NOC: dos puestos ordinarios y tres en peak en cuerpo y anexos.",
+      "CloudFront: tres cifrados reales, incluido ChaCha20-Poly1305.",
+      "Asignación complementaria: 2010 HH Mesa, 308 HH NOC y 576 HH 12S, por perfil y mes."
+    ],
+    "financiacion": "Provisión propia cotejada con el modelo de referencia; coste/tarifa y margen reproducidos por verificacion/verificar_financiacion.py. No se altera el modelo base ni el precio al CLIENTE.",
+    "riesgos": "ERP/RPO cierran su documentación de alcance y control, sin afirmar eliminación del riesgo o garantía absoluta demostrada. Un incumplimiento real sigue informándose.",
+    "perfil_revision": "trazabilidad/perfil_correccion_sd4_sd10.json"
   }
 }
