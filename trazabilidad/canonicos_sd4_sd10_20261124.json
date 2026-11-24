@@ -6,12 +6,13 @@
     "SD10"
   ],
   "canonicos": {
-    "T12_RT_16_20": "efd3af3e41c21925fab729a53878c4a8807ee4c6",
-    "T13_RT_16_20": "b481b9e5f4e7433e33f838c4883811c0ef5d20cb",
-    "T15_perfil_24": "b3113e469ef66caa15094aea09541d91aaa973f1",
-    "E2_seccion_2_6": "12de6ceb21faa5f0cb243ac1857c82e71a4dadb0"
+    "SD4_diseno_vigente": "555488ab0e4f42bdb67e8a94c2b87313a9bb57c4",
+    "T12_RT_16_24": "60e55df6f8980efb5dc9d36fe27f09152dcf0a4b",
+    "T13_RT_16_24": "dd61ab78630b4724460d896bd99704a5162457e4",
+    "T15_perfil_24": "c70e3dd1991d59f77a331b18fdf7832030930919",
+    "E2_seccion_2_6": "527130e65049acff7d161b2bbebd267ceb5a79c0"
   },
-  "proveedor_mensajeria_instantanea": "AWS End User Messaging Social",
+  "proveedor_mensajeria_instantanea": "WhatsApp Cloud API de Meta",
   "gerente_HH_operacion": 4596,
   "periodo_operacion_meses": [
     21,
@@ -25,6 +26,27 @@
   },
   "horas_adicionales_incorporadas": 0,
   "otros_subdocumentos_modificados": false,
-  "compatibilidad_TLS": "No acreditada para todo el recorrido administrado. Se conserva CD-TLS y no se rebaja RT-11.08.",
-  "pruebas_reales_ejecutadas": false
+  "compatibilidad_TLS": "SD4 especifica TLS 1.3 para Graph API, webhook y enlace al origen privado. T-13 valida la negociación, firma, correlación y deduplicación antes de habilitar el canal; no se atribuyen ensayos ejecutados.",
+  "pruebas_reales_ejecutadas": false,
+  "criterio_mensajeria": "Conservar la integración directa de SD4 confirmada por el usuario; la instrucción de eliminar sus menciones fue revocada.",
+  "canales": {
+    "correo": "Amazon SES",
+    "SMS": "Amazon SNS",
+    "WhatsApp": "WhatsApp Cloud API de Meta",
+    "portal": "Angular/Laravel sobre ECS Fargate N-04"
+  },
+  "diferencias_fuera_alcance": [
+    {
+      "fuente": "T-12",
+      "requisito": "RT-16.20",
+      "estado": "pendiente_en_fuente_externa",
+      "detalle": "La descripción conserva el proveedor anterior; RT-16.24 y SD4 identifican Meta."
+    },
+    {
+      "fuente": "T-13",
+      "requisito": "RT-16.20",
+      "estado": "pendiente_en_fuente_externa",
+      "detalle": "La descripción conserva el proveedor anterior; RT-16.24 y SD4 identifican Meta."
+    }
+  ]
 }

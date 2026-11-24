@@ -3,8 +3,8 @@
   "fecha": "2026-11-24",
   "alcance": "Cierre de observaciones documentales y asignación de recursos de SD4/SD10; no certificación de ejecución ni eliminación de riesgos físicos.",
   "versiones_base": {
-    "SD4": "e25eaa29",
-    "SD10": "a07e2183"
+    "SD4": "555488ab0e4f42bdb67e8a94c2b87313a9bb57c4",
+    "SD10": "3519e5f783cdaa86f52db1e8b37bb70c4aa18581"
   },
   "observaciones": [
     {
@@ -26,6 +26,10 @@
     {
       "id": "ALC-RPO",
       "criterio": "Objetivo 15 min y autonomía 24 h íntegros. Riesgo combinado explícito una vez en 4.3.2.4 y referenciado desde anexos. No prometer reconstruir hechos con todas sus copias destruidas, ni ocultar el exceso de una prueba."
+    },
+    {
+      "id": "DOC-NOTIF",
+      "criterio": "Conservar WhatsApp Cloud API de Meta en INT-11, Graph API y webhook con TLS 1.3 según SD4, junto con SES para correo y SNS para SMS. RT-16.24 identifica al proveedor; no prohibir menciones al canal ni reimponer AWS End User Messaging Social. Comprobar el diseño sin atribuir ensayos ejecutados. Informar por separado cualquier proveedor desactualizado en RT-16.20 de T-12/T-13."
     }
   ],
   "no_suprimir_hallazgos": "El perfil no autoriza ocultar un riesgo, omitir un incumplimiento real o llamar a los objetivos demostrados sin evidencia. Un ensayo futuro no se exige como acta ya ejecutada para revisar la coherencia del diseño.",

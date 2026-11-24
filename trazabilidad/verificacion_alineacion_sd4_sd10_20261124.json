@@ -1,0 +1,46 @@
+{
+  "proyecto": "LafroX",
+  "passed": true,
+  "alcance": "Controles internos de SD4 y SD10",
+  "fuentes_comprobadas": 72,
+  "proveedor_RT_16_24": "WhatsApp Cloud API de Meta",
+  "diferencias_fuera_alcance": [
+    {
+      "fuente": "T-12",
+      "requisito": "RT-16.20",
+      "estado": "pendiente_en_fuente_externa",
+      "detalle": "La descripción conserva el proveedor anterior; RT-16.24 y SD4 identifican Meta."
+    },
+    {
+      "fuente": "T-13",
+      "requisito": "RT-16.20",
+      "estado": "pendiente_en_fuente_externa",
+      "detalle": "La descripción conserva el proveedor anterior; RT-16.24 y SD4 identifican Meta."
+    }
+  ],
+  "proveedor_coherente_en_t12_t13": false,
+  "gerente_HH_operacion": 4596,
+  "gerente_promedio_HH_mes": "127.67",
+  "paginas": {
+    "LAFROX-Subdocumento4.pdf": 172,
+    "LAFROX-Subdocumento4-Anexos.pdf": 158,
+    "LAFROX-Formulario-T-11.pdf": 51,
+    "LAFROX-Subdocumento10.pdf": 21,
+    "LAFROX-Subdocumento10-Anexos.pdf": 36
+  },
+  "limite": "Diseño TLS 1.3 documentado; no acredita negociación real ni ensayos ejecutados. Las diferencias externas se informan sin modificar esas fuentes.",
+  "pruebas_regresion": [
+    {
+      "caso": "rechaza_proveedor_anterior",
+      "resultado": "rechazado_correctamente"
+    },
+    {
+      "caso": "rechaza_bajada_TLS_API",
+      "resultado": "rechazado_correctamente"
+    },
+    {
+      "caso": "rechaza_cambio_HH",
+      "resultado": "rechazado_correctamente"
+    }
+  ]
+}
