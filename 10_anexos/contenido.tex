@@ -37,7 +37,7 @@ La Tabla~\ref{tab:sd10-escenarios} muestra los escenarios que explican los lími
 2.283 & 25,78/h & 4,55/h & 83,48\,\% & 80,01\,\% \\
 2.391 & 27,00/h & 4,76/h & 80,03\,\% & 78,33\,\% \\
 \end{tablalafrox}
-\fuentesdiez{Cálculo reproducido de SD4, Anexo 4-W.7, con entradas sin redondear.}
+\fuentesdiez{reproducción del cálculo de contactos del Subdocumento 4, Anexo 4-W.7, con entradas sin redondear.}
 
 En el escenario de 2.391 contactos, tres agentes de valle dan 95,26\,\% y permiten que el límite pase a la hora cargada si se cubre todo el valle modelado. Con dos agentes en 20:00--22:00 y llegadas uniformes en valle, esa franja queda en 78,33\,\%. Para sostener 2.391 LafroX asigna un tercer puesto en esa franja y preserva la vigilancia NOC. La proyección 3$\times$ de 6.000 contactos exige, bajo las mismas hipótesis, al menos quince agentes en hora cargada y cuatro en valle para alcanzar 80\,\% en veinte segundos. Es una sensibilidad matemática y no una contratación adicional ni la previsión de llamadas para septiembre. La recalibración con registros reales y Erlang A antes de M21 conserva el compromiso de T-15 (LafroX, 2026g, sección 5.6).
 
@@ -57,7 +57,7 @@ Proveedores & 180 & 0,25 & 45 \\
 Representantes adicionales & 20 & 0,50 & 10 \\
 \textbf{Total adicional} & & & \textbf{197} \\
 \end{tablalafrox}
-\fuentesdiez{Caso 02, caps. 2 y 14, RT-12.12 y RT-16.30; SD4, Anexo 4-W.7. Las tasas y los 20 representantes son supuestos de dimensionamiento por canal, cuya duplicación y validez se comprueban con contactos reales.}
+\fuentesdiez{cálculo propio a partir del volumen de clientes y proveedores de las Bases Técnicas del caso, capítulos 2 y 14, y las poblaciones del Subdocumento 4, Anexo 4-W.7, con tasas y representantes adicionales supuestos por LafroX.}
 
 Con esos supuestos se obtienen 2.197 contactos y atención antes de veinte segundos de 85,93\,\% con siete agentes en hora cargada y 81,31\,\% con dos en valle. Al duplicar sólo los contactos adicionales se obtienen 2.394. El objetivo exige ocho en hora cargada y tres en valle, con 90,71\,\% y 95,24\,\%, respectivamente. El gerente contrasta el volumen efectivo por perfil, canal y franja antes de reservar la dotación.
 
@@ -69,7 +69,7 @@ Nocturna lunes a sábado & 1,19 & 1 / 80,67\,\% & 2 / 98,31\,\% \\
 Domingo & 1,91 & 1 / 68,96\,\% & 2 / 95,89\,\% \\
 Relevo NOC lunes a sábado & 4,76 & 2 / 78,33\,\% & 3 / 95,26\,\% \\
 \end{tablalafrox}
-\fuentesdiez{Erlang C con los supuestos de esta sección y la cobertura declarada de SD4, Anexo 4-W.7, y T-15, secciones 4.1 y 5.7.}
+\fuentesdiez{cálculo propio mediante Erlang C a partir de las hipótesis de llegada y atención del Subdocumento 4, Anexo 4-W.7, y la cobertura del Formulario T-15, secciones 4.1 y 5.7, con las fracciones nocturna y dominical supuestas por LafroX.}
 
 \paragraph{Comparación de alternativas y criterio de habilitación}
 La inversión de Erlang C para 80\,\% de respuesta en veinte segundos, con diez minutos de atención media, produce máximos de 1,23221; 4,54959 y 8,55064 contactos/h para uno, dos y tres agentes. Se usan cotas conservadoras truncadas de 1,23; 4,54 y 8,55. El cálculo de 2.283 contactos mensuales corresponde al perfil de 18 horas; no se extiende automáticamente al turno de un agente. Las hipótesis nocturna y dominical anteriores son sensibilidades, no mediciones ni redistribución de un pronóstico mensual.
@@ -79,7 +79,7 @@ A. Base: uno nocturno y dominical; dos en relevo NOC & 1.570 & 13 & 0 \\
 B. Dos dominicales; uno nocturno; tres en relevo NOC & 1.690 & 14 & 50 \\
 C. Dos nocturnos y dominicales; tres en relevo NOC & 1.840 & 15 & 50 \\
 \end{tablalafrox}
-\fuentesdiez{Calendario de T-15: 25 días de lunes a sábado y cinco domingos; 128 HH efectivas por plaza. A=$25\times58+5\times24$; B=A+$5\times24$; C=B+$25\times6$. El relevo agrega $25\times2$ HH. Son cotas de carga agregada, sin acreditar un cuadrante nominal.}
+\fuentesdiez{cálculo propio de horas de cobertura para septiembre de 2029 a partir del calendario y las 128 HH efectivas por plaza del Formulario T-15 y las alternativas de dotación propuestas por LafroX.}
 
 A conserva las trece plazas de T-15/SD12; exige llegadas compatibles con un agente de noche y domingo y con dos en el relevo NOC. B atiende el domingo de 1,91 contactos/h de la sensibilidad, pero la noche sigue limitada a 1,23. C soporta hasta 4,54 contactos/h en noche y domingo, y el valle de 4,76 con tres puestos NOC. B y C requieren una o dos plazas adicionales respecto de la base y asignación NOC comprobada; no se cubren por afirmar que existen seis posiciones compartidas. En diciembre de 2029, A/B/C requieren 1.628/1.748/1.904 HH, respectivamente, con las mismas cotas de trece/catorce/quince plazas. La comprobación por calendario comprende los 36 meses y reproduce las 38.246 HH de mesa de T-15. Aplicar B/C antes de M25 implica adelantar también el tercer agente diurno; esas HH no se presumen incluidas en la base.
 
@@ -102,7 +102,7 @@ M56, septiembre de 2031 & 252 & 52 & 16 & 320 \\
 Otros 30 meses de M21--M56 & 0 & 0 & 480 & 480 \\
 \textbf{Total complementario} & \textbf{2.010} & \textbf{308} & \textbf{576} & \textbf{2.894} \\
 \end{tablalafrox}
-\fuentesdiez{Calendario T-15, cotejo de 36 meses del Anexo 4-W.7 y decisión de dotación complementaria de LafroX. Las 576 HH 12S corresponden a 16 HH por mes en M21--M56; son una reserva de planificación, no una demanda observada.}
+\fuentesdiez{cálculo propio a partir del calendario del Formulario T-15, el dimensionamiento del Subdocumento 4, Anexo 4-W.7, y la dotación complementaria propuesta por LafroX.}
 
 Mesa imputa su complemento al paquete 10.1.2 y NOC al 10.1.1. La suplencia 12S se imputa a atención especializada de integraciones del 10.1.2, con ticket y tiempo efectivo. Operación asigna la guardia y sus relevos antes del primer turno; el perfil 12S no se presenta ya como suplente sin horas. Las 16 HH mensuales reservan intervención especializada y no sustituyen una posición continua ni limitan la obligación de atención: un exceso exige refuerzo de LafroX, sin descuento de otras funciones ni cargo adicional.
 
@@ -131,7 +131,7 @@ RTO y RPO en ensayo & 100\,\% de objetivos & Evidencia semestral de conmutación
 Entrega de informe & Primeros cinco días hábiles & Recepción del reporte mensual. BA 79.2 \\
 Causa raíz por severidad & Crítica: cinco días hábiles; alta: diez días hábiles; media: a solicitud; baja: no aplica & Informe y acciones verificables. BA 78.2 y RT-14.06 \\
 \end{tablalafrox}
-\fuentesdiez{BA, art. 21, p. 15, y arts. 78--79, p. 40. BTT, cap. 14, p. 27, y cap. 21, pp. 35--38. SD7, T-14 y T-15.}
+\nopagebreak[4]\parbox{\linewidth}{\fuentesdiez{elaboración propia a partir de los indicadores de las Bases Administrativas, artículos 21, p. 15, y 78--79, p. 40; los requisitos de las Bases Técnicas Transversales, capítulos 14, p. 27, y 21, pp. 35--38, y los compromisos de los Formularios T-14 y T-15.}}
 
 La clasificación de SD4 se conserva en el cuerpo. Un incidente puede afectar simultáneamente más de un servicio y sus evidencias deben mantener ese alcance. La medición de infraestructura por componente de BTT 7.2 complementa el seguimiento. Los tableros aplican el reloj corrido y el calendario íntegro definidos en 10.B, sin pausa por espera de terceros o relevo (B-06).
 
@@ -144,7 +144,7 @@ Registrar entrega en el local & $\leq2$ s \\
 Registrar una línea de preventa & $\leq1,5$ s \\
 Consultar stock y crédito & $\leq2$ s \\
 \end{tablalafrox}
-\fuentesdiez{Caso, cap. 15, RT-09.01, p. 26. SD4, dimensionamiento y contratos de operación desconectada.}
+\fuentesdiez{elaboración propia a partir de los tiempos de transacción de las Bases Técnicas del caso, RT-09.01, p. 26, y los contratos de operación desconectada del Subdocumento 4.}
 
 La transacción se mide en el punto donde recibe confirmación el usuario. Su sincronización pendiente conserva estado y correlación. La consulta sanitaria de emergencia tiene su objetivo de menos de dos horas desde la solicitud y se ensaya también ante pérdida regional, conforme a SD4.
 
@@ -167,7 +167,7 @@ La secuencia de SD4 para pérdida de región presupone imágenes, colas, datos y
 7 & Validación funcional, de permisos y de aplicación única & Operación & $<15$ \\
 8 & Cambio de tráfico regional & Systems Manager Automation & $<5$ \\
 \end{tablalafrox}
-\fuentesdiez{SD4, apartado 4.3.2.5 y listado de conmutación regional.}
+\fuentesdiez{elaboración propia a partir de la secuencia y los presupuestos de recuperación regional del Subdocumento 4, apartado 4.3.2.5.}
 
 La cota secuencial usa $5+30+20+30+15+15+15+5=135$ minutos. La decisión del CLIENTE activa al suplente tras quince minutos sin respuesta del titular, dentro del máximo de treinta. La cota total conserva 105 minutos de margen respecto de cuatro horas. La validación se aplica a cada canal y a sus datos. El arranque de Aurora no acredita la recuperación de todos los servicios.
 
@@ -185,9 +185,9 @@ GU-07. Incidente de terreno & Captura seudonimizada, reproducción y confirmaci�
 GU-08. ERP o guía indisponibles & Liberar sólo carga amparada; conciliar solicitud, guía y carga & SD4, INT-06/INT-07 \\
 GU-09. Equipo fallado & Sustituir desde reserva compatible y comprobar la función & BTT 8.4; SD4, T-11 \\
 \end{tablalafrox}
-\fuentesdiez{SD4, contratos de integración, continuidad y gobierno. SD13, sección 13.2. BTT, sección 8.4, pp. 19--20.}
+\fuentesdiez{elaboración propia a partir de los contratos de integración y continuidad del Subdocumento 4, la innovación INN-02 del Subdocumento 13, sección 13.2, y el soporte de hardware de las Bases Técnicas Transversales, sección 8.4, pp. 19--20.}
 
-Ante una falla del servicio de plantillas, DES identifica el formato de entrega y verifica generación y descarga de los comprobantes del catálogo, incluidos HTML, PDF, DOCX y XLSX. La validez tributaria de la guía de despacho se verifica en GU-08 (SD4, apartado 4.1.17, p. 77, y Anexo 4-H, INT-07).
+Ante una falla del servicio de plantillas, DES identifica el formato de entrega y verifica generación y descarga de los comprobantes del catálogo, incluidos HTML, PDF, DOCX y XLSX. La validez tributaria de la guía de despacho se verifica en GU-08 (Subdocumento 4, apartado 4.1.17, y Anexo 4-H, INT-07).
 
 Las guías desarrolladas a continuación identifican diagnóstico, responsable, pasos y comprobación de recuperación, conforme al Anexo 4-B. Su ejecución requiere accesos habilitados, artefacto e inventario desplegados y transferencia de conocimiento. Los ensayos de SD9 verifican que el personal del CLIENTE pueda ejecutar lo transferido conforme a RT-21.04 (Distribuidora Puelche S.A., 2026b, pp. 35--36).
 
@@ -217,7 +217,7 @@ Bastián Trejo, Arquitecto de Solución & Consultas de arquitectura de nube e in
 Leandro Chamorro, Líder de Datos & Apoyo puntual en datos y conciliación. & 1~\% & 23 & Datos y Bases Senior, 10S. \\
 Rodrigo Valdés, Líder de Integración & Apoyo puntual en EDI, AS2 y ERP. & 1~\% & 02 & Integración Senior, 12S. \\
 \end{tablalafrox}
-\fuentesdiez{Formulario T-8, sección 1; SD12, sección 12.1.5 y Anexos 12.B a 12.D; T-15, tabla de perfiles y esfuerzo. Dedicaciones declaradas para Operación, M21--M56.}
+\fuentesdiez{elaboración propia a partir de la nominación del Formulario T-8, sección 1; las suplencias y dedicaciones del Subdocumento 12, sección 12.1.5 y anexos 12.B a 12.D, y los perfiles del Formulario T-15.}
 
 El SD12 propone perfiles para suplir a los responsables de coordinación. La asignación individual se formaliza en la habilitación. El T-15 de base asigna cero HH 12S en Operación. La asignación complementaria de 10.A reserva 16 HH mensuales de Integración Senior en M21--M56, 576 HH en total, para esa suplencia, financiadas por LafroX. La persona, su competencia y el relevo se acreditan en la habilitación; el registro separa esta asignación de la dedicación del coordinador.
 
@@ -233,7 +233,7 @@ Datos, 23 & M21--M56; apoyo puntual, ventana por confirmar. & Leandro Chamorro. 
 Integraciones críticas, 02 & M21--M56; apoyo puntual. Validar ventanas y canal ERP/DTE y contrapartes. & Rodrigo Valdés. & ERP, DTE, EDI, AS2 y conciliación. & 1~\% puntual. Suplencia 12S: 16 HH/mes. \\
 Mesa N1, 17 & M21--M56; lunes a sábado, 04:00--20:00. Noches y domingos en septiembre y diciembre. & Guillermo Castillo. & Registro, primera atención y transferencia al NOC. & Dentro del 100~\% compartido. \\
 \end{tablalafrox}
-\fuentesdiez{SD10, sección 10.1 y Anexo 10.A; T-15, perfiles y secciones 4.1 y 5.7; T-14, paquetes 10.1.1, 10.1.2 y 10.1.4.}
+\fuentesdiez{elaboración propia a partir de los perfiles y la cobertura del Formulario T-15, secciones 4.1 y 5.7, y los paquetes 10.1.1, 10.1.2 y 10.1.4 del Formulario T-14, con la dotación complementaria propuesta por LafroX.}
 
 Guillermo Castillo confirmó las funciones de los especialistas para las siete coberturas. Leandro comunicó esta confirmación el 24 de noviembre de 2026. Las funciones de Guillermo comparten una dedicación total de 100~\%. Bastián Trejo aporta el 2~\% de arquitectura de nube. Antes del primer turno de cada servicio, Operación registra operadores, suplentes, ventanas, descansos y canales de escalamiento, y comprueba su disponibilidad.
 
