@@ -10,7 +10,7 @@ Las rutas siguientes identifican los PDF que integran el índice A-5. Los folios
 |---|---|---|
 | 1 | Formulario A-5: Presentación e índice de antecedentes | [LAFROX-Formulario-A-5.pdf](LAFROX-Formulario-A-5.pdf) |
 | 2 | Formulario A-1: Identificación del Proponente y de su Representante | [LAFROX-Formulario-A-1.pdf](LAFROX-Formulario-A-1.pdf) |
-| 3 | Cédula de identidad del representante legal | [LAFROX-Cedula-Representante-Legal-v2.pdf](antecedentes/1-legales/02-cedula-representante/LAFROX-Cedula-Representante-Legal-v2.pdf) |
+| 3 | Cédula de identidad del representante legal | [LAFROX-Cedula-Representante-Legal.pdf](LAFROX-Cedula-Representante-Legal.pdf) |
 | 4 | Rol Único Tributario de la empresa | [LAFROX-RUT.pdf](antecedentes/1-legales/03-rut-empresa/LAFROX-RUT.pdf) |
 | 5 | Certificado de vigencia de la sociedad | [LAFROX-Vigencia.pdf](antecedentes/1-legales/04-certificado-vigencia/LAFROX-Vigencia.pdf) |
 | 6 | Patente comercial | [LAFROX-Patente.pdf](antecedentes/1-legales/05-patente-comercial/LAFROX-Patente.pdf) |
@@ -66,4 +66,4 @@ La Boleta de Garantía de Seriedad de los artículos 35 y 49.2 está en `anteced
 
 El antecedente 21 incorpora tres cartas con el mismo formato de las cuatro alianzas: Rom Mayer para la instalación de Talca y la revisión eléctrica semestral, Netprovider para las pruebas independientes y Telsur como proveedor clave de fibra de Talca y Concepción. Las dos primeras corresponden a los siete servicios declarados en SD12 y T-8 y su contratación requiere autorización previa y escrita del CLIENTE. Las cartas son simuladas y no acreditan compromisos reales.
 
-Si se requirieran documentos auténticos fuera del ejercicio, las recreaciones y sellos simulados no sustituirían certificados ni actuaciones reales. El conjunto compilado contiene 23 PDF y 101 folios: carta y nómina en 55–60; cartas compromiso en 61–68; A-6 en 69–92; certificaciones en 93–101.
+Si se requirieran documentos auténticos fuera del ejercicio, las recreaciones y sellos simulados no sustituirían certificados ni actuaciones reales. El conjunto compilado contiene 24 PDF y 103 folios: cédula en 11; carta y nómina en 55–60; cartas compromiso en 61–68; A-6 en 69–93; certificaciones en 94–102; declaración del sitio web en 103.

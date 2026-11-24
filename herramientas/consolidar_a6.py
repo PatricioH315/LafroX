@@ -30,6 +30,8 @@ SRC = [
  ("Subdocumento 11 \\textemdash{} Planes en operación", "origin/LafroX-Subdoc11-LateX-CORRIGIENDO", "subdocumento-11/tablas/declaracion-ia.tex", "tab:sd11-ia"),
  ("Subdocumento 12 \\textemdash{} Equipo de trabajo, subcontrataciones y alianzas", "origin/LafroX-Subdoc12-LateX-CORRIGIENDO", "subdocumento-12/tablas/tab_SD12_IA.tex", "tab:12-ia"),
  ("Subdocumento 13 \\textemdash{} Innovaciones", "origin/LafroX-Subdoc13-LateX-corrigiendo", "SD13_v_nueva/13_innovaciones/contenido.tex", "tab:sd13-29"),
+ ("Subdocumento 14 \\textemdash{} Ventajas, beneficios y consolidación", "origin/LafroX-Subdoc14-LateX-CORRIGIENDO", "subdocumento-14/tablas/tab_SD14_IA.tex", "tab:14-ia"),
+ ("Oferta Económica \\textemdash{} Entregable 1: Propuesta económica formal", "origin/LafroX-OfertaEconomica-1-Latex", "01_oferta_economica/contenido.tex", "tab:e1-ia"),
  ("Oferta Económica \\textemdash{} Entregable 2: Análisis económico-financiero", "origin/LafroX-OfertaEconomica-2-Latex", "02_analisis_economico_financiero/contenido.tex", "tab:e2-ia"),
 ]
 
