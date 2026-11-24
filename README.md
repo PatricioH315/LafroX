@@ -14,10 +14,6 @@ La Oferta Técnica no puede contener precios, tarifas, valores unitarios ni cifr
 
 `SOBRE2_LAFROX_OFERTA_TECNICA_AAAAMMDD.ZIP`
 
-## Anexo digital RT-25.10
-
-Incluir `entrega/LafroX-Prototipo-SinConexion.zip` en el respaldo técnico del Sobre 2. Contiene el prototipo interactivo para apertura local, con instrucciones dentro del ZIP.
-
 ## Pendiente
 
 - Definir el orden de los subdocumentos según el Formulario T-7 y el índice con folio de inicio de cada sección (Art. 40.3).
