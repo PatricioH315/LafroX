@@ -1,6 +1,6 @@
 {
-  "source_ref": "bfed54d5a7b3ebe5eb787bc648ab83b88977fbb9",
-  "source_commit": "bfed54d5a7b3ebe5eb787bc648ab83b88977fbb9",
+  "source_ref": "27f85674c7503a584216e3ada143eec7b13cd4a4",
+  "source_commit": "27f85674c7503a584216e3ada143eec7b13cd4a4",
   "test_count": 1345,
   "counts": {
     "t12_rows": 653,
@@ -33,7 +33,7 @@
       "stage": "E1",
       "table": "3.A.1",
       "source_id": "RF-01.01",
-      "origin": "Caso, secciones 4.1 y 9.4.",
+      "origin": "Caso, sección 4.1: recepción y conteo contra guía; LafroX: comparación por SKU con OC, alerta por discrepancia, cierre sin bloqueo y disponibilidad para Calidad.",
       "criterion": "Por cada SKU se compara la cantidad recibida con la OC; cada discrepancia genera una alerta sin bloquear el cierre. El comparativo queda registrado y disponible en el módulo de calidad.",
       "verification": "Precondición y resultado esperado",
       "evidence": "RF-01.01/\\allowbreak{}P01--\\allowbreak{}P03",

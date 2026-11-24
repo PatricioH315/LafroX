@@ -163,19 +163,22 @@ for index, item in enumerate(data):
         criterion,
     ]) + r" \\")
     if index % BLOCK == BLOCK - 1 or index == len(data) - 1:
-        lines += [r"\end{tablasimple}", ""]
+        lines.append(r"\end{tablasimple}")
+        if index == len(data) - 1:
+            lines.append(r"\fuentesd{Fuente: elaboración propia a partir del catálogo de requisitos del Subdocumento 3 y de los componentes, paquetes y criterios ofertados en el Formulario T-12.}")
+        lines.append("")
 lines += [
           f"Las {WORDS.get(len(aliases), len(aliases))} filas absorbidas o alias conservan su disposición en el T-12 y no añaden casos independientes:",
           r"\begin{tablasimple}{Y Y Y}",
           r"{\cab{Fila} & \cab{Disposición vigente del T-12} & \cab{Casos adicionales}}"]
 for item in aliases:
     lines.append(f"{break_id(item['id'])} & {item['component']} & 0" + r" \\")
-lines += [r"\end{tablasimple}", "",
+lines += [r"\end{tablasimple}", r"\fuentesd{Fuente: elaboración propia a partir de las disposiciones de requisitos absorbidos o alias del Formulario T-12.}", "",
           r"\begin{tablasimple}{Y Y Y}",
           r"{\cab{Contrato} & \cab{Casos previstos} & \cab{Etapa de aceptación / hito}}"]
 for item in contracts:
     lines.append(f"{item['id']} & /P01 a /P{CASES_BY_CONTRACT:02} & {item['stage']}; {MILESTONE[item['stage']]}" + r" \\")
-lines += [r"\end{tablasimple}", ""]
+lines += [r"\end{tablasimple}", r"\fuentesd{Fuente: elaboración propia a partir de los contratos de integración del Subdocumento 4, sección 4.1.}", ""]
 (ROOT / "T13/matriz_requisitos.tex").write_text("\n".join(lines), encoding="utf-8")
 payload = {"source_ref": REF, "source_commit": subprocess.check_output(
     ["git", "rev-parse", REF], cwd=ROOT, text=True).strip(),

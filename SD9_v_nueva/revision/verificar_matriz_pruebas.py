@@ -128,6 +128,10 @@ for text in (body, annex, t13, t17):
         assert stale not in prose, stale
     assert "SD6, sección 6.1.3" not in text
 assert r"\input{T13/matriz_requisitos.tex}" in t13
+provenance = f"% Fuente de la matriz: T-12 {data['source_commit']}"
+assert t13.splitlines().count(provenance) == 1, "Falta el enlace interno con el commit fuente"
+visible_t13 = re.sub(r"(?<!\\)%[^\n]*", "", t13)
+assert not re.search(r"\b[0-9a-f]{7,40}\b", visible_t13), "El T-13 muestra un identificador interno"
 
 
 def num(value):
@@ -150,7 +154,6 @@ published = {
         f"Los {num(counts['own'])} RF y RNF con prioridad propia",
         f"Los {rt_state['No cumple']} RT en estado «No cumple»",
         f"Las {rt_state['Cumple parcialmente']} respuestas parciales",
-        data["source_commit"][:8],
     ]),
 }
 for where, (text, phrases) in published.items():
