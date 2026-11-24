@@ -1,6 +1,6 @@
 {
-  "source_ref": "d81c0975553510bc4a3ce64e43ee5532e5adb91c",
-  "source_commit": "d81c0975553510bc4a3ce64e43ee5532e5adb91c",
+  "source_ref": "677113167adeb62b3313e726cc69839c82e2ce84",
+  "source_commit": "677113167adeb62b3313e726cc69839c82e2ce84",
   "test_count": 1339,
   "counts": {
     "t12_rows": 653,
@@ -10192,13 +10192,13 @@
     {
       "id": "RT-21.03",
       "state": "Cumple parcialmente",
-      "component": "SD10, Anexo 10.D, B-02, identifica seis responsables con la dedicación de T-8 y define puestos y ventanas por tecnología conforme al T-15. Las asignaciones de titular y suplente, competencias y dedicación por turno siguen pendientes de confirmación.",
+      "component": "SD10, B-02 registra seis responsables del T-8. Faltan titulares, suplentes y dedicaciones individuales validados para siete coberturas. El Anexo 10.A reserva 16 HH/mes al perfil 12S en M21--M56.",
       "edt": "10.1.1, 10.1.2, 10.1.4",
       "priority": "RT",
       "stage": "Según T-12 y T-14",
       "table": "T12.2",
       "origin": "Bases Técnicas Transversales, RT-21.03",
-      "criterion": "Guillermo Castillo valida por tecnología y turno titulares, suplentes, competencias y dedicaciones contra T-8, Anexos 12.B a 12.D y T-15. Comprobar escalamiento, simultaneidad, SOC desde M13, relevo Mesa--NOC de 20:00 a 22:00 y Mesa en M21 y M32. Registrar fecha y respaldo.",
+      "criterion": "B-02 identifica por tecnología titular, suplente, competencia, período, ventana y dedicación individual. Las HH son compatibles con T-8, T-15 y el complemento 10.A. El escalamiento crítico o alto tiene cobertura. Guillermo Castillo registra fecha y respaldo.",
       "verification": "Verificación del requisito y del alcance ofertado",
       "evidence": "RT-21.03/\\allowbreak{}P01\\newline Evidencia prevista: cuadrante B-02 validado (SD10, Anexo 10.D).",
       "cases": [
