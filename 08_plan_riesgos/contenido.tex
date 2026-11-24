@@ -21,7 +21,7 @@ La Tabla 8.1 distingue al responsable del riesgo, la familia de esfuerzo y su vi
 
 \begingroup
 \renewcommand{\thetable}{8.1}
-\begin{tablalafrox}{Responsabilidad y vigencia por familia. Fuente: (T-14, cuentas 7.3 y 7.5; T-15, asignación de partidas; Subdocumento 13; Bases Administrativas, Formulario T-16, p. 63).}{tab:sd8-cuerpo-1}{>{\hsize=0.48404\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.00760\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.28064\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.22771\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{Familia} & \cab{Meses 1--21} & \cab{Meses 22\textendash{}56} & \cab{Autoridad/aprobación}}
+\begin{tablalafrox}{Responsabilidad y vigencia por familia. Fuente: elaboración propia a partir de las cuentas 7.3 y 7.5 del Formulario T-14, la asignación de partidas del Formulario T-15 y los responsables del Subdocumento 13.}{tab:sd8-cuerpo-1}{>{\hsize=0.48404\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.00760\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.28064\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.22771\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{Familia} & \cab{Meses 1--21} & \cab{Meses 22\textendash{}56} & \cab{Autoridad/aprobación}}
 JP & Alex Aravena & Alex Aravena, dirección de contrato & Registro/escalamiento \\
 ARQ & Bastián Trejo & Trejo, Comité Arquitectura & Diseño/frontera DR \\
 SEG & Álvaro Catalán & Álvaro Catalán & Seguridad/privacidad \\
@@ -46,7 +46,7 @@ Al vencer una solicitud, el dueño informa a JP y CT el mismo día hábil con la
 
 La probabilidad inicial $p_0$ estima la ocurrencia de al menos un episodio en la ventana de exposición de cada riesgo, tanto para el análisis cualitativo como para el cuantitativo. El nivel P se obtiene de esa misma estimación con las bandas de la Tabla 8.2. El factor $q_P$ pondera esa categoría en la matriz de priorización. Por ejemplo, R-002 tiene $p_0=60\%$, nivel 4 y factor 0,70; R-014 tiene $p_0=20\%$, nivel 2 y factor 0,30. Para calcular las HH esperadas se utiliza $p_0$, conservando la misma ventana y el supuesto de episodios del Anexo 8.B.
 
-\begin{tablalafrox}{Escala cualitativa de probabilidad -- Fuente: elaboración propia; escala contextualizada al proyecto}{tab:tabla-probabilidad}%
+\begin{tablalafrox}{Escala cualitativa de probabilidad. Fuente: elaboración propia.}{tab:tabla-probabilidad}%
 {G{0.08} F{0.27} Y G{0.15}}
 {\cab{Nivel P} & \cab{Banda de $p_0$} & \cab{Descripción} & \cab{Factor $q_P$}}
 1 & $0\%\leq p_0\leq10\%$ & Muy baja & 0,10 \\
@@ -56,7 +56,7 @@ La probabilidad inicial $p_0$ estima la ocurrencia de al menos un episodio en la
 5 & $70\%<p_0\leq100\%$ & Muy alta & 0,90 \\
 \end{tablalafrox}
 
-\begin{tablalafrox}{Escala de impacto -- Fuente: elaboración propia; escala contextualizada al proyecto}{tab:tabla-impacto}%
+\begin{tablalafrox}{Escala de impacto. Fuente: elaboración propia.}{tab:tabla-impacto}%
 {G{0.07} G{0.12} F{0.19} Y}
 {\cab{Nivel I} & \cab{Factor $q_I$} & \cab{PERT condicional (HH)} & \cab{Plazo, alcance, calidad o contrato}}
 1 & 0,05 & $H\leq24$ & Corrección localizada dentro de la tarea, sin afectar aceptación. \\
@@ -72,7 +72,7 @@ Las condiciones de aceptación de los arts. 17.3 y 18.1--18.3, y los compromisos
 
 La exposición es $E=q_P\times q_I$. Las bandas, factores y umbrales son definiciones propias del proyecto, no valores prescritos por Project Management Institute (PMI, 2017, cap. 11, sección 11.3, Tabla 11-1, p. 407). El producto determina la prioridad en la matriz.
 
-\begin{tablalafrox}{Escala de exposición -- Fuente: elaboración propia; criterio definido para el proyecto}{tab:tabla-exposicion}%
+\begin{tablalafrox}{Escala de exposición. Fuente: elaboración propia.}{tab:tabla-exposicion}%
 {F{0.40} F{0.20}}
 {\cab{Exposición decimal} & \cab{Zona de prioridad}}
 $E<0.08$ & Baja \\
@@ -121,7 +121,7 @@ El análisis cualitativo asigna a probabilidad e impacto niveles ordinales de 1 
 
 \begingroup
 \renewcommand{\thetable}{8.5}
-\begin{tablalafrox}{Diez riesgos de mayor exposición cualitativa. Fuente: análisis cualitativo de los 36 riesgos; criterios del procedimiento de análisis.}{tab:sd8-cuerpo-4}{>{\hsize=0.8\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.05\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.4\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{ID} & \cab{$q_P$} & \cab{$q_I$} & \cab{Exposición ($q_P\times q_I$)} & \cab{Zona registrada}}
+\begin{tablalafrox}{Diez riesgos de mayor exposición cualitativa. Fuente: cálculo propio a partir de las valoraciones de probabilidad e impacto del Formulario T-16.}{tab:sd8-cuerpo-4}{>{\hsize=0.8\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.05\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.4\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{ID} & \cab{$q_P$} & \cab{$q_I$} & \cab{Exposición ($q_P\times q_I$)} & \cab{Zona registrada}}
 R-002 & 0,70 & 0,80 & 0,56 & Crítica \\
 R-004 & 0,70 & 0,40 & 0,28 & Alta \\
 R-006 & 0,70 & 0,40 & 0,28 & Alta \\
@@ -145,7 +145,7 @@ El valor central condicional se calcula con PERT: $H_i^{\mathrm{cond}}=(O_i+4M_i
 
 \begingroup
 \renewcommand{\thetable}{8.6}
-\begin{tablalafrox}{Diez mayores valores esperados de esfuerzo. Fuente: Tabla de análisis cuantitativo; estimación de tres valores según el procedimiento.}{tab:sd8-cuantitativo}{>{\hsize=0.35\hsize\linewidth=\hsize\centering\arraybackslash}X >{\hsize=2.2\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.65\hsize\linewidth=\hsize\centering\arraybackslash}X >{\hsize=0.9\hsize\linewidth=\hsize\centering\arraybackslash}X >{\hsize=0.9\hsize\linewidth=\hsize\centering\arraybackslash}X}{\cab{ID} & \cab{Riesgo (síntesis)} & \cab{$p_0$} & \cab{PERT (HH)} & \cab{$VE$ (HH)}}
+\begin{tablalafrox}{Diez mayores valores esperados de esfuerzo. Fuente: elaboración propia a partir de las probabilidades y estimaciones PERT del Anexo 8.B.1.}{tab:sd8-cuantitativo}{>{\hsize=0.35\hsize\linewidth=\hsize\centering\arraybackslash}X >{\hsize=2.2\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.65\hsize\linewidth=\hsize\centering\arraybackslash}X >{\hsize=0.9\hsize\linewidth=\hsize\centering\arraybackslash}X >{\hsize=0.9\hsize\linewidth=\hsize\centering\arraybackslash}X}{\cab{ID} & \cab{Riesgo (síntesis)} & \cab{$p_0$} & \cab{PERT (HH)} & \cab{$VE$ (HH)}}
 R-002 & Historia sanitaria de origen no reconstruible & 60\% & 194,67 & 116,80 \\
 R-029 & Rotación nocturna supera inducción disponible & 55\% & 208,00 & 114,40 \\
 R-013 & Usuarios mantienen el proceso anterior & 55\% & 128,00 & 70,40 \\
@@ -175,7 +175,7 @@ no son magnitudes intercambiables ni porcentajes de eficacia.
 \edef\sdTablaAnterior{\number\value{table}}
 \renewcommand{\thetable}{8.2.3-A}
 \renewcommand{\theHtable}{sd821-fmea}
-\begin{tablalafrox}{FMEA aplicado a los cinco riesgos prioritarios. Fuente: Anexo 8.G.1; valores posteriores proyectados, sujetos a evidencia.}{tab:sd821-fmea}{F{0.12} F{0.20} F{0.20} Y}{\cab{Riesgo} & \cab{S/O/D; NPR inicial} & \cab{S1/O1/D1; NPR1} & \cab{Lectura para decidir}}
+\begin{tablalafrox}{FMEA aplicado a los cinco riesgos prioritarios. Fuente: elaboración propia a partir de la severidad, ocurrencia y detección iniciales y proyectadas del Anexo 8.G.1.}{tab:sd821-fmea}{F{0.12} F{0.20} F{0.20} Y}{\cab{Riesgo} & \cab{S/O/D; NPR inicial} & \cab{S1/O1/D1; NPR1} & \cab{Lectura para decidir}}
 R-002 & 5/4/5; 100 & 5/4/3; 60 & La conciliación detecta faltantes, pero no reconstruye historia sanitaria inexistente. Conservar gravedad 5 y bloqueo del lote sin trazabilidad. \\
 R-006 & 4/4/5; 80 & 4/3/3; 36 & El cotejo temprano puede recuperar fuentes; la cobertura histórica puede seguir incompleta. Mantener pendiente la comparación sin referencia reproducible. \\
 R-029 & 4/4/4; 64 & 4/3/2; 24 & La mejora requiere tutor y evaluación de cada alta, con cobertura certificada del turno. Una capacitación aislada no demuestra capacidad sostenida. \\
@@ -219,7 +219,7 @@ mantienen los plazos y restricciones de 8.A.2 y 8.F.1.
 \edef\sdTablaAnterior{\number\value{table}}
 \renewcommand{\thetable}{8.3.1-A}
 \renewcommand{\theHtable}{sd821-respuestas}
-\begin{tablalafrox}{Respuestas prioritarias y puertas de decisión. Fuente: Anexos 8.A.2, 8.F.1, 8.F.2 y 8.F.2a.}{tab:sd821-respuestas}{F{0.13} F{0.23} F{0.23} F{0.10} Y}{\cab{ID / E0--E1} & \cab{Medida y responsable} & \cab{Disparador y plazo} & \cab{A/C (HH)} & \cab{Evidencia y bloqueo}}
+\begin{tablalafrox}{Respuestas prioritarias y puertas de decisión. Fuente: elaboración propia a partir de las solicitudes y plazos del Anexo 8.A.2 y de las respuestas, exposiciones proyectadas y evidencias de los anexos 8.F.1, 8.F.2 y 8.F.2a.}{tab:sd821-respuestas}{F{0.13} F{0.23} F{0.23} F{0.10} Y}{\cab{ID / E0--E1} & \cab{Medida y responsable} & \cab{Disparador y plazo} & \cab{A/C (HH)} & \cab{Evidencia y bloqueo}}
 R-002 / 0,56--0,56; Crítica & DAT concilia vínculos por lote y aísla excepciones; Calidad del CLIENTE decide V-07. & Faltante al perfilar: aislar el mismo día. Política en mes 2; excepciones a D-5 y decisión antes del corte. & 12/24 & Origen verificable y prueba de exclusión de carga/despacho. Sin vínculos exigidos, lote bloqueado incluso con resolución firmada. \\
 R-006 / 0,28--0,20; Alta & Líder Funcional y CAL reproducen OTIF y cuadratura; Comercial, Operaciones y Finanzas validan fuentes V-10. & Referencia al cierre del mes 1. Ante bloqueo, JP reúne áreas en dos días hábiles y exige evidencia o eleva en cinco. & 8/16 & Fuentes, período y cálculo reproducibles. Sin historia verificable, comparación y aceptación afectadas bloqueadas; las mediciones futuras no la sustituyen. \\
 R-029 / 0,28--0,20; Alta & IMP hasta mes 21, SRE desde 22: verificar altas, tutoría y cobertura certificada con Bodega/Operaciones. & Antes del turno y de cada alta autónoma, meses 13--56. Revisar a diario; proponer refuerzo en dos días hábiles. & 12/32 & Tutor disponible, aprendizaje máximo dos horas y evaluación aprobada antes de autonomía. Si falla o desborda capacidad, impedir trabajo autónomo y revalidar refuerzo. \\
@@ -256,7 +256,7 @@ decimales; el cálculo conserva la precisión original.
 \edef\sdTablaAnterior{\number\value{table}}
 \renewcommand{\thetable}{8.3.1-B}
 \renewcommand{\theHtable}{sd821-retorno}
-\begin{tablalafrox}{Tratamientos que se mantienen aun con retorno HH menor que uno. Fuente: Anexo 8.F.3.}{tab:sd821-retorno}{F{0.12} F{0.36} F{0.27} Y}{\cab{Riesgo} & \cab{Entradas del modelo} & \cab{Resultado en HH} & \cab{Decisión}}
+\begin{tablalafrox}{Tratamientos que se mantienen aun con retorno HH menor que uno. Fuente: elaboración propia a partir de las entradas, resultados y decisiones de costo-beneficio del Anexo 8.F.3.}{tab:sd821-retorno}{F{0.12} F{0.36} F{0.27} Y}{\cab{Riesgo} & \cab{Entradas del modelo} & \cab{Resultado en HH} & \cab{Decisión}}
 R-002 & H0=194,67; p0=p1=60\%; A=12; C=24. & B=14,40; T=26,40; B/T=0,55; neto=-12,00. & Conservar tratamiento sanitario obligatorio. Aislar limita exposición operativa, pero no reduce la ocurrencia de historia irrecuperable. \\
 R-031 & H0=73,33; p0=45\%; p1=35\%; A=8; C=16. & B=12,93; T=13,60; B/T=0,95; neto=-0,67. & Conservar continuidad y condiciones contractuales del cierre. Verificar la evidencia exigida antes de aceptar el hito. \\
 \end{tablalafrox}
@@ -282,7 +282,7 @@ subconjunto como si fuera otra reserva. Los importes son HH, no dinero ni días.
 \edef\sdTablaAnterior{\number\value{table}}
 \renewcommand{\thetable}{8.3.2-A}
 \renewcommand{\theHtable}{sd821-reservas}
-\begin{tablalafrox}{Lectura ejecutiva de exposición, tratamiento y reservas. Fuente: Anexos 8.B.1 y 8.H.1--3.}{tab:sd821-reservas}{F{0.32} F{0.16} Y}{\cab{Concepto} & \cab{HH} & \cab{Uso y regla de no duplicación}}
+\begin{tablalafrox}{Lectura ejecutiva de exposición, tratamiento y reservas. Fuente: elaboración propia a partir de la exposición inicial del Anexo 8.B.1 y de la conciliación y distribución de reservas de los anexos 8.H.1--8.H.3.}{tab:sd821-reservas}{F{0.32} F{0.16} Y}{\cab{Concepto} & \cab{HH} & \cab{Uso y regla de no duplicación}}
 Exposición inicial p0H0 & 1.199,52 & Referencia previa al tratamiento; no se agrega al total posterior. \\
 Prevención adicional A & 180,00 & Trabajo planificado por aprobar y contrastar con paquetes ordinarios. \\
 Contingencia específica p1H0 & 837,53 & Incluye respuesta y remanente. Se nivela por mes/perfil y depende de la evidencia que sustenta p1. \\
@@ -326,7 +326,7 @@ real, no traslada al CLIENTE un dimensionamiento insuficiente del peak conocido.
 \edef\sdTablaAnterior{\number\value{table}}
 \renewcommand{\thetable}{8.3.3-A}
 \renewcommand{\theHtable}{sd821-habilitacion}
-\begin{tablalafrox}{Condiciones ejecutivas de habilitación por alcance. Fuente: Anexos 8.D.3 y 8.E.1; R-034/R-036 de T-16.}{tab:sd821-habilitacion}{F{0.16} F{0.27} F{0.37} Y}{\cab{Alcance} & \cab{Decisión de diseño} & \cab{Prueba y evidencia exigida} & \cab{Responsable y puerta}}
+\begin{tablalafrox}{Condiciones ejecutivas de habilitación por alcance. Fuente: elaboración propia a partir de las condiciones de continuidad y pruebas de los anexos 8.D.3 y 8.E.1 y los riesgos R-034 y R-036 del Formulario T-16.}{tab:sd821-habilitacion}{F{0.16} F{0.27} F{0.37} Y}{\cab{Alcance} & \cab{Decisión de diseño} & \cab{Prueba y evidencia exigida} & \cab{Responsable y puerta}}
 ERP / R-034 & ERP único emisor. Recuperar WMS no recupera ERP; sin guía válida se bloquea la salida. & AL-DTE-01: 96 salidas, guía vigente y cambio de carga. AL-DR-01: pérdida de sala, restitución y tiempos frente a RTO 4 h/RPO 15 min. Bloqueo correcto no demuestra continuidad de las 96 salidas. & ARQ/SRE con TI, Finanzas y Operaciones; CAL verifica antes de H5/H10. \\
 Stock / CT-15 & Confirmar reserva central sólo con retención local durable y autoridad única por ámbito. & AL-STOCK-01: última unidad, UUID/época, acuse perdido y reintento sin doble reserva ni stock negativo. AL-DR-01: exclusión de escritor, promoción, retorno y conciliación. E1: preventa real; E2: portal y EDI reales. & Equipo DAT hasta mes 20; SRE desde mes 21, con apoyo puntual de DAT; ARQ diseña y CAL verifica. No aceptar E2 mediante simulador. \\
 Identidad / CT-03 & Identidad conectada/local, mínimo privilegio y vigencia que no se amplía por reinicio o reloj. & AL-ID-01/AL-OFF-01: manifiesto 26 h, corte una hora después, relevos 8/16 h; ruta 14,5 h y máximo 16 h. Cero accesos indebidos; baja local y central aislada diferenciadas, cola conservada y conciliación única. & SEG responde; ARQ diseña; DES/SRE ejecutan; CAL verifica antes de H5/H10. Seguridad conserva G5. \\
@@ -378,7 +378,7 @@ La declaración de uso de IA responde al artículo 13.5 de las Bases Administrat
 
 \begingroup
 \renewcommand{\thetable}{8.IA.1}
-\begin{tablalafrox}{Declaración de uso de IA}{tab:sd8-cuerpo-7}{>{\hsize=0.98597\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.04345\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.51284\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.56762\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.71876\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.17136\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{Sección} & \cab{Herramienta} & \cab{Finalidad del uso} & \cab{Nivel en texto} & \cab{Nivel en diagramas} & \cab{Revisión humana (quién y qué verificó)}}
+\begin{tablalafrox}{Declaración de uso de IA. Fuente: elaboración propia.}{tab:sd8-cuerpo-7}{>{\hsize=0.98597\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.04345\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.51284\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.56762\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.71876\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.17136\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{Sección} & \cab{Herramienta} & \cab{Finalidad del uso} & \cab{Nivel en texto} & \cab{Nivel en diagramas} & \cab{Revisión humana (quién y qué verificó)}}
 Introducción & Gentle-Shell y ChatGPT & Conexión con operación, alcance y formularios & Alto & Ninguno & Maximiliano Miño: revisión del alcance de la introducción y de su correspondencia con la operación y los entregables. \\
 8.1 Plan de riesgos & Gentle-Shell y ChatGPT & Roles, escalas, ciclo y cierre & Alto & Ninguno & Guillermo Castillo: roles, escalas de probabilidad e impacto, ciclo y cierre frente al SD6 y el T-16. \\
 8.2 Identificación y Análisis de Riesgos & Gentle-Shell y ChatGPT & RBS, exposición cualitativa y valor esperado en HH & Alto & Medio & Maximiliano Miño: enunciado de los riesgos, RBS y valoración de probabilidad, impacto y exposición; Patricio Henríquez: estimación de tres valores. \\
