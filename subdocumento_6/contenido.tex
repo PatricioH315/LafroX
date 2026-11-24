@@ -85,7 +85,7 @@ La gobernanza combina seguimiento diferenciado y comités formales para revisar 
 
 \paragraph{Escalamiento} Un asunto sube de instancia por un disparador observable, no por criterio de quien lo detecta. La Figura~\ref{fig:sd6-escalamiento} muestra los tres niveles. El responsable de la actividad informa al Jefe de Proyecto y a la Contraparte Técnica el mismo día hábil en que se cumple el disparador. Desde ahí hay dos caminos. Una desviación del proyecto (índice de valor ganado bajo 0,90, bloqueo de más de cinco días hábiles, riesgo que pasa a zona alta) que no se resuelve en dos días hábiles pasa al Comité de Proyecto, en sesión ordinaria o extraordinaria, y si excede sus atribuciones o sigue sin resolverse a los cinco días hábiles, al Comité Ejecutivo. Una decisión o evidencia que debe aportar el CLIENTE y que vence sin respuesta sigue una regla propia de este plan: el Jefe de Proyecto pide a la Contraparte Técnica encauzarla en un día hábil y, si a los dos días hábiles del vencimiento no hay resolución, solicita una sesión extraordinaria del Comité Ejecutivo con la gerencia competente. Una amenaza a la seguridad, a la continuidad de la operación o a un hito se escala de inmediato al Comité Ejecutivo, sin esperar esos plazos. El Formulario T-9, sección 1.6, detalla los disparadores y distingue la notificación de la decisión. Estos plazos de uno, dos y cinco días son compromisos de LafroX; el Subdocumento 8, sección 8.1.1, aporta la revisión de riesgos y el escalamiento inmediato ante amenazas graves (LafroX, 2026f).
 
-\begin{figure}[htbp]
+\begin{figure}[!tb]
 \centering
 \begin{tikzpicture}[font=\small,
   niv/.style={draw,rounded corners,fill=lafroxGris!12,text width=4.6cm,minimum height=1.2cm,align=center},
@@ -93,15 +93,15 @@ La gobernanza combina seguimiento diferenciado y comités formales para revisar 
   lab/.style={font=\footnotesize,text width=2.4cm,align=left,anchor=west}]
 \node[niv] (n1) at (0,0) {\textbf{Nivel 1}\\Jefe de Proyecto y Contraparte Técnica};
 \node[niv] (n2) at (0,-2.6) {\textbf{Nivel 2}\\Comité de Proyecto\\(quincenal o extraordinario)};
-\node[niv] (n3) at (0,-5.2) {\textbf{Nivel 3}\\Comité Ejecutivo\\(mensual o extraordinario)};
+\node[niv] (n3) at (0,-5.7) {\textbf{Nivel 3}\\Comité Ejecutivo\\(mensual o extraordinario)};
 \draw[->,thick] (n1) -- (n2) node[lab,midway,xshift=0.1cm]{sin resolución en 2 días hábiles};
 \draw[->,thick] (n2) -- (n3) node[lab,midway,xshift=0.1cm]{excede atribuciones o 5 días hábiles};
 \node[disp,anchor=west] at (2.9,0) {SPI o CPI bajo 0,90; bloqueo de más de 5 días hábiles; solicitud al CLIENTE vencida.};
 \node[disp,anchor=west] at (2.9,-2.6) {Plan de recuperación; riesgo en zona alta; reasignación entre frentes.};
-\node[disp,anchor=west] at (2.9,-5.2) {Cambio de alcance (Art. 72°); uso de la reserva de gestión; holgura de un hito bajo 10 días hábiles.};
-\draw[->,thick,dashed] (-2.5,0.3) to[bend right=35] (-2.5,-5.5);
+\node[disp,anchor=west] at (2.9,-5.7) {Cambio de alcance (Art. 72°); uso de la reserva de gestión; holgura de un hito bajo 10 días hábiles.};
+\draw[->,thick,dashed] (-2.5,0.3) to[bend right=35] (-2.5,-6.0);
 \node[font=\footnotesize,align=right,anchor=east] at (-3.5,-1.6) {seguridad,\\continuidad o hito:\\inmediato};
-\node[font=\footnotesize,align=right,anchor=east] at (-3.5,-3.6) {solicitud al\\CLIENTE vencida:\\solicitud a los\\2 días hábiles};
+\node[font=\footnotesize,align=right,anchor=east] at (-3.5,-3.9) {solicitud al\\CLIENTE vencida:\\solicitud a los\\2 días hábiles};
 \end{tikzpicture}
 \caption{Niveles y disparadores de escalamiento. Fuente: elaboración propia a partir de (Distribuidora Puelche S.A., 2026a, Bases Administrativas, art. 71, pp. 37--38) y de las reglas propias de este apartado; el contexto de riesgos procede de (LafroX, 2026f, sección 8.1.1).}
 \label{fig:sd6-escalamiento}
@@ -113,7 +113,7 @@ El Comité de Calidad y Procesos es una instancia interna de LafroX, descrita en
 
 La Figura~\ref{fig:sd6-control} muestra cómo el seguimiento se conecta con el control de cambios y la aceptación, sin equiparar una demostración con un acta contractual.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}[every node/.style={draw,rounded corners,align=center,font=\small,text width=2.7cm,minimum height=1.5cm}]
 \node (base) at (0,0) {Línea base\\y criterios};
