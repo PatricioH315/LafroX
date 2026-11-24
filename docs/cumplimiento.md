@@ -80,7 +80,11 @@ Detalle de los mínimos exigidos:
 | RT-25.07 | Acceso por seis meses | Publicación estática sin dependencias externas de ejecución (solo tipografías, con respaldo del sistema). LafroX mantiene el enlace al menos hasta el 25-05-2027, seis meses después de la Propuesta Final; responsable: Líder de Desarrollo. | `README.md`, sección Publicación |
 | RT-25.08 | Navegación completa e interactividad | Ingreso de datos, transiciones, posado y activo, carga de archivos, desplegables y validaciones simuladas. | `#/flujo` |
 | RT-25.09 | Arquitectura de información | Mapa del sitio, diagrama de navegación, taxonomía, menús y jerarquía. | `docs/arquitectura_informacion.md` |
-| RT-25.10 | Exportación para revisión sin conexión (deseable) | La carpeta funciona abriendo `index.html` sin servidor; se entrega en .zip. | `abrir-prototipo.bat` |
+| RT-25.10 | Exportación para revisión sin conexión (deseable) | El ZIP del Sobre 2 abre con `index.html` sin servidor. | `abrir-prototipo.bat` |
+
+## Validación de la entrega sin conexión
+
+Apertura sin servidor (RT-25.10): verificada en Microsoft Edge mediante `file://`, con red bloqueada y el ZIP extraído. Se recorrieron dos perfiles y los siete pasos del flujo, incluida la validación FEFO, la foto de entrega y la rendición. Cero solicitudes HTTP y cero errores de JavaScript. El ZIP del Sobre 2 tiene SHA-256 `767fae7dda0fcf42c83131d93d890fe7b2cc5c52d9329163cff5521868eb5b3e`.
 
 ## Evidencia histórica anterior al corte 07-11-2026
 
@@ -100,7 +104,6 @@ Los resultados actuales se registran en [verificación del prototipo](../revisio
 - Títulos de RF-02.09 y RF-12.30 en el catálogo de main: agregados en https://github.com/PatricioH315/LafroX/pull/1; falta fusionarlo.
 - No corregibles en el prototipo, por ser simulación: RNF-05.03, RNF-08.01, RNF-12.01, la revisión con lector de pantalla y la parte real (ERP, OTP, Transbank, GPS) de los requerimientos anteriores.
 - Revisión con lector de pantalla (NVDA o VoiceOver): no se ha hecho; la revisión de accesibilidad fue automática y por teclado.
-- Apertura sin servidor (RT-25.10): el código no usa módulos ES, `fetch` ni rutas absolutas, pero falta abrir `index.html` con doble clic en Chrome, Edge y Firefox para confirmarlo.
 
 ## Continuación verificada el 03-11-2026
 
