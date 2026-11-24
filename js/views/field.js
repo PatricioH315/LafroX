@@ -68,6 +68,12 @@
       const coldState = () => read('coldState', 'ok');
       const host = $('#tr-host', root);
       const tabs = [['ruta', 'route', 'Ruta'], ['cola', 'sync', 'Cola'], ['frio', 'thermo', 'Frío'], ['mas', 'menu', 'Más']];
+      const markClosed = (p) => {
+        setStop(p.id, 'Reprogramada');
+        if (!L.online()) setQueue([...queue(), { t: `Local cerrado ${p.nombre}`, icon: 'door', uuid: 'evt-' + Math.random().toString(16).slice(2, 8), at: '09:5' + queue().length }]);
+        S.screen = 'ruta'; draw();
+        $(`[data-stop="${p.id}"]`, host)?.focus();
+      };
       const draw = () => {
         const st = stops();
         let title = 'Mi ruta', body = '', back = '';
@@ -81,7 +87,7 @@
           title = p.nombre; back = 'ruta';
           body = `<dl class="desc-list"><dt>Dirección</dt><dd>${esc(p.dir)}</dd><dt>Ventana</dt><dd>${esc(p.ventana)}</dd><dt>Pedido</dt><dd class="mono">${esc(p.pedido)}</dd><dt>Bultos</dt><dd>${p.bultos}${p.frio ? ' · incluye frío' : ''}</dd><dt>Cobro</dt><dd>${p.contado ? 'Contado ' + fmt.clp(p.monto) : 'Crédito 30 días'}</dd></dl>
             ${p.frio ? (['ok', 'satelite'].includes(coldState()) ? L.alert('success', 'Cadena de frío vigente', 'Señal del equipo de frío del camión hace 4 s · 3,4 °C, carga vigente y sin retención. Se habilita la bajada del SSCC.') : L.alert('danger', coldState() === 'enlace' ? 'Bajada bloqueada: sin latido del camión' : 'Bajada bloqueada: SSCC retenido por excursión', coldState() === 'enlace' ? 'El terminal no recibe señal del equipo de frío del camión hace más de 30 s. Sin estado confiable no se baja producto de frío; el SSCC queda retenido y vuelve al CD si Calidad no decide en plazo.' : 'El SSCC 0078012345000001255 quedó retenido por excursión crítica. Solo Calidad puede liberarlo.')) : ''}
-            ${e === 'Pendiente' ? `<button type="button" class="btn btn-secondary btn-block big-btn" data-nav>${icon('pin')}Navegar ${L.online() ? '' : '(mapa precargado)'}</button>${p.frio && !['ok', 'satelite'].includes(coldState()) ? `<button type="button" class="btn btn-primary btn-block big-btn" disabled>${icon('lock')}Entrega de frío bloqueada</button><button type="button" class="btn btn-tertiary btn-block" data-dtab="frio">Ver estado de la cadena de frío</button>` : `<button type="button" class="btn btn-primary btn-block big-btn" data-arrive>${icon('check')}Llegué: iniciar entrega</button>`}` : L.alert(e === 'Entregado' ? 'success' : 'warning', `Parada ${e.toLowerCase()}`, e === 'Entregado' ? `Prueba de entrega registrada. Llegada ${read('times', {})[p.id]?.llegada || '—'} · término ${read('times', {})[p.id]?.termino || '—'}.` : 'Reprogramada a la próxima ventana compatible.')}`;
+            ${e === 'Pendiente' ? `<button type="button" class="btn btn-secondary btn-block big-btn" data-nav>${icon('pin')}Navegar ${L.online() ? '' : '(mapa precargado)'}</button>${p.frio && !['ok', 'satelite'].includes(coldState()) ? `<button type="button" class="btn btn-primary btn-block big-btn" disabled>${icon('lock')}Entrega de frío bloqueada</button><button type="button" class="btn btn-tertiary btn-block" data-dtab="frio">Ver estado de la cadena de frío</button>` : `<button type="button" class="btn btn-primary btn-block big-btn" data-arrive>${icon('check')}Llegué: iniciar entrega</button>`}<button type="button" class="btn btn-secondary btn-block big-btn" data-closed>${icon('door')}Local cerrado</button>` : L.alert(e === 'Entregado' ? 'success' : 'warning', `Parada ${e.toLowerCase()}`, e === 'Entregado' ? `Prueba de entrega registrada. Llegada ${read('times', {})[p.id]?.llegada || '—'} · término ${read('times', {})[p.id]?.termino || '—'}.` : 'Reprogramada a la próxima ventana compatible.')}`;
         } else if (S.screen === 'entrega') {
           const p = L.fieldStops().find((x) => x.id === S.stop);
           title = 'Entrega · ' + p.nombre; back = 'parada';
@@ -118,7 +124,7 @@
             stop: { ...p, ventana: p.ventana }, compact: true,
             lines: ped.lineas.slice(0, 4).map((l) => ({ nombre: l.nombre, cant: l.cant, precio: Math.round(p.monto / ped.lineas.slice(0, 4).reduce((a, x) => a + x.cant, 0)) })),
             onDone: (r) => { const max = L.param('efectivo-max') || 800000, before = Object.values(read('times', {})).reduce((a, x) => a + (x.cash || 0), 0) + crewCash; if (before + (r.cash || 0) > max && before <= max) L.toast('Supera el efectivo permitido a bordo', `Lleva ${fmt.clp(before + (r.cash || 0))}. Deposítelo en el próximo punto acordado y regístrelo en «Rendir el turno».`, 'warning'); setStop(p.id, 'Entregado'); write('times', { ...read('times', {}), [p.id]: { llegada: r.llegada, termino: r.termino, cash: r.cash || 0, crates: r.crates, pallets: r.pallets } }); if (!L.online()) setQueue([...queue(), { t: `Entrega ${p.nombre}`, icon: 'check', uuid: 'pod-' + Math.random().toString(16).slice(2, 8), at: '09:4' + queue().length }, ...(r.cash ? [{ t: `Cobro ${fmt.clp(r.cash)}`, icon: 'cash', uuid: 'cob-' + Math.random().toString(16).slice(2, 8), at: '09:4' + queue().length }] : [])]); S.screen = 'ruta'; draw(); },
-            onClosed: (r) => { setStop(p.id, 'Reprogramada'); if (!L.online()) setQueue([...queue(), { t: `Local cerrado ${p.nombre}`, icon: 'door', uuid: 'evt-' + Math.random().toString(16).slice(2, 8), at: '09:5' + queue().length }]); S.screen = 'ruta'; draw(); }
+            onClosed: () => markClosed(p)
           });
         }
         $('#dev-net', host).onchange = (e) => { L.setOnline(e.target.checked); if (e.target.checked) syncQueue(draw); else { L.toast('Sin conexión', 'Siga trabajando: todo queda en el dispositivo.', 'warning'); draw(); } };
@@ -126,6 +132,8 @@
         $('[data-dback]', host) && ($('[data-dback]', host).onclick = () => { S.screen = $('[data-dback]', host).dataset.dback; draw(); });
         $$('[data-stop]', host).forEach((b) => (b.onclick = () => { S.stop = b.dataset.stop; S.screen = 'parada'; draw(); }));
         $('[data-arrive]', host) && ($('[data-arrive]', host).onclick = () => { S.screen = 'entrega'; draw(); });
+        const closed = S.screen === 'parada' && $('[data-closed]', host);
+        if (closed) closed.onclick = () => { const p = L.fieldStops().find((x) => x.id === S.stop); L.closedStop(() => markClosed(p), true); };
         $$('[data-cold]', host).forEach((b) => (b.onclick = () => { const v = b.dataset.cold; write('coldState', v); if (v === 'satelite') L.toast('Sin red móvil', 'Curva y alarmas siguen por satélite.', 'info'); else if (v !== 'ok') { if (navigator.vibrate) navigator.vibrate([300, 150, 300]); L.toast(v === 'excursion' ? 'Alarma de frío en cabina' : 'Sin latido del camión', v === 'excursion' ? 'SSCC retenido. Registre sus observaciones.' : 'Bajadas de frío bloqueadas.', 'error'); } else write('coldObs', []); draw(); }));
         $('#co-f', host) && ($('#co-f', host).onsubmit = (ev) => { ev.preventDefault(); const t = $('#co-o', host).value.trim(); if (!t) { L.toast('Escriba lo que observó', 'La observación es obligatoria para Calidad.', 'error'); $('#co-o', host).focus(); return; } const at = new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' }); write('coldObs', [{ t, at, cola: !L.online() }, ...read('coldObs', [])]); if (!L.online()) setQueue([...queue(), { t: 'Observación de frío', icon: 'thermo', uuid: 'obs-' + Math.random().toString(16).slice(2, 8), at }]); L.logAudit('Creación', 'Cadena de frío', `Observación del conductor sobre excursión en SSCC 0078012345000001255: ${t}`, 'App móvil'); L.toast('Observación enviada a Calidad', L.online() ? 'Calidad decide liberar, bloquear o rechazar.' : 'Guardada en el dispositivo; se enviará al reconectar.', 'success'); draw(); });
         $('[data-nav]', host) && ($('[data-nav]', host).onclick = () => L.toast(L.online() ? 'Navegación iniciada' : 'Mapa precargado', L.online() ? 'ETA 6 min · 2,1 km' : 'Sin recálculo en línea: siga la secuencia precargada.', 'info'));

@@ -164,10 +164,13 @@ hr { border: 0; border-top: 1px solid var(--c-line-soft); margin: var(--sp-5) 0;
 .public-top { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; gap: var(--sp-4); padding: var(--sp-3) var(--sp-6); background: color-mix(in srgb, var(--c-surface) 94%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--c-line-soft); }
 .public-top .brand { display: flex; align-items: center; gap: var(--sp-3); text-decoration: none; color: var(--c-ink); }
 .public-top .brand-sub { color: var(--c-gray); }
+.public-top .menu-toggle { display: none; }
 .public-nav { display: flex; gap: var(--sp-1); margin-left: var(--sp-5); }
 .public-nav a { display: inline-flex; align-items: center; min-height: var(--target); padding: 0 var(--sp-3); border-radius: var(--radius-sm); text-decoration: none; color: var(--c-gray); font-weight: 500; }
 .public-nav a:hover, .public-nav a[aria-current="page"] { color: var(--c-ink); background: var(--c-bg); }
 .public-main { max-width: 1200px; margin: 0 auto; padding: var(--sp-6) var(--sp-6) var(--sp-8); }
+.public-hero { grid-template-columns: minmax(0, 1fr); align-items: center; gap: var(--sp-7); padding: var(--sp-6) 0; }
+@media (min-width: 1024px) { .public-hero { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); } }
 .public-foot { border-top: 1px solid var(--c-line-soft); padding: var(--sp-6); color: var(--c-gray); font-size: var(--fs-sm); text-align: center; }
 
 .auth-wrap { min-height: calc(100vh - 140px); display: grid; place-items: center; padding: var(--sp-5) 0; }
@@ -188,16 +191,17 @@ hr { border: 0; border-top: 1px solid var(--c-line-soft); margin: var(--sp-5) 0;
   .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-@media (max-width: 1023px) {
+@media (width < 1024px) {
   .app { grid-template-columns: minmax(0, 1fr); grid-template-areas: "top" "main"; }
   .sidebar {
     position: fixed; inset: 0 auto 0 0; z-index: 60;
     width: min(86vw, 320px);
     transform: translateX(-100%);
-    transition: transform var(--dur) var(--ease);
+    visibility: hidden;
+    transition: transform var(--dur) var(--ease), visibility 0s var(--dur);
     box-shadow: var(--shadow-3);
   }
-  .app.nav-open .sidebar { transform: none; }
+  .app.nav-open .sidebar { transform: none; visibility: visible; transition-delay: 0s; }
   .app.nav-open .scrim { display: block; position: fixed; inset: 0; z-index: 55; background: var(--c-overlay); }
   .menu-toggle { display: inline-flex; }
   .hide-md { display: none !important; }
@@ -205,7 +209,14 @@ hr { border: 0; border-top: 1px solid var(--c-line-soft); margin: var(--sp-5) 0;
   .topbar { padding: 0 var(--sp-4); }
   .split { grid-template-columns: minmax(0, 1fr); }
   .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .public-top .menu-toggle { display: inline-flex; }
   .public-nav { display: none; }
+  .public-nav-open .public-nav {
+    display: flex; flex-direction: column; position: absolute; inset: 100% var(--sp-4) auto auto;
+    width: min(280px, calc(100% - 2 * var(--sp-4))); margin: 0; padding: var(--sp-2);
+    background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius);
+    box-shadow: var(--shadow-2); max-height: 70vh; overflow: auto;
+  }
   .public-top { padding: var(--sp-3) var(--sp-4); }
   .public-main { padding: var(--sp-5) var(--sp-4) var(--sp-8); }
 }
@@ -285,3 +296,10 @@ hr { border: 0; border-top: 1px solid var(--c-line-soft); margin: var(--sp-5) 0;
 #me-name { max-width: 180px; min-width: 0; }
 #me-name > * { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 @media (max-width: 1279px) { #me-name { max-width: 120px; } }
+
+/* Cabecera pública en teléfono: con el botón de menú, la marca conserva su nombre completo */
+@media (width < 480px) {
+  .public-top { gap: var(--sp-2); }
+  .public-top .brand-sub { display: none; }
+  .public-top .brand-name { flex: none; overflow: visible; }
+}

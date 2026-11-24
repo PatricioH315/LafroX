@@ -78,7 +78,7 @@
       ${L.tabsHtml('rt', [{ id: 'hoy', label: 'En ejecución hoy', count: D.rutas.length }, { id: 'manana', label: 'Plan de mañana' }], 'hoy')}
       <div ${L.panelAttrs('rt', 'hoy', 'hoy')}><div class="grid grid-auto">${D.rutas.map((r) => `<a class="card card-link" href="#/rutas/${r.id}"><div class="row-between"><strong>${r.id} · ${esc(r.zona)}</strong>${L.badge(r.estado, r.estado === 'Completada' ? 'success' : r.estado === 'En ruta' ? 'accent' : '')}</div><p class="small muted" style="margin:4px 0 12px">${esc(r.conductor)} · ${esc(r.camion)} ${r.frio ? '· frío' : ''}${r.externo ? ' · ' + esc(r.transportista) : ''}</p><div class="row-between small"><span>Entregas</span><span class="num">${r.hechas}/${r.paradas}</span></div><div class="progress"><span style="width:${(r.hechas / r.paradas) * 100}%"></span></div><div class="row-between small" style="margin-top:8px"><span>Ocupación</span><span class="num">${r.ocupacion} %</span></div><div class="progress dark"><span style="width:${r.ocupacion}%"></span></div>${r.desvio ? `<p class="small" style="color:var(--c-danger);margin:8px 0 0">${icon('alert', 'icon-sm')} Desvío de 3,4 km</p>` : ''}</a>`).join('')}</div></div>
       <div ${L.panelAttrs('rt', 'manana', 'hoy')}><div class="card" id="rt-plan">${L.empty('truck', 'El plan de mañana aún no se genera', L.can('ruta.planificar') ? 'Genere la propuesta: el motor asigna los pedidos confirmados respetando capacidad, frío y ventanas, y usted la corrige antes de aprobar.' : 'Lo genera y aprueba el Planificador de Rutas.', L.can('ruta.planificar') ? `<button type="button" class="btn btn-primary" data-gen>${icon('zap')}Generar plan</button>` : '')}</div></div>`,
-    mount: (root) => {
+    mount: (root, _params, query = {}) => {
       const tabs = L.tabs($('.tabs', root));
       // Plan occupancy: R-10 stays under the 70 % minimum until it is consolidated (RNG-14)
       let consolidatedPlan = false;
@@ -108,6 +108,8 @@
       };
       if ($('#rt-gen', root)) $('#rt-gen', root).onclick = (e) => gen(e.currentTarget);
       root.addEventListener('click', (e) => { if (e.target.closest('[data-gen]')) gen(); });
+      // RT-25.01: the planner's home card opens the proposal already generated, ready to review and approve
+      if (query.plan === 'propuesta' && L.can('ruta.planificar')) gen();
     }
   });
 

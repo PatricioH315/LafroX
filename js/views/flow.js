@@ -542,6 +542,17 @@
     }
   });
 
+  L.closedStop = (onClosed, fromStop = false) => L.modal({
+    title: 'Registrar local cerrado', icon: 'warning:door',
+    body: `<p class="muted">Se registra el intento con hora y ubicación. El sistema reprograma a la próxima ventana compatible.</p>
+      <div class="field"><label for="lc-c">Causa <span class="req" aria-hidden="true">*</span></label><select id="lc-c" class="select"><option value="">Seleccione…</option><option ${fromStop ? 'selected' : ''}>Local cerrado</option><option>Sin persona para recibir</option><option>Dirección no encontrada</option><option>Cliente rechaza recibir</option></select></div>
+      <div class="field" style="margin-top:12px"><span class="label" style="font-weight:600;font-size:var(--fs-sm)">Foto de evidencia <span class="req" aria-hidden="true">*</span></span><div class="dropzone" id="lc-ph" style="min-height:90px">${icon('camera')}<span>Foto de la fachada</span></div><button type="button" class="btn btn-tertiary btn-sm" id="lc-fake">Usar foto de ejemplo</button></div>
+      <div class="field" style="margin-top:12px"><label for="lc-o">Observación</label><input id="lc-o" class="input" placeholder="Ej.: cortina abajo, vecino indica que abre a las 11:00"></div>
+      <div class="small muted" style="margin-top:12px">${icon('clock', 'icon-sm')} ${nowTime()} · GPS −35,9672, −72,3221</div><div id="lc-err" style="margin-top:8px"></div>`,
+    onOpen: (dlg) => { L.bindField($('#lc-c', dlg), ['required']); const z = L.dropzone($('#lc-ph', dlg), { accept: 'image/*', multiple: false }); dlg._z = z; $('#lc-fake', dlg).onclick = async () => z.add([await L.fakeFile('fachada.png')]); },
+    actions: [{ label: 'Cancelar' }, { label: 'Registrar intento fallido', cls: 'btn-primary', onClick: async (api) => { const ok = L.validateAll(api.el); if (!api.el._z.files.length) { $('#lc-err', api.el).innerHTML = L.alert('danger', 'Falta la foto de evidencia', 'Tome o adjunte una foto antes de registrar.'); return false; } if (!ok) return false; const cause = $('#lc-c', api.el).value; L.toast('Intento registrado', 'Entrega reprogramada a la próxima ventana compatible.', 'warning'); setTimeout(() => onClosed?.({ cause }), 50); } }]
+  });
+
   /* ---------- Componente de entrega reutilizable (flujo y app de terreno) ---------- */
   L.delivery = (host, { stop, lines, onDone, onClosed, allowClosed = true, compact = false }) => {
     // RF-06.06: arrival time is recorded when the delivery screen opens, completion time when it is confirmed
@@ -609,16 +620,7 @@
     $h('[data-qr-ok]').onclick = (e) => L.busy(e.currentTarget, () => { st.signed = true; L.toast('Recepción confirmada por QR', 'El cliente validó desde su teléfono.', 'success'); }, 900);
     const dz = L.dropzone($h('#dl-photo'), { accept: 'image/*', multiple: false, maxMB: 8, onChange: (f) => (st.photo = f.length > 0) });
     $h('[data-photo-fake]').onclick = async () => dz.add([await L.fakeFile('entrega.png')]);
-    if (allowClosed) $h('[data-closed]').onclick = () => L.modal({
-      title: 'Registrar local cerrado', icon: 'warning:door',
-      body: `<p class="muted">Se registra el intento con hora y ubicación. El sistema reprograma a la próxima ventana compatible.</p>
-        <div class="field"><label for="lc-c">Causa <span class="req" aria-hidden="true">*</span></label><select id="lc-c" class="select"><option value="">Seleccione…</option><option>Local cerrado</option><option>Sin persona para recibir</option><option>Dirección no encontrada</option><option>Cliente rechaza recibir</option></select></div>
-        <div class="field" style="margin-top:12px"><span class="label" style="font-weight:600;font-size:var(--fs-sm)">Foto de evidencia <span class="req" aria-hidden="true">*</span></span><div class="dropzone" id="lc-ph" style="min-height:90px">${icon('camera')}<span>Foto de la fachada</span></div><button type="button" class="btn btn-tertiary btn-sm" id="lc-fake">Usar foto de ejemplo</button></div>
-        <div class="field" style="margin-top:12px"><label for="lc-o">Observación</label><input id="lc-o" class="input" placeholder="Ej.: cortina abajo, vecino indica que abre a las 11:00"></div>
-        <div class="small muted" style="margin-top:12px">${icon('clock', 'icon-sm')} ${nowTime()} · GPS −35,9672, −72,3221</div><div id="lc-err" style="margin-top:8px"></div>`,
-      onOpen: (dlg) => { L.bindField($('#lc-c', dlg), ['required']); const z = L.dropzone($('#lc-ph', dlg), { accept: 'image/*', multiple: false }); dlg._z = z; $('#lc-fake', dlg).onclick = async () => z.add([await L.fakeFile('fachada.png')]); },
-      actions: [{ label: 'Cancelar' }, { label: 'Registrar intento fallido', cls: 'btn-primary', onClick: async (api) => { const ok = L.validateAll(api.el); if (!api.el._z.files.length) { $('#lc-err', api.el).innerHTML = L.alert('danger', 'Falta la foto de evidencia', 'Tome o adjunte una foto antes de registrar.'); return false; } if (!ok) return false; const cause = $('#lc-c', api.el).value; L.toast('Intento registrado', 'Entrega reprogramada a la próxima ventana compatible.', 'warning'); setTimeout(() => onClosed?.({ cause }), 50); } }]
-    });
+    if (allowClosed) $h('[data-closed]').onclick = () => L.closedStop(onClosed);
     $h('[data-confirm]').onclick = (e) => {
       const errs = [];
       const partial = st.qty.some((q, k) => q < lines[k].cant);

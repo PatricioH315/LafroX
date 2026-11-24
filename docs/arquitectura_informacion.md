@@ -1,6 +1,6 @@
 # Arquitectura de información del prototipo
 
-Entregable del RT-25.09 (Bases Técnicas Transversales, cap. 25.5). Describe las 52 pantallas navegables del prototipo de Distribuidora Puelche: mapa del sitio, diagrama de navegación, taxonomía y nomenclatura, estructura de menús y jerarquía de la información.
+Entregable del RT-25.09 (Bases Técnicas Transversales, cap. 25.5). Describe las 53 pantallas navegables del prototipo de Distribuidora Puelche: mapa del sitio, diagrama de navegación, taxonomía y nomenclatura, estructura de menús y jerarquía de la información.
 
 Los datos salen del registro de rutas del prototipo (`js/router.js` y las vistas en `js/views/`), el mismo que arma el menú. Si cambia una ruta, este documento debe actualizarse.
 
@@ -8,7 +8,7 @@ Los datos salen del registro de rutas del prototipo (`js/router.js` y las vistas
 
 | Elemento | Valor |
 |---|---|
-| Pantallas navegables | 49 (8 públicas y 41 con sesión) |
+| Pantallas navegables | 53 (8 públicas y 45 con sesión) |
 | Grupos del menú principal | 7 |
 | Perfiles de demostración | 16 (15 actores de SD3 y uno de evaluación) |
 | Niveles de profundidad | 5 (sitio público, inicio, módulo, detalle, acción) |
@@ -79,6 +79,7 @@ Clientes y canales
 ├── Mis entregas (portal) ................. /portal/entregas
 ├── Estado de cuenta (portal) ............. /portal/cuenta
 ├── Portal de transportistas .............. /portal/transportista
+├── Asignaciones de turno (despacho) ...... /despacho/asignaciones
 └── Portal de proveedores ................. /portal/proveedor
 
 Analítica
@@ -224,21 +225,21 @@ Cada perfil ve solo lo que su rol permite (RF-15.04). Todos tienen además Inici
 | Perfil | Interfaz | Entradas del menú |
 |---|---|---|
 | Comisión evaluadora | Todas las interfaces | Todas |
-| Gerente de Operaciones | Consola operacional | Tablero, Bandeja, Pedidos, Flujo, Rutas, Preparación, Reparto, Rendición, Inventario, Recepción, Devoluciones, Clientes, Analítica, Calidad, Telemetría |
-| Planificador de Rutas | Consola de planificación | Tablero, Bandeja, Rutas, Pedidos, Flujo, Telemetría, Clientes, Analítica |
-| Preventista | App de preventa | Preventa en terreno, Pedidos, Clientes, Bandeja |
-| Conductor propio | App de reparto | Reparto en terreno, Devoluciones, Rendición, Bandeja |
-| Conductor externo | App de reparto con credencial de turno | Reparto en terreno, Devoluciones, Rendición, Bandeja |
-| Preparador | App de bodega | Preparación, Recepción, Bandeja |
-| Jefa de Bodega | Consola de bodega | Tablero, Bandeja, Recepción, Inventario, Preparación, Devoluciones, Flujo, Analítica |
-| Jefa de Calidad | Consola de Calidad | Tablero, Bandeja, Calidad, Telemetría, Inventario, Devoluciones, Analítica |
-| Gerente Comercial | Consola comercial | Tablero, Bandeja, Clientes, Pedidos, Canal moderno, Analítica |
-| Gerente de Finanzas | Consola financiera | Tablero, Bandeja, Rendición, Clientes, Devoluciones, Analítica |
-| Jefe de TI | Consola de administración | Tablero, Bandeja, Personas usuarias, Roles, Parámetros, Auditoría, Analítica |
-| Cliente del canal tradicional | Portal de clientes | Hacer un pedido, Mis entregas, Estado de cuenta, Bandeja |
-| Cliente del canal moderno | Portal de clientes y EDI | Hacer un pedido, Mis entregas, Estado de cuenta, Bandeja |
-| Empresa transportista | Portal de transportistas | Portal de transportistas, Bandeja |
-| Proveedor | Portal de proveedores | Portal de proveedores, Bandeja |
+| Gerente de Operaciones | Consola operacional | Tablero, Bandeja de tareas, Pedidos, Flujo de pedido, Rutas, Asignaciones de turno, Preparación, Inventario, Devoluciones y envases, Tablero analítico, Telemetría y frío, Roles y permisos |
+| Planificador de Rutas | Consola de planificación | Tablero, Bandeja de tareas, Rutas, Pedidos, Flujo de pedido, Telemetría y frío, Clientes, Tablero analítico |
+| Preventista | App de preventa | Preventa en terreno, Pedidos, Flujo de pedido, Clientes, Bandeja de tareas |
+| Conductor propio | App de reparto | Reparto en terreno, Devoluciones y envases, Cobranza y rendición, Bandeja de tareas |
+| Conductor externo | App de reparto con credencial de turno | Reparto en terreno, Devoluciones y envases, Cobranza y rendición, Bandeja de tareas |
+| Preparador | App de bodega | Preparación, Flujo de pedido, Recepción, Bandeja de tareas |
+| Jefa de Bodega | Consola de bodega | Tablero, Bandeja de tareas, Recepción, Inventario, Preparación, Devoluciones y envases, Flujo de pedido |
+| Jefa de Calidad | Consola de Calidad | Tablero, Bandeja de tareas, Calidad y trazabilidad, Telemetría y frío, Inventario, Devoluciones y envases, Tablero analítico |
+| Gerente Comercial | Consola comercial | Tablero, Bandeja de tareas, Clientes, Pedidos, Canal moderno EDI, Tablero analítico, Parámetros |
+| Gerente de Finanzas | Consola financiera | Tablero, Bandeja de tareas, Cobranza y rendición, Flujo de pedido, Clientes, Devoluciones y envases, Tablero analítico, Parámetros |
+| Jefe de TI | Consola de administración | Tablero, Bandeja de tareas, Personas usuarias, Roles y permisos, Parámetros, Flujos de aprobación, Integraciones y monitoreo, Auditoría, Tablero analítico |
+| Cliente del canal tradicional | Portal de clientes | Hacer un pedido, Mis entregas, Estado de cuenta, Bandeja de tareas |
+| Cliente del canal moderno | Portal de clientes y EDI | Hacer un pedido, Mis entregas, Estado de cuenta, Bandeja de tareas |
+| Empresa transportista | Portal de transportistas | Portal de transportistas, Bandeja de tareas |
+| Proveedor | Portal de proveedores | Portal de proveedores, Bandeja de tareas |
 
 ---
 
@@ -273,8 +274,8 @@ Camino más corto desde el inicio de cada perfil hasta su función principal.
 | Perfil | Función principal | Camino | Interacciones |
 |---|---|---|---|
 | Preventista | Tomar un pedido sin señal | Inicio → «Tomar un pedido» → «Guardar sin conexión» | 2 |
-| Conductor | Registrar local cerrado | Inicio → «Iniciar mi ruta» → parada → «Local cerrado» | 3 |
-| Planificador | Aprobar el plan de mañana | Inicio → «Revisar ruta propuesta» → «Aprobar plan» | 3 |
+| Conductor | Registrar local cerrado | «Iniciar mi ruta» → parada → «Local cerrado» | 3 |
+| Planificador | Aprobar el plan de mañana | «Revisar ruta propuesta» (abre la propuesta ya generada) → «Consolidar con la ruta vecina» → «Aprobar plan» | 3 |
 | Jefa de Calidad | Iniciar retiro sanitario | Inicio → «Simulacro de retiro» → «Iniciar retiro» | 2 |
 | Jefa de Bodega | Registrar recepción | «Nuevo» → «Registrar recepción» | 2 |
 | Gerencia | Ver OTIF por ruta | Inicio → tarjeta OTIF | 1 |

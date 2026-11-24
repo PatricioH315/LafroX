@@ -27,6 +27,7 @@
   --c-warning: #8a5a00;
   --c-warning-soft: #fbf1dc;
   --c-danger: #b3261e;
+  --c-danger-ink: #ffffff;
   --c-danger-soft: #fbe9e7;
   --c-info: #1d5fa8;
   --c-info-soft: #e7eff9;
@@ -108,6 +109,7 @@
     --c-warning: #f0c060;
     --c-warning-soft: #3a2d12;
     --c-danger: #ff8a80;
+    --c-danger-ink: #111111;
     --c-danger-soft: #3d1a17;
     --c-info: #8ab8f0;
     --c-info-soft: #172a40;
@@ -143,6 +145,7 @@
   --c-warning: #f0c060;
   --c-warning-soft: #3a2d12;
   --c-danger: #ff8a80;
+  --c-danger-ink: #111111;
   --c-danger-soft: #3d1a17;
   --c-info: #8ab8f0;
   --c-info-soft: #172a40;

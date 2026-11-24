@@ -5,7 +5,7 @@
   L.route('/', {
     title: 'Inicio público', layout: 'public', block: 'Portal principal', module: 'Portal público', rf: ['RF-12.14', 'RF-17.13'], actors: ['Visitante', 'Cliente'],
     render: () => `
-      <section class="grid" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:center;gap:var(--sp-7);padding:var(--sp-6) 0" id="hero">
+      <section class="grid public-hero" id="hero">
         <div>
           <span class="page-kicker">${icon('truck', 'icon-sm')}Distribución mayorista del Maule al sur</span>
           <h1 style="font-size:var(--fs-4xl);letter-spacing:-0.01em;margin-bottom:var(--sp-4)">Su almacén abastecido, a la hora que prometimos.</h1>
@@ -41,10 +41,7 @@
       <section class="card card-accent" style="margin-top:var(--sp-7);display:flex;gap:var(--sp-5);align-items:center;flex-wrap:wrap">
         <div style="flex:1 1 320px"><h2 style="margin-bottom:4px">¿Ya es cliente o trabaja en Puelche?</h2><p class="muted" style="margin:0">Use el mismo acceso para el portal de clientes, las consolas y las aplicaciones de terreno.</p></div>
         <a class="btn btn-dark big-btn" href="#/ingresar">${icon('lock')}Ingresar a la plataforma</a>
-      </section>`,
-    mount: (root) => {
-      if (innerWidth < 1024) { const h = root.querySelector('#hero'); if (h) h.style.gridTemplateColumns = 'minmax(0,1fr)'; }
-    }
+      </section>`
   });
 
   L.route('/catalogo', {

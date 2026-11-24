@@ -45,7 +45,7 @@ No forman parte de la paleta principal; solo comunican estado y siempre van acom
 |---|---|---|
 | Éxito | `#1E7A3C` | `#6FCF8F` |
 | Advertencia | `#8A5A00` | `#F0C060` |
-| Error | `#B3261E` | `#FF8A80` |
+| Error | `#B3261E` (texto del botón: blanco) | `#FF8A80` (texto del botón: `#111111`) |
 | Información | `#1D5FA8` | `#8AB8F0` |
 
 ### 1.4 Modos
@@ -139,7 +139,7 @@ Cada componente tiene estados de reposo, posado, foco visible, activo y deshabil
 |---|---|---|
 | Acción | Botón primario, secundario y terciario; botón de ícono; botón de acción flotante; menú contextual; acciones masivas; confirmación de acciones críticas | `/pedidos`, `/terreno`, `/admin/usuarios` |
 | Formularios | Campo con validación en tiempo real, selector, casilla, opción, interruptor, fecha y hora, carga con arrastrar y soltar, autocompletado, formulario de pasos | `/registro`, `/devoluciones/nueva`, `/recepcion/nueva` |
-| Navegación | Menú lateral plegable, rastro de navegación, pestañas, acordeón, paginación, indicador de pasos, acciones rápidas | Todas las pantallas con sesión |
+| Navegación | Menú lateral plegable, menú público desplegable bajo 1024 px, rastro de navegación, pestañas, acordeón, paginación, indicador de pasos, acciones rápidas | Todas las pantallas con sesión; menú público en `/` |
 | Datos | Tabla ordenable y filtrable, tarjeta de indicador, línea de tiempo, distintivo, ayuda emergente, 8 tipos de gráfico (líneas, barras en vertical, horizontal y apiladas, circular, área, aguja, mapa de calor y dispersión) | `/analitica`, `/tablero`, `/pedidos/:id` |
 | Retroalimentación | Alertas de éxito, error, advertencia e información; modales; notificaciones emergentes; esqueletos de carga; estados vacíos ilustrados | `/flujo`, `/pedidos` con filtros sin resultados |
 

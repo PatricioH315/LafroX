@@ -31,9 +31,19 @@
   };
 
   // Estado global efímero: lo que se ingresa no persiste (25.6 no lo exige).
+  const sessionMemory = new Map();
   const store = {
-    get(k, def) { try { const v = sessionStorage.getItem('lfx.' + k); return v == null ? def : JSON.parse(v); } catch (e) { return def; } },
-    set(k, v) { try { sessionStorage.setItem('lfx.' + k, JSON.stringify(v)); } catch (e) { /* almacenamiento no disponible */ } },
+    get(k, def) {
+      try {
+        const v = sessionMemory.has(k) ? sessionMemory.get(k) : sessionStorage.getItem('lfx.' + k);
+        return v == null ? def : JSON.parse(v);
+      } catch (e) { return def; }
+    },
+    set(k, v) {
+      const value = JSON.stringify(v);
+      sessionMemory.set(k, value);
+      try { sessionStorage.setItem('lfx.' + k, value); } catch (e) { /* se conserva en memoria */ }
+    },
     pref(k, def) { try { const v = localStorage.getItem('lfx.pref.' + k); return v == null ? def : v; } catch (e) { return def; } },
     setPref(k, v) { try { localStorage.setItem('lfx.pref.' + k, v); } catch (e) { /* almacenamiento no disponible */ } }
   };
@@ -611,6 +621,7 @@
     btn.setAttribute('aria-busy', 'true');
     btn.disabled = true;
     try { await L.sleep(ms); return await fn(); }
+    catch (e) { console.error(e); L.toast('Algo no funcionó', 'Intente de nuevo en unos instantes.', 'error'); }
     finally { btn.classList.remove('is-loading'); btn.removeAttribute('aria-busy'); btn.disabled = false; }
   };
 

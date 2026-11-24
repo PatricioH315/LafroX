@@ -157,10 +157,26 @@
 
   /* ---------- Render principal ---------- */
   const app = () => $('#app');
+  let publicNavFocusPath;
+
+  function renderView(route, params, query, home) {
+    try { return route.render(params, query); }
+    catch (e) {
+      console.error(e);
+      return L.empty('box', 'No pudimos mostrar esta pantalla', 'Ocurrió un error inesperado al preparar la vista. Vuelva al inicio e intente de nuevo.', `<a class="btn btn-primary" href="#${home}">Volver al inicio</a>`);
+    }
+  }
+
+  function mountView(route, root, params, query) {
+    try { route.mount?.(root, params, query); }
+    catch (e) { console.error(e); L.toast('Algo no funcionó en esta pantalla', 'Recargue la página o vuelva al inicio.', 'error'); }
+  }
 
   L.render = (route, params, query, path) => {
     const s = L.session();
     const layout = route.layout;
+    const restorePublicNavFocus = path === publicNavFocusPath && !isDesktop();
+    publicNavFocusPath = undefined;
     document.title = `${L.titleOf(route, params)} · Puelche · LafroX`;
     if (layout === 'app') {
       if (!L.allowed(path)) {
@@ -173,11 +189,9 @@
       const main = $('#main');
       const crumbs = L.crumbs(route, params, path).filter((c, i, a) => i === a.length - 1 || L.allowed(c.path.split('?')[0]));
       const bc = route.noCrumb ? '' : `<nav class="breadcrumb" aria-label="Rastro de navegación"><ol>${crumbs.map((c, i) => (i === crumbs.length - 1 ? `<li><span aria-current="page">${esc(c.label)}</span></li>` : `<li><a href="#${c.path}">${i === 0 && c.path === '/inicio' ? icon('home', 'icon-sm') + '<span class="sr-only">' : ''}${esc(c.label)}${i === 0 && c.path === '/inicio' ? '</span>' : ''}</a></li>`)).join('')}</ol></nav>`;
-      let html;
-      try { html = route.render(params, query); }
-      catch (e) { console.error(e); html = L.empty('box', 'No pudimos mostrar esta pantalla', 'Ocurrió un error inesperado al preparar la vista. Vuelva al inicio e intente de nuevo.', '<a class="btn btn-primary" href="#/inicio">Volver al inicio</a>'); }
+      const html = renderView(route, params, query, '/inicio');
       main.innerHTML = `<div class="view view-enter">${bc}${html}</div>`;
-      try { route.mount?.(main.firstElementChild, params, query); } catch (e) { console.error(e); L.toast('Algo no funcionó en esta pantalla', 'Recargue la página o vuelva al inicio.', 'error'); }
+      mountView(route, main.firstElementChild, params, query);
       L.accordions(main);
       try { L.contextChips(main.firstElementChild, path); } catch (e) { console.error(e); }
       main.focus({ preventScroll: true });
@@ -186,10 +200,11 @@
       if (s && s.first && path === '/inicio') L.timeout(() => L.startTour(), 500);
     } else {
       app().className = 'no-shell';
-      app().innerHTML = route.layout === 'public' ? publicShell(route.render(params, query), path) : route.render(params, query);
-      route.mount?.(app(), params, query);
+      const html = renderView(route, params, query, '/');
+      app().innerHTML = layout === 'public' ? publicShell(html, path) : html;
+      mountView(route, app(), params, query);
       L.accordions(app());
-      $('#main')?.focus({ preventScroll: true });
+      ((restorePublicNavFocus && $('[data-public-menu]')) || $('#main'))?.focus({ preventScroll: true });
       window.scrollTo(0, 0);
     }
   };
@@ -200,7 +215,8 @@
     return `<a class="skip-link" href="#main">Saltar al contenido</a>
     <header class="public-top">
       <a class="brand" href="#/" aria-label="Puelche, inicio">${logo()}<span class="brand-name">Puelche<span class="brand-sub">Distribuidora · desde 1974</span></span></a>
-      <nav class="public-nav" aria-label="Sitio público">
+      <button type="button" class="btn btn-tertiary btn-icon menu-toggle" data-public-menu aria-controls="public-nav" aria-expanded="false" aria-label="Abrir menú público">${icon('menu')}</button>
+      <nav class="public-nav" id="public-nav" aria-label="Sitio público">
         ${[['/', 'Inicio'], ['/catalogo', 'Catálogo'], ['/cobertura', 'Cobertura'], ['/contacto', 'Contacto']].map(([p, l]) => `<a href="#${p}" ${p === path ? 'aria-current="page"' : ''}>${l}</a>`).join('')}
       </nav>
       <span class="public-spacer" style="flex:1"></span>
@@ -241,15 +257,8 @@
     $('[data-open-nav]').onclick = () => toggleNav(!app().classList.contains('nav-open'));
     // Desktop: fold to an icon rail and back. Phone and tablet: close the drawer.
     $('[data-fold]').onclick = () => (isDesktop() ? setCollapsed(!app().classList.contains('sidebar-collapsed')) : toggleNav(false));
+    toggleNav(false);
     setCollapsed(L.store.get('nav.collapsed', false), false);
-    // The same button swaps between sidebar (desktop) and menu (drawer) icons when the breakpoint changes
-    if (!L._bpWatch) {
-      L._bpWatch = true;
-      let wasDesktop = isDesktop();
-      const onBp = () => { const d = isDesktop(); if (d === wasDesktop || !$('[data-fold]')) return; wasDesktop = d; toggleNav(false); setCollapsed(app().classList.contains('sidebar-collapsed'), false); };
-      window.matchMedia('(min-width: 1024px)').addEventListener('change', onBp);
-      window.addEventListener('resize', onBp);
-    }
     $('[data-close-nav]').onclick = () => toggleNav(false);
     $('#nav').addEventListener('click', (e) => { if (e.target.closest('a') && !isDesktop()) toggleNav(false); });
 
@@ -282,7 +291,15 @@
     });
   }
 
-  const isDesktop = () => window.matchMedia('(min-width: 1024px)').matches;
+  const desktop = window.matchMedia('(min-width: 1024px)');
+  const isDesktop = () => desktop.matches;
+  desktop.addEventListener('change', () => {
+    if ($('[data-fold]')) {
+      toggleNav(false);
+      setCollapsed(app().classList.contains('sidebar-collapsed'), false);
+    }
+    if (isDesktop() && app().classList.contains('public-nav-open')) togglePublicNav(false);
+  });
   /* Menú completo: en escritorio se pliega hacia la izquierda y se vuelve a desplegar hacia la derecha */
   function setCollapsed(c, save = true) {
     app().classList.toggle('sidebar-collapsed', c);
@@ -303,10 +320,24 @@
   }
 
   function toggleNav(open) {
+    const toggle = $('[data-open-nav]');
+    const wasOpen = app().classList.contains('nav-open');
     app().classList.toggle('nav-open', open);
-    $('[data-open-nav]').setAttribute('aria-expanded', open);
-    $('[data-open-nav]').setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    $('#sidebar').inert = !open && !isDesktop();
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
     if (open) $('#nav a')?.focus();
+    else if (wasOpen && !isDesktop()) toggle.focus();
+  }
+
+  function togglePublicNav(open) {
+    const toggle = $('[data-public-menu]');
+    app().classList.toggle('public-nav-open', open);
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Cerrar menú público' : 'Abrir menú público');
+    toggle.innerHTML = icon(open ? 'x' : 'menu');
+    if (open) $('#public-nav a')?.focus();
+    else if (!isDesktop()) toggle.focus();
   }
 
   function updateShell(path) {
@@ -437,6 +468,7 @@
   document.addEventListener('keydown', (e) => {
     const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || document.activeElement.isContentEditable;
     if (e.key === 'Escape' && app().classList.contains('nav-open')) toggleNav(false);
+    if (e.key === 'Escape' && app().classList.contains('public-nav-open')) togglePublicNav(false);
     if (typing || e.ctrlKey || e.metaKey || e.altKey || L.store.pref('shortcuts', 'on') === 'off' || !L.me() || document.querySelector('[role="dialog"][aria-modal="true"]')) return;
     if (e.key === '/' && $('#gsearch')) { e.preventDefault(); $('#gsearch').focus(); return; }
     if (e.key === '?') { e.preventDefault(); L.showShortcuts(); return; }
@@ -455,10 +487,33 @@
   });
 
   const guardLinks = () => { if (!L.me() || !app()?.classList.contains('app')) return; document.querySelectorAll('a[href^="#/"]').forEach((a) => { const p = a.getAttribute('href').slice(1).split('?')[0]; const ok = L.allowed(p); if (a.hidden !== !ok) a.hidden = !ok; }); };
+  // WCAG 2.1.1: a region that scrolls horizontally must be reachable by keyboard
+  function markScrollables() {
+    document.querySelectorAll('.table-wrap, .stepper').forEach((el) => {
+      const scrolls = el.scrollWidth > el.clientWidth + 1;
+      if (scrolls && !el.hasAttribute('tabindex')) {
+        el.tabIndex = 0; el.dataset.scrollFocus = '1';
+        if (el.classList.contains('table-wrap') && !el.hasAttribute('aria-label')) { el.setAttribute('role', 'region'); el.setAttribute('aria-label', 'Tabla con desplazamiento horizontal'); }
+      } else if (!scrolls && el.dataset.scrollFocus) {
+        el.removeAttribute('tabindex'); delete el.dataset.scrollFocus;
+        if (el.getAttribute('aria-label') === 'Tabla con desplazamiento horizontal') { el.removeAttribute('role'); el.removeAttribute('aria-label'); }
+      }
+    });
+  }
   let guardRaf = 0;
-  new MutationObserver(() => { if (!guardRaf) guardRaf = setTimeout(() => { guardRaf = 0; guardLinks(); }, 0); }).observe(document.body, { childList: true, subtree: true });
+  new MutationObserver(() => { if (!guardRaf) guardRaf = setTimeout(() => { guardRaf = 0; guardLinks(); markScrollables(); }, 0); }).observe(document.body, { childList: true, subtree: true });
+  window.addEventListener('resize', () => { clearTimeout(markScrollables.t); markScrollables.t = setTimeout(markScrollables, 150); });
 
   document.addEventListener('click', (event) => {
+    const publicOpen = app().classList.contains('public-nav-open');
+    if (event.target.closest('[data-public-menu]')) togglePublicNav(!publicOpen);
+    else if (publicOpen) {
+      const link = event.target.closest('#public-nav a');
+      if (link && link.hash !== location.hash && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) {
+        publicNavFocusPath = link.hash.slice(1);
+      }
+      if (link || !event.target.closest('#public-nav')) togglePublicNav(false);
+    }
     if (!event.target.closest('.skip-link')) return;
     const main = $('#main');
     if (!main) return;

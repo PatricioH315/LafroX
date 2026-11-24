@@ -2,7 +2,7 @@
 
 Prototipo navegable de alta fidelidad de la plataforma logística que LafroX propone para Distribuidora Puelche S.A. (Caso 02 Logística). Responde al capítulo 25 de las Bases Técnicas Transversales y se entrega junto con el Informe 3.
 
-- 52 pantallas de demostración de los nueve bloques del numeral 25.2. La presencia de una pantalla no acredita la aceptación del requisito.
+- 53 pantallas de demostración de los nueve bloques del numeral 25.2. La presencia de una pantalla no acredita la aceptación del requisito.
 - Cada pantalla declara su módulo de SD4 (M1–M12), sus requerimientos de SD3 y sus actores. La documentación de cumplimiento está en `docs/` y no se publica en el sitio.
 - Datos simulados; nada se envía a un servidor ni se guarda de forma permanente.
 
@@ -49,7 +49,7 @@ docs/                 Trazabilidad y cumplimiento
 
 Enlace en línea: https://patricioh315.github.io/LafroX/ (GitHub Pages, publicado el 04-11-2026).
 
-El sitio es estático, por lo que puede publicarse en GitHub Pages desde la rama `LafroX-Prototipo-HTML` (Settings → Pages → Deploy from a branch → raíz). El enlace no vence mientras exista el repositorio, lo que cubre los seis meses exigidos. Las tipografías se cargan desde Google Fonts; si no están disponibles, la interfaz usa las fuentes del sistema sin perder funciones.
+El sitio es estático, por lo que puede publicarse en GitHub Pages desde la rama `LafroX-Prototipo-HTML` (Settings → Pages → Deploy from a branch → raíz). LafroX se compromete a mantener el enlace disponible al menos seis meses desde la entrega de la Propuesta Final (25-11-2026), es decir, como mínimo hasta el 25-05-2027. Responsable: Líder de Desarrollo. Las tipografías se cargan desde Google Fonts; si no están disponibles, la interfaz usa las fuentes del sistema sin perder funciones.
 
 ## Funciones de demostración (Prioridad 3)
 

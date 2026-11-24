@@ -15,15 +15,19 @@
   };
 
   const parse = () => {
-    const raw = decodeURIComponent(location.hash.replace(/^#/, '')) || '/';
+    const hash = location.hash.slice(1);
+    let raw;
+    try { raw = decodeURIComponent(hash) || '/'; }
+    catch (e) { return notFound(hash); }
     const [path, qs] = raw.split('?');
     const query = Object.fromEntries(new URLSearchParams(qs || ''));
     for (const r of L.routes) {
       const m = path.match(r.re);
       if (m) return { route: r, params: Object.fromEntries(r.keys.map((k, i) => [k, m[i + 1]])), query, path };
     }
-    return { route: L.routes.find((r) => r.path === '*'), params: {}, query, path };
+    return notFound(path);
   };
+  const notFound = (path) => ({ route: L.routes.find((r) => r.path === '*'), params: {}, query: {}, path });
 
   L.titleOf = (r, params = {}) => (typeof r.title === 'function' ? r.title(params) : r.title);
   L.findRoute = (path) => L.routes.find((r) => r.re.test(path));

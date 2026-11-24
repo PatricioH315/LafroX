@@ -17,16 +17,15 @@
 .btn:disabled, .btn[aria-disabled="true"] { opacity: 0.45; cursor: not-allowed; }
 
 .btn-primary { background: var(--c-accent); color: var(--c-accent-ink); }
-@media (hover: hover) { .btn-primary:hover:not(:disabled) { background: color-mix(in srgb, var(--c-accent) 88%, #000); box-shadow: var(--shadow-1); } }
+@media (hover: hover) { .btn-primary:hover:not(:disabled) { background: color-mix(in srgb, var(--c-accent) 92%, #000); box-shadow: var(--shadow-1); } }
 .btn-secondary { background: var(--c-surface); color: var(--c-ink); border-color: var(--c-line-strong); }
 @media (hover: hover) { .btn-secondary:hover:not(:disabled) { border-color: var(--c-ink); background: var(--c-surface-2); } }
 .btn-tertiary { background: transparent; color: var(--c-ink); padding: 0 var(--sp-3); }
 @media (hover: hover) { .btn-tertiary:hover:not(:disabled) { background: color-mix(in srgb, var(--c-ink) 7%, transparent); } }
 .btn-dark { background: var(--c-ink); color: var(--c-surface); }
 @media (hover: hover) { .btn-dark:hover:not(:disabled) { background: color-mix(in srgb, var(--c-ink) 85%, var(--c-surface)); } }
-.btn-danger { background: var(--c-danger); color: #fff; }
+.btn-danger { background: var(--c-danger); color: var(--c-danger-ink); }
 @media (hover: hover) { .btn-danger:hover:not(:disabled) { background: color-mix(in srgb, var(--c-danger) 85%, #000); } }
-:root[data-theme="dark"] .btn-danger { color: #111; }
 .btn-icon { padding: 0; width: var(--target); }
 .btn-label { display: none; }
 @media (min-width: 1280px) {
@@ -459,7 +458,9 @@ kbd { font-family: var(--font-mono); font-size: 12px; padding: 1px 6px; border: 
 .chart .axis { stroke: var(--c-line); }
 .chart .grid-line { stroke: var(--c-line-soft); }
 .chart .clickable { cursor: pointer; }
-.chart .clickable:hover, .chart .clickable:focus { opacity: 0.8; outline: none; }
+.chart .clickable:hover { opacity: 0.8; }
+.chart [tabindex]:focus-visible { outline: 3px solid var(--c-ink); outline-offset: 2px; }
+.chart .scatter-hit { cursor: pointer; fill: transparent; stroke: transparent; stroke-width: 44px; pointer-events: all; }
 .chart-tip { position: fixed; z-index: 120; pointer-events: none; padding: 6px 10px; border-radius: 6px; background: var(--c-ink); color: var(--c-surface); font-size: var(--fs-xs); box-shadow: var(--shadow-2); transform: translate(-50%, calc(-100% - 10px)); white-space: nowrap; }
 
 /* Mapa del sitio */

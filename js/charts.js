@@ -6,7 +6,8 @@
   const esc = (s) => L.esc(s);
   const nice = (max) => { if (max <= 0) return 1; const p = Math.pow(10, Math.floor(Math.log10(max))); const n = max / p; return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * p; };
   const fmtV = (v, unit = '') => (unit === '%' ? L.fmt.pct(v) : unit === '$' ? L.fmt.clp(v) : L.fmt.n(v, v % 1 ? 1 : 0) + (unit ? ' ' + unit : ''));
-  const svg = (w, h, label, inner, style = '') => `<svg class="chart" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(label)}" preserveAspectRatio="xMidYMid meet" ${style ? `style="${style}"` : ''}><title>${esc(label)}</title>${inner}</svg>`;
+  // A chart with focusable drill-down elements is a group, not an image (WCAG: no nested interactive content)
+  const svg = (w, h, label, inner, style = '', role = /tabindex="0"/.test(inner) ? 'group' : 'img') => `<svg class="chart" viewBox="0 0 ${w} ${h}" role="${role}" aria-label="${esc(label)}" preserveAspectRatio="xMidYMid meet" ${style ? `style="${style}"` : ''}><title>${esc(label)}</title>${inner}</svg>`;
 
   // Tooltip compartido para todos los gráficos
   let tipEl;
@@ -164,9 +165,12 @@
         g += `<text x="${x((mxX / 4) * i)}" y="${h - pad.b + 18}" text-anchor="middle">${fmtV((mxX / 4) * i, xUnit)}</text>`;
       }
       if (quadrants) g += `<line x1="${x(quadrants.x)}" x2="${x(quadrants.x)}" y1="${pad.t}" y2="${h - pad.b}" stroke="var(--c-ink)" stroke-dasharray="4 4"/><line x1="${pad.l}" x2="${w - pad.r}" y1="${y(quadrants.y)}" y2="${y(quadrants.y)}" stroke="var(--c-ink)" stroke-dasharray="4 4"/>`;
+      const clickable = points.filter((p) => p.drill);
+      // El trazo no escala; los puntos visibles quedan encima de las áreas táctiles superpuestas.
+      clickable.forEach((p) => (g += `<rect class="scatter-hit" x="${x(p.x) - 0.5}" y="${y(p.y) - 0.5}" width="1" height="1" vector-effect="non-scaling-stroke" data-drill="${esc(p.drill)}" aria-hidden="true"/>`));
       points.forEach((p) => (g += `<circle cx="${x(p.x)}" cy="${y(p.y)}" r="${p.r || 6}" fill="${p.color || C(0)}" fill-opacity="0.75" stroke="var(--c-surface)" data-tip="${esc(p.label)}: ${fmtV(p.x, xUnit)} · ${fmtV(p.y, yUnit)}" ${focusable(p.drill, p.label)}/>`));
       g += `<text x="${(pad.l + w - pad.r) / 2}" y="${h - 8}" text-anchor="middle" style="font-weight:600">${esc(xLabel)}</text><text transform="translate(14 ${(pad.t + h - pad.b) / 2}) rotate(-90)" text-anchor="middle" style="font-weight:600">${esc(yLabel)}</text>`;
-      return svg(w, h, label, g);
+      return svg(w, h, label, g, '', clickable.length ? 'group' : 'img');
     },
 
     gauge(value, { min = 0, max = 100, target, label = 'Indicador', unit = '%', w = 260 } = {}) {

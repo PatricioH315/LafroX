@@ -88,10 +88,10 @@
   const QUICK = {
     evaluador: [['activity', 'Recorrer el flujo de un pedido', '7 pasos de punta a punta', '/flujo'], ['truck', 'Ver la app de reparto', 'Perfil de terreno sin conexión', '/terreno'], ['chart', 'Abrir el tablero analítico', '7 tipos de gráfico', '/analitica']],
     'gerente-ops': [['route', 'Revisar rutas del día', '12 rutas en curso', '/rutas'], ['chart', 'OTIF de hoy', 'Profundizar hasta la entrega', '/analitica/otif'], ['alert', 'Excepciones abiertas', '3 requieren decisión', '/bandeja']],
-    planificador: [['route', 'Revisar ruta propuesta', `Plan de mañana, ${D.plan.rutas} rutas`, '/rutas'], ['thermo', 'Ver recorridos reales', 'Desvíos y telemetría', '/telemetria'], ['clipboard', 'Pedidos por planificar', 'Confirmados sin ruta', '/pedidos?estado=Confirmado']],
+    planificador: [['route', 'Revisar ruta propuesta', `Plan de mañana, ${D.plan.rutas} rutas`, '/rutas?plan=propuesta'], ['thermo', 'Ver recorridos reales', 'Desvíos y telemetría', '/telemetria'], ['clipboard', 'Pedidos por planificar', 'Confirmados sin ruta', '/pedidos?estado=Confirmado'], ['chart', 'Entregas por ruta', 'OTIF de cada ruta', '/analitica/otif']],
     preventista: [['cart', 'Tomar un pedido', 'Funciona sin señal', '/terreno/preventa'], ['store', 'Mis clientes', 'Crédito, deuda e historial', '/clientes'], ['clipboard', 'Mis pedidos', 'Estado de sincronización', '/pedidos']],
     conductor: [['truck', 'Iniciar mi ruta', '6 entregas · R-01', '/terreno'], ['undo', 'Registrar devolución', 'Producto y envases', '/devoluciones/nueva'], ['cash', 'Rendir mi turno', 'Efectivo y documentos', '/rendicion']],
-    preparador: [['scan', 'Continuar misión', 'M-3302 · 16 líneas', '/preparacion'], ['download', 'Recepción en andén', 'OC-88412 en curso', '/recepcion/nueva']],
+    preparador: [['scan', 'Continuar misión', 'M-3302 · 16 líneas', '/preparacion'], ['download', 'Recepciones del día', 'OC-88412 en curso', '/recepcion']],
     bodega: [['download', 'Recepciones del día', '3 programadas', '/recepcion'], ['warehouse', 'Inventario y FEFO', 'Ocupación por zona', '/inventario'], ['undo', 'Devoluciones por evaluar', 'Aprobar destino', '/devoluciones']],
     calidad: [['shield', 'Simulacro de retiro', 'Lote → clientes en < 2 h', '/calidad/retiro'], ['thermo', 'Excursiones térmicas', '1 crítica abierta', '/telemetria'], ['box', 'Lotes retenidos', 'Disposición sanitaria', '/calidad']],
     comercial: [['store', 'Cartera de clientes', 'Rentabilidad y riesgo', '/clientes'], ['link', 'Pedidos EDI', '3 en excepción', '/canal-moderno'], ['chart', 'Indicadores comerciales', 'OTIF y fill rate', '/analitica']],
@@ -150,8 +150,8 @@
       const t = L.myTasks();
       const tipos = [...new Set(t.map((x) => x.tipo))];
       return `<div class="page-head"><div class="titles"><h1>Bandeja de tareas</h1><p class="muted" style="margin:0">Aprobaciones, revisiones y excepciones que esperan su acción.</p></div></div>
-        ${L.tabsHtml('bt', [{ id: 'todas', label: 'Todas', count: t.length }, ...tipos.map((x) => ({ id: x, label: x, count: t.filter((y) => y.tipo === x).length }))], 'todas')}
-        <div class="card card-flush" id="bt-list"></div>`;
+        ${L.tabsHtml('bt', [{ id: 'todas', label: 'Todas', count: t.length }, ...tipos.map((x) => ({ id: x, label: x, count: t.filter((y) => y.tipo === x).length }))], 'todas').replace(/aria-controls="bt-[^"]*-p"/g, 'aria-controls="bt-list"')}
+        <div class="card card-flush" id="bt-list" role="tabpanel" aria-label="Tareas filtradas" tabindex="0"></div>`;
     },
     mount: (root) => {
       const draw = (tipo) => {

@@ -74,10 +74,10 @@ Detalle de los mínimos exigidos:
 | RT-25.01 | Navegación intuitiva, máximo tres interacciones | Tabla de caminos por perfil, accesos principales en el inicio, búsqueda global y acciones rápidas. | `docs/arquitectura_informacion.md` |
 | RT-25.02 | Retroalimentación, carga y errores | Avisos, esqueletos, botones con carga, validación en línea y errores con instrucciones. | `docs/sistema_diseno.md` |
 | RT-25.03 | WCAG 2.2 AA | Pruebas dirigidas de teclado, orden de tabla y semántica de controles. Falta acreditar conformidad integral y probar con lector de pantalla. | [Verificación actual](../revision/verificacion_2026-11-07.md) |
-| RT-25.04 | Diseño responsivo | Puntos de quiebre 375 / 768 / 1024 / 1366 / 1920; menú desplegable bajo 1024 px. | `docs/sistema_diseno.md` |
+| RT-25.04 | Diseño responsivo | Puntos de quiebre 375 / 768 / 1024 / 1366 / 1920; menú desplegable bajo 1024 px, también en el sitio público; la portada se adapta al girar la pantalla sin recargar. | `docs/sistema_diseno.md` |
 | RT-25.05 | Sistema de diseño documentado | 5 colores, 2 familias, iconografía, retícula de 8 px y componentes vivos. | `docs/sistema_diseno.md` |
 | RT-25.06 | Enlace navegable sin instalación | HTML, CSS y JavaScript estáticos, sin complementos ni compilación. | `#/` |
-| RT-25.07 | Acceso por seis meses | Publicación estática sin dependencias externas de ejecución (solo tipografías, con respaldo del sistema). | `#/` |
+| RT-25.07 | Acceso por seis meses | Publicación estática sin dependencias externas de ejecución (solo tipografías, con respaldo del sistema). LafroX mantiene el enlace al menos hasta el 25-05-2027, seis meses después de la Propuesta Final; responsable: Líder de Desarrollo. | `README.md`, sección Publicación |
 | RT-25.08 | Navegación completa e interactividad | Ingreso de datos, transiciones, posado y activo, carga de archivos, desplegables y validaciones simuladas. | `#/flujo` |
 | RT-25.09 | Arquitectura de información | Mapa del sitio, diagrama de navegación, taxonomía, menús y jerarquía. | `docs/arquitectura_informacion.md` |
 | RT-25.10 | Exportación para revisión sin conexión (deseable) | La carpeta funciona abriendo `index.html` sin servidor; se entrega en .zip. | `abrir-prototipo.bat` |
