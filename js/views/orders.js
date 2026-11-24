@@ -83,7 +83,13 @@
       // Plan occupancy: R-10 stays under the 70 % minimum until it is consolidated (RNG-14)
       let consolidatedPlan = false;
       const planOcc = (r, i) => (i === 9 ? (consolidatedPlan ? 82 : 64) : Math.max(72, Math.min(96, r.ocupacion + 8)));
+      let generating = false;
       const gen = async (btn) => {
+        if (generating) return; // one proposal run at a time (home shortcut and «Generar» share it)
+        generating = true;
+        try { await runGen(btn); } finally { generating = false; }
+      };
+      const runGen = async (btn) => {
         tabs.select('manana');
         const host = $('#rt-plan', root);
         host.innerHTML = `<div class="stack"><div class="row"><span class="spinner"></span><strong id="gp-t">Asignando ${fmt.n(D.plan.entregas)} entregas a ${D.plan.rutas} camiones…</strong></div><div class="progress"><span id="gp-b" style="width:5%"></span></div><p class="small muted" id="gp-s">Restricciones: capacidad, frío, ventanas horarias, ocupación mínima 70 % y ${L.restricciones().filter((x) => x.estado === 'Vigente').length} restricciones de ruta registradas.</p></div>`;
@@ -95,9 +101,9 @@
           <div class="row" style="justify-content:flex-end;margin-top:var(--sp-4)">${L.can('ruta.planificar') ? `<button type="button" class="btn btn-secondary" id="gp-add">${icon('plus')}Agregar pedido a una ruta</button>` : ''}<button type="button" class="btn btn-secondary" id="gp-sms">${icon('send')}Vista previa de avisos</button>${L.can('ruta.aprobar') ? `<button type="button" class="btn btn-primary" id="gp-ok">${icon('check')}Aprobar plan</button>` : '<span class="small muted">La aprobación es del Planificador de Rutas.</span>'}</div>`;
         let consolidated = false;
         $('#gp-cons', root).onclick = (e) => L.busy(e.currentTarget, () => { consolidated = true; consolidatedPlan = true;
-          // Moving 6 deliveries (520 kg) from the neighbouring route R-09 to R-10 lifts R-10 to 82 %
+          // Moving 6 deliveries (300 kg) from the neighbouring route R-09 to R-10 lifts R-10 to 82 % without exceeding 4,000 kg
           const mv = (a, b, dEnt, dKg) => { $(`[data-ent="${a}"]`, root).textContent = D.rutas[a].paradas + 2 + dEnt; $(`[data-ent="${b}"]`, root).textContent = D.rutas[b].paradas + 2 - dEnt; $(`[data-peso="${a}"]`, root).textContent = fmt.n(2800 + a * 97 + dKg) + ' kg'; $(`[data-peso="${b}"]`, root).textContent = fmt.n(2800 + b * 97 - dKg) + ' kg'; };
-          mv(9, 8, 6, 520);
+          mv(9, 8, 6, 300);
           $('[data-occ="8"]', root).textContent = planOcc(D.rutas[8], 8) - 6 + ' %';
           const avg = Math.round(D.rutas.reduce((a, r, i) => a + planOcc(r, i) - (i === 8 ? 6 : 0), 0) / D.rutas.length);
           const strong = $('#rt-plan .alert', root); if (strong) strong.innerHTML = strong.innerHTML.replace(/ocupación promedio \d+ %/, `ocupación promedio ${avg} %`);

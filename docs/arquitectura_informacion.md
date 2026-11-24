@@ -225,21 +225,21 @@ Cada perfil ve solo lo que su rol permite (RF-15.04). Todos tienen además Inici
 | Perfil | Interfaz | Entradas del menú |
 |---|---|---|
 | Comisión evaluadora | Todas las interfaces | Todas |
-| Gerente de Operaciones | Consola operacional | Tablero, Bandeja de tareas, Pedidos, Flujo de pedido, Rutas, Asignaciones de turno, Preparación, Inventario, Devoluciones y envases, Tablero analítico, Telemetría y frío, Roles y permisos |
-| Planificador de Rutas | Consola de planificación | Tablero, Bandeja de tareas, Rutas, Pedidos, Flujo de pedido, Telemetría y frío, Clientes, Tablero analítico |
-| Preventista | App de preventa | Preventa en terreno, Pedidos, Flujo de pedido, Clientes, Bandeja de tareas |
-| Conductor propio | App de reparto | Reparto en terreno, Devoluciones y envases, Cobranza y rendición, Bandeja de tareas |
-| Conductor externo | App de reparto con credencial de turno | Reparto en terreno, Devoluciones y envases, Cobranza y rendición, Bandeja de tareas |
-| Preparador | App de bodega | Preparación, Flujo de pedido, Recepción, Bandeja de tareas |
-| Jefa de Bodega | Consola de bodega | Tablero, Bandeja de tareas, Recepción, Inventario, Preparación, Devoluciones y envases, Flujo de pedido |
-| Jefa de Calidad | Consola de Calidad | Tablero, Bandeja de tareas, Calidad y trazabilidad, Telemetría y frío, Inventario, Devoluciones y envases, Tablero analítico |
-| Gerente Comercial | Consola comercial | Tablero, Bandeja de tareas, Clientes, Pedidos, Canal moderno EDI, Tablero analítico, Parámetros |
-| Gerente de Finanzas | Consola financiera | Tablero, Bandeja de tareas, Cobranza y rendición, Flujo de pedido, Clientes, Devoluciones y envases, Tablero analítico, Parámetros |
-| Jefe de TI | Consola de administración | Tablero, Bandeja de tareas, Personas usuarias, Roles y permisos, Parámetros, Flujos de aprobación, Integraciones y monitoreo, Auditoría, Tablero analítico |
-| Cliente del canal tradicional | Portal de clientes | Hacer un pedido, Mis entregas, Estado de cuenta, Bandeja de tareas |
-| Cliente del canal moderno | Portal de clientes y EDI | Hacer un pedido, Mis entregas, Estado de cuenta, Bandeja de tareas |
-| Empresa transportista | Portal de transportistas | Portal de transportistas, Bandeja de tareas |
-| Proveedor | Portal de proveedores | Portal de proveedores, Bandeja de tareas |
+| Gerente de Operaciones | Consola operacional | Guía de mi perfil, Tablero, Bandeja de tareas, Pedidos, Flujo de pedido, Rutas, Restricciones de ruta, Preparación, Inventario, Devoluciones y envases, Telemetría y frío, Tablero analítico, Roles y permisos (Asignaciones de turno desde el inicio) |
+| Planificador de Rutas | Consola de planificación | Guía de mi perfil, Tablero, Bandeja de tareas, Pedidos, Flujo de pedido, Rutas, Restricciones de ruta, Telemetría y frío, Clientes, Tablero analítico |
+| Preventista | App de preventa | Guía de mi perfil, Bandeja de tareas, Pedidos, Flujo de pedido, Preventa en terreno, Clientes |
+| Conductor propio | App de reparto | Guía de mi perfil, Bandeja de tareas, Reparto en terreno, Cobranza y rendición, Devoluciones y envases |
+| Conductor externo | App de reparto con credencial de turno | Guía de mi perfil, Bandeja de tareas, Reparto en terreno, Cobranza y rendición, Devoluciones y envases |
+| Preparador | App de bodega | Guía de mi perfil, Bandeja de tareas, Flujo de pedido, Preparación, Recepción |
+| Jefa de Bodega | Consola de bodega | Guía de mi perfil, Tablero, Bandeja de tareas, Flujo de pedido, Preparación, Recepción, Inventario, Devoluciones y envases |
+| Jefa de Calidad | Consola de Calidad | Guía de mi perfil, Tablero, Bandeja de tareas, Inventario, Devoluciones y envases, Calidad y trazabilidad, Telemetría y frío, Tablero analítico |
+| Gerente Comercial | Consola comercial | Guía de mi perfil, Tablero, Bandeja de tareas, Pedidos, Clientes, Canal moderno EDI, Tablero analítico, Parámetros |
+| Gerente de Finanzas | Consola financiera | Guía de mi perfil, Tablero, Bandeja de tareas, Flujo de pedido, Cobranza y rendición, Devoluciones y envases, Clientes, Tablero analítico, Parámetros |
+| Jefe de TI | Consola de administración | Guía de mi perfil, Tablero, Bandeja de tareas, Tablero analítico, Personas usuarias, Roles y permisos, Parámetros, Flujos de aprobación, Integraciones y monitoreo, Auditoría |
+| Cliente del canal tradicional | Portal de clientes | Guía de mi perfil, Bandeja de tareas, Hacer un pedido, Mis entregas, Estado de cuenta |
+| Cliente del canal moderno | Portal de clientes y EDI | Guía de mi perfil, Bandeja de tareas, Hacer un pedido, Mis entregas, Estado de cuenta |
+| Empresa transportista | Portal de transportistas | Guía de mi perfil, Bandeja de tareas, Portal de transportistas |
+| Proveedor | Portal de proveedores | Guía de mi perfil, Bandeja de tareas, Portal de proveedores |
 
 ---
 

@@ -39,7 +39,7 @@ Matriz de cada pantalla del prototipo con el bloque del numeral 25.2, el módulo
 | M11 | `/registro`, `/portal/transportista`, `/portal/proveedor`, `/canal-moderno` |
 | M12 | `/rutas/:id`, `/portal/transportista`, `/telemetria` |
 
-## Matriz completa (52 pantallas)
+## Matriz completa (53 pantallas)
 
 | Pantalla | Ruta | Bloque 25.2 | Módulo SD4 | RF / RNG de SD3 | Actores (SD3, Anexo 3.A.12a) |
 |---|---|---|---|---|

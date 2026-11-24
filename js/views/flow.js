@@ -489,7 +489,7 @@
         L.delivery($('#en-host', b), {
           stop, lines, allowClosed: !O.closedAttempt,
           onDone: (r) => { O.delivered = r; setState(r.partial ? 'Parcial' : 'Entregado', r.partial ? `Rechazo parcial: ${r.rejectReason}` : `Firma digital y foto · cobro ${fmt.clp(r.cash)}`); if (r.partial) O.log[0].note += ' · entregado con rechazo parcial'; entrega(b); side(); },
-          onClosed: (r) => { O.closedAttempt = true; setState('Fallido', `Local cerrado ${nowTime()} · ${r.cause}`); O.reprog = 'Lun 16-11, 09:00–09:30'; setState('Reprogramado', 'Próxima ventana compatible con ruta y conservación'); side(); entregaReprog(b); }
+          onClosed: (r) => { O.closedAttempt = true; setState('Fallido', `Local cerrado ${nowTime()} · ${r.cause}`); O.reprog = 'Lun 16-11, 09:00–09:30'; setState('Reprogramado', 'Próxima ventana compatible con ruta y conservación'); side(); entregaReprog(b); $('#en-retry', b)?.focus(); }
         });
       }
       function entregaReprog(b) {

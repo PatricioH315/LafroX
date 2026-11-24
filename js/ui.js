@@ -405,8 +405,11 @@
         const on = x === t;
         x.setAttribute('aria-selected', on);
         x.tabIndex = on ? 0 : -1;
+      });
+      // Several tabs may control one shared panel (e.g. a filtered list): show the selected tab's panel
+      tabs.forEach((x) => {
         const p = document.getElementById(x.getAttribute('aria-controls'));
-        if (p) p.hidden = !on;
+        if (p) p.hidden = p.id !== t.getAttribute('aria-controls');
       });
       if (focus) t.focus();
       onChange?.(t.dataset.tab || t.id);

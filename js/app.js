@@ -324,6 +324,8 @@
     const wasOpen = app().classList.contains('nav-open');
     app().classList.toggle('nav-open', open);
     $('#sidebar').inert = !open && !isDesktop();
+    // While the drawer is open on phone/tablet, the content behind the scrim leaves the Tab order
+    if ($('#main')) $('#main').inert = !!open && !isDesktop();
     toggle.setAttribute('aria-expanded', open);
     toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
     if (open) $('#nav a')?.focus();
@@ -501,7 +503,7 @@
     });
   }
   let guardRaf = 0;
-  new MutationObserver(() => { if (!guardRaf) guardRaf = setTimeout(() => { guardRaf = 0; guardLinks(); markScrollables(); }, 0); }).observe(document.body, { childList: true, subtree: true });
+  new MutationObserver(() => { if (!guardRaf) guardRaf = setTimeout(() => { guardRaf = 0; guardLinks(); markScrollables(); }, 0); }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['hidden'] });
   window.addEventListener('resize', () => { clearTimeout(markScrollables.t); markScrollables.t = setTimeout(markScrollables, 150); });
 
   document.addEventListener('click', (event) => {
