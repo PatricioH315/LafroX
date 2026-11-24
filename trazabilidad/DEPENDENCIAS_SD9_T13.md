@@ -62,7 +62,7 @@ El expediente debe registrar el código de verificación cuando lo emita el orga
 
 ### SD3-17 — Cuadrante B-02 de Operación
 
-El Anexo 10.D, B-02 del SD10 recoge las seis nominaciones y dedicaciones de T-8 y siete filas de cobertura por tecnología. El SD12, sección 12.1.5, aporta perfiles de suplencia. El T-15 asigna 0 HH de Operación al perfil 12S, suplente propuesto de Integración. Si se utiliza ese perfil en M21–M56, queda por conciliar su dedicación o designar otra suplencia respaldada. Los compromisos de 12.D coinciden con las dedicaciones de coordinación del T-8. El Excel de referencia, hoja «HH POR ROL Y MES», confirma 0 HH en W16:BF16 para 12S, 962 HH en W40 para Mesa M21, 1.570 HH en AH40 para Mesa M32 y 696 HH en O44 para SOC M13. Las asignaciones individuales de guardia, la fecha de confirmación y su respaldo figuran pendientes.
+El Anexo 10.D, B-02 del SD10 recoge las seis nominaciones y dedicaciones de T-8 y siete filas de cobertura por tecnología. El SD12, sección 12.1.5, aporta perfiles de suplencia. El T-15 asigna 0 HH de Operación al perfil 12S, suplente propuesto de Integración. El Anexo 10.A añade 576 HH de suplencia 12S, a razón de 16 HH por mes en M21–M56. Falta identificar a la persona asignada. En M32 la reserva C eleva Mesa a 1.840 HH y suma 50 HH al NOC. Los compromisos de 12.D coinciden con las dedicaciones de coordinación del T-8. El Excel de referencia, hoja «HH POR ROL Y MES», confirma 0 HH en W16:BF16 para 12S, 962 HH en W40 para Mesa M21, 1.570 HH en AH40 para Mesa M32 y 696 HH en O44 para SOC M13. Las asignaciones individuales de guardia, la fecha de confirmación y su respaldo figuran pendientes.
 
 **Solicitud de datos para Guillermo Castillo**
 
