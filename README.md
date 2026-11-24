@@ -1,6 +1,6 @@
 # Sobre N.° 1 — Antecedentes del Oferente
 
-El Sobre N.° 1 reúne los 23 antecedentes de los cuatro grupos del artículo 39 de las Bases Administrativas. El Formulario A-5 abre el sobre; los demás documentos siguen el orden del artículo 39, sin repetir A-5 en el grupo técnico. La foliación es única para el conjunto.
+El Sobre N.° 1 reúne los 23 antecedentes de los cuatro grupos del artículo 39 de las Bases Administrativas y la declaración jurada simple de veracidad del sitio web corporativo exigida en el capítulo 23.3 de las Bases Técnicas Transversales. El Formulario A-5 abre el sobre; los demás documentos siguen el orden del artículo 39, sin repetir A-5 en el grupo técnico. La foliación es única para el conjunto.
 
 ## Documentos incluidos
 
@@ -31,6 +31,7 @@ Las rutas siguientes identifican los PDF que integran el índice A-5. Los folios
 | 21 | Cartas compromiso de socios, subcontratistas y proveedores clave | [LAFROX-CartasCompromiso.pdf](antecedentes/4-tecnicos/20-cartas-compromiso/LAFROX-CartasCompromiso.pdf) |
 | 22 | Formulario A-6: Declaración de uso de IA generativa | [LAFROX-Formulario-A-6.pdf](LAFROX-Formulario-A-6.pdf) |
 | 23 | Certificaciones institucionales y de fabricante | [LAFROX-Certificaciones.pdf](antecedentes/4-tecnicos/23-certificaciones/LAFROX-Certificaciones.pdf) |
+| 24 | Declaración jurada simple de veracidad del sitio web corporativo | [LAFROX-DeclaracionWeb.pdf](antecedentes/4-tecnicos/24-dj-sitio-web/LAFROX-DeclaracionWeb.pdf) |
 
 ## Compilación y control de folios
 
