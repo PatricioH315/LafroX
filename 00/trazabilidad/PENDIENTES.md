@@ -156,3 +156,12 @@ PDF: cuerpo 172 páginas y anexos 156; T-11 sin cambios. El contraste de fuentes
 
 
 Pull previo a publicación (23 de noviembre de 2026): se integró 86f4732b, conservando el nuevo inventario TLS por tramo y el criterio local TLS 1.3 sin excepción automática. Se regeneró el anexo desde las fuentes combinadas para resolver el conflicto del PDF.
+
+
+## Cierre documental y asignación de recursos — 24 de noviembre de 2026
+
+Se corrigieron cuerpo y anexos para distinguir dos puestos NOC ordinarios de tres en peak; se retiró la atribución del complemento a una base T-15 que no lo contiene. La política CloudFront TLSv1.3_2025 incluye AES-128-GCM, AES-256-GCM y ChaCha20-Poly1305, con enlace a la documentación oficial.
+
+La asignación complementaria de SD10 identifica 2.010 HH Mesa, 308 HH NOC y 576 HH del perfil 12S (16 HH por mes M21--M56), por perfil/mes/paquete. La provisión de financiación se cotejó con los costos y tarifas del modelo financiero de referencia usado por SD7 y se absorbe en margen propio. No se modificó el libro económico de base ni se copiaron precios al sobre técnico. La asignación no acredita contratación; los turnos y personas se formalizan en la habilitación.
+
+CD-ERP y CD-RPO cierran su definición documental de alcance, mecanismo, mitigación, responsable y medición. Conservan los riesgos físicos y cualquier resultado no conforme: no se afirma emisión con el emisor perdido ni reconstrucción de datos cuyas copias se destruyeron. Tampoco se dispensa RT-10.05/RT-07.04 ni se suprime el efecto SLA. El perfil de corrección distingue riesgos ya declarados de omisiones documentales y prohíbe ocultar incumplimientos reales. La comprobación analítica de los límites y la conciliación monetaria interna quedan en tmp/cierre-sd4-sd10-20261124 del proyecto, fuera de los PDF técnicos.
