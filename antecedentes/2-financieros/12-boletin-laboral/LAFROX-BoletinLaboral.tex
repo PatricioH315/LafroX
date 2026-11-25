@@ -1,19 +1,20 @@
 \documentclass[11pt]{article}
 \usepackage[sans]{sim-oficial}
+\geometry{top=1.5cm,bottom=2.3cm}
 \input{datos-proponente}
-\renewcommand{\arraystretch}{1.25}
+\renewcommand{\arraystretch}{1.08}\setlength{\parskip}{3pt}
 \newcommand{\campo}[2]{\textbf{#1} & #2\\}
 % Page header: #1 title, #2 SIM code
 \newcommand{\dthead}[2]{%
-  \noindent\begin{minipage}[c]{2.2cm}\SIMhueco{2cm}{2cm}{Emblema institucional (omitido)}\end{minipage}\hfill
+  \noindent\begin{minipage}[c]{2.2cm}\SIMhueco{2cm}{1.5cm}{Emblema institucional (omitido)}\end{minipage}\hfill
   \begin{minipage}[c]{0.5\linewidth}\centering
     {\large\bfseries DIRECCIÓN DEL TRABAJO (simulado)}\par\smallskip
     {\small Gobierno de Chile --- Inspección del Trabajo de Valparaíso}
   \end{minipage}\hfill
-  \begin{minipage}[c]{2.8cm}\raggedleft\SIMhueco{2.6cm}{2cm}{Código de verificación y QR (omitidos)}\end{minipage}
+  \begin{minipage}[c]{2.8cm}\raggedleft\SIMhueco{2.6cm}{1.5cm}{Código de verificación y QR (omitidos)}\end{minipage}
 
-  \vspace{4pt}\noindent\rule{\linewidth}{1pt}
-  \begin{center}{\large\bfseries #1}\\[3pt]{\small N.\textdegree{} de certificado: #2}\end{center}}
+  \vspace{3pt}\noindent\rule{\linewidth}{1pt}
+  \begin{center}{\large\bfseries #1}\\[2pt]{\small N.\textdegree{} de certificado: #2}\end{center}}
 \begin{document}
 \dthead{CERTIFICADO DE ANTECEDENTES LABORALES Y PREVISIONALES (F30)}{SIM-DT-ANT-2026-000001}
 
@@ -81,8 +82,8 @@
   \textbf{Total} & \textbf{133}\\\bottomrule
 \end{tabularx}
 
-\vspace{14pt}
-\noindent\begin{minipage}[c]{4.5cm}\SIMhueco{4.2cm}{1.6cm}{Firma electrónica avanzada (omitida)}\end{minipage}
+\vspace{8pt}
+\noindent\begin{minipage}[c]{4.4cm}\SIMhueco{4.2cm}{1.2cm}{Firma electrónica avanzada (omitida)}\end{minipage}
 
 \SIMnooficial{la Dirección del Trabajo}
 \end{document}

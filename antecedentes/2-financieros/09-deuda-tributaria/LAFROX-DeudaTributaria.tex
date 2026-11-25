@@ -1,40 +1,41 @@
 \documentclass[11pt]{article}
 \usepackage[sans]{sim-oficial}
+\geometry{top=1.4cm,bottom=2.3cm}
 \input{datos-proponente}
-\renewcommand{\arraystretch}{1.1}\setlength{\parskip}{3pt}
+\renewcommand{\arraystretch}{0.96}\setlength{\parskip}{2pt}
 \newcommand{\campo}[2]{\textbf{#1} & #2\\}
 \begin{document}
-\noindent\begin{minipage}[c]{2.2cm}\SIMhueco{2cm}{2cm}{Emblema institucional (omitido)}\end{minipage}\hfill
+\noindent\begin{minipage}[c]{2.2cm}\SIMhueco{2cm}{1.4cm}{Emblema institucional (omitido)}\end{minipage}\hfill
 \begin{minipage}[c]{0.5\linewidth}\centering
   {\large\bfseries TESORERÍA GENERAL DE LA REPÚBLICA (simulado)}\par\smallskip
   {\small Servicio de Tesorerías --- Cobranza de impuestos fiscales}
 \end{minipage}\hfill
-\begin{minipage}[c]{2.8cm}\raggedleft\SIMhueco{2.6cm}{2cm}{Código de verificación y QR (omitidos)}\end{minipage}
+\begin{minipage}[c]{2.8cm}\raggedleft\SIMhueco{2.6cm}{1.4cm}{Código de verificación y QR (omitidos)}\end{minipage}
 
-\vspace{4pt}\noindent\rule{\linewidth}{1pt}
+\vspace{3pt}\noindent\rule{\linewidth}{1pt}
 
-\begin{center}{\Large\bfseries CERTIFICADO DE DEUDA}\\[3pt]
+\begin{center}{\Large\bfseries CERTIFICADO DE DEUDA}\\[2pt]
   {\small N.\textdegree{} de documento: SIM-TGR-DEUDA-2026-000001}\end{center}
 
 \noindent La Tesorería General de la República (simulado) certifica la situación de deuda fiscal del contribuyente que se indica, según los registros a la fecha de corte.
 
-\medskip
+\smallskip
 \noindent\textbf{DATOS DEL CONTRIBUYENTE}\par\nopagebreak
-\noindent\begin{tabularx}{\linewidth}{@{}l X@{}}\toprule
+\noindent{\small\begin{tabularx}{\linewidth}{@{}l X@{}}\toprule
   \campo{RUT}{\LFXrut}
   \campo{Nombre o razón social}{LAFROX SpA}
   \campo{Domicilio}{\LFXdomicilio}
   \campo{Fecha y hora de emisión}{23-11-2026, 09:12 hrs.}
   \campo{Fecha de corte de la información}{22-11-2026}
   \bottomrule
-\end{tabularx}
+\end{tabularx}}
 
-\bigskip
-\noindent\textbf{SITUACIÓN DE DEUDA}\par\nopagebreak\smallskip
+\smallskip
+\noindent\textbf{SITUACIÓN DE DEUDA}\par\nopagebreak
 \noindent A la fecha de corte, el contribuyente \textbf{NO REGISTRA DEUDAS} morosas, giros vencidos pendientes de pago ni convenios de pago incumplidos, cuya cobranza corresponda a esta Tesorería. El contribuyente se encuentra inscrito en los registros de la Tesorería General de la República.
 
-\medskip
-\noindent\begin{tabularx}{\linewidth}{@{}l X l r@{}}\toprule
+\smallskip
+\noindent{\small\begin{tabularx}{\linewidth}{@{}l X l r@{}}\toprule
   \textbf{Formulario} & \textbf{Concepto} & \textbf{Períodos} & \textbf{Deuda (CLP)} \\\midrule
   Deuda vencida & Deuda morosa exigible & A la fecha de corte & 0 \\
   Deuda por vencer & Giros con vencimiento posterior a la fecha de corte & A la fecha de corte & 0 \\
@@ -49,14 +50,14 @@
   Convenios & Convenios de pago vigentes & Todos & Sin convenios \\
   Contribuciones & Contribuciones de bienes raíces del propietario & Vigentes & Sin deuda \\\midrule
   \textbf{Total} & & & \textbf{0} \\\bottomrule
-\end{tabularx}
+\end{tabularx}}
 
-\bigskip
-\noindent El presente certificado se emite a solicitud del interesado para ser presentado en la \LFXlicitacion{} (Art.~39\textdegree, numeral~2, de las Bases Administrativas). Su vigencia queda limitada a la fecha y hora de emisión.
+\smallskip
+\noindent{\small El presente certificado se emite a solicitud del interesado para ser presentado en la \LFXlicitacion{} (Art.~39\textdegree, numeral~2, de las Bases Administrativas). Su vigencia queda limitada a la fecha y hora de emisión.}
 
-\vspace{18pt}
-\noindent\begin{minipage}[c]{4.5cm}\SIMhueco{4.2cm}{1.8cm}{Firma electrónica avanzada (omitida)}\end{minipage}\hfill
-\begin{minipage}[c]{0.6\linewidth}\raggedleft\small Certificado emitido por medios electrónicos. La validez se verifica en el sitio institucional con el código de verificación (omitido en esta simulación).\end{minipage}
+\vspace{6pt}
+\noindent\begin{minipage}[c]{4.4cm}\SIMhueco{4.2cm}{1.2cm}{Firma electrónica avanzada (omitida)}\end{minipage}\hfill
+\begin{minipage}[c]{0.6\linewidth}\raggedleft\footnotesize Certificado emitido por medios electrónicos. La validez se verifica en el sitio institucional con el código de verificación (omitido en esta simulación).\end{minipage}
 
 \SIMnooficial{la Tesorería General de la República}
 \end{document}
