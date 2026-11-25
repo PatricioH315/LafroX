@@ -1,6 +1,6 @@
 # Sobre N.° 1 — Antecedentes del Oferente
 
-El Sobre N.° 1 reúne los 23 antecedentes de los cuatro grupos del artículo 39 de las Bases Administrativas, la declaración jurada simple de veracidad del sitio web corporativo exigida en el capítulo 23.3 de las Bases Técnicas Transversales y el documento separado con el enlace de descarga y contraseña del video de presentación (numeral 24.5), y cierra con la Boleta de Garantía de Seriedad de la Oferta (Art. 35). El Formulario A-5 abre el sobre; los demás documentos siguen el orden del artículo 39, sin repetir A-5 en el grupo técnico. La foliación es única para el conjunto.
+El Sobre N.° 1 reúne los 23 antecedentes de los cuatro grupos del artículo 39 de las Bases Administrativas, la declaración jurada simple de veracidad del sitio web corporativo exigida en el capítulo 23.3 de las Bases Técnicas Transversales, el documento separado con el enlace de descarga y contraseña del video de presentación (numeral 24.5) y el enlace al prototipo interactivo (numeral 25.5), y cierra con la Boleta de Garantía de Seriedad de la Oferta (Art. 35). El Formulario A-5 abre el sobre; los demás documentos siguen el orden del artículo 39, sin repetir A-5 en el grupo técnico. La foliación es única para el conjunto.
 
 ## Documentos incluidos
 
@@ -33,7 +33,8 @@ Las rutas siguientes identifican los PDF que integran el índice A-5. Los folios
 | 23 | Certificaciones institucionales y de fabricante | [LAFROX-Certificaciones.pdf](antecedentes/4-tecnicos/23-certificaciones/LAFROX-Certificaciones.pdf) |
 | 24 | Declaración jurada simple de veracidad del sitio web corporativo | [LAFROX-DeclaracionWeb.pdf](antecedentes/4-tecnicos/24-dj-sitio-web/LAFROX-DeclaracionWeb.pdf) |
 | 25 | Video de presentación: enlace de descarga y contraseña de acceso (BTT 24.5) | [LAFROX-Video-Acceso-Enlace.pdf](LAFROX-Video-Acceso-Enlace.pdf) |
-| 26 | Boleta de Garantía de Seriedad de la Oferta (Art. 35) | [LAFROX-BoletaSeriedad.pdf](antecedentes/5-garantias/35-boleta-seriedad/LAFROX-BoletaSeriedad.pdf) |
+| 26 | Prototipo interactivo: enlace de acceso (BTT 25.5) | [LAFROX-Prototipo-Acceso-Enlace.pdf](LAFROX-Prototipo-Acceso-Enlace.pdf) |
+| 27 | Boleta de Garantía de Seriedad de la Oferta (Art. 35) | [LAFROX-BoletaSeriedad.pdf](antecedentes/5-garantias/35-boleta-seriedad/LAFROX-BoletaSeriedad.pdf) |
 
 ## Compilación y control de folios
 
@@ -64,11 +65,11 @@ A-2, A-3 y A-4 incorporan la imagen ficticia aportada por el usuario, guardada s
 
 Los antecedentes simulados no constituyen certificaciones, auditorías, actuaciones notariales ni compromisos reales. Se retiraron referencias al curso y a fines académicos del texto impreso, conservando explícitamente la simulación; las firmas de Alex reutilizan el recurso gráfico existente y la constancia notarial usa únicamente la imagen ficticia aportada por el usuario.
 
-La Boleta de Garantía de Seriedad de los artículos 35 y 49.2 está en `antecedentes/5-garantias/35-boleta-seriedad/LAFROX-BoletaSeriedad.pdf` (USD 500.000, vence el 30-04-2027). Es adicional a los 23 antecedentes del artículo 39 y no se sustituye por el certificado bancario. Cierra la foliación del sobre (N.° 26 del índice A-5, orden del Art. 49.2) y se entrega en original impreso (Art. 35.5). El documento laboral distingue F30 (antecedentes del Boletín Laboral y Previsional) de F30-1. La nómina de experiencia reproduce los once campos del T-6 vigente y sus cartas simuladas ya no contradicen esos montos, SLA y arquitectura; se retiraron remisiones a facturas ausentes. Las Bases no fijan antigüedad máxima para la individualización de socios. El usuario confirmó que Alex Aravena revisó las correcciones y su nombre quedó registrado en A-6. Las cuatro alianzas se ajustaron al alcance de SD12/T-8; las cartas incompatibles de montaje externo y colocation se conservaron sólo en el respaldo de revisión.
+La Boleta de Garantía de Seriedad de los artículos 35 y 49.2 está en `antecedentes/5-garantias/35-boleta-seriedad/LAFROX-BoletaSeriedad.pdf` (USD 500.000, vence el 30-04-2027). Es adicional a los 23 antecedentes del artículo 39 y no se sustituye por el certificado bancario. Cierra la foliación del sobre (N.° 27 del índice A-5, orden del Art. 49.2) y se entrega en original impreso (Art. 35.5). El documento laboral distingue F30 (antecedentes del Boletín Laboral y Previsional) de F30-1. La nómina de experiencia reproduce los once campos del T-6 vigente y sus cartas simuladas ya no contradicen esos montos, SLA y arquitectura; se retiraron remisiones a facturas ausentes. Las Bases no fijan antigüedad máxima para la individualización de socios. El usuario confirmó que Alex Aravena revisó las correcciones y su nombre quedó registrado en A-6. Las cuatro alianzas se ajustaron al alcance de SD12/T-8; las cartas incompatibles de montaje externo y colocation se conservaron sólo en el respaldo de revisión.
 
 El antecedente 21 incorpora tres cartas con el mismo formato de las cuatro alianzas: Rom Mayer para la instalación de Talca y la revisión eléctrica semestral, Netprovider para las pruebas independientes y Telsur como proveedor clave de fibra de Talca y Concepción. Las dos primeras corresponden a los siete servicios declarados en SD12 y T-8 y su contratación requiere autorización previa y escrita del CLIENTE. Las cartas son simuladas y no acreditan compromisos reales.
 
-Si se requirieran documentos auténticos fuera del ejercicio, las recreaciones y sellos simulados no sustituirían certificados ni actuaciones reales. El conjunto compilado contiene 26 PDF y 88 folios: A-5 en 1–3; A-1 en 4–5; cédula en 6; carta y nómina en 40–44; cartas compromiso en 45–52; A-6 en 53–75; certificaciones en 76–84; declaración del sitio web en 85; enlace y contraseña del video en 86–87; boleta de garantía en 88.
+Si se requirieran documentos auténticos fuera del ejercicio, las recreaciones y sellos simulados no sustituirían certificados ni actuaciones reales. El conjunto compilado contiene 27 PDF y 90 folios: A-5 en 1–3; A-1 en 4–5; cédula en 6; carta y nómina en 40–44; cartas compromiso en 45–52; A-6 en 53–75; certificaciones en 76–84; declaración del sitio web en 85; enlace y contraseña del video en 86–87; enlace del prototipo en 88–89; boleta de garantía en 90.
 
 ## Carátula física del sobre (Art. 49.1)
 
