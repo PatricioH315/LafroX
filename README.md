@@ -67,7 +67,7 @@ La Boleta de Garantía de Seriedad de los artículos 35 y 49.2 está en `anteced
 
 El antecedente 21 incorpora tres cartas con el mismo formato de las cuatro alianzas: Rom Mayer para la instalación de Talca y la revisión eléctrica semestral, Netprovider para las pruebas independientes y Telsur como proveedor clave de fibra de Talca y Concepción. Las dos primeras corresponden a los siete servicios declarados en SD12 y T-8 y su contratación requiere autorización previa y escrita del CLIENTE. Las cartas son simuladas y no acreditan compromisos reales.
 
-Si se requirieran documentos auténticos fuera del ejercicio, las recreaciones y sellos simulados no sustituirían certificados ni actuaciones reales. El conjunto compilado contiene 25 PDF y 97 folios: A-5 en 1–5; A-1 en 6–9; cédula en 10; carta y nómina en 48–52; cartas compromiso en 53–60; A-6 en 61–86; certificaciones en 87–95; declaración del sitio web en 96; boleta de garantía en 97.
+Si se requirieran documentos auténticos fuera del ejercicio, las recreaciones y sellos simulados no sustituirían certificados ni actuaciones reales. El conjunto compilado contiene 25 PDF y 87 folios: A-5 en 1–3; A-1 en 4–5; cédula en 6; carta y nómina en 40–44; cartas compromiso en 45–52; A-6 en 53–76; certificaciones en 77–85; declaración del sitio web en 86; boleta de garantía en 87.
 
 ## Carátula física del sobre (Art. 49.1)
 
