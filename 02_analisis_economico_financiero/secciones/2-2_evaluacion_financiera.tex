@@ -4,7 +4,7 @@
 
 Con una tasa de descuento de 0,998\,\% mensual, el proyecto tiene un VAN de 25.561,00 UF y una TIR de 7,42\,\% mensual, antes de impuestos. Las cifras provienen de las hojas \texttt{PARAMETROS}, \texttt{INDICADORES} y \texttt{SENSIBILIDAD} del modelo (LafroX, 2026f).
 
-Se evalúa el flujo del proyecto, que son los cobros de hitos y cuotas menos los costos de la sección~\ref{sec:e2-costos-precio}. El crédito, el aporte de los socios y los intereses quedan fuera, ya que su costo está dentro de la tasa de descuento. Los montos son netos, antes de impuestos, en un horizonte de 56 meses.
+El flujo del proyecto resta los costos de la sección~\ref{sec:e2-costos-precio} de los ingresos proyectados por hitos y cuotas. El crédito, el aporte de los socios y los intereses quedan fuera de este flujo. Los montos son netos y antes de impuestos. Para evaluar 56 meses, el modelo imputa las 36 cuotas de Operación a los meses de servicio (21 a 56). La oferta formal establece facturación a mes vencido y pago al mes siguiente, por lo que el calendario contractual de cobro de esas cuotas abarca los meses 22 a 57.
 
 \subsection{Tasa de descuento}
 \label{sec:e2-tasa-descuento}
@@ -36,7 +36,7 @@ La Tabla~\ref{tab:e2-flujo-anual} resume el flujo del proyecto por año de contr
 
 Solo el primer año cierra en negativo, ya que en él se compra la infraestructura y parten los equipos antes de los primeros hitos. El segundo año deja el mayor flujo, con siete de los doce hitos y el inicio de la operación. Desde el tercer año el flujo depende de la cuota fija y se mantiene estable.
 
-La Tabla~\ref{tab:e2-flujo-mensual} muestra los 56 meses. El mes 21 recibe H12 y la primera cuota; desde el mes 22 entra solo la cuota. El flujo acumulado sin financiamiento toca su mínimo en el mes 9 y es positivo desde el mes 17.
+La Tabla~\ref{tab:e2-flujo-mensual} muestra los 56 meses. En el mes 21, el modelo registra H12 e imputa la primera cuota de Operación. Desde el mes 22, el ingreso proyectado corresponde a la cuota del mes de servicio. El flujo acumulado sin financiamiento toca su mínimo en el mes 9 y es positivo desde el mes 17.
 
 \begin{tablalafrox}{Flujo de caja mensual del proyecto, en UF. Las sumas pueden diferir en la última cifra por redondeo. Fuente: modelo financiero, hoja INDICADORES.}{tab:e2-flujo-mensual}{Y R{2.6cm} R{2.6cm} R{2.6cm} R{2.6cm}}
   {\cab{Mes} & \cab{Ingresos} & \cab{Egresos} & \cab{Flujo del mes} & \cab{Acumulado}}
@@ -130,5 +130,5 @@ El punto de equilibrio se calculó en ingresos, en sueldos y en tiempo:
 \begin{itemize}
   \item El VAN llega a cero con el 86,67\,\% de los ingresos proyectados. Sin descontar, se cubre el costo con el 85,40\,\% del precio, 210.470,10 UF.
   \item El VAN llega a cero si los sueldos suben 22,72\,\%.
-  \item El flujo acumulado es positivo desde el mes 17 y no vuelve a ser negativo. Desde ese mes, lo cobrado supera todo lo gastado.
+  \item El flujo acumulado es positivo desde el mes 17 y no vuelve a ser negativo. Desde ese mes, los ingresos imputados superan los egresos acumulados.
 \end{itemize}
