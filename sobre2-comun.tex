@@ -16,6 +16,9 @@
 % El número de página se rotula como folio, igual que en el Sobre N.° 1.
 \renewcommand{\LFXfolio}{Folio}
 
+% Art. 40.2: la portada también lleva media firma, además de la firma completa.
+\renewcommand{\LFXpiefolioen}[1]{\LFXpiederecho}
+
 % ---- Foliación correlativa del sobre ---------------------------------------
 %  folios-sobre2.tex lo escribe compilar_sobre2.py: trae las filas de la hoja
 %  resumen con el folio de inicio y de término de cada documento.

@@ -19,6 +19,7 @@ Todo lo generado queda en _sobre2/, que no se versiona.
 """
 from pathlib import Path
 import argparse
+import hashlib
 import io
 import json
 import re
@@ -137,6 +138,10 @@ ENVOLTORIO = r"""%% Generado por compilar_sobre2.py. No editar.
 \def\LFXfolioinicial{@FOLIO@}
 \AddToHook{begindocument/end}{%
   \providecommand{\LFXfolio}{}\renewcommand{\LFXfolio}{Folio}%
+  % Art. 40.2: media firma en cada página, también en la portada, que además
+  % lleva la firma completa. El pie de la portada usa el mismo pie derecho
+  % (filete, media firma y folio) de las páginas interiores del documento.
+  \providecommand{\LFXpiefolioen}[1]{}\renewcommand{\LFXpiefolioen}[1]{\LFXpiederecho}%
   \ifdefined\portadalafrox
     \patchcmd{\portadalafrox}{\setcounter{page}{1}}{\setcounter{page}{\LFXfolioinicial}}{}{%
       \patchcmd{\portadalafrox}{\LFXfolioinicial}{\LFXfolioinicial}{}{%
@@ -147,6 +152,8 @@ ENVOLTORIO = r"""%% Generado por compilar_sobre2.py. No editar.
   \setcounter{page}{\LFXfolioinicial}}
 \input{@FUENTE@}
 """
+# Un cambio del envoltorio obliga a recompilar aunque las ramas no cambien.
+HUELLA_ENVOLTORIO = hashlib.sha256(ENVOLTORIO.encode("utf-8")).hexdigest()[:12]
 
 
 def correr(comando, **kw):
@@ -264,11 +271,11 @@ def verificar(pdf, inicio):
             ultimo = numeros[-1] if numeros else "ninguno"
             errores.append(f"{pdf.name} página {i + 1}: se esperaba «Folio {esperado}», "
                            f"se leyó {folios[-1:] or 'sin rótulo'} (último número: {ultimo})")
-        if i > 0 and "Media firma" not in texto:
+        if "Media firma" not in texto:
             sin_firma.append(i + 1)
     if sin_firma:
-        avisos.append(f"{pdf.name}: sin «Media firma» en {len(sin_firma)} página(s), "
-                      f"p. ej. {sin_firma[:8]}")
+        errores.append(f"{pdf.name}: sin «Media firma» en {len(sin_firma)} página(s), "
+                       f"p. ej. {sin_firma[:8]}")
     return errores, avisos
 
 
@@ -300,13 +307,15 @@ def main():
             carpeta = extraer(n, shas[n]) / sub
             pdf = carpeta / f"{nombre}.pdf"
             previo = estado.get(nombre, {})
-            if previo.get("sha") == shas[n] and previo.get("inicio") == folio and pdf.is_file():
+            if (previo.get("sha") == shas[n] and previo.get("inicio") == folio
+                    and previo.get("envoltorio") == HUELLA_ENVOLTORIO and pdf.is_file()):
                 print(f"  {nombre}: sin cambios (folio {folio})", flush=True)
             else:
                 print(f"  {nombre}: compilando desde el folio {folio} ...", flush=True)
                 compilar(carpeta, fuente, nombre, folio)
             total = paginas(pdf)
-            estado[nombre] = {"sha": shas[n], "inicio": folio, "paginas": total}
+            estado[nombre] = {"sha": shas[n], "inicio": folio, "paginas": total,
+                              "envoltorio": HUELLA_ENVOLTORIO}
             estado_archivo.write_text(json.dumps(estado, indent=1, ensure_ascii=False), encoding="utf-8")
             fin = folio + total - 1
             filas.append((titulo(n, nombre), folio, fin, nombre + ".pdf"))
