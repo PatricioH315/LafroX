@@ -1,0 +1,33 @@
+%% ============================================================================
+%%  Hoja resumen del Sobre N.° 2 --- Oferta Técnica
+%%
+%%  Las filas y los folios salen de folios-sobre2.tex, que escribe
+%%  compilar_sobre2.py a partir de los PDF compilados de cada subdocumento.
+%% ============================================================================
+
+\documentclass[carta,firma,final]{lafrox}
+\input{sobre2-comun}
+
+\datoslafrox{
+  subtitulo    = {Hoja resumen del Sobre N.\textdegree{} 2},
+  alcance      = {Sobre N.\textdegree{} 2},
+  formulario   = {Formulario T-7},
+  nomenclatura = {LAFROX-Sobre2-Indice.pdf},
+}
+\configurarportadalafrox{Hoja resumen del Sobre N.\textdegree{} 2 \textemdash{} Oferta Técnica}{Sobre N.\textdegree{} 2}{Formulario T-7}{LAFROX-Sobre2-Indice.pdf}{FIRMA_Alex_Aravena_transparente.png}
+
+\begin{document}
+
+\portadalafrox
+
+\chapter*{Hoja resumen del Sobre N.\textdegree{} 2}
+\markboth{Hoja resumen del Sobre N.\textdegree{} 2}{}
+
+\LFXempresa{} presenta en el Sobre N.\textdegree{} 2 de la \LFXlicitacion{} los documentos de la Tabla~\ref{tab:sobre2-indice}, en el orden de los catorce subdocumentos del Formulario T-7. Cada subdocumento va seguido de sus anexos y de sus formularios técnicos. La foliación es correlativa en todo el sobre: comienza en esta hoja y cada página indica su folio en el pie.
+
+{\renewcommand{\LFXcuerpotabla}{\fontsize{9pt}{10.8pt}\selectfont\renewcommand{\arraystretch}{1.02}}%
+\tablaconcuerpo{Documentos del Sobre N.\textdegree{} 2 y sus folios. Fuente: foliación de los documentos del sobre.}{tab:sobre2-indice}{R{0.7cm} Y R{1.3cm} R{1.4cm} L{5.0cm}}
+  {\cab{N.\textdegree} & \cab{Documento} & \cab{Folio inicio} & \cab{Folio término} & \cab{Archivo}}
+  {\filasindicesobre}}
+
+\end{document}

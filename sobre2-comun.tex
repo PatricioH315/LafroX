@@ -1,0 +1,35 @@
+%% ============================================================================
+%%  sobre2-comun.tex -- Datos y utilidades comunes del Sobre N.° 2
+%%
+%%  Lo carga la hoja resumen del sobre (LAFROX-Sobre2-Indice.tex) después de
+%%  \documentclass. Los subdocumentos se compilan desde sus propias ramas;
+%%  compilar_sobre2.py les fija el folio inicial sin modificar sus fuentes.
+%% ============================================================================
+
+\datoslafrox{
+  caso       = {Caso --- Logística},
+  fecha      = {25 de noviembre de 2026},
+  documento  = {Propuesta Técnica},
+  sobre      = {Sobre N.\textdegree{} 2 \textemdash{} Oferta Técnica},
+}
+
+% El número de página se rotula como folio, igual que en el Sobre N.° 1.
+\renewcommand{\LFXfolio}{Folio}
+
+% ---- Foliación correlativa del sobre ---------------------------------------
+%  folios-sobre2.tex lo escribe compilar_sobre2.py: trae las filas de la hoja
+%  resumen con el folio de inicio y de término de cada documento.
+\newcommand{\filasindicesobre}{}
+\InputIfFileExists{folios-sobre2.tex}{}{}
+\providecommand{\LFXfolioinicial}{1}
+
+% ---- Tabla cuyas filas vienen en una macro ---------------------------------
+%  tablalafrox lee su cuerpo como argumento y le agrega los filetes de fila;
+%  para que vea filas reales, la macro de filas se expande una vez antes.
+%  \tablaconcuerpo{caption}{label}{columnas}{cabecera}{\macrodefilas}
+\makeatletter
+\newcommand{\tablaconcuerpo}[5]{%
+  \expandafter\LFX@tablaconcuerpo\expandafter{#5}{#1}{#2}{#3}{#4}}
+\newcommand{\LFX@tablaconcuerpo}[5]{%
+  \begin{tablalafrox}{#2}{#3}{#4}{#5}#1\end{tablalafrox}}
+\makeatother
