@@ -4,13 +4,14 @@
 
 La caja financiada se mantiene positiva los 56 meses, con un mínimo de 1.113,54 UF en el mes 9, y cierra con 36.192,01 UF. Las cifras provienen de las hojas \texttt{FLUJO CAJA NETO}, \texttt{FINANCIAMIENTO} y \texttt{CURVA S}, en valores netos y antes de impuestos.
 
-La Figura~\ref{fig:e2-curva-s} presenta dos series acumuladas para los 56 meses, las mismas de la hoja \texttt{CURVA S}:
+La Figura~\ref{fig:e2-curva-s} presenta las tres series acumuladas de la hoja \texttt{CURVA S} para los 56 meses:
 \begin{itemize}
   \item \textbf{Ingresos acumulados:} el capital inicial que entra en el mes 1, los cobros de los hitos del E-25 y las mensualidades de Operación.
   \item \textbf{Egresos acumulados:} los costos del proyecto, los intereses del crédito y la devolución del principal. El escenario base no utiliza la línea de crédito.
+  \item \textbf{Saldo de caja acumulado:} la diferencia entre los ingresos y egresos acumulados de cada mes.
 \end{itemize}
 
-La distancia entre las curvas es el saldo financiado de cada mes. La menor distancia es de 1.113,54 UF en el mes 9. El VAN y la TIR se calculan antes de financiamiento (sección~\ref{sec:e2-evaluacion}).
+El VAN y la TIR se calculan antes de financiamiento (sección~\ref{sec:e2-evaluacion}).
 
 \subsection{Capital inicial y financiamiento}
 \label{sec:e2-curva-financiamiento}
@@ -39,12 +40,12 @@ La línea vertical de la Figura~\ref{fig:e2-curva-s} separa la implementación d
 
 \begin{figure}[htbp]\centering
   \input{figuras/curva_s.tex}
-  \caption{Curva S. Ingresos acumulados, con el capital inicial, y egresos acumulados, con los intereses y la devolución del crédito, en UF. La distancia entre las curvas es el saldo de caja. Fuente: modelo financiero, hoja CURVA S.}
+  \caption{Curva S. Ingresos acumulados con el capital inicial, egresos acumulados con intereses y devolución del crédito, y saldo de caja acumulado, en UF. Fuente: modelo financiero, hoja CURVA S.}
   \label{fig:e2-curva-s}
 \end{figure}
 
 \Needspace{14\baselineskip}
-La Tabla~\ref{tab:e2-curva-hitos} muestra las dos series, el flujo del mes y el saldo de caja en los principales puntos del contrato.
+La Tabla~\ref{tab:e2-curva-hitos} muestra las tres series acumuladas y el flujo del mes en los principales puntos del contrato.
 
 \begin{tablalafrox}{Curva S y flujo financiado en meses seleccionados, en UF. Fuente: modelo financiero, hoja CURVA S.}{tab:e2-curva-hitos}{Y R{2.05cm} R{2.1cm} R{2.05cm} R{2.1cm}}
   {\cab{Mes} & \cab{Ingresos acum.} & \cab{Egresos acum.} & \cab{Flujo del mes} & \cab{Saldo acum.}}
