@@ -1,0 +1,33 @@
+%% ============================================================================
+%%  Hoja resumen del Sobre N.° 3 --- Oferta Económica
+%%
+%%  Las filas y los folios salen de folios-sobre3.tex, que escribe
+%%  compilar_sobre3.py a partir de los PDF compilados de cada entregable.
+%% ============================================================================
+
+\documentclass[carta,firma,final]{lafrox}
+\input{sobre3-comun}
+
+\datoslafrox{
+  subtitulo    = {Hoja resumen del Sobre N.\textdegree{} 3},
+  alcance      = {Sobre N.\textdegree{} 3},
+  formulario   = {Formulario E-21},
+  nomenclatura = {LAFROX-Sobre3-Indice.pdf},
+}
+\configurarportadalafrox{Hoja resumen del Sobre N.\textdegree{} 3 \textemdash{} Oferta Económica}{Sobre N.\textdegree{} 3}{Formulario E-21}{LAFROX-Sobre3-Indice.pdf}{FIRMA_Alex_Aravena_transparente.png}
+
+\begin{document}
+
+\portadalafrox
+
+\chapter*{Hoja resumen del Sobre N.\textdegree{} 3}
+\markboth{Hoja resumen del Sobre N.\textdegree{} 3}{}
+
+\LFXempresa{} presenta en el Sobre N.\textdegree{} 3 de la \LFXlicitacion{} los tres entregables del Formulario E-21 que indica la Tabla~\ref{tab:sobre3-indice}. La foliación es correlativa en todo el sobre: comienza en esta hoja y cada página indica su folio en el pie. Los documentos 1 y 2 se entregan en PDF y en DOCX, con el mismo contenido y los mismos folios. El modelo financiero es una planilla XLSX y no tiene páginas que foliar.
+
+{\renewcommand{\LFXcuerpotabla}{\fontsize{9pt}{10.8pt}\selectfont\renewcommand{\arraystretch}{1.02}}%
+\tablaconcuerpo{Entregables del Sobre N.\textdegree{} 3 y sus folios. Fuente: foliación de los documentos del sobre.}{tab:sobre3-indice}{R{0.7cm} Y R{1.3cm} R{1.4cm} L{5.6cm}}
+  {\cab{N.\textdegree} & \cab{Documento} & \cab{Folio inicio} & \cab{Folio término} & \cab{Archivo}}
+  {\filasindicesobre}}
+
+\end{document}

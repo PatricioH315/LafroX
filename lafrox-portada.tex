@@ -134,9 +134,9 @@
 
 \newcommand{\portadalafrox}{%
   \begingroup
-  \def\LFXdocumento{Antecedentes del Oferente}%
+  \def\LFXdocumento{Oferta Económica}%
   \def\LFXcaso{Caso \textemdash{} Logística}%
-  \def\LFXsobre{Sobre N.\textdegree{} 1 \textemdash{} Antecedentes del Oferente}%
+  \def\LFXsobre{Sobre N.\textdegree{} 3 \textemdash{} Oferta Económica}%
   \def\LFXfecha{25 de noviembre de 2026}%
   \ifcsname LFXsubtituloportada\endcsname
     \let\LFXsubtitulo\LFXsubtituloportada
@@ -144,8 +144,8 @@
     \let\LFXformulario\LFXformularioportada
     \let\LFXnomenclatura\LFXnomenclaturaportada
   \fi
-  %  Sobre N.\textdegree{} 1: la foliación es correlativa entre sus documentos;
-  %  el folio inicial de cada uno lo fija folios.tex (ver sobre1-comun.tex).
+  %  Sobre N.\textdegree{} 3: la foliación es correlativa entre sus documentos;
+  %  el folio inicial lo fija sobre3-comun.tex (ver compilar_sobre3.py).
   \setcounter{page}{\LFXfolioinicial}%
   \thispagestyle{lfxportada}%
   \LFXcalcularmargenes

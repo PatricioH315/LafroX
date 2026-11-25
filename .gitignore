@@ -19,3 +19,6 @@
 *.vrb
 /main.pdf
 /main-*.pdf
+
+# Compilación y foliación del sobre (compilar_sobre3.py)
+/_sobre3/
