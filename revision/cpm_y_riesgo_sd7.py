@@ -8,10 +8,20 @@ from pathlib import Path
 import random
 import statistics
 
+import numpy as np
+from scipy.stats import beta as beta_dist, norm
+
 from edt_cpm_20261117 import (
     CAL, CAPS, END, MONTHS, ORDER, ROOT, START, TABLES, after, allowed_cut, build, capacity,
     endpoints, period, rank, references, rows, schedule, topological,
 )
+
+# Supuestos de la simulación ampliada (T-15, sección 5.4).
+CORRELACION_ESFUERZO = 0.5      # mismo equipo y mismas tasas: los desvíos de esfuerzo no son independientes
+PROBABILIDAD_OBSERVACION = 0.30  # acta con al menos una observación bloqueante (art. 18.3)
+SUBSANACION_DIAS = {'H1': 5, 'H7': 5, 'H12': 5}  # entrega por incrementos (T-17, 2.3 y 2.4)
+SUBSANACION_DIAS_BASE = 10       # BA, art. 18.3
+HITOS_SIN_REVISION = ('H6', 'H11')  # inicios contractuales de marcha blanca
 
 
 def make_network(tasks, edges, fixed, packages, milestones, estimates):
@@ -65,9 +75,10 @@ def make_network(tasks, edges, fixed, packages, milestones, estimates):
     return order, outgoing, releases, limits, durations
 
 
-def passes(network, days_by_package=None):
+def passes(network, days_by_package=None, delays=None, backward=True):
     order, outgoing, releases, limits, durations = network
     days_by_package = days_by_package or {}
+    delays = delays or {}
     early, late = releases.copy(), limits.copy()
 
     def advance(a, b, lag, value):
@@ -77,13 +88,15 @@ def passes(network, days_by_package=None):
             if civil_window is not None:
                 return max(value + days - 1, rank(CAL[value] + timedelta(days=civil_window - 1)))
             return value + days - 1
-        return value + lag
+        return value + lag + delays.get(b, 0)
 
     for source in order:
         if source[0] in ('CUT:H7', 'CUT:H12'):
             early[source] = rank(allowed_cut(CAL[early[source] - 1]))
         for target, lag in outgoing[source]:
             early[target] = max(early[target], advance(source, target, lag, early[source]))
+    if not backward:
+        return early, None
     for source in reversed(order):
         for target, lag in outgoing[source]:
             candidate = late[target] - (advance(source, target, lag, late[target]) - late[target])
@@ -98,40 +111,73 @@ def passes(network, days_by_package=None):
     return early, late
 
 
-def simulate(network, packages, estimates, milestones, samples, seed):
-    rng = random.Random(seed)
-    orders = {}
+def simulate(network, packages, estimates, milestones, samples, seed,
+             rho=0.0, observation=0.0):
+    """Muestrea el esfuerzo con beta PERT correlacionada (cópula normal, rho) y,
+    con probabilidad `observation`, una subsanación en cada acta revisada por el CLIENTE."""
+    rng = np.random.default_rng(seed)
+    codes, lower, spread, alpha, beta_, capacity_ = [], [], [], [], [], []
     for code, pkg in packages.items():
-        lower, mode, upper = map(float, estimates[code][-4:-1])
-        if not 0 <= lower <= mode <= upper:
+        lo, mode, up = map(float, estimates[code][-4:-1])
+        if not 0 <= lo <= mode <= up:
             raise ValueError(f'Estimación PERT inválida: {code}')
-        if upper == lower:
+        if up == lo:
             continue
-        scale = upper - lower
-        orders[code] = (lower, scale, 1 + 4 * (mode - lower) / scale,
-                        1 + 4 * (upper - mode) / scale, 6.4 * pkg['peak'])
+        scale = up - lo
+        codes.append(code)
+        lower.append(lo)
+        spread.append(scale)
+        alpha.append(1 + 4 * (mode - lo) / scale)
+        beta_.append(1 + 4 * (up - mode) / scale)
+        capacity_.append(6.4 * pkg['peak'])
+    common = rng.standard_normal((samples, 1))
+    own = rng.standard_normal((samples, len(codes)))
+    quantiles = norm.cdf(math.sqrt(rho) * common + math.sqrt(1 - rho) * own)
+    effort = np.array(lower) + np.array(spread) * beta_dist.ppf(quantiles, alpha, beta_)
+    days = np.maximum(1, np.ceil(effort / np.array(capacity_))).astype(int)
+    reviewed = [h for h in ORDER if h not in HITOS_SIN_REVISION]
+    observed = rng.random((samples, len(reviewed))) < observation
     results = {h: [] for h in ORDER}
-    with_corrections = dict.fromkeys(('H1', 'H7', 'H12'), 0)
-    for _ in range(samples):
-        sampled = {code: max(1, math.ceil((lo + spread * rng.betavariate(a, b)) / capacity))
-                   for code, (lo, spread, a, b, capacity) in orders.items()}
-        early, _ = passes(network, sampled)
+    flags = {h: [] for h in reviewed}
+    for i in range(samples):
+        sampled = dict(zip(codes, days[i].tolist()))
+        delays = {('ACT:' + h, 'start'): SUBSANACION_DIAS.get(h, SUBSANACION_DIAS_BASE)
+                  for j, h in enumerate(reviewed) if observed[i, j]}
+        early, _ = passes(network, sampled, delays, backward=False)
         for h in ORDER:
             key = ('REG:' if milestones[h]['produccion'] else 'ACT:') + h
             results[h].append(early[key, 'start'])
-        for h in with_corrections:
-            correction_end = after(CAL[early['ACT:' + h, 'start']], 10)
-            completion = allowed_cut(correction_end) if h != 'H1' else correction_end
-            with_corrections[h] += completion <= milestones[h]['limite']
-    return {
-        h: {
-            'probabilidad': sum(x <= rank(milestones[h]['limite']) for x in values) / samples,
+        for j, h in enumerate(reviewed):
+            flags[h].append(bool(observed[i, j]))
+    summary = {}
+    for h, values in results.items():
+        limit = rank(milestones[h]['limite'])
+        ok = [x <= limit for x in values]
+        hit = [o for o, f in zip(ok, flags.get(h, [])) if f]
+        summary[h] = {
+            'probabilidad': sum(ok) / samples,
+            'si_se_observa': sum(hit) / len(hit) if hit else None,
             'p50': CAL[round(statistics.median(values))],
             'p90': CAL[sorted(values)[math.ceil(samples * .9) - 1]],
-            'con_subsanacion': with_corrections[h] / samples if h in with_corrections else None,
         }
-        for h, values in results.items()
-    }
+    return summary
+
+
+def breaking_overrun(network, packages, estimates, milestones, step=5, ceiling=200):
+    """Primer sobreesfuerzo uniforme (en % sobre M, en pasos de `step`) que deja cada hito fuera de plazo."""
+    found = {}
+    for pct in range(0, ceiling + 1, step):
+        factor = 1 + pct / 100
+        days = {code: max(1, math.ceil(float(estimates[code][-3]) * factor / (6.4 * pkg['peak'])))
+                for code, pkg in packages.items()}
+        early, _ = passes(network, days, backward=False)
+        for h in ORDER:
+            key = ('REG:' if milestones[h]['produccion'] else 'ACT:') + h, 'start'
+            if h not in found and early[key] > rank(milestones[h]['limite']):
+                found[h] = pct
+        if len(found) == len(ORDER):
+            break
+    return {h: found.get(h) for h in ORDER}
 
 
 def export_tex(directory, result):
@@ -154,31 +200,37 @@ def export_tex(directory, result):
                 dmy(row['inicio_nivelado']), dmy(row['fin_nivelado']))
                for code, row in result['base'].items()]
     table('tab_T15_cpm_detalle.tex',
-          'Fechas tempranas, tardías y niveladas de los 171 paquetes con entregable. Fuente: red de las secciones 5.1 y 6.1.',
+          'Fechas tempranas, tardías y niveladas de los 171 paquetes con entregable. Fuente: cálculo propio de fechas a partir de las dependencias entre paquetes del Anexo 7.B del Subdocumento 7.',
           'tab_T15_cpm_detalle', 'L{1.6cm} Y Y Y Y C{1.6cm} Y Y',
           ('EDT', 'Inicio temprano', 'Fin temprano', 'Inicio tardío', 'Fin tardío', 'Holgura hábil',
            'Inicio nivelado', 'Fin nivelado'), records, landscape=True)
 
+    def pct(value):
+        return '—' if value is None else f'{value:.1%}'.replace('.', ',').replace('%', r'\%')
+
     records = []
     for h in ORDER:
-        row = result['pert_logico_sin_nivelacion'][h]
+        effort = result['pert_solo_esfuerzo'][h]
+        row = result['pert_con_revision'][h]
         effects = result['sensibilidad_dias'][h]
         stress, delay = max(effects.items(), key=lambda item: item[1])
-        nominal = f"{row['probabilidad']:.1%}".replace('.', ',').replace('%', r'\%')
-        correction = row['con_subsanacion']
-        correction_text = '—' if correction is None else f'{correction:.1%}'.replace('.', ',').replace('%', r'\%')
-        records.append((h, nominal, correction_text, dmy(row['p50']),
-                        dmy(row['p90']), f'{stress} (+{delay} d.h.)' if delay else 'Sin desplazamiento'))
+        overrun = result['sobreesfuerzo_de_quiebre'][h]
+        overrun_text = rf'+{overrun} \%' if overrun is not None else '—'
+        records.append((h, pct(effort['probabilidad']), pct(row['probabilidad']), pct(row['si_se_observa']),
+                        dmy(row['p90']), overrun_text,
+                        f'{stress} (+{delay} d.h.)' if delay else 'Sin desplazamiento'))
+    samples = f"{result['muestras']:,}".replace(',', '.')
     table('tab_T15_pert_hitos.tex',
-          f"Sensibilidad de los hitos. Fuente: simulación lógica con {result['muestras']} muestras y semilla {result['semilla']}.",
-          'tab:T15-pert-hitos', 'L{0.85cm} L{1.6cm} L{2.0cm} L{1.9cm} L{1.9cm} Y',
-          ('Hito', 'En plazo', 'Con subsanación', 'Mediana', 'Percentil 90', 'Mayor efecto de los tres escenarios'), records)
+          f'Probabilidad de cumplir el plazo de cada hito. Fuente: cálculo propio mediante simulación de {samples} muestras sobre las dependencias del Anexo 7.B del Subdocumento 7.',
+          'tab:T15-pert-hitos', 'L{0.8cm} C{1.35cm} C{1.75cm} C{1.6cm} L{1.75cm} C{1.75cm} Y',
+          ('Hito', 'Solo esfuerzo', 'Con revisión del CLIENTE', 'Si el acta se observa', 'Percentil 90',
+           'Exceso que agota el margen', 'Mayor efecto de los tres escenarios'), records)
 
     records = [(h, dmy(r['nominal']), dmy(r['subsanacion_10']), dmy(r['limite']), r['margen'],
                 dmy(r['ultimo_ingreso_con_subsanacion']))
                for h, r in result['subsanacion'].items()]
     table('tab_T15_subsanacion.tex',
-          'Escenario con diez días hábiles adicionales de subsanación. Fuente: calendario nominal y restricciones de corte de la sección 5.1.',
+          'Escenario con diez días hábiles adicionales de subsanación. Fuente: cálculo propio a partir del calendario nominal y los plazos de revisión del artículo 18 de las Bases Administrativas.',
           'tab:T15-subsanacion', 'L{0.85cm} Y Y Y L{1.5cm} Y',
           ('Hito', 'Nominal', 'Con subsanación', 'Límite contractual', 'Margen hábil', 'Último ingreso viable'), records)
 
@@ -314,7 +366,17 @@ def main():
         }
     result = {
         'base': details, 'subsanacion': scenarios, 'muestras': args.samples, 'semilla': 7,
-        'pert_logico_sin_nivelacion': simulate(sensitivity_network, packages, estimates, milestones, args.samples, 7),
+        'supuestos_simulacion': {
+            'correlacion_esfuerzo': CORRELACION_ESFUERZO,
+            'probabilidad_observacion': PROBABILIDAD_OBSERVACION,
+            'subsanacion_dias': {h: SUBSANACION_DIAS.get(h, SUBSANACION_DIAS_BASE)
+                                 for h in ORDER if h not in HITOS_SIN_REVISION},
+        },
+        'pert_solo_esfuerzo': simulate(sensitivity_network, packages, estimates, milestones, args.samples, 7,
+                                       rho=CORRELACION_ESFUERZO),
+        'pert_con_revision': simulate(sensitivity_network, packages, estimates, milestones, args.samples, 7,
+                                      rho=CORRELACION_ESFUERZO, observation=PROBABILIDAD_OBSERVACION),
+        'sobreesfuerzo_de_quiebre': breaking_overrun(sensitivity_network, packages, estimates, milestones),
         'sensibilidad_dias': impacts,
         'alternativas_subsanacion': recovery_options(tasks, packages, milestones, scenarios),
         'fundamento_pert': pert_basis(packages, estimates),
