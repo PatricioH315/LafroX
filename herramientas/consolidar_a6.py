@@ -35,7 +35,15 @@ SRC = [
  ("Oferta Económica \\textemdash{} Entregable 2: Análisis económico-financiero", "origin/LafroX-OfertaEconomica-2-Latex", "02_analisis_economico_financiero/contenido.tex", "tab:e2-ia"),
 ]
 
-NOMBRES = {"Tomas Perez": "Tomás Pérez", "Bastian Trejo": "Bastián Trejo"}
+NOMBRES = {
+    "Tomas Perez": "Tomás Pérez",
+    "Bastian Trejo": "Bastián Trejo",
+    "Alvaro Catalan": "Álvaro Catalán",
+    "Alvaro Catalán": "Álvaro Catalán",
+    "Álvaro Catalan": "Álvaro Catalán",
+    "Patricio Henriquez": "Patricio Henríquez",
+    "Maximiliano Mino": "Maximiliano Miño",
+}
 CANON = ["Alex Aravena", "Bastián Trejo", "Álvaro Catalán", "Leandro Chamorro",
          "Tomás Pérez", "Maximiliano Miño", "Guillermo Castillo", "Patricio Henríquez"]
 
@@ -82,10 +90,13 @@ for titulo, br, path, label in SRC:
         if len(cols) != 6:
             raise SystemExit(f"{br}:{path}: fila con {len(cols)} columnas: {r[:120]}")
         sec, herr, fin, _, _, rev = cols
-        for bad in ("\\ref", "\\pageref", "\\cite", "[[", "pendiente", "No documentada", "borrador"):
-            for c in (sec, herr, fin, rev):
+        for c in (sec, herr, fin, rev):
+            for bad in ("\\ref", "\\pageref", "\\cite", "[[", "No documentada"):
                 if bad.lower() in c.lower():
                     raise SystemExit(f"marcador {bad!r} en {br}: {c}")
+            m_bad = re.search(r"\b(?:pendiente|borrador)\b", c, re.I)
+            if m_bad:
+                raise SystemExit(f"marcador {m_bad.group(0)!r} en {br}: {c}")
         nombres = [n for n in CANON if n in rev]
         if not nombres:
             raise SystemExit(f"sin revisor canónico en {br}: {rev}")
