@@ -19,6 +19,16 @@
 
 \usetikzlibrary{arrows.meta,fit,backgrounds,shapes.geometric}
 
+% Paleta de recuadros de las figuras 3.1 y 3.3.
+\definecolor{sdTresRellenoNaranja}{HTML}{FFE6CC}
+\definecolor{sdTresBordeNaranja}{HTML}{D79B00}
+\definecolor{sdTresRellenoGris}{HTML}{F5F5F5}
+\definecolor{sdTresBordeGris}{HTML}{666666}
+\tikzset{
+  recuadro naranja/.style={draw=sdTresBordeNaranja,fill=sdTresRellenoNaranja},
+  recuadro gris/.style={draw=sdTresBordeGris,fill=sdTresRellenoGris}
+}
+
 \usepackage{needspace}
 \AddToHook{env/tablalafrox/begin}{\hyphenpenalty=10000\exhyphenpenalty=10000\relax}
 

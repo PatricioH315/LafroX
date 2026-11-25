@@ -11,8 +11,8 @@
   {Portal de proveedores}/{M11; consulta a M1 Recepción},
   {Consolas de gestión}/{M1--M12 según funciones autorizadas; base compartida}
 } {
-  \node[draw=blue!55!black,fill=blue!7,rounded corners,align=center,text width=3cm,minimum height=0.7cm] (i\i) at (0,-\i*1.05) {\interfaz};
-  \node[draw=black!50,fill=gray!7,rounded corners,align=center,text width=8.4cm,minimum height=0.7cm] (m\i) at (7.2,-\i*1.05) {\modulos};
+  \node[recuadro naranja,rounded corners,align=center,text width=3cm,minimum height=0.7cm] (i\i) at (0,-\i*1.05) {\interfaz};
+  \node[recuadro gris,rounded corners,align=center,text width=8.4cm,minimum height=0.7cm] (m\i) at (7.2,-\i*1.05) {\modulos};
   \draw[->,blue!55!black] (i\i.east) -- (m\i.west);
 }
 \node[align=center,text width=12.6cm,font=\sffamily\scriptsize,anchor=north] at (3.6,-8.8) {M1 Recepción; M2 Inventario; M3 Preventa; M4 Rutas; M5 Preparación; M6 Reparto; M7 Cobranza y rendición; M8 Devoluciones y envases; M9 Calidad y trazabilidad; M10 Analítica; M11 Canal moderno; M12 Telemetría. Las conexiones no conceden permisos generales.};

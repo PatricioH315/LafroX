@@ -304,26 +304,18 @@ Si en cualquier momento se detecta un lote sospechoso, Calidad obtiene los desti
 \clearpage
 \subsection{Vista general de la solución}
 
-La Figura 3.4 reúne los actores, las interfaces, los módulos de negocio y los sistemas externos de la solución. Por su tamaño, se presenta primero la vista general y luego sus cuatro partes, cada una dibujada para su explicación (Figuras 3.5 a 3.8).
+La Figura 3.4 reúne los actores, las interfaces, los módulos de negocio y los sistemas externos de la solución. Las Figuras 3.5 a 3.8 presentan cada una de estas partes en detalle.
 
 La vista se lee de arriba hacia abajo y tiene cuatro capas. Arriba están los quince actores que usan la solución. Debajo, el Sistema Integral de Gestión Logística Puelche reúne sus accesos en siete interfaces: las aplicaciones de preventa, reparto y bodega, los portales de clientes, transportistas y proveedores, y las consolas de gestión. La tercera capa contiene los doce módulos de negocio, M1 a M12, y la última, los tres sistemas externos: el ERP, Transbank y el sistema de geolocalización. Las relaciones siguen ese orden: los actores llegan a las interfaces, las interfaces a los módulos y los módulos a los sistemas externos. Las cuatro partes siguientes recorren esas capas en el mismo orden.
 
-\begin{landscape}
-\thispagestyle{empty}
 \renewcommand{\thefigure}{3.4}
 \noindent\begin{minipage}{\linewidth}
-\setlength{\parskip}{0pt}
-{\fontsize{8pt}{10pt}\selectfont LafroX SpA\hfill Introducci\'on al Alcance de la Soluci\'on}\par
-\vspace{2pt}\hrule\vspace{4pt}
 \centering
-\resizebox{0.96\linewidth}{!}{\input{figures/vista_general_editable.tex}}
-\captionsetup{skip=4pt}
+\vspace{4pt}
+\resizebox{0.98\linewidth}{!}{\input{figures/vista_general_editable.tex}}
 \captionof{figure}[Vista general de la solución.]{Vista general de la solución. Fuente: elaboración propia a partir de los sistemas existentes (Bases Técnicas del caso, capítulo 5, p. 10), los requerimientos funcionales (Anexo 3.A) y los componentes ofertados (Formulario T-12).}
 \label{fig:arquitectura-general}
-\par\vspace{5pt}
-{\fontsize{8pt}{10pt}\selectfont LafroX SpA --- Propuesta T\'ecnica\hfill\raisebox{-3pt}[0pt][0pt]{\includegraphics[height=14pt]{\LFXfirmaimagen}}\ {\color{lafroxGris}Media firma: \LFXrepresentante}\quad\thepage}\par
 \end{minipage}
-\end{landscape}
 \clearpage
 
 \textbf{Emplazamiento de la solución.} Los centros de distribución ejecutan localmente recepción, inventario, preparación y despacho. Las plataformas de \textit{cross-docking} registran los movimientos de inventario del sitio y los sincronizan con el consolidado. En los camiones, el terminal de reparto captura la evidencia de entrega y el equipo local registra la información térmica. En la nube se ejecuta el motor de optimización de rutas y se consolidan los datos de operación y los indicadores. La Figura 3.9 resume la ubicación; el Anexo 4-N del Subdocumento 4 relaciona estas capacidades con sus componentes y su ubicación.
@@ -592,21 +584,21 @@ La Tabla 3.6 declara el uso de herramientas de inteligencia artificial por secci
   {tab:3-6}%
   {F{0.130} F{0.150} F{0.180} F{0.100} F{0.130} Y}%
   {\cab{Sección} & \cab{Herramienta} & \cab{Finalidad del uso} & \cab{Nivel en texto} & \cab{Nivel en diagramas} & \cab{Revisión humana (quién y qué verificó)}}
-  3.1 & Codex; Claude Code & Contraste con las Bases y redacción. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Patricio Henríquez: cotejó los tres problemas del caso con el Subdocumento 2 y los hitos de ambas etapas con el T-18. \\
-  3.2 & Codex; Claude Code & Contraste con las Bases y los Subdocumentos 1 y 2; redacción; propuestas para las reglas RNG-04 y RNG-15. Incorporación de la cadena de frío en ruta. Coherencia del alcance con el Formulario T-12. & Alto & Ninguno & Patricio Henríquez: contrastó exclusiones y restricciones con el Caso Logística y cotejó los plazos y el corte de las 14:00 con S-21 y RNG-15. \\
-  3.3 & Codex; Claude Code & Descripción estructurada de las figuras; revisión de la continuidad. Incorporación de la cadena de frío en ruta. & Alto & Alto & Patricio Henríquez: cotejó el recorrido del lote, la decisión de Calidad y la continuidad durante un corte con el Anexo 3.G y el Subdocumento 4. \\
-  3.4 & Codex; Claude Code & Redacción del desarrollo, despliegue y operación; revisión de reversión, actores, módulos y referencias. Incorporación de la cadena de frío en ruta. & Alto & Medio & Patricio Henríquez: cotejó módulos y emplazamiento con los anexos 4-D y 4-N, el alta y reemplazo de conductores con el Subdocumento 4 y la dotación con el Anexo 4-W.7 y el T-15. \\
-  Anexo 3.A & Codex; Claude Code & Conversión del catálogo funcional. Incorporación de la cadena de frío en ruta. Revisión de resultados y precondiciones del catálogo. & Alto & Ninguno & Guillermo Castillo: cotejó la columna Origen con los apartados que respaldan los requerimientos funcionales. \\
-  Anexo 3.B & Codex; Claude Code & Conversión del catálogo no funcional. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Guillermo Castillo: cotejó los umbrales con sus fuentes y comprobó los métodos de verificación. \\
-  Anexo 3.C & Codex; Claude Code & Redacción de supuestos. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Guillermo Castillo: comprobó antecedente, impacto y validación de los supuestos y cotejó S-21 con D-03 y RNG-15. \\
-  Anexo 3.D & Codex; Claude Code & Redacción de registros. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Guillermo Castillo: cotejó las exclusiones con el capítulo 11 del Caso Logística y comprobó su efecto sobre el alcance. \\
-  Anexo 3.E & Codex; Claude Code & Redacción de registros. & Alto & Ninguno & Guillermo Castillo: contrastó las restricciones con el Caso Logística y las Bases y comprobó su efecto sobre el diseño o la operación. \\
-  Anexo 3.F & Codex; Claude Code & Redacción de registros. & Alto & Ninguno & Guillermo Castillo: contrastó las decisiones de alcance con los antecedentes citados y comprobó su fundamento. \\
-  Anexo 3.G & Codex; Claude Code & Redacción de reglas; propuestas para RNG-04 y RNG-15. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Guillermo Castillo: comprobó la autoridad de Calidad en RNG-04 y cotejó la promesa de RNG-15 con S-21. \\
-  Anexo 3.H & Codex; Claude Code & Redacción de consultas. & Alto & Ninguno & Guillermo Castillo: cotejó los antecedentes de las consultas y comprobó su efecto sobre el alcance y su responsable. \\
-  Anexo 3.I & Codex; Claude Code & Redacción de la participación de actores. & Alto & Ninguno & Guillermo Castillo: contrastó los actores con el Subdocumento 2 y distinguió la participación en el proyecto del acceso a aplicaciones. \\
-  Anexo 3.J & Codex; Claude Code & Redacción de criterios de aceptación. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Guillermo Castillo: cotejó el umbral de OTIF del mes 32 con el cuerpo del Subdocumento 3 y la fila R18-04 del T-17. \\
-  Anexo 3.K & Codex; Claude Code & Glosario. & Medio & Ninguno & Guillermo Castillo: cotejó las definiciones del glosario con el uso de los códigos en el cuerpo y los anexos. \\
-  T-12 & Codex; Claude Code & Generación de la matriz de cumplimiento. Incorporación de la cadena de frío en ruta. Revisión de componentes, paquetes, referencias y estado de cumplimiento por requisito. & Alto & Ninguno & Patricio Henríquez: cotejó componentes con el Subdocumento 4, paquetes con el T-14 y pruebas y criterios con la matriz del T-13. \\
+  3.1 & Codex, Claude Code & Contraste con las Bases y redacción. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Patricio Henríquez: cotejó los tres problemas del caso con el Subdocumento 2 y los hitos de ambas etapas con el T-18. \\
+  3.2 & Codex, Claude Code & Contraste con las Bases y los Subdocumentos 1 y 2. Redacción y propuestas para las reglas RNG-04 y RNG-15. Incorporación de la cadena de frío en ruta. Coherencia del alcance con el Formulario T-12. & Alto & Ninguno & Patricio Henríquez: contrastó exclusiones y restricciones con el Caso Logística y cotejó los plazos y el corte de las 14:00 con S-21 y RNG-15. \\
+  3.3 & Codex, Claude Code & Descripción de las figuras, actualización del esquema de trazabilidad del lote y revisión de la continuidad. Incorporación de la cadena de frío en ruta. & Alto & Medio & Patricio Henríquez: cotejó el recorrido del lote, la decisión de Calidad y la continuidad durante un corte con el Anexo 3.G y el Subdocumento 4. \\
+  3.4 & Codex, Claude Code & Redacción del desarrollo, despliegue y operación. Revisión de reversión, actores, módulos y referencias. Actualización de la vista general y elaboración del esquema de emplazamiento. Incorporación de la cadena de frío en ruta. & Alto & Medio & Patricio Henríquez: cotejó módulos y emplazamiento con los anexos 4-D y 4-N, el alta y reemplazo de conductores con el Subdocumento 4 y la dotación con el Anexo 4-W.7 y el T-15. \\
+  Anexo 3.A & Codex, Claude Code & Conversión a tablas del catálogo funcional. Incorporación de la cadena de frío en ruta. Revisión de resultados y precondiciones del catálogo. & Alto & Ninguno & Guillermo Castillo: cotejó la columna Origen con los apartados que respaldan los requerimientos funcionales. \\
+  Anexo 3.B & Codex, Claude Code & Conversión a tablas del catálogo no funcional. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Guillermo Castillo: cotejó los umbrales con sus fuentes y comprobó los métodos de verificación. \\
+  Anexo 3.C & Codex, Claude Code & Redacción de supuestos. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Guillermo Castillo: comprobó antecedente, impacto y validación de los supuestos y cotejó S-21 con D-03 y RNG-15. \\
+  Anexo 3.D & Codex, Claude Code & Redacción del registro de exclusiones. Precisión de la responsabilidad del CLIENTE en la compra del kit de cadena de frío de los camiones. & Alto & Ninguno & Guillermo Castillo: cotejó las exclusiones con el capítulo 11 del Caso Logística y comprobó su efecto sobre el alcance. \\
+  Anexo 3.E & Codex, Claude Code & Redacción del registro de restricciones operacionales. & Alto & Ninguno & Guillermo Castillo: contrastó las restricciones con el Caso Logística y las Bases y comprobó su efecto sobre el diseño o la operación. \\
+  Anexo 3.F & Codex, Claude Code & Redacción del registro de decisiones de alcance y diseño. & Alto & Ninguno & Guillermo Castillo: contrastó las decisiones de alcance con los antecedentes citados y comprobó su fundamento. \\
+  Anexo 3.G & Codex, Claude Code & Redacción de reglas y propuestas para RNG-04 y RNG-15. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Guillermo Castillo: comprobó la autoridad de Calidad en RNG-04 y cotejó la promesa de RNG-15 con S-21. \\
+  Anexo 3.H & Codex, Claude Code & Redacción del registro de vacíos y consultas. & Alto & Ninguno & Guillermo Castillo: cotejó los antecedentes de las consultas y comprobó su efecto sobre el alcance y su responsable. \\
+  Anexo 3.I & Codex, Claude Code & Redacción de la estrategia de participación y del catálogo de actores del sistema, con sus interfaces e interacciones. & Alto & Ninguno & Guillermo Castillo: contrastó los actores con el Subdocumento 2 y distinguió la participación en el proyecto del acceso a aplicaciones. \\
+  Anexo 3.J & Codex, Claude Code & Redacción de criterios de aceptación. Incorporación de la cadena de frío en ruta. & Alto & Ninguno & Guillermo Castillo: cotejó el umbral de OTIF del mes 32 con el cuerpo del Subdocumento 3 y la fila R18-04 del T-17. \\
+  Anexo 3.K & Codex, Claude Code & Redacción del glosario de siglas y códigos. & Medio & Ninguno & Guillermo Castillo: cotejó las definiciones del glosario con el uso de los códigos en el cuerpo y los anexos. \\
+  T-12 & Codex, Claude Code & Generación de la matriz de cumplimiento. Incorporación de la cadena de frío en ruta. Revisión de componentes, paquetes, referencias y estado de cumplimiento por requisito. & Alto & Ninguno & Patricio Henríquez: cotejó componentes con el Subdocumento 4, paquetes con el T-14 y pruebas y criterios con la matriz del T-13. \\
 \end{tablalafrox}
 
