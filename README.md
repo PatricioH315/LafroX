@@ -73,4 +73,4 @@ Si se requirieran documentos auténticos fuera del ejercicio, las recreaciones y
 
 ## Carátula física del sobre (Art. 49.1)
 
-La carátula exterior del Sobre N.° 1 cerrado se compila desde `LAFROX-Caratula-Sobre1.tex` → [LAFROX-Caratula-Sobre1.pdf](LAFROX-Caratula-Sobre1.pdf) (1 página tamaño carta, sin folio, firmada por el representante legal conforme al Art. 40.2). Va adherida por fuera del sobre físico y no entra en la secuencia de folios del índice A-5.
+La carátula exterior del Sobre N.° 1 cerrado se compila desde `LAFROX-Caratula-Sobre1.tex` → [LAFROX-Caratula-Sobre1.pdf](LAFROX-Caratula-Sobre1.pdf) (1 página tamaño oficio, sin folio, firmada por el representante legal conforme al Art. 40.2). Va adherida por fuera del sobre físico y no entra en la secuencia de folios del índice A-5.
